@@ -1,0 +1,16 @@
+{
+  "projectName": "goldstack-docs",
+  "packages": [
+    {
+      "packageName": "app-nextjs-bootstrap",
+      "templateReference": {
+        "templateName": "app-nextjs-bootstrap"
+      }
+    }
+  ],
+  "rootTemplateReference": {
+    "templateName": "yarn-pnp-monorepo"
+  },
+  "owner": "session:618f5d363c0f1ab7ef9afdb599a66642eae1f53780",
+  "createdAt": "2020-09-16T21:25:46.673Z"
+}

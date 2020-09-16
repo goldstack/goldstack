@@ -1,0 +1,39 @@
+{
+  "name": "goldstack-docs",
+  "private": true,
+  "sideEffects": false,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn workspaces foreach --topological-dev run build",
+    "clean": "yarn workspaces foreach run clean",
+    "compile": "yarn workspaces foreach --topological-dev run compile",
+    "compile:watch": "yarn compile && nodemonx --watch . --exec 'yarn compile'",
+    "coverage": "yarn workspaces foreach --topological-devs run coverage",
+    "format": "prettier --loglevel log --config .prettierrc.json --write .",
+    "format:check": "prettier --loglevel log --config .prettierrc.json --check .",
+    "lint": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml",
+    "lint:fix": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml --fix",
+    "package:doctor": "yarn dlx @yarnpkg/doctor .",
+    "test:ci": "yarn workspaces foreach --parallel run test:ci",
+    "test:watch": "nodemonx --watch . --exec 'yarn test:ci'"
+  },
+  "devDependencies": {
+    "@goldstack/nodemonx": "0.1.36",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "eslint": "^7.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-yaml": "^0.2.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "typescript": "^3.9.5"
+  },
+  "author": "",
+  "license": ""
+}
