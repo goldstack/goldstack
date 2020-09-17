@@ -2292,9 +2292,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*, @types/node@npm:^14.0.6":
-  version: 14.10.3
-  resolution: "@types/node@npm:14.10.3"
-  checksum: 0411c026e894fb2485b4f625e4cfa00e16844f074e5d926458bea1b29daace01730c059a60d625f2ce04c79719e29afdb0276db7a81cb6675c9290251662c474
+  version: 14.11.1
+  resolution: "@types/node@npm:14.11.1"
+  checksum: f8bad278fcd5bdd3c173343967806a5601838570ee89ef96912909489df6d722ef7f4de08a31d98159293ef0005bd65353199327c65af77505d3aad2a05fd636
   languageName: node
   linkType: hard
 
@@ -9604,12 +9604,14 @@ fsevents@^1.2.7:
   linkType: hard
 
 "next-images@npm:^1.4.0":
-  version: 1.4.1
-  resolution: "next-images@npm:1.4.1"
+  version: 1.4.2
+  resolution: "next-images@npm:1.4.2"
   dependencies:
     file-loader: ^6.0.0
     url-loader: ^4.0.0
-  checksum: a14cc32f871b52c0a6dcf4fb73ab3f7f9e2557922aef6745c212f7a9ef8a7ad3d029658b21cfdf84ac06a940ec73402af36ff98e68922eab0d246d44cb3e9c13
+  peerDependencies:
+    webpack: ^4.0.0 || ^5.0.0
+  checksum: 1e72a9b670ede0ed282e88d556e632c55518a0f609149565a41779bd2169edf008454c994da4561d86af1b948d309d2d4595940b1238b8e03661b56e0f321eeb
   languageName: node
   linkType: hard
 
@@ -11081,13 +11083,13 @@ fsevents@^1.2.7:
   linkType: hard
 
 "postcss@npm:^7.0.1, postcss@npm:^7.0.32":
-  version: 7.0.32
-  resolution: "postcss@npm:7.0.32"
+  version: 7.0.34
+  resolution: "postcss@npm:7.0.34"
   dependencies:
     chalk: ^2.4.2
     source-map: ^0.6.1
     supports-color: ^6.1.0
-  checksum: 340f4f6ca6bd37961927f68bf7e38d071a7cba0468240cbba64ccf78012b2acbec974491284cb200e438dd3e655314e6d9508562523cbf9a49d5b00fd7e769fa
+  checksum: 60e02f81cedf98bc5f902e72ca7cfef20dc5789e367fd3620a41a00719ff3226796831f4ba55db7a1a1c595564fe0fa9a0a2fa6d8b2477d10ab83422fc0f91de
   languageName: node
   linkType: hard
 
