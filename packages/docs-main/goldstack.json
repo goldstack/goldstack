@@ -11,7 +11,13 @@
         "hostedZoneDomain": "dev.goldstack.party",
         "websiteDomain": "docs.dev.goldstack.party",
         "websiteDomainRedirect": "www.docs.dev.goldstack.party",
-        "defaultCacheDuration": 10
+        "defaultCacheDuration": 10,
+        "environmentVariables": [
+          {
+            "name": "NEXT_PUBLIC_GOLDSTACK_HOME",
+            "value": "https://dev.goldstack.party"
+          }
+        ]
       },
       "awsUser": "awsUser",
       "awsRegion": "us-west-2"
