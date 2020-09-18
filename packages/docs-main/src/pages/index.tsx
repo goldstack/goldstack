@@ -27,11 +27,6 @@ const FetchedContent = (): JSX.Element => {
   return <>{data && <p>Data: {'' + data.title}</p>}</>;
 };
 
-const StyledH1 = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }): string => theme.colors.title};
-`;
-
 const HomePage = (): JSX.Element => {
   const [displayData, setDisplayData] = useState(false);
 
@@ -43,7 +38,7 @@ const HomePage = (): JSX.Element => {
     <Container>
       <Row>
         <Col>
-          <StyledH1>Next.js React Bootstrap</StyledH1>
+          <h1>Next.js React Bootstrap</h1>
           <p>Welcome to Next.js with Bootstrap!</p>
           <p>{/* <img src={BootstrapIcon} /> */}</p>
           <Button onClick={toggleData}>Toggle Data Display</Button>

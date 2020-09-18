@@ -1,0 +1,109 @@
+/*------------------------------------
+  Dropzone
+------------------------------------*/
+
+.dz-dropzone {
+  cursor: pointer;
+
+  &-boxed {
+    width: 100%;
+    background-color: $dropzone-boxed-bg-color;
+    border: $dropzone-boxed-border-width $dropzone-boxed-border-type
+      $dropzone-boxed-border-color;
+    border-radius: $dropzone-boxed-border-radius;
+    padding: $dropzone-boxed-padding-y $dropzone-boxed-padding-x;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .dz-message {
+    width: 100%;
+    text-align: center;
+  }
+
+  .dz-details {
+    margin-bottom: $dropzone-details-margin-y;
+  }
+
+  .dz-file-preview {
+    background-color: $dropzone-filepreview-bg-color;
+    @include border-radius($dropzone-filepreview-border-radius);
+    padding: $dropzone-filepreview-padding-y $dropzone-filepreview-padding-x;
+    box-shadow: $dropzone-filepreview-shadow;
+  }
+
+  .dz-file-wrapper {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dz-filename {
+    margin-bottom: $dropzone-filename-margin-y;
+  }
+
+  .dz-img {
+    max-width: $dropzone-img-max-width;
+    @include border-radius($dropzone-img-border-radius);
+    margin-right: $dropzone-img-margin-x;
+
+    &-inner {
+      @include border-radius($dropzone-img-border-radius);
+    }
+  }
+
+  .dz-close-icon,
+  .dz-size {
+    color: $dropzone-size-color;
+  }
+
+  .dz-title {
+    font-size: $dropzone-title-font-size;
+    font-weight: $dropzone-title-font-weight;
+  }
+
+  .dz-size {
+    font-size: $dropzone-size-font-size;
+  }
+
+  .dz-file-initials {
+    display: inline-block;
+    width: $dropzone-initials-width;
+    height: $dropzone-initials-height;
+    line-height: $dropzone-initials-line-height;
+    font-weight: $dropzone-initials-font-weight;
+    font-size: $dropzone-initials-font-size;
+    color: $dropzone-initials-color;
+    text-align: center;
+    background-color: $dropzone-initials-bg-color;
+    border-radius: $dropzone-initials-border-radius;
+    margin-right: $dropzone-initials-margin-x;
+  }
+
+  [data-dz-thumbnail]:not([src]) {
+    display: none;
+    margin-bottom: 0;
+  }
+
+  .dz-progress {
+    margin-bottom: $dropzone-progress-margin-y;
+  }
+
+  .dz-processing .dz-error-mark,
+  .dz-processing .dz-success-mark {
+    display: none;
+  }
+
+  .dz-processing.dz-error .dz-error-mark,
+  .dz-processing.dz-success .dz-success-mark {
+    display: block;
+  }
+
+  .dz-processing .dz-error-mark {
+    color: $dropzone-error-color;
+  }
+
+  .dz-processing .dz-success-mark {
+    color: $dropzone-success-color;
+  }
+}

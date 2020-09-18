@@ -1,0 +1,32 @@
+/*------------------------------------
+  Column Divider
+------------------------------------*/
+
+.column-divider {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      &#{$infix} {
+        position: relative;
+
+        &::before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          border-left: $divider-ver-border-width $divider-ver-border-type
+            $divider-ver-border-color;
+          content: '';
+        }
+      }
+    }
+  }
+}
+
+.column-divider-20deg {
+  &::before {
+    transform: rotate(20deg);
+    left: -1rem;
+  }
+}

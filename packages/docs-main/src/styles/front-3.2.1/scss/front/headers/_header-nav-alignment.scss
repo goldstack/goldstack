@@ -1,0 +1,56 @@
+/*------------------------------------
+  Nav Alignments
+------------------------------------*/
+
+// Above Large Devices
+@include media-breakpoint-up(lg) {
+  // Right Alignment
+  .header {
+    .navbar-body,
+    .navbar-nav {
+      margin-left: auto;
+    }
+  }
+
+  // Left Alignment
+  .left-aligned-navbar {
+    .navbar-body,
+    .navbar-nav {
+      width: 100%;
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    .navbar-brand {
+      margin-left: 0;
+      margin-right: $header-left-aligned-navbar-brand-margin-x;
+    }
+
+    .navbar-nav-last-item {
+      margin-left: auto;
+    }
+  }
+
+  // Center Alignment
+  .center-aligned-navbar {
+    .navbar-body,
+    .navbar-nav {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+// Above Medium Devices
+@include media-breakpoint-up(md) {
+  // Center Alignment
+  .center-aligned-navbar {
+    &.header-abs-top-sm {
+      .navbar-body,
+      .navbar-nav {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}

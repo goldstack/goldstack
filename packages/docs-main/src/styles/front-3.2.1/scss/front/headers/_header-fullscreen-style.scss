@@ -1,0 +1,87 @@
+/*------------------------------------
+  Header Fullscreen Style
+------------------------------------*/
+
+.fullscreen-nav {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.fullscreen-nav-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.fullscreen-nav-link {
+  display: inline-block;
+  font-size: $fullscreen-nav-link-font-size;
+  color: $fullscreen-nav-link-color;
+  padding-top: $fullscreen-nav-link-padding-y;
+  padding-bottom: $fullscreen-nav-link-padding-y;
+
+  // Large Devices
+  @include media-breakpoint-up(lg) {
+    font-size: $fullscreen-nav-link-md-up-font-size;
+  }
+
+  &:hover {
+    color: $fullscreen-nav-link-hover-color;
+  }
+}
+
+// Sub Menu
+.fullscreen-submenu {
+  position: relative;
+  transition: $fullscreen-submenu-transition;
+
+  .fullscreen-submenu {
+    .fullscreen-submenu-list {
+      margin-left: $fullscreen-submenu-list-margin-x;
+    }
+  }
+
+  .fullscreen-nav-list {
+    border-left: $fullscreen-submenu-nav-list-border-left-width
+      $fullscreen-submenu-nav-list-border-left-type
+      $fullscreen-submenu-nav-list-border-left-color;
+    padding-left: 0;
+  }
+}
+
+.fullscreen-submenu-nav-link {
+  display: inline-block;
+  color: $fullscreen-nav-link-color;
+  padding-top: $fullscreen-nav-link-padding-y;
+  padding-bottom: $fullscreen-nav-link-padding-y;
+  padding-right: $fullscreen-nav-link-padding-x;
+  padding-left: $fullscreen-nav-link-padding-x;
+
+  &.disabled {
+    color: $fullscreen-nav-link-disabled-color;
+    pointer-events: none;
+  }
+
+  &:hover {
+    color: $fullscreen-nav-link-hover-color;
+  }
+}
+
+.fullscreen-submenu-list {
+  list-style: none;
+  border-left: $fullscreen-submenu-nav-list-border-left-width
+    $fullscreen-submenu-nav-list-border-left-type
+    $fullscreen-submenu-nav-list-border-left-color;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.fullscreen .fullscreen-submenu-list-link {
+  display: inline-block;
+  color: $fullscreen-submenu-list-link-color;
+
+  &:hover {
+    color: $fullscreen-submenu-list-link-hover-color;
+  }
+}

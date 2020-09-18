@@ -1,0 +1,177 @@
+/*------------------------------------
+  Summernote Editor
+------------------------------------*/
+
+.quill-custom {
+  .ql-container {
+    position: static;
+  }
+
+  .ql-toolbar.ql-snow,
+  .ql-container.ql-snow {
+    border-color: $quill-border-color;
+  }
+
+  .ql-toolbar.ql-snow {
+    padding: $quill-toolbar-padding-y $quill-toolbar-padding-x;
+    @include border-top-radius($quill-toolbar-border-radius);
+  }
+
+  .ql-container.ql-snow {
+    @include border-bottom-radius($quill-toolbar-border-radius);
+  }
+
+  .ql-formats:first-child {
+    padding-left: 0;
+
+    button {
+      margin-right: $quill-formats-button-margin-x;
+    }
+
+    button:first-child {
+      margin-left: -$quill-toolbar-btn-padding-x;
+    }
+  }
+
+  .ql-editor {
+    position: relative;
+    padding: $quill-editor-padding-y $quill-editor-padding-x;
+
+    p {
+      font-size: $quill-editor-font-size;
+      font-family: $quill-editor-font-family;
+      color: $quill-editor-p-color;
+    }
+  }
+
+  .ql-editor.ql-blank::before {
+    left: $quill-editor-padding-x;
+    color: $input-placeholder-color;
+    font-family: $quill-editor-font-family;
+    font-style: normal;
+  }
+
+  .ql-snow.ql-toolbar .ql-fill {
+    fill: $quill-fill-color;
+  }
+
+  .ql-snow.ql-toolbar .ql-stroke {
+    stroke: $quill-stroke-color;
+  }
+
+  .ql-snow.ql-toolbar button:hover {
+    color: $quill-toolbar-btn-hover-color;
+  }
+
+  .ql-snow.ql-toolbar button,
+  .ql-snow .ql-toolbar button {
+    width: $quill-toolbar-btn-width;
+    height: $quill-toolbar-btn-height;
+    padding: $quill-toolbar-btn-padding-y $quill-toolbar-btn-padding-x;
+
+    svg {
+      margin-bottom: 0;
+    }
+  }
+
+  .ql-snow .ql-tooltip {
+    position: fixed;
+    top: 50% !important;
+    left: 50% !important;
+    z-index: $quill-tooltip-z-index;
+    min-width: $quill-tooltip-min-width;
+    border-width: 0;
+    text-align: center;
+    box-shadow: $quill-tooltip-box-shadow;
+    padding: $quill-tooltip-padding-y $quill-tooltip-padding-x;
+    @include border-radius($quill-toolbar-border-radius);
+    transform: translate(-50%, -50%);
+  }
+
+  .ql-snow .ql-tooltip::before {
+    display: block;
+    text-align: center;
+    font-family: $quill-tooltip-pseudo-font-family;
+    font-weight: $quill-tooltip-pseudo-font-weight;
+    font-size: $quill-tooltip-pseudo-font-size;
+    border-bottom: $quill-tooltip-pseudo-border-width
+      $quill-tooltip-pseudo-border-type $quill-tooltip-pseudo-border-color;
+    padding-bottom: $quill-tooltip-pseudo-padding-y;
+    margin-bottom: $quill-tooltip-pseudo-margin-y;
+    margin-right: 0;
+  }
+
+  .ql-snow .ql-tooltip.ql-editing a.ql-preview,
+  .ql-snow .ql-tooltip.ql-editing a.ql-remove {
+    display: none;
+  }
+
+  .ql-snow .ql-tooltip a.ql-preview,
+  .ql-snow .ql-tooltip.ql-editing input[type='text'] {
+    min-width: $quill-tooltip-min-width;
+    font-size: $quill-tooltip-input-font-size;
+    line-height: normal;
+    border: $quill-tooltip-input-border-width $quill-tooltip-input-border-type
+      $quill-tooltip-input-border-color;
+    padding: $quill-tooltip-input-padding-y $quill-tooltip-input-padding-x;
+    margin-bottom: $quill-tooltip-margin-y;
+    @include border-radius($quill-toolbar-border-radius);
+    transition: $quill-tooltip-input-transition;
+  }
+
+  .ql-snow .ql-tooltip a.ql-preview {
+    display: block;
+
+    &:hover {
+      border-color: $quill-tooltip-input-border-hover-color;
+    }
+  }
+
+  .ql-snow .ql-tooltip.ql-editing input[type='text'] {
+    height: auto;
+    display: block;
+    font-family: $quill-tooltip-input-font-family;
+
+    &:focus {
+      border-color: $quill-tooltip-input-focus-border-color;
+      box-shadow: $quill-tooltip-input-focus-box-shadow;
+    }
+  }
+
+  .ql-snow .ql-action {
+    display: inline-block;
+    color: $quill-btn-color;
+    background-color: $quill-btn-bg-color;
+    font-size: $quill-btn-font-size;
+    line-height: normal;
+    padding: $quill-btn-padding-y $quill-btn-padding-x;
+    @include border-radius($quill-toolbar-border-radius);
+    transition: $quill-btn-transition;
+
+    &:hover {
+      background-color: $quill-btn-bg-hover-color;
+    }
+  }
+
+  .ql-snow .ql-tooltip a.ql-remove::before,
+  .ql-snow .ql-tooltip a.ql-action::after {
+    padding-right: 0;
+    margin-left: 0;
+    border-right: none;
+  }
+
+  .ql-snow .ql-tooltip a.ql-remove {
+    border: $quill-remove-border-width $quill-remove-border-type
+      $quill-remove-border-color;
+    font-size: $quill-btn-font-size;
+    padding: $quill-btn-padding-y $quill-btn-padding-x;
+    @include border-radius($quill-toolbar-border-radius);
+    margin-left: $quill-remove-margin-x;
+    transition: $quill-btn-transition;
+
+    &:hover {
+      color: $btn-white-hover-color;
+      box-shadow: $btn-white-box-shadow-hover;
+    }
+  }
+}

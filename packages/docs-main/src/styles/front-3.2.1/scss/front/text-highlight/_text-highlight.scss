@@ -1,0 +1,14 @@
+/*------------------------------------
+  Text Highlight
+------------------------------------*/
+
+[class*='text-highlight-'] {
+  background: $text-highlight-bg-value;
+}
+
+@each $color, $value in $theme-colors {
+  /* #{$color} text highlight */
+  .text-highlight-#{$color} {
+    @include text-highlight($value, 0.5, $value, 0.5);
+  }
+}

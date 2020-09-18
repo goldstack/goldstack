@@ -1,0 +1,61 @@
+/*------------------------------------
+  Tables
+------------------------------------*/
+
+.table {
+  th {
+    font-weight: $font-weight-normal;
+  }
+
+  thead th {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    border-width: 0;
+  }
+
+  .btn {
+    white-space: nowrap;
+  }
+}
+
+.table-heighlighted {
+  thead th {
+    border-bottom-color: $table-border-highlighted-color;
+    border-top: none;
+  }
+
+  tfoot td {
+    border-top: ($table-border-width * 2) solid $table-border-highlighted-color;
+  }
+}
+
+.table-light-bordered {
+  border-color: $table-border-light-color;
+
+  thead th,
+  th,
+  td {
+    border-color: $table-border-light-color;
+  }
+}
+
+.table-nowrap {
+  th,
+  td {
+    white-space: nowrap;
+  }
+}
+
+.table-align-middle {
+  tbody td {
+    vertical-align: middle;
+  }
+}
+
+.table-thead-bordered {
+  thead th {
+    border-top: $table-border-width solid $table-border-color;
+    border-bottom: $table-border-width solid $table-border-color;
+  }
+}

@@ -1,0 +1,23 @@
+/*------------------------------------
+  Stats Progress
+-------------------------------------*/
+
+.stats-progress {
+  position: relative;
+  width: $stats-progress-width;
+  height: $stats-progress-height;
+  @include border-radius($stats-progress-border-radius);
+  box-shadow: $stats-progress-box-shadow;
+  margin-left: auto;
+  margin-right: auto;
+
+  &-info {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: $stats-progress-info-padding-y $stats-progress-info-padding-x;
+    transform: translate(0, -50%);
+  }
+}

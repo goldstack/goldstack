@@ -1,0 +1,36 @@
+/*------------------------------------
+  Button Sizes
+------------------------------------*/
+
+/* Wide */
+.btn-wide {
+  min-width: $btn-wide;
+}
+
+/* Extra Small */
+.btn-xs {
+  font-size: $btn-font-size-xs;
+  font-weight: $btn-font-weight-xs;
+  padding: $input-btn-padding-y-xs $input-btn-padding-x-xs;
+}
+
+/* Icons */
+.btn-icon {
+  &.btn-xs {
+    font-size: $btn-icon-font-size-xs;
+    width: $btn-icon-width-xs;
+    height: $btn-icon-height-xs;
+  }
+
+  &.btn-sm {
+    font-size: $btn-icon-font-size-sm;
+    width: $btn-icon-width-sm;
+    height: $btn-icon-height-sm;
+  }
+
+  &.btn-lg {
+    font-size: $btn-icon-font-size-lg;
+    width: $btn-icon-width-lg;
+    height: $btn-icon-height-lg;
+  }
+}

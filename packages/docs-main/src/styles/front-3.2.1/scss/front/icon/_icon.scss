@@ -1,0 +1,36 @@
+/*------------------------------------
+  Icon
+------------------------------------*/
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: $icon-font-size;
+  width: $icon-width;
+  height: $icon-height;
+  @include border-radius($icon-border-radius);
+
+  &-circle {
+    @include border-radius($icon-circle-border-radius);
+  }
+
+  &.icon-xs {
+    font-size: $icon-font-size-xs;
+    width: $icon-width-xs;
+    height: $icon-height-xs;
+  }
+
+  &.icon-sm {
+    font-size: $icon-font-size-sm;
+    width: $icon-width-sm;
+    height: $icon-height-sm;
+  }
+
+  &.icon-lg {
+    font-size: $icon-font-size-lg;
+    width: $icon-width-lg;
+    height: $icon-height-lg;
+  }
+}

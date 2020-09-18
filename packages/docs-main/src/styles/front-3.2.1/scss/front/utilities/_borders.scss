@@ -1,0 +1,25 @@
+/*------------------------------------
+  Borders-radius
+------------------------------------*/
+
+// Pseudo options
+.rounded-pseudo {
+  @include border-radius($border-radius);
+
+  &::before,
+  &::after {
+    @include border-radius($border-radius);
+  }
+}
+
+/*------------------------------------
+  Borders
+------------------------------------*/
+
+.border-dashed {
+  border: $border-width dashed $border-color;
+}
+
+.border-3 {
+  border-width: $border-width * 3 !important;
+}

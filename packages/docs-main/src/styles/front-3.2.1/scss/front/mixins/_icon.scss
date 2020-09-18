@@ -1,0 +1,15 @@
+//
+// Icons
+//
+
+@mixin icon($hs-background, $hs-border, $hs-hover-background) {
+  color: color-yiq($hs-background);
+  border-color: $hs-border;
+  background-color: ($hs-background);
+}
+
+// Icon Air Styles
+@mixin icon-soft($hs-color, $hs-background) {
+  color: ($hs-color);
+  background: rgba($hs-background, 0.1);
+}

@@ -1,0 +1,141 @@
+/*------------------------------------
+  Form
+------------------------------------*/
+
+.input-group {
+  .input-group-prepend,
+  .input-group-append {
+    z-index: $input-addon-z-index;
+  }
+}
+
+.custom-select:focus,
+.form-control:focus {
+  box-shadow: $input-focus-box-shadow;
+}
+
+.input-group-text {
+  border-color: $input-group-text-border-color;
+}
+
+/* Input Label */
+.input-label {
+  display: block;
+  color: $input-label-color;
+  font-size: $input-label-font-size;
+}
+
+.input-label-secondary {
+  color: $input-label-secondary-color;
+  font-size: $input-label-secondary-font-size;
+  margin-left: $input-label-secondary-margin-x;
+}
+
+/* Form Link */
+.form-link {
+  display: inline-block;
+  margin-top: $form-link-margin-y;
+}
+
+/* Form Borderless */
+.input-group-borderless {
+  .form-control,
+  .input-group-text {
+    border: none;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+// Add field
+.input-group-add-field {
+  position: relative;
+  margin-top: $input-group-add-field-margin-y;
+}
+
+.input-group-add-field:hover .input-group-add-field-delete {
+  opacity: 1;
+}
+
+.input-group-add-field-delete {
+  position: absolute;
+  top: $input-group-add-field-top-offset;
+  right: 0;
+  width: $input-group-add-field-delete-width;
+  color: $input-group-add-field-delete-color;
+  opacity: 0;
+  margin-right: -$input-group-add-field-delete-width;
+  padding-left: $input-group-add-field-delete-padding-x;
+
+  &:hover {
+    color: $input-group-add-field-delete-hover-color;
+  }
+}
+
+// Medium Devices
+@include media-breakpoint-down(lg) {
+  .input-group-add-field-delete {
+    opacity: 1;
+  }
+}
+
+// Prepend and append rounded corners for select2 plugin
+.input-group > .input-group-prepend .custom-select {
+  @include border-right-radius(0);
+}
+
+.input-group > .input-group-append .custom-select {
+  @include border-left-radius(0);
+}
+
+// Break
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $next: breakpoint-next($breakpoint, $grid-breakpoints);
+  $infix: breakpoint-infix($next, $grid-breakpoints);
+
+  .input-group#{$infix}-down-break {
+    @include media-breakpoint-down($breakpoint) {
+      display: block;
+
+      > .form-control,
+      > .custom-select {
+        width: 100%;
+      }
+
+      > .form-control:first-child,
+      > .custom-select:first-child {
+        @include border-top-radius($input-border-radius);
+        @include border-bottom-radius(0);
+      }
+
+      > .custom-select:not(:first-child):not(:last-child),
+      > .form-control:not(:first-child):not(:last-child) {
+        @include border-radius(0);
+      }
+
+      > .custom-select:last-child,
+      > .form-control:last-child {
+        @include border-top-radius(0);
+        @include border-bottom-radius($input-border-radius);
+      }
+
+      .form-control + .form-control,
+      .form-control + .custom-select,
+      .form-control + .custom-file,
+      .form-control-plaintext + .form-control,
+      .form-control-plaintext + .custom-select,
+      .form-control-plaintext + .custom-file,
+      .custom-select + .form-control,
+      .custom-select + .custom-select,
+      .custom-select + .custom-file,
+      .custom-file + .form-control,
+      .custom-file + .custom-select,
+      .custom-file + .custom-file {
+        margin-left: 0;
+        margin-top: -$input-border-width;
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
+import './../styles/fonts.css';
 import './../styles/app.css';
 
 import { ThemeProvider } from 'styled-components';

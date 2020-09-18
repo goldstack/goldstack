@@ -1,0 +1,22 @@
+/*------------------------------------
+  Ghost Buttons Styles
+------------------------------------*/
+
+@each $color, $value in $theme-colors {
+  /* #{$color} ghost button */
+  .btn-ghost-#{$color} {
+    @if $color == 'secondary' {
+      @include button-ghost($value, rgba($primary, 0.1));
+    } @else {
+      @include button-ghost($value, $value);
+    }
+  }
+}
+
+.btn-ghost-secondary {
+  &:hover,
+  &:focus,
+  &:active {
+    color: ($primary);
+  }
+}

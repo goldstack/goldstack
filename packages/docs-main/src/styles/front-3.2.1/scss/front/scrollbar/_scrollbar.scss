@@ -1,0 +1,47 @@
+/*------------------------------------
+  Scrollbar
+------------------------------------*/
+
+.scrollbar {
+  overflow: hidden;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: $scrollbar-width;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $scrollbar-bg-color;
+    visibility: hidden;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      visibility: visible;
+    }
+  }
+}
+
+.scrollbar-horizontal {
+  display: flex;
+  max-width: 100%;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    height: $scrollbar-horizontal-height;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $scrollbar-horizontal-bg-color;
+    visibility: hidden;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      visibility: visible;
+    }
+  }
+}
