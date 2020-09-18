@@ -1,5 +1,5 @@
 {
-  "name": "goldstack-docs",
+  "name": "@goldstack/goldstack-docs",
   "private": true,
   "sideEffects": false,
   "workspaces": [
@@ -20,7 +20,7 @@
     "test:watch": "nodemonx --watch . --exec 'yarn test:ci'"
   },
   "devDependencies": {
-    "@goldstack/nodemonx": "0.1.36",
+    "@goldstack/nodemonx": "0.1.37",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
     "eslint": "^7.1.0",
