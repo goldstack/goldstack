@@ -1664,6 +1664,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@goldstack/utils-goldstack-docs@workspace:packages/utils-goldstack-docs":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/utils-goldstack-docs@workspace:packages/utils-goldstack-docs"
+  dependencies:
+    "@goldstack/utils-cli": 0.1.37
+    "@goldstack/utils-docs": 0.1.5
+    "@goldstack/utils-sh": 0.2.3
+    "@types/jest": ^25.2.3
+    "@types/node": ^14.0.6
+    "@types/yargs": ^15.0.5
+    jest: ^26.0.1
+    source-map-support: ^0.5.19
+    ts-jest: ^26.1.0
+    typescript: ^3.9.5
+    yargs: ^15.4.1
+  bin:
+    utils-goldstack-docs: ./bin/utils-goldstack-docs
+  languageName: unknown
+  linkType: soft
+
 "@goldstack/utils-log@npm:0.1.36":
   version: 0.1.36
   resolution: "@goldstack/utils-log@npm:0.1.36"

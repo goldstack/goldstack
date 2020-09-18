@@ -73,7 +73,7 @@ const Header = (): JSX.Element => {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                  <Nav.Link href="/">Docs</Nav.Link>
+                  <Nav.Link href="/docs">Docs</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Navbar.Collapse>

@@ -5,5 +5,14 @@
   "redirects": [],
   "rewrites": [],
   "headers": [],
-  "dynamicRoutes": []
+  "dynamicRoutes": [
+    {
+      "page": "/docs/[...slug]",
+      "regex": "^\\/docs\\/(.+?)(?:\\/)?$",
+      "namedRegex": "^/docs/(?<slug>.+?)(?:/)?$",
+      "routeKeys": [
+        "slug"
+      ]
+    }
+  ]
 }
