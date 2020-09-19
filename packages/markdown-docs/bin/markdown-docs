@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 require('source-map-support').install();
 
-require('../dist/utilsGoldstackDocsCliRun.js')
+require('../dist/markdownDocsCliRun.js')
   .run()
   .catch((e) => {
     console.error(e);

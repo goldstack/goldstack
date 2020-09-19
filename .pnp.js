@@ -27,8 +27,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:packages/docs-main"
       },
       {
-        "name": "@goldstack/utils-goldstack-docs",
-        "reference": "workspace:packages/utils-goldstack-docs"
+        "name": "@goldstack/markdown-docs",
+        "reference": "workspace:packages/markdown-docs"
       }
     ],
     "enableTopLevelFallback": true,
@@ -36,7 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "fallbackExclusionList": [
       ["@goldstack/docs-main", ["workspace:packages/docs-main"]],
       ["@goldstack/goldstack-docs", ["workspace:."]],
-      ["@goldstack/utils-goldstack-docs", ["workspace:packages/utils-goldstack-docs"]]
+      ["@goldstack/markdown-docs", ["workspace:packages/markdown-docs"]]
     ],
     "fallbackPool": [
       [
@@ -1895,6 +1895,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@goldstack/markdown-docs", [
+        ["workspace:packages/markdown-docs", {
+          "packageLocation": "./packages/markdown-docs/",
+          "packageDependencies": [
+            ["@goldstack/markdown-docs", "workspace:packages/markdown-docs"],
+            ["@goldstack/utils-cli", "npm:0.1.37"],
+            ["@goldstack/utils-docs", "npm:0.1.5"],
+            ["@goldstack/utils-sh", "npm:0.2.3"],
+            ["@types/jest", "npm:25.2.3"],
+            ["@types/node", "npm:14.11.1"],
+            ["@types/yargs", "npm:15.0.5"],
+            ["jest", "npm:26.4.2"],
+            ["source-map-support", "npm:0.5.19"],
+            ["ts-jest", "virtual:2649131cfffd0367d1ced5c78523381b8e90e029814436891f36b6c1a3401775457ea21f836ec05555cec538dca57e5249f2c2ed1b8b9d437fc00352cb657fae#npm:26.3.0"],
+            ["typescript", "patch:typescript@npm%3A3.9.7#builtin<compat/typescript>::version=3.9.7&hash=0ea415"],
+            ["yargs", "npm:15.4.1"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
       ["@goldstack/nodemonx", [
         ["npm:0.1.37", {
           "packageLocation": "./.yarn/cache/@goldstack-nodemonx-npm-0.1.37-a760946409-ec63bb6aae.zip/node_modules/@goldstack/nodemonx/",
@@ -2033,26 +2053,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["yargs", "npm:15.4.1"]
           ],
           "linkType": "HARD",
-        }]
-      ]],
-      ["@goldstack/utils-goldstack-docs", [
-        ["workspace:packages/utils-goldstack-docs", {
-          "packageLocation": "./packages/utils-goldstack-docs/",
-          "packageDependencies": [
-            ["@goldstack/utils-goldstack-docs", "workspace:packages/utils-goldstack-docs"],
-            ["@goldstack/utils-cli", "npm:0.1.37"],
-            ["@goldstack/utils-docs", "npm:0.1.5"],
-            ["@goldstack/utils-sh", "npm:0.2.3"],
-            ["@types/jest", "npm:25.2.3"],
-            ["@types/node", "npm:14.11.1"],
-            ["@types/yargs", "npm:15.0.5"],
-            ["jest", "npm:26.4.2"],
-            ["source-map-support", "npm:0.5.19"],
-            ["ts-jest", "virtual:2649131cfffd0367d1ced5c78523381b8e90e029814436891f36b6c1a3401775457ea21f836ec05555cec538dca57e5249f2c2ed1b8b9d437fc00352cb657fae#npm:26.3.0"],
-            ["typescript", "patch:typescript@npm%3A3.9.7#builtin<compat/typescript>::version=3.9.7&hash=0ea415"],
-            ["yargs", "npm:15.4.1"]
-          ],
-          "linkType": "SOFT",
         }]
       ]],
       ["@goldstack/utils-log", [

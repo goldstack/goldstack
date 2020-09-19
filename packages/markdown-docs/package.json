@@ -1,5 +1,5 @@
 {
-  "name": "@goldstack/utils-goldstack-docs",
+  "name": "@goldstack/markdown-docs",
   "version": "0.1.0",
   "author": "Max Rohde",
   "sideEffects": false,
