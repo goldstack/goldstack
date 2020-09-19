@@ -1,0 +1,17 @@
+{
+  "home": "index.md",
+  "children": [
+    {
+      "home": "index.md",
+      "directory": "templates/",
+      "children": [
+        "app-nextjs/index.md",
+        "lambda-express/index.md",
+        "app-nextjs-bootstrap/index.md",
+        "email-send/index.md",
+        "static-website-aws/index.md",
+        "s3/index.md"
+      ]
+    }
+  ]
+}

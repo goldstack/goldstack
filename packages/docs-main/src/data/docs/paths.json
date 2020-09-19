@@ -1,0 +1,10 @@
+[
+  "/",
+  "templates",
+  "templates/app-nextjs",
+  "templates/lambda-express",
+  "templates/app-nextjs-bootstrap",
+  "templates/email-send",
+  "templates/static-website-aws",
+  "templates/s3"
+]

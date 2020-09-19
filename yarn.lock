@@ -1443,6 +1443,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/docs-main@workspace:packages/docs-main"
   dependencies:
+    "@goldstack/markdown-docs": 0.1.0
     "@goldstack/template-nextjs": 0.1.20
     "@goldstack/utils-sh": 0.2.3
     "@testing-library/jest-dom": ^5.9.0
@@ -1524,7 +1525,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@goldstack/markdown-docs@workspace:packages/markdown-docs":
+"@goldstack/markdown-docs@0.1.0, @goldstack/markdown-docs@workspace:packages/markdown-docs":
   version: 0.0.0-use.local
   resolution: "@goldstack/markdown-docs@workspace:packages/markdown-docs"
   dependencies:
@@ -1540,7 +1541,7 @@ __metadata:
     typescript: ^3.9.5
     yargs: ^15.4.1
   bin:
-    markdown-docs: ./bin/utils-goldstack-docs
+    markdown-docs: ./bin/markdown-docs
   languageName: unknown
   linkType: soft
 

@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/utilsGoldstackDocs.js",
-  "bin": "./bin/utils-goldstack-docs",
+  "main": "dist/generateDocs.js",
+  "bin": "./bin/markdown-docs",
   "files": [
     "dist"
   ],

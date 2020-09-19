@@ -3,6 +3,7 @@ import React from 'react';
 
 import './../styles/fonts.css';
 import './../styles/app.css';
+import './../styles/docs.css';
 
 import { ThemeProvider } from 'styled-components';
 

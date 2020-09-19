@@ -4,15 +4,15 @@ import { renderPage } from '@goldstack/utils-docs';
 import path from 'path';
 import assert from 'assert';
 
-interface Item {
+export interface SitemapItem {
   title: string;
   path: string;
-  children: Item[];
+  children: SitemapItem[];
 }
 
 interface Results {
   paths: string[];
-  sitemap: Item[];
+  sitemap: SitemapItem[];
 }
 
 type Node =
@@ -67,7 +67,6 @@ const processNode = async (params: {
     path: pagePath,
     children: [],
   };
-  console.log(sitemapEntry);
 
   if (typeof params.node === 'string' || !params.node.children) {
     return {
