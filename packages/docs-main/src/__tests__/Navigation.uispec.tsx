@@ -9,6 +9,8 @@ import Navigation from './../components/Navigation';
 describe('<Navigation/>', () => {
   it('Should render documentation navigation', async () => {
     const items: SitemapItem[] = sitemap;
-    const comp = render(<Navigation items={items}></Navigation>);
+    render(<Navigation items={items} currentPath="/"></Navigation>);
+    const navElement = await screen.findByText('Next.js Template');
+    expect(navElement).toBeTruthy();
   });
 });

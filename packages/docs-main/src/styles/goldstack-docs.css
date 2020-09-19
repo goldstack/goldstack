@@ -1,0 +1,19 @@
+.heading {
+  font-size: 1.3125rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+}
+
+.heading a:hover {
+  border-bottom: 1px dotted;
+}
+
+.heading a {
+  color: black;
+}
+
+.heading svg {
+  margin-bottom: 0px;
+  margin-left: 0.3rem;
+}
