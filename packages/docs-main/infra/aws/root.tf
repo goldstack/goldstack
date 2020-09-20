@@ -67,7 +67,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
   default_root_object = "index.html"
 
 
-  # Prioirty 0
+  # Priority 0
   ordered_cache_behavior {
     path_pattern     = "_next/static/*"
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
@@ -90,7 +90,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     viewer_protocol_policy = "redirect-to-https"
   }
 
-  # Prioirty 1
+  # Priority 1
   # Behaviour bypassing edge lambda
   # Path pattern can be changed to '*' here if no dynamic routes are used
   # This will result in a slight performance increase and decreased costs
