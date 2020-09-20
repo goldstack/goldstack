@@ -1444,7 +1444,7 @@ __metadata:
   resolution: "@goldstack/docs-main@workspace:packages/docs-main"
   dependencies:
     "@goldstack/markdown-docs": 0.1.0
-    "@goldstack/template-nextjs": 0.1.20
+    "@goldstack/template-nextjs": 0.1.28
     "@goldstack/utils-sh": 0.2.3
     "@testing-library/jest-dom": ^5.9.0
     "@testing-library/react": ^10.0.4
@@ -1559,13 +1559,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@goldstack/template-nextjs@npm:0.1.20":
-  version: 0.1.20
-  resolution: "@goldstack/template-nextjs@npm:0.1.20"
+"@goldstack/template-nextjs@npm:0.1.28":
+  version: 0.1.28
+  resolution: "@goldstack/template-nextjs@npm:0.1.28"
   dependencies:
     "@goldstack/infra": 0.1.41
     "@goldstack/infra-aws": 0.1.53
-    "@goldstack/template-static-website-aws": 0.1.71
+    "@goldstack/template-static-website-aws": 0.1.72
     "@goldstack/utils-aws-cli": 0.1.52
     "@goldstack/utils-cli": 0.1.37
     "@goldstack/utils-config": 0.1.38
@@ -1575,23 +1575,24 @@ __metadata:
     "@goldstack/utils-sh": 0.2.3
     "@goldstack/utils-template": 0.1.37
     "@goldstack/utils-terraform": 0.1.58
+    glob: ^7.1.6
     yargs: ^15.4.1
   bin:
     template: ./bin/template
     template-nextjs: ./bin/template
-  checksum: d36614c27ff0ee09a30fc4d1f60c1809a37064766baa15c02152dd2871251cc4d2821a773a7e0a490e68cc7f1edb5af565c28b16f41b275f3d5796d01526b45b
+  checksum: e61724ab2e7525c58bae7d16c893869420c1b72cc036dc67e588a08222b4d183bb680724efb6226fa01df4a43715b332f04bf3748fcae452c3e47b4091d5d260
   languageName: node
   linkType: hard
 
-"@goldstack/template-static-website-aws@npm:0.1.71":
-  version: 0.1.71
-  resolution: "@goldstack/template-static-website-aws@npm:0.1.71"
+"@goldstack/template-static-website-aws@npm:0.1.72":
+  version: 0.1.72
+  resolution: "@goldstack/template-static-website-aws@npm:0.1.72"
   dependencies:
     "@goldstack/infra": 0.1.41
     "@goldstack/infra-aws": 0.1.53
     "@goldstack/utils-cli": 0.1.37
     "@goldstack/utils-config": 0.1.38
-    "@goldstack/utils-docs-cli": 0.1.4
+    "@goldstack/utils-docs-cli": 0.1.5
     "@goldstack/utils-log": 0.1.36
     "@goldstack/utils-package": 0.1.41
     "@goldstack/utils-package-config": 0.1.5
@@ -1603,7 +1604,7 @@ __metadata:
   bin:
     template: ./bin/template
     template-static-website-aws: ./bin/template
-  checksum: 2351e9b2b14335898cafbafd0a68473a90f7e06b1142721a57a0446faea5e1fcbd42bb2152e1935b72c5239a5ff32b81025d2b722bed59e4b7aeb583a4579153
+  checksum: 30f8cfb7a4807a5d3183f05594142ab69d23706930836289057586279943c280f57bfdb0bf49c04c0765130b876554697860f9a2909e25a47c5a4009f091ee66
   languageName: node
   linkType: hard
 
@@ -1648,9 +1649,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@goldstack/utils-docs-cli@npm:0.1.4":
-  version: 0.1.4
-  resolution: "@goldstack/utils-docs-cli@npm:0.1.4"
+"@goldstack/utils-docs-cli@npm:0.1.5":
+  version: 0.1.5
+  resolution: "@goldstack/utils-docs-cli@npm:0.1.5"
   dependencies:
     "@goldstack/utils-cli": 0.1.37
     "@goldstack/utils-docs": 0.1.5
@@ -1660,7 +1661,7 @@ __metadata:
     yargs: ^15.4.1
   bin:
     utils-docs-cli: ./bin/utils-docs-cli
-  checksum: a1d81542887939c1d0ab2d6b70d7976e901d03931944e6388891247ad9f73a3b9707c9d71261f8941e10dcf6c34c3ff0fc44d3324bb2076166cc6ae6ec5da021
+  checksum: b1a4f5b1478074fbed93df868fa36f2fbf2b423457f072f28d1cccf15c619043be815c375da19d2f73bf4ffc108224815eafafff5f24cb56792f3b6018f55e88
   languageName: node
   linkType: hard
 

@@ -6,19 +6,19 @@ import { read, pwd } from '@goldstack/utils-sh';
 import fs from 'fs';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  console.log(paths);
   return {
-    paths: paths.map((path) => ({
-      params: {
-        slug: path.split('/'),
-      },
-    })),
+    paths: paths
+      .filter((el) => el !== '/')
+      .map((path) => ({
+        params: {
+          slug: path.split('/'),
+        },
+      })),
     fallback: false, // Show 404 for pages that are not prerendered
   };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  // console.log(context.params);
   const query = context.params || {};
 
   const path = query.slug ? (query.slug as string[]).join('/') : '/';
@@ -28,7 +28,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // const { path } = context.params.query;
   // console.log(path);
   let pageData: any;
-  console.log(__dirname);
   const filePath = pwd() + '/src/data/docs/' + path + '/index.json';
   console.debug(`Reading documentation file from ${filePath}`);
   if (fs.existsSync(filePath)) {

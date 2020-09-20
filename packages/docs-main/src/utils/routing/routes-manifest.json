@@ -7,12 +7,62 @@
   "headers": [],
   "dynamicRoutes": [
     {
+      "page": "/404",
+      "regex": "^\\/404$"
+    },
+    {
+      "page": "/docs",
+      "regex": "^\\/docs$"
+    },
+    {
+      "page": "/docs/templates",
+      "regex": "^\\/docs\\/templates$"
+    },
+    {
+      "page": "/docs/templates/app-nextjs-bootstrap",
+      "regex": "^\\/docs\\/templates\\/app-nextjs-bootstrap$"
+    },
+    {
+      "page": "/docs/templates/app-nextjs",
+      "regex": "^\\/docs\\/templates\\/app-nextjs$"
+    },
+    {
+      "page": "/docs/templates/email-send",
+      "regex": "^\\/docs\\/templates\\/email-send$"
+    },
+    {
+      "page": "/docs/templates/lambda-express",
+      "regex": "^\\/docs\\/templates\\/lambda-express$"
+    },
+    {
+      "page": "/docs/templates/s3",
+      "regex": "^\\/docs\\/templates\\/s3$"
+    },
+    {
+      "page": "/docs/templates/static-website-aws",
+      "regex": "^\\/docs\\/templates\\/static-website-aws$"
+    },
+    {
+      "page": "/index",
+      "regex": "^\\/index$"
+    },
+    {
       "page": "/docs/[...slug]",
       "regex": "^\\/docs\\/(.+?)(?:\\/)?$",
       "namedRegex": "^/docs/(?<slug>.+?)(?:/)?$",
       "routeKeys": [
         "slug"
       ]
+    }
+  ],
+  "dataRoutes": [
+    {
+      "page": "/docs/[...slug]",
+      "routeKeys": [
+        "slug"
+      ],
+      "dataRouteRegex": "^\\/_next\\/data\\/1S4DnkhOHrS\\-wUaP3A5Oh\\/docs\\/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/1S4DnkhOHrS\\-wUaP3A5Oh/docs/(?<slug>.+?)\\.json$"
     }
   ]
 }
