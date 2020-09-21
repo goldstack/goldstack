@@ -1,4 +1,17 @@
-.heading {
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
+
+h2.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+}
+
+h3.heading {
   font-size: 1.3125rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -16,4 +29,8 @@
 .heading svg {
   margin-bottom: 0px;
   margin-left: 0.3rem;
+}
+
+.permalink {
+  display: none;
 }

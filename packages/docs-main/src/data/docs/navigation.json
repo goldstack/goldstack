@@ -3,6 +3,15 @@
   "children": [
     {
       "home": "index.md",
+      "directory": "goldstack/",
+      "children": [
+        "about/index.md",
+        "getting-started/index.md",
+        "configuration/index.md"
+      ]
+    },
+    {
+      "home": "index.md",
       "directory": "templates/",
       "children": [
         "app-nextjs/index.md",

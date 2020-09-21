@@ -20,15 +20,14 @@ const Level2Item = (props: {
   currentPath: string;
 }): JSX.Element => (
   <li className="hs-sidebar-item">
-    <MyLink href={navPath + props.link}>
-      <a
-        className={`hs-sidebar-link ${
-          props.link === props.currentPath ? 'active' : ''
-        }`}
-      >
-        {props.title}
-      </a>
-    </MyLink>
+    <a
+      href={navPath + props.link}
+      className={`hs-sidebar-link ${
+        props.link === props.currentPath ? 'active' : ''
+      }`}
+    >
+      {props.title}
+    </a>
   </li>
 );
 

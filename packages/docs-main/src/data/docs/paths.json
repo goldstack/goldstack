@@ -1,5 +1,9 @@
 [
   "/",
+  "goldstack",
+  "goldstack/about",
+  "goldstack/getting-started",
+  "goldstack/configuration",
   "templates",
   "templates/app-nextjs",
   "templates/lambda-express",
