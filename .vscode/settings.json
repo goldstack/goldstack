@@ -1,0 +1,16 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "typescript.validate.enable": true,
+  "files.eol": "\n",
+  // "editor.autoIndent": "none",
+  "editor.formatOnSave": false,
+  "editor.tabSize": 2,
+  "eslint.nodePath": ".vscode/pnpify",
+  "prettier.prettierPath": ".vscode/pnpify/prettier/index.js",
+  "typescript.tsdk": ".vscode/pnpify/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "eslint.validate": ["json", "jsonc"],
+  "eslint.packageManager": "yarn"
+}
