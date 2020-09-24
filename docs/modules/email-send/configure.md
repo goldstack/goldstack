@@ -1,0 +1,5 @@
+The following key properties need to be configured for this module:
+
+- **Domain**: The domain that emails will be sent from. The module will support sending emails from any possible email address in this domain. For instance, if the domain `mydomain.com` is choosen, email addresses such as `support@mydomain.com`, `noreply@mydomain.com` and `system@mydomain.com` are supported.
+- **Hosted Zone Domain**: A [Route 53 hosted zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-working-with.html) that will allow adding the _Domain_ as a record. For instance, in order to configure the  domain `emails.mydomain.com`, the hosted zones `emails.mydomain.com` or `mydomain.com` would be valid. Note that this hosted zone must already exist in AWS. Please find instructions of how to set up a hosted zone [here](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingHostedZone.html).  
+

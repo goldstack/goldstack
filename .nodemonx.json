@@ -1,0 +1,16 @@
+{
+  "include": [
+    "**/src/**/*",
+    "**/*.json",
+    "**/*.config.js"
+  ],
+  "exclude": [
+    "**/dist/**/*",
+    "**/distImg/**/*",
+    "**/webDist/**/*",
+    "**/.next/**/*",
+    "node_modules/",
+    "**/goldstackTest/**/*",
+    "**/goldstackLocal/**/*"
+  ]
+}
