@@ -1,0 +1,34 @@
+{
+  "$ref": "#/definitions/Deployment",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Deployment": {
+      "description": "Configures a deployment.",
+      "properties": {
+        "configuration": {
+          "$ref": "#/definitions/DeploymentConfiguration"
+        },
+        "name": {
+          "$ref": "#/definitions/DeploymentName"
+        }
+      },
+      "required": [
+        "name",
+        "configuration"
+      ],
+      "title": "Deployment",
+      "type": "object"
+    },
+    "DeploymentConfiguration": {
+      "description": "Specifies configuration for a specific deployment.",
+      "title": "Deployment Configuration",
+      "type": "object"
+    },
+    "DeploymentName": {
+      "description": "Identifier for this deployment. No spaces allowed in name.",
+      "pattern": "^[^\\s]*$",
+      "title": "Deployment Name",
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "$ref": "#/definitions/Package",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Deployment": {
+      "description": "Configures a deployment.",
+      "properties": {
+        "configuration": {
+          "$ref": "#/definitions/DeploymentConfiguration"
+        },
+        "name": {
+          "$ref": "#/definitions/DeploymentName"
+        }
+      },
+      "required": [
+        "name",
+        "configuration"
+      ],
+      "title": "Deployment",
+      "type": "object"
+    },
+    "DeploymentConfiguration": {
+      "description": "Specifies configuration for a specific deployment.",
+      "title": "Deployment Configuration",
+      "type": "object"
+    },
+    "DeploymentName": {
+      "description": "Identifier for this deployment. No spaces allowed in name.",
+      "pattern": "^[^\\s]*$",
+      "title": "Deployment Name",
+      "type": "string"
+    },
+    "Name": {
+      "description": "Name of this package.",
+      "title": "Package Name",
+      "type": "string"
+    },
+    "Package": {
+      "additionalProperties": false,
+      "description": "Definition for a Goldstack Package.",
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "configuration": {
+          "$ref": "#/definitions/PackageConfiguration"
+        },
+        "deployments": {
+          "items": {
+            "$ref": "#/definitions/Deployment"
+          },
+          "type": "array"
+        },
+        "name": {
+          "$ref": "#/definitions/Name"
+        },
+        "template": {
+          "$ref": "#/definitions/Template"
+        },
+        "templateVersion": {
+          "$ref": "#/definitions/TemplateVersion"
+        }
+      },
+      "required": [
+        "template",
+        "templateVersion",
+        "name",
+        "configuration",
+        "deployments",
+        "$schema"
+      ],
+      "title": "Package",
+      "type": "object"
+    },
+    "PackageConfiguration": {
+      "description": "Configuration of this package",
+      "title": "Configuration",
+      "type": "object"
+    },
+    "Template": {
+      "description": "Name of the template used for creating this package.",
+      "pattern": "^[^\\s]*$",
+      "title": "Template",
+      "type": "string"
+    },
+    "TemplateVersion": {
+      "description": "Latest template version that was applied to this package.",
+      "title": "Template Version",
+      "type": "string"
+    }
+  }
+}

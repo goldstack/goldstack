@@ -1,0 +1,42 @@
+{
+  "name": "@goldstack/utils-docs-cli",
+  "version": "0.1.5",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "dist/utilsDocsTemplate.js",
+  "bin": "./bin/utils-docs-cli",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:watch": "yarn clean && yarn compile:watch",
+    "clean": "rm -rf ./dist",
+    "cli": "yarn node ./bin/utils-docs-cli",
+    "compile": "tsc -p tsconfig.json",
+    "compile:watch": "tsc -p tsconfig.json --watch",
+    "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "prepublishOnly": "yarn run build",
+    "publish": "utils-git changed --exec \"yarn npm publish $@\"",
+    "test": "jest --config=./jest.config.js --watch",
+    "test:ci": "jest --passWithNoTests --config=./jest.config.js",
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
+  },
+  "dependencies": {
+    "@goldstack/utils-cli": "0.1.37",
+    "@goldstack/utils-docs": "0.1.5",
+    "@goldstack/utils-sh": "0.2.3",
+    "@types/yargs": "^15.0.5",
+    "source-map-support": "^0.5.19",
+    "yargs": "^15.4.1"
+  },
+  "devDependencies": {
+    "@goldstack/utils-git": "0.1.21",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.6",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.5"
+  }
+}

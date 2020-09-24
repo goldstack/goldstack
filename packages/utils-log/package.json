@@ -1,0 +1,30 @@
+{
+  "name": "@goldstack/utils-log",
+  "version": "0.1.36",
+  "description": "Utilities for emitting logs.",
+  "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "dist/utilsLog.js",
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:watch": "yarn clean && yarn compile:watch",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc -p tsconfig.json",
+    "compile:watch": "tsc -p tsconfig.json --watch",
+    "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "prepublishOnly": "yarn run build",
+    "publish": "utils-git changed --exec \"yarn npm publish $@\"",
+    "test:ci": "jest --passWithNoTests --config=./jest.config.js",
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
+  },
+  "devDependencies": {
+    "@goldstack/utils-git": "0.1.21",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.6",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.5"
+  }
+}

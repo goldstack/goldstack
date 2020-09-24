@@ -1,0 +1,218 @@
+{
+  "$ref": "#/definitions/AWSConfiguration",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "AWSAPIKeyUserConfig": {
+      "additionalProperties": false,
+      "description": "User accessing AWS using an access key id and secret access key. Only recommended for users used during development. The provided credentials will be included in the downloaded package but by default will not be committed to git.",
+      "properties": {
+        "awsAccessKeyId": {
+          "$ref": "#/definitions/AWSAccessKeyId"
+        },
+        "awsDefaultRegion": {
+          "$ref": "#/definitions/AWSRegion"
+        },
+        "awsSecretAccessKey": {
+          "$ref": "#/definitions/AWSSecretAccessKey"
+        }
+      },
+      "required": [
+        "awsAccessKeyId",
+        "awsSecretAccessKey",
+        "awsDefaultRegion"
+      ],
+      "title": "AWS API Key User Configuration",
+      "type": "object"
+    },
+    "AWSAccessKeyId": {
+      "description": "Access key for this user.",
+      "pattern": "^[^\\s]*$",
+      "title": "AWS Access Key Id",
+      "type": "string"
+    },
+    "AWSAccessKeyIdVariableName": {
+      "description": "Name of environment variable for AWS Access Key Id. When in doubt, use AWS_ACCESS_KEY_ID.",
+      "pattern": "^[^\\s]*$",
+      "title": "AWS Access Key Id Variable Name",
+      "type": "string"
+    },
+    "AWSConfiguration": {
+      "additionalProperties": false,
+      "description": "Global configuration for deploying to AWS.",
+      "properties": {
+        "users": {
+          "$ref": "#/definitions/AWSUsers"
+        }
+      },
+      "required": [
+        "users"
+      ],
+      "title": "AWS Configuration",
+      "type": "object"
+    },
+    "AWSDefaultRegionVariableName": {
+      "description": "Name of environment variable for AWS Default Region. When in doubt, use AWS_DEFAULT_REGION.",
+      "pattern": "^[^\\s]*$",
+      "title": "AWS Default Region Varialbe Name",
+      "type": "string"
+    },
+    "AWSDeploymentRegion": {
+      "description": "AWS region that infrastructure should be deployed to.",
+      "enum": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2",
+        "af-south-1",
+        "ap-east-1",
+        "ap-south-1",
+        "ap-northeast-3",
+        "ap-northeast-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-northeast-1",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-south-1",
+        "eu-west-3",
+        "eu-north-1",
+        "me-south-1",
+        "sa-east-1"
+      ],
+      "title": "AWS Deployment Region",
+      "type": "string"
+    },
+    "AWSEnvironmentVariableUserConfig": {
+      "additionalProperties": false,
+      "description": "Obtain AWS user from environment variables. This will be useful for CI/CD.",
+      "properties": {
+        "awsAccessKeyIdVariableName": {
+          "$ref": "#/definitions/AWSAccessKeyIdVariableName"
+        },
+        "awsDefaultRegionVariableName": {
+          "$ref": "#/definitions/AWSDefaultRegionVariableName"
+        },
+        "awsSecretAccessKeyVariableName": {
+          "$ref": "#/definitions/AWSSecretAccessKeyVariableName"
+        }
+      },
+      "required": [
+        "awsAccessKeyIdVariableName",
+        "awsSecretAccessKeyVariableName",
+        "awsDefaultRegionVariableName"
+      ],
+      "title": "AWS Environment Variable User Configuration",
+      "type": "object"
+    },
+    "AWSLocalUserConfig": {
+      "additionalProperties": false,
+      "description": "User that is configured using the aws cli. Useful for development environments.",
+      "properties": {
+        "profile": {
+          "$ref": "#/definitions/Profile"
+        }
+      },
+      "required": [
+        "profile"
+      ],
+      "title": "AWS Local User Configuration",
+      "type": "object"
+    },
+    "AWSRegion": {
+      "$ref": "#/definitions/AWSDeploymentRegion",
+      "description": "Default AWS region to use.",
+      "pattern": "^[^\\s]*$",
+      "title": "AWS Region"
+    },
+    "AWSSecretAccessKey": {
+      "description": "Secret key for this user.",
+      "pattern": "^[^\\s]*$",
+      "title": "AWS Secret Access Key",
+      "type": "string"
+    },
+    "AWSSecretAccessKeyVariableName": {
+      "description": "Name of environment variable for AWS Secret Access Key. When in doubt, use AWS_SECRET_ACCESS_KEY.",
+      "pattern": "^[^\\s]*$",
+      "title": "AWS Secret Access Key Variable Name",
+      "type": "string"
+    },
+    "AWSUser": {
+      "additionalProperties": false,
+      "description": "AWS user",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/AwsUserConfig"
+        },
+        "name": {
+          "$ref": "#/definitions/Name"
+        },
+        "type": {
+          "$ref": "#/definitions/Type"
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "title": "AWS User",
+      "type": "object"
+    },
+    "AWSUsers": {
+      "anyOf": [
+        {
+          "maxItems": 0,
+          "minItems": 0,
+          "type": "array"
+        },
+        {
+          "items": [
+            {
+              "$ref": "#/definitions/AWSUser"
+            }
+          ],
+          "maxItems": 1,
+          "minItems": 1,
+          "type": "array"
+        }
+      ]
+    },
+    "AwsUserConfig": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/AWSLocalUserConfig"
+        },
+        {
+          "$ref": "#/definitions/AWSEnvironmentVariableUserConfig"
+        },
+        {
+          "$ref": "#/definitions/AWSAPIKeyUserConfig"
+        }
+      ]
+    },
+    "Name": {
+      "description": "Identifier for this user. No spaces allowed.",
+      "pattern": "^[^\\s]*$",
+      "title": "Name",
+      "type": "string"
+    },
+    "Profile": {
+      "description": "Profile name of the user configured with the aws cli. When in doubt, use `default`.",
+      "pattern": "^[^\\s]*$",
+      "title": "Profile",
+      "type": "string"
+    },
+    "Type": {
+      "description": "Type of this user.",
+      "enum": [
+        "apiKey",
+        "local",
+        "environmentVariables"
+      ],
+      "title": "Type",
+      "type": "string"
+    }
+  }
+}

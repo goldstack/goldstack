@@ -1,0 +1,58 @@
+{
+  "name": "@goldstack/template-email-send",
+  "version": "0.1.5",
+  "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "dist/templateEmailSend.js",
+  "bin": {
+    "template": "./bin/template",
+    "template-email-send": "./bin/template"
+  },
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:watch": "yarn clean && yarn compile:watch",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc -p tsconfig.json",
+    "compile:watch": "tsc -p tsconfig.json --watch",
+    "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "generate:docs": "utils-docs-cli generate-template-docs modules/email-send/ ./docs/ && cp ./docs/* ../../../templates/packages/email-send/docs",
+    "generate:schema": "utils-package-config-generate EmailSend && cp schemas/* ../../../templates/packages/email-send/schemas",
+    "prepublishOnly": "yarn run build",
+    "publish": "utils-git changed --exec \"yarn npm publish $@\"",
+    "test": "GOLDSTACK_DEPLOYMENT=local jest --watch --config=./jest.config.js",
+    "test:ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js",
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
+  },
+  "dependencies": {
+    "@goldstack/infra": "0.1.41",
+    "@goldstack/infra-aws": "0.1.53",
+    "@goldstack/utils-cli": "0.1.37",
+    "@goldstack/utils-config": "0.1.38",
+    "@goldstack/utils-docker": "0.1.36",
+    "@goldstack/utils-log": "0.1.36",
+    "@goldstack/utils-package": "0.1.41",
+    "@goldstack/utils-package-config": "0.1.5",
+    "@goldstack/utils-sh": "0.2.3",
+    "@goldstack/utils-template": "0.1.37",
+    "@goldstack/utils-terraform": "0.1.58",
+    "@goldstack/utils-terraform-aws": "0.1.58",
+    "aws-sdk": "2.721.0",
+    "uuid": "^8.3.0",
+    "yargs": "^15.4.1"
+  },
+  "devDependencies": {
+    "@goldstack/utils-docs-cli": "0.1.5",
+    "@goldstack/utils-git": "0.1.21",
+    "@goldstack/utils-package-config-generate": "0.1.0",
+    "@types/jest": "^25.2.3",
+    "@types/mock-aws-s3": "^2.6.1",
+    "@types/node": "^14.0.6",
+    "@types/uuid": "^8.3.0",
+    "@types/yargs": "^15.0.5",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.5"
+  }
+}

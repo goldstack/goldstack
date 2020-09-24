@@ -1,0 +1,48 @@
+{
+  "type": "object",
+  "title": "Goldstack Template Configuration",
+  "properties": {
+    "templateName": {
+      "type": "string",
+      "title": "Template",
+      "description": "Name of the template.",
+      "pattern": "^[^\\s]*$"
+    },
+    "templateVersion": {
+      "type": "string",
+      "title": "Template Version",
+      "description": "Version of this template.",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
+    },
+    "previousTemplateVersion": {
+      "type": "string",
+      "title": "Previous Template Version",
+      "description": "Previous version of this template."
+    },
+    "templateDescription": {
+      "type": "string",
+      "title": "Description",
+      "description": "A description of this template."
+    },
+    "templateDocumentation": {
+      "type": "string",
+      "title": "Documentation",
+      "description": "Link to template documentation."
+    },
+    "templateArchive": {
+      "type": "string",
+      "title": "Template Archive",
+      "description": "S3 ARN to the ZIP file for this template."
+    }
+  },
+  "description": "Configures a Goldstack template.",
+  "additionalProperties": false,
+  "required": [
+    "templateName",
+    "templateVersion",
+    "templateDescription",
+    "templateDocumentation",
+    "previousTemplateVersion",
+    "templateArchive"
+  ]
+}

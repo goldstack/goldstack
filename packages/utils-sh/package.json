@@ -1,0 +1,41 @@
+{
+  "name": "@goldstack/utils-sh",
+  "version": "0.2.3",
+  "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "dist/utilsSh.js",
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:watch": "yarn clean && yarn compile:watch",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc -p tsconfig.json",
+    "compile:watch": "tsc -p tsconfig.json --watch",
+    "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "prepublishOnly": "yarn run build",
+    "publish": "utils-git changed --exec \"yarn npm publish $@\"",
+    "test:ci": "jest --passWithNoTests --config=./jest.config.js",
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
+  },
+  "dependencies": {
+    "@goldstack/utils-log": "0.1.36",
+    "archiver": "^5.0.0",
+    "extract-zip": "^2.0.1",
+    "ncp": "^2.0.0",
+    "rimraf": "^3.0.2",
+    "shelljs": "^0.8.4"
+  },
+  "devDependencies": {
+    "@goldstack/utils-git": "0.1.21",
+    "@types/archiver": "^3.1.0",
+    "@types/jest": "^25.2.3",
+    "@types/ncp": "^2.0.4",
+    "@types/node": "^14.0.6",
+    "@types/rimraf": "^3.0.0",
+    "@types/shelljs": "^0.8.8",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.5"
+  }
+}

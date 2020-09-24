@@ -1,0 +1,48 @@
+{
+  "$ref": "#/definitions/TerraformDeployment",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "DeploymentConfiguration": {
+      "description": "Specifies configuration for a specific deployment.",
+      "title": "Deployment Configuration",
+      "type": "object"
+    },
+    "DeploymentName": {
+      "description": "Identifier for this deployment. No spaces allowed in name.",
+      "pattern": "^[^\\s]*$",
+      "title": "Deployment Name",
+      "type": "string"
+    },
+    "TerraformDeployment": {
+      "properties": {
+        "configuration": {
+          "$ref": "#/definitions/DeploymentConfiguration"
+        },
+        "name": {
+          "$ref": "#/definitions/DeploymentName"
+        },
+        "terraformVariables": {
+          "$ref": "#/definitions/TerraformVariables"
+        }
+      },
+      "required": [
+        "configuration",
+        "name"
+      ],
+      "type": "object"
+    },
+    "TerraformVariable": {
+      "description": "Name of the property that should be converted into a Terraform variable.",
+      "title": "Terraform Variable",
+      "type": "string"
+    },
+    "TerraformVariables": {
+      "description": "Define which of the deployment variables will be made available for terraform.",
+      "items": {
+        "$ref": "#/definitions/TerraformVariable"
+      },
+      "title": "Terraform Variables",
+      "type": "array"
+    }
+  }
+}

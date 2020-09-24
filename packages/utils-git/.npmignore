@@ -1,0 +1,6 @@
+/*
+!/dist/
+!/package.json
+!/bin/
+!/README.md
+/dist/tsconfig.tsbuildinfo

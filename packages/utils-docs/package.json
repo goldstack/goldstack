@@ -1,0 +1,46 @@
+{
+  "name": "@goldstack/utils-docs",
+  "version": "0.1.5",
+  "description": "Utilities for working with documentation",
+  "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "dist/utilsDocs.js",
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:watch": "yarn clean && yarn compile:watch",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc -p tsconfig.json",
+    "compile:watch": "tsc -p tsconfig.json --watch",
+    "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "prepublishOnly": "yarn run build",
+    "publish": "utils-git changed --exec \"yarn npm publish $@\"",
+    "test": "jest --config=./jest.config.js --watch",
+    "test:ci": "jest --passWithNoTests --config=./jest.config.js",
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
+  },
+  "dependencies": {
+    "@goldstack/utils-sh": "0.2.3",
+    "@mapbox/rehype-prism": "0.3.1",
+    "github-slugger": "1.2.0",
+    "gray-matter": "^4.0.2",
+    "hast-util-sanitize": "^3.0.0",
+    "mdast-util-to-string": "1.0.7",
+    "rehype-raw": "4.0.1",
+    "rehype-sanitize": "3.0.0",
+    "rehype-stringify": "6.0.0",
+    "remark-parse": "7.0.1",
+    "remark-rehype": "5.0.0",
+    "unified": "8.4.1",
+    "unist-util-visit": "2.0.0"
+  },
+  "devDependencies": {
+    "@goldstack/utils-git": "0.1.21",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.6",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.5"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "@goldstack/utils-config",
+  "version": "0.1.38",
+  "description": "Utilities to work with JSON configuration files.",
+  "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "dist/utilsConfig.js",
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:watch": "yarn clean && yarn compile:watch",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc -p tsconfig.json",
+    "compile:watch": "tsc -p tsconfig.json --watch",
+    "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "generate:ts": "json2ts -i schemas/ -o src/generated --style.singleQuote",
+    "prepublishOnly": "yarn run build",
+    "publish": "utils-git changed --exec \"yarn npm publish $@\"",
+    "test:ci": "jest --passWithNoTests --config=./jest.config.js",
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
+  },
+  "dependencies": {
+    "@goldstack/utils-log": "0.1.36",
+    "@goldstack/utils-sh": "0.2.3",
+    "ajv": "^6.12.2",
+    "handlebars": "^4.7.6"
+  },
+  "devDependencies": {
+    "@goldstack/utils-git": "0.1.21",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.6",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.5"
+  }
+}

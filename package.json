@@ -1,0 +1,41 @@
+{
+  "name": "templates-lib",
+  "private": true,
+  "sideEffects": false,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn workspaces foreach --topological-dev run build",
+    "clean": "yarn workspaces foreach run clean",
+    "compile": "yarn workspaces foreach --topological-dev run compile",
+    "compile:watch": "yarn compile && yarn workspaces foreach --parallel --interlaced --jobs 1000 run compile:watch:light",
+    "compile:watch:all": "yarn compile && nodemon --watch ./ --ext ts,tsx,json,css --exec 'yarn compile'",
+    "coverage": "yarn workspaces --topological-dev foreach run coverage",
+    "format": "prettier --write .",
+    "format:check": "prettier .",
+    "generate:docs": "yarn workspaces foreach --topological-dev run generate:docs",
+    "generate:schema": "yarn workspaces foreach --topological-dev run generate:schema",
+    "lint": "eslint . --ext .js,.ts,.tsx,json",
+    "lint:fix": "eslint . --ext .js,.ts,tsx,json --fix",
+    "package:doctor": "yarn dlx @yarnpkg/doctor .",
+    "publish": "yarn workspaces foreach --topological-dev run publish",
+    "test:ci": "yarn workspaces foreach --parallel run test:ci",
+    "version:apply": "yarn workspaces foreach -v --topological-dev run version:apply \"$@\""
+  },
+  "devDependencies": {
+    "@goldstack/utils-git": "0.1.21",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "@yarnpkg/doctor": "^2.0.0-rc.17",
+    "eslint": "^7.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "typescript": "^3.9.5"
+  }
+}
