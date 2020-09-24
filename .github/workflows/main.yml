@@ -1,0 +1,195 @@
+name: Goldstack Monorepo
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: 'Build and Test'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 20
+          submodules: true
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: https://registry.npmjs.org
+      - run: git config --global user.email "public@pureleap.com"
+      - run: git config --global user.name "GitHub Actions Build"
+      - run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''"${{secrets.NPM_TOKEN}}"''" } }'''
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.4
+      - name: Install root repo and lint
+        run: |
+          yarn install
+          yarn format
+          yarn format:check
+          yarn lint:fix
+          yarn lint
+
+
+      # Do this for all before library git push messes with history
+      - name: Check if libraries changed
+        uses: marceloprado/has-changed-path@20aaabb
+        id: changed-libs
+        with:
+          paths: workspaces/templates-lib
+      - name: Check if templates changed
+        uses: marceloprado/has-changed-path@20aaabb
+        id: changed-templates
+        with:
+          paths: workspaces/templates
+      - name: Check if template management changed
+        uses: marceloprado/has-changed-path@20aaabb
+        id: changed-mgmt
+        with:
+          paths: workspaces/templates-management
+      - name: Check if apps changed
+        uses: marceloprado/has-changed-path@20aaabb
+        id: changed-apps 
+        with:
+          paths: workspaces/apps
+
+      - name: Build libraries
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true'
+        run: |
+          cd workspaces/templates-lib
+          yarn compile
+          yarn test:ci
+          cd ../..
+
+      - name: Publish libraries
+        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
+        run: |
+          cd workspaces/templates-lib
+          yarn version:apply --deferred patch
+          yarn version apply --all
+          yarn publish
+          git status
+          git add ./../.
+          git add ./../../yarn.lock
+          # git add ./../../.yarn/install-state.gz This often creates conflicts
+          git add ./../../.pnp.js
+          git status
+          git commit -m "Releasing new library version"
+          git status
+          cd ../..
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          YARN_NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - name: Push library changes
+        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          directory: workspaces/templates-lib
+          repository: goldstack/goldstack-lib
+
+      # - name: Push library changes
+      #   if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
+      #   run: |
+
+      #   env:
+      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Build templates
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true'
+        run: |
+          cd workspaces/templates
+          yarn compile
+          yarn test:ci
+          cd ../..
+        env:
+          AWS_USER_NAME: goldstack-dev
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
+
+      - name: Build template management
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true'
+        run: |
+          cd workspaces/templates-management
+          yarn compile
+          yarn test:ci
+          cd ../..
+
+      - name: Build apps 
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true'
+        run: |
+          cd workspaces/apps
+          yarn compile
+          yarn workspace @goldstack/goldstack-api utils:seed-templates
+          yarn test:ci
+          cd ../..
+        env:
+          AWS_USER_NAME: goldstack-dev
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
+
+      # Generate schemas and docs
+      - name: Generate schemas
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true'
+        run: |
+          yarn generate:schema
+
+      - name: Generate docs
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true'
+        run: |
+          yarn generate:docs
+
+      - name: Write current git commit to output
+        run: |
+          echo "Writing git commit hash to output $(git rev-parse HEAD)"
+          git rev-parse HEAD
+          echo "::set-output name=patchedcommit::$(git rev-parse HEAD)"
+
+      - name: Build and publish image
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
+        run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy dev
+        env:
+          AWS_USER_NAME: goldstack-dev
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
+
+      - name: Commit latest deployed image hash
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
+        run: |
+          git status
+          git add workspaces/templates-management/packages/template-management-cli/src/state/deployments.json
+          git commit -m "Publishing updated docker deployment"
+          git pull
+
+      - name: Push deployed image hash change
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          directory: workspaces/templates-management
+          repository: goldstack/goldstack-templates-management
+
+      - name: Write current git commit to output
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
+        run: |
+          echo "Writing git commit hash to output $(git rev-parse HEAD)"
+          git rev-parse HEAD
+          echo "::set-output name=patchedclicommit::$(git rev-parse HEAD)"
+      - name: Trigger template build
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
+        run: |
+          yarn workspace @goldstack/template-management-cli compile # compile again so that deployment state is updated
+          yarn workspace @goldstack/template-management-cli cli schedule-all-deploy-sets --repo goldstack-dev --deployment dev
+        env:
+          AWS_USER_NAME: goldstack-dev
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
