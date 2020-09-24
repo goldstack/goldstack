@@ -1,0 +1,74 @@
+{
+  "$ref": "#/definitions/TemplateBuildConfiguration",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "FieldOverwriteConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "value": {}
+      },
+      "required": [
+        "path",
+        "value"
+      ],
+      "type": "object"
+    },
+    "FileOverwriteConfiguration": {
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "items": {
+            "$ref": "#/definitions/FieldOverwriteConfig"
+          },
+          "type": "array"
+        },
+        "file": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "file",
+        "fields"
+      ],
+      "type": "object"
+    },
+    "Files": {
+      "items": {
+        "$ref": "#/definitions/Glob"
+      },
+      "type": "array"
+    },
+    "Glob": {
+      "description": "Glob for file or folder to copy.",
+      "title": "Glob",
+      "type": "string"
+    },
+    "TemplateBuildConfiguration": {
+      "additionalProperties": false,
+      "description": "Goldstack template build instructions.",
+      "properties": {
+        "exclude": {
+          "$ref": "#/definitions/Files"
+        },
+        "include": {
+          "$ref": "#/definitions/Files"
+        },
+        "overwriteFiles": {
+          "items": {
+            "$ref": "#/definitions/FileOverwriteConfiguration"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "include",
+        "exclude"
+      ],
+      "title": "Template Build Configuration",
+      "type": "object"
+    }
+  }
+}

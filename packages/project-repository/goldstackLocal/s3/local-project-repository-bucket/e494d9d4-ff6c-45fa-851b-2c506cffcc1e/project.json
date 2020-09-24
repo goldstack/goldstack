@@ -1,0 +1,15 @@
+{
+  "projectName": "newname",
+  "rootTemplateReference": {
+    "templateName": "yarn-pnp-monorepo"
+  },
+  "owner": "dummy",
+  "packages": [
+    {
+      "packageName": "static-website-1",
+      "templateReference": {
+        "templateName": "static-website-aws"
+      }
+    }
+  ]
+}

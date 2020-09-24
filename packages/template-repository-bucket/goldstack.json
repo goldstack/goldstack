@@ -1,0 +1,22 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "template-repository-bucket",
+  "template": "s3",
+  "templateVersion": "0.0.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "dev",
+      "awsUser": "goldstack-dev",
+      "awsRegion": "us-west-2",
+      "configuration": {
+        "bucketName": "goldstack-templates-dev"
+      },
+      "terraformVariables": [
+        "awsRegion",
+        "bucketName",
+        "repositoryName"
+      ]
+    }
+  ]
+}

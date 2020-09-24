@@ -1,0 +1,14 @@
+{
+  "projectName": "project1",
+  "rootTemplateReference": {
+    "templateName": "yarn-pnp-monorepo"
+  },
+  "packages": [
+    {
+      "packageName": "static-website-1",
+      "templateReference": {
+        "templateName": "static-website-aws"
+      }
+    }
+  ]
+}

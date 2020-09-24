@@ -1,0 +1,10 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "",
+  "template": "docker-image-aws",
+  "templateVersion": "0.0.0",
+  "configuration": {
+    "imageTag": ""
+  },
+  "deployments": []
+}

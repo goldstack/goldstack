@@ -1,0 +1,15 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "typescript.validate.enable": true,
+  "files.eol": "\n",
+  "editor.formatOnSave": false,
+  "editor.tabSize": 2,
+  "eslint.nodePath": ".yarn/sdks",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "eslint.validate": ["json", "jsonc", "yml", "yaml"],
+  "eslint.packageManager": "yarn",
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+  "typescript.tsdk": ".yarn/sdks/typescript/lib"
+}

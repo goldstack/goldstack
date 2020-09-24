@@ -1,0 +1,22 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "session-bucket",
+  "template": "s3",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "dev",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "bucketName": "goldstack-sessions-dev"
+      },
+      "terraformVariables": [
+        "awsRegion",
+        "bucketName",
+        "repositoryName"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "@goldstack/project-config",
+  "version": "0.1.0",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "dist/projectConfig.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:watch": "yarn clean && yarn compile:watch",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc -p tsconfig.json",
+    "compile:watch": "tsc -p tsconfig.json --watch",
+    "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "prepublishOnly": "yarn run build",
+    "test": "jest --config=./jest.config.js --watch",
+    "test:ci": "jest --passWithNoTests --config=./jest.config.js"
+  },
+  "dependencies": {
+    "@goldstack/utils-config": "0.1.38",
+    "@goldstack/utils-package": "0.1.41",
+    "@goldstack/utils-project": "0.1.42",
+    "@goldstack/utils-sh": "0.2.3",
+    "@goldstack/utils-template": "0.1.37"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.6",
+    "jest": "^26.0.1",
+    "temp-dir": "^2.0.0",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.5"
+  }
+}

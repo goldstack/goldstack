@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/YarnPnpMonorepoPackage",
+  "definitions": {
+    "YarnPnpMonorepoPackage": {
+      "$ref": "#/definitions/Package"
+    },
+    "Package": {
+      "type": "object",
+      "properties": {
+        "template": {
+          "$ref": "#/definitions/Template"
+        },
+        "templateVersion": {
+          "$ref": "#/definitions/TemplateVersion"
+        },
+        "name": {
+          "$ref": "#/definitions/Name"
+        },
+        "configuration": {
+          "$ref": "#/definitions/PackageConfiguration"
+        },
+        "deployments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Deployment"
+          }
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "template",
+        "templateVersion",
+        "name",
+        "configuration",
+        "deployments",
+        "$schema"
+      ],
+      "additionalProperties": false,
+      "description": "Definition for a Goldstack Package.",
+      "title": "Package"
+    },
+    "Template": {
+      "type": "string",
+      "description": "Name of the template used for creating this package.",
+      "title": "Template",
+      "pattern": "^[^\\s]*$"
+    },
+    "TemplateVersion": {
+      "type": "string",
+      "description": "Latest template version that was applied to this package.",
+      "title": "Template Version"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Name of this package.",
+      "title": "Package Name"
+    },
+    "PackageConfiguration": {
+      "type": "object",
+      "description": "Configuration of this package",
+      "title": "Configuration"
+    },
+    "Deployment": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/DeploymentName"
+        },
+        "configuration": {
+          "$ref": "#/definitions/DeploymentConfiguration"
+        }
+      },
+      "required": [
+        "name",
+        "configuration"
+      ],
+      "description": "Configures a deployment.",
+      "title": "Deployment"
+    },
+    "DeploymentName": {
+      "type": "string",
+      "description": "Identifier for this deployment. No spaces allowed in name.",
+      "title": "Deployment Name",
+      "pattern": "^[^\\s]*$"
+    },
+    "DeploymentConfiguration": {
+      "type": "object",
+      "description": "Specifies configuration for a specific deployment.",
+      "title": "Deployment Configuration"
+    }
+  }
+}

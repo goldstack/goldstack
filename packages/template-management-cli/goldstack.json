@@ -1,0 +1,23 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "template-management-cli",
+  "template": "docker-image-aws",
+  "templateVersion": "0.1.0",
+  "configuration": {
+    "imageTag": "template-management-cli"
+  },
+  "deployments": [
+    {
+      "name": "dev",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "repositoryName": "template-management-cli"
+      },
+      "terraformVariables": [
+        "awsRegion",
+        "repositoryName"
+      ]
+    }
+  ]
+}
