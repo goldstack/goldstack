@@ -4,3 +4,9 @@
 [submodule "workspaces/templates"]
 	path = workspaces/templates
 	url = git@github.com:goldstack/goldstack-templates-priv.git
+[submodule "workspaces/templates-lib"]
+	path = workspaces/templates-lib
+	url = git@github.com:goldstack/goldstack-lib.git
+[submodule "workspaces/templates-management"]
+	path = workspaces/templates-management
+	url = git@github.com:goldstack/goldstack-templates-management.git
