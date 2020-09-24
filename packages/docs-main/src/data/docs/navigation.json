@@ -6,13 +6,14 @@
       "directory": "goldstack/",
       "children": [
         "about/index.md",
+        "how-does-it-work/index.md",
         "getting-started/index.md",
         "configuration/index.md"
       ]
     },
     {
       "home": "index.md",
-      "directory": "templates/",
+      "directory": "modules/",
       "children": [
         "app-nextjs/index.md",
         "lambda-express/index.md",

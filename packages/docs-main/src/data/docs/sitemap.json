@@ -13,6 +13,11 @@
             "children": []
           },
           {
+            "title": "How Does It Work",
+            "path": "goldstack/how-does-it-work",
+            "children": []
+          },
+          {
             "title": "Getting Started",
             "path": "goldstack/getting-started",
             "children": []
@@ -26,36 +31,36 @@
       },
       {
         "title": "Modules",
-        "path": "templates",
+        "path": "modules",
         "children": [
           {
             "title": "Next.js",
-            "path": "templates/app-nextjs",
+            "path": "modules/app-nextjs",
             "children": []
           },
           {
             "title": "Lambda Express",
-            "path": "templates/lambda-express",
+            "path": "modules/lambda-express",
             "children": []
           },
           {
             "title": "Next.js Bootstrap",
-            "path": "templates/app-nextjs-bootstrap",
+            "path": "modules/app-nextjs-bootstrap",
             "children": []
           },
           {
             "title": "Email Send",
-            "path": "templates/email-send",
+            "path": "modules/email-send",
             "children": []
           },
           {
             "title": "Static Website AWS",
-            "path": "templates/static-website-aws",
+            "path": "modules/static-website-aws",
             "children": []
           },
           {
             "title": "S3",
-            "path": "templates/s3",
+            "path": "modules/s3",
             "children": []
           }
         ]

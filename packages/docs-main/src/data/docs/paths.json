@@ -2,13 +2,14 @@
   "/",
   "goldstack",
   "goldstack/about",
+  "goldstack/how-does-it-work",
   "goldstack/getting-started",
   "goldstack/configuration",
-  "templates",
-  "templates/app-nextjs",
-  "templates/lambda-express",
-  "templates/app-nextjs-bootstrap",
-  "templates/email-send",
-  "templates/static-website-aws",
-  "templates/s3"
+  "modules",
+  "modules/app-nextjs",
+  "modules/lambda-express",
+  "modules/app-nextjs-bootstrap",
+  "modules/email-send",
+  "modules/static-website-aws",
+  "modules/s3"
 ]

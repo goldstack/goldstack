@@ -18,6 +18,10 @@ h3.heading {
   margin-top: 3rem;
 }
 
+h4.heading {
+  margin-top: 3rem;
+}
+
 .heading a:hover {
   border-bottom: 1px dotted;
 }
