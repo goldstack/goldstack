@@ -1,0 +1,19 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "lambda-express-template",
+  "template": "lambda-express",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "lambdaName": "goldstack-test-lambda-express",
+        "apiDomain": "express-api.templates.dev.goldstack.party",
+        "hostedZoneDomain": "dev.goldstack.party"
+      }
+    }
+  ]
+}

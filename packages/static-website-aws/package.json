@@ -1,0 +1,40 @@
+{
+  "name": "@goldstack/static-website-aws",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn clean && yarn compile && yarn web:build $@",
+    "clean": "rm -rf ./dist ./webDist",
+    "compile": "tsc -p tsconfig.json",
+    "compile:watch": "tsc -p tsconfig.json --watch",
+    "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "deploy": "yarn web:build $@ && template deploy $@",
+    "infra": "template infra",
+    "prepublishOnly": "yarn run build",
+    "template": "template",
+    "test:ci": "jest --passWithNoTests --config=./jest.config.js",
+    "watch": "yarn web:build $@ && concurrently \"yarn web:watch $@\" \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" ",
+    "web:build": "node ./dist/build.js $@",
+    "web:watch": "yarn web:build $@ && nodemon --watch ./../../ --ignore ./webDist -e '*' --exec \"yarn web:build $@\""
+  },
+  "devDependencies": {
+    "@goldstack/template-static-website-aws": "0.1.73",
+    "@goldstack/utils-sh": "0.2.3",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.6",
+    "concurrently": "^5.2.0",
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.4",
+    "reload": "^3.1.0",
+    "ts-jest": "^26.1.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  }
+}

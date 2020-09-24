@@ -1,0 +1,27 @@
+[
+  {
+    "name": "prod",
+    "terraform": {
+      "gateway_url": {
+        "sensitive": false,
+        "type": "string",
+        "value": "https://2kc8exeqil.execute-api.us-west-2.amazonaws.com/prod"
+      },
+      "lambda_arn": {
+        "sensitive": false,
+        "type": "string",
+        "value": "arn:aws:lambda:us-west-2:475629728374:function:goldstack-test-lambda-express"
+      },
+      "lambda_function_name": {
+        "sensitive": false,
+        "type": "string",
+        "value": "goldstack-test-lambda-express"
+      },
+      "lambda_invoke_arn": {
+        "sensitive": false,
+        "type": "string",
+        "value": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:475629728374:function:goldstack-test-lambda-express/invocations"
+      }
+    }
+  }
+]

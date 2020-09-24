@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/EmailSendDeploymentConfiguration",
+  "definitions": {
+    "EmailSendDeploymentConfiguration": {
+      "type": "object",
+      "properties": {
+        "domain": {
+          "type": "string"
+        },
+        "hostedZoneDomain": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "domain",
+        "hostedZoneDomain"
+      ]
+    }
+  }
+}

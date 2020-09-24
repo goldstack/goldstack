@@ -1,0 +1,4 @@
+.terraform
+tfplan
+.terraform.tfstate.lock.info
+*.zip
