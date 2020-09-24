@@ -17,6 +17,7 @@ jobs:
         with:
           fetch-depth: 20
           submodules: true
+          token: ${{secrets.BUILD_TOKEN}}
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
@@ -89,9 +90,9 @@ jobs:
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
         uses: ad-m/github-push-action@v0.6.0
         with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
           directory: workspaces/templates-lib
           repository: goldstack/goldstack-lib
+          github_token: ${{secrets.BUILD_TOKEN}}
 
       # - name: Push library changes
       #   if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
@@ -173,7 +174,7 @@ jobs:
         if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
         uses: ad-m/github-push-action@v0.6.0
         with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
+          github_token: ${{secrets.BUILD_TOKEN}}
           directory: workspaces/templates-management
           repository: goldstack/goldstack-templates-management
 
