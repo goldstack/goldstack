@@ -1,0 +1,2 @@
+# goldstack-apps
+Goldstack applications
