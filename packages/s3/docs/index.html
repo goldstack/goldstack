@@ -1,0 +1,122 @@
+<p></p><div class="markdown-fragment"><p>The S3 module provides a simple means for an application to store and access files on <a href="https://aws.amazon.com/s3/" class="absolute" target="_blank" rel="noopener noreferrer">AWS S3</a>. This template is set up for deploying an S3 bucket using Terraform and provides a simple TypeScript API to work with this bucket. </p></div><p></p>
+<h2 class="heading"><span id="configure"></span><a href="#configure">Configure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><p>In order to provide a basic configuration for an S3 bucket, we only need to know the name of the bucket we want to create.</p>
+<p>Please note that a bucket name needs to be <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html" class="absolute" target="_blank" rel="noopener noreferrer">globally unique</a>. However, buckets are always created in a specific <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions" class="absolute" target="_blank" rel="noopener noreferrer">AWS region</a>. The bucket will be deployed to the AWS region you have specified.</p></div><p></p>
+<h2 class="heading"><span id="getting-started"></span><a href="#getting-started">Getting Started</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><p></p><div class="markdown-fragment"><h4 class="heading"><span id="infrastructure-2"></span><a href="#infrastructure-2"><span id="user-content-infrastructure-1"></span><a href="#infrastructure-1" class="relative"><span id="user-content-user-content-infrastructure"></span></a><a href="#infrastructure" class="relative">Infrastructure</a><span class="permalink">
+  
+    
+    
+  
+</span><span class="permalink">
+  
+    
+    
+  
+</span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<p>The first thing we recommend to do with a new module is to stand up the infrastructure for the module. For this, find the directory for this module in the <code class="inline">packages/</code> folder and navigate to this folder in the command line. Then identify the name of the deployment you have defined in the Goldstack configuration tool. This can be found in the <code class="inline">packages/[moduleName]/goldstack.json</code> file. Look for the <code class="inline">"deployments"</code> property and there for the <code class="inline">"name"</code> of the first deployment. The name should either be <code class="inline">dev</code> or <code class="inline">prod</code>.</p>
+<p>In order to stand up the infrastructure, now run in the command line:</p>
+<pre><code>yarn infra up [deploymentName]
+</code></pre>
+<p>So it will be either <code class="inline">yarn infra up dev</code> or <code class="inline">yarn infra up prod</code>. Note that running this command can often take a while.</p></div><p></p>
+<h4 class="heading"><span id="development-1"></span><a href="#development-1"><span id="user-content-development"></span><a href="#development" class="relative">Development</a><span class="permalink">
+  
+    
+    
+  
+</span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<p>This is how an the S3 module can be used from another module:</p>
+<pre class="language-javascript language-javascript"><code class="language-javascript"><span class="token keyword module">import</span> <span class="token punctuation">{</span> getBucketName<span class="token punctuation">,</span> connect<span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'my-s3-module'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> s3 <span class="token operator">=</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">await</span> s3<span class="token punctuation">.</span><span class="token method function property-access">putObject</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token maybe-class-name">BucketName</span><span class="token punctuation">:</span> <span class="token function">getBucketName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token maybe-class-name">Key</span><span class="token punctuation">:</span> <span class="token string">'my-doc'</span><span class="token punctuation">,</span>
+  <span class="token maybe-class-name">Body</span><span class="token punctuation">:</span> <span class="token string">'content'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>The object returned from <code class="inline">connect()</code> is an instance of the <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html" class="absolute" target="_blank" rel="noopener noreferrer">AWS S3 client</a>.</p>
+<p>Note it is also possible to add additional TypeScript files in the modules <code class="inline">src/</code> folder. This is a good place to put an abstraction layer on top of the S3 interface, for instance a data repository specific to the needs of your application.</p></div><p></p>
+<h2 class="heading"><span id="infrastructure-3"></span><a href="#infrastructure-3">Infrastructure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><p>All infrastructure for this module is defined in Terraform. You can find the Terraform files for this module in the directory <code class="inline">[moduleDir]/infra/aws</code>. You can define multiple deployments for this module, for instance for deployment into a development, test and production system. The deployments and their respective configurations are defined in <code class="inline">[moduleDir]/goldstack.json</code>. When using the Goldstack configuration tool, there will be one deployment defined that is either <code class="inline">dev</code> or <code class="inline">prod</code> depending on whether you choose to define your initial infrastructure for a development or production system.</p>
+<h3 class="heading"><span id="infrastructure-commands-1"></span><a href="#infrastructure-commands-1"><span id="user-content-infrastructure-commands"></span><a href="#infrastructure-commands" class="relative">Infrastructure Commands</a><span class="permalink">
+  
+    
+    
+  
+</span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>There are a number of package scripts defined for working with infrastructure. For all infrastructure scripts, we will need to define which deployment they should apply to for. This is done by referencing the deployment name as configured in <code class="inline">goldstack.json</code>. The following commands are supported:</p>
+<pre><code>yarn infra up [deploymentName]
+</code></pre>
+<p>Which will run the commands <code class="inline">init</code>, <code class="inline">plan</code> and <code class="inline">apply</code> to stand up the infrastructure in the specified destination. If you are new to Terraform, running <code class="inline">yarn infra up</code> is the easiest way to get your infrastructure up and running.</p>
+<p>However, if you are familiar with Terraform and want more fine-grained control over the deployment of your infrastructure, the following commands are also supported:</p>
+<pre><code>yarn infra init [deploymentName]
+</code></pre>
+<p>Which will run <code class="inline">terraform init</code> to initialise the deployment.</p>
+<pre><code>yarn infra plan [deploymentName]
+</code></pre>
+<p>Which will run <code class="inline">terraform plan</code> and show the delta for the infrastructure.</p>
+<pre><code>yarn infra apply [deploymentName]
+</code></pre>
+<p>Which will run <code class="inline">terraform apply</code> and deploy the infrastructure. This requires <code class="inline">yarn infra plan</code> to have run successfully before.</p>
+<pre><code>yarn infra destroy [deploymentName]
+</code></pre>
+<p>Which will run <code class="inline">terraform destroy</code> and <strong>destroy</strong> all your infrastructure. Note that this will lead to loss of all the data you may be storing in datastores for this deployment, so do use this command with caution.</p>
+<h3 class="heading"><span id="customizing-terraform-1"></span><a href="#customizing-terraform-1"><span id="user-content-customizing-terraform"></span><a href="#customizing-terraform" class="relative">Customizing Terraform</a><span class="permalink">
+  
+    
+    
+  
+</span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>Goldstack is made to make it very easy to customize the infrastructure to your specific needs. The easiest way to do this is to simply edit the <code class="inline">*.tf</code> files in the <code class="inline">infra/aws</code> folder. You can make the changes you need and then run <code class="inline">yarn infra up [deploymentName]</code> to apply the changes.</p>
+<p>The <code class="inline">infra/aws</code> folder contains a file <code class="inline">variables.tf</code> that contains the variables required for your deployment; for instance the domain name for a website. The values for these variables are defined in the module's <code class="inline">goldstack.json</code> file in the <code class="inline">"configuration"</code> property. There is one global <code class="inline">configuration</code> property that applies for all deployments and each deployment also has their own <code class="inline">configuration</code> property. In order to add a new variable, add this variable to <code class="inline">variables.tf</code> and then add it to the configuration for your module or to the configurations for the deployments.</p>
+<p>Note that due to JavaScript and Terraform using different conventions for naming variables, Goldstack applies a basic transformation to variable names. Camel-case variables names are converted in valid variables names for terraform by replacing every instance of a capital letter <code class="inline">C</code> with <code class="inline">_c</code> in the variable name. For instance:</p>
+<p><code class="inline">myVariableName</code> in the Goldstack configuration will translate to the Terraform variable <code class="inline">my_variable_name</code> as defined in <code class="inline">variables.tf</code>.</p>
+<h3 class="heading"><span id="terraform-state-1"></span><a href="#terraform-state-1"><span id="user-content-terraform-state"></span><a href="#terraform-state" class="relative">Terraform State</a><span class="permalink">
+  
+    
+    
+  
+</span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>In order to manage your infrastructure, Terraform maintains a state for each deployment - to be able to calculate required changes when the infrastructure is updated and also to enable to destroy the infrastructure easily if it is no longer required. Goldstack by default will store the terraform state in the <code class="inline">infra/aws</code> folder as simple files.</p>
+<p>This works well for deploying infrastructure from your local development environment but is not a good choice when building a CI/CD pipeline for the infrastructure definition. In that case, it is better to define <a href="https://www.terraform.io/docs/state/remote.html" class="absolute" target="_blank" rel="noopener noreferrer">Remote State</a>. A popular choice many projects adopt here is to store the <a href="https://www.terraform.io/docs/backends/types/s3.html" class="absolute" target="_blank" rel="noopener noreferrer">state in an S3 bucket</a>. Please see the Terraform documentation for further details.</p></div><p></p>
