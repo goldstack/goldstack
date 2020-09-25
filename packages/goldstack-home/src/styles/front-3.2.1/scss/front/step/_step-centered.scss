@@ -1,0 +1,179 @@
+/*------------------------------------
+  Step Centered
+------------------------------------*/
+
+// Small Devices
+@include media-breakpoint-up(sm) {
+  .step-sm.step-centered {
+    text-align: center;
+
+    .step-item:last-child {
+      .step-icon::after {
+        display: none;
+      }
+    }
+
+    .step-icon {
+      margin-left: auto;
+      margin-right: auto;
+
+      &::after {
+        width: calc(100% - #{$step-icon-width});
+        left: calc(50% + #{$step-padding-x + $step-icon-width / 2});
+      }
+
+      &.step-icon-xs {
+        &::after {
+          width: calc(100% - #{$step-icon-xs-width});
+          left: calc(50% + #{$step-padding-x + $step-icon-xs-width / 2});
+        }
+      }
+
+      &.step-icon-sm {
+        &::after {
+          width: calc(100% - #{$step-icon-sm-width});
+          left: calc(50% + #{$step-padding-x + $step-icon-sm-width / 2});
+        }
+      }
+
+      &.step-icon-lg {
+        &::after {
+          width: calc(100% - #{$step-icon-lg-width});
+          left: calc(50% + #{$step-padding-x + $step-icon-lg-width / 2});
+        }
+      }
+    }
+  }
+}
+
+// Medium Devices
+@include media-breakpoint-up(md) {
+  .step-md.step-centered {
+    text-align: center;
+
+    .step-item:last-child {
+      .step-icon::after {
+        display: none;
+      }
+    }
+
+    .step-icon {
+      margin-left: auto;
+      margin-right: auto;
+
+      &::after {
+        width: calc(100% - #{$step-icon-width});
+        left: calc(50% + #{$step-padding-x + $step-icon-width / 2});
+      }
+
+      &.step-icon-xs {
+        &::after {
+          width: calc(100% - #{$step-icon-xs-width});
+          left: calc(50% + #{$step-padding-x + $step-icon-xs-width / 2});
+        }
+      }
+
+      &.step-icon-sm {
+        &::after {
+          width: calc(100% - #{$step-icon-sm-width});
+          left: calc(50% + #{$step-padding-x + $step-icon-sm-width / 2});
+        }
+      }
+
+      &.step-icon-lg {
+        &::after {
+          width: calc(100% - #{$step-icon-lg-width});
+          left: calc(50% + #{$step-padding-x + $step-icon-lg-width / 2});
+        }
+      }
+    }
+  }
+}
+
+// Large Devices
+@include media-breakpoint-up(lg) {
+  .step-lg.step-centered {
+    text-align: center;
+
+    .step-item:last-child {
+      .step-icon::after {
+        display: none;
+      }
+    }
+
+    .step-icon {
+      margin-left: auto;
+      margin-right: auto;
+
+      &::after {
+        width: calc(100% - #{$step-icon-width});
+        left: calc(50% + #{$step-padding-x + $step-icon-width / 2});
+      }
+
+      &.step-icon-xs {
+        &::after {
+          width: calc(100% - #{$step-icon-xs-width});
+          left: calc(50% + #{$step-padding-x + $step-icon-xs-width / 2});
+        }
+      }
+
+      &.step-icon-sm {
+        &::after {
+          width: calc(100% - #{$step-icon-sm-width});
+          left: calc(50% + #{$step-padding-x + $step-icon-sm-width / 2});
+        }
+      }
+
+      &.step-icon-lg {
+        &::after {
+          width: calc(100% - #{$step-icon-lg-width});
+          left: calc(50% + #{$step-padding-x + $step-icon-lg-width / 2});
+        }
+      }
+    }
+  }
+}
+
+// Extra Large Devices
+@include media-breakpoint-up(lg) {
+  .step-lg.step-centered {
+    text-align: center;
+
+    .step-item:last-child {
+      .step-icon::after {
+        display: none;
+      }
+    }
+
+    .step-icon {
+      margin-left: auto;
+      margin-right: auto;
+
+      &::after {
+        width: calc(100% - #{$step-icon-width});
+        left: calc(50% + #{$step-padding-x + $step-icon-width / 2});
+      }
+
+      &.step-icon-xs {
+        &::after {
+          width: calc(100% - #{$step-icon-xs-width});
+          left: calc(50% + #{$step-padding-x + $step-icon-xs-width / 2});
+        }
+      }
+
+      &.step-icon-sm {
+        &::after {
+          width: calc(100% - #{$step-icon-sm-width});
+          left: calc(50% + #{$step-padding-x + $step-icon-sm-width / 2});
+        }
+      }
+
+      &.step-icon-lg {
+        &::after {
+          width: calc(100% - #{$step-icon-lg-width});
+          left: calc(50% + #{$step-padding-x + $step-icon-lg-width / 2});
+        }
+      }
+    }
+  }
+}

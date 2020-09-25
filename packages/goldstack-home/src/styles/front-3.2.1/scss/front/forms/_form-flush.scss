@@ -1,0 +1,51 @@
+/*------------------------------------
+  Flush
+------------------------------------*/
+
+.input-group-flush {
+  .form-control {
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    box-shadow: none;
+    padding-right: 0;
+    padding-left: 0;
+    @include border-radius(0);
+
+    &.is-valid,
+    &.is-invalid {
+      &,
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &.input-group-merge {
+    .input-group-append,
+    .input-group-prepend {
+      .input-group-text {
+        padding: 0;
+      }
+    }
+
+    .custom-select,
+    .form-control {
+      &:not(:first-child) {
+        padding-left: $input-padding-x * 2;
+      }
+
+      &:not(:last-child) {
+        padding-right: $input-padding-x * 2;
+      }
+    }
+  }
+
+  &.input-group .form-control:not(:first-child),
+  &.input-group .form-control:not(:last-child),
+  &.input-group .input-group-append .input-group-text:first-child,
+  &.input-group .input-group-append .input-group-text:last-child {
+    @include border-radius(0);
+  }
+}

@@ -1,0 +1,50 @@
+/*------------------------------------
+  Step States
+------------------------------------*/
+
+.step {
+  .step-is-valid-icon,
+  .step-is-invalid-icon {
+    display: none;
+  }
+
+  .active,
+  .active.is-valid {
+    .step-icon {
+      color: $step-active-icon-color;
+      background-color: $step-active-icon-bg-color;
+    }
+  }
+
+  .is-valid {
+    .step-icon {
+      color: $step-is-valid-icon-color;
+      background-color: $step-is-valid-icon-bg-color;
+    }
+
+    .step-is-valid-icon {
+      display: inline-flex;
+    }
+
+    .step-is-default-icon,
+    .step-is-invalid-icon {
+      display: none;
+    }
+  }
+
+  .is-invalid {
+    .step-icon {
+      color: $step-is-invalid-icon-color;
+      background-color: $step-is-invalid-icon-bg-color;
+    }
+
+    .step-is-invalid-icon {
+      display: inline-flex;
+    }
+
+    .step-is-default-icon,
+    .step-is-valid-icon {
+      display: none;
+    }
+  }
+}

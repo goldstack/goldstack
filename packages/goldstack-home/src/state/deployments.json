@@ -1,0 +1,17 @@
+[
+  {
+    "name": "dev",
+    "terraform": {
+      "edge_function_name": {
+        "sensitive": false,
+        "type": "string",
+        "value": "dev-goldstack-party-edge"
+      },
+      "website_cdn_root_id": {
+        "sensitive": false,
+        "type": "string",
+        "value": "E3J24TAJ46DA4I"
+      }
+    }
+  }
+]

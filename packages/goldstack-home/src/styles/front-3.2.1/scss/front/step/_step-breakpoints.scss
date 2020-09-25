@@ -1,0 +1,239 @@
+/*------------------------------------
+  Step Breakpoints
+------------------------------------*/
+
+// Small Devices
+@include media-breakpoint-up(sm) {
+  .step-sm {
+    &.step-dashed {
+      .step-icon::after {
+        border-left: none;
+        border-top-style: $step-dashed-border-type;
+      }
+    }
+
+    .step-item {
+      flex-grow: 1;
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    &:not(.step-inline) .step-content-wrapper {
+      display: block;
+    }
+
+    .step-icon {
+      margin-bottom: $step-icon-margin-y;
+
+      &::after {
+        top: $step-icon-height / 2;
+        left: $step-padding-x + $step-icon-width;
+        width: calc(100% - #{$step-padding-x + $step-icon-width});
+        height: $step-border-width + $step-padding-x;
+        border-top: $step-border-width $step-border-type $step-border-color;
+        border-left: none;
+      }
+
+      &.step-icon-xs {
+        &::after {
+          top: $step-icon-xs-height / 2;
+          left: $step-padding-x + $step-icon-xs-width;
+          width: calc(100% - #{$step-padding-x + $step-icon-xs-width});
+        }
+      }
+
+      &.step-icon-sm {
+        &::after {
+          top: $step-icon-sm-height / 2;
+          left: $step-padding-x + $step-icon-sm-width;
+          width: calc(100% - #{$step-padding-x + $step-icon-sm-width});
+        }
+      }
+
+      &.step-icon-lg {
+        &::after {
+          top: $step-icon-lg-height / 2;
+          left: $step-padding-x + $step-icon-lg-width;
+          width: calc(100% - #{$step-padding-x + $step-icon-lg-width});
+        }
+      }
+    }
+  }
+}
+
+// Medium Devices
+@include media-breakpoint-up(md) {
+  .step-md {
+    &.step-dashed {
+      .step-icon::after {
+        border-left: none;
+        border-top-style: $step-dashed-border-type;
+      }
+    }
+
+    .step-item {
+      flex-grow: 1;
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    &:not(.step-inline) .step-content-wrapper {
+      display: block;
+    }
+
+    .step-icon {
+      margin-bottom: $step-icon-margin-y;
+
+      &::after {
+        top: $step-icon-height / 2;
+        left: $step-padding-x + $step-icon-width;
+        width: calc(100% - #{$step-padding-x + $step-icon-width});
+        height: $step-border-width + $step-padding-x;
+        border-top: $step-border-width $step-border-type $step-border-color;
+        border-left: none;
+      }
+
+      &.step-icon-xs {
+        &::after {
+          top: $step-icon-xs-height / 2;
+          left: $step-padding-x + $step-icon-xs-width;
+          width: calc(100% - #{$step-padding-x + $step-icon-xs-width});
+        }
+      }
+
+      &.step-icon-sm {
+        &::after {
+          top: $step-icon-sm-height / 2;
+          left: $step-padding-x + $step-icon-sm-width;
+          width: calc(100% - #{$step-padding-x + $step-icon-sm-width});
+        }
+      }
+
+      &.step-icon-lg {
+        &::after {
+          top: $step-icon-lg-height / 2;
+          left: $step-padding-x + $step-icon-lg-width;
+          width: calc(100% - #{$step-padding-x + $step-icon-lg-width});
+        }
+      }
+    }
+  }
+}
+
+// Large Devices
+@include media-breakpoint-up(lg) {
+  .step-lg {
+    &.step-dashed {
+      .step-icon::after {
+        border-left: none;
+        border-top-style: $step-dashed-border-type;
+      }
+    }
+
+    .step-item {
+      flex-grow: 1;
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    &:not(.step-inline) .step-content-wrapper {
+      display: block;
+    }
+
+    .step-icon {
+      margin-bottom: $step-icon-margin-y;
+
+      &::after {
+        top: $step-icon-height / 2;
+        left: $step-padding-x + $step-icon-width;
+        width: calc(100% - #{$step-padding-x + $step-icon-width});
+        height: $step-border-width + $step-padding-x;
+        border-top: $step-border-width $step-border-type $step-border-color;
+        border-left: none;
+      }
+
+      &.step-icon-xs {
+        &::after {
+          top: $step-icon-xs-height / 2;
+          left: $step-padding-x + $step-icon-xs-width;
+          width: calc(100% - #{$step-padding-x + $step-icon-xs-width});
+        }
+      }
+
+      &.step-icon-sm {
+        &::after {
+          top: $step-icon-sm-height / 2;
+          left: $step-padding-x + $step-icon-sm-width;
+          width: calc(100% - #{$step-padding-x + $step-icon-sm-width});
+        }
+      }
+
+      &.step-icon-lg {
+        &::after {
+          top: $step-icon-lg-height / 2;
+          left: $step-padding-x + $step-icon-lg-width;
+          width: calc(100% - #{$step-padding-x + $step-icon-lg-width});
+        }
+      }
+    }
+  }
+}
+
+// Extra Large Devices
+@include media-breakpoint-up(xl) {
+  .step-xl {
+    &.step-dashed {
+      .step-icon::after {
+        border-left: none;
+        border-top-style: $step-dashed-border-type;
+      }
+    }
+
+    .step-item {
+      flex-grow: 1;
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    &:not(.step-inline) .step-content-wrapper {
+      display: block;
+    }
+
+    .step-icon {
+      margin-bottom: $step-icon-margin-y;
+
+      &::after {
+        top: $step-icon-height / 2;
+        left: $step-padding-x + $step-icon-width;
+        width: calc(100% - #{$step-padding-x + $step-icon-width});
+        height: $step-border-width + $step-padding-x;
+        border-top: $step-border-width $step-border-type $step-border-color;
+        border-left: none;
+      }
+
+      &.step-icon-xs {
+        &::after {
+          top: $step-icon-xs-height / 2;
+          left: $step-padding-x + $step-icon-xs-width;
+          width: calc(100% - #{$step-padding-x + $step-icon-xs-width});
+        }
+      }
+
+      &.step-icon-sm {
+        &::after {
+          top: $step-icon-sm-height / 2;
+          left: $step-padding-x + $step-icon-sm-width;
+          width: calc(100% - #{$step-padding-x + $step-icon-sm-width});
+        }
+      }
+
+      &.step-icon-lg {
+        &::after {
+          top: $step-icon-lg-height / 2;
+          left: $step-padding-x + $step-icon-lg-width;
+          width: calc(100% - #{$step-padding-x + $step-icon-lg-width});
+        }
+      }
+    }
+  }
+}

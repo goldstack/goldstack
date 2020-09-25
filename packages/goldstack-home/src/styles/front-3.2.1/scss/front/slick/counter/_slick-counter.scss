@@ -1,0 +1,28 @@
+/*------------------------------------
+  Slick Counter
+------------------------------------*/
+
+.slick-counter {
+  position: absolute;
+  bottom: $slick-counter-bottom-offset;
+  right: 0;
+  padding-left: $slick-counter-padding-x;
+  padding-right: $slick-counter-padding-x;
+
+  &-current {
+    color: $slick-counter-current-color;
+    font-size: $slick-counter-current-font-size;
+    line-height: 1;
+  }
+
+  &-divider {
+    color: $slick-counter-divider-color;
+    margin-right: $slick-counter-divider-margin-x;
+    margin-left: $slick-counter-divider-margin-x;
+  }
+
+  &-total {
+    font-size: $slick-counter-total-font-size;
+    color: $slick-counter-total-color;
+  }
+}

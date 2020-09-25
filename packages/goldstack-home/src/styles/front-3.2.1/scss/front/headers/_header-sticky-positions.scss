@@ -1,0 +1,91 @@
+/*------------------------------------
+  Sticky Positions
+------------------------------------*/
+
+.header-sticky {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      &-top#{$infix} {
+        position: fixed;
+        bottom: auto;
+        top: 0;
+      }
+    }
+  }
+}
+
+// Medium Devices
+@include media-breakpoint-down(sm) {
+  .header-sticky-top-md .header-sticky-top-inner {
+    max-height: $header-sticky-height;
+    overflow: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: $scrollbar-width;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar-bg-color;
+      visibility: hidden;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+// Extra Large Devices
+@include media-breakpoint-down(md) {
+  .header-sticky-top .header-sticky-top-inner,
+  .header-sticky-top-sm .header-sticky-top-inner,
+  .header-sticky-top-lg .header-sticky-top-inner {
+    max-height: $header-sticky-height;
+    overflow: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: $scrollbar-width;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar-bg-color;
+      visibility: hidden;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+// Extra Large Devices
+@include media-breakpoint-down(lg) {
+  .header-sticky-top-xl .header-sticky-top-inner {
+    max-height: $header-sticky-height;
+    overflow: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: $scrollbar-width;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar-bg-color;
+      visibility: hidden;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        visibility: visible;
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+/*------------------------------------
+  Custom Select
+------------------------------------*/
+
+.custom-select,
+.custom-control-label {
+  cursor: pointer;
+}
+
+.form-control {
+  .custom-control-label {
+    width: 100%;
+  }
+}

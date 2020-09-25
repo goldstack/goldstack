@@ -1,0 +1,35 @@
+/*------------------------------------
+  Pagination
+------------------------------------*/
+
+.page-link {
+  cursor: pointer;
+  text-align: center;
+  min-width: $pagination-min-width;
+}
+
+.page-item {
+  margin-left: $pagination-margin-x;
+  margin-right: $pagination-margin-x;
+
+  .page-link {
+    @include border-left-radius($pagination-page-link-border-radius);
+  }
+
+  .page-link {
+    @include border-right-radius($pagination-page-link-border-radius);
+  }
+}
+
+/* Sizes */
+.pagination-sm {
+  .page-link {
+    @include border-radius($pagination-sm-page-link-border-radius);
+  }
+}
+
+.pagination-lg {
+  .page-link {
+    @include border-radius($pagination-lg-page-link-border-radius);
+  }
+}

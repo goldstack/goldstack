@@ -1,0 +1,16 @@
+/*------------------------------------
+  Alert Styles
+------------------------------------*/
+
+@each $color, $value in $theme-colors {
+  .alert-#{$color} {
+    @include alert-variant($value, $value, $value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  /* #{$color} soft */
+  .alert-soft-#{$color} {
+    @include alert-soft($value, $value);
+  }
+}

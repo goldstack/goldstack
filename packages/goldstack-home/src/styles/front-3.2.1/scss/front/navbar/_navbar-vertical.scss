@@ -1,0 +1,56 @@
+/*------------------------------------
+  Navbar Vertical
+------------------------------------*/
+
+.navbar-vertical .nav {
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.navbar-vertical .nav-sub .nav-link {
+  display: flex;
+  align-items: center;
+
+  .nav-link-badge {
+    margin-left: auto;
+  }
+}
+
+.navbar-vertical .nav-tabs {
+  border-bottom-width: 0;
+}
+
+.navbar-vertical .nav-tabs .nav-item {
+  margin: 0;
+}
+
+.navbar-vertical .card .nav-tabs .nav-link {
+  padding-right: 0;
+  padding-left: $card-spacer-x - $nav-tabs-link-border-width;
+  margin-left: -(#{$card-spacer-x});
+}
+
+.navbar-vertical .nav-tabs .nav-link {
+  padding-right: $nav-tabs-link-padding-x;
+  padding-left: $nav-tabs-link-padding-x;
+}
+
+.navbar-vertical .nav-tabs .nav-link,
+.navbar-vertical .nav-tabs .nav-link.active {
+  border-bottom-width: 0;
+  @include border-radius(0);
+}
+
+.navbar-vertical .nav-tabs .nav-link:hover {
+  border-color: $nav-tabs-link-hover-border-color;
+}
+
+.navbar-vertical .nav-tabs .nav-link {
+  border-width: 0 0 0 $nav-tabs-link-active-border-width;
+  margin-bottom: 0;
+}
+
+.navbar-vertical .nav-tabs .active.nav-link,
+.navbar-vertical .nav-tabs .active .nav-link {
+  border-left-color: $navbar-vertical-nav-tabs-link-active-border-color;
+}

@@ -1,0 +1,18 @@
+/*------------------------------------
+  Leaflet
+------------------------------------*/
+
+.leaflet-bar,
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  box-shadow: $leaflet-popup-wrapper-box-shadow;
+}
+
+.leaflet-bar,
+.leaflet-popup-content-wrapper {
+  @include border-radius($leaflet-popup-wrapper-border-radius);
+}
+
+.leaflet-popup {
+  margin-bottom: $leaflet-popup-margin-y;
+}

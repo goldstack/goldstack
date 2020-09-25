@@ -1,0 +1,31 @@
+//
+// Alerts
+//
+
+@mixin alert-variant($background, $border, $color) {
+  color: color-yiq($color);
+  @include gradient-bg($background);
+  border-color: $border;
+
+  hr {
+    border-top-color: darken($border, 5%);
+  }
+
+  .alert-link {
+    color: color-yiq($color);
+  }
+}
+
+// Soft Alert
+@mixin alert-soft($hs-color, $hs-background) {
+  color: ($hs-color);
+  background-color: rgba($hs-background, 0.1);
+
+  .alert-link {
+    color: ($hs-color);
+
+    &:hover {
+      color: darken($hs-color, 7%);
+    }
+  }
+}

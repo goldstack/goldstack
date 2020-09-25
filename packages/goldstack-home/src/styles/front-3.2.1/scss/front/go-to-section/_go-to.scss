@@ -1,0 +1,26 @@
+/*------------------------------------
+  Go To
+------------------------------------*/
+
+.go-to {
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: $go-to-z-index;
+  width: $go-to-width;
+  height: $go-to-height;
+  background-color: $go-to-bg-color;
+  color: $go-to-color;
+  font-size: $go-to-font-size;
+  opacity: $go-to-opacity;
+  @include border-radius($go-to-border-radius);
+  transition: $go-to-transition;
+
+  &:hover,
+  &:focus:hover {
+    color: $go-to-hover-color;
+    background-color: $go-to-bg-hover-color;
+    opacity: $go-to-opacity-on-hover;
+  }
+}

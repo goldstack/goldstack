@@ -1,0 +1,39 @@
+/*------------------------------------
+  List Group
+------------------------------------*/
+
+.list-group-item {
+  &:first-child {
+    @include border-top-radius($list-group-border-radius);
+  }
+
+  &:last-child {
+    @include border-bottom-radius($list-group-border-radius);
+  }
+}
+
+.list-group-icon {
+  width: $list-group-icon-width;
+  text-align: center;
+  margin-right: $list-group-icon-margin-x;
+}
+
+.list-group-no-gutters {
+  .list-group-item {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.list-group-item-light {
+  background-color: $light;
+}
+
+/* Sizes */
+.list-group-lg {
+  .list-group-icon {
+    font-size: $list-group-lg-icon-font-size;
+    width: $list-group-lg-icon-width;
+    margin-right: $list-group-lg-icon-margin-x;
+  }
+}

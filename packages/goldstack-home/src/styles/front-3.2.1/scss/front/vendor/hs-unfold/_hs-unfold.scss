@@ -1,0 +1,51 @@
+/*------------------------------------
+  Unfold
+------------------------------------*/
+
+.hs-unfold {
+  position: relative;
+  display: inline-block;
+}
+
+.hs-unfold-content {
+  display: block !important;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hs-unfold-content-initialized {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.hs-unfold-hidden {
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hs-unfold-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $dropdown-overlay-z-index;
+  background-color: $dropdown-overlay-bg-color;
+}
+
+.hs-unfold-content.hs-unfold-reverse-y {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+}
+
+.hs-unfold-has-submenu {
+  top: 0;
+  right: 100%;
+  left: auto;
+  margin-top: 0;
+  margin-right: 0.5rem;
+}

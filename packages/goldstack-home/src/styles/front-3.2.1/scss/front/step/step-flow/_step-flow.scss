@@ -1,0 +1,54 @@
+/*------------------------------------
+  Step Flow
+------------------------------------*/
+
+.step-flow {
+  position: relative;
+  padding-left: $step-flow-padding-x;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: -$step-flow-pseudo-after-left-offset;
+    width: $step-flow-pseudo-after-width;
+    height: $step-flow-pseudo-after-height;
+    border-top: $step-flow-border-width $step-flow-border-type
+      $step-flow-border-color;
+    margin: auto auto auto 0;
+    content: '';
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: -$step-flow-pseudo-before-left-offset;
+    width: $step-flow-pseudo-before-width;
+    height: 100%;
+    border-right: $step-flow-border-width $step-flow-border-type
+      $step-flow-border-color;
+    margin: auto auto auto 0;
+    content: '';
+  }
+
+  &:first-child {
+    &::after {
+      height: 50%;
+      top: auto;
+    }
+  }
+
+  &:last-child {
+    &::after {
+      height: 50%;
+      bottom: auto;
+    }
+  }
+
+  &-inner {
+    min-width: $step-flow-inner-width;
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "apps",
+  "private": true,
+  "sideEffects": false,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn workspaces foreach --topological-dev run build",
+    "clean": "yarn workspaces foreach run clean",
+    "compile": "yarn workspaces foreach --topological-dev run compile",
+    "compile:watch": "yarn compile && yarn workspaces foreach --parallel --interlaced --jobs 1000 run compile:watch:light",
+    "compile:watch:all": "yarn compile && nodemon --watch ./ --ext ts,tsx,json,css --exec 'yarn compile'",
+    "coverage": "yarn workspaces --topological-dev foreach run coverage",
+    "format": "prettier --write .",
+    "format:check": "prettier .",
+    "generate:schema": "yarn workspaces foreach --topological-dev run generate:schema",
+    "lint": "eslint . --ext .js,.ts,.tsx,json",
+    "lint:fix": "eslint . --ext .js,.ts,tsx,json --fix",
+    "package:doctor": "yarn dlx @yarnpkg/doctor .",
+    "test:ci": "yarn workspaces foreach --parallel run test:ci"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "@yarnpkg/doctor": "^2.0.0-rc.17",
+    "eslint": "^7.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "typescript": "^3.9.5"
+  }
+}

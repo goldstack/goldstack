@@ -1,0 +1,17 @@
+/*------------------------------------
+  Avatar Styles
+------------------------------------*/
+
+@each $color, $value in $theme-colors {
+  /* #{$color} soft */
+  .avatar-#{$color} {
+    @include avatar($value, $value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  /* #{$color} soft */
+  .avatar-soft-#{$color} {
+    @include avatar-soft($value, $value);
+  }
+}

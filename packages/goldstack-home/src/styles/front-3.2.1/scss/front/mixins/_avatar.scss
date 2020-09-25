@@ -1,0 +1,15 @@
+//
+// Avatar
+//
+
+// Avatar
+@mixin avatar($hs-color, $hs-background) {
+  color: color-yiq($hs-background);
+  background-color: $hs-background;
+}
+
+// Soft Avatar
+@mixin avatar-soft($hs-color, $hs-background) {
+  color: ($hs-color);
+  background-color: rgba($hs-background, 0.1);
+}

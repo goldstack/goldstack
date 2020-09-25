@@ -1,0 +1,26 @@
+/*------------------------------------
+  Chartjs
+------------------------------------*/
+
+.hs-chartjs-tooltip-wrap {
+  position: absolute;
+  z-index: 3;
+  transition: $chartjs-tooltip-transition;
+}
+
+.hs-chartjs-tooltip {
+  background-color: $chartjs-tooltip-bg-color;
+  border: $chartjs-tooltip-border-width $chartjs-tooltip-border-type
+    $chartjs-tooltip-border-color;
+  box-shadow: $chartjs-tooltip-box-shadow;
+  @include border-radius($chartjs-tooltip-border-radius);
+  padding: $chartjs-tooltip-padding-y $chartjs-tooltip-padding-x;
+}
+
+.hs-chartjs-tooltip-header {
+  font-weight: $chartjs-tooltip-header-font-weight;
+}
+
+.hs-chartjs-tooltip-body {
+  color: $chartjs-tooltip-body-color;
+}

@@ -1,0 +1,27 @@
+/*------------------------------------
+  Breadcrumb
+------------------------------------*/
+
+.breadcrumb-light {
+  .breadcrumb-item {
+    color: $breadcrumb-light-item-color;
+
+    + .breadcrumb-item {
+      &::before {
+        color: $breadcrumb-light-divider-color;
+      }
+    }
+  }
+
+  .breadcrumb-link {
+    color: $breadcrumb-light-link-color;
+
+    &:hover {
+      color: $breadcrumb-light-link-hover-color;
+    }
+  }
+}
+
+.breadcrumb-no-gutter {
+  padding: 0;
+}

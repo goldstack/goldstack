@@ -1,0 +1,14 @@
+/*------------------------------------
+  Badge Soft
+------------------------------------*/
+
+@each $color, $value in $theme-colors {
+  /* #{$color} soft */
+  .badge-soft-#{$color} {
+    @include badge-soft($value);
+  }
+}
+
+.badge-soft-warning {
+  color: darken($warning, 20%) !important;
+}

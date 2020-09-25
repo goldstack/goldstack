@@ -1,0 +1,136 @@
+/*------------------------------------
+  Header Floating
+------------------------------------*/
+
+.header-floating {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      &#{$infix} {
+        position: absolute;
+        right: 0;
+        left: 0;
+        margin-top: $header-floating-margin-y;
+
+        &.js-header-fix-moment {
+          position: fixed;
+          background-color: $header-floating-section-bg-color;
+          box-shadow: $header-section-box-shadow;
+          margin-top: 0;
+
+          .header-floating-inner {
+            box-shadow: none;
+          }
+        }
+      }
+
+      &-inner {
+        @include border-radius($header-floating-border-radius);
+        padding-left: $header-floating-inner-padding-x;
+        padding-right: $header-floating-inner-padding-x;
+      }
+    }
+  }
+}
+
+.header-floating {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-down($breakpoint) {
+        background-color: $header-floating-section-bg-color;
+        box-shadow: $header-section-box-shadow;
+
+        &.header-box-shadow .header-section,
+        &.header-box-shadow-on-scroll.scrolled .header-section {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}
+
+// Medium Devices
+@include media-breakpoint-down(md) {
+  .header-floating-inner {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+// Medium Devices
+@include media-breakpoint-down(sm) {
+  .header-floating-md .header-floating-inner {
+    max-height: $header-floating-height;
+    overflow: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: $scrollbar-width;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar-bg-color;
+      visibility: hidden;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+// Extra Large Devices
+@include media-breakpoint-down(md) {
+  .header-floating .header-floating-inner,
+  .header-floating-sm .header-floating-inner,
+  .header-floating-lg .header-floating-inner {
+    max-height: $header-floating-height;
+    overflow: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: $scrollbar-width;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar-bg-color;
+      visibility: hidden;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+// Extra Large Devices
+@include media-breakpoint-down(lg) {
+  .header-floating-xl .header-floating-inner {
+    max-height: $header-floating-height;
+    overflow: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: $scrollbar-width;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar-bg-color;
+      visibility: hidden;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        visibility: visible;
+      }
+    }
+  }
+}

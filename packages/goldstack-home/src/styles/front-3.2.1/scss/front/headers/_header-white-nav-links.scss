@@ -1,0 +1,40 @@
+/*------------------------------------
+  Header White Nav Links
+------------------------------------*/
+
+.header-white-nav-links {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    &#{$infix} {
+      &:not(.bg-white):not(.js-header-fix-moment) {
+        @include media-breakpoint-up($breakpoint) {
+          .navbar-nav-item {
+            &:hover {
+              .nav-link {
+                color: $header-white-nav-links-nav-item-hover-link-color;
+              }
+            }
+          }
+
+          .nav-link {
+            color: $header-white-nav-links-link-color;
+
+            &:hover {
+              color: $header-white-nav-links-link-hover-color;
+            }
+          }
+
+          .dropdown-nav-link,
+          .btn-text-secondary {
+            color: $header-white-nav-links-link-color;
+
+            &:hover {
+              color: $header-white-nav-links-link-hover-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

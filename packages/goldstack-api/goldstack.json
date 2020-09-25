@@ -1,0 +1,21 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "goldstack-api",
+  "template": "lambda-express",
+  "deployments": [
+    {
+      "name": "dev",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "lambdaName": "goldstack-api",
+        "apiDomain": "goldstack-api.dev.goldstack.party",
+        "hostedZoneDomain": "dev.goldstack.party",
+        "cors": "https://dev.goldstack.party",
+        "goldstackWorkdir": "/tmp/"
+      }
+    }
+  ],
+  "templateVersion": "0.1.0",
+  "configuration": {}
+}

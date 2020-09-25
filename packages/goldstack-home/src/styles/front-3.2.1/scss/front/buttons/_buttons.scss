@@ -1,0 +1,57 @@
+/*------------------------------------
+  Buttons
+------------------------------------*/
+
+.btn {
+  svg {
+    margin-bottom: 0;
+  }
+}
+
+label.btn {
+  cursor: pointer !important;
+}
+
+.btn-pill {
+  @include border-radius($border-radius-pill);
+}
+
+.btn-link {
+  font-weight: $btn-link-font-weight;
+}
+
+.btn-icon {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: $btn-icon-font-size;
+  font-weight: $btn-icon-font-weight;
+  width: $btn-icon-width;
+  height: $btn-icon-height;
+  padding: 0;
+}
+
+/* Toggle */
+.btn {
+  &-toggle {
+    &-default {
+      display: inline-block;
+    }
+
+    &-toggled {
+      display: none;
+    }
+  }
+
+  &.toggled {
+    .btn-toggle-default {
+      display: none;
+    }
+
+    .btn-toggle-toggled {
+      display: inline-block;
+    }
+  }
+}
