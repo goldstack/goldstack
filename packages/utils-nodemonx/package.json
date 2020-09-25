@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/nodemonx",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Enhanced utility for watching for changes in directories",
   "license": "MIT",
   "author": "Max Rohde",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@goldstack/utils-log": "0.2.0",
-    "@goldstack/utils-sh": "0.4.0",
+    "@goldstack/utils-sh": "0.4.1",
     "minimatch": "^3.0.4",
     "node-watch": "^0.6.4"
   },

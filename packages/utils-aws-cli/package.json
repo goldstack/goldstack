@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-aws-cli",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Wrapper to help with running commands with the AWS cli",
   "license": "MIT",
   "author": "Max Rohde",
@@ -21,10 +21,10 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.3.0",
-    "@goldstack/utils-docker": "0.3.0",
+    "@goldstack/infra-aws": "0.3.1",
+    "@goldstack/utils-docker": "0.3.1",
     "@goldstack/utils-log": "0.2.0",
-    "@goldstack/utils-sh": "0.4.0",
+    "@goldstack/utils-sh": "0.4.1",
     "aws-sdk": "2.721.0"
   },
   "devDependencies": {

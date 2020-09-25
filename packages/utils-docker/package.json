@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-docker",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Utilities to run commands in local docker containers.",
   "license": "MIT",
   "author": "Max Rohde",
@@ -21,7 +21,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-sh": "0.4.0"
+    "@goldstack/utils-sh": "0.4.1"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.21",

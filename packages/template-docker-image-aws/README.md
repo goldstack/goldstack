@@ -1,2 +1,1 @@
 # Template Docker Image AWS
-
