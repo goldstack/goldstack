@@ -1,4 +1,3 @@
-
 All infrastructure for this module is defined in Terraform. You can find the Terraform files for this module in the directory `[moduleDir]/infra/aws`. You can define multiple deployments for this module, for instance for deployment into a development, test and production system. The deployments and their respective configurations are defined in `[moduleDir]/goldstack.json`. When using the Goldstack configuration tool, there will be one deployment defined that is either `dev` or `prod` depending on whether you choose to define your initial infrastructure for a development or production system.
 
 ### Infrastructure Commands

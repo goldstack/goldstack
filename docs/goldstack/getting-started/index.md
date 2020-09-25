@@ -1,6 +1,6 @@
 ---
-id: getting-started 
-title: Getting Started 
+id: getting-started
+title: Getting Started
 ---
 
 Once you have downloaded the zip archive for your project, there are only a few things left to get ready for coding.

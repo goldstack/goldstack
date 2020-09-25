@@ -5,7 +5,7 @@
 This is how an the S3 module can be used from another module:
 
 ```javascript
-import { getBucketName, connect} from 'my-s3-module';
+import { getBucketName, connect } from 'my-s3-module';
 
 const s3 = connect();
 await s3.putObject({

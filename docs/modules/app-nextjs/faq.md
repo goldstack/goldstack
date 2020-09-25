@@ -1,5 +1,3 @@
-
-
 ### When trying to open the page, I get a '502 ERROR The request could not be satisfied.'
 
 Instead of seeing the page, you may see an error message like the following:

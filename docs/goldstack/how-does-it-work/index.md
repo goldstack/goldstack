@@ -17,9 +17,9 @@ Some examples of modules are:
 
 You can select as many modules as you want. All modules are configured to be easily used alongside each other. For instance, if you choose all modules from the list above, you can link the Lambda Express module to the Next JS application and the S3 module with the Express application. All modules are deployed into a project configured using Yarn workspaces.
 
-### Step 2: Configure the project 
+### Step 2: Configure the project
 
-It can often be overwhelming to get started with customizing a new starter project to your need, especially if the starter project consists of many different modules. We therefore provide a small tool to establish a number of baseline configurations for your project. 
+It can often be overwhelming to get started with customizing a new starter project to your need, especially if the starter project consists of many different modules. We therefore provide a small tool to establish a number of baseline configurations for your project.
 
 For instance, if any module is selected that requires deployment to a website, the configuration tool will help you configure the domain to be used for deploying the website. The configuration will cover all aspects required for you to start deploying your project right away.
 

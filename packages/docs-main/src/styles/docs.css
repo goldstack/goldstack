@@ -38,33 +38,33 @@ table {
 .hs-docs-badge {
   font-weight: bold;
   text-transform: uppercase;
-  padding: .35rem .75rem;
+  padding: 0.35rem 0.75rem;
 }
 
 /*------------------------------------
   Markup
 ------------------------------------*/
 .code-toolbar {
-  position: relative
+  position: relative;
 }
 code {
   font-size: 100%;
 }
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
   padding: 1.5rem;
   background: #142140;
   margin-bottom: 1rem;
 }
-.tab-content :not(pre) > code[class*="language-"],
-.tab-content pre[class*="language-"] {
+.tab-content :not(pre) > code[class*='language-'],
+.tab-content pre[class*='language-'] {
   border-top-right-radius: 0 !important;
   border-top-left-radius: 0 !important;
-  border-bottom-right-radius: .3125rem;
-  border-bottom-left-radius: .3125rem;
+  border-bottom-right-radius: 0.3125rem;
+  border-bottom-left-radius: 0.3125rem;
 }
-code[class*="language-"],
-pre[class*="language-"] {
+code[class*='language-'],
+pre[class*='language-'] {
   color: #ffffff;
   text-shadow: none;
   white-space: pre-wrap;
@@ -105,10 +105,10 @@ div.code-toolbar > .toolbar {
   opacity: 1;
 }
 div.code-toolbar > .toolbar a {
-  padding: .3rem .7rem !important;
-  background-color: rgba(255, 255, 255, .3);
+  padding: 0.3rem 0.7rem !important;
+  background-color: rgba(255, 255, 255, 0.3);
   box-shadow: none;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 div.code-toolbar > .toolbar a:hover {
   background-color: #377dff;
@@ -124,7 +124,7 @@ div.code-toolbar > .toolbar a:hover {
   margin-bottom: 1rem;
 }
 .hs-docs-heading::before {
-  content: "";
+  content: '';
   display: block;
   width: 100%;
   height: 100px;
@@ -135,14 +135,14 @@ div.code-toolbar > .toolbar a:hover {
   content: attr(data-anchorjs-icon);
 }
 .anchorjs-link {
-  padding-left: .5rem;
+  padding-left: 0.5rem;
   font-size: 90%;
-  color: rgba(55,125,255, .5) !important;
-  transition: color .16s linear;
+  color: rgba(55, 125, 255, 0.5) !important;
+  transition: color 0.16s linear;
   opacity: 0;
 }
 .anchorjs-link:hover {
-  color: rgba(55,125,255, 1) !important;
+  color: rgba(55, 125, 255, 1) !important;
 }
 .hs-docs-heading:hover .anchorjs-link {
   opacity: 1;
@@ -154,7 +154,7 @@ div.code-toolbar > .toolbar a:hover {
 .scroll-nav-example {
   position: relative;
   height: 200px;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   overflow: auto;
 }
 
@@ -185,7 +185,7 @@ div.code-toolbar > .toolbar a:hover {
   float: right;
 }
 .ui-autocomplete .ui-menu-item {
-  padding: .25rem;
+  padding: 0.25rem;
 }
 .ui-autocomplete .ui-menu-item:not(:last-child) {
   border-bottom: 1px solid #e7eaf3;
@@ -199,17 +199,18 @@ div.code-toolbar > .toolbar a:hover {
 }
 .ui-widget.ui-widget-content {
   border: thin solid #e7eaf3;
-  border-radius: .3125rem;
+  border-radius: 0.3125rem;
   box-shadow: 0 2px 16px 8px rgba(140, 152, 164, 0.135);
 }
-.ui-autocomplete .ui-menu-item-wrapper.ui-state-active, .ui-autocomplete .ui-menu-item-wrapper:hover {
-  background-color: rgba(55,125,255, .1);
+.ui-autocomplete .ui-menu-item-wrapper.ui-state-active,
+.ui-autocomplete .ui-menu-item-wrapper:hover {
+  background-color: rgba(55, 125, 255, 0.1);
   text-decoration: none;
 }
 .ui-autocomplete .ui-menu-item:hover .ui-menu-item-wrapper {
-  background-color: rgba(55,125,255, .1);
+  background-color: rgba(55, 125, 255, 0.1);
   border-color: transparent;
-  border-radius: .125rem;
+  border-radius: 0.125rem;
 }
 .ui-autocomplete-category {
   padding: 5px 15px;
@@ -223,11 +224,11 @@ div.code-toolbar > .toolbar a:hover {
 .hd-doc-search-category {
   display: block;
   color: #97a4af;
-  font-size: .875rem;
+  font-size: 0.875rem;
 }
 .ui-autocomplete-input.form-control:not(:last-child) {
-  border-top-right-radius: .25rem;
-  border-bottom-right-radius: .25rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
 /*------------------------------------
@@ -235,8 +236,8 @@ div.code-toolbar > .toolbar a:hover {
 ------------------------------------*/
 .tab-wrapper {
   border: 1px solid #e7eaf3;
-  box-shadow: 0 0 35px rgba(140, 152, 163, .125);
-  border-radius: .5rem;
+  box-shadow: 0 0 35px rgba(140, 152, 163, 0.125);
+  border-radius: 0.5rem;
   margin-top: 1.5rem;
   margin-bottom: 3rem;
 }
@@ -277,15 +278,15 @@ div.code-toolbar > .toolbar a:hover {
   color: initial;
   font-size: 1.25rem;
   font-weight: bold;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 .callout-warning {
-  border-color: rgba(255, 193, 7, .25);
-  background-color: rgba(255, 193, 7, .075);
+  border-color: rgba(255, 193, 7, 0.25);
+  background-color: rgba(255, 193, 7, 0.075);
 }
 .callout-danger {
-  border-color: rgba(222, 68, 55, .25);
-  background-color: rgba(222, 68, 55, .075);
+  border-color: rgba(222, 68, 55, 0.25);
+  background-color: rgba(222, 68, 55, 0.075);
 }
 
 /*------------------------------------
@@ -296,7 +297,7 @@ div.code-toolbar > .toolbar a:hover {
   top: 0;
   width: 100%;
   height: 15rem;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 }
 
 @media (max-height: 500px) {
@@ -349,15 +350,15 @@ div.code-toolbar > .toolbar a:hover {
 }
 
 .hs-sidebar-item {
-  font-size: .875rem;
+  font-size: 0.875rem;
 }
 
 .hs-sidebar-link {
   color: #495057;
   display: block;
   background-color: transparent;
-  border-radius: .3125rem;
-  padding: .5rem  .9375rem;
+  border-radius: 0.3125rem;
+  padding: 0.5rem 0.9375rem;
 }
 
 .hs-sidebar-link.active {
@@ -374,13 +375,13 @@ div.code-toolbar > .toolbar a:hover {
 .hs-sidebar-heading {
   display: block;
   color: #1e2022;
-  font-size: .8125rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   text-transform: uppercase;
-  padding-left: .9375rem;
-  padding-right: .9375rem;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
   margin-top: 1rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 /*------------------------------------
@@ -402,7 +403,7 @@ div.code-toolbar > .toolbar a:hover {
   List
 ------------------------------------*/
 .hs-docs-list-md li {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 /*------------------------------------

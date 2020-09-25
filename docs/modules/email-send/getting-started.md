@@ -1,4 +1,3 @@
-
 [!embed](./../shared/getting-started-infrastructure.md)
 
 #### Development
