@@ -19,7 +19,24 @@
           }
         ]
       },
-      "awsUser": "awsUser",
+      "awsUser": "goldstack-dev",
+      "awsRegion": "us-west-2"
+    },
+    {
+      "name": "prod",
+      "configuration": {
+        "hostedZoneDomain": "goldstack.party",
+        "websiteDomain": "docs.goldstack.party",
+        "websiteDomainRedirect": "www.docs.goldstack.party",
+        "defaultCacheDuration": 10,
+        "environmentVariables": [
+          {
+            "name": "NEXT_PUBLIC_GOLDSTACK_HOME",
+            "value": "https://goldstack.party"
+          }
+        ]
+      },
+      "awsUser": "goldstack-dev",
       "awsRegion": "us-west-2"
     }
   ]
