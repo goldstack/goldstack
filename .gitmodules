@@ -13,3 +13,6 @@
 [submodule "workspaces/docs"]
 	path = workspaces/docs
 	url = git@github.com:goldstack/goldstack-docs.git
+[submodule "workspaces/goldstack"]
+	path = workspaces/goldstack
+	url = git@github.com:goldstack/goldstack.git
