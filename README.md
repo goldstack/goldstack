@@ -1,4 +1,12 @@
-### Hi there 👋
+## Goldstack - The Very Best Starter Templates 💖 
+
+Getting started on a new project is fun ... until it isn't. Goldstack provides customiziable starter templates that help you lift your project off the ground and immideately start working on the important parts - and not be stuck with getting basic configuration and infrastructure to work. 
+
+### Goldstack Resources
+
+- 😻 [Goldstack Template Framework](https://github.com/goldstack/goldstack-lib) Our open source framework for building sweet-as starter templates
+- 🐛 [Report an issue](https://github.com/goldstack/goldstack/issues)
+-  [Goldstack Documentation]()
 
 <!--
 **goldstack/goldstack** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
