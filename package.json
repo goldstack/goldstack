@@ -1,6 +1,8 @@
 {
-  "name": "@goldstack/goldstack-docs",
+  "name": "docs",
   "private": true,
+  "license": "",
+  "author": "",
   "sideEffects": false,
   "workspaces": [
     "packages/*"
@@ -13,6 +15,7 @@
     "coverage": "yarn workspaces foreach --topological-devs run coverage",
     "format": "prettier --loglevel log --config .prettierrc.json --write .",
     "format:check": "prettier --loglevel log --config .prettierrc.json --check .",
+    "generate:docs": "yarn workspaces foreach run generate:docs",
     "lint": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml",
     "lint:fix": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml --fix",
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
@@ -33,7 +36,5 @@
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "typescript": "^3.9.5"
-  },
-  "author": "",
-  "license": ""
+  }
 }
