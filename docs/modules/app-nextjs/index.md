@@ -1,5 +1,5 @@
 ---
-id: template-app-nextjs 
+id: template-app-nextjs
 title: Next.js
 ---
 

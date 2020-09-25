@@ -1,5 +1,5 @@
 ---
-id: template-app-nextjs-bootstrap 
+id: template-app-nextjs-bootstrap
 title: Next.js Bootstrap
 ---
 

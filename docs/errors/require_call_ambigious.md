@@ -2,7 +2,6 @@ Error: Your application tried to access next-server, but it isn't declared in yo
 
 Required package: next-server (via "next-server/constants")
 
-
 Fix:
 
 - add depenendcy to project

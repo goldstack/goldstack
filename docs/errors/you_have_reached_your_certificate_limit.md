@@ -1,4 +1,3 @@
-
 Error reported by Terraform:
 
 ```
@@ -12,4 +11,4 @@ Fix by:
 Comments:
 
 - It appears that the default limit is displayed as '2000'. However, it seems AWS internally may set this limit to a lower value. See [Docs should warn about ACM yearly certificate limit
-](https://github.com/aws/aws-cdk/issues/5889).
+  ](https://github.com/aws/aws-cdk/issues/5889).

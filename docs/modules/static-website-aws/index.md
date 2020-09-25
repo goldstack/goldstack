@@ -1,5 +1,5 @@
 ---
-id: template-static-website-aws 
+id: template-static-website-aws
 title: Static Website AWS
 ---
 
