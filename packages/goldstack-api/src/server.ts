@@ -12,6 +12,7 @@ app.use(helmet());
 app.use(cors({ origin: process.env.CORS, credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
+
 if (process.env.GOLDSTACK_DEPLOYMENT !== 'local') {
   app.use(requestLogger());
 }
@@ -25,10 +26,8 @@ app.use('/projects', projects);
 app.use('/sessions', sessions);
 
 export const start = async (port: number): Promise<any> => {
-  return new Promise((resolve, reject) => {
-    const server = app.listen(port, (err) => {
-      if (err) reject(err);
-
+  return new Promise((resolve) => {
+    const server = app.listen(port, () => {
       resolve(server);
     });
   });
