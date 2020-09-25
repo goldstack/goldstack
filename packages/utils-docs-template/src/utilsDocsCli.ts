@@ -1,7 +1,7 @@
 import { renderPage } from '@goldstack/utils-docs';
 
 export const getDocsDir = (): string => {
-  return './../../../../docs/';
+  return './../../../../workspaces/docs/docs/';
 };
 
 export const transpile = async (path: string): Promise<string> => {
