@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/infra-aws",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Utilities to work with AWS infrastructrue via the cli.",
   "license": "MIT",
   "author": "Max Rohde",
@@ -22,11 +22,11 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.3.0",
-    "@goldstack/utils-config": "0.3.0",
+    "@goldstack/infra": "0.3.1",
+    "@goldstack/utils-config": "0.3.1",
     "@goldstack/utils-log": "0.2.0",
-    "@goldstack/utils-package": "0.3.0",
-    "@goldstack/utils-sh": "0.4.0",
+    "@goldstack/utils-package": "0.3.1",
+    "@goldstack/utils-sh": "0.4.1",
     "aws-sdk": "2.721.0",
     "axios": "^0.19.2",
     "handlebars": "^4.7.6"
