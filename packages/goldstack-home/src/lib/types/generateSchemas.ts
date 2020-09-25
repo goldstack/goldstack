@@ -1,6 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const tsj = require('ts-json-schema-generator');
-import fs from 'fs';
+const fs = require('fs');
 
 const generateSchema = (typeName: string, schemaFile: string): void => {
   const config = {
