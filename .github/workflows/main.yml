@@ -133,7 +133,7 @@ jobs:
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
         uses: ad-m/github-push-action@v0.6.0
         with:
-          github_token: ${{secrets.BUILD_TOKEN}
+          github_token: ${{secrets.BUILD_TOKEN}}
 
       - name: Push apps changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
