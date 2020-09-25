@@ -1,5 +1,5 @@
 [submodule "workspaces/goldstack-apps"]
-	path = workspaces/goldstack-apps
+	path = workspaces/apps
 	url = git@github.com:goldstack/goldstack-apps.git
 [submodule "workspaces/templates"]
 	path = workspaces/templates
