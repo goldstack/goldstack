@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package-config-generate",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Utilities for working with package schemas.",
   "license": "MIT",
   "author": "Max Rohde",
@@ -18,7 +18,8 @@
     "prepublishOnly": "yarn run build",
     "publish": "utils-git changed --exec \"yarn npm publish $@\"",
     "test:ci": "jest --passWithNoTests --config=./jest.config.js",
-    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
+    "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
     "ts-json-schema-generator": "0.70.2",

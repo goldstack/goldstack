@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-docs-cli",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Max Rohde",
   "sideEffects": false,
   "main": "dist/utilsDocsTemplate.js",
@@ -21,12 +21,13 @@
     "publish": "utils-git changed --exec \"yarn npm publish $@\"",
     "test": "jest --config=./jest.config.js --watch",
     "test:ci": "jest --passWithNoTests --config=./jest.config.js",
-    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
+    "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-cli": "0.1.37",
-    "@goldstack/utils-docs": "0.2.0",
-    "@goldstack/utils-sh": "0.3.0",
+    "@goldstack/utils-cli": "0.2.0",
+    "@goldstack/utils-docs": "0.3.0",
+    "@goldstack/utils-sh": "0.4.0",
     "@types/yargs": "^15.0.5",
     "source-map-support": "^0.5.19",
     "yargs": "^15.4.1"

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-template",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -17,15 +17,16 @@
     "prepublishOnly": "yarn run build",
     "publish": "utils-git changed --exec \"yarn npm publish $@\"",
     "test:ci": "jest --passWithNoTests --config=./jest.config.js",
-    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
+    "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-config": "0.2.0",
-    "@goldstack/utils-sh": "0.3.0"
+    "@goldstack/utils-config": "0.3.0",
+    "@goldstack/utils-sh": "0.4.0"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.21",
-    "@goldstack/utils-json-to-ts": "0.2.0",
+    "@goldstack/utils-json-to-ts": "0.3.0",
     "@types/jest": "^25.2.3",
     "@types/node": "^14.0.6",
     "jest": "^26.0.1",
