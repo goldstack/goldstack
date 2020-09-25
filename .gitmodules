@@ -10,3 +10,6 @@
 [submodule "workspaces/templates-management"]
 	path = workspaces/templates-management
 	url = git@github.com:goldstack/goldstack-templates-management.git
+[submodule "workspaces/docs"]
+	path = workspaces/docs
+	url = git@github.com:goldstack/goldstack-docs.git
