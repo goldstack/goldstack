@@ -18,6 +18,10 @@
           {
             "name": "NEXT_PUBLIC_PROD_ONLY",
             "value": "true"
+          },
+          {
+            "name": "NEXT_PUBLIC_GOLDSTACK_DOCS",
+            "value": "https://docs.dev.goldstack.party/docs"
           }
         ]
       }

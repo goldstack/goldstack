@@ -7,6 +7,42 @@
   "headers": [],
   "dynamicRoutes": [
     {
+      "page": "/404",
+      "regex": "^\\/404$"
+    },
+    {
+      "page": "/index_builder",
+      "regex": "^\\/index_builder$"
+    },
+    {
+      "page": "/index",
+      "regex": "^\\/index$"
+    },
+    {
+      "page": "/pricing",
+      "regex": "^\\/pricing$"
+    },
+    {
+      "page": "/projects/[id]/configure/[step]",
+      "regex": "^\\/projects\\/[id]\\/configure\\/[step]$"
+    },
+    {
+      "page": "/projects/[id]/packages/[packageId]/download",
+      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/download$"
+    },
+    {
+      "page": "/projects/[id]/packages/[packageId]/pricing-options",
+      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/pricing-options$"
+    },
+    {
+      "page": "/projects/[id]/packages/[packageId]/purchase-template",
+      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/purchase-template$"
+    },
+    {
+      "page": "/terms-and-conditions",
+      "regex": "^\\/terms-and-conditions$"
+    },
+    {
       "page": "/projects/[id]/configure/[step]",
       "regex": "^\\/projects\\/([^/]+?)\\/configure\\/([^/]+?)(?:\\/)?$",
       "namedRegex": "^/projects/(?<id>[^/]+?)/configure/(?<step>[^/]+?)(?:/)?$",
