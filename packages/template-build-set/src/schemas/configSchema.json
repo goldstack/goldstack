@@ -176,6 +176,9 @@
       "additionalProperties": false,
       "description": "Configuration for a Goldstack project.",
       "properties": {
+        "createdAt": {
+          "type": "string"
+        },
         "owner": {
           "type": "string"
         },
