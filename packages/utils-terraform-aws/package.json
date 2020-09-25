@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-terraform-aws",
-  "version": "0.1.58",
+  "version": "0.2.0",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -19,12 +19,12 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.1.53",
-    "@goldstack/utils-config": "0.1.38",
+    "@goldstack/infra-aws": "0.2.0",
+    "@goldstack/utils-config": "0.2.0",
     "@goldstack/utils-log": "0.1.36",
-    "@goldstack/utils-package": "0.1.41",
-    "@goldstack/utils-sh": "0.2.3",
-    "@goldstack/utils-terraform": "0.1.58",
+    "@goldstack/utils-package": "0.2.0",
+    "@goldstack/utils-sh": "0.3.0",
+    "@goldstack/utils-terraform": "0.2.0",
     "aws-sdk": "2.721.0"
   },
   "devDependencies": {

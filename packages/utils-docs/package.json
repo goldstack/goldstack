@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-docs",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Utilities for working with documentation",
   "license": "MIT",
   "author": "Max Rohde",
@@ -21,7 +21,7 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "dependencies": {
-    "@goldstack/utils-sh": "0.2.3",
+    "@goldstack/utils-sh": "0.3.0",
     "@mapbox/rehype-prism": "0.3.1",
     "github-slugger": "1.2.0",
     "gray-matter": "^4.0.2",

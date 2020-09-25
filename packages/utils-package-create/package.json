@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package-create",
-  "version": "0.1.38",
+  "version": "0.2.0",
   "description": "Utilities for creating new packages.",
   "license": "MIT",
   "author": "Max Rohde",
@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "@goldstack/utils-log": "0.1.36",
-    "@goldstack/utils-sh": "0.2.3",
-    "@goldstack/utils-template": "0.1.37"
+    "@goldstack/utils-sh": "0.3.0",
+    "@goldstack/utils-template": "0.2.0"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.21",

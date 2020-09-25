@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-config",
-  "version": "0.1.38",
+  "version": "0.2.0",
   "description": "Utilities to work with JSON configuration files.",
   "license": "MIT",
   "author": "Max Rohde",
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@goldstack/utils-log": "0.1.36",
-    "@goldstack/utils-sh": "0.2.3",
+    "@goldstack/utils-sh": "0.3.0",
     "ajv": "^6.12.2",
     "handlebars": "^4.7.6"
   },

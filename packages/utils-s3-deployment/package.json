@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-s3-deployment",
-  "version": "0.1.54",
+  "version": "0.2.0",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -19,10 +19,10 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.1.53",
-    "@goldstack/utils-aws-cli": "0.1.52",
-    "@goldstack/utils-docker": "0.1.36",
-    "@goldstack/utils-sh": "0.2.3"
+    "@goldstack/infra-aws": "0.2.0",
+    "@goldstack/utils-aws-cli": "0.2.0",
+    "@goldstack/utils-docker": "0.2.0",
+    "@goldstack/utils-sh": "0.3.0"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.21",

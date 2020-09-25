@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package",
-  "version": "0.1.41",
+  "version": "0.2.0",
   "description": "Utilities to work with Goldstack package configurations.",
   "license": "MIT",
   "author": "Max Rohde",
@@ -21,9 +21,9 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "dependencies": {
-    "@goldstack/infra": "0.1.41",
-    "@goldstack/utils-config": "0.1.38",
-    "@goldstack/utils-sh": "0.2.3",
+    "@goldstack/infra": "0.2.0",
+    "@goldstack/utils-config": "0.2.0",
+    "@goldstack/utils-sh": "0.3.0",
     "yargs": "^15.4.1"
   },
   "devDependencies": {
