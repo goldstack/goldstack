@@ -4,9 +4,9 @@ Getting started on a new project is fun ... until it isn't. Goldstack provides c
 
 ### Goldstack Resources
 
-- 😻 [Goldstack Template Framework](https://github.com/goldstack/goldstack-lib) Our open source framework for building sweet-as starter templates
-- 🐛 [Report an issue](https://github.com/goldstack/goldstack/issues)
--  [Goldstack Documentation]()
+- 😻  [Goldstack Template Framework](https://github.com/goldstack/goldstack-lib) Our open source framework for building sweet-as starter templates
+- 🐛  [Report an issue](https://github.com/goldstack/goldstack/issues)
+- 📚  [Goldstack Documentation](https://docs.goldstack.party/docs)
 
 <!--
 **goldstack/goldstack** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
