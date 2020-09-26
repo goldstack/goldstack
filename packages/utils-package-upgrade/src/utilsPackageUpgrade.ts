@@ -11,17 +11,17 @@ export const ensureLocalDependencies = async ({
   rootDir: string;
 }): Promise<void> => {
   const globStr = (rootDir || '') + 'workspaces/*/packages/*/package.json';
-  console.log(globStr);
   const packages = await glob([globStr]);
 
   for (const packageFile of packages) {
-    console.log(packageFile);
     const packageJson = JSON.parse(fs.readFileSync(packageFile, 'utf-8'));
     const packageName = packageJson.name;
     const packageVersion = packageJson.version;
     const command = `up ${packageName}@${packageVersion}`;
-    console.log(command);
-
-    yarn(rootDir, command);
+    try {
+      yarn(rootDir || '.', command);
+    } catch (e) {
+      console.log('failed for ' + packageFile);
+    }
   }
 };
