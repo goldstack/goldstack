@@ -2,7 +2,7 @@ import routes from '../utils/routing/routes-manifest.json';
 
 it('Should match a route', () => {
   const request = {
-    uri: '/docs/templates/app-nextjs',
+    uri: '/docs/modules/app-nextjs',
   };
 
   const extension =
@@ -15,5 +15,5 @@ it('Should match a route', () => {
     }
   }
 
-  expect(request.uri).toEqual('/docs/templates/app-nextjs.html');
+  expect(request.uri).toEqual('/docs/modules/app-nextjs.html');
 });
