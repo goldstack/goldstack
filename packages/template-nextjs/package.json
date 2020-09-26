@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-nextjs",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -29,9 +29,9 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.3.1",
-    "@goldstack/infra-aws": "0.3.1",
-    "@goldstack/template-static-website-aws": "0.3.1",
-    "@goldstack/utils-aws-cli": "0.3.1",
+    "@goldstack/infra-aws": "0.3.2",
+    "@goldstack/template-static-website-aws": "0.3.2",
+    "@goldstack/utils-aws-cli": "0.3.2",
     "@goldstack/utils-cli": "0.2.0",
     "@goldstack/utils-config": "0.3.1",
     "@goldstack/utils-log": "0.2.0",
@@ -39,7 +39,7 @@
     "@goldstack/utils-package-config": "0.3.1",
     "@goldstack/utils-sh": "0.4.1",
     "@goldstack/utils-template": "0.3.1",
-    "@goldstack/utils-terraform": "0.3.1",
+    "@goldstack/utils-terraform": "0.3.2",
     "glob": "^7.1.6",
     "yargs": "^15.4.1"
   },

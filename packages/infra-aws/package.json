@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/infra-aws",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Utilities to work with AWS infrastructrue via the cli.",
   "license": "MIT",
   "author": "Max Rohde",
