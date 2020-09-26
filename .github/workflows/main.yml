@@ -249,10 +249,13 @@ jobs:
       - name: Commit latest deployed image hash
         if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
         run: |
+          cd workspaces/templates-management
           git status
-          git add workspaces/templates-management/packages/template-management-cli/src/state/deployments.json
+          git add packages/template-management-cli/src/state/deployments.json
           git commit -m "Publishing updated docker deployment"
           git pull
+          git status
+          cd ../..
 
       - name: Push deployed image hash change
         if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
