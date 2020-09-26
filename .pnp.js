@@ -383,6 +383,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "workspace:workspaces/templates-lib/packages/utils-nodemonx"
       ],
       [
+        "@goldstack/utils-package-upgrade",
+        "workspace:workspaces/templates-lib/packages/utils-package-upgrade"
+      ],
+      [
         "@typescript-eslint/eslint-plugin",
         "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.34.0"
       ],
@@ -444,6 +448,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@ampproject/toolbox-optimizer", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.5.14"],
             ["@goldstack/nodemonx", "workspace:workspaces/templates-lib/packages/utils-nodemonx"],
+            ["@goldstack/utils-package-upgrade", "workspace:workspaces/templates-lib/packages/utils-package-upgrade"],
             ["@typescript-eslint/eslint-plugin", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.34.0"],
             ["@typescript-eslint/parser", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.34.0"],
             ["@yarnpkg/doctor", "npm:2.0.0-rc.18"],
@@ -3616,8 +3621,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@goldstack/utils-package-upgrade", "workspace:workspaces/templates-lib/packages/utils-package-upgrade"],
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
+            ["@goldstack/utils-yarn", "workspace:workspaces/templates-lib/packages/utils-yarn"],
             ["@types/jest", "npm:25.2.3"],
             ["@types/node", "npm:14.11.2"],
+            ["fast-glob", "npm:3.2.4"],
             ["jest", "npm:26.4.2"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.4.0"],
             ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=0ea415"]
@@ -11086,6 +11093,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/fast-glob-npm-3.2.2-5f42de738e-be3e486275.zip/node_modules/fast-glob/",
           "packageDependencies": [
             ["fast-glob", "npm:3.2.2"],
+            ["@nodelib/fs.stat", "npm:2.0.3"],
+            ["@nodelib/fs.walk", "npm:1.2.4"],
+            ["glob-parent", "npm:5.1.1"],
+            ["merge2", "npm:1.4.1"],
+            ["micromatch", "npm:4.0.2"],
+            ["picomatch", "npm:2.2.2"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:3.2.4", {
+          "packageLocation": "./.yarn/cache/fast-glob-npm-3.2.4-be5d1d4c86-18f9eca898.zip/node_modules/fast-glob/",
+          "packageDependencies": [
+            ["fast-glob", "npm:3.2.4"],
             ["@nodelib/fs.stat", "npm:2.0.3"],
             ["@nodelib/fs.walk", "npm:1.2.4"],
             ["glob-parent", "npm:5.1.1"],
@@ -19688,6 +19708,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["root", "workspace:."],
             ["@ampproject/toolbox-optimizer", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.5.14"],
             ["@goldstack/nodemonx", "workspace:workspaces/templates-lib/packages/utils-nodemonx"],
+            ["@goldstack/utils-package-upgrade", "workspace:workspaces/templates-lib/packages/utils-package-upgrade"],
             ["@typescript-eslint/eslint-plugin", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.34.0"],
             ["@typescript-eslint/parser", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.34.0"],
             ["@yarnpkg/doctor", "npm:2.0.0-rc.18"],
