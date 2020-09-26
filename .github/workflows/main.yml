@@ -186,7 +186,7 @@ jobs:
           AWS_DEFAULT_REGION: us-west-2
 
       - name: Build template management
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true'
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true' || steps.changed-docs.outputs.changed == 'true'
         run: |
           cd workspaces/templates-management
           yarn compile
