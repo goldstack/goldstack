@@ -6,6 +6,7 @@
   "author": "Max Rohde",
   "sideEffects": false,
   "main": "dist/utilsPackageUpgrade.js",
+  "bin": "bin/utils-package-upgrade",
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile:watch",
@@ -19,6 +20,10 @@
     "test:ci": "jest --passWithNoTests --config=./jest.config.js",
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
     "version:apply:force": "yarn version $@ && yarn version apply"
+  },
+  "dependencies": {
+    "@goldstack/utils-yarn": "0.3.1",
+    "fast-glob": "^3.2.4"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.21",

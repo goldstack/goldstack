@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+require('./../dist/utilsPackageUpgradeCli.js')
+  .run(process.argv)
+  .catch((e) => {
+    console.log(e);
+    process.exit(1);
+  });
