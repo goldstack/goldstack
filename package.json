@@ -20,7 +20,7 @@
     "test:watch": "nodemonx --watch . --exec 'yarn test:ci'"
   },
   "devDependencies": {
-    "@goldstack/nodemonx": "0.3.0",
+    "@goldstack/nodemonx": "0.3.1",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
     "eslint": "^7.1.0",
