@@ -161,23 +161,10 @@
       "type": "object"
     },
     "AWSUsers": {
-      "anyOf": [
-        {
-          "maxItems": 0,
-          "minItems": 0,
-          "type": "array"
-        },
-        {
-          "items": [
-            {
-              "$ref": "#/definitions/AWSUser"
-            }
-          ],
-          "maxItems": 1,
-          "minItems": 1,
-          "type": "array"
-        }
-      ]
+      "items": {
+        "$ref": "#/definitions/AWSUser"
+      },
+      "type": "array"
     },
     "AwsUserConfig": {
       "anyOf": [

@@ -1,6 +1,6 @@
 import { AWSDeploymentRegion } from './awsDeployment';
 
-export type AWSUsers = [] | [AWSUser];
+export type AWSUsers = AWSUser[];
 
 /**
  * Identifier for this user. No spaces allowed.
