@@ -15,32 +15,52 @@
       "regex": "^\\/docs$"
     },
     {
-      "page": "/docs/templates",
-      "regex": "^\\/docs\\/templates$"
+      "page": "/docs/goldstack",
+      "regex": "^\\/docs\\/goldstack$"
     },
     {
-      "page": "/docs/templates/app-nextjs-bootstrap",
-      "regex": "^\\/docs\\/templates\\/app-nextjs-bootstrap$"
+      "page": "/docs/goldstack/about",
+      "regex": "^\\/docs\\/goldstack\\/about$"
     },
     {
-      "page": "/docs/templates/app-nextjs",
-      "regex": "^\\/docs\\/templates\\/app-nextjs$"
+      "page": "/docs/goldstack/configuration",
+      "regex": "^\\/docs\\/goldstack\\/configuration$"
     },
     {
-      "page": "/docs/templates/email-send",
-      "regex": "^\\/docs\\/templates\\/email-send$"
+      "page": "/docs/goldstack/getting-started",
+      "regex": "^\\/docs\\/goldstack\\/getting-started$"
     },
     {
-      "page": "/docs/templates/lambda-express",
-      "regex": "^\\/docs\\/templates\\/lambda-express$"
+      "page": "/docs/goldstack/how-does-it-work",
+      "regex": "^\\/docs\\/goldstack\\/how-does-it-work$"
     },
     {
-      "page": "/docs/templates/s3",
-      "regex": "^\\/docs\\/templates\\/s3$"
+      "page": "/docs/modules",
+      "regex": "^\\/docs\\/modules$"
     },
     {
-      "page": "/docs/templates/static-website-aws",
-      "regex": "^\\/docs\\/templates\\/static-website-aws$"
+      "page": "/docs/modules/app-nextjs-bootstrap",
+      "regex": "^\\/docs\\/modules\\/app-nextjs-bootstrap$"
+    },
+    {
+      "page": "/docs/modules/app-nextjs",
+      "regex": "^\\/docs\\/modules\\/app-nextjs$"
+    },
+    {
+      "page": "/docs/modules/email-send",
+      "regex": "^\\/docs\\/modules\\/email-send$"
+    },
+    {
+      "page": "/docs/modules/lambda-express",
+      "regex": "^\\/docs\\/modules\\/lambda-express$"
+    },
+    {
+      "page": "/docs/modules/s3",
+      "regex": "^\\/docs\\/modules\\/s3$"
+    },
+    {
+      "page": "/docs/modules/static-website-aws",
+      "regex": "^\\/docs\\/modules\\/static-website-aws$"
     },
     {
       "page": "/index",
@@ -61,8 +81,8 @@
       "routeKeys": [
         "slug"
       ],
-      "dataRouteRegex": "^\\/_next\\/data\\/1S4DnkhOHrS\\-wUaP3A5Oh\\/docs\\/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/1S4DnkhOHrS\\-wUaP3A5Oh/docs/(?<slug>.+?)\\.json$"
+      "dataRouteRegex": "^\\/_next\\/data\\/pHLCPdjbqZ2txCSYdZTBP\\/docs\\/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/pHLCPdjbqZ2txCSYdZTBP/docs/(?<slug>.+?)\\.json$"
     }
   ]
 }

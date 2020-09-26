@@ -23,8 +23,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const path = query.slug ? (query.slug as string[]).join('/') : '/';
 
-  console.log(context);
-  console.log(path);
   // const { path } = context.params.query;
   // console.log(path);
   let pageData: any;
@@ -36,17 +34,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     pageData = null;
   }
 
-  console.log(pageData);
   return {
     props: {
       contentHtml: pageData ? pageData.html : null,
       title: pageData ? pageData.data.title : null,
     },
   };
-
-  // return {
-  //   props: {},
-  // };
 };
 
 export default Docs;
