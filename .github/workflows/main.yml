@@ -57,6 +57,11 @@ jobs:
         id: changed-apps 
         with:
           paths: workspaces/apps
+      - name: Check if docs changed
+        uses: marceloprado/has-changed-path@20aaabb
+        id: changed-docs
+        with:
+          paths: workspaces/docs
 
       - name: Build libraries
         if: steps.changed-libs.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true'
@@ -189,7 +194,7 @@ jobs:
           cd ../..
 
       - name: Build apps 
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true'
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true' || steps.changed-docs.outputs.changed == 'true'
         run: |
           cd workspaces/apps
           yarn compile
@@ -201,6 +206,19 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
+
+      - name: Build docs 
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true' || steps.changed-docs.outputs.changed == 'true'
+        run: |
+          cd workspaces/docs
+          yarn compile
+          yarn test:ci
+          cd ../..
+        env:
+          AWS_USER_NAME: goldstack-dev
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-
 
       # Generate schemas and docs
       - name: Generate schemas
