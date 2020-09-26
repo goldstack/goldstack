@@ -42,7 +42,7 @@
     "yargs": "^15.4.1"
   },
   "devDependencies": {
-    "@goldstack/template-docker-image-aws": "0.3.3",
+    "@goldstack/template-docker-image-aws": "0.3.4",
     "@goldstack/utils-sh": "0.4.1",
     "@types/jest": "^25.2.3",
     "@types/mock-aws-s3": "^2.6.1",
