@@ -10,7 +10,7 @@ describe('<Navigation/>', () => {
   it('Should render documentation navigation', async () => {
     const items: SitemapItem[] = sitemap;
     render(<Navigation items={items} currentPath="/"></Navigation>);
-    const navElement = await screen.findByText('Next.js Template');
+    const navElement = await screen.findByText('Next.js');
     expect(navElement).toBeTruthy();
   });
 });

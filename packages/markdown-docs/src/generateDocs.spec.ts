@@ -3,7 +3,7 @@ import { generateDocs } from './generateDocs';
 import { mkdir } from '@goldstack/utils-sh';
 
 const getDocsDir = (): string => {
-  return './../../../goldstack/docs/';
+  return './../../docs/';
 };
 
 describe('Generate docs', () => {

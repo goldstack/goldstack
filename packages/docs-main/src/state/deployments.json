@@ -13,5 +13,20 @@
         "value": "E3BNU01I6F457O"
       }
     }
+  },
+  {
+    "name": "prod",
+    "terraform": {
+      "edge_function_name": {
+        "sensitive": false,
+        "type": "string",
+        "value": "docs-goldstack-party-edge"
+      },
+      "website_cdn_root_id": {
+        "sensitive": false,
+        "type": "string",
+        "value": "E3BAUG868TH2Q4"
+      }
+    }
   }
 ]

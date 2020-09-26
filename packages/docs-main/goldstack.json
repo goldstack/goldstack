@@ -36,7 +36,7 @@
           }
         ]
       },
-      "awsUser": "goldstack-dev",
+      "awsUser": "goldstack-prod",
       "awsRegion": "us-west-2"
     }
   ]
