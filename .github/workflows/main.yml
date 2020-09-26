@@ -64,7 +64,6 @@ jobs:
           paths: workspaces/docs
 
       - name: Build libraries
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true'
         run: |
           cd workspaces/templates-lib
           yarn compile
@@ -173,7 +172,6 @@ jobs:
           github_token: ${{secrets.BUILD_TOKEN}}
 
       - name: Build templates
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true'
         run: |
           cd workspaces/templates
           yarn compile
@@ -186,7 +184,6 @@ jobs:
           AWS_DEFAULT_REGION: us-west-2
 
       - name: Build template management
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true' || steps.changed-docs.outputs.changed == 'true'
         run: |
           cd workspaces/templates-management
           yarn compile
