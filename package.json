@@ -20,6 +20,7 @@
     "generate:schema": "yarn workspace templates-lib generate:schema && yarn workspace templates-management generate:schema && yarn workspace apps generate:schema",
     "lint": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml",
     "lint:fix": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml --fix",
+    "packages:ensure-local": "utils-package-upgrade",
     "test:ci": "echo 'Command cannot run for root'",
     "test:watch": "nodemonx --watch . --exec 'yarn test:ci'"
   },
@@ -27,7 +28,8 @@
     "@ampproject/toolbox-optimizer": "^2.5.14"
   },
   "devDependencies": {
-    "@goldstack/nodemonx": "0.3.0",
+    "@goldstack/nodemonx": "0.3.1",
+    "@goldstack/utils-package-upgrade": "0.2.0",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
     "@yarnpkg/doctor": "^2.0.0-rc.17",

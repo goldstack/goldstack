@@ -156,7 +156,7 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           directory: workspaces/templates
-          repository: goldstack/goldstack-templates
+          repository: goldstack/goldstack-templates-priv
           github_token: ${{secrets.BUILD_TOKEN}}
 
       - name: Push template management changes
