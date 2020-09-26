@@ -32,7 +32,7 @@
   "dependencies": {
     "@goldstack/goldstack-api": "0.1.0",
     "@goldstack/infra": "0.3.1",
-    "@goldstack/infra-aws": "0.3.1",
+    "@goldstack/infra-aws": "0.3.2",
     "@goldstack/project-config": "0.1.0",
     "@goldstack/project-repository": "0.1.0",
     "@goldstack/utils-package": "0.3.1",
@@ -51,7 +51,7 @@
     "swr": "^0.2.3"
   },
   "devDependencies": {
-    "@goldstack/template-nextjs": "0.3.1",
+    "@goldstack/template-nextjs": "0.3.2",
     "@goldstack/utils-docs-cli": "0.3.1",
     "@goldstack/utils-sh": "0.4.1",
     "@testing-library/jest-dom": "^5.9.0",
