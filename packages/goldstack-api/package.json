@@ -31,7 +31,7 @@
     "@goldstack/project-repository": "0.1.0",
     "@goldstack/session-repository": "0.1.0",
     "@goldstack/template-build": "0.1.0",
-    "@goldstack/template-lambda-express": "0.3.6",
+    "@goldstack/template-lambda-express": "0.3.7",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/template-repository-bucket": "0.1.0",
     "@goldstack/utils-project": "0.3.1",
