@@ -65,12 +65,13 @@ const buildNavLevel3 = (params: {
 
 const buildNavLevel2 = (params: {
   items: SitemapItem[];
+  sortKey: number;
   currentPath: string;
 }): JSX.Element => {
   return (
-    <Level2Wrapper>
+    <Level2Wrapper key={params.sortKey}>
       {params.items.map((item, idx) => (
-        <>
+        <div key={idx}>
           {(!item.children || item.children.length === 0) && (
             <Level2Item
               title={item.title}
@@ -86,7 +87,7 @@ const buildNavLevel2 = (params: {
               title: item.title,
               key: idx + 1000,
             })}
-        </>
+        </div>
       ))}
     </Level2Wrapper>
   );
@@ -104,6 +105,7 @@ const buildNavLevel1 = (params: {
           {item.children &&
             buildNavLevel2({
               items: item.children,
+              sortKey: idx,
               currentPath: params.currentPath,
             })}
         </div>
