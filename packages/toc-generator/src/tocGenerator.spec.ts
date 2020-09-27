@@ -1,5 +1,6 @@
 import moduleDoc from './data/module-nextjs.json';
 import aboutDoc from './data/about.json';
+import howDoesItWorkDoc from './data/how-does-it-work.json';
 
 import { generateToc } from './tocGenerator';
 import cheerio from 'cheerio';
@@ -25,5 +26,10 @@ describe('TOC Generator', () => {
     expect(subheadings).toHaveLength(5);
     expect(subheadings[0].title).toEqual('Only the best tech');
     expect(subheadings[2].id).toEqual('serverless');
+  });
+  it('Should detect highest level heading automatically', () => {
+    const $ = cheerio.load(howDoesItWorkDoc.html);
+    const res = generateToc($);
+    expect(res).toHaveLength(5);
   });
 });

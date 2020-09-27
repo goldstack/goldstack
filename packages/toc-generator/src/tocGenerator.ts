@@ -42,6 +42,25 @@ const generateLevel = (
   });
 };
 
+const getHighestLevelHeading = (
+  $: cheerio.Root,
+  max: number,
+  current: number
+): number | undefined => {
+  if (current > max) {
+    return undefined;
+  }
+  if ($(`h${current}`).length > 0) {
+    return current;
+  }
+
+  return getHighestLevelHeading($, max, current + 1);
+};
+
 export const generateToc = ($: cheerio.Root): Heading[] => {
-  return generateLevel($.root(), 2, $);
+  const startHeadingLevel = getHighestLevelHeading($, 4, 1);
+  if (!startHeadingLevel) {
+    return [];
+  }
+  return generateLevel($.root(), startHeadingLevel, $);
 };

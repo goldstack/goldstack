@@ -11,14 +11,14 @@ import Col from 'react-bootstrap/Col';
 
 import sitemap from './../data/docs/sitemap.json';
 
-import { generateToc, Heading } from '@goldstack/toc-generator';
-import cheerio from 'cheerio';
+import { Heading } from '@goldstack/toc-generator';
 import styles from './Docs.module.css';
 
 import Toc from './Toc';
 interface DocsProps {
   contentHtml?: string;
   title?: string;
+  toc: Heading[];
 }
 
 const Docs = (props: DocsProps): JSX.Element => {
@@ -26,13 +26,7 @@ const Docs = (props: DocsProps): JSX.Element => {
 
   const path = query.slug ? (query.slug as string[]).join('/') : '/';
   const content = props.contentHtml || '';
-  let toc: Heading[];
-  if (props.contentHtml) {
-    const $ = cheerio.load(props.contentHtml);
-    toc = generateToc($);
-  } else {
-    toc = [];
-  }
+
   return (
     <>
       <Head>
@@ -57,7 +51,7 @@ const Docs = (props: DocsProps): JSX.Element => {
             ></div>
           </div>
           <div className="col-lg-3">
-            <Toc headings={toc}></Toc>
+            <Toc headings={props.toc}></Toc>
           </div>
         </div>
         <Row>
