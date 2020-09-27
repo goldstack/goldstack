@@ -63,6 +63,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/docs/packages/markdown-docs"
       },
       {
+        "name": "@goldstack/toc-generator",
+        "reference": "workspace:workspaces/docs/packages/toc-generator"
+      },
+      {
         "name": "@goldstack/app-nextjs",
         "reference": "workspace:workspaces/templates/packages/app-nextjs"
       },
@@ -343,6 +347,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/template-repository-bucket", ["workspace:workspaces/templates-management/packages/template-repository-bucket"]],
       ["@goldstack/template-s3", ["workspace:workspaces/templates-lib/packages/template-s3"]],
       ["@goldstack/template-static-website-aws", ["workspace:workspaces/templates-lib/packages/template-static-website-aws"]],
+      ["@goldstack/toc-generator", ["workspace:workspaces/docs/packages/toc-generator"]],
       ["@goldstack/utils-aws-cli", ["workspace:workspaces/templates-lib/packages/utils-aws-cli"]],
       ["@goldstack/utils-cli", ["workspace:workspaces/templates-lib/packages/utils-cli"]],
       ["@goldstack/utils-config", ["workspace:workspaces/templates-lib/packages/utils-config"]],
@@ -2381,9 +2386,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/docs-main", "workspace:workspaces/docs/packages/docs-main"],
             ["@goldstack/markdown-docs", "workspace:workspaces/docs/packages/markdown-docs"],
             ["@goldstack/template-nextjs", "workspace:workspaces/templates-lib/packages/template-nextjs"],
+            ["@goldstack/toc-generator", "workspace:workspaces/docs/packages/toc-generator"],
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@testing-library/jest-dom", "npm:5.11.4"],
             ["@testing-library/react", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:10.4.9"],
+            ["@types/cheerio", "npm:0.22.22"],
             ["@types/jest", "npm:25.2.3"],
             ["@types/node", "npm:14.11.2"],
             ["@types/react", "npm:16.9.49"],
@@ -2391,6 +2398,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/testing-library__jest-dom", "npm:5.9.2"],
             ["@types/testing-library__react", "npm:10.2.0"],
             ["babel-plugin-styled-components", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:1.11.1"],
+            ["cheerio", "npm:1.0.0-rc.3"],
             ["concurrently", "npm:5.2.0"],
             ["extracted-loader", "npm:1.0.7"],
             ["ignore-loader", "npm:0.1.2"],
@@ -3360,6 +3368,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.4.0"],
             ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=0ea415"],
             ["yargs", "npm:15.4.1"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@goldstack/toc-generator", [
+        ["workspace:workspaces/docs/packages/toc-generator", {
+          "packageLocation": "./workspaces/docs/packages/toc-generator/",
+          "packageDependencies": [
+            ["@goldstack/toc-generator", "workspace:workspaces/docs/packages/toc-generator"],
+            ["@types/cheerio", "npm:0.22.22"],
+            ["@types/jest", "npm:25.2.3"],
+            ["@types/node", "npm:14.11.2"],
+            ["cheerio", "npm:1.0.0-rc.3"],
+            ["jest", "npm:26.4.2"],
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.4.0"],
+            ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=0ea415"]
           ],
           "linkType": "SOFT",
         }]
@@ -4591,6 +4615,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/keyv", "npm:3.1.1"],
             ["@types/node", "npm:14.0.13"],
             ["@types/responselike", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/cheerio", [
+        ["npm:0.22.22", {
+          "packageLocation": "./.yarn/cache/@types-cheerio-npm-0.22.22-98faa121a6-a83ba86ee9.zip/node_modules/@types/cheerio/",
+          "packageDependencies": [
+            ["@types/cheerio", "npm:0.22.22"],
+            ["@types/node", "npm:14.0.13"]
           ],
           "linkType": "HARD",
         }]
@@ -8040,6 +8074,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["cheerio", [
+        ["npm:1.0.0-rc.3", {
+          "packageLocation": "./.yarn/cache/cheerio-npm-1.0.0-rc.3-27acf9bb0c-142f40a91b.zip/node_modules/cheerio/",
+          "packageDependencies": [
+            ["cheerio", "npm:1.0.0-rc.3"],
+            ["css-select", "npm:1.2.0"],
+            ["dom-serializer", "npm:0.1.1"],
+            ["entities", "npm:1.1.2"],
+            ["htmlparser2", "npm:3.10.1"],
+            ["lodash", "npm:4.17.20"],
+            ["parse5", "npm:3.0.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["chokidar", [
         ["npm:2.1.8", {
           "packageLocation": "./.yarn/cache/chokidar-npm-2.1.8-32fdcd020e-0758dcc7c6.zip/node_modules/chokidar/",
@@ -10015,6 +10064,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["dom-serializer", [
+        ["npm:0.1.1", {
+          "packageLocation": "./.yarn/cache/dom-serializer-npm-0.1.1-4c6e4ec242-5c6c89b18c.zip/node_modules/dom-serializer/",
+          "packageDependencies": [
+            ["dom-serializer", "npm:0.1.1"],
+            ["domelementtype", "npm:1.3.1"],
+            ["entities", "npm:1.1.2"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:0.2.2", {
           "packageLocation": "./.yarn/cache/dom-serializer-npm-0.2.2-2e24969c0e-598e05e71b.zip/node_modules/dom-serializer/",
           "packageDependencies": [
@@ -10075,6 +10133,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/domhandler-npm-2.3.0-e56ff1a300-c83d4b365f.zip/node_modules/domhandler/",
           "packageDependencies": [
             ["domhandler", "npm:2.3.0"],
+            ["domelementtype", "npm:1.3.1"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:2.4.2", {
+          "packageLocation": "./.yarn/cache/domhandler-npm-2.4.2-497ea9cea1-dbe99b096a.zip/node_modules/domhandler/",
+          "packageDependencies": [
+            ["domhandler", "npm:2.4.2"],
             ["domelementtype", "npm:1.3.1"]
           ],
           "linkType": "HARD",
@@ -10336,6 +10402,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/entities-npm-1.0.0-9c56bc335a-c93fddfd1e.zip/node_modules/entities/",
           "packageDependencies": [
             ["entities", "npm:1.0.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.1.2", {
+          "packageLocation": "./.yarn/cache/entities-npm-1.1.2-78e77a4b6d-3a4259db35.zip/node_modules/entities/",
+          "packageDependencies": [
+            ["entities", "npm:1.1.2"]
           ],
           "linkType": "HARD",
         }],
@@ -12685,6 +12758,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["htmlparser2", [
+        ["npm:3.10.1", {
+          "packageLocation": "./.yarn/cache/htmlparser2-npm-3.10.1-1bc462e640-94fa6312e6.zip/node_modules/htmlparser2/",
+          "packageDependencies": [
+            ["htmlparser2", "npm:3.10.1"],
+            ["domelementtype", "npm:1.3.1"],
+            ["domhandler", "npm:2.4.2"],
+            ["domutils", "npm:1.7.0"],
+            ["entities", "npm:1.1.2"],
+            ["inherits", "npm:2.0.4"],
+            ["readable-stream", "npm:3.6.0"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:3.8.3", {
           "packageLocation": "./.yarn/cache/htmlparser2-npm-3.8.3-11aabf2776-82a71d18df.zip/node_modules/htmlparser2/",
           "packageDependencies": [
@@ -17299,6 +17385,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["parse5", [
+        ["npm:3.0.3", {
+          "packageLocation": "./.yarn/cache/parse5-npm-3.0.3-fb7c9e4969-4708652470.zip/node_modules/parse5/",
+          "packageDependencies": [
+            ["parse5", "npm:3.0.3"],
+            ["@types/node", "npm:14.0.13"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:5.1.1", {
           "packageLocation": "./.yarn/cache/parse5-npm-5.1.1-8e63d82cff-fad72ff501.zip/node_modules/parse5/",
           "packageDependencies": [
