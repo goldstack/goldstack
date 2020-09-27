@@ -4,5 +4,3 @@ title: Goldstack Documentation
 ---
 
 Welcome to the Goldstack documentation 👋.
-
-
