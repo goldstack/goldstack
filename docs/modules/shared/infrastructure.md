@@ -4,7 +4,7 @@ All infrastructure for this module is defined in Terraform. You can find the Ter
 
 There are a number of package scripts defined for working with infrastructure. For all infrastructure scripts, we will need to define which deployment they should apply to for. This is done by referencing the deployment name as configured in `goldstack.json`. The following commands are supported:
 
-```
+```bash
 yarn infra up [deploymentName]
 ```
 
@@ -12,25 +12,25 @@ Which will run the commands `init`, `plan` and `apply` to stand up the infrastru
 
 However, if you are familiar with Terraform and want more fine-grained control over the deployment of your infrastructure, the following commands are also supported:
 
-```
+```bash
 yarn infra init [deploymentName]
 ```
 
 Which will run `terraform init` to initialise the deployment.
 
-```
+```bash
 yarn infra plan [deploymentName]
 ```
 
 Which will run `terraform plan` and show the delta for the infrastructure.
 
-```
+```bash
 yarn infra apply [deploymentName]
 ```
 
 Which will run `terraform apply` and deploy the infrastructure. This requires `yarn infra plan` to have run successfully before.
 
-```
+```bash
 yarn infra destroy [deploymentName]
 ```
 

@@ -1,6 +1,6 @@
 [!embed](./../shared/getting-started-infrastructure.md)
 
-#### Development
+### Development
 
 This is how an the S3 module can be used from another module:
 

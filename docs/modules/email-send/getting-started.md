@@ -1,6 +1,6 @@
 [!embed](./../shared/getting-started-infrastructure.md)
 
-#### Development
+### Development
 
 See below how this module can be used by other modules (for instance within an [Express Server](./../modules/lambda-express)).
 
