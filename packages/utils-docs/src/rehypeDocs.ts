@@ -19,10 +19,10 @@ export default function rehypeDocs({ filePath, tag, processor }) {
 
     if (props.href === href) {
       const isAbsoluteUrl = ABSOLUTE_URL.test(href);
-      const isHash = href[0] === '#';
-      const isRepoUrl = !isHash;
+      // const isHash = href[0] === '#';
+      // const isRepoUrl = !isHash;
 
-      if (isAbsoluteUrl || isRepoUrl) {
+      if (isAbsoluteUrl) {
         props.className = 'absolute';
         props.target = '_blank';
         props.rel = 'noopener noreferrer';
