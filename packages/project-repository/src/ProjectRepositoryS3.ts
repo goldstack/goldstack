@@ -6,7 +6,6 @@ import { AWSError } from 'aws-sdk/lib/core';
 import ProjectRepository, { ProjectId } from './ProjectRepositoryInterface';
 import { ProjectConfiguration } from '@goldstack/utils-project';
 
-import { PackageConfig } from '@goldstack/project-config';
 import { zip, rmSafe, unzip, mkdir, tempDir } from '@goldstack/utils-sh';
 import { download } from '@goldstack/utils-s3';
 import fs from 'fs';

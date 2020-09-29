@@ -57,6 +57,10 @@ export class S3TemplateRepository implements TemplateRepository {
     } catch (e) {
       const awsError = e as AWSError;
       if (awsError.code === 'NoSuchKey') {
+        console.warn(
+          'Attempting to access non-existing template:',
+          templateName
+        );
         return undefined;
       }
       throw e;
