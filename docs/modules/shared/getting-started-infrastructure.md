@@ -4,7 +4,7 @@ The first thing we recommend to do with a new module is to stand up the infrastr
 
 In order to stand up the infrastructure, now run in the command line:
 
-```bash 
+```bash
 yarn infra up [deploymentName]
 ```
 
