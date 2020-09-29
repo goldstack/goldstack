@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "include": [
     "./src/**/*",
-    "./next-env.d.ts",
+    "./next-env.d.ts"
   ],
   "compilerOptions": {
     "outDir": "dist",
@@ -12,7 +12,7 @@
     "module": "esnext",
     "noEmit": false,
     "moduleResolution": "node",
-    "isolatedModules": false
+    "isolatedModules": true
   },
   "exclude": [
     "node_modules"

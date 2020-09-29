@@ -7,10 +7,17 @@ import { sessionUser } from '@goldstack/auth';
 import {
   connectSessionRepository,
   SessionRepository,
+  SessionData,
 } from '@goldstack/session-repository';
 
 import { connect, getFromDomain } from '@goldstack/goldstack-email-send';
 import assert from 'assert';
+
+import { connectProjectRepository } from '@goldstack/project-repository';
+
+import { v4 as uuid4 } from 'uuid';
+import { getDocLinks } from './utils/docLinks';
+import { rmSafe, tempDir } from '@goldstack/utils-sh';
 
 const router = Router();
 
@@ -104,6 +111,10 @@ export const postSessionHandler = async (
   }
 };
 
+const isPaymentReceived = (sessionData: SessionData): boolean => {
+  return !!(sessionData?.paymentIntent || sessionData?.coupon);
+};
+
 export const getSessionHandler = async (
   req: Request,
   res: Response
@@ -124,7 +135,7 @@ export const getSessionHandler = async (
     }
 
     res.status(200).json({
-      paymentReceived: !!(sessionData?.paymentIntent || sessionData?.coupon),
+      paymentReceived: isPaymentReceived(sessionData),
     });
   } catch (e) {
     console.log('Error while getting session details: ' + e.message);
@@ -149,6 +160,27 @@ const performPurchase = async (params: {
   console.debug(
     `Sending out download URL: ${params.downloadUrl} to ${params.email}`
   );
+
+  const repo = await connectProjectRepository();
+  const workspacePath = `${tempDir()}work/session-purchase/${
+    params.projectId
+  }/${uuid4()}/`;
+  await repo.downloadProject(params.projectId, workspacePath);
+
+  const docLinks = [
+    {
+      link: 'https://docs.goldstack.party/docs/goldstack/getting-started',
+      packageName: 'First steps',
+    },
+    ...(await getDocLinks(workspacePath)),
+  ];
+
+  const gettingStartedLinks = docLinks
+    .map((docLink) => {
+      return `- ${docLink.packageName}: ${docLink.link}`;
+    })
+    .join('\n');
+
   await params.repo.storePurchase({
     sessionId: sessionData.sessionId,
     projectId: params.projectId,
@@ -167,13 +199,17 @@ const performPurchase = async (params: {
               'Please keep the following download link for your reference\n\n' +
               `${params.downloadUrl}?token=${sessionData?.sessionId}\n\n` +
               'You can also use this link to create new templates.\n\n' +
-              'The link will be valid for 30 days from your first template purchase.',
+              'The link will be valid for 30 days from your first template purchase.\n\n' +
+              'To get started, please see the following getting started guides:\n\n' +
+              gettingStartedLinks,
           },
         },
       },
       Source: '"Goldstack" <no-reply@' + (await getFromDomain()) + '>',
     })
     .promise();
+
+  await rmSafe(workspacePath);
 };
 
 export const putSessionHandler = async (
@@ -266,6 +302,21 @@ export const postPurchase = async (
       res.status(401).json({ errorMessage: 'Session expired' });
       return;
     }
+    if (!isPaymentReceived(sessionData)) {
+      console.error(
+        'Invalid attempt to purchase template. ProjectId:',
+        projectId,
+        'PackageId:',
+        packageId,
+        'SessionId',
+        sessionData.sessionId
+      );
+      res.status(400).json({
+        errorMessage:
+          'Attempted to perform purchase for session for which no payment has been stored.',
+      });
+      return;
+    }
     assert(sessionData.email);
     await performPurchase({
       userToken,
@@ -278,7 +329,7 @@ export const postPurchase = async (
     res.status(200).json({ result: 'success' });
     return;
   } catch (e) {
-    console.error('Error during putPurchase');
+    console.error('Error during postPurchase');
     console.error(e);
     res
       .status(500)

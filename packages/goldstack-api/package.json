@@ -20,7 +20,7 @@
     "test": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --watch --config=jest.config.js",
     "test:ci": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --config=jest.config.js --detectOpenHandles",
     "utils:seed-templates": "GOLDSTACK_DEPLOYMENT=local yarn node ./dist/src/utils/seedRepo",
-    "watch": "PORT=8731 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local GOLDSTACK_LOG_EMAILS=true nodemon --watch ../../../ --ignore '*/goldstackLocal/*' --ignore '*/work/*' --ext js --exec 'yarn node --async-stack-traces dist/src/local.js'"
+    "watch": "PORT=8731 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local GOLDSTACK_LOG_EMAILS=true nodemon --watch --verbose ../../../ --ignore '*/goldstackLocal/*' --ignore '*/work/*' --ext js --exec 'yarn node --async-stack-traces dist/src/local.js'"
   },
   "dependencies": {
     "@goldstack/auth": "0.1.0",
@@ -34,8 +34,10 @@
     "@goldstack/template-lambda-express": "0.3.7",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/template-repository-bucket": "0.1.0",
+    "@goldstack/utils-package": "0.3.1",
     "@goldstack/utils-project": "0.3.1",
     "@goldstack/utils-sh": "0.4.1",
+    "@goldstack/utils-template": "0.3.1",
     "aws-serverless-express": "^3.3.8",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",

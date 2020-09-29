@@ -16,6 +16,8 @@ import { getPackageConfigs } from '@goldstack/project-config';
 
 import { ProjectData } from '@goldstack/project-repository';
 
+import { getDocLinks } from './utils/docLinks';
+
 import builds from './packages';
 
 const router = Router();
@@ -168,7 +170,7 @@ export const getProjectDocsHandler = async (
 ): Promise<void> => {
   try {
     const { projectId } = req.params;
-    const { doc } = req.query;
+    const { doc, linksOnly: links } = req.query;
     const { userToken } = req.cookies;
     if (!projectId) {
       res.status(400).json({ errorMessage: 'Expected projectId in request' });
@@ -191,31 +193,39 @@ export const getProjectDocsHandler = async (
     const repo = await connectProjectRepository();
     const workspacePath = `${tempDir()}work/get-project-docs/${projectId}/${uuid4()}/`;
     await repo.downloadProject(projectId, workspacePath);
-    const packageConfigs = getPackageConfigs(workspacePath);
 
-    const result = await Promise.all(
-      packageConfigs.map(async (config) => {
-        const packagePath = config.pathInWorkspace;
-        const docPaths = docs.map((doc) => ({
-          name: doc,
-          path: `${workspacePath}${packagePath}/docs/${doc}.html`,
-        }));
+    if (!links) {
+      // send over actual rendered content of documentation
+      const packageConfigs = getPackageConfigs(workspacePath);
+      const result = await Promise.all(
+        packageConfigs.map(async (config) => {
+          const packagePath = config.pathInWorkspace;
+          const docPaths = docs.map((doc) => ({
+            name: doc,
+            path: `${workspacePath}${packagePath}/docs/${doc}.html`,
+          }));
 
-        return {
-          package: config.package.name,
-          docs: await Promise.all(
-            docPaths.map(async (docPath) => {
-              const html = sanitizeHtml(read(docPath.path));
-              return {
-                doc: docPath.name,
-                html,
-              };
-            })
-          ),
-        };
-      })
-    );
-    res.status(200).json(result);
+          return {
+            package: config.package.name,
+            docs: await Promise.all(
+              docPaths.map(async (docPath) => {
+                const html = sanitizeHtml(read(docPath.path));
+                return {
+                  doc: docPath.name,
+                  html,
+                };
+              })
+            ),
+          };
+        })
+      );
+      res.status(200).json(result);
+    } else {
+      // send over just the links to the documentation
+      const links = await getDocLinks(workspacePath);
+      res.status(200).json(links);
+    }
+    await rmSafe(workspacePath);
   } catch (e) {
     console.error('Error for put project', e);
     res.status(500).json({ errorMessage: e.message });

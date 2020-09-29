@@ -85,7 +85,6 @@ const ConfigureProject = (): JSX.Element => {
   const projectData: ProjectData = wireProjectData(data);
   const configureSteps = getConfigureSteps({ ...data, docs: docsData });
   const onChange = (newData: ProjectData): void => {
-    console.log(newData);
     // local save
     mutate(`${getEndpoint()}/projects/${id}`, newData, false);
   };
