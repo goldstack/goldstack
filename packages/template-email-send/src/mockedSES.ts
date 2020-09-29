@@ -20,8 +20,8 @@ export class MockedSES {
   ): Request<SES.SendEmailResponse, AWSError> {
     this.sendEmailRequests.push(params);
     if (process.env.GOLDSTACK_LOG_EMAILS) {
-      console.log('Send email');
-      console.log(params);
+      console.log('Mocked SES Send email');
+      console.log(JSON.stringify(params, null, 2));
     }
     if (callback) {
       callback(null, { MessageId: uuid4() });
