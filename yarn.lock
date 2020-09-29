@@ -1640,7 +1640,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/docker-image-aws@workspace:workspaces/templates/packages/docker-image-aws"
   dependencies:
-    "@goldstack/template-docker-image-aws": 0.3.5
+    "@goldstack/template-docker-image-aws": 0.3.7
     "@goldstack/utils-git": 0.1.21
     "@goldstack/utils-sh": 0.4.1
     "@types/jest": ^25.2.3
@@ -1729,11 +1729,13 @@ __metadata:
     "@goldstack/project-repository": 0.1.0
     "@goldstack/session-repository": 0.1.0
     "@goldstack/template-build": 0.1.0
-    "@goldstack/template-lambda-express": 0.3.5
+    "@goldstack/template-lambda-express": 0.3.7
     "@goldstack/template-repository": 0.1.0
     "@goldstack/template-repository-bucket": 0.1.0
+    "@goldstack/utils-package": 0.3.1
     "@goldstack/utils-project": 0.3.1
     "@goldstack/utils-sh": 0.4.1
+    "@goldstack/utils-template": 0.3.1
     "@goldstack/utils-template-test": 0.1.0
     "@jest-mock/express": ^1.1.7
     "@types/aws-serverless-express": ^3.3.3
@@ -1888,7 +1890,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/lambda-express@workspace:workspaces/templates/packages/lambda-express"
   dependencies:
-    "@goldstack/template-lambda-express": 0.3.5
+    "@goldstack/template-lambda-express": 0.3.7
     "@jest-mock/express": ^1.1.7
     "@types/aws-serverless-express": ^3.3.3
     "@types/express": ^4.17.6
@@ -2307,7 +2309,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-docker-image-aws@0.3.5, @goldstack/template-docker-image-aws@workspace:workspaces/templates-lib/packages/template-docker-image-aws":
+"@goldstack/template-docker-image-aws@0.3.7, @goldstack/template-docker-image-aws@workspace:workspaces/templates-lib/packages/template-docker-image-aws":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-docker-image-aws@workspace:workspaces/templates-lib/packages/template-docker-image-aws"
   dependencies:
@@ -2377,7 +2379,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-lambda-express@0.3.5, @goldstack/template-lambda-express@workspace:workspaces/templates-lib/packages/template-lambda-express":
+"@goldstack/template-lambda-express@0.3.7, @goldstack/template-lambda-express@workspace:workspaces/templates-lib/packages/template-lambda-express":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-lambda-express@workspace:workspaces/templates-lib/packages/template-lambda-express"
   dependencies:
@@ -2421,7 +2423,7 @@ __metadata:
     "@goldstack/project-build": 0.1.0
     "@goldstack/project-install": 0.1.0
     "@goldstack/template-build-set": 0.1.0
-    "@goldstack/template-docker-image-aws": 0.3.5
+    "@goldstack/template-docker-image-aws": 0.3.7
     "@goldstack/template-repository": 0.1.0
     "@goldstack/template-repository-bucket": 0.1.0
     "@goldstack/template-s3": 0.3.2
@@ -2940,8 +2942,8 @@ __metadata:
   dependencies:
     "@goldstack/infra": 0.3.1
     "@goldstack/template-build": 0.1.0
-    "@goldstack/template-docker-image-aws": 0.3.5
-    "@goldstack/template-lambda-express": 0.3.5
+    "@goldstack/template-docker-image-aws": 0.3.7
+    "@goldstack/template-lambda-express": 0.3.7
     "@goldstack/template-nextjs": 0.3.2
     "@goldstack/template-repository": 0.1.0
     "@goldstack/template-s3": 0.3.2
