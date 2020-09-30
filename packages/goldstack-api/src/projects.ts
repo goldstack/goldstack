@@ -176,13 +176,6 @@ export const getProjectDocsHandler = async (
       res.status(400).json({ errorMessage: 'Expected projectId in request' });
       return;
     }
-    if (!doc) {
-      res.status(400).json({ errorMessage: 'Expected doc in request' });
-      return;
-    }
-    const docs: string[] = Array.isArray(doc)
-      ? (doc as string[])
-      : [doc as string];
 
     if (!userToken) {
       res
@@ -195,6 +188,13 @@ export const getProjectDocsHandler = async (
     await repo.downloadProject(projectId, workspacePath);
 
     if (!links) {
+      if (!doc) {
+        res.status(400).json({ errorMessage: 'Expected doc in request' });
+        return;
+      }
+      const docs: string[] = Array.isArray(doc)
+        ? (doc as string[])
+        : [doc as string];
       // send over actual rendered content of documentation
       const packageConfigs = getPackageConfigs(workspacePath);
       const result = await Promise.all(

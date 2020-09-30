@@ -33,7 +33,6 @@ export const getDocLinks = async (
           path.dirname(goldstackJsonPath) + '/'
         );
 
-        console.log(goldstackConfig.template);
         const templateJson = await templateRepo.getLatestTemplateVersion(
           goldstackConfig.template
         );
