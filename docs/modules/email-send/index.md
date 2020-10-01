@@ -28,7 +28,7 @@ Setting the environment variable `GOLDSTACK_LOG_EMAIL=true` will log out all ema
 When running `yarn infra up [deployment]` you may receive an error such as the following:
 
 ```bash
-Error: [ERR]: Error building changeset: InvalidChangeBatch: [Tried to create resource record set [name='yourdomain.com.', type='TXT'] but it already exists] 
+Error: [ERR]: Error building changeset: InvalidChangeBatch: [Tried to create resource record set [name='yourdomain.com.', type='TXT'] but it already exists]
         status code: 400, request id: xxxx
 
   on main.tf line 45, in resource "aws_route53_record" "spf_domain":
@@ -45,7 +45,7 @@ The easiest way to circumvent this issue is to do the following:
 
 ```bash
 resource "aws_route53_record" "spf_mail_from" {
-  zone_id = data.aws_route53_zone.main.zone_id 
+  zone_id = data.aws_route53_zone.main.zone_id
   name    = aws_ses_domain_mail_from.main.mail_from_domain
   type    = "TXT"
   ttl     = "600"
@@ -54,4 +54,4 @@ resource "aws_route53_record" "spf_mail_from" {
 ```
 
 - Delete the TXT record in the [Route 53 Console](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-deleting.html). Ensure that you have copied the record successfully before deleting it.
-- Now run `yarn infra up prod` 
+- Now run `yarn infra up prod`
