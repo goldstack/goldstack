@@ -11,6 +11,7 @@
     "workspaces/*"
   ],
   "scripts": {
+    "build": "yarn compile",
     "commit": "git submodule foreach 'git add .' && git submodule foreach \"git diff-index --quiet HEAD || git commit -m $@\" && git add . && git commit -m \"$@\" || true",
     "compile": "yarn workspace templates-lib compile && yarn workspace templates compile && yarn workspace templates-management compile && yarn workspace apps compile",
     "compile:watch": "yarn workspace templates-lib compile; yarn workspace templates-management compile; yarn workspace docs compile; yarn compile:watch-new",
