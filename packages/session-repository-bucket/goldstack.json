@@ -11,12 +11,15 @@
       "awsUser": "goldstack-dev",
       "configuration": {
         "bucketName": "goldstack-sessions-dev"
-      },
-      "terraformVariables": [
-        "awsRegion",
-        "bucketName",
-        "repositoryName"
-      ]
+      }
+    },
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-prod",
+      "configuration": {
+        "bucketName": "goldstack-sessions-prod"
+      }
     }
   ]
 }

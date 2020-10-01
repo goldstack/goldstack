@@ -13,5 +13,20 @@
         "value": "goldstack-templates-dev"
       }
     }
+  },
+  {
+    "name": "prod",
+    "terraform": {
+      "bucket_arn": {
+        "sensitive": false,
+        "type": "string",
+        "value": "arn:aws:s3:::goldstack-templates-prod"
+      },
+      "bucket_name": {
+        "sensitive": false,
+        "type": "string",
+        "value": "goldstack-templates-prod"
+      }
+    }
   }
 ]

@@ -5,12 +5,12 @@
       "bucket_arn": {
         "sensitive": false,
         "type": "string",
-        "value": "arn:aws:s3:::goldstack-test-s3-bucket"
+        "value": "arn:aws:s3:::goldstack-sessions-prod"
       },
       "bucket_name": {
         "sensitive": false,
         "type": "string",
-        "value": "goldstack-test-s3-bucket"
+        "value": "goldstack-sessions-prod"
       }
     }
   },
