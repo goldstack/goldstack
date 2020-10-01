@@ -12,12 +12,16 @@
       "configuration": {
         "domain": "dev.goldstack.party",
         "hostedZoneDomain": "dev.goldstack.party"
-      },
-      "terraformVariables": [
-        "awsRegion",
-        "domain",
-        "hostedZoneDomain"
-      ]
+      }
+    },
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-prod",
+      "configuration": {
+        "domain": "goldstack.party",
+        "hostedZoneDomain": "goldstack.party"
+      }
     }
   ]
 }

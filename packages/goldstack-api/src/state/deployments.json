@@ -23,5 +23,30 @@
         "value": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:475629728374:function:goldstack-api/invocations"
       }
     }
+  },
+  {
+    "name": "prod",
+    "terraform": {
+      "gateway_url": {
+        "sensitive": false,
+        "type": "string",
+        "value": "https://cy1ru3pv54.execute-api.us-west-2.amazonaws.com/prod"
+      },
+      "lambda_arn": {
+        "sensitive": false,
+        "type": "string",
+        "value": "arn:aws:lambda:us-west-2:807214139497:function:goldstack-api"
+      },
+      "lambda_function_name": {
+        "sensitive": false,
+        "type": "string",
+        "value": "goldstack-api"
+      },
+      "lambda_invoke_arn": {
+        "sensitive": false,
+        "type": "string",
+        "value": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:807214139497:function:goldstack-api/invocations"
+      }
+    }
   }
 ]

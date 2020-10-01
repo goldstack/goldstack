@@ -16,12 +16,25 @@
         "defaultCacheDuration": 10,
         "environmentVariables": [
           {
-            "name": "NEXT_PUBLIC_PROD_ONLY",
-            "value": "true"
-          },
-          {
             "name": "NEXT_PUBLIC_GOLDSTACK_DOCS",
             "value": "https://docs.dev.goldstack.party/docs"
+          }
+        ]
+      }
+    },
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-prod",
+      "configuration": {
+        "hostedZoneDomain": "goldstack.party",
+        "websiteDomain": "goldstack.party",
+        "websiteDomainRedirect": "www.goldstack.party",
+        "defaultCacheDuration": 10,
+        "environmentVariables": [
+          {
+            "name": "NEXT_PUBLIC_GOLDSTACK_DOCS",
+            "value": "https://docs.goldstack.party/docs"
           }
         ]
       }

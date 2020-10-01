@@ -14,6 +14,18 @@
         "cors": "https://dev.goldstack.party",
         "goldstackWorkdir": "/tmp/"
       }
+    },
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-prod",
+      "configuration": {
+        "lambdaName": "goldstack-api",
+        "apiDomain": "goldstack-api.goldstack.party",
+        "hostedZoneDomain": "goldstack.party",
+        "cors": "https://goldstack.party",
+        "goldstackWorkdir": "/tmp/"
+      }
     }
   ],
   "templateVersion": "0.1.0",

@@ -1,6 +1,7 @@
+import fs from 'fs';
 /* eslint-disable @typescript-eslint/no-var-requires */
 const tsj = require('ts-json-schema-generator');
-const fs = require('fs');
+// const fs = require('fs');
 
 const generateSchema = (typeName: string, schemaFile: string): void => {
   const config = {
