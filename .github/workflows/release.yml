@@ -1,0 +1,67 @@
+# Triggers when running a release in Github
+# https://github.com/goldstack/goldstack-mega/releases/new
+name: Goldstack Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    name: 'Release'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 20
+          submodules: true
+          token: ${{secrets.BUILD_TOKEN}}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: https://registry.npmjs.or
+      - name: Install root repo and build
+        run: |
+          npm install -g yarn@1.22.4
+          yarn install
+          yarn build
+      - name: Deploy docs
+        run: |
+          yarn workspace @goldstack/docs-main deploy prod
+        env:
+          AWS_USER_NAME: goldstack-prod
+          AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
+      - name: Deploy API
+        run: |
+          yarn workspace @goldstack/goldstack-api deploy prod
+        env:
+          AWS_USER_NAME: goldstack-prod
+          AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
+      - name: Deploy UI
+        run: |
+          yarn workspace @goldstack/goldstack-home deploy prod
+        env:
+          AWS_USER_NAME: goldstack-prod
+          AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
+      - name: Download latest templates from staging
+        run: |
+          yarn workspace 
+        env:
+          AWS_USER_NAME: goldstack-dev
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
+      - name: Upload latest templates to prod
+        run: |
+          yarn workspace
+        env:
+          AWS_USER_NAME: goldstack-prod
+          AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
