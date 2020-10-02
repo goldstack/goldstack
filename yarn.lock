@@ -1701,7 +1701,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/email-send@workspace:workspaces/templates/packages/email-send"
   dependencies:
-    "@goldstack/template-email-send": 0.3.2
+    "@goldstack/template-email-send": 0.3.6
     "@goldstack/utils-git": 0.1.21
     "@goldstack/utils-sh": 0.4.1
     "@types/jest": ^25.2.3
@@ -1778,7 +1778,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/goldstack-email-send@workspace:workspaces/apps/packages/goldstack-email-send"
   dependencies:
-    "@goldstack/template-email-send": 0.3.2
+    "@goldstack/template-email-send": 0.3.6
     "@goldstack/utils-git": 0.1.21
     "@goldstack/utils-sh": 0.4.1
     "@types/jest": ^25.2.3
@@ -2343,7 +2343,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-email-send@0.3.2, @goldstack/template-email-send@workspace:workspaces/templates-lib/packages/template-email-send":
+"@goldstack/template-email-send@0.3.6, @goldstack/template-email-send@workspace:workspaces/templates-lib/packages/template-email-send":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-email-send@workspace:workspaces/templates-lib/packages/template-email-send"
   dependencies:
@@ -2416,9 +2416,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-management-cli@workspace:workspaces/templates-management/packages/template-management-cli":
+"@goldstack/template-management-cli@workspace:workspaces/apps/packages/template-management-cli":
   version: 0.0.0-use.local
-  resolution: "@goldstack/template-management-cli@workspace:workspaces/templates-management/packages/template-management-cli"
+  resolution: "@goldstack/template-management-cli@workspace:workspaces/apps/packages/template-management-cli"
   dependencies:
     "@goldstack/project-build": 0.1.0
     "@goldstack/project-install": 0.1.0
