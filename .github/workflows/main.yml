@@ -262,7 +262,7 @@ jobs:
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
           directory: workspaces/apps
-          repository: goldstack/goldstack-templates-management
+          repository: goldstack/goldstack-apps
 
       - name: Write current git commit to output
         run: |

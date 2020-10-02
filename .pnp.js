@@ -59,6 +59,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/apps/packages/template-management-cli"
       },
       {
+        "name": "@goldstack/cdn",
+        "reference": "workspace:workspaces/docs/packages/cdn"
+      },
+      {
         "name": "@goldstack/docs-main",
         "reference": "workspace:workspaces/docs/packages/docs-main"
       },
@@ -310,6 +314,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/app-nextjs-bootstrap", ["workspace:workspaces/templates/packages/app-nextjs-bootstrap"]],
       ["@goldstack/app-react", ["workspace:workspaces/templates/packages/app-react"]],
       ["@goldstack/auth", ["workspace:workspaces/templates-management/packages/auth"]],
+      ["@goldstack/cdn", ["workspace:workspaces/docs/packages/cdn"]],
       ["@goldstack/docker-image-aws", ["workspace:workspaces/templates/packages/docker-image-aws"]],
       ["@goldstack/docs-main", ["workspace:workspaces/docs/packages/docs-main"]],
       ["@goldstack/email-send", ["workspace:workspaces/templates/packages/email-send"]],
@@ -2354,6 +2359,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.4.0"],
             ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=0ea415"],
             ["uuid", "npm:8.3.0"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@goldstack/cdn", [
+        ["workspace:workspaces/docs/packages/cdn", {
+          "packageLocation": "./workspaces/docs/packages/cdn/",
+          "packageDependencies": [
+            ["@goldstack/cdn", "workspace:workspaces/docs/packages/cdn"],
+            ["@goldstack/template-static-website-aws", "workspace:workspaces/templates-lib/packages/template-static-website-aws"],
+            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
+            ["@types/jest", "npm:25.2.3"],
+            ["@types/node", "npm:14.11.2"],
+            ["concurrently", "npm:5.2.0"],
+            ["jest", "npm:26.4.2"],
+            ["nodemon", "npm:2.0.4"],
+            ["reload", "npm:3.1.0"],
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.4.0"],
+            ["ts-node", "virtual:11ada9b28839d4fd4fd589c1152d09afa4401c8de2e0a2b1020588da78d4576c0d5523e67b35d4e74fafa94849ba3113e31dc0ab2b5d68223629f75866888dd3#npm:8.10.2"],
+            ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=0ea415"]
           ],
           "linkType": "SOFT",
         }]
