@@ -13,11 +13,15 @@
       "awsUser": "goldstack-dev",
       "configuration": {
         "repositoryName": "template-management-cli"
-      },
-      "terraformVariables": [
-        "awsRegion",
-        "repositoryName"
-      ]
+      }
+    },
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-prod",
+      "configuration": {
+        "repositoryName": "template-management-cli"
+      }
     }
   ]
 }
