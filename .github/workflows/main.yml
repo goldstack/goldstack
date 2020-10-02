@@ -249,7 +249,7 @@ jobs:
 
       - name: Commit latest deployed image hash
         run: |
-          cd workspaces/templates-management
+          cd workspaces/apps
           git status
           git add packages/template-management-cli/src/state/deployments.json
           git commit -m "Publishing updated docker deployment"
@@ -261,7 +261,7 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
-          directory: workspaces/templates-management
+          directory: workspaces/apps
           repository: goldstack/goldstack-templates-management
 
       - name: Write current git commit to output
