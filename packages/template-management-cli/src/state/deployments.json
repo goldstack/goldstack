@@ -1,0 +1,53 @@
+[
+  {
+    "name": "dev",
+    "latest": "475629728374.dkr.ecr.us-west-2.amazonaws.com/template-management-cli:74342d2",
+    "terraform": {
+      "cluster_name": {
+        "sensitive": false,
+        "type": "string",
+        "value": "template-management-cli-cluster"
+      },
+      "container_security_group": {
+        "sensitive": false,
+        "type": "string",
+        "value": "sg-08652d11239a2dd95"
+      },
+      "ecs_task_execution_role_arn": {
+        "sensitive": false,
+        "type": "string",
+        "value": "arn:aws:iam::475629728374:role/ecs_task_execution_role_template-management-cli"
+      },
+      "ecs_task_role_arn": {
+        "sensitive": false,
+        "type": "string",
+        "value": "arn:aws:iam::475629728374:role/ecs_task_role_template-management-cli"
+      },
+      "registry_id": {
+        "sensitive": false,
+        "type": "string",
+        "value": "475629728374"
+      },
+      "repo_arn": {
+        "sensitive": false,
+        "type": "string",
+        "value": "arn:aws:ecr:us-west-2:475629728374:repository/template-management-cli"
+      },
+      "repo_url": {
+        "sensitive": false,
+        "type": "string",
+        "value": "475629728374.dkr.ecr.us-west-2.amazonaws.com/template-management-cli"
+      },
+      "subnet": {
+        "sensitive": false,
+        "type": "string",
+        "value": "subnet-237db15b"
+      },
+      "vpc": {
+        "sensitive": false,
+        "type": "string",
+        "value": "vpc-be1d6fc6"
+      }
+    }
+  }
+]
