@@ -191,7 +191,6 @@ jobs:
           cd ../..
 
       - name: Build apps 
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true' || steps.changed-docs.outputs.changed == 'true'
         run: |
           cd workspaces/apps
           yarn compile
@@ -205,7 +204,6 @@ jobs:
           AWS_DEFAULT_REGION: us-west-2
 
       - name: Build docs 
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true' || steps.changed-docs.outputs.changed == 'true'
         run: |
           cd workspaces/docs
           yarn compile
@@ -219,12 +217,10 @@ jobs:
 
       # Generate schemas and docs
       - name: Generate schemas
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true'
         run: |
           yarn generate:schema
 
       - name: Generate docs
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true' || steps.changed-apps.outputs.changed == 'true'
         run: |
           yarn generate:docs
 
@@ -234,17 +230,24 @@ jobs:
           git rev-parse HEAD
           echo "::set-output name=patchedcommit::$(git rev-parse HEAD)"
 
-      - name: Build and publish image
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
+      - name: Build and publish image to DEV
         run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy dev
         env:
           AWS_USER_NAME: goldstack-dev
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
+      
+      - name: Build and publish image to PROD
+        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
+        run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy prod
+        env:
+          AWS_USER_NAME: goldstack-prod
+          AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
 
       - name: Commit latest deployed image hash
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
         run: |
           cd workspaces/templates-management
           git status
@@ -255,7 +258,6 @@ jobs:
           cd ../..
 
       - name: Push deployed image hash change
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
@@ -263,14 +265,12 @@ jobs:
           repository: goldstack/goldstack-templates-management
 
       - name: Write current git commit to output
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
         run: |
           echo "Writing git commit hash to output $(git rev-parse HEAD)"
           git rev-parse HEAD
           echo "::set-output name=patchedclicommit::$(git rev-parse HEAD)"
 
       - name: Trigger template build
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
         run: |
           yarn workspace @goldstack/template-management-cli compile # compile again so that deployment state is updated
           yarn workspace @goldstack/template-management-cli cli schedule-all-deploy-sets --repo goldstack-dev --deployment dev
@@ -279,3 +279,31 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
+
+      - name: Deploy docs
+        run: |
+          yarn workspace @goldstack/docs-main deploy dev
+        env:
+          AWS_USER_NAME: goldstack-dev
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
+
+      - name: Deploy API
+        run: |
+          yarn workspace @goldstack/goldstack-api deploy dev
+        env:
+          AWS_USER_NAME: goldstack-dev
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
+
+      - name: Deploy UI
+        run: |
+          yarn workspace @goldstack/goldstack-home deploy dev
+        env:
+          AWS_USER_NAME: goldstack-dev
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
+
