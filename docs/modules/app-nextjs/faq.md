@@ -1,4 +1,4 @@
-### When trying to open the page, I get a '502 ERROR The request could not be satisfied.'
+### '502 ERROR The request could not be satisfied' when opening page
 
 Instead of seeing the page, you may see an error message like the following:
 
@@ -12,3 +12,5 @@ Request ID: JIQQuxOxsXdcyHuUKxbA88YeFs_NH0h7B6xbG-SZFN88byb5WffF0A==
 ```
 
 This is most likely due to the deployment not having worked correctly. Try deploying the package again with `yarn deploy [deploymentName]`.
+
+[!embed](./../shared/faq-access-denied.md)

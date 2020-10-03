@@ -20,3 +20,7 @@ title: Static Website AWS
 ## Deployment
 
 [!embed](./../shared/deployment.md)
+
+## Potential Issues and Frequently Asked Questions
+
+[!embed](./faq.md)  

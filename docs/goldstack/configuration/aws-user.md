@@ -2,4 +2,9 @@ Goldstack provides ready-made scripts to deploy your infrastructure to AWS. You 
 
 However, there are many other ways in which AWS user credentials can be supplied for Goldstack, so providing the details during project configuration is optional. It is only recommended to do so for development systems.
 
-In order to obtain the access credentials, please follow the video guide below:
+Please see all ways AWS user credentials can be provided in the following:
+
+- [Get credentials from AWS console]() ⭐ Recommeded for beginners 
+- [Supply AWS credentilas in configuration file]()
+- [Provide AWS credentials with environment variables]()
+

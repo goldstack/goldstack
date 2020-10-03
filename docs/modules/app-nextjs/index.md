@@ -21,6 +21,10 @@ title: Next.js
 
 [!embed](./../shared/deployment.md)
 
+## Potential Issues and Frequently Asked Questions
+
+[!embed](./faq.md)
+
 ## Limitations
 
 [!embed](./limitations.md)

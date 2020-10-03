@@ -20,3 +20,11 @@ title: Next.js Bootstrap
 ## Deployment
 
 [!embed](./../shared/deployment.md)
+
+## Potential Issues and Frequently Asked Questions
+
+[!embed](./../app-nextjs/faq.md)
+
+## Limitations
+
+[!embed](./../app-nextjs/limitations.md)
