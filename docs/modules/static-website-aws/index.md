@@ -23,4 +23,4 @@ title: Static Website AWS
 
 ## Potential Issues and Frequently Asked Questions
 
-[!embed](./faq.md)  
+[!embed](./faq.md)

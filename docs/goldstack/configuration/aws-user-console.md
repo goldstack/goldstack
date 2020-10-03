@@ -8,4 +8,4 @@ The easiest way to configure the AWS user for Goldstack to use is to do it durin
 
 ![Add User in AWS console](https://cdn.goldstack.party/img/202010/add_user.png)
 
--  
+-
