@@ -8,4 +8,23 @@ The easiest way to configure the AWS user for Goldstack to use is to do it durin
 
 ![Add User in AWS console](https://cdn.goldstack.party/img/202010/add_user.png)
 
--  
+- Provide a username of your choice, for instance 'goldstack-local-dev'
+- Select the Access Type _Programmatic Access_
+
+![Provide user details](https://cdn.goldstack.party/img/202010/user_details.png)
+
+- Click on the button _Next: Permissions_
+- Select _Attach existing policies directly_
+- Select the Policy _Administrator Access_
+
+![Select permissions](https://cdn.goldstack.party/img/202010/permissions.png)
+
+- Click on the button _Next: Tags_
+- You do not have to add any tags, just click _Next: Review_
+- On the review page click _Create User_
+
+Now you can copy the _Access Key ID_ and add it to the Goldstack configuration form. Do the same with the _Secret access key_ (It can be shown by clicking on Show).
+
+![Obtain access keys](https://cdn.goldstack.party/img/202010/keys.png)
+
+Note that it is recommended to only provide this key and secret should only be supplied for development systems (and prototype/hobby production systems). For all other systems, it is recommended to provide this key and secret only through environment variables (see below).

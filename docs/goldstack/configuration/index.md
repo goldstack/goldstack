@@ -8,3 +8,5 @@ title: Configuration
 ## AWS Configuration
 
 [!embed](./aws-user.md)
+
+[!embed](./aws-user-console.md)
