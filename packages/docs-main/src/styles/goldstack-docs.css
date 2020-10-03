@@ -38,3 +38,7 @@ h4.heading {
 .permalink {
   display: none;
 }
+
+p img {
+  max-width: 100%;
+}
