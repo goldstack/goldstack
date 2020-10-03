@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-terraform",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -21,12 +21,12 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.3.1",
-    "@goldstack/infra-aws": "0.3.2",
+    "@goldstack/infra": "0.3.2",
+    "@goldstack/infra-aws": "0.3.3",
     "@goldstack/utils-config": "0.3.1",
     "@goldstack/utils-docker": "0.3.1",
     "@goldstack/utils-log": "0.2.0",
-    "@goldstack/utils-package": "0.3.1",
+    "@goldstack/utils-package": "0.3.2",
     "@goldstack/utils-sh": "0.4.1",
     "prompt-sync": "^4.2.0",
     "yargs": "^15.4.1"
