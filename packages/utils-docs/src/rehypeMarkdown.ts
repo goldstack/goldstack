@@ -33,7 +33,6 @@ export default function rehypeDocs({ filePath, tag, processor }): any {
     }
   }
   function visitLink(node: any): void {
-    // console.log(node);
     if (node.children.length > 0 && node.children[0].value === '!embed') {
       const file = node.url;
 
@@ -55,6 +54,31 @@ export default function rehypeDocs({ filePath, tag, processor }): any {
       } catch (e) {
         throw Error(`${e.message} \nFile: ${file}`);
       }
+    }
+    if (node.children.length > 0 && node.children[0].value.indexOf('%') === 0) {
+      console.log('process iframe', node.children[0].value);
+      node.value = `
+      <div class="card card-bordered">
+        <div class="card-body">
+        <h5 class="card-title">${node.children[0].value.substring(1)}</h5>
+          <div class="card-text">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="${
+                node.url
+              }" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>`;
+      // node.value = `<iframe
+      //   width="560"
+      //   height="315"
+      //   src="${node.url}"
+      //   frameborder="0"
+      //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      //   allowfullscreen>
+      // </iframe>`;
+      node.type = 'html';
     }
   }
 

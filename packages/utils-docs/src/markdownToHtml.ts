@@ -44,7 +44,7 @@ export async function markdownToHtml(filePath, tag, md) {
       // Add custom HTML found in the markdown file to the AST
       .use(raw)
       // Sanitize the HTML
-      .use(sanitize, githubSchema)
+      // .use(sanitize, githubSchema)
       // Add syntax highlighting to the sanitized HTML
       .use(prism)
       .use(html)
