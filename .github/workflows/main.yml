@@ -239,7 +239,6 @@ jobs:
           AWS_DEFAULT_REGION: us-west-2
       
       - name: Build and publish image to PROD
-        if: steps.changed-libs.outputs.changed == 'true' || steps.changed-mgmt.outputs.changed == 'true' || steps.changed-templates.outputs.changed == 'true'
         run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy prod
         env:
           AWS_USER_NAME: goldstack-prod
