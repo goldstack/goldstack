@@ -1,1 +1,1 @@
-![embed](./../shared/faq-access-denied.md)
+[!embed](./../shared/faq-access-denied.md)

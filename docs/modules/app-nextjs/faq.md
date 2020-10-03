@@ -2,7 +2,7 @@
 
 Instead of seeing the page, you may see an error message like the following:
 
-```
+```bash 
 502 ERROR
 The request could not be satisfied.
 The Lambda function returned invalid json: The json output must be an object type. We can't connect to the server for this app or website at this time. There might be too much traffic or a configuration error. Try again later, or contact the app or website owner.
