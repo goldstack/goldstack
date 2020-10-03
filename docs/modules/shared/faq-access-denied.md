@@ -10,4 +10,4 @@ Error: error getting S3 Bucket CORS configuration: AccessDenied: Access Denied
 There are a number of possible causes for this:
 
 - You may have configured your AWS user incorrectly. Please see [./../../configuration#aws-configuration](AWS Configuration) for details on how to configure your AWS user.
-- You may accidently have a Terraform state in your module. That can happen if you create new modules by copy and pasting from an existing module. In this case, delete the following two folders in your module: `infra/aws/.terraform` and `infra/aws/terraform.tfstate.d`. 
+- You may accidently have a Terraform state in your module. That can happen if you create new modules by copy and pasting from an existing module. In this case, delete the following two folders in your module: `infra/aws/.terraform` and `infra/aws/terraform.tfstate.d`.
