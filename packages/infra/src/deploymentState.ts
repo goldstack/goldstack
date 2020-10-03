@@ -116,7 +116,7 @@ export const readTerraformStateVariable = (
 ): any => {
   if (!deploymentState.terraform) {
     throw new Error(
-      `Terraform configuration not defined in deployment state for ${deploymentState.name}. Has this package been deployed?`
+      `Terraform configuration not defined in deployment state for ${deploymentState.name}. Make sure to stand up the infrastructure for this module using 'yarn infra up'.`
     );
   }
   const tfVar = deploymentState.terraform[variableName];
