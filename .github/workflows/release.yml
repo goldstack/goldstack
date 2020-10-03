@@ -21,11 +21,13 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-          registry-url: https://registry.npmjs.or
+          registry-url: https://registry.npmjs.org
       
-      - name: Install root repo and build
+      - name: Prepare yarn
         run: |
           npm install -g yarn@1.22.4
+      - run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''"${{secrets.NPM_TOKEN}}"''" } }'''
+      - name: Install and build
           yarn install
           yarn build
       
