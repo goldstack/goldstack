@@ -31,6 +31,12 @@ export const run = async (): Promise<void> => {
             describe: 'The local directory where temporary files are stored',
             default: './goldstackWork/',
           },
+          skipTests: {
+            describe: 'Skip running tests',
+            type: 'string',
+            choices: ['true', 'false'],
+            required: false,
+          },
         })
         .command(
           'schedule-all-deploy-sets',
@@ -39,11 +45,19 @@ export const run = async (): Promise<void> => {
             repo: {
               describe: 'The target S3 repo to use',
               choices: ['dummy', 'goldstack-dev', 'goldstack-prod'],
+              type: 'string',
               required: true,
             },
             deployment: {
               describe: 'The image deployment to use',
+              type: 'string',
               required: true,
+            },
+            skipTests: {
+              describe: 'Skip running tests',
+              type: 'string',
+              choices: ['true', 'false'],
+              required: false,
             },
           }
         ).argv;

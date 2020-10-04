@@ -22,6 +22,8 @@ export const scheduleAllDeploySets = async (argv: any): Promise<void> => {
         argv.repo,
         '--workDir',
         '/tmp/',
+        '--skipTests',
+        argv.skipTests || 'false',
       ],
     });
     console.log('Task ARN:', result.taskArn);
