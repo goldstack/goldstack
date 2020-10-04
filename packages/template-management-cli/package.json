@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "yarn clean && yarn compile && yarn docker:build $@",
+    "build": "yarn clean && yarn compile",
     "build:pack": "yarn compile && yarn webpack",
     "clean": "yarn docker:clean",
     "cli": "yarn node ./bin/template-management-cli",
@@ -17,7 +17,7 @@
     "compile:watch": "tsc -p tsconfig.json --watch",
     "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
-    "deploy": "yarn docker:build $@ && template-docker-image-aws deploy $@",
+    "deploy": "yarn build && yarn docker:build $@ && template-docker-image-aws deploy $@",
     "docker:build": "node ./dist/src/build.js build $@",
     "docker:clean": "node ./dist/src/build.js clean $@",
     "infra": "template-docker-image-aws infra",

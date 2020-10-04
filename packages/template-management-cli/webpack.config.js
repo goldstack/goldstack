@@ -3,7 +3,7 @@ const path = require('path');
 const PnpWebpackPlugin = require('pnp-webpack-plugin');
 
 module.exports = {
-  entry: './dist/run.js',
+  entry: './dist/src/run.js',
   output: {
     path: path.resolve(__dirname, 'distImg'),
     filename: 'run.js',

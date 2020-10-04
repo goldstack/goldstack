@@ -7,6 +7,6 @@ RUN yarn
 # assuming things are already compiled
 # RUN yarn compile
 
-WORKDIR /app/workspaces/templates-management/packages/template-management-cli
+WORKDIR /app/workspaces/apps/packages/template-management-cli
 
 ENTRYPOINT ["yarn", "cli"]
