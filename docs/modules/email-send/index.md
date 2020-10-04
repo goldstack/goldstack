@@ -27,7 +27,6 @@ Setting the environment variable `GOLDSTACK_LOG_EMAIL=true` will log out all ema
 
 [%Video Walkthrough](https://www.youtube.com/embed/TQlIQkM1wms)
 
-
 When running `yarn infra up [deployment]` you may receive an error such as the following:
 
 ```bash
