@@ -58,7 +58,7 @@ export const run = async (): Promise<void> => {
           bucketUrl: 'https://repo.dev.goldstack.party/',
         });
       }
-      if (argv.repo === ' goldstack-prod') {
+      if (argv.repo === 'goldstack-prod') {
         const s3 = await connect('prod');
         const bucketName = await getBucketName('prod');
         repo = new S3TemplateRepository({
@@ -82,7 +82,7 @@ export const run = async (): Promise<void> => {
 
       const command = argv._[0];
       if (command === 'deploy-set') {
-        assert(repo);
+        assert(repo, `Repo could not be loaded from option ${argv.repo}`);
 
         const config = await getBuildSet(argv.set as string);
         const workDir = argv.workDir as string;
