@@ -238,14 +238,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
       
-      - name: Build and publish image to PROD
-        run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy prod
-        env:
-          AWS_USER_NAME: goldstack-prod
-          AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
-          AWS_DEFAULT_REGION: us-west-2
-
       - name: Commit latest deployed image hash
         run: |
           cd workspaces/apps
