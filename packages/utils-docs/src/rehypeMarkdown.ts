@@ -56,9 +56,8 @@ export default function rehypeDocs({ filePath, tag, processor }): any {
       }
     }
     if (node.children.length > 0 && node.children[0].value.indexOf('%') === 0) {
-      console.log('process iframe', node.children[0].value);
       node.value = `
-      <div class="card card-bordered">
+      <div class="card card-bordered bg-soft-info">
         <div class="card-body">
         <h5 class="card-title">${node.children[0].value.substring(1)}</h5>
           <div class="card-text">
