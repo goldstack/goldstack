@@ -22,6 +22,7 @@ export interface BuildSetParams {
   config: DeploySetConfig;
   workDir: string;
   s3repo: S3TemplateRepository;
+  skipTests?: boolean;
 }
 
 interface BuildTemplatesParams {
@@ -193,24 +194,28 @@ export const buildSet = async (params: BuildSetParams): Promise<void> => {
     templateRepository: localRepo,
   });
 
-  const testResults: TestResult[] = [];
-  for (const project of params.config.projects) {
-    const projectDir = `${params.workDir}${project.projectConfiguration.projectName}/`;
-    console.log('Building project in directory ', projectDir);
-    mkdir('-p', projectDir);
-    testResults.push(
-      ...(await buildAndTestProject({
-        project,
-        projectDir,
-        setParams: params,
-        templateRepository: localRepo,
-      }))
-    );
-  }
-  console.log(renderTestResults(testResults));
-  if (testResults.filter((result) => !result.result).length > 0) {
-    console.log('There are test failures. No templates will be deployed.');
-    return;
+  if (!params.skipTests) {
+    const testResults: TestResult[] = [];
+    for (const project of params.config.projects) {
+      const projectDir = `${params.workDir}${project.projectConfiguration.projectName}/`;
+      console.log('Building project in directory ', projectDir);
+      mkdir('-p', projectDir);
+      testResults.push(
+        ...(await buildAndTestProject({
+          project,
+          projectDir,
+          setParams: params,
+          templateRepository: localRepo,
+        }))
+      );
+    }
+    console.log(renderTestResults(testResults));
+    if (testResults.filter((result) => !result.result).length > 0) {
+      console.log('There are test failures. No templates will be deployed.');
+      return;
+    }
+  } else {
+    console.log('Skipping tests');
   }
 
   // if everything is good, deploy templates
