@@ -112,6 +112,7 @@ export const run = async (): Promise<void> => {
           s3repo: repo,
           workDir: workDir,
           config,
+          skipTests: argv.skipTests && argv.skipTests === 'true',
         });
         console.log('Deploy set completed.');
         return;
