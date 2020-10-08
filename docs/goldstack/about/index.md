@@ -44,4 +44,8 @@ We all know that there is usually a trade off in platforms that help us get some
 Modularity is one of the most important principles in software design. Without breaking a big whole into smaller more manageable components, our projects quickly become difficult to extend and maintain. Unfortunately it has often been difficult in the JavaScript ecosystem to develop truly modular applications. Many projects started to adopt Lerna to enable breaking up larger projects into modules. However Lerna often comes with many problems especially in larger projects. Goldstack supports modularity through:
 
 - Utilising Yarn 2 for efficient workspace management
-- Providing TypeScript APIs for connecting modules; for instance a backened module can simply import an S3 module and use TypeScript methods to establish a connection to the bucket
+- Providing TypeScript APIs for connecting modules; for instance a backend module can simply import an S3 module and use TypeScript methods to establish a connection to the bucket
+
+### Built to be Tested
+
+Automated testing is a key driver for software quality. Most modern frameworks make it easy to write unit tests for individual components. However, it is often difficult to establish end-to-end tests that cover the entire stack of an application. Goldstack modules are optimized to allow writing tests that cover all modules of an application. For instance, it is possible to write a Jest test that uses React Testing Library to walk through the user interface while interacting with an in-memory API server (rather than having to mock calls to the backend).
