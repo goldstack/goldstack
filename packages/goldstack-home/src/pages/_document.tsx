@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import React, { Fragment } from 'react';
 import { ServerStyleSheet } from 'styled-components';
+import { GA_TRACKING_ID } from '../lib/ga';
+
 import Document, {
   Html,
   Head,
@@ -91,26 +93,41 @@ class MyDocument extends Document {
       sheet.seal();
     }
   }
-  // render(): JSX.Element {
-  //   return (
-  //     <MyHtml>
-  //       <MyHead>
-  //         <link
-  //           href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap"
-  //           rel="stylesheet"
-  //         />
-  //         <link
-  //           href="https://fonts.googleapis.com/css2?family=Ultra&display=swap"
-  //           rel="stylesheet"
-  //         ></link>
-  //       </MyHead>
-  //       <body>
-  //         <MyMain />
-  //         <MyNextScript />
-  //       </body>
-  //     </MyHtml>
-  //   );
-  // }
+  render(): JSX.Element {
+    process.env.GOLDSTACK_DEPLOYMENT =
+      process.env.NEXT_PUBLIC_GOLDSTACK_DEPLOYMENT;
+    return (
+      <MyHtml>
+        <MyHead>
+          {process.env.GOLDSTACK_DEPLOYMENT === 'prod' && (
+            <Fragment>
+              {/* Global Site Tag (gtag.js) - Google Analytics */}
+              <script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+              />
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', '${GA_TRACKING_ID}', {
+  page_path: window.location.pathname,
+});`,
+                }}
+              />
+            </Fragment>
+          )}
+        </MyHead>
+        <body>
+          <MyMain />
+          <MyNextScript />
+        </body>
+      </MyHtml>
+    );
+  }
 }
 
 export default MyDocument;
