@@ -19,7 +19,7 @@ h3.heading {
 }
 
 h4.heading {
-  margin-top: 3rem;
+  margin-top: 1.5rem;
 }
 
 .heading a:hover {
@@ -37,4 +37,9 @@ h4.heading {
 
 .permalink {
   display: none;
+}
+
+p img {
+  max-width: 100%;
+  padding: 1em;
 }
