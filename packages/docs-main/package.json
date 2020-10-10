@@ -28,6 +28,7 @@
     "web:watch": "yarn web:build && concurrently \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" "
   },
   "dependencies": {
+    "@fullstory/browser": "^1.4.5",
     "@goldstack/toc-generator": "0.1.0",
     "@goldstack/utils-track": "0.1.0",
     "cheerio": "^1.0.0-rc.3",
