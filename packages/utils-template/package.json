@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-template",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -21,12 +21,12 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-config": "0.3.1",
-    "@goldstack/utils-sh": "0.4.1"
+    "@goldstack/utils-config": "0.3.2",
+    "@goldstack/utils-sh": "0.4.2"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.21",
-    "@goldstack/utils-json-to-ts": "0.3.1",
+    "@goldstack/utils-json-to-ts": "0.3.2",
     "@types/jest": "^25.2.3",
     "@types/node": "^14.0.6",
     "jest": "^26.0.1",

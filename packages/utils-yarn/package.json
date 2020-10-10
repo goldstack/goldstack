@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-yarn",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -20,8 +20,8 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-docker": "0.3.1",
-    "@goldstack/utils-sh": "0.4.1"
+    "@goldstack/utils-docker": "0.3.2",
+    "@goldstack/utils-sh": "0.4.2"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.21",

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-json-to-ts",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Utility to convert JSON schema into TypeScript interfaces.",
   "license": "MIT",
   "author": "Max Rohde",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@goldstack/utils-log": "0.2.0",
-    "@goldstack/utils-sh": "0.4.1",
+    "@goldstack/utils-sh": "0.4.2",
     "json-schema-to-typescript": "^9.1.1",
     "replace-ext": "^2.0.0"
   },
