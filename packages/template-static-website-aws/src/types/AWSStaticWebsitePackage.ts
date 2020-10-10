@@ -8,6 +8,7 @@ import { Deployment, DeploymentConfiguration } from '@goldstack/infra';
  * The domain name of the Route 53 hosted zone that this website should be added to.
  *
  * @title Hosted Zone Domain
+ * @pattern ^[^\s]*
  */
 export type HostedZoneDomain = string;
 
@@ -15,6 +16,7 @@ export type HostedZoneDomain = string;
  * The domain name your users should use (e.g. mysite.com)
  *
  * @title Primary Website Domain
+ * @pattern ^[^\s]*
  */
 export type PrimaryWebsiteDomain = string;
 
@@ -22,6 +24,7 @@ export type PrimaryWebsiteDomain = string;
  * A domain name that users are redirected from to your Primary Website Domain (e.g. www.mysite.com)
  *
  * @title Redirect Website Domain
+ * @pattern ^[^\s]*
  */
 export type RedirectWebsiteDomain = string;
 

@@ -24,6 +24,7 @@ export const getNearestPackageJson = (name: string): string => {
   // check parent directory
   return getNearestPackageJson(path.dirname(dir));
 };
+
 const getNearestPackageFolder = (name: string): string => {
   const nearestPackageJson = getNearestPackageJson(name);
   return path.dirname(nearestPackageJson);

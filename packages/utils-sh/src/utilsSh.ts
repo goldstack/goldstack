@@ -19,6 +19,7 @@ export const copy = async (
   dest: string
 ): Promise<void> => {
   let sourceArr: string[];
+
   if (Array.isArray(source)) {
     sourceArr = source;
   } else {
