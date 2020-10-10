@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { Fragment } from 'react';
+import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
-import { GA_TRACKING_ID } from '../lib/ga';
+import { TagFragment, initGtm } from '@goldstack/utils-track';
 
 import Document, {
   Html,
@@ -96,30 +96,12 @@ class MyDocument extends Document {
   render(): JSX.Element {
     process.env.GOLDSTACK_DEPLOYMENT =
       process.env.NEXT_PUBLIC_GOLDSTACK_DEPLOYMENT;
+
+    initGtm('UA-180192522-1');
     return (
       <MyHtml>
         <MyHead>
-          {process.env.GOLDSTACK_DEPLOYMENT === 'prod' && (
-            <Fragment>
-              {/* Global Site Tag (gtag.js) - Google Analytics */}
-              <script
-                async
-                src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-              />
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', '${GA_TRACKING_ID}', {
-  page_path: window.location.pathname,
-});`,
-                }}
-              />
-            </Fragment>
-          )}
+          {process.env.GOLDSTACK_DEPLOYMENT === 'prod' && <TagFragment />}
         </MyHead>
         <body>
           <MyMain />

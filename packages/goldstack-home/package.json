@@ -30,6 +30,7 @@
     "web:watch": "yarn web:build && concurrently \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" "
   },
   "dependencies": {
+    "@fullstory/browser": "^1.4.5",
     "@goldstack/goldstack-api": "0.1.0",
     "@goldstack/infra": "0.3.2",
     "@goldstack/infra-aws": "0.3.3",
@@ -37,6 +38,7 @@
     "@goldstack/project-repository": "0.1.0",
     "@goldstack/utils-package": "0.3.2",
     "@goldstack/utils-project": "0.3.1",
+    "@goldstack/utils-track": "0.1.0",
     "@rjsf/bootstrap-4": "^2.4.0",
     "@rjsf/core": "^2.4.0",
     "ajv": "6.12.2",

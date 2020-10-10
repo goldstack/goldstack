@@ -22,6 +22,7 @@ import { buildProjectConfig } from './../lib/buildProject';
 import { getEndpoint } from '@goldstack/goldstack-api';
 
 import Progress from './Progress';
+import { event } from './../lib/ga';
 
 const getPackageItems = (): PackageListItem[] => {
   return [
@@ -95,6 +96,12 @@ export const BuildProject = (): JSX.Element => {
   const router = useRouter();
 
   const clickConfigure = async (): Promise<void> => {
+    event({
+      action: 'add_to_cart',
+      category: 'ecommerce',
+      label: '',
+      value: selectedPackages.join(','),
+    });
     const projectConfig = buildProjectConfig(selectedPackages);
     setProgressMessage('Creating temporary session ...');
     const sessionRes = await fetch(`${getEndpoint()}/sessions`, {

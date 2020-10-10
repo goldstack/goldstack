@@ -12,6 +12,9 @@ import { validateProject, StepValidation } from './../lib/validateProject';
 
 import Progress from './Progress';
 
+import { event } from './../lib/ga';
+import { buildProjectData } from 'src/lib/buildProjectData';
+
 const BuildProjectButton = styled.button`
   &:hover {
     background-color: #0069d9;
@@ -58,6 +61,12 @@ const ProjectConfigSummary = (props: {
   const allValid = !validationResult.find((result) => result.valid === false);
 
   const clickBuildProject = async (): Promise<void> => {
+    event({
+      action: 'begin_checkout',
+      category: 'ecommerce',
+      label: '',
+      value: props.projectData.projectId,
+    });
     setProgressMessage('Building project package ...');
     const { packageId } = await buildPackage(props.projectData);
     setProgressMessage('Done!');
