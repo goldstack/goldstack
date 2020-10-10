@@ -1689,7 +1689,7 @@ __metadata:
     "@goldstack/template-nextjs": 0.3.6
     "@goldstack/toc-generator": 0.1.0
     "@goldstack/utils-sh": 0.4.1
-    "@goldstack/utils-track": 0.1.0
+    "@goldstack/utils-track": 0.1.1
     "@testing-library/jest-dom": ^5.9.0
     "@testing-library/react": ^10.0.4
     "@types/cheerio": ^0.22.22
@@ -1750,6 +1750,7 @@ __metadata:
     "@goldstack/auth": 0.1.0
     "@goldstack/goldstack-email-send": 0.1.0
     "@goldstack/infra-aws": 0.3.3
+    "@goldstack/nodemonx": 0.3.1
     "@goldstack/project-build": 0.1.0
     "@goldstack/project-config": 0.1.0
     "@goldstack/project-package-bucket": 0.1.0
@@ -1835,7 +1836,7 @@ __metadata:
     "@goldstack/utils-package": 0.3.2
     "@goldstack/utils-project": 0.3.1
     "@goldstack/utils-sh": 0.4.1
-    "@goldstack/utils-track": 0.1.0
+    "@goldstack/utils-track": 0.1.1
     "@rjsf/bootstrap-4": ^2.4.0
     "@rjsf/core": ^2.4.0
     "@testing-library/jest-dom": ^5.9.0
@@ -3055,7 +3056,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-track@0.1.0, @goldstack/utils-track@workspace:workspaces/templates-lib/packages/utils-track":
+"@goldstack/utils-track@0.1.1, @goldstack/utils-track@workspace:workspaces/templates-lib/packages/utils-track":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-track@workspace:workspaces/templates-lib/packages/utils-track"
   dependencies:
