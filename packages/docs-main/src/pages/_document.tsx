@@ -4,13 +4,7 @@ import { ServerStyleSheet } from 'styled-components';
 
 import { TagFragment, initGtm } from '@goldstack/utils-track';
 
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-} from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyHtml extends Html implements JSX.Element {
   type: any;
