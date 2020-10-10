@@ -23,9 +23,9 @@
     "test:ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js"
   },
   "dependencies": {
-    "@goldstack/template-s3": "0.3.6",
+    "@goldstack/template-s3": "0.3.7",
     "@goldstack/utils-git": "0.1.21",
-    "@goldstack/utils-sh": "0.4.1"
+    "@goldstack/utils-sh": "0.4.2"
   },
   "devDependencies": {
     "@types/jest": "^25.2.3",
