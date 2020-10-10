@@ -2493,6 +2493,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/auth", "workspace:workspaces/templates-management/packages/auth"],
             ["@goldstack/goldstack-email-send", "workspace:workspaces/apps/packages/goldstack-email-send"],
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],
+            ["@goldstack/nodemonx", "workspace:workspaces/templates-lib/packages/utils-nodemonx"],
             ["@goldstack/project-build", "workspace:workspaces/templates-management/packages/project-build"],
             ["@goldstack/project-config", "workspace:workspaces/templates-management/packages/project-config"],
             ["@goldstack/project-package-bucket", "workspace:workspaces/templates-management/packages/project-package-bucket"],
