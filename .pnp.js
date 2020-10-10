@@ -239,6 +239,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates-lib/packages/utils-terraform-aws"
       },
       {
+        "name": "@goldstack/utils-track",
+        "reference": "workspace:workspaces/templates-lib/packages/utils-track"
+      },
+      {
         "name": "@goldstack/utils-yarn",
         "reference": "workspace:workspaces/templates-lib/packages/utils-yarn"
       },
@@ -375,6 +379,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/utils-template-test", ["workspace:workspaces/templates-management/packages/utils-template-test"]],
       ["@goldstack/utils-terraform", ["workspace:workspaces/templates-lib/packages/utils-terraform"]],
       ["@goldstack/utils-terraform-aws", ["workspace:workspaces/templates-lib/packages/utils-terraform-aws"]],
+      ["@goldstack/utils-track", ["workspace:workspaces/templates-lib/packages/utils-track"]],
       ["@goldstack/utils-yarn", ["workspace:workspaces/templates-lib/packages/utils-yarn"]],
       ["apps", ["workspace:workspaces/apps"]],
       ["docs", ["workspace:workspaces/docs"]],
@@ -2240,6 +2245,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@fullstory/browser", [
+        ["npm:1.4.5", {
+          "packageLocation": "./.yarn/cache/@fullstory-browser-npm-1.4.5-7a341bccf1-f1880b1fe7.zip/node_modules/@fullstory/browser/",
+          "packageDependencies": [
+            ["@fullstory/browser", "npm:1.4.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@goldstack/app-nextjs", [
         ["workspace:workspaces/templates/packages/app-nextjs", {
           "packageLocation": "./workspaces/templates/packages/app-nextjs/",
@@ -2409,10 +2423,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/docs/packages/docs-main/",
           "packageDependencies": [
             ["@goldstack/docs-main", "workspace:workspaces/docs/packages/docs-main"],
+            ["@fullstory/browser", "npm:1.4.5"],
             ["@goldstack/markdown-docs", "workspace:workspaces/docs/packages/markdown-docs"],
             ["@goldstack/template-nextjs", "workspace:workspaces/templates-lib/packages/template-nextjs"],
             ["@goldstack/toc-generator", "workspace:workspaces/docs/packages/toc-generator"],
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
+            ["@goldstack/utils-track", "workspace:workspaces/templates-lib/packages/utils-track"],
             ["@testing-library/jest-dom", "npm:5.11.4"],
             ["@testing-library/react", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:10.4.9"],
             ["@types/cheerio", "npm:0.22.22"],
@@ -2555,6 +2571,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/apps/packages/goldstack-home/",
           "packageDependencies": [
             ["@goldstack/goldstack-home", "workspace:workspaces/apps/packages/goldstack-home"],
+            ["@fullstory/browser", "npm:1.4.5"],
             ["@goldstack/goldstack-api", "workspace:workspaces/apps/packages/goldstack-api"],
             ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],
@@ -2565,6 +2582,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
             ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
+            ["@goldstack/utils-track", "workspace:workspaces/templates-lib/packages/utils-track"],
             ["@rjsf/bootstrap-4", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:2.4.0"],
             ["@rjsf/core", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:2.4.0"],
             ["@testing-library/jest-dom", "npm:5.11.4"],
@@ -3861,6 +3879,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT",
         }]
       ]],
+      ["@goldstack/utils-track", [
+        ["workspace:workspaces/templates-lib/packages/utils-track", {
+          "packageLocation": "./workspaces/templates-lib/packages/utils-track/",
+          "packageDependencies": [
+            ["@goldstack/utils-track", "workspace:workspaces/templates-lib/packages/utils-track"],
+            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
+            ["@types/jest", "npm:25.2.3"],
+            ["@types/node", "npm:14.11.2"],
+            ["@types/react", "npm:16.9.51"],
+            ["jest", "npm:26.4.2"],
+            ["react", "npm:16.13.1"],
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.4.0"],
+            ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=0ea415"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
       ["@goldstack/utils-yarn", [
         ["workspace:workspaces/templates-lib/packages/utils-yarn", {
           "packageLocation": "./workspaces/templates-lib/packages/utils-yarn/",
@@ -5067,6 +5102,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-react-npm-16.9.49-0659b511c4-cf5dabe1e9.zip/node_modules/@types/react/",
           "packageDependencies": [
             ["@types/react", "npm:16.9.49"],
+            ["@types/prop-types", "npm:15.7.3"],
+            ["csstype", "npm:3.0.3"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:16.9.51", {
+          "packageLocation": "./.yarn/cache/@types-react-npm-16.9.51-3ede6a89ff-2244f20526.zip/node_modules/@types/react/",
+          "packageDependencies": [
+            ["@types/react", "npm:16.9.51"],
             ["@types/prop-types", "npm:15.7.3"],
             ["csstype", "npm:3.0.3"]
           ],
