@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@goldstack/toc-generator": "0.1.0",
+    "@goldstack/utils-track": "0.1.0",
     "cheerio": "^1.0.0-rc.3",
     "ignore-loader": "~0.1.2",
     "next": "9.4.5-canary.3",
