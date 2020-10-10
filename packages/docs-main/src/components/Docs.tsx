@@ -33,10 +33,10 @@ const Docs = (props: DocsProps): JSX.Element => {
         <title>{props.title ? props.title : 'Goldstack Documentation'}</title>
       </Head>
       <Header></Header>
-      <main className="container-fluid space-top-3 space-top-md-2 pl-lg-7 pr-xl-7">
+      <main className={`container-fluid pl-lg-7 pr-xl-7 ${styles.docsmain}`}>
         <div className="row justify-content-lg-end space-bottom-3">
           <nav className="mt-2 col-lg-3 col-xl-2 hs-sidebar navbar-expand-lg px-0 ml-xl-7">
-            <div className="collapse navbar-collapse" id="sidebar-nav">
+            <div className="collapse navbar-collapse " id="sidebar-nav">
               <Navigation
                 items={sitemap[0].children}
                 currentPath={path}

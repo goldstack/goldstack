@@ -34,7 +34,7 @@ const ExpandableItem = (props: {
         // data-parent={`#${props.id}-parent`}
       >
         <div id={props.id} className="navbar-nav align-items-start flex-column">
-          <div className="position-relative">{props.children}</div>
+          <div className="">{props.children}</div>
         </div>
       </div>
     </>
@@ -95,7 +95,10 @@ const Toc = (props: TocProps): JSX.Element => {
     <>
       {/* <div className="col-lg-3 mb-5 mb-lg-0"> */}
       <div className="navbar-expand-lg navbar-expand-lg-collapse-block navbar-light">
-        <div id="sidebarNav" className="collapse navbar-collapse">
+        <div
+          id="sidebarNav"
+          className="collapse navbar-collapse position-fixed"
+        >
           <div className="pl-2 pl-lg-0 mt-3 mt-lg-0">
             <div className="position-relative">
               {props.headings.map((heading, idx) => (

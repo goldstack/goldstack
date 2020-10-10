@@ -6,6 +6,8 @@ const navPath = '/docs/';
 
 const MyLink: any = Link;
 
+import styles from './Navigation.module.css';
+
 const Level1Item = (props: { title: string }): JSX.Element => (
   <span className="hs-sidebar-heading">{props.title}</span>
 );
@@ -124,7 +126,7 @@ const Navigation = (props: NavigationProps): JSX.Element => {
     <>
       <div
         id="sidebarNav"
-        className="hs-sidebar-scrollbar hs-sidebar-sticky pl-2 pl-md-0 pr-2"
+        className={`hs-sidebar-sticky pl-2 pl-md-0 pr-2 ${styles.sidebarmain}`}
       >
         {buildNavLevel1({ items: props.items, currentPath: props.currentPath })}
       </div>
