@@ -67,7 +67,8 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
   default_root_object = "index.html"
 
 
-  # Prioirty 0
+  # Priority 0
+  # Static paths
   ordered_cache_behavior {
     path_pattern     = "_next/static/*"
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
@@ -90,7 +91,53 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     viewer_protocol_policy = "redirect-to-https"
   }
 
-  # Prioirty 1
+  ordered_cache_behavior {
+    path_pattern     = "static/*"
+    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+    cached_methods   = ["GET", "HEAD", "OPTIONS"]
+    target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
+
+    forwarded_values {
+      query_string = false
+      headers      = ["Origin"]
+
+      cookies {
+        forward = "none"
+      }
+    }
+
+    min_ttl                = 0
+    default_ttl            = 86400
+    max_ttl                = 31536000
+    compress               = true
+    viewer_protocol_policy = "redirect-to-https"
+  }
+
+  
+  ordered_cache_behavior {
+    path_pattern     = "static/*"
+    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+    cached_methods   = ["GET", "HEAD", "OPTIONS"]
+    target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
+
+    forwarded_values {
+      query_string = false
+      headers      = ["Origin"]
+
+      cookies {
+        forward = "none"
+      }
+    }
+
+    min_ttl                = 0
+    default_ttl            = 86400
+    max_ttl                = 31536000
+    compress               = true
+    viewer_protocol_policy = "redirect-to-https"
+  }
+
+
+  # Priority 1
   # Behaviour bypassing edge lambda
   # Path pattern can be changed to '*' here if no dynamic routes are used
   # This will result in a slight performance increase and decreased costs
