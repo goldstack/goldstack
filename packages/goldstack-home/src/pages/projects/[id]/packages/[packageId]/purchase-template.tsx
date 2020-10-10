@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import Header from 'src/components/Header';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -62,6 +63,9 @@ const PurchaseTemplatePage = (): JSX.Element => {
 
   return (
     <>
+      <Head>
+        <title>Purchase Template</title>
+      </Head>
       <Header></Header>
       <Container className="space-2 space-lg-3">
         <Row className="justify-content-lg-between align-items-lg-center">

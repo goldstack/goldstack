@@ -1,12 +1,10 @@
 import React from 'react';
 
 import styles from './Download.module.css';
-
+import Head from 'next/head';
 import useSWR from 'swr';
 
-import CheckCircle, {
-  link,
-} from './../icons/font-awesome/solid/check-circle.svg';
+import CheckCircle from './../icons/font-awesome/solid/check-circle.svg';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -128,6 +126,9 @@ const Download = (props: DownloadProps): JSX.Element => {
 
   return (
     <>
+      <Head>
+        <title>Download</title>
+      </Head>
       <div className="container space-2">
         <Row>
           <Col lg={12} md={12}>

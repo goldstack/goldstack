@@ -9,9 +9,9 @@ export const ConfigForm = (props: {
   onChange: (data: any) => void;
 }): JSX.Element => {
   const onChange = ({ formData, errors }): void => {
-    if (!errors || errors.length === 0) {
-      props.onChange(formData);
-    }
+    // if (!errors || errors.length === 0) {
+    props.onChange(formData);
+    // }
   };
   return (
     <Form

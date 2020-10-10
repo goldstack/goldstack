@@ -18,13 +18,16 @@ interface PricingProps {
 }
 
 import styles from './Pricing.module.css';
-
+import Head from 'next/head';
 import { dataUriToSrc } from 'src/utils/utils';
 
 const Pricing = (props: PricingProps): JSX.Element => {
   const angleRight = dataUriToSrc(AngleRight);
   return (
     <>
+      <Head>
+        <title>{props.title}</title>
+      </Head>
       <Header></Header>
       <div className="container space-2">
         <div className="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">

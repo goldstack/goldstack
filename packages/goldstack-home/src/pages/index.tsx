@@ -17,6 +17,7 @@ import SecurityIcon from './../icons/security.svg';
 
 import RelaxedCoder from './../illustrations/relaxing-man.svg';
 
+import Head from 'next/head';
 import Header from './../components/Header';
 
 import PackageList from './../components/PackageList';
@@ -32,6 +33,9 @@ interface HeadingProps {
 const Front = (): JSX.Element => {
   return (
     <>
+      <Head>
+        <title>Goldstack</title>
+      </Head>
       <Header></Header>
       <main id="content" role="main">
         <Container className="space-top-1 space-top-md-2">

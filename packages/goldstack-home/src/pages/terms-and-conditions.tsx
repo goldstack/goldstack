@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Head from 'next/head';
 import Header from 'src/components/Header';
 
 import AbstractShapes from '../styles/front-3.2.1/assets/svg/components/abstract-shapes-12.svg';
@@ -23,6 +23,9 @@ const Hero = (): JSX.Element => {
 const TermsAndConditions = (): JSX.Element => {
   return (
     <>
+      <Head>
+        <title>Goldstack - Terms and Conditions</title>
+      </Head>
       <Header></Header>
       <Hero></Hero>
       <div className="container space-2 space-bottom-lg-3">

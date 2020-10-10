@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ProjectData from '@goldstack/project-repository/src/types/ProjectData';
-
+import Head from 'next/head';
 import { ConfigForm } from 'src/components/ConfigForm';
 import { ConfigureStep } from 'src/lib/getConfigureSteps';
 
@@ -32,6 +32,9 @@ const DynamicConfigForm = (props: {
 
   return (
     <>
+      <Head>
+        <title>{step.title}</title>
+      </Head>
       <div className="mb-4">
         <h2 className="h3">{step.title}</h2>
       </div>
