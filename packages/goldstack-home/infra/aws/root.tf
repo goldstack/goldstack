@@ -113,9 +113,9 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     viewer_protocol_policy = "redirect-to-https"
   }
 
-  
+
   ordered_cache_behavior {
-    path_pattern     = "static/*"
+    path_pattern     = "*.png"
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
@@ -136,6 +136,49 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     viewer_protocol_policy = "redirect-to-https"
   }
 
+  ordered_cache_behavior {
+    path_pattern     = "favicon.ico"
+    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+    cached_methods   = ["GET", "HEAD", "OPTIONS"]
+    target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
+
+    forwarded_values {
+      query_string = false
+      headers      = ["Origin"]
+
+      cookies {
+        forward = "none"
+      }
+    }
+
+    min_ttl                = 0
+    default_ttl            = 86400
+    max_ttl                = 31536000
+    compress               = true
+    viewer_protocol_policy = "redirect-to-https"
+  }
+
+  ordered_cache_behavior {
+    path_pattern     = "site.webmanifest"
+    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+    cached_methods   = ["GET", "HEAD", "OPTIONS"]
+    target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
+
+    forwarded_values {
+      query_string = false
+      headers      = ["Origin"]
+
+      cookies {
+        forward = "none"
+      }
+    }
+
+    min_ttl                = 0
+    default_ttl            = 86400
+    max_ttl                = 31536000
+    compress               = true
+    viewer_protocol_policy = "redirect-to-https"
+  }
 
   # Priority 1
   # Behaviour bypassing edge lambda
