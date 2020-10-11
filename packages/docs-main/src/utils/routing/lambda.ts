@@ -7,8 +7,7 @@ export const handler = (event: any, context: any, callback: any): void => {
 
   const extension =
     request.uri.indexOf('.') !== -1 ? request.uri.split('.').pop() : '.html';
-  // console.log(extension);
-  // console.log('before: ' + request.uri);
+
   for (const route of dynamicRoutes) {
     if (new RegExp(route.regex).test(request.uri)) {
       request.uri = route.page + extension;
@@ -20,6 +19,5 @@ export const handler = (event: any, context: any, callback: any): void => {
     request.uri = request.uri + extension;
   }
 
-  // console.log('after: ' + request.uri);
   callback(null, request);
 };

@@ -1,3 +1,61 @@
+### 404 Not found for files in public folder
+
+Next.js supports static file serving by [placing files into a public/ folder](https://nextjs.org/docs/basic-features/static-file-serving). This is useful for files such as `favicon.ico`. This module by default provides support for `favicon.ico` files but if you want to add other files, these may not be captured by the [CloudFront behaviours configured in Terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution#cache-behavior-arguments).
+
+Thus they may be tried to be resolved as dynamic paths which will result in the file not being found. To fix this, go into `infra/aws/root.tf` and add additional `ordered_cache_behaviours` as required.
+
+For instance, if you want to serve a file `/myfile.png` provided in `public/myfile.png` and this file should be cached in CloudFront, add the following behaviour:
+
+```hcl
+  ordered_cache_behavior {
+    path_pattern     = "myfile.png"
+    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+    cached_methods   = ["GET", "HEAD", "OPTIONS"]
+    target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
+
+    forwarded_values {
+      query_string = false
+      headers      = ["Origin"]
+
+      cookies {
+        forward = "none"
+      }
+    }
+
+    min_ttl                = 0
+    default_ttl            = 86400
+    max_ttl                = 31536000
+    compress               = true
+    viewer_protocol_policy = "redirect-to-https"
+  }
+```
+
+If you would like all files in `/myfolder` provided in the folder `public/myfolder` and not cache these, provide the following behaviour:
+
+```hcl
+  ordered_cache_behavior {
+    path_pattern     = "myfolder/*"
+    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+    cached_methods   = ["GET", "HEAD", "OPTIONS"]
+    target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
+
+    forwarded_values {
+      query_string = false
+      headers      = ["Origin"]
+
+      cookies {
+        forward = "none"
+      }
+    }
+
+    min_ttl                = 0
+    default_ttl            = tostring(var.default_cache_duration)
+    max_ttl                = 1200
+    compress               = true
+    viewer_protocol_policy = "redirect-to-https"
+  }
+```
+
 ### '502 ERROR The request could not be satisfied' when opening page
 
 Instead of seeing the page, you may see an error message like the following:
