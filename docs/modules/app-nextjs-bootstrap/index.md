@@ -28,5 +28,3 @@ title: Next.js Bootstrap
 ## Potential Issues and Frequently Asked Questions
 
 [!embed](./../app-nextjs/faq.md)
-
-

@@ -28,4 +28,3 @@ title: Next.js
 ## Potential Issues and Frequently Asked Questions
 
 [!embed](./faq.md)
-
