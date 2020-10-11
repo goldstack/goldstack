@@ -1,56 +1,6 @@
-<p></p>
-<div class="markdown-fragment">
-  <p>
-    The Email Send module provides a means to send emails from an application.
-    It provides the infrastructure for email sending using
-    <a
-      href="https://aws.amazon.com/ses/"
-      class="absolute"
-      target="_blank"
-      rel="noopener noreferrer"
-      >AWS Simple Email Service</a
-    >
-    and provides a simple API for sending emails.
-  </p>
-</div>
-<p></p>
-<p></p>
-<div class="markdown-fragment">
-  <p>The following key properties need to be configured for this module:</p>
-  <ul>
-    <li>
-      <strong>Domain</strong>: The domain that emails will be sent from. The
-      module will support sending emails from any possible email address in this
-      domain. For instance, if the domain
-      <code class="inline">mydomain.com</code> is choosen, email addresses such
-      as <code class="inline">support@mydomain.com</code>,
-      <code class="inline">noreply@mydomain.com</code> and
-      <code class="inline">system@mydomain.com</code> are supported.
-    </li>
-    <li>
-      <strong>Hosted Zone Domain</strong>: A
-      <a
-        href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-working-with.html"
-        class="absolute"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Route 53 hosted zone</a
-      >
-      that will allow adding the <em>Domain</em> as a record. For instance, in
-      order to configure the domain
-      <code class="inline">emails.mydomain.com</code>, the hosted zones
-      <code class="inline">emails.mydomain.com</code> or
-      <code class="inline">mydomain.com</code> would be valid. Note that this
-      hosted zone must already exist in AWS. Please find instructions of how to
-      set up a hosted zone
-      <a
-        href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingHostedZone.html"
-        class="absolute"
-        target="_blank"
-        rel="noopener noreferrer"
-        >here</a
-      >.
-    </li>
-  </ul>
-</div>
-<p></p>
+<p></p><div class="markdown-fragment"><p>The Email Send module provides a means to send emails from an application. It provides the infrastructure for email sending using <a href="https://aws.amazon.com/ses/" class="absolute" target="_blank" rel="noopener noreferrer">AWS Simple Email Service</a> and provides a simple API for sending emails.</p></div><p></p>
+<p></p><div class="markdown-fragment"><p>The following key properties need to be configured for this module:</p>
+<ul>
+<li><strong>Domain</strong>: The domain that emails will be sent from. The module will support sending emails from any possible email address in this domain. For instance, if the domain <code class="inline">mydomain.com</code> is chosen, email addresses such as <code class="inline">support@mydomain.com</code>, <code class="inline">noreply@mydomain.com</code> and <code class="inline">system@mydomain.com</code> are supported.</li>
+<li><strong>Hosted Zone Domain</strong>: A Route 53 hosted zone that will allow adding the <em>Domain</em> as a record. For instance, in order to configure the domain <code class="inline">mydomain.com</code>, the hosted zone <code class="inline">mydomain.com</code> would be valid. For more details, please check <a href="https://docs.goldstack.party/docs/goldstack/configuration#provide-hosted-zone-1" class="absolute" target="_blank" rel="noopener noreferrer">Providing a Hosted Zone</a> in the Goldstack documentation.</li>
+</ul></div><p></p>
