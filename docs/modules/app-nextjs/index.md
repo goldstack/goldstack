@@ -28,3 +28,7 @@ title: Next.js
 ## Potential Issues and Frequently Asked Questions
 
 [!embed](./faq.md)
+
+## Security Hardening
+
+[!embed](./security-hardening.md)

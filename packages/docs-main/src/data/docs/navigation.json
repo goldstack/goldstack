@@ -8,7 +8,8 @@
         "about/index.md",
         "how-does-it-work/index.md",
         "getting-started/index.md",
-        "configuration/index.md"
+        "configuration/index.md",
+        "security-hardening/index.md"
       ]
     },
     {

@@ -26,6 +26,11 @@
             "title": "Configuration",
             "path": "goldstack/configuration",
             "children": []
+          },
+          {
+            "title": "Security Hardening",
+            "path": "goldstack/security-hardening",
+            "children": []
           }
         ]
       },

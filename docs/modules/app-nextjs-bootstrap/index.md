@@ -28,3 +28,7 @@ title: Next.js Bootstrap
 ## Potential Issues and Frequently Asked Questions
 
 [!embed](./../app-nextjs/faq.md)
+
+## Security Hardening
+
+[!embed](./../app-nextjs/security-hardening.md)

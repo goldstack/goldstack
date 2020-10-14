@@ -57,3 +57,7 @@ resource "aws_route53_record" "spf_mail_from" {
 
 - Delete the TXT record in the [Route 53 Console](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-deleting.html). Ensure that you have copied the record successfully before deleting it.
 - Now run `yarn infra up prod`
+
+## Security Hardening
+
+This module is already developed following best security practices, including various means to ensure good email deliverability by configuring SPF and DKIM. Further improvements to the security for the email module can generally be made by explicitly granting rights to other components of the system that use this module, such as Lambdas. For further details on how to configure access for sending emails via SES, please see [Controlling access to Amazon SES](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/control-user-access.html) in the AWS SES documentation.

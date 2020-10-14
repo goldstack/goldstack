@@ -24,3 +24,7 @@ title: Static Website AWS
 ## Potential Issues and Frequently Asked Questions
 
 [!embed](./faq.md)
+
+## Security Hardening
+
+We are not aware of any additional security hardening that can be performed for this module. Please [raise an issue](https://github.com/goldstack/goldstack/issues) if there are any further steps that could be taken.

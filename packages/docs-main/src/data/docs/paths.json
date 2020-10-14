@@ -5,6 +5,7 @@
   "goldstack/how-does-it-work",
   "goldstack/getting-started",
   "goldstack/configuration",
+  "goldstack/security-hardening",
   "modules",
   "modules/app-nextjs",
   "modules/lambda-express",
