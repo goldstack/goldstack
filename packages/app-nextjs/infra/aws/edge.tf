@@ -19,14 +19,6 @@ resource "aws_iam_role" "lambda_exec" {
   }
   EOF
 
-  # tags = {
-  #   ManagedBy = "terraform"
-  #   Changed   = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
-  # }
-
-  # lifecycle {
-  #   ignore_changes = [tags]
-  # }
 }
 
 data "archive_file" "empty_lambda" {
