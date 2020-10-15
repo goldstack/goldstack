@@ -50,7 +50,7 @@ const Header = (): JSX.Element => {
             >
               <a
                 className={`navbar-brand ${styles.brandtext}`}
-                href="/"
+                href={process.env.NEXT_PUBLIC_GOLDSTACK_HOME}
                 aria-label="Goldstack Logo"
               >
                 GOLDSTACK
