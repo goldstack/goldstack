@@ -14,6 +14,7 @@ import Progress from './Progress';
 
 import { event } from './../lib/ga';
 import { buildProjectData } from 'src/lib/buildProjectData';
+import Spinner from 'react-bootstrap/Spinner';
 
 const BuildProjectButton = styled.button`
   &:hover {
@@ -94,18 +95,25 @@ const ProjectConfigSummary = (props: {
         </p>
       )}
       <Row className="space-top-2 space-bottom-2">
-        <Col xs={4}></Col>
-        <Col xs={4} className="text-center">
+        <Col xs={3}></Col>
+        <Col xs={6} className="text-center">
           <BuildProjectButton
             disabled={!allValid || progressMessage !== undefined}
             onClick={clickBuildProject}
             type="button"
             className="btn btn-primary btn-lg transition-3d-hover"
           >
+            <Spinner
+              as="span"
+              animation="border"
+              role="status"
+              aria-hidden="true"
+              hidden={!progressMessage}
+            ></Spinner>{' '}
             Build Project 🛠️
           </BuildProjectButton>
         </Col>
-        <Col xs={4}>
+        <Col xs={3}>
           <Progress progressMessage={progressMessage || ''}></Progress>
         </Col>
       </Row>

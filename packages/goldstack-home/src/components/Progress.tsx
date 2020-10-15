@@ -28,7 +28,7 @@ const Bounce = styled.span`
 const Progress = (props: { progressMessage: string }): JSX.Element => {
   return (
     <ProgressWrapper>
-      <Bounce hidden={props.progressMessage === ''}>👷</Bounce>{' '}
+      {/* <Bounce hidden={props.progressMessage === ''}>👷</Bounce>{' '} */}
       {props.progressMessage}
     </ProgressWrapper>
   );

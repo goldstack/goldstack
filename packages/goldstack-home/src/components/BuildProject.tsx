@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Spinner from 'react-bootstrap/Spinner';
 
 import styled from 'styled-components';
 
@@ -23,6 +24,8 @@ import { getEndpoint } from '@goldstack/goldstack-api';
 
 import Progress from './Progress';
 import { event } from './../lib/ga';
+
+import styles from './BuildProject.module.css';
 
 const getPackageItems = (): PackageListItem[] => {
   return [
@@ -146,6 +149,14 @@ export const BuildProject = (): JSX.Element => {
             type="button"
             className="btn btn-primary btn-lg transition-3d-hover"
           >
+            <Spinner
+              as="span"
+              animation="border"
+              role="status"
+              aria-hidden="true"
+              hidden={!progressMessage}
+              className={styles.spinner}
+            ></Spinner>{' '}
             Configure Project 🛠️
           </ConfigureProjectButton>
         </Col>

@@ -7,6 +7,7 @@ import Header from 'src/components/Header';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Spinner from 'react-bootstrap/Spinner';
 
 import ConfigureNavigate from 'src/components/ConfigureNavigate';
 import DynamicConfigForm from 'src/components/DynamicConfigForm';
@@ -49,7 +50,12 @@ const ConfigureProject = (): JSX.Element => {
   // when page changes, trigger save to backend
 
   if (!id || !step) {
-    return <Header></Header>;
+    return (
+      <>
+        <Header></Header>
+        <p>Cannot load configuration. Invalid URL</p>
+      </>
+    );
   }
 
   const { data, error } = useSWR(`${getEndpoint()}/projects/${id}`, fetcher, {
@@ -72,14 +78,33 @@ const ConfigureProject = (): JSX.Element => {
     }
   }, [step]);
   if (error) {
-    return <p>Cannot load projects data</p>;
+    console.error('Cannot load project data');
+    console.error(error);
+    return (
+      <>
+        <Header></Header>
+        <p>Unexpected error when loading project data.</p>
+      </>
+    );
   }
   if (docsError) {
     console.error('Cannot load template documentation');
     console.error(docsError);
   }
   if (!data) {
-    return <Header></Header>;
+    return (
+      <>
+        <Header></Header>
+        <div className="container space-4">
+          <div className="w-md-80 w-lg-50 text-center mx-md-auto">
+            <Spinner animation="border" role="status">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
+            <p className="pt-3">Loading project configuration ...</p>
+          </div>
+        </div>
+      </>
+    );
   }
 
   const projectData: ProjectData = wireProjectData(data);

@@ -5,6 +5,8 @@ import assert from 'assert';
 
 import Progress from './Progress';
 import { getEndpoint } from '@goldstack/goldstack-api';
+import Spinner from 'react-bootstrap/Spinner';
+
 const MyLink: any = Link;
 
 interface OneOffPurchaseProps {
@@ -159,7 +161,15 @@ const OneOffPurchase = (props: OneOffPurchaseProps): JSX.Element => {
             </p>
           </div> */}
           <div className="col-sm-5 ">
-            <button type="submit" className="btn btn-sm btn-primary">
+            <button type="submit" className="btn btn-primary">
+              <Spinner
+                as="span"
+                animation="border"
+                role="status"
+                size="sm"
+                aria-hidden="true"
+                hidden={!progressMessage}
+              ></Spinner>{' '}
               Submit
             </button>
           </div>
