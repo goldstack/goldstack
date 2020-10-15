@@ -35,7 +35,6 @@ resource "aws_lambda_function" "main" {
   }
 }
 
-
 resource "aws_iam_role" "lambda_exec" {
   name = "${var.lambda_name}-role"
 
