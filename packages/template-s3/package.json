@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-s3",
-  "version": "0.3.10",
+  "version": "0.3.11",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
