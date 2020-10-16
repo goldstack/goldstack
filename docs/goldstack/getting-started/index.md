@@ -13,6 +13,18 @@ Goldstack requires a few dependencies to be available in your development system
 - Yarn v1.22.5+
 - Docker v19+
 
+### Confirm Node version
+
+Open a terminal and run:
+
+```bash
+node -v
+```
+
+Your Node version must be v12 or later. If you need to update your node version, please see:
+
+- For OS X[Node Ver]
+
 ## 2. Extract and install
 
 Extract the contents of the zip file into a folder of your choice. After you have done that, you must initialise the project. Simply run the following in your project directory:
@@ -41,7 +53,27 @@ yarn build
 
 ## 4. Configure VSCode
 
-Your project should come with all files required to configure VSCode. Configuration files are present in the `.vscode/` folder. Simply open the folder of your project in VSCode. Next try to find any `.ts` file in your project. They should be present in one of your modules under `packages/*/src/`. Once you open a `.ts` file, VSCode should open a confirmation. Please confirm this to ensure everything will work correctly.
+Your project should come with all files required to configure VSCode. Configuration files are present in the `.vscode/` folder. Simply open the folder of your project in VSCode. If you are asked to allow the installation of additional extensions, please confirm to install them.
+
+If you want to install the necessary extensions manually, here are links to the extensions required:
+
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
+
+Next try to find any `.ts` file in your project. They should be present in one of your modules under `packages/*/src/`.
+
+Once you open a `.ts` file, VSCode should open a confirmation at the bottom right corner of the screen asking 'This workspace contains a TypeScript version. Would you like to use the workspace TypeScript version for TypeScript and JavaScript language features?'. Confirm this by clicking the _Allow_ button.
+
+![Allow TypeScript](https://cdn.goldstack.party/img/202010/allow_typescript.png)
+
+In the status bar on the bottom righthand corner of the VSCode editor you should now see _TypeScript_ along with a version such as _3.9.5-pnpify_. 
+
+![VSCode status bar](https://cdn.goldstack.party/img/202010/vscode_status_bar.png)
+
+If the confirmation dialog does not show up or the version that you see does not include _pnpify_, click the version number next to _TypeScript_. Then select the TypeScript version from the list that includes _pnpify_.
+
+![Select TypeScript version](https://cdn.goldstack.party/img/202010/select_typescript_version.png)
 
 ## 5. Deploy modules
 
