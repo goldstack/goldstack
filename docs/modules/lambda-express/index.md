@@ -94,15 +94,15 @@ MY_ENV=value yarn infra up prod
 This works very well in combination with secrets for GitHub actions.
 
 ```yaml
-      - name: Deploy API
-        run: |
-          yarn workspace my-api infra up prod
-        env:
-          MY_ENV: ${{secrets.MY_ENV}}
-          AWS_USER_NAME: goldstack-prod
-          AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
-          AWS_DEFAULT_REGION: us-west-2
+- name: Deploy API
+  run: |
+    yarn workspace my-api infra up prod
+  env:
+    MY_ENV: ${{secrets.MY_ENV}}
+    AWS_USER_NAME: goldstack-prod
+    AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
+    AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
+    AWS_DEFAULT_REGION: us-west-2
 ```
 
 ## Security Hardening
