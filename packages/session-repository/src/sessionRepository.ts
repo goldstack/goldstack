@@ -11,8 +11,8 @@ export interface SessionData {
   validUntil: string;
   createdAt?: string;
   email?: string;
+  stripeId?: string;
   coupon?: string;
-  paymentIntent?: Stripe.PaymentIntent;
 }
 
 export class SessionRepository {
@@ -65,24 +65,38 @@ export class SessionRepository {
     }
   }
 
-  async storePayment(params: {
+  async storeStripeId(params: {
     sessionId: string;
-    email: string;
-    coupon?: string;
-    paymentIntent: Stripe.PaymentIntent;
+    stripeId: string;
   }): Promise<void> {
     const sessionData = await this.readSession(params.sessionId);
     if (!sessionData) {
       throw new Error(
-        `Cannot store payment information for session that does not exist: ${params.sessionId} ${params.paymentIntent.id}`
+        `Cannot store stripeId for session that does not exist: ${params.sessionId}`
       );
     }
-    if (sessionData.paymentIntent) {
-      console.warn(
-        `Payment intent was already defined for session ${params.sessionId} ${sessionData.paymentIntent.id}`
+    sessionData.stripeId = params.stripeId;
+    await this.s3
+      .putObject({
+        Bucket: this.bucketName,
+        Key: `sessions/${sessionData.sessionId}/session.json`,
+        Body: JSON.stringify(sessionData),
+      })
+      .promise();
+  }
+
+  async storePayment(params: {
+    sessionId: string;
+    email: string;
+    coupon?: string;
+  }): Promise<void> {
+    const sessionData = await this.readSession(params.sessionId);
+    if (!sessionData) {
+      throw new Error(
+        `Cannot store payment information for session that does not exist: ${params.sessionId} `
       );
     }
-    sessionData.paymentIntent = params.paymentIntent;
+
     sessionData.email = params.email;
     sessionData.coupon = params.coupon;
     await this.s3
