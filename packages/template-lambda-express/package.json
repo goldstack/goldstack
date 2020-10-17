@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-express",
-  "version": "0.3.19",
+  "version": "0.3.20",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -38,8 +38,8 @@
     "@goldstack/utils-s3-deployment": "0.3.4",
     "@goldstack/utils-sh": "0.4.2",
     "@goldstack/utils-template": "0.3.2",
-    "@goldstack/utils-terraform": "0.3.5",
-    "@goldstack/utils-terraform-aws": "0.3.5",
+    "@goldstack/utils-terraform": "0.3.6",
+    "@goldstack/utils-terraform-aws": "0.3.6",
     "archiver": "^5.0.0",
     "yargs": "^15.4.1"
   },
