@@ -85,6 +85,26 @@ Lastly, to support local development make sure to define the variable correctly 
 
 Note that for credentials and other values that should not be committed to source code, it may be better to store these in AWS Secrets Manager and retrieve them using the AWS SDK based on the `process.env.GOLDSTACK_DEPLOYMENT` value provided.
 
+It is also possible to provide the value of Terraform variables through environment variables during build time. For instance, if you have defined the variable `my_env`, simply provide the environment variable `MY_ENV` when calling `yarn infra`.
+
+```bash
+MY_ENV=value yarn infra up prod
+```
+
+This works very well in combination with secrets for GitHub actions.
+
+```yaml
+      - name: Deploy API
+        run: |
+          yarn workspace my-api infra up prod
+        env:
+          MY_ENV: ${{secrets.MY_ENV}}
+          AWS_USER_NAME: goldstack-prod
+          AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
+```
+
 ## Security Hardening
 
 This module requires further security hardening when deployed in critical production applications. Specifically the lambda is given the role `arn:aws:iam::aws:policy/AdministratorAccess"` and this will grant the lambda access to all resources on the AWS account, including the ability to create and destroy infrastructure. It is therefore recommended to grant this lambda only rights to resources it needs access to, such as read and write permissions for an S3 bucket. This can be modified in `infra/aws/lambda.tf` in the resource `resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach"`.
