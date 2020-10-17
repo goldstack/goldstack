@@ -103,12 +103,14 @@ jobs:
           git add ./yarn.lock
           # git add ./../../.yarn/install-state.gz This often creates conflicts
           git add ./.pnp.js
+          git pull
           git status
           echo "Commiting for apps"
           cd workspaces/apps
           git status
           git add .
           git diff-index --quiet HEAD || git commit -m 'Releasing new library version'
+          git pull
           git status
           cd ../..
           echo "Commiting for docs"
@@ -116,6 +118,7 @@ jobs:
           git status
           git add .
           git diff-index --quiet HEAD || git commit -m 'Releasing new library version'
+          git pull
           git status
           cd ../..
           echo "Commiting for templates"
@@ -123,6 +126,7 @@ jobs:
           git status
           git add .
           git diff-index --quiet HEAD || git commit -m 'Releasing new library version'
+          git pull
           git status
           cd ../..
           echo "Committing for template management"
@@ -130,6 +134,7 @@ jobs:
           git status
           git add .
           git diff-index --quiet HEAD || git commit -m 'Releasing new library version'
+          git pull
           git status
           cd ../..
 
