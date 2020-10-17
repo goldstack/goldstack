@@ -35,6 +35,10 @@
       "regex": "^\\/docs\\/goldstack\\/how-does-it-work$"
     },
     {
+      "page": "/docs/goldstack/security-hardening",
+      "regex": "^\\/docs\\/goldstack\\/security-hardening$"
+    },
+    {
       "page": "/docs/modules",
       "regex": "^\\/docs\\/modules$"
     },
@@ -81,8 +85,8 @@
       "routeKeys": [
         "slug"
       ],
-      "dataRouteRegex": "^\\/_next\\/data\\/yF1ew7\\-6eKZL51fMecpMC\\/docs\\/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/yF1ew7\\-6eKZL51fMecpMC/docs/(?<slug>.+?)\\.json$"
+      "dataRouteRegex": "^\\/_next\\/data\\/DLURVlxCs_OqiKojJQ3X5\\/docs\\/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/DLURVlxCs_OqiKojJQ3X5/docs/(?<slug>.+?)\\.json$"
     }
   ]
 }
