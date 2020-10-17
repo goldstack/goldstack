@@ -2,7 +2,6 @@ import { connect, getBucketName } from '@goldstack/session-repository-bucket';
 
 import S3 from 'aws-sdk/clients/s3';
 
-import Stripe from 'stripe';
 import assert from 'assert';
 import { AWSError } from 'aws-sdk/lib/core';
 
