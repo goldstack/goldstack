@@ -25,7 +25,7 @@ title: Lambda Express
 
 ### Adding environment variables
 
-Environment variables are defined in the Terraform source code for this module. Specifically they are defined in the `infra/aws/lambda.tf` file in the resource  `resource "aws_lambda_function" "main"`. By default, there is one environment variable specified that identifies the Goldstack deployment used.
+Environment variables are defined in the Terraform source code for this module. Specifically they are defined in the `infra/aws/lambda.tf` file in the resource `resource "aws_lambda_function" "main"`. By default, there is one environment variable specified that identifies the Goldstack deployment used.
 
 ```hcl
  environment {
