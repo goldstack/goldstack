@@ -33,6 +33,7 @@ resource "aws_lambda_function" "main" {
       GOLDSTACK_DEPLOYMENT = var.name
       CORS = var.cors
       GOLDSTACK_WORKDIR = var.goldstack_workdir
+      STRIPE_API_KEY = var.stripe_api_key
     }
   }
 

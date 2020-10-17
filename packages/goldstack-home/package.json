@@ -41,6 +41,7 @@
     "@goldstack/utils-track": "0.1.1",
     "@rjsf/bootstrap-4": "^2.4.0",
     "@rjsf/core": "^2.4.0",
+    "@stripe/stripe-js": "^1.10.0",
     "ajv": "6.12.2",
     "data-uri-to-buffer": "^3.0.1",
     "install": "^0.13.0",

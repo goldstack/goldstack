@@ -12,6 +12,17 @@ import Col from 'react-bootstrap/Col';
 import { dataUriToSrc } from 'src/utils/utils';
 import { getEndpoint } from '@goldstack/goldstack-api';
 import { DocLink } from '@goldstack/goldstack-api/dist/src/utils/docLinks';
+
+import assert from 'assert';
+import { loadStripe } from '@stripe/stripe-js';
+
+assert(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY,
+  'Environment variable NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY must be defined.'
+);
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
+
 interface DownloadProps {
   packageId: string;
   projectId: string;
@@ -110,7 +121,7 @@ const DocsLinks = (props: { data: DocLink[] }): JSX.Element => {
 };
 
 const Download = (props: DownloadProps): JSX.Element => {
-  const { data: endpointData, error: endpointError } = useSWR(
+  const { data: packageData, error: packageDataError } = useSWR(
     `${getEndpoint()}/projects/${props.projectId}/packages/${props.packageId}`,
     fetcher
   );
@@ -124,6 +135,25 @@ const Download = (props: DownloadProps): JSX.Element => {
     console.error('Cannot load documentation for project', props.projectId);
   }
 
+  if (packageData && packageData.error === 'not-paid') {
+    if (!packageData.stripeId) {
+      throw new Error('Invalid session');
+    }
+
+    const redirectToStripe = async (): Promise<void> => {
+      const stripe = await stripePromise;
+      assert(stripe);
+      const result = await stripe.redirectToCheckout({
+        sessionId: packageData.stripeId,
+      });
+      if (result.error) {
+        throw new Error('Cannot redirect to Stripe checkout.');
+      }
+    };
+    redirectToStripe();
+    return <></>;
+  }
+
   return (
     <>
       <Head>
@@ -132,10 +162,12 @@ const Download = (props: DownloadProps): JSX.Element => {
       <div className="container space-2">
         <Row>
           <Col lg={12} md={12}>
-            {endpointError && <p>Something went wrong: {endpointError + ''}</p>}
-            {endpointData && (
+            {packageDataError && (
+              <p>Something went wrong: {packageDataError + ''}</p>
+            )}
+            {packageData && (
               <DownloadReady
-                downloadUrl={endpointData.downloadUrl}
+                downloadUrl={packageData.downloadUrl}
               ></DownloadReady>
             )}
           </Col>

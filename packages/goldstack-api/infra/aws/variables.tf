@@ -33,3 +33,8 @@ variable "cors" {
   description = "CORS domain"
   type = string
 }
+
+variable "stripe_api_key" {
+  description = "Private Stripe API key"
+  type = string
+}

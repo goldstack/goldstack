@@ -4,6 +4,8 @@ import randomString from 'crypto-random-string';
 
 import { sessionUser } from '@goldstack/auth';
 
+import { isSessionPaid } from './lib/stripe';
+
 import {
   connectSessionRepository,
   SessionRepository,
@@ -111,8 +113,19 @@ export const postSessionHandler = async (
   }
 };
 
-const isPaymentReceived = (sessionData: SessionData): boolean => {
-  return !!(sessionData?.paymentIntent || sessionData?.coupon);
+const isPaymentReceived = async (
+  sessionData: SessionData
+): Promise<boolean> => {
+  if (!sessionData.coupon && !sessionData.stripeId) {
+    return false;
+  }
+  if (sessionData.coupon) {
+    return true;
+  }
+
+  assert(sessionData.stripeId);
+
+  return await isSessionPaid({ sessionId: sessionData.stripeId });
 };
 
 export const getSessionHandler = async (
@@ -133,9 +146,18 @@ export const getSessionHandler = async (
       res.status(401).json({ errorMessage: 'Invalid session id' });
       return;
     }
+    const paymentReceived = await isPaymentReceived(sessionData);
+    console.log('pay received', paymentReceived);
+    if (paymentReceived) {
+      res.status(200).json({
+        paymentReceived,
+      });
+      return;
+    }
 
     res.status(200).json({
-      paymentReceived: isPaymentReceived(sessionData),
+      paymentReceived,
+      stripeId: sessionData.stripeId,
     });
   } catch (e) {
     console.log('Error while getting session details: ' + e.message);
@@ -217,18 +239,9 @@ export const putSessionHandler = async (
   res: Response
 ): Promise<void> => {
   try {
-    const {
-      email,
-      paymentIntent,
-      coupon,
-      downloadUrl,
-      projectId,
-      packageId,
-    } = req.body;
-    if (!email || !paymentIntent) {
-      res
-        .status(400)
-        .json({ errorMessage: 'Expected properties email and paymentIntent' });
+    const { email, coupon, downloadUrl, projectId, packageId } = req.body;
+    if (!email) {
+      res.status(400).json({ errorMessage: 'Expected property email' });
       return;
     }
     const { userToken } = req.cookies;
@@ -248,15 +261,16 @@ export const putSessionHandler = async (
       res.status(401).json({ errorMessage: 'Session expired' });
       return;
     }
+    let validatedCoupon: string | undefined;
     if (coupon !== 'FREEBETA') {
-      res.status(400).json({ errorMessage: 'Invalid coupon code' });
-      return;
+      validatedCoupon = undefined;
+    } else {
+      validatedCoupon = coupon;
     }
     await repo.storePayment({
       sessionId: userToken,
       email,
-      paymentIntent,
-      coupon,
+      coupon: validatedCoupon,
     });
 
     if (downloadUrl) {

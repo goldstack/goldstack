@@ -12,6 +12,7 @@ const MyLink: any = Link;
 interface OneOffPurchaseProps {
   projectId: string;
   packageId: string;
+  stripeId: string;
   onPurchaseComplete: () => void;
 }
 
@@ -53,16 +54,17 @@ const OneOffPurchase = (props: OneOffPurchaseProps): JSX.Element => {
       },
       body: JSON.stringify({
         email: email,
-        paymentIntent: {},
+        stripeId: props.stripeId,
         projectId: props.projectId,
         packageId: props.packageId,
         downloadUrl: `https://${window.location.hostname}/projects/${props.projectId}/packages/${props.packageId}/download`,
-        coupon: couponInput.current.value,
+        // coupon: couponInput.current.value,
       }),
     });
     if (sessionRes.status !== 200) {
       throw new Error('Cannot submit payment information');
     }
+
     props.onPurchaseComplete();
   };
 

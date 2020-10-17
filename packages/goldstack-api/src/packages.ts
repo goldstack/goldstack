@@ -10,7 +10,10 @@ import { connectSessionRepository } from '@goldstack/session-repository';
 import { writePackageConfigs } from '@goldstack/project-config';
 import { ProjectData } from '@goldstack/project-repository';
 
+import { createSession, isSessionPaid } from './lib/stripe';
+
 import fs from 'fs';
+import assert from 'assert';
 
 const router = Router({
   mergeParams: true,
@@ -109,6 +112,18 @@ export const postPackageHandler = async (
       })
       .promise();
 
+    const sessionRepo = await connectSessionRepository();
+
+    const sessionData = await sessionRepo.readSession(userToken);
+
+    if (!sessionData?.stripeId) {
+      const stripeId = await createSession({ projectId, packageId });
+      await sessionRepo.storeStripeId({
+        sessionId: userToken,
+        stripeId: stripeId.id,
+      });
+    }
+
     res.status(200).json({ projectId, packageId });
     await rmSafe(path);
   } catch (e) {
@@ -152,11 +167,33 @@ export const getPackageHandler = async (
     // Check payment processed
     const sessionRepo = await connectSessionRepository();
     const sessionData = await sessionRepo.readSession(userToken);
+    if (!sessionData) {
+      console.error('Cannot retrieve session data for', userToken);
+      res
+        .status(500)
+        .json({ errorMessage: 'Cannot retrieve session data ' + userToken });
+      return;
+    }
 
     // If no payment has been processed, do not return download URL
-    if (!(sessionData?.coupon || sessionData?.paymentIntent)) {
-      res.status(200).json({});
+    if (!(sessionData?.coupon || sessionData?.stripeId)) {
+      res.status(200).json({
+        error: 'not-paid',
+        stripeId: sessionData.stripeId,
+      });
       return;
+    }
+
+    if (!sessionData?.coupon) {
+      assert(sessionData.stripeId, 'Session data stripe id not defined.');
+      const paid = await isSessionPaid({ sessionId: sessionData.stripeId });
+      if (!paid) {
+        res.status(200).json({
+          error: 'not-paid',
+          stripeId: sessionData.stripeId,
+        });
+        return;
+      }
     }
 
     // generate download URL

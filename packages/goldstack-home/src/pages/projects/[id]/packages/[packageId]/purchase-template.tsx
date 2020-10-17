@@ -76,6 +76,7 @@ const PurchaseTemplatePage = (): JSX.Element => {
                 onPurchaseComplete={onPurchaseComplete}
                 projectId={id as string}
                 packageId={packageId as string}
+                stripeId={data.stripeId as string}
               ></OneOffPurchase>
             )}
             {data && data.paymentReceived && (
