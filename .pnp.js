@@ -395,11 +395,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "@goldstack/nodemonx",
-        "workspace:workspaces/templates-lib/packages/utils-nodemonx"
+        "npm:0.3.1"
       ],
       [
         "@goldstack/utils-package-upgrade",
-        "workspace:workspaces/templates-lib/packages/utils-package-upgrade"
+        "npm:0.2.0"
       ],
       [
         "@typescript-eslint/eslint-plugin",
@@ -462,8 +462,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["@ampproject/toolbox-optimizer", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.5.14"],
-            ["@goldstack/nodemonx", "workspace:workspaces/templates-lib/packages/utils-nodemonx"],
-            ["@goldstack/utils-package-upgrade", "workspace:workspaces/templates-lib/packages/utils-package-upgrade"],
+            ["@goldstack/nodemonx", "npm:0.3.1"],
+            ["@goldstack/utils-package-upgrade", "npm:0.2.0"],
             ["@typescript-eslint/eslint-plugin", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.34.0"],
             ["@typescript-eslint/parser", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.34.0"],
             ["@yarnpkg/doctor", "npm:2.0.0-rc.18"],
@@ -2493,7 +2493,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/auth", "workspace:workspaces/templates-management/packages/auth"],
             ["@goldstack/goldstack-email-send", "workspace:workspaces/apps/packages/goldstack-email-send"],
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],
-            ["@goldstack/nodemonx", "workspace:workspaces/templates-lib/packages/utils-nodemonx"],
             ["@goldstack/project-build", "workspace:workspaces/templates-management/packages/project-build"],
             ["@goldstack/project-config", "workspace:workspaces/templates-management/packages/project-config"],
             ["@goldstack/project-package-bucket", "workspace:workspaces/templates-management/packages/project-package-bucket"],
@@ -2533,6 +2532,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["sanitize-html", "npm:1.27.5"],
             ["source-map-loader", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:1.1.0"],
             ["source-map-support", "npm:0.5.19"],
+            ["stripe", "npm:8.114.0"],
             ["supertest", "npm:4.0.2"],
             ["supertest-session", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:4.1.0"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.4.0"],
@@ -2586,6 +2586,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-track", "workspace:workspaces/templates-lib/packages/utils-track"],
             ["@rjsf/bootstrap-4", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:2.4.0"],
             ["@rjsf/core", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:2.4.0"],
+            ["@stripe/stripe-js", "npm:1.10.0"],
             ["@testing-library/jest-dom", "npm:5.11.4"],
             ["@testing-library/react", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:10.4.9"],
             ["@types/jest", "npm:25.2.3"],
@@ -2734,6 +2735,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@goldstack/nodemonx", [
+        ["npm:0.3.1", {
+          "packageLocation": "./.yarn/cache/@goldstack-nodemonx-npm-0.3.1-2b92f99306-1d7b8597a6.zip/node_modules/@goldstack/nodemonx/",
+          "packageDependencies": [
+            ["@goldstack/nodemonx", "npm:0.3.1"],
+            ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],
+            ["@goldstack/utils-sh", "npm:0.4.1"],
+            ["minimatch", "npm:3.0.4"],
+            ["node-watch", "npm:0.6.4"]
+          ],
+          "linkType": "HARD",
+        }],
         ["workspace:workspaces/templates-lib/packages/utils-nodemonx", {
           "packageLocation": "./workspaces/templates-lib/packages/utils-nodemonx/",
           "packageDependencies": [
@@ -3686,6 +3698,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@goldstack/utils-package-upgrade", [
+        ["npm:0.2.0", {
+          "packageLocation": "./.yarn/cache/@goldstack-utils-package-upgrade-npm-0.2.0-b485c48b6d-b2ecae3f5c.zip/node_modules/@goldstack/utils-package-upgrade/",
+          "packageDependencies": [
+            ["@goldstack/utils-package-upgrade", "npm:0.2.0"]
+          ],
+          "linkType": "HARD",
+        }],
         ["workspace:workspaces/templates-lib/packages/utils-package-upgrade", {
           "packageLocation": "./workspaces/templates-lib/packages/utils-package-upgrade/",
           "packageDependencies": [
@@ -3758,6 +3777,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@goldstack/utils-sh", [
+        ["npm:0.4.1", {
+          "packageLocation": "./.yarn/cache/@goldstack-utils-sh-npm-0.4.1-1488ef948d-36aa67a99b.zip/node_modules/@goldstack/utils-sh/",
+          "packageDependencies": [
+            ["@goldstack/utils-sh", "npm:0.4.1"],
+            ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],
+            ["archiver", "npm:5.0.0"],
+            ["extract-zip", "npm:2.0.1"],
+            ["ncp", "npm:2.0.0"],
+            ["rimraf", "npm:3.0.2"],
+            ["shelljs", "npm:0.8.4"]
+          ],
+          "linkType": "HARD",
+        }],
         ["workspace:workspaces/templates-lib/packages/utils-sh", {
           "packageLocation": "./workspaces/templates-lib/packages/utils-sh/",
           "packageDependencies": [
@@ -4402,6 +4434,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@sinonjs/fake-timers", "npm:6.0.1"],
             ["@sinonjs/commons", "npm:1.8.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@stripe/stripe-js", [
+        ["npm:1.10.0", {
+          "packageLocation": "./.yarn/cache/@stripe-stripe-js-npm-1.10.0-fc25edaae9-92584c7e20.zip/node_modules/@stripe/stripe-js/",
+          "packageDependencies": [
+            ["@stripe/stripe-js", "npm:1.10.0"]
           ],
           "linkType": "HARD",
         }]
@@ -19873,8 +19914,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["root", "workspace:."],
             ["@ampproject/toolbox-optimizer", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.5.14"],
-            ["@goldstack/nodemonx", "workspace:workspaces/templates-lib/packages/utils-nodemonx"],
-            ["@goldstack/utils-package-upgrade", "workspace:workspaces/templates-lib/packages/utils-package-upgrade"],
+            ["@goldstack/nodemonx", "npm:0.3.1"],
+            ["@goldstack/utils-package-upgrade", "npm:0.2.0"],
             ["@typescript-eslint/eslint-plugin", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.34.0"],
             ["@typescript-eslint/parser", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.34.0"],
             ["@yarnpkg/doctor", "npm:2.0.0-rc.18"],
@@ -21393,6 +21434,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["stripe", [
+        ["npm:8.114.0", {
+          "packageLocation": "./.yarn/cache/stripe-npm-8.114.0-844c1c87e4-578a113673.zip/node_modules/stripe/",
+          "packageDependencies": [
+            ["stripe", "npm:8.114.0"],
+            ["@types/node", "npm:14.11.2"],
+            ["qs", "npm:6.9.4"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:8.91.0", {
           "packageLocation": "./.yarn/cache/stripe-npm-8.91.0-b7269dab60-b8c7cd8eca.zip/node_modules/stripe/",
           "packageDependencies": [
