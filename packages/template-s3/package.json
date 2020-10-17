@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-s3",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -37,8 +37,8 @@
     "@goldstack/utils-s3-deployment": "0.3.4",
     "@goldstack/utils-sh": "0.4.2",
     "@goldstack/utils-template": "0.3.2",
-    "@goldstack/utils-terraform": "0.3.4",
-    "@goldstack/utils-terraform-aws": "0.3.4",
+    "@goldstack/utils-terraform": "0.3.5",
+    "@goldstack/utils-terraform-aws": "0.3.5",
     "aws-sdk": "2.721.0",
     "mock-aws-s3": "^4.0.1",
     "yargs": "^15.4.1"
