@@ -50,7 +50,17 @@ export const getVariablesFromProperties = (
   }
   for (const key in properties) {
     if (terraformVariables.find((varName) => varName === key)) {
-      vars.push([convertToPythonVariable(key), properties[key]]);
+      const variableName = convertToPythonVariable(key);
+      const variableValue = properties[key];
+      if (variableValue !== '') {
+        vars.push([variableName, variableValue]);
+      } else {
+        console.log('using ', variableName.toLocaleUpperCase());
+        vars.push([
+          variableName,
+          process.env[variableName.toLocaleUpperCase()] || '',
+        ]);
+      }
     }
   }
 
@@ -101,8 +111,16 @@ export const getVariablesFromHCL = (properties: object): Variables => {
       );
     }
     if (jsVariableNames.find((varName) => varName === key)) {
-      vars.push([convertToPythonVariable(key), properties[key]]);
-    } else {
+      const variableName = convertToPythonVariable(key);
+      const variableValue = properties[key];
+      if (variableValue !== '') {
+        vars.push([variableName, variableValue]);
+      } else {
+        vars.push([
+          variableName,
+          process.env[variableName.toLocaleUpperCase()] || '',
+        ]);
+      }
     }
   }
   return vars;
