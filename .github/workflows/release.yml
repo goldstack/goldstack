@@ -49,6 +49,8 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
+          # Not actually used, only when infra gets into CI/CD
+          STRIPE_API_KEY: ${{secrets.PROD_STRIPE_PRIVATE_KEY}}
       
       - name: Deploy UI
         run: |
