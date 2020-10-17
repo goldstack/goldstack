@@ -4,7 +4,7 @@ import randomString from 'crypto-random-string';
 
 import { sessionUser } from '@goldstack/auth';
 
-import { isSessionPaid } from './lib/stripe';
+import { isSessionPaid, createSession } from './lib/stripe';
 
 import {
   connectSessionRepository,
@@ -147,7 +147,6 @@ export const getSessionHandler = async (
       return;
     }
     const paymentReceived = await isPaymentReceived(sessionData);
-    console.log('pay received', paymentReceived);
     if (paymentReceived) {
       res.status(200).json({
         paymentReceived,
@@ -261,12 +260,26 @@ export const putSessionHandler = async (
       res.status(401).json({ errorMessage: 'Session expired' });
       return;
     }
+
     let validatedCoupon: string | undefined;
     if (coupon !== 'FREEBETA') {
       validatedCoupon = undefined;
     } else {
       validatedCoupon = coupon;
     }
+
+    if (coupon && !validatedCoupon) {
+      res.status(400).json({ error: 'invalid-coupon' });
+      return;
+    }
+    if (!validatedCoupon) {
+      const stripeId = await createSession({ projectId, packageId, email });
+      await repo.storeStripeId({
+        sessionId: userToken,
+        stripeId: stripeId.id,
+      });
+    }
+
     await repo.storePayment({
       sessionId: userToken,
       email,

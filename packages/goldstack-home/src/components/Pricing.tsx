@@ -32,7 +32,7 @@ const Pricing = (props: PricingProps): JSX.Element => {
       <div className="container space-2">
         <div className="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
           <h2 className="h1">{props.title}</h2>
-          <p>Completely free while we are in beta 💖</p>
+          {/* <p>Completely free while we are in beta 💖</p> */}
         </div>
 
         <div className="row align-items-lg-center">
@@ -41,9 +41,8 @@ const Pricing = (props: PricingProps): JSX.Element => {
               <span className="text-dark">
                 <h3>Single Purchase</h3>
                 <span className="display-4">
-                  <span style={{ textDecoration: 'line-through' }}>$45</span>
+                  <span>$20</span>
                 </span>
-                <span className="font-size-1">free while in beta</span>
               </span>
 
               <hr className="my-4" />

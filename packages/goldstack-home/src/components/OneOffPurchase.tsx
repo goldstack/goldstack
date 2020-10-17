@@ -58,10 +58,17 @@ const OneOffPurchase = (props: OneOffPurchaseProps): JSX.Element => {
         projectId: props.projectId,
         packageId: props.packageId,
         downloadUrl: `https://${window.location.hostname}/projects/${props.projectId}/packages/${props.packageId}/download`,
-        // coupon: couponInput.current.value,
+        coupon: couponInput.current.value,
       }),
     });
-    if (sessionRes.status !== 200) {
+    if (
+      sessionRes.status === 400 &&
+      (await sessionRes.json()).error === 'invalid-coupon'
+    ) {
+      alert('Invalid coupon');
+      setProgressMessage('');
+      return;
+    } else if (sessionRes.status !== 200) {
       throw new Error('Cannot submit payment information');
     }
 
@@ -109,10 +116,8 @@ const OneOffPurchase = (props: OneOffPurchaseProps): JSX.Element => {
                 type="text"
                 className="form-control"
                 name="coupon"
-                disabled
-                value="FREEBETA"
                 id="coupon"
-                placeholder="Coupon for purchase"
+                placeholder="Optional coupon for purchase"
                 aria-label="Coupon"
                 data-msg="Provide an optional coupon"
               />
@@ -123,10 +128,8 @@ const OneOffPurchase = (props: OneOffPurchaseProps): JSX.Element => {
           <div className="col">
             <div className="mb-5">
               <h2 className="font-size-1 text-body mb-0">Total price:</h2>
-              <span className="text-dark font-size-2 font-weight-bold">$0</span>
-              <span className="text-body ml-2">
-                <del>$45</del>
-              </span>
+              {/* <span className="text-dark font-size-2 font-weight-bold">$0</span> */}
+              <span className="text-body ml-2">$20</span>
             </div>
           </div>
         </div>

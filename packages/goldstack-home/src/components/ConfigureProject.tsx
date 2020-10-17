@@ -53,7 +53,6 @@ const ConfigureProject = (): JSX.Element => {
     return (
       <>
         <Header></Header>
-        <p>Cannot load configuration. Invalid URL</p>
       </>
     );
   }

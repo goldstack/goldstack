@@ -10,7 +10,7 @@ import { connectSessionRepository } from '@goldstack/session-repository';
 import { writePackageConfigs } from '@goldstack/project-config';
 import { ProjectData } from '@goldstack/project-repository';
 
-import { createSession, isSessionPaid } from './lib/stripe';
+import { isSessionPaid } from './lib/stripe';
 
 import fs from 'fs';
 import assert from 'assert';
@@ -111,18 +111,6 @@ export const postPackageHandler = async (
         Body: fs.createReadStream(zipPath),
       })
       .promise();
-
-    const sessionRepo = await connectSessionRepository();
-
-    const sessionData = await sessionRepo.readSession(userToken);
-
-    if (!sessionData?.stripeId) {
-      const stripeId = await createSession({ projectId, packageId });
-      await sessionRepo.storeStripeId({
-        sessionId: userToken,
-        stripeId: stripeId.id,
-      });
-    }
 
     res.status(200).json({ projectId, packageId });
     await rmSafe(path);

@@ -13,7 +13,7 @@
         "hostedZoneDomain": "dev.goldstack.party",
         "cors": "https://dev.goldstack.party",
         "goldstackWorkdir": "/tmp/",
-        "stripeApiKey": "sk_test_51Hd1UtArOjAVQR9vpC8P8cyZcAHb62nSNm4xykBsavQghyo11Al0fVvAJ7E9vswqRhLi2z7idmRJrXMppMWhNkJJ006nBfDJ9g"
+        "stripeApiKey": ""
       }
     },
     {
@@ -26,7 +26,7 @@
         "hostedZoneDomain": "goldstack.party",
         "cors": "https://goldstack.party",
         "goldstackWorkdir": "/tmp/",
-        "stripeApiKey": ""
+        "stripeApiKey": "sk_test_51Hd1UtArOjAVQR9vpC8P8cyZcAHb62nSNm4xykBsavQghyo11Al0fVvAJ7E9vswqRhLi2z7idmRJrXMppMWhNkJJ006nBfDJ9g"
       }
     }
   ],

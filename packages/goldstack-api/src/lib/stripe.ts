@@ -18,6 +18,7 @@ const initStripe = (): Stripe => {
 export const createSession = async (params: {
   projectId: string;
   packageId: string;
+  email: string;
 }): Promise<Stripe.Response<Stripe.Checkout.Session>> => {
   const stripe = initStripe();
   assert(process.env.CORS, 'Environment variable CORS not defined.');
@@ -36,6 +37,7 @@ export const createSession = async (params: {
         quantity: 1,
       },
     ],
+    customer_email: params.email,
     mode: 'payment',
     success_url: `${process.env.CORS}/projects/${params.projectId}/packages/${params.packageId}/download`,
     cancel_url: `${process.env.CORS}/projects/${params.projectId}/packages/${params.packageId}/purchase-template`,
@@ -49,4 +51,11 @@ export const isSessionPaid = async (params: {
   const stripe = initStripe();
   const session = await stripe.checkout.sessions.retrieve(params.sessionId);
   return session.payment_status === 'paid';
+};
+
+export const updateEmail = async (params: {
+  sessionId: string;
+  email: string;
+}): Promise<void> => {
+  const stripe = initStripe();
 };
