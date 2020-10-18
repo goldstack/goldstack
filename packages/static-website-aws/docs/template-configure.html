@@ -1,65 +1,8 @@
-<p></p>
-<div class="markdown-fragment">
-  <p>
-    This module provides a simple static website that is deployed on a global
-    <a
-      href="https://aws.amazon.com/cloudfront/"
-      class="absolute"
-      target="_blank"
-      rel="noopener noreferrer"
-      >CloudFront</a
-    >
-    CDN provided by AWS.
-  </p>
-</div>
-<p></p>
-<p></p>
-<div class="markdown-fragment">
-  <p>The following key properties need to be configured for this module:</p>
-  <ul>
-    <li>
-      <strong>Hosted Zone Domain</strong>: A Route 53 hosted zone to which the
-      <em>Primary Website Domain</em> and <em>Redirect Website Domain</em> can
-      be added as records. For instance, a hosted zone domain is
-      <code class="inline">mysite.com</code> will allow adding the primary
-      domain <code class="inline">mysite.com</code> and the redirect domain
-      <code class="inline">www.mysite.com</code>. For more details, please check
-      <a
-        href="https://docs.goldstack.party/docs/goldstack/configuration#provide-hosted-zone-1"
-        class="absolute"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Providing a Hosted Zone</a
-      >
-      in the Goldstack documentation.
-    </li>
-    <li>
-      <strong>Primary Website Domain</strong>: This is the domain your users
-      will use to view the site. For instance, if you configure the domain
-      <code class="inline">mysite.com</code>, users will be able to view your
-      site by opening the URL <code class="inline">https://mysite.com</code>.
-    </li>
-    <li>
-      <strong>Redirect Website Domain</strong>: This is a domain that will
-      redirect all requests to your <em>Primary Website Domain</em>. For
-      instance, if you configure the domain
-      <code class="inline">www.mysite.com</code> as your redirect domain and
-      <code class="inline">mysite.com</code> as your primary domain, users will
-      be redirected to <code class="inline">https://mysite.com</code> when they
-      attempt to open the URL
-      <code class="inline">https://www.mysite.com</code>. Note that the
-      <em>Redirect Website Domain</em> must be configured, even if you do not
-      need this functionality.
-    </li>
-    <li>
-      <strong>Default Cache Duration</strong>: The number of seconds that files
-      will be cached in the AWS content delivery network. Setting this to
-      <code class="inline">120</code> for instance, would mean that, unless
-      otherwise specified, webpages and other resources will be cached for 120
-      s. In that case, when a new version of a page is deployed, it can take up
-      to 120 s for changes to appear when accessing the deployed version of the
-      application.
-    </li>
-  </ul>
-</div>
-<p></p>
+<p></p><div class="markdown-fragment"><p>This module provides a simple static website that is deployed on a global <a href="https://aws.amazon.com/cloudfront/" class="absolute" target="_blank" rel="noopener noreferrer">CloudFront</a> CDN provided by AWS.</p></div><p></p>
+<p></p><div class="markdown-fragment"><p>The following key properties need to be configured for this module:</p>
+<ul>
+<li><strong>Hosted Zone Domain</strong>: A Route 53 hosted zone to which the <em>Primary Website Domain</em> and <em>Redirect Website Domain</em> can be added as records. For instance, the hosted zone domain <code class="inline">mysite.com</code> would allow adding the primary domain <code class="inline">mysite.com</code> and the redirect domain <code class="inline">www.mysite.com</code>. For more details, please check <a href="https://docs.goldstack.party/docs/goldstack/configuration#provide-hosted-zone-1" class="absolute" target="_blank" rel="noopener noreferrer">Providing a Hosted Zone</a> in the Goldstack documentation.</li>
+<li><strong>Primary Website Domain</strong>: This is the domain your users will use to view the site. For instance, if you configure the domain <code class="inline">mysite.com</code>, users will be able to view your site by opening the URL <code class="inline">https://mysite.com</code>.</li>
+<li><strong>Redirect Website Domain</strong>: This is a domain that will redirect all requests to your <em>Primary Website Domain</em>. The redirect website domain <em>must be</em> different to the <em>Primary Website Domain</em>. For instance, if you configure the domain <code class="inline">mysite.com</code> as your primary domain, you can configure <code class="inline">www.mysite.com</code> as your redirect domain. Users will be redirected to <code class="inline">https://mysite.com</code> when they attempt to open the URL <code class="inline">https://www.mysite.com</code>. Note that the <em>Redirect Website Domain</em> must be configured, even if you do not need this functionality.</li>
+<li><strong>Default Cache Duration</strong>: The number of seconds that files will be cached in the AWS content delivery network. Setting this to <code class="inline">120</code> for instance, would mean that, unless otherwise specified, webpages and other resources will be cached for 120 s. In that case, when a new version of a page is deployed, it can take up to 120 s for changes to appear when accessing the deployed version of the application.</li>
+</ul></div><p></p>
