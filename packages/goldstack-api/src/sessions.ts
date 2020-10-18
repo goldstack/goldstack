@@ -209,14 +209,17 @@ const performPurchase = async (params: {
   });
   await ses
     .sendEmail({
-      Destination: { ToAddresses: [params.email] },
+      Destination: {
+        ToAddresses: [params.email],
+        BccAddresses: ['mxrogm@gmail.com'],
+      },
       Message: {
         Subject: { Charset: 'UTF-8', Data: 'Goldstack Template Purchase' },
         Body: {
           Text: {
             Charset: 'UTF-8',
             Data:
-              'Thank you for your purchase of a Goldstack template!\n\n' +
+              'Thank you for selecting a Goldstack template!\n\n' +
               'Please keep the following download link for your reference\n\n' +
               `${params.downloadUrl}?token=${sessionData?.sessionId}\n\n` +
               'You can also use this link to create new templates.\n\n' +

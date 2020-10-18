@@ -42,7 +42,7 @@
           },
           {
             "name": "NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY",
-            "value": "pk_test_51Hd1UtArOjAVQR9vxRvGfIEMGJIvY82W0PHB7ajEjh4kIHXU148UsKthSk5b6itbWR5mSg74NvfmdKdDBqItQ01m00Av3f7gpd"
+            "value": "pk_live_51Hd1UtArOjAVQR9vhVCzlap2C2bNTAdFM6D30iZB8xeNmEYSy0Tuw4q0uAaeXL562EZesN7fx0HiG2HMBjenzTqq00y9qiR4WI"
           }
         ]
       }
