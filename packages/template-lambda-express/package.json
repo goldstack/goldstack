@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-express",
-  "version": "0.3.20",
+  "version": "0.3.21",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
