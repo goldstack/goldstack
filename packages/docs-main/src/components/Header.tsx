@@ -73,7 +73,21 @@ const Header = (): JSX.Element => {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item as="li">
+                  <Nav.Link
+                    href={`${process.env.NEXT_PUBLIC_GOLDSTACK_HOME}/#build`}
+                  >
+                    Build
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item as="li">
                   <Nav.Link href="/docs">Docs</Nav.Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                  <Nav.Link
+                    href={`${process.env.NEXT_PUBLIC_GOLDSTACK_HOME}/pricing`}
+                  >
+                    Pricing
+                  </Nav.Link>
                 </Nav.Item>
               </Nav>
             </Navbar.Collapse>
