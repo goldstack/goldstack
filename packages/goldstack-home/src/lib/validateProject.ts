@@ -15,6 +15,7 @@ export const validateProject = (projectData: ProjectData): StepValidation[] => {
   result.push({
     stepName: 'Project',
     valid:
+      !!projectData.project.projectName &&
       projectData.project.projectName.length > 0 &&
       projectRegex.exec(projectData.project.projectName) !== null,
   });

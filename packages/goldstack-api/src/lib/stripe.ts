@@ -29,7 +29,7 @@ export const createSession = async (params: {
         price_data: {
           currency: 'usd',
           product_data: {
-            name: 'Single Template Purchase',
+            name: '1 Month Unlimited Templates',
             // images: ['https://i.imgur.com/EHyR2nP.png'],
           },
           unit_amount: 2000,

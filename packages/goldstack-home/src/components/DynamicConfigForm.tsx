@@ -84,7 +84,14 @@ const DynamicConfigForm = (props: {
               </a>
             </MyLink>
           )}
-          {step.idx <= 0 && <div></div>}
+          {step.idx <= 0 && (
+            <MyLink href="/#build" prefetch={false} shallow={true}>
+              <a className={'font-weight-bold'}>
+                <i className="fas fa-angle-left fa-xs mr-1"></i>
+                Back to builder
+              </a>
+            </MyLink>
+          )}
 
           {step.type !== 'summary' && (
             <MyLink

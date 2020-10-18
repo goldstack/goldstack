@@ -39,7 +39,7 @@ const Pricing = (props: PricingProps): JSX.Element => {
           <div id="stickyBlockStartPoint" className="col-lg-5 mb-9 mb-lg-0">
             <div className="card z-index-2 p-4 p-md-7">
               <span className="text-dark">
-                <h3>Single Purchase</h3>
+                <h3>1 Month Unlimited Templates</h3>
                 <span className="display-4">
                   <span>$20</span>
                 </span>
@@ -49,8 +49,7 @@ const Pricing = (props: PricingProps): JSX.Element => {
 
               <div className="mb-5">
                 <p>
-                  Save tons of time by starting your project with a Goldstack
-                  template.
+                  Create and download as many templates as you like for 30 days.
                 </p>
               </div>
 
@@ -111,7 +110,7 @@ const Pricing = (props: PricingProps): JSX.Element => {
                     <img className="img-fluid" src={MoneyBackIcon} alt="SVG" />
                   </figure>
                   <h4>Money back</h4>
-                  <p>100% guaranteed money back.</p>
+                  <p>100% money back guaranteed.</p>
                 </div>
               </div>
             </div>

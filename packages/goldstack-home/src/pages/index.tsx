@@ -220,7 +220,10 @@ const Front = (): JSX.Element => {
         </Container>
         <Container fluid className="bg-light overflow-hidden">
           <Container>
-            <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-9 space-top-3">
+            <div
+              className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-9 space-top-3"
+              id="build"
+            >
               <h2>Choose the modules you need</h2>
             </div>
             <BuildProject></BuildProject>
