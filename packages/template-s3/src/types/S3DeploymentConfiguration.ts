@@ -3,7 +3,7 @@ import { DeploymentConfiguration } from '@goldstack/infra';
 export { DeploymentConfiguration };
 
 /**
- * The name of the bucket. No spaces, numbers or special characters other than <code>-</code> allowed.
+ * The name of the bucket. No spaces, numbers or special characters other than '-' allowed.
  *
  * @title Bucket Name
  * @pattern ^[A-Za-z0-9-]*$

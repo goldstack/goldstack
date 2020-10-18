@@ -21,7 +21,9 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/NextjsEnvironmentVariable"
-          }
+          },
+          "description": "Define environment variables for the NextJs application.",
+          "title": "Environment Variables"
         }
       },
       "required": [
@@ -51,7 +53,8 @@
     "DefaultCacheDuration": {
       "type": "number",
       "description": "Seconds resources will be cached for by default. For development sites, a good value is around 10 seconds and for production sites 60-100 seconds.",
-      "title": "Default Cache Duraction",
+      "title": "Default Cache Duration",
+      "default": 10,
       "exclusiveMinimum": 0
     },
     "NextjsEnvironmentVariable": {
@@ -73,7 +76,7 @@
         "value"
       ],
       "additionalProperties": false,
-      "description": "NextJs public environment variable for web application (see https://nextjs.org/docs/basic-features/environment-variables)",
+      "description": "Define the name and value for the environment variable.",
       "title": "NextJs Environment Variable"
     }
   }

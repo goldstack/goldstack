@@ -6,7 +6,7 @@ import {
 } from '@goldstack/template-static-website-aws';
 
 /**
- * NextJs public environment variable for web application (see https://nextjs.org/docs/basic-features/environment-variables)
+ * Define the name and value for the environment variable.
  *
  * @title NextJs Environment Variable
  */
@@ -27,6 +27,11 @@ export interface NextjsEnvironmentVariable {
 
 export interface NextjsDeploymentConfiguration
   extends AWSStaticWebsiteDeploymentConfiguration {
+  /**
+   * Define environment variables for the NextJs application.
+   *
+   * @title Environment Variables
+   */
   environmentVariables?: NextjsEnvironmentVariable[];
 }
 

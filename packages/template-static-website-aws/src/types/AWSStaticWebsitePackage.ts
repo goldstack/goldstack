@@ -31,7 +31,8 @@ export type RedirectWebsiteDomain = string;
 /**
  * Seconds resources will be cached for by default. For development sites, a good value is around 10 seconds and for production sites 60-100 seconds.
  *
- * @title Default Cache Duraction
+ * @title Default Cache Duration
+ * @default 10
  * @exclusiveMinimum 0
  */
 export type DefaultCacheDuration = number;
