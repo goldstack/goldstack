@@ -45,7 +45,6 @@ const processNode = async (params: {
   const sourceFile = params.source + filePath;
   const destinationFile =
     params.destination + dir + (dir ? '/' : '') + name + '.json';
-  // console.debug(`${sourceFile} => ${destinationFile}`);
   const data = await renderPage(sourceFile);
   write(JSON.stringify(data, null, 2), destinationFile);
 
@@ -61,7 +60,6 @@ const processNode = async (params: {
     pagePath = pagePath.substr(0, pagePath.length - '/index'.length);
   }
 
-  // console.debug('Page path: ' + pagePath);
   const sitemapEntry = {
     title: data.data.title,
     path: pagePath,
@@ -97,7 +95,7 @@ const processNode = async (params: {
   return results.reduce(
     (acc, curr) => ({
       paths: [...acc.paths, ...curr.paths],
-      sitemap: acc.sitemap, //[...acc.sitemap, ...curr.sitemap],
+      sitemap: acc.sitemap,
     }),
     {
       paths: [pagePath],

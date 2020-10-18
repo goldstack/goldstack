@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Heading } from '@goldstack/toc-generator';
 
+import styles from './Toc.module.css';
+
 interface TocProps {
   headings: Heading[];
 }
@@ -57,7 +59,10 @@ const LeafItem = (props: {
   }
   return (
     <>
-      <a className={`dropdown-item ${padding}`} href={props.link}>
+      <a
+        className={`dropdown-item ${padding} ${styles.nowhitespace}`}
+        href={props.link}
+      >
         {props.title}
       </a>
     </>
@@ -97,7 +102,8 @@ const Toc = (props: TocProps): JSX.Element => {
       <div className="navbar-expand-lg navbar-expand-lg-collapse-block navbar-light">
         <div
           id="sidebarNav"
-          className="collapse navbar-collapse position-fixed"
+          className="collapse navbar-collapse"
+          // position-fixed
         >
           <div className="pl-2 pl-lg-0 mt-3 mt-lg-0">
             <div className="position-relative">

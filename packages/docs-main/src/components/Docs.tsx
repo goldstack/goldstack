@@ -27,6 +27,8 @@ const Docs = (props: DocsProps): JSX.Element => {
   const path = query.slug ? (query.slug as string[]).join('/') : '/';
   const content = props.contentHtml || '';
 
+  const githubPath = path + '/index.md';
+
   return (
     <>
       <Head>
@@ -54,6 +56,17 @@ const Docs = (props: DocsProps): JSX.Element => {
             <Toc headings={props.toc}></Toc>
           </div>
         </div>
+        <Row>
+          <Col className="text-center">
+            <a
+              href={`https://github.com/goldstack/goldstack-docs/blob/master/docs/${githubPath}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              ✎ Edit on GitHub
+            </a>
+          </Col>
+        </Row>
         <Row>
           <Col className="text-center">
             © {new Date().getFullYear()} Pureleap Pty. Ltd. and Contributors
