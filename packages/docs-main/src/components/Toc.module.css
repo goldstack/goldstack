@@ -1,3 +1,7 @@
 .nowhitespace {
   white-space: normal !important;
 }
+
+.rightsidebar {
+  width: 228px;
+}

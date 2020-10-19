@@ -102,8 +102,7 @@ const Toc = (props: TocProps): JSX.Element => {
       <div className="navbar-expand-lg navbar-expand-lg-collapse-block navbar-light">
         <div
           id="sidebarNav"
-          className="collapse navbar-collapse"
-          // position-fixed
+          className={`collapse navbar-collapse position-fixed ${styles.rightsidebar}`}
         >
           <div className="pl-2 pl-lg-0 mt-3 mt-lg-0">
             <div className="position-relative">
