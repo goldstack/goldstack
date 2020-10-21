@@ -12,7 +12,7 @@ title: Next.js Bootstrap
 ## Features
 
 - Bootstrap styling for Next.js application
-[!embed](./../app-nextjs/features.md)
+  [!embed](./../app-nextjs/features.md)
 
 ## Getting Started
 
