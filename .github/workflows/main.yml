@@ -248,7 +248,7 @@ jobs:
           cd workspaces/apps
           git status
           git add packages/template-management-cli/src/state/deployments.json
-          git commit -m "Publishing updated docker deployment"
+          git diff-index --quiet HEAD || git commit -m "Publishing updated docker deployment"
           git pull
           git status
           cd ../..
