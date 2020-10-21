@@ -1,3 +1,3 @@
 # goldstack-apps
 
-Goldstack applications
+Goldstack applications.
