@@ -1,3 +1,3 @@
 # goldstack-mega
 
-Ultimate root repository for Goldstack
+Ultimate root repository for Goldstack.
