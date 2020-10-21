@@ -9,6 +9,11 @@ title: Next.js Bootstrap
 
 [!embed](./configure.md)
 
+## Features
+
+- Bootstrap styling for Next.js application
+[!embed](./../app-nextjs/features.md)
+
 ## Getting Started
 
 [!embed](./getting-started.md)

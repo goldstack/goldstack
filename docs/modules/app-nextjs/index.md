@@ -9,6 +9,10 @@ title: Next.js
 
 [!embed](./configure.md)
 
+## Features
+
+[!embed](./features.md)
+
 ## Getting Started
 
 [!embed](./getting-started.md)
