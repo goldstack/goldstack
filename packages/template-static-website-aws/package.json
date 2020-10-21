@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-static-website-aws",
-  "version": "0.3.18",
+  "version": "0.3.19",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
