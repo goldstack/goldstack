@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '12.x'
           registry-url: https://registry.npmjs.org
-      
+
       - name: Prepare yarn
         run: |
           npm install -g yarn@1.22.4
@@ -31,7 +31,7 @@ jobs:
         run: |
           yarn install
           yarn build
-      
+
       - name: Deploy docs
         run: |
           yarn workspace @goldstack/docs-main deploy prod
@@ -40,7 +40,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
-      
+
       - name: Deploy API
         run: |
           yarn workspace @goldstack/goldstack-api deploy prod
@@ -51,7 +51,7 @@ jobs:
           AWS_DEFAULT_REGION: us-west-2
           # Not actually used, only when infra gets into CI/CD
           STRIPE_API_KEY: ${{secrets.PROD_STRIPE_PRIVATE_KEY}}
-      
+
       - name: Deploy UI
         run: |
           yarn workspace @goldstack/goldstack-home deploy prod
@@ -77,4 +77,4 @@ jobs:
           AWS_USER_NAME: goldstack-prod
           AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
-          AWS_DEFAULT_REGION: us-west-2  
+          AWS_DEFAULT_REGION: us-west-2

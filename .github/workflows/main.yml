@@ -35,7 +35,6 @@ jobs:
           yarn lint:fix
           yarn lint
 
-
       # Do this for all before library git push messes with history
       - name: Check if libraries changed
         uses: marceloprado/has-changed-path@20aaabb
@@ -54,7 +53,7 @@ jobs:
           paths: workspaces/templates-management
       - name: Check if apps changed
         uses: marceloprado/has-changed-path@20aaabb
-        id: changed-apps 
+        id: changed-apps
         with:
           paths: workspaces/apps
       - name: Check if docs changed
@@ -86,7 +85,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           YARN_NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      
+
       - name: Push library changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
         uses: ad-m/github-push-action@v0.6.0
@@ -152,7 +151,7 @@ jobs:
           directory: workspaces/templates/packages/app-nextjs
           repository: goldstack/nextjs-typescript-template
           github_token: ${{secrets.BUILD_TOKEN}}
-      
+
       - name: Build templates
         run: |
           cd workspaces/templates
@@ -172,7 +171,7 @@ jobs:
           yarn test:ci
           cd ../..
 
-      - name: Build apps 
+      - name: Build apps
         run: |
           cd workspaces/apps
           yarn compile
@@ -185,7 +184,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
 
-      - name: Build docs 
+      - name: Build docs
         run: |
           cd workspaces/docs
           yarn compile
@@ -219,7 +218,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
-      
+
       - name: Commit latest deployed image hash
         run: |
           cd workspaces/apps
@@ -281,4 +280,3 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
-
