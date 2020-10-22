@@ -9,6 +9,7 @@ describe('markdownToMarkdown', () => {
   it.only('Should render documentation with embedded documents', async () => {
     const file = __dirname + '/markdown/template-s3.md';
     const result = await resolveMarkdown(file);
+    // expect(result).
     console.log(result);
   });
 });
