@@ -151,7 +151,7 @@ jobs:
         with:
           directory: workspaces/templates/packages/app-nextjs
           repository: goldstack/nextjs-typescript-template
-          github_token: ${{secrets.BUILD_TOKEN}
+          github_token: ${{secrets.BUILD_TOKEN}}
       
       - name: Build templates
         run: |
