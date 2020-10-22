@@ -11,6 +11,7 @@ on:
 jobs:
   build:
     name: 'Build and Test'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -104,7 +105,7 @@ jobs:
           git add workspaces/*
 
           yarn pull
-          yarn commit Release_new_library_version
+          yarn commit Release_new_library_version_ci_skip
 
       - name: Push root changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
@@ -224,7 +225,7 @@ jobs:
           cd workspaces/apps
           git status
           git add packages/template-management-cli/src/state/deployments.json
-          git diff-index --quiet HEAD || git commit -m "Publishing updated docker deployment"
+          git diff-index --quiet HEAD || git commit -m "Publishing updated docker deployment ci_skip"
           git pull
           git status
           cd ../..
