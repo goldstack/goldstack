@@ -32,11 +32,12 @@ export default function rehypeDocs({ filePath }): any {
         );
       }
 
-      const code = fs.readFileSync(combinedPath, 'utf8');
+      const tree = fileToMarkdownTree(combinedPath);
 
       try {
-        node.value = code;
-        node.type = 'text';
+        node.children = tree.children;
+        node.value = '';
+        node.type = 'paragraph';
       } catch (e) {
         throw Error(`${e.message} \nFile: ${file}`);
       }
@@ -52,12 +53,9 @@ export default function rehypeDocs({ filePath }): any {
         throw Error(`Invalid fragment specified; no such file "${path}"`);
       }
 
-      // const code = fs.readFileSync(path, 'utf8');
-
       const tree = fileToMarkdownTree(path);
 
       try {
-        // Object.assign(tree, node);
         node.children = tree.children;
         node.value = '';
         node.type = 'paragraph';
