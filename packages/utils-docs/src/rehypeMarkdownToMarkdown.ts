@@ -4,6 +4,20 @@ import visit from 'unist-util-visit';
 
 import path from 'path';
 
+import { read } from '@goldstack/utils-sh';
+
+import unified from 'unified';
+import markdown from 'remark-parse';
+
+function fileToMarkdownTree(filePath: string): any {
+  const data = read(filePath);
+  const tree = unified()
+    .use(markdown as any)
+    .parse(data);
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
+  return rehypeDocs({ filePath })(tree);
+}
+
 export default function rehypeDocs({ filePath }): any {
   function visitInlineCode(node: any): void {
     const value = node.value;
@@ -22,7 +36,7 @@ export default function rehypeDocs({ filePath }): any {
 
       try {
         node.value = code;
-        node.type = 'markdown';
+        node.type = 'text';
       } catch (e) {
         throw Error(`${e.message} \nFile: ${file}`);
       }
@@ -38,20 +52,28 @@ export default function rehypeDocs({ filePath }): any {
         throw Error(`Invalid fragment specified; no such file "${path}"`);
       }
 
-      const code = fs.readFileSync(path, 'utf8');
+      // const code = fs.readFileSync(path, 'utf8');
+
+      const tree = fileToMarkdownTree(path);
 
       try {
-        node.value = code;
-        node.type = 'markdown';
+        // Object.assign(tree, node);
+        node.children = tree.children;
+        node.value = '';
+        node.type = 'paragraph';
       } catch (e) {
         throw Error(`${e.message} \nFile: ${file}`);
       }
     }
-    if (node.children.length > 0 && node.children[0].value.indexOf('%') === 0) {
+    if (
+      node.children.length > 0 &&
+      node.children[0].value &&
+      node.children[0].value.indexOf('%') === 0
+    ) {
       node.value = `[Video: ${node.children[0].value.substring(1)}](${
         node.url
       })`;
-      node.type = 'markdown';
+      node.type = 'text';
     }
   }
 

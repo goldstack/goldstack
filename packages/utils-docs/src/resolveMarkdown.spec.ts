@@ -6,7 +6,7 @@ describe('markdownToMarkdown', () => {
     const result = await resolveMarkdown(__dirname + '/markdown/configure.md');
     console.log(result);
   });
-  it('Should render documentation with embedded documents', async () => {
+  it.only('Should render documentation with embedded documents', async () => {
     const file = __dirname + '/markdown/template-s3.md';
     const result = await resolveMarkdown(file);
     console.log(result);
