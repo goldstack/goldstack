@@ -9,8 +9,9 @@ import { read } from '@goldstack/utils-sh';
 import unified from 'unified';
 import markdown from 'remark-parse';
 
+import matter from 'gray-matter';
 function fileToMarkdownTree(filePath: string): any {
-  const data = read(filePath);
+  const data = matter(read(filePath)).content;
   const tree = unified()
     .use(markdown as any)
     .parse(data);
@@ -37,7 +38,7 @@ export default function rehypeDocs({ filePath }): any {
       try {
         node.children = tree.children;
         node.value = '';
-        node.type = 'paragraph';
+        node.type = 'root';
       } catch (e) {
         throw Error(`${e.message} \nFile: ${file}`);
       }
@@ -58,7 +59,7 @@ export default function rehypeDocs({ filePath }): any {
       try {
         node.children = tree.children;
         node.value = '';
-        node.type = 'paragraph';
+        node.type = 'root';
       } catch (e) {
         throw Error(`${e.message} \nFile: ${file}`);
       }

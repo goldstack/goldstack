@@ -14,3 +14,9 @@ title: S3 Template
 ## Getting Started
 
 [!embed](./getting-started.md)
+
+```
+some code
+```
+
+After the code

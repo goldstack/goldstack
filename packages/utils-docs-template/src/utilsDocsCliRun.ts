@@ -3,7 +3,7 @@ import yargs from 'yargs';
 
 import { write, rmSafe } from '@goldstack/utils-sh';
 
-import { transpile, getDocsDir } from './utilsDocsCli';
+import { transpile, getDocsDir, resolveMarkdown } from './utilsDocsCli';
 import path from 'path';
 
 export const run = async (): Promise<void> => {
@@ -48,6 +48,25 @@ export const run = async (): Promise<void> => {
                 demandOption: true,
               });
           }
+        )
+        .command(
+          'generate-markdown-doc <path> <dest>',
+          'Generates a Markdown file compiled from a Markdown source',
+          (yargs) => {
+            return yargs
+              .positional('path', {
+                describe:
+                  'The path in the Goldstack documentation where the source Markdown file is located',
+                type: 'string',
+                demandOption: true,
+              })
+              .positional('dest', {
+                describe:
+                  'The path where generated Markdown file should be stored.',
+                type: 'string',
+                demandOption: true,
+              });
+          }
         ).argv;
 
       if (argv._[0] === 'generate-doc') {
@@ -73,6 +92,13 @@ export const run = async (): Promise<void> => {
           await rmSafe(targetFileName);
           write(result, targetFileName);
         }
+        return;
+      }
+
+      if (argv._[0] === 'generate-markdown-doc') {
+        // const docsDir = getDocsDir();
+        const result = await resolveMarkdown(argv.path);
+        write(result, argv.dest);
         return;
       }
 

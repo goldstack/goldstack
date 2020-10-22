@@ -6,6 +6,8 @@ import path from 'path';
 
 export { markdownToHtml } from './markdownToHtml';
 
+export { resolveMarkdown } from './resolveMarkdown';
+
 export interface RenderPageResult {
   html: string;
   data: any;

@@ -27,7 +27,7 @@
     "github-slugger": "1.2.0",
     "gray-matter": "^4.0.2",
     "hast-util-sanitize": "^3.0.0",
-    "mdast-util-to-markdown": "^0.5.3",
+    "mdast-util-to-markdown": "0.5.3",
     "mdast-util-to-string": "1.0.7",
     "rehype-raw": "4.0.1",
     "rehype-sanitize": "3.0.0",
