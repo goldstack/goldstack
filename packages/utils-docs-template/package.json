@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-docs-cli",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "author": "Max Rohde",
   "sideEffects": false,
   "main": "dist/utilsDocsTemplate.js",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@goldstack/utils-cli": "0.2.0",
-    "@goldstack/utils-docs": "0.3.5",
+    "@goldstack/utils-docs": "0.3.6",
     "@goldstack/utils-sh": "0.4.2",
     "@types/yargs": "^15.0.5",
     "source-map-support": "^0.5.19",
