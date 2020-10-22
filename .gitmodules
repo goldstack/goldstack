@@ -1,3 +1,3 @@
 [submodule "packages/nextjs-typescript-template"]
-	path = packages/nextjs-typescript-template
+	path = packages/app-nextjs
 	url = git@github.com:goldstack/nextjs-typescript-template.git
