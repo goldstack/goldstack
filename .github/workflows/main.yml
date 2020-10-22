@@ -101,42 +101,11 @@ jobs:
           echo "Commiting for root"
           git status
           git add ./yarn.lock
-          # git add ./../../.yarn/install-state.gz This often creates conflicts
           git add ./.pnp.js
-          git pull
-          git status
-          echo "Commiting for apps"
-          cd workspaces/apps
-          git status
-          git add .
-          git diff-index --quiet HEAD || git commit -m 'Releasing new library version'
-          git pull
-          git status
-          cd ../..
-          echo "Commiting for docs"
-          cd workspaces/docs
-          git status
-          git add .
-          git diff-index --quiet HEAD || git commit -m 'Releasing new library version'
-          git pull
-          git status
-          cd ../..
-          echo "Commiting for templates"
-          cd workspaces/templates
-          git status
-          git add .
-          git diff-index --quiet HEAD || git commit -m 'Releasing new library version'
-          git pull
-          git status
-          cd ../..
-          echo "Committing for template management"
-          cd workspaces/templates-management
-          git status
-          git add .
-          git diff-index --quiet HEAD || git commit -m 'Releasing new library version'
-          git pull
-          git status
-          cd ../..
+          git add workspaces/*
+
+          yarn pull
+          yarn commit Release_new_library_version
 
       - name: Push root changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
@@ -176,6 +145,14 @@ jobs:
           repository: goldstack/goldstack-templates-management
           github_token: ${{secrets.BUILD_TOKEN}}
 
+      - name: Push TypeScript template changes
+        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          directory: workspaces/templates/packages/app-nextjs
+          repository: goldstack/nextjs-typescript-template
+          github_token: ${{secrets.BUILD_TOKEN}
+      
       - name: Build templates
         run: |
           cd workspaces/templates
