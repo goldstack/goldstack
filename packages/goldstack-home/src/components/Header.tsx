@@ -6,6 +6,8 @@ import Container from 'react-bootstrap/Container';
 
 import styles from './Header.module.css';
 
+import GitHub from './../icons/github-tile-gray.svg';
+
 const Toggle = (): JSX.Element => {
   return (
     <>
@@ -81,6 +83,11 @@ const Header = (): JSX.Element => {
                 <Nav.Item as="li">
                   <Nav.Link href="/pricing">Pricing</Nav.Link>
                 </Nav.Item>{' '}
+                <Nav.Item as="li">
+                  <Nav.Link href="https://github.com/goldstack">
+                    <img src={GitHub} style={{ width: '1rem' }}></img>
+                  </Nav.Link>
+                </Nav.Item>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
