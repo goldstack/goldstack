@@ -3675,6 +3675,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gray-matter", "npm:4.0.2"],
             ["hast-util-sanitize", "npm:3.0.0"],
             ["jest", "npm:26.4.2"],
+            ["mdast-util-to-markdown", "npm:0.5.3"],
             ["mdast-util-to-string", "npm:1.0.7"],
             ["rehype-raw", "npm:4.0.1"],
             ["rehype-sanitize", "npm:3.0.0"],
@@ -15562,6 +15563,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["longest-streak", [
+        ["npm:2.0.4", {
+          "packageLocation": "./.yarn/cache/longest-streak-npm-2.0.4-a83545ec19-ba5ebac147.zip/node_modules/longest-streak/",
+          "packageDependencies": [
+            ["longest-streak", "npm:2.0.4"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["loose-envify", [
         ["npm:1.4.0", {
           "packageLocation": "./.yarn/cache/loose-envify-npm-1.4.0-6307b72ccf-5c3b47bbe5.zip/node_modules/loose-envify/",
@@ -15751,6 +15761,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["unist-util-position", "npm:3.1.0"],
             ["unist-util-visit", "npm:1.4.1"],
             ["xtend", "npm:4.0.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["mdast-util-to-markdown", [
+        ["npm:0.5.3", {
+          "packageLocation": "./.yarn/cache/mdast-util-to-markdown-npm-0.5.3-eeab404b56-87b196a807.zip/node_modules/mdast-util-to-markdown/",
+          "packageDependencies": [
+            ["mdast-util-to-markdown", "npm:0.5.3"],
+            ["@types/unist", "npm:2.0.3"],
+            ["longest-streak", "npm:2.0.4"],
+            ["mdast-util-to-string", "npm:1.0.7"],
+            ["parse-entities", "npm:2.0.0"],
+            ["repeat-string", "npm:1.6.1"],
+            ["zwitch", "npm:1.0.5"]
           ],
           "linkType": "HARD",
         }]
@@ -17720,6 +17745,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/parse-entities-npm-1.2.2-6be249f6ff-66fb7cb7c8.zip/node_modules/parse-entities/",
           "packageDependencies": [
             ["parse-entities", "npm:1.2.2"],
+            ["character-entities", "npm:1.2.4"],
+            ["character-entities-legacy", "npm:1.1.4"],
+            ["character-reference-invalid", "npm:1.1.4"],
+            ["is-alphanumerical", "npm:1.0.4"],
+            ["is-decimal", "npm:1.0.4"],
+            ["is-hexadecimal", "npm:1.0.4"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/parse-entities-npm-2.0.0-b7b4f46ff6-6a9213216b.zip/node_modules/parse-entities/",
+          "packageDependencies": [
+            ["parse-entities", "npm:2.0.0"],
             ["character-entities", "npm:1.2.4"],
             ["character-entities-legacy", "npm:1.1.4"],
             ["character-reference-invalid", "npm:1.1.4"],

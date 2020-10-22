@@ -2913,6 +2913,7 @@ __metadata:
     gray-matter: ^4.0.2
     hast-util-sanitize: ^3.0.0
     jest: ^26.0.1
+    mdast-util-to-markdown: ^0.5.3
     mdast-util-to-string: 1.0.7
     rehype-raw: 4.0.1
     rehype-sanitize: 3.0.0
@@ -13257,6 +13258,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"longest-streak@npm:^2.0.0":
+  version: 2.0.4
+  resolution: "longest-streak@npm:2.0.4"
+  checksum: ba5ebac14700c0a5f88a312be789b651c35bfed84bd5e2b4f04ac0898add697c36ede401d0b17dfaac0956171027b61ad49ad866ac949ae1d36f9e4ced60cbe1
+  languageName: node
+  linkType: hard
+
 "loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
@@ -13433,7 +13441,21 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"mdast-util-to-string@npm:1.0.7":
+"mdast-util-to-markdown@npm:^0.5.3":
+  version: 0.5.3
+  resolution: "mdast-util-to-markdown@npm:0.5.3"
+  dependencies:
+    "@types/unist": ^2.0.0
+    longest-streak: ^2.0.0
+    mdast-util-to-string: ^1.0.0
+    parse-entities: ^2.0.0
+    repeat-string: ^1.0.0
+    zwitch: ^1.0.0
+  checksum: 87b196a80799ef8bae3a62e808caac819b85718aee548087bfe1c18598ae9a5bbe95b9342ea00ca2374c642f9614c3baa3c01f8f0dd9db8b2fbb90077555d253
+  languageName: node
+  linkType: hard
+
+"mdast-util-to-string@npm:1.0.7, mdast-util-to-string@npm:^1.0.0":
   version: 1.0.7
   resolution: "mdast-util-to-string@npm:1.0.7"
   checksum: 928490b18e52cda7d09df7f870a85ea720ca5f19f9e2f2dd6ab20baa1ebdfb48231ddd78834970c37375d36a731cb030466052d4d9f61abaa8d5d5dc86c2e431
@@ -14958,6 +14980,20 @@ fsevents@^1.2.7:
     is-decimal: ^1.0.0
     is-hexadecimal: ^1.0.0
   checksum: 66fb7cb7c81284aa35408ef0aaae3c704a7005f9b2e99fb86f4c5b454d465b7520e81dbdd35c79a65da98a567a4f03bd74b4097dc965f72ef947a1e09d6bf838
+  languageName: node
+  linkType: hard
+
+"parse-entities@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "parse-entities@npm:2.0.0"
+  dependencies:
+    character-entities: ^1.0.0
+    character-entities-legacy: ^1.0.0
+    character-reference-invalid: ^1.0.0
+    is-alphanumerical: ^1.0.0
+    is-decimal: ^1.0.0
+    is-hexadecimal: ^1.0.0
+  checksum: 6a9213216b8c3c18def20beac67a6618d190830fdb5f5b49bec876894404b75e2cd4af4b6913fded084c5572a21042edaf2cf2e991f408c7097901fb8d85c31e
   languageName: node
   linkType: hard
 
@@ -16815,7 +16851,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"repeat-string@npm:^1.5.4, repeat-string@npm:^1.6.1":
+"repeat-string@npm:^1.0.0, repeat-string@npm:^1.5.4, repeat-string@npm:^1.6.1":
   version: 1.6.1
   resolution: "repeat-string@npm:1.6.1"
   checksum: 99c431ba7bef7a5d39819d562ebca89206368b45f73213677a3b562e25b5dd272d9e6a2ca8105001df14b6fc8cc71f0b10258c86e16cf8a256318fac1ddc8a77
