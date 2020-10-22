@@ -1,2 +1,1 @@
-# Next.js TypeScript Template
-
+# TypeScript Next.js Template
