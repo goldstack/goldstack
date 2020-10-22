@@ -2770,7 +2770,7 @@ __metadata:
     gray-matter: ^4.0.2
     hast-util-sanitize: ^3.0.0
     jest: ^26.0.1
-    mdast-util-to-markdown: ^0.5.3
+    mdast-util-to-markdown: 0.5.3
     mdast-util-to-string: 1.0.7
     rehype-raw: 4.0.1
     rehype-sanitize: 3.0.0
@@ -13245,7 +13245,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"mdast-util-to-markdown@npm:^0.5.3":
+"mdast-util-to-markdown@npm:0.5.3":
   version: 0.5.3
   resolution: "mdast-util-to-markdown@npm:0.5.3"
   dependencies:
