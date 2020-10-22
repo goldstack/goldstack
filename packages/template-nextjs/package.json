@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-nextjs",
-  "version": "0.3.19",
+  "version": "0.3.20",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -30,7 +30,7 @@
   "dependencies": {
     "@goldstack/infra": "0.3.3",
     "@goldstack/infra-aws": "0.3.4",
-    "@goldstack/template-static-website-aws": "0.3.19",
+    "@goldstack/template-static-website-aws": "0.3.20",
     "@goldstack/utils-aws-cli": "0.3.4",
     "@goldstack/utils-cli": "0.2.0",
     "@goldstack/utils-config": "0.3.2",
@@ -44,7 +44,7 @@
     "yargs": "^15.4.1"
   },
   "devDependencies": {
-    "@goldstack/utils-docs-cli": "0.3.3",
+    "@goldstack/utils-docs-cli": "0.3.4",
     "@goldstack/utils-git": "0.1.21",
     "@goldstack/utils-package-config-generate": "0.2.0",
     "@types/glob": "^7.1.3",
