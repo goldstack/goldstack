@@ -10,7 +10,7 @@ import html from 'rehype-stringify';
 // https://github.com/syntax-tree/hast-util-sanitize/blob/master/lib/github.json
 import githubSchema from 'hast-util-sanitize/lib/github.json';
 import docs from './rehypeDocs';
-import rehypeMarkdown from './rehypeMarkdown';
+import rehypeMarkdown from './rehypeMarkdownToHtml';
 
 // Allow className for all elements
 githubSchema.attributes['*'].push('className');
@@ -33,7 +33,7 @@ const handlers = {
   },
 };
 
-export async function markdownToHtml(filePath, tag, md) {
+export async function markdownToHtml(filePath, tag, md): Promise<string> {
   try {
     // Init the processor with our custom plugin
     let processor: any = undefined;
