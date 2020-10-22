@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 
+import GitHub from './../icons/github-tile-gray.svg';
 import styles from './Header.module.css';
 
 const Toggle = (): JSX.Element => {
@@ -87,6 +88,11 @@ const Header = (): JSX.Element => {
                     href={`${process.env.NEXT_PUBLIC_GOLDSTACK_HOME}/pricing`}
                   >
                     Pricing
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                  <Nav.Link href="https://github.com/goldstack">
+                    <img src={GitHub} style={{ width: '1rem' }}></img>
                   </Nav.Link>
                 </Nav.Item>
               </Nav>
