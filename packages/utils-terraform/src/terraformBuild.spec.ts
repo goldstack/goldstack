@@ -5,6 +5,7 @@ import {
   getVariablesFromHCL,
   convertFromPythonVariable,
 } from './terraformBuild';
+
 describe('Terraform Utils', () => {
   it('Should convert variable names to Python variable Names', () => {
     expect(convertToPythonVariable('myVarName')).toEqual('my_var_name');

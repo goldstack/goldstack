@@ -31,7 +31,7 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
   assertDocker();
 
   return exec(
-    `docker run --rm -v ${options.dir}:/app ` +
+    `docker run --rm -v "${options.dir}":/app ` +
       ` ${options.provider.generateEnvVariableString()} ` +
       '-w /app ' +
       `${imageGoldstackBuild()} terraform ${cmd} ` +
