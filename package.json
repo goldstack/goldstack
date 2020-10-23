@@ -23,8 +23,10 @@
     "lint": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml",
     "lint:fix": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml --fix",
     "packages:ensure-local": "utils-package-upgrade",
-    "pull": "git submodule foreach --recursive git pull origin master && git pull",
-    "push": "git submodule foreach --recursive git push && git push",
+    "pull": "git pull --recurse-submodules",
+    "pull:each": "git submodule foreach --recursive git pull origin master && git pull",
+    "push": "git push --recurse-submodules=on-demand",
+    "push:each": "git submodule foreach --recursive git push && git push",
     "test:ci": "echo 'Command cannot run for root'",
     "test:watch": "nodemonx --watch . --exec 'yarn test:ci'"
   },
