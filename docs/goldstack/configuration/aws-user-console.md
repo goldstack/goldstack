@@ -1,5 +1,7 @@
 ### How to get AWS Credentials
 
+[%Step-by-step Video Guide](https://www.youtube.com/embed/-lWrkpzEgfs)
+
 The easiest way to configure the AWS user for Goldstack to use is to do it during project setup by providing an _AWS Access Key Id_ and _AWS Secret Access Key_. To obtain these, please do the following:
 
 - Create an AWS account if you do not already have one. See [instructions on this from AWS here](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/).
