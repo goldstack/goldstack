@@ -5,6 +5,8 @@ title: Getting Started
 
 Once you have downloaded the zip archive for your project, there are only a few things left to get ready for coding.
 
+[%Step-by-step Video Guide](https://www.youtube.com/embed/2M0JLo875K8)
+
 ## 1. Install dependencies
 
 Goldstack requires a few dependencies to be available in your development system. Please verify they are present or install them:
