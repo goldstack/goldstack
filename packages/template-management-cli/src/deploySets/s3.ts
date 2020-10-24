@@ -61,6 +61,7 @@ export const createS3BuildSetConfig = async (): Promise<DeploySetConfig> => {
                   lambdaName: `goldstack-ci-test-lambda-express-${hash}`,
                   apiDomain: `lambda-express-${hash}.tests.dev.goldstack.party`,
                   hostedZoneDomain: 'dev.goldstack.party',
+                  cors: '',
                 },
               },
             ],
