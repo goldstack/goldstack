@@ -1959,6 +1959,7 @@ __metadata:
     "@types/node": ^14.0.6
     "@types/source-map-support": ^0.5.2
     aws-serverless-express: ^3.3.8
+    cors: ^2.8.5
     express: ^4.17.1
     helmet: ^3.22.0
     jest: ^26.0.1

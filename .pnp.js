@@ -2719,6 +2719,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:14.11.2"],
             ["@types/source-map-support", "npm:0.5.3"],
             ["aws-serverless-express", "npm:3.3.8"],
+            ["cors", "npm:2.8.5"],
             ["express", "npm:4.17.1"],
             ["helmet", "npm:3.23.3"],
             ["jest", "npm:26.4.2"],

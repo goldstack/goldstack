@@ -20,6 +20,7 @@
     "format:check": "prettier --loglevel log --config .prettierrc.json --check .",
     "generate:docs": "yarn workspace templates-lib generate:docs && yarn workspace docs generate:docs",
     "generate:schema": "yarn workspace templates-lib generate:schema && yarn workspace templates-management generate:schema && yarn workspace apps generate:schema",
+    "git:set-user": "git config user.email \"$@\" && git submodule foreach --recursive git config user.email \"$@\"",
     "lint": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml",
     "lint:fix": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml --fix",
     "packages:ensure-local": "utils-package-upgrade",
