@@ -12,17 +12,18 @@
     "clean": "rm -rf ./dist",
     "compile": "tsc -p tsconfig.json",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
-    "deploy": "yarn build:pack && template deploy $@",
-    "infra": "template infra",
+    "deploy": "yarn build:pack && template deploy \"$@\"",
+    "infra": "template infra \"$@\"",
     "start": "yarn node dist/local.js",
     "template": "template",
-    "test": "jest --passWithNoTests --watch --config=jest.config.js",
-    "test:ci": "jest --passWithNoTests --config=jest.config.js",
-    "watch": "nodemon --watch ../../ --ext js --exec 'yarn node dist/src/local.js'"
+    "test": "yarn test:ci --watch",
+    "test:ci": "PORT=5030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=jest.config.js",
+    "watch": "PORT=3030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local nodemon --watch ../../ --ext js --exec 'yarn node dist/src/local.js'"
   },
   "dependencies": {
     "@goldstack/template-lambda-express": "0.3.27",
     "aws-serverless-express": "^3.3.8",
+    "cors": "^2.8.5",
     "helmet": "^3.22.0",
     "source-map-support": "^0.5.19"
   },

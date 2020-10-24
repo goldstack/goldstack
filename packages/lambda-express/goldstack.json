@@ -12,7 +12,8 @@
       "configuration": {
         "lambdaName": "goldstack-test-lambda-express",
         "apiDomain": "express-api.templates.dev.goldstack.party",
-        "hostedZoneDomain": "dev.goldstack.party"
+        "hostedZoneDomain": "dev.goldstack.party",
+        "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party"
       }
     }
   ]

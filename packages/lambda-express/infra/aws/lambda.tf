@@ -31,6 +31,7 @@ resource "aws_lambda_function" "main" {
   environment {
     variables = {
       GOLDSTACK_DEPLOYMENT = var.name
+      CORS = var.cors
     }
   }
 }

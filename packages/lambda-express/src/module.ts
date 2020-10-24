@@ -1,6 +1,14 @@
 import goldstackConfig from './../goldstack.json';
+import assert from 'assert';
 
 let testServerPort: null | number = null;
+
+if (process.env.PORT) {
+  testServerPort = parseInt(process.env.PORT);
+} else {
+  testServerPort = 5030 + Math.floor(Math.random() * 969 + 1);
+}
+
 let testServer: any = null;
 
 export const startTestServer = async (port: number): Promise<void> => {
@@ -21,6 +29,10 @@ export const stopTestServer = async (): Promise<void> => {
 };
 
 export const getEndpoint = (deploymentName?: string): string => {
+  assert(
+    testServerPort,
+    'Port for test server not defined. Specify environment variable PORT.'
+  );
   if (!deploymentName) {
     deploymentName = process.env.GOLDSTACK_DEPLOYMENT;
   }

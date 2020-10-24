@@ -19,6 +19,11 @@ variable "hosted_zone_domain" {
 }
 
 variable "name" {
-  description = "Goldstack deployment name"
+  description = "Goldstack deployment name."
+  type = string
+}
+
+variable "cors" {
+  description = "Domain for an UI that should be allowed to access this server."
   type = string
 }
