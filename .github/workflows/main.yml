@@ -107,11 +107,7 @@ jobs:
           yarn pull
           yarn commit Release_new_library_version_ci_skip
 
-      - name: Push root changes
-        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{secrets.BUILD_TOKEN}}
+
 
       - name: Push apps changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
@@ -151,6 +147,12 @@ jobs:
         with:
           directory: workspaces/templates/packages/app-nextjs
           repository: goldstack/nextjs-typescript-template
+          github_token: ${{secrets.BUILD_TOKEN}}
+
+      - name: Push root changes
+        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
+        uses: ad-m/github-push-action@v0.6.0
+        with:
           github_token: ${{secrets.BUILD_TOKEN}}
 
       - name: Build templates
@@ -236,6 +238,12 @@ jobs:
           github_token: ${{secrets.BUILD_TOKEN}}
           directory: workspaces/apps
           repository: goldstack/goldstack-apps
+
+      - name: Push root changes
+        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{secrets.BUILD_TOKEN}}
 
       - name: Write current git commit to output
         run: |
