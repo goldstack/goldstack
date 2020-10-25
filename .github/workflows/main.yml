@@ -107,8 +107,6 @@ jobs:
           yarn pull
           yarn commit Release_new_library_version_ci_skip
 
-
-
       - name: Push apps changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
         uses: ad-m/github-push-action@v0.6.0
