@@ -29,7 +29,7 @@ For instance, if any module is selected that requires deployment to a website, t
 
 ### Step 3: Decide on purchasing option
 
-You could, if you so chose, piece together a project template from the source code we make available publicly for free. Doing so will require some effort and time. By purchasing a Goldstack template, you can save your time, effort and energy,  and let us do all the heavy lifting. 
+You could, if you so chose, piece together a project template from the source code we make available publicly for free. Doing so will require some effort and time. By purchasing a Goldstack template, you can save your time, effort and energy, and let us do all the heavy lifting.
 
 We have put a lot of labour and love into creating our templates and ask that you contribute a small amount so that we can continue providing premium quality content that is commercially viable.
 
