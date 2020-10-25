@@ -15,7 +15,7 @@ Goldstack templates are based on the following design principles:
 
 We all know that in software the same problem can be solved in many different ways and that there is often heated disagreement between developers as to which technology and framework is best suited for a job. At Goldstack, we aim not to provide starter templates for every possible tech but instead focus on the technologies enjoy widespread adoption and support in the industry. Thus we hope to save you some time having to browse around the web to compare framework X to framework Y but instead provide you with choices that are 'good enough for most circumstances'.
 
-### Professional 
+### Professional
 
 Goldstack templates allow your project to lift off at rocket speed while being sufficiently robust and configurable to fit the requirements of a professional environment. We enable this by:
 
