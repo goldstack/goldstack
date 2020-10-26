@@ -241,6 +241,10 @@ jobs:
           directory: workspaces/apps
           repository: goldstack/goldstack-apps
 
+      - name: Fix submodule references
+        run: |
+          yarn pul
+
       - name: Push root changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
         uses: ad-m/github-push-action@v0.6.0
