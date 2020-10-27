@@ -7,6 +7,7 @@ import Progress from './Progress';
 import { getEndpoint } from '@goldstack/goldstack-api';
 import Spinner from 'react-bootstrap/Spinner';
 
+import * as Fullstory from '@fullstory/browser';
 const MyLink: any = Link;
 
 interface OneOffPurchaseProps {
@@ -70,6 +71,18 @@ const OneOffPurchase = (props: OneOffPurchaseProps): JSX.Element => {
       return;
     } else if (sessionRes.status !== 200) {
       throw new Error('Cannot submit payment information');
+    }
+
+    try {
+      if (process.env.GOLDSTACK_DEPLOYMENT === 'prod') {
+        Fullstory.setUserVars({
+          displayName: email,
+          email: email,
+        });
+      }
+    } catch (e) {
+      console.warn(e);
+      console.warn('Cannot configure FullStory user.');
     }
 
     props.onPurchaseComplete();
