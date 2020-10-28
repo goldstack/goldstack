@@ -11,8 +11,6 @@ import PurchaseDescription from 'src/components/PurchaseDescription';
 import { getEndpoint } from '@goldstack/goldstack-api';
 import useSWR from 'swr';
 
-import { event } from './../../../../../lib/ga';
-
 const fetcher = (url: string): any =>
   fetch(url, {
     credentials: 'include',
@@ -31,12 +29,6 @@ const PurchaseTemplatePage = (): JSX.Element => {
 
   const { data, error } = useSWR(`${getEndpoint()}/sessions`, fetcher);
   const onPurchaseComplete = (): void => {
-    event({
-      action: 'purchase',
-      category: 'ecommerce',
-      label: '',
-      value: id,
-    });
     router.push(`/projects/${id}/packages/${packageId}/download`);
   };
 

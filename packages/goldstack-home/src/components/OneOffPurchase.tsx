@@ -7,7 +7,9 @@ import Progress from './Progress';
 import { getEndpoint } from '@goldstack/goldstack-api';
 import Spinner from 'react-bootstrap/Spinner';
 
+import { event } from './../lib/ga';
 import * as Fullstory from '@fullstory/browser';
+
 const MyLink: any = Link;
 
 interface OneOffPurchaseProps {
@@ -26,7 +28,9 @@ const OneOffPurchase = (props: OneOffPurchaseProps): JSX.Element => {
   const emailInput = useRef<HTMLInputElement>(null);
   const couponInput = useRef<HTMLInputElement>(null);
   const termsInput = useRef<HTMLInputElement>(null);
+
   const [progressMessage, setProgressMessage] = useState('');
+
   const onSubmit = async (evt: any): Promise<void> => {
     evt.preventDefault();
     assert(emailInput.current);
@@ -85,6 +89,21 @@ const OneOffPurchase = (props: OneOffPurchaseProps): JSX.Element => {
       console.warn('Cannot configure FullStory user.');
     }
 
+    if (couponInput.current.value && couponInput.current.value.length > 1) {
+      event({
+        action: 'single_purchase_coupon',
+        category: 'projects',
+        label: '',
+        value: 0,
+      });
+    } else {
+      event({
+        action: 'single_purchase',
+        category: 'projects',
+        label: '',
+        value: 20,
+      });
+    }
     props.onPurchaseComplete();
   };
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import React, { useState } from 'react';
 
 import { useRouter } from 'next/router';
@@ -10,10 +11,10 @@ import styled from 'styled-components';
 import { getEndpoint } from '@goldstack/goldstack-api';
 import { validateProject, StepValidation } from './../lib/validateProject';
 
+import * as Fullstory from '@fullstory/browser';
 import Progress from './Progress';
 
 import { event } from './../lib/ga';
-import { buildProjectData } from 'src/lib/buildProjectData';
 import Spinner from 'react-bootstrap/Spinner';
 
 const BuildProjectButton = styled.button`
@@ -62,12 +63,30 @@ const ProjectConfigSummary = (props: {
   const allValid = !validationResult.find((result) => result.valid === false);
 
   const clickBuildProject = async (): Promise<void> => {
-    event({
-      action: 'begin_checkout',
-      category: 'ecommerce',
-      label: '',
-      value: props.projectData.projectId,
-    });
+    try {
+      event({
+        action: 'begin_checkout',
+        category: 'projects',
+        label: '',
+        value: 0,
+      });
+    } catch (e) {
+      console.warn('Cannot log Google Analytics event begin_checkout');
+      console.warn(e);
+    }
+    try {
+      Fullstory.setUserVars({
+        selectedTemplates_strs: props.projectData.packageConfigs.map(
+          (config) => config.package.template
+        ),
+      });
+    } catch (e) {
+      console.warn(
+        'Cannot set Fullstory custom env variables for build project.'
+      );
+      console.log(e);
+    }
+
     setProgressMessage('Building project package ...');
     const { packageId } = await buildPackage(props.projectData);
     setProgressMessage('Done!');

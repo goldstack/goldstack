@@ -100,10 +100,10 @@ export const BuildProject = (): JSX.Element => {
 
   const clickConfigure = async (): Promise<void> => {
     event({
-      action: 'add_to_cart',
-      category: 'ecommerce',
+      action: 'start_configuration',
+      category: 'projects',
       label: '',
-      value: selectedPackages.join(','),
+      value: 0,
     });
     const projectConfig = buildProjectConfig(selectedPackages);
     setProgressMessage('Creating temporary session ...');
