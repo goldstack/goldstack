@@ -161,7 +161,11 @@ export const getConfigureSteps = (
       sections: [
         {
           schema: awsUserFormSchema,
-          uiSchema: {},
+          uiSchema: {
+            awsSecretAccessKey: {
+              'ui:widget': 'password',
+            },
+          },
           getData: (projectData: ProjectData): any => {
             const awsUserConfig = projectData.awsUsers[0]
               .config as AWSAPIKeyUserConfig;
