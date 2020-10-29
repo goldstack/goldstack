@@ -18,7 +18,7 @@
     "compile:watch-new": "nodemonx --watch . --exec 'yarn compile'",
     "format": "prettier --loglevel log --config .prettierrc.json --write .",
     "format:check": "prettier --loglevel log --config .prettierrc.json --check .",
-    "generate:docs": "yarn workspace templates-lib generate:docs && yarn workspace docs generate:docs",
+    "generate:docs": "yarn workspace templates-lib generate:docs && yarn workspace docs generate:docs && yarn workspace apps generate:docs",
     "generate:schema": "yarn workspace templates-lib generate:schema && yarn workspace templates-management generate:schema && yarn workspace apps generate:schema",
     "git:set-user": "git config user.email \"$@\" && git submodule foreach --recursive git config user.email \"$@\"",
     "lint": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml",
