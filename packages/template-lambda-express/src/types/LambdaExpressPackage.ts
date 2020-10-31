@@ -28,18 +28,18 @@ export type APIDomain = string;
 export type HostedZoneDomain = string;
 
 /**
- * Optional domain for an UI that should be allowed to access this server.
+ * Optional URL for an UI that should be allowed to access this server.
  *
- * @title CORS Domain
- * @pattern ^[^\s]*
+ * @title CORS Header
+ * @pattern ^https[^\s]*
  */
-export type CorsDomain = string;
+export type CorsHeader = string;
 
 export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
   lambdaName: LambdaName;
   apiDomain: APIDomain;
   hostedZoneDomain: HostedZoneDomain;
-  cors: CorsDomain;
+  cors: CorsHeader;
 }
 
 export interface ThisDeployment
