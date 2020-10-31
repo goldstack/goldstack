@@ -18,7 +18,7 @@
           "$ref": "#/definitions/HostedZoneDomain"
         },
         "cors": {
-          "$ref": "#/definitions/CorsDomain"
+          "$ref": "#/definitions/CorsHeader"
         }
       },
       "required": [
@@ -40,11 +40,11 @@
       "title": "Hosted Zone Domain",
       "pattern": "^[^\\s]*"
     },
-    "CorsDomain": {
+    "CorsHeader": {
       "type": "string",
-      "description": "Optional domain for an UI that should be allowed to access this server.",
-      "title": "CORS Domain",
-      "pattern": "^[^\\s]*"
+      "description": "Optional URL for an UI that should be allowed to access this server.",
+      "title": "CORS Header",
+      "pattern": "^https[^\\s]*"
     }
   }
 }

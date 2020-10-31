@@ -1,15 +1,12 @@
 import goldstackConfig from './../goldstack.json';
-import assert from 'assert';
 
 let testServerPort: null | number = null;
 
-if (process.env.PORT) {
-  testServerPort = parseInt(process.env.PORT);
-} else {
-  testServerPort = 5030 + Math.floor(Math.random() * 969 + 1);
-}
-
 let testServer: any = null;
+
+if (process.env.TEST_SERVER_PORT) {
+  testServerPort = parseInt(process.env.TEST_SERVER_PORT);
+}
 
 export const startTestServer = async (port: number): Promise<void> => {
   // The below is preventing webpack from bundling up the server - it is only required for local tests.
@@ -29,15 +26,11 @@ export const stopTestServer = async (): Promise<void> => {
 };
 
 export const getEndpoint = (deploymentName?: string): string => {
-  assert(
-    testServerPort,
-    'Port for test server not defined. Specify environment variable PORT.'
-  );
   if (!deploymentName) {
     deploymentName = process.env.GOLDSTACK_DEPLOYMENT;
   }
   if (deploymentName === 'local') {
-    const port = testServerPort;
+    const port = testServerPort || 3030;
 
     return `http://localhost:${port}`;
   }
