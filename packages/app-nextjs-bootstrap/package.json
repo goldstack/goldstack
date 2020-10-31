@@ -36,7 +36,7 @@
     "swr": "^0.2.3"
   },
   "devDependencies": {
-    "@goldstack/template-nextjs": "0.3.23",
+    "@goldstack/template-nextjs": "0.3.24",
     "@goldstack/utils-sh": "0.4.2",
     "@testing-library/jest-dom": "^5.9.0",
     "@testing-library/react": "^10.0.4",
