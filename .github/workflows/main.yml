@@ -95,7 +95,7 @@ jobs:
           repository: goldstack/goldstack-lib
           github_token: ${{secrets.BUILD_TOKEN}}
 
-      - name: Commit changes
+      - name: Commit changes to sync submodules
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
         run: |
           echo "Commiting for root"
@@ -104,8 +104,8 @@ jobs:
           git add ./.pnp.js
           git add workspaces/*
 
-          yarn pull
           yarn commit Release_new_library_version_ci_skip
+          yarn pull
 
       - name: Push apps changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
