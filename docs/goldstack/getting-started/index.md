@@ -73,7 +73,7 @@ Once you open a `.ts` file, VSCode should open a confirmation at the bottom righ
 
 ![Allow TypeScript](https://cdn.goldstack.party/img/202010/allow_typescript.png)
 
-In the status bar on the bottom righthand corner of the VSCode editor should now show _TypeScript_ along with a version such as _3.9.5-pnpify_.
+In the status bar on the bottom righthand corner of the VSCode editor you should now see _TypeScript_ along with a version such as _3.9.5-pnpify_.
 
 ![VSCode status bar](https://cdn.goldstack.party/img/202010/vscode_status_bar.png)
 

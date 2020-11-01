@@ -13,20 +13,13 @@ Goldstack templates are based on the following design principles:
 
 ### Only the best tech
 
-We do not aim to provide starter templates for 
-
-We provide templates and starter projects for 
-
-We all know that in software the same problem can be solved in many different ways and that there is often heated disagreement between developers as to which technology and framework is best suited for the job. 
-
-
-At Goldstack, we aim not to provide starter templates for every possible tech but instead focus on the technologies that enjoy widespread adoption and support in the industry. Thus we hope to save you some time having to browse around the web to compare framework X to framework Y but instead provide you with choices that are 'good enough for most circumstances'.
+We aim to provide starter templates for the best frameworks currently on the market. All modules on Goldstack are based on frameworks and solutions with proven track records for productivity and stability. 
 
 ### Professional
 
 Goldstack templates allow your project to lift off at rocket speed while being sufficiently robust and configurable to fit the requirements of a professional environment. We enable this by:
 
-- All infrastructure is defined in Terraform that can easily be customized
+- All infrastructure is defined in Terraform and can be modified to fit into your environments
 - Everything can be deployed in AWS
 - We provide instructions for security hardening for every template
 
@@ -40,11 +33,11 @@ Goldstack templates use Serverless technologies unlocking the benefits of rapid 
 
 ### Unlimited customizability
 
-We all know that there is usually a trade off in platforms that help us get something done quickly; such as when using Firebase: It is very easy to develop and deploy a simple application. However, it is often difficult to adapt the initial simple project to our specific needs. Goldstack is based on the premise that there should not a be a limit to what you can do with your project. Some of the elements that enable this are:
+We all know that there is usually a trade off in platforms that help us get something done quickly such as when using Firebase. It is very easy to develop and deploy a simple application. However, it is often difficult to adapt the initial simple project to our specific needs. Goldstack is based on the premise that there should not a be a limit to what you can do with your project. Some of the elements that enable this are:
 
 - Infrastructure can be adapted to your needs utilizing the full power of Terraform
 - Core functionality is defined as easy to change source code in the project
-- Any 'magic' dependencies we add to your project are available as open source and open for you to modify as required
+- Any dependencies we add to your project are available as open source and open for you to modify as required
 
 ### Modularity first
 
