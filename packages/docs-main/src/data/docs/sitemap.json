@@ -18,13 +18,13 @@
             "children": []
           },
           {
-            "title": "Getting Started",
-            "path": "goldstack/getting-started",
+            "title": "Configuration",
+            "path": "goldstack/configuration",
             "children": []
           },
           {
-            "title": "Configuration",
-            "path": "goldstack/configuration",
+            "title": "Getting Started",
+            "path": "goldstack/getting-started",
             "children": []
           },
           {

@@ -15,4 +15,6 @@ title: Configuration
 
 [!embed](./aws-user-env-variables.md)
 
+## Hosted Zone Configuration
+
 [!embed](./aws-hosted-zone.md)

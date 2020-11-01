@@ -7,8 +7,8 @@
       "children": [
         "about/index.md",
         "how-does-it-work/index.md",
-        "getting-started/index.md",
         "configuration/index.md",
+        "getting-started/index.md",
         "security-hardening/index.md"
       ]
     },
