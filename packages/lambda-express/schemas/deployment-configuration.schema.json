@@ -44,7 +44,7 @@
       "type": "string",
       "description": "Optional URL for an UI that should be allowed to access this server.",
       "title": "CORS Header",
-      "pattern": "^https[^\\s]*"
+      "pattern": "^[^\\s]*"
     }
   }
 }
