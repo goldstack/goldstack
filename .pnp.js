@@ -3149,6 +3149,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/template-build", "workspace:workspaces/templates-management/packages/template-build"],
             ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],
+            ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
             ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],
@@ -3274,6 +3275,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/apps/packages/template-management-cli/",
           "packageDependencies": [
             ["@goldstack/template-management-cli", "workspace:workspaces/apps/packages/template-management-cli"],
+            ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],
             ["@goldstack/project-build", "workspace:workspaces/templates-management/packages/project-build"],
             ["@goldstack/project-install", "workspace:workspaces/templates-management/packages/project-install"],
             ["@goldstack/template-build-set", "workspace:workspaces/templates-management/packages/template-build-set"],
@@ -3283,6 +3285,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],
             ["@goldstack/template-static-website-aws", "workspace:workspaces/templates-lib/packages/template-static-website-aws"],
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],
+            ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
             ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],
@@ -3301,6 +3304,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pnp-webpack-plugin", "npm:1.6.4"],
             ["reload", "npm:3.1.0"],
             ["source-map-support", "npm:0.5.19"],
+            ["tmp", "npm:0.2.1"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.4.0"],
             ["ts-node", "virtual:11ada9b28839d4fd4fd589c1152d09afa4401c8de2e0a2b1020588da78d4576c0d5523e67b35d4e74fafa94849ba3113e31dc0ab2b5d68223629f75866888dd3#npm:8.10.2"],
             ["typescript", "patch:typescript@npm%3A3.9.5#builtin<compat/typescript>::version=3.9.5&hash=0ea415"],
@@ -3847,6 +3851,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],
             ["@goldstack/template-build", "workspace:workspaces/templates-management/packages/template-build"],
             ["@goldstack/template-docker-image-aws", "workspace:workspaces/templates-lib/packages/template-docker-image-aws"],
+            ["@goldstack/template-email-send", "workspace:workspaces/templates-lib/packages/template-email-send"],
             ["@goldstack/template-lambda-express", "workspace:workspaces/templates-lib/packages/template-lambda-express"],
             ["@goldstack/template-nextjs", "workspace:workspaces/templates-lib/packages/template-nextjs"],
             ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],
@@ -22403,6 +22408,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["tmp", "npm:0.0.33"],
             ["os-tmpdir", "npm:1.0.2"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:0.2.1", {
+          "packageLocation": "./.yarn/cache/tmp-npm-0.2.1-a9c8d9c0ca-13973825ff.zip/node_modules/tmp/",
+          "packageDependencies": [
+            ["tmp", "npm:0.2.1"],
+            ["rimraf", "npm:3.0.2"]
           ],
           "linkType": "HARD",
         }]
