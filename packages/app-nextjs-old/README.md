@@ -1,1 +1,0 @@
-# TypeScript Next.js Template

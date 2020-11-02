@@ -26,7 +26,8 @@
         "awsUser",
         "configuration",
         "name"
-      ]
+      ],
+      "description": "Configures a deployment target for the email infrastrucutre."
     },
     "DeploymentName": {
       "type": "string",
@@ -38,16 +39,28 @@
       "type": "object",
       "properties": {
         "domain": {
-          "type": "string"
+          "$ref": "#/definitions/EmailDomain"
         },
         "hostedZoneDomain": {
-          "type": "string"
+          "$ref": "#/definitions/HostedZoneDomain"
         }
       },
       "required": [
         "domain",
         "hostedZoneDomain"
       ]
+    },
+    "EmailDomain": {
+      "type": "string",
+      "description": "The domain that will be used for email sender FROM addresses.",
+      "title": "Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "HostedZoneDomain": {
+      "type": "string",
+      "description": "The domain name of the Route 53 hosted zone that the specific domain will be added to. This is often the same as the domain used for the FROM address.",
+      "title": "Hosted Zone Domain",
+      "pattern": "^[^\\s]*"
     },
     "TerraformVariables": {
       "type": "array",
