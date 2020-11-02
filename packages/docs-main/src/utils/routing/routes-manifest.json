@@ -85,8 +85,8 @@
       "routeKeys": [
         "slug"
       ],
-      "dataRouteRegex": "^\\/_next\\/data\\/DOSaLSVFlq0UqSkdikmxL\\/docs\\/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/DOSaLSVFlq0UqSkdikmxL/docs/(?<slug>.+?)\\.json$"
+      "dataRouteRegex": "^\\/_next\\/data\\/0JrlNJJreWa0LarK2RQPa\\/docs\\/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/0JrlNJJreWa0LarK2RQPa/docs/(?<slug>.+?)\\.json$"
     }
   ]
 }
