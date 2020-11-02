@@ -9,6 +9,7 @@
     ".env.production",
     ".gitignore",
     "goldstack.json",
+    "next-env.d.ts",
     "next.config.js",
     "jest.config.js",
     "package.json",
