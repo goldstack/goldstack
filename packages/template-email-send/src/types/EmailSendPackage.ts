@@ -8,12 +8,34 @@ export { DeploymentConfiguration };
 import { Configuration } from '@goldstack/utils-package';
 export { Configuration };
 
+/**
+ * The domain that will be used for email sender FROM addresses.
+ *
+ * @title Domain
+ * @pattern ^[^\s]*
+ */
+export type EmailDomain = string;
+
+/**
+ * The domain name of the Route 53 hosted zone that the specific domain will be added to. This is often the same as the domain used for the FROM address.
+ *
+ * @title Hosted Zone Domain
+ * @pattern ^[^\s]*
+ */
+export type HostedZoneDomain = string;
+
 export interface EmailSendDeploymentConfiguration
   extends DeploymentConfiguration {
-  domain: string;
-  hostedZoneDomain: string;
+  domain: EmailDomain;
+  hostedZoneDomain: HostedZoneDomain;
 }
 
+/**
+ * Configures a deployment target for the email infrastrucutre.
+ *
+ * @Title Deployment
+ *
+ */
 export interface EmailSendDeployment
   extends Deployment,
     AWSDeployment,
