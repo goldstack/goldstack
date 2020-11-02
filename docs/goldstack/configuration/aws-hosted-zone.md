@@ -1,7 +1,6 @@
-
 [%Video Guide](https://www.youtube.com/embed/9rug-hhkxSc)
 
-Many modules need to deploy resources to a domain, for instance for a [static website](./../modules/static-website-aws) or for an [API server](./../modules/lambda-express). Goldstack modules can provide the DNS configuration required but you need to specify the [Route 53 hosted zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/AboutHZWorkingWith.html) that the DNS entries should be added to. You can either use an already existing hosted zone or create a new one. 
+Many modules need to deploy resources to a domain, for instance for a [static website](./../modules/static-website-aws) or for an [API server](./../modules/lambda-express). Goldstack modules can provide the DNS configuration required but you need to specify the [Route 53 hosted zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/AboutHZWorkingWith.html) that the DNS entries should be added to. You can either use an already existing hosted zone or create a new one.
 
 ### Creating a new hosted zone
 

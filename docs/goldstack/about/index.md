@@ -13,7 +13,7 @@ Goldstack templates are based on the following design principles:
 
 ### Only the best tech
 
-We aim to provide starter templates for the best frameworks currently on the market. All modules on Goldstack are based on frameworks and solutions with proven track records for productivity and stability. 
+We aim to provide starter templates for the best frameworks currently on the market. All modules on Goldstack are based on frameworks and solutions with proven track records for productivity and stability.
 
 ### Professional
 
