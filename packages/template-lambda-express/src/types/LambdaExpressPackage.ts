@@ -31,7 +31,7 @@ export type HostedZoneDomain = string;
  * Optional URL for an UI that should be allowed to access this server.
  *
  * @title CORS Header
- * @pattern ^https[^\s]*
+ * @pattern ^[^\s]*
  */
 export type CorsHeader = string;
 
