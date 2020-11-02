@@ -21,6 +21,7 @@ import {
   AppNextJsBootstrapTemplate,
 } from '@goldstack/template-nextjs';
 import { DockerImageAwsTemplate } from '@goldstack/template-docker-image-aws';
+import { EmailSendTemplate } from '@goldstack/template-email-send';
 import { S3Template } from '@goldstack/template-s3';
 import { LambdaExpressTemplate } from '@goldstack/template-lambda-express';
 
@@ -41,6 +42,7 @@ export const getDefaultTemplates = (): Template[] => {
     new DockerImageAwsTemplate(),
     new S3Template(),
     new LambdaExpressTemplate(),
+    new EmailSendTemplate(),
   ];
 };
 

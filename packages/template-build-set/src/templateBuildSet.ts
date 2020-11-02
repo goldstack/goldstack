@@ -8,14 +8,17 @@ import {
 import { build } from '@goldstack/template-build';
 import { GoldstackTemplateConfiguration } from '@goldstack/utils-template';
 import { buildProject } from '@goldstack/project-build';
+import { AWSAPIKeyUser } from '@goldstack/infra-aws';
 import { installProject } from '@goldstack/project-install';
+import { write } from '@goldstack/utils-sh';
 import { S3TemplateRepository } from '@goldstack/template-repository';
+import { getAwsConfigPath } from '@goldstack/utils-config';
 import {
   prepareTestDir,
   getTemplateTest,
 } from '@goldstack/utils-template-test';
 import assert from 'assert';
-
+import path from 'path';
 export * from './types/DeploySet';
 
 export interface BuildSetParams {
@@ -23,6 +26,7 @@ export interface BuildSetParams {
   workDir: string;
   s3repo: S3TemplateRepository;
   skipTests?: boolean;
+  user?: AWSAPIKeyUser;
 }
 
 interface BuildTemplatesParams {
@@ -52,6 +56,7 @@ interface BuildAndTestProjectParams {
   setParams: BuildSetParams;
   project: DeploySetProjectConfig;
   templateRepository: S3TemplateRepository;
+  user?: AWSAPIKeyUser;
 }
 
 interface TestResult {
@@ -106,6 +111,24 @@ const buildAndTestProject = async (
     projectDirectory: params.projectDir,
   });
 
+  // setting local AWS config file
+  if (params.user) {
+    const awsConfigPath = getAwsConfigPath(params.projectDir);
+    console.info('Writing AWS config to', path.resolve(awsConfigPath));
+    mkdir('-p', path.dirname(awsConfigPath));
+    write(
+      JSON.stringify({
+        users: [
+          {
+            name: 'goldstack-dev',
+            type: 'apiKey',
+            config: params.user,
+          },
+        ],
+      }),
+      awsConfigPath
+    );
+  }
   // run project level tests first to have everything initialised
   for (const projectTest of params.project.rootTests) {
     const test = getTemplateTest(projectTest);
@@ -200,12 +223,14 @@ export const buildSet = async (params: BuildSetParams): Promise<void> => {
       const projectDir = `${params.workDir}${project.projectConfiguration.projectName}/`;
       console.log('Building project in directory ', projectDir);
       mkdir('-p', projectDir);
+
       testResults.push(
         ...(await buildAndTestProject({
           project,
           projectDir,
           setParams: params,
           templateRepository: localRepo,
+          user: params.user,
         }))
       );
     }
