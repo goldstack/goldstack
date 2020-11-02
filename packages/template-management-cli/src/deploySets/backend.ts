@@ -1,9 +1,11 @@
 import { ProjectConfiguration } from '@goldstack/utils-project';
 import { DeploySetConfig } from '@goldstack/template-build-set';
 
-export const createS3BuildSetConfig = async (): Promise<DeploySetConfig> => {
+export const createBackendBuildSetConfig = async (): Promise<
+  DeploySetConfig
+> => {
   const projectConfiguration: ProjectConfiguration = {
-    projectName: 'project-s3',
+    projectName: 'project-backend',
     rootTemplateReference: {
       templateName: 'yarn-pnp-monorepo',
     },
@@ -20,14 +22,25 @@ export const createS3BuildSetConfig = async (): Promise<DeploySetConfig> => {
           templateName: 'lambda-express',
         },
       },
+      {
+        packageName: 'email-send-1',
+        templateReference: {
+          templateName: 'email-send',
+        },
+      },
     ],
   };
 
   const hash = new Date().getTime();
   const setConfig: DeploySetConfig = {
-    buildSetName: 's3',
-    buildTemplates: ['yarn-pnp-monorepo', 's3', 'lambda-express'],
-    deployTemplates: ['yarn-pnp-monorepo', 's3', 'lambda-express'],
+    buildSetName: 'backend',
+    buildTemplates: ['yarn-pnp-monorepo', 's3', 'lambda-express', 'email-send'],
+    deployTemplates: [
+      'yarn-pnp-monorepo',
+      's3',
+      'lambda-express',
+      'email-send',
+    ],
     projects: [
       {
         projectConfiguration,
@@ -62,6 +75,23 @@ export const createS3BuildSetConfig = async (): Promise<DeploySetConfig> => {
                   apiDomain: `lambda-express-${hash}.tests.dev.goldstack.party`,
                   hostedZoneDomain: 'dev.goldstack.party',
                   cors: '',
+                },
+              },
+            ],
+            packageTests: ['assert-package-files', 'infra-up'],
+            packageCleanUp: ['infra-destroy'],
+          },
+          {
+            packageName: 'email-send-1',
+            configuration: {},
+            deployments: [
+              {
+                name: 'prod',
+                awsUser: 'goldstack-dev',
+                awsRegion: 'us-west-2',
+                configuration: {
+                  domain: `email-send-${hash}.tests.dev.goldstack.party`,
+                  hostedZoneDomain: 'dev.goldstack.party',
                 },
               },
             ],

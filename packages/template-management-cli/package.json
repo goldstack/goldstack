@@ -13,6 +13,8 @@
     "build:pack": "yarn compile && yarn webpack",
     "clean": "yarn docker:clean",
     "cli": "yarn node ./bin/template-management-cli",
+    "cli:deploy-templates-dev:backend": "yarn cli deploy-set --set backend --repo goldstack-dev --workDir tmp --skipTests false",
+    "cli:schedule-deploy-templates-dev": "yarn cli schedule-all-deploy-sets --repo goldstack-dev --deployment dev",
     "compile": "tsc -p tsconfig.json",
     "compile:watch": "tsc -p tsconfig.json --watch",
     "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
@@ -26,19 +28,22 @@
     "test:ci": "jest --passWithNoTests --config=./jest.config.js"
   },
   "dependencies": {
+    "@goldstack/infra-aws": "0.3.4",
     "@goldstack/project-build": "0.1.0",
     "@goldstack/project-install": "0.1.0",
     "@goldstack/template-build-set": "0.1.0",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/template-repository-bucket": "0.1.0",
-    "@goldstack/template-s3": "0.3.23",
-    "@goldstack/template-static-website-aws": "0.3.23",
+    "@goldstack/template-s3": "0.3.24",
+    "@goldstack/template-static-website-aws": "0.3.24",
     "@goldstack/utils-cli": "0.2.0",
+    "@goldstack/utils-config": "0.3.2",
     "@goldstack/utils-git": "0.1.21",
     "@goldstack/utils-package": "0.3.3",
     "@goldstack/utils-project": "0.3.2",
     "mock-aws-s3": "^4.0.1",
     "source-map-support": "^0.5.19",
+    "tmp": "^0.2.1",
     "yargs": "^15.4.1"
   },
   "devDependencies": {

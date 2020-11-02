@@ -1,10 +1,10 @@
-import { createS3BuildSetConfig } from './s3';
+import { createBackendBuildSetConfig } from './backend';
 import { createStaticWebsiteBuildSetConfig } from './staticWebsite';
 import { DeploySetConfig } from '@goldstack/template-build-set';
 
 export const getAllBuildSets = async (): Promise<DeploySetConfig[]> => {
   return [
-    await createS3BuildSetConfig(),
+    await createBackendBuildSetConfig(),
     await createStaticWebsiteBuildSetConfig(),
   ];
 };

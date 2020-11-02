@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import NextJsIcon from './../icons/nextjs.svg';
 import NodeJsIcon from './../icons/nodejs.svg';
 import LambdaIcon from './../icons/lambda.svg';
+import SesIcon from './../icons/ses.svg';
 import BootstrapIcon from './../icons/bootstrap_large.svg';
 
 import S3Icon from './../icons/s3.svg';
@@ -56,14 +57,6 @@ const getPackageItems = (): PackageListItem[] => {
       ],
     },
     {
-      packageName: 'S3',
-      packageId: 'template:s3',
-      packageDescription: 'Store and manage files in AWS S3',
-      icons: [S3Icon],
-      alwaysIncluded: false,
-      features: [{ name: 'TypeScript API' }],
-    },
-    {
       packageName: 'NextJs + Bootstrap',
       packageId: 'template:app-nextjs-bootstrap',
       packageDescription:
@@ -83,6 +76,26 @@ const getPackageItems = (): PackageListItem[] => {
       icons: [CloudFrontIcon],
       alwaysIncluded: false,
       features: [{ name: 'S3 + CloudFront CDN' }],
+    },
+    {
+      packageName: 'S3',
+      packageId: 'template:s3',
+      packageDescription: 'Store and manage files in AWS S3',
+      icons: [S3Icon],
+      alwaysIncluded: false,
+      features: [{ name: 'TypeScript API' }],
+    },
+    {
+      packageName: 'Email Send',
+      packageId: 'template:email-send',
+      packageDescription: 'Send emails through AWS SES',
+      icons: [SesIcon],
+      alwaysIncluded: false,
+      features: [
+        { name: 'DKIM and SPF' },
+        { name: 'High volume sending' },
+        { name: 'Extremely low costs' },
+      ],
     },
   ];
 };

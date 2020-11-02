@@ -2,13 +2,18 @@ import { wrapCli } from '@goldstack/utils-cli';
 import { buildSet } from '@goldstack/template-build-set';
 import { connect, getBucketName } from '@goldstack/template-repository-bucket';
 import { mkdir, rm } from '@goldstack/utils-sh';
+import tmp from 'tmp';
 import { S3TemplateRepository } from '@goldstack/template-repository';
 import yargs from 'yargs';
 import assert from 'assert';
 import { getBuildSet } from './deploySets/deploySets';
 import AWSMock from 'mock-aws-s3';
-
+import { getAwsConfigPath } from '@goldstack/utils-config';
+import { readConfig } from '@goldstack/infra-aws';
 import { scheduleAllDeploySets } from './scheduleAllDeploySets';
+import fs from 'fs';
+import { AWSAPIKeyUserConfig } from '../../../../templates-lib/packages/infra-aws/dist/types/awsAccount';
+import path from 'path';
 
 export const run = async (): Promise<void> => {
   await wrapCli(
@@ -19,7 +24,7 @@ export const run = async (): Promise<void> => {
         .command('deploy-set', 'Deploys a package set', {
           set: {
             describe: 'Set that should be deployed',
-            choices: ['s3', 'static-website'],
+            choices: ['backend', 'static-website'],
             required: true,
           },
           repo: {
@@ -99,7 +104,13 @@ export const run = async (): Promise<void> => {
         assert(repo, `Repo could not be loaded from option ${argv.repo}`);
 
         const config = await getBuildSet(argv.set as string);
-        const workDir = argv.workDir as string;
+        let workDir = argv.workDir as string;
+        let tmpInstance: any = undefined;
+        if (workDir === 'tmp') {
+          tmpInstance = tmp.dirSync();
+          workDir = tmpInstance.name + '/';
+          console.log('Creating in temporary directory ' + workDir);
+        }
         if (!workDir.endsWith('/')) {
           throw new Error(
             `Working directory must end with a /. Supplied working directory: ${workDir}`
@@ -108,13 +119,29 @@ export const run = async (): Promise<void> => {
         rm('-rf', workDir);
         mkdir('-p', workDir);
 
+        const awsConfigPath = getAwsConfigPath('./../../');
+        let awsConfig: undefined | AWSAPIKeyUserConfig = undefined;
+        console.log(path.resolve(awsConfigPath));
+        if (fs.existsSync(awsConfigPath)) {
+          console.info('Using local AWS config');
+          const goldstackDevUser = readConfig(awsConfigPath).users.find(
+            (user) => user.name === 'goldstack-dev'
+          );
+          assert(goldstackDevUser, 'No goldstack-dev user defined in config');
+          awsConfig = goldstackDevUser.config as AWSAPIKeyUserConfig;
+        }
+
         await buildSet({
           s3repo: repo,
           workDir: workDir,
           config,
           skipTests: argv.skipTests && argv.skipTests === 'true',
+          user: awsConfig,
         });
         console.log('Deploy set completed.');
+        if (tmpInstance) {
+          // tmpInstance.removeCallback();
+        }
         return;
       }
 
