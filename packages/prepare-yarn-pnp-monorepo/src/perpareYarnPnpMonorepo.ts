@@ -13,6 +13,16 @@ import { assert } from 'console';
 import fs from 'fs';
 import packageSchema from './../schemas/package.schema.json';
 
+export const removeNpmRegistry = (params: { yarnRc: string }): string => {
+  const authTokenRegex = /npmAuthToken: [^\s]*\s/gi;
+  const withoutAuthToken = params.yarnRc.replace(authTokenRegex, '');
+  const registryRegex = /\/\/registry.npmjs.org:[^\s]*\s/gi;
+  const withoutRegistry = withoutAuthToken.replace(registryRegex, '');
+  const registriesRegex = /npmRegistries:[^\s]*\s/gi;
+  const withoutRegistries = withoutRegistry.replace(registriesRegex, '');
+  return withoutRegistries;
+};
+
 export class PrepareYarnPnpMonorepo implements PrepareTemplate {
   templateName(): string {
     return 'yarn-pnp-monorepo';
@@ -75,9 +85,9 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
 
     // ensure no npmAuthToken in package
     const yarnRc = read(params.destinationDirectory + '.yarnrc.yml');
-    const regex = /npmAuthToken: [^\s]*\s/gi;
+
     write(
-      yarnRc.replace(regex, ''),
+      removeNpmRegistry({ yarnRc }),
       params.destinationDirectory + '.yarnrc.yml'
     );
 
