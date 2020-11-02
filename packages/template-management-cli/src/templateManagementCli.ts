@@ -140,7 +140,7 @@ export const run = async (): Promise<void> => {
         });
         console.log('Deploy set completed.');
         if (tmpInstance) {
-          // tmpInstance.removeCallback();
+          tmpInstance.removeCallback();
         }
         return;
       }
