@@ -114,12 +114,12 @@ const AlwaysIncludedFooter = styled.div`
 `;
 
 const PackageCard = (props: PackageCardProps): JSX.Element => {
-  const [included, setIncluded] = useState(props.selected);
+  // const [included, setIncluded] = useState(props.selected);
+  const included = props.selected;
   const toggleIncluded = (): void => {
     if (props.onChange) {
       props.onChange(!included);
     }
-    setIncluded(!included);
   };
   const CardStyle = props.alwaysIncluded
     ? IncludedPackageCardStyle

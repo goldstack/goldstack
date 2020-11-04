@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 import Row from 'react-bootstrap/Row';
@@ -107,16 +107,13 @@ const getPackageItems = (preferredElements: string[]): PackageListItem[] => {
 
   const headList = baseList
     .filter((pkg) => {
-      return preferredElements.find(
-        (el) => pkg.packageName.toLocaleLowerCase().indexOf(el) !== -1
-      );
+      const res = preferredElements.includes(pkg.packageId);
+      return res;
     })
     .map((el) => ({ ...el, selected: true }));
 
   const tailList = baseList.filter((pkg) => {
-    return preferredElements.find(
-      (el) => pkg.packageName.toLocaleLowerCase().indexOf(el) === -1
-    );
+    return !preferredElements.find((el) => pkg.packageId === el);
   });
 
   return [...headList, ...tailList];
@@ -129,21 +126,22 @@ const ConfigureProjectButton = styled.button`
 `;
 
 interface BuildProjectParams {
-  elements: string[];
+  selectedIds: string[];
 }
 
 export const BuildProject = (params: BuildProjectParams): JSX.Element => {
-  const initSelected: string[] = [];
-  const packages = getPackageItems(params.elements);
-  packages
-    .filter((el) => el.selected)
-    .forEach((el) => {
-      initSelected.push(el.packageId || 'error id not defined');
-    });
-
-  const [selectedPackages, setSelectedPackages] = useState<string[]>(
-    initSelected
-  );
+  let packages = getPackageItems(params.selectedIds);
+  const [selectedPackages, setSelectedPackages] = useState<string[]>([]);
+  useEffect(() => {
+    const initSelected: string[] = [];
+    packages = getPackageItems(params.selectedIds);
+    packages
+      .filter((el) => el.selected)
+      .forEach((el) => {
+        initSelected.push(el.packageId || 'error id not defined');
+      });
+    setSelectedPackages(initSelected);
+  }, [params.selectedIds]);
   const [progressMessage, setProgressMessage] = useState('');
   const router = useRouter();
 
@@ -183,9 +181,18 @@ export const BuildProject = (params: BuildProjectParams): JSX.Element => {
     <>
       <Row>
         <PackageList
+          selectedPackages={selectedPackages}
           items={packages}
-          onSelect={(selectedIds): void => {
-            setSelectedPackages(selectedIds);
+          onDeselect={(packageId): void => {
+            setSelectedPackages(
+              selectedPackages.filter((el) => el !== packageId)
+            );
+          }}
+          onSelect={(packageId): void => {
+            setSelectedPackages([
+              ...selectedPackages.filter((el) => el !== packageId),
+              packageId,
+            ]);
           }}
         ></PackageList>
       </Row>

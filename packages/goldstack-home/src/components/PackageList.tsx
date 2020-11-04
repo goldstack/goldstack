@@ -16,7 +16,9 @@ export interface PackageListItem {
 
 interface PackageListProps {
   items: PackageListItem[];
-  onSelect(selectedIds: string[]): void;
+  selectedPackages: string[];
+  onSelect(packageId: string): void;
+  onDeselect(packageId: string): void;
 }
 
 const PackageDescription = styled.div`
@@ -41,12 +43,7 @@ const FeatureList = styled.ul`
 `;
 
 const PackageList = (props: PackageListProps): JSX.Element => {
-  const [selectedIds, setSelectedIds] = useState<string[]>([]);
-  useEffect(() => {
-    if (props.onSelect) {
-      props.onSelect(selectedIds);
-    }
-  }, [selectedIds]);
+  const selectedIds = props.selectedPackages;
 
   return (
     <>
@@ -57,18 +54,16 @@ const PackageList = (props: PackageListProps): JSX.Element => {
               <PackageCard
                 packageName={item.packageName}
                 icons={item.icons}
-                selected={item.selected}
+                selected={
+                  selectedIds &&
+                  selectedIds.includes(item.packageId || 'undefined')
+                }
                 alwaysIncluded={item.alwaysIncluded}
                 onChange={(included): void => {
                   if (included) {
-                    setSelectedIds([
-                      item.packageId || 'error: id undefined',
-                      ...selectedIds,
-                    ]);
+                    props.onSelect(item.packageId || 'wrong package id');
                   } else {
-                    setSelectedIds(
-                      selectedIds.filter((val) => val !== item.packageId)
-                    );
+                    props.onDeselect(item.packageId || 'wrong package id');
                   }
                 }}
               >

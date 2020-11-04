@@ -21,6 +21,7 @@ import Header from './../components/Header';
 
 import BuildProject from './../components/BuildProject';
 
+import { getPackageIds } from './../lib/stackParamUtils';
 interface HeadingProps {
   caption: string;
   learnMoreLink: string;
@@ -63,7 +64,9 @@ const Front = (): JSX.Element => {
           <Row>
             <Col md={9}>
               <Container fluid className="overflow-hidden p-6">
-                <BuildProject elements={elements}></BuildProject>
+                <BuildProject
+                  selectedIds={getPackageIds(elements)}
+                ></BuildProject>
               </Container>
             </Col>
             <Col md={3} className="p-4 bg-light">

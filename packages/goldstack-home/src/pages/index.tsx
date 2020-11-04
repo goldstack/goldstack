@@ -26,6 +26,8 @@ import BuildProject from './../components/BuildProject';
 
 import Foundation from './../components/Foundation';
 
+import { getPackageIds } from './../lib/stackParamUtils';
+
 interface HeadingProps {
   caption: string;
   learnMoreLink: string;
@@ -163,6 +165,10 @@ const Front = (): JSX.Element => {
               onSelect={(): void => {
                 // do nothing
               }}
+              onDeselect={(): void => {
+                // do nothing
+              }}
+              selectedPackages={[]}
               items={[
                 {
                   packageName: 'Made for Joyful Development',
@@ -233,7 +239,7 @@ const Front = (): JSX.Element => {
             >
               <h2>Choose the modules you need</h2>
             </div>
-            <BuildProject elements={elements}></BuildProject>
+            <BuildProject selectedIds={getPackageIds(elements)}></BuildProject>
           </Container>
         </Container>
       </main>
