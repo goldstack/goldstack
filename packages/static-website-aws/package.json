@@ -20,13 +20,20 @@
     "prepublishOnly": "yarn run build",
     "template": "template",
     "test:ci": "jest --passWithNoTests --config=./jest.config.js",
-    "watch": "yarn web:build $@ && concurrently \"yarn web:watch $@\" \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" ",
+    "watch": "yarn web:build local && concurrently \"yarn web:watch local\" \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" ",
     "web:build": "node ./dist/build.js $@",
-    "web:watch": "yarn web:build $@ && nodemon --watch ./../../ --ignore ./webDist -e '*' --exec \"yarn web:build $@\""
+    "web:watch": "yarn web:build local && nodemon --watch ./../../ --ignore ./webDist -e '*' --exec \"yarn web:build local\""
+  },
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-changed": "^4.0.2",
+    "gulp-replace": "^1.0.0"
   },
   "devDependencies": {
     "@goldstack/template-static-website-aws": "0.3.25",
-    "@goldstack/utils-sh": "0.4.2",
+    "@types/gulp": "^4.0.7",
+    "@types/gulp-changed": "^0.0.33",
+    "@types/gulp-replace": "^0.0.31",
     "@types/jest": "^25.2.3",
     "@types/node": "^14.0.6",
     "concurrently": "^5.2.0",
