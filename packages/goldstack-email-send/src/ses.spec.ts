@@ -1,7 +1,7 @@
 import { connect, getMockedSES, getFromDomain } from './ses';
 
 describe('SES template', () => {
-  it.only('Should sent dev email', async () => {
+  it('Should sent dev email', async () => {
     const ses = await connect('dev');
     const fromDomain = await getFromDomain('dev');
 
@@ -20,8 +20,7 @@ describe('SES template', () => {
         Source: '"Goldstack" <no-reply@' + fromDomain + '>',
       })
       .promise();
-
-    console.log(res.MessageId);
+    expect(res.MessageId).toBeDefined();
   });
   it('Should connect to mocked SES', async () => {
     const ses = await connect();
