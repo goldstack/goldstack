@@ -19,7 +19,7 @@ title: Email Send
 
 ## Features
 
-Setting the environment variable `GOLDSTACK_LOG_EMAIL=true` will log out all emails that are sent when in local development mode. This can be useful when testing an API server locally or when debugging unit tests.
+Setting the environment variable `GOLDSTACK_LOG_EMAILS=true` will log out all emails that are sent when in local development mode. This can be useful when testing an API server locally or when debugging unit tests.
 
 ## Troubleshooting
 
