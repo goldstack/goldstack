@@ -5,6 +5,7 @@ tsconfig.json
 dist/
 .next/
 webDist/
+distWeb/
 distLambda/
 goldstackLocal/
 node_modules/
