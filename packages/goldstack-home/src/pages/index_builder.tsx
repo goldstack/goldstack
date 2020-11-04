@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -51,6 +52,9 @@ const Item = (props: {
 };
 
 const Front = (): JSX.Element => {
+  const router = useRouter();
+  const elementsStr = (router.query.stack as string) || '';
+  const elements = elementsStr.split(',');
   return (
     <>
       <Header></Header>
@@ -59,7 +63,7 @@ const Front = (): JSX.Element => {
           <Row>
             <Col md={9}>
               <Container fluid className="overflow-hidden p-6">
-                <BuildProject></BuildProject>
+                <BuildProject elements={elements}></BuildProject>
               </Container>
             </Col>
             <Col md={3} className="p-4 bg-light">

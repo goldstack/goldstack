@@ -28,8 +28,8 @@ import { event } from './../lib/ga';
 
 import styles from './BuildProject.module.css';
 
-const getPackageItems = (): PackageListItem[] => {
-  return [
+const getPackageItems = (preferredElements: string[]): PackageListItem[] => {
+  const baseList = [
     {
       packageName: 'NextJs',
       packageId: 'template:app-nextjs',
@@ -41,6 +41,7 @@ const getPackageItems = (): PackageListItem[] => {
         </>
       ),
       icons: [NextJsIcon],
+      selected: false,
       alwaysIncluded: false,
       features: [{ name: 'S3 + CloudFront CDN' }],
     },
@@ -49,6 +50,7 @@ const getPackageItems = (): PackageListItem[] => {
       packageId: 'template:lambda-express',
       packageDescription: 'Scaleable and extensible backend based on Express',
       icons: [LambdaIcon, NodeJsIcon],
+      selected: false,
       alwaysIncluded: false,
       features: [
         { name: 'Packed with Webpack' },
@@ -62,6 +64,7 @@ const getPackageItems = (): PackageListItem[] => {
       packageDescription:
         'NextJS wired to work with Bootstrap and be deployed to CloudFront CDN',
       icons: [NextJsIcon, BootstrapIcon],
+      selected: false,
       alwaysIncluded: false,
       features: [
         { name: 'S3 + CloudFront CDN' },
@@ -74,6 +77,7 @@ const getPackageItems = (): PackageListItem[] => {
       packageId: 'template:static-website-aws',
       packageDescription: 'Deploy static files to a CloudFront CDN',
       icons: [CloudFrontIcon],
+      selected: false,
       alwaysIncluded: false,
       features: [{ name: 'S3 + CloudFront CDN' }],
     },
@@ -82,6 +86,7 @@ const getPackageItems = (): PackageListItem[] => {
       packageId: 'template:s3',
       packageDescription: 'Store and manage files in AWS S3',
       icons: [S3Icon],
+      selected: false,
       alwaysIncluded: false,
       features: [{ name: 'TypeScript API' }],
     },
@@ -90,6 +95,7 @@ const getPackageItems = (): PackageListItem[] => {
       packageId: 'template:email-send',
       packageDescription: 'Send emails through AWS SES',
       icons: [SesIcon],
+      selected: false,
       alwaysIncluded: false,
       features: [
         { name: 'DKIM and SPF' },
@@ -98,6 +104,22 @@ const getPackageItems = (): PackageListItem[] => {
       ],
     },
   ];
+
+  const headList = baseList
+    .filter((pkg) => {
+      return preferredElements.find(
+        (el) => pkg.packageName.toLocaleLowerCase().indexOf(el) !== -1
+      );
+    })
+    .map((el) => ({ ...el, selected: true }));
+
+  const tailList = baseList.filter((pkg) => {
+    return preferredElements.find(
+      (el) => pkg.packageName.toLocaleLowerCase().indexOf(el) === -1
+    );
+  });
+
+  return [...headList, ...tailList];
 };
 
 const ConfigureProjectButton = styled.button`
@@ -106,8 +128,22 @@ const ConfigureProjectButton = styled.button`
   }
 `;
 
-export const BuildProject = (): JSX.Element => {
-  const [selectedPackages, setSelectedPackages] = useState<string[]>([]);
+interface BuildProjectParams {
+  elements: string[];
+}
+
+export const BuildProject = (params: BuildProjectParams): JSX.Element => {
+  const initSelected: string[] = [];
+  const packages = getPackageItems(params.elements);
+  packages
+    .filter((el) => el.selected)
+    .forEach((el) => {
+      initSelected.push(el.packageId || 'error id not defined');
+    });
+
+  const [selectedPackages, setSelectedPackages] = useState<string[]>(
+    initSelected
+  );
   const [progressMessage, setProgressMessage] = useState('');
   const router = useRouter();
 
@@ -147,7 +183,7 @@ export const BuildProject = (): JSX.Element => {
     <>
       <Row>
         <PackageList
-          items={getPackageItems()}
+          items={packages}
           onSelect={(selectedIds): void => {
             setSelectedPackages(selectedIds);
           }}

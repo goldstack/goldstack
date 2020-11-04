@@ -11,6 +11,7 @@ interface PackageCardProps {
   packageName: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icons: any[];
+  selected: boolean;
   onChange?(included: boolean): void;
   children: React.ReactNode;
   alwaysIncluded?: boolean;
@@ -113,7 +114,7 @@ const AlwaysIncludedFooter = styled.div`
 `;
 
 const PackageCard = (props: PackageCardProps): JSX.Element => {
-  const [included, setIncluded] = useState(false);
+  const [included, setIncluded] = useState(props.selected);
   const toggleIncluded = (): void => {
     if (props.onChange) {
       props.onChange(!included);

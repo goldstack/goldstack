@@ -8,6 +8,7 @@ export interface PackageListItem {
   alwaysIncluded?: boolean;
   packageName: string;
   packageId?: string;
+  selected: boolean;
   packageDescription: string | JSX.Element;
   icons: any[];
   features: PackageFeatureData[];
@@ -56,6 +57,7 @@ const PackageList = (props: PackageListProps): JSX.Element => {
               <PackageCard
                 packageName={item.packageName}
                 icons={item.icons}
+                selected={item.selected}
                 alwaysIncluded={item.alwaysIncluded}
                 onChange={(included): void => {
                   if (included) {

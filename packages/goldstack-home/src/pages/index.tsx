@@ -17,6 +17,7 @@ import SecurityIcon from './../icons/security.svg';
 
 import RelaxedCoder from './../illustrations/relaxing-man.svg';
 
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Header from './../components/Header';
 
@@ -31,6 +32,9 @@ interface HeadingProps {
 }
 
 const Front = (): JSX.Element => {
+  const router = useRouter();
+  const elementsStr = (router.query.stack as string) || '';
+  const elements = elementsStr.split(',');
   return (
     <>
       <Head>
@@ -175,6 +179,7 @@ const Front = (): JSX.Element => {
                     </>
                   ),
                   icons: [TypeScriptIcon, YarnIcon],
+                  selected: false,
                   alwaysIncluded: true,
                   features: [],
                 },
@@ -195,6 +200,7 @@ const Front = (): JSX.Element => {
                   ),
                   icons: [TerraformIcon, AWSIcon, DockerIcon],
                   alwaysIncluded: true,
+                  selected: false,
                   features: [],
                 },
                 {
@@ -212,6 +218,7 @@ const Front = (): JSX.Element => {
                   ),
                   icons: [DocusaurusIcon],
                   alwaysIncluded: true,
+                  selected: false,
                   features: [],
                 },
               ]}
@@ -226,7 +233,7 @@ const Front = (): JSX.Element => {
             >
               <h2>Choose the modules you need</h2>
             </div>
-            <BuildProject></BuildProject>
+            <BuildProject elements={elements}></BuildProject>
           </Container>
         </Container>
       </main>
