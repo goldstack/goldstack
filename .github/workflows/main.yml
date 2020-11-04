@@ -70,6 +70,61 @@ jobs:
           yarn test:ci
           cd ../..
 
+
+
+      - name: Build templates
+        run: |
+          cd workspaces/templates
+          yarn compile
+          yarn test:ci
+          cd ../..
+        env:
+          AWS_USER_NAME: goldstack-dev
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
+
+      - name: Build template management
+        run: |
+          cd workspaces/templates-management
+          yarn compile
+          yarn test:ci
+          cd ../..
+
+      - name: Build apps
+        run: |
+          cd workspaces/apps
+          yarn compile
+          yarn workspace @goldstack/goldstack-api utils:seed-templates
+          yarn test:ci
+          cd ../..
+        env:
+          AWS_USER_NAME: goldstack-dev
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-2
+
+      - name: Build docs
+        run: |
+          cd workspaces/docs
+          yarn compile
+          yarn test:ci
+          cd ../..
+        env:
+          AWS_USER_NAME: goldstack-dev
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_DEFAULT_REGION: us-west-
+
+      # Generate schemas and docs
+      - name: Generate schemas
+        run: |
+          yarn generate:schema
+
+      - name: Generate docs
+        run: |
+          yarn generate:docs
+
       - name: Publish libraries
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
         run: |
@@ -157,58 +212,6 @@ jobs:
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
 
-      - name: Build templates
-        run: |
-          cd workspaces/templates
-          yarn compile
-          yarn test:ci
-          cd ../..
-        env:
-          AWS_USER_NAME: goldstack-dev
-          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          AWS_DEFAULT_REGION: us-west-2
-
-      - name: Build template management
-        run: |
-          cd workspaces/templates-management
-          yarn compile
-          yarn test:ci
-          cd ../..
-
-      - name: Build apps
-        run: |
-          cd workspaces/apps
-          yarn compile
-          yarn workspace @goldstack/goldstack-api utils:seed-templates
-          yarn test:ci
-          cd ../..
-        env:
-          AWS_USER_NAME: goldstack-dev
-          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          AWS_DEFAULT_REGION: us-west-2
-
-      - name: Build docs
-        run: |
-          cd workspaces/docs
-          yarn compile
-          yarn test:ci
-          cd ../..
-        env:
-          AWS_USER_NAME: goldstack-dev
-          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          AWS_DEFAULT_REGION: us-west-
-
-      # Generate schemas and docs
-      - name: Generate schemas
-        run: |
-          yarn generate:schema
-
-      - name: Generate docs
-        run: |
-          yarn generate:docs
 
       - name: Write current git commit to output
         run: |
