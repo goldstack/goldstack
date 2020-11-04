@@ -240,14 +240,32 @@ export const startTask = async (
   assert(taskExecution.taskArn);
 
   const taskId = taskExecution.taskArn.split('/')[1];
+
+  const cloudWatchLink = `https://${
+    deployment.awsRegion
+  }.console.aws.amazon.com/cloudwatch/home?region=${
+    deployment.awsRegion
+  }#logsV2:log-groups/log-group/${awsLogsGroup.replace(
+    /\//g,
+    '$252F'
+  )}/log-events/${`ecs/main/${taskExecution.taskArn.split('/')[2]}`
+    .replace('$', '$2524')
+    .replace('[', '$255B')
+    .replace(']', '$255D')
+    .replace(/\//g, '$252F')}`;
+  const ecsConsoleLink = `https://${
+    deployment.awsRegion
+  }.console.aws.amazon.com/ecs/home?region=${
+    deployment.awsRegion
+  }#/clusters/${clusterName}/tasks/${
+    taskExecution.taskArn.split('/')[2]
+  }/details`;
   return {
     taskArn: taskExecution.taskArn,
     taskId,
     awsLogsGroup,
-    ecsConsoleLink: `https://${deployment.awsRegion}.console.aws.amazon.com/ecs/home?region=${deployment.awsRegion}#/clusters/${clusterName}/tasks/${taskId}/details`,
-    awsLogsConsoleLink:
-      `https://${deployment.awsRegion}.console.aws.amazon.com/cloudwatch/home?` +
-      `region=${deployment.awsRegion}#logEventViewer:group=${awsLogsGroup};stream=ecs/main/${taskId}`,
+    ecsConsoleLink,
+    awsLogsConsoleLink: cloudWatchLink,
   };
 };
 
