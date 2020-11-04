@@ -22,7 +22,7 @@
   "dependencies": {
     "@goldstack/infra": "0.3.3",
     "@goldstack/template-build": "0.1.0",
-    "@goldstack/template-docker-image-aws": "0.3.11",
+    "@goldstack/template-docker-image-aws": "0.3.12",
     "@goldstack/template-email-send": "0.3.30",
     "@goldstack/template-lambda-express": "0.3.32",
     "@goldstack/template-nextjs": "0.3.26",
