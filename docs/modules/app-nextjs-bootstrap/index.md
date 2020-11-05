@@ -30,7 +30,7 @@ title: Next.js Bootstrap
 
 [!embed](./../app-nextjs/limitations.md)
 
-## Potential Issues and Frequently Asked Questions
+## Troubleshooting and Frequently Asked Questions
 
 [!embed](./../app-nextjs/faq.md)
 

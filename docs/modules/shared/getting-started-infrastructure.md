@@ -8,4 +8,4 @@ In order to stand up the infrastructure, now run in the command line:
 yarn infra up [deploymentName]
 ```
 
-This will be either `yarn infra up dev` or `yarn infra up prod` depending on your choice of deployment. Note that running this command can often take a while.
+This will be either `yarn infra up dev` or `yarn infra up prod` depending on your choice of deployment. Note that running this command can take a while.

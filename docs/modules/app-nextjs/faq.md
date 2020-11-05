@@ -2,7 +2,7 @@
 
 Next.js supports static file serving by [placing files into a public/ folder](https://nextjs.org/docs/basic-features/static-file-serving). This is useful for files such as `favicon.ico`. This module by default provides support for `favicon.ico` files but if you want to add other files, these may not be captured by the [CloudFront behaviours configured in Terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution#cache-behavior-arguments).
 
-Thus they may be tried to be resolved as dynamic paths which will result in the file not being found. To fix this, go into `infra/aws/root.tf` and add additional `ordered_cache_behaviours` as required.
+Next.js may try to resolve these files as dynamic paths, which may result in the files not being found. To fix this, go into `infra/aws/root.tf` and add additional `ordered_cache_behaviours` as required.
 
 For instance, if you want to serve a file `/myfile.png` provided in `public/myfile.png` and this file should be cached in CloudFront, add the following behaviour:
 

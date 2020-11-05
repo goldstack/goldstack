@@ -29,7 +29,7 @@ title: Next.js
 
 [!embed](./limitations.md)
 
-## Potential Issues and Frequently Asked Questions
+## Troubleshooting and Frequently Asked Questions
 
 [!embed](./faq.md)
 
