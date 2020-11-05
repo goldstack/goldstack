@@ -105,22 +105,27 @@ const Front = (): JSX.Element => {
                   {
                     icon: TypeScriptIcon,
                     title: 'TypeScript',
+                    highlight: elements.includes('typescript'),
                   },
                   {
                     icon: YarnIcon,
                     title: 'Yarn Workspaces',
+                    highlight: elements.includes('yarn'),
                   },
                   {
                     icon: ESLintIcon,
                     title: 'ESLint and Prettier',
+                    highlight: elements.includes('eslint'),
                   },
                   {
                     icon: JestIcon,
                     title: 'Jest',
+                    highlight: elements.includes('jest'),
                   },
                   {
                     icon: VSCodeIcon,
                     title: 'Visual Studio Code',
+                    highlight: elements.includes('vscode'),
                   },
                 ]}
               ></Foundation>
@@ -132,14 +137,17 @@ const Front = (): JSX.Element => {
                   {
                     icon: TerraformIcon,
                     title: 'Terraform',
+                    highlight: elements.includes('terraform'),
                   },
                   {
                     icon: AWSIcon,
                     title: 'AWS',
+                    highlight: elements.includes('aws'),
                   },
                   {
                     icon: DockerIcon,
                     title: 'Docker',
+                    highlight: elements.includes('docker'),
                   },
                 ]}
               ></Foundation>

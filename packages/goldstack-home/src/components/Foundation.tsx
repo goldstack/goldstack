@@ -1,19 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
+
+import styles from './Foundation.module.css';
+
+import GoldDiamondIcon from './../icons/gold-diamond.svg';
 
 interface Feature {
   title: string;
   icon: any;
+  highlight?: boolean;
 }
 
 interface FoundationProps {
   heading: string;
   features: Feature[];
 }
-
-const FeatureTitle = styled.span`
-  margin-top: 0.35rem;
-`;
 
 const Foundation = (props: FoundationProps): JSX.Element => {
   return (
@@ -27,7 +27,15 @@ const Foundation = (props: FoundationProps): JSX.Element => {
                 <img className="img-fluid" src={feature.icon}></img>
               </figure>
               <div className="media-body">
-                <FeatureTitle>{feature.title}</FeatureTitle>
+                <span
+                  className={styles.featureTitle}
+                  style={{
+                    fontWeight: feature.highlight ? 'bold' : 'normal',
+                  }}
+                >
+                  {feature.title}{' '}
+                  {feature.highlight && <img src={GoldDiamondIcon}></img>}
+                </span>
               </div>
             </div>
           ))}
