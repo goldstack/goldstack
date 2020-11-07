@@ -39,7 +39,7 @@ export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
   lambdaName: LambdaName;
   apiDomain: APIDomain;
   hostedZoneDomain: HostedZoneDomain;
-  cors: CorsHeader;
+  cors?: CorsHeader;
 }
 
 export interface ThisDeployment
