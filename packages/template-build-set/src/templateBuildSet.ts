@@ -202,7 +202,20 @@ const buildAndTestProject = async (
   return testResults;
 };
 
-export const buildSet = async (params: BuildSetParams): Promise<void> => {
+export interface BuildSetResult {
+  deployed?: boolean;
+  testFailed?: boolean;
+  testResultsText?: string;
+  testResults?: TestResult[];
+}
+
+export const buildSet = async (
+  params: BuildSetParams
+): Promise<BuildSetResult> => {
+  const res: BuildSetResult = {
+    deployed: false,
+  };
+
   // set up local repo to run tests before deploying
   const localRepo = await prepareTestDir(params.workDir + 's3/');
 
@@ -234,11 +247,15 @@ export const buildSet = async (params: BuildSetParams): Promise<void> => {
         }))
       );
     }
-    console.log(renderTestResults(testResults));
+    res.testResults = testResults;
+    res.testResultsText = renderTestResults(testResults);
+    console.log(res.testResultsText);
     if (testResults.filter((result) => !result.result).length > 0) {
       console.log('There are test failures. No templates will be deployed.');
-      return;
+      res.testFailed = true;
+      return res;
     }
+    res.testFailed = false;
   } else {
     console.log('Skipping tests');
   }
@@ -250,4 +267,6 @@ export const buildSet = async (params: BuildSetParams): Promise<void> => {
     templates: params.config.deployTemplates,
     templateRepository: params.s3repo,
   });
+  res.deployed = true;
+  return res;
 };
