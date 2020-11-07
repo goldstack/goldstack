@@ -37,7 +37,7 @@ Error: [ERR]: Error building changeset: InvalidChangeBatch: [Tried to create res
   45: resource "aws_route53_record" "spf_domain" {
 ```
 
-This error is reported when a TXT record for your specified domain already exists. Often other services required to set a TXT record, such as G Suite and this will conflict with the TXT record that the Email Send module wants to created.
+This error is reported when a TXT record for your specified domain already exists. Often other services such as G Suite set TXT records that conflict with the TXT record that the Email Send module wants to create.
 
 #### Workaround
 

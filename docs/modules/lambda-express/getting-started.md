@@ -4,7 +4,7 @@ Note that your API will not work yet. It first needs to be deployed as per instr
 
 [!embed](./../shared/getting-started-deployment.md)
 
-You should now be able to access your API. The domain under which the API is deployed is configured in `goldstack.json` under `"deployments"` and there the property `"apiDomain"`. You can access this API domain with a browser since the default API provided in the template allows for GET requests to the root.
+You should now be able to access your API. The domain under which the API is deployed is configured in `goldstack.json` under `"deployments[*].apiDomain"`. You can access this API domain with a browser since the default API provided in the template allows for GET requests to the root.
 
 ### Development
 

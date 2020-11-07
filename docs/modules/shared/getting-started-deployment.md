@@ -1,6 +1,6 @@
 ### Deployment
 
-When the infrastructure was successfully, we can deploy the module. For this, simply run the following command:
+Once the infrastructure is successfully set up in AWS using `yarn infra up`, we can deploy the module. For this, simply run the following command:
 
 ```bash
 yarn deploy [deploymentName]
