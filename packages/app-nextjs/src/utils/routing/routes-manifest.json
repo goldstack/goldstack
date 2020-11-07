@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "pages404": true,
+  "basePath": "",
+  "redirects": [],
+  "rewrites": [],
+  "headers": [],
+  "dynamicRoutes": [
+    {
+      "page": "404",
+      "regex": "^/404.html$"
+    },
+    {
+      "page": "index",
+      "regex": "^/index.html$"
+    }
+  ]
+}

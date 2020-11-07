@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*",
+    "./next-env.d.ts"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "incremental": false,
+    "module": "esnext",
+    "noEmit": false,
+    "moduleResolution": "node",
+    "isolatedModules": true,
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

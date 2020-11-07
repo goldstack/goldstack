@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/NextjsDeploymentConfiguration",
+  "definitions": {
+    "NextjsDeploymentConfiguration": {
+      "type": "object",
+      "properties": {
+        "hostedZoneDomain": {
+          "$ref": "#/definitions/HostedZoneDomain"
+        },
+        "websiteDomain": {
+          "$ref": "#/definitions/PrimaryWebsiteDomain"
+        },
+        "websiteDomainRedirect": {
+          "$ref": "#/definitions/RedirectWebsiteDomain"
+        },
+        "defaultCacheDuration": {
+          "$ref": "#/definitions/DefaultCacheDuration"
+        },
+        "environmentVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NextjsEnvironmentVariable"
+          },
+          "description": "Define environment variables for the NextJs application.",
+          "title": "Environment Variables"
+        }
+      },
+      "required": [
+        "hostedZoneDomain",
+        "websiteDomain",
+        "websiteDomainRedirect"
+      ]
+    },
+    "HostedZoneDomain": {
+      "type": "string",
+      "description": "The domain name of the Route 53 hosted zone that this website should be added to.",
+      "title": "Hosted Zone Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "PrimaryWebsiteDomain": {
+      "type": "string",
+      "description": "The domain name your users should use (e.g. mysite.com)",
+      "title": "Primary Website Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "RedirectWebsiteDomain": {
+      "type": "string",
+      "description": "A domain name that users are redirected from to your Primary Website Domain (e.g. www.mysite.com)",
+      "title": "Redirect Website Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "DefaultCacheDuration": {
+      "type": "number",
+      "description": "Seconds resources will be cached for by default. For development sites, a good value is around 10 seconds and for production sites 60-100 seconds.",
+      "title": "Default Cache Duration",
+      "default": 10,
+      "exclusiveMinimum": 0
+    },
+    "NextjsEnvironmentVariable": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Environment variable name",
+          "title": "Name"
+        },
+        "value": {
+          "type": "string",
+          "description": "Environment variable value",
+          "title": "Value"
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ],
+      "additionalProperties": false,
+      "description": "Define the name and value for the environment variable.",
+      "title": "NextJs Environment Variable"
+    }
+  }
+}
