@@ -26,4 +26,5 @@ variable "name" {
 variable "cors" {
   description = "Domain for an UI that should be allowed to access this server."
   type = string
+  default = ""
 }

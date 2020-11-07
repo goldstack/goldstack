@@ -20,9 +20,9 @@
     "prepublishOnly": "yarn run build",
     "template": "template",
     "test:ci": "jest --passWithNoTests --config=./jest.config.js",
-    "watch": "yarn compile && yarn web:build local && concurrently \"yarn web:watch\" \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" ",
+    "watch": "yarn compile && yarn web:build local && concurrently \"yarn web:watch local\" \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" ",
     "web:build": "node ./dist/build.js $@",
-    "web:watch": "yarn web:build local && nodemon --watch ./../../ --ignore ./webDist -e '*' --exec \"yarn web:build local\""
+    "web:watch": "node ./dist/watch.js $@"
   },
   "dependencies": {
     "gulp": "^4.0.2",

@@ -1,11 +1,12 @@
 #!/usr/bin/env node
+
 import { init } from './gulp';
 
-const build = async (args: string[]): Promise<void> => {
+const watch = async (args: string[]): Promise<void> => {
   const gulp = await init(args);
   await new Promise((resolve) => {
-    gulp.series(['build'])(resolve);
+    gulp.series(['watch'])(resolve);
   });
 };
 
-build(process.argv);
+watch(process.argv);
