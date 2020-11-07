@@ -70,8 +70,6 @@ jobs:
           yarn test:ci
           cd ../..
 
-
-
       - name: Build templates
         run: |
           cd workspaces/templates
@@ -194,14 +192,6 @@ jobs:
           repository: goldstack/goldstack-templates-management
           github_token: ${{secrets.BUILD_TOKEN}}
 
-      - name: Push TypeScript template changes
-        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          directory: workspaces/templates/packages/app-nextjs
-          repository: goldstack/nextjs-typescript-template
-          github_token: ${{secrets.BUILD_TOKEN}}
-
       - name: Fix submodule references
         run: |
           yarn pull
@@ -211,7 +201,6 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
-
 
       - name: Write current git commit to output
         run: |
