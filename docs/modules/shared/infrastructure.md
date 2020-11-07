@@ -1,4 +1,4 @@
-All infrastructure for this module is defined in Terraform. You can find the Terraform files for this module in the directory `[moduleDir]/infra/aws`. You can define multiple deployments for this module, for instance for development, staging and production environments. The deployments and their respective configurations are defined in `[moduleDir]/goldstack.json`. 
+All infrastructure for this module is defined in Terraform. You can find the Terraform files for this module in the directory `[moduleDir]/infra/aws`. You can define multiple deployments for this module, for instance for development, staging and production environments. The deployments and their respective configurations are defined in `[moduleDir]/goldstack.json`.
 
 After downloading your starter project, there will be one deployment defined. This will be either `dev` or `prod` depending on your choice during project configuration. In the example `goldstack.json` below, a deployment with the name `dev` is defined.
 
@@ -32,7 +32,7 @@ Infrastructure commands for this module can be run using `yarn`. There are four 
 - `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
 - `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
 
-For each command, the deployment they should be applied to must be specified. 
+For each command, the deployment they should be applied to must be specified.
 
 ```bash
 yarn infra [command] [deploymentName]
