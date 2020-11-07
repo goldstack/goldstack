@@ -85,7 +85,7 @@ const DynamicConfigForm = (props: {
             </MyLink>
           )}
           {step.idx <= 0 && (
-            <MyLink href="/#build" prefetch={false} shallow={true}>
+            <MyLink href="/build" prefetch={false} shallow={true}>
               <a className={'font-weight-bold'}>
                 <i className="fas fa-angle-left fa-xs mr-1"></i>
                 Back to builder

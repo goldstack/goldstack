@@ -31,19 +31,18 @@ import styles from './BuildProject.module.css';
 const getPackageItems = (preferredElements: string[]): PackageListItem[] => {
   const baseList = [
     {
-      packageName: 'NextJs',
-      packageId: 'template:app-nextjs',
-      packageDescription: (
-        <>
-          <p>
-            Rapidly develop React applications deployed to AWS CloudFront CDN
-          </p>
-        </>
-      ),
-      icons: [NextJsIcon],
+      packageName: 'NextJs + Bootstrap',
+      packageId: 'template:app-nextjs-bootstrap',
+      packageDescription:
+        'NextJS wired to work with Bootstrap and be deployed to CloudFront CDN',
+      icons: [NextJsIcon, BootstrapIcon],
       selected: false,
       alwaysIncluded: false,
-      features: [{ name: 'S3 + CloudFront CDN' }],
+      features: [
+        { name: 'S3 + CloudFront CDN' },
+        { name: 'SASS' },
+        { name: 'SVG Icons' },
+      ],
     },
     {
       packageName: 'Lambda + Express',
@@ -59,18 +58,19 @@ const getPackageItems = (preferredElements: string[]): PackageListItem[] => {
       ],
     },
     {
-      packageName: 'NextJs + Bootstrap',
-      packageId: 'template:app-nextjs-bootstrap',
-      packageDescription:
-        'NextJS wired to work with Bootstrap and be deployed to CloudFront CDN',
-      icons: [NextJsIcon, BootstrapIcon],
+      packageName: 'NextJs',
+      packageId: 'template:app-nextjs',
+      packageDescription: (
+        <>
+          <p>
+            Rapidly develop React applications deployed to AWS CloudFront CDN
+          </p>
+        </>
+      ),
+      icons: [NextJsIcon],
       selected: false,
       alwaysIncluded: false,
-      features: [
-        { name: 'S3 + CloudFront CDN' },
-        { name: 'SASS' },
-        { name: 'SVG Icons' },
-      ],
+      features: [{ name: 'S3 + CloudFront CDN' }],
     },
     {
       packageName: 'Static Website',

@@ -11,8 +11,8 @@
       "regex": "^\\/404$"
     },
     {
-      "page": "/index_builder",
-      "regex": "^\\/index_builder$"
+      "page": "/build",
+      "regex": "^\\/build$"
     },
     {
       "page": "/index",

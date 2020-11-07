@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import Container from 'react-bootstrap/Container';
@@ -58,6 +59,9 @@ const Front = (): JSX.Element => {
   const elements = elementsStr.split(',');
   return (
     <>
+      <Head>
+        <title>Goldstack Builder</title>
+      </Head>
       <Header></Header>
       <main id="content" role="main">
         <Container fluid className="">
