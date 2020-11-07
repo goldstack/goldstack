@@ -252,7 +252,7 @@ jobs:
       - name: Trigger template build
         run: |
           yarn workspace @goldstack/template-management-cli compile # compile again so that deployment state is updated
-          yarn workspace @goldstack/template-management-cli cli schedule-all-deploy-sets --repo goldstack-dev --deployment dev
+          yarn workspace @goldstack/template-management-cli cli schedule-all-deploy-sets --repo goldstack-dev --deployment dev --emailResultsTo mxrogm@gmail.com
         env:
           AWS_USER_NAME: goldstack-dev
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
