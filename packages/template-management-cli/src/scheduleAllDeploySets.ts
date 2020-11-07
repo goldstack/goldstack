@@ -21,6 +21,8 @@ export const scheduleAllDeploySets = async (argv: any): Promise<void> => {
         '--repo',
         argv.repo,
         '--workDir',
+        '--emailResultsTo',
+        argv.emailResultsTo || 'false',
         '/tmp/',
         '--skipTests',
         argv.skipTests || 'false',

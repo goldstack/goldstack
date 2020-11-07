@@ -28,6 +28,7 @@
     "test:ci": "jest --passWithNoTests --config=./jest.config.js"
   },
   "dependencies": {
+    "@goldstack/goldstack-email-send": "0.1.0",
     "@goldstack/infra-aws": "0.3.4",
     "@goldstack/project-build": "0.1.0",
     "@goldstack/project-install": "0.1.0",

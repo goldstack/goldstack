@@ -12,8 +12,11 @@ import { getAwsConfigPath } from '@goldstack/utils-config';
 import { readConfig } from '@goldstack/infra-aws';
 import { scheduleAllDeploySets } from './scheduleAllDeploySets';
 import fs from 'fs';
-import { AWSAPIKeyUserConfig } from '../../../../templates-lib/packages/infra-aws/dist/types/awsAccount';
-import path from 'path';
+import { AWSAPIKeyUserConfig } from '@goldstack/infra-aws/dist/types/awsAccount';
+import {
+  connect as connectSes,
+  getFromDomain,
+} from '@goldstack/goldstack-email-send';
 
 export const run = async (): Promise<void> => {
   await wrapCli(
@@ -35,6 +38,11 @@ export const run = async (): Promise<void> => {
           workDir: {
             describe: 'The local directory where temporary files are stored',
             default: './goldstackWork/',
+          },
+          emailResultsTo: {
+            describe:
+              'Provide an email address that test results will be sent to',
+            required: false,
           },
           skipTests: {
             describe: 'Skip running tests',
@@ -62,6 +70,13 @@ export const run = async (): Promise<void> => {
               describe: 'Skip running tests',
               type: 'string',
               choices: ['true', 'false'],
+              required: false,
+            },
+            emailResultsTo: {
+              describe:
+                'Provide an email address that test results will be sent to. Provide "false" when no email should be sent',
+              type: 'string',
+              default: 'false',
               required: false,
             },
           }
@@ -121,7 +136,6 @@ export const run = async (): Promise<void> => {
 
         const awsConfigPath = getAwsConfigPath('./../../');
         let awsConfig: undefined | AWSAPIKeyUserConfig = undefined;
-        console.log(path.resolve(awsConfigPath));
         if (fs.existsSync(awsConfigPath)) {
           console.info('Using local AWS config');
           const goldstackDevUser = readConfig(awsConfigPath).users.find(
@@ -131,17 +145,53 @@ export const run = async (): Promise<void> => {
           awsConfig = goldstackDevUser.config as AWSAPIKeyUserConfig;
         }
 
-        await buildSet({
+        const res = await buildSet({
           s3repo: repo,
           workDir: workDir,
           config,
           skipTests: argv.skipTests && argv.skipTests === 'true',
           user: awsConfig,
         });
+
+        if (argv.emailResultsTo && argv.emailResultsTo !== 'false') {
+          console.log('Sending email with results to', argv.emailResultsTo);
+          const ses = await connectSes();
+
+          await ses
+            .sendEmail({
+              Destination: {
+                ToAddresses: [(argv.emailResultsTo as string) || 'invalid'],
+              },
+              Message: {
+                Subject: {
+                  Charset: 'UTF-8',
+                  Data:
+                    'Goldstack Deploy Set ' +
+                    (res.testFailed && !argv.skipTests
+                      ? 'FAILED TESTS'
+                      : res.deployed
+                      ? 'SUCCESS'
+                      : 'FAILED DEPLOY'),
+                },
+                Body: {
+                  Text: {
+                    Charset: 'UTF-8',
+                    Data:
+                      'Test Results:\n' + res.testResults ||
+                      'No results available',
+                  },
+                },
+              },
+              Source: '"Goldstack" <no-reply@' + (await getFromDomain()) + '>',
+            })
+            .promise();
+        }
+
         console.log('Deploy set completed.');
         if (tmpInstance) {
           tmpInstance.removeCallback();
         }
+
         return;
       }
 
