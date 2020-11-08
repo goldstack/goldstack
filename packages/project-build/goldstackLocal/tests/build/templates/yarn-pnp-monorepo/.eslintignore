@@ -3,6 +3,10 @@ tsconfig.json
 .pnp.js
 .yarn/
 dist/
+.next/
+webDist/
+distWeb/
+distLambda/
 goldstackLocal/
 node_modules/
 coverage/

@@ -3,3 +3,4 @@ yarn-error.log
 tsconfig.tsbuildinfo
 dist/
 coverage/
+goldstackLocal/

@@ -18,28 +18,20 @@
   <p>The following key properties need to be configured for this module:</p>
   <ul>
     <li>
-      <strong>Hosted Zone Domain</strong>: A
+      <strong>Hosted Zone Domain</strong>: A Route 53 hosted zone to which the
+      <em>Primary Website Domain</em> and <em>Redirect Website Domain</em> can
+      be added as records. For instance, the hosted zone domain
+      <code class="inline">mysite.com</code> would allow adding the primary
+      domain <code class="inline">mysite.com</code> and the redirect domain
+      <code class="inline">www.mysite.com</code>. For more details, please check
       <a
-        href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-working-with.html"
+        href="https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration"
         class="absolute"
         target="_blank"
         rel="noopener noreferrer"
-        >Route 53 hosted zone</a
+        >Hosted Zone Configuration</a
       >
-      to which the <em>Primary Website Domain</em> and
-      <em>Redirect Website Domain</em> can be added as records. For instance, a
-      hosted zone domain is <code class="inline">mysite.com</code> will allow
-      adding the primiary domain <code class="inline">mysite.com</code> and the
-      redirect domain <code class="inline">www.mysite.com</code>. Note that this
-      hosted zone must already exist in AWS. Please find instructions of how to
-      set up a hosted zone
-      <a
-        href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingHostedZone.html"
-        class="absolute"
-        target="_blank"
-        rel="noopener noreferrer"
-        >here</a
-      >.
+      in the Goldstack documentation.
     </li>
     <li>
       <strong>Primary Website Domain</strong>: This is the domain your users
@@ -49,13 +41,14 @@
     </li>
     <li>
       <strong>Redirect Website Domain</strong>: This is a domain that will
-      redirect all requests to your <em>Primary Website Domain</em>. For
-      instance, if you configure the domain
-      <code class="inline">www.mysite.com</code> as your redirect domain and
-      <code class="inline">mysite.com</code> as your primiary domain, users will
-      be redirected to <code class="inline">https://mysite.com</code> when they
-      attempt to open the URL
-      <code class="inline">https://www.mysite.com</code>. Note that the
+      redirect all requests to your <em>Primary Website Domain</em>. The
+      redirect website domain <em>must be</em> different to the
+      <em>Primary Website Domain</em>. For instance, if you configure the domain
+      <code class="inline">mysite.com</code> as your primary domain, you can
+      configure <code class="inline">www.mysite.com</code> as your redirect
+      domain. Users will be redirected to
+      <code class="inline">https://mysite.com</code> when they attempt to open
+      the URL <code class="inline">https://www.mysite.com</code>. Note that the
       <em>Redirect Website Domain</em> must be configured, even if you do not
       need this functionality.
     </li>
