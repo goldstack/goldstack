@@ -24,8 +24,7 @@
       "required": [
         "lambdaName",
         "apiDomain",
-        "hostedZoneDomain",
-        "cors"
+        "hostedZoneDomain"
       ]
     },
     "APIDomain": {
