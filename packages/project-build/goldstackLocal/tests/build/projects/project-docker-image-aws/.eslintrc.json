@@ -28,12 +28,14 @@
   "plugins": [
     "react",
     "json-format",
-    "yaml"
+    "yaml",
+    "html"
   ],
   "settings": {
     "react": {
       "version": "detect"
-    }
+    },
+    "html/report-bad-indent": "warn"
   },
   "rules": {
     "linebreak-style": [

@@ -7,7 +7,7 @@
       "properties": {
         "bucketName": {
           "type": "string",
-          "description": "The name of the bucket. No spaces, numbers or special characters other than <code>-</code> allowed.",
+          "description": "The name of the bucket. No spaces, numbers or special characters other than '-' allowed.",
           "title": "Bucket Name",
           "pattern": "^[A-Za-z0-9-]*$"
         }
