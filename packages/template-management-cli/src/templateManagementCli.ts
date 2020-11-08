@@ -35,6 +35,10 @@ export const run = async (): Promise<void> => {
             choices: ['dummy', 'goldstack-dev', 'goldstack-prod'],
             required: true,
           },
+          deployment: {
+            describe: 'The Goldstack deployment for the image to use',
+            required: true,
+          },
           workDir: {
             describe: 'The local directory where temporary files are stored',
             default: './goldstackWork/',
@@ -155,7 +159,8 @@ export const run = async (): Promise<void> => {
 
         if (argv.emailResultsTo && argv.emailResultsTo !== 'false') {
           console.log('Sending email with results to', argv.emailResultsTo);
-          const ses = await connectSes();
+
+          const ses = await connectSes(argv.deployment as string);
 
           await ses
             .sendEmail({

@@ -18,6 +18,8 @@ export const scheduleAllDeploySets = async (argv: any): Promise<void> => {
         'deploy-set',
         '--set',
         setName,
+        '--deployment',
+        argv.deployment,
         '--repo',
         argv.repo,
         '--workDir',
