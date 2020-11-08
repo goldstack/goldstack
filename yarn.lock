@@ -2582,7 +2582,7 @@ __metadata:
   dependencies:
     "@goldstack/infra": 0.3.3
     "@goldstack/infra-aws": 0.3.4
-    "@goldstack/template-static-website-aws": 0.3.26
+    "@goldstack/template-static-website-aws": 0.3.27
     "@goldstack/utils-aws-cli": 0.3.4
     "@goldstack/utils-cli": 0.2.0
     "@goldstack/utils-config": 0.3.2
@@ -2716,7 +2716,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-static-website-aws@0.3.26, @goldstack/template-static-website-aws@workspace:workspaces/templates-lib/packages/template-static-website-aws":
+"@goldstack/template-static-website-aws@0.3.27, @goldstack/template-static-website-aws@workspace:workspaces/templates-lib/packages/template-static-website-aws":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-static-website-aws@workspace:workspaces/templates-lib/packages/template-static-website-aws"
   dependencies:
