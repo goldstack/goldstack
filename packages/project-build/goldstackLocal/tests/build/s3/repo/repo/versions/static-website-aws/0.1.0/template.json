@@ -3,6 +3,6 @@
   "templateVersion": "0.1.0",
   "previousTemplateVersion": "0.0.0",
   "templateDescription": "Static website hosted on AWS using S3 and CloudFront.",
-  "templateDocumentation": "https://goldstack.party",
+  "templateDocumentation": "https://docs.goldstack.party/docs/modules/static-website-aws",
   "templateArchive": "arn:aws:s3:::repo/versions/static-website-aws/0.1.0/static-website-aws-0.1.0.zip"
 }
