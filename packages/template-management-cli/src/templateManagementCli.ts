@@ -157,9 +157,27 @@ export const run = async (): Promise<void> => {
           user: awsConfig,
         });
 
-        if (argv.emailResultsTo && argv.emailResultsTo !== 'false') {
-          console.log('Sending email with results to', argv.emailResultsTo);
+        console.log('Deploy set completed.');
+        if (tmpInstance) {
+          rm('-rf', workDir + '*');
+          tmpInstance.removeCallback();
+        }
 
+        if (argv.emailResultsTo && argv.emailResultsTo !== 'false') {
+          if (!argv.deployment) {
+            console.error(
+              'Cannot email results. Argument --deployment not defined.'
+            );
+            return;
+          }
+          console.log(
+            'Sending email with results to',
+            argv.emailResultsTo,
+            'in deployment ',
+            argv.deployment
+          );
+
+          process.env.GOLDSTACK_DEPLOYMENT = argv.deployment as string;
           const ses = await connectSes(argv.deployment as string);
 
           await ses
@@ -190,11 +208,6 @@ export const run = async (): Promise<void> => {
               Source: '"Goldstack" <no-reply@' + (await getFromDomain()) + '>',
             })
             .promise();
-        }
-
-        console.log('Deploy set completed.');
-        if (tmpInstance) {
-          tmpInstance.removeCallback();
         }
 
         return;

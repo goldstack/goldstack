@@ -13,7 +13,7 @@
     "build:pack": "yarn compile && yarn webpack",
     "clean": "yarn docker:clean",
     "cli": "yarn node ./bin/template-management-cli",
-    "cli:deploy-templates-dev:backend": "yarn cli deploy-set --set backend --repo goldstack-dev --workDir tmp --skipTests false",
+    "cli:deploy-templates-dev:backend": "yarn cli deploy-set --set backend --repo goldstack-dev --deployment dev --emailResultsTo mxrogm@gmail.com --workDir tmp --skipTests false",
     "cli:schedule-deploy-templates-dev": "yarn cli schedule-all-deploy-sets --repo goldstack-dev --deployment dev",
     "compile": "tsc -p tsconfig.json",
     "compile:watch": "tsc -p tsconfig.json --watch",
