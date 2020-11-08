@@ -54,6 +54,7 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
       '.gitignore',
       '.nodemonx.json',
       'jest.config.js',
+      'README.md',
       'jest.config.ui.js',
       'package.json',
       'tsconfig.base.json',
