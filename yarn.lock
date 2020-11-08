@@ -18065,6 +18065,7 @@ fsevents@^1.2.7:
   dependencies:
     "@ampproject/toolbox-optimizer": ^2.5.14
     "@goldstack/nodemonx": 0.3.2
+    "@goldstack/utils-docs-cli": 0.3.6
     "@goldstack/utils-package-upgrade": 0.2.1
     "@typescript-eslint/eslint-plugin": ^2.30.0
     "@typescript-eslint/parser": ^2.30.0

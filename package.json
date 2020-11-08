@@ -20,6 +20,7 @@
     "format": "prettier --loglevel log --config .prettierrc.json --write .",
     "format:check": "prettier --loglevel log --config .prettierrc.json --check .",
     "generate:docs": "yarn workspace templates-lib generate:docs && yarn workspace docs generate:docs && yarn workspace apps generate:docs",
+    "generate:docs:markdown": "utils-docs-cli generate-markdown-doc workspaces/docs/docs/modules/yarn-pnp-monorepo/index.md workspaces/templates/README.md",
     "generate:schema": "yarn workspace templates-lib generate:schema && yarn workspace templates-management generate:schema && yarn workspace apps generate:schema",
     "git:fix-detached": "git submodule foreach --recursive git checkout -b mrgtmpfix && git submodule foreach --recursive git checkout master && git submodule foreach --recursive git merge mrgtmpfix && git submodule foreach --recursive git branch -d mrgtmpfix",
     "git:set-user": "git config user.email \"$@\" && git submodule foreach --recursive git config user.email \"$@\"",
@@ -40,6 +41,7 @@
   },
   "devDependencies": {
     "@goldstack/nodemonx": "0.3.2",
+    "@goldstack/utils-docs-cli": "0.3.6",
     "@goldstack/utils-package-upgrade": "0.2.1",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
