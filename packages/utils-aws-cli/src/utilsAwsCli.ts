@@ -47,7 +47,7 @@ export const execWithDocker = (params: AWSExecParams): string => {
   return exec(
     'docker run --rm ' +
       awsUserConfig +
-      `-v ${mountDir}:/app ` +
+      `-v "${mountDir}":/app ` +
       ` ${imageGoldstackBuild()} aws ${params.command}`,
     params.options
   );
