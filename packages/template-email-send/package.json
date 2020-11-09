@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-email-send",
-  "version": "0.3.32",
+  "version": "0.3.33",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -38,8 +38,8 @@
     "@goldstack/utils-package-config": "0.3.3",
     "@goldstack/utils-sh": "0.4.2",
     "@goldstack/utils-template": "0.3.2",
-    "@goldstack/utils-terraform": "0.3.6",
-    "@goldstack/utils-terraform-aws": "0.3.6",
+    "@goldstack/utils-terraform": "0.3.7",
+    "@goldstack/utils-terraform-aws": "0.3.7",
     "aws-sdk": "2.721.0",
     "uuid": "^8.3.0",
     "yargs": "^15.4.1"

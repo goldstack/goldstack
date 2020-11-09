@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-docker-image-aws",
-  "version": "0.3.12",
+  "version": "0.3.13",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -27,7 +27,7 @@
   "dependencies": {
     "@goldstack/infra": "0.3.3",
     "@goldstack/infra-aws": "0.3.4",
-    "@goldstack/utils-aws-cli": "0.3.4",
+    "@goldstack/utils-aws-cli": "0.3.5",
     "@goldstack/utils-cli": "0.2.0",
     "@goldstack/utils-config": "0.3.2",
     "@goldstack/utils-docker": "0.3.2",
@@ -35,11 +35,11 @@
     "@goldstack/utils-log": "0.2.0",
     "@goldstack/utils-package": "0.3.3",
     "@goldstack/utils-package-config": "0.3.3",
-    "@goldstack/utils-s3-deployment": "0.3.4",
+    "@goldstack/utils-s3-deployment": "0.3.5",
     "@goldstack/utils-sh": "0.4.2",
     "@goldstack/utils-template": "0.3.2",
-    "@goldstack/utils-terraform": "0.3.6",
-    "@goldstack/utils-terraform-aws": "0.3.6",
+    "@goldstack/utils-terraform": "0.3.7",
+    "@goldstack/utils-terraform-aws": "0.3.7",
     "aws-sdk": "2.721.0",
     "yargs": "^15.4.1"
   },

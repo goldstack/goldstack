@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package-upgrade",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Utilities for upgrading packages.",
   "license": "MIT",
   "author": "Max Rohde",
@@ -22,7 +22,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-yarn": "0.3.2",
+    "@goldstack/utils-yarn": "0.3.3",
     "fast-glob": "^3.2.4"
   },
   "devDependencies": {
