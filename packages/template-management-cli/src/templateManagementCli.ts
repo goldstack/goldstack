@@ -190,6 +190,8 @@ export const run = async (): Promise<void> => {
                   Charset: 'UTF-8',
                   Data:
                     'Goldstack Deploy Set ' +
+                    config.buildSetName +
+                    ' ' +
                     (res.testFailed && !argv.skipTests
                       ? 'FAILED TESTS'
                       : res.deployed
@@ -200,7 +202,7 @@ export const run = async (): Promise<void> => {
                   Text: {
                     Charset: 'UTF-8',
                     Data:
-                      'Test Results:\n' + res.testResults ||
+                      'Test Results:\n' + res.testResultsText ||
                       'No results available',
                   },
                 },
