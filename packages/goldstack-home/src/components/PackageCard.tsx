@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Plus from './../icons/font-awesome/solid/plus.svg';
 import Check from './../icons/font-awesome/solid/check.svg';
 
-import styled from 'styled-components';
-
 import { dataUriToSrc } from './../utils/utils';
+
+import styles from './PackageCard.module.css';
 
 interface PackageCardProps {
   packageName: string;
@@ -17,102 +17,6 @@ interface PackageCardProps {
   alwaysIncluded?: boolean;
 }
 
-const FontIcon = styled.span`
-  svg {
-    height: 0.875rem;
-    vertical-align: text-top;
-    margin-top: 0.25rem;
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
-    stroke-width: 25;
-  }
-`;
-const IncludedPackageCardStyle = styled.div`
-  border: none;
-  p {
-    margin-bottom: 0;
-  }
-  .avatar-img {
-    margin-bottom: 0.25rem;
-  }
-`;
-const OptionalPackageCardStyle = styled.div`
-  border: 0.0625rem solid #e7eaf3 !important;
-  p {
-    margin-bottom: 0;
-  }
-  .avatar-img {
-    margin-bottom: 0.25rem;
-  }
-`;
-
-const FeatureList = styled.span`
-  ul {
-    padding-left: 1rem;
-    margin-bottom: 0;
-  }
-
-  li {
-    list-style-type: none;
-    padding-left: 1rem;
-  }
-
-  li:before {
-    content: '✔';
-    margin: 0 10px 0 -1.6em;
-    color: #00c9a7;
-  }
-`;
-
-const IncludeFooter = styled.div`
-  background-color: #377dff;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-
-  &:hover {
-    background-color: #0069d9;
-  }
-
-  svg {
-    fill: white;
-    stroke: white;
-  }
-`;
-
-const IncludedFooter = styled.div`
-  color: #fff;
-  background-color: #00c9a7;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-
-  &:hover {
-    background-color: #03af92;
-    color: #fff;
-  }
-
-  svg {
-    fill: #fff;
-    stroke: #fff;
-  }
-`;
-
-const AlwaysIncludedFooter = styled.div`
-  color: #71869d;
-  background-color: rgba(113, 134, 157, 0.1);
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-
-  &:hover {
-    background-color: rgba(113, 134, 157, 0.1);
-    color: #71869d;
-  }
-
-  svg {
-    fill: #71869d;
-    stroke: #71869d;
-  }
-`;
-
 const PackageCard = (props: PackageCardProps): JSX.Element => {
   // const [included, setIncluded] = useState(props.selected);
   const included = props.selected;
@@ -121,13 +25,13 @@ const PackageCard = (props: PackageCardProps): JSX.Element => {
       props.onChange(!included);
     }
   };
-  const CardStyle = props.alwaysIncluded
-    ? IncludedPackageCardStyle
-    : OptionalPackageCardStyle;
+  const cardCss = props.alwaysIncluded
+    ? styles['package-card-included']
+    : styles['package-card-optional'];
   const plusSvg = dataUriToSrc(Plus);
   const checkSvg = dataUriToSrc(Check);
   return (
-    <CardStyle className="card card-frame h-100">
+    <div className={`card card-frame h-100 ${cardCss}`}>
       <div className="card-body">
         <div className="media">
           <div className="avatar avatar-xs mt-1 mr-3">
@@ -143,37 +47,48 @@ const PackageCard = (props: PackageCardProps): JSX.Element => {
                 {props.packageName}
               </span>
             </div>
-            <FeatureList className="d-block text-body">
+            <span className={`d-block text-body ${styles['feature-list']}`}>
               {props.children}
-            </FeatureList>
+            </span>
           </div>
         </div>
       </div>
       {!included && !props.alwaysIncluded && (
-        <IncludeFooter
-          className="card-footer btn btn-primary btn-sm"
+        <div
+          className={`card-footer btn btn-primary btn-sm ${styles['include-footer']}`}
           onClick={toggleIncluded}
         >
-          <FontIcon dangerouslySetInnerHTML={{ __html: plusSvg }}></FontIcon>
+          <span
+            className={styles['icon']}
+            dangerouslySetInnerHTML={{ __html: plusSvg }}
+          ></span>
           Add to Project
-        </IncludeFooter>
+        </div>
       )}
       {included && !props.alwaysIncluded && (
-        <IncludedFooter
-          className="card-footer btn btn-success btn-sm"
+        <div
+          className={`card-footer btn btn-success btn-sm ${styles['included-footer']}`}
           onClick={toggleIncluded}
         >
-          <FontIcon dangerouslySetInnerHTML={{ __html: checkSvg }}></FontIcon>
+          <span
+            className={styles['icon']}
+            dangerouslySetInnerHTML={{ __html: checkSvg }}
+          ></span>
           Included in Project
-        </IncludedFooter>
+        </div>
       )}
       {props.alwaysIncluded && false && (
-        <AlwaysIncludedFooter className="card-footer text-center btn-sm">
-          <FontIcon dangerouslySetInnerHTML={{ __html: checkSvg }}></FontIcon>
+        <div
+          className={`card-footer text-center btn-sm ${styles['always-included-footer']}`}
+        >
+          <span
+            className={styles['icon']}
+            dangerouslySetInnerHTML={{ __html: checkSvg }}
+          ></span>
           Included in Project
-        </AlwaysIncludedFooter>
+        </div>
       )}
-    </CardStyle>
+    </div>
   );
 };
 

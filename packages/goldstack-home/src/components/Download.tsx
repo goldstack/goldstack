@@ -63,7 +63,7 @@ const DownloadReady = (props: { downloadUrl: string }): JSX.Element => {
               className="btn btn-primary btn-pill transition-3d-hover px-5"
               href="/build"
             >
-              Create another template
+              Create another project
             </a>
           </div>
         </div>

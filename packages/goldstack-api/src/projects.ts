@@ -71,8 +71,8 @@ export const postProjectHandler = async (
           name: 'awsUser',
           type: 'apiKey',
           config: {
-            awsAccessKeyId: 'key',
-            awsSecretAccessKey: 'secret',
+            awsAccessKeyId: '',
+            awsSecretAccessKey: '',
             awsDefaultRegion: 'us-east-2',
           },
         },

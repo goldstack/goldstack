@@ -12,10 +12,6 @@
           "$ref": "#/definitions/AWSSecretAccessKey"
         }
       },
-      "required": [
-        "awsAccessKeyId",
-        "awsSecretAccessKey"
-      ],
       "additionalProperties": false
     },
     "AWSAccessKeyId": {

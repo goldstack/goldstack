@@ -7,7 +7,6 @@
     "incremental": false,
     "declarationMap": false,
     "outDir": "dist",
-    "isolatedModules": false,
     "baseUrl": "."
   }
 }

@@ -17,7 +17,7 @@
     "generate:docs": "yarn generate:docs:project && yarn generate:docs:awsUser",
     "generate:docs:awsUser": "utils-docs-cli generate-doc --json goldstack/configuration/aws-user.md > ./src/docs/aws-user.json",
     "generate:docs:project": "utils-docs-cli generate-doc --json goldstack/configuration/project.md > ./src/docs/project.json",
-    "generate:schema": "yarn ts-node -p tsconfig.generate.json src/lib/types/generateSchemas.ts",
+    "generate:schema": "yarn node dist/lib/types/generateSchemas.js",
     "infra": "template-nextjs infra",
     "next:tracking:disable": "next telemetry disable",
     "next:watch": "next",

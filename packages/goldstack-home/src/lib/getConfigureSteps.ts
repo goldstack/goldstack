@@ -170,8 +170,8 @@ export const getConfigureSteps = (
             const awsUserConfig = projectData.awsUsers[0]
               .config as AWSAPIKeyUserConfig;
             return {
-              awsAccessKeyId: awsUserConfig.awsAccessKeyId,
-              awsSecretAccessKey: awsUserConfig.awsSecretAccessKey,
+              awsAccessKeyId: awsUserConfig.awsAccessKeyId || '',
+              awsSecretAccessKey: awsUserConfig.awsSecretAccessKey || '',
             };
           },
           writeData: (projectData: ProjectData, newData: any): ProjectData => {
@@ -180,8 +180,8 @@ export const getConfigureSteps = (
             );
             const awsUserConfig = newProjectData.awsUsers[0]
               .config as AWSAPIKeyUserConfig;
-            awsUserConfig.awsAccessKeyId = newData.awsAccessKeyId;
-            awsUserConfig.awsSecretAccessKey = newData.awsSecretAccessKey;
+            awsUserConfig.awsAccessKeyId = newData.awsAccessKeyId || '';
+            awsUserConfig.awsSecretAccessKey = newData.awsSecretAccessKey || '';
 
             return { ...newProjectData };
           },

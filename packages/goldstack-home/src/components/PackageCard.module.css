@@ -1,0 +1,86 @@
+.icon svg {
+    height: 0.875rem;
+    vertical-align: text-top;
+    margin-top: 0.25rem;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    stroke-width: 25;
+}
+
+.package-card-included {
+ border: none;
+}
+.package-card-included p {
+    margin-bottom: 0;
+  }
+.package-card-included.avatar-img {
+    margin-bottom: 0.25rem;
+}
+
+.package-card-optional {
+  border: 0.0625rem solid #e7eaf3 !important;
+}
+.package-card-optional p {
+    margin-bottom: 0;
+}
+.package-card-optional.avatar-img {
+    margin-bottom: 0.25rem;
+}
+
+
+.feature-list  ul {
+    padding-left: 1rem;
+    margin-bottom: 0;
+}
+.feature-list li {
+    list-style-type: none;
+    padding-left: 1rem;
+}
+.feature-list li:before {
+    content: '✔';
+    margin: 0 10px 0 -1.6em;
+    color: #00c9a7;
+}
+
+.include-footer {
+  background-color: #377dff;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.include-footer:hover {
+    background-color: #0069d9;
+}
+.include-footer svg {
+    fill: white;
+    stroke: white;
+}
+
+.included-footer {
+  color: #fff;
+  background-color: #00c9a7;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.included-footer:hover {
+    background-color: #03af92;
+    color: #fff;
+}
+.included-footer svg {
+    fill: #fff;
+    stroke: #fff;
+}
+
+.always-included-footer {
+  color: #71869d;
+  background-color: rgba(113, 134, 157, 0.1);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.always-included-footer:hover {
+    background-color: rgba(113, 134, 157, 0.1);
+    color: #71869d;
+}
+.always-included-footer svg {
+    fill: #71869d;
+    stroke: #71869d;
+}
