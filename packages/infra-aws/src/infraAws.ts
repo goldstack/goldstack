@@ -134,9 +134,14 @@ export const getAWSUser = async (
 
   if (user.type === 'apiKey') {
     const config = user.config as AWSAPIKeyUserConfig;
+    if (!config.awsAccessKeyId || !config.awsSecretAccessKey) {
+      throw new Error(
+        `AWS Access credentials not defined for user ${userName}. Define them in infra/aws/config.json.`
+      );
+    }
     const credentials = new AWS.Credentials({
-      accessKeyId: config.awsAccessKeyId,
-      secretAccessKey: config.awsSecretAccessKey,
+      accessKeyId: config.awsAccessKeyId || '',
+      secretAccessKey: config.awsSecretAccessKey || '',
     });
     AWS.config.credentials = credentials;
     AWS.config.update({ region: config.awsDefaultRegion });
