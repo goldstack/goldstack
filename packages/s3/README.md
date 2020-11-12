@@ -73,11 +73,11 @@ After downloading your starter project, there will be one deployment defined. Th
 
 Infrastructure commands for this module can be run using `yarn`. There are four commands in total:
 
-*   `yarn infra up`: For standing up infrastructure.
-*   `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
-*   `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
-*   `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
-*   `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+- `yarn infra up`: For standing up infrastructure.
+- `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
+- `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
+- `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
+- `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
 
 For each command, the deployment they should be applied to must be specified.
 
