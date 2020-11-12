@@ -37,6 +37,7 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
       '.yarnrc.yml',
       '.nvmrc',
       '.vscode/',
+      'yarn.lock',
     ].map((name) => params.monorepoRoot + name);
     mkdir('-p', params.destinationDirectory);
     cp('-rf', copyFilesFromRoot, params.destinationDirectory);
