@@ -116,14 +116,16 @@ export const getVariablesFromHCL = (properties: object): Variables => {
       if (variableValue !== '') {
         vars.push([variableName, variableValue]);
       } else {
-        console.log(
-          'Setting terraform variable from environment variable',
-          variableName.toLocaleUpperCase()
-        );
-        vars.push([
-          variableName,
-          process.env[variableName.toLocaleUpperCase()] || '',
-        ]);
+        const environmentVarialbeName = variableName.toLocaleUpperCase();
+        if (
+          process.env[environmentVarialbeName] ||
+          process.env[environmentVarialbeName] === ''
+        ) {
+          console.log('Setting terraform variable from environment variable');
+          vars.push([variableName, process.env[environmentVarialbeName] || '']);
+        } else {
+          console.log('Terraform variable will not be defined', variableName);
+        }
       }
     }
   }

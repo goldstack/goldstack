@@ -96,8 +96,8 @@ export interface AWSEnvironmentVariableUserConfig {
  * @title AWS API Key User Configuration
  */
 export interface AWSAPIKeyUserConfig {
-  awsAccessKeyId: AWSAccessKeyId;
-  awsSecretAccessKey: AWSSecretAccessKey;
+  awsAccessKeyId?: AWSAccessKeyId;
+  awsSecretAccessKey?: AWSSecretAccessKey;
   awsDefaultRegion: AWSRegion;
 }
 

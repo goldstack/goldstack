@@ -17,8 +17,6 @@
         }
       },
       "required": [
-        "awsAccessKeyId",
-        "awsSecretAccessKey",
         "awsDefaultRegion"
       ],
       "title": "AWS API Key User Configuration",
