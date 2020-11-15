@@ -1,0 +1,30 @@
+.angle-right svg {
+  height: 1rem;
+  vertical-align: text-top;
+  margin-top: 0.25rem;
+  margin-bottom: 0rem;
+  margin-left: 0.5rem;
+  fill: #377dff; 
+}
+
+.plus-icon svg {
+  height: 0.875rem;
+  vertical-align: text-top;
+  margin-top: 0.25rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  stroke-width: 25;
+  fill: white;
+}
+
+.icon {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.icon svg {
+  /* height: 3rem; */
+  vertical-align: text-top;
+  fill: #bdc5d1 !important;
+  filter: grayscale() opacity(0.5);
+}
