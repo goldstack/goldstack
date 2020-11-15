@@ -4,10 +4,15 @@ import DesktopComputerImg from 'src/img/desktop_computer.jpg';
 import TabletImg from 'src/img/tablet.jpg';
 import MeetingImg from 'src/img/meeting.jpg';
 
+export interface LandingAction {
+  title: string;
+  link: string;
+}
+
 export interface TextSectionProps {
   title: string;
-  children: React.ReactNode;
-  action?: { title: string; link: string };
+  content: string;
+  action?: LandingAction;
 }
 
 const TextSection = (props: TextSectionProps): JSX.Element => {
@@ -19,8 +24,7 @@ const TextSection = (props: TextSectionProps): JSX.Element => {
             <div className="mb-3">
               <h2 className="h1">{props.title}</h2>
             </div>
-
-            {props.children}
+            <div dangerouslySetInnerHTML={{ __html: props.content }}></div>
 
             {props.action && (
               <div className="mt-4">

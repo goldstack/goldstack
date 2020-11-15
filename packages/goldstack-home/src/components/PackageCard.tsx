@@ -6,6 +6,7 @@ import Check from './../icons/font-awesome/solid/check.svg';
 import { dataUriToSrc } from './../utils/utils';
 
 import styles from './PackageCard.module.css';
+import { PackageFeatureData } from './PackageList';
 
 interface PackageCardProps {
   packageName: string;
@@ -13,12 +14,12 @@ interface PackageCardProps {
   icons: any[];
   selected: boolean;
   onChange?(included: boolean): void;
-  children: React.ReactNode;
+  packageDescription: React.ReactNode;
+  features: PackageFeatureData[];
   alwaysIncluded?: boolean;
 }
 
 const PackageCard = (props: PackageCardProps): JSX.Element => {
-  // const [included, setIncluded] = useState(props.selected);
   const included = props.selected;
   const toggleIncluded = (): void => {
     if (props.onChange) {
@@ -47,8 +48,15 @@ const PackageCard = (props: PackageCardProps): JSX.Element => {
                 {props.packageName}
               </span>
             </div>
-            <span className={`d-block text-body ${styles['feature-list']}`}>
-              {props.children}
+            <span className={'d-block text-body'}>
+              <div className={styles['package-description']}>
+                {props.packageDescription}
+              </div>
+              <ul className={styles['feature-list']}>
+                {props.features.map((feature, index) => (
+                  <li key={index}>{feature.name}</li>
+                ))}
+              </ul>
             </span>
           </div>
         </div>

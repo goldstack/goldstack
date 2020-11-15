@@ -39,6 +39,10 @@
       "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/purchase-template$"
     },
     {
+      "page": "/templates/nextjs",
+      "regex": "^\\/templates\\/nextjs$"
+    },
+    {
       "page": "/terms-and-conditions",
       "regex": "^\\/terms-and-conditions$"
     },
@@ -77,6 +81,24 @@
         "id",
         "packageId"
       ]
+    },
+    {
+      "page": "/templates/[template]",
+      "regex": "^\\/templates\\/([^/]+?)(?:\\/)?$",
+      "namedRegex": "^/templates/(?<template>[^/]+?)(?:/)?$",
+      "routeKeys": [
+        "template"
+      ]
+    }
+  ],
+  "dataRoutes": [
+    {
+      "page": "/templates/[template]",
+      "routeKeys": [
+        "template"
+      ],
+      "dataRouteRegex": "^\\/_next\\/data\\/YlYILWaMb3NEgpPhuZk0P\\/templates\\/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/YlYILWaMb3NEgpPhuZk0P/templates/(?<template>[^/]+?)\\.json$"
     }
   ]
 }

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import PackageFeature, { PackageFeatureData } from './PackageFeature';
 import PackageCard from './PackageCard';
-import styled from 'styled-components';
-
+export interface PackageFeatureData {
+  name: string;
+}
 export interface PackageListItem {
   alwaysIncluded?: boolean;
   packageName: string;
@@ -21,27 +21,6 @@ interface PackageListProps {
   onDeselect(packageId: string): void;
 }
 
-const PackageDescription = styled.div`
-  ul {
-    padding-left: 1rem;
-  }
-
-  li {
-    list-style-type: none;
-    padding-left: 1rem;
-  }
-
-  li:before {
-    content: '✔';
-    margin: 0 10px 0 -1.6em;
-    color: #17aa1c;
-  }
-`;
-
-const FeatureList = styled.ul`
-  margin-top: 0.25rem;
-`;
-
 const PackageList = (props: PackageListProps): JSX.Element => {
   const selectedIds = props.selectedPackages;
 
@@ -53,6 +32,8 @@ const PackageList = (props: PackageListProps): JSX.Element => {
             <div key={index} className="col-sm-6 col-md-4 px-2 mb-3">
               <PackageCard
                 packageName={item.packageName}
+                features={item.features}
+                packageDescription={item.packageDescription}
                 icons={item.icons}
                 selected={
                   selectedIds &&
@@ -66,16 +47,7 @@ const PackageList = (props: PackageListProps): JSX.Element => {
                     props.onDeselect(item.packageId || 'wrong package id');
                   }
                 }}
-              >
-                <PackageDescription>
-                  {item.packageDescription}
-                </PackageDescription>
-                <FeatureList>
-                  {item.features.map((feature, index) => {
-                    return <PackageFeature key={index} {...feature} />;
-                  })}
-                </FeatureList>
-              </PackageCard>
+              ></PackageCard>
             </div>
           );
         }

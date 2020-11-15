@@ -3,6 +3,7 @@ import TemplateFeature, { TemplateFeatureProps } from './TemplateFeature';
 
 import Head from 'next/head';
 import TextSection, { TextSectionProps } from './TextSection';
+import TemplateCallToAction from './TemplateCallToAction';
 
 export interface TemplateProps {
   title: string;
@@ -20,6 +21,9 @@ const Template = (props: TemplateProps): JSX.Element => {
       {props.features.map((feature, idx) => {
         return <TemplateFeature {...feature} key={idx}></TemplateFeature>;
       })}
+      {props.hero.action && (
+        <TemplateCallToAction action={props.hero.action}></TemplateCallToAction>
+      )}
     </>
   );
 };

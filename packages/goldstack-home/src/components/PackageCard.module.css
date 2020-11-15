@@ -27,7 +27,25 @@
   margin-bottom: 0.25rem;
 }
 
-.feature-list ul {
+.package-description ul {
+    padding-left: 1rem;
+}
+
+.package-description li {
+    list-style-type: none;
+    padding-left: 1rem;
+}
+
+.package-description li:before {
+    content: '✔';
+    margin: 0 10px 0 -1.6em;
+    color: #17aa1c;
+}
+
+
+
+.feature-list {
+  margin-top: 0.25rem;
   padding-left: 1rem;
   margin-bottom: 0;
 }
