@@ -13,6 +13,7 @@ interface PackageCardProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icons: any[];
   selected: boolean;
+  disabled?: boolean;
   onChange?(included: boolean): void;
   packageDescription: React.ReactNode;
   features: PackageFeatureData[];
@@ -22,6 +23,9 @@ interface PackageCardProps {
 const PackageCard = (props: PackageCardProps): JSX.Element => {
   const included = props.selected;
   const toggleIncluded = (): void => {
+    if (props.disabled) {
+      return;
+    }
     if (props.onChange) {
       props.onChange(!included);
     }
@@ -63,7 +67,9 @@ const PackageCard = (props: PackageCardProps): JSX.Element => {
       </div>
       {!included && !props.alwaysIncluded && (
         <div
-          className={`card-footer btn btn-primary btn-sm ${styles['include-footer']}`}
+          className={`card-footer btn btn-primary btn-sm ${
+            styles['include-footer']
+          } ${props.disabled ? 'disabled' : ''}`}
           onClick={toggleIncluded}
         >
           <span

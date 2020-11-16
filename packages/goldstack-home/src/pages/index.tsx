@@ -27,6 +27,7 @@ import BuildProject from './../components/BuildProject';
 import Foundation from './../components/Foundation';
 
 import { getPackageIds } from './../lib/stackParamUtils';
+import Footer from 'src/components/Footer';
 
 interface HeadingProps {
   caption: string;
@@ -250,6 +251,7 @@ const Front = (): JSX.Element => {
             <BuildProject selectedIds={getPackageIds(elements)}></BuildProject>
           </Container>
         </Container>
+        <Footer></Footer>
       </main>
     </>
   );

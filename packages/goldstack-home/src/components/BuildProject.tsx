@@ -18,6 +18,8 @@ import { event } from './../lib/ga';
 
 import { getTemplateData } from 'src/lib/templateData';
 
+import NoModulesAddedModal from './NoModulesAddedModal';
+
 import styles from './BuildProject.module.css';
 
 const ConfigureProjectButton = styled.button`
@@ -33,6 +35,7 @@ interface BuildProjectParams {
 export const BuildProject = (params: BuildProjectParams): JSX.Element => {
   let packages = getTemplateData(params.selectedIds);
   const [selectedPackages, setSelectedPackages] = useState<string[]>([]);
+  const [showWarningModal, setShowWarningModal] = useState<boolean>(false);
   useEffect(() => {
     const initSelected: string[] = [];
     packages = getTemplateData(params.selectedIds);
@@ -46,7 +49,14 @@ export const BuildProject = (params: BuildProjectParams): JSX.Element => {
   const [progressMessage, setProgressMessage] = useState('');
   const router = useRouter();
 
-  const clickConfigure = async (): Promise<void> => {
+  const doConfigure = async (overrideWarning: boolean): Promise<void> => {
+    if (!overrideWarning) {
+      // show a warning modal if user has not selected any packages
+      if (selectedPackages.length === 0) {
+        setShowWarningModal(true);
+        return;
+      }
+    }
     event({
       action: 'start_configuration',
       category: 'projects',
@@ -78,12 +88,22 @@ export const BuildProject = (params: BuildProjectParams): JSX.Element => {
     router.push(`/projects/${projectId}/configure/1`);
   };
 
+  const clickConfigure = async (): Promise<void> => {
+    doConfigure(false);
+  };
+
+  const proceedAfterWarning = async (): Promise<void> => {
+    setShowWarningModal(false);
+    doConfigure(true);
+  };
+
   return (
     <>
       <Row>
         <PackageList
           selectedPackages={selectedPackages}
           items={packages}
+          disabled={progressMessage !== ''}
           onDeselect={(packageId): void => {
             setSelectedPackages(
               selectedPackages.filter((el) => el !== packageId)
@@ -121,6 +141,13 @@ export const BuildProject = (params: BuildProjectParams): JSX.Element => {
           <Progress progressMessage={progressMessage}></Progress>
         </Col>
       </Row>
+      <NoModulesAddedModal
+        handleProceed={proceedAfterWarning}
+        show={showWarningModal}
+        handleAddModules={(): void => {
+          setShowWarningModal(false);
+        }}
+      ></NoModulesAddedModal>
     </>
   );
 };

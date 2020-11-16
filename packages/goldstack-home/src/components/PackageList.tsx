@@ -17,6 +17,7 @@ export interface PackageListItem {
 interface PackageListProps {
   items: PackageListItem[];
   selectedPackages: string[];
+  disabled?: boolean;
   onSelect(packageId: string): void;
   onDeselect(packageId: string): void;
 }
@@ -35,6 +36,7 @@ const PackageList = (props: PackageListProps): JSX.Element => {
                 features={item.features}
                 packageDescription={item.packageDescription}
                 icons={item.icons}
+                disabled={props.disabled}
                 selected={
                   selectedIds &&
                   selectedIds.includes(item.packageId || 'undefined')

@@ -11,14 +11,15 @@ import TemplateComponent, {
 import TerraformIcon from 'src/icons/terraform.svg';
 
 import ESLintIcon from 'src/icons/eslint.svg';
+import Footer from 'src/components/Footer';
 
 const Template = (props: TemplateProps): JSX.Element => {
   const template = props;
-  console.log(template);
   return (
     <>
       <Header></Header>
       {template && <TemplateComponent {...template}></TemplateComponent>}
+      <Footer></Footer>
     </>
   );
 };
@@ -28,6 +29,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: [
       {
         params: { template: 'nextjs' },
+      },
+      {
+        params: { template: 'nextjs-bootstrap' },
       },
     ],
     fallback: false, // Show 404 for pages that are not prerendered
@@ -148,6 +152,43 @@ export const getStaticProps: GetStaticProps = async (context) => {
     ],
   };
 
+  const nextJsBootstrapTemplate: TemplateProps = {
+    title: 'Next.js + Bootstrap Template',
+    hero: {
+      title: 'Next.js and Bootstrap Template',
+      content: `
+          <p>
+            Our Next.js + Bootstrap golden template allows building optimized React applications
+            with the Bootstrap CSS framework.
+         </p>
+          <p>
+            Scroll down to learn more about what&apos;s included in this
+            template.
+          </p>
+        `,
+      action: {
+        title: '✔ Start Building Your Project Now',
+        link: '/build?stack=bootstrap',
+      },
+    },
+    features: [
+      {
+        title: 'Bootstrap Styling for React Components',
+        description:
+          'Style your components in the Next.js application with Bootstrap and give your application a professional look and feel.',
+        content: {
+          type: 'bootstrap',
+          data: {},
+        },
+        moreDetails: {
+          description:
+            'This also works with Bootstrap templates. Just replace the Bootstrap CSS files included in this template.',
+        },
+      },
+      ...nextJsTemplate.features,
+    ],
+  };
+
   if (!context.params) {
     throw new Error('Cannot render template without path.');
   }
@@ -157,6 +198,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let template: TemplateProps | undefined;
   if (templateId === 'nextjs') {
     template = nextJsTemplate;
+  }
+  if (templateId == 'nextjs-bootstrap') {
+    template = nextJsBootstrapTemplate;
   }
 
   return {

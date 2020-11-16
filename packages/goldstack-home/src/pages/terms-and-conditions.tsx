@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Header from 'src/components/Header';
 
 import AbstractShapes from '../styles/front-3.2.1/assets/svg/components/abstract-shapes-12.svg';
+import Footer from 'src/components/Footer';
 
 const Hero = (): JSX.Element => {
   return (
@@ -298,6 +299,7 @@ const TermsAndConditions = (): JSX.Element => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };

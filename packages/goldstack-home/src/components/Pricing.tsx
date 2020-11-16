@@ -20,6 +20,7 @@ interface PricingProps {
 import styles from './Pricing.module.css';
 import Head from 'next/head';
 import { dataUriToSrc } from 'src/utils/utils';
+import Footer from './Footer';
 
 const Pricing = (props: PricingProps): JSX.Element => {
   const angleRight = dataUriToSrc(AngleRight);
@@ -117,6 +118,7 @@ const Pricing = (props: PricingProps): JSX.Element => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };

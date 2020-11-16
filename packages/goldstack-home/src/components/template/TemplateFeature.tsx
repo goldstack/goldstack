@@ -12,6 +12,7 @@ import FeatureCombineTemplates from 'src/components/template/FeatureCombineTempl
 
 import NextJsConfigGif from 'src/img/nextjs-config.gif';
 import ReactTypeScriptGif from 'src/img/react-typescript.gif';
+import FeatureBootstrap from './FeatureBootstrap';
 export interface CallToAction {
   title: string;
   link: string;
@@ -111,6 +112,10 @@ const TemplateFeature = (props: TemplateFeatureProps): JSX.Element => {
     }
     case 'project-install': {
       content = <FeatureProjectInstall></FeatureProjectInstall>;
+      break;
+    }
+    case 'bootstrap': {
+      content = <FeatureBootstrap></FeatureBootstrap>;
       break;
     }
     default: {

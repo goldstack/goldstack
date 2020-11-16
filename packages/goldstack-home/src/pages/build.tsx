@@ -23,6 +23,7 @@ import Header from './../components/Header';
 import BuildProject from './../components/BuildProject';
 
 import { getPackageIds } from './../lib/stackParamUtils';
+import Footer from 'src/components/Footer';
 interface HeadingProps {
   caption: string;
   learnMoreLink: string;
@@ -131,6 +132,7 @@ const Front = (): JSX.Element => {
           </Row>
         </Container>
       </main>
+      <Footer></Footer>
     </>
   );
 };

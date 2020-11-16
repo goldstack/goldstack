@@ -39,6 +39,10 @@
       "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/purchase-template$"
     },
     {
+      "page": "/templates/nextjs-bootstrap",
+      "regex": "^\\/templates\\/nextjs-bootstrap$"
+    },
+    {
       "page": "/templates/nextjs",
       "regex": "^\\/templates\\/nextjs$"
     },
@@ -97,8 +101,8 @@
       "routeKeys": [
         "template"
       ],
-      "dataRouteRegex": "^\\/_next\\/data\\/YlYILWaMb3NEgpPhuZk0P\\/templates\\/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/YlYILWaMb3NEgpPhuZk0P/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^\\/_next\\/data\\/CldspF2z3ElX1rAhOUPy\\-\\/templates\\/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/CldspF2z3ElX1rAhOUPy\\-/templates/(?<template>[^/]+?)\\.json$"
     }
   ]
 }
