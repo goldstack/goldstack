@@ -22,14 +22,12 @@ import Head from 'next/head';
 import Header from './../components/Header';
 
 import PackageList from './../components/PackageList';
-import BuildProject from './../components/BuildProject';
 
 import Foundation from './../components/Foundation';
 import GoldstackProcess from './../components/GoldstackProcess';
 import GoldstackBenefits from './../components/GoldstackBenefits';
 
-import { getPackageIds } from './../lib/stackParamUtils';
-import Footer from 'src/components/Footer';
+import Footer from './../components/Footer';
 import TemplateCallToAction from 'src/components/template/TemplateCallToAction';
 
 interface HeadingProps {
