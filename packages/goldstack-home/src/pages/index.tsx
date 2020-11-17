@@ -28,7 +28,7 @@ import GoldstackProcess from './../components/GoldstackProcess';
 import GoldstackBenefits from './../components/GoldstackBenefits';
 
 import Footer from './../components/Footer';
-import TemplateCallToAction from 'src/components/template/TemplateCallToAction';
+import TemplateCallToAction from './../components/template/TemplateCallToAction';
 
 interface HeadingProps {
   caption: string;
