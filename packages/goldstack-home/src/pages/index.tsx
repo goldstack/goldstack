@@ -25,9 +25,12 @@ import PackageList from './../components/PackageList';
 import BuildProject from './../components/BuildProject';
 
 import Foundation from './../components/Foundation';
+import GoldstackProcess from './../components/GoldstackProcess';
+import GoldstackBenefits from './../components/GoldstackBenefits';
 
 import { getPackageIds } from './../lib/stackParamUtils';
 import Footer from 'src/components/Footer';
+import TemplateCallToAction from 'src/components/template/TemplateCallToAction';
 
 interface HeadingProps {
   caption: string;
@@ -54,6 +57,12 @@ const Front = (): JSX.Element => {
                   Save tons of time by starting with a premium starter project
                   assembled by Goldstack.
                 </p>
+                <a
+                  className="btn btn-primary btn-wide transition-3d-hover"
+                  href="/build"
+                >
+                  ✔ Start Building Your Project Now
+                </a>
               </div>
             </div>
 
@@ -66,10 +75,10 @@ const Front = (): JSX.Element => {
             </div>
           </Row>
         </Container>
-        <Container hidden>
-          <div className="container space-2 space-lg-3">
+        <Container>
+          <div className="container space-3 space-lg-3">
             <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
-              <h2>What is this?</h2>
+              <h2>About</h2>
             </div>
 
             <div className="w-md-75 mx-md-auto">
@@ -94,11 +103,11 @@ const Front = (): JSX.Element => {
           </div>
         </Container>
 
-        <Container className="space-bottom-2 space-bottom-lg-2 space-top-3">
+        <Container className="space-top-1 space-bottom-3 space-bottom-lg-3">
           <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
-            <h2>Solid foundations for every project</h2>
+            <h2>Solid Foundations for Every Project</h2>
           </div>
-          <Row>
+          <Row hidden>
             <Col xs={4}>
               <Foundation
                 heading="Made for Joyful Development"
@@ -169,7 +178,7 @@ const Front = (): JSX.Element => {
               ></Foundation>
             </Col>
           </Row>
-          <Row hidden>
+          <Row>
             <PackageList
               onSelect={(): void => {
                 // do nothing
@@ -208,7 +217,10 @@ const Front = (): JSX.Element => {
                         <li>
                           Terraform configuration, easy to adapt and extend
                         </li>
-                        <li>Scalable, low-cost serverless resources</li>
+                        <li>
+                          Scalable, low-cost serverless resources on the AWS
+                          cloud
+                        </li>
                         <li>Docker-based builds</li>
                       </ul>
                     </>
@@ -240,17 +252,24 @@ const Front = (): JSX.Element => {
             ></PackageList>
           </Row>
         </Container>
-        <Container fluid className="bg-light overflow-hidden">
-          <Container>
-            <div
-              className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-9 space-top-3"
-              id="build"
-            >
-              <h2>Choose the modules you need</h2>
-            </div>
-            <BuildProject selectedIds={getPackageIds(elements)}></BuildProject>
-          </Container>
+
+        <Container className="space-bottom-3">
+          <GoldstackProcess></GoldstackProcess>
         </Container>
+
+        <Container>
+          <GoldstackBenefits></GoldstackBenefits>
+        </Container>
+
+        <Container className="space-top-1 space-bottom-3  ">
+          <TemplateCallToAction
+            action={{
+              link: '/build',
+              title: '✔ Start Building Your Project Now',
+            }}
+          ></TemplateCallToAction>
+        </Container>
+
         <Footer></Footer>
       </main>
     </>

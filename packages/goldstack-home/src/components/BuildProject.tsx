@@ -16,7 +16,7 @@ import { getEndpoint } from '@goldstack/goldstack-api';
 import Progress from './Progress';
 import { event } from './../lib/ga';
 
-import { getTemplateData } from 'src/lib/templateData';
+import { getTemplateData } from './../lib/templateData';
 
 import NoModulesAddedModal from './NoModulesAddedModal';
 
