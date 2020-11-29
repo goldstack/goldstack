@@ -1,7 +1,21 @@
 {
   "name": "@goldstack/utils-track",
   "version": "0.1.1",
-  "description": "Utilities for analytics",
+  "description": "Utilities for including Google Analytics in React application",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "React",
+    "Google Analytics"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "author": "Max Rohde",
   "sideEffects": false,
   "main": "dist/utilsTrack.js",

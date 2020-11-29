@@ -2,6 +2,19 @@
   "name": "@goldstack/utils-git",
   "version": "0.1.21",
   "description": "Utilities for working with git",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "git"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

@@ -1,6 +1,29 @@
 {
   "name": "@goldstack/template-nextjs",
   "version": "0.3.30",
+  "description": "Building blocks for deploying Next.js applications to AWS using S3 and CloudFront",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "infrastructure",
+    "cloudfront",
+    "next.js",
+    "nextjs",
+    "serverless",
+    "aws",
+    "s3",
+    "terraform",
+    "IaC",
+    "configuration"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

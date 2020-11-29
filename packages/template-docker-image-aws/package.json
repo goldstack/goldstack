@@ -1,6 +1,26 @@
 {
   "name": "@goldstack/template-docker-image-aws",
   "version": "0.3.13",
+  "description": "Utilities for packages that are deployed as Docker Images using AWS Fargate",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "infrastructure",
+    "IaC",
+    "fargate",
+    "ecs",
+    "aws",
+    "docker",
+    "configuration"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

@@ -1,7 +1,25 @@
 {
   "name": "@goldstack/utils-docs",
   "version": "0.3.6",
-  "description": "Utilities for working with documentation",
+  "description": "Utilities for working with Markdown documentation",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "documentation",
+    "markdown",
+    "html",
+    "markdown to html",
+    "rehype",
+    "generator"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

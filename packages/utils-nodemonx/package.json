@@ -2,6 +2,23 @@
   "name": "@goldstack/nodemonx",
   "version": "0.3.2",
   "description": "Enhanced utility for watching for changes in directories",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "file watcher",
+    "nodemon",
+    "files",
+    "io",
+    "watcher"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

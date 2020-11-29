@@ -2,6 +2,20 @@
   "name": "@goldstack/utils-cli",
   "version": "0.2.0",
   "description": "Utilities for building command line interfaces.",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "cli",
+    "command line"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

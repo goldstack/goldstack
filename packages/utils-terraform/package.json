@@ -1,6 +1,22 @@
 {
   "name": "@goldstack/utils-terraform",
   "version": "0.3.7",
+  "description": "Run Terraform commands easily as npm package scripts",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "terraform",
+    "npm scripts",
+    "cli"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

@@ -2,6 +2,24 @@
   "name": "@goldstack/utils-aws-cli",
   "version": "0.3.5",
   "description": "Wrapper to help with running commands with the AWS cli",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "infrastructure",
+    "cli",
+    "aws",
+    "aws sdk",
+    "IaC",
+    "configuration"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

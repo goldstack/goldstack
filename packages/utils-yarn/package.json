@@ -1,6 +1,21 @@
 {
   "name": "@goldstack/utils-yarn",
   "version": "0.3.3",
+  "description": "Easily run yarn commands from within JavaScript code",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "yarn",
+    "cli"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

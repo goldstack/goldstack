@@ -2,6 +2,19 @@
   "name": "@goldstack/utils-log",
   "version": "0.2.0",
   "description": "Utilities for emitting logs.",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "logs"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

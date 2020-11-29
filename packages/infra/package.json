@@ -1,7 +1,22 @@
 {
   "name": "@goldstack/infra",
   "version": "0.3.3",
-  "description": "Utilities for defining infrastructure",
+  "description": "Utilities for defining infrastructure for npm packages.",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "infrastructure",
+    "IaC",
+    "configuration"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

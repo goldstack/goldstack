@@ -2,6 +2,22 @@
   "name": "@goldstack/utils-json-to-ts",
   "version": "0.3.2",
   "description": "Utility to convert JSON schema into TypeScript interfaces.",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "json",
+    "json schema",
+    "typescript",
+    "generator"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

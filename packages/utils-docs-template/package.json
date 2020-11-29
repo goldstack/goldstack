@@ -1,6 +1,20 @@
 {
   "name": "@goldstack/utils-docs-cli",
   "version": "0.3.6",
+  "description": "Utilities for generating documentation for Goldstack templates",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "documentation"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "author": "Max Rohde",
   "sideEffects": false,
   "main": "dist/utilsDocsTemplate.js",

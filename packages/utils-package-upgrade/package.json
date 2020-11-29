@@ -1,7 +1,20 @@
 {
   "name": "@goldstack/utils-package-upgrade",
   "version": "0.2.2",
-  "description": "Utilities for upgrading packages.",
+  "description": "Utilities for upgrading Goldstack packages.",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "package"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

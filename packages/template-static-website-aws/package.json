@@ -1,6 +1,26 @@
 {
   "name": "@goldstack/template-static-website-aws",
   "version": "0.3.29",
+  "description": "Utilities for deploying a website to CloudFront and S3",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "infrastructure",
+    "cloudfront",
+    "s3",
+    "webhosting",
+    "template",
+    "IaC",
+    "configuration"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

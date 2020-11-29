@@ -1,6 +1,22 @@
 {
   "name": "@goldstack/utils-sh",
   "version": "0.4.2",
+  "description": "Utilities for working with files and folders in a bash like manner",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "bash",
+    "files",
+    "io"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

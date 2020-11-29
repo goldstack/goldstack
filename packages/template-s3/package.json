@@ -1,6 +1,24 @@
 {
   "name": "@goldstack/template-s3",
   "version": "0.3.29",
+  "description": "Building blocks for linking a package to an AWS S3 bucket.",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "infrastructure",
+    "s3",
+    "aws",
+    "IaC",
+    "configuration"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,

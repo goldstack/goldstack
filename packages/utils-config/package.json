@@ -2,6 +2,20 @@
   "name": "@goldstack/utils-config",
   "version": "0.3.2",
   "description": "Utilities to work with JSON configuration files.",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "json",
+    "configuration"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
