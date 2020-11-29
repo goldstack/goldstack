@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@goldstack/session-repository-bucket": "0.1.0",
-    "@goldstack/utils-s3": "0.2.0",
-    "@goldstack/utils-sh": "0.4.2",
+    "@goldstack/utils-s3": "0.2.1",
+    "@goldstack/utils-sh": "0.4.3",
     "aws-sdk": "2.721.0",
     "fs-extra": "^9.0.1",
     "stripe": "8.91.0",
