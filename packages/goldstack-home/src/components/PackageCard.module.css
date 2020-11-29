@@ -28,21 +28,19 @@
 }
 
 .package-description ul {
-    padding-left: 1rem;
+  padding-left: 1rem;
 }
 
 .package-description li {
-    list-style-type: none;
-    padding-left: 1rem;
+  list-style-type: none;
+  padding-left: 1rem;
 }
 
 .package-description li:before {
-    content: '✔';
-    margin: 0 10px 0 -1.6em;
-    color: #17aa1c;
+  content: '✔';
+  margin: 0 10px 0 -1.6em;
+  color: #17aa1c;
 }
-
-
 
 .feature-list {
   margin-top: 0.25rem;
