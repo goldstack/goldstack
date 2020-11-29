@@ -25,7 +25,7 @@
     "version:apply:force": "yarn workspaces foreach -v --topological-dev run version:apply:force \"$@\""
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.1.21",
+    "@goldstack/utils-git": "0.1.22",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
     "@yarnpkg/doctor": "^2.0.0-rc.17",
