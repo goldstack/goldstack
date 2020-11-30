@@ -10,7 +10,7 @@
     "typescript",
     "generator"
   ],
-  "homepage": "https://goldstack.party",
+  "homepage": "https://github.com/goldstack/goldstack-lib/blob/master/packages/utils-json-to-ts/README.md",
   "bugs": {
     "url": "https://github.com/goldstack/goldstack/issues"
   },
