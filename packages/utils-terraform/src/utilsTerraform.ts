@@ -4,9 +4,9 @@ export {
   TerraformVariables,
 } from './types/utilsTerraformConfig';
 
-import { CloudProvider } from './CloudProvider';
+import { CloudProvider } from './cloudProvider';
 
-export { CloudProvider } from './CloudProvider';
+export { CloudProvider } from './cloudProvider';
 
 import { TerraformBuild } from './terraformBuild';
 
