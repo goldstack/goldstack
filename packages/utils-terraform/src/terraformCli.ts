@@ -5,7 +5,7 @@ import {
   imageGoldstackBuild,
 } from '@goldstack/utils-docker';
 import { fatal } from '@goldstack/utils-log';
-import { CloudProvider } from './cloudProvider';
+import { CloudProvider } from './CloudProvider';
 
 export type Variables = [string, string][];
 

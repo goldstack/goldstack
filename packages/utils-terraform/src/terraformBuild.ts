@@ -5,7 +5,7 @@ import {
   TerraformDeployment,
   TerraformVariables,
 } from './types/utilsTerraformConfig';
-import { CloudProvider } from './cloudProvider';
+import { CloudProvider } from './CloudProvider';
 import { cd, read, pwd } from '@goldstack/utils-sh';
 import { Variables } from './terraformCli';
 import { readPackageConfig } from '@goldstack/utils-package';

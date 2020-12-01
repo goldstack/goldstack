@@ -1,4 +1,4 @@
-import { CloudProvider } from './cloudProvider';
+import { CloudProvider } from './CloudProvider';
 
 export default class MockCloudProvider implements CloudProvider {
   generateEnvVariableString(): string {
