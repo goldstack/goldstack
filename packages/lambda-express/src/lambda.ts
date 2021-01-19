@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('source-map-support').install();
 import awsServerlessExpress from 'aws-serverless-express';
 import { app } from './server';
