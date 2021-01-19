@@ -26,7 +26,7 @@ app.use('/projects', projects);
 app.use('/sessions', sessions);
 
 export const start = async (port: number): Promise<any> => {
-  return new Promise((resolve) => {
+  return new Promise<any>((resolve) => {
     const server = app.listen(port, () => {
       resolve(server);
     });

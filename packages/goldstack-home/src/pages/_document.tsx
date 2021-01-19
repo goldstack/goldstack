@@ -11,62 +11,6 @@ import Document, {
   DocumentContext,
 } from 'next/document';
 
-class MyHtml extends Html implements JSX.Element {
-  type: any;
-  props: any;
-  key: string | number | null;
-  setState: any;
-  forceUpdate: any;
-  state: any;
-  refs: any;
-  constructor() {
-    super();
-    this.key = null;
-  }
-}
-
-class MyHead extends Head implements JSX.Element {
-  type: any;
-  props: any;
-  key: string | number | null;
-  setState: any;
-  forceUpdate: any;
-  state: any;
-  refs: any;
-  constructor() {
-    super();
-    this.key = null;
-  }
-}
-
-class MyMain extends Main implements JSX.Element {
-  type: any;
-  props: any;
-  key: string | number | null;
-  setState: any;
-  forceUpdate: any;
-  state: any;
-  refs: any;
-  constructor() {
-    super();
-    this.key = null;
-  }
-}
-
-class MyNextScript extends NextScript implements JSX.Element {
-  type: any;
-  props: any;
-  key: string | number | null;
-  setState: any;
-  forceUpdate: any;
-  state: any;
-  refs: any;
-  constructor() {
-    super();
-    this.key = null;
-  }
-}
-
 class MyDocument extends Document {
   static async getStaticProps(ctx: DocumentContext): Promise<any> {
     const sheet = new ServerStyleSheet();
@@ -99,8 +43,8 @@ class MyDocument extends Document {
 
     initGtm('UA-180192522-1');
     return (
-      <MyHtml>
-        <MyHead>
+      <Html>
+        <Head>
           {process.env.GOLDSTACK_DEPLOYMENT === 'prod' && <TagFragment />}
           <link
             rel="apple-touch-icon"
@@ -120,12 +64,12 @@ class MyDocument extends Document {
             href="/favicon-16x16.png"
           />
           <link rel="manifest" href="/site.webmanifest"></link>
-        </MyHead>
+        </Head>
         <body>
-          <MyMain />
-          <MyNextScript />
+          <Main />
+          <NextScript />
         </body>
-      </MyHtml>
+      </Html>
     );
   }
 }

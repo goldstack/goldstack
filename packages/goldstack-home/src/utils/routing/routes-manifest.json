@@ -1,8 +1,16 @@
 {
-  "version": 1,
+  "version": 3,
   "pages404": true,
   "basePath": "",
-  "redirects": [],
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
   "rewrites": [],
   "headers": [],
   "dynamicRoutes": [
@@ -52,57 +60,57 @@
     },
     {
       "page": "/projects/[id]/configure/[step]",
-      "regex": "^\\/projects\\/([^/]+?)\\/configure\\/([^/]+?)(?:\\/)?$",
-      "namedRegex": "^/projects/(?<id>[^/]+?)/configure/(?<step>[^/]+?)(?:/)?$",
-      "routeKeys": [
-        "id",
-        "step"
-      ]
+      "regex": "^/projects/([^/]+?)/configure/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "id": "id",
+        "step": "step"
+      },
+      "namedRegex": "^/projects/(?<id>[^/]+?)/configure/(?<step>[^/]+?)(?:/)?$"
     },
     {
       "page": "/projects/[id]/packages/[packageId]/download",
-      "regex": "^\\/projects\\/([^/]+?)\\/packages\\/([^/]+?)\\/download(?:\\/)?$",
-      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/download(?:/)?$",
-      "routeKeys": [
-        "id",
-        "packageId"
-      ]
+      "regex": "^/projects/([^/]+?)/packages/([^/]+?)/download(?:/)?$",
+      "routeKeys": {
+        "id": "id",
+        "packageId": "packageId"
+      },
+      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/download(?:/)?$"
     },
     {
       "page": "/projects/[id]/packages/[packageId]/pricing-options",
-      "regex": "^\\/projects\\/([^/]+?)\\/packages\\/([^/]+?)\\/pricing\\-options(?:\\/)?$",
-      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/pricing\\-options(?:/)?$",
-      "routeKeys": [
-        "id",
-        "packageId"
-      ]
+      "regex": "^/projects/([^/]+?)/packages/([^/]+?)/pricing\\-options(?:/)?$",
+      "routeKeys": {
+        "id": "id",
+        "packageId": "packageId"
+      },
+      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/pricing\\-options(?:/)?$"
     },
     {
       "page": "/projects/[id]/packages/[packageId]/purchase-template",
-      "regex": "^\\/projects\\/([^/]+?)\\/packages\\/([^/]+?)\\/purchase\\-template(?:\\/)?$",
-      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/purchase\\-template(?:/)?$",
-      "routeKeys": [
-        "id",
-        "packageId"
-      ]
+      "regex": "^/projects/([^/]+?)/packages/([^/]+?)/purchase\\-template(?:/)?$",
+      "routeKeys": {
+        "id": "id",
+        "packageId": "packageId"
+      },
+      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/purchase\\-template(?:/)?$"
     },
     {
       "page": "/templates/[template]",
-      "regex": "^\\/templates\\/([^/]+?)(?:\\/)?$",
-      "namedRegex": "^/templates/(?<template>[^/]+?)(?:/)?$",
-      "routeKeys": [
-        "template"
-      ]
+      "regex": "^/templates/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "template": "template"
+      },
+      "namedRegex": "^/templates/(?<template>[^/]+?)(?:/)?$"
     }
   ],
   "dataRoutes": [
     {
       "page": "/templates/[template]",
-      "routeKeys": [
-        "template"
-      ],
-      "dataRouteRegex": "^\\/_next\\/data\\/LztFxFEko7nPxFZnVCYcY\\/templates\\/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/LztFxFEko7nPxFZnVCYcY/templates/(?<template>[^/]+?)\\.json$"
+      "routeKeys": {
+        "template": "template"
+      },
+      "dataRouteRegex": "^/_next/data/rpk4x7PMuKrEq2192yZ4m/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/rpk4x7PMuKrEq2192yZ4m/templates/(?<template>[^/]+?)\\.json$"
     }
   ]
 }

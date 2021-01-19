@@ -7,7 +7,6 @@ import { ConfigureStep } from 'src/lib/getConfigureSteps';
 
 import Link from 'next/link';
 import ProjectConfigSummary from './ProjectConfigSummary';
-const MyLink: any = Link;
 
 const DynamicConfigForm = (props: {
   currentItem: number;
@@ -70,7 +69,7 @@ const DynamicConfigForm = (props: {
       <div className="mb-7">
         <div className="d-flex justify-content-between align-items-center">
           {step.idx > 0 && (
-            <MyLink
+            <Link
               href="/projects/[id]/configure/[step]"
               as={`/projects/${props.projectData.projectId}/configure/${
                 props.currentItem - 1
@@ -82,19 +81,19 @@ const DynamicConfigForm = (props: {
                 <i className="fas fa-angle-left fa-xs mr-1"></i>
                 Previous
               </a>
-            </MyLink>
+            </Link>
           )}
           {step.idx <= 0 && (
-            <MyLink href="/build" prefetch={false} shallow={true}>
+            <Link href="/build" prefetch={false} shallow={true}>
               <a className={'font-weight-bold'}>
                 <i className="fas fa-angle-left fa-xs mr-1"></i>
                 Back to builder
               </a>
-            </MyLink>
+            </Link>
           )}
 
           {step.type !== 'summary' && (
-            <MyLink
+            <Link
               href="/projects/[id]/configure/[step]"
               as={`/projects/${props.projectData.projectId}/configure/${
                 props.currentItem + 1
@@ -108,7 +107,7 @@ const DynamicConfigForm = (props: {
               >
                 Next
               </a>
-            </MyLink>
+            </Link>
           )}
         </div>
       </div>

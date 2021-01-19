@@ -10,8 +10,6 @@ import Spinner from 'react-bootstrap/Spinner';
 import { event } from './../lib/ga';
 import * as Fullstory from '@fullstory/browser';
 
-const MyLink: any = Link;
-
 interface OneOffPurchaseProps {
   projectId: string;
   packageId: string;
@@ -179,11 +177,11 @@ const OneOffPurchase = (props: OneOffPurchaseProps): JSX.Element => {
             <label className="custom-control-label" htmlFor="termsCheckbox">
               <small>
                 I agree to the{' '}
-                <MyLink href="/terms-and-conditions">
+                <Link href="/terms-and-conditions">
                   <a className="link-underline" target="_blank">
                     Terms and Conditions
                   </a>
-                </MyLink>
+                </Link>
               </small>
             </label>
           </div>

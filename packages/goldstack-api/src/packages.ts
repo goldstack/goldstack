@@ -187,7 +187,7 @@ export const getPackageHandler = async (
     // generate download URL
     const packageBucket = await connect();
     const bucketName = await getBucketName();
-    const downloadUrl = await new Promise((resolve, reject) => {
+    const downloadUrl = await new Promise<string>((resolve, reject) => {
       packageBucket.getSignedUrl(
         'getObject',
         {

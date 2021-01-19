@@ -3,8 +3,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ConfigureStep } from 'src/lib/getConfigureSteps';
 
-const MyLink: any = Link;
-
 const SelectedItem = (props: { title: string }): JSX.Element => {
   return (
     <div className="media align-items-center mb-3">
@@ -25,14 +23,14 @@ const LinkItem = (props: {
   return (
     <div className="media align-items-center mb-3">
       <span className="d-block font-size-1 mr-3">
-        <MyLink
+        <Link
           href="/projects/[id]/configure/[step]"
           as={`/projects/${id}/configure/${props.idx + 1}`}
           prefetch={false}
           shallow={true}
         >
           <a>{props.title}</a>
-        </MyLink>
+        </Link>
       </span>
     </div>
   );

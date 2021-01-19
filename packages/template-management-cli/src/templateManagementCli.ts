@@ -153,7 +153,7 @@ export const run = async (): Promise<void> => {
           s3repo: repo,
           workDir: workDir,
           config,
-          skipTests: argv.skipTests && argv.skipTests === 'true',
+          skipTests: argv.skipTests ? argv.skipTests === 'true' : false,
           user: awsConfig,
         });
 
