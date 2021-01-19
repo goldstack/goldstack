@@ -20,7 +20,7 @@ export const deployLambda = async (
   const targetArchive = 'lambda.zip';
   const lambdaDistDir = './distLambda';
 
-  await new Promise((resolve, reject) => {
+  await new Promise<void>((resolve, reject) => {
     const output = fs.createWriteStream(targetArchive);
     const archive = archiver('zip', {
       zlib: { level: 9 },

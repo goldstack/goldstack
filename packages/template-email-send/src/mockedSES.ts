@@ -29,7 +29,9 @@ export class MockedSES {
     }
     return {
       promise: (): Promise<SES.SendEmailResponse> =>
-        new Promise((resolve) => resolve({ MessageId: uuid4() })),
+        new Promise<SES.SendEmailResponse>((resolve) =>
+          resolve({ MessageId: uuid4() })
+        ),
     } as any;
   }
 }

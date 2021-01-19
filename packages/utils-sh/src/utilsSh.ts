@@ -27,7 +27,7 @@ export const copy = async (
   }
 
   for (const sourceEl of sourceArr) {
-    await new Promise((resolve, reject) => {
+    await new Promise<void>((resolve, reject) => {
       let destCorrected: string;
       if (!fs.lstatSync(sourceEl).isDirectory()) {
         destCorrected = dest + path.basename(sourceEl);
@@ -65,7 +65,7 @@ export const cp = (
  */
 export const rmSafe = async (...files: string[]): Promise<void> => {
   for (const file of files) {
-    await new Promise((resolve, reject) => {
+    await new Promise<void>((resolve, reject) => {
       rimraf(
         file,
         {
@@ -107,7 +107,7 @@ export const zip = async (params: {
   directory: string;
   target: string;
 }): Promise<void> => {
-  await new Promise((resolve, reject) => {
+  await new Promise<void>((resolve, reject) => {
     const output = fs.createWriteStream(params.target);
     const archive = archiver('zip', {
       zlib: { level: 9 },

@@ -12,7 +12,7 @@ export const download = async (params: {
   bucketName: string;
 }): Promise<boolean> => {
   const filePath = params.filePath;
-  return new Promise((resolve, reject) => {
+  return new Promise<boolean>((resolve, reject) => {
     const file = fs.createWriteStream(filePath);
     try {
       params.s3
