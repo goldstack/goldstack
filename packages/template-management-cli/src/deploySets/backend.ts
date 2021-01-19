@@ -1,9 +1,7 @@
 import { ProjectConfiguration } from '@goldstack/utils-project';
 import { DeploySetConfig } from '@goldstack/template-build-set';
 
-export const createBackendBuildSetConfig = async (): Promise<
-  DeploySetConfig
-> => {
+export const createBackendBuildSetConfig = async (): Promise<DeploySetConfig> => {
   const projectConfiguration: ProjectConfiguration = {
     projectName: 'project-backend',
     rootTemplateReference: {

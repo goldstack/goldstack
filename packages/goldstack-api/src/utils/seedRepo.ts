@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('source-map-support').install();
 import { build } from '@goldstack/template-build';
 import { getDefaultTemplates } from '@goldstack/utils-template-test';

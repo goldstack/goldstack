@@ -1,9 +1,7 @@
 import { ProjectConfiguration } from '@goldstack/utils-project';
 import { DeploySetConfig } from '@goldstack/template-build-set';
 
-export const createStaticWebsiteBuildSetConfig = async (): Promise<
-  DeploySetConfig
-> => {
+export const createStaticWebsiteBuildSetConfig = async (): Promise<DeploySetConfig> => {
   const projectConfiguration: ProjectConfiguration = {
     projectName: 'project-static-website1',
     rootTemplateReference: {
