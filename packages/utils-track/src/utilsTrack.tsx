@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 
-/* eslint-disable @typescript-eslint/camelcase */
 export let GA_TRACKING_ID: undefined | string = undefined;
 
 export const initGtm = (ga_tracking_id: string): void => {
