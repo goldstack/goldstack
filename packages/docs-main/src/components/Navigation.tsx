@@ -4,8 +4,6 @@ import { SitemapItem } from '@goldstack/markdown-docs';
 
 const navPath = '/docs/';
 
-const MyLink: any = Link;
-
 import styles from './Navigation.module.css';
 
 const Level1Item = (props: { title: string }): JSX.Element => (
@@ -45,9 +43,9 @@ const Level3Wrapper = (props: {
 
 const Level3Item = (props: { title: string; link: string }): JSX.Element => (
   <li className="hs-sidebar-item">
-    <MyLink href={navPath + props.link}>
+    <Link href={navPath + props.link}>
       <a className="hs-sidebar-link ">{props.title}</a>
-    </MyLink>
+    </Link>
   </li>
 );
 
