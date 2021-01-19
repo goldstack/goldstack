@@ -30,7 +30,7 @@
   "dependencies": {
     "@fullstory/browser": "^1.4.5",
     "@goldstack/toc-generator": "0.1.0",
-    "@goldstack/utils-track": "0.1.4",
+    "@goldstack/utils-track": "0.1.5",
     "cheerio": "^1.0.0-rc.3",
     "ignore-loader": "~0.1.2",
     "next": "^10.0.5",
