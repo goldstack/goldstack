@@ -17,7 +17,7 @@ export const startTestServer = async (port: number): Promise<void> => {
 };
 
 export const stopTestServer = async (): Promise<void> => {
-  return new Promise((resolve, reject) => {
+  return new Promise<void>((resolve, reject) => {
     testServer.close((err) => {
       if (err) reject(err);
       resolve();

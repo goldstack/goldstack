@@ -26,8 +26,8 @@
     "web:watch": "yarn web:build $@ && concurrently \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" "
   },
   "dependencies": {
-    "next": "9.4.5-canary.3",
-    "react": "^16.13.1",
+    "next": "^10.0.5",
+    "react": "^17.0.1",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
     "swr": "^0.2.3"
@@ -49,6 +49,6 @@
     "reload": "^3.1.0",
     "ts-jest": "^26.1.0",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.5"
+    "typescript": "^4.1.3"
   }
 }
