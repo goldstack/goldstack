@@ -34,7 +34,6 @@ jobs:
           yarn format
           yarn format:check
           yarn lint:fix
-          yarn lint
 
       # Do this for all before library git push messes with history
       - name: Check if libraries changed
