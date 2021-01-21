@@ -49,8 +49,7 @@ const NoModulesAddedModal = (props: NoModulesAddedModalProps): JSX.Element => {
               <div>
                 <p>
                   Looks like you have not selected any modules to be included in
-                  your project. Please consider adding modules to your project
-                  using the <i>Add to Project</i> buttons.
+                  your project.{' '}
                 </p>
                 <p>Do you want to add modules to your project?</p>
               </div>
