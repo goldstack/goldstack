@@ -45,9 +45,11 @@ Note it is also possible to add additional TypeScript files in the modules `src/
 
 ## Infrastructure
 
-All infrastructure for this module is defined in Terraform. You can find the Terraform files for this module in the directory `[moduleDir]/infra/aws`. You can define multiple deployments for this module, for instance for development, staging and production environments. The deployments and their respective configurations are defined in `[moduleDir]/goldstack.json`.
+All infrastructure for this module is defined in Terraform. You can find the Terraform files for this module in the directory `[moduleDir]/infra/aws`. You can define multiple deployments for this module, for instance for development, staging and production environments. 
 
-After downloading your starter project, there will be one deployment defined. This will be either `dev` or `prod` depending on your choice during project configuration. In the example `goldstack.json` below, a deployment with the name `dev` is defined.
+If you configured AWS deployment before downloading your projects, the deployments and their respective configurations are defined in `[moduleDir]/goldstack.json`.
+
+The configuration tool will define one deployment. This will be either `dev` or `prod` depending on your choice during project configuration. In the example `goldstack.json` below, a deployment with the name `dev` is defined.
 
 ```json
 {
