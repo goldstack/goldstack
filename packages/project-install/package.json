@@ -26,7 +26,7 @@
     "@goldstack/utils-log": "0.2.2",
     "@goldstack/utils-project": "0.3.5",
     "@goldstack/utils-sh": "0.4.5",
-    "@goldstack/utils-yarn": "0.3.6"
+    "@goldstack/utils-yarn": "0.3.7"
   },
   "devDependencies": {
     "@goldstack/project-build": "0.1.0",
