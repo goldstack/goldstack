@@ -10,7 +10,9 @@ export const hasDocker = (): boolean => {
 
 export const assertDocker = (): void => {
   if (!sh.which('docker')) {
-    throw new Error('Docker must be installed. Please install Docker.');
+    throw new Error(
+      'Docker must be installed. Please install Docker and ensure the "docker" command is available in your terminal.'
+    );
   }
 
   if (sh.exec('docker version', { silent: true }).code != 0) {

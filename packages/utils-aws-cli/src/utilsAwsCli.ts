@@ -10,7 +10,7 @@ import {
 export const assertAwsCli = (): void => {
   if (!sh.which('aws')) {
     fatal(
-      'AWS CLI version 2 not installed.\n\nEither install AWS cli or Docker (preferred).'
+      'AWS CLI version 2 not available.\n\nEnsure AWS cli or Docker (preferred) are available commands in the command line.'
     );
     throw new Error();
   }
