@@ -1,4 +1,4 @@
-It can often be overwhelming to start working with a new starter project. If you provide us with some details about your project, we can generate a baseline configuration for you.
+It can often be overwhelming to start working with a new starter project. If you provide us with some details about your project, we can generate a baseline configuration for deployment to AWS.
 
 The following properties are required for general project configuration:
 

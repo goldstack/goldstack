@@ -9,8 +9,6 @@ The video guides below cover all the steps that are described on this page:
 
 [%Quick Video Guide (3:53 min)](https://www.youtube.com/embed/hvZ8Ry9XYVE)
 
-[%Extended Video Guide (21:21 min)](https://www.youtube.com/embed/2M0JLo875K8)
-
 ## 1. Install dependencies
 
 Goldstack requires a few dependencies to be available in your development system. Please verify they are present or install them:
@@ -81,9 +79,9 @@ If the confirmation dialog does not show up or the version that you see does not
 
 ![Select TypeScript version](https://cdn.goldstack.party/img/202010/select_typescript_version.png)
 
-## 5. Deploy modules
+## 5. Deploy modules (Optional)
 
-Since you have [configured your project](./configuration) on Goldstack before downloading the project, all modules should be ready to be deployed to AWS. We recommend going through each of your modules individually to ensure the infrastructure for them can be deployed successfully. Please see the getting started guides for the templates you have chosen for instructions. You should have received an email that contains links to the relevant getting started guides.
+If you have [configured your project for AWS deployment](./configuration) on Goldstack before downloading the project, all modules should be ready to be deployed to AWS. We recommend going through each of your modules individually to ensure the infrastructure for them can be deployed successfully. Please see the getting started guides for the templates you have chosen for instructions. You should have received an email that contains links to the relevant getting started guides.
 
 ## 6. Develop
 
