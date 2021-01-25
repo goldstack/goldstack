@@ -4,4 +4,4 @@ Required package: next-server (via "next-server/constants")
 
 Fix:
 
-- add depenendcy to project
+- add dependency to project

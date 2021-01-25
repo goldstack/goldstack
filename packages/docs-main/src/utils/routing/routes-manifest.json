@@ -1,8 +1,16 @@
 {
-  "version": 1,
+  "version": 3,
   "pages404": true,
   "basePath": "",
-  "redirects": [],
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
   "rewrites": [],
   "headers": [],
   "dynamicRoutes": [
@@ -72,21 +80,21 @@
     },
     {
       "page": "/docs/[...slug]",
-      "regex": "^\\/docs\\/(.+?)(?:\\/)?$",
-      "namedRegex": "^/docs/(?<slug>.+?)(?:/)?$",
-      "routeKeys": [
-        "slug"
-      ]
+      "regex": "^/docs/(.+?)(?:/)?$",
+      "routeKeys": {
+        "slug": "slug"
+      },
+      "namedRegex": "^/docs/(?<slug>.+?)(?:/)?$"
     }
   ],
   "dataRoutes": [
     {
       "page": "/docs/[...slug]",
-      "routeKeys": [
-        "slug"
-      ],
-      "dataRouteRegex": "^\\/_next\\/data\\/aa31htLlSgPkM_A2CqWqW\\/docs\\/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/aa31htLlSgPkM_A2CqWqW/docs/(?<slug>.+?)\\.json$"
+      "routeKeys": {
+        "slug": "slug"
+      },
+      "dataRouteRegex": "^/_next/data/a8IgUB2JzqkEkgWYm4C7e/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/a8IgUB2JzqkEkgWYm4C7e/docs/(?<slug>.+?)\\.json$"
     }
   ]
 }
