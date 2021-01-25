@@ -10,4 +10,3 @@ Goldstack provides high-quality starter projects that contain modules for all la
 - [About](./docs/goldstack/about)
 - [How does it work](./docs/goldstack/how-does-it-work)
 - [Getting Started](./docs/goldstack/getting-started)
-
