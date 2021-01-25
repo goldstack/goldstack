@@ -14,7 +14,7 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
         with:
           fetch-depth: 20
           submodules: recursive
@@ -37,27 +37,27 @@ jobs:
 
       # Do this for all before library git push messes with history
       - name: Check if libraries changed
-        uses: marceloprado/has-changed-path@20aaabb
+        uses: marceloprado/has-changed-path@c0d8dcd816c8972e73782b09e0fab8d255db927b
         id: changed-libs
         with:
           paths: workspaces/templates-lib
       - name: Check if templates changed
-        uses: marceloprado/has-changed-path@20aaabb
+        uses: marceloprado/has-changed-path@c0d8dcd816c8972e73782b09e0fab8d255db927b
         id: changed-templates
         with:
           paths: workspaces/templates
       - name: Check if template management changed
-        uses: marceloprado/has-changed-path@20aaabb
+        uses: marceloprado/has-changed-path@c0d8dcd816c8972e73782b09e0fab8d255db927b
         id: changed-mgmt
         with:
           paths: workspaces/templates-management
       - name: Check if apps changed
-        uses: marceloprado/has-changed-path@20aaabb
+        uses: marceloprado/has-changed-path@c0d8dcd816c8972e73782b09e0fab8d255db927b
         id: changed-apps
         with:
           paths: workspaces/apps
       - name: Check if docs changed
-        uses: marceloprado/has-changed-path@20aaabb
+        uses: marceloprado/has-changed-path@c0d8dcd816c8972e73782b09e0fab8d255db927b
         id: changed-docs
         with:
           paths: workspaces/docs
@@ -141,7 +141,7 @@ jobs:
 
       - name: Push library changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@v0.6.0
+        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
         with:
           directory: workspaces/templates-lib
           repository: goldstack/goldstack-lib
@@ -161,7 +161,7 @@ jobs:
 
       - name: Push apps changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@v0.6.0
+        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
         with:
           directory: workspaces/apps
           repository: goldstack/goldstack-apps
@@ -169,7 +169,7 @@ jobs:
 
       - name: Push docs changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@v0.6.0
+        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
         with:
           directory: workspaces/docs
           repository: goldstack/goldstack-docs
@@ -177,7 +177,7 @@ jobs:
 
       - name: Push template changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@v0.6.0
+        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
         with:
           directory: workspaces/templates
           repository: goldstack/goldstack-templates-priv
@@ -185,7 +185,7 @@ jobs:
 
       - name: Push template management changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@v0.6.0
+        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
         with:
           directory: workspaces/templates-management
           repository: goldstack/goldstack-templates-management
@@ -197,7 +197,7 @@ jobs:
 
       - name: Push root changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@v0.6.0
+        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
 
@@ -226,7 +226,7 @@ jobs:
           cd ../..
 
       - name: Push deployed image hash change
-        uses: ad-m/github-push-action@v0.6.0
+        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
           directory: workspaces/apps
@@ -238,7 +238,7 @@ jobs:
 
       - name: Push root changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@v0.6.0
+        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
 
