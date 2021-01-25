@@ -11,6 +11,7 @@ import ProjectConfigSummary from './ProjectConfigSummary';
 const DynamicConfigForm = (props: {
   currentItem: number;
   configureSteps: ConfigureStep[];
+  packageId: string;
   projectData: ProjectData;
   onChange: (data: ProjectData) => void;
   onStepSubmit: (data: ProjectData) => void;
@@ -63,6 +64,7 @@ const DynamicConfigForm = (props: {
         })}
       {step.type === 'summary' && (
         <ProjectConfigSummary
+          packageId={props.packageId}
           projectData={props.projectData}
         ></ProjectConfigSummary>
       )}
@@ -70,10 +72,10 @@ const DynamicConfigForm = (props: {
         <div className="d-flex justify-content-between align-items-center">
           {step.idx > 0 && (
             <Link
-              href="/projects/[id]/configure/[step]"
-              as={`/projects/${props.projectData.projectId}/configure/${
-                props.currentItem - 1
-              }`}
+              href="/projects/[id]/packages/[packageId]/configure/[step]"
+              as={`/projects/${props.projectData.projectId}/packages/${
+                props.packageId
+              }/configure/${props.currentItem - 1}`}
               prefetch={false}
               shallow={true}
             >
@@ -94,10 +96,10 @@ const DynamicConfigForm = (props: {
 
           {step.type !== 'summary' && (
             <Link
-              href="/projects/[id]/configure/[step]"
-              as={`/projects/${props.projectData.projectId}/configure/${
-                props.currentItem + 1
-              }`}
+              href="/projects/[id]/packages/[packageId]/configure/[step]"
+              as={`/projects/${props.projectData.projectId}/packages/${
+                props.packageId
+              }/configure/${props.currentItem + 1}`}
               prefetch={false}
               shallow={true}
             >

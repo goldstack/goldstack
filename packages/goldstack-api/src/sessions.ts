@@ -229,7 +229,7 @@ const performPurchase = async (params: {
           },
         },
       },
-      Source: '"Goldstack" <no-reply@' + (await getFromDomain()) + '>',
+      Source: '"Goldstack" <hi@' + (await getFromDomain()) + '>',
     })
     .promise();
 

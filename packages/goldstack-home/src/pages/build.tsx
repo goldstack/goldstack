@@ -1,140 +1,302 @@
-import React, { ReactNode } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import Head from 'next/head';
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
+import Head from 'next/head';
+import Header from './../components/Header';
+import Footer from './../components/Footer';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
-import TypeScriptIcon from './../icons/typescript.svg';
-import ESLintIcon from './../icons/eslint.svg';
-import TerraformIcon from './../icons/terraform.svg';
-import AWSIcon from './../icons/aws.svg';
-import YarnIcon from './../icons/yarn.svg';
-import JestIcon from './../icons/jestjs.svg';
-import VSCodeIcon from './../icons/vscode.svg';
-import DockerIcon from './../icons/docker.svg';
-import DocusaurusIcon from './../icons/docusaurus.svg';
-import SecurityIcon from './../icons/security.svg';
+import { event } from './../lib/ga';
+import NoModulesAddedModal from './../components/NoModulesAddedModal';
 
-import Header from './../components/Header';
-
-import BuildProject from './../components/BuildProject';
-
+import { ProjectData } from '@goldstack/project-repository';
 import { getPackageIds } from './../lib/stackParamUtils';
-import Footer from 'src/components/Footer';
-interface HeadingProps {
-  caption: string;
-  learnMoreLink: string;
+
+import { buildProjectConfig } from './../lib/buildProject';
+
+import { getEndpoint } from '@goldstack/goldstack-api';
+import { PackageConfig } from '@goldstack/project-config';
+
+interface CheckboxProps {
+  title: string;
+  className?: string;
+  element: string;
+  disabled: boolean;
+  checked?: boolean;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const BasicsTitle = styled.span`
-  // margin-top: 0.28rem;
-`;
-const BasicsImg = styled.img`
-  width: 28px;
-  height: 28px;
-`;
-const Item = (props: {
-  icon: any;
-  index: number;
-  children?: ReactNode;
-  title?: string;
-}): JSX.Element => {
+const Checkbox = (props: CheckboxProps): JSX.Element => {
   return (
-    <div className="media align-items-center mb-3" key={props.index}>
-      <figure className="w-100 max-w-5rem mr-3">
-        <BasicsImg className="img-fluid" src={props.icon}></BasicsImg>
-      </figure>
-      <div className="media-body">
-        <BasicsTitle>{props.title || props.children}</BasicsTitle>
+    <>
+      <div className={`form-group ${props.className || ''}`}>
+        <div className="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            id={props.element}
+            disabled={props.disabled}
+            className="custom-control-input"
+            checked={props.checked || false}
+            onChange={props.onChange}
+          ></input>
+          <label className="custom-control-label" htmlFor={props.element}>
+            {props.title}
+          </label>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
-const Front = (): JSX.Element => {
+const ProgressIndicator = (props: { message: string }): JSX.Element => {
+  return (
+    <>
+      <div style={{ display: 'inline-block' }}>
+        <div
+          className="spinner-border ml-4"
+          role="status"
+          style={{ display: 'inline-block' }}
+        >
+          <span className="sr-only">Progress indicator</span>
+        </div>
+        <div className="ml-2" style={{ display: 'inline-block' }}>
+          {props.message}
+        </div>
+      </div>
+    </>
+  );
+};
+
+const ModuleSelection = (props: { elements: string[] }) => {
+  const [elements, setElements] = useState(props.elements);
+  const [showWarningModal, setShowWarningModal] = useState<boolean>(false);
+  const [building, setBuilding] = useState<boolean>(false);
+  const [progressMessage, setProgressMessage] = useState<string>('');
+  const router = useRouter();
+
+  useEffect(() => {
+    setElements(props.elements);
+  }, [props.elements]);
+
+  const proceedAfterWarning = async (): Promise<void> => {
+    setShowWarningModal(false);
+    doConfigure(true);
+  };
+  // NextJs must always be selected when bootstrap is selected
+  if (
+    elements.indexOf('bootstrap') !== -1 &&
+    elements.indexOf('nextjs') === -1
+  ) {
+    elements.push('nextjs');
+    setElements([...elements]);
+  }
+
+  const checkboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked) {
+      if (elements.indexOf(event.target.id) === -1) {
+        elements.push(event.target.id);
+      }
+      setElements([...elements]);
+    } else {
+      const idx = elements.indexOf(event.target.id);
+      if (idx !== -1) {
+        elements.splice(idx, 1);
+        setElements([...elements]);
+      }
+    }
+  };
+
+  const doConfigure = async (ignoreNoModulesSelected: boolean) => {
+    const selectedElements = [...elements];
+    // allow either nextjs or nextjs and bootstrap
+    if (
+      selectedElements.indexOf('bootstrap') !== -1 &&
+      selectedElements.indexOf('nextjs') !== -1
+    ) {
+      const idx = selectedElements.indexOf('nextjs');
+      selectedElements.splice(idx, 1);
+    }
+    const packageIds = getPackageIds(selectedElements);
+    if (!ignoreNoModulesSelected) {
+      if (packageIds.length === 0) {
+        setShowWarningModal(true);
+        return;
+      }
+    }
+    setProgressMessage('Creating session');
+    setBuilding(true);
+    event({
+      action: 'start_building',
+      category: 'projects',
+      label: '',
+      value: 0,
+    });
+
+    const projectConfig = buildProjectConfig(packageIds);
+
+    const sessionRes = await fetch(`${getEndpoint()}/sessions`, {
+      method: 'POST',
+      credentials: 'include',
+    });
+    if (sessionRes.status !== 200) {
+      throw new Error('Cannot create session');
+    }
+    setProgressMessage('Building project');
+    const projectRes = await fetch(`${getEndpoint()}/projects`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify(projectConfig),
+    });
+    if (projectRes.status !== 200) {
+      throw new Error('Cannot create project');
+    }
+    const projectData: ProjectData = await projectRes.json();
+    const projectId = projectData.projectId;
+    setProgressMessage('Creating download bundle');
+
+    const packageRes = await fetch(
+      `${getEndpoint()}/projects/${projectId}/packages`,
+      {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(projectData),
+      }
+    );
+
+    const packageId = (await packageRes.json()).packageId;
+    router.push(`/projects/${projectId}/packages/${packageId}/pricing-options`);
+    // const projectId = (await projectRes.json()).projectId;
+    // router.push(`/projects/${projectId}/configure/1`);
+  };
+
+  const clickConfigure = () => {
+    doConfigure(false);
+  };
+
+  return (
+    <>
+      <Container className="space-2">
+        <div className="w-md-80 w-lg-40 text-center mx-md-auto mb-5 mb-md-9">
+          <h2>Select the modules you need</h2>
+        </div>
+        <Row>
+          <Col md={{ span: 6, offset: 3 }}>
+            <div className="card shadow-soft">
+              <div className="card-body space-1 ">
+                <div className="border-bottom mb-4">
+                  <div className="border-bottom pb-2 mb-4">
+                    <h2 className="h3 mb-0">UI</h2>
+                  </div>
+                  <Checkbox
+                    title="NextJs"
+                    element="nextjs"
+                    disabled={building}
+                    checked={elements.indexOf('nextjs') !== -1}
+                    onChange={checkboxChange}
+                  ></Checkbox>
+                  <Checkbox
+                    title="With Bootstrap"
+                    element="bootstrap"
+                    disabled={building}
+                    className="ml-4"
+                    checked={
+                      elements.indexOf('nextjs') !== -1 &&
+                      elements.indexOf('bootstrap') !== -1
+                    }
+                    onChange={checkboxChange}
+                  ></Checkbox>
+                  <Checkbox
+                    title="Static Website"
+                    element="static-website"
+                    disabled={building}
+                    checked={elements.indexOf('static-website') !== -1}
+                    onChange={checkboxChange}
+                  ></Checkbox>
+
+                  <div className="border-bottom pb-2 mb-4 mt-6">
+                    <h2 className="h3 mb-0">Backend</h2>
+                  </div>
+                  <Checkbox
+                    title="Lambda with Express Server"
+                    element="express"
+                    disabled={building}
+                    checked={elements.indexOf('express') !== -1}
+                    onChange={checkboxChange}
+                  ></Checkbox>
+
+                  <div className="border-bottom pb-2 mb-4 mt-6">
+                    <h2 className="h3 mb-0">Services</h2>
+                  </div>
+                  <Checkbox
+                    title="S3"
+                    element="s3"
+                    disabled={building}
+                    checked={elements.indexOf('s3') !== -1}
+                    onChange={checkboxChange}
+                  ></Checkbox>
+                  <Checkbox
+                    title="Email"
+                    element="email-send"
+                    disabled={building}
+                    checked={elements.indexOf('email-send') !== -1}
+                    onChange={checkboxChange}
+                  ></Checkbox>
+                </div>
+                <Button
+                  className="btn btn-primary btn transition-3d-hover"
+                  disabled={building}
+                  onClick={clickConfigure}
+                >
+                  🛠 Build Project
+                </Button>
+                {building && (
+                  <ProgressIndicator
+                    message={progressMessage}
+                  ></ProgressIndicator>
+                )}
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      <NoModulesAddedModal
+        handleProceed={proceedAfterWarning}
+        show={showWarningModal}
+        handleAddModules={(): void => {
+          setShowWarningModal(false);
+        }}
+      ></NoModulesAddedModal>
+    </>
+  );
+};
+
+const Build = (): JSX.Element => {
   const router = useRouter();
   const elementsStr = (router.query.stack as string) || '';
-  const elements = elementsStr.split(',');
+
   return (
     <>
       <Head>
-        <title>Goldstack Builder</title>
+        <title>Goldstack Project Builder</title>
       </Head>
+
       <Header></Header>
       <main id="content" role="main">
-        <Container fluid className="">
-          <Row>
-            <Col md={9}>
-              <Container fluid className="overflow-hidden p-6">
-                <BuildProject
-                  selectedIds={getPackageIds(elements)}
-                ></BuildProject>
-              </Container>
-            </Col>
-            <Col md={3} className="p-4 bg-light">
-              <h4>How does this work?</h4>
-              <p>
-                Add the stack building blocks you need. Then configure some
-                basics such as which domain(s) your project should be deployed
-                to.
-              </p>
-              <p>
-                We then put together a downloadable archive of a sleek project.
-                Just extract it and start coding.
-              </p>
-              <p>
-                We get all the following pesky details configured for you so you
-                will be at peak productivity from the very beginning:
-              </p>
-              <Item icon={TypeScriptIcon} index={0}>
-                Enjoy code completion and static type checking with TypeScript.
-              </Item>
-              <Item icon={ESLintIcon} index={0}>
-                Format code automatically using ESLint and Prettier.
-              </Item>
-              <Item icon={JestIcon} index={0}>
-                Run tests with no hassle using Jest.
-              </Item>
-              <Item icon={VSCodeIcon} index={0}>
-                Get coding in minutes with Visual Studio Code.
-              </Item>
-              <Item icon={YarnIcon} index={0}>
-                Build modular applications using Yarn workspaces.
-              </Item>
-              <Item icon={TerraformIcon} index={0}>
-                Deploy infrastructure right away by using predefined Terraform
-                for every module.
-              </Item>
-              <Item icon={AWSIcon} index={0}>
-                Every module deploys as scaleable, low cost serverless
-                infrastructure on AWS.
-              </Item>
-              <Item icon={DockerIcon} index={0}>
-                Builds run locally or in your CI in Docker containers.
-              </Item>
-              <Item icon={SecurityIcon} index={0}>
-                Extensive documentation on how to deploy all resources with
-                enterprise level security.
-              </Item>
-              <p>
-                Goldstack provides professional, battle tested, and frequently
-                updated starter templates. Starting with a Goldstack template
-                will save you tons of time. But likewise it is a huge
-                committment from us to develop and maintain these templates;
-                thus we charge a small fee that will unlock support and
-                unlimited template downloads for a month. Thank you for your
-                support 🙏
-              </p>
-            </Col>
-          </Row>
-        </Container>
+        <ModuleSelection elements={elementsStr.split(',')}></ModuleSelection>
       </main>
       <Footer></Footer>
     </>
   );
 };
 
-export default Front;
+export default Build;

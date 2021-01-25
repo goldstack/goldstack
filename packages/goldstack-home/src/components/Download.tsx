@@ -33,7 +33,11 @@ const fetcher = (url: string): any =>
     credentials: 'include',
   }).then((r) => r.json());
 
-const DownloadReady = (props: { downloadUrl: string }): JSX.Element => {
+const DownloadReady = (props: {
+  downloadUrl: string;
+  projectId: string;
+  packageId: string;
+}): JSX.Element => {
   const checkCircle = dataUriToSrc(CheckCircle);
   return (
     <>
@@ -56,6 +60,14 @@ const DownloadReady = (props: { downloadUrl: string }): JSX.Element => {
               href={props.downloadUrl}
             >
               Download
+            </a>
+          </div>
+          <div className="pt-3">
+            <a
+              className="btn btn-primary btn-pill transition-3d-hover px-5"
+              href={`/projects/${props.projectId}/packages/${props.packageId}/configure/1`}
+            >
+              Configure AWS Deployment
             </a>
           </div>
           <div className="pt-3">
@@ -167,6 +179,8 @@ const Download = (props: DownloadProps): JSX.Element => {
             )}
             {packageData && (
               <DownloadReady
+                projectId={props.projectId}
+                packageId={props.packageId}
                 downloadUrl={packageData.downloadUrl}
               ></DownloadReady>
             )}

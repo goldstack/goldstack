@@ -19,6 +19,104 @@ const router = Router({
   mergeParams: true,
 });
 
+const writePackage = async (params: {
+  projectId: string;
+  packageId: string;
+  userToken: any;
+  projectData: ProjectData;
+  res: Response;
+}): Promise<void> => {
+  const projectId = params.projectId;
+  const userToken = params.userToken;
+  const projectData = params.projectData;
+  const packageId = params.packageId;
+  const res = params.res;
+  if (!projectId) {
+    res.status(400).json({ errorMessage: 'Expected projectId in request' });
+    return;
+  }
+  if (!userToken) {
+    res
+      .status(400)
+      .json({ errorMessage: 'Expected userToken cookie to be set' });
+    return;
+  }
+  const repo = await connectProjectRepository();
+  const project = await repo.readProjectConfiguration(projectId);
+
+  if (!project) {
+    res.status(400).json({ errorMessage: 'Project does not exist' });
+    return;
+  }
+  if (project?.owner !== userToken) {
+    res.status(404).json({ errorMessage: 'Not authorised' });
+    return;
+  }
+
+  const path = `${tempDir()}work/post-project-package/${projectId}/${packageId}/`;
+  await rmSafe(path);
+  mkdir('-p', path);
+
+  await repo.downloadProject(projectId, path);
+
+  // write latest version for project config
+  const owner = project.owner;
+  project.owner = undefined;
+  write(JSON.stringify(project, null, 2), path + 'project.json');
+
+  // write owner into gitignored config file
+  write(
+    JSON.stringify({ owner }, null, 2),
+    path + 'config/goldstack/config.json'
+  );
+
+  // set project name in package json
+  const packageJson = JSON.parse(read(path + 'package.json'));
+  packageJson.name = project.projectName || '';
+  write(JSON.stringify(packageJson, null, 2), path + 'package.json');
+
+  // write latest version for package configs
+  const { packageConfigs } = await repo.getProjectData(projectId);
+  writePackageConfigs(path, packageConfigs);
+
+  // write aws user config
+  const userConfigPath = path + 'config/infra/aws/config.json';
+  write(
+    JSON.stringify({ users: projectData.awsUsers }, null, 2),
+    userConfigPath
+  );
+
+  const zipPath = `${tempDir()}work/post-project-package/${projectId}/${packageId}.zip`;
+  await zip({ directory: path, target: zipPath });
+
+  const packageBucket = await connect();
+
+  const packageData = {
+    packageId,
+    projectId,
+    owner: project.owner,
+    createdAt: new Date().toISOString(),
+    projectData,
+  };
+
+  await packageBucket
+    .putObject({
+      Bucket: await getBucketName(),
+      Key: `${projectId}/${packageId}/package.json`,
+      Body: JSON.stringify(packageData, null, 2),
+    })
+    .promise();
+
+  await packageBucket
+    .putObject({
+      Bucket: await getBucketName(),
+      Key: `${projectId}/${packageId}/package.zip`,
+      Body: fs.createReadStream(zipPath),
+    })
+    .promise();
+  await rmSafe(path);
+};
+
 export const postPackageHandler = async (
   req: Request,
   res: Response
@@ -27,95 +125,44 @@ export const postPackageHandler = async (
     const { projectId } = req.params;
     const { userToken } = req.cookies;
     const { body: projectData }: { body: ProjectData } = req;
-    if (!projectId) {
-      res.status(400).json({ errorMessage: 'Expected projectId in request' });
-      return;
-    }
-    if (!userToken) {
-      res
-        .status(400)
-        .json({ errorMessage: 'Expected userToken cookie to be set' });
-      return;
-    }
-    const repo = await connectProjectRepository();
-    const project = await repo.readProjectConfiguration(projectId);
-
-    if (!project) {
-      res.status(400).json({ errorMessage: 'Project does not exist' });
-      return;
-    }
-    if (project?.owner !== userToken) {
-      res.status(404).json({ errorMessage: 'Not authorised' });
-      return;
-    }
-
     const packageId = uuid4();
-    const path = `${tempDir()}work/post-project-package/${projectId}/${packageId}/`;
-    await rmSafe(path);
-    mkdir('-p', path);
 
-    await repo.downloadProject(projectId, path);
-
-    // write latest version for project config
-    const owner = project.owner;
-    project.owner = undefined;
-    write(JSON.stringify(project, null, 2), path + 'project.json');
-
-    // write owner into gitignored config file
-    write(
-      JSON.stringify({ owner }, null, 2),
-      path + 'config/goldstack/config.json'
-    );
-
-    // set project name in package json
-    const packageJson = JSON.parse(read(path + 'package.json'));
-    packageJson.name = project.projectName || '';
-    write(JSON.stringify(packageJson, null, 2), path + 'package.json');
-
-    // write latest version for package configs
-    const { packageConfigs } = await repo.getProjectData(projectId);
-    writePackageConfigs(path, packageConfigs);
-
-    // write aws user config
-    const userConfigPath = path + 'config/infra/aws/config.json';
-    write(
-      JSON.stringify({ users: projectData.awsUsers }, null, 2),
-      userConfigPath
-    );
-
-    const zipPath = `${tempDir()}work/post-project-package/${projectId}/${packageId}.zip`;
-    await zip({ directory: path, target: zipPath });
-
-    const packageBucket = await connect();
-
-    const packageData = {
-      packageId,
+    await writePackage({
       projectId,
-      owner: project.owner,
-      createdAt: new Date().toISOString(),
+      packageId,
+      userToken,
       projectData,
-    };
-
-    await packageBucket
-      .putObject({
-        Bucket: await getBucketName(),
-        Key: `${projectId}/${packageId}/package.json`,
-        Body: JSON.stringify(packageData, null, 2),
-      })
-      .promise();
-
-    await packageBucket
-      .putObject({
-        Bucket: await getBucketName(),
-        Key: `${projectId}/${packageId}/package.zip`,
-        Body: fs.createReadStream(zipPath),
-      })
-      .promise();
+      res,
+    });
 
     res.status(200).json({ projectId, packageId });
-    await rmSafe(path);
   } catch (e) {
     console.error('Cannot post package for project', e);
+    res.status(500).json({ errorMessage: e.message });
+    return;
+  }
+};
+
+export const putPackageHandler = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const { projectId, packageId } = req.params;
+    const { userToken } = req.cookies;
+    const { body: projectData }: { body: ProjectData } = req;
+
+    await writePackage({
+      projectId,
+      packageId,
+      userToken,
+      projectData,
+      res,
+    });
+
+    res.status(200).json({ projectId, packageId });
+  } catch (e) {
+    console.error('Cannot put package for project', e);
     res.status(500).json({ errorMessage: e.message });
     return;
   }
@@ -215,5 +262,7 @@ export const getPackageHandler = async (
 router.post('/', postPackageHandler);
 
 router.get('/:packageId', getPackageHandler);
+
+router.put('/:packageId', putPackageHandler);
 
 export default router;

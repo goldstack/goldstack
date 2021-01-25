@@ -18,7 +18,7 @@ import { ProjectData } from '@goldstack/project-repository';
 
 import { getDocLinks } from './utils/docLinks';
 
-import builds from './packages';
+import packagesRouter from './packages';
 
 const router = Router();
 
@@ -236,7 +236,6 @@ router.post('/', postProjectHandler);
 router.get('/:projectId', getProjectHandler);
 router.put('/:projectId', putProjectHandler);
 router.get('/:projectId/docs', getProjectDocsHandler);
-
-router.use('/:projectId/packages', builds);
+router.use('/:projectId/packages', packagesRouter);
 
 export default router;

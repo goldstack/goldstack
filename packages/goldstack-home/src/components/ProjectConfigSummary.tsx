@@ -32,11 +32,14 @@ const ValidationResult = (props: { result: StepValidation }): JSX.Element => {
   );
 };
 
-const buildPackage = async (data: ProjectData): Promise<any> => {
+const buildPackage = async (
+  packageId: string,
+  data: ProjectData
+): Promise<any> => {
   const packageRes = await fetch(
-    `${getEndpoint()}/projects/${data.projectId}/packages`,
+    `${getEndpoint()}/projects/${data.projectId}/packages/${packageId}`,
     {
-      method: 'POST',
+      method: 'PUT',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -52,6 +55,7 @@ const buildPackage = async (data: ProjectData): Promise<any> => {
 
 const ProjectConfigSummary = (props: {
   projectData: ProjectData;
+  packageId: string;
 }): JSX.Element => {
   const [progressMessage, setProgressMessage] = useState<string | undefined>(
     undefined
@@ -87,11 +91,14 @@ const ProjectConfigSummary = (props: {
     }
 
     setProgressMessage('Building project package ...');
-    const { packageId } = await buildPackage(props.projectData);
+    const { packageId } = await buildPackage(
+      props.packageId,
+      props.projectData
+    );
     setProgressMessage('Done!');
     assert(packageId);
     router.push(
-      `/projects/${props.projectData.projectId}/packages/${packageId}/pricing-options`
+      `/projects/${props.projectData.projectId}/packages/${packageId}/download`
     );
   };
 

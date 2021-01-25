@@ -46,10 +46,10 @@ const updateProject = async (
 
 const ConfigureProject = (): JSX.Element => {
   const router = useRouter();
-  const { id, step } = router.query;
+  const { id, step, packageId } = router.query;
   // when page changes, trigger save to backend
 
-  if (!id || !step) {
+  if (!id || !step || !packageId) {
     return (
       <>
         <Header></Header>
@@ -135,6 +135,7 @@ const ConfigureProject = (): JSX.Element => {
                             : parseInt(step as string)
                         }
                         projectData={projectData}
+                        packageId={packageId.toString()}
                         configureSteps={configureSteps}
                         onChange={onChange}
                         onStepSubmit={onStepSubmit}

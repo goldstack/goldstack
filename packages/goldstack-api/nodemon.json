@@ -2,7 +2,7 @@
   "watch": [
     "../../.."
   ],
-  "ext": "js",
+  "ext": "js, ts",
   "ignore": [
     "**/distImg/**/*",
     "**/webDist/**/*",
