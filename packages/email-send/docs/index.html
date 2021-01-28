@@ -78,7 +78,7 @@
   </g>
 </svg></span></h2>
 <p></p><div class="markdown-fragment"><p>All infrastructure for this module is defined in Terraform. You can find the Terraform files for this module in the directory <code class="inline">[moduleDir]/infra/aws</code>. You can define multiple deployments for this module, for instance for development, staging and production environments. </p>
-<p>If you configured AWS deployment before downloading your projects, the deployments and their respective configurations are defined in <code class="inline">[moduleDir]/goldstack.json</code>.</p>
+<p>If you configured AWS deployment before downloading your project, the deployments and their respective configurations are defined in <code class="inline">[moduleDir]/goldstack.json</code>.</p>
 <p>The configuration tool will define one deployment. This will be either <code class="inline">dev</code> or <code class="inline">prod</code> depending on your choice during project configuration. In the example <code class="inline">goldstack.json</code> below, a deployment with the name <code class="inline">dev</code> is defined.</p>
 <pre class="language-json language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"$schema"</span><span class="token operator">:</span> <span class="token string">"./schemas/package.schema.json"</span><span class="token punctuation">,</span>

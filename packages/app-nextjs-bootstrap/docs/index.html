@@ -104,7 +104,7 @@
   </g>
 </svg></span></h2>
 <p></p><div class="markdown-fragment"><p>All infrastructure for this module is defined in Terraform. You can find the Terraform files for this module in the directory <code class="inline">[moduleDir]/infra/aws</code>. You can define multiple deployments for this module, for instance for development, staging and production environments. </p>
-<p>If you configured AWS deployment before downloading your projects, the deployments and their respective configurations are defined in <code class="inline">[moduleDir]/goldstack.json</code>.</p>
+<p>If you configured AWS deployment before downloading your project, the deployments and their respective configurations are defined in <code class="inline">[moduleDir]/goldstack.json</code>.</p>
 <p>The configuration tool will define one deployment. This will be either <code class="inline">dev</code> or <code class="inline">prod</code> depending on your choice during project configuration. In the example <code class="inline">goldstack.json</code> below, a deployment with the name <code class="inline">dev</code> is defined.</p>
 <pre class="language-json language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"$schema"</span><span class="token operator">:</span> <span class="token string">"./schemas/package.schema.json"</span><span class="token punctuation">,</span>
@@ -187,6 +187,59 @@
 <p></p><div class="markdown-fragment"><p>This module can be packaged up and deployed to the deployments specified in <code class="inline">goldstack.json</code>. Note that deployment will only work <em>after</em> the infrastructure for the respective deployment has been stood up. To deploy your module, run the following script:</p>
 <pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> deploy <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
 </code></pre></div><p></p>
+<p></p><div class="markdown-fragment"><h3 class="heading"><span id="vercel-deployment-1"></span><a href="#vercel-deployment-1"><span id="vercel-deployment"></span><a href="#vercel-deployment" class="relative">Vercel Deployment</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>The Goldstack Next.js modules can easily be deployed to Vercel.</p>
+<h4 class="heading"><span id="1-sign-up-to-vercel-1"></span><a href="#1-sign-up-to-vercel-1"><span id="1-sign-up-to-vercel"></span><a href="#1-sign-up-to-vercel" class="relative">1. Sign Up to Vercel</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<p>You need to create a vercel account if you do not have one already. Use your GitHub account to sign up to Vercel. Your project must be defined in a GitHub repository on this account.</p>
+<p><a href="https://vercel.com/signup" class="absolute" target="_blank" rel="noopener noreferrer">https://vercel.com/signup</a></p>
+<h4 class="heading"><span id="2-configure-project-1"></span><a href="#2-configure-project-1"><span id="2-configure-project"></span><a href="#2-configure-project" class="relative">2. Configure Project</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<p>Click on <a href="https://vercel.com/new" class="absolute" target="_blank" rel="noopener noreferrer">New Project</a> on the Vercel dashboard to create a new project.</p>
+<p><img src="https://cdn.goldstack.party/img/202101/vercel_new_project.png" alt="Vercel New Project"></p>
+<p>Grant Vercel access to the GitHub repository you want to deploy.</p>
+<p>Then click on <code class="inline">Import</code> to import this repository.</p>
+<p><img src="https://cdn.goldstack.party/img/202101/vercel_import.png" alt="Vercel Import Project"></p>
+<p>Add the project to your personal account. Select the <strong>root directory</strong> of your project as the source code to import (not the directory of the package with the Next.js application).</p>
+<p>Click to extend <em>Build and Output Settings</em> and provide the following build command:</p>
+<pre><code>yarn &#x26;&#x26; yarn build &#x26;&#x26; cd packages/app-nextjs-bootstrap &#x26;&#x26; yarn build:next
+</code></pre>
+<p>Also change the output directory:</p>
+<pre><code>packages/app-nextjs-bootstrap/webDist
+</code></pre>
+<p>Ensure to replace <code class="inline">app-nextjs-bootstrap</code> with the name to the Next.js package you want to deploy in the two values above.</p>
+<p>Provide environment variables if you have defined any.</p>
+<p><img src="https://cdn.goldstack.party/img/202101/vercel_build_commands.png" alt="Vercel Build Commands"></p>
+<p>Click <strong>Deploy</strong> to trigger the deployment. Your application should now be deployed under a <code class="inline">vercel.app</code>domain. </p>
+<p>For more information, see the <a href="https://vercel.com/docs" class="absolute" target="_blank" rel="noopener noreferrer">Vercel Documentation</a>.</p></div><p></p>
 <h2 class="heading"><span id="limitations"></span><a href="#limitations">Limitations</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
