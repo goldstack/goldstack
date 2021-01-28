@@ -121,6 +121,20 @@ export const getStaticProps: GetStaticProps = async (context) => {
         // icons: [AWSIcon, CloudFrontIcon, S3Icon],
       },
       {
+        title: 'Easy to Deploy to Vercel',
+        description:
+          'If you prefer to deploy your Next.js application to Vercel over AWS, this can be accomplished in a few easy steps if you have a Vercel account.',
+        content: {
+          type: 'image',
+          data: {
+            image: 'vercel-deployed',
+          },
+        },
+        moreDetails: {
+          description: '',
+        },
+      },
+      {
         title: 'Extendable and Configurable Infrastructure',
         description:
           'Easily add any service from the AWS cloud to your Next.js application by modifying the Terraform files included in the template.',

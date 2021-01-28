@@ -1,3 +1,4 @@
 .next/
 webDist/
 out/
+.vercel

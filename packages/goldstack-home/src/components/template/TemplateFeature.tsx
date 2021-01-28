@@ -12,6 +12,7 @@ import FeatureCombineTemplates from 'src/components/template/FeatureCombineTempl
 
 import NextJsConfigGif from 'src/img/nextjs-config.gif';
 import ReactTypeScriptGif from 'src/img/react-typescript.gif';
+import VercelDeployedImg from 'src/img/vercel_deployed.png';
 import FeatureBootstrap from './FeatureBootstrap';
 export interface CallToAction {
   title: string;
@@ -85,6 +86,13 @@ const createGif = (gif: string): React.ReactNode => {
   throw new Error('Unknown gif ' + gif);
 };
 
+const createImage = (image: string): React.ReactNode => {
+  if (image === 'vercel-deployed') {
+    return <img src={VercelDeployedImg} className="img-fluid"></img>;
+  }
+  throw new Error('Unknown image ' + image);
+};
+
 const TemplateFeature = (props: TemplateFeatureProps): JSX.Element => {
   const plusSvg = dataUriToSrc(Plus);
 
@@ -96,6 +104,10 @@ const TemplateFeature = (props: TemplateFeatureProps): JSX.Element => {
     }
     case 'gif': {
       content = createGif(props.content.data.gif);
+      break;
+    }
+    case 'image': {
+      content = createImage(props.content.data.image);
       break;
     }
     case 'aws-deployment': {
