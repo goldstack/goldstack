@@ -32,7 +32,7 @@ You will need to link your local project to Vercel. For this, run:
 vercel
 ```
 
-You will be asked to provide your email address. Use the same email address that is the primary email address of your GitHub account. You should receive a verification link to your email address. 
+You will be asked to provide your email address. Use the same email address that is the primary email address of your GitHub account. You should receive a verification link to your email address.
 
 Make sure to go into the directory of the package that contains your Next.js application.
 Now run the following:
@@ -72,6 +72,5 @@ To confirm in which directory your code is located, leave it as the default `./`
 ```
 ? In which directory is your code located? ./
 ```
-
 
 [It is not possible to deploy a locally built Next.js app to Vercel](https://vercel.com/knowledge/deploying-locally-built-nextjs)

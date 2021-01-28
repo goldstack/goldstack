@@ -8,7 +8,7 @@ You need to create a vercel account if you do not have one already. Use your Git
 
 [https://vercel.com/signup](https://vercel.com/signup)
 
-#### 2. Configure Project 
+#### 2. Configure Project
 
 Click on [New Project](https://vercel.com/new) on the Vercel dashboard to create a new project.
 
@@ -22,12 +22,11 @@ Then click on `Import` to import this repository.
 
 Add the project to your personal account. Select the **root directory** of your project as the source code to import (not the directory of the package with the Next.js application).
 
-Click to extend *Build and Output Settings* and provide the following build command:
+Click to extend _Build and Output Settings_ and provide the following build command:
 
 ```
 yarn && yarn build && cd packages/app-nextjs-bootstrap && yarn build:next
 ```
-
 
 Also change the output directory:
 
@@ -41,6 +40,6 @@ Provide environment variables if you have defined any.
 
 ![Vercel Build Commands](https://cdn.goldstack.party/img/202101/vercel_build_commands.png)
 
-Click **Deploy** to trigger the deployment. Your application should now be deployed under a `vercel.app`domain. 
+Click **Deploy** to trigger the deployment. Your application should now be deployed under a `vercel.app`domain.
 
 For more information, see the [Vercel Documentation](https://vercel.com/docs).
