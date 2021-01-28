@@ -13,11 +13,12 @@ const ExpandableItem = (props: {
   link: string;
   id: string;
   children: React.ReactNode;
+  className: string;
 }): JSX.Element => {
   return (
     <>
       <a
-        className="dropdown-nav-link"
+        className={`dropdown-nav-link ${props.className}`}
         // dropdown-toggle dropdown-toggle-collapse"
         href={props.link}
         role="button"
@@ -32,7 +33,7 @@ const ExpandableItem = (props: {
 
       <div
         id="sidebarNav1Collapse"
-        // className="collapse"
+        className={props.className}
         // data-parent={`#${props.id}-parent`}
       >
         <div id={props.id} className="navbar-nav align-items-start flex-column">
@@ -43,20 +44,26 @@ const ExpandableItem = (props: {
   );
 };
 
+const getItemPadding = (level: number): string => {
+  let padding: string;
+  if (level === 1) {
+    padding = 'px-0';
+  }
+  if (level === 2) {
+    padding = '';
+  } else {
+    padding = `px-${level - 1}`;
+  }
+  return padding;
+};
+
 const LeafItem = (props: {
   title: string;
   link: string;
   level: number;
 }): JSX.Element => {
-  let padding: string;
-  if (props.level === 1) {
-    padding = 'px-0';
-  }
-  if (props.level === 2) {
-    padding = '';
-  } else {
-    padding = `px-${props.level - 1}`;
-  }
+  const padding = getItemPadding(props.level);
+
   return (
     <>
       <a
@@ -85,6 +92,7 @@ const Item = (props: { heading: Heading; level: number }): JSX.Element => {
       title={props.heading.title}
       link={`#${props.heading.id}`}
       id={`${props.heading.id}-nav`}
+      className={getItemPadding(props.level + 1)}
     >
       {props.heading.subheadings.map((subheading, idx) => {
         return (

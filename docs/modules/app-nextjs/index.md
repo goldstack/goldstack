@@ -25,7 +25,9 @@ title: Next.js
 
 [!embed](./../shared/deployment.md)
 
-## Limitations
+[!embed](./vercel-deployment.md)
+
+## Limitations for AWS Deployments
 
 [!embed](./limitations.md)
 

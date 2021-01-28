@@ -26,7 +26,9 @@ title: Next.js Bootstrap
 
 [!embed](./../shared/deployment.md)
 
-## Limitations
+[!embed](./../app-nextjs/vercel-deployment.md)
+
+## Limitations for AWS Deployments
 
 [!embed](./../app-nextjs/limitations.md)
 
