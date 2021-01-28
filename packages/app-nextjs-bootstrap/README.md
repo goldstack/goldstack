@@ -56,7 +56,7 @@ Goldstack's Next.js module is a simple wrapper around a standard Next.js project
 
 ## Infrastructure
 
-All infrastructure for this module is defined in Terraform. You can find the Terraform files for this module in the directory `[moduleDir]/infra/aws`. You can define multiple deployments for this module, for instance for development, staging and production environments. 
+All infrastructure for this module is defined in Terraform. You can find the Terraform files for this module in the directory `[moduleDir]/infra/aws`. You can define multiple deployments for this module, for instance for development, staging and production environments.
 
 If you configured AWS deployment before downloading your project, the deployments and their respective configurations are defined in `[moduleDir]/goldstack.json`.
 
@@ -168,11 +168,11 @@ Provide environment variables if you have defined any.
 
 ![Vercel Build Commands](https://cdn.goldstack.party/img/202101/vercel_build_commands.png)
 
-Click **Deploy** to trigger the deployment. Your application should now be deployed under a `vercel.app`domain. 
+Click **Deploy** to trigger the deployment. Your application should now be deployed under a `vercel.app`domain.
 
 For more information, see the [Vercel Documentation](https://vercel.com/docs).
 
-## Limitations
+## Limitations for AWS Deployments
 
 Goldstack's Next.js modules enable deploying Next.js applications to a serverless AWS infrastructure. The advantage of this is that you get a very low cost, highly scalable and enterprise ready deployment for the Next.js application. However, serverless AWS infrastructure is structurally different to deployments on Vercel or deployments as stand alone Node.js applications. Thus there are a couple of limitations to keep in mind when working with this template:
 
