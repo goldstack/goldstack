@@ -65,7 +65,7 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
               className="font-size-1"
               style={{ marginLeft: '0.5em' }}
               target="_blank"
-              rel="noreffered"
+              rel="noreferrer"
             >
               docs
             </a>
