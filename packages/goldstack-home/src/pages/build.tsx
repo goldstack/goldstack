@@ -21,10 +21,20 @@ import { buildProjectConfig } from './../lib/buildProject';
 import { getEndpoint } from '@goldstack/goldstack-api';
 import { PackageConfig } from '@goldstack/project-config';
 
+import { LeftArrow } from './../components/LearnMore';
+
+import NextjsIcon from './../icons/nextjs.svg';
+import BootstrapIcon from './../icons/bootstrap.svg';
+import CloudFrontIcon from './../icons/cloudfront.svg';
+import ExpressIcon from './../icons/nodejs.svg';
+import S3Icon from './../icons/s3.svg';
+import SESIcon from './../icons/ses.svg';
 interface CheckboxProps {
   title: string;
   className?: string;
   element: string;
+  icon: any;
+  docsLink: string;
   disabled: boolean;
   checked?: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -44,7 +54,21 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
             onChange={props.onChange}
           ></input>
           <label className="custom-control-label" htmlFor={props.element}>
+            <img
+              style={{ width: '1.5em', marginRight: '0.5em' }}
+              src={props.icon}
+            ></img>
             {props.title}
+
+            <a
+              href={props.docsLink}
+              className="font-size-1"
+              style={{ marginLeft: '0.5em' }}
+              target="_blank"
+              rel="noreffered"
+            >
+              docs
+            </a>
           </label>
         </div>
       </div>
@@ -183,6 +207,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
     doConfigure(false);
   };
 
+  const docsRoot = process.env.NEXT_PUBLIC_GOLDSTACK_DOCS;
   return (
     <>
       <Container className="space-2">
@@ -200,14 +225,18 @@ const ModuleSelection = (props: { elements: string[] }) => {
                   <Checkbox
                     title="NextJs"
                     element="nextjs"
+                    icon={NextjsIcon}
                     disabled={building}
+                    docsLink={docsRoot + '/modules/app-nextjs'}
                     checked={elements.indexOf('nextjs') !== -1}
                     onChange={checkboxChange}
                   ></Checkbox>
                   <Checkbox
                     title="With Bootstrap"
+                    icon={BootstrapIcon}
                     element="bootstrap"
                     disabled={building}
+                    docsLink={docsRoot + '/modules/app-nextjs-bootstrap'}
                     className="ml-4"
                     checked={
                       elements.indexOf('nextjs') !== -1 &&
@@ -218,6 +247,8 @@ const ModuleSelection = (props: { elements: string[] }) => {
                   <Checkbox
                     title="Static Website"
                     element="static-website"
+                    icon={CloudFrontIcon}
+                    docsLink={docsRoot + '/modules/static-website-aws'}
                     disabled={building}
                     checked={elements.indexOf('static-website') !== -1}
                     onChange={checkboxChange}
@@ -230,6 +261,8 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     title="Lambda with Express Server"
                     element="express"
                     disabled={building}
+                    icon={ExpressIcon}
+                    docsLink={docsRoot + '/modules/lambda-express'}
                     checked={elements.indexOf('express') !== -1}
                     onChange={checkboxChange}
                   ></Checkbox>
@@ -241,14 +274,18 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     title="S3"
                     element="s3"
                     disabled={building}
+                    icon={S3Icon}
                     checked={elements.indexOf('s3') !== -1}
+                    docsLink={docsRoot + '/modules/s3'}
                     onChange={checkboxChange}
                   ></Checkbox>
                   <Checkbox
                     title="Email"
                     element="email-send"
+                    icon={SESIcon}
                     disabled={building}
                     checked={elements.indexOf('email-send') !== -1}
+                    docsLink={docsRoot + '/modules/email-send'}
                     onChange={checkboxChange}
                   ></Checkbox>
                 </div>

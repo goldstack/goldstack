@@ -143,13 +143,15 @@ const OneOffPurchase = (props: OneOffPurchaseProps): JSX.Element => {
               </label>
               <input
                 ref={couponInput}
+                disabled
                 type="text"
                 className="form-control"
                 name="coupon"
                 id="coupon"
+                value="FREEBETA"
                 placeholder="Optional coupon for purchase"
                 aria-label="Coupon"
-                data-msg="Provide an optional coupon"
+                data-msg="All templates free during beta."
               />
             </div>
           </div>
@@ -158,8 +160,10 @@ const OneOffPurchase = (props: OneOffPurchaseProps): JSX.Element => {
           <div className="col">
             <div className="mb-5">
               <h2 className="font-size-1 text-body mb-0">Total price:</h2>
-              {/* <span className="text-dark font-size-2 font-weight-bold">$0</span> */}
-              <span className="text-body ml-2">$20</span>
+              <span className="text-dark font-size-2 font-weight-bold">$0</span>
+              <span className="text-body ml-2">
+                <span style={{ textDecoration: 'line-through' }}>$20</span>
+              </span>
             </div>
           </div>
         </div>

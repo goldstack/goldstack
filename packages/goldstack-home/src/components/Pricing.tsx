@@ -33,7 +33,7 @@ const Pricing = (props: PricingProps): JSX.Element => {
       <div className="container space-2">
         <div className="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
           <h2 className="h1">{props.title}</h2>
-          {/* <p>Completely free while we are in beta 💖</p> */}
+          <p>Completely free while we are in beta 💖</p>
         </div>
 
         <div className="row align-items-lg-center">
@@ -41,9 +41,13 @@ const Pricing = (props: PricingProps): JSX.Element => {
             <div className="card z-index-2 p-4 p-md-7">
               <span className="text-dark">
                 <h3>1 Month Unlimited Templates</h3>
-                <span className="display-4">
-                  <span>$20</span>
+                <span
+                  className="display-2"
+                  style={{ textDecoration: 'line-through' }}
+                >
+                  $20
                 </span>
+                <span className="font-size-1">free while in beta</span>
               </span>
 
               <hr className="my-4" />
@@ -106,13 +110,13 @@ const Pricing = (props: PricingProps): JSX.Element => {
                     Download as many templates as you like for the next 30 days.
                   </p>
                 </div>
-                <div className="col-sm-6">
+                {/*<div className="col-sm-6">
                   <figure className="w-100 max-w-6rem mb-3">
                     <img className="img-fluid" src={MoneyBackIcon} alt="SVG" />
                   </figure>
                   <h4>Money back</h4>
                   <p>100% money back guaranteed.</p>
-                </div>
+  </div> */}
               </div>
             </div>
           </div>

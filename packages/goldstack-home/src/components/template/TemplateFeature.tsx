@@ -1,6 +1,5 @@
 import React from 'react';
 
-import AngleRight from 'src/icons/font-awesome/solid/angle-right.svg';
 import { dataUriToSrc } from 'src/utils/utils';
 
 import Plus from 'src/icons/font-awesome/solid/plus.svg';
@@ -9,19 +8,16 @@ import styles from './TemplateFeature.module.css';
 import FeatureAWSDeployment from 'src/components/template/FeatureAWSDeployment';
 import FeatureProjectInstall from 'src/components/template/FeatureProjectInstall';
 import FeatureCombineTemplates from 'src/components/template/FeatureCombineTemplates';
-
+import LearnMore, { MoreDetails } from 'src/components/LearnMore';
 import NextJsConfigGif from 'src/img/nextjs-config.gif';
 import ReactTypeScriptGif from 'src/img/react-typescript.gif';
 import VercelDeployedImg from 'src/img/vercel_deployed.png';
+import LambdaConfigImg from 'src/img/lambda_config.png';
+import EndpointTypeScript from 'src/img/endpoint_typescript.png';
 import FeatureBootstrap from './FeatureBootstrap';
 export interface CallToAction {
   title: string;
   link: string;
-}
-
-export interface MoreDetails {
-  description: string;
-  link?: string;
 }
 
 export interface FeatureContent {
@@ -37,26 +33,6 @@ export interface TemplateFeatureProps {
   content: FeatureContent;
   icons?: any[];
 }
-
-const LearnMore = (props: MoreDetails): JSX.Element => {
-  const angleRight = dataUriToSrc(AngleRight);
-  return (
-    <div className="text-center mb-7 mt-5">
-      <p>
-        {props.description} <span></span>
-        {props.link && (
-          <a className="font-weight-bold" href={props.link}>
-            Learn more
-            <span
-              className={styles['angle-right']}
-              dangerouslySetInnerHTML={{ __html: angleRight }}
-            ></span>
-          </a>
-        )}
-      </p>
-    </div>
-  );
-};
 
 const IconList = (props: { icons: any[] }): JSX.Element => {
   const images = props.icons.map((icon) => dataUriToSrc(icon));
@@ -89,6 +65,12 @@ const createGif = (gif: string): React.ReactNode => {
 const createImage = (image: string): React.ReactNode => {
   if (image === 'vercel-deployed') {
     return <img src={VercelDeployedImg} className="img-fluid"></img>;
+  }
+  if (image === 'endpoint-typescript') {
+    return <img src={EndpointTypeScript} className="img-fluid"></img>;
+  }
+  if (image === 'lambda-config') {
+    return <img src={LambdaConfigImg} className="img-fluid"></img>;
   }
   throw new Error('Unknown image ' + image);
 };
@@ -123,7 +105,11 @@ const TemplateFeature = (props: TemplateFeatureProps): JSX.Element => {
       break;
     }
     case 'project-install': {
-      content = <FeatureProjectInstall></FeatureProjectInstall>;
+      content = (
+        <FeatureProjectInstall
+          projectName={props.content.data.projectName}
+        ></FeatureProjectInstall>
+      );
       break;
     }
     case 'bootstrap': {

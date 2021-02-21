@@ -19,13 +19,15 @@ const LinkItem = (props: {
   idx: number;
 }): JSX.Element => {
   const router = useRouter();
-  const { id } = router.query;
+  const { id, packageId } = router.query;
   return (
     <div className="media align-items-center mb-3">
       <span className="d-block font-size-1 mr-3">
         <Link
-          href="/projects/[id]/configure/[step]"
-          as={`/projects/${id}/configure/${props.idx + 1}`}
+          href="/projects/[id]/packages/[packageId]/configure/[step]"
+          as={`/projects/${id}/packages/${packageId}/configure/${
+            props.idx + 1
+          }`}
           prefetch={false}
           shallow={true}
         >

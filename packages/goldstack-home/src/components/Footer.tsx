@@ -25,6 +25,11 @@ const Footer = (): JSX.Element => {
                     Next.js + Bootstrap
                   </a>
                 </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/templates/express-lambda">
+                    Express.js + Lambda
+                  </a>
+                </li>
               </ul>
             </div>
 
