@@ -4,14 +4,12 @@ title: Next.js
 ---
 
 [!embed](./about.md)
-
-## Configure
-
-[!embed](./configure.md)
-
 ## Features
 
 [!embed](./features.md)
+## Configure
+
+[!embed](./configure.md)
 
 ## Getting Started
 

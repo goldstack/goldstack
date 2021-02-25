@@ -1,0 +1,6 @@
+- Deploy any static website files
+- Very fast load times due to deployment using AWS CloudFront CDN
+- Easy to use scripts for standing up infrastructure (`yarn infra up`) and deployment (`yarn deploy`)
+- Out of the box support for SSL without additional costs (using AWS certificates)
+- Optimised deployment script for fast and safe upload of changes
+- Very low cost hosting

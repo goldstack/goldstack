@@ -5,6 +5,10 @@ title: Static Website AWS
 
 [!embed](./about.md)
 
+## Features
+
+[!embed](./features.md)
+
 ## Configure
 
 [!embed](./configure.md)

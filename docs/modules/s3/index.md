@@ -5,6 +5,10 @@ title: S3
 
 [!embed](./about.md)
 
+## Features
+
+[!embed](./features.md)
+
 ## Configure
 
 [!embed](./configure.md)
