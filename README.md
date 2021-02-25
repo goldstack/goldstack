@@ -6,9 +6,9 @@ You can find the modules you have selected in the folder `packages/`.
 
 Find further information here:
 
-- [Project Configuration](https://docs.goldstack.party/docs/goldstack/configuration)
-- [Getting Started](https://docs.goldstack.party/docs/goldstack/getting-started)
-- [Security Hardening](https://docs.goldstack.party/docs/goldstack/security-hardening)
+*   [Project Configuration](https://docs.goldstack.party/docs/goldstack/configuration)
+*   [Getting Started](https://docs.goldstack.party/docs/goldstack/getting-started)
+*   [Security Hardening](https://docs.goldstack.party/docs/goldstack/security-hardening)
 
 ## Notes
 

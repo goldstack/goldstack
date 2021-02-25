@@ -4,6 +4,15 @@
 
 This module provides a simple static website that is deployed on a global [CloudFront](https://aws.amazon.com/cloudfront/) CDN provided by AWS.
 
+## Features
+
+*   Deploy any static website files
+*   Very fast load times due to deployment using AWS CloudFront CDN
+*   Easy to use scripts for standing up infrastructure (`yarn infra up`) and deployment (`yarn deploy`)
+*   Out of the box support for SSL without additional costs (using AWS certificates)
+*   Optimised deployment script for fast and safe upload of changes
+*   Very low cost hosting
+
 ## Configure
 
 The following key properties need to be configured for this module:

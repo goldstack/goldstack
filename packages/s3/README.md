@@ -4,6 +4,24 @@
 
 The S3 module provides a simple means for an application to store and access files on [AWS S3](https://aws.amazon.com/s3/). This template is set up for deploying an S3 bucket using Terraform and provides a simple TypeScript API to work with this bucket.
 
+## Features
+
+*   S3 bucket defined in Terraform
+*   Supports definition for multiple environments (staging, production)
+*   Infrastructure easily stood up using an npm script `yarn infra up`
+*   Embed in server applications by linking to the package 
+
+```javascript
+import { getBucketName, connect } from 'my-s3-module';
+
+const s3 = connect();
+await s3.putObject({
+  BucketName: getBucketName(),
+  Key: 'my-doc',
+  Body: 'content',
+});
+```
+
 ## Configure
 
 In order to provide a basic configuration for an S3 bucket, we only need to know the name of the bucket you want to create.

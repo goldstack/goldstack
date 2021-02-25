@@ -4,17 +4,6 @@
 
 This module provides a [Next.js](https://nextjs.org/) application set up to use Bootstrap styling that is deployed to AWS using the [CloudFront CDN](https://aws.amazon.com/cloudfront/) and [Lambda@Edge](https://aws.amazon.com/lambda/edge/).
 
-## Configure
-
-The following key properties need to be configured for this module:
-
-*   **Hosted Zone Domain**: A Route 53 hosted zone to which the *Primary Website Domain* and *Redirect Website Domain* can be added as records. For instance, the hosted zone domain `mysite.com` would allow adding the primary domain `mysite.com` and the redirect domain `www.mysite.com`. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
-*   **Primary Website Domain**: This is the domain your users will use to view the site. For instance, if you configure the domain `mysite.com`, users will be able to view your site by opening the URL `https://mysite.com`.
-*   **Redirect Website Domain**: This is a domain that will redirect all requests to your *Primary Website Domain*. The redirect website domain *must be* different to the *Primary Website Domain*. For instance, if you configure the domain `mysite.com` as your primary domain, you can configure `www.mysite.com` as your redirect domain. Users will be redirected to `https://mysite.com` when they attempt to open the URL `https://www.mysite.com`. Note that the *Redirect Website Domain* must be configured, even if you do not need this functionality.
-*   **Default Cache Duration**: The number of seconds that files will be cached in the AWS content delivery network. Setting this to `120` for instance, would mean that, unless otherwise specified, webpages and other resources will be cached for 120 s. In that case, when a new version of a page is deployed, it can take up to 120 s for changes to appear when accessing the deployed version of the application.
-
-*   **Environment Variables**: Configures environment variables for the application. Environment variables without the prefix `NEXT_PUBLIC_` will only be available during build time of the application. For more information see [Environment Variables](https://nextjs.org/docs/basic-features/environment-variables) in the Next.js documentation.
-
 ## Features
 
 *   Bootstrap styling for Next.js application
@@ -25,6 +14,17 @@ The following key properties need to be configured for this module:
     *   CDN caching optimised for Next.js (e.g. all files in `_next/static` are automatically cached on the CDN and the client)
     *   Configurable with your own domain name
     *   Rolling out of infrastructure and deployment supported through easy to use scripts
+
+## Configure
+
+The following key properties need to be configured for this module:
+
+*   **Hosted Zone Domain**: A Route 53 hosted zone to which the *Primary Website Domain* and *Redirect Website Domain* can be added as records. For instance, the hosted zone domain `mysite.com` would allow adding the primary domain `mysite.com` and the redirect domain `www.mysite.com`. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
+*   **Primary Website Domain**: This is the domain your users will use to view the site. For instance, if you configure the domain `mysite.com`, users will be able to view your site by opening the URL `https://mysite.com`.
+*   **Redirect Website Domain**: This is a domain that will redirect all requests to your *Primary Website Domain*. The redirect website domain *must be* different to the *Primary Website Domain*. For instance, if you configure the domain `mysite.com` as your primary domain, you can configure `www.mysite.com` as your redirect domain. Users will be redirected to `https://mysite.com` when they attempt to open the URL `https://www.mysite.com`. Note that the *Redirect Website Domain* must be configured, even if you do not need this functionality.
+*   **Default Cache Duration**: The number of seconds that files will be cached in the AWS content delivery network. Setting this to `120` for instance, would mean that, unless otherwise specified, webpages and other resources will be cached for 120 s. In that case, when a new version of a page is deployed, it can take up to 120 s for changes to appear when accessing the deployed version of the application.
+
+*   **Environment Variables**: Configures environment variables for the application. Environment variables without the prefix `NEXT_PUBLIC_` will only be available during build time of the application. For more information see [Environment Variables](https://nextjs.org/docs/basic-features/environment-variables) in the Next.js documentation.
 
 ## Getting Started
 

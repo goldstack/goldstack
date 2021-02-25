@@ -4,6 +4,12 @@
 
 The Email Send module provides a means to send emails from an application. It provides the infrastructure for email sending using [AWS Simple Email Service](https://aws.amazon.com/ses/) and provides a simple API for sending emails.
 
+## Features
+
+*   Easily send emails from backend applications
+*   Infrastructure defined in Terraform
+*   Low cost sends using AWS SES
+
 ## Configure
 
 The following key properties need to be configured for this module:

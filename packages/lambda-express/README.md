@@ -4,6 +4,16 @@
 
 Goldstack's Lambda Express module provides a basic Express.js server that is deployed as an AWS lambda function.
 
+## Features
+
+*   Express.js server running on AWS Lambda
+*   Very low cost, scalability out of the box
+*   Server packaged up using Webpack for small deployment size and quick on-demand start in Lambda
+*   All infrastructure defined in Terraform, easy to change and extend
+*   Infrastructure easily rolled out with dedicated npm script
+*   Deployment automated using Node.js module
+*   TypeScript, ESLint and Prettier configured
+
 ## Configure
 
 The following key properties need to be configured for this module:
