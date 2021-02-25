@@ -86,10 +86,15 @@ const DynamicConfigForm = (props: {
             </Link>
           )}
           {step.idx <= 0 && (
-            <Link href="/build" prefetch={false} shallow={true}>
+            <Link
+              href="/projects/[id]/packages/[packageId]/download"
+              prefetch={false}
+              shallow={true}
+              as={`/projects/${props.projectData.projectId}/packages/${props.packageId}/download`}
+            >
               <a className={'font-weight-bold'}>
                 <i className="fas fa-angle-left fa-xs mr-1"></i>
-                Back to builder
+                Back to download
               </a>
             </Link>
           )}
