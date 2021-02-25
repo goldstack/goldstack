@@ -2,6 +2,7 @@
 
 - A Route53 hosted zone for the domain
 - The domains are not referenced in any other CloudFront distributions
+
 ## Notes
 
 - By default all resources in `_next/static` will be cached.
