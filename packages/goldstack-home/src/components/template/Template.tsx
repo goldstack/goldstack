@@ -7,6 +7,7 @@ import TemplateCallToAction from './TemplateCallToAction';
 
 export interface TemplateProps {
   title: string;
+  description: string;
   hero: TextSectionProps;
   features: TemplateFeatureProps[];
 }
@@ -16,6 +17,9 @@ const Template = (props: TemplateProps): JSX.Element => {
     <>
       <Head>
         <title>{props.title}</title>
+        <meta property="og:title" content={props.title} key="title" />
+        <meta name="description" content={props.description} />
+        <meta property="og:description" content={props.description} />
       </Head>
       <TextSection {...props.hero}></TextSection>
       {props.features.map((feature, idx) => {

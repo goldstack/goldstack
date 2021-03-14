@@ -42,7 +42,20 @@ const Front = (): JSX.Element => {
   return (
     <>
       <Head>
-        <title>Goldstack</title>
+        <title>Goldstack - The Very Best Starter Projects</title>
+        <meta
+          property="og:title"
+          content="Goldstack - The Very Best Starter Projects"
+          key="title"
+        />
+        <meta
+          name="description"
+          content="Save tons of time with a starter project assembled by Goldstack."
+        />
+        <meta
+          property="og:description"
+          content="Save tons of time with a starter project assembled by Goldstack."
+        />
       </Head>
       <Header></Header>
       <main id="content" role="main">

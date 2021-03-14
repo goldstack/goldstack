@@ -64,6 +64,9 @@ class MyDocument extends Document {
             href="/favicon-16x16.png"
           />
           <link rel="manifest" href="/site.webmanifest"></link>
+          {process.env.GOLDSTACK_DEPLOYMENT === 'dev' && (
+            <meta name="robots" content="noindex"></meta>
+          )}
         </Head>
         <body>
           <Main />

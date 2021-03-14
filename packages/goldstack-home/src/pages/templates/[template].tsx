@@ -47,6 +47,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
    */
   const nextJsTemplate: TemplateProps = {
     title: 'Next.js Template',
+    description:
+      'Next.js with all the fun and none of the hassle. Download an optimised starter template.',
     hero: {
       title: 'Next.js with all the fun and none of the hassle.',
       content: `
@@ -179,6 +181,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
    */
   const nextJsBootstrapTemplate: TemplateProps = {
     title: 'Next.js + Bootstrap Template',
+    description:
+      'Download an optimised starter template to start your project with Next.js and Bootstrap.',
     hero: {
       title: 'Next.js and Bootstrap Template',
       content: `
@@ -216,6 +220,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const expressTemplate: TemplateProps = {
     title: 'Express.js Lambda Template',
+    description:
+      'Rapidly deploy an Express.js server to AWS Lambda. All infrastructure defined in Terraform.',
     hero: {
       title: 'Express.js Lambda Template',
       content: `
