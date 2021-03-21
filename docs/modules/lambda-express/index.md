@@ -5,6 +5,10 @@ title: Lambda Express
 
 [!embed](./about.md)
 
+## Features
+
+[!embed](./features.md)
+
 ## Configure
 
 [!embed](./configure.md)

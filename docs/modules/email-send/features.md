@@ -1,0 +1,3 @@
+- Easily send emails from backend applications
+- Infrastructure defined in Terraform
+- Low cost sends using AWS SES
