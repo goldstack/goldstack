@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FeatureProjectInstall = (): JSX.Element => {
+const FeatureProjectInstall = (props: { projectName: string }): JSX.Element => {
   return (
     <>
       <div className="card bg-navy mb-5">
@@ -14,7 +14,7 @@ const FeatureProjectInstall = (): JSX.Element => {
           <div className="mb-0">
             <span className="d-block text-white-70">
               {' '}
-              $ cd packages/app-next-js
+              $ cd packages/{props.projectName}
             </span>
             <span className="d-block text-white-70"> $ yarn watch</span>
             <span className="d-block h4 text-success font-weight-normal">
