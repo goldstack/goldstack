@@ -21,10 +21,10 @@
     "test:ci": "jest --passWithNoTests --config=./jest.config.js"
   },
   "dependencies": {
-    "@goldstack/utils-package": "0.3.6",
-    "@goldstack/utils-s3": "0.2.3",
-    "@goldstack/utils-sh": "0.4.5",
-    "@goldstack/utils-template": "0.3.5",
+    "@goldstack/utils-package": "0.3.7",
+    "@goldstack/utils-s3": "0.2.4",
+    "@goldstack/utils-sh": "0.4.6",
+    "@goldstack/utils-template": "0.3.6",
     "aws-sdk": "2.721.0",
     "fs-extra": "^9.0.1",
     "semver": "^7.3.2"

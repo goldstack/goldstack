@@ -21,13 +21,13 @@
     "test:ci": "jest --passWithNoTests --config=./jest.config.js"
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.3.7",
+    "@goldstack/infra-aws": "0.3.8",
     "@goldstack/template-repository": "0.1.0",
-    "@goldstack/utils-config": "0.3.5",
-    "@goldstack/utils-log": "0.2.2",
-    "@goldstack/utils-package": "0.3.6",
-    "@goldstack/utils-project": "0.3.5",
-    "@goldstack/utils-sh": "0.4.5",
+    "@goldstack/utils-config": "0.3.6",
+    "@goldstack/utils-log": "0.2.3",
+    "@goldstack/utils-package": "0.3.7",
+    "@goldstack/utils-project": "0.3.6",
+    "@goldstack/utils-sh": "0.4.6",
     "extract-zip": "^2.0.1"
   },
   "devDependencies": {
