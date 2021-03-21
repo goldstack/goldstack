@@ -4,6 +4,18 @@
 
 This module provides a [Next.js](https://nextjs.org/) application set up to use Bootstrap styling that is deployed to AWS using the [CloudFront CDN](https://aws.amazon.com/cloudfront/) and [Lambda@Edge](https://aws.amazon.com/lambda/edge/).
 
+## Features
+
+*   Bootstrap styling for Next.js application
+
+*   Optimised for TypeScript
+*   Configured for unit testing using Jest and React Testing library
+*   Scalable AWS infrastructure defined in Terraform; all content served through the powerful CloudFront CDN and stored in S3 at very low costs. This [blog article](https://simonecarletti.com/blog/2016/08/redirect-domain-https-amazon-cloudfront/) shows how a similar setup could be created manually.
+*   Full support for SSL - using free certificates issued by AWS.
+*   CDN caching optimised for Next.js (e.g. all files in `_next/static` are automatically cached on the CDN and the client)
+*   Configurable with your own domain name
+*   Rolling out of infrastructure and deployment supported through easy to use scripts
+
 ## Configure
 
 The following key properties need to be configured for this module:
@@ -14,17 +26,6 @@ The following key properties need to be configured for this module:
 *   **Default Cache Duration**: The number of seconds that files will be cached in the AWS content delivery network. Setting this to `120` for instance, would mean that, unless otherwise specified, webpages and other resources will be cached for 120 s. In that case, when a new version of a page is deployed, it can take up to 120 s for changes to appear when accessing the deployed version of the application.
 
 *   **Environment Variables**: Configures environment variables for the application. Environment variables without the prefix `NEXT_PUBLIC_` will only be available during build time of the application. For more information see [Environment Variables](https://nextjs.org/docs/basic-features/environment-variables) in the Next.js documentation.
-
-## Features
-
-*   Bootstrap styling for Next.js application
-    *   Optimised for TypeScript
-    *   Configured for unit testing using Jest and React Testing library
-    *   Scalable AWS infrastructure defined in Terraform; all content served through the powerful CloudFront CDN and stored in S3 at very low costs. This [blog article](https://simonecarletti.com/blog/2016/08/redirect-domain-https-amazon-cloudfront/) shows how a similar setup could be created manually.
-    *   Full support for SSL - using free certificates issued by AWS.
-    *   CDN caching optimised for Next.js (e.g. all files in `_next/static` are automatically cached on the CDN and the client)
-    *   Configurable with your own domain name
-    *   Rolling out of infrastructure and deployment supported through easy to use scripts
 
 ## Getting Started
 

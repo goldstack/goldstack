@@ -1,4 +1,22 @@
 <p></p><div class="markdown-fragment"><p>This module provides a <a href="https://nextjs.org/" class="absolute" target="_blank" rel="noopener noreferrer">Next.js</a> application set up to use Bootstrap styling that is deployed to AWS using the <a href="https://aws.amazon.com/cloudfront/" class="absolute" target="_blank" rel="noopener noreferrer">CloudFront CDN</a> and <a href="https://aws.amazon.com/lambda/edge/" class="absolute" target="_blank" rel="noopener noreferrer">Lambda@Edge</a>.</p></div><p></p>
+<h2 class="heading"><span id="features"></span><a href="#features">Features</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<ul>
+<li>Bootstrap styling for Next.js application</li>
+</ul>
+<p></p><div class="markdown-fragment"><ul>
+<li>Optimised for TypeScript</li>
+<li>Configured for unit testing using Jest and React Testing library</li>
+<li>Scalable AWS infrastructure defined in Terraform; all content served through the powerful CloudFront CDN and stored in S3 at very low costs. This <a href="https://simonecarletti.com/blog/2016/08/redirect-domain-https-amazon-cloudfront/" class="absolute" target="_blank" rel="noopener noreferrer">blog article</a> shows how a similar setup could be created manually.</li>
+<li>Full support for SSL - using free certificates issued by AWS.</li>
+<li>CDN caching optimised for Next.js (e.g. all files in <code class="inline">_next/static</code> are automatically cached on the CDN and the client)</li>
+<li>Configurable with your own domain name</li>
+<li>Rolling out of infrastructure and deployment supported through easy to use scripts</li>
+</ul></div><p></p>
 <h2 class="heading"><span id="configure"></span><a href="#configure">Configure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
@@ -15,24 +33,6 @@
 <ul>
 <li><strong>Environment Variables</strong>: Configures environment variables for the application. Environment variables without the prefix <code class="inline">NEXT_PUBLIC_</code> will only be available during build time of the application. For more information see <a href="https://nextjs.org/docs/basic-features/environment-variables" class="absolute" target="_blank" rel="noopener noreferrer">Environment Variables</a> in the Next.js documentation.</li>
 </ul></div><p></p></div><p></p>
-<h2 class="heading"><span id="features"></span><a href="#features">Features</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
-  <g stroke-width="1" fill="#000000" stroke="#000000">
-    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
-    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
-  </g>
-</svg></span></h2>
-<ul>
-<li>Bootstrap styling for Next.js application
-<div class="markdown-fragment"><ul>
-<li>Optimised for TypeScript</li>
-<li>Configured for unit testing using Jest and React Testing library</li>
-<li>Scalable AWS infrastructure defined in Terraform; all content served through the powerful CloudFront CDN and stored in S3 at very low costs. This <a href="https://simonecarletti.com/blog/2016/08/redirect-domain-https-amazon-cloudfront/" class="absolute" target="_blank" rel="noopener noreferrer">blog article</a> shows how a similar setup could be created manually.</li>
-<li>Full support for SSL - using free certificates issued by AWS.</li>
-<li>CDN caching optimised for Next.js (e.g. all files in <code class="inline">_next/static</code> are automatically cached on the CDN and the client)</li>
-<li>Configurable with your own domain name</li>
-<li>Rolling out of infrastructure and deployment supported through easy to use scripts</li>
-</ul></div></li>
-</ul>
 <h2 class="heading"><span id="getting-started"></span><a href="#getting-started">Getting Started</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
