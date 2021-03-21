@@ -33,7 +33,7 @@
     "pull:old": "git pull --recurse-submodules && git submodule foreach --recursive git pull --recurse-submodules",
     "push": "git submodule foreach --recursive git push && git push --recurse-submodules=on-demand",
     "push:each": "git submodule foreach --recursive git push && git push",
-    "test:ci": "echo 'Command cannot run for root'",
+    "test:ci": "yarn workspaces foreach --run test:ci",
     "test:watch": "nodemonx --watch . --exec 'yarn test:ci'"
   },
   "dependencies": {
