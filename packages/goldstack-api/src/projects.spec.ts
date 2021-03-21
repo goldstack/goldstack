@@ -11,6 +11,10 @@ describe('Project Endpoint', () => {
   const { res, clearMockRes } = getMockRes();
 
   beforeEach(() => {
+    jest.setTimeout(20000);
+  });
+
+  beforeEach(() => {
     clearMockRes();
   });
 
