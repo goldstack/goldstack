@@ -1,8 +1,0 @@
-{
-  "templateName": "yarn-pnp-monorepo",
-  "templateVersion": "0.1.0",
-  "previousTemplateVersion": "0.0.0",
-  "templateDescription": "Monorepo using Yarn Plug'n'Play as supported in Yarn 2.",
-  "templateDocumentation": "https://goldstack.party",
-  "templateArchive": ""
-}

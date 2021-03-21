@@ -1,8 +1,0 @@
-{
-  "templateName": "docker-image-aws",
-  "templateVersion": "0.1.0",
-  "previousTemplateVersion": "0.0.0",
-  "templateDescription": "A docker image that will be deployed to an AWS container registry.",
-  "templateDocumentation": "https://goldstack.party",
-  "templateArchive": "arn:aws:s3:::repo/versions/docker-image-aws/0.1.0/docker-image-aws-0.1.0.zip"
-}

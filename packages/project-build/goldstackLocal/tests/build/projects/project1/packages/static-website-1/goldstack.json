@@ -1,8 +1,0 @@
-{
-  "$schema": "./schemas/package.schema.json",
-  "name": "static-website-1",
-  "template": "static-website-aws",
-  "templateVersion": "0.1.0",
-  "configuration": {},
-  "deployments": []
-}
