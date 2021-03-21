@@ -7,7 +7,6 @@ describe('Prepare Yarn monorepo', () => {
     const yarnRc = read('./../../../../.yarnrc.yml');
     const res = removeNpmRegistry({ yarnRc });
 
-    console.log(res);
     expect(res).not.toContain('npmAuthToken:');
     expect(res).not.toContain('npmRegistries:');
   });
