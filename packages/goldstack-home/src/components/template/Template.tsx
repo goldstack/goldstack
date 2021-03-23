@@ -1,18 +1,13 @@
 import React from 'react';
-import TemplateFeature, { TemplateFeatureProps } from './TemplateFeature';
+import TemplateFeature from './TemplateFeature';
 
 import Head from 'next/head';
-import TextSection, { TextSectionProps } from './TextSection';
+import TextSection from './TextSection';
 import TemplateCallToAction from './TemplateCallToAction';
 
-export interface TemplateProps {
-  title: string;
-  description: string;
-  hero: TextSectionProps;
-  features: TemplateFeatureProps[];
-}
+import { ProjectTemplateProps } from '@goldstack/project-template-data';
 
-const Template = (props: TemplateProps): JSX.Element => {
+const Template = (props: ProjectTemplateProps): JSX.Element => {
   return (
     <>
       <Head>

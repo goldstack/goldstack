@@ -4,16 +4,16 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 
 import Header from 'src/components/Header';
 
-import TemplateComponent, {
-  TemplateProps,
-} from 'src/components/template/Template';
+import { ProjectTemplateProps } from '@goldstack/project-template-data';
+
+import TemplateComponent from 'src/components/template/Template';
 
 import TerraformIcon from 'src/icons/terraform.svg';
 
 import ESLintIcon from 'src/icons/eslint.svg';
 import Footer from 'src/components/Footer';
 
-const Template = (props: TemplateProps): JSX.Element => {
+const Template = (props: ProjectTemplateProps): JSX.Element => {
   const template = props;
   return (
     <>
@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   /*
    * Next.js Template
    */
-  const nextJsTemplate: TemplateProps = {
+  const nextJsTemplate: ProjectTemplateProps = {
     title: 'Next.js Template',
     description:
       'Next.js with all the fun and none of the hassle. Download an optimised starter template.',
@@ -179,7 +179,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   /*
    * Next.js Bootstrap Template
    */
-  const nextJsBootstrapTemplate: TemplateProps = {
+  const nextJsBootstrapTemplate: ProjectTemplateProps = {
     title: 'Next.js + Bootstrap Template',
     description:
       'Download an optimised starter template to start your project with Next.js and Bootstrap.',
@@ -218,7 +218,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     ],
   };
 
-  const expressTemplate: TemplateProps = {
+  const expressTemplate: ProjectTemplateProps = {
     title: 'Express.js Lambda Template',
     description:
       'Rapidly deploy an Express.js server to AWS Lambda. All infrastructure defined in Terraform.',
@@ -337,7 +337,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const templateId = context.params.template;
 
-  let template: TemplateProps | undefined;
+  let template: ProjectTemplateProps | undefined;
   if (templateId === 'nextjs') {
     template = nextJsTemplate;
   }

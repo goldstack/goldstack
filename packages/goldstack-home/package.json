@@ -36,6 +36,7 @@
     "@goldstack/infra-aws": "0.3.8",
     "@goldstack/project-config": "0.1.0",
     "@goldstack/project-repository": "0.1.0",
+    "@goldstack/project-template-data": "0.1.0",
     "@goldstack/utils-package": "0.3.7",
     "@goldstack/utils-project": "0.3.6",
     "@goldstack/utils-track": "0.1.6",

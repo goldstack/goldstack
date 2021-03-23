@@ -1,5 +1,5 @@
 import React from 'react';
-import { LandingAction } from './TextSection';
+import { LandingAction } from '@goldstack/project-template-data';
 
 const TemplateCallToAction = (props: {
   action: LandingAction;

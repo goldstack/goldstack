@@ -4,16 +4,7 @@ import DesktopComputerImg from 'src/img/desktop_computer.jpg';
 import TabletImg from 'src/img/tablet.jpg';
 import MeetingImg from 'src/img/meeting.jpg';
 
-export interface LandingAction {
-  title: string;
-  link: string;
-}
-
-export interface TextSectionProps {
-  title: string;
-  content: string;
-  action?: LandingAction;
-}
+import { TextSectionProps } from '@goldstack/project-template-data';
 
 const TextSection = (props: TextSectionProps): JSX.Element => {
   return (

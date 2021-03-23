@@ -8,31 +8,15 @@ import styles from './TemplateFeature.module.css';
 import FeatureAWSDeployment from 'src/components/template/FeatureAWSDeployment';
 import FeatureProjectInstall from 'src/components/template/FeatureProjectInstall';
 import FeatureCombineTemplates from 'src/components/template/FeatureCombineTemplates';
-import LearnMore, { MoreDetails } from 'src/components/LearnMore';
+import LearnMore from 'src/components/LearnMore';
 import NextJsConfigGif from 'src/img/nextjs-config.gif';
 import ReactTypeScriptGif from 'src/img/react-typescript.gif';
 import VercelDeployedImg from 'src/img/vercel_deployed.png';
 import LambdaConfigImg from 'src/img/lambda_config.png';
 import EndpointTypeScript from 'src/img/endpoint_typescript.png';
 import FeatureBootstrap from './FeatureBootstrap';
-export interface CallToAction {
-  title: string;
-  link: string;
-}
 
-export interface FeatureContent {
-  type: string;
-  data: any;
-}
-
-export interface TemplateFeatureProps {
-  title: string;
-  description: string;
-  moreDetails?: MoreDetails;
-  callToAction?: CallToAction;
-  content: FeatureContent;
-  icons?: any[];
-}
+import { TemplateFeatureProps } from '@goldstack/project-template-data';
 
 const IconList = (props: { icons: any[] }): JSX.Element => {
   const images = props.icons.map((icon) => dataUriToSrc(icon));
