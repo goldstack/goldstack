@@ -16,10 +16,17 @@ import LambdaConfigImg from 'src/img/lambda_config.png';
 import EndpointTypeScript from 'src/img/endpoint_typescript.png';
 import FeatureBootstrap from './FeatureBootstrap';
 
-import { TemplateFeatureProps } from '@goldstack/project-template-data';
+import TerraformIcon from 'src/icons/terraform.svg';
+import ESLintIcon from 'src/icons/eslint.svg';
 
-const IconList = (props: { icons: any[] }): JSX.Element => {
-  const images = props.icons.map((icon) => dataUriToSrc(icon));
+import {
+  TemplateFeatureProps,
+  TemplateIcons,
+} from '@goldstack/project-template-data';
+
+const IconList = (props: { icons: TemplateIcons[] }): JSX.Element => {
+  const resolvedIcons = resolveIcons(props.icons);
+  const images = resolvedIcons.map((icon) => dataUriToSrc(icon));
   return (
     <>
       <div className="row justify-content-center">
@@ -34,6 +41,19 @@ const IconList = (props: { icons: any[] }): JSX.Element => {
       </div>
     </>
   );
+};
+
+const resolveIcons = (icons: TemplateIcons[]): any => {
+  return icons.map((icon) => {
+    switch (icon) {
+      case 'eslint':
+        return ESLintIcon;
+      case 'terraform':
+        return TerraformIcon;
+      default:
+        throw new Error(`Unknown template icon: ${icon}`);
+    }
+  });
 };
 
 const createGif = (gif: string): React.ReactNode => {

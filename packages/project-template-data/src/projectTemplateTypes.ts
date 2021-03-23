@@ -3,8 +3,17 @@ export interface CallToAction {
   link: string;
 }
 
+export type FeatureContentType =
+  | 'none'
+  | 'gif'
+  | 'image'
+  | 'aws-deployment'
+  | 'combine-templates'
+  | 'project-install'
+  | 'bootstrap';
+
 export interface FeatureContent {
-  type: string;
+  type: FeatureContentType;
   data: any;
 }
 
@@ -13,13 +22,14 @@ export interface MoreDetails {
   link?: string;
 }
 
+export type TemplateIcons = 'eslint' | 'terraform';
 export interface TemplateFeatureProps {
   title: string;
   description: string;
   moreDetails?: MoreDetails;
   callToAction?: CallToAction;
   content: FeatureContent;
-  icons?: any[];
+  icons?: TemplateIcons[];
 }
 
 export interface LandingAction {
