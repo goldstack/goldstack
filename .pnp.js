@@ -55,6 +55,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/apps/packages/goldstack-home"
       },
       {
+        "name": "@goldstack/project-template-data",
+        "reference": "workspace:workspaces/apps/packages/project-template-data"
+      },
+      {
         "name": "@goldstack/template-management-cli",
         "reference": "workspace:workspaces/apps/packages/template-management-cli"
       },
@@ -339,6 +343,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/project-package-bucket", ["workspace:workspaces/templates-management/packages/project-package-bucket"]],
       ["@goldstack/project-repository", ["workspace:workspaces/templates-management/packages/project-repository"]],
       ["@goldstack/project-repository-bucket", ["workspace:workspaces/templates-management/packages/project-repository-bucket"]],
+      ["@goldstack/project-template-data", ["workspace:workspaces/apps/packages/project-template-data"]],
       ["@goldstack/react-components", ["workspace:workspaces/templates/packages/react-components"]],
       ["@goldstack/s3", ["workspace:workspaces/templates/packages/s3"]],
       ["@goldstack/server-express", ["workspace:workspaces/templates/packages/server-express"]],
@@ -1578,6 +1583,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],
             ["@goldstack/project-config", "workspace:workspaces/templates-management/packages/project-config"],
             ["@goldstack/project-repository", "workspace:workspaces/templates-management/packages/project-repository"],
+            ["@goldstack/project-template-data", "workspace:workspaces/apps/packages/project-template-data"],
             ["@goldstack/template-nextjs", "workspace:workspaces/templates-lib/packages/template-nextjs"],
             ["@goldstack/utils-docs-cli", "workspace:workspaces/templates-lib/packages/utils-docs-template"],
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
@@ -1938,6 +1944,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["reload", "npm:3.1.0"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["ts-node", "virtual:11ada9b28839d4fd4fd589c1152d09afa4401c8de2e0a2b1020588da78d4576c0d5523e67b35d4e74fafa94849ba3113e31dc0ab2b5d68223629f75866888dd3#npm:8.10.2"],
+            ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@goldstack/project-template-data", [
+        ["workspace:workspaces/apps/packages/project-template-data", {
+          "packageLocation": "./workspaces/apps/packages/project-template-data/",
+          "packageDependencies": [
+            ["@goldstack/project-template-data", "workspace:workspaces/apps/packages/project-template-data"],
+            ["@types/jest", "npm:26.0.21"],
+            ["@types/node", "npm:14.11.2"],
+            ["jest", "npm:26.6.3"],
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
           ],
           "linkType": "SOFT",
