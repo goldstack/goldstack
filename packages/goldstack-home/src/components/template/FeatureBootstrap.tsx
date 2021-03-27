@@ -3,7 +3,7 @@ import React from 'react';
 const FeatureBootstrap = (): JSX.Element => {
   return (
     <>
-      <div className="card bg-navy mb-5">
+      <div className="card bg-navy mb-5 w-md-80 w-lg-50">
         <div className="card-body text-monospace font-size-1 p-6">
           <div className="mb-3">
             <span className="d-block text-white-70">

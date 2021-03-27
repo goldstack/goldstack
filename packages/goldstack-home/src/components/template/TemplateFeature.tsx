@@ -18,6 +18,9 @@ import FeatureBootstrap from './FeatureBootstrap';
 
 import TerraformIcon from 'src/icons/terraform.svg';
 import ESLintIcon from 'src/icons/eslint.svg';
+import JestIcon from 'src/icons/jestjs.svg';
+import VSCodeIcon from 'src/icons/vscode.svg';
+import YarnIcon from 'src/icons/yarn.svg';
 
 import {
   TemplateFeatureProps,
@@ -50,6 +53,12 @@ const resolveIcons = (icons: TemplateIcons[]): any => {
         return ESLintIcon;
       case 'terraform':
         return TerraformIcon;
+      case 'jest':
+        return JestIcon;
+      case 'vscode':
+        return VSCodeIcon;
+      case 'yarn':
+        return YarnIcon;
       default:
         throw new Error(`Unknown template icon: ${icon}`);
     }
@@ -130,14 +139,16 @@ const TemplateFeature = (props: TemplateFeatureProps): JSX.Element => {
       <div className="position-relative gradient-y-gray">
         <div className="container space-2 space-bottom-sm-3">
           <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-5">
-            <h2>{props.title}</h2>
+            <h2 id={props.id || ''}>{props.title}</h2>
             <p>{props.description}</p>
           </div>
 
-          <div className="w-md-80 w-lg-50 mx-md-auto mb-5 mb-md-5">
+          <div className=" text-center mx-md-auto mb-5 mb-md-5">
             {content}
             {props.moreDetails && (
-              <LearnMore {...props.moreDetails}></LearnMore>
+              <div className="w-md-80 w-lg-50 mx-md-auto text-center">
+                <LearnMore {...props.moreDetails}></LearnMore>
+              </div>
             )}
 
             {props.icons && <IconList icons={props.icons}></IconList>}

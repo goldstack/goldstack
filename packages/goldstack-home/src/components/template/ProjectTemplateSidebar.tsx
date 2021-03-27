@@ -5,6 +5,7 @@ import GoldstackIcon from './../../img/goldstack_icon_small.png';
 
 interface ProjectTemplateSidebarProps {
   tags: string[];
+  actionLink: string;
 }
 
 const ProjectTemplateSidebar = (
@@ -19,16 +20,16 @@ const ProjectTemplateSidebar = (
               <img
                 className="img-fluid"
                 src={NextjsIcon}
-                alt="Image Description"
+                alt="Template Icon"
                 width="130"
               />
             </div>
 
             <a
               className="btn btn-sm btn-block btn-primary transition-3d-hover"
-              href="#"
+              href={props.actionLink}
             >
-              Create Project
+              ✔ Create Project
             </a>
           </div>
 

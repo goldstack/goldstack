@@ -28,7 +28,7 @@ const Template = (props: ProjectTemplateProps): JSX.Element => {
           { description: 'Next.js', link: '#', active: true },
         ]}
       ></Breadcrump>
-      <ProjectTemplate></ProjectTemplate>
+      <ProjectTemplate {...template}></ProjectTemplate>
       <Footer></Footer>
     </>
   );

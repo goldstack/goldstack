@@ -22,9 +22,28 @@ export interface MoreDetails {
   link?: string;
 }
 
-export type TemplateIcons = 'eslint' | 'terraform';
+export type TemplateFeatureImage =
+  | 'typescript'
+  | 'nextjs'
+  | 'eslint'
+  | 'vscode'
+  | 'yarn'
+  | 'aws'
+  | 'terraform'
+  | 'jest'
+  | 'composition';
+export interface ShortTemplateFeature {
+  title: string;
+  image: TemplateFeatureImage;
+  description: string;
+  id: string;
+  details?: TemplateFeatureProps;
+}
+
+export type TemplateIcons = 'eslint' | 'terraform' | 'jest' | 'vscode' | 'yarn';
 export interface TemplateFeatureProps {
   title: string;
+  id?: string;
   description: string;
   moreDetails?: MoreDetails;
   callToAction?: CallToAction;
@@ -46,6 +65,9 @@ export interface TextSectionProps {
 export interface ProjectTemplateProps {
   title: string;
   description: string;
+  longDescription?: string;
+  tags?: string[];
   hero: TextSectionProps;
   features: TemplateFeatureProps[];
+  featuresOverview?: ShortTemplateFeature[];
 }

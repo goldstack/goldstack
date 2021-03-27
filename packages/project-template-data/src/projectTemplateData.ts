@@ -5,6 +5,8 @@ export {
   TextSectionProps,
   LandingAction,
   TemplateIcons,
+  TemplateFeatureImage,
+  ShortTemplateFeature,
 } from './projectTemplateTypes';
 
 export { getNextJsTemplateData } from './templates/nextjsTemplateData';

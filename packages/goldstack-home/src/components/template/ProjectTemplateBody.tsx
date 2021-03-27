@@ -1,24 +1,73 @@
+import { ProjectTemplateProps } from '@goldstack/project-template-data';
 import React from 'react';
 
-const ProjectTemplateBody = (): JSX.Element => {
+import TopTemplateIcon from './../../icons/front/top-template.svg';
+
+import ProjectTemplateFeatures from './ProjectTemplateFeatures';
+import ProjectTemplateFeaturesDetails from './ProjectTemplateFeaturesDetails';
+import TemplateCallToAction from './TemplateCallToAction';
+
+const ProjectTemplateBody = (props: ProjectTemplateProps): JSX.Element => {
   return (
     <>
       <div className="col-md-8 col-lg-9 column-divider-md">
         <div className="ml-lg-2">
           <div className="mb-5">
             <h2>
-              Google Drive{' '}
+              {props.title}{' '}
               <img
                 className="ml-1"
-                src="../../assets/svg/illustrations/top-vendor.svg"
+                src={TopTemplateIcon}
                 alt="Top Template marker star"
                 title="Top Template"
                 width="20"
               />
             </h2>
           </div>
+          {/* <h4 className="mb-4">Description</h4> */}
+          {(props.longDescription || props.description)
+            .split('\n')
+            .map((para, idx) => (
+              <p key={idx} dangerouslySetInnerHTML={{ __html: para }}></p>
+            ))}
+          <a
+            className="link-collapse font-weight-bold collapsed"
+            href={props.hero.action?.link || '#'}
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseLinkExample"
+          >
+            Create project with template
+          </a>
+          {/* <hr className="my-6"></hr>
+          <div className="p-6">
+            <div className="embed-responsive embed-responsive-16by9">
+              <iframe
+                className="embed-responsive-item"
+                src="https://www.youtube.com/embed/hvZ8Ry9XYVE"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div> */}
+          <hr className="my-6"></hr>
+          {/* <h4 className="mb-4">Template Features</h4> */}
+          <ProjectTemplateFeatures
+            features={props.featuresOverview || []}
+          ></ProjectTemplateFeatures>
+          <hr className="my-6"></hr>
+          <ProjectTemplateFeaturesDetails
+            features={props.featuresOverview || []}
+          ></ProjectTemplateFeaturesDetails>
+          <TemplateCallToAction
+            action={{
+              link: props.hero.action?.link || '',
+              title: '✔ Create Project with Template',
+            }}
+          ></TemplateCallToAction>
         </div>
       </div>
     </>
   );
 };
+
+export default ProjectTemplateBody;
