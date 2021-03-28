@@ -11,8 +11,6 @@ import {
   getExpressTemplateData,
 } from '@goldstack/project-template-data';
 
-import TemplateComponent from 'src/components/template/Template';
-
 import Footer from 'src/components/Footer';
 import Breadcrump from '../../components/Breadcrump';
 import ProjectTemplate from '../../components/template/ProjectTemplate';
