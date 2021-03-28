@@ -31,7 +31,9 @@ export type TemplateFeatureImage =
   | 'aws'
   | 'terraform'
   | 'jest'
-  | 'composition';
+  | 'composition'
+  | 'bootstrap'
+  | 'nodejs';
 export interface ShortTemplateFeature {
   title: string;
   image: TemplateFeatureImage;
@@ -65,9 +67,10 @@ export interface TextSectionProps {
 export interface ProjectTemplateProps {
   title: string;
   description: string;
-  longDescription?: string;
-  tags?: string[];
+  image: TemplateFeatureImage;
+  longDescription: string;
+  tags: string[];
   hero: TextSectionProps;
   features: TemplateFeatureProps[];
-  featuresOverview?: ShortTemplateFeature[];
+  featuresOverview: ShortTemplateFeature[];
 }

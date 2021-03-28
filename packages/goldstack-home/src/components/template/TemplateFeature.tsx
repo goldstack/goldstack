@@ -85,7 +85,7 @@ const createImage = (image: string): React.ReactNode => {
   if (image === 'lambda-config') {
     return <img src={LambdaConfigImg} className="img-fluid"></img>;
   }
-  throw new Error('Unknown image ' + image);
+  throw new Error('Unknown image for feature details ' + image);
 };
 
 const TemplateFeature = (props: TemplateFeatureProps): JSX.Element => {
@@ -102,6 +102,11 @@ const TemplateFeature = (props: TemplateFeatureProps): JSX.Element => {
       break;
     }
     case 'image': {
+      if (!props.content.data.image) {
+        throw new Error(
+          'Invalid data for image ' + JSON.stringify(props.content)
+        );
+      }
       content = createImage(props.content.data.image);
       break;
     }

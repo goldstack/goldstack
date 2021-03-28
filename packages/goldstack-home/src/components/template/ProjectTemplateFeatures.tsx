@@ -1,58 +1,14 @@
 import React from 'react';
 
-import {
-  TemplateFeatureImage,
-  ShortTemplateFeature,
-} from '@goldstack/project-template-data';
-
-import TypeScriptIcon from './../../icons/typescript.svg';
-import NextjsIcon from './../../icons/nextjs.svg';
-import ESLintIcon from './../../icons/eslint.svg';
-import VSCodeIcon from './../../icons/vscode.svg';
-import YarnIcon from './../../icons/yarn.svg';
-import AWSIcon from './../../icons/aws.svg';
-import TerraformIcon from './../../icons/terraform.svg';
-import JestIcon from './../../icons/jestjs.svg';
-import CompositionIcon from './../../icons/front/icon-29-composition.svg';
+import { ShortTemplateFeature } from '@goldstack/project-template-data';
 
 import styles from './ProjectTemplateFeatures.module.css';
 
-const resolveImage = (image: TemplateFeatureImage): any => {
-  if (image === 'typescript') {
-    return TypeScriptIcon;
-  }
-  if (image === 'nextjs') {
-    return NextjsIcon;
-  }
-  if (image === 'eslint') {
-    return ESLintIcon;
-  }
-  if (image === 'vscode') {
-    return VSCodeIcon;
-  }
-  if (image === 'yarn') {
-    return YarnIcon;
-  }
-  if (image === 'aws') {
-    return AWSIcon;
-  }
-  if (image === 'terraform') {
-    return TerraformIcon;
-  }
-  if (image === 'jest') {
-    return JestIcon;
-  }
-  if (image === 'composition') {
-    return CompositionIcon;
-  }
-
-  throw new Error('Unknown image: ' + image);
-};
+import { resolveImage } from './imageUtil';
 
 const ProjectTemplateFeature = (props: {
   feature: ShortTemplateFeature;
 }): JSX.Element => {
-  console.log(props.feature);
   return (
     <>
       <a

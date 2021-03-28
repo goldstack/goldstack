@@ -14,21 +14,13 @@ import {
 import TemplateComponent from 'src/components/template/Template';
 
 import Footer from 'src/components/Footer';
-import Breadcrump from '../../components/Breadcrump';
-import ProjectTemplate from '../../components/template/ProjectTemplate';
 
 const Template = (props: ProjectTemplateProps): JSX.Element => {
   const template = props;
   return (
     <>
       <Header></Header>
-      <Breadcrump
-        elements={[
-          { description: 'Templates' },
-          { description: 'Next.js', link: '#', active: true },
-        ]}
-      ></Breadcrump>
-      <ProjectTemplate {...template}></ProjectTemplate>
+      {template && <TemplateComponent {...template}></TemplateComponent>}
       <Footer></Footer>
     </>
   );

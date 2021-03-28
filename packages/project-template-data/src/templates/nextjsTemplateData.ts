@@ -1,15 +1,157 @@
-import { ProjectTemplateProps } from '../projectTemplateTypes';
+import {
+  ProjectTemplateProps,
+  ShortTemplateFeature,
+} from '../projectTemplateTypes';
+
+export const featureESLint: ShortTemplateFeature = {
+  title: 'ESLint + Prettier',
+  id: 'eslint',
+  description:
+    'Auto-format and validate your TypeScript and React code easily using ESLint and Prettier.',
+  image: 'eslint',
+  details: {
+    title: 'Linting and Formatting',
+    description:
+      'ESLint and Prettier configured for usage in the CLI and as VSCode plugins. Optimized to work with Next.js, TypeScript and JSX.',
+    icons: ['eslint'],
+    content: {
+      type: 'none',
+      data: {},
+    },
+  },
+};
+
+export const featureJest: ShortTemplateFeature = {
+  title: 'Jest',
+  id: 'jest',
+  description:
+    'Run tests for components and the Next.js application using Jest.',
+  image: 'jest',
+  details: {
+    title: 'Unit and Integration Testing',
+    description:
+      'Write unit and integration tests for your Next.js application with zero additional setup required.',
+    icons: ['jest'],
+    content: {
+      type: 'none',
+      data: {},
+    },
+  },
+};
+
+export const featureVSCode: ShortTemplateFeature = {
+  title: 'VSCode',
+  id: 'vscode',
+  description:
+    'Template configured to work seemlessly with the powerful VSCode editor.',
+  image: 'vscode',
+  details: {
+    title: 'Develop in VSCode',
+    description:
+      'All configuration for developing TypeScript and TSX code for VSCode provided.',
+    icons: ['vscode'],
+    content: {
+      type: 'none',
+      data: {},
+    },
+  },
+};
+
+export const featureYarn: ShortTemplateFeature = {
+  title: 'Yarn 2',
+  id: 'yarn',
+  description:
+    'Fast build times and advanced modularity using Yarn 2 workspaces.',
+  image: 'yarn',
+  details: {
+    title: 'Build Modular Applications with Yarn Workspaces',
+    description:
+      'Yarn 2 workspace configured for blazing fast project bootstrap and hassle-free development of a modular application.',
+    icons: ['yarn'],
+    content: {
+      type: 'none',
+      data: {},
+    },
+  },
+};
+
+export const featureAws: ShortTemplateFeature = {
+  title: 'AWS',
+  id: 'aws',
+  description:
+    'Next.js app deployed to reliable and scaleable AWS serverless infrastructure.',
+  image: 'aws',
+  details: {
+    title: 'Ready for Deployment to AWS',
+    description:
+      'Deploy your Next.js application for cents on AWS with professional level security, reliabilty and scaleabilty.',
+    content: {
+      type: 'aws-deployment',
+      data: {},
+    },
+    moreDetails: {
+      description:
+        'Supports multiple, separate deployments for development, staging and production environments. Implemented using CloudFront and S3.',
+    },
+    // icons: [AWSIcon, CloudFrontIcon, S3Icon],
+  },
+};
+
+export const featureTerraform: ShortTemplateFeature = {
+  title: 'Terraform',
+  id: 'terraform',
+  description: 'Extend and maintain frontend infrastructure using Terraform.',
+  image: 'terraform',
+  details: {
+    title: 'Extendable and Configurable Infrastructure',
+    description:
+      'Easily add any service from the AWS cloud to your Next.js application by modifying the Terraform files included in the template.',
+    icons: ['terraform'],
+    content: {
+      type: 'none',
+      data: {},
+    },
+  },
+};
+
+export const featureNextJsComposition: ShortTemplateFeature = {
+  title: 'App Composition',
+  id: 'composition',
+  description:
+    'Easily combine with any Goldstack module to compose end-to-end applications.',
+  image: 'composition',
+  details: {
+    title: 'Integrate with Goldstack Templates',
+    description:
+      'Combine this template with other modules from Goldstack. Generate a starter project supporting your full stack including the backend.',
+    content: {
+      type: 'combine-templates',
+      data: {
+        templates: [
+          'template:lambda-express',
+          'template:s3',
+          'template:email-send',
+        ],
+      },
+    },
+    moreDetails: {
+      description:
+        'Simply choose any of these templates while building your project in the Goldstack Builder UI and they will be included in your starter project.',
+    },
+  },
+};
 
 export const getNextJsTemplateData = (): ProjectTemplateProps => {
   return {
     title: 'Next.js Template',
+    image: 'nextjs',
     description:
       'Next.js with all the fun and none of the hassle. Download an optimised starter template.',
     longDescription:
       'The free Goldstack <strong>Next.js starter template</strong> helps you kick start your Next.js development project. ' +
       'It has been hand-crafted for optimal developer experience and packed with best practices.\n' +
       'Scroll down to learn more about the features included in this template.',
-    tags: ['Next.js', 'TypeScript', 'Yarn', 'React'],
+    tags: ['Next.js', 'TypeScript', 'Yarn', 'React', 'Frontend'],
     hero: {
       title: 'Next.js with all the fun and none of the hassle.',
       content: `
@@ -65,138 +207,13 @@ export const getNextJsTemplateData = (): ProjectTemplateProps => {
           },
         },
       },
-      {
-        title: 'ESLint + Prettier',
-        id: 'eslint',
-        description:
-          'Auto-format and validate your TypeScript and React code easily using ESLint and Prettier.',
-        image: 'eslint',
-        details: {
-          title: 'Linting and Formatting',
-          description:
-            'ESLint and Prettier configured for usage in the CLI and as VSCode plugins. Optimized to work with Next.js, TypeScript and JSX.',
-          icons: ['eslint'],
-          content: {
-            type: 'none',
-            data: {},
-          },
-        },
-      },
-      {
-        title: 'Jest',
-        id: 'jest',
-        description:
-          'Run tests for components and the Next.js application using Jest.',
-        image: 'jest',
-        details: {
-          title: 'Unit and Integration Testing',
-          description:
-            'Write unit and integration tests for your Next.js application with zero additional setup required.',
-          icons: ['jest'],
-          content: {
-            type: 'none',
-            data: {},
-          },
-        },
-      },
-      {
-        title: 'VSCode',
-        id: 'vscode',
-        description:
-          'Template configured to work seemlessly with the powerful VSCode editor.',
-        image: 'vscode',
-        details: {
-          title: 'Develop in VSCode',
-          description:
-            'All configuration for developing TypeScript and TSX code for VSCode provided.',
-          icons: ['vscode'],
-          content: {
-            type: 'none',
-            data: {},
-          },
-        },
-      },
-      {
-        title: 'Yarn 2',
-        id: 'yarn',
-        description:
-          'Fast build times and advanced modularity using Yarn 2 workspaces.',
-        image: 'yarn',
-        details: {
-          title: 'Build Modular Applications with Yarn Workspaces',
-          description:
-            'Yarn 2 workspace configured for blazing fast project bootstrap and hassle-free development of a modular application.',
-          icons: ['yarn'],
-          content: {
-            type: 'none',
-            data: {},
-          },
-        },
-      },
-      {
-        title: 'AWS',
-        id: 'aws',
-        description:
-          'Next.js app deployed to reliable and scaleable AWS serverless infrastructure.',
-        image: 'aws',
-        details: {
-          title: 'Ready for Deployment to AWS',
-          description:
-            'Deploy your Next.js application for cents on AWS with professional level security, reliabilty and scaleabilty.',
-          content: {
-            type: 'aws-deployment',
-            data: {},
-          },
-          moreDetails: {
-            description:
-              'Supports multiple, separate deployments for development, staging and production environments. Implemented using CloudFront and S3.',
-          },
-          // icons: [AWSIcon, CloudFrontIcon, S3Icon],
-        },
-      },
-      {
-        title: 'Terraform',
-        id: 'terraform',
-        description:
-          'Extend and maintain frontend infrastructure using Terraform.',
-        image: 'terraform',
-        details: {
-          title: 'Extendable and Configurable Infrastructure',
-          description:
-            'Easily add any service from the AWS cloud to your Next.js application by modifying the Terraform files included in the template.',
-          icons: ['terraform'],
-          content: {
-            type: 'none',
-            data: {},
-          },
-        },
-      },
-      {
-        title: 'App Composition',
-        id: 'composition',
-        description:
-          'Easily combine with any Goldstack module to compose end-to-end applications.',
-        image: 'composition',
-        details: {
-          title: 'Integrate with Goldstack Templates',
-          description:
-            'Combine this template with other golden templates from Goldstack. Generate a starter project supporting your full stack including the backend.',
-          content: {
-            type: 'combine-templates',
-            data: {
-              templates: [
-                'template:lambda-express',
-                'template:s3',
-                'template:email-send',
-              ],
-            },
-          },
-          moreDetails: {
-            description:
-              'Simply choose any of these templates while building your project in the Goldstack Builder UI and they will be included in your starter project.',
-          },
-        },
-      },
+      featureESLint,
+      featureJest,
+      featureVSCode,
+      featureYarn,
+      featureAws,
+      featureTerraform,
+      featureNextJsComposition,
     ],
     features: [
       {

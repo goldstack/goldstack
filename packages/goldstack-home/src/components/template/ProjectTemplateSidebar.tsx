@@ -1,10 +1,14 @@
 import React from 'react';
 
-import NextjsIcon from './../../icons/nextjs.svg';
 import GoldstackIcon from './../../img/goldstack_icon_small.png';
+
+import { TemplateFeatureImage } from '@goldstack/project-template-data';
+
+import { resolveImage } from './imageUtil';
 
 interface ProjectTemplateSidebarProps {
   tags: string[];
+  image: TemplateFeatureImage;
   actionLink: string;
 }
 
@@ -19,7 +23,7 @@ const ProjectTemplateSidebar = (
             <div className="text-center mx-auto mb-3">
               <img
                 className="img-fluid"
-                src={NextjsIcon}
+                src={resolveImage(props.image)}
                 alt="Template Icon"
                 width="130"
               />
