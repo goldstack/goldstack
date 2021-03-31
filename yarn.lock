@@ -506,6 +506,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.12.5":
+  version: 7.13.10
+  resolution: "@babel/runtime@npm:7.13.10"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: 22014226b96a8c8e8d4e8bcdb011f317d1b32881aef424a669dc6ceaee14993d3609172967853cbf9c25c724c25145d45885b6c9df56ba241c12820776607f1f
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.10.4, @babel/template@npm:^7.3.3, @babel/template@npm:^7.7.4":
   version: 7.10.4
   resolution: "@babel/template@npm:7.10.4"
@@ -2744,6 +2753,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@testing-library/dom@npm:^7.0.3":
+  version: 7.30.1
+  resolution: "@testing-library/dom@npm:7.30.1"
+  dependencies:
+    "@babel/code-frame": ^7.10.4
+    "@babel/runtime": ^7.12.5
+    "@types/aria-query": ^4.2.0
+    aria-query: ^4.2.2
+    chalk: ^4.1.0
+    dom-accessibility-api: ^0.5.4
+    lz-string: ^1.4.4
+    pretty-format: ^26.6.2
+  checksum: a886bdb20955e5f029fa10932184128dd701dac866dc8016e66f339d89ab5b63185c3584ea5eb2a5ffbcb779bad6952f1f0933cc47f6772450211cd85b55861e
+  languageName: node
+  linkType: hard
+
 "@testing-library/dom@npm:^7.22.3":
   version: 7.24.2
   resolution: "@testing-library/dom@npm:7.24.2"
@@ -2785,6 +2810,24 @@ __metadata:
     react: "*"
     react-dom: "*"
   checksum: 9f06d88dc13085790985543253005dca7703bda7a5e0ee2b96e0385a88b8c14b98d74951c1e2d940bcac1c231767e935f4cd90345e9202b79df57994538ad7f3
+  languageName: node
+  linkType: hard
+
+"@testing-library/svelte@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "@testing-library/svelte@npm:3.0.3"
+  dependencies:
+    "@testing-library/dom": ^7.0.3
+  peerDependencies:
+    svelte: 3.x
+  checksum: c90b128e8f141d6dbe25e48199caf14c1a45cda5d9767e3b371cf67c8736a211408ae7a77be7d76c3ff87a4fb0f5e9b1a9630e3e9061402853c6a9d0507896bb
+  languageName: node
+  linkType: hard
+
+"@tsconfig/svelte@npm:^1.0.10":
+  version: 1.0.10
+  resolution: "@tsconfig/svelte@npm:1.0.10"
+  checksum: d38480e0ac7482b488083cbb8aad041862d4a178b879aac86c54ca8ce27b736d6432c79c48a25df9f4f2c03fcbbeb79c81b5e120c199a4b8b9ce38b22961d861
   languageName: node
   linkType: hard
 
@@ -3304,6 +3347,13 @@ __metadata:
   version: 2.4.0
   resolution: "@types/normalize-package-data@npm:2.4.0"
   checksum: 6d077e73be7ac6227b678829c7bd765607136cdef537fd4ee7f368d9302a651aea924254d69826663322048436d90d6e7c679c9aa99c4824a687c568aab8ce4f
+  languageName: node
+  linkType: hard
+
+"@types/parse-json@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@types/parse-json@npm:4.0.0"
+  checksum: 4a8f720afac47b474d3f2eece312340e72bc31bc9561cda37b596ce2ed218c0099765d302625bb67d659a8452a1f93d514f4863c11c7ebaf65430428687dc426
   languageName: node
   linkType: hard
 
@@ -7346,6 +7396,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cosmiconfig@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "cosmiconfig@npm:6.0.0"
+  dependencies:
+    "@types/parse-json": ^4.0.0
+    import-fresh: ^3.1.0
+    parse-json: ^5.0.0
+    path-type: ^4.0.0
+    yaml: ^1.7.2
+  checksum: bbd6bbaefe15938107da21f2b5f2d5ede75c7ed4bca5af904d91987c59b050ac95f5e786d9021e16959e0119b36174b190f6040a1daf6fddc75361ab123c0d45
+  languageName: node
+  linkType: hard
+
 "crc32-stream@npm:^4.0.0":
   version: 4.0.0
   resolution: "crc32-stream@npm:4.0.0"
@@ -7402,18 +7465,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-env@npm:^7.0.3":
-  version: 7.0.3
-  resolution: "cross-env@npm:7.0.3"
-  dependencies:
-    cross-spawn: ^7.0.1
-  bin:
-    cross-env: src/bin/cross-env.js
-    cross-env-shell: src/bin/cross-env-shell.js
-  checksum: af4fa4dab3ddf6c25ed5e0c95ef53ea363aceb41741e22b7eae83a12cc10cb2416e3aba29c95f2f2c3a1aa918d3444fe92fab318a8ba761e8d52ae88388496cc
-  languageName: node
-  linkType: hard
-
 "cross-fetch@npm:3.0.5":
   version: 3.0.5
   resolution: "cross-fetch@npm:3.0.5"
@@ -7432,7 +7483,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-spawn@npm:7.0.3, cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.1, cross-spawn@npm:^7.0.2, cross-spawn@npm:^7.0.3":
+"cross-spawn@npm:7.0.3, cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.2, cross-spawn@npm:^7.0.3":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
   dependencies:
@@ -8346,6 +8397,13 @@ __metadata:
   version: 0.5.2
   resolution: "dom-accessibility-api@npm:0.5.2"
   checksum: 247b9183d20a659890b9d7dd5b92a341c8a9ba8b0232ec6f3f34859b025de6fd05da8011f65b019fdfa19d0f7ff1bf3e610a13c3c38cd2649e20b3980ed834ba
+  languageName: node
+  linkType: hard
+
+"dom-accessibility-api@npm:^0.5.4":
+  version: 0.5.4
+  resolution: "dom-accessibility-api@npm:0.5.4"
+  checksum: 39351d26a3732312f14411effef698204bf6c79a7d5eb0664441897541243f2cdf2e508aca52684ccf3b10df6708a6c265d1fde323eebcb8363a1093f5927b10
   languageName: node
   linkType: hard
 
@@ -11652,7 +11710,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"import-fresh@npm:^3.2.1":
+"import-fresh@npm:^3.1.0, import-fresh@npm:^3.2.1":
   version: 3.3.0
   resolution: "import-fresh@npm:3.3.0"
   dependencies:
@@ -13917,6 +13975,15 @@ fsevents@^1.2.7:
   dependencies:
     es5-ext: ~0.10.2
   checksum: 2eab98cdfb3101dab91ef6b8b50fce616440fa29d27ef1a1b99aa6be13422d03d6ebee15c1eb4873971c34baee27d64376aebc64560aecb37a328c82e3f40169
+  languageName: node
+  linkType: hard
+
+"lz-string@npm:^1.4.4":
+  version: 1.4.4
+  resolution: "lz-string@npm:1.4.4"
+  bin:
+    lz-string: bin/bin.js
+  checksum: 60a13f8a724d109cffc7dda4cb98569adfa0516750f8a75b7236f6bc94b47edffb59e8a1e501364404e3867cf399e6612c3981f9c81c2de75751203431bf2e69
   languageName: node
   linkType: hard
 
@@ -19816,19 +19883,25 @@ resolve@^1.9.0:
   version: 0.0.0-use.local
   resolution: "svelte-app@workspace:workspaces/templates/packages/app-svelte"
   dependencies:
+    "@testing-library/jest-dom": ^5.9.0
+    "@testing-library/svelte": ^3.0.3
+    "@tsconfig/svelte": ^1.0.10
+    "@types/jest": ^26.0.21
     "@types/node": ^14.11.1
-    cross-env: ^7.0.3
     css-loader: ^5.0.1
     jest: ^26.6.3
+    jest-pnp-resolver: ^1.2.2
     mini-css-extract-plugin: ^1.3.4
     pnp-webpack-plugin: ^1.6.4
     svelte: ^3.31.2
     svelte-check: ^1.0.46
+    svelte-jester: ^1.3.2
     svelte-loader: ^3.0.0
     svelte-preprocess: ^4.3.0
-    ts-loader: ^7.0.5
+    ts-jest: ^26.5.4
+    ts-loader: ^8.0.4
     tslib: ^2.0.1
-    typescript: ^4.1.3
+    typescript: ^4.0.3
     webpack: ^5.16.0
     webpack-cli: ^4.4.0
     webpack-dev-server: ^3.11.2
@@ -19868,6 +19941,17 @@ resolve@^1.9.0:
   peerDependencies:
     svelte: ">=3.19.0"
   checksum: 1b7e145c3fdbaa216887d9ed000e564a63f6c73f85239e1d57460518d4a37ab454aa8af9234d6be162bf674c53bef08890436eeeffa7a1c308d1957a313b502d
+  languageName: node
+  linkType: hard
+
+"svelte-jester@npm:^1.3.2":
+  version: 1.3.2
+  resolution: "svelte-jester@npm:1.3.2"
+  dependencies:
+    cosmiconfig: ^6.0.0
+  peerDependencies:
+    svelte: ">= 3"
+  checksum: 4f900c8d1aa97893da08adf3f47946257eab4c5cbab2e610a73c1d2af93a8da6d31aff92453e6960eedc262ec8a2feb0d27f52397d8222ff3594bb0faf15b29d
   languageName: node
   linkType: hard
 
@@ -20711,6 +20795,22 @@ resolve@^1.9.0:
   languageName: node
   linkType: hard
 
+"ts-loader@npm:^8.0.4":
+  version: 8.1.0
+  resolution: "ts-loader@npm:8.1.0"
+  dependencies:
+    chalk: ^4.1.0
+    enhanced-resolve: ^4.0.0
+    loader-utils: ^2.0.0
+    micromatch: ^4.0.0
+    semver: ^7.3.4
+  peerDependencies:
+    typescript: "*"
+    webpack: "*"
+  checksum: f49f5a4e04d3032d5be72f0d29b572eedd57069c206566a443d4b0246409048ccbd85596bb9bd377999875d41c28b8e193b6f54a139c4fae52a3a3768f7020ee
+  languageName: node
+  linkType: hard
+
 "ts-node@npm:^8.10.2":
   version: 8.10.2
   resolution: "ts-node@npm:8.10.2"
@@ -20891,7 +20991,7 @@ resolve@^1.9.0:
   languageName: node
   linkType: hard
 
-typescript@*:
+"typescript@*, typescript@^4.0.3":
   version: 4.2.3
   resolution: "typescript@npm:4.2.3"
   bin:
@@ -20921,7 +21021,7 @@ typescript@^4.1.3:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@*#builtin<compat/typescript>":
+"typescript@patch:typescript@*#builtin<compat/typescript>, typescript@patch:typescript@^4.0.3#builtin<compat/typescript>":
   version: 4.2.3
   resolution: "typescript@patch:typescript@npm%3A4.2.3#builtin<compat/typescript>::version=4.2.3&hash=a45b0e"
   bin:
@@ -22471,6 +22571,13 @@ typescript@^4.1.3:
   version: 4.0.0
   resolution: "yallist@npm:4.0.0"
   checksum: a2960ef879af6ee67a76cae29bac9d8bffeb6e9e366c217dbd21464e7fce071933705544724f47e90ba5209cf9c83c17d5582dd04415d86747a826b2a231efb8
+  languageName: node
+  linkType: hard
+
+"yaml@npm:^1.7.2":
+  version: 1.10.2
+  resolution: "yaml@npm:1.10.2"
+  checksum: 8d72062ea3dbfd8fae3d6ddd5b741c2aeb5835a31b0719bf14fac71dd84adde0829763d6fbac46387309da00af1440194c796da5efc349b0baf9de39d82ae69e
   languageName: node
   linkType: hard
 
