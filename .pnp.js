@@ -9213,6 +9213,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["yaml", "npm:1.10.2"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:7.0.0", {
+          "packageLocation": "./.yarn/cache/cosmiconfig-npm-7.0.0-b9d0d7d156-151fcb9177.zip/node_modules/cosmiconfig/",
+          "packageDependencies": [
+            ["cosmiconfig", "npm:7.0.0"],
+            ["@types/parse-json", "npm:4.0.0"],
+            ["import-fresh", "npm:3.3.0"],
+            ["parse-json", "npm:5.1.0"],
+            ["path-type", "npm:4.0.0"],
+            ["yaml", "npm:1.10.2"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["crc", [
@@ -15420,19 +15432,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "jest-resolve"
           ],
           "linkType": "HARD",
-        }],
-        ["virtual:b4daea0b52142fb2b0a9e893610933ab25a2b51b140eb60017f17d2a8ef4528c3f80e7d5e04c84cbf50deb267d198cd851ec4af3d345b1cecb79b37db80fbbf0#npm:1.2.2", {
-          "packageLocation": "./.yarn/$$virtual/jest-pnp-resolver-virtual-0219527e2f/0/cache/jest-pnp-resolver-npm-1.2.2-da20f8bdfe-d91c86e389.zip/node_modules/jest-pnp-resolver/",
-          "packageDependencies": [
-            ["jest-pnp-resolver", "virtual:b4daea0b52142fb2b0a9e893610933ab25a2b51b140eb60017f17d2a8ef4528c3f80e7d5e04c84cbf50deb267d198cd851ec4af3d345b1cecb79b37db80fbbf0#npm:1.2.2"],
-            ["@types/jest-resolve", null],
-            ["jest-resolve", null]
-          ],
-          "packagePeers": [
-            "@types/jest-resolve",
-            "jest-resolve"
-          ],
-          "linkType": "HARD",
         }]
       ]],
       ["jest-regex-util", [
@@ -16620,6 +16619,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["make-iterator", "npm:1.0.1"],
             ["kind-of", "npm:6.0.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["make-synchronous", [
+        ["npm:0.1.1", {
+          "packageLocation": "./.yarn/cache/make-synchronous-npm-0.1.1-d8894d2632-7b3ae2c6d7.zip/node_modules/make-synchronous/",
+          "packageDependencies": [
+            ["make-synchronous", "npm:0.1.1"],
+            ["subsume", "npm:3.0.0"],
+            ["type-fest", "npm:0.16.0"]
           ],
           "linkType": "HARD",
         }]
@@ -23214,6 +23224,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["subsume", [
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/subsume-npm-3.0.0-33793c0a00-41f3ea23f4.zip/node_modules/subsume/",
+          "packageDependencies": [
+            ["subsume", "npm:3.0.0"],
+            ["escape-string-regexp", "npm:2.0.0"],
+            ["unique-string", "npm:2.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["superagent", [
         ["npm:3.8.3", {
           "packageLocation": "./.yarn/cache/superagent-npm-3.8.3-8bdf672d54-6a2151f7c4.zip/node_modules/superagent/",
@@ -23341,9 +23362,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/svelte", "npm:1.0.10"],
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.14.37"],
+            ["cosmiconfig", "npm:7.0.0"],
             ["css-loader", "virtual:b4daea0b52142fb2b0a9e893610933ab25a2b51b140eb60017f17d2a8ef4528c3f80e7d5e04c84cbf50deb267d198cd851ec4af3d345b1cecb79b37db80fbbf0#npm:5.2.0"],
             ["jest", "npm:26.6.3"],
-            ["jest-pnp-resolver", "virtual:b4daea0b52142fb2b0a9e893610933ab25a2b51b140eb60017f17d2a8ef4528c3f80e7d5e04c84cbf50deb267d198cd851ec4af3d345b1cecb79b37db80fbbf0#npm:1.2.2"],
+            ["make-synchronous", "npm:0.1.1"],
             ["mini-css-extract-plugin", "virtual:b4daea0b52142fb2b0a9e893610933ab25a2b51b140eb60017f17d2a8ef4528c3f80e7d5e04c84cbf50deb267d198cd851ec4af3d345b1cecb79b37db80fbbf0#npm:1.4.0"],
             ["pnp-webpack-plugin", "npm:1.6.4"],
             ["svelte", "npm:3.35.0"],
@@ -24764,6 +24786,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/type-fest-npm-0.11.0-81410fe889-02e5cadf13.zip/node_modules/type-fest/",
           "packageDependencies": [
             ["type-fest", "npm:0.11.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:0.16.0", {
+          "packageLocation": "./.yarn/cache/type-fest-npm-0.16.0-e1b8ff05d9-d30834bb1d.zip/node_modules/type-fest/",
+          "packageDependencies": [
+            ["type-fest", "npm:0.16.0"]
           ],
           "linkType": "HARD",
         }],
