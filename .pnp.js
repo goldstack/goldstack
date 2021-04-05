@@ -2256,7 +2256,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],
             ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],
             ["@goldstack/utils-docker", "workspace:workspaces/templates-lib/packages/utils-docker"],
-            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
             ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
