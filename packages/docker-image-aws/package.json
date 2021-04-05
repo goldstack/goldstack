@@ -26,9 +26,9 @@
     "test:ci": "jest --passWithNoTests --config=./jest.config.js"
   },
   "dependencies": {
-    "@goldstack/template-docker-image-aws": "0.3.18",
-    "@goldstack/utils-git": "0.1.24",
-    "@goldstack/utils-sh": "0.4.6"
+    "@goldstack/template-docker-image-aws": "0.3.19",
+    "@goldstack/utils-git": "0.1.25",
+    "@goldstack/utils-sh": "0.4.7"
   },
   "devDependencies": {
     "@types/jest": "^26.0.21",
