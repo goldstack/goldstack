@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "build": "GOOS=linux GIN_MODE=release go build -ldflags=\"-s -w\" -o distLambda/lambda",
+    "compile": "yarn build",
     "deploy": "yarn build && template deploy \"$@\"",
     "infra": "template infra \"$@\"",
     "template": "template",
