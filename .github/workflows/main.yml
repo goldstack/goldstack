@@ -92,7 +92,7 @@ jobs:
         run: |
           cd workspaces/apps
           yarn compile
-          yarn workspace @goldstack/goldstack-api utils:seed-templates
+          yarn workspace @goldstack/goldstack-api utils:seed-module-templates
           yarn test:ci
           cd ../..
         env:
