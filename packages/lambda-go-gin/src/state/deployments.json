@@ -5,22 +5,22 @@
       "gateway_url": {
         "sensitive": false,
         "type": "string",
-        "value": "https://kl9rotezid.execute-api.us-west-2.amazonaws.com/prod"
+        "value": "https://ue6nqczg9d.execute-api.us-west-2.amazonaws.com/prod"
       },
       "lambda_arn": {
         "sensitive": false,
         "type": "string",
-        "value": "arn:aws:lambda:us-west-2:475629728374:function:goldstack-test-lambda-express"
+        "value": "arn:aws:lambda:us-west-2:475629728374:function:goldstack-test-lambda-go-gin"
       },
       "lambda_function_name": {
         "sensitive": false,
         "type": "string",
-        "value": "goldstack-test-lambda-express"
+        "value": "goldstack-test-lambda-go-gin"
       },
       "lambda_invoke_arn": {
         "sensitive": false,
         "type": "string",
-        "value": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:475629728374:function:goldstack-test-lambda-express/invocations"
+        "value": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:475629728374:function:goldstack-test-lambda-go-gin/invocations"
       }
     }
   }

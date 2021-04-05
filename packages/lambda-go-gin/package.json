@@ -1,0 +1,15 @@
+{
+  "name": "@goldstack/server-go",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "GOOS=linux GIN_MODE=release go build -ldflags=\"-s -w\" -o distLambda/lambda",
+    "deploy": "yarn build && template deploy \"$@\"",
+    "infra": "template infra \"$@\"",
+    "template": "template",
+    "watch": "PORT=8084 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local nodemon --watch ../../ --ext go --exec 'go build -o localDevelopment/server.exe && cd localDevelopment && server.exe'"
+  },
+  "devDependencies": {
+    "@goldstack/template-lambda-express": "0.3.43",
+    "nodemon": "^2.0.4"
+  }
+}

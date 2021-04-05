@@ -1,0 +1,5 @@
+distLambda/
+*.zip
+*.exe
+localDevelopment/
+vendor/
