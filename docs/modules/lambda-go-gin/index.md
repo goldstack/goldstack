@@ -24,4 +24,3 @@ Note that for automating the build and rolling out the infrastructure, this temp
 You should now be able to access your API. The domain under which the API is deployed is configured in `goldstack.json` under `"deployments[*].apiDomain"`. You can access this API domain with a browser since the default API provided in the template allows for GET requests to the root.
 
 ### Development
-
