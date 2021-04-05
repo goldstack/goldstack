@@ -2,7 +2,7 @@ package main
 
 import "os"
 
-func local() {
+func StartLocal() {
 	r := CreateServer()
 
 	portEnv := os.Getenv("PORT")

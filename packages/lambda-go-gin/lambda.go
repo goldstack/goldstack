@@ -5,7 +5,6 @@ import (
 	"log"
 
 	"github.com/aws/aws-lambda-go/events"
-	"github.com/aws/aws-lambda-go/lambda"
 	ginadapter "github.com/awslabs/aws-lambda-go-api-proxy/gin"
 )
 
@@ -22,8 +21,4 @@ func init() {
 func Handler(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	log.Printf("Request received:\n%+v", req)
 	return ginLambda.ProxyWithContext(ctx, req)
-}
-
-func main() {
-	lambda.Start(Handler)
 }
