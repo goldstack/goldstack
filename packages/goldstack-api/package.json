@@ -19,7 +19,7 @@
     "template": "template",
     "test": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --watch --config=jest.config.js",
     "test:ci": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --config=jest.config.js --detectOpenHandles",
-    "utils:seed-templates": "GOLDSTACK_DEPLOYMENT=local yarn node ./dist/src/utils/seedRepo",
+    "utils:seed-modules": "GOLDSTACK_DEPLOYMENT=local yarn node ./dist/src/utils/seedRepo",
     "watch": "PORT=8731 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local GOLDSTACK_LOG_EMAILS=true STRIPE_API_KEY=sk_test_51Hd1UtArOjAVQR9vpC8P8cyZcAHb62nSNm4xykBsavQghyo11Al0fVvAJ7E9vswqRhLi2z7idmRJrXMppMWhNkJJ006nBfDJ9g nodemon --config nodemon.json --exec 'yarn node dist/src/local.js'"
   },
   "dependencies": {
