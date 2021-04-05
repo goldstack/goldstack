@@ -13,17 +13,6 @@ import { InfraUpTest } from './tests/InfraUpTest';
 import { InfraDestroyTest } from './tests/InfraDestroyTest';
 import { DeployTest } from './tests/DeployTest';
 import { StaticWebsiteAwsTest } from './tests/StaticWebsiteAwsTest';
-import { Template } from '@goldstack/utils-template';
-
-import { StaticWebsiteAwsTemplate } from '@goldstack/template-static-website-aws';
-import {
-  AppNextJsTemplate,
-  AppNextJsBootstrapTemplate,
-} from '@goldstack/template-nextjs';
-import { DockerImageAwsTemplate } from '@goldstack/template-docker-image-aws';
-import { EmailSendTemplate } from '@goldstack/template-email-send';
-import { S3Template } from '@goldstack/template-s3';
-import { LambdaExpressTemplate } from '@goldstack/template-lambda-express';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function assert(condition: any, msg?: string): asserts condition {
@@ -33,18 +22,6 @@ function assert(condition: any, msg?: string): asserts condition {
 }
 
 const sleep = promisify(setTimeout);
-
-export const getDefaultTemplates = (): Template[] => {
-  return [
-    new StaticWebsiteAwsTemplate(),
-    new AppNextJsTemplate(),
-    new AppNextJsBootstrapTemplate(),
-    new DockerImageAwsTemplate(),
-    new S3Template(),
-    new LambdaExpressTemplate(),
-    new EmailSendTemplate(),
-  ];
-};
 
 export const prepareTestDir = async (
   goldstackTestsDir = './goldstackLocal/test/'
