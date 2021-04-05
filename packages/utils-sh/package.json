@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-sh",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "Utilities for working with files and folders in a bash like manner",
   "keywords": [
     "goldstack",
@@ -36,7 +36,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-log": "0.2.3",
+    "@goldstack/utils-log": "0.2.4",
     "archiver": "^5.0.0",
     "extract-zip": "^2.0.1",
     "ncp": "^2.0.0",
@@ -44,7 +44,7 @@
     "shelljs": "^0.8.4"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.1.24",
+    "@goldstack/utils-git": "0.1.25",
     "@types/archiver": "^3.1.0",
     "@types/jest": "^26.0.21",
     "@types/ncp": "^2.0.4",
