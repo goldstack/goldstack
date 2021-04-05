@@ -103,6 +103,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates/packages/lambda-express"
       },
       {
+        "name": "@goldstack/server-go",
+        "reference": "workspace:workspaces/templates/packages/lambda-go-gin"
+      },
+      {
         "name": "@goldstack/library",
         "reference": "workspace:workspaces/templates/packages/library"
       },
@@ -347,6 +351,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/react-components", ["workspace:workspaces/templates/packages/react-components"]],
       ["@goldstack/s3", ["workspace:workspaces/templates/packages/s3"]],
       ["@goldstack/server-express", ["workspace:workspaces/templates/packages/server-express"]],
+      ["@goldstack/server-go", ["workspace:workspaces/templates/packages/lambda-go-gin"]],
       ["@goldstack/session-repository", ["workspace:workspaces/templates-management/packages/session-repository"]],
       ["@goldstack/session-repository-bucket", ["workspace:workspaces/templates-management/packages/session-repository-bucket"]],
       ["@goldstack/static-website-aws", ["workspace:workspaces/templates/packages/static-website-aws"]],
@@ -2025,6 +2030,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["ts-node", "virtual:11ada9b28839d4fd4fd589c1152d09afa4401c8de2e0a2b1020588da78d4576c0d5523e67b35d4e74fafa94849ba3113e31dc0ab2b5d68223629f75866888dd3#npm:8.10.2"],
             ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=a45b0e"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@goldstack/server-go", [
+        ["workspace:workspaces/templates/packages/lambda-go-gin", {
+          "packageLocation": "./workspaces/templates/packages/lambda-go-gin/",
+          "packageDependencies": [
+            ["@goldstack/server-go", "workspace:workspaces/templates/packages/lambda-go-gin"],
+            ["@goldstack/template-lambda-express", "workspace:workspaces/templates-lib/packages/template-lambda-express"],
+            ["nodemon", "npm:2.0.4"]
           ],
           "linkType": "SOFT",
         }]

@@ -1368,6 +1368,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@goldstack/server-go@workspace:workspaces/templates/packages/lambda-go-gin":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/server-go@workspace:workspaces/templates/packages/lambda-go-gin"
+  dependencies:
+    "@goldstack/template-lambda-express": 0.3.43
+    nodemon: ^2.0.4
+  languageName: unknown
+  linkType: soft
+
 "@goldstack/session-repository-bucket@0.1.0, @goldstack/session-repository-bucket@workspace:workspaces/templates-management/packages/session-repository-bucket":
   version: 0.0.0-use.local
   resolution: "@goldstack/session-repository-bucket@workspace:workspaces/templates-management/packages/session-repository-bucket"

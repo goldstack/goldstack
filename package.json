@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "build": "yarn compile",
+    "checkout": "git submodule foreach --recursive git checkout \"$@\" && git checkout \"$@\"",
     "commit": "git submodule foreach --recursive 'git add .' && git submodule foreach --recursive \"git diff-index --quiet HEAD || git commit -m $@\" && git add . && git commit -m \"$@\" || true",
     "compile": "yarn workspace templates-lib compile && yarn workspace templates compile && yarn workspace templates-management compile && yarn workspace apps compile && yarn workspace docs compile",
     "compile:watch": "yarn workspace templates-lib compile; yarn workspace templates-management compile; yarn workspace docs compile; yarn compile:watch-new",
@@ -33,6 +34,7 @@
     "pull:old": "git pull --recurse-submodules && git submodule foreach --recursive git pull --recurse-submodules",
     "push": "git submodule foreach --recursive git push && git push --recurse-submodules=on-demand",
     "push:each": "git submodule foreach --recursive git push && git push",
+    "push:newbranch": "git submodule foreach --recursive git push --set-upstream origin \"$@'\" && git push --set-upstream origin \"$@\"",
     "test:ci": "yarn workspaces foreach --run test:ci",
     "test:watch": "nodemonx --watch . --exec 'yarn test:ci'"
   },
