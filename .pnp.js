@@ -75,6 +75,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/docs/packages/markdown-docs"
       },
       {
+        "name": "@goldstack/module-template-docs",
+        "reference": "workspace:workspaces/docs/packages/module-template-docs"
+      },
+      {
         "name": "@goldstack/toc-generator",
         "reference": "workspace:workspaces/docs/packages/toc-generator"
       },
@@ -109,6 +113,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "@goldstack/library",
         "reference": "workspace:workspaces/templates/packages/library"
+      },
+      {
+        "name": "@goldstack/module-template-utils",
+        "reference": "workspace:workspaces/templates/packages/module-template-utils"
       },
       {
         "name": "@goldstack/react-components",
@@ -338,6 +346,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/lambda-express", ["workspace:workspaces/templates/packages/lambda-express"]],
       ["@goldstack/library", ["workspace:workspaces/templates/packages/library"]],
       ["@goldstack/markdown-docs", ["workspace:workspaces/docs/packages/markdown-docs"]],
+      ["@goldstack/module-template-docs", ["workspace:workspaces/docs/packages/module-template-docs"]],
+      ["@goldstack/module-template-utils", ["workspace:workspaces/templates/packages/module-template-utils"]],
       ["@goldstack/nodemonx", ["workspace:workspaces/templates-lib/packages/utils-nodemonx"]],
       ["@goldstack/prepare-template", ["workspace:workspaces/templates-management/packages/prepare-template"]],
       ["@goldstack/prepare-yarn-pnp-monorepo", ["workspace:workspaces/templates-management/packages/prepare-yarn-pnp-monorepo"]],
@@ -1503,6 +1513,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/auth", "workspace:workspaces/templates-management/packages/auth"],
             ["@goldstack/goldstack-email-send", "workspace:workspaces/apps/packages/goldstack-email-send"],
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],
+            ["@goldstack/module-template-utils", "workspace:workspaces/templates/packages/module-template-utils"],
             ["@goldstack/project-build", "workspace:workspaces/templates-management/packages/project-build"],
             ["@goldstack/project-config", "workspace:workspaces/templates-management/packages/project-config"],
             ["@goldstack/project-package-bucket", "workspace:workspaces/templates-management/packages/project-package-bucket"],
@@ -1742,6 +1753,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=a45b0e"],
             ["yargs", "npm:15.4.1"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@goldstack/module-template-docs", [
+        ["workspace:workspaces/docs/packages/module-template-docs", {
+          "packageLocation": "./workspaces/docs/packages/module-template-docs/",
+          "packageDependencies": [
+            ["@goldstack/module-template-docs", "workspace:workspaces/docs/packages/module-template-docs"],
+            ["@types/jest", "npm:26.0.21"],
+            ["@types/node", "npm:14.11.2"],
+            ["jest", "npm:26.6.3"],
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
+            ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=a45b0e"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@goldstack/module-template-utils", [
+        ["workspace:workspaces/templates/packages/module-template-utils", {
+          "packageLocation": "./workspaces/templates/packages/module-template-utils/",
+          "packageDependencies": [
+            ["@goldstack/module-template-utils", "workspace:workspaces/templates/packages/module-template-utils"],
+            ["@types/jest", "npm:26.0.21"],
+            ["@types/node", "npm:14.11.2"],
+            ["jest", "npm:26.6.3"],
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
+            ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=a45b0e"]
           ],
           "linkType": "SOFT",
         }]
