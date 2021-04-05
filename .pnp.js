@@ -83,6 +83,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/docs/packages/toc-generator"
       },
       {
+        "name": "@goldstack/utils-docs-cli",
+        "reference": "workspace:workspaces/docs/packages/utils-docs-cli"
+      },
+      {
         "name": "@goldstack/app-nextjs",
         "reference": "workspace:workspaces/templates/packages/app-nextjs"
       },
@@ -185,10 +189,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "@goldstack/utils-docs",
         "reference": "workspace:workspaces/templates-lib/packages/utils-docs"
-      },
-      {
-        "name": "@goldstack/utils-docs-cli",
-        "reference": "workspace:workspaces/templates-lib/packages/utils-docs-template"
       },
       {
         "name": "@goldstack/utils-git",
@@ -382,7 +382,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/utils-config", ["workspace:workspaces/templates-lib/packages/utils-config"]],
       ["@goldstack/utils-docker", ["workspace:workspaces/templates-lib/packages/utils-docker"]],
       ["@goldstack/utils-docs", ["workspace:workspaces/templates-lib/packages/utils-docs"]],
-      ["@goldstack/utils-docs-cli", ["workspace:workspaces/templates-lib/packages/utils-docs-template"]],
+      ["@goldstack/utils-docs-cli", ["workspace:workspaces/docs/packages/utils-docs-cli"]],
       ["@goldstack/utils-git", ["workspace:workspaces/templates-lib/packages/utils-git"]],
       ["@goldstack/utils-json-to-ts", ["workspace:workspaces/templates-lib/packages/utils-json-to-ts"]],
       ["@goldstack/utils-log", ["workspace:workspaces/templates-lib/packages/utils-log"]],
@@ -419,7 +419,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@ampproject/toolbox-optimizer", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.5.14"],
             ["@goldstack/nodemonx", "workspace:workspaces/templates-lib/packages/utils-nodemonx"],
-            ["@goldstack/utils-docs-cli", "workspace:workspaces/templates-lib/packages/utils-docs-template"],
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
             ["@goldstack/utils-package-upgrade", "workspace:workspaces/templates-lib/packages/utils-package-upgrade"],
             ["@typescript-eslint/eslint-plugin", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:4.14.0"],
             ["@typescript-eslint/parser", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:4.14.0"],
@@ -1601,7 +1601,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/project-repository", "workspace:workspaces/templates-management/packages/project-repository"],
             ["@goldstack/project-template-data", "workspace:workspaces/apps/packages/project-template-data"],
             ["@goldstack/template-nextjs", "workspace:workspaces/templates-lib/packages/template-nextjs"],
-            ["@goldstack/utils-docs-cli", "workspace:workspaces/templates-lib/packages/utils-docs-template"],
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
             ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
@@ -1762,9 +1762,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/docs/packages/module-template-docs/",
           "packageDependencies": [
             ["@goldstack/module-template-docs", "workspace:workspaces/docs/packages/module-template-docs"],
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
+            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
             ["jest", "npm:26.6.3"],
+            ["source-map-support", "npm:0.5.19"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=a45b0e"]
           ],
@@ -2253,7 +2256,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],
             ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],
             ["@goldstack/utils-docker", "workspace:workspaces/templates-lib/packages/utils-docker"],
-            ["@goldstack/utils-docs-cli", "workspace:workspaces/templates-lib/packages/utils-docs-template"],
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
             ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
@@ -2289,7 +2292,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],
             ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],
             ["@goldstack/utils-docker", "workspace:workspaces/templates-lib/packages/utils-docker"],
-            ["@goldstack/utils-docs-cli", "workspace:workspaces/templates-lib/packages/utils-docs-template"],
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
             ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
@@ -2371,7 +2374,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-aws-cli", "workspace:workspaces/templates-lib/packages/utils-aws-cli"],
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],
             ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],
-            ["@goldstack/utils-docs-cli", "workspace:workspaces/templates-lib/packages/utils-docs-template"],
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
             ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
@@ -2450,7 +2453,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],
             ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],
             ["@goldstack/utils-docker", "workspace:workspaces/templates-lib/packages/utils-docker"],
-            ["@goldstack/utils-docs-cli", "workspace:workspaces/templates-lib/packages/utils-docs-template"],
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
             ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
@@ -2484,7 +2487,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],
             ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],
-            ["@goldstack/utils-docs-cli", "workspace:workspaces/templates-lib/packages/utils-docs-template"],
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
             ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
@@ -2621,10 +2624,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@goldstack/utils-docs-cli", [
-        ["workspace:workspaces/templates-lib/packages/utils-docs-template", {
-          "packageLocation": "./workspaces/templates-lib/packages/utils-docs-template/",
+        ["workspace:workspaces/docs/packages/utils-docs-cli", {
+          "packageLocation": "./workspaces/docs/packages/utils-docs-cli/",
           "packageDependencies": [
-            ["@goldstack/utils-docs-cli", "workspace:workspaces/templates-lib/packages/utils-docs-template"],
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],
             ["@goldstack/utils-docs", "workspace:workspaces/templates-lib/packages/utils-docs"],
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
@@ -20693,7 +20696,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["root", "workspace:."],
             ["@ampproject/toolbox-optimizer", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:2.5.14"],
             ["@goldstack/nodemonx", "workspace:workspaces/templates-lib/packages/utils-nodemonx"],
-            ["@goldstack/utils-docs-cli", "workspace:workspaces/templates-lib/packages/utils-docs-template"],
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
             ["@goldstack/utils-package-upgrade", "workspace:workspaces/templates-lib/packages/utils-package-upgrade"],
             ["@typescript-eslint/eslint-plugin", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:4.14.0"],
             ["@typescript-eslint/parser", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:4.14.0"],
