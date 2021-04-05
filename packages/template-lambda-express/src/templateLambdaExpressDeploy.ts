@@ -37,7 +37,10 @@ export const deployLambda = async (
 
     archive.pipe(output);
 
-    archive.directory(lambdaDistDir, false);
+    archive.directory(lambdaDistDir, false, {
+      // mode required for languages that are packaged into executables, e.g. Go
+      mode: 777,
+    });
 
     archive.finalize();
   });
