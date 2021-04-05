@@ -37,8 +37,6 @@
     "compile:watch": "tsc -p tsconfig.json --watch",
     "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
-    "generate:docs": "utils-docs-cli generate-template-docs modules/static-website-aws/ ./docs/ && cp ./docs/* ../../../templates/packages/static-website-aws/docs && yarn generate:docs:markdown",
-    "generate:docs:markdown": "utils-docs-cli generate-markdown-doc ../../../templates/packages/static-website-aws/README.template.md ../../../templates/packages/static-website-aws/README.md",
     "generate:schema": "utils-package-config-generate && cp schemas/* ../../../templates/packages/static-website-aws/schemas",
     "prepublishOnly": "yarn run build",
     "publish": "utils-git changed --exec \"yarn npm publish $@\"",
