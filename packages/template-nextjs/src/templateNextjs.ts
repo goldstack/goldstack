@@ -1,4 +1,3 @@
-import { Template } from '@goldstack/utils-template';
 import { wrapCli } from '@goldstack/utils-cli';
 import { fatal } from '@goldstack/utils-log';
 import { infraAwsStaticWebsiteCli } from '@goldstack/template-static-website-aws';
@@ -70,21 +69,3 @@ export const run = async (args: string[]): Promise<void> => {
     throw new Error();
   });
 };
-
-export class AppNextJsTemplate implements Template {
-  getTemplateName(): string {
-    return 'app-nextjs';
-  }
-  getJsonSchema(): object {
-    return {};
-  }
-}
-
-export class AppNextJsBootstrapTemplate implements Template {
-  getTemplateName(): string {
-    return 'app-nextjs-bootstrap';
-  }
-  getJsonSchema(): object {
-    return {};
-  }
-}

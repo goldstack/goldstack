@@ -1,6 +1,5 @@
 import { wrapCli } from '@goldstack/utils-cli';
 
-import { Template } from '@goldstack/utils-template';
 import { infraAwsDockerImageCli } from './infraAwsDockerImage';
 
 import configSchema from './schemas/configSchema.json';
@@ -118,12 +117,3 @@ export const run = async (args: string[]): Promise<void> => {
     throw new Error('Unknown command: ' + command);
   });
 };
-
-export class DockerImageAwsTemplate implements Template {
-  getTemplateName(): string {
-    return 'docker-image-aws';
-  }
-  getJsonSchema(): object {
-    return configSchema;
-  }
-}

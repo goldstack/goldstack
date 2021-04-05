@@ -1,4 +1,3 @@
-import { Template } from '@goldstack/utils-template';
 import { buildCli } from '@goldstack/utils-package';
 import { wrapCli } from '@goldstack/utils-cli';
 import { infraCommands } from '@goldstack/utils-terraform';
@@ -39,12 +38,3 @@ export const run = async (args: string[]): Promise<void> => {
     throw new Error('Unknown command: ' + command);
   });
 };
-
-export class EmailSendTemplate implements Template {
-  getTemplateName(): string {
-    return 'email-send';
-  }
-  getJsonSchema(): object {
-    return {};
-  }
-}

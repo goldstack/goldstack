@@ -1,4 +1,3 @@
-import { Template } from '@goldstack/utils-template';
 import { wrapCli } from '@goldstack/utils-cli';
 import { fatal } from '@goldstack/utils-log';
 import { infraAwsStaticWebsiteCli } from './infraAwsStaticWebsite';
@@ -68,12 +67,3 @@ export const run = async (args: string[]): Promise<void> => {
     throw new Error();
   });
 };
-
-export class StaticWebsiteAwsTemplate implements Template {
-  getTemplateName(): string {
-    return 'static-website-aws';
-  }
-  getJsonSchema(): object {
-    return {};
-  }
-}

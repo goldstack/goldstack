@@ -1,4 +1,3 @@
-import { Template } from '@goldstack/utils-template';
 import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
 import { wrapCli } from '@goldstack/utils-cli';
 import { infraCommands } from '@goldstack/utils-terraform';
@@ -44,12 +43,3 @@ export const run = async (args: string[]): Promise<void> => {
     throw new Error('Unknown command: ' + command);
   });
 };
-
-export class LambdaExpressTemplate implements Template {
-  getTemplateName(): string {
-    return 'lambda-express';
-  }
-  getJsonSchema(): object {
-    return {};
-  }
-}

@@ -5,11 +5,6 @@ import { GoldstackTemplateConfiguration } from './generated/goldstackTemplateCon
 
 export { GoldstackTemplateConfiguration } from './generated/goldstackTemplateConfigurationSchema';
 
-export interface Template {
-  getTemplateName(): string;
-  getJsonSchema(): object;
-}
-
 export const readTemplateConfigFromString = (
   data: string
 ): GoldstackTemplateConfiguration => {
