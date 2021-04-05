@@ -1,7 +1,7 @@
 .clickable-media {
- cursor: pointer;
- border-radius: 0.75rem;
- text-decoration: none;
+  cursor: pointer;
+  border-radius: 0.75rem;
+  text-decoration: none;
 }
 
 .clickable-media p {
