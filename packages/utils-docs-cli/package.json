@@ -40,8 +40,8 @@
   },
   "dependencies": {
     "@goldstack/utils-cli": "0.2.4",
-    "@goldstack/utils-docs": "0.3.11",
-    "@goldstack/utils-sh": "0.4.7",
+    "@goldstack/utils-docs": "0.3.12",
+    "@goldstack/utils-sh": "0.4.8",
     "@types/yargs": "^15.0.5",
     "source-map-support": "^0.5.19",
     "yargs": "^15.4.1"
