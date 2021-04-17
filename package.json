@@ -43,9 +43,9 @@
     "@ampproject/toolbox-optimizer": "^2.5.14"
   },
   "devDependencies": {
-    "@goldstack/nodemonx": "0.3.7",
+    "@goldstack/nodemonx": "0.3.8",
     "@goldstack/utils-docs-cli": "0.3.11",
-    "@goldstack/utils-package-upgrade": "0.2.8",
+    "@goldstack/utils-package-upgrade": "0.2.9",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
     "@yarnpkg/doctor": "^2.0.0-rc.17",
