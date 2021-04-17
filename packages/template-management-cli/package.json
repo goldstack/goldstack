@@ -35,8 +35,8 @@
     "@goldstack/template-build-set": "0.1.0",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/template-repository-bucket": "0.1.0",
-    "@goldstack/template-s3": "0.3.39",
-    "@goldstack/template-static-website-aws": "0.3.39",
+    "@goldstack/template-s3": "0.3.40",
+    "@goldstack/template-static-website-aws": "0.3.40",
     "@goldstack/utils-cli": "0.2.4",
     "@goldstack/utils-config": "0.3.8",
     "@goldstack/utils-git": "0.1.25",
@@ -48,7 +48,7 @@
     "yargs": "^15.4.1"
   },
   "devDependencies": {
-    "@goldstack/template-docker-image-aws": "0.3.20",
+    "@goldstack/template-docker-image-aws": "0.3.21",
     "@goldstack/utils-sh": "0.4.8",
     "@types/jest": "^26.0.21",
     "@types/mock-aws-s3": "^2.6.1",
