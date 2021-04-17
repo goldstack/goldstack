@@ -10,6 +10,8 @@ import rimraf from 'rimraf';
 import archiver from 'archiver';
 import extract from 'extract-zip';
 
+import { sync as globSync } from 'glob';
+
 export interface ExecParams {
   silent?: boolean;
 }
@@ -27,22 +29,26 @@ export const copy = async (
   }
 
   for (const sourceEl of sourceArr) {
-    await new Promise<void>((resolve, reject) => {
-      let destCorrected: string;
-      if (!fs.lstatSync(sourceEl).isDirectory()) {
-        destCorrected = dest + path.basename(sourceEl);
-      } else {
-        destCorrected = dest;
-      }
+    const files = globSync(sourceEl);
 
-      ncp(sourceEl, destCorrected, { stopOnErr: true }, (err) => {
-        if (err) {
-          reject(err);
-          return;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      await new Promise<void>((resolve, reject) => {
+        let destCorrected: string;
+        if (!fs.lstatSync(file).isDirectory()) {
+          destCorrected = dest + path.basename(file);
+        } else {
+          destCorrected = dest;
         }
-        resolve();
+        ncp(file, destCorrected, { stopOnErr: true }, (err) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          resolve();
+        });
       });
-    });
+    }
   }
 };
 
