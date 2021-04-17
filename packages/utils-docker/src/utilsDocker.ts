@@ -143,4 +143,4 @@ export const renderHostEnvironmentVariables = (): string => {
 };
 
 export const imageGoldstackBuild = (): string =>
-  'goldstack/goldstack-docker-build:0.1.2';
+  'goldstack/goldstack-docker-build:0.1.3';
