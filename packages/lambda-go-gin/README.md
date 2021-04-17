@@ -1,4 +1,4 @@
-# Email Sent Template
+# Lambda Go Gin Template
 
 ❤️ Support development by using the [Goldstack Project Builder](https://goldstack.party) ❤️
 
