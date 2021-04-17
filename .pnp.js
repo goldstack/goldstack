@@ -1614,6 +1614,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
             ["@types/react", "npm:16.9.49"],
+            ["@types/react-scrollable-anchor", "npm:0.6.0"],
             ["@types/styled-components", "npm:5.1.3"],
             ["@types/testing-library__jest-dom", "npm:5.9.2"],
             ["@types/testing-library__react", "npm:10.2.0"],
@@ -1635,6 +1636,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-bootstrap", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:1.4.3"],
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:17.0.1"],
             ["react-is", "npm:17.0.1"],
+            ["react-scrollable-anchor", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:0.6.1"],
             ["reload", "npm:3.1.0"],
             ["styled-components", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:5.2.0"],
             ["swr", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:0.4.0"],
@@ -4347,6 +4349,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-react-native-npm-0.63.21-86417816e8-84cba3a6a9.zip/node_modules/@types/react-native/",
           "packageDependencies": [
             ["@types/react-native", "npm:0.63.21"],
+            ["@types/react", "npm:16.9.49"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/react-scrollable-anchor", [
+        ["npm:0.6.0", {
+          "packageLocation": "./.yarn/cache/@types-react-scrollable-anchor-npm-0.6.0-a7f2a6bd17-412d6ac225.zip/node_modules/@types/react-scrollable-anchor/",
+          "packageDependencies": [
+            ["@types/react-scrollable-anchor", "npm:0.6.0"],
             ["@types/react", "npm:16.9.49"]
           ],
           "linkType": "HARD",
@@ -15515,6 +15527,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["jump.js", [
+        ["npm:1.0.1", {
+          "packageLocation": "./.yarn/cache/jump.js-npm-1.0.1-69ae2630d5-d9112036bd.zip/node_modules/jump.js/",
+          "packageDependencies": [
+            ["jump.js", "npm:1.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["just-debounce", [
         ["npm:1.0.0", {
           "packageLocation": "./.yarn/cache/just-debounce-npm-1.0.0-8f5f84426a-579b3a5508.zip/node_modules/just-debounce/",
@@ -19785,6 +19806,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/react-refresh-npm-0.8.3-9b3fb3900b-38f06df8e0.zip/node_modules/react-refresh/",
           "packageDependencies": [
             ["react-refresh", "npm:0.8.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-scrollable-anchor", [
+        ["npm:0.6.1", {
+          "packageLocation": "./.yarn/cache/react-scrollable-anchor-npm-0.6.1-43a3e7539e-a86939f348.zip/node_modules/react-scrollable-anchor/",
+          "packageDependencies": [
+            ["react-scrollable-anchor", "npm:0.6.1"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:0.6.1", {
+          "packageLocation": "./.yarn/$$virtual/react-scrollable-anchor-virtual-e89884f19f/0/cache/react-scrollable-anchor-npm-0.6.1-43a3e7539e-a86939f348.zip/node_modules/react-scrollable-anchor/",
+          "packageDependencies": [
+            ["react-scrollable-anchor", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:0.6.1"],
+            ["@types/react", "npm:16.9.49"],
+            ["@types/react-dom", null],
+            ["jump.js", "npm:1.0.1"],
+            ["prop-types", "npm:15.7.2"],
+            ["react", "npm:17.0.1"],
+            ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:17.0.1"]
+          ],
+          "packagePeers": [
+            "@types/react-dom",
+            "@types/react",
+            "react-dom",
+            "react"
           ],
           "linkType": "HARD",
         }]
