@@ -13,6 +13,9 @@ import NodejsIcon from './../../icons/nodejs.svg';
 import { TemplateFeatureImage } from '@goldstack/project-template-data';
 
 export const resolveImage = (image: TemplateFeatureImage): any => {
+  if (image.indexOf('http') === 0) {
+    return image;
+  }
   if (image === 'typescript') {
     return TypeScriptIcon;
   }

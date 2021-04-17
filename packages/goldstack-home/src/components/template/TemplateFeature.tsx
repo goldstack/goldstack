@@ -22,6 +22,8 @@ import JestIcon from 'src/icons/jestjs.svg';
 import VSCodeIcon from 'src/icons/vscode.svg';
 import YarnIcon from 'src/icons/yarn.svg';
 
+import ScrollableAnchor from 'react-scrollable-anchor';
+
 import {
   TemplateFeatureProps,
   TemplateIcons,
@@ -144,7 +146,9 @@ const TemplateFeature = (props: TemplateFeatureProps): JSX.Element => {
       <div className="position-relative gradient-y-gray">
         <div className="container space-2 space-bottom-sm-3">
           <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-5">
-            <h2 id={props.id || ''}>{props.title}</h2>
+            <ScrollableAnchor id={props.id || ''}>
+              <h2>{props.title}</h2>
+            </ScrollableAnchor>
             <p>{props.description}</p>
           </div>
 

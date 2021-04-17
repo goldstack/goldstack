@@ -33,7 +33,8 @@ export type TemplateFeatureImage =
   | 'jest'
   | 'composition'
   | 'bootstrap'
-  | 'nodejs';
+  | 'nodejs'
+  | string; // will be resolved as URL if starts with 'http'
 export interface ShortTemplateFeature {
   title: string;
   image: TemplateFeatureImage;
