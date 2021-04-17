@@ -17,6 +17,7 @@ export class RootBuildTemplateTest implements TemplateTest {
     yarn(projectDir, 'lint');
 
     // workspace dependencies should be valid
+    // some error with package:doctor coming up during local install
     // yarn(projectDir, 'package:doctor');
 
     // compile should work
