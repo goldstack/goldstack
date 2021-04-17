@@ -12,5 +12,6 @@
   "modules/app-nextjs-bootstrap",
   "modules/email-send",
   "modules/static-website-aws",
-  "modules/s3"
+  "modules/s3",
+  "modules/lambda-go-gin"
 ]

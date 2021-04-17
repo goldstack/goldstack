@@ -21,7 +21,8 @@
         "app-nextjs-bootstrap/index.md",
         "email-send/index.md",
         "static-website-aws/index.md",
-        "s3/index.md"
+        "s3/index.md",
+        "lambda-go-gin/index.md"
       ]
     }
   ]

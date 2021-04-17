@@ -67,6 +67,11 @@
             "title": "S3",
             "path": "modules/s3",
             "children": []
+          },
+          {
+            "title": "Lambda Go Gin",
+            "path": "modules/lambda-go-gin",
+            "children": []
           }
         ]
       }
