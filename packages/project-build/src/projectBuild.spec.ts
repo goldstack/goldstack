@@ -62,6 +62,22 @@ describe('Template Building', () => {
     });
   });
 
+  it('Should be able to build lambda go gin template', async () => {
+    await buildTemplate({
+      templateName: 'lambda-go-gin',
+      repo,
+      goldstackTestsDir,
+    });
+  });
+
+  it('Should be able to build lambda email-send template', async () => {
+    await buildTemplate({
+      templateName: 'email-send',
+      repo,
+      goldstackTestsDir,
+    });
+  });
+
   it('Should be able to build a project for static-website-aws', async () => {
     const config: ProjectConfiguration = {
       projectName: 'project1',
@@ -183,7 +199,7 @@ describe('Template Building', () => {
 
     // check s3 package
     const s31PackageDir =
-      projectDir + 'packages/' + config.packages[0].packageName + '/';
+      projectDir + 'packages/' + config.packages[1].packageName + '/';
     assertFilesExist([
       s31PackageDir + 'infra/aws/.gitignore',
       s31PackageDir + 'infra/aws/main.tf',
@@ -192,13 +208,98 @@ describe('Template Building', () => {
 
     // ensure config values are overwritten
     const s31GoldstackConfig = JSON.parse(
-      read(dockerImage1PackageDir + 'goldstack.json')
+      read(s31PackageDir + 'goldstack.json')
     );
-    expect(s31GoldstackConfig.configuration.imageTag).toEqual('');
+    const configEntries = Object.entries(s31GoldstackConfig.configuration);
+    // console.log(JSON.stringify(configEntries));
+    expect(configEntries.length).toEqual(0);
 
     const s31DeploymentState = JSON.parse(
       read(s31PackageDir + 'src/state/deployments.json')
     );
     expect(s31DeploymentState).toEqual([]);
+  });
+
+  it('Should be able to build a project for lambda-go-gin and email-send-template', async () => {
+    const config: ProjectConfiguration = {
+      projectName: 'project-go-gin-email-send',
+      rootTemplateReference: {
+        templateName: 'yarn-pnp-monorepo',
+      },
+      packages: [
+        {
+          packageName: 'lambda-go-gin-1',
+          templateReference: {
+            templateName: 'lambda-go-gin',
+          },
+        },
+        {
+          packageName: 'email-send-1',
+          templateReference: {
+            templateName: 'email-send',
+          },
+        },
+      ],
+    };
+
+    assert(repo);
+    const projectDir = goldstackTestsDir + `projects/${config.projectName}/`;
+    await rmSafe(projectDir);
+    mkdir('-p', projectDir);
+
+    await buildProject({
+      destinationDirectory: projectDir,
+      config,
+      s3: repo,
+    });
+
+    // check go gin
+    const goGinPackageDir =
+      projectDir + 'packages/' + config.packages[0].packageName + '/';
+    assertFilesExist([
+      goGinPackageDir + 'infra/aws/.gitignore',
+      goGinPackageDir + 'infra/aws/main.tf',
+      goGinPackageDir + '.gitignore',
+      goGinPackageDir + 'main.go',
+      goGinPackageDir + 'lambda.go',
+      goGinPackageDir + 'local.go',
+      goGinPackageDir + 'go.mod',
+      goGinPackageDir + 'go.sum',
+    ]);
+
+    // ensure config values are overwritten
+    const goGinGoldstackConfig = JSON.parse(
+      read(goGinPackageDir + 'goldstack.json')
+    );
+    expect(Object.entries(goGinGoldstackConfig.configuration).length).toEqual(
+      0
+    );
+
+    const goGinDeploymentState = JSON.parse(
+      read(goGinPackageDir + 'src/state/deployments.json')
+    );
+    expect(goGinDeploymentState).toEqual([]);
+
+    // check email-send package
+    const emailSendPackageDir =
+      projectDir + 'packages/' + config.packages[0].packageName + '/';
+    assertFilesExist([
+      emailSendPackageDir + 'infra/aws/.gitignore',
+      emailSendPackageDir + 'infra/aws/main.tf',
+      emailSendPackageDir + '.gitignore',
+    ]);
+
+    // ensure config values are overwritten
+    const emailSendGoldstackConfig = JSON.parse(
+      read(emailSendPackageDir + 'goldstack.json')
+    );
+    expect(
+      Object.entries(emailSendGoldstackConfig.configuration).length
+    ).toEqual(0);
+
+    const emailSendDeploymentState = JSON.parse(
+      read(emailSendPackageDir + 'src/state/deployments.json')
+    );
+    expect(emailSendDeploymentState).toEqual([]);
   });
 });
