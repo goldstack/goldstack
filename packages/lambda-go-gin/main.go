@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	// when no 'PORT' environment variable defined, process lambda
+	// when no 'PORT' environment variable defined, run lambda
 	if os.Getenv("PORT") == "" {
 		lambda.Start(Handler)
 		return
