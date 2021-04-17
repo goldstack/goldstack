@@ -26,18 +26,31 @@ export const createBackendBuildSetConfig = async (): Promise<DeploySetConfig> =>
           templateName: 'email-send',
         },
       },
+      {
+        packageName: 'lambda-go-gin-1',
+        templateReference: {
+          templateName: 'lambda-go-gin',
+        },
+      },
     ],
   };
 
   const hash = new Date().getTime();
   const setConfig: DeploySetConfig = {
     buildSetName: 'backend',
-    buildTemplates: ['yarn-pnp-monorepo', 's3', 'lambda-express', 'email-send'],
+    buildTemplates: [
+      'yarn-pnp-monorepo',
+      's3',
+      'lambda-express',
+      'email-send',
+      'lambda-go-gin',
+    ],
     deployTemplates: [
       'yarn-pnp-monorepo',
       's3',
       'lambda-express',
       'email-send',
+      'lambda-go-gin',
     ],
     projects: [
       {
@@ -90,6 +103,25 @@ export const createBackendBuildSetConfig = async (): Promise<DeploySetConfig> =>
                 configuration: {
                   domain: `email-send-${hash}.tests.dev.goldstack.party`,
                   hostedZoneDomain: 'dev.goldstack.party',
+                },
+              },
+            ],
+            packageTests: ['assert-package-files', 'infra-up'],
+            packageCleanUp: ['infra-destroy'],
+          },
+          {
+            packageName: 'lambda-go-gin-1',
+            configuration: {},
+            deployments: [
+              {
+                name: 'prod',
+                awsUser: 'goldstack-dev',
+                awsRegion: 'us-west-2',
+                configuration: {
+                  lambdaName: `goldstack-ci-test-lambda-go-gin-${hash}`,
+                  apiDomain: `lambda-go-gin-${hash}.tests.dev.goldstack.party`,
+                  hostedZoneDomain: 'dev.goldstack.party',
+                  cors: '',
                 },
               },
             ],
