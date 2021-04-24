@@ -52,6 +52,7 @@ export class RestApiTest implements TemplateTest {
         'deployed to',
         apiUrl
       );
+      // in case there are delays with DNS resolution
       await retryOperation(
         async () => {
           await assertEndpointAvaialble(apiUrl);
