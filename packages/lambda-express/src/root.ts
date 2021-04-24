@@ -4,5 +4,5 @@ export const rootHandler = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  res.status(200).json('hello');
+  res.status(200).json('success');
 };

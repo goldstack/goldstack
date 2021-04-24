@@ -1,6 +1,7 @@
 package main
 
 import (
+	"net/http"
 	"os"
 
 	"github.com/gin-contrib/cors"
@@ -16,8 +17,11 @@ func CreateServer() *gin.Engine {
 		config.AllowOrigins = []string{corsEnv}
 		r.Use(cors.New(config))
 	}
+	r.GET("/", func(c *gin.Context) {
+		c.String(http.StatusOK, "success")
+	})
 	r.GET("/status", func(c *gin.Context) {
-		c.JSON(200, gin.H{
+		c.JSON(http.StatusOK, gin.H{
 			"status": "ok",
 		})
 	})
