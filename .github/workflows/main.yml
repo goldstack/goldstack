@@ -12,9 +12,9 @@ jobs:
   build:
     name: 'Build and Test'
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
+      - uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d 
         with:
           fetch-depth: 20
           submodules: recursive
@@ -25,6 +25,7 @@ jobs:
           registry-url: https://registry.npmjs.org
       - run: git config --global user.email "public@pureleap.com"
       - run: git config --global user.name "GitHub Actions Build"
+      - run: git config pull.rebase false
       - run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''"${{secrets.NPM_TOKEN}}"''" } }'''
       - name: Install Yarn
         run: npm install -g yarn@1.22.4
