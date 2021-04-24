@@ -30,6 +30,7 @@ export const scheduleAllDeploySets = async (argv: any): Promise<void> => {
         argv.skipTests || 'false',
       ],
     });
+    console.log('Deploy Set:', setName);
     console.log('Task ARN:', result.taskArn);
     console.log('Task ID:', result.taskId);
     console.log('ECS Console:', result.ecsConsoleLink);

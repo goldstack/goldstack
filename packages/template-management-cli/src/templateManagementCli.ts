@@ -6,7 +6,7 @@ import tmp from 'tmp';
 import { S3TemplateRepository } from '@goldstack/template-repository';
 import yargs from 'yargs';
 import assert from 'assert';
-import { getBuildSet } from './deploySets/deploySets';
+import { getAllBuildSets, getBuildSet } from './deploySets/deploySets';
 import AWSMock from 'mock-aws-s3';
 import { getAwsConfigPath } from '@goldstack/utils-config';
 import { readConfig } from '@goldstack/infra-aws';
@@ -27,7 +27,7 @@ export const run = async (): Promise<void> => {
         .command('deploy-set', 'Deploys a package set', {
           set: {
             describe: 'Set that should be deployed',
-            choices: ['backend', 'static-website'],
+            choices: (await getAllBuildSets()).map((set) => set.buildSetName),
             required: true,
           },
           repo: {
