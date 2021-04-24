@@ -1,11 +1,13 @@
-import { createBackendBuildSetConfig } from './backend';
+import { createBackendNodejsExpressBuildSetConfig } from './backendNodejsExpress';
+import { createBackendGoGinBuildSetConfig } from './backendGoGin';
 import { createStaticWebsiteBuildSetConfig } from './staticWebsite';
 import { DeploySetConfig } from '@goldstack/template-build-set';
 
 export const getAllBuildSets = async (): Promise<DeploySetConfig[]> => {
   return [
-    await createBackendBuildSetConfig(),
+    await createBackendNodejsExpressBuildSetConfig(),
     await createStaticWebsiteBuildSetConfig(),
+    await createBackendGoGinBuildSetConfig(),
   ];
 };
 

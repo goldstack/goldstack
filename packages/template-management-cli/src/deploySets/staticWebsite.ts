@@ -84,13 +84,11 @@ export const createStaticWebsiteBuildSetConfig = async (): Promise<DeploySetConf
             ],
             packageTests: [
               'assert-package-files',
-              // 'infra-up',
-              // 'deploy',
-              // 'assert-static-website-aws-deployments',
+              'infra-up',
+              'deploy',
+              'assert-static-website-aws-deployments',
             ],
-            packageCleanUp: [
-              // 'infra-destroy'
-            ],
+            packageCleanUp: ['infra-destroy'],
           },
         ],
       },
