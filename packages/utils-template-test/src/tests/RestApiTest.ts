@@ -17,6 +17,26 @@ export const assertEndpointAvaialble = async (url: string): Promise<void> => {
   );
 };
 
+const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+const retryOperation = (
+  operation: () => Promise<any>,
+  delay: number,
+  retries: number
+) =>
+  new Promise((resolve, reject) => {
+    return operation()
+      .then(resolve)
+      .catch((reason) => {
+        if (retries > 0) {
+          return wait(delay)
+            .then(retryOperation.bind(null, operation, delay, retries - 1))
+            .then(resolve)
+            .catch(reject);
+        }
+        return reject(reason);
+      });
+  });
 export class RestApiTest implements TemplateTest {
   getName(): string {
     return 'assert-rest-api';
@@ -25,15 +45,20 @@ export class RestApiTest implements TemplateTest {
     const packageConfig = readPackageConfigFromDir(params.packageDir);
 
     for (const deployment of packageConfig.deployments) {
+      const apiUrl = 'https://' + deployment.configuration.apiDomain + '/';
       console.log(
         'Asserting API deployed for',
         deployment.name,
         'deployed to',
-        deployment.configuration.apiDomain
+        apiUrl
       );
-
-      const apiUrl = 'https://' + deployment.configuration.apiDomain + '/';
-      await assertEndpointAvaialble(apiUrl);
+      await retryOperation(
+        async () => {
+          await assertEndpointAvaialble(apiUrl);
+        },
+        10000,
+        6 * 10 // 10 min
+      );
     }
   }
 }
