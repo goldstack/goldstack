@@ -18,6 +18,7 @@
     "generate:schema": "yarn workspaces foreach --topological-dev run generate:schema",
     "git:commit": "git add . && git diff-index --quiet HEAD || git commit -m \"$0\"",
     "git:pull": "git pull",
+    "git:push": "git push",
     "lint": "eslint . --ext .js,.ts,.tsx,json",
     "lint:fix": "eslint . --ext .js,.ts,tsx,json --fix",
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
