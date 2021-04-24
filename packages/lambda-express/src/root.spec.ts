@@ -14,6 +14,6 @@ describe('Root Endpoint', () => {
 
     expect(res.json).toHaveBeenCalled();
     const resVal = res.json.mock.calls[0][0];
-    expect(resVal).toBe('hello');
+    expect(resVal).toBe('success');
   });
 });
