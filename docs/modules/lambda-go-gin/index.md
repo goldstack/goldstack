@@ -66,3 +66,7 @@ func CreateServer() *gin.Engine {
 ## Deployment
 
 [!embed](./../shared/deployment.md)
+
+## Troubleshooting and Frequently Asked Questions
+
+[!embed](./../lambda-express/faq.md)
