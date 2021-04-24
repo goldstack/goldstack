@@ -2,3 +2,6 @@ yarn-error.log
 .npmrc
 .DS_Store
 goldstackLocal/
+
+
+workspaces/
