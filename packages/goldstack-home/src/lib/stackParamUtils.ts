@@ -18,5 +18,8 @@ export const getPackageIds = (elements: string[]): string[] => {
   if (elements.includes('email-send')) {
     res.push('template:email-send');
   }
+  if (elements.includes('gin') || elements.includes('go-gin')) {
+    res.push('template:lambda-go-gin');
+  }
   return res;
 };

@@ -8,7 +8,7 @@ import {
   featureTerraform,
 } from './nextjsTemplateData';
 
-export const getExpressTemplateData = (): ProjectTemplateProps => {
+export const getGoGinTemplateData = (): ProjectTemplateProps => {
   return {
     title: 'Go Gin Lambda Template',
     image: 'https://cdn.goldstack.party/img/202104/go_gin.png',

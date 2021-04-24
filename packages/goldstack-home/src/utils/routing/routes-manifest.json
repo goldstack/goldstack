@@ -138,16 +138,16 @@
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/HbGSl4OwPz_QBd8t5RpyC/landing/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/HbGSl4OwPz_QBd8t5RpyC/landing/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/NHQYEy0b704G_fTRBFfGE/landing/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/NHQYEy0b704G_fTRBFfGE/landing/(?<template>[^/]+?)\\.json$"
     },
     {
       "page": "/templates/[template]",
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/HbGSl4OwPz_QBd8t5RpyC/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/HbGSl4OwPz_QBd8t5RpyC/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/NHQYEy0b704G_fTRBFfGE/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/NHQYEy0b704G_fTRBFfGE/templates/(?<template>[^/]+?)\\.json$"
     }
   ]
 }

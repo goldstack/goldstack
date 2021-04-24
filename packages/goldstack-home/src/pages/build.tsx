@@ -199,8 +199,6 @@ const ModuleSelection = (props: { elements: string[] }) => {
 
     const packageId = (await packageRes.json()).packageId;
     router.push(`/projects/${projectId}/packages/${packageId}/pricing-options`);
-    // const projectId = (await projectRes.json()).projectId;
-    // router.push(`/projects/${projectId}/configure/1`);
   };
 
   const clickConfigure = () => {
@@ -266,7 +264,15 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     checked={elements.indexOf('express') !== -1}
                     onChange={checkboxChange}
                   ></Checkbox>
-
+                  <Checkbox
+                    title="Lambda with Go Gin Server"
+                    element="gin"
+                    disabled={building}
+                    icon="https://cdn.goldstack.party/img/202104/go_gin.png"
+                    docsLink={docsRoot + '/modules/lambda-go-gin'}
+                    checked={elements.indexOf('gin') !== -1}
+                    onChange={checkboxChange}
+                  ></Checkbox>
                   <div className="border-bottom pb-2 mb-4 mt-6">
                     <h2 className="h3 mb-0">Services</h2>
                   </div>
