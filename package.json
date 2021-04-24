@@ -32,7 +32,6 @@
     "prettier": "prettier",
     "pull": "git submodule update --remote --merge --recursive --force && git submodule foreach --recursive git pull origin master && git pull",
     "pull:each": "git submodule foreach --recursive git pull origin master && git pull",
-    "pull:old": "git pull --recurse-submodules && git submodule foreach --recursive git pull --recurse-submodules",
     "push": "git submodule foreach --recursive git push && git push --recurse-submodules=on-demand",
     "push:each": "git submodule foreach --recursive git push && git push",
     "push:newbranch": "git submodule foreach --recursive git push --set-upstream origin \"$@\" && git push --set-upstream origin \"$@\"",
