@@ -14,10 +14,46 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d 
+      - name: Checkout Mege repo
+        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d 
         with:
           fetch-depth: 20
-          submodules: recursive
+          token: ${{secrets.BUILD_TOKEN}}
+      - name: Checkout apps repo
+        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
+        with:
+          repository: goldstack/goldstack-apps
+          path: workspaces/apps
+          token: ${{secrets.BUILD_TOKEN}}
+      - name: Checkout docs repo
+        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
+        with:
+          repository: goldstack/goldstack-docs
+          path: workspaces/docs
+          token: ${{secrets.BUILD_TOKEN}}
+      - name: Checkout goldstack repo
+        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
+        with:
+          repository: goldstack/goldstack
+          path: workspaces/goldstack
+          token: ${{secrets.BUILD_TOKEN}}
+      - name: Checkout templates repo
+        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
+        with:
+          repository: goldstack/goldstack-templates-priv
+          path: workspaces/templates
+          token: ${{secrets.BUILD_TOKEN}}
+      - name: Checkout templates-lib repo
+        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
+        with:
+          repository: goldstack/goldstack-lib
+          path: workspaces/templates-lib
+          token: ${{secrets.BUILD_TOKEN}}
+      - name: Checkout templates-management repo
+        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
+        with:
+          repository: goldstack/goldstack-templates-management
+          path: workspaces/templates-management
           token: ${{secrets.BUILD_TOKEN}}
       - uses: actions/setup-node@v1
         with:
@@ -155,11 +191,9 @@ jobs:
           git status
           git add ./yarn.lock
           git add ./.pnp.js
-          git add workspaces/*
 
-          yarn commit Release_new_library_version_ci_skip
-          yarn git:fix-detached
-          yarn pull
+          yarn git:commit "Release new library version (ci_skip)"
+          yarn git:pull
 
       - name: Push apps changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
@@ -192,11 +226,6 @@ jobs:
           directory: workspaces/templates-management
           repository: goldstack/goldstack-templates-management
           github_token: ${{secrets.BUILD_TOKEN}}
-
-      - name: Fix submodule references
-        run: |
-          yarn git:fix-detached
-          yarn pull
 
       - name: Push root changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
@@ -234,10 +263,6 @@ jobs:
           github_token: ${{secrets.BUILD_TOKEN}}
           directory: workspaces/apps
           repository: goldstack/goldstack-apps
-
-      - name: Fix submodule references
-        run: |
-          yarn pull
 
       - name: Push root changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
