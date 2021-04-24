@@ -27,6 +27,10 @@ Note that for automating the build and rolling out the infrastructure, this temp
 
 You should now be able to access your API. The domain under which the API is deployed is configured in `goldstack.json` under `"deployments[*].apiDomain"`. You can access this API domain with a browser since the default API provided in the template allows for GET requests to the root.
 
+### Go Development
+
+The easiest way to work with you Go project is by using VSCode. You will need the [golang.go](https://marketplace.visualstudio.com/items?itemName=golang.Go) extension installed. But note that because of a limitation in this extension as of this writing, VSCode must be opened for the folder that contains the Go project. For this go to `File > Open Folder ...` and select the folder of the Go project under the `packages/` directory in the project. For instance `packages/lambda-go-gin`.
+
 ### Extending the API
 
 The lambda exposes a REST API using the [Gin](https://github.com/gin-gonic/gin). The server is defined in the file `server.go`. Simply define additional routes or middleware there. For this, please refer to the Gin documentation.
