@@ -1557,7 +1557,33 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-email-send@0.3.45, @goldstack/template-email-send@workspace:workspaces/templates-lib/packages/template-email-send":
+"@goldstack/template-email-send@npm:0.3.45":
+  version: 0.3.45
+  resolution: "@goldstack/template-email-send@npm:0.3.45"
+  dependencies:
+    "@goldstack/infra": 0.3.9
+    "@goldstack/infra-aws": 0.3.10
+    "@goldstack/utils-cli": 0.2.4
+    "@goldstack/utils-config": 0.3.8
+    "@goldstack/utils-docker": 0.3.10
+    "@goldstack/utils-log": 0.2.4
+    "@goldstack/utils-package": 0.3.9
+    "@goldstack/utils-package-config": 0.3.9
+    "@goldstack/utils-sh": 0.4.8
+    "@goldstack/utils-template": 0.3.8
+    "@goldstack/utils-terraform": 0.3.15
+    "@goldstack/utils-terraform-aws": 0.3.15
+    aws-sdk: 2.721.0
+    uuid: ^8.3.0
+    yargs: ^15.4.1
+  bin:
+    template: ./bin/template
+    template-email-send: ./bin/template
+  checksum: 0daa1826effda56e385d2a47ac26d25e1662e1beb153f80452a3aed359eabf40dd52f0c92152f85963e79e1668b49ec5aa71407f1b89c334d008939469a2c297
+  languageName: node
+  linkType: hard
+
+"@goldstack/template-email-send@workspace:workspaces/templates-lib/packages/template-email-send":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-email-send@workspace:workspaces/templates-lib/packages/template-email-send"
   dependencies:
@@ -10320,6 +10346,12 @@ fsevents@^1.2.7:
   checksum: f4769ac0306a129d465b8d8ab84ead9c3b5c0beac81406184f6fdd7ec6832a81ffd5487b8bb0ce8787945b7f44ae5eab85c027e0abbfb353bff3ad06c838b257
   languageName: node
   linkType: hard
+
+"goldstack@workspace:workspaces/goldstack":
+  version: 0.0.0-use.local
+  resolution: "goldstack@workspace:workspaces/goldstack"
+  languageName: unknown
+  linkType: soft
 
 "good-listener@npm:^1.2.2":
   version: 1.2.2

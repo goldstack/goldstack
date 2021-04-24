@@ -31,6 +31,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/docs"
       },
       {
+        "name": "goldstack",
+        "reference": "workspace:workspaces/goldstack"
+      },
+      {
         "name": "templates",
         "reference": "workspace:workspaces/templates"
       },
@@ -403,6 +407,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/utils-yarn", ["workspace:workspaces/templates-lib/packages/utils-yarn"]],
       ["apps", ["workspace:workspaces/apps"]],
       ["docs", ["workspace:workspaces/docs"]],
+      ["goldstack", ["workspace:workspaces/goldstack"]],
       ["root", ["workspace:."]],
       ["templates", ["workspace:workspaces/templates"]],
       ["templates-lib", ["workspace:workspaces/templates-lib"]],
@@ -1489,7 +1494,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/templates/packages/email-send/",
           "packageDependencies": [
             ["@goldstack/email-send", "workspace:workspaces/templates/packages/email-send"],
-            ["@goldstack/template-email-send", "workspace:workspaces/templates-lib/packages/template-email-send"],
+            ["@goldstack/template-email-send", "npm:0.3.45"],
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:26.0.21"],
@@ -1572,7 +1577,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/apps/packages/goldstack-email-send/",
           "packageDependencies": [
             ["@goldstack/goldstack-email-send", "workspace:workspaces/apps/packages/goldstack-email-send"],
-            ["@goldstack/template-email-send", "workspace:workspaces/templates-lib/packages/template-email-send"],
+            ["@goldstack/template-email-send", "npm:0.3.45"],
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:26.0.21"],
@@ -2249,6 +2254,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@goldstack/template-email-send", [
+        ["npm:0.3.45", {
+          "packageLocation": "./.yarn/cache/@goldstack-template-email-send-npm-0.3.45-25275e5d0c-0daa1826ef.zip/node_modules/@goldstack/template-email-send/",
+          "packageDependencies": [
+            ["@goldstack/template-email-send", "npm:0.3.45"],
+            ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],
+            ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],
+            ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],
+            ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],
+            ["@goldstack/utils-docker", "workspace:workspaces/templates-lib/packages/utils-docker"],
+            ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
+            ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],
+            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
+            ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],
+            ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],
+            ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],
+            ["aws-sdk", "npm:2.721.0"],
+            ["uuid", "npm:8.3.0"],
+            ["yargs", "npm:15.4.1"]
+          ],
+          "linkType": "HARD",
+        }],
         ["workspace:workspaces/templates-lib/packages/template-email-send", {
           "packageLocation": "./workspaces/templates-lib/packages/template-email-send/",
           "packageDependencies": [
@@ -12495,6 +12522,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["sparkles", "npm:1.0.1"]
           ],
           "linkType": "HARD",
+        }]
+      ]],
+      ["goldstack", [
+        ["workspace:workspaces/goldstack", {
+          "packageLocation": "./workspaces/goldstack/",
+          "packageDependencies": [
+            ["goldstack", "workspace:workspaces/goldstack"]
+          ],
+          "linkType": "SOFT",
         }]
       ]],
       ["good-listener", [
