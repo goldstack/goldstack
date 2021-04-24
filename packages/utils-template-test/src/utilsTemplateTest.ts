@@ -13,6 +13,7 @@ import { InfraUpTest } from './tests/InfraUpTest';
 import { InfraDestroyTest } from './tests/InfraDestroyTest';
 import { DeployTest } from './tests/DeployTest';
 import { StaticWebsiteAwsTest } from './tests/StaticWebsiteAwsTest';
+import { RestApiTest } from './tests/RestApiTest';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function assert(condition: any, msg?: string): asserts condition {
@@ -57,6 +58,7 @@ export const getTemplateTests = (): TemplateTest[] => {
     new InfraDestroyTest(),
     new DeployTest(),
     new StaticWebsiteAwsTest(),
+    new RestApiTest(),
   ];
 };
 
