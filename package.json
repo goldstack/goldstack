@@ -15,6 +15,8 @@
     "deploy": "yarn workspaces foreach run deploy \"$@\"",
     "format": "prettier --loglevel log --config .prettierrc.json --write .",
     "format:check": "prettier --loglevel log --config .prettierrc.json --check .",
+    "git:commit": "git add . && git diff-index --quiet HEAD || git commit -m \"$0\"",
+    "git:pull": "git pull",
     "infra": "yarn workspaces foreach run infra \"$@\"",
     "lint": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml",
     "lint:fix": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml --fix",
