@@ -1,0 +1,9 @@
+{
+  "name": "goldstack",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "git:commit": "git add . && git diff-index --quiet HEAD || git commit -m \"$0\"",
+    "git:pull": "git pull"
+  }
+}
