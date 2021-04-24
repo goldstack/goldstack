@@ -30,6 +30,11 @@ const Footer = (): JSX.Element => {
                     Express.js + Lambda
                   </a>
                 </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/templates/go-gin">
+                    Go + Gin + Lambda
+                  </a>
+                </li>
               </ul>
             </div>
 

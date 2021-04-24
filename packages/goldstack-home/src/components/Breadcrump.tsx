@@ -19,24 +19,23 @@ const Breadcrump = (props: BreadcrumpProps): JSX.Element => {
             <div className="col-md-5 mb-3 mb-md-0">
               <nav className="d-inline-block rounded" aria-label="breadcrumb">
                 <ol className="breadcrumb breadcrumb-no-gutter font-size-1 mb-0">
-                  {props.elements.map((element) => {
+                  {props.elements.map((element, idx) => {
                     return (
-                      <>
-                        <li
-                          className={
-                            element.active
-                              ? 'breadcrumb-item active'
-                              : 'breadcrumb-item'
-                          }
-                          aria-current={element.active ? 'page' : 'false'}
-                        >
-                          {element.link ? (
-                            <a href={element.link}>{element.description}</a>
-                          ) : (
-                            element.description
-                          )}
-                        </li>
-                      </>
+                      <li
+                        key={idx}
+                        className={
+                          element.active
+                            ? 'breadcrumb-item active'
+                            : 'breadcrumb-item'
+                        }
+                        aria-current={element.active ? 'page' : 'false'}
+                      >
+                        {element.link ? (
+                          <a href={element.link}>{element.description}</a>
+                        ) : (
+                          element.description
+                        )}
+                      </li>
                     );
                   })}
                 </ol>

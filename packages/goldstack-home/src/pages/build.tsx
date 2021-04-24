@@ -35,6 +35,7 @@ interface CheckboxProps {
   element: string;
   icon: any;
   docsLink: string;
+  isAlpha?: boolean;
   disabled: boolean;
   checked?: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -59,6 +60,13 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
               src={props.icon}
             ></img>
             {props.title}
+
+            {props.isAlpha && (
+              <>
+                {' '}
+                <span className="badge badge-pill badge-secondary">Alpha</span>
+              </>
+            )}
 
             <a
               href={props.docsLink}
@@ -269,6 +277,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     element="gin"
                     disabled={building}
                     icon="https://cdn.goldstack.party/img/202104/go_gin.png"
+                    isAlpha={true}
                     docsLink={docsRoot + '/modules/lambda-go-gin'}
                     checked={elements.indexOf('gin') !== -1}
                     onChange={checkboxChange}

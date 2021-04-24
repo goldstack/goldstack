@@ -31,18 +31,6 @@
       "regex": "^\\/index$"
     },
     {
-      "page": "/landing/express-lambda",
-      "regex": "^\\/landing\\/express-lambda$"
-    },
-    {
-      "page": "/landing/nextjs-bootstrap",
-      "regex": "^\\/landing\\/nextjs-bootstrap$"
-    },
-    {
-      "page": "/landing/nextjs",
-      "regex": "^\\/landing\\/nextjs$"
-    },
-    {
       "page": "/pricing",
       "regex": "^\\/pricing$"
     },
@@ -67,6 +55,10 @@
       "regex": "^\\/templates\\/express-lambda$"
     },
     {
+      "page": "/templates/go-gin",
+      "regex": "^\\/templates\\/go-gin$"
+    },
+    {
       "page": "/templates/nextjs-bootstrap",
       "regex": "^\\/templates\\/nextjs-bootstrap$"
     },
@@ -77,14 +69,6 @@
     {
       "page": "/terms-and-conditions",
       "regex": "^\\/terms-and-conditions$"
-    },
-    {
-      "page": "/landing/[template]",
-      "regex": "^/landing/([^/]+?)(?:/)?$",
-      "routeKeys": {
-        "template": "template"
-      },
-      "namedRegex": "^/landing/(?<template>[^/]+?)(?:/)?$"
     },
     {
       "page": "/projects/[id]/packages/[packageId]/configure/[step]",
@@ -134,20 +118,12 @@
   ],
   "dataRoutes": [
     {
-      "page": "/landing/[template]",
-      "routeKeys": {
-        "template": "template"
-      },
-      "dataRouteRegex": "^/_next/data/NHQYEy0b704G_fTRBFfGE/landing/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/NHQYEy0b704G_fTRBFfGE/landing/(?<template>[^/]+?)\\.json$"
-    },
-    {
       "page": "/templates/[template]",
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/NHQYEy0b704G_fTRBFfGE/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/NHQYEy0b704G_fTRBFfGE/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/L1xbs\\-Ms3rv6k\\-CBGAwAY/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/L1xbs\\-Ms3rv6k\\-CBGAwAY/templates/(?<template>[^/]+?)\\.json$"
     }
   ]
 }

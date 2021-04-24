@@ -1,12 +1,4 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
-import {
-  featureESLint,
-  featureJest,
-  featureVSCode,
-  featureYarn,
-  featureAws,
-  featureTerraform,
-} from './nextjsTemplateData';
 
 export const getGoGinTemplateData = (): ProjectTemplateProps => {
   return {
@@ -35,6 +27,24 @@ export const getGoGinTemplateData = (): ProjectTemplateProps => {
     },
     featuresOverview: [
       {
+        title: 'Gin Framework',
+        id: 'gin',
+        description:
+          'Develop all routes of your API using the powerful Gin framework.',
+        image: 'https://cdn.goldstack.party/img/202104/go_gin.png',
+        details: {
+          title: 'Develop HTTP Routes',
+          description:
+            'The Gin framework allows building high performance HTTP APIs using Go.',
+          content: {
+            type: 'image',
+            data: {
+              image: 'https://cdn.goldstack.party/img/202104/gin_server.png',
+            },
+          },
+        },
+      },
+      {
         title: 'Go',
         id: 'go',
         description: 'Develop your serverless function using Go.',
@@ -52,26 +62,61 @@ export const getGoGinTemplateData = (): ProjectTemplateProps => {
         },
       },
       {
-        title: 'Gin Framework',
-        id: 'gin',
+        title: 'AWS',
+        id: 'aws',
         description:
-          'Develop all routes of your API using the powerful Gin framework.',
-        image: 'https://cdn.goldstack.party/img/202104/go_gin.png',
+          'Go server deployed to reliable and scaleable AWS serverless infrastructure.',
+        image: 'aws',
         details: {
-          title: 'Develop HTTP routes using Gin',
+          title: 'Ready for Deployment to AWS',
           description:
-            'The Gin framework allows building high performance HTTP APIs using Go.',
+            'Deploy your Go Gin application for cents on AWS with professional level security, reliabilty and scaleabilty.',
           content: {
-            type: 'image',
-            data: {
-              image: 'endpoint-typescript',
-            },
+            type: 'aws-deployment',
+            data: {},
+          },
+          moreDetails: {
+            description:
+              'Supports multiple, separate deployments for development, staging and production environments. Implemented using CloudFront and S3.',
           },
         },
       },
-      featureYarn,
-      featureAws,
-      featureTerraform,
+      {
+        title: 'Yarn 2',
+        id: 'yarn',
+        description:
+          'Build scripts managed using Yarn for easy integration with frontend projects.',
+        image: 'yarn',
+        details: {
+          title: 'Cross-platform Workspace Management',
+          description:
+            'In addition to Go project definitions, a workspace managed by Yarn is included in the project. ' +
+            'This allows for cross-platform script definition and manage a frontend application in the same workspace.',
+          icons: ['yarn'],
+          content: {
+            type: 'none',
+            data: {},
+          },
+        },
+      },
+      {
+        title: 'Terraform',
+        id: 'terraform',
+        description:
+          'Extend and maintain frontend infrastructure using Terraform.',
+        image: 'terraform',
+        details: {
+          title: 'Extendable and Configurable Infrastructure',
+          description:
+            'Easily add additional resources from the AWS cloud to your Go server by modifying the Terraform files included in the template.',
+          icons: ['terraform'],
+          content: {
+            type: 'none',
+            data: {},
+          },
+        },
+      },
+
       {
         title: 'App Composition',
         id: 'composition',

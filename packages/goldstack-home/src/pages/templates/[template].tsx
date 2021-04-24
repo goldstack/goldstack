@@ -9,6 +9,7 @@ import {
   getNextJsTemplateData,
   getNextjsBootstrapTemplateData,
   getExpressTemplateData,
+  getGoGinTemplateData,
 } from '@goldstack/project-template-data';
 
 import Footer from 'src/components/Footer';
@@ -44,6 +45,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
       {
         params: { template: 'express-lambda' },
       },
+      {
+        params: { template: 'go-gin' },
+      },
     ],
     fallback: false, // Show 404 for pages that are not prerendered
   };
@@ -65,6 +69,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
   if (templateId === 'express-lambda') {
     template = getExpressTemplateData();
+  }
+  if (templateId === 'go-gin') {
+    template = getGoGinTemplateData();
   }
 
   return {

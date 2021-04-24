@@ -10,10 +10,7 @@ const ProjectTemplateFeatureDetail = (props: {
   }
   return (
     <>
-      <TemplateFeature
-        {...props.feature.details}
-        id={props.feature.id}
-      ></TemplateFeature>
+      <TemplateFeature {...props.feature}></TemplateFeature>
     </>
   );
 };

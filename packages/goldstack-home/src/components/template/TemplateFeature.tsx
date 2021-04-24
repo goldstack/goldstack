@@ -25,6 +25,7 @@ import YarnIcon from 'src/icons/yarn.svg';
 import ScrollableAnchor from 'react-scrollable-anchor';
 
 import {
+  ShortTemplateFeature,
   TemplateFeatureProps,
   TemplateIcons,
 } from '@goldstack/project-template-data';
@@ -78,6 +79,9 @@ const createGif = (gif: string): React.ReactNode => {
 };
 
 const createImage = (image: string): React.ReactNode => {
+  if (image.indexOf('http') === 0) {
+    return <img src={image} className="img-fluid"></img>;
+  }
   if (image === 'vercel-deployed') {
     return <img src={VercelDeployedImg} className="img-fluid"></img>;
   }
@@ -90,26 +94,30 @@ const createImage = (image: string): React.ReactNode => {
   throw new Error('Unknown image for feature details ' + image);
 };
 
-const TemplateFeature = (props: TemplateFeatureProps): JSX.Element => {
+const TemplateFeature = (props: ShortTemplateFeature): JSX.Element => {
+  if (!props.details) {
+    return <></>;
+  }
+  const details = props.details;
   const plusSvg = dataUriToSrc(Plus);
 
   let content: React.ReactNode;
-  switch (props.content.type) {
+  switch (details.content.type) {
     case 'none': {
       content = <></>;
       break;
     }
     case 'gif': {
-      content = createGif(props.content.data.gif);
+      content = createGif(details.content.data.gif);
       break;
     }
     case 'image': {
-      if (!props.content.data.image) {
+      if (!details.content.data.image) {
         throw new Error(
-          'Invalid data for image ' + JSON.stringify(props.content)
+          'Invalid data for image ' + JSON.stringify(details.content)
         );
       }
-      content = createImage(props.content.data.image);
+      content = createImage(details.content.data.image);
       break;
     }
     case 'aws-deployment': {
@@ -119,7 +127,7 @@ const TemplateFeature = (props: TemplateFeatureProps): JSX.Element => {
     case 'combine-templates': {
       content = (
         <FeatureCombineTemplates
-          templates={props.content.data.templates}
+          templates={details.content.data.templates}
         ></FeatureCombineTemplates>
       );
       break;
@@ -127,7 +135,7 @@ const TemplateFeature = (props: TemplateFeatureProps): JSX.Element => {
     case 'project-install': {
       content = (
         <FeatureProjectInstall
-          projectName={props.content.data.projectName}
+          projectName={details.content.data.projectName}
         ></FeatureProjectInstall>
       );
       break;
@@ -137,7 +145,7 @@ const TemplateFeature = (props: TemplateFeatureProps): JSX.Element => {
       break;
     }
     default: {
-      throw new Error('Unknown feature content type ' + props.content.type);
+      throw new Error('Unknown feature content type ' + details.content.type);
     }
   }
 
@@ -147,27 +155,34 @@ const TemplateFeature = (props: TemplateFeatureProps): JSX.Element => {
         <div className="container space-2 space-bottom-sm-3">
           <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-5">
             <ScrollableAnchor id={props.id || ''}>
-              <h2>{props.title}</h2>
+              <span
+                className="d-block small font-weight-bold text-cap mb-2"
+                style={{ cursor: 'pointer' }}
+                onClick={() => window.history.back()}
+              >
+                {props.title} ⤴
+              </span>
             </ScrollableAnchor>
-            <p>{props.description}</p>
+            <h2>{details.title}</h2>
+            <p>{details.description}</p>
           </div>
 
           <div className=" text-center mx-md-auto mb-5 mb-md-5">
             {content}
-            {props.moreDetails && (
+            {details.moreDetails && (
               <div className="w-md-80 w-lg-50 mx-md-auto text-center">
-                <LearnMore {...props.moreDetails}></LearnMore>
+                <LearnMore {...details.moreDetails}></LearnMore>
               </div>
             )}
 
-            {props.icons && <IconList icons={props.icons}></IconList>}
+            {details.icons && <IconList icons={details.icons}></IconList>}
           </div>
 
-          {props.callToAction && (
+          {details.callToAction && (
             <div className="text-center">
               <a
                 className="btn btn-primary transition-3d-hover px-lg-7"
-                href={props.callToAction.link}
+                href={details.callToAction.link}
                 // target="_blank"
                 // rel="noreferrer"
               >
@@ -175,7 +190,7 @@ const TemplateFeature = (props: TemplateFeatureProps): JSX.Element => {
                   className={styles['plus-icon']}
                   dangerouslySetInnerHTML={{ __html: plusSvg }}
                 ></span>{' '}
-                {props.callToAction.title}
+                {details.callToAction.title}
               </a>
             </div>
           )}
