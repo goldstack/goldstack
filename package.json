@@ -30,7 +30,7 @@
     "merge": "git submodule foreach --recursive git merge \"$@\" && git merge \"$@\"",
     "packages:ensure-local": "utils-package-upgrade",
     "prettier": "prettier",
-    "pull": "git submodule update --remote --merge --recursive --force && git submodule foreach --recursive git pull origin master && git pull",
+    "pull": "git submodule update --remote --merge --recursive --force && yarn pull:each",
     "pull:each": "git submodule foreach --recursive git pull origin master && git pull",
     "push": "git submodule foreach --recursive git push && git push --recurse-submodules=on-demand",
     "push:each": "git submodule foreach --recursive git push && git push",

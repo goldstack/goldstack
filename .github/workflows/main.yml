@@ -25,7 +25,7 @@ jobs:
           registry-url: https://registry.npmjs.org
       - run: git config --global user.email "public@pureleap.com"
       - run: git config --global user.name "GitHub Actions Build"
-      - run: git config pull.rebase false
+      - run: git config --global pull.rebase false
       - run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''"${{secrets.NPM_TOKEN}}"''" } }'''
       - name: Install Yarn
         run: npm install -g yarn@1.22.4
@@ -158,6 +158,7 @@ jobs:
           git add workspaces/*
 
           yarn commit Release_new_library_version_ci_skip
+          yarn git:fix-detached
           yarn pull
 
       - name: Push apps changes
@@ -194,6 +195,7 @@ jobs:
 
       - name: Fix submodule references
         run: |
+          yarn git:fix-detached
           yarn pull
 
       - name: Push root changes
