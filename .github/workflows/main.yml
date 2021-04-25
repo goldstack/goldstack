@@ -14,7 +14,7 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout Mege repo
+      - name: Checkout Mega repo
         uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d 
         with:
           fetch-depth: 20
