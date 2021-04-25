@@ -1,12 +1,5 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
-import {
-  featureESLint,
-  featureJest,
-  featureVSCode,
-  featureYarn,
-  featureAws,
-  featureTerraform,
-} from './nextjsTemplateData';
+import { featureYarn } from './nextjsTemplateData';
 
 export const getExpressTemplateData = (): ProjectTemplateProps => {
   return {
@@ -71,12 +64,93 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
           },
         },
       },
-      featureESLint,
-      featureVSCode,
-      featureJest,
+      {
+        title: 'ESLint + Prettier',
+        id: 'eslint',
+        description:
+          'Auto-format and validate your TypeScript and Express code easily using ESLint and Prettier.',
+        image: 'eslint',
+        details: {
+          title: 'Linting and Formatting',
+          description:
+            'ESLint and Prettier configured for usage in the CLI and as VSCode plugins. Optimized to work with Express.js and TypeScript.',
+          icons: ['eslint'],
+          content: {
+            type: 'none',
+            data: {},
+          },
+        },
+      },
+      {
+        title: 'VSCode',
+        id: 'vscode',
+        description:
+          'Template configured to work seemlessly with the powerful VSCode editor.',
+        image: 'vscode',
+        details: {
+          title: 'Develop in VSCode',
+          description:
+            'All configuration for developing TypeScript code for VSCode provided.',
+          icons: ['vscode'],
+          content: {
+            type: 'none',
+            data: {},
+          },
+        },
+      },
+      {
+        title: 'Jest',
+        id: 'jest',
+        description: 'Run tests for Express.js routes using Jest.',
+        image: 'jest',
+        details: {
+          title: 'Unit and Integration Testing',
+          description:
+            'Write unit and integration tests for your Express.js application with zero additional setup required.',
+          icons: ['jest'],
+          content: {
+            type: 'none',
+            data: {},
+          },
+        },
+      },
       featureYarn,
-      featureAws,
-      featureTerraform,
+      {
+        title: 'AWS',
+        id: 'aws',
+        description:
+          'Express.js server deployed to reliable and scaleable AWS serverless infrastructure.',
+        image: 'aws',
+        details: {
+          title: 'Ready for Deployment to AWS',
+          description:
+            'Deploy your Express.js server for cents on AWS with professional level security, reliabilty and scaleabilty.',
+          content: {
+            type: 'aws-deployment',
+            data: {},
+          },
+          moreDetails: {
+            description:
+              'Supports multiple, separate deployments for development, staging and production environments. Implemented using API Gateway and Lambda.',
+          },
+        },
+      },
+      {
+        title: 'Terraform',
+        id: 'terraform',
+        description: 'Extend and maintain infrastructure using Terraform.',
+        image: 'terraform',
+        details: {
+          title: 'Extendable and Configurable Infrastructure',
+          description:
+            'Easily add any service from the AWS cloud to your Express.js application by modifying the Terraform files included in the template.',
+          icons: ['terraform'],
+          content: {
+            type: 'none',
+            data: {},
+          },
+        },
+      },
       {
         title: 'App Composition',
         id: 'composition',

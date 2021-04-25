@@ -102,8 +102,7 @@ export const getGoGinTemplateData = (): ProjectTemplateProps => {
       {
         title: 'Terraform',
         id: 'terraform',
-        description:
-          'Extend and maintain frontend infrastructure using Terraform.',
+        description: 'Extend and maintain infrastructure using Terraform.',
         image: 'terraform',
         details: {
           title: 'Extendable and Configurable Infrastructure',
@@ -116,7 +115,6 @@ export const getGoGinTemplateData = (): ProjectTemplateProps => {
           },
         },
       },
-
       {
         title: 'App Composition',
         id: 'composition',

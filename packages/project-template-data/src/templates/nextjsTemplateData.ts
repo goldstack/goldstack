@@ -93,7 +93,6 @@ export const featureAws: ShortTemplateFeature = {
       description:
         'Supports multiple, separate deployments for development, staging and production environments. Implemented using CloudFront and S3.',
     },
-    // icons: [AWSIcon, CloudFrontIcon, S3Icon],
   },
 };
 
