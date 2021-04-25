@@ -13,7 +13,7 @@
   "scripts": {
     "build": "yarn compile",
     "checkout": "git submodule foreach --recursive git checkout \"$@\" && git checkout \"$@\"",
-    "commit": "git submodule foreach --recursive 'git add .' && git submodule foreach --recursive \"git diff-index --quiet HEAD || git commit -m $@\" && git add . && git commit -m \"$@\" || true",
+    "commit": "yarn git:commit \"$0\"",
     "compile": "yarn workspace templates-lib compile && yarn workspace templates compile && yarn workspace templates-management compile && yarn workspace apps compile && yarn workspace docs compile",
     "compile:watch": "yarn workspace templates-lib compile; yarn workspace templates-management compile; yarn workspace docs compile; yarn compile:watch-new",
     "compile:watch-new": "nodemonx --watch . --exec 'yarn compile'",
@@ -33,10 +33,8 @@
     "merge": "git submodule foreach --recursive git merge \"$@\" && git merge \"$@\"",
     "packages:ensure-local": "utils-package-upgrade",
     "prettier": "prettier",
-    "pull": "git submodule update --remote --merge --recursive --force && yarn pull:each",
-    "pull:each": "git submodule foreach --recursive git pull origin master && git pull",
-    "push": "git submodule foreach --recursive git push && git push --recurse-submodules=on-demand",
-    "push:each": "git submodule foreach --recursive git push && git push",
+    "pull": "yarn git:pull",
+    "push": "yarn git:push",
     "push:newbranch": "git submodule foreach --recursive git push --set-upstream origin \"$@\" && git push --set-upstream origin \"$@\"",
     "test:ci": "yarn workspaces foreach --run test:ci",
     "test:watch": "nodemonx --watch . --exec 'yarn test:ci'"
