@@ -5,6 +5,7 @@
   "typescript.validate.enable": true,
   "files.eol": "\n",
   "editor.formatOnSave": false,
+  "gitlens.advanced.repositorySearchDepth": 2,
   "editor.tabSize": 2,
   "eslint.nodePath": ".yarn/sdks",
   "typescript.enablePromptUseWorkspaceTsdk": true,
