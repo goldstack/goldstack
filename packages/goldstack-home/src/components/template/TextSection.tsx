@@ -4,6 +4,8 @@ import DesktopComputerImg from 'src/img/desktop_computer.jpg';
 import TabletImg from 'src/img/tablet.jpg';
 import MeetingImg from 'src/img/meeting.jpg';
 
+import Image from 'next/image';
+
 import { TextSectionProps } from '@goldstack/project-template-data';
 
 const TextSection = (props: TextSectionProps): JSX.Element => {
@@ -58,7 +60,7 @@ const TextSection = (props: TextSectionProps): JSX.Element => {
                       <image
                         width="450"
                         height="450"
-                        xlinkHref={DesktopComputerImg}
+                        xlinkHref={DesktopComputerImg.src}
                       ></image>
                     </g>
                   </g>
@@ -109,7 +111,7 @@ const TextSection = (props: TextSectionProps): JSX.Element => {
                       <image
                         width="515"
                         height="515"
-                        xlinkHref={TabletImg}
+                        xlinkHref={TabletImg.src}
                         transform="matrix(1 0 0 1 1.639390e-02 2.880859e-02)"
                       ></image>
                     </g>
@@ -173,7 +175,7 @@ const TextSection = (props: TextSectionProps): JSX.Element => {
                       <image
                         width="900"
                         height="900"
-                        xlinkHref={MeetingImg}
+                        xlinkHref={MeetingImg.src}
                         transform="matrix(1 0 0 1 -64.8123 -64.8055)"
                       ></image>
                     </g>

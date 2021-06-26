@@ -2,6 +2,8 @@ import React from 'react';
 
 import { dataUriToSrc } from 'src/utils/utils';
 
+import Image from 'next/image';
+
 import Plus from 'src/icons/font-awesome/solid/plus.svg';
 import styles from './TemplateFeature.module.css';
 
@@ -70,10 +72,10 @@ const resolveIcons = (icons: TemplateIcons[]): any => {
 
 const createGif = (gif: string): React.ReactNode => {
   if (gif === 'nextjs-config') {
-    return <img src={NextJsConfigGif}></img>;
+    return <Image src={NextJsConfigGif}></Image>;
   }
   if (gif === 'react-typescript') {
-    return <img src={ReactTypeScriptGif}></img>;
+    return <Image src={ReactTypeScriptGif}></Image>;
   }
   throw new Error('Unknown gif ' + gif);
 };
@@ -83,13 +85,13 @@ const createImage = (image: string): React.ReactNode => {
     return <img src={image} className="img-fluid"></img>;
   }
   if (image === 'vercel-deployed') {
-    return <img src={VercelDeployedImg} className="img-fluid"></img>;
+    return <Image src={VercelDeployedImg} className="img-fluid"></Image>;
   }
   if (image === 'endpoint-typescript') {
-    return <img src={EndpointTypeScript} className="img-fluid"></img>;
+    return <Image src={EndpointTypeScript} className="img-fluid"></Image>;
   }
   if (image === 'lambda-config') {
-    return <img src={LambdaConfigImg} className="img-fluid"></img>;
+    return <Image src={LambdaConfigImg} className="img-fluid"></Image>;
   }
   throw new Error('Unknown image for feature details ' + image);
 };

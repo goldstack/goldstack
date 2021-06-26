@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Image from 'next/image';
+
 import GoldstackIcon from './../../img/goldstack_icon_small.png';
 
 import { TemplateFeatureImage } from '@goldstack/project-template-data';
@@ -54,7 +56,7 @@ const ProjectTemplateSidebar = (
             <a className="d-inline-block text-body" href="/">
               <div className="media align-items-center">
                 <div className="avatar avatar-xs mr-3">
-                  <img
+                  <Image
                     className="avatar-img"
                     src={GoldstackIcon}
                     alt="Goldstack Icon"
