@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/YarnPnpMonorepoDeploymentConfiguration",
+  "definitions": {
+    "YarnPnpMonorepoDeploymentConfiguration": {
+      "$ref": "#/definitions/DeploymentConfiguration"
+    },
+    "DeploymentConfiguration": {
+      "type": "object",
+      "description": "Specifies configuration for a specific deployment.",
+      "title": "Deployment Configuration"
+    }
+  }
+}

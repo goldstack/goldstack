@@ -1,0 +1,6 @@
+node_modules
+yarn-error.log
+tsconfig.tsbuildinfo
+dist/
+coverage/
+goldstackLocal/

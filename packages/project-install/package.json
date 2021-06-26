@@ -1,0 +1,45 @@
+{
+  "name": "@goldstack/project-install",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "dist/projectInstall.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:watch": "yarn clean && yarn compile:watch",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc -p tsconfig.json",
+    "compile:watch": "tsc -p tsconfig.json --watch",
+    "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "prepublishOnly": "yarn run build",
+    "test": "jest --config=./jest.config.js --watch",
+    "test:ci": "jest --passWithNoTests --config=./jest.config.js"
+  },
+  "dependencies": {
+    "@goldstack/infra-aws": "0.3.12",
+    "@goldstack/utils-config": "0.3.10",
+    "@goldstack/utils-log": "0.2.4",
+    "@goldstack/utils-project": "0.3.10",
+    "@goldstack/utils-sh": "0.4.10",
+    "@goldstack/utils-yarn": "0.3.13"
+  },
+  "devDependencies": {
+    "@goldstack/project-build": "0.1.0",
+    "@goldstack/project-config": "0.1.0",
+    "@goldstack/template-build": "0.1.0",
+    "@goldstack/template-repository": "0.1.0",
+    "@goldstack/utils-template-test": "0.1.0",
+    "@types/jest": "^26.0.21",
+    "@types/node": "^14.0.6",
+    "axios": "^0.19.2",
+    "jest": "^26.6.3",
+    "temp-dir": "^2.0.0",
+    "ts-jest": "^26.5.4",
+    "typescript": "^4.3.4"
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "prod",
+    "terraform": {
+      "bucket_arn": {
+        "sensitive": false,
+        "type": "string",
+        "value": "arn:aws:s3:::goldstack-projects-prod"
+      },
+      "bucket_name": {
+        "sensitive": false,
+        "type": "string",
+        "value": "goldstack-projects-prod"
+      }
+    }
+  },
+  {
+    "name": "dev",
+    "terraform": {
+      "bucket_arn": {
+        "sensitive": false,
+        "type": "string",
+        "value": "arn:aws:s3:::goldstack-projects-dev"
+      },
+      "bucket_name": {
+        "sensitive": false,
+        "type": "string",
+        "value": "goldstack-projects-dev"
+      }
+    }
+  }
+]

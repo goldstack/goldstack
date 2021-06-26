@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/ThisPackageConfiguration",
+  "definitions": {
+    "ThisPackageConfiguration": {
+      "type": "object",
+      "properties": {},
+      "description": "S3 Configuration",
+      "title": "S3 Configuration"
+    }
+  }
+}

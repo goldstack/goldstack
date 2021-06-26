@@ -1,0 +1,25 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "project-package-bucket",
+  "template": "s3",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "dev",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "bucketName": "goldstack-packages-dev"
+      }
+    },
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-prod",
+      "configuration": {
+        "bucketName": "goldstack-packages-prod"
+      }
+    }
+  ]
+}

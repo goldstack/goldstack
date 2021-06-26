@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/ThisDeploymentConfiguration",
+  "definitions": {
+    "ThisDeploymentConfiguration": {
+      "type": "object",
+      "properties": {
+        "bucketName": {
+          "type": "string",
+          "description": "The name of the bucket. No spaces, numbers or special characters other than '-' allowed.",
+          "title": "Bucket Name",
+          "pattern": "^[A-Za-z0-9-]*$"
+        }
+      },
+      "required": [
+        "bucketName"
+      ]
+    }
+  }
+}
