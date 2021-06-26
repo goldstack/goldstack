@@ -9301,11 +9301,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["debug", "virtual:2395052be89e7cb60a9e457720a81c812457953cc762643b2dddf96818b24121417de8a1244c250c72573d9df94e1c92243e353c6f07da586de517860c3c8e2e#npm:4.2.0"],
             ["@types/supports-color", null],
             ["ms", "npm:2.1.2"],
-            ["supports-color", null]
+            ["supports-color", "npm:9.0.1"]
           ],
           "packagePeers": [
-            "@types/supports-color",
-            "supports-color"
+            "@types/supports-color"
           ],
           "linkType": "HARD",
         }],
@@ -9314,10 +9313,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["debug", "virtual:2bcc47d217f870e3d52f0e55493dc34fd3da852877f7db32fa2940cc320151746026495daf6a34a974488cf5a949d93be1e2dc1ffba036faf081a9b15fcd2252#npm:2.6.9"],
             ["ms", "npm:2.0.0"],
-            ["supports-color", null]
-          ],
-          "packagePeers": [
-            "supports-color"
+            ["supports-color", "npm:9.0.1"]
           ],
           "linkType": "HARD",
         }],
@@ -9338,10 +9334,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["debug", "virtual:8bdf672d54f36156a0f721b1434bbc1348d0f0fc5e805c421e22316652d3adb4ab5ec9db167a289ec9115ad44ae048edb781152c06b39311b623662569c1a6c3#npm:3.2.6"],
             ["ms", "npm:2.1.2"],
-            ["supports-color", null]
-          ],
-          "packagePeers": [
-            "supports-color"
+            ["supports-color", "npm:9.0.1"]
           ],
           "linkType": "HARD",
         }],
@@ -9350,10 +9343,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["debug", "virtual:bde6f435769d1a96c3f371d2e8a88314847816fb841f758b3628da60329c36f988ca42f6984dc53bb31dd306522878e1e5d568caeca7af42e4f19b238d6261b3#npm:3.1.0"],
             ["ms", "npm:2.0.0"],
-            ["supports-color", null]
-          ],
-          "packagePeers": [
-            "supports-color"
+            ["supports-color", "npm:9.0.1"]
           ],
           "linkType": "HARD",
         }]
@@ -12552,6 +12542,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/has-flag-npm-4.0.0-32af9f0536-2e5391139d.zip/node_modules/has-flag/",
           "packageDependencies": [
             ["has-flag", "npm:4.0.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:5.0.0", {
+          "packageLocation": "./.yarn/cache/has-flag-npm-5.0.0-33bdedbb8e-6d3be18736.zip/node_modules/has-flag/",
+          "packageDependencies": [
+            ["has-flag", "npm:5.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -22184,6 +22181,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["supports-color", "npm:8.1.1"],
             ["has-flag", "npm:4.0.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:9.0.1", {
+          "packageLocation": "./.yarn/cache/supports-color-npm-9.0.1-c731ee75c9-34eebb1f2b.zip/node_modules/supports-color/",
+          "packageDependencies": [
+            ["supports-color", "npm:9.0.1"],
+            ["has-flag", "npm:5.0.0"]
           ],
           "linkType": "HARD",
         }]

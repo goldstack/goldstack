@@ -10373,6 +10373,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"has-flag@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "has-flag@npm:5.0.0"
+  checksum: 6d3be1873675a1b3a63d27f6670d46f685f8fd0d2133c9bafbcad10aedd0069db4b540b8097af3754f374c33f19c70a171ecc5d77f899c04087d9498cf56d2b6
+  languageName: node
+  linkType: hard
+
 "has-own-prop@npm:^2.0.0":
   version: 2.0.0
   resolution: "has-own-prop@npm:2.0.0"
@@ -18876,6 +18883,15 @@ resolve@^1.18.1:
     node-supervisor: lib/cli-wrapper.js
     supervisor: lib/cli-wrapper.js
   checksum: b06597a97ce9557966bc9edeabb26c2b9f23a16b20551f159fb877ef79c9b7d328935974e9d8912da2a09e8cdbd554421056e6765e50da0e63c91fc232d7cd94
+  languageName: node
+  linkType: hard
+
+"supports-color@npm:*":
+  version: 9.0.1
+  resolution: "supports-color@npm:9.0.1"
+  dependencies:
+    has-flag: ^5.0.0
+  checksum: 34eebb1f2be64939eb73b08089413b395797cc18a7e4272f92faba7ba9e88746fba3edfd6ad3051ce2b4d959ea1c440155e83bb6d0ad6622ed310f163ed9dcef
   languageName: node
   linkType: hard
 
