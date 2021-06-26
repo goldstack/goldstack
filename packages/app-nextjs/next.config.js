@@ -3,5 +3,9 @@
 module.exports = (phase, { defaultConfig }) => {
   return {
     dir: './src',
+    eslint: {
+      // ESLint managed on the workspace level
+      ignoreDuringBuilds: true,
+    },
   };
 };
