@@ -1,0 +1,39 @@
+/*------------------------------------
+  SVG IE10+ specific styles go here
+------------------------------------*/
+@media screen and (-ms-high-contrast: active),
+  screen and (-ms-high-contrast: none) {
+  .media {
+    width: 100%;
+  }
+
+  .ie-slick-equal-height {
+    .slick-track {
+      .slick-slide {
+        display: block;
+      }
+    }
+  }
+
+  .ie-main-hero {
+    height: 686px;
+  }
+
+  .ie-showcase-mockup {
+    height: 373px;
+  }
+
+  .ie-device-and-mobile {
+    height: 638px;
+  }
+
+  .ie-curved-y {
+    height: 26px;
+  }
+
+  .ie-curved-x {
+    width: 26px;
+    height: 370px;
+    margin-right: -4px;
+  }
+}

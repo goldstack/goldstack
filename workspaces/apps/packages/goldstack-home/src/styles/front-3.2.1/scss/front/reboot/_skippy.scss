@@ -1,0 +1,54 @@
+/*------------------------------------
+  Skippy
+------------------------------------*/
+
+@if $enable-accessibility {
+  .skippy {
+    display: block;
+    color: $white;
+    background-color: $primary;
+    padding: 1em;
+    outline: 0;
+    transition: all 0.2s ease-in;
+
+    &:hover {
+      color: $white;
+    }
+
+    // fix header absolute overlapping skippy content
+    &:focus {
+      + .header-abs-top {
+        &:not(.header-moved-up):not(.scrolled),
+        &-sm:not(.header-moved-up):not(.scrolled),
+        &-md:not(.header-moved-up):not(.scrolled),
+        &-lg:not(.header-moved-up):not(.scrolled),
+        &-xl:not(.header-moved-up):not(.scrolled) {
+          margin-top: 3.5rem;
+        }
+      }
+
+      + .header-sticky-top {
+        &:not(.header-moved-up):not(.scrolled),
+        &-sm:not(.header-moved-up):not(.scrolled),
+        &-md:not(.header-moved-up):not(.scrolled),
+        &-lg:not(.header-moved-up):not(.scrolled),
+        &-xl:not(.header-moved-up):not(.scrolled) {
+          margin-top: 3.5rem;
+        }
+      }
+    }
+
+    .skiplink-text {
+      padding: 0.5em;
+      outline: 1px dotted;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+} @else {
+  .skippy {
+    display: none;
+  }
+}

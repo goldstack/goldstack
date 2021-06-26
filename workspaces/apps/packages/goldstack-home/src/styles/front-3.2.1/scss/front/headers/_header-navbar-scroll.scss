@@ -1,0 +1,15 @@
+/*------------------------------------
+  Header Default
+------------------------------------*/
+
+.navbar-nav-scroll {
+  max-width: 100%;
+  height: $header-navbar-nav-scroll-height;
+  overflow: hidden;
+
+  .navbar-nav {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+}

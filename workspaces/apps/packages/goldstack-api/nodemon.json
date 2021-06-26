@@ -1,0 +1,15 @@
+{
+  "watch": [
+    "../../.."
+  ],
+  "ext": "js, ts",
+  "ignore": [
+    "**/distImg/**/*",
+    "**/webDist/**/*",
+    "**/.next/**/*",
+    "node_modules/",
+    "**/goldstackTest/**/*",
+    "**/goldstackLocal/**/*"
+  ],
+  "delay": "3"
+}

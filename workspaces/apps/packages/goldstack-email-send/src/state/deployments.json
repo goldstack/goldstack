@@ -1,0 +1,10 @@
+[
+  {
+    "name": "dev",
+    "terraform": {}
+  },
+  {
+    "name": "prod",
+    "terraform": {}
+  }
+]

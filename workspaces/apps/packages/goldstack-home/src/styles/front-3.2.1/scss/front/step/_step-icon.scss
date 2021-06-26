@@ -1,0 +1,38 @@
+/*------------------------------------
+  Step Icon
+------------------------------------*/
+
+.step {
+  .step-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    font-size: $step-icon-font-size;
+    font-weight: $step-icon-font-weight;
+    width: $step-icon-width;
+    height: $step-icon-height;
+    @include border-radius($step-icon-border-radius);
+    margin-right: $step-icon-margin-x;
+
+    &::after {
+      position: absolute;
+      top: $step-icon-height + $step-padding-x / 2;
+      left: $step-icon-width / 2;
+      height: calc(
+        100% - #{$step-icon-height + $step-padding-x / 2 - $step-padding-x}
+      );
+      border-left: $step-border-width $step-border-type $step-border-color;
+      content: '';
+    }
+  }
+
+  .step-icon-pseudo::before {
+    display: block;
+    width: $step-icon-pseudo-width;
+    height: $step-icon-pseudo-height;
+    background-color: $step-icon-pseudo-bg-color;
+    @include border-radius($step-icon-pseudo-border-radius);
+    content: '';
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "goldstack-home",
+  "template": "app-nextjs-bootstrap",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "dev",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "hostedZoneDomain": "dev.goldstack.party",
+        "websiteDomain": "dev.goldstack.party",
+        "websiteDomainRedirect": "www.dev.goldstack.party",
+        "defaultCacheDuration": 10,
+        "environmentVariables": [
+          {
+            "name": "NEXT_PUBLIC_GOLDSTACK_DOCS",
+            "value": "https://docs.dev.goldstack.party/docs"
+          },
+          {
+            "name": "NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY",
+            "value": "pk_test_51Hd1UtArOjAVQR9vxRvGfIEMGJIvY82W0PHB7ajEjh4kIHXU148UsKthSk5b6itbWR5mSg74NvfmdKdDBqItQ01m00Av3f7gpd"
+          }
+        ]
+      }
+    },
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-prod",
+      "configuration": {
+        "hostedZoneDomain": "goldstack.party",
+        "websiteDomain": "goldstack.party",
+        "websiteDomainRedirect": "www.goldstack.party",
+        "defaultCacheDuration": 10,
+        "environmentVariables": [
+          {
+            "name": "NEXT_PUBLIC_GOLDSTACK_DOCS",
+            "value": "https://docs.goldstack.party/docs"
+          },
+          {
+            "name": "NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY",
+            "value": "pk_live_51Hd1UtArOjAVQR9vhVCzlap2C2bNTAdFM6D30iZB8xeNmEYSy0Tuw4q0uAaeXL562EZesN7fx0HiG2HMBjenzTqq00y9qiR4WI"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+.arrowright svg {
+  height: 1rem;
+  vertical-align: text-top;
+  margin-top: 0.25rem;
+  margin-left: 0.45rem;
+  margin-right: 0.25rem;
+  stroke-width: 25;
+  fill: white;
+}

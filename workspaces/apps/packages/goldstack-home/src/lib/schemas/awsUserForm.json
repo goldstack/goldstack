@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/AWSUserFormType",
+  "definitions": {
+    "AWSUserFormType": {
+      "type": "object",
+      "properties": {
+        "awsAccessKeyId": {
+          "$ref": "#/definitions/AWSAccessKeyId"
+        },
+        "awsSecretAccessKey": {
+          "$ref": "#/definitions/AWSSecretAccessKey"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AWSAccessKeyId": {
+      "type": "string",
+      "description": "Access key for this user.",
+      "title": "AWS Access Key Id",
+      "pattern": "^[^\\s]*$"
+    },
+    "AWSSecretAccessKey": {
+      "type": "string",
+      "description": "Secret key for this user.",
+      "title": "AWS Secret Access Key",
+      "pattern": "^[^\\s]*$"
+    }
+  }
+}

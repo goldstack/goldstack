@@ -1,0 +1,129 @@
+{
+  "version": 3,
+  "pages404": true,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "dynamicRoutes": [
+    {
+      "page": "/404",
+      "regex": "^\\/404$"
+    },
+    {
+      "page": "/build_legacy",
+      "regex": "^\\/build_legacy$"
+    },
+    {
+      "page": "/build",
+      "regex": "^\\/build$"
+    },
+    {
+      "page": "/index",
+      "regex": "^\\/index$"
+    },
+    {
+      "page": "/pricing",
+      "regex": "^\\/pricing$"
+    },
+    {
+      "page": "/projects/[id]/packages/[packageId]/configure/[step]",
+      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/configure\\/[step]$"
+    },
+    {
+      "page": "/projects/[id]/packages/[packageId]/download",
+      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/download$"
+    },
+    {
+      "page": "/projects/[id]/packages/[packageId]/pricing-options",
+      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/pricing-options$"
+    },
+    {
+      "page": "/projects/[id]/packages/[packageId]/purchase-template",
+      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/purchase-template$"
+    },
+    {
+      "page": "/templates/express-lambda",
+      "regex": "^\\/templates\\/express-lambda$"
+    },
+    {
+      "page": "/templates/go-gin",
+      "regex": "^\\/templates\\/go-gin$"
+    },
+    {
+      "page": "/templates/nextjs-bootstrap",
+      "regex": "^\\/templates\\/nextjs-bootstrap$"
+    },
+    {
+      "page": "/templates/nextjs",
+      "regex": "^\\/templates\\/nextjs$"
+    },
+    {
+      "page": "/terms-and-conditions",
+      "regex": "^\\/terms-and-conditions$"
+    },
+    {
+      "page": "/projects/[id]/packages/[packageId]/configure/[step]",
+      "regex": "^/projects/([^/]+?)/packages/([^/]+?)/configure/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "id": "id",
+        "packageId": "packageId",
+        "step": "step"
+      },
+      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/configure/(?<step>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/projects/[id]/packages/[packageId]/download",
+      "regex": "^/projects/([^/]+?)/packages/([^/]+?)/download(?:/)?$",
+      "routeKeys": {
+        "id": "id",
+        "packageId": "packageId"
+      },
+      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/download(?:/)?$"
+    },
+    {
+      "page": "/projects/[id]/packages/[packageId]/pricing-options",
+      "regex": "^/projects/([^/]+?)/packages/([^/]+?)/pricing\\-options(?:/)?$",
+      "routeKeys": {
+        "id": "id",
+        "packageId": "packageId"
+      },
+      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/pricing\\-options(?:/)?$"
+    },
+    {
+      "page": "/projects/[id]/packages/[packageId]/purchase-template",
+      "regex": "^/projects/([^/]+?)/packages/([^/]+?)/purchase\\-template(?:/)?$",
+      "routeKeys": {
+        "id": "id",
+        "packageId": "packageId"
+      },
+      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/purchase\\-template(?:/)?$"
+    },
+    {
+      "page": "/templates/[template]",
+      "regex": "^/templates/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "template": "template"
+      },
+      "namedRegex": "^/templates/(?<template>[^/]+?)(?:/)?$"
+    }
+  ],
+  "dataRoutes": [
+    {
+      "page": "/templates/[template]",
+      "routeKeys": {
+        "template": "template"
+      },
+      "dataRouteRegex": "^/_next/data/dvnhRFglEVprDruCdY4C4/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/dvnhRFglEVprDruCdY4C4/templates/(?<template>[^/]+?)\\.json$"
+    }
+  ],
+  "rewrites": []
+}

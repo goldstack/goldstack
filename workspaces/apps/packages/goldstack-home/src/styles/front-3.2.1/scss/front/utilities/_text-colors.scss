@@ -1,0 +1,28 @@
+/*------------------------------------
+  Text Colors
+------------------------------------*/
+
+.text-warning {
+  color: darken($warning, 20%) !important;
+}
+
+.text-muted,
+.text-body {
+  &[href]:hover {
+    color: $link-hover-color !important;
+  }
+}
+
+.text-white-70 {
+  color: $white-color-70;
+
+  &[href]:hover {
+    color: $white-color-hover;
+  }
+}
+
+a:hover {
+  .text-hover-primary {
+    color: $link-hover-color !important;
+  }
+}

@@ -1,0 +1,60 @@
+/*------------------------------------
+  Search Form - Push Top
+------------------------------------*/
+
+.search-push-top {
+  display: none;
+  background-color: $search-push-top-bg-color;
+  padding-top: $search-push-top-padding-padding-y;
+  padding-bottom: $search-push-top-padding-padding-y;
+  box-shadow: $search-push-top-box-shadow;
+
+  &-content {
+    max-width: $search-push-top-inner-max-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &-close-btn {
+    position: absolute;
+    top: -1.5625rem;
+    right: 0.4375rem;
+  }
+
+  // Small Devices
+  @include media-breakpoint-down(xs) {
+    padding-top: $search-push-top-padding-padding-y-sm;
+    padding-bottom: $search-push-top-padding-padding-y-sm;
+  }
+}
+
+/* Banner */
+.search-push-top-banner {
+  background-color: $search-push-top-banner-bg-color;
+  box-shadow: $search-push-top-banner-box-shadow;
+  padding-right: $search-push-top-banner-padding-right;
+  padding-top: $search-push-top-banner-padding-top;
+  overflow: hidden;
+
+  &-container {
+    position: relative;
+    width: 75%;
+    min-height: $search-push-top-container-min-height;
+  }
+
+  &-img {
+    position: absolute;
+    bottom: -0.625rem;
+    left: -0.625rem;
+    transition: all $search-push-top-banner-img-transition;
+  }
+
+  &:hover {
+    .search-push-top-banner-img {
+      &:first-child {
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+//
+// Badges
+//
+
+@mixin badge-soft($hs-soft-bg) {
+  color: ($hs-soft-bg);
+  background-color: rgba($hs-soft-bg, 0.1);
+
+  @at-root a#{&} {
+    @include hover-focus() {
+      color: color-yiq($hs-soft-bg);
+      background-color: $hs-soft-bg;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "goldstack-email-send",
+  "template": "email-send",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "dev",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "domain": "dev.goldstack.party",
+        "hostedZoneDomain": "dev.goldstack.party"
+      }
+    },
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-prod",
+      "configuration": {
+        "domain": "goldstack.party",
+        "hostedZoneDomain": "goldstack.party"
+      }
+    }
+  ]
+}

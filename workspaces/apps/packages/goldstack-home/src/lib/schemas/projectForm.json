@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/ProjectFormType",
+  "definitions": {
+    "ProjectFormType": {
+      "type": "object",
+      "properties": {
+        "projectName": {
+          "$ref": "#/definitions/ProjectName"
+        },
+        "deployment": {
+          "type": "string",
+          "enum": [
+            "prod",
+            "dev"
+          ],
+          "description": "Choose if you want to use this tool to define your development or production infrastructure.",
+          "title": "Deployment",
+          "default": "dev"
+        },
+        "awsRegion": {
+          "$ref": "#/definitions/AWSRegion",
+          "description": "The AWS region where the infrastructure for this project should be deployed to.",
+          "default": "us-east-2"
+        }
+      },
+      "required": [
+        "projectName",
+        "deployment",
+        "awsRegion"
+      ]
+    },
+    "ProjectName": {
+      "type": "string",
+      "description": "Name of the project. No spaces or special characters allowed.",
+      "title": "Name",
+      "pattern": "^[A-Za-z0-9-_]*$"
+    },
+    "AWSRegion": {
+      "$ref": "#/definitions/AWSDeploymentRegion",
+      "description": "Default AWS region to use.",
+      "title": "AWS Region",
+      "pattern": "^[^\\s]*$"
+    },
+    "AWSDeploymentRegion": {
+      "type": "string",
+      "enum": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2",
+        "af-south-1",
+        "ap-east-1",
+        "ap-south-1",
+        "ap-northeast-3",
+        "ap-northeast-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-northeast-1",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-south-1",
+        "eu-west-3",
+        "eu-north-1",
+        "me-south-1",
+        "sa-east-1"
+      ],
+      "description": "AWS region that infrastructure should be deployed to.",
+      "title": "AWS Deployment Region"
+    }
+  }
+}

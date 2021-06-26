@@ -1,0 +1,77 @@
+/*------------------------------------
+  Transparent Header
+------------------------------------*/
+
+.header-bg-transparent {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      &#{$infix} {
+        &:not(.js-header-fix-moment) {
+          @include media-breakpoint-up($breakpoint) {
+            .search-push-top[style*='display: block'] {
+              + .header-section {
+                background-color: $header-section-bg-color;
+              }
+            }
+
+            .header-section {
+              background-color: transparent;
+            }
+          }
+        }
+
+        .navbar-brand-collapsed,
+        .navbar-brand-on-scroll {
+          display: none;
+        }
+
+        &.js-header-fix-moment {
+          .navbar-brand-default {
+            display: none;
+          }
+
+          .navbar-brand-on-scroll {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}
+
+.header-bg-transparent {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-down($breakpoint) {
+        .navbar-brand-default,
+        .navbar-brand-on-scroll {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.header-bg-transparent {
+  .navbar-brand-default {
+    display: flex;
+  }
+}
+
+.header-bg-transparent,
+.header-bg-transparent-sm,
+.header-bg-transparent-md,
+.header-bg-transparent-lg {
+  @include media-breakpoint-down(md) {
+    .navbar-nav {
+      background-color: $header-section-bg-color;
+      padding: $header-transparent-navbar-nav-padding-y
+        $header-transparent-navbar-nav-padding-x;
+    }
+  }
+}

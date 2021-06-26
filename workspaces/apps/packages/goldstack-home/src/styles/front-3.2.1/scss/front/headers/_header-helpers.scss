@@ -1,0 +1,52 @@
+/*------------------------------------
+  Header Helpers
+------------------------------------*/
+
+.header {
+  &-invisible {
+    display: none;
+  }
+
+  &-moved-up {
+    transform: translate3d(0, -100%, 0);
+
+    &.header-hide-topbar {
+      transform: translate3d(0, -36px, 0);
+    }
+  }
+
+  &-faded {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &-section-hidden {
+    position: relative;
+  }
+
+  &[data-hs-header-options*='fixMoment'] {
+    transition: $header-fix-effect-transition;
+  }
+
+  &.header-untransitioned {
+    transition: none;
+  }
+
+  &.js-header-fix-moment {
+    position: fixed;
+    top: 0;
+    bottom: auto;
+
+    .header-hide-content {
+      display: none;
+    }
+  }
+
+  &-fix-top {
+    position: fixed;
+  }
+
+  &.header-fix-top[data-hs-header-options*='effectCompensation'] {
+    transition: none;
+  }
+}

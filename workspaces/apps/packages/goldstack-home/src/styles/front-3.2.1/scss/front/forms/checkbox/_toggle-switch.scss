@@ -1,0 +1,63 @@
+/*------------------------------------
+  Toggle Switch
+------------------------------------*/
+
+.toggle-switch {
+  display: flex;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+.toggle-switch-input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.toggle-switch-content {
+  flex: 1;
+  margin-left: $toggle-switch-content-margin-x;
+}
+
+.toggle-switch-label {
+  position: relative;
+  display: block;
+  width: $toggle-switch-width;
+  height: $toggle-switch-height;
+  background-color: $toggle-switch-bg-color;
+  background-clip: content-box;
+  border: $toggle-switch-border-width $toggle-switch-border-type
+    $toggle-switch-border-color;
+  @include border-radius($toggle-switch-border-radius);
+  transition: $toggle-switch-transition;
+}
+
+.toggle-switch-indicator {
+  position: absolute;
+  left: $toggle-switch-border-width;
+  bottom: 50%;
+  width: $toggle-switch-indicator-size;
+  height: $toggle-switch-indicator-size;
+  background-color: $toggle-switch-indicator-bg-color;
+  transform: initial;
+  box-shadow: $toggle-switch-indicator-box-shadow;
+  @include border-radius($toggle-switch-indicator-border-radius);
+  transform: translate3d(0, 50%, 0);
+  transition: $toggle-switch-transition;
+}
+
+.toggle-switch-input:checked + .toggle-switch-label {
+  background-color: $custom-switch-checked-bg-color;
+}
+
+.toggle-switch-input:checked + .toggle-switch-label .toggle-switch-indicator {
+  transform: translate3d($custom-switch-checked-translateX, 50%, 0);
+}
+
+.toggle-switch-input:disabled + .toggle-switch-label {
+  background-color: $custom-switch-disabled-bg-color;
+}
+
+.toggle-switch-input:checked:disabled + .toggle-switch-label {
+  background-color: $custom-switch-checked-and-disabled-bg-color;
+}

@@ -1,0 +1,53 @@
+/*------------------------------------
+  Button Groups
+------------------------------------*/
+
+.btn-group-segment {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  background-color: $btn-group-segment-bg-color;
+  @include border-radius($btn-group-segment-border-radius);
+  padding: $btn-group-segment-padding-y $btn-group-segment-padding-x;
+
+  .btn {
+    color: $btn-group-segment-link-color;
+
+    &:not(:last-child) {
+      margin-right: $btn-group-segment-link-margin-x;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+
+    &.active {
+      color: $btn-group-segment-link-active-color;
+      background-color: $btn-group-segment-link-active-bg-color;
+      box-shadow: $btn-group-segment-link-active-box-shadow;
+    }
+
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+      box-shadow: $btn-group-segment-link-active-box-shadow;
+    }
+  }
+
+  > .btn:not(:last-child):not(.dropdown-toggle),
+  > .btn-group:not(:last-child) > .btn,
+  > .btn:not(:first-child),
+  > .btn-group:not(:first-child) > .btn {
+    @include border-radius($btn-group-segment-link-border-radius);
+  }
+
+  &.btn-group-pills {
+    @include border-radius($btn-group-pills-segment-border-radius);
+
+    > .btn:not(:last-child):not(.dropdown-toggle),
+    > .btn-group:not(:last-child) > .btn,
+    > .btn:not(:first-child),
+    > .btn-group:not(:first-child) > .btn {
+      @include border-radius($btn-group-pills-segment-link-border-radius);
+    }
+  }
+}

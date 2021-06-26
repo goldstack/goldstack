@@ -1,0 +1,17 @@
+/*------------------------------------
+  Nav List
+------------------------------------*/
+
+.nav-list-y-1 {
+  .nav-link {
+    padding-top: $nav-list-padding-y !important;
+    padding-bottom: $nav-list-padding-y !important;
+  }
+}
+
+.nav-list-y-2 {
+  .nav-link {
+    padding-top: $nav-list-padding-y * 2 !important;
+    padding-bottom: $nav-list-padding-y * 2 !important;
+  }
+}

@@ -1,0 +1,40 @@
+/*------------------------------------
+  Bookmark Checkbox
+------------------------------------*/
+
+.bookmark-checkbox {
+  position: relative;
+  display: block;
+  line-height: 0;
+
+  &-input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  &-label {
+    position: relative;
+    width: $bookmark-checkbox-width;
+    height: $bookmark-checkbox-height;
+    font-size: $bookmark-checkbox-font-size;
+    color: $bookmark-checkbox-color;
+    @include border-radius($bookmark-checkbox-border-radius);
+    cursor: pointer;
+    margin-bottom: 0;
+    transition: $bookmark-checkbox-transition;
+
+    &::before {
+      @include content-centered;
+      content: $bookmark-checkbox-icon-pseudo;
+      font-family: $bookmark-checkbox-icon-pseudo-font-family;
+    }
+  }
+
+  &-input:checked ~ &-label {
+    color: $bookmark-checkbox-checked-color;
+    background-color: $bookmark-checkbox-checked-bg-color;
+    box-shadow: $bookmark-checkbox-checked-box-shadow;
+    transform: $bookmark-checkbox-checked-transition;
+  }
+}

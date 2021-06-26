@@ -1,0 +1,59 @@
+/*------------------------------------
+  Cubeportfolio
+------------------------------------*/
+
+// Filter Scrollb
+.cbp-filter-scrollbar {
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      height: $cbp-filter-scrollbar-height;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $cbp-filter-scrollbar-bg-color;
+      visibility: hidden;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+// .active Label style
+.cbp-filter-item-active.label.label-soft-secondary {
+  color: $cbp-active-label-color;
+  background-color: $cbp-active-label-bg-color;
+}
+
+.cbp-filter-item-active.nav-link {
+  color: $cbp-active-link-color;
+}
+
+// Load more disabled class
+.cbp-l-loadMore-stop {
+  pointer-events: none;
+}
+
+// Zoom overlay effect
+.cbp-caption-zoom {
+  .cbp-caption-defaultWrap {
+    transition: transform 0.2s ease-out;
+  }
+
+  .cbp-caption-activeWrap {
+    background-color: $cbp-zoom-active-bg-color;
+  }
+
+  .cbp-caption:hover .cbp-caption-defaultWrap {
+    transform: scale(1.1);
+  }
+}

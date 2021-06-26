@@ -1,0 +1,36 @@
+/*------------------------------------
+  Slick
+------------------------------------*/
+
+.slick {
+  position: relative;
+}
+
+.slick-vertical .slick-slide {
+  border-width: 0;
+}
+
+// Disable transform effect
+.slick-transform-off {
+  &.slick-transform-off .slick-track {
+    transform: none !important;
+  }
+}
+
+// Thumb Progress
+.slick-thumb-progress {
+  width: 110%;
+  height: 110%;
+  @include content-centered;
+}
+
+// Mode Right
+.slick-center-mode-right {
+  margin-right: $slick-center-mode-right !important;
+
+  &-offset {
+    .draggable {
+      padding-right: $slick-center-mode-right-offset-padding-x;
+    }
+  }
+}

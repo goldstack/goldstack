@@ -1,0 +1,99 @@
+import { ProjectConfiguration } from '@goldstack/utils-project';
+import { DeploySetConfig } from '@goldstack/template-build-set';
+
+export const createStaticWebsiteBuildSetConfig = async (): Promise<DeploySetConfig> => {
+  const projectConfiguration: ProjectConfiguration = {
+    projectName: 'project-static-website1',
+    rootTemplateReference: {
+      templateName: 'yarn-pnp-monorepo',
+    },
+    packages: [
+      {
+        packageName: 'app-nextjs-1',
+        templateReference: {
+          templateName: 'app-nextjs',
+        },
+      },
+      {
+        packageName: 'app-nextjs-bootstrap-1',
+        templateReference: {
+          templateName: 'app-nextjs-bootstrap',
+        },
+      },
+      {
+        packageName: 'static-website-1',
+        templateReference: {
+          templateName: 'static-website-aws',
+        },
+      },
+    ],
+  };
+
+  const hash = new Date().getTime();
+  const websiteDomain = 'staticwebsite1-' + hash + '.tests.dev.goldstack.party';
+  const websiteDomainRedirect =
+    'www.staticwebsite1-' + hash + '.tests.dev.goldstack.party';
+
+  const setConfig: DeploySetConfig = {
+    buildSetName: 'static-website',
+    buildTemplates: [
+      'yarn-pnp-monorepo',
+      'app-nextjs',
+      'app-nextjs-bootstrap',
+      'static-website-aws',
+    ],
+    deployTemplates: [
+      'app-nextjs',
+      'app-nextjs-bootstrap',
+      'static-website-aws',
+    ],
+    projects: [
+      {
+        projectConfiguration,
+        rootTests: ['assert-package-files', 'assert-root-files', 'root-build'],
+        packageConfigurations: [
+          {
+            packageName: 'app-nextjs-1',
+            configuration: {},
+            deployments: [],
+            packageTests: ['assert-package-files'],
+            packageCleanUp: [],
+          },
+          {
+            packageName: 'app-nextjs-bootstrap-1',
+            configuration: {},
+            deployments: [],
+            packageTests: ['assert-package-files'],
+            packageCleanUp: [],
+          },
+          {
+            packageName: 'static-website-1',
+            configuration: {},
+            deployments: [
+              {
+                name: 'prod',
+                awsUser: 'goldstack-dev',
+                awsRegion: 'us-west-2',
+                configuration: {
+                  hostedZoneDomain: 'dev.goldstack.party',
+                  websiteDomain,
+                  websiteDomainRedirect,
+                  defaultCacheDuration: 10,
+                },
+              },
+            ],
+            packageTests: [
+              'assert-package-files',
+              'infra-up',
+              'deploy',
+              'assert-static-website-aws-deployments',
+            ],
+            packageCleanUp: ['infra-destroy'],
+          },
+        ],
+      },
+    ],
+  };
+
+  return setConfig;
+};

@@ -1,0 +1,14 @@
+.clickable-media {
+  cursor: pointer;
+  border-radius: 0.75rem;
+  text-decoration: none;
+}
+
+.clickable-media p {
+  color: #677788;
+}
+
+.clickable-media:hover {
+  background-color: rgba(55, 125, 255, 0.1);
+  border: 0.0625rem solid #e7eaf3 !important;
+}

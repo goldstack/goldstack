@@ -1,0 +1,58 @@
+/*------------------------------------
+  Merge
+------------------------------------*/
+
+.input-group-merge {
+  position: relative;
+
+  .input-group-prepend,
+  .input-group-append {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+
+  .input-group-prepend {
+    left: 0;
+
+    .input-group-text {
+      padding: 0 0 0 $input-padding-x;
+
+      &:first-child {
+        @include border-left-radius($input-group-merge-border-radius);
+        @include border-right-radius(0);
+      }
+    }
+  }
+
+  .input-group-append {
+    right: 0;
+
+    .input-group-text {
+      padding: 0 $input-padding-x 0 0;
+
+      &:last-child {
+        @include border-right-radius($input-group-merge-border-radius);
+        @include border-left-radius(0);
+      }
+    }
+  }
+
+  .input-group-text {
+    z-index: 4;
+    border: none;
+  }
+
+  .custom-select,
+  .form-control {
+    &:not(:first-child) {
+      padding-left: $input-padding-x * 2.5;
+      @include border-left-radius($input-group-merge-border-radius);
+    }
+
+    &:not(:last-child) {
+      padding-right: $input-padding-x * 2.5;
+      @include border-right-radius($input-group-merge-border-radius);
+    }
+  }
+}

@@ -1,0 +1,146 @@
+/*------------------------------------
+  Device Mockups
+------------------------------------*/
+
+.device {
+  position: relative;
+}
+
+// Pointers
+.device-pointer {
+  width: 65%;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Macbook
+.device-macbook-screen {
+  position: absolute;
+  top: 6.8%;
+  left: 12.3%;
+  width: 75.1%;
+  height: 81.1%;
+  object-fit: cover;
+}
+
+// iPhone
+.device-iphone-x {
+  @include border-radius(2.75rem);
+  box-shadow: $device-box-shadow;
+
+  &-frame {
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+    height: auto;
+  }
+
+  &-screen {
+    position: absolute;
+    top: 2.4%;
+    left: 4%;
+    width: 92.4%;
+    height: 96%;
+    object-fit: cover;
+    @include border-radius(0.5rem);
+  }
+}
+
+// Half iPhone
+.device-half-iphone-x {
+  @include border-top-radius(3rem);
+  box-shadow: $device-box-shadow;
+
+  &-frame {
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+    height: auto;
+  }
+
+  &-screen {
+    position: absolute;
+    top: 2.6%;
+    left: 4.1%;
+    width: 91.8%;
+    height: 97.1%;
+    object-fit: cover;
+    @include border-top-radius(0.9375rem);
+  }
+}
+
+// iPad
+.device-ipad {
+  @include border-radius(1.25rem);
+  box-shadow: $device-box-shadow;
+
+  &-frame {
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+    height: auto;
+  }
+
+  &-screen {
+    position: absolute;
+    top: 2.6%;
+    left: 4.2%;
+    width: 91.8%;
+    height: 94.2%;
+    object-fit: cover;
+  }
+}
+
+// Horizontal iPad
+.device-horizontal-ipad {
+  @include border-radius(1.5rem);
+  box-shadow: $device-box-shadow;
+
+  &-frame {
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+    height: auto;
+  }
+
+  &-screen {
+    position: absolute;
+    top: 3.8%;
+    left: 3.2%;
+    width: 93.8%;
+    height: 92%;
+    object-fit: cover;
+  }
+}
+
+// Browser
+.device-browser {
+  @include content-centered;
+  width: 100%;
+  max-width: 85%;
+  overflow: hidden;
+  box-shadow: $device-browser-box-shadow;
+  @include border-radius($border-radius-lg);
+
+  &-screen {
+    position: absolute;
+    top: 6%;
+    left: 1.2%;
+    width: 97.7%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// Wrapper
+.device-wrapper {
+  position: relative;
+
+  .device-iphone-x {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 22%;
+  }
+}

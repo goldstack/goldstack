@@ -1,0 +1,19 @@
+/*------------------------------------
+  Custom Button Toggle
+------------------------------------*/
+
+@each $color, $value in $theme-colors {
+  /* #{$color} custom toggle button */
+  .btn-custom-toggle-#{$color} {
+    @if $color == 'light' {
+      @include button-custom-toggle($white, $value, $value, $value);
+    } @else {
+      @include button-custom-toggle($value, $value, $value, $value);
+    }
+  }
+}
+
+.btn-custom-toggle-light {
+  color: $white-color-70;
+  border-color: $white-color-70;
+}

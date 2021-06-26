@@ -1,0 +1,64 @@
+//
+// Label
+//
+
+// Label
+@mixin label($hs-background, $hs-hover-background, $hs-active-background) {
+  color: color-yiq($hs-background);
+  background-color: $hs-background;
+
+  &[href],
+  &[type] {
+    &:hover {
+      color: color-yiq($hs-hover-background);
+      background-color: darken($hs-background, 7.5%);
+    }
+  }
+
+  &[href],
+  &[type] {
+    &.active {
+      color: color-yiq($hs-active-background);
+      background-color: ($hs-active-background);
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $hs-background;
+    background-color: $hs-background;
+  }
+}
+
+// Soft Labels
+@mixin label-soft(
+  $hs-color,
+  $hs-background,
+  $hs-hover-background,
+  $hs-active-background
+) {
+  color: ($hs-color);
+  background-color: rgba($hs-background, 0.1);
+
+  &[href],
+  &[type] {
+    &:hover {
+      color: color-yiq($hs-hover-background);
+      background-color: ($hs-hover-background);
+    }
+  }
+
+  &[href],
+  &[type] {
+    &.active {
+      color: color-yiq($hs-active-background);
+      background-color: ($hs-active-background);
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $hs-background;
+    background-color: rgba($hs-background, 0.1);
+  }
+}
