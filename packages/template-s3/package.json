@@ -1,0 +1,75 @@
+{
+  "name": "@goldstack/template-s3",
+  "version": "0.3.42",
+  "description": "Building blocks for linking a package to an AWS S3 bucket.",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "infrastructure",
+    "s3",
+    "aws",
+    "IaC",
+    "configuration"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib.git"
+  },
+  "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "dist/templateS3.js",
+  "bin": {
+    "template": "./bin/template",
+    "template-s3": "./bin/template"
+  },
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:watch": "yarn clean && yarn compile:watch",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc -p tsconfig.json",
+    "compile:watch": "tsc -p tsconfig.json --watch",
+    "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "generate:schema": "utils-package-config-generate && cp schemas/* ../../../templates/packages/s3/schemas && cp schemas/* ../../../templates-management/packages/project-repository-bucket/schemas && cp schemas/* ../../../templates-management/packages/template-repository-bucket/schemas",
+    "prepublishOnly": "yarn run build",
+    "publish": "utils-git changed --exec \"yarn npm publish $@\"",
+    "test:ci": "jest --passWithNoTests --config=./jest.config.js",
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
+    "version:apply:force": "yarn version $@ && yarn version apply"
+  },
+  "dependencies": {
+    "@goldstack/infra": "0.3.11",
+    "@goldstack/infra-aws": "0.3.12",
+    "@goldstack/utils-cli": "0.2.4",
+    "@goldstack/utils-config": "0.3.10",
+    "@goldstack/utils-docker": "0.3.12",
+    "@goldstack/utils-log": "0.2.4",
+    "@goldstack/utils-package": "0.3.11",
+    "@goldstack/utils-package-config": "0.3.11",
+    "@goldstack/utils-s3-deployment": "0.3.15",
+    "@goldstack/utils-sh": "0.4.10",
+    "@goldstack/utils-template": "0.3.10",
+    "@goldstack/utils-terraform": "0.3.17",
+    "@goldstack/utils-terraform-aws": "0.3.17",
+    "aws-sdk": "2.721.0",
+    "mock-aws-s3": "^4.0.1",
+    "yargs": "^15.4.1"
+  },
+  "devDependencies": {
+    "@goldstack/utils-docs-cli": "0.3.11",
+    "@goldstack/utils-git": "0.1.25",
+    "@goldstack/utils-package-config-generate": "0.2.4",
+    "@types/jest": "^26.0.21",
+    "@types/mock-aws-s3": "^2.6.1",
+    "@types/node": "^14.0.6",
+    "@types/yargs": "^15.0.5",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.4",
+    "typescript": "^4.3.4"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "$ref": "#/definitions/ProjectConfiguration",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "PackageName": {
+      "description": "Name of the package.",
+      "type": "string"
+    },
+    "PackageProjectConfiguration": {
+      "additionalProperties": false,
+      "description": "Configuration for a package to be included.",
+      "properties": {
+        "packageName": {
+          "$ref": "#/definitions/PackageName"
+        },
+        "templateReference": {
+          "additionalProperties": false,
+          "description": "Reference to the template to be used for the package.",
+          "properties": {
+            "templateName": {
+              "$ref": "#/definitions/TemplateName"
+            },
+            "templateVersion": {
+              "$ref": "#/definitions/TemplateVersion1"
+            }
+          },
+          "required": [
+            "templateName"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "packageName",
+        "templateReference"
+      ],
+      "type": "object"
+    },
+    "Packages": {
+      "description": "Packages to be included in the project.",
+      "items": {
+        "$ref": "#/definitions/PackageProjectConfiguration"
+      },
+      "type": "array"
+    },
+    "ProjectConfiguration": {
+      "additionalProperties": false,
+      "description": "Configuration for a Goldstack project.",
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "packages": {
+          "$ref": "#/definitions/Packages"
+        },
+        "projectName": {
+          "$ref": "#/definitions/ProjectName"
+        },
+        "rootTemplateReference": {
+          "$ref": "#/definitions/RootTemplateReference"
+        }
+      },
+      "required": [
+        "projectName",
+        "rootTemplateReference",
+        "packages"
+      ],
+      "type": "object"
+    },
+    "ProjectName": {
+      "description": "Name of the project. No spaces or special characters allowed.",
+      "pattern": "^[A-Za-z0-9-_]*$",
+      "title": "Name",
+      "type": "string"
+    },
+    "RootTemplateReference": {
+      "additionalProperties": false,
+      "description": "Template to be used for the project root.",
+      "properties": {
+        "templateName": {
+          "$ref": "#/definitions/TempalteName"
+        },
+        "templateVersion": {
+          "$ref": "#/definitions/TemplateVersion"
+        }
+      },
+      "required": [
+        "templateName"
+      ],
+      "type": "object"
+    },
+    "TempalteName": {
+      "description": "Name of the template.",
+      "type": "string"
+    },
+    "TemplateName": {
+      "description": "Name of the template.",
+      "type": "string"
+    },
+    "TemplateVersion": {
+      "description": "Version of the template.",
+      "type": "string"
+    },
+    "TemplateVersion1": {
+      "description": "Version of the template.",
+      "type": "string"
+    }
+  }
+}
