@@ -193,13 +193,14 @@ jobs:
           git add ./.pnp.js
 
           yarn git:commit "Release new library version (ci_skip)"
-          yarn git:pull
+          # yarn git:pull
 
       - name: Push apps changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
         uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
           directory: workspaces/apps
+          force: true
           repository: goldstack/goldstack-apps
           github_token: ${{secrets.BUILD_TOKEN}}
 
