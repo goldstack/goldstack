@@ -14,7 +14,6 @@
 
 ## Trouble Shooting
 
-
 ### Check CloudFront configuration for Redirect Domain
 
 Get the domain from the CloudFront distribution with your redirect domain and issue a request as the following.
