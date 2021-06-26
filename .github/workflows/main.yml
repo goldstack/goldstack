@@ -178,7 +178,7 @@ jobs:
 
       - name: Push library changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
+        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
           directory: workspaces/templates-lib
           repository: goldstack/goldstack-lib
@@ -197,7 +197,7 @@ jobs:
 
       - name: Push apps changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
+        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
           directory: workspaces/apps
           repository: goldstack/goldstack-apps
@@ -205,7 +205,7 @@ jobs:
 
       - name: Push docs changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
+        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
           directory: workspaces/docs
           repository: goldstack/goldstack-docs
@@ -213,7 +213,7 @@ jobs:
 
       - name: Push template changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
+        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
           directory: workspaces/templates
           repository: goldstack/goldstack-templates-priv
@@ -221,7 +221,7 @@ jobs:
 
       - name: Push template management changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
+        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
           directory: workspaces/templates-management
           repository: goldstack/goldstack-templates-management
@@ -229,7 +229,7 @@ jobs:
 
       - name: Push root changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
+        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
 
@@ -253,20 +253,20 @@ jobs:
           git status
           git add packages/template-management-cli/src/state/deployments.json
           git diff-index --quiet HEAD || git commit -m "Publishing updated docker deployment ci_skip"
-          git pull
           git status
           cd ../..
 
       - name: Push deployed image hash change
-        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
+        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
+          force: true
           directory: workspaces/apps
           repository: goldstack/goldstack-apps
 
       - name: Push root changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@40bf560936a8022e68a3c00e7d2abefaf01305a6
+        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
 
