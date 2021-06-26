@@ -1,0 +1,8 @@
+{
+  "templateName": "static-website-aws",
+  "templateVersion": "0.1.0",
+  "previousTemplateVersion": "0.0.0",
+  "templateDescription": "Static website hosted on AWS using S3 and CloudFront.",
+  "templateDocumentation": "https://docs.goldstack.party/docs/modules/static-website-aws",
+  "templateArchive": ""
+}

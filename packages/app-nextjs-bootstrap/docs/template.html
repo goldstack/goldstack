@@ -1,0 +1,149 @@
+<p></p>
+<div class="markdown-fragment">
+  <p>
+    This module provides a
+    <a
+      href="https://nextjs.org/"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Next.js</a
+    >
+    application set up to use Bootstrap styling that is deployed to AWS using
+    the
+    <a
+      href="https://aws.amazon.com/cloudfront/"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >CloudFront CDN</a
+    >
+    and
+    <a
+      href="https://aws.amazon.com/lambda/edge/"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Lambda@Edge</a
+    >.
+  </p>
+</div>
+<p></p>
+<h2 class="heading">
+  <span id="configure"></span><a href="#configure">Configure</a
+  ><span class="permalink"
+    ><svg viewBox="0 0 16 16" width="16" height="16">
+      <g stroke-width="1" fill="#000000" stroke="#000000">
+        <path
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+        ></path>
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+        ></path>
+      </g></svg
+  ></span>
+</h2>
+<p></p>
+<div class="markdown-fragment">
+  <p></p>
+  <div class="markdown-fragment">
+    <p></p>
+    <div class="markdown-fragment">
+      <p>The following key properties need to be configured for this module:</p>
+      <ul>
+        <li>
+          <strong>Hosted Zone Domain</strong>: A
+          <a
+            href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-working-with.html"
+            class="absolute"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Route 53 hosted zone</a
+          >
+          to which the <em>Primary Website Domain</em> and
+          <em>Redirect Website Domain</em> can be added as records. For
+          instance, a hosted zone domain is
+          <code class="inline">mysite.com</code> will allow adding the primiary
+          domain <code class="inline">mysite.com</code> and the redirect domain
+          <code class="inline">www.mysite.com</code>. Note that this hosted zone
+          must already exist in AWS. Please find instructions of how to set up a
+          hosted zone
+          <a
+            href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingHostedZone.html"
+            class="absolute"
+            target="_blank"
+            rel="noopener noreferrer"
+            >here</a
+          >.
+        </li>
+        <li>
+          <strong>Primary Website Domain</strong>: This is the domain your users
+          will use to view the site. For instance, if you configure the domain
+          <code class="inline">mysite.com</code>, users will be able to view
+          your site by opening the URL
+          <code class="inline">https://mysite.com</code>.
+        </li>
+        <li>
+          <strong>Redirect Website Domain</strong>: This is a domain that will
+          redirect all requests to your <em>Primary Website Domain</em>. For
+          instance, if you configure the domain
+          <code class="inline">www.mysite.com</code> as your redirect domain and
+          <code class="inline">mysite.com</code> as your primiary domain, users
+          will be redirected to
+          <code class="inline">https://mysite.com</code> when they attempt to
+          open the URL <code class="inline">https://www.mysite.com</code>. Note
+          that the <em>Redirect Website Domain</em> must be configured, even if
+          you do not need this functionality.
+        </li>
+        <li>
+          <strong>Default Cache Duration</strong>: The number of seconds that
+          files will be cached in the AWS content delivery network. Setting this
+          to <code class="inline">120</code> for instance, would mean that,
+          unless otherwise specified, webpages and other resources will be
+          cached for 120 s. In that case, when a new version of a page is
+          deployed, it can take up to 120 s for changes to appear when accessing
+          the deployed version of the application.
+        </li>
+      </ul>
+    </div>
+    <p></p>
+  </div>
+  <p></p>
+</div>
+<p></p>
+<h2 class="heading">
+  <span id="getting-started"></span
+  ><a href="#getting-started">Getting Started</a
+  ><span class="permalink"
+    ><svg viewBox="0 0 16 16" width="16" height="16">
+      <g stroke-width="1" fill="#000000" stroke="#000000">
+        <path
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+        ></path>
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+        ></path>
+      </g></svg
+  ></span>
+</h2>
+<p></p>
+<div class="markdown-fragment"></div>
+<p></p>

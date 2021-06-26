@@ -1,0 +1,19 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "docker-image-aws-template",
+  "template": "docker-image-aws",
+  "templateVersion": "0.1.0",
+  "configuration": {
+    "imageTag": "my-test-image"
+  },
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "repositoryName": "docker-image-aws-template-repo"
+      }
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/NextjsPackage",
+  "definitions": {
+    "NextjsPackage": {
+      "type": "object",
+      "properties": {
+        "template": {
+          "$ref": "#/definitions/Template"
+        },
+        "templateVersion": {
+          "$ref": "#/definitions/TemplateVersion"
+        },
+        "name": {
+          "$ref": "#/definitions/Name"
+        },
+        "configuration": {
+          "$ref": "#/definitions/NextjsPackageConfiguration"
+        },
+        "deployments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NextjsDeployment"
+          }
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$schema",
+        "configuration",
+        "deployments",
+        "name",
+        "template",
+        "templateVersion"
+      ],
+      "additionalProperties": false,
+      "description": "A NextJs application",
+      "title": "NextJs Package"
+    },
+    "Template": {
+      "type": "string",
+      "description": "Name of the template used for creating this package.",
+      "title": "Template",
+      "pattern": "^[^\\s]*$"
+    },
+    "TemplateVersion": {
+      "type": "string",
+      "description": "Latest template version that was applied to this package.",
+      "title": "Template Version"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Name of this package.",
+      "title": "Package Name"
+    },
+    "NextjsPackageConfiguration": {
+      "$ref": "#/definitions/ThisPackageConfiguration",
+      "description": "Configure NextJS application",
+      "title": "NextJs Configuration"
+    },
+    "ThisPackageConfiguration": {
+      "type": "object",
+      "properties": {},
+      "description": "Configures a static website hosted on AWS.",
+      "title": "AWS Static Website Configuration"
+    },
+    "NextjsDeployment": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/DeploymentName"
+        },
+        "configuration": {
+          "$ref": "#/definitions/NextjsDeploymentConfiguration"
+        },
+        "terraformVariables": {
+          "$ref": "#/definitions/TerraformVariables"
+        },
+        "awsRegion": {
+          "$ref": "#/definitions/AWSDeploymentRegion"
+        },
+        "awsUser": {
+          "$ref": "#/definitions/AWSUserName"
+        }
+      },
+      "required": [
+        "awsRegion",
+        "awsUser",
+        "configuration",
+        "name"
+      ],
+      "description": "Configure NextJs deployment",
+      "title": "NextJs Deployment"
+    },
+    "DeploymentName": {
+      "type": "string",
+      "description": "Identifier for this deployment. No spaces allowed in name.",
+      "title": "Deployment Name",
+      "pattern": "^[^\\s]*$"
+    },
+    "NextjsDeploymentConfiguration": {
+      "type": "object",
+      "properties": {
+        "hostedZoneDomain": {
+          "$ref": "#/definitions/HostedZoneDomain"
+        },
+        "websiteDomain": {
+          "$ref": "#/definitions/PrimaryWebsiteDomain"
+        },
+        "websiteDomainRedirect": {
+          "$ref": "#/definitions/RedirectWebsiteDomain"
+        },
+        "defaultCacheDuration": {
+          "$ref": "#/definitions/DefaultCacheDuration"
+        },
+        "environmentVariables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NextjsEnvironmentVariable"
+          },
+          "description": "Define environment variables for the NextJs application.",
+          "title": "Environment Variables"
+        }
+      },
+      "required": [
+        "hostedZoneDomain",
+        "websiteDomain",
+        "websiteDomainRedirect"
+      ]
+    },
+    "HostedZoneDomain": {
+      "type": "string",
+      "description": "The domain name of the Route 53 hosted zone that this website should be added to.",
+      "title": "Hosted Zone Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "PrimaryWebsiteDomain": {
+      "type": "string",
+      "description": "The domain name your users should use (e.g. mysite.com)",
+      "title": "Primary Website Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "RedirectWebsiteDomain": {
+      "type": "string",
+      "description": "A domain name that users are redirected from to your Primary Website Domain (e.g. www.mysite.com)",
+      "title": "Redirect Website Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "DefaultCacheDuration": {
+      "type": "number",
+      "description": "Seconds resources will be cached for by default. For development sites, a good value is around 10 seconds and for production sites 60-100 seconds.",
+      "title": "Default Cache Duration",
+      "default": 10,
+      "exclusiveMinimum": 0
+    },
+    "NextjsEnvironmentVariable": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Environment variable name",
+          "title": "Name"
+        },
+        "value": {
+          "type": "string",
+          "description": "Environment variable value",
+          "title": "Value"
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ],
+      "additionalProperties": false,
+      "description": "Define the name and value for the environment variable.",
+      "title": "NextJs Environment Variable"
+    },
+    "TerraformVariables": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TerraformVariable"
+      },
+      "description": "Define which of the deployment variables will be made available for terraform.",
+      "title": "Terraform Variables"
+    },
+    "TerraformVariable": {
+      "type": "string",
+      "description": "Name of the property that should be converted into a Terraform variable.",
+      "title": "Terraform Variable"
+    },
+    "AWSDeploymentRegion": {
+      "type": "string",
+      "enum": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2",
+        "af-south-1",
+        "ap-east-1",
+        "ap-south-1",
+        "ap-northeast-3",
+        "ap-northeast-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-northeast-1",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-south-1",
+        "eu-west-3",
+        "eu-north-1",
+        "me-south-1",
+        "sa-east-1"
+      ],
+      "description": "AWS region that infrastructure should be deployed to.",
+      "title": "AWS Deployment Region"
+    },
+    "AWSUserName": {
+      "type": "string",
+      "description": "Name of the AWS user that is used to perform the deployment.",
+      "title": "AWS User Name"
+    }
+  }
+}

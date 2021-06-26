@@ -1,0 +1,106 @@
+<p></p>
+<div class="markdown-fragment">
+  <p>
+    The Email Send module provides a means to send emails from an application.
+    It provides the infrastructure for email sending using
+    <a
+      href="https://aws.amazon.com/ses/"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >AWS Simple Email Service</a
+    >
+    and provides a simple API for sending emails.
+  </p>
+</div>
+<p></p>
+<h2 class="heading">
+  <span id="configure"></span><a href="#configure">Configure</a
+  ><span class="permalink"
+    ><svg viewBox="0 0 16 16" width="16" height="16">
+      <g stroke-width="1" fill="#000000" stroke="#000000">
+        <path
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+        ></path>
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+        ></path>
+      </g></svg
+  ></span>
+</h2>
+<p></p>
+<div class="markdown-fragment">
+  <p>The following key properties need to be configured for this module:</p>
+  <ul>
+    <li>
+      <strong>Domain</strong>: The domain that emails will be sent from. The
+      module will support sending emails from any possible email address in this
+      domain. For instance, if the domain
+      <code class="inline">mydomain.com</code> is choosen, email addresses such
+      as <code class="inline">support@mydomain.com</code>,
+      <code class="inline">noreply@mydomain.com</code> and
+      <code class="inline">system@mydomain.com</code> are supported.
+    </li>
+    <li>
+      <strong>Hosted Zone Domain</strong>: A
+      <a
+        href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-working-with.html"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Route 53 hosted zone</a
+      >
+      that will allow adding the <em>Domain</em> as a record. For instance, in
+      order to configure the domain
+      <code class="inline">emails.mydomain.com</code>, the hosted zones
+      <code class="inline">emails.mydomain.com</code> or
+      <code class="inline">mydomain.com</code> would be valid. Note that this
+      hosted zone must already exist in AWS. Please find instructions of how to
+      set up a hosted zone
+      <a
+        href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingHostedZone.html"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >here</a
+      >.
+    </li>
+  </ul>
+</div>
+<p></p>
+<h2 class="heading">
+  <span id="getting-started"></span
+  ><a href="#getting-started">Getting Started</a
+  ><span class="permalink"
+    ><svg viewBox="0 0 16 16" width="16" height="16">
+      <g stroke-width="1" fill="#000000" stroke="#000000">
+        <path
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+        ></path>
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+        ></path>
+      </g></svg
+  ></span>
+</h2>
+<p></p>
+<div class="markdown-fragment"></div>
+<p></p>

@@ -1,0 +1,8 @@
+{
+  "templateName": "lambda-go-gin",
+  "templateVersion": "0.1.0",
+  "previousTemplateVersion": "0.0.0",
+  "templateDescription": "A Go lambda with the Gin web framework to be deployed to AWS lambda",
+  "templateDocumentation": "https://docs.goldstack.party/docs/modules/lambda-go-gin",
+  "templateArchive": ""
+}

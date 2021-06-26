@@ -1,0 +1,8 @@
+{
+  "templateName": "s3",
+  "templateVersion": "0.1.0",
+  "previousTemplateVersion": "0.0.0",
+  "templateDescription": "Sets up and allows access to an S3 bucket.",
+  "templateDocumentation": "https://docs.goldstack.party/docs/modules/s3",
+  "templateArchive": ""
+}

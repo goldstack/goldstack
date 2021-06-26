@@ -1,0 +1,237 @@
+<p></p><div class="markdown-fragment"><p>The Email Send module provides a means to send emails from an application. It provides the infrastructure for email sending using <a href="https://aws.amazon.com/ses/" class="absolute" target="_blank" rel="noopener noreferrer">AWS Simple Email Service</a> and provides a simple API for sending emails.</p></div><p></p>
+<h2 class="heading"><span id="features"></span><a href="#features">Features</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><ul>
+<li>Easily send emails from backend applications</li>
+<li>Infrastructure defined in Terraform</li>
+<li>Low cost sends using AWS SES</li>
+</ul></div><p></p>
+<h2 class="heading"><span id="configure"></span><a href="#configure">Configure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><p>The following key properties need to be configured for this module:</p>
+<ul>
+<li><strong>Domain</strong>: The domain that emails will be sent from. The Email Send module will support sending emails from any possible email address in your chosen domain. For instance, if the domain <code class="inline">mydomain.com</code> is chosen, email addresses such as <code class="inline">support@mydomain.com</code>, <code class="inline">noreply@mydomain.com</code> and <code class="inline">system@mydomain.com</code> are supported.</li>
+<li><strong>Hosted Zone Domain</strong>: A Route 53 hosted zone that will allow adding the <em>Domain</em> as a record. For instance, in order to configure the domain <code class="inline">mydomain.com</code>, the hosted zone <code class="inline">mydomain.com</code> would be valid. For more details, please check <a href="https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration" class="absolute" target="_blank" rel="noopener noreferrer">Hosted Zone Configuration</a> in the Goldstack documentation.</li>
+</ul></div><p></p>
+<h2 class="heading"><span id="getting-started"></span><a href="#getting-started">Getting Started</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><p></p><div class="markdown-fragment"><h3 class="heading"><span id="infrastructure-2"></span><a href="#infrastructure-2"><span id="infrastructure-1"></span><a href="#infrastructure-1" class="relative"><span id="infrastructure"></span></a><a href="#infrastructure" class="relative">Infrastructure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>The first thing we recommend to do with a new module is to stand up the infrastructure for the module. For this, find the directory for this module in the <code class="inline">packages/</code> folder and navigate to this folder in the command line. Then identify the name of the deployment you have defined in the Goldstack configuration tool. This can be found in the <code class="inline">packages/[moduleName]/goldstack.json</code> file. Look for the <code class="inline">"deployments"</code> property and there for the <code class="inline">"name"</code> of the first deployment. The name should either be <code class="inline">dev</code> or <code class="inline">prod</code>.</p>
+<p>In order to stand up the infrastructure, run the following command:</p>
+<pre class="language-bash language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra up <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
+</code></pre>
+<p>This will be either <code class="inline">yarn infra up dev</code> or <code class="inline">yarn infra up prod</code> depending on your choice of deployment. Note that running this command can take a while.</p></div><p></p>
+<h3 class="heading"><span id="development-1"></span><a href="#development-1"><span id="development"></span><a href="#development" class="relative">Development</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>See below how this module can be used by other modules (for instance within an <a href="./../modules/lambda-express" class="relative">Express Server</a>).</p>
+<pre class="language-javascript language-javascript"><code class="language-javascript"><span class="token keyword module">import</span> <span class="token punctuation">{</span> connect<span class="token punctuation">,</span> getFromDomain <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'my-email-send-module'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> ses <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> fromDomain <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getFromDomain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">await</span> ses
+  <span class="token punctuation">.</span><span class="token method function property-access">sendEmail</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token maybe-class-name">Destination</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">ToAddresses</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'test@test.com'</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token maybe-class-name">Message</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token maybe-class-name">Subject</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">Charset</span><span class="token punctuation">:</span> <span class="token string">'UTF-8'</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Data</span><span class="token punctuation">:</span> <span class="token string">'Test email'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token maybe-class-name">Body</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token maybe-class-name">Text</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          <span class="token maybe-class-name">Charset</span><span class="token punctuation">:</span> <span class="token string">'UTF-8'</span><span class="token punctuation">,</span>
+          <span class="token maybe-class-name">Data</span><span class="token punctuation">:</span> <span class="token string">'This is the message body in text format.'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token maybe-class-name">Source</span><span class="token punctuation">:</span> <span class="token string">'sender@'</span> <span class="token operator">+</span> fromDomain<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">promise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Note it is also possible to add additional files into the <code class="inline">src/</code> directory of this module. This can be a good place to implement an interface specific to your application needs.</p></div><p></p>
+<h2 class="heading"><span id="infrastructure-3"></span><a href="#infrastructure-3">Infrastructure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><p>All infrastructure for this module is defined in Terraform. You can find the Terraform files for this module in the directory <code class="inline">[moduleDir]/infra/aws</code>. You can define multiple deployments for this module, for instance for development, staging and production environments.</p>
+<p>If you configured AWS deployment before downloading your project, the deployments and their respective configurations are defined in <code class="inline">[moduleDir]/goldstack.json</code>.</p>
+<p>The configuration tool will define one deployment. This will be either <code class="inline">dev</code> or <code class="inline">prod</code> depending on your choice during project configuration. In the example <code class="inline">goldstack.json</code> below, a deployment with the name <code class="inline">dev</code> is defined.</p>
+<pre class="language-json language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"$schema"</span><span class="token operator">:</span> <span class="token string">"./schemas/package.schema.json"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
+  <span class="token property">"template"</span><span class="token operator">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
+  <span class="token property">"templateVersion"</span><span class="token operator">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
+  <span class="token property">"configuration"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"deployments"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"dev"</span><span class="token punctuation">,</span>
+      <span class="token property">"awsRegion"</span><span class="token operator">:</span> <span class="token string">"us-west-2"</span><span class="token punctuation">,</span>
+      <span class="token property">"awsUser"</span><span class="token operator">:</span> <span class="token string">"awsUser"</span><span class="token punctuation">,</span>
+      <span class="token property">"configuration"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        ...
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 class="heading"><span id="infrastructure-commands-1"></span><a href="#infrastructure-commands-1"><span id="infrastructure-commands"></span><a href="#infrastructure-commands" class="relative">Infrastructure Commands</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>Infrastructure commands for this module can be run using <code class="inline">yarn</code>. There are four commands in total:</p>
+<ul>
+<li><code class="inline">yarn infra up</code>: For standing up infrastructure.</li>
+<li><code class="inline">yarn infra init</code>: For <a href="https://www.terraform.io/docs/commands/init.html" class="absolute" target="_blank" rel="noopener noreferrer">initialising Terraform</a>.</li>
+<li><code class="inline">yarn infra plan</code>: For running <a href="https://www.terraform.io/docs/commands/plan.html" class="absolute" target="_blank" rel="noopener noreferrer">Terraform plan</a>.</li>
+<li><code class="inline">yarn infra apply</code>: For running <a href="https://www.terraform.io/docs/commands/apply.html" class="absolute" target="_blank" rel="noopener noreferrer">Terraform apply</a>.</li>
+<li><code class="inline">yarn infra destroy</code>: For destroying all infrastructure using <a href="https://www.terraform.io/docs/commands/destroy.html" class="absolute" target="_blank" rel="noopener noreferrer">Terraform destroy</a>.</li>
+</ul>
+<p>For each command, the deployment they should be applied to must be specified.</p>
+<pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra <span class="token punctuation">[</span>command<span class="token punctuation">]</span> <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
+</code></pre>
+<p>For instance, to stand up the infrastructure for the <code class="inline">dev</code> deployment, the following command would need to be issued:</p>
+<pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra up dev
+</code></pre>
+<p>Generally you will only need to run <code class="inline">yarn infra up</code>. However, if you are familiar with Terraform and want more fine-grained control over the deployment of your infrastructure, you can also use the other commands as required.</p>
+<h3 class="heading"><span id="customizing-terraform-1"></span><a href="#customizing-terraform-1"><span id="customizing-terraform"></span><a href="#customizing-terraform" class="relative">Customizing Terraform</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>Goldstack modules make it very easy to customize infrastructure to your specific needs. The easiest way to do this is to simply edit the <code class="inline">*.tf</code> files in the <code class="inline">infra/aws</code> folder. You can make the changes you need and then run <code class="inline">yarn infra up [deploymentName]</code> to apply the changes.</p>
+<p>The <code class="inline">infra/aws</code> folder contains a file <code class="inline">variables.tf</code> that contains the variables required for your deployment; for instance the domain name for a website. The values for these variables are defined in the module's <code class="inline">goldstack.json</code> file in the <code class="inline">"configuration"</code> property. There is one global <code class="inline">configuration</code> property that applies for all deployments and each deployment also has its own <code class="inline">configuration</code> property. In order to add a new variable, add the variable to <code class="inline">variables.tf</code> and then add it to the configuration for your module or to the configurations for the deployments.</p>
+<p>Note that due to JavaScript and Terraform using different conventions for naming variables, Goldstack applies a basic transformation to variable names. Camel-case variables names are converted to valid variables names for Terraform by replacing every instance of a capital letter <code class="inline">C</code> with <code class="inline">_c</code> in the variable name. For instance:</p>
+<p><code class="inline">myVariableName</code> in the Goldstack configuration will translate to the Terraform variable <code class="inline">my_variable_name</code> as defined in <code class="inline">variables.tf</code>.</p>
+<h3 class="heading"><span id="terraform-state-1"></span><a href="#terraform-state-1"><span id="terraform-state"></span><a href="#terraform-state" class="relative">Terraform State</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>In order to manage your infrastructure, Terraform maintains a state for each deployment; to calculate required changes when the infrastructure is updated and also for destroying the infrastructure if it is no longer required. Goldstack by default will store the terraform state in the <code class="inline">infra/aws</code> folder as simple files.</p>
+<p>This works well for deploying infrastructure from your local development environment but is not a good choice when building a CI/CD pipeline for the infrastructure definition. In that case, it is better to define <a href="https://www.terraform.io/docs/state/remote.html" class="absolute" target="_blank" rel="noopener noreferrer">Remote State</a>. A popular choice many projects adopt here is to store the <a href="https://www.terraform.io/docs/backends/types/s3.html" class="absolute" target="_blank" rel="noopener noreferrer">state in an S3 bucket</a>. Please see the Terraform documentation for further details.</p></div><p></p>
+<h2 class="heading"><span id="features-1"></span><a href="#features-1">Features</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p>Setting the environment variable <code class="inline">GOLDSTACK_LOG_EMAILS=true</code> will log out all emails that are sent when in local development mode. This can be useful when testing an API server locally or when debugging unit tests.</p>
+<h2 class="heading"><span id="troubleshooting"></span><a href="#troubleshooting">Troubleshooting</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<h3 class="heading"><span id="txt-record-already-exists"></span><a href="#txt-record-already-exists">TXT record already exists</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>
+      </p><div class="card card-bordered bg-soft-info">
+        <div class="card-body">
+        <h5 class="heading"><span id="video-walkthrough"></span><a href="#video-walkthrough">Video Walkthrough</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h5>
+          <div class="card-text">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/TQlIQkM1wms" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div><p></p>
+<p>When running <code class="inline">yarn infra up [deployment]</code> you may receive an error such as the following:</p>
+<pre class="language-bash"><code class="language-bash">Error: <span class="token punctuation">[</span>ERR<span class="token punctuation">]</span>: Error building changeset: InvalidChangeBatch: <span class="token punctuation">[</span>Tried to create resource record <span class="token builtin class-name">set</span> <span class="token punctuation">[</span>name<span class="token operator">=</span><span class="token string">'yourdomain.com.'</span>, <span class="token assign-left variable">type</span><span class="token operator">=</span><span class="token string">'TXT'</span><span class="token punctuation">]</span> but it already exists<span class="token punctuation">]</span>
+        status code: <span class="token number">400</span>, request id: xxxx
+
+  on main.tf line <span class="token number">45</span>, <span class="token keyword">in</span> resource <span class="token string">"aws_route53_record"</span> <span class="token string">"spf_domain"</span><span class="token builtin class-name">:</span>
+  <span class="token number">45</span>: resource <span class="token string">"aws_route53_record"</span> <span class="token string">"spf_domain"</span> <span class="token punctuation">{</span>
+</code></pre>
+<p>This error is reported when a TXT record for your specified domain already exists. Often other services such as G Suite set TXT records that conflict with the TXT record that the Email Send module wants to create.</p>
+<h4 class="heading"><span id="workaround"></span><a href="#workaround">Workaround</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<p>The easiest way to circumvent this issue is to do the following:</p>
+<ul>
+<li>Copy the existing TXT record in the Route 53 console and add it to the definition for the TXT record in <code class="inline">infra/aws/main.tf</code>. Make sure that the record is for the correct record name. For instance, if you want to configure email sending for <code class="inline">yourdomain.com</code>, the record name would be exactly <code class="inline">yourdomain.com</code>. The following example shows how we would add a <code class="inline">google-site-verification</code> declaration.</li>
+</ul>
+<pre class="language-bash"><code class="language-bash">resource <span class="token string">"aws_route53_record"</span> <span class="token string">"spf_mail_from"</span> <span class="token punctuation">{</span>
+  zone_id <span class="token operator">=</span> data.aws_route53_zone.main.zone_id
+  name    <span class="token operator">=</span> aws_ses_domain_mail_from.main.mail_from_domain
+  <span class="token builtin class-name">type</span>    <span class="token operator">=</span> <span class="token string">"TXT"</span>
+  ttl     <span class="token operator">=</span> <span class="token string">"600"</span>
+  records <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"v=spf1 include:amazonses.com -all"</span>, <span class="token string">"google-site-verification=xxx"</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>Delete the TXT record in the <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-deleting.html" class="absolute" target="_blank" rel="noopener noreferrer">Route 53 Console</a>. Ensure that you have copied the record successfully before deleting it.</li>
+<li>Now run <code class="inline">yarn infra up prod</code></li>
+</ul>
+<h2 class="heading"><span id="security-hardening"></span><a href="#security-hardening">Security Hardening</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p>This module is already developed following best security practices, including various means to ensure good email deliverability by configuring SPF and DKIM. Further improvements to the security for the email module can generally be made by explicitly granting rights to other components of the system that use this module, such as Lambdas. For further details on how to configure access for sending emails via SES, please see <a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/control-user-access.html" class="absolute" target="_blank" rel="noopener noreferrer">Controlling access to Amazon SES</a> in the AWS SES documentation.</p>

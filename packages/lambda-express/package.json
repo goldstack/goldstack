@@ -1,0 +1,50 @@
+{
+  "name": "@goldstack/lambda-express",
+  "version": "1.0.0",
+  "description": "Express server deployment using AWS Lambda.",
+  "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "dist/src/module.js",
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:pack": "yarn compile && yarn webpack",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc -p tsconfig.json",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "deploy": "yarn build:pack && template deploy \"$@\"",
+    "infra": "template infra \"$@\"",
+    "start": "yarn node dist/local.js",
+    "template": "template",
+    "test": "yarn test:ci --watch",
+    "test:ci": "TEST_SERVER_PORT=5030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=jest.config.js",
+    "watch": "PORT=3030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local nodemon --watch ../../ --ext js,ts --exec 'yarn node dist/src/local.js'"
+  },
+  "dependencies": {
+    "@goldstack/template-lambda-express": "0.3.50",
+    "aws-serverless-express": "^3.3.8",
+    "cors": "^2.8.5",
+    "helmet": "^3.22.0",
+    "source-map-support": "^0.5.19"
+  },
+  "devDependencies": {
+    "@jest-mock/express": "^1.1.7",
+    "@types/aws-serverless-express": "^3.3.3",
+    "@types/express": "^4.17.6",
+    "@types/helmet": "^0.0.47",
+    "@types/jest": "^26.0.21",
+    "@types/node": "^14.0.6",
+    "@types/source-map-support": "^0.5.2",
+    "express": "^4.17.1",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.4",
+    "pnp-webpack-plugin": "^1.6.4",
+    "source-map-loader": "^1.0.1",
+    "supertest": "^4.0.2",
+    "ts-jest": "^26.5.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^4.3.4",
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.12"
+  }
+}

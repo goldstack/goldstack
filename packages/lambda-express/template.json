@@ -1,0 +1,8 @@
+{
+  "templateName": "lambda-express",
+  "templateVersion": "0.1.0",
+  "previousTemplateVersion": "0.0.0",
+  "templateDescription": "An express server that can be deployed on AWS lambda",
+  "templateDocumentation": "https://docs.goldstack.party/docs/modules/lambda-express",
+  "templateArchive": ""
+}
