@@ -11,7 +11,6 @@
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
     }
   ],
-  "rewrites": [],
   "headers": [],
   "dynamicRoutes": [
     {
@@ -122,8 +121,9 @@
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/L1xbs\\-Ms3rv6k\\-CBGAwAY/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/L1xbs\\-Ms3rv6k\\-CBGAwAY/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/dvnhRFglEVprDruCdY4C4/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/dvnhRFglEVprDruCdY4C4/templates/(?<template>[^/]+?)\\.json$"
     }
-  ]
+  ],
+  "rewrites": []
 }
