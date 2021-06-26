@@ -229,7 +229,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     <h2 className="h3 mb-0">UI</h2>
                   </div>
                   <Checkbox
-                    title="NextJs"
+                    title="NextJs 11"
                     element="nextjs"
                     icon={NextjsIcon}
                     disabled={building}
