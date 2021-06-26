@@ -244,6 +244,27 @@
     <span class="token key atrule">AWS_SECRET_ACCESS_KEY</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span>secrets.PROD_AWS_SECRET_ACCESS_KEY<span class="token punctuation">}</span><span class="token punctuation">}</span>
     <span class="token key atrule">AWS_DEFAULT_REGION</span><span class="token punctuation">:</span> us<span class="token punctuation">-</span>west<span class="token punctuation">-</span><span class="token number">2</span>
 </code></pre>
+<h2 class="heading"><span id="troubleshooting-and-frequently-asked-questions"></span><a href="#troubleshooting-and-frequently-asked-questions">Troubleshooting and Frequently Asked Questions</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><h3 class="heading"><span id="dns-name-for-api-cannot-be-resolved-1"></span><a href="#dns-name-for-api-cannot-be-resolved-1"><span id="dns-name-for-api-cannot-be-resolved"></span><a href="#dns-name-for-api-cannot-be-resolved" class="relative">DNS Name for API Cannot be resolved</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>After applying <code class="inline">yarn infra up [deployment]</code> and <code class="inline">yarn deploy [deployment]</code> it is not possible to call the API at <code class="inline">https://[configuration.apiDomain]</code>. An error such as <code class="inline">Address cannot be resolved</code> or <code class="inline">DNSProbe failed</code> is reported.</p>
+<p>This is caused by changes to the deployed DNS hosted zone needing some time to propagate through the DNS network. Wait for 10-30 min and the API should be able to be called without problems. To validate your DNS name has been configured correctly, go to the <a href="https://aws.amazon.com/route53/" class="absolute" target="_blank" rel="noopener noreferrer">AWS Route 53 Console</a>, choose the region you have deployed, and validate there is a correct entry for the hosted zone you have selected. There should be an A entry such as the following:</p>
+<pre><code>[apiDomain].[hostedZone] A [id].cloudfront.net.
+</code></pre></div><p></p>
 <h2 class="heading"><span id="security-hardening"></span><a href="#security-hardening">Security Hardening</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>

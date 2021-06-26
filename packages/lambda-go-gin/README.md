@@ -49,6 +49,10 @@ This will either be `yarn deploy dev` or `yarn deploy prod` depending on your ch
 
 You should now be able to access your API. The domain under which the API is deployed is configured in `goldstack.json` under `"deployments[*].apiDomain"`. You can access this API domain with a browser since the default API provided in the template allows for GET requests to the root.
 
+### Go Development
+
+The easiest way to work with you Go project is by using VSCode. You will need the [golang.go](https://marketplace.visualstudio.com/items?itemName=golang.Go) extension installed. But note that because of a limitation in this extension as of this writing, VSCode must be opened for the folder that contains the Go project. For this go to `File > Open Folder ...` and select the folder of the Go project under the `packages/` directory in the project. For instance `packages/lambda-go-gin`.
+
 ### Extending the API
 
 The lambda exposes a REST API using the [Gin](https://github.com/gin-gonic/gin). The server is defined in the file `server.go`. Simply define additional routes or middleware there. For this, please refer to the Gin documentation.
@@ -156,3 +160,13 @@ This module can be packaged up and deployed to the deployments specified in `gol
 ```bash
 yarn deploy [deploymentName]
 ```
+
+## Troubleshooting and Frequently Asked Questions
+
+### DNS Name for API Cannot be resolved
+
+After applying `yarn infra up [deployment]` and `yarn deploy [deployment]` it is not possible to call the API at `https://[configuration.apiDomain]`. An error such as `Address cannot be resolved` or `DNSProbe failed` is reported.
+
+This is caused by changes to the deployed DNS hosted zone needing some time to propagate through the DNS network. Wait for 10-30 min and the API should be able to be called without problems. To validate your DNS name has been configured correctly, go to the [AWS Route 53 Console](https://aws.amazon.com/route53/), choose the region you have deployed, and validate there is a correct entry for the hosted zone you have selected. There should be an A entry such as the following:
+
+    [apiDomain].[hostedZone] A [id].cloudfront.net.

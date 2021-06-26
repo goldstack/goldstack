@@ -21,7 +21,7 @@
     "watch": "PORT=3030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local nodemon --watch ../../ --ext js,ts --exec 'yarn node dist/src/local.js'"
   },
   "dependencies": {
-    "@goldstack/template-lambda-express": "0.3.48",
+    "@goldstack/template-lambda-express": "0.3.49",
     "aws-serverless-express": "^3.3.8",
     "cors": "^2.8.5",
     "helmet": "^3.22.0",

@@ -63,6 +63,13 @@
 </code></pre>
 <p>This will either be <code class="inline">yarn deploy dev</code> or <code class="inline">yarn deploy prod</code> depending on your choice of deployment during project configuration.</p></div><p></p>
 <p>You should now be able to access your API. The domain under which the API is deployed is configured in <code class="inline">goldstack.json</code> under <code class="inline">"deployments[*].apiDomain"</code>. You can access this API domain with a browser since the default API provided in the template allows for GET requests to the root.</p>
+<h3 class="heading"><span id="go-development"></span><a href="#go-development">Go Development</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>The easiest way to work with you Go project is by using VSCode. You will need the <a href="https://marketplace.visualstudio.com/items?itemName=golang.Go" class="absolute" target="_blank" rel="noopener noreferrer">golang.go</a> extension installed. But note that because of a limitation in this extension as of this writing, VSCode must be opened for the folder that contains the Go project. For this go to <code class="inline">File > Open Folder ...</code> and select the folder of the Go project under the <code class="inline">packages/</code> directory in the project. For instance <code class="inline">packages/lambda-go-gin</code>.</p>
 <h3 class="heading"><span id="extending-the-api"></span><a href="#extending-the-api">Extending the API</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
@@ -185,4 +192,25 @@
 </svg></span></h2>
 <p></p><div class="markdown-fragment"><p>This module can be packaged up and deployed to the deployments specified in <code class="inline">goldstack.json</code>. Note that deployment will only work <em>after</em> the infrastructure for the respective deployment has been stood up. To deploy your module, run the following script:</p>
 <pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> deploy <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
+</code></pre></div><p></p>
+<h2 class="heading"><span id="troubleshooting-and-frequently-asked-questions"></span><a href="#troubleshooting-and-frequently-asked-questions">Troubleshooting and Frequently Asked Questions</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><h3 class="heading"><span id="dns-name-for-api-cannot-be-resolved-1"></span><a href="#dns-name-for-api-cannot-be-resolved-1"><span id="dns-name-for-api-cannot-be-resolved"></span><a href="#dns-name-for-api-cannot-be-resolved" class="relative">DNS Name for API Cannot be resolved</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>After applying <code class="inline">yarn infra up [deployment]</code> and <code class="inline">yarn deploy [deployment]</code> it is not possible to call the API at <code class="inline">https://[configuration.apiDomain]</code>. An error such as <code class="inline">Address cannot be resolved</code> or <code class="inline">DNSProbe failed</code> is reported.</p>
+<p>This is caused by changes to the deployed DNS hosted zone needing some time to propagate through the DNS network. Wait for 10-30 min and the API should be able to be called without problems. To validate your DNS name has been configured correctly, go to the <a href="https://aws.amazon.com/route53/" class="absolute" target="_blank" rel="noopener noreferrer">AWS Route 53 Console</a>, choose the region you have deployed, and validate there is a correct entry for the hosted zone you have selected. There should be an A entry such as the following:</p>
+<pre><code>[apiDomain].[hostedZone] A [id].cloudfront.net.
 </code></pre></div><p></p>

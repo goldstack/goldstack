@@ -24,7 +24,7 @@
   "dependencies": {
     "@goldstack/template-email-send": "0.3.45",
     "@goldstack/utils-git": "0.1.25",
-    "@goldstack/utils-sh": "0.4.8"
+    "@goldstack/utils-sh": "0.4.9"
   },
   "devDependencies": {
     "@types/jest": "^26.0.21",
