@@ -74,30 +74,40 @@ jobs:
 
       # Do this for all before library git push messes with history
       - name: Check if libraries changed
-        uses: marceloprado/has-changed-path@c0d8dcd816c8972e73782b09e0fab8d255db927b
+        uses: marceloprado/has-changed-path@8a75b456df5a44a8110dcaa3111c9acc6249ed15
         id: changed-libs
         with:
-          paths: workspaces/templates-lib
+          paths: .
+        env:
+          SOURCE: workspaces/templates-lib
       - name: Check if templates changed
-        uses: marceloprado/has-changed-path@c0d8dcd816c8972e73782b09e0fab8d255db927b
+        uses: marceloprado/has-changed-path@8a75b456df5a44a8110dcaa3111c9acc6249ed15
         id: changed-templates
         with:
-          paths: workspaces/templates
+          paths: .
+        env:
+          SOURCE: workspaces/templates
       - name: Check if template management changed
-        uses: marceloprado/has-changed-path@c0d8dcd816c8972e73782b09e0fab8d255db927b
+        uses: marceloprado/has-changed-path@8a75b456df5a44a8110dcaa3111c9acc6249ed15
         id: changed-mgmt
         with:
-          paths: workspaces/templates-management
+          paths: .
+        env:
+          SOURCE: workspaces/templates-management
       - name: Check if apps changed
-        uses: marceloprado/has-changed-path@c0d8dcd816c8972e73782b09e0fab8d255db927b
+        uses: marceloprado/has-changed-path@8a75b456df5a44a8110dcaa3111c9acc6249ed15
         id: changed-apps
         with:
-          paths: workspaces/apps
+          paths: .
+        env:
+          SOURCE: workspaces/apps
       - name: Check if docs changed
-        uses: marceloprado/has-changed-path@c0d8dcd816c8972e73782b09e0fab8d255db927b
+        uses: marceloprado/has-changed-path@8a75b456df5a44a8110dcaa3111c9acc6249ed15
         id: changed-docs
         with:
-          paths: workspaces/docs
+          paths: .
+        env:
+          SOURCE: workspaces/docs
 
       - name: Build libraries
         run: |
