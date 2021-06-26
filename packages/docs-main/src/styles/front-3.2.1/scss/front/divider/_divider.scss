@@ -1,0 +1,32 @@
+/*------------------------------------
+  Divider
+------------------------------------*/
+
+.divider {
+  position: relative;
+  display: inline-block;
+  font-size: $divider-font-size;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 50%;
+    content: '';
+  }
+
+  &::before {
+    right: 100%;
+    @include gradient-directional(
+      $start-color: transparent,
+      $end-color: rgba($gray-400, 1)
+    );
+  }
+
+  &::after {
+    left: 100%;
+    @include gradient-directional(
+      $start-color: rgba($gray-400, 1),
+      $end-color: transparent
+    );
+  }
+}

@@ -1,0 +1,16 @@
+//
+// Text Highlight
+//
+
+// Text Highlight
+@mixin text-highlight(
+  $gradient-start-color,
+  $gradient-start-color-value,
+  $gradient-end-color,
+  $gradient-end-color-value
+) {
+  @include gradient-y(
+    $start-color: rgba($gradient-start-color, $gradient-start-color-value),
+    $end-color: rgba($gradient-end-color, $gradient-end-color-value)
+  );
+}

@@ -1,0 +1,59 @@
+/*------------------------------------
+  Default Styles
+------------------------------------*/
+
+main {
+  position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  color: $headings-color;
+}
+
+figure {
+  margin-bottom: 0;
+}
+
+svg {
+  margin-bottom: $svg-negative-margin-bottom;
+  vertical-align: baseline;
+}
+
+sup {
+  right: -0.5rem;
+}
+
+/*------------------------------------
+  Highlight Color
+------------------------------------*/
+
+::-moz-selection {
+  color: $white;
+  background-color: $primary;
+}
+
+::selection {
+  color: $white;
+  background-color: $primary;
+}
+
+.bg-primary ::-moz-selection {
+  color: $primary;
+  background-color: $white;
+}
+
+.bg-primary ::selection {
+  color: $primary;
+  background-color: $white;
+}

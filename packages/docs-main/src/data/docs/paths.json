@@ -1,0 +1,17 @@
+[
+  "/",
+  "goldstack",
+  "goldstack/about",
+  "goldstack/how-does-it-work",
+  "goldstack/configuration",
+  "goldstack/getting-started",
+  "goldstack/security-hardening",
+  "modules",
+  "modules/app-nextjs",
+  "modules/lambda-express",
+  "modules/app-nextjs-bootstrap",
+  "modules/email-send",
+  "modules/static-website-aws",
+  "modules/s3",
+  "modules/lambda-go-gin"
+]

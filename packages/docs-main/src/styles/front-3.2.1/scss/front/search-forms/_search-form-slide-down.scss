@@ -1,0 +1,60 @@
+/*------------------------------------
+  Search Form - Slide Down
+------------------------------------*/
+
+.search-slide-down {
+  position: fixed;
+  z-index: $search-slide-down-z-index;
+  top: $search-slide-down-top-offset;
+  left: calc(50% - 18rem) !important;
+  width: $search-slide-down-width;
+
+  // Small Devices
+  @include media-breakpoint-down(sm) {
+    left: 5% !important;
+    right: 5% !important;
+    width: 90%;
+  }
+
+  &-trigger {
+    &.active {
+      .search-slide-down-trigger-icon {
+        &::before {
+          content: $search-slide-down-trigger-icon-pseudo-content;
+        }
+      }
+    }
+  }
+
+  &-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $search-slide-down-bg-overlay;
+    display: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  .search-slide-down-input {
+    opacity: 0;
+    transform: $search-slide-down-input-transform;
+    transition: $search-slide-down-input-transition;
+  }
+
+  .search-slide-down-suggestions {
+    opacity: 0;
+    transform: $search-slide-down-suggestions-transform;
+    transition: $search-slide-down-suggestions-transition;
+  }
+
+  &-show .search-slide-down-input,
+  &-show .search-slide-down-suggestions {
+    opacity: 1;
+    transform: none;
+  }
+
+  &-show .search-slide-down-suggestions {
+    transition-delay: $search-slide-down-show-suggestions-transition;
+  }
+}

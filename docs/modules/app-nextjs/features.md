@@ -1,0 +1,7 @@
+- Optimised for TypeScript
+- Configured for unit testing using Jest and React Testing library
+- Scalable AWS infrastructure defined in Terraform; all content served through the powerful CloudFront CDN and stored in S3 at very low costs. This [blog article](https://simonecarletti.com/blog/2016/08/redirect-domain-https-amazon-cloudfront/) shows how a similar setup could be created manually.
+- Full support for SSL - using free certificates issued by AWS.
+- CDN caching optimised for Next.js (e.g. all files in `_next/static` are automatically cached on the CDN and the client)
+- Configurable with your own domain name
+- Rolling out of infrastructure and deployment supported through easy to use scripts

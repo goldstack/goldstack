@@ -1,0 +1,43 @@
+/*------------------------------------
+  Slick
+------------------------------------*/
+
+.slick-cloned [data-hs-slick-carousel-slide-animated-element-animation] {
+  opacity: 0;
+}
+
+.slick {
+  background: $slick-bg-preloader;
+
+  .js-next,
+  .js-prev {
+    opacity: 0;
+  }
+
+  &.slick-initialized {
+    background: none;
+
+    .js-slide,
+    .js-thumb {
+      visibility: visible;
+      height: auto;
+      overflow: visible;
+    }
+
+    .js-next,
+    .js-prev {
+      opacity: 1;
+    }
+  }
+
+  .js-slide,
+  .js-thumb {
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+
+    &:first-child {
+      height: auto;
+    }
+  }
+}

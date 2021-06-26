@@ -1,0 +1,18 @@
+/*------------------------------------
+  Checkbox Outline
+------------------------------------*/
+
+.checkbox-outline {
+  padding-left: 0;
+  margin-right: 0;
+
+  &-label {
+    border: $checkbox-outline-border-width $checkbox-outline-border-type
+      $checkbox-outline-border-color;
+    cursor: pointer;
+  }
+
+  &-input:checked ~ &-label {
+    border-color: $checkbox-outline-input-checked-border-color;
+  }
+}

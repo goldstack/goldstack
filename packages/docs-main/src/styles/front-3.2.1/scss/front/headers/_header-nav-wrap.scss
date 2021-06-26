@@ -1,0 +1,68 @@
+/*------------------------------------
+  Nav Wrap
+------------------------------------*/
+
+.navbar-nav-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      &#{$infix} {
+        .navbar-nav-wrap {
+          justify-content: space-between;
+
+          &-content {
+            order: 3;
+          }
+
+          &-toggler {
+            order: 3;
+            text-align: right;
+          }
+
+          &-collapse {
+            order: 2;
+          }
+        }
+      }
+    }
+  }
+}
+
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-down($breakpoint) {
+        .navbar-nav-wrap {
+          justify-content: flex-end;
+
+          &-brand {
+            margin-right: auto;
+          }
+
+          &-content {
+            text-align: center;
+            margin-right: $header-nav-wrap-content-margin-x;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-between(md, md) {
+  .navbar-expand-md .navbar-nav-wrap-brand {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

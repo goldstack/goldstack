@@ -1,0 +1,93 @@
+/*------------------------------------
+  Dropdown
+------------------------------------*/
+
+/* Menu */
+.dropdown-menu {
+  box-shadow: $dropdown-box-shadow;
+}
+
+.dropdown-header {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+}
+
+/* Nav Link */
+.dropdown-nav-link {
+  color: $dropdown-link-color;
+  font-size: $dropdown-link-font-size;
+
+  &:hover {
+    color: $dropdown-link-hover-color;
+  }
+}
+
+/* Item */
+.dropdown-item {
+  font-size: $dropdown-item-font-size;
+
+  &:hover {
+    color: $dropdown-item-hover-color;
+  }
+
+  &.active {
+    color: $dropdown-item-active-color;
+  }
+
+  &-icon {
+    display: inline-block;
+    text-align: center;
+    opacity: $dropdown-icon-opacity;
+    font-size: $dropdown-icon-font-size;
+    min-width: $dropdown-icon-width;
+    max-width: $dropdown-icon-width;
+    margin-right: $dropdown-icon-margin-x;
+  }
+}
+
+/* Toggle */
+.dropdown-toggle {
+  &::after {
+    display: inline-block;
+    font-family: $dropdown-toggle-pseudo-font-family;
+    font-size: $dropdown-toggle-pseudo-font-size;
+    font-weight: 900;
+    content: $dropdown-toggle-pseudo-content;
+    margin-left: $dropdown-toggle-pseudo-margin-x;
+  }
+
+  &-collapse {
+    &::after {
+      transition: $dropdown-toggle-arrow-transition;
+    }
+
+    &[aria-expanded='true'] {
+      &::after {
+        transform: $dropdown-toggle-arrow-collapse-rotation;
+      }
+    }
+  }
+}
+
+/* Card */
+.dropdown-card {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Dropdown Positions */
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .dropdown-menu#{$infix}-top {
+      top: 0;
+    }
+
+    .dropdown-menu#{$infix}-bottom {
+      top: auto;
+      bottom: 0;
+    }
+  }
+}

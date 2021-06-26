@@ -1,0 +1,53 @@
+/*------------------------------------
+  Custom Buttons
+------------------------------------*/
+
+// White Button
+.btn-white {
+  font-weight: $btn-white-font-weight;
+  background-color: $btn-white-bg-color;
+  border-color: $btn-white-border-color;
+
+  &:hover,
+  &:focus,
+  &.focus,
+  &:active,
+  &.active {
+    color: $btn-white-hover-color;
+    box-shadow: $btn-white-box-shadow-hover;
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $btn-white-disabled-color;
+    background-color: $btn-white-bg-disabled-color;
+  }
+}
+
+@each $color, $value in $theme-colors {
+  /* #{$color} button :hover, :focus, :active effects */
+  .btn-#{$color} {
+    &[href],
+    &[type] {
+      &:hover,
+      &:focus,
+      &:active {
+        box-shadow: $btn-box-shadow-value rgba($value, 0.35);
+      }
+    }
+
+    &:not(label.btn),
+    &:not([href]) {
+      &,
+      &:not([href]):not(:disabled):not(.disabled) {
+        background-color: $value;
+        border-color: $value;
+      }
+    }
+  }
+
+  .btn-#{$color}:hover {
+    background-color: $value;
+    border-color: $value;
+  }
+}

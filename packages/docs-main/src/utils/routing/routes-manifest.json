@@ -1,0 +1,100 @@
+{
+  "version": 3,
+  "pages404": true,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "rewrites": [],
+  "headers": [],
+  "dynamicRoutes": [
+    {
+      "page": "/404",
+      "regex": "^\\/404$"
+    },
+    {
+      "page": "/docs",
+      "regex": "^\\/docs$"
+    },
+    {
+      "page": "/docs/goldstack",
+      "regex": "^\\/docs\\/goldstack$"
+    },
+    {
+      "page": "/docs/goldstack/about",
+      "regex": "^\\/docs\\/goldstack\\/about$"
+    },
+    {
+      "page": "/docs/goldstack/configuration",
+      "regex": "^\\/docs\\/goldstack\\/configuration$"
+    },
+    {
+      "page": "/docs/goldstack/getting-started",
+      "regex": "^\\/docs\\/goldstack\\/getting-started$"
+    },
+    {
+      "page": "/docs/goldstack/how-does-it-work",
+      "regex": "^\\/docs\\/goldstack\\/how-does-it-work$"
+    },
+    {
+      "page": "/docs/goldstack/security-hardening",
+      "regex": "^\\/docs\\/goldstack\\/security-hardening$"
+    },
+    {
+      "page": "/docs/modules",
+      "regex": "^\\/docs\\/modules$"
+    },
+    {
+      "page": "/docs/modules/app-nextjs-bootstrap",
+      "regex": "^\\/docs\\/modules\\/app-nextjs-bootstrap$"
+    },
+    {
+      "page": "/docs/modules/app-nextjs",
+      "regex": "^\\/docs\\/modules\\/app-nextjs$"
+    },
+    {
+      "page": "/docs/modules/email-send",
+      "regex": "^\\/docs\\/modules\\/email-send$"
+    },
+    {
+      "page": "/docs/modules/lambda-express",
+      "regex": "^\\/docs\\/modules\\/lambda-express$"
+    },
+    {
+      "page": "/docs/modules/s3",
+      "regex": "^\\/docs\\/modules\\/s3$"
+    },
+    {
+      "page": "/docs/modules/static-website-aws",
+      "regex": "^\\/docs\\/modules\\/static-website-aws$"
+    },
+    {
+      "page": "/index",
+      "regex": "^\\/index$"
+    },
+    {
+      "page": "/docs/[...slug]",
+      "regex": "^/docs/(.+?)(?:/)?$",
+      "routeKeys": {
+        "slug": "slug"
+      },
+      "namedRegex": "^/docs/(?<slug>.+?)(?:/)?$"
+    }
+  ],
+  "dataRoutes": [
+    {
+      "page": "/docs/[...slug]",
+      "routeKeys": {
+        "slug": "slug"
+      },
+      "dataRouteRegex": "^/_next/data/2pZdLtwD1nR1uHbiis2so/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/2pZdLtwD1nR1uHbiis2so/docs/(?<slug>.+?)\\.json$"
+    }
+  ]
+}

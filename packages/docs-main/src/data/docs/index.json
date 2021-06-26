@@ -1,0 +1,7 @@
+{
+  "html": "<p>Welcome to the Goldstack documentation 👋.</p>\n<p>Goldstack provides high-quality starter projects that contain modules for all layers of the stack. To learn more about Goldstack please see:</p>\n<ul>\n<li><a href=\"./docs/goldstack/about\" class=\"relative\">About</a></li>\n<li><a href=\"./docs/goldstack/how-does-it-work\" class=\"relative\">How does it work</a></li>\n<li><a href=\"./docs/goldstack/getting-started\" class=\"relative\">Getting Started</a></li>\n</ul>",
+  "data": {
+    "id": "docs-home",
+    "title": "Goldstack Documentation"
+  }
+}

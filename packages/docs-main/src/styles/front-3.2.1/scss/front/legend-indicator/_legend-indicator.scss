@@ -1,0 +1,12 @@
+/*------------------------------------
+  Legend Indicator
+------------------------------------*/
+
+.legend-indicator {
+  display: inline-block;
+  width: $legend-indicator-width;
+  height: $legend-indicator-height;
+  background-color: $legend-indicator-bg-color;
+  @include border-radius($legend-indicator-border-radius);
+  margin-right: $legend-indicator-margin-x;
+}

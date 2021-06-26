@@ -1,0 +1,23 @@
+/*------------------------------------
+  Checkbox Icon
+------------------------------------*/
+
+.checkbox-icon {
+  &-label::after {
+    position: absolute;
+    top: $checkbox-icon-label-psuedo-top-offset;
+    right: $checkbox-icon-label-psuedo-right-offset;
+    color: $checkbox-icon-label-psuedo-color;
+    font-family: $checkbox-icon-label-psuedo-font-family;
+    font-weight: 900;
+    line-height: normal;
+    content: $checkbox-icon-label-psuedo-content;
+  }
+
+  &-input:checked ~ &-label {
+    &::after {
+      color: $checkbox-icon-label-psuedo-active-color;
+      border-color: $checkbox-outline-input-checked-border-color;
+    }
+  }
+}

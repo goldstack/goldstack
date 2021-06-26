@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+require('source-map-support').install();
+
+require('../dist/markdownDocsCliRun.js')
+  .run()
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
+  .then(() => {
+    // all good
+  });

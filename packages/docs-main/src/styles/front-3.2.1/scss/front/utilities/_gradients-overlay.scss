@@ -1,0 +1,76 @@
+/*------------------------------------
+  Background Overlay Gradients
+------------------------------------*/
+
+[class*='gradient-x-overlay-'],
+[class*='gradient-y-overlay-'] {
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    content: '';
+  }
+}
+
+.gradient-x-overlay-lg-navy-video {
+  &::before {
+    z-index: 2;
+    @include gradient-x(
+      $start-color: rgba($gradient-navy, 0.95),
+      $end-color: rgba($gradient-navy, 0.95)
+    );
+  }
+}
+
+.gradient-x-overlay-sm-navy {
+  &::before {
+    @include gradient-x(
+      $start-color: rgba($gradient-navy, 0.25),
+      $end-color: rgba($gradient-dark, 0.25)
+    );
+  }
+}
+
+.gradient-x-overlay-lg-navy {
+  &::before {
+    @include gradient-x(
+      $start-color: rgba($gradient-navy, 0.9),
+      $end-color: rgba($gradient-navy, 0.9)
+    );
+  }
+}
+
+.gradient-x-overlay-sm-indigo {
+  &::before {
+    @include gradient-directional(
+      $start-color: transparent,
+      $end-color: rgba($gradient-indigo, 0.05)
+    );
+  }
+}
+
+.gradient-y-overlay-sm-dark {
+  &::before {
+    @include gradient-y(
+      $start-color: rgba($gradient-dark, 0.3),
+      $end-color: rgba($gradient-navy, 0.2)
+    );
+  }
+}
+
+.gradient-y-overlay-lg-white {
+  &::before {
+    @include gradient-y(
+      $start-color: $gradient-white,
+      $end-color: rgba($gradient-white, 0.9)
+    );
+  }
+}

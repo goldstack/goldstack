@@ -1,0 +1,51 @@
+/*------------------------------------
+  Slick Pagination Line
+------------------------------------*/
+
+.slick-pagination-line {
+  .slick-slide {
+    opacity: 0.5;
+    cursor: pointer;
+    font-weight: $slick-pagination-line-font-weight;
+    padding-bottom: $slick-pagination-line-padding-y;
+
+    &.slick-current {
+      opacity: 1;
+    }
+  }
+
+  &-progress {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: $slick-pagination-line-progress-height;
+    background-color: $slick-pagination-line-progress-bg-color;
+    margin-top: $slick-pagination-line-progress-margin-y;
+  }
+
+  &-progress-helper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 100%;
+    transition: none;
+  }
+
+  &.slick-dots-ready .slick-current .slick-pagination-line-progress-helper {
+    width: 100%;
+    background-color: $slick-pagination-line-progress-active-bg-color;
+    transition-property: width;
+    transition-timing-function: linear;
+  }
+}
+
+// Large Devices
+@include media-breakpoint-down(md) {
+  .slick-pagination-line-wrapper {
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+}

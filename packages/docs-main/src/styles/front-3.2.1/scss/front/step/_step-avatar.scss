@@ -1,0 +1,35 @@
+/*------------------------------------
+  Step Avatar
+------------------------------------*/
+
+.step {
+  .step-avatar {
+    display: inline-flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    font-size: $step-avatar-font-size;
+    font-weight: $step-avatar-font-weight;
+    width: $step-avatar-width;
+    height: $step-avatar-height;
+    @include border-radius($step-avatar-border-radius);
+    margin-right: $step-avatar-margin-x;
+
+    &-img {
+      max-width: 100%;
+      height: auto;
+      @include border-radius($step-avatar-border-radius);
+    }
+
+    &::after {
+      position: absolute;
+      top: $step-avatar-height + $step-padding-x / 2;
+      left: $step-avatar-width / 2;
+      height: calc(
+        100% - #{$step-avatar-height + $step-padding-x / 2 - $step-padding-x}
+      );
+      border-left: $step-border-width $step-border-type $step-border-color;
+      content: '';
+    }
+  }
+}

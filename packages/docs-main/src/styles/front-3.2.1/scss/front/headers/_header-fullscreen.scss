@@ -1,0 +1,110 @@
+/*------------------------------------
+  Fullscreen
+------------------------------------*/
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+
+  &-container,
+  &-overlay {
+    transition: opacity $fullscreen-transition,
+      visibility $fullscreen-transition;
+  }
+
+  &-container {
+    position: relative;
+    z-index: $fullscreen-container-z-index;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $fullscreen-z-index;
+    opacity: 0;
+    visibility: hidden;
+    @include gradient-x(
+      $start-color: rgba($gradient-navy, 0.9),
+      $end-color: rgba($gradient-navy, 0.9)
+    );
+    transition-delay: $fullscreen-overlay-transition-delay;
+  }
+
+  &-body {
+    max-height: $fullscreen-height;
+    overflow: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: $scrollbar-width;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar-bg-color;
+      visibility: hidden;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        visibility: visible;
+      }
+    }
+  }
+
+  &.fullscreen-showed {
+    visibility: visible;
+
+    .fullscreen-container,
+    .fullscreen-overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .fullscreen-overlay {
+      transition-delay: 0s;
+    }
+
+    .fullscreen-container {
+      transition-delay: $fullscreen-container-transition-delay;
+    }
+  }
+}
+
+// Toggler
+.header {
+  .fullscreen-toggler.navbar-toggler {
+    display: inline-flex;
+    z-index: $fullscreen-toggler-z-index;
+
+    .navbar-toggler-default {
+      display: flex;
+    }
+
+    .navbar-toggler-toggled {
+      display: none;
+    }
+
+    &[aria-pressed='true'] {
+      .navbar-toggler-default {
+        display: none;
+      }
+
+      .navbar-toggler-toggled {
+        display: flex;
+      }
+    }
+  }
+}

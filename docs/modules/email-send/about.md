@@ -1,0 +1,1 @@
+The Email Send module provides a means to send emails from an application. It provides the infrastructure for email sending using [AWS Simple Email Service](https://aws.amazon.com/ses/) and provides a simple API for sending emails.

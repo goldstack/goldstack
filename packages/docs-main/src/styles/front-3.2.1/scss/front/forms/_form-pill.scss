@@ -1,0 +1,55 @@
+/*------------------------------------
+  Form Pill
+------------------------------------*/
+
+.input-group-pill {
+  @include border-radius($input-pill-border-radius);
+
+  > .form-control {
+    &:first-child {
+      @include border-left-radius($input-pill-border-radius);
+    }
+
+    &:last-child {
+      @include border-right-radius($input-pill-border-radius);
+    }
+  }
+
+  > .input-group-prepend {
+    > .btn {
+      @include border-left-radius($input-pill-border-radius);
+    }
+  }
+
+  > .input-group-append {
+    > .btn {
+      @include border-right-radius($input-pill-border-radius);
+    }
+  }
+
+  &.input-group-merge {
+    .form-control:not(:last-child) {
+      @include border-right-radius($input-pill-border-radius);
+    }
+
+    .input-group-prepend {
+      > .input-group-text,
+      > .btn {
+        @include border-left-radius($input-pill-border-radius);
+      }
+    }
+  }
+
+  &.input-group-merge {
+    .form-control:not(:first-child) {
+      @include border-left-radius($input-pill-border-radius);
+    }
+
+    .input-group-append {
+      > .input-group-text,
+      > .btn {
+        @include border-right-radius($input-pill-border-radius);
+      }
+    }
+  }
+}

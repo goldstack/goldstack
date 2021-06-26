@@ -1,0 +1,52 @@
+/*------------------------------------
+  Avatar Group
+------------------------------------*/
+
+.avatar-group {
+  display: flex;
+
+  .avatar-circle .avatar-initials {
+    @include border-radius($avatar-circle-border-radius);
+  }
+
+  .avatar-xs .avatar-img,
+  .avatar-xs .avatar-initials,
+  .avatar-sm .avatar-img,
+  .avatar-sm .avatar-initials,
+  .avatar .avatar-img,
+  .avatar .avatar-initials {
+    border: $avatar-border-width $avatar-border-type $avatar-border-color;
+  }
+
+  .avatar-lg .avatar-img,
+  .avatar-lg .avatar-initials {
+    border: $avatar-border-width-lg $avatar-border-type-lg
+      $avatar-border-color-lg;
+  }
+
+  .avatar-xl .avatar-img,
+  .avatar-xl .avatar-initials {
+    border: $avatar-border-width-xl $avatar-border-type-xl
+      $avatar-border-color-xl;
+  }
+
+  .avatar + .avatar {
+    margin-left: $avatar-group-margin-x;
+  }
+
+  .avatar-xs + .avatar-xs {
+    margin-left: $avatar-group-margin-x-xs;
+  }
+
+  .avatar-sm + .avatar-sm {
+    margin-left: $avatar-group-margin-x-sm;
+  }
+
+  .avatar-lg + .avatar-lg {
+    margin-left: $avatar-group-margin-x-lg;
+  }
+
+  .avatar-xl + .avatar-xl {
+    margin-left: $avatar-group-margin-x-xl;
+  }
+}

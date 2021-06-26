@@ -1,0 +1,4 @@
+.next/
+webDist/
+out/
+.env.production

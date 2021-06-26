@@ -1,0 +1,48 @@
+/*------------------------------------
+  Step
+------------------------------------*/
+
+.step {
+  position: relative;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-right: -$step-margin-x;
+  margin-left: -$step-margin-x;
+
+  &.step-dashed {
+    .step-icon::after {
+      border-left-style: $step-dashed-border-type;
+    }
+  }
+
+  &-border-last-0 {
+    .step-item:last-child {
+      .step-icon::after {
+        display: none;
+      }
+    }
+  }
+
+  .step-item {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 0;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-right: $step-padding-x;
+    padding-left: $step-padding-x;
+    margin-bottom: $step-item-margin-y;
+  }
+
+  .step-content-wrapper {
+    position: relative;
+    display: flex;
+    width: 100%;
+  }
+
+  .step-content {
+    flex: 1;
+  }
+}

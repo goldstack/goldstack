@@ -1,0 +1,21 @@
+/*------------------------------------
+  Step Dots
+------------------------------------*/
+
+.step-dots {
+  position: relative;
+
+  @include media-breakpoint-up(md) {
+    &::after {
+      position: absolute;
+      right: -($step-dots-width - 0.25rem);
+      top: 50%;
+      width: $step-dots-width;
+      height: $step-dots-height;
+      background-image: $step-dots-bg;
+      background-repeat: no-repeat;
+      content: '';
+      margin-top: -($step-dots-height / 2);
+    }
+  }
+}

@@ -1,0 +1,11 @@
+/*------------------------------------
+  Header On Scroll
+------------------------------------*/
+
+.header-white-bg-on-scroll {
+  &.scrolled {
+    .header-section {
+      background-color: $header-section-bg-color;
+    }
+  }
+}

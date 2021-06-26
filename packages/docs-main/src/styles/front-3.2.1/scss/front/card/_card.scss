@@ -1,0 +1,225 @@
+/*------------------------------------
+  Card
+------------------------------------*/
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $prop, $abbrev in (column-count: cc) {
+      @each $card-count, $length in $card-count {
+        .card#{$infix}-#{$card-count}-count {
+          #{$prop}: $length;
+        }
+      }
+    }
+
+    @each $prop, $abbrev in (column-gap: cg) {
+      @each $card-gap-sizes, $gap in $card-gap-sizes {
+        .card#{$infix}-#{$card-gap-sizes}-gap {
+          #{$prop}: $gap;
+        }
+      }
+    }
+
+    .card#{$infix}-columns {
+      orphans: 1;
+      widows: 1;
+
+      .card {
+        display: inline-block; // Don't let them vertically span multiple columns
+        width: 100%; // Don't let their width change
+      }
+    }
+  }
+}
+
+.card {
+  border-width: 0;
+  box-shadow: $card-box-shadow;
+
+  &-title {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  &-subtitle {
+    display: block;
+    color: $card-subtitle-color;
+    font-weight: $card-subtitle-font-weight;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing;
+    margin-top: 0;
+    margin-bottom: $card-subtitle-margin-y;
+  }
+
+  &-text {
+    display: block;
+    color: $card-text-color;
+  }
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: $card-header-padding-y;
+  padding-bottom: $card-header-padding-y;
+
+  &-title {
+    margin-bottom: 0;
+  }
+}
+
+.card-footer {
+  padding-top: $card-footer-padding-y;
+  padding-bottom: $card-footer-padding-y;
+}
+
+@include media-breakpoint-up(sm) {
+  .card-group > .card + .card {
+    border-left: $card-border-width solid $card-border-color;
+  }
+}
+
+/* Background Color */
+.card-bg-light {
+  background-color: $card-bg-light;
+
+  &:hover {
+    background-color: $card-bg-light-hover;
+  }
+}
+
+/* Frame */
+.card-frame {
+  border: $card-frame-border-width $card-frame-border-type
+    $card-frame-border-color;
+  box-shadow: none;
+  transition: $card-frame-transition;
+
+  &-highlighted,
+  &:hover {
+    border-color: $card-frame-hover-border-color;
+  }
+}
+
+/* Shadow On Hover */
+.card-hover-shadow {
+  transition: $card-hover-shadow-transition;
+
+  &:hover {
+    box-shadow: $card-hover-shadow-box-shadow;
+  }
+}
+
+/* Collapse */
+.card {
+  &-collapse {
+    padding: 0;
+    transition: $card-collapse-transition;
+
+    &:hover {
+      background-color: $card-collapse-hover-bg-color;
+    }
+
+    .card-body {
+      color: $card-body-color;
+    }
+  }
+
+  // Collapsed active option
+  &-btn {
+    color: $card-btn-color;
+    text-align: left;
+    white-space: inherit;
+
+    &-toggle {
+      display: inline-block;
+      color: $card-btn-arrow-color;
+
+      &-default {
+        display: none;
+      }
+
+      &-active {
+        display: block;
+      }
+    }
+
+    &.collapsed {
+      .card-btn-toggle-default {
+        display: block;
+      }
+
+      .card-btn-toggle-active {
+        display: none;
+      }
+    }
+  }
+}
+
+.card-body-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Dashed */
+.card-dashed {
+  border-width: 0;
+  min-height: $card-dashed-min-height;
+
+  &:hover {
+    border-color: $card-frame-hover-border-color;
+
+    .card-dashed-body {
+      color: $card-dashed-body-text-hover-color;
+    }
+  }
+
+  .card-dashed-body {
+    color: $card-dashed-body-text-color;
+    border: $card-border-width dashed darken($card-border-color, 5%);
+    @include border-radius($card-border-radius);
+    transition: $card-dashed-body-transition;
+  }
+}
+
+/* Bordered */
+.card-bordered {
+  border-width: $card-border-width;
+  box-shadow: none;
+}
+
+/* IE image rendering fix */
+.card-img-top,
+.card-img-bottom {
+  min-height: 1px;
+}
+
+/* Table */
+.card {
+  .table {
+    margin-bottom: 1px;
+
+    th,
+    td {
+      padding-right: $card-spacer-x;
+      padding-left: $card-spacer-x;
+    }
+  }
+
+  .table-thead-bordered {
+    margin-top: -$table-border-width;
+  }
+}
+
+/* Dropdown */
+.card-dropdown {
+  position: absolute;
+  top: $card-dropdown-top-offset;
+  right: $card-dropdown-right-offset;
+}

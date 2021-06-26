@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+require('source-map-support').install();
+
+require('../dist/utilsDocsCliRun.js')
+  .run()
+  .catch((e) => {
+    console.error(e);
+  })
+  .then(() => {
+    // all good
+  });

@@ -1,0 +1,40 @@
+/*------------------------------------
+  Slick Pagination Interactive
+------------------------------------*/
+
+.slick-pagination-interactive {
+  &-title {
+    color: $slick-pagination-interactive-title-color;
+  }
+
+  &-text {
+    color: $slick-pagination-interactive-text-color;
+  }
+
+  .slick-slide {
+    cursor: pointer;
+    color: $slick-pagination-interactive-slide-color;
+    background-color: $slick-pagination-interactive-slide-bg-color;
+    transition: $slick-pagination-interactive-slide-transition;
+
+    &:hover {
+      background-color: $slick-pagination-interactive-slide-hover-bg-color;
+
+      &.slick-center {
+        background-color: $slick-pagination-interactive-active-bg-color;
+      }
+    }
+  }
+
+  .slick-center {
+    background-color: $slick-pagination-interactive-active-bg-color;
+
+    .slick-pagination-interactive-title {
+      color: $slick-pagination-interactive-active-title-color;
+    }
+
+    .slick-pagination-interactive-text {
+      color: $slick-pagination-interactive-active-text-color;
+    }
+  }
+}

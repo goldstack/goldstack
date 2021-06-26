@@ -1,0 +1,43 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "app-nextjs-bootstrap",
+  "template": "app-nextjs-bootstrap",
+  "templateVersion": "0.1.8",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "dev",
+      "configuration": {
+        "hostedZoneDomain": "dev.goldstack.party",
+        "websiteDomain": "docs.dev.goldstack.party",
+        "websiteDomainRedirect": "www.docs.dev.goldstack.party",
+        "defaultCacheDuration": 10,
+        "environmentVariables": [
+          {
+            "name": "NEXT_PUBLIC_GOLDSTACK_HOME",
+            "value": "https://dev.goldstack.party"
+          }
+        ]
+      },
+      "awsUser": "goldstack-dev",
+      "awsRegion": "us-west-2"
+    },
+    {
+      "name": "prod",
+      "configuration": {
+        "hostedZoneDomain": "goldstack.party",
+        "websiteDomain": "docs.goldstack.party",
+        "websiteDomainRedirect": "www.docs.goldstack.party",
+        "defaultCacheDuration": 10,
+        "environmentVariables": [
+          {
+            "name": "NEXT_PUBLIC_GOLDSTACK_HOME",
+            "value": "https://goldstack.party"
+          }
+        ]
+      },
+      "awsUser": "goldstack-prod",
+      "awsRegion": "us-west-2"
+    }
+  ]
+}

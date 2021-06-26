@@ -1,0 +1,28 @@
+/*------------------------------------
+  Dropdown Sizes
+------------------------------------*/
+
+// Small Devices
+@include media-breakpoint-up(sm) {
+  .dropdown-menu-size-md {
+    width: 440px;
+  }
+
+  .dropdown-menu-size-lg {
+    width: 340px;
+  }
+}
+
+// Medium Devices
+@include media-breakpoint-up(md) {
+  .dropdown-menu-size-lg {
+    width: 440px;
+  }
+}
+
+// Large Devices
+@include media-breakpoint-up(lg) {
+  .dropdown-menu-size-lg {
+    width: 740px;
+  }
+}

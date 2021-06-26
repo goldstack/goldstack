@@ -1,0 +1,17 @@
+/*------------------------------------
+  Icon
+------------------------------------*/
+
+@each $color, $value in $theme-colors {
+  /* #{$color} */
+  .icon-#{$color} {
+    @include icon($value, $value, $value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  /* #{$color} soft */
+  .icon-soft-#{$color} {
+    @include icon-soft($value, $value);
+  }
+}

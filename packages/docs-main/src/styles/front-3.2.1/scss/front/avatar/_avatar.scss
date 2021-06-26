@@ -1,0 +1,41 @@
+/*------------------------------------
+  Avatar
+------------------------------------*/
+
+.avatar {
+  position: relative;
+  display: inline-block;
+  width: $avatar-width;
+  height: $avatar-height;
+  @include border-radius($avatar-img-border-radius);
+
+  &-img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include border-radius($avatar-img-border-radius);
+  }
+
+  &-initials {
+    font-size: $avatar-font-size;
+    font-weight: $avatar-font-weight;
+  }
+
+  &-circle {
+    @include border-radius($avatar-circle-border-radius);
+
+    .avatar-img {
+      @include border-radius($avatar-circle-border-radius);
+    }
+  }
+
+  &-centered {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.avatar-border-lg {
+  border: $avatar-border-lg-width $avatar-border-lg-type $avatar-border-lg-color;
+}

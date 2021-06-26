@@ -1,0 +1,31 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "goldstack-cdn",
+  "template": "static-website-aws",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "dev",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "defaultCacheDuration": 1,
+        "hostedZoneDomain": "dev.goldstack.party",
+        "websiteDomain": "cdn.dev.goldstack.party",
+        "websiteDomainRedirect": "www.cdn.dev.goldstack.party"
+      }
+    },
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-prod",
+      "configuration": {
+        "defaultCacheDuration": 1,
+        "hostedZoneDomain": "goldstack.party",
+        "websiteDomain": "cdn.goldstack.party",
+        "websiteDomainRedirect": "www.cdn.goldstack.party"
+      }
+    }
+  ]
+}

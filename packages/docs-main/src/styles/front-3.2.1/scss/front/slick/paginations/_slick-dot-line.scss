@@ -1,0 +1,40 @@
+/*------------------------------------
+  Slick Dot Lined
+------------------------------------*/
+
+.slick-dots {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  li {
+    cursor: pointer;
+    margin: 0 0.3125rem;
+  }
+
+  .dot-line {
+    position: relative;
+    display: block;
+    width: $slick-dot-line-width;
+    height: $slick-dot-line-height;
+    background-color: $slick-dot-line-bg-color;
+  }
+
+  .dot-line-helper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 100%;
+    background-color: $slick-dot-line-active-bg-color;
+    transition: none;
+  }
+}
+
+.slick-line-dots-ready .slick-dots li.slick-active .dot-line-helper {
+  transition-property: width;
+  transition-timing-function: linear;
+  width: 100%;
+}

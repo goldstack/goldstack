@@ -1,0 +1,21 @@
+//
+// Steps
+//
+
+@mixin step-variant($hs-bg) {
+  color: color-yiq($hs-bg);
+  background-color: $hs-bg;
+
+  &.step-icon-pseudo::before {
+    background-color: color-yiq($hs-bg);
+  }
+}
+
+@mixin step-soft($hs-soft-bg) {
+  color: ($hs-soft-bg);
+  background-color: rgba($hs-soft-bg, 0.1);
+
+  &.step-icon-pseudo::before {
+    background-color: ($hs-soft-bg);
+  }
+}

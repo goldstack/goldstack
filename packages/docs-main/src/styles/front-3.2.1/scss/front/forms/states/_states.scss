@@ -1,0 +1,23 @@
+/*------------------------------------
+  States
+------------------------------------*/
+
+.form-control {
+  &.is-valid {
+    background-size: $input-valid-state-bg-size $input-valid-state-bg-size;
+
+    &,
+    &:focus {
+      box-shadow: $input-valid-state-box-shadow;
+    }
+  }
+
+  &.is-invalid {
+    background-size: $input-valid-state-bg-size $input-valid-state-bg-size;
+
+    &,
+    &:focus {
+      box-shadow: $input-invalid-state-box-shadow;
+    }
+  }
+}

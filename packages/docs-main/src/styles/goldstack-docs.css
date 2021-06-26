@@ -1,0 +1,45 @@
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
+
+h2.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+}
+
+h3.heading {
+  font-size: 1.3125rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+}
+
+h4.heading {
+  margin-top: 1.5rem;
+}
+
+.heading a:hover {
+  border-bottom: 1px dotted;
+}
+
+.heading a {
+  color: black;
+}
+
+.heading svg {
+  margin-bottom: 0px;
+  margin-left: 0.3rem;
+}
+
+.permalink {
+  display: none;
+}
+
+p img {
+  max-width: 100%;
+  padding: 1em;
+}

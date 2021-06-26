@@ -1,0 +1,31 @@
+/*------------------------------------
+  Transform Rotate
+------------------------------------*/
+
+.transform-rotate-1 {
+  transform: rotate(-40deg);
+  transform-origin: 30% 20%;
+}
+
+.transform-rotate-2 {
+  transform: rotate(-17deg);
+  transform-origin: 0% 0%;
+}
+
+.transform-rotate-3 {
+  transform: rotate(15deg);
+  transform-origin: 90% -20%;
+}
+
+.transform-rotate-4 {
+  transform-origin: 100% 0;
+  transform: translateY(-50%);
+}
+
+.transform-rotate-5 {
+  transform: rotate(-22deg);
+}
+
+.transform-rotate-6 {
+  transform: translate3d(20%, -55%, 0);
+}

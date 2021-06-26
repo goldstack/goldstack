@@ -1,0 +1,9 @@
+/*------------------------------------
+  Background Soft Colors
+------------------------------------*/
+
+@each $color, $value in $theme-colors {
+  .bg-soft-#{$color} {
+    background-color: rgba($value, 0.1);
+  }
+}

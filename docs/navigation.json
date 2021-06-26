@@ -1,0 +1,29 @@
+{
+  "home": "index.md",
+  "children": [
+    {
+      "home": "index.md",
+      "directory": "goldstack/",
+      "children": [
+        "about/index.md",
+        "how-does-it-work/index.md",
+        "configuration/index.md",
+        "getting-started/index.md",
+        "security-hardening/index.md"
+      ]
+    },
+    {
+      "home": "index.md",
+      "directory": "modules/",
+      "children": [
+        "app-nextjs/index.md",
+        "lambda-express/index.md",
+        "app-nextjs-bootstrap/index.md",
+        "email-send/index.md",
+        "static-website-aws/index.md",
+        "s3/index.md",
+        "lambda-go-gin/index.md"
+      ]
+    }
+  ]
+}
