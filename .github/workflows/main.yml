@@ -25,36 +25,42 @@ jobs:
           repository: goldstack/goldstack-apps
           path: workspaces/apps
           token: ${{secrets.BUILD_TOKEN}}
+          fetch-depth: 20
       - name: Checkout docs repo
         uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
         with:
           repository: goldstack/goldstack-docs
           path: workspaces/docs
           token: ${{secrets.BUILD_TOKEN}}
+          fetch-depth: 20
       - name: Checkout goldstack repo
         uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
         with:
           repository: goldstack/goldstack
           path: workspaces/goldstack
           token: ${{secrets.BUILD_TOKEN}}
+          fetch-depth: 20
       - name: Checkout templates repo
         uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
         with:
           repository: goldstack/goldstack-templates-priv
           path: workspaces/templates
           token: ${{secrets.BUILD_TOKEN}}
+          fetch-depth: 20
       - name: Checkout templates-lib repo
         uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
         with:
           repository: goldstack/goldstack-lib
           path: workspaces/templates-lib
           token: ${{secrets.BUILD_TOKEN}}
+          fetch-depth: 20
       - name: Checkout templates-management repo
         uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
         with:
           repository: goldstack/goldstack-templates-management
           path: workspaces/templates-management
           token: ${{secrets.BUILD_TOKEN}}
+          fetch-depth: 20
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
