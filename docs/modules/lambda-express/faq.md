@@ -5,5 +5,5 @@ After applying `yarn infra up [deployment]` and `yarn deploy [deployment]` it is
 This is caused by changes to the deployed DNS hosted zone needing some time to propagate through the DNS network. Wait for 10-30 min and the API should be able to be called without problems. To validate your DNS name has been configured correctly, go to the [AWS Route 53 Console](https://aws.amazon.com/route53/), choose the region you have deployed, and validate there is a correct entry for the hosted zone you have selected. There should be an A entry such as the following:
 
 ```
-[apiDomain].[hostedZone] A [id].cloudfront.net. 
+[apiDomain].[hostedZone] A [id].cloudfront.net.
 ```

@@ -109,7 +109,6 @@ This works very well in combination with secrets for GitHub actions.
     AWS_DEFAULT_REGION: us-west-2
 ```
 
-
 ## Troubleshooting and Frequently Asked Questions
 
 [!embed](./faq.md)
