@@ -23,12 +23,15 @@ jobs:
         with:
           node-version: '12.x'
           registry-url: https://registry.npmjs.org
-      - run: git config --global user.email "public@pureleap.com"
-      - run: git config --global user.name "GitHub Actions Build"
-      - run: git config --global pull.rebase false
-      - run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''"${{secrets.NPM_TOKEN}}"''" } }'''
+      - name: Configure git
+        run: |
+          git config --global user.email "public@pureleap.com"
+          git config --global user.name "GitHub Actions Build"
+          git config --global pull.rebase false
       - name: Install Yarn
         run: npm install -g yarn@1.22.4
+      - name: Configure yarn
+        run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''"${{secrets.NPM_TOKEN}}"''" } }'''
       - name: Install root repo and lint
         run: |
           yarn install
