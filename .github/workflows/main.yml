@@ -19,48 +19,6 @@ jobs:
         with:
           fetch-depth: 20
           token: ${{secrets.BUILD_TOKEN}}
-      - name: Checkout apps repo
-        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
-        with:
-          repository: goldstack/goldstack-apps
-          path: workspaces/apps
-          token: ${{secrets.BUILD_TOKEN}}
-          fetch-depth: 20
-      - name: Checkout docs repo
-        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
-        with:
-          repository: goldstack/goldstack-docs
-          path: workspaces/docs
-          token: ${{secrets.BUILD_TOKEN}}
-          fetch-depth: 20
-      - name: Checkout goldstack repo
-        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
-        with:
-          repository: goldstack/goldstack
-          path: workspaces/goldstack
-          token: ${{secrets.BUILD_TOKEN}}
-          fetch-depth: 20
-      - name: Checkout templates repo
-        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
-        with:
-          repository: goldstack/goldstack-templates-priv
-          path: workspaces/templates
-          token: ${{secrets.BUILD_TOKEN}}
-          fetch-depth: 20
-      - name: Checkout templates-lib repo
-        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
-        with:
-          repository: goldstack/goldstack-lib
-          path: workspaces/templates-lib
-          token: ${{secrets.BUILD_TOKEN}}
-          fetch-depth: 20
-      - name: Checkout templates-management repo
-        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
-        with:
-          repository: goldstack/goldstack-templates-management
-          path: workspaces/templates-management
-          token: ${{secrets.BUILD_TOKEN}}
-          fetch-depth: 20
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
@@ -185,66 +143,14 @@ jobs:
           git status
           git add .
           git status
-          git diff-index --quiet HEAD || git commit -m "Releasing new library version"
+          git diff-index --quiet HEAD || git commit -m "Releasing new library version (ci_skip)"
           git status
           cd ../..
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           YARN_NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
-      - name: Push library changes
-        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
-        with:
-          directory: workspaces/templates-lib
-          repository: goldstack/goldstack-lib
-          github_token: ${{secrets.BUILD_TOKEN}}
-
-      - name: Commit changes to sync submodules
-        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        run: |
-          echo "Commiting for root"
-          git status
-          git add ./yarn.lock
-          git add ./.pnp.js
-
-          yarn git:commit "Release new library version (ci_skip)"
-          # yarn git:pull
-
-      - name: Push apps changes
-        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
-        with:
-          directory: workspaces/apps
-          force: true
-          repository: goldstack/goldstack-apps
-          github_token: ${{secrets.BUILD_TOKEN}}
-
-      - name: Push docs changes
-        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
-        with:
-          directory: workspaces/docs
-          repository: goldstack/goldstack-docs
-          github_token: ${{secrets.BUILD_TOKEN}}
-
-      - name: Push template changes
-        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
-        with:
-          directory: workspaces/templates
-          repository: goldstack/goldstack-templates-priv
-          github_token: ${{secrets.BUILD_TOKEN}}
-
-      - name: Push template management changes
-        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
-        with:
-          directory: workspaces/templates-management
-          repository: goldstack/goldstack-templates-management
-          github_token: ${{secrets.BUILD_TOKEN}}
-
-      - name: Push root changes
+      - name: Push changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
         uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
@@ -269,19 +175,11 @@ jobs:
           cd workspaces/apps
           git status
           git add packages/template-management-cli/src/state/deployments.json
-          git diff-index --quiet HEAD || git commit -m "Publishing updated docker deployment ci_skip"
+          git diff-index --quiet HEAD || git commit -m "Publishing updated docker deployment (ci_skip)"
           git status
           cd ../..
 
-      - name: Push deployed image hash change
-        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
-        with:
-          github_token: ${{secrets.BUILD_TOKEN}}
-          force: true
-          directory: workspaces/apps
-          repository: goldstack/goldstack-apps
-
-      - name: Push root changes
+      - name: Push changes
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
         uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
