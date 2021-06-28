@@ -6,4 +6,3 @@ Getting started on a new project is fun ... until it isn't. Goldstack provides c
 - 😻 [Goldstack Template Framework](https://github.com/goldstack/goldstack-lib) Our open source framework for building sweet-as starter templates
 - 🐛 [Report an issue](https://github.com/goldstack/goldstack/issues)
 - 📚 [Goldstack Documentation](https://docs.goldstack.party/docs
-

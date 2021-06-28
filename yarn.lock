@@ -730,7 +730,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/docker-image-aws@workspace:workspaces/templates/packages/docker-image-aws"
   dependencies:
-    "@goldstack/template-docker-image-aws": 0.3.24
+    "@goldstack/template-docker-image-aws": 0.3.25
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-sh": 0.4.11
     "@types/jest": ^26.0.21
@@ -1464,7 +1464,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-docker-image-aws@0.3.24, @goldstack/template-docker-image-aws@workspace:workspaces/templates-lib/packages/template-docker-image-aws":
+"@goldstack/template-docker-image-aws@0.3.25, @goldstack/template-docker-image-aws@workspace:workspaces/templates-lib/packages/template-docker-image-aws":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-docker-image-aws@workspace:workspaces/templates-lib/packages/template-docker-image-aws"
   dependencies:
@@ -1579,7 +1579,7 @@ __metadata:
     "@goldstack/project-build": 0.1.0
     "@goldstack/project-install": 0.1.0
     "@goldstack/template-build-set": 0.1.0
-    "@goldstack/template-docker-image-aws": 0.3.24
+    "@goldstack/template-docker-image-aws": 0.3.25
     "@goldstack/template-repository": 0.1.0
     "@goldstack/template-repository-bucket": 0.1.0
     "@goldstack/template-s3": 0.3.43
