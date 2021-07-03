@@ -14,7 +14,8 @@
         "cors": "https://dev.goldstack.party",
         "goldstackWorkdir": "/tmp/",
         "stripeApiKey": ""
-      }
+      },
+      "tfStateKey": "goldstack-api-dev-060f0ca6440485658cfc.tfstate"
     },
     {
       "name": "prod",
