@@ -1,13 +1,19 @@
 import {
   readDeploymentFromPackageConfig,
   getAWSUser,
+  readConfig,
+  writeConfig,
+  AWSConfiguration,
 } from '@goldstack/infra-aws';
 import { terraformCli, CloudProvider } from '@goldstack/utils-terraform';
 import { sh } from '@goldstack/utils-sh';
-import AWS from 'aws-sdk';
+import AWS, { FileSystemCredentials } from 'aws-sdk';
+import { createState } from './tfState';
+import cryto from 'crypto';
 
 export class AWSCloudProvider implements CloudProvider {
   user: AWS.Credentials;
+  awsConfig: AWSConfiguration;
 
   generateEnvVariableString = (): string => {
     return (
@@ -25,8 +31,13 @@ export class AWSCloudProvider implements CloudProvider {
     sh.env['AWS_SESSION_TOKEN'] = this.user.sessionToken || '';
   };
 
-  constructor(credentials: AWS.Credentials) {
+  getAWSConfig = (): AWSConfiguration => {
+    return this.awsConfig;
+  };
+
+  constructor(credentials: AWS.Credentials, awsConfig: AWSConfiguration) {
     this.user = credentials;
+    this.awsConfig = awsConfig;
   }
 }
 
@@ -36,5 +47,26 @@ export const terraformAwsCli = async (args: string[]): Promise<void> => {
   const deployment = readDeploymentFromPackageConfig(deploymentName);
 
   const credentials = await getAWSUser(deployment.awsUser);
-  terraformCli(args, { provider: new AWSCloudProvider(credentials) });
+
+  const awsConfig = readConfig();
+
+  const projectHash = cryto.randomBytes(20).toString('hex');
+  if (!awsConfig.terraformStateBucket) {
+    awsConfig.terraformStateBucket = `goldstack-tfstate-${projectHash}`;
+    writeConfig(awsConfig);
+  }
+  if (!awsConfig.terraformStateDynamoDBTable) {
+    awsConfig.terraformStateDynamoDBTable = `goldstack-tfstate-${projectHash}-lock`;
+    writeConfig(awsConfig);
+  }
+
+  await createState({
+    bucketName: awsConfig.terraformStateDynamoDBTable,
+    dynamoDBTableName: awsConfig.terraformStateDynamoDBTable,
+    credentials,
+  });
+
+  terraformCli(args, {
+    provider: new AWSCloudProvider(credentials, awsConfig),
+  });
 };

@@ -6,7 +6,7 @@ import {
   validateConfig,
 } from '@goldstack/utils-config';
 import { readPackageConfig } from '@goldstack/utils-package';
-import { read } from '@goldstack/utils-sh';
+import { read, write } from '@goldstack/utils-sh';
 import {
   AWSConfiguration,
   AWSUser,
@@ -72,6 +72,13 @@ export const readConfig = (path?: string): AWSConfiguration => {
   return parseConfig(read(path), configSchema, {
     errorMessage: `Cannot load AWS configuration from ${path}`,
   }) as AWSConfiguration;
+};
+
+export const writeConfig = (config: AWSConfiguration, path?: string): void => {
+  if (!path) {
+    path = getAwsConfigPath('./../../');
+  }
+  write(JSON.stringify(config, null, 2), path);
 };
 
 export const createDefaultConfig = (): AWSConfiguration => {

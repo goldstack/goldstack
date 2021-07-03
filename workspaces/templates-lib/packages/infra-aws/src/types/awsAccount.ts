@@ -73,6 +73,23 @@ export type AWSSecretAccessKey = string;
 export type AWSRegion = AWSDeploymentRegion;
 
 /**
+ * The name of the bucket where the Terraform state for the packages will be stored.
+ * If not provided, will be auto-generated on first deployment.
+ *
+ * @title Terraform State Bucket
+ * @pattern ^[^\s]*$
+ */
+export type TerraformStateBucket = string;
+
+/**
+ * The name of the DynamoDB table used for Terraform state locking. If not provided, will be auto-generated on first deployment.
+ *
+ * @title Terraform DynamoDB Table
+ * @pattern ^[^\s]*$
+ */
+export type TerraformDynamoDBTable = string;
+
+/**
  * User that is configured using the aws cli. Useful for development environments.
  *
  * @title AWS Local User Configuration
@@ -80,6 +97,7 @@ export type AWSRegion = AWSDeploymentRegion;
 export interface AWSLocalUserConfig {
   profile: Profile;
 }
+
 /**
  * Obtain AWS user from environment variables. This will be useful for CI/CD.
  *
@@ -124,4 +142,6 @@ export interface AWSUser {
  */
 export interface AWSConfiguration {
   users: AWSUsers;
+  terraformStateBucket?: TerraformStateBucket;
+  terraformStateDynamoDBTable?: TerraformDynamoDBTable;
 }
