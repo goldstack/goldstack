@@ -4,12 +4,30 @@ import {
   readConfig,
   writeConfig,
   AWSConfiguration,
+  AWSDeployment,
+  AWSUser,
 } from '@goldstack/infra-aws';
-import { terraformCli, CloudProvider } from '@goldstack/utils-terraform';
+import {
+  terraformCli,
+  CloudProvider,
+  TerraformDeployment,
+} from '@goldstack/utils-terraform';
 import { sh } from '@goldstack/utils-sh';
-import AWS, { FileSystemCredentials } from 'aws-sdk';
+import AWS from 'aws-sdk';
 import { createState } from './tfState';
-import cryto from 'crypto';
+import crypto from 'crypto';
+import { Package } from '@goldstack/utils-package';
+
+const getAWSUserFromConfig = (
+  config: AWSConfiguration,
+  userName: string
+): AWSUser => {
+  const userConfig = config.users.filter((u) => u.name === userName);
+  if (userConfig.length === 0) {
+    throw new Error(`Cannot find aws user ${userName}`);
+  }
+  return userConfig[0];
+};
 
 export class AWSCloudProvider implements CloudProvider {
   user: AWS.Credentials;
@@ -31,8 +49,47 @@ export class AWSCloudProvider implements CloudProvider {
     sh.env['AWS_SESSION_TOKEN'] = this.user.sessionToken || '';
   };
 
-  getAWSConfig = (): AWSConfiguration => {
-    return this.awsConfig;
+  getTfStateVariables = (
+    deployment: TerraformDeployment
+  ): [string, string][] => {
+    const awsUserConfig = getAWSUserFromConfig(
+      this.awsConfig,
+      (deployment as AWSDeployment).awsUser
+    );
+    const bucket = awsUserConfig.config.terraformStateBucket;
+    if (!bucket) {
+      throw new Error(
+        `TF state bucket not defined for user ${
+          (deployment as AWSDeployment).awsUser
+        }`
+      );
+    }
+
+    const ddTable = awsUserConfig.config.terraformStateDynamoDBTable;
+    if (!ddTable) {
+      throw new Error(
+        `TF state DynamoDB table not defined for user ${
+          (deployment as AWSDeployment).awsUser
+        }`
+      );
+    }
+
+    if (!AWS.config.region) {
+      throw new Error('AWS region not defined');
+    }
+
+    const tfKey = (deployment as TerraformDeployment).tfStateKey;
+
+    if (!tfKey) {
+      throw new Error('Terraform state key not defined');
+    }
+
+    return [
+      ['tfstate_bucket', bucket],
+      ['tfstate_key', `${tfKey}`],
+      ['tfstate_region', AWS.config.region],
+      ['tfstate_dynamodb_table', ddTable],
+    ];
   };
 
   constructor(credentials: AWS.Credentials, awsConfig: AWSConfiguration) {
@@ -50,19 +107,24 @@ export const terraformAwsCli = async (args: string[]): Promise<void> => {
 
   const awsConfig = readConfig();
 
-  const projectHash = cryto.randomBytes(20).toString('hex');
-  if (!awsConfig.terraformStateBucket) {
-    awsConfig.terraformStateBucket = `goldstack-tfstate-${projectHash}`;
+  const projectHash = crypto.randomBytes(20).toString('hex');
+
+  const awsUserConfig = getAWSUserFromConfig(
+    awsConfig,
+    (deployment as AWSDeployment).awsUser
+  );
+  if (!awsUserConfig.config.terraformStateBucket) {
+    awsUserConfig.config.terraformStateBucket = `goldstack-tfstate-${projectHash}`;
     writeConfig(awsConfig);
   }
-  if (!awsConfig.terraformStateDynamoDBTable) {
-    awsConfig.terraformStateDynamoDBTable = `goldstack-tfstate-${projectHash}-lock`;
+  if (!awsUserConfig.config.terraformStateDynamoDBTable) {
+    awsUserConfig.config.terraformStateDynamoDBTable = `goldstack-tfstate-${projectHash}-lock`;
     writeConfig(awsConfig);
   }
 
   await createState({
-    bucketName: awsConfig.terraformStateDynamoDBTable,
-    dynamoDBTableName: awsConfig.terraformStateDynamoDBTable,
+    bucketName: awsUserConfig.config.terraformStateDynamoDBTable,
+    dynamoDBTableName: awsUserConfig.config.terraformStateDynamoDBTable,
     credentials,
   });
 

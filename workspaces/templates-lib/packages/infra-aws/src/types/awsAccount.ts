@@ -119,10 +119,17 @@ export interface AWSAPIKeyUserConfig {
   awsDefaultRegion: AWSRegion;
 }
 
-export type AwsUserConfig =
+export interface TerraformConfig {
+  terraformStateBucket?: TerraformStateBucket;
+  terraformStateDynamoDBTable?: TerraformDynamoDBTable;
+}
+
+export type AwsUserConfig = (
   | AWSLocalUserConfig
   | AWSEnvironmentVariableUserConfig
-  | AWSAPIKeyUserConfig;
+  | AWSAPIKeyUserConfig
+) &
+  TerraformConfig;
 
 /**
  * AWS user
@@ -142,6 +149,4 @@ export interface AWSUser {
  */
 export interface AWSConfiguration {
   users: AWSUsers;
-  terraformStateBucket?: TerraformStateBucket;
-  terraformStateDynamoDBTable?: TerraformDynamoDBTable;
 }

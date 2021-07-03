@@ -1,6 +1,6 @@
-import { parseConfig } from '@goldstack/utils-config';
+import { parseConfig, validateConfig } from '@goldstack/utils-config';
 import configSchema from './schemas/configSchema.json';
-import { read } from '@goldstack/utils-sh';
+import { read, write } from '@goldstack/utils-sh';
 import { Package } from './types/packageTypes';
 import pathLib from 'path';
 
@@ -15,6 +15,15 @@ export {
 
 export const getPackageConfigSchema = (): object => {
   return configSchema;
+};
+
+export const writePackageConfig = (
+  packageConfig: Package,
+  packagePath = './'
+): void => {
+  const schemaPath = packagePath + 'schemas/package.schema.json';
+  validateConfig(packageConfig, JSON.parse(read(schemaPath)));
+  write(JSON.stringify(packageConfig, null, 2), packagePath + 'goldstack.json');
 };
 
 export const readPackageConfig = (packagePath = './'): Package => {

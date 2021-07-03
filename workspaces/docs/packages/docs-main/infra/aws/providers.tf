@@ -9,3 +9,12 @@ provider "aws" {
   version                 = "2.65.0"
   region                  = "us-east-1"
 }
+
+terraform {
+  backend "s3" {
+    bucket = var.tfstate_bucket
+    key = var.tfstate_key
+    region = var.tfstate_region
+    dynamodb_table = var.tfstate_dynamodb_table
+  }
+}

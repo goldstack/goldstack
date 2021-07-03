@@ -8,9 +8,13 @@ import {
 import { CloudProvider } from './cloudProvider';
 import { cd, read, pwd } from '@goldstack/utils-sh';
 import { Variables } from './terraformCli';
-import { readPackageConfig } from '@goldstack/utils-package';
+import {
+  readPackageConfig,
+  writePackageConfig,
+} from '@goldstack/utils-package';
 import assert from 'assert';
 import fs from 'fs';
+import crypto from 'crypto';
 import { writeDeploymentState, readDeploymentState } from '@goldstack/infra';
 
 export const convertToPythonVariable = (variableName: string): string => {
@@ -155,6 +159,27 @@ const getDeployment = (args: string[]): TerraformDeployment => {
 export class TerraformBuild {
   provider: CloudProvider;
 
+  getTfStateVariables = (
+    deployment: TerraformDeployment
+  ): [string, string][] => {
+    const packageConfig = readPackageConfig();
+    const deployments = packageConfig.deployments.filter(
+      (d) => d.name === deployment.name
+    );
+    if (deployments.length !== 0) {
+      throw new Error(`Cannot find deployment ${deployment.name}`);
+    }
+    const deploymentConfig = deployments[0];
+
+    // initialise id for key if required
+    if (!(deploymentConfig as TerraformDeployment).tfStateKey) {
+      const stateHash = crypto.randomBytes(10).toString('hex');
+      (deploymentConfig as TerraformDeployment).tfStateKey = `${packageConfig.name}-${deployment.name}-${stateHash}.tfstate`;
+      writePackageConfig(packageConfig);
+    }
+
+    return this.provider.getTfStateVariables(deploymentConfig);
+  };
   init = (args: string[]): void => {
     cd('./infra/aws');
     const provider = this.provider;
@@ -174,12 +199,15 @@ export class TerraformBuild {
 
   plan = (args: string[]): void => {
     const deployment = getDeployment(args);
+    const tfStateVariables = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const provider = this.provider;
 
     const variables = [
       ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
+      ...tfStateVariables,
     ];
+
     tf(`workspace select ${args[0]}`, { provider });
     tf('plan', {
       provider,
@@ -210,6 +238,7 @@ export class TerraformBuild {
 
   destroy = (args: string[]): void => {
     const deployment = getDeployment(args);
+    const tfStateVariables = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const ciConfirmed = args.find((str) => str === '-y');
     if (!ciConfirmed) {
@@ -224,6 +253,7 @@ export class TerraformBuild {
     const provider = this.provider;
     const variables = [
       ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
+      ...tfStateVariables,
     ];
 
     tf('init', { provider });

@@ -1,5 +1,3 @@
-## Providers definition
-
 
 ## Route 53
 # Provides details about the zone

@@ -105,7 +105,7 @@ export const getAWSUser = async (
 
     if (!process.env.AWS_REGION) {
       throw new Error(
-        'AWS region environment variable ("AWS_REGION") not defined for ECS task.\''
+        'AWS region environment variable ("AWS_REGION") not defined for ECS task.'
       );
     }
 
