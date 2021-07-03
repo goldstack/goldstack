@@ -23,6 +23,9 @@
         },
         "terraformVariables": {
           "$ref": "#/definitions/TerraformVariables"
+        },
+        "tfStateKey": {
+          "$ref": "#/definitions/TerraformStateKey"
         }
       },
       "required": [
@@ -30,6 +33,11 @@
         "name"
       ],
       "type": "object"
+    },
+    "TerraformStateKey": {
+      "description": "Key used for Terraform state persisted in Terraform state bucket.\n\nWill be auto-generated upon first deployment if not provided.",
+      "title": "Terraform State Key",
+      "type": "string"
     },
     "TerraformVariable": {
       "description": "Name of the property that should be converted into a Terraform variable.",

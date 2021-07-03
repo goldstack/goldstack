@@ -20,7 +20,8 @@
         ]
       },
       "awsUser": "goldstack-dev",
-      "awsRegion": "us-west-2"
+      "awsRegion": "us-west-2",
+      "tfStateKey": "app-nextjs-bootstrap-dev-f53056a4648c8eb7a1ac.tfstate"
     },
     {
       "name": "prod",

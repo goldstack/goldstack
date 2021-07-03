@@ -16,7 +16,6 @@ import { sh } from '@goldstack/utils-sh';
 import AWS from 'aws-sdk';
 import { createState } from './tfState';
 import crypto from 'crypto';
-import { Package } from '@goldstack/utils-package';
 
 const getAWSUserFromConfig = (
   config: AWSConfiguration,
@@ -85,10 +84,10 @@ export class AWSCloudProvider implements CloudProvider {
     }
 
     return [
-      ['tfstate_bucket', bucket],
-      ['tfstate_key', `${tfKey}`],
-      ['tfstate_region', AWS.config.region],
-      ['tfstate_dynamodb_table', ddTable],
+      ['bucket', bucket],
+      ['key', `${tfKey}`],
+      ['region', AWS.config.region],
+      ['dynamodb_table', ddTable],
     ];
   };
 
@@ -123,7 +122,7 @@ export const terraformAwsCli = async (args: string[]): Promise<void> => {
   }
 
   await createState({
-    bucketName: awsUserConfig.config.terraformStateDynamoDBTable,
+    bucketName: awsUserConfig.config.terraformStateBucket,
     dynamoDBTableName: awsUserConfig.config.terraformStateDynamoDBTable,
     credentials,
   });

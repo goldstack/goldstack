@@ -82,6 +82,9 @@
         "terraformVariables": {
           "$ref": "#/definitions/TerraformVariables"
         },
+        "tfStateKey": {
+          "$ref": "#/definitions/TerraformStateKey"
+        },
         "awsRegion": {
           "$ref": "#/definitions/AWSDeploymentRegion"
         },
@@ -157,6 +160,11 @@
       "type": "string",
       "description": "Name of the property that should be converted into a Terraform variable.",
       "title": "Terraform Variable"
+    },
+    "TerraformStateKey": {
+      "type": "string",
+      "description": "Key used for Terraform state persisted in Terraform state bucket.\r\n\r\nWill be auto-generated upon first deployment if not provided.",
+      "title": "Terraform State Key"
     },
     "AWSDeploymentRegion": {
       "type": "string",

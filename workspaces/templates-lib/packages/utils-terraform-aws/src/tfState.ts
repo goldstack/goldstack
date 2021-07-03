@@ -8,13 +8,13 @@ const assertDynamoDBTable = async (params: {
   const tableDef = {
     AttributeDefinitions: [
       {
-        AttributeName: 'LockId',
+        AttributeName: 'LockID',
         AttributeType: 'S',
       },
     ],
     KeySchema: [
       {
-        AttributeName: 'LockId',
+        AttributeName: 'LockID',
         KeyType: 'HASH',
       },
     ],
@@ -22,12 +22,14 @@ const assertDynamoDBTable = async (params: {
     BillingMode: 'PAY_PER_REQUEST',
   };
 
-  const resp = await params.dynamoDB.createTable(tableDef).promise();
-
-  const error = resp.$response.error;
-  // if there is a resource in use exception, ignore it.
-  if (error && error.code !== 'ResourceInUseException') {
-    throw new Error(error.message);
+  try {
+    await params.dynamoDB.createTable(tableDef).promise();
+  } catch (e) {
+    const error = e;
+    // if there is a resource in use exception, ignore it.
+    if (error && error.code !== 'ResourceInUseException') {
+      throw new Error(error.message);
+    }
   }
 };
 
@@ -38,11 +40,13 @@ const assertS3Bucket = async (params: {
   const bucketParams = {
     Bucket: params.bucketName,
   };
-  const resp = await params.s3.createBucket(bucketParams).promise();
-  const error = resp.$response.error;
-  // if bucket already exists, ignore error
-  if (error && error.code !== 'BucketAlreadyExists') {
-    throw new Error(error.message);
+  try {
+    await params.s3.createBucket(bucketParams).promise();
+  } catch (error) {
+    // if bucket already exists, ignore error
+    if (error && error.code !== 'BucketAlreadyOwnedByYou') {
+      throw new Error(error.message);
+    }
   }
 };
 

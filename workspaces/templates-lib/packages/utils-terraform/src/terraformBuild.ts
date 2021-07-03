@@ -166,7 +166,7 @@ export class TerraformBuild {
     const deployments = packageConfig.deployments.filter(
       (d) => d.name === deployment.name
     );
-    if (deployments.length !== 0) {
+    if (deployments.length !== 1) {
       throw new Error(`Cannot find deployment ${deployment.name}`);
     }
     const deploymentConfig = deployments[0];
@@ -174,16 +174,26 @@ export class TerraformBuild {
     // initialise id for key if required
     if (!(deploymentConfig as TerraformDeployment).tfStateKey) {
       const stateHash = crypto.randomBytes(10).toString('hex');
-      (deploymentConfig as TerraformDeployment).tfStateKey = `${packageConfig.name}-${deployment.name}-${stateHash}.tfstate`;
+      const stateKey = `${packageConfig.name}-${deployment.name}-${stateHash}.tfstate`;
+      console.log(
+        `Intialising Terraform State key for ${deployment.name} to ${stateKey}`
+      );
+      (deploymentConfig as TerraformDeployment).tfStateKey = stateKey;
       writePackageConfig(packageConfig);
     }
 
     return this.provider.getTfStateVariables(deploymentConfig);
   };
   init = (args: string[]): void => {
+    const deployment = getDeployment(args);
+    const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const provider = this.provider;
-    tf('init', { provider });
+    tf('init', {
+      provider,
+      backendConfig,
+      options: ['-force-copy'],
+    });
     const workspaces = tf('workspace list', { provider });
 
     const deploymentName = args[0];
@@ -191,7 +201,11 @@ export class TerraformBuild {
       return line.indexOf(deploymentName) >= 0;
     });
     if (!workspaceExists) {
-      tf(`workspace new ${deploymentName}`, { provider });
+      tf(`workspace new ${deploymentName}`, {
+        provider,
+        backendConfig,
+        options: ['-force-copy'],
+      });
     }
 
     cd('../..');
@@ -199,13 +213,11 @@ export class TerraformBuild {
 
   plan = (args: string[]): void => {
     const deployment = getDeployment(args);
-    const tfStateVariables = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const provider = this.provider;
 
     const variables = [
       ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
-      ...tfStateVariables,
     ];
 
     tf(`workspace select ${args[0]}`, { provider });
@@ -223,7 +235,10 @@ export class TerraformBuild {
     const provider = this.provider;
     const deploymentName = args[0];
     tf(`workspace select ${deploymentName}`, { provider });
-    tf('apply', { provider, options: ['-input=false', 'tfplan'] });
+    tf('apply', {
+      provider,
+      options: ['-input=false', 'tfplan'],
+    });
 
     const res = tf('output', { provider, options: ['-json'] }).trim();
 
@@ -238,7 +253,7 @@ export class TerraformBuild {
 
   destroy = (args: string[]): void => {
     const deployment = getDeployment(args);
-    const tfStateVariables = this.getTfStateVariables(deployment);
+    const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const ciConfirmed = args.find((str) => str === '-y');
     if (!ciConfirmed) {
@@ -253,10 +268,9 @@ export class TerraformBuild {
     const provider = this.provider;
     const variables = [
       ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
-      ...tfStateVariables,
     ];
 
-    tf('init', { provider });
+    tf('init', { provider, backendConfig });
     tf('plan', {
       provider,
       variables,

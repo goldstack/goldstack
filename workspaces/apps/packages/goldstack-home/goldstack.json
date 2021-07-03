@@ -24,7 +24,8 @@
             "value": "pk_test_51Hd1UtArOjAVQR9vxRvGfIEMGJIvY82W0PHB7ajEjh4kIHXU148UsKthSk5b6itbWR5mSg74NvfmdKdDBqItQ01m00Av3f7gpd"
           }
         ]
-      }
+      },
+      "tfStateKey": "goldstack-home-dev-181bf9be096a2f5c100d.tfstate"
     },
     {
       "name": "prod",

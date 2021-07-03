@@ -16,10 +16,19 @@ const renderVariables = (variables: Variables): string => {
   return variables.map(([key, value]) => `-var \"${key}=${value}\" `).join('');
 };
 
+const renderBackendConfig = (variables: Variables): string => {
+  if (variables.length === 0) {
+    return '';
+  }
+  return variables
+    .map(([key, value]) => `-backend-config=\"${key}=${value}\" `)
+    .join('');
+};
 interface TerraformOptions {
   dir?: string;
   provider: CloudProvider;
   variables?: Variables;
+  backendConfig?: Variables;
   options?: string[];
 }
 
@@ -30,14 +39,16 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
 
   assertDocker();
 
-  return exec(
+  const cmd3 =
     `docker run --rm -v "${options.dir}":/app ` +
-      ` ${options.provider.generateEnvVariableString()} ` +
-      '-w /app ' +
-      `${imageGoldstackBuild()} terraform ${cmd} ` +
-      ` ${renderVariables(options.variables || [])} ` +
-      ` ${options.options?.join(' ') || ''} `
-  );
+    ` ${options.provider.generateEnvVariableString()} ` +
+    '-w /app ' +
+    `${imageGoldstackBuild()} terraform ${cmd} ` +
+    ` ${renderBackendConfig(options.backendConfig || [])} ` +
+    ` ${renderVariables(options.variables || [])} ` +
+    ` ${options.options?.join(' ') || ''} `;
+  console.log('cmd ', cmd3);
+  return exec(cmd3);
 };
 
 export const assertTerraform = (): void => {
@@ -60,7 +71,9 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
   options.provider.setEnvVariables();
 
   return exec(
-    `terraform ${cmd} ${renderVariables(options.variables || [])} ` +
+    `terraform ${cmd} ` +
+      ` ${renderBackendConfig(options.backendConfig || [])} ` +
+      ` ${renderVariables(options.variables || [])} ` +
       ` ${options.options?.join(' ') || ''} `
   );
 };

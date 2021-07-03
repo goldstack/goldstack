@@ -12,9 +12,6 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = var.tfstate_bucket
-    key = var.tfstate_key
-    region = var.tfstate_region
-    dynamodb_table = var.tfstate_dynamodb_table
+    # config provided dynamically using `--backend-config` CLI parameter
   }
 }

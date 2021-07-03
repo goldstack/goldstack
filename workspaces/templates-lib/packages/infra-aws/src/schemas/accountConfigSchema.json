@@ -2,26 +2,6 @@
   "$ref": "#/definitions/AWSConfiguration",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": {
-    "AWSAPIKeyUserConfig": {
-      "additionalProperties": false,
-      "description": "User accessing AWS using an access key id and secret access key. Only recommended for users used during development. The provided credentials will be included in the downloaded package but by default will not be committed to git.",
-      "properties": {
-        "awsAccessKeyId": {
-          "$ref": "#/definitions/AWSAccessKeyId"
-        },
-        "awsDefaultRegion": {
-          "$ref": "#/definitions/AWSRegion"
-        },
-        "awsSecretAccessKey": {
-          "$ref": "#/definitions/AWSSecretAccessKey"
-        }
-      },
-      "required": [
-        "awsDefaultRegion"
-      ],
-      "title": "AWS API Key User Configuration",
-      "type": "object"
-    },
     "AWSAccessKeyId": {
       "description": "Access key for this user.",
       "pattern": "^[^\\s]*$",
@@ -82,42 +62,6 @@
       "title": "AWS Deployment Region",
       "type": "string"
     },
-    "AWSEnvironmentVariableUserConfig": {
-      "additionalProperties": false,
-      "description": "Obtain AWS user from environment variables. This will be useful for CI/CD.",
-      "properties": {
-        "awsAccessKeyIdVariableName": {
-          "$ref": "#/definitions/AWSAccessKeyIdVariableName"
-        },
-        "awsDefaultRegionVariableName": {
-          "$ref": "#/definitions/AWSDefaultRegionVariableName"
-        },
-        "awsSecretAccessKeyVariableName": {
-          "$ref": "#/definitions/AWSSecretAccessKeyVariableName"
-        }
-      },
-      "required": [
-        "awsAccessKeyIdVariableName",
-        "awsSecretAccessKeyVariableName",
-        "awsDefaultRegionVariableName"
-      ],
-      "title": "AWS Environment Variable User Configuration",
-      "type": "object"
-    },
-    "AWSLocalUserConfig": {
-      "additionalProperties": false,
-      "description": "User that is configured using the aws cli. Useful for development environments.",
-      "properties": {
-        "profile": {
-          "$ref": "#/definitions/Profile"
-        }
-      },
-      "required": [
-        "profile"
-      ],
-      "title": "AWS Local User Configuration",
-      "type": "object"
-    },
     "AWSRegion": {
       "$ref": "#/definitions/AWSDeploymentRegion",
       "description": "Default AWS region to use.",
@@ -167,13 +111,72 @@
     "AwsUserConfig": {
       "anyOf": [
         {
-          "$ref": "#/definitions/AWSLocalUserConfig"
+          "additionalProperties": false,
+          "properties": {
+            "profile": {
+              "$ref": "#/definitions/Profile"
+            },
+            "terraformStateBucket": {
+              "$ref": "#/definitions/TerraformStateBucket"
+            },
+            "terraformStateDynamoDBTable": {
+              "$ref": "#/definitions/TerraformDynamoDBTable"
+            }
+          },
+          "required": [
+            "profile"
+          ],
+          "type": "object"
         },
         {
-          "$ref": "#/definitions/AWSEnvironmentVariableUserConfig"
+          "additionalProperties": false,
+          "properties": {
+            "awsAccessKeyIdVariableName": {
+              "$ref": "#/definitions/AWSAccessKeyIdVariableName"
+            },
+            "awsDefaultRegionVariableName": {
+              "$ref": "#/definitions/AWSDefaultRegionVariableName"
+            },
+            "awsSecretAccessKeyVariableName": {
+              "$ref": "#/definitions/AWSSecretAccessKeyVariableName"
+            },
+            "terraformStateBucket": {
+              "$ref": "#/definitions/TerraformStateBucket"
+            },
+            "terraformStateDynamoDBTable": {
+              "$ref": "#/definitions/TerraformDynamoDBTable"
+            }
+          },
+          "required": [
+            "awsAccessKeyIdVariableName",
+            "awsDefaultRegionVariableName",
+            "awsSecretAccessKeyVariableName"
+          ],
+          "type": "object"
         },
         {
-          "$ref": "#/definitions/AWSAPIKeyUserConfig"
+          "additionalProperties": false,
+          "properties": {
+            "awsAccessKeyId": {
+              "$ref": "#/definitions/AWSAccessKeyId"
+            },
+            "awsDefaultRegion": {
+              "$ref": "#/definitions/AWSRegion"
+            },
+            "awsSecretAccessKey": {
+              "$ref": "#/definitions/AWSSecretAccessKey"
+            },
+            "terraformStateBucket": {
+              "$ref": "#/definitions/TerraformStateBucket"
+            },
+            "terraformStateDynamoDBTable": {
+              "$ref": "#/definitions/TerraformDynamoDBTable"
+            }
+          },
+          "required": [
+            "awsDefaultRegion"
+          ],
+          "type": "object"
         }
       ]
     },
@@ -187,6 +190,18 @@
       "description": "Profile name of the user configured with the aws cli. When in doubt, use `default`.",
       "pattern": "^[^\\s]*$",
       "title": "Profile",
+      "type": "string"
+    },
+    "TerraformDynamoDBTable": {
+      "description": "The name of the DynamoDB table used for Terraform state locking. If not provided, will be auto-generated on first deployment.",
+      "pattern": "^[^\\s]*$",
+      "title": "Terraform DynamoDB Table",
+      "type": "string"
+    },
+    "TerraformStateBucket": {
+      "description": "The name of the bucket where the Terraform state for the packages will be stored.\nIf not provided, will be auto-generated on first deployment.",
+      "pattern": "^[^\\s]*$",
+      "title": "Terraform State Bucket",
       "type": "string"
     },
     "Type": {
