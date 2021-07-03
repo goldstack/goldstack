@@ -13,5 +13,8 @@ provider "aws" {
 terraform {
   backend "s3" {
     # config provided dynamically using `--backend-config` CLI parameter
+    workspace {
+      name = "dev"
+    }
   }
 }

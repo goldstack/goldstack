@@ -213,6 +213,7 @@ export class TerraformBuild {
 
   plan = (args: string[]): void => {
     const deployment = getDeployment(args);
+    const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const provider = this.provider;
 
@@ -220,7 +221,13 @@ export class TerraformBuild {
       ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
     ];
 
-    tf(`workspace select ${args[0]}`, { provider });
+    const currentWorkspace = tf('workspace show', { provider }).trim();
+    if (currentWorkspace !== args[0]) {
+      // init with reconfigure required here in case we are switching to a different
+      // s3 bucket in a different environment for a different deployment
+      tf('init', { provider, backendConfig, options: ['-reconfigure'] });
+      tf(`workspace select ${args[0]}`, { provider });
+    }
     tf('plan', {
       provider,
       variables,
@@ -234,7 +241,15 @@ export class TerraformBuild {
     cd('./infra/aws');
     const provider = this.provider;
     const deploymentName = args[0];
-    tf(`workspace select ${deploymentName}`, { provider });
+    const deployment = getDeployment(args);
+    const backendConfig = this.getTfStateVariables(deployment);
+    const currentWorkspace = tf('workspace show', { provider }).trim();
+    if (currentWorkspace !== deploymentName) {
+      // init with reconfigure required here in case we are switching to a different
+      // s3 bucket in a different environment for a different deployment
+      tf('init', { provider, backendConfig, options: ['-reconfigure'] });
+      tf(`workspace select ${deploymentName}`, { provider });
+    }
     tf('apply', {
       provider,
       options: ['-input=false', 'tfplan'],
@@ -270,7 +285,8 @@ export class TerraformBuild {
       ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
     ];
 
-    tf('init', { provider, backendConfig });
+    tf('init', { provider, backendConfig, options: ['-reconfigure'] });
+    tf(`workspace select ${args[0]}`, { provider });
     tf('plan', {
       provider,
       variables,
