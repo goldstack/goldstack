@@ -13,7 +13,8 @@
       "awsUser": "goldstack-dev",
       "configuration": {
         "repositoryName": "template-management-cli"
-      }
+      },
+      "tfStateKey": "template-management-cli-dev-28b04fbe80dac501a702.tfstate"
     },
     {
       "name": "prod",
@@ -21,7 +22,8 @@
       "awsUser": "goldstack-prod",
       "configuration": {
         "repositoryName": "template-management-cli"
-      }
+      },
+      "tfStateKey": "template-management-cli-prod-7e6a9b6547b360477d57.tfstate"
     }
   ]
 }

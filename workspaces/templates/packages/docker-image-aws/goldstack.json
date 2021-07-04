@@ -13,7 +13,8 @@
       "awsUser": "goldstack-dev",
       "configuration": {
         "repositoryName": "docker-image-aws-template-repo"
-      }
+      },
+      "tfStateKey": "docker-image-aws-template-prod-0dcb9f77687a3870cc13.tfstate"
     }
   ]
 }

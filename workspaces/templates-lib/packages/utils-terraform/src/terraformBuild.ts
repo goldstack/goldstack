@@ -206,6 +206,7 @@ export class TerraformBuild {
         backendConfig,
         options: ['-force-copy'],
       });
+      tf(`workspace select ${deploymentName}`, { provider });
     }
 
     cd('../..');
@@ -238,11 +239,11 @@ export class TerraformBuild {
   };
 
   apply = (args: string[]): void => {
+    const deployment = getDeployment(args);
+    const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const provider = this.provider;
     const deploymentName = args[0];
-    const deployment = getDeployment(args);
-    const backendConfig = this.getTfStateVariables(deployment);
     const currentWorkspace = tf('workspace show', { provider }).trim();
     if (currentWorkspace !== deploymentName) {
       // init with reconfigure required here in case we are switching to a different
