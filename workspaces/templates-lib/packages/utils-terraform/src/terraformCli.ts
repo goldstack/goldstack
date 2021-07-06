@@ -47,7 +47,7 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
     ` ${renderBackendConfig(options.backendConfig || [])} ` +
     ` ${renderVariables(options.variables || [])} ` +
     ` ${options.options?.join(' ') || ''} `;
-  console.log('cmd ', cmd3);
+
   return exec(cmd3);
 };
 
