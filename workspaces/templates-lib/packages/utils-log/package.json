@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-log",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Utilities for emitting logs.",
   "keywords": [
     "goldstack",
