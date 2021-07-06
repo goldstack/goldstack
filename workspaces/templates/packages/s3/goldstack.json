@@ -11,7 +11,8 @@
       "awsUser": "goldstack-dev",
       "configuration": {
         "bucketName": "goldstack-test-s3-bucket"
-      }
+      },
+      "tfStateKey": "s3-prod-40dd578eab44b83dc601.tfstate"
     }
   ]
 }

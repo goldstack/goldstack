@@ -1,0 +1,27 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "template-repository-bucket",
+  "template": "s3",
+  "templateVersion": "0.0.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "dev",
+      "awsUser": "goldstack-dev",
+      "awsRegion": "us-west-2",
+      "configuration": {
+        "bucketName": "goldstack-templates-dev"
+      },
+      "tfStateKey": "template-repository-bucket-dev-d962a25bfe2f30baf49a.tfstate"
+    },
+    {
+      "name": "prod",
+      "awsUser": "goldstack-prod",
+      "awsRegion": "us-west-2",
+      "configuration": {
+        "bucketName": "goldstack-templates-prod"
+      },
+      "tfStateKey": "template-repository-bucket-prod-080db95517c445974c09.tfstate"
+    }
+  ]
+}

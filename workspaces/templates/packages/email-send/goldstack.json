@@ -12,7 +12,8 @@
       "configuration": {
         "domain": "email-send.templates.dev.goldstack.party",
         "hostedZoneDomain": "dev.goldstack.party"
-      }
+      },
+      "tfStateKey": "email-send-prod-c1356c7f30852453a420.tfstate"
     }
   ]
 }

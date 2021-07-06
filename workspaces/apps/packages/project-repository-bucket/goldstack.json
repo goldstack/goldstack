@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/package.schema.json",
-  "name": "goldstack-email-send",
-  "template": "email-send",
+  "name": "project-repository-bucket",
+  "template": "s3",
   "templateVersion": "0.1.0",
   "configuration": {},
   "deployments": [
@@ -10,20 +10,18 @@
       "awsRegion": "us-west-2",
       "awsUser": "goldstack-dev",
       "configuration": {
-        "domain": "dev.goldstack.party",
-        "hostedZoneDomain": "dev.goldstack.party"
+        "bucketName": "goldstack-projects-dev"
       },
-      "tfStateKey": "goldstack-email-send-dev-499ef4e27f7eed892f24.tfstate"
+      "tfStateKey": "project-repository-bucket-dev-faac73d5029a51b9a1b2.tfstate"
     },
     {
       "name": "prod",
       "awsRegion": "us-west-2",
       "awsUser": "goldstack-prod",
       "configuration": {
-        "domain": "goldstack.party",
-        "hostedZoneDomain": "goldstack.party"
+        "bucketName": "goldstack-projects-prod"
       },
-      "tfStateKey": "goldstack-email-send-prod-4178ace0fd1696262fb4.tfstate"
+      "tfStateKey": "project-repository-bucket-prod-ca2ce68e07f64423df85.tfstate"
     }
   ]
 }

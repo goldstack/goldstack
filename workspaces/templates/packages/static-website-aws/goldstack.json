@@ -14,7 +14,8 @@
         "hostedZoneDomain": "dev.goldstack.party",
         "websiteDomain": "static-website-aws.templates.dev.goldstack.party",
         "websiteDomainRedirect": "www.static-website-aws.templates.dev.goldstack.party"
-      }
+      },
+      "tfStateKey": "-prod-78892dc49d3d7e525613.tfstate"
     }
   ]
 }
