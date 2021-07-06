@@ -1199,9 +1199,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/project-package-bucket@0.1.0, @goldstack/project-package-bucket@workspace:workspaces/apps/packages/project-package-bucket":
+"@goldstack/project-package-bucket@0.1.0, @goldstack/project-package-bucket@workspace:workspaces/templates-management/packages/project-package-bucket":
   version: 0.0.0-use.local
-  resolution: "@goldstack/project-package-bucket@workspace:workspaces/apps/packages/project-package-bucket"
+  resolution: "@goldstack/project-package-bucket@workspace:workspaces/templates-management/packages/project-package-bucket"
   dependencies:
     "@goldstack/template-s3": 0.3.43
     "@goldstack/utils-git": 0.1.25
@@ -1219,9 +1219,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/project-repository-bucket@0.1.0, @goldstack/project-repository-bucket@workspace:workspaces/apps/packages/project-repository-bucket":
+"@goldstack/project-repository-bucket@0.1.0, @goldstack/project-repository-bucket@workspace:workspaces/templates-management/packages/project-repository-bucket":
   version: 0.0.0-use.local
-  resolution: "@goldstack/project-repository-bucket@workspace:workspaces/apps/packages/project-repository-bucket"
+  resolution: "@goldstack/project-repository-bucket@workspace:workspaces/templates-management/packages/project-repository-bucket"
   dependencies:
     "@goldstack/template-s3": 0.3.43
     "@goldstack/utils-git": 0.1.25
@@ -1348,9 +1348,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/session-repository-bucket@0.1.0, @goldstack/session-repository-bucket@workspace:workspaces/apps/packages/session-repository-bucket":
+"@goldstack/session-repository-bucket@0.1.0, @goldstack/session-repository-bucket@workspace:workspaces/templates-management/packages/session-repository-bucket":
   version: 0.0.0-use.local
-  resolution: "@goldstack/session-repository-bucket@workspace:workspaces/apps/packages/session-repository-bucket"
+  resolution: "@goldstack/session-repository-bucket@workspace:workspaces/templates-management/packages/session-repository-bucket"
   dependencies:
     "@goldstack/template-s3": 0.3.43
     "@goldstack/utils-git": 0.1.25
@@ -1649,9 +1649,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-repository-bucket@0.1.0, @goldstack/template-repository-bucket@workspace:workspaces/apps/packages/template-repository-bucket":
+"@goldstack/template-repository-bucket@0.1.0, @goldstack/template-repository-bucket@workspace:workspaces/templates-management/packages/template-repository-bucket":
   version: 0.0.0-use.local
-  resolution: "@goldstack/template-repository-bucket@workspace:workspaces/apps/packages/template-repository-bucket"
+  resolution: "@goldstack/template-repository-bucket@workspace:workspaces/templates-management/packages/template-repository-bucket"
   dependencies:
     "@goldstack/template-s3": 0.3.43
     "@goldstack/utils-git": 0.1.25
