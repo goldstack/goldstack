@@ -173,6 +173,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
 
+      - name: Remove yarn secret
+        run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''""''" } }'''
+
       - name: Commit latest deployed image hash
         run: |
           cd workspaces/apps
