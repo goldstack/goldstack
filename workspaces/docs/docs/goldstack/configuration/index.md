@@ -18,3 +18,7 @@ title: Configuration
 ## Hosted Zone Configuration
 
 [!embed](./aws-hosted-zone.md)
+
+## Terraform
+
+[!embed](./terraform.md)

@@ -203,8 +203,6 @@ export class TerraformBuild {
     if (!workspaceExists) {
       tf(`workspace new ${deploymentName}`, {
         provider,
-        backendConfig,
-        options: ['-force-copy'],
       });
       tf(`workspace select ${deploymentName}`, { provider });
     }
