@@ -597,7 +597,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs-bootstrap@workspace:workspaces/templates/packages/app-nextjs-bootstrap"
   dependencies:
-    "@goldstack/template-nextjs": 0.3.45
+    "@goldstack/template-nextjs": 0.3.46
     "@goldstack/utils-sh": 0.4.12
     "@testing-library/jest-dom": ^5.9.0
     "@testing-library/react": ^10.0.4
@@ -632,7 +632,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs@workspace:workspaces/templates/packages/app-nextjs"
   dependencies:
-    "@goldstack/template-nextjs": 0.3.45
+    "@goldstack/template-nextjs": 0.3.46
     "@goldstack/utils-sh": 0.4.12
     "@testing-library/jest-dom": ^5.9.0
     "@testing-library/react": ^10.0.4
@@ -689,10 +689,10 @@ __metadata:
   resolution: "@goldstack/auth@workspace:workspaces/templates-management/packages/auth"
   dependencies:
     "@goldstack/project-repository-bucket": 0.1.0
-    "@goldstack/utils-package": 0.3.13
-    "@goldstack/utils-project": 0.3.12
+    "@goldstack/utils-package": 0.3.14
+    "@goldstack/utils-project": 0.3.13
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
+    "@goldstack/utils-template": 0.3.13
     "@types/archiver": ^3.1.0
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
@@ -712,7 +712,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/cdn@workspace:workspaces/docs/packages/cdn"
   dependencies:
-    "@goldstack/template-static-website-aws": 0.3.44
+    "@goldstack/template-static-website-aws": 0.3.45
     "@goldstack/utils-sh": 0.4.12
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
@@ -730,7 +730,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/docker-image-aws@workspace:workspaces/templates/packages/docker-image-aws"
   dependencies:
-    "@goldstack/template-docker-image-aws": 0.3.26
+    "@goldstack/template-docker-image-aws": 0.3.27
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-sh": 0.4.12
     "@types/jest": ^26.0.21
@@ -751,7 +751,7 @@ __metadata:
   dependencies:
     "@fullstory/browser": ^1.4.5
     "@goldstack/markdown-docs": 0.1.0
-    "@goldstack/template-nextjs": 0.3.45
+    "@goldstack/template-nextjs": 0.3.46
     "@goldstack/toc-generator": 0.1.0
     "@goldstack/utils-sh": 0.4.12
     "@goldstack/utils-track": 0.1.7
@@ -793,7 +793,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/email-send@workspace:workspaces/templates/packages/email-send"
   dependencies:
-    "@goldstack/template-email-send": 0.3.51
+    "@goldstack/template-email-send": 0.3.52
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-sh": 0.4.12
     "@types/jest": ^26.0.21
@@ -814,7 +814,7 @@ __metadata:
   dependencies:
     "@goldstack/auth": 0.1.0
     "@goldstack/goldstack-email-send": 0.1.0
-    "@goldstack/infra-aws": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
     "@goldstack/module-template-utils": 0.1.0
     "@goldstack/project-build": 0.1.0
     "@goldstack/project-config": 0.1.0
@@ -822,13 +822,13 @@ __metadata:
     "@goldstack/project-repository": 0.1.0
     "@goldstack/session-repository": 0.1.0
     "@goldstack/template-build": 0.1.0
-    "@goldstack/template-lambda-express": 0.3.52
+    "@goldstack/template-lambda-express": 0.3.53
     "@goldstack/template-repository": 0.1.0
     "@goldstack/template-repository-bucket": 0.1.0
-    "@goldstack/utils-package": 0.3.13
-    "@goldstack/utils-project": 0.3.12
+    "@goldstack/utils-package": 0.3.14
+    "@goldstack/utils-project": 0.3.13
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
+    "@goldstack/utils-template": 0.3.13
     "@goldstack/utils-template-test": 0.1.0
     "@jest-mock/express": ^1.1.7
     "@types/aws-serverless-express": ^3.3.3
@@ -872,7 +872,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/goldstack-email-send@workspace:workspaces/apps/packages/goldstack-email-send"
   dependencies:
-    "@goldstack/template-email-send": 0.3.51
+    "@goldstack/template-email-send": 0.3.52
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-sh": 0.4.12
     "@types/jest": ^26.0.21
@@ -893,15 +893,15 @@ __metadata:
   dependencies:
     "@fullstory/browser": ^1.4.5
     "@goldstack/goldstack-api": 0.1.0
-    "@goldstack/infra": 0.3.13
-    "@goldstack/infra-aws": 0.3.14
+    "@goldstack/infra": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
     "@goldstack/project-config": 0.1.0
     "@goldstack/project-repository": 0.1.0
     "@goldstack/project-template-data": 0.1.0
-    "@goldstack/template-nextjs": 0.3.45
+    "@goldstack/template-nextjs": 0.3.46
     "@goldstack/utils-docs-cli": 0.3.11
-    "@goldstack/utils-package": 0.3.13
-    "@goldstack/utils-project": 0.3.12
+    "@goldstack/utils-package": 0.3.14
+    "@goldstack/utils-project": 0.3.13
     "@goldstack/utils-sh": 0.4.12
     "@goldstack/utils-track": 0.1.7
     "@rjsf/bootstrap-4": ^2.4.0
@@ -945,15 +945,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/infra-aws@0.3.14, @goldstack/infra-aws@workspace:workspaces/templates-lib/packages/infra-aws":
+"@goldstack/infra-aws@0.3.15, @goldstack/infra-aws@workspace:workspaces/templates-lib/packages/infra-aws":
   version: 0.0.0-use.local
   resolution: "@goldstack/infra-aws@workspace:workspaces/templates-lib/packages/infra-aws"
   dependencies:
-    "@goldstack/infra": 0.3.13
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/infra": 0.3.14
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-log": 0.2.5
-    "@goldstack/utils-package": 0.3.13
+    "@goldstack/utils-package": 0.3.14
     "@goldstack/utils-sh": 0.4.12
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
@@ -968,11 +968,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/infra@0.3.13, @goldstack/infra@workspace:workspaces/templates-lib/packages/infra":
+"@goldstack/infra@0.3.14, @goldstack/infra@workspace:workspaces/templates-lib/packages/infra":
   version: 0.0.0-use.local
   resolution: "@goldstack/infra@workspace:workspaces/templates-lib/packages/infra"
   dependencies:
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-log": 0.2.5
     "@goldstack/utils-sh": 0.4.12
@@ -990,7 +990,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/lambda-express@workspace:workspaces/templates/packages/lambda-express"
   dependencies:
-    "@goldstack/template-lambda-express": 0.3.52
+    "@goldstack/template-lambda-express": 0.3.53
     "@jest-mock/express": ^1.1.7
     "@types/aws-serverless-express": ^3.3.3
     "@types/express": ^4.17.6
@@ -1099,10 +1099,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/prepare-template@workspace:workspaces/templates-management/packages/prepare-template"
   dependencies:
-    "@goldstack/utils-config": 0.3.12
-    "@goldstack/utils-package": 0.3.13
+    "@goldstack/utils-config": 0.3.13
+    "@goldstack/utils-package": 0.3.14
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
+    "@goldstack/utils-template": 0.3.13
     "@types/jest": ^26.0.21
     "@types/jsonpath": ^0.2.0
     "@types/node": ^14.0.6
@@ -1118,14 +1118,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/prepare-yarn-pnp-monorepo@workspace:workspaces/templates-management/packages/prepare-yarn-pnp-monorepo"
   dependencies:
-    "@goldstack/infra": 0.3.13
-    "@goldstack/infra-aws": 0.3.14
+    "@goldstack/infra": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
     "@goldstack/prepare-template": 0.1.0
-    "@goldstack/utils-config": 0.3.12
-    "@goldstack/utils-package": 0.3.13
+    "@goldstack/utils-config": 0.3.13
+    "@goldstack/utils-package": 0.3.14
     "@goldstack/utils-package-config-generate": 0.2.4
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
+    "@goldstack/utils-template": 0.3.13
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
     jest: ^26.6.3
@@ -1138,13 +1138,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/project-build@workspace:workspaces/templates-management/packages/project-build"
   dependencies:
-    "@goldstack/infra-aws": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
     "@goldstack/template-build": 0.1.0
     "@goldstack/template-repository": 0.1.0
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-log": 0.2.5
-    "@goldstack/utils-package": 0.3.13
-    "@goldstack/utils-project": 0.3.12
+    "@goldstack/utils-package": 0.3.14
+    "@goldstack/utils-project": 0.3.13
     "@goldstack/utils-sh": 0.4.12
     "@goldstack/utils-template-test": 0.1.0
     "@types/jest": ^26.0.21
@@ -1160,11 +1160,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/project-config@workspace:workspaces/templates-management/packages/project-config"
   dependencies:
-    "@goldstack/utils-config": 0.3.12
-    "@goldstack/utils-package": 0.3.13
-    "@goldstack/utils-project": 0.3.12
+    "@goldstack/utils-config": 0.3.13
+    "@goldstack/utils-package": 0.3.14
+    "@goldstack/utils-project": 0.3.13
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
+    "@goldstack/utils-template": 0.3.13
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
     jest: ^26.6.3
@@ -1178,14 +1178,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/project-install@workspace:workspaces/templates-management/packages/project-install"
   dependencies:
-    "@goldstack/infra-aws": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
     "@goldstack/project-build": 0.1.0
     "@goldstack/project-config": 0.1.0
     "@goldstack/template-build": 0.1.0
     "@goldstack/template-repository": 0.1.0
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-log": 0.2.5
-    "@goldstack/utils-project": 0.3.12
+    "@goldstack/utils-project": 0.3.13
     "@goldstack/utils-sh": 0.4.12
     "@goldstack/utils-template-test": 0.1.0
     "@goldstack/utils-yarn": 0.3.15
@@ -1203,7 +1203,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/project-package-bucket@workspace:workspaces/templates-management/packages/project-package-bucket"
   dependencies:
-    "@goldstack/template-s3": 0.3.44
+    "@goldstack/template-s3": 0.3.45
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-sh": 0.4.12
     "@types/jest": ^26.0.21
@@ -1223,7 +1223,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/project-repository-bucket@workspace:workspaces/templates-management/packages/project-repository-bucket"
   dependencies:
-    "@goldstack/template-s3": 0.3.44
+    "@goldstack/template-s3": 0.3.45
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-sh": 0.4.12
     "@types/jest": ^26.0.21
@@ -1244,14 +1244,14 @@ __metadata:
   resolution: "@goldstack/project-repository@workspace:workspaces/templates-management/packages/project-repository"
   dependencies:
     "@goldstack/auth": 0.1.0
-    "@goldstack/infra-aws": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
     "@goldstack/project-config": 0.1.0
     "@goldstack/project-repository-bucket": 0.1.0
-    "@goldstack/utils-package": 0.3.13
-    "@goldstack/utils-project": 0.3.12
+    "@goldstack/utils-package": 0.3.14
+    "@goldstack/utils-project": 0.3.13
     "@goldstack/utils-s3": 0.2.5
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
+    "@goldstack/utils-template": 0.3.13
     "@types/archiver": ^3.1.0
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
@@ -1305,7 +1305,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/s3@workspace:workspaces/templates/packages/s3"
   dependencies:
-    "@goldstack/template-s3": 0.3.44
+    "@goldstack/template-s3": 0.3.45
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-sh": 0.4.12
     "@types/jest": ^26.0.21
@@ -1343,7 +1343,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/server-go@workspace:workspaces/templates/packages/lambda-go-gin"
   dependencies:
-    "@goldstack/template-lambda-express": 0.3.52
+    "@goldstack/template-lambda-express": 0.3.53
     nodemon: ^2.0.4
   languageName: unknown
   linkType: soft
@@ -1352,7 +1352,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/session-repository-bucket@workspace:workspaces/templates-management/packages/session-repository-bucket"
   dependencies:
-    "@goldstack/template-s3": 0.3.44
+    "@goldstack/template-s3": 0.3.45
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-sh": 0.4.12
     "@types/jest": ^26.0.21
@@ -1396,7 +1396,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/static-website-aws@workspace:workspaces/templates/packages/static-website-aws"
   dependencies:
-    "@goldstack/template-static-website-aws": 0.3.44
+    "@goldstack/template-static-website-aws": 0.3.45
     "@types/gulp": ^4.0.7
     "@types/gulp-changed": ^0.0.33
     "@types/gulp-replace": ^0.0.31
@@ -1419,20 +1419,20 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-build-set@workspace:workspaces/templates-management/packages/template-build-set"
   dependencies:
-    "@goldstack/infra": 0.3.13
-    "@goldstack/infra-aws": 0.3.14
+    "@goldstack/infra": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
     "@goldstack/project-build": 0.1.0
     "@goldstack/project-config": 0.1.0
     "@goldstack/project-install": 0.1.0
     "@goldstack/template-build": 0.1.0
     "@goldstack/template-repository": 0.1.0
     "@goldstack/utils-cli": 0.2.4
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-git": 0.1.25
-    "@goldstack/utils-package": 0.3.13
-    "@goldstack/utils-project": 0.3.12
+    "@goldstack/utils-package": 0.3.14
+    "@goldstack/utils-project": 0.3.13
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
+    "@goldstack/utils-template": 0.3.13
     "@goldstack/utils-template-test": 0.1.0
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
@@ -1451,7 +1451,7 @@ __metadata:
     "@goldstack/prepare-yarn-pnp-monorepo": 0.1.1
     "@goldstack/template-repository": 0.1.0
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
+    "@goldstack/utils-template": 0.3.13
     "@types/archiver": ^3.1.0
     "@types/jest": ^26.0.21
     "@types/mock-aws-s3": ^2.6.1
@@ -1464,26 +1464,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-docker-image-aws@0.3.26, @goldstack/template-docker-image-aws@workspace:workspaces/templates-lib/packages/template-docker-image-aws":
+"@goldstack/template-docker-image-aws@0.3.27, @goldstack/template-docker-image-aws@workspace:workspaces/templates-lib/packages/template-docker-image-aws":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-docker-image-aws@workspace:workspaces/templates-lib/packages/template-docker-image-aws"
   dependencies:
-    "@goldstack/infra": 0.3.13
-    "@goldstack/infra-aws": 0.3.14
-    "@goldstack/utils-aws-cli": 0.3.17
+    "@goldstack/infra": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
+    "@goldstack/utils-aws-cli": 0.3.18
     "@goldstack/utils-cli": 0.2.4
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-docker": 0.3.14
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-log": 0.2.5
-    "@goldstack/utils-package": 0.3.13
-    "@goldstack/utils-package-config": 0.3.13
+    "@goldstack/utils-package": 0.3.14
+    "@goldstack/utils-package-config": 0.3.14
     "@goldstack/utils-package-config-generate": 0.2.4
-    "@goldstack/utils-s3-deployment": 0.3.17
+    "@goldstack/utils-s3-deployment": 0.3.18
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
-    "@goldstack/utils-terraform": 0.3.19
-    "@goldstack/utils-terraform-aws": 0.3.19
+    "@goldstack/utils-template": 0.3.13
+    "@goldstack/utils-terraform": 0.3.20
+    "@goldstack/utils-terraform-aws": 0.3.20
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
     "@types/yargs": ^15.0.5
@@ -1498,24 +1498,24 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-email-send@0.3.51, @goldstack/template-email-send@workspace:workspaces/templates-lib/packages/template-email-send":
+"@goldstack/template-email-send@0.3.52, @goldstack/template-email-send@workspace:workspaces/templates-lib/packages/template-email-send":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-email-send@workspace:workspaces/templates-lib/packages/template-email-send"
   dependencies:
-    "@goldstack/infra": 0.3.13
-    "@goldstack/infra-aws": 0.3.14
+    "@goldstack/infra": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
     "@goldstack/utils-cli": 0.2.4
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-docker": 0.3.14
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-log": 0.2.5
-    "@goldstack/utils-package": 0.3.13
-    "@goldstack/utils-package-config": 0.3.13
+    "@goldstack/utils-package": 0.3.14
+    "@goldstack/utils-package-config": 0.3.14
     "@goldstack/utils-package-config-generate": 0.2.4
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
-    "@goldstack/utils-terraform": 0.3.19
-    "@goldstack/utils-terraform-aws": 0.3.19
+    "@goldstack/utils-template": 0.3.13
+    "@goldstack/utils-terraform": 0.3.20
+    "@goldstack/utils-terraform-aws": 0.3.20
     "@types/jest": ^26.0.21
     "@types/mock-aws-s3": ^2.6.1
     "@types/node": ^14.0.6
@@ -1533,27 +1533,27 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-lambda-express@0.3.52, @goldstack/template-lambda-express@workspace:workspaces/templates-lib/packages/template-lambda-express":
+"@goldstack/template-lambda-express@0.3.53, @goldstack/template-lambda-express@workspace:workspaces/templates-lib/packages/template-lambda-express":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-lambda-express@workspace:workspaces/templates-lib/packages/template-lambda-express"
   dependencies:
-    "@goldstack/infra": 0.3.13
-    "@goldstack/infra-aws": 0.3.14
-    "@goldstack/utils-aws-cli": 0.3.17
+    "@goldstack/infra": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
+    "@goldstack/utils-aws-cli": 0.3.18
     "@goldstack/utils-cli": 0.2.4
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-docker": 0.3.14
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-log": 0.2.5
-    "@goldstack/utils-package": 0.3.13
-    "@goldstack/utils-package-config": 0.3.13
+    "@goldstack/utils-package": 0.3.14
+    "@goldstack/utils-package-config": 0.3.14
     "@goldstack/utils-package-config-generate": 0.2.4
-    "@goldstack/utils-s3-deployment": 0.3.17
+    "@goldstack/utils-s3-deployment": 0.3.18
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
-    "@goldstack/utils-terraform": 0.3.19
-    "@goldstack/utils-terraform-aws": 0.3.19
+    "@goldstack/utils-template": 0.3.13
+    "@goldstack/utils-terraform": 0.3.20
+    "@goldstack/utils-terraform-aws": 0.3.20
     "@types/archiver": ^3.1.0
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
@@ -1575,20 +1575,20 @@ __metadata:
   resolution: "@goldstack/template-management-cli@workspace:workspaces/apps/packages/template-management-cli"
   dependencies:
     "@goldstack/goldstack-email-send": 0.1.0
-    "@goldstack/infra-aws": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
     "@goldstack/project-build": 0.1.0
     "@goldstack/project-install": 0.1.0
     "@goldstack/template-build-set": 0.1.0
-    "@goldstack/template-docker-image-aws": 0.3.26
+    "@goldstack/template-docker-image-aws": 0.3.27
     "@goldstack/template-repository": 0.1.0
     "@goldstack/template-repository-bucket": 0.1.0
-    "@goldstack/template-s3": 0.3.44
-    "@goldstack/template-static-website-aws": 0.3.44
+    "@goldstack/template-s3": 0.3.45
+    "@goldstack/template-static-website-aws": 0.3.45
     "@goldstack/utils-cli": 0.2.4
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-git": 0.1.25
-    "@goldstack/utils-package": 0.3.13
-    "@goldstack/utils-project": 0.3.12
+    "@goldstack/utils-package": 0.3.14
+    "@goldstack/utils-project": 0.3.13
     "@goldstack/utils-sh": 0.4.12
     "@types/jest": ^26.0.21
     "@types/mock-aws-s3": ^2.6.1
@@ -1614,25 +1614,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-nextjs@0.3.45, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
+"@goldstack/template-nextjs@0.3.46, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs"
   dependencies:
-    "@goldstack/infra": 0.3.13
-    "@goldstack/infra-aws": 0.3.14
-    "@goldstack/template-static-website-aws": 0.3.44
-    "@goldstack/utils-aws-cli": 0.3.17
+    "@goldstack/infra": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
+    "@goldstack/template-static-website-aws": 0.3.45
+    "@goldstack/utils-aws-cli": 0.3.18
     "@goldstack/utils-cli": 0.2.4
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-log": 0.2.5
-    "@goldstack/utils-package": 0.3.13
-    "@goldstack/utils-package-config": 0.3.13
+    "@goldstack/utils-package": 0.3.14
+    "@goldstack/utils-package-config": 0.3.14
     "@goldstack/utils-package-config-generate": 0.2.4
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
-    "@goldstack/utils-terraform": 0.3.19
+    "@goldstack/utils-template": 0.3.13
+    "@goldstack/utils-terraform": 0.3.20
     "@types/glob": ^7.1.3
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
@@ -1653,7 +1653,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-repository-bucket@workspace:workspaces/templates-management/packages/template-repository-bucket"
   dependencies:
-    "@goldstack/template-s3": 0.3.44
+    "@goldstack/template-s3": 0.3.45
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-sh": 0.4.12
     "@types/jest": ^26.0.21
@@ -1673,10 +1673,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-repository@workspace:workspaces/templates-management/packages/template-repository"
   dependencies:
-    "@goldstack/utils-package": 0.3.13
+    "@goldstack/utils-package": 0.3.14
     "@goldstack/utils-s3": 0.2.5
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
+    "@goldstack/utils-template": 0.3.13
     "@types/archiver": ^3.1.0
     "@types/fs-extra": ^9.0.1
     "@types/jest": ^26.0.21
@@ -1691,26 +1691,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-s3@0.3.44, @goldstack/template-s3@workspace:workspaces/templates-lib/packages/template-s3":
+"@goldstack/template-s3@0.3.45, @goldstack/template-s3@workspace:workspaces/templates-lib/packages/template-s3":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-s3@workspace:workspaces/templates-lib/packages/template-s3"
   dependencies:
-    "@goldstack/infra": 0.3.13
-    "@goldstack/infra-aws": 0.3.14
+    "@goldstack/infra": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
     "@goldstack/utils-cli": 0.2.4
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-docker": 0.3.14
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-log": 0.2.5
-    "@goldstack/utils-package": 0.3.13
-    "@goldstack/utils-package-config": 0.3.13
+    "@goldstack/utils-package": 0.3.14
+    "@goldstack/utils-package-config": 0.3.14
     "@goldstack/utils-package-config-generate": 0.2.4
-    "@goldstack/utils-s3-deployment": 0.3.17
+    "@goldstack/utils-s3-deployment": 0.3.18
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
-    "@goldstack/utils-terraform": 0.3.19
-    "@goldstack/utils-terraform-aws": 0.3.19
+    "@goldstack/utils-template": 0.3.13
+    "@goldstack/utils-terraform": 0.3.20
+    "@goldstack/utils-terraform-aws": 0.3.20
     "@types/jest": ^26.0.21
     "@types/mock-aws-s3": ^2.6.1
     "@types/node": ^14.0.6
@@ -1727,24 +1727,24 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-static-website-aws@0.3.44, @goldstack/template-static-website-aws@workspace:workspaces/templates-lib/packages/template-static-website-aws":
+"@goldstack/template-static-website-aws@0.3.45, @goldstack/template-static-website-aws@workspace:workspaces/templates-lib/packages/template-static-website-aws":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-static-website-aws@workspace:workspaces/templates-lib/packages/template-static-website-aws"
   dependencies:
-    "@goldstack/infra": 0.3.13
-    "@goldstack/infra-aws": 0.3.14
+    "@goldstack/infra": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
     "@goldstack/utils-cli": 0.2.4
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-log": 0.2.5
-    "@goldstack/utils-package": 0.3.13
-    "@goldstack/utils-package-config": 0.3.13
+    "@goldstack/utils-package": 0.3.14
+    "@goldstack/utils-package-config": 0.3.14
     "@goldstack/utils-package-config-generate": 0.2.4
-    "@goldstack/utils-s3-deployment": 0.3.17
-    "@goldstack/utils-template": 0.3.12
-    "@goldstack/utils-terraform": 0.3.19
-    "@goldstack/utils-terraform-aws": 0.3.19
+    "@goldstack/utils-s3-deployment": 0.3.18
+    "@goldstack/utils-template": 0.3.13
+    "@goldstack/utils-terraform": 0.3.20
+    "@goldstack/utils-terraform-aws": 0.3.20
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
     "@types/yargs": ^15.0.5
@@ -1772,11 +1772,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-aws-cli@0.3.17, @goldstack/utils-aws-cli@workspace:workspaces/templates-lib/packages/utils-aws-cli":
+"@goldstack/utils-aws-cli@0.3.18, @goldstack/utils-aws-cli@workspace:workspaces/templates-lib/packages/utils-aws-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-aws-cli@workspace:workspaces/templates-lib/packages/utils-aws-cli"
   dependencies:
-    "@goldstack/infra-aws": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
     "@goldstack/utils-docker": 0.3.14
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-log": 0.2.5
@@ -1803,7 +1803,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-config@0.3.12, @goldstack/utils-config@workspace:workspaces/templates-lib/packages/utils-config":
+"@goldstack/utils-config@0.3.13, @goldstack/utils-config@workspace:workspaces/templates-lib/packages/utils-config":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-config@workspace:workspaces/templates-lib/packages/utils-config"
   dependencies:
@@ -1950,14 +1950,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-package-config@0.3.13, @goldstack/utils-package-config@workspace:workspaces/templates-lib/packages/utils-package-config":
+"@goldstack/utils-package-config@0.3.14, @goldstack/utils-package-config@workspace:workspaces/templates-lib/packages/utils-package-config":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-package-config@workspace:workspaces/templates-lib/packages/utils-package-config"
   dependencies:
-    "@goldstack/infra": 0.3.13
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/infra": 0.3.14
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-git": 0.1.25
-    "@goldstack/utils-package": 0.3.13
+    "@goldstack/utils-package": 0.3.14
     "@goldstack/utils-sh": 0.4.12
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
@@ -1977,7 +1977,7 @@ __metadata:
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-log": 0.2.5
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
+    "@goldstack/utils-template": 0.3.13
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
     jest: ^26.6.3
@@ -2003,12 +2003,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-package@0.3.13, @goldstack/utils-package@workspace:workspaces/templates-lib/packages/utils-package":
+"@goldstack/utils-package@0.3.14, @goldstack/utils-package@workspace:workspaces/templates-lib/packages/utils-package":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-package@workspace:workspaces/templates-lib/packages/utils-package"
   dependencies:
-    "@goldstack/infra": 0.3.13
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/infra": 0.3.14
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-sh": 0.4.12
     "@types/jest": ^26.0.21
@@ -2023,11 +2023,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-project@0.3.12, @goldstack/utils-project@workspace:workspaces/templates-lib/packages/utils-project":
+"@goldstack/utils-project@0.3.13, @goldstack/utils-project@workspace:workspaces/templates-lib/packages/utils-project":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-project@workspace:workspaces/templates-lib/packages/utils-project"
   dependencies:
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-json-to-ts": 0.3.12
     "@goldstack/utils-sh": 0.4.12
@@ -2041,12 +2041,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-s3-deployment@0.3.17, @goldstack/utils-s3-deployment@workspace:workspaces/templates-lib/packages/utils-s3-deployment":
+"@goldstack/utils-s3-deployment@0.3.18, @goldstack/utils-s3-deployment@workspace:workspaces/templates-lib/packages/utils-s3-deployment":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-s3-deployment@workspace:workspaces/templates-lib/packages/utils-s3-deployment"
   dependencies:
-    "@goldstack/infra-aws": 0.3.14
-    "@goldstack/utils-aws-cli": 0.3.17
+    "@goldstack/infra-aws": 0.3.15
+    "@goldstack/utils-aws-cli": 0.3.18
     "@goldstack/utils-docker": 0.3.14
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-sh": 0.4.12
@@ -2101,13 +2101,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-template-test@workspace:workspaces/templates-management/packages/utils-template-test"
   dependencies:
-    "@goldstack/infra": 0.3.13
+    "@goldstack/infra": 0.3.14
     "@goldstack/template-build": 0.1.0
     "@goldstack/template-repository": 0.1.0
-    "@goldstack/utils-config": 0.3.12
-    "@goldstack/utils-package": 0.3.13
+    "@goldstack/utils-config": 0.3.13
+    "@goldstack/utils-package": 0.3.14
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-template": 0.3.12
+    "@goldstack/utils-template": 0.3.13
     "@goldstack/utils-yarn": 0.3.15
     "@types/jest": ^26.0.21
     "@types/mock-aws-s3": ^2.6.1
@@ -2121,11 +2121,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-template@0.3.12, @goldstack/utils-template@workspace:workspaces/templates-lib/packages/utils-template":
+"@goldstack/utils-template@0.3.13, @goldstack/utils-template@workspace:workspaces/templates-lib/packages/utils-template":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-template@workspace:workspaces/templates-lib/packages/utils-template"
   dependencies:
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-json-to-ts": 0.3.12
     "@goldstack/utils-sh": 0.4.12
@@ -2137,17 +2137,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-terraform-aws@0.3.19, @goldstack/utils-terraform-aws@workspace:workspaces/templates-lib/packages/utils-terraform-aws":
+"@goldstack/utils-terraform-aws@0.3.20, @goldstack/utils-terraform-aws@workspace:workspaces/templates-lib/packages/utils-terraform-aws":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-terraform-aws@workspace:workspaces/templates-lib/packages/utils-terraform-aws"
   dependencies:
-    "@goldstack/infra-aws": 0.3.14
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/infra-aws": 0.3.15
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-log": 0.2.5
-    "@goldstack/utils-package": 0.3.13
+    "@goldstack/utils-package": 0.3.14
     "@goldstack/utils-sh": 0.4.12
-    "@goldstack/utils-terraform": 0.3.19
+    "@goldstack/utils-terraform": 0.3.20
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
     aws-sdk: 2.721.0
@@ -2157,17 +2157,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-terraform@0.3.19, @goldstack/utils-terraform@workspace:workspaces/templates-lib/packages/utils-terraform":
+"@goldstack/utils-terraform@0.3.20, @goldstack/utils-terraform@workspace:workspaces/templates-lib/packages/utils-terraform":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-terraform@workspace:workspaces/templates-lib/packages/utils-terraform"
   dependencies:
-    "@goldstack/infra": 0.3.13
-    "@goldstack/infra-aws": 0.3.14
-    "@goldstack/utils-config": 0.3.12
+    "@goldstack/infra": 0.3.14
+    "@goldstack/infra-aws": 0.3.15
+    "@goldstack/utils-config": 0.3.13
     "@goldstack/utils-docker": 0.3.14
     "@goldstack/utils-git": 0.1.25
     "@goldstack/utils-log": 0.2.5
-    "@goldstack/utils-package": 0.3.13
+    "@goldstack/utils-package": 0.3.14
     "@goldstack/utils-sh": 0.4.12
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
