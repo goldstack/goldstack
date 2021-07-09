@@ -4,6 +4,6 @@ This library provides utilities to generate JSON schema configurations from Type
 
 Used in:
 
-- [template-nextjs](https://github.com/goldstack/goldstack-lib/tree/master/packages/template-nextjs)
-- [template-static-website-aws](https://github.com/goldstack/goldstack-lib/tree/master/packages/template-static-website-aws)
-- [template-lambda-express](https://github.com/goldstack/goldstack-lib/tree/master/packages/template-lambda-express)
+- [template-nextjs](https://www.npmjs.com/package/@goldstack/template-nextjs)
+- [template-static-website-aws](https://www.npmjs.com/package/@goldstack/template-static-website-aws)
+- [template-lambda-express](https://www.npmjs.com/package/@goldstack/template-lambda-express)
