@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-express",
-  "version": "0.3.53",
+  "version": "0.3.54",
   "description": "Building blocks for packages deployed as Express.js server on AWS Lambda",
   "keywords": [
     "goldstack",
@@ -58,8 +58,8 @@
     "@goldstack/utils-s3-deployment": "0.3.18",
     "@goldstack/utils-sh": "0.4.12",
     "@goldstack/utils-template": "0.3.13",
-    "@goldstack/utils-terraform": "0.3.20",
-    "@goldstack/utils-terraform-aws": "0.3.20",
+    "@goldstack/utils-terraform": "0.3.21",
+    "@goldstack/utils-terraform-aws": "0.3.21",
     "archiver": "^5.0.0",
     "yargs": "^15.4.1"
   },
