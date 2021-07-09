@@ -1,3 +1,3 @@
-- Base configuration based on https://learn.hashicorp.com/terraform/aws/lambda-api-gateway#overview
-- May need to taint API gateway for redeployment: https://learn.hashicorp.com/terraform/aws/lambda-api-gateway#making-changes-to-the-api-gateway-configuration
-- add API gateway event https://github.com/awslabs/aws-serverless-express#getting-the-api-gateway-event-object
+# Goldstack API
+
+This is the API used for supporting the Goldstack project builder: [goldstack.party/build](https://goldstack.party/build).
