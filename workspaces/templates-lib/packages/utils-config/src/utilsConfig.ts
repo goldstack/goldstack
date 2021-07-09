@@ -53,3 +53,7 @@ export const getPackageConfigPaths = (workspacePath: string): string[] => {
 export const getAwsConfigPath = (workspacePath: string): string => {
   return workspacePath + 'config/infra/aws/config.json';
 };
+
+export const getAwsTerraformConfigPath = (workspacePath: string): string => {
+  return workspacePath + 'config/infra/aws/terraform.json';
+};

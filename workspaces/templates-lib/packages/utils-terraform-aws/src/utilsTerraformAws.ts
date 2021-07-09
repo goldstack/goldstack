@@ -6,6 +6,8 @@ import {
   AWSConfiguration,
   AWSDeployment,
   AWSUser,
+  assertTerraformConfig,
+  writeTerraformConfig,
 } from '@goldstack/infra-aws';
 import {
   terraformCli,
@@ -16,21 +18,27 @@ import { sh } from '@goldstack/utils-sh';
 import AWS from 'aws-sdk';
 import { createState } from './tfState';
 import crypto from 'crypto';
+import {
+  AWSTerraformState,
+  RemoteState,
+} from '@goldstack/infra-aws/dist/types/awsTerraformState';
 
-const getAWSUserFromConfig = (
-  config: AWSConfiguration,
+const getRemoteStateConfig = (
+  config: AWSTerraformState,
   userName: string
-): AWSUser => {
-  const userConfig = config.users.filter((u) => u.name === userName);
+): RemoteState => {
+  const userConfig = config.remoteState.filter((u) => u.user === userName);
   if (userConfig.length === 0) {
-    throw new Error(`Cannot find aws user ${userName}`);
+    throw new Error(
+      `Cannot find aws user ${userName} in project terraform config`
+    );
   }
   return userConfig[0];
 };
 
 export class AWSCloudProvider implements CloudProvider {
   user: AWS.Credentials;
-  awsConfig: AWSConfiguration;
+  remoteStateConfig: AWSTerraformState;
 
   generateEnvVariableString = (): string => {
     return (
@@ -51,11 +59,11 @@ export class AWSCloudProvider implements CloudProvider {
   getTfStateVariables = (
     deployment: TerraformDeployment
   ): [string, string][] => {
-    const awsUserConfig = getAWSUserFromConfig(
-      this.awsConfig,
+    const remoteStateConfig = getRemoteStateConfig(
+      this.remoteStateConfig,
       (deployment as AWSDeployment).awsUser
     );
-    const bucket = awsUserConfig.config.terraformStateBucket;
+    const bucket = remoteStateConfig.terraformStateBucket;
     if (!bucket) {
       throw new Error(
         `TF state bucket not defined for user ${
@@ -64,7 +72,7 @@ export class AWSCloudProvider implements CloudProvider {
       );
     }
 
-    const ddTable = awsUserConfig.config.terraformStateDynamoDBTable;
+    const ddTable = remoteStateConfig.terraformStateDynamoDBTable;
     if (!ddTable) {
       throw new Error(
         `TF state DynamoDB table not defined for user ${
@@ -91,9 +99,9 @@ export class AWSCloudProvider implements CloudProvider {
     ];
   };
 
-  constructor(credentials: AWS.Credentials, awsConfig: AWSConfiguration) {
+  constructor(credentials: AWS.Credentials, awsConfig: AWSTerraformState) {
     this.user = credentials;
-    this.awsConfig = awsConfig;
+    this.remoteStateConfig = awsConfig;
   }
 }
 
@@ -104,30 +112,30 @@ export const terraformAwsCli = async (args: string[]): Promise<void> => {
 
   const credentials = await getAWSUser(deployment.awsUser);
 
-  const awsConfig = readConfig();
+  const awsTerraformConfig = assertTerraformConfig(deployment.awsUser);
 
   const projectHash = crypto.randomBytes(20).toString('hex');
 
-  const awsUserConfig = getAWSUserFromConfig(
-    awsConfig,
+  const remoteStateConfig = getRemoteStateConfig(
+    awsTerraformConfig,
     (deployment as AWSDeployment).awsUser
   );
-  if (!awsUserConfig.config.terraformStateBucket) {
-    awsUserConfig.config.terraformStateBucket = `goldstack-tfstate-${projectHash}`;
-    writeConfig(awsConfig);
+  if (!remoteStateConfig.terraformStateBucket) {
+    remoteStateConfig.terraformStateBucket = `goldstack-tfstate-${projectHash}`;
+    writeTerraformConfig(awsTerraformConfig);
   }
-  if (!awsUserConfig.config.terraformStateDynamoDBTable) {
-    awsUserConfig.config.terraformStateDynamoDBTable = `goldstack-tfstate-${projectHash}-lock`;
-    writeConfig(awsConfig);
+  if (!remoteStateConfig.terraformStateDynamoDBTable) {
+    remoteStateConfig.terraformStateDynamoDBTable = `goldstack-tfstate-${projectHash}-lock`;
+    writeTerraformConfig(awsTerraformConfig);
   }
 
   await createState({
-    bucketName: awsUserConfig.config.terraformStateBucket,
-    dynamoDBTableName: awsUserConfig.config.terraformStateDynamoDBTable,
+    bucketName: remoteStateConfig.terraformStateBucket,
+    dynamoDBTableName: remoteStateConfig.terraformStateDynamoDBTable,
     credentials,
   });
 
   terraformCli(args, {
-    provider: new AWSCloudProvider(credentials, awsConfig),
+    provider: new AWSCloudProvider(credentials, awsTerraformConfig),
   });
 };

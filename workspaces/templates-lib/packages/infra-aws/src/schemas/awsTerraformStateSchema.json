@@ -1,0 +1,57 @@
+{
+  "$ref": "#/definitions/AWSTerraformState",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "AWSTerraformState": {
+      "additionalProperties": false,
+      "properties": {
+        "remoteState": {
+          "items": {
+            "$ref": "#/definitions/RemoteState"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "remoteState"
+      ],
+      "type": "object"
+    },
+    "Name": {
+      "description": "Identifier for this user. No spaces allowed.",
+      "pattern": "^[^\\s]*$",
+      "title": "Name",
+      "type": "string"
+    },
+    "RemoteState": {
+      "additionalProperties": false,
+      "properties": {
+        "terraformStateBucket": {
+          "$ref": "#/definitions/TerraformStateBucket"
+        },
+        "terraformStateDynamoDBTable": {
+          "$ref": "#/definitions/TerraformDynamoDBTable"
+        },
+        "user": {
+          "$ref": "#/definitions/Name"
+        }
+      },
+      "required": [
+        "user"
+      ],
+      "type": "object"
+    },
+    "TerraformDynamoDBTable": {
+      "description": "The name of the DynamoDB table used for Terraform state locking. If not provided, will be auto-generated on first deployment.",
+      "pattern": "^[^\\s]*$",
+      "title": "Terraform DynamoDB Table",
+      "type": "string"
+    },
+    "TerraformStateBucket": {
+      "description": "The name of the bucket where the Terraform state for the packages will be stored.\nIf not provided, will be auto-generated on first deployment.",
+      "pattern": "^[^\\s]*$",
+      "title": "Terraform State Bucket",
+      "type": "string"
+    }
+  }
+}

@@ -3,6 +3,7 @@ import assert from 'assert';
 import {
   parseConfig,
   getAwsConfigPath,
+  getAwsTerraformConfigPath,
   validateConfig,
 } from '@goldstack/utils-config';
 import { readPackageConfig } from '@goldstack/utils-package';
@@ -16,9 +17,11 @@ import {
   AWSAccessKeyId,
   AWSSecretAccessKey,
   AWSEnvironmentVariableUserConfig,
+  Name,
 } from './types/awsAccount';
 import configSchema from './schemas/accountConfigSchema.json';
 import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
+import awsStateConfigSchema from './schemas/awsTerraformStateSchema.json';
 import AWS from 'aws-sdk';
 
 export type {
@@ -33,6 +36,7 @@ export type {
 };
 
 import { AWSDeployment } from './types/awsDeployment';
+import { AWSTerraformState } from './types/awsTerraformState';
 
 export {
   AWSDeployment,
@@ -59,6 +63,43 @@ export const readDeploymentFromPackageConfig = (
   return deployment as AWSDeployment;
 };
 
+export const assertTerraformConfig = (
+  user: Name,
+  path?: string
+): AWSTerraformState => {
+  if (!path) {
+    path = getAwsTerraformConfigPath('./../../');
+  }
+
+  let res: AWSTerraformState;
+  if (fs.existsSync(path)) {
+    res = parseConfig(read(path), awsStateConfigSchema, {
+      errorMessage: `Cannot load AWS Terraform configuration from ${path}`,
+    }) as AWSTerraformState;
+  } else {
+    res = {
+      remoteState: [],
+    };
+  }
+
+  if (!res.remoteState.find((el) => el.user == user)) {
+    res.remoteState.push({
+      user: user,
+    });
+  }
+
+  return res;
+};
+
+export const writeTerraformConfig = (
+  config: AWSTerraformState,
+  path?: string
+): void => {
+  if (!path) {
+    path = getAwsTerraformConfigPath('./../../');
+  }
+  write(JSON.stringify(config, null, 2), path);
+};
 export const readConfig = (path?: string): AWSConfiguration => {
   if (!path) {
     path = getAwsConfigPath('./../../');
