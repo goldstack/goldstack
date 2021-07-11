@@ -16,7 +16,7 @@ const FontIcon = styled.div`
   }
 `;
 
-const PurchaseDescription = (): JSX.Element => {
+const GetTemplateDescription = (): JSX.Element => {
   const checkCircle = dataUriToSrc(CheckCircle);
   return (
     <>
@@ -24,7 +24,7 @@ const PurchaseDescription = (): JSX.Element => {
         <h2>Experience the difference with a premium template</h2>
         <p>
           Goldstack templates are carefully crafted and extensively tested to
-          give your project solid foundations.
+          provide your project with solid foundations.
         </p>
       </div>
 
@@ -63,4 +63,4 @@ const PurchaseDescription = (): JSX.Element => {
   );
 };
 
-export default PurchaseDescription;
+export default GetTemplateDescription;

@@ -206,7 +206,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
     );
 
     const packageId = (await packageRes.json()).packageId;
-    router.push(`/projects/${projectId}/packages/${packageId}/pricing-options`);
+    router.push(`/projects/${projectId}/packages/${packageId}/get-template`);
   };
 
   const clickConfigure = () => {

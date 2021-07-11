@@ -5,8 +5,8 @@ import Header from 'src/components/Header';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import OneOffPurchase from 'src/components/OneOffPurchase';
-import PurchaseDescription from 'src/components/PurchaseDescription';
+import ConfigureSession from 'src/components/ConfigureSession';
+import GetTemplateDescription from 'src/components/GetTemplateDescription';
 
 import { getEndpoint } from '@goldstack/goldstack-api';
 import useSWR from 'swr';
@@ -28,7 +28,7 @@ const PurchaseTemplatePage = (): JSX.Element => {
   }
 
   const { data, error } = useSWR(`${getEndpoint()}/sessions`, fetcher);
-  const onPurchaseComplete = (): void => {
+  const onConfigurationComplete = (): void => {
     router.push(`/projects/${id}/packages/${packageId}/download`);
   };
 
@@ -56,7 +56,7 @@ const PurchaseTemplatePage = (): JSX.Element => {
   return (
     <>
       <Head>
-        <title>Purchase Template</title>
+        <title>Get Template</title>
       </Head>
       <Header></Header>
       <Container className="space-2 space-lg-3">
@@ -64,19 +64,19 @@ const PurchaseTemplatePage = (): JSX.Element => {
           <Col lg={6}>
             {error && <p>Error loading session data {error.toString()}</p>}
             {data && !data.paymentReceived && (
-              <OneOffPurchase
-                onPurchaseComplete={onPurchaseComplete}
+              <ConfigureSession
+                onConfigurationComplete={onConfigurationComplete}
                 projectId={id as string}
                 packageId={packageId as string}
                 stripeId={data.stripeId as string}
-              ></OneOffPurchase>
+              ></ConfigureSession>
             )}
             {data && data.paymentReceived && (
-              <p>Payment already received. Thank you!</p>
+              <p>User session already confirmed. Thank you!</p>
             )}
           </Col>
           <Col lg={5} className="mb-7 mb-lg-0 pt-5">
-            <PurchaseDescription></PurchaseDescription>
+            <GetTemplateDescription></GetTemplateDescription>
           </Col>
         </Row>
       </Container>

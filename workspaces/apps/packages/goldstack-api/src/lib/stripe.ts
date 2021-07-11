@@ -39,7 +39,7 @@ export const createSession = async (params: {
     customer_email: params.email,
     mode: 'payment',
     success_url: `${process.env.CORS}/projects/${params.projectId}/packages/${params.packageId}/download`,
-    cancel_url: `${process.env.CORS}/projects/${params.projectId}/packages/${params.packageId}/purchase-template`,
+    cancel_url: `${process.env.CORS}/projects/${params.projectId}/packages/${params.packageId}/get-template`,
   });
   return session;
 };

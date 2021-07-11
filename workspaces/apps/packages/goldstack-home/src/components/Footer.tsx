@@ -50,11 +50,6 @@ const Footer = (): JSX.Element => {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/pricing">
-                    Pricing
-                  </a>
-                </li>
-                <li className="nav-item">
                   <a className="nav-link" href="/terms-and-conditions">
                     Terms and Conditions
                   </a>

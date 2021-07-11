@@ -81,9 +81,6 @@ const Header = (): JSX.Element => {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                  <Nav.Link href="/pricing">Pricing</Nav.Link>
-                </Nav.Item>{' '}
-                <Nav.Item as="li">
                   <Nav.Link href="https://github.com/goldstack">
                     <img src={GitHub} style={{ width: '1rem' }}></img>
                   </Nav.Link>

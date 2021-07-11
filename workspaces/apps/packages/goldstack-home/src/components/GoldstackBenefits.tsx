@@ -61,26 +61,6 @@ const GoldstackBenefits = (): JSX.Element => {
             </a>
           </div>
 
-          <div className="col-sm-6 col-lg-3 px-2 mb-3 mb-sm-0">
-            <a className="card h-100 transition-3d-hover" href="/pricing">
-              <div className="card-body">
-                <figure className="w-100 max-w-8rem mb-4">
-                  <img className="img-fluid" src={Icon5} alt="SVG" />
-                </figure>
-                <h4>Premium</h4>
-                <p className="font-size-1 text-body mb-0">
-                  Goldstack templates are crafted with quality in mind to save
-                  you valuable time.
-                </p>
-              </div>
-              <div className="card-footer border-0 pt-0">
-                <span className="font-size-1">
-                  Learn more <i className="fas fa-angle-right fa-sm ml-1"></i>
-                </span>
-              </div>
-            </a>
-          </div>
-
           <div className="col-sm-6 col-lg-3 px-2">
             <a
               className="card h-100 transition-3d-hover"

@@ -207,31 +207,33 @@ const performPurchase = async (params: {
     projectId: params.projectId,
     packageId: params.packageId,
   });
-  await ses
-    .sendEmail({
-      Destination: {
-        ToAddresses: [params.email],
-        BccAddresses: ['mxrogm@gmail.com'],
-      },
-      Message: {
-        Subject: { Charset: 'UTF-8', Data: 'Goldstack Template Purchase' },
-        Body: {
-          Text: {
-            Charset: 'UTF-8',
-            Data:
-              'Thank you for selecting a Goldstack template!\n\n' +
-              'Please keep the following download link for your reference\n\n' +
-              `${params.downloadUrl}?token=${sessionData?.sessionId}\n\n` +
-              'You can also use this link to create new templates.\n\n' +
-              'The link will be valid for 30 days from your first template purchase.\n\n' +
-              'To get started, please see the following getting started guides:\n\n' +
-              gettingStartedLinks,
+  if (params.email) {
+    await ses
+      .sendEmail({
+        Destination: {
+          ToAddresses: [params.email],
+          BccAddresses: ['mxrogm@gmail.com'],
+        },
+        Message: {
+          Subject: { Charset: 'UTF-8', Data: 'Goldstack Template' },
+          Body: {
+            Text: {
+              Charset: 'UTF-8',
+              Data:
+                'Thank you for selecting a Goldstack template!\n\n' +
+                'Please keep the following download link for your reference\n\n' +
+                `${params.downloadUrl}?token=${sessionData?.sessionId}\n\n` +
+                'You can also use this link to create new templates.\n\n' +
+                'The link will be valid for 30 days from your template download.\n\n' +
+                'To get started, please see the following getting started guides:\n\n' +
+                gettingStartedLinks,
+            },
           },
         },
-      },
-      Source: '"Goldstack" <hi@' + (await getFromDomain()) + '>',
-    })
-    .promise();
+        Source: '"Goldstack" <hi@' + (await getFromDomain()) + '>',
+      })
+      .promise();
+  }
 
   await rmSafe(workspacePath);
 };
@@ -242,10 +244,6 @@ export const putSessionHandler = async (
 ): Promise<void> => {
   try {
     const { email, coupon, downloadUrl, projectId, packageId } = req.body;
-    if (!email) {
-      res.status(400).json({ errorMessage: 'Expected property email' });
-      return;
-    }
     const { userToken } = req.cookies;
     if (!userToken) {
       res
@@ -347,10 +345,9 @@ export const postPurchase = async (
       });
       return;
     }
-    assert(sessionData.email);
     await performPurchase({
       userToken,
-      email: sessionData.email,
+      email: sessionData.email || '',
       projectId,
       packageId,
       downloadUrl,
