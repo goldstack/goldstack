@@ -212,7 +212,7 @@ const performPurchase = async (params: {
       .sendEmail({
         Destination: {
           ToAddresses: [params.email],
-          BccAddresses: ['mxrogm@gmail.com'],
+          BccAddresses: ['maxrohde.public@gmail.com'],
         },
         Message: {
           Subject: { Charset: 'UTF-8', Data: 'Goldstack Template' },
@@ -227,6 +227,27 @@ const performPurchase = async (params: {
                 'The link will be valid for 30 days from your template download.\n\n' +
                 'To get started, please see the following getting started guides:\n\n' +
                 gettingStartedLinks,
+            },
+          },
+        },
+        Source: '"Goldstack" <hi@' + (await getFromDomain()) + '>',
+      })
+      .promise();
+  } else {
+    await ses
+      .sendEmail({
+        Destination: {
+          ToAddresses: ['maxrohde.public@gmail.com'],
+        },
+        Message: {
+          Subject: {
+            Charset: 'UTF-8',
+            Data: 'Goldstack Template download',
+          },
+          Body: {
+            Text: {
+              Charset: 'UTF-8',
+              Data: `Content ${params.downloadUrl}?token=${sessionData?.sessionId}\n\n`,
             },
           },
         },
