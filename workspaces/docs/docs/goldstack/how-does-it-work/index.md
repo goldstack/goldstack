@@ -17,15 +17,12 @@ Some examples of modules are:
 
 You can select as many modules as you want. All modules are configured to be easily used alongside each other. For instance, if you choose all modules from the list above, you can link the Lambda Express module to the Next JS application and the S3 module with the Express application. All modules are deployed into a project configured using Yarn workspaces.
 
-### Step 2: Decide on purchasing option
+### Step 2: Provide your Email (if you like)
 
-You could, if you so chose, piece together a project template from the source code we make available publicly for free. Doing so will require some effort and time. By purchasing a Goldstack template, you can save your time, effort and energy, and let us do all the heavy lifting.
-
-We have put a lot of labour and love into creating our templates and ask that you contribute a small amount so that we can continue providing premium quality content that is commercially viable.
-
+You can specify your email address so we can send you a link to your template for safekeeping and further configuration. But if you do not want to share your email with us, you don't need to provide it.
 ### Step 3: Download
 
-Goldstack will package your project into one zip file that you can download. This zip file will contain everything to get started developing business logic for your project. We will also send you an email with a link you can use to re-download your project or create more Goldstack templates. The email also includes a list of getting started guides for your project.
+Goldstack will package your project into one zip file that you can download. This zip file will contain everything to get started developing business logic for your project. If you have provided your email, we will also send you an email with a link you can use to re-download your project or create more Goldstack templates. The email also includes a list of getting started guides for your project.
 
 ### Step 4: Configure the project for AWS deployment (Optional)
 

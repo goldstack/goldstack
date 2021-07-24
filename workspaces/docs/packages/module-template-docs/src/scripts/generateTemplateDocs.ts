@@ -1,12 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('source-map-support').install();
 
-import { write, rmSafe, pwd } from '@goldstack/utils-sh';
-import {
-  getDocsDir,
-  transpile,
-  resolveMarkdown,
-} from '@goldstack/utils-docs-cli';
+import { write, rmSafe } from '@goldstack/utils-sh';
+import { transpile, resolveMarkdown } from '@goldstack/utils-docs-cli';
 
 import path from 'path';
 
@@ -14,6 +10,7 @@ import path from 'path';
 const paths = {
   docs: './../../docs/',
   templates: './../../../templates/packages/',
+  root: './../../../../',
   templateDocPath: 'docs/',
   readmeTemplatePath: 'README.template.md',
   readmePath: 'README.md',
@@ -85,6 +82,16 @@ const run = async () => {
     write(result, targetFileName);
     console.log('Writing Markdown doc file', path.resolve(targetFileName));
   }
+
+  // Step 3:
+  //   Generate goldstack root readme
+  const sourceFileName = path.resolve(
+    `${paths.root}${paths.readmeTemplatePath}`
+  );
+  const result = await resolveMarkdown(sourceFileName);
+  const targetFileName = `${paths.root}${paths.readmePath}`;
+  write(result, targetFileName);
+  console.log('Writing root Markdown Readme', path.resolve(targetFileName));
 };
 
 run()

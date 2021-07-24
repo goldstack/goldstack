@@ -5,7 +5,7 @@ title: About
 
 Getting started with a new project often takes so much longer than it should. Rather than writing code for the problem we want to solve, we fiddle around with the tooling. This problem is often substantial especially in JavaScript ecosystems, where getting common tools such as ESLint, TypeScript, Jest and React work together takes a lot of time and can be frustrating.
 
-Goldstack provides high quality starter projects that are configured based on best practices and sensible defaults. Using a Goldstack starter project rather than a hand-rolled one, will save you dozens of development hours. Moreover, at Goldstack we obsess with every detail of our starter projects and have the freedom to spend the time on optimizing things; something often lost in the race to get sprint goals delivered in many development projects.
+Goldstack provides high quality starter projects that are configured based on best practices and sensible defaults. Using a Goldstack starter project rather than a hand-rolled one, will save you dozens of development hours. Moreover, at Goldstack we obsess with every detail of our starter projects and have the freedom to spend the time on optimizing things; something often lost in the race to get goals delivered in many development projects.
 
 ## Design Principles
 

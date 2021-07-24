@@ -242,12 +242,12 @@ const performPurchase = async (params: {
         Message: {
           Subject: {
             Charset: 'UTF-8',
-            Data: 'Goldstack Template download',
+            Data: 'Goldstack Template download w/o email',
           },
           Body: {
             Text: {
               Charset: 'UTF-8',
-              Data: `Content ${params.downloadUrl}?token=${sessionData?.sessionId}\n\n`,
+              Data: `Modules\n\n${gettingStartedLinks}`,
             },
           },
         },
