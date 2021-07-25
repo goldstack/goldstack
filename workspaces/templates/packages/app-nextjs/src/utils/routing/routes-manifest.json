@@ -1,18 +1,27 @@
 {
-  "version": 1,
+  "version": 3,
   "pages404": true,
   "basePath": "",
-  "redirects": [],
-  "rewrites": [],
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
   "headers": [],
   "dynamicRoutes": [
     {
-      "page": "404",
-      "regex": "^/404.html$"
+      "page": "/404",
+      "regex": "^\\/404$"
     },
     {
-      "page": "index",
-      "regex": "^/index.html$"
+      "page": "/index",
+      "regex": "^\\/index$"
     }
-  ]
+  ],
+  "dataRoutes": [],
+  "rewrites": []
 }

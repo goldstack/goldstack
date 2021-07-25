@@ -11,7 +11,6 @@
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
     }
   ],
-  "rewrites": [],
   "headers": [],
   "dynamicRoutes": [
     {
@@ -67,6 +66,10 @@
       "regex": "^\\/docs\\/modules\\/lambda-express$"
     },
     {
+      "page": "/docs/modules/lambda-go-gin",
+      "regex": "^\\/docs\\/modules\\/lambda-go-gin$"
+    },
+    {
       "page": "/docs/modules/s3",
       "regex": "^\\/docs\\/modules\\/s3$"
     },
@@ -93,8 +96,9 @@
       "routeKeys": {
         "slug": "slug"
       },
-      "dataRouteRegex": "^/_next/data/2pZdLtwD1nR1uHbiis2so/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/2pZdLtwD1nR1uHbiis2so/docs/(?<slug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/AZpmJOYf693NXUyX88tci/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/AZpmJOYf693NXUyX88tci/docs/(?<slug>.+?)\\.json$"
     }
-  ]
+  ],
+  "rewrites": []
 }
