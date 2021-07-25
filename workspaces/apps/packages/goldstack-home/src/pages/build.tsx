@@ -118,14 +118,6 @@ const ModuleSelection = (props: { elements: string[] }) => {
     setShowWarningModal(false);
     doConfigure(true);
   };
-  // NextJs must always be selected when bootstrap is selected
-  if (
-    elements.indexOf('bootstrap') !== -1 &&
-    elements.indexOf('nextjs') === -1
-  ) {
-    elements.push('nextjs');
-    setElements([...elements]);
-  }
 
   const checkboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -144,14 +136,6 @@ const ModuleSelection = (props: { elements: string[] }) => {
 
   const doConfigure = async (ignoreNoModulesSelected: boolean) => {
     const selectedElements = [...elements];
-    // allow either nextjs or nextjs and bootstrap
-    if (
-      selectedElements.indexOf('bootstrap') !== -1 &&
-      selectedElements.indexOf('nextjs') !== -1
-    ) {
-      const idx = selectedElements.indexOf('nextjs');
-      selectedElements.splice(idx, 1);
-    }
     const packageIds = getPackageIds(selectedElements);
     if (!ignoreNoModulesSelected) {
       if (packageIds.length === 0) {
@@ -218,7 +202,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
     <>
       <Container className="space-2">
         <div className="w-md-80 w-lg-40 text-center mx-md-auto mb-5 mb-md-9">
-          <h2>Select the modules you need</h2>
+          <h2>Modules included in project</h2>
         </div>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
@@ -229,7 +213,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     <h2 className="h3 mb-0">UI</h2>
                   </div>
                   <Checkbox
-                    title="NextJs 11"
+                    title="Next.js 11"
                     element="nextjs"
                     icon={NextjsIcon}
                     disabled={building}
@@ -238,16 +222,12 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     onChange={checkboxChange}
                   ></Checkbox>
                   <Checkbox
-                    title="With Bootstrap"
+                    title="Next.js 11 + Bootstrap"
                     icon={BootstrapIcon}
                     element="bootstrap"
                     disabled={building}
                     docsLink={docsRoot + '/modules/app-nextjs-bootstrap'}
-                    className="ml-4"
-                    checked={
-                      elements.indexOf('nextjs') !== -1 &&
-                      elements.indexOf('bootstrap') !== -1
-                    }
+                    checked={elements.indexOf('bootstrap') !== -1}
                     onChange={checkboxChange}
                   ></Checkbox>
                   <Checkbox
@@ -264,7 +244,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     <h2 className="h3 mb-0">Backend</h2>
                   </div>
                   <Checkbox
-                    title="Lambda with Express Server"
+                    title="Lambda + Express.js"
                     element="express"
                     disabled={building}
                     icon={ExpressIcon}
@@ -273,7 +253,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     onChange={checkboxChange}
                   ></Checkbox>
                   <Checkbox
-                    title="Lambda with Go Gin Server"
+                    title="Lambda + Go Gin"
                     element="gin"
                     disabled={building}
                     icon="https://cdn.goldstack.party/img/202104/go_gin.png"

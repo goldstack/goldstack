@@ -72,10 +72,10 @@ const resolveIcons = (icons: TemplateIcons[]): any => {
 
 const createGif = (gif: string): React.ReactNode => {
   if (gif === 'nextjs-config') {
-    return <Image src={NextJsConfigGif}></Image>;
+    return <img src={NextJsConfigGif as any}></img>;
   }
   if (gif === 'react-typescript') {
-    return <Image src={ReactTypeScriptGif}></Image>;
+    return <img src={ReactTypeScriptGif as any}></img>;
   }
   throw new Error('Unknown gif ' + gif);
 };
@@ -85,13 +85,13 @@ const createImage = (image: string): React.ReactNode => {
     return <img src={image} className="img-fluid"></img>;
   }
   if (image === 'vercel-deployed') {
-    return <Image src={VercelDeployedImg} className="img-fluid"></Image>;
+    return <img src={VercelDeployedImg as any} className="img-fluid"></img>;
   }
   if (image === 'endpoint-typescript') {
-    return <Image src={EndpointTypeScript} className="img-fluid"></Image>;
+    return <img src={EndpointTypeScript as any} className="img-fluid"></img>;
   }
   if (image === 'lambda-config') {
-    return <Image src={LambdaConfigImg} className="img-fluid"></Image>;
+    return <img src={LambdaConfigImg as any} className="img-fluid"></img>;
   }
   throw new Error('Unknown image for feature details ' + image);
 };

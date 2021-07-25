@@ -2,7 +2,7 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import GoldstackIcon from './../../img/goldstack_icon_small.png';
+import GoldstackIcon from './../../icons/goldstack_icon.svg';
 
 import { TemplateFeatureImage } from '@goldstack/project-template-data';
 
@@ -56,9 +56,16 @@ const ProjectTemplateSidebar = (
             <a className="d-inline-block text-body" href="/">
               <div className="media align-items-center">
                 <div className="avatar avatar-xs mr-3">
-                  <Image
+                  {/* Somehow this errors out on local preview <Image
                     className="avatar-img"
                     src={GoldstackIcon}
+                    unoptimized={true}
+                    alt="Goldstack Icon"
+                  /> */}
+                  <img
+                    className="avatar-fluid"
+                    src={GoldstackIcon as any}
+                    width="40"
                     alt="Goldstack Icon"
                   />
                 </div>

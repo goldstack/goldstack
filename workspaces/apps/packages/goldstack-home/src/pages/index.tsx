@@ -42,10 +42,10 @@ const Front = (): JSX.Element => {
   return (
     <>
       <Head>
-        <title>Goldstack - The Very Best Starter Projects</title>
+        <title>Goldstack - Starter Project Builder</title>
         <meta
           property="og:title"
-          content="Goldstack - The Very Best Starter Projects"
+          content="Goldstack - Starter Project Builder"
           key="title"
         />
         <meta
@@ -65,8 +65,8 @@ const Front = (): JSX.Element => {
               <div className="mb-4">
                 <h1>First-Class Starter Projects</h1>
                 <p>
-                  Save tons of time by starting with a premium starter project
-                  assembled by Goldstack.
+                  Save tons of time by starting with a starter project assembled
+                  by Goldstack.
                 </p>
                 <a
                   className="btn btn-primary btn-wide transition-3d-hover"

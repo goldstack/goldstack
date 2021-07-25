@@ -100,7 +100,7 @@ const Footer = (): JSX.Element => {
           <div className="row align-items-md-center">
             <div className="col-md-6 mb-4 mb-md-0">
               <p className="small text-white-70 mb-0">
-                © 2020 Pureleap Pty. Ltd. All rights reserved.
+                © 2020-2021 Pureleap Pty. Ltd. All rights reserved.
               </p>
             </div>
 
