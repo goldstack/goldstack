@@ -2,8 +2,6 @@ import React from 'react';
 
 import { dataUriToSrc } from 'src/utils/utils';
 
-import Image from 'next/image';
-
 import Plus from 'src/icons/font-awesome/solid/plus.svg';
 import styles from './TemplateFeature.module.css';
 

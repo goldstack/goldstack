@@ -45,15 +45,19 @@
     "@stripe/stripe-js": "^1.10.0",
     "ajv": "6.12.2",
     "data-uri-to-buffer": "^3.0.1",
+    "file-loader": "^6.2.0",
+    "img-loader": "^4.0.0",
     "install": "^0.13.0",
     "next": "^11.0.1",
+    "next-optimized-images": "^2.6.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.4.3",
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
     "react-scrollable-anchor": "^0.6.1",
     "styled-components": "^5.0.0",
-    "swr": "^0.4.0"
+    "swr": "^0.4.0",
+    "url-loader": "^4.1.1"
   },
   "devDependencies": {
     "@goldstack/template-nextjs": "0.3.48",
@@ -75,7 +79,6 @@
     "jest": "^26.6.3",
     "jest-transform-stub": "^2.0.0",
     "next-compose-plugins": "^2.2.0",
-    "next-images": "^1.4.0",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
     "reload": "^3.1.0",

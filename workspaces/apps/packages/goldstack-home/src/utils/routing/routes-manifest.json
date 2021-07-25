@@ -30,10 +30,6 @@
       "regex": "^\\/index$"
     },
     {
-      "page": "/pricing",
-      "regex": "^\\/pricing$"
-    },
-    {
       "page": "/projects/[id]/packages/[packageId]/configure/[step]",
       "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/configure\\/[step]$"
     },
@@ -42,12 +38,8 @@
       "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/download$"
     },
     {
-      "page": "/projects/[id]/packages/[packageId]/pricing-options",
-      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/pricing-options$"
-    },
-    {
-      "page": "/projects/[id]/packages/[packageId]/purchase-template",
-      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/purchase-template$"
+      "page": "/projects/[id]/packages/[packageId]/get-template",
+      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/get-template$"
     },
     {
       "page": "/templates/express-lambda",
@@ -89,22 +81,13 @@
       "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/download(?:/)?$"
     },
     {
-      "page": "/projects/[id]/packages/[packageId]/pricing-options",
-      "regex": "^/projects/([^/]+?)/packages/([^/]+?)/pricing\\-options(?:/)?$",
+      "page": "/projects/[id]/packages/[packageId]/get-template",
+      "regex": "^/projects/([^/]+?)/packages/([^/]+?)/get\\-template(?:/)?$",
       "routeKeys": {
         "id": "id",
         "packageId": "packageId"
       },
-      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/pricing\\-options(?:/)?$"
-    },
-    {
-      "page": "/projects/[id]/packages/[packageId]/purchase-template",
-      "regex": "^/projects/([^/]+?)/packages/([^/]+?)/purchase\\-template(?:/)?$",
-      "routeKeys": {
-        "id": "id",
-        "packageId": "packageId"
-      },
-      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/purchase\\-template(?:/)?$"
+      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/get\\-template(?:/)?$"
     },
     {
       "page": "/templates/[template]",
@@ -121,8 +104,8 @@
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/dvnhRFglEVprDruCdY4C4/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/dvnhRFglEVprDruCdY4C4/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/jtYTR5vRmu\\-eKz1raLeqe/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/jtYTR5vRmu\\-eKz1raLeqe/templates/(?<template>[^/]+?)\\.json$"
     }
   ],
   "rewrites": []
