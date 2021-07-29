@@ -21,12 +21,11 @@
     "template": "template",
     "test:ci": "jest --passWithNoTests --config=./jest.config.js",
     "watch": "yarn compile && yarn web:build local && concurrently \"yarn web:watch local\" \"reload --dir ./webDist --watch-dir ./webDist --port 8076 --browser -v\" ",
-    "watch:new": "yarn compile && yarn web:build local && concurrently \"yarn web:watch local\" \"browser-sync start --server ./webDist --files ./webDist/* --port 8076\" ",
+    "watch:new": "yarn compile && yarn web:build local && concurrently \"yarn web:watch local\" \"light-server --serve ./webDist --watchexp ./webDist/* --port 8077 --delay 500 --open\" ",
     "web:build": "node ./dist/build.js $@",
     "web:watch": "node ./dist/watch.js $@"
   },
   "dependencies": {
-    "browser-sync": "^2.27.4",
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.2",
     "gulp-replace": "^1.0.0"
@@ -40,6 +39,7 @@
     "@types/node": "^14.0.6",
     "concurrently": "^5.2.0",
     "jest": "^26.6.3",
+    "light-server": "^2.9.1",
     "nodemon": "^2.0.4",
     "reload": "^3.2.0",
     "ts-jest": "^26.5.4",
