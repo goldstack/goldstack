@@ -1,3 +1,5 @@
+import { ProjectTemplateProps } from './projectTemplateTypes';
+
 export {
   ProjectTemplateProps,
   TemplateFeatureProps,
@@ -9,7 +11,22 @@ export {
   ShortTemplateFeature,
 } from './projectTemplateTypes';
 
-export { getNextJsTemplateData } from './templates/nextjsTemplateData';
-export { getExpressTemplateData } from './templates/expressTemplateData';
-export { getNextjsBootstrapTemplateData } from './templates/nextjsBootstrapTemplateData';
-export { getGoGinTemplateData } from './templates/goGinTemplateData';
+import { getNextJsTemplateData } from './templates/nextjsTemplateData';
+import { getNextjsBootstrapTemplateData } from './templates/nextjsBootstrapTemplateData';
+import { getExpressTemplateData } from './templates/expressTemplateData';
+import { getGoGinTemplateData } from './templates/goGinTemplateData';
+
+export { getNextJsTemplateData };
+export { getExpressTemplateData };
+export { getNextjsBootstrapTemplateData };
+export { getGoGinTemplateData };
+
+export const allTemplates = (): ProjectTemplateProps[] => {
+  const templates = [
+    getNextJsTemplateData(),
+    getNextjsBootstrapTemplateData(),
+    getExpressTemplateData(),
+    getGoGinTemplateData(),
+  ];
+  return templates;
+};

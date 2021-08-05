@@ -202,7 +202,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
     <>
       <Container className="space-2">
         <div className="w-md-80 w-lg-40 text-center mx-md-auto mb-5 mb-md-9">
-          <h2>Modules included in project</h2>
+          <h2>Select Modules for Project</h2>
         </div>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>

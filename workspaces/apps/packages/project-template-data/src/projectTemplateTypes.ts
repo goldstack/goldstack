@@ -67,8 +67,9 @@ export interface TextSectionProps {
 
 export interface ProjectTemplateProps {
   title: string;
+  id: string;
   description: string;
-  image: TemplateFeatureImage;
+  images: TemplateFeatureImage[];
   longDescription: string;
   tags: string[];
   hero: TextSectionProps;

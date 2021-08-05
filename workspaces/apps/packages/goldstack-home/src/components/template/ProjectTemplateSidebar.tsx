@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Image from 'next/image';
-
 import GoldstackIcon from './../../icons/goldstack_icon.svg';
 
 import { TemplateFeatureImage } from '@goldstack/project-template-data';

@@ -142,8 +142,9 @@ export const featureNextJsComposition: ShortTemplateFeature = {
 
 export const getNextJsTemplateData = (): ProjectTemplateProps => {
   return {
+    id: 'nextjs',
     title: 'Next.js Template',
-    image: 'nextjs',
+    images: ['nextjs', 'react', 'typescript'],
     description:
       'Next.js with all the fun and none of the hassle. Download an optimised starter template.',
     longDescription:

@@ -21,6 +21,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Header from './../components/Header';
 
+import { allTemplates } from '@goldstack/project-template-data';
 import PackageList from './../components/PackageList';
 
 import Foundation from './../components/Foundation';
@@ -29,11 +30,7 @@ import GoldstackBenefits from './../components/GoldstackBenefits';
 
 import Footer from './../components/Footer';
 import TemplateCallToAction from './../components/template/TemplateCallToAction';
-
-interface HeadingProps {
-  caption: string;
-  learnMoreLink: string;
-}
+import TemplateCard from 'src/components/template/TemplateCard';
 
 const Front = (): JSX.Element => {
   const router = useRouter();
@@ -60,6 +57,16 @@ const Front = (): JSX.Element => {
       <Header></Header>
       <main id="content" role="main">
         <Container className="space-top-1 space-top-md-2">
+          <div className="w-md-80 w-lg-40 text-center mx-md-auto mb-5 mb-md-9">
+            <h2>Templates</h2>
+          </div>
+          <Row>
+            {allTemplates().map((template, idx) => (
+              <div className="col-md-4 mb-3" key={idx}>
+                <TemplateCard template={template} />
+              </div>
+            ))}
+          </Row>
           <Row className="align-items-lg-center">
             <div className="col-lg-5 mb-7 mb-lg-0">
               <div className="mb-4">

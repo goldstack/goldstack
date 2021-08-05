@@ -6,10 +6,7 @@ import Header from 'src/components/Header';
 
 import {
   ProjectTemplateProps,
-  getNextJsTemplateData,
-  getNextjsBootstrapTemplateData,
-  getExpressTemplateData,
-  getGoGinTemplateData,
+  allTemplates,
 } from '@goldstack/project-template-data';
 
 import Footer from 'src/components/Footer';
@@ -60,19 +57,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const templateId = context.params.template;
 
-  let template: ProjectTemplateProps | undefined;
-  if (templateId === 'nextjs') {
-    template = getNextJsTemplateData();
-  }
-  if (templateId === 'nextjs-bootstrap') {
-    template = getNextjsBootstrapTemplateData();
-  }
-  if (templateId === 'express-lambda') {
-    template = getExpressTemplateData();
-  }
-  if (templateId === 'go-gin') {
-    template = getGoGinTemplateData();
-  }
+  const templates = allTemplates();
+  const template: ProjectTemplateProps | undefined = templates.find(
+    (t) => t.id == templateId
+  );
 
   return {
     props: {
