@@ -24,6 +24,7 @@
     "prepublishOnly": "yarn run build",
     "start:next": "next start",
     "template": "template-nextjs",
+    "test": "yarn test:ci --watch",
     "test:ci": "jest --passWithNoTests --config=./jest.config.js",
     "watch": "yarn next:watch",
     "web:build": "NODE_ENV=production yarn build:next",

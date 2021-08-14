@@ -3,6 +3,7 @@ import { ProjectTemplateProps } from '@goldstack/project-template-data';
 
 import { resolveImage } from './imageUtil';
 
+import styles from './TemplateCard.module.css';
 export interface TemplateCardProps {
   template: ProjectTemplateProps;
 }
@@ -12,23 +13,25 @@ const TemplateCard = (props: TemplateCardProps): JSX.Element => {
     <>
       <div className="card border shadow-none d-block">
         <div className="card-body d-flex align-items-center p-0">
-          <div className="w-65 border-right">
+          <div className="w-35 ">
             <img
-              className="img-fluid"
+              className={`img-fluid ${styles['card-image']}`}
               src={resolveImage(props.template.images[0])}
               alt="Template Image 1"
             />
           </div>
           <div className="w-35">
-            <div className="border-bottom">
+            <div className="border-bottom border-left text-center">
               <img
-                className="img-fluid"
+                className={`img-fluid ${styles['card-image']}`}
                 src={resolveImage(props.template.images[1])}
                 alt="Template Image 2"
               />
             </div>
+          </div>
+          <div className="w-45">
             <img
-              className="img-fluid"
+              className={`img-fluid border-left ${styles['card-image']}`}
               src={resolveImage(props.template.images[2])}
               alt="Template Image 3"
             />

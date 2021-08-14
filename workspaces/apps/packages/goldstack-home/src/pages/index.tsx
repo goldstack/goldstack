@@ -30,7 +30,7 @@ import GoldstackBenefits from './../components/GoldstackBenefits';
 
 import Footer from './../components/Footer';
 import TemplateCallToAction from './../components/template/TemplateCallToAction';
-import TemplateCard from 'src/components/template/TemplateCard';
+import TemplateCard from './../components/template/TemplateCard';
 
 const Front = (): JSX.Element => {
   const router = useRouter();

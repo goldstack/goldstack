@@ -26,7 +26,6 @@ import ScrollableAnchor from 'react-scrollable-anchor';
 
 import {
   ShortTemplateFeature,
-  TemplateFeatureProps,
   TemplateIcons,
 } from '@goldstack/project-template-data';
 
