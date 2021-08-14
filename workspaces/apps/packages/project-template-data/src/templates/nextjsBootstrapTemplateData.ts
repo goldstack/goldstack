@@ -14,10 +14,9 @@ import {
 export const getNextjsBootstrapTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'nextjs-bootstrap',
-    title: 'Next.js + Bootstrap Template',
+    title: 'Next.js + Bootstrap',
     images: ['nextjs', 'bootstrap', 'typescript'],
-    description:
-      'Download an optimised starter template to start your project with Next.js and Bootstrap.',
+    description: 'Deploy a Next.js project with Bootstrap styling.',
     longDescription:
       'This free starter project configures a Next.js application with Bootstrap along with a number of other features built into the template.\n' +
       'Scroll down for an overview of the features included in this template.',

@@ -14,7 +14,7 @@ const ProjectTemplateBody = (props: ProjectTemplateProps): JSX.Element => {
         <div className="ml-lg-2">
           <div className="mb-5">
             <h2>
-              {props.title}{' '}
+              {props.title} {'Template'}
               <img
                 className="ml-1"
                 src={TopTemplateIcon}

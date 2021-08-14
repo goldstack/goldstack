@@ -3,13 +3,13 @@ import { ProjectTemplateProps } from '../projectTemplateTypes';
 export const getGoGinTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'go-gin',
-    title: 'Go Gin Lambda Template',
+    title: 'Go Gin Lambda',
     images: [
       'https://cdn.goldstack.party/img/202104/go_gin.png',
       'lambda',
       'yarn',
     ],
-    description: 'Deploy a serverless Go HTTP server using AWS labmda.',
+    description: 'Deploy a serverless Go HTTP server using AWS Lambda.',
     longDescription:
       'This project template contains a fully configured server using the Gin framework ready to be deployed in an AWS Lambda.\n' +
       'See a list of all features included in this template below.',

@@ -57,16 +57,6 @@ const Front = (): JSX.Element => {
       <Header></Header>
       <main id="content" role="main">
         <Container className="space-top-1 space-top-md-2">
-          <div className="w-md-80 w-lg-40 text-center mx-md-auto mb-5 mb-md-9">
-            <h2>Templates</h2>
-          </div>
-          <Row>
-            {allTemplates().map((template, idx) => (
-              <div className="col-md-4 mb-3" key={idx}>
-                <TemplateCard template={template} />
-              </div>
-            ))}
-          </Row>
           <Row className="align-items-lg-center">
             <div className="col-lg-5 mb-7 mb-lg-0">
               <div className="mb-4">
@@ -91,6 +81,16 @@ const Front = (): JSX.Element => {
                 alt="Relaxing coder"
               />
             </div>
+          </Row>
+          <div className="w-md-80 w-lg-40 text-center mx-md-auto mb-5 space-top-3 mb-md-9">
+            <h2>Templates</h2>
+          </div>
+          <Row>
+            {allTemplates().map((template, idx) => (
+              <div className="col-md-4 mb-3 d-flex" key={idx}>
+                <TemplateCard template={template} />
+              </div>
+            ))}
           </Row>
         </Container>
         <Container>

@@ -23,9 +23,9 @@ export { getGoGinTemplateData };
 
 export const allTemplates = (): ProjectTemplateProps[] => {
   const templates = [
-    getNextJsTemplateData(),
     getNextjsBootstrapTemplateData(),
     getExpressTemplateData(),
+    getNextJsTemplateData(),
     getGoGinTemplateData(),
   ];
   return templates;

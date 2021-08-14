@@ -143,10 +143,9 @@ export const featureNextJsComposition: ShortTemplateFeature = {
 export const getNextJsTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'nextjs',
-    title: 'Next.js Template',
+    title: 'Next.js',
     images: ['nextjs', 'react', 'typescript'],
-    description:
-      'Next.js with all the fun and none of the hassle. Download an optimised starter template.',
+    description: 'Complete Next.js project and deployment setup.',
     longDescription:
       'The free Goldstack <strong>Next.js starter template</strong> helps you kick start your Next.js development project. ' +
       'It has been hand-crafted for optimal developer experience and packed with best practices.\n' +
