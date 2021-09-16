@@ -31,10 +31,10 @@
   },
   "devDependencies": {
     "@goldstack/utils-package-config-generate": "0.2.4",
-    "@types/jest": "^26.0.21",
-    "@types/node": "^14.0.6",
-    "jest": "^26.6.3",
-    "ts-jest": "^26.5.4",
-    "typescript": "^4.3.4"
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.9.2",
+    "jest": "^27.2.0",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.3"
   }
 }

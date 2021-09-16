@@ -1,0 +1,22 @@
+{
+	// "extends": "@tsconfig/svelte/tsconfig.json",
+	"extends": "./../../tsconfig.base.json",
+	"include": ["src/**/*"],
+	"exclude": ["__sapper__/*", "static/*"],
+	"compilerOptions": {
+		"moduleResolution": "node",
+    "outDir": "dist",
+    "baseUrl": ".",
+		"incremental": false,
+		"module": "esnext",
+		"target": "es2017",
+		"importsNotUsedAsValues": "error",
+		"isolatedModules": true,
+		"sourceMap": true,
+		"types": ["svelte", "jest"],
+		"strict": false,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true
+	}
+}
