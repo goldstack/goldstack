@@ -1430,6 +1430,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@babel/plugin-transform-modules-commonjs", [
+        ["npm:7.15.4", {
+          "packageLocation": "./.yarn/cache/@babel-plugin-transform-modules-commonjs-npm-7.15.4-575efc7805-4782b0dad0.zip/node_modules/@babel/plugin-transform-modules-commonjs/",
+          "packageDependencies": [
+            ["@babel/plugin-transform-modules-commonjs", "npm:7.15.4"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:8354e2371f3b51835525590a68c015887458a14cf085c99d0643971cff8c2f7381cabf56f78a73fa0e1975a66b66f3856c02c8098f4290b66b75536a6d6de4cc#npm:7.15.4", {
+          "packageLocation": "./.yarn/__virtual__/@babel-plugin-transform-modules-commonjs-virtual-baceb833f7/0/cache/@babel-plugin-transform-modules-commonjs-npm-7.15.4-575efc7805-4782b0dad0.zip/node_modules/@babel/plugin-transform-modules-commonjs/",
+          "packageDependencies": [
+            ["@babel/plugin-transform-modules-commonjs", "virtual:8354e2371f3b51835525590a68c015887458a14cf085c99d0643971cff8c2f7381cabf56f78a73fa0e1975a66b66f3856c02c8098f4290b66b75536a6d6de4cc#npm:7.15.4"],
+            ["@babel/core", "npm:7.15.5"],
+            ["@babel/helper-module-transforms", "npm:7.15.4"],
+            ["@babel/helper-plugin-utils", "npm:7.14.5"],
+            ["@babel/helper-simple-access", "npm:7.15.4"],
+            ["@types/babel__core", null],
+            ["babel-plugin-dynamic-import-node", "npm:2.3.3"]
+          ],
+          "packagePeers": [
+            "@babel/core",
+            "@types/babel__core"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@babel/runtime", [
         ["npm:7.10.2", {
           "packageLocation": "./.yarn/cache/@babel-runtime-npm-7.10.2-a84cbd8811-cdf5fbcfab.zip/node_modules/@babel/runtime/",
@@ -7694,6 +7720,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "packagePeers": [
             "@babel/core"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["babel-plugin-dynamic-import-node", [
+        ["npm:2.3.3", {
+          "packageLocation": "./.yarn/cache/babel-plugin-dynamic-import-node-npm-2.3.3-be081936a9-c9d24415bc.zip/node_modules/babel-plugin-dynamic-import-node/",
+          "packageDependencies": [
+            ["babel-plugin-dynamic-import-node", "npm:2.3.3"],
+            ["object.assign", "npm:4.1.0"]
           ],
           "linkType": "HARD",
         }]
@@ -16292,6 +16328,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["jest-esm-transformer", [
+        ["npm:1.0.0", {
+          "packageLocation": "./.yarn/cache/jest-esm-transformer-npm-1.0.0-8354e2371f-aae5235bde.zip/node_modules/jest-esm-transformer/",
+          "packageDependencies": [
+            ["jest-esm-transformer", "npm:1.0.0"],
+            ["@babel/core", "npm:7.15.5"],
+            ["@babel/plugin-transform-modules-commonjs", "virtual:8354e2371f3b51835525590a68c015887458a14cf085c99d0643971cff8c2f7381cabf56f78a73fa0e1975a66b66f3856c02c8098f4290b66b75536a6d6de4cc#npm:7.15.4"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["jest-get-type", [
         ["npm:25.2.6", {
           "packageLocation": "./.yarn/cache/jest-get-type-npm-25.2.6-7abd790493-d1f59027b0.zip/node_modules/jest-get-type/",
@@ -24310,6 +24357,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cosmiconfig", "npm:7.0.1"],
             ["css-loader", "virtual:b4daea0b52142fb2b0a9e893610933ab25a2b51b140eb60017f17d2a8ef4528c3f80e7d5e04c84cbf50deb267d198cd851ec4af3d345b1cecb79b37db80fbbf0#npm:5.2.7"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.2.0"],
+            ["jest-esm-transformer", "npm:1.0.0"],
             ["make-synchronous", "npm:0.1.1"],
             ["mini-css-extract-plugin", "virtual:b4daea0b52142fb2b0a9e893610933ab25a2b51b140eb60017f17d2a8ef4528c3f80e7d5e04c84cbf50deb267d198cd851ec4af3d345b1cecb79b37db80fbbf0#npm:1.6.2"],
             ["pnp-webpack-plugin", "npm:1.6.4"],

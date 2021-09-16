@@ -19,6 +19,7 @@ module.exports = {
     ],
     '^.+\\.ts$': 'ts-jest',
     '^.+\\.js$': 'ts-jest',
+     "\\.m?jsx?$": "jest-esm-transformer"
   },
   moduleFileExtensions: ['ts', 'js', 'svelte'],
  "extensionsToTreatAsEsm": [".svelte"]

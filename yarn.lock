@@ -127,7 +127,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:7.15.5, @babel/core@npm:^7.7.2":
+"@babel/core@npm:7.15.5, @babel/core@npm:^7.4.4, @babel/core@npm:^7.7.2":
   version: 7.15.5
   resolution: "@babel/core@npm:7.15.5"
   dependencies:
@@ -626,6 +626,20 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0-0
   checksum: 5447d13b31aeeeaa5c2b945e60a598642dedca480f11d3232b0927aeb6a6bb8201a0025f509bc23851da4bf126f69b0522790edbd58f4560f0a4984cabd0d126
+  languageName: node
+  linkType: hard
+
+"@babel/plugin-transform-modules-commonjs@npm:^7.4.4":
+  version: 7.15.4
+  resolution: "@babel/plugin-transform-modules-commonjs@npm:7.15.4"
+  dependencies:
+    "@babel/helper-module-transforms": ^7.15.4
+    "@babel/helper-plugin-utils": ^7.14.5
+    "@babel/helper-simple-access": ^7.15.4
+    babel-plugin-dynamic-import-node: ^2.3.3
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 4782b0dad09a9a593be94c7d71fc134ba190e04125a0bf7127dfb5f23413438467b50d92f5d91faa2d377cecccfaf9cdd61156a033fc772816772fdddd82e0ad
   languageName: node
   linkType: hard
 
@@ -5896,6 +5910,15 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.8.0
   checksum: 82de77285be55e25b7dc01af852ad11c6eb48588392d03448ab8533cd4edcb6972baf6f9ddfb56dbdbe8bc30494e51e994598de1be8954af9fb98f76c9b4ac88
+  languageName: node
+  linkType: hard
+
+"babel-plugin-dynamic-import-node@npm:^2.3.3":
+  version: 2.3.3
+  resolution: "babel-plugin-dynamic-import-node@npm:2.3.3"
+  dependencies:
+    object.assign: ^4.1.0
+  checksum: c9d24415bcc608d0db7d4c8540d8002ac2f94e2573d2eadced137a29d9eab7e25d2cbb4bc6b9db65cf6ee7430f7dd011d19c911a9a778f0533b4a05ce8292c9b
   languageName: node
   linkType: hard
 
@@ -13500,6 +13523,16 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"jest-esm-transformer@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "jest-esm-transformer@npm:1.0.0"
+  dependencies:
+    "@babel/core": ^7.4.4
+    "@babel/plugin-transform-modules-commonjs": ^7.4.4
+  checksum: aae5235bde132094cb77fe3304bc4285786ab75cd43ab57435fd5b1e7ce37f57ef7c48a786d684f48fe215d6c9abb20f7e02365b9c228cfa22c704fb618cfc58
+  languageName: node
+  linkType: hard
+
 "jest-get-type@npm:^25.2.6":
   version: 25.2.6
   resolution: "jest-get-type@npm:25.2.6"
@@ -20609,6 +20642,7 @@ resolve@^1.18.1:
     cosmiconfig: ^7.0.0
     css-loader: ^5.0.1
     jest: ^27.2.0
+    jest-esm-transformer: ^1.0.0
     make-synchronous: ^0.1.1
     mini-css-extract-plugin: ^1.3.4
     pnp-webpack-plugin: ^1.6.4
