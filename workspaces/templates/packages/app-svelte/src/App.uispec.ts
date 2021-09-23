@@ -1,5 +1,5 @@
 import App from './App.svelte';
-
+import dummy from './dummy';
 // import { render, fireEvent } from '@testing-library/svelte';
 
 describe('Svelte tests', () => {
