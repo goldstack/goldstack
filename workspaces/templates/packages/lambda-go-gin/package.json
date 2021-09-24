@@ -7,6 +7,7 @@
     "deploy": "yarn build && template deploy \"$@\"",
     "infra": "template infra \"$@\"",
     "template": "template",
+    "test:ci": "echo 'not implemented'",
     "watch": "PORT=8084 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local nodemon --watch ../../ --ext go --exec 'go build -o localDevelopment/server.exe && cd localDevelopment && server.exe'"
   },
   "devDependencies": {
