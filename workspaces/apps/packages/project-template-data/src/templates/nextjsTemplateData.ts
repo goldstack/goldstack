@@ -2,6 +2,7 @@ import {
   ProjectTemplateProps,
   ShortTemplateFeature,
 } from '../projectTemplateTypes';
+import { NextJs } from './moduleData';
 
 export const featureESLint: ShortTemplateFeature = {
   title: 'ESLint + Prettier',
@@ -144,6 +145,7 @@ export const getNextJsTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'nextjs',
     title: 'Next.js',
+    modules: [NextJs],
     images: ['nextjs', 'react', 'typescript'],
     description: 'Complete Next.js project and deployment setup.',
     longDescription:

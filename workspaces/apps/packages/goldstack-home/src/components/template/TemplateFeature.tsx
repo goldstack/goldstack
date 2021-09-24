@@ -13,6 +13,7 @@ import NextJsConfigGif from 'src/img/nextjs-config.gif';
 import ReactTypeScriptGif from 'src/img/react-typescript.gif';
 import VercelDeployedImg from 'src/img/vercel_deployed.png';
 import LambdaConfigImg from 'src/img/lambda_config.png';
+import EmailSendImg from 'src/img/ses_email_send.png';
 import EndpointTypeScript from 'src/img/endpoint_typescript.png';
 import FeatureBootstrap from './FeatureBootstrap';
 
@@ -89,6 +90,9 @@ const createImage = (image: string): React.ReactNode => {
   }
   if (image === 'lambda-config') {
     return <img src={LambdaConfigImg as any} className="img-fluid"></img>;
+  }
+  if (image === 'email-send') {
+    return <img src={EmailSendImg as any} className="img-fluid"></img>;
   }
   throw new Error('Unknown image for feature details ' + image);
 };

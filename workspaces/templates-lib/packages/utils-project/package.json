@@ -47,6 +47,6 @@
     "renamer": "^0.7.0",
     "ts-jest": "^26.5.4",
     "ts-json-schema-generator": "^0.70.2",
-    "typescript": "^4.3.4"
+    "typescript": "^4.4.3"
   }
 }

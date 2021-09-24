@@ -11,11 +11,14 @@ import {
   featureNextJsComposition,
 } from './nextjsTemplateData';
 
+import { NextJsBootstrap } from './moduleData';
+
 export const getNextjsBootstrapTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'nextjs-bootstrap',
     title: 'Next.js + Bootstrap',
     images: ['nextjs', 'bootstrap', 'typescript'],
+    modules: [NextJsBootstrap],
     description: 'Deploy a Next.js project with Bootstrap styling.',
     longDescription:
       'This free starter project configures a Next.js application with Bootstrap along with a number of other features built into the template.\n' +

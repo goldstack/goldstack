@@ -21,7 +21,7 @@ const Template = (props: ProjectTemplateProps): JSX.Element => {
       <Breadcrump
         elements={[
           { description: 'Templates' },
-          { description: 'Next.js', link: '#', active: true },
+          { description: props.title, link: '#', active: true },
         ]}
       ></Breadcrump>
       <ProjectTemplate {...template}></ProjectTemplate>
@@ -44,6 +44,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
       },
       {
         params: { template: 'go-gin' },
+      },
+      {
+        params: { template: 'express-ses' },
       },
     ],
     fallback: false, // Show 404 for pages that are not prerendered

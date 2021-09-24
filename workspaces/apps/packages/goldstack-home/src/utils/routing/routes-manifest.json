@@ -46,6 +46,10 @@
       "regex": "^\\/templates\\/express-lambda$"
     },
     {
+      "page": "/templates/express-ses",
+      "regex": "^\\/templates\\/express-ses$"
+    },
+    {
       "page": "/templates/go-gin",
       "regex": "^\\/templates\\/go-gin$"
     },
@@ -104,8 +108,8 @@
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/jtYTR5vRmu\\-eKz1raLeqe/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/jtYTR5vRmu\\-eKz1raLeqe/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/RNk8Z5El6Tnzp7uEX_hYg/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/RNk8Z5El6Tnzp7uEX_hYg/templates/(?<template>[^/]+?)\\.json$"
     }
   ],
   "rewrites": []

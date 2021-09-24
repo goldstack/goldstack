@@ -1,14 +1,19 @@
 import React from 'react';
 
 import GoldstackIcon from './../../icons/goldstack_icon.svg';
+import ModulesIcon from './../../icons/modules.svg';
 
-import { TemplateFeatureImage } from '@goldstack/project-template-data';
+import {
+  TemplateFeatureImage,
+  ModuleProps,
+} from '@goldstack/project-template-data';
 
 import { resolveImage } from './imageUtil';
 
 interface ProjectTemplateSidebarProps {
   tags: string[];
   image: TemplateFeatureImage;
+  modules: ModuleProps[];
   actionLink: string;
 }
 
@@ -37,6 +42,22 @@ const ProjectTemplateSidebar = (
             </a>
           </div>
 
+          <div className="mb-md-7">
+            <h1 className="h4">Modules</h1>
+            <ul className="nav flex-column">
+              {props.modules.map((module, idx) => (
+                <li className="nav-item" key={idx}>
+                  <a className="nav-link active" href={module.link}>
+                    <img
+                      className="fas fa-home nav-icon"
+                      src={ModulesIcon as any}
+                    ></img>
+                    {module.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className="mb-md-7">
             <h1 className="h4">Tags</h1>
             {props.tags.map((tag, idx) => (

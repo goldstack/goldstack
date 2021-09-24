@@ -65,10 +65,16 @@ export interface TextSectionProps {
   action?: LandingAction;
 }
 
+export interface ModuleProps {
+  title: string;
+  link: string;
+}
+
 export interface ProjectTemplateProps {
   title: string;
   id: string;
   description: string;
+  modules: ModuleProps[];
   images: TemplateFeatureImage[];
   longDescription: string;
   tags: string[];

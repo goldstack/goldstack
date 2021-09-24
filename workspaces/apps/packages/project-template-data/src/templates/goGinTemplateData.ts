@@ -1,4 +1,5 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
+import { GoGin } from './moduleData';
 
 export const getGoGinTemplateData = (): ProjectTemplateProps => {
   return {
@@ -9,6 +10,7 @@ export const getGoGinTemplateData = (): ProjectTemplateProps => {
       'lambda',
       'yarn',
     ],
+    modules: [GoGin],
     description: 'Deploy a serverless Go HTTP server using AWS Lambda.',
     longDescription:
       'This project template contains a fully configured server using the Gin framework ready to be deployed in an AWS Lambda.\n' +

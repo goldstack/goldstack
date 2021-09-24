@@ -19,6 +19,7 @@ const ProjectTemplate = (props: ProjectTemplateProps): JSX.Element => {
           <ProjectTemplateSidebar
             tags={props.tags || []}
             image={props.images[0]}
+            modules={props.modules}
             actionLink={props.hero.action?.link || '#'}
           ></ProjectTemplateSidebar>
           <ProjectTemplateBody {...props}></ProjectTemplateBody>

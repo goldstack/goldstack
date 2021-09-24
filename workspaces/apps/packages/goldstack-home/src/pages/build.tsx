@@ -19,9 +19,6 @@ import { getPackageIds } from './../lib/stackParamUtils';
 import { buildProjectConfig } from './../lib/buildProject';
 
 import { getEndpoint } from '@goldstack/goldstack-api';
-import { PackageConfig } from '@goldstack/project-config';
-
-import { LeftArrow } from './../components/LearnMore';
 
 import NextjsIcon from './../icons/nextjs.svg';
 import BootstrapIcon from './../icons/bootstrap.svg';

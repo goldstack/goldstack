@@ -11,6 +11,7 @@ import BootstrapIcon from './../../icons/bootstrap.svg';
 import NodejsIcon from './../../icons/nodejs.svg';
 import ReactIcon from './../../icons/reactjs.svg';
 import LambdaIcon from './../../icons/lambda.svg';
+import SESIcon from './../../icons/ses2.svg';
 
 import { TemplateFeatureImage } from '@goldstack/project-template-data';
 
@@ -57,7 +58,8 @@ export const resolveImage = (image: TemplateFeatureImage): any => {
   if (image === 'lambda') {
     return LambdaIcon;
   }
-
-  // return '';
+  if (image === 'ses') {
+    return SESIcon;
+  }
   throw new Error('Unknown image for template icon: ' + image);
 };

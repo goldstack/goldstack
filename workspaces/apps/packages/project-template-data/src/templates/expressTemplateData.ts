@@ -1,4 +1,5 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
+import { Express } from './moduleData';
 import { featureYarn } from './nextjsTemplateData';
 
 export const getExpressTemplateData = (): ProjectTemplateProps => {
@@ -6,6 +7,7 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
     id: 'express-lambda',
     title: 'Express.js Lambda',
     images: ['nodejs', 'lambda', 'typescript'],
+    modules: [Express],
     description: 'Rapidly deploy an Express.js server to AWS Lambda.',
     longDescription:
       'This project template contains a fully configured Express.js server ready to be deployed in an AWS Lambda.\n' +

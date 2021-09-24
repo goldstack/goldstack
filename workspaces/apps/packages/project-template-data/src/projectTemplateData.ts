@@ -9,12 +9,14 @@ export {
   TemplateIcons,
   TemplateFeatureImage,
   ShortTemplateFeature,
+  ModuleProps,
 } from './projectTemplateTypes';
 
 import { getNextJsTemplateData } from './templates/nextjsTemplateData';
 import { getNextjsBootstrapTemplateData } from './templates/nextjsBootstrapTemplateData';
 import { getExpressTemplateData } from './templates/expressTemplateData';
 import { getGoGinTemplateData } from './templates/goGinTemplateData';
+import { getEmailSentTemplateData } from './templates/emailSentTemplateData';
 
 export { getNextJsTemplateData };
 export { getExpressTemplateData };
@@ -27,6 +29,7 @@ export const allTemplates = (): ProjectTemplateProps[] => {
     getExpressTemplateData(),
     getNextJsTemplateData(),
     getGoGinTemplateData(),
+    getEmailSentTemplateData(),
   ];
   return templates;
 };

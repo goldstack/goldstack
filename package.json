@@ -12,7 +12,6 @@
   ],
   "scripts": {
     "build": "yarn compile",
-    "checkout": "git submodule foreach --recursive git checkout \"$@\" && git checkout \"$@\"",
     "commit": "yarn git:commit \"$0\"",
     "compile": "yarn workspace templates-lib compile && yarn workspace templates compile && yarn workspace templates-management compile && yarn workspace apps compile && yarn workspace docs compile",
     "compile:watch": "yarn workspace templates-lib compile; yarn workspace templates-management compile; yarn workspace docs compile; yarn compile:watch-new",
@@ -26,7 +25,6 @@
     "git:set-user": "git config user.email \"$@\" && git submodule foreach --recursive git config user.email \"$@\"",
     "lint": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml,.html",
     "lint:fix": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml,.html --fix",
-    "merge": "git submodule foreach --recursive git merge \"$@\" && git merge \"$@\"",
     "packages:ensure-local": "utils-package-upgrade",
     "prettier": "prettier",
     "test:ci": "yarn workspaces foreach --run test:ci",
@@ -52,6 +50,7 @@
     "eslint-plugin-yaml": "^0.3.0",
     "nodemon": "^2.0.4",
     "prettier": "^2.2.1",
-    "typescript": "^4.3.4"
-  }
+    "typescript": "^4.4.3"
+  },
+  "packageManager": "yarn@3.0.2"
 }
