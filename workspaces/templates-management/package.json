@@ -14,7 +14,7 @@
     "coverage": "yarn workspaces --topological-dev foreach run coverage",
     "format": "prettier --write .",
     "format:check": "prettier .",
-    "generate:schema": "yarn workspaces foreach --topological-dev run generate:schema",
+    "generate:schema": "yarn workspaces foreach run generate:schema",
     "lint": "eslint . --ext .js,.ts,.tsx,json",
     "lint:fix": "eslint . --ext .js,.ts,tsx,json --fix",
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
@@ -23,7 +23,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
-    "@yarnpkg/doctor": "^2.0.0-rc.17",
+    "@yarnpkg/doctor": "^3.0.0",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-json-format": "^2.0.1",
