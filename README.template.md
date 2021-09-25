@@ -2,7 +2,7 @@
 
 Getting started on a new project is fun ... until it isn't. Goldstack provides customizable starter templates that help you lift your project off the ground and immediately start working on the important parts.
 
-Quickly configure your own project on [goldstack.party](https://goldstack.party).
+Compose your customised starter project on [goldstack.party](https://goldstack.party).
 
 # Roadmap
 
