@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@goldstack/utils-docs-cli": "0.3.11",
-    "@goldstack/utils-sh": "0.4.13",
+    "@goldstack/utils-sh": "0.4.14",
     "source-map-support": "^0.5.19"
   },
   "devDependencies": {
