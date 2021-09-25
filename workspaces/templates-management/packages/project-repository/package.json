@@ -22,12 +22,12 @@
     "test:ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js"
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.3.17",
+    "@goldstack/infra-aws": "0.3.18",
     "@goldstack/project-config": "0.1.0",
     "@goldstack/project-repository-bucket": "0.1.0",
     "@goldstack/utils-package": "0.3.15",
     "@goldstack/utils-project": "0.3.14",
-    "@goldstack/utils-s3": "0.2.6",
+    "@goldstack/utils-s3": "0.2.7",
     "@goldstack/utils-sh": "0.4.13",
     "@goldstack/utils-template": "0.3.14",
     "aws-sdk": "^2.995.0",

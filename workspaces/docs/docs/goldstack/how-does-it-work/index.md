@@ -20,6 +20,7 @@ You can select as many modules as you want. All modules are configured to be eas
 ### Step 2: Provide your Email (if you like)
 
 You can specify your email address so we can send you a link to your template for safekeeping and further configuration. But if you do not want to share your email with us, you don't need to provide it.
+
 ### Step 3: Download
 
 Goldstack will package your project into one zip file that you can download. This zip file will contain everything to get started developing business logic for your project. If you have provided your email, we will also send you an email with a link you can use to re-download your project or create more Goldstack templates. The email also includes a list of getting started guides for your project.

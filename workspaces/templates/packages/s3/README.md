@@ -6,10 +6,10 @@ The S3 module provides a simple means for an application to store and access fil
 
 ## Features
 
-*   S3 bucket defined in Terraform
-*   Supports definition for multiple environments (staging, production)
-*   Infrastructure easily stood up using an npm script `yarn infra up`
-*   Embed in server applications by linking to the package
+- S3 bucket defined in Terraform
+- Supports definition for multiple environments (staging, production)
+- Infrastructure easily stood up using an npm script `yarn infra up`
+- Embed in server applications by linking to the package
 
 ```javascript
 import { getBucketName, connect } from 'my-s3-module';
@@ -93,11 +93,11 @@ The configuration tool will define one deployment. This will be either `dev` or 
 
 Infrastructure commands for this module can be run using `yarn`. There are four commands in total:
 
-*   `yarn infra up`: For standing up infrastructure.
-*   `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
-*   `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
-*   `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
-*   `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+- `yarn infra up`: For standing up infrastructure.
+- `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
+- `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
+- `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
+- `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
 
 For each command, the deployment they should be applied to must be specified.
 

@@ -1,7 +1,7 @@
 .card-image {
   width: 100%;
   margin: auto;
-  padding: 30px; 
+  padding: 30px;
   object-fit: contain;
   min-height: 150px;
 }
