@@ -2,10 +2,20 @@
 
 Getting started on a new project is fun ... until it isn't. Goldstack provides customizable starter templates that help you lift your project off the ground and immediately start working on the important parts.
 
-- 🚀 [Goldstack Project Builder](https://goldstack.party)
-- 😻 [Goldstack Template Framework](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib) Our open source framework for building sweet-as starter templates
-- 🐛 [Report an issue](https://github.com/goldstack/goldstack/issues)
-- 📚 [Goldstack Documentation](https://docs.goldstack.party/docs)
+Quickly configure your own project on [goldstack.party](https://goldstack.party).
+
+# Roadmap
+
+It should be a surprise to no one that setting up a dynamic monorepo for JavaScript/TypeScript projects is challenging. While the projects built with Goldstack have loads of config and best practices embedded, there is still a way to go to make this a complete turnkey solution. The following table gives an overview of what works well in the generated project and where some work may still be needed.
+
+|Status|Feature|Comments|
+|-|-|-|
+|👌|Yarn Workspaces|Yarn Workspaces using Yarn v2 (Berry) overall works very well and allows for very fast install and build speeds.|
+|👌|ESLint and Prettier|ESLint and Prettier are configured to work effectively across all packages.|
+|👌|Jest|Running tests with Jest works across all packages|
+|👌|VSCode|VSCode including Intellisense works across the monorepo|
+|🤷|AWS|Deployment into AWS using Terraform overall works very well. Just initial configuration and the way credentials are provided can be improved. [#3](https://github.com/goldstack/goldstack/issues/3)|
+|👎|TypeScript|TypeScript support works but only with a workaround that requires running `yarn compile watch` in the root project. Also for larger projects, compilation is slow. [#2](https://github.com/goldstack/goldstack/issues/2)| 
 
 # About
 
