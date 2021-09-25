@@ -1357,7 +1357,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:14.11.2"],
             ["@types/semver", "npm:7.3.4"],
             ["archiver", "npm:5.0.0"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["fs-extra", "npm:9.0.1"],
             ["jest", "npm:26.6.3"],
             ["semver", "npm:7.3.2"],
@@ -1467,7 +1467,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["jest", "npm:26.6.3"],
             ["nodemon", "npm:2.0.4"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
@@ -1549,7 +1549,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["jest", "npm:26.6.3"],
             ["nodemon", "npm:2.0.4"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
@@ -1655,7 +1655,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["axios", "npm:0.21.1"],
             ["handlebars", "npm:4.7.6"],
             ["jest", "npm:26.6.3"],
@@ -1908,7 +1908,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["concurrently", "npm:5.2.0"],
             ["jest", "npm:26.6.3"],
             ["nodemon", "npm:2.0.4"],
@@ -1938,7 +1938,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:14.11.2"],
             ["@types/semver", "npm:7.3.4"],
             ["@types/uuid", "npm:8.3.0"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["fs-extra", "npm:9.0.1"],
             ["jest", "npm:26.6.3"],
             ["semver", "npm:7.3.2"],
@@ -1959,7 +1959,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["concurrently", "npm:5.2.0"],
             ["jest", "npm:26.6.3"],
             ["nodemon", "npm:2.0.4"],
@@ -2018,7 +2018,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["jest", "npm:26.6.3"],
             ["nodemon", "npm:2.0.4"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
@@ -2075,7 +2075,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/semver", "npm:7.3.4"],
             ["@types/stripe", "npm:7.13.24"],
             ["@types/uuid", "npm:8.3.0"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["fs-extra", "npm:9.0.1"],
             ["jest", "npm:26.6.3"],
             ["stripe", "npm:8.91.0"],
@@ -2096,7 +2096,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["concurrently", "npm:5.2.0"],
             ["jest", "npm:26.6.3"],
             ["nodemon", "npm:2.0.4"],
@@ -2147,9 +2147,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:26.0.21"],
             ["@types/mock-aws-s3", "npm:2.6.1"],
             ["@types/node", "npm:14.11.2"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["jest", "npm:26.6.3"],
-            ["mock-aws-s3", "npm:4.0.1"],
+            ["mock-aws-s3", "npm:4.0.2"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
           ],
@@ -2210,7 +2210,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
             ["@types/yargs", "npm:15.0.7"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["jest", "npm:26.6.3"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"],
@@ -2243,7 +2243,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:14.11.2"],
             ["@types/uuid", "npm:8.3.0"],
             ["@types/yargs", "npm:15.0.7"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["jest", "npm:26.6.3"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"],
@@ -2316,10 +2316,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/source-map-support", "npm:0.5.3"],
             ["@types/wtfnode", "npm:0.7.0"],
             ["@types/yargs", "npm:15.0.7"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["concurrently", "npm:5.2.0"],
             ["jest", "npm:26.6.3"],
-            ["mock-aws-s3", "npm:4.0.1"],
+            ["mock-aws-s3", "npm:4.0.2"],
             ["nodemon", "npm:2.0.4"],
             ["pnp-webpack-plugin", "npm:1.6.4"],
             ["source-map-support", "npm:0.5.19"],
@@ -2382,7 +2382,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
             ["@types/semver", "npm:7.3.4"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["fs-extra", "npm:9.0.1"],
             ["jest", "npm:26.6.3"],
             ["semver", "npm:7.3.2"],
@@ -2402,7 +2402,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["concurrently", "npm:5.2.0"],
             ["jest", "npm:26.6.3"],
             ["nodemon", "npm:2.0.4"],
@@ -2438,9 +2438,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/mock-aws-s3", "npm:2.6.1"],
             ["@types/node", "npm:14.11.2"],
             ["@types/yargs", "npm:15.0.7"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["jest", "npm:26.6.3"],
-            ["mock-aws-s3", "npm:4.0.1"],
+            ["mock-aws-s3", "npm:4.0.2"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"],
             ["yargs", "npm:15.4.1"]
@@ -2506,7 +2506,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["jest", "npm:26.6.3"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
@@ -2791,7 +2791,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["jest", "npm:26.6.3"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
@@ -2882,7 +2882,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["axios", "npm:0.21.1"],
             ["extract-zip", "npm:2.0.1"],
             ["jest", "npm:26.6.3"],
-            ["mock-aws-s3", "npm:4.0.1"],
+            ["mock-aws-s3", "npm:4.0.2"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
           ],
@@ -2930,7 +2930,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],
             ["@types/jest", "npm:26.0.21"],
             ["@types/node", "npm:14.11.2"],
-            ["aws-sdk", "npm:2.721.0"],
+            ["aws-sdk", "npm:2.995.0"],
             ["jest", "npm:26.6.3"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
@@ -6767,6 +6767,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/aws-sdk-npm-2.721.0-d72403075d-bdb2eeae4a.zip/node_modules/aws-sdk/",
           "packageDependencies": [
             ["aws-sdk", "npm:2.721.0"],
+            ["buffer", "npm:4.9.2"],
+            ["events", "npm:1.1.1"],
+            ["ieee754", "npm:1.1.13"],
+            ["jmespath", "npm:0.15.0"],
+            ["querystring", "npm:0.2.0"],
+            ["sax", "npm:1.2.1"],
+            ["url", "npm:0.10.3"],
+            ["uuid", "npm:3.3.2"],
+            ["xml2js", "npm:0.4.19"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:2.995.0", {
+          "packageLocation": "./.yarn/unplugged/aws-sdk-npm-2.995.0-0e5f84df65/node_modules/aws-sdk/",
+          "packageDependencies": [
+            ["aws-sdk", "npm:2.995.0"],
             ["buffer", "npm:4.9.2"],
             ["events", "npm:1.1.1"],
             ["ieee754", "npm:1.1.13"],
@@ -16817,13 +16833,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["mock-aws-s3", [
-        ["npm:4.0.1", {
-          "packageLocation": "./.yarn/cache/mock-aws-s3-npm-4.0.1-ab818ef95f-ad94d3edf8.zip/node_modules/mock-aws-s3/",
+        ["npm:4.0.2", {
+          "packageLocation": "./.yarn/cache/mock-aws-s3-npm-4.0.2-17b80c9a18-bfa7d6858d.zip/node_modules/mock-aws-s3/",
           "packageDependencies": [
-            ["mock-aws-s3", "npm:4.0.1"],
+            ["mock-aws-s3", "npm:4.0.2"],
             ["bluebird", "npm:3.7.2"],
             ["fs-extra", "npm:7.0.1"],
-            ["underscore", "npm:1.8.3"]
+            ["underscore", "npm:1.12.1"]
           ],
           "linkType": "HARD",
         }]
@@ -23983,17 +23999,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["underscore", [
+        ["npm:1.12.1", {
+          "packageLocation": "./.yarn/cache/underscore-npm-1.12.1-f5ca0889f5-ec327603aa.zip/node_modules/underscore/",
+          "packageDependencies": [
+            ["underscore", "npm:1.12.1"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:1.7.0", {
           "packageLocation": "./.yarn/cache/underscore-npm-1.7.0-7d19d583a5-20be2ca8b0.zip/node_modules/underscore/",
           "packageDependencies": [
             ["underscore", "npm:1.7.0"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:1.8.3", {
-          "packageLocation": "./.yarn/cache/underscore-npm-1.8.3-a2d207f853-46d9ea25c8.zip/node_modules/underscore/",
-          "packageDependencies": [
-            ["underscore", "npm:1.8.3"]
           ],
           "linkType": "HARD",
         }]

@@ -23,9 +23,9 @@
     "@goldstack/prepare-template": "0.1.0",
     "@goldstack/prepare-yarn-pnp-monorepo": "0.1.1",
     "@goldstack/template-repository": "0.1.0",
-    "@goldstack/utils-sh": "0.4.12",
-    "@goldstack/utils-template": "0.3.13",
-    "aws-sdk": "2.721.0"
+    "@goldstack/utils-sh": "0.4.13",
+    "@goldstack/utils-template": "0.3.14",
+    "aws-sdk": "^2.995.0"
   },
   "devDependencies": {
     "@types/archiver": "^3.1.0",
@@ -33,7 +33,7 @@
     "@types/mock-aws-s3": "^2.6.1",
     "@types/node": "^14.0.6",
     "jest": "^26.6.3",
-    "mock-aws-s3": "^4.0.1",
+    "mock-aws-s3": "^4.0.2",
     "ts-jest": "^26.5.4",
     "typescript": "^4.4.3"
   }

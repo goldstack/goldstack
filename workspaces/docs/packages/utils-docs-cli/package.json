@@ -39,15 +39,15 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-cli": "0.2.4",
-    "@goldstack/utils-docs": "0.3.16",
-    "@goldstack/utils-sh": "0.4.12",
+    "@goldstack/utils-cli": "0.2.5",
+    "@goldstack/utils-docs": "0.3.17",
+    "@goldstack/utils-sh": "0.4.13",
     "@types/yargs": "^15.0.5",
     "source-map-support": "^0.5.19",
     "yargs": "^15.4.1"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.1.25",
+    "@goldstack/utils-git": "0.1.26",
     "@types/jest": "^26.0.21",
     "@types/node": "^14.0.6",
     "jest": "^26.6.3",

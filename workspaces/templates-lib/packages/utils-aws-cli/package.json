@@ -44,7 +44,7 @@
     "@goldstack/utils-docker": "0.3.15",
     "@goldstack/utils-log": "0.2.6",
     "@goldstack/utils-sh": "0.4.13",
-    "aws-sdk": "2.721.0"
+    "aws-sdk": "^2.995.0"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.26",

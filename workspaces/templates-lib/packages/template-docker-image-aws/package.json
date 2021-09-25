@@ -60,7 +60,7 @@
     "@goldstack/utils-template": "0.3.14",
     "@goldstack/utils-terraform": "0.3.23",
     "@goldstack/utils-terraform-aws": "0.3.23",
-    "aws-sdk": "2.721.0",
+    "aws-sdk": "^2.995.0",
     "yargs": "^15.4.1"
   },
   "devDependencies": {

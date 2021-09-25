@@ -28,7 +28,7 @@ export const connect = async (
     const s3: AWSMock.S3 = new AWSMock.S3({
       params: {},
     });
-    return s3;
+    return s3 as any;
   }
   const config = packageConfig.getConfigFromPackageConfig(goldstackConfig);
   const deployment = packageConfig.getDeployment(config, deploymentName);

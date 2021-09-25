@@ -112,7 +112,7 @@ export const run = async (): Promise<void> => {
           params: {},
         });
         repo = new S3TemplateRepository({
-          s3,
+          s3: s3 as any,
           bucket: 'repo',
           bucketUrl: 'https://local.goldstack.party/repo/',
         });
