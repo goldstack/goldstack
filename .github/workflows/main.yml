@@ -130,11 +130,11 @@ jobs:
       # Generate schemas and docs
       - name: Generate schemas
         run: |
-          yarn generate:schema
+          yarn generate:schema || true
 
       - name: Generate docs
         run: |
-          yarn generate:docs
+          yarn generate:docs || true
 
       - name: Publish libraries
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
