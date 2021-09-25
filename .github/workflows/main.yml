@@ -36,8 +36,8 @@ jobs:
         run: |
           yarn install
           yarn format
-          yarn format:check
-          yarn lint:fix
+          yarn format-check
+          yarn lint-fix
 
       # Do this for all before library git push messes with history
       - name: Check if libraries changed
@@ -80,14 +80,14 @@ jobs:
         run: |
           cd workspaces/templates-lib
           yarn compile
-          yarn test:ci
+          yarn test-ci
           cd ../..
 
       - name: Build templates
         run: |
           cd workspaces/templates
           yarn compile
-          yarn test:ci
+          yarn test-ci
           cd ../..
         env:
           AWS_USER_NAME: goldstack-dev
@@ -99,7 +99,7 @@ jobs:
         run: |
           cd workspaces/templates-management
           yarn compile
-          yarn test:ci
+          yarn test-ci
           cd ../..
 
       - name: Build apps
@@ -107,7 +107,7 @@ jobs:
           cd workspaces/apps
           yarn compile
           yarn workspace @goldstack/goldstack-api utils:seed-module-templates
-          yarn test:ci
+          yarn test-ci
           cd ../..
         env:
           AWS_USER_NAME: goldstack-dev
@@ -119,7 +119,7 @@ jobs:
         run: |
           cd workspaces/docs
           yarn compile
-          yarn test:ci
+          yarn test-ci
           cd ../..
         env:
           AWS_USER_NAME: goldstack-dev
@@ -130,11 +130,11 @@ jobs:
       # Generate schemas and docs
       - name: Generate schemas
         run: |
-          yarn generate:schema || true
+          yarn generate-schema || true
 
       - name: Generate docs
         run: |
-          yarn generate:docs || true
+          yarn generate-docs || true
 
       - name: Publish libraries
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'

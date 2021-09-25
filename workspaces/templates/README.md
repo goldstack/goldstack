@@ -12,9 +12,9 @@ Find further information here:
 
 ## Notes
 
-### Max ListenersExceededWarning on `compile:watch` command
+### Max ListenersExceededWarning on `compile-watch` command
 
-When running the `compile:watch` command in the root, you may get the following warning:
+When running the `compile-watch` command in the root, you may get the following warning:
 
     (node:97874) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 SIGINT listeners added to [process]. Use emitter.setMaxListeners() to increase limit
 

@@ -8,15 +8,15 @@
   "main": "dist/templateBuildSet.js",
   "scripts": {
     "build": "yarn clean && yarn compile",
-    "build:watch": "yarn clean && yarn compile:watch",
+    "build:watch": "yarn clean && yarn compile-watch",
     "clean": "rm -rf ./dist",
     "compile": "tsc -p tsconfig.json",
-    "compile:watch": "tsc -p tsconfig.json --watch",
-    "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "compile-watch": "tsc -p tsconfig.json --watch",
+    "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
-    "generate:schema": "ts-json-schema-generator --tsconfig tsconfig.generate.json --path './src/types/**/*' --type 'DeploySetConfig' -o src/schemas/configSchema.json",
+    "generate-schema": "ts-json-schema-generator --tsconfig tsconfig.generate.json --path './src/types/**/*' --type 'DeploySetConfig' -o src/schemas/configSchema.json",
     "prepublishOnly": "yarn run build",
-    "test:ci": "jest --passWithNoTests --config=./jest.config.js"
+    "test-ci": "jest --passWithNoTests --config=./jest.config.js"
   },
   "dependencies": {
     "@goldstack/infra": "0.3.15",

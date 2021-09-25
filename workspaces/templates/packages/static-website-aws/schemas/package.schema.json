@@ -160,7 +160,7 @@
     },
     "TerraformStateKey": {
       "type": "string",
-      "description": "Key used for Terraform state persisted in Terraform state bucket.\n\nWill be auto-generated upon first deployment if not provided.",
+      "description": "Key used for Terraform state persisted in Terraform state bucket.\r\n\r\nWill be auto-generated upon first deployment if not provided.",
       "title": "Terraform State Key"
     },
     "AWSDeploymentRegion": {

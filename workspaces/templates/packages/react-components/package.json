@@ -11,13 +11,13 @@
   ],
   "scripts": {
     "build": "yarn clean && yarn compile",
-    "build:watch": "yarn clean && yarn compile:watch",
+    "build:watch": "yarn clean && yarn compile-watch",
     "clean": "rm -rf ./dist",
     "compile": "tsc -p tsconfig.json",
-    "compile:watch": "yarn compile --watch",
-    "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "compile-watch": "yarn compile --watch",
+    "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
-    "test:ci": "jest --passWithNoTests --config=jest.config.js"
+    "test-ci": "jest --passWithNoTests --config=jest.config.js"
   },
   "dependencies": {
     "react": "^17.0.2",

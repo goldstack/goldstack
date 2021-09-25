@@ -10,10 +10,10 @@ export class RootBuildTemplateTest implements TemplateTest {
 
     // formatting should work
     yarn(projectDir, 'format');
-    yarn(projectDir, 'format:check');
+    yarn(projectDir, 'format-check');
 
     // linting should work
-    yarn(projectDir, 'lint:fix');
+    yarn(projectDir, 'lint-fix');
     yarn(projectDir, 'lint');
 
     // workspace dependencies should be valid
@@ -24,7 +24,7 @@ export class RootBuildTemplateTest implements TemplateTest {
     yarn(projectDir, 'compile');
 
     // tests should work
-    yarn(projectDir, 'test:ci');
+    yarn(projectDir, 'test-ci');
 
     yarn(projectDir, 'clean');
     yarn(projectDir, 'build');

@@ -13,13 +13,13 @@
     "build": "yarn clean && yarn compile",
     "clean": "rm -rf dist/",
     "compile": "tsc -p tsconfig.json",
-    "compile:watch": "tsc -p tsconfig.json --watch",
-    "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "compile-watch": "tsc -p tsconfig.json --watch",
+    "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
     "infra": "template infra",
     "prepublishOnly": "yarn run build",
     "template": "template-email-send",
-    "test:ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js"
+    "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js"
   },
   "dependencies": {
     "@goldstack/template-email-send": "0.3.56",

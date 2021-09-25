@@ -13,8 +13,8 @@
     "build": "yarn clean && yarn compile && yarn docker:build $@",
     "clean": "yarn docker:clean",
     "compile": "tsc -p tsconfig.json",
-    "compile:watch": "tsc -p tsconfig.json --watch",
-    "compile:watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "compile-watch": "tsc -p tsconfig.json --watch",
+    "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
     "deploy": "yarn docker:build $@ && template deploy $@",
     "docker:build": "node ./dist/src/build.js build $@",
@@ -23,7 +23,7 @@
     "infra": "template infra",
     "prepublishOnly": "yarn run build",
     "template": "template",
-    "test:ci": "jest --passWithNoTests --config=./jest.config.js"
+    "test-ci": "jest --passWithNoTests --config=./jest.config.js"
   },
   "dependencies": {
     "@goldstack/template-docker-image-aws": "0.3.31",

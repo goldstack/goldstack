@@ -8,7 +8,8 @@
         "path": {
           "type": "string"
         },
-        "value": {}
+        "value": {
+        }
       },
       "required": [
         "path",

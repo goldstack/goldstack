@@ -10,7 +10,7 @@
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
     "start:watch": "webpack-dev-server --mode development --env.development --open --hot --progress",
     "test": "jest --passWithNoTests --config=jest.config.js",
-    "test:ci": "jest --passWithNoTests --config=jest.config.js"
+    "test-ci": "jest --passWithNoTests --config=jest.config.js"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.9.0",

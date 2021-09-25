@@ -8,14 +8,14 @@
   "main": "dist/serverExpress.js",
   "scripts": {
     "build": "yarn clean && yarn compile",
-    "build:watch": "yarn clean && yarn compile:watch",
+    "build:watch": "yarn clean && yarn compile-watch",
     "clean": "rm -rf ./dist",
     "compile": "tsc -p tsconfig.json",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
     "start": "yarn node dist/serverExpress.js",
     "start:watch": "nodemon --watch ../../ --ext js --exec 'yarn node dist/serverExpress.js'",
     "test": "jest --passWithNoTests --watch --config=jest.config.js",
-    "test:ci": "jest --passWithNoTests --config=jest.config.js"
+    "test-ci": "jest --passWithNoTests --config=jest.config.js"
   },
   "dependencies": {
     "@goldstack/library": "0.1.0",
