@@ -224,9 +224,9 @@
       <span class="token punctuation">}</span>
 </code></pre>
 <p>Note that the Terraform variable <code class="inline">my_env</code> translates to <code class="inline">myEnv</code> in the JSON definition (Just remove all <code class="inline">_</code> and make the first character after <code class="inline">_</code> uppercase for your variable definitions).</p>
-<p>Lastly, to support local development make sure to define the variable correctly in all <code class="inline">scripts</code> in <code class="inline">package.json</code>. Specifically, you may want to define them for <code class="inline">"test"</code>, <code class="inline">"test:ci"</code> and <code class="inline">"watch"</code>.</p>
+<p>Lastly, to support local development make sure to define the variable correctly in all <code class="inline">scripts</code> in <code class="inline">package.json</code>. Specifically, you may want to define them for <code class="inline">"test"</code>, <code class="inline">"test-ci"</code> and <code class="inline">"watch"</code>.</p>
 <pre class="language-json"><code class="language-json">    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"MY_ENV=localvalue jest --passWithNoTests --watch --config=jest.config.js"</span><span class="token punctuation">,</span>
-    <span class="token property">"test:ci"</span><span class="token operator">:</span> <span class="token string">"MY_ENV=localvalue jest --passWithNoTests --config=jest.config.js --detectOpenHandles"</span><span class="token punctuation">,</span>
+    <span class="token property">"test-ci"</span><span class="token operator">:</span> <span class="token string">"MY_ENV=localvalue jest --passWithNoTests --config=jest.config.js --detectOpenHandles"</span><span class="token punctuation">,</span>
     <span class="token property">"watch"</span><span class="token operator">:</span> <span class="token string">"PORT=8731 MY_ENV=localvalue nodemon --config nodemon.json --exec 'yarn node dist/src/local.js'"</span>
 </code></pre>
 <p>Note that for credentials and other values that should not be committed to source code, it may be better to store these in AWS Secrets Manager and retrieve them using the AWS SDK based on the <code class="inline">process.env.GOLDSTACK_DEPLOYMENT</code> value provided.</p>

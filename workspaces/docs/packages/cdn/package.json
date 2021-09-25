@@ -26,8 +26,8 @@
     "web:watch": "yarn web:build $@ && nodemon --watch ./../../ --ignore ./webDist -e '*' --exec \"yarn web:build $@\""
   },
   "devDependencies": {
-    "@goldstack/template-static-website-aws": "0.3.49",
-    "@goldstack/utils-sh": "0.4.13",
+    "@goldstack/template-static-website-aws": "0.3.50",
+    "@goldstack/utils-sh": "0.4.14",
     "@types/jest": "^26.0.21",
     "@types/node": "^14.0.6",
     "concurrently": "^5.2.0",
