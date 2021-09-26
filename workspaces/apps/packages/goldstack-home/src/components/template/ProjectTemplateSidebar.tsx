@@ -1,7 +1,9 @@
 import React from 'react';
 
 import GoldstackIcon from './../../icons/goldstack_icon.svg';
-import ModulesIcon from './../../icons/modules.svg';
+import GitHubIcon from './../../icons/github-tile.svg';
+
+import styles from './ProjectTemplateSidebar.module.css';
 
 import {
   TemplateFeatureImage,
@@ -42,15 +44,18 @@ const ProjectTemplateSidebar = (
             </a>
           </div>
 
-          <div className="mb-md-7">
+          <div className="mb-md-7 mt-10">
             <h1 className="h4">Modules</h1>
             <ul className="nav flex-column">
               {props.modules.map((module, idx) => (
                 <li className="nav-item" key={idx}>
-                  <a className="nav-link active" href={module.link}>
+                  <a
+                    className={`nav-link active  ${styles['menulinks-link']}`}
+                    href={module.link}
+                  >
                     <img
-                      className="fas fa-home nav-icon"
-                      src={ModulesIcon as any}
+                      className={`fas fa-home nav-icon ${styles['menulinks-link-nav-icon']}`}
+                      src={GitHubIcon as any}
                     ></img>
                     {module.title}
                   </a>
@@ -72,25 +77,20 @@ const ProjectTemplateSidebar = (
           <div className="d-none d-md-block mb-7">
             <h2 className="h4">Developer</h2>
 
-            <a className="d-inline-block text-body" href="/">
-              <div className="media align-items-center">
-                <div className="avatar avatar-xs mr-3">
-                  {/* Somehow this errors out on local preview <Image
-                    className="avatar-img"
-                    src={GoldstackIcon}
-                    unoptimized={true}
-                    alt="Goldstack Icon"
-                  /> */}
+            <ul className="nav flex-column">
+              <li className="nav-item" key={1}>
+                <a
+                  className={`nav-link active  ${styles['menulinks-link']}`}
+                  href="https://goldstack.party"
+                >
                   <img
-                    className="avatar-fluid"
+                    className={`fas fa-home nav-icon ${styles['menulinks-link-nav-icon']}`}
                     src={GoldstackIcon as any}
-                    width="40"
-                    alt="Goldstack Icon"
-                  />
-                </div>
-                <div className="media-body">Goldstack</div>
-              </div>
-            </a>
+                  ></img>
+                  Goldstack
+                </a>
+              </li>
+            </ul>
           </div>
 
           {/* <div className="d-none d-md-block mb-7">

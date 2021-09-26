@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { dataUriToSrc } from 'src/utils/utils';
 import CheckCircle from './../icons/font-awesome/solid/check-circle.svg';
 
+import GitHubIcon from './../icons/github-tile.svg';
 const FontIcon = styled.div`
   svg {
     margin-top: 0.25rem;
@@ -21,10 +22,19 @@ const GetTemplateDescription = (): JSX.Element => {
   return (
     <>
       <div className="mb-5">
-        <h2>Experience the difference with a premium template</h2>
+        <h2>Experience the difference with a custom, open-source template</h2>
         <p>
           Goldstack templates are carefully crafted and extensively tested to
           provide your project with solid foundations.
+        </p>
+        <p>
+          Goldstack templates are open-source and constantly updated and
+          improved. Check out ongoing development on{' '}
+          <a href="https://github.com/goldstack/goldstack#readme">
+            <img style={{ height: '1rem' }} className="mr-1" src={GitHubIcon} />
+            goldstack/goldstack
+          </a>
+          .
         </p>
       </div>
 

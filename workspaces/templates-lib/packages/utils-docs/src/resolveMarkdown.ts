@@ -4,6 +4,8 @@ import rehypeMarkdown from './rehypeMarkdownToMarkdown';
 // import stringify from 'rehype-stringify';
 import stringify from 'mdast-util-to-markdown';
 
+import table from 'mdast-util-gfm-table';
+
 import matter from 'gray-matter';
 import { read } from '@goldstack/utils-sh';
 
@@ -17,7 +19,9 @@ export async function resolveMarkdown(filePath: string): Promise<string> {
     tree = rehypeMarkdown({ filePath })(tree);
     // const file = await processor.process(md);
     // console.log(JSON.stringify(tree, null, 2));
-    const file = stringify(tree, {});
+    const file = stringify(tree, {
+      extensions: [table.toMarkdown()],
+    });
 
     // Replace non-breaking spaces (char code 160) with normal spaces to avoid style issues
     return (file as any).replace(/\xA0/g, ' ');

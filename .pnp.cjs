@@ -2578,7 +2578,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gray-matter", "npm:4.0.2"],
             ["hast-util-sanitize", "npm:3.0.0"],
             ["jest", "npm:26.6.3"],
-            ["mdast-util-to-markdown", "npm:0.5.3"],
+            ["mdast-util-gfm-table", "npm:0.1.6"],
+            ["mdast-util-to-markdown", "npm:0.6.5"],
             ["mdast-util-to-string", "npm:1.0.7"],
             ["rehype-raw", "npm:4.0.1"],
             ["rehype-sanitize", "npm:3.0.0"],
@@ -16364,6 +16365,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["markdown-table", [
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/markdown-table-npm-2.0.0-a9c10c8e83-9bb634a930.zip/node_modules/markdown-table/",
+          "packageDependencies": [
+            ["markdown-table", "npm:2.0.0"],
+            ["repeat-string", "npm:1.6.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["matchdep", [
         ["npm:2.0.0", {
           "packageLocation": "./.yarn/cache/matchdep-npm-2.0.0-19deb4c755-890457c0b6.zip/node_modules/matchdep/",
@@ -16399,6 +16410,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["mdast-util-gfm-table", [
+        ["npm:0.1.6", {
+          "packageLocation": "./.yarn/cache/mdast-util-gfm-table-npm-0.1.6-399704a3e4-eeb43faf83.zip/node_modules/mdast-util-gfm-table/",
+          "packageDependencies": [
+            ["mdast-util-gfm-table", "npm:0.1.6"],
+            ["markdown-table", "npm:2.0.0"],
+            ["mdast-util-to-markdown", "npm:0.6.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["mdast-util-to-hast", [
         ["npm:6.0.2", {
           "packageLocation": "./.yarn/cache/mdast-util-to-hast-npm-6.0.2-e05100c60c-30b8f4c4fb.zip/node_modules/mdast-util-to-hast/",
@@ -16420,13 +16442,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["mdast-util-to-markdown", [
-        ["npm:0.5.3", {
-          "packageLocation": "./.yarn/cache/mdast-util-to-markdown-npm-0.5.3-eeab404b56-ac1a6eb6fa.zip/node_modules/mdast-util-to-markdown/",
+        ["npm:0.6.5", {
+          "packageLocation": "./.yarn/cache/mdast-util-to-markdown-npm-0.6.5-6da59c9db9-7ebc47533b.zip/node_modules/mdast-util-to-markdown/",
           "packageDependencies": [
-            ["mdast-util-to-markdown", "npm:0.5.3"],
+            ["mdast-util-to-markdown", "npm:0.6.5"],
             ["@types/unist", "npm:2.0.3"],
             ["longest-streak", "npm:2.0.4"],
-            ["mdast-util-to-string", "npm:1.0.7"],
+            ["mdast-util-to-string", "npm:2.0.0"],
             ["parse-entities", "npm:2.0.0"],
             ["repeat-string", "npm:1.6.1"],
             ["zwitch", "npm:1.0.5"]
@@ -16439,6 +16461,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/mdast-util-to-string-npm-1.0.7-a27a385d45-4ee9442ab0.zip/node_modules/mdast-util-to-string/",
           "packageDependencies": [
             ["mdast-util-to-string", "npm:1.0.7"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/mdast-util-to-string-npm-2.0.0-3a5d9c4970-0b2113ada1.zip/node_modules/mdast-util-to-string/",
+          "packageDependencies": [
+            ["mdast-util-to-string", "npm:2.0.0"]
           ],
           "linkType": "HARD",
         }]

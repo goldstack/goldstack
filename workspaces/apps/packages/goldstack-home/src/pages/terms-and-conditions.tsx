@@ -14,7 +14,7 @@ const Hero = (): JSX.Element => {
       <div className="container space-top-3 space-top-lg-4 space-bottom-2 position-relative z-index-2">
         <div className="w-md-80 w-lg-60 text-center mx-md-auto">
           <h1>Goldstack Terms &amp; Conditions</h1>
-          <p>Effective date: 12th September 2020</p>
+          <p>Effective date: 26th September 2021</p>
         </div>
       </div>
     </div>
@@ -105,9 +105,10 @@ const TermsAndConditions = (): JSX.Element => {
 
               <p>
                 Thanks for using our products and services
-                (&quot;Services&quot;). The Services are provided by Pureleap
-                Pty. Ltd. (&quot;Pureleap&quot;), located at 44/202 The Avenue,
-                3052 Parkville, Australia.
+                (&quot;Services&quot;). The Services are provided by{' '}
+                <a href="http://pureleap.com">Pureleap Pty. Ltd.</a>{' '}
+                (&quot;Pureleap&quot;), located at 21 Clarendon Wynd 3023
+                Caroline Springs VIC Australia.
               </p>
               <p>
                 By using our Services, you are agreeing to these terms. Please
@@ -147,7 +148,9 @@ const TermsAndConditions = (): JSX.Element => {
                 for the express purpose of using our templates as starting point
                 for your development projects. Templates may not be used to
                 develop services substantially similar to the Goldstack service
-                as offered on <a href="/">goldstack.party</a>.
+                as offered on <a href="/">goldstack.party</a>. This clause does
+                not apply to any rightful usage of our open source code on{' '}
+                <a href="https://github.com/goldstack">goldstack</a>.
               </p>
               <p>
                 Using our Services does not give you ownership of any
@@ -172,18 +175,8 @@ const TermsAndConditions = (): JSX.Element => {
 
               <ul>
                 <li className="pb-2">
-                  When you register for an account we collect your full name,
-                  email address, and account log-in credentials.
-                </li>
-                <li className="pb-2">
-                  When you fill-in our online form to contact our sales team, we
-                  collect your full name, work email, country, and anything else
-                  you tell us about your project, needs and timeline.
-                </li>
-                <li className="pb-2">
-                  When you use the Checkout, we collect your email address. We
-                  use Stripe to store your payment information securely.
-                  Pureleap will have no knowledge of your credit card number.
+                  When you register for an account we collect your email
+                  address.
                 </li>
               </ul>
 

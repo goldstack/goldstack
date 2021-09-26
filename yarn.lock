@@ -1903,7 +1903,8 @@ __metadata:
     gray-matter: ^4.0.2
     hast-util-sanitize: ^3.0.0
     jest: ^26.6.3
-    mdast-util-to-markdown: 0.5.3
+    mdast-util-gfm-table: 0.1.6
+    mdast-util-to-markdown: 0.6.5
     mdast-util-to-string: 1.0.7
     rehype-raw: 4.0.1
     rehype-sanitize: 3.0.0
@@ -13817,6 +13818,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"markdown-table@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "markdown-table@npm:2.0.0"
+  dependencies:
+    repeat-string: ^1.0.0
+  checksum: 9bb634a9300016cbb41216c1eab44c74b6b7083ac07872e296f900a29449cf0e260ece03fa10c3e9784ab94c61664d1d147da0315f95e1336e2bdcc025615c90
+  languageName: node
+  linkType: hard
+
 "matchdep@npm:^2.0.0":
   version: 2.0.0
   resolution: "matchdep@npm:2.0.0"
@@ -13849,6 +13859,16 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"mdast-util-gfm-table@npm:0.1.6":
+  version: 0.1.6
+  resolution: "mdast-util-gfm-table@npm:0.1.6"
+  dependencies:
+    markdown-table: ^2.0.0
+    mdast-util-to-markdown: ~0.6.0
+  checksum: eeb43faf833753315b4ccf8d7bc8a6845b31562b2d2dd12a92aa40f9cee1b1954643c7515399a98f9b2e143c95cf6b5c0aac5941a4f609d6a57335587cee99ac
+  languageName: node
+  linkType: hard
+
 "mdast-util-to-hast@npm:^6.0.0":
   version: 6.0.2
   resolution: "mdast-util-to-hast@npm:6.0.2"
@@ -13868,24 +13888,31 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"mdast-util-to-markdown@npm:0.5.3":
-  version: 0.5.3
-  resolution: "mdast-util-to-markdown@npm:0.5.3"
+"mdast-util-to-markdown@npm:0.6.5, mdast-util-to-markdown@npm:~0.6.0":
+  version: 0.6.5
+  resolution: "mdast-util-to-markdown@npm:0.6.5"
   dependencies:
     "@types/unist": ^2.0.0
     longest-streak: ^2.0.0
-    mdast-util-to-string: ^1.0.0
+    mdast-util-to-string: ^2.0.0
     parse-entities: ^2.0.0
     repeat-string: ^1.0.0
     zwitch: ^1.0.0
-  checksum: ac1a6eb6fae7bedcf6ed70048f674f2ef8a7353a197b710a5c554f04db99b3f91cc8156a894e6709c18008d7b9d8df5f570edb0510576e153d58b0b657572a1d
+  checksum: 7ebc47533bff6e8669f85ae124dc521ea570e9df41c0d9e4f0f43c19ef4a8c9928d741f3e4afa62fcca1927479b714582ff5fd684ef240d84ee5b75ab9d863cf
   languageName: node
   linkType: hard
 
-"mdast-util-to-string@npm:1.0.7, mdast-util-to-string@npm:^1.0.0":
+"mdast-util-to-string@npm:1.0.7":
   version: 1.0.7
   resolution: "mdast-util-to-string@npm:1.0.7"
   checksum: 4ee9442ab0bd43b2ba15d8fcf78762270d2868415b71ceb8849067b59691fc98b6cf547597821313ca1c5d2b8743f179c623c36692de731800a2dba7a578dfeb
+  languageName: node
+  linkType: hard
+
+"mdast-util-to-string@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "mdast-util-to-string@npm:2.0.0"
+  checksum: 0b2113ada10e002fbccb014170506dabe2f2ddacaacbe4bc1045c33f986652c5a162732a2c057c5335cdb58419e2ad23e368e5be226855d4d4e280b81c4e9ec2
   languageName: node
   linkType: hard
 

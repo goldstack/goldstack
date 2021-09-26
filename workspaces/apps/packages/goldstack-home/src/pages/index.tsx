@@ -28,6 +28,8 @@ import Foundation from './../components/Foundation';
 import GoldstackProcess from './../components/GoldstackProcess';
 import GoldstackBenefits from './../components/GoldstackBenefits';
 
+import GitHubIcon from './../icons/github-tile.svg';
+
 import Footer from './../components/Footer';
 import TemplateCallToAction from './../components/template/TemplateCallToAction';
 import TemplateCard from './../components/template/TemplateCard';
@@ -71,6 +73,17 @@ const Front = (): JSX.Element => {
                 >
                   ✔ Start Building Your Project Now
                 </a>
+                <p className="mt-3">
+                  Open source on{' '}
+                  <a href="https://github.com/goldstack/goldstack">
+                    <img
+                      style={{ height: '1rem' }}
+                      className="mr-1"
+                      src={GitHubIcon}
+                    />
+                    goldstack/goldstack
+                  </a>
+                </p>
               </div>
             </div>
 

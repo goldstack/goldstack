@@ -24,13 +24,11 @@ function validateEmail(email: string): boolean {
 
 const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
   const emailInput = useRef<HTMLInputElement>(null);
-  const termsInput = useRef<HTMLInputElement>(null);
 
   const [progressMessage, setProgressMessage] = useState('');
 
   const onSubmit = async (evt: any): Promise<void> => {
     evt.preventDefault();
-    assert(termsInput.current);
     let email: string;
     if (emailInput.current) {
       email = emailInput.current.value;
@@ -41,10 +39,10 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
     } else {
       email = '';
     }
-    if (!termsInput.current.value) {
-      alert('Please accept our terms and conditions before proceeding.');
-      return;
-    }
+    // if (!termsInput.current.value) {
+    //   alert('Please accept our terms and conditions before proceeding.');
+    //   return;
+    // }
 
     setProgressMessage('Processing ...');
     const sessionRes = await fetch(`${getEndpoint()}/sessions`, {
@@ -100,7 +98,7 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
       className="js-validate card border w-md-85 w-lg-100 mx-md-auto"
     >
       <div className="card-header bg-primary text-white text-center py-4 px-5 px-md-6">
-        <h4 className="text-white mb-0">Get Template</h4>
+        <h4 className="text-white mb-0">Download Template</h4>
       </div>
 
       <div className="card-body p-md-6">
@@ -124,27 +122,17 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
           </div>
         </div>{' '}
         <div className="js-form-message mb-5">
-          <div className="custom-control custom-checkbox d-flex align-items-center text-muted">
-            <input
-              type="checkbox"
-              ref={termsInput}
-              className="custom-control-input"
-              required
-              id="termsCheckbox"
-              name="termsCheckbox"
-              data-msg="Please accept our Terms and Conditions."
-            />
-            <label className="custom-control-label" htmlFor="termsCheckbox">
-              <small>
-                I agree to the{' '}
-                <Link href="/terms-and-conditions">
-                  <a className="link-underline" target="_blank">
-                    Terms and Conditions
-                  </a>
-                </Link>
-              </small>
-            </label>
-          </div>
+          <small>
+            Goldstack templates are open source. See our{' '}
+            <a
+              href="/terms-and-conditions"
+              className="link-underline"
+              target="_blank"
+            >
+              Terms and Conditions
+            </a>{' '}
+            for our privacy policy.
+          </small>
         </div>
         <div className="row align-items-center">
           {/* <div className="col-sm-7 mb-3 mb-sm-0">
@@ -155,8 +143,12 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
               </a>
             </p>
           </div> */}
-          <div className="col-sm-5 ">
-            <button type="submit" className="btn btn-primary">
+          <div className="col-sm-10 ">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={!!progressMessage}
+            >
               <Spinner
                 as="span"
                 animation="border"
@@ -165,7 +157,7 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
                 aria-hidden="true"
                 hidden={!progressMessage}
               ></Spinner>{' '}
-              Submit
+              Generate Download Link
             </button>
           </div>
           <div className="cols-sm-2">
