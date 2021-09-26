@@ -1073,7 +1073,7 @@ __metadata:
   resolution: "@goldstack/markdown-docs@workspace:workspaces/docs/packages/markdown-docs"
   dependencies:
     "@goldstack/utils-cli": 0.2.6
-    "@goldstack/utils-docs": 0.3.18
+    "@goldstack/utils-docs": 0.3.19
     "@goldstack/utils-sh": 0.4.14
     "@types/jest": ^26.0.21
     "@types/node": ^14.0.6
@@ -1874,7 +1874,7 @@ __metadata:
   resolution: "@goldstack/utils-docs-cli@workspace:workspaces/docs/packages/utils-docs-cli"
   dependencies:
     "@goldstack/utils-cli": 0.2.6
-    "@goldstack/utils-docs": 0.3.18
+    "@goldstack/utils-docs": 0.3.19
     "@goldstack/utils-git": 0.1.27
     "@goldstack/utils-sh": 0.4.14
     "@types/jest": ^26.0.21
@@ -1890,7 +1890,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-docs@0.3.18, @goldstack/utils-docs@workspace:workspaces/templates-lib/packages/utils-docs":
+"@goldstack/utils-docs@0.3.19, @goldstack/utils-docs@workspace:workspaces/templates-lib/packages/utils-docs":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-docs@workspace:workspaces/templates-lib/packages/utils-docs"
   dependencies:
