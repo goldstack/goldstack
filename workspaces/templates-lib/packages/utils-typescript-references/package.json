@@ -1,0 +1,50 @@
+{
+  "name": "@goldstack/utils-typescript-references",
+  "version": "0.1.0",
+  "description": "Utility for keeping TypeScript references in sync in the monorepo",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "cli",
+    "command line",
+    "typescript"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack.git"
+  },
+  "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "dist/utilsTypeScriptReferences.js",
+  "bin": "./bin/utils-typescript-references",
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:watch": "yarn clean && yarn compile-watch",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc -p tsconfig.json",
+    "compile-watch": "tsc -p tsconfig.json --watch",
+    "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "prepublishOnly": "yarn run build",
+    "publish": "utils-git changed --exec \"yarn npm publish $@\"",
+    "test-ci": "jest --passWithNoTests --config=./jest.config.js",
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
+    "version:apply:force": "yarn version $@ && yarn version apply"
+  },
+  "dependencies": {
+    "@monorepo-utils/workspaces-to-typescript-project-references": "^2.6.2"
+  },
+  "devDependencies": {
+    "@goldstack/utils-git": "0.1.27",
+    "@types/jest": "^26.0.21",
+    "@types/node": "^16.10.2",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.4",
+    "typescript": "^4.4.3"
+  }
+}

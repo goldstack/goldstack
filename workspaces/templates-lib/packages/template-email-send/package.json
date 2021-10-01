@@ -66,7 +66,7 @@
     "@goldstack/utils-package-config-generate": "0.2.6",
     "@types/jest": "^26.0.21",
     "@types/mock-aws-s3": "^2.6.1",
-    "@types/node": "^14.0.6",
+    "@types/node": "^16.10.2",
     "@types/uuid": "^8.3.0",
     "@types/yargs": "^15.0.5",
     "jest": "^26.6.3",

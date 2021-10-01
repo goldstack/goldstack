@@ -166,6 +166,7 @@ jobs:
           echo "::set-output name=patchedcommit::$(git rev-parse HEAD)"
 
       - name: Build and publish image to DEV
+        if: github.ref == 'refs/heads/master'
         run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy dev
         env:
           AWS_USER_NAME: goldstack-dev
@@ -202,6 +203,7 @@ jobs:
           echo "::set-output name=patchedclicommit::$(git rev-parse HEAD)"
 
       - name: Trigger template build
+        if: github.ref == 'refs/heads/master'
         run: |
           yarn workspace @goldstack/template-management-cli compile # compile again so that deployment state is updated
           yarn workspace @goldstack/template-management-cli cli schedule-all-deploy-sets --repo goldstack-dev --deployment dev --emailResultsTo mxrogm@gmail.com
@@ -212,6 +214,7 @@ jobs:
           AWS_DEFAULT_REGION: us-west-2
 
       - name: Deploy docs
+        if: github.ref == 'refs/heads/master'
         run: |
           yarn workspace @goldstack/docs-main deploy dev
         env:
@@ -221,6 +224,7 @@ jobs:
           AWS_DEFAULT_REGION: us-west-2
 
       - name: Deploy API
+        if: github.ref == 'refs/heads/master'
         run: |
           yarn workspace @goldstack/goldstack-api deploy dev
         env:
@@ -232,6 +236,7 @@ jobs:
           STRIPE_API_KEY: ${{secrets.DEV_STRIPE_PRIVATE_KEY}}
 
       - name: Deploy UI
+        if: github.ref == 'refs/heads/master'
         run: |
           yarn workspace @goldstack/goldstack-home deploy dev
         env:
