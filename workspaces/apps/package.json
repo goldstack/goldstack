@@ -8,10 +8,9 @@
   "scripts": {
     "build": "yarn workspaces foreach --topological-dev run build",
     "clean": "yarn workspaces foreach run clean",
-    "compile": "yarn workspaces foreach --topological-dev run compile",
-    "compile-watch": "yarn compile && yarn workspaces foreach --parallel --interlaced --jobs 1000 run compile-watch:light",
-    "compile-watch:all": "yarn compile && nodemon --watch ./ --ext ts,tsx,json,css --exec 'yarn compile'",
+    "compile": "tsc --build",
     "coverage": "yarn workspaces --topological-dev foreach run coverage",
+    "fix-project-references": "utils-typescript-references --skipRoot",
     "format": "prettier --write .",
     "format-check": "prettier .",
     "generate-docs": "yarn workspaces foreach run generate-docs",
@@ -22,6 +21,7 @@
     "test-ci": "yarn workspaces foreach --parallel run test-ci"
   },
   "devDependencies": {
+    "@goldstack/utils-typescript-references": "0.1.0",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
     "@yarnpkg/doctor": "^3.0.0",

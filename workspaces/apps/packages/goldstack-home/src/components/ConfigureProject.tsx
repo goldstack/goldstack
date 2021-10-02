@@ -12,7 +12,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import ConfigureNavigate from 'src/components/ConfigureNavigate';
 import DynamicConfigForm from 'src/components/DynamicConfigForm';
 
-import ProjectData from '@goldstack/project-repository/dist/types/ProjectData';
+import { ProjectData } from '@goldstack/project-repository';
 
 import { getEndpoint } from '@goldstack/goldstack-api';
 

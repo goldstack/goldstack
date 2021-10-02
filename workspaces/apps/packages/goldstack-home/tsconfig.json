@@ -2,13 +2,14 @@
   "extends": "../../tsconfig.base.json",
   "include": [
     "./src/**/*",
+    "./src/**/*.json",
     "./next-env.d.ts"
   ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
     "jsx": "preserve",
-    "incremental": false,
+    "incremental": true,
     "module": "esnext",
     "noEmit": false,
     "moduleResolution": "node",
@@ -16,5 +17,13 @@
   },
   "exclude": [
     "node_modules"
+  ],
+  "references": [
+    {
+      "path": "../goldstack-api"
+    },
+    {
+      "path": "../project-template-data"
+    }
   ]
 }

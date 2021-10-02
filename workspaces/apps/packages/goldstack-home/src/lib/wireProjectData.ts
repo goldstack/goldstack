@@ -1,6 +1,6 @@
-import ProjectData from '@goldstack/project-repository/dist/types/ProjectData';
+import { ProjectData } from '@goldstack/project-repository';
 
-import { AWSAPIKeyUserConfig } from '@goldstack/infra-aws/dist/types/awsAccount';
+import { AWSAPIKeyUser } from '@goldstack/infra-aws';
 
 export const wireProjectData = (data: ProjectData): ProjectData => {
   // ensure at least one deployment configured per project
@@ -11,8 +11,7 @@ export const wireProjectData = (data: ProjectData): ProjectData => {
         name: data.deploymentNames[0],
         configuration: {},
         awsUser: data.awsUsers[0].name,
-        awsRegion: (data.awsUsers[0].config as AWSAPIKeyUserConfig)
-          .awsDefaultRegion,
+        awsRegion: (data.awsUsers[0].config as AWSAPIKeyUser).awsDefaultRegion,
       });
     } else {
       deployments.forEach((deployment) => {
@@ -20,7 +19,7 @@ export const wireProjectData = (data: ProjectData): ProjectData => {
         deployment.awsUser = data.awsUsers[0].name;
 
         deployment.awsRegion = (data.awsUsers[0]
-          .config as AWSAPIKeyUserConfig).awsDefaultRegion;
+          .config as AWSAPIKeyUser).awsDefaultRegion;
       });
     }
   });

@@ -4,7 +4,7 @@
   "license": "",
   "author": "",
   "sideEffects": false,
-  "main": "dist/src/image.js",
+  "main": "src/image.ts",
   "files": [
     "dist"
   ],

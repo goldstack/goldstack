@@ -1,8 +1,18 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*",
+    "./src/**/*.json",
+    "./schemas/**/*.json",
+    "./goldstack.json"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
-  }
+  },
+  "references": [
+    {
+      "path": "../goldstack-email-send"
+    }
+  ]
 }

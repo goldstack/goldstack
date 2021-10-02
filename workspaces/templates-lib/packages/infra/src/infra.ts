@@ -1,10 +1,10 @@
-export {
+export type {
   Deployment,
   DeploymentName,
   DeploymentConfiguration,
 } from './types/InfrastructureConfiguration';
 
-export {
+export type {
   DeploymentState,
   DeploymentsState,
 } from './types/deploymentStatesTypes';

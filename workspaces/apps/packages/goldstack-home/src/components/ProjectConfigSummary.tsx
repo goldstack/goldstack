@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useRouter } from 'next/router';
-import ProjectData from '@goldstack/project-repository/dist/types/ProjectData';
+import { ProjectData } from '@goldstack/project-repository';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import assert from 'assert';

@@ -4,7 +4,7 @@ import { Deployment } from '@goldstack/infra';
 
 import { S3DeploymentConfiguration } from './S3DeploymentConfiguration';
 
-export {
+export type {
   AWSDeployment,
   TerraformDeployment,
   Deployment,
@@ -18,6 +18,6 @@ export interface ThisDeployment
   configuration: S3DeploymentConfiguration;
 }
 
-export { ThisDeployment as S3Deployment };
+export type { ThisDeployment as S3Deployment };
 
 export default ThisDeployment;

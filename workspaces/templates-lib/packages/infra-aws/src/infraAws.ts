@@ -40,7 +40,7 @@ export type {
 
 import { AWSDeployment } from './types/awsDeployment';
 
-export {
+export type {
   AWSDeployment,
   AWSDeploymentRegion,
   AWSUserName,

@@ -2,7 +2,6 @@
   "compilerOptions": {
     "incremental": true,
     "target": "ES2019",
-    "composite": true,
     "module": "commonjs",
     "lib": [
       "dom",
@@ -10,6 +9,8 @@
     ],
     "allowJs": true,
     "checkJs": false,
+    "composite": true,
+    "noEmit": false,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
@@ -17,13 +18,33 @@
     "strict": true,
     "noImplicitAny": false,
     "strictNullChecks": true,
-    "esModuleInterop": true,
     "useUnknownInCatchVariables": false,
+    "esModuleInterop": true,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "types": [
       "jest",
       "node"
     ]
-  }
+  },
+  "include": [],
+  "references": [
+  
+    {
+      "path": "./packages/goldstack-api"
+    },
+    {
+      "path": "./packages/goldstack-email-send"
+    },
+    {
+      "path": "./packages/goldstack-home"
+    },
+    {
+      "path": "./packages/project-template-data"
+    },
+    {
+      "path": "./packages/template-management-cli"
+    },
+   
+  ]
 }

@@ -1,6 +1,6 @@
 import { DeploymentConfiguration } from '@goldstack/infra';
 
-export { DeploymentConfiguration };
+export type { DeploymentConfiguration };
 
 /**
  * The name of the bucket. No spaces, numbers or special characters other than '-' allowed.
@@ -14,4 +14,4 @@ export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
   bucketName: BucketName;
 }
 
-export { ThisDeploymentConfiguration as S3DeploymentConfiguration };
+export type { ThisDeploymentConfiguration as S3DeploymentConfiguration };

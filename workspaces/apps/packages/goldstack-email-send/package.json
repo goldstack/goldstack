@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/src/ses.js",
+  "main": "src/ses.ts",
   "files": [
     "dist"
   ],

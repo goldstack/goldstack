@@ -6,7 +6,7 @@ import ProjectRepository from './ProjectRepositoryInterface';
 
 import ProjectData from './types/ProjectData';
 
-export { ProjectData };
+export type { ProjectData };
 
 export const connectProjectRepository = async (
   deploymentName?: string

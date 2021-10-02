@@ -12,7 +12,7 @@ import { getAwsConfigPath } from '@goldstack/utils-config';
 import { readConfig } from '@goldstack/infra-aws';
 import { scheduleAllDeploySets } from './scheduleAllDeploySets';
 import fs from 'fs';
-import { AWSAPIKeyUserConfig } from '@goldstack/infra-aws/dist/types/awsAccount';
+import { AWSAPIKeyUser } from '@goldstack/infra-aws';
 import {
   connect as connectSes,
   getFromDomain,
@@ -139,14 +139,14 @@ export const run = async (): Promise<void> => {
         mkdir('-p', workDir);
 
         const awsConfigPath = getAwsConfigPath('./../../');
-        let awsConfig: undefined | AWSAPIKeyUserConfig = undefined;
+        let awsConfig: undefined | AWSAPIKeyUser = undefined;
         if (fs.existsSync(awsConfigPath)) {
           console.info('Using local AWS config');
           const goldstackDevUser = readConfig(awsConfigPath).users.find(
             (user) => user.name === 'goldstack-dev'
           );
           assert(goldstackDevUser, 'No goldstack-dev user defined in config');
-          awsConfig = goldstackDevUser.config as AWSAPIKeyUserConfig;
+          awsConfig = goldstackDevUser.config as AWSAPIKeyUser;
         }
 
         const res = await buildSet({

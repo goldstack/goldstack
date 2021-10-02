@@ -7,7 +7,7 @@ import pathLib from 'path';
 import { Argv } from 'yargs';
 import { assert } from 'console';
 
-export {
+export type {
   Package,
   PackageConfiguration as Configuration,
   Name,

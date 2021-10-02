@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/src/module.js",
+  "main": "src/module.ts",
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:analyze": "yarn compile && yarn webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json && rm -f stats.json",
