@@ -4,7 +4,7 @@
   "license": "",
   "author": "",
   "sideEffects": false,
-  "main": "dist/src/bucket.js",
+  "main": "src/bucket.ts",
   "files": [
     "dist"
   ],

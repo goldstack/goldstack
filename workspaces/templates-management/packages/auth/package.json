@@ -4,7 +4,7 @@
   "description": "Utilities for authentication and authorization",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/auth.js",
+  "main": "src/auth.ts",
   "files": [
     "dist"
   ],

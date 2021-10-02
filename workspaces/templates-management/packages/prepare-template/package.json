@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/prepareTemplate.js",
+  "main": "src/prepareTemplate.ts",
   "files": [
     "dist"
   ],

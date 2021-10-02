@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/templateBuild.js",
+  "main": "src/templateBuild.ts",
   "files": [
     "dist"
   ],

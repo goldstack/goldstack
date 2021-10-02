@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/templateRepository.js",
+  "main": "src/templateRepository.ts",
   "files": [
     "dist"
   ],

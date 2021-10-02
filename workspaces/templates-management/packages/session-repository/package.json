@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/sessionRepository.js",
+  "main": "src/sessionRepository.ts",
   "files": [
     "dist"
   ],

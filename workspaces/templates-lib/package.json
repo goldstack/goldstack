@@ -8,10 +8,7 @@
   "scripts": {
     "build": "yarn workspaces foreach --topological-dev run build",
     "clean": "yarn workspaces foreach run clean",
-    "compile": "yarn workspaces foreach --topological-dev run compile",
-    "compile-new": "tsc --build",
-    "compile-watch": "yarn compile && yarn workspaces foreach --parallel --interlaced --jobs 1000 run compile-watch:light",
-    "compile-watch:all": "yarn compile && nodemon --watch ./ --ext ts,tsx,json,css --exec 'yarn compile'",
+    "compile": "tsc --build",
     "coverage": "yarn workspaces --topological-dev foreach run coverage",
     "fix-project-references": "utils-typescript-references --skipRoot",
     "format": "prettier --write .",

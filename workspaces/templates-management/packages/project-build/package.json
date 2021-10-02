@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/projectBuild.js",
+  "main": "src/projectBuild.ts",
   "files": [
     "dist"
   ],

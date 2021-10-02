@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/projectConfig.js",
+  "main": "src/projectConfig.ts",
   "files": [
     "dist"
   ],

@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/projectInstall.js",
+  "main": "src/projectInstall.ts",
   "files": [
     "dist"
   ],

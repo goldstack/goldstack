@@ -1,9 +1,22 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "exclude": [],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
-  }
+  },
+  "references": [
+    {
+      "path": "../project-config"
+    },
+    {
+      "path": "../project-repository-bucket"
+    },
+    {
+      "path": "../auth"
+    }
+  ]
 }

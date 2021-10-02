@@ -19738,6 +19738,7 @@ resolve@^1.18.1:
   version: 0.0.0-use.local
   resolution: "templates-management@workspace:workspaces/templates-management"
   dependencies:
+    "@goldstack/utils-typescript-references": 0.1.0
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
     "@yarnpkg/doctor": ^3.0.0

@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/src/perpareYarnPnpMonorepo.js",
+  "main": "src/perpareYarnPnpMonorepo.ts",
   "files": [
     "dist"
   ],

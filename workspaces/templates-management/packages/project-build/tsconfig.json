@@ -1,8 +1,21 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
-  }
+  },
+  "references": [
+    {
+      "path": "../template-repository"
+    },
+    {
+      "path": "../template-build"
+    },
+    {
+      "path": "../utils-template-test"
+    }
+  ]
 }

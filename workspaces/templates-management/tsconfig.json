@@ -1,0 +1,81 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "ES2019",
+    "module": "commonjs",
+    "lib": [
+      "dom",
+      "ESNext"
+    ],
+    "allowJs": true,
+    "checkJs": false,
+    "composite": true,
+    "noEmit": false,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "useUnknownInCatchVariables": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "jest",
+      "node"
+    ]
+  },
+  "include": [],
+  "references": [
+    {
+      "path": "./packages/auth"
+    },
+    {
+      "path": "./packages/prepare-template"
+    },
+    {
+      "path": "./packages/prepare-yarn-pnp-monorepo"
+    },
+    {
+      "path": "./packages/project-build"
+    },
+    {
+      "path": "./packages/project-config"
+    },
+    {
+      "path": "./packages/project-install"
+    },
+    {
+      "path": "./packages/project-package-bucket"
+    },
+    {
+      "path": "./packages/project-repository"
+    },
+    {
+      "path": "./packages/project-repository-bucket"
+    },
+    {
+      "path": "./packages/session-repository"
+    },
+    {
+      "path": "./packages/session-repository-bucket"
+    },
+    {
+      "path": "./packages/template-build"
+    },
+    {
+      "path": "./packages/template-build-set"
+    },
+    {
+      "path": "./packages/template-repository"
+    },
+    {
+      "path": "./packages/template-repository-bucket"
+    },
+    {
+      "path": "./packages/utils-template-test"
+    }
+  ]
+}
