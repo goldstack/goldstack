@@ -18,7 +18,7 @@
   },
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "src/utilsTrack.ts",
+  "main": "src/utilsTrack.tsx",
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",

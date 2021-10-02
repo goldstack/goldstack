@@ -2,8 +2,6 @@
   "compilerOptions": {
     "incremental": true,
     "target": "ES2019",
-    "composite": true,
-    "noEmit": false,
     "module": "commonjs",
     "lib": [
       "dom",
@@ -11,6 +9,8 @@
     ],
     "allowJs": true,
     "checkJs": false,
+    "composite": true,
+    "noEmit": false,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
@@ -26,5 +26,27 @@
       "jest",
       "node"
     ]
-  }
+  },
+  "include": [],
+  "references": [
+    
+    {
+      "path": "./packages/cdn"
+    },
+    {
+      "path": "./packages/docs-main"
+    },
+    {
+      "path": "./packages/markdown-docs"
+    },
+    {
+      "path": "./packages/module-template-docs"
+    },
+    {
+      "path": "./packages/toc-generator"
+    },
+    {
+      "path": "./packages/utils-docs-cli"
+    }
+  ]
 }
