@@ -22,7 +22,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/templateS3.js",
+  "main": "src/templateS3.ts",
   "bin": {
     "template": "./bin/template",
     "template-s3": "./bin/template"

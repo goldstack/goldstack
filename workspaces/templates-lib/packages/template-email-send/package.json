@@ -23,7 +23,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/templateEmailSend.js",
+  "main": "src/templateEmailSend.ts",
   "bin": {
     "template": "./bin/template",
     "template-email-send": "./bin/template"

@@ -24,7 +24,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/templateDockerImageAws.js",
+  "main": "src/templateDockerImageAws.ts",
   "bin": {
     "template": "./bin/template",
     "template-docker-image-aws": "./bin/template"

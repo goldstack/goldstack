@@ -21,7 +21,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/utilsPackageConfig.js",
+  "main": "src/utilsPackageConfig.ts",
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",

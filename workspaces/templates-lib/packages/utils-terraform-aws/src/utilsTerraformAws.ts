@@ -1,13 +1,11 @@
 import {
   readDeploymentFromPackageConfig,
   getAWSUser,
-  readConfig,
-  writeConfig,
-  AWSConfiguration,
   AWSDeployment,
-  AWSUser,
   assertTerraformConfig,
   writeTerraformConfig,
+  AWSTerraformState,
+  RemoteState,
 } from '@goldstack/infra-aws';
 import {
   terraformCli,
@@ -18,10 +16,6 @@ import { sh } from '@goldstack/utils-sh';
 import AWS from 'aws-sdk';
 import { createState } from './tfState';
 import crypto from 'crypto';
-import {
-  AWSTerraformState,
-  RemoteState,
-} from '@goldstack/infra-aws/dist/types/awsTerraformState';
 
 const getRemoteStateConfig = (
   config: AWSTerraformState,

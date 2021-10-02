@@ -27,7 +27,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/templateNextjs.js",
+  "main": "src/templateNextjs.ts",
   "bin": {
     "template": "./bin/template",
     "template-nextjs": "./bin/template"

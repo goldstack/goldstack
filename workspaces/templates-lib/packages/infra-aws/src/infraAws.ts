@@ -24,6 +24,7 @@ import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
 import awsStateConfigSchema from './schemas/awsTerraformStateSchema.json';
 import AWS from 'aws-sdk';
 
+import { AWSTerraformState, RemoteState } from './types/awsTerraformState';
 export type {
   AWSConfiguration,
   AWSUser,
@@ -33,10 +34,11 @@ export type {
   AWSLocalUserConfig,
   AWSAPIKeyUserConfig as AWSAPIKeyUser,
   AWSEnvironmentVariableUserConfig,
+  AWSTerraformState,
+  RemoteState,
 };
 
 import { AWSDeployment } from './types/awsDeployment';
-import { AWSTerraformState } from './types/awsTerraformState';
 
 export {
   AWSDeployment,

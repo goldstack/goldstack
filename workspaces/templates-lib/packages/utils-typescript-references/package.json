@@ -20,7 +20,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/utilsTypeScriptReferences.js",
+  "main": "src/utilsTypeScriptReferences.ts",
   "bin": "./bin/utils-typescript-references",
   "scripts": {
     "build": "yarn clean && yarn compile",

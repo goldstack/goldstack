@@ -21,7 +21,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/utilsJsonToTs.js",
+  "main": "src/utilsJsonToTs.ts",
   "bin": "./bin/jsontots",
   "scripts": {
     "build": "yarn clean && yarn compile",

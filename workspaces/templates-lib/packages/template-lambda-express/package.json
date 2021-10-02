@@ -25,7 +25,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/templateLambdaExpress.js",
+  "main": "src/templateLambdaExpress.ts",
   "bin": {
     "template": "./bin/template",
     "template-lambda-express": "./bin/template"

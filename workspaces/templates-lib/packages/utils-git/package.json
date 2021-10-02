@@ -18,7 +18,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/utilsGit.js",
+  "main": "src/utilsGit.ts",
   "bin": "./bin/utils-git",
   "scripts": {
     "build": "yarn clean && yarn compile",

@@ -22,7 +22,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/utilsNodemonx.js",
+  "main": "src/utilsNodemonx.ts",
   "bin": "./bin/utils-nodemonx",
   "scripts": {
     "build": "yarn clean && yarn compile",

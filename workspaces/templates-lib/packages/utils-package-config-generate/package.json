@@ -18,7 +18,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/utilsPackageConfigGenerate.js",
+  "main": "src/utilsPackageConfigGenerate.ts",
   "bin": "./bin/utils-package-config-generate",
   "scripts": {
     "build": "yarn clean && yarn compile",

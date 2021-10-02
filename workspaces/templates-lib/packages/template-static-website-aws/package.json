@@ -24,7 +24,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/templateStaticWebsiteAws.js",
+  "main": "src/templateStaticWebsiteAws.ts",
   "bin": {
     "template": "./bin/template",
     "template-static-website-aws": "./bin/template"
