@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/src/bucket.js",
+  "main": "src/bucket.ts",
   "files": [
     "dist"
   ],

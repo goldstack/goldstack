@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/src/module.js",
+  "main": "src/src/module.js",
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:pack": "yarn compile && yarn webpack",

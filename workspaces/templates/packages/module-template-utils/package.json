@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/moduleTemplateUtils.js",
+  "main": "src/moduleTemplateUtils.ts",
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",

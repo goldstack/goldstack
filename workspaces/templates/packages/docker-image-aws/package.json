@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/src/image.js",
+  "main": "src/image.ts",
   "files": [
     "dist"
   ],

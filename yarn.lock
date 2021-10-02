@@ -19761,6 +19761,7 @@ resolve@^1.18.1:
   resolution: "templates@workspace:workspaces/templates"
   dependencies:
     "@goldstack/nodemonx": 0.3.14
+    "@goldstack/utils-typescript-references": 0.1.0
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
     eslint: ^7.18.0

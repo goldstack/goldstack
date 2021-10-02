@@ -12,9 +12,10 @@
     "module": "esnext",
     "noEmit": false,
     "moduleResolution": "node",
-    "isolatedModules": true,
+    "isolatedModules": true
   },
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "references": []
 }

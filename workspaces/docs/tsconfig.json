@@ -29,24 +29,5 @@
   },
   "include": [],
   "references": [
-    
-    {
-      "path": "./packages/cdn"
-    },
-    {
-      "path": "./packages/docs-main"
-    },
-    {
-      "path": "./packages/markdown-docs"
-    },
-    {
-      "path": "./packages/module-template-docs"
-    },
-    {
-      "path": "./packages/toc-generator"
-    },
-    {
-      "path": "./packages/utils-docs-cli"
-    }
   ]
 }
