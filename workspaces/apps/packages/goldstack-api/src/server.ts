@@ -12,7 +12,7 @@ console.log('Server cold start');
 app.use(helmet());
 console.log('CORS config:', process.env.CORS);
 app.use(cors({ origin: process.env.CORS, credentials: true }));
-app.use(cookieParser());
+app.use(cookieParser() as any);
 app.use(express.json());
 
 if (process.env.GOLDSTACK_DEPLOYMENT !== 'local') {

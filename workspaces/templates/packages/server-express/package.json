@@ -19,11 +19,11 @@
   },
   "dependencies": {
     "@goldstack/library": "0.1.0",
-    "helmet": "^3.22.0"
+    "helmet": "^4.6.0"
   },
   "devDependencies": {
-    "@types/express": "^4.17.6",
-    "@types/helmet": "^0.0.47",
+    "@types/express": "^4.17.13",
+    "@types/helmet": "^4.0.0",
     "@types/jest": "^26.0.21",
     "@types/node": "^16.10.2",
     "express": "^4.17.1",

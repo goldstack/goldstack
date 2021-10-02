@@ -26,7 +26,7 @@
     "@goldstack/utils-docs": "0.3.19",
     "@goldstack/utils-sh": "0.4.14",
     "@types/yargs": "^15.0.5",
-    "source-map-support": "^0.5.19",
+    "source-map-support": "^0.5.20",
     "yargs": "^15.4.1"
   },
   "devDependencies": {
