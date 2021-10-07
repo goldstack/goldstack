@@ -19,10 +19,6 @@ export const updatePackageProjectReferences = (): void => {
     } else {
       console.log(`Skipping package ${packageDir}`);
     }
-    // fs.writeFileSync(
-    //   path.resolve(packageDir, './tsconfig.json'),
-    //   JSON.stringify(tsConfigData, null, 2)
-    // );
   }
 };
 
@@ -32,7 +28,6 @@ function processPackage(
   packageData: PackageData
 ) {
   console.log(`Processing package ${packageDir}`);
-  console.log(process.cwd());
   const packageJson = fs
     .readFileSync(path.resolve(packageDir, './package.json'))
     .toString();
@@ -66,5 +61,12 @@ function processPackage(
       };
     });
 
-  console.log(tsConfigData.references);
+  console.log(
+    'Setting project references:\n' +
+      tsConfigData.references.map((refData) => refData.path).join('\n ')
+  );
+  fs.writeFileSync(
+    path.resolve(packageDir, './tsconfig.json'),
+    JSON.stringify(tsConfigData, null, 2)
+  );
 }

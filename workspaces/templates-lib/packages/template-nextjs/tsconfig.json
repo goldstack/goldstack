@@ -46,6 +46,9 @@
       "path": "../utils-terraform"
     },
     {
+      "path": "../../../docs/packages/utils-docs-cli"
+    },
+    {
       "path": "../utils-git"
     },
     {

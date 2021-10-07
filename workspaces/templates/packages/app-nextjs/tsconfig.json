@@ -17,5 +17,12 @@
   "exclude": [
     "node_modules"
   ],
-  "references": []
+  "references": [
+    {
+      "path": "../../../templates-lib/packages/template-nextjs"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    }
+  ]
 }

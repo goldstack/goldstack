@@ -29,5 +29,11 @@
   },
   "include": [],
   "references": [
+    {
+      "path": "../templates-lib/packages/utils-nodemonx"
+    },
+    {
+      "path": "../templates-lib/packages/utils-typescript-references"
+    }
   ]
 }

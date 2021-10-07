@@ -23,7 +23,16 @@
       "path": "../toc-generator"
     },
     {
+      "path": "../../../templates-lib/packages/utils-track"
+    },
+    {
       "path": "../markdown-docs"
+    },
+    {
+      "path": "../../../templates-lib/packages/template-nextjs"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
     }
   ]
 }

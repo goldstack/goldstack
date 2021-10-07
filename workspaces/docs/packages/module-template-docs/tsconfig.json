@@ -10,6 +10,9 @@
   "references": [
     {
       "path": "../utils-docs-cli"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
     }
   ]
 }

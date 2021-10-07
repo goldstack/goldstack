@@ -7,5 +7,15 @@
     "outDir": "dist",
     "baseUrl": "."
   },
-  "references": []
+  "references": [
+    {
+      "path": "../../../templates-lib/packages/template-docker-image-aws"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-git"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    }
+  ]
 }

@@ -10,5 +10,15 @@
     "outDir": "dist",
     "baseUrl": "."
   },
-  "references": []
+  "references": [
+    {
+      "path": "../../../templates-lib/packages/template-s3"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-git"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    }
+  ]
 }

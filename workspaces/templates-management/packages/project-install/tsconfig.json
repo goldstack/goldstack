@@ -9,6 +9,24 @@
   },
   "references": [
     {
+      "path": "../../../templates-lib/packages/infra-aws"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-config"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-log"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-project"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-yarn"
+    },
+    {
       "path": "../project-build"
     },
     {

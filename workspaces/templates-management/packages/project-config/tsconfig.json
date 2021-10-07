@@ -7,5 +7,21 @@
     "outDir": "dist",
     "baseUrl": "."
   },
-  "references": []
+  "references": [
+    {
+      "path": "../../../templates-lib/packages/utils-config"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-package"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-project"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-template"
+    }
+  ]
 }

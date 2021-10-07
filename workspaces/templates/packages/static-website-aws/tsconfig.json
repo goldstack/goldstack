@@ -7,5 +7,9 @@
     "outDir": "dist",
     "baseUrl": "."
   },
-  "references": []
+  "references": [
+    {
+      "path": "../../../templates-lib/packages/template-static-website-aws"
+    }
+  ]
 }

@@ -11,6 +11,18 @@
   "references": [
     {
       "path": "../project-repository-bucket"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-package"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-project"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-template"
     }
   ]
 }

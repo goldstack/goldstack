@@ -9,10 +9,28 @@
   },
   "references": [
     {
+      "path": "../../../templates-lib/packages/infra"
+    },
+    {
       "path": "../template-build"
     },
     {
       "path": "../template-repository"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-config"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-package"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-template"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-yarn"
     }
   ]
 }

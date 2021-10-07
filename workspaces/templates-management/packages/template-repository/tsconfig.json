@@ -8,5 +8,18 @@
     "outDir": "dist",
     "baseUrl": "."
   },
-  "references": []
+  "references": [
+    {
+      "path": "../../../templates-lib/packages/utils-package"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-s3"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-template"
+    }
+  ]
 }
