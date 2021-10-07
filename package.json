@@ -18,7 +18,7 @@
     "compile-watch-new": "nodemonx --watch . --exec 'yarn compile'",
     "ensure-local-packages": "utils-package-upgrade",
     "eslint": "eslint",
-    "fix-project-references": "utils-typescript-references --skipPackages",
+    "fix-project-references": "utils-typescript-references",
     "format": "prettier --loglevel log --config .prettierrc.json --write .",
     "format-check": "prettier --loglevel log --config .prettierrc.json --check .",
     "generate-docs": "yarn workspace templates-lib generate-docs && yarn workspace docs generate-docs && yarn workspace apps generate-docs",

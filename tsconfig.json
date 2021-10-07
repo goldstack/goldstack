@@ -26,235 +26,312 @@
   },
   "references": [
     {
-      "path": "workspaces/apps"
+      "path": "workspaces/apps",
+      "name": "apps"
     },
     {
-      "path": "workspaces/docs"
+      "path": "workspaces/docs",
+      "name": "docs"
     },
     {
-      "path": "workspaces/templates"
+      "path": "workspaces/templates",
+      "name": "templates"
     },
     {
-      "path": "workspaces/templates-lib"
+      "path": "workspaces/templates-lib",
+      "name": "templates-lib"
     },
     {
-      "path": "workspaces/templates-management"
+      "path": "workspaces/templates-management",
+      "name": "templates-management"
     },
     {
-      "path": "workspaces/apps/packages/goldstack-api"
+      "path": "workspaces/apps/packages/goldstack-api",
+      "name": "@goldstack/goldstack-api"
     },
     {
-      "path": "workspaces/apps/packages/goldstack-email-send"
+      "path": "workspaces/apps/packages/goldstack-email-send",
+      "name": "@goldstack/goldstack-email-send"
     },
     {
-      "path": "workspaces/apps/packages/goldstack-home"
+      "path": "workspaces/apps/packages/goldstack-home",
+      "name": "@goldstack/goldstack-home"
     },
     {
-      "path": "workspaces/apps/packages/project-template-data"
+      "path": "workspaces/apps/packages/project-template-data",
+      "name": "@goldstack/project-template-data"
     },
     {
-      "path": "workspaces/apps/packages/template-management-cli"
+      "path": "workspaces/apps/packages/template-management-cli",
+      "name": "@goldstack/template-management-cli"
     },
     {
-      "path": "workspaces/docs/packages/cdn"
+      "path": "workspaces/docs/packages/cdn",
+      "name": "@goldstack/cdn"
     },
     {
-      "path": "workspaces/docs/packages/docs-main"
+      "path": "workspaces/docs/packages/docs-main",
+      "name": "@goldstack/docs-main"
     },
     {
-      "path": "workspaces/docs/packages/markdown-docs"
+      "path": "workspaces/docs/packages/markdown-docs",
+      "name": "@goldstack/markdown-docs"
     },
     {
-      "path": "workspaces/docs/packages/module-template-docs"
+      "path": "workspaces/docs/packages/module-template-docs",
+      "name": "@goldstack/module-template-docs"
     },
     {
-      "path": "workspaces/docs/packages/toc-generator"
+      "path": "workspaces/docs/packages/toc-generator",
+      "name": "@goldstack/toc-generator"
     },
     {
-      "path": "workspaces/docs/packages/utils-docs-cli"
+      "path": "workspaces/docs/packages/utils-docs-cli",
+      "name": "@goldstack/utils-docs-cli"
     },
     {
-      "path": "workspaces/templates/packages/app-nextjs"
+      "path": "workspaces/templates/packages/app-nextjs",
+      "name": "@goldstack/app-nextjs"
     },
     {
-      "path": "workspaces/templates/packages/app-nextjs-bootstrap"
+      "path": "workspaces/templates/packages/app-nextjs-bootstrap",
+      "name": "@goldstack/app-nextjs-bootstrap"
     },
     {
-      "path": "workspaces/templates/packages/app-react"
+      "path": "workspaces/templates/packages/app-react",
+      "name": "@goldstack/app-react"
     },
     {
-      "path": "workspaces/templates/packages/docker-image-aws"
+      "path": "workspaces/templates/packages/docker-image-aws",
+      "name": "@goldstack/docker-image-aws"
     },
     {
-      "path": "workspaces/templates/packages/email-send"
+      "path": "workspaces/templates/packages/email-send",
+      "name": "@goldstack/email-send"
     },
     {
-      "path": "workspaces/templates/packages/lambda-express"
+      "path": "workspaces/templates/packages/lambda-express",
+      "name": "@goldstack/lambda-express"
     },
     {
-      "path": "workspaces/templates/packages/lambda-go-gin"
+      "path": "workspaces/templates/packages/lambda-go-gin",
+      "name": "@goldstack/server-go"
     },
     {
-      "path": "workspaces/templates/packages/library"
+      "path": "workspaces/templates/packages/library",
+      "name": "@goldstack/library"
     },
     {
-      "path": "workspaces/templates/packages/module-template-utils"
+      "path": "workspaces/templates/packages/module-template-utils",
+      "name": "@goldstack/module-template-utils"
     },
     {
-      "path": "workspaces/templates/packages/react-components"
+      "path": "workspaces/templates/packages/react-components",
+      "name": "@goldstack/react-components"
     },
     {
-      "path": "workspaces/templates/packages/s3"
+      "path": "workspaces/templates/packages/s3",
+      "name": "@goldstack/s3"
     },
     {
-      "path": "workspaces/templates/packages/server-express"
+      "path": "workspaces/templates/packages/server-express",
+      "name": "@goldstack/server-express"
     },
     {
-      "path": "workspaces/templates/packages/static-website-aws"
+      "path": "workspaces/templates/packages/static-website-aws",
+      "name": "@goldstack/static-website-aws"
     },
     {
-      "path": "workspaces/templates-lib/packages/infra"
+      "path": "workspaces/templates-lib/packages/infra",
+      "name": "@goldstack/infra"
     },
     {
-      "path": "workspaces/templates-lib/packages/infra-aws"
+      "path": "workspaces/templates-lib/packages/infra-aws",
+      "name": "@goldstack/infra-aws"
     },
     {
-      "path": "workspaces/templates-lib/packages/template-docker-image-aws"
+      "path": "workspaces/templates-lib/packages/template-docker-image-aws",
+      "name": "@goldstack/template-docker-image-aws"
     },
     {
-      "path": "workspaces/templates-lib/packages/template-email-send"
+      "path": "workspaces/templates-lib/packages/template-email-send",
+      "name": "@goldstack/template-email-send"
     },
     {
-      "path": "workspaces/templates-lib/packages/template-lambda-express"
+      "path": "workspaces/templates-lib/packages/template-lambda-express",
+      "name": "@goldstack/template-lambda-express"
     },
     {
-      "path": "workspaces/templates-lib/packages/template-nextjs"
+      "path": "workspaces/templates-lib/packages/template-nextjs",
+      "name": "@goldstack/template-nextjs"
     },
     {
-      "path": "workspaces/templates-lib/packages/template-s3"
+      "path": "workspaces/templates-lib/packages/template-s3",
+      "name": "@goldstack/template-s3"
     },
     {
-      "path": "workspaces/templates-lib/packages/template-static-website-aws"
+      "path": "workspaces/templates-lib/packages/template-static-website-aws",
+      "name": "@goldstack/template-static-website-aws"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-aws-cli"
+      "path": "workspaces/templates-lib/packages/utils-aws-cli",
+      "name": "@goldstack/utils-aws-cli"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-cli"
+      "path": "workspaces/templates-lib/packages/utils-cli",
+      "name": "@goldstack/utils-cli"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-config"
+      "path": "workspaces/templates-lib/packages/utils-config",
+      "name": "@goldstack/utils-config"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-docker"
+      "path": "workspaces/templates-lib/packages/utils-docker",
+      "name": "@goldstack/utils-docker"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-docs"
+      "path": "workspaces/templates-lib/packages/utils-docs",
+      "name": "@goldstack/utils-docs"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-git"
+      "path": "workspaces/templates-lib/packages/utils-git",
+      "name": "@goldstack/utils-git"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-json-to-ts"
+      "path": "workspaces/templates-lib/packages/utils-json-to-ts",
+      "name": "@goldstack/utils-json-to-ts"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-log"
+      "path": "workspaces/templates-lib/packages/utils-log",
+      "name": "@goldstack/utils-log"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-nodemonx"
+      "path": "workspaces/templates-lib/packages/utils-nodemonx",
+      "name": "@goldstack/nodemonx"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-package"
+      "path": "workspaces/templates-lib/packages/utils-package",
+      "name": "@goldstack/utils-package"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-package-config"
+      "path": "workspaces/templates-lib/packages/utils-package-config",
+      "name": "@goldstack/utils-package-config"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-package-config-generate"
+      "path": "workspaces/templates-lib/packages/utils-package-config-generate",
+      "name": "@goldstack/utils-package-config-generate"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-package-create"
+      "path": "workspaces/templates-lib/packages/utils-package-create",
+      "name": "@goldstack/utils-package-create"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-package-upgrade"
+      "path": "workspaces/templates-lib/packages/utils-package-upgrade",
+      "name": "@goldstack/utils-package-upgrade"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-project"
+      "path": "workspaces/templates-lib/packages/utils-project",
+      "name": "@goldstack/utils-project"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-s3"
+      "path": "workspaces/templates-lib/packages/utils-s3",
+      "name": "@goldstack/utils-s3"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-s3-deployment"
+      "path": "workspaces/templates-lib/packages/utils-s3-deployment",
+      "name": "@goldstack/utils-s3-deployment"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-sh"
+      "path": "workspaces/templates-lib/packages/utils-sh",
+      "name": "@goldstack/utils-sh"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-template"
+      "path": "workspaces/templates-lib/packages/utils-template",
+      "name": "@goldstack/utils-template"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-terraform"
+      "path": "workspaces/templates-lib/packages/utils-terraform",
+      "name": "@goldstack/utils-terraform"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-terraform-aws"
+      "path": "workspaces/templates-lib/packages/utils-terraform-aws",
+      "name": "@goldstack/utils-terraform-aws"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-track"
+      "path": "workspaces/templates-lib/packages/utils-track",
+      "name": "@goldstack/utils-track"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-typescript-references"
+      "path": "workspaces/templates-lib/packages/utils-typescript-references",
+      "name": "@goldstack/utils-typescript-references"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-yarn"
+      "path": "workspaces/templates-lib/packages/utils-yarn",
+      "name": "@goldstack/utils-yarn"
     },
     {
-      "path": "workspaces/templates-management/packages/auth"
+      "path": "workspaces/templates-management/packages/auth",
+      "name": "@goldstack/auth"
     },
     {
-      "path": "workspaces/templates-management/packages/prepare-template"
+      "path": "workspaces/templates-management/packages/prepare-template",
+      "name": "@goldstack/prepare-template"
     },
     {
-      "path": "workspaces/templates-management/packages/prepare-yarn-pnp-monorepo"
+      "path": "workspaces/templates-management/packages/prepare-yarn-pnp-monorepo",
+      "name": "@goldstack/prepare-yarn-pnp-monorepo"
     },
     {
-      "path": "workspaces/templates-management/packages/project-build"
+      "path": "workspaces/templates-management/packages/project-build",
+      "name": "@goldstack/project-build"
     },
     {
-      "path": "workspaces/templates-management/packages/project-config"
+      "path": "workspaces/templates-management/packages/project-config",
+      "name": "@goldstack/project-config"
     },
     {
-      "path": "workspaces/templates-management/packages/project-install"
+      "path": "workspaces/templates-management/packages/project-install",
+      "name": "@goldstack/project-install"
     },
     {
-      "path": "workspaces/templates-management/packages/project-package-bucket"
+      "path": "workspaces/templates-management/packages/project-package-bucket",
+      "name": "@goldstack/project-package-bucket"
     },
     {
-      "path": "workspaces/templates-management/packages/project-repository"
+      "path": "workspaces/templates-management/packages/project-repository",
+      "name": "@goldstack/project-repository"
     },
     {
-      "path": "workspaces/templates-management/packages/project-repository-bucket"
+      "path": "workspaces/templates-management/packages/project-repository-bucket",
+      "name": "@goldstack/project-repository-bucket"
     },
     {
-      "path": "workspaces/templates-management/packages/session-repository"
+      "path": "workspaces/templates-management/packages/session-repository",
+      "name": "@goldstack/session-repository"
     },
     {
-      "path": "workspaces/templates-management/packages/session-repository-bucket"
+      "path": "workspaces/templates-management/packages/session-repository-bucket",
+      "name": "@goldstack/session-repository-bucket"
     },
     {
-      "path": "workspaces/templates-management/packages/template-build"
+      "path": "workspaces/templates-management/packages/template-build",
+      "name": "@goldstack/template-build"
     },
     {
-      "path": "workspaces/templates-management/packages/template-build-set"
+      "path": "workspaces/templates-management/packages/template-build-set",
+      "name": "@goldstack/template-build-set"
     },
     {
-      "path": "workspaces/templates-management/packages/template-repository"
+      "path": "workspaces/templates-management/packages/template-repository",
+      "name": "@goldstack/template-repository"
     },
     {
-      "path": "workspaces/templates-management/packages/template-repository-bucket"
+      "path": "workspaces/templates-management/packages/template-repository-bucket",
+      "name": "@goldstack/template-repository-bucket"
     },
     {
-      "path": "workspaces/templates-management/packages/utils-template-test"
+      "path": "workspaces/templates-management/packages/utils-template-test",
+      "name": "@goldstack/utils-template-test"
     }
   ]
 }
