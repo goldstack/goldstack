@@ -27,8 +27,6 @@
     "build:watch": "yarn clean && yarn compile-watch",
     "clean": "rm -rf ./dist",
     "compile": "tsc -p tsconfig.json",
-    "compile-watch": "tsc -p tsconfig.json --watch",
-    "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
     "prepublishOnly": "yarn run build",
     "publish": "utils-git changed --exec \"yarn npm publish $@\"",
