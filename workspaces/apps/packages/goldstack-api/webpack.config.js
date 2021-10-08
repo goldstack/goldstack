@@ -3,7 +3,7 @@ const path = require('path');
 const PnpWebpackPlugin = require('pnp-webpack-plugin');
 
 module.exports = {
-  entry: './dist/src/lambda.js',
+  entry: './src/lambda.ts',
   output: {
     path: path.resolve(__dirname, 'distLambda'),
     filename: 'lambda.js',
@@ -17,6 +17,7 @@ module.exports = {
   },
   resolveLoader: {
     plugins: [PnpWebpackPlugin.moduleLoader(module)],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   externals: {
     // SDK version for all dependencies locked to 2.721.0 to match version included in Lambda https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html
@@ -24,6 +25,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        loader: require.resolve('ts-loader'),
+      },
       // this is required to load source maps of libraries
       {
         test: /\.(js|js\.map|map)$/,

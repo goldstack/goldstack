@@ -897,6 +897,7 @@ __metadata:
     supertest: ^4.0.2
     supertest-session: ^4.0.0
     ts-jest: ^26.5.4
+    ts-loader: ^8.2.0
     ts-node: ^8.10.2
     typescript: ^4.4.3
     uuid: ^8.3.0
@@ -967,6 +968,7 @@ __metadata:
     next: ^11.0.1
     next-compose-plugins: ^2.2.0
     next-optimized-images: ^2.6.2
+    next-transpile-modules: ^8.0.0
     node-sass: ^4.14.1
     nodemon: ^2.0.4
     react: ^17.0.2
@@ -8552,6 +8554,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"enhanced-resolve@npm:^5.7.0":
+  version: 5.8.3
+  resolution: "enhanced-resolve@npm:5.8.3"
+  dependencies:
+    graceful-fs: ^4.2.4
+    tapable: ^2.2.0
+  checksum: d79fbe531106448b768bb0673fb623ec0202d7ee70373ab7d4f4745d5dfe0806f38c9db7e7da8c941288fe475ab3d538db3791fce522056eeea40ca398c9e287
+  languageName: node
+  linkType: hard
+
 "enquirer@npm:^2.3.5, enquirer@npm:^2.3.6":
   version: 2.3.6
   resolution: "enquirer@npm:2.3.6"
@@ -13791,6 +13803,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"lru-cache@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "lru-cache@npm:6.0.0"
+  dependencies:
+    yallist: ^4.0.0
+  checksum: f97f499f898f23e4585742138a22f22526254fdba6d75d41a1c2526b3b6cc5747ef59c5612ba7375f42aca4f8461950e925ba08c991ead0651b4918b7c978297
+  languageName: node
+  linkType: hard
+
 "lru-queue@npm:0.1":
   version: 0.1.0
   resolution: "lru-queue@npm:0.1.0"
@@ -14623,6 +14644,16 @@ fsevents@~2.3.1:
   version: 1.0.0
   resolution: "next-tick@npm:1.0.0"
   checksum: 83fcb3d4f8d9380210b1c2b8a610463602d80283f0c0c8571c1688e1ad6cbf3a16b345f5bb7212617d4898bedcfa10dff327dc09ec20a112a5bf43a0271375fb
+  languageName: node
+  linkType: hard
+
+"next-transpile-modules@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "next-transpile-modules@npm:8.0.0"
+  dependencies:
+    enhanced-resolve: ^5.7.0
+    escalade: ^3.1.1
+  checksum: 5535e385fd3a4efa25c46b472b2555436c9f3c0fa27f1a80f0c84f5d4c419981ded6896b03d0b418e7476d30bb41714ca0657204daa7c257a002b77a02b7783a
   languageName: node
   linkType: hard
 
@@ -18256,6 +18287,17 @@ resolve@^1.18.1:
   languageName: node
   linkType: hard
 
+"semver@npm:^7.3.4":
+  version: 7.3.5
+  resolution: "semver@npm:7.3.5"
+  dependencies:
+    lru-cache: ^6.0.0
+  bin:
+    semver: bin/semver.js
+  checksum: 5eafe6102bea2a7439897c1856362e31cc348ccf96efd455c8b5bc2c61e6f7e7b8250dc26b8828c1d76a56f818a7ee907a36ae9fb37a599d3d24609207001d60
+  languageName: node
+  linkType: hard
+
 "semver@npm:~5.3.0":
   version: 5.3.0
   resolution: "semver@npm:5.3.0"
@@ -19656,6 +19698,13 @@ resolve@^1.18.1:
   languageName: node
   linkType: hard
 
+"tapable@npm:^2.2.0":
+  version: 2.2.1
+  resolution: "tapable@npm:2.2.1"
+  checksum: 3b7a1b4d86fa940aad46d9e73d1e8739335efd4c48322cb37d073eb6f80f5281889bf0320c6d8ffcfa1a0dd5bfdbd0f9d037e252ef972aca595330538aac4d51
+  languageName: node
+  linkType: hard
+
 "tar-stream@npm:^2.0.1, tar-stream@npm:^2.1.2":
   version: 2.1.2
   resolution: "tar-stream@npm:2.1.2"
@@ -20257,6 +20306,22 @@ resolve@^1.18.1:
   peerDependencies:
     typescript: "*"
   checksum: 8980b321070e67eaa79ce7ab4135c5dbbc67972d2593866f95a5223fdc1c03fb24bdecb4ee0045d6e73f345e377295c22f7569f29010f057c418295189a86324
+  languageName: node
+  linkType: hard
+
+"ts-loader@npm:^8.2.0":
+  version: 8.3.0
+  resolution: "ts-loader@npm:8.3.0"
+  dependencies:
+    chalk: ^4.1.0
+    enhanced-resolve: ^4.0.0
+    loader-utils: ^2.0.0
+    micromatch: ^4.0.0
+    semver: ^7.3.4
+  peerDependencies:
+    typescript: "*"
+    webpack: "*"
+  checksum: 93dd15b553a2621f969c4c834e7eb085b9b079adb702cba68a7ee516bcd2c67620e62cc5a8c57345e90c644ff6b689ee5a09f0702e440284fdfe872e9aaeefd8
   languageName: node
   linkType: hard
 
