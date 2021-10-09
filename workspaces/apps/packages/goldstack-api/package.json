@@ -7,13 +7,11 @@
   "sideEffects": false,
   "main": "src/module.ts",
   "scripts": {
-    "build": "yarn clean && yarn compile",
-    "build:analyze": "yarn compile && yarn webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json && rm -f stats.json",
-    "build:pack": "yarn compile && yarn webpack",
+    "build": "yarn compile && yarn node dist/scripts/build.js",
     "clean": "rm -rf ./dist",
     "compile": "tsc -p tsconfig.json",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
-    "deploy": "yarn build:pack && template deploy $@",
+    "deploy": "yarn build && template deploy $@",
     "infra": "template infra",
     "start": "yarn node dist/src/local.js",
     "template": "template",
@@ -65,19 +63,15 @@
     "@types/source-map-support": "^0.5.4",
     "@types/supertest": "^2.0.10",
     "@types/uuid": "^8.3.0",
+    "@yarnpkg/esbuild-plugin-pnp": "^2.0.0-rc.1",
+    "esbuild": "^0.13.4",
     "express": "^4.17.1",
     "jest": "^26.6.3",
     "nodemon": "^2.0.4",
-    "pnp-webpack-plugin": "^1.6.4",
-    "source-map-loader": "^1.0.1",
     "supertest": "^4.0.2",
     "supertest-session": "^4.0.0",
     "ts-jest": "^26.5.4",
-    "ts-loader": "^8.2.0",
     "ts-node": "^8.10.2",
-    "typescript": "^4.4.3",
-    "webpack": "4.43.0",
-    "webpack-bundle-analyzer": "^3.8.0",
-    "webpack-cli": "3.3.12"
+    "typescript": "^4.4.3"
   }
 }

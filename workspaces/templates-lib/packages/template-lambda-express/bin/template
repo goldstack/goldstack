@@ -1,6 +1,7 @@
 #!/usr/bin/env node
+/* eslint-disable @typescript-eslint/no-var-requires */
 
-require('./../dist/templateLambdaExpress')
+require('./../dist/src/templateLambdaExpress')
   .run(process.argv)
   .catch((e) => {
     console.log(e);
