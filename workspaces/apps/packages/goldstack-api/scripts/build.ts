@@ -6,6 +6,9 @@ build({
   bundle: true,
   entryPoints: ['src/lambda.ts'],
   external: ['aws-sdk'],
+  minify: true,
+  target: 'node12.0',
+  sourcemap: true,
   outfile: 'distLambda/lambda.js',
 }).catch((e) => {
   console.log('Build not successful', e.message);

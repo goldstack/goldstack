@@ -11,10 +11,10 @@
     "clean": "rm -rf ./dist",
     "compile": "tsc -p tsconfig.json",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
-    "deploy": "yarn build && template deploy $@",
+    "deploy": "yarn build && yarn template-local deploy",
     "infra": "template infra",
     "start": "yarn node dist/src/local.js",
-    "template": "template",
+    "template-local": "ts-node scripts/template.ts",
     "test": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --watch --config=jest.config.js",
     "test-ci": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --config=jest.config.js --detectOpenHandles",
     "utils:seed-module-templates": "GOLDSTACK_DEPLOYMENT=local yarn node ./dist/src/utils/seedRepo",
@@ -71,7 +71,7 @@
     "supertest": "^4.0.2",
     "supertest-session": "^4.0.0",
     "ts-jest": "^26.5.4",
-    "ts-node": "^8.10.2",
+    "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
   }
 }

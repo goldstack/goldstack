@@ -34,6 +34,7 @@
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",
     "clean": "rm -rf ./dist",
+    "cli": "ts-node bin/template.ts",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
