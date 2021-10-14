@@ -7,6 +7,7 @@ build({
   entryPoints: ['src/lambda.ts'],
   external: ['aws-sdk'],
   minify: true,
+  format: 'cjs',
   target: 'node12.0',
   sourcemap: true,
   outfile: 'distLambda/lambda.js',

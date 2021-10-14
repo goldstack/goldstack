@@ -9,7 +9,7 @@
   "scripts": {
     "build": "yarn compile && yarn node dist/scripts/build.js",
     "clean": "rm -rf ./dist",
-    "compile": "tsc -p tsconfig.json",
+    "compile": "tsc --build",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
     "deploy": "yarn build && yarn template-local deploy",
     "infra": "template infra",
