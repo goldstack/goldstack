@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { getDeploymentConfig } from '@goldstack/template-static-website-aws';
-import { sh } from '@goldstack/utils-sh';
+import { mkdir, cp } from '@goldstack/utils-sh';
 
 const build = async (args: string[]): Promise<void> => {
   // The config for a selected deployment
@@ -11,8 +11,8 @@ const build = async (args: string[]): Promise<void> => {
   const destDir = './webDist';
 
   // Your logic for custom builds here
-  sh.mkdir('-p', destDir);
-  sh.cp('-ru', sourceDir + '/*', destDir);
+  mkdir('-p', destDir);
+  cp('-ru', sourceDir + '/*', destDir);
 };
 
 build(process.argv);

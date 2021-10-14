@@ -12,7 +12,6 @@ import {
   CloudProvider,
   TerraformDeployment,
 } from '@goldstack/utils-terraform';
-import { sh } from '@goldstack/utils-sh';
 import AWS from 'aws-sdk';
 import { createState } from './tfState';
 import crypto from 'crypto';
@@ -44,10 +43,10 @@ export class AWSCloudProvider implements CloudProvider {
   };
 
   setEnvVariables = (): void => {
-    sh.env['AWS_ACCESS_KEY_ID'] = this.user.accessKeyId;
-    sh.env['AWS_SECRET_ACCESS_KEY'] = this.user.secretAccessKey;
-    sh.env['AWS_DEFAULT_REGION'] = AWS.config.region;
-    sh.env['AWS_SESSION_TOKEN'] = this.user.sessionToken || '';
+    process.env.AWS_ACCESS_KEY_ID = this.user.accessKeyId;
+    process.env.AWS_SECRET_ACCESS_KEY = this.user.secretAccessKey;
+    process.env.AWS_DEFAULT_REGION = AWS.config.region;
+    process.env.AWS_SESSION_TOKEN = this.user.sessionToken || '';
   };
 
   getTfStateVariables = (

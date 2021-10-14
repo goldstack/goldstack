@@ -1,13 +1,13 @@
-import sh, { ShellString } from 'shelljs';
 import { filesChanged } from './utilsGit';
+import fs from 'fs';
 
-// including these rather than using @goldstack/utils-sh to avoid circular dependency
 const read = (path: string): string => {
-  return sh.cat(path).toString();
+  const buffer = fs.readFileSync(path, 'utf8');
+  return buffer.toString();
 };
 
 const write = (content: string, path: string): void => {
-  new ShellString(content).to(path);
+  fs.writeFileSync(path, content);
 };
 
 describe('git utils', () => {

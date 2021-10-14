@@ -64,9 +64,9 @@
   "devDependencies": {
     "@goldstack/utils-git": "0.1.27",
     "@goldstack/utils-package-config-generate": "0.2.6",
-    "@types/jest": "^26.0.21",
+    "@types/jest": "^27.0.2",
     "@types/mock-aws-s3": "^2.6.1",
-    "@types/node": "^16.10.2",
+    "@types/node": "^16.11.0",
     "@types/uuid": "^8.3.0",
     "@types/yargs": "^15.0.5",
     "jest": "^26.6.3",

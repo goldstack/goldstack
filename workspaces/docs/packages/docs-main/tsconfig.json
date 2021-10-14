@@ -10,7 +10,6 @@
     "baseUrl": ".",
     "jsx": "preserve",
     "incremental": true,
-    "noEmit": true,
     "module": "esnext",
     "moduleResolution": "node",
     "isolatedModules": true

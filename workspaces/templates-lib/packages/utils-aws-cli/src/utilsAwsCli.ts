@@ -1,4 +1,4 @@
-import { sh, exec, pwd, cd, ExecParams } from '@goldstack/utils-sh';
+import { commandExists, exec, pwd, cd, ExecParams } from '@goldstack/utils-sh';
 import { fatal } from '@goldstack/utils-log';
 import { AWSAPIKeyUser } from '@goldstack/infra-aws';
 import {
@@ -8,7 +8,7 @@ import {
 } from '@goldstack/utils-docker';
 
 export const assertAwsCli = (): void => {
-  if (!sh.which('aws')) {
+  if (!commandExists('aws')) {
     fatal(
       'AWS CLI version 2 not available.\n\nEnsure AWS cli or Docker (preferred) are available commands in the command line.'
     );
@@ -56,10 +56,10 @@ export const execWithDocker = (params: AWSExecParams): string => {
 export const execWithCli = (params: AWSExecParams): string => {
   assertAwsCli();
 
-  sh.env['AWS_ACCESS_KEY_ID'] = params.credentials.accessKeyId;
-  sh.env['AWS_SECRET_ACCESS_KEY'] = params.credentials.secretAccessKey;
-  sh.env['AWS_SESSION_TOKEN'] = params.credentials.sessionToken || '';
-  sh.env['AWS_DEFAULT_REGION'] = params.region;
+  process.env.AWS_ACCESS_KEY_ID = params.credentials.accessKeyId;
+  process.env.AWS_SECRET_ACCESS_KEY = params.credentials.secretAccessKey;
+  process.env.AWS_SESSION_TOKEN = params.credentials.sessionToken || '';
+  process.env.AWS_DEFAULT_REGION = params.region;
 
   cd(params.workDir || pwd());
   return exec(`aws ${params.command}`, params.options);

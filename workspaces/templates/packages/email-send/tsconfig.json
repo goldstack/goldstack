@@ -1,7 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "include": [
-    "./src/**/*"
+    "./src/**/*",
+    "./src/**/*.json",
+    "./schemas/**/*.json",
+    "goldstack.json"
   ],
   "compilerOptions": {
     "outDir": "dist",

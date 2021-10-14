@@ -1,4 +1,4 @@
-import { cp, mkdir, write, read, pwd } from '@goldstack/utils-sh';
+import { read } from '@goldstack/utils-sh';
 
 import { removeNpmRegistry } from './perpareYarnPnpMonorepo';
 

@@ -1,5 +1,5 @@
 import { compileFromFile, Options } from 'json-schema-to-typescript';
-import { read, sh, write } from '@goldstack/utils-sh';
+import { read, mkdir, write, globSync } from '@goldstack/utils-sh';
 import fs from 'fs';
 import path from 'path';
 import replaceExt from 'replace-ext';
@@ -29,12 +29,12 @@ const processSchema = async (
   });
 
   const newName = path.parse(path.basename(jsonSource)).name;
-  sh.mkdir('-p', dest);
+  mkdir('-p', dest);
   write(res, dest + newName + '.ts');
 };
 
 export const run = async (args: string[]): Promise<void> => {
-  const files = sh.ls('-R', './src/schemas/*.json');
+  const files = globSync('./src/schemas/*.json');
   const declareExternallyReferenced =
     args.length >= 3 && args[2] === '--declareExternallyReferenced';
   files.forEach(async (file) => {

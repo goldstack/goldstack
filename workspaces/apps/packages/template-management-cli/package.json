@@ -50,9 +50,9 @@
   "devDependencies": {
     "@goldstack/template-docker-image-aws": "0.3.32",
     "@goldstack/utils-sh": "0.4.14",
-    "@types/jest": "^26.0.21",
+    "@types/jest": "^27.0.2",
     "@types/mock-aws-s3": "^2.6.1",
-    "@types/node": "^16.10.2",
+    "@types/node": "^16.11.0",
     "@types/source-map-support": "^0.5.4",
     "@types/wtfnode": "^0.7.0",
     "@types/yargs": "^15.0.5",

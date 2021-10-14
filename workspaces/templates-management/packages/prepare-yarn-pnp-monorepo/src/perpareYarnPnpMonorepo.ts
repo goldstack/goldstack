@@ -3,7 +3,7 @@ import {
   PrepareTemplateParams,
 } from '@goldstack/prepare-template';
 
-import { cp, mkdir, write, read, pwd } from '@goldstack/utils-sh';
+import { cp, mkdir, write, read } from '@goldstack/utils-sh';
 
 import { Package } from '@goldstack/utils-package';
 import { getAwsConfigPath } from '@goldstack/utils-config';

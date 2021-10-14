@@ -2,7 +2,7 @@ import assert from 'assert';
 import path from 'path';
 import fs from 'fs';
 import watch from 'node-watch';
-import { cd, sh, read } from '@goldstack/utils-sh';
+import { cd, exec, read } from '@goldstack/utils-sh';
 import match from 'minimatch';
 import { debug } from '@goldstack/utils-log';
 
@@ -68,10 +68,10 @@ export const run = async (args: string[]): Promise<void> => {
     console.log(`Running command in: ${packageDir} ...`);
     cd(packageDir);
     failedPackages = failedPackages.filter((pkg) => pkg !== packageDir);
-    const res = sh.exec(command, { silent: false });
-    if (res.code === 0) {
+    try {
+      exec(command, { silent: false });
       console.log(`✔️ Command successfully run in ${packageDir}`);
-    } else {
+    } catch {
       console.log(
         `❌ ERROR building: ${packageDir}. Package will be rebuilt on next change.`
       );
@@ -86,15 +86,17 @@ export const run = async (args: string[]): Promise<void> => {
       );
       for (const failedPackage of failedPackagesToTest) {
         cd(failedPackage);
-        const failRes = res.exec(command, { silent: false });
-        if (failRes.code === 0) {
+
+        try {
+          exec(command, { silent: false });
+
           failedPackages = failedPackages.filter(
             (pkg) => pkg !== failedPackage
           );
           console.log(
             `✔️ Command successfully run for previously failed package: ${failedPackage}`
           );
-        } else {
+        } catch {
           console.log(`❌ Command still failing for ${failedPackage}`);
         }
       }
