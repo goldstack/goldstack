@@ -2,6 +2,7 @@
   "include": [
     "infra/aws/",
     "docs/",
+    "scripts/",
     "src/",
     "schemas/",
     ".gitignore",
@@ -10,7 +11,6 @@
     "package.json",
     "README.md",
     "template.json",
-    "webpack.config.js",
     "tsconfig.json"
   ],
   "exclude": [

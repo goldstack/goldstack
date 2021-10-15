@@ -3,6 +3,7 @@
   "include": [
     "./src/**/*",
     "./src/**/*.json",
+    "./scripts/**/*",
     "goldstack.json"
   ],
   "compilerOptions": {
