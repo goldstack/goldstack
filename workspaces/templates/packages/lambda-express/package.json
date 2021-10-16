@@ -17,7 +17,7 @@
     "template": "template",
     "test": "yarn test-ci --watch",
     "test-ci": "TEST_SERVER_PORT=5030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=jest.config.js",
-    "watch": "PORT=3030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local nodemon --watch ../../ --ext js,ts --exec 'yarn node dist/src/local.js'"
+    "watch": "PORT=3030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev ./src/local.ts"
   },
   "dependencies": {
     "@goldstack/template-lambda-express": "0.3.58",
@@ -43,6 +43,7 @@
     "supertest": "^4.0.2",
     "ts-jest": "^26.5.4",
     "ts-node": "^8.10.2",
+    "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.3"
   }
 }
