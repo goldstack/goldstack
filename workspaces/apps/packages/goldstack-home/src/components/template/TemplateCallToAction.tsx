@@ -11,7 +11,7 @@ const TemplateCallToAction = (props: {
           className="text-center py-6"
           style={{
             background:
-              'url(/static/images/abstract-shapes-19.svg) center no-repeat;',
+              'url(/static/images/abstract-shapes-19.svg) center no-repeat',
           }}
         >
           <h2>Unleash Your Creativity and Build with Joy</h2>
