@@ -35,7 +35,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "ts-json-schema-generator": "0.70.2",
+    "ts-json-schema-generator": "^0.96.0",
     "yargs": "^15.4.1"
   },
   "devDependencies": {
@@ -47,5 +47,8 @@
     "renamer": "^0.7.0",
     "ts-jest": "^26.5.4",
     "typescript": "^4.4.3"
+  },
+  "publishConfig": {
+    "main": "dist/src/utilsPackageConfigGenerate.js"
   }
 }

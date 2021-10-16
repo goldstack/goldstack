@@ -52,5 +52,8 @@
     "renamer": "^0.7.0",
     "ts-jest": "^26.5.4",
     "typescript": "^4.4.3"
+  },
+  "publishConfig": {
+    "main": "dist/src/utilsPackageConfig.js"
   }
 }

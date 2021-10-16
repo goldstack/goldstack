@@ -4,8 +4,13 @@
     "./src/**/*"
   ],
   "compilerOptions": {
-    "incremental": false,
+    "incremental": true,
+    "noEmit": false,
     "declarationMap": false,
+    "types": [],
+    "lib": [
+      "ESNext"
+    ],
     "outDir": "dist",
     "baseUrl": "."
   }
