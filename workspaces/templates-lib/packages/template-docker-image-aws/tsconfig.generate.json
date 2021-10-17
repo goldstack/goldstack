@@ -1,10 +1,16 @@
 {
   "extends": "./tsconfig.json",
   "include": [
-    "./src/**/*"
+    "./src/**/*",
+    "./src/**/*.json"
   ],
   "compilerOptions": {
-    "incremental": false,
+    "incremental": true,
+    "noEmit": false,
+    "types": [],
+    "lib": [
+      "ESNext"
+    ],
     "declarationMap": false,
     "outDir": "dist",
     "baseUrl": "."

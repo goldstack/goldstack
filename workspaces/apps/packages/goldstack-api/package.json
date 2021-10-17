@@ -71,7 +71,7 @@
     "supertest": "^4.0.2",
     "supertest-session": "^4.0.0",
     "ts-jest": "^26.5.4",
-    "ts-node": "^10.2.1",
+    "ts-node": "^10.3.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.3"
   }
