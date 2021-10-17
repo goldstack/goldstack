@@ -1,20 +1,14 @@
 name: Goldstack Monorepo
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+on: [push, pull_request]
 
 jobs:
   build:
     name: 'Build and Test'
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout Mega repo
+      - name: Checkout Goldstack repo
         uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
         with:
           fetch-depth: 20
@@ -160,6 +154,7 @@ jobs:
           github_token: ${{secrets.BUILD_TOKEN}}
 
       - name: Write current git commit to output
+        if: github.ref == 'refs/heads/master'
         run: |
           echo "Writing git commit hash to output $(git rev-parse HEAD)"
           git rev-parse HEAD
@@ -178,6 +173,7 @@ jobs:
         run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''""''" } }'''
 
       - name: Commit latest deployed image hash
+        if: github.ref == 'refs/heads/master'
         run: |
           cd workspaces/apps
           git status
@@ -197,6 +193,7 @@ jobs:
           github_token: ${{secrets.BUILD_TOKEN}}
 
       - name: Write current git commit to output
+        if: github.ref == 'refs/heads/master'
         run: |
           echo "Writing git commit hash to output $(git rev-parse HEAD)"
           git rev-parse HEAD
