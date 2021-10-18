@@ -60,6 +60,43 @@ const assertDir = (filePath: string): void => {
   mkdir('-p', dirname);
 };
 
+interface CopyOptions {
+  overwrite: boolean;
+}
+
+const cpSingle = (
+  singleSource: string,
+  dest,
+  copySyncOptions: CopyOptions
+): void => {
+  const isDestDirectory =
+    fs.existsSync(dest) && fs.lstatSync(dest).isDirectory();
+  const isSourceDirectory = fs.lstatSync(singleSource).isDirectory();
+  if (isDestDirectory) {
+    assertDir(dest);
+  }
+  // see https://github.com/jprichardson/node-fs-extra/blob/HEAD/docs/copy-sync.md
+  // https://github.com/jprichardson/node-fs-extra/issues/323
+  if (isDestDirectory && !isSourceDirectory) {
+    fse.copySync(
+      singleSource,
+      `${dest}/${path.basename(singleSource)}`,
+      copySyncOptions
+    );
+    return;
+  }
+  if (isDestDirectory && isSourceDirectory) {
+    // copy directory as sub-directory
+    fse.copySync(
+      singleSource,
+      `${dest}/${path.basename(singleSource)}`,
+      copySyncOptions
+    );
+    return;
+  }
+  fse.copySync(singleSource, dest, copySyncOptions);
+};
+
 export const cp = (
   options: string,
   source: string | string[],
@@ -69,19 +106,22 @@ export const cp = (
     throw new Error('Unknown option for cp ' + options);
   }
 
+  const copySyncOptions = {
+    overwrite: options.indexOf('f') !== -1,
+  };
+
   if (Array.isArray(source)) {
     (source as string[]).forEach((singleSource) => {
-      assertDir(dest);
-      fse.copySync(singleSource, dest);
+      cpSingle(singleSource, dest, copySyncOptions);
     });
   } else {
     assertDir(dest);
-    fse.copySync(source as string, dest);
+    cpSingle(source as string, dest, copySyncOptions);
   }
 };
 
 /**
- * Works better in Windows environment, since automatic retires are attempted when there is a temporary error.
+ * Safer delete in Windows environment, since automatic retires are attempted when there is a temporary error.
  */
 export const rmSafe = async (...files: string[]): Promise<void> => {
   for (const file of files) {

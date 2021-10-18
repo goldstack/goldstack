@@ -70,17 +70,19 @@ jobs:
         env:
           SOURCE: workspaces/docs
 
-      - name: Build libraries
+      - name: Compile all
+        run: |
+          yarn compile
+
+      - name: Test libraries
         run: |
           cd workspaces/templates-lib
-          yarn compile
           yarn test-ci
           cd ../..
 
-      - name: Build templates
+      - name: Test templates
         run: |
           cd workspaces/templates
-          yarn compile
           yarn test-ci
           cd ../..
         env:
@@ -89,17 +91,15 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
 
-      - name: Build template management
+      - name: Test template management
         run: |
           cd workspaces/templates-management
-          yarn compile
           yarn test-ci
           cd ../..
 
-      - name: Build apps
+      - name: Test apps
         run: |
           cd workspaces/apps
-          yarn compile
           yarn workspace @goldstack/goldstack-api utils:seed-module-templates
           yarn test-ci
           cd ../..
@@ -109,10 +109,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
 
-      - name: Build docs
+      - name: Test docs
         run: |
           cd workspaces/docs
-          yarn compile
           yarn test-ci
           cd ../..
         env:
