@@ -2084,7 +2084,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/template-lambda-express", "workspace:workspaces/templates-lib/packages/template-lambda-express"],
             ["@types/jest", "npm:27.0.2"],
             ["@types/node", "npm:16.11.0"],
-            ["nodemon", "npm:2.0.4"]
+            ["nodemon", "npm:2.0.4"],
+            ["ts-node", "virtual:f9142006202e84442d97960bffe1f194e2429cf8062d0c28268d7fd2f85865329bb070ab3bec3c6b72a4d8b89dd542ffd3284cb82516c4681ee8c29cae609f04#npm:10.3.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -24214,6 +24215,41 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["yn", "npm:3.1.1"]
           ],
           "packagePeers": [
+            "@types/typescript",
+            "typescript"
+          ],
+          "linkType": "HARD",
+        }],
+        ["virtual:f9142006202e84442d97960bffe1f194e2429cf8062d0c28268d7fd2f85865329bb070ab3bec3c6b72a4d8b89dd542ffd3284cb82516c4681ee8c29cae609f04#npm:10.3.0", {
+          "packageLocation": "./.yarn/__virtual__/ts-node-virtual-f7ca536fa3/0/cache/ts-node-npm-10.3.0-f2c1ae3d07-aea1b9eac4.zip/node_modules/ts-node/",
+          "packageDependencies": [
+            ["ts-node", "virtual:f9142006202e84442d97960bffe1f194e2429cf8062d0c28268d7fd2f85865329bb070ab3bec3c6b72a4d8b89dd542ffd3284cb82516c4681ee8c29cae609f04#npm:10.3.0"],
+            ["@cspotcode/source-map-support", "npm:0.7.0"],
+            ["@swc/core", null],
+            ["@swc/wasm", null],
+            ["@tsconfig/node10", "npm:1.0.8"],
+            ["@tsconfig/node12", "npm:1.0.9"],
+            ["@tsconfig/node14", "npm:1.0.1"],
+            ["@tsconfig/node16", "npm:1.0.2"],
+            ["@types/node", "npm:16.11.0"],
+            ["@types/swc__core", null],
+            ["@types/swc__wasm", null],
+            ["@types/typescript", null],
+            ["acorn", "npm:8.5.0"],
+            ["acorn-walk", "npm:8.2.0"],
+            ["arg", "npm:4.1.3"],
+            ["create-require", "npm:1.1.1"],
+            ["diff", "npm:4.0.2"],
+            ["make-error", "npm:1.3.6"],
+            ["typescript", null],
+            ["yn", "npm:3.1.1"]
+          ],
+          "packagePeers": [
+            "@swc/core",
+            "@swc/wasm",
+            "@types/node",
+            "@types/swc__core",
+            "@types/swc__wasm",
             "@types/typescript",
             "typescript"
           ],

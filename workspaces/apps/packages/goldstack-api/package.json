@@ -7,17 +7,18 @@
   "sideEffects": false,
   "main": "src/module.ts",
   "scripts": {
-    "build": "yarn compile && yarn node dist/scripts/build.js",
-    "clean": "rm -rf ./dist",
+    "build": "ts-node ./scripts/build.ts",
+    "clean": "rm -rf ./dist && rm -rf distLambda",
     "compile": "tsc --build",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
-    "deploy": "yarn build && yarn template-local deploy",
+    "deploy": "yarn build && yarn template deploy",
+    "deploy-ts": "yarn build && yarn template-ts deploy",
     "infra": "template infra",
     "start": "yarn node dist/src/local.js",
-    "template-local": "ts-node scripts/template.ts",
+    "template-ts": "ts-node scripts/template.ts",
     "test": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --watch --config=jest.config.js",
     "test-ci": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --config=jest.config.js --detectOpenHandles",
-    "utils:seed-module-templates": "GOLDSTACK_DEPLOYMENT=local yarn node ./dist/src/utils/seedRepo",
+    "utils:seed-module-templates": "GOLDSTACK_DEPLOYMENT=local ts-node ./src/utils/seedRepo.ts",
     "watch": "PORT=8731 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local GOLDSTACK_LOG_EMAILS=true ts-node-dev ./src/local.ts"
   },
   "dependencies": {

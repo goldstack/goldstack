@@ -12,7 +12,6 @@ import {
 } from './types/LambdaExpressPackage';
 
 export const run = async (args: string[]): Promise<void> => {
-  console.log('recompiled!');
   await wrapCli(async () => {
     const argv = buildCli({
       yargs,

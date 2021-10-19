@@ -3,6 +3,9 @@
   "include": [
     "./src/**/*",
     "./src/**/*.json",
+    "./scripts/**/*",
+    "./schemas/**/*.json",
+    "./goldstack.json",
     "./next-env.d.ts"
   ],
   "compilerOptions": {

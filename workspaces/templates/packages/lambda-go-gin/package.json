@@ -7,6 +7,7 @@
     "deploy": "yarn build && template deploy \"$@\"",
     "infra": "template infra \"$@\"",
     "template": "template",
+    "template-ts": "ts-node scripts/template.ts",
     "test-ci": "echo 'not implemented'",
     "watch": "PORT=8084 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local nodemon --watch ../../ --ext go --exec 'go build -o localDevelopment/server.exe && cd localDevelopment && server.exe'"
   },
@@ -14,6 +15,7 @@
     "@goldstack/template-lambda-express": "0.3.58",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "ts-node": "^10.3.0"
   }
 }

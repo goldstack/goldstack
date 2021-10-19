@@ -20,6 +20,8 @@
     "prepublishOnly": "yarn run build",
     "start:next": "next start",
     "template": "template-nextjs",
+    "template-ts": "ts-node --project tsconfig.local.json scripts/template.ts",
+    "template-ts-deploy": "yarn template-ts set-nextjs-env $@ && yarn build && yarn web:build && yarn template-ts deploy $@",
     "test": "jest --config=./jest.config.js --watch",
     "test-ci": "jest --passWithNoTests --config=./jest.config.js",
     "watch": "yarn next:watch",

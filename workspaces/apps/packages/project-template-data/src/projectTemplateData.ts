@@ -1,6 +1,6 @@
 import { ProjectTemplateProps } from './projectTemplateTypes';
 
-export {
+export type {
   ProjectTemplateProps,
   TemplateFeatureProps,
   MoreDetails,

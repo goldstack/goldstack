@@ -3,7 +3,7 @@ import { fatal } from '@goldstack/utils-log';
 import { infraAwsStaticWebsiteCli } from '@goldstack/template-static-website-aws';
 import { NextjsPackage, NextjsDeployment } from './types/NextJsPackage';
 
-export { NextjsPackage };
+export type { NextjsPackage };
 
 import yargs from 'yargs';
 import { buildCli, buildDeployCommands } from '@goldstack/utils-package';

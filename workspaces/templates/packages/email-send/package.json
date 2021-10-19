@@ -19,6 +19,7 @@
     "infra": "template infra",
     "prepublishOnly": "yarn run build",
     "template": "template-email-send",
+    "template-ts": "ts-node scripts/template.ts",
     "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js"
   },
   "dependencies": {

@@ -20,6 +20,7 @@
     "infra": "template infra",
     "prepublishOnly": "yarn run build",
     "template": "template",
+    "template-ts": "ts-node scripts/template.ts",
     "test-ci": "jest --passWithNoTests --config=./jest.config.js",
     "watch": "yarn compile && yarn web:build local && concurrently \"yarn web:watch local\" \"reload --dir ./webDist --watch-dir ./webDist --port 8076 --browser -v\" ",
     "watch:new": "yarn compile && yarn web:build local && concurrently \"yarn web:watch local\" \"light-server --serve ./webDist --watchexp ./webDist/* --port 8077 --delay 500 --open\" ",

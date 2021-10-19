@@ -76,7 +76,7 @@ export interface ThisPackage extends Package {
   deployments: ThisDeployment[];
 }
 
-export { ThisPackageConfiguration as AWSStaticWebsiteConfiguration };
-export { ThisDeployment as AWSStaticWebsiteDeployment };
-export { ThisDeploymentConfiguration as AWSStaticWebsiteDeploymentConfiguration };
-export { ThisPackage as AWSStaticWebsitePackage };
+export type { ThisPackageConfiguration as AWSStaticWebsiteConfiguration };
+export type { ThisDeployment as AWSStaticWebsiteDeployment };
+export type { ThisDeploymentConfiguration as AWSStaticWebsiteDeploymentConfiguration };
+export type { ThisPackage as AWSStaticWebsitePackage };
