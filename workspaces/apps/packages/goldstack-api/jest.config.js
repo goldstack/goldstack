@@ -6,7 +6,7 @@ module.exports = {
   testPathIgnorePatterns: ['<rootDir>/goldstackLocal/'],
   globals: {
     'ts-jest': {
-      tsConfig: 'tsconfig.json',
+      tsconfig: 'tsconfig.json',
     },
   },
 };
