@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "include": [
     "./src/**/*",
-    "./scripts/**/*",
+    "./scripts/**/*"
   ],
   "compilerOptions": {
     "incremental": true,
