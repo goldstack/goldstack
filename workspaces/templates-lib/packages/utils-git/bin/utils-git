@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-require('../dist/utilsGit.js').run(process.argv);
+require('../dist/src/utilsGit.js').run(process.argv);
