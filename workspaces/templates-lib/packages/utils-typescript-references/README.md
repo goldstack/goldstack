@@ -69,7 +69,7 @@ Will skip updating the `references` in the `tsconfig.json` file for the project 
 
 ## Limitations
 
-- The root of the project and each workspace must contain a `tsconfig.json`. It is currently not able to specify an alternative file name for `tsconfig.json`. 
+- The root of the project and each workspace must contain a `tsconfig.json`. It is currently not able to specify an alternative file name for `tsconfig.json`.
 - The root `tsconfig.json` file needs to be a vanilla JSON document (so no comments)
 
 If these limitations or anything else are an issues, please [raise a ticket in GitHub for the Goldstack Monorepo](https://github.com/goldstack/goldstack/issues).
