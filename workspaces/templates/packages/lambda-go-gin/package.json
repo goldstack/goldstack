@@ -5,6 +5,7 @@
     "build": "GOOS=linux GIN_MODE=release go build -ldflags=\"-s -w\" -o distLambda/lambda",
     "compile": "yarn build",
     "deploy": "yarn build && template deploy \"$@\"",
+    "deploy-ts": "yarn build && yarn template-ts deploy \"$@\"",
     "infra": "template infra \"$@\"",
     "template": "template",
     "template-ts": "ts-node scripts/template.ts",
