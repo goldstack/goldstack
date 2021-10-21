@@ -1,4 +1,3 @@
-
 ### Module parse failed: Unexpected Token
 
 If you receive an error like the following:

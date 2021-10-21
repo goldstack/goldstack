@@ -1,0 +1,15 @@
+undecided:
+  - root
+  - "@goldstack/goldstack-api"
+  - "@goldstack/goldstack-home"
+  - "@goldstack/template-management-cli"
+  - "@goldstack/app-nextjs"
+  - "@goldstack/app-nextjs-bootstrap"
+  - "@goldstack/docker-image-aws"
+  - "@goldstack/email-send"
+  - "@goldstack/lambda-express"
+  - "@goldstack/server-go"
+  - "@goldstack/s3"
+  - "@goldstack/static-website-aws"
+  - "@goldstack/template-docker-image-aws"
+  - "@goldstack/template-lambda-express"
