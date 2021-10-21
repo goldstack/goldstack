@@ -3,6 +3,7 @@
     "infra/aws/",
     "src/",
     "schemas/",
+    "scripts",
     "docker/",
     ".gitignore",
     "goldstack.json",

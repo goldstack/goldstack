@@ -10,22 +10,18 @@
   ],
   "scripts": {
     "build": "yarn clean && yarn compile",
+    "build-web": "ts-node ./src/build.ts $@",
     "clean": "rm -rf ./dist ./webDist",
     "compile": "tsc --build",
-    "compile-watch": "tsc --build --watch",
-    "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
-    "compileOld": "tsc -p tsconfig.json",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
-    "deploy": "yarn web:build $@ && template deploy $@",
+    "deploy": "yarn build-web $@ && template deploy $@",
+    "deploy-ts": "yarn build-web $@ && yarn template-ts deploy $@",
     "infra": "template infra",
-    "prepublishOnly": "yarn run build",
     "template": "template",
     "template-ts": "ts-node scripts/template.ts",
     "test-ci": "jest --passWithNoTests --config=./jest.config.js",
-    "watch": "yarn compile && yarn web:build local && concurrently \"yarn web:watch local\" \"reload --dir ./webDist --watch-dir ./webDist --port 8076 --browser -v\" ",
-    "watch:new": "yarn compile && yarn web:build local && concurrently \"yarn web:watch local\" \"light-server --serve ./webDist --watchexp ./webDist/* --port 8077 --delay 500 --open\" ",
-    "web:build": "node ./dist/build.js $@",
-    "web:watch": "node ./dist/watch.js $@"
+    "watch": "yarn compile && yarn build-web local && concurrently \"yarn watch-web local\" \"light-server --serve ./webDist --watchexp ./webDist/* --port 8077 --delay 500 --open\" ",
+    "watch-web": "ts-node ./src/watch.ts $@"
   },
   "dependencies": {
     "gulp": "^4.0.2",
