@@ -1,7 +1,7 @@
-import { sh } from '@goldstack/utils-sh';
+import { commandExists, exec } from '@goldstack/utils-sh';
 
 export const hasDocker = (): boolean => {
-  if (!sh.which('docker')) {
+  if (!commandExists('docker')) {
     return false;
   } else {
     return true;
@@ -9,13 +9,15 @@ export const hasDocker = (): boolean => {
 };
 
 export const assertDocker = (): void => {
-  if (!sh.which('docker')) {
+  if (!commandExists('docker')) {
     throw new Error(
       'Docker must be installed. Please install Docker and ensure the "docker" command is available in your terminal.'
     );
   }
 
-  if (sh.exec('docker version', { silent: true }).code != 0) {
+  try {
+    exec('docker version', { silent: true });
+  } catch (e) {
     throw new Error('Docker must be running. Please start the docker service.');
   }
 };

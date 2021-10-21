@@ -1,8 +1,57 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
-  }
+  },
+  "references": [
+    {
+      "path": "../../../templates-lib/packages/infra"
+    },
+    {
+      "path": "../../../templates-lib/packages/infra-aws"
+    },
+    {
+      "path": "../project-build"
+    },
+    {
+      "path": "../project-config"
+    },
+    {
+      "path": "../project-install"
+    },
+    {
+      "path": "../template-build"
+    },
+    {
+      "path": "../template-repository"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-cli"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-config"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-git"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-package"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-project"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-template"
+    },
+    {
+      "path": "../utils-template-test"
+    }
+  ]
 }

@@ -1,4 +1,4 @@
-import { sh } from '@goldstack/utils-sh';
+import { globSync } from '@goldstack/utils-sh';
 import { readPackageConfig } from '@goldstack/utils-package';
 import { S3TemplateRepository } from '@goldstack/template-repository';
 import { connect, getBucketName } from '@goldstack/template-repository-bucket';
@@ -6,8 +6,8 @@ import { connect, getBucketName } from '@goldstack/template-repository-bucket';
 import path from 'path';
 
 const getGoldstackJsonPaths = (workspacePath: string): string[] => {
-  const res = sh.ls('-A', workspacePath + 'packages/*/goldstack.json');
-  return Array.from(res.values());
+  const res = globSync(workspacePath + 'packages/*/goldstack.json');
+  return res;
 };
 
 export interface DocLink {

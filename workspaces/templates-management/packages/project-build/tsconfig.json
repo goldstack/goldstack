@@ -1,8 +1,39 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
-  }
+  },
+  "references": [
+    {
+      "path": "../../../templates-lib/packages/infra-aws"
+    },
+    {
+      "path": "../template-repository"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-config"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-log"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-package"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-project"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    },
+    {
+      "path": "../template-build"
+    },
+    {
+      "path": "../utils-template-test"
+    }
+  ]
 }

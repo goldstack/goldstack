@@ -1,7 +1,8 @@
-import sh, { ShellString } from 'shelljs';
-
+import { execSync } from 'child_process';
 import fs from 'fs';
 import ncp from 'ncp';
+
+import fse from 'fs-extra';
 
 import path from 'path';
 
@@ -9,6 +10,8 @@ import rimraf from 'rimraf';
 
 import archiver from 'archiver';
 import extract from 'extract-zip';
+
+import cmdExists from 'command-exists';
 
 import { sync as globSync } from 'glob';
 
@@ -52,22 +55,73 @@ export const copy = async (
   }
 };
 
+const assertDir = (filePath: string): void => {
+  const dirname = path.dirname(filePath);
+  mkdir('-p', dirname);
+};
+
+interface CopyOptions {
+  overwrite: boolean;
+}
+
+const cpSingle = (
+  singleSource: string,
+  dest,
+  copySyncOptions: CopyOptions
+): void => {
+  const isDestDirectory =
+    fs.existsSync(dest) && fs.lstatSync(dest).isDirectory();
+  const isSourceDirectory = fs.lstatSync(singleSource).isDirectory();
+  if (isDestDirectory) {
+    assertDir(dest);
+  }
+  // see https://github.com/jprichardson/node-fs-extra/blob/HEAD/docs/copy-sync.md
+  // https://github.com/jprichardson/node-fs-extra/issues/323
+  if (isDestDirectory && !isSourceDirectory) {
+    fse.copySync(
+      singleSource,
+      `${dest}/${path.basename(singleSource)}`,
+      copySyncOptions
+    );
+    return;
+  }
+  if (isDestDirectory && isSourceDirectory) {
+    // copy directory as sub-directory
+    fse.copySync(
+      singleSource,
+      `${dest}/${path.basename(singleSource)}`,
+      copySyncOptions
+    );
+    return;
+  }
+  fse.copySync(singleSource, dest, copySyncOptions);
+};
+
 export const cp = (
   options: string,
   source: string | string[],
   dest: string
 ): void => {
-  const res = sh.cp(options, source, dest);
+  if (options !== '-f' && options !== '-rf' && options !== '') {
+    throw new Error('Unknown option for cp ' + options);
+  }
 
-  if (!res || res.code !== 0) {
-    sh.echo(res.stdout);
-    sh.echo(res.stderr);
-    throw new Error(`Cannot copy ${source} to ${dest}.`);
+  const copySyncOptions = {
+    overwrite: options.indexOf('f') !== -1,
+  };
+
+  if (Array.isArray(source)) {
+    (source as string[]).forEach((singleSource) => {
+      cpSingle(singleSource, dest, copySyncOptions);
+    });
+  } else {
+    assertDir(dest);
+    cpSingle(source as string, dest, copySyncOptions);
   }
 };
 
 /**
- * Works better in Windows environment, since automatic retires are attempted when there is a temporary error.
+ * Safer delete in Windows environment, since automatic retires are attempted when there is a temporary error.
  */
 export const rmSafe = async (...files: string[]): Promise<void> => {
   for (const file of files) {
@@ -100,13 +154,12 @@ export const rm = (options: string, ...files: string[]): void => {
   }
 };
 
-export const mkdir = (options: string, ...dir: string[]): void => {
-  const res = sh.mkdir(options, dir);
-  if (!res || res.code !== 0) {
-    sh.echo(res.stdout);
-    sh.echo(res.stderr);
-    throw new Error(`Cannot create directory ${dir}`);
-  }
+export const mkdir = (options: string, ...dirs: string[]): void => {
+  dirs.forEach((dir) => {
+    fs.mkdirSync(dir, {
+      recursive: options.indexOf('-p') >= 0,
+    });
+  });
 };
 
 export const zip = async (params: {
@@ -157,25 +210,30 @@ export const tempDir = (): string => {
 };
 
 const exec = (cmd: string, params?: ExecParams): string => {
-  const res = sh.exec(cmd, { silent: params?.silent });
-  if (!res || res.code != 0) {
-    sh.echo(res.stdout);
-    sh.echo(res.stderr);
-    throw new Error(`Error running '${cmd}'`);
+  const res = execSync(cmd);
+  if (!params?.silent) {
+    console.log(res.toString());
   }
-  return res.stdout;
+  return res.toString();
 };
 
 const read = (path: string): string => {
-  return sh.cat(path).toString();
+  const buffer = fs.readFileSync(path, 'utf8');
+  return buffer.toString();
 };
 
 const write = (content: string, path: string): void => {
-  new ShellString(content).to(path);
+  fs.writeFileSync(path, content);
 };
 
-const pwd = (): string => sh.pwd().toString();
+const pwd = (): string => process.cwd();
 
-const cd = sh.cd;
+const cd = (newdir: string): void => {
+  process.chdir(newdir);
+};
 
-export { exec, pwd, read, write, sh, cd };
+const commandExists = (command: string): boolean => {
+  return cmdExists.sync(command);
+};
+
+export { exec, pwd, read, write, cd, globSync, commandExists };

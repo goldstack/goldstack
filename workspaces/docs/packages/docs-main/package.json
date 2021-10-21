@@ -52,8 +52,8 @@
     "@testing-library/jest-dom": "^5.9.0",
     "@testing-library/react": "^10.0.4",
     "@types/cheerio": "^0.22.22",
-    "@types/jest": "^26.0.21",
-    "@types/node": "^14.0.6",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.0",
     "@types/react": "^16.9.46",
     "@types/styled-components": "^5.1.1",
     "@types/testing-library__jest-dom": "^5.9.1",
@@ -69,7 +69,7 @@
     "nodemon": "^2.0.4",
     "reload": "^3.2.0",
     "ts-jest": "^26.5.4",
-    "ts-node": "^8.10.2",
+    "ts-node": "^10.3.0",
     "typescript": "^4.4.3"
   }
 }

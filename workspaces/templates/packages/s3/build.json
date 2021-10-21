@@ -2,6 +2,7 @@
   "include": [
     "infra/aws/",
     "docs/",
+    "scripts",
     "src/",
     "schemas/",
     ".gitignore",

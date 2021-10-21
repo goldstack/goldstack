@@ -10,9 +10,9 @@
   "scripts": {
     "build": "yarn workspaces foreach --topological-dev run build",
     "clean": "yarn workspaces foreach run clean",
-    "compile": "yarn workspaces foreach --topological-dev run compile",
-    "compile-watch": "yarn compile && nodemonx --watch . --exec 'yarn compile'",
+    "compile": "tsc --build",
     "coverage": "yarn workspaces foreach --topological-devs run coverage",
+    "fix-project-references": "utils-typescript-references --skipRoot",
     "format": "prettier --loglevel log --config .prettierrc.json --write .",
     "format-check": "prettier --loglevel log --config .prettierrc.json --check .",
     "generate-docs": "yarn workspaces foreach run generate-docs",
@@ -24,6 +24,9 @@
   },
   "devDependencies": {
     "@goldstack/nodemonx": "0.3.14",
+    "@goldstack/utils-typescript-references": "0.1.0",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.0",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
     "eslint": "^7.18.0",

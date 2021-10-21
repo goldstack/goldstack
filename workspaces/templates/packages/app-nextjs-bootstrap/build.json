@@ -3,6 +3,7 @@
     "infra/aws/",
     "src/",
     "schemas/",
+    "scripts/",
     "docs/",
     ".babelrc",
     ".env",
@@ -16,7 +17,7 @@
     "README.md",
     "template.json",
     "tsconfig.json",
-    "tsconfig.compile.json",
+    "tsconfig.local.json",
     "tsconfig.test.json"
   ],
   "exclude": [

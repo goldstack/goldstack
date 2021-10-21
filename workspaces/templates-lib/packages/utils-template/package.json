@@ -18,7 +18,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/utilsTemplate.js",
+  "main": "src/utilsTemplate.ts",
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",
@@ -41,10 +41,13 @@
   "devDependencies": {
     "@goldstack/utils-git": "0.1.27",
     "@goldstack/utils-json-to-ts": "0.3.14",
-    "@types/jest": "^26.0.21",
-    "@types/node": "^14.0.6",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.0",
     "jest": "^26.6.3",
     "ts-jest": "^26.5.4",
     "typescript": "^4.4.3"
+  },
+  "publishConfig": {
+    "main": "dist/src/utilsTemplate.js"
   }
 }

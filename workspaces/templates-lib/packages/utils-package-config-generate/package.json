@@ -18,7 +18,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/utilsPackageConfigGenerate.js",
+  "main": "src/utilsPackageConfigGenerate.ts",
   "bin": "./bin/utils-package-config-generate",
   "scripts": {
     "build": "yarn clean && yarn compile",
@@ -35,17 +35,20 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "ts-json-schema-generator": "0.70.2",
+    "ts-json-schema-generator": "^0.96.0",
     "yargs": "^15.4.1"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.27",
-    "@types/jest": "^26.0.21",
-    "@types/node": "^14.0.6",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.0",
     "@types/yargs": "^15.0.5",
     "jest": "^26.6.3",
     "renamer": "^0.7.0",
     "ts-jest": "^26.5.4",
     "typescript": "^4.4.3"
+  },
+  "publishConfig": {
+    "main": "dist/src/utilsPackageConfigGenerate.js"
   }
 }

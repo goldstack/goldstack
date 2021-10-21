@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/projectInstall.js",
+  "main": "src/projectInstall.ts",
   "files": [
     "dist"
   ],
@@ -34,8 +34,8 @@
     "@goldstack/template-build": "0.1.0",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/utils-template-test": "0.1.0",
-    "@types/jest": "^26.0.21",
-    "@types/node": "^14.0.6",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.0",
     "axios": "^0.21.1",
     "jest": "^26.6.3",
     "temp-dir": "^2.0.0",

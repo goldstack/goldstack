@@ -1,8 +1,64 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./scripts/**/*",
+    "./src/**/*",
+    "./src/**/*.json",
+    "./schemas/**/*.json",
+    "./goldstack.json"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
-  }
+  },
+  "references": [
+    {
+      "path": "../goldstack-email-send"
+    },
+    {
+      "path": "../../../templates-lib/packages/infra-aws"
+    },
+    {
+      "path": "../../../templates-management/packages/project-build"
+    },
+    {
+      "path": "../../../templates-management/packages/project-install"
+    },
+    {
+      "path": "../../../templates-management/packages/template-build-set"
+    },
+    {
+      "path": "../../../templates-management/packages/template-repository"
+    },
+    {
+      "path": "../../../templates-management/packages/template-repository-bucket"
+    },
+    {
+      "path": "../../../templates-lib/packages/template-s3"
+    },
+    {
+      "path": "../../../templates-lib/packages/template-static-website-aws"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-cli"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-config"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-git"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-package"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-project"
+    },
+    {
+      "path": "../../../templates-lib/packages/template-docker-image-aws"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    }
+  ]
 }

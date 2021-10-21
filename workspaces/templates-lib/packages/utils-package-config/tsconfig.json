@@ -1,8 +1,27 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
-  }
+  },
+  "references": [
+    {
+      "path": "../infra"
+    },
+    {
+      "path": "../utils-config"
+    },
+    {
+      "path": "../utils-package"
+    },
+    {
+      "path": "../utils-sh"
+    },
+    {
+      "path": "../utils-git"
+    }
+  ]
 }

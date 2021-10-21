@@ -1,8 +1,58 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*",
+    "./src/**/*.json"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
-  }
+  },
+  "references": [
+    {
+      "path": "../infra"
+    },
+    {
+      "path": "../infra-aws"
+    },
+    {
+      "path": "../template-static-website-aws"
+    },
+    {
+      "path": "../utils-aws-cli"
+    },
+    {
+      "path": "../utils-cli"
+    },
+    {
+      "path": "../utils-config"
+    },
+    {
+      "path": "../utils-log"
+    },
+    {
+      "path": "../utils-package"
+    },
+    {
+      "path": "../utils-package-config"
+    },
+    {
+      "path": "../utils-sh"
+    },
+    {
+      "path": "../utils-template"
+    },
+    {
+      "path": "../utils-terraform"
+    },
+    {
+      "path": "../../../docs/packages/utils-docs-cli"
+    },
+    {
+      "path": "../utils-git"
+    },
+    {
+      "path": "../utils-package-config-generate"
+    }
+  ]
 }

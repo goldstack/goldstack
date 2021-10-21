@@ -1,4 +1,4 @@
-import ProjectData from '@goldstack/project-repository/dist/types/ProjectData';
+import { ProjectData } from '@goldstack/project-repository';
 
 import projectFormSchema from 'src/lib/schemas/projectForm.json';
 import projectFormUiSchema from 'src/lib/schemas/projectFormUi';
@@ -8,7 +8,7 @@ import awsUserDocs from 'src/docs/aws-user.json';
 
 import projectDocs from 'src/docs/project.json';
 
-import { AWSAPIKeyUserConfig } from '@goldstack/infra-aws/dist/types/awsAccount';
+import { AWSAPIKeyUser } from '@goldstack/infra-aws';
 
 export interface ConfigureStepSection {
   title?: string;
@@ -59,8 +59,7 @@ export const getConfigureSteps = (
           schema: projectFormSchema,
           uiSchema: projectFormUiSchema,
           getData: (projectData: ProjectData): any => {
-            const awsUser = projectData.awsUsers[0]
-              .config as AWSAPIKeyUserConfig;
+            const awsUser = projectData.awsUsers[0].config as AWSAPIKeyUser;
             return {
               ...projectData.project,
               deployment:
@@ -78,8 +77,7 @@ export const getConfigureSteps = (
 
             newProjectData.deploymentNames = [newData.deployment];
             (newProjectData.awsUsers[0]
-              .config as AWSAPIKeyUserConfig).awsDefaultRegion =
-              newData.awsRegion;
+              .config as AWSAPIKeyUser).awsDefaultRegion = newData.awsRegion;
             return { ...newProjectData };
           },
         },
@@ -168,7 +166,7 @@ export const getConfigureSteps = (
           },
           getData: (projectData: ProjectData): any => {
             const awsUserConfig = projectData.awsUsers[0]
-              .config as AWSAPIKeyUserConfig;
+              .config as AWSAPIKeyUser;
             return {
               awsAccessKeyId: awsUserConfig.awsAccessKeyId || '',
               awsSecretAccessKey: awsUserConfig.awsSecretAccessKey || '',
@@ -179,7 +177,7 @@ export const getConfigureSteps = (
               JSON.stringify(projectData)
             );
             const awsUserConfig = newProjectData.awsUsers[0]
-              .config as AWSAPIKeyUserConfig;
+              .config as AWSAPIKeyUser;
             awsUserConfig.awsAccessKeyId = newData.awsAccessKeyId || '';
             awsUserConfig.awsSecretAccessKey = newData.awsSecretAccessKey || '';
 

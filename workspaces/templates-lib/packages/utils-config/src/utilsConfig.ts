@@ -1,5 +1,5 @@
 import Ajv from 'ajv';
-import { sh } from '@goldstack/utils-sh';
+import { globSync } from '@goldstack/utils-sh';
 
 interface ValidateOptions {
   errorMessage?: string;
@@ -46,8 +46,8 @@ export const parseConfig = (
 };
 
 export const getPackageConfigPaths = (workspacePath: string): string[] => {
-  const res = sh.ls('-A', workspacePath + 'packages/*/goldstack.json');
-  return Array.from(res.values());
+  const res = globSync(workspacePath + 'packages/*/goldstack.json');
+  return res;
 };
 
 export const getAwsConfigPath = (workspacePath: string): string => {

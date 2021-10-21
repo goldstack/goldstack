@@ -3,6 +3,11 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
+const withTM = require('next-transpile-modules')([
+  '@goldstack/utils-track',
+  '@goldstack/project-template-data',
+  '@goldstack/goldstack-api',
+]);
 
 const nextConfig = {
   webpack: (config, options) => {
@@ -19,6 +24,7 @@ const nextConfig = {
 
 const config = withPlugins(
   [
+    [withTM()],
     [
       optimizedImages,
       {

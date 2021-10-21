@@ -4,8 +4,15 @@
     "./src/**/*"
   ],
   "compilerOptions": {
-    "incremental": false,
+    "incremental": true,
+    "noEmit": false,
     "declarationMap": false,
+    "isolatedModules": false,
+    "module": "CommonJS",
+    "types": [],
+    "lib": [
+      "ESNext"
+    ],
     "outDir": "dist",
     "baseUrl": "."
   }

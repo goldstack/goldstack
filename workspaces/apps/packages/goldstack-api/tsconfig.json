@@ -1,8 +1,68 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*",
+    "./scripts/**/*",
+    "./goldstack.json"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
-  }
+  },
+  "references": [
+    {
+      "path": "../../../templates-management/packages/auth"
+    },
+    {
+      "path": "../../../templates-lib/packages/infra-aws"
+    },
+    {
+      "path": "../../../templates-management/packages/project-build"
+    },
+    {
+      "path": "../../../templates-management/packages/project-config"
+    },
+    {
+      "path": "../../../templates-management/packages/project-package-bucket"
+    },
+    {
+      "path": "../../../templates-management/packages/project-repository"
+    },
+    {
+      "path": "../../../templates-management/packages/session-repository"
+    },
+    {
+      "path": "../../../templates-management/packages/template-build"
+    },
+    {
+      "path": "../../../templates-lib/packages/template-lambda-express"
+    },
+    {
+      "path": "../../../templates-management/packages/template-repository"
+    },
+    {
+      "path": "../../../templates-management/packages/template-repository-bucket"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-package"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-project"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-template"
+    },
+    {
+      "path": "../goldstack-email-send"
+    },
+    {
+      "path": "../../../templates/packages/module-template-utils"
+    },
+    {
+      "path": "../../../templates-management/packages/utils-template-test"
+    }
+  ]
 }

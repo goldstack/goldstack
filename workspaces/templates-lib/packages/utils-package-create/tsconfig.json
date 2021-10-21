@@ -1,8 +1,24 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
-  }
+  },
+  "references": [
+    {
+      "path": "../utils-log"
+    },
+    {
+      "path": "../utils-sh"
+    },
+    {
+      "path": "../utils-template"
+    },
+    {
+      "path": "../utils-git"
+    }
+  ]
 }

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { readTemplateConfigFromFile } from '@goldstack/utils-template';
-import { sh } from '@goldstack/utils-sh';
+import { cp } from '@goldstack/utils-sh';
 import { fatal } from '@goldstack/utils-log';
 
 interface CreatePackageParams {
@@ -18,15 +18,11 @@ const copyFromLocal = async (
 
   const installFolder = params.installFolder;
 
-  const res = sh.cp(
+  cp(
     '-r',
     path + '/template',
     './' + installFolder + '/' + params.newPackageName
   );
-  if (!res) {
-    fatal('Cannot copy template to folder');
-    throw new Error('Cannot copy template');
-  }
 };
 
 export const createPackage = async (

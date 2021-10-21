@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/projectConfig.js",
+  "main": "src/projectConfig.ts",
   "files": [
     "dist"
   ],
@@ -27,8 +27,8 @@
     "@goldstack/utils-template": "0.3.15"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.21",
-    "@types/node": "^14.0.6",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.0",
     "jest": "^26.6.3",
     "temp-dir": "^2.0.0",
     "ts-jest": "^26.5.4",

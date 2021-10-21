@@ -9,6 +9,8 @@
     ],
     "allowJs": true,
     "checkJs": false,
+    "composite": true,
+    "noEmit": false,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,

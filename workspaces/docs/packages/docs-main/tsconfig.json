@@ -2,19 +2,36 @@
   "extends": "../../tsconfig.base.json",
   "include": [
     "./src/**/*",
-    "./next-env.d.ts",
+    "./src/**/*.json",
+    "./next-env.d.ts"
   ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
     "jsx": "preserve",
-    "incremental": false,
-    "noEmit": true,
+    "incremental": true,
     "module": "esnext",
     "moduleResolution": "node",
     "isolatedModules": true
   },
   "exclude": [
     "node_modules"
+  ],
+  "references": [
+    {
+      "path": "../toc-generator"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-track"
+    },
+    {
+      "path": "../markdown-docs"
+    },
+    {
+      "path": "../../../templates-lib/packages/template-nextjs"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    }
   ]
 }

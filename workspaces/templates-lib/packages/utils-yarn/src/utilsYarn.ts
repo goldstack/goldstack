@@ -1,4 +1,4 @@
-import { sh, exec, cd } from '@goldstack/utils-sh';
+import { commandExists, pwd, exec, cd } from '@goldstack/utils-sh';
 import {
   hasDocker,
   imageGoldstackBuild,
@@ -7,7 +7,7 @@ import {
 import path from 'path';
 
 export const hasYarn = (): boolean => {
-  if (!sh.which('yarn')) {
+  if (!commandExists('yarn')) {
     return false;
   } else {
     return true;
@@ -15,7 +15,7 @@ export const hasYarn = (): boolean => {
 };
 
 export const assertYarn = (): void => {
-  if (!sh.which('yarn')) {
+  if (!commandExists('yarn')) {
     throw new Error('Yarn must be installed. Please install yarn.');
   }
 };
@@ -33,7 +33,7 @@ const execWithDocker = (dir: string, args: string): void => {
 
 const execWithCli = (dir: string, args: string): void => {
   assertYarn();
-  const currentWorkDir = sh.pwd();
+  const currentWorkDir = pwd();
   cd(path.resolve(dir));
   exec(`yarn ${args}`);
   cd(currentWorkDir);

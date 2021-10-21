@@ -4,7 +4,7 @@ module.exports = {
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.ts$',
   globals: {
     'ts-jest': {
-      tsConfig: 'tsconfig.base.json',
+      tsconfig: 'tsconfig.base.json',
     },
   },
   coverageThreshold: {

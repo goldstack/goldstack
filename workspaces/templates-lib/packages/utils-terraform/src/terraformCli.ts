@@ -1,4 +1,4 @@
-import { exec, pwd, sh } from '@goldstack/utils-sh';
+import { exec, pwd, commandExists } from '@goldstack/utils-sh';
 import {
   assertDocker,
   hasDocker,
@@ -52,7 +52,7 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
 };
 
 export const assertTerraform = (): void => {
-  if (!sh.which('terraform')) {
+  if (!commandExists('terraform')) {
     fatal(
       'Terraform is not installed.\n\n' +
         'Install terraform CLI or Docker (preferred).'

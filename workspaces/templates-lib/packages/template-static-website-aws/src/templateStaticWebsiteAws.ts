@@ -8,7 +8,7 @@ import {
 } from './types/AWSStaticWebsitePackage';
 import { AWSStaticWebsiteDeployment } from './types/AWSStaticWebsitePackage';
 
-export {
+export type {
   AWSStaticWebsitePackage,
   AWSStaticWebsiteConfiguration,
   AWSStaticWebsiteDeployment,

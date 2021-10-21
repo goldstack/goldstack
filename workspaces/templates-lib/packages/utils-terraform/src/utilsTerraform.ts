@@ -1,4 +1,4 @@
-export {
+export type {
   TerraformDeployment,
   TerraformVariable,
   TerraformVariables,
@@ -6,7 +6,7 @@ export {
 
 import { CloudProvider } from './cloudProvider';
 
-export { CloudProvider } from './cloudProvider';
+export type { CloudProvider } from './cloudProvider';
 
 import { TerraformBuild } from './terraformBuild';
 

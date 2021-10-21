@@ -1,8 +1,24 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*",
+    "./schemas/**/*.json",
+    "./scripts/**/*",
+    "./goldstack.json"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
-  }
+  },
+  "references": [
+    {
+      "path": "../../../templates-lib/packages/template-email-send"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-git"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    }
+  ]
 }

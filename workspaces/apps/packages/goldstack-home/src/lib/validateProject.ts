@@ -1,5 +1,5 @@
 import Ajv from 'ajv';
-import ProjectData from '@goldstack/project-repository/dist/types/ProjectData';
+import { ProjectData } from '@goldstack/project-repository';
 
 export interface StepValidation {
   stepName: string;

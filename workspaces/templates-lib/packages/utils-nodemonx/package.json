@@ -22,7 +22,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/utilsNodemonx.js",
+  "main": "src/utilsNodemonx.ts",
   "bin": "./bin/utils-nodemonx",
   "scripts": {
     "build": "yarn clean && yarn compile",
@@ -46,11 +46,14 @@
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.27",
-    "@types/jest": "^26.0.21",
+    "@types/jest": "^27.0.2",
     "@types/minimatch": "^3.0.3",
-    "@types/node": "^14.0.6",
+    "@types/node": "^16.11.0",
     "jest": "^26.6.3",
     "ts-jest": "^26.5.4",
     "typescript": "^4.4.3"
+  },
+  "publishConfig": {
+    "main": "dist/src/utilsNodemonx.js"
   }
 }

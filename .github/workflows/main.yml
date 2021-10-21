@@ -1,20 +1,14 @@
 name: Goldstack Monorepo
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+on: [push, pull_request]
 
 jobs:
   build:
     name: 'Build and Test'
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout Mega repo
+      - name: Checkout Goldstack repo
         uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
         with:
           fetch-depth: 20
@@ -76,17 +70,19 @@ jobs:
         env:
           SOURCE: workspaces/docs
 
-      - name: Build libraries
+      - name: Compile all
+        run: |
+          yarn compile
+
+      - name: Test libraries
         run: |
           cd workspaces/templates-lib
-          yarn compile
           yarn test-ci
           cd ../..
 
-      - name: Build templates
+      - name: Test templates
         run: |
           cd workspaces/templates
-          yarn compile
           yarn test-ci
           cd ../..
         env:
@@ -95,17 +91,15 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
 
-      - name: Build template management
+      - name: Test template management
         run: |
           cd workspaces/templates-management
-          yarn compile
           yarn test-ci
           cd ../..
 
-      - name: Build apps
+      - name: Test apps
         run: |
           cd workspaces/apps
-          yarn compile
           yarn workspace @goldstack/goldstack-api utils:seed-module-templates
           yarn test-ci
           cd ../..
@@ -115,10 +109,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
 
-      - name: Build docs
+      - name: Test docs
         run: |
           cd workspaces/docs
-          yarn compile
           yarn test-ci
           cd ../..
         env:
@@ -160,12 +153,14 @@ jobs:
           github_token: ${{secrets.BUILD_TOKEN}}
 
       - name: Write current git commit to output
+        if: github.ref == 'refs/heads/master'
         run: |
           echo "Writing git commit hash to output $(git rev-parse HEAD)"
           git rev-parse HEAD
           echo "::set-output name=patchedcommit::$(git rev-parse HEAD)"
 
       - name: Build and publish image to DEV
+        if: github.ref == 'refs/heads/master'
         run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy dev
         env:
           AWS_USER_NAME: goldstack-dev
@@ -177,6 +172,7 @@ jobs:
         run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''""''" } }'''
 
       - name: Commit latest deployed image hash
+        if: github.ref == 'refs/heads/master'
         run: |
           cd workspaces/apps
           git status
@@ -196,12 +192,14 @@ jobs:
           github_token: ${{secrets.BUILD_TOKEN}}
 
       - name: Write current git commit to output
+        if: github.ref == 'refs/heads/master'
         run: |
           echo "Writing git commit hash to output $(git rev-parse HEAD)"
           git rev-parse HEAD
           echo "::set-output name=patchedclicommit::$(git rev-parse HEAD)"
 
       - name: Trigger template build
+        if: github.ref == 'refs/heads/master'
         run: |
           yarn workspace @goldstack/template-management-cli compile # compile again so that deployment state is updated
           yarn workspace @goldstack/template-management-cli cli schedule-all-deploy-sets --repo goldstack-dev --deployment dev --emailResultsTo mxrogm@gmail.com
@@ -212,6 +210,7 @@ jobs:
           AWS_DEFAULT_REGION: us-west-2
 
       - name: Deploy docs
+        if: github.ref == 'refs/heads/master'
         run: |
           yarn workspace @goldstack/docs-main deploy dev
         env:
@@ -221,6 +220,7 @@ jobs:
           AWS_DEFAULT_REGION: us-west-2
 
       - name: Deploy API
+        if: github.ref == 'refs/heads/master'
         run: |
           yarn workspace @goldstack/goldstack-api deploy dev
         env:
@@ -232,6 +232,7 @@ jobs:
           STRIPE_API_KEY: ${{secrets.DEV_STRIPE_PRIVATE_KEY}}
 
       - name: Deploy UI
+        if: github.ref == 'refs/heads/master'
         run: |
           yarn workspace @goldstack/goldstack-home deploy dev
         env:

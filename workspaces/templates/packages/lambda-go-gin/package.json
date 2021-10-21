@@ -5,13 +5,18 @@
     "build": "GOOS=linux GIN_MODE=release go build -ldflags=\"-s -w\" -o distLambda/lambda",
     "compile": "yarn build",
     "deploy": "yarn build && template deploy \"$@\"",
+    "deploy-ts": "yarn build && yarn template-ts deploy \"$@\"",
     "infra": "template infra \"$@\"",
     "template": "template",
+    "template-ts": "ts-node scripts/template.ts",
     "test-ci": "echo 'not implemented'",
     "watch": "PORT=8084 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local nodemon --watch ../../ --ext go --exec 'go build -o localDevelopment/server.exe && cd localDevelopment && server.exe'"
   },
   "devDependencies": {
     "@goldstack/template-lambda-express": "0.3.58",
-    "nodemon": "^2.0.4"
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.0",
+    "nodemon": "^2.0.4",
+    "ts-node": "^10.3.0"
   }
 }

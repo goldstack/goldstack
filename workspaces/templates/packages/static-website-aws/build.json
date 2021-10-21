@@ -3,6 +3,7 @@
     "infra/aws/",
     "docs/",
     "schemas/",
+    "scripts/",
     "src/",
     "web/",
     ".gitignore",

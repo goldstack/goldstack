@@ -2,13 +2,17 @@
   "extends": "../../tsconfig.base.json",
   "include": [
     "./src/**/*",
+    "./src/**/*.json",
+    "./schemas/**/*.json",
+    "./scripts/**/*",
+    "./goldstack.json",
     "./next-env.d.ts"
   ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
     "jsx": "preserve",
-    "incremental": false,
+    "incremental": true,
     "module": "esnext",
     "noEmit": false,
     "moduleResolution": "node",
@@ -16,5 +20,43 @@
   },
   "exclude": [
     "node_modules"
+  ],
+  "references": [
+    {
+      "path": "../goldstack-api"
+    },
+    {
+      "path": "../../../templates-lib/packages/infra"
+    },
+    {
+      "path": "../../../templates-lib/packages/infra-aws"
+    },
+    {
+      "path": "../../../templates-management/packages/project-config"
+    },
+    {
+      "path": "../../../templates-management/packages/project-repository"
+    },
+    {
+      "path": "../project-template-data"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-package"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-project"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-track"
+    },
+    {
+      "path": "../../../templates-lib/packages/template-nextjs"
+    },
+    {
+      "path": "../../../docs/packages/utils-docs-cli"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    }
   ]
 }

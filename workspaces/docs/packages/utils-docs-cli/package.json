@@ -17,7 +17,7 @@
   },
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/utilsDocsCli.js",
+  "main": "src/utilsDocsCli.ts",
   "bin": "./bin/utils-docs-cli",
   "files": [
     "dist"
@@ -43,13 +43,13 @@
     "@goldstack/utils-docs": "0.3.19",
     "@goldstack/utils-sh": "0.4.14",
     "@types/yargs": "^15.0.5",
-    "source-map-support": "^0.5.19",
+    "source-map-support": "^0.5.20",
     "yargs": "^15.4.1"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.27",
-    "@types/jest": "^26.0.21",
-    "@types/node": "^14.0.6",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.0",
     "jest": "^26.6.3",
     "ts-jest": "^26.5.4",
     "typescript": "^4.4.3"

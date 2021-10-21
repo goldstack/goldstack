@@ -2,19 +2,30 @@
   "extends": "../../tsconfig.base.json",
   "include": [
     "./src/**/*",
-    "./next-env.d.ts",
+    "./src/**/*.json",
+    "./scripts/**/*",
+    "./schemas/**/*.json",
+    "./goldstack.json",
+    "./next-env.d.ts"
   ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
     "jsx": "preserve",
-    "incremental": false,
     "module": "esnext",
-    "noEmit":false,
+    "noEmit": false,
     "moduleResolution": "node",
     "isolatedModules": true
   },
   "exclude": [
     "node_modules"
+  ],
+  "references": [
+    {
+      "path": "../../../templates-lib/packages/template-nextjs"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-sh"
+    }
   ]
 }

@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/projectBuild.js",
+  "main": "src/projectBuild.ts",
   "files": [
     "dist"
   ],
@@ -33,8 +33,8 @@
   "devDependencies": {
     "@goldstack/template-build": "0.1.0",
     "@goldstack/utils-template-test": "0.1.0",
-    "@types/jest": "^26.0.21",
-    "@types/node": "^14.0.6",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.0",
     "jest": "^26.6.3",
     "ts-jest": "^26.5.4",
     "typescript": "^4.4.3"

@@ -48,7 +48,7 @@
       "type": "string"
     },
     "TerraformStateBucket": {
-      "description": "The name of the bucket where the Terraform state for the packages will be stored.\nIf not provided, will be auto-generated on first deployment.",
+      "description": "The name of the bucket where the Terraform state for the packages will be stored. If not provided, will be auto-generated on first deployment.",
       "pattern": "^[^\\s]*$",
       "title": "Terraform State Bucket",
       "type": "string"

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "dist/templateBuild.js",
+  "main": "src/templateBuild.ts",
   "files": [
     "dist"
   ],
@@ -29,9 +29,9 @@
   },
   "devDependencies": {
     "@types/archiver": "^3.1.0",
-    "@types/jest": "^26.0.21",
+    "@types/jest": "^27.0.2",
     "@types/mock-aws-s3": "^2.6.1",
-    "@types/node": "^14.0.6",
+    "@types/node": "^16.11.0",
     "jest": "^26.6.3",
     "mock-aws-s3": "^4.0.2",
     "ts-jest": "^26.5.4",
