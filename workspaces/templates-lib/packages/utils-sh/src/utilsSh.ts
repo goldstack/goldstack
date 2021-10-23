@@ -55,6 +55,17 @@ export const copy = async (
   }
 };
 
+export const assertFileExists = (filePath: string): void => {
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`File '${filePath}' expected to exist but it does not`);
+  }
+  if (!fs.statSync(filePath).isFile()) {
+    throw new Error(
+      `Expected file at path '${filePath}' but found directory instead.`
+    );
+  }
+};
+
 const assertDir = (filePath: string): void => {
   const dirname = path.dirname(filePath);
   mkdir('-p', dirname);

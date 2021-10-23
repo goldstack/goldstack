@@ -4,6 +4,11 @@
 const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
 
+const withTM = require('next-transpile-modules')([
+  '@goldstack/utils-track',
+  '@goldstack/toc-generator',
+  '@goldstack/utils-sh',
+]);
 const nextConfig = {
   webpack: (config, options) => {
     return config;
@@ -19,6 +24,7 @@ const nextConfig = {
 
 const config = withPlugins(
   [
+    [withTM()],
     [
       optimizedImages,
       {

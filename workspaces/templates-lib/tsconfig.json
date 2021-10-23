@@ -30,9 +30,6 @@
   "include": [],
   "references": [
     {
-      "path": "packages/utils-git"
-    },
-    {
       "path": "packages/utils-typescript-references"
     }
   ]

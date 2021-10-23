@@ -1,10 +1,12 @@
 import { NextjsDeployment } from './types/NextJsPackage';
 import { getAWSUser } from '@goldstack/infra-aws';
 import { readTerraformStateVariable, DeploymentState } from '@goldstack/infra';
-import { zip, cp, write, rmSafe, read } from '@goldstack/utils-sh';
+import { zip, cp, write, rmSafe, read, mkdir } from '@goldstack/utils-sh';
 import { awsCli } from '@goldstack/utils-aws-cli';
+import webpack from 'webpack';
 import util from 'util';
 import globFunc from 'glob';
+import { packageEdgeLambda } from './edgeLambdaPackage';
 
 const glob = util.promisify(globFunc);
 
@@ -17,11 +19,12 @@ export const deployEdgeLambda = async (
   params: DeployLambdaParams
 ): Promise<void> => {
   const targetArchive = 'lambda.zip';
-  const lambdaDistDir = './dist/utils/routing/';
+  const lambdaSourceDir = './src/utils/routing/';
+  const lambdaCompiledDir = './dist/src/utils/routing/';
+  const lambdaPackageDir = './dist/edgeLambda/';
 
   // Getting the latest manifest containing Next js dynamic routes
   const routesManifest = JSON.parse(read('./.next/routes-manifest.json'));
-  await rmSafe('./src/utils/routing/routes-manifest.json');
 
   // adding in statically rendered pages
   const dynamicRoutes = routesManifest.dynamicRoutes;
@@ -48,19 +51,30 @@ export const deployEdgeLambda = async (
 
   routesManifest.dynamicRoutes = [...staticRoutes, ...dynamicRoutes];
   // Making sure there are no linting errors with copied file
+  await rmSafe(`${lambdaSourceDir}routes-manifest.json`);
   write(
     JSON.stringify(routesManifest, null, 2),
-    './src/utils/routing/routes-manifest.json'
+    `${lambdaSourceDir}routes-manifest.json`
   );
-  await rmSafe('./dist/utils/routing/routes-manifest.json');
+  await rmSafe(`${lambdaCompiledDir}routes-manifest.json`);
   cp(
     '-f',
-    './src/utils/routing/routes-manifest.json',
-    './dist/utils/routing/routes-manifest.json'
+    `${lambdaSourceDir}routes-manifest.json`,
+    `${lambdaCompiledDir}routes-manifest.json`
   );
 
+  // pack source for Lambda Node.js runtime
+
+  await rmSafe(lambdaPackageDir);
+  mkdir('-p', lambdaPackageDir);
+
+  await packageEdgeLambda({
+    sourceFile: `${lambdaCompiledDir}lambda.js`,
+    destFile: `${lambdaPackageDir}lambda.js`,
+  });
+
   await rmSafe(targetArchive);
-  await zip({ directory: lambdaDistDir, target: targetArchive });
+  await zip({ directory: lambdaPackageDir, target: targetArchive });
 
   const deployResult = awsCli({
     credentials: await getAWSUser(params.deployment.awsUser),

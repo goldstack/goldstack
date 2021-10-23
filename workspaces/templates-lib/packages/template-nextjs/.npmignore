@@ -4,3 +4,5 @@
 !/package.json
 !/README.md
 /dist/tsconfig.tsbuildinfo
+testData/
+src/__tests__/

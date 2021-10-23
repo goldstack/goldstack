@@ -3,6 +3,9 @@
   "include": [
     "./src/**/*",
     "./src/**/*.json",
+    "./schemas/**/*.json",
+    "./scripts/**/*",
+    "./goldstack.json",
     "./next-env.d.ts"
   ],
   "compilerOptions": {
@@ -11,6 +14,7 @@
     "jsx": "preserve",
     "incremental": true,
     "module": "esnext",
+    "noEmit": false,
     "moduleResolution": "node",
     "isolatedModules": true
   },

@@ -660,7 +660,6 @@ __metadata:
     next-compose-plugins: ^2.2.0
     next-optimized-images: ^2.6.2
     node-sass: ^4.14.1
-    nodemon: ^2.0.4
     react: ^17.0.2
     react-bootstrap: ^1.6.1
     react-dom: ^17.0.2
@@ -697,7 +696,6 @@ __metadata:
     next: ^11.0.1
     next-compose-plugins: ^2.2.1
     next-optimized-images: ^2.6.2
-    nodemon: ^2.0.4
     react: ^17.0.2
     react-dom: ^17.0.2
     react-is: ^17.0.2
@@ -828,8 +826,8 @@ __metadata:
     next: ^11.0.1
     next-compose-plugins: ^2.2.0
     next-optimized-images: ^2.6.2
+    next-transpile-modules: ^8.0.0
     node-sass: ^4.14.1
-    nodemon: ^2.0.4
     react: ^17.0.2
     react-bootstrap: ^1.4.3
     react-dom: ^17.0.2
@@ -989,7 +987,6 @@ __metadata:
     react-dom: ^17.0.2
     react-is: ^17.0.2
     react-scrollable-anchor: ^0.6.1
-    reload: ^3.2.0
     styled-components: ^5.0.0
     swr: ^0.4.0
     ts-jest: ^26.5.4
@@ -1694,6 +1691,7 @@ __metadata:
     "@types/glob": ^7.1.3
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
+    "@types/webpack": ^4.41.26
     "@types/yargs": ^15.0.5
     archiver: ^5.0.0
     glob: ^7.1.6
@@ -1701,6 +1699,7 @@ __metadata:
     ts-jest: ^26.5.4
     ts-node: ^10.3.0
     typescript: ^4.4.3
+    webpack: 4.43.0
     yargs: ^15.4.1
   bin:
     template: ./bin/template
@@ -3748,6 +3747,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/tapable@npm:^1":
+  version: 1.0.8
+  resolution: "@types/tapable@npm:1.0.8"
+  checksum: b4b754dd0822c407b8f29ef6b766490721c276880f9e976d92ee2b3ef915f11a05a2442ae36c8978bcd872ad6bc833b0a2c4d267f2d611590668a366bad50652
+  languageName: node
+  linkType: hard
+
 "@types/testing-library__jest-dom@npm:^5.9.1":
   version: 5.9.2
   resolution: "@types/testing-library__jest-dom@npm:5.9.2"
@@ -3858,6 +3864,20 @@ __metadata:
     "@types/source-list-map": "*"
     source-map: ^0.7.3
   checksum: 315cbc3db4a92e0b4815add0c43367d435e33e06468578dcd076e8090a08e89d69ea4b62818c1710eb9ca149c662fe76c728274601bac1c9a0621198e301c237
+  languageName: node
+  linkType: hard
+
+"@types/webpack@npm:^4.41.26":
+  version: 4.41.31
+  resolution: "@types/webpack@npm:4.41.31"
+  dependencies:
+    "@types/node": "*"
+    "@types/tapable": ^1
+    "@types/uglify-js": "*"
+    "@types/webpack-sources": "*"
+    anymatch: ^3.0.0
+    source-map: ^0.6.0
+  checksum: 8aa4b4ad68bb7a6ee5bd027005014e6242434162ed4c14cd251713ad6041e42bf7629fc56a5edc5a2124b49cc0dce273d6ee3386fae9a9cfe02e1f7e82087ea2
   languageName: node
   linkType: hard
 
@@ -5016,6 +5036,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"anymatch@npm:^3.0.0, anymatch@npm:~3.1.2":
+  version: 3.1.2
+  resolution: "anymatch@npm:3.1.2"
+  dependencies:
+    normalize-path: ^3.0.0
+    picomatch: ^2.0.4
+  checksum: 985163db2292fac9e5a1e072bf99f1b5baccf196e4de25a0b0b81865ebddeb3b3eb4480734ef0a2ac8c002845396b91aa89121f5b84f93981a4658164a9ec6e9
+  languageName: node
+  linkType: hard
+
 "anymatch@npm:^3.0.3, anymatch@npm:~3.1.1":
   version: 3.1.1
   resolution: "anymatch@npm:3.1.1"
@@ -5023,16 +5053,6 @@ __metadata:
     normalize-path: ^3.0.0
     picomatch: ^2.0.4
   checksum: c951385862bf114807d594bdffccb769bd7219ddc14f24fc135cde075ad2477a97991567b8bb5032d4f279f96897f0c2af6468a350a6c674ac0a5ee3b62a26d6
-  languageName: node
-  linkType: hard
-
-"anymatch@npm:~3.1.2":
-  version: 3.1.2
-  resolution: "anymatch@npm:3.1.2"
-  dependencies:
-    normalize-path: ^3.0.0
-    picomatch: ^2.0.4
-  checksum: 985163db2292fac9e5a1e072bf99f1b5baccf196e4de25a0b0b81865ebddeb3b3eb4480734ef0a2ac8c002845396b91aa89121f5b84f93981a4658164a9ec6e9
   languageName: node
   linkType: hard
 
