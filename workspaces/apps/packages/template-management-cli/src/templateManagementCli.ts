@@ -19,8 +19,10 @@ import {
 } from '@goldstack/goldstack-email-send';
 
 export const run = async (): Promise<void> => {
+  console.log('run');
   await wrapCli(
     async (): Promise<any> => {
+      console.log(yargs.argv);
       const argv = yargs
         .demandCommand(1)
         .usage('Usage: $0 <command> [options]')
@@ -216,6 +218,7 @@ export const run = async (): Promise<void> => {
       }
 
       if (command === 'schedule-all-deploy-sets') {
+        console.log('Schedule all deploy sets');
         await scheduleAllDeploySets(argv);
         console.log('Schedule all deploy sets completed');
         return;
