@@ -26,7 +26,7 @@
     "@goldstack/utils-config": "0.3.18",
     "@goldstack/utils-package": "0.3.19",
     "@goldstack/utils-sh": "0.4.17",
-    "@goldstack/utils-template": "0.3.18",
+    "@goldstack/utils-template": "0.3.19",
     "@goldstack/utils-yarn": "0.3.20",
     "axios": "^0.21.1",
     "extract-zip": "^2.0.1",
