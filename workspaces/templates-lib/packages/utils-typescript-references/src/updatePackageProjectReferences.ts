@@ -8,9 +8,6 @@ export const updatePackageProjectReferences = (): void => {
 
   const allPackages = getPackages(cmdRes);
 
-  const root = process.cwd();
-
-  console.log(root);
   for (const packageData of allPackages) {
     const packageDir = packageData.path;
 

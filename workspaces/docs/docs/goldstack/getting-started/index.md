@@ -88,7 +88,10 @@ If you have [configured your project for AWS deployment](./configuration) on Gol
 Each module you have selected comes with its own instructions about how to get started with development. However, there are some handy commands in the project root that can be useful for development:
 
 - `yarn build`: Will build all modules in the project.
-- `yarn compile-watch`: Will watch for any changes in your TypeScript files in all modules, and compile them when required. It is essential to have this command running if you develop TypeScript libraries or supporting modules such as [S3](../modules/s3) or [Email Send](./../modules/email-send).
+- `yarn compile`: Will compile all TypeScript code.
+- `yarn fix-project-references`: Will ensure all [TypeScript project references](https://www.typescriptlang.org/docs/handbook/project-references.html) between the packages in the project are correct. Always run this after adding a new package or changing the dependencies between packages in the project.
 - `yarn test-watch`: Will run tests when modules have changed.
+- `yarn format-check` and `yarn format`: Will check or fix source code formatting using Prettier
+- `yarn lint` and `yarn lint-fix`: Will check or auto-fix linting issues using ESLint.
 
 Note that you can run all of these commands in the context of individual modules as well. If you only modify code within one module, this is sufficient. However, if you develop multiple modules at the same time, it is important to run these commands at the project root.

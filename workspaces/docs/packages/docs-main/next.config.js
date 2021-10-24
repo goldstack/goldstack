@@ -3,12 +3,15 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
+const getLocalPackages = require('./scripts/getLocalPackages');
 
-const withTM = require('next-transpile-modules')([
-  '@goldstack/utils-track',
-  '@goldstack/toc-generator',
-  '@goldstack/utils-sh',
-]);
+const localPackages = getLocalPackages.getLocalPackages();
+const withTM = require('next-transpile-modules')(localPackages);
+// const withTM = require('next-transpile-modules')([
+//   '@goldstack/utils-track',
+//   '@goldstack/toc-generator',
+//   '@goldstack/utils-sh',
+// ]);
 const nextConfig = {
   webpack: (config, options) => {
     return config;

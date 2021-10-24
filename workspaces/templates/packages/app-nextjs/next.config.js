@@ -4,6 +4,10 @@
 const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
 
+const getLocalPackages = require('./scripts/getLocalPackages');
+
+const localPackages = getLocalPackages.getLocalPackages();
+const withTM = require('next-transpile-modules')(localPackages);
 const nextConfig = {
   webpack: (config, options) => {
     return config;
@@ -19,6 +23,7 @@ const nextConfig = {
 
 const config = withPlugins(
   [
+    [withTM()],
     [
       optimizedImages,
       {
