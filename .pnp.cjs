@@ -2869,8 +2869,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/ncp", "npm:2.0.4"],
             ["@types/node", "npm:16.11.0"],
             ["@types/rimraf", "npm:3.0.0"],
+            ["@types/which", "npm:2.0.1"],
             ["archiver", "npm:5.0.0"],
-            ["command-exists", "npm:1.2.9"],
             ["extract-zip", "npm:2.0.1"],
             ["fs-extra", "npm:10.0.0"],
             ["glob", "npm:7.1.6"],
@@ -2878,7 +2878,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ncp", "npm:2.0.0"],
             ["rimraf", "npm:3.0.2"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
-            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
+            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"],
+            ["which", "npm:2.0.2"]
           ],
           "linkType": "SOFT",
         }]
@@ -4909,6 +4910,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:14.0.13"],
             ["@types/source-list-map", "npm:0.1.2"],
             ["source-map", "npm:0.7.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/which", [
+        ["npm:2.0.1", {
+          "packageLocation": "./.yarn/cache/@types-which-npm-2.0.1-96352946a2-14e963f2ff.zip/node_modules/@types/which/",
+          "packageDependencies": [
+            ["@types/which", "npm:2.0.1"]
           ],
           "linkType": "HARD",
         }]

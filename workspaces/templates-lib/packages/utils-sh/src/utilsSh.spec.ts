@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { rmSafe, write, mkdir, copy } from './utilsSh';
+import { rmSafe, write, mkdir, copy, commandExists } from './utilsSh';
 import assert from 'assert';
 
 describe('Copy', () => {
@@ -8,7 +8,7 @@ describe('Copy', () => {
     mkdir('-p', './work');
   });
 
-  it('Should copy all files (including hidden)', async () => {
+  it.skip('Should copy all files (including hidden)', async () => {
     const testDir = './goldstackLocal/work/copyAll/';
     mkdir('-p', testDir);
     write('dummy', testDir + '.hidden');
@@ -37,5 +37,12 @@ describe('Copy', () => {
     mkdir('-p', destDir);
     await copy(testDir + 'normal.txt', destDir);
     assert(fs.existsSync(destDir + 'normal.txt'));
+  });
+});
+
+describe('Command Exists', () => {
+  it('Should determine if a command does not exist', () => {
+    assert(commandExists('echo'));
+    assert(!commandExists('thisCertainlyDoesNotExist'));
   });
 });

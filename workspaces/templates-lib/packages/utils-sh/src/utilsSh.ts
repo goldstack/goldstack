@@ -11,7 +11,7 @@ import rimraf from 'rimraf';
 import archiver from 'archiver';
 import extract from 'extract-zip';
 
-import cmdExists from 'command-exists';
+import which from 'which';
 
 import { sync as globSync } from 'glob';
 
@@ -244,7 +244,8 @@ const cd = (newdir: string): void => {
 };
 
 const commandExists = (command: string): boolean => {
-  return cmdExists.sync(command);
+  const res = which.sync(command, { nothrow: true });
+  return res !== null;
 };
 
 export { exec, pwd, read, write, cd, globSync, commandExists };
