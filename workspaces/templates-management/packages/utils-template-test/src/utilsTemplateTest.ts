@@ -105,7 +105,7 @@ export const buildTemplate = async (params: {
   const path = await params.repo.downloadTemplateArchive(
     config.templateName,
     newVersion.templateVersion,
-    './goldstackLocal/work/templates'
+    './goldstackLocal/work/templates/'
   );
 
   if (!path) {

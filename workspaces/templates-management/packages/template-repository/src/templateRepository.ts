@@ -14,6 +14,7 @@ import { download } from '@goldstack/utils-s3';
 import fs from 'fs';
 
 import { promisify } from 'util';
+import assert from 'assert';
 
 const sleep = promisify(setTimeout);
 
@@ -72,7 +73,11 @@ export class S3TemplateRepository implements TemplateRepository {
     version: string,
     destinationFolder: string
   ): Promise<string | undefined> {
-    const filePath = destinationFolder + `/${templateName}-${version}.zip`;
+    assert(
+      destinationFolder.endsWith('/'),
+      'Destination folder must end with a slash (/)'
+    );
+    const filePath = destinationFolder + `${templateName}-${version}.zip`;
     const templatePath = `versions/${templateName}/${version}/${templateName}-${version}.zip`;
     if (
       await download({
