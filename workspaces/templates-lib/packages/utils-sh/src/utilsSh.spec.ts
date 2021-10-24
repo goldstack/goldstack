@@ -4,11 +4,11 @@ import assert from 'assert';
 
 describe('Copy', () => {
   beforeAll(async () => {
-    await rmSafe('./work');
-    mkdir('-p', './work');
+    await rmSafe('./goldstackLocal/work');
+    mkdir('-p', './goldstackLocal/work');
   });
 
-  it.skip('Should copy all files (including hidden)', async () => {
+  it('Should copy all files (including hidden)', async () => {
     const testDir = './goldstackLocal/work/copyAll/';
     mkdir('-p', testDir);
     write('dummy', testDir + '.hidden');

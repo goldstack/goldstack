@@ -6,12 +6,13 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach --topological-dev run build",
+    "build": "yarn clean && yarn compile",
     "clean": "yarn workspaces foreach run clean",
-    "compile": "tsc --build",
+    "compile": "yarn fix-project-references-all && tsc --build",
     "coverage": "yarn workspaces foreach --topological-devs run coverage",
     "deploy": "yarn workspaces foreach run deploy \"$@\"",
     "fix-project-references": "utils-typescript-references --skipRoot",
+    "fix-project-references-all": "utils-typescript-references",
     "format": "prettier --loglevel log --config .prettierrc.json --write .",
     "format-check": "prettier --loglevel log --config .prettierrc.json --check .",
     "infra": "yarn workspaces foreach run infra \"$@\"",

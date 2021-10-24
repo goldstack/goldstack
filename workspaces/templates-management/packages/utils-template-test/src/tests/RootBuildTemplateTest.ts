@@ -20,6 +20,7 @@ export class RootBuildTemplateTest implements TemplateTest {
     // some error with package:doctor coming up during local install
     // yarn(projectDir, 'package:doctor');
 
+    yarn(projectDir, 'build');
     // compile should work
     yarn(projectDir, 'compile');
 
@@ -27,6 +28,5 @@ export class RootBuildTemplateTest implements TemplateTest {
     yarn(projectDir, 'test-ci');
 
     yarn(projectDir, 'clean');
-    yarn(projectDir, 'build');
   }
 }

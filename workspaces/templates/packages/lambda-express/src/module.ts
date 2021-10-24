@@ -35,10 +35,10 @@ export const getEndpoint = (deploymentName?: string): string => {
     return `http://localhost:${port}`;
   }
   const deployment = goldstackConfig.deployments.find(
-    (deployment) => deployment.name === deploymentName
+    (deployment) => (deployment as any).name === deploymentName
   );
   if (!deployment) {
     throw new Error(`Cannot find deployment with name ${deploymentName}`);
   }
-  return 'https://' + deployment.configuration.apiDomain;
+  return 'https://' + (deployment as any).configuration.apiDomain;
 };
