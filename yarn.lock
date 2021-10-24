@@ -20253,7 +20253,7 @@ resolve@^1.18.1:
   version: 0.0.0-use.local
   resolution: "templates@workspace:workspaces/templates"
   dependencies:
-    "@goldstack/nodemonx": "workspace:workspaces/templates-lib/packages/utils-nodemonx"
+    "@goldstack/nodemonx": 0.3.15
     "@goldstack/utils-typescript-references": 0.1.2
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
