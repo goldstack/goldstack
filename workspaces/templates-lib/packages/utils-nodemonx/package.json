@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/nodemonx",
-  "version": "0.3.17",
+  "version": "0.3.18",
   "description": "Enhanced utility for watching for changes in directories",
   "keywords": [
     "goldstack",
