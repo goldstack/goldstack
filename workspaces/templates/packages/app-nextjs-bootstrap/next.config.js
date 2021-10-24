@@ -24,7 +24,7 @@ const nextConfig = {
 
 const config = withPlugins(
   [
-    [withTM()]
+    [withTM()],
     [
       optimizedImages,
       {
