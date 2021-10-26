@@ -77,7 +77,7 @@ interface CopyOptions {
 
 const cpSingle = (
   singleSource: string,
-  dest,
+  dest: string,
   copySyncOptions: CopyOptions
 ): void => {
   const isDestDirectory =
@@ -221,11 +221,22 @@ export const tempDir = (): string => {
 };
 
 const exec = (cmd: string, params?: ExecParams): string => {
-  const res = execSync(cmd);
-  if (!params?.silent) {
-    console.log(res.toString());
+  try {
+    const res = execSync(cmd);
+    if (!params?.silent) {
+      console.log(res.toString());
+    }
+    return res.toString();
+  } catch (e) {
+    console.error('Command failed:', cmd);
+    if (e.stderr) {
+      console.error(e.stderr.toString());
+    }
+    if (e.stdout) {
+      console.log(e.stdout.toString());
+    }
+    throw e;
   }
-  return res.toString();
 };
 
 const read = (path: string): string => {

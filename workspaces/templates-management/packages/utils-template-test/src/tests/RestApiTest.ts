@@ -58,7 +58,7 @@ export class RestApiTest implements TemplateTest {
           await assertEndpointAvaialble(apiUrl);
         },
         10000,
-        6 * 10 // 10 min
+        6 * 15 // 15 min
       );
     }
   }
