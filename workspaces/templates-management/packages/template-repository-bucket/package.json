@@ -22,9 +22,9 @@
     "test-ci": "jest --passWithNoTests --config=./jest.config.js"
   },
   "dependencies": {
-    "@goldstack/template-s3": "0.3.54",
+    "@goldstack/template-s3": "0.3.55",
     "@goldstack/utils-git": "0.1.28",
-    "@goldstack/utils-sh": "0.4.17"
+    "@goldstack/utils-sh": "0.4.18"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
