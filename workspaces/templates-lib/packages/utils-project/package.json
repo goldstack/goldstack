@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-project",
-  "version": "0.3.18",
+  "version": "0.3.19",
   "description": "Utility for working with Goldstack project configurations.",
   "keywords": [
     "goldstack",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.28",
-    "@goldstack/utils-json-to-ts": "0.3.17",
+    "@goldstack/utils-json-to-ts": "0.3.18",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
     "jest": "^26.6.3",
