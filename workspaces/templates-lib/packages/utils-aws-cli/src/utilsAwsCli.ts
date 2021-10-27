@@ -51,6 +51,11 @@ export const execWithDocker = (params: AWSExecParams): string => {
     `-e AWS_DEFAULT_REGION=${params.region} `;
   const mountDir = params.workDir || pwd();
 
+  assertDirectoryExists(
+    mountDir,
+    'Cannot execute AWS cli command since working directory does not exist: aws ' +
+      params.command
+  );
   return exec(
     'docker run --rm ' +
       awsUserConfig +
