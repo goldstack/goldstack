@@ -36,7 +36,8 @@
   },
   "dependencies": {
     "@goldstack/utils-yarn": "0.3.21",
-    "fast-glob": "^3.2.4"
+    "fast-glob": "^3.2.4",
+    "source-map-support": "^0.5.20"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.28",

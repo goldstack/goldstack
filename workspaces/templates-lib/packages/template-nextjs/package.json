@@ -61,6 +61,7 @@
     "@goldstack/utils-template": "0.3.20",
     "@goldstack/utils-terraform": "0.3.29",
     "glob": "^7.1.6",
+    "source-map-support": "^0.5.20",
     "yargs": "^15.4.1"
   },
   "devDependencies": {

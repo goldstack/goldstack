@@ -17,6 +17,7 @@
     "noImplicitAny": false,
     "strictNullChecks": true,
     "esModuleInterop": true,
+    "useUnknownInCatchVariables": false,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "types": [
@@ -24,7 +25,7 @@
       "node"
     ]
   },
-  "include": [],
+  "include": ["scripts/*"],
   "references": [
     {
       "path": "workspaces/apps",

@@ -34,7 +34,8 @@
     "version:apply": "yarn node bin/utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "dependencies": {
-    "command-exists": "^1.2.9"
+    "command-exists": "^1.2.9",
+    "source-map-support": "^0.5.20"
   },
   "devDependencies": {
     "@types/command-exists": "^1",
