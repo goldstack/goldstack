@@ -1,11 +1,12 @@
 import { fatal } from '@goldstack/utils-log';
 import { upload } from '@goldstack/utils-s3-deployment';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
-
+import { assertDirectoryExists } from '@goldstack/utils-sh';
 import {
   AWSStaticWebsitePackage,
   AWSStaticWebsiteDeployment,
 } from './types/AWSStaticWebsitePackage';
+import path from 'path';
 
 const getDeployment = (
   config: AWSStaticWebsitePackage,
@@ -34,12 +35,14 @@ export const deploy = async (
 ): Promise<void> => {
   const deployment = getDeployment(config, args);
 
+  const webDistDir = path.resolve('./webDist');
+  assertDirectoryExists(webDistDir, 'Cannot upload website artifacts.');
   await upload({
     userName: deployment.awsUser,
     bucket: deployment.configuration.websiteDomain + '-root',
     region: deployment.awsRegion,
     bucketPath: '/',
-    localPath: './webDist',
+    localPath: webDistDir,
   });
 };
 

@@ -1,3 +1,4 @@
+require('source-map-support').install();
 import { run } from './templateManagementCli';
 
 run()

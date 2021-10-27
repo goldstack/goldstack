@@ -17,15 +17,17 @@ export const upload = async (params: S3UploadParams): Promise<void> => {
   // during the upload process
   // see https://github.com/aws/aws-cli/issues/1417
   awsCli({
-    command: `s3 sync . s3://${params.bucket}${params.bucketPath}`,
+    command: `s3 sync ${resolve(params.localPath)} s3://${params.bucket}${
+      params.bucketPath
+    }`,
     credentials: user,
-    workDir: resolve(params.localPath),
     region: params.region,
   });
   awsCli({
-    command: `s3 sync . s3://${params.bucket}${params.bucketPath} --delete`,
+    command: `s3 sync ${resolve(params.localPath)} s3://${params.bucket}${
+      params.bucketPath
+    } --delete`,
     credentials: user,
-    workDir: resolve(params.localPath),
     region: params.region,
   });
 };

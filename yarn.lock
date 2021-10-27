@@ -1800,6 +1800,7 @@ __metadata:
     "@goldstack/utils-package-config": 0.3.20
     "@goldstack/utils-package-config-generate": 0.2.7
     "@goldstack/utils-s3-deployment": 0.3.26
+    "@goldstack/utils-sh": 0.4.18
     "@goldstack/utils-template": 0.3.20
     "@goldstack/utils-terraform": 0.3.29
     "@goldstack/utils-terraform-aws": 0.3.29

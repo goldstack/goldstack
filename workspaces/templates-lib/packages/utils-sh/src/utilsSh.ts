@@ -66,6 +66,26 @@ export const assertFileExists = (filePath: string): void => {
   }
 };
 
+export const assertDirectoryExists = (
+  directoryPath: string,
+  errorMesssage?: string
+): void => {
+  if (!fs.existsSync(directoryPath)) {
+    throw new Error(
+      `Directory '${directoryPath}' expected to exist but it does not. ${
+        errorMesssage || ''
+      }`
+    );
+  }
+  if (!fs.statSync(directoryPath).isDirectory()) {
+    throw new Error(
+      `Expected directory at path '${directoryPath}' but found file instead. ${
+        errorMesssage || ''
+      }`
+    );
+  }
+};
+
 const assertDir = (filePath: string): void => {
   const dirname = path.dirname(filePath);
   mkdir('-p', dirname);

@@ -1,4 +1,11 @@
-import { commandExists, exec, pwd, cd, ExecParams } from '@goldstack/utils-sh';
+import {
+  commandExists,
+  exec,
+  pwd,
+  cd,
+  ExecParams,
+  assertDirectoryExists,
+} from '@goldstack/utils-sh';
 import { fatal } from '@goldstack/utils-log';
 import { AWSAPIKeyUser } from '@goldstack/infra-aws';
 import {
@@ -61,8 +68,18 @@ export const execWithCli = (params: AWSExecParams): string => {
   process.env.AWS_SESSION_TOKEN = params.credentials.sessionToken || '';
   process.env.AWS_DEFAULT_REGION = params.region;
 
+  assertDirectoryExists(
+    params.workDir || pwd(),
+    'Cannot execute command for AWS cli: aws ' + params.command
+  );
+  const previousDir = pwd();
+  console.log('Executing AWS cli command in', params.workDir);
   cd(params.workDir || pwd());
-  return exec(`aws ${params.command}`, params.options);
+  try {
+    return exec(`aws ${params.command}`, params.options);
+  } finally {
+    cd(previousDir);
+  }
 };
 
 export const awsCli = (params: AWSExecParams): string => {
