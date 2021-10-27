@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-aws-cli",
-  "version": "0.3.26",
+  "version": "0.3.27",
   "description": "Wrapper to help with running commands with the AWS cli",
   "keywords": [
     "goldstack",
