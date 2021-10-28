@@ -15,7 +15,7 @@ export type Name = string;
  *
  * @title Type
  */
-export type Type = 'apiKey' | 'local' | 'environmentVariables';
+export type Type = 'apiKey' | 'profile' | 'environmentVariables';
 
 /**
  * Profile name of the user configured with the aws cli. When in doubt, use `default`.
@@ -77,8 +77,9 @@ export type AWSRegion = AWSDeploymentRegion;
  *
  * @title AWS Local User Configuration
  */
-export interface AWSLocalUserConfig {
+export interface AWSProfileConfig {
   profile: Profile;
+  awsDefaultRegion: AWSRegion;
 }
 
 /**
@@ -103,7 +104,7 @@ export interface AWSAPIKeyUserConfig {
 }
 
 export type AwsUserConfig =
-  | AWSLocalUserConfig
+  | AWSProfileConfig
   | AWSEnvironmentVariableUserConfig
   | AWSAPIKeyUserConfig;
 

@@ -12,7 +12,7 @@ import {
   AWSConfiguration,
   AWSUser,
   AWSRegion,
-  AWSLocalUserConfig,
+  AWSProfileConfig,
   AWSAPIKeyUserConfig,
   AWSAccessKeyId,
   AWSSecretAccessKey,
@@ -31,7 +31,7 @@ export type {
   AWSRegion,
   AWSAccessKeyId,
   AWSSecretAccessKey,
-  AWSLocalUserConfig,
+  AWSProfileConfig as AWSLocalUserConfig,
   AWSAPIKeyUserConfig as AWSAPIKeyUser,
   AWSEnvironmentVariableUserConfig,
   AWSTerraformState,
@@ -234,8 +234,14 @@ export const getAWSUser = async (
     return credentials;
   }
 
-  if (user.type === 'local') {
-    throw new Error('Local user not supported yet.');
+  if (user.type === 'profile') {
+    const userConfig = user.config as AWSProfileConfig;
+    const credentials = new AWS.SharedIniFileCredentials({
+      profile: userConfig.profile,
+    });
+    AWS.config.credentials = credentials;
+    AWS.config.update({ region: userConfig.awsDefaultRegion });
+    return credentials;
   }
 
   throw new Error(`Unknown user config type ${user.type}`);
