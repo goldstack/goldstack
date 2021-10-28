@@ -23,7 +23,9 @@
     "types": [
       "jest",
       "node"
-    ]
+    ],
+    "outDir": "dist",
+    "baseUrl": "."
   },
   "include": ["scripts/*"],
   "references": [
