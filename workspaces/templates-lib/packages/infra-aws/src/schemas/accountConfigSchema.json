@@ -104,16 +104,20 @@
       "title": "AWS Environment Variable User Configuration",
       "type": "object"
     },
-    "AWSLocalUserConfig": {
+    "AWSProfileConfig": {
       "additionalProperties": false,
       "description": "User that is configured using the aws cli. Useful for development environments.",
       "properties": {
+        "awsDefaultRegion": {
+          "$ref": "#/definitions/AWSRegion"
+        },
         "profile": {
           "$ref": "#/definitions/Profile"
         }
       },
       "required": [
-        "profile"
+        "profile",
+        "awsDefaultRegion"
       ],
       "title": "AWS Local User Configuration",
       "type": "object"
@@ -167,7 +171,7 @@
     "AwsUserConfig": {
       "anyOf": [
         {
-          "$ref": "#/definitions/AWSLocalUserConfig"
+          "$ref": "#/definitions/AWSProfileConfig"
         },
         {
           "$ref": "#/definitions/AWSEnvironmentVariableUserConfig"
@@ -193,7 +197,7 @@
       "description": "Type of this user.",
       "enum": [
         "apiKey",
-        "local",
+        "profile",
         "environmentVariables"
       ],
       "title": "Type",
