@@ -1,0 +1,6 @@
+undecided:
+  - root
+  - "@goldstack/app-nextjs"
+  - "@goldstack/app-nextjs-bootstrap"
+  - "@goldstack/lambda-express"
+  - "@goldstack/infra-aws"

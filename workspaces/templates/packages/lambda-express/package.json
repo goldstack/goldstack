@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "src/src/module.js",
+  "main": "src/module.ts",
   "scripts": {
     "build": "ts-node ./scripts/build.ts",
     "clean": "rm -rf ./dist && rm -rf distLambda",

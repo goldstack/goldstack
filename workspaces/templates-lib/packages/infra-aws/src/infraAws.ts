@@ -102,6 +102,7 @@ export const writeTerraformConfig = (
   }
   write(JSON.stringify(config, null, 2), path);
 };
+
 export const readConfig = (path?: string): AWSConfiguration => {
   if (!path) {
     path = getAwsConfigPath('./../../');
