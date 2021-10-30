@@ -48,7 +48,7 @@ export const createNoInfraBuildSetConfig = async (): Promise<DeploySetConfig> =>
   };
 
   const setConfig: DeploySetConfig = {
-    buildSetName: 'backend-nodejs-express',
+    buildSetName: 'no-infra',
     buildTemplates: [
       'yarn-pnp-monorepo',
       's3',
