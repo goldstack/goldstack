@@ -34,7 +34,7 @@ jobs:
 
       - name: Deploy docs
         run: |
-          yarn workspace @goldstack/docs-main deploy prod
+          yarn workspace @goldstack/docs-main deploy-ts prod
         env:
           AWS_USER_NAME: goldstack-prod
           AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
@@ -43,7 +43,7 @@ jobs:
 
       - name: Deploy API
         run: |
-          yarn workspace @goldstack/goldstack-api deploy prod
+          yarn workspace @goldstack/goldstack-api deploy-ts prod
         env:
           AWS_USER_NAME: goldstack-prod
           AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
@@ -54,7 +54,7 @@ jobs:
 
       - name: Deploy UI
         run: |
-          yarn workspace @goldstack/goldstack-home deploy prod
+          yarn workspace @goldstack/goldstack-home deploy-ts prod
         env:
           AWS_USER_NAME: goldstack-prod
           AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
@@ -62,7 +62,7 @@ jobs:
           AWS_DEFAULT_REGION: us-west-2
 
       - name: Build and publish image to PROD
-        run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy prod
+        run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy-ts prod
         env:
           AWS_USER_NAME: goldstack-prod
           AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
