@@ -96,3 +96,13 @@ Request ID: JIQQuxOxsXdcyHuUKxbA88YeFs_NH0h7B6xbG-SZFN88byb5WffF0A==
 This is most likely due to the deployment not having worked correctly. Try deploying the package again with `yarn deploy [deploymentName]`.
 
 [!embed](./../shared/faq-access-denied.md)
+
+### Error deleting Lambda Function
+
+Sometimes when running `yarn infra destroy [deploymentName]` Terraform reports an error that the edge lambda cannot be deleted.
+
+```
+Error: Error deleting Lambda Function: InvalidParameterValueException: Lambda was unable to delete arn:aws:lambda:us-east-1:475629728374:function:[function name]-edge:2 because it is a replicated function. Please see our documentation for Deleting Lambda@Edge Functions and Replicas
+```
+
+In that case, simply run `yarn infra destroy [deploymentName]` again until it is successful.
