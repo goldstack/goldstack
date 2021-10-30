@@ -161,7 +161,7 @@ jobs:
 
       - name: Build and publish image to DEV
         if: github.ref == 'refs/heads/master'
-        run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy dev
+        run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy-ts dev
         env:
           AWS_USER_NAME: goldstack-dev
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
