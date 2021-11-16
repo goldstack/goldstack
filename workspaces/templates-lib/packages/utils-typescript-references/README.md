@@ -1,10 +1,10 @@
-# TypeScript References Utility
+# TypeScript References Yarn Workspaces Sync Utility
 
 This library ensures that [project references](https://www.typescriptlang.org/docs/handbook/project-references.html) in TypeScript `tsconfig.js` files are automatically kept up to date in a project using **Yarn 2 workspaces**.
 
 Running this script will:
 
-- Add a list of all packages in the workspaces to the root `tsconfig.json` for the `"references"` attribute:
+1. Add a list of all packages in the workspaces to the root `tsconfig.json` for the `"references"` attribute:
 
 ```json
  "references": [
@@ -23,7 +23,7 @@ Running this script will:
   }
 ```
 
-- Update all the `"references"` in the `tsconfig.json` for all packages in the workspace so that it includes all the packages that it declares as a dependency in `package.json`.
+2. Update all the `"references"` in the `tsconfig.json` for all packages in the workspace so that it includes all the packages that it declares as a dependency in `package.json`.
 
 This package uses [@monorepo-utils/workspaces-to-typescript-project-references](https://github.com/azu/monorepo-utils/tree/master/packages/@monorepo-utils/workspaces-to-typescript-project-references#readme).
 
