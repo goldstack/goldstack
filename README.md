@@ -10,12 +10,12 @@ It should be a surprise to no one that setting up a dynamic monorepo for JavaScr
 
 | Status | Feature                | Comments                                                                                                                                                                                            |
 | ------ | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 👌      | Install and Build      | Yarn Workspaces using Yarn v2 (Berry) overall works very well and allows for very fast install and build speeds.                                                                                    |
-| 👌      | Linting and Formatting | ESLint and Prettier are configured to work effectively across all packages.                                                                                                                         |
-| 👌      | Testing                | Running tests with Jest works across all packages                                                                                                                                                   |
-| 👌      | IDE Integration        | VSCode including Intellisense works across the monorepo                                                                                                                                             |
-| 🤷      | TypeScript             | Configured to use TypeScript project references. Script `fix-project-references` needs to be run after changing local dependencies.                                                                 |
-| 🤷      | AWS                    | Deployment into AWS using Terraform overall works very well. Just initial configuration and the way credentials are provided can be improved. [#3](https://github.com/goldstack/goldstack/issues/3) |
+| 👌     | Install and Build      | Yarn Workspaces using Yarn v2 (Berry) overall works very well and allows for very fast install and build speeds.                                                                                    |
+| 👌     | Linting and Formatting | ESLint and Prettier are configured to work effectively across all packages.                                                                                                                         |
+| 👌     | Testing                | Running tests with Jest works across all packages                                                                                                                                                   |
+| 👌     | IDE Integration        | VSCode including Intellisense works across the monorepo                                                                                                                                             |
+| 🤷     | TypeScript             | Configured to use TypeScript project references. Script `fix-project-references` needs to be run after changing local dependencies.                                                                 |
+| 🤷     | AWS                    | Deployment into AWS using Terraform overall works very well. Just initial configuration and the way credentials are provided can be improved. [#3](https://github.com/goldstack/goldstack/issues/3) |
 
 # About
 
