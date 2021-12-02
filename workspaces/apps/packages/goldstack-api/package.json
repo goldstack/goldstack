@@ -68,7 +68,7 @@
     "@yarnpkg/esbuild-plugin-pnp": "^2.0.0-rc.1",
     "esbuild": "^0.13.4",
     "express": "^4.17.1",
-    "jest": "^26.6.3",
+    "jest": "^27.4.3",
     "supertest": "^4.0.2",
     "supertest-session": "^4.0.0",
     "ts-jest": "^26.5.4",

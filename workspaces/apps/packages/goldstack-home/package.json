@@ -78,7 +78,7 @@
     "concurrently": "^5.2.0",
     "extracted-loader": "^1.0.7",
     "ignore-loader": "^0.1.2",
-    "jest": "^26.6.3",
+    "jest": "^27.4.3",
     "jest-transform-stub": "^2.0.0",
     "next-compose-plugins": "^2.2.0",
     "next-transpile-modules": "^8.0.0",
