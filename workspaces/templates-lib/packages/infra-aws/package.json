@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/infra-aws",
-  "version": "0.3.25",
+  "version": "0.3.26",
   "description": "Utilities to work with AWS infrastructrue via the cli.",
   "keywords": [
     "goldstack",
