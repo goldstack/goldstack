@@ -10,20 +10,22 @@
     "dist"
   ],
   "scripts": {
-    "build": "yarn clean && yarn compile && yarn web:build $@",
+    "build": "yarn clean && yarn compile && yarn build-web $@",
+    "build-web": "ts-node ./src/build.ts $@",
     "clean": "rm -rf ./dist ./webDist",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
-    "deploy": "yarn web:build $@ && template deploy $@",
+    "deploy": "yarn build-web $@ && template deploy $@",
+    "deploy-ts": "yarn build-web && yarn template-ts deploy $@",
     "infra": "template infra",
     "prepublishOnly": "yarn run build",
     "template": "template",
+    "template-ts": "ts-node --project tsconfig.json scripts/template.ts",
     "test-ci": "jest --passWithNoTests --config=./jest.config.js",
-    "watch": "yarn web:build $@ && concurrently \"yarn web:watch $@\" \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" ",
-    "web:build": "node ./dist/build.js $@",
-    "web:watch": "yarn web:build $@ && nodemon --watch ./../../ --ignore ./webDist -e '*' --exec \"yarn web:build $@\""
+    "watch": "yarn build-web $@ && concurrently \"yarn web:watch $@\" \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" ",
+    "web:watch": "yarn build-web $@ && nodemon --watch ./../../ --ignore ./webDist -e '*' --exec \"yarn web:build $@\""
   },
   "devDependencies": {
     "@goldstack/template-static-website-aws": "0.3.59",

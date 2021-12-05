@@ -103,6 +103,15 @@ export const writeTerraformConfig = (
   write(JSON.stringify(config, null, 2), path);
 };
 
+export const hasConfig = (path?: string): boolean => {
+  if (!path) {
+    path = getAwsConfigPath('./../../');
+  }
+
+  // otherwise check default config file location
+  return fs.existsSync(path);
+};
+
 export const readConfig = (path?: string): AWSConfiguration => {
   if (!path) {
     path = getAwsConfigPath('./../../');
@@ -135,7 +144,8 @@ export const createDefaultConfig = (): AWSConfiguration => {
  * Obtains AWS user credentials from config file or environment variables.
  **/
 export const getAWSUser = async (
-  userName: string
+  userName: string,
+  configPath?: string
 ): Promise<AWS.Credentials> => {
   // check if running in ECS
   if (process.env.AWS_CONTAINER_CREDENTIALS_RELATIVE_URI) {
@@ -176,7 +186,21 @@ export const getAWSUser = async (
     return credentials;
   }
 
-  const config = readConfig();
+  // try loading default user if no config file provided
+  if (!hasConfig(configPath)) {
+    const credentials = new AWS.SharedIniFileCredentials();
+    if (!credentials.accessKeyId) {
+      throw new Error(
+        'Cannot load user from AWS configuration. Please provide a Goldstack AWS Configuration in infra/aws/config.json or perform aws login for a default profile using the AWS CLI.'
+      );
+    }
+    AWS.config.credentials = credentials;
+    // see https://github.com/aws/aws-sdk-js/pull/1391
+    process.env.AWS_SDK_LOAD_CONFIG = 'true';
+    return credentials;
+  }
+
+  const config = readConfig(configPath);
 
   const user = config.users.find((user) => user.name === userName);
   if (!user) {
@@ -237,9 +261,20 @@ export const getAWSUser = async (
 
   if (user.type === 'profile') {
     const userConfig = user.config as AWSProfileConfig;
+
     const credentials = new AWS.SharedIniFileCredentials({
       profile: userConfig.profile,
     });
+
+    if (!credentials.accessKeyId) {
+      throw new Error(
+        'Cannot load profile ' +
+          userConfig.profile +
+          ' from AWS configuration for user ' +
+          user.name +
+          '. Please perform `aws login` for the profile using the AWS CLI.'
+      );
+    }
     AWS.config.credentials = credentials;
     AWS.config.update({ region: userConfig.awsDefaultRegion });
     return credentials;
