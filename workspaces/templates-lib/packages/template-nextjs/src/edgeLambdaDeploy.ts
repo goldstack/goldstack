@@ -76,13 +76,15 @@ export const deployEdgeLambda = async (
   await rmSafe(targetArchive);
   await zip({ directory: lambdaPackageDir, target: targetArchive });
 
+  const credentials = await getAWSUser(params.deployment.awsUser);
+  const functionName = readTerraformStateVariable(
+    params.deploymentState,
+    'edge_function_name'
+  );
   const deployResult = awsCli({
-    credentials: await getAWSUser(params.deployment.awsUser),
+    credentials,
     region: 'us-east-1',
-    command: `lambda update-function-code --function-name ${readTerraformStateVariable(
-      params.deploymentState,
-      'edge_function_name'
-    )} --zip-file fileb://${targetArchive} --publish`,
+    command: `lambda update-function-code --function-name ${functionName} --zip-file fileb://${targetArchive} --publish`,
   });
   await rmSafe(targetArchive);
 
@@ -90,8 +92,24 @@ export const deployEdgeLambda = async (
 
   const qualifiedArn = `${FunctionArn}`;
 
+  let counter = 0;
+  let state = '';
+  while (counter < 20 && state !== 'Active') {
+    const res = awsCli({
+      credentials,
+      region: 'us-east-1',
+      command: `lambda get-function --function-name ${functionName}`,
+    });
+    const data = JSON.parse(res);
+    state = data.Configuration.State;
+    counter++;
+  }
+  if (counter >= 20) {
+    throw new Error(`Function was still in state '${state}' after deployment`);
+  }
+
   const cfDistributionResult = awsCli({
-    credentials: await getAWSUser(params.deployment.awsUser),
+    credentials,
     region: 'us-east-1',
     command: `cloudfront get-distribution-config --id ${readTerraformStateVariable(
       params.deploymentState,
