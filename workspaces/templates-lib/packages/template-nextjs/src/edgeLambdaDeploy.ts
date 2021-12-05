@@ -108,6 +108,13 @@ export const deployEdgeLambda = async (
     throw new Error(`Function was still in state '${state}' after deployment`);
   }
 
+  // Add a wait since there sometimes appear to be race conditions
+  // CF thinking the lambda is not in active state
+  // notwithstanding the above check
+  await new Promise<void>((resolve) => {
+    setTimeout(() => resolve(), 10000);
+  });
+
   const cfDistributionResult = awsCli({
     credentials,
     region: 'us-east-1',
