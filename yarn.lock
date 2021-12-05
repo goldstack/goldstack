@@ -640,7 +640,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs-bootstrap@workspace:workspaces/templates/packages/app-nextjs-bootstrap"
   dependencies:
-    "@goldstack/template-nextjs": 0.3.62
+    "@goldstack/template-nextjs": 0.3.63
     "@goldstack/utils-sh": 0.4.19
     "@testing-library/jest-dom": ^5.9.0
     "@testing-library/react": ^10.0.4
@@ -678,7 +678,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs@workspace:workspaces/templates/packages/app-nextjs"
   dependencies:
-    "@goldstack/template-nextjs": 0.3.62
+    "@goldstack/template-nextjs": 0.3.63
     "@goldstack/utils-sh": 0.4.19
     "@testing-library/jest-dom": ^5.9.0
     "@testing-library/react": ^10.0.4
@@ -803,7 +803,7 @@ __metadata:
   dependencies:
     "@fullstory/browser": ^1.4.5
     "@goldstack/markdown-docs": 0.1.0
-    "@goldstack/template-nextjs": 0.3.62
+    "@goldstack/template-nextjs": 0.3.63
     "@goldstack/toc-generator": 0.1.0
     "@goldstack/utils-sh": 0.4.19
     "@goldstack/utils-track": 0.1.10
@@ -949,7 +949,7 @@ __metadata:
     "@goldstack/project-config": 0.1.0
     "@goldstack/project-repository": 0.1.0
     "@goldstack/project-template-data": 0.1.0
-    "@goldstack/template-nextjs": 0.3.62
+    "@goldstack/template-nextjs": 0.3.63
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-package": 0.3.21
     "@goldstack/utils-project": 0.3.21
@@ -1675,7 +1675,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-nextjs@0.3.62, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
+"@goldstack/template-nextjs@0.3.63, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs"
   dependencies:
