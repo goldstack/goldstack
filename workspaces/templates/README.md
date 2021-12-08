@@ -9,4 +9,3 @@ Find further information here:
 - [Project Configuration](https://docs.goldstack.party/docs/goldstack/configuration)
 - [Getting Started](https://docs.goldstack.party/docs/goldstack/getting-started)
 - [Security Hardening](https://docs.goldstack.party/docs/goldstack/security-hardening)
-
