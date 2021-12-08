@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package-create",
-  "version": "0.3.21",
+  "version": "0.3.22",
   "description": "Utilities for creating new Goldstack packages.",
   "keywords": [
     "goldstack",
