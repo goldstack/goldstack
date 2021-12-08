@@ -1,7 +1,6 @@
 import fs from 'fs';
 import { readTemplateConfigFromFile } from '@goldstack/utils-template';
 import { cp } from '@goldstack/utils-sh';
-import { fatal } from '@goldstack/utils-log';
 
 interface CreatePackageParams {
   newPackageName: string;

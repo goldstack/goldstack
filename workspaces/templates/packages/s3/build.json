@@ -37,6 +37,15 @@
           "value": []
         }
       ]
+    },
+    {
+      "file": "tsconfig.json",
+      "fields": [
+        {
+          "path": "$.references",
+          "value": []
+        }
+      ]
     }
   ]
 }
