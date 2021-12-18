@@ -18,69 +18,19 @@ resource "aws_lambda_permission" "apigw" {
 	source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*/*"
 }
 
+resource "aws_apigatewayv2_integration" "lambda_root" {
+  api_id           = aws_apigatewayv2_api.api.id
+  integration_type = "AWS_PROXY"
 
-## old
-
-
-resource "aws_api_gateway_resource" "proxy" {
-  rest_api_id = aws_api_gateway_rest_api.main.id
-  parent_id   = aws_api_gateway_rest_api.main.root_resource_id
-  path_part   = "{proxy+}"
+  connection_type           = "INTERNET"
+  description               = "Root lambda integration"
+  integration_method        = "POST"
+  integration_uri           = aws_lambda_function.main.invoke_arn
 }
 
-resource "aws_api_gateway_method" "proxy" {
-  rest_api_id   = aws_api_gateway_rest_api.main.id
-  resource_id   = aws_api_gateway_resource.proxy.id
-  http_method   = "ANY"
-  authorization = "NONE"
-}
+resource "aws_apigatewayv2_route" "lambda_root" {
+  api_id    = aws_apigatewayv2_api.example.id
+  route_key = "ANY /{proxy+}"
 
-resource "aws_api_gateway_integration" "lambda" {
-  rest_api_id = aws_api_gateway_rest_api.main.id
-  resource_id = aws_api_gateway_method.proxy.resource_id
-  http_method = aws_api_gateway_method.proxy.http_method
-
-  # Lambdas can only be invoked via Post - but the gateway will also forward GET requests etc.
-  integration_http_method = "POST"
-  type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.main.invoke_arn
-}
-
-resource "aws_lambda_permission" "lambda_permission" {
-  statement_id  = "AllowLambdaInvoke-${var.lambda_name}"
-  action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.main.function_name
-  principal     = "apigateway.amazonaws.com"
-
-  source_arn = "${aws_api_gateway_rest_api.main.execution_arn}/*/*/*"
-}
-
-resource "aws_api_gateway_method" "proxy_root" {
-  rest_api_id   = aws_api_gateway_rest_api.main.id
-  resource_id   = aws_api_gateway_rest_api.main.root_resource_id
-  http_method   = "ANY"
-  authorization = "NONE"
-}
-
-
-resource "aws_api_gateway_integration" "lambda_root" {
-  rest_api_id = aws_api_gateway_rest_api.main.id
-  resource_id = aws_api_gateway_method.proxy_root.resource_id
-  http_method = aws_api_gateway_method.proxy_root.http_method
-
-  # Lambdas can only be invoked via Post - but the gateway will also forward GET requests etc.
-  integration_http_method = "POST"
-  type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.main.invoke_arn
-}
-
-
-resource "aws_api_gateway_deployment" "main" {
-  depends_on = [
-    aws_api_gateway_integration.lambda,
-    aws_api_gateway_integration.lambda_root,
-  ]
-
-  rest_api_id = aws_api_gateway_rest_api.main.id
-  stage_name  = "prod"
+  target = "integrations/${aws_apigatewayv2_integration.lambda_root.id}"
 }
