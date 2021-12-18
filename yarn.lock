@@ -751,7 +751,7 @@ __metadata:
     "@types/node": ^16.11.0
     "@types/semver": ^7.2.0
     archiver: ^5.0.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     fs-extra: ^9.0.1
     jest: ^26.6.3
     semver: ^7.3.2
@@ -853,7 +853,7 @@ __metadata:
     "@goldstack/utils-sh": 0.4.19
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     jest: ^26.6.3
     nodemon: ^2.0.4
     ts-jest: ^26.5.4
@@ -929,7 +929,7 @@ __metadata:
     "@goldstack/utils-sh": 0.4.19
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     jest: ^26.6.3
     nodemon: ^2.0.4
     ts-jest: ^26.5.4
@@ -1011,7 +1011,7 @@ __metadata:
     "@goldstack/utils-sh": 0.4.19
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     axios: ^0.21.1
     handlebars: ^4.7.6
     jest: ^26.6.3
@@ -1036,6 +1036,30 @@ __metadata:
     renamer: ^0.7.0
     ts-jest: ^26.5.4
     ts-json-schema-generator: ^0.96.0
+    typescript: ^4.4.3
+  languageName: unknown
+  linkType: soft
+
+"@goldstack/lambda-api@workspace:workspaces/templates/packages/lambda-api":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/lambda-api@workspace:workspaces/templates/packages/lambda-api"
+  dependencies:
+    "@goldstack/template-lambda-express": 0.3.69
+    "@jest-mock/express": ^1.1.7
+    "@types/aws-lambda": ^8.10.88
+    "@types/aws-serverless-express": ^3.3.3
+    "@types/jest": ^27.0.2
+    "@types/node": ^16.11.0
+    "@types/source-map-support": ^0.5.4
+    "@yarnpkg/esbuild-plugin-pnp": ^2.0.0-rc.1
+    esbuild: ^0.13.4
+    jest: ^26.6.3
+    source-map-loader: ^1.0.1
+    source-map-support: ^0.5.20
+    supertest: ^4.0.2
+    ts-jest: ^26.5.4
+    ts-node: ^10.3.0
+    ts-node-dev: ^1.1.8
     typescript: ^4.4.3
   languageName: unknown
   linkType: soft
@@ -1263,7 +1287,7 @@ __metadata:
     "@goldstack/utils-sh": 0.4.19
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     concurrently: ^5.2.0
     jest: ^26.6.3
     nodemon: ^2.0.4
@@ -1282,7 +1306,7 @@ __metadata:
     "@goldstack/utils-sh": 0.4.19
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     concurrently: ^5.2.0
     jest: ^26.6.3
     nodemon: ^2.0.4
@@ -1310,7 +1334,7 @@ __metadata:
     "@types/node": ^16.11.0
     "@types/semver": ^7.2.0
     "@types/uuid": ^8.3.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     fs-extra: ^9.0.1
     jest: ^26.6.3
     semver: ^7.3.2
@@ -1363,7 +1387,7 @@ __metadata:
     "@goldstack/utils-sh": 0.4.19
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     jest: ^26.6.3
     nodemon: ^2.0.4
     ts-jest: ^26.5.4
@@ -1412,7 +1436,7 @@ __metadata:
     "@goldstack/utils-sh": 0.4.19
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     concurrently: ^5.2.0
     jest: ^26.6.3
     nodemon: ^2.0.4
@@ -1436,7 +1460,7 @@ __metadata:
     "@types/semver": ^7.2.0
     "@types/stripe": ^7.13.24
     "@types/uuid": ^8.3.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     fs-extra: ^9.0.1
     jest: ^26.6.3
     stripe: 8.91.0
@@ -1511,7 +1535,7 @@ __metadata:
     "@types/jest": ^27.0.2
     "@types/mock-aws-s3": ^2.6.1
     "@types/node": ^16.11.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     jest: ^26.6.3
     mock-aws-s3: ^4.0.2
     ts-jest: ^26.5.4
@@ -1543,7 +1567,7 @@ __metadata:
     "@types/node": ^16.11.0
     "@types/source-map-support": ^0.5.4
     "@types/yargs": ^15.0.5
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     jest: ^26.6.3
     source-map-support: ^0.5.20
     ts-jest: ^26.5.4
@@ -1579,7 +1603,7 @@ __metadata:
     "@types/node": ^16.11.0
     "@types/uuid": ^8.3.0
     "@types/yargs": ^15.0.5
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     jest: ^26.6.3
     source-map-support: ^0.5.20
     ts-jest: ^26.5.4
@@ -1658,7 +1682,7 @@ __metadata:
     "@types/source-map-support": ^0.5.4
     "@types/wtfnode": ^0.7.0
     "@types/yargs": ^15.0.5
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     concurrently: ^5.2.0
     jest: ^26.6.3
     mock-aws-s3: ^4.0.2
@@ -1723,7 +1747,7 @@ __metadata:
     "@goldstack/utils-sh": 0.4.19
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     concurrently: ^5.2.0
     jest: ^26.6.3
     nodemon: ^2.0.4
@@ -1746,7 +1770,7 @@ __metadata:
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
     "@types/semver": ^7.2.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     fs-extra: ^9.0.1
     jest: ^26.6.3
     semver: ^7.3.2
@@ -1779,7 +1803,7 @@ __metadata:
     "@types/mock-aws-s3": ^2.6.1
     "@types/node": ^16.11.0
     "@types/yargs": ^15.0.5
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     jest: ^26.6.3
     mock-aws-s3: ^4.0.2
     source-map-support: ^0.5.20
@@ -1852,7 +1876,7 @@ __metadata:
     "@goldstack/utils-sh": 0.4.19
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     jest: ^26.6.3
     ts-jest: ^26.5.4
     typescript: ^4.4.3
@@ -2137,7 +2161,7 @@ __metadata:
     "@goldstack/utils-git": 0.1.28
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     jest: ^26.6.3
     ts-jest: ^26.5.4
     typescript: ^4.4.3
@@ -2225,7 +2249,7 @@ __metadata:
     "@goldstack/utils-terraform": 0.3.32
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
-    aws-sdk: ^2.995.0
+    aws-sdk: 2.1001.0
     jest: ^26.6.3
     ts-jest: ^26.5.4
     typescript: ^4.4.3
@@ -2964,6 +2988,13 @@ __metadata:
   version: 8.10.62
   resolution: "@types/aws-lambda@npm:8.10.62"
   checksum: 21afd764cfc854aa41ae7281cdd9a640cfabad382150c15e0daafa9dc4114de80557b32ecc57f99de5750529f6d8b64c99b78d1934432d4eb314917376b71712
+  languageName: node
+  linkType: hard
+
+"@types/aws-lambda@npm:^8.10.88":
+  version: 8.10.88
+  resolution: "@types/aws-lambda@npm:8.10.88"
+  checksum: db2b12c5c216e28c704f456840276363441a52c22dde8a6ea3e9cb3bbfd12d71ce8a4ca6e8b19e3a2c5d87a5f71ae9e4f7173838d7963570883a90deadeecc2a
   languageName: node
   linkType: hard
 
@@ -5549,6 +5580,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"aws-sdk@npm:2.1001.0":
+  version: 2.1001.0
+  resolution: "aws-sdk@npm:2.1001.0"
+  dependencies:
+    buffer: 4.9.2
+    events: 1.1.1
+    ieee754: 1.1.13
+    jmespath: 0.15.0
+    querystring: 0.2.0
+    sax: 1.2.1
+    url: 0.10.3
+    uuid: 3.3.2
+    xml2js: 0.4.19
+  checksum: a6260f2ff3d9272647c685b09a3a0a06ea16cc887985b9d72e226ea627b195fed225bf2126a3b4ff20665c6b80047324b09ac369fdc25bdb3f0a5959741a211a
+  languageName: node
+  linkType: hard
+
 "aws-sdk@npm:>=2.169.0":
   version: 2.721.0
   resolution: "aws-sdk@npm:2.721.0"
@@ -5563,23 +5611,6 @@ __metadata:
     uuid: 3.3.2
     xml2js: 0.4.19
   checksum: bdb2eeae4a73eaa23a2db9b4d602d3dbad248a9ee448d86505c03fc23cb2b9c50fd18bee6516d76d3f610d9ca38d4ae27a3e168d99b3f2ac017672d0bd10ed87
-  languageName: node
-  linkType: hard
-
-"aws-sdk@npm:^2.995.0":
-  version: 2.995.0
-  resolution: "aws-sdk@npm:2.995.0"
-  dependencies:
-    buffer: 4.9.2
-    events: 1.1.1
-    ieee754: 1.1.13
-    jmespath: 0.15.0
-    querystring: 0.2.0
-    sax: 1.2.1
-    url: 0.10.3
-    uuid: 3.3.2
-    xml2js: 0.4.19
-  checksum: fe8f1bb762358edbecf50056c79373e555817e3132432bace35bf4c594c99313020a87f8fb31a0abd8935c9973310cf50938c8ff7131eb4d009d481501b975db
   languageName: node
   linkType: hard
 

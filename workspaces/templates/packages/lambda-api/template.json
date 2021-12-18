@@ -1,0 +1,8 @@
+{
+  "templateName": "lambda-api",
+  "templateVersion": "0.1.0",
+  "previousTemplateVersion": "0.0.0",
+  "templateDescription": "Building an API from multiple lambda functions.",
+  "templateDocumentation": "https://docs.goldstack.party/docs/modules/lambda-express",
+  "templateArchive": ""
+}
