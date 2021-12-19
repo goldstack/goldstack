@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package-upgrade",
-  "version": "0.2.22",
+  "version": "0.2.23",
   "description": "Utilities for upgrading Goldstack packages.",
   "keywords": [
     "goldstack",
@@ -35,7 +35,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-yarn": "0.3.23",
+    "@goldstack/utils-yarn": "0.3.24",
     "fast-glob": "^3.2.4",
     "source-map-support": "^0.5.21"
   },
