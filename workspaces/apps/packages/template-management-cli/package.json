@@ -43,7 +43,7 @@
     "@goldstack/utils-package": "0.3.21",
     "@goldstack/utils-project": "0.3.21",
     "mock-aws-s3": "^4.0.2",
-    "source-map-support": "^0.5.20",
+    "source-map-support": "^0.5.21",
     "tmp": "^0.2.1",
     "yargs": "^15.4.1"
   },

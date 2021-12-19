@@ -14,7 +14,7 @@ resource "aws_lambda_function" "main" {
 
   filename = data.archive_file.empty_lambda.output_path
 
-  handler = "lambda.handler"
+  handler = "root.handler"
   runtime = "nodejs12.x"
 
   memory_size = 2048
@@ -31,7 +31,8 @@ resource "aws_lambda_function" "main" {
   environment {
     variables = {
       GOLDSTACK_DEPLOYMENT = var.name
-      CORS = var.cors
+      CORS                 = var.cors
+      NODE_OPTIONS         = "--enable-source-maps"
     }
   }
 }

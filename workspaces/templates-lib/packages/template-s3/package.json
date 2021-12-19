@@ -58,7 +58,7 @@
     "@goldstack/utils-terraform-aws": "0.3.32",
     "aws-sdk": "2.1001.0",
     "mock-aws-s3": "^4.0.2",
-    "source-map-support": "^0.5.20",
+    "source-map-support": "^0.5.21",
     "yargs": "^15.4.1"
   },
   "devDependencies": {

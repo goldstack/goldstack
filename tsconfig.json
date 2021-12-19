@@ -27,7 +27,9 @@
     "outDir": "dist",
     "baseUrl": "."
   },
-  "include": ["scripts/*"],
+  "include": [
+    "scripts/*"
+  ],
   "references": [
     {
       "path": "workspaces/apps",
@@ -112,6 +114,10 @@
     {
       "path": "workspaces/templates/packages/email-send",
       "name": "@goldstack/email-send"
+    },
+    {
+      "path": "workspaces/templates/packages/lambda-api",
+      "name": "@goldstack/lambda-api"
     },
     {
       "path": "workspaces/templates/packages/lambda-express",
