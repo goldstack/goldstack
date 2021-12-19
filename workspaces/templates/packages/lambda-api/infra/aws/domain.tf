@@ -8,7 +8,6 @@ data "aws_route53_zone" "main" {
 ## ACM (AWS Certificate Manager)
 # Creates the wildcard certificate *.<yourdomain.com>
 resource "aws_acm_certificate" "wildcard" {
-  provider = aws.us-east-1 
 
   domain_name               = var.api_domain
   subject_alternative_names = ["*.${var.api_domain}"]
@@ -24,43 +23,62 @@ resource "aws_acm_certificate" "wildcard" {
   }
 }
 
+# see https://renehernandez.io/snippets/terraform-and-aws-wildcard-certificates-validation/
 resource "aws_route53_record" "wildcard_validation" {
-  name    = aws_acm_certificate.wildcard.domain_validation_options[0].resource_record_name
-  type    = aws_acm_certificate.wildcard.domain_validation_options[0].resource_record_type
-  zone_id = data.aws_route53_zone.main.zone_id
-  records = [aws_acm_certificate.wildcard.domain_validation_options[0].resource_record_value]
-  ttl     = "120"
+  for_each = {
+    for dvo in aws_acm_certificate.wildcard.domain_validation_options : dvo.domain_name => {
+      name   = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type   = dvo.resource_record_type
+    }
+   # Skips the domain if it doesn't contain a wildcard
+    if length(regexall("\\*\\..+", dvo.domain_name)) > 0
+  }
+
+  allow_overwrite = true
+  name            = each.value.name
+  records         = [each.value.record]
+  ttl             = 60
+  type            = each.value.type
+  zone_id         = data.aws_route53_zone.main.zone_id
 }
+
 
 resource aws_route53_record a {
   type     = "A"
   name     = var.api_domain
-  ttl      = "120"
   zone_id  = data.aws_route53_zone.main.zone_id
 
   alias {
     evaluate_target_health = false
-    name                   = aws_apigatewayv2_domain_name.api.domain_name_configuration[0].target_domain_name
-    zone_id                = aws_apigatewayv2_domain_name.api.domain_name_configuration[0].hosted_zone_id
+    name                   = aws_apigatewayv2_domain_name.domain.domain_name_configuration[0].target_domain_name
+    zone_id                = aws_apigatewayv2_domain_name.domain.domain_name_configuration[0].hosted_zone_id
   }
 }
 
-# Required to force ACM wildcard certificate validation
-resource "aws_acm_certificate_validation" "wildcard_cert" {
-  provider = aws.us-east-1
 
-  certificate_arn         = aws_acm_certificate.wildcard.arn
-  validation_record_fqdns = [aws_route53_record.wildcard_validation.fqdn]
+# Required to force ACM wildcard certificate validation
+# see https://kopi.cloud/blog/2021/terraform-aws_acm_certificate-wildcards/
+resource "aws_acm_certificate_validation" "wildcard_validation" {
+  certificate_arn = aws_acm_certificate.wildcard.arn
+
+  validation_record_fqdns = concat(
+    [
+      for record in aws_route53_record.wildcard_validation : record.fqdn
+    ],
+    [
+      for record in aws_route53_record.wildcard_validation : record.fqdn
+    ]
+  )
 }
 
 
 data "aws_acm_certificate" "wildcard" {
-  provider = aws.us-east-1
 
   depends_on = [
     aws_acm_certificate.wildcard,
     aws_route53_record.wildcard_validation,
-    aws_acm_certificate_validation.wildcard_cert,
+    aws_acm_certificate_validation.wildcard_validation,
   ]
 
   domain      = var.api_domain
@@ -81,7 +99,7 @@ resource "aws_apigatewayv2_domain_name" "domain" {
 
 resource "aws_apigatewayv2_api_mapping" "mapping" {
   api_id      = aws_apigatewayv2_api.api.id
-  domain_name = aws_apigatewayv2_domain_name.api.id
-  stage       = aws_apigatewayv2_stage.api.id
+  domain_name = aws_apigatewayv2_domain_name.domain.id
+  stage       = aws_apigatewayv2_stage.default.id
 }
 

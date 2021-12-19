@@ -5,7 +5,7 @@ data "archive_file" "empty_lambda" {
 
   source {
     content = "exports.handler = function() { };"
-    filename = "lambda.js"
+    filename = "root.js"
   }
 }
 
@@ -18,7 +18,7 @@ resource "aws_lambda_function" "main" {
   runtime = "nodejs12.x"
 
   memory_size = 2048
-  timeout = 900
+  timeout = 30 # default Gateway timeout is 29 s
 
   role = aws_iam_role.lambda_exec.arn
 

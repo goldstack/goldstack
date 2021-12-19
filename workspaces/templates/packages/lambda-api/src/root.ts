@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('source-map-support').install();
+
 import {
   Handler,
   APIGatewayProxyEventV2,
@@ -6,13 +9,13 @@ import {
 
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
-export const helloFromLambdaHandler: ProxyHandler = async (event, context) => {
+export const handler: ProxyHandler = async (event, context) => {
   const name = event.queryStringParameters?.name || 'world';
 
   return {
     statusCode: 201,
     body: JSON.stringify({
-      message: `Hello ${name}`,
+      message: `Hello Again ${name}`,
     }),
   };
 };

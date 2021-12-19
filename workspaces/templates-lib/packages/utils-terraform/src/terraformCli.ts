@@ -2,7 +2,7 @@ import { exec, pwd, commandExists } from '@goldstack/utils-sh';
 import {
   assertDocker,
   hasDocker,
-  imageGoldstackBuild,
+  imageTerraform,
 } from '@goldstack/utils-docker';
 import { fatal } from '@goldstack/utils-log';
 import { CloudProvider } from './cloudProvider';
@@ -43,7 +43,7 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
     `docker run --rm -v "${options.dir}":/app ` +
     ` ${options.provider.generateEnvVariableString()} ` +
     '-w /app ' +
-    `${imageGoldstackBuild()} terraform ${cmd} ` +
+    `${imageTerraform()} ${cmd} ` +
     ` ${renderBackendConfig(options.backendConfig || [])} ` +
     ` ${renderVariables(options.variables || [])} ` +
     ` ${options.options?.join(' ') || ''} `;

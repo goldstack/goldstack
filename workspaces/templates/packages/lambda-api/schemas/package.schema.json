@@ -1,0 +1,203 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/ThisPackage",
+  "definitions": {
+    "ThisPackage": {
+      "type": "object",
+      "properties": {
+        "template": {
+          "$ref": "#/definitions/Template"
+        },
+        "templateVersion": {
+          "$ref": "#/definitions/TemplateVersion"
+        },
+        "name": {
+          "$ref": "#/definitions/Name"
+        },
+        "configuration": {
+          "$ref": "#/definitions/ThisPackageConfiguration"
+        },
+        "deployments": {
+          "$ref": "#/definitions/LambdaExpressDeployments"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "$schema",
+        "configuration",
+        "deployments",
+        "name",
+        "template",
+        "templateVersion"
+      ],
+      "additionalProperties": false,
+      "description": "A lambda deployment for an express server.",
+      "title": "Lambda Express Package"
+    },
+    "Template": {
+      "type": "string",
+      "description": "Name of the template used for creating this package.",
+      "title": "Template",
+      "pattern": "^[^\\s]*$"
+    },
+    "TemplateVersion": {
+      "type": "string",
+      "description": "Latest template version that was applied to this package.",
+      "title": "Template Version"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Name of this package.",
+      "title": "Package Name"
+    },
+    "ThisPackageConfiguration": {
+      "$ref": "#/definitions/PackageConfiguration",
+      "description": "Configures this lambda.",
+      "title": "Lambda Configuration"
+    },
+    "PackageConfiguration": {
+      "type": "object",
+      "description": "Configuration of this package",
+      "title": "Configuration"
+    },
+    "LambdaExpressDeployments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ThisDeployment"
+      },
+      "description": "Places where the lambda should be deployed to.",
+      "title": "Deployments"
+    },
+    "ThisDeployment": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/DeploymentName"
+        },
+        "configuration": {
+          "$ref": "#/definitions/ThisDeploymentConfiguration"
+        },
+        "terraformVariables": {
+          "$ref": "#/definitions/TerraformVariables"
+        },
+        "tfStateKey": {
+          "$ref": "#/definitions/TerraformStateKey"
+        },
+        "awsRegion": {
+          "$ref": "#/definitions/AWSDeploymentRegion"
+        },
+        "awsUser": {
+          "$ref": "#/definitions/AWSUserName"
+        }
+      },
+      "required": [
+        "awsRegion",
+        "awsUser",
+        "configuration",
+        "name"
+      ]
+    },
+    "DeploymentName": {
+      "type": "string",
+      "description": "Identifier for this deployment. No spaces allowed in name.",
+      "title": "Deployment Name",
+      "pattern": "^[^\\s]*$"
+    },
+    "ThisDeploymentConfiguration": {
+      "type": "object",
+      "properties": {
+        "lambdaName": {
+          "type": "string",
+          "description": "The name of the lambda.",
+          "title": "Lambda Name",
+          "pattern": "^[A-Za-z0-9-_]*$"
+        },
+        "apiDomain": {
+          "$ref": "#/definitions/APIDomain"
+        },
+        "hostedZoneDomain": {
+          "$ref": "#/definitions/HostedZoneDomain"
+        },
+        "cors": {
+          "$ref": "#/definitions/CorsHeader"
+        }
+      },
+      "required": [
+        "lambdaName",
+        "apiDomain",
+        "hostedZoneDomain"
+      ]
+    },
+    "APIDomain": {
+      "type": "string",
+      "description": "The domain name that the API should be deployed to (e.g. api.mysite.com)",
+      "title": "API Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "HostedZoneDomain": {
+      "type": "string",
+      "description": "The domain name of the Route 53 hosted zone that the domain for this API should be added to.",
+      "title": "Hosted Zone Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "CorsHeader": {
+      "type": "string",
+      "description": "Optional URL for an UI that should be allowed to access this server.",
+      "title": "CORS Header",
+      "pattern": "^[^\\s]*"
+    },
+    "TerraformVariables": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TerraformVariable"
+      },
+      "description": "Define which of the deployment variables will be made available for terraform.",
+      "title": "Terraform Variables"
+    },
+    "TerraformVariable": {
+      "type": "string",
+      "description": "Name of the property that should be converted into a Terraform variable.",
+      "title": "Terraform Variable"
+    },
+    "TerraformStateKey": {
+      "type": "string",
+      "description": "Key used for Terraform state persisted in Terraform state bucket.\n\nWill be auto-generated upon first deployment if not provided.",
+      "title": "Terraform State Key"
+    },
+    "AWSDeploymentRegion": {
+      "type": "string",
+      "enum": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2",
+        "af-south-1",
+        "ap-east-1",
+        "ap-south-1",
+        "ap-northeast-3",
+        "ap-northeast-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-northeast-1",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-south-1",
+        "eu-west-3",
+        "eu-north-1",
+        "me-south-1",
+        "sa-east-1"
+      ],
+      "description": "AWS region that infrastructure should be deployed to.",
+      "title": "AWS Deployment Region"
+    },
+    "AWSUserName": {
+      "type": "string",
+      "description": "Name of the AWS user that is used to perform the deployment.",
+      "title": "AWS User Name"
+    }
+  }
+}

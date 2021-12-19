@@ -11,5 +11,5 @@ output "lambda_function_name" {
 }
 
 output "gateway_url" {
-  value = aws_api_gateway_deployment.main.invoke_url
+  value = aws_apigatewayv2_api.api.api_endpoint
 }

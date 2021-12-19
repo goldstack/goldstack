@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/ThisDeploymentConfiguration",
+  "definitions": {
+    "ThisDeploymentConfiguration": {
+      "type": "object",
+      "properties": {
+        "lambdaName": {
+          "type": "string",
+          "description": "The name of the lambda.",
+          "title": "Lambda Name",
+          "pattern": "^[A-Za-z0-9-_]*$"
+        },
+        "apiDomain": {
+          "$ref": "#/definitions/APIDomain"
+        },
+        "hostedZoneDomain": {
+          "$ref": "#/definitions/HostedZoneDomain"
+        },
+        "cors": {
+          "$ref": "#/definitions/CorsHeader"
+        }
+      },
+      "required": [
+        "lambdaName",
+        "apiDomain",
+        "hostedZoneDomain"
+      ]
+    },
+    "APIDomain": {
+      "type": "string",
+      "description": "The domain name that the API should be deployed to (e.g. api.mysite.com)",
+      "title": "API Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "HostedZoneDomain": {
+      "type": "string",
+      "description": "The domain name of the Route 53 hosted zone that the domain for this API should be added to.",
+      "title": "Hosted Zone Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "CorsHeader": {
+      "type": "string",
+      "description": "Optional URL for an UI that should be allowed to access this server.",
+      "title": "CORS Header",
+      "pattern": "^[^\\s]*"
+    }
+  }
+}
