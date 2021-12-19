@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package-config-generate",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Utilities for working with package schemas.",
   "keywords": [
     "goldstack",
@@ -39,7 +39,7 @@
     "yargs": "^15.4.1"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.1.28",
+    "@goldstack/utils-git": "0.1.29",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
     "@types/yargs": "^15.0.5",

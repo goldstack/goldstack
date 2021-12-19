@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-typescript-references",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Utility for keeping TypeScript references in sync in the monorepo",
   "keywords": [
     "goldstack",
@@ -39,7 +39,7 @@
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.1.28",
+    "@goldstack/utils-git": "0.1.29",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
     "@types/source-map-support": "^0.5.4",
