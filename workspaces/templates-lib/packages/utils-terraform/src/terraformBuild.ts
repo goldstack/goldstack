@@ -192,7 +192,7 @@ export class TerraformBuild {
     tf('init', {
       provider,
       backendConfig,
-      options: ['-force-copy'],
+      options: ['-force-copy', '-reconfigure'],
     });
     const workspaces = tf('workspace list', { provider });
 

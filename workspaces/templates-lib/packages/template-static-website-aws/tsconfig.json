@@ -37,6 +37,9 @@
       "path": "../utils-s3-deployment"
     },
     {
+      "path": "../utils-sh"
+    },
+    {
       "path": "../utils-template"
     },
     {

@@ -15,7 +15,7 @@ export { getVariablesFromProperties } from './terraformBuild';
 
 import { Argv } from 'yargs';
 
-export const infraCommands = () => {
+export const infraCommands = (): any => {
   const deploymentPositional = (yargs: Argv<any>): Argv<any> => {
     return yargs.positional('deployment', {
       type: 'string',
