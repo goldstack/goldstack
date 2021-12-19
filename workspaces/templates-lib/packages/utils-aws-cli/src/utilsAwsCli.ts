@@ -12,6 +12,7 @@ import {
   imageGoldstackBuild,
   hasDocker,
   assertDocker,
+  imageAWSCli,
 } from '@goldstack/utils-docker';
 
 export const assertAwsCli = (): void => {
@@ -56,11 +57,13 @@ export const execWithDocker = (params: AWSExecParams): string => {
     'Cannot execute AWS cli command since working directory does not exist: aws ' +
       params.command
   );
+  console.log('exec aws cli');
   return exec(
     'docker run --rm ' +
       awsUserConfig +
       `-v "${mountDir}":/app ` +
-      ` ${imageGoldstackBuild()} aws ${params.command}`,
+      '-w /app ' +
+      ` ${imageAWSCli()} ${params.command}`,
     params.options
   );
 };

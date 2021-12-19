@@ -148,3 +148,5 @@ export const imageGoldstackBuild = (): string =>
   'goldstack/goldstack-docker-build:0.1.3';
 
 export const imageTerraform = (): string => 'hashicorp/terraform:0.12.26';
+
+export const imageAWSCli = (): string => 'amazon/aws-cli:2.4.6';
