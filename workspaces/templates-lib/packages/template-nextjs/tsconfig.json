@@ -19,6 +19,9 @@
       "path": "../template-static-website-aws"
     },
     {
+      "path": "../utils-aws-cli"
+    },
+    {
       "path": "../utils-aws-lambda"
     },
     {

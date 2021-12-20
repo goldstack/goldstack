@@ -52,6 +52,7 @@
     "@goldstack/infra-aws": "0.3.27",
     "@goldstack/template-static-website-aws": "0.3.62",
     "@goldstack/utils-aws-cli": "0.3.33",
+    "@goldstack/utils-aws-lambda": "0.1.0",
     "@goldstack/utils-cli": "0.2.8",
     "@goldstack/utils-config": "0.3.21",
     "@goldstack/utils-log": "0.2.9",
