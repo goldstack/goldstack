@@ -3,7 +3,6 @@ import { getAWSUser } from '@goldstack/infra-aws';
 import { readTerraformStateVariable, DeploymentState } from '@goldstack/infra';
 import { zip, cp, write, rmSafe, read, mkdir } from '@goldstack/utils-sh';
 import { awsCli } from '@goldstack/utils-aws-cli';
-import webpack from 'webpack';
 import util from 'util';
 import globFunc from 'glob';
 import { packageEdgeLambda } from './edgeLambdaPackage';
