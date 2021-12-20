@@ -9,10 +9,7 @@
   },
   "references": [
     {
-      "path": "../infra-aws"
-    },
-    {
-      "path": "../utils-docker"
+      "path": "../utils-aws-cli"
     },
     {
       "path": "../utils-log"

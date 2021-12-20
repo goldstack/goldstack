@@ -1622,6 +1622,7 @@ __metadata:
     "@goldstack/infra": 0.3.22
     "@goldstack/infra-aws": 0.3.27
     "@goldstack/utils-aws-cli": 0.3.32
+    "@goldstack/utils-aws-lambda": 0.1.0
     "@goldstack/utils-cli": 0.2.8
     "@goldstack/utils-config": 0.3.21
     "@goldstack/utils-docker": 0.3.22
@@ -1704,7 +1705,7 @@ __metadata:
     "@goldstack/infra": 0.3.22
     "@goldstack/infra-aws": 0.3.27
     "@goldstack/template-static-website-aws": 0.3.61
-    "@goldstack/utils-aws-cli": 0.3.32
+    "@goldstack/utils-aws-lambda": 0.1.0
     "@goldstack/utils-cli": 0.2.8
     "@goldstack/utils-config": 0.3.21
     "@goldstack/utils-docs-cli": 0.3.11
@@ -1881,7 +1882,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-aws-lambda@workspace:workspaces/templates-lib/packages/utils-aws-lambda":
+"@goldstack/utils-aws-lambda@0.1.0, @goldstack/utils-aws-lambda@workspace:workspaces/templates-lib/packages/utils-aws-lambda":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-aws-lambda@workspace:workspaces/templates-lib/packages/utils-aws-lambda"
   dependencies:
