@@ -3,10 +3,12 @@ import { getAWSUser } from '@goldstack/infra-aws';
 import { readTerraformStateVariable, DeploymentState } from '@goldstack/infra';
 import { zip, cp, write, rmSafe, read, mkdir } from '@goldstack/utils-sh';
 import { awsCli } from '@goldstack/utils-aws-cli';
-import webpack from 'webpack';
 import util from 'util';
 import globFunc from 'glob';
 import { packageEdgeLambda } from './edgeLambdaPackage';
+
+import { deployFunction } from '@goldstack/utils-aws-lambda';
+import { version } from 'yargs';
 
 const glob = util.promisify(globFunc);
 
@@ -73,40 +75,30 @@ export const deployEdgeLambda = async (
     destFile: `${lambdaPackageDir}lambda.js`,
   });
 
-  await rmSafe(targetArchive);
-  await zip({ directory: lambdaPackageDir, target: targetArchive });
-
-  const credentials = await getAWSUser(params.deployment.awsUser);
   const functionName = readTerraformStateVariable(
     params.deploymentState,
     'edge_function_name'
   );
-  const deployResult = awsCli({
+  const credentials = await getAWSUser(params.deployment.awsUser);
+  const deployResult = await deployFunction({
+    targetArchiveName: targetArchive,
+    lambdaPackageDir,
+    functionName,
+    awsCredentials: credentials,
+    region: 'us-east-1',
+  });
+
+  const { FunctionArn } = deployResult;
+
+  const publishResults = awsCli({
     credentials,
     region: 'us-east-1',
-    command: `lambda update-function-code --function-name ${functionName} --zip-file fileb://${targetArchive} --publish`,
+    command: `lambda publish-version --function-name ${functionName}`,
   });
-  await rmSafe(targetArchive);
 
-  const { FunctionArn } = JSON.parse(deployResult);
+  const { Version } = JSON.parse(publishResults);
 
-  const qualifiedArn = `${FunctionArn}`;
-
-  let counter = 0;
-  let state = '';
-  while (counter < 20 && state !== 'Active') {
-    const res = awsCli({
-      credentials,
-      region: 'us-east-1',
-      command: `lambda get-function --function-name ${functionName}`,
-    });
-    const data = JSON.parse(res);
-    state = data.Configuration.State;
-    counter++;
-  }
-  if (counter >= 20) {
-    throw new Error(`Function was still in state '${state}' after deployment`);
-  }
+  const qualifiedArn = `${FunctionArn}:${Version}`;
 
   // Add a wait since there sometimes appear to be race conditions
   // CF thinking the lambda is not in active state
@@ -131,7 +123,7 @@ export const deployEdgeLambda = async (
   const lambdaFunctionAssociations =
     cfDistribution.DistributionConfig.DefaultCacheBehavior
       .LambdaFunctionAssociations.Items;
-  lambdaFunctionAssociations[0].LambdaFunctionARN = qualifiedArn;
+  lambdaFunctionAssociations[0].LambdaFunctionARN = `${qualifiedArn}`;
 
   await rmSafe('./dist/cf.json');
   write(
@@ -139,7 +131,7 @@ export const deployEdgeLambda = async (
     './dist/cf.json'
   );
   awsCli({
-    credentials: await getAWSUser(params.deployment.awsUser),
+    credentials: credentials,
     region: 'us-east-1',
     command: `cloudfront update-distribution --id ${readTerraformStateVariable(
       params.deploymentState,

@@ -196,6 +196,7 @@ export const mkdir = (options: string, ...dirs: string[]): void => {
 export const zip = async (params: {
   directory: string;
   target: string;
+  mode?: number;
 }): Promise<void> => {
   await new Promise<void>((resolve, reject) => {
     const output = fs.createWriteStream(params.target);
@@ -215,7 +216,9 @@ export const zip = async (params: {
     // pipe archive data to the file
     archive.pipe(output);
 
-    archive.directory(params.directory, false);
+    archive.directory(params.directory, false, {
+      mode: params.mode,
+    });
 
     archive.finalize();
   });

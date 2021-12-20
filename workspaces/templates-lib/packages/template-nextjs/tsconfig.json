@@ -22,6 +22,9 @@
       "path": "../utils-aws-cli"
     },
     {
+      "path": "../utils-aws-lambda"
+    },
+    {
       "path": "../utils-cli"
     },
     {

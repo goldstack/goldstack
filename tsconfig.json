@@ -188,6 +188,10 @@
       "name": "@goldstack/utils-aws-cli"
     },
     {
+      "path": "workspaces/templates-lib/packages/utils-aws-lambda",
+      "name": "@goldstack/utils-aws-lambda"
+    },
+    {
       "path": "workspaces/templates-lib/packages/utils-cli",
       "name": "@goldstack/utils-cli"
     },

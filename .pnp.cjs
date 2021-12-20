@@ -179,6 +179,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates-lib/packages/utils-aws-cli"
       },
       {
+        "name": "@goldstack/utils-aws-lambda",
+        "reference": "workspace:workspaces/templates-lib/packages/utils-aws-lambda"
+      },
+      {
         "name": "@goldstack/utils-cli",
         "reference": "workspace:workspaces/templates-lib/packages/utils-cli"
       },
@@ -387,6 +391,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/template-static-website-aws", ["workspace:workspaces/templates-lib/packages/template-static-website-aws"]],
       ["@goldstack/toc-generator", ["workspace:workspaces/docs/packages/toc-generator"]],
       ["@goldstack/utils-aws-cli", ["workspace:workspaces/templates-lib/packages/utils-aws-cli"]],
+      ["@goldstack/utils-aws-lambda", ["workspace:workspaces/templates-lib/packages/utils-aws-lambda"]],
       ["@goldstack/utils-cli", ["workspace:workspaces/templates-lib/packages/utils-cli"]],
       ["@goldstack/utils-config", ["workspace:workspaces/templates-lib/packages/utils-config"]],
       ["@goldstack/utils-docker", ["workspace:workspaces/templates-lib/packages/utils-docker"]],
@@ -2324,7 +2329,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/template-lambda-express", "workspace:workspaces/templates-lib/packages/template-lambda-express"],
             ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],
-            ["@goldstack/utils-aws-cli", "workspace:workspaces/templates-lib/packages/utils-aws-cli"],
+            ["@goldstack/utils-aws-lambda", "workspace:workspaces/templates-lib/packages/utils-aws-lambda"],
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],
             ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],
             ["@goldstack/utils-docker", "workspace:workspaces/templates-lib/packages/utils-docker"],
@@ -2339,7 +2344,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],
             ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],
             ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],
-            ["@types/archiver", "npm:3.1.0"],
             ["@types/jest", "npm:27.0.2"],
             ["@types/node", "npm:16.11.0"],
             ["@types/yargs", "npm:15.0.7"],
@@ -2409,6 +2413,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],
             ["@goldstack/template-static-website-aws", "workspace:workspaces/templates-lib/packages/template-static-website-aws"],
             ["@goldstack/utils-aws-cli", "workspace:workspaces/templates-lib/packages/utils-aws-cli"],
+            ["@goldstack/utils-aws-lambda", "workspace:workspaces/templates-lib/packages/utils-aws-lambda"],
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],
             ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],
             ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
@@ -2576,6 +2581,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-aws-cli", "workspace:workspaces/templates-lib/packages/utils-aws-cli"],
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],
             ["@goldstack/utils-docker", "workspace:workspaces/templates-lib/packages/utils-docker"],
+            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
+            ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],
+            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
+            ["@types/jest", "npm:27.0.2"],
+            ["@types/node", "npm:16.11.0"],
+            ["aws-sdk", "npm:2.1001.0"],
+            ["jest", "npm:26.6.3"],
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
+            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@goldstack/utils-aws-lambda", [
+        ["workspace:workspaces/templates-lib/packages/utils-aws-lambda", {
+          "packageLocation": "./workspaces/templates-lib/packages/utils-aws-lambda/",
+          "packageDependencies": [
+            ["@goldstack/utils-aws-lambda", "workspace:workspaces/templates-lib/packages/utils-aws-lambda"],
+            ["@goldstack/utils-aws-cli", "workspace:workspaces/templates-lib/packages/utils-aws-cli"],
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
             ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
