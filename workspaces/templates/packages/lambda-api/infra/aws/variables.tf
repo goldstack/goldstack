@@ -35,9 +35,9 @@ variable "cors" {
 variable "lambdas" {
   description = "Map of endpoint and lambdas for API"
   type        = map
-  default     = {
-    "ANY /dynamic" = {
-      function_name = "dynamic-test"
-    }
-  }
+  # default     = {
+  #   "ANY /dynamic" = {
+  #     function_name = "dynamic-test"
+  #   }
+  # }
 }

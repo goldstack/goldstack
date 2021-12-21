@@ -1,5 +1,4 @@
-# Goldstack AWS CLI Tools
+# Goldstack AWS Lambda Tools
 
-This library provides a simple wrapper around the AWS CLI. Allowing to either invoke it directly or run it in a Docker container.
+This library provides a simple wrapper around the AWS CLI to deploy Lambdas.
 
-See [Source Code](https://github.com/goldstack/goldstack/blob/master/workspaces/templates-lib/packages/utils-aws-cli/src/utilsAwsCli.ts)
