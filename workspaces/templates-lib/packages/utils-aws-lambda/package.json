@@ -44,6 +44,7 @@
     "@goldstack/utils-aws-cli": "0.3.34",
     "@goldstack/utils-log": "0.2.9",
     "@goldstack/utils-sh": "0.4.21",
+    "auto-cdk": "^0.1.6",
     "aws-sdk": "2.1001.0"
   },
   "devDependencies": {
