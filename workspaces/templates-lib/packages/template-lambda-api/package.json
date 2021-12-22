@@ -1,0 +1,82 @@
+{
+  "name": "@goldstack/template-lambda-api",
+  "version": "0.3.72",
+  "description": "Companion for project templates for deploying Lambdas as a REST API",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "lambda",
+    "aws",
+    "serverless",
+    "infrastructure",
+    "IaC",
+    "configuration"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack.git"
+  },
+  "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "src/templateLambdaApi.ts",
+  "bin": {
+    "template": "./bin/template",
+    "template-lambda-express": "./bin/template"
+  },
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:watch": "yarn clean && yarn compile-watch",
+    "clean": "rm -rf ./dist",
+    "cli": "ts-node bin/template.ts",
+    "compile": "tsc -p tsconfig.json",
+    "compile-watch": "tsc -p tsconfig.json --watch",
+    "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "generate-schema": "ts-node scripts/generateSchemas.ts && cp schemas/* ../../../templates/packages/lambda-api/schemas",
+    "prepublishOnly": "yarn run build",
+    "publish": "utils-git changed --exec \"yarn npm publish $@\"",
+    "test-ci": "jest --passWithNoTests --config=./jest.config.js",
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
+    "version:apply:force": "yarn version $@ && yarn version apply"
+  },
+  "dependencies": {
+    "@goldstack/infra": "0.3.23",
+    "@goldstack/infra-aws": "0.3.28",
+    "@goldstack/utils-aws-lambda": "0.1.1",
+    "@goldstack/utils-cli": "0.2.8",
+    "@goldstack/utils-config": "0.3.22",
+    "@goldstack/utils-docker": "0.3.24",
+    "@goldstack/utils-log": "0.2.9",
+    "@goldstack/utils-package": "0.3.23",
+    "@goldstack/utils-package-config": "0.3.23",
+    "@goldstack/utils-s3-deployment": "0.3.34",
+    "@goldstack/utils-sh": "0.4.21",
+    "@goldstack/utils-template": "0.3.23",
+    "@goldstack/utils-terraform": "0.3.35",
+    "@goldstack/utils-terraform-aws": "0.3.35",
+    "archiver": "^5.0.0",
+    "source-map-support": "^0.5.21",
+    "yargs": "^15.4.1"
+  },
+  "devDependencies": {
+    "@goldstack/utils-docs-cli": "0.3.11",
+    "@goldstack/utils-git": "0.1.29",
+    "@goldstack/utils-package-config-generate": "0.2.8",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.0",
+    "@types/yargs": "^15.0.5",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.4",
+    "ts-json-schema-generator": "^0.96.0",
+    "ts-node": "^10.3.0",
+    "typescript": "^4.4.3"
+  },
+  "publishConfig": {
+    "main": "dist/src/templateLambdaApi.js"
+  }
+}

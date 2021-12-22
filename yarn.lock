@@ -1997,6 +1997,44 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@goldstack/template-lambda-api@workspace:workspaces/templates-lib/packages/template-lambda-api":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/template-lambda-api@workspace:workspaces/templates-lib/packages/template-lambda-api"
+  dependencies:
+    "@goldstack/infra": 0.3.23
+    "@goldstack/infra-aws": 0.3.28
+    "@goldstack/utils-aws-lambda": 0.1.1
+    "@goldstack/utils-cli": 0.2.8
+    "@goldstack/utils-config": 0.3.22
+    "@goldstack/utils-docker": 0.3.24
+    "@goldstack/utils-docs-cli": 0.3.11
+    "@goldstack/utils-git": 0.1.29
+    "@goldstack/utils-log": 0.2.9
+    "@goldstack/utils-package": 0.3.23
+    "@goldstack/utils-package-config": 0.3.23
+    "@goldstack/utils-package-config-generate": 0.2.8
+    "@goldstack/utils-s3-deployment": 0.3.34
+    "@goldstack/utils-sh": 0.4.21
+    "@goldstack/utils-template": 0.3.23
+    "@goldstack/utils-terraform": 0.3.35
+    "@goldstack/utils-terraform-aws": 0.3.35
+    "@types/jest": ^27.0.2
+    "@types/node": ^16.11.0
+    "@types/yargs": ^15.0.5
+    archiver: ^5.0.0
+    jest: ^26.6.3
+    source-map-support: ^0.5.21
+    ts-jest: ^26.5.4
+    ts-json-schema-generator: ^0.96.0
+    ts-node: ^10.3.0
+    typescript: ^4.4.3
+    yargs: ^15.4.1
+  bin:
+    template: ./bin/template
+    template-lambda-express: ./bin/template
+  languageName: unknown
+  linkType: soft
+
 "@goldstack/template-lambda-express@0.3.72, @goldstack/template-lambda-express@workspace:workspaces/templates-lib/packages/template-lambda-express":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-lambda-express@workspace:workspaces/templates-lib/packages/template-lambda-express"
