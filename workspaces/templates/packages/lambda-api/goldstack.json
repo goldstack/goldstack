@@ -10,7 +10,7 @@
       "awsRegion": "us-west-2",
       "awsUser": "goldstack-dev",
       "configuration": {
-        "lambdaName": "goldstack-test-lambda-api",
+        "lambdaNamePrefix": "goldstack-test-lambda-api-",
         "apiDomain": "lambda-api.examples.templates.dev.goldstack.party",
         "hostedZoneDomain": "dev.goldstack.party",
         "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party",

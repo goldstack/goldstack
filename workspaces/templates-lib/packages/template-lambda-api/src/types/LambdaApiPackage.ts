@@ -36,7 +36,7 @@ export type HostedZoneDomain = string;
 export type CorsHeader = string;
 
 export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
-  lambdaName: LambdaNamePrefix;
+  lambdaNamePrefix?: LambdaNamePrefix;
   apiDomain: APIDomain;
   hostedZoneDomain: HostedZoneDomain;
   cors?: CorsHeader;
@@ -65,9 +65,9 @@ export type LambdaApiDeployments = ThisDeployment[];
 export type ThisPackageConfiguration = Configuration;
 
 /**
- * A lambda deployment for an express server.
+ * A deployment for a lambda API.
  *
- * @title Lambda Express Package
+ * @title Lambda API Package
  */
 export interface ThisPackage extends Package {
   configuration: ThisPackageConfiguration;

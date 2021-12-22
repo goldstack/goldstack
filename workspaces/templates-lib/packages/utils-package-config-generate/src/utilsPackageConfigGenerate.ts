@@ -3,6 +3,10 @@ const tsj = require('ts-json-schema-generator');
 import fs from 'fs';
 
 export const run = (argv: string[]): void => {
+  if (!fs.existsSync('schemas/')) {
+    throw new Error('Ensure that directory schemas/ exists in project');
+  }
+
   const generateSchema = (schemaFile: string, type: string): void => {
     const config = {
       // path: 'src/lib/types/*',
