@@ -22,7 +22,7 @@
     "watch": "PORT=3030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev ./src/local.ts"
   },
   "dependencies": {
-    "@goldstack/template-lambda-express": "0.3.72",
+    "@goldstack/template-lambda-api": "0.3.72",
     "@types/aws-lambda": "^8.10.88",
     "source-map-support": "^0.5.21"
   },

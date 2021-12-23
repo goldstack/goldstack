@@ -37,6 +37,7 @@
     "prepublishOnly": "yarn run build",
     "publish": "utils-git changed --exec \"yarn npm publish $@\"",
     "test-ci": "jest --passWithNoTests --config=./jest.config.js",
+    "test-watch": "jest --watch --passWithNoTests --config=./jest.config.js",
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
@@ -44,7 +45,6 @@
     "@goldstack/utils-aws-cli": "0.3.34",
     "@goldstack/utils-log": "0.2.9",
     "@goldstack/utils-sh": "0.4.21",
-    "auto-cdk": "^0.1.6",
     "aws-sdk": "2.1001.0"
   },
   "devDependencies": {

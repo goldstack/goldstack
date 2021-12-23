@@ -168,6 +168,10 @@
       "name": "@goldstack/template-email-send"
     },
     {
+      "path": "workspaces/templates-lib/packages/template-lambda-api",
+      "name": "@goldstack/template-lambda-api"
+    },
+    {
       "path": "workspaces/templates-lib/packages/template-lambda-express",
       "name": "@goldstack/template-lambda-express"
     },

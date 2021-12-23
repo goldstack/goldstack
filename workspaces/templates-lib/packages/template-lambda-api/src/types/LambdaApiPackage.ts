@@ -35,11 +35,20 @@ export type HostedZoneDomain = string;
  */
 export type CorsHeader = string;
 
+export interface LambdaRouteConfig {
+  function_name: string;
+}
+
+export type LambdaRoutesConfig = {
+  [key: string]: LambdaRouteConfig;
+};
+
 export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
   lambdaNamePrefix?: LambdaNamePrefix;
   apiDomain: APIDomain;
   hostedZoneDomain: HostedZoneDomain;
   cors?: CorsHeader;
+  lambdas: LambdaRoutesConfig;
 }
 
 export interface ThisDeployment

@@ -15,8 +15,8 @@
         "hostedZoneDomain": "dev.goldstack.party",
         "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party",
         "lambdas": {
-          "ANY /sodynamic": {
-            "function_name": "sodynamic-test"
+          "$default": {
+            "function_name": "goldstack-test-lambda-api-default"
           }
         }
       },

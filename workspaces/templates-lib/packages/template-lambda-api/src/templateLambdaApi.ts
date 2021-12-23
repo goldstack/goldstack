@@ -4,12 +4,16 @@ import { infraCommands } from '@goldstack/utils-terraform';
 import { deployCli } from './templateLambdaApiDeploy';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import { PackageConfig } from '@goldstack/utils-package-config';
+import { writePackageConfig } from '@goldstack/utils-package';
 export * from './types/LambdaApiPackage';
 import yargs from 'yargs';
+import fs from 'fs';
 import {
   LambdaApiPackage,
   LambdaApiDeployment,
 } from './types/LambdaApiPackage';
+import { readLambdaConfig } from '@goldstack/utils-aws-lambda';
+import { generateLambdaConfig } from './generateLambdaConfig';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
@@ -27,6 +31,21 @@ export const run = async (args: string[]): Promise<void> => {
     });
 
     const config = packageConfig.getConfig();
+
+    // update routes
+    if (!fs.existsSync('./src/routes')) {
+      throw new Error(
+        'Please specify lambda function handlers in ./src/routes so that API Gateway route configuration can be generated.'
+      );
+    }
+    const lambdaRoutes = readLambdaConfig('./src/routes');
+    config.deployments = config.deployments.map((e) => {
+      const lambdasConfigs = generateLambdaConfig(e, lambdaRoutes);
+      e.configuration.lambdas = lambdasConfigs;
+      return e;
+    });
+    writePackageConfig(config);
+
     const command = argv._[0];
     const [, , , ...opArgs] = args;
 
