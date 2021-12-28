@@ -55,15 +55,15 @@ function removeExtension(path: string): string {
   return path.replace(/\.[^/.]+$/, '');
 }
 
-function makeRoute(configRoot: string, dir: string) {
+function makeRoute(configRoot: string, dir: string): string {
   const route = removeExtension(posixPath(relative(configRoot, dir)));
   if (route === '$index') {
-    return 'ANY /{proxy+}';
+    return 'ANY /';
   }
   if (route === '$default') {
     return '$default';
   }
-  return `ANY /${route}/{proxy+}`;
+  return `ANY /${route}`;
 }
 
 function readLambdaConfigImpl(
@@ -72,12 +72,13 @@ function readLambdaConfigImpl(
 ): LambdaConfigWork {
   const root = dir;
 
+  const rootRoute = makeRoute(configRoot, dir);
   const configItem: LambdaConfigWork = {
     name: root,
     type: RouteType.DIR,
     absolutePath: dir,
     relativePath: relative(configRoot, dir),
-    route: makeRoute(configRoot, dir),
+    route: rootRoute,
   };
 
   const dirHandle = fs.opendirSync(dir);
@@ -91,12 +92,14 @@ function readLambdaConfigImpl(
     if (dirEntry.isDirectory()) {
       configItem.children[name] = readLambdaConfigImpl(configRoot, fullPath);
     } else if (dirEntry.isFile()) {
+      const route = makeRoute(configRoot, fullPath);
+
       configItem.children[name] = {
         name: removeExtension(name),
         type: RouteType.FUNCTION,
         absolutePath: fullPath,
         relativePath: relative(configRoot, fullPath),
-        route: makeRoute(configRoot, fullPath),
+        route: route,
       };
     } else {
       continue;

@@ -1,14 +1,16 @@
+import assert from 'assert';
 import { readLambdaConfig } from './collectLambdasFromFiles';
 
 describe('Lambda utils', () => {
   it('Should obtain config from files', async () => {
     const routes = readLambdaConfig('./testData/routes');
-    expect(routes.find((e) => e.route === 'bird/abilities'));
-    expect(routes.find((e) => e.route === '$default'));
-    expect(routes.find((e) => e.route === '/'));
-    expect(routes.find((e) => e.route === 'bird'));
-    expect(routes.find((e) => e.route === 'bird')?.relativePath === 'bird.ts');
-    expect(routes.find((e) => e.route === 'bird')?.name === 'bird.ts');
-    console.log(routes);
+    assert(!!routes.find((e) => e.route === '$default'));
+    assert(!!routes.find((e) => e.route === 'ANY /bird/abilities'));
+    assert(!!routes.find((e) => e.route === 'ANY /'));
+    assert(!!routes.find((e) => e.route === 'ANY /bird'));
+    assert(
+      routes.find((e) => e.route === 'ANY /bird')?.relativePath === 'bird.ts'
+    );
+    assert(routes.find((e) => e.route === 'ANY /bird')?.name === 'bird');
   });
 });
