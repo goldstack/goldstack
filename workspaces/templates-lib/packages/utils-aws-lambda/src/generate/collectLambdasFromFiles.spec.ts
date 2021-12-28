@@ -4,6 +4,7 @@ import { readLambdaConfig } from './collectLambdasFromFiles';
 describe('Lambda utils', () => {
   it('Should obtain config from files', async () => {
     const routes = readLambdaConfig('./testData/routes');
+    console.log(JSON.stringify(routes, null, 2));
     assert(!!routes.find((e) => e.route === '$default'));
     assert(!!routes.find((e) => e.route === 'ANY /bird/abilities'));
     assert(!!routes.find((e) => e.route === 'ANY /'));
