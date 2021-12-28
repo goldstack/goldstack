@@ -16,7 +16,7 @@
         "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party",
         "lambdas": {
           "$default": {
-            "function_name": "goldstack-test-lambda-api-default"
+            "function_name": "goldstack-test-lambda-api-_default-default_gateway_lambda_2281"
           }
         }
       },

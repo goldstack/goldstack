@@ -57,10 +57,10 @@ function removeExtension(path: string): string {
 
 function makeRoute(configRoot: string, dir: string) {
   const route = removeExtension(posixPath(relative(configRoot, dir)));
-  if (route === 'index') {
+  if (route === '$index') {
     return 'ANY /{proxy+}';
   }
-  if (route === 'default') {
+  if (route === '$default') {
     return '$default';
   }
   return `ANY /${route}/{proxy+}`;

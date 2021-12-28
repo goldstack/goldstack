@@ -3,10 +3,6 @@ variable "aws_region" {
   type = string
 }
 
-variable "lambda_name" {
-  description = "Name of the root Lambda."
-  type = string
-}
 
 variable "api_domain" {
   description = "Domain under which the API should be deployed."

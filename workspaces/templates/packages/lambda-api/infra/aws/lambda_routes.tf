@@ -1,5 +1,15 @@
 # Dynamically creates the infrastructure for every lambda defined in the routes/ directory
 
+data "archive_file" "empty_lambda" {
+  type = "zip"
+  output_path = "${path.module}/empty_lambda.zip"
+
+  source {
+    content = "exports.handler = function() { };"
+    filename = "lambda.js"
+  }
+}
+
 resource "aws_lambda_function" "this" {
   for_each  = var.lambdas
   
@@ -7,7 +17,7 @@ resource "aws_lambda_function" "this" {
 
   filename = data.archive_file.empty_lambda.output_path
 
-  handler = "root.handler"
+  handler = "lambda.handler"
   runtime = "nodejs12.x"
 
   memory_size = 2048
@@ -30,7 +40,6 @@ resource "aws_lambda_function" "this" {
   }
 }
 
-
 resource "aws_apigatewayv2_route" "this" {
   for_each  = var.lambdas
 
@@ -38,9 +47,7 @@ resource "aws_apigatewayv2_route" "this" {
   route_key = each.key
 
   target    = "integrations/${aws_apigatewayv2_integration.this[each.key].id}"
-
 }
-
 
 resource "aws_apigatewayv2_integration" "this" {
   for_each         = var.lambdas
@@ -51,4 +58,15 @@ resource "aws_apigatewayv2_integration" "this" {
   description               = "Dynamic lambda integration"
   integration_method        = "POST"
   integration_uri           = aws_lambda_function.this[each.key].invoke_arn
+}
+
+resource "aws_lambda_permission" "this" {
+  for_each      = var.lambdas
+	action        = "lambda:InvokeFunction"
+	function_name = aws_lambda_function.this[each.key].function_name 
+	principal     = "apigateway.amazonaws.com"
+
+  # /*/* part allows invocation from any stage, method and resource path
+  # within API Gateway HTTP API.
+	source_arn = "${aws_apigatewayv2_api.api.execution_arn}/*/*"
 }

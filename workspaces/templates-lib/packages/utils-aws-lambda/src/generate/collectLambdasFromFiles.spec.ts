@@ -9,5 +9,6 @@ describe('Lambda utils', () => {
     expect(routes.find((e) => e.route === 'bird'));
     expect(routes.find((e) => e.route === 'bird')?.relativePath === 'bird.ts');
     expect(routes.find((e) => e.route === 'bird')?.name === 'bird.ts');
+    console.log(routes);
   });
 });

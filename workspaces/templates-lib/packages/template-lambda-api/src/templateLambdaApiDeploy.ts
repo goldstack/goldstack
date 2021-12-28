@@ -1,43 +1,46 @@
 import { LambdaApiDeployment } from './types/LambdaApiPackage';
 import { getAWSUser } from '@goldstack/infra-aws';
-import {
-  readDeploymentState,
-  readTerraformStateVariable,
-  DeploymentState,
-} from '@goldstack/infra';
-import { deployFunction } from '@goldstack/utils-aws-lambda';
+import { deployFunction, LambdaConfig } from '@goldstack/utils-aws-lambda';
+
+import { readLambdaConfig } from '@goldstack/utils-aws-lambda';
+import { defaultRoutesPath } from './templateLambdaConsts';
+
+import { mkdir, rmSafe } from '@goldstack/utils-sh';
+import { generateFunctionName } from './generateLambdaConfig';
+import { getOutDirForLambda } from './templateLambdaApiBuild';
 
 interface DeployLambdaParams {
   deployment: LambdaApiDeployment;
-  deploymentState: DeploymentState;
+  config: LambdaConfig[];
 }
 
 export const deployLambda = async (
   params: DeployLambdaParams
 ): Promise<void> => {
-  const targetArchive = 'lambda.zip';
-  const lambdaDistDir = './distLambda';
-  const functionName = readTerraformStateVariable(
-    params.deploymentState,
-    'lambda_function_name'
-  );
+  const lambdaConfig = readLambdaConfig(defaultRoutesPath);
 
-  await deployFunction({
-    targetArchiveName: targetArchive,
-    lambdaPackageDir: lambdaDistDir,
-    awsCredentials: await getAWSUser(params.deployment.awsUser),
-    region: params.deployment.awsRegion,
-    functionName,
-  });
+  for await (const config of lambdaConfig) {
+    const functionName = generateFunctionName(params.deployment, config);
+    const functionDir = getOutDirForLambda(config);
+    mkdir('-p', functionDir);
+    const targetArchive = `${functionDir}/${config.name}.zip`;
+    await rmSafe(targetArchive);
+    await deployFunction({
+      targetArchiveName: targetArchive,
+      lambdaPackageDir: functionDir,
+      awsCredentials: await getAWSUser(params.deployment.awsUser),
+      region: params.deployment.awsRegion,
+      functionName,
+    });
+  }
 };
 
 export const deployCli = async (
-  deployment: LambdaApiDeployment
+  deployment: LambdaApiDeployment,
+  config: LambdaConfig[]
 ): Promise<void> => {
-  const deploymentState = readDeploymentState('./', deployment.name);
-
   await deployLambda({
     deployment,
-    deploymentState,
+    config,
   });
 };

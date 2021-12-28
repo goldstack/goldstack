@@ -14,6 +14,8 @@ import {
 } from './types/LambdaApiPackage';
 import { readLambdaConfig } from '@goldstack/utils-aws-lambda';
 import { generateLambdaConfig } from './generateLambdaConfig';
+import { defaultRoutesPath } from './templateLambdaConsts';
+import { buildLambdas } from './templateLambdaApiBuild';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
@@ -21,7 +23,15 @@ export const run = async (args: string[]): Promise<void> => {
       yargs,
       deployCommands: buildDeployCommands(),
       infraCommands: infraCommands(),
-    }).help().argv;
+    })
+      .command('build [deployment]', 'Build all lambdas', () => {
+        return yargs.positional('deployment', {
+          type: 'string',
+          describe: 'Name of the deployment this command should be applied to',
+          default: '',
+        });
+      })
+      .help().argv;
 
     const packageConfig = new PackageConfig<
       LambdaApiPackage,
@@ -38,7 +48,7 @@ export const run = async (args: string[]): Promise<void> => {
         'Please specify lambda function handlers in ./src/routes so that API Gateway route configuration can be generated.'
       );
     }
-    const lambdaRoutes = readLambdaConfig('./src/routes');
+    const lambdaRoutes = readLambdaConfig(defaultRoutesPath);
     config.deployments = config.deployments.map((e) => {
       const lambdasConfigs = generateLambdaConfig(e, lambdaRoutes);
       e.configuration.lambdas = lambdasConfigs;
@@ -54,8 +64,16 @@ export const run = async (args: string[]): Promise<void> => {
       return;
     }
 
+    if (command === 'build') {
+      await buildLambdas(lambdaRoutes);
+      return;
+    }
+
     if (command === 'deploy') {
-      await deployCli(packageConfig.getDeployment(config, opArgs[0]));
+      await deployCli(
+        packageConfig.getDeployment(config, opArgs[0]),
+        lambdaRoutes
+      );
       return;
     }
 
