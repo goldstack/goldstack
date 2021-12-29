@@ -64,4 +64,11 @@ describe('Generate Lambda config', () => {
     const functionName = generateFunctionName(dummyDeployment, nestedRoute);
     assert(functionName.indexOf('health') !== -1);
   });
+  test('Should provide a correct path for a file in the API root', () => {
+    const nestedRoute = routesConfig.find((e) => e.path === '/resource');
+    assert(nestedRoute);
+
+    const functionName = generateFunctionName(dummyDeployment, nestedRoute);
+    assert(functionName.match(/resource/g)?.length === 1);
+  });
 });

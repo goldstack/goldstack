@@ -33,7 +33,7 @@ export const generateFunctionName = (
 
   let pathPrefix = '';
   const segments = config.path.split('/');
-  if (segments.length === 2) {
+  if (segments.length === 2 && name === 'index_root_lambda_4423') {
     pathPrefix = `${segments[1]}-`;
   }
   if (segments.length > 2) {

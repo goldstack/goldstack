@@ -5,7 +5,7 @@ import { deployFunction, LambdaConfig } from '@goldstack/utils-aws-lambda';
 import { readLambdaConfig } from '@goldstack/utils-aws-lambda';
 import { defaultRoutesPath } from './templateLambdaConsts';
 
-import { mkdir, rmSafe } from '@goldstack/utils-sh';
+import { mkdir } from '@goldstack/utils-sh';
 import { generateFunctionName } from './generateLambdaConfig';
 import { getOutDirForLambda } from './templateLambdaApiBuild';
 
