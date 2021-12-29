@@ -10,7 +10,8 @@ describe('Lambda utils', () => {
     assert(!!routes.find((e) => e.route === 'ANY /'));
     assert(!!routes.find((e) => e.route === 'ANY /bird'));
     assert(
-      routes.find((e) => e.route === 'ANY /bird')?.relativePath === 'bird.ts'
+      routes.find((e) => e.route === 'ANY /bird')?.relativeFilePath ===
+        'bird.ts'
     );
     assert(routes.find((e) => e.route === 'ANY /bird')?.name === 'bird');
   });

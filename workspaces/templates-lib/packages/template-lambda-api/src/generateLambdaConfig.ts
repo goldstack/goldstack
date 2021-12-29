@@ -4,10 +4,6 @@ import {
   LambdaApiDeployment,
 } from './types/LambdaApiPackage';
 
-function removeExtension(path: string): string {
-  return path.replace(/\.[^/.]+$/, '');
-}
-
 /**
  * Generates a valid function name for a route
  */
@@ -23,9 +19,7 @@ export const generateFunctionName = (
   if (name === '$index') {
     name = 'index_root_lambda_4423';
   }
-  name = `${removeExtension(config.relativePath)
-    .replace(/\//g, '-')
-    .replace(/\$/g, '_')}-${name}`;
+  name = `${config.path.replace(/\//g, '-').replace(/\$/g, '_')}-${name}`;
   return (deployment.configuration.lambdaNamePrefix || '') + name;
 };
 

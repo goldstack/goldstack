@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["pnp:C:\\Users\\Max\\repos\\goldstack-mega\\workspaces\\templates\\packages\\lambda-api\\src\\routes\\$default.ts"],
+  "sourcesContent": ["import {\n  Handler,\n  APIGatewayProxyEventV2,\n  APIGatewayProxyResultV2,\n} from 'aws-lambda';\n\ntype ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;\n\n// eslint-disable-next-line @typescript-eslint/no-unused-vars\nexport const handler: ProxyHandler = async (event, context) => {\n  return {\n    statusCode: 201,\n    body: JSON.stringify({\n      message: 'Default fallback handler',\n    }),\n  };\n};\n"],
+  "mappings": "8gBAAA,8BASO,GAAM,GAAwB,MAAO,EAAO,IAC1C,EACL,WAAY,IACZ,KAAM,KAAK,UAAU,CACnB,QAAS",
+  "names": []
+}

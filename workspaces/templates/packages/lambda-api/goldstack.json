@@ -18,8 +18,11 @@
           "$default": {
             "function_name": "goldstack-test-lambda-api-_default-default_gateway_lambda_2281"
           },
+          "ANY /hello/greeting": {
+            "function_name": "goldstack-test-lambda-api--hello-greeting-greeting"
+          },
           "ANY /hello": {
-            "function_name": "goldstack-test-lambda-api-hello-hello"
+            "function_name": "goldstack-test-lambda-api--hello-hello"
           }
         }
       },

@@ -4,11 +4,8 @@ import { LambdaConfig } from '@goldstack/utils-aws-lambda';
 import { mkdir } from '@goldstack/utils-sh';
 import { defaultRoutesPath } from './templateLambdaConsts';
 
-function removeExtension(path: string): string {
-  return path.replace(/\.[^/.]+$/, '');
-}
 export const getOutDirForLambda = (config: LambdaConfig): string => {
-  return `./distLambda/${removeExtension(config.relativePath)}`;
+  return `./distLambda${config.path}`;
 };
 
 export const getOutFileForLambda = (config: LambdaConfig): string => {
@@ -21,7 +18,7 @@ export const buildLambdas = async (configs: LambdaConfig[]): Promise<void> => {
     await build({
       plugins: [pnpPlugin()],
       bundle: true,
-      entryPoints: [`${defaultRoutesPath}/${config.relativePath}`],
+      entryPoints: [`${defaultRoutesPath}/${config.relativeFilePath}`],
       external: ['aws-sdk'],
       minify: true,
       format: 'cjs',

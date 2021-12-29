@@ -9,8 +9,9 @@ export enum RouteType {
 export interface LambdaConfig {
   name: string;
   type: RouteType;
-  absolutePath: string;
-  relativePath: string;
+  absoluteFilePath: string;
+  relativeFilePath: string;
+  path: string;
   route: string;
 }
 
@@ -55,15 +56,23 @@ function removeExtension(path: string): string {
   return path.replace(/\.[^/.]+$/, '');
 }
 
-function makeRoute(configRoot: string, dir: string): string {
-  const route = removeExtension(posixPath(relative(configRoot, dir)));
-  if (route === '$index') {
-    return 'ANY /';
+function makePath(configRoot: string, dir: string): string {
+  const path = removeExtension(posixPath(relative(configRoot, dir)));
+  if (path === '$index') {
+    return '/';
   }
+  if (path === '$default') {
+    return '$default';
+  }
+  return `/${path}`;
+}
+
+function makeRoute(configRoot: string, dir: string): string {
+  const route = makePath(configRoot, dir);
   if (route === '$default') {
     return '$default';
   }
-  return `ANY /${route}`;
+  return `ANY ${route}`;
 }
 
 function readLambdaConfigImpl(
@@ -76,8 +85,9 @@ function readLambdaConfigImpl(
   const configItem: LambdaConfigWork = {
     name: root,
     type: RouteType.DIR,
-    absolutePath: dir,
-    relativePath: relative(configRoot, dir),
+    absoluteFilePath: dir,
+    path: makePath(configRoot, dir),
+    relativeFilePath: relative(configRoot, dir),
     route: rootRoute,
   };
 
@@ -97,8 +107,9 @@ function readLambdaConfigImpl(
       configItem.children[name] = {
         name: removeExtension(name),
         type: RouteType.FUNCTION,
-        absolutePath: fullPath,
-        relativePath: relative(configRoot, fullPath),
+        path: makePath(configRoot, fullPath),
+        absoluteFilePath: fullPath,
+        relativeFilePath: relative(configRoot, fullPath),
         route: route,
       };
     } else {
