@@ -2,9 +2,8 @@ import assert from 'assert';
 import { readLambdaConfig } from './collectLambdasFromFiles';
 
 describe('Lambda utils', () => {
+  const routes = readLambdaConfig('./testData/routes');
   it('Should obtain config from files', async () => {
-    const routes = readLambdaConfig('./testData/routes');
-    console.log(JSON.stringify(routes, null, 2));
     assert(!!routes.find((e) => e.route === '$default'));
     assert(!!routes.find((e) => e.route === 'ANY /bird/abilities'));
     assert(!!routes.find((e) => e.route === 'ANY /'));
@@ -14,5 +13,10 @@ describe('Lambda utils', () => {
         'bird.ts'
     );
     assert(routes.find((e) => e.route === 'ANY /bird')?.name === 'bird');
+  });
+  it('Should be able to handle index files', async () => {
+    // console.log(JSON.stringify(routes, null, 2));
+    const indexRoute = routes.find((e) => e.route === 'ANY /dog');
+    assert(indexRoute !== undefined);
   });
 });

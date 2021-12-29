@@ -21,10 +21,10 @@ export const deployLambdas = async (
 
   const operations = lambdaConfig.map(async (config) => {
     const functionName = generateFunctionName(params.deployment, config);
+    console.log(`[${functionName}]: Starting deployment`);
     const functionDir = getOutDirForLambda(config);
     mkdir('-p', functionDir);
     const targetArchive = `${functionDir}/${config.name}.zip`;
-    await rmSafe(targetArchive);
     await deployFunction({
       targetArchiveName: targetArchive,
       lambdaPackageDir: functionDir,
@@ -32,6 +32,7 @@ export const deployLambdas = async (
       region: params.deployment.awsRegion,
       functionName,
     });
+    console.log(`[${functionName}]: Deployment completed`);
   });
   await Promise.all(operations);
 };

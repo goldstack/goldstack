@@ -4,6 +4,16 @@ import {
   LambdaApiDeployment,
 } from './types/LambdaApiPackage';
 
+const santiseFunctionName = (input: string): string => {
+  return input
+    .replace(/\//g, '-')
+    .replace(/\$/g, '_')
+    .replace(/\{/g, '_')
+    .replace(/\}/g, '_')
+    .replace(/\+/g, '_')
+    .replace(/[^\w\-_]/gi, '_');
+};
+
 /**
  * Generates a valid function name for a route
  */
@@ -19,8 +29,20 @@ export const generateFunctionName = (
   if (name === '$index') {
     name = 'index_root_lambda_4423';
   }
-  name = `${config.path.replace(/\//g, '-').replace(/\$/g, '_')}-${name}`;
-  return (deployment.configuration.lambdaNamePrefix || '') + name;
+  name = santiseFunctionName(name);
+
+  let pathPrefix = '';
+  const segments = config.path.split('/');
+  if (segments.length > 2) {
+    segments.shift(); // remove first element since path starts with '/' and thus the first element is always ''
+    segments.pop(); // remove the last element since that is the name of the function in the route
+    pathPrefix = santiseFunctionName(segments.join('-'));
+    pathPrefix = `${pathPrefix}-`;
+  }
+
+  name = `${pathPrefix}${name}`;
+  name = (`${deployment.configuration.lambdaNamePrefix}-` || '') + name;
+  return name;
 };
 
 export const generateLambdaConfig = (

@@ -5,6 +5,9 @@ import { mkdir } from '@goldstack/utils-sh';
 import { defaultRoutesPath } from './templateLambdaConsts';
 
 export const getOutDirForLambda = (config: LambdaConfig): string => {
+  if (config.path === '$default') {
+    return `./distLambda/${config.path}`;
+  }
   return `./distLambda${config.path}`;
 };
 

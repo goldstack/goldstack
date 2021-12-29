@@ -1,6 +1,9 @@
 import { readLambdaConfig } from '@goldstack/utils-aws-lambda';
 import assert from 'assert';
-import { generateLambdaConfig } from './generateLambdaConfig';
+import {
+  generateFunctionName,
+  generateLambdaConfig,
+} from './generateLambdaConfig';
 import { LambdaApiDeployment } from './templateLambdaApi';
 import { getOutDirForLambda } from './templateLambdaApiBuild';
 
@@ -32,5 +35,26 @@ describe('Generate Lambda config', () => {
     assert(nestedRoute);
     const dir = getOutDirForLambda(nestedRoute);
     assert(dir === './distLambda/folder/nested');
+  });
+  test('Should determine path parametmers for file names', () => {
+    const nestedRoute = routesConfig.find(
+      (e) => e.path === '/folder/{pathparam}'
+    );
+    assert(nestedRoute);
+    const functionName = generateFunctionName(dummyDeployment, nestedRoute);
+    assert(functionName.indexOf('folder') !== -1);
+    assert(functionName.indexOf('{') === -1);
+    assert(functionName.indexOf('}') === -1);
+  });
+  test('Should determine path parametmers for folder names', () => {
+    const nestedRoute = routesConfig.find(
+      (e) => e.path === '/resource/{path}/object'
+    );
+    assert(nestedRoute);
+    const functionName = generateFunctionName(dummyDeployment, nestedRoute);
+    assert(functionName.indexOf('object') !== -1);
+    assert(functionName.indexOf('resource') !== -1);
+    assert(functionName.indexOf('{') === -1);
+    assert(functionName.indexOf('}') === -1);
   });
 });

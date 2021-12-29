@@ -7,13 +7,7 @@ import {
   assertDirectoryExists,
 } from '@goldstack/utils-sh';
 import { fatal } from '@goldstack/utils-log';
-import { AWSAPIKeyUser } from '@goldstack/infra-aws';
-import {
-  imageGoldstackBuild,
-  hasDocker,
-  assertDocker,
-  imageAWSCli,
-} from '@goldstack/utils-docker';
+import { hasDocker, assertDocker, imageAWSCli } from '@goldstack/utils-docker';
 
 export const assertAwsCli = (): void => {
   if (!commandExists('aws')) {

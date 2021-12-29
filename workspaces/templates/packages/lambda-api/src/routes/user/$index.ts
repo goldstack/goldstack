@@ -8,10 +8,19 @@ type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const handler: ProxyHandler = async (event, context) => {
+  console.log(JSON.stringify(event, null, 2));
+  if (event.requestContext.http.method === 'GET') {
+    return {
+      statusCode: 201,
+      body: JSON.stringify({
+        users: ['1', '2'],
+      }),
+    };
+  }
   return {
     statusCode: 201,
     body: JSON.stringify({
-      message: 'Unknown endpoint',
+      message: 'Not supported',
     }),
   };
 };

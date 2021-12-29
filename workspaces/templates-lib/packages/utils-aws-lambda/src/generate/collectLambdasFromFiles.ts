@@ -61,6 +61,12 @@ function makePath(configRoot: string, dir: string): string {
   if (path === '$index') {
     return '/';
   }
+  if (path.indexOf('$index') !== -1) {
+    let newPath = path.replace('$index', '');
+    // API Gateway does not accept routes like /myroute/
+    newPath = newPath.slice(0, newPath.length - 1);
+    return `/${newPath}`;
+  }
   if (path === '$default') {
     return '$default';
   }

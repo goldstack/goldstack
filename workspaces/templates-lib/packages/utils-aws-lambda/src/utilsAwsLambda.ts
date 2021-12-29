@@ -32,6 +32,9 @@ export const deployFunction = async (
   const deployResult = awsCli({
     credentials: params.awsCredentials,
     region: params.region,
+    options: {
+      silent: true,
+    },
     command: `lambda update-function-code --function-name ${params.functionName} --zip-file fileb://${targetArchive}`,
   });
   if (!params.targetArchiveName) {
@@ -45,6 +48,9 @@ export const deployFunction = async (
     const res = awsCli({
       credentials: params.awsCredentials,
       region: params.region,
+      options: {
+        silent: true,
+      },
       command: `lambda get-function --function-name ${params.functionName}`,
     });
     const data = JSON.parse(res);
