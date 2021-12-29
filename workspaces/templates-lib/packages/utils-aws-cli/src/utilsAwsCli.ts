@@ -5,7 +5,9 @@ import {
   cd,
   ExecParams,
   assertDirectoryExists,
+  execAsync,
 } from '@goldstack/utils-sh';
+import AWS from 'aws-sdk';
 import { fatal } from '@goldstack/utils-log';
 import { hasDocker, assertDocker, imageAWSCli } from '@goldstack/utils-docker';
 
@@ -36,7 +38,9 @@ interface AWSExecParams {
   options?: ExecParams;
 }
 
-export const execWithDocker = (params: AWSExecParams): string => {
+export const execWithDocker = async (
+  params: AWSExecParams
+): Promise<string> => {
   assertDocker();
 
   const awsUserConfig =
@@ -51,7 +55,7 @@ export const execWithDocker = (params: AWSExecParams): string => {
     'Cannot execute AWS cli command since working directory does not exist: aws ' +
       params.command
   );
-  return exec(
+  return execAsync(
     'docker run --rm ' +
       awsUserConfig +
       `-v "${mountDir}":/app ` +
@@ -61,7 +65,7 @@ export const execWithDocker = (params: AWSExecParams): string => {
   );
 };
 
-export const execWithCli = (params: AWSExecParams): string => {
+export const execWithCli = async (params: AWSExecParams): Promise<string> => {
   assertAwsCli();
 
   process.env.AWS_ACCESS_KEY_ID = params.credentials.accessKeyId;
@@ -77,13 +81,13 @@ export const execWithCli = (params: AWSExecParams): string => {
   const previousDir = pwd();
   cd(params.workDir || pwd());
   try {
-    return exec(`aws ${params.command}`, params.options);
+    return await execAsync(`aws ${params.command}`, params.options);
   } finally {
     cd(previousDir);
   }
 };
 
-export const awsCli = (params: AWSExecParams): string => {
+export const awsCli = async (params: AWSExecParams): Promise<string> => {
   if (hasDocker()) {
     return execWithDocker(params);
   }

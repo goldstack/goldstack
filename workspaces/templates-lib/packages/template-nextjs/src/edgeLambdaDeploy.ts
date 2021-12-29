@@ -90,7 +90,7 @@ export const deployEdgeLambda = async (
 
   const { FunctionArn } = deployResult;
 
-  const publishResults = awsCli({
+  const publishResults = await awsCli({
     credentials,
     region: 'us-east-1',
     command: `lambda publish-version --function-name ${functionName}`,
@@ -107,7 +107,7 @@ export const deployEdgeLambda = async (
     setTimeout(() => resolve(), 10000);
   });
 
-  const cfDistributionResult = awsCli({
+  const cfDistributionResult = await awsCli({
     credentials,
     region: 'us-east-1',
     command: `cloudfront get-distribution-config --id ${readTerraformStateVariable(
@@ -130,7 +130,7 @@ export const deployEdgeLambda = async (
     JSON.stringify(cfDistribution.DistributionConfig, null, 2),
     './dist/cf.json'
   );
-  awsCli({
+  await awsCli({
     credentials: credentials,
     region: 'us-east-1',
     command: `cloudfront update-distribution --id ${readTerraformStateVariable(

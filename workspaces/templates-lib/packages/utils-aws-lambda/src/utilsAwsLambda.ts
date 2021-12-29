@@ -29,7 +29,7 @@ export const deployFunction = async (
     mode: 511,
   });
 
-  const deployResult = awsCli({
+  const deployResult = await awsCli({
     credentials: params.awsCredentials,
     region: params.region,
     options: {
@@ -45,7 +45,7 @@ export const deployFunction = async (
   let counter = 0;
   let state = '';
   while (counter < 20 && state !== 'Active') {
-    const res = awsCli({
+    const res = await awsCli({
       credentials: params.awsCredentials,
       region: params.region,
       options: {
