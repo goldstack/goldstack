@@ -14,12 +14,12 @@ interface DeployLambdaParams {
   config: LambdaConfig[];
 }
 
-export const deployLambda = async (
+export const deployLambdas = async (
   params: DeployLambdaParams
 ): Promise<void> => {
   const lambdaConfig = readLambdaConfig(defaultRoutesPath);
 
-  for await (const config of lambdaConfig) {
+  const operations = lambdaConfig.map(async (config) => {
     const functionName = generateFunctionName(params.deployment, config);
     const functionDir = getOutDirForLambda(config);
     mkdir('-p', functionDir);
@@ -32,14 +32,15 @@ export const deployLambda = async (
       region: params.deployment.awsRegion,
       functionName,
     });
-  }
+  });
+  await Promise.all(operations);
 };
 
 export const deployCli = async (
   deployment: LambdaApiDeployment,
   config: LambdaConfig[]
 ): Promise<void> => {
-  await deployLambda({
+  await deployLambdas({
     deployment,
     config,
   });
