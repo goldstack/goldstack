@@ -25,13 +25,13 @@
             "function_name": "goldstack-test-lambda-api-cart-_sessionId_-items"
           },
           "ANY /echo": {
-            "function_name": "goldstack-test-lambda-api-echo"
+            "function_name": "goldstack-test-lambda-api-echo-echo"
           },
           "ANY /order/{id}": {
             "function_name": "goldstack-test-lambda-api-order-_id_"
           },
           "ANY /user": {
-            "function_name": "goldstack-test-lambda-api-index_root_lambda_4423"
+            "function_name": "goldstack-test-lambda-api-user-index_root_lambda_4423"
           },
           "ANY /user/{userId}": {
             "function_name": "goldstack-test-lambda-api-user-_userId_"

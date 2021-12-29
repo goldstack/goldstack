@@ -33,6 +33,9 @@ export const generateFunctionName = (
 
   let pathPrefix = '';
   const segments = config.path.split('/');
+  if (segments.length === 2) {
+    pathPrefix = `${segments[1]}-`;
+  }
   if (segments.length > 2) {
     segments.shift(); // remove first element since path starts with '/' and thus the first element is always ''
     segments.pop(); // remove the last element since that is the name of the function in the route

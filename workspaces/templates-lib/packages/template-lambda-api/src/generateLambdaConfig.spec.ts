@@ -57,4 +57,11 @@ describe('Generate Lambda config', () => {
     assert(functionName.indexOf('{') === -1);
     assert(functionName.indexOf('}') === -1);
   });
+  test('Should provide a correct path for a nested index file', () => {
+    const nestedRoute = routesConfig.find((e) => e.path === '/health');
+    assert(nestedRoute);
+
+    const functionName = generateFunctionName(dummyDeployment, nestedRoute);
+    assert(functionName.indexOf('health') !== -1);
+  });
 });

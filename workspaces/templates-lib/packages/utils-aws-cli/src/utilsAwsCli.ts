@@ -75,7 +75,6 @@ export const execWithCli = (params: AWSExecParams): string => {
   );
 
   const previousDir = pwd();
-  console.log('Executing AWS cli command in', params.workDir);
   cd(params.workDir || pwd());
   try {
     return exec(`aws ${params.command}`, params.options);
