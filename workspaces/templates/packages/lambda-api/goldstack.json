@@ -25,7 +25,7 @@
             "function_name": "goldstack-test-lambda-api-cart-_sessionId_-items"
           },
           "ANY /echo": {
-            "function_name": "goldstack-test-lambda-api-echo-echo"
+            "function_name": "goldstack-test-lambda-api-echo"
           },
           "ANY /order/{id}": {
             "function_name": "goldstack-test-lambda-api-order-_id_"

@@ -31,14 +31,16 @@ export const deploy = async (
   const repoUrl = readTerraformStateVariable(deploymentState, 'repo_url');
   assertDocker();
 
-  const ecrLoginPassword = await awsCli({
-    credentials: await getAWSUser(deployment.awsUser),
-    region: deployment.awsRegion,
-    command: `ecr get-login-password --region ${deployment.awsRegion}`,
-    options: {
-      silent: true,
-    },
-  }).trim();
+  const ecrLoginPassword = (
+    await awsCli({
+      credentials: await getAWSUser(deployment.awsUser),
+      region: deployment.awsRegion,
+      command: `ecr get-login-password --region ${deployment.awsRegion}`,
+      options: {
+        silent: true,
+      },
+    })
+  ).trim();
 
   exec(`docker login --username AWS --password ${ecrLoginPassword} ${repoUrl}`);
 
