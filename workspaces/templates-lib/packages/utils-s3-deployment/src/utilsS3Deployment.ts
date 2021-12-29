@@ -16,13 +16,13 @@ export const upload = async (params: S3UploadParams): Promise<void> => {
   // users will not try to request files that no longer exist
   // during the upload process
   // see https://github.com/aws/aws-cli/issues/1417
-  awsCli({
+  await awsCli({
     command: `s3 sync . s3://${params.bucket}${params.bucketPath}`,
     workDir: resolve(params.localPath),
     credentials: user,
     region: params.region,
   });
-  awsCli({
+  await awsCli({
     command: `s3 sync . s3://${params.bucket}${params.bucketPath} --delete`,
     workDir: resolve(params.localPath),
     credentials: user,

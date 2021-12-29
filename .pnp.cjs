@@ -159,6 +159,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates-lib/packages/template-email-send"
       },
       {
+        "name": "@goldstack/template-lambda-api",
+        "reference": "workspace:workspaces/templates-lib/packages/template-lambda-api"
+      },
+      {
         "name": "@goldstack/template-lambda-express",
         "reference": "workspace:workspaces/templates-lib/packages/template-lambda-express"
       },
@@ -382,6 +386,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/template-build-set", ["workspace:workspaces/templates-management/packages/template-build-set"]],
       ["@goldstack/template-docker-image-aws", ["workspace:workspaces/templates-lib/packages/template-docker-image-aws"]],
       ["@goldstack/template-email-send", ["workspace:workspaces/templates-lib/packages/template-email-send"]],
+      ["@goldstack/template-lambda-api", ["workspace:workspaces/templates-lib/packages/template-lambda-api"]],
       ["@goldstack/template-lambda-express", ["workspace:workspaces/templates-lib/packages/template-lambda-express"]],
       ["@goldstack/template-management-cli", ["workspace:workspaces/apps/packages/template-management-cli"]],
       ["@goldstack/template-nextjs", ["workspace:workspaces/templates-lib/packages/template-nextjs"]],
@@ -1708,7 +1713,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/templates/packages/lambda-api/",
           "packageDependencies": [
             ["@goldstack/lambda-api", "workspace:workspaces/templates/packages/lambda-api"],
-            ["@goldstack/template-lambda-express", "workspace:workspaces/templates-lib/packages/template-lambda-express"],
+            ["@goldstack/template-lambda-api", "workspace:workspaces/templates-lib/packages/template-lambda-api"],
             ["@jest-mock/express", "npm:1.1.8"],
             ["@types/aws-lambda", "npm:8.10.88"],
             ["@types/aws-serverless-express", "npm:3.3.3"],
@@ -2317,6 +2322,45 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.3.0"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"],
             ["uuid", "npm:8.3.0"],
+            ["yargs", "npm:15.4.1"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@goldstack/template-lambda-api", [
+        ["workspace:workspaces/templates-lib/packages/template-lambda-api", {
+          "packageLocation": "./workspaces/templates-lib/packages/template-lambda-api/",
+          "packageDependencies": [
+            ["@goldstack/template-lambda-api", "workspace:workspaces/templates-lib/packages/template-lambda-api"],
+            ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],
+            ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],
+            ["@goldstack/utils-aws-lambda", "workspace:workspaces/templates-lib/packages/utils-aws-lambda"],
+            ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],
+            ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],
+            ["@goldstack/utils-docker", "workspace:workspaces/templates-lib/packages/utils-docker"],
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
+            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
+            ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
+            ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],
+            ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],
+            ["@goldstack/utils-s3-deployment", "workspace:workspaces/templates-lib/packages/utils-s3-deployment"],
+            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
+            ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],
+            ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],
+            ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],
+            ["@types/jest", "npm:27.0.2"],
+            ["@types/node", "npm:16.11.0"],
+            ["@types/yargs", "npm:15.0.7"],
+            ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:2.0.0-rc.1"],
+            ["archiver", "npm:5.0.0"],
+            ["esbuild", "npm:0.14.5"],
+            ["jest", "npm:26.6.3"],
+            ["source-map-support", "npm:0.5.21"],
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
+            ["ts-json-schema-generator", "npm:0.96.0"],
+            ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.3.0"],
+            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"],
             ["yargs", "npm:15.4.1"]
           ],
           "linkType": "SOFT",

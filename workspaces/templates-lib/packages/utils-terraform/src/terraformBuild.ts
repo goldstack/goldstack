@@ -111,14 +111,27 @@ export const getVariablesFromHCL = (properties: object): Variables => {
         'Property in Goldstack configuration contains "_". This is not recommended. Property: ' +
           key +
           ' Please use valid JavaScript variable names. For instance, use "myVar" instead of "my_var". ' +
-          ' Goldstack will automatically convert these to Terraform variables ("my_var") when required.'
+          ' Goldstack will automatically convert these to Terraform variables ("myVar" -> "my_var") when required.'
       );
     }
     if (jsVariableNames.find((varName) => varName === key)) {
       const variableName = convertToPythonVariable(key);
       const variableValue = properties[key];
       if (variableValue !== '') {
-        vars.push([variableName, variableValue]);
+        if (typeof variableValue === 'string') {
+          vars.push([variableName, variableValue]);
+        } else if (typeof variableValue === 'number') {
+          vars.push([variableName, `${variableValue}`]);
+        } else if (typeof variableValue === 'object') {
+          vars.push([
+            variableName,
+            `${JSON.stringify(variableValue).replace(/"/g, '\\"')}`,
+          ]);
+        } else {
+          throw new Error(
+            `Not supported type for variable ${variableName}: ${typeof variableValue}`
+          );
+        }
       } else {
         const environmentVarialbeName = variableName.toLocaleUpperCase();
         if (

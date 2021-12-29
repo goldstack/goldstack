@@ -7,12 +7,13 @@
   "sideEffects": false,
   "main": "src/module.ts",
   "scripts": {
-    "build": "ts-node ./scripts/build.ts",
+    "build": "template build",
+    "build-ts": "yarn template-ts build",
     "clean": "rm -rf ./dist && rm -rf distLambda",
     "compile": "tsc --build",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
     "deploy": "yarn build && template deploy \"$@\"",
-    "deploy-ts": "yarn build && yarn template-ts deploy",
+    "deploy-ts": "yarn build-ts && yarn template-ts deploy",
     "infra": "template infra \"$@\"",
     "start": "yarn compile && yarn node dist/local.js",
     "template": "template",
@@ -22,12 +23,12 @@
     "watch": "PORT=3030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev ./src/local.ts"
   },
   "dependencies": {
-    "@goldstack/template-lambda-express": "0.3.72",
-    "@types/aws-lambda": "^8.10.88",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
+    "@goldstack/template-lambda-api": "0.3.72",
     "@jest-mock/express": "^1.1.7",
+    "@types/aws-lambda": "^8.10.88",
     "@types/aws-serverless-express": "^3.3.3",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",

@@ -10,10 +10,33 @@
       "awsRegion": "us-west-2",
       "awsUser": "goldstack-dev",
       "configuration": {
-        "lambdaName": "goldstack-test-lambda-api",
+        "lambdaNamePrefix": "goldstack-test-lambda-api",
         "apiDomain": "lambda-api.examples.templates.dev.goldstack.party",
         "hostedZoneDomain": "dev.goldstack.party",
-        "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party"
+        "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party",
+        "lambdas": {
+          "$default": {
+            "function_name": "goldstack-test-lambda-api-default_gateway_lambda_2281"
+          },
+          "ANY /admin/{proxy+}": {
+            "function_name": "goldstack-test-lambda-api-admin-_proxy__"
+          },
+          "ANY /cart/{sessionId}/items": {
+            "function_name": "goldstack-test-lambda-api-cart-_sessionId_-items"
+          },
+          "ANY /echo": {
+            "function_name": "goldstack-test-lambda-api-echo"
+          },
+          "ANY /order/{id}": {
+            "function_name": "goldstack-test-lambda-api-order-_id_"
+          },
+          "ANY /user": {
+            "function_name": "goldstack-test-lambda-api-user-index_root_lambda_4423"
+          },
+          "ANY /user/{userId}": {
+            "function_name": "goldstack-test-lambda-api-user-_userId_"
+          }
+        }
       },
       "tfStateKey": "lambda-api-template-prod-fbec3992bfc4f00aa381.tfstate"
     }

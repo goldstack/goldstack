@@ -6,13 +6,14 @@ import {
 
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const handler: ProxyHandler = async (event, context) => {
-  const name = event.queryStringParameters?.name || 'world';
+  const path = event.pathParameters?.['proxy'] || 'not specified';
 
   return {
     statusCode: 201,
     body: JSON.stringify({
-      message: `Hello from Goldstack ${name}`,
+      message: `Accessing path in admin [${path}]`,
     }),
   };
 };

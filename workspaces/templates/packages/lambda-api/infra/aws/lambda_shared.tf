@@ -1,44 +1,7 @@
-
-data "archive_file" "empty_lambda" {
-  type = "zip"
-  output_path = "${path.module}/empty_lambda.zip"
-
-  source {
-    content = "exports.handler = function() { };"
-    filename = "root.js"
-  }
-}
-
-resource "aws_lambda_function" "main" {
-  function_name = var.lambda_name
-
-  filename = data.archive_file.empty_lambda.output_path
-
-  handler = "root.handler"
-  runtime = "nodejs12.x"
-
-  memory_size = 2048
-  timeout = 30 # default Gateway timeout is 29 s
-
-  role = aws_iam_role.lambda_exec.arn
-
-  lifecycle {
-    ignore_changes = [
-       filename,
-    ]
-  }
-
-  environment {
-    variables = {
-      GOLDSTACK_DEPLOYMENT = var.name
-      CORS                 = var.cors
-      NODE_OPTIONS         = "--enable-source-maps"
-    }
-  }
-}
+# Shared config for all lambdas in the API
 
 resource "aws_iam_role" "lambda_exec" {
-  name = "${var.lambda_name}-role"
+  name = "lambda-api-role-${random_id.id.hex}"
 
   assume_role_policy = <<EOF
 {
@@ -68,7 +31,7 @@ resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach" {
 # granted in the lambda_admin_role_attach above. But added here to make it easier to fine-tune permissions
 # in the above at a later point. 
 resource "aws_iam_policy" "lambda_logging" {
-  name        = "${var.lambda_name}-lambda-logging-role"
+  name        = "lambda-api-logging-role-${random_id.id.hex}"
   path        = "/"
   description = "IAM policy for logging from a lambda"
 
@@ -94,3 +57,4 @@ resource "aws_iam_role_policy_attachment" "lambda_logs" {
   role       = aws_iam_role.lambda_exec.name
   policy_arn = aws_iam_policy.lambda_logging.arn
 }
+

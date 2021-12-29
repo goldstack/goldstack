@@ -1,4 +1,4 @@
-import { execSync } from 'child_process';
+import { execSync, exec as processAsync } from 'child_process';
 import fs from 'fs';
 import ncp from 'ncp';
 
@@ -262,6 +262,27 @@ const exec = (cmd: string, params?: ExecParams): string => {
   }
 };
 
+export const execAsync = async (
+  cmd: string,
+  params?: ExecParams
+): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    processAsync(cmd, (err, stdout, stderr) => {
+      if (!params?.silent) {
+        console.log(stdout.toString());
+      }
+      if (err) {
+        console.error('Command failed:', cmd);
+        if (stderr) {
+          console.error(stderr.toString());
+        }
+        reject(err);
+        return;
+      }
+      resolve(stdout.toString());
+    });
+  });
+};
 const read = (path: string): string => {
   const buffer = fs.readFileSync(path, 'utf8');
   return buffer.toString();

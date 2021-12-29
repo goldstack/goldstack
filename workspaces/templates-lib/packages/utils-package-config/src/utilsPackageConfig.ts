@@ -1,9 +1,5 @@
 import { Deployment } from '@goldstack/infra';
-import {
-  Configuration,
-  Package,
-  readPackageConfig,
-} from '@goldstack/utils-package';
+import { Package, readPackageConfig } from '@goldstack/utils-package';
 import fs from 'fs';
 import { validateConfig } from '@goldstack/utils-config';
 import { read } from '@goldstack/utils-sh';

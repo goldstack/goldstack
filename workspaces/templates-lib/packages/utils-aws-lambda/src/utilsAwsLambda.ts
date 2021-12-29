@@ -1,6 +1,11 @@
 import { awsCli } from '@goldstack/utils-aws-cli';
 import { zip, rmSafe } from '@goldstack/utils-sh';
 
+export {
+  readLambdaConfig,
+  LambdaConfig,
+} from './generate/collectLambdasFromFiles';
+
 import AWS from 'aws-sdk';
 
 export interface DeployFunctionParams {
@@ -24,9 +29,12 @@ export const deployFunction = async (
     mode: 511,
   });
 
-  const deployResult = awsCli({
+  const deployResult = await awsCli({
     credentials: params.awsCredentials,
     region: params.region,
+    options: {
+      silent: true,
+    },
     command: `lambda update-function-code --function-name ${params.functionName} --zip-file fileb://${targetArchive}`,
   });
   if (!params.targetArchiveName) {
@@ -37,9 +45,12 @@ export const deployFunction = async (
   let counter = 0;
   let state = '';
   while (counter < 20 && state !== 'Active') {
-    const res = awsCli({
+    const res = await awsCli({
       credentials: params.awsCredentials,
       region: params.region,
+      options: {
+        silent: true,
+      },
       command: `lambda get-function --function-name ${params.functionName}`,
     });
     const data = JSON.parse(res);
