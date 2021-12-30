@@ -1,0 +1,9 @@
+undecided:
+  - root
+  - "@goldstack/goldstack-api"
+  - "@goldstack/lambda-api"
+  - "@goldstack/lambda-express"
+  - "@goldstack/server-go"
+  - "@goldstack/template-lambda-api"
+  - "@goldstack/template-lambda-express"
+  - "@goldstack/utils-aws-lambda"
