@@ -1,10 +1,9 @@
 import { awsCli } from '@goldstack/utils-aws-cli';
 import { zip, rmSafe } from '@goldstack/utils-sh';
 
-export {
-  readLambdaConfig,
-  LambdaConfig,
-} from './generate/collectLambdasFromFiles';
+export { readLambdaConfig } from './generate/collectLambdasFromFiles';
+
+export type { LambdaConfig } from './generate/collectLambdasFromFiles';
 
 import AWS from 'aws-sdk';
 
