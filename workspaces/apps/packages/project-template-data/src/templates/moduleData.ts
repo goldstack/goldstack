@@ -29,4 +29,9 @@ const EmailSend: ModuleProps = {
   link:
     'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/email-send#readme',
 };
-export { NextJsBootstrap, NextJs, Express, GoGin, EmailSend };
+const LambdaAPI: ModuleProps = {
+  title: 'Lambda API Gateway',
+  link:
+    'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/lambda-api#readme',
+};
+export { NextJsBootstrap, NextJs, Express, GoGin, EmailSend, LambdaAPI };

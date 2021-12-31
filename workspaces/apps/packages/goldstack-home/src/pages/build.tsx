@@ -24,6 +24,7 @@ import NextjsIcon from './../icons/nextjs.svg';
 import BootstrapIcon from './../icons/bootstrap.svg';
 import CloudFrontIcon from './../icons/cloudfront.svg';
 import ExpressIcon from './../icons/nodejs.svg';
+import GatewayIcon from './../icons/aws-api-gateway.svg';
 import S3Icon from './../icons/s3.svg';
 import SESIcon from './../icons/ses.svg';
 interface CheckboxProps {
@@ -240,6 +241,15 @@ const ModuleSelection = (props: { elements: string[] }) => {
                   <div className="border-bottom pb-2 mb-4 mt-6">
                     <h2 className="h3 mb-0">Backend</h2>
                   </div>
+                  <Checkbox
+                    title="Serverless API"
+                    element="lambda-api"
+                    disabled={building}
+                    icon={GatewayIcon}
+                    docsLink={docsRoot + '/modules/lambda-api'}
+                    checked={elements.indexOf('lambda-api') !== -1}
+                    onChange={checkboxChange}
+                  ></Checkbox>
                   <Checkbox
                     title="Lambda + Express.js"
                     element="express"

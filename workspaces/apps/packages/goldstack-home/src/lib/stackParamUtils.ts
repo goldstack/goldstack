@@ -9,6 +9,9 @@ export const getPackageIds = (elements: string[]): string[] => {
   if (elements.includes('express') || elements.includes('lambda')) {
     res.push('template:lambda-express');
   }
+  if (elements.includes('lambda-api')) {
+    res.push('template:lambda-api');
+  }
   if (elements.includes('s3')) {
     res.push('template:s3');
   }

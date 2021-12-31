@@ -1,5 +1,6 @@
 import NextJsIcon from 'src/icons/nextjs.svg';
 import NodeJsIcon from 'src/icons/nodejs.svg';
+import APIGateway from 'src/icons/aws-api-gateway.svg';
 import LambdaIcon from 'src/icons/lambda.svg';
 import SesIcon from 'src/icons/ses.svg';
 import BootstrapIcon from 'src/icons/bootstrap_large.svg';
@@ -36,9 +37,22 @@ export const getTemplateData = (
       selected: false,
       alwaysIncluded: false,
       features: [
-        { name: 'Packed with Webpack' },
+        { name: 'Bundled with esbuild' },
         { name: 'API Gateway' },
         { name: 'Helmet' },
+      ],
+    },
+    {
+      packageName: 'Lambda API Gateway',
+      packageId: 'template:lambda-api',
+      packageDescription: 'Serverless API using AWS HTTP API and Lambdas.',
+      icons: [APIGateway, LambdaIcon],
+      selected: false,
+      alwaysIncluded: false,
+      features: [
+        { name: 'API Gateway' },
+        { name: 'Small Lambda Packages' },
+        { name: 'File-based Routes' },
       ],
     },
     {

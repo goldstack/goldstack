@@ -10,14 +10,13 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
     modules: [Express],
     description: 'Rapidly deploy an Express.js server to AWS Lambda.',
     longDescription:
-      'This project template contains a fully configured Express.js server ready to be deployed in an AWS Lambda.\n' +
-      'See a list of all features included in this template below.',
+      'This project template contains an Express.js server ready to be packaged and deployed as an AWS Lambda.\n',
     tags: ['Express.js', 'Backend', 'Lambda', 'Serverless'],
     hero: {
       title: 'Express.js Lambda Template',
       content: `
           <p>
-            Rapidly deploy an Express.js server to AWS Lambda. All infrastructure already defined. Optimised for high-performance deployment using Webpack.
+            Rapidly deploy an Express.js server to AWS Lambda. All infrastructure already defined. Optimised for high-performance deployment using esbuild.
           </p>
           <p>
             Scroll down to learn more about what&apos;s included in this

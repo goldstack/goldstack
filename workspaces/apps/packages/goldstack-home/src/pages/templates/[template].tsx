@@ -32,23 +32,11 @@ const Template = (props: ProjectTemplateProps): JSX.Element => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [
-      {
-        params: { template: 'nextjs' },
-      },
-      {
-        params: { template: 'nextjs-bootstrap' },
-      },
-      {
-        params: { template: 'express-lambda' },
-      },
-      {
-        params: { template: 'go-gin' },
-      },
-      {
-        params: { template: 'express-ses' },
-      },
-    ],
+    paths: allTemplates().map((t) => {
+      return {
+        params: { template: t.id },
+      };
+    }),
     fallback: false, // Show 404 for pages that are not prerendered
   };
 };

@@ -11,5 +11,6 @@ export const getModuleTemplatesNames = (): string[] => {
     'lambda-go-gin',
     'email-send',
     'lambda-express',
+    'lambda-api',
   ];
 };
