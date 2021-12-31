@@ -17,6 +17,7 @@ import { getNextjsBootstrapTemplateData } from './templates/nextjsBootstrapTempl
 import { getExpressTemplateData } from './templates/expressTemplateData';
 import { getGoGinTemplateData } from './templates/goGinTemplateData';
 import { getEmailSentTemplateData } from './templates/emailSentTemplateData';
+import { getLambdaApiTemplate } from './templates/lambdaApiTemplateData';
 
 export { getNextJsTemplateData };
 export { getExpressTemplateData };
@@ -26,6 +27,7 @@ export { getGoGinTemplateData };
 export const allTemplates = (): ProjectTemplateProps[] => {
   const templates = [
     getNextjsBootstrapTemplateData(),
+    getLambdaApiTemplate(),
     getExpressTemplateData(),
     getNextJsTemplateData(),
     getGoGinTemplateData(),

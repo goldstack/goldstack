@@ -50,7 +50,7 @@ const ProjectTemplateBody = (props: ProjectTemplateProps): JSX.Element => {
             </div>
           </div> */}
           <hr className="my-6"></hr>
-          {/* <h4 className="mb-4">Template Features</h4> */}
+          <h4 className="mb-4">Features Included</h4>
           <ProjectTemplateFeatures
             features={props.featuresOverview || []}
           ></ProjectTemplateFeatures>
