@@ -1,7 +1,7 @@
 [
   {
     "name": "dev",
-    "latest": "475629728374.dkr.ecr.us-west-2.amazonaws.com/template-management-cli:dc6a53c",
+    "latest": "475629728374.dkr.ecr.us-west-2.amazonaws.com/template-management-cli:8645bbe",
     "terraform": {
       "cluster_name": {
         "sensitive": false,
