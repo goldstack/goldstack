@@ -1719,6 +1719,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@goldstack/lambda-api", "workspace:workspaces/templates/packages/lambda-api"],
             ["@goldstack/template-lambda-api", "workspace:workspaces/templates-lib/packages/template-lambda-api"],
+            ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],
             ["@jest-mock/express", "npm:1.1.8"],
             ["@types/aws-lambda", "npm:8.10.88"],
             ["@types/aws-serverless-express", "npm:3.3.3"],
@@ -2656,6 +2657,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:27.0.2"],
             ["@types/node", "npm:16.11.0"],
             ["cookie", "npm:0.4.1"],
+            ["cors", "npm:2.8.5"],
             ["express", "npm:4.17.1"],
             ["find-free-port", "npm:2.0.0"],
             ["jest", "npm:26.6.3"],

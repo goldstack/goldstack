@@ -205,7 +205,7 @@ export const injectGatewayResultIntoResponse = (
         });
       });
     }
-    resp.json(structuredResult.body);
+    resp.json(JSON.parse(structuredResult.body || '"parsing error"'));
     return;
   }
 

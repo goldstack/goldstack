@@ -39,27 +39,31 @@ describe('Should create API', () => {
 
   test('Should support path parameters at end of path', async () => {
     const res = await fetch(`http://localhost:${port}/order/abcd`);
-    expect(await res.text()).toContain('order [abcd]');
+    const response = await res.json();
+    expect(response.message).toContain('order [abcd]');
   });
 
   test('Should support index', async () => {
     const res = await fetch(`http://localhost:${port}/userRepo`);
-    expect(JSON.parse(await res.json())).toHaveProperty('users');
+    expect(await res.json()).toHaveProperty('users');
   });
 
   test('Should support greedy paths', async () => {
     const res = await fetch(`http://localhost:${port}/admin/my/nested/path`);
-    expect(JSON.parse(await res.text())).toContain('[my/nested/path]');
+    const response = await res.json();
+    expect(response.message).toContain('[my/nested/path]');
   });
 
   test('Should support greedy paths', async () => {
     const res = await fetch(`http://localhost:${port}/admin/short`);
-    expect(JSON.parse(await res.text())).toContain('[short]');
+    const response = await res.json();
+    expect(response.message).toContain('[short]');
   });
 
   test('Should not match root for greedy paths', async () => {
     const res = await fetch(`http://localhost:${port}/admin`);
-    expect(JSON.parse(await res.text())).toContain('Unknown endpoint');
+    const response = await res.json();
+    expect(response.message).toContain('Unknown endpoint');
   });
 
   afterAll(async () => {

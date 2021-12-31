@@ -9,13 +9,7 @@
   },
   "references": [
     {
-      "path": "../utils-aws-cli"
-    },
-    {
-      "path": "../utils-log"
-    },
-    {
-      "path": "../utils-sh"
+      "path": "../utils-aws-lambda"
     },
     {
       "path": "../utils-git"

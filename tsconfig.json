@@ -192,6 +192,10 @@
       "name": "@goldstack/utils-aws-cli"
     },
     {
+      "path": "workspaces/templates-lib/packages/utils-aws-http-api-local",
+      "name": "@goldstack/utils-aws-http-api-local"
+    },
+    {
       "path": "workspaces/templates-lib/packages/utils-aws-lambda",
       "name": "@goldstack/utils-aws-lambda"
     },
