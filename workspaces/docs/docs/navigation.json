@@ -16,9 +16,10 @@
       "home": "index.md",
       "directory": "modules/",
       "children": [
+        "app-nextjs-bootstrap/index.md",
+        "lambda-api/index.md",
         "app-nextjs/index.md",
         "lambda-express/index.md",
-        "app-nextjs-bootstrap/index.md",
         "email-send/index.md",
         "static-website-aws/index.md",
         "s3/index.md",
