@@ -1,6 +1,6 @@
 - Express.js server running on AWS Lambda
 - Very low cost, scalability out of the box
-- Server packaged up using Webpack for small deployment size and quick on-demand start in Lambda
+- Server packaged up using eslint for small deployment size and quick on-demand start in Lambda
 - All infrastructure defined in Terraform, easy to change and extend
 - Infrastructure easily rolled out with dedicated npm script
 - Deployment automated using Node.js module

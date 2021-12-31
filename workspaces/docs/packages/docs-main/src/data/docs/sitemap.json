@@ -39,6 +39,16 @@
         "path": "modules",
         "children": [
           {
+            "title": "Next.js Bootstrap",
+            "path": "modules/app-nextjs-bootstrap",
+            "children": []
+          },
+          {
+            "title": "Lambda API",
+            "path": "modules/lambda-api",
+            "children": []
+          },
+          {
             "title": "Next.js",
             "path": "modules/app-nextjs",
             "children": []
@@ -46,11 +56,6 @@
           {
             "title": "Lambda Express",
             "path": "modules/lambda-express",
-            "children": []
-          },
-          {
-            "title": "Next.js Bootstrap",
-            "path": "modules/app-nextjs-bootstrap",
             "children": []
           },
           {
