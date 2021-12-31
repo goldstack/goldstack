@@ -3,7 +3,6 @@ import { Request, Response } from 'express';
 import {
   APIGatewayProxyEventV2,
   APIGatewayProxyStructuredResultV2,
-  APIGatewayProxyResultV2,
   Context,
 } from 'aws-lambda';
 
@@ -143,13 +142,17 @@ export const convertToGatewayEvent = (
       routeKey: params.lambdaConfig.route, // 'ANY /echo',
       stage: '$default',
       time: '31/Dec/2021:01:34:12 +0000',
-      timeEpoch: 1640914452487,
+      timeEpoch: new Date().getTime(),
     },
     isBase64Encoded: false,
   };
 };
 
-export const createContext = (): Context => {
+export interface CreateContextParams {
+  functionName: string;
+}
+
+export const createContext = (params: CreateContextParams): Context => {
   return {
     callbackWaitsForEmptyEventLoop: true,
     getRemainingTimeInMillis: () => {
@@ -159,12 +162,11 @@ export const createContext = (): Context => {
     fail: () => {},
     succeed: () => {},
     functionVersion: '$LATEST',
-    functionName: 'goldstack-test-lambda-api-echo',
+    functionName: params.functionName,
     memoryLimitInMB: '2048',
-    logGroupName: '/aws/lambda/goldstack-test-lambda-api-echo',
+    logGroupName: `/aws/lambda/${params.functionName}`,
     logStreamName: '2021/12/31/[$LATEST]11f0a4a770034f1c822a5c4c69490bb1',
-    invokedFunctionArn:
-      'arn:aws:lambda:us-west-2:475629728374:function:goldstack-test-lambda-api-echo',
+    invokedFunctionArn: `arn:aws:lambda:us-west-2:475629728374:function:${params.functionName}`,
     awsRequestId: '8bb853aa-6c00-42cb-9877-0963bd56ae01',
   };
 };

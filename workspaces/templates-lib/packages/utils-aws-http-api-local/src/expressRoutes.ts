@@ -1,4 +1,7 @@
-import { LambdaConfig } from '@goldstack/utils-aws-lambda';
+import {
+  LambdaConfig,
+  generateFunctionName,
+} from '@goldstack/utils-aws-lambda';
 
 import express from 'express';
 
@@ -77,7 +80,9 @@ export const injectRoutes = (params: InjectRoutesParam): void => {
       async (req: Request, resp: Response): Promise<void> => {
         const result = await handler(
           convertToGatewayEvent({ req: req, lambdaConfig: lambdaConfig }),
-          createContext()
+          createContext({
+            functionName: generateFunctionName('local', lambdaConfig),
+          })
         );
         injectGatewayResultIntoResponse(result, resp);
       }
