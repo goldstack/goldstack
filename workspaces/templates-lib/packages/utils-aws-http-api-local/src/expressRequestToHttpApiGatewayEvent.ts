@@ -181,7 +181,7 @@ export const injectGatewayResultIntoResponse = (
   if (typeof result === 'string') {
     resp.status(200);
     resp.contentType('application/json');
-    resp.json(result);
+    resp.json(JSON.parse(result));
     return;
   }
 
