@@ -1,12 +1,12 @@
 import { Handler, APIGatewayProxyEventV2 } from 'aws-lambda';
 
-type ProxyHandler = Handler<APIGatewayProxyEventV2, any>;
+type ProxyHandler = Handler<APIGatewayProxyEventV2, string>;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const handler: ProxyHandler = async (event, context) => {
-  const message = event.queryStringParameters?.message || 'no message';
+  const id = event.pathParameters?.['id'] || 'not specified';
 
-  return {
-    message: `${message}`,
-  };
+  return JSON.stringify({
+    message: `Accessing order [${id}]`,
+  });
 };

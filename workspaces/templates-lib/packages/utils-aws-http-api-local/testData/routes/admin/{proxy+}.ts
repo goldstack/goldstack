@@ -8,18 +8,12 @@ type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const handler: ProxyHandler = async (event, context) => {
-  if (event.requestContext.http.method === 'GET') {
-    return {
-      statusCode: 201,
-      body: JSON.stringify({
-        users: ['1', '2'],
-      }),
-    };
-  }
+  const path = event.pathParameters?.['proxy'] || 'not specified';
+
   return {
     statusCode: 201,
     body: JSON.stringify({
-      message: 'Not supported',
+      message: `Accessing path in admin [${path}]`,
     }),
   };
 };

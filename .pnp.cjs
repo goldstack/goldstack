@@ -183,6 +183,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates-lib/packages/utils-aws-cli"
       },
       {
+        "name": "@goldstack/utils-aws-http-api-local",
+        "reference": "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"
+      },
+      {
         "name": "@goldstack/utils-aws-lambda",
         "reference": "workspace:workspaces/templates-lib/packages/utils-aws-lambda"
       },
@@ -396,6 +400,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/template-static-website-aws", ["workspace:workspaces/templates-lib/packages/template-static-website-aws"]],
       ["@goldstack/toc-generator", ["workspace:workspaces/docs/packages/toc-generator"]],
       ["@goldstack/utils-aws-cli", ["workspace:workspaces/templates-lib/packages/utils-aws-cli"]],
+      ["@goldstack/utils-aws-http-api-local", ["workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"]],
       ["@goldstack/utils-aws-lambda", ["workspace:workspaces/templates-lib/packages/utils-aws-lambda"]],
       ["@goldstack/utils-cli", ["workspace:workspaces/templates-lib/packages/utils-cli"]],
       ["@goldstack/utils-config", ["workspace:workspaces/templates-lib/packages/utils-config"]],
@@ -1714,14 +1719,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@goldstack/lambda-api", "workspace:workspaces/templates/packages/lambda-api"],
             ["@goldstack/template-lambda-api", "workspace:workspaces/templates-lib/packages/template-lambda-api"],
+            ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],
             ["@jest-mock/express", "npm:1.1.8"],
             ["@types/aws-lambda", "npm:8.10.88"],
             ["@types/aws-serverless-express", "npm:3.3.3"],
             ["@types/jest", "npm:27.0.2"],
             ["@types/node", "npm:16.11.0"],
+            ["@types/node-fetch", "npm:2.5.12"],
             ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:2.0.0-rc.1"],
             ["esbuild", "npm:0.14.5"],
+            ["find-free-port", "npm:2.0.0"],
             ["jest", "npm:26.6.3"],
+            ["node-fetch", "npm:2.6.6"],
             ["source-map-support", "npm:0.5.21"],
             ["supertest", "npm:4.0.2"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
@@ -2632,6 +2641,31 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:16.11.0"],
             ["aws-sdk", "npm:2.1001.0"],
             ["jest", "npm:26.6.3"],
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
+            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@goldstack/utils-aws-http-api-local", [
+        ["workspace:workspaces/templates-lib/packages/utils-aws-http-api-local", {
+          "packageLocation": "./workspaces/templates-lib/packages/utils-aws-http-api-local/",
+          "packageDependencies": [
+            ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],
+            ["@goldstack/utils-aws-lambda", "workspace:workspaces/templates-lib/packages/utils-aws-lambda"],
+            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
+            ["@types/aws-lambda", "npm:8.10.88"],
+            ["@types/cookie", "npm:0.4.1"],
+            ["@types/express", "npm:4.17.13"],
+            ["@types/jest", "npm:27.0.2"],
+            ["@types/node", "npm:16.11.0"],
+            ["@types/node-fetch", "npm:2.5.12"],
+            ["cookie", "npm:0.4.1"],
+            ["cors", "npm:2.8.5"],
+            ["express", "npm:4.17.1"],
+            ["find-free-port", "npm:2.0.0"],
+            ["jest", "npm:26.6.3"],
+            ["node-fetch", "npm:2.6.6"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
           ],
@@ -4141,6 +4175,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/cookie", [
+        ["npm:0.4.1", {
+          "packageLocation": "./.yarn/cache/@types-cookie-npm-0.4.1-274a704dc6-3275534ed6.zip/node_modules/@types/cookie/",
+          "packageDependencies": [
+            ["@types/cookie", "npm:0.4.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/cookie-parser", [
         ["npm:1.4.2", {
           "packageLocation": "./.yarn/cache/@types-cookie-parser-npm-1.4.2-e1bc89ec98-d5b3c0e193.zip/node_modules/@types/cookie-parser/",
@@ -4563,6 +4606,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-node-npm-16.11.0-75617d0fee-194ae80ec7.zip/node_modules/@types/node/",
           "packageDependencies": [
             ["@types/node", "npm:16.11.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/node-fetch", [
+        ["npm:2.5.12", {
+          "packageLocation": "./.yarn/cache/@types-node-fetch-npm-2.5.12-e9530d4758-ad63c85ba6.zip/node_modules/@types/node-fetch/",
+          "packageDependencies": [
+            ["@types/node-fetch", "npm:2.5.12"],
+            ["@types/node", "npm:14.0.13"],
+            ["form-data", "npm:3.0.1"]
           ],
           "linkType": "HARD",
         }]
@@ -9184,6 +9238,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cookie", "npm:0.4.0"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:0.4.1", {
+          "packageLocation": "./.yarn/cache/cookie-npm-0.4.1-cc5e2ebb42-bd7c47f5d9.zip/node_modules/cookie/",
+          "packageDependencies": [
+            ["cookie", "npm:0.4.1"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["cookie-parser", [
@@ -12280,6 +12341,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["find-free-port", [
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/find-free-port-npm-2.0.0-a6f135602d-feaedbef0a.zip/node_modules/find-free-port/",
+          "packageDependencies": [
+            ["find-free-port", "npm:2.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["find-replace", [
         ["npm:3.0.0", {
           "packageLocation": "./.yarn/cache/find-replace-npm-3.0.0-686bd07d28-6b04bcfd79.zip/node_modules/find-replace/",
@@ -12534,6 +12604,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/form-data-npm-2.5.1-47256351b5-5134ada56c.zip/node_modules/form-data/",
           "packageDependencies": [
             ["form-data", "npm:2.5.1"],
+            ["asynckit", "npm:0.4.0"],
+            ["combined-stream", "npm:1.0.8"],
+            ["mime-types", "npm:2.1.27"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:3.0.1", {
+          "packageLocation": "./.yarn/cache/form-data-npm-3.0.1-d080d436e0-b019e8d35c.zip/node_modules/form-data/",
+          "packageDependencies": [
+            ["form-data", "npm:3.0.1"],
             ["asynckit", "npm:0.4.0"],
             ["combined-stream", "npm:1.0.8"],
             ["mime-types", "npm:2.1.27"]
@@ -18015,6 +18095,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/node-fetch-npm-2.6.1-46c670dbc1-91075bedd5.zip/node_modules/node-fetch/",
           "packageDependencies": [
             ["node-fetch", "npm:2.6.1"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:2.6.6", {
+          "packageLocation": "./.yarn/cache/node-fetch-npm-2.6.6-056db6b778-ee8290626b.zip/node_modules/node-fetch/",
+          "packageDependencies": [
+            ["node-fetch", "npm:2.6.6"],
+            ["whatwg-url", "npm:5.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -24163,6 +24251,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["tr46", [
+        ["npm:0.0.3", {
+          "packageLocation": "./.yarn/cache/tr46-npm-0.0.3-de53018915-726321c5ea.zip/node_modules/tr46/",
+          "packageDependencies": [
+            ["tr46", "npm:0.0.3"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:1.0.1", {
           "packageLocation": "./.yarn/cache/tr46-npm-1.0.1-9547f343a4-96d4ed46bc.zip/node_modules/tr46/",
           "packageDependencies": [
@@ -25816,6 +25911,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["webidl-conversions", [
+        ["npm:3.0.1", {
+          "packageLocation": "./.yarn/cache/webidl-conversions-npm-3.0.1-60310f6a2b-c92a0a6ab9.zip/node_modules/webidl-conversions/",
+          "packageDependencies": [
+            ["webidl-conversions", "npm:3.0.1"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:4.0.2", {
           "packageLocation": "./.yarn/cache/webidl-conversions-npm-4.0.2-1d159e6409-c93d8dfe90.zip/node_modules/webidl-conversions/",
           "packageDependencies": [
@@ -26176,6 +26278,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["whatwg-url", [
+        ["npm:5.0.0", {
+          "packageLocation": "./.yarn/cache/whatwg-url-npm-5.0.0-374fb45e60-b8daed4ad3.zip/node_modules/whatwg-url/",
+          "packageDependencies": [
+            ["whatwg-url", "npm:5.0.0"],
+            ["tr46", "npm:0.0.3"],
+            ["webidl-conversions", "npm:3.0.1"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:7.1.0", {
           "packageLocation": "./.yarn/cache/whatwg-url-npm-7.1.0-d6cae01571-fecb07c872.zip/node_modules/whatwg-url/",
           "packageDependencies": [

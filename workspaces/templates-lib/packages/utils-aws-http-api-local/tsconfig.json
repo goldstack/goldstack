@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "."
+  },
+  "references": [
+    {
+      "path": "../utils-aws-lambda"
+    },
+    {
+      "path": "../utils-git"
+    }
+  ]
+}

@@ -1,12 +1,15 @@
 import { LambdaApiDeployment } from './types/LambdaApiPackage';
 import { getAWSUser } from '@goldstack/infra-aws';
-import { deployFunction, LambdaConfig } from '@goldstack/utils-aws-lambda';
+import {
+  deployFunction,
+  LambdaConfig,
+  generateFunctionName,
+} from '@goldstack/utils-aws-lambda';
 
 import { readLambdaConfig } from '@goldstack/utils-aws-lambda';
 import { defaultRoutesPath } from './templateLambdaConsts';
 
 import { mkdir } from '@goldstack/utils-sh';
-import { generateFunctionName } from './generateLambdaConfig';
 import { getOutDirForLambda } from './templateLambdaApiBuild';
 
 interface DeployLambdaParams {
@@ -20,7 +23,10 @@ export const deployLambdas = async (
   const lambdaConfig = readLambdaConfig(defaultRoutesPath);
 
   const operations = lambdaConfig.map(async (config) => {
-    const functionName = generateFunctionName(params.deployment, config);
+    const functionName = generateFunctionName(
+      params.deployment.configuration.lambdaNamePrefix,
+      config
+    );
     console.log(`[${functionName}]: Starting deployment`);
     const functionDir = getOutDirForLambda(config);
     mkdir('-p', functionDir);

@@ -1,9 +1,9 @@
-import { readLambdaConfig } from '@goldstack/utils-aws-lambda';
-import assert from 'assert';
 import {
+  readLambdaConfig,
   generateFunctionName,
-  generateLambdaConfig,
-} from './generateLambdaConfig';
+} from '@goldstack/utils-aws-lambda';
+import assert from 'assert';
+import { generateLambdaConfig } from './generateLambdaConfig';
 import { LambdaApiDeployment } from './templateLambdaApi';
 import { getOutDirForLambda } from './templateLambdaApiBuild';
 
@@ -41,7 +41,10 @@ describe('Generate Lambda config', () => {
       (e) => e.path === '/folder/{pathparam}'
     );
     assert(nestedRoute);
-    const functionName = generateFunctionName(dummyDeployment, nestedRoute);
+    const functionName = generateFunctionName(
+      dummyDeployment.configuration.lambdaNamePrefix,
+      nestedRoute
+    );
     assert(functionName.indexOf('folder') !== -1);
     assert(functionName.indexOf('{') === -1);
     assert(functionName.indexOf('}') === -1);
@@ -51,7 +54,10 @@ describe('Generate Lambda config', () => {
       (e) => e.path === '/resource/{path}/object'
     );
     assert(nestedRoute);
-    const functionName = generateFunctionName(dummyDeployment, nestedRoute);
+    const functionName = generateFunctionName(
+      dummyDeployment.configuration.lambdaNamePrefix,
+      nestedRoute
+    );
     assert(functionName.indexOf('object') !== -1);
     assert(functionName.indexOf('resource') !== -1);
     assert(functionName.indexOf('{') === -1);
@@ -61,14 +67,20 @@ describe('Generate Lambda config', () => {
     const nestedRoute = routesConfig.find((e) => e.path === '/health');
     assert(nestedRoute);
 
-    const functionName = generateFunctionName(dummyDeployment, nestedRoute);
+    const functionName = generateFunctionName(
+      dummyDeployment.configuration.lambdaNamePrefix,
+      nestedRoute
+    );
     assert(functionName.indexOf('health') !== -1);
   });
   test('Should provide a correct path for a file in the API root', () => {
     const nestedRoute = routesConfig.find((e) => e.path === '/resource');
     assert(nestedRoute);
 
-    const functionName = generateFunctionName(dummyDeployment, nestedRoute);
+    const functionName = generateFunctionName(
+      dummyDeployment.configuration.lambdaNamePrefix,
+      nestedRoute
+    );
     assert(functionName.match(/resource/g)?.length === 1);
   });
 });

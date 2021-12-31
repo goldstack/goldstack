@@ -3,6 +3,8 @@ import { zip, rmSafe } from '@goldstack/utils-sh';
 
 export { readLambdaConfig } from './generate/collectLambdasFromFiles';
 
+export { generateFunctionName } from './generate/generateFunctionName';
+
 export type { LambdaConfig } from './generate/collectLambdasFromFiles';
 
 import AWS from 'aws-sdk';

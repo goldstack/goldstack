@@ -13,6 +13,9 @@
   "references": [
     {
       "path": "../../../templates-lib/packages/template-lambda-api"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-aws-http-api-local"
     }
   ]
 }
