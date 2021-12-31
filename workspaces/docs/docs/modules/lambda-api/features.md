@@ -1,5 +1,5 @@
 - Low latency, low cost and highly scalable by using the new [AWS HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html)
-- Minimal cold start times by bundling the source code of each endpoint into separate Lambda functions 
+- Minimal cold start times by bundling the source code of each endpoint into separate Lambda functions
 - Fast packing and deployment using [esbuild](https://github.com/evanw/esbuild)
 - Rapid configuration by [dynamically defining routes through placing source files](https://github.com/goldstack/goldstack/pull/29)
 - All infrastructure defined in Terraform for easy customisation

@@ -125,6 +125,5 @@ describe('Should create API', () => {
 
 #### Best Practices
 
-- **Keep Lambdas Lightweight**: This template will package Lambdas only with the code that they require. Aim to minimise the number of dependencies that are imported into each handler function. The smaller the Lambda functions are, the less noticeable cold starts will be. Cold starts using Lambdas packaged by this module can be as low as 150 ms (with almost all of that time spent on AWS getting the basic infrastructure for the Lambda up and running).  
+- **Keep Lambdas Lightweight**: This template will package Lambdas only with the code that they require. Aim to minimise the number of dependencies that are imported into each handler function. The smaller the Lambda functions are, the less noticeable cold starts will be. Cold starts using Lambdas packaged by this module can be as low as 150 ms (with almost all of that time spent on AWS getting the basic infrastructure for the Lambda up and running).
 - **Think RESTful**: This module does not limit in any way which kinds of APIs can be created. However, it is often advisable to develop APIs in a RESTful way. For a reference on best practices, see [RESTful web API design by Microsoft](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design).
-
