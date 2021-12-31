@@ -1051,9 +1051,12 @@ __metadata:
     "@types/aws-serverless-express": ^3.3.3
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
+    "@types/node-fetch": 2
     "@yarnpkg/esbuild-plugin-pnp": ^2.0.0-rc.1
     esbuild: ^0.14.5
+    find-free-port: ^2.0.0
     jest: ^26.6.3
+    node-fetch: 2
     source-map-support: ^0.5.21
     supertest: ^4.0.2
     ts-jest: ^26.5.4
@@ -1933,6 +1936,7 @@ __metadata:
     "@types/express": ^4.17.13
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0
+    "@types/node-fetch": 2
     cookie: ^0.4.1
     cors: ^2.8.5
     express: ^4.17.1
@@ -3558,6 +3562,16 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: c23a3b9c7b7f4519b6c3c88ddf903a3cbdf719e75a8017a1f8c959ec56eda47e6624afaee354818241bf71f6aed262a574fd227a7de960a47d8baf4c52a539d3
+  languageName: node
+  linkType: hard
+
+"@types/node-fetch@npm:2":
+  version: 2.5.12
+  resolution: "@types/node-fetch@npm:2.5.12"
+  dependencies:
+    "@types/node": "*"
+    form-data: ^3.0.0
+  checksum: ad63c85ba6a9477b8e057ec8682257738130d98e8ece4e31141789bd99df9d9147985cc8bc0cb5c8983ed5aa6bb95d46df23d1e055f4ad5cf8b82fc69cf626c7
   languageName: node
   linkType: hard
 
@@ -7128,7 +7142,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"combined-stream@npm:^1.0.6, combined-stream@npm:~1.0.6":
+"combined-stream@npm:^1.0.6, combined-stream@npm:^1.0.8, combined-stream@npm:~1.0.6":
   version: 1.0.8
   resolution: "combined-stream@npm:1.0.8"
   dependencies:
@@ -10398,6 +10412,17 @@ __metadata:
     combined-stream: ^1.0.6
     mime-types: ^2.1.12
   checksum: 5134ada56cc246b293a1ac7678dba6830000603a3979cf83ff7b2f21f2e3725202237cfb89e32bcb38a1d35727efbd3c3a22e65b42321e8ade8eec01ce755d08
+  languageName: node
+  linkType: hard
+
+"form-data@npm:^3.0.0":
+  version: 3.0.1
+  resolution: "form-data@npm:3.0.1"
+  dependencies:
+    asynckit: ^0.4.0
+    combined-stream: ^1.0.8
+    mime-types: ^2.1.12
+  checksum: b019e8d35c8afc14a2bd8a7a92fa4f525a4726b6d5a9740e8d2623c30e308fbb58dc8469f90415a856698933c8479b01646a9dff33c87cc4e76d72aedbbf860d
   languageName: node
   linkType: hard
 

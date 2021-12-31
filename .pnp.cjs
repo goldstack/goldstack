@@ -1725,9 +1725,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/aws-serverless-express", "npm:3.3.3"],
             ["@types/jest", "npm:27.0.2"],
             ["@types/node", "npm:16.11.0"],
+            ["@types/node-fetch", "npm:2.5.12"],
             ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:2.0.0-rc.1"],
             ["esbuild", "npm:0.14.5"],
+            ["find-free-port", "npm:2.0.0"],
             ["jest", "npm:26.6.3"],
+            ["node-fetch", "npm:2.6.6"],
             ["source-map-support", "npm:0.5.21"],
             ["supertest", "npm:4.0.2"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
@@ -2656,6 +2659,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/express", "npm:4.17.13"],
             ["@types/jest", "npm:27.0.2"],
             ["@types/node", "npm:16.11.0"],
+            ["@types/node-fetch", "npm:2.5.12"],
             ["cookie", "npm:0.4.1"],
             ["cors", "npm:2.8.5"],
             ["express", "npm:4.17.1"],
@@ -4602,6 +4606,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-node-npm-16.11.0-75617d0fee-194ae80ec7.zip/node_modules/@types/node/",
           "packageDependencies": [
             ["@types/node", "npm:16.11.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/node-fetch", [
+        ["npm:2.5.12", {
+          "packageLocation": "./.yarn/cache/@types-node-fetch-npm-2.5.12-e9530d4758-ad63c85ba6.zip/node_modules/@types/node-fetch/",
+          "packageDependencies": [
+            ["@types/node-fetch", "npm:2.5.12"],
+            ["@types/node", "npm:14.0.13"],
+            ["form-data", "npm:3.0.1"]
           ],
           "linkType": "HARD",
         }]
@@ -12589,6 +12604,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/form-data-npm-2.5.1-47256351b5-5134ada56c.zip/node_modules/form-data/",
           "packageDependencies": [
             ["form-data", "npm:2.5.1"],
+            ["asynckit", "npm:0.4.0"],
+            ["combined-stream", "npm:1.0.8"],
+            ["mime-types", "npm:2.1.27"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:3.0.1", {
+          "packageLocation": "./.yarn/cache/form-data-npm-3.0.1-d080d436e0-b019e8d35c.zip/node_modules/form-data/",
+          "packageDependencies": [
+            ["form-data", "npm:3.0.1"],
             ["asynckit", "npm:0.4.0"],
             ["combined-stream", "npm:1.0.8"],
             ["mime-types", "npm:2.1.27"]
