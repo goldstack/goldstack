@@ -41,6 +41,7 @@ describe('Should create API', () => {
     const res = await fetch(`http://localhost:${port}/order/abcd`);
     expect(await res.text()).toContain('order [abcd]');
   });
+
   test('Should support index', async () => {
     const res = await fetch(`http://localhost:${port}/userRepo`);
     expect(JSON.parse(await res.json())).toHaveProperty('users');
