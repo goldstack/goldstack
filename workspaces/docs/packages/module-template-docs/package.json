@@ -14,7 +14,7 @@
     "compile-watch": "tsc -p tsconfig.json --watch",
     "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
-    "generate-docs": "yarn node dist/scripts/generateTemplateDocs.js",
+    "generate-docs": "ts-node ./src/scripts/generateTemplateDocs.ts",
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish",
     "test": "jest --config=./jest.config.js --watch",
@@ -22,6 +22,7 @@
     "version:apply": "yarn version \"$@\" && yarn version apply"
   },
   "dependencies": {
+    "@goldstack/module-template-utils": "0.1.0",
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-sh": "0.4.22",
     "source-map-support": "^0.5.21"
@@ -31,6 +32,7 @@
     "@types/node": "^16.11.0",
     "jest": "^26.6.3",
     "ts-jest": "^26.5.4",
+    "ts-node": "^10.3.0",
     "typescript": "^4.4.3"
   }
 }

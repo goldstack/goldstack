@@ -6,16 +6,16 @@ The Email Send module provides a means to send emails from an application. It pr
 
 ## Features
 
-- Easily send emails from backend applications
-- Infrastructure defined in Terraform
-- Low cost sends using AWS SES
+*   Easily send emails from backend applications
+*   Infrastructure defined in Terraform
+*   Low cost sends using AWS SES
 
 ## Configure
 
 The following key properties need to be configured for this module:
 
-- **Domain**: The domain that emails will be sent from. The Email Send module will support sending emails from any possible email address in your chosen domain. For instance, if the domain `mydomain.com` is chosen, email addresses such as `support@mydomain.com`, `noreply@mydomain.com` and `system@mydomain.com` are supported.
-- **Hosted Zone Domain**: A Route 53 hosted zone that will allow adding the _Domain_ as a record. For instance, in order to configure the domain `mydomain.com`, the hosted zone `mydomain.com` would be valid. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
+*   **Domain**: The domain that emails will be sent from. The Email Send module will support sending emails from any possible email address in your chosen domain. For instance, if the domain `mydomain.com` is chosen, email addresses such as `support@mydomain.com`, `noreply@mydomain.com` and `system@mydomain.com` are supported.
+*   **Hosted Zone Domain**: A Route 53 hosted zone that will allow adding the *Domain* as a record. For instance, in order to configure the domain `mydomain.com`, the hosted zone `mydomain.com` would be valid. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
 
 ## Getting Started
 
@@ -92,11 +92,11 @@ The configuration tool will define one deployment. This will be either `dev` or 
 
 Infrastructure commands for this module can be run using `yarn`. There are four commands in total:
 
-- `yarn infra up`: For standing up infrastructure.
-- `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
-- `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
-- `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
-- `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+*   `yarn infra up`: For standing up infrastructure.
+*   `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
+*   `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
+*   `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
+*   `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
 
 For each command, the deployment they should be applied to must be specified.
 
@@ -154,7 +154,7 @@ This error is reported when a TXT record for your specified domain already exist
 
 The easiest way to circumvent this issue is to do the following:
 
-- Copy the existing TXT record in the Route 53 console and add it to the definition for the TXT record in `infra/aws/main.tf`. Make sure that the record is for the correct record name. For instance, if you want to configure email sending for `yourdomain.com`, the record name would be exactly `yourdomain.com`. The following example shows how we would add a `google-site-verification` declaration.
+*   Copy the existing TXT record in the Route 53 console and add it to the definition for the TXT record in `infra/aws/main.tf`. Make sure that the record is for the correct record name. For instance, if you want to configure email sending for `yourdomain.com`, the record name would be exactly `yourdomain.com`. The following example shows how we would add a `google-site-verification` declaration.
 
 ```bash
 resource "aws_route53_record" "spf_mail_from" {
@@ -166,8 +166,8 @@ resource "aws_route53_record" "spf_mail_from" {
 }
 ```
 
-- Delete the TXT record in the [Route 53 Console](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-deleting.html). Ensure that you have copied the record successfully before deleting it.
-- Now run `yarn infra up prod`
+*   Delete the TXT record in the [Route 53 Console](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-deleting.html). Ensure that you have copied the record successfully before deleting it.
+*   Now run `yarn infra up prod`
 
 ## Security Hardening
 
