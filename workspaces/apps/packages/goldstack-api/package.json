@@ -14,11 +14,11 @@
     "deploy": "yarn build && yarn template deploy",
     "deploy-ts": "yarn build && yarn template-ts deploy",
     "infra": "template infra",
+    "seed-modules": "GOLDSTACK_DEPLOYMENT=local ts-node ./src/utils/seedRepo.ts",
     "start": "yarn node dist/src/local.js",
     "template-ts": "ts-node scripts/template.ts",
     "test": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --watch --config=jest.config.js",
     "test-ci": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --config=jest.config.js --detectOpenHandles",
-    "utils:seed-module-templates": "GOLDSTACK_DEPLOYMENT=local ts-node ./src/utils/seedRepo.ts",
     "watch": "PORT=8731 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local GOLDSTACK_LOG_EMAILS=true ts-node-dev ./src/local.ts"
   },
   "dependencies": {

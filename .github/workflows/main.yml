@@ -100,7 +100,7 @@ jobs:
       - name: Test apps
         run: |
           cd workspaces/apps
-          yarn workspace @goldstack/goldstack-api utils:seed-module-templates
+          yarn workspace @goldstack/goldstack-api seed-modules
           yarn test-ci
           cd ../..
         env:

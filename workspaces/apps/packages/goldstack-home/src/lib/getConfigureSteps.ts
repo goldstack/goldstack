@@ -47,11 +47,13 @@ interface ConfigureStepParams extends ProjectData {
 export const getConfigureSteps = (
   params: ConfigureStepParams
 ): ConfigureStep[] => {
+  console.log('projectDocs');
+  console.log(projectDocs);
   const head: ConfigureStep[] = [
     {
       idx: 0,
       id: 'project',
-      docs: projectDocs,
+      docs: `${projectDocs}`,
       type: 'form',
       title: 'Project',
       sections: [

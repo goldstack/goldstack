@@ -54,6 +54,10 @@
       "regex": "^\\/templates\\/go-gin$"
     },
     {
+      "page": "/templates/lambda-api",
+      "regex": "^\\/templates\\/lambda-api$"
+    },
+    {
       "page": "/templates/nextjs-bootstrap",
       "regex": "^\\/templates\\/nextjs-bootstrap$"
     },
@@ -108,8 +112,8 @@
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/av\\-2sseyHCmERLHD9DDJz/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/av\\-2sseyHCmERLHD9DDJz/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/2gEyfApCUqLyntjFuM0Ob/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/2gEyfApCUqLyntjFuM0Ob/templates/(?<template>[^/]+?)\\.json$"
     }
   ],
   "rewrites": []
