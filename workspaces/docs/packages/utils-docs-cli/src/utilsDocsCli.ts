@@ -13,3 +13,5 @@ export const resolveMarkdown = async (path: string): Promise<string> => {
   const result = await resolve(path);
   return result;
 };
+
+export { run } from './utilsDocsCliRun';
