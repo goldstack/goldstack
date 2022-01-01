@@ -87,7 +87,7 @@ export const getConfigureSteps = (
 
   const packages: ConfigureStep[] = params.packageConfigs.map((config, idx) => {
     let configureDocHtml: string | undefined = undefined;
-    if (params.docs) {
+    if (params.docs && params.docs.find) {
       const packageName = config.package.name;
 
       const packageDoc = params.docs.find((el) => el.package === packageName);

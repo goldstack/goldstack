@@ -9,6 +9,9 @@
   },
   "references": [
     {
+      "path": "../../../templates/packages/module-template-utils"
+    },
+    {
       "path": "../utils-docs-cli"
     },
     {

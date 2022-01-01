@@ -8,14 +8,14 @@ Compose your customised starter project on [goldstack.party](https://goldstack.p
 
 It should be a surprise to no one that setting up a dynamic monorepo for JavaScript/TypeScript projects is challenging. While the projects built with Goldstack have loads of config and best practices embedded, there is still a way to go to make this a complete turnkey solution. The following table gives an overview of what works well in the generated project and where some work may still be needed.
 
-| Status | Feature                | Comments                                                                                                                                          |
-| ------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 👌     | Install and Build      | Yarn Workspaces using Yarn v2 (Berry) overall works very well and allows for very fast install and build speeds.                                  |
-| 👌     | Linting and Formatting | ESLint and Prettier are configured to work effectively across all packages.                                                                       |
-| 👌     | Testing                | Running tests with Jest works across all packages                                                                                                 |
-| 👌     | IDE Integration        | VSCode including Intellisense works across the monorepo                                                                                           |
-| 🤷     | TypeScript             | Configured to use TypeScript project references. Script `fix-project-references` needs to be run after changing local dependencies.               |
-| 🤷     | AWS                    | Deployment into AWS using Terraform overall works very well. Initial configuration through the web UI only supports one deployment at the moment. |
+| Status | Feature                | Comments                                                                                                                                                                                                           |
+| ------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 👌     | Install and Build      | Yarn Workspaces using Yarn v2 (Berry) overall works very well and allows for very fast install and build speeds.                                                                                                   |
+| 👌     | Linting and Formatting | ESLint and Prettier are configured to work effectively across all packages.                                                                                                                                        |
+| 👌     | Testing                | Running tests with Jest works across all packages                                                                                                                                                                  |
+| 👌     | IDE Integration        | VSCode including Intellisense works across the monorepo                                                                                                                                                            |
+| 🤷     | AWS                    | Deployment into AWS using Terraform overall works very well. Just initial configuration and the way credentials are provided can be improved. [#3](https://github.com/goldstack/goldstack/issues/3)                |
+| 👎     | TypeScript             | TypeScript support works but only with a workaround that requires running `yarn compile watch` in the root project. Compilation is slow for larger projects. [#2](https://github.com/goldstack/goldstack/issues/2) |
 
 # About
 
@@ -35,32 +35,32 @@ We aim to provide starter templates for the best frameworks currently on the mar
 
 Goldstack templates allow your project to lift off at rocket speed while being sufficiently robust and configurable to fit the requirements of a professional environment. We enable this by:
 
-- All infrastructure is defined in Terraform and can be modified to fit into your environments
-- Everything can be deployed in AWS
-- We provide instructions for security hardening for every template
+*   All infrastructure is defined in Terraform and can be modified to fit into your environments
+*   Everything can be deployed in AWS
+*   We provide instructions for security hardening for every template
 
 ### Serverless
 
 Goldstack templates use Serverless technologies unlocking the benefits of rapid development cycles, security, observability and low ongoing costs. Following some examples of ways Serverless technologies are employed for the templates:
 
-- Any frontends are deployed using AWS S3 and CloudFront
-- Our Express server template is wrapped in a Lambda
-- Our email template utilizes AWS Simple Email Service for email sending
+*   Any frontends are deployed using AWS S3 and CloudFront
+*   Our Express server template is wrapped in a Lambda
+*   Our email template utilizes AWS Simple Email Service for email sending
 
 ### Unlimited customizability
 
 We all know that there is usually a trade off in platforms that help us get something done quickly such as when using Firebase. It is very easy to develop and deploy a simple application. However, it is often difficult to adapt the initial simple project to our specific needs. Goldstack is based on the premise that there should not a be a limit to what you can do with your project. Some of the elements that enable this are:
 
-- Infrastructure can be adapted to your needs utilizing the full power of Terraform
-- Core functionality is defined as easy to change source code in the project
-- Any dependencies we add to your project are available as open source and open for you to modify as required
+*   Infrastructure can be adapted to your needs utilizing the full power of Terraform
+*   Core functionality is defined as easy to change source code in the project
+*   Any dependencies we add to your project are available as open source and open for you to modify as required
 
 ### Modularity first
 
 Modularity is one of the most important principles in software design. Unfortunately it is often difficult in the JavaScript ecosystem to develop truly modular applications. Many projects have started to adopt Lerna for this purpose, but Lerna comes with its own problems, especially for larger projects.
 
-- Utilizing Yarn 2 for efficient workspace management
-- Providing TypeScript APIs for connecting modules; for instance a backend module can simply import an S3 module and use TypeScript methods to establish a connection to the bucket
+*   Utilizing Yarn 2 for efficient workspace management
+*   Providing TypeScript APIs for connecting modules; for instance a backend module can simply import an S3 module and use TypeScript methods to establish a connection to the bucket
 
 ### Built to be Tested
 
@@ -84,32 +84,32 @@ We aim to provide starter templates for the best frameworks currently on the mar
 
 Goldstack templates allow your project to lift off at rocket speed while being sufficiently robust and configurable to fit the requirements of a professional environment. We enable this by:
 
-- All infrastructure is defined in Terraform and can be modified to fit into your environments
-- Everything can be deployed in AWS
-- We provide instructions for security hardening for every template
+*   All infrastructure is defined in Terraform and can be modified to fit into your environments
+*   Everything can be deployed in AWS
+*   We provide instructions for security hardening for every template
 
 ### Serverless
 
 Goldstack templates use Serverless technologies unlocking the benefits of rapid development cycles, security, observability and low ongoing costs. Following some examples of ways Serverless technologies are employed for the templates:
 
-- Any frontends are deployed using AWS S3 and CloudFront
-- Our Express server template is wrapped in a Lambda
-- Our email template utilizes AWS Simple Email Service for email sending
+*   Any frontends are deployed using AWS S3 and CloudFront
+*   Our Express server template is wrapped in a Lambda
+*   Our email template utilizes AWS Simple Email Service for email sending
 
 ### Unlimited customizability
 
 We all know that there is usually a trade off in platforms that help us get something done quickly such as when using Firebase. It is very easy to develop and deploy a simple application. However, it is often difficult to adapt the initial simple project to our specific needs. Goldstack is based on the premise that there should not a be a limit to what you can do with your project. Some of the elements that enable this are:
 
-- Infrastructure can be adapted to your needs utilizing the full power of Terraform
-- Core functionality is defined as easy to change source code in the project
-- Any dependencies we add to your project are available as open source and open for you to modify as required
+*   Infrastructure can be adapted to your needs utilizing the full power of Terraform
+*   Core functionality is defined as easy to change source code in the project
+*   Any dependencies we add to your project are available as open source and open for you to modify as required
 
 ### Modularity first
 
 Modularity is one of the most important principles in software design. Unfortunately it is often difficult in the JavaScript ecosystem to develop truly modular applications. Many projects have started to adopt Lerna for this purpose, but Lerna comes with its own problems, especially for larger projects.
 
-- Utilizing Yarn 2 for efficient workspace management
-- Providing TypeScript APIs for connecting modules; for instance a backend module can simply import an S3 module and use TypeScript methods to establish a connection to the bucket
+*   Utilizing Yarn 2 for efficient workspace management
+*   Providing TypeScript APIs for connecting modules; for instance a backend module can simply import an S3 module and use TypeScript methods to establish a connection to the bucket
 
 ### Built to be Tested
 
@@ -121,9 +121,9 @@ It can often be overwhelming to start working with a new starter project. If you
 
 The following properties are required for general project configuration:
 
-- **Project Name**: A name for this project.
-- **Deployment**: Choose if you want to use the configuration tool to configure production or development infrastructure. At this point, the configuration tool only supports definition of either production or development infrastructure. However, after you download your project, you can configure unlimited additional deployment configurations (for example if you choose to define development infrastructure now, you can define production infrastructure later).
-- **AWS Region**: The [AWS region](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#:~:text=AWS%20maintains%20multiple%20geographic%20Regions,Africa%2C%20and%20the%20Middle%20East.) infrastructure that your project should be deployed to.
+*   **Project Name**: A name for this project.
+*   **Deployment**: Choose if you want to use the configuration tool to configure production or development infrastructure. At this point, the configuration tool only supports definition of either production or development infrastructure. However, after you download your project, you can configure unlimited additional deployment configurations (for example if you choose to define development infrastructure now, you can define production infrastructure later).
+*   **AWS Region**: The [AWS region](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#:~:text=AWS%20maintains%20multiple%20geographic%20Regions,Africa%2C%20and%20the%20Middle%20East.) infrastructure that your project should be deployed to.
 
 ## AWS Configuration
 
@@ -131,44 +131,109 @@ Goldstack provides ready-made scripts to deploy your infrastructure to AWS. You 
 
 However, there are many other ways in which AWS user credentials can be supplied for Goldstack, so providing the details during project configuration is optional. It is only recommended to do so for development systems.
 
-If you do not know how to get the _Access Key ID_ and _Secret Access Key_, please find [instructions here](https://docs.goldstack.party/docs/goldstack/configuration#how-to-get-aws-credentials).
+If you do not know how to get the *Access Key ID* and *Secret Access Key*, please find [instructions here](https://docs.goldstack.party/docs/goldstack/configuration#how-to-get-aws-credentials).
 
 ### How to get AWS Credentials
 
 \[Video: Step-by-step Video Guide]\(https://www.youtube.com/embed/-lWrkpzEgfs)
 
-The easiest way to configure the AWS user for Goldstack is to do it during project setup by providing an _AWS Access Key Id_ and _AWS Secret Access Key_. To obtain these, please do the following:
+The easiest way to configure the AWS user for Goldstack is to do it during project setup by providing an *AWS Access Key Id* and *AWS Secret Access Key*. To obtain these, please do the following:
 
-- Create an AWS account if you do not already have one. See [instructions on this from AWS here](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/).
-- Open the AWS console IAM management and sign in if required: <https://console.aws.amazon.com/iam/home?region=us-east-1#/home>
-- Click on _Users_ in the menu on the right
+*   Create an AWS account if you do not already have one. See [instructions on this from AWS here](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/).
+*   Open the AWS console IAM management and sign in if required: <https://console.aws.amazon.com/iam/home?region=us-east-1#/home>
+*   Click on *Users* in the menu on the right
 
 ![Add User in AWS console](https://cdn.goldstack.party/img/202010/add_user.png)
 
-- Provide a username of your choice, for instance 'goldstack-local-dev'
-- Select the Access Type _Programmatic Access_
+*   Provide a username of your choice, for instance 'goldstack-local-dev'
+*   Select the Access Type *Programmatic Access*
 
 ![Provide user details](https://cdn.goldstack.party/img/202010/user_details.png)
 
-- Click on the button _Next: Permissions_
-- Select _Attach existing policies directly_
-- Select the Policy _Administrator Access_
+*   Click on the button *Next: Permissions*
+*   Select *Attach existing policies directly*
+*   Select the Policy *Administrator Access*
 
 ![Select permissions](https://cdn.goldstack.party/img/202010/permissions.png)
 
-- Click on the button _Next: Tags_
-- You do not have to add any tags, just click _Next: Review_
-- On the review page click _Create User_
+*   Click on the button *Next: Tags*
+*   You do not have to add any tags, just click *Next: Review*
+*   On the review page click *Create User*
 
-Now you can copy the _Access Key ID_ and add it to the Goldstack configuration form. Do the same with the _Secret Access Key_ (It can be shown by clicking on Show).
+Now you can copy the *Access Key ID* and add it to the Goldstack configuration form. Do the same with the *Secret Access Key* (It can be shown by clicking on Show).
 
 ![Obtain access keys](https://cdn.goldstack.party/img/202010/keys.png)
 
 Note that it is recommended to only provide this key and secret for development systems (and prototype/hobby production systems). For all other systems, it is recommended to provide this key and secret only through environment variables (see below).
 
+### Credentials in User Directory
+
+The AWS CLI uses a standardised location to store AWS credentials and configuration. Goldstack will attempt to read from this configuration if no other configuration was provided.
+
+Please see the AWS documentation to learn more about where these files are stored and how to create them: [AWS CLI / Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
+
+Note that Goldstack will require both the `credentials` as well as the `config` file, and in the `config` file specifically the `region` needs to be specified.
+
+Goldstack will use the `default` profile if no profile is specified. If you want to use more than one profile (e.g. for different deployment stages) you can use the Goldstack AWS configuration file. This file is stored in the repository in the following location:
+
+```bash
+config/infra/aws/config.json
+```
+
+You can define a number of different users as follows:
+
+    {
+      "users": [
+        {
+          "name": "dev",
+          "type": "profile",
+          "config": {
+            "profile": "default",
+            "awsDefaultRegion": "us-west-2"
+          }
+        },
+        {
+          "name": "prod",
+          "type": "profile",
+          "config": {
+            "profile": "prod",
+            "awsDefaultRegion": "us-west-2"
+          }
+        }
+      ]
+    }`
+
+### Credentials in Environment Variables
+
+Goldstack can read AWS *Access Key ID* and *Secret Access Key* from environment variables. The easiest way is to set the following environment variables:
+
+```bash
+AWS_USER_NAME: [Your user name]
+AWS_ACCESS_KEY_ID: [Your access key id]
+AWS_SECRET_ACCESS_KEY: [Your secret access key]
+AWS_DEFAULT_REGION: [User region]
+```
+
+The `AWS_USER_NAME` variable is optional but can be useful for explicitly referencing the correct Goldstack user in deployments. The above setup is particularly useful for CI/CD environments. For instance, when using [GitHub Actions](https://github.com/actions), environment variables could be configured as follows:
+
+```yaml
+- name: Deploy UI
+  run: |
+    yarn workspace my-ui deploy dev
+  env:
+    AWS_USER_NAME: dev-user
+    AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+    AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+    AWS_DEFAULT_REGION: us-west-2
+```
+
+Where the values of the environment variables are defined in [GitHub Secrets](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets).
+
 ### Credentials in Config File
 
-AWS credentials can be configured during project set up. However if you do not want to provide your credentials in the configuration tool or you want to change them later, they can be configured through a configuration file. This file can be found under the following paths:
+AWS credentials they can be configured directly in the Goldstack configuration file. Note we do not recommend this option. If you can, use the user credentials or environment variables.
+
+This file can be found under the following paths:
 
 ```bash
 config/infra/aws/config.json
@@ -203,35 +268,9 @@ The configuration file can have contents as follows:
 
 Make sure that the `"name"` property matches the `"awsUser"` of module deployments for which the user should be used. There is no limit to how many users you can define.
 
-Note that we recommend that this file is _not_ checked into source control. By default, there is a `.gitignore` file present in the `config/infra/aws` folder that will prevent this file from being checked into git.
+Note that this file should *not* checked into source control if AWS credentials are provided.
 
-If you want to supply AWS user credentials in your CI/CD systems, these can be supplied using environment variables.
-
-### Credentials in Environment Variables
-
-Goldstack can read AWS _Access Key ID_ and _Secret Access Key_ from environment variables. The easiest way is to set the following environment variables:
-
-```bash
-AWS_USER_NAME: [Your user name]
-AWS_ACCESS_KEY_ID: [Your access key id]
-AWS_SECRET_ACCESS_KEY: [Your secret access key]
-AWS_DEFAULT_REGION: [User region]
-```
-
-The `AWS_USER_NAME` variable is optional but can be useful for explicitly referencing the correct Goldstack user in deployments. The above setup is particularly useful for CI/CD environments. For instance, when using [GitHub Actions](https://github.com/actions), environment variables could be configured as follows:
-
-```yaml
-- name: Deploy UI
-  run: |
-    yarn workspace my-ui deploy dev
-  env:
-    AWS_USER_NAME: dev-user
-    AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-    AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-    AWS_DEFAULT_REGION: us-west-2
-```
-
-Where the values of the environment variables are defined in [GitHub Secrets](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets).
+If you want to supply AWS user credentials in your CI/CD systems, these can be supplied using environment variables and for local development you can use the files provided by the AWS CLI (see above).
 
 ## Hosted Zone Configuration
 
@@ -243,17 +282,17 @@ Many modules need to deploy resources to a domain, for instance for a [static we
 
 The following steps describe how to create a new hosted zone in AWS Route 53.
 
-- (Optional) If you haven't registered a domain, you can [register a domain through Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-register.html).
-- Go to the [Route 53 AWS console](https://console.aws.amazon.com/route53/v2/hostedzones#)
-- Click on _Create Hosted Zone_
+*   (Optional) If you haven't registered a domain, you can [register a domain through Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-register.html).
+*   Go to the [Route 53 AWS console](https://console.aws.amazon.com/route53/v2/hostedzones#)
+*   Click on *Create Hosted Zone*
 
 ![Create hosted zone](https://cdn.goldstack.party/img/202010/create_hosted_zone.png)
 
-- Provide the name of a domain you own (or a subdomain of a domain you own) and click _Create hosted zone_.
+*   Provide the name of a domain you own (or a subdomain of a domain you own) and click *Create hosted zone*.
 
 ![Provide hosted zone details](https://cdn.goldstack.party/img/202010/hosted_zone_details.png)
 
-- If you haven't registered your domain through Route 53, configure your domain with your domain registrar to use the nameservers Route 53 lists for your domain.
+*   If you haven't registered your domain through Route 53, configure your domain with your domain registrar to use the nameservers Route 53 lists for your domain.
 
 ![Provide hosted zone details](https://cdn.goldstack.party/img/202010/nameservers.png)
 
@@ -269,14 +308,14 @@ You can use the same hosted zone for multiple modules. Just make sure to use sub
 
 If you already have a hosted zone configured for the domain you would like to use for your module, you simply need to provide the domain of the hosted zone.
 
-- You can find all hosted zones you have configured in the [Route 53 Console](https://console.aws.amazon.com/route53/v2/hostedzones#)
-- Copy the value provided under _Domain name_ and provide this in your module configuration
+*   You can find all hosted zones you have configured in the [Route 53 Console](https://console.aws.amazon.com/route53/v2/hostedzones#)
+*   Copy the value provided under *Domain name* and provide this in your module configuration
 
 ![Determining domain name from hosted zone list](https://cdn.goldstack.party/img/202010/domainname_list.png)
 
 ## Terraform
 
-All Goldstack templates contain Terraform Infrastructure as Code definitions. Goldstack provides easy tooling to stand up this infrastructure. Terraform will use the _AWS credentials_ configured as per the instructions above.
+All Goldstack templates contain Terraform Infrastructure as Code definitions. Goldstack provides easy tooling to stand up this infrastructure. Terraform will use the *AWS credentials* configured as per the instructions above.
 
 All state will be stored in [Terraform S3 remote state using DynamoDB locking](https://www.terraform.io/docs/language/settings/backends/s3.html). Goldstack will automatically create a bucket for storing the state in the same AWS account that the infrastructure is deployed to (thus being able to use the same AWS credentials).
 
@@ -332,9 +371,9 @@ The video guides below cover all the steps that are described on this page:
 
 Goldstack requires a few dependencies to be available in your development system. Please verify they are present or install them:
 
-- Node v12+: [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- Yarn v1.22.5+: [Yarn Installation](https://yarnpkg.com/getting-started/install)
-- Docker v19+: [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
+*   Node v12+: [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+*   Yarn v1.22.5+: [Yarn Installation](https://yarnpkg.com/getting-started/install)
+*   Docker v19+: [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
 
 ### Confirm versions
 
@@ -380,21 +419,21 @@ Your project should come with all files required to configure VSCode. Configurat
 
 If you want to install the necessary extensions manually, here are links to the extensions required:
 
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
+*   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+*   [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+*   [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
 
 Try to find any `.ts` file in your project. They should be present in one of your modules under `packages/*/src/`.
 
-Once you open a `.ts` file, VSCode should open a confirmation at the bottom right corner of the screen asking _This workspace contains a TypeScript version. Would you like to use the workspace TypeScript version for TypeScript and JavaScript language features?_. Confirm this by clicking the _Allow_ button.
+Once you open a `.ts` file, VSCode should open a confirmation at the bottom right corner of the screen asking *This workspace contains a TypeScript version. Would you like to use the workspace TypeScript version for TypeScript and JavaScript language features?*. Confirm this by clicking the *Allow* button.
 
 ![Allow TypeScript](https://cdn.goldstack.party/img/202010/allow_typescript.png)
 
-In the status bar on the bottom righthand corner of the VSCode editor you should now see _TypeScript_ along with a version such as _3.9.5-pnpify_.
+In the status bar on the bottom righthand corner of the VSCode editor you should now see *TypeScript* along with a version such as *3.9.5-pnpify*.
 
 ![VSCode status bar](https://cdn.goldstack.party/img/202010/vscode_status_bar.png)
 
-If the confirmation dialog does not show up or the version that you see does not include _pnpify_, click the version number next to _TypeScript_. Then select the TypeScript version from the list that includes _pnpify_.
+If the confirmation dialog does not show up or the version that you see does not include *pnpify*, click the version number next to *TypeScript*. Then select the TypeScript version from the list that includes *pnpify*.
 
 ![Select TypeScript version](https://cdn.goldstack.party/img/202010/select_typescript_version.png)
 
@@ -406,9 +445,12 @@ If you have [configured your project for AWS deployment](./configuration) on Gol
 
 Each module you have selected comes with its own instructions about how to get started with development. However, there are some handy commands in the project root that can be useful for development:
 
-- `yarn build`: Will build all modules in the project.
-- `yarn compile-watch`: Will watch for any changes in your TypeScript files in all modules, and compile them when required. It is essential to have this command running if you develop TypeScript libraries or supporting modules such as [S3](../modules/s3) or [Email Send](./../modules/email-send).
-- `yarn test-watch`: Will run tests when modules have changed.
+*   `yarn build`: Will build all modules in the project.
+*   `yarn compile`: Will compile all TypeScript code.
+*   `yarn fix-project-references`: Will ensure all [TypeScript project references](https://www.typescriptlang.org/docs/handbook/project-references.html) between the packages in the project are correct. Always run this after adding a new package or changing the dependencies between packages in the project.
+*   `yarn test-watch`: Will run tests when modules have changed.
+*   `yarn format-check` and `yarn format`: Will check or fix source code formatting using Prettier
+*   `yarn lint` and `yarn lint-fix`: Will check or auto-fix linting issues using ESLint.
 
 Note that you can run all of these commands in the context of individual modules as well. If you only modify code within one module, this is sufficient. However, if you develop multiple modules at the same time, it is important to run these commands at the project root.
 
