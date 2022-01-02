@@ -21,7 +21,7 @@ export const createBackendLambdaApiBuildSetConfig = async (): Promise<DeploySetC
   const setConfig: DeploySetConfig = {
     buildSetName: 'backend-lambda-api',
     buildTemplates: ['yarn-pnp-monorepo', 'lambda-api'],
-    deployTemplates: ['yarn-pnp-monorepo', 'lambda-api'],
+    deployTemplates: ['lambda-api'],
     projects: [
       {
         projectConfiguration,
