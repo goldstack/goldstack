@@ -1,4 +1,5 @@
 import { LambdaConfig } from './collectLambdasFromFiles';
+import crypto from 'crypto';
 
 const santiseFunctionName = (input: string): string => {
   return input
@@ -20,10 +21,10 @@ export const generateFunctionName = (
   let name = config.name;
   if (name === '$default') {
     // '$' is not a valid character in a lambda function name
-    name = 'default_gateway_lambda_2281';
+    name = '__default';
   }
   if (name === '$index') {
-    name = 'index_root_lambda_4423';
+    name = '__index';
   }
   name = santiseFunctionName(name);
 
@@ -41,5 +42,15 @@ export const generateFunctionName = (
 
   name = `${pathPrefix}${name}`;
   name = (`${prefix}-` || '') + name;
+
+  // Lambda names cannot be larger than 64 characters
+  // in that case shorten name and append a hash
+  if (name.length > 64) {
+    name = `${name.substring(0, 40)}-${crypto
+      .createHash('md5')
+      .update(name)
+      .digest('hex')
+      .substring(0, 20)}`;
+  }
   return name;
 };
