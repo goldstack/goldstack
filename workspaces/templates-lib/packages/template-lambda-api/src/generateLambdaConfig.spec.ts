@@ -71,7 +71,7 @@ describe('Generate Lambda config', () => {
       dummyDeployment.configuration.lambdaNamePrefix,
       nestedRoute
     );
-    assert(functionName.indexOf('health') !== -1);
+    expect(functionName).toContain('health');
   });
   test('Should provide a correct path for a file in the API root', () => {
     const nestedRoute = routesConfig.find((e) => e.path === '/resource');
@@ -82,5 +82,16 @@ describe('Generate Lambda config', () => {
       nestedRoute
     );
     assert(functionName.match(/resource/g)?.length === 1);
+  });
+  test('Should hash long names', () => {
+    const nestedRoute = routesConfig.find((e) => e.path === '/resource');
+    assert(nestedRoute);
+
+    const functionName = generateFunctionName(
+      'very_long_names_should_end_with_a_hash_and_never_be_longer_than_64_characters',
+      nestedRoute
+    );
+    expect(functionName.length <= 64).toBeTruthy();
+    expect(functionName.indexOf('characters') === -1).toBe(true);
   });
 });

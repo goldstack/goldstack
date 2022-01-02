@@ -1,6 +1,9 @@
 import { LambdaConfig } from './collectLambdasFromFiles';
 import crypto from 'crypto';
 
+const INDEX_MARKER = '__index';
+const DEFAULT_MARKER = '__default';
+
 const santiseFunctionName = (input: string): string => {
   return input
     .replace(/\//g, '-')
@@ -21,16 +24,16 @@ export const generateFunctionName = (
   let name = config.name;
   if (name === '$default') {
     // '$' is not a valid character in a lambda function name
-    name = '__default';
+    name = DEFAULT_MARKER;
   }
   if (name === '$index') {
-    name = '__index';
+    name = INDEX_MARKER;
   }
   name = santiseFunctionName(name);
 
   let pathPrefix = '';
   const segments = config.path.split('/');
-  if (segments.length === 2 && name === 'index_root_lambda_4423') {
+  if (segments.length === 2 && name === INDEX_MARKER) {
     pathPrefix = `${segments[1]}-`;
   }
   if (segments.length > 2) {
