@@ -117,6 +117,15 @@ This works very well in combination with secrets for GitHub actions.
 
 [!embed](./../lambda-express/faq.md)
 
+### Concurrent Modification Error when Creating Infrastructure
+
+The following error may be displayed sometime when running `yarn infra up prod [deploymentName]` for the first time. This is due to an error in the way Terraform schedules the creation of the resources. The easy solution to this problem is simply running `yarn infra up prod [deploymentName]` again.
+
+```
+Error: error creating API Gateway v2 route: ConflictException: Unable to complete operation due to concurrent modification. 
+Please try again later.
+```
+
 ## Security Hardening
 
 This module requires further security hardening when deployed in critical production applications. Specifically the lambdas are given the role `arn:aws:iam::aws:policy/AdministratorAccess"` and this will grant the lambdas access to all resources on the AWS account, including the ability to create and destroy infrastructure. It is therefore recommended to grant the lambdas only rights to resources it needs access to, such as read and write permissions for an S3 bucket. This can be modified in `infra/aws/lambda_shared.tf` in the resource `resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach"`.
