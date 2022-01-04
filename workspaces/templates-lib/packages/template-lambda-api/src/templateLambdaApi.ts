@@ -13,7 +13,10 @@ import {
   LambdaApiDeployment,
 } from './types/LambdaApiPackage';
 import { readLambdaConfig } from '@goldstack/utils-aws-lambda';
-import { generateLambdaConfig } from './generateLambdaConfig';
+import {
+  generateLambdaConfig,
+  validateDeployment,
+} from './generateLambdaConfig';
 import { defaultRoutesPath } from './templateLambdaConsts';
 import { buildLambdas } from './templateLambdaApiBuild';
 
@@ -52,8 +55,11 @@ export const run = async (args: string[]): Promise<void> => {
     config.deployments = config.deployments.map((e) => {
       const lambdasConfigs = generateLambdaConfig(e, lambdaRoutes);
       e.configuration.lambdas = lambdasConfigs;
+      validateDeployment(e.configuration.lambdas);
       return e;
     });
+    console.log('API CONFIG');
+    console.log(JSON.stringify(config, null, 2));
     writePackageConfig(config);
 
     const command = argv._[0];
