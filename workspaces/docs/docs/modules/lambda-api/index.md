@@ -126,6 +126,8 @@ Error: error creating API Gateway v2 route: ConflictException: Unable to complet
 Please try again later.
 ```
 
+See [Issue #40](https://github.com/goldstack/goldstack/issues/40)
+
 ## Security Hardening
 
 This module requires further security hardening when deployed in critical production applications. Specifically the lambdas are given the role `arn:aws:iam::aws:policy/AdministratorAccess"` and this will grant the lambdas access to all resources on the AWS account, including the ability to create and destroy infrastructure. It is therefore recommended to grant the lambdas only rights to resources it needs access to, such as read and write permissions for an S3 bucket. This can be modified in `infra/aws/lambda_shared.tf` in the resource `resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach"`.
