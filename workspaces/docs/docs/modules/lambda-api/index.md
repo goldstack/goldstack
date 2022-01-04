@@ -122,7 +122,7 @@ This works very well in combination with secrets for GitHub actions.
 The following error may be displayed sometime when running `yarn infra up prod [deploymentName]` for the first time. This is due to an error in the way Terraform schedules the creation of the resources. The easy solution to this problem is simply running `yarn infra up prod [deploymentName]` again.
 
 ```
-Error: error creating API Gateway v2 route: ConflictException: Unable to complete operation due to concurrent modification. 
+Error: error creating API Gateway v2 route: ConflictException: Unable to complete operation due to concurrent modification.
 Please try again later.
 ```
 

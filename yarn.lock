@@ -1044,7 +1044,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/lambda-api@workspace:workspaces/templates/packages/lambda-api"
   dependencies:
-    "@goldstack/template-lambda-api": 0.3.77
+    "@goldstack/template-lambda-api": 0.4.0
     "@goldstack/utils-aws-http-api-local": 0.1.5
     "@jest-mock/express": ^1.1.7
     "@types/aws-lambda": ^8.10.88
@@ -1621,7 +1621,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-lambda-api@0.3.77, @goldstack/template-lambda-api@workspace:workspaces/templates-lib/packages/template-lambda-api":
+"@goldstack/template-lambda-api@0.4.0, @goldstack/template-lambda-api@workspace:workspaces/templates-lib/packages/template-lambda-api":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-lambda-api@workspace:workspaces/templates-lib/packages/template-lambda-api"
   dependencies:
