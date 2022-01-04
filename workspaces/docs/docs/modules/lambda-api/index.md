@@ -1,6 +1,6 @@
 ---
 id: template-lambda-api
-title: Lambda API
+title: Serverless API
 ---
 
 [!embed](./about.md)

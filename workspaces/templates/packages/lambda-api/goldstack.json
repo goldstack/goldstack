@@ -16,7 +16,7 @@
         "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party",
         "lambdas": {
           "$default": {
-            "function_name": "goldstack-test-lambda-api-default_gateway_lambda_2281"
+            "function_name": "goldstack-test-lambda-api-__default"
           },
           "ANY /admin/{proxy+}": {
             "function_name": "goldstack-test-lambda-api-admin-_proxy__"
@@ -31,7 +31,7 @@
             "function_name": "goldstack-test-lambda-api-order-_id_"
           },
           "ANY /user": {
-            "function_name": "goldstack-test-lambda-api-user-index_root_lambda_4423"
+            "function_name": "goldstack-test-lambda-api-user-__index"
           },
           "ANY /user/{userId}": {
             "function_name": "goldstack-test-lambda-api-user-_userId_"
