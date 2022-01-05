@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/infra-aws",
-  "version": "0.3.30",
+  "version": "0.3.31",
   "description": "Utilities to work with AWS infrastructrue via the cli.",
   "keywords": [
     "goldstack",
@@ -42,7 +42,7 @@
     "@goldstack/infra": "0.3.24",
     "@goldstack/utils-config": "0.3.23",
     "@goldstack/utils-log": "0.2.9",
-    "@goldstack/utils-package": "0.3.25",
+    "@goldstack/utils-package": "0.3.26",
     "@goldstack/utils-sh": "0.4.22",
     "aws-sdk": "2.1001.0",
     "axios": "^0.21.1",
