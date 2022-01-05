@@ -15,7 +15,7 @@
     "clean": "rm -rf ./dist && yarn clean-docker",
     "clean-docker": "ts-node ./src/build.ts clean $@",
     "cli": "ts-node ./src/cli.ts",
-    "cli-deploy-set-backend-dev": "yarn cli deploy-set --set backend --repo goldstack-dev --deployment dev --emailResultsTo maxrohde.public@gmail.com --workDir tmp --skipTests false",
+    "cli-deploy-set-dev": "yarn cli deploy-set --set backend-lambda-api --repo goldstack-dev --deployment dev --emailResultsTo maxrohde.public@gmail.com --workDir tmp --skipTests false",
     "cli-schedule-all-deploy-sets-dev": "yarn cli schedule-all-deploy-sets --repo goldstack-dev --deployment dev",
     "compile": "tsc --build",
     "compile-watch": "tsc --build --watch",

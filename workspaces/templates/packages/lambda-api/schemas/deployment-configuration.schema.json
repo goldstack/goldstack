@@ -59,10 +59,14 @@
       "properties": {
         "function_name": {
           "type": "string"
+        },
+        "route": {
+          "type": "string"
         }
       },
       "required": [
-        "function_name"
+        "function_name",
+        "route"
       ],
       "additionalProperties": false
     }

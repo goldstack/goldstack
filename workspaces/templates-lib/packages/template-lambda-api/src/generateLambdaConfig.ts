@@ -2,7 +2,6 @@ import {
   LambdaConfig,
   generateFunctionName,
 } from '@goldstack/utils-aws-lambda';
-import { boolean } from 'yargs';
 import {
   LambdaRoutesConfig,
   LambdaApiDeployment,
@@ -12,12 +11,13 @@ export const generateLambdaConfig = (
   deployment: LambdaApiDeployment,
   config: LambdaConfig[]
 ): LambdaRoutesConfig => {
-  return config.reduce((last, curr) => {
-    last[curr.route] = {
+  return config.reduce((last, curr, index) => {
+    last[`${curr.route}${index}`] = {
       function_name: generateFunctionName(
         deployment.configuration.lambdaNamePrefix,
         curr
       ),
+      route: curr.route,
     };
     return last;
   }, {});

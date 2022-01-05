@@ -76,9 +76,6 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     ` ${renderVariables(options.variables || [])} ` +
     ` ${options.options?.join(' ') || ''} `;
 
-  console.log('TERRAFORM CLI');
-  console.log(execCmd);
-
   return exec(execCmd);
 };
 

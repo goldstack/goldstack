@@ -58,8 +58,6 @@ export const run = async (args: string[]): Promise<void> => {
       validateDeployment(e.configuration.lambdas);
       return e;
     });
-    console.log('API CONFIG');
-    console.log(JSON.stringify(config, null, 2));
     writePackageConfig(config);
 
     const command = argv._[0];

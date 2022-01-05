@@ -37,6 +37,7 @@ export type CorsHeader = string;
 
 export interface LambdaRouteConfig {
   function_name: string;
+  route: string;
 }
 
 export type LambdaRoutesConfig = {
