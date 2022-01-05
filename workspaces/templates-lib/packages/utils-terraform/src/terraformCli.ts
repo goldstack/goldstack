@@ -48,6 +48,8 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
     ` ${renderVariables(options.variables || [])} ` +
     ` ${options.options?.join(' ') || ''} `;
 
+  console.debug('Running Terraform in Docker');
+  console.debug(cmd3);
   return exec(cmd3);
 };
 
@@ -76,6 +78,8 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     ` ${renderVariables(options.variables || [])} ` +
     ` ${options.options?.join(' ') || ''} `;
 
+  console.debug('Running Terraform in cli');
+  console.debug(execCmd);
   return exec(execCmd);
 };
 

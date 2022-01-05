@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-terraform",
-  "version": "0.3.38",
+  "version": "0.3.40",
   "description": "Run Terraform commands easily as npm package scripts",
   "keywords": [
     "goldstack",
@@ -38,11 +38,11 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.3.24",
-    "@goldstack/infra-aws": "0.3.29",
+    "@goldstack/infra-aws": "0.3.30",
     "@goldstack/utils-config": "0.3.23",
     "@goldstack/utils-docker": "0.3.26",
     "@goldstack/utils-log": "0.2.9",
-    "@goldstack/utils-package": "0.3.24",
+    "@goldstack/utils-package": "0.3.25",
     "@goldstack/utils-sh": "0.4.22",
     "prompt-sync": "^4.2.0",
     "yargs": "^15.4.1"

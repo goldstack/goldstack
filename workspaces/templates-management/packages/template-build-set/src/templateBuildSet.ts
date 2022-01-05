@@ -143,6 +143,13 @@ const buildAndTestProject = async (
   for (const packageConfig of params.project.packageConfigurations) {
     try {
       for (const packageTest of packageConfig.packageTests) {
+        if (testResults.find((tr) => tr.result === false)) {
+          console.log(
+            `Skipping test ${packageTest} since previous test failed`
+          );
+          continue;
+        }
+
         console.log(`Running test ${packageTest} ...`);
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

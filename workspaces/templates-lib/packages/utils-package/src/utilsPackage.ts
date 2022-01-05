@@ -22,7 +22,9 @@ export const writePackageConfig = (
   packagePath = './'
 ): void => {
   const schemaPath = packagePath + 'schemas/package.schema.json';
-  validateConfig(packageConfig, JSON.parse(read(schemaPath)));
+  validateConfig(packageConfig, JSON.parse(read(schemaPath)), {
+    errorMessage: 'Cannot write package config since it is not valid.',
+  });
   write(JSON.stringify(packageConfig, null, 2), packagePath + 'goldstack.json');
 };
 

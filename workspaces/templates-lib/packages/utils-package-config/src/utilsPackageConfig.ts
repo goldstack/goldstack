@@ -38,7 +38,7 @@ export class PackageConfig<
   }
   getConfigFromPackageConfig(packageConfig: Package): PackageType {
     validateConfig(packageConfig, this.getPackageSchema(), {
-      errorMessage: 'Cannot load configuration for S3 package.',
+      errorMessage: 'Cannot load configuration for package.',
     });
 
     return packageConfig as PackageType;
