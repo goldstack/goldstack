@@ -44,7 +44,7 @@
             "children": []
           },
           {
-            "title": "Lambda API",
+            "title": "Serverless API",
             "path": "modules/lambda-api",
             "children": []
           },
