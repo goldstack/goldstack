@@ -23,7 +23,7 @@ describe('Generate Lambda config', () => {
   const routesConfig = readLambdaConfig('./testData');
   const config = generateLambdaConfig(dummyDeployment, routesConfig);
   test('Should render config for Terraform', () => {
-    assert(config['$default'].function_name);
+    assert(config['default'].function_name);
     assert(
       config['ANY /folder/nested'].function_name.indexOf(
         dummyDeployment.configuration.lambdaNamePrefix || 'fail'

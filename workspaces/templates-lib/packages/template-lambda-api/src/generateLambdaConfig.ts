@@ -11,8 +11,12 @@ export const generateLambdaConfig = (
   deployment: LambdaApiDeployment,
   config: LambdaConfig[]
 ): LambdaRoutesConfig => {
-  return config.reduce((last, curr, index) => {
-    last[`${curr.route}${index}`] = {
+  return config.reduce((last, curr) => {
+    let id = curr.route;
+    if (id === '$default') {
+      id = 'default';
+    }
+    last[`${id}`] = {
       function_name: generateFunctionName(
         deployment.configuration.lambdaNamePrefix,
         curr

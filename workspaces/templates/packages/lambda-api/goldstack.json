@@ -15,31 +15,31 @@
         "hostedZoneDomain": "dev.goldstack.party",
         "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party",
         "lambdas": {
-          "$default0": {
+          "default": {
             "function_name": "goldstack-test-lambda-api-__default",
             "route": "$default"
           },
-          "ANY /admin/{proxy+}1": {
+          "ANY /admin/{proxy+}": {
             "function_name": "goldstack-test-lambda-api-admin-_proxy__",
             "route": "ANY /admin/{proxy+}"
           },
-          "ANY /cart/{sessionId}/items2": {
+          "ANY /cart/{sessionId}/items": {
             "function_name": "goldstack-test-lambda-api-cart-_sessionId_-items",
             "route": "ANY /cart/{sessionId}/items"
           },
-          "ANY /echo3": {
+          "ANY /echo": {
             "function_name": "goldstack-test-lambda-api-echo",
             "route": "ANY /echo"
           },
-          "ANY /order/{id}4": {
+          "ANY /order/{id}": {
             "function_name": "goldstack-test-lambda-api-order-_id_",
             "route": "ANY /order/{id}"
           },
-          "ANY /user5": {
+          "ANY /user": {
             "function_name": "goldstack-test-lambda-api-user-__index",
             "route": "ANY /user"
           },
-          "ANY /user/{userId}6": {
+          "ANY /user/{userId}": {
             "function_name": "goldstack-test-lambda-api-user-_userId_",
             "route": "ANY /user/{userId}"
           }
