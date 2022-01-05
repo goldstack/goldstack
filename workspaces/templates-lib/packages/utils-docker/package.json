@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-docker",
-  "version": "0.3.25",
+  "version": "0.3.26",
   "description": "Utilities to run commands in local docker containers.",
   "keywords": [
     "goldstack",
