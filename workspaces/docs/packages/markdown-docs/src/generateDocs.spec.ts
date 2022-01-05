@@ -13,6 +13,6 @@ describe('Generate docs', () => {
       source: getDocsDir(),
       destination: 'localTests/',
     });
-    console.log(JSON.stringify(res, null, 2));
+    expect(res).toBeDefined();
   });
 });

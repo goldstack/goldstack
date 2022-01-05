@@ -1,4 +1,4 @@
-FROM goldstack/goldstack-docker-build:0.1.3
+FROM goldstack/goldstack-docker-build:0.3.0
 
 COPY / /app
 

@@ -70,12 +70,16 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
 
   options.provider.setEnvVariables();
 
-  return exec(
+  const execCmd =
     `terraform ${cmd} ` +
-      ` ${renderBackendConfig(options.backendConfig || [])} ` +
-      ` ${renderVariables(options.variables || [])} ` +
-      ` ${options.options?.join(' ') || ''} `
-  );
+    ` ${renderBackendConfig(options.backendConfig || [])} ` +
+    ` ${renderVariables(options.variables || [])} ` +
+    ` ${options.options?.join(' ') || ''} `;
+
+  console.log('TERRAFORM CLI');
+  console.log(execCmd);
+
+  return exec(execCmd);
 };
 
 export const tf = (cmd: string, options: TerraformOptions): string => {
