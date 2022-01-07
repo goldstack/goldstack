@@ -25,36 +25,6 @@ const moduleTemplates = getModuleTemplatesNames().map((e) => {
     docPath: `modules/${e}/`,
   };
 });
-// [
-//   {
-//     dirName: 'email-send/',
-//     docPath: 'modules/email-send/',
-//   },
-//   {
-//     dirName: 'lambda-express/',
-//     docPath: 'modules/lambda-express/',
-//   },
-//   {
-//     dirName: 'app-nextjs/',
-//     docPath: 'modules/app-nextjs/',
-//   },
-//   {
-//     dirName: 'app-nextjs-bootstrap/',
-//     docPath: 'modules/app-nextjs-bootstrap/',
-//   },
-//   {
-//     dirName: 's3/',
-//     docPath: 'modules/s3/',
-//   },
-//   {
-//     dirName: 'static-website-aws/',
-//     docPath: 'modules/static-website-aws/',
-//   },
-//   {
-//     dirName: 'lambda-go-gin/',
-//     docPath: 'modules/lambda-go-gin/',
-//   },
-// ];
 
 const run = async () => {
   // Step 0:
