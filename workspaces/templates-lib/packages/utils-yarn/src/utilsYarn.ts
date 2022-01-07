@@ -1,7 +1,8 @@
 import { commandExists, pwd, exec, cd } from '@goldstack/utils-sh';
 import {
+  assertDocker,
   hasDocker,
-  imageGoldstackBuild,
+  imageNodeYarn,
   renderHostEnvironmentVariables,
 } from '@goldstack/utils-docker';
 import path from 'path';
@@ -21,12 +22,13 @@ export const assertYarn = (): void => {
 };
 
 const execWithDocker = (dir: string, args: string): void => {
+  assertDocker();
   exec(
     'docker run --rm ' +
       `-v "${path.resolve(dir)}":/app ` +
       renderHostEnvironmentVariables() +
       ' ' +
-      `${imageGoldstackBuild()} ` +
+      `${imageNodeYarn()} ` +
       `yarn ${args}`
   );
 };
@@ -40,11 +42,15 @@ const execWithCli = (dir: string, args: string): void => {
 };
 
 export const yarn = (dir: string, args: string): void => {
-  // always prefer to run with docker
-  if (hasDocker()) {
-    execWithDocker(dir, args);
+  // always prefer to run with cli
+  if (hasYarn()) {
+    execWithCli(dir, args);
     return;
   }
-
-  execWithCli(dir, args);
+  if (!hasDocker()) {
+    throw new Error(
+      'Either yarn needs to be installed locally or Docker be avaialbe. Please install either yarn or Docker.'
+    );
+  }
+  execWithDocker(dir, args);
 };

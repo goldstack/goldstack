@@ -144,8 +144,7 @@ export const renderHostEnvironmentVariables = (): string => {
     .join('');
 };
 
-export const imageGoldstackBuild = (): string =>
-  'goldstack/goldstack-docker-build:0.3.0';
+export const imageNodeYarn = (): string => 'node:12.22-alpine';
 
 export const imageTerraform = (): string => 'hashicorp/terraform:0.12.26';
 
