@@ -173,7 +173,7 @@ jobs:
 
       - name: Write build date
         if: github.ref == 'refs/heads/master'
-        run: echo "$(date +'%Y-%m-%dT%H:%M:%S')" > build_timestamp
+        run: echo "$(date +'%Y-%m-%dT%H:%M:%S')" >> build_dev_timestamp
 
       - name: Commit latest deployed image hash
         if: github.ref == 'refs/heads/master'
@@ -186,7 +186,7 @@ jobs:
           # cd ../..
           # include files changed on root
           git add .
-          git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy)"
+          git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy_dev)"
           git status
 
       - name: Push changes
