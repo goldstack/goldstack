@@ -159,30 +159,33 @@ jobs:
           git rev-parse HEAD
           echo "::set-output name=patchedcommit::$(git rev-parse HEAD)"
 
-      - name: Build and publish image to DEV
-        if: github.ref == 'refs/heads/master'
-        run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy-ts dev
-        env:
-          AWS_USER_NAME: goldstack-dev
-          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          AWS_DEFAULT_REGION: us-west-2
+      # - name: Build and publish image to DEV
+      #   if: github.ref == 'refs/heads/master'
+      #   run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy-ts dev
+      #   env:
+      #     AWS_USER_NAME: goldstack-dev
+      #     AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+      #     AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+      #     AWS_DEFAULT_REGION: us-west-2
 
       - name: Remove yarn secret
         run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''""''" } }'''
 
+      - name: Write build date
+        run: echo "$(date +'%Y-%m-%dT%H:%M:%S')" > build_timestamp
+
       - name: Commit latest deployed image hash
         if: github.ref == 'refs/heads/master'
         run: |
-          cd workspaces/apps
-          git status
-          git add packages/template-management-cli/src/state/deployments.json
-          git diff-index --quiet HEAD || git commit -m "Publishing updated docker deployment (ci_skip) (trigger_template_deploy)"
-          git status
-          cd ../..
+          # cd workspaces/apps
+          # git status
+          # git add packages/template-management-cli/src/state/deployments.json
+          # git diff-index --quiet HEAD || git commit -m "Publishing updated docker deployment (ci_skip) "
+          # git status
+          # cd ../..
           # include files changed on root
           git add .
-          git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip)"
+          git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy)"
           git status
 
       - name: Push changes
