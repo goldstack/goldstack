@@ -1,5 +1,5 @@
 
-name: Goldstack Template Deployment for DEV 
+name: Template Deployment for DEV 
 
 on: [push]
 

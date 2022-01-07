@@ -1,6 +1,6 @@
 # Triggers when running a release in Github
 # https://github.com/goldstack/goldstack-mega/releases/new
-name: Goldstack Release
+name: Production Release
 
 on:
   release:

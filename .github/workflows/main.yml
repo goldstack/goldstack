@@ -1,4 +1,4 @@
-name: Goldstack Monorepo
+name: Build, Test and Library Publish
 
 on: [push, pull_request]
 
