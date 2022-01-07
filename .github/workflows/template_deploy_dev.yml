@@ -5,10 +5,10 @@ on: [push]
 
 jobs:
   build:
-    name: 'Run end to end tests and deploy build sets'
+    name: 'Deploy build set'
     strategy:
       matrix:
-        deploy-set: ["no-infra"]
+        deploy-set: ["backend-go-gin", "backend-lambda-api", "backend-nodejs-express", "no-infra", "static-website"]
     # if: "contains(github.event.head_commit.message, 'trigger_template_deploy') && github.ref == 'refs/heads/master'"
     runs-on: ubuntu-latest
     steps:

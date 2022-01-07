@@ -172,6 +172,7 @@ jobs:
         run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''""''" } }'''
 
       - name: Write build date
+        if: github.ref == 'refs/heads/master'
         run: echo "$(date +'%Y-%m-%dT%H:%M:%S')" > build_timestamp
 
       - name: Commit latest deployed image hash
