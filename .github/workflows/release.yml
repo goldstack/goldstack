@@ -61,20 +61,20 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
 
-      - name: Build and publish image to PROD
-        run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy-ts prod
-        env:
-          AWS_USER_NAME: goldstack-prod
-          AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
-          AWS_DEFAULT_REGION: us-west-2
+      # - name: Build and publish image to PROD
+      #   run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy-ts prod
+      #   env:
+      #     AWS_USER_NAME: goldstack-prod
+      #     AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
+      #     AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
+      #     AWS_DEFAULT_REGION: us-west-2
 
-      - name: Trigger template build and deploy PROD
-        run: |
-          yarn workspace @goldstack/template-management-cli compile # compile again so that deployment state is updated
-          yarn workspace @goldstack/template-management-cli cli schedule-all-deploy-sets --repo goldstack-prod --deployment prod --skipTests true --emailResultsTo maxrohde.public@gmail.com
-        env:
-          AWS_USER_NAME: goldstack-prod
-          AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
-          AWS_DEFAULT_REGION: us-west-2
+      # - name: Trigger template build and deploy PROD
+      #   run: |
+      #     yarn workspace @goldstack/template-management-cli compile # compile again so that deployment state is updated
+      #     yarn workspace @goldstack/template-management-cli cli schedule-all-deploy-sets --repo goldstack-prod --deployment prod --skipTests true --emailResultsTo maxrohde.public@gmail.com
+      #   env:
+      #     AWS_USER_NAME: goldstack-prod
+      #     AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
+      #     AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
+      #     AWS_DEFAULT_REGION: us-west-2
