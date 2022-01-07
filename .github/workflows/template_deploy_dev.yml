@@ -28,7 +28,7 @@ jobs:
           yarn install
       - name: Run build set 
         run: |
-          cd workspaces/apps/tempalte-management-cli
+          cd workspaces/apps/packages/tempalte-management-cli
           yarn cli deploy-set \
             --set ${{ matrix.deploy-set }} \
             --deployment dev \
