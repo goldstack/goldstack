@@ -6,6 +6,7 @@ import {
   renderHostEnvironmentVariables,
 } from '@goldstack/utils-docker';
 import path from 'path';
+import { execFile } from 'child_process';
 
 export const hasYarn = (): boolean => {
   if (!commandExists('yarn')) {
@@ -37,6 +38,7 @@ const execWithCli = (dir: string, args: string): void => {
   assertYarn();
   const currentWorkDir = pwd();
   cd(path.resolve(dir));
+  exec('yarn --version', { silent: false });
   exec(`yarn ${args}`);
   cd(currentWorkDir);
 };

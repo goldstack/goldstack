@@ -26,9 +26,6 @@ jobs:
       - name: Install project dependencies
         run: |
           yarn install
-      - name: Cleaning yarn global cache
-        run: |
-          yarn cache clean --all
       - name: Run build set 
         run: |
           cd workspaces/apps/packages/template-management-cli
