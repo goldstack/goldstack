@@ -23,12 +23,12 @@ jobs:
           registry-url: https://registry.npmjs.org
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
-      - name: Install root repo and lint
+      - name: Install project dependencies
         run: |
           yarn install
       - name: Run build set 
         run: |
-          cd workspaces/apps/packages/tempalte-management-cli
+          cd workspaces/apps/packages/template-management-cli
           yarn cli deploy-set \
             --set ${{ matrix.deploy-set }} \
             --deployment dev \
