@@ -7,5 +7,5 @@ export interface InstallProjectParams {
 export const installProject = async (
   params: InstallProjectParams
 ): Promise<void> => {
-  yarn(params.projectDirectory, 'install');
+  yarn(params.projectDirectory, 'install --check-cache');
 };
