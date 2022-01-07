@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         deploy-set: ["no-infra"]
-    if: "contains(github.event.head_commit.message, 'trigger_template_deploy') && github.ref == 'refs/heads/master'"
+    # if: "contains(github.event.head_commit.message, 'trigger_template_deploy') && github.ref == 'refs/heads/master'"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Goldstack repo
@@ -28,7 +28,7 @@ jobs:
           yarn install
       - name: Run build set 
         run: |
-          cd workspaces/apps/tempalte-management-cli
+          cd workspaces/apps/packages/tempalte-management-cli
           yarn cli deploy-set \
             --set ${{ matrix.deploy-set }} \
             --deployment dev \
