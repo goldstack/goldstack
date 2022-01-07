@@ -23,7 +23,7 @@ jobs:
           git config --global user.name "GitHub Actions Build"
           git config --global pull.rebase false
       - name: Install Yarn
-        run: npm install -g yarn@1.22.4
+        run: npm install -g yarn@1.22.11
       - name: Configure yarn
         run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''"${{secrets.NPM_TOKEN}}"''" } }'''
       - name: Install root repo and lint
@@ -177,7 +177,7 @@ jobs:
           cd workspaces/apps
           git status
           git add packages/template-management-cli/src/state/deployments.json
-          git diff-index --quiet HEAD || git commit -m "Publishing updated docker deployment (ci_skip)"
+          git diff-index --quiet HEAD || git commit -m "Publishing updated docker deployment (ci_skip) (trigger_template_deploy)"
           git status
           cd ../..
           # include files changed on root
