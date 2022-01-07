@@ -28,7 +28,7 @@ jobs:
           yarn install
       - name: Cleaning yarn global cache
         run: |
-          yarn cache clean --all
+          yarn cache clean --mirror
           yarn --version
       - name: Run build set 
         run: |
