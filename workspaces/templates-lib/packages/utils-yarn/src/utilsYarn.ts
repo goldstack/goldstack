@@ -1,7 +1,8 @@
 import { commandExists, pwd, exec, cd } from '@goldstack/utils-sh';
 import {
+  assertDocker,
   hasDocker,
-  imageGoldstackBuild,
+  imageNodeYarn,
   renderHostEnvironmentVariables,
 } from '@goldstack/utils-docker';
 import path from 'path';
@@ -20,13 +21,34 @@ export const assertYarn = (): void => {
   }
 };
 
+/**
+ * Ensure that templates can be built in a CI environment, see
+ * https://github.com/goldstack/goldstack/issues/41#issuecomment-1007857278
+ *
+ * @param projectDir
+ * @param globalDir
+ */
+export const configureForTemplateBuild = (
+  projectDir: string,
+  globalDir: string
+): void => {
+  console.log('Perform Yarn config overwrite for template building:');
+  yarn(projectDir, `config set globalFolder ${globalDir}`);
+  yarn(projectDir, 'config set checksumBehavior update');
+  yarn(projectDir, 'config set enableImmutableInstalls false');
+  yarn(projectDir, 'config set enableImmutableCache false');
+  yarn(projectDir, 'config');
+};
+
 const execWithDocker = (dir: string, args: string): void => {
+  assertDocker();
   exec(
     'docker run --rm ' +
       `-v "${path.resolve(dir)}":/app ` +
+      '--workdir /app ' +
       renderHostEnvironmentVariables() +
       ' ' +
-      `${imageGoldstackBuild()} ` +
+      `${imageNodeYarn()} ` +
       `yarn ${args}`
   );
 };
@@ -39,12 +61,24 @@ const execWithCli = (dir: string, args: string): void => {
   cd(currentWorkDir);
 };
 
-export const yarn = (dir: string, args: string): void => {
-  // always prefer to run with docker
-  if (hasDocker()) {
-    execWithDocker(dir, args);
+export interface YarnRunOptions {
+  preferDocker?: boolean;
+}
+
+export const yarn = (
+  dir: string,
+  args: string,
+  options?: YarnRunOptions
+): void => {
+  // always prefer to run with cli
+  if (hasYarn() && !options?.preferDocker) {
+    execWithCli(dir, args);
     return;
   }
-
-  execWithCli(dir, args);
+  if (!hasDocker()) {
+    throw new Error(
+      'Either yarn needs to be installed locally or Docker be avaialbe. Please install either yarn or Docker.'
+    );
+  }
+  execWithDocker(dir, args);
 };

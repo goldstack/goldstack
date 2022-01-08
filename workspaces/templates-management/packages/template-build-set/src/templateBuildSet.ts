@@ -1,6 +1,6 @@
 import { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet';
 
-import { mkdir } from '@goldstack/utils-sh';
+import { mkdir, rmSafe } from '@goldstack/utils-sh';
 import {
   writePackageConfigs,
   getPackageConfigs,
@@ -109,6 +109,7 @@ const buildAndTestProject = async (
 
   await installProject({
     projectDirectory: params.projectDir,
+    globalDirectory: '/tmp/yarnCache',
   });
 
   // setting local AWS config file

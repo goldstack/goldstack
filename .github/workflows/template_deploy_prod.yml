@@ -1,5 +1,5 @@
 
-name: Template Deployment for DEV 
+name: Template Deployment for PROD 
 
 on: [push]
 
@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         deploy-set: ["backend-go-gin", "backend-lambda-api", "backend-nodejs-express", "no-infra", "static-website"]
-    if: "contains(github.event.head_commit.message, 'trigger_template_deploy_dev') && github.ref == 'refs/heads/master'"
+    if: "contains(github.event.head_commit.message, 'trigger_template_deploy_prod') && github.ref == 'refs/heads/master'"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Goldstack repo
@@ -31,12 +31,12 @@ jobs:
           cd workspaces/apps/packages/template-management-cli
           yarn cli deploy-set \
             --set ${{ matrix.deploy-set }} \
-            --deployment dev \
-            --repo goldstack-dev \
+            --deployment prod \
+            --repo goldstack-prod \
             --workDir /tmp/set/ \
             --emailResultsTo false
         env:
-          AWS_USER_NAME: goldstack-dev
-          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_USER_NAME: goldstack-prod
+          AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2

@@ -1,6 +1,6 @@
 # Triggers when running a release in Github
 # https://github.com/goldstack/goldstack-mega/releases/new
-name: Goldstack Release
+name: Production Release
 
 on:
   release:
@@ -61,20 +61,30 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
 
-      - name: Build and publish image to PROD
-        run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy-ts prod
-        env:
-          AWS_USER_NAME: goldstack-prod
-          AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
-          AWS_DEFAULT_REGION: us-west-2
+      - name: Write build date
+        if: github.ref == 'refs/heads/master'
+        run: echo "$(date +'%Y-%m-%dT%H:%M:%S')" >> build_prod_timestamp
 
-      - name: Trigger template build and deploy PROD
+      - name: Commit latest deployed image hash
+        if: github.ref == 'refs/heads/master'
         run: |
-          yarn workspace @goldstack/template-management-cli compile # compile again so that deployment state is updated
-          yarn workspace @goldstack/template-management-cli cli schedule-all-deploy-sets --repo goldstack-prod --deployment prod --skipTests true --emailResultsTo maxrohde.public@gmail.com
-        env:
-          AWS_USER_NAME: goldstack-prod
-          AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
-          AWS_DEFAULT_REGION: us-west-2
+          git add .
+          git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy_prod)"
+          git status
+      # - name: Build and publish image to PROD
+      #   run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy-ts prod
+      #   env:
+      #     AWS_USER_NAME: goldstack-prod
+      #     AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
+      #     AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
+      #     AWS_DEFAULT_REGION: us-west-2
+
+      # - name: Trigger template build and deploy PROD
+      #   run: |
+      #     yarn workspace @goldstack/template-management-cli compile # compile again so that deployment state is updated
+      #     yarn workspace @goldstack/template-management-cli cli schedule-all-deploy-sets --repo goldstack-prod --deployment prod --skipTests true --emailResultsTo maxrohde.public@gmail.com
+      #   env:
+      #     AWS_USER_NAME: goldstack-prod
+      #     AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
+      #     AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
+      #     AWS_DEFAULT_REGION: us-west-2
