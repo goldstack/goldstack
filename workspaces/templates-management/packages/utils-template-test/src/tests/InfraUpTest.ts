@@ -2,6 +2,7 @@ import { TemplateTest, RunTestParams } from './../types/TemplateTest';
 import { yarn } from '@goldstack/utils-yarn';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
 import { read } from '@goldstack/utils-sh';
+
 export class InfraUpTest implements TemplateTest {
   getName(): string {
     return 'infra-up';
