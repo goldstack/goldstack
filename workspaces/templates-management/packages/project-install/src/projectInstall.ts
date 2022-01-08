@@ -8,6 +8,7 @@ export interface InstallProjectParams {
 export const installProject = async (
   params: InstallProjectParams
 ): Promise<void> => {
-  exec('rm -rf ~/.yarn');
-  yarn(params.projectDirectory, 'install');
+  yarn(params.projectDirectory, 'install', {
+    preferDocker: true,
+  });
 };

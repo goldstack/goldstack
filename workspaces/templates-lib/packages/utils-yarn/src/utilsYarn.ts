@@ -24,6 +24,7 @@ export const assertYarn = (): void => {
 
 const execWithDocker = (dir: string, args: string): void => {
   assertDocker();
+  console.log('Yarn execute with Docker');
   exec(
     'docker run --rm ' +
       `-v "${path.resolve(dir)}":/app ` +
@@ -43,9 +44,17 @@ const execWithCli = (dir: string, args: string): void => {
   cd(currentWorkDir);
 };
 
-export const yarn = (dir: string, args: string): void => {
+export interface YarnRunOptions {
+  preferDocker?: boolean;
+}
+
+export const yarn = (
+  dir: string,
+  args: string,
+  options?: YarnRunOptions
+): void => {
   // always prefer to run with cli
-  if (hasYarn()) {
+  if (hasYarn() && !options?.preferDocker) {
     execWithCli(dir, args);
     return;
   }
