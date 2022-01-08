@@ -30,13 +30,21 @@ export const deployFunction = async (
     mode: 511,
   });
 
+  let fixedTargetArchive = targetArchive;
+
+  const isWin = process.platform === 'win32';
+
+  if (!isWin) {
+    fixedTargetArchive = fixedTargetArchive.replace(/\$/g, '\\$');
+  }
+
   const deployResult = await awsCli({
     credentials: params.awsCredentials,
     region: params.region,
     options: {
       silent: true,
     },
-    command: `lambda update-function-code --function-name ${params.functionName} --zip-file fileb://${targetArchive}`,
+    command: `lambda update-function-code --function-name ${params.functionName} --zip-file fileb://${fixedTargetArchive}`,
   });
   if (!params.targetArchiveName) {
     await rmSafe(targetArchive);
