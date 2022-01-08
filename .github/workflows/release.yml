@@ -25,7 +25,7 @@ jobs:
 
       - name: Prepare yarn
         run: |
-          npm install -g yarn@1.22.4
+          npm install -g yarn@1.22.11
       - run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''"${{secrets.NPM_TOKEN}}"''" } }'''
       - name: Install and build
         run: |
@@ -71,20 +71,3 @@ jobs:
           git add .
           git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy_prod)"
           git status
-      # - name: Build and publish image to PROD
-      #   run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy-ts prod
-      #   env:
-      #     AWS_USER_NAME: goldstack-prod
-      #     AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
-      #     AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
-      #     AWS_DEFAULT_REGION: us-west-2
-
-      # - name: Trigger template build and deploy PROD
-      #   run: |
-      #     yarn workspace @goldstack/template-management-cli compile # compile again so that deployment state is updated
-      #     yarn workspace @goldstack/template-management-cli cli schedule-all-deploy-sets --repo goldstack-prod --deployment prod --skipTests true --emailResultsTo maxrohde.public@gmail.com
-      #   env:
-      #     AWS_USER_NAME: goldstack-prod
-      #     AWS_ACCESS_KEY_ID: ${{secrets.PROD_AWS_ACCESS_KEY_ID}}
-      #     AWS_SECRET_ACCESS_KEY: ${{secrets.PROD_AWS_SECRET_ACCESS_KEY}}
-      #     AWS_DEFAULT_REGION: us-west-2
