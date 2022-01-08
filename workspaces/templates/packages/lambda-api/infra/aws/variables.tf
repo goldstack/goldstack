@@ -27,13 +27,7 @@ variable "cors" {
 
 # Add routes https://github.com/terraform-aws-modules/terraform-aws-apigateway-v2/blob/master/variables.tf#L191
 # see here for different variable types https://www.terraform.io/language/values/variables
-
 variable "lambdas" {
   description = "Map of endpoint and lambdas for API"
   type        = map
-  # default     = {
-  #   "ANY /dynamic" = {
-  #     function_name = "dynamic-test"
-  #   }
-  # }
 }

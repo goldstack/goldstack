@@ -10,6 +10,7 @@ import { PackageFilesTemplateTest } from './tests/PackageFilesTemplateTest';
 import { RootBuildTemplateTest } from './tests/RootBuildTemplateTest';
 import { RootFilesTemplateTest } from './tests/RootFilesTemplateTest';
 import { InfraUpTest } from './tests/InfraUpTest';
+import { InfraPlanTest } from './tests/InfraPlanTest';
 import { InfraDestroyTest } from './tests/InfraDestroyTest';
 import { DeployTest } from './tests/DeployTest';
 import { StaticWebsiteAwsTest } from './tests/StaticWebsiteAwsTest';
@@ -55,6 +56,7 @@ export const getTemplateTests = (): TemplateTest[] => {
     new RootBuildTemplateTest(),
     new RootFilesTemplateTest(),
     new InfraUpTest(),
+    new InfraPlanTest(),
     new InfraDestroyTest(),
     new DeployTest(),
     new StaticWebsiteAwsTest(),
