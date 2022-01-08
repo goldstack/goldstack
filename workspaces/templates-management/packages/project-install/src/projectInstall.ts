@@ -1,3 +1,4 @@
+import { exec } from '@goldstack/utils-sh';
 import { yarn } from '@goldstack/utils-yarn';
 
 export interface InstallProjectParams {
@@ -7,5 +8,6 @@ export interface InstallProjectParams {
 export const installProject = async (
   params: InstallProjectParams
 ): Promise<void> => {
-  yarn(params.projectDirectory, 'install --update-checksums');
+  exec('rm -rf ~/.yarn');
+  yarn(params.projectDirectory, 'install');
 };
