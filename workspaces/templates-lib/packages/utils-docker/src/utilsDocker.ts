@@ -155,6 +155,21 @@ export const imageTerraform = (version?: string): string => {
     return 'hashicorp/terraform:0.13.7';
   }
 
+  if (version === '0.14') {
+    return 'hashicorp/terraform:0.14.11';
+  }
+
+  if (version === '0.15') {
+    return 'hashicorp/terraform:0.15.5';
+  }
+
+  if (version === '1.0') {
+    return 'hashicorp/terraform:1.0.10';
+  }
+
+  if (version === '1.1') {
+    return 'hashicorp/terraform:1.1.3';
+  }
   throw new Error('Unknown Terraform version ' + version);
 };
 

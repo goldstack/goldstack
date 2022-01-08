@@ -4,6 +4,7 @@ import { tf } from './terraformCli';
 import {
   TerraformDeployment,
   TerraformVariables,
+  TerraformVersion,
 } from './types/utilsTerraformConfig';
 import { CloudProvider } from './cloudProvider';
 import { cd, read, pwd } from '@goldstack/utils-sh';
@@ -337,20 +338,65 @@ export class TerraformBuild {
     cd('../..');
   };
 
+  private performUpgrade = (
+    deploymentName: string,
+    targetVersion: TerraformVersion
+  ) => {
+    const provider = this.provider;
+    if (targetVersion === '0.13') {
+      cd('./infra/aws');
+      const upgradeRes = tf(`${targetVersion}upgrade`, {
+        version: targetVersion,
+        provider,
+        options: ['-yes'],
+      });
+      if (upgradeRes.indexOf('Upgrade complete!') === -1) {
+        throw new Error('Upgrade of Terraform version not successful.');
+      }
+      cd('../..');
+    }
+    const packageConfig = readPackageConfig();
+    const deploymentInConfig = packageConfig.deployments.find(
+      (e) => e.name === deploymentName
+    );
+    assert(deploymentInConfig);
+    deploymentInConfig.tfVersion = targetVersion;
+    writePackageConfig(packageConfig);
+    this.init([deploymentName]);
+    console.log(
+      `Version upgraded to ${targetVersion}. Please run deployment to upgrade remote state before further upgrades.`
+    );
+  };
+
   upgrade = (args: string[]): void => {
     const deployment = getDeployment(args);
     const version = deployment.tfVersion || '0.12';
-    const newVersion = args[0];
-    const provider = this.provider;
+    const newVersion = args[1];
     if (version === newVersion) {
       console.log('Already on version', newVersion);
       return;
     }
     if (version === '0.12' && newVersion === '0.13') {
-      tf('0.12upgrade', { version: '0.13', provider });
+      this.performUpgrade(args[0], '0.13');
       return;
     }
 
+    if (version === '0.13' && newVersion === '0.14') {
+      this.performUpgrade(args[0], '0.14');
+      return;
+    }
+    if (version === '0.14' && newVersion === '0.15') {
+      this.performUpgrade(args[0], '0.15');
+      return;
+    }
+    if (version === '0.15' && newVersion === '1.0') {
+      this.performUpgrade(args[0], '1.0');
+      return;
+    }
+    if (version === '1.0' && newVersion === '1.1') {
+      this.performUpgrade(args[0], '1.1');
+      return;
+    }
     throw new Error(
       `Version upgrade not supported: from [${version}] to [${newVersion}]. Currently only 0.12 -> 0.13 is supported.`
     );

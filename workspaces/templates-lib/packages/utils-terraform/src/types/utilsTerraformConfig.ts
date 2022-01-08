@@ -24,7 +24,13 @@ export type TerraformStateKey = string;
  *
  * @default '0.12'
  */
-export type TerraformVersion = '0.12' | '0.13';
+export type TerraformVersion =
+  | '0.12'
+  | '0.13'
+  | '0.14'
+  | '0.15'
+  | '1.0'
+  | '1.1';
 
 /**
  * Define which of the deployment variables will be made available for terraform.
