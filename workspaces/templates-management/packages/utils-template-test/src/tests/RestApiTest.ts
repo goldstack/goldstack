@@ -10,11 +10,13 @@ export const assertEndpointAvaialble = async (url: string): Promise<void> => {
     resp.status === 200 || resp.status === 304 || resp.status === 201,
     `HTTP call to API resulted in non success reponse code: ${resp.status} ${resp.statusText} (${url})`
   );
-  console.log(`Received result from API '${resp.data}'`);
-  assert(
-    resp.data === 'success',
-    `API returned unexpected data: '${resp.data}'`
+  console.log(
+    `Received result from API '${JSON.stringify(resp.data, null, 2)}'`
   );
+  // assert(
+  //   resp.data === 'success',
+  //   `API returned unexpected data: '${resp.data}'`
+  // );
 };
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
