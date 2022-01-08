@@ -50,7 +50,7 @@ const execWithCli = (dir: string, args: string): void => {
   cd(path.resolve(dir));
   console.log('Yarn execute with cli');
   exec('yarn --version', { silent: false });
-  exec(`yarn ${args}`);
+  exec(`YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn ${args}`);
   cd(currentWorkDir);
 };
 

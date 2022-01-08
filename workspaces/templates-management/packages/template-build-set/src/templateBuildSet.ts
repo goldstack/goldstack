@@ -107,7 +107,6 @@ const buildAndTestProject = async (
 
   writePackageConfigs(params.projectDir, packageConfigs);
 
-  await rmSafe(params.projectDir + '/yarn.lock');
   await installProject({
     projectDirectory: params.projectDir,
     globalDirectory: '/tmp/yarnCache',
