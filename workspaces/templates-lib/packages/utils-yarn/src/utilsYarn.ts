@@ -28,6 +28,7 @@ const execWithDocker = (dir: string, args: string): void => {
   exec(
     'docker run --rm ' +
       `-v "${path.resolve(dir)}":/app ` +
+      '--workdir /app' +
       renderHostEnvironmentVariables() +
       ' ' +
       `${imageNodeYarn()} ` +
@@ -39,6 +40,7 @@ const execWithCli = (dir: string, args: string): void => {
   assertYarn();
   const currentWorkDir = pwd();
   cd(path.resolve(dir));
+  console.log('Yarn execute with cli');
   exec('yarn --version', { silent: false });
   exec(`yarn ${args}`);
   cd(currentWorkDir);
