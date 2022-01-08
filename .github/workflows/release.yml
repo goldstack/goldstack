@@ -65,7 +65,7 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: echo "$(date +'%Y-%m-%dT%H:%M:%S')" >> build_prod_timestamp
 
-      - name: Commit latest deployed image hash
+      - name: Commit build date change
         if: github.ref == 'refs/heads/master'
         run: |
           git add .
