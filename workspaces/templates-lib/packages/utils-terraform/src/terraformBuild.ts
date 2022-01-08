@@ -220,7 +220,7 @@ export class TerraformBuild {
 
   init = (args: string[]): void => {
     const deployment = getDeployment(args);
-    const version = deployment.tfVersion || '0.12';
+    const version = this.getTfVersion(args);
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const provider = this.provider;
@@ -252,7 +252,7 @@ export class TerraformBuild {
 
   plan = (args: string[]): void => {
     const deployment = getDeployment(args);
-    const version = deployment.tfVersion || '0.12';
+    const version = this.getTfVersion(args);
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const provider = this.provider;
@@ -285,7 +285,7 @@ export class TerraformBuild {
 
   apply = (args: string[]): void => {
     const deployment = getDeployment(args);
-    const version = deployment.tfVersion || '0.12';
+    const version = this.getTfVersion(args);
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const provider = this.provider;
@@ -321,7 +321,7 @@ export class TerraformBuild {
 
   destroy = (args: string[]): void => {
     const deployment = getDeployment(args);
-    const version = deployment.tfVersion || '0.12';
+    const version = this.getTfVersion(args);
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const ciConfirmed = args.find((str) => str === '-y');
