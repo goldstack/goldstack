@@ -6,6 +6,7 @@ jobs:
   build:
     name: 'Deploy build set'
     strategy:
+      fail-fast: false
       matrix:
         deploy-set:
           [
