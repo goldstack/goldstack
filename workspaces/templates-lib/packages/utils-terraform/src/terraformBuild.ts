@@ -19,7 +19,7 @@ import crypto from 'crypto';
 import { writeDeploymentState, readDeploymentState } from '@goldstack/infra';
 
 import JSONStableStringy from 'json-stable-stringify';
-import path from 'path/posix';
+import path from 'path';
 
 export const convertToPythonVariable = (variableName: string): string => {
   let res = '';
