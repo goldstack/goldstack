@@ -26,6 +26,8 @@ export const setGlobalCacheDir = (
   globalDir: string
 ): void => {
   yarn(projectDir, `config set globalFolder ${globalDir}`);
+  yarn(projectDir, 'config set checksumBehavior ignore');
+  yarn(projectDir, 'config');
 };
 
 const execWithDocker = (dir: string, args: string): void => {
