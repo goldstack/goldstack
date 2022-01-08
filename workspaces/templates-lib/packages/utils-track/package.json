@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-track",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Utilities for including Google Analytics in React application",
   "keywords": [
     "goldstack",
@@ -37,7 +37,7 @@
     "react": "^17.0.2"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.1.29",
+    "@goldstack/utils-git": "0.1.30",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
     "@types/react": "^16.9.49",
