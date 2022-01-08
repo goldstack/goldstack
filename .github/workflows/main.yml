@@ -1,8 +1,7 @@
 name: Build, Test and Library Publish
 
 on: [
-  # push, pull_request
-  published
+  push, pull_request
   ]
 
 jobs:

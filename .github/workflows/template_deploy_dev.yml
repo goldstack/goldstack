@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         deploy-set: ["backend-go-gin", "backend-lambda-api", "backend-nodejs-express", "no-infra", "static-website"]
-    # if: "contains(github.event.head_commit.message, 'trigger_template_deploy_dev') && github.ref == 'refs/heads/master'"
+    if: "contains(github.event.head_commit.message, 'trigger_template_deploy_dev') && github.ref == 'refs/heads/master'"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Goldstack repo
