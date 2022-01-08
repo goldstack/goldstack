@@ -42,6 +42,7 @@ export const createBackendLambdaApiBuildSetConfig = async (): Promise<DeploySetC
                   cors: '',
                   lambdas: {},
                 },
+                tfVersion: '1.1',
               },
             ],
             packageTests: [
