@@ -14,7 +14,20 @@ const renderVariables = (variables: Variables): string => {
   if (variables.length === 0) {
     return '';
   }
-  return variables.map(([key, value]) => `-var \"${key}=${value}\" `).join('');
+  return variables
+    .map(([key, value]) => {
+      const isWin = process.platform === 'win32';
+      let valueFixed = value.replace(/"/g, '\\"');
+
+      // on anything that is not Windows, ensure '$' is escaped
+      // so it is not replaced with a variable
+      if (!isWin) {
+        valueFixed = valueFixed.replace(/\$/g, '\\$');
+      }
+
+      return `-var \"${key}=${valueFixed}\" `;
+    })
+    .join('');
 };
 
 const renderBackendConfig = (variables: Variables): string => {
