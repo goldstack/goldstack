@@ -208,10 +208,13 @@ export class TerraformBuild {
     }
     if (fs.existsSync('./infra/tfConfig.json')) {
       try {
-      const tsConfig = JSON.parse(read('./infra/tfConfig.json'));
-      return tsConfig.tfVersion;
+        const tsConfig = JSON.parse(read('./infra/tfConfig.json'));
+        return tsConfig.tfVersion;
       } catch (e) {
-        throw new Error('Invalid Terraform configuration in '+path.resolve('./infra/tfConfig.json');
+        throw new Error(
+          'Invalid Terraform configuration in ' +
+            path.resolve('./infra/tfConfig.json')
+        );
       }
     }
     // before Terraform versions were introduced, only version 0.12 was supported
