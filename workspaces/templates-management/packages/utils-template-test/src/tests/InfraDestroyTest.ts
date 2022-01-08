@@ -3,6 +3,7 @@ import { yarn } from '@goldstack/utils-yarn';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
 
 import { read } from '@goldstack/utils-sh';
+import { retryOperation } from './Utils';
 export class InfraDestroyTest implements TemplateTest {
   getName(): string {
     return 'infra-destroy';
@@ -13,9 +14,15 @@ export class InfraDestroyTest implements TemplateTest {
 
     for (const deployment of packageConfig.deployments) {
       console.log('Destroying infrastructure for', deployment.name);
-      yarn(
-        params.projectDir,
-        `workspace ${packageJson.name} infra destroy ${deployment.name} -y`
+      await retryOperation(
+        async () => {
+          yarn(
+            params.projectDir,
+            `workspace ${packageJson.name} infra destroy ${deployment.name} -y`
+          );
+        },
+        10000,
+        3
       );
     }
   }

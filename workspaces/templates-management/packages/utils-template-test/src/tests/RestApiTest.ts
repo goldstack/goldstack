@@ -3,6 +3,7 @@ import { readPackageConfigFromDir } from '@goldstack/utils-package';
 
 import assert from 'assert';
 import axios from 'axios';
+import { retryOperation } from './Utils';
 
 export const assertEndpointAvaialble = async (url: string): Promise<void> => {
   const resp = await axios.get(url);
@@ -19,26 +20,6 @@ export const assertEndpointAvaialble = async (url: string): Promise<void> => {
   // );
 };
 
-const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
-
-const retryOperation = (
-  operation: () => Promise<any>,
-  delay: number,
-  retries: number
-) =>
-  new Promise((resolve, reject) => {
-    return operation()
-      .then(resolve)
-      .catch((reason) => {
-        if (retries > 0) {
-          return wait(delay)
-            .then(retryOperation.bind(null, operation, delay, retries - 1))
-            .then(resolve)
-            .catch(reject);
-        }
-        return reject(reason);
-      });
-  });
 export class RestApiTest implements TemplateTest {
   getName(): string {
     return 'assert-rest-api';
