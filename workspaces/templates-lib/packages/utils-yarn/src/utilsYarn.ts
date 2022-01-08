@@ -32,6 +32,7 @@ export const configureForTemplateBuild = (
   projectDir: string,
   globalDir: string
 ): void => {
+  console.log('Perform Yarn config overwrite for template building:');
   yarn(projectDir, `config set globalFolder ${globalDir}`);
   yarn(projectDir, 'config set checksumBehavior update');
   yarn(projectDir, 'config set enableImmutableInstalls false');
