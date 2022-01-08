@@ -1,6 +1,6 @@
 import { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet';
 
-import { mkdir } from '@goldstack/utils-sh';
+import { mkdir, rmSafe } from '@goldstack/utils-sh';
 import {
   writePackageConfigs,
   getPackageConfigs,
@@ -107,6 +107,7 @@ const buildAndTestProject = async (
 
   writePackageConfigs(params.projectDir, packageConfigs);
 
+  await rmSafe(params.projectDir + '/yarn.lock');
   await installProject({
     projectDirectory: params.projectDir,
     globalDirectory: '/tmp/yarnCache',
