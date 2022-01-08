@@ -21,8 +21,11 @@ export const assertYarn = (): void => {
   }
 };
 
-export const setGlobalCacheDir = (dir: string): void => {
-  yarn('~/', `config set globalFolder ${dir}`);
+export const setGlobalCacheDir = (
+  projectDir: string,
+  globalDir: string
+): void => {
+  yarn(projectDir, `config set globalFolder ${globalDir}`);
 };
 
 const execWithDocker = (dir: string, args: string): void => {
