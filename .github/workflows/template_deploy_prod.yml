@@ -6,8 +6,8 @@ jobs:
   build:
     name: 'Deploy build set'
     strategy:
+      fail-fast: false
       matrix:
-        fail-fast: false
         deploy-set:
           [
             'backend-go-gin',
