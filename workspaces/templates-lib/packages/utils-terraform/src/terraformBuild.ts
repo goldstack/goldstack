@@ -126,10 +126,7 @@ export const getVariablesFromHCL = (properties: object): Variables => {
         } else if (typeof variableValue === 'number') {
           vars.push([variableName, `${variableValue}`]);
         } else if (typeof variableValue === 'object') {
-          vars.push([
-            variableName,
-            `${JSONStableStringy(variableValue).replace(/"/g, '\\"')}`,
-          ]);
+          vars.push([variableName, `${JSONStableStringy(variableValue)}`]);
         } else {
           throw new Error(
             `Not supported type for variable ${variableName}: ${typeof variableValue}`
