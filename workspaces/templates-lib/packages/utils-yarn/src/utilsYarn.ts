@@ -21,18 +21,26 @@ export const assertYarn = (): void => {
   }
 };
 
-export const setGlobalCacheDir = (
+/**
+ * Ensure that templates can be built in a CI environment, see
+ * https://github.com/goldstack/goldstack/issues/41#issuecomment-1007857278
+ *
+ * @param projectDir
+ * @param globalDir
+ */
+export const configureForTemplateBuild = (
   projectDir: string,
   globalDir: string
 ): void => {
   yarn(projectDir, `config set globalFolder ${globalDir}`);
   yarn(projectDir, 'config set checksumBehavior update');
+  yarn(projectDir, 'config set enableImmutableInstalls false');
+  yarn(projectDir, 'config set enableImmutableCache false');
   yarn(projectDir, 'config');
 };
 
 const execWithDocker = (dir: string, args: string): void => {
   assertDocker();
-  console.log('Yarn execute with Docker');
   exec(
     'docker run --rm ' +
       `-v "${path.resolve(dir)}":/app ` +
@@ -48,9 +56,7 @@ const execWithCli = (dir: string, args: string): void => {
   assertYarn();
   const currentWorkDir = pwd();
   cd(path.resolve(dir));
-  console.log('Yarn execute with cli');
-  exec('yarn --version', { silent: false });
-  exec(`YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn ${args}`);
+  exec(`yarn ${args}`);
   cd(currentWorkDir);
 };
 
