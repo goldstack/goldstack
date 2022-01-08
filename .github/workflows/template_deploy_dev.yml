@@ -26,10 +26,6 @@ jobs:
       - name: Install project dependencies
         run: |
           yarn install
-      - name: Cleaning yarn global cache
-        run: |
-          yarn cache clean --mirror
-          yarn --version
       - name: Run build set 
         run: |
           cd workspaces/apps/packages/template-management-cli
@@ -38,7 +34,7 @@ jobs:
             --deployment dev \
             --repo goldstack-dev \
             --workDir /tmp/set/ \
-            --emailResultsTo maxrohde.public@gmail.com   
+            --emailResultsTo false
         env:
           AWS_USER_NAME: goldstack-dev
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}

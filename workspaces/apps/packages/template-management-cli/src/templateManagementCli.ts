@@ -212,6 +212,13 @@ export const run = async (): Promise<void> => {
             .promise();
         }
 
+        if (
+          res.testResults &&
+          res.testResults.find((tr) => !tr.result) !== undefined
+        ) {
+          throw new Error('Build set not built successfully.');
+        }
+
         return;
       }
 
