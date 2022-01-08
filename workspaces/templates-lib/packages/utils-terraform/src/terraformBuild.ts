@@ -200,15 +200,17 @@ export class TerraformBuild {
   };
   init = (args: string[]): void => {
     const deployment = getDeployment(args);
+    const version = deployment.tfVersion || '0.12';
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const provider = this.provider;
     tf('init', {
       provider,
+      version,
       backendConfig,
       options: ['-force-copy', '-reconfigure'],
     });
-    const workspaces = tf('workspace list', { provider });
+    const workspaces = tf('workspace list', { provider, version });
 
     const deploymentName = args[0];
     const workspaceExists = workspaces.split('\n').find((line) => {
@@ -217,8 +219,12 @@ export class TerraformBuild {
     if (!workspaceExists) {
       tf(`workspace new ${deploymentName}`, {
         provider,
+        version,
       });
-      tf(`workspace select ${deploymentName}`, { provider });
+      tf(`workspace select ${deploymentName}`, {
+        provider,
+        version,
+      });
     }
 
     cd('../..');
@@ -226,6 +232,7 @@ export class TerraformBuild {
 
   plan = (args: string[]): void => {
     const deployment = getDeployment(args);
+    const version = deployment.tfVersion || '0.12';
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const provider = this.provider;
@@ -234,16 +241,22 @@ export class TerraformBuild {
       ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
     ];
 
-    const currentWorkspace = tf('workspace show', { provider }).trim();
+    const currentWorkspace = tf('workspace show', { provider, version }).trim();
     if (currentWorkspace !== args[0]) {
       // init with reconfigure required here in case we are switching to a different
       // s3 bucket in a different environment for a different deployment
-      tf('init', { provider, backendConfig, options: ['-reconfigure'] });
-      tf(`workspace select ${args[0]}`, { provider });
+      tf('init', {
+        provider,
+        backendConfig,
+        version,
+        options: ['-reconfigure'],
+      });
+      tf(`workspace select ${args[0]}`, { provider, version });
     }
     tf('plan', {
       provider,
       variables,
+      version,
       options: ['-input=false', '-out tfplan'],
     });
 
@@ -252,23 +265,30 @@ export class TerraformBuild {
 
   apply = (args: string[]): void => {
     const deployment = getDeployment(args);
+    const version = deployment.tfVersion || '0.12';
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const provider = this.provider;
     const deploymentName = args[0];
-    const currentWorkspace = tf('workspace show', { provider }).trim();
+    const currentWorkspace = tf('workspace show', { provider, version }).trim();
     if (currentWorkspace !== deploymentName) {
       // init with reconfigure required here in case we are switching to a different
       // s3 bucket in a different environment for a different deployment
-      tf('init', { provider, backendConfig, options: ['-reconfigure'] });
-      tf(`workspace select ${deploymentName}`, { provider });
+      tf('init', {
+        provider,
+        backendConfig,
+        version,
+        options: ['-reconfigure'],
+      });
+      tf(`workspace select ${deploymentName}`, { provider, version });
     }
     tf('apply', {
       provider,
       options: ['-input=false', 'tfplan'],
+      version,
     });
 
-    const res = tf('output', { provider, options: ['-json'] }).trim();
+    const res = tf('output', { provider, options: ['-json'], version }).trim();
 
     const deploymentState = readDeploymentState('./../../', deploymentName, {
       createIfNotExist: true,
@@ -281,6 +301,7 @@ export class TerraformBuild {
 
   destroy = (args: string[]): void => {
     const deployment = getDeployment(args);
+    const version = deployment.tfVersion || '0.12';
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const ciConfirmed = args.find((str) => str === '-y');
@@ -298,20 +319,41 @@ export class TerraformBuild {
       ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
     ];
 
-    tf('init', { provider, backendConfig, options: ['-reconfigure'] });
-    tf(`workspace select ${args[0]}`, { provider });
+    tf('init', { provider, backendConfig, options: ['-reconfigure'], version });
+    tf(`workspace select ${args[0]}`, { provider, version });
     tf('plan', {
       provider,
       variables,
+      version,
       options: ['-input=false', '-out tfplan'],
     });
     tf('destroy', {
       provider,
       variables,
+      version,
       options: ['-input=false', '-auto-approve'],
     });
 
     cd('../..');
+  };
+
+  upgrade = (args: string[]): void => {
+    const deployment = getDeployment(args);
+    const version = deployment.tfVersion || '0.12';
+    const newVersion = args[0];
+    const provider = this.provider;
+    if (version === newVersion) {
+      console.log('Already on version', newVersion);
+      return;
+    }
+    if (version === '0.12' && newVersion === '0.13') {
+      tf('0.12upgrade', { version: '0.13', provider });
+      return;
+    }
+
+    throw new Error(
+      `Version upgrade not supported: from [${version}] to [${newVersion}]. Currently only 0.12 -> 0.13 is supported.`
+    );
   };
 
   constructor(provider: CloudProvider) {

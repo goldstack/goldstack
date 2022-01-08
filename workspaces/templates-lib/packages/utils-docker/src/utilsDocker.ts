@@ -146,6 +146,16 @@ export const renderHostEnvironmentVariables = (): string => {
 
 export const imageNodeYarn = (): string => 'node:12.22-alpine';
 
-export const imageTerraform = (): string => 'hashicorp/terraform:0.12.26';
+export const imageTerraform = (version?: string): string => {
+  if (!version || version === '0.12') {
+    return 'hashicorp/terraform:0.12.26';
+  }
+
+  if (version === '0.13') {
+    return 'hashicorp/terraform:0.13.7';
+  }
+
+  throw new Error('Unknown Terraform version ' + version);
+};
 
 export const imageAWSCli = (): string => 'amazon/aws-cli:2.4.6';
