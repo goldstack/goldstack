@@ -7,7 +7,7 @@ import axios from 'axios';
 export const assertEndpointAvaialble = async (url: string): Promise<void> => {
   const resp = await axios.get(url);
   assert(
-    resp.status === 200 || resp.status === 304,
+    resp.status === 200 || resp.status === 304 || resp.status === 201,
     `HTTP call to API resulted in non success reponse code: ${resp.status} ${resp.statusText} (${url})`
   );
   console.log(`Received result from API '${resp.data}'`);
