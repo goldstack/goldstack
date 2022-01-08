@@ -69,7 +69,7 @@ jobs:
           git add .
           git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy_prod)"
           git status
-      
+
       - name: Push changes
         uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
