@@ -44,12 +44,14 @@
     "@goldstack/utils-log": "0.2.9",
     "@goldstack/utils-package": "0.3.26",
     "@goldstack/utils-sh": "0.4.22",
+    "json-stable-stringify": "^1.0.1",
     "prompt-sync": "^4.2.0",
     "yargs": "^15.4.1"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.29",
     "@types/jest": "^27.0.2",
+    "@types/json-stable-stringify": "^1",
     "@types/node": "^16.11.0",
     "@types/prompt-sync": "^4.1.0",
     "@types/yargs": "^15.0.5",

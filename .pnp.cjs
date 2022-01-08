@@ -3088,10 +3088,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:27.0.2"],
+            ["@types/json-stable-stringify", "npm:1.0.33"],
             ["@types/node", "npm:16.11.0"],
             ["@types/prompt-sync", "npm:4.1.0"],
             ["@types/yargs", "npm:15.0.7"],
             ["jest", "npm:26.6.3"],
+            ["json-stable-stringify", "npm:1.0.1"],
             ["prompt-sync", "npm:4.2.0"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
             ["ts-json-schema-generator", "npm:0.96.0"],
@@ -4502,6 +4504,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-json-schema-npm-7.0.9-361918cff3-259d0e25f1.zip/node_modules/@types/json-schema/",
           "packageDependencies": [
             ["@types/json-schema", "npm:7.0.9"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/json-stable-stringify", [
+        ["npm:1.0.33", {
+          "packageLocation": "./.yarn/cache/@types-json-stable-stringify-npm-1.0.33-8989cfe57a-5fb2b6761d.zip/node_modules/@types/json-stable-stringify/",
+          "packageDependencies": [
+            ["@types/json-stable-stringify", "npm:1.0.33"]
           ],
           "linkType": "HARD",
         }]
