@@ -1,5 +1,4 @@
-
-name: Template Deployment for PROD 
+name: Template Deployment for PROD
 
 on: [push]
 
@@ -8,7 +7,14 @@ jobs:
     name: 'Deploy build set'
     strategy:
       matrix:
-        deploy-set: ["backend-go-gin", "backend-lambda-api", "backend-nodejs-express", "no-infra", "static-website"]
+        deploy-set:
+          [
+            'backend-go-gin',
+            'backend-lambda-api',
+            'backend-nodejs-express',
+            'no-infra',
+            'static-website',
+          ]
     if: "contains(github.event.head_commit.message, 'trigger_template_deploy_prod') && github.ref == 'refs/heads/master'"
     runs-on: ubuntu-latest
     steps:
@@ -26,7 +32,7 @@ jobs:
       - name: Install project dependencies
         run: |
           yarn install
-      - name: Run build set 
+      - name: Run build set
         run: |
           cd workspaces/apps/packages/template-management-cli
           yarn cli deploy-set \
