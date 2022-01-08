@@ -36,7 +36,7 @@
   "devDependencies": {
     "@goldstack/nodemonx": "0.3.23",
     "@goldstack/utils-docs-cli": "0.3.11",
-    "@goldstack/utils-package-upgrade": "0.2.28",
+    "@goldstack/utils-package-upgrade": "0.2.29",
     "@goldstack/utils-typescript-references": "0.1.4",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",

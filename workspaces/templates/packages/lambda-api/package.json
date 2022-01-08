@@ -26,8 +26,8 @@
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@goldstack/template-lambda-api": "0.4.9",
-    "@goldstack/utils-aws-http-api-local": "0.1.11",
+    "@goldstack/template-lambda-api": "0.4.10",
+    "@goldstack/utils-aws-http-api-local": "0.1.12",
     "@jest-mock/express": "^1.1.7",
     "@types/aws-lambda": "^8.10.88",
     "@types/aws-serverless-express": "^3.3.3",
