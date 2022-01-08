@@ -37,7 +37,7 @@ jobs:
             --set ${{ matrix.deploy-set }} \
             --deployment dev \
             --repo goldstack-dev \
-            --workDir ./tmp/set/ \
+            --workDir /tmp/set/ \
             --emailResultsTo maxrohde.public@gmail.com   
         env:
           AWS_USER_NAME: goldstack-dev
