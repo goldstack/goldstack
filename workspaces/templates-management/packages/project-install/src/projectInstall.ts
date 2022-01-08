@@ -1,14 +1,15 @@
-import { exec } from '@goldstack/utils-sh';
-import { yarn } from '@goldstack/utils-yarn';
+import { setGlobalCacheDir, yarn } from '@goldstack/utils-yarn';
 
 export interface InstallProjectParams {
   projectDirectory: string;
+  globalDirectory?: string;
 }
 
 export const installProject = async (
   params: InstallProjectParams
 ): Promise<void> => {
-  yarn(params.projectDirectory, 'install', {
-    preferDocker: true,
-  });
+  if (params.globalDirectory) {
+    setGlobalCacheDir(params.globalDirectory);
+  }
+  yarn(params.projectDirectory, 'install');
 };

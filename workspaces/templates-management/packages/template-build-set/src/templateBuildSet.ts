@@ -109,6 +109,7 @@ const buildAndTestProject = async (
 
   await installProject({
     projectDirectory: params.projectDir,
+    globalDirectory: './tmp/yarnCache',
   });
 
   // setting local AWS config file

@@ -6,7 +6,6 @@ import {
   renderHostEnvironmentVariables,
 } from '@goldstack/utils-docker';
 import path from 'path';
-import { execFile } from 'child_process';
 
 export const hasYarn = (): boolean => {
   if (!commandExists('yarn')) {
@@ -20,6 +19,10 @@ export const assertYarn = (): void => {
   if (!commandExists('yarn')) {
     throw new Error('Yarn must be installed. Please install yarn.');
   }
+};
+
+export const setGlobalCacheDir = (dir: string): void => {
+  yarn('~/', `config set globalFolder ${dir}`);
 };
 
 const execWithDocker = (dir: string, args: string): void => {
