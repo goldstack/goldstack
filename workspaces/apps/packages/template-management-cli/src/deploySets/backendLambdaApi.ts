@@ -47,7 +47,7 @@ export const createBackendLambdaApiBuildSetConfig = async (): Promise<DeploySetC
             ],
             packageTests: [
               'assert-package-files',
-              'infra-plan',
+              'infra-up',
               'deploy',
               'assert-rest-api',
             ],

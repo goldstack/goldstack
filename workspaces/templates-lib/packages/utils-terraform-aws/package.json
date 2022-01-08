@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-terraform-aws",
-  "version": "0.3.45",
+  "version": "0.3.46",
   "description": "Easily deploy Terraform IaC with npm package scripts",
   "keywords": [
     "goldstack",

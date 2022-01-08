@@ -41,11 +41,19 @@ const assertS3Bucket = async (params: {
     Bucket: params.bucketName,
   };
   try {
+    console.log('trying to create bucket', JSON.stringify(bucketParams));
+
     await params.s3.createBucket(bucketParams).promise();
   } catch (error) {
     // if bucket already exists, ignore error
     if (error && error.code !== 'BucketAlreadyOwnedByYou') {
-      throw new Error(error.message);
+      console.error(
+        'Cannot create bucket ',
+        params.bucketName,
+        ' error code',
+        error.code
+      );
+      throw new Error('Cannot create S3 state bucket: ' + error.message);
     }
   }
 };
