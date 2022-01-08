@@ -19,6 +19,7 @@ import crypto from 'crypto';
 import { writeDeploymentState, readDeploymentState } from '@goldstack/infra';
 
 import JSONStableStringy from 'json-stable-stringify';
+import path from 'path/posix';
 
 export const convertToPythonVariable = (variableName: string): string => {
   let res = '';
@@ -174,7 +175,7 @@ const getDeployment = (args: string[]): TerraformDeployment => {
 export class TerraformBuild {
   provider: CloudProvider;
 
-  getTfStateVariables = (
+  private getTfStateVariables = (
     deployment: TerraformDeployment
   ): [string, string][] => {
     const packageConfig = readPackageConfig();
@@ -199,6 +200,27 @@ export class TerraformBuild {
 
     return this.provider.getTfStateVariables(deploymentConfig);
   };
+
+  private getTfVersion = (args: string[]): TerraformVersion => {
+    const deployment = getDeployment(args);
+    if (deployment.tfVersion) {
+      return deployment.tfVersion;
+    }
+    if (fs.existsSync('./infra/tfConfig.json')) {
+      try {
+        const tsConfig = JSON.parse(read('./infra/tfConfig.json'));
+        return tsConfig.tfVersion;
+      } catch (e) {
+        throw new Error(
+          'Invalid Terraform configuration in ' +
+            path.resolve('./infra/tfConfig.json')
+        );
+      }
+    }
+    // before Terraform versions were introduced, only version 0.12 was supported
+    return '0.12';
+  };
+
   init = (args: string[]): void => {
     const deployment = getDeployment(args);
     const version = deployment.tfVersion || '0.12';

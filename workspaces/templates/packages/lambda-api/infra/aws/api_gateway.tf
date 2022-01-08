@@ -1,7 +1,6 @@
 
 # HTTP API
 
-
 resource "aws_apigatewayv2_api" "api" {
   name        = "lambda-api-gateway-${random_id.id.hex}"
   description = "API for Goldstack lambda deployment"
