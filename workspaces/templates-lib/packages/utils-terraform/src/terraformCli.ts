@@ -6,6 +6,7 @@ import {
 } from '@goldstack/utils-docker';
 import { fatal } from '@goldstack/utils-log';
 import { CloudProvider } from './cloudProvider';
+import { TerraformVersion } from './types/utilsTerraformConfig';
 
 export type Variables = [string, string][];
 
@@ -29,6 +30,7 @@ interface TerraformOptions {
   provider: CloudProvider;
   variables?: Variables;
   backendConfig?: Variables;
+  version: TerraformVersion;
   options?: string[];
 }
 
@@ -43,7 +45,7 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
     `docker run --rm -v "${options.dir}":/app ` +
     ` ${options.provider.generateEnvVariableString()} ` +
     '-w /app ' +
-    `${imageTerraform()} ${cmd} ` +
+    `${imageTerraform(options.version)} ${cmd} ` +
     ` ${renderBackendConfig(options.backendConfig || [])} ` +
     ` ${renderVariables(options.variables || [])} ` +
     ` ${options.options?.join(' ') || ''} `;
@@ -69,6 +71,16 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
   }
 
   assertTerraform();
+  const version = exec('terraform version');
+  if (version.indexOf(options.version) === -1) {
+    throw new Error(
+      `Invalid local Terraform version detected: [${
+        version.split('\n')[0]
+      }], expected version compatible with [${
+        options.version
+      }]. Please install this version locally or install Docker for Goldstack to run the correct Terraform version required for this deployment using Docker.`
+    );
+  }
 
   options.provider.setEnvVariables();
 

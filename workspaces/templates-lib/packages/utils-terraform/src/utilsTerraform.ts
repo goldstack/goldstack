@@ -58,6 +58,18 @@ export const infraCommands = (): any => {
             type: 'boolean',
           });
         }
+      )
+      .command(
+        'upgrade <deployment> <targetVersion>',
+        'Upgrades Terraform version to a new target version (experimental)',
+        (yargs) => {
+          return deploymentPositional(yargs).positional('targetVersion', {
+            type: 'string',
+            description:
+              'DANGER: If provided, confirmation for deleting infrastructure resources will be skipped.',
+            demandOption: true,
+          });
+        }
       );
   };
 };
@@ -92,6 +104,11 @@ export const terraformCli = (
 
   if (operation === 'destroy') {
     build.destroy(opArgs);
+    return;
+  }
+
+  if (operation === 'upgrade') {
+    build.upgrade(opArgs);
     return;
   }
 
