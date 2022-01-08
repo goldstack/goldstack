@@ -202,17 +202,6 @@ jobs:
           git rev-parse HEAD
           echo "::set-output name=patchedclicommit::$(git rev-parse HEAD)"
 
-      - name: Trigger template build
-        if: github.ref == 'refs/heads/master'
-        run: |
-          yarn workspace @goldstack/template-management-cli compile # compile again so that deployment state is updated
-          yarn workspace @goldstack/template-management-cli cli schedule-all-deploy-sets --repo goldstack-dev --deployment dev --emailResultsTo maxrohde.public@gmail.com
-        env:
-          AWS_USER_NAME: goldstack-dev
-          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          AWS_DEFAULT_REGION: us-west-2
-
       - name: Deploy docs
         if: github.ref == 'refs/heads/master'
         run: |
