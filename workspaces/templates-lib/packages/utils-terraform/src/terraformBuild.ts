@@ -17,6 +17,8 @@ import fs from 'fs';
 import crypto from 'crypto';
 import { writeDeploymentState, readDeploymentState } from '@goldstack/infra';
 
+import JSONStableStringy from 'json-stable-stringify';
+
 export const convertToPythonVariable = (variableName: string): string => {
   let res = '';
 
@@ -59,7 +61,6 @@ export const getVariablesFromProperties = (
       if (variableValue !== '') {
         vars.push([variableName, variableValue]);
       } else {
-        console.log('using ', variableName.toLocaleUpperCase());
         vars.push([
           variableName,
           process.env[variableName.toLocaleUpperCase()] || '',
@@ -125,7 +126,7 @@ export const getVariablesFromHCL = (properties: object): Variables => {
         } else if (typeof variableValue === 'object') {
           vars.push([
             variableName,
-            `${JSON.stringify(variableValue).replace(/"/g, '\\"')}`,
+            `${JSONStableStringy(variableValue).replace(/"/g, '\\"')}`,
           ]);
         } else {
           throw new Error(

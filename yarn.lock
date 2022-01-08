@@ -2353,10 +2353,12 @@ __metadata:
     "@goldstack/utils-package": 0.3.26
     "@goldstack/utils-sh": 0.4.22
     "@types/jest": ^27.0.2
+    "@types/json-stable-stringify": ^1
     "@types/node": ^16.11.0
     "@types/prompt-sync": ^4.1.0
     "@types/yargs": ^15.0.5
     jest: ^26.6.3
+    json-stable-stringify: ^1.0.1
     prompt-sync: ^4.2.0
     ts-jest: ^26.5.4
     ts-json-schema-generator: ^0.96.0
@@ -3501,6 +3503,13 @@ __metadata:
   version: 7.0.9
   resolution: "@types/json-schema@npm:7.0.9"
   checksum: 259d0e25f11a21ba5c708f7ea47196bd396e379fddb79c76f9f4f62c945879dc21657904914313ec2754e443c5018ea8372362f323f30e0792897fdb2098a705
+  languageName: node
+  linkType: hard
+
+"@types/json-stable-stringify@npm:^1":
+  version: 1.0.33
+  resolution: "@types/json-stable-stringify@npm:1.0.33"
+  checksum: 5fb2b6761d7079396372239366afbb4d454bdf2c78fb26a78214b1c3f7a94e131910b1fe0607aae90f8a49dd71972d8a10d74088145b92d3fcb5b38fb1359e30
   languageName: node
   linkType: hard
 
