@@ -62,12 +62,15 @@ jobs:
           AWS_DEFAULT_REGION: us-west-2
 
       - name: Write build date
-        if: github.ref == 'refs/heads/master'
         run: echo "$(date +'%Y-%m-%dT%H:%M:%S')" >> build_prod_timestamp
 
       - name: Commit build date change
-        if: github.ref == 'refs/heads/master'
         run: |
           git add .
           git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy_prod)"
           git status
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
+        with:
+          github_token: ${{secrets.BUILD_TOKEN}}

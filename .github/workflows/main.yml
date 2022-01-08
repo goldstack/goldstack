@@ -175,22 +175,15 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: echo "$(date +'%Y-%m-%dT%H:%M:%S')" >> build_dev_timestamp
 
-      - name: Commit latest deployed image hash
+      - name: Commit latest build info
         if: github.ref == 'refs/heads/master'
         run: |
-          # cd workspaces/apps
-          # git status
-          # git add packages/template-management-cli/src/state/deployments.json
-          # git diff-index --quiet HEAD || git commit -m "Publishing updated docker deployment (ci_skip) "
-          # git status
-          # cd ../..
-          # include files changed on root
           git add .
           git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy_dev)"
           git status
 
       - name: Push changes
-        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/master'
         uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
