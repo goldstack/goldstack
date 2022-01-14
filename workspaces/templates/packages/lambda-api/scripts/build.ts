@@ -7,8 +7,8 @@ build({
   entryPoints: ['src/root.ts'],
   external: ['aws-sdk'],
   minify: true,
-  format: 'cjs',
-  target: 'node12.0',
+  format: 'esm',
+  target: 'node14.0',
   sourcemap: true,
   outfile: 'distLambda/root.js',
 }).catch((e) => {
