@@ -57,8 +57,11 @@ const execWithCli = (dir: string, args: string): void => {
   assertYarn();
   const currentWorkDir = pwd();
   cd(path.resolve(dir));
-  exec(`yarn ${args}`);
-  cd(currentWorkDir);
+  try {
+    exec(`yarn ${args}`);
+  } finally {
+    cd(currentWorkDir);
+  }
 };
 
 export interface YarnRunOptions {

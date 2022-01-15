@@ -223,56 +223,58 @@ export class TerraformBuild {
     const version = this.getTfVersion(args);
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
-    const provider = this.provider;
+    try {
+      const provider = this.provider;
 
-    let workspace: undefined | string = undefined;
+      let workspace: undefined | string = undefined;
 
-    // supplying workspace does not work for first initialisation
-    // https://discuss.hashicorp.com/t/terraform-init-ignores-input-false-option/16065
-    // doesn't seem to be an issue in Terraform 1.1
-    if (fs.existsSync('./.terraform') && version !== '0.12') {
-      workspace = deployment.name;
-    }
+      // supplying workspace does not work for first initialisation
+      // https://discuss.hashicorp.com/t/terraform-init-ignores-input-false-option/16065
+      // doesn't seem to be an issue in Terraform 1.1
+      if (fs.existsSync('./.terraform') && version !== '0.12') {
+        workspace = deployment.name;
+      }
 
-    tf('init', {
-      provider,
-      version,
-      backendConfig,
-      workspace: workspace,
-      options: ['-force-copy', '-reconfigure'],
-    });
-    const workspaces = tf('workspace list', {
-      provider,
-      version,
-      silent: true,
-    });
+      tf('init', {
+        provider,
+        version,
+        backendConfig,
+        workspace: workspace,
+        options: ['-force-copy', '-reconfigure'],
+      });
+      const workspaces = tf('workspace list', {
+        provider,
+        version,
+        silent: true,
+      });
 
-    const deploymentName = args[0];
-    let workspaceExists = workspaces.split('\n').find((line) => {
-      return line.indexOf(deploymentName) >= 0;
-    });
-    if (!workspaceExists) {
-      workspaceExists = workspaces.split('\n').find((line) => {
+      const deploymentName = args[0];
+      let workspaceExists = workspaces.split('\n').find((line) => {
         return line.indexOf(deploymentName) >= 0;
       });
       if (!workspaceExists) {
-        tf(`workspace new ${deploymentName}`, {
+        workspaceExists = workspaces.split('\n').find((line) => {
+          return line.indexOf(deploymentName) >= 0;
+        });
+        if (!workspaceExists) {
+          tf(`workspace new ${deploymentName}`, {
+            provider,
+            version,
+          });
+        }
+        tf(`workspace select ${deploymentName}`, {
+          provider,
+          version,
+        });
+      } else {
+        tf(`workspace select ${deploymentName}`, {
           provider,
           version,
         });
       }
-      tf(`workspace select ${deploymentName}`, {
-        provider,
-        version,
-      });
-    } else {
-      tf(`workspace select ${deploymentName}`, {
-        provider,
-        version,
-      });
+    } finally {
+      cd('../..');
     }
-
-    cd('../..');
   };
 
   private ensureInCorrectWorkspace = (params: {
@@ -309,27 +311,29 @@ export class TerraformBuild {
     const version = this.getTfVersion(args);
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
-    const provider = this.provider;
+    try {
+      const provider = this.provider;
 
-    this.ensureInCorrectWorkspace({
-      deploymentName: args[0],
-      provider,
-      version,
-      backendConfig,
-    });
+      this.ensureInCorrectWorkspace({
+        deploymentName: args[0],
+        provider,
+        version,
+        backendConfig,
+      });
 
-    const variables = [
-      ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
-    ];
+      const variables = [
+        ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
+      ];
 
-    tf('plan', {
-      provider,
-      variables,
-      version,
-      options: ['-input=false', '-out tfplan'],
-    });
-
-    cd('../..');
+      tf('plan', {
+        provider,
+        variables,
+        version,
+        options: ['-input=false', '-out tfplan'],
+      });
+    } finally {
+      cd('../..');
+    }
   };
 
   apply = (args: string[]): void => {
@@ -337,29 +341,35 @@ export class TerraformBuild {
     const version = this.getTfVersion(args);
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
-    const provider = this.provider;
-    const deploymentName = args[0];
-    this.ensureInCorrectWorkspace({
-      deploymentName: args[0],
-      provider,
-      version,
-      backendConfig,
-    });
-    tf('apply', {
-      provider,
-      options: ['-input=false', 'tfplan'],
-      version,
-    });
+    try {
+      const provider = this.provider;
+      const deploymentName = args[0];
+      this.ensureInCorrectWorkspace({
+        deploymentName: args[0],
+        provider,
+        version,
+        backendConfig,
+      });
+      tf('apply', {
+        provider,
+        options: ['-input=false', 'tfplan'],
+        version,
+      });
 
-    const res = tf('output', { provider, options: ['-json'], version }).trim();
+      const res = tf('output', {
+        provider,
+        options: ['-json'],
+        version,
+      }).trim();
 
-    const deploymentState = readDeploymentState('./../../', deploymentName, {
-      createIfNotExist: true,
-    });
-    deploymentState.terraform = JSON.parse(res);
-    writeDeploymentState('./../../', deploymentState);
-
-    cd('../..');
+      const deploymentState = readDeploymentState('./../../', deploymentName, {
+        createIfNotExist: true,
+      });
+      deploymentState.terraform = JSON.parse(res);
+      writeDeploymentState('./../../', deploymentState);
+    } finally {
+      cd('../..');
+    }
   };
 
   destroy = (args: string[]): void => {
@@ -367,38 +377,45 @@ export class TerraformBuild {
     const version = this.getTfVersion(args);
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
-    const ciConfirmed = args.find((str) => str === '-y');
-    if (!ciConfirmed) {
-      const value = prompt()(
-        'Are you sure to destroy your deployed resources? If yes, please type `y` and enter.\n' +
-          'Otherwise, press enter.\nYour Input: '
-      );
-      if (value !== 'y') {
-        fatal('Prompt not confirmed with `y`');
+    try {
+      const ciConfirmed = args.find((str) => str === '-y');
+      if (!ciConfirmed) {
+        const value = prompt()(
+          'Are you sure to destroy your deployed resources? If yes, please type `y` and enter.\n' +
+            'Otherwise, press enter.\nYour Input: '
+        );
+        if (value !== 'y') {
+          fatal('Prompt not confirmed with `y`');
+        }
       }
+      const provider = this.provider;
+      const variables = [
+        ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
+      ];
+
+      tf(`workspace select ${args[0]}`, { provider, version });
+      tf('init', {
+        provider,
+        backendConfig,
+        options: ['-reconfigure'],
+        version,
+      });
+      tf('plan', {
+        provider,
+        variables,
+        version,
+        workspace: args[0],
+        options: ['-input=false', '-out tfplan'],
+      });
+      tf('destroy', {
+        provider,
+        variables,
+        version,
+        options: ['-input=false', '-auto-approve'],
+      });
+    } finally {
+      cd('../..');
     }
-    const provider = this.provider;
-    const variables = [
-      ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
-    ];
-
-    tf(`workspace select ${args[0]}`, { provider, version });
-    tf('init', { provider, backendConfig, options: ['-reconfigure'], version });
-    tf('plan', {
-      provider,
-      variables,
-      version,
-      workspace: args[0],
-      options: ['-input=false', '-out tfplan'],
-    });
-    tf('destroy', {
-      provider,
-      variables,
-      version,
-      options: ['-input=false', '-auto-approve'],
-    });
-
-    cd('../..');
   };
 
   private performUpgrade = (

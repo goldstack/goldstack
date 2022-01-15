@@ -9,7 +9,7 @@ import { GoldstackTemplateConfiguration } from '@goldstack/utils-template';
 const templateBuilders: PrepareTemplate[] = [new PrepareYarnPnpMonorepo()];
 
 export interface TemplateBuildConfig {
-  monorepoRoot?: string;
+  monorepoRoot: string;
   destinationDirectory?: string;
   templateRepository: TemplateRepository;
 }
@@ -21,7 +21,7 @@ export const build = async (
   let builder = templateBuilders.find(
     (builder) => templateName === builder.templateName()
   );
-  const monorepoRoot = config.monorepoRoot || './../../../../';
+  const monorepoRoot = config.monorepoRoot;
   const destinationDirectory =
     config.destinationDirectory + templateName + '/' ||
     `./templates/${templateName}/`;

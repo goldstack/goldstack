@@ -31,6 +31,7 @@ export interface BuildSetParams {
 
 interface BuildTemplatesParams {
   workDir: string;
+  monorepoRoot: string;
   templates: string[];
   templateRepository: S3TemplateRepository;
 }
@@ -44,6 +45,7 @@ const buildTemplates = async (
     const templateConfig = await build(templateName, {
       templateRepository: params.templateRepository,
       destinationDirectory: params.workDir,
+      monorepoRoot: params.monorepoRoot,
     });
     configurations.push(templateConfig);
   }
@@ -230,12 +232,22 @@ export const buildSet = async (
   // build templates for local repo
 
   const templateWorkDir = params.workDir + 'templates/';
-  console.log('Building templates in working directory ', templateWorkDir);
+
+  // script runs in dir workspaces/apps/packages/template-management-cli
+  // thus monorepo root is four folders up
+  const monorepoRoot = path.resolve('./../../../../');
+  console.log(
+    'Building templates. Working directory ',
+    templateWorkDir,
+    ' Monorepo root ',
+    monorepoRoot
+  );
   mkdir('-p', templateWorkDir);
   await buildTemplates({
     workDir: templateWorkDir,
     templates: params.config.buildTemplates,
     templateRepository: localRepo,
+    monorepoRoot,
   });
 
   if (!params.skipTests) {
@@ -273,6 +285,7 @@ export const buildSet = async (
   await buildTemplates({
     workDir: params.workDir + 'templatesDeploy/',
     templates: params.config.deployTemplates,
+    monorepoRoot,
     templateRepository: params.s3repo,
   });
   res.deployed = true;
