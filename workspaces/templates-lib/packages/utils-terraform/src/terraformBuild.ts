@@ -224,11 +224,21 @@ export class TerraformBuild {
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const provider = this.provider;
+
+    let workspace: undefined | string = undefined;
+
+    // supplying workspace does not work for first initialisation
+    // https://discuss.hashicorp.com/t/terraform-init-ignores-input-false-option/16065
+    // doesn't seem to be an issue in Terraform 1.1
+    if (fs.existsSync('./.terraform') && version !== '0.12') {
+      workspace = deployment.name;
+    }
+
     tf('init', {
       provider,
       version,
       backendConfig,
-      workspace: deployment.name,
+      workspace: workspace,
       options: ['-force-copy', '-reconfigure'],
     });
     const workspaces = tf('workspace list', {
@@ -259,13 +269,6 @@ export class TerraformBuild {
       tf(`workspace select ${deploymentName}`, {
         provider,
         version,
-      });
-      tf('init', {
-        provider,
-        version,
-        backendConfig,
-        workspace: deployment.name,
-        options: ['-force-copy', '-reconfigure'],
       });
     }
 
