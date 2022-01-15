@@ -66,7 +66,7 @@ export const infraCommands = (): any => {
           return deploymentPositional(yargs).positional('targetVersion', {
             type: 'string',
             description:
-              'DANGER: If provided, confirmation for deleting infrastructure resources will be skipped.',
+              'Provides the target Terraform version that should be migrated to.',
             demandOption: true,
           });
         }

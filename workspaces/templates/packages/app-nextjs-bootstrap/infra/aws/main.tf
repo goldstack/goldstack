@@ -31,6 +31,7 @@ resource "aws_acm_certificate" "wildcard_website" {
 # Validates the ACM wildcard by creating a Route53 record (as `validation_method` is set to `DNS` in the aws_acm_certificate resource)
 # see https://renehernandez.io/snippets/terraform-and-aws-wildcard-certificates-validation/
 resource "aws_route53_record" "wildcard_validation" {
+  provider = aws.us-east-1
   for_each = {
     for dvo in aws_acm_certificate.wildcard_website.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name

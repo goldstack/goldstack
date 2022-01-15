@@ -62,6 +62,10 @@
       "regex": "^\\/docs\\/modules\\/email-send$"
     },
     {
+      "page": "/docs/modules/lambda-api",
+      "regex": "^\\/docs\\/modules\\/lambda-api$"
+    },
+    {
       "page": "/docs/modules/lambda-express",
       "regex": "^\\/docs\\/modules\\/lambda-express$"
     },
@@ -96,8 +100,8 @@
       "routeKeys": {
         "slug": "slug"
       },
-      "dataRouteRegex": "^/_next/data/OCVzstCXKMvCYfl7a1I3d/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/OCVzstCXKMvCYfl7a1I3d/docs/(?<slug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/uHL_MDqbVPekMUDhkiOrG/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/uHL_MDqbVPekMUDhkiOrG/docs/(?<slug>.+?)\\.json$"
     }
   ],
   "rewrites": []

@@ -21,7 +21,8 @@
       },
       "awsUser": "goldstack-dev",
       "awsRegion": "us-west-2",
-      "tfStateKey": "app-nextjs-bootstrap-dev-f53056a4648c8eb7a1ac.tfstate"
+      "tfStateKey": "app-nextjs-bootstrap-dev-f53056a4648c8eb7a1ac.tfstate",
+      "tfVersion": "1.1"
     },
     {
       "name": "prod",
@@ -39,7 +40,8 @@
       },
       "awsUser": "goldstack-prod",
       "awsRegion": "us-west-2",
-      "tfStateKey": "app-nextjs-bootstrap-prod-8840af844f84652e29f6.tfstate"
+      "tfStateKey": "app-nextjs-bootstrap-prod-8840af844f84652e29f6.tfstate",
+      "tfVersion": "1.1"
     }
   ]
 }
