@@ -235,7 +235,7 @@ export const buildSet = async (
 
   // script runs in dir workspaces/apps/packages/template-management-cli
   // thus monorepo root is four folders up
-  const monorepoRoot = path.resolve('./../../../../');
+  const monorepoRoot = path.resolve('./../../../../') + '/';
   console.log(
     'Building templates. Working directory ',
     templateWorkDir,
