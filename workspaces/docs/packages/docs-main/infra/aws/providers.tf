@@ -23,7 +23,7 @@ provider "aws" {
   skip_credentials_validation = true
 }
 
-# The provider below is required to handle ACM
+# The provider below is required to handle creation of certificates through Amazon Certificate Manager
 provider "aws" {
   alias  = "us-east-1"
   region = "us-east-1"

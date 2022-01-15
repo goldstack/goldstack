@@ -224,6 +224,13 @@ export class TerraformBuild {
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     const provider = this.provider;
+    tf('init', {
+      provider,
+      version,
+      backendConfig,
+      workspace: deployment.name,
+      options: ['-force-copy', '-reconfigure'],
+    });
     const workspaces = tf('workspace list', {
       provider,
       version,
@@ -235,12 +242,6 @@ export class TerraformBuild {
       return line.indexOf(deploymentName) >= 0;
     });
     if (!workspaceExists) {
-      tf('init', {
-        provider,
-        version,
-        backendConfig,
-        options: ['-force-copy', '-reconfigure'],
-      });
       workspaceExists = workspaces.split('\n').find((line) => {
         return line.indexOf(deploymentName) >= 0;
       });
@@ -263,6 +264,7 @@ export class TerraformBuild {
         provider,
         version,
         backendConfig,
+        workspace: deployment.name,
         options: ['-force-copy', '-reconfigure'],
       });
     }
@@ -293,6 +295,7 @@ export class TerraformBuild {
         provider: params.provider,
         backendConfig: params.backendConfig,
         version: params.version,
+        workspace: params.deploymentName,
         options: ['-reconfigure'],
       });
     }
@@ -382,6 +385,7 @@ export class TerraformBuild {
       provider,
       variables,
       version,
+      workspace: args[0],
       options: ['-input=false', '-out tfplan'],
     });
     tf('destroy', {

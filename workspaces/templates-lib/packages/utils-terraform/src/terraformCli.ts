@@ -46,6 +46,7 @@ interface TerraformOptions {
   version: TerraformVersion;
   options?: string[];
   silent?: boolean;
+  workspace?: string;
 }
 
 const execWithDocker = (cmd: string, options: TerraformOptions): string => {
@@ -55,9 +56,14 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
 
   assertDocker();
 
+  let workspaceEnvVariable = '';
+  if (options.workspace) {
+    workspaceEnvVariable = `-e TF_WORKSPACE=${options.workspace}`;
+  }
+
   const cmd3 =
     `docker run --rm -v "${options.dir}":/app ` +
-    ` ${options.provider.generateEnvVariableString()} ` +
+    ` ${options.provider.generateEnvVariableString()} ${workspaceEnvVariable} ` +
     '-w /app ' +
     `${imageTerraform(options.version)} ${cmd} ` +
     ` ${renderBackendConfig(options.backendConfig || [])} ` +
@@ -95,6 +101,10 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
   }
 
   options.provider.setEnvVariables();
+
+  if (options.workspace) {
+    process.env.TF_WORKSPACE = options.workspace;
+  }
 
   const execCmd =
     `terraform ${cmd} ` +
