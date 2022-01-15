@@ -1,4 +1,4 @@
-# Goldstack - Starter Project Builder 💖
+# Goldstack - JavaScript Project Builder 💖
 
 Getting started on a new project is fun ... until it isn't. Goldstack provides customizable starter templates that help you lift your project off the ground and immediately start working on the important parts.
 
@@ -11,11 +11,11 @@ It should be a surprise to no one that setting up a dynamic monorepo for JavaScr
 | Status | Feature                | Comments                                                                                                                                                                                                           |
 | ------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 👌     | Install and Build      | Yarn Workspaces using Yarn v2 (Berry) overall works very well and allows for very fast install and build speeds.                                                                                                   |
+| 👌     | TypeScript             | Well-supported, only workaround required is to run `yarn fix-project-references` when new inter-project dependencies are added.| 
 | 👌     | Linting and Formatting | ESLint and Prettier are configured to work effectively across all packages.                                                                                                                                        |
 | 👌     | Testing                | Running tests with Jest works across all packages                                                                                                                                                                  |
 | 👌     | IDE Integration        | VSCode including Intellisense works across the monorepo                                                                                                                                                            |
-| 🤷     | AWS                    | Deployment into AWS using Terraform overall works very well. Just initial configuration and the way credentials are provided can be improved. [#3](https://github.com/goldstack/goldstack/issues/3)                |
-| 👎     | TypeScript             | TypeScript support works but only with a workaround that requires running `yarn compile watch` in the root project. Compilation is slow for larger projects. [#2](https://github.com/goldstack/goldstack/issues/2) |
+| 🤷     | AWS                    | Deployment into AWS using Terraform overall works very well. Just initial configuration and the way credentials are provided can be improved. See [#3](https://github.com/goldstack/goldstack/issues/3).                |
 
 # About
 

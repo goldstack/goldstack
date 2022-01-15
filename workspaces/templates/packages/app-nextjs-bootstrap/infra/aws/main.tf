@@ -18,32 +18,53 @@ resource "aws_acm_certificate" "wildcard_website" {
   validation_method         = "DNS"
 
   tags = {
-    ManagedBy = "terraform"
+    ManagedBy = "goldstack-terraform"
     Changed   = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   }
 
   lifecycle {
-    ignore_changes = [tags]
+    ignore_changes        = [tags]
+    create_before_destroy = true
   }
 }
 
 # Validates the ACM wildcard by creating a Route53 record (as `validation_method` is set to `DNS` in the aws_acm_certificate resource)
+# see https://renehernandez.io/snippets/terraform-and-aws-wildcard-certificates-validation/
 resource "aws_route53_record" "wildcard_validation" {
-  name    = aws_acm_certificate.wildcard_website.domain_validation_options[0].resource_record_name
-  type    = aws_acm_certificate.wildcard_website.domain_validation_options[0].resource_record_type
-  zone_id = data.aws_route53_zone.main.zone_id
-  records = [aws_acm_certificate.wildcard_website.domain_validation_options[0].resource_record_value]
-  ttl     = "60"
+  for_each = {
+    for dvo in aws_acm_certificate.wildcard_website.domain_validation_options : dvo.domain_name => {
+      name   = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type   = dvo.resource_record_type
+    }
+   # Skips the domain if it doesn't contain a wildcard
+    if length(regexall("\\*\\..+", dvo.domain_name)) > 0
+  }
+
+  allow_overwrite = true
+  name            = each.value.name
+  type            = each.value.type
+  zone_id         = data.aws_route53_zone.main.zone_id
+  records         = [each.value.record]
+  ttl             = 60
 }
 
-# Triggers the ACM wildcard certificate validation event
-resource "aws_acm_certificate_validation" "wildcard_cert" {
+
+# Required to force ACM wildcard certificate validation
+# see https://kopi.cloud/blog/2021/terraform-aws_acm_certificate-wildcards/
+resource "aws_acm_certificate_validation" "wildcard_validation" {
   provider = aws.us-east-1
+  certificate_arn = aws_acm_certificate.wildcard_website.arn
 
-  certificate_arn         = aws_acm_certificate.wildcard_website.arn
-  validation_record_fqdns = [aws_route53_record.wildcard_validation.fqdn]
+  validation_record_fqdns = concat(
+    [
+      for record in aws_route53_record.wildcard_validation : record.fqdn
+    ],
+    [
+      for record in aws_route53_record.wildcard_validation : record.fqdn
+    ]
+  )
 }
-
 
 # Get the ARN of the issued certificate
 data "aws_acm_certificate" "wildcard_website" {
@@ -52,7 +73,7 @@ data "aws_acm_certificate" "wildcard_website" {
   depends_on = [
     aws_acm_certificate.wildcard_website,
     aws_route53_record.wildcard_validation,
-    aws_acm_certificate_validation.wildcard_cert,
+    aws_acm_certificate_validation.wildcard_validation,
   ]
 
   domain      = var.website_domain

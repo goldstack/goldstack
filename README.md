@@ -1,4 +1,4 @@
-# Goldstack - Starter Project Builder 💖
+# Goldstack - JavaScript Project Builder 💖
 
 Getting started on a new project is fun ... until it isn't. Goldstack provides customizable starter templates that help you lift your project off the ground and immediately start working on the important parts.
 
