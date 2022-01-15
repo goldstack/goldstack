@@ -8,14 +8,14 @@ Compose your customised starter project on [goldstack.party](https://goldstack.p
 
 It should be a surprise to no one that setting up a dynamic monorepo for JavaScript/TypeScript projects is challenging. While the projects built with Goldstack have loads of config and best practices embedded, there is still a way to go to make this a complete turnkey solution. The following table gives an overview of what works well in the generated project and where some work may still be needed.
 
-| Status | Feature                | Comments                                                                                                                                                                                                           |
-| ------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 👌     | Install and Build      | Yarn Workspaces using Yarn v2 (Berry) overall works very well and allows for very fast install and build speeds.                                                                                                   |
-| 👌     | Linting and Formatting | ESLint and Prettier are configured to work effectively across all packages.                                                                                                                                        |
-| 👌     | Testing                | Running tests with Jest works across all packages                                                                                                                                                                  |
-| 👌     | IDE Integration        | VSCode including Intellisense works across the monorepo                                                                                                                                                            |
-| 🤷     | AWS                    | Deployment into AWS using Terraform overall works very well. Just initial configuration and the way credentials are provided can be improved. [#3](https://github.com/goldstack/goldstack/issues/3)                |
-| 👎     | TypeScript             | TypeScript support works but only with a workaround that requires running `yarn compile watch` in the root project. Compilation is slow for larger projects. [#2](https://github.com/goldstack/goldstack/issues/2) |
+| Status | Feature                | Comments                                                                                                                                                                                                 |
+| ------ | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 👌     | Install and Build      | Yarn Workspaces using Yarn v2 (Berry) overall works very well and allows for very fast install and build speeds.                                                                                         |
+| 👌     | TypeScript             | Well-supported, only workaround required is to run `yarn fix-project-references` when new inter-project dependencies are added.                                                                          |
+| 👌     | Linting and Formatting | ESLint and Prettier are configured to work effectively across all packages.                                                                                                                              |
+| 👌     | Testing                | Running tests with Jest works across all packages                                                                                                                                                        |
+| 👌     | IDE Integration        | VSCode including Intellisense works across the monorepo                                                                                                                                                  |
+| 🤷     | AWS                    | Deployment into AWS using Terraform overall works very well. Just initial configuration and the way credentials are provided can be improved. See [#3](https://github.com/goldstack/goldstack/issues/3). |
 
 # About
 
@@ -358,6 +358,56 @@ All packages included in a project will use the same bucket and DynamoDB table. 
 If the `tfStateKey` property is defined before running `yarn infra init [deployment]`, Goldstack will use the name specified as key for the state in bucket and DynamoDB table. If the `tfStateKey` property is not defined, a name will be generated and `goldstack.json` updated.
 
 Ensure that after standing up infrastructure for the first time to commit and push changes to your project, since Goldstack will update `goldstack.json` config and the `config/infra/aws/terraform.json` config. This is only required for initialising the infrastructure for each package and target AWS account (and if you do not provide the names for bucket, table and state files manually). For subsequent updates to the infrastructure it is not necessary to update the source files.
+
+### Upgrading Terraform Version
+
+Terraform frequently releases new versions of their tooling. Goldstack provides tooling to support different versions of Terraform for different modules and for upgrading Terraform.
+
+⚠️ Note that upgrading Terraform is often a difficult process and although Goldstack provides some tools to make this process easier, expect that a number of manual steps and fixes will be required.
+
+First note that Goldstack allows defining the version of Terraform that is to be used for executing infrastructure commands in two ways:
+
+1.  Centrally for a package using a file `infra/tfConfig.json` such as the following:
+
+```json
+{
+  "tfVersion": "1.1"
+}
+```
+
+2.  If a project has multiple different deployments that require different Terraform versions, or for first upgrading Terraform for test environments, it is also possible to specify the Terraform version per deployment. For this, add the `"tfVersion"` property to a `"configuration"` for a deployment in `goldstack.json`, for instance:
+
+```json
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "lambda-api-template",
+  "template": "lambda-api",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "tfVersion": "1.1"
+      }
+    }
+  ]
+}
+```
+
+Changing the Terraform version will result in Goldstack using the specified version of the Docker image `hashicorp/terraform:[version]`. Please avoid specifying minor versions: use `0.12` not `0.12.1`.
+
+Note that Terraform often provides upgrade scripts for Terraform. These can either be applied by installing the matching Terraform version locally or using the following Goldstack command:
+
+    yarn infra upgrade [deployment] [targetVersion]
+
+Note that this command is only supported for a limited number of versions. Also versions need to be upgraded one jump at a time, e.g. going from `0.12` to `0.13` is supported but not going from `0.12` to `0.14` or higher versions. For a reference of available versions, see [Terraform Versions](https://releases.hashicorp.com/terraform/).
+
+It is recommend to run `yarn infra init [deployment]`, `yarn infra up [deployment]` and `yarn deploy [deployment]` after every `upgrade` command.
+
+Note that you may have to upgrade various versions in `infra/aws/terraform/providers.tf` as well as making various other changes upgrading Terraform may involve, also see [Terraform Upgrade Guides](https://www.terraform.io/language/upgrade-guides).
 
 # Getting Started
 
