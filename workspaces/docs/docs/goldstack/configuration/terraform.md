@@ -79,7 +79,7 @@ Changing the Terraform version will result in Goldstack using the specified vers
 
 Note that Terraform often provides upgrade scripts for Terraform. These can either be applied by installing the matching Terraform version locally or using the following Goldstack command:
 
-```sh
+```
 yarn infra upgrade [deployment] [targetVersion]
 ```
 
