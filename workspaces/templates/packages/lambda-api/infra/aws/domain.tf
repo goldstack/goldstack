@@ -20,6 +20,7 @@ resource "aws_acm_certificate" "wildcard" {
 
   lifecycle {
     ignore_changes = [tags]
+    create_before_destroy = true
   }
 }
 

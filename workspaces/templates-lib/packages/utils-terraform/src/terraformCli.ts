@@ -45,6 +45,7 @@ interface TerraformOptions {
   backendConfig?: Variables;
   version: TerraformVersion;
   options?: string[];
+  silent?: boolean;
 }
 
 const execWithDocker = (cmd: string, options: TerraformOptions): string => {
@@ -63,7 +64,7 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
     ` ${renderVariables(options.variables || [])} ` +
     ` ${options.options?.join(' ') || ''} `;
 
-  return exec(cmd3);
+  return exec(cmd3, { silent: options.silent });
 };
 
 export const assertTerraform = (): void => {
@@ -101,7 +102,7 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     ` ${renderVariables(options.variables || [])} ` +
     ` ${options.options?.join(' ') || ''} `;
 
-  return exec(execCmd);
+  return exec(execCmd, { silent: options.silent });
 };
 
 export const tf = (cmd: string, options: TerraformOptions): string => {

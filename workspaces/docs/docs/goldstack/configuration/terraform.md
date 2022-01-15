@@ -41,3 +41,50 @@ All packages included in a project will use the same bucket and DynamoDB table. 
 If the `tfStateKey` property is defined before running `yarn infra init [deployment]`, Goldstack will use the name specified as key for the state in bucket and DynamoDB table. If the `tfStateKey` property is not defined, a name will be generated and `goldstack.json` updated.
 
 Ensure that after standing up infrastructure for the first time to commit and push changes to your project, since Goldstack will update `goldstack.json` config and the `config/infra/aws/terraform.json` config. This is only required for initialising the infrastructure for each package and target AWS account (and if you do not provide the names for bucket, table and state files manually). For subsequent updates to the infrastructure it is not necessary to update the source files.
+
+### Upgrading Terraform Version
+
+Terraform frequently releases new versions of their tooling. Thus Goldstack provides a convenient way to upgrade to new Terraform versions. Projects may contain a file `infra/tfConfig.json` such as the following:
+
+```json
+{
+  "tfVersion": "1.1"
+}
+```
+
+If a project has multiple different deployments that require different Terraform versions, or for first upgrading Terraform for test environments, it is also possible to specify the Terraform version per deployment. For this, add the `"tfVersion"` property to a `"configuration"` for a deployment in `goldstack.json`, for instance:
+
+```json
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "lambda-api-template",
+  "template": "lambda-api",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "tfVersion": "1.1"
+      }
+    }
+  ]
+}
+
+```
+
+Changing the Terraform version will result in Goldstack using the specified version of the Docker image `hashicorp/terraform:[version]`.
+
+Note that Terraform often provides upgrade scripts for Terraform. These can either be applied by installing the matching Terraform version locally or using the following Goldstack command:
+
+```sh
+yarn infra upgrade [deployment] [targetVersion]
+```
+
+Note that this command is only supported for a limited number of versions. Also versions need to be upgraded one jump at a time, e.g. going from `0.12` to `0.13` is supported but not going from `0.12` to `0.14` or higher versions. For a reference of available versions, see [Terraform Versions](https://releases.hashicorp.com/terraform/).
+
+It is recommend to run `yarn infra init [deployment]`, `yarn infra up [deployment]` and `yarn deploy [deployment]` after every `upgrade` command.
+
+Note that you may have to upgrade various versions in `infra/aws/terraform/providers.tf` as well as making various other changes upgrading Terraform may involve, also see [Terraform Upgrade Guides](https://www.terraform.io/language/upgrade-guides).

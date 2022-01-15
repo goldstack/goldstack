@@ -170,7 +170,10 @@ export const imageTerraform = (version?: string): string => {
   if (version === '1.1') {
     return 'hashicorp/terraform:1.1.3';
   }
-  throw new Error('Unknown Terraform version ' + version);
+  console.warn(
+    `Using untested Terraform version ${version}. Consider updating your Goldstack template.`
+  );
+  return `hashicorp/terraform:${version}`;
 };
 
 export const imageAWSCli = (): string => 'amazon/aws-cli:2.4.6';

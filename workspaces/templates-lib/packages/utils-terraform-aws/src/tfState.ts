@@ -42,8 +42,8 @@ const assertS3Bucket = async (params: {
   };
   try {
     console.log(
-      'Trying to access/create bucket for Terraform state',
-      JSON.stringify(bucketParams)
+      'Accessing/creating bucket for Terraform state',
+      bucketParams.Bucket
     );
 
     await params.s3.createBucket(bucketParams).promise();

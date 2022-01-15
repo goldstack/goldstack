@@ -230,7 +230,11 @@ export class TerraformBuild {
       backendConfig,
       options: ['-force-copy', '-reconfigure'],
     });
-    const workspaces = tf('workspace list', { provider, version });
+    const workspaces = tf('workspace list', {
+      provider,
+      version,
+      silent: true,
+    });
 
     const deploymentName = args[0];
     const workspaceExists = workspaces.split('\n').find((line) => {
@@ -261,7 +265,11 @@ export class TerraformBuild {
       ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
     ];
 
-    const currentWorkspace = tf('workspace show', { provider, version }).trim();
+    const currentWorkspace = tf('workspace show', {
+      provider,
+      version,
+      silent: true,
+    }).trim();
     if (currentWorkspace !== args[0]) {
       // init with reconfigure required here in case we are switching to a different
       // s3 bucket in a different environment for a different deployment
@@ -290,7 +298,11 @@ export class TerraformBuild {
     cd('./infra/aws');
     const provider = this.provider;
     const deploymentName = args[0];
-    const currentWorkspace = tf('workspace show', { provider, version }).trim();
+    const currentWorkspace = tf('workspace show', {
+      provider,
+      version,
+      silent: true,
+    }).trim();
     if (currentWorkspace !== deploymentName) {
       // init with reconfigure required here in case we are switching to a different
       // s3 bucket in a different environment for a different deployment
