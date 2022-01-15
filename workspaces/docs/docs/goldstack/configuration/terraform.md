@@ -44,7 +44,13 @@ Ensure that after standing up infrastructure for the first time to commit and pu
 
 ### Upgrading Terraform Version
 
-Terraform frequently releases new versions of their tooling. Thus Goldstack provides a convenient way to upgrade to new Terraform versions. Projects may contain a file `infra/tfConfig.json` such as the following:
+Terraform frequently releases new versions of their tooling. Goldstack provides tooling to support different versions of Terraform for different modules and for upgrading Terraform.
+
+⚠️ Note that upgrading Terraform is often a difficult process and although Goldstack provides some tools to make this process easier, expect that a number of manual steps and fixes will be required.
+
+First note that Goldstack allows defining the version of Terraform that is to be used for executing infrastructure commands in two ways:
+
+1. Centrally for a package using a file `infra/tfConfig.json` such as the following:
 
 ```json
 {
@@ -52,7 +58,7 @@ Terraform frequently releases new versions of their tooling. Thus Goldstack prov
 }
 ```
 
-If a project has multiple different deployments that require different Terraform versions, or for first upgrading Terraform for test environments, it is also possible to specify the Terraform version per deployment. For this, add the `"tfVersion"` property to a `"configuration"` for a deployment in `goldstack.json`, for instance:
+2. If a project has multiple different deployments that require different Terraform versions, or for first upgrading Terraform for test environments, it is also possible to specify the Terraform version per deployment. For this, add the `"tfVersion"` property to a `"configuration"` for a deployment in `goldstack.json`, for instance:
 
 ```json
 {
@@ -72,10 +78,9 @@ If a project has multiple different deployments that require different Terraform
     }
   ]
 }
-
 ```
 
-Changing the Terraform version will result in Goldstack using the specified version of the Docker image `hashicorp/terraform:[version]`.
+Changing the Terraform version will result in Goldstack using the specified version of the Docker image `hashicorp/terraform:[version]`. Please avoid specifying minor versions: use `0.12` not `0.12.1`.
 
 Note that Terraform often provides upgrade scripts for Terraform. These can either be applied by installing the matching Terraform version locally or using the following Goldstack command:
 
