@@ -1,6 +1,6 @@
 {
   "include": [
-    "infra/aws/",
+    "infra/",
     "src/",
     "schemas/",
     "scripts/",

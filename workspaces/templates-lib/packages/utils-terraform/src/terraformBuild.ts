@@ -228,6 +228,7 @@ export class TerraformBuild {
       provider,
       version,
       backendConfig,
+      workspace: deployment.name,
       options: ['-force-copy', '-reconfigure'],
     });
     const workspaces = tf('workspace list', {
@@ -237,21 +238,67 @@ export class TerraformBuild {
     });
 
     const deploymentName = args[0];
-    const workspaceExists = workspaces.split('\n').find((line) => {
+    let workspaceExists = workspaces.split('\n').find((line) => {
       return line.indexOf(deploymentName) >= 0;
     });
     if (!workspaceExists) {
-      tf(`workspace new ${deploymentName}`, {
-        provider,
-        version,
+      workspaceExists = workspaces.split('\n').find((line) => {
+        return line.indexOf(deploymentName) >= 0;
       });
+      if (!workspaceExists) {
+        tf(`workspace new ${deploymentName}`, {
+          provider,
+          version,
+        });
+      }
       tf(`workspace select ${deploymentName}`, {
         provider,
         version,
       });
+    } else {
+      tf(`workspace select ${deploymentName}`, {
+        provider,
+        version,
+      });
+      tf('init', {
+        provider,
+        version,
+        backendConfig,
+        workspace: deployment.name,
+        options: ['-force-copy', '-reconfigure'],
+      });
     }
 
     cd('../..');
+  };
+
+  private ensureInCorrectWorkspace = (params: {
+    deploymentName: string;
+    provider: CloudProvider;
+    version: TerraformVersion;
+    backendConfig: [string, string][];
+  }): void => {
+    const currentWorkspace = tf('workspace show', {
+      provider: params.provider,
+      version: params.version,
+      silent: true,
+    }).trim();
+    if (currentWorkspace !== params.deploymentName) {
+      tf(`workspace select ${params.deploymentName}`, {
+        provider: params.provider,
+        version: params.version,
+        silent: true,
+      });
+      // init with reconfigure required here in case we are switching to a different
+      // s3 bucket in a different environment for a different deployment
+      tf('init', {
+        provider: params.provider,
+        backendConfig: params.backendConfig,
+        version: params.version,
+        workspace: params.deploymentName,
+        options: ['-reconfigure'],
+      });
+    }
   };
 
   plan = (args: string[]): void => {
@@ -261,26 +308,17 @@ export class TerraformBuild {
     cd('./infra/aws');
     const provider = this.provider;
 
+    this.ensureInCorrectWorkspace({
+      deploymentName: args[0],
+      provider,
+      version,
+      backendConfig,
+    });
+
     const variables = [
       ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
     ];
 
-    const currentWorkspace = tf('workspace show', {
-      provider,
-      version,
-      silent: true,
-    }).trim();
-    if (currentWorkspace !== args[0]) {
-      // init with reconfigure required here in case we are switching to a different
-      // s3 bucket in a different environment for a different deployment
-      tf('init', {
-        provider,
-        backendConfig,
-        version,
-        options: ['-reconfigure'],
-      });
-      tf(`workspace select ${args[0]}`, { provider, version });
-    }
     tf('plan', {
       provider,
       variables,
@@ -298,22 +336,12 @@ export class TerraformBuild {
     cd('./infra/aws');
     const provider = this.provider;
     const deploymentName = args[0];
-    const currentWorkspace = tf('workspace show', {
+    this.ensureInCorrectWorkspace({
+      deploymentName: args[0],
       provider,
       version,
-      silent: true,
-    }).trim();
-    if (currentWorkspace !== deploymentName) {
-      // init with reconfigure required here in case we are switching to a different
-      // s3 bucket in a different environment for a different deployment
-      tf('init', {
-        provider,
-        backendConfig,
-        version,
-        options: ['-reconfigure'],
-      });
-      tf(`workspace select ${deploymentName}`, { provider, version });
-    }
+      backendConfig,
+    });
     tf('apply', {
       provider,
       options: ['-input=false', 'tfplan'],
@@ -351,12 +379,13 @@ export class TerraformBuild {
       ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
     ];
 
-    tf('init', { provider, backendConfig, options: ['-reconfigure'], version });
     tf(`workspace select ${args[0]}`, { provider, version });
+    tf('init', { provider, backendConfig, options: ['-reconfigure'], version });
     tf('plan', {
       provider,
       variables,
       version,
+      workspace: args[0],
       options: ['-input=false', '-out tfplan'],
     });
     tf('destroy', {
@@ -374,8 +403,37 @@ export class TerraformBuild {
     targetVersion: TerraformVersion
   ) => {
     const provider = this.provider;
+    const version = this.getTfVersion([deploymentName]);
+    cd('./infra/aws');
+    const currentWorkspace = tf('workspace show', {
+      provider: provider,
+      version: version,
+      silent: true,
+    }).trim();
+    if (currentWorkspace !== deploymentName) {
+      const workspaces = tf('workspace list', {
+        provider,
+        version,
+        silent: true,
+      });
+
+      const workspaceExists = workspaces.split('\n').find((line) => {
+        return line.indexOf(deploymentName) >= 0;
+      });
+      if (workspaceExists) {
+        tf(`workspace select ${deploymentName}`, {
+          provider,
+          version,
+        });
+      } else {
+        // Sometimes it seems that Terraform forgets/destroys a workspace when upgrading the version of
+        // another deployment.
+        throw new Error(
+          `Please initialise the deployment to be upgraded first with 'yarn infra init ${deploymentName}'. Please note that the 'init' command may fail with the error 'Error: Invalid legacy provider address' (if you have upgraded another deployment before this). In that case, run the 'upgrade' command regardless after the 'init' command has completed.`
+        );
+      }
+    }
     if (targetVersion === '0.13') {
-      cd('./infra/aws');
       const upgradeRes = tf(`${targetVersion}upgrade`, {
         version: targetVersion,
         provider,
@@ -384,8 +442,8 @@ export class TerraformBuild {
       if (upgradeRes.indexOf('Upgrade complete!') === -1) {
         throw new Error('Upgrade of Terraform version not successful.');
       }
-      cd('../..');
     }
+    cd('../..');
     const packageConfig = readPackageConfig();
     const deploymentInConfig = packageConfig.deployments.find(
       (e) => e.name === deploymentName
