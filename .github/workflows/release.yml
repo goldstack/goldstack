@@ -64,6 +64,12 @@ jobs:
       - name: Write build date
         run: echo "$(date +'%Y-%m-%dT%H:%M:%S')" >> build_prod_timestamp
 
+      - name: Configure git
+        run: |
+          git config --global user.email "public@pureleap.com"
+          git config --global user.name "GitHub Actions Build"
+          git config --global pull.rebase false
+
       - name: Commit build date change
         run: |
           git add .
