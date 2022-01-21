@@ -7,14 +7,14 @@ import { AssertionError } from 'assert';
 import fs from 'fs';
 import { TemplateTest } from './types/TemplateTest';
 import { AssertPackageFilesTest } from './tests/AssertPackageFilesTest';
-import { RootBuildTemplateTest } from './tests/RootBuildTemplateTest';
-import { RootFilesTemplateTest } from './tests/RootFilesTemplateTest';
+import { RootBuildTest } from './tests/RootBuildTest';
+import { AssertRootFilesTest } from './tests/AssertRootFilesTest';
 import { InfraUpTest } from './tests/InfraUpTest';
 import { InfraPlanTest } from './tests/InfraPlanTest';
 import { InfraDestroyTest } from './tests/InfraDestroyTest';
 import { DeployTest } from './tests/DeployTest';
-import { StaticWebsiteAwsTest } from './tests/StaticWebsiteAwsTest';
-import { RestApiTest } from './tests/RestApiTest';
+import { AssertStaticWebsiteAwsDeploymentsTest } from './tests/AssertStaticWebsiteAwsDeploymentsTest';
+import { AssertRestApiTest } from './tests/AssertRestApiTest';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function assert(condition: any, msg?: string): asserts condition {
@@ -53,14 +53,14 @@ export const prepareTestDir = async (
 export const getTemplateTests = (): TemplateTest[] => {
   return [
     new AssertPackageFilesTest(),
-    new RootBuildTemplateTest(),
-    new RootFilesTemplateTest(),
+    new RootBuildTest(),
+    new AssertRootFilesTest(),
     new InfraUpTest(),
     new InfraPlanTest(),
     new InfraDestroyTest(),
     new DeployTest(),
-    new StaticWebsiteAwsTest(),
-    new RestApiTest(),
+    new AssertStaticWebsiteAwsDeploymentsTest(),
+    new AssertRestApiTest(),
   ];
 };
 
