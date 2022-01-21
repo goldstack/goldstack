@@ -6,7 +6,7 @@ import { build } from '@goldstack/template-build';
 import { AssertionError } from 'assert';
 import fs from 'fs';
 import { TemplateTest } from './types/TemplateTest';
-import { PackageFilesTemplateTest } from './tests/PackageFilesTemplateTest';
+import { AssertPackageFilesTest } from './tests/AssertPackageFilesTest';
 import { RootBuildTemplateTest } from './tests/RootBuildTemplateTest';
 import { RootFilesTemplateTest } from './tests/RootFilesTemplateTest';
 import { InfraUpTest } from './tests/InfraUpTest';
@@ -52,7 +52,7 @@ export const prepareTestDir = async (
 
 export const getTemplateTests = (): TemplateTest[] => {
   return [
-    new PackageFilesTemplateTest(),
+    new AssertPackageFilesTest(),
     new RootBuildTemplateTest(),
     new RootFilesTemplateTest(),
     new InfraUpTest(),
