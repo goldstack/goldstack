@@ -1,7 +1,7 @@
-import { TemplateTest, RunTestParams } from './../types/TemplateTest';
+import { TemplateTest, RunTestParams } from '../types/TemplateTest';
 import { yarn } from '@goldstack/utils-yarn';
 
-export class RootBuildTemplateTest implements TemplateTest {
+export class RootBuildTest implements TemplateTest {
   getName(): string {
     return 'root-build';
   }

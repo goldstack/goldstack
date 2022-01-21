@@ -1,4 +1,4 @@
-import { TemplateTest, RunTestParams } from './../types/TemplateTest';
+import { TemplateTest, RunTestParams } from '../types/TemplateTest';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
 
 import assert from 'assert';
@@ -20,7 +20,7 @@ export const assertEndpointAvaialble = async (url: string): Promise<void> => {
   // );
 };
 
-export class RestApiTest implements TemplateTest {
+export class AssertRestApiTest implements TemplateTest {
   getName(): string {
     return 'assert-rest-api';
   }

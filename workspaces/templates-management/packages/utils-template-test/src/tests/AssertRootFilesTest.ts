@@ -1,8 +1,8 @@
-import { TemplateTest, RunTestParams } from './../types/TemplateTest';
-import { assertFilesExist } from './../utilsTemplateTest';
+import { TemplateTest, RunTestParams } from '../types/TemplateTest';
+import { assertFilesExist } from '../utilsTemplateTest';
 import { getAwsConfigPath } from '@goldstack/utils-config';
 
-export class RootFilesTemplateTest implements TemplateTest {
+export class AssertRootFilesTest implements TemplateTest {
   getName(): string {
     return 'assert-root-files';
   }

@@ -1,4 +1,4 @@
-import { TemplateTest, RunTestParams } from './../types/TemplateTest';
+import { TemplateTest, RunTestParams } from '../types/TemplateTest';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
 
 import assert from 'assert';
@@ -35,7 +35,7 @@ export const assertWebsiteRedirect = async (
   );
 };
 
-export class StaticWebsiteAwsTest implements TemplateTest {
+export class AssertStaticWebsiteAwsDeploymentsTest implements TemplateTest {
   getName(): string {
     return 'assert-static-website-aws-deployments';
   }
