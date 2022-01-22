@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-static-website-aws",
-  "version": "0.3.83",
+  "version": "0.3.84",
   "description": "Utilities for deploying a website to CloudFront and S3",
   "keywords": [
     "goldstack",
