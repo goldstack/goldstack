@@ -21,8 +21,8 @@ export class InfraDestroyTest implements TemplateTest {
             `workspace ${packageJson.name} infra destroy ${deployment.name} -y`
           );
         },
-        10000,
-        3
+        120000,
+        20
       );
     }
   }
