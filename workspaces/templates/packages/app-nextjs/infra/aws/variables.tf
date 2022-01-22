@@ -15,6 +15,7 @@ variable "website_domain" {
 
 variable "website_domain_redirect" {
   description = "Secondary domain that will redirect to the main domain"
+  default = null
   type = string
 }
 

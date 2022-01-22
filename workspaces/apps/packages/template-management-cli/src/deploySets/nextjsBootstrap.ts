@@ -1,51 +1,37 @@
 import { ProjectConfiguration } from '@goldstack/utils-project';
 import { DeploySetConfig } from '@goldstack/template-build-set';
 
-export const createStaticWebsiteBuildSetConfig = async (): Promise<DeploySetConfig> => {
+export const createNextjsBootstrapBuildSetConfig = async (): Promise<DeploySetConfig> => {
   const projectConfiguration: ProjectConfiguration = {
-    projectName: 'project-static-website1',
+    projectName: 'project-nextjsbootstrap1',
     rootTemplateReference: {
       templateName: 'yarn-pnp-monorepo',
     },
     packages: [
       {
-        packageName: 'app-nextjs-1',
+        packageName: 'app-nextjs-bootstrap-1',
         templateReference: {
-          templateName: 'app-nextjs',
-        },
-      },
-      {
-        packageName: 'static-website-1',
-        templateReference: {
-          templateName: 'static-website-aws',
+          templateName: 'app-nextjs-bootstrap',
         },
       },
     ],
   };
 
   const hash = new Date().getTime();
-  const websiteDomain = 'staticwebsite1-' + hash + '.tests.dev.goldstack.party';
-  const websiteDomainRedirect =
-    'www.staticwebsite1-' + hash + '.tests.dev.goldstack.party';
+  const websiteDomain =
+    'nextjsbootstrap-' + hash + '.tests.dev.goldstack.party';
 
   const setConfig: DeploySetConfig = {
-    buildSetName: 'static-website',
-    buildTemplates: ['yarn-pnp-monorepo', 'app-nextjs', 'static-website-aws'],
-    deployTemplates: ['app-nextjs', 'static-website-aws'],
+    buildSetName: 'nextjs-bootstrap',
+    buildTemplates: ['yarn-pnp-monorepo', 'app-nextjs-bootstrap'],
+    deployTemplates: ['app-nextjs-bootstrap'],
     projects: [
       {
         projectConfiguration,
         rootTests: ['assert-package-files', 'assert-root-files', 'root-build'],
         packageConfigurations: [
           {
-            packageName: 'app-nextjs-1',
-            configuration: {},
-            deployments: [],
-            packageTests: ['assert-package-files'],
-            packageCleanUp: [],
-          },
-          {
-            packageName: 'static-website-1',
+            packageName: 'app-nextjs-bootstrap-1',
             configuration: {},
             deployments: [
               {
@@ -55,7 +41,6 @@ export const createStaticWebsiteBuildSetConfig = async (): Promise<DeploySetConf
                 configuration: {
                   hostedZoneDomain: 'dev.goldstack.party',
                   websiteDomain,
-                  websiteDomainRedirect,
                   defaultCacheDuration: 10,
                 },
               },
@@ -64,7 +49,7 @@ export const createStaticWebsiteBuildSetConfig = async (): Promise<DeploySetConf
               'assert-package-files',
               'infra-up',
               'deploy',
-              'assert-static-website-aws-deployments',
+              'assert-website',
             ],
             packageCleanUp: ['infra-destroy'],
           },

@@ -13,7 +13,7 @@ import { Deployment, DeploymentConfiguration } from '@goldstack/infra';
 export type HostedZoneDomain = string;
 
 /**
- * The domain name your users should use (e.g. mysite.com)
+ * The domain name your users should use (e.g. mysite.com). Note this should equal to or be a subdomain of the hosted zone domain.
  *
  * @title Primary Website Domain
  * @pattern ^[^\s]*
@@ -21,7 +21,7 @@ export type HostedZoneDomain = string;
 export type PrimaryWebsiteDomain = string;
 
 /**
- * A domain name that users are redirected from to your Primary Website Domain (e.g. www.mysite.com)
+ * An optional domain name that users are redirected from to your Primary Website Domain (e.g. www.mysite.com)
  *
  * @title Redirect Website Domain
  * @pattern ^[^\s]*
@@ -40,7 +40,7 @@ export type DefaultCacheDuration = number;
 export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
   hostedZoneDomain: HostedZoneDomain;
   websiteDomain: PrimaryWebsiteDomain;
-  websiteDomainRedirect: RedirectWebsiteDomain;
+  websiteDomainRedirect?: RedirectWebsiteDomain;
   defaultCacheDuration?: DefaultCacheDuration;
 }
 
