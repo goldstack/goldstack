@@ -15,6 +15,7 @@ import { DocLink } from '@goldstack/goldstack-api/dist/src/utils/docLinks';
 
 import assert from 'assert';
 import { loadStripe } from '@stripe/stripe-js';
+import { DownloadInstructions } from './DownloadInstructions';
 
 assert(
   process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY,
@@ -48,12 +49,17 @@ const DownloadReady = (props: {
             dangerouslySetInnerHTML={{ __html: checkCircle }}
           ></div>
           <div className="mb-5">
-            <h1 className="h2">Ready to download!</h1>
-            <p>
-              Thank you for choosing Goldstack. Click the link below to download
-              your project.
-            </p>
+            <h1 className="h2">Project successfully generated</h1>
+            <p>Follow the steps below to setup your project.</p>
           </div>
+        </div>
+
+        <DownloadInstructions
+          packageId={props.packageId}
+          downloadUrl={props.downloadUrl}
+          projectId={props.projectId}
+        ></DownloadInstructions>
+        <div>
           <div>
             <a
               className="btn btn-primary btn-pill transition-3d-hover px-5"
