@@ -7,7 +7,7 @@ export const DownloadInstructionsStep = (props: {
 }): JSX.Element => {
   return (
     <>
-      <div className="space-1 card bg-light shadow-none p-3 mt-4 rounded-pill">
+      <div className="space-1 card bg-light shadow-none p-3 mt-4 rounded">
         <div className="media">
           <div className="avatar mr-5">
             <span className="avatar avatar-lg avatar-primary avatar-circle">
