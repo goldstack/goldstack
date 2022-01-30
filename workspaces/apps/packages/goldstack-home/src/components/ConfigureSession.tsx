@@ -98,15 +98,20 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
       className="js-validate card border w-md-85 w-lg-100 mx-md-auto"
     >
       <div className="card-header bg-primary text-white text-center py-4 px-5 px-md-6">
-        <h4 className="text-white mb-0">Download Template</h4>
+        <h4 className="text-white mb-0">Template Delivery</h4>
       </div>
 
       <div className="card-body p-md-6">
         <div className="row">
           <div className="col-sm-12 mb-3">
+            <p>
+              If you provide your email address, we will send a link with your
+              generated template for safekeeping and inform about important
+              updates for your template.
+            </p>
             <div className="js-form-message form-group">
               <label htmlFor="emailAddress" className="input-label">
-                Email address for template delivery (<b>optional</b>)
+                Your email address
               </label>
               <input
                 ref={emailInput}
@@ -143,7 +148,7 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
               </a>
             </p>
           </div> */}
-          <div className="col-sm-10 ">
+          <div className="col-sm-10 " style={{ display: 'flex' }}>
             <button
               type="submit"
               className="btn btn-primary"
@@ -157,7 +162,22 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
                 aria-hidden="true"
                 hidden={!progressMessage}
               ></Spinner>{' '}
-              Generate Download Link
+              Proceed with Email
+            </button>
+            <button
+              type="submit"
+              className="btn btn-ghost-secondary"
+              disabled={!!progressMessage}
+            >
+              <Spinner
+                as="span"
+                animation="border"
+                role="status"
+                size="sm"
+                aria-hidden="true"
+                hidden={!progressMessage}
+              ></Spinner>{' '}
+              Proceed without Email
             </button>
           </div>
           <div className="cols-sm-2">
