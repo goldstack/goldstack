@@ -10,7 +10,7 @@ export const DownloadInstructionsStep = (props: {
       <div className="space-1 card bg-light shadow-none p-3 mt-4 rounded">
         <div className="media">
           <div className="avatar mr-5">
-            <span className="avatar avatar-lg avatar-primary avatar-circle">
+            <span className="avatar avatar-primary avatar-primary avatar-circle">
               <span className="avatar-initials">{props.stepNumber}</span>
             </span>
           </div>
