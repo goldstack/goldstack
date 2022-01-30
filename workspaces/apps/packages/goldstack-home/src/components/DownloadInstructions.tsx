@@ -75,6 +75,8 @@ export const DownloadInstructions = (props: {
             Any problems?{' '}
             <a
               className="font-weight-bold ml-3"
+              target="_blank"
+              rel="noreferrer"
               href="https://github.com/goldstack/goldstack/issues"
             >
               Open an issue on GitHub 🤗 <AngleRightComponent />
@@ -203,6 +205,8 @@ export const DownloadInstructions = (props: {
             Any problems or ideas for improvements?{' '}
             <a
               className="font-weight-bold ml-3"
+              target="_blank"
+              rel="noreferrer"
               href="https://github.com/goldstack/goldstack/issues"
             >
               Open an issue on GitHub 🤗 <AngleRightComponent />
