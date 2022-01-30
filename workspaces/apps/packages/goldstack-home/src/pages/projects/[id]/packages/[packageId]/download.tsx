@@ -5,6 +5,7 @@ import Download from 'src/components/Download';
 
 import Header from 'src/components/Header';
 
+import Footer from 'src/components/Footer';
 import { getEndpoint } from '@goldstack/goldstack-api';
 
 const DownloadPage = (): JSX.Element => {
@@ -35,6 +36,7 @@ const DownloadPage = (): JSX.Element => {
     return (
       <>
         <Header></Header>
+        <Footer></Footer>
       </>
     );
   }
@@ -48,6 +50,7 @@ const DownloadPage = (): JSX.Element => {
         ></Download>
       )}
       {token && <p>Restoring session</p>}
+      <Footer></Footer>
     </>
   );
 };
