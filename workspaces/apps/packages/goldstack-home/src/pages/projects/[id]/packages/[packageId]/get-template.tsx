@@ -16,7 +16,7 @@ const fetcher = (url: string): any =>
     credentials: 'include',
   }).then((r) => r.json());
 
-const PurchaseTemplatePage = (): JSX.Element => {
+const GetTemplatePage = (): JSX.Element => {
   const router = useRouter();
   const { id, packageId } = router.query;
   if (!id || !packageId) {
@@ -84,4 +84,4 @@ const PurchaseTemplatePage = (): JSX.Element => {
   );
 };
 
-export default PurchaseTemplatePage;
+export default GetTemplatePage;
