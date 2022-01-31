@@ -161,12 +161,40 @@ export const DownloadInstructions = (props: {
       >
         <p>
           Open the terminal in VSCode by going to <i>Terminal / New Terminal</i>
-          . Run the following command:
+          . Run the following commands:
         </p>
-        <pre>{'yarn && yarn build'}</pre>
+        <pre className="mb-1">{'node -v'}</pre>
+        <div className="font-size-1">
+          <span>
+            You should have at least Node v14 installed. If not, please{' '}
+            <a
+              href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#checking-your-version-of-npm-and-nodejs"
+              target="_blank"
+              rel="noreferrer"
+            >
+              install Node.js
+            </a>
+            .
+          </span>
+        </div>
+        <pre className="mb-1 mt-3">{'yarn --version'}</pre>
+        <div className="font-size-1">
+          <span>
+            You should have at least Yarn v1.22.5+ installed. If not, please{' '}
+            <a
+              href="https://yarnpkg.com/getting-started/install"
+              target="_blank"
+              rel="noreferrer"
+            >
+              install Yarn
+            </a>
+            .
+          </span>
+        </div>
+        <pre className="mb-1 mt-3">{'yarn && yarn build'}</pre>
         <img
           className="img-fluid"
-          src="https://cdn.goldstack.party/img/202201/yarn_build.gif"
+          src="https://cdn.goldstack.party/img/202202/node_and_yarn.gif"
         ></img>
       </DownloadInstructionsStep>
 
