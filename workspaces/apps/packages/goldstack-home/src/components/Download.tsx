@@ -6,6 +6,7 @@ import useSWR from 'swr';
 
 import CheckCircle from './../icons/font-awesome/solid/check-circle.svg';
 
+import Footer from 'src/components/Footer';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -105,7 +106,7 @@ const Download = (props: DownloadProps): JSX.Element => {
       <Head>
         <title>Download</title>
       </Head>
-      <div className="container space-2">
+      <div className="container space-2" style={{ minHeight: '1000px' }}>
         <Row>
           <Col lg={12} md={12}>
             {packageDataError && (
@@ -122,6 +123,8 @@ const Download = (props: DownloadProps): JSX.Element => {
           </Col>
         </Row>
       </div>
+
+      <Footer></Footer>
     </>
   );
 };

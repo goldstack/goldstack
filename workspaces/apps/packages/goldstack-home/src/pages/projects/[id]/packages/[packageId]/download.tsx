@@ -50,7 +50,6 @@ const DownloadPage = (): JSX.Element => {
         ></Download>
       )}
       {token && <p>Restoring session</p>}
-      <Footer></Footer>
     </>
   );
 };
