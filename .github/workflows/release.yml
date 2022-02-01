@@ -2,10 +2,9 @@
 # https://github.com/goldstack/goldstack-mega/releases/new
 name: Production Release
 
-on: [push]
-# on:
-#   release:
-#     types: [published]
+on:
+  release:
+    types: [published]
 
 jobs:
   release:
