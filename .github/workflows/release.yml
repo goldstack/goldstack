@@ -64,6 +64,9 @@ jobs:
       - name: Write build date
         run: echo "$(date +'%Y-%m-%dT%H:%M:%S')" >> build_prod_timestamp
 
+      - name: Remove yarn secret
+        run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''""''" } }'''
+
       - name: Configure git
         run: |
           git config --global user.email "public@pureleap.com"
