@@ -39,6 +39,11 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
     } else {
       email = '';
     }
+    console.log(evt.target.dataset);
+    if (evt.target.dataset.email === 'yes' && !email) {
+      alert('Please enter an email address or click Proceed without Email.');
+      return;
+    }
     // if (!termsInput.current.value) {
     //   alert('Please accept our terms and conditions before proceeding.');
     //   return;
@@ -94,7 +99,7 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
 
   return (
     <form
-      onSubmit={onSubmit}
+      onSubmit={(evt) => evt.preventDefault()}
       className="js-validate card border w-md-85 w-lg-100 mx-md-auto"
     >
       <div className="card-header bg-primary text-white text-center py-4 px-5 px-md-6">
@@ -106,7 +111,7 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
           <div className="col-sm-12 mb-3">
             <p>
               If you provide your email address, we will send a link with your
-              generated template for safekeeping and inform about important
+              generated template for safekeeping and inform you about important
               updates for your template.
             </p>
             <div className="js-form-message form-group">
@@ -140,47 +145,38 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
           </small>
         </div>
         <div className="row align-items-center">
-          {/* <div className="col-sm-7 mb-3 mb-sm-0">
-            <p className="font-size-1 text-muted mb-0">
-              Already have an account?{' '}
-              <a className="font-weight-bold" href="#">
-                Log In
-              </a>
-            </p>
-          </div> */}
           <div className="col-sm-10 " style={{ display: 'flex' }}>
             <button
               type="submit"
               className="btn btn-primary"
+              onClick={onSubmit}
+              data-email="yes"
               disabled={!!progressMessage}
             >
-              <Spinner
-                as="span"
-                animation="border"
-                role="status"
-                size="sm"
-                aria-hidden="true"
-                hidden={!progressMessage}
-              ></Spinner>{' '}
               Proceed with Email
             </button>
             <button
               type="submit"
               className="btn btn-ghost-secondary"
+              onClick={onSubmit}
+              data-email="no"
               disabled={!!progressMessage}
             >
-              <Spinner
-                as="span"
-                animation="border"
-                role="status"
-                size="sm"
-                aria-hidden="true"
-                hidden={!progressMessage}
-              ></Spinner>{' '}
               Proceed without Email
             </button>
           </div>
-          <div className="cols-sm-2">
+          <div className="cols-sm-2"></div>
+        </div>
+        <div className="row mt-4">
+          <div className="col-sm-12">
+            <Spinner
+              as="span"
+              animation="border"
+              role="status"
+              size="sm"
+              aria-hidden="true"
+              hidden={!progressMessage}
+            ></Spinner>{' '}
             <Progress progressMessage={progressMessage || ''}></Progress>
           </div>
         </div>
