@@ -15,7 +15,8 @@
         "websiteDomainRedirect": "www.app-nextjs.templates.dev.goldstack.party",
         "defaultCacheDuration": 10
       },
-      "tfStateKey": "app-nextjs-prod-bfe30e556c467437d714.tfstate"
+      "tfStateKey": "app-nextjs-prod-bfe30e556c467437d714.tfstate",
+      "tfVersion": "1.1"
     }
   ]
 }
