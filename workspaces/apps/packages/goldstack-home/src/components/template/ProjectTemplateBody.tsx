@@ -37,7 +37,7 @@ const ProjectTemplateBody = (props: ProjectTemplateProps): JSX.Element => {
             aria-expanded="false"
             aria-controls="collapseLinkExample"
           >
-            Create project with template
+            Add template to new project
           </a>
           {/* <hr className="my-6"></hr>
           <div className="p-6">
@@ -61,7 +61,7 @@ const ProjectTemplateBody = (props: ProjectTemplateProps): JSX.Element => {
           <TemplateCallToAction
             action={{
               link: props.hero.action?.link || '',
-              title: '✔ Create Project with Template',
+              title: '✔ Add Template to Project',
             }}
           ></TemplateCallToAction>
         </div>
