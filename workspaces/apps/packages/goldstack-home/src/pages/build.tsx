@@ -243,11 +243,11 @@ const ModuleSelection = (props: { elements: string[] }) => {
                   </div>
                   <Checkbox
                     title="Serverless API"
-                    element="lambda-api"
+                    element="serverless-api"
                     disabled={building}
                     icon={GatewayIcon}
                     docsLink={docsRoot + '/modules/lambda-api'}
-                    checked={elements.indexOf('lambda-api') !== -1}
+                    checked={elements.indexOf('serverless-api') !== -1}
                     onChange={checkboxChange}
                   ></Checkbox>
                   <Checkbox

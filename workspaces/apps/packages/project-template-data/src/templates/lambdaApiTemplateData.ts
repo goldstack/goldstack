@@ -2,9 +2,9 @@ import { ProjectTemplateProps } from '../projectTemplateTypes';
 import { LambdaAPI } from './moduleData';
 import { featureYarn } from './nextjsTemplateData';
 
-export const getLambdaApiTemplate = (): ProjectTemplateProps => {
+export const getServerlessApiTemplate = (): ProjectTemplateProps => {
   return {
-    id: 'lambda-api',
+    id: 'serverless-api',
     title: 'Serverless API',
     images: ['api-gateway', 'lambda', 'nodejs', 'typescript'],
     packages: [LambdaAPI],
@@ -27,7 +27,7 @@ export const getLambdaApiTemplate = (): ProjectTemplateProps => {
         `,
       action: {
         title: '✔ Start Building Your Project Now',
-        link: '/build?stack=lambda-api',
+        link: '/build?stack=serverless-api',
       },
     },
     featuresOverview: [

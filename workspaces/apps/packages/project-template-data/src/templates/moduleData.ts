@@ -32,6 +32,6 @@ const EmailSend: PackageProps = {
 const LambdaAPI: PackageProps = {
   title: 'Lambda API Gateway',
   link:
-    'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/lambda-api#readme',
+    'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/serverless-api#readme',
 };
 export { NextJsBootstrap, NextJs, Express, GoGin, EmailSend, LambdaAPI };

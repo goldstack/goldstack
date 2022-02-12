@@ -107,10 +107,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates/packages/email-send"
       },
       {
-        "name": "@goldstack/lambda-api",
-        "reference": "workspace:workspaces/templates/packages/lambda-api"
-      },
-      {
         "name": "@goldstack/lambda-express",
         "reference": "workspace:workspaces/templates/packages/lambda-express"
       },
@@ -137,6 +133,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "@goldstack/server-express",
         "reference": "workspace:workspaces/templates/packages/server-express"
+      },
+      {
+        "name": "@goldstack/serverless-api",
+        "reference": "workspace:workspaces/templates/packages/serverless-api"
       },
       {
         "name": "@goldstack/static-website-aws",
@@ -363,7 +363,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/goldstack-home", ["workspace:workspaces/apps/packages/goldstack-home"]],
       ["@goldstack/infra", ["workspace:workspaces/templates-lib/packages/infra"]],
       ["@goldstack/infra-aws", ["workspace:workspaces/templates-lib/packages/infra-aws"]],
-      ["@goldstack/lambda-api", ["workspace:workspaces/templates/packages/lambda-api"]],
       ["@goldstack/lambda-express", ["workspace:workspaces/templates/packages/lambda-express"]],
       ["@goldstack/library", ["workspace:workspaces/templates/packages/library"]],
       ["@goldstack/markdown-docs", ["workspace:workspaces/docs/packages/markdown-docs"]],
@@ -383,6 +382,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/s3", ["workspace:workspaces/templates/packages/s3"]],
       ["@goldstack/server-express", ["workspace:workspaces/templates/packages/server-express"]],
       ["@goldstack/server-go", ["workspace:workspaces/templates/packages/lambda-go-gin"]],
+      ["@goldstack/serverless-api", ["workspace:workspaces/templates/packages/serverless-api"]],
       ["@goldstack/session-repository", ["workspace:workspaces/templates-management/packages/session-repository"]],
       ["@goldstack/session-repository-bucket", ["workspace:workspaces/templates-management/packages/session-repository-bucket"]],
       ["@goldstack/static-website-aws", ["workspace:workspaces/templates/packages/static-website-aws"]],
@@ -1713,35 +1713,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT",
         }]
       ]],
-      ["@goldstack/lambda-api", [
-        ["workspace:workspaces/templates/packages/lambda-api", {
-          "packageLocation": "./workspaces/templates/packages/lambda-api/",
-          "packageDependencies": [
-            ["@goldstack/lambda-api", "workspace:workspaces/templates/packages/lambda-api"],
-            ["@goldstack/template-lambda-api", "workspace:workspaces/templates-lib/packages/template-lambda-api"],
-            ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],
-            ["@jest-mock/express", "npm:1.1.8"],
-            ["@types/aws-lambda", "npm:8.10.88"],
-            ["@types/aws-serverless-express", "npm:3.3.3"],
-            ["@types/jest", "npm:27.0.2"],
-            ["@types/node", "npm:16.11.0"],
-            ["@types/node-fetch", "npm:2.5.12"],
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:2.0.0-rc.1"],
-            ["date-fns", "npm:2.28.0"],
-            ["esbuild", "npm:0.14.5"],
-            ["find-free-port", "npm:2.0.0"],
-            ["jest", "npm:26.6.3"],
-            ["node-fetch", "npm:2.6.6"],
-            ["source-map-support", "npm:0.5.21"],
-            ["supertest", "npm:4.0.2"],
-            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
-            ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.3.0"],
-            ["ts-node-dev", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:1.1.8"],
-            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
-          ],
-          "linkType": "SOFT",
-        }]
-      ]],
       ["@goldstack/lambda-express", [
         ["workspace:workspaces/templates/packages/lambda-express", {
           "packageLocation": "./workspaces/templates/packages/lambda-express/",
@@ -2137,6 +2108,35 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:16.11.0"],
             ["nodemon", "npm:2.0.4"],
             ["ts-node", "virtual:f9142006202e84442d97960bffe1f194e2429cf8062d0c28268d7fd2f85865329bb070ab3bec3c6b72a4d8b89dd542ffd3284cb82516c4681ee8c29cae609f04#npm:10.3.0"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@goldstack/serverless-api", [
+        ["workspace:workspaces/templates/packages/serverless-api", {
+          "packageLocation": "./workspaces/templates/packages/serverless-api/",
+          "packageDependencies": [
+            ["@goldstack/serverless-api", "workspace:workspaces/templates/packages/serverless-api"],
+            ["@goldstack/template-lambda-api", "workspace:workspaces/templates-lib/packages/template-lambda-api"],
+            ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],
+            ["@jest-mock/express", "npm:1.1.8"],
+            ["@types/aws-lambda", "npm:8.10.88"],
+            ["@types/aws-serverless-express", "npm:3.3.3"],
+            ["@types/jest", "npm:27.0.2"],
+            ["@types/node", "npm:16.11.0"],
+            ["@types/node-fetch", "npm:2.5.12"],
+            ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:2.0.0-rc.1"],
+            ["date-fns", "npm:2.28.0"],
+            ["esbuild", "npm:0.14.5"],
+            ["find-free-port", "npm:2.0.0"],
+            ["jest", "npm:26.6.3"],
+            ["node-fetch", "npm:2.6.6"],
+            ["source-map-support", "npm:0.5.21"],
+            ["supertest", "npm:4.0.2"],
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
+            ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.3.0"],
+            ["ts-node-dev", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:1.1.8"],
+            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
           ],
           "linkType": "SOFT",
         }]

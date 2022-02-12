@@ -1,5 +1,5 @@
 {
-  "templateName": "lambda-api",
+  "templateName": "serverless-api",
   "templateVersion": "0.1.0",
   "previousTemplateVersion": "0.0.0",
   "templateDescription": "Building a Serverless API with multiple lambda functions.",

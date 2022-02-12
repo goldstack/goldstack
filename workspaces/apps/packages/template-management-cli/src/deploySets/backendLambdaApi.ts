@@ -11,7 +11,7 @@ export const createBackendLambdaApiBuildSetConfig = async (): Promise<DeploySetC
       {
         packageName: 'lambda-api-1',
         templateReference: {
-          templateName: 'lambda-api',
+          templateName: 'serverless-api',
         },
       },
     ],
@@ -20,8 +20,8 @@ export const createBackendLambdaApiBuildSetConfig = async (): Promise<DeploySetC
   const hash = new Date().getTime();
   const setConfig: DeploySetConfig = {
     buildSetName: 'backend-lambda-api',
-    buildTemplates: ['yarn-pnp-monorepo', 'lambda-api'],
-    deployTemplates: ['lambda-api'],
+    buildTemplates: ['yarn-pnp-monorepo', 'serverless-api'],
+    deployTemplates: ['serverless-api'],
     projects: [
       {
         projectConfiguration,

@@ -1,5 +1,5 @@
 {
-  "name": "@goldstack/lambda-api",
+  "name": "@goldstack/serverless-api",
   "version": "1.0.0",
   "description": "API build from multiple Lambdas behind an API gateway",
   "license": "MIT",

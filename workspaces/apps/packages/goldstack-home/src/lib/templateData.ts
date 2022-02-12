@@ -44,7 +44,7 @@ export const getTemplateData = (
     },
     {
       packageName: 'Lambda API Gateway',
-      packageId: 'template:lambda-api',
+      packageId: 'template:serverless-api',
       packageDescription: 'Serverless API using AWS HTTP API and Lambdas.',
       icons: [APIGateway, LambdaIcon],
       selected: false,
