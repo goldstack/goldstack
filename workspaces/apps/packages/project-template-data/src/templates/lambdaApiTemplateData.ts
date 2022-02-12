@@ -7,7 +7,8 @@ export const getLambdaApiTemplate = (): ProjectTemplateProps => {
     id: 'lambda-api',
     title: 'Serverless API',
     images: ['api-gateway', 'lambda', 'nodejs', 'typescript'],
-    modules: [LambdaAPI],
+    packages: [LambdaAPI],
+    isComposite: false,
     description:
       'Rapidly develop an API using AWS HTTP API and Lambdas with minimal configuration.',
     longDescription:

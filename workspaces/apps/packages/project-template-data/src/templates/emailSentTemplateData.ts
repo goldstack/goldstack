@@ -7,7 +7,8 @@ export const getEmailSentTemplateData = (): ProjectTemplateProps => {
     id: 'express-ses',
     title: 'Express.js + Email Send',
     images: ['ses', 'lambda', 'typescript'],
-    modules: [EmailSend, Express],
+    packages: [EmailSend, Express],
+    isComposite: true,
     description: 'Setup a servless Express server with email sending.',
     longDescription:
       'This project helps you set up an Express.js server on AWS Lambda.' +

@@ -9,7 +9,7 @@ export type {
   TemplateIcons,
   TemplateFeatureImage,
   ShortTemplateFeature,
-  ModuleProps,
+  PackageProps as ModuleProps,
 } from './projectTemplateTypes';
 
 import { getNextJsTemplateData } from './templates/nextjsTemplateData';

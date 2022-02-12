@@ -145,7 +145,8 @@ export const getNextJsTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'nextjs',
     title: 'Next.js',
-    modules: [NextJs],
+    packages: [NextJs],
+    isComposite: false,
     images: ['nextjs', 'react', 'typescript'],
     description: 'Complete Next.js project and deployment setup.',
     longDescription:
