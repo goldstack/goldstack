@@ -1,5 +1,5 @@
 ---
-id: module-lambda-go-gin
+id: template-lambda-go-gin
 title: Lambda Go Gin
 ---
 

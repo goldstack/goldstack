@@ -1,8 +1,8 @@
 # Goldstack Project Root
 
-The root of the project contains configuration shared across modules as well as various utility scripts for applying operations for all modules.
+The root of the project contains configuration shared across packages as well as various utility scripts for applying operations for all packages in a project.
 
-You can find the modules you have selected in the folder `packages/`.
+You can find the templates you have selected in the folder `packages/`.
 
 Find further information here:
 
@@ -20,4 +20,4 @@ When running the `compile-watch` command in the root, you may get the following 
 (node:97874) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 SIGINT listeners added to [process]. Use emitter.setMaxListeners() to increase limit
 ```
 
-This is nothing to worry about. It is caused by the command spawning a lot of subprocesses, since an individuall `nodemon` process is started for every package that is watched (see also [this question](https://stackoverflow.com/questions/9768444/possible-eventemitter-memory-leak-detected) on stackoverflow.
+This is nothing to worry about. It is caused by the command spawning a lot of sub-processes, since an individual `nodemon` process is started for every package that is watched (see also [this question](https://stackoverflow.com/questions/9768444/possible-eventemitter-memory-leak-detected) on Stackoverflow).

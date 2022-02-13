@@ -1,4 +1,4 @@
-The following key properties need to be configured for this module:
+The following key properties need to be configured for this template:
 
 - **Hosted Zone Domain**: A Route 53 hosted zone to which the _Primary Website Domain_ and _Redirect Website Domain_ can be added as records. For instance, the hosted zone domain `mysite.com` would allow adding the primary domain `mysite.com` and the redirect domain `www.mysite.com`. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
 - **Primary Website Domain**: This is the domain your users will use to view the site. For instance, if you configure the domain `mysite.com`, users will be able to view your site by opening the URL `https://mysite.com`.

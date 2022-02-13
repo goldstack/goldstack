@@ -2,7 +2,7 @@
 
 ### Development
 
-See below how this module can be used by other modules (for instance within an [Express Server](./../modules/lambda-express)).
+See below how this template can be used by other packages (for instance within an [Express Server](./../modules/lambda-express)).
 
 ```javascript
 import { connect, getFromDomain } from 'my-email-send-module';
@@ -27,4 +27,4 @@ await ses
   .promise();
 ```
 
-Note it is also possible to add additional files into the `src/` directory of this module. This can be a good place to implement an interface specific to your application needs.
+Note it is also possible to add additional files into the `src/` directory of this template. This can be a good place to implement an interface specific to your application needs.

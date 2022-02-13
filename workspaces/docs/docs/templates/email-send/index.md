@@ -41,7 +41,7 @@ Error: [ERR]: Error building changeset: InvalidChangeBatch: [Tried to create res
   45: resource "aws_route53_record" "spf_domain" {
 ```
 
-This error is reported when a TXT record for your specified domain already exists. Often other services such as G Suite set TXT records that conflict with the TXT record that the Email Send module wants to create.
+This error is reported when a TXT record for your specified domain already exists. Often other services such as G Suite set TXT records that conflict with the TXT record that the Email Send template wants to create.
 
 #### Workaround
 
@@ -64,4 +64,4 @@ resource "aws_route53_record" "spf_mail_from" {
 
 ## Security Hardening
 
-This module is already developed following best security practices, including various means to ensure good email deliverability by configuring SPF and DKIM. Further improvements to the security for the email module can generally be made by explicitly granting rights to other components of the system that use this module, such as Lambdas. For further details on how to configure access for sending emails via SES, please see [Controlling access to Amazon SES](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/control-user-access.html) in the AWS SES documentation.
+This template is already developed following best security practices, including various means to ensure good email deliverability by configuring SPF and DKIM. Further improvements to the security for the email template can generally be made by explicitly granting rights to other components of the system that use this template, such as Lambdas. For further details on how to configure access for sending emails via SES, please see [Controlling access to Amazon SES](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/control-user-access.html) in the AWS SES documentation.

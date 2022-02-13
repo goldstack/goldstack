@@ -29,7 +29,7 @@ title: Serverless API
 
 ### Adding environment variables
 
-Environment variables are defined in the Terraform source code for this module. Specifically they are defined in the `infra/aws/lambda_routes.tf` file in the resource `resource "aws_lambda_function" "this"`. Note that all lambdas share the same environment variables. By default, there are a few environment variables specified:
+Environment variables are defined in the Terraform source code for this template. Specifically they are defined in the `infra/aws/lambda_routes.tf` file in the resource `resource "aws_lambda_function" "this"`. Note that all lambdas share the same environment variables. By default, there are a few environment variables specified:
 
 ```hcl
  environment {
@@ -130,6 +130,6 @@ See [Issue #40](https://github.com/goldstack/goldstack/issues/40)
 
 ## Security Hardening
 
-This module requires further security hardening when deployed in critical production applications. Specifically the lambdas are given the role `arn:aws:iam::aws:policy/AdministratorAccess"` and this will grant the lambdas access to all resources on the AWS account, including the ability to create and destroy infrastructure. It is therefore recommended to grant the lambdas only rights to resources it needs access to, such as read and write permissions for an S3 bucket. This can be modified in `infra/aws/lambda_shared.tf` in the resource `resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach"`.
+This template requires further security hardening when deployed in critical production applications. Specifically the lambdas are given the role `arn:aws:iam::aws:policy/AdministratorAccess"` and this will grant the lambdas access to all resources on the AWS account, including the ability to create and destroy infrastructure. It is therefore recommended to grant the lambdas only rights to resources it needs access to, such as read and write permissions for an S3 bucket. This can be modified in `infra/aws/lambda_shared.tf` in the resource `resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach"`.
 
 Note that in this templates all lambdas for the API share the same permissions. This is by design to simply setup and management of the infrastructure in the understanding that the API forms one integrated element of a system. If there are concerns about access to resourced being shared by multiple lambdas, another API can be created.

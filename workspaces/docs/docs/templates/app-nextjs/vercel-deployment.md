@@ -1,6 +1,6 @@
 ### Vercel Deployment
 
-The Goldstack Next.js modules can easily be deployed to Vercel.
+The Goldstack Next.js template can easily be deployed to Vercel.
 
 #### 1. Sign Up to Vercel
 
