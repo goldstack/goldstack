@@ -1,0 +1,4 @@
+undecided:
+  - root
+  - "@goldstack/goldstack-home"
+  - "@goldstack/serverless-api"
