@@ -9,6 +9,54 @@
       "internal": true,
       "statusCode": 308,
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    },
+    {
+      "source": "/docs/modules/app-nextjs-bootstrap",
+      "destination": "/docs/templates/app-nextjs-bootstrap",
+      "statusCode": 308,
+      "regex": "^/docs/modules/app-nextjs-bootstrap$"
+    },
+    {
+      "source": "/docs/modules/lambda-api",
+      "destination": "/docs/templates/serverless-api",
+      "statusCode": 308,
+      "regex": "^/docs/modules/lambda-api$"
+    },
+    {
+      "source": "/docs/modules/app-nextjs",
+      "destination": "/docs/templates/app-nextjs",
+      "statusCode": 308,
+      "regex": "^/docs/modules/app-nextjs$"
+    },
+    {
+      "source": "/docs/modules/lambda-express",
+      "destination": "/docs/templates/lambda-express",
+      "statusCode": 308,
+      "regex": "^/docs/modules/lambda-express$"
+    },
+    {
+      "source": "/docs/modules/email-send",
+      "destination": "/docs/templates/email-send",
+      "statusCode": 308,
+      "regex": "^/docs/modules/email-send$"
+    },
+    {
+      "source": "/docs/modules/static-website-aws",
+      "destination": "/docs/templates/static-website-aws",
+      "statusCode": 308,
+      "regex": "^/docs/modules/static-website-aws$"
+    },
+    {
+      "source": "/docs/modules/s3",
+      "destination": "/docs/templates/s3",
+      "statusCode": 308,
+      "regex": "^/docs/modules/s3$"
+    },
+    {
+      "source": "/docs/modules/lambda-go-gin",
+      "destination": "/docs/templates/lambda-go-gin",
+      "statusCode": 308,
+      "regex": "^/docs/modules/lambda-go-gin$"
     }
   ],
   "headers": [],
@@ -46,10 +94,6 @@
       "regex": "^\\/docs\\/goldstack\\/security-hardening$"
     },
     {
-      "page": "/docs/modules",
-      "regex": "^\\/docs\\/modules$"
-    },
-    {
       "page": "/docs/modules/app-nextjs-bootstrap",
       "regex": "^\\/docs\\/modules\\/app-nextjs-bootstrap$"
     },
@@ -82,6 +126,42 @@
       "regex": "^\\/docs\\/modules\\/static-website-aws$"
     },
     {
+      "page": "/docs/templates",
+      "regex": "^\\/docs\\/templates$"
+    },
+    {
+      "page": "/docs/templates/app-nextjs-bootstrap",
+      "regex": "^\\/docs\\/templates\\/app-nextjs-bootstrap$"
+    },
+    {
+      "page": "/docs/templates/app-nextjs",
+      "regex": "^\\/docs\\/templates\\/app-nextjs$"
+    },
+    {
+      "page": "/docs/templates/email-send",
+      "regex": "^\\/docs\\/templates\\/email-send$"
+    },
+    {
+      "page": "/docs/templates/lambda-express",
+      "regex": "^\\/docs\\/templates\\/lambda-express$"
+    },
+    {
+      "page": "/docs/templates/lambda-go-gin",
+      "regex": "^\\/docs\\/templates\\/lambda-go-gin$"
+    },
+    {
+      "page": "/docs/templates/s3",
+      "regex": "^\\/docs\\/templates\\/s3$"
+    },
+    {
+      "page": "/docs/templates/serverless-api",
+      "regex": "^\\/docs\\/templates\\/serverless-api$"
+    },
+    {
+      "page": "/docs/templates/static-website-aws",
+      "regex": "^\\/docs\\/templates\\/static-website-aws$"
+    },
+    {
       "page": "/index",
       "regex": "^\\/index$"
     },
@@ -100,8 +180,8 @@
       "routeKeys": {
         "slug": "slug"
       },
-      "dataRouteRegex": "^/_next/data/hAiJdOYM6ruq11aXxZHoB/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/hAiJdOYM6ruq11aXxZHoB/docs/(?<slug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/_wE7uogpUTOkyY_1_ptAE/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/_wE7uogpUTOkyY_1_ptAE/docs/(?<slug>.+?)\\.json$"
     }
   ],
   "rewrites": []

@@ -19,15 +19,6 @@ const nextConfig = {
   images: {
     disableStaticImages: true,
   },
-  async redirects() {
-    return [
-      {
-        source: '/templates/lambda-api',
-        destination: '/templates/serverless-api',
-        permanent: true,
-      },
-    ];
-  },
 };
 
 const config = withPlugins(

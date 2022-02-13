@@ -1,0 +1,1 @@
+The S3 template provides a simple means for an application to store and access files on [AWS S3](https://aws.amazon.com/s3/). This template is set up for deploying an S3 bucket using Terraform and provides a simple TypeScript API to work with this bucket.

@@ -1,0 +1,1 @@
+This template provides a [Next.js](https://nextjs.org/) application set up to use Bootstrap styling that is deployed to AWS using the [CloudFront CDN](https://aws.amazon.com/cloudfront/) and [Lambda@Edge](https://aws.amazon.com/lambda/edge/).

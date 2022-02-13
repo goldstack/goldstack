@@ -13,7 +13,7 @@ Goldstack templates are based on the following design principles:
 
 ### Only the best tech
 
-We aim to provide starter templates for the best frameworks currently on the market. All modules on Goldstack are based on frameworks and solutions with proven track records for productivity and stability.
+We aim to provide starter templates for the best frameworks currently on the market. All templates on Goldstack are based on frameworks and solutions with proven track records for productivity and stability.
 
 ### Professional
 
@@ -44,8 +44,8 @@ We all know that there is usually a trade off in platforms that help us get some
 Modularity is one of the most important principles in software design. Unfortunately it is often difficult in the JavaScript ecosystem to develop truly modular applications. Many projects have started to adopt Lerna for this purpose, but Lerna comes with its own problems, especially for larger projects.
 
 - Utilizing Yarn 2 for efficient workspace management
-- Providing TypeScript APIs for connecting modules; for instance a backend module can simply import an S3 module and use TypeScript methods to establish a connection to the bucket
+- Providing TypeScript APIs for connecting packages; for instance a backend package can simply import an S3 package and use TypeScript methods to establish a connection to the bucket
 
 ### Built to be Tested
 
-Automated testing is a key driver for software quality but, while modern frameworks make it easy to write unit tests for individual components, it is often difficult to establish end-to-end tests that cover the entire stack of an application. Goldstack modules are optimized to allow writing tests that cover all modules of an application. For instance, it is possible to write a Jest test that uses React Testing Library to walk through the user interface while interacting with an in-memory API server (rather than having to mock calls to the backend).
+Automated testing is a key driver for software quality but, while modern frameworks make it easy to write unit tests for individual components, it is often difficult to establish end-to-end tests that cover the entire stack of an application. Goldstack templates are optimized to allow writing tests that cover all packages of an application. For instance, it is possible to write a Jest test that uses React Testing Library to walk through the user interface while interacting with an in-memory API server (rather than having to mock calls to the backend).

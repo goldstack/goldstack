@@ -5,7 +5,7 @@ title: How Does It Work
 
 Generating new starter projects with Goldstack is simple and quick.
 
-### Step 1: Select the modules you need
+### Step 1: Select the templates you need
 
 Rather than providing a library of projects, Goldstack provides a _library of module templates_ that can be used to compose projects. This ensures that you can start with a project that includes exactly the features you need.
 

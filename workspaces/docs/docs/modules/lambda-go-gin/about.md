@@ -1,1 +1,0 @@
-The Lambda Go Gin module allows developing a lambda using [Go](https://golang.org) and the [Gin](https://github.com/gin-gonic/gin) web server framework. This module will also set up an API Gateway to forward requests to the lambda.

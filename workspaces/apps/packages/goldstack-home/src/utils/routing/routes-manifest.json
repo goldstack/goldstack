@@ -66,6 +66,10 @@
       "regex": "^\\/templates\\/nextjs$"
     },
     {
+      "page": "/templates/serverless-api",
+      "regex": "^\\/templates\\/serverless-api$"
+    },
+    {
       "page": "/terms-and-conditions",
       "regex": "^\\/terms-and-conditions$"
     },
@@ -112,8 +116,8 @@
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/caB_hRAncDgYV2us8VH7F/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/caB_hRAncDgYV2us8VH7F/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/KwFhpyhErQQIBrqxCFF9M/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/KwFhpyhErQQIBrqxCFF9M/templates/(?<template>[^/]+?)\\.json$"
     }
   ],
   "rewrites": []
