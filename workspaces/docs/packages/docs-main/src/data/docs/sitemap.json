@@ -45,7 +45,7 @@
           },
           {
             "title": "Serverless API",
-            "path": "templates/lambda-api",
+            "path": "templates/serverless-api",
             "children": []
           },
           {

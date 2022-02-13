@@ -10,7 +10,18 @@ import cheerio from 'cheerio';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: paths
+    paths: [
+      ...paths,
+      // temporary workaround for redirects
+      'modules/app-nextjs-bootstrap',
+      'modules/lambda-api',
+      'modules/app-nextjs',
+      'modules/lambda-express',
+      'modules/email-send',
+      'modules/static-website-aws',
+      'modules/s3',
+      'modules/lambda-go-gin',
+    ]
       .filter((el) => el !== '/')
       .map((path) => ({
         params: {
@@ -21,13 +32,57 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
+const redirects = [
+  {
+    source: 'modules/app-nextjs-bootstrap',
+    destination: 'templates/app-nextjs-bootstrap',
+    permanent: true,
+  },
+  {
+    source: 'modules/lambda-api',
+    destination: 'templates/serverless-api',
+    permanent: true,
+  },
+  {
+    source: 'modules/app-nextjs',
+    destination: 'templates/app-nextjs',
+    permanent: true,
+  },
+  {
+    source: 'modules/lambda-express',
+    destination: 'templates/lambda-express',
+    permanent: true,
+  },
+  {
+    source: 'modules/email-send',
+    destination: 'templates/email-send',
+    permanent: true,
+  },
+  {
+    source: 'modules/static-website-aws',
+    destination: 'templates/static-website-aws',
+    permanent: true,
+  },
+  {
+    source: 'modules/s3',
+    destination: 'templates/s3',
+    permanent: true,
+  },
+  {
+    source: 'modules/lambda-go-gin',
+    destination: 'templates/lambda-go-gin',
+    permanent: true,
+  },
+];
+
 export const getStaticProps: GetStaticProps = async (context) => {
   const query = context.params || {};
 
-  const path = query.slug ? (query.slug as string[]).join('/') : '/';
+  let path = query.slug ? (query.slug as string[]).join('/') : '/';
 
-  // const { path } = context.params.query;
-  // console.log(path);
+  redirects.forEach((redirect) => {
+    path = path.replace(redirect.source, redirect.destination);
+  });
   let pageData: any;
   let toc: Heading[];
 

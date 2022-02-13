@@ -8,7 +8,7 @@
   "goldstack/security-hardening",
   "templates",
   "templates/app-nextjs-bootstrap",
-  "templates/lambda-api",
+  "templates/serverless-api",
   "templates/app-nextjs",
   "templates/lambda-express",
   "templates/email-send",

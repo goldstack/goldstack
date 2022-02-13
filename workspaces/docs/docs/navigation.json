@@ -17,7 +17,7 @@
       "directory": "templates/",
       "children": [
         "app-nextjs-bootstrap/index.md",
-        "lambda-api/index.md",
+        "serverless-api/index.md",
         "app-nextjs/index.md",
         "lambda-express/index.md",
         "email-send/index.md",

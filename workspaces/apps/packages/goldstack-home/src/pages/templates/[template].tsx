@@ -32,7 +32,8 @@ const Template = (props: ProjectTemplateProps): JSX.Element => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: allTemplates().map((t) => {
+    // This is just a temporary solution, see https://github.com/goldstack/goldstack/issues/87
+    paths: [...allTemplates(), { id: 'lambda-api' }].map((t) => {
       return {
         params: { template: t.id },
       };
@@ -46,7 +47,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     throw new Error('Cannot render template without path.');
   }
 
-  const templateId = context.params.template;
+  let templateId = context.params.template;
+
+  // This is just a temporary solution, see https://github.com/goldstack/goldstack/issues/87
+  if (templateId === 'lambda-api') {
+    templateId = 'serverless-api';
+  }
 
   const templates = allTemplates();
   const template: ProjectTemplateProps | undefined = templates.find(
