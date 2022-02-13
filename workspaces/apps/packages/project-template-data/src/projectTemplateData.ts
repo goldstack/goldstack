@@ -9,7 +9,7 @@ export type {
   TemplateIcons,
   TemplateFeatureImage,
   ShortTemplateFeature,
-  ModuleProps,
+  PackageProps,
 } from './projectTemplateTypes';
 
 import { getNextJsTemplateData } from './templates/nextjsTemplateData';
@@ -17,7 +17,7 @@ import { getNextjsBootstrapTemplateData } from './templates/nextjsBootstrapTempl
 import { getExpressTemplateData } from './templates/expressTemplateData';
 import { getGoGinTemplateData } from './templates/goGinTemplateData';
 import { getEmailSentTemplateData } from './templates/emailSentTemplateData';
-import { getLambdaApiTemplate } from './templates/lambdaApiTemplateData';
+import { getServerlessApiTemplate } from './templates/lambdaApiTemplateData';
 
 export { getNextJsTemplateData };
 export { getExpressTemplateData };
@@ -27,7 +27,7 @@ export { getGoGinTemplateData };
 export const allTemplates = (): ProjectTemplateProps[] => {
   const templates = [
     getNextjsBootstrapTemplateData(),
-    getLambdaApiTemplate(),
+    getServerlessApiTemplate(),
     getExpressTemplateData(),
     getNextJsTemplateData(),
     getGoGinTemplateData(),

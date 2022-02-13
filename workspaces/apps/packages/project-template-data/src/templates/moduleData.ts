@@ -1,37 +1,37 @@
-import { ModuleProps } from './../projectTemplateTypes';
+import { PackageProps } from './../projectTemplateTypes';
 
-const NextJsBootstrap: ModuleProps = {
+const NextJsBootstrap: PackageProps = {
   title: 'Next.js + Bootstrap',
   link:
     'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/app-nextjs-bootstrap#readme',
 };
 
-const NextJs: ModuleProps = {
+const NextJs: PackageProps = {
   title: 'Next.js',
   link:
     'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/app-nextjs#readme',
 };
 
-const Express: ModuleProps = {
+const Express: PackageProps = {
   title: 'Lambda Express.js',
   link:
     'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/lambda-express#readme',
 };
 
-const GoGin: ModuleProps = {
+const GoGin: PackageProps = {
   title: 'Lambda Go Gin',
   link:
     'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/lambda-express#readme',
 };
 
-const EmailSend: ModuleProps = {
+const EmailSend: PackageProps = {
   title: 'SES Email Send',
   link:
     'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/email-send#readme',
 };
-const LambdaAPI: ModuleProps = {
+const LambdaAPI: PackageProps = {
   title: 'Lambda API Gateway',
   link:
-    'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/lambda-api#readme',
+    'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/serverless-api#readme',
 };
 export { NextJsBootstrap, NextJs, Express, GoGin, EmailSend, LambdaAPI };

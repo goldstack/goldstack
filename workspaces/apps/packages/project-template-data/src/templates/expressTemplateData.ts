@@ -7,7 +7,8 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
     id: 'express-lambda',
     title: 'Express.js Lambda',
     images: ['nodejs', 'lambda', 'typescript'],
-    modules: [Express],
+    packages: [Express],
+    isComposite: false,
     description: 'Rapidly deploy an Express.js server to AWS Lambda.',
     longDescription:
       'This project template contains an Express.js server ready to be packaged and deployed as an AWS Lambda.\n',

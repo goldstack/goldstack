@@ -32,7 +32,7 @@ interface CheckboxProps {
   className?: string;
   element: string;
   icon: any;
-  docsLink: string;
+  templateLink?: string;
   isAlpha?: boolean;
   disabled: boolean;
   checked?: boolean;
@@ -66,15 +66,17 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
               </>
             )}
 
-            <a
-              href={props.docsLink}
-              className="font-size-1"
-              style={{ marginLeft: '0.5em' }}
-              target="_blank"
-              rel="noreferrer"
-            >
-              docs
-            </a>
+            {props.templateLink && (
+              <a
+                href={props.templateLink}
+                className="font-size-1"
+                style={{ marginLeft: '0.5em' }}
+                target="_blank"
+                rel="noreferrer"
+              >
+                more information
+              </a>
+            )}
           </label>
         </div>
       </div>
@@ -200,7 +202,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
     <>
       <Container className="space-2">
         <div className="w-md-80 w-lg-40 text-center mx-md-auto mb-5 mb-md-9">
-          <h2>Select Modules for Project</h2>
+          <h2>Templates included in Project</h2>
         </div>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
@@ -215,7 +217,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     element="nextjs"
                     icon={NextjsIcon}
                     disabled={building}
-                    docsLink={docsRoot + '/modules/app-nextjs'}
+                    templateLink={'/templates/nextjs'}
                     checked={elements.indexOf('nextjs') !== -1}
                     onChange={checkboxChange}
                   ></Checkbox>
@@ -224,7 +226,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     icon={BootstrapIcon}
                     element="bootstrap"
                     disabled={building}
-                    docsLink={docsRoot + '/modules/app-nextjs-bootstrap'}
+                    templateLink={'/templates/nextjs-bootstrap'}
                     checked={elements.indexOf('bootstrap') !== -1}
                     onChange={checkboxChange}
                   ></Checkbox>
@@ -232,7 +234,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     title="Static Website"
                     element="static-website"
                     icon={CloudFrontIcon}
-                    docsLink={docsRoot + '/modules/static-website-aws'}
+                    templateLink={undefined}
                     disabled={building}
                     checked={elements.indexOf('static-website') !== -1}
                     onChange={checkboxChange}
@@ -243,11 +245,11 @@ const ModuleSelection = (props: { elements: string[] }) => {
                   </div>
                   <Checkbox
                     title="Serverless API"
-                    element="lambda-api"
+                    element="serverless-api"
                     disabled={building}
                     icon={GatewayIcon}
-                    docsLink={docsRoot + '/modules/lambda-api'}
-                    checked={elements.indexOf('lambda-api') !== -1}
+                    templateLink={'/templates/serverless-api'}
+                    checked={elements.indexOf('serverless-api') !== -1}
                     onChange={checkboxChange}
                   ></Checkbox>
                   <Checkbox
@@ -255,7 +257,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     element="express"
                     disabled={building}
                     icon={ExpressIcon}
-                    docsLink={docsRoot + '/modules/lambda-express'}
+                    templateLink={'/templates/express-lambda'}
                     checked={elements.indexOf('express') !== -1}
                     onChange={checkboxChange}
                   ></Checkbox>
@@ -265,7 +267,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     disabled={building}
                     icon="https://cdn.goldstack.party/img/202104/go_gin.png"
                     isAlpha={true}
-                    docsLink={docsRoot + '/modules/lambda-go-gin'}
+                    templateLink={'/templates/go-gin'}
                     checked={elements.indexOf('gin') !== -1}
                     onChange={checkboxChange}
                   ></Checkbox>
@@ -278,7 +280,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     disabled={building}
                     icon={S3Icon}
                     checked={elements.indexOf('s3') !== -1}
-                    docsLink={docsRoot + '/modules/s3'}
+                    templateLink={docsRoot + '/modules/s3'}
                     onChange={checkboxChange}
                   ></Checkbox>
                   <Checkbox
@@ -287,7 +289,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     icon={SESIcon}
                     disabled={building}
                     checked={elements.indexOf('email-send') !== -1}
-                    docsLink={docsRoot + '/modules/email-send'}
+                    templateLink={docsRoot + '/modules/email-send'}
                     onChange={checkboxChange}
                   ></Checkbox>
                 </div>

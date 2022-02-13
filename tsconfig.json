@@ -116,10 +116,6 @@
       "name": "@goldstack/email-send"
     },
     {
-      "path": "workspaces/templates/packages/lambda-api",
-      "name": "@goldstack/lambda-api"
-    },
-    {
       "path": "workspaces/templates/packages/lambda-express",
       "name": "@goldstack/lambda-express"
     },
@@ -146,6 +142,10 @@
     {
       "path": "workspaces/templates/packages/server-express",
       "name": "@goldstack/server-express"
+    },
+    {
+      "path": "workspaces/templates/packages/serverless-api",
+      "name": "@goldstack/serverless-api"
     },
     {
       "path": "workspaces/templates/packages/static-website-aws",

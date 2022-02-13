@@ -65,7 +65,7 @@ export interface TextSectionProps {
   action?: LandingAction;
 }
 
-export interface ModuleProps {
+export interface PackageProps {
   title: string;
   link: string;
 }
@@ -73,8 +73,12 @@ export interface ModuleProps {
 export interface ProjectTemplateProps {
   title: string;
   id: string;
+  /**
+   * Whether this template is composed of multiple packages
+   */
+  isComposite: boolean;
   description: string;
-  modules: ModuleProps[];
+  packages: PackageProps[];
   images: TemplateFeatureImage[];
   longDescription: string;
   tags: string[];

@@ -7,7 +7,7 @@ import styles from './ProjectTemplateSidebar.module.css';
 
 import {
   TemplateFeatureImage,
-  ModuleProps,
+  PackageProps,
 } from '@goldstack/project-template-data';
 
 import { resolveImage } from './imageUtil';
@@ -15,7 +15,8 @@ import { resolveImage } from './imageUtil';
 interface ProjectTemplateSidebarProps {
   tags: string[];
   image: TemplateFeatureImage;
-  modules: ModuleProps[];
+  packages: PackageProps[];
+  isComposite: boolean;
   actionLink: string;
 }
 
@@ -40,29 +41,32 @@ const ProjectTemplateSidebar = (
               className="btn btn-sm btn-block btn-primary transition-3d-hover"
               href={props.actionLink}
             >
-              ✔ Create Project
+              ✔ Add to Project
             </a>
           </div>
 
-          <div className="mb-md-7 mt-10">
-            <h1 className="h4">Modules</h1>
-            <ul className="nav flex-column">
-              {props.modules.map((module, idx) => (
-                <li className="nav-item" key={idx}>
-                  <a
-                    className={`nav-link active  ${styles['menulinks-link']}`}
-                    href={module.link}
-                  >
-                    <img
-                      className={`fas fa-home nav-icon ${styles['menulinks-link-nav-icon']}`}
-                      src={GitHubIcon as any}
-                    ></img>
-                    {module.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {props.isComposite && (
+            <div className="mb-md-7 mt-10">
+              <h1 className="h4">Packages</h1>
+              <ul className="nav flex-column">
+                {props.packages.map((packageData, idx) => (
+                  <li className="nav-item" key={idx}>
+                    <a
+                      className={`nav-link active  ${styles['menulinks-link']}`}
+                      href={packageData.link}
+                    >
+                      <img
+                        className={`fas fa-home nav-icon ${styles['menulinks-link-nav-icon']}`}
+                        src={GitHubIcon as any}
+                      ></img>
+                      {packageData.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           <div className="mb-md-7">
             <h1 className="h4">Tags</h1>
             {props.tags.map((tag, idx) => (

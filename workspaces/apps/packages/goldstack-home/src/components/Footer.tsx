@@ -56,51 +56,12 @@ const Footer = (): JSX.Element => {
                 </li>
               </ul>
             </div>
-
-            <div className="col-md-6 col-lg-5" hidden>
-              <form className="js-validate mb-2">
-                <h5 className="text-white font-weight-bold mb-3">
-                  Stay up to date
-                </h5>
-                <div className="form-row">
-                  <div className="col">
-                    <div className="js-form-message">
-                      <label className="sr-only" htmlFor="subscribeSrEmail">
-                        Email address
-                      </label>
-                      <div className="input-group">
-                        <input
-                          type="email"
-                          className="form-control"
-                          name="email"
-                          id="subscribeSrEmail"
-                          placeholder="Email address"
-                          aria-label="Email address"
-                          required
-                          data-msg="Please enter a valid email address."
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-auto">
-                    <button type="submit" className="btn btn-primary">
-                      <i className="fas fa-arrow-right"></i>
-                    </button>
-                  </div>
-                </div>
-              </form>
-
-              <p className="text-white-70 small mb-0">
-                New templates or big discounts. Never spam.
-              </p>
-            </div>
           </div>
 
           <div className="row align-items-md-center">
             <div className="col-md-6 mb-4 mb-md-0">
               <p className="small text-white-70 mb-0">
-                © 2020-2021 Pureleap Pty. Ltd. All rights reserved.
+                © 2020-2022 Pureleap Pty. Ltd. All rights reserved.
               </p>
             </div>
 

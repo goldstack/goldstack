@@ -14,7 +14,7 @@
     "deploy": "yarn build && yarn template deploy",
     "deploy-ts": "yarn build && yarn template-ts deploy",
     "infra": "template infra",
-    "seed-modules": "GOLDSTACK_DEPLOYMENT=local ts-node ./src/utils/seedRepo.ts",
+    "seed-templates": "GOLDSTACK_DEPLOYMENT=local ts-node ./src/utils/seedRepo.ts",
     "start": "yarn node dist/src/local.js",
     "template-ts": "ts-node scripts/template.ts",
     "test": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --watch --config=jest.config.js",

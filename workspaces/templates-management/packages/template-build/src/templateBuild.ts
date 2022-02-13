@@ -36,6 +36,7 @@ export const build = async (
     throw new Error(`Cannot find builder for template ${templateName}`);
   }
 
+  console.log('generating to', destinationDirectory);
   await builder.run({
     monorepoRoot,
     destinationDirectory,
