@@ -23,6 +23,50 @@ const nextConfig = {
   images: {
     disableStaticImages: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/docs/modules/app-nextjs-bootstrap',
+        destination: '/docs/templates/app-nextjs-bootstrap',
+        permanent: true,
+      },
+      {
+        source: '/docs/modules/lambda-api',
+        destination: '/docs/templates/serverless-api',
+        permanent: true,
+      },
+      {
+        source: '/docs/modules/app-nextjs',
+        destination: '/docs/templates/app-nextjs',
+        permanent: true,
+      },
+      {
+        source: '/docs/modules/lambda-express',
+        destination: '/docs/templates/lambda-express',
+        permanent: true,
+      },
+      {
+        source: '/docs/modules/email-send',
+        destination: '/docs/templates/email-send',
+        permanent: true,
+      },
+      {
+        source: '/docs/modules/static-website-aws',
+        destination: '/docs/templates/static-website-aws',
+        permanent: true,
+      },
+      {
+        source: '/docs/modules/s3',
+        destination: '/docs/templates/s3',
+        permanent: true,
+      },
+      {
+        source: '/docs/modules/lambda-go-gin',
+        destination: '/docs/templates/lambda-go-gin',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const config = withPlugins(

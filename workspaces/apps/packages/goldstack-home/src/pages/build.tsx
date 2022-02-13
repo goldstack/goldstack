@@ -198,11 +198,12 @@ const ModuleSelection = (props: { elements: string[] }) => {
   };
 
   const docsRoot = process.env.NEXT_PUBLIC_GOLDSTACK_DOCS;
+
   return (
     <>
       <Container className="space-2">
-        <div className="w-md-80 w-lg-40 text-center mx-md-auto mb-5 mb-md-9">
-          <h2>Templates included in Project</h2>
+        <div className="w-md-80 w-lg-40 mx-md-auto mb-5 mb-md-9">
+          <h4>Select templates to include in project:</h4>
         </div>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>

@@ -14,7 +14,7 @@
     },
     {
       "home": "index.md",
-      "directory": "modules/",
+      "directory": "templates/",
       "children": [
         "app-nextjs-bootstrap/index.md",
         "lambda-api/index.md",

@@ -35,47 +35,47 @@
         ]
       },
       {
-        "title": "Modules",
-        "path": "modules",
+        "title": "Templates",
+        "path": "templates",
         "children": [
           {
             "title": "Next.js Bootstrap",
-            "path": "modules/app-nextjs-bootstrap",
+            "path": "templates/app-nextjs-bootstrap",
             "children": []
           },
           {
             "title": "Serverless API",
-            "path": "modules/lambda-api",
+            "path": "templates/lambda-api",
             "children": []
           },
           {
             "title": "Next.js",
-            "path": "modules/app-nextjs",
+            "path": "templates/app-nextjs",
             "children": []
           },
           {
             "title": "Lambda Express",
-            "path": "modules/lambda-express",
+            "path": "templates/lambda-express",
             "children": []
           },
           {
             "title": "Email Send",
-            "path": "modules/email-send",
+            "path": "templates/email-send",
             "children": []
           },
           {
             "title": "Static Website AWS",
-            "path": "modules/static-website-aws",
+            "path": "templates/static-website-aws",
             "children": []
           },
           {
             "title": "S3",
-            "path": "modules/s3",
+            "path": "templates/s3",
             "children": []
           },
           {
             "title": "Lambda Go Gin",
-            "path": "modules/lambda-go-gin",
+            "path": "templates/lambda-go-gin",
             "children": []
           }
         ]
