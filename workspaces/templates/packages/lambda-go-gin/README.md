@@ -6,18 +6,18 @@ The Lambda Go Gin module allows developing a lambda using [Go](https://golang.or
 
 ## Features
 
-*   Develop a backend server using [Go](https://golang.org) and [Gin](https://github.com/gin-gonic/gin)
-*   Serverless infrastructure defined in Terraform. Including API Gateway configuration
-*   Fully automated deployment supported
+- Develop a backend server using [Go](https://golang.org) and [Gin](https://github.com/gin-gonic/gin)
+- Serverless infrastructure defined in Terraform. Including API Gateway configuration
+- Fully automated deployment supported
 
 ## Configure
 
 The following key properties need to be configured for this module:
 
-*   **Lambda Name**: The [name](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-FunctionName) to be used for this lambda. Lambda names need to be unique for the AWS Region. It is not possible to have two lambdas with the same name in the same region.
-*   **API Domain**: The domain where the API should be deployed to. For instance, to be able to call the API endpoint `https://api.mydomain.com/` the API domain `api.mydomain.com` needs to be configured.
-*   **Hosted Zone Domain**: A Route 53 hosted zone that will allow adding the *API Domain* as a record. For instance, in order to configure the API domain `api.mydomain.com`, the hosted zones `api.mydomain.com` or `mydomain.com` would be valid. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
-*   **CORS Header**: An optional CORS header to enable a UI that is hosted on a different domain to access this API. For instance, for a UI that is deployed to the domain `ui.mydomain.com` the CORS header `https://ui.mydomain.com` should be supplied. To learn more about CORS, see the [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) in the MDN docs.
+- **Lambda Name**: The [name](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-FunctionName) to be used for this lambda. Lambda names need to be unique for the AWS Region. It is not possible to have two lambdas with the same name in the same region.
+- **API Domain**: The domain where the API should be deployed to. For instance, to be able to call the API endpoint `https://api.mydomain.com/` the API domain `api.mydomain.com` needs to be configured.
+- **Hosted Zone Domain**: A Route 53 hosted zone that will allow adding the _API Domain_ as a record. For instance, in order to configure the API domain `api.mydomain.com`, the hosted zones `api.mydomain.com` or `mydomain.com` would be valid. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
+- **CORS Header**: An optional CORS header to enable a UI that is hosted on a different domain to access this API. For instance, for a UI that is deployed to the domain `ui.mydomain.com` the CORS header `https://ui.mydomain.com` should be supplied. To learn more about CORS, see the [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) in the MDN docs.
 
 ## Getting Started
 
@@ -117,11 +117,11 @@ The configuration tool will define one deployment. This will be either `dev` or 
 
 Infrastructure commands for this module can be run using `yarn`. There are four commands in total:
 
-*   `yarn infra up`: For standing up infrastructure.
-*   `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
-*   `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
-*   `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
-*   `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+- `yarn infra up`: For standing up infrastructure.
+- `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
+- `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
+- `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
+- `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
 
 For each command, the deployment they should be applied to must be specified.
 
@@ -155,7 +155,7 @@ This works well for deploying infrastructure from your local development environ
 
 ## Deployment
 
-This module can be packaged up and deployed to the deployments specified in `goldstack.json`. Note that deployment will only work *after* the infrastructure for the respective deployment has been stood up. To deploy your module, run the following script:
+This module can be packaged up and deployed to the deployments specified in `goldstack.json`. Note that deployment will only work _after_ the infrastructure for the respective deployment has been stood up. To deploy your module, run the following script:
 
 ```bash
 yarn deploy [deploymentName]

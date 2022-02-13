@@ -29,7 +29,7 @@ Goldstack templates are based on the following design principles:
 
 ### Only the best tech
 
-We aim to provide starter templates for the best frameworks currently on the market. All modules on Goldstack are based on frameworks and solutions with proven track records for productivity and stability.
+We aim to provide starter templates for the best frameworks currently on the market. All templates on Goldstack are based on frameworks and solutions with proven track records for productivity and stability.
 
 ### Professional
 
@@ -60,11 +60,11 @@ We all know that there is usually a trade off in platforms that help us get some
 Modularity is one of the most important principles in software design. Unfortunately it is often difficult in the JavaScript ecosystem to develop truly modular applications. Many projects have started to adopt Lerna for this purpose, but Lerna comes with its own problems, especially for larger projects.
 
 *   Utilizing Yarn 2 for efficient workspace management
-*   Providing TypeScript APIs for connecting modules; for instance a backend module can simply import an S3 module and use TypeScript methods to establish a connection to the bucket
+*   Providing TypeScript APIs for connecting packages; for instance a backend package can simply import an S3 package and use TypeScript methods to establish a connection to the bucket
 
 ### Built to be Tested
 
-Automated testing is a key driver for software quality but, while modern frameworks make it easy to write unit tests for individual components, it is often difficult to establish end-to-end tests that cover the entire stack of an application. Goldstack modules are optimized to allow writing tests that cover all modules of an application. For instance, it is possible to write a Jest test that uses React Testing Library to walk through the user interface while interacting with an in-memory API server (rather than having to mock calls to the backend).
+Automated testing is a key driver for software quality but, while modern frameworks make it easy to write unit tests for individual components, it is often difficult to establish end-to-end tests that cover the entire stack of an application. Goldstack templates are optimized to allow writing tests that cover all packages of an application. For instance, it is possible to write a Jest test that uses React Testing Library to walk through the user interface while interacting with an in-memory API server (rather than having to mock calls to the backend).
 
 # How Does It Work
 
@@ -78,7 +78,7 @@ Goldstack templates are based on the following design principles:
 
 ### Only the best tech
 
-We aim to provide starter templates for the best frameworks currently on the market. All modules on Goldstack are based on frameworks and solutions with proven track records for productivity and stability.
+We aim to provide starter templates for the best frameworks currently on the market. All templates on Goldstack are based on frameworks and solutions with proven track records for productivity and stability.
 
 ### Professional
 
@@ -109,11 +109,11 @@ We all know that there is usually a trade off in platforms that help us get some
 Modularity is one of the most important principles in software design. Unfortunately it is often difficult in the JavaScript ecosystem to develop truly modular applications. Many projects have started to adopt Lerna for this purpose, but Lerna comes with its own problems, especially for larger projects.
 
 *   Utilizing Yarn 2 for efficient workspace management
-*   Providing TypeScript APIs for connecting modules; for instance a backend module can simply import an S3 module and use TypeScript methods to establish a connection to the bucket
+*   Providing TypeScript APIs for connecting packages; for instance a backend package can simply import an S3 package and use TypeScript methods to establish a connection to the bucket
 
 ### Built to be Tested
 
-Automated testing is a key driver for software quality but, while modern frameworks make it easy to write unit tests for individual components, it is often difficult to establish end-to-end tests that cover the entire stack of an application. Goldstack modules are optimized to allow writing tests that cover all modules of an application. For instance, it is possible to write a Jest test that uses React Testing Library to walk through the user interface while interacting with an in-memory API server (rather than having to mock calls to the backend).
+Automated testing is a key driver for software quality but, while modern frameworks make it easy to write unit tests for individual components, it is often difficult to establish end-to-end tests that cover the entire stack of an application. Goldstack templates are optimized to allow writing tests that cover all packages of an application. For instance, it is possible to write a Jest test that uses React Testing Library to walk through the user interface while interacting with an in-memory API server (rather than having to mock calls to the backend).
 
 # Configuration
 
@@ -276,7 +276,7 @@ If you want to supply AWS user credentials in your CI/CD systems, these can be s
 
 \[Video: Video Guide]\(https://www.youtube.com/embed/9rug-hhkxSc)
 
-Many modules need to deploy resources to a domain, for instance for a [static website](./../modules/static-website-aws) or for an [API server](./../modules/lambda-express). Goldstack modules can provide the DNS configuration required but you need to specify the [Route 53 hosted zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/AboutHZWorkingWith.html) that the DNS entries should be added to. You can either use an already existing hosted zone or create a new one.
+Many templates need to deploy resources to a domain, for instance for a [static website](./../modules/static-website-aws) or for an [API server](./../modules/lambda-express). Goldstack templates can provide the DNS configuration required but you need to specify the [Route 53 hosted zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/AboutHZWorkingWith.html) that the DNS entries should be added to. You can either use an already existing hosted zone or create a new one.
 
 ### Creating a new hosted zone
 
@@ -296,20 +296,20 @@ The following steps describe how to create a new hosted zone in AWS Route 53.
 
 ![Provide hosted zone details](https://cdn.goldstack.party/img/202010/nameservers.png)
 
-Now you can copy the domain name of your hosted zone and provide this in your module configuration
+Now you can copy the domain name of your hosted zone and provide this in your template configuration
 
-![Domain name to be used for module configuration](https://cdn.goldstack.party/img/202010/domainname.png)
+![Domain name to be used for package configuration](https://cdn.goldstack.party/img/202010/domainname.png)
 
-Note that for the actual domain your module uses, you can specify the domain name of the hosted zone directly, or one of it's subdomains. For instance, if your hosted zone domain is `yourdomain.com` you can configure a website module to be deployed to `yourdomain.com` or `website.yourdomain.com`.
+Note that for the actual domain your package uses, you can specify the domain name of the hosted zone directly, or one of it's subdomains. For instance, if your hosted zone domain is `yourdomain.com` you can configure a website template to be deployed to `yourdomain.com` or `website.yourdomain.com`.
 
-You can use the same hosted zone for multiple modules. Just make sure to use subdomains to avoid conflicts between modules. For instance, if you configure a website to be deployed to `mydomain.com` then deploy your API to `api.mydomain.com`.
+You can use the same hosted zone for multiple modules. Just make sure to use subdomains to avoid conflicts between packages. For instance, if you configure a website to be deployed to `mydomain.com` then deploy your API to `api.mydomain.com`.
 
 ### Using an existing hosted zone
 
-If you already have a hosted zone configured for the domain you would like to use for your module, you simply need to provide the domain of the hosted zone.
+If you already have a hosted zone configured for the domain you would like to use for your template, you simply need to provide the domain of the hosted zone.
 
 *   You can find all hosted zones you have configured in the [Route 53 Console](https://console.aws.amazon.com/route53/v2/hostedzones#)
-*   Copy the value provided under *Domain name* and provide this in your module configuration
+*   Copy the value provided under *Domain name* and provide this in your template configuration
 
 ![Determining domain name from hosted zone list](https://cdn.goldstack.party/img/202010/domainname_list.png)
 
@@ -506,13 +506,13 @@ Note that you can run all of these commands in the context of individual modules
 
 # Security Hardening
 
-Goldstack modules provide a balance between usability and security. If you have heightened security requirements, you can easily configure the modules for more security. Simply follow the documentation below or the documentation provided with your modules.
+Goldstack templates provide a balance between usability and security. If you have heightened security requirements, you can easily configure the templates for more security. Simply follow the documentation below or the documentation provided with your templates.
 
 ### AWS
 
-The biggest trade-off made in all AWS modules is that there are no restrictive policies and permissions configured. Instead, many resources are simply given admin rights to all components of the system. This is similar to how resources would work in vanilla Kubernetes and works well for small applications and for initial greenfield development. We also recommend that within larger organisations, Goldstack projects should be deployed to dedicated AWS accounts (for further reading see [AWS Organisations](https://aws.amazon.com/organizations/)) whenever possible.
+The biggest trade-off made in all AWS templates is that there are no restrictive policies and permissions configured. Instead, many resources are simply given admin rights to all components of the system. This is similar to how resources would work in vanilla Kubernetes and works well for small applications and for initial greenfield development. We also recommend that within larger organisations, Goldstack projects should be deployed to dedicated AWS accounts (for further reading see [AWS Organisations](https://aws.amazon.com/organizations/)) whenever possible.
 
-However, for workloads that are more security sensitive we recommend setting more restrictive policies. This must be done on a per-module basis. Please see the module documentation provided for the modules you have selected for specific instructions (links to relevant module documentation should have been sent to you via email).
+However, for workloads that are more security sensitive we recommend setting more restrictive policies. This must be done on a per-package basis. Please see the template documentation provided for the templates you have selected for specific instructions (links to relevant template documentation should have been sent to you via email).
 
 # Template Documentation
 
