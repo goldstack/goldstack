@@ -1,6 +1,6 @@
 import { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet';
 
-import { mkdir, rmSafe } from '@goldstack/utils-sh';
+import { execAsync, mkdir, rmSafe } from '@goldstack/utils-sh';
 import {
   writePackageConfigs,
   getPackageConfigs,
@@ -19,6 +19,7 @@ import {
 } from '@goldstack/utils-template-test';
 import assert from 'assert';
 import path from 'path';
+import { config } from 'process';
 export * from './types/DeploySet';
 
 export interface BuildSetParams {
@@ -257,6 +258,16 @@ export const buildSet = async (
       console.log('Building project in directory ', projectDir);
       mkdir('-p', projectDir);
 
+      const gitHubToken = process.env.GITHUB_TOKEN;
+      if (project.targetRepo && gitHubToken) {
+        // await execAsync(
+        //   `git remote set-url origin https://${process.env.GITHUB_TOKEN}@github.com/${project.targetRepo}.git`
+        // );
+        await execAsync(
+          `git clone https://${gitHubToken}@github.com/${project.targetRepo}.git ${projectDir}`
+        );
+      }
+
       testResults.push(
         ...(await buildAndTestProject({
           project,
@@ -266,10 +277,19 @@ export const buildSet = async (
           user: params.user,
         }))
       );
+
+      if (project.targetRepo && gitHubToken) {
+        const currentDir = process.cwd();
+        await execAsync(`cd ${projectDir}`);
+        await execAsync('git add .');
+        await execAsync('git commit -m "Update boilerplate"');
+        await execAsync('git push origin master --force');
+        await execAsync(`cd ${currentDir}`);
+      }
     }
     res.testResults = testResults;
     res.testResultsText = renderTestResults(testResults);
-    console.log(res.testResultsText);
+    console.log('Test results', res.testResultsText);
     if (testResults.filter((result) => !result.result).length > 0) {
       console.log('There are test failures. No templates will be deployed.');
       res.testFailed = true;
@@ -288,6 +308,7 @@ export const buildSet = async (
     monorepoRoot,
     templateRepository: params.s3repo,
   });
+
   res.deployed = true;
   return res;
 };

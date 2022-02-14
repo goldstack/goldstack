@@ -14,6 +14,10 @@ export interface DeploySetProjectConfig {
   projectConfiguration: ProjectConfiguration;
   packageConfigurations: DeploySetPackageConfig[];
   rootTests: string[];
+  /*
+   * Repository that deploy set should be cloned into
+   */
+  targetRepo?: string;
 }
 
 export interface DeploySetConfig {

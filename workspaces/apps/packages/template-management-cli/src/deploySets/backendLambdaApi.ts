@@ -25,6 +25,7 @@ export const createBackendLambdaApiBuildSetConfig = async (): Promise<DeploySetC
     projects: [
       {
         projectConfiguration,
+        targetRepo: 'goldstack/nextjs-bootstrap-boilerplate',
         rootTests: ['assert-package-files', 'assert-root-files', 'root-build'],
         packageConfigurations: [
           {
