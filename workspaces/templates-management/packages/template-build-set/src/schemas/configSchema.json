@@ -89,6 +89,9 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "targetRepo": {
+          "type": "string"
         }
       },
       "required": [
