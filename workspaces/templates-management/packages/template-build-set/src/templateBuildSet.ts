@@ -281,6 +281,10 @@ export const buildSet = async (
       if (project.targetRepo && gitHubToken) {
         const currentDir = process.cwd();
         await execAsync(`cd ${projectDir}`);
+        await execAsync('git config --global user.email "public@pureleap.com"');
+        await execAsync(
+          'git config --global user.name "Goldstack Template Build"'
+        );
         await execAsync('git add .');
         await execAsync('git commit -m "Update boilerplate"');
         await execAsync('git push origin master --force');

@@ -29,6 +29,7 @@ export const createNextjsBootstrapBuildSetConfig = async (): Promise<DeploySetCo
       {
         projectConfiguration,
         rootTests: ['assert-package-files', 'assert-root-files', 'root-build'],
+        targetRepo: 'goldstack/nextjs-bootstrap-boilerplate',
         packageConfigurations: [
           {
             packageName: 'app-nextjs-bootstrap-1',
