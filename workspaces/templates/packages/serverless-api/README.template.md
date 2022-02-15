@@ -1,4 +1,4 @@
-# Serverless API Module
+# Serverless API Template
 
 ❤️ Support development by using the [Goldstack Project Builder](https://goldstack.party) ❤️
 

@@ -1,4 +1,4 @@
-# Email Sent Template
+# Static Website AWS Template
 
 ❤️ Support development by using the [Goldstack Project Builder](https://goldstack.party) ❤️
 

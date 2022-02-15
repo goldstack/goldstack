@@ -10,7 +10,11 @@ const ProjectTemplate = (props: ProjectTemplateProps): JSX.Element => {
     <>
       <Head>
         <title>{props.title}</title>
-        <meta property="og:title" content={props.title} key="title" />
+        <meta
+          property="og:title"
+          content={`${props.title} Template`}
+          key="title"
+        />
         <meta name="description" content={props.description} />
         <meta property="og:description" content={props.description} />
       </Head>

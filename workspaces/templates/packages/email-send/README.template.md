@@ -1,4 +1,4 @@
-# Email Sent Module
+# Email Sent Template
 
 ❤️ Support development by using the [Goldstack Project Builder](https://goldstack.party) ❤️
 

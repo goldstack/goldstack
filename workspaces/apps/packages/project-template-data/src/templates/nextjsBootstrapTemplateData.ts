@@ -20,7 +20,8 @@ export const getNextjsBootstrapTemplateData = (): ProjectTemplateProps => {
     images: ['nextjs', 'bootstrap', 'typescript'],
     packages: [NextJsBootstrap],
     isComposite: false,
-    description: 'Deploy a Next.js project with Bootstrap styling.',
+    description:
+      'Ready-to-use, open source template for a Next.js project with Bootstrap styling.',
     longDescription:
       'Configures a Next.js application with Bootstrap.\n' +
       'Scroll down for an overview of the features included in this template.',

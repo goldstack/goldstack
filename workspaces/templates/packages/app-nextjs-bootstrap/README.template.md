@@ -1,4 +1,4 @@
-# Next.js Bootstrap Module
+# Next.js Bootstrap Template
 
 ❤️ Support development by using the [Goldstack Project Builder](https://goldstack.party) ❤️
 
