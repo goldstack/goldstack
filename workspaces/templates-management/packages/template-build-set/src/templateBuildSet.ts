@@ -1,6 +1,6 @@
 import { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet';
 
-import { execAsync, mkdir, rmSafe } from '@goldstack/utils-sh';
+import { cd, execAsync, mkdir, rmSafe } from '@goldstack/utils-sh';
 import {
   writePackageConfigs,
   getPackageConfigs,
@@ -280,7 +280,7 @@ export const buildSet = async (
 
       if (project.targetRepo && gitHubToken) {
         const currentDir = process.cwd();
-        await execAsync(`cd ${projectDir}`);
+        cd(`${projectDir}`);
         await execAsync('pwd');
         await execAsync('git config --global user.email "public@pureleap.com"');
         await execAsync(
@@ -290,7 +290,7 @@ export const buildSet = async (
         await execAsync('ls -la');
         await execAsync('git commit -m "Update boilerplate"');
         await execAsync('git push origin master --force');
-        await execAsync(`cd ${currentDir}`);
+        cd(`${currentDir}`);
       }
     }
     res.testResults = testResults;

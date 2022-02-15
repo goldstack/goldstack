@@ -62,7 +62,7 @@ export const createNoInfraBuildSetConfig = async (): Promise<DeploySetConfig> =>
     projects: [
       {
         projectConfiguration,
-        targetRepo: 'typescript-monorepo-boilerplate',
+        targetRepo: 'goldstack/typescript-monorepo-boilerplate',
         rootTests: ['assert-package-files', 'assert-root-files', 'root-build'],
         packageConfigurations: [
           {
