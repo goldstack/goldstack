@@ -3,7 +3,7 @@ import { write, mkdir } from '@goldstack/utils-sh';
 import assert from 'assert';
 
 describe('AWS User config', () => {
-  it('Should read AWS config from Goldstack config file', async () => {
+  it.skip('Should read AWS config from Goldstack config file', async () => {
     const awsConfig = `{
   "users": [
     {
@@ -48,7 +48,7 @@ describe('AWS User config', () => {
     const credentials = await getAWSUser('default', './invalid');
     assert(credentials.accessKeyId);
   });
-  it.skip('Should read from AWS config in user folder if credentials config provided', async () => {
+  it('Should read from AWS config in cli provider', async () => {
     const testDir = './goldstackLocal/tests/getAWSUser';
 
     const awsConfig = `{

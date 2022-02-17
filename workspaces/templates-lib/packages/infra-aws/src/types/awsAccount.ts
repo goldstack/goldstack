@@ -80,6 +80,10 @@ export type AWSRegion = AWSDeploymentRegion;
 export interface AWSProfileConfig {
   profile: Profile;
   awsDefaultRegion: AWSRegion;
+  /**
+   * Path to the AWS configuration, e.g. `~/.aws/config`.
+   */
+  awsConfigFileName?: string;
 }
 
 /**

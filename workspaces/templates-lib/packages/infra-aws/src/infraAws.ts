@@ -168,7 +168,7 @@ export const getAWSUser = async (
     return ecsCredentials;
   }
 
-  // always prefer gettting credentials from environment variables
+  // always prefer getting credentials from environment variables
   if (process.env.AWS_ACCESS_KEY_ID) {
     assert(process.env.AWS_ACCESS_KEY_ID, 'AWS_ACCESS_KEY_ID not defined.');
     assert(
@@ -205,6 +205,28 @@ export const getAWSUser = async (
   const user = config.users.find((user) => user.name === userName);
   if (!user) {
     throw new Error(`User '${userName}' does not exist in AWS configuration.`);
+  }
+
+  if (user.type === 'profile') {
+    const userConfig = user.config as AWSProfileConfig;
+
+    const credentials = new AWS.SharedIniFileCredentials({
+      profile: userConfig.profile,
+      filename: userConfig.awsConfigFileName,
+    });
+
+    if (!credentials.accessKeyId) {
+      throw new Error(
+        'Cannot load profile ' +
+          userConfig.profile +
+          ' from AWS configuration for user ' +
+          user.name +
+          '. Please perform `aws login` for the profile using the AWS CLI.'
+      );
+    }
+    AWS.config.credentials = credentials;
+    AWS.config.update({ region: userConfig.awsDefaultRegion });
+    return credentials;
   }
 
   if (user.type === 'apiKey') {
@@ -256,27 +278,6 @@ export const getAWSUser = async (
     });
     AWS.config.credentials = credentials;
     AWS.config.update({ region: awsDefaultRegion });
-    return credentials;
-  }
-
-  if (user.type === 'profile') {
-    const userConfig = user.config as AWSProfileConfig;
-
-    const credentials = new AWS.SharedIniFileCredentials({
-      profile: userConfig.profile,
-    });
-
-    if (!credentials.accessKeyId) {
-      throw new Error(
-        'Cannot load profile ' +
-          userConfig.profile +
-          ' from AWS configuration for user ' +
-          user.name +
-          '. Please perform `aws login` for the profile using the AWS CLI.'
-      );
-    }
-    AWS.config.credentials = credentials;
-    AWS.config.update({ region: userConfig.awsDefaultRegion });
     return credentials;
   }
 
