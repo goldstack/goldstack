@@ -1,6 +1,7 @@
 import { getAWSUser } from './infraAws';
 import { write, mkdir } from '@goldstack/utils-sh';
 import assert from 'assert';
+import path from 'path';
 
 describe('AWS User config', () => {
   it.skip('Should read AWS config from Goldstack config file', async () => {
@@ -58,15 +59,21 @@ describe('AWS User config', () => {
       "type": "profile",
       "config": {
         "profile": "default",
-        "awsDefaultRegion": "us-west-2"
+        "awsDefaultRegion": "us-west-2",
+        "awsConfigFileName": "${path
+          .resolve('./testData/awsCredentials')
+          .replace(/\\/g, '/')}"
       }
     },
     {
       "name": "prod",
       "type": "profile",
       "config": {
-        "profile": "prod",
-        "awsDefaultRegion": "us-west-2"
+        "profile": "goldstack-dev",
+        "awsDefaultRegion": "us-west-2",
+        "awsConfigFileName": "${path
+          .resolve('./testData/awsCredentials')
+          .replace(/\\/g, '/')}"
       }
     }
   ]

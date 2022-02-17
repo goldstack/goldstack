@@ -108,6 +108,10 @@
       "additionalProperties": false,
       "description": "User that is configured using the aws cli. Useful for development environments.",
       "properties": {
+        "awsConfigFileName": {
+          "description": "Path to the AWS configuration, e.g. `~/.aws/config`.",
+          "type": "string"
+        },
         "awsDefaultRegion": {
           "$ref": "#/definitions/AWSRegion"
         },
