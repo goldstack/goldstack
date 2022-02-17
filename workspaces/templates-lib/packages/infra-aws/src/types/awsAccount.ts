@@ -81,9 +81,13 @@ export interface AWSProfileConfig {
   profile: Profile;
   awsDefaultRegion: AWSRegion;
   /**
-   * Path to the AWS configuration, e.g. `~/.aws/config`.
+   * Path to the AWS configuration, e.g. `~/.aws/credentials`. If environment variable `AWS_SHARED_CREDENTIALS_FILE` is set, this is ignored.
    */
   awsConfigFileName?: string;
+  /**
+   * If credentials should be loaded by running a `credential-process` defined in the AWS credentials configuration. See https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html
+   */
+  processCredentials?: boolean;
 }
 
 /**

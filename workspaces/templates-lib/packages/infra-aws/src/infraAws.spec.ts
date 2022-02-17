@@ -58,7 +58,7 @@ describe('AWS User config', () => {
       "name": "dev",
       "type": "profile",
       "config": {
-        "profile": "default",
+        "profile": "goldstack-dev",
         "awsDefaultRegion": "us-west-2",
         "awsConfigFileName": "${path
           .resolve('./testData/awsCredentials')
@@ -75,16 +75,34 @@ describe('AWS User config', () => {
           .resolve('./testData/awsCredentials')
           .replace(/\\/g, '/')}"
       }
+    },
+    {
+      "name": "process",
+      "type": "profile",
+      "config": {
+        "profile": "with-process",
+        "awsDefaultRegion": "us-west-2",
+        "processCredentials": true,
+        "awsConfigFileName": "${path
+          .resolve('./testData/awsCredentials')
+          .replace(/\\/g, '/')}"
+      }
     }
   ]
 }`;
 
     mkdir('-p', testDir);
     write(awsConfig, testDir + '/config.json');
-    const credentialsDefault = await getAWSUser(
-      'dev',
+
+    const credentialsProcess = await getAWSUser(
+      'process',
       testDir + '/config.json'
     );
-    assert(credentialsDefault.accessKeyId);
+    expect(credentialsProcess.secretAccessKey).toEqual('processsecret');
+    expect(credentialsProcess.accessKeyId).toEqual('processkey');
+
+    const credentialsDev = await getAWSUser('dev', testDir + '/config.json');
+    expect(credentialsDev.secretAccessKey).toEqual('devsecret');
+    expect(credentialsDev.accessKeyId).toEqual('devkey');
   });
 });

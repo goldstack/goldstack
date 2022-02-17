@@ -210,10 +210,29 @@ export const getAWSUser = async (
   if (user.type === 'profile') {
     const userConfig = user.config as AWSProfileConfig;
 
-    const credentials = new AWS.SharedIniFileCredentials({
-      profile: userConfig.profile,
-      filename: userConfig.awsConfigFileName,
-    });
+    if (process.env.AWS_SHARED_CREDENTIALS_FILE) {
+      console.warn(
+        'Using AWS_SHARED_CREDENTIALS_FILE environment variable. awsConfigFileName in configuration will be ignored.'
+      );
+    }
+
+    let credentials: AWS.Credentials;
+    if (!userConfig.processCredentials) {
+      credentials = new AWS.SharedIniFileCredentials({
+        profile: userConfig.profile,
+        filename:
+          process.env.AWS_SHARED_CREDENTIALS_FILE ||
+          userConfig.awsConfigFileName,
+      });
+    } else {
+      credentials = new AWS.ProcessCredentials({
+        profile: userConfig.profile,
+        filename:
+          process.env.AWS_SHARED_CREDENTIALS_FILE ||
+          userConfig.awsConfigFileName,
+      });
+      await credentials.refreshPromise();
+    }
 
     if (!credentials.accessKeyId) {
       throw new Error(

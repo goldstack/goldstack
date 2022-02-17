@@ -109,11 +109,15 @@
       "description": "User that is configured using the aws cli. Useful for development environments.",
       "properties": {
         "awsConfigFileName": {
-          "description": "Path to the AWS configuration, e.g. `~/.aws/config`.",
+          "description": "Path to the AWS configuration, e.g. `~/.aws/credentials`. If environment variable `AWS_SHARED_CREDENTIALS_FILE` is set, this is ignored.",
           "type": "string"
         },
         "awsDefaultRegion": {
           "$ref": "#/definitions/AWSRegion"
+        },
+        "processCredentials": {
+          "description": "If credentials should be loaded by running a `credential-process` defined in the AWS credentials configuration. See https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html",
+          "type": "boolean"
         },
         "profile": {
           "$ref": "#/definitions/Profile"
