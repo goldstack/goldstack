@@ -1,7 +1,11 @@
 
 ⚠️ This section is currently work in progress ⚠️
 
-## Project Setup
+Thanks for taking the time to contribute! While the following documentation intends to be as comprehensive as possible, please do not hesitate to reach out by [opening a GitHub issue](https://github.com/goldstack/goldstack/issues) or on Twitter: [@mxro](https://twitter.com/mxro).
+
+## Getting Started with Development
+
+### Project Setup
 
 *   Clone the Goldstack repository
 *   Ensure dependencies are installed
@@ -34,7 +38,7 @@ yarn build
 
 Note it is not necessary to run `yarn` or `yarn compile` for the individual nested workspaces and packages in the repository. Running `yarn` and `yarn compile` will compile/install all nested workspaces and packages.
 
-## Project Structure
+### Project Structure
 
 The Goldstack monorepo is a repository nested in two levels. [workspaces](https://github.com/goldstack/goldstack/tree/master/workspaces) itself contains the following composite packages:
 
