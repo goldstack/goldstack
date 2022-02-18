@@ -17,6 +17,8 @@ const paths = {
   templateDocPath: 'docs/',
   readmeTemplatePath: 'README.template.md',
   readmePath: 'README.md',
+  contributingTemplatePath: 'CONTRIBUTING.template.md',
+  contributingPath: 'CONTRIBUTING.md',
 };
 
 const moduleTemplates = getModuleTemplatesNames().map((e) => {
@@ -25,6 +27,15 @@ const moduleTemplates = getModuleTemplatesNames().map((e) => {
     docPath: `modules/${e}/`,
   };
 });
+
+const generateMarkdownDocs = async (
+  sourceFileName: string,
+  targetFileName: string
+) => {
+  const result = await resolveMarkdown(sourceFileName);
+  write(result, targetFileName);
+  console.log('Writing Markdown docs', path.resolve(targetFileName));
+};
 
 const run = async () => {
   // Step 0:
@@ -60,24 +71,28 @@ const run = async () => {
   //   Generate template Markdown docs
   for (let i = 0; i < fixedModuleTemplates.length; i++) {
     const moduleTemplate = fixedModuleTemplates[i];
-    const result = await resolveMarkdown(
-      paths.templates + moduleTemplate.dirName + paths.readmeTemplatePath
-    );
+    const sourceFileName =
+      paths.templates + moduleTemplate.dirName + paths.readmeTemplatePath;
     const targetFileName =
       paths.templates + moduleTemplate.dirName + paths.readmePath;
-    write(result, targetFileName);
-    console.log('Writing Markdown doc file', path.resolve(targetFileName));
+    generateMarkdownDocs(sourceFileName, targetFileName);
   }
 
   // Step 3:
-  //   Generate goldstack root readme
+  //   Generate Goldstack root readme
   const sourceFileName = path.resolve(
     `${paths.root}${paths.readmeTemplatePath}`
   );
-  const result = await resolveMarkdown(sourceFileName);
   const targetFileName = `${paths.root}${paths.readmePath}`;
-  write(result, targetFileName);
-  console.log('Writing root Markdown Readme', path.resolve(targetFileName));
+  generateMarkdownDocs(sourceFileName, targetFileName);
+
+  // Step 4:
+  //   Generate Goldstack root contributing guidelines
+  const sourceFileNameContributing = path.resolve(
+    `${paths.root}${paths.contributingTemplatePath}`
+  );
+  const targetFileNameContributing = `${paths.root}${paths.contributingPath}`;
+  generateMarkdownDocs(sourceFileNameContributing, targetFileNameContributing);
 };
 
 run()
