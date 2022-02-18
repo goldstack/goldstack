@@ -28,7 +28,7 @@ const moduleTemplates = getModuleTemplatesNames().map((e) => {
 
 const run = async () => {
   // Step 0:
-  //   Remove templates that do not have documenation
+  //   Remove templates that do not have documentation
   const fixedModuleTemplates = moduleTemplates.filter((t) => {
     const sourcePath = paths.docs + t.docPath;
     return fs.existsSync(sourcePath);
