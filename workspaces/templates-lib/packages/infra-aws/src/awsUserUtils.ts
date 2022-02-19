@@ -81,7 +81,7 @@ export async function getAWSUserFromGoldstackConfig(
     }
 
     // support loading from both `config` and `credentials` files, see https://github.com/goldstack/goldstack/issues/17#issuecomment-1044811805
-    process.env.AWS_SDK_LOAD_CONFIG = '1';
+    // process.env.AWS_SDK_LOAD_CONFIG = '1';
 
     let credentials: AWS.Credentials;
     if (!userConfig.processCredentials) {

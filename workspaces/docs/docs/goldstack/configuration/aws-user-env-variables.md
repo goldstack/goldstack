@@ -22,4 +22,4 @@ The `AWS_USER_NAME` variable is optional but can be useful for explicitly refere
     AWS_DEFAULT_REGION: us-west-2
 ```
 
-Where the values of the environment variables are defined in [GitHub Secrets](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets).
+The values of the environment variables are defined in [GitHub Secrets](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets).
