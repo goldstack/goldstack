@@ -86,6 +86,7 @@ export async function getAWSUserFromGoldstackConfig(
     if (!process.env.AWS_SHARED_CREDENTIALS_FILE) {
       // filename property is ignored if AWS_SDK_LOAD_CONFIG is set; thus need to set AWS_SHARED_CREDENTIALS_FILE.
       process.env.AWS_SHARED_CREDENTIALS_FILE = userConfig.awsConfigFileName;
+      process.env.AWS_CONFIG_FILE = userConfig.awsConfigFileName;
     }
 
     let credentials: AWS.Credentials;
