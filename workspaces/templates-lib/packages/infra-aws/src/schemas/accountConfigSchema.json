@@ -109,6 +109,10 @@
       "description": "User that is configured using the aws cli. Useful for development environments.",
       "properties": {
         "awsConfigFileName": {
+          "description": "Path to the AWS configuration, e.g. `~/.aws/config`. If environment variable `AWS_CONFIG_FILE` is set, this is ignored.",
+          "type": "string"
+        },
+        "awsCredentialsFileName": {
           "description": "Path to the AWS configuration, e.g. `~/.aws/credentials`. If environment variable `AWS_SHARED_CREDENTIALS_FILE` is set, this is ignored.",
           "type": "string"
         },

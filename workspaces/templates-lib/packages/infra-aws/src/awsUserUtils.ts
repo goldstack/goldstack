@@ -80,6 +80,11 @@ export async function getAWSUserFromGoldstackConfig(
       );
     }
 
+    const envVarValues = {
+      AWS_SDK_LOAD_CONFIG: process.env.AWS_SDK_LOAD_CONFIG,
+      AWS_SHARED_CREDENTIALS_FILE: process.env.AWS_SHARED_CREDENTIALS_FILE,
+      AWS_CONFIG_FILE: process.env.AWS_CONFIG_FILE,
+    };
     if (userConfig.awsConfigFileName) {
       // support loading from both `config` and `credentials` files, see https://github.com/goldstack/goldstack/issues/17#issuecomment-1044811805
       process.env.AWS_SDK_LOAD_CONFIG = '1';
@@ -109,6 +114,10 @@ export async function getAWSUserFromGoldstackConfig(
       });
       await credentials.refreshPromise();
     }
+
+    Object.entries(envVarValues).forEach(([key, value]) => {
+      process.env[key] = value;
+    });
 
     if (!credentials.accessKeyId) {
       throw new Error(
