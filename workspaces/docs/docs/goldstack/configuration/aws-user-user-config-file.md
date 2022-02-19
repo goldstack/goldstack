@@ -1,4 +1,3 @@
-### Credentials in User Directory
 
 The AWS CLI uses a standardised location to store AWS credentials and configuration. Goldstack will attempt to read from this configuration if no other configuration was provided.
 
@@ -14,7 +13,7 @@ config/infra/aws/config.json
 
 You can define a number of different users as follows:
 
-```
+```json
 {
   "users": [
     {
@@ -34,5 +33,24 @@ You can define a number of different users as follows:
       }
     }
   ]
-}`
+}
+```
+
+Note that Goldstack also supports overriding the path of the default AWS configuration and credentials files:
+
+```json
+{
+  "users": [
+    {
+      "name": "prod",
+      "type": "profile",
+      "config": {
+        "profile": "prod",
+        "awsDefaultRegion": "us-west-2",
+        "awsConfigFile": "/path/to/config/file",
+        "awsCredentialsFile": "/path/to/credentials/file"
+      }
+    }
+  ]
+}
 ```

@@ -1,9 +1,10 @@
 import { getAWSUser } from './infraAws';
 import { write, mkdir } from '@goldstack/utils-sh';
 import assert from 'assert';
+import path from 'path';
 
 describe('AWS User config', () => {
-  it('Should read AWS config from Goldstack config file', async () => {
+  it.skip('Should read AWS config from Goldstack config file', async () => {
     const awsConfig = `{
   "users": [
     {
@@ -48,7 +49,8 @@ describe('AWS User config', () => {
     const credentials = await getAWSUser('default', './invalid');
     assert(credentials.accessKeyId);
   });
-  it.skip('Should read from AWS config in user folder if credentials config provided', async () => {
+
+  it('Should read from AWS credentials file', async () => {
     const testDir = './goldstackLocal/tests/getAWSUser';
 
     const awsConfig = `{
@@ -57,16 +59,11 @@ describe('AWS User config', () => {
       "name": "dev",
       "type": "profile",
       "config": {
-        "profile": "default",
-        "awsDefaultRegion": "us-west-2"
-      }
-    },
-    {
-      "name": "prod",
-      "type": "profile",
-      "config": {
-        "profile": "prod",
-        "awsDefaultRegion": "us-west-2"
+        "profile": "goldstack-dev",
+        "awsDefaultRegion": "us-west-2",
+        "awsCredentialsFileName": "${path
+          .resolve('./testData/awsCredentials')
+          .replace(/\\/g, '/')}"
       }
     }
   ]
@@ -74,10 +71,72 @@ describe('AWS User config', () => {
 
     mkdir('-p', testDir);
     write(awsConfig, testDir + '/config.json');
-    const credentialsDefault = await getAWSUser(
-      'dev',
+
+    const credentialsDev = await getAWSUser('dev', testDir + '/config.json');
+    expect(credentialsDev.secretAccessKey).toEqual('devsecret');
+    expect(credentialsDev.accessKeyId).toEqual('devkey');
+  });
+
+  it('Should load credentials using a credentials source defined in the credentials file', async () => {
+    const testDir = './goldstackLocal/tests/getAWSUser';
+
+    const awsConfig = `{
+  "users": [
+    {
+      "name": "process",
+      "type": "profile",
+      "config": {
+        "profile": "with-process",
+        "awsDefaultRegion": "us-west-2",
+        "credentialsSource": "process",
+        "awsCredentialsFileName": "${path
+          .resolve('./testData/awsCredentials')
+          .replace(/\\/g, '/')}"
+      }
+    }
+  ]
+}`;
+
+    mkdir('-p', testDir);
+    write(awsConfig, testDir + '/config.json');
+
+    const credentialsProcess = await getAWSUser(
+      'process',
       testDir + '/config.json'
     );
-    assert(credentialsDefault.accessKeyId);
+    expect(credentialsProcess.secretAccessKey).toEqual('processsecret');
+    expect(credentialsProcess.accessKeyId).toEqual('processkey');
+  });
+  it('Should load credentials using a credentials source defined in the config file', async () => {
+    const testDir = './goldstackLocal/tests/getAWSUser';
+
+    const awsConfig = `{
+  "users": [
+    {
+      "name": "process-from-config",
+      "type": "profile",
+      "config": {
+        "profile": "with-process",
+        "awsDefaultRegion": "us-west-2",
+        "credentialsSource": "process",
+        "awsConfigFileName": "${path
+          .resolve('./testData/awsConfig')
+          .replace(/\\/g, '/')}"
+      }
+    }
+  ]
+}`;
+
+    mkdir('-p', testDir);
+    write(awsConfig, testDir + '/config.json');
+
+    const credentialsProcessFromConfig = await getAWSUser(
+      'process-from-config',
+      testDir + '/config.json'
+    );
+    expect(credentialsProcessFromConfig.secretAccessKey).toEqual(
+      'processsecret'
+    );
+    expect(credentialsProcessFromConfig.accessKeyId).toEqual('processkey');
   });
 });

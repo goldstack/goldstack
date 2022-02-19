@@ -72,6 +72,8 @@ export type AWSSecretAccessKey = string;
  */
 export type AWSRegion = AWSDeploymentRegion;
 
+export type CredentialsSource = 'process';
+
 /**
  * User that is configured using the aws cli. Useful for development environments.
  *
@@ -80,6 +82,21 @@ export type AWSRegion = AWSDeploymentRegion;
 export interface AWSProfileConfig {
   profile: Profile;
   awsDefaultRegion: AWSRegion;
+
+  /**
+   * Path to the AWS configuration, e.g. `~/.aws/credentials`. If environment variable `AWS_SHARED_CREDENTIALS_FILE` is set, this is ignored.
+   */
+  awsCredentialsFileName?: string;
+
+  /**
+   * Path to the AWS configuration, e.g. `~/.aws/config`. If environment variable `AWS_CONFIG_FILE` is set, this is ignored.
+   */
+  awsConfigFileName?: string;
+
+  /**
+   * Set to `process`, if credentials should be loaded by running a `credential-process` defined in the AWS credentials configuration. See https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html
+   */
+  credentialsSource?: CredentialsSource;
 }
 
 /**

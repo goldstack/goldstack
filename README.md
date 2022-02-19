@@ -127,46 +127,17 @@ The following properties are required for general project configuration:
 
 ## AWS Configuration
 
-Goldstack provides ready-made scripts to deploy your infrastructure to AWS. You can supply AWS credentials during project configuration that will be included in your downloaded package. By default, these will not be committed to source control.
+In order to set up infrastructure on AWS and for running deployed services, Goldstack needs access to AWS credentials. These can be provided in a number of ways:
 
-However, there are many other ways in which AWS user credentials can be supplied for Goldstack, so providing the details during project configuration is optional. It is only recommended to do so for development systems.
+### Using the default local AWS user
 
-If you do not know how to get the *Access Key ID* and *Secret Access Key*, please find [instructions here](https://docs.goldstack.party/docs/goldstack/configuration#how-to-get-aws-credentials).
+If you have the [AWS CLI](https://aws.amazon.com/cli/) installed and have [credentials configured locally](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html), Goldstack will use the default AWS user if no other configuration options are provided.
 
-### How to get AWS Credentials
+You can check if the default AWS user is configured by running [`aws configure list`](https://docs.aws.amazon.com/cli/latest/reference/configure/list.html).
 
-\[Video: Step-by-step Video Guide]\(https://www.youtube.com/embed/-lWrkpzEgfs)
+    aws configure list
 
-The easiest way to configure the AWS user for Goldstack is to do it during project setup by providing an *AWS Access Key Id* and *AWS Secret Access Key*. To obtain these, please do the following:
-
-*   Create an AWS account if you do not already have one. See [instructions on this from AWS here](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/).
-*   Open the AWS console IAM management and sign in if required: <https://console.aws.amazon.com/iam/home?region=us-east-1#/home>
-*   Click on *Users* in the menu on the right
-
-![Add User in AWS console](https://cdn.goldstack.party/img/202010/add_user.png)
-
-*   Provide a username of your choice, for instance 'goldstack-local-dev'
-*   Select the Access Type *Programmatic Access*
-
-![Provide user details](https://cdn.goldstack.party/img/202010/user_details.png)
-
-*   Click on the button *Next: Permissions*
-*   Select *Attach existing policies directly*
-*   Select the Policy *Administrator Access*
-
-![Select permissions](https://cdn.goldstack.party/img/202010/permissions.png)
-
-*   Click on the button *Next: Tags*
-*   You do not have to add any tags, just click *Next: Review*
-*   On the review page click *Create User*
-
-Now you can copy the *Access Key ID* and add it to the Goldstack configuration form. Do the same with the *Secret Access Key* (It can be shown by clicking on Show).
-
-![Obtain access keys](https://cdn.goldstack.party/img/202010/keys.png)
-
-Note that it is recommended to only provide this key and secret for development systems (and prototype/hobby production systems). For all other systems, it is recommended to provide this key and secret only through environment variables (see below).
-
-### Credentials in User Directory
+### Using a specific local AWS user
 
 The AWS CLI uses a standardised location to store AWS credentials and configuration. Goldstack will attempt to read from this configuration if no other configuration was provided.
 
@@ -182,54 +153,78 @@ config/infra/aws/config.json
 
 You can define a number of different users as follows:
 
+```json
+{
+  "users": [
     {
-      "users": [
-        {
-          "name": "dev",
-          "type": "profile",
-          "config": {
-            "profile": "default",
-            "awsDefaultRegion": "us-west-2"
-          }
-        },
-        {
-          "name": "prod",
-          "type": "profile",
-          "config": {
-            "profile": "prod",
-            "awsDefaultRegion": "us-west-2"
-          }
-        }
-      ]
-    }`
-
-### Credentials in Environment Variables
-
-Goldstack can read AWS *Access Key ID* and *Secret Access Key* from environment variables. The easiest way is to set the following environment variables:
-
-```bash
-AWS_USER_NAME: [Your user name]
-AWS_ACCESS_KEY_ID: [Your access key id]
-AWS_SECRET_ACCESS_KEY: [Your secret access key]
-AWS_DEFAULT_REGION: [User region]
+      "name": "dev",
+      "type": "profile",
+      "config": {
+        "profile": "default",
+        "awsDefaultRegion": "us-west-2"
+      }
+    },
+    {
+      "name": "prod",
+      "type": "profile",
+      "config": {
+        "profile": "prod",
+        "awsDefaultRegion": "us-west-2"
+      }
+    }
+  ]
+}
 ```
 
-The `AWS_USER_NAME` variable is optional but can be useful for explicitly referencing the correct Goldstack user in deployments. The above setup is particularly useful for CI/CD environments. For instance, when using [GitHub Actions](https://github.com/actions), environment variables could be configured as follows:
+Note that Goldstack also supports overriding the path of the default AWS configuration and credentials files:
 
-```yaml
-- name: Deploy UI
-  run: |
-    yarn workspace my-ui deploy dev
-  env:
-    AWS_USER_NAME: dev-user
-    AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-    AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-    AWS_DEFAULT_REGION: us-west-2
+```json
+{
+  "users": [
+    {
+      "name": "prod",
+      "type": "profile",
+      "config": {
+        "profile": "prod",
+        "awsDefaultRegion": "us-west-2",
+        "awsConfigFile": "/path/to/config/file",
+        "awsCredentialsFile": "/path/to/credentials/file"
+      }
+    }
+  ]
+}
 ```
 
-Where the values of the environment variables are defined in [GitHub Secrets](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets).
+### Using process credentials
 
-### Credentials in Config File
+There are a number of issues when trying to work with multiple profiles and SSO credentials, see [aws/aws-cli#4982 (comment)](https://github.com/aws/aws-cli/issues/4982#issuecomment-939348934) and [goldstack/goldstack#17](https://github.com/goldstack/goldstack/issues/17).
+
+An excellent way to deal with situations where we do not want to provide the user credentials directly, is to use [process credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html).
+
+Goldstack supports defining process credentials in the `config/infra/aws/config.json` file.
+
+```json
+"users": [
+    {
+      "name": "dev-user",
+      "type": "profile",
+      "config": {
+        "profile": "with-process",
+        "awsDefaultRegion": "us-west-2",
+        "credentialsSource": "process"
+      }
+    }
+  ]
+```
+
+This will require a `~/.aws/config` file as follows:
+
+    [with-process]
+    credential_process=[your command]
+
+Useful commands to use in the `credential_process` field are: [aws-sso-creds-helper](https://github.com/ryansonshine/aws-sso-creds-helper), [aws-sso-util](https://github.com/benkehoe/aws-sso-util#adding-aws-sso-support-to-aws-sdks), [aws-vault](https://github.com/99designs/aws-vault/blob/0615e7c8cddc5d5046e29b87acfc0fe73c1aa998/USAGE.md#using-credential_process) and [aws2-wrap](https://github.com/linaro-its/aws2-wrap#use-the-credentials-via-awsconfig).
+
+### Using credentials in Goldstack configuration file
 
 AWS credentials they can be configured directly in the Goldstack configuration file. Note we do not recommend this option. If you can, use the user credentials or environment variables.
 
@@ -271,6 +266,67 @@ Make sure that the `"name"` property matches the `"awsUser"` of module deploymen
 Note that this file should *not* checked into source control if AWS credentials are provided.
 
 If you want to supply AWS user credentials in your CI/CD systems, these can be supplied using environment variables and for local development you can use the files provided by the AWS CLI (see above).
+
+### Using environment variables
+
+### Credentials in Environment Variables
+
+Goldstack can read AWS *Access Key ID* and *Secret Access Key* from environment variables. The easiest way is to set the following environment variables:
+
+```bash
+AWS_USER_NAME: [Your user name]
+AWS_ACCESS_KEY_ID: [Your access key id]
+AWS_SECRET_ACCESS_KEY: [Your secret access key]
+AWS_DEFAULT_REGION: [User region]
+```
+
+The `AWS_USER_NAME` variable is optional but can be useful for explicitly referencing the correct Goldstack user in deployments. The above setup is particularly useful for CI/CD environments. For instance, when using [GitHub Actions](https://github.com/actions), environment variables could be configured as follows:
+
+```yaml
+- name: Deploy UI
+  run: |
+    yarn workspace my-ui deploy dev
+  env:
+    AWS_USER_NAME: dev-user
+    AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+    AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+    AWS_DEFAULT_REGION: us-west-2
+```
+
+The values of the environment variables are defined in [GitHub Secrets](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets).
+
+## How to get AWS Credentials
+
+\[Video: Step-by-step Video Guide]\(https://www.youtube.com/embed/-lWrkpzEgfs)
+
+The easiest way to configure the AWS user for Goldstack is to do it during project setup by providing an *AWS Access Key Id* and *AWS Secret Access Key*. To obtain these, please do the following:
+
+*   Create an AWS account if you do not already have one. See [instructions on this from AWS here](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/).
+*   Open the AWS console IAM management and sign in if required: <https://console.aws.amazon.com/iam/home?region=us-east-1#/home>
+*   Click on *Users* in the menu on the right
+
+![Add User in AWS console](https://cdn.goldstack.party/img/202010/add_user.png)
+
+*   Provide a username of your choice, for instance 'goldstack-local-dev'
+*   Select the Access Type *Programmatic Access*
+
+![Provide user details](https://cdn.goldstack.party/img/202010/user_details.png)
+
+*   Click on the button *Next: Permissions*
+*   Select *Attach existing policies directly*
+*   Select the Policy *Administrator Access*
+
+![Select permissions](https://cdn.goldstack.party/img/202010/permissions.png)
+
+*   Click on the button *Next: Tags*
+*   You do not have to add any tags, just click *Next: Review*
+*   On the review page click *Create User*
+
+Now you can copy the *Access Key ID* and add it to the Goldstack configuration form. Do the same with the *Secret Access Key* (It can be shown by clicking on Show).
+
+![Obtain access keys](https://cdn.goldstack.party/img/202010/keys.png)
+
+Note that it is recommended to only provide this key and secret for development systems (and prototype/hobby production systems). For all other systems, it is recommended to provide this key and secret only through environment variables (see below).
 
 ## Hosted Zone Configuration
 
