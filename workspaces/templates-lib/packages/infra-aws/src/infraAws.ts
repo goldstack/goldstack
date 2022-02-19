@@ -149,59 +149,82 @@ export const getAWSUser = async (
 ): Promise<AWS.Credentials> => {
   // check if running in ECS
   if (process.env.AWS_CONTAINER_CREDENTIALS_RELATIVE_URI) {
-    const ecsCredentials = new AWS.ECSCredentials({
-      httpOptions: { timeout: 5000 }, // 5 second timeout
-      maxRetries: 10, // retry 10 times
-    });
-    await ecsCredentials.getPromise();
-
-    AWS.config.credentials = ecsCredentials;
-
-    if (!process.env.AWS_REGION) {
-      throw new Error(
-        'AWS region environment variable ("AWS_REGION") not defined for ECS task.'
-      );
-    }
-
-    AWS.config.update({ region: process.env.AWS_REGION });
-
-    return ecsCredentials;
+    return await getAWSUserFromContainerEnvironment();
   }
 
   // always prefer getting credentials from environment variables
   if (process.env.AWS_ACCESS_KEY_ID) {
-    assert(process.env.AWS_ACCESS_KEY_ID, 'AWS_ACCESS_KEY_ID not defined.');
-    assert(
-      process.env.AWS_SECRET_ACCESS_KEY,
-      'AWS_SECRET_ACCESS_KEY not defined'
-    );
-    const region = process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION;
-    assert(region, 'Neither AWS_REGION nor AWS_DEFAULT_REGION are defined.');
-    const credentials = new AWS.EnvironmentCredentials('AWS');
-    await credentials.getPromise();
-    AWS.config.credentials = credentials;
-
-    AWS.config.update({ region });
-
-    return credentials;
+    return await getAWSUserFromEnvironmentVariables();
   }
 
   // try loading default user if no config file provided
   if (!hasConfig(configPath)) {
-    const credentials = new AWS.SharedIniFileCredentials();
-    if (!credentials.accessKeyId) {
-      throw new Error(
-        'Cannot load user from AWS configuration. Please provide a Goldstack AWS Configuration in infra/aws/config.json or perform aws login for a default profile using the AWS CLI.'
-      );
-    }
-    AWS.config.credentials = credentials;
-    // see https://github.com/aws/aws-sdk-js/pull/1391
-    process.env.AWS_SDK_LOAD_CONFIG = 'true';
-    return credentials;
+    return await getAWSUserFromDefaultLocalProfile();
   }
 
+  // load users as configured in Goldstack configuration
   const config = readConfig(configPath);
+  return await getAWSUserFromGoldstackConfig(config, userName);
+};
 
+async function getAWSUserFromDefaultLocalProfile() {
+  let credentials = new AWS.SharedIniFileCredentials();
+
+  if (!credentials.accessKeyId) {
+    // if no access key is found, try loading process_credentials
+    credentials = new AWS.ProcessCredentials();
+    await credentials.refreshPromise();
+  }
+  AWS.config.credentials = credentials;
+  // see https://github.com/aws/aws-sdk-js/pull/1391
+  process.env.AWS_SDK_LOAD_CONFIG = 'true';
+  return credentials;
+}
+
+async function getAWSUserFromEnvironmentVariables() {
+  assert(process.env.AWS_ACCESS_KEY_ID, 'AWS_ACCESS_KEY_ID not defined.');
+  assert(
+    process.env.AWS_SECRET_ACCESS_KEY,
+    'AWS_SECRET_ACCESS_KEY not defined'
+  );
+  const region = process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION;
+  assert(region, 'Neither AWS_REGION nor AWS_DEFAULT_REGION are defined.');
+  const credentials = new AWS.EnvironmentCredentials('AWS');
+  await credentials.getPromise();
+  AWS.config.credentials = credentials;
+
+  AWS.config.update({ region });
+
+  return credentials;
+}
+
+/**
+ * Obtains AWS user credentials from container environment variables for ECS containers.
+ */
+async function getAWSUserFromContainerEnvironment(): Promise<AWS.ECSCredentials> {
+  const ecsCredentials = new AWS.ECSCredentials({
+    httpOptions: { timeout: 5000 },
+    maxRetries: 10, // retry 10 times
+  });
+  await ecsCredentials.getPromise();
+
+  AWS.config.credentials = ecsCredentials;
+
+  if (!process.env.AWS_REGION) {
+    throw new Error(
+      'AWS region environment variable ("AWS_REGION") not defined for ECS task.'
+    );
+  }
+
+  AWS.config.update({ region: process.env.AWS_REGION });
+
+  return ecsCredentials;
+}
+
+async function getAWSUserFromGoldstackConfig(
+  config: AWSConfiguration,
+  userName: string
+): Promise<AWS.Credentials> {
   const user = config.users.find((user) => user.name === userName);
   if (!user) {
     throw new Error(`User '${userName}' does not exist in AWS configuration.`);
@@ -301,4 +324,4 @@ export const getAWSUser = async (
   }
 
   throw new Error(`Unknown user config type ${user.type}`);
-};
+}
