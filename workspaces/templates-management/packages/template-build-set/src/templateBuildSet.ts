@@ -288,7 +288,9 @@ export const buildSet = async (
         );
         await execAsync('git add .');
         await execAsync('ls -la');
-        await execAsync('git commit -m "Update boilerplate"');
+        await execAsync(
+          'git diff-index --quiet HEAD || git commit -m "Update boilerplate"'
+        );
         await execAsync('git push origin master --force');
         cd(`${currentDir}`);
       }
