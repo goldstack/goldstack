@@ -84,7 +84,7 @@ export async function getAWSUserFromGoldstackConfig(
     // process.env.AWS_SDK_LOAD_CONFIG = '1';
 
     let credentials: AWS.Credentials;
-    if (!userConfig.processCredentials) {
+    if (userConfig.credentialsSource !== 'process') {
       credentials = new AWS.SharedIniFileCredentials({
         profile: userConfig.profile,
         filename:

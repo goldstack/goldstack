@@ -82,7 +82,7 @@ describe('AWS User config', () => {
       "config": {
         "profile": "with-process",
         "awsDefaultRegion": "us-west-2",
-        "processCredentials": true,
+        "credentialsSource": "process",
         "awsConfigFileName": "${path
           .resolve('./testData/awsCredentials')
           .replace(/\\/g, '/')}"
