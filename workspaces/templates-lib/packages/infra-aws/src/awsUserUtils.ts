@@ -76,7 +76,7 @@ export async function getAWSUserFromGoldstackConfig(
 
     if (process.env.AWS_SHARED_CREDENTIALS_FILE) {
       console.warn(
-        'Using AWS_SHARED_CREDENTIALS_FILE environment variable. awsConfigFileName in configuration will be ignored.'
+        `Using AWS_SHARED_CREDENTIALS_FILE environment variable: '${process.env.AWS_SHARED_CREDENTIALS_FILE}'. awsConfigFileName in configuration will be ignored.`
       );
     }
 
@@ -90,19 +90,22 @@ export async function getAWSUserFromGoldstackConfig(
     }
 
     let credentials: AWS.Credentials;
+    let filename: string | undefined;
+    if (userConfig.awsConfigFileName) {
+      filename = undefined;
+    } else if (!process.env.SHARE_CREDENTIALS_FILE) {
+      filename = userConfig.awsCredentialsFileName;
+    }
+
     if (userConfig.credentialsSource !== 'process') {
       credentials = new AWS.SharedIniFileCredentials({
         profile: userConfig.profile,
-        filename:
-          process.env.AWS_SHARED_CREDENTIALS_FILE ||
-          userConfig.awsCredentialsFileName,
+        filename: filename,
       });
     } else {
       credentials = new AWS.ProcessCredentials({
         profile: userConfig.profile,
-        filename:
-          process.env.AWS_SHARED_CREDENTIALS_FILE ||
-          userConfig.awsCredentialsFileName,
+        filename: filename,
       });
       await credentials.refreshPromise();
     }
