@@ -1,4 +1,3 @@
-### How to get AWS Credentials
 
 [%Step-by-step Video Guide](https://www.youtube.com/embed/-lWrkpzEgfs)
 

@@ -1,7 +1,5 @@
-
-
-Goldstack provides ready-made scripts to deploy your infrastructure to AWS. You can supply AWS credentials during project configuration that will be included in your downloaded package. These will not be committed to source control.
-
-However, there are many other ways in which AWS user credentials can be supplied for Goldstack, so providing the details during project configuration is optional. It is only recommended to do so for development systems.
+Goldstack provides tools to set up the infrastructure of your project on AWS. You can provide credentials below that will be used on your development machine.
 
 If you do not know how to get the _Access Key ID_ and _Secret Access Key_, please find [instructions here](https://docs.goldstack.party/docs/goldstack/configuration#how-to-get-aws-credentials).
+
+Credentials can be provided in a number of other ways as well, such as by running `aws login` locally. For all options, please see [AWS Configuration](https://docs.goldstack.party/docs/goldstack/configuration#aws-configuration).
