@@ -76,7 +76,7 @@ export async function getAWSUserFromGoldstackConfig(
 
     if (process.env.AWS_SHARED_CREDENTIALS_FILE) {
       console.warn(
-        `Using AWS_SHARED_CREDENTIALS_FILE environment variable: '${process.env.AWS_SHARED_CREDENTIALS_FILE}'. awsConfigFileName in configuration will be ignored.`
+        `Using AWS_SHARED_CREDENTIALS_FILE environment variable: '${process.env.AWS_SHARED_CREDENTIALS_FILE}'. awsCredentialsFileName in configuration will be ignored.`
       );
     }
 
@@ -116,7 +116,11 @@ export async function getAWSUserFromGoldstackConfig(
     }
 
     Object.entries(envVarValues).forEach(([key, value]) => {
-      process.env[key] = value;
+      if (process.env[key] === undefined) {
+        delete process.env[key];
+      } else {
+        process.env[key] = value;
+      }
     });
 
     if (!credentials.accessKeyId) {

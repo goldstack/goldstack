@@ -49,7 +49,8 @@ describe('AWS User config', () => {
     const credentials = await getAWSUser('default', './invalid');
     assert(credentials.accessKeyId);
   });
-  it('Should read from AWS config in CLI provider', async () => {
+
+  it('Should read from AWS credentials file', async () => {
     const testDir = './goldstackLocal/tests/getAWSUser';
 
     const awsConfig = `{
@@ -64,18 +65,23 @@ describe('AWS User config', () => {
           .resolve('./testData/awsCredentials')
           .replace(/\\/g, '/')}"
       }
-    },
-    {
-      "name": "prod",
-      "type": "profile",
-      "config": {
-        "profile": "goldstack-dev",
-        "awsDefaultRegion": "us-west-2",
-        "awsCredentialsFileName": "${path
-          .resolve('./testData/awsCredentials')
-          .replace(/\\/g, '/')}"
-      }
-    },
+    }
+  ]
+}`;
+
+    mkdir('-p', testDir);
+    write(awsConfig, testDir + '/config.json');
+
+    const credentialsDev = await getAWSUser('dev', testDir + '/config.json');
+    expect(credentialsDev.secretAccessKey).toEqual('devsecret');
+    expect(credentialsDev.accessKeyId).toEqual('devkey');
+  });
+
+  it('Should load credentials using a credentials source defined in the credentials file', async () => {
+    const testDir = './goldstackLocal/tests/getAWSUser';
+
+    const awsConfig = `{
+  "users": [
     {
       "name": "process",
       "type": "profile",
@@ -87,7 +93,25 @@ describe('AWS User config', () => {
           .resolve('./testData/awsCredentials')
           .replace(/\\/g, '/')}"
       }
-    },
+    }
+  ]
+}`;
+
+    mkdir('-p', testDir);
+    write(awsConfig, testDir + '/config.json');
+
+    const credentialsProcess = await getAWSUser(
+      'process',
+      testDir + '/config.json'
+    );
+    expect(credentialsProcess.secretAccessKey).toEqual('processsecret');
+    expect(credentialsProcess.accessKeyId).toEqual('processkey');
+  });
+  it('Should load credentials using a credentials source defined in the config file', async () => {
+    const testDir = './goldstackLocal/tests/getAWSUser';
+
+    const awsConfig = `{
+  "users": [
     {
       "name": "process-from-config",
       "type": "profile",
@@ -105,17 +129,6 @@ describe('AWS User config', () => {
 
     mkdir('-p', testDir);
     write(awsConfig, testDir + '/config.json');
-
-    const credentialsDev = await getAWSUser('dev', testDir + '/config.json');
-    expect(credentialsDev.secretAccessKey).toEqual('devsecret');
-    expect(credentialsDev.accessKeyId).toEqual('devkey');
-
-    const credentialsProcess = await getAWSUser(
-      'process',
-      testDir + '/config.json'
-    );
-    expect(credentialsProcess.secretAccessKey).toEqual('processsecret');
-    expect(credentialsProcess.accessKeyId).toEqual('processkey');
 
     const credentialsProcessFromConfig = await getAWSUser(
       'process-from-config',

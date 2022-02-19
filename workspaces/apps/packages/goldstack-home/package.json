@@ -15,7 +15,7 @@
     "deploy": "template-nextjs set-nextjs-env $@ && yarn build && yarn web:build && template deploy $@",
     "deploy-ts": "yarn template-ts set-nextjs-env $@ && yarn build && yarn web:build && yarn template-ts deploy $@",
     "generate-docs": "yarn generate-docs:project && yarn generate-docs:awsUser",
-    "generate-docs:awsUser": "ts-node --project tsconfig.local.json ./scripts/generateDocs.ts generate-doc --json goldstack/configuration/aws-user.md > ./src/docs/aws-user.json",
+    "generate-docs:awsUser": "ts-node --project tsconfig.local.json ./scripts/generateDocs.ts generate-doc --json goldstack/configuration/aws-user-project-config.md > ./src/docs/aws-user.json",
     "generate-docs:project": "ts-node --project tsconfig.local.json ./scripts/generateDocs.ts generate-doc --json goldstack/configuration/project.md > ./src/docs/project.json",
     "generate-schema": "ts-node --project tsconfig.local.json src/lib/types/generateSchemas.ts",
     "infra": "template-nextjs infra",
