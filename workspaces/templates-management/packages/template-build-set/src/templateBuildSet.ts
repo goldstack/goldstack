@@ -1,6 +1,6 @@
 import { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet';
 
-import { cd, execAsync, mkdir, read, rmSafe } from '@goldstack/utils-sh';
+import { cd, execAsync, mkdir, read } from '@goldstack/utils-sh';
 import {
   writePackageConfigs,
   getPackageConfigs,
