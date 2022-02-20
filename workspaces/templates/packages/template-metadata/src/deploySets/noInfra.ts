@@ -64,7 +64,7 @@ export const createNoInfraBuildSetConfig = async (): Promise<DeploySetConfig> =>
         projectConfiguration,
         targetRepo: 'goldstack/typescript-monorepo-boilerplate',
         repoReadme:
-          'workspaces/apps/packages/template-management-cli/src/deploySets/noInfra.README.md',
+          'workspaces/templates/packages/template-metadata/src/deploySets/noInfra.README.md',
         rootTests: ['assert-package-files', 'assert-root-files', 'root-build'],
         packageConfigurations: [
           {
