@@ -84,6 +84,10 @@
         "projectConfiguration": {
           "$ref": "#/definitions/ProjectConfiguration"
         },
+        "repoReadme": {
+          "description": "Path to a readme file in the Goldstack repository that the Readme in the repo should be overriden with.",
+          "type": "string"
+        },
         "rootTests": {
           "items": {
             "type": "string"
@@ -91,6 +95,7 @@
           "type": "array"
         },
         "targetRepo": {
+          "description": "Repository that deploy set should be cloned into",
           "type": "string"
         }
       },

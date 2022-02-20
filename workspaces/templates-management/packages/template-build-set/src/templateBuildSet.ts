@@ -1,13 +1,13 @@
 import { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet';
 
-import { cd, execAsync, mkdir, rmSafe } from '@goldstack/utils-sh';
+import { cd, execAsync, mkdir, read, rmSafe } from '@goldstack/utils-sh';
 import {
   writePackageConfigs,
   getPackageConfigs,
 } from '@goldstack/project-config';
 import { build } from '@goldstack/template-build';
 import { GoldstackTemplateConfiguration } from '@goldstack/utils-template';
-import { buildProject } from '@goldstack/project-build';
+import { buildProject as buildProjects } from '@goldstack/project-build';
 import { AWSAPIKeyUser } from '@goldstack/infra-aws';
 import { installProject } from '@goldstack/project-install';
 import { write } from '@goldstack/utils-sh';
@@ -85,7 +85,7 @@ export const renderTestResults = (results: TestResult[]): string => {
 const buildAndTestProject = async (
   params: BuildAndTestProjectParams
 ): Promise<TestResult[]> => {
-  await buildProject({
+  await buildProjects({
     destinationDirectory: params.projectDir,
     config: params.project.projectConfiguration,
     s3: params.templateRepository,
@@ -231,7 +231,6 @@ export const buildSet = async (
   const localRepo = await prepareTestDir(params.workDir + 's3/');
 
   // build templates for local repo
-
   const templateWorkDir = params.workDir + 'templates/';
 
   // script runs in dir workspaces/apps/packages/template-management-cli
@@ -252,51 +251,12 @@ export const buildSet = async (
   });
 
   if (!params.skipTests) {
-    const testResults: TestResult[] = [];
-    for (const project of params.config.projects) {
-      const projectDir = `${params.workDir}${project.projectConfiguration.projectName}/`;
-      console.log('Building project in directory ', projectDir);
-      mkdir('-p', projectDir);
-
-      const gitHubToken = process.env.GITHUB_TOKEN;
-      if (project.targetRepo && gitHubToken) {
-        // await execAsync(
-        //   `git remote set-url origin https://${process.env.GITHUB_TOKEN}@github.com/${project.targetRepo}.git`
-        // );
-        await execAsync(
-          `git clone https://${gitHubToken}@github.com/${project.targetRepo}.git ${projectDir}`
-        );
-      }
-
-      testResults.push(
-        ...(await buildAndTestProject({
-          project,
-          projectDir,
-          setParams: params,
-          templateRepository: localRepo,
-          user: params.user,
-        }))
-      );
-
-      if (project.targetRepo && gitHubToken) {
-        const currentDir = process.cwd();
-        cd(`${projectDir}`);
-        await execAsync('pwd');
-        await execAsync('git config --global user.email "public@pureleap.com"');
-        await execAsync(
-          'git config --global user.name "Goldstack Template Build"'
-        );
-        await execAsync('git add .');
-        await execAsync('ls -la');
-        await execAsync(
-          'git diff-index --quiet HEAD || git commit -m "Update boilerplate"'
-        );
-        await execAsync('git push origin master --force');
-        cd(`${currentDir}`);
-      }
-    }
-    res.testResults = testResults;
-    res.testResultsText = renderTestResults(testResults);
+    const testResults: TestResult[] = await buildProjects({
+      buildSetParams: params,
+      localRepo,
+      res,
+      monorepoRoot,
+    });
     console.log('Test results', res.testResultsText);
     if (testResults.filter((result) => !result.result).length > 0) {
       console.log('There are test failures. No templates will be deployed.');
@@ -320,3 +280,55 @@ export const buildSet = async (
   res.deployed = true;
   return res;
 };
+
+async function buildProjects(params: {
+  buildSetParams: BuildSetParams;
+  localRepo: S3TemplateRepository;
+  res: BuildSetResult;
+  monorepoRoot: string;
+}): Promise<TestResult[]> {
+  const testResults: TestResult[] = [];
+  for (const project of params.buildSetParams.config.projects) {
+    const projectDir = `${params.buildSetParams.workDir}${project.projectConfiguration.projectName}/`;
+    console.log('Building project in directory ', projectDir);
+    mkdir('-p', projectDir);
+
+    const gitHubToken = process.env.GITHUB_TOKEN;
+    if (project.targetRepo && gitHubToken) {
+      await execAsync(
+        `git clone https://${gitHubToken}@github.com/${project.targetRepo}.git ${projectDir}`
+      );
+    }
+
+    testResults.push(
+      ...(await buildAndTestProject({
+        project,
+        projectDir,
+        setParams: params.buildSetParams,
+        templateRepository: params.localRepo,
+        user: params.buildSetParams.user,
+      }))
+    );
+
+    if (project.targetRepo && gitHubToken) {
+      const currentDir = process.cwd();
+      cd(`${projectDir}`);
+      if (project.repoReadme) {
+        write(read(params.monorepoRoot + project.repoReadme), 'README.md');
+      }
+      await execAsync('git config --global user.email "public@pureleap.com"');
+      await execAsync(
+        'git config --global user.name "Goldstack Template Build"'
+      );
+      await execAsync('git add .');
+      await execAsync(
+        'git diff-index --quiet HEAD || git commit -m "Update boilerplate"'
+      );
+      await execAsync('git push origin master --force');
+      cd(`${currentDir}`);
+    }
+  }
+  params.res.testResults = testResults;
+  params.res.testResultsText = renderTestResults(testResults);
+  return testResults;
+}
