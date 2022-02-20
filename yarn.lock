@@ -1322,9 +1322,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/project-template-data@0.1.0, @goldstack/project-template-data@workspace:workspaces/apps/packages/project-template-data":
+"@goldstack/project-template-data@0.1.0, @goldstack/project-template-data@workspace:workspaces/templates/packages/project-template-data":
   version: 0.0.0-use.local
-  resolution: "@goldstack/project-template-data@workspace:workspaces/apps/packages/project-template-data"
+  resolution: "@goldstack/project-template-data@workspace:workspaces/templates/packages/project-template-data"
   dependencies:
     "@types/jest": ^27.0.2
     "@types/node": ^16.11.0

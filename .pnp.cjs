@@ -55,10 +55,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/apps/packages/goldstack-home"
       },
       {
-        "name": "@goldstack/project-template-data",
-        "reference": "workspace:workspaces/apps/packages/project-template-data"
-      },
-      {
         "name": "@goldstack/template-management-cli",
         "reference": "workspace:workspaces/apps/packages/template-management-cli"
       },
@@ -121,6 +117,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "@goldstack/module-template-utils",
         "reference": "workspace:workspaces/templates/packages/module-template-utils"
+      },
+      {
+        "name": "@goldstack/project-template-data",
+        "reference": "workspace:workspaces/templates/packages/project-template-data"
       },
       {
         "name": "@goldstack/react-components",
@@ -377,7 +377,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/project-package-bucket", ["workspace:workspaces/templates-management/packages/project-package-bucket"]],
       ["@goldstack/project-repository", ["workspace:workspaces/templates-management/packages/project-repository"]],
       ["@goldstack/project-repository-bucket", ["workspace:workspaces/templates-management/packages/project-repository-bucket"]],
-      ["@goldstack/project-template-data", ["workspace:workspaces/apps/packages/project-template-data"]],
+      ["@goldstack/project-template-data", ["workspace:workspaces/templates/packages/project-template-data"]],
       ["@goldstack/react-components", ["workspace:workspaces/templates/packages/react-components"]],
       ["@goldstack/s3", ["workspace:workspaces/templates/packages/s3"]],
       ["@goldstack/server-express", ["workspace:workspaces/templates/packages/server-express"]],
@@ -1616,7 +1616,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],
             ["@goldstack/project-config", "workspace:workspaces/templates-management/packages/project-config"],
             ["@goldstack/project-repository", "workspace:workspaces/templates-management/packages/project-repository"],
-            ["@goldstack/project-template-data", "workspace:workspaces/apps/packages/project-template-data"],
+            ["@goldstack/project-template-data", "workspace:workspaces/templates/packages/project-template-data"],
             ["@goldstack/template-nextjs", "workspace:workspaces/templates-lib/packages/template-nextjs"],
             ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
@@ -2020,10 +2020,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@goldstack/project-template-data", [
-        ["workspace:workspaces/apps/packages/project-template-data", {
-          "packageLocation": "./workspaces/apps/packages/project-template-data/",
+        ["workspace:workspaces/templates/packages/project-template-data", {
+          "packageLocation": "./workspaces/templates/packages/project-template-data/",
           "packageDependencies": [
-            ["@goldstack/project-template-data", "workspace:workspaces/apps/packages/project-template-data"],
+            ["@goldstack/project-template-data", "workspace:workspaces/templates/packages/project-template-data"],
             ["@types/jest", "npm:27.0.2"],
             ["@types/node", "npm:16.11.0"],
             ["jest", "npm:26.6.3"],
