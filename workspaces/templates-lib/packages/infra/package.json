@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/infra",
-  "version": "0.3.26",
+  "version": "0.3.27",
   "description": "Utilities for defining infrastructure for npm packages.",
   "keywords": [
     "goldstack",
