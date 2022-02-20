@@ -7,7 +7,7 @@ import {
 } from '@goldstack/project-config';
 import { build } from '@goldstack/template-build';
 import { GoldstackTemplateConfiguration } from '@goldstack/utils-template';
-import { buildProject as buildProjects } from '@goldstack/project-build';
+import { buildProject } from '@goldstack/project-build';
 import { AWSAPIKeyUser } from '@goldstack/infra-aws';
 import { installProject } from '@goldstack/project-install';
 import { write } from '@goldstack/utils-sh';
@@ -19,7 +19,6 @@ import {
 } from '@goldstack/utils-template-test';
 import assert from 'assert';
 import path from 'path';
-import { config } from 'process';
 export * from './types/DeploySet';
 
 export interface BuildSetParams {
@@ -85,7 +84,7 @@ export const renderTestResults = (results: TestResult[]): string => {
 const buildAndTestProject = async (
   params: BuildAndTestProjectParams
 ): Promise<TestResult[]> => {
-  await buildProjects({
+  await buildProject({
     destinationDirectory: params.projectDir,
     config: params.project.projectConfiguration,
     s3: params.templateRepository,
