@@ -14,12 +14,14 @@ export interface DeploySetProjectConfig {
   projectConfiguration: ProjectConfiguration;
   packageConfigurations: DeploySetPackageConfig[];
   rootTests: string[];
+
   /**
    * Repository that deploy set should be cloned into
    */
   targetRepo?: string;
+
   /**
-   * Path to a readme file in the Goldstack repository that the Readme in the repo should be overriden with.
+   * Path to a readme file in the Goldstack repository that the Readme in the repo should be overridden with.
    */
   repoReadme?: string;
 }
