@@ -28,7 +28,7 @@ import ScrollableAnchor from 'react-scrollable-anchor';
 import {
   ShortTemplateFeature,
   TemplateIcons,
-} from '@goldstack/project-template-data';
+} from '@goldstack/template-metadata';
 
 const IconList = (props: { icons: TemplateIcons[] }): JSX.Element => {
   const resolvedIcons = resolveIcons(props.icons);

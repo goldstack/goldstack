@@ -7,7 +7,7 @@ import Header from 'src/components/Header';
 import {
   ProjectTemplateProps,
   allTemplates,
-} from '@goldstack/project-template-data';
+} from '@goldstack/template-metadata';
 
 import Footer from 'src/components/Footer';
 import Breadcrump from '../../components/Breadcrump';

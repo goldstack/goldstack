@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "."
+  },
+  "references": [
+    {
+      "path": "../../../templates-management/packages/template-build-set"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-project"
+    }
+  ]
+}

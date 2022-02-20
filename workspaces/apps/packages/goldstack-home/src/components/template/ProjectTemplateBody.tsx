@@ -1,4 +1,4 @@
-import { ProjectTemplateProps } from '@goldstack/project-template-data';
+import { ProjectTemplateProps } from '@goldstack/template-metadata';
 import React from 'react';
 
 import TopTemplateIcon from './../../icons/front/top-template.svg';

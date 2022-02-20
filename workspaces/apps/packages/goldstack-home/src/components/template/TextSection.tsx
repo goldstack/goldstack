@@ -6,7 +6,7 @@ import MeetingImg from 'src/img/meeting.jpg';
 
 import Image from 'next/image';
 
-import { TextSectionProps } from '@goldstack/project-template-data';
+import { TextSectionProps } from '@goldstack/template-metadata';
 
 const TextSection = (props: TextSectionProps): JSX.Element => {
   return (
