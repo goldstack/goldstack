@@ -199,7 +199,7 @@ Note that Goldstack also supports overriding the path of the default AWS configu
 
 There are a number of issues when trying to work with multiple profiles and SSO credentials, see [aws/aws-cli#4982 (comment)](https://github.com/aws/aws-cli/issues/4982#issuecomment-939348934) and [goldstack/goldstack#17](https://github.com/goldstack/goldstack/issues/17).
 
-An excellent way to deal with situations where we do not want to provide the user credentials directly, is to use [process credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html).
+An excellent way to deal with situations where we do not want to provide the user credentials directly is to use [process credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html).
 
 Goldstack supports defining process credentials in the `config/infra/aws/config.json` file.
 

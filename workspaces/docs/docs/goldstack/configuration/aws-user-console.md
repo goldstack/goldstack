@@ -1,4 +1,3 @@
-
 [%Step-by-step Video Guide](https://www.youtube.com/embed/-lWrkpzEgfs)
 
 The easiest way to configure the AWS user for Goldstack is to do it during project setup by providing an _AWS Access Key Id_ and _AWS Secret Access Key_. To obtain these, please do the following:

@@ -1,4 +1,3 @@
-
 AWS credentials they can be configured directly in the Goldstack configuration file. Note we do not recommend this option. If you can, use the user credentials or environment variables.
 
 This file can be found under the following paths:
