@@ -98,10 +98,8 @@ export async function getAWSUserFromGoldstackConfig(
     }
 
     let credentials: AWS.Credentials;
-    let filename: string | undefined;
-    if (userConfig.awsConfigFileName) {
-      filename = undefined;
-    } else if (!process.env.SHARE_CREDENTIALS_FILE) {
+    let filename: string | undefined = undefined;
+    if (!process.env.SHARE_CREDENTIALS_FILE) {
       filename = userConfig.awsCredentialsFileName;
     }
 
