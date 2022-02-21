@@ -50,6 +50,9 @@ export async function getAWSUserFromContainerEnvironment(): Promise<AWS.ECSCrede
 export async function getAWSUserFromDefaultLocalProfile(): Promise<AWS.Credentials> {
   let credentials = new AWS.SharedIniFileCredentials();
 
+  // see https://github.com/aws/aws-sdk-js/pull/1391
+  process.env.AWS_SDK_LOAD_CONFIG = 'true';
+
   // if no access key is found, try loading process_credentials
   if (!credentials.accessKeyId) {
     credentials = new AWS.ProcessCredentials();
@@ -57,8 +60,6 @@ export async function getAWSUserFromDefaultLocalProfile(): Promise<AWS.Credentia
   }
 
   AWS.config.credentials = credentials;
-  // see https://github.com/aws/aws-sdk-js/pull/1391
-  process.env.AWS_SDK_LOAD_CONFIG = 'true';
   return credentials;
 }
 
