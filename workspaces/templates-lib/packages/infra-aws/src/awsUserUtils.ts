@@ -51,7 +51,7 @@ export async function getAWSUserFromDefaultLocalProfile(): Promise<AWS.Credentia
   let credentials = new AWS.SharedIniFileCredentials();
 
   // see https://github.com/aws/aws-sdk-js/pull/1391
-  process.env.AWS_SDK_LOAD_CONFIG = 'true';
+  process.env.AWS_SDK_LOAD_CONFIG = '1';
 
   // if no access key is found, try loading process_credentials
   if (!credentials.accessKeyId) {
@@ -87,8 +87,9 @@ export async function getAWSUserFromGoldstackConfig(
       AWS_CONFIG_FILE: process.env.AWS_CONFIG_FILE,
     };
 
-    // support loading from both `config` and `credentials` files, see https://github.com/goldstack/goldstack/issues/17#issuecomment-1044811805
+    // support loading from both `config` and `credentials` files, see https://github.com/goldstack/goldstack/issues/17#issuecomment-1044811805  https://github.com/aws/aws-sdk-js/pull/1391
     process.env.AWS_SDK_LOAD_CONFIG = '1';
+
     if (userConfig.awsConfigFileName) {
       // filename property is ignored if AWS_SDK_LOAD_CONFIG is set; thus need to set AWS_SHARED_CREDENTIALS_FILE.
       process.env.AWS_SHARED_CREDENTIALS_FILE =
