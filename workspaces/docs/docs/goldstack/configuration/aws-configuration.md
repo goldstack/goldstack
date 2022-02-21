@@ -49,6 +49,6 @@ Useful commands to use in the `credential_process` field are: [aws-sso-creds-hel
 
 [!embed](./aws-user-config-file.md)
 
-### Using environment variables
+### Credentials in Environment Variables
 
 [!embed](./aws-user-env-variables.md)
