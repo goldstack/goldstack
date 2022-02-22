@@ -108,6 +108,10 @@ export async function getAWSUserFromGoldstackConfig(
         filename: filename,
       });
     } else {
+      // Allow `AWS.ProcessCredentials` to search the default config location `~/.aws/config` in addition to `credentials`
+      // This matches most other CLI / SDK implementations (including AWS JS SDK v3) and the behaviour of most `credential_process` helper tools
+      // With this enabled, `AWS_CONFIG_FILE` must not contains an invalid path, but `AWS_SHARED_CREDENTIALS_FILE` can be missing.
+      process.env.AWS_SDK_LOAD_CONFIG = '1';
       credentials = new AWS.ProcessCredentials({
         profile: userConfig.profile,
         filename: filename,
