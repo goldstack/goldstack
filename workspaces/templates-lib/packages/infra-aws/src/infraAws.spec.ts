@@ -4,24 +4,54 @@ import assert from 'assert';
 import path from 'path';
 
 describe('AWS User config', () => {
-  it.skip('Should read from AWS config in user folder if no config provided', async () => {
+  it('Should read from AWS credentials in user folder if no config provided', async () => {
     // Skip if not in CI https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables
     if (!process.env.GITHUB_ACTIONS) {
       return;
     }
 
     console.log('perform test on ci');
-    const awsConfig = `
+    const awsCredentials = `
 [default]
 aws_access_key_id=fromProfileKey
 aws_secret_access_key=fromProfileSecret
     `;
 
-    write(awsConfig, './~/.aws/config');
+    write(awsCredentials, '~/.aws/credentials');
 
     const credentials = await getAWSUser('default', './invalid');
     expect(credentials.accessKeyId).toEqual('fromProfileKey');
     expect(credentials.secretAccessKey).toEqual('fromProfileSecret');
+  });
+
+  it('Should read AWS credentials process in user folder if no config provided', async () => {
+    // Skip if not in CI https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables
+    if (!process.env.GITHUB_ACTIONS) {
+      return;
+    }
+
+    const awsConfig = `
+[default]
+region=us-west-2
+credential_process=cat ~/processCredentials.json
+    `;
+
+    write(awsConfig, '~/.aws/config');
+
+    const processCredentials = `
+{
+  "Version": 1,
+  "AccessKeyId": "fromProcessCredentialsKey",
+  "SecretAccessKey": "fromProcessCredentialsSecret",
+  "SessionToken": "the AWS session token for temporary credentials",
+  "Expiration": "ISO8601 timestamp when the credentials expire"
+}`;
+
+    write(processCredentials, '~/processCredentials.json');
+
+    const credentials = await getAWSUser('default', './invalid');
+    expect(credentials.accessKeyId).toEqual('fromProcessCredentialsKey');
+    expect(credentials.secretAccessKey).toEqual('fromProcessCredentialsSecret');
   });
 
   it('Should read AWS config from Goldstack config file', async () => {
