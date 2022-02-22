@@ -224,6 +224,25 @@ This will require a `~/.aws/config` file as follows:
 
 Useful commands to use in the `credential_process` field are: [aws-sso-creds-helper](https://github.com/ryansonshine/aws-sso-creds-helper), [aws-sso-util](https://github.com/benkehoe/aws-sso-util#adding-aws-sso-support-to-aws-sdks), [aws-vault](https://github.com/99designs/aws-vault/blob/0615e7c8cddc5d5046e29b87acfc0fe73c1aa998/USAGE.md#using-credential_process) and [aws2-wrap](https://github.com/linaro-its/aws2-wrap#use-the-credentials-via-awsconfig).
 
+Note that it is also possible to place the credentials file in a different location.
+
+```json
+{
+  "users": [
+    {
+      "name": "prod",
+      "type": "profile",
+      "config": {
+        "profile": "prod",
+        "awsDefaultRegion": "us-west-2",
+        "awsConfigFileName": "/path/to/config/file",
+        "credentialsSource": "process"
+      }
+    }
+  ]
+}
+```
+
 ### Using credentials in Goldstack configuration file
 
 AWS credentials they can be configured directly in the Goldstack configuration file. Note we do not recommend this option. If you can, use the user credentials or environment variables.
@@ -266,8 +285,6 @@ Make sure that the `"name"` property matches the `"awsUser"` of module deploymen
 Note that this file should *not* checked into source control if AWS credentials are provided.
 
 If you want to supply AWS user credentials in your CI/CD systems, these can be supplied using environment variables and for local development you can use the files provided by the AWS CLI (see above).
-
-### Using environment variables
 
 ### Credentials in Environment Variables
 

@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.3.28",
-    "@goldstack/infra-aws": "0.3.35",
+    "@goldstack/infra-aws": "0.3.36",
     "@goldstack/prepare-template": "0.1.0",
     "@goldstack/utils-config": "0.3.25",
     "@goldstack/utils-package": "0.3.30",
