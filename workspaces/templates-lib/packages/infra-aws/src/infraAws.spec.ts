@@ -1,12 +1,12 @@
 import { getAWSUser } from './infraAws';
-import { write, mkdir } from '@goldstack/utils-sh';
+import { write, mkdir, rmSafe } from '@goldstack/utils-sh';
 import assert from 'assert';
 import path from 'path';
 
 describe('AWS User config', () => {
   it('Should read from AWS credentials in user folder if no config provided', async () => {
     // Skip if not in CI https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables
-    if (!process.env.GITHUB_ACTIONS) {
+    if (!process.env.GITHUB_ACTION) {
       return;
     }
 
@@ -17,6 +17,7 @@ aws_access_key_id=fromProfileKey
 aws_secret_access_key=fromProfileSecret
     `;
 
+    await rmSafe('~/.aws/config');
     write(awsCredentials, '~/.aws/credentials');
 
     const credentials = await getAWSUser('default', './invalid');
@@ -26,7 +27,7 @@ aws_secret_access_key=fromProfileSecret
 
   it('Should read AWS credentials process in user folder if no config provided', async () => {
     // Skip if not in CI https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables
-    if (!process.env.GITHUB_ACTIONS) {
+    if (!process.env.GITHUB_ACTION) {
       return;
     }
 
@@ -36,6 +37,7 @@ region=us-west-2
 credential_process=cat ~/processCredentials.json
     `;
 
+    await rmSafe('~/.aws/credentials');
     write(awsConfig, '~/.aws/config');
 
     const processCredentials = `
