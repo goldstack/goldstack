@@ -2,6 +2,7 @@ import { getAWSUser } from './infraAws';
 import { write, mkdir, rmSafe } from '@goldstack/utils-sh';
 import assert from 'assert';
 import path from 'path';
+import os from 'os';
 
 describe('AWS User config', () => {
   it('Should read from AWS credentials in user folder if no config provided', async () => {
@@ -10,15 +11,16 @@ describe('AWS User config', () => {
       return;
     }
 
-    console.log('perform test on ci');
+    console.log('RUN IN CI');
     const awsCredentials = `
 [default]
 aws_access_key_id=fromProfileKey
 aws_secret_access_key=fromProfileSecret
     `;
 
-    await rmSafe('~/.aws/config');
-    write(awsCredentials, '~/.aws/credentials');
+    mkdir('-p', `${os.homedir()}/.aws`);
+    await rmSafe(`${os.homedir}/.aws/config`);
+    write(awsCredentials, `${os.homedir}/.aws/credentials`);
 
     const credentials = await getAWSUser('default', './invalid');
     expect(credentials.accessKeyId).toEqual('fromProfileKey');
@@ -37,8 +39,9 @@ region=us-west-2
 credential_process=cat ~/processCredentials.json
     `;
 
-    await rmSafe('~/.aws/credentials');
-    write(awsConfig, '~/.aws/config');
+    mkdir('-p', `${os.homedir()}/.aws`);
+    await rmSafe(`${os.homedir}/.aws/credentials`);
+    write(awsConfig, `${os.homedir}/.aws/config`);
 
     const processCredentials = `
 {
@@ -49,7 +52,7 @@ credential_process=cat ~/processCredentials.json
   "Expiration": "ISO8601 timestamp when the credentials expire"
 }`;
 
-    write(processCredentials, '~/processCredentials.json');
+    write(processCredentials, `${os.homedir}/processCredentials.json`);
 
     const credentials = await getAWSUser('default', './invalid');
     expect(credentials.accessKeyId).toEqual('fromProcessCredentialsKey');

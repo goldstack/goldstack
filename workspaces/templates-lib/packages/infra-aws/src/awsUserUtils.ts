@@ -50,14 +50,19 @@ export async function getAWSUserFromContainerEnvironment(): Promise<AWS.ECSCrede
 export async function getAWSUserFromDefaultLocalProfile(): Promise<AWS.Credentials> {
   let credentials = new AWS.SharedIniFileCredentials();
 
-  // see https://github.com/aws/aws-sdk-js/pull/1391
-  process.env.AWS_SDK_LOAD_CONFIG = '1';
+  const envVarValues = {
+    AWS_SDK_LOAD_CONFIG: process.env.AWS_SDK_LOAD_CONFIG,
+  };
 
   // if no access key is found, try loading process_credentials
   if (!credentials.accessKeyId) {
+    // see https://github.com/aws/aws-sdk-js/pull/1391
+    process.env.AWS_SDK_LOAD_CONFIG = '1';
     credentials = new AWS.ProcessCredentials();
     await credentials.refreshPromise();
   }
+
+  resetEnvironmentVariables(envVarValues);
 
   AWS.config.credentials = credentials;
   return credentials;
@@ -123,13 +128,7 @@ export async function getAWSUserFromGoldstackConfig(
       await credentials.refreshPromise();
     }
 
-    Object.entries(envVarValues).forEach(([key, value]) => {
-      if (process.env[key] === undefined) {
-        delete process.env[key];
-      } else {
-        process.env[key] = value;
-      }
-    });
+    resetEnvironmentVariables(envVarValues);
 
     if (!credentials.accessKeyId) {
       throw new Error(
@@ -198,4 +197,15 @@ export async function getAWSUserFromGoldstackConfig(
   }
 
   throw new Error(`Unknown user config type ${user.type}`);
+}
+function resetEnvironmentVariables(envVarValues: {
+  [key: string]: string | undefined;
+}) {
+  Object.entries(envVarValues).forEach(([key, value]) => {
+    if (process.env[key] === undefined) {
+      delete process.env[key];
+    } else {
+      process.env[key] = value;
+    }
+  });
 }
