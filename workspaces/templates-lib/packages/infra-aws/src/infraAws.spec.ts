@@ -4,7 +4,27 @@ import assert from 'assert';
 import path from 'path';
 
 describe('AWS User config', () => {
-  it.skip('Should read AWS config from Goldstack config file', async () => {
+  it.skip('Should read from AWS config in user folder if no config provided', async () => {
+    // Skip if not in CI https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables
+    if (!process.env.GITHUB_ACTIONS) {
+      return;
+    }
+
+    console.log('perform test on ci');
+    const awsConfig = `
+[default]
+aws_access_key_id=fromProfileKey
+aws_secret_access_key=fromProfileSecret
+    `;
+
+    write(awsConfig, './~/.aws/config');
+
+    const credentials = await getAWSUser('default', './invalid');
+    expect(credentials.accessKeyId).toEqual('fromProfileKey');
+    expect(credentials.secretAccessKey).toEqual('fromProfileSecret');
+  });
+
+  it('Should read AWS config from Goldstack config file', async () => {
     const awsConfig = `{
   "users": [
     {
@@ -40,14 +60,6 @@ describe('AWS User config', () => {
       testDir + '/config-embedded.json'
     );
     assert(credentialsProd.accessKeyId === 'dummy-prod');
-  });
-
-  // problems when initialising AWS config more than once, so leaving this as one test for now
-
-  // following difficult to test
-  it.skip('Should read from AWS config in user folder if no config provided', async () => {
-    const credentials = await getAWSUser('default', './invalid');
-    assert(credentials.accessKeyId);
   });
 
   it('Should read from AWS credentials file', async () => {
@@ -107,6 +119,7 @@ describe('AWS User config', () => {
     expect(credentialsProcess.secretAccessKey).toEqual('processsecret');
     expect(credentialsProcess.accessKeyId).toEqual('processkey');
   });
+
   it('Should load credentials using a credentials source defined in the config file', async () => {
     const testDir = './goldstackLocal/tests/getAWSUser';
 
