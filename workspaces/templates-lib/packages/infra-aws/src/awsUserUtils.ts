@@ -50,15 +50,21 @@ export async function getAWSUserFromContainerEnvironment(): Promise<AWS.ECSCrede
 export async function getAWSUserFromDefaultLocalProfile(): Promise<AWS.Credentials> {
   let credentials = new AWS.SharedIniFileCredentials();
 
+  const envVarValues = {
+    AWS_SDK_LOAD_CONFIG: process.env.AWS_SDK_LOAD_CONFIG,
+  };
+
   // if no access key is found, try loading process_credentials
   if (!credentials.accessKeyId) {
+    // see https://github.com/aws/aws-sdk-js/pull/1391
+    process.env.AWS_SDK_LOAD_CONFIG = '1';
     credentials = new AWS.ProcessCredentials();
     await credentials.refreshPromise();
   }
 
+  resetEnvironmentVariables(envVarValues);
+
   AWS.config.credentials = credentials;
-  // see https://github.com/aws/aws-sdk-js/pull/1391
-  process.env.AWS_SDK_LOAD_CONFIG = 'true';
   return credentials;
 }
 
@@ -85,8 +91,9 @@ export async function getAWSUserFromGoldstackConfig(
       AWS_SHARED_CREDENTIALS_FILE: process.env.AWS_SHARED_CREDENTIALS_FILE,
       AWS_CONFIG_FILE: process.env.AWS_CONFIG_FILE,
     };
+
     if (userConfig.awsConfigFileName) {
-      // support loading from both `config` and `credentials` files, see https://github.com/goldstack/goldstack/issues/17#issuecomment-1044811805
+      // support loading from both `config` and `credentials` files, see https://github.com/goldstack/goldstack/issues/17#issuecomment-1044811805  https://github.com/aws/aws-sdk-js/pull/1391
       process.env.AWS_SDK_LOAD_CONFIG = '1';
       // filename property is ignored if AWS_SDK_LOAD_CONFIG is set; thus need to set AWS_SHARED_CREDENTIALS_FILE.
       process.env.AWS_SHARED_CREDENTIALS_FILE =
@@ -95,10 +102,8 @@ export async function getAWSUserFromGoldstackConfig(
     }
 
     let credentials: AWS.Credentials;
-    let filename: string | undefined;
-    if (userConfig.awsConfigFileName) {
-      filename = undefined;
-    } else if (!process.env.SHARE_CREDENTIALS_FILE) {
+    let filename: string | undefined = undefined;
+    if (!process.env.SHARE_CREDENTIALS_FILE) {
       filename = userConfig.awsCredentialsFileName;
     }
 
@@ -108,6 +113,14 @@ export async function getAWSUserFromGoldstackConfig(
         filename: filename,
       });
     } else {
+      // Allow `AWS.ProcessCredentials` to search the default config location `~/.aws/config` in addition to `credentials`
+      // This matches most other CLI / SDK implementations (including AWS JS SDK v3) and the behaviour of most `credential_process` helper tools
+      // With this enabled, `AWS_CONFIG_FILE` must not contains an invalid path, but `AWS_SHARED_CREDENTIALS_FILE` can be missing.
+
+      if (!userConfig.awsCredentialsFileName) {
+        process.env.AWS_SDK_LOAD_CONFIG = '1';
+      }
+
       credentials = new AWS.ProcessCredentials({
         profile: userConfig.profile,
         filename: filename,
@@ -115,13 +128,7 @@ export async function getAWSUserFromGoldstackConfig(
       await credentials.refreshPromise();
     }
 
-    Object.entries(envVarValues).forEach(([key, value]) => {
-      if (process.env[key] === undefined) {
-        delete process.env[key];
-      } else {
-        process.env[key] = value;
-      }
-    });
+    resetEnvironmentVariables(envVarValues);
 
     if (!credentials.accessKeyId) {
       throw new Error(
@@ -190,4 +197,15 @@ export async function getAWSUserFromGoldstackConfig(
   }
 
   throw new Error(`Unknown user config type ${user.type}`);
+}
+function resetEnvironmentVariables(envVarValues: {
+  [key: string]: string | undefined;
+}) {
+  Object.entries(envVarValues).forEach(([key, value]) => {
+    if (process.env[key] === undefined) {
+      delete process.env[key];
+    } else {
+      process.env[key] = value;
+    }
+  });
 }
