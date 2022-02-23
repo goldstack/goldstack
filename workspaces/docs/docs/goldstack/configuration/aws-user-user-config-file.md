@@ -46,8 +46,8 @@ Note that Goldstack also supports overriding the path of the default AWS configu
       "config": {
         "profile": "prod",
         "awsDefaultRegion": "us-west-2",
-        "awsConfigFile": "/path/to/config/file",
-        "awsCredentialsFile": "/path/to/credentials/file"
+        "awsConfigFileName": "/path/to/config/file",
+        "awsCredentialsFileName": "/path/to/credentials/file"
       }
     }
   ]

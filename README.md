@@ -72,49 +72,6 @@ Getting started with a new project often takes so much longer than it should. Ra
 
 Goldstack provides high quality starter projects that are configured based on best practices and sensible defaults. Using a Goldstack starter project rather than a hand-rolled one, will save you dozens of development hours. Moreover, at Goldstack we obsess with every detail of our starter projects and have the freedom to spend the time on optimizing things; something often lost in the race to get goals delivered in many development projects.
 
-## Design Principles
-
-Goldstack templates are based on the following design principles:
-
-### Only the best tech
-
-We aim to provide starter templates for the best frameworks currently on the market. All templates on Goldstack are based on frameworks and solutions with proven track records for productivity and stability.
-
-### Professional
-
-Goldstack templates allow your project to lift off at rocket speed while being sufficiently robust and configurable to fit the requirements of a professional environment. We enable this by:
-
-*   All infrastructure is defined in Terraform and can be modified to fit into your environments
-*   Everything can be deployed in AWS
-*   We provide instructions for security hardening for every template
-
-### Serverless
-
-Goldstack templates use Serverless technologies unlocking the benefits of rapid development cycles, security, observability and low ongoing costs. Following some examples of ways Serverless technologies are employed for the templates:
-
-*   Any frontends are deployed using AWS S3 and CloudFront
-*   Our Express server template is wrapped in a Lambda
-*   Our email template utilizes AWS Simple Email Service for email sending
-
-### Unlimited customizability
-
-We all know that there is usually a trade off in platforms that help us get something done quickly such as when using Firebase. It is very easy to develop and deploy a simple application. However, it is often difficult to adapt the initial simple project to our specific needs. Goldstack is based on the premise that there should not a be a limit to what you can do with your project. Some of the elements that enable this are:
-
-*   Infrastructure can be adapted to your needs utilizing the full power of Terraform
-*   Core functionality is defined as easy to change source code in the project
-*   Any dependencies we add to your project are available as open source and open for you to modify as required
-
-### Modularity first
-
-Modularity is one of the most important principles in software design. Unfortunately it is often difficult in the JavaScript ecosystem to develop truly modular applications. Many projects have started to adopt Lerna for this purpose, but Lerna comes with its own problems, especially for larger projects.
-
-*   Utilizing Yarn 2 for efficient workspace management
-*   Providing TypeScript APIs for connecting packages; for instance a backend package can simply import an S3 package and use TypeScript methods to establish a connection to the bucket
-
-### Built to be Tested
-
-Automated testing is a key driver for software quality but, while modern frameworks make it easy to write unit tests for individual components, it is often difficult to establish end-to-end tests that cover the entire stack of an application. Goldstack templates are optimized to allow writing tests that cover all packages of an application. For instance, it is possible to write a Jest test that uses React Testing Library to walk through the user interface while interacting with an in-memory API server (rather than having to mock calls to the backend).
-
 # Configuration
 
 It can often be overwhelming to start working with a new starter project. If you provide us with some details about your project, we can generate a baseline configuration for deployment to AWS.
@@ -187,8 +144,8 @@ Note that Goldstack also supports overriding the path of the default AWS configu
       "config": {
         "profile": "prod",
         "awsDefaultRegion": "us-west-2",
-        "awsConfigFile": "/path/to/config/file",
-        "awsCredentialsFile": "/path/to/credentials/file"
+        "awsConfigFileName": "/path/to/config/file",
+        "awsCredentialsFileName": "/path/to/credentials/file"
       }
     }
   ]
@@ -223,6 +180,25 @@ This will require a `~/.aws/config` file as follows:
     credential_process=[your command]
 
 Useful commands to use in the `credential_process` field are: [aws-sso-creds-helper](https://github.com/ryansonshine/aws-sso-creds-helper), [aws-sso-util](https://github.com/benkehoe/aws-sso-util#adding-aws-sso-support-to-aws-sdks), [aws-vault](https://github.com/99designs/aws-vault/blob/0615e7c8cddc5d5046e29b87acfc0fe73c1aa998/USAGE.md#using-credential_process) and [aws2-wrap](https://github.com/linaro-its/aws2-wrap#use-the-credentials-via-awsconfig).
+
+Note that it is also possible to place the credentials file in a different location.
+
+```json
+{
+  "users": [
+    {
+      "name": "prod",
+      "type": "profile",
+      "config": {
+        "profile": "prod",
+        "awsDefaultRegion": "us-west-2",
+        "awsConfigFileName": "/path/to/config/file",
+        "credentialsSource": "process"
+      }
+    }
+  ]
+}
+```
 
 ### Using credentials in Goldstack configuration file
 
@@ -266,8 +242,6 @@ Make sure that the `"name"` property matches the `"awsUser"` of module deploymen
 Note that this file should *not* checked into source control if AWS credentials are provided.
 
 If you want to supply AWS user credentials in your CI/CD systems, these can be supplied using environment variables and for local development you can use the files provided by the AWS CLI (see above).
-
-### Using environment variables
 
 ### Credentials in Environment Variables
 
