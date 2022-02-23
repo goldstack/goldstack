@@ -85,7 +85,7 @@
           "$ref": "#/definitions/ProjectConfiguration"
         },
         "repoReadme": {
-          "description": "Path to a readme file in the Goldstack repository that the Readme in the repo should be overriden with.",
+          "description": "Path to a readme file in the Goldstack repository that the Readme in the repo should be overridden with.",
           "type": "string"
         },
         "rootTests": {
