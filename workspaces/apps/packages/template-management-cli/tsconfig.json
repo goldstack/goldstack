@@ -28,6 +28,9 @@
       "path": "../../../templates-management/packages/template-build-set"
     },
     {
+      "path": "../../../templates/packages/template-metadata"
+    },
+    {
       "path": "../../../templates-management/packages/template-repository"
     },
     {

@@ -1,4 +1,4 @@
-import { ShortTemplateFeature } from '@goldstack/project-template-data';
+import { ShortTemplateFeature } from '@goldstack/template-metadata';
 import React from 'react';
 import TemplateFeature from './TemplateFeature';
 

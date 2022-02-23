@@ -33,6 +33,7 @@
     "@goldstack/project-build": "0.1.0",
     "@goldstack/project-install": "0.1.0",
     "@goldstack/template-build-set": "0.1.0",
+    "@goldstack/template-metadata": "0.1.0",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/template-repository-bucket": "0.1.0",
     "@goldstack/template-s3": "0.3.86",

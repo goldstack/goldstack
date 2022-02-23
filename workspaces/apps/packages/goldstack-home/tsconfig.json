@@ -38,7 +38,7 @@
       "path": "../../../templates-management/packages/project-repository"
     },
     {
-      "path": "../project-template-data"
+      "path": "../../../templates/packages/template-metadata"
     },
     {
       "path": "../../../templates-lib/packages/utils-package"

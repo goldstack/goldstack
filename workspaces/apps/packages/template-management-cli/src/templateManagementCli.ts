@@ -6,7 +6,7 @@ import tmp from 'tmp';
 import { S3TemplateRepository } from '@goldstack/template-repository';
 import yargs from 'yargs';
 import assert from 'assert';
-import { getAllBuildSets, getBuildSet } from './deploySets/deploySets';
+import { getAllBuildSets, getBuildSet } from '@goldstack/template-metadata';
 import AWSMock from 'mock-aws-s3';
 import { getAwsConfigPath } from '@goldstack/utils-config';
 import { readConfig } from '@goldstack/infra-aws';

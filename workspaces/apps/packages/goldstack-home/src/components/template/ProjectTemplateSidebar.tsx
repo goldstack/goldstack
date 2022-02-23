@@ -8,7 +8,7 @@ import styles from './ProjectTemplateSidebar.module.css';
 import {
   TemplateFeatureImage,
   PackageProps,
-} from '@goldstack/project-template-data';
+} from '@goldstack/template-metadata';
 
 import { resolveImage } from './imageUtil';
 

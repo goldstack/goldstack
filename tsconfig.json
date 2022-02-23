@@ -64,10 +64,6 @@
       "name": "@goldstack/goldstack-home"
     },
     {
-      "path": "workspaces/apps/packages/project-template-data",
-      "name": "@goldstack/project-template-data"
-    },
-    {
       "path": "workspaces/apps/packages/template-management-cli",
       "name": "@goldstack/template-management-cli"
     },
@@ -150,6 +146,10 @@
     {
       "path": "workspaces/templates/packages/static-website-aws",
       "name": "@goldstack/static-website-aws"
+    },
+    {
+      "path": "workspaces/templates/packages/template-metadata",
+      "name": "@goldstack/template-metadata"
     },
     {
       "path": "workspaces/templates-lib/packages/infra",
