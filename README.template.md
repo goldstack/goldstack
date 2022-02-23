@@ -23,7 +23,7 @@ It should be a surprise to no one that setting up a dynamic monorepo for JavaScr
 
 # How Does It Work
 
-[!embed](workspaces/docs/docs/goldstack/about/index.md)
+[!embed](workspaces/docs/docs/goldstack/how-does-it-work/index.md)
 
 # Configuration
 
