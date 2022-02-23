@@ -32,7 +32,7 @@
     "@goldstack/utils-package": "0.3.30",
     "@goldstack/utils-project": "0.3.26",
     "@goldstack/utils-sh": "0.4.24",
-    "@goldstack/utils-template": "0.3.26",
+    "@goldstack/utils-template": "0.3.27",
     "@goldstack/utils-template-test": "0.1.0"
   },
   "devDependencies": {
