@@ -1697,8 +1697,8 @@ __metadata:
     "@goldstack/project-build": 0.1.0
     "@goldstack/project-install": 0.1.0
     "@goldstack/template-build-set": 0.1.0
-    "@goldstack/template-metadata": 0.1.0
     "@goldstack/template-docker-image-aws": 0.3.69
+    "@goldstack/template-metadata": 0.1.0
     "@goldstack/template-repository": 0.1.0
     "@goldstack/template-repository-bucket": 0.1.0
     "@goldstack/template-s3": 0.3.86
@@ -1745,6 +1745,7 @@ __metadata:
     typescript: ^4.4.3
   languageName: unknown
   linkType: soft
+
 "@goldstack/template-nextjs@0.3.96, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs"
