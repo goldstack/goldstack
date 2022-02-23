@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-template",
-  "version": "0.3.26",
+  "version": "0.3.27",
   "description": "Utilities to work with Goldstack templates",
   "keywords": [
     "goldstack",

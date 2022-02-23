@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-nextjs",
-  "version": "0.3.96",
+  "version": "0.3.97",
   "description": "Building blocks for deploying Next.js applications to AWS using S3 and CloudFront",
   "keywords": [
     "goldstack",
@@ -50,7 +50,7 @@
   "dependencies": {
     "@goldstack/infra": "0.3.28",
     "@goldstack/infra-aws": "0.3.36",
-    "@goldstack/template-static-website-aws": "0.3.87",
+    "@goldstack/template-static-website-aws": "0.3.88",
     "@goldstack/utils-aws-cli": "0.3.46",
     "@goldstack/utils-aws-lambda": "0.1.18",
     "@goldstack/utils-cli": "0.2.9",
@@ -59,7 +59,7 @@
     "@goldstack/utils-package": "0.3.30",
     "@goldstack/utils-package-config": "0.3.30",
     "@goldstack/utils-sh": "0.4.24",
-    "@goldstack/utils-template": "0.3.26",
+    "@goldstack/utils-template": "0.3.27",
     "@goldstack/utils-terraform": "0.3.58",
     "glob": "^7.1.6",
     "source-map-support": "^0.5.21",
