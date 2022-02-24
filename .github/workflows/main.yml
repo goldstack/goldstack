@@ -182,6 +182,11 @@ jobs:
           git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy_dev)"
           git status
 
+      - name: Linting and prettier
+        run: |
+          yarn format
+          yarn lint-fix
+
       - name: Push changes
         if: github.ref == 'refs/heads/master'
         uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
