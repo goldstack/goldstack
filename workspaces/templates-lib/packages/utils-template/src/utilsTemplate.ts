@@ -3,7 +3,7 @@ import configSchema from './schemas/goldstackTemplateConfigurationSchema.json';
 import { read } from '@goldstack/utils-sh';
 import { GoldstackTemplateConfiguration } from './generated/goldstackTemplateConfigurationSchema';
 
-export { GoldstackTemplateConfiguration } from './generated/goldstackTemplateConfigurationSchema';
+export type { GoldstackTemplateConfiguration } from './generated/goldstackTemplateConfigurationSchema';
 
 export const readTemplateConfigFromString = (
   data: string

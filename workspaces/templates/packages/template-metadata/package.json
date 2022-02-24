@@ -1,5 +1,5 @@
 {
-  "name": "@goldstack/project-template-data",
+  "name": "@goldstack/template-metadata",
   "version": "0.1.0",
   "description": "",
   "license": "MIT",
@@ -19,6 +19,10 @@
     "test": "jest --config=./jest.config.js --watch",
     "test-ci": "jest --passWithNoTests --config=./jest.config.js",
     "version:apply": "yarn version \"$@\" && yarn version apply"
+  },
+  "dependencies": {
+    "@goldstack/template-build-set": "0.1.0",
+    "@goldstack/utils-project": "0.3.26"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",

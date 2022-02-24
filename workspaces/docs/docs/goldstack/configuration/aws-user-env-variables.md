@@ -1,5 +1,3 @@
-### Credentials in Environment Variables
-
 Goldstack can read AWS _Access Key ID_ and _Secret Access Key_ from environment variables. The easiest way is to set the following environment variables:
 
 ```bash

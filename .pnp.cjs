@@ -55,10 +55,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/apps/packages/goldstack-home"
       },
       {
-        "name": "@goldstack/project-template-data",
-        "reference": "workspace:workspaces/apps/packages/project-template-data"
-      },
-      {
         "name": "@goldstack/template-management-cli",
         "reference": "workspace:workspaces/apps/packages/template-management-cli"
       },
@@ -141,6 +137,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "@goldstack/static-website-aws",
         "reference": "workspace:workspaces/templates/packages/static-website-aws"
+      },
+      {
+        "name": "@goldstack/template-metadata",
+        "reference": "workspace:workspaces/templates/packages/template-metadata"
       },
       {
         "name": "@goldstack/infra",
@@ -377,7 +377,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/project-package-bucket", ["workspace:workspaces/templates-management/packages/project-package-bucket"]],
       ["@goldstack/project-repository", ["workspace:workspaces/templates-management/packages/project-repository"]],
       ["@goldstack/project-repository-bucket", ["workspace:workspaces/templates-management/packages/project-repository-bucket"]],
-      ["@goldstack/project-template-data", ["workspace:workspaces/apps/packages/project-template-data"]],
       ["@goldstack/react-components", ["workspace:workspaces/templates/packages/react-components"]],
       ["@goldstack/s3", ["workspace:workspaces/templates/packages/s3"]],
       ["@goldstack/server-express", ["workspace:workspaces/templates/packages/server-express"]],
@@ -393,6 +392,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/template-lambda-api", ["workspace:workspaces/templates-lib/packages/template-lambda-api"]],
       ["@goldstack/template-lambda-express", ["workspace:workspaces/templates-lib/packages/template-lambda-express"]],
       ["@goldstack/template-management-cli", ["workspace:workspaces/apps/packages/template-management-cli"]],
+      ["@goldstack/template-metadata", ["workspace:workspaces/templates/packages/template-metadata"]],
       ["@goldstack/template-nextjs", ["workspace:workspaces/templates-lib/packages/template-nextjs"]],
       ["@goldstack/template-repository", ["workspace:workspaces/templates-management/packages/template-repository"]],
       ["@goldstack/template-repository-bucket", ["workspace:workspaces/templates-management/packages/template-repository-bucket"]],
@@ -1616,7 +1616,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],
             ["@goldstack/project-config", "workspace:workspaces/templates-management/packages/project-config"],
             ["@goldstack/project-repository", "workspace:workspaces/templates-management/packages/project-repository"],
-            ["@goldstack/project-template-data", "workspace:workspaces/apps/packages/project-template-data"],
+            ["@goldstack/template-metadata", "workspace:workspaces/templates/packages/template-metadata"],
             ["@goldstack/template-nextjs", "workspace:workspaces/templates-lib/packages/template-nextjs"],
             ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],
@@ -2019,20 +2019,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT",
         }]
       ]],
-      ["@goldstack/project-template-data", [
-        ["workspace:workspaces/apps/packages/project-template-data", {
-          "packageLocation": "./workspaces/apps/packages/project-template-data/",
-          "packageDependencies": [
-            ["@goldstack/project-template-data", "workspace:workspaces/apps/packages/project-template-data"],
-            ["@types/jest", "npm:27.0.2"],
-            ["@types/node", "npm:16.11.0"],
-            ["jest", "npm:26.6.3"],
-            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
-            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
-          ],
-          "linkType": "SOFT",
-        }]
-      ]],
       ["@goldstack/react-components", [
         ["workspace:workspaces/templates/packages/react-components", {
           "packageLocation": "./workspaces/templates/packages/react-components/",
@@ -2426,6 +2412,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/project-install", "workspace:workspaces/templates-management/packages/project-install"],
             ["@goldstack/template-build-set", "workspace:workspaces/templates-management/packages/template-build-set"],
             ["@goldstack/template-docker-image-aws", "workspace:workspaces/templates-lib/packages/template-docker-image-aws"],
+            ["@goldstack/template-metadata", "workspace:workspaces/templates/packages/template-metadata"],
             ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],
             ["@goldstack/template-repository-bucket", "workspace:workspaces/templates-management/packages/template-repository-bucket"],
             ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],
@@ -2456,6 +2443,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["webpack", "virtual:ffd8a5c78fe9ed0604bd03149579d9c37601b6a5fbbef5acc1044213429d8ca4682502ca7c144e54258e32773d3c25f0530956da1cbd841f2012de99523624f7#npm:4.43.0"],
             ["webpack-cli", "virtual:ffd8a5c78fe9ed0604bd03149579d9c37601b6a5fbbef5acc1044213429d8ca4682502ca7c144e54258e32773d3c25f0530956da1cbd841f2012de99523624f7#npm:3.3.12"],
             ["yargs", "npm:15.4.1"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@goldstack/template-metadata", [
+        ["workspace:workspaces/templates/packages/template-metadata", {
+          "packageLocation": "./workspaces/templates/packages/template-metadata/",
+          "packageDependencies": [
+            ["@goldstack/template-metadata", "workspace:workspaces/templates/packages/template-metadata"],
+            ["@goldstack/template-build-set", "workspace:workspaces/templates-management/packages/template-build-set"],
+            ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],
+            ["@types/jest", "npm:27.0.2"],
+            ["@types/node", "npm:16.11.0"],
+            ["jest", "npm:26.6.3"],
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:26.5.4"],
+            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
           ],
           "linkType": "SOFT",
         }]

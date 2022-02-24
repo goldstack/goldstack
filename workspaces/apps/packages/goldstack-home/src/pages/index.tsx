@@ -21,7 +21,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Header from './../components/Header';
 
-import { allTemplates } from '@goldstack/project-template-data';
+import { allTemplates } from '@goldstack/template-metadata';
 import PackageList from './../components/PackageList';
 
 import Foundation from './../components/Foundation';

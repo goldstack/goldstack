@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ShortTemplateFeature } from '@goldstack/project-template-data';
+import { ShortTemplateFeature } from '@goldstack/template-metadata';
 
 import styles from './ProjectTemplateFeatures.module.css';
 
