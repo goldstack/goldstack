@@ -1,4 +1,4 @@
-name: "My CodeQL config"
+name: "CodeQL config"
 
 paths-ignore: 
   - .pnp.cjs
