@@ -8,7 +8,7 @@
   "main": "src/module.ts",
   "scripts": {
     "build": "ts-node ./scripts/build.ts",
-    "clean": "rm -rf ./dist && rm -rf distLambda",
+    "clean": "rimraf ./dist && rimraf distLambda",
     "compile": "tsc --build",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
     "deploy": "yarn build && template deploy \"$@\"",
@@ -41,6 +41,7 @@
     "esbuild": "^0.14.5",
     "jest": "^26.6.3",
     "nodemon": "^2.0.4",
+    "rimraf": "^3.0.2",
     "source-map-loader": "^1.0.1",
     "supertest": "^4.0.2",
     "ts-jest": "^26.5.4",

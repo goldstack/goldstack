@@ -11,7 +11,7 @@
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build-web": "ts-node ./src/build.ts $@",
-    "clean": "rm -rf ./dist ./webDist",
+    "clean": "rimraf ./dist && rimraf ./webDist",
     "compile": "tsc --build",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
     "deploy": "yarn build-web $@ && template deploy $@",
@@ -40,6 +40,7 @@
     "light-server": "^2.9.1",
     "nodemon": "^2.0.4",
     "reload": "^3.2.0",
+    "rimraf": "^3.0.2",
     "ts-jest": "^26.5.4",
     "ts-node": "^10.3.0",
     "typescript": "^4.4.3"
