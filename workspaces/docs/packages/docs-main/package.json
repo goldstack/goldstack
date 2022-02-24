@@ -6,8 +6,8 @@
   "sideEffects": false,
   "scripts": {
     "build": "yarn clean && yarn compile",
-    "build:next": "next build && rm -rf ./webDist && next export -o webDist/",
-    "clean": "rm -rf ./dist ./webDist",
+    "build:next": "next build && rimraf ./webDist && next export -o webDist/",
+    "clean": "rimraf ./dist ./webDist",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.compile.json --watch",
     "compile:sass": "node-sass src/styles/app.scss src/styles/app.css --source-map src/styles/app.css.map",
@@ -69,6 +69,7 @@
     "next-transpile-modules": "^8.0.0",
     "node-sass": "^4.14.1",
     "reload": "^3.2.0",
+    "rimraf": "^3.0.2",
     "ts-jest": "^26.5.4",
     "ts-node": "^10.3.0",
     "typescript": "^4.4.3"

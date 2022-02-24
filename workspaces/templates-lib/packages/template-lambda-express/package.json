@@ -33,7 +33,7 @@
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",
-    "clean": "rm -rf ./dist",
+    "clean": "rimraf ./dist",
     "cli": "ts-node bin/template.ts",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
@@ -73,6 +73,7 @@
     "@types/node": "^16.11.0",
     "@types/yargs": "^15.0.5",
     "jest": "^26.6.3",
+    "rimraf": "^3.0.2",
     "ts-jest": "^26.5.4",
     "ts-json-schema-generator": "^0.96.0",
     "ts-node": "^10.3.0",
