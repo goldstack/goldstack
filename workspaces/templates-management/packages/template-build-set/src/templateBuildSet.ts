@@ -315,9 +315,11 @@ async function buildProjects(params: {
       if (project.repoReadme) {
         write(read(params.monorepoRoot + project.repoReadme), 'README.md');
       }
-      await execAsync('git config --global user.email "public@pureleap.com"');
       await execAsync(
-        'git config --global user.name "Goldstack Template Build"'
+        'git config --global user.email "goldstack@pureleap.com"'
+      );
+      await execAsync(
+        'git config --global user.name "Goldstack Project Builder"'
       );
       await execAsync('git add .');
       await execAsync(
