@@ -11,7 +11,7 @@
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",
-    "clean": "rm -rf ./dist",
+    "clean": "rimraf ./dist",
     "cli": "yarn node ./bin/utils-docs-cli",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
@@ -22,9 +22,9 @@
     "test-ci": "jest --passWithNoTests --config=./jest.config.js"
   },
   "dependencies": {
-    "@goldstack/utils-cli": "0.2.9",
-    "@goldstack/utils-docs": "0.3.29",
-    "@goldstack/utils-sh": "0.4.24",
+    "@goldstack/utils-cli": "0.2.10",
+    "@goldstack/utils-docs": "0.3.30",
+    "@goldstack/utils-sh": "0.4.25",
     "@types/yargs": "^15.0.5",
     "source-map-support": "^0.5.21",
     "yargs": "^15.4.1"
@@ -33,6 +33,7 @@
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
     "jest": "^26.6.3",
+    "rimraf": "^3.0.2",
     "ts-jest": "^26.5.4",
     "typescript": "^4.4.3"
   }

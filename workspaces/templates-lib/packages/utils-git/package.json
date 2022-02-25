@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-git",
-  "version": "0.1.30",
+  "version": "0.1.31",
   "description": "Utilities for working with git",
   "keywords": [
     "goldstack",
@@ -23,7 +23,7 @@
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",
-    "clean": "rm -rf ./dist",
+    "clean": "rimraf ./dist",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
@@ -42,6 +42,7 @@
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
     "jest": "^26.6.3",
+    "rimraf": "^3.0.2",
     "ts-jest": "^26.5.4",
     "typescript": "^4.4.3"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-json-to-ts",
-  "version": "0.3.25",
+  "version": "0.3.26",
   "description": "Utility to convert JSON schema into TypeScript interfaces.",
   "keywords": [
     "goldstack",
@@ -26,7 +26,7 @@
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",
-    "clean": "rm -rf ./dist",
+    "clean": "rimraf ./dist",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
@@ -38,17 +38,18 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-log": "0.2.10",
-    "@goldstack/utils-sh": "0.4.24",
+    "@goldstack/utils-log": "0.2.11",
+    "@goldstack/utils-sh": "0.4.25",
     "json-schema-to-typescript": "^9.1.1",
     "replace-ext": "^2.0.0"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.1.30",
+    "@goldstack/utils-git": "0.1.31",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
     "@types/replace-ext": "^0.0.27",
     "jest": "^26.6.3",
+    "rimraf": "^3.0.2",
     "ts-jest": "^26.5.4",
     "typescript": "^4.4.3"
   },

@@ -7,7 +7,7 @@
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:next": "next build && next export -o webDist/",
-    "clean": "rm -rf ./dist ./webDist",
+    "clean": "rimraf ./dist ./webDist",
     "compile": "tsc --build",
     "compile-watch": "tsc --isolatedModules false -p tsconfig.compile.json --watch",
     "compileOld": "tsc --isolatedModules false -p tsconfig.compile.json",
@@ -42,8 +42,8 @@
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
-    "@goldstack/template-nextjs": "0.3.97",
-    "@goldstack/utils-sh": "0.4.24",
+    "@goldstack/template-nextjs": "0.3.98",
+    "@goldstack/utils-sh": "0.4.25",
     "@testing-library/jest-dom": "^5.9.0",
     "@testing-library/react": "^10.0.4",
     "@types/jest": "^27.0.2",
@@ -56,6 +56,7 @@
     "jest-transform-stub": "^2.0.0",
     "next-transpile-modules": "^8.0.0",
     "reload": "^3.2.0",
+    "rimraf": "^3.0.2",
     "ts-jest": "^26.5.4",
     "ts-node": "^10.3.0",
     "typescript": "^4.4.3"
