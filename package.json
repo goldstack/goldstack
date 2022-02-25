@@ -15,6 +15,7 @@
     "commit": "yarn git:commit \"$0\"",
     "compile": "tsc -b",
     "compile-watch": "tsc -b -w",
+    "embed-in-goldstack-monorepo": "rimraf ./yarnrc.yml ./yarn.lock ./.yarn && yarn",
     "ensure-local-packages": "ts-node scripts/ensureLocalPackages.ts",
     "eslint": "eslint",
     "fix-project-references": "utils-typescript-references",
@@ -53,6 +54,7 @@
     "eslint-plugin-yaml": "^0.3.0",
     "nodemon": "^2.0.4",
     "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.3"
   },
