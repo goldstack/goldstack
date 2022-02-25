@@ -55,6 +55,8 @@ If you want to make a change to one of the libraries and test it directly with y
 
 ![](https://user-images.githubusercontent.com/1448524/155213397-2b67a16d-fb76-476e-bfcf-314903dcc046.png)
 
+**Important**: After you have copied your generated project into the `workspaces/generated` folder, you need to _delete_ the following files/folders: `workspaces/generated/.yarn`, `workspaces/generated/.yarnrc.yml` and `workspaces/generated/yarn.lock`.
+
 Afterwards simply run the `yarn` command. If you make changes to the libraries in [template-lib](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib), these will be available in your generated project. Just ensure that the versions of the dependencies in the project match the versions of the libraries. You can run the command `yarn ensure-local-packages` to ensure this.
 
 You can commit any changes to the Goldstack monorepo for a PR to this repository. You must use a separate git repository for your own project. Therefore it is important to place the generated project into the `workspaces/generated` folder since this is added to the `.gitignore` file in the Goldstack monorepo.

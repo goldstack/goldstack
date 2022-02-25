@@ -15,7 +15,6 @@
     "commit": "yarn git:commit \"$0\"",
     "compile": "tsc -b",
     "compile-watch": "tsc -b -w",
-    "embed-in-goldstack-monorepo": "rimraf ./yarnrc.yml ./yarn.lock ./.yarn && yarn",
     "ensure-local-packages": "ts-node scripts/ensureLocalPackages.ts",
     "eslint": "eslint",
     "fix-project-references": "utils-typescript-references",
