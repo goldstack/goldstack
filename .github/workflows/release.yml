@@ -69,8 +69,8 @@ jobs:
 
       - name: Configure git
         run: |
-          git config --global user.email "public@pureleap.com"
-          git config --global user.name "GitHub Actions Build"
+          git config --global user.email "goldstack@pureleap.com"
+          git config --global user.name "Goldstack Project Builder"
           git config --global pull.rebase false
 
       - name: Commit build date change
