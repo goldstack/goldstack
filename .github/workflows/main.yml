@@ -175,17 +175,17 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: echo "$(date +'%Y-%m-%dT%H:%M:%S')" >> build_dev_timestamp
 
+      - name: Linting and prettier
+        run: |
+          yarn format
+          yarn lint-fix
+
       - name: Commit latest build info
         if: github.ref == 'refs/heads/master'
         run: |
           git add .
           git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy_dev)"
           git status
-
-      - name: Linting and prettier
-        run: |
-          yarn format
-          yarn lint-fix
 
       - name: Push changes
         if: github.ref == 'refs/heads/master'
