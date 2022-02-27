@@ -70,6 +70,26 @@ export const infraCommands = (): any => {
             demandOption: true,
           });
         }
+      )
+      .command(
+        'terraform <deployment> [command..]',
+        'Runs an arbitrary Terraform CLI command',
+        (yargs) => {
+          return deploymentPositional(yargs)
+            .option('inject-variables', {
+              description: 'Injects variables into the Terraform CLI command.',
+              default: false,
+              type: 'boolean',
+              demandOption: false,
+            })
+            .option('inject-backend-config', {
+              description:
+                'Injects backend config into the Terraform CLI command.',
+              default: false,
+              type: 'boolean',
+              demandOption: false,
+            });
+        }
       );
   };
 };
@@ -109,6 +129,10 @@ export const terraformCli = (
 
   if (operation === 'upgrade') {
     build.upgrade(opArgs);
+    return;
+  }
+  if (operation === 'terraform') {
+    build.terraform(opArgs);
     return;
   }
 

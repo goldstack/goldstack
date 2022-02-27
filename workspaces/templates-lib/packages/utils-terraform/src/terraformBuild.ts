@@ -199,9 +199,11 @@ export class TerraformBuild {
   };
 
   private getTfVersion = (args: string[]): TerraformVersion => {
-    const deployment = getDeployment(args);
-    if (deployment.tfVersion) {
-      return deployment.tfVersion;
+    if (args.length > 0) {
+      const deployment = getDeployment(args);
+      if (deployment.tfVersion) {
+        return deployment.tfVersion;
+      }
     }
     if (fs.existsSync('./infra/tfConfig.json')) {
       try {
@@ -510,6 +512,47 @@ export class TerraformBuild {
       `Version upgrade not supported: from [${version}] to [${newVersion}]. Currently only 0.12 -> 0.13 is supported.`
     );
   };
+
+  terraform(opArgs: string[]): void {
+    const provider = this.provider;
+    const deployment = getDeployment(opArgs);
+    const version = this.getTfVersion(opArgs);
+
+    let backendConfig: [string, string][] | undefined;
+
+    if (opArgs.find((arg) => arg === '--inject-backend-config')) {
+      backendConfig = this.getTfStateVariables(deployment);
+    }
+
+    let variables: [string, string][] | undefined;
+
+    cd('./infra/aws');
+    try {
+      if (opArgs.find((arg) => arg === '--inject-variables')) {
+        variables = [
+          ...getVariablesFromHCL({
+            ...deployment,
+            ...deployment.configuration,
+          }),
+        ];
+      }
+      tf(`workspace select ${opArgs[0]}`, { provider, version });
+      const remainingArgs = opArgs
+        .slice(1)
+        .filter(
+          (arg) =>
+            arg !== '--inject-backend-config' && arg !== '--inject-variables'
+        );
+      tf(remainingArgs.join(' '), {
+        provider,
+        backendConfig,
+        version,
+        variables,
+      });
+    } finally {
+      cd('../..');
+    }
+  }
 
   constructor(provider: CloudProvider) {
     assert(provider);
