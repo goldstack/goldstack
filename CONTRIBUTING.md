@@ -6,8 +6,8 @@ Thanks for taking the time to contribute! While the following documentation inte
 
 ### Project Setup
 
-*   Clone the Goldstack repository
-*   Ensure dependencies are installed
+- Clone the Goldstack repository
+- Ensure dependencies are installed
 
 ```sh
 node -v
@@ -15,7 +15,7 @@ yarn -v
 docker --version
 ```
 
-*   Install dependencies, run `yarn` in the cloned directory
+- Install dependencies, run `yarn` in the cloned directory
 
 ```sh
 yarn
@@ -58,3 +58,4 @@ If you want to make a change to one of the libraries and test it directly with y
 Afterwards simply run the `yarn` command. If you make changes to the libraries in [template-lib](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib), these will be available in your generated project. Just ensure that the versions of the dependencies in the project match the versions of the libraries. You can run the command `yarn ensure-local-packages` to ensure this.
 
 You can commit any changes to the Goldstack monorepo for a PR to this repository. You must use a separate git repository for your own project. Therefore it is important to place the generated project into the `workspaces/generated` folder since this is added to the `.gitignore` file in the Goldstack monorepo.
+
