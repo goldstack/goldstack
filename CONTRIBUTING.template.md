@@ -57,7 +57,11 @@ When you generate a new project with Goldstack, this project will be linked to [
 
 It is important to place the generated project into the `workspaces/generated` folder since this is ignored by Git in the Goldstack monorepo.
 
-**Important**: After you have copied your generated project into the `workspaces/generated` folder, you need to _delete_ the following files/folders: `workspaces/generated/.yarn`, `workspaces/generated/.yarnrc.yml` and `workspaces/generated/yarn.lock`.
+#### _Delete_ the following files/folders
+
+- `workspaces/generated/.yarn`
+- `workspaces/generated/.yarnrc.yml`
+- `workspaces/generated/yarn.lock`
 
 Afterwards simply run the `yarn` command. If you make changes to the libraries in [template-lib](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib), these will be available in your generated project. Just ensure that the versions of the dependencies in the project match the versions of the libraries. You can run the command `yarn ensure-local-packages` to ensure this.
 
