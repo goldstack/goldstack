@@ -49,14 +49,39 @@ The Goldstack monorepo is a repository nested in two levels. [workspaces](https:
 
 ### Developing Goldstack Alongside your Project
 
-When you generate a new project with Goldstack, this project will be linked to [packages published in NPM](https://www.npmjs.com/search?q=keywords:goldstack). The source code for these libraries is defined in [template-lib](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib).
+When you generate a new project with Goldstack, your *generated project* will be version linked to [official packages published in NPM](https://www.npmjs.com/search?q=keywords:goldstack). In order to change any of the *official packages* and test them against your *generated project*, you will need to connect your recently *generated project* to a *local Goldstack monorepo* instead of the *official packages*. 
 
-If you want to make a change to one of the libraries and test it directly with your project, the easiest way is to combine your project with the Goldstack monorepo. For this, copy your generated project into the folder: `workspaces/generated`
+The source code for the *official packages* is defined in the Goldstack monorepo (this repo) under [template-lib](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib).
+
+### Copy your *generated project* as a yarn workspace under a *local Goldstack monorepo*
+
+
+#### Copy your generated project into the folder: `workspaces/generated`
 
 ![](https://user-images.githubusercontent.com/1448524/155213397-2b67a16d-fb76-476e-bfcf-314903dcc046.png)
 
-**Important**: After you have copied your generated project into the `workspaces/generated` folder, you need to _delete_ the following files/folders: `workspaces/generated/.yarn`, `workspaces/generated/.yarnrc.yml` and `workspaces/generated/yarn.lock`.
+It is important to place the generated project into the `workspaces/generated` folder since this is ignored by Git in the Goldstack monorepo.
 
-Afterwards simply run the `yarn` command. If you make changes to the libraries in [template-lib](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib), these will be available in your generated project. Just ensure that the versions of the dependencies in the project match the versions of the libraries. You can run the command `yarn ensure-local-packages` to ensure this.
+#### _Delete_ the following files/folders
+
+- `workspaces/generated/.yarn`
+- `workspaces/generated/.yarnrc.yml`
+- `workspaces/generated/yarn.lock`
+
+#### Update all references to use the local package version numbers.
+
+You need to ensure that the versions referenced in the `package.json` files in the *generated project* match the versions of the library source code in the *local Goldstack monorepo*. 
+
+You can run the command `yarn ensure-local-packages` from `<goldstack>` root to do this.
+
+#### Rebuild the *local Goldstack monorepo*
+
+Now that the *generated project* is a yarn workspace within the *local Goldstack monorepo* you can simply run the `yarn` command to build everything.
+
+#### Testing
+
+If you make changes to the libraries in [template-lib](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib), these will be available in your generated project and can be invoked using `yarn template-ts *`.
+
+You can take a look this video if you have any issues getting this working: https://youtu.be/wIXxhM4qWkA
 
 You can commit any changes to the Goldstack monorepo for a PR to this repository. You must use a separate git repository for your own project. Therefore it is important to place the generated project into the `workspaces/generated` folder since this is added to the `.gitignore` file in the Goldstack monorepo.

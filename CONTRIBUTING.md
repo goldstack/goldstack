@@ -49,7 +49,9 @@ The Goldstack monorepo is a repository nested in two levels. [workspaces](https:
 
 ### Developing Goldstack Alongside your Project
 
-When you generate a new project with Goldstack, this project will be linked to [packages published in NPM](https://www.npmjs.com/search?q=keywords:goldstack). The source code for these libraries is defined in [template-lib](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib).
+When you generate a new project with Goldstack, your *generated project* will be version linked to [official packages published in NPM](https://www.npmjs.com/search?q=keywords:goldstack). In order to develop any of the *official packages* against your *generated project*, you will need to connect your recently *generated project* to a *local Goldstack monorepo* instead of the *official packages*. 
+
+The source code for these packages is defined in the Goldstack monorepo under [template-lib](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib).
 
 If you want to make a change to one of the libraries and test it directly with your project, the easiest way is to combine your project with the Goldstack monorepo. For this, copy your generated project into the folder: `workspaces/generated`
 
