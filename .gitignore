@@ -11,3 +11,5 @@ dist/
 !.yarn/sdks
 !.yarn/versions
 
+# Allows embedding a generated workspace into the Goldstack repo for local development
+workspaces/generated
