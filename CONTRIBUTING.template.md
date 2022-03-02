@@ -1,5 +1,3 @@
-⚠️ This section is currently work in progress ⚠️
-
 Thanks for taking the time to contribute! While the following documentation intends to be as comprehensive as possible, please do not hesitate to reach out by [opening a GitHub issue](https://github.com/goldstack/goldstack/issues) or on Twitter: [@mxro](https://twitter.com/mxro).
 
 ## Getting Started with Development
@@ -53,8 +51,21 @@ When you generate a new project with Goldstack, your *generated project* will be
 
 The source code for the *official packages* is defined in the Goldstack monorepo (this repo) under [template-lib](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib).
 
+### Link your *generated project* to a *local Goldstack monorepo*
+
+You can use the [`yarn link`](https://yarnpkg.com/en/docs/cli/link) command to link your *generated project* to a *local Goldstack monorepo* instead of the *official packages*.
+
+For this, clone the [Goldstack Monorepo](https://github.com/goldstack/goldstack) into a folder on your local machine. Then within your *generated project*, run the following command:
+
+```sh
+yarn link /path/to/goldstack/monorepo/ -Apr
+```
+
+Now, if you make any changes to the libraries in the *local Goldstack monorepo*, these will be effective when running `yarn template-ts` scripts in your *generated project*.
+
 ### Copy your *generated project* as a yarn workspace under a *local Goldstack monorepo*
 
+Since [Yarn workspaces](https://yarnpkg.com/features/workspaces) allow for embedding multiple projects in a single monorepo, you can copy your *generated project* as a yarn workspace under a *local Goldstack monorepo* by following these steps: 
 
 #### Copy your generated project into the folder: `workspaces/generated`
 
