@@ -51,9 +51,11 @@ The Goldstack monorepo is a repository nested in two levels. [workspaces](https:
 
 When you generate a new project with Goldstack, this project will be linked to [packages published in NPM](https://www.npmjs.com/search?q=keywords:goldstack). The source code for these libraries is defined in [template-lib](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib).
 
-If you want to make a change to one of the libraries and test it directly with your project, the easiest way is to combine your project with the Goldstack monorepo. For this, copy your generated project into the folder: `workspaces/generated`
+#### Copy your generated project into the folder: `workspaces/generated`
 
 ![](https://user-images.githubusercontent.com/1448524/155213397-2b67a16d-fb76-476e-bfcf-314903dcc046.png)
+
+It is important to place the generated project into the `workspaces/generated` folder since this is ignored by Git in the Goldstack monorepo.
 
 **Important**: After you have copied your generated project into the `workspaces/generated` folder, you need to _delete_ the following files/folders: `workspaces/generated/.yarn`, `workspaces/generated/.yarnrc.yml` and `workspaces/generated/yarn.lock`.
 
