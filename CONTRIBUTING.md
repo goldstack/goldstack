@@ -6,8 +6,8 @@ Thanks for taking the time to contribute! While the following documentation inte
 
 ### Project Setup
 
-*   Clone the Goldstack repository
-*   Ensure dependencies are installed
+- Clone the Goldstack repository
+- Ensure dependencies are installed
 
 ```sh
 node -v
@@ -15,7 +15,7 @@ yarn -v
 docker --version
 ```
 
-*   Install dependencies, run `yarn` in the cloned directory
+- Install dependencies, run `yarn` in the cloned directory
 
 ```sh
 yarn

@@ -19,8 +19,8 @@ jobs:
           registry-url: https://registry.npmjs.org
       - name: Configure git
         run: |
-          git config --global user.email "public@pureleap.com"
-          git config --global user.name "GitHub Actions Build"
+          git config --global user.email "goldstack@pureleap.com"
+          git config --global user.name "Goldstack Project Builder"
           git config --global pull.rebase false
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
@@ -175,17 +175,17 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: echo "$(date +'%Y-%m-%dT%H:%M:%S')" >> build_dev_timestamp
 
+      - name: Linting and prettier
+        run: |
+          yarn format
+          yarn lint-fix
+
       - name: Commit latest build info
         if: github.ref == 'refs/heads/master'
         run: |
           git add .
           git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy_dev)"
           git status
-
-      - name: Linting and prettier
-        run: |
-          yarn format
-          yarn lint-fix
 
       - name: Push changes
         if: github.ref == 'refs/heads/master'

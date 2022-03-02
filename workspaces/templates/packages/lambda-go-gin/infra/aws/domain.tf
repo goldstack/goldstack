@@ -24,20 +24,39 @@ resource "aws_acm_certificate" "wildcard" {
   }
 }
 
+# see https://renehernandez.io/snippets/terraform-and-aws-wildcard-certificates-validation/
 resource "aws_route53_record" "wildcard_validation" {
-  name    = aws_acm_certificate.wildcard.domain_validation_options[0].resource_record_name
-  type    = aws_acm_certificate.wildcard.domain_validation_options[0].resource_record_type
-  zone_id = data.aws_route53_zone.main.zone_id
-  records = [aws_acm_certificate.wildcard.domain_validation_options[0].resource_record_value]
-  ttl     = "60"
+  for_each = {
+    for dvo in aws_acm_certificate.wildcard.domain_validation_options : dvo.domain_name => {
+      name   = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type   = dvo.resource_record_type
+    }
+   # Skips the domain if it doesn't contain a wildcard
+    if length(regexall("\\*\\..+", dvo.domain_name)) > 0
+  }
+
+  allow_overwrite = true
+  name            = each.value.name
+  records         = [each.value.record]
+  ttl             = 60
+  type            = each.value.type
+  zone_id         = data.aws_route53_zone.main.zone_id
 }
 
 # Required to force ACM wildcard certificate validation
 resource "aws_acm_certificate_validation" "wildcard_cert" {
   provider = aws.us-east-1
+  certificate_arn = aws_acm_certificate.wildcard.arn
 
-  certificate_arn         = aws_acm_certificate.wildcard.arn
-  validation_record_fqdns = [aws_route53_record.wildcard_validation.fqdn]
+  validation_record_fqdns = concat(
+    [
+      for record in aws_route53_record.wildcard_validation : record.fqdn
+    ],
+    [
+      for record in aws_route53_record.wildcard_validation : record.fqdn
+    ]
+  )
 }
 
 

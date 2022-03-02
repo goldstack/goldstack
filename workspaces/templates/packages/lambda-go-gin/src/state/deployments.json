@@ -5,7 +5,7 @@
       "gateway_url": {
         "sensitive": false,
         "type": "string",
-        "value": "https://ue6nqczg9d.execute-api.us-west-2.amazonaws.com/prod"
+        "value": "https://i6mofrock5.execute-api.us-west-2.amazonaws.com/prod"
       },
       "lambda_arn": {
         "sensitive": false,
