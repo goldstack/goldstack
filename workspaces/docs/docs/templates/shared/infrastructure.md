@@ -68,7 +68,6 @@ If you want to interact with the remote backend, you can also provide the `--inj
 yarn infra terraform [deployment] --inject-backend-config init
 ```
 
-
 ### Customizing Terraform
 
 Goldstack templates make it very easy to customize infrastructure to your specific needs. The easiest way to do this is to simply edit the `*.tf` files in the `infra/aws` folder. You can make the changes you need and then run `yarn infra up [deploymentName]` to apply the changes.
