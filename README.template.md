@@ -1,7 +1,6 @@
 ![Build status](https://img.shields.io/github/workflow/status/goldstack/goldstack/Build,%20Test%20and%20Library%20Publish/master)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6cc586e39fca47a5b7bd64c5d3e1b563)](https://www.codacy.com/gh/goldstack/goldstack/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=goldstack/goldstack&amp;utm_campaign=Badge_Grade)
-
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6cc586e39fca47a5b7bd64c5d3e1b563)](https://www.codacy.com/gh/goldstack/goldstack/dashboard?utm_source=github.com&utm_medium=referral&utm_content=goldstack/goldstack&utm_campaign=Badge_Grade)
 
 # Goldstack - JavaScript Project Builder 💖
 

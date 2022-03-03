@@ -1,4 +1,4 @@
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a543d8d5d69d40ef86127f310b17a2ed)](https://www.codacy.com/gh/goldstack/nextjs-bootstrap-boilerplate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=goldstack/nextjs-bootstrap-boilerplate&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a543d8d5d69d40ef86127f310b17a2ed)](https://www.codacy.com/gh/goldstack/nextjs-bootstrap-boilerplate/dashboard?utm_source=github.com&utm_medium=referral&utm_content=goldstack/nextjs-bootstrap-boilerplate&utm_campaign=Badge_Grade)
 
 # Next.js + Bootstrap Boilerplate
 
