@@ -1,4 +1,4 @@
-import { execSync, exec as processAsync } from 'child_process';
+import { execSync, execFileSync, exec as processAsync } from 'child_process';
 import fs from 'fs';
 import ncp from 'ncp';
 
@@ -262,6 +262,29 @@ const exec = (cmd: string, params?: ExecParams): string => {
   }
 };
 
+const execSafe = (
+  file: string,
+  args: string[],
+  params?: ExecParams
+): string => {
+  try {
+    const res = execFileSync(file, args);
+    if (!params?.silent) {
+      console.log(res.toString());
+    }
+    return res.toString();
+  } catch (e) {
+    console.error('Command failed:', file, args);
+    if (e.stderr) {
+      console.error(e.stderr.toString());
+    }
+    if (e.stdout) {
+      console.log(e.stdout.toString());
+    }
+    throw e;
+  }
+};
+
 export const execAsync = async (
   cmd: string,
   params?: ExecParams
@@ -303,4 +326,4 @@ const commandExists = (command: string): boolean => {
   return res !== null;
 };
 
-export { exec, pwd, read, write, cd, globSync, commandExists };
+export { exec, execSafe, pwd, read, write, cd, globSync, commandExists };
