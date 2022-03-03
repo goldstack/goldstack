@@ -103,7 +103,7 @@ export const infraAwsDockerImageCli = async (
 ): Promise<void> => {
   if (args.length < 1) {
     throw new Error(
-      'Please provide the operation in the arguments: "init", "plan", "apply", "deploy", "destroy".'
+      'Please provide the operation in the arguments: "up", "init", "plan", "apply", "deploy", "destroy", "upgrade", "terraform".'
     );
   }
   const [operation] = args;
