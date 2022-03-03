@@ -52,7 +52,7 @@ export const infraAwsStaticWebsiteCli = async (
 ): Promise<void> => {
   if (args.length < 1) {
     fatal(
-      'Please provide the operation in the arguments: "init", "plan", "apply", "deploy", "destroy".'
+      'Please provide the operation in the arguments: "up", "init", "plan", "apply", "deploy", "destroy", "upgrade", "terraform".'
     );
     throw new Error();
   }

@@ -33,6 +33,8 @@ Infrastructure commands for this template can be run using `yarn`. There are fou
 - `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
 - `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
 - `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+- `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
+- `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
 
 For each command, the deployment they should be applied to must be specified.
 
@@ -47,6 +49,25 @@ yarn infra up dev
 ```
 
 Generally you will only need to run `yarn infra up`. However, if you are familiar with Terraform and want more fine-grained control over the deployment of your infrastructure, you can also use the other commands as required.
+
+Note that for running `yarn infra terraform`, you will need to specify which command line arguments you want to provide to Terraform. By default, no extra arguments are provided:
+
+```bash
+yarn infra terraform [deployment] plan
+```
+
+If extra arguments are needed, such as variables, you can use the `--inject-variables` option, such as for running `terraform plan`:
+
+```bash
+yarn infra terraform [deployment] --inject-variables plan
+```
+
+If you want to interact with the remote backend, you can also provide the `--inject-backend-config` option, such as for running `terraform init`:
+
+```bash
+yarn infra terraform [deployment] --inject-backend-config init
+```
+
 
 ### Customizing Terraform
 

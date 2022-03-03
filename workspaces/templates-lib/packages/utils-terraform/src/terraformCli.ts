@@ -1,4 +1,4 @@
-import { exec, pwd, commandExists } from '@goldstack/utils-sh';
+import { exec, execSafe, pwd, commandExists } from '@goldstack/utils-sh';
 import {
   assertDocker,
   hasDocker,
@@ -61,16 +61,23 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
     workspaceEnvVariable = `-e TF_WORKSPACE=${options.workspace}`;
   }
 
-  const cmd3 =
-    `docker run --rm -v "${options.dir}":/app ` +
-    ` ${options.provider.generateEnvVariableString()} ${workspaceEnvVariable} ` +
-    '-w /app ' +
-    `${imageTerraform(options.version)} ${cmd} ` +
-    ` ${renderBackendConfig(options.backendConfig || [])} ` +
-    ` ${renderVariables(options.variables || [])} ` +
-    ` ${options.options?.join(' ') || ''} `;
+  const args = [
+    'run',
+    '--rm',
+    '-v',
+    `${options.dir}:/app`,
+    ...options.provider.generateEnvVariableString().split(' '),
+    workspaceEnvVariable,
+    '-w',
+    '/app',
+    imageTerraform(options.version),
+    ...cmd.split(' '),
+    renderBackendConfig(options.backendConfig || []),
+    renderVariables(options.variables || []),
+    ...(options.options ?? []),
+  ].filter((o) => o);
 
-  return exec(cmd3, { silent: options.silent });
+  return execSafe('docker', args, { silent: options.silent });
 };
 
 export const assertTerraform = (): void => {

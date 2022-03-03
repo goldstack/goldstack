@@ -58,7 +58,7 @@ export const buildCli = (params: BuildCliParams): Argv<any> => {
     .scriptName('template')
     .usage('$0 <infra|deploy>')
     .command(
-      'infra <up|down|init|plan|apply|destroy> <deployment>',
+      'infra <up|down|init|plan|apply|destroy|upgrade|terraform> <deployment>',
       'Manage infrastructure for deployment',
       params.infraCommands
     )
