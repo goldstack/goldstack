@@ -1,3 +1,5 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a543d8d5d69d40ef86127f310b17a2ed)](https://www.codacy.com/gh/goldstack/nextjs-bootstrap-boilerplate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=goldstack/nextjs-bootstrap-boilerplate&amp;utm_campaign=Badge_Grade)
+
 # Next.js + Bootstrap Boilerplate
 
 Boilerplate for a Next.js + Bootstrap project with support for [TypeScript](https://www.typescriptlang.org/) using [Yarn](https://yarnpkg.com/).

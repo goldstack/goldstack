@@ -1,6 +1,7 @@
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/goldstack/goldstack/Build,%20Test%20and%20Library%20Publish/master)
+![Build status](https://img.shields.io/github/workflow/status/goldstack/goldstack/Build,%20Test%20and%20Library%20Publish/master)
 
-![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https://github.com/goldstack/goldstack)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6cc586e39fca47a5b7bd64c5d3e1b563)](https://www.codacy.com/gh/goldstack/goldstack/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=goldstack/goldstack&amp;utm_campaign=Badge_Grade)
+
 
 # Goldstack - JavaScript Project Builder 💖
 
@@ -47,47 +48,9 @@ Find documentation for the individual projects on the [Goldstack Documentation](
 
 # Contribute
 
-⚠️ This section is currently work in progress ⚠️
+See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
-## Project Setup
+## Analysis Tools
 
-- Clone the Goldstack repository
-- Ensure dependencies are installed
-
-```sh
-node -v
-yarn -v
-docker --version
-```
-
-- Install dependencies, run `yarn` in the cloned directory
-
-```sh
-yarn
-```
-
-After the installation is complete, you can verify that Yarn 2+ has been initialised by running:
-
-```sh
-yarn -v
-# > 3.0.2+
-```
-
-You can now compile/build the project:
-
-```sh
-yarn compile
-yarn build
-```
-
-Note it is not necessary to run `yarn` or `yarn compile` for the individual nested workspaces and packages in the repository. Running `yarn` and `yarn compile` will compile/install all nested workspaces and packages.
-
-## Project Structure
-
-The Goldstack monorepo is a repository nested in two levels. [workspaces](https://github.com/goldstack/goldstack/tree/master/workspaces) itself contains the following composite packages:
-
-- [apps](https://github.com/goldstack/goldstack/tree/master/workspaces/apps) - contains the [Goldstack website](https://goldstack.party) and backend
-- [docs](https://github.com/goldstack/goldstack/tree/master/workspaces/docs) - contains the [Goldstack documentation](https://docs.goldstack.party/docs)
-- [template-lib](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib) - contains packages that are used as dependencies of templates to support the build process and development.
-- [template-management](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-management) - contains utilities for developing and testing templates.
-- [template](https://github.com/goldstack/goldstack/tree/master/workspaces/templates) - contains the blueprint for Goldstack templates
+- [Codacy](https://app.codacy.com/gh/goldstack/goldstack/dashboard)
+- [Code Climate](https://codeclimate.com/github/goldstack/goldstack)
