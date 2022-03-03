@@ -1,3 +1,7 @@
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/goldstack/goldstack/Build,%20Test%20and%20Library%20Publish/master)
+
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https://github.com/goldstack/goldstack)
+
 # Goldstack - JavaScript Project Builder 💖
 
 Getting started on a new project is fun ... until it isn't. Goldstack provides customizable starter templates that help you lift your project off the ground and immediately start working on the important parts.
