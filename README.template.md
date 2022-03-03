@@ -54,3 +54,4 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 - [Codacy](https://app.codacy.com/gh/goldstack/goldstack/dashboard)
 - [Code Climate](https://codeclimate.com/github/goldstack/goldstack)
+- [Mozilla Observatory](https://observatory.mozilla.org/analyze/goldstack.party)
