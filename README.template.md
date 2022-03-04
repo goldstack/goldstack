@@ -14,25 +14,20 @@ Getting started on a new project is fun ... until it isn't. Goldstack provides c
 Explore the templates Goldstack provides:
 
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>
-    <p align="center"><img width="50" src="https://cdn.goldstack.party/img/202203/nextjs.svg"></p>
-    <p><a href="https://goldstack.party/templates/nextjs-bootstrap">Next.js + Bootstrap</a></p>
-  </td>
-<td>Content Cell</td>
-</tr>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>
+        <p align="center"><img width="50" src="https://cdn.goldstack.party/img/202203/nextjs.svg"></p>
+        <p><a href="https://goldstack.party/templates/nextjs-bootstrap">Next.js + Bootstrap</a></p>
+      </td>
+      <td>
+        <p align="center"><img width="50" src="https://cdn.goldstack.party/img/202203/aws-api-gateway.svg"></p>
+        <p><a href="https://goldstack.party/templates/serverless-api">Serverless API</a></p>
+      </td>
+    </tr>
+    <tr>
+    </tr>
+  </tbody>
 </table>
 
 
