@@ -1,15 +1,22 @@
 <p align="center">
   <a href="https://goldstack.party">
     <img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="128">
-    <h1 align="center">Goldstack</h1>
+    <h1 align="center">Goldstack - Project Builder ⚙️</h1>
   </a>
 </p>
 
 ![Build status](https://img.shields.io/github/workflow/status/goldstack/goldstack/Build,%20Test%20and%20Library%20Publish/master) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6cc586e39fca47a5b7bd64c5d3e1b563)](https://www.codacy.com/gh/goldstack/goldstack/dashboard?utm_source=github.com\&utm_medium=referral\&utm_content=goldstack/goldstack\&utm_campaign=Badge_Grade)
 
-# Goldstack - JavaScript Project Builder 💖
-
 Getting started on a new project is fun ... until it isn't. Goldstack provides customizable starter templates that help you lift your project off the ground and immediately start working on the important parts.
+
+# Getting Started
+
+Explore the templates Goldstack provides:
+
+|              |              |
+| ------------ | ------------ |
+| Content Cell | Content Cell |
+| Content Cell | Content Cell |
 
 Compose your customised starter project on [goldstack.party](https://goldstack.party).
 
