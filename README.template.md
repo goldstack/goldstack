@@ -29,7 +29,7 @@ Explore the templates Goldstack provides:
         <p><a href="https://goldstack.party/templates/express-lambda">Express.js + Lambda</a></p>
       </td>
       <td>
-        <p align="center"><a href="https://goldstack.party/templates/go-gin"><img width="50" src="https://cdn.goldstack.party/img/202203/gopher.svg"></a></p>
+        <p align="center"><a href="https://goldstack.party/templates/go-gin"><img height="50" src="https://cdn.goldstack.party/img/202203/gopher.svg"></a></p>
         <p><a href="https://goldstack.party/templates/go-gin">Go Gin + Lambda</a></p>
       </td>
     </tr>
