@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://goldstack.party">
     <img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="128">
-    <h1 align="center">Goldstack - ⚙️ Project Builder</h1>
+    <h1 align="center">Goldstack - Project Builder</h1>
   </a>
 </p>
 
@@ -24,8 +24,10 @@ Explore the templates Goldstack provides:
         <p align="center"><img width="50" src="https://cdn.goldstack.party/img/202203/aws-api-gateway.svg"></p>
         <p><a href="https://goldstack.party/templates/serverless-api">Serverless API</a></p>
       </td>
-    </tr>
-    <tr>
+      <td>
+        <p align="center"><img width="50" src="https://cdn.goldstack.party/img/202203/nodejs.svg"></p>
+        <p><a href="https://goldstack.party/templates/express-lambda">Express.js + Lambda</a></p>
+      </td>
     </tr>
   </tbody>
 </table>
