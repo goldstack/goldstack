@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://goldstack.party">
     <img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="128">
-    <h1 align="center">Goldstack - Project Builder ⚙️</h1>
+    <h1 align="center">Goldstack - Project Builder</h1>
   </a>
 </p>
 
@@ -14,26 +14,65 @@ Getting started on a new project is fun ... until it isn't. Goldstack provides c
 Explore the templates Goldstack provides:
 
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img width="50" src="https://cdn.goldstack.party/img/202203/nextjs.svg">
-<p><a href="https://goldstack.party/templates/nextjs-bootstrap">Next.js + Bootstrap</a></p></td>
-<td>Content Cell</td>
-</tr>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>
+        <p align="center"><a href="https://goldstack.party/templates/nextjs-bootstrap"><img width="50" src="https://cdn.goldstack.party/img/202203/nextjs.svg"></a></p>
+        <p><a href="https://goldstack.party/templates/nextjs-bootstrap">Next.js + Bootstrap</a></p>
+      </td>
+      <td>
+        <p align="center"><a href="https://goldstack.party/templates/serverless-api"><img width="50" src="https://cdn.goldstack.party/img/202203/aws-api-gateway.svg"></a></p>
+        <p><a href="https://goldstack.party/templates/serverless-api">Serverless API</a></p>
+      </td>
+      <td>
+        <p align="center"><a href="https://goldstack.party/templates/express-lambda"><img width="50" src="https://cdn.goldstack.party/img/202203/nodejs.svg"></a></p>
+        <p><a href="https://goldstack.party/templates/express-lambda">Express.js + Lambda</a></p>
+      </td>
+      <td>
+        <p align="center"><a href="https://goldstack.party/templates/go-gin"><img height="50" src="https://cdn.goldstack.party/img/202203/gopher.svg"></a></p>
+        <p><a href="https://goldstack.party/templates/go-gin">Go Gin + Lambda</a></p>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
-Compose your customised starter project on [goldstack.party](https://goldstack.party).
+Find all templates on [Goldstack](https://goldstack.party/).
+
+# How Does It Work
+
+Generating new starter projects with Goldstack is simple and quick.
+
+### Step 1: Select the templates you need
+
+Rather than providing a library of projects, Goldstack provides a *library of module templates* that can be used to compose projects. This ensures that you can start with a project that includes exactly the features you need.
+
+Some examples of modules are:
+
+*   [Next.js](../modules/app-nextjs)
+*   [S3](../modules/s3)
+*   [Lambda Express](../modules/lambda-express)
+
+You can select as many modules as you want. All modules are configured to be easily used alongside each other. For instance, if you choose all modules from the list above, you can link the Lambda Express module to the Next JS application and the S3 module with the Express application. All modules are deployed into a project configured using Yarn workspaces.
+
+### Step 2: Provide your Email (if you like)
+
+You can specify your email address so we can send you a link to your template for safekeeping and further configuration. But if you do not want to share your email with us, you don't need to provide it.
+
+### Step 3: Download
+
+Goldstack will package your project into one zip file that you can download. This zip file will contain everything to get started developing business logic for your project. If you have provided your email, we will also send you an email with a link you can use to re-download your project or create more Goldstack templates. The email also includes a list of getting started guides for your project.
+
+### Step 4: Configure the project for AWS deployment (Optional)
+
+It can often be overwhelming to get started with customizing a new starter project to your needs, especially if the starter project consists of many different modules. We therefore provide a web-based interface for creating a baseline configuration for your project for deployment to AWS. This baseline configuration will enable you to start developing and deploying your project immediately.
+
+All configuration is written into source files. So you will be able to change and extend the configuration later in accordance with your requirements.
+
+For instance, if any module is selected that requires deployment to a website, the configuration tool will help you configure the domain to be used for deploying the website. If you later want to change the domain or deploy your project to multiple domains (e.g. staging and production), you can modify the configuration files in your source code.
+
+### Step 5: Follow getting started guides
+
+We recommend that you follow the getting started guides we provide with the download link. The first step will usually be to simply run `yarn` at the root of your project, open VSCode and to run `yarn infra up [dev|prod]` to bring up your infrastructure.
 
 # Roadmap
 
@@ -96,42 +135,6 @@ Modularity is one of the most important principles in software design. Unfortuna
 ### Built to be Tested
 
 Automated testing is a key driver for software quality but, while modern frameworks make it easy to write unit tests for individual components, it is often difficult to establish end-to-end tests that cover the entire stack of an application. Goldstack templates are optimized to allow writing tests that cover all packages of an application. For instance, it is possible to write a Jest test that uses React Testing Library to walk through the user interface while interacting with an in-memory API server (rather than having to mock calls to the backend).
-
-# How Does It Work
-
-Generating new starter projects with Goldstack is simple and quick.
-
-### Step 1: Select the templates you need
-
-Rather than providing a library of projects, Goldstack provides a *library of module templates* that can be used to compose projects. This ensures that you can start with a project that includes exactly the features you need.
-
-Some examples of modules are:
-
-*   [Next.js](../modules/app-nextjs)
-*   [S3](../modules/s3)
-*   [Lambda Express](../modules/lambda-express)
-
-You can select as many modules as you want. All modules are configured to be easily used alongside each other. For instance, if you choose all modules from the list above, you can link the Lambda Express module to the Next JS application and the S3 module with the Express application. All modules are deployed into a project configured using Yarn workspaces.
-
-### Step 2: Provide your Email (if you like)
-
-You can specify your email address so we can send you a link to your template for safekeeping and further configuration. But if you do not want to share your email with us, you don't need to provide it.
-
-### Step 3: Download
-
-Goldstack will package your project into one zip file that you can download. This zip file will contain everything to get started developing business logic for your project. If you have provided your email, we will also send you an email with a link you can use to re-download your project or create more Goldstack templates. The email also includes a list of getting started guides for your project.
-
-### Step 4: Configure the project for AWS deployment (Optional)
-
-It can often be overwhelming to get started with customizing a new starter project to your needs, especially if the starter project consists of many different modules. We therefore provide a web-based interface for creating a baseline configuration for your project for deployment to AWS. This baseline configuration will enable you to start developing and deploying your project immediately.
-
-All configuration is written into source files. So you will be able to change and extend the configuration later in accordance with your requirements.
-
-For instance, if any module is selected that requires deployment to a website, the configuration tool will help you configure the domain to be used for deploying the website. If you later want to change the domain or deploy your project to multiple domains (e.g. staging and production), you can modify the configuration files in your source code.
-
-### Step 5: Follow getting started guides
-
-We recommend that you follow the getting started guides we provide with the download link. The first step will usually be to simply run `yarn` at the root of your project, open VSCode and to run `yarn infra up [dev|prod]` to bring up your infrastructure.
 
 # Configuration
 
@@ -500,7 +503,7 @@ It is recommend to run `yarn infra init [deployment]`, `yarn infra up [deploymen
 
 Note that you may have to upgrade various versions in `infra/aws/terraform/providers.tf` as well as making various other changes upgrading Terraform may involve, also see [Terraform Upgrade Guides](https://www.terraform.io/language/upgrade-guides).
 
-# Getting Started
+# First Steps
 
 This page describes what you can do once you have downloaded your starter project. You will be able to download your project after selecting modules and having configured them on the Goldstack website. Please see [How Does It Work](./how-does-it-work) for more details.
 

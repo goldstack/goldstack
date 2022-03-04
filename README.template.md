@@ -36,9 +36,11 @@ Explore the templates Goldstack provides:
   </tbody>
 </table>
 
+Find all templates on [Goldstack](https://goldstack.party/).
 
+# How Does It Work
 
-Compose your customised starter project on [goldstack.party](https://goldstack.party).
+[!embed](workspaces/docs/docs/goldstack/how-does-it-work/index.md)
 
 # Roadmap
 
@@ -57,15 +59,11 @@ It should be a surprise to no one that setting up a dynamic monorepo for JavaScr
 
 [!embed](workspaces/docs/docs/goldstack/about/index.md)
 
-# How Does It Work
-
-[!embed](workspaces/docs/docs/goldstack/how-does-it-work/index.md)
-
 # Configuration
 
 [!embed](workspaces/docs/docs/goldstack/configuration/index.md)
 
-# Getting Started
+# First Steps
 
 [!embed](workspaces/docs/docs/goldstack/getting-started/index.md)
 
