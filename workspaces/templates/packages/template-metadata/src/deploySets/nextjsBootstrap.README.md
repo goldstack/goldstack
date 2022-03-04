@@ -6,9 +6,25 @@
   </a>
 </p>
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a543d8d5d69d40ef86127f310b17a2ed)](https://www.codacy.com/gh/goldstack/nextjs-bootstrap-boilerplate/dashboard?utm_source=github.com&utm_medium=referral&utm_content=goldstack/nextjs-bootstrap-boilerplate&utm_campaign=Badge_Grade) <img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="12"> Generated with <a href="https://goldstack.party">Goldstack</a>
+<img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="12"> Generated with <a href="https://goldstack.party">Goldstack</a>
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a543d8d5d69d40ef86127f310b17a2ed)](https://www.codacy.com/gh/goldstack/nextjs-bootstrap-boilerplate/dashboard?utm_source=github.com&utm_medium=referral&utm_content=goldstack/nextjs-bootstrap-boilerplate&utm_campaign=Badge_Grade) 
 
 Boilerplate for a Next.js + Bootstrap project with support for [TypeScript](https://www.typescriptlang.org/) using [Yarn](https://yarnpkg.com/)
+
+Based on template:
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <p align="center"><a href="https://goldstack.party/templates/nextjs-bootstrap"><img width="50" src="https://cdn.goldstack.party/img/202203/nextjs.svg"></a></p>
+        <p><a href="https://goldstack.party/templates/nextjs-bootstrap">Next.js + Bootstrap</a></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 This project is configured to support all features of the [Goldstack Next.js + Bootstrap Template](https://goldstack.party/templates/nextjs-bootstrap):
 
