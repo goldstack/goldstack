@@ -22,7 +22,8 @@ Explore the templates Goldstack provides:
 </thead>
 <tbody>
 <tr>
-<td><img width="50" src="https://cdn.goldstack.party/img/202203/nextjs.svg"></td>
+<td><img width="50" src="https://cdn.goldstack.party/img/202203/nextjs.svg">
+<p><a href="https://goldstack.party/templates/nextjs-bootstrap">Next.js + Bootstrap</a></p></td>
 <td>Content Cell</td>
 </tr>
 <tr>
