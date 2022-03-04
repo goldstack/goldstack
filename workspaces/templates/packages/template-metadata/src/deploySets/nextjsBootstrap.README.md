@@ -6,9 +6,7 @@
   </a>
 </p>
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a543d8d5d69d40ef86127f310b17a2ed)](https://www.codacy.com/gh/goldstack/nextjs-bootstrap-boilerplate/dashboard?utm_source=github.com&utm_medium=referral&utm_content=goldstack/nextjs-bootstrap-boilerplate&utm_campaign=Badge_Grade) 
-
-<img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="20"> Generated with <a href="https://goldstack.party">Goldstack</a>
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a543d8d5d69d40ef86127f310b17a2ed)](https://www.codacy.com/gh/goldstack/nextjs-bootstrap-boilerplate/dashboard?utm_source=github.com&utm_medium=referral&utm_content=goldstack/nextjs-bootstrap-boilerplate&utm_campaign=Badge_Grade) <img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="12"> Generated with <a href="https://goldstack.party">Goldstack</a>
 
 Boilerplate for a Next.js + Bootstrap project with support for [TypeScript](https://www.typescriptlang.org/) using [Yarn](https://yarnpkg.com/)
 
