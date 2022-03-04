@@ -507,21 +507,15 @@ Note that you may have to upgrade various versions in `infra/aws/terraform/provi
 
 This page describes what you can do once you have downloaded your starter project. You will be able to download your project after selecting modules and having configured them on the Goldstack website. Please see [How Does It Work](./how-does-it-work) for more details.
 
-The video guides below cover all the steps that are described on this page:
-
-\[Video: Quick Video Guide (3:53 min)]\(https://www.youtube.com/embed/hvZ8Ry9XYVE)
-
 ## 1. Install dependencies
 
-Goldstack requires a few dependencies to be available in your development system. Please verify they are present or install them:
+A few dependencies need to be available in your development system. Please verify they are present or install them.
 
-*   Node v12+: [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-*   Yarn v1.22.5+: [Yarn Installation](https://yarnpkg.com/getting-started/install)
-*   Docker v19+: [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
+*   Node v12+
+*   Yarn v1.22.5+
+*   Docker v19+
 
-### Confirm versions
-
-Open a terminal and run:
+Open a terminal and run the following commands:
 
 ```bash
 node -v
@@ -529,37 +523,49 @@ yarn -v
 docker --version
 ```
 
-See the required versions above.
+This should produce the following output:
+
+![Confirming versions in the console](https://cdn.goldstack.party/img/202203/confirm_versions.png)
+
+If you need to install or update any of the dependencies, please see the following guides:
+
+*   [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+*   [Yarn Installation](https://yarnpkg.com/getting-started/install)
+*   [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
 
 ## 2. Extract and install
 
-Extract the contents of the zip file into a folder of your choice. After you have done that, you must initialise the project. Simply run the following in your project directory:
+Extract the contents of the zip file into a folder of your choice.
 
-```bash
-yarn
-```
+Run `yarn` in your project directory to install and download all dependencies.
 
-The installation process should take around 3-10 minutes depending on the modules you have selected and your Internet speed.
+The installation process should take around 3-10 minutes depending on the dependencies that need to be downloaded.
 
-You can confirm everything was installed correctly by running:
+![Installing project dependencies](https://cdn.goldstack.party/img/202203/install_project.gif)
 
-```bash
-yarn -v
-```
+You can confirm everything was installed correctly by running `yarn -v`. This should show a yarn version of `3.0.0+`.
 
-Which should show a yarn version of 2.0.0+.
+![Confirming Yarn Version after install](https://cdn.goldstack.party/img/202203/confirm_yarn_version_after_install.png)
 
 ## 3. Build modules
 
-Make sure that everything builds correctly by running the following in your project directory:
+Make sure that the project compiles correctly by running `yarn build` your project directory:
 
-```bash
-yarn build
-```
+![Building your project](https://cdn.goldstack.party/img/202203/build_project.gif)
+
+Note that this command also ensures that all TypeScript project references are configured correctly.
 
 ## 4. Configure VSCode
 
-Your project should come with all files required to configure VSCode. Configuration files are in the `.vscode/` folder. Simply open the folder of your project in VSCode. If you are asked to allow the installation of additional extensions, please confirm to install them.
+In order to setup VSCode, open the project in VSCode. 
+
+VSCode may prompt you to ask if you trust the authors of the workspace. Respond with Yes.
+
+<img src="https://cdn.goldstack.party/img/202201/trust_authors.png" width="300" alt="VSCode Prompt trust authors">
+
+You may also be asked if you want to install recommended extensions for this workspace. We recommend to do so since the template will be optimised to work with the suggested extensions.
+
+![VSCode Prompt install extensions](https://cdn.goldstack.party/img/202201/install_extensions.png)
 
 If you want to install the necessary extensions manually, here are links to the extensions required:
 
@@ -567,25 +573,21 @@ If you want to install the necessary extensions manually, here are links to the 
 *   [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 *   [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
 
-Try to find any `.ts` file in your project. They should be present in one of your modules under `packages/*/src/`.
+## 5. Initialise TypeScript
 
-Once you open a `.ts` file, VSCode should open a confirmation at the bottom right corner of the screen asking *This workspace contains a TypeScript version. Would you like to use the workspace TypeScript version for TypeScript and JavaScript language features?*. Confirm this by clicking the *Allow* button.
+Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click *Allow*.
 
-![Allow TypeScript](https://cdn.goldstack.party/img/202010/allow_typescript.png)
+<img src="https://cdn.goldstack.party/img/202201/yarn_watch.gif"  alt="VSCode Locate TypeScript">
 
-In the status bar on the bottom righthand corner of the VSCode editor you should now see *TypeScript* along with a version such as *3.9.5-pnpify*.
+In the status bar on the bottom right-hand corner of the VSCode editor you should now see *TypeScript*.
 
-![VSCode status bar](https://cdn.goldstack.party/img/202010/vscode_status_bar.png)
+![TypeScript status icon in VSCode](https://cdn.goldstack.party/img/202203/typescript_init.png)
 
-If the confirmation dialog does not show up or the version that you see does not include *pnpify*, click the version number next to *TypeScript*. Then select the TypeScript version from the list that includes *pnpify*.
-
-![Select TypeScript version](https://cdn.goldstack.party/img/202010/select_typescript_version.png)
-
-## 5. Deploy modules (Optional)
+## 6. Deploy modules (Optional)
 
 If you have [configured your project for AWS deployment](./configuration) on Goldstack before downloading the project, all modules should be ready to be deployed to AWS. We recommend going through each of your modules individually to ensure the infrastructure for them can be deployed successfully. Please see the getting started guides for the templates you have chosen for instructions. You should have received an email that contains links to the relevant getting started guides.
 
-## 6. Develop
+## 7. Develop
 
 Each module you have selected comes with its own instructions about how to get started with development. However, there are some handy commands in the project root that can be useful for development:
 

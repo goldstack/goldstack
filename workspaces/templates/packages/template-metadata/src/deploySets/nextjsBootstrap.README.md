@@ -2,7 +2,7 @@
 <p align="right"><img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="12"> Generated with <a href="https://goldstack.party">Goldstack</a></p>
 
 <p align="center">
-  <a href="https://goldstack.party">
+  <a href="https://goldstack.party/templates/nextjs-bootstrap">
     <img src="https://cdn.goldstack.party/img/202203/nextjs.svg" height="80">
     <h1 align="center">Next.js + Bootstrap Boilerplate</h1>
   </a>
@@ -24,6 +24,10 @@ Based on template:
     </tr>
   </tbody>
 </table>
+
+# Getting Started
+
+
 
 
 This project is configured to support all features of the [Goldstack Next.js + Bootstrap Template](https://goldstack.party/templates/nextjs-bootstrap):
