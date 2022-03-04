@@ -13,10 +13,25 @@ Getting started on a new project is fun ... until it isn't. Goldstack provides c
 
 Explore the templates Goldstack provides:
 
-|  |  |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img width="50" src="https://cdn.goldstack.party/img/202203/nextjs.svg"></td>
+<td>Content Cell</td>
+</tr>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+</tbody>
+</table>
+
 
 
 Compose your customised starter project on [goldstack.party](https://goldstack.party).
