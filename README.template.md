@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://goldstack.party">
     <img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="128">
-    <h1 align="center">Goldstack - Project Builder ⚙️</h1>
+    <h1 align="center">Goldstack - ⚙️ Project Builder</h1>
   </a>
 </p>
 
@@ -22,8 +22,10 @@ Explore the templates Goldstack provides:
 </thead>
 <tbody>
 <tr>
-<td><img width="50" src="https://cdn.goldstack.party/img/202203/nextjs.svg">
-<p><a href="https://goldstack.party/templates/nextjs-bootstrap">Next.js + Bootstrap</a></p></td>
+  <td>
+    <p align="center"><img width="50" src="https://cdn.goldstack.party/img/202203/nextjs.svg"></p>
+    <p><a href="https://goldstack.party/templates/nextjs-bootstrap">Next.js + Bootstrap</a></p>
+  </td>
 <td>Content Cell</td>
 </tr>
 <tr>
