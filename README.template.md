@@ -17,16 +17,20 @@ Explore the templates Goldstack provides:
   <tbody>
     <tr>
       <td>
-        <p align="center"><img width="50" src="https://cdn.goldstack.party/img/202203/nextjs.svg"></p>
+        <p align="center"><a href="https://goldstack.party/templates/nextjs-bootstrap"><img width="50" src="https://cdn.goldstack.party/img/202203/nextjs.svg"></a></p>
         <p><a href="https://goldstack.party/templates/nextjs-bootstrap">Next.js + Bootstrap</a></p>
       </td>
       <td>
-        <p align="center"><img width="50" src="https://cdn.goldstack.party/img/202203/aws-api-gateway.svg"></p>
+        <p align="center"><a href="https://goldstack.party/templates/serverless-api"><img width="50" src="https://cdn.goldstack.party/img/202203/aws-api-gateway.svg"></a></p>
         <p><a href="https://goldstack.party/templates/serverless-api">Serverless API</a></p>
       </td>
       <td>
-        <p align="center"><img width="50" src="https://cdn.goldstack.party/img/202203/nodejs.svg"></p>
+        <p align="center"><a href="https://goldstack.party/templates/express-lambda"><img width="50" src="https://cdn.goldstack.party/img/202203/nodejs.svg"></a></p>
         <p><a href="https://goldstack.party/templates/express-lambda">Express.js + Lambda</a></p>
+      </td>
+      <td>
+        <p align="center"><a href="https://goldstack.party/templates/go-gin"><img width="50" src="https://cdn.goldstack.party/img/202203/gopher.svg"></a></p>
+        <p><a href="https://goldstack.party/templates/go-gin">Go Gin + Lambda</a></p>
       </td>
     </tr>
   </tbody>
