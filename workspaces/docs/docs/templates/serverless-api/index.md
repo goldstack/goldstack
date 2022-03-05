@@ -113,7 +113,6 @@ This works very well in combination with secrets for GitHub actions.
     AWS_DEFAULT_REGION: us-west-2
 ```
 
-
 ### Changing Esbuild behaviour
 
 Github [issue](https://github.com/goldstack/goldstack/issues/125)
@@ -135,7 +134,7 @@ src/routes/hello.ts
 src/routes/hello.esbuild.config.json
 ```
 
-Priority for resulting esbuild config is this (from highest to lowest): 
+Priority for resulting esbuild config is this (from highest to lowest):
 
 - local function esbuild config
 - global esbuild config
