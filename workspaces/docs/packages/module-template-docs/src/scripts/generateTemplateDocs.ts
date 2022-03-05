@@ -6,7 +6,7 @@ import { transpile, resolveMarkdown } from '@goldstack/utils-docs-cli';
 
 import { getModuleTemplatesNames } from '@goldstack/module-template-utils';
 
-import path from 'path';
+import path, { resolve } from 'path';
 import fs from 'fs';
 
 // relative to the root of this package
@@ -14,6 +14,7 @@ const paths = {
   docs: './../../docs/',
   templates: './../../../templates/packages/',
   root: './../../../../',
+  buildSets: './../../../templates/packages/template-metadata/src/deploySets/',
   templateDocPath: 'docs/',
   readmeTemplatePath: 'README.template.md',
   readmePath: 'README.md',
@@ -79,6 +80,14 @@ const run = async () => {
   }
 
   // Step 3:
+  //    Generate boilerplate docs
+  console.log(resolve(paths.buildSets));
+  generateMarkdownDocs(
+    paths.buildSets + 'nextjsBootstrap.template.README.md',
+    paths.buildSets + 'nextjsBootstrap.README.md'
+  );
+
+  // Step 4:
   //   Generate Goldstack root readme
   const sourceFileName = path.resolve(
     `${paths.root}${paths.readmeTemplatePath}`
@@ -86,7 +95,7 @@ const run = async () => {
   const targetFileName = `${paths.root}${paths.readmePath}`;
   generateMarkdownDocs(sourceFileName, targetFileName);
 
-  // Step 4:
+  // Step 5:
   //   Generate Goldstack root contributing guidelines
   const sourceFileNameContributing = path.resolve(
     `${paths.root}${paths.contributingTemplatePath}`
