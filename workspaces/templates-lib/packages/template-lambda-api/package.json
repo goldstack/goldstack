@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-api",
-  "version": "0.4.29",
+  "version": "0.4.30",
   "description": "Companion for project templates for deploying Lambdas as a REST API",
   "keywords": [
     "goldstack",
@@ -47,7 +47,7 @@
   "dependencies": {
     "@goldstack/infra": "0.3.30",
     "@goldstack/infra-aws": "0.3.38",
-    "@goldstack/utils-aws-lambda": "0.1.20",
+    "@goldstack/utils-aws-lambda": "0.1.21",
     "@goldstack/utils-cli": "0.2.10",
     "@goldstack/utils-config": "0.3.27",
     "@goldstack/utils-docker": "0.3.33",
