@@ -61,6 +61,8 @@ For more information, see [GitHub documentation - Fork a repo](https://docs.gith
 
 Go to the folder `packages/app-nextjs-bootstrap` and run `yarn watch`. This will start a local development server.
 
+<img src="https://cdn.goldstack.party/img/202201/yarn_watch.gif"  alt="VSCode Locate TypeScript">
+
 ## 8. Deploy to AWS
 
 If you want to deploy your project to AWS, you will need to make some changes to the configuration files included in this project.
