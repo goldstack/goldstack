@@ -7,7 +7,7 @@
   </a>
 </p>
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a543d8d5d69d40ef86127f310b17a2ed)](https://www.codacy.com/gh/goldstack/nextjs-bootstrap-boilerplate/dashboard?utm_source=github.com\&utm_medium=referral\&utm_content=goldstack/nextjs-bootstrap-boilerplate\&utm_campaign=Badge_Grade) 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a543d8d5d69d40ef86127f310b17a2ed)](https://www.codacy.com/gh/goldstack/nextjs-bootstrap-boilerplate/dashboard?utm_source=github.com&utm_medium=referral&utm_content=goldstack/nextjs-bootstrap-boilerplate&utm_campaign=Badge_Grade)
 
 Boilerplate for a Next.js + Bootstrap project with support for [TypeScript](https://www.typescriptlang.org/) using [Yarn](https://yarnpkg.com/) ready for deployment to AWS using low-cost, highly scaleable serverless infrastructure.
 
@@ -40,9 +40,9 @@ For more information, see [GitHub documentation - Fork a repo](https://docs.gith
 
 A few dependencies need to be available in your development system. Please verify they are present or install them.
 
-*   Node v12+
-*   Yarn v1.22.5+
-*   Docker v19+
+- Node v12+
+- Yarn v1.22.5+
+- Docker v19+
 
 Open a terminal and run the following commands:
 
@@ -58,9 +58,9 @@ This should produce the following output:
 
 If you need to install or update any of the dependencies, please see the following guides:
 
-*   [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-*   [Yarn Installation](https://yarnpkg.com/getting-started/install)
-*   [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
+- [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- [Yarn Installation](https://yarnpkg.com/getting-started/install)
+- [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
 
 ## 3. Initialise project and install NPM Dependencies
 
@@ -84,7 +84,7 @@ Note that this command also ensures that all TypeScript project references are c
 
 ## 5. Configure VSCode
 
-In order to setup VSCode, open the project in VSCode. 
+In order to setup VSCode, open the project in VSCode.
 
 VSCode may prompt you to ask if you trust the authors of the workspace. Respond with Yes.
 
@@ -96,23 +96,25 @@ You may also be asked if you want to install recommended extensions for this wor
 
 If you want to install the necessary extensions manually, here are links to the extensions required:
 
-*   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-*   [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-*   [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
 
 ## 6. Initialise TypeScript
 
-Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click *Allow*.
+Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click _Allow_.
 
-<img src="https://cdn.goldstack.party/img/202201/yarn_watch.gif"  alt="VSCode Locate TypeScript">
+<img src="https://cdn.goldstack.party/img/202201/allow_typescript.gif"  alt="VSCode Locate TypeScript">
 
-In the status bar on the bottom right-hand corner of the VSCode editor you should now see *TypeScript*.
+In the status bar on the bottom right-hand corner of the VSCode editor you should now see _TypeScript_.
 
 ![TypeScript status icon in VSCode](https://cdn.goldstack.party/img/202203/typescript_init.png)
 
 ## 7. Local Development
 
 Go to the folder `packages/app-nextjs-bootstrap` and run `yarn watch`. This will start a local development server.
+
+<img src="https://cdn.goldstack.party/img/202201/yarn_watch.gif"  alt="VSCode Locate TypeScript">
 
 ## 8. Deploy to AWS
 
@@ -145,10 +147,10 @@ Specifically, the [goldstack.json](https://github.com/goldstack/nextjs-bootstrap
 
 The key properties you will need to update are:
 
-*   `deployments[0].configuration.hostedZoneDomain`
-*   `deployments[0].configuration.websiteDomain`
+- `deployments[0].configuration.hostedZoneDomain`
+- `deployments[0].configuration.websiteDomain`
 
-Also you need to *delete* `deployments[0].tfStateKey`.
+Also you need to _delete_ `deployments[0].tfStateKey`.
 
 For more information on these configuration options, see [Goldstack Documentation / Next.js + Bootstrap Template / Configure](https://docs.goldstack.party/docs/templates/app-nextjs-bootstrap#configure).
 

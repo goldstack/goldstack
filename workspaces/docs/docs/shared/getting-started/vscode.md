@@ -1,5 +1,4 @@
-
-In order to setup VSCode, open the project in VSCode. 
+In order to setup VSCode, open the project in VSCode.
 
 VSCode may prompt you to ask if you trust the authors of the workspace. Respond with Yes.
 

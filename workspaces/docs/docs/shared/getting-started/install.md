@@ -1,5 +1,3 @@
-
-
 Run `yarn` in your project directory to install and download all dependencies.
 
 The installation process should take around 3-10 minutes depending on the dependencies that need to be downloaded.
