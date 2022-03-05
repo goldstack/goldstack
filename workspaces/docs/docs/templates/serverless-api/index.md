@@ -135,7 +135,7 @@ src/routes/hello.esbuild.config.json
 Priority for resulting esbuild config is this (from highest to lowest): 
 - local function esbuild config
 - global esbuild config
-- [default config](https://github.com/goldstack/goldstack/blob/fbb313d90033c557df79f05f6bade9c8c2650e78/workspaces/templates-lib/packages/template-lambda-api/src/templateLambdaApiBuild.ts#L21)
+- [default config](https://github.com/goldstack/goldstack/blob/master/workspaces/templates-lib/packages/template-lambda-api/src/templateLambdaApiBuild.ts#L21)
 
 ## Troubleshooting and Frequently Asked Questions
 
