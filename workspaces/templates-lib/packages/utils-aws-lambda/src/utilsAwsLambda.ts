@@ -1,7 +1,10 @@
 import { awsCli } from '@goldstack/utils-aws-cli';
 import { zip, rmSafe } from '@goldstack/utils-sh';
 
-export { readLambdaConfig } from './generate/collectLambdasFromFiles';
+export {
+  readLambdaConfig,
+  RouteType,
+} from './generate/collectLambdasFromFiles';
 
 export { generateFunctionName } from './generate/generateFunctionName';
 

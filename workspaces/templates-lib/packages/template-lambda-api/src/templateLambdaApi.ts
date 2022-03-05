@@ -69,7 +69,7 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'build') {
-      await buildLambdas(lambdaRoutes);
+      await buildLambdas(defaultRoutesPath, lambdaRoutes);
       return;
     }
 
