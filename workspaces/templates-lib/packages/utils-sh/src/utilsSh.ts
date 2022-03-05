@@ -311,6 +311,21 @@ const read = (path: string): string => {
   return buffer.toString();
 };
 
+const tryRead = (path: string): string | undefined => {
+  let buffer;
+  try {
+    buffer = fs.readFileSync(path, 'utf8');
+  } catch (ex) {}
+  return buffer?.toString();
+};
+
+const readToType = <T>(path: string): T | undefined => {
+  const stringObject = tryRead(path);
+  let result: T | undefined = undefined;
+  if (stringObject) result = JSON.parse(stringObject) as T;
+  return result;
+};
+
 const write = (content: string, path: string): void => {
   fs.writeFileSync(path, content);
 };
@@ -326,4 +341,23 @@ const commandExists = (command: string): boolean => {
   return res !== null;
 };
 
-export { exec, execSafe, pwd, read, write, cd, globSync, commandExists };
+// https://stackoverflow.com/a/57371333
+const changeExtension = (file: string, extension: string): string => {
+  // extension should include the dot, for example '.html'
+  const basename = path.basename(file, path.extname(file));
+  return path.join(path.dirname(file), basename + extension);
+};
+
+export {
+  exec,
+  execSafe,
+  pwd,
+  read,
+  write,
+  cd,
+  globSync,
+  commandExists,
+  readToType,
+  tryRead,
+  changeExtension,
+};
