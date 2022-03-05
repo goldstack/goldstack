@@ -1,10 +1,46 @@
+<p align="center">
+  <a href="https://goldstack.party">
+    <img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="128">
+    <h1 align="center">Goldstack - Project Builder</h1>
+  </a>
+</p>
+
 ![Build status](https://img.shields.io/github/workflow/status/goldstack/goldstack/Build,%20Test%20and%20Library%20Publish/master) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6cc586e39fca47a5b7bd64c5d3e1b563)](https://www.codacy.com/gh/goldstack/goldstack/dashboard?utm_source=github.com&utm_medium=referral&utm_content=goldstack/goldstack&utm_campaign=Badge_Grade)
 
-# Goldstack - JavaScript Project Builder 💖
+Getting started on a new project is fun ... until it isn't. Goldstack provides customizable starter templates that help you lift your project off the ground and immediately start working on the features that matter to you.
 
-Getting started on a new project is fun ... until it isn't. Goldstack provides customizable starter templates that help you lift your project off the ground and immediately start working on the important parts.
+# Getting Started
 
-Compose your customised starter project on [goldstack.party](https://goldstack.party).
+Explore the templates Goldstack provides:
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <p align="center"><a href="https://goldstack.party/templates/nextjs-bootstrap"><img width="50" src="https://cdn.goldstack.party/img/202203/nextjs.svg"></a></p>
+        <p><a href="https://goldstack.party/templates/nextjs-bootstrap">Next.js + Bootstrap</a></p>
+      </td>
+      <td>
+        <p align="center"><a href="https://goldstack.party/templates/serverless-api"><img width="50" src="https://cdn.goldstack.party/img/202203/aws-api-gateway.svg"></a></p>
+        <p><a href="https://goldstack.party/templates/serverless-api">Serverless API</a></p>
+      </td>
+      <td>
+        <p align="center"><a href="https://goldstack.party/templates/express-lambda"><img width="50" src="https://cdn.goldstack.party/img/202203/nodejs.svg"></a></p>
+        <p><a href="https://goldstack.party/templates/express-lambda">Express.js + Lambda</a></p>
+      </td>
+      <td>
+        <p align="center"><a href="https://goldstack.party/templates/go-gin"><img height="50" src="https://cdn.goldstack.party/img/202203/gopher.svg"></a></p>
+        <p><a href="https://goldstack.party/templates/go-gin">Go Gin + Lambda</a></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+Find all templates on [Goldstack](https://goldstack.party/).
+
+# How Does It Work
+
+[!embed](workspaces/docs/docs/goldstack/how-does-it-work/index.md)
 
 # Roadmap
 
@@ -23,15 +59,11 @@ It should be a surprise to no one that setting up a dynamic monorepo for JavaScr
 
 [!embed](workspaces/docs/docs/goldstack/about/index.md)
 
-# How Does It Work
-
-[!embed](workspaces/docs/docs/goldstack/how-does-it-work/index.md)
-
 # Configuration
 
 [!embed](workspaces/docs/docs/goldstack/configuration/index.md)
 
-# Getting Started
+# First Steps
 
 [!embed](workspaces/docs/docs/goldstack/getting-started/index.md)
 
