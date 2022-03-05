@@ -20,7 +20,7 @@ const dummyDeployment: LambdaApiDeployment = {
 };
 
 describe('Generate Lambda config', () => {
-  const routesConfig = readLambdaConfig('./testData');
+  const routesConfig = readLambdaConfig('./testData/routes-test');
   const config = generateLambdaConfig(dummyDeployment, routesConfig);
   test('Should render config for Terraform', () => {
     assert(config['default'].function_name);

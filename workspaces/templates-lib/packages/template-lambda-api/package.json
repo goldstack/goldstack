@@ -69,6 +69,7 @@
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-git": "0.1.31",
     "@goldstack/utils-package-config-generate": "0.2.11",
+    "@types/aws-lambda": "^8.10.88",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
     "@types/yargs": "^15.0.5",
