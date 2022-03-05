@@ -125,6 +125,18 @@ Provide esbuild.config.json in the ./packages/serverless-api folder of your gene
 }
 ```
 This object will be used for build proccess on every serverless function
+
+If you want to change esbuild config for specific function, just add esbuild config, like this:
+```sh
+src/routes/hello.ts
+src/routes/hello.esbuild.config.json
+```
+
+Priority for resulting esbuild config is this (from highest to lowest): 
+- local function esbuild config
+- global esbuild config
+- [default config](https://github.com/goldstack/goldstack/blob/fbb313d90033c557df79f05f6bade9c8c2650e78/workspaces/templates-lib/packages/template-lambda-api/src/templateLambdaApiBuild.ts#L21)
+
 ## Troubleshooting and Frequently Asked Questions
 
 [!embed](./../lambda-express/faq.md)

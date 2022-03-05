@@ -341,6 +341,13 @@ const commandExists = (command: string): boolean => {
   return res !== null;
 };
 
+// https://stackoverflow.com/a/57371333
+const changeExtension = (file: string, extension: string): string => {
+  // extension should include the dot, for example '.html'
+  const basename = path.basename(file, path.extname(file));
+  return path.join(path.dirname(file), basename + extension);
+};
+
 export {
   exec,
   execSafe,
@@ -352,4 +359,5 @@ export {
   commandExists,
   readToType,
   tryRead,
+  changeExtension,
 };
