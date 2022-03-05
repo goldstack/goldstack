@@ -19,6 +19,7 @@ export const buildLambdas = async (
   configs: LambdaConfig[]
 ): Promise<void> => {
   const esbuildConfig = readToType<BuildOptions>('./esbuild.config.json');
+
   for await (const config of configs) {
     mkdir('-p', getOutDirForLambda(config));
     const esbuildLocalPath = changeExtension(
