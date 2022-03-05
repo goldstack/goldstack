@@ -113,6 +113,18 @@ This works very well in combination with secrets for GitHub actions.
     AWS_DEFAULT_REGION: us-west-2
 ```
 
+
+### Changing Esbuild behaviour
+
+Github [issue](https://github.com/goldstack/goldstack/issues/125)
+
+Provide esbuild.config.json in the ./packages/serverless-api folder of your generated project with example config like this:
+```js
+{
+  "platform": "node"
+}
+```
+This object will be used for build proccess on every serverless function
 ## Troubleshooting and Frequently Asked Questions
 
 [!embed](./../lambda-express/faq.md)
