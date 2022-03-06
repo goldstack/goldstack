@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-terraform-aws",
-  "version": "0.3.60",
+  "version": "0.3.61",
   "description": "Easily deploy Terraform IaC with npm package scripts",
   "keywords": [
     "goldstack",
@@ -36,12 +36,12 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.3.38",
-    "@goldstack/utils-config": "0.3.27",
+    "@goldstack/infra-aws": "0.3.39",
+    "@goldstack/utils-config": "0.3.28",
     "@goldstack/utils-log": "0.2.11",
-    "@goldstack/utils-package": "0.3.32",
-    "@goldstack/utils-sh": "0.4.26",
-    "@goldstack/utils-terraform": "0.3.61",
+    "@goldstack/utils-package": "0.3.33",
+    "@goldstack/utils-sh": "0.4.27",
+    "@goldstack/utils-terraform": "0.3.62",
     "aws-sdk": "2.1001.0"
   },
   "devDependencies": {

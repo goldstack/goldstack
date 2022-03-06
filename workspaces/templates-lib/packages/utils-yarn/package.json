@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-yarn",
-  "version": "0.3.36",
+  "version": "0.3.37",
   "description": "Easily run yarn commands from within JavaScript code",
   "keywords": [
     "goldstack",
@@ -35,8 +35,8 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-docker": "0.3.33",
-    "@goldstack/utils-sh": "0.4.26"
+    "@goldstack/utils-docker": "0.3.34",
+    "@goldstack/utils-sh": "0.4.27"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.31",
