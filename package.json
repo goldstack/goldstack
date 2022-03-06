@@ -34,9 +34,9 @@
     "@ampproject/toolbox-optimizer": "^2.5.14"
   },
   "devDependencies": {
-    "@goldstack/nodemonx": "0.3.27",
+    "@goldstack/nodemonx": "0.3.28",
     "@goldstack/utils-docs-cli": "0.3.11",
-    "@goldstack/utils-package-upgrade": "0.2.35",
+    "@goldstack/utils-package-upgrade": "0.2.36",
     "@goldstack/utils-typescript-references": "0.1.6",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
