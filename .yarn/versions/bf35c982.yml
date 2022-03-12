@@ -1,0 +1,5 @@
+undecided:
+  - root
+  - "@goldstack/app-nextjs-bootstrap"
+  - "@goldstack/template-metadata"
+  - "@goldstack/prepare-template"
