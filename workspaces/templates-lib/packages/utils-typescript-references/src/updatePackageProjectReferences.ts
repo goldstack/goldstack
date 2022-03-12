@@ -2,7 +2,6 @@ import fs from 'fs';
 import { execSync } from 'child_process';
 import { getPackages, PackageData } from './sharedUtils';
 import path from 'path';
-import { Z_FIXED } from 'zlib';
 
 export const updatePackageProjectReferences = (): void => {
   const cmdRes = execSync('yarn workspaces list --json').toString();

@@ -15,5 +15,13 @@ export const updateRootProjectReferences = (): void => {
     (packageData) => packageData.path
   );
 
-  fs.writeFileSync('./tsconfig.json', JSON.stringify(tsConfigData, null, 2));
+  const newContent = JSON.stringify(tsConfigData, null, 2);
+
+  if (newContent !== fs.readFileSync('./tsconfig.json').toString()) {
+    console.log(
+      "Updating project references in './tsconfig.json' to:\n" +
+        tsConfigData.references.map((refData) => refData.path).join('\n ')
+    );
+    fs.writeFileSync('./tsconfig.json', newContent);
+  }
 };
