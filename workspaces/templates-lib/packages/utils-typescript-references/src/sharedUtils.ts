@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 export interface PackageData {
   path: string;
   name: string;
@@ -15,6 +17,14 @@ export function getPackages(cmdRes: string): PackageData[] {
       }
       const packageData = JSON.parse(line);
       if (packageData.location === '.') {
+        return {
+          path: undefined,
+          name: undefined,
+        };
+      }
+      // ignore packages without TypeScript configuration
+      if (!fs.existsSync(`${packageData.location}/tsconfig.json`)) {
+        console.log('skipping package', packageData.location);
         return {
           path: undefined,
           name: undefined,
