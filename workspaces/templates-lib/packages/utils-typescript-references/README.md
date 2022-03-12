@@ -7,6 +7,7 @@ Running this script will:
 1. Add a list of all packages in the workspaces to the root `tsconfig.json` for the `"references"` attribute:
 
 ```json
+{
  "references": [
     {
       "path": "workspaces/apps"
@@ -19,8 +20,9 @@ Running this script will:
     },
     {
       "path": "workspaces/templates-lib"
-    }]
-  }
+    }
+  ]
+}
 ```
 
 2. Update all the `"references"` in the `tsconfig.json` for all packages in the workspace so that it includes all the packages that it declares as a dependency in `package.json`.

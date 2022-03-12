@@ -24,7 +24,6 @@ export function getPackages(cmdRes: string): PackageData[] {
       }
       // ignore packages without TypeScript configuration
       if (!fs.existsSync(`${packageData.location}/tsconfig.json`)) {
-        console.log('skipping package', packageData.location);
         return {
           path: undefined,
           name: undefined,

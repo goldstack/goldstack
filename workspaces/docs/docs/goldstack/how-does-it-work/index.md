@@ -9,12 +9,6 @@ Generating new starter projects with Goldstack is simple and quick.
 
 Rather than providing a library of projects, Goldstack provides a _library of module templates_ that can be used to compose projects. This ensures that you can start with a project that includes exactly the features you need.
 
-Some examples of modules are:
-
-- [Next.js](../modules/app-nextjs)
-- [S3](../modules/s3)
-- [Lambda Express](../modules/lambda-express)
-
 You can select as many modules as you want. All modules are configured to be easily used alongside each other. For instance, if you choose all modules from the list above, you can link the Lambda Express module to the Next JS application and the S3 module with the Express application. All modules are deployed into a project configured using Yarn workspaces.
 
 ### Step 2: Provide your Email (if you like)
