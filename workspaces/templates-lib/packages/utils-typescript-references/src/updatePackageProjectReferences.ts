@@ -24,7 +24,6 @@ function processPackage(
   allPackages: PackageData[],
   packageData: PackageData
 ) {
-  console.log(`Processing package ${packageDir}`);
   const packageJson = fs
     .readFileSync(path.resolve(packageDir, './package.json'))
     .toString();
@@ -58,12 +57,17 @@ function processPackage(
       };
     });
 
-  console.log(
-    'Setting project references:\n' +
-      tsConfigData.references.map((refData) => refData.path).join('\n ')
-  );
-  fs.writeFileSync(
-    path.resolve(packageDir, './tsconfig.json'),
-    JSON.stringify(tsConfigData, null, 2)
-  );
+  const tsConfigPath = path.resolve(packageDir, './tsconfig.json');
+  const newData = JSON.stringify(tsConfigData, null, 2);
+  // only update the config file when it has changed
+  if (
+    !fs.existsSync(tsConfigPath) ||
+    fs.readFileSync(tsConfigPath).toString() !== newData
+  ) {
+    console.log(
+      `Updating project references in ${tsConfigPath} to:\n` +
+        tsConfigData.references.map((refData) => refData.path).join('\n ')
+    );
+    fs.writeFileSync(tsConfigPath, newData);
+  }
 }

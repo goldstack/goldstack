@@ -17,7 +17,7 @@
     "compile-watch": "tsc -b -w",
     "ensure-local-packages": "ts-node scripts/ensureLocalPackages.ts",
     "eslint": "eslint",
-    "fix-project-references": "utils-typescript-references",
+    "fix-project-references": "ts-node scripts/fixProjectReferences.ts",
     "format": "prettier --loglevel log --config .prettierrc.json --write .",
     "format-check": "prettier --loglevel log --config .prettierrc.json --check .",
     "generate-docs": "yarn workspace templates-lib generate-docs && yarn workspace docs generate-docs && yarn workspace apps generate-docs",
