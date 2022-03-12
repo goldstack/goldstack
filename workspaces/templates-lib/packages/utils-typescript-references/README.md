@@ -25,8 +25,6 @@ Running this script will:
 
 2. Update all the `"references"` in the `tsconfig.json` for all packages in the workspace so that it includes all the packages that it declares as a dependency in `package.json`.
 
-This package uses [@monorepo-utils/workspaces-to-typescript-project-references](https://github.com/azu/monorepo-utils/tree/master/packages/@monorepo-utils/workspaces-to-typescript-project-references#readme).
-
 ## Usage
 
 Install as development dependency using
