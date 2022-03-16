@@ -23,51 +23,61 @@ function processPackage(
   packageDir: string,
   allPackages: PackageData[],
   packageData: PackageData
-) {
+): void {
   const packageJson = fs
     .readFileSync(path.resolve(packageDir, './package.json'))
     .toString();
   const packageJsonData = JSON.parse(packageJson);
-  const tsConfig = fs
-    .readFileSync(path.resolve(packageDir, './tsconfig.json'))
-    .toString();
+  const tsConfigPath = path.join(packageDir, 'tsconfig.json');
+  const tsConfig = fs.readFileSync(tsConfigPath).toString();
 
   const tsConfigData = JSON.parse(tsConfig);
+  const oldReferences = tsConfigData.references || [];
 
-  tsConfigData.references = [
+  const newReferences = [
     ...Object.keys(packageJsonData.dependencies || {}),
     ...Object.keys(packageJsonData.devDependencies || {}),
   ]
-    // all dependencies that are workspace dependencies
-    .filter(
-      (dependencyData) =>
-        allPackages.filter((packageData) => packageData.name === dependencyData)
-          .length > 0
+    // all dependencies that are workspace dependencies and have a tsconfig.json
+    .map((dependencyData) =>
+      allPackages.find((packageData) => packageData.name === dependencyData)
     )
-    // for each add a path
-    .map((dependencyData) => {
-      const dependencyPackageData = allPackages.find(
-        (packageData) => packageData.name === dependencyData
+    .filter((dependencyPackageData): dependencyPackageData is PackageData => {
+      return (
+        !!dependencyPackageData &&
+        fs.existsSync(path.resolve(dependencyPackageData.path, 'package.json'))
       );
-      if (!dependencyPackageData) {
-        throw new Error('Package not found');
-      }
+    })
+    // for each add a path
+    .map((dependencyPackageData) => {
       return {
         path: path.posix.relative(packageData.path, dependencyPackageData.path),
       };
     });
 
-  const tsConfigPath = path.resolve(packageDir, './tsconfig.json');
-  const newData = JSON.stringify(tsConfigData, null, 2);
-  // only update the config file when it has changed
-  if (
-    !fs.existsSync(tsConfigPath) ||
-    fs.readFileSync(tsConfigPath).toString() !== newData
-  ) {
-    console.log(
-      `Updating project references in ${tsConfigPath} to:\n` +
-        tsConfigData.references.map((refData) => refData.path).join('\n ')
-    );
-    fs.writeFileSync(tsConfigPath, newData);
+  // Exit early if references are unchanged (using JSON for deep comparison)
+  if (JSON.stringify(oldReferences) === JSON.stringify(newReferences)) {
+    return;
   }
+
+  const newData = JSON.stringify(
+    {
+      ...tsConfigData,
+      // Override references; or omit them if empty
+      references: newReferences.length ? newReferences : undefined,
+    },
+    null,
+    2
+  );
+
+  // only update the config file when it has changed
+  if (newReferences.length) {
+    console.log(
+      `Updating project references in ${tsConfigPath} to:` +
+        newReferences.map((refData) => `\n  ${refData.path}`).join('')
+    );
+  } else {
+    console.log(`Removing project references in ${tsConfigPath}`);
+  }
+  fs.writeFileSync(tsConfigPath, newData);
 }
