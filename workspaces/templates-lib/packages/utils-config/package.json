@@ -39,7 +39,7 @@
     "@goldstack/utils-log": "0.2.11",
     "@goldstack/utils-sh": "0.4.27",
     "ajv": "^6.12.2",
-    "handlebars": "^4.7.6"
+    "handlebars": "4.7.7"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.31",

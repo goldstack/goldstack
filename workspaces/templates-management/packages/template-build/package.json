@@ -25,7 +25,7 @@
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/utils-sh": "0.4.27",
     "@goldstack/utils-template": "0.3.30",
-    "aws-sdk": "2.1001.0"
+    "aws-sdk": "2.814.0"
   },
   "devDependencies": {
     "@types/archiver": "^3.1.0",
