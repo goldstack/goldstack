@@ -110,14 +110,40 @@
       "namedRegex": "^/templates/(?<template>[^/]+?)(?:/)?$"
     }
   ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/build",
+      "regex": "^/build(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/build(?:/)?$"
+    },
+    {
+      "page": "/build_legacy",
+      "regex": "^/build_legacy(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/build_legacy(?:/)?$"
+    },
+    {
+      "page": "/terms-and-conditions",
+      "regex": "^/terms\\-and\\-conditions(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/terms\\-and\\-conditions(?:/)?$"
+    }
+  ],
   "dataRoutes": [
     {
       "page": "/templates/[template]",
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/TgArGXDb0zLAY1USX9HQT/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/TgArGXDb0zLAY1USX9HQT/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/SkxqzflC2iOfTQiuL1Ddx/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/SkxqzflC2iOfTQiuL1Ddx/templates/(?<template>[^/]+?)\\.json$"
     }
   ],
   "rewrites": []

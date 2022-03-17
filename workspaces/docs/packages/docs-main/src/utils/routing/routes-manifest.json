@@ -14,49 +14,49 @@
       "source": "/docs/modules/app-nextjs-bootstrap",
       "destination": "/docs/templates/app-nextjs-bootstrap",
       "statusCode": 308,
-      "regex": "^/docs/modules/app-nextjs-bootstrap$"
+      "regex": "^(?!/_next)/docs/modules/app-nextjs-bootstrap(?:/)?$"
     },
     {
       "source": "/docs/modules/lambda-api",
       "destination": "/docs/templates/serverless-api",
       "statusCode": 308,
-      "regex": "^/docs/modules/lambda-api$"
+      "regex": "^(?!/_next)/docs/modules/lambda-api(?:/)?$"
     },
     {
       "source": "/docs/modules/app-nextjs",
       "destination": "/docs/templates/app-nextjs",
       "statusCode": 308,
-      "regex": "^/docs/modules/app-nextjs$"
+      "regex": "^(?!/_next)/docs/modules/app-nextjs(?:/)?$"
     },
     {
       "source": "/docs/modules/lambda-express",
       "destination": "/docs/templates/lambda-express",
       "statusCode": 308,
-      "regex": "^/docs/modules/lambda-express$"
+      "regex": "^(?!/_next)/docs/modules/lambda-express(?:/)?$"
     },
     {
       "source": "/docs/modules/email-send",
       "destination": "/docs/templates/email-send",
       "statusCode": 308,
-      "regex": "^/docs/modules/email-send$"
+      "regex": "^(?!/_next)/docs/modules/email-send(?:/)?$"
     },
     {
       "source": "/docs/modules/static-website-aws",
       "destination": "/docs/templates/static-website-aws",
       "statusCode": 308,
-      "regex": "^/docs/modules/static-website-aws$"
+      "regex": "^(?!/_next)/docs/modules/static-website-aws(?:/)?$"
     },
     {
       "source": "/docs/modules/s3",
       "destination": "/docs/templates/s3",
       "statusCode": 308,
-      "regex": "^/docs/modules/s3$"
+      "regex": "^(?!/_next)/docs/modules/s3(?:/)?$"
     },
     {
       "source": "/docs/modules/lambda-go-gin",
       "destination": "/docs/templates/lambda-go-gin",
       "statusCode": 308,
-      "regex": "^/docs/modules/lambda-go-gin$"
+      "regex": "^(?!/_next)/docs/modules/lambda-go-gin(?:/)?$"
     }
   ],
   "headers": [],
@@ -174,14 +174,28 @@
       "namedRegex": "^/docs/(?<slug>.+?)(?:/)?$"
     }
   ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/docs",
+      "regex": "^/docs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/docs(?:/)?$"
+    }
+  ],
   "dataRoutes": [
     {
       "page": "/docs/[...slug]",
       "routeKeys": {
         "slug": "slug"
       },
-      "dataRouteRegex": "^/_next/data/dr7l1xBoI6GtlriwUUAMO/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/dr7l1xBoI6GtlriwUUAMO/docs/(?<slug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/iuFMOMz4tLZA0WlkhaxpV/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/iuFMOMz4tLZA0WlkhaxpV/docs/(?<slug>.+?)\\.json$"
     }
   ],
   "rewrites": []
