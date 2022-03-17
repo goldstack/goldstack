@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@goldstack/nodemonx": "0.3.28",
-    "@goldstack/utils-typescript-references": "0.1.8",
+    "@goldstack/utils-typescript-references": "0.1.9",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
