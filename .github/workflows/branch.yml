@@ -1,4 +1,4 @@
-name: Branch build 
+name: Branch & PR build 
 
 on: [push, pull_request]
 
