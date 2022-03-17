@@ -1,6 +1,9 @@
 name: Build, Test and Library Publish
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -15,7 +18,7 @@ jobs:
           token: ${{secrets.BUILD_TOKEN}}
       - uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: '14'
           registry-url: https://registry.npmjs.org
       - name: Configure git
         run: |
