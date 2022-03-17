@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-aws-lambda",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "Utilities for deploying AWS Lambda functions",
   "keywords": [
     "goldstack",
@@ -42,7 +42,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-aws-cli": "0.3.49",
+    "@goldstack/utils-aws-cli": "0.3.50",
     "@goldstack/utils-log": "0.2.11",
     "@goldstack/utils-sh": "0.4.27",
     "aws-sdk": "2.814.0"

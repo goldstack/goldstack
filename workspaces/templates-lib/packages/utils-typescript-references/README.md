@@ -8,7 +8,7 @@ Running this script will:
 
 ```json
 {
- "references": [
+  "references": [
     {
       "path": "workspaces/apps"
     },
