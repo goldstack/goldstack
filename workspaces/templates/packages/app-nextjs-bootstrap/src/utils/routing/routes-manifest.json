@@ -22,6 +22,14 @@
       "regex": "^\\/index$"
     }
   ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    }
+  ],
   "dataRoutes": [],
   "rewrites": []
 }

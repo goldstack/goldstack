@@ -30,8 +30,8 @@
     "test-ci": "yarn workspaces foreach run test-ci",
     "test-watch": "nodemonx --watch . --exec 'yarn test-ci'"
   },
-  "dependencies": {
-    "@ampproject/toolbox-optimizer": "^2.5.14"
+  "resolutions": {
+    "aws-sdk": "2.814.0"
   },
   "devDependencies": {
     "@goldstack/nodemonx": "0.3.28",
