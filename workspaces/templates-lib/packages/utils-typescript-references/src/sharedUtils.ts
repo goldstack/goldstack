@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 
 export interface PackageData {
   path: string;
@@ -35,4 +36,52 @@ export function getPackages(cmdRes: string): PackageData[] {
       };
     })
     .filter((packageData) => packageData.path && packageData.name);
+}
+
+/**
+ * Search a folder for the preferred tsconfig.json file based
+ * on the options in tsConfigNames.
+ *
+ * @param workspacePath Directory to search in
+ * @param tsConfigNames List of tsconfig.json files to search for in order
+ *    of preference
+ */
+export function getTsConfigPath(
+  workspacePath: string,
+  tsConfigNames: string[]
+): string | undefined {
+  return tsConfigNames
+    .map((tsConfigName) => path.join(workspacePath, tsConfigName))
+    .find((tsConfigPath) => fs.existsSync(tsConfigPath));
+}
+
+/**
+ * Calculate the references array for the package
+ *
+ * @param packagePath Path to the packge we are updating references for
+ * @param packages Packages the package wants to reference
+ * @param tsConfigNames Configured tsconfig file names
+ */
+export function makeReferences(
+  packagePath: string,
+  packages: Array<PackageData | null | undefined>,
+  tsConfigNames: string[]
+): Array<{ path: string }> {
+  return (
+    packages
+      .filter((p): p is PackageData => !!p)
+      .map((dependencyData) =>
+        getTsConfigPath(dependencyData.path, tsConfigNames)
+      )
+      .filter((p): p is string => !!p)
+      // for each add a path
+      .map((tsConfigPath) => ({
+        path: path.posix.relative(
+          packagePath,
+          path.basename(tsConfigPath) === 'tsconfig.json'
+            ? path.dirname(tsConfigPath)
+            : tsConfigPath
+        ),
+      }))
+  );
 }
