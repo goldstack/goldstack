@@ -1,9 +1,9 @@
 name: Build, Test and Library Publish
 
-on: 
-  push: 
+on:
+  push:
     branches:
-        - master
+      - master
 
 jobs:
   build:

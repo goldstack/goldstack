@@ -1,4 +1,4 @@
-name: Branch & PR build 
+name: Branch & PR build
 
 on: [push, pull_request]
 
@@ -28,7 +28,6 @@ jobs:
         run: |
           yarn npm audit --all
 
-
       - name: Compile all
         run: |
           yarn compile
@@ -44,7 +43,7 @@ jobs:
           cd workspaces/templates-management
           yarn test-ci
           cd ../..
-      
+
       - name: Generate schemas
         run: |
           yarn generate-schema
