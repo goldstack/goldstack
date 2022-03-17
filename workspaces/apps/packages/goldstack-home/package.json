@@ -34,13 +34,13 @@
   "dependencies": {
     "@fullstory/browser": "^1.4.5",
     "@goldstack/goldstack-api": "0.1.0",
-    "@goldstack/infra": "0.3.31",
-    "@goldstack/infra-aws": "0.3.39",
+    "@goldstack/infra": "0.3.32",
+    "@goldstack/infra-aws": "0.3.40",
     "@goldstack/project-config": "0.1.0",
     "@goldstack/project-repository": "0.1.0",
     "@goldstack/template-metadata": "0.1.0",
-    "@goldstack/utils-package": "0.3.33",
-    "@goldstack/utils-project": "0.3.29",
+    "@goldstack/utils-package": "0.3.34",
+    "@goldstack/utils-project": "0.3.30",
     "@goldstack/utils-track": "0.1.13",
     "@rjsf/bootstrap-4": "^2.4.0",
     "@rjsf/core": "^2.4.0",
@@ -62,7 +62,7 @@
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
-    "@goldstack/template-nextjs": "0.3.102",
+    "@goldstack/template-nextjs": "0.3.103",
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-sh": "0.4.27",
     "@testing-library/jest-dom": "^5.9.0",
