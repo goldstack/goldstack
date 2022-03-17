@@ -1,0 +1,54 @@
+name: Branch build 
+
+on: 
+  push 
+
+jobs:
+  build:
+    name: 'Build and Test'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.11
+
+      - name: Install
+        run: |
+          yarn install
+
+      - name: Linting and formatting
+        run: |
+          yarn format-check
+          yarn lint
+
+      - name: NPM Audit
+        run: |
+          yarn npm audit --all
+
+
+      - name: Compile all
+        run: |
+          yarn compile
+
+      - name: Test libraries
+        run: |
+          cd workspaces/templates-lib
+          yarn test-ci
+          cd ../..
+
+      - name: Test template management
+        run: |
+          cd workspaces/templates-management
+          yarn test-ci
+          cd ../..
+      
+      - name: Generate schemas
+        run: |
+          yarn generate-schema
+
+      - name: Generate docs
+        run: |
+          yarn generate-docs
