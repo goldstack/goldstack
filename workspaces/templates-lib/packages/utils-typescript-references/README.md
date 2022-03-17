@@ -70,10 +70,10 @@ Will skip updating the `references` in the `tsconfig.json` file for the project 
 `utils-typescript-references --tsConfigName tsconfig.build.json`
 
 Will update and reference `tsconfig.build.json` files only; `tsconfig.json` files are ignored, and packages
-with only `tsconfig.json` and not `tsconfig.build.json` will not have references inserted.  This is intended
+with only `tsconfig.json` and not `tsconfig.build.json` will not have references inserted. This is intended
 for monorepos where the `tsconfig.build.json` builds the modules that are exported from the package, and thus
-should be run when you are building using `tsc -b`.  In this case the `tsconfig.json` can be set up to type
-check only (no emit) and have a manually inserted reference to `tsconfig.build.json` for running `tsc -b`. 
+should be run when you are building using `tsc -b`. In this case the `tsconfig.json` can be set up to type
+check only (no emit) and have a manually inserted reference to `tsconfig.build.json` for running `tsc -b`.
 
 `utils-typescript-references --tsConfigName tsconfig.build.json --tsConfigName tsconfig.json`
 
@@ -84,8 +84,6 @@ where `tsconfig.build.json` is not present (maybe it's not needed as there are n
 
 Prefer to reference and update `tsconfig.json` inside a `src` subfolder rather than at the top
 of the package / project.
-
-
 
 ## Limitations
 
