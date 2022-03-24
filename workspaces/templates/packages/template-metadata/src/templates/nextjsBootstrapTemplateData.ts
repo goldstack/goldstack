@@ -107,21 +107,5 @@ export const getNextjsBootstrapTemplateData = (): ProjectTemplateProps => {
       featureTerraform,
       featureNextJsComposition,
     ],
-    features: [
-      {
-        title: 'Bootstrap Styling for React Components',
-        description:
-          'Style your components in the Next.js application with Bootstrap and give your application a professional look and feel.',
-        content: {
-          type: 'bootstrap',
-          data: {},
-        },
-        moreDetails: {
-          description:
-            'This also works with Bootstrap templates. Just replace the Bootstrap CSS files included in this template.',
-        },
-      },
-      ...getNextJsTemplateData().features,
-    ],
   };
 };
