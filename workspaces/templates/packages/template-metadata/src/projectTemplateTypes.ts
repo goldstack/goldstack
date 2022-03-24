@@ -83,6 +83,5 @@ export interface ProjectTemplateProps {
   longDescription: string;
   tags: string[];
   hero: TextSectionProps;
-  // features: TemplateFeatureProps[];
   featuresOverview: ShortTemplateFeature[];
 }
