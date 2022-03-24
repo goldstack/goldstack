@@ -3,7 +3,6 @@
 // .modal-dialog    - positioning shell for the actual modal
 // .modal-content   - actual modal w/ bg and corners and stuff
 
-
 // Container that the modal scrolls within
 .modal {
   position: fixed;
@@ -94,8 +93,12 @@
   background-color: $modal-backdrop-bg;
 
   // Fade for backdrop
-  &.fade { opacity: 0; }
-  &.show { opacity: $modal-backdrop-opacity; }
+  &.fade {
+    opacity: 0;
+  }
+  &.show {
+    opacity: $modal-backdrop-opacity;
+  }
 }
 
 // Modal header
@@ -110,8 +113,9 @@
   @include border-top-radius($modal-content-inner-border-radius);
 
   .btn-close {
-    padding: ($modal-header-padding-y * .5) ($modal-header-padding-x * .5);
-    margin: ($modal-header-padding-y * -.5) ($modal-header-padding-x * -.5) ($modal-header-padding-y * -.5) auto;
+    padding: ($modal-header-padding-y * 0.5) ($modal-header-padding-x * 0.5);
+    margin: ($modal-header-padding-y * -0.5) ($modal-header-padding-x * -0.5)
+      ($modal-header-padding-y * -0.5) auto;
   }
 }
 
@@ -138,7 +142,7 @@
   flex-shrink: 0;
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
-  padding: $modal-inner-padding - $modal-footer-margin-between * .5;
+  padding: $modal-inner-padding - $modal-footer-margin-between * 0.5;
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
   @include border-bottom-radius($modal-content-inner-border-radius);
 
@@ -146,7 +150,7 @@
   // This solution is far from ideal because of the universal selector usage,
   // but is needed to fix https://github.com/twbs/bootstrap/issues/24800
   > * {
-    margin: $modal-footer-margin-between * .5;
+    margin: $modal-footer-margin-between * 0.5;
   }
 }
 
@@ -170,7 +174,9 @@
     @include box-shadow($modal-content-box-shadow-sm-up);
   }
 
-  .modal-sm { max-width: $modal-sm; }
+  .modal-sm {
+    max-width: $modal-sm;
+  }
 }
 
 @include media-breakpoint-up(lg) {
@@ -181,13 +187,15 @@
 }
 
 @include media-breakpoint-up(xl) {
-  .modal-xl { max-width: $modal-xl; }
+  .modal-xl {
+    max-width: $modal-xl;
+  }
 }
 
 // scss-docs-start modal-fullscreen-loop
 @each $breakpoint in map-keys($grid-breakpoints) {
   $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-  $postfix: if($infix != "", $infix + "-down", "");
+  $postfix: if($infix != '', $infix + '-down', '');
 
   @include media-breakpoint-down($breakpoint) {
     .modal-fullscreen#{$postfix} {
