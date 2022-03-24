@@ -10,7 +10,7 @@ import {
 } from '@goldstack/template-metadata';
 
 import Footer from 'src/components/Footer';
-import Breadcrump from '../../components/Breadcrump';
+import Breadcrumb from '../../components/Breadcrumb';
 import ProjectTemplate from '../../components/template/ProjectTemplate';
 
 const Template = (props: ProjectTemplateProps): JSX.Element => {
@@ -18,12 +18,12 @@ const Template = (props: ProjectTemplateProps): JSX.Element => {
   return (
     <>
       <Header></Header>
-      <Breadcrump
+      <Breadcrumb
         elements={[
           { description: 'Templates' },
           { description: props.title, link: '#', active: true },
         ]}
-      ></Breadcrump>
+      ></Breadcrumb>
       <ProjectTemplate {...template}></ProjectTemplate>
       <Footer></Footer>
     </>
