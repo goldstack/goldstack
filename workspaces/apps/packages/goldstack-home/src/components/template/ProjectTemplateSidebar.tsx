@@ -18,6 +18,7 @@ interface ProjectTemplateSidebarProps {
   packages: PackageProps[];
   isComposite: boolean;
   actionLink: string;
+  boilerplateLink?: string;
 }
 
 const ProjectTemplateSidebar = (
@@ -43,6 +44,17 @@ const ProjectTemplateSidebar = (
             >
               ✔ Add to Project
             </a>
+            {props.boilerplateLink && (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-sm btn-block btn-white transition-3d-hover"
+                href={props.boilerplateLink}
+              >
+                <img src={GitHubIcon} style={{ width: '1rem' }}></img> View
+                Boilerplate
+              </a>
+            )}
           </div>
 
           {props.isComposite && (
@@ -89,7 +101,7 @@ const ProjectTemplateSidebar = (
                 >
                   <img
                     className={`fas fa-home nav-icon ${styles['menulinks-link-nav-icon']}`}
-                    src={GoldstackIcon as any}
+                    src="https://cdn.goldstack.party/img/202203/goldstack_icon.png"
                   ></img>
                   Goldstack
                 </a>

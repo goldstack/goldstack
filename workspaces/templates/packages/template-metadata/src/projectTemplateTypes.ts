@@ -78,6 +78,10 @@ export interface ProjectTemplateProps {
    */
   isComposite: boolean;
   description: string;
+  /**
+   * Link to a GitHub project with boilerplate generated from this template.
+   */
+  boilerplateLink?: string;
   packages: PackageProps[];
   images: TemplateFeatureImage[];
   longDescription: string;

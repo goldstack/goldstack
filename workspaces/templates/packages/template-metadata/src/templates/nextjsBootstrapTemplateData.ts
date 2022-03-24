@@ -1,7 +1,6 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
 
 import {
-  getNextJsTemplateData,
   featureESLint,
   featureJest,
   featureVSCode,
@@ -17,6 +16,8 @@ export const getNextjsBootstrapTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'nextjs-bootstrap',
     title: 'Next.js + Bootstrap',
+    boilerplateLink:
+      'https://github.com/goldstack/nextjs-bootstrap-boilerplate',
     images: ['nextjs', 'bootstrap', 'typescript'],
     packages: [NextJsBootstrap],
     isComposite: false,
