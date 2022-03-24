@@ -51,6 +51,5 @@ export const getEmailSentTemplateData = (): ProjectTemplateProps => {
       },
       ...getExpressTemplateData().featuresOverview,
     ],
-    features: [...getExpressTemplateData().features],
   };
 };

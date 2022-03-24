@@ -26,6 +26,7 @@ const ProjectTemplate = (props: ProjectTemplateProps): JSX.Element => {
             isComposite={props.isComposite}
             packages={props.packages}
             actionLink={props.hero.action?.link || '#'}
+            boilerplateLink={props.boilerplateLink}
           ></ProjectTemplateSidebar>
           <ProjectTemplateBody {...props}></ProjectTemplateBody>
         </div>

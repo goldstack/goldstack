@@ -150,6 +150,5 @@ export const getGoGinTemplateData = (): ProjectTemplateProps => {
         },
       },
     ],
-    features: [],
   };
 };

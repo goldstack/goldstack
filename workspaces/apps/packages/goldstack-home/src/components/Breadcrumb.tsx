@@ -1,16 +1,16 @@
 import React from 'react';
 
-export interface BreadcrumpElement {
+export interface BreadcrumbElement {
   description: string;
   link?: string;
   active?: boolean;
 }
 
-export interface BreadcrumpProps {
-  elements: BreadcrumpElement[];
+export interface BreadcrumbProps {
+  elements: BreadcrumbElement[];
 }
 
-const Breadcrump = (props: BreadcrumpProps): JSX.Element => {
+const Breadcrumb = (props: BreadcrumbProps): JSX.Element => {
   return (
     <>
       <div className="bg-light">
@@ -48,4 +48,4 @@ const Breadcrump = (props: BreadcrumpProps): JSX.Element => {
   );
 };
 
-export default Breadcrump;
+export default Breadcrumb;

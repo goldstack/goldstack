@@ -1,7 +1,6 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
 
 import {
-  getNextJsTemplateData,
   featureESLint,
   featureJest,
   featureVSCode,
@@ -17,6 +16,8 @@ export const getNextjsBootstrapTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'nextjs-bootstrap',
     title: 'Next.js + Bootstrap',
+    boilerplateLink:
+      'https://github.com/goldstack/nextjs-bootstrap-boilerplate',
     images: ['nextjs', 'bootstrap', 'typescript'],
     packages: [NextJsBootstrap],
     isComposite: false,
@@ -106,22 +107,6 @@ export const getNextjsBootstrapTemplateData = (): ProjectTemplateProps => {
       featureAws,
       featureTerraform,
       featureNextJsComposition,
-    ],
-    features: [
-      {
-        title: 'Bootstrap Styling for React Components',
-        description:
-          'Style your components in the Next.js application with Bootstrap and give your application a professional look and feel.',
-        content: {
-          type: 'bootstrap',
-          data: {},
-        },
-        moreDetails: {
-          description:
-            'This also works with Bootstrap templates. Just replace the Bootstrap CSS files included in this template.',
-        },
-      },
-      ...getNextJsTemplateData().features,
     ],
   };
 };

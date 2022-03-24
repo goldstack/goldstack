@@ -198,6 +198,5 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
         },
       },
     ],
-    features: [],
   };
 };
