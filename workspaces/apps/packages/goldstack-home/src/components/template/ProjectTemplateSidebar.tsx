@@ -28,7 +28,7 @@ const ProjectTemplateSidebar = (
     <>
       <div className="col-md-4 col-lg-3 mb-9 mb-md-0">
         <div className="mr-lg-2">
-          <div className="mb-7">
+          <div className="pb-5 mb-7 border-bottom ">
             <div className="text-center mx-auto mb-3">
               <img
                 className="img-fluid"
@@ -51,8 +51,8 @@ const ProjectTemplateSidebar = (
                 className="btn btn-sm btn-block btn-white transition-3d-hover"
                 href={props.boilerplateLink}
               >
-                <img src={GitHubIcon} style={{ width: '1rem' }}></img> View
-                Boilerplate
+                <img src={GitHubIcon as any} style={{ width: '1rem' }}></img>{' '}
+                View Boilerplate
               </a>
             )}
           </div>
@@ -79,57 +79,39 @@ const ProjectTemplateSidebar = (
             </div>
           )}
 
-          <div className="mb-md-7">
-            <h1 className="h4">Tags</h1>
-            {props.tags.map((tag, idx) => (
-              <span className="d-inline-block mr-1 mb-2" key={idx}>
-                <a className="btn btn-xs btn-soft-secondary disabled" href="#">
-                  {tag}
-                </a>
-              </span>
-            ))}
-          </div>
-
-          <div className="d-none d-md-block mb-7">
-            <h2 className="h4">Developer</h2>
-
-            <ul className="nav flex-column">
-              <li className="nav-item" key={1}>
-                <a
-                  className={`nav-link active  ${styles['menulinks-link']}`}
-                  href="https://goldstack.party"
-                >
+          <div>
+            <dl className="row font-size-1">
+              <dt className="col-sm-4 text-dark">License</dt>
+              <dd className="col-sm-8 text-body">MIT</dd>
+            </dl>
+            <dl className="row font-size-1">
+              <dt className="col-sm-4 text-dark">Developer</dt>
+              <dd className="col-sm-8 text-body">
+                <a href="https://goldstack.party" className="text-body">
                   <img
                     className={`fas fa-home nav-icon ${styles['menulinks-link-nav-icon']}`}
                     src="https://cdn.goldstack.party/img/202203/goldstack_icon.png"
                   ></img>
                   Goldstack
                 </a>
-              </li>
-            </ul>
+              </dd>
+            </dl>
+            <dl className="row font-size-1">
+              <dt className="col-sm-4 text-dark">Tags</dt>
+              <dd className="col-sm-8 text-body">
+                {props.tags.map((tag, idx) => (
+                  <span className="d-inline-block mr-1 mb-2" key={idx}>
+                    <a
+                      className="btn btn-xs btn-soft-secondary disabled"
+                      href="#"
+                    >
+                      {tag}
+                    </a>
+                  </span>
+                ))}
+              </dd>
+            </dl>
           </div>
-
-          {/* <div className="d-none d-md-block mb-7">
-            <h3 className="h4">Links</h3>
-
-            <ul className="list-unstyled font-size-1">
-              <li>
-                <a className="text-body" href="#">
-                  <i className="fas fa-angle-right mr-1"></i> Support
-                </a>
-              </li>
-              <li>
-                <a className="text-body" href="#">
-                  <i className="fas fa-angle-right mr-1"></i> Documentation
-                </a>
-              </li>
-              <li>
-                <a className="text-body" href="#">
-                  <i className="fas fa-angle-right mr-1"></i> Privacy Policy
-                </a>
-              </li>
-            </ul>
-          </div> */}
         </div>
       </div>
     </>
