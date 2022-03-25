@@ -142,8 +142,8 @@
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/SkxqzflC2iOfTQiuL1Ddx/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/SkxqzflC2iOfTQiuL1Ddx/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/5dFHlYGOCBPyWVI63CsOZ/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/5dFHlYGOCBPyWVI63CsOZ/templates/(?<template>[^/]+?)\\.json$"
     }
   ],
   "rewrites": []
