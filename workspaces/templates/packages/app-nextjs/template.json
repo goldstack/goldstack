@@ -3,6 +3,6 @@
   "templateVersion": "0.1.0",
   "previousTemplateVersion": "0.0.0",
   "templateDescription": "Next.js application with dynamic and static rendering (no server-side rendering)",
-  "templateDocumentation": "https://docs.goldstack.party/docs/modules/app-nextjs",
+  "templateDocumentation": "https://docs.goldstack.party/docs/templates/app-nextjs",
   "templateArchive": ""
 }

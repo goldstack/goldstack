@@ -2,22 +2,22 @@
 
 ❤️ Support development by using the [Goldstack Project Builder](https://goldstack.party) ❤️
 
-The Lambda Go Gin module allows developing a lambda using [Go](https://golang.org) and the [Gin](https://github.com/gin-gonic/gin) web server framework. This module will also set up an API Gateway to forward requests to the lambda.
+The Lambda Go Gin template allows developing a lambda using [Go](https://golang.org) and the [Gin](https://github.com/gin-gonic/gin) web server framework. This template will also set up an API Gateway to forward requests to the lambda.
 
 ## Features
 
-- Develop a backend server using [Go](https://golang.org) and [Gin](https://github.com/gin-gonic/gin)
-- Serverless infrastructure defined in Terraform. Including API Gateway configuration
-- Fully automated deployment supported
+*   Develop a backend server using [Go](https://golang.org) and [Gin](https://github.com/gin-gonic/gin)
+*   Serverless infrastructure defined in Terraform. Including API Gateway configuration
+*   Fully automated deployment supported
 
 ## Configure
 
-The following key properties need to be configured for this module:
+The following key properties need to be configured for this template:
 
-- **Lambda Name**: The [name](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-FunctionName) to be used for this lambda. Lambda names need to be unique for the AWS Region. It is not possible to have two lambdas with the same name in the same region.
-- **API Domain**: The domain where the API should be deployed to. For instance, to be able to call the API endpoint `https://api.mydomain.com/` the API domain `api.mydomain.com` needs to be configured.
-- **Hosted Zone Domain**: A Route 53 hosted zone that will allow adding the _API Domain_ as a record. For instance, in order to configure the API domain `api.mydomain.com`, the hosted zones `api.mydomain.com` or `mydomain.com` would be valid. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
-- **CORS Header**: An optional CORS header to enable a UI that is hosted on a different domain to access this API. For instance, for a UI that is deployed to the domain `ui.mydomain.com` the CORS header `https://ui.mydomain.com` should be supplied. To learn more about CORS, see the [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) in the MDN docs.
+*   **Lambda Name**: The [name](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-FunctionName) to be used for this lambda. Lambda names need to be unique for the AWS Region. It is not possible to have two lambdas with the same name in the same region.
+*   **API Domain**: The domain where the API should be deployed to. For instance, to be able to call the API endpoint `https://api.mydomain.com/` the API domain `api.mydomain.com` needs to be configured.
+*   **Hosted Zone Domain**: A Route 53 hosted zone that will allow adding the *API Domain* as a record. For instance, in order to configure the API domain `api.mydomain.com`, the hosted zones `api.mydomain.com` or `mydomain.com` would be valid. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
+*   **CORS Header**: An optional CORS header to enable a UI that is hosted on a different domain to access this API. For instance, for a UI that is deployed to the domain `ui.mydomain.com` the CORS header `https://ui.mydomain.com` should be supplied. To learn more about CORS, see the [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) in the MDN docs.
 
 ## Getting Started
 
@@ -25,9 +25,9 @@ This template will only work when the [Go](https://golang.org) executable is ins
 
 Note that for automating the build and rolling out the infrastructure, this template will use [Yarn](https://yarnpkg.com/).
 
-### Infrastructure
+### 2. Setup Infrastructure
 
-The first thing we recommend to do with a new module is to stand up the infrastructure for the module. For this, find the directory for this module in the `packages/` folder and navigate to this folder in the command line. Then identify the name of the deployment you have defined in the Goldstack configuration tool. This can be found in the `packages/[moduleName]/goldstack.json` file. Look for the `"deployments"` property and there for the `"name"` of the first deployment. The name should either be `dev` or `prod`.
+To stand up the infrastructure for this module, find the directory for this module in the `packages/` folder and navigate to this folder in the command line. Then identify the name of the deployment you have defined in the Goldstack configuration tool. This can be found in the `packages/[moduleName]/goldstack.json` file. Look for the `"deployments"` property and there for the `"name"` of the first deployment. The name should either be `dev` or `prod`.
 
 In order to stand up the infrastructure, run the following command:
 
@@ -37,7 +37,7 @@ yarn infra up [deploymentName]
 
 This will be either `yarn infra up dev` or `yarn infra up prod` depending on your choice of deployment. Note that running this command can take a while.
 
-### Deployment
+### 3. Deploy Application
 
 Once the infrastructure is successfully set up in AWS using `yarn infra up`, we can deploy the module. For this, simply run the following command:
 
@@ -87,7 +87,7 @@ func CreateServer() *gin.Engine {
 
 ## Infrastructure
 
-All infrastructure for this module is defined in Terraform. You can find the Terraform files for this module in the directory `[moduleDir]/infra/aws`. You can define multiple deployments for this module, for instance for development, staging and production environments.
+All infrastructure for this module is defined in Terraform. You can find the Terraform files for this template in the directory `[moduleDir]/infra/aws`. You can define multiple deployments for this template, for instance for development, staging and production environments.
 
 If you configured AWS deployment before downloading your project, the deployments and their respective configurations are defined in `[moduleDir]/goldstack.json`.
 
@@ -115,13 +115,15 @@ The configuration tool will define one deployment. This will be either `dev` or 
 
 ### Infrastructure Commands
 
-Infrastructure commands for this module can be run using `yarn`. There are four commands in total:
+Infrastructure commands for this template can be run using `yarn`. There are four commands in total:
 
-- `yarn infra up`: For standing up infrastructure.
-- `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
-- `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
-- `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
-- `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+*   `yarn infra up`: For standing up infrastructure.
+*   `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
+*   `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
+*   `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
+*   `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+*   `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
+*   `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
 
 For each command, the deployment they should be applied to must be specified.
 
@@ -137,11 +139,29 @@ yarn infra up dev
 
 Generally you will only need to run `yarn infra up`. However, if you are familiar with Terraform and want more fine-grained control over the deployment of your infrastructure, you can also use the other commands as required.
 
+Note that for running `yarn infra terraform`, you will need to specify which command line arguments you want to provide to Terraform. By default, no extra arguments are provided:
+
+```bash
+yarn infra terraform [deployment] plan
+```
+
+If extra arguments are needed, such as variables, you can use the `--inject-variables` option, such as for running `terraform plan`:
+
+```bash
+yarn infra terraform [deployment] --inject-variables plan
+```
+
+If you want to interact with the remote backend, you can also provide the `--inject-backend-config` option, such as for running `terraform init`:
+
+```bash
+yarn infra terraform [deployment] --inject-backend-config init
+```
+
 ### Customizing Terraform
 
-Goldstack modules make it very easy to customize infrastructure to your specific needs. The easiest way to do this is to simply edit the `*.tf` files in the `infra/aws` folder. You can make the changes you need and then run `yarn infra up [deploymentName]` to apply the changes.
+Goldstack templates make it very easy to customize infrastructure to your specific needs. The easiest way to do this is to simply edit the `*.tf` files in the `infra/aws` folder. You can make the changes you need and then run `yarn infra up [deploymentName]` to apply the changes.
 
-The `infra/aws` folder contains a file `variables.tf` that contains the variables required for your deployment; for instance the domain name for a website. The values for these variables are defined in the module's `goldstack.json` file in the `"configuration"` property. There is one global `configuration` property that applies for all deployments and each deployment also has its own `configuration` property. In order to add a new variable, add the variable to `variables.tf` and then add it to the configuration for your module or to the configurations for the deployments.
+The `infra/aws` folder contains a file `variables.tf` that contains the variables required for your deployment; for instance the domain name for a website. The values for these variables are defined in the module's `goldstack.json` file in the `"configuration"` property. There is one global `configuration` property that applies for all deployments and each deployment also has its own `configuration` property. In order to add a new variable, add the variable to `variables.tf` and then add it to the configuration for your template or to the configurations for the deployments.
 
 Note that due to JavaScript and Terraform using different conventions for naming variables, Goldstack applies a basic transformation to variable names. Camel-case variables names are converted to valid variables names for Terraform by replacing every instance of a capital letter `C` with `_c` in the variable name. For instance:
 
@@ -155,7 +175,7 @@ This works well for deploying infrastructure from your local development environ
 
 ## Deployment
 
-This module can be packaged up and deployed to the deployments specified in `goldstack.json`. Note that deployment will only work _after_ the infrastructure for the respective deployment has been stood up. To deploy your module, run the following script:
+This template can be packaged up and deployed to the deployments specified in `goldstack.json`. Note that deployment will only work *after* the infrastructure for the respective deployment has been stood up. To deploy your package, run the following script:
 
 ```bash
 yarn deploy [deploymentName]

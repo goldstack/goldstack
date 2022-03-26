@@ -10,6 +10,7 @@ import unified from 'unified';
 import markdown from 'remark-parse';
 
 import matter from 'gray-matter';
+
 function fileToMarkdownTree(filePath: string): any {
   const data = matter(read(filePath)).content;
   const tree = unified()
