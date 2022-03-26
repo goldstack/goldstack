@@ -1,4 +1,3 @@
-
 ## 1. Install dependencies
 
 [!embed](./../../shared/getting-started/dependencies.md)

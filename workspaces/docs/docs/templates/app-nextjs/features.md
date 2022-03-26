@@ -11,4 +11,3 @@ Test the components and pages in your Next.js project using [Jest](https://jestj
 ### Ready for Deployment to AWS.
 
 Scalable AWS infrastructure defined in Terraform; all content served through the powerful CloudFront CDN and stored in S3 at very low costs. See this [blog article](https://maxrohde.com/2022/01/22/deploy-serverless-next-js-to-aws-with-terraform-1-1/) for more information about the infrastructure setup.
-
