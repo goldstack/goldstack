@@ -38,23 +38,23 @@ For more information, see [GitHub documentation - Fork a repo](https://docs.gith
 
 ## 2. Install required local dependencies
 
-[!embed](./../../../../../../workspaces/docs/docs/templates/shared/getting-started/dependencies.md)
+[!embed](./../../../../../../workspaces/docs/docs/shared/getting-started/dependencies.md)
 
 ## 3. Initialise project and install NPM Dependencies
 
-[!embed](./../../../../../../workspaces/docs/docs/templates/shared/getting-started/install.md)
+[!embed](./../../../../../../workspaces/docs/docs/shared/getting-started/install.md)
 
 ## 4. Build modules
 
-[!embed](./../../../../../../workspaces/docs/docs/templates/shared/getting-started/build.md)
+[!embed](./../../../../../../workspaces/docs/docs/shared/getting-started/build.md)
 
 ## 5. Configure VSCode
 
-[!embed](./../../../../../../workspaces/docs/docs/templates/shared/getting-started/vscode.md)
+[!embed](./../../../../../../workspaces/docs/docs/shared/getting-started/vscode.md)
 
 ## 6. Initialise TypeScript
 
-[!embed](./../../../../../../workspaces/docs/docs/templates/shared/getting-started/typescript.md)
+[!embed](./../../../../../../workspaces/docs/docs/shared/getting-started/typescript.md)
 
 ## 7. Local Development
 
