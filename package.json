@@ -21,7 +21,6 @@
     "format": "prettier --loglevel log --config .prettierrc.json --write .",
     "format-check": "prettier --loglevel log --config .prettierrc.json --check .",
     "generate-docs": "yarn workspace templates-lib generate-docs && yarn workspace docs generate-docs && yarn workspace apps generate-docs",
-    "generate-docs:markdown": "utils-docs-cli generate-markdown-doc workspaces/docs/docs/modules/yarn-pnp-monorepo/index.md workspaces/templates/README.md",
     "generate-schema": "yarn workspace templates-lib generate-schema && yarn workspace templates-management generate-schema && yarn workspace apps generate-schema",
     "git:set-user": "git config user.email \"$@\" && git submodule foreach --recursive git config user.email \"$@\"",
     "lint": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml,.html",

@@ -7,17 +7,21 @@ title: Next.js Bootstrap
 
 ## Features
 
-- Bootstrap styling for Next.js application
+###  Bootstrap styling for Next.js application
+
+Use [react-bootstrap](https://react-bootstrap.github.io/) to style components in your Next.js application using Bootstrap.
+
+![Bootstrap Styling in Next.js project](https://cdn.goldstack.party/img/202203/bootstrap-styling.png)
 
 [!embed](./../app-nextjs/features.md)
-
-## Configure
-
-[!embed](./configure.md)
 
 ## Getting Started
 
 [!embed](./getting-started.md)
+
+## Configure
+
+[!embed](./configure.md)
 
 ## Infrastructure
 

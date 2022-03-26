@@ -4,8 +4,8 @@ This package defines tools for working with Next.js projects. It offers a simple
 
 For more details, see:
 
-- [Next.js Template Infrastructure Commands](https://docs.goldstack.party/docs/modules/app-nextjs#infrastructure-commands-1)
-- [Next.js Template Deployment Commands](https://docs.goldstack.party/docs/modules/app-nextjs#deployment-3)
+- [Next.js Template Infrastructure Commands](https://docs.goldstack.party/docs/templates/app-nextjs#infrastructure-commands-1)
+- [Next.js Template Deployment Commands](https://docs.goldstack.party/docs/templates/app-nextjs#deployment-3)
 
 This library is used in the following Goldstack templates:
 

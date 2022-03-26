@@ -8,6 +8,7 @@ import { getModuleTemplatesNames } from '@goldstack/module-template-utils';
 
 import path, { resolve } from 'path';
 import fs from 'fs';
+import assert from 'assert';
 
 // relative to the root of this package
 const paths = {
@@ -25,7 +26,7 @@ const paths = {
 const moduleTemplates = getModuleTemplatesNames().map((e) => {
   return {
     dirName: `${e}/`,
-    docPath: `modules/${e}/`,
+    docPath: `templates/${e}/`,
   };
 });
 
@@ -46,6 +47,12 @@ const run = async () => {
     return fs.existsSync(sourcePath);
   });
 
+  console.log(
+    `Processing templates:\n    ${fixedModuleTemplates
+      .map((t) => t.dirName)
+      .join('\n    ')}`
+  );
+  assert(fixedModuleTemplates.length > 0, 'No templates found');
   // Step 1:
   //   Transpile docs from Markdown to HTML
   for (let i = 0; i < fixedModuleTemplates.length; i++) {
@@ -64,7 +71,6 @@ const run = async () => {
         '.html';
       await rmSafe(targetFileName);
       write(result, targetFileName);
-      console.log('Writing HTML doc file', path.resolve(targetFileName));
     }
   }
 
@@ -76,13 +82,12 @@ const run = async () => {
       paths.templates + moduleTemplate.dirName + paths.readmeTemplatePath;
     const targetFileName =
       paths.templates + moduleTemplate.dirName + paths.readmePath;
-    generateMarkdownDocs(sourceFileName, targetFileName);
+    await generateMarkdownDocs(sourceFileName, targetFileName);
   }
 
   // Step 3:
   //    Generate boilerplate docs
-  console.log(resolve(paths.buildSets));
-  generateMarkdownDocs(
+  await generateMarkdownDocs(
     paths.buildSets + 'nextjsBootstrap.template.README.md',
     paths.buildSets + 'nextjsBootstrap.README.md'
   );
@@ -93,7 +98,7 @@ const run = async () => {
     `${paths.root}${paths.readmeTemplatePath}`
   );
   const targetFileName = `${paths.root}${paths.readmePath}`;
-  generateMarkdownDocs(sourceFileName, targetFileName);
+  await generateMarkdownDocs(sourceFileName, targetFileName);
 
   // Step 5:
   //   Generate Goldstack root contributing guidelines
@@ -101,11 +106,21 @@ const run = async () => {
     `${paths.root}${paths.contributingTemplatePath}`
   );
   const targetFileNameContributing = `${paths.root}${paths.contributingPath}`;
-  generateMarkdownDocs(sourceFileNameContributing, targetFileNameContributing);
+  await generateMarkdownDocs(
+    sourceFileNameContributing,
+    targetFileNameContributing
+  );
+
+  // Step 6:
+  //    Generate Readme included in project project.
+  await generateMarkdownDocs(
+    `${paths.docs}templates/yarn-pnp-monorepo/index.md`,
+    `${paths.root}/workspaces/templates/README.md`
+  );
 };
 
 run()
-  .then(() => console.log('all done'))
+  .then(() => console.log('Documentation generated'))
   .catch((e) => {
     console.log(e);
     process.exit(1);

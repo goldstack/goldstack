@@ -1,37 +1,40 @@
-# Next.js Bootstrap Module
+# Next.js Bootstrap Template
 
 ❤️ Support development by using the [Goldstack Project Builder](https://goldstack.party) ❤️
 
-This module provides a [Next.js](https://nextjs.org/) application set up to use Bootstrap styling that is deployed to AWS using the [CloudFront CDN](https://aws.amazon.com/cloudfront/) and [Lambda@Edge](https://aws.amazon.com/lambda/edge/).
+This template provides a [Next.js](https://nextjs.org/) application set up to use Bootstrap styling that is deployed to AWS using the [CloudFront CDN](https://aws.amazon.com/cloudfront/) and [Lambda@Edge](https://aws.amazon.com/lambda/edge/).
 
 ## Features
 
-- Bootstrap styling for Next.js application
+### Bootstrap styling for Next.js application
 
-- Optimised for TypeScript
-- Configured for unit testing using Jest and React Testing library
-- Scalable AWS infrastructure defined in Terraform; all content served through the powerful CloudFront CDN and stored in S3 at very low costs. This [blog article](https://simonecarletti.com/blog/2016/08/redirect-domain-https-amazon-cloudfront/) shows how a similar setup could be created manually.
-- Full support for SSL - using free certificates issued by AWS.
-- CDN caching optimised for Next.js (e.g. all files in `_next/static` are automatically cached on the CDN and the client)
-- Configurable with your own domain name
-- Rolling out of infrastructure and deployment supported through easy to use scripts
+Use [react-bootstrap](https://react-bootstrap.github.io/) to style components in your Next.js application using Bootstrap.
 
-## Configure
+![Bootstrap Styling in Next.js project](https://cdn.goldstack.party/img/202203/bootstrap-styling.png)
 
-The following key properties need to be configured for this module:
+### Configured for TypeScript
 
-- **Hosted Zone Domain**: A Route 53 hosted zone to which the _Primary Website Domain_ and _Redirect Website Domain_ can be added as records. For instance, the hosted zone domain `mysite.com` would allow adding the primary domain `mysite.com` and the redirect domain `www.mysite.com`. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
-- **Primary Website Domain**: This is the domain your users will use to view the site. For instance, if you configure the domain `mysite.com`, users will be able to view your site by opening the URL `https://mysite.com`.
-- **Redirect Website Domain**: This is a domain that will redirect all requests to your _Primary Website Domain_. The redirect website domain _must be_ different to the _Primary Website Domain_. For instance, if you configure the domain `mysite.com` as your primary domain, you can configure `www.mysite.com` as your redirect domain. Users will be redirected to `https://mysite.com` when they attempt to open the URL `https://www.mysite.com`. Note that the _Redirect Website Domain_ must be configured, even if you do not need this functionality.
-- **Default Cache Duration**: The number of seconds that files will be cached in the AWS content delivery network. Setting this to `120` for instance, would mean that, unless otherwise specified, webpages and other resources will be cached for 120 s. In that case, when a new version of a page is deployed, it can take up to 120 s for changes to appear when accessing the deployed version of the application.
+Use [TypeScript](https://www.typescriptlang.org/) in your project. Configured to use a [TypeScript monorepo](https://maxrohde.com/2021/11/20/the-ultimate-guide-to-typescript-monorepos/) to easily combine front-end and back-end code in one repository.
 
-- **Environment Variables**: Configures environment variables for the application. Environment variables without the prefix `NEXT_PUBLIC_` will only be available during build time of the application. For more information see [Environment Variables](https://nextjs.org/docs/basic-features/environment-variables) in the Next.js documentation.
+### Jest and React Testing Library
+
+Test the components and pages in your Next.js project using [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
+
+![React Testing Library](https://cdn.goldstack.party/img/202203/bootstrap-styling.png)
+
+### Ready for Deployment to AWS.
+
+Scalable AWS infrastructure defined in Terraform; all content served through the powerful CloudFront CDN and stored in S3 at very low costs. See this [blog article](https://maxrohde.com/2022/01/22/deploy-serverless-next-js-to-aws-with-terraform-1-1/) for more information about the infrastructure setup.
 
 ## Getting Started
 
-### Infrastructure
+### 1. Project Setup
 
-The first thing we recommend to do with a new module is to stand up the infrastructure for the module. For this, find the directory for this module in the `packages/` folder and navigate to this folder in the command line. Then identify the name of the deployment you have defined in the Goldstack configuration tool. This can be found in the `packages/[moduleName]/goldstack.json` file. Look for the `"deployments"` property and there for the `"name"` of the first deployment. The name should either be `dev` or `prod`.
+Before using this template, you need to configure the project. For this, please see the [Getting Started Guide](https://docs.goldstack.party/docs/goldstack/getting-started) on the Goldstack documentation.
+
+### 2. Setup Infrastructure
+
+To stand up the infrastructure for this module, find the directory for this module in the `packages/` folder and navigate to this folder in the command line. Then identify the name of the deployment you have defined in the Goldstack configuration tool. This can be found in the `packages/[moduleName]/goldstack.json` file. Look for the `"deployments"` property and there for the `"name"` of the first deployment. The name should either be `dev` or `prod`.
 
 In order to stand up the infrastructure, run the following command:
 
@@ -41,7 +44,7 @@ yarn infra up [deploymentName]
 
 This will be either `yarn infra up dev` or `yarn infra up prod` depending on your choice of deployment. Note that running this command can take a while.
 
-### Deployment
+### 3. Deploy Application
 
 Once the infrastructure is successfully set up in AWS using `yarn infra up`, we can deploy the module. For this, simply run the following command:
 
@@ -53,11 +56,22 @@ This will either be `yarn deploy dev` or `yarn deploy prod` depending on your ch
 
 ### Development
 
-Goldstack's Next.js module is a simple wrapper around a standard Next.js project. Please see the [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for details on how to develop a Next.js application. Generally, the folder `src/pages` is a good starting point.
+Goldstack's Next.js template is a simple wrapper around a standard Next.js project. Please see the [Next.js documentation](https://nextjs.org/docs/basic-features/pages) for details on how to develop a Next.js application. Generally, the folder `src/pages` is a good starting point.
+
+## Configure
+
+The following key properties need to be configured for this template:
+
+*   **Hosted Zone Domain**: A Route 53 hosted zone to which the *Primary Website Domain* and *Redirect Website Domain* can be added as records. For instance, the hosted zone domain `mysite.com` would allow adding the primary domain `mysite.com` and the redirect domain `www.mysite.com`. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
+*   **Primary Website Domain**: This is the domain your users will use to view the site. For instance, if you configure the domain `mysite.com`, users will be able to view your site by opening the URL `https://mysite.com`.
+*   **Redirect Website Domain**: This is a domain that will redirect all requests to your *Primary Website Domain*. The redirect website domain *must be* different to the *Primary Website Domain*. For instance, if you configure the domain `mysite.com` as your primary domain, you can configure `www.mysite.com` as your redirect domain. Users will be redirected to `https://mysite.com` when they attempt to open the URL `https://www.mysite.com`. Note that the *Redirect Website Domain* must be configured, even if you do not need this functionality.
+*   **Default Cache Duration**: The number of seconds that files will be cached in the AWS content delivery network. Setting this to `120` for instance, would mean that, unless otherwise specified, webpages and other resources will be cached for 120 s. In that case, when a new version of a page is deployed, it can take up to 120 s for changes to appear when accessing the deployed version of the application.
+
+*   **Environment Variables**: Configures environment variables for the application. Environment variables without the prefix `NEXT_PUBLIC_` will only be available during build time of the application. For more information see [Environment Variables](https://nextjs.org/docs/basic-features/environment-variables) in the Next.js documentation.
 
 ## Infrastructure
 
-All infrastructure for this module is defined in Terraform. You can find the Terraform files for this module in the directory `[moduleDir]/infra/aws`. You can define multiple deployments for this module, for instance for development, staging and production environments.
+All infrastructure for this module is defined in Terraform. You can find the Terraform files for this template in the directory `[moduleDir]/infra/aws`. You can define multiple deployments for this template, for instance for development, staging and production environments.
 
 If you configured AWS deployment before downloading your project, the deployments and their respective configurations are defined in `[moduleDir]/goldstack.json`.
 
@@ -85,13 +99,15 @@ The configuration tool will define one deployment. This will be either `dev` or 
 
 ### Infrastructure Commands
 
-Infrastructure commands for this module can be run using `yarn`. There are four commands in total:
+Infrastructure commands for this template can be run using `yarn`. There are four commands in total:
 
-- `yarn infra up`: For standing up infrastructure.
-- `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
-- `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
-- `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
-- `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+*   `yarn infra up`: For standing up infrastructure.
+*   `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
+*   `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
+*   `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
+*   `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+*   `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
+*   `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
 
 For each command, the deployment they should be applied to must be specified.
 
@@ -107,11 +123,29 @@ yarn infra up dev
 
 Generally you will only need to run `yarn infra up`. However, if you are familiar with Terraform and want more fine-grained control over the deployment of your infrastructure, you can also use the other commands as required.
 
+Note that for running `yarn infra terraform`, you will need to specify which command line arguments you want to provide to Terraform. By default, no extra arguments are provided:
+
+```bash
+yarn infra terraform [deployment] plan
+```
+
+If extra arguments are needed, such as variables, you can use the `--inject-variables` option, such as for running `terraform plan`:
+
+```bash
+yarn infra terraform [deployment] --inject-variables plan
+```
+
+If you want to interact with the remote backend, you can also provide the `--inject-backend-config` option, such as for running `terraform init`:
+
+```bash
+yarn infra terraform [deployment] --inject-backend-config init
+```
+
 ### Customizing Terraform
 
-Goldstack modules make it very easy to customize infrastructure to your specific needs. The easiest way to do this is to simply edit the `*.tf` files in the `infra/aws` folder. You can make the changes you need and then run `yarn infra up [deploymentName]` to apply the changes.
+Goldstack templates make it very easy to customize infrastructure to your specific needs. The easiest way to do this is to simply edit the `*.tf` files in the `infra/aws` folder. You can make the changes you need and then run `yarn infra up [deploymentName]` to apply the changes.
 
-The `infra/aws` folder contains a file `variables.tf` that contains the variables required for your deployment; for instance the domain name for a website. The values for these variables are defined in the module's `goldstack.json` file in the `"configuration"` property. There is one global `configuration` property that applies for all deployments and each deployment also has its own `configuration` property. In order to add a new variable, add the variable to `variables.tf` and then add it to the configuration for your module or to the configurations for the deployments.
+The `infra/aws` folder contains a file `variables.tf` that contains the variables required for your deployment; for instance the domain name for a website. The values for these variables are defined in the module's `goldstack.json` file in the `"configuration"` property. There is one global `configuration` property that applies for all deployments and each deployment also has its own `configuration` property. In order to add a new variable, add the variable to `variables.tf` and then add it to the configuration for your template or to the configurations for the deployments.
 
 Note that due to JavaScript and Terraform using different conventions for naming variables, Goldstack applies a basic transformation to variable names. Camel-case variables names are converted to valid variables names for Terraform by replacing every instance of a capital letter `C` with `_c` in the variable name. For instance:
 
@@ -125,7 +159,7 @@ This works well for deploying infrastructure from your local development environ
 
 ## Deployment
 
-This module can be packaged up and deployed to the deployments specified in `goldstack.json`. Note that deployment will only work _after_ the infrastructure for the respective deployment has been stood up. To deploy your module, run the following script:
+This template can be packaged up and deployed to the deployments specified in `goldstack.json`. Note that deployment will only work *after* the infrastructure for the respective deployment has been stood up. To deploy your package, run the following script:
 
 ```bash
 yarn deploy [deploymentName]
@@ -133,7 +167,7 @@ yarn deploy [deploymentName]
 
 ### Vercel Deployment
 
-The Goldstack Next.js modules can easily be deployed to Vercel.
+The Goldstack Next.js template can easily be deployed to Vercel.
 
 #### 1. Sign Up to Vercel
 
@@ -155,7 +189,7 @@ Then click on `Import` to import this repository.
 
 Add the project to your personal account. Select the **root directory** of your project as the source code to import (not the directory of the package with the Next.js application).
 
-Click to extend _Build and Output Settings_ and provide the following build command:
+Click to extend *Build and Output Settings* and provide the following build command:
 
     yarn && yarn build && cd packages/app-nextjs-bootstrap && yarn build:next
 
@@ -177,14 +211,14 @@ For more information, see the [Vercel Documentation](https://vercel.com/docs).
 
 Goldstack's Next.js modules enable deploying Next.js applications to a serverless AWS infrastructure. The advantage of this is that you get a very low cost, highly scalable and enterprise ready deployment for the Next.js application. However, serverless AWS infrastructure is structurally different to deployments on Vercel or deployments as stand alone Node.js applications. Thus there are a couple of limitations to keep in mind when working with this template:
 
-- [API Routes](https://nextjs.org/docs/api-routes/introduction) are not supported. If you need a backend, we recommend adding our [Lambda Express](lambda-express) template to your project.
-- When standing up infrastructure for this module, a new certificate will be automatically obtained from AWS Certificate Manager. AWS has a default limit of the number of SSL certificates per account. If you are reaching this limit, you can simply make a service request with AWS to increase it.
-- Pre-fetching does not work in some situations, for instance when statically rendering pages using `getStaticPaths`. As a workaround, we recommend not using [Link](https://nextjs.org/docs/api-reference/next/link) components for these routes and instead use vanilla `a` elements.
-- Files added to the `public/` folder may not be served correctly. Configure the CloudFront distribution as described [here](#404-not-found-for-files-in-public-folder-1) to make the files available.
-- Delay in deploying new dynamic routes. Since dynamic routes are implemented using Lambda@Edge functions, it can take a while for dynamic routes to start working. This is because once a new dynamic routes is added, a new Lambda@Edge function needs to be deployed. You can check the state of the CloudFront distribution in the AWS console. If no new dynamic routes have been added, everything should work as expected directly after the deployment.
-- Next.js `<Image>` component is not supported, see [Next.js Image loader](https://nextjs.org/docs/basic-features/image-optimization#loader). Use `img` instead. The project is already set up to use [next-optimized-images](https://github.com/cyrilwanner/next-optimized-images) which you can [configure](https://github.com/cyrilwanner/next-optimized-images#optimization-packages) for optimising various image types.
-- Redirect domain configured as CNAME rather than its own bucket and CloudFront distribution due to [this know limitation](https://www.reddit.com/r/aws/comments/7jyisk/https_redirect_on_s3_bucket_access_denied_error/)
-- No support for a dynamic route and pages in the same directory. When creating both normal pages and a dynamic route in a directory, the dynamic route will always be loaded first. For instance, given the following two files:
+*   [API Routes](https://nextjs.org/docs/api-routes/introduction) are not supported. If you need a backend, we recommend adding our [Lambda Express](lambda-express) template to your project.
+*   When standing up infrastructure for this template, a new certificate will be automatically obtained from AWS Certificate Manager. AWS has a default limit of the number of SSL certificates per account. If you are reaching this limit, you can simply make a service request with AWS to increase it.
+*   Pre-fetching does not work in some situations, for instance when statically rendering pages using `getStaticPaths`. As a workaround, we recommend not using [Link](https://nextjs.org/docs/api-reference/next/link) components for these routes and instead use vanilla `a` elements.
+*   Files added to the `public/` folder may not be served correctly. Configure the CloudFront distribution as described [here](#404-not-found-for-files-in-public-folder-1) to make the files available.
+*   Delay in deploying new dynamic routes. Since dynamic routes are implemented using Lambda@Edge functions, it can take a while for dynamic routes to start working. This is because once a new dynamic routes is added, a new Lambda@Edge function needs to be deployed. You can check the state of the CloudFront distribution in the AWS console. If no new dynamic routes have been added, everything should work as expected directly after the deployment.
+*   Next.js `<Image>` component is not supported, see [Next.js Image loader](https://nextjs.org/docs/basic-features/image-optimization#loader). Use `img` instead. The project is already set up to use [next-optimized-images](https://github.com/cyrilwanner/next-optimized-images) which you can [configure](https://github.com/cyrilwanner/next-optimized-images#optimization-packages) for optimising various image types.
+*   Redirect domain configured as CNAME rather than its own bucket and CloudFront distribution due to [this know limitation](https://www.reddit.com/r/aws/comments/7jyisk/https_redirect_on_s3\_bucket_access_denied_error/)
+*   No support for a dynamic route and pages in the same directory. When creating both normal pages and a dynamic route in a directory, the dynamic route will always be loaded first. For instance, given the following two files:
 
 <!---->
 
@@ -310,8 +344,8 @@ Error: error getting S3 Bucket CORS configuration: AccessDenied: Access Denied
 
 There are a number of possible causes for this:
 
-- You may have configured your AWS user incorrectly. Please see [AWS Configuration](./../goldstack/configuration#aws-configuration) for details on how to configure your AWS user.
-- You may accidently have a Terraform state in your module. That can happen if you create new modules by copy and pasting from an existing module. In this case, delete the following two folders in your module: `infra/aws/.terraform` and `infra/aws/terraform.tfstate.d`.
+*   You may have configured your AWS user incorrectly. Please see [AWS Configuration](./../goldstack/configuration#aws-configuration) for details on how to configure your AWS user.
+*   You may accidently have a Terraform state in your module. That can happen if you create new modules by copy and pasting from an existing module. In this case, delete the following two folders in your module: `infra/aws/.terraform` and `infra/aws/terraform.tfstate.d`.
 
 ### Error deleting Lambda Function
 
@@ -325,4 +359,4 @@ In that case, simply run `yarn infra destroy [deploymentName]` again until it is
 
 Here are a number of ways how the configuration for this module can be changed to enhance security:
 
-- In `infra/aws/edge.tf` for the `resource "aws_iam_policy" "lambda_logging"` you can further restrict the access rights to write log events: `"Resource": "arn:aws:logs:*:*:*"`.
+*   In `infra/aws/edge.tf` for the `resource "aws_iam_policy" "lambda_logging"` you can further restrict the access rights to write log events: `"Resource": "arn:aws:logs:*:*:*"`.

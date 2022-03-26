@@ -1,7 +1,14 @@
-- Optimised for TypeScript
-- Configured for unit testing using Jest and React Testing library
-- Scalable AWS infrastructure defined in Terraform; all content served through the powerful CloudFront CDN and stored in S3 at very low costs. This [blog article](https://simonecarletti.com/blog/2016/08/redirect-domain-https-amazon-cloudfront/) shows how a similar setup could be created manually.
-- Full support for SSL - using free certificates issued by AWS.
-- CDN caching optimised for Next.js (e.g. all files in `_next/static` are automatically cached on the CDN and the client)
-- Configurable with your own domain name
-- Rolling out of infrastructure and deployment supported through easy to use scripts
+### Configured for TypeScript
+
+Use [TypeScript](https://www.typescriptlang.org/) in your project. Configured to use a [TypeScript monorepo](https://maxrohde.com/2021/11/20/the-ultimate-guide-to-typescript-monorepos/) to easily combine front-end and back-end code in one repository.
+
+### Jest and React Testing Library
+
+Test the components and pages in your Next.js project using [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
+
+![React Testing Library](https://cdn.goldstack.party/img/202203/bootstrap-styling.png)
+
+### Ready for Deployment to AWS.
+
+Scalable AWS infrastructure defined in Terraform; all content served through the powerful CloudFront CDN and stored in S3 at very low costs. See this [blog article](https://maxrohde.com/2022/01/22/deploy-serverless-next-js-to-aws-with-terraform-1-1/) for more information about the infrastructure setup.
+

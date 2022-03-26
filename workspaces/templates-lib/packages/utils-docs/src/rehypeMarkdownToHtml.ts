@@ -36,13 +36,15 @@ export default function rehypeDocs({ filePath, tag, processor }): any {
     if (node.children.length > 0 && node.children[0].value === '!embed') {
       const file = node.url;
 
-      const path = dirname(filePath) + '/' + file;
+      const combinedPath = path.normalize(dirname(filePath) + '/' + file);
 
-      if (!fs.existsSync(path)) {
-        throw Error(`Invalid fragment specified; no such file "${path}"`);
+      if (!fs.existsSync(combinedPath)) {
+        throw Error(
+          `Invalid fragment specified; no such file "${combinedPath}"`
+        );
       }
 
-      const code = fs.readFileSync(path, 'utf8');
+      const code = fs.readFileSync(combinedPath, 'utf8');
 
       const markdown = processor();
 

@@ -1,4 +1,4 @@
-### Deployment
+### 3. Deploy Application
 
 Once the infrastructure is successfully set up in AWS using `yarn infra up`, we can deploy the module. For this, simply run the following command:
 
