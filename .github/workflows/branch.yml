@@ -2,32 +2,39 @@ name: Branch & PR build
 
 on: [push, pull_request]
 
-anchors:
-  install: &install
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-
-    - name: Install Yarn
-      run: npm install -g yarn@1.22.11
-
-    - name: Install
-      run: |
-        yarn install
 
 jobs:
   build:
     name: 'Build and Test'
     runs-on: ubuntu-latest
     steps:
-      - *install
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.11
+
+      - name: Install
+        run: |
+          yarn install
 
   lint:
     name: 'Lint'
     runs-on: ubuntu-latest
     steps:
-      - *install
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.11
+
+      - name: Install
+        run: |
+          yarn install
       - name: Linting and formatting
         run: |
           yarn format
@@ -38,7 +45,17 @@ jobs:
     name: 'NPM Audit'
     runs-on: ubuntu-latest
     steps:
-      - *install
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.11
+
+      - name: Install
+        run: |
+          yarn install
       - name: NPM Audit
         run: |
           yarn npm audit --all
@@ -47,7 +64,17 @@ jobs:
     name: 'Compile and Type Check'
     runs-on: ubuntu-latest
     steps:
-      - *install
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.11
+
+      - name: Install
+        run: |
+          yarn install
       - name: Compile all
         run: |
           yarn compile
@@ -56,7 +83,17 @@ jobs:
     name: 'Test'
     runs-on: ubuntu-latest
     steps:
-      - *install
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.11
+
+      - name: Install
+        run: |
+          yarn install
       - name: Test libraries
         run: |
           cd workspaces/templates-lib
@@ -73,7 +110,17 @@ jobs:
     name: 'Generate Schemas'
     runs-on: ubuntu-latest
     steps:
-      - *install
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.11
+
+      - name: Install
+        run: |
+          yarn install
       - name: Generate schemas
         run: |
           yarn generate-schema
@@ -82,7 +129,17 @@ jobs:
     name: 'Generate Docs'
     runs-on: ubuntu-latest
     steps:
-      - *install
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.11
+
+      - name: Install
+        run: |
+          yarn install
       - name: Generate docs
         run: |
           yarn generate-docs
