@@ -16,7 +16,7 @@
     "@goldstack/template-lambda-express": "0.3.108",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
-    "nodemon": "^2.0.4",
+    "nodemon": "^2.0.15",
     "ts-node": "^10.3.0"
   }
 }

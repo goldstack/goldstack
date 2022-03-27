@@ -1,3 +1,5 @@
+import { CheerioAPI, Cheerio, Document, Element } from 'cheerio';
+
 export interface Heading {
   title: string;
   id: string;
@@ -5,9 +7,9 @@ export interface Heading {
 }
 
 const generateLevel = (
-  root: cheerio.Cheerio,
+  root: Cheerio<Document>,
   level: number,
-  $: cheerio.Root
+  $: CheerioAPI
 ): Heading[] => {
   const headings = root
     .find(`h${level}`)
@@ -27,7 +29,7 @@ const generateLevel = (
       console.warn('Generating heading without id: ', headingEl.text().trim());
     }
 
-    let headerChildren: cheerio.Cheerio;
+    let headerChildren: Cheerio<Element>;
     if (idx < headings.length - 1) {
       headerChildren = headingEl.nextUntil($(headings[idx + 1]));
     } else {
@@ -43,7 +45,7 @@ const generateLevel = (
 };
 
 const getHighestLevelHeading = (
-  $: cheerio.Root,
+  $: CheerioAPI,
   max: number,
   current: number
 ): number | undefined => {
@@ -57,7 +59,7 @@ const getHighestLevelHeading = (
   return getHighestLevelHeading($, max, current + 1);
 };
 
-export const generateToc = ($: cheerio.Root): Heading[] => {
+export const generateToc = ($: CheerioAPI): Heading[] => {
   const startHeadingLevel = getHighestLevelHeading($, 4, 1);
   if (!startHeadingLevel) {
     return [];
