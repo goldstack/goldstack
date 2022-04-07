@@ -78,8 +78,8 @@ jobs:
         run: |
           yarn compile
 
-  test:
-    name: 'Test'
+  test-libraries:
+    name: 'Libraries Test'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -93,15 +93,99 @@ jobs:
       - name: Install
         run: |
           yarn install
+
       - name: Test libraries
         run: |
           cd workspaces/templates-lib
           yarn test-ci
           cd ../..
 
+  test-template-management:
+    name: 'Templates Management Test'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.11
+
+      - name: Install
+        run: |
+          yarn install
+
       - name: Test template management
         run: |
           cd workspaces/templates-management
+          yarn test-ci
+          cd ../..
+
+  test-apps:
+    name: 'Apps Test'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.11
+
+      - name: Install
+        run: |
+          yarn install
+
+      - name: Run tests
+        run: |
+          cd workspaces/apps
+          yarn test-ci
+          cd ../..
+  
+  
+  test-docs:
+    name: 'Docs Test'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.11
+
+      - name: Install
+        run: |
+          yarn install
+
+      - name: Run tests 
+        run: |
+          cd workspaces/docs
+          yarn test-ci
+          cd ../..
+
+  test-templates:
+    name: 'Templates Test'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.11
+
+      - name: Install
+        run: |
+          yarn install
+
+      - name: Run tests
+        run: |
+          cd workspaces/templates
           yarn test-ci
           cd ../..
 
