@@ -141,6 +141,7 @@ jobs:
       - name: Run tests
         run: |
           cd workspaces/apps
+          yarn workspace @goldstack/goldstack-api seed-templates
           yarn test-ci
           cd ../..
   
