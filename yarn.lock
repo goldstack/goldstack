@@ -1017,7 +1017,7 @@ __metadata:
     "@goldstack/utils-sh": 0.4.27
     "@goldstack/utils-template": 0.3.31
     "@goldstack/utils-template-test": 0.1.0
-    "@jest-mock/express": ^1.1.7
+    "@jest-mock/express": ^1.4.5
     "@types/aws-serverless-express": ^3.3.3
     "@types/cookie-parser": ^1.4.2
     "@types/cors": ^2.8.12
@@ -1184,7 +1184,7 @@ __metadata:
   resolution: "@goldstack/lambda-express@workspace:workspaces/templates/packages/lambda-express"
   dependencies:
     "@goldstack/template-lambda-express": 0.3.108
-    "@jest-mock/express": ^1.1.7
+    "@jest-mock/express": ^1.4.5
     "@types/aws-serverless-express": ^3.3.3
     "@types/express": ^4.17.13
     "@types/helmet": ^4.0.0
@@ -1555,7 +1555,7 @@ __metadata:
   dependencies:
     "@goldstack/template-lambda-api": 0.4.34
     "@goldstack/utils-aws-http-api-local": 0.1.24
-    "@jest-mock/express": ^1.1.7
+    "@jest-mock/express": ^1.4.5
     "@types/aws-lambda": ^8.10.88
     "@types/aws-serverless-express": ^3.3.3
     "@types/jest": ^27.4.1
@@ -2657,10 +2657,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest-mock/express@npm:^1.1.7":
-  version: 1.1.8
-  resolution: "@jest-mock/express@npm:1.1.8"
-  checksum: 4083f39421968cbb89bd9a35a227e28c79cdccc2bb8bdf2fa267d00ecb1a73f7c919d41226592432f46861b4854e7daebf0afd955e16e08ae3802c47b9c8ef96
+"@jest-mock/express@npm:^1.4.5":
+  version: 1.4.5
+  resolution: "@jest-mock/express@npm:1.4.5"
+  checksum: 2758bca4ec897201bb46a82c502ee3bd0e08f4a5a279751feafba64b4ff07947c7e130f688598157f02aa56bd462159cf3419677d5af7d63da7c5d6073f43abb
   languageName: node
   linkType: hard
 

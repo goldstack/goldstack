@@ -1856,7 +1856,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],
             ["@goldstack/utils-template-test", "workspace:workspaces/templates-management/packages/utils-template-test"],
-            ["@jest-mock/express", "npm:1.1.8"],
+            ["@jest-mock/express", "npm:1.4.5"],
             ["@types/aws-serverless-express", "npm:3.3.3"],
             ["@types/cookie-parser", "npm:1.4.2"],
             ["@types/cors", "npm:2.8.12"],
@@ -2033,7 +2033,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@goldstack/lambda-express", "workspace:workspaces/templates/packages/lambda-express"],
             ["@goldstack/template-lambda-express", "workspace:workspaces/templates-lib/packages/template-lambda-express"],
-            ["@jest-mock/express", "npm:1.1.8"],
+            ["@jest-mock/express", "npm:1.4.5"],
             ["@types/aws-serverless-express", "npm:3.3.3"],
             ["@types/express", "npm:4.17.13"],
             ["@types/helmet", "npm:4.0.0"],
@@ -2436,7 +2436,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/serverless-api", "workspace:workspaces/templates/packages/serverless-api"],
             ["@goldstack/template-lambda-api", "workspace:workspaces/templates-lib/packages/template-lambda-api"],
             ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],
-            ["@jest-mock/express", "npm:1.1.8"],
+            ["@jest-mock/express", "npm:1.4.5"],
             ["@types/aws-lambda", "npm:8.10.88"],
             ["@types/aws-serverless-express", "npm:3.3.3"],
             ["@types/jest", "npm:27.4.1"],
@@ -3601,10 +3601,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@jest-mock/express", [
-        ["npm:1.1.8", {
-          "packageLocation": "./.yarn/cache/@jest-mock-express-npm-1.1.8-cc4cffea86-4083f39421.zip/node_modules/@jest-mock/express/",
+        ["npm:1.4.5", {
+          "packageLocation": "./.yarn/cache/@jest-mock-express-npm-1.4.5-3b6bec8d9f-2758bca4ec.zip/node_modules/@jest-mock/express/",
           "packageDependencies": [
-            ["@jest-mock/express", "npm:1.1.8"]
+            ["@jest-mock/express", "npm:1.4.5"]
           ],
           "linkType": "HARD",
         }]

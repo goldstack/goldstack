@@ -52,7 +52,7 @@
     "@goldstack/goldstack-email-send": "0.1.0",
     "@goldstack/module-template-utils": "0.1.0",
     "@goldstack/utils-template-test": "0.1.0",
-    "@jest-mock/express": "^1.1.7",
+    "@jest-mock/express": "^1.4.5",
     "@types/aws-serverless-express": "^3.3.3",
     "@types/cookie-parser": "^1.4.2",
     "@types/cors": "^2.8.12",

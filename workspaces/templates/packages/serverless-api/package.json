@@ -29,7 +29,7 @@
   "devDependencies": {
     "@goldstack/template-lambda-api": "0.4.34",
     "@goldstack/utils-aws-http-api-local": "0.1.24",
-    "@jest-mock/express": "^1.1.7",
+    "@jest-mock/express": "^1.4.5",
     "@types/aws-lambda": "^8.10.88",
     "@types/aws-serverless-express": "^3.3.3",
     "@types/jest": "^27.4.1",
