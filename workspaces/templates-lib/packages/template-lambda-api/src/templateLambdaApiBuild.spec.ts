@@ -3,6 +3,8 @@ import { read } from '@goldstack/utils-sh';
 import path from 'path';
 import { buildLambdas } from './templateLambdaApiBuild';
 
+jest.setTimeout(30000);
+
 describe('Testing lambda build', () => {
   it('Should build lambda', async () => {
     await buildLambdas('./testData/build-test', [
