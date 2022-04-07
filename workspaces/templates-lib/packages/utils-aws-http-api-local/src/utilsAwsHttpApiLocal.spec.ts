@@ -8,7 +8,7 @@ describe('Should create API', () => {
 
   beforeAll(async () => {
     port = await new Promise<number>((resolve, reject) => {
-      getPort(50121, (err: any, p1: number) => {
+      getPort(50141, (err: any, p1: number) => {
         if (err) {
           reject(err);
           return;

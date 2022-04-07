@@ -7,7 +7,7 @@ import { ProjectConfiguration } from '@goldstack/utils-project';
 
 process.env.CORS = 'http://localhost';
 
-jest.setTimeout(30000);
+jest.setTimeout(35000);
 
 describe('Goldstack API', () => {
   it('Create a project', async () => {
