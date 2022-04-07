@@ -2,6 +2,12 @@ import { connect, getMockedSES, getFromDomain } from './ses';
 
 describe('SES template', () => {
   it('Should sent dev email', async () => {
+    if (!process.env.AWS_ACCESS_KEY_ID) {
+      console.warn(
+        'Testing of email send skipped since no AWS credentials available'
+      );
+      return;
+    }
     const ses = await connect('dev');
     const fromDomain = await getFromDomain('dev');
 

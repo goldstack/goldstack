@@ -9,7 +9,7 @@ describe('S3 Bucket', () => {
   it('Should be able to upload file', async () => {
     if (!process.env.AWS_ACCESS_KEY_ID) {
       console.warn(
-        'Skipping of S3 upload skipped since no AWS credentials available'
+        'Testing of S3 upload skipped since no AWS credentials available'
       );
       return;
     }
