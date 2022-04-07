@@ -19,7 +19,7 @@
     "lint-fix": "eslint . --ext .js,.ts,tsx,json --fix",
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
     "publish": "yarn workspaces foreach --topological-dev run publish",
-    "test-ci": "yarn workspaces foreach --parallel run test-ci",
+    "test-ci": "yarn workspaces foreach -v run test-ci",
     "version:apply": "yarn workspaces foreach -v --topological-dev run version:apply \"$@\"",
     "version:apply:force": "yarn workspaces foreach -v --topological-dev run version:apply:force \"$@\""
   },

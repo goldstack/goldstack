@@ -18,7 +18,7 @@
     "lint": "eslint . --ext .js,.ts,.tsx,json",
     "lint-fix": "eslint . --ext .js,.ts,tsx,json --fix",
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
-    "test-ci": "yarn workspaces foreach --parallel run test-ci"
+    "test-ci": "yarn workspaces foreach -v run test-ci"
   },
   "devDependencies": {
     "@goldstack/utils-typescript-references": "0.1.9",
