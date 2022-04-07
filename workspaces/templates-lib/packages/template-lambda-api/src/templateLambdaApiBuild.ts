@@ -28,7 +28,6 @@ export const buildLambdas = async (
     );
     const localEsbuildConfig = readToType<BuildOptions>(esbuildLocalPath);
 
-    console.log('start build ', config.relativeFilePath);
     await build({
       plugins: [pnpPlugin()],
       bundle: true,
@@ -42,6 +41,5 @@ export const buildLambdas = async (
       ...esbuildConfig,
       ...localEsbuildConfig,
     });
-    console.log('Build successfully finished');
   }
 };

@@ -2,17 +2,20 @@ import { RouteType } from '@goldstack/utils-aws-lambda';
 import { read } from '@goldstack/utils-sh';
 import path from 'path';
 import { buildLambdas } from './templateLambdaApiBuild';
+import fs from 'fs';
 
 jest.setTimeout(30000);
 
 describe('Testing lambda build', () => {
   it('Should build lambda', async () => {
+    const fileToBuild = path.resolve('./testData/build-test/index.ts');
+    expect(fs.existsSync(fileToBuild)).toEqual(true);
     await buildLambdas('./testData/build-test', [
       {
         path: '/index',
         relativeFilePath: 'index.ts',
         name: 'test-lambda-index',
-        absoluteFilePath: path.resolve('./testData/build-test/index.ts'),
+        absoluteFilePath: fileToBuild,
         route: 'ANY /',
         type: RouteType.FUNCTION,
       },
