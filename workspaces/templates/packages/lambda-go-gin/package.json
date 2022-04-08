@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@goldstack/template-lambda-express": "0.3.108",
-    "@types/jest": "^27.0.2",
+    "@types/jest": "^27.4.1",
     "@types/node": "^16.11.0",
     "nodemon": "^2.0.15",
     "ts-node": "^10.3.0"

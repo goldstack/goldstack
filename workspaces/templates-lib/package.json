@@ -19,13 +19,13 @@
     "lint-fix": "eslint . --ext .js,.ts,tsx,json --fix",
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
     "publish": "yarn workspaces foreach --topological-dev run publish",
-    "test-ci": "yarn workspaces foreach --parallel run test-ci",
+    "test-ci": "yarn workspaces foreach -v run test-ci",
     "version:apply": "yarn workspaces foreach -v --topological-dev run version:apply \"$@\"",
     "version:apply:force": "yarn workspaces foreach -v --topological-dev run version:apply:force \"$@\""
   },
   "devDependencies": {
     "@goldstack/utils-typescript-references": "0.1.9",
-    "@types/jest": "^27.0.2",
+    "@types/jest": "^27.4.1",
     "@types/node": "^16.11.0",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",

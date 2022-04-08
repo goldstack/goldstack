@@ -27,6 +27,7 @@ export const buildLambdas = async (
       '.esbuild.config.json'
     );
     const localEsbuildConfig = readToType<BuildOptions>(esbuildLocalPath);
+
     await build({
       plugins: [pnpPlugin()],
       bundle: true,

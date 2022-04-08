@@ -19,13 +19,13 @@
     "lint": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml",
     "lint-fix": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml --fix",
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
-    "test-ci": "yarn workspaces foreach --parallel run test-ci",
+    "test-ci": "yarn workspaces foreach -v run test-ci",
     "test-watch": "nodemonx --watch . --exec 'yarn test-ci'"
   },
   "devDependencies": {
     "@goldstack/nodemonx": "0.3.28",
     "@goldstack/utils-typescript-references": "0.1.9",
-    "@types/jest": "^27.0.2",
+    "@types/jest": "^27.4.1",
     "@types/node": "^16.11.0",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
