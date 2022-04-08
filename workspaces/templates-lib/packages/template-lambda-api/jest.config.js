@@ -3,6 +3,7 @@ const base = require('../../../templates/jest.config');
 
 module.exports = {
   ...base,
+  resolver: require.resolve('jest-pnp-resolver'),
   globals: {
     'ts-jest': {
       tsconfig: 'tsconfig.json',
