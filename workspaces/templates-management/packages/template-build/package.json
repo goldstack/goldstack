@@ -23,8 +23,8 @@
     "@goldstack/prepare-template": "0.1.0",
     "@goldstack/prepare-yarn-pnp-monorepo": "0.1.1",
     "@goldstack/template-repository": "0.1.0",
-    "@goldstack/utils-sh": "0.4.27",
-    "@goldstack/utils-template": "0.3.31",
+    "@goldstack/utils-sh": "0.4.28",
+    "@goldstack/utils-template": "0.3.32",
     "aws-sdk": "2.814.0"
   },
   "devDependencies": {

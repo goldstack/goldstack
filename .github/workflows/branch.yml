@@ -144,8 +144,7 @@ jobs:
           yarn workspace @goldstack/goldstack-api seed-templates
           yarn test-ci
           cd ../..
-  
-  
+
   test-docs:
     name: 'Docs Test'
     runs-on: ubuntu-latest
@@ -162,7 +161,7 @@ jobs:
         run: |
           yarn install
 
-      - name: Run tests 
+      - name: Run tests
         run: |
           cd workspaces/docs
           yarn test-ci
