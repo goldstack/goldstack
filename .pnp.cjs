@@ -7878,7 +7878,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["bunyan", "npm:1.8.14"],
             ["dtrace-provider", "npm:0.8.8"],
-            ["moment", "npm:2.29.0"],
+            ["moment", "npm:2.29.2"],
             ["mv", "npm:2.1.1"],
             ["safe-json-stringify", "npm:1.2.0"]
           ],
@@ -16743,10 +16743,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["moment", [
-        ["npm:2.29.0", {
-          "packageLocation": "./.yarn/cache/moment-npm-2.29.0-f9cef938dc-21d8adaf46.zip/node_modules/moment/",
+        ["npm:2.29.2", {
+          "packageLocation": "./.yarn/cache/moment-npm-2.29.2-7e4b405a08-ee850b5776.zip/node_modules/moment/",
           "packageDependencies": [
-            ["moment", "npm:2.29.0"]
+            ["moment", "npm:2.29.2"]
           ],
           "linkType": "HARD",
         }]
