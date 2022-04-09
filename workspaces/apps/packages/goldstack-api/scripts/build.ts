@@ -8,6 +8,7 @@ build({
   external: ['aws-sdk'],
   minify: true,
   format: 'cjs',
+  platform: 'node',
   target: 'node12.0',
   sourcemap: true,
   outfile: 'distLambda/lambda.js',
