@@ -1031,7 +1031,7 @@ __metadata:
     "@types/supertest": ^2.0.10
     "@types/tsc-watch": ^4
     "@types/uuid": ^8.3.0
-    "@yarnpkg/esbuild-plugin-pnp": ^2.0.1
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.1
     aws-serverless-express: ^3.3.8
     cookie-parser: ^1.4.5
     cors: ^2.8.5
@@ -1191,7 +1191,7 @@ __metadata:
     "@types/jest": ^27.4.1
     "@types/node": ^16.11.0
     "@types/source-map-support": ^0.5.4
-    "@yarnpkg/esbuild-plugin-pnp": ^2.0.1
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.1
     aws-serverless-express: ^3.3.8
     cors: ^2.8.5
     esbuild: ^0.14.34
@@ -1561,7 +1561,7 @@ __metadata:
     "@types/jest": ^27.4.1
     "@types/node": ^16.11.0
     "@types/node-fetch": 2
-    "@yarnpkg/esbuild-plugin-pnp": ^2.0.1
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.1
     date-fns: ^2.28.0
     esbuild: ^0.14.34
     find-free-port: ^2.0.0
@@ -1799,7 +1799,7 @@ __metadata:
     "@types/jest": ^27.4.1
     "@types/node": ^16.11.0
     "@types/yargs": ^15.0.5
-    "@yarnpkg/esbuild-plugin-pnp": ^2.0.1
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.1
     archiver: ^5.0.0
     esbuild: ^0.14.34
     jest: ^27.5.1
@@ -4678,14 +4678,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/esbuild-plugin-pnp@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "@yarnpkg/esbuild-plugin-pnp@npm:2.0.1"
+"@yarnpkg/esbuild-plugin-pnp@npm:^3.0.0-rc.1":
+  version: 3.0.0-rc.1
+  resolution: "@yarnpkg/esbuild-plugin-pnp@npm:3.0.0-rc.1"
   dependencies:
     tslib: ^1.13.0
   peerDependencies:
     esbuild: ">=0.10.0"
-  checksum: ff081f65e01d5720dc17faf4dee3b055ea81235344b32322e095eec8d8472b36109cc27e6bfd8463933acde00c9bdcab008df662db020dec7bdef25a75dc5aaf
+  checksum: 48d4281d9e0a63ef0b3ad9a9b6d73299f9cb4428547a6a5d2e403e7d4a52e751dee2b1effeaceae452d2e47561b200af9ca940ddab9b63ac555353b527387729
   languageName: node
   linkType: hard
 

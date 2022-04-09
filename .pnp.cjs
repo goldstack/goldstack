@@ -1870,7 +1870,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/supertest", "npm:2.0.10"],
             ["@types/tsc-watch", "npm:4.2.0"],
             ["@types/uuid", "npm:8.3.0"],
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:2.0.1"],
+            ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:3.0.0-rc.1"],
             ["aws-serverless-express", "npm:3.3.8"],
             ["cookie-parser", "npm:1.4.5"],
             ["cors", "npm:2.8.5"],
@@ -2040,7 +2040,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
             ["@types/source-map-support", "npm:0.5.4"],
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:2.0.1"],
+            ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:3.0.0-rc.1"],
             ["aws-serverless-express", "npm:3.3.8"],
             ["cors", "npm:2.8.5"],
             ["esbuild", "npm:0.14.34"],
@@ -2442,7 +2442,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
             ["@types/node-fetch", "npm:2.5.12"],
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:2.0.1"],
+            ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:3.0.0-rc.1"],
             ["date-fns", "npm:2.28.0"],
             ["esbuild", "npm:0.14.34"],
             ["find-free-port", "npm:2.0.0"],
@@ -2690,7 +2690,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
             ["@types/yargs", "npm:15.0.7"],
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:2.0.1"],
+            ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:3.0.0-rc.1"],
             ["archiver", "npm:5.0.0"],
             ["esbuild", "npm:0.14.34"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
@@ -6049,17 +6049,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@yarnpkg/esbuild-plugin-pnp", [
-        ["npm:2.0.1", {
-          "packageLocation": "./.yarn/cache/@yarnpkg-esbuild-plugin-pnp-npm-2.0.1-34723f0522-ff081f65e0.zip/node_modules/@yarnpkg/esbuild-plugin-pnp/",
+        ["npm:3.0.0-rc.1", {
+          "packageLocation": "./.yarn/cache/@yarnpkg-esbuild-plugin-pnp-npm-3.0.0-rc.1-ccbacefbfa-48d4281d9e.zip/node_modules/@yarnpkg/esbuild-plugin-pnp/",
           "packageDependencies": [
-            ["@yarnpkg/esbuild-plugin-pnp", "npm:2.0.1"]
+            ["@yarnpkg/esbuild-plugin-pnp", "npm:3.0.0-rc.1"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:2.0.1", {
-          "packageLocation": "./.yarn/__virtual__/@yarnpkg-esbuild-plugin-pnp-virtual-783fcedd51/0/cache/@yarnpkg-esbuild-plugin-pnp-npm-2.0.1-34723f0522-ff081f65e0.zip/node_modules/@yarnpkg/esbuild-plugin-pnp/",
+        ["virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:3.0.0-rc.1", {
+          "packageLocation": "./.yarn/__virtual__/@yarnpkg-esbuild-plugin-pnp-virtual-97f7c5404f/0/cache/@yarnpkg-esbuild-plugin-pnp-npm-3.0.0-rc.1-ccbacefbfa-48d4281d9e.zip/node_modules/@yarnpkg/esbuild-plugin-pnp/",
           "packageDependencies": [
-            ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:2.0.1"],
+            ["@yarnpkg/esbuild-plugin-pnp", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:3.0.0-rc.1"],
             ["@types/esbuild", null],
             ["esbuild", "npm:0.14.34"],
             ["tslib", "npm:1.14.1"]

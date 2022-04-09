@@ -34,6 +34,7 @@ export const buildLambdas = async (
       entryPoints: [`${routesDir}/${config.relativeFilePath}`],
       external: ['aws-sdk'],
       minify: true,
+      platform: 'node',
       format: 'cjs',
       target: 'node12.0',
       sourcemap: true,

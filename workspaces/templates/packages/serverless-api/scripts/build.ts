@@ -8,6 +8,7 @@ build({
   external: ['aws-sdk'],
   minify: true,
   format: 'esm',
+  platform: 'node',
   target: 'node14.0',
   sourcemap: true,
   outfile: 'distLambda/root.js',
