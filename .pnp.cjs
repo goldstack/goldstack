@@ -16229,7 +16229,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["detab", "npm:2.0.3"],
             ["mdast-util-definitions", "npm:1.2.5"],
             ["mdurl", "npm:1.0.1"],
-            ["trim", "npm:0.0.1"],
+            ["trim", "npm:0.0.3"],
             ["trim-lines", "npm:1.1.3"],
             ["unist-builder", "npm:1.0.4"],
             ["unist-util-generated", "npm:1.1.5"],
@@ -19630,7 +19630,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["parse-entities", "npm:1.2.2"],
             ["repeat-string", "npm:1.6.1"],
             ["state-toggle", "npm:1.0.3"],
-            ["trim", "npm:0.0.1"],
+            ["trim", "npm:0.0.3"],
             ["trim-trailing-lines", "npm:1.1.3"],
             ["unherit", "npm:1.1.3"],
             ["unist-util-remove-position", "npm:1.1.4"],
@@ -22310,10 +22310,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["trim", [
-        ["npm:0.0.1", {
-          "packageLocation": "./.yarn/cache/trim-npm-0.0.1-d138075543-2b4646dff9.zip/node_modules/trim/",
+        ["npm:0.0.3", {
+          "packageLocation": "./.yarn/cache/trim-npm-0.0.3-b61d14256f-9a059ba56d.zip/node_modules/trim/",
           "packageDependencies": [
-            ["trim", "npm:0.0.1"]
+            ["trim", "npm:0.0.3"]
           ],
           "linkType": "HARD",
         }]
