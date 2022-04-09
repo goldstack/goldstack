@@ -15522,7 +15522,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jsonpath", "npm:1.0.2"],
             ["esprima", "npm:1.2.2"],
             ["static-eval", "npm:2.0.2"],
-            ["underscore", "npm:1.7.0"]
+            ["underscore", "npm:1.13.2"]
           ],
           "linkType": "HARD",
         }]
@@ -16737,7 +16737,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["mock-aws-s3", "npm:4.0.2"],
             ["bluebird", "npm:3.7.2"],
             ["fs-extra", "npm:7.0.1"],
-            ["underscore", "npm:1.12.1"]
+            ["underscore", "npm:1.13.2"]
           ],
           "linkType": "HARD",
         }]
@@ -23019,17 +23019,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["underscore", [
-        ["npm:1.12.1", {
-          "packageLocation": "./.yarn/cache/underscore-npm-1.12.1-f5ca0889f5-ec327603aa.zip/node_modules/underscore/",
+        ["npm:1.13.2", {
+          "packageLocation": "./.yarn/cache/underscore-npm-1.13.2-209368f9f2-6ab156c845.zip/node_modules/underscore/",
           "packageDependencies": [
-            ["underscore", "npm:1.12.1"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:1.7.0", {
-          "packageLocation": "./.yarn/cache/underscore-npm-1.7.0-7d19d583a5-20be2ca8b0.zip/node_modules/underscore/",
-          "packageDependencies": [
-            ["underscore", "npm:1.7.0"]
+            ["underscore", "npm:1.13.2"]
           ],
           "linkType": "HARD",
         }]

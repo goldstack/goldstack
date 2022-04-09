@@ -13068,7 +13068,7 @@ fsevents@~2.1.2:
   dependencies:
     esprima: 1.2.2
     static-eval: 2.0.2
-    underscore: 1.21.1
+    underscore: 1.13.2
   checksum: 1c5007566007d44667543ee381aa5f071ea657ad671354aae799a192e25869f1d7dcb9c8a667649a5ee63792601ca298d4b05d05f7fadb6f336dca85bda1f697
   languageName: node
   linkType: hard
@@ -14175,7 +14175,7 @@ fsevents@~2.1.2:
   dependencies:
     bluebird: ^3.5.1
     fs-extra: ^7.0.1
-    underscore: 1.21.1
+    underscore: 1.13.2
   checksum: bfa7d6858d54eb889bc954e10f313a6964d2e0bcdf972bd2377204e856e29f6ef72b4af62e2988ff74fbb53cd9859d60f5c250b737f5ca9f1ac21a6ffa0039dc
   languageName: node
   linkType: hard
@@ -19624,17 +19624,10 @@ typescript@~4.4.3:
   languageName: node
   linkType: hard
 
-"underscore@npm:1.12.1":
-  version: 1.12.1
-  resolution: "underscore@npm:1.12.1"
-  checksum: ec327603aa112b99fe9d74cd9bf3b3b7451465a9d2610ceab269a532e3f191650ab017903be34dc86fe406a11d04d8905a3b04dd4c129493e51bee09a3f3074c
-  languageName: node
-  linkType: hard
-
-"underscore@npm:1.7.0":
-  version: 1.7.0
-  resolution: "underscore@npm:1.7.0"
-  checksum: 20be2ca8b0c3f7bd6c271c752f7d930011e20d1abb5ff953950bd37a523515b4edf2c34077c93bece21b2c3eafa0c25ab6052eaa7aea7c26809f5b869143cdfd
+"underscore@npm:1.13.2":
+  version: 1.13.2
+  resolution: "underscore@npm:1.13.2"
+  checksum: 6ab156c845ccc757fd01d8b9eb28be18ba89ac68993370dd7397a66a95b124f2ba26947fd53e687c084d334429914fc3dd1620d5123b6e0a7cf112cdcf4e859f
   languageName: node
   linkType: hard
 
