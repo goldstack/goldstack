@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-git",
-  "version": "0.1.31",
+  "version": "0.1.32",
   "description": "Utilities for working with git",
   "keywords": [
     "goldstack",

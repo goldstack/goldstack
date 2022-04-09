@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-docs",
-  "version": "0.3.33",
+  "version": "0.3.34",
   "description": "Utilities for working with Markdown documentation",
   "keywords": [
     "goldstack",
@@ -40,7 +40,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-sh": "0.4.27",
+    "@goldstack/utils-sh": "0.4.28",
     "@mapbox/rehype-prism": "0.3.1",
     "github-slugger": "1.2.0",
     "gray-matter": "^4.0.2",
@@ -57,7 +57,7 @@
     "unist-util-visit": "2.0.0"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.1.31",
+    "@goldstack/utils-git": "0.1.32",
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.0",
     "jest": "^27.5.1",
