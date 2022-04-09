@@ -8234,7 +8234,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["async-each", "npm:1.0.3"],
             ["braces", "npm:2.3.2"],
             ["fsevents", "patch:fsevents@npm%3A1.2.13#~builtin<compat/fsevents>::version=1.2.13&hash=1cc4b2"],
-            ["glob-parent", "npm:3.1.0"],
+            ["glob-parent", "npm:5.1.2"],
             ["inherits", "npm:2.0.4"],
             ["is-binary-path", "npm:1.0.1"],
             ["is-glob", "npm:4.0.1"],
@@ -8447,18 +8447,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["es6-iterator", "npm:2.0.3"],
             ["memoizee", "npm:0.4.14"],
             ["timers-ext", "npm:0.1.7"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["clipboard", [
-        ["npm:2.0.6", {
-          "packageLocation": "./.yarn/cache/clipboard-npm-2.0.6-3d616039e3-e0eeef5363.zip/node_modules/clipboard/",
-          "packageDependencies": [
-            ["clipboard", "npm:2.0.6"],
-            ["good-listener", "npm:1.2.2"],
-            ["select", "npm:1.1.2"],
-            ["tiny-emitter", "npm:2.1.0"]
           ],
           "linkType": "HARD",
         }]
@@ -9769,15 +9757,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/delayed-stream-npm-1.0.0-c5a4c4cc02-46fe6e83e2.zip/node_modules/delayed-stream/",
           "packageDependencies": [
             ["delayed-stream", "npm:1.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["delegate", [
-        ["npm:3.2.0", {
-          "packageLocation": "./.yarn/cache/delegate-npm-3.2.0-d3f849ea99-d943058fe0.zip/node_modules/delegate/",
-          "packageDependencies": [
-            ["delegate", "npm:3.2.0"]
           ],
           "linkType": "HARD",
         }]
@@ -11507,7 +11486,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fast-glob", "npm:2.2.7"],
             ["@mrmlnc/readdir-enhanced", "npm:2.2.1"],
             ["@nodelib/fs.stat", "npm:1.1.3"],
-            ["glob-parent", "npm:3.1.0"],
+            ["glob-parent", "npm:5.1.2"],
             ["is-glob", "npm:4.0.1"],
             ["merge2", "npm:1.4.1"],
             ["micromatch", "npm:3.1.10"]
@@ -12457,15 +12436,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["glob-parent", [
-        ["npm:3.1.0", {
-          "packageLocation": "./.yarn/cache/glob-parent-npm-3.1.0-31416ad085-653d559237.zip/node_modules/glob-parent/",
-          "packageDependencies": [
-            ["glob-parent", "npm:3.1.0"],
-            ["is-glob", "npm:3.1.0"],
-            ["path-dirname", "npm:1.0.2"]
-          ],
-          "linkType": "HARD",
-        }],
         ["npm:5.1.2", {
           "packageLocation": "./.yarn/cache/glob-parent-npm-5.1.2-021ab32634-f4f2bfe242.zip/node_modules/glob-parent/",
           "packageDependencies": [
@@ -12482,7 +12452,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["glob-stream", "npm:6.1.0"],
             ["extend", "npm:3.0.2"],
             ["glob", "npm:7.1.6"],
-            ["glob-parent", "npm:3.1.0"],
+            ["glob-parent", "npm:5.1.2"],
             ["is-negated-glob", "npm:1.0.0"],
             ["ordered-read-streams", "npm:1.0.1"],
             ["pumpify", "npm:1.5.1"],
@@ -12652,16 +12622,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["glogg", "npm:1.0.2"],
             ["sparkles", "npm:1.0.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["good-listener", [
-        ["npm:1.2.2", {
-          "packageLocation": "./.yarn/cache/good-listener-npm-1.2.2-e7865da849-f39fb82c4e.zip/node_modules/good-listener/",
-          "packageDependencies": [
-            ["good-listener", "npm:1.2.2"],
-            ["delegate", "npm:3.2.0"]
           ],
           "linkType": "HARD",
         }]
@@ -18114,15 +18074,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["path-dirname", [
-        ["npm:1.0.2", {
-          "packageLocation": "./.yarn/cache/path-dirname-npm-1.0.2-d158cba006-0d2f6604ae.zip/node_modules/path-dirname/",
-          "packageDependencies": [
-            ["path-dirname", "npm:1.0.2"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["path-exists", [
         ["npm:2.1.0", {
           "packageLocation": "./.yarn/cache/path-exists-npm-2.1.0-be4aa2cccc-fdb734f1d0.zip/node_modules/path-exists/",
@@ -18563,11 +18514,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["prismjs", [
-        ["npm:1.23.0", {
-          "packageLocation": "./.yarn/cache/prismjs-npm-1.23.0-3781560845-8c3cf69150.zip/node_modules/prismjs/",
+        ["npm:1.27.0", {
+          "packageLocation": "./.yarn/cache/prismjs-npm-1.27.0-ca4e1667c6-85c7f4a3e9.zip/node_modules/prismjs/",
           "packageDependencies": [
-            ["prismjs", "npm:1.23.0"],
-            ["clipboard", "npm:2.0.6"]
+            ["prismjs", "npm:1.27.0"]
           ],
           "linkType": "HARD",
         }]
@@ -19486,7 +19436,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["refractor", "npm:2.10.1"],
             ["hastscript", "npm:5.1.2"],
             ["parse-entities", "npm:1.2.2"],
-            ["prismjs", "npm:1.23.0"]
+            ["prismjs", "npm:1.27.0"]
           ],
           "linkType": "HARD",
         }]
@@ -20278,15 +20228,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["section-matter", "npm:1.0.0"],
             ["extend-shallow", "npm:2.0.1"],
             ["kind-of", "npm:6.0.3"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["select", [
-        ["npm:1.1.2", {
-          "packageLocation": "./.yarn/cache/select-npm-1.1.2-13cd366fa2-4346151e94.zip/node_modules/select/",
-          "packageDependencies": [
-            ["select", "npm:1.1.2"]
           ],
           "linkType": "HARD",
         }]
@@ -22113,15 +22054,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["timers-ext", "npm:0.1.7"],
             ["es5-ext", "npm:0.10.53"],
             ["next-tick", "npm:1.1.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["tiny-emitter", [
-        ["npm:2.1.0", {
-          "packageLocation": "./.yarn/cache/tiny-emitter-npm-2.1.0-2a4d94f487-fbcfb51457.zip/node_modules/tiny-emitter/",
-          "packageDependencies": [
-            ["tiny-emitter", "npm:2.1.0"]
           ],
           "linkType": "HARD",
         }]
