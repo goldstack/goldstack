@@ -18570,10 +18570,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["prismjs", [
-        ["npm:1.17.1", {
-          "packageLocation": "./.yarn/cache/prismjs-npm-1.17.1-6c69ea7fe8-d8eb397abc.zip/node_modules/prismjs/",
+        ["npm:1.23.0", {
+          "packageLocation": "./.yarn/cache/prismjs-npm-1.23.0-3781560845-8c3cf69150.zip/node_modules/prismjs/",
           "packageDependencies": [
-            ["prismjs", "npm:1.17.1"],
+            ["prismjs", "npm:1.23.0"],
             ["clipboard", "npm:2.0.6"]
           ],
           "linkType": "HARD",
@@ -19493,7 +19493,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["refractor", "npm:2.10.1"],
             ["hastscript", "npm:5.1.2"],
             ["parse-entities", "npm:1.2.2"],
-            ["prismjs", "npm:1.17.1"]
+            ["prismjs", "npm:1.23.0"]
           ],
           "linkType": "HARD",
         }]
