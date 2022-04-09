@@ -19377,7 +19377,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["open", "npm:8.2.1"],
             ["serve-static", "npm:1.14.1"],
             ["supervisor", "npm:0.12.0"],
-            ["url-parse", "npm:1.5.7"],
+            ["url-parse", "npm:1.5.8"],
             ["ws", "virtual:260f1e95cdc11dd5eb865368cfef0da76e26bafb4c72505a7c060b3d20e535c421be2aa4ca07e120887f1f68049834741fa151b2ae5c309c32beaf634a7f48a3#npm:7.4.6"]
           ],
           "linkType": "HARD",
@@ -23136,10 +23136,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["url-parse", [
-        ["npm:1.5.7", {
-          "packageLocation": "./.yarn/cache/url-parse-npm-1.5.7-f08b2b1c62-4ffb5239af.zip/node_modules/url-parse/",
+        ["npm:1.5.8", {
+          "packageLocation": "./.yarn/cache/url-parse-npm-1.5.8-082ecb5a56-6f9e852809.zip/node_modules/url-parse/",
           "packageDependencies": [
-            ["url-parse", "npm:1.5.7"],
+            ["url-parse", "npm:1.5.8"],
             ["querystringify", "npm:2.2.0"],
             ["requires-port", "npm:1.0.0"]
           ],

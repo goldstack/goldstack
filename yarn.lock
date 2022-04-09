@@ -16437,7 +16437,7 @@ fsevents@~2.1.2:
     open: ^8.0.0
     serve-static: ~1.14.0
     supervisor: ~0.12.0
-    url-parse: ~1.5.0
+    url-parse: 1.5.8
     ws: ~7.4.0
   bin:
     reload: bin/reload
@@ -19698,13 +19698,13 @@ typescript@~4.4.3:
   languageName: node
   linkType: hard
 
-"url-parse@npm:~1.5.0":
-  version: 1.5.7
-  resolution: "url-parse@npm:1.5.7"
+"url-parse@npm:1.5.8":
+  version: 1.5.8
+  resolution: "url-parse@npm:1.5.8"
   dependencies:
     querystringify: ^2.1.1
     requires-port: ^1.0.0
-  checksum: 4ffb5239afbbaccd8d2a4c08fc64c5b9cd4931659bf913d56e9b93d4abc765771200d58bd201f501addb5cf6fa070ad443d16f8bbdb533a3775f6563dd1e6a9a
+  checksum: 6f9e85280934153739aae644c88cc92e2ce6bf69c3ecc74288bfea14eedbcbe47ceb774ca5555fdd3f7195dc77c93eaddceb7e66d654c7b9267f1f2bab761ea3
   languageName: node
   linkType: hard
 
