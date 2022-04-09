@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/infra",
-  "version": "0.3.32",
+  "version": "0.3.33",
   "description": "Utilities for defining infrastructure for npm packages.",
   "keywords": [
     "goldstack",
@@ -37,12 +37,12 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-config": "0.3.29",
-    "@goldstack/utils-log": "0.2.11",
-    "@goldstack/utils-sh": "0.4.27"
+    "@goldstack/utils-config": "0.3.30",
+    "@goldstack/utils-log": "0.2.12",
+    "@goldstack/utils-sh": "0.4.28"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.1.31",
+    "@goldstack/utils-git": "0.1.32",
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.0",
     "jest": "^27.5.1",
