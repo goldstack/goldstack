@@ -57,7 +57,7 @@ jobs:
           yarn install
       - name: NPM Audit
         run: |
-          yarn npm audit --all
+          yarn npm audit --recursive --severity high
 
   compile:
     name: 'Compile and Type Check'
