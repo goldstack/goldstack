@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/infra-aws",
-  "version": "0.3.41",
+  "version": "0.3.42",
   "description": "Utilities to work with AWS infrastructure via the cli.",
   "keywords": [
     "goldstack",
@@ -39,11 +39,11 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.3.33",
-    "@goldstack/utils-config": "0.3.30",
+    "@goldstack/infra": "0.3.34",
+    "@goldstack/utils-config": "0.3.31",
     "@goldstack/utils-log": "0.2.12",
-    "@goldstack/utils-package": "0.3.35",
-    "@goldstack/utils-sh": "0.4.28",
+    "@goldstack/utils-package": "0.3.36",
+    "@goldstack/utils-sh": "0.4.29",
     "aws-sdk": "2.814.0",
     "axios": "0.21.2",
     "handlebars": "4.7.7"
