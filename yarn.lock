@@ -1694,7 +1694,7 @@ __metadata:
     "@goldstack/utils-template": 0.3.32
     "@types/archiver": ^3.1.0
     "@types/jest": ^27.4.1
-    "@types/mock-aws-s3": ^2.6.2
+    "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^16.11.0
     aws-sdk: 2.814.0
     jest: ^27.5.1
@@ -1762,7 +1762,7 @@ __metadata:
     "@goldstack/utils-terraform": 0.3.65
     "@goldstack/utils-terraform-aws": 0.3.64
     "@types/jest": ^27.4.1
-    "@types/mock-aws-s3": ^2.6.2
+    "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^16.11.0
     "@types/uuid": ^8.3.0
     "@types/yargs": ^15.0.5
@@ -1885,7 +1885,7 @@ __metadata:
     "@goldstack/utils-project": 0.3.31
     "@goldstack/utils-sh": 0.4.28
     "@types/jest": ^27.4.1
-    "@types/mock-aws-s3": ^2.6.2
+    "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^16.11.0
     "@types/source-map-support": ^0.5.4
     "@types/wtfnode": ^0.7.0
@@ -2028,7 +2028,7 @@ __metadata:
     "@goldstack/utils-terraform": 0.3.65
     "@goldstack/utils-terraform-aws": 0.3.64
     "@types/jest": ^27.4.1
-    "@types/mock-aws-s3": ^2.6.2
+    "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^16.11.0
     "@types/yargs": ^15.0.5
     aws-sdk: 2.814.0
@@ -2499,7 +2499,7 @@ __metadata:
     "@goldstack/utils-template": 0.3.32
     "@goldstack/utils-yarn": 0.3.38
     "@types/jest": ^27.4.1
-    "@types/mock-aws-s3": ^2.6.2
+    "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^16.11.0
     axios: 0.21.2
     extract-zip: ^2.0.1
@@ -3865,13 +3865,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mock-aws-s3@npm:^2.6.2":
-  version: 2.6.2
-  resolution: "@types/mock-aws-s3@npm:2.6.2"
+"@types/mock-aws-s3@npm:^2.6.3":
+  version: 2.6.3
+  resolution: "@types/mock-aws-s3@npm:2.6.3"
   dependencies:
     "@types/node": "*"
-    aws-sdk: ">=2.169.0"
-  checksum: 39762f1a741d22a9beb85a5731e36d75441f25d4636b8c18f14e8968ad7c073dd8a419c0faec3f996771add6d6a832af6289398b2e053a208399776c69e900a8
+    aws-sdk: ">=2.814.0"
+  checksum: cbe658323690c16da9df24ac6cbfe9a8cb9f7b84f59bb44f85da8417ea4b50fabc898a88b6ab5449773a3083d6022e3f95dc0d2aaa4951ef24825d81e7eb6dc1
   languageName: node
   linkType: hard
 

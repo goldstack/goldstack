@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
-    "@types/mock-aws-s3": "^2.6.2",
+    "@types/mock-aws-s3": "^2.6.3",
     "@types/node": "^16.11.0",
     "jest": "^27.5.1",
     "rimraf": "^3.0.2",

@@ -2556,7 +2556,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],
             ["@types/archiver", "npm:3.1.0"],
             ["@types/jest", "npm:27.4.1"],
-            ["@types/mock-aws-s3", "npm:2.6.2"],
+            ["@types/mock-aws-s3", "npm:2.6.3"],
             ["@types/node", "npm:16.11.0"],
             ["aws-sdk", "npm:2.814.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
@@ -2656,7 +2656,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],
             ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],
             ["@types/jest", "npm:27.4.1"],
-            ["@types/mock-aws-s3", "npm:2.6.2"],
+            ["@types/mock-aws-s3", "npm:2.6.3"],
             ["@types/node", "npm:16.11.0"],
             ["@types/uuid", "npm:8.3.0"],
             ["@types/yargs", "npm:15.0.7"],
@@ -2776,7 +2776,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:27.4.1"],
-            ["@types/mock-aws-s3", "npm:2.6.2"],
+            ["@types/mock-aws-s3", "npm:2.6.3"],
             ["@types/node", "npm:16.11.0"],
             ["@types/source-map-support", "npm:0.5.4"],
             ["@types/wtfnode", "npm:0.7.0"],
@@ -2926,7 +2926,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],
             ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],
             ["@types/jest", "npm:27.4.1"],
-            ["@types/mock-aws-s3", "npm:2.6.2"],
+            ["@types/mock-aws-s3", "npm:2.6.3"],
             ["@types/node", "npm:16.11.0"],
             ["@types/yargs", "npm:15.0.7"],
             ["aws-sdk", "npm:2.814.0"],
@@ -3446,7 +3446,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],
             ["@goldstack/utils-yarn", "workspace:workspaces/templates-lib/packages/utils-yarn"],
             ["@types/jest", "npm:27.4.1"],
-            ["@types/mock-aws-s3", "npm:2.6.2"],
+            ["@types/mock-aws-s3", "npm:2.6.3"],
             ["@types/node", "npm:16.11.0"],
             ["axios", "npm:0.21.2"],
             ["extract-zip", "npm:2.0.1"],
@@ -5100,10 +5100,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/mock-aws-s3", [
-        ["npm:2.6.2", {
-          "packageLocation": "./.yarn/cache/@types-mock-aws-s3-npm-2.6.2-0da8d397f2-39762f1a74.zip/node_modules/@types/mock-aws-s3/",
+        ["npm:2.6.3", {
+          "packageLocation": "./.yarn/cache/@types-mock-aws-s3-npm-2.6.3-9f473000f3-cbe6583236.zip/node_modules/@types/mock-aws-s3/",
           "packageDependencies": [
-            ["@types/mock-aws-s3", "npm:2.6.2"],
+            ["@types/mock-aws-s3", "npm:2.6.3"],
             ["@types/node", "npm:14.0.13"],
             ["aws-sdk", "npm:2.814.0"]
           ],
