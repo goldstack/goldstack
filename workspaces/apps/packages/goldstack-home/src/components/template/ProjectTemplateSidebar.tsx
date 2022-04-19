@@ -1,6 +1,5 @@
 import React from 'react';
 
-import GoldstackIcon from './../../icons/goldstack_icon.svg';
 import GitHubIcon from './../../icons/github-tile.svg';
 
 import styles from './ProjectTemplateSidebar.module.css';

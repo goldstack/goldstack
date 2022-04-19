@@ -16,7 +16,7 @@ import { getNextJsTemplateData } from './templates/nextjsTemplateData';
 import { getNextjsBootstrapTemplateData } from './templates/nextjsBootstrapTemplateData';
 import { getExpressTemplateData } from './templates/expressTemplateData';
 import { getGoGinTemplateData } from './templates/goGinTemplateData';
-import { getEmailSentTemplateData } from './templates/emailSentTemplateData';
+import { getExpressAndEmailSentTemplateData } from './templates/expressAndemailSentTemplateData';
 import { getServerlessApiTemplate } from './templates/lambdaApiTemplateData';
 
 export { getNextJsTemplateData };
@@ -32,7 +32,7 @@ export const allTemplates = (): ProjectTemplateProps[] => {
     getExpressTemplateData(),
     getNextJsTemplateData(),
     getGoGinTemplateData(),
-    getEmailSentTemplateData(),
+    getExpressAndEmailSentTemplateData(),
   ];
   return templates;
 };
