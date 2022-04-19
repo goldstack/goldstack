@@ -61,7 +61,7 @@
     "@goldstack/utils-terraform": "0.3.65",
     "@goldstack/utils-terraform-aws": "0.3.64",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.1",
-    "archiver": "^5.0.0",
+    "archiver": "^5.3.1",
     "esbuild": "^0.14.34",
     "source-map-support": "^0.5.21",
     "yargs": "^15.4.1"

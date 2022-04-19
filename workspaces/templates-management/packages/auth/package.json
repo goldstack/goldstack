@@ -26,7 +26,7 @@
     "@goldstack/utils-project": "0.3.31",
     "@goldstack/utils-sh": "0.4.28",
     "@goldstack/utils-template": "0.3.32",
-    "archiver": "^5.0.0",
+    "archiver": "^5.3.1",
     "aws-sdk": "2.814.0",
     "fs-extra": "^9.0.1",
     "semver": "^7.3.2",
