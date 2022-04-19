@@ -87,7 +87,7 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
         title: 'VSCode',
         id: 'vscode',
         description:
-          'Template configured to work seemlessly with the powerful VSCode editor.',
+          'Template configured to work seamlessly with the powerful VSCode editor.',
         image: 'vscode',
         details: {
           title: 'Develop in VSCode',
@@ -126,7 +126,7 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
         details: {
           title: 'Ready for Deployment to AWS',
           description:
-            'Deploy your Express.js server for cents on AWS with professional level security, reliabilty and scaleabilty.',
+            'Deploy your Express.js server for cents on AWS with professional level security, reliability and scaleability.',
           content: {
             type: 'aws-deployment',
             data: {},
