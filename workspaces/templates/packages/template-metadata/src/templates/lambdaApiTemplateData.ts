@@ -88,7 +88,7 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
       {
         title: 'Jest',
         id: 'jest',
-        description: 'Write tests for the Serveless API using Jest.',
+        description: 'Write tests for the Serverless API using Jest.',
         image: 'jest',
         details: {
           title: 'Unit and Integration Testing',
@@ -121,7 +121,7 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
         title: 'VSCode',
         id: 'vscode',
         description:
-          'Configured to work seemlessly with the powerful VSCode editor.',
+          'Configured to work seamlessly with the powerful VSCode editor.',
         image: 'vscode',
         details: {
           title: 'Develop in VSCode',
