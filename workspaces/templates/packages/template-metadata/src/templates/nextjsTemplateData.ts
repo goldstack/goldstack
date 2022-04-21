@@ -44,7 +44,7 @@ export const featureVSCode: ShortTemplateFeature = {
   title: 'VSCode',
   id: 'vscode',
   description:
-    'Template configured to work seemlessly with the powerful VSCode editor.',
+    'Template configured to work seamlessly with the powerful VSCode editor.',
   image: 'vscode',
   details: {
     title: 'Develop in VSCode',

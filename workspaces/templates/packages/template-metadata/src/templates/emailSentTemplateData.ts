@@ -1,7 +1,11 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
 import { EmailSend } from './moduleData';
-import { getExpressTemplateData } from './expressTemplateData';
 import { ShortTemplateFeature } from 'src/projectTemplateData';
+import {
+  featureAppComposition,
+  featureVSCode,
+  featureYarn3,
+} from './sharedFeatures';
 
 export const getEmailSendFeature = (): ShortTemplateFeature => {
   return {
@@ -31,7 +35,7 @@ export const getEmailSentTemplateData = (): ProjectTemplateProps => {
     images: ['ses', 'typescript'],
     packages: [EmailSend],
     isComposite: false,
-    description: 'Setup email sending .',
+    description: 'Send emails from your application using AWS SES.',
     longDescription:
       'This project provides a complete setup for sending emails with AWS Simple Email Service (SES).',
     tags: ['AWS', 'SES', 'TypeScript', 'Yarn', 'Backend'],
@@ -90,6 +94,45 @@ export const getEmailSentTemplateData = (): ProjectTemplateProps => {
           },
         },
       },
+      {
+        title: 'AWS',
+        id: 'aws',
+        description:
+          'Use the AWS Simple Email Server for reliably and cheaply send high volume emails.',
+        image: 'aws',
+        details: {
+          title: 'Ready for Deployment to AWS',
+          description:
+            'Deploy your SES configuration for cents on AWS with professional level security, reliability and scaleability.',
+          content: {
+            type: 'aws-deployment',
+            data: {},
+          },
+          moreDetails: {
+            description:
+              'Supports multiple, separate deployments for development, staging and production environments. Implemented using SES.',
+          },
+        },
+      },
+      {
+        title: 'Terraform',
+        id: 'terraform',
+        description: 'Extend and maintain infrastructure using Terraform.',
+        image: 'terraform',
+        details: {
+          title: 'Extendable and Configurable Infrastructure',
+          description:
+            'Easily modify and extend your SES configuration by working with the Terraform files included in the template.',
+          icons: ['terraform'],
+          content: {
+            type: 'none',
+            data: {},
+          },
+        },
+      },
+      featureYarn3(),
+      featureVSCode(),
+      featureAppComposition(['template:app-nextjs-bootstrap']),
     ],
   };
 };

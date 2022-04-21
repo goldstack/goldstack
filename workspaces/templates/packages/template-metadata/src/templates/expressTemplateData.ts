@@ -1,6 +1,10 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
 import { Express } from './moduleData';
-import { featureYarn } from './nextjsTemplateData';
+import {
+  featureAppComposition,
+  featureVSCode,
+  featureYarn3,
+} from './sharedFeatures';
 
 export const getExpressTemplateData = (): ProjectTemplateProps => {
   return {
@@ -83,23 +87,7 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
           },
         },
       },
-      {
-        title: 'VSCode',
-        id: 'vscode',
-        description:
-          'Template configured to work seamlessly with the powerful VSCode editor.',
-        image: 'vscode',
-        details: {
-          title: 'Develop in VSCode',
-          description:
-            'All configuration for developing TypeScript code for VSCode provided.',
-          icons: ['vscode'],
-          content: {
-            type: 'none',
-            data: {},
-          },
-        },
-      },
+      featureVSCode(),
       {
         title: 'Jest',
         id: 'jest',
@@ -116,7 +104,7 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
           },
         },
       },
-      featureYarn,
+      featureYarn3(),
       {
         title: 'AWS',
         id: 'aws',
@@ -153,32 +141,11 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
           },
         },
       },
-      {
-        title: 'App Composition',
-        id: 'composition',
-        description:
-          'Easily combine with any Goldstack module to compose end-to-end applications.',
-        image: 'composition',
-        details: {
-          title: 'Integrate with Goldstack Templates',
-          description:
-            'Combine this template with other modules from Goldstack. Generate a starter project supporting your full stack including the frontend.',
-          content: {
-            type: 'combine-templates',
-            data: {
-              templates: [
-                'template:app-nextjs-bootstrap',
-                'template:s3',
-                'template:email-send',
-              ],
-            },
-          },
-          moreDetails: {
-            description:
-              'Simply choose any of these templates while building your project in the Goldstack Builder UI and they will be included in your starter project.',
-          },
-        },
-      },
+      featureAppComposition([
+        'template:app-nextjs-bootstrap',
+        'template:s3',
+        'template:email-send',
+      ]),
     ],
   };
 };
