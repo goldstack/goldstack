@@ -18,7 +18,7 @@ export const getNextjsBootstrapTemplateData = (): ProjectTemplateProps => {
     title: 'Next.js + Bootstrap',
     boilerplateLink:
       'https://github.com/goldstack/nextjs-bootstrap-boilerplate',
-    images: ['nextjs', 'bootstrap', 'typescript'],
+    images: ['nextjs-bootstrap', 'typescript'],
     packages: [NextJsBootstrap],
     isComposite: false,
     description:

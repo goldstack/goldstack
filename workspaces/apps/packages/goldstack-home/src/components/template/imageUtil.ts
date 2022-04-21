@@ -1,5 +1,6 @@
 import TypeScriptIcon from './../../icons/typescript.svg';
 import NextjsIcon from './../../icons/nextjs.svg';
+import NextjsBootstrapIcon from './../../icons/nextjs_bootstrap.svg';
 import ESLintIcon from './../../icons/eslint.svg';
 import VSCodeIcon from './../../icons/vscode.svg';
 import YarnIcon from './../../icons/yarn.svg';
@@ -25,6 +26,9 @@ export const resolveImage = (image: TemplateFeatureImage): any => {
   }
   if (image === 'nextjs') {
     return NextjsIcon;
+  }
+  if (image === 'nextjs-bootstrap') {
+    return NextjsBootstrapIcon;
   }
   if (image === 'eslint') {
     return ESLintIcon;
