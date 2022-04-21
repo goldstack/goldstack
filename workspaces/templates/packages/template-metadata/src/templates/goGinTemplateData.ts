@@ -78,7 +78,7 @@ export const getGoGinTemplateData = (): ProjectTemplateProps => {
         details: {
           title: 'Ready for Deployment to AWS',
           description:
-            'Deploy your Go Gin application for cents on AWS with professional level security, reliabilty and scaleabilty.',
+            'Deploy your Go Gin application for cents on AWS with professional level security, reliability and scaleability.',
           content: {
             type: 'aws-deployment',
             data: {},

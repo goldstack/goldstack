@@ -40,7 +40,7 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
         details: {
           title: 'Serverless API using AWS API Gateway and Lambdas',
           description:
-            'Benefit from low costs, high scaleability and low maintenance by using modern Serverless pratices. Each route defined in its own Lambda for minimal cold start times.',
+            'Benefit from low costs, high scaleability and low maintenance by using modern Serverless practices. Each route defined in its own Lambda for minimal cold start times.',
           content: {
             type: 'image',
             data: {
@@ -88,7 +88,7 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
       {
         title: 'Jest',
         id: 'jest',
-        description: 'Write tests for the Serveless API using Jest.',
+        description: 'Write tests for the Serverless API using Jest.',
         image: 'jest',
         details: {
           title: 'Unit and Integration Testing',
@@ -121,7 +121,7 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
         title: 'VSCode',
         id: 'vscode',
         description:
-          'Configured to work seemlessly with the powerful VSCode editor.',
+          'Configured to work seamlessly with the powerful VSCode editor.',
         image: 'vscode',
         details: {
           title: 'Develop in VSCode',
@@ -144,7 +144,7 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
         details: {
           title: 'Ready for Deployment to AWS',
           description:
-            'Deploy your API for cents on AWS with professional level security, reliabilty and scaleabilty.',
+            'Deploy your API for cents on AWS with professional level security, reliability and scaleability.',
           content: {
             type: 'aws-deployment',
             data: {},

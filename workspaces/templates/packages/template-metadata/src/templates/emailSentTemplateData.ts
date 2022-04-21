@@ -1,25 +1,50 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
-import { Express, EmailSend } from './moduleData';
-import { getExpressTemplateData } from './expressTemplateData';
+import { EmailSend } from './moduleData';
+import { ShortTemplateFeature } from './../projectTemplateData';
+import {
+  featureAppComposition,
+  featureVSCode,
+  featureYarn3,
+} from './sharedFeatures';
+
+export const getEmailSendFeature = (): ShortTemplateFeature => {
+  return {
+    title: 'Sending Emails with AWS SES',
+    id: 'ses',
+    description:
+      'Send emails through AWS highly reliable, low cost infrastructure.',
+    image: 'ses',
+    details: {
+      title: 'Infrastructure and Configuration Ready for AWS SES',
+      description:
+        'Quickly get started with sending emails from your application.',
+      content: {
+        type: 'image',
+        data: {
+          image: 'email-send',
+        },
+      },
+    },
+  };
+};
 
 export const getEmailSentTemplateData = (): ProjectTemplateProps => {
   return {
-    id: 'express-ses',
-    title: 'Express.js + Email Send',
-    images: ['ses', 'lambda', 'typescript'],
-    packages: [EmailSend, Express],
-    isComposite: true,
-    description: 'Setup a servless Express server with email sending.',
+    id: 'ses',
+    title: 'Email Send (SES)',
+    images: ['ses', 'typescript'],
+    packages: [EmailSend],
+    isComposite: false,
+    description: 'Send emails from your application using AWS SES.',
     longDescription:
-      'This project helps you set up an Express.js server on AWS Lambda.' +
-      'Also sets up all infrastructure required for sending emails through AWS SES.',
-    tags: ['Express.js', 'AWS', 'SED', 'TypeScript', 'Yarn', 'Backend'],
+      'This project provides a complete setup for sending emails with AWS Simple Email Service (SES).',
+    tags: ['AWS', 'SES', 'TypeScript', 'Yarn', 'Backend'],
     hero: {
-      title: 'Servless Express.js with Email Send',
+      title: 'Sending Email with AWS SES',
       content: `
         <p>
-          The Express.js with AWS SES email send enables building a fully functional, low cost backend very quickly.
-         </p>
+          The Email Send (SES) template enables building an application that sends email through the AWS Simple Email Service (SES).
+        </p>
           <p>
             Scroll down to learn more about what&apos;s included in this
             template.
@@ -31,25 +56,83 @@ export const getEmailSentTemplateData = (): ProjectTemplateProps => {
       },
     },
     featuresOverview: [
+      getEmailSendFeature(),
       {
-        title: 'Sending Emails with AWS SES',
-        id: 'ses',
+        title: 'TypeScript',
+        id: 'typescript',
         description:
-          'Send emails through AWS highly reliable, low cost infrastructure.',
-        image: 'ses',
+          'Develop the code for composing and sending your email using TypeScript.',
+        image: 'typescript',
         details: {
-          title: 'Infrastructure and Configuration Ready for AWS SES',
+          title: 'TypeScript configured in template',
           description:
-            'Quickly get started with sending emails from your application.',
+            'Benefit from static type checking and code completion when developing your SES integration',
           content: {
             type: 'image',
             data: {
-              image: 'email-send',
+              image:
+                'https://cdn.goldstack.party/img/202204/ses_typescript.png',
             },
           },
         },
       },
-      ...getExpressTemplateData().featuresOverview,
+      {
+        title: 'Jest',
+        id: 'jest',
+        description: 'Run tests for email send logic with Jest.',
+        image: 'jest',
+        details: {
+          title: 'Unit and Integration Testing',
+          description:
+            'Write unit and integration tests for your SES integration. Utilities for local mocking included.',
+          icons: ['jest'],
+          content: {
+            type: 'image',
+            data: {
+              image: 'https://cdn.goldstack.party/img/202204/ses_jest.png',
+            },
+          },
+        },
+      },
+      {
+        title: 'AWS',
+        id: 'aws',
+        description:
+          'Use the AWS Simple Email Server for reliably and cheaply send high volume emails.',
+        image: 'aws',
+        details: {
+          title: 'Ready for Deployment to AWS',
+          description:
+            'Deploy your SES configuration for cents on AWS with professional level security, reliability and scaleability.',
+          content: {
+            type: 'aws-deployment',
+            data: {},
+          },
+          moreDetails: {
+            description:
+              'Supports multiple, separate deployments for development, staging and production environments. Implemented using SES.',
+          },
+        },
+      },
+      {
+        title: 'Terraform',
+        id: 'terraform',
+        description: 'Extend and maintain infrastructure using Terraform.',
+        image: 'terraform',
+        details: {
+          title: 'Extendable and Configurable Infrastructure',
+          description:
+            'Easily modify and extend your SES configuration by working with the Terraform files included in the template.',
+          icons: ['terraform'],
+          content: {
+            type: 'none',
+            data: {},
+          },
+        },
+      },
+      featureYarn3(),
+      featureVSCode(),
+      featureAppComposition(['template:app-nextjs-bootstrap']),
     ],
   };
 };
