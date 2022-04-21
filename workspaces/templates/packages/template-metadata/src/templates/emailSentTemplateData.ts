@@ -1,6 +1,6 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
 import { EmailSend } from './moduleData';
-import { ShortTemplateFeature } from 'src/projectTemplateData';
+import { ShortTemplateFeature } from './../projectTemplateData';
 import {
   featureAppComposition,
   featureVSCode,
