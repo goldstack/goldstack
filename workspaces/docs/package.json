@@ -23,7 +23,7 @@
     "test-watch": "nodemonx --watch . --exec 'yarn test-ci'"
   },
   "devDependencies": {
-    "@goldstack/nodemonx": "0.3.29",
+    "@goldstack/nodemonx": "0.3.30",
     "@goldstack/utils-typescript-references": "0.1.10",
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.0",

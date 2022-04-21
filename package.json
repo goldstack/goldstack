@@ -33,9 +33,9 @@
     "aws-sdk": "2.814.0"
   },
   "devDependencies": {
-    "@goldstack/nodemonx": "0.3.29",
+    "@goldstack/nodemonx": "0.3.30",
     "@goldstack/utils-docs-cli": "0.3.11",
-    "@goldstack/utils-package-upgrade": "0.2.38",
+    "@goldstack/utils-package-upgrade": "0.2.39",
     "@goldstack/utils-typescript-references": "0.1.10",
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.0",
