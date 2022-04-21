@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://goldstack.party/templates/nextjs-bootstrap">
-    <img src="https://cdn.goldstack.party/img/202203/nextjs.svg" height="80">
+    <img src="https://cdn.goldstack.party/img/202204/nextjs_bootstrap.svg" height="80">
     <h1 align="center">Next.js + Bootstrap Boilerplate</h1>
   </a>
 </p>
@@ -17,7 +17,7 @@ This boilerplate has been automatically generated using the template:
   <tbody>
     <tr>
       <td>
-        <p align="center"><a href="https://goldstack.party/templates/nextjs-bootstrap"><img width="50" src="https://cdn.goldstack.party/img/202203/nextjs.svg"></a></p>
+        <p align="center"><a href="https://goldstack.party/templates/nextjs-bootstrap"><img width="50" src="https://cdn.goldstack.party/img/202204/nextjs_bootstrap.svg"></a></p>
         <p><a href="https://goldstack.party/templates/nextjs-bootstrap">Next.js + Bootstrap</a></p>
       </td>
     </tr>
