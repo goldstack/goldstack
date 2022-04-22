@@ -7,28 +7,28 @@ import {
   featureYarn3,
 } from './sharedFeatures';
 
-export const getEmailSendFeature = (): ShortTemplateFeature => {
+export const getS3Feature = (): ShortTemplateFeature => {
   return {
-    title: 'Sending Emails with AWS SES',
-    id: 'ses',
+    title: 'Storing files and data in AWS S3',
+    id: 's3',
     description:
-      'Send emails through AWS highly reliable, low cost infrastructure.',
-    image: 'ses',
+      'Easily store files and data with high durability and low costs in AWS S3.',
+    image: 's3',
     details: {
-      title: 'Start Sending Emails from you Application in Minutes',
+      title: 'Easy to Use API to Connect with AWS S3',
       description:
-        'Quickly get started with sending emails with SES from your application.',
+        'Quickly get started with sending emails from your application.',
       content: {
         type: 'image',
         data: {
-          image: 'email-send',
+          image: 'https://cdn.goldstack.party/img/202204/s3_api.png',
         },
       },
     },
   };
 };
 
-export const getEmailSentTemplateData = (): ProjectTemplateProps => {
+export const getS3TemplateData = (): ProjectTemplateProps => {
   return {
     id: 'ses',
     title: 'Email Send (SES)',
@@ -58,7 +58,7 @@ export const getEmailSentTemplateData = (): ProjectTemplateProps => {
       },
     },
     featuresOverview: [
-      getEmailSendFeature(),
+      getS3Feature(),
       {
         title: 'TypeScript',
         id: 'typescript',
