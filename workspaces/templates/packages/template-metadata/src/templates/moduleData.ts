@@ -29,9 +29,16 @@ const EmailSend: PackageProps = {
   link:
     'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/email-send#readme',
 };
+
+const S3: PackageProps = {
+  title: 'AWS S3',
+  link:
+    'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/s3#readme',
+};
+
 const LambdaAPI: PackageProps = {
   title: 'Lambda API Gateway',
   link:
     'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/serverless-api#readme',
 };
-export { NextJsBootstrap, NextJs, Express, GoGin, EmailSend, LambdaAPI };
+export { NextJsBootstrap, NextJs, Express, GoGin, EmailSend, S3, LambdaAPI };

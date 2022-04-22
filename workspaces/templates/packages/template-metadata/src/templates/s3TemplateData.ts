@@ -1,5 +1,5 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
-import { EmailSend } from './moduleData';
+import { S3 } from './moduleData';
 import { ShortTemplateFeature } from '../projectTemplateData';
 import {
   featureAppComposition,
@@ -17,7 +17,7 @@ export const getS3Feature = (): ShortTemplateFeature => {
     details: {
       title: 'Easy to Use API to Connect with AWS S3',
       description:
-        'Quickly get started with sending emails from your application.',
+        'Connect to an S3 bucket and add objects using the TypeScript API.',
       content: {
         type: 'image',
         data: {
@@ -30,22 +30,20 @@ export const getS3Feature = (): ShortTemplateFeature => {
 
 export const getS3TemplateData = (): ProjectTemplateProps => {
   return {
-    id: 'ses',
-    title: 'Email Send (SES)',
-    boilerplateLink:
-      'https://github.com/goldstack/ses-terraform-typescript-boilerplate',
-    images: ['ses', 'typescript'],
-    packages: [EmailSend],
+    id: 's3',
+    title: 'AWS S3',
+    images: ['s3', 'terraform', 'typescript'],
+    packages: [S3],
     isComposite: false,
-    description: 'Send emails from your application using AWS SES.',
+    description: 'Store data in AWS S3.',
     longDescription:
-      'This project provides a complete setup for sending emails with AWS Simple Email Service (SES).',
-    tags: ['AWS', 'SES', 'TypeScript', 'Yarn', 'Backend'],
+      'This template adds the capability to store data in AWS S3 to your project.',
+    tags: ['AWS', 'S3', 'TypeScript', 'Yarn', 'Backend'],
     hero: {
-      title: 'Sending Email with AWS SES',
+      title: 'Store Data in S3',
       content: `
         <p>
-          The Email Send (SES) template enables building an application that sends email through the AWS Simple Email Service (SES).
+          The AWS S3 template enables your application to store data in AWS S3.
         </p>
           <p>
             Scroll down to learn more about what&apos;s included in this
@@ -54,7 +52,7 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
         `,
       action: {
         title: '✔ Start Building Your Project Now',
-        link: '/build?stack=express,email-send',
+        link: '/build?stack=s3',
       },
     },
     featuresOverview: [
@@ -62,18 +60,16 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
       {
         title: 'TypeScript',
         id: 'typescript',
-        description:
-          'Develop the code for composing and sending your email using TypeScript.',
+        description: 'Connect to and store objects using a TypeScript API.',
         image: 'typescript',
         details: {
           title: 'TypeScript configured in template',
           description:
-            'Benefit from static type checking and code completion when developing your SES integration',
+            'Benefit from static type checking and code completion when developing your S3 integration',
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202204/ses_typescript.png',
+              image: 'https://cdn.goldstack.party/img/202204/s3_typescript.png',
             },
           },
         },
@@ -81,17 +77,17 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
       {
         title: 'Jest',
         id: 'jest',
-        description: 'Run tests for email send logic with Jest.',
+        description: 'Run tests for S3 related logic with Jest.',
         image: 'jest',
         details: {
           title: 'Unit and Integration Testing',
           description:
-            'Write unit and integration tests for your SES integration. Utilities for local mocking included.',
+            'Write unit and integration tests for your S3 integration. Utilities for local mocking included.',
           icons: ['jest'],
           content: {
             type: 'image',
             data: {
-              image: 'https://cdn.goldstack.party/img/202204/ses_jest.png',
+              image: 'https://cdn.goldstack.party/img/202204/s3_jest.png',
             },
           },
         },
@@ -100,19 +96,19 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
         title: 'AWS',
         id: 'aws',
         description:
-          'Use the AWS Simple Email Server for reliably and cheaply send high volume emails.',
+          'Use the AWS S3 for reliably and cheaply send high volume emails.',
         image: 'aws',
         details: {
           title: 'Ready for Deployment to AWS',
           description:
-            'Deploy your SES configuration for cents on AWS with professional level security, reliability and scaleability.',
+            'Deploy gigabytes of data for cents on AWS with professional level security, reliability and scaleability.',
           content: {
             type: 'aws-deployment',
             data: {},
           },
           moreDetails: {
             description:
-              'Supports multiple, separate deployments for development, staging and production environments. Implemented using SES.',
+              'Supports multiple, separate deployments for development, staging and production environments. Implemented using S3.',
           },
         },
       },
@@ -124,7 +120,7 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
         details: {
           title: 'Extendable and Configurable Infrastructure',
           description:
-            'Easily modify and extend your SES configuration by working with the Terraform files included in the template.',
+            'Easily modify and extend your S3 configuration by working with the Terraform files included in the template.',
           icons: ['terraform'],
           content: {
             type: 'none',
@@ -134,7 +130,10 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
       },
       featureYarn3(),
       featureVSCode(),
-      featureAppComposition(['template:app-nextjs-bootstrap']),
+      featureAppComposition([
+        'template:serverless-api',
+        'template:express-lambda',
+      ]),
     ],
   };
 };

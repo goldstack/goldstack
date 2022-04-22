@@ -28,19 +28,19 @@ export const getEmailSendFeature = (): ShortTemplateFeature => {
   };
 };
 
-export const getEmailSentTemplateData = (): ProjectTemplateProps => {
+export const getEmailSendTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'ses',
     title: 'Email Send (SES)',
     boilerplateLink:
       'https://github.com/goldstack/ses-terraform-typescript-boilerplate',
-    images: ['ses', 'typescript'],
+    images: ['ses', 'terraform', 'typescript'],
     packages: [EmailSend],
     isComposite: false,
     description: 'Send emails from your application using AWS SES.',
     longDescription:
       'This project provides a complete setup for sending emails with AWS Simple Email Service (SES).',
-    tags: ['AWS', 'SES', 'TypeScript', 'Yarn', 'Backend'],
+    tags: ['AWS', 'SES', 'TypeScript', 'Terraform', 'Yarn', 'Backend'],
     hero: {
       title: 'Sending Email with AWS SES',
       content: `
@@ -54,7 +54,7 @@ export const getEmailSentTemplateData = (): ProjectTemplateProps => {
         `,
       action: {
         title: '✔ Start Building Your Project Now',
-        link: '/build?stack=express,email-send',
+        link: '/build?stack=email-send',
       },
     },
     featuresOverview: [
@@ -134,7 +134,10 @@ export const getEmailSentTemplateData = (): ProjectTemplateProps => {
       },
       featureYarn3(),
       featureVSCode(),
-      featureAppComposition(['template:app-nextjs-bootstrap']),
+      featureAppComposition([
+        'template:serverless-api',
+        'template:express-lambda',
+      ]),
     ],
   };
 };

@@ -62,9 +62,9 @@ For more information, see [GitHub documentation - Fork a repo](https://docs.gith
 
 If you want to setup your SES email send infrastructure on AWS, you will need to make some changes to the configuration files included in this project.
 
-Specifically, the [goldstack.json]() in the `packages/email-send` folder.
+Specifically, the [goldstack.json](https://github.com/goldstack/ses-terraform-typescript-boilerplate/blob/master/packages/email-send-1/goldstack.json) in the `packages/email-send` folder.
 
-````json
+```json
 {
   "$schema": "./schemas/package.schema.json",
   "name": "email-send",
@@ -83,7 +83,8 @@ Specifically, the [goldstack.json]() in the `packages/email-send` folder.
       "tfStateKey": "app-nextjs-bootstrap-1-prod-cd7f1f0a63ccb93ef36d.tfstate"
     }
   ]
-}```
+}
+```
 
 The key properties you will need to update are:
 
@@ -119,7 +120,7 @@ You will also need to ensure that you have a valid AWS user configure to deploy 
     }
   ]
 }
-````
+```
 
 For more information on configuring your local AWS users, please see [Goldstack Documentation / AWS Configuration](https://docs.goldstack.party/docs/goldstack/configuration#aws-configuration).
 
