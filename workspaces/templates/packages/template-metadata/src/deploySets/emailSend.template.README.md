@@ -4,13 +4,13 @@
 <p align="center">
   <a href="https://goldstack.party/templates/ses">
     <img src="https://cdn.goldstack.party/img/202204/ses2.svg" height="80">
-    <h1 align="center">Email Send with SES and TypeScript Boilerplate</h1>
+    <h1 align="center">SES, Terraform and TypeScript Boilerplate</h1>
   </a>
 </p>
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/a543d8d5d69d40ef86127f310b17a2ed)](https://www.codacy.com/gh/goldstack/nextjs-bootstrap-boilerplate/dashboard)
 
-Boilerplate for sending emails using [Amazon Simple Email Service (SES)](https://aws.amazon.com/ses/) with [TypeScript](https://www.typescriptlang.org/) using [Yarn](https://yarnpkg.com/) ready for deployment to AWS using low-cost, highly scaleable serverless infrastructure.
+Boilerplate for sending emails using [Amazon Simple Email Service (SES)](https://aws.amazon.com/ses/) with [TypeScript](https://www.typescriptlang.org/) using [Yarn](https://yarnpkg.com/) ready for deployment to AWS using low-cost, highly scaleable serverless infrastructure defined using [Terraform](https://www.terraform.io/).
 
 This boilerplate has been automatically generated using the template:
 

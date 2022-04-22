@@ -91,6 +91,10 @@ const run = async () => {
     paths.buildSets + 'nextjsBootstrap.template.README.md',
     paths.buildSets + 'nextjsBootstrap.README.md'
   );
+  await generateMarkdownDocs(
+    paths.buildSets + 'emailSend.template.README.md',
+    paths.buildSets + 'emailSend.README.md'
+  );
 
   // Step 4:
   //   Generate Goldstack root readme
