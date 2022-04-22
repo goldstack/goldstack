@@ -15,6 +15,7 @@ jobs:
             'backend-nodejs-express',
             'nextjs-bootstrap',
             'no-infra',
+            'email-send',
             'static-website',
           ]
     if: "contains(github.event.head_commit.message, 'trigger_template_deploy_dev') && github.ref == 'refs/heads/master'"
