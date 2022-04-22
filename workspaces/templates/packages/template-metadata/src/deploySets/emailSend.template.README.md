@@ -1,4 +1,3 @@
-
 <p align="right"><img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="12"> Generated with <a href="https://goldstack.party">Goldstack</a></p>
 
 <p align="center">
@@ -28,7 +27,6 @@ This boilerplate has been automatically generated using the template:
 Feel free to fork this repository and modify it for your needs, or use the [Goldstack project builder](https://goldstack.party/build) to generate a boilerplate specifically generated for your project.
 
 ⚠️ Note that it often makes sense to use the Email Send template with a backend server. Thus before forking this boilerplate, consider if you would want to start with a project that contains a server template, such as [Serverless API](https://goldstack.party/templates/serverless-api) or [Serverless Express.js](https://goldstack.party/templates/express-lambda).
-
 
 # Getting Started
 
@@ -66,7 +64,7 @@ If you want to setup your SES email send infrastructure on AWS, you will need to
 
 Specifically, the [goldstack.json]() in the `packages/email-send` folder.
 
-```json
+````json
 {
   "$schema": "./schemas/package.schema.json",
   "name": "email-send",
@@ -121,7 +119,7 @@ You will also need to ensure that you have a valid AWS user configure to deploy 
     }
   ]
 }
-```
+````
 
 For more information on configuring your local AWS users, please see [Goldstack Documentation / AWS Configuration](https://docs.goldstack.party/docs/goldstack/configuration#aws-configuration).
 
@@ -131,34 +129,35 @@ Once your AWS user is configured you can run `yarn infra up dev` in the `/packag
 
 This boilerplate will come with a module that provides the functionalities for email sending. This module is defined in `packages/email-send`. Generally you won't have to make changes to this module during local development. Instead, create an additional npm module in the `packages/` folder and then import the `email-send` module as one of the dependencies.
 
-Then use the exported `connect()` and `getFromDomain()` in your code to send email from your code: 
+Then use the exported `connect()` and `getFromDomain()` in your code to send email from your code:
 
 ```typescript
-    const ses = await connect();
-    const fromDomain = await getFromDomain();
-    await ses
-      .sendEmail({
-        Destination: { ToAddresses: ['destination@test.com'] },
-        Message: {
-          Subject: { Charset: 'UTF-8', Data: 'My email' },
-          Body: {
-            Text: {
-              Charset: 'UTF-8',
-              Data: 'This is the message body in text format.',
-            },
-          },
+const ses = await connect();
+const fromDomain = await getFromDomain();
+await ses
+  .sendEmail({
+    Destination: { ToAddresses: ['destination@test.com'] },
+    Message: {
+      Subject: { Charset: 'UTF-8', Data: 'My email' },
+      Body: {
+        Text: {
+          Charset: 'UTF-8',
+          Data: 'This is the message body in text format.',
         },
-        Source: 'sender@' + fromDomain,
-      })
-      .promise();
+      },
+    },
+    Source: 'sender@' + fromDomain,
+  })
+  .promise();
 ```
 
 During local development and testing, a mocked email server will be used by default. The emails sent through the mocked server can be accessed through the exported `getMockedSES()`:
 
 ```typescript
-    const mockedSES = getMockedSES();
-    const sentEmailRequests = mockedSES.getSentEmailRequests();
+const mockedSES = getMockedSES();
+const sentEmailRequests = mockedSES.getSentEmailRequests();
 ```
+
 ## 9. Contribute to Goldstack
 
 Have questions or ideas or want to contribute to the project? Please head over to [github.com/goldstack/goldstack](https://github.com/goldstack/goldstack).
