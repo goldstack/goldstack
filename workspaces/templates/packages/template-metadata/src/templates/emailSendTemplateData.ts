@@ -1,6 +1,6 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
 import { EmailSend } from './moduleData';
-import { ShortTemplateFeature } from './../projectTemplateData';
+import { ShortTemplateFeature } from '../projectTemplateData';
 import {
   featureAppComposition,
   featureVSCode,
@@ -32,6 +32,8 @@ export const getEmailSentTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'ses',
     title: 'Email Send (SES)',
+    boilerplateLink:
+      'https://github.com/goldstack/ses-terraform-typescript-boilerplate',
     images: ['ses', 'typescript'],
     packages: [EmailSend],
     isComposite: false,

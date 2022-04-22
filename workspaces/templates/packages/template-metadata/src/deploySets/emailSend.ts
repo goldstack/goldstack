@@ -1,7 +1,7 @@
 import { ProjectConfiguration } from '@goldstack/utils-project';
 import { DeploySetConfig } from '@goldstack/template-build-set';
 
-export const createBackendNodejsExpressBuildSetConfig = async (): Promise<DeploySetConfig> => {
+export const createEmailSendBuildSetConfig = async (): Promise<DeploySetConfig> => {
   const projectConfiguration: ProjectConfiguration = {
     projectName: 'project-email-send',
     rootTemplateReference: {

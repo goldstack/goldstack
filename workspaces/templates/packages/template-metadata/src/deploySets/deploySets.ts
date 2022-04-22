@@ -5,6 +5,7 @@ import { DeploySetConfig } from '@goldstack/template-build-set';
 import { createNoInfraBuildSetConfig } from './noInfra';
 import { createBackendLambdaApiBuildSetConfig } from './backendLambdaApi';
 import { createNextjsBootstrapBuildSetConfig } from './nextjsBootstrap';
+import { createEmailSendBuildSetConfig } from './emailSend';
 
 export const getAllBuildSets = async (): Promise<DeploySetConfig[]> => {
   return [
@@ -14,6 +15,7 @@ export const getAllBuildSets = async (): Promise<DeploySetConfig[]> => {
     await createNoInfraBuildSetConfig(),
     await createBackendLambdaApiBuildSetConfig(),
     await createNextjsBootstrapBuildSetConfig(),
+    await createEmailSendBuildSetConfig(),
   ];
 };
 
