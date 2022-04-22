@@ -20,25 +20,14 @@ export const createBackendNodejsExpressBuildSetConfig = async (): Promise<Deploy
           templateName: 'lambda-express',
         },
       },
-      {
-        packageName: 'email-send-1',
-        templateReference: {
-          templateName: 'email-send',
-        },
-      },
     ],
   };
 
   const hash = new Date().getTime();
   const setConfig: DeploySetConfig = {
     buildSetName: 'backend-nodejs-express',
-    buildTemplates: ['yarn-pnp-monorepo', 's3', 'lambda-express', 'email-send'],
-    deployTemplates: [
-      'yarn-pnp-monorepo',
-      's3',
-      'lambda-express',
-      'email-send',
-    ],
+    buildTemplates: ['yarn-pnp-monorepo', 's3', 'lambda-express'],
+    deployTemplates: ['yarn-pnp-monorepo', 's3', 'lambda-express'],
     projects: [
       {
         projectConfiguration,
@@ -82,23 +71,6 @@ export const createBackendNodejsExpressBuildSetConfig = async (): Promise<Deploy
               'deploy',
               'assert-rest-api',
             ],
-            packageCleanUp: ['infra-destroy'],
-          },
-          {
-            packageName: 'email-send-1',
-            configuration: {},
-            deployments: [
-              {
-                name: 'prod',
-                awsUser: 'goldstack-dev',
-                awsRegion: 'us-west-2',
-                configuration: {
-                  domain: `email-send-${hash}.tests.dev.goldstack.party`,
-                  hostedZoneDomain: 'dev.goldstack.party',
-                },
-              },
-            ],
-            packageTests: ['assert-package-files', 'infra-up'],
             packageCleanUp: ['infra-destroy'],
           },
         ],

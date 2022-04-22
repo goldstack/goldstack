@@ -18,7 +18,7 @@ import { getExpressTemplateData } from './templates/expressTemplateData';
 import { getGoGinTemplateData } from './templates/goGinTemplateData';
 import { getExpressAndEmailSentTemplateData } from './templates/expressAndEmailSentTemplateData';
 import { getServerlessApiTemplate } from './templates/lambdaApiTemplateData';
-import { getEmailSentTemplateData } from './templates/emailSentTemplateData';
+import { getEmailSentTemplateData } from './templates/emailSendTemplateData';
 
 export { getNextJsTemplateData };
 export { getExpressTemplateData };
