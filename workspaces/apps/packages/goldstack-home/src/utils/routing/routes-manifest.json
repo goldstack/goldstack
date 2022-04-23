@@ -70,6 +70,10 @@
       "regex": "^\\/templates\\/serverless-api$"
     },
     {
+      "page": "/templates/ses",
+      "regex": "^\\/templates\\/ses$"
+    },
+    {
       "page": "/terms-and-conditions",
       "regex": "^\\/terms-and-conditions$"
     },
@@ -142,8 +146,8 @@
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/Bgmt9rWZHvtrSUOPIJ3vr/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/Bgmt9rWZHvtrSUOPIJ3vr/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/FcLkv_LjGFZqOtkHVAiI8/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/FcLkv_LjGFZqOtkHVAiI8/templates/(?<template>[^/]+?)\\.json$"
     }
   ],
   "rewrites": []
