@@ -18,7 +18,8 @@ import { getExpressTemplateData } from './templates/expressTemplateData';
 import { getGoGinTemplateData } from './templates/goGinTemplateData';
 import { getExpressAndEmailSentTemplateData } from './templates/expressAndEmailSentTemplateData';
 import { getServerlessApiTemplate } from './templates/lambdaApiTemplateData';
-import { getEmailSentTemplateData } from './templates/emailSendTemplateData';
+import { getEmailSendTemplateData } from './templates/emailSendTemplateData';
+import { getS3TemplateData } from './templates/s3TemplateData';
 
 export { getNextJsTemplateData };
 export { getExpressTemplateData };
@@ -33,7 +34,8 @@ export const allTemplates = (): ProjectTemplateProps[] => {
     getExpressTemplateData(),
     getNextJsTemplateData(),
     getGoGinTemplateData(),
-    getEmailSentTemplateData(),
+    getS3TemplateData(),
+    getEmailSendTemplateData(),
     getExpressAndEmailSentTemplateData(),
   ];
   return templates;

@@ -6,6 +6,7 @@ import { createNoInfraBuildSetConfig } from './noInfra';
 import { createBackendLambdaApiBuildSetConfig } from './backendLambdaApi';
 import { createNextjsBootstrapBuildSetConfig } from './nextjsBootstrap';
 import { createEmailSendBuildSetConfig } from './emailSend';
+import { createS3BuildSetConfig } from './s3';
 
 export const getAllBuildSets = async (): Promise<DeploySetConfig[]> => {
   return [
@@ -16,6 +17,7 @@ export const getAllBuildSets = async (): Promise<DeploySetConfig[]> => {
     await createBackendLambdaApiBuildSetConfig(),
     await createNextjsBootstrapBuildSetConfig(),
     await createEmailSendBuildSetConfig(),
+    await createS3BuildSetConfig(),
   ];
 };
 

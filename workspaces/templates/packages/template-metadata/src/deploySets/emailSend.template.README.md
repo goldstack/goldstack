@@ -7,7 +7,7 @@
   </a>
 </p>
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a543d8d5d69d40ef86127f310b17a2ed)](https://www.codacy.com/gh/goldstack/nextjs-bootstrap-boilerplate/dashboard)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/e8c2651eeac340ff9aa25f5466df1aee)](https://www.codacy.com/gh/goldstack/ses-terraform-typescript-boilerplate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=goldstack/ses-terraform-typescript-boilerplate&amp;utm_campaign=Badge_Grade)
 
 Boilerplate for sending emails using [Amazon Simple Email Service (SES)](https://aws.amazon.com/ses/) with [TypeScript](https://www.typescriptlang.org/) using [Yarn](https://yarnpkg.com/) ready for deployment to AWS using low-cost, highly scaleable serverless infrastructure defined using [Terraform](https://www.terraform.io/).
 
@@ -62,9 +62,9 @@ For more information, see [GitHub documentation - Fork a repo](https://docs.gith
 
 If you want to setup your SES email send infrastructure on AWS, you will need to make some changes to the configuration files included in this project.
 
-Specifically, the [goldstack.json]() in the `packages/email-send` folder.
+Specifically, the [goldstack.json](https://github.com/goldstack/ses-terraform-typescript-boilerplate/blob/master/packages/email-send-1/goldstack.json) in the `packages/email-send` folder.
 
-````json
+```json
 {
   "$schema": "./schemas/package.schema.json",
   "name": "email-send",
@@ -83,7 +83,8 @@ Specifically, the [goldstack.json]() in the `packages/email-send` folder.
       "tfStateKey": "app-nextjs-bootstrap-1-prod-cd7f1f0a63ccb93ef36d.tfstate"
     }
   ]
-}```
+}
+```
 
 The key properties you will need to update are:
 
@@ -119,7 +120,7 @@ You will also need to ensure that you have a valid AWS user configure to deploy 
     }
   ]
 }
-````
+```
 
 For more information on configuring your local AWS users, please see [Goldstack Documentation / AWS Configuration](https://docs.goldstack.party/docs/goldstack/configuration#aws-configuration).
 

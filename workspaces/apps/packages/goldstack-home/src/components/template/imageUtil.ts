@@ -13,6 +13,7 @@ import NodejsIcon from './../../icons/nodejs.svg';
 import ReactIcon from './../../icons/reactjs.svg';
 import LambdaIcon from './../../icons/lambda.svg';
 import SESIcon from './../../icons/ses2.svg';
+import S3Icon from './../../icons/s3.svg';
 import APIGateway from './../../icons/aws-api-gateway.svg';
 
 import { TemplateFeatureImage } from '@goldstack/template-metadata';
@@ -65,6 +66,9 @@ export const resolveImage = (image: TemplateFeatureImage): any => {
   }
   if (image === 'ses') {
     return SESIcon;
+  }
+  if (image === 's3') {
+    return S3Icon;
   }
   if (image === 'api-gateway') {
     return APIGateway;
