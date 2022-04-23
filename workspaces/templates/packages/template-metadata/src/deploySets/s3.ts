@@ -28,7 +28,7 @@ export const createS3BuildSetConfig = async (): Promise<DeploySetConfig> => {
         rootTests: ['assert-package-files', 'assert-root-files', 'root-build'],
         targetRepo: 'goldstack/ses-terraform-typescript-boilerplate',
         repoReadme:
-          'https://github.com/goldstack/s3-terraform-typescript-boilerplate',
+          'workspaces/templates/packages/template-metadata/src/deploySets/s3.README.md',
         packageConfigurations: [
           {
             packageName: 's3-1',

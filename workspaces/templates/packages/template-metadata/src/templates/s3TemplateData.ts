@@ -35,6 +35,8 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
     images: ['s3', 'terraform', 'typescript'],
     packages: [S3],
     isComposite: false,
+    boilerplateLink:
+      'https://github.com/goldstack/s3-terraform-typescript-boilerplate',
     description: 'Store data in AWS S3.',
     longDescription:
       'This template adds the capability to store data in AWS S3 to your project.',
