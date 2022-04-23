@@ -67,7 +67,7 @@ export const resolveImage = (image: TemplateFeatureImage): any => {
   if (image === 'ses') {
     return SESIcon;
   }
-  if (image === 'ses') {
+  if (image === 's3') {
     return S3Icon;
   }
   if (image === 'api-gateway') {
