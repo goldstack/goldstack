@@ -95,6 +95,10 @@ const run = async () => {
     paths.buildSets + 'emailSend.template.README.md',
     paths.buildSets + 'emailSend.README.md'
   );
+  await generateMarkdownDocs(
+    paths.buildSets + 's3.template.README.md',
+    paths.buildSets + 's3.README.md'
+  );
 
   // Step 4:
   //   Generate Goldstack root readme
