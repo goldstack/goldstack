@@ -7,7 +7,7 @@
   </a>
 </p>
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/e8c2651eeac340ff9aa25f5466df1aee)](https://www.codacy.com/gh/goldstack/ses-terraform-typescript-boilerplate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=goldstack/ses-terraform-typescript-boilerplate&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/e8c2651eeac340ff9aa25f5466df1aee)](https://www.codacy.com/gh/goldstack/ses-terraform-typescript-boilerplate/dashboard?utm_source=github.com&utm_medium=referral&utm_content=goldstack/ses-terraform-typescript-boilerplate&utm_campaign=Badge_Grade)
 
 Boilerplate for sending emails using [Amazon Simple Email Service (SES)](https://aws.amazon.com/ses/) with [TypeScript](https://www.typescriptlang.org/) using [Yarn](https://yarnpkg.com/) ready for deployment to AWS using low-cost, highly scaleable serverless infrastructure defined using [Terraform](https://www.terraform.io/).
 
