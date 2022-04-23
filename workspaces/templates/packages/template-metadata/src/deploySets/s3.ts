@@ -19,7 +19,7 @@ export const createS3BuildSetConfig = async (): Promise<DeploySetConfig> => {
 
   const hash = new Date().getTime();
   const setConfig: DeploySetConfig = {
-    buildSetName: 'backend-nodejs-express',
+    buildSetName: 's3',
     buildTemplates: ['yarn-pnp-monorepo', 's3'],
     deployTemplates: ['s3'],
     projects: [
