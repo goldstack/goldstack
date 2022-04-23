@@ -1,7 +1,7 @@
 <p align="right"><img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="12"> Generated with <a href="https://goldstack.party">Goldstack</a></p>
 
 <p align="center">
-  <a href="https://goldstack.party/templates/ses">
+  <a href="https://goldstack.party/templates/s3">
     <img src="https://cdn.goldstack.party/img/202204/s3.svg" height="80">
     <h1 align="center">S3, Terraform and TypeScript Boilerplate</h1>
   </a>
