@@ -5014,14 +5014,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ansi-regex@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "ansi-regex@npm:3.0.1"
-  checksum: 09daf180c5f59af9850c7ac1bd7fda85ba596cc8cbeb210826e90755f06c818af86d9fa1e6e8322fab2c3b9e9b03f56c537b42241139f824dd75066a1e7257cc
-  languageName: node
-  linkType: hard
-
-"ansi-regex@npm:^4.1.0":
+"ansi-regex@npm:^4.1.0, ansi-regex@npm:^4.1.1":
   version: 4.1.1
   resolution: "ansi-regex@npm:4.1.1"
   checksum: b1a6ee44cb6ecdabaa770b2ed500542714d4395d71c7e5c25baa631f680fb2ad322eb9ba697548d498a6fd366949fc8b5bfcf48d49a32803611f648005b01888
@@ -6708,7 +6701,7 @@ __metadata:
   version: 2.0.0
   resolution: "cli-color@npm:2.0.0"
   dependencies:
-    ansi-regex: ^3.0.1
+    ansi-regex: ^4.1.1
     d: ^1.0.1
     es5-ext: ^0.10.51
     es6-iterator: ^2.0.3
@@ -18228,7 +18221,7 @@ resolve@^1.20.0:
   version: 3.0.1
   resolution: "strip-ansi@npm:3.0.1"
   dependencies:
-    ansi-regex: ^3.0.1
+    ansi-regex: ^4.1.1
   checksum: 9b974de611ce5075c70629c00fa98c46144043db92ae17748fb780f706f7a789e9989fd10597b7c2053ae8d1513fd707816a91f1879b2f71e6ac0b6a863db465
   languageName: node
   linkType: hard
@@ -18237,7 +18230,7 @@ resolve@^1.20.0:
   version: 4.0.0
   resolution: "strip-ansi@npm:4.0.0"
   dependencies:
-    ansi-regex: ^3.0.1
+    ansi-regex: ^4.1.1
   checksum: d9186e6c0cf78f25274f6750ee5e4a5725fb91b70fdd79aa5fe648eab092a0ec5b9621b22d69d4534a56319f75d8944efbd84e3afa8d4ad1b9a9491f12c84eca
   languageName: node
   linkType: hard
