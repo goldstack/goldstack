@@ -29,19 +29,16 @@ import {
   ShortTemplateFeature,
   TemplateIcons,
 } from '@goldstack/template-metadata';
+import { resolveImage } from './imageUtil';
 
 const IconList = (props: { icons: TemplateIcons[] }): JSX.Element => {
-  const resolvedIcons = resolveIcons(props.icons);
-  const images = resolvedIcons.map((icon) => dataUriToSrc(icon));
+  const images = props.icons.map((icon) => resolveImage(icon));
   return (
     <>
       <div className="row justify-content-center">
         {images.map((image, idx) => (
           <div className={'col-4 col-sm-3 my-2 '} key={idx}>
-            <figure
-              dangerouslySetInnerHTML={{ __html: image }}
-              className={styles['icon']}
-            ></figure>
+            <img src={image} className={styles['icon']} />
           </div>
         ))}
       </div>
@@ -49,26 +46,10 @@ const IconList = (props: { icons: TemplateIcons[] }): JSX.Element => {
   );
 };
 
-const resolveIcons = (icons: TemplateIcons[]): any => {
-  return icons.map((icon) => {
-    switch (icon) {
-      case 'eslint':
-        return ESLintIcon;
-      case 'terraform':
-        return TerraformIcon;
-      case 'jest':
-        return JestIcon;
-      case 'vscode':
-        return VSCodeIcon;
-      case 'yarn':
-        return YarnIcon;
-      default:
-        throw new Error(`Unknown template icon: ${icon}`);
-    }
-  });
-};
-
 const createGif = (gif: string): React.ReactNode => {
+  if (gif.indexOf('https://') === 0) {
+    return <img src={gif} className="img-fluid" />;
+  }
   if (gif === 'nextjs-config') {
     return <img src={NextJsConfigGif as any}></img>;
   }

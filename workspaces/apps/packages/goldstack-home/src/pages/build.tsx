@@ -235,7 +235,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     title="Static Website"
                     element="static-website"
                     icon={CloudFrontIcon}
-                    templateLink={undefined}
+                    templateLink={'/templates/static-website'}
                     disabled={building}
                     checked={elements.indexOf('static-website') !== -1}
                     onChange={checkboxChange}
@@ -281,7 +281,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     disabled={building}
                     icon={S3Icon}
                     checked={elements.indexOf('s3') !== -1}
-                    templateLink={docsRoot + '/modules/s3'}
+                    templateLink={'/templates/s3'}
                     onChange={checkboxChange}
                   ></Checkbox>
                   <Checkbox
@@ -290,7 +290,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     icon={SESIcon}
                     disabled={building}
                     checked={elements.indexOf('email-send') !== -1}
-                    templateLink={docsRoot + '/modules/email-send'}
+                    templateLink={'/templates/ses'}
                     onChange={checkboxChange}
                   ></Checkbox>
                 </div>
