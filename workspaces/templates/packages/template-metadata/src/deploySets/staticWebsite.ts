@@ -35,6 +35,7 @@ export const createStaticWebsiteBuildSetConfig = async (): Promise<DeploySetConf
     projects: [
       {
         projectConfiguration,
+        targetRepo: 'goldstack/static-website-boilerplate',
         rootTests: ['assert-package-files', 'assert-root-files', 'root-build'],
         packageConfigurations: [
           {
