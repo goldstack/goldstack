@@ -11,11 +11,6 @@
 .icon {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
+  max-height: 64px;
 }
 
-.icon svg {
-  /* height: 3rem; */
-  vertical-align: text-top;
-  fill: #bdc5d1 !important;
-  filter: grayscale() opacity(0.5);
-}

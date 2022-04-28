@@ -235,7 +235,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     title="Static Website"
                     element="static-website"
                     icon={CloudFrontIcon}
-                    templateLink={undefined}
+                    templateLink={'/templates/static-website'}
                     disabled={building}
                     checked={elements.indexOf('static-website') !== -1}
                     onChange={checkboxChange}

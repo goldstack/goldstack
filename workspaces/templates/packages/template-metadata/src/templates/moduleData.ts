@@ -12,6 +12,12 @@ const NextJs: PackageProps = {
     'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/app-nextjs#readme',
 };
 
+const StaticWebsite: PackageProps = {
+  title: 'Static Website',
+  link:
+    'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/static-website-aws#readme',
+};
+
 const Express: PackageProps = {
   title: 'Lambda Express.js',
   link:
@@ -41,4 +47,13 @@ const LambdaAPI: PackageProps = {
   link:
     'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/serverless-api#readme',
 };
-export { NextJsBootstrap, NextJs, Express, GoGin, EmailSend, S3, LambdaAPI };
+export {
+  StaticWebsite,
+  NextJsBootstrap,
+  NextJs,
+  Express,
+  GoGin,
+  EmailSend,
+  S3,
+  LambdaAPI,
+};

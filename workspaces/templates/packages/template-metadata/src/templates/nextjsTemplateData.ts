@@ -59,7 +59,7 @@ export const featureVSCode: ShortTemplateFeature = {
 };
 
 export const featureYarn: ShortTemplateFeature = {
-  title: 'Yarn 2',
+  title: 'Yarn 3',
   id: 'yarn',
   description:
     'Fast build times and advanced modularity using Yarn 2 workspaces.',
@@ -67,7 +67,7 @@ export const featureYarn: ShortTemplateFeature = {
   details: {
     title: 'Build Modular Applications with Yarn Workspaces',
     description:
-      'Yarn 2 workspace configured for blazing fast project bootstrap and hassle-free development of a modular application.',
+      'Yarn 3 workspace configured for blazing fast project bootstrap and hassle-free development of a modular application.',
     icons: ['yarn'],
     content: {
       type: 'none',
@@ -150,7 +150,7 @@ export const getNextJsTemplateData = (): ProjectTemplateProps => {
     images: ['nextjs', 'react', 'typescript'],
     description: 'Complete Next.js project and deployment setup.',
     longDescription:
-      'The free Goldstack <strong>Next.js starter template</strong> helps you kick start your Next.js development project. ' +
+      'This free Goldstack <strong>Next.js starter template</strong> helps you kick start your Next.js development project. ' +
       'It has been hand-crafted for optimal developer experience and packed with best practices.\n' +
       'Scroll down to learn more about the features included in this template.',
     tags: ['Next.js', 'TypeScript', 'Yarn', 'React', 'Frontend'],
