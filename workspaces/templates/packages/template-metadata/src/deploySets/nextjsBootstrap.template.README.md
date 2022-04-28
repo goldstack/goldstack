@@ -129,7 +129,7 @@ You will also need to ensure that you have a valid AWS user configure to deploy 
 
 For more information on configuring your local AWS users, please see [Goldstack Documentation / AWS Configuration](https://docs.goldstack.party/docs/goldstack/configuration#aws-configuration).
 
-Once your AWS user is configured you can run `yarn infra up dev` in the `/packages/app-nextjs-bootstrap` folder. For more information on the infrastructure commands for this project, see [Goldstack Documentation / Next.js + Bootstrap Template / Infrastructure](https://docs.goldstack.party/docs/templates/app-nextjs-bootstrap#infrastructure-3).
+Once your AWS user is configured you can run `yarn infra up prod` in the `/packages/app-nextjs-bootstrap` folder. For more information on the infrastructure commands for this project, see [Goldstack Documentation / Next.js + Bootstrap Template / Infrastructure](https://docs.goldstack.party/docs/templates/app-nextjs-bootstrap#infrastructure-3).
 
 ## 9. Contribute to Goldstack
 

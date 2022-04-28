@@ -36,6 +36,8 @@ export const createStaticWebsiteBuildSetConfig = async (): Promise<DeploySetConf
       {
         projectConfiguration,
         targetRepo: 'goldstack/static-website-boilerplate',
+        repoReadme:
+          'workspaces/templates/packages/template-metadata/src/deploySets/staticWebsite.README.md',
         rootTests: ['assert-package-files', 'assert-root-files', 'root-build'],
         packageConfigurations: [
           {
