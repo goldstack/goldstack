@@ -24,7 +24,6 @@ export const createNextjsBuildSetConfig = async (): Promise<DeploySetConfig> => 
     projects: [
       {
         projectConfiguration,
-        targetRepo: 'goldstack/static-website-boilerplate',
         rootTests: ['assert-package-files', 'assert-root-files', 'root-build'],
         packageConfigurations: [
           {
