@@ -1,15 +1,13 @@
 <p align="right"><img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="12"> Generated with <a href="https://goldstack.party">Goldstack</a></p>
 
 <p align="center">
-  <a href="https://goldstack.party/templates/nextjs-bootstrap">
-    <img src="https://cdn.goldstack.party/img/202204/nextjs_bootstrap.svg" height="80">
-    <h1 align="center">Next.js + Bootstrap Boilerplate</h1>
+  <a href="https://goldstack.party/templates/static-website">
+    <img src="https://cdn.goldstack.party/img/202204/cloudfront.svg" height="80">
+    <h1 align="center">Static Website Boilerplate</h1>
   </a>
 </p>
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a543d8d5d69d40ef86127f310b17a2ed)](https://www.codacy.com/gh/goldstack/nextjs-bootstrap-boilerplate/dashboard)
-
-Boilerplate for a Next.js + Bootstrap project with support for [TypeScript](https://www.typescriptlang.org/) using [Yarn](https://yarnpkg.com/) ready for deployment to AWS using low-cost, highly scaleable serverless infrastructure.
+Develop a static website using HTML and CSS. Test the website locally. Deploy to AWS using [CloudFront](https://aws.amazon.com/s3/) and [S3](https://aws.amazon.com/cloudfront/).
 
 This boilerplate has been automatically generated using the template:
 
@@ -17,14 +15,14 @@ This boilerplate has been automatically generated using the template:
   <tbody>
     <tr>
       <td>
-        <p align="center"><a href="https://goldstack.party/templates/nextjs-bootstrap"><img width="50" src="https://cdn.goldstack.party/img/202204/nextjs_bootstrap.svg"></a></p>
-        <p><a href="https://goldstack.party/templates/nextjs-bootstrap">Next.js + Bootstrap</a></p>
+        <p align="center"><a href="https://goldstack.party/templates/static-website"><img width="50" src="https://cdn.goldstack.party/img/202204/cloudfront.svg"></a></p>
+        <p><a href="https://goldstack.party/templates/static-website">Static Website</a></p>
       </td>
     </tr>
   </tbody>
 </table>
 
-Feel free to fork this repository and modify it for your needs, or use the [Goldstack project builder](https://goldstack.party/build) to generate a boilerplate specifically generated for your project.
+Feel free to fork this repository and modify it for your needs, or use the [Goldstack project builder](https://goldstack.party/build) to generate a boilerplate specifically configured for your project.
 
 # Getting Started
 
@@ -32,9 +30,7 @@ Thank you for using this boilerplate. For any questions or feedback, please be w
 
 ## 1. Fork and clone the repository
 
-Fork this repository and then clone the fork into your local machine.
-
-For more information, see [GitHub documentation - Fork a repo](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+[Fork this repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo) and then [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the fork your local machine.
 
 ## 2. Install required local dependencies
 
@@ -112,37 +108,22 @@ In the status bar on the bottom right-hand corner of the VSCode editor you shoul
 
 ## 7. Local Development
 
-Go to the folder `packages/app-nextjs-bootstrap` and run `yarn watch`. This will start a local development server.
+Go to the folder `packages/static-website-aws` and run `yarn watch`. This will start a local development server.
 
-<img src="https://cdn.goldstack.party/img/202201/yarn_watch.gif"  alt="VSCode Locate TypeScript">
+<img src="https://cdn.goldstack.party/img/202204/local-development.gif" alt="VSCode Locate TypeScript">
+
+To make changes to the web page, edit the files in the folder `packages\static-website-aws\web`.
+
+<img src="https://cdn.goldstack.party/img/202204/edit_webpage.png" alt="Edit webpage included in template">
 
 ## 8. Deploy to AWS
 
 If you want to deploy your project to AWS, you will need to make some changes to the configuration files included in this project.
 
-Specifically, the [goldstack.json](https://github.com/goldstack/nextjs-bootstrap-boilerplate/blob/master/packages/app-nextjs-bootstrap-1/goldstack.json) in the `packages/app-nextjs-bootstrap` folder.
+Specifically, the [goldstack.json]() in the `packages/static-website-aws` folder.
 
 ```json
-{
-  "$schema": "./schemas/package.schema.json",
-  "name": "app-nextjs-bootstrap-1",
-  "template": "app-nextjs-bootstrap",
-  "templateVersion": "0.1.0",
-  "configuration": {},
-  "deployments": [
-    {
-      "name": "prod",
-      "awsUser": "goldstack-dev",
-      "awsRegion": "us-west-2",
-      "configuration": {
-        "hostedZoneDomain": "dev.goldstack.party",
-        "websiteDomain": "nextjsbootstrap-1646424912086.tests.dev.goldstack.party",
-        "defaultCacheDuration": 10
-      },
-      "tfStateKey": "app-nextjs-bootstrap-1-prod-cd7f1f0a63ccb93ef36d.tfstate"
-    }
-  ]
-}
+
 ```
 
 The key properties you will need to update are:
@@ -152,7 +133,7 @@ The key properties you will need to update are:
 
 Also you need to _delete_ `deployments[0].tfStateKey`.
 
-For more information on these configuration options, see [Goldstack Documentation / Next.js + Bootstrap Template / Configure](https://docs.goldstack.party/docs/templates/app-nextjs-bootstrap#configure).
+For more information on these configuration options, see [Goldstack Documentation / Static Website AWS Template / Configure](https://docs.goldstack.party/docs/templates/static-website-aws#configure).
 
 You will also need to ensure that you have a valid AWS user configure to deploy to AWS. For this, create a file in `/config/infra/config.json` (relative to project root).
 
@@ -181,7 +162,7 @@ You will also need to ensure that you have a valid AWS user configure to deploy 
 
 For more information on configuring your local AWS users, please see [Goldstack Documentation / AWS Configuration](https://docs.goldstack.party/docs/goldstack/configuration#aws-configuration).
 
-Once your AWS user is configured you can run `yarn infra up prod` in the `/packages/app-nextjs-bootstrap` folder. For more information on the infrastructure commands for this project, see [Goldstack Documentation / Next.js + Bootstrap Template / Infrastructure](https://docs.goldstack.party/docs/templates/app-nextjs-bootstrap#infrastructure-3).
+Once your AWS user is configured you can run `yarn infra up prod` in the `/packages/static-website-aws` folder. For more information on the infrastructure commands for this project, see [Goldstack Documentation / Static Website Template / Infrastructure](https://docs.goldstack.party/docs/templates/static-website-aws#infrastructure).
 
 ## 9. Contribute to Goldstack
 

@@ -69,6 +69,7 @@ If you want to deploy your project to AWS, you will need to make some changes to
 Specifically, the [goldstack.json]() in the `packages/static-website-aws` folder.
 
 ```json
+
 ```
 
 The key properties you will need to update are:
