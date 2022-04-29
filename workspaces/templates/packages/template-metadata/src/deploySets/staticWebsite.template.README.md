@@ -66,29 +66,9 @@ To make changes to the web page, edit the files in the folder `packages\static-w
 
 If you want to deploy your project to AWS, you will need to make some changes to the configuration files included in this project.
 
-Specifically, the [goldstack.json](https://github.com/goldstack/nextjs-bootstrap-boilerplate/blob/master/packages/app-nextjs-bootstrap-1/goldstack.json) in the `packages/app-nextjs-bootstrap` folder.
+Specifically, the [goldstack.json]() in the `packages/static-website-aws` folder.
 
 ```json
-{
-  "$schema": "./schemas/package.schema.json",
-  "name": "app-nextjs-bootstrap-1",
-  "template": "app-nextjs-bootstrap",
-  "templateVersion": "0.1.0",
-  "configuration": {},
-  "deployments": [
-    {
-      "name": "prod",
-      "awsUser": "goldstack-dev",
-      "awsRegion": "us-west-2",
-      "configuration": {
-        "hostedZoneDomain": "dev.goldstack.party",
-        "websiteDomain": "nextjsbootstrap-1646424912086.tests.dev.goldstack.party",
-        "defaultCacheDuration": 10
-      },
-      "tfStateKey": "app-nextjs-bootstrap-1-prod-cd7f1f0a63ccb93ef36d.tfstate"
-    }
-  ]
-}
 ```
 
 The key properties you will need to update are:
@@ -98,7 +78,7 @@ The key properties you will need to update are:
 
 Also you need to _delete_ `deployments[0].tfStateKey`.
 
-For more information on these configuration options, see [Goldstack Documentation / Next.js + Bootstrap Template / Configure](https://docs.goldstack.party/docs/templates/app-nextjs-bootstrap#configure).
+For more information on these configuration options, see [Goldstack Documentation / Static Website AWS Template / Configure](https://docs.goldstack.party/docs/templates/static-website-aws#configure).
 
 You will also need to ensure that you have a valid AWS user configure to deploy to AWS. For this, create a file in `/config/infra/config.json` (relative to project root).
 
