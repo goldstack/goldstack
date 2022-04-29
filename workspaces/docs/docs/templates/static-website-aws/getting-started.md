@@ -1,3 +1,6 @@
+
+[!embed](./../shared/getting-started-project.md)
+
 [!embed](./../shared/getting-started-infrastructure.md)
 
 Note that you will not be able to access your website yet. First run a deployment as described below.
