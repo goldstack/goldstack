@@ -13,6 +13,8 @@ jobs:
             'backend-go-gin',
             'backend-lambda-api',
             'backend-nodejs-express',
+            'nextjs',
+            'nextjs-bootstrap',
             'no-infra',
             'email-send',
             's3',

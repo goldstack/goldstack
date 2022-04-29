@@ -59,7 +59,7 @@ const Header = (): JSX.Element => {
               </a>
             </Navbar.Brand>
             <Navbar.Text>
-              <small>The very best stack, ready for you in minutes</small> ️❤️
+              <small>The very best stack, ready in minutes</small> ️❤️
             </Navbar.Text>
             <Navbar.Toggle
               aria-controls="basic-navbar-nav"
