@@ -69,6 +69,7 @@ export const getStaticWebsiteTemplateData = (): ProjectTemplateProps => {
     id: 'static-website',
     title: 'Static Website',
     packages: [StaticWebsite],
+    boilerplateLink: 'https://github.com/goldstack/static-website-boilerplate',
     isComposite: false,
     images: [
       'https://cdn.goldstack.party/img/202204/cloudfront.svg',
