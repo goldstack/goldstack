@@ -6,17 +6,36 @@ import ProjectTemplateSidebar from './ProjectTemplateSidebar';
 import Head from 'next/head';
 
 const ProjectTemplate = (props: ProjectTemplateProps): JSX.Element => {
+  if (
+    props.metaDescription &&
+    (props.metaDescription.length < 120 || props.metaDescription.length > 156)
+  ) {
+    throw new Error('Meta description must be between 120 and 156 characters.');
+  }
+
+  if (
+    props.metaTitle &&
+    (props.metaTitle.length < 40 || props.metaTitle.length > 60)
+  ) {
+    throw new Error('Meta description must be between 40 and 60 characters.');
+  }
   return (
     <>
       <Head>
         <title>{props.title}</title>
         <meta
           property="og:title"
-          content={`${props.title} Template`}
+          content={props.metaTitle || `${props.title} Template`}
           key="title"
         />
-        <meta name="description" content={props.description} />
-        <meta property="og:description" content={props.description} />
+        <meta
+          name="description"
+          content={props.metaDescription || props.description}
+        />
+        <meta
+          property="og:description"
+          content={props.metaDescription || props.description}
+        />
       </Head>
       <div className="container space-top-2 space-bottom-lg-2">
         <div className="row">

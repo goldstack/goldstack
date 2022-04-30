@@ -14,6 +14,9 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
     packages: [Express],
     isComposite: false,
     description: 'Rapidly deploy an Express.js server to AWS Lambda.',
+    metaTitle: 'Serverless Express.js Template and Boilerplate by Goldstack',
+    metaDescription:
+      'Open source Express.js template configured for deployment with AWS Lambda. Configure the template for your project and download it for free.',
     longDescription:
       'This project template contains an Express.js server ready to be packaged and deployed as an AWS Lambda.\n',
     tags: ['Express.js', 'Backend', 'Lambda', 'Serverless'],

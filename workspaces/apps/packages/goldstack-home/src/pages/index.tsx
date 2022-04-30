@@ -44,16 +44,16 @@ const Front = (): JSX.Element => {
         <title>Goldstack - Starter Project Builder</title>
         <meta
           property="og:title"
-          content="Goldstack - Starter Project Builder"
+          content="Goldstack - JavaScript Starter Project Builder"
           key="title"
         />
         <meta
           name="description"
-          content="Save tons of time with a starter project assembled by Goldstack."
+          content="Goldstack provides high-quality starter projects tailored to your specific requirements using our starter project builder 🛠️."
         />
         <meta
           property="og:description"
-          content="Save tons of time with a starter project assembled by Goldstack."
+          content="Goldstack provides high-quality starter projects tailored to your specific requirements using our starter project builder 🛠️."
         />
       </Head>
       <Header></Header>

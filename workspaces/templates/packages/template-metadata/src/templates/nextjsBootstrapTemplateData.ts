@@ -23,6 +23,9 @@ export const getNextjsBootstrapTemplateData = (): ProjectTemplateProps => {
     isComposite: false,
     description:
       'Ready-to-use, open source template for a Next.js project with Bootstrap styling.',
+    metaTitle: 'Free Next.js + Bootstrap Template by Goldstack',
+    metaDescription:
+      'Open source template and boilerplate for a Next.js project with Bootstrap styling. Configure the template for your project and download it for free.',
     longDescription:
       'Configures a Next.js application with Bootstrap.\n' +
       'Scroll down for an overview of the features included in this template.',

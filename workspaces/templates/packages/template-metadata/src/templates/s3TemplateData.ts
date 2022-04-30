@@ -32,6 +32,9 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
   return {
     id: 's3',
     title: 'AWS S3',
+    metaTitle: 'AWS S3 Template and Boilerplate Configured using Terraform',
+    metaDescription:
+      'Open source template for defining an S3 bucket with Terraform. Optimised for inclusion in TypeScript projects. Configure and download for free.',
     images: ['s3', 'terraform', 'typescript'],
     packages: [S3],
     isComposite: false,

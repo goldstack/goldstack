@@ -84,7 +84,18 @@ export interface ProjectTemplateProps {
    * Whether this template is composed of multiple packages
    */
   isComposite: boolean;
+  /**
+   * Description used on card for template.
+   */
   description: string;
+  /**
+   * Title to be used on meta tag
+   */
+  metaTitle?: string;
+  /**
+   * Description to be used on meta tag
+   */
+  metaDescription?: string;
   /**
    * Link to a GitHub project with boilerplate generated from this template.
    */
