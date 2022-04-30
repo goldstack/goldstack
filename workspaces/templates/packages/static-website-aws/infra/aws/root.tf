@@ -4,7 +4,7 @@ resource "aws_s3_bucket" "website_root" {
 
   acl = "public-read"
 
-  # Remove this line if you want to prevent accidential deletion of bucket
+  # Remove this line if you want to prevent accidental  deletion of bucket
   force_destroy = true
 
   website {
