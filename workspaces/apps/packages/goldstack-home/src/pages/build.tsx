@@ -197,8 +197,6 @@ const ModuleSelection = (props: { elements: string[] }) => {
     doConfigure(false);
   };
 
-  const docsRoot = process.env.NEXT_PUBLIC_GOLDSTACK_DOCS;
-
   return (
     <>
       <Container className="space-2">
@@ -330,6 +328,19 @@ const Build = (): JSX.Element => {
     <>
       <Head>
         <title>Goldstack Project Builder</title>
+        <meta
+          property="og:title"
+          content="Compose a JavaScript Starter Project from Templates"
+          key="title"
+        />
+        <meta
+          name="description"
+          content="Build a JavaScript Project from our templates such as Next.js + Bootstrap, Express.js, Serverless AWS Lambda API and others."
+        />
+        <meta
+          property="og:description"
+          content="Build a JavaScript Project from our templates such as Next.js + Bootstrap, Express.js, Serverless AWS Lambda API and others."
+        />
       </Head>
 
       <Header></Header>

@@ -148,7 +148,11 @@ export const getNextJsTemplateData = (): ProjectTemplateProps => {
     packages: [NextJs],
     isComposite: false,
     images: ['nextjs', 'react', 'typescript'],
-    description: 'Complete Next.js project and deployment setup.',
+    metaTitle: 'Free Next.js Template and Boilerplate by Goldstack',
+    metaDescription:
+      'Open-source template configured for TypeScript, Jest, VSCode, Terraform and deployment to AWS. Configure on Goldstack and download for free.',
+    description:
+      'Open-source Next.js project configured for TypeScript and AWS.',
     longDescription:
       'This free Goldstack <strong>Next.js starter template</strong> helps you kick start your Next.js development project. ' +
       'It has been hand-crafted for optimal developer experience and packed with best practices.\n' +

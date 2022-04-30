@@ -71,6 +71,9 @@ export const getStaticWebsiteTemplateData = (): ProjectTemplateProps => {
     packages: [StaticWebsite],
     boilerplateLink: 'https://github.com/goldstack/static-website-boilerplate',
     isComposite: false,
+    metaTitle: 'AWS Static Website Template and Boilerplate with Terraform',
+    metaDescription:
+      'Upload your static website to AWS using S3, CloudFront with this easy-to-configure open source template provided by Goldstack.',
     images: [
       'https://cdn.goldstack.party/img/202204/cloudfront.svg',
       'typescript',

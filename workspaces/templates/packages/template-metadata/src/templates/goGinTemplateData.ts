@@ -13,6 +13,9 @@ export const getGoGinTemplateData = (): ProjectTemplateProps => {
     packages: [GoGin],
     isComposite: false,
     description: 'Deploy a serverless Go HTTP server using AWS Lambda.',
+    metaTitle: 'Serverless Go API Project Template for AWS Lambda',
+    metaDescription:
+      'Deploy a Go API with the Gin framework to AWS Lambda. Infrastructure defined in Terraform and deployment scripts provided.',
     longDescription:
       'This project template contains a fully configured server using the Gin framework ready to be deployed in an AWS Lambda.\n' +
       'See a list of all features included in this template below.',

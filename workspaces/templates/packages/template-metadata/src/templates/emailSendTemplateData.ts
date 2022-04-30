@@ -32,6 +32,9 @@ export const getEmailSendTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'ses',
     title: 'Email Send (SES)',
+    metaTitle: 'AWS SES Email Send Template and Boilerplate for Terraform',
+    metaDescription:
+      'Open source template for sending outbound email using AWS SES from TypeScript applications. All infrastructure defined using Terraform. Download for free.',
     boilerplateLink:
       'https://github.com/goldstack/ses-terraform-typescript-boilerplate',
     images: ['ses', 'terraform', 'typescript'],
@@ -39,7 +42,7 @@ export const getEmailSendTemplateData = (): ProjectTemplateProps => {
     isComposite: false,
     description: 'Send emails from your application using AWS SES.',
     longDescription:
-      'This project provides a complete setup for sending emails with AWS Simple Email Service (SES).',
+      'This project provides a complete setup for sending outbound emails with AWS Simple Email Service (SES).',
     tags: ['AWS', 'SES', 'TypeScript', 'Terraform', 'Yarn', 'Backend'],
     hero: {
       title: 'Sending Email with AWS SES',
@@ -63,7 +66,7 @@ export const getEmailSendTemplateData = (): ProjectTemplateProps => {
         title: 'TypeScript',
         id: 'typescript',
         description:
-          'Develop the code for composing and sending your email using TypeScript.',
+          'Develop the code for composing and sending your outbound email using TypeScript.',
         image: 'typescript',
         details: {
           title: 'TypeScript configured in template',

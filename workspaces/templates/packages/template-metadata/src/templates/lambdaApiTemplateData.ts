@@ -9,6 +9,9 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
     images: ['api-gateway', 'lambda', 'nodejs', 'typescript'],
     packages: [LambdaAPI],
     isComposite: false,
+    metaTitle: 'Serverless API Template and Boilerplate for AWS Lambda',
+    metaDescription:
+      'Open source template for developing a Serverless API using AWS API Gateway. Generates unique lambdas for each endpoint for reduced cold start times.',
     description:
       'Rapidly develop an API using AWS HTTP API and Lambdas with minimal configuration.',
     longDescription:
