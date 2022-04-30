@@ -1,6 +1,7 @@
 import React from 'react';
 
 import GitHubIcon from './../../icons/github-tile.svg';
+import DocumentIcon from './../../icons/document.svg';
 
 import styles from './ProjectTemplateSidebar.module.css';
 
@@ -88,6 +89,26 @@ const ProjectTemplateSidebar = (
                 ))}
               </dd>
             </dl>
+          </div>
+
+          <div className="mb-md-7 mt-10">
+            <h1 className="h6">Documentation</h1>
+            <ul className="nav flex-column">
+              {props.packages.map((packageData, idx) => (
+                <li className="nav-item font-size-1 " key={idx}>
+                  <a
+                    className={`nav-link active  ${styles['menulinks-link']}`}
+                    href={packageData.documentationLink}
+                  >
+                    <img
+                      className={`fas fa-home nav-icon ${styles['menulinks-link-nav-icon']}`}
+                      src={DocumentIcon as any}
+                    ></img>
+                    {packageData.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="mb-md-7 mt-10">

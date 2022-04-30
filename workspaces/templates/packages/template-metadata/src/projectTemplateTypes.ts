@@ -75,6 +75,7 @@ export interface TextSectionProps {
 export interface PackageProps {
   title: string;
   link: string;
+  documentationLink: string;
 }
 
 export interface ProjectTemplateProps {
