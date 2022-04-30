@@ -1,3 +1,6 @@
+
+[!embed](./../shared/getting-started-project.md)
+
 [!embed](./../shared/getting-started-infrastructure.md)
 
 Note that your API will not work yet. It first needs to be deployed as per instructions below.

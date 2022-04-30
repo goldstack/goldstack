@@ -1,6 +1,8 @@
+[!embed](./../shared/getting-started-project.md)
+
 [!embed](./../shared/getting-started-infrastructure.md)
 
-### Development
+### 3. Development
 
 See below how this template can be used by other packages (for instance within an [Express Server](./../modules/lambda-express)).
 
