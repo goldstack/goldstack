@@ -75,13 +75,14 @@ export interface TextSectionProps {
 export interface PackageProps {
   title: string;
   link: string;
+  documentationLink: string;
 }
 
 export interface ProjectTemplateProps {
   title: string;
   id: string;
   /**
-   * Whether this template is composed of multiple packages
+   * Whether this template is composed of multiple other templates
    */
   isComposite: boolean;
   /**

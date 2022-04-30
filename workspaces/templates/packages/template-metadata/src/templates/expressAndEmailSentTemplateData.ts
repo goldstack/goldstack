@@ -15,7 +15,7 @@ export const getExpressAndEmailSentTemplateData = (): ProjectTemplateProps => {
       'Open source template for sending outbound emails from an Express.js server. All infrastructure defined in Terraform. Easy to configure and free to download.',
     description: 'Setup a serverless Express server with email sending.',
     longDescription:
-      'This project helps you set up an Express.js server on AWS Lambda.' +
+      'This project helps you set up an Express.js server on AWS Lambda. ' +
       'Also sets up all infrastructure required for sending emails through AWS SES.',
     tags: ['Express.js', 'AWS', 'SES', 'TypeScript', 'Yarn', 'Backend'],
     hero: {
