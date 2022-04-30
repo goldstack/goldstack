@@ -21,6 +21,8 @@ This template will only work when the [Go](https://golang.org) executable is ins
 
 Note that for automating the build and rolling out the infrastructure, this template will use [Yarn](https://yarnpkg.com/).
 
+[!embed](./../shared/getting-started-project.md)
+
 [!embed](./../shared/getting-started-infrastructure.md)
 
 [!embed](./../shared/getting-started-deployment.md)

@@ -1,6 +1,8 @@
+[!embed](./../shared/getting-started-project.md)
+
 [!embed](./../shared/getting-started-infrastructure.md)
 
-### Development
+### 3. Development
 
 This is how an the S3 package can be used from another package:
 
