@@ -56,28 +56,6 @@ const ProjectTemplateSidebar = (
             )}
           </div>
 
-          {props.isComposite && (
-            <div className="mb-md-7 mt-10">
-              <h1 className="h4">Packages</h1>
-              <ul className="nav flex-column">
-                {props.packages.map((packageData, idx) => (
-                  <li className="nav-item" key={idx}>
-                    <a
-                      className={`nav-link active  ${styles['menulinks-link']}`}
-                      href={packageData.link}
-                    >
-                      <img
-                        className={`fas fa-home nav-icon ${styles['menulinks-link-nav-icon']}`}
-                        src={GitHubIcon as any}
-                      ></img>
-                      {packageData.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
           <div>
             <dl className="row font-size-1">
               <dt className="col-sm-4 text-dark">License</dt>
@@ -110,6 +88,26 @@ const ProjectTemplateSidebar = (
                 ))}
               </dd>
             </dl>
+          </div>
+
+          <div className="mb-md-7 mt-10">
+            <h1 className="h6">Source Code</h1>
+            <ul className="nav flex-column">
+              {props.packages.map((packageData, idx) => (
+                <li className="nav-item font-size-1 " key={idx}>
+                  <a
+                    className={`nav-link active  ${styles['menulinks-link']}`}
+                    href={packageData.link}
+                  >
+                    <img
+                      className={`fas fa-home nav-icon ${styles['menulinks-link-nav-icon']}`}
+                      src={GitHubIcon as any}
+                    ></img>
+                    {packageData.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
