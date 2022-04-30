@@ -120,10 +120,30 @@ To make changes to the web page, edit the files in the folder `packages\static-w
 
 If you want to deploy your project to AWS, you will need to make some changes to the configuration files included in this project.
 
-Specifically, the [goldstack.json]() in the `packages/static-website-aws` folder.
+Specifically, the [goldstack.json](https://github.com/goldstack/static-website-boilerplate/blob/master/packages/static-website-1/goldstack.json) in the `packages/static-website-aws` folder.
 
 ```json
-
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "static-website-1",
+  "template": "static-website-aws",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsUser": "goldstack-dev",
+      "awsRegion": "us-west-2",
+      "configuration": {
+        "hostedZoneDomain": "dev.goldstack.party",
+        "websiteDomain": "staticwebsite1-1651273869629.tests.dev.goldstack.party",
+        "websiteDomainRedirect": "www.staticwebsite1-1651273869629.tests.dev.goldstack.party",
+        "defaultCacheDuration": 10
+      },
+      "tfStateKey": "static-website-1-prod-0397e051cd046f2d46e7.tfstate"
+    }
+  ]
+}
 ```
 
 The key properties you will need to update are:
