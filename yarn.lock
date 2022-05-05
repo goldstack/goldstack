@@ -2593,7 +2593,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-typescript-references@0.1.10, @goldstack/utils-typescript-references@workspace:workspaces/templates-lib/packages/utils-typescript-references":
+"@goldstack/utils-typescript-references@0.1.11, @goldstack/utils-typescript-references@workspace:workspaces/templates-lib/packages/utils-typescript-references":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-typescript-references@workspace:workspaces/templates-lib/packages/utils-typescript-references"
   dependencies:
@@ -5125,7 +5125,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "apps@workspace:workspaces/apps"
   dependencies:
-    "@goldstack/utils-typescript-references": 0.1.10
+    "@goldstack/utils-typescript-references": 0.1.11
     "@types/jest": ^27.4.1
     "@types/node": ^16.11.0
     "@typescript-eslint/eslint-plugin": ^4.14.0
@@ -8023,7 +8023,7 @@ __metadata:
   resolution: "docs@workspace:workspaces/docs"
   dependencies:
     "@goldstack/nodemonx": 0.3.30
-    "@goldstack/utils-typescript-references": 0.1.10
+    "@goldstack/utils-typescript-references": 0.1.11
     "@types/jest": ^27.4.1
     "@types/node": ^16.11.0
     "@typescript-eslint/eslint-plugin": ^4.14.0
@@ -17060,7 +17060,7 @@ resolve@^1.20.0:
     "@goldstack/nodemonx": 0.3.30
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-package-upgrade": 0.2.39
-    "@goldstack/utils-typescript-references": 0.1.10
+    "@goldstack/utils-typescript-references": 0.1.11
     "@types/jest": ^27.4.1
     "@types/node": ^16.11.0
     "@typescript-eslint/eslint-plugin": ^4.14.0
@@ -18631,7 +18631,7 @@ resolve@^1.20.0:
   version: 0.0.0-use.local
   resolution: "templates-lib@workspace:workspaces/templates-lib"
   dependencies:
-    "@goldstack/utils-typescript-references": 0.1.10
+    "@goldstack/utils-typescript-references": 0.1.11
     "@types/jest": ^27.4.1
     "@types/node": ^16.11.0
     "@typescript-eslint/eslint-plugin": ^4.14.0
@@ -18652,7 +18652,7 @@ resolve@^1.20.0:
   version: 0.0.0-use.local
   resolution: "templates-management@workspace:workspaces/templates-management"
   dependencies:
-    "@goldstack/utils-typescript-references": 0.1.10
+    "@goldstack/utils-typescript-references": 0.1.11
     "@types/jest": ^27.4.1
     "@types/node": ^16.11.0
     "@typescript-eslint/eslint-plugin": ^4.14.0
@@ -18674,7 +18674,7 @@ resolve@^1.20.0:
   resolution: "templates@workspace:workspaces/templates"
   dependencies:
     "@goldstack/nodemonx": 0.3.30
-    "@goldstack/utils-typescript-references": 0.1.10
+    "@goldstack/utils-typescript-references": 0.1.11
     "@types/jest": ^27.4.1
     "@types/node": ^16.11.0
     "@typescript-eslint/eslint-plugin": ^4.14.0
