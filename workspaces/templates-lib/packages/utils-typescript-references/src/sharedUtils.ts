@@ -51,7 +51,7 @@ export function getTsConfigPath(
   tsConfigNames: string[]
 ): string | undefined {
   return tsConfigNames
-    .map((tsConfigName) => path.join(workspacePath, tsConfigName))
+    .map((tsConfigName) => path.posix.join(workspacePath, tsConfigName))
     .find((tsConfigPath) => fs.existsSync(tsConfigPath));
 }
 
@@ -79,7 +79,7 @@ export function makeReferences(
         path: path.posix.relative(
           packagePath,
           path.basename(tsConfigPath) === 'tsconfig.json'
-            ? path.posix.dirname(tsConfigPath)
+            ? path.dirname(tsConfigPath)
             : tsConfigPath
         ),
       }))
