@@ -93,7 +93,7 @@ function processPackage(
     fs.writeFileSync(tsConfigPath, newData);
     return 'success';
   } catch (e) {
-    console.error(e, `While processing ${tsConfigPath}`);
+    console.error(`Error while processing ${tsConfigPath}\n${e}`);
     return 'failure';
   }
 }

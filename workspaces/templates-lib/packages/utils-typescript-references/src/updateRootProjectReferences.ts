@@ -44,7 +44,9 @@ export const updateRootProjectReferences = (tsConfigNames: string[]): void => {
     }
     fs.writeFileSync(tsConfigPath, newContent);
   } catch (e) {
-    console.error(e, `While processing top level config file ${tsConfigPath}`);
+    console.error(
+      `Error while processing top level config file ${tsConfigPath} \n${e}`
+    );
     throw e;
   }
 };
