@@ -16,6 +16,7 @@
     "compile": "tsc -b",
     "compile-watch": "tsc -b -w",
     "ensure-local-packages": "ts-node scripts/ensureLocalPackages.ts",
+    "ensure-local-packages-syncpack": "syncpack fix-mismatches --workspace -p -d --source package.json --source workspaces/*/package.json --source workspaces/*/packages/*/package.json",
     "eslint": "eslint",
     "fix-project-references": "ts-node scripts/fixProjectReferences.ts",
     "format": "prettier --loglevel log --config .prettierrc.json --write .",
@@ -51,6 +52,7 @@
     "eslint-plugin-yaml": "^0.5.0",
     "nodemon": "^2.0.15",
     "prettier": "^2.2.1",
+    "syncpack": "^7.2.1",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.3"
   },
