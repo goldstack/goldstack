@@ -58,7 +58,7 @@ export function getTsConfigPath(
 /**
  * Calculate the references array for the package
  *
- * @param packagePath Path to the packge we are updating references for
+ * @param packagePath Path to the package we are updating references for
  * @param packages Packages the package wants to reference
  * @param tsConfigNames Configured tsconfig file names
  */
