@@ -8,6 +8,8 @@ import {
 } from './sharedUtils';
 import path from 'path';
 
+type ProcessPackageResult = 'success' | 'failure';
+
 export const updatePackageProjectReferences = (
   tsConfigNames: string[]
 ): void => {
@@ -15,14 +17,20 @@ export const updatePackageProjectReferences = (
 
   const allPackages = getPackages(cmdRes);
 
+  let isSuccess = true;
   for (const packageData of allPackages) {
     const packageDir = packageData.path;
 
     if (fs.existsSync(path.resolve(packageDir, './tsconfig.json'))) {
-      processPackage(packageDir, allPackages, packageData, tsConfigNames);
+      isSuccess =
+        processPackage(packageDir, allPackages, packageData, tsConfigNames) ===
+          'success' && isSuccess;
     } else {
       console.log(`Skipping package ${packageDir}`);
     }
+  }
+  if (!isSuccess) {
+    throw new Error('One or more packages failed to update');
   }
 };
 
@@ -31,14 +39,14 @@ function processPackage(
   allPackages: PackageData[],
   packageData: PackageData,
   tsConfigNames: string[]
-): void {
+): ProcessPackageResult {
   const packageJson = fs
     .readFileSync(path.resolve(packageDir, './package.json'))
     .toString();
   const packageJsonData = JSON.parse(packageJson);
   const tsConfigPath = getTsConfigPath(packageDir, tsConfigNames);
   if (!tsConfigPath) {
-    return;
+    return 'success';
   }
   try {
     const tsConfig = fs.readFileSync(tsConfigPath).toString();
@@ -60,7 +68,7 @@ function processPackage(
 
     // Exit early if references are unchanged (using JSON for deep comparison)
     if (JSON.stringify(oldReferences) === JSON.stringify(newReferences)) {
-      return;
+      return 'success';
     }
 
     const newData = JSON.stringify(
@@ -83,7 +91,9 @@ function processPackage(
       console.log(`Removing project references in ${tsConfigPath}`);
     }
     fs.writeFileSync(tsConfigPath, newData);
+    return 'success';
   } catch (e) {
-    console.error(e, `While processing ${tsConfigPath}`);
+    console.error(`Error while processing ${tsConfigPath}\n${e}`);
+    return 'failure';
   }
 }

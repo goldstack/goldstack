@@ -51,14 +51,14 @@ export function getTsConfigPath(
   tsConfigNames: string[]
 ): string | undefined {
   return tsConfigNames
-    .map((tsConfigName) => path.join(workspacePath, tsConfigName))
+    .map((tsConfigName) => path.posix.join(workspacePath, tsConfigName))
     .find((tsConfigPath) => fs.existsSync(tsConfigPath));
 }
 
 /**
  * Calculate the references array for the package
  *
- * @param packagePath Path to the packge we are updating references for
+ * @param packagePath Path to the package we are updating references for
  * @param packages Packages the package wants to reference
  * @param tsConfigNames Configured tsconfig file names
  */
