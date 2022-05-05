@@ -79,7 +79,7 @@ export function makeReferences(
         path: path.posix.relative(
           packagePath,
           path.basename(tsConfigPath) === 'tsconfig.json'
-            ? path.dirname(tsConfigPath)
+            ? path.posix.dirname(tsConfigPath)
             : tsConfigPath
         ),
       }))

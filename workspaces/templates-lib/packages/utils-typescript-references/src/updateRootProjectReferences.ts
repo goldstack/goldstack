@@ -1,7 +1,6 @@
 import fs from 'fs';
 import { execSync } from 'child_process';
 import { getPackages, getTsConfigPath, makeReferences } from './sharedUtils';
-import path from 'path';
 
 export const updateRootProjectReferences = (tsConfigNames: string[]): void => {
   const cmdRes = execSync('yarn workspaces list --json').toString();
@@ -46,5 +45,6 @@ export const updateRootProjectReferences = (tsConfigNames: string[]): void => {
     fs.writeFileSync(tsConfigPath, newContent);
   } catch (e) {
     console.error(e, `While processing top level config file ${tsConfigPath}`);
+    throw e;
   }
 };
