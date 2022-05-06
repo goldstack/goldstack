@@ -123,6 +123,8 @@ resource "aws_cloudfront_distribution" "website_cdn_redirect" {
 
 # Creates record to point to redirect CloudFront distribution
 resource "aws_route53_record" "website_cdn_redirect_record" {
+  count  = var.website_domain_redirect != null ? 1 : 0
+
   zone_id = data.aws_route53_zone.main.zone_id
   name    = var.website_domain_redirect
   type    = "A"
