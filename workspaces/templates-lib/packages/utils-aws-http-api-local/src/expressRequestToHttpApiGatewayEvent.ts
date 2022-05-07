@@ -205,8 +205,10 @@ export const injectGatewayResultIntoResponse = (
         });
       });
     }
-    if (structuredResult.body || structuredResult.body !== '') {
+    if (structuredResult.body) {
       resp.json(JSON.parse(structuredResult.body || ''));
+    } else {
+      resp.end();
     }
     return;
   }
