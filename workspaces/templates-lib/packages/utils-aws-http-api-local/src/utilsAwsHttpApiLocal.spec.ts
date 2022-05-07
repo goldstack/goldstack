@@ -27,7 +27,7 @@ describe('Should create API', () => {
     expect(await res.text()).toContain('abc');
   });
 
-  test.only('Should support non-success status codes and empty body', async () => {
+  test('Should support non-success status codes and empty body', async () => {
     const res = await fetch(`http://localhost:${port}/keepOut`);
     expect(res.status).toEqual(401);
     expect(res.bodyUsed).toBeFalsy();
