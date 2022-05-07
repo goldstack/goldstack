@@ -186,7 +186,7 @@ export const injectGatewayResultIntoResponse = (
   }
 
   // 2: structured output
-  if (result.body) {
+  if (result.statusCode) {
     const structuredResult: APIGatewayProxyStructuredResultV2 = result as APIGatewayProxyStructuredResultV2;
     resp.status(structuredResult.statusCode || 200);
     if (structuredResult.headers) {
@@ -205,7 +205,11 @@ export const injectGatewayResultIntoResponse = (
         });
       });
     }
-    resp.json(JSON.parse(structuredResult.body || '"parsing error"'));
+    if (structuredResult.body) {
+      resp.json(JSON.parse(structuredResult.body || ''));
+    } else {
+      resp.end();
+    }
     return;
   }
 
