@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/ThisDeployment",
+  "definitions": {
+    "ThisDeployment": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/DeploymentName"
+        },
+        "configuration": {
+          "$ref": "#/definitions/ThisDeploymentConfiguration"
+        },
+        "terraformVariables": {
+          "$ref": "#/definitions/TerraformVariables"
+        },
+        "tfStateKey": {
+          "$ref": "#/definitions/TerraformStateKey"
+        },
+        "tfVersion": {
+          "$ref": "#/definitions/TerraformVersion"
+        },
+        "awsRegion": {
+          "$ref": "#/definitions/AWSDeploymentRegion"
+        },
+        "awsUser": {
+          "$ref": "#/definitions/AWSUserName"
+        }
+      },
+      "required": [
+        "awsRegion",
+        "awsUser",
+        "configuration",
+        "name"
+      ]
+    },
+    "DeploymentName": {
+      "type": "string",
+      "description": "Identifier for this deployment. No spaces allowed in name.",
+      "title": "Deployment Name",
+      "pattern": "^[^\\s]*$"
+    },
+    "ThisDeploymentConfiguration": {
+      "type": "object",
+      "properties": {
+        "bucketName": {
+          "type": "string",
+          "description": "The name of the bucket. No spaces, numbers or special characters other than '-' allowed.",
+          "title": "Bucket Name",
+          "pattern": "^[A-Za-z0-9-]*$"
+        }
+      },
+      "required": [
+        "bucketName"
+      ]
+    },
+    "TerraformVariables": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TerraformVariable"
+      },
+      "description": "Define which of the deployment variables will be made available for terraform.",
+      "title": "Terraform Variables"
+    },
+    "TerraformVariable": {
+      "type": "string",
+      "description": "Name of the property that should be converted into a Terraform variable.",
+      "title": "Terraform Variable"
+    },
+    "TerraformStateKey": {
+      "type": "string",
+      "description": "Key used for Terraform state persisted in Terraform state bucket.\n\nWill be auto-generated upon first deployment if not provided.",
+      "title": "Terraform State Key"
+    },
+    "TerraformVersion": {
+      "type": "string",
+      "enum": [
+        "0.12",
+        "0.13",
+        "0.14",
+        "0.15",
+        "1.0",
+        "1.1"
+      ],
+      "description": "Version of Terraform that the remote state for this deployment was created with.\n\nGo to the next version using `yarn infra upgrade [deploymentName] [targetVersion]`. Note that Terraform versions should only be increased one at a time, so for instance you can go from v0.12 to v0.13 but not from v0.12 to v0.14.",
+      "default": "0.12"
+    },
+    "AWSDeploymentRegion": {
+      "type": "string",
+      "enum": [
+        "us-east-1",
+        "us-east-2",
+        "us-west-1",
+        "us-west-2",
+        "af-south-1",
+        "ap-east-1",
+        "ap-south-1",
+        "ap-northeast-3",
+        "ap-northeast-2",
+        "ap-southeast-1",
+        "ap-southeast-2",
+        "ap-northeast-1",
+        "ca-central-1",
+        "eu-central-1",
+        "eu-west-1",
+        "eu-west-2",
+        "eu-south-1",
+        "eu-west-3",
+        "eu-north-1",
+        "me-south-1",
+        "sa-east-1"
+      ],
+      "description": "AWS region that infrastructure should be deployed to.",
+      "title": "AWS Deployment Region"
+    },
+    "AWSUserName": {
+      "type": "string",
+      "description": "Name of the AWS user that is used to perform the deployment.",
+      "title": "AWS User Name"
+    }
+  }
+}

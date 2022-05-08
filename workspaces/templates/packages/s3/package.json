@@ -22,16 +22,13 @@
     "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js"
   },
   "dependencies": {
-    "@goldstack/template-s3": "0.3.95",
-    "@goldstack/utils-git": "0.1.32",
-    "@goldstack/utils-sh": "0.4.29"
+    "@goldstack/template-s3": "0.3.95"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.0",
-    "aws-sdk": "2.814.0",
+    "aws-sdk": "2.1055.0",
     "jest": "^27.5.1",
-    "nodemon": "^2.0.15",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.3.0",

@@ -1,0 +1,8 @@
+{
+  "templateName": "dynamodb",
+  "templateVersion": "0.1.0",
+  "previousTemplateVersion": "0.0.0",
+  "templateDescription": "Configures a DynamoDB table for storing application data",
+  "templateDocumentation": "https://docs.goldstack.party/docs/templates/dynamodb",
+  "templateArchive": ""
+}

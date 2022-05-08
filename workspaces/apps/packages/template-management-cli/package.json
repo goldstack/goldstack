@@ -57,7 +57,7 @@
     "@types/source-map-support": "^0.5.4",
     "@types/wtfnode": "^0.7.0",
     "@types/yargs": "^15.0.5",
-    "aws-sdk": "2.814.0",
+    "aws-sdk": "2.1055.0",
     "concurrently": "^5.2.0",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",

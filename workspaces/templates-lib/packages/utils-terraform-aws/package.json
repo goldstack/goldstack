@@ -42,7 +42,7 @@
     "@goldstack/utils-package": "0.3.36",
     "@goldstack/utils-sh": "0.4.29",
     "@goldstack/utils-terraform": "0.3.66",
-    "aws-sdk": "2.814.0"
+    "aws-sdk": "2.1055.0"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.32",

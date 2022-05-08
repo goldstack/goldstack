@@ -27,7 +27,7 @@
     "@goldstack/utils-sh": "0.4.29",
     "@goldstack/utils-template": "0.3.33",
     "archiver": "^5.3.1",
-    "aws-sdk": "2.814.0",
+    "aws-sdk": "2.1055.0",
     "fs-extra": "^9.0.1",
     "semver": "^7.3.2",
     "uuid": "^8.3.0"

@@ -45,7 +45,7 @@
     "@goldstack/utils-aws-cli": "0.3.52",
     "@goldstack/utils-log": "0.2.12",
     "@goldstack/utils-sh": "0.4.29",
-    "aws-sdk": "2.814.0"
+    "aws-sdk": "2.1055.0"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.32",

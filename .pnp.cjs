@@ -99,6 +99,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates/packages/docker-image-aws"
       },
       {
+        "name": "@goldstack/dynamodb",
+        "reference": "workspace:workspaces/templates/packages/dynamodb"
+      },
+      {
         "name": "@goldstack/email-send",
         "reference": "workspace:workspaces/templates/packages/email-send"
       },
@@ -357,6 +361,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/cdn", ["workspace:workspaces/docs/packages/cdn"]],
       ["@goldstack/docker-image-aws", ["workspace:workspaces/templates/packages/docker-image-aws"]],
       ["@goldstack/docs-main", ["workspace:workspaces/docs/packages/docs-main"]],
+      ["@goldstack/dynamodb", ["workspace:workspaces/templates/packages/dynamodb"]],
       ["@goldstack/email-send", ["workspace:workspaces/templates/packages/email-send"]],
       ["@goldstack/goldstack-api", ["workspace:workspaces/apps/packages/goldstack-api"]],
       ["@goldstack/goldstack-email-send", ["workspace:workspaces/apps/packages/goldstack-email-send"]],
@@ -1821,6 +1826,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT",
         }]
       ]],
+      ["@goldstack/dynamodb", [
+        ["workspace:workspaces/templates/packages/dynamodb", {
+          "packageLocation": "./workspaces/templates/packages/dynamodb/",
+          "packageDependencies": [
+            ["@goldstack/dynamodb", "workspace:workspaces/templates/packages/dynamodb"],
+            ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],
+            ["@types/jest", "npm:27.4.1"],
+            ["@types/node", "npm:16.11.0"],
+            ["aws-sdk", "npm:2.814.0"],
+            ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
+            ["rimraf", "npm:3.0.2"],
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.1.4"],
+            ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.3.0"],
+            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
       ["@goldstack/email-send", [
         ["workspace:workspaces/templates/packages/email-send", {
           "packageLocation": "./workspaces/templates/packages/email-send/",
@@ -2387,13 +2410,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@goldstack/s3", "workspace:workspaces/templates/packages/s3"],
             ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],
-            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
-            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
             ["aws-sdk", "npm:2.814.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
-            ["nodemon", "npm:2.0.15"],
             ["rimraf", "npm:3.0.2"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.1.4"],
             ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.3.0"],
