@@ -145,6 +145,7 @@ export const convertToGatewayEvent = (
       timeEpoch: new Date().getTime(),
     },
     isBase64Encoded: false,
+    body: JSON.stringify(params.req.body),
   };
 };
 
@@ -190,11 +191,9 @@ export const injectGatewayResultIntoResponse = (
     const structuredResult: APIGatewayProxyStructuredResultV2 = result as APIGatewayProxyStructuredResultV2;
     resp.status(structuredResult.statusCode || 200);
     if (structuredResult.headers) {
-      resp.contentType(
-        (structuredResult.headers['content-type'] as string) ||
-          'application/json'
-      );
-    } else {
+      resp.set(structuredResult.headers);
+    }
+    if (!structuredResult.headers?.['content-type']) {
       resp.contentType('application/json');
     }
     if (structuredResult.cookies) {

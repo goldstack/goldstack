@@ -72,6 +72,20 @@ describe('Should create API', () => {
     expect(response.message).toContain('Unknown endpoint');
   });
 
+  test('Should pass request body', async () => {
+    const res = await fetch(`http://localhost:${port}/echoBody`, {
+      method: 'post',
+      body: JSON.stringify({ message: 'The body.' }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+    expect(await res.text()).toContain('The body.');
+  });
+
+  test('Should return headers', async () => {
+    const res = await fetch(`http://localhost:${port}/echoBody`);
+    expect(await res.headers.get('location')).toContain('/echoBody');
+  });
+
   afterAll(async () => {
     if (server) {
       await server.shutdown();
