@@ -1,5 +1,8 @@
 import assert from 'assert';
-import { getTableName, connect } from './table';
+import { getTableName, connect, stopLocalDynamoDB } from './table';
+
+// needs to be long to download Docker image etc.
+jest.setTimeout(360000);
 
 describe('DynamoDB Table', () => {
   it('Should get table name', async () => {
@@ -12,10 +15,11 @@ describe('DynamoDB Table', () => {
     expect(tableName).toEqual('local-dynamodb');
   });
 
-  it('Should connect to local bucket', async () => {
+  it('Should connect to local table', async () => {
     const tableName = await getTableName();
     const dynamoDB = await connect();
     assert(tableName);
     assert(dynamoDB);
+    await stopLocalDynamoDB();
   });
 });

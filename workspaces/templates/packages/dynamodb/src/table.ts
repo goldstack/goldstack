@@ -1,6 +1,7 @@
 import {
   connect as templateConnect,
   getTableName as templateGetTableName,
+  stopLocalDynamoDB as templateStopLocalDynamoDB,
 } from '@goldstack/template-dynamodb';
 
 import DynamoDB from 'aws-sdk/clients/dynamodb';
@@ -15,6 +16,15 @@ export const connect = async (deploymentName?: string): Promise<DynamoDB> => {
   );
 };
 
+export const stopLocalDynamoDB = async (
+  deploymentName?: string
+): Promise<void> => {
+  return await templateStopLocalDynamoDB(
+    goldstackConfig,
+    goldstackSchema,
+    deploymentName
+  );
+};
 export const getTableName = async (
   deploymentName?: string
 ): Promise<string> => {

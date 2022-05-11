@@ -1503,6 +1503,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@balena/dockerignore", [
+        ["npm:1.0.2", {
+          "packageLocation": "./.yarn/cache/@balena-dockerignore-npm-1.0.2-1128560642-0d39f8fbcf.zip/node_modules/@balena/dockerignore/",
+          "packageDependencies": [
+            ["@balena/dockerignore", "npm:1.0.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@bcoe/v8-coverage", [
         ["npm:0.2.3", {
           "packageLocation": "./.yarn/cache/@bcoe-v8-coverage-npm-0.2.3-9e27b3c57e-850f930553.zip/node_modules/@bcoe/v8-coverage/",
@@ -1728,7 +1737,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:16.11.0"],
             ["@types/semver", "npm:7.3.4"],
             ["archiver", "npm:5.3.1"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["fs-extra", "npm:9.0.1"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["rimraf", "npm:3.0.2"],
@@ -1839,7 +1848,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/template-dynamodb", "workspace:workspaces/templates-lib/packages/template-dynamodb"],
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["rimraf", "npm:3.0.2"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.1.4"],
@@ -1859,7 +1868,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["nodemon", "npm:2.0.15"],
             ["rimraf", "npm:3.0.2"],
@@ -1942,7 +1951,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["nodemon", "npm:2.0.15"],
             ["rimraf", "npm:3.0.2"],
@@ -2051,7 +2060,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["axios", "npm:0.21.2"],
             ["handlebars", "npm:4.7.7"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
@@ -2319,7 +2328,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["concurrently", "npm:5.2.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["nodemon", "npm:2.0.15"],
@@ -2350,7 +2359,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:16.11.0"],
             ["@types/semver", "npm:7.3.4"],
             ["@types/uuid", "npm:8.3.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["fs-extra", "npm:9.0.1"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["rimraf", "npm:3.0.2"],
@@ -2372,7 +2381,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["concurrently", "npm:5.2.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["nodemon", "npm:2.0.15"],
@@ -2417,7 +2426,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["rimraf", "npm:3.0.2"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.1.4"],
@@ -2508,7 +2517,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/semver", "npm:7.3.4"],
             ["@types/stripe", "npm:7.13.24"],
             ["@types/uuid", "npm:8.3.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["fs-extra", "npm:9.0.1"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["rimraf", "npm:3.0.2"],
@@ -2530,7 +2539,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["concurrently", "npm:5.2.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["nodemon", "npm:2.0.15"],
@@ -2583,7 +2592,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:27.4.1"],
             ["@types/mock-aws-s3", "npm:2.6.3"],
             ["@types/node", "npm:16.11.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["mock-aws-s3", "npm:4.0.2"],
             ["rimraf", "npm:3.0.2"],
@@ -2649,7 +2658,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:16.11.0"],
             ["@types/source-map-support", "npm:0.5.4"],
             ["@types/yargs", "npm:15.0.7"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["rimraf", "npm:3.0.2"],
             ["source-map-support", "npm:0.5.21"],
@@ -2684,10 +2693,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
             ["@types/yargs", "npm:15.0.7"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["rimraf", "npm:3.0.2"],
             ["source-map-support", "npm:0.5.21"],
+            ["testcontainers", "npm:8.10.0"],
+            ["testcontainers-dynamodb", "virtual:e767f47ccbab31b0f661568bf806e2fa0a77bef3cd55e0f365ddfaf07145b109b6d59d49e904f7f8e8d386f5560ab07bcc3d62f82153ee106012002a18c65835#npm:1.0.1"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.1.4"],
             ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.3.0"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"],
@@ -2720,7 +2731,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:16.11.0"],
             ["@types/uuid", "npm:8.3.0"],
             ["@types/yargs", "npm:15.0.7"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["rimraf", "npm:3.0.2"],
             ["source-map-support", "npm:0.5.21"],
@@ -2841,7 +2852,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/source-map-support", "npm:0.5.4"],
             ["@types/wtfnode", "npm:0.7.0"],
             ["@types/yargs", "npm:15.0.7"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["concurrently", "npm:5.2.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["mock-aws-s3", "npm:4.0.2"],
@@ -2931,7 +2942,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
             ["@types/semver", "npm:7.3.4"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["fs-extra", "npm:9.0.1"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["rimraf", "npm:3.0.2"],
@@ -2952,7 +2963,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["concurrently", "npm:5.2.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["nodemon", "npm:2.0.15"],
@@ -2989,7 +3000,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/mock-aws-s3", "npm:2.6.3"],
             ["@types/node", "npm:16.11.0"],
             ["@types/yargs", "npm:15.0.7"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["mock-aws-s3", "npm:4.0.2"],
             ["rimraf", "npm:3.0.2"],
@@ -3065,7 +3076,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["rimraf", "npm:3.0.2"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.1.4"],
@@ -3111,7 +3122,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["rimraf", "npm:3.0.2"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.1.4"],
@@ -3414,7 +3425,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["rimraf", "npm:3.0.2"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.1.4"],
@@ -3563,7 +3574,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],
             ["@types/jest", "npm:27.4.1"],
             ["@types/node", "npm:16.11.0"],
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.5.1"],
             ["rimraf", "npm:3.0.2"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.1.4"],
@@ -4593,6 +4604,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/glob", "npm:7.1.3"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:5.3.1", {
+          "packageLocation": "./.yarn/cache/@types-archiver-npm-5.3.1-b9e2fa26fb-1c6babc7f5.zip/node_modules/@types/archiver/",
+          "packageDependencies": [
+            ["@types/archiver", "npm:5.3.1"],
+            ["@types/glob", "npm:7.1.3"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["@types/aria-query", [
@@ -4809,6 +4828,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-cors-npm-2.8.12-ff52e8e514-8c45f112c7.zip/node_modules/@types/cors/",
           "packageDependencies": [
             ["@types/cors", "npm:2.8.12"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/docker-modem", [
+        ["npm:3.0.2", {
+          "packageLocation": "./.yarn/cache/@types-docker-modem-npm-3.0.2-edc65cac6a-1f23db30e6.zip/node_modules/@types/docker-modem/",
+          "packageDependencies": [
+            ["@types/docker-modem", "npm:3.0.2"],
+            ["@types/node", "npm:14.0.13"],
+            ["@types/ssh2", "npm:0.5.52"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/dockerode", [
+        ["npm:3.3.9", {
+          "packageLocation": "./.yarn/cache/@types-dockerode-npm-3.3.9-3b2c48453a-3d03c68add.zip/node_modules/@types/dockerode/",
+          "packageDependencies": [
+            ["@types/dockerode", "npm:3.3.9"],
+            ["@types/docker-modem", "npm:3.0.2"],
+            ["@types/node", "npm:14.0.13"]
           ],
           "linkType": "HARD",
         }]
@@ -5165,7 +5206,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@types/mock-aws-s3", "npm:2.6.3"],
             ["@types/node", "npm:14.0.13"],
-            ["aws-sdk", "npm:2.814.0"]
+            ["aws-sdk", "npm:2.1055.0"]
           ],
           "linkType": "HARD",
         }]
@@ -5447,6 +5488,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@types/source-map-support", "npm:0.5.4"],
             ["source-map", "npm:0.6.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/ssh2", [
+        ["npm:0.5.52", {
+          "packageLocation": "./.yarn/cache/@types-ssh2-npm-0.5.52-db874bb656-bc1c76ac72.zip/node_modules/@types/ssh2/",
+          "packageDependencies": [
+            ["@types/ssh2", "npm:0.5.52"],
+            ["@types/node", "npm:14.0.13"],
+            ["@types/ssh2-streams", "npm:0.1.9"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/ssh2-streams", [
+        ["npm:0.1.9", {
+          "packageLocation": "./.yarn/cache/@types-ssh2-streams-npm-0.1.9-171d709544-190f3c235b.zip/node_modules/@types/ssh2-streams/",
+          "packageDependencies": [
+            ["@types/ssh2-streams", "npm:0.1.9"],
+            ["@types/node", "npm:14.0.13"]
           ],
           "linkType": "HARD",
         }]
@@ -7042,6 +7104,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["safer-buffer", "npm:2.1.2"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:0.2.6", {
+          "packageLocation": "./.yarn/cache/asn1-npm-0.2.6-bdd07356c4-39f2ae343b.zip/node_modules/asn1/",
+          "packageDependencies": [
+            ["asn1", "npm:0.2.6"],
+            ["safer-buffer", "npm:2.1.2"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["asn1.js", [
@@ -7181,10 +7251,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["aws-sdk", [
-        ["npm:2.814.0", {
-          "packageLocation": "./.yarn/cache/aws-sdk-npm-2.814.0-0789dc10ed-6064f681fb.zip/node_modules/aws-sdk/",
+        ["npm:2.1055.0", {
+          "packageLocation": "./.yarn/cache/aws-sdk-npm-2.1055.0-7a5627cede-a54b043535.zip/node_modules/aws-sdk/",
           "packageDependencies": [
-            ["aws-sdk", "npm:2.814.0"],
+            ["aws-sdk", "npm:2.1055.0"],
             ["buffer", "npm:4.9.2"],
             ["events", "npm:1.1.1"],
             ["ieee754", "npm:1.1.13"],
@@ -7909,6 +7979,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["buildcheck", [
+        ["npm:0.0.3", {
+          "packageLocation": "./.yarn/cache/buildcheck-npm-0.0.3-ac31c4ae43-baf30605c5.zip/node_modules/buildcheck/",
+          "packageDependencies": [
+            ["buildcheck", "npm:0.0.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["builtin-status-codes", [
         ["npm:3.0.0", {
           "packageLocation": "./.yarn/cache/builtin-status-codes-npm-3.0.0-e376b0580b-1119429cf4.zip/node_modules/builtin-status-codes/",
@@ -7927,6 +8006,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["moment", "npm:2.29.2"],
             ["mv", "npm:2.1.1"],
             ["safe-json-stringify", "npm:1.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["byline", [
+        ["npm:5.0.0", {
+          "packageLocation": "./.yarn/cache/byline-npm-5.0.0-dde6edb7d9-737ca83e8e.zip/node_modules/byline/",
+          "packageDependencies": [
+            ["byline", "npm:5.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -9167,6 +9255,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["cpu-features", [
+        ["npm:0.0.4", {
+          "packageLocation": "./.yarn/unplugged/cpu-features-npm-0.0.4-b474ef5da3/node_modules/cpu-features/",
+          "packageDependencies": [
+            ["cpu-features", "npm:0.0.4"],
+            ["buildcheck", "npm:0.0.3"],
+            ["nan", "npm:2.15.0"],
+            ["node-gyp", "npm:9.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["crc-32", [
         ["npm:1.2.2", {
           "packageLocation": "./.yarn/cache/crc-32-npm-1.2.2-28bdc12bcc-ad2d0ad0cb.zip/node_modules/crc-32/",
@@ -9997,6 +10097,40 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["dns-txt", "npm:2.0.2"],
             ["buffer-indexof", "npm:1.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["docker-compose", [
+        ["npm:0.23.17", {
+          "packageLocation": "./.yarn/cache/docker-compose-npm-0.23.17-7cb83a8cad-c308bf067c.zip/node_modules/docker-compose/",
+          "packageDependencies": [
+            ["docker-compose", "npm:0.23.17"],
+            ["yaml", "npm:1.10.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["docker-modem", [
+        ["npm:3.0.3", {
+          "packageLocation": "./.yarn/cache/docker-modem-npm-3.0.3-5736be136e-4ad495d17a.zip/node_modules/docker-modem/",
+          "packageDependencies": [
+            ["docker-modem", "npm:3.0.3"],
+            ["debug", "virtual:2395052be89e7cb60a9e457720a81c812457953cc762643b2dddf96818b24121417de8a1244c250c72573d9df94e1c92243e353c6f07da586de517860c3c8e2e#npm:4.2.0"],
+            ["readable-stream", "npm:3.6.0"],
+            ["split-ca", "npm:1.0.1"],
+            ["ssh2", "npm:1.10.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["dockerode", [
+        ["npm:3.3.1", {
+          "packageLocation": "./.yarn/cache/dockerode-npm-3.3.1-77efbe3384-930162ae2d.zip/node_modules/dockerode/",
+          "packageDependencies": [
+            ["dockerode", "npm:3.3.1"],
+            ["docker-modem", "npm:3.0.3"],
+            ["tar-fs", "npm:2.0.1"]
           ],
           "linkType": "HARD",
         }]
@@ -12364,6 +12498,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/get-package-type-npm-0.1.0-6c70cdc8ab-bba0811116.zip/node_modules/get-package-type/",
           "packageDependencies": [
             ["get-package-type", "npm:0.1.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["get-port", [
+        ["npm:5.1.1", {
+          "packageLocation": "./.yarn/cache/get-port-npm-5.1.1-2f6074007a-0162663ffe.zip/node_modules/get-port/",
+          "packageDependencies": [
+            ["get-port", "npm:5.1.1"]
           ],
           "linkType": "HARD",
         }]
@@ -16735,6 +16878,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["mkdirp-classic", [
+        ["npm:0.5.3", {
+          "packageLocation": "./.yarn/cache/mkdirp-classic-npm-0.5.3-3b5c991910-3f4e088208.zip/node_modules/mkdirp-classic/",
+          "packageDependencies": [
+            ["mkdirp-classic", "npm:0.5.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["mock-aws-s3", [
         ["npm:4.0.2", {
           "packageLocation": "./.yarn/cache/mock-aws-s3-npm-4.0.2-17b80c9a18-bfa7d6858d.zip/node_modules/mock-aws-s3/",
@@ -16873,6 +17025,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/unplugged/nan-npm-2.14.1-16097a6487/node_modules/nan/",
           "packageDependencies": [
             ["nan", "npm:2.14.1"],
+            ["node-gyp", "npm:9.0.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:2.15.0", {
+          "packageLocation": "./.yarn/unplugged/nan-npm-2.15.0-505c98ef4d/node_modules/nan/",
+          "packageDependencies": [
+            ["nan", "npm:2.15.0"],
             ["node-gyp", "npm:9.0.0"]
           ],
           "linkType": "HARD",
@@ -18709,6 +18869,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [
             "@types/react",
             "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["properties-reader", [
+        ["npm:2.2.0", {
+          "packageLocation": "./.yarn/cache/properties-reader-npm-2.2.0-a1b3b17f1d-a5c5684b1e.zip/node_modules/properties-reader/",
+          "packageDependencies": [
+            ["properties-reader", "npm:2.2.0"],
+            ["mkdirp", "npm:1.0.4"]
           ],
           "linkType": "HARD",
         }]
@@ -20939,6 +21109,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["split-ca", [
+        ["npm:1.0.1", {
+          "packageLocation": "./.yarn/cache/split-ca-npm-1.0.1-8e5f2e1d22-1e7409938a.zip/node_modules/split-ca/",
+          "packageDependencies": [
+            ["split-ca", "npm:1.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["split-string", [
         ["npm:3.1.0", {
           "packageLocation": "./.yarn/cache/split-string-npm-3.1.0-df5d83450e-ae5af5c91b.zip/node_modules/split-string/",
@@ -20954,6 +21133,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/sprintf-js-npm-1.0.3-73f0a322fa-19d79aec21.zip/node_modules/sprintf-js/",
           "packageDependencies": [
             ["sprintf-js", "npm:1.0.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["ssh-remote-port-forward", [
+        ["npm:1.0.4", {
+          "packageLocation": "./.yarn/cache/ssh-remote-port-forward-npm-1.0.4-5c686cdf22-c6c04c5ddf.zip/node_modules/ssh-remote-port-forward/",
+          "packageDependencies": [
+            ["ssh-remote-port-forward", "npm:1.0.4"],
+            ["@types/ssh2", "npm:0.5.52"],
+            ["ssh2", "npm:1.10.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["ssh2", [
+        ["npm:1.10.0", {
+          "packageLocation": "./.yarn/unplugged/ssh2-npm-1.10.0-b2ce7309e9/node_modules/ssh2/",
+          "packageDependencies": [
+            ["ssh2", "npm:1.10.0"],
+            ["asn1", "npm:0.2.6"],
+            ["bcrypt-pbkdf", "npm:1.0.2"],
+            ["cpu-features", "npm:0.0.4"],
+            ["nan", "npm:2.15.0"]
           ],
           "linkType": "HARD",
         }]
@@ -21770,6 +21973,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["tar-fs", [
+        ["npm:2.0.1", {
+          "packageLocation": "./.yarn/cache/tar-fs-npm-2.0.1-0734c93785-26cd297ed2.zip/node_modules/tar-fs/",
+          "packageDependencies": [
+            ["tar-fs", "npm:2.0.1"],
+            ["chownr", "npm:1.1.4"],
+            ["mkdirp-classic", "npm:0.5.3"],
+            ["pump", "npm:3.0.0"],
+            ["tar-stream", "npm:2.2.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:2.1.1", {
+          "packageLocation": "./.yarn/cache/tar-fs-npm-2.1.1-e374d3b7a2-f5b9a70059.zip/node_modules/tar-fs/",
+          "packageDependencies": [
+            ["tar-fs", "npm:2.1.1"],
+            ["chownr", "npm:1.1.4"],
+            ["mkdirp-classic", "npm:0.5.3"],
+            ["pump", "npm:3.0.0"],
+            ["tar-stream", "npm:2.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["tar-stream", [
         ["npm:2.2.0", {
           "packageLocation": "./.yarn/cache/tar-stream-npm-2.2.0-884c79b510-699831a8b9.zip/node_modules/tar-stream/",
@@ -21982,6 +22209,50 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["test-value", "npm:3.0.0"],
             ["array-back", "npm:2.0.0"],
             ["typical", "npm:2.6.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["testcontainers", [
+        ["npm:8.10.0", {
+          "packageLocation": "./.yarn/cache/testcontainers-npm-8.10.0-2f7c1336c3-aae0d505eb.zip/node_modules/testcontainers/",
+          "packageDependencies": [
+            ["testcontainers", "npm:8.10.0"],
+            ["@balena/dockerignore", "npm:1.0.2"],
+            ["@types/archiver", "npm:5.3.1"],
+            ["@types/dockerode", "npm:3.3.9"],
+            ["archiver", "npm:5.3.1"],
+            ["byline", "npm:5.0.0"],
+            ["debug", "virtual:428f325a939c2653ad822eb3d75efb02ac311523dd0d4f9645afc39ea00bd86eceac35a9d59c9b6977d76b670a4ef0ae057ea572338a44729aa592711a8c05a3#npm:4.3.4"],
+            ["docker-compose", "npm:0.23.17"],
+            ["dockerode", "npm:3.3.1"],
+            ["get-port", "npm:5.1.1"],
+            ["properties-reader", "npm:2.2.0"],
+            ["ssh-remote-port-forward", "npm:1.0.4"],
+            ["tar-fs", "npm:2.1.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["testcontainers-dynamodb", [
+        ["npm:1.0.1", {
+          "packageLocation": "./.yarn/cache/testcontainers-dynamodb-npm-1.0.1-02a79f93be-5b2225e74c.zip/node_modules/testcontainers-dynamodb/",
+          "packageDependencies": [
+            ["testcontainers-dynamodb", "npm:1.0.1"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:e767f47ccbab31b0f661568bf806e2fa0a77bef3cd55e0f365ddfaf07145b109b6d59d49e904f7f8e8d386f5560ab07bcc3d62f82153ee106012002a18c65835#npm:1.0.1", {
+          "packageLocation": "./.yarn/__virtual__/testcontainers-dynamodb-virtual-fe25de8cca/0/cache/testcontainers-dynamodb-npm-1.0.1-02a79f93be-5b2225e74c.zip/node_modules/testcontainers-dynamodb/",
+          "packageDependencies": [
+            ["testcontainers-dynamodb", "virtual:e767f47ccbab31b0f661568bf806e2fa0a77bef3cd55e0f365ddfaf07145b109b6d59d49e904f7f8e8d386f5560ab07bcc3d62f82153ee106012002a18c65835#npm:1.0.1"],
+            ["@types/aws-sdk", null],
+            ["aws-sdk", "npm:2.1055.0"],
+            ["testcontainers", "npm:8.10.0"]
+          ],
+          "packagePeers": [
+            "@types/aws-sdk",
+            "aws-sdk"
           ],
           "linkType": "HARD",
         }]
@@ -24554,6 +24825,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/yallist-npm-4.0.0-b493d9e907-343617202a.zip/node_modules/yallist/",
           "packageDependencies": [
             ["yallist", "npm:4.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["yaml", [
+        ["npm:1.10.2", {
+          "packageLocation": "./.yarn/cache/yaml-npm-1.10.2-0e780aebdf-ce4ada136e.zip/node_modules/yaml/",
+          "packageDependencies": [
+            ["yaml", "npm:1.10.2"]
           ],
           "linkType": "HARD",
         }]
