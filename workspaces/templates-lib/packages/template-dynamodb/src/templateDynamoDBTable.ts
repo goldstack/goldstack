@@ -2,20 +2,22 @@
 import { getAWSUser } from '@goldstack/infra-aws';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
 
+import {
+  GenericContainer,
+  StartedTestContainer,
+  StoppedTestContainer,
+} from 'testcontainers';
 import { DynamoDBPackage, DynamoDBDeployment } from './types/DynamoDBPackage';
 import assert from 'assert';
 
 import { PackageConfig } from '@goldstack/utils-package-config';
-import {
-  DynamoDBContainer,
-  StartedDynamoDBContainer,
-} from 'testcontainers-dynamodb';
+import { createClient, startContainer } from './localDynamoDB';
 
 type DynamoDBTableName = string;
 
 const startedContainers: Map<
   DynamoDBTableName,
-  StartedDynamoDBContainer | 'stopped'
+  StartedTestContainer | 'stopped'
 > = new Map();
 
 export const stopLocalDynamoDB = async (
@@ -72,15 +74,15 @@ export const connect = async (
     // TODO the key in this map may need to be extended to include the region as well, since dynamodb table names are unique per region.
     let startedContainer = startedContainers.get(tableName);
     if (startedContainer && startedContainer !== 'stopped') {
-      return startedContainer.createDynamoClient();
+      return createClient(startedContainer);
     }
-    startedContainer = await new DynamoDBContainer().start();
+    startedContainer = await startContainer();
 
     // Check if another container for this table has already been started in the meanwhile
     const startedContainerTest = startedContainers.get(tableName);
     if (startedContainerTest && startedContainerTest !== 'stopped') {
       await startedContainer.stop();
-      return startedContainerTest.createDynamoClient();
+      return createClient(startedContainerTest);
     }
 
     startedContainers.set(tableName, startedContainer);

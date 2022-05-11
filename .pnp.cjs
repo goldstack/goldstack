@@ -2698,7 +2698,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rimraf", "npm:3.0.2"],
             ["source-map-support", "npm:0.5.21"],
             ["testcontainers", "npm:8.10.0"],
-            ["testcontainers-dynamodb", "virtual:e767f47ccbab31b0f661568bf806e2fa0a77bef3cd55e0f365ddfaf07145b109b6d59d49e904f7f8e8d386f5560ab07bcc3d62f82153ee106012002a18c65835#npm:1.0.1"],
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:27.1.4"],
             ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.3.0"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"],
@@ -22230,29 +22229,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["properties-reader", "npm:2.2.0"],
             ["ssh-remote-port-forward", "npm:1.0.4"],
             ["tar-fs", "npm:2.1.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["testcontainers-dynamodb", [
-        ["npm:1.0.1", {
-          "packageLocation": "./.yarn/cache/testcontainers-dynamodb-npm-1.0.1-02a79f93be-5b2225e74c.zip/node_modules/testcontainers-dynamodb/",
-          "packageDependencies": [
-            ["testcontainers-dynamodb", "npm:1.0.1"]
-          ],
-          "linkType": "SOFT",
-        }],
-        ["virtual:e767f47ccbab31b0f661568bf806e2fa0a77bef3cd55e0f365ddfaf07145b109b6d59d49e904f7f8e8d386f5560ab07bcc3d62f82153ee106012002a18c65835#npm:1.0.1", {
-          "packageLocation": "./.yarn/__virtual__/testcontainers-dynamodb-virtual-fe25de8cca/0/cache/testcontainers-dynamodb-npm-1.0.1-02a79f93be-5b2225e74c.zip/node_modules/testcontainers-dynamodb/",
-          "packageDependencies": [
-            ["testcontainers-dynamodb", "virtual:e767f47ccbab31b0f661568bf806e2fa0a77bef3cd55e0f365ddfaf07145b109b6d59d49e904f7f8e8d386f5560ab07bcc3d62f82153ee106012002a18c65835#npm:1.0.1"],
-            ["@types/aws-sdk", null],
-            ["aws-sdk", "npm:2.1055.0"],
-            ["testcontainers", "npm:8.10.0"]
-          ],
-          "packagePeers": [
-            "@types/aws-sdk",
-            "aws-sdk"
           ],
           "linkType": "HARD",
         }]

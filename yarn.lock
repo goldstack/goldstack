@@ -1790,7 +1790,6 @@ __metadata:
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
     testcontainers: ^8.10.0
-    testcontainers-dynamodb: ^1.0.1
     ts-jest: ^27.1.4
     ts-node: ^10.3.0
     typescript: ^4.4.3
@@ -19017,16 +19016,7 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"testcontainers-dynamodb@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "testcontainers-dynamodb@npm:1.0.1"
-  peerDependencies:
-    aws-sdk: ^2.748.0
-  checksum: 5b2225e74c8adb8016cd604120b912f04c941167c306cbf173de7501817b9514e197ed75b3bfd4794715792a184f69cfca5ae7d25f8893154dda1cf90972f8e5
-  languageName: node
-  linkType: hard
-
-"testcontainers@npm:*, testcontainers@npm:^8.10.0":
+"testcontainers@npm:^8.10.0":
   version: 8.10.0
   resolution: "testcontainers@npm:8.10.0"
   dependencies:
