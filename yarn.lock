@@ -987,7 +987,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/dynamodb@workspace:workspaces/templates/packages/dynamodb"
   dependencies:
-    "@goldstack/template-s3": 0.3.95
+    "@goldstack/template-dynamodb": 0.1.0
     "@types/jest": ^27.4.1
     "@types/node": ^16.11.0
     aws-sdk: 2.1055.0
@@ -1753,6 +1753,42 @@ __metadata:
   bin:
     template: ./bin/template
     template-docker-image-aws: ./bin/template
+  languageName: unknown
+  linkType: soft
+
+"@goldstack/template-dynamodb@0.1.0, @goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb"
+  dependencies:
+    "@goldstack/infra": 0.3.34
+    "@goldstack/infra-aws": 0.3.42
+    "@goldstack/utils-cli": 0.2.11
+    "@goldstack/utils-config": 0.3.31
+    "@goldstack/utils-docker": 0.3.36
+    "@goldstack/utils-docs-cli": 0.3.11
+    "@goldstack/utils-git": 0.1.32
+    "@goldstack/utils-log": 0.2.12
+    "@goldstack/utils-package": 0.3.36
+    "@goldstack/utils-package-config": 0.3.36
+    "@goldstack/utils-package-config-generate": 0.2.12
+    "@goldstack/utils-sh": 0.4.29
+    "@goldstack/utils-template": 0.3.33
+    "@goldstack/utils-terraform": 0.3.66
+    "@goldstack/utils-terraform-aws": 0.3.65
+    "@types/jest": ^27.4.1
+    "@types/node": ^16.11.0
+    "@types/yargs": ^15.0.5
+    aws-sdk: 2.1055.0
+    jest: ^27.5.1
+    rimraf: ^3.0.2
+    source-map-support: ^0.5.21
+    ts-jest: ^27.1.4
+    ts-node: ^10.3.0
+    typescript: ^4.4.3
+    yargs: ^15.4.1
+  bin:
+    template: ./bin/template
+    template-s3: ./bin/template
   languageName: unknown
   linkType: soft
 

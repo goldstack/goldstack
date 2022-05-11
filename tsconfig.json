@@ -89,6 +89,9 @@
       "path": "workspaces/templates/packages/docker-image-aws"
     },
     {
+      "path": "workspaces/templates/packages/dynamodb"
+    },
+    {
       "path": "workspaces/templates/packages/email-send"
     },
     {
@@ -129,6 +132,9 @@
     },
     {
       "path": "workspaces/templates-lib/packages/template-docker-image-aws"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-dynamodb"
     },
     {
       "path": "workspaces/templates-lib/packages/template-email-send"

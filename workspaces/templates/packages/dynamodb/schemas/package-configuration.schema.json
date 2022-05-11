@@ -5,8 +5,8 @@
     "ThisPackageConfiguration": {
       "type": "object",
       "properties": {},
-      "description": "S3 Configuration",
-      "title": "S3 Configuration"
+      "description": "DynamoDB Configuration",
+      "title": "DynamoDB Configuration"
     }
   }
 }

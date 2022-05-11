@@ -12,13 +12,7 @@
   },
   "references": [
     {
-      "path": "../../../templates-lib/packages/template-s3"
-    },
-    {
-      "path": "../../../templates-lib/packages/utils-git"
-    },
-    {
-      "path": "../../../templates-lib/packages/utils-sh"
+      "path": "../../../templates-lib/packages/template-dynamodb"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/package.schema.json",
-  "name": "s3",
-  "template": "s3",
+  "name": "dynamodb",
+  "template": "dynamodb",
   "templateVersion": "0.1.0",
   "configuration": {},
   "deployments": [
@@ -10,9 +10,8 @@
       "awsRegion": "us-west-2",
       "awsUser": "goldstack-dev",
       "configuration": {
-        "bucketName": "goldstack-test-s3-bucket"
+        "tableName": "goldstack-test-dynamodb-table"
       },
-      "tfStateKey": "s3-prod-40dd578eab44b83dc601.tfstate",
       "tfVersion": "1.1"
     }
   ]
