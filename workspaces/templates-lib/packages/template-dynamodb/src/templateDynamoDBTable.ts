@@ -24,9 +24,8 @@ export const getTableName = async (
     goldstackJson: goldstackConfig,
     packageSchema,
   });
-  const config = packageConfig.getConfig();
 
-  return getTableNameUtils(config, packageConfig, deploymentName);
+  return getTableNameUtils(packageConfig, deploymentName);
 };
 
 export const stopLocalDynamoDB = async (
@@ -39,9 +38,8 @@ export const stopLocalDynamoDB = async (
     goldstackJson: goldstackConfig,
     packageSchema,
   });
-  const config = packageConfig.getConfig();
 
-  return stopLocalDynamoDBUtils(config, packageConfig, deploymentName);
+  return stopLocalDynamoDBUtils(packageConfig, deploymentName);
 };
 
 export const connect = async (
@@ -54,9 +52,8 @@ export const connect = async (
     goldstackJson: goldstackConfig,
     packageSchema,
   });
-  const config = packageConfig.getConfig();
   if (deploymentName === 'local') {
-    return localConnect(config, packageSchema, deploymentName);
+    return localConnect(packageConfig, deploymentName);
   }
   const deployment = packageConfig.getDeployment(deploymentName);
 

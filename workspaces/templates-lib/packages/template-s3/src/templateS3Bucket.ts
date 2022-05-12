@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { getAWSUser } from '@goldstack/infra-aws';
 import S3 from 'aws-sdk/clients/s3';
 

@@ -17,15 +17,10 @@ const startedContainers: Map<
 > = new Map();
 
 export const localConnect = async (
-  goldstackConfig: DynamoDBPackage,
   packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName?: string
 ): Promise<DynamoDB> => {
-  const tableName = await getTableName(
-    goldstackConfig,
-    packageConfig,
-    deploymentName
-  );
+  const tableName = await getTableName(packageConfig, deploymentName);
 
   // TODO the key in this map may need to be extended to include the region as well, since dynamodb table names are unique per region.
   let startedContainer = startedContainers.get(tableName);
@@ -72,15 +67,10 @@ export const startContainer = (): Promise<StartedTestContainer> => {
 };
 
 export const stopLocalDynamoDB = async (
-  goldstackConfig: DynamoDBPackage,
   packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName?: string
 ): Promise<void> => {
-  const tableName = await getTableName(
-    goldstackConfig,
-    packageConfig,
-    deploymentName
-  );
+  const tableName = await getTableName(packageConfig, deploymentName);
   const startedContainer = startedContainers.get(tableName);
   if (!startedContainer) {
     throw new Error(

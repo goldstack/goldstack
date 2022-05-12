@@ -4,13 +4,12 @@ import assert from 'assert';
 import DynamoDBPackage, { DynamoDBDeployment } from './types/DynamoDBPackage';
 
 export const getTableName = async (
-  goldstackConfig: DynamoDBPackage,
   packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName?: string
 ): Promise<string> => {
   deploymentName = getDeploymentName(deploymentName);
   if (deploymentName === 'local') {
-    return `local-${goldstackConfig.name}`;
+    return `local-${packageConfig.getConfig().name}`;
   }
   const deployment = packageConfig.getDeployment(deploymentName);
   return deployment.configuration.tableName;

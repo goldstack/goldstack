@@ -18,7 +18,7 @@
           "$ref": "#/definitions/ThisPackageConfiguration"
         },
         "deployments": {
-          "$ref": "#/definitions/DynamoDBDeployments"
+          "$ref": "#/definitions/S3Deployments"
         },
         "$schema": {
           "type": "string"
@@ -33,8 +33,8 @@
         "templateVersion"
       ],
       "additionalProperties": false,
-      "description": "A DynamoDB table.",
-      "title": "DynamoDB Package"
+      "description": "An S3 bucket.",
+      "title": "S3 Package"
     },
     "Template": {
       "type": "string",
@@ -55,15 +55,15 @@
     "ThisPackageConfiguration": {
       "type": "object",
       "properties": {},
-      "description": "DynamoDB Configuration",
-      "title": "DynamoDB Configuration"
+      "description": "S3 Configuration",
+      "title": "S3 Configuration"
     },
-    "DynamoDBDeployments": {
+    "S3Deployments": {
       "type": "array",
       "items": {
         "$ref": "#/definitions/ThisDeployment"
       },
-      "description": "Places where the DynamoDB table should be deployed to.",
+      "description": "Places where the S3 bucket should be deployed to.",
       "title": "Deployments"
     },
     "ThisDeployment": {
@@ -107,15 +107,15 @@
     "ThisDeploymentConfiguration": {
       "type": "object",
       "properties": {
-        "tableName": {
+        "bucketName": {
           "type": "string",
-          "description": "The name of the DynamoDB table. No spaces, numbers or special characters other than '-', '.' and '_' allowed.\n\nSee https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html",
-          "title": "DynamoDB table name",
-          "pattern": "^[A-Za-z0-9-\\._]*$"
+          "description": "The name of the bucket. No spaces, numbers or special characters other than '-' allowed.",
+          "title": "Bucket Name",
+          "pattern": "^[A-Za-z0-9-]*$"
         }
       },
       "required": [
-        "tableName"
+        "bucketName"
       ]
     },
     "TerraformVariables": {
