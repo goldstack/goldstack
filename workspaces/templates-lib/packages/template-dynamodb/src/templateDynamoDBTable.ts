@@ -86,7 +86,6 @@ export const connect = async (
     }
 
     startedContainers.set(tableName, startedContainer);
-    throw new Error('Local development not implemented yet');
   }
   const config = packageConfig.getConfigFromPackageConfig(goldstackConfig);
   const deployment = packageConfig.getDeployment(config, deploymentName);
