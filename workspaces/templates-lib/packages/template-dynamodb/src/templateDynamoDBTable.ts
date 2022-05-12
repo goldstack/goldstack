@@ -2,60 +2,50 @@
 import { getAWSUser } from '@goldstack/infra-aws';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
 
-import {
-  GenericContainer,
-  StartedTestContainer,
-  StoppedTestContainer,
-} from 'testcontainers';
 import { DynamoDBPackage, DynamoDBDeployment } from './types/DynamoDBPackage';
-import assert from 'assert';
+import {
+  getDeploymentName,
+  getTableName as getTableNameUtils,
+} from './dynamoDBPackageUtils';
 
 import { PackageConfig } from '@goldstack/utils-package-config';
-import { createClient, startContainer } from './localDynamoDB';
+import {
+  localConnect,
+  stopLocalDynamoDB as stopLocalDynamoDBUtils,
+} from './localDynamoDB';
 
-type DynamoDBTableName = string;
+export const getTableName = async (
+  goldstackConfig: DynamoDBPackage | any,
+  packageSchema: any,
+  deploymentName?: string
+): Promise<string> => {
+  deploymentName = getDeploymentName(deploymentName);
+  const packageConfig = new PackageConfig<DynamoDBPackage, DynamoDBDeployment>({
+    goldstackJson: goldstackConfig,
+    packageSchema,
+  });
+  const config = packageConfig.getConfig();
 
-const startedContainers: Map<
-  DynamoDBTableName,
-  StartedTestContainer | 'stopped'
-> = new Map();
+  return getTableNameUtils(config, packageConfig, deploymentName);
+};
 
 export const stopLocalDynamoDB = async (
-  goldstackConfig: any,
+  goldstackConfig: DynamoDBPackage | any,
   packageSchema: any,
   deploymentName?: string
 ): Promise<void> => {
-  const tableName = await getTableName(
-    goldstackConfig,
+  deploymentName = getDeploymentName(deploymentName);
+  const packageConfig = new PackageConfig<DynamoDBPackage, DynamoDBDeployment>({
+    goldstackJson: goldstackConfig,
     packageSchema,
-    deploymentName
-  );
-  const startedContainer = startedContainers.get(tableName);
-  if (!startedContainer) {
-    throw new Error(
-      `Attempting to stop container that has not been started for DynamoDB table ${tableName}`
-    );
-  }
-  if (startedContainer === 'stopped') {
-    return;
-  }
-  startedContainers.set(tableName, 'stopped');
-  await startedContainer.stop();
-};
+  });
+  const config = packageConfig.getConfig();
 
-const getDeploymentName = (deploymentName?: string): string => {
-  if (!deploymentName) {
-    assert(
-      process.env.GOLDSTACK_DEPLOYMENT,
-      'Cannot connect to DynamoDB table. Either specify a deploymentName or ensure environment variable GOLDSTACK_DEPLOYMENT is defined.'
-    );
-    return process.env.GOLDSTACK_DEPLOYMENT;
-  }
-  return deploymentName;
+  return stopLocalDynamoDBUtils(config, packageConfig, deploymentName);
 };
 
 export const connect = async (
-  goldstackConfig: any,
+  goldstackConfig: DynamoDBPackage | any,
   packageSchema: any,
   deploymentName?: string
 ): Promise<DynamoDB> => {
@@ -64,32 +54,11 @@ export const connect = async (
     goldstackJson: goldstackConfig,
     packageSchema,
   });
+  const config = packageConfig.getConfig();
   if (deploymentName === 'local') {
-    const tableName = await getTableName(
-      goldstackConfig,
-      packageSchema,
-      deploymentName
-    );
-
-    // TODO the key in this map may need to be extended to include the region as well, since dynamodb table names are unique per region.
-    let startedContainer = startedContainers.get(tableName);
-    if (startedContainer && startedContainer !== 'stopped') {
-      return createClient(startedContainer);
-    }
-    startedContainer = await startContainer();
-
-    // Check if another container for this table has already been started in the meanwhile
-    const startedContainerTest = startedContainers.get(tableName);
-    if (startedContainerTest && startedContainerTest !== 'stopped') {
-      await startedContainer.stop();
-      return createClient(startedContainerTest);
-    }
-
-    startedContainers.set(tableName, startedContainer);
-    return createClient(startedContainer);
+    return localConnect(config, packageSchema, deploymentName);
   }
-  const config = packageConfig.getConfigFromPackageConfig(goldstackConfig);
-  const deployment = packageConfig.getDeployment(config, deploymentName);
+  const deployment = packageConfig.getDeployment(deploymentName);
 
   const awsUser = await getAWSUser(deployment.awsUser);
 
@@ -100,22 +69,4 @@ export const connect = async (
   });
 
   return dynamoDB;
-};
-
-export const getTableName = async (
-  goldstackConfig: any,
-  packageSchema: any,
-  deploymentName?: string
-): Promise<string> => {
-  const packageConfig = new PackageConfig<DynamoDBPackage, DynamoDBDeployment>({
-    goldstackJson: goldstackConfig,
-    packageSchema,
-  });
-  deploymentName = getDeploymentName(deploymentName);
-  if (deploymentName === 'local') {
-    return `local-${goldstackConfig.name}`;
-  }
-  const config = packageConfig.getConfigFromPackageConfig(goldstackConfig);
-  const deployment = packageConfig.getDeployment(config, deploymentName);
-  return deployment.configuration.tableName;
 };

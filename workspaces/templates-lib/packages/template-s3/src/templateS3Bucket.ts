@@ -30,8 +30,7 @@ export const connect = async (
     });
     return s3 as any;
   }
-  const config = packageConfig.getConfigFromPackageConfig(goldstackConfig);
-  const deployment = packageConfig.getDeployment(config, deploymentName);
+  const deployment = packageConfig.getDeployment(deploymentName);
 
   const awsUser = await getAWSUser(deployment.awsUser);
 
@@ -63,7 +62,6 @@ export const getBucketName = async (
   if (deploymentName === 'local') {
     return `local-${goldstackConfig.name}`;
   }
-  const config = packageConfig.getConfigFromPackageConfig(goldstackConfig);
-  const deployment = packageConfig.getDeployment(config, deploymentName);
+  const deployment = packageConfig.getDeployment(deploymentName);
   return deployment.configuration.bucketName;
 };

@@ -47,8 +47,7 @@ export const connect = async (
     return mockedSES as any;
   }
 
-  const config = packageConfig.getConfigFromPackageConfig(goldstackConfig);
-  const deployment = packageConfig.getDeployment(config, deploymentName);
+  const deployment = packageConfig.getDeployment(deploymentName);
 
   const awsUser = await getAWSUser(deployment.awsUser);
 
@@ -85,8 +84,7 @@ export const getFromDomain = async (
     return 'test.local';
   }
 
-  const config = packageConfig.getConfigFromPackageConfig(goldstackConfig);
-  const deployment = packageConfig.getDeployment(config, deploymentName);
+  const deployment = packageConfig.getDeployment(deploymentName);
 
   return deployment.configuration.domain;
 };

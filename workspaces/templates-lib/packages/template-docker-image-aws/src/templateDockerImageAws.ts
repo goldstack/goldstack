@@ -43,8 +43,7 @@ export const getDeployment = (
   >({
     packagePath: './',
   });
-  const config = packageConfig.getConfig();
-  return packageConfig.getDeployment(config, deploymentName);
+  return packageConfig.getDeployment(deploymentName);
 };
 
 const imageCommands = () => {
@@ -95,21 +94,21 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'infra') {
       const deploymentName = opArgs[1];
-      const deployment = packageConfig.getDeployment(config, deploymentName);
+      const deployment = packageConfig.getDeployment(deploymentName);
       await infraAwsDockerImageCli(config, deployment, opArgs);
       return;
     }
 
     if (command === 'deploy') {
       const deploymentName = opArgs[0];
-      const deployment = packageConfig.getDeployment(config, deploymentName);
+      const deployment = packageConfig.getDeployment(deploymentName);
       await infraAwsDockerImageCli(config, deployment, ['deploy', ...opArgs]);
       return;
     }
 
     if (command === 'image') {
       const deploymentName = opArgs[1];
-      const deployment = packageConfig.getDeployment(config, deploymentName);
+      const deployment = packageConfig.getDeployment(deploymentName);
       await apiDockerImageAwsCli(config, deployment, opArgs);
       return;
     }

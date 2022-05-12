@@ -15,7 +15,7 @@ export class PackageConfig<
   DeploymentType extends Deployment
 > {
   packageSchema: any;
-  goldstackJson: Package;
+  goldstackJson: PackageType;
 
   constructor(params: PackageConfigConstructorParams) {
     if (
@@ -29,31 +29,26 @@ export class PackageConfig<
     this.packageSchema =
       params.packageSchema ||
       JSON.parse(read(params.packagePath + 'schemas/package.schema.json'));
-    this.goldstackJson =
-      params.goldstackJson || readPackageConfig(params.packagePath);
+
+    this.goldstackJson = validateConfig(
+      params.goldstackJson || readPackageConfig(params.packagePath),
+      this.getPackageSchema(),
+      {
+        errorMessage: 'Cannot load configuration for package.',
+      }
+    ) as PackageType;
   }
 
   getPackageSchema(): any {
     return this.packageSchema;
   }
-  getConfigFromPackageConfig(packageConfig: Package): PackageType {
-    validateConfig(packageConfig, this.getPackageSchema(), {
-      errorMessage: 'Cannot load configuration for package.',
-    });
-
-    return packageConfig as PackageType;
-  }
   getConfig(): PackageType {
-    const packageConfig = readPackageConfig();
-    return this.getConfigFromPackageConfig(packageConfig);
+    return this.goldstackJson;
   }
-  getDeployment(
-    packageConfig: Package,
-    deploymentName: string
-  ): DeploymentType {
+  getDeployment(deploymentName: string): DeploymentType {
     const name = deploymentName;
 
-    const deployment = packageConfig.deployments.find(
+    const deployment = this.goldstackJson.deployments.find(
       (deployment) => deployment.name === name
     );
 
