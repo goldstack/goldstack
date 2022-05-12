@@ -86,6 +86,7 @@ export const connect = async (
     }
 
     startedContainers.set(tableName, startedContainer);
+    return createClient(startedContainer);
   }
   const config = packageConfig.getConfigFromPackageConfig(goldstackConfig);
   const deployment = packageConfig.getDeployment(config, deploymentName);
