@@ -13,6 +13,7 @@ import {
   localConnect,
   stopLocalDynamoDB as stopLocalDynamoDBUtils,
 } from './localDynamoDB';
+import { assertTable } from './dynamoDBData';
 
 export const getTableName = async (
   goldstackConfig: DynamoDBPackage | any,
@@ -42,16 +43,10 @@ export const stopLocalDynamoDB = async (
   return stopLocalDynamoDBUtils(packageConfig, deploymentName);
 };
 
-export const connect = async (
-  goldstackConfig: DynamoDBPackage | any,
-  packageSchema: any,
-  deploymentName?: string
+const createClient = async (
+  packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  deploymentName: string
 ): Promise<DynamoDB> => {
-  deploymentName = getDeploymentName(deploymentName);
-  const packageConfig = new PackageConfig<DynamoDBPackage, DynamoDBDeployment>({
-    goldstackJson: goldstackConfig,
-    packageSchema,
-  });
   if (deploymentName === 'local') {
     return localConnect(packageConfig, deploymentName);
   }
@@ -66,4 +61,21 @@ export const connect = async (
   });
 
   return dynamoDB;
+};
+
+export const connect = async (
+  goldstackConfig: DynamoDBPackage | any,
+  packageSchema: any,
+  deploymentName?: string
+): Promise<DynamoDB> => {
+  deploymentName = getDeploymentName(deploymentName);
+  const packageConfig = new PackageConfig<DynamoDBPackage, DynamoDBDeployment>({
+    goldstackJson: goldstackConfig,
+    packageSchema,
+  });
+  const client = await createClient(packageConfig, deploymentName);
+
+  await assertTable(packageConfig, deploymentName, client);
+
+  return client;
 };

@@ -41,16 +41,17 @@ export const localConnect = async (
 };
 
 export const endpointUrl = (startedContainer: StartedTestContainer): string => {
-  return `http://${startedContainer.getIpAddress(
-    startedContainer.getNetworkNames()[0]
-  )}:${startedContainer.getMappedPort(MAPPED_PORT)}`;
+  return `http://${startedContainer.getHost()}:${startedContainer.getMappedPort(
+    MAPPED_PORT
+  )}`;
 };
 
 export const createClient = (
   startedContainer: StartedTestContainer
 ): DynamoDB => {
+  const endpoint = endpointUrl(startedContainer);
   return new DynamoDB({
-    endpoint: endpointUrl(startedContainer),
+    endpoint,
     region: 'eu-central-1',
     credentials: {
       accessKeyId: 'dummy',

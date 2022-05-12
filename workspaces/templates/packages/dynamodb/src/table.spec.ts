@@ -2,7 +2,7 @@ import assert from 'assert';
 import { getTableName, connect, stopLocalDynamoDB } from './table';
 
 // needs to be long to download Docker image etc.
-jest.setTimeout(360000);
+jest.setTimeout(60000);
 
 describe('DynamoDB Table', () => {
   it('Should get table name', async () => {
@@ -17,9 +17,16 @@ describe('DynamoDB Table', () => {
 
   it('Should connect to local table', async () => {
     const tableName = await getTableName();
-    const dynamoDB = await connect();
     assert(tableName);
+    const dynamoDB = await connect();
     assert(dynamoDB);
+    const tableInfo = await dynamoDB
+      .describeTable({ TableName: tableName })
+      .promise();
+
+    assert(tableInfo.Table?.TableStatus === 'ACTIVE');
+    const dynamoDB2 = await connect();
+    assert(dynamoDB2);
     await stopLocalDynamoDB();
   });
 });
