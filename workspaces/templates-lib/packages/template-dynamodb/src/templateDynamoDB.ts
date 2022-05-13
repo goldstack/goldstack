@@ -4,6 +4,7 @@ import { infraCommands } from '@goldstack/utils-terraform';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 export * from './types/DynamoDBPackage';
 export * from './templateDynamoDBTable';
+export type { DynamoDBContext } from './dynamoDBMigrations';
 import { PackageConfig } from '@goldstack/utils-package-config';
 import { DynamoDBPackage, DynamoDBDeployment } from './types/DynamoDBPackage';
 import yargs from 'yargs';

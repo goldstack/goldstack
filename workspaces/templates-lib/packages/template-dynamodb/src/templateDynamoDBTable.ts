@@ -14,6 +14,12 @@ import {
   stopLocalDynamoDB as stopLocalDynamoDBUtils,
 } from './localDynamoDB';
 import { assertTable } from './dynamoDBData';
+import { InputMigrations } from 'umzug/lib/types';
+import {
+  DynamoDBContext,
+  performMigrations,
+  migrateDownTo as migrateDownToDynamoDB,
+} from './dynamoDBMigrations';
 
 export const getTableName = async (
   goldstackConfig: DynamoDBPackage | any,
@@ -63,11 +69,17 @@ const createClient = async (
   return dynamoDB;
 };
 
-export const connect = async (
-  goldstackConfig: DynamoDBPackage | any,
-  packageSchema: any,
-  deploymentName?: string
-): Promise<DynamoDB> => {
+export const connect = async ({
+  goldstackConfig,
+  packageSchema,
+  migrations,
+  deploymentName,
+}: {
+  goldstackConfig: DynamoDBPackage | any;
+  packageSchema: any;
+  migrations: InputMigrations<DynamoDBContext>;
+  deploymentName?: string;
+}): Promise<DynamoDB> => {
   deploymentName = getDeploymentName(deploymentName);
   const packageConfig = new PackageConfig<DynamoDBPackage, DynamoDBDeployment>({
     goldstackJson: goldstackConfig,
@@ -76,6 +88,41 @@ export const connect = async (
   const client = await createClient(packageConfig, deploymentName);
 
   await assertTable(packageConfig, deploymentName, client);
+
+  await performMigrations(packageConfig, deploymentName, migrations, client);
+
+  return client;
+};
+
+export const migrateDownTo = async ({
+  migrationName,
+  goldstackConfig,
+  packageSchema,
+  migrations,
+  deploymentName,
+}: {
+  migrationName: string;
+  goldstackConfig: DynamoDBPackage | any;
+  packageSchema: any;
+  migrations: InputMigrations<DynamoDBContext>;
+  deploymentName?: string;
+}): Promise<DynamoDB> => {
+  deploymentName = getDeploymentName(deploymentName);
+  const packageConfig = new PackageConfig<DynamoDBPackage, DynamoDBDeployment>({
+    goldstackJson: goldstackConfig,
+    packageSchema,
+  });
+  const client = await createClient(packageConfig, deploymentName);
+
+  await assertTable(packageConfig, deploymentName, client);
+
+  await migrateDownToDynamoDB(
+    migrationName,
+    packageConfig,
+    deploymentName,
+    migrations,
+    client
+  );
 
   return client;
 };
