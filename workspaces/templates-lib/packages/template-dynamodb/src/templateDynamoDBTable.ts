@@ -21,6 +21,11 @@ import {
   migrateDownTo as migrateDownToDynamoDB,
 } from './dynamoDBMigrations';
 
+/**
+ * Map to keep track for which deployment and tables initialisation and migrations have already been performed
+ */
+const coldStart: Map<string, boolean> = new Map();
+
 export const getTableName = async (
   goldstackConfig: DynamoDBPackage | any,
   packageSchema: any,
@@ -46,7 +51,10 @@ export const stopLocalDynamoDB = async (
     packageSchema,
   });
 
-  return stopLocalDynamoDBUtils(packageConfig, deploymentName);
+  await stopLocalDynamoDBUtils(packageConfig, deploymentName);
+
+  const coldStartKey = getColdStartKey(packageConfig, deploymentName);
+  coldStart.delete(coldStartKey);
 };
 
 const createClient = async (
@@ -87,10 +95,15 @@ export const connect = async ({
   });
   const client = await createClient(packageConfig, deploymentName);
 
-  await assertTable(packageConfig, deploymentName, client);
+  // ensure table initialisation and migrations are only performed once per cold start
 
-  await performMigrations(packageConfig, deploymentName, migrations, client);
+  const coldStartKey = getColdStartKey(packageConfig, deploymentName);
+  if (!coldStart.has(coldStartKey)) {
+    await assertTable(packageConfig, deploymentName, client);
 
+    await performMigrations(packageConfig, deploymentName, migrations, client);
+    coldStart.set(coldStartKey, true);
+  }
   return client;
 };
 
@@ -126,3 +139,15 @@ export const migrateDownTo = async ({
 
   return client;
 };
+
+function getColdStartKey(
+  packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  deploymentName: string
+) {
+  if (deploymentName === 'local') {
+    return `local-${getTableNameUtils(packageConfig, deploymentName)}`;
+  }
+  const deployment = packageConfig.getDeployment(deploymentName);
+  const coldStartKey = `${deployment.awsRegion}-${deploymentName}-${deployment.tableName}`;
+  return coldStartKey;
+}
