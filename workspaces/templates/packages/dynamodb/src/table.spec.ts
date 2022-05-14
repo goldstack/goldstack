@@ -35,7 +35,6 @@ describe('DynamoDB Table', () => {
     assert(tableInfo.Table?.TableStatus === 'ACTIVE');
     const dynamoDB2 = await connect();
     assert(dynamoDB2);
-    await stopLocalDynamoDB();
   });
   it('Should be able to write and read an entity with native toolbox methods', async () => {
     const table = new Table({
@@ -69,7 +68,6 @@ describe('DynamoDB Table', () => {
     );
 
     expect(user.name).toEqual('Joe');
-    await stopLocalDynamoDB();
   });
   it('Should be able to write and read an entity with entities', async () => {
     const table = await connectTable();
@@ -89,6 +87,8 @@ describe('DynamoDB Table', () => {
 
     expect(user.name).toEqual('Joe');
     expect(user.pk).toEqual('joe@email.com');
+  });
+  afterAll(async () => {
     await stopLocalDynamoDB();
   });
 });

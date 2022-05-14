@@ -16,7 +16,7 @@
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "yarn compile --watch",
     "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
-    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "test-ci": "jest --passWithNoTests --config=jest.config.js"
   },
   "dependencies": {
@@ -32,10 +32,10 @@
     "@types/react-dom": "^16.9.8",
     "@types/testing-library__jest-dom": "^5.9.1",
     "@types/testing-library__react": "^10.0.1",
-    "jest": "^27.5.1",
+    "jest": "^28.1.0",
     "pnp-webpack-plugin": "^1.6.4",
     "rimraf": "^3.0.2",
-    "ts-jest": "^27.1.4",
+    "ts-jest": "^28.0.2",
     "ts-loader": "^7.0.5",
     "typescript": "^4.6.4"
   },
