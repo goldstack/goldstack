@@ -38,9 +38,6 @@ describe('DynamoDB Table', () => {
     await stopLocalDynamoDB();
   });
   it('Should be able to write and read an entity with native toolbox methods', async () => {
-    // const table = await connectTable();
-    // const Users = UserEntity(table);
-
     const table = new Table({
       name: await getTableName(),
       partitionKey: 'pk',
@@ -66,12 +63,32 @@ describe('DynamoDB Table', () => {
       emailVerified: true,
     });
 
-    const { Item: user } = await e.get(
+    const { Item: user } = await e.get<User, UserKey>(
       { pk: 'joe@email.com', sk: 'd' },
       { attributes: ['name', 'pk'] }
     );
 
     expect(user.name).toEqual('Joe');
+    await stopLocalDynamoDB();
+  });
+  it('Should be able to write and read an entity with entities', async () => {
+    const table = await connectTable();
+    const Users = UserEntity(table);
+
+    await Users.put({
+      pk: 'joe@email.com',
+      sk: 'd',
+      name: 'Joe',
+      emailVerified: true,
+    });
+
+    const { Item: user } = await Users.get<User, UserKey>(
+      { pk: 'joe@email.com', sk: 'd' },
+      { attributes: ['name', 'pk'] }
+    );
+
+    expect(user.name).toEqual('Joe');
+    expect(user.pk).toEqual('joe@email.com');
     await stopLocalDynamoDB();
   });
 });

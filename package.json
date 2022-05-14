@@ -37,8 +37,8 @@
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-package-upgrade": "0.2.39",
     "@goldstack/utils-typescript-references": "0.1.11",
-    "@types/jest": "^27.4.1",
-    "@types/node": "^16.11.0",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^17.0.33",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
     "concurrently": "^5.2.0",
@@ -51,8 +51,8 @@
     "eslint-plugin-yaml": "^0.5.0",
     "nodemon": "^2.0.15",
     "prettier": "^2.2.1",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.4.3"
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
   },
-  "packageManager": "yarn@3.0.2"
+  "packageManager": "yarn@3.2.1"
 }
