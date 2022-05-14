@@ -4,8 +4,8 @@ variable "aws_region" {
   type = string
 }
 
-variable "bucket_name" {
-  description = "Name of the S3 bucket."
+variable "table_name" {
+  description = "Name of the Dynamo DB table."
   type = string
 }
 

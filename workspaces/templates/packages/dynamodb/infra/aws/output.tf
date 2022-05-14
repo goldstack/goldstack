@@ -1,7 +1,7 @@
-output "bucket_arn" {
-  value = aws_s3_bucket.main.arn
+output "table_arn" {
+  value = data.aws_dynamodb_table.main.arn
 }
 
-output "bucket_name" {
-  value = aws_s3_bucket.main.id
+output "table_name" {
+  value = data.aws_dynamodb_table.main.id
 }

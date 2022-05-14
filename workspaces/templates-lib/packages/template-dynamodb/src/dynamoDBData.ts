@@ -62,3 +62,30 @@ export const assertTable = async (
       });
   });
 };
+
+export const deleteTable = async (
+  packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  deploymentName: string,
+  client: DynamoDB
+): Promise<void> => {
+  const tableName = await getTableName(packageConfig, deploymentName);
+  const res = client
+    .deleteTable({
+      TableName: tableName,
+    })
+    .promise();
+  await new Promise<void>((resolve, reject) => {
+    res
+      .then(async () => {
+        resolve();
+      })
+      .catch((e: AWSError) => {
+        if (e.code === 'ResourceNotFoundException') {
+          // all good if table already deleted
+          resolve();
+          return;
+        }
+        reject(e);
+      });
+  });
+};

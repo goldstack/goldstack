@@ -13,7 +13,7 @@ import {
   localConnect,
   stopLocalDynamoDB as stopLocalDynamoDBUtils,
 } from './localDynamoDB';
-import { assertTable } from './dynamoDBData';
+import { assertTable, deleteTable as deleteTableModule } from './dynamoDBData';
 import { InputMigrations } from 'umzug/lib/types';
 import {
   DynamoDBContext,
@@ -104,6 +104,30 @@ export const connect = async ({
     await performMigrations(packageConfig, deploymentName, migrations, client);
     coldStart.set(coldStartKey, true);
   }
+  return client;
+};
+
+/**
+ * Deletes the DynamoDB table with all its data.
+ */
+export const deleteTable = async ({
+  goldstackConfig,
+  packageSchema,
+  deploymentName,
+}: {
+  goldstackConfig: DynamoDBPackage | any;
+  packageSchema: any;
+  deploymentName?: string;
+}): Promise<DynamoDB> => {
+  deploymentName = getDeploymentName(deploymentName);
+  const packageConfig = new PackageConfig<DynamoDBPackage, DynamoDBDeployment>({
+    goldstackJson: goldstackConfig,
+    packageSchema,
+  });
+  const client = await createClient(packageConfig, deploymentName);
+
+  await deleteTableModule(packageConfig, deploymentName, client);
+
   return client;
 };
 
