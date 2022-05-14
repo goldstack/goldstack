@@ -6,9 +6,13 @@ import {
 } from '@goldstack/template-dynamodb';
 
 import DynamoDB from 'aws-sdk/clients/dynamodb';
+import { Table } from 'dynamodb-toolbox';
 import goldstackConfig from './../goldstack.json';
 import goldstackSchema from './../schemas/package.schema.json';
+import { createTable } from './entities';
 import { createMigrations } from './migrations';
+
+export * from './entities';
 
 export const connect = async (deploymentName?: string): Promise<DynamoDB> => {
   return await templateConnect({
@@ -17,6 +21,16 @@ export const connect = async (deploymentName?: string): Promise<DynamoDB> => {
     deploymentName,
     migrations: createMigrations(),
   });
+};
+
+export const connectTable = async <Name extends string>(
+  deploymentName?: string
+): Promise<Table<Name, 'pk', 'sk'>> => {
+  const tableName = await getTableName(deploymentName);
+  return createTable(
+    new DynamoDB.DocumentClient({ service: await connect(deploymentName) }),
+    tableName
+  );
 };
 
 export const migrateDownTo = async (

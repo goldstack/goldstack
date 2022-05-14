@@ -1008,6 +1008,7 @@ __metadata:
     "@types/jest": ^27.4.1
     "@types/node": ^16.11.0
     aws-sdk: 2.1055.0
+    dynamodb-toolbox: alpha
     jest: ^27.5.1
     rimraf: ^3.0.2
     ts-jest: ^27.1.4
@@ -8495,6 +8496,15 @@ __metadata:
   dependencies:
     xtend: ^4.0.0
   checksum: 5178b99ad30a59234c63b38b453183cfd0a6cb7acbe7b94b7aea9bf0f75376fdaab6e2ea7922931cfc0152390ccb20bd024d8d80b4fc8c3c3255a2fcadf2cafb
+  languageName: node
+  linkType: hard
+
+"dynamodb-toolbox@npm:alpha":
+  version: 0.4.0-alpha.2
+  resolution: "dynamodb-toolbox@npm:0.4.0-alpha.2"
+  dependencies:
+    ts-toolbelt: ^6.15.5
+  checksum: 0248daab492fb459869872f430daada8147c39821be4a4abcbd7e77fd0d0cc19be12fd8031996e76a6db52d2b5f7b5db7d71a9eaa56ae877624b1fca34b6dcaf
   languageName: node
   linkType: hard
 
@@ -19624,6 +19634,13 @@ resolve@^1.20.0:
     typescript:
       optional: true
   checksum: c2a698b85d521298fe6f2435fbf2d3dc5834b423ea25abd321805ead3f399dbeedce7ca09492d7eb005b9d2c009c6b9587055bc3ab273dc6b9e40eefd7edb5b2
+  languageName: node
+  linkType: hard
+
+"ts-toolbelt@npm:^6.15.5":
+  version: 6.15.5
+  resolution: "ts-toolbelt@npm:6.15.5"
+  checksum: 24ad00cfd9ce735c76c873a9b1347eac475b94e39ebbdf100c9019dce88dd5f4babed52884cf82bb456a38c28edd0099ab6f704b84b2e5e034852b618472c1f3
   languageName: node
   linkType: hard
 
