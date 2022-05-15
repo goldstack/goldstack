@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*",
+    "./schemas/**/*.json",
+    "./src/**/*.json",
+    "./goldstack.json"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "."
+  },
+  "references": [
+    {
+      "path": "../../../templates-lib/packages/template-dynamodb"
+    }
+  ]
+}

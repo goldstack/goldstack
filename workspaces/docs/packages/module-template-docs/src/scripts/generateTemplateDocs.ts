@@ -100,6 +100,10 @@ const run = async () => {
     paths.buildSets + 's3.README.md'
   );
   await generateMarkdownDocs(
+    paths.buildSets + 'dynamodb.template.README.md',
+    paths.buildSets + 'dynamodb.README.md'
+  );
+  await generateMarkdownDocs(
     paths.buildSets + 'staticWebsite.template.README.md',
     paths.buildSets + 'staticWebsite.README.md'
   );

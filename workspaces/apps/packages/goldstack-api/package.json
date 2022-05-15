@@ -10,7 +10,7 @@
     "build": "ts-node ./scripts/build.ts",
     "clean": "rimraf ./dist && rimraf distLambda",
     "compile": "tsc --build",
-    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "deploy": "yarn build && yarn template deploy",
     "deploy-ts": "yarn build && yarn template-ts deploy",
     "infra": "template infra",
@@ -18,7 +18,7 @@
     "start": "yarn node dist/src/local.js",
     "template-ts": "ts-node scripts/template.ts",
     "test": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --watch --config=jest.config.js",
-    "test-ci": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --config=jest.config.js --detectOpenHandles",
+    "test-ci": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --config=jest.config.js --detectOpenHandles --runInBand",
     "watch": "PORT=8731 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local GOLDSTACK_LOG_EMAILS=true ts-node-dev ./src/local.ts"
   },
   "dependencies": {
@@ -58,8 +58,8 @@
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/helmet": "^4.0.0",
-    "@types/jest": "^27.4.1",
-    "@types/node": "^16.11.0",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^17.0.33",
     "@types/rimraf": "^3.0.0",
     "@types/sanitize-html": "^1.23.3",
     "@types/source-map-support": "^0.5.4",
@@ -69,13 +69,13 @@
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.1",
     "esbuild": "^0.14.34",
     "express": "^4.17.1",
-    "jest": "^27.5.1",
+    "jest": "^28.1.0",
     "rimraf": "^3.0.2",
     "supertest": "^4.0.2",
     "supertest-session": "^4.0.0",
-    "ts-jest": "^27.1.4",
-    "ts-node": "^10.4.0",
+    "ts-jest": "^28.0.2",
+    "ts-node": "^10.7.0",
     "ts-node-dev": "^1.1.8",
-    "typescript": "^4.4.3"
+    "typescript": "^4.6.4"
   }
 }

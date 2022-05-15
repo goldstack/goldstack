@@ -36,7 +36,7 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'deploy') {
-      await deployCli(packageConfig.getDeployment(config, opArgs[0]));
+      await deployCli(packageConfig.getDeployment(opArgs[0]));
       return;
     }
 

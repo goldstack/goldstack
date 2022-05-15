@@ -1,0 +1,115 @@
+<p></p>
+<div class="markdown-fragment">
+  <p>
+    The S3 module provides a simple means for an application to store and access
+    files on
+    <a
+      href="https://aws.amazon.com/s3/"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >AWS S3</a
+    >. This template is set up for deploying an S3 bucket using Terraform and
+    provides a simple TypeScript API to work with this bucket.
+  </p>
+</div>
+<p></p>
+<h2 class="heading">
+  <span id="configure"></span><a href="#configure">Configure</a
+  ><span class="permalink"
+    ><svg viewBox="0 0 16 16" width="16" height="16">
+      <g stroke-width="1" fill="#000000" stroke="#000000">
+        <path
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+        ></path>
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+        ></path>
+      </g></svg
+  ></span>
+</h2>
+<p></p>
+<div class="markdown-fragment">
+  <p>
+    In order to provide a basic configuration for an S3 bucket, we only need to
+    know the name of the bucket we want to create.
+  </p>
+  <p>
+    Please note that a bucket name needs to be
+    <a
+      href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >globally unique</a
+    >. However, buckets are always created in a specific
+    <a
+      href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >AWS region</a
+    >. The bucket will be deployed to the AWS region you have specified.
+  </p>
+</div>
+<p></p>
+<h2 class="heading">
+  <span id="getting-started"></span
+  ><a href="#getting-started">Getting Started</a
+  ><span class="permalink"
+    ><svg viewBox="0 0 16 16" width="16" height="16">
+      <g stroke-width="1" fill="#000000" stroke="#000000">
+        <path
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+        ></path>
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+        ></path>
+      </g></svg
+  ></span>
+</h2>
+<p></p>
+<div class="markdown-fragment">
+  <p>This is how an the S3 module can be used from another module:</p>
+  <pre
+    class="language-js language-js"
+  ><code class="language-js"><span class="token keyword module">import</span> <span class="token punctuation">{</span> getBucketName<span class="token punctuation">,</span> connect<span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'my-s3-module'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> s3 <span class="token operator">=</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">await</span> s3<span class="token punctuation">.</span><span class="token method function property-access">putObject</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token maybe-class-name">BucketName</span><span class="token punctuation">:</span> <span class="token function">getBucketName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token maybe-class-name">Key</span><span class="token punctuation">:</span> <span class="token string">'my-doc'</span><span class="token punctuation">,</span>
+  <span class="token maybe-class-name">Body</span><span class="token punctuation">:</span> <span class="token string">'content'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+  <p>
+    The object returned from <code class="inline">connect()</code> is an
+    instance of the
+    <a
+      href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >AWS S3 client</a
+    >.
+  </p>
+</div>
+<p></p>

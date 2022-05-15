@@ -19,6 +19,7 @@ jobs:
             'email-send',
             's3',
             'static-website',
+            'dynamodb',
           ]
     if: "contains(github.event.head_commit.message, 'trigger_template_deploy_prod') && github.ref == 'refs/heads/master'"
     runs-on: ubuntu-latest

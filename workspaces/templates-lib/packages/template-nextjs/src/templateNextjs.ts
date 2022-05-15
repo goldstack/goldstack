@@ -44,7 +44,7 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'set-nextjs-env') {
       await setNextjsEnvironmentVariables(
-        packageConfig.getDeployment(config, opArgs[0])
+        packageConfig.getDeployment(opArgs[0])
       );
       return;
     }
@@ -56,7 +56,7 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'deploy') {
       await infraAwsStaticWebsiteCli(config, ['deploy', ...opArgs]);
-      const deployment = packageConfig.getDeployment(config, opArgs[0]);
+      const deployment = packageConfig.getDeployment(opArgs[0]);
       const deploymentState = readDeploymentState('./', deployment.name);
       await deployEdgeLambda({
         deployment,

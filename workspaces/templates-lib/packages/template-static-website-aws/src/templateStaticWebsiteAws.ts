@@ -31,7 +31,7 @@ export const getDeploymentConfig = (
   >({
     packagePath: './',
   });
-  return packageConfig.getDeployment(packageConfig.getConfig(), deploymentName);
+  return packageConfig.getDeployment(deploymentName);
 };
 
 export const run = async (args: string[]): Promise<void> => {

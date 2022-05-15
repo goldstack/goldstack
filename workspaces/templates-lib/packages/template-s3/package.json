@@ -34,11 +34,11 @@
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
-    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "generate-schema": "ts-node scripts/generateSchemas.ts && cp schemas/* ../../../templates/packages/s3/schemas && cp schemas/* ../../../templates-management/packages/project-repository-bucket/schemas && cp schemas/* ../../../templates-management/packages/template-repository-bucket/schemas",
     "prepublishOnly": "yarn run build",
     "publish": "utils-git changed --exec \"yarn npm publish $@\"",
-    "test-ci": "jest --passWithNoTests --config=./jest.config.js",
+    "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand",
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
@@ -56,7 +56,7 @@
     "@goldstack/utils-template": "0.3.33",
     "@goldstack/utils-terraform": "0.3.66",
     "@goldstack/utils-terraform-aws": "0.3.65",
-    "aws-sdk": "2.814.0",
+    "aws-sdk": "2.1055.0",
     "mock-aws-s3": "^4.0.2",
     "source-map-support": "^0.5.21",
     "yargs": "^15.4.1"
@@ -65,15 +65,15 @@
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-git": "0.1.32",
     "@goldstack/utils-package-config-generate": "0.2.12",
-    "@types/jest": "^27.4.1",
+    "@types/jest": "^27.5.1",
     "@types/mock-aws-s3": "^2.6.3",
-    "@types/node": "^16.11.0",
+    "@types/node": "^17.0.33",
     "@types/yargs": "^15.0.5",
-    "jest": "^27.5.1",
+    "jest": "^28.1.0",
     "rimraf": "^3.0.2",
-    "ts-jest": "^27.1.4",
-    "ts-node": "^10.3.0",
-    "typescript": "^4.4.3"
+    "ts-jest": "^28.0.2",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
   },
   "publishConfig": {
     "main": "dist/src/templateS3.js"

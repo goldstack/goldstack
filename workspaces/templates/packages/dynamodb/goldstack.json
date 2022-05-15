@@ -1,0 +1,19 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "dynamodb",
+  "template": "dynamodb",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "tableName": "goldstack-test-dynamodb-table"
+      },
+      "tfVersion": "1.1",
+      "tfStateKey": "dynamodb-prod-edaaa7b3e6697ea8adba.tfstate"
+    }
+  ]
+}
