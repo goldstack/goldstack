@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package",
-  "version": "0.3.36",
+  "version": "0.3.37",
   "description": "Utilities to work with Goldstack package configurations.",
   "keywords": [
     "goldstack",
@@ -37,13 +37,13 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.3.34",
-    "@goldstack/utils-config": "0.3.31",
-    "@goldstack/utils-sh": "0.4.29",
+    "@goldstack/infra": "0.3.35",
+    "@goldstack/utils-config": "0.3.32",
+    "@goldstack/utils-sh": "0.4.30",
     "yargs": "^15.4.1"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.1.32",
+    "@goldstack/utils-git": "0.1.33",
     "@types/jest": "^27.5.1",
     "@types/node": "^17.0.33",
     "@types/yargs": "^15.0.5",
