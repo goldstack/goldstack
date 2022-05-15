@@ -53,6 +53,7 @@
     "@types/testing-library__react": "^10.0.1",
     "concurrently": "^5.2.0",
     "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
     "jest-transform-stub": "^2.0.0",
     "next-transpile-modules": "^8.0.0",
     "reload": "^3.2.0",

@@ -33,6 +33,7 @@
     "@types/testing-library__jest-dom": "^5.9.1",
     "@types/testing-library__react": "^10.0.1",
     "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
     "pnp-webpack-plugin": "^1.6.4",
     "rimraf": "^3.0.2",
     "ts-jest": "^28.0.2",
