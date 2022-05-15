@@ -1,26 +1,29 @@
 <p align="right"><img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="12"> Generated with <a href="https://goldstack.party">Goldstack</a></p>
 
 <p align="center">
-  <a href="https://goldstack.party/templates/s3">
-    <img src="https://cdn.goldstack.party/img/202204/s3.svg" height="80">
-    <h1 align="center">S3, Terraform and TypeScript Boilerplate</h1>
+  <a href="https://goldstack.party/templates/dynamodb">
+    <img src="https://cdn.goldstack.party/img/202205/dynamodb.svg" height="80">
+    <h1 align="center">DynamoDB Boilerplate</h1>
   </a>
 </p>
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/9167b94cfaa248858c06734916682a36)](https://www.codacy.com/gh/goldstack/s3-terraform-typescript-boilerplate/dashboard?utm_source=github.com&utm_medium=referral&utm_content=goldstack/s3-terraform-typescript-boilerplate&utm_campaign=Badge_Grade)
-
-Boilerplate for setting up the infrastructure for AWS S3 using Terraform and working with S3 using a simple TypeScript API.
+Boilerplate for getting started with DynamoDB in Node.js using best practices from [DynamoDB Toolbox](https://github.com/jeremydaly/dynamodb-toolbox).
 
 ```typescript
-const bucketName = await getBucketName();
-const s3 = await connect();
-await s3
-  .putObject({
-    Key: 'local.txt',
-    Body: 'hello',
-    Bucket: bucketName,
-  })
-  .promise();
+    const table = await connectTable();
+    const Users = UserEntity(table);
+
+    await Users.put({
+      pk: 'joe@email.com',
+      sk: 'd',
+      name: 'Joe',
+      emailVerified: true,
+    });
+
+    const { Item: user } = await Users.get(
+      { pk: 'joe@email.com', sk: 'd' },
+      { attributes: ['name', 'pk'] }
+    );
 ```
 
 This boilerplate has been automatically generated from the template:
@@ -29,8 +32,8 @@ This boilerplate has been automatically generated from the template:
   <tbody>
     <tr>
       <td>
-        <p align="center"><a href="https://goldstack.party/templates/s3"><img width="50" src="https://cdn.goldstack.party/img/202204/s3.svg"></a></p>
-        <p><a href="https://goldstack.party/templates/s3">AWS S3</a></p>
+        <p align="center"><a href="https://goldstack.party/templates/dynamodb"><img width="50" src="https://cdn.goldstack.party/img/202205/dynamodb.svg"></a></p>
+        <p><a href="https://goldstack.party/templates/dynamodb">DynamoDB</a></p>
       </td>
     </tr>
   </tbody>
@@ -72,39 +75,19 @@ For more information, see [GitHub documentation - Fork a repo](https://docs.gith
 
 ## 7. AWS Infrastructure Configuration
 
-If you want to setup your S3 infrastructure on AWS, you will need to make some changes to the configuration files included in this project.
+The template will create a DynamoDB table on AWS for you. For this, you simply need to modify the configuration included in this template. 
 
-Specifically, the [goldstack.json](https://github.com/goldstack/s3-terraform-typescript-boilerplate/blob/master/packages/s3-1/goldstack.json) in the `packages/s3-1` folder.
+Specifically, the [goldstack.json]() in the `packages/dynamodb-1` folder.
 
 ```json
-{
-  "$schema": "./schemas/package.schema.json",
-  "name": "s3",
-  "template": "s3",
-  "templateVersion": "0.1.0",
-  "configuration": {},
-  "deployments": [
-    {
-      "name": "prod",
-      "awsRegion": "us-west-2",
-      "awsUser": "goldstack-dev",
-      "configuration": {
-        "bucketName": "goldstack-test-s3-bucket"
-      },
-      "tfStateKey": "s3-prod-40dd578eab44b83dc601.tfstate",
-      "tfVersion": "1.1"
-    }
-  ]
-}
+TBD
 ```
 
 The key property you will need to update is:
 
-- `deployments[0].configuration.bucketName`
+- `deployments[0].configuration.tableName`
 
 You also need to _delete_ `deployments[0].tfStateKey`.
-
-For more information on these configuration options, see [Goldstack Documentation / S3 / Configure](https://docs.goldstack.party/docs/templates/s3#configure).
 
 You will also need to ensure that you have a valid AWS user configure to deploy to AWS. For this, create a file in `/config/infra/config.json` (relative to project root).
 
@@ -135,28 +118,11 @@ You will also need to ensure that you have a valid AWS user configure to deploy 
 
 For more information on configuring your local AWS users, please see [Goldstack Documentation / AWS Configuration](https://docs.goldstack.party/docs/goldstack/configuration#aws-configuration).
 
-Once your AWS user is configured you can run `yarn infra up prod` in the `/packages/s3` folder. For more information on the infrastructure commands for this project, see [Goldstack Documentation / S3 / Infrastructure](https://docs.goldstack.party/docs/templates/s3#infrastructure).
+Once your AWS user is configured you can run `yarn infra up prod` in the `/packages/dynamodb-1` folder. For more information on the infrastructure commands for this project, see [Goldstack Documentation / DynamoDB / Infrastructure]().
 
 ## 8. Local Development
 
-This boilerplate will come with a module that provides the functionalities for working with S3. This module is defined in `packages/s3-1`. Generally you won't have to make changes to this module during local development. Instead, create an additional npm module in the `packages/` folder and then import the `s3` module as one of the dependencies.
-
-Then use the exported `connect()` and `getBucketName()` in your code to write and read data from S3:
-
-```typescript
-    const bucketName = await getBucketName();
-    const s3 = await connect();
-    await s3
-      .putObject({
-        Key: 'local.txt',
-        Body: 'hello',
-        Bucket: bucketName,
-      })
-      .promise();
-  });
-```
-
-The result of `await connect()` is an instance of [`AWS.S3`](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html).
+This boilerplate will come with a module that provides the functionalities for connecting to DynamoDB from Node.js. This module is defined in `packages/dynamodb-1`.
 
 ## 9. Contribute to Goldstack
 

@@ -4,7 +4,7 @@
   "private": true,
   "repository": "git@github.com:goldstack/goldstack.git",
   "license": "MIT",
-  "author": "Max Rohde <maxrohde.public@gmail.com>",
+  "author": "Max Rohde",
   "sideEffects": false,
   "main": "index.js",
   "workspaces": [
