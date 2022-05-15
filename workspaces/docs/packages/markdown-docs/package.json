@@ -22,9 +22,9 @@
     "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/utils-cli": "0.2.11",
-    "@goldstack/utils-docs": "0.3.35",
-    "@goldstack/utils-sh": "0.4.29",
+    "@goldstack/utils-cli": "0.2.12",
+    "@goldstack/utils-docs": "0.3.36",
+    "@goldstack/utils-sh": "0.4.30",
     "@types/yargs": "^15.0.5",
     "source-map-support": "^0.5.21",
     "yargs": "^15.4.1"

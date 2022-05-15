@@ -10,20 +10,20 @@
 Boilerplate for getting started with DynamoDB in Node.js using best practices from [DynamoDB Toolbox](https://github.com/jeremydaly/dynamodb-toolbox).
 
 ```typescript
-    const table = await connectTable();
-    const Users = UserEntity(table);
+const table = await connectTable();
+const Users = UserEntity(table);
 
-    await Users.put({
-      pk: 'joe@email.com',
-      sk: 'd',
-      name: 'Joe',
-      emailVerified: true,
-    });
+await Users.put({
+  pk: 'joe@email.com',
+  sk: 'd',
+  name: 'Joe',
+  emailVerified: true,
+});
 
-    const { Item: user } = await Users.get(
-      { pk: 'joe@email.com', sk: 'd' },
-      { attributes: ['name', 'pk'] }
-    );
+const { Item: user } = await Users.get(
+  { pk: 'joe@email.com', sk: 'd' },
+  { attributes: ['name', 'pk'] }
+);
 ```
 
 This boilerplate has been automatically generated from the template:
@@ -75,7 +75,7 @@ For more information, see [GitHub documentation - Fork a repo](https://docs.gith
 
 ## 7. AWS Infrastructure Configuration
 
-The template will create a DynamoDB table on AWS for you. For this, you simply need to modify the configuration included in this template. 
+The template will create a DynamoDB table on AWS for you. For this, you simply need to modify the configuration included in this template.
 
 Specifically, the [goldstack.json]() in the `packages/dynamodb-1` folder.
 

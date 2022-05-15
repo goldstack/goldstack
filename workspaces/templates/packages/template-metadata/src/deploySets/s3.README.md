@@ -126,9 +126,9 @@ In the status bar on the bottom right-hand corner of the VSCode editor you shoul
 
 ## 7. AWS Infrastructure Configuration
 
-If you want to setup your S3 email send infrastructure on AWS, you will need to make some changes to the configuration files included in this project.
+If you want to setup your S3 infrastructure on AWS, you will need to make some changes to the configuration files included in this project.
 
-Specifically, the [goldstack.json]() in the `packages/s3` folder.
+Specifically, the [goldstack.json](https://github.com/goldstack/s3-terraform-typescript-boilerplate/blob/master/packages/s3-1/goldstack.json) in the `packages/s3-1` folder.
 
 ```json
 {
@@ -152,7 +152,7 @@ Specifically, the [goldstack.json]() in the `packages/s3` folder.
 }
 ```
 
-The key property you will need to update id:
+The key property you will need to update is:
 
 - `deployments[0].configuration.bucketName`
 
@@ -189,11 +189,11 @@ You will also need to ensure that you have a valid AWS user configure to deploy 
 
 For more information on configuring your local AWS users, please see [Goldstack Documentation / AWS Configuration](https://docs.goldstack.party/docs/goldstack/configuration#aws-configuration).
 
-Once your AWS user is configured you can run `yarn infra up dev` in the `/packages/s3` folder. For more information on the infrastructure commands for this project, see [Goldstack Documentation / S3 / Infrastructure](https://docs.goldstack.party/docs/templates/s3#infrastructure).
+Once your AWS user is configured you can run `yarn infra up prod` in the `/packages/s3` folder. For more information on the infrastructure commands for this project, see [Goldstack Documentation / S3 / Infrastructure](https://docs.goldstack.party/docs/templates/s3#infrastructure).
 
 ## 8. Local Development
 
-This boilerplate will come with a module that provides the functionalities for working with S3. This module is defined in `packages/s3`. Generally you won't have to make changes to this module during local development. Instead, create an additional npm module in the `packages/` folder and then import the `s3` module as one of the dependencies.
+This boilerplate will come with a module that provides the functionalities for working with S3. This module is defined in `packages/s3-1`. Generally you won't have to make changes to this module during local development. Instead, create an additional npm module in the `packages/` folder and then import the `s3` module as one of the dependencies.
 
 Then use the exported `connect()` and `getBucketName()` in your code to write and read data from S3:
 
