@@ -30,7 +30,10 @@
     "test-watch": "nodemonx --watch . --exec 'yarn test-ci'"
   },
   "resolutions": {
-    "aws-sdk": "2.1055.0"
+    "aws-sdk": "2.1055.0",
+    "glob-parent": "5.1.2",
+    "prismjs": "1.27.0",
+    "trim": "0.0.3"
   },
   "devDependencies": {
     "@goldstack/nodemonx": "0.3.30",
