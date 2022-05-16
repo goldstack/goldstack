@@ -25,7 +25,7 @@
   "main": "src/templateDynamoDB.ts",
   "bin": {
     "template": "./bin/template",
-    "template-s3": "./bin/template"
+    "template-dynamodb": "./bin/template"
   },
   "scripts": {
     "build": "yarn clean && yarn compile",

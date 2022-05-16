@@ -21,6 +21,7 @@ import { getServerlessApiTemplate } from './templates/lambdaApiTemplateData';
 import { getEmailSendTemplateData } from './templates/emailSendTemplateData';
 import { getS3TemplateData } from './templates/s3TemplateData';
 import { getStaticWebsiteTemplateData } from './templates/staticWebsiteTemplateData';
+import { getDynamoDBTemplateData } from './templates/dynamoDBTemplate';
 
 export { getNextJsTemplateData };
 export { getExpressTemplateData };
@@ -37,6 +38,7 @@ export const allTemplates = (): ProjectTemplateProps[] => {
     getStaticWebsiteTemplateData(),
     getGoGinTemplateData(),
     getS3TemplateData(),
+    getDynamoDBTemplateData(),
     getEmailSendTemplateData(),
     getExpressAndEmailSentTemplateData(),
   ];

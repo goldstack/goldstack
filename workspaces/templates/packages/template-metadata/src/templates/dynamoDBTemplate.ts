@@ -1,5 +1,5 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
-import { S3 } from './moduleData';
+import { DynamoDB } from './moduleData';
 import { ShortTemplateFeature } from '../projectTemplateData';
 import {
   featureAppComposition,
@@ -7,7 +7,7 @@ import {
   featureYarn3,
 } from './sharedFeatures';
 
-export const getS3Feature = (): ShortTemplateFeature => {
+export const getDynamoDBFeature = (): ShortTemplateFeature => {
   return {
     title: 'Storing files and data in AWS S3',
     id: 's3',
@@ -28,27 +28,31 @@ export const getS3Feature = (): ShortTemplateFeature => {
   };
 };
 
-export const getS3TemplateData = (): ProjectTemplateProps => {
+export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
   return {
-    id: 's3',
-    title: 'AWS S3',
-    metaTitle: 'AWS S3 Template and Boilerplate Configured using Terraform',
+    id: 'dynamodb',
+    title: 'DynamoDB',
+    metaTitle:
+      'DynamoDB template for Node.js implemented with TypeScript and Terraform',
     metaDescription:
-      'Open source template for defining an S3 bucket with Terraform. Optimised for inclusion in TypeScript projects. Configure and download for free.',
-    images: ['s3', 'terraform', 'typescript'],
-    packages: [S3],
+      'Open source template for working with DynamoDB in Node.js. Configure for your needs in our project builder or clone boilerplate.',
+    images: [
+      'https://cdn.goldstack.party/img/202205/dynamodb.svg',
+      'terraform',
+      'typescript',
+    ],
+    packages: [DynamoDB],
     isComposite: false,
-    boilerplateLink:
-      'https://github.com/goldstack/s3-terraform-typescript-boilerplate',
-    description: 'Store data in AWS S3.',
+    boilerplateLink: 'https://github.com/goldstack/dynamodb-boilerplate',
+    description: 'Manage data with DynamoDB.',
     longDescription:
-      'This template adds the capability to store data in AWS S3 to your project.',
-    tags: ['AWS', 'S3', 'TypeScript', 'Yarn', 'Backend'],
+      'This template adds the capability to write and query data with DynamoDB to your project.',
+    tags: ['AWS', 'DynamoDB', 'Terraform', 'TypeScript', 'Yarn', 'Backend'],
     hero: {
-      title: 'Store Data in S3',
+      title: 'Manage Data with DynamoDB',
       content: `
         <p>
-          The AWS S3 template enables your application to store data in AWS S3.
+          The DynamoDB template enables your application to work with data in DynamoDB.
         </p>
           <p>
             Scroll down to learn more about what&apos;s included in this
@@ -57,24 +61,25 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
         `,
       action: {
         title: '✔ Start Building Your Project Now',
-        link: '/build?stack=s3',
+        link: '/build?stack=dynamodb',
       },
     },
     featuresOverview: [
-      getS3Feature(),
+      getDynamoDBFeature(),
       {
         title: 'TypeScript',
         id: 'typescript',
-        description: 'Connect to and store objects using a TypeScript API.',
+        description: 'Store and query using a TypeScript API.',
         image: 'typescript',
         details: {
           title: 'TypeScript configured in template',
           description:
-            'Benefit from static type checking and code completion when developing your S3 integration',
+            'Benefit from static type checking and code completion when developing your database logic using DynamoDB Toolbox.',
           content: {
             type: 'image',
             data: {
-              image: 'https://cdn.goldstack.party/img/202204/s3_typescript.png',
+              image:
+                'https://cdn.goldstack.party/img/202205/dynamodb-typescript.png',
             },
           },
         },
@@ -82,17 +87,17 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
       {
         title: 'Jest',
         id: 'jest',
-        description: 'Run tests for S3 related logic with Jest.',
+        description: 'Run tests for DynamoDB related logic with Jest.',
         image: 'jest',
         details: {
           title: 'Unit and Integration Testing',
           description:
-            'Write unit and integration tests for your S3 integration. Utilities for local mocking included.',
+            'Write unit and integration tests for your database logic. Based on Local DynamoDB.',
           icons: ['jest'],
           content: {
             type: 'image',
             data: {
-              image: 'https://cdn.goldstack.party/img/202204/s3_jest.png',
+              image: 'https://cdn.goldstack.party/img/202204/dynamodb_jest.png',
             },
           },
         },
@@ -100,12 +105,13 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
       {
         title: 'AWS',
         id: 'aws',
-        description: 'Use AWS S3 for storing data quickly and cheaply.',
+        description:
+          'Build on the scaleable AWS infrastructure and combine your DynamoDB table with other services.',
         image: 'aws',
         details: {
           title: 'Ready for Deployment to AWS',
           description:
-            'Deploy gigabytes of data for cents on AWS with professional level security, reliability and scaleability.',
+            'Deploy serverless infrastructure for cents on AWS with professional level security, reliability and scaleability.',
           content: {
             type: 'aws-deployment',
             data: {},
@@ -124,7 +130,7 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
         details: {
           title: 'Extendable and Configurable Infrastructure',
           description:
-            'Easily modify and extend your S3 configuration by working with the Terraform files included in the template.',
+            'Easily modify and extend your DynamoDB configuration by working with the Terraform files included in the template.',
           icons: ['terraform'],
           content: {
             type: 'none',
