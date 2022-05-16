@@ -32,8 +32,7 @@ export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'dynamodb',
     title: 'DynamoDB',
-    metaTitle:
-      'DynamoDB template for Node.js implemented with TypeScript and Terraform',
+    metaTitle: 'DynamoDB template for Node.js implemented with TypeScript',
     metaDescription:
       'Open source template for working with DynamoDB in Node.js. Configure for your needs in our project builder or clone boilerplate.',
     images: [
