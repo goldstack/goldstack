@@ -9,7 +9,7 @@ export const assertWebsiteAvailable = async (url: string): Promise<void> => {
   const resp = await axios.get(url);
   assert(
     resp.status === 200 || resp.status === 304,
-    `HTTP call to website resulted in non success reponse code: ${resp.status} ${resp.statusText} (${url})`
+    `HTTP call to website resulted in non success response code: ${resp.status} ${resp.statusText} (${url})`
   );
 };
 

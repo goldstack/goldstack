@@ -13,16 +13,6 @@ import {
 jest.setTimeout(60000);
 
 describe('DynamoDB Table', () => {
-  it('Should get table name', async () => {
-    const tableName = await getTableName('prod');
-    expect(tableName).toEqual('goldstack-test-dynamodb-table');
-  });
-
-  it('Should get local table name', async () => {
-    const tableName = await getTableName();
-    expect(tableName).toEqual('local-dynamodb');
-  });
-
   it('Should connect to local table', async () => {
     const tableName = await getTableName();
     assert(tableName);
@@ -36,6 +26,7 @@ describe('DynamoDB Table', () => {
     const dynamoDB2 = await connect();
     assert(dynamoDB2);
   });
+
   it('Should be able to write and read an entity with native toolbox methods', async () => {
     const table = new Table({
       name: await getTableName(),
@@ -69,6 +60,7 @@ describe('DynamoDB Table', () => {
 
     expect(user.name).toEqual('Joe');
   });
+
   it('Should be able to write and read an entity with entities', async () => {
     const table = await connectTable();
     const Users = UserEntity(table);
