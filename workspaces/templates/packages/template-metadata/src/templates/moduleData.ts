@@ -53,6 +53,13 @@ const S3: PackageProps = {
   documentationLink: 'https://docs.goldstack.party/docs/templates/s3',
 };
 
+const DynamoDB: PackageProps = {
+  title: 'DynamoDB',
+  link:
+    'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/dynamodb#readme',
+  documentationLink: 'https://docs.goldstack.party/docs/templates/dynamodb',
+};
+
 const LambdaAPI: PackageProps = {
   title: 'Lambda API Gateway',
   link:
@@ -68,5 +75,6 @@ export {
   GoGin,
   EmailSend,
   S3,
+  DynamoDB,
   LambdaAPI,
 };
