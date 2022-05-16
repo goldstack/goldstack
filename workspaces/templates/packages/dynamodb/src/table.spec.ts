@@ -13,11 +13,6 @@ import {
 jest.setTimeout(60000);
 
 describe('DynamoDB Table', () => {
-  it('Should get local table name', async () => {
-    const tableName = await getTableName('local');
-    expect(tableName).toEqual('local-dynamodb');
-  });
-
   it('Should connect to local table', async () => {
     const tableName = await getTableName();
     assert(tableName);
