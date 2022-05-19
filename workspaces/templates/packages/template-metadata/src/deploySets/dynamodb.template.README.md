@@ -141,6 +141,8 @@ Once your AWS user is configured you can run `yarn infra up prod` in the `/packa
 
 This boilerplate will come with a module that provides the functionalities for connecting to DynamoDB from Node.js. This module is defined in `packages/dynamodb-1`.
 
+[!embed](./../../../../../../workspaces/docs/docs/templates/dynamodb/development.md)
+
 ## 9. Contribute to Goldstack
 
 Have questions or ideas or want to contribute to the project? Please head over to [github.com/goldstack/goldstack](https://github.com/goldstack/goldstack).
