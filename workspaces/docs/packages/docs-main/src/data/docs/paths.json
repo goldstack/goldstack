@@ -11,6 +11,7 @@
   "templates/serverless-api",
   "templates/app-nextjs",
   "templates/lambda-express",
+  "templates/dynamodb",
   "templates/email-send",
   "templates/static-website-aws",
   "templates/s3",

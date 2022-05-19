@@ -3,5 +3,10 @@
   margin: auto;
   padding: 30px;
   object-fit: contain;
+  min-width: 120px;
   min-height: 150px;
+}
+
+.package-card {
+  width: 100%;
 }

@@ -59,6 +59,11 @@
             "children": []
           },
           {
+            "title": "DynamoDB",
+            "path": "templates/dynamodb",
+            "children": []
+          },
+          {
             "title": "Email Send",
             "path": "templates/email-send",
             "children": []

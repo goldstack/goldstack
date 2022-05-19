@@ -48,13 +48,13 @@ describe('DynamoDB Table', () => {
 
     await e.put({
       pk: 'joe@email.com',
-      sk: 'd',
+      sk: 'admin',
       name: 'Joe',
       emailVerified: true,
     });
 
     const { Item: user } = await e.get<User, UserKey>(
-      { pk: 'joe@email.com', sk: 'd' },
+      { pk: 'joe@email.com', sk: 'admin' },
       { attributes: ['name', 'pk'] }
     );
 
@@ -67,13 +67,13 @@ describe('DynamoDB Table', () => {
 
     await Users.put({
       pk: 'joe@email.com',
-      sk: 'd',
+      sk: 'admin',
       name: 'Joe',
       emailVerified: true,
     });
 
     const { Item: user } = await Users.get<User, UserKey>(
-      { pk: 'joe@email.com', sk: 'd' },
+      { pk: 'joe@email.com', sk: 'admin' },
       { attributes: ['name', 'pk'] }
     );
 
