@@ -9,19 +9,18 @@ import {
 
 export const getDynamoDBFeature = (): ShortTemplateFeature => {
   return {
-    title: 'Storing files and data in AWS S3',
-    id: 's3',
-    description:
-      'Easily store files and data with high durability and low costs in AWS S3.',
-    image: 's3',
+    title: 'Store and query data with DynamoDB',
+    id: 'dynamodb',
+    description: 'Define a table, insert data, and query it with DynamoDB.',
+    image: 'https://cdn.goldstack.party/img/202205/dynamodb.svg',
     details: {
-      title: 'Easy to Use API to Connect with AWS S3',
+      title: '',
       description:
         'Connect to an S3 bucket and add objects using the TypeScript API.',
       content: {
         type: 'image',
         data: {
-          image: 'https://cdn.goldstack.party/img/202204/s3_api.png',
+          image: '',
         },
       },
     },
