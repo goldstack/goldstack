@@ -114,7 +114,7 @@ There are two different ways in which you can define application logic: using th
 If you want to use the DynamoDB Toolbox entities, you can utilise the method `connectTable` which is include in package:
 
 ```typescript
-import { 
+import {
   User,
   UserEntity,
   UserKey
@@ -125,38 +125,37 @@ import {
 You can then use the return object to instantiate your entities:
 
 ```typescript
-    const table = await connectTable();
-    const Users = UserEntity(table);
+const table = await connectTable();
+const Users = UserEntity(table);
 
-    await Users.put({
-      pk: 'joe@email.com',
-      sk: 'admin',
-      name: 'Joe',
-      emailVerified: true,
-    });
+await Users.put({
+  pk: 'joe@email.com',
+  sk: 'admin',
+  name: 'Joe',
+  emailVerified: true,
+});
 ```
 
 If you want to use the plain Node.js SDK method, you can utilise the methods `getTableName` and `connect` which are also included in the package:
 
 ```typescript
-import { 
-  getTableName,
-  connect,
-} from 'your-dynamodb-package';
+import { getTableName, connect } from 'your-dynamodb-package';
 ```
 
 The `connect` method will return an instance of [`AWS.DynamoDB`](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html) and we can use this to work with our table:
 
 ```typescript
-    const tableName = await getTableName();
-    const dynamoDB = await connect();
-    const tableInfo = await dynamoDB
-      .describeTable({ TableName: tableName })
-      .promise();
+const tableName = await getTableName();
+const dynamoDB = await connect();
+const tableInfo = await dynamoDB
+  .describeTable({ TableName: tableName })
+  .promise();
 ```
 
 Note that if you are after an instance of [`AWS.DynamoDB.DocumentClient`](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html), you can instantiate this using the `connect()` method as well:
 
 ```typescript
-const documentClient = new DynamoDB.DocumentClient({ service: await connect() });
+const documentClient = new DynamoDB.DocumentClient({
+  service: await connect(),
+});
 ```

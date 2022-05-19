@@ -1,0 +1,5 @@
+undecided:
+  - root
+  - "@goldstack/goldstack-home"
+  - "@goldstack/docs-main"
+  - "@goldstack/template-metadata"
