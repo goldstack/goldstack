@@ -16,11 +16,11 @@ export const getDynamoDBFeature = (): ShortTemplateFeature => {
     details: {
       title: '',
       description:
-        'Connect to an S3 bucket and add objects using the TypeScript API.',
+        'Connect to a DynamoDB table and insert and query data using the TypeScript API.',
       content: {
         type: 'image',
         data: {
-          image: '',
+          image: 'https://cdn.goldstack.party/img/202205/dynamodb_api.png',
         },
       },
     },
@@ -42,7 +42,7 @@ export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
     packages: [DynamoDB],
     isComposite: false,
     boilerplateLink: 'https://github.com/goldstack/dynamodb-boilerplate',
-    description: 'Manage data with DynamoDB.',
+    description: 'Insert, update and query data with DynamoDB.',
     longDescription:
       'This template adds the capability to write and query data with DynamoDB to your project.',
     tags: ['AWS', 'DynamoDB', 'Terraform', 'TypeScript', 'Yarn', 'Backend'],
