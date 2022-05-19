@@ -77,10 +77,27 @@ For more information, see [GitHub documentation - Fork a repo](https://docs.gith
 
 The template will create a DynamoDB table on AWS for you. For this, you simply need to modify the configuration included in this template.
 
-Specifically, the [goldstack.json]() in the `packages/dynamodb-1` folder.
+Specifically, the [goldstack.json](https://github.com/goldstack/dynamodb-boilerplate/blob/master/packages/dynamodb-1/goldstack.json) in the `packages/dynamodb-1` folder.
 
 ```json
-TBD
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "dynamodb-1",
+  "template": "dynamodb",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsUser": "goldstack-dev",
+      "awsRegion": "us-west-2",
+      "configuration": {
+        "tableName": "goldstack-ci-test-dynamodb-1652737960033"
+      },
+      "tfStateKey": "dynamodb-1-prod-98604cbb6b7326ee9a68.tfstate"
+    }
+  ]
+}
 ```
 
 The key property you will need to update is:
