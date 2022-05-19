@@ -9,14 +9,14 @@ import {
 
 export const getDynamoDBFeature = (): ShortTemplateFeature => {
   return {
-    title: 'Store and query data with DynamoDB',
+    title: 'Node.js API',
     id: 'dynamodb',
     description: 'Define a table, insert data, and query it with DynamoDB.',
     image: 'https://cdn.goldstack.party/img/202205/dynamodb.svg',
     details: {
-      title: '',
+      title: 'Start coding in minutes.',
       description:
-        'Connect to a DynamoDB table and insert and query data using the TypeScript API.',
+        'Connect to a DynamoDB table and insert and query data with a beautiful API.',
       content: {
         type: 'image',
         data: {
@@ -67,7 +67,7 @@ export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
       {
         title: 'TypeScript',
         id: 'typescript',
-        description: 'Store and query using a TypeScript API.',
+        description: 'Insert and query data using a TypeScript API.',
         image: 'typescript',
         details: {
           title: 'TypeScript configured in template',
@@ -83,7 +83,7 @@ export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
         },
       },
       {
-        title: 'Jest',
+        title: 'Local Testing',
         id: 'jest',
         description: 'Run tests for DynamoDB related logic with Jest.',
         image: 'jest',
@@ -95,7 +95,7 @@ export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image: 'https://cdn.goldstack.party/img/202204/dynamodb_jest.png',
+              image: 'https://cdn.goldstack.party/img/202205/dynamodb_jest.png',
             },
           },
         },
