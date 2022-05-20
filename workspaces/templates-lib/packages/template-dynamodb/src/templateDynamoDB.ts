@@ -65,7 +65,13 @@ export const run = async (args: string[]): Promise<void> => {
     const [, , , ...opArgs] = args;
 
     if (command === 'infra') {
-      if (opArgs[0] === 'up' || opArgs[1] === 'init' || opArgs[1] === 'plan') {
+      if (
+        opArgs[0] === 'up' ||
+        opArgs[0] === 'init' ||
+        opArgs[0] === 'plan' ||
+        opArgs[0] === 'apply' ||
+        opArgs[0] === 'destroy'
+      ) {
         await dynamoDBCli(['init', opArgs[1]]);
       }
       await terraformAwsCli(opArgs);
