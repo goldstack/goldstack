@@ -20,13 +20,19 @@ export class RootBuildTest implements TemplateTest {
     // some error with package:doctor coming up during local install
     // yarn(projectDir, 'package:doctor');
 
+    // testing clean before build
+    yarn(projectDir, 'clean');
     yarn(projectDir, 'build');
-    // compile should work
+    // compile should work as stand alone command (already tested with build implicitly before)
     yarn(projectDir, 'compile');
 
     // tests should work
     yarn(projectDir, 'test-ci');
 
+    // testing clean after build
     yarn(projectDir, 'clean');
+
+    // ensure all dist files available for testing
+    yarn(projectDir, 'build');
   }
 }

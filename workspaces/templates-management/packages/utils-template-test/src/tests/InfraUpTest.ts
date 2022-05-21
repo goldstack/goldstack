@@ -13,6 +13,8 @@ export class InfraUpTest implements TemplateTest {
 
     for (const deployment of packageConfig.deployments) {
       console.log('Building infrastructure for', deployment.name);
+      // ensuring required dist files are available
+      yarn(params.projectDir, `workspace ${packageJson.name} build`);
       yarn(
         params.projectDir,
         `workspace ${packageJson.name} infra init ${deployment.name}`
