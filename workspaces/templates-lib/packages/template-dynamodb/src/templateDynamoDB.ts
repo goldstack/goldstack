@@ -10,8 +10,16 @@ import { DynamoDBPackage, DynamoDBDeployment } from './types/DynamoDBPackage';
 import yargs, { Argv } from 'yargs';
 import assert from 'assert';
 import { dynamoDBCli } from './dynamoDBTableCli';
+import { InputMigrations } from 'umzug/lib/types';
+import { DynamoDBContext } from './dynamoDBMigrations';
 
-export const run = async (args: string[]): Promise<void> => {
+export const run = async ({
+  args,
+  migrations,
+}: {
+  args: string[];
+  migrations: InputMigrations<DynamoDBContext>;
+}): Promise<void> => {
   await wrapCli(async () => {
     const deploymentPositional = (yargs: Argv<any>): Argv<any> => {
       return yargs.positional('deployment', {
@@ -72,22 +80,22 @@ export const run = async (args: string[]): Promise<void> => {
         opArgs[0] === 'apply' ||
         opArgs[0] === 'destroy'
       ) {
-        await dynamoDBCli(['init', opArgs[1]]);
+        await dynamoDBCli(migrations, ['init', opArgs[1]]);
       }
       await terraformAwsCli(opArgs);
       if (opArgs[0] === 'destroy') {
-        await dynamoDBCli(['delete', opArgs[1]]);
+        await dynamoDBCli(migrations, ['delete', opArgs[1]]);
       }
       return;
     }
 
     if (command === 'deploy') {
-      await dynamoDBCli(['init', opArgs[0]]);
+      await dynamoDBCli(migrations, ['init', opArgs[0]]);
       return;
     }
 
     if (command === 'table') {
-      await dynamoDBCli(opArgs);
+      await dynamoDBCli(migrations, opArgs);
       return;
     }
 

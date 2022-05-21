@@ -17,8 +17,8 @@
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "deploy": "template deploy $@",
     "infra": "template infra",
-    "template": "template",
-    "template-ts": "ts-node scripts/template.ts",
+    "template": "yarn node dist/src/template.js",
+    "template-ts": "ts-node src/template.ts",
     "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {

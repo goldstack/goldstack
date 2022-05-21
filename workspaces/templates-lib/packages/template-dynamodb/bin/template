@@ -2,6 +2,7 @@
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('source-map-support').install();
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('./../dist/src/templateDynamoDB')
   .run(process.argv)
