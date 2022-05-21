@@ -4,13 +4,15 @@ import { posix, resolve } from 'path';
 import { connect, deleteTable, migrateDownTo } from './templateDynamoDBTable';
 
 const loadMigrations = (): any => {
-  const jsPath = resolve(
-    `${posix.dirname(process.cwd())}/dist/src/migrations.js`
-  );
+  console.log('current work dir', process.cwd());
+  const currentWorkDirPosix = posix.normalize(process.cwd());
+  console.log('current work dir posix', currentWorkDirPosix);
+  const jsPath = resolve(`${currentWorkDirPosix}/dist/src/migrations.js`);
+  console.log('js path', jsPath);
   if (existsSync(jsPath)) {
     return require(jsPath);
   }
-  const tsPath = resolve(`${posix.dirname(process.cwd())}/src/migrations.ts`);
+  const tsPath = resolve(`${currentWorkDirPosix}/src/migrations.ts`);
   if (existsSync(tsPath)) {
     return require(tsPath);
   }
