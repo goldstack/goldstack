@@ -15,8 +15,8 @@
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
-    "deploy": "template deploy $@",
-    "infra": "template infra",
+    "deploy": "yarn node dist/src/template.js deploy $@",
+    "infra": "yarn node dist/src/template.js infra",
     "template": "yarn node dist/src/template.js",
     "template-ts": "ts-node src/template.ts",
     "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"

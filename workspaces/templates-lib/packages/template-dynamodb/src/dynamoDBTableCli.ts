@@ -1,6 +1,4 @@
 import { read } from '@goldstack/utils-sh';
-import { existsSync } from 'fs';
-import { posix, resolve } from 'path';
 import { InputMigrations } from 'umzug/lib/types';
 import { DynamoDBContext } from './dynamoDBMigrations';
 import { connect, deleteTable, migrateDownTo } from './templateDynamoDBTable';

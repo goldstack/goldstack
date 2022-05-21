@@ -23,10 +23,6 @@
   "author": "Max Rohde",
   "sideEffects": false,
   "main": "src/templateDynamoDB.ts",
-  "bin": {
-    "template": "./bin/template",
-    "template-dynamodb": "./bin/template"
-  },
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",
