@@ -274,6 +274,15 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     <h2 className="h3 mb-0">Services</h2>
                   </div>
                   <Checkbox
+                    title="DynamoDB"
+                    element="dynamodb"
+                    disabled={building}
+                    icon={'https://cdn.goldstack.party/img/202205/dynamodb.svg'}
+                    checked={elements.indexOf('dynamodb') !== -1}
+                    templateLink={'/templates/dynamodb'}
+                    onChange={checkboxChange}
+                  ></Checkbox>
+                  <Checkbox
                     title="S3"
                     element="s3"
                     disabled={building}

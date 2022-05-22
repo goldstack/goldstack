@@ -8,7 +8,7 @@
   "main": "src/module.ts",
   "scripts": {
     "build": "ts-node ./scripts/build.ts",
-    "clean": "rimraf ./dist && rimraf distLambda",
+    "clean": "rimraf ./dist && rimraf distLambda && rimraf ./goldstackLocal",
     "compile": "tsc --build",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "deploy": "yarn build && yarn template deploy",
