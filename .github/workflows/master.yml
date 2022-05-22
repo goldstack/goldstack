@@ -138,7 +138,7 @@ jobs:
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
         run: |
           cd workspaces/templates-lib
-          yarn version:apply --deferred patch
+          yarn version:apply --deferred minor
           yarn version apply --all
           yarn publish
           git status
