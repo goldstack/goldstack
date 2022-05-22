@@ -24,12 +24,12 @@ Scalable AWS infrastructure defined in Terraform; all content served through the
 
 The following key properties need to be configured for this template:
 
-- **Hosted Zone Domain**: A Route 53 hosted zone to which the _Primary Website Domain_ and _Redirect Website Domain_ can be added as records. For instance, the hosted zone domain `mysite.com` would allow adding the primary domain `mysite.com` and the redirect domain `www.mysite.com`. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
-- **Primary Website Domain**: This is the domain your users will use to view the site. For instance, if you configure the domain `mysite.com`, users will be able to view your site by opening the URL `https://mysite.com`.
-- **Redirect Website Domain**: This is a domain that will redirect all requests to your _Primary Website Domain_. The redirect website domain _must be_ different to the _Primary Website Domain_. For instance, if you configure the domain `mysite.com` as your primary domain, you can configure `www.mysite.com` as your redirect domain. Users will be redirected to `https://mysite.com` when they attempt to open the URL `https://www.mysite.com`.
-- **Default Cache Duration**: The number of seconds that files will be cached in the AWS content delivery network. Setting this to `120` for instance, would mean that, unless otherwise specified, webpages and other resources will be cached for 120 s. In that case, when a new version of a page is deployed, it can take up to 120 s for changes to appear when accessing the deployed version of the application.
+*   **Hosted Zone Domain**: A Route 53 hosted zone to which the *Primary Website Domain* and *Redirect Website Domain* can be added as records. For instance, the hosted zone domain `mysite.com` would allow adding the primary domain `mysite.com` and the redirect domain `www.mysite.com`. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
+*   **Primary Website Domain**: This is the domain your users will use to view the site. For instance, if you configure the domain `mysite.com`, users will be able to view your site by opening the URL `https://mysite.com`.
+*   **Redirect Website Domain**: This is a domain that will redirect all requests to your *Primary Website Domain*. The redirect website domain *must be* different to the *Primary Website Domain*. For instance, if you configure the domain `mysite.com` as your primary domain, you can configure `www.mysite.com` as your redirect domain. Users will be redirected to `https://mysite.com` when they attempt to open the URL `https://www.mysite.com`.
+*   **Default Cache Duration**: The number of seconds that files will be cached in the AWS content delivery network. Setting this to `120` for instance, would mean that, unless otherwise specified, webpages and other resources will be cached for 120 s. In that case, when a new version of a page is deployed, it can take up to 120 s for changes to appear when accessing the deployed version of the application.
 
-- **Environment Variables**: Configures environment variables for the application. Environment variables without the prefix `NEXT_PUBLIC_` will only be available during build time of the application. For more information see [Environment Variables](https://nextjs.org/docs/basic-features/environment-variables) in the Next.js documentation.
+*   **Environment Variables**: Configures environment variables for the application. Environment variables without the prefix `NEXT_PUBLIC_` will only be available during build time of the application. For more information see [Environment Variables](https://nextjs.org/docs/basic-features/environment-variables) in the Next.js documentation.
 
 ## Getting Started
 
@@ -95,13 +95,13 @@ The configuration tool will define one deployment. This will be either `dev` or 
 
 Infrastructure commands for this template can be run using `yarn`. There are four commands in total:
 
-- `yarn infra up`: For standing up infrastructure.
-- `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
-- `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
-- `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
-- `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
-- `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
-- `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
+*   `yarn infra up`: For standing up infrastructure.
+*   `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
+*   `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
+*   `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
+*   `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+*   `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
+*   `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
 
 For each command, the deployment they should be applied to must be specified.
 
@@ -153,7 +153,7 @@ This works well for deploying infrastructure from your local development environ
 
 ## Deployment
 
-This template can be packaged up and deployed to the deployments specified in `goldstack.json`. Note that deployment will only work _after_ the infrastructure for the respective deployment has been stood up. To deploy your package, run the following script:
+This template can be packaged up and deployed to the deployments specified in `goldstack.json`. Note that deployment will only work *after* the infrastructure for the respective deployment has been stood up. To deploy your package, run the following script:
 
 ```bash
 yarn deploy [deploymentName]
@@ -183,7 +183,7 @@ Then click on `Import` to import this repository.
 
 Add the project to your personal account. Select the **root directory** of your project as the source code to import (not the directory of the package with the Next.js application).
 
-Click to extend _Build and Output Settings_ and provide the following build command:
+Click to extend *Build and Output Settings* and provide the following build command:
 
     yarn && yarn build && cd packages/app-nextjs-bootstrap && yarn build:next
 
@@ -205,14 +205,14 @@ For more information, see the [Vercel Documentation](https://vercel.com/docs).
 
 Goldstack's Next.js modules enable deploying Next.js applications to a serverless AWS infrastructure. The advantage of this is that you get a very low cost, highly scalable and enterprise ready deployment for the Next.js application. However, serverless AWS infrastructure is structurally different to deployments on Vercel or deployments as stand alone Node.js applications. Thus there are a couple of limitations to keep in mind when working with this template:
 
-- [API Routes](https://nextjs.org/docs/api-routes/introduction) are not supported. If you need a backend, we recommend adding our [Lambda Express](lambda-express) template to your project.
-- When standing up infrastructure for this template, a new certificate will be automatically obtained from AWS Certificate Manager. AWS has a default limit of the number of SSL certificates per account. If you are reaching this limit, you can simply make a service request with AWS to increase it.
-- Pre-fetching does not work in some situations, for instance when statically rendering pages using `getStaticPaths`. As a workaround, we recommend not using [Link](https://nextjs.org/docs/api-reference/next/link) components for these routes and instead use vanilla `a` elements.
-- Files added to the `public/` folder may not be served correctly. Configure the CloudFront distribution as described [here](#404-not-found-for-files-in-public-folder-1) to make the files available.
-- Delay in deploying new dynamic routes. Since dynamic routes are implemented using Lambda@Edge functions, it can take a while for dynamic routes to start working. This is because once a new dynamic routes is added, a new Lambda@Edge function needs to be deployed. You can check the state of the CloudFront distribution in the AWS console. If no new dynamic routes have been added, everything should work as expected directly after the deployment.
-- Next.js `<Image>` component is not supported, see [Next.js Image loader](https://nextjs.org/docs/basic-features/image-optimization#loader). Use `img` instead. The project is already set up to use [next-optimized-images](https://github.com/cyrilwanner/next-optimized-images) which you can [configure](https://github.com/cyrilwanner/next-optimized-images#optimization-packages) for optimising various image types.
-- Redirect domain configured as CNAME rather than its own bucket and CloudFront distribution due to [this know limitation](https://www.reddit.com/r/aws/comments/7jyisk/https_redirect_on_s3_bucket_access_denied_error/)
-- No support for a dynamic route and pages in the same directory. When creating both normal pages and a dynamic route in a directory, the dynamic route will always be loaded first. For instance, given the following two files:
+*   [API Routes](https://nextjs.org/docs/api-routes/introduction) are not supported. If you need a backend, we recommend adding our [Lambda Express](lambda-express) template to your project.
+*   When standing up infrastructure for this template, a new certificate will be automatically obtained from AWS Certificate Manager. AWS has a default limit of the number of SSL certificates per account. If you are reaching this limit, you can simply make a service request with AWS to increase it.
+*   Pre-fetching does not work in some situations, for instance when statically rendering pages using `getStaticPaths`. As a workaround, we recommend not using [Link](https://nextjs.org/docs/api-reference/next/link) components for these routes and instead use vanilla `a` elements.
+*   Files added to the `public/` folder may not be served correctly. Configure the CloudFront distribution as described [here](#404-not-found-for-files-in-public-folder-1) to make the files available.
+*   Delay in deploying new dynamic routes. Since dynamic routes are implemented using Lambda@Edge functions, it can take a while for dynamic routes to start working. This is because once a new dynamic routes is added, a new Lambda@Edge function needs to be deployed. You can check the state of the CloudFront distribution in the AWS console. If no new dynamic routes have been added, everything should work as expected directly after the deployment.
+*   Next.js `<Image>` component is not supported, see [Next.js Image loader](https://nextjs.org/docs/basic-features/image-optimization#loader). Use `img` instead. The project is already set up to use [next-optimized-images](https://github.com/cyrilwanner/next-optimized-images) which you can [configure](https://github.com/cyrilwanner/next-optimized-images#optimization-packages) for optimising various image types.
+*   Redirect domain configured as CNAME rather than its own bucket and CloudFront distribution due to [this know limitation](https://www.reddit.com/r/aws/comments/7jyisk/https_redirect_on_s3\_bucket_access_denied_error/)
+*   No support for a dynamic route and pages in the same directory. When creating both normal pages and a dynamic route in a directory, the dynamic route will always be loaded first. For instance, given the following two files:
 
 <!---->
 
@@ -338,8 +338,8 @@ Error: error getting S3 Bucket CORS configuration: AccessDenied: Access Denied
 
 There are a number of possible causes for this:
 
-- You may have configured your AWS user incorrectly. Please see [AWS Configuration](./../goldstack/configuration#aws-configuration) for details on how to configure your AWS user.
-- You may accidently have a Terraform state in your module. That can happen if you create new modules by copy and pasting from an existing module. In this case, delete the following two folders in your module: `infra/aws/.terraform` and `infra/aws/terraform.tfstate.d`.
+*   You may have configured your AWS user incorrectly. Please see [AWS Configuration](./../goldstack/configuration#aws-configuration) for details on how to configure your AWS user.
+*   You may accidently have a Terraform state in your module. That can happen if you create new modules by copy and pasting from an existing module. In this case, delete the following two folders in your module: `infra/aws/.terraform` and `infra/aws/terraform.tfstate.d`.
 
 ### Error deleting Lambda Function
 
@@ -353,4 +353,4 @@ In that case, simply run `yarn infra destroy [deploymentName]` again until it is
 
 Here are a number of ways how the configuration for this module can be changed to enhance security:
 
-- In `infra/aws/edge.tf` for the `resource "aws_iam_policy" "lambda_logging"` you can further restrict the access rights to write log events: `"Resource": "arn:aws:logs:*:*:*"`.
+*   In `infra/aws/edge.tf` for the `resource "aws_iam_policy" "lambda_logging"` you can further restrict the access rights to write log events: `"Resource": "arn:aws:logs:*:*:*"`.
