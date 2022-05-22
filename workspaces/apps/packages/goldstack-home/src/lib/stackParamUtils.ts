@@ -15,6 +15,9 @@ export const getPackageIds = (elements: string[]): string[] => {
   if (elements.includes('s3')) {
     res.push('template:s3');
   }
+  if (elements.includes('dynamodb')) {
+    res.push('template:dynamodb');
+  }
   if (elements.includes('static-website')) {
     res.push('template:static-website-aws');
   }

@@ -7,6 +7,7 @@ export const getModuleTemplatesNames = (): string[] => {
     'app-nextjs',
     'app-nextjs-bootstrap',
     's3',
+    'dynamodb',
     'docker-image-aws',
     'lambda-go-gin',
     'email-send',
