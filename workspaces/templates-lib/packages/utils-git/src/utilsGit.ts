@@ -6,7 +6,7 @@ import cmdExists from 'command-exists';
 
 const isDebug = process.env.GOLDSTACK_DEBUG || process.env.DEBUG;
 
-// included here to avoid circular dependency
+// included here to avoid circular dependency for log package
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const debug = (msg: any): void => {
   if (isDebug) {
