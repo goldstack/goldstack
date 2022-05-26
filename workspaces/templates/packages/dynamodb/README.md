@@ -1,32 +1,23 @@
-# S3 Template
+# DynamoDB Template
 
 ❤️ Support development by using the [Goldstack Project Builder](https://goldstack.party) ❤️
 
-The S3 template provides a simple means for an application to store and access files on [AWS S3](https://aws.amazon.com/s3/). This template is set up for deploying an S3 bucket using Terraform and provides a simple TypeScript API to work with this bucket.
+The [DynamoDB template](https://goldstack.party/templates/dynamodb) provides a lightweight wrapper around the [AWS DynamoDB](https://aws.amazon.com/dynamodb/) service.
 
 ## Features
 
-- S3 bucket defined in Terraform
-- Supports definition for multiple environments (staging, production)
-- Infrastructure easily stood up using an npm script `yarn infra up`
-- Embed in server applications by linking to the package
-
-```javascript
-import { getBucketName, connect } from 'my-s3-module';
-
-const s3 = connect();
-await s3.putObject({
-  BucketName: getBucketName(),
-  Key: 'my-doc',
-  Body: 'content',
-});
-```
+*   Create DynamoDB table
+*   Run migrations using Umzug
+*   Easy to use API
+*   Strong typing using DynamoDB Toolbox
+*   Supports multiple environments (development, production)
+*   Provides way to extend infrastructure using Terraform
 
 ## Configure
 
-In order to provide a basic configuration for an S3 bucket, we only need to know the name of the bucket you want to create.
+In order to provide a basic configuration for the DynamoDB table, we only need to define the name of the table we want to use.
 
-Please note that a bucket name needs to be [globally unique](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html). However, buckets are always created in a specific [AWS region](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions). The bucket will be deployed to the AWS region you have specified.
+The template will create a basic table with this name with a partition and sort key. Further configuration of the table can be performed in code using migrations (`updateTable`). This can be used to define additional indices. Infrastructure configuration can be extended using Terraform.
 
 ## Getting Started
 
@@ -48,22 +39,167 @@ This will be either `yarn infra up dev` or `yarn infra up prod` depending on you
 
 ### 3. Development
 
-This is how an the S3 package can be used from another package:
+In order to make use of the DynamoDB package we principally want to do two things:
 
-```javascript
-import { getBucketName, connect } from 'my-s3-module';
+*   Define the schema for our table
+*   Write application logic to work with the data in the table
 
-const s3 = connect();
-await s3.putObject({
-  BucketName: getBucketName(),
-  Key: 'my-doc',
-  Body: 'content',
+In this template, the former will be done within the DynamoDB package but the latter can either happen in other packages. For instance, if you have included a [Serverless API](https://goldstack.party/templates/lambda-api) template in your project, you can define your logic for working with the data in DynamoDB in that package. However, you can also write additional code in the DynamoDB package and define a lightweight DOA layer.
+
+#### Defining the Schema
+
+While DynamoDB is a NoSQL data store and strictly speaking does not require a database schema in the traditional sense, it is strongly recommended to define some basic schema for the data we want to store. This template provides and easy way to define a schema using [DynamoDB Toolbox](https://github.com/jeremydaly/dynamodb-toolbox). Note though that this is optional.
+
+The entities we want to store in the table are defined in the file `entities.ts` which is included in the DynamoDB package:
+
+```typescript
+import { Table, Entity } from 'dynamodb-toolbox';
+import DynamoDB from 'aws-sdk/clients/dynamodb';
+
+export type User = {
+  pk: string;
+  sk: string;
+  name: string;
+  emailVerified: boolean;
+};
+
+export type UserKey = {
+  pk: string;
+  sk: string;
+};
+
+export function createTable<Name extends string>(
+  dynamoDB: DynamoDB.DocumentClient,
+  tableName: string
+): Table<Name, 'pk', 'sk'> {
+  return new Table({
+    name: tableName,
+    partitionKey: 'pk',
+    sortKey: 'sk',
+    DocumentClient: dynamoDB,
+  });
+}
+
+export function UserEntity<Name extends string>(
+  table: Table<Name, 'pk', 'sk'>
+): Entity<User, UserKey, typeof table> {
+  const e = new Entity<User, UserKey, typeof table>({
+    name: 'User',
+    attributes: {
+      pk: { partitionKey: true },
+      sk: { hidden: true, sortKey: true },
+      name: { type: 'string', required: true },
+      emailVerified: { type: 'boolean', required: true },
+    },
+    table,
+  } as const);
+
+  return e;
+}
+```
+
+You can edit and extend these entities. Note though that it is recommended not to change the name of the `partionKey` (`pk`) and `sortKey` (`sk`).
+
+This template is based on the assumption that all entities are defined in the same DynamoDB table. This is the recommended way to define a schema in DynamoDB.
+
+One key aspect of developing with DynamoDB is to build efficient indices to access your data. This is done using so called Global Secondary Indices (GSI). If you want to define these, you should do so as part of a migration.
+
+Data migrations are defined in the file `migrations.ts` which is included in the template:
+
+```typescript
+import { InputMigrations } from 'umzug/lib/types';
+import { DynamoDBContext } from '@goldstack/template-dynamodb';
+
+import { marshall } from '@aws-sdk/util-dynamodb';
+
+/**
+ * Umzug migrations applied during connection see https://github.com/sequelize/umzug#migrations
+ */
+export const createMigrations = (): InputMigrations<DynamoDBContext> => {
+  return [
+    {
+      name: '00-dummy-migration',
+      async up({ context }) {
+        await context.client
+          .putItem({
+            TableName: context.tableName,
+            Item: marshall({
+              pk: '#DUMMY',
+              sk: 'hello-world',
+            }),
+          })
+          .promise();
+      },
+      async down({ context }) {
+        await context.client
+          .deleteItem({
+            TableName: context.tableName,
+            Key: marshall({
+              pk: '#DUMMY',
+              sk: 'hello-world',
+            }),
+          })
+          .promise();
+      },
+    },
+  ];
+};
+```
+
+Change the included migration or add a migration to create GSIs using the Node.js SDK using the [`updateTable`](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#updateTable-property) command.
+
+#### Write Application Logic
+
+There are two different ways in which you can define application logic: using the DynamoDB Toolbox entities (see previous section) or using the classes from the Node.js SDK.
+
+If you want to use the DynamoDB Toolbox entities, you can utilise the method `connectTable` which is include in package:
+
+```typescript
+import {
+  User,
+  UserEntity,
+  UserKey
+  connectTable,
+} from 'your-dynamodb-package';
+```
+
+You can then use the return object to instantiate your entities:
+
+```typescript
+const table = await connectTable();
+const Users = UserEntity(table);
+
+await Users.put({
+  pk: 'joe@email.com',
+  sk: 'admin',
+  name: 'Joe',
+  emailVerified: true,
 });
 ```
 
-The object returned from `connect()` is an instance of the [AWS S3 client](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html).
+If you want to use the plain Node.js SDK method, you can utilise the methods `getTableName` and `connect` which are also included in the package:
 
-Note it is also possible to add additional TypeScript files in the templates `src/` folder. This is a good place to put an abstraction layer on top of the S3 interface, for instance a data repository specific to the needs of your application.
+```typescript
+import { getTableName, connect } from 'your-dynamodb-package';
+```
+
+The `connect` method will return an instance of [`AWS.DynamoDB`](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html) and we can use this to work with our table:
+
+```typescript
+const tableName = await getTableName();
+const dynamoDB = await connect();
+const tableInfo = await dynamoDB
+  .describeTable({ TableName: tableName })
+  .promise();
+```
+
+Note that if you are after an instance of [`AWS.DynamoDB.DocumentClient`](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html), you can instantiate this using the `connect()` method as well:
+
+```typescript
+const documentClient = new DynamoDB.DocumentClient({
+  service: await connect(),
+});
+```
 
 ## Infrastructure
 
@@ -97,13 +233,13 @@ The configuration tool will define one deployment. This will be either `dev` or 
 
 Infrastructure commands for this template can be run using `yarn`. There are four commands in total:
 
-- `yarn infra up`: For standing up infrastructure.
-- `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
-- `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
-- `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
-- `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
-- `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
-- `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
+*   `yarn infra up`: For standing up infrastructure.
+*   `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
+*   `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
+*   `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
+*   `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+*   `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
+*   `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
 
 For each command, the deployment they should be applied to must be specified.
 
@@ -155,4 +291,4 @@ This works well for deploying infrastructure from your local development environ
 
 ## Security Hardening
 
-The S3 bucket for this template is already configured to allow only private access to the bucket. Be careful when making the bucket public and ensure that it only has contents that can be publicly exposed. For use cases such as using a bucket for hosting content, we recommend using the [Static Website](./static-website-aws) template.
+No IAM configuration is included in the template. It assumes that all resources using the table will have global access rights to all resources. For larger systems, this should be reworked by adding policies and roles to the codebase.
