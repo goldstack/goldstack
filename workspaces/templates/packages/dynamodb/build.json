@@ -16,8 +16,7 @@
   "exclude": [
     "infra/aws/.terraform/",
     "infra/aws/tfplan",
-    "infra/aws/terraform.tfstate.d/",
-    "src/bucket.spec.ts"
+    "infra/aws/terraform.tfstate.d/"
   ],
   "overwriteFiles": [
     {

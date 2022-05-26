@@ -4,6 +4,7 @@ import { readPackageConfigFromDir } from '@goldstack/utils-package';
 
 import { read } from '@goldstack/utils-sh';
 import { retryOperation } from './Utils';
+
 export class InfraDestroyTest implements TemplateTest {
   getName(): string {
     return 'infra-destroy';
