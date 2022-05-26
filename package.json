@@ -32,6 +32,7 @@
   "resolutions": {
     "aws-sdk": "2.1055.0",
     "glob-parent": "5.1.2",
+    "json-schema": "0.4.0",
     "prismjs": "1.27.0",
     "trim": "0.0.3"
   },
