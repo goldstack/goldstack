@@ -15817,10 +15817,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["json-schema", [\
-        ["npm:0.2.3", {\
-          "packageLocation": "./.yarn/cache/json-schema-npm-0.2.3-018ee3dfc9-bbc2070988.zip/node_modules/json-schema/",\
+        ["npm:0.4.0", {\
+          "packageLocation": "./.yarn/cache/json-schema-npm-0.4.0-e776313070-66389434c3.zip/node_modules/json-schema/",\
           "packageDependencies": [\
-            ["json-schema", "npm:0.2.3"]\
+            ["json-schema", "npm:0.4.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -16011,7 +16011,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jsprim", "npm:1.4.1"],\
             ["assert-plus", "npm:1.0.0"],\
             ["extsprintf", "npm:1.3.0"],\
-            ["json-schema", "npm:0.2.3"],\
+            ["json-schema", "npm:0.4.0"],\
             ["verror", "npm:1.10.0"]\
           ],\
           "linkType": "HARD"\
