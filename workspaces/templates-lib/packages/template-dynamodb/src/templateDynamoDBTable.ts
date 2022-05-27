@@ -9,10 +9,6 @@ import {
 } from './dynamoDBPackageUtils';
 
 import { PackageConfig } from '@goldstack/utils-package-config';
-import {
-  localConnect,
-  stopLocalDynamoDB as stopLocalDynamoDBUtils,
-} from './localDynamoDB';
 import { assertTable, deleteTable as deleteTableModule } from './dynamoDBData';
 import { InputMigrations } from 'umzug/lib/types';
 import {
@@ -51,7 +47,12 @@ export const stopLocalDynamoDB = async (
     packageSchema,
   });
 
-  await stopLocalDynamoDBUtils(packageConfig, deploymentName);
+  // only load this file when we absolutely need it, so we can avoid packaging it
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  await require('./localDynamoDB').stopLocalDynamoDBUtils(
+    packageConfig,
+    deploymentName
+  );
 
   const coldStartKey = getColdStartKey(packageConfig, deploymentName);
   coldStart.delete(coldStartKey);
@@ -62,7 +63,11 @@ const createClient = async (
   deploymentName: string
 ): Promise<DynamoDB> => {
   if (deploymentName === 'local') {
-    return localConnect(packageConfig, deploymentName);
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    return require('./localDynamoDB').localConnect(
+      packageConfig,
+      deploymentName
+    );
   }
   const deployment = packageConfig.getDeployment(deploymentName);
 
