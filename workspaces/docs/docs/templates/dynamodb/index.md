@@ -21,7 +21,6 @@ title: DynamoDB
 
 [!embed](./../shared/infrastructure.md)
 
-
 ## Frequently Asked Questions
 
 ### How to define a table with only a partition key
