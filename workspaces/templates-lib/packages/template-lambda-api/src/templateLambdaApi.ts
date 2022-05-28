@@ -69,7 +69,12 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'build') {
-      await buildLambdas(defaultRoutesPath, lambdaRoutes);
+      await buildLambdas({
+        routesDir: defaultRoutesPath,
+        configs: lambdaRoutes,
+        lambdaNamePrefix: packageConfig.getDeployment(opArgs[0]).configuration
+          .lambdaNamePrefix,
+      });
       return;
     }
 

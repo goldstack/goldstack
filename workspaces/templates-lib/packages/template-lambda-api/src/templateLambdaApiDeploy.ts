@@ -20,8 +20,6 @@ interface DeployLambdaParams {
 export const deployLambdas = async (
   params: DeployLambdaParams
 ): Promise<void> => {
-  await rmSafe('./distLambda/zips');
-  mkdir('-p', './distLambda/zips');
   const lambdaConfig = readLambdaConfig(defaultRoutesPath);
 
   const operations = lambdaConfig.map(async (config) => {
