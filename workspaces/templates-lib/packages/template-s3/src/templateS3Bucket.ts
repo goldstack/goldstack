@@ -3,7 +3,6 @@ import { getAWSUser } from '@goldstack/infra-aws';
 import S3 from 'aws-sdk/clients/s3';
 
 import { S3Package, S3Deployment } from './types/S3Package';
-import AWSMock from 'mock-aws-s3';
 import assert from 'assert';
 
 import { PackageConfig } from '@goldstack/utils-package-config';
@@ -25,8 +24,11 @@ export const connect = async (
     deploymentName = process.env.GOLDSTACK_DEPLOYMENT;
   }
   if (deploymentName === 'local') {
+    // only require this for local testing
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const AWSMock = require('mock-aws-s3');
     AWSMock.config.basePath = 'goldstackLocal/s3';
-    const s3: AWSMock.S3 = new AWSMock.S3({
+    const s3 = new AWSMock.S3({
       params: {},
     });
     return s3 as any;
