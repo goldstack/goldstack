@@ -8,6 +8,7 @@
     ".gitignore",
     "goldstack.json",
     "jest.config.js",
+    "esbuild.config.json",
     "package.json",
     "README.md",
     "template.json",
