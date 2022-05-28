@@ -1,7 +1,12 @@
 import { build, BuildOptions } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
 import { LambdaConfig } from '@goldstack/utils-aws-lambda';
-import { changeExtension, mkdir, readToType } from '@goldstack/utils-sh';
+import {
+  changeExtension,
+  mkdir,
+  readToType,
+  rmSafe,
+} from '@goldstack/utils-sh';
 
 export const getOutDirForLambda = (config: LambdaConfig): string => {
   if (config.path === '$default') {
@@ -20,6 +25,7 @@ export const buildLambdas = async (
 ): Promise<void> => {
   const esbuildConfig = readToType<BuildOptions>('./esbuild.config.json');
 
+  await rmSafe('./distLambda');
   for await (const config of configs) {
     mkdir('-p', getOutDirForLambda(config));
     const esbuildLocalPath = changeExtension(
@@ -36,7 +42,7 @@ export const buildLambdas = async (
       minify: true,
       platform: 'node',
       format: 'cjs',
-      target: 'node12.0',
+      target: 'node16.0',
       sourcemap: true,
       outfile: getOutFileForLambda(config),
       ...esbuildConfig,

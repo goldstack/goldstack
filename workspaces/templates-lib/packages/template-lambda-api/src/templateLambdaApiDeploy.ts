@@ -9,7 +9,7 @@ import {
 import { readLambdaConfig } from '@goldstack/utils-aws-lambda';
 import { defaultRoutesPath } from './templateLambdaConsts';
 
-import { mkdir } from '@goldstack/utils-sh';
+import { mkdir, rmSafe } from '@goldstack/utils-sh';
 import { getOutDirForLambda } from './templateLambdaApiBuild';
 
 interface DeployLambdaParams {
@@ -20,6 +20,8 @@ interface DeployLambdaParams {
 export const deployLambdas = async (
   params: DeployLambdaParams
 ): Promise<void> => {
+  await rmSafe('./distLambda/zips');
+  mkdir('-p', './distLambda/zips');
   const lambdaConfig = readLambdaConfig(defaultRoutesPath);
 
   const operations = lambdaConfig.map(async (config) => {
@@ -30,7 +32,7 @@ export const deployLambdas = async (
     console.log(`[${functionName}]: Starting deployment`);
     const functionDir = getOutDirForLambda(config);
     mkdir('-p', functionDir);
-    const targetArchive = `${functionDir}/${config.name}.zip`;
+    const targetArchive = `./distLambda/zips/${functionName}.zip`;
     await deployFunction({
       targetArchiveName: targetArchive,
       lambdaPackageDir: functionDir,
