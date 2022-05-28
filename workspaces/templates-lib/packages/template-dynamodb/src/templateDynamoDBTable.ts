@@ -49,10 +49,8 @@ export const stopLocalDynamoDB = async (
 
   // only load this file when we absolutely need it, so we can avoid packaging it
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  await require('./localDynamoDB').stopLocalDynamoDBUtils(
-    packageConfig,
-    deploymentName
-  );
+  const lib = require('./localDynamoDB');
+  await lib.stopLocalDynamoDB(packageConfig, deploymentName);
 
   const coldStartKey = getColdStartKey(packageConfig, deploymentName);
   coldStart.delete(coldStartKey);
@@ -64,10 +62,8 @@ const createClient = async (
 ): Promise<DynamoDB> => {
   if (deploymentName === 'local') {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    return require('./localDynamoDB').localConnect(
-      packageConfig,
-      deploymentName
-    );
+    const lib = require('./localDynamoDB');
+    return lib.localConnect(packageConfig, deploymentName);
   }
   const deployment = packageConfig.getDeployment(deploymentName);
 
