@@ -10,6 +10,8 @@ import { PackageConfig } from '@goldstack/utils-package-config';
 
 import { MockedSES } from './mockedSES';
 
+import { excludeInBundle } from '@goldstack/utils-esbuild';
+
 let mockedSES: MockedSES | undefined;
 
 export const getMockedSES = (): MockedSES => {

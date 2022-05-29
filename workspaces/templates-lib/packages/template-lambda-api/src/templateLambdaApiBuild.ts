@@ -11,7 +11,6 @@ import {
   rmSafe,
   write,
 } from '@goldstack/utils-sh';
-import { LambdaApiDeployment } from './types/LambdaApiPackage';
 
 export const getOutDirForLambda = (config: LambdaConfig): string => {
   if (config.path === '$default') {
