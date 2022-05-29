@@ -1,4 +1,4 @@
-import { S3Configuration } from './types/S3Package';
+import { S3Configuration } from '@goldstack/template-s3';
 
 export const deployCli = async (
   config: S3Configuration,

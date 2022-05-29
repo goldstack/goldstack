@@ -1,6 +1,6 @@
 {
-  "name": "@goldstack/template-s3",
-  "version": "0.3.97",
+  "name": "@goldstack/template-s3-cli",
+  "version": "0.4.0",
   "description": "Building blocks for linking a package to an AWS S3 bucket.",
   "keywords": [
     "goldstack",
@@ -22,7 +22,11 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "src/templateS3.ts",
+  "main": "src/templateS3Cli.ts",
+  "bin": {
+    "template": "./bin/template",
+    "template-s3": "./bin/template"
+  },
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",
@@ -39,15 +43,20 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.3.36",
-    "@goldstack/infra-aws": "0.3.44",
+    "@goldstack/template-s3": "0.3.97",
+    "@goldstack/utils-cli": "0.2.13",
+    "@goldstack/utils-docker": "0.3.38",
+    "@goldstack/utils-log": "0.2.14",
     "@goldstack/utils-package": "0.3.38",
-    "@goldstack/utils-package-config-embedded": "0.4.0",
+    "@goldstack/utils-package-config": "0.3.38",
+    "@goldstack/utils-s3-deployment": "0.3.55",
+    "@goldstack/utils-sh": "0.4.31",
     "@goldstack/utils-template": "0.3.35",
     "@goldstack/utils-terraform": "0.3.68",
+    "@goldstack/utils-terraform-aws": "0.3.67",
     "aws-sdk": "2.1055.0",
-    "mock-aws-s3": "^4.0.2",
-    "source-map-support": "^0.5.21"
+    "source-map-support": "^0.5.21",
+    "yargs": "^15.4.1"
   },
   "devDependencies": {
     "@goldstack/utils-docs-cli": "0.3.11",
@@ -64,6 +73,6 @@
     "typescript": "^4.6.4"
   },
   "publishConfig": {
-    "main": "dist/src/templateS3.js"
+    "main": "dist/src/templateS3Cli.js"
   }
 }

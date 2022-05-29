@@ -55,6 +55,7 @@ export const buildLambdas = async ({
       platform: 'node',
       format: 'cjs',
       target: 'node16.0',
+      treeShaking: true,
       sourcemap: true,
       outfile: getOutFileForLambda(config),
       metafile: true,

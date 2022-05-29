@@ -2,24 +2,19 @@ import type { Deployment } from '@goldstack/infra';
 import type { Package } from '@goldstack/utils-package';
 import fs from 'fs';
 
-import { validateConfig } from '@goldstack/utils-config';
-import { readPackageConfig } from '@goldstack/utils-package';
-import { read } from '@goldstack/utils-sh';
-
-interface PackageConfigConstructorParams {
+interface EmbeddedPackageConfigConstructorParams {
   packageSchema?: any;
   goldstackJson?: Package;
-  packagePath?: string;
 }
 
-export class PackageConfig<
+export class EmbeddedPackageConfig<
   PackageType extends Package,
   DeploymentType extends Deployment
 > {
   packageSchema: any;
   goldstackJson: PackageType;
 
-  constructor(params: PackageConfigConstructorParams) {
+  constructor(params: EmbeddedPackageConfigConstructorParams) {
     if (
       !params.packageSchema &&
       !fs.existsSync('schemas/package.schema.json')
@@ -28,17 +23,9 @@ export class PackageConfig<
         'Package schema cannot be found in schemas/package.schema.json'
       );
     }
-    this.packageSchema =
-      params.packageSchema ||
-      JSON.parse(read(params.packagePath + 'schemas/package.schema.json'));
+    this.packageSchema = params.packageSchema;
 
-    this.goldstackJson = validateConfig(
-      params.goldstackJson || readPackageConfig(params.packagePath),
-      this.getPackageSchema(),
-      {
-        errorMessage: 'Cannot load configuration for package.',
-      }
-    ) as PackageType;
+    this.goldstackJson = params.goldstackJson as PackageType;
   }
 
   getPackageSchema(): any {

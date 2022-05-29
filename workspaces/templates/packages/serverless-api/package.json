@@ -24,6 +24,7 @@
     "watch": "PORT=5054 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev --respawn ./scripts/start.ts"
   },
   "dependencies": {
+    "@goldstack/s3": "workspace:^",
     "date-fns": "^2.28.0",
     "source-map-support": "^0.5.21"
   },

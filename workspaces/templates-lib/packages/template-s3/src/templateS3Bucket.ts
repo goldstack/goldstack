@@ -5,14 +5,14 @@ import S3 from 'aws-sdk/clients/s3';
 import { S3Package, S3Deployment } from './types/S3Package';
 import assert from 'assert';
 
-import { PackageConfig } from '@goldstack/utils-package-config';
+import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 
 export const connect = async (
   goldstackConfig: any,
   packageSchema: any,
   deploymentName?: string
 ): Promise<S3> => {
-  const packageConfig = new PackageConfig<S3Package, S3Deployment>({
+  const packageConfig = new EmbeddedPackageConfig<S3Package, S3Deployment>({
     goldstackJson: goldstackConfig,
     packageSchema,
   });
@@ -51,7 +51,7 @@ export const getBucketName = async (
   packageSchema: any,
   deploymentName?: string
 ): Promise<string> => {
-  const packageConfig = new PackageConfig<S3Package, S3Deployment>({
+  const packageConfig = new EmbeddedPackageConfig<S3Package, S3Deployment>({
     goldstackJson: goldstackConfig,
     packageSchema,
   });
