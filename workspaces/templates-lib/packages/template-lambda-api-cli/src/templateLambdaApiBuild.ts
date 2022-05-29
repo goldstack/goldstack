@@ -11,7 +11,6 @@ import {
   rmSafe,
   write,
 } from '@goldstack/utils-sh';
-import { LambdaApiDeployment } from './types/LambdaApiPackage';
 
 export const getOutDirForLambda = (config: LambdaConfig): string => {
   if (config.path === '$default') {
@@ -50,11 +49,14 @@ export const buildLambdas = async ({
       plugins: [pnpPlugin()],
       bundle: true,
       entryPoints: [`${routesDir}/${config.relativeFilePath}`],
-      external: ['aws-sdk', 'mock-aws-s3', 'testcontainers'], // mock-aws-s3 from s3 template, testcontainers from dynamodb template
+      external: [
+        'aws-sdk', // included in Lambda runtime environment
+      ],
       minify: true,
       platform: 'node',
       format: 'cjs',
       target: 'node16.0',
+      treeShaking: true,
       sourcemap: true,
       outfile: getOutFileForLambda(config),
       metafile: true,

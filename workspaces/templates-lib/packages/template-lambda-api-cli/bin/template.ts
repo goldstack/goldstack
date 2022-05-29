@@ -1,4 +1,4 @@
-import { run } from './../dist/src/templateLambdaApi';
+import { run } from './../dist/src/templateLambdaApiCli';
 
 run(process.argv).catch((e) => {
   console.log(e);

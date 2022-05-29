@@ -1,0 +1,48 @@
+{
+  "name": "@goldstack/utils-esbuild",
+  "version": "0.4.0",
+  "description": "Utilities for esbuild.",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "esbuild"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack-lib"
+  },
+  "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "src/utilsEsbuild.ts",
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:watch": "yarn clean && yarn compile-watch",
+    "clean": "rimraf ./dist",
+    "compile": "tsc -p tsconfig.json",
+    "compile-watch": "tsc -p tsconfig.json --watch",
+    "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
+    "prepublishOnly": "yarn run build",
+    "publish": "utils-git changed --exec \"yarn npm publish $@\"",
+    "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand",
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
+    "version:apply:force": "yarn version $@ && yarn version apply"
+  },
+  "devDependencies": {
+    "@goldstack/utils-git": "0.1.34",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^17.0.33",
+    "jest": "^28.1.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^28.0.2",
+    "typescript": "^4.6.4"
+  },
+  "publishConfig": {
+    "main": "dist/src/utilsEsbuild.js"
+  }
+}

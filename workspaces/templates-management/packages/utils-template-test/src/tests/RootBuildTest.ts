@@ -23,6 +23,7 @@ export class RootBuildTest implements TemplateTest {
     // testing clean before build
     yarn(projectDir, 'clean');
     yarn(projectDir, 'build');
+
     // compile should work as stand alone command (already tested with build implicitly before)
     yarn(projectDir, 'compile');
 

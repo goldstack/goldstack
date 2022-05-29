@@ -5,7 +5,7 @@ import {
 import {
   LambdaRoutesConfig,
   LambdaApiDeployment,
-} from './types/LambdaApiPackage';
+} from '@goldstack/template-lambda-api';
 
 export const generateLambdaConfig = (
   deployment: LambdaApiDeployment,

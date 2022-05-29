@@ -1,6 +1,6 @@
 import {
   connect as templateConnect,
-  getBucketName as tempalteGetBucketName,
+  getBucketName as templateGetBucketName,
 } from '@goldstack/template-s3';
 
 import S3 from 'aws-sdk/clients/s3';
@@ -18,7 +18,7 @@ export const connect = async (deploymentName?: string): Promise<S3> => {
 export const getBucketName = async (
   deploymentName?: string
 ): Promise<string> => {
-  return await tempalteGetBucketName(
+  return await templateGetBucketName(
     goldstackConfig,
     goldstackSchema,
     deploymentName

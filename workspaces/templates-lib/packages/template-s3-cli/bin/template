@@ -3,7 +3,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('source-map-support').install();
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-require('./../dist/src/templateS3')
+require('./../dist/src/templateS3Cli')
   .run(process.argv)
   .catch((e) => {
     console.log(e);
