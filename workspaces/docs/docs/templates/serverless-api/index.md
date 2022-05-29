@@ -153,12 +153,12 @@ npm i -g esbuild-visualizer
 And then analyse any of the metafiles generated:
 
 ```
-esbuild-visualizer --metadata ./distLambda/zips/[your function name].meta.json 
+esbuild-visualizer --metadata ./distLambda/zips/[your function name].meta.json
 ```
 
 This will yield a `stats.html` file you can view with any web browser.
 
-![Bundle statistics](https://res.cloudinary.com/pureleap/image/upload/v1653774067/blog/1335c1d57442bc172245182b7b32417cf7332b5b29fa385ea943c9d2f75cfe42.png)  
+![Bundle statistics](https://res.cloudinary.com/pureleap/image/upload/v1653774067/blog/1335c1d57442bc172245182b7b32417cf7332b5b29fa385ea943c9d2f75cfe42.png)
 
 ## Troubleshooting and Frequently Asked Questions
 
