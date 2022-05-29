@@ -6,10 +6,7 @@ type ProxyHandler = Handler<APIGatewayProxyEventV2, any>;
 export const handler: ProxyHandler = async (event, context) => {
   const message = event.queryStringParameters?.message || 'no message';
 
-  if (!res.Body) {
-    throw new Error('Cannot find test.txt');
-  }
   return {
-    message: `${message + ' ' + res.Body.toString()}`,
+    message: `${message}`,
   };
 };

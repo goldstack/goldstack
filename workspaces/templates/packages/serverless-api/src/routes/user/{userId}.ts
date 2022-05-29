@@ -13,7 +13,7 @@ export const handler: ProxyHandler = async (event, context) => {
   return {
     statusCode: 201,
     body: JSON.stringify({
-      message: `Showing user [${userId}] ${res.Count}`,
+      message: `Showing user [${userId}]`,
     }),
   };
 };
