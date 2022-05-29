@@ -7,7 +7,7 @@ import {
   getTableName as getTableNameUtils,
 } from './dynamoDBPackageUtils';
 
-import { PackageConfig } from '@goldstack/utils-package-config';
+import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { assertTable, deleteTable as deleteTableModule } from './dynamoDBData';
 import { InputMigrations } from 'umzug/lib/types';
 import {
@@ -30,7 +30,10 @@ export const getTableName = async (
   deploymentName?: string
 ): Promise<string> => {
   deploymentName = getDeploymentName(deploymentName);
-  const packageConfig = new PackageConfig<DynamoDBPackage, DynamoDBDeployment>({
+  const packageConfig = new EmbeddedPackageConfig<
+    DynamoDBPackage,
+    DynamoDBDeployment
+  >({
     goldstackJson: goldstackConfig,
     packageSchema,
   });
@@ -44,7 +47,10 @@ export const stopLocalDynamoDB = async (
   deploymentName?: string
 ): Promise<void> => {
   deploymentName = getDeploymentName(deploymentName);
-  const packageConfig = new PackageConfig<DynamoDBPackage, DynamoDBDeployment>({
+  const packageConfig = new EmbeddedPackageConfig<
+    DynamoDBPackage,
+    DynamoDBDeployment
+  >({
     goldstackJson: goldstackConfig,
     packageSchema,
   });
@@ -59,7 +65,7 @@ export const stopLocalDynamoDB = async (
 };
 
 const createClient = async (
-  packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string
 ): Promise<DynamoDB> => {
   if (deploymentName === 'local') {
@@ -99,7 +105,10 @@ export const connect = async ({
   deploymentName?: string;
 }): Promise<DynamoDB> => {
   deploymentName = getDeploymentName(deploymentName);
-  const packageConfig = new PackageConfig<DynamoDBPackage, DynamoDBDeployment>({
+  const packageConfig = new EmbeddedPackageConfig<
+    DynamoDBPackage,
+    DynamoDBDeployment
+  >({
     goldstackJson: goldstackConfig,
     packageSchema,
   });
@@ -130,7 +139,10 @@ export const deleteTable = async ({
   deploymentName?: string;
 }): Promise<DynamoDB> => {
   deploymentName = getDeploymentName(deploymentName);
-  const packageConfig = new PackageConfig<DynamoDBPackage, DynamoDBDeployment>({
+  const packageConfig = new EmbeddedPackageConfig<
+    DynamoDBPackage,
+    DynamoDBDeployment
+  >({
     goldstackJson: goldstackConfig,
     packageSchema,
   });
@@ -155,7 +167,10 @@ export const migrateDownTo = async ({
   deploymentName?: string;
 }): Promise<DynamoDB> => {
   deploymentName = getDeploymentName(deploymentName);
-  const packageConfig = new PackageConfig<DynamoDBPackage, DynamoDBDeployment>({
+  const packageConfig = new EmbeddedPackageConfig<
+    DynamoDBPackage,
+    DynamoDBDeployment
+  >({
     goldstackJson: goldstackConfig,
     packageSchema,
   });
@@ -175,7 +190,7 @@ export const migrateDownTo = async ({
 };
 
 function getColdStartKey(
-  packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string
 ) {
   if (deploymentName === 'local') {

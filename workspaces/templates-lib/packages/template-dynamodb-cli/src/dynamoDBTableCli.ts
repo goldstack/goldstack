@@ -1,7 +1,11 @@
 import { read } from '@goldstack/utils-sh';
 import { InputMigrations } from 'umzug/lib/types';
-import { DynamoDBContext } from './dynamoDBMigrations';
-import { connect, deleteTable, migrateDownTo } from './templateDynamoDBTable';
+import { DynamoDBContext } from '@goldstack/template-dynamodb';
+import {
+  connect,
+  deleteTable,
+  migrateDownTo,
+} from '@goldstack/template-dynamodb';
 
 export const dynamoDBCli = async (
   migrations: InputMigrations<DynamoDBContext>,

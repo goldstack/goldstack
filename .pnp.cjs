@@ -161,6 +161,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates-lib/packages/template-dynamodb"\
       },\
       {\
+        "name": "@goldstack/template-dynamodb-cli",\
+        "reference": "workspace:workspaces/templates-lib/packages/template-dynamodb-cli"\
+      },\
+      {\
         "name": "@goldstack/template-email-send",\
         "reference": "workspace:workspaces/templates-lib/packages/template-email-send"\
       },\
@@ -412,6 +416,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/template-build-set", ["workspace:workspaces/templates-management/packages/template-build-set"]],\
       ["@goldstack/template-docker-image-aws", ["workspace:workspaces/templates-lib/packages/template-docker-image-aws"]],\
       ["@goldstack/template-dynamodb", ["workspace:workspaces/templates-lib/packages/template-dynamodb"]],\
+      ["@goldstack/template-dynamodb-cli", ["workspace:workspaces/templates-lib/packages/template-dynamodb-cli"]],\
       ["@goldstack/template-email-send", ["workspace:workspaces/templates-lib/packages/template-email-send"]],\
       ["@goldstack/template-lambda-api", ["workspace:workspaces/templates-lib/packages/template-lambda-api"]],\
       ["@goldstack/template-lambda-api-cli", ["workspace:workspaces/templates-lib/packages/template-lambda-api-cli"]],\
@@ -1935,6 +1940,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/dynamodb", "workspace:workspaces/templates/packages/dynamodb"],\
             ["@aws-sdk/util-dynamodb", "npm:3.87.0"],\
             ["@goldstack/template-dynamodb", "workspace:workspaces/templates-lib/packages/template-dynamodb"],\
+            ["@goldstack/template-dynamodb-cli", "workspace:workspaces/templates-lib/packages/template-dynamodb-cli"],\
             ["@types/jest", "npm:27.5.1"],\
             ["@types/node", "npm:17.0.33"],\
             ["aws-sdk", "npm:2.1055.0"],\
@@ -2777,28 +2783,48 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@aws-sdk/util-dynamodb", "npm:3.87.0"],\
             ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
-            ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],\
-            ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
-            ["@goldstack/utils-docker", "workspace:workspaces/templates-lib/packages/utils-docker"],\
             ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
             ["@goldstack/utils-esbuild", "workspace:workspaces/templates-lib/packages/utils-esbuild"],\
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
-            ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],\
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
-            ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],\
+            ["@goldstack/utils-package-config-embedded", "workspace:workspaces/templates-lib/packages/utils-package-config-embedded"],\
             ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
-            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
-            ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
             ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
-            ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
             ["@types/jest", "npm:27.5.1"],\
             ["@types/node", "npm:17.0.33"],\
             ["@types/yargs", "npm:15.0.7"],\
             ["aws-sdk", "npm:2.1055.0"],\
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
             ["rimraf", "npm:3.0.2"],\
-            ["source-map-support", "npm:0.5.21"],\
             ["testcontainers", "npm:8.10.0"],\
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
+            ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.7.0"],\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"],\
+            ["umzug", "npm:3.1.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@goldstack/template-dynamodb-cli", [\
+        ["workspace:workspaces/templates-lib/packages/template-dynamodb-cli", {\
+          "packageLocation": "./workspaces/templates-lib/packages/template-dynamodb-cli/",\
+          "packageDependencies": [\
+            ["@goldstack/template-dynamodb-cli", "workspace:workspaces/templates-lib/packages/template-dynamodb-cli"],\
+            ["@goldstack/template-dynamodb", "workspace:workspaces/templates-lib/packages/template-dynamodb"],\
+            ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],\
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
+            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+            ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],\
+            ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
+            ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+            ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
+            ["@types/jest", "npm:27.5.1"],\
+            ["@types/node", "npm:17.0.33"],\
+            ["@types/yargs", "npm:15.0.7"],\
+            ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.7.0"],\
             ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"],\

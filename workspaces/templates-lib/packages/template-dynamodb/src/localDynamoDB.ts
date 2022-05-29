@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { PackageConfig } from '@goldstack/utils-package-config';
+import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { DynamoDB } from 'aws-sdk';
 import { GenericContainer, StartedTestContainer } from 'testcontainers';
 
@@ -17,7 +17,7 @@ const startedContainers: Map<
 > = new Map();
 
 export const localConnect = async (
-  packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName?: string
 ): Promise<DynamoDB> => {
   const tableName = await getTableName(packageConfig, deploymentName);
@@ -68,7 +68,7 @@ export const startContainer = (): Promise<StartedTestContainer> => {
 };
 
 export const stopLocalDynamoDB = async (
-  packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName?: string
 ): Promise<void> => {
   const tableName = await getTableName(packageConfig, deploymentName);

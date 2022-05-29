@@ -1,11 +1,11 @@
-import { PackageConfig } from '@goldstack/utils-package-config';
+import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { AWSError } from 'aws-sdk';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
 import { getTableName } from './dynamoDBPackageUtils';
 import { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
 
 export const assertTable = async (
-  packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
   client: DynamoDB
 ): Promise<void> => {
@@ -64,7 +64,7 @@ export const assertTable = async (
 };
 
 export const deleteTable = async (
-  packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
   client: DynamoDB
 ): Promise<void> => {
