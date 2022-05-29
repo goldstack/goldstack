@@ -49,7 +49,9 @@ export const buildLambdas = async ({
       plugins: [pnpPlugin()],
       bundle: true,
       entryPoints: [`${routesDir}/${config.relativeFilePath}`],
-      external: ['aws-sdk'],
+      external: [
+        'aws-sdk', // included in Lambda runtime environment
+      ],
       minify: true,
       platform: 'node',
       format: 'cjs',
