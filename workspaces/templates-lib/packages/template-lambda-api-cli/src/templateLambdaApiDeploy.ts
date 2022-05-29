@@ -1,4 +1,4 @@
-import { LambdaApiDeployment } from './types/LambdaApiPackage';
+import { LambdaApiDeployment } from '@goldstack/template-lambda-api';
 import { getAWSUser } from '@goldstack/infra-aws';
 import {
   deployFunction,
@@ -9,7 +9,7 @@ import {
 import { readLambdaConfig } from '@goldstack/utils-aws-lambda';
 import { defaultRoutesPath } from './templateLambdaConsts';
 
-import { mkdir, rmSafe } from '@goldstack/utils-sh';
+import { mkdir } from '@goldstack/utils-sh';
 import { getOutDirForLambda } from './templateLambdaApiBuild';
 
 interface DeployLambdaParams {

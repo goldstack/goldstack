@@ -169,6 +169,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates-lib/packages/template-lambda-api"\
       },\
       {\
+        "name": "@goldstack/template-lambda-api-cli",\
+        "reference": "workspace:workspaces/templates-lib/packages/template-lambda-api-cli"\
+      },\
+      {\
         "name": "@goldstack/template-lambda-express",\
         "reference": "workspace:workspaces/templates-lib/packages/template-lambda-express"\
       },\
@@ -410,6 +414,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/template-dynamodb", ["workspace:workspaces/templates-lib/packages/template-dynamodb"]],\
       ["@goldstack/template-email-send", ["workspace:workspaces/templates-lib/packages/template-email-send"]],\
       ["@goldstack/template-lambda-api", ["workspace:workspaces/templates-lib/packages/template-lambda-api"]],\
+      ["@goldstack/template-lambda-api-cli", ["workspace:workspaces/templates-lib/packages/template-lambda-api-cli"]],\
       ["@goldstack/template-lambda-express", ["workspace:workspaces/templates-lib/packages/template-lambda-express"]],\
       ["@goldstack/template-management-cli", ["workspace:workspaces/apps/packages/template-management-cli"]],\
       ["@goldstack/template-metadata", ["workspace:workspaces/templates/packages/template-metadata"]],\
@@ -2568,7 +2573,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/templates/packages/serverless-api/",\
           "packageDependencies": [\
             ["@goldstack/serverless-api", "workspace:workspaces/templates/packages/serverless-api"],\
-            ["@goldstack/template-lambda-api", "workspace:workspaces/templates-lib/packages/template-lambda-api"],\
+            ["@goldstack/dynamodb", "workspace:workspaces/templates/packages/dynamodb"],\
+            ["@goldstack/s3", "workspace:workspaces/templates/packages/s3"],\
+            ["@goldstack/template-lambda-api-cli", "workspace:workspaces/templates-lib/packages/template-lambda-api-cli"],\
             ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],\
             ["@jest-mock/express", "npm:1.4.5"],\
             ["@types/aws-lambda", "npm:8.10.88"],\
@@ -2846,6 +2853,35 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/template-lambda-api", "workspace:workspaces/templates-lib/packages/template-lambda-api"],\
             ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
+            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+            ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+            ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+            ["@types/aws-lambda", "npm:8.10.88"],\
+            ["@types/jest", "npm:27.5.1"],\
+            ["@types/node", "npm:17.0.33"],\
+            ["@types/yargs", "npm:15.0.7"],\
+            ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
+            ["jest-pnp-resolver", "virtual:4f49c740086f3e5913a2063d6aec31d46737f5e1a82924c7e63c0f9d979eb2e0aa85979bf8307ce3da23d4f95a21ef51800e1b385a327985884beb72ab340dcf#npm:1.2.2"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["source-map-support", "npm:0.5.21"],\
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
+            ["ts-json-schema-generator", "npm:1.0.0"],\
+            ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.7.0"],\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@goldstack/template-lambda-api-cli", [\
+        ["workspace:workspaces/templates-lib/packages/template-lambda-api-cli", {\
+          "packageLocation": "./workspaces/templates-lib/packages/template-lambda-api-cli/",\
+          "packageDependencies": [\
+            ["@goldstack/template-lambda-api-cli", "workspace:workspaces/templates-lib/packages/template-lambda-api-cli"],\
+            ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+            ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+            ["@goldstack/template-lambda-api", "workspace:workspaces/templates-lib/packages/template-lambda-api"],\
             ["@goldstack/utils-aws-lambda", "workspace:workspaces/templates-lib/packages/utils-aws-lambda"],\
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],\
             ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\

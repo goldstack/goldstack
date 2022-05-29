@@ -4,7 +4,7 @@ import {
 } from '@goldstack/utils-aws-lambda';
 import assert from 'assert';
 import { generateLambdaConfig } from './generateLambdaConfig';
-import { LambdaApiDeployment } from './templateLambdaApi';
+import { LambdaApiDeployment } from '@goldstack/template-lambda-api';
 import { getOutDirForLambda } from './templateLambdaApiBuild';
 
 const dummyDeployment: LambdaApiDeployment = {
