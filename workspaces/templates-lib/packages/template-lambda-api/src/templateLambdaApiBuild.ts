@@ -50,7 +50,7 @@ export const buildLambdas = async ({
       plugins: [pnpPlugin()],
       bundle: true,
       entryPoints: [`${routesDir}/${config.relativeFilePath}`],
-      external: ['aws-sdk', 'mock-aws-s3', 'testcontainers'], // mock-aws-s3 from s3 template, testcontainers from dynamodb template
+      external: ['aws-sdk'],
       minify: true,
       platform: 'node',
       format: 'cjs',

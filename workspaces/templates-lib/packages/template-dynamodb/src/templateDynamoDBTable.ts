@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { getAWSUser } from '@goldstack/infra-aws';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
 
 import { DynamoDBPackage, DynamoDBDeployment } from './types/DynamoDBPackage';
@@ -16,6 +15,9 @@ import {
   performMigrations,
   migrateDownTo as migrateDownToDynamoDB,
 } from './dynamoDBMigrations';
+
+import { excludeInBundle } from '@goldstack/utils-esbuild';
+import { Credentials, EnvironmentCredentials } from 'aws-sdk/lib/core';
 
 /**
  * Map to keep track for which deployment and tables initialisation and migrations have already been performed
@@ -49,7 +51,7 @@ export const stopLocalDynamoDB = async (
 
   // only load this file when we absolutely need it, so we can avoid packaging it
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const lib = require('./localDynamoDB');
+  const lib = require(excludeInBundle('./localDynamoDB'));
   await lib.stopLocalDynamoDB(packageConfig, deploymentName);
 
   const coldStartKey = getColdStartKey(packageConfig, deploymentName);
@@ -62,13 +64,20 @@ const createClient = async (
 ): Promise<DynamoDB> => {
   if (deploymentName === 'local') {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const lib = require('./localDynamoDB');
+    const lib = require(excludeInBundle('./localDynamoDB'));
     return lib.localConnect(packageConfig, deploymentName);
   }
   const deployment = packageConfig.getDeployment(deploymentName);
 
-  const awsUser = await getAWSUser(deployment.awsUser);
-
+  let awsUser: Credentials;
+  if (process.env.AWS_ACCESS_KEY_ID) {
+    awsUser = new EnvironmentCredentials('AWS');
+  } else {
+    // load this in lazy to enable omitting the dependency when bundling lambdas
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const infraAWSLib = require(excludeInBundle('@goldstack/infra-aws'));
+    awsUser = await infraAWSLib.getAWSUser(deployment.awsUser);
+  }
   const dynamoDB = new DynamoDB({
     apiVersion: '2012-08-10',
     credentials: awsUser,

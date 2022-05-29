@@ -1,6 +1,5 @@
-import { getAWSUser } from '@goldstack/infra-aws';
 import SES from 'aws-sdk/clients/ses';
-
+import { Credentials, EnvironmentCredentials } from 'aws-sdk/lib/core';
 import {
   EmailSendPackage,
   EmailSendDeployment,
@@ -49,8 +48,15 @@ export const connect = async (
 
   const deployment = packageConfig.getDeployment(deploymentName);
 
-  const awsUser = await getAWSUser(deployment.awsUser);
-
+  let awsUser: Credentials;
+  if (process.env.AWS_ACCESS_KEY_ID) {
+    awsUser = new EnvironmentCredentials('AWS');
+  } else {
+    // load this in lazy to enable omitting the dependency when bundling lambdas
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const infraAWSLib = require(excludeInBundle('@goldstack/infra-aws'));
+    awsUser = await infraAWSLib.getAWSUser(deployment.awsUser);
+  }
   const ses = new SES({
     apiVersion: '2010-12-01',
     credentials: awsUser,

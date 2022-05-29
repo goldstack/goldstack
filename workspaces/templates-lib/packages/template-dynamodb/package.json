@@ -45,6 +45,7 @@
     "@goldstack/utils-cli": "0.2.13",
     "@goldstack/utils-config": "0.3.33",
     "@goldstack/utils-docker": "0.3.38",
+    "@goldstack/utils-esbuild": "0.4.0",
     "@goldstack/utils-log": "0.2.14",
     "@goldstack/utils-package": "0.3.38",
     "@goldstack/utils-package-config": "0.3.38",
