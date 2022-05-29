@@ -1051,7 +1051,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/dynamodb@workspace:^, @goldstack/dynamodb@workspace:workspaces/templates/packages/dynamodb":
+"@goldstack/dynamodb@workspace:workspaces/templates/packages/dynamodb":
   version: 0.0.0-use.local
   resolution: "@goldstack/dynamodb@workspace:workspaces/templates/packages/dynamodb"
   dependencies:
@@ -1596,7 +1596,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/s3@workspace:^, @goldstack/s3@workspace:workspaces/templates/packages/s3":
+"@goldstack/s3@workspace:workspaces/templates/packages/s3":
   version: 0.0.0-use.local
   resolution: "@goldstack/s3@workspace:workspaces/templates/packages/s3"
   dependencies:
@@ -1649,8 +1649,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/serverless-api@workspace:workspaces/templates/packages/serverless-api"
   dependencies:
-    "@goldstack/dynamodb": "workspace:^"
-    "@goldstack/s3": "workspace:^"
     "@goldstack/template-lambda-api": 0.4.41
     "@goldstack/utils-aws-http-api-local": 0.1.30
     "@jest-mock/express": ^1.4.5
