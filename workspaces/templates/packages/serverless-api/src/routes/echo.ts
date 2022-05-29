@@ -9,14 +9,16 @@ export const handler: ProxyHandler = async (event, context) => {
   const message = event.queryStringParameters?.message || 'no message';
 
   const s3 = await connect();
-  await s3
-    .putObject({
+  const res = await s3
+    .getObject({
       Bucket: await getBucketName(),
-      Key: 'text.txt',
-      Body: '123',
+      Key: 'test.txt',
     })
     .promise();
+  if (!res.Body) {
+    throw new Error('Cannot find test.txt');
+  }
   return {
-    message: `${message}`,
+    message: `${message + ' ' + res.Body.toString()}`,
   };
 };
