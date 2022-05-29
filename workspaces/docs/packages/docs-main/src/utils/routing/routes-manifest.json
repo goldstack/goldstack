@@ -198,8 +198,8 @@
       "routeKeys": {
         "slug": "slug"
       },
-      "dataRouteRegex": "^/_next/data/rKS1WE4zWhh4zxPgIkH6G/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/rKS1WE4zWhh4zxPgIkH6G/docs/(?<slug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/D7nQBDzo4nUi1G4A9f3PK/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/D7nQBDzo4nUi1G4A9f3PK/docs/(?<slug>.+?)\\.json$"
     }
   ],
   "rewrites": []
