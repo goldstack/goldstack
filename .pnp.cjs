@@ -2579,8 +2579,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/templates/packages/serverless-api/",\
           "packageDependencies": [\
             ["@goldstack/serverless-api", "workspace:workspaces/templates/packages/serverless-api"],\
-            ["@goldstack/dynamodb", "workspace:workspaces/templates/packages/dynamodb"],\
-            ["@goldstack/s3", "workspace:workspaces/templates/packages/s3"],\
             ["@goldstack/template-lambda-api-cli", "workspace:workspaces/templates-lib/packages/template-lambda-api-cli"],\
             ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],\
             ["@jest-mock/express", "npm:1.4.5"],\
