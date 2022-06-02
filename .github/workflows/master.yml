@@ -123,7 +123,7 @@ jobs:
           AWS_USER_NAME: goldstack-dev
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          AWS_DEFAULT_REGION: us-west-
+          AWS_DEFAULT_REGION: us-west-2
 
       # Generate schemas and docs
       - name: Generate schemas
@@ -138,6 +138,7 @@ jobs:
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
         run: |
           cd workspaces/templates-lib
+          yarn build # Ensure sources compiled into /dist
           yarn version:apply --deferred patch
           yarn version apply --all
           yarn publish

@@ -6,11 +6,8 @@ import { PackageConfig } from '@goldstack/utils-package-config';
 import {
   EmailSendPackage,
   EmailSendDeployment,
-} from './types/EmailSendPackage';
+} from '@goldstack/template-email-send';
 import yargs from 'yargs';
-
-export { connect, getMockedSES, getFromDomain } from './sesConnect';
-export { MockedSES } from './mockedSES';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {

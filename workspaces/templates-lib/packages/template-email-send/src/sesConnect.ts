@@ -6,7 +6,7 @@ import {
 } from './types/EmailSendPackage';
 import assert from 'assert';
 
-import { PackageConfig } from '@goldstack/utils-package-config';
+import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 
 import { MockedSES } from './mockedSES';
 
@@ -26,7 +26,7 @@ export const connect = async (
   packageSchema: any,
   deploymentName?: string
 ): Promise<SES> => {
-  const packageConfig = new PackageConfig<
+  const packageConfig = new EmbeddedPackageConfig<
     EmailSendPackage,
     EmailSendDeployment
   >({
@@ -73,7 +73,7 @@ export const getFromDomain = async (
   packageSchema: any,
   deploymentName?: string
 ): Promise<string> => {
-  const packageConfig = new PackageConfig<
+  const packageConfig = new EmbeddedPackageConfig<
     EmailSendPackage,
     EmailSendDeployment
   >({
