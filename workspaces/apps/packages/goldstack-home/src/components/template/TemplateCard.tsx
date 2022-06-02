@@ -11,7 +11,9 @@ export interface TemplateCardProps {
 const TemplateCard = (props: TemplateCardProps): JSX.Element => {
   return (
     <>
-      <div className="card border shadow-none d-block">
+      <div
+        className={`card border shadow-none d-block ${styles['package-card']} `}
+      >
         <div className="card-body d-flex align-items-center p-0">
           <div className="w-35 ">
             <img

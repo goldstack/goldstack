@@ -1,0 +1,1188 @@
+<p></p>
+<div class="markdown-fragment">
+  <p>
+    The
+    <a
+      href="https://goldstack.party/templates/dynamodb"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >DynamoDB template</a
+    >
+    provides a lightweight wrapper around the
+    <a
+      href="https://aws.amazon.com/dynamodb/"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >AWS DynamoDB</a
+    >
+    service.
+  </p>
+</div>
+<p></p>
+<h2 class="heading">
+  <span id="features"></span><a href="#features">Features</a
+  ><span class="permalink"
+    ><svg viewBox="0 0 16 16" width="16" height="16">
+      <g stroke-width="1" fill="#000000" stroke="#000000">
+        <path
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+        ></path>
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+        ></path>
+      </g></svg
+  ></span>
+</h2>
+<p></p>
+<div class="markdown-fragment">
+  <ul>
+    <li>Create DynamoDB table</li>
+    <li>Run migrations using Umzug</li>
+    <li>Easy to use API</li>
+    <li>Strong typing using DynamoDB Toolbox</li>
+    <li>Supports multiple environments (development, production)</li>
+    <li>Provides way to extend infrastructure using Terraform</li>
+  </ul>
+</div>
+<p></p>
+<h2 class="heading">
+  <span id="configure"></span><a href="#configure">Configure</a
+  ><span class="permalink"
+    ><svg viewBox="0 0 16 16" width="16" height="16">
+      <g stroke-width="1" fill="#000000" stroke="#000000">
+        <path
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+        ></path>
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+        ></path>
+      </g></svg
+  ></span>
+</h2>
+<p></p>
+<div class="markdown-fragment">
+  <p>
+    In order to provide a basic configuration for the DynamoDB table, we only
+    need to define the name of the table we want to use.
+  </p>
+  <p>
+    The template will create a basic table with this name with a partition and
+    sort key. Further configuration of the table can be performed in code using
+    migrations (<code class="inline">updateTable</code>). This can be used to
+    define additional indices. Infrastructure configuration can be extended
+    using Terraform.
+  </p>
+</div>
+<p></p>
+<h2 class="heading">
+  <span id="getting-started"></span
+  ><a href="#getting-started">Getting Started</a
+  ><span class="permalink"
+    ><svg viewBox="0 0 16 16" width="16" height="16">
+      <g stroke-width="1" fill="#000000" stroke="#000000">
+        <path
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+        ></path>
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+        ></path>
+      </g></svg
+  ></span>
+</h2>
+<p></p>
+<div class="markdown-fragment">
+  <p></p>
+  <div class="markdown-fragment">
+    <h3 class="heading">
+      <span id="1-project-setup-2"></span
+      ><a href="#1-project-setup-2"
+        ><span id="1-project-setup-1"></span
+        ><a href="#1-project-setup-1" class="relative"
+          ><span id="1-project-setup"></span></a
+        ><a href="#1-project-setup" class="relative">1. Project Setup</a
+        ><span class="permalink"
+          ><svg viewBox="0 0 16 16" width="16" height="16">
+            <g stroke-width="1" fill="#000000" stroke="#000000">
+              <path
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+              ></path>
+              <path
+                fill="none"
+                stroke="#000000"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+              ></path>
+            </g></svg></span
+        ><span class="permalink"
+          ><svg viewBox="0 0 16 16" width="16" height="16">
+            <g stroke-width="1" fill="#000000" stroke="#000000">
+              <path
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+              ></path>
+              <path
+                fill="none"
+                stroke="#000000"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+              ></path>
+            </g></svg></span></a
+      ><span class="permalink"
+        ><svg viewBox="0 0 16 16" width="16" height="16">
+          <g stroke-width="1" fill="#000000" stroke="#000000">
+            <path
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+            ></path>
+            <path
+              fill="none"
+              stroke="#000000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+            ></path>
+          </g></svg
+      ></span>
+    </h3>
+    <p>
+      Before using this template, you need to configure the project. For this,
+      please see the
+      <a
+        href="https://docs.goldstack.party/docs/goldstack/getting-started"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Getting Started Guide</a
+      >
+      on the Goldstack documentation.
+    </p>
+  </div>
+  <p></p>
+  <p></p>
+  <div class="markdown-fragment">
+    <h3 class="heading">
+      <span id="2-setup-infrastructure-2"></span
+      ><a href="#2-setup-infrastructure-2"
+        ><span id="2-setup-infrastructure-1"></span
+        ><a href="#2-setup-infrastructure-1" class="relative"
+          ><span id="2-setup-infrastructure"></span></a
+        ><a href="#2-setup-infrastructure" class="relative"
+          >2. Setup Infrastructure</a
+        ><span class="permalink"
+          ><svg viewBox="0 0 16 16" width="16" height="16">
+            <g stroke-width="1" fill="#000000" stroke="#000000">
+              <path
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+              ></path>
+              <path
+                fill="none"
+                stroke="#000000"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+              ></path>
+            </g></svg></span
+        ><span class="permalink"
+          ><svg viewBox="0 0 16 16" width="16" height="16">
+            <g stroke-width="1" fill="#000000" stroke="#000000">
+              <path
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+              ></path>
+              <path
+                fill="none"
+                stroke="#000000"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+              ></path>
+            </g></svg></span></a
+      ><span class="permalink"
+        ><svg viewBox="0 0 16 16" width="16" height="16">
+          <g stroke-width="1" fill="#000000" stroke="#000000">
+            <path
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+            ></path>
+            <path
+              fill="none"
+              stroke="#000000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+            ></path>
+          </g></svg
+      ></span>
+    </h3>
+    <p>
+      To stand up the infrastructure for this module, find the directory for
+      this module in the <code class="inline">packages/</code> folder and
+      navigate to this folder in the command line. Then identify the name of the
+      deployment you have defined in the Goldstack configuration tool. This can
+      be found in the
+      <code class="inline">packages/[moduleName]/goldstack.json</code> file.
+      Look for the <code class="inline">"deployments"</code> property and there
+      for the <code class="inline">"name"</code> of the first deployment. The
+      name should either be <code class="inline">dev</code> or
+      <code class="inline">prod</code>.
+    </p>
+    <p>In order to stand up the infrastructure, run the following command:</p>
+    <pre
+      class="language-bash language-bash language-bash"
+    ><code class="language-bash"><span class="token function">yarn</span> infra up <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
+</code></pre>
+    <p>
+      This will be either <code class="inline">yarn infra up dev</code> or
+      <code class="inline">yarn infra up prod</code> depending on your choice of
+      deployment. Note that running this command can take a while.
+    </p>
+  </div>
+  <p></p>
+  <h3 class="heading">
+    <span id="3-development-1"></span
+    ><a href="#3-development-1"
+      ><span id="3-development"></span
+      ><a href="#3-development" class="relative">3. Development</a
+      ><span class="permalink"
+        ><svg viewBox="0 0 16 16" width="16" height="16">
+          <g stroke-width="1" fill="#000000" stroke="#000000">
+            <path
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+            ></path>
+            <path
+              fill="none"
+              stroke="#000000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+            ></path>
+          </g></svg></span></a
+    ><span class="permalink"
+      ><svg viewBox="0 0 16 16" width="16" height="16">
+        <g stroke-width="1" fill="#000000" stroke="#000000">
+          <path
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-miterlimit="10"
+            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+          ></path>
+          <path
+            fill="none"
+            stroke="#000000"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-miterlimit="10"
+            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+          ></path>
+        </g></svg
+    ></span>
+  </h3>
+  <p></p>
+  <div class="markdown-fragment">
+    <p>
+      In order to make use of the DynamoDB package we principally want to do two
+      things:
+    </p>
+    <ul>
+      <li>Define the schema for our table</li>
+      <li>Write application logic to work with the data in the table</li>
+    </ul>
+    <p>
+      In this template, the former will be done within the DynamoDB package but
+      the latter can either happen in other packages. For instance, if you have
+      included a
+      <a
+        href="https://goldstack.party/templates/lambda-api"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Serverless API</a
+      >
+      template in your project, you can define your logic for working with the
+      data in DynamoDB in that package. However, you can also write additional
+      code in the DynamoDB package and define a lightweight DOA layer.
+    </p>
+    <h4 class="heading">
+      <span id="defining-the-schema-2"></span
+      ><a href="#defining-the-schema-2"
+        ><span id="defining-the-schema-1"></span
+        ><a href="#defining-the-schema-1" class="relative"
+          ><span id="defining-the-schema"></span></a
+        ><a href="#defining-the-schema" class="relative">Defining the Schema</a
+        ><span class="permalink"
+          ><svg viewBox="0 0 16 16" width="16" height="16">
+            <g stroke-width="1" fill="#000000" stroke="#000000">
+              <path
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+              ></path>
+              <path
+                fill="none"
+                stroke="#000000"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+              ></path>
+            </g></svg></span
+        ><span class="permalink"
+          ><svg viewBox="0 0 16 16" width="16" height="16">
+            <g stroke-width="1" fill="#000000" stroke="#000000">
+              <path
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+              ></path>
+              <path
+                fill="none"
+                stroke="#000000"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+              ></path>
+            </g></svg></span></a
+      ><span class="permalink"
+        ><svg viewBox="0 0 16 16" width="16" height="16">
+          <g stroke-width="1" fill="#000000" stroke="#000000">
+            <path
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+            ></path>
+            <path
+              fill="none"
+              stroke="#000000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+            ></path>
+          </g></svg
+      ></span>
+    </h4>
+    <p>
+      While DynamoDB is a NoSQL data store and strictly speaking does not
+      require a database schema in the traditional sense, it is strongly
+      recommended to define some basic schema for the data we want to store.
+      This template provides and easy way to define a schema using
+      <a
+        href="https://github.com/jeremydaly/dynamodb-toolbox"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >DynamoDB Toolbox</a
+      >. Note though that this is optional.
+    </p>
+    <p>
+      The entities we want to store in the table are defined in the file
+      <code class="inline">entities.ts</code> which is included in the DynamoDB
+      package:
+    </p>
+    <pre
+      class="language-typescript language-typescript language-typescript"
+    ><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">Table</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Entity</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'dynamodb-toolbox'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token maybe-class-name">DynamoDB</span> <span class="token keyword">from</span> <span class="token string">'aws-sdk/clients/dynamodb'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token maybe-class-name">User</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  pk<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  sk<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  name<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  emailVerified<span class="token punctuation">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token maybe-class-name">UserKey</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  pk<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  sk<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> createTable<span class="token operator">&#x3C;</span><span class="token maybe-class-name">Name</span> <span class="token keyword">extends</span> <span class="token class-name">string</span><span class="token operator">></span><span class="token punctuation">(</span>
+  dynamoDB<span class="token punctuation">:</span> <span class="token maybe-class-name">DynamoDB</span><span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">DocumentClient</span></span><span class="token punctuation">,</span>
+  tableName<span class="token punctuation">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token maybe-class-name">Table</span><span class="token operator">&#x3C;</span><span class="token maybe-class-name">Name</span><span class="token punctuation">,</span> <span class="token string">'pk'</span><span class="token punctuation">,</span> <span class="token string">'sk'</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Table</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> tableName<span class="token punctuation">,</span>
+    partitionKey<span class="token punctuation">:</span> <span class="token string">'pk'</span><span class="token punctuation">,</span>
+    sortKey<span class="token punctuation">:</span> <span class="token string">'sk'</span><span class="token punctuation">,</span>
+    <span class="token maybe-class-name">DocumentClient</span><span class="token punctuation">:</span> dynamoDB<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token maybe-class-name">UserEntity</span><span class="token operator">&#x3C;</span><span class="token maybe-class-name">Name</span> <span class="token keyword">extends</span> <span class="token class-name">string</span><span class="token operator">></span><span class="token punctuation">(</span>
+  table<span class="token punctuation">:</span> <span class="token maybe-class-name">Table</span><span class="token operator">&#x3C;</span><span class="token maybe-class-name">Name</span><span class="token punctuation">,</span> <span class="token string">'pk'</span><span class="token punctuation">,</span> <span class="token string">'sk'</span><span class="token operator">></span>
+<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token maybe-class-name">Entity</span><span class="token operator">&#x3C;</span><span class="token maybe-class-name">User</span><span class="token punctuation">,</span> <span class="token maybe-class-name">UserKey</span><span class="token punctuation">,</span> <span class="token keyword">typeof</span> table<span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> e <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Entity</span><span class="token operator">&#x3C;</span><span class="token maybe-class-name">User</span><span class="token punctuation">,</span> <span class="token maybe-class-name">UserKey</span><span class="token punctuation">,</span> <span class="token keyword">typeof</span> table<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">'User'</span><span class="token punctuation">,</span>
+    attributes<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      pk<span class="token punctuation">:</span> <span class="token punctuation">{</span> partitionKey<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      sk<span class="token punctuation">:</span> <span class="token punctuation">{</span> hidden<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> sortKey<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      name<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token keyword">type</span><span class="token punctuation">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span> required<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      emailVerified<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token keyword">type</span><span class="token punctuation">:</span> <span class="token string">'boolean'</span><span class="token punctuation">,</span> required<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    table<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span> <span class="token keyword">as</span> <span class="token keyword">const</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> e<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    <p>
+      You can edit and extend these entities. Note though that it is recommended
+      not to change the name of the
+      <code class="inline">partionKey</code> (<code class="inline">pk</code>)
+      and <code class="inline">sortKey</code> (<code class="inline">sk</code>).
+    </p>
+    <p>
+      This template is based on the assumption that all entities are defined in
+      the same DynamoDB table. This is the recommended way to define a schema in
+      DynamoDB.
+    </p>
+    <p>
+      One key aspect of developing with DynamoDB is to build efficient indices
+      to access your data. This is done using so called Global Secondary Indices
+      (GSI). If you want to define these, you should do so as part of a
+      migration.
+    </p>
+    <p>
+      Data migrations are defined in the file
+      <code class="inline">migrations.ts</code> which is included in the
+      template:
+    </p>
+    <pre
+      class="language-typescript language-typescript language-typescript"
+    ><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">InputMigrations</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'umzug/lib/types'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">DynamoDBContext</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@goldstack/template-dynamodb'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> marshall <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@aws-sdk/util-dynamodb'</span><span class="token punctuation">;</span>
+<span class="token doc-comment comment">
+/**
+ * Umzug migrations applied during connection see https://github.com/sequelize/umzug#migrations
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> createMigrations <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token maybe-class-name">InputMigrations</span><span class="token operator">&#x3C;</span><span class="token maybe-class-name">DynamoDBContext</span><span class="token operator">></span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      name<span class="token punctuation">:</span> <span class="token string">'00-dummy-migration'</span><span class="token punctuation">,</span>
+      <span class="token keyword">async</span> <span class="token function">up</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> context <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">await</span> context<span class="token punctuation">.</span><span class="token property-access">client</span>
+          <span class="token punctuation">.</span><span class="token method function property-access">putItem</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            <span class="token maybe-class-name">TableName</span><span class="token punctuation">:</span> context<span class="token punctuation">.</span><span class="token property-access">tableName</span><span class="token punctuation">,</span>
+            <span class="token maybe-class-name">Item</span><span class="token punctuation">:</span> <span class="token function">marshall</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+              pk<span class="token punctuation">:</span> <span class="token string">'#DUMMY'</span><span class="token punctuation">,</span>
+              sk<span class="token punctuation">:</span> <span class="token string">'hello-world'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span>
+          <span class="token punctuation">.</span><span class="token method function property-access">promise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token keyword">async</span> <span class="token function">down</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> context <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">await</span> context<span class="token punctuation">.</span><span class="token property-access">client</span>
+          <span class="token punctuation">.</span><span class="token method function property-access">deleteItem</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            <span class="token maybe-class-name">TableName</span><span class="token punctuation">:</span> context<span class="token punctuation">.</span><span class="token property-access">tableName</span><span class="token punctuation">,</span>
+            <span class="token maybe-class-name">Key</span><span class="token punctuation">:</span> <span class="token function">marshall</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+              pk<span class="token punctuation">:</span> <span class="token string">'#DUMMY'</span><span class="token punctuation">,</span>
+              sk<span class="token punctuation">:</span> <span class="token string">'hello-world'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span>
+          <span class="token punctuation">.</span><span class="token method function property-access">promise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>
+      Change the included migration or add a migration to create GSIs using the
+      Node.js SDK using the
+      <a
+        href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#updateTable-property"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><code class="inline">updateTable</code></a
+      >
+      command.
+    </p>
+    <h4 class="heading">
+      <span id="write-application-logic-2"></span
+      ><a href="#write-application-logic-2"
+        ><span id="write-application-logic-1"></span
+        ><a href="#write-application-logic-1" class="relative"
+          ><span id="write-application-logic"></span></a
+        ><a href="#write-application-logic" class="relative"
+          >Write Application Logic</a
+        ><span class="permalink"
+          ><svg viewBox="0 0 16 16" width="16" height="16">
+            <g stroke-width="1" fill="#000000" stroke="#000000">
+              <path
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+              ></path>
+              <path
+                fill="none"
+                stroke="#000000"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+              ></path>
+            </g></svg></span
+        ><span class="permalink"
+          ><svg viewBox="0 0 16 16" width="16" height="16">
+            <g stroke-width="1" fill="#000000" stroke="#000000">
+              <path
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+              ></path>
+              <path
+                fill="none"
+                stroke="#000000"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+              ></path>
+            </g></svg></span></a
+      ><span class="permalink"
+        ><svg viewBox="0 0 16 16" width="16" height="16">
+          <g stroke-width="1" fill="#000000" stroke="#000000">
+            <path
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+            ></path>
+            <path
+              fill="none"
+              stroke="#000000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+            ></path>
+          </g></svg
+      ></span>
+    </h4>
+    <p>
+      There are two different ways in which you can define application logic:
+      using the DynamoDB Toolbox entities (see previous section) or using the
+      classes from the Node.js SDK.
+    </p>
+    <p>
+      If you want to use the DynamoDB Toolbox entities, you can utilise the
+      method <code class="inline">connectTable</code> which is include in
+      package:
+    </p>
+    <pre
+      class="language-typescript language-typescript language-typescript"
+    ><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span>
+  <span class="token maybe-class-name">User</span><span class="token punctuation">,</span>
+  <span class="token maybe-class-name">UserEntity</span><span class="token punctuation">,</span>
+  <span class="token maybe-class-name">UserKey</span>
+  connectTable<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'your-dynamodb-package'</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>You can then use the return object to instantiate your entities:</p>
+    <pre
+      class="language-typescript language-typescript language-typescript"
+    ><code class="language-typescript"><span class="token keyword">const</span> table <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">connectTable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token maybe-class-name">Users</span> <span class="token operator">=</span> <span class="token function"><span class="token maybe-class-name">UserEntity</span></span><span class="token punctuation">(</span>table<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">await</span> <span class="token maybe-class-name">Users</span><span class="token punctuation">.</span><span class="token method function property-access">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  pk<span class="token punctuation">:</span> <span class="token string">'joe@email.com'</span><span class="token punctuation">,</span>
+  sk<span class="token punctuation">:</span> <span class="token string">'admin'</span><span class="token punctuation">,</span>
+  name<span class="token punctuation">:</span> <span class="token string">'Joe'</span><span class="token punctuation">,</span>
+  emailVerified<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>
+      If you want to use the plain Node.js SDK method, you can utilise the
+      methods <code class="inline">getTableName</code> and
+      <code class="inline">connect</code> which are also included in the
+      package:
+    </p>
+    <pre
+      class="language-typescript language-typescript language-typescript"
+    ><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> getTableName<span class="token punctuation">,</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'your-dynamodb-package'</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>
+      The <code class="inline">connect</code> method will return an instance of
+      <a
+        href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><code class="inline">AWS.DynamoDB</code></a
+      >
+      and we can use this to work with our table:
+    </p>
+    <pre
+      class="language-typescript language-typescript language-typescript"
+    ><code class="language-typescript"><span class="token keyword">const</span> tableName <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getTableName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> dynamoDB <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> tableInfo <span class="token operator">=</span> <span class="token keyword">await</span> dynamoDB
+  <span class="token punctuation">.</span><span class="token method function property-access">describeTable</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token maybe-class-name">TableName</span><span class="token punctuation">:</span> tableName <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">promise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>
+      Note that if you are after an instance of
+      <a
+        href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        ><code class="inline">AWS.DynamoDB.DocumentClient</code></a
+      >, you can instantiate this using the
+      <code class="inline">connect()</code> method as well:
+    </p>
+    <pre
+      class="language-typescript language-typescript language-typescript"
+    ><code class="language-typescript"><span class="token keyword">const</span> documentClient <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DynamoDB<span class="token punctuation">.</span>DocumentClient</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  service<span class="token punctuation">:</span> <span class="token keyword">await</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+  </div>
+  <p></p>
+</div>
+<p></p>
+<h2 class="heading">
+  <span id="infrastructure"></span><a href="#infrastructure">Infrastructure</a
+  ><span class="permalink"
+    ><svg viewBox="0 0 16 16" width="16" height="16">
+      <g stroke-width="1" fill="#000000" stroke="#000000">
+        <path
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+        ></path>
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+        ></path>
+      </g></svg
+  ></span>
+</h2>
+<p></p>
+<div class="markdown-fragment">
+  <p>
+    All infrastructure for this module is defined in Terraform. You can find the
+    Terraform files for this template in the directory
+    <code class="inline">[moduleDir]/infra/aws</code>. You can define multiple
+    deployments for this template, for instance for development, staging and
+    production environments.
+  </p>
+  <p>
+    If you configured AWS deployment before downloading your project, the
+    deployments and their respective configurations are defined in
+    <code class="inline">[moduleDir]/goldstack.json</code>.
+  </p>
+  <p>
+    The configuration tool will define one deployment. This will be either
+    <code class="inline">dev</code> or
+    <code class="inline">prod</code> depending on your choice during project
+    configuration. In the example
+    <code class="inline">goldstack.json</code> below, a deployment with the name
+    <code class="inline">dev</code> is defined.
+  </p>
+  <pre
+    class="language-json language-json"
+  ><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"$schema"</span><span class="token operator">:</span> <span class="token string">"./schemas/package.schema.json"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
+  <span class="token property">"template"</span><span class="token operator">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
+  <span class="token property">"templateVersion"</span><span class="token operator">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
+  <span class="token property">"configuration"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"deployments"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"dev"</span><span class="token punctuation">,</span>
+      <span class="token property">"awsRegion"</span><span class="token operator">:</span> <span class="token string">"us-west-2"</span><span class="token punctuation">,</span>
+      <span class="token property">"awsUser"</span><span class="token operator">:</span> <span class="token string">"awsUser"</span><span class="token punctuation">,</span>
+      <span class="token property">"configuration"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        ...
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+  <h3 class="heading">
+    <span id="infrastructure-commands-1"></span
+    ><a href="#infrastructure-commands-1"
+      ><span id="infrastructure-commands"></span
+      ><a href="#infrastructure-commands" class="relative"
+        >Infrastructure Commands</a
+      ><span class="permalink"
+        ><svg viewBox="0 0 16 16" width="16" height="16">
+          <g stroke-width="1" fill="#000000" stroke="#000000">
+            <path
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+            ></path>
+            <path
+              fill="none"
+              stroke="#000000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+            ></path>
+          </g></svg></span></a
+    ><span class="permalink"
+      ><svg viewBox="0 0 16 16" width="16" height="16">
+        <g stroke-width="1" fill="#000000" stroke="#000000">
+          <path
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-miterlimit="10"
+            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+          ></path>
+          <path
+            fill="none"
+            stroke="#000000"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-miterlimit="10"
+            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+          ></path>
+        </g></svg
+    ></span>
+  </h3>
+  <p>
+    Infrastructure commands for this template can be run using
+    <code class="inline">yarn</code>. There are four commands in total:
+  </p>
+  <ul>
+    <li>
+      <code class="inline">yarn infra up</code>: For standing up infrastructure.
+    </li>
+    <li>
+      <code class="inline">yarn infra init</code>: For
+      <a
+        href="https://www.terraform.io/docs/commands/init.html"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >initialising Terraform</a
+      >.
+    </li>
+    <li>
+      <code class="inline">yarn infra plan</code>: For running
+      <a
+        href="https://www.terraform.io/docs/commands/plan.html"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Terraform plan</a
+      >.
+    </li>
+    <li>
+      <code class="inline">yarn infra apply</code>: For running
+      <a
+        href="https://www.terraform.io/docs/commands/apply.html"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Terraform apply</a
+      >.
+    </li>
+    <li>
+      <code class="inline">yarn infra destroy</code>: For destroying all
+      infrastructure using
+      <a
+        href="https://www.terraform.io/docs/commands/destroy.html"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Terraform destroy</a
+      >.
+    </li>
+    <li>
+      <code class="inline">yarn infra upgrade</code>: For upgrading the
+      Terraform versions (supported by the template). To upgrade to an arbitrary
+      version, use <code class="inline">yarn infra terraform</code>.
+    </li>
+    <li>
+      <code class="inline">yarn infra terraform</code>: For running arbitrary
+      <a
+        href="https://www.terraform.io/cli/commands"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Terraform commands</a
+      >.
+    </li>
+  </ul>
+  <p>
+    For each command, the deployment they should be applied to must be
+    specified.
+  </p>
+  <pre
+    class="language-bash language-bash"
+  ><code class="language-bash"><span class="token function">yarn</span> infra <span class="token punctuation">[</span>command<span class="token punctuation">]</span> <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
+</code></pre>
+  <p>
+    For instance, to stand up the infrastructure for the
+    <code class="inline">dev</code> deployment, the following command would need
+    to be issued:
+  </p>
+  <pre
+    class="language-bash language-bash"
+  ><code class="language-bash"><span class="token function">yarn</span> infra up dev
+</code></pre>
+  <p>
+    Generally you will only need to run
+    <code class="inline">yarn infra up</code>. However, if you are familiar with
+    Terraform and want more fine-grained control over the deployment of your
+    infrastructure, you can also use the other commands as required.
+  </p>
+  <p>
+    Note that for running <code class="inline">yarn infra terraform</code>, you
+    will need to specify which command line arguments you want to provide to
+    Terraform. By default, no extra arguments are provided:
+  </p>
+  <pre
+    class="language-bash language-bash"
+  ><code class="language-bash"><span class="token function">yarn</span> infra terraform <span class="token punctuation">[</span>deployment<span class="token punctuation">]</span> plan
+</code></pre>
+  <p>
+    If extra arguments are needed, such as variables, you can use the
+    <code class="inline">--inject-variables</code> option, such as for running
+    <code class="inline">terraform plan</code>:
+  </p>
+  <pre
+    class="language-bash language-bash"
+  ><code class="language-bash"><span class="token function">yarn</span> infra terraform <span class="token punctuation">[</span>deployment<span class="token punctuation">]</span> --inject-variables plan
+</code></pre>
+  <p>
+    If you want to interact with the remote backend, you can also provide the
+    <code class="inline">--inject-backend-config</code> option, such as for
+    running <code class="inline">terraform init</code>:
+  </p>
+  <pre
+    class="language-bash language-bash"
+  ><code class="language-bash"><span class="token function">yarn</span> infra terraform <span class="token punctuation">[</span>deployment<span class="token punctuation">]</span> --inject-backend-config init
+</code></pre>
+  <h3 class="heading">
+    <span id="customizing-terraform-1"></span
+    ><a href="#customizing-terraform-1"
+      ><span id="customizing-terraform"></span
+      ><a href="#customizing-terraform" class="relative"
+        >Customizing Terraform</a
+      ><span class="permalink"
+        ><svg viewBox="0 0 16 16" width="16" height="16">
+          <g stroke-width="1" fill="#000000" stroke="#000000">
+            <path
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+            ></path>
+            <path
+              fill="none"
+              stroke="#000000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+            ></path>
+          </g></svg></span></a
+    ><span class="permalink"
+      ><svg viewBox="0 0 16 16" width="16" height="16">
+        <g stroke-width="1" fill="#000000" stroke="#000000">
+          <path
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-miterlimit="10"
+            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+          ></path>
+          <path
+            fill="none"
+            stroke="#000000"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-miterlimit="10"
+            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+          ></path>
+        </g></svg
+    ></span>
+  </h3>
+  <p>
+    Goldstack templates make it very easy to customize infrastructure to your
+    specific needs. The easiest way to do this is to simply edit the
+    <code class="inline">*.tf</code> files in the
+    <code class="inline">infra/aws</code> folder. You can make the changes you
+    need and then run
+    <code class="inline">yarn infra up [deploymentName]</code> to apply the
+    changes.
+  </p>
+  <p>
+    The <code class="inline">infra/aws</code> folder contains a file
+    <code class="inline">variables.tf</code> that contains the variables
+    required for your deployment; for instance the domain name for a website.
+    The values for these variables are defined in the module's
+    <code class="inline">goldstack.json</code> file in the
+    <code class="inline">"configuration"</code> property. There is one global
+    <code class="inline">configuration</code> property that applies for all
+    deployments and each deployment also has its own
+    <code class="inline">configuration</code> property. In order to add a new
+    variable, add the variable to <code class="inline">variables.tf</code> and
+    then add it to the configuration for your template or to the configurations
+    for the deployments.
+  </p>
+  <p>
+    Note that due to JavaScript and Terraform using different conventions for
+    naming variables, Goldstack applies a basic transformation to variable
+    names. Camel-case variables names are converted to valid variables names for
+    Terraform by replacing every instance of a capital letter
+    <code class="inline">C</code> with <code class="inline">_c</code> in the
+    variable name. For instance:
+  </p>
+  <p>
+    <code class="inline">myVariableName</code> in the Goldstack configuration
+    will translate to the Terraform variable
+    <code class="inline">my_variable_name</code> as defined in
+    <code class="inline">variables.tf</code>.
+  </p>
+  <h3 class="heading">
+    <span id="terraform-state-1"></span
+    ><a href="#terraform-state-1"
+      ><span id="terraform-state"></span
+      ><a href="#terraform-state" class="relative">Terraform State</a
+      ><span class="permalink"
+        ><svg viewBox="0 0 16 16" width="16" height="16">
+          <g stroke-width="1" fill="#000000" stroke="#000000">
+            <path
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+            ></path>
+            <path
+              fill="none"
+              stroke="#000000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+            ></path>
+          </g></svg></span></a
+    ><span class="permalink"
+      ><svg viewBox="0 0 16 16" width="16" height="16">
+        <g stroke-width="1" fill="#000000" stroke="#000000">
+          <path
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-miterlimit="10"
+            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+          ></path>
+          <path
+            fill="none"
+            stroke="#000000"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-miterlimit="10"
+            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+          ></path>
+        </g></svg
+    ></span>
+  </h3>
+  <p>
+    In order to manage your infrastructure, Terraform maintains a state for each
+    deployment; to calculate required changes when the infrastructure is updated
+    and also for destroying the infrastructure if it is no longer required.
+    Goldstack by default will store the terraform state in the
+    <code class="inline">infra/aws</code> folder as simple files.
+  </p>
+  <p>
+    This works well for deploying infrastructure from your local development
+    environment but is not a good choice when building a CI/CD pipeline for the
+    infrastructure definition. In that case, it is better to define
+    <a
+      href="https://www.terraform.io/docs/state/remote.html"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Remote State</a
+    >. A popular choice many projects adopt here is to store the
+    <a
+      href="https://www.terraform.io/docs/backends/types/s3.html"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >state in an S3 bucket</a
+    >. Please see the Terraform documentation for further details.
+  </p>
+</div>
+<p></p>
+<h2 class="heading">
+  <span id="frequently-asked-questions"></span
+  ><a href="#frequently-asked-questions">Frequently Asked Questions</a
+  ><span class="permalink"
+    ><svg viewBox="0 0 16 16" width="16" height="16">
+      <g stroke-width="1" fill="#000000" stroke="#000000">
+        <path
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+        ></path>
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+        ></path>
+      </g></svg
+  ></span>
+</h2>
+<h3 class="heading">
+  <span id="how-to-define-a-table-with-only-a-partition-key"></span
+  ><a href="#how-to-define-a-table-with-only-a-partition-key"
+    >How to define a table with only a partition key</a
+  ><span class="permalink"
+    ><svg viewBox="0 0 16 16" width="16" height="16">
+      <g stroke-width="1" fill="#000000" stroke="#000000">
+        <path
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+        ></path>
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+        ></path>
+      </g></svg
+  ></span>
+</h3>
+<p>
+  The DynamoDB template is based on the assumption that your table will contain
+  a partition key and a sort key. Thus, there is no way to define a table
+  without a sort key. If you do not require a sort key, simply create one with a
+  dummy value (e.g. set the sort key always to the entity name or an empty
+  string).
+</p>
+<h2 class="heading">
+  <span id="security-hardening"></span
+  ><a href="#security-hardening">Security Hardening</a
+  ><span class="permalink"
+    ><svg viewBox="0 0 16 16" width="16" height="16">
+      <g stroke-width="1" fill="#000000" stroke="#000000">
+        <path
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+        ></path>
+        <path
+          fill="none"
+          stroke="#000000"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-miterlimit="10"
+          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+        ></path>
+      </g></svg
+  ></span>
+</h2>
+<p>
+  No IAM configuration is included in the template. It assumes that all
+  resources using the table will have global access rights to all resources. For
+  larger systems, this should be reworked by adding policies and roles to the
+  codebase.
+</p>

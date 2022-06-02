@@ -42,6 +42,10 @@
       "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/get-template$"
     },
     {
+      "page": "/templates/dynamodb",
+      "regex": "^\\/templates\\/dynamodb$"
+    },
+    {
       "page": "/templates/express-lambda",
       "regex": "^\\/templates\\/express-lambda$"
     },
@@ -154,8 +158,8 @@
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/n_cA_KZ4FpHPLKmFONRnG/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/n_cA_KZ4FpHPLKmFONRnG/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/5bIN0TVWJb5Z2U3iDwlWu/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/5bIN0TVWJb5Z2U3iDwlWu/templates/(?<template>[^/]+?)\\.json$"
     }
   ],
   "rewrites": []

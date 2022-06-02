@@ -9,19 +9,18 @@ import {
 
 export const getDynamoDBFeature = (): ShortTemplateFeature => {
   return {
-    title: 'Storing files and data in AWS S3',
-    id: 's3',
-    description:
-      'Easily store files and data with high durability and low costs in AWS S3.',
-    image: 's3',
+    title: 'Node.js API',
+    id: 'dynamodb',
+    description: 'Define a table, insert data, and query it with DynamoDB.',
+    image: 'https://cdn.goldstack.party/img/202205/dynamodb.svg',
     details: {
-      title: 'Easy to Use API to Connect with AWS S3',
+      title: 'Start coding in minutes.',
       description:
-        'Connect to an S3 bucket and add objects using the TypeScript API.',
+        'Connect to a DynamoDB table and insert and query data with a beautiful API.',
       content: {
         type: 'image',
         data: {
-          image: 'https://cdn.goldstack.party/img/202204/s3_api.png',
+          image: 'https://cdn.goldstack.party/img/202205/dynamodb_api.png',
         },
       },
     },
@@ -32,8 +31,7 @@ export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'dynamodb',
     title: 'DynamoDB',
-    metaTitle:
-      'DynamoDB template for Node.js implemented with TypeScript and Terraform',
+    metaTitle: 'DynamoDB template for Node.js implemented with TypeScript',
     metaDescription:
       'Open source template for working with DynamoDB in Node.js. Configure for your needs in our project builder or clone boilerplate.',
     images: [
@@ -44,7 +42,7 @@ export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
     packages: [DynamoDB],
     isComposite: false,
     boilerplateLink: 'https://github.com/goldstack/dynamodb-boilerplate',
-    description: 'Manage data with DynamoDB.',
+    description: 'Insert, update and query data with DynamoDB.',
     longDescription:
       'This template adds the capability to write and query data with DynamoDB to your project.',
     tags: ['AWS', 'DynamoDB', 'Terraform', 'TypeScript', 'Yarn', 'Backend'],
@@ -69,7 +67,7 @@ export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
       {
         title: 'TypeScript',
         id: 'typescript',
-        description: 'Store and query using a TypeScript API.',
+        description: 'Insert and query data using a TypeScript API.',
         image: 'typescript',
         details: {
           title: 'TypeScript configured in template',
@@ -85,7 +83,7 @@ export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
         },
       },
       {
-        title: 'Jest',
+        title: 'Local Testing',
         id: 'jest',
         description: 'Run tests for DynamoDB related logic with Jest.',
         image: 'jest',
@@ -97,7 +95,7 @@ export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image: 'https://cdn.goldstack.party/img/202204/dynamodb_jest.png',
+              image: 'https://cdn.goldstack.party/img/202205/dynamodb_jest.png',
             },
           },
         },

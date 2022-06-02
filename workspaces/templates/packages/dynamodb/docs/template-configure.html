@@ -1,0 +1,38 @@
+<p></p>
+<div class="markdown-fragment">
+  <p>
+    The
+    <a
+      href="https://goldstack.party/templates/dynamodb"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >DynamoDB template</a
+    >
+    provides a lightweight wrapper around the
+    <a
+      href="https://aws.amazon.com/dynamodb/"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >AWS DynamoDB</a
+    >
+    service.
+  </p>
+</div>
+<p></p>
+<p></p>
+<div class="markdown-fragment">
+  <p>
+    In order to provide a basic configuration for the DynamoDB table, we only
+    need to define the name of the table we want to use.
+  </p>
+  <p>
+    The template will create a basic table with this name with a partition and
+    sort key. Further configuration of the table can be performed in code using
+    migrations (<code class="inline">updateTable</code>). This can be used to
+    define additional indices. Infrastructure configuration can be extended
+    using Terraform.
+  </p>
+</div>
+<p></p>

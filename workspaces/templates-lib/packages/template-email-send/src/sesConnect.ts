@@ -1,15 +1,16 @@
-import { getAWSUser } from '@goldstack/infra-aws';
 import SES from 'aws-sdk/clients/ses';
-
+import { Credentials, EnvironmentCredentials } from 'aws-sdk/lib/core';
 import {
   EmailSendPackage,
   EmailSendDeployment,
 } from './types/EmailSendPackage';
 import assert from 'assert';
 
-import { PackageConfig } from '@goldstack/utils-package-config';
+import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 
 import { MockedSES } from './mockedSES';
+
+import { excludeInBundle } from '@goldstack/utils-esbuild';
 
 let mockedSES: MockedSES | undefined;
 
@@ -25,7 +26,7 @@ export const connect = async (
   packageSchema: any,
   deploymentName?: string
 ): Promise<SES> => {
-  const packageConfig = new PackageConfig<
+  const packageConfig = new EmbeddedPackageConfig<
     EmailSendPackage,
     EmailSendDeployment
   >({
@@ -49,8 +50,15 @@ export const connect = async (
 
   const deployment = packageConfig.getDeployment(deploymentName);
 
-  const awsUser = await getAWSUser(deployment.awsUser);
-
+  let awsUser: Credentials;
+  if (process.env.AWS_ACCESS_KEY_ID) {
+    awsUser = new EnvironmentCredentials('AWS');
+  } else {
+    // load this in lazy to enable omitting the dependency when bundling lambdas
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const infraAWSLib = require(excludeInBundle('@goldstack/infra-aws'));
+    awsUser = await infraAWSLib.getAWSUser(deployment.awsUser);
+  }
   const ses = new SES({
     apiVersion: '2010-12-01',
     credentials: awsUser,
@@ -65,7 +73,7 @@ export const getFromDomain = async (
   packageSchema: any,
   deploymentName?: string
 ): Promise<string> => {
-  const packageConfig = new PackageConfig<
+  const packageConfig = new EmbeddedPackageConfig<
     EmailSendPackage,
     EmailSendDeployment
   >({

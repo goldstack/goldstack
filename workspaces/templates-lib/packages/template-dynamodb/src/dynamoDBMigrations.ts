@@ -1,4 +1,4 @@
-import { PackageConfig } from '@goldstack/utils-package-config';
+import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
 import { getTableName } from './dynamoDBPackageUtils';
 import DynamoDBPackage, { DynamoDBDeployment } from './types/DynamoDBPackage';
@@ -13,7 +13,7 @@ export interface DynamoDBContext {
 }
 
 export const performMigrations = async (
-  packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
   migrations: InputMigrations<DynamoDBContext>,
   client: DynamoDB
@@ -30,7 +30,7 @@ export const performMigrations = async (
 
 export const migrateDownTo = async (
   migrationName: string,
-  packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
   migrations: InputMigrations<DynamoDBContext>,
   client: DynamoDB
@@ -46,7 +46,7 @@ export const migrateDownTo = async (
 };
 
 async function initUmzug(
-  packageConfig: PackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
   client: DynamoDB,
   migrations: InputMigrations<DynamoDBContext>

@@ -138,6 +138,10 @@
       "regex": "^\\/docs\\/templates\\/app-nextjs$"
     },
     {
+      "page": "/docs/templates/dynamodb",
+      "regex": "^\\/docs\\/templates\\/dynamodb$"
+    },
+    {
       "page": "/docs/templates/email-send",
       "regex": "^\\/docs\\/templates\\/email-send$"
     },
@@ -194,8 +198,8 @@
       "routeKeys": {
         "slug": "slug"
       },
-      "dataRouteRegex": "^/_next/data/2C2GPovm7yxAy24LhvH2O/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/2C2GPovm7yxAy24LhvH2O/docs/(?<slug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/D7nQBDzo4nUi1G4A9f3PK/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/D7nQBDzo4nUi1G4A9f3PK/docs/(?<slug>.+?)\\.json$"
     }
   ],
   "rewrites": []

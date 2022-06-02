@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["pnp:/home/runner/work/goldstack/goldstack/workspaces/templates-lib/packages/template-lambda-api-cli/testData/build-test/customBuild.ts"],
+  "sourcesContent": ["import { Handler, APIGatewayProxyEventV2 } from 'aws-lambda';\n\ntype ProxyHandler = Handler<APIGatewayProxyEventV2, any>;\n\n// eslint-disable-next-line @typescript-eslint/no-unused-vars\nexport const handler: ProxyHandler = async (event, context) => {\n  return {\n    message: 'Hi',\n  };\n};\n"],
+  "mappings": "4ZAAA,kDAKO,GAAM,GAAwB,MAAO,EAAO,IAC1C,EACL,QAAS,IACX",
+  "names": []
+}

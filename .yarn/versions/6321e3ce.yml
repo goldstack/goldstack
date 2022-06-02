@@ -1,0 +1,10 @@
+undecided:
+  - root
+  - "@goldstack/s3"
+  - "@goldstack/template-email-send"
+  - "@goldstack/template-email-send-cli"
+  - "@goldstack/template-s3-cli"
+  - "@goldstack/project-package-bucket"
+  - "@goldstack/project-repository-bucket"
+  - "@goldstack/session-repository-bucket"
+  - "@goldstack/template-repository-bucket"

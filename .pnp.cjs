@@ -161,12 +161,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates-lib/packages/template-dynamodb"\
       },\
       {\
+        "name": "@goldstack/template-dynamodb-cli",\
+        "reference": "workspace:workspaces/templates-lib/packages/template-dynamodb-cli"\
+      },\
+      {\
         "name": "@goldstack/template-email-send",\
         "reference": "workspace:workspaces/templates-lib/packages/template-email-send"\
       },\
       {\
+        "name": "@goldstack/template-email-send-cli",\
+        "reference": "workspace:workspaces/templates-lib/packages/template-email-send-cli"\
+      },\
+      {\
         "name": "@goldstack/template-lambda-api",\
         "reference": "workspace:workspaces/templates-lib/packages/template-lambda-api"\
+      },\
+      {\
+        "name": "@goldstack/template-lambda-api-cli",\
+        "reference": "workspace:workspaces/templates-lib/packages/template-lambda-api-cli"\
       },\
       {\
         "name": "@goldstack/template-lambda-express",\
@@ -179,6 +191,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {\
         "name": "@goldstack/template-s3",\
         "reference": "workspace:workspaces/templates-lib/packages/template-s3"\
+      },\
+      {\
+        "name": "@goldstack/template-s3-cli",\
+        "reference": "workspace:workspaces/templates-lib/packages/template-s3-cli"\
       },\
       {\
         "name": "@goldstack/template-static-website-aws",\
@@ -213,6 +229,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates-lib/packages/utils-docs"\
       },\
       {\
+        "name": "@goldstack/utils-esbuild",\
+        "reference": "workspace:workspaces/templates-lib/packages/utils-esbuild"\
+      },\
+      {\
         "name": "@goldstack/utils-git",\
         "reference": "workspace:workspaces/templates-lib/packages/utils-git"\
       },\
@@ -235,6 +255,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {\
         "name": "@goldstack/utils-package-config",\
         "reference": "workspace:workspaces/templates-lib/packages/utils-package-config"\
+      },\
+      {\
+        "name": "@goldstack/utils-package-config-embedded",\
+        "reference": "workspace:workspaces/templates-lib/packages/utils-package-config-embedded"\
       },\
       {\
         "name": "@goldstack/utils-package-config-generate",\
@@ -396,8 +420,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/template-build-set", ["workspace:workspaces/templates-management/packages/template-build-set"]],\
       ["@goldstack/template-docker-image-aws", ["workspace:workspaces/templates-lib/packages/template-docker-image-aws"]],\
       ["@goldstack/template-dynamodb", ["workspace:workspaces/templates-lib/packages/template-dynamodb"]],\
+      ["@goldstack/template-dynamodb-cli", ["workspace:workspaces/templates-lib/packages/template-dynamodb-cli"]],\
       ["@goldstack/template-email-send", ["workspace:workspaces/templates-lib/packages/template-email-send"]],\
+      ["@goldstack/template-email-send-cli", ["workspace:workspaces/templates-lib/packages/template-email-send-cli"]],\
       ["@goldstack/template-lambda-api", ["workspace:workspaces/templates-lib/packages/template-lambda-api"]],\
+      ["@goldstack/template-lambda-api-cli", ["workspace:workspaces/templates-lib/packages/template-lambda-api-cli"]],\
       ["@goldstack/template-lambda-express", ["workspace:workspaces/templates-lib/packages/template-lambda-express"]],\
       ["@goldstack/template-management-cli", ["workspace:workspaces/apps/packages/template-management-cli"]],\
       ["@goldstack/template-metadata", ["workspace:workspaces/templates/packages/template-metadata"]],\
@@ -405,6 +432,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/template-repository", ["workspace:workspaces/templates-management/packages/template-repository"]],\
       ["@goldstack/template-repository-bucket", ["workspace:workspaces/templates-management/packages/template-repository-bucket"]],\
       ["@goldstack/template-s3", ["workspace:workspaces/templates-lib/packages/template-s3"]],\
+      ["@goldstack/template-s3-cli", ["workspace:workspaces/templates-lib/packages/template-s3-cli"]],\
       ["@goldstack/template-static-website-aws", ["workspace:workspaces/templates-lib/packages/template-static-website-aws"]],\
       ["@goldstack/toc-generator", ["workspace:workspaces/docs/packages/toc-generator"]],\
       ["@goldstack/utils-aws-cli", ["workspace:workspaces/templates-lib/packages/utils-aws-cli"]],\
@@ -415,11 +443,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/utils-docker", ["workspace:workspaces/templates-lib/packages/utils-docker"]],\
       ["@goldstack/utils-docs", ["workspace:workspaces/templates-lib/packages/utils-docs"]],\
       ["@goldstack/utils-docs-cli", ["workspace:workspaces/docs/packages/utils-docs-cli"]],\
+      ["@goldstack/utils-esbuild", ["workspace:workspaces/templates-lib/packages/utils-esbuild"]],\
       ["@goldstack/utils-git", ["workspace:workspaces/templates-lib/packages/utils-git"]],\
       ["@goldstack/utils-json-to-ts", ["workspace:workspaces/templates-lib/packages/utils-json-to-ts"]],\
       ["@goldstack/utils-log", ["workspace:workspaces/templates-lib/packages/utils-log"]],\
       ["@goldstack/utils-package", ["workspace:workspaces/templates-lib/packages/utils-package"]],\
       ["@goldstack/utils-package-config", ["workspace:workspaces/templates-lib/packages/utils-package-config"]],\
+      ["@goldstack/utils-package-config-embedded", ["workspace:workspaces/templates-lib/packages/utils-package-config-embedded"]],\
       ["@goldstack/utils-package-config-generate", ["workspace:workspaces/templates-lib/packages/utils-package-config-generate"]],\
       ["@goldstack/utils-package-create", ["workspace:workspaces/templates-lib/packages/utils-package-create"]],\
       ["@goldstack/utils-package-upgrade", ["workspace:workspaces/templates-lib/packages/utils-package-upgrade"]],\
@@ -1916,6 +1946,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/dynamodb", "workspace:workspaces/templates/packages/dynamodb"],\
             ["@aws-sdk/util-dynamodb", "npm:3.87.0"],\
             ["@goldstack/template-dynamodb", "workspace:workspaces/templates-lib/packages/template-dynamodb"],\
+            ["@goldstack/template-dynamodb-cli", "workspace:workspaces/templates-lib/packages/template-dynamodb-cli"],\
             ["@types/jest", "npm:27.5.1"],\
             ["@types/node", "npm:17.0.33"],\
             ["aws-sdk", "npm:2.1055.0"],\
@@ -2019,6 +2050,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/goldstack-email-send", "workspace:workspaces/apps/packages/goldstack-email-send"],\
             ["@goldstack/template-email-send", "workspace:workspaces/templates-lib/packages/template-email-send"],\
+            ["@goldstack/template-email-send-cli", "workspace:workspaces/templates-lib/packages/template-email-send-cli"],\
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
             ["@types/jest", "npm:27.5.1"],\
@@ -2397,6 +2429,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/project-package-bucket", "workspace:workspaces/templates-management/packages/project-package-bucket"],\
             ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],\
+            ["@goldstack/template-s3-cli", "workspace:workspaces/templates-lib/packages/template-s3-cli"],\
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
             ["@types/jest", "npm:27.5.1"],\
@@ -2450,6 +2483,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/project-repository-bucket", "workspace:workspaces/templates-management/packages/project-repository-bucket"],\
             ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],\
+            ["@goldstack/template-s3-cli", "workspace:workspaces/templates-lib/packages/template-s3-cli"],\
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
             ["@types/jest", "npm:27.5.1"],\
@@ -2498,6 +2532,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/s3", "workspace:workspaces/templates/packages/s3"],\
             ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],\
+            ["@goldstack/template-s3-cli", "workspace:workspaces/templates-lib/packages/template-s3-cli"],\
             ["@types/jest", "npm:27.5.1"],\
             ["@types/node", "npm:17.0.33"],\
             ["aws-sdk", "npm:2.1055.0"],\
@@ -2551,7 +2586,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/templates/packages/serverless-api/",\
           "packageDependencies": [\
             ["@goldstack/serverless-api", "workspace:workspaces/templates/packages/serverless-api"],\
-            ["@goldstack/template-lambda-api", "workspace:workspaces/templates-lib/packages/template-lambda-api"],\
+            ["@goldstack/template-lambda-api-cli", "workspace:workspaces/templates-lib/packages/template-lambda-api-cli"],\
             ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],\
             ["@jest-mock/express", "npm:1.4.5"],\
             ["@types/aws-lambda", "npm:8.10.88"],\
@@ -2609,6 +2644,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/session-repository-bucket", "workspace:workspaces/templates-management/packages/session-repository-bucket"],\
             ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],\
+            ["@goldstack/template-s3-cli", "workspace:workspaces/templates-lib/packages/template-s3-cli"],\
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
             ["@types/jest", "npm:27.5.1"],\
@@ -2752,27 +2788,48 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@aws-sdk/util-dynamodb", "npm:3.87.0"],\
             ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
-            ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],\
-            ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
-            ["@goldstack/utils-docker", "workspace:workspaces/templates-lib/packages/utils-docker"],\
             ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
+            ["@goldstack/utils-esbuild", "workspace:workspaces/templates-lib/packages/utils-esbuild"],\
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
-            ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],\
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
-            ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],\
+            ["@goldstack/utils-package-config-embedded", "workspace:workspaces/templates-lib/packages/utils-package-config-embedded"],\
             ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
-            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
-            ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
             ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
-            ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
             ["@types/jest", "npm:27.5.1"],\
             ["@types/node", "npm:17.0.33"],\
             ["@types/yargs", "npm:15.0.7"],\
             ["aws-sdk", "npm:2.1055.0"],\
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
             ["rimraf", "npm:3.0.2"],\
-            ["source-map-support", "npm:0.5.21"],\
             ["testcontainers", "npm:8.10.0"],\
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
+            ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.7.0"],\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"],\
+            ["umzug", "npm:3.1.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@goldstack/template-dynamodb-cli", [\
+        ["workspace:workspaces/templates-lib/packages/template-dynamodb-cli", {\
+          "packageLocation": "./workspaces/templates-lib/packages/template-dynamodb-cli/",\
+          "packageDependencies": [\
+            ["@goldstack/template-dynamodb-cli", "workspace:workspaces/templates-lib/packages/template-dynamodb-cli"],\
+            ["@goldstack/template-dynamodb", "workspace:workspaces/templates-lib/packages/template-dynamodb"],\
+            ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],\
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
+            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+            ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],\
+            ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
+            ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+            ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
+            ["@types/jest", "npm:27.5.1"],\
+            ["@types/node", "npm:17.0.33"],\
+            ["@types/yargs", "npm:15.0.7"],\
+            ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.7.0"],\
             ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"],\
@@ -2790,30 +2847,49 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],\
-            ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
-            ["@goldstack/utils-docker", "workspace:workspaces/templates-lib/packages/utils-docker"],\
+            ["@goldstack/utils-esbuild", "workspace:workspaces/templates-lib/packages/utils-esbuild"],\
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
-            ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],\
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
-            ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],\
+            ["@goldstack/utils-package-config-embedded", "workspace:workspaces/templates-lib/packages/utils-package-config-embedded"],\
             ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
-            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
-            ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
             ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
             ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
             ["@types/jest", "npm:27.5.1"],\
             ["@types/mock-aws-s3", "npm:2.6.3"],\
             ["@types/node", "npm:17.0.33"],\
             ["@types/uuid", "npm:8.3.0"],\
-            ["@types/yargs", "npm:15.0.7"],\
             ["aws-sdk", "npm:2.1055.0"],\
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
             ["rimraf", "npm:3.0.2"],\
-            ["source-map-support", "npm:0.5.21"],\
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.7.0"],\
             ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"],\
-            ["uuid", "npm:8.3.0"],\
+            ["uuid", "npm:8.3.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@goldstack/template-email-send-cli", [\
+        ["workspace:workspaces/templates-lib/packages/template-email-send-cli", {\
+          "packageLocation": "./workspaces/templates-lib/packages/template-email-send-cli/",\
+          "packageDependencies": [\
+            ["@goldstack/template-email-send-cli", "workspace:workspaces/templates-lib/packages/template-email-send-cli"],\
+            ["@goldstack/template-email-send", "workspace:workspaces/templates-lib/packages/template-email-send"],\
+            ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],\
+            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+            ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],\
+            ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+            ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+            ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
+            ["@types/jest", "npm:27.5.1"],\
+            ["@types/node", "npm:17.0.33"],\
+            ["@types/yargs", "npm:15.0.7"],\
+            ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
+            ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.7.0"],\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"],\
             ["yargs", "npm:15.4.1"]\
           ],\
           "linkType": "SOFT"\
@@ -2826,6 +2902,35 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/template-lambda-api", "workspace:workspaces/templates-lib/packages/template-lambda-api"],\
             ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
+            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+            ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+            ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+            ["@types/aws-lambda", "npm:8.10.88"],\
+            ["@types/jest", "npm:27.5.1"],\
+            ["@types/node", "npm:17.0.33"],\
+            ["@types/yargs", "npm:15.0.7"],\
+            ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
+            ["jest-pnp-resolver", "virtual:4f49c740086f3e5913a2063d6aec31d46737f5e1a82924c7e63c0f9d979eb2e0aa85979bf8307ce3da23d4f95a21ef51800e1b385a327985884beb72ab340dcf#npm:1.2.2"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["source-map-support", "npm:0.5.21"],\
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
+            ["ts-json-schema-generator", "npm:1.0.0"],\
+            ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.7.0"],\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@goldstack/template-lambda-api-cli", [\
+        ["workspace:workspaces/templates-lib/packages/template-lambda-api-cli", {\
+          "packageLocation": "./workspaces/templates-lib/packages/template-lambda-api-cli/",\
+          "packageDependencies": [\
+            ["@goldstack/template-lambda-api-cli", "workspace:workspaces/templates-lib/packages/template-lambda-api-cli"],\
+            ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+            ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+            ["@goldstack/template-lambda-api", "workspace:workspaces/templates-lib/packages/template-lambda-api"],\
             ["@goldstack/utils-aws-lambda", "workspace:workspaces/templates-lib/packages/utils-aws-lambda"],\
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],\
             ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
@@ -3034,6 +3139,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/template-repository-bucket", "workspace:workspaces/templates-management/packages/template-repository-bucket"],\
             ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],\
+            ["@goldstack/template-s3-cli", "workspace:workspaces/templates-lib/packages/template-s3-cli"],\
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
             ["@types/jest", "npm:27.5.1"],\
@@ -3057,8 +3163,37 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],\
             ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
+            ["@goldstack/utils-esbuild", "workspace:workspaces/templates-lib/packages/utils-esbuild"],\
+            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+            ["@goldstack/utils-package-config-embedded", "workspace:workspaces/templates-lib/packages/utils-package-config-embedded"],\
+            ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+            ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
+            ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+            ["@types/jest", "npm:27.5.1"],\
+            ["@types/mock-aws-s3", "npm:2.6.3"],\
+            ["@types/node", "npm:17.0.33"],\
+            ["@types/yargs", "npm:15.0.7"],\
+            ["aws-sdk", "npm:2.1055.0"],\
+            ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
+            ["mock-aws-s3", "npm:4.0.2"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["source-map-support", "npm:0.5.21"],\
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
+            ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.7.0"],\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@goldstack/template-s3-cli", [\
+        ["workspace:workspaces/templates-lib/packages/template-s3-cli", {\
+          "packageLocation": "./workspaces/templates-lib/packages/template-s3-cli/",\
+          "packageDependencies": [\
+            ["@goldstack/template-s3-cli", "workspace:workspaces/templates-lib/packages/template-s3-cli"],\
+            ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],\
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],\
-            ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
             ["@goldstack/utils-docker", "workspace:workspaces/templates-lib/packages/utils-docker"],\
             ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
@@ -3077,7 +3212,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/yargs", "npm:15.0.7"],\
             ["aws-sdk", "npm:2.1055.0"],\
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
-            ["mock-aws-s3", "npm:4.0.2"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
@@ -3312,6 +3446,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT"\
         }]\
       ]],\
+      ["@goldstack/utils-esbuild", [\
+        ["workspace:workspaces/templates-lib/packages/utils-esbuild", {\
+          "packageLocation": "./workspaces/templates-lib/packages/utils-esbuild/",\
+          "packageDependencies": [\
+            ["@goldstack/utils-esbuild", "workspace:workspaces/templates-lib/packages/utils-esbuild"],\
+            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
+            ["@types/jest", "npm:27.5.1"],\
+            ["@types/node", "npm:17.0.33"],\
+            ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
       ["@goldstack/utils-git", [\
         ["workspace:workspaces/templates-lib/packages/utils-git", {\
           "packageLocation": "./workspaces/templates-lib/packages/utils-git/",\
@@ -3402,13 +3552,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
             ["@types/jest", "npm:27.5.1"],\
             ["@types/node", "npm:17.0.33"],\
-            ["@types/yargs", "npm:15.0.7"],\
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
-            ["renamer", "npm:0.7.3"],\
             ["rimraf", "npm:3.0.2"],\
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"],\
-            ["yargs", "npm:15.4.1"]\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@goldstack/utils-package-config-embedded", [\
+        ["workspace:workspaces/templates-lib/packages/utils-package-config-embedded", {\
+          "packageLocation": "./workspaces/templates-lib/packages/utils-package-config-embedded/",\
+          "packageDependencies": [\
+            ["@goldstack/utils-package-config-embedded", "workspace:workspaces/templates-lib/packages/utils-package-config-embedded"],\
+            ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+            ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
+            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+            ["@types/jest", "npm:27.5.1"],\
+            ["@types/node", "npm:17.0.33"],\
+            ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -15890,10 +16056,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["json-schema", [\
-        ["npm:0.2.3", {\
-          "packageLocation": "./.yarn/cache/json-schema-npm-0.2.3-018ee3dfc9-bbc2070988.zip/node_modules/json-schema/",\
+        ["npm:0.4.0", {\
+          "packageLocation": "./.yarn/cache/json-schema-npm-0.4.0-e776313070-66389434c3.zip/node_modules/json-schema/",\
           "packageDependencies": [\
-            ["json-schema", "npm:0.2.3"]\
+            ["json-schema", "npm:0.4.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -16084,7 +16250,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jsprim", "npm:1.4.1"],\
             ["assert-plus", "npm:1.0.0"],\
             ["extsprintf", "npm:1.3.0"],\
-            ["json-schema", "npm:0.2.3"],\
+            ["json-schema", "npm:0.4.0"],\
             ["verror", "npm:1.10.0"]\
           ],\
           "linkType": "HARD"\

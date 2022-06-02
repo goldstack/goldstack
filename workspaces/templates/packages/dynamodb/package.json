@@ -15,20 +15,21 @@
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
-    "deploy": "template deploy $@",
-    "infra": "template infra",
-    "template": "template",
-    "template-ts": "ts-node scripts/template.ts",
+    "deploy": "yarn node dist/src/template.js deploy $@",
+    "infra": "yarn node dist/src/template.js infra",
+    "template": "yarn node dist/src/template.js",
+    "template-ts": "ts-node src/template.ts",
     "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
     "@aws-sdk/util-dynamodb": "^3.87.0",
-    "@goldstack/template-dynamodb": "0.1.2",
+    "@goldstack/template-dynamodb": "0.1.11",
     "aws-sdk": "2.1055.0",
     "dynamodb-toolbox": "alpha",
     "umzug": "^3.1.1"
   },
   "devDependencies": {
+    "@goldstack/template-dynamodb-cli": "0.4.1",
     "@types/jest": "^27.5.1",
     "@types/node": "^17.0.33",
     "jest": "^28.1.0",

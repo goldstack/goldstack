@@ -19,10 +19,10 @@
     "template-ts": "ts-node scripts/template.ts",
     "test": "yarn test-ci --watch",
     "test-ci": "TEST_SERVER_PORT=5030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=jest.config.js --runInBand",
-    "watch": "PORT=3030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev ./src/local.ts"
+    "watch": "PORT=3030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev --respawn ./src/local.ts"
   },
   "dependencies": {
-    "@goldstack/template-lambda-express": "0.3.111",
+    "@goldstack/template-lambda-express": "0.3.113",
     "aws-serverless-express": "^3.3.8",
     "cors": "^2.8.5",
     "express": "^4.17.1",

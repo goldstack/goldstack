@@ -36,7 +36,7 @@ const PackageCard = (props: PackageCardProps): JSX.Element => {
   const plusSvg = dataUriToSrc(Plus);
   const checkSvg = dataUriToSrc(Check);
   return (
-    <div className={`card card-frame h-100 ${cardCss}`}>
+    <div className={`card card-frame h-100 ${cardCss} `}>
       <div className="card-body">
         <div className="media">
           <div className="avatar avatar-xs mt-1 mr-3">

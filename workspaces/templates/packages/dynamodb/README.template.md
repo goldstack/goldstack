@@ -1,5 +1,5 @@
-# S3 Template
+# DynamoDB Template
 
 ❤️ Support development by using the [Goldstack Project Builder](https://goldstack.party) ❤️
 
-[!embed](../../../docs/docs/templates/s3/index.md)
+[!embed](../../../docs/docs/templates/dynamodb/index.md)
