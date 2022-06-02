@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package-config",
-  "version": "0.3.38",
+  "version": "0.3.39",
   "description": "Utilities for working with Goldstack package schemas.",
   "keywords": [
     "goldstack",

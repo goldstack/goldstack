@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-docker-image-aws",
-  "version": "0.3.80",
+  "version": "0.3.81",
   "description": "Utilities for packages that are deployed as Docker Images using AWS Fargate",
   "keywords": [
     "goldstack",
@@ -54,7 +54,7 @@
     "@goldstack/utils-git": "0.1.34",
     "@goldstack/utils-log": "0.2.14",
     "@goldstack/utils-package": "0.3.38",
-    "@goldstack/utils-package-config": "0.3.38",
+    "@goldstack/utils-package-config": "0.3.39",
     "@goldstack/utils-s3-deployment": "0.3.55",
     "@goldstack/utils-sh": "0.4.31",
     "@goldstack/utils-template": "0.3.35",
