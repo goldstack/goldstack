@@ -4,5 +4,7 @@
 !/package.json
 !/README.md
 /dist/tsconfig.tsbuildinfo
-testData/
-src/__tests__/
+/**/*.spec.js
+/**/*.spec.js.map
+/**/*.spec.d.ts
+/**/*.spec.d.ts.map

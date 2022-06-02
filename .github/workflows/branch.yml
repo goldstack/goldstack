@@ -5,6 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
     name: 'Build and Test'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,6 +22,7 @@ jobs:
 
   lint:
     name: 'Lint'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -42,6 +44,7 @@ jobs:
 
   audit:
     name: 'NPM Audit'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -61,6 +64,7 @@ jobs:
 
   compile:
     name: 'Compile and Type Check'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -80,6 +84,7 @@ jobs:
 
   test-libraries:
     name: 'Libraries Test'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -102,6 +107,7 @@ jobs:
 
   test-template-management:
     name: 'Templates Management Test'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -124,6 +130,7 @@ jobs:
 
   test-apps:
     name: 'Apps Test'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -147,6 +154,7 @@ jobs:
 
   test-docs:
     name: 'Docs Test'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -169,6 +177,7 @@ jobs:
 
   test-templates:
     name: 'Templates Test'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -191,6 +200,7 @@ jobs:
 
   schema:
     name: 'Generate Schemas'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -210,6 +220,7 @@ jobs:
 
   docs:
     name: 'Generate Docs'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
