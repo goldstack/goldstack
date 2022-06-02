@@ -838,7 +838,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs-bootstrap@workspace:workspaces/templates/packages/app-nextjs-bootstrap"
   dependencies:
-    "@goldstack/template-nextjs": 0.3.109
+    "@goldstack/template-nextjs": 0.3.108
     "@goldstack/utils-sh": 0.4.31
     "@testing-library/jest-dom": ^5.9.0
     "@testing-library/react": ^10.0.4
@@ -2158,6 +2158,34 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@goldstack/template-nextjs@npm:0.3.108":
+  version: 0.3.108
+  resolution: "@goldstack/template-nextjs@npm:0.3.108"
+  dependencies:
+    "@goldstack/infra": 0.3.36
+    "@goldstack/infra-aws": 0.3.44
+    "@goldstack/template-static-website-aws": 0.3.98
+    "@goldstack/utils-aws-cli": 0.3.54
+    "@goldstack/utils-aws-lambda": 0.1.28
+    "@goldstack/utils-cli": 0.2.13
+    "@goldstack/utils-config": 0.3.33
+    "@goldstack/utils-log": 0.2.14
+    "@goldstack/utils-package": 0.3.38
+    "@goldstack/utils-package-config": 0.3.38
+    "@goldstack/utils-sh": 0.4.31
+    "@goldstack/utils-template": 0.3.35
+    "@goldstack/utils-terraform": 0.3.68
+    glob: ^7.1.6
+    source-map-support: ^0.5.21
+    webpack: 4.43.0
+    yargs: ^15.4.1
+  bin:
+    template: ./bin/template
+    template-nextjs: ./bin/template
+  checksum: b47af180a49ffa9dc372928709593402a9ab54c0bf87e8885b2c1d61e4f2a672cc40e74e7d42708095333124c2b1c70143875e215872a2bb73a9ca9ef09ae2cb
+  languageName: node
+  linkType: hard
+
 "@goldstack/template-repository-bucket@0.1.0, @goldstack/template-repository-bucket@workspace:workspaces/templates-management/packages/template-repository-bucket":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-repository-bucket@workspace:workspaces/templates-management/packages/template-repository-bucket"
@@ -2301,6 +2329,32 @@ __metadata:
     template-static-website-aws: ./bin/template
   languageName: unknown
   linkType: soft
+
+"@goldstack/template-static-website-aws@npm:0.3.98":
+  version: 0.3.98
+  resolution: "@goldstack/template-static-website-aws@npm:0.3.98"
+  dependencies:
+    "@goldstack/infra": 0.3.36
+    "@goldstack/infra-aws": 0.3.44
+    "@goldstack/utils-cli": 0.2.13
+    "@goldstack/utils-config": 0.3.33
+    "@goldstack/utils-docs-cli": 0.3.11
+    "@goldstack/utils-log": 0.2.14
+    "@goldstack/utils-package": 0.3.38
+    "@goldstack/utils-package-config": 0.3.38
+    "@goldstack/utils-s3-deployment": 0.3.55
+    "@goldstack/utils-sh": 0.4.31
+    "@goldstack/utils-template": 0.3.35
+    "@goldstack/utils-terraform": 0.3.68
+    "@goldstack/utils-terraform-aws": 0.3.67
+    source-map-support: ^0.5.21
+    yargs: ^15.4.1
+  bin:
+    template: ./bin/template
+    template-static-website-aws: ./bin/template
+  checksum: 3aea0d0ac7f60f1efb63043a64dd422ffd004b3ce758087446e3f5876a77eb1e483f8c67fe784b3eb4fad1789a2283f42e491399ea8e70640220c190ec17f5a3
+  languageName: node
+  linkType: hard
 
 "@goldstack/toc-generator@0.1.0, @goldstack/toc-generator@workspace:workspaces/docs/packages/toc-generator":
   version: 0.0.0-use.local
@@ -2597,6 +2651,19 @@ __metadata:
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
+
+"@goldstack/utils-package-config@npm:0.3.38":
+  version: 0.3.38
+  resolution: "@goldstack/utils-package-config@npm:0.3.38"
+  dependencies:
+    "@goldstack/infra": 0.3.36
+    "@goldstack/utils-config": 0.3.33
+    "@goldstack/utils-package": 0.3.38
+    "@goldstack/utils-sh": 0.4.31
+    yargs: ^15.4.1
+  checksum: 50464a41a146826053d3e9cd509c232a33d662477f40fb931c7a0ae6b8c783464345e80f735d3d8095f760616c128835823e75ee430496c065f3b48854e0ac30
+  languageName: node
+  linkType: hard
 
 "@goldstack/utils-package-create@workspace:workspaces/templates-lib/packages/utils-package-create":
   version: 0.0.0-use.local
@@ -17767,7 +17834,7 @@ resolve@^1.20.0:
     eslint-plugin-yaml: ^0.5.0
     nodemon: ^2.0.15
     prettier: ^2.2.1
-    syncpack: ^7.2.1
+    syncpack: ^8.0.0
     ts-node: ^10.7.0
     typescript: ^4.6.4
   languageName: unknown
@@ -19315,9 +19382,9 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"syncpack@npm:^7.2.1":
-  version: 7.2.1
-  resolution: "syncpack@npm:7.2.1"
+"syncpack@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "syncpack@npm:8.0.0"
   dependencies:
     chalk: 4.1.2
     commander: 9.2.0
@@ -19337,7 +19404,7 @@ resolve@^1.20.0:
     syncpack-list: dist/bin-list/index.js
     syncpack-list-mismatches: dist/bin-list-mismatches/index.js
     syncpack-set-semver-ranges: dist/bin-set-semver-ranges/index.js
-  checksum: 3e56f9fc5c8627a5618a03487e65c34797b711ff5dfe403d52cda06ac058dacffbe0479f7f01f9257d0287531c81b8c416f64b09c14a58021d19401a7138121c
+  checksum: 2edb3c50ccfd7a5065b35e348f24304e9921eb53b634f6808557eb867de0cd0aa8b65f77bcc2c39a281931bab95f81756a1085d28fe3d88006786f5debe943ad
   languageName: node
   linkType: hard
 

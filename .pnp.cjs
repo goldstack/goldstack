@@ -496,7 +496,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-yaml", "npm:0.5.0"],\
             ["nodemon", "npm:2.0.15"],\
             ["prettier", "npm:2.2.1"],\
-            ["syncpack", "npm:7.2.1"],\
+            ["syncpack", "npm:8.0.0"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.7.0"],\
             ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
@@ -1753,7 +1753,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/templates/packages/app-nextjs-bootstrap/",\
           "packageDependencies": [\
             ["@goldstack/app-nextjs-bootstrap", "workspace:workspaces/templates/packages/app-nextjs-bootstrap"],\
-            ["@goldstack/template-nextjs", "workspace:workspaces/templates-lib/packages/template-nextjs"],\
+            ["@goldstack/template-nextjs", "npm:0.3.108"],\
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
             ["@testing-library/jest-dom", "npm:5.11.4"],\
             ["@testing-library/react", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:10.4.9"],\
@@ -3069,6 +3069,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@goldstack/template-nextjs", [\
+        ["npm:0.3.108", {\
+          "packageLocation": "./.yarn/cache/@goldstack-template-nextjs-npm-0.3.108-60915cd0a9-b47af180a4.zip/node_modules/@goldstack/template-nextjs/",\
+          "packageDependencies": [\
+            ["@goldstack/template-nextjs", "npm:0.3.108"],\
+            ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+            ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+            ["@goldstack/template-static-website-aws", "npm:0.3.98"],\
+            ["@goldstack/utils-aws-cli", "workspace:workspaces/templates-lib/packages/utils-aws-cli"],\
+            ["@goldstack/utils-aws-lambda", "workspace:workspaces/templates-lib/packages/utils-aws-lambda"],\
+            ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],\
+            ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
+            ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],\
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+            ["@goldstack/utils-package-config", "npm:0.3.38"],\
+            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
+            ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
+            ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+            ["glob", "npm:7.1.6"],\
+            ["source-map-support", "npm:0.5.21"],\
+            ["webpack", "virtual:0c42a4a7e96abec67548df8af0143cff51f355aeab0d23272359987eaba0feb51d651b15d995e5c0fcc0a843a2710e9bfcb454984d2bdce054b0f460b4a3e5c1#npm:4.43.0"],\
+            ["yargs", "npm:15.4.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["workspace:workspaces/templates-lib/packages/template-nextjs", {\
           "packageLocation": "./workspaces/templates-lib/packages/template-nextjs/",\
           "packageDependencies": [\
@@ -3223,6 +3247,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@goldstack/template-static-website-aws", [\
+        ["npm:0.3.98", {\
+          "packageLocation": "./.yarn/cache/@goldstack-template-static-website-aws-npm-0.3.98-6407ccf77a-3aea0d0ac7.zip/node_modules/@goldstack/template-static-website-aws/",\
+          "packageDependencies": [\
+            ["@goldstack/template-static-website-aws", "npm:0.3.98"],\
+            ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+            ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+            ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],\
+            ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
+            ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],\
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+            ["@goldstack/utils-package-config", "npm:0.3.38"],\
+            ["@goldstack/utils-s3-deployment", "workspace:workspaces/templates-lib/packages/utils-s3-deployment"],\
+            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
+            ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
+            ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+            ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
+            ["source-map-support", "npm:0.5.21"],\
+            ["yargs", "npm:15.4.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["workspace:workspaces/templates-lib/packages/template-static-website-aws", {\
           "packageLocation": "./workspaces/templates-lib/packages/template-static-website-aws/",\
           "packageDependencies": [\
@@ -3541,6 +3587,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@goldstack/utils-package-config", [\
+        ["npm:0.3.38", {\
+          "packageLocation": "./.yarn/cache/@goldstack-utils-package-config-npm-0.3.38-20bcb52e6f-50464a41a1.zip/node_modules/@goldstack/utils-package-config/",\
+          "packageDependencies": [\
+            ["@goldstack/utils-package-config", "npm:0.3.38"],\
+            ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+            ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
+            ["yargs", "npm:15.4.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["workspace:workspaces/templates-lib/packages/utils-package-config", {\
           "packageLocation": "./workspaces/templates-lib/packages/utils-package-config/",\
           "packageDependencies": [\
@@ -20867,7 +20925,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-yaml", "npm:0.5.0"],\
             ["nodemon", "npm:2.0.15"],\
             ["prettier", "npm:2.2.1"],\
-            ["syncpack", "npm:7.2.1"],\
+            ["syncpack", "npm:8.0.0"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.7.0"],\
             ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
@@ -22578,10 +22636,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["syncpack", [\
-        ["npm:7.2.1", {\
-          "packageLocation": "./.yarn/cache/syncpack-npm-7.2.1-a3fe969d39-3e56f9fc5c.zip/node_modules/syncpack/",\
+        ["npm:8.0.0", {\
+          "packageLocation": "./.yarn/cache/syncpack-npm-8.0.0-10ede8d7aa-2edb3c50cc.zip/node_modules/syncpack/",\
           "packageDependencies": [\
-            ["syncpack", "npm:7.2.1"],\
+            ["syncpack", "npm:8.0.0"],\
             ["chalk", "npm:4.1.2"],\
             ["commander", "npm:9.2.0"],\
             ["cosmiconfig", "npm:7.0.1"],\
