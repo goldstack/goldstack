@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-email-send-cli",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Utilities for packages that implement email sending using AWS SES",
   "keywords": [
     "goldstack",
@@ -44,7 +44,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/template-email-send": "0.3.102",
+    "@goldstack/template-email-send": "0.3.103",
     "@goldstack/utils-cli": "0.2.13",
     "@goldstack/utils-package": "0.3.38",
     "@goldstack/utils-package-config": "0.3.39",
