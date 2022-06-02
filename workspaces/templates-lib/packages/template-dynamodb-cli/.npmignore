@@ -4,3 +4,7 @@
 !/package.json
 !/README.md
 /dist/tsconfig.tsbuildinfo
+/**/*.spec.js
+/**/*.spec.js.map
+/**/*.spec.d.ts
+/**/*.spec.d.ts.map
