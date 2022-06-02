@@ -4,7 +4,7 @@
 require('source-map-support').install();
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-require('./../dist/src/templateEmailSend')
+require('./../dist/src/templateEmailSendCli')
   .run(process.argv)
   .catch((e) => {
     console.log(e);

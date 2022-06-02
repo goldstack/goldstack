@@ -1,6 +1,6 @@
 {
-  "name": "@goldstack/template-email-send",
-  "version": "0.3.101",
+  "name": "@goldstack/template-email-send-cli",
+  "version": "0.4.0",
   "description": "Utilities for packages that implement email sending using AWS SES",
   "keywords": [
     "goldstack",
@@ -23,7 +23,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "src/templateEmailSend.ts",
+  "main": "src/templateEmailSendCli.ts",
   "bin": {
     "template": "./bin/template",
     "template-email-send": "./bin/template"
@@ -54,11 +54,14 @@
     "@goldstack/utils-log": "0.2.14",
     "@goldstack/utils-package": "0.3.38",
     "@goldstack/utils-package-config": "0.3.38",
+    "@goldstack/utils-sh": "0.4.31",
     "@goldstack/utils-template": "0.3.35",
     "@goldstack/utils-terraform": "0.3.68",
     "@goldstack/utils-terraform-aws": "0.3.67",
     "aws-sdk": "2.1055.0",
-    "uuid": "^8.3.0"
+    "source-map-support": "^0.5.21",
+    "uuid": "^8.3.0",
+    "yargs": "^15.4.1"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.34",
@@ -75,6 +78,6 @@
     "typescript": "^4.6.4"
   },
   "publishConfig": {
-    "main": "dist/src/templateEmailSend.js"
+    "main": "dist/src/templateEmailSendCli.js"
   }
 }
