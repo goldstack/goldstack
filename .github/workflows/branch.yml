@@ -59,6 +59,23 @@ jobs:
         run: |
           yarn npm audit --recursive --severity high
 
+  syncpack:
+    name: 'Running Syncpack'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install Yarn
+        run: npm install -g
+      - name: Install
+        run: |
+          yarn install
+      - name: Run Syncpack for all workspaces
+        run: |
+          yarn syncpack fix-mismatches --workspace -p -d --source package.json --source workspaces/*/package.json --source workspaces/*/packages/*/package.json
+
   compile:
     name: 'Compile and Type Check'
     runs-on: ubuntu-latest
