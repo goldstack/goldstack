@@ -169,6 +169,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates-lib/packages/template-email-send"\
       },\
       {\
+        "name": "@goldstack/template-email-send-cli",\
+        "reference": "workspace:workspaces/templates-lib/packages/template-email-send-cli"\
+      },\
+      {\
         "name": "@goldstack/template-lambda-api",\
         "reference": "workspace:workspaces/templates-lib/packages/template-lambda-api"\
       },\
@@ -418,6 +422,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/template-dynamodb", ["workspace:workspaces/templates-lib/packages/template-dynamodb"]],\
       ["@goldstack/template-dynamodb-cli", ["workspace:workspaces/templates-lib/packages/template-dynamodb-cli"]],\
       ["@goldstack/template-email-send", ["workspace:workspaces/templates-lib/packages/template-email-send"]],\
+      ["@goldstack/template-email-send-cli", ["workspace:workspaces/templates-lib/packages/template-email-send-cli"]],\
       ["@goldstack/template-lambda-api", ["workspace:workspaces/templates-lib/packages/template-lambda-api"]],\
       ["@goldstack/template-lambda-api-cli", ["workspace:workspaces/templates-lib/packages/template-lambda-api-cli"]],\
       ["@goldstack/template-lambda-express", ["workspace:workspaces/templates-lib/packages/template-lambda-express"]],\
@@ -2579,8 +2584,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/templates/packages/serverless-api/",\
           "packageDependencies": [\
             ["@goldstack/serverless-api", "workspace:workspaces/templates/packages/serverless-api"],\
-            ["@goldstack/dynamodb", "workspace:workspaces/templates/packages/dynamodb"],\
-            ["@goldstack/s3", "workspace:workspaces/templates/packages/s3"],\
             ["@goldstack/template-lambda-api-cli", "workspace:workspaces/templates-lib/packages/template-lambda-api-cli"],\
             ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],\
             ["@jest-mock/express", "npm:1.4.5"],\
@@ -2839,6 +2842,41 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/templates-lib/packages/template-email-send/",\
           "packageDependencies": [\
             ["@goldstack/template-email-send", "workspace:workspaces/templates-lib/packages/template-email-send"],\
+            ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+            ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+            ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],\
+            ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
+            ["@goldstack/utils-docker", "workspace:workspaces/templates-lib/packages/utils-docker"],\
+            ["@goldstack/utils-esbuild", "workspace:workspaces/templates-lib/packages/utils-esbuild"],\
+            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
+            ["@goldstack/utils-log", "workspace:workspaces/templates-lib/packages/utils-log"],\
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+            ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],\
+            ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+            ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
+            ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+            ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
+            ["@types/jest", "npm:27.5.1"],\
+            ["@types/mock-aws-s3", "npm:2.6.3"],\
+            ["@types/node", "npm:17.0.33"],\
+            ["@types/uuid", "npm:8.3.0"],\
+            ["@types/yargs", "npm:15.0.7"],\
+            ["aws-sdk", "npm:2.1055.0"],\
+            ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
+            ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.7.0"],\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"],\
+            ["uuid", "npm:8.3.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@goldstack/template-email-send-cli", [\
+        ["workspace:workspaces/templates-lib/packages/template-email-send-cli", {\
+          "packageLocation": "./workspaces/templates-lib/packages/template-email-send-cli/",\
+          "packageDependencies": [\
+            ["@goldstack/template-email-send-cli", "workspace:workspaces/templates-lib/packages/template-email-send-cli"],\
             ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],\
