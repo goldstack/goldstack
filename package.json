@@ -13,7 +13,7 @@
   "scripts": {
     "build": "yarn compile",
     "commit": "yarn git:commit \"$0\"",
-    "compile": "tsc -b",
+    "compile": "yarn fix-project-references-all && tsc --build",
     "compile-watch": "tsc -b -w",
     "ensure-local-packages": "ts-node scripts/ensureLocalPackages.ts",
     "eslint": "eslint",
