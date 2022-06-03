@@ -269,10 +269,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates-lib/packages/utils-package-create"\
       },\
       {\
-        "name": "@goldstack/utils-package-upgrade",\
-        "reference": "workspace:workspaces/templates-lib/packages/utils-package-upgrade"\
-      },\
-      {\
         "name": "@goldstack/utils-project",\
         "reference": "workspace:workspaces/templates-lib/packages/utils-project"\
       },\
@@ -452,7 +448,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/utils-package-config-embedded", ["workspace:workspaces/templates-lib/packages/utils-package-config-embedded"]],\
       ["@goldstack/utils-package-config-generate", ["workspace:workspaces/templates-lib/packages/utils-package-config-generate"]],\
       ["@goldstack/utils-package-create", ["workspace:workspaces/templates-lib/packages/utils-package-create"]],\
-      ["@goldstack/utils-package-upgrade", ["workspace:workspaces/templates-lib/packages/utils-package-upgrade"]],\
       ["@goldstack/utils-project", ["workspace:workspaces/templates-lib/packages/utils-project"]],\
       ["@goldstack/utils-s3", ["workspace:workspaces/templates-lib/packages/utils-s3"]],\
       ["@goldstack/utils-s3-deployment", ["workspace:workspaces/templates-lib/packages/utils-s3-deployment"]],\
@@ -480,7 +475,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/nodemonx", "workspace:workspaces/templates-lib/packages/utils-nodemonx"],\
             ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
-            ["@goldstack/utils-package-upgrade", "workspace:workspaces/templates-lib/packages/utils-package-upgrade"],\
             ["@goldstack/utils-typescript-references", "workspace:workspaces/templates-lib/packages/utils-typescript-references"],\
             ["@types/jest", "npm:27.5.1"],\
             ["@types/node", "npm:17.0.33"],\
@@ -3611,25 +3605,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:17.0.33"],\
             ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
-            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
-          ],\
-          "linkType": "SOFT"\
-        }]\
-      ]],\
-      ["@goldstack/utils-package-upgrade", [\
-        ["workspace:workspaces/templates-lib/packages/utils-package-upgrade", {\
-          "packageLocation": "./workspaces/templates-lib/packages/utils-package-upgrade/",\
-          "packageDependencies": [\
-            ["@goldstack/utils-package-upgrade", "workspace:workspaces/templates-lib/packages/utils-package-upgrade"],\
-            ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
-            ["@goldstack/utils-yarn", "workspace:workspaces/templates-lib/packages/utils-yarn"],\
-            ["@types/jest", "npm:27.5.1"],\
-            ["@types/node", "npm:17.0.33"],\
-            ["fast-glob", "npm:3.2.11"],\
-            ["jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.1.0"],\
-            ["rimraf", "npm:3.0.2"],\
-            ["source-map-support", "npm:0.5.21"],\
             ["ts-jest", "virtual:da08a03868739fac7fea3c2a45eaecfb24338f90a419957f489b48a5a3316bdd500a199630de124654a3166a207f3ab071ba33b48212458ead0aafc3b1a748a3#npm:28.0.2"],\
             ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
           ],\
@@ -12113,18 +12088,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["is-glob", "npm:4.0.1"],\
             ["merge2", "npm:1.4.1"],\
             ["micromatch", "npm:3.1.10"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["npm:3.2.11", {\
-          "packageLocation": "./.yarn/cache/fast-glob-npm-3.2.11-bc01135fef-f473105324.zip/node_modules/fast-glob/",\
-          "packageDependencies": [\
-            ["fast-glob", "npm:3.2.11"],\
-            ["@nodelib/fs.stat", "npm:2.0.3"],\
-            ["@nodelib/fs.walk", "npm:1.2.4"],\
-            ["glob-parent", "npm:5.1.2"],\
-            ["merge2", "npm:1.4.1"],\
-            ["micromatch", "npm:4.0.5"]\
           ],\
           "linkType": "HARD"\
         }],\
@@ -20789,7 +20752,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["root", "workspace:."],\
             ["@goldstack/nodemonx", "workspace:workspaces/templates-lib/packages/utils-nodemonx"],\
             ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
-            ["@goldstack/utils-package-upgrade", "workspace:workspaces/templates-lib/packages/utils-package-upgrade"],\
             ["@goldstack/utils-typescript-references", "workspace:workspaces/templates-lib/packages/utils-typescript-references"],\
             ["@types/jest", "npm:27.5.1"],\
             ["@types/node", "npm:17.0.33"],\

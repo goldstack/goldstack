@@ -19,6 +19,9 @@
     },
     {
       "path": "../../../templates-lib/packages/utils-sh"
+    },
+    {
+      "path": "../../../templates-lib/packages/template-s3-cli"
     }
   ]
 }
