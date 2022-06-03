@@ -24,10 +24,6 @@
   "author": "Max Rohde",
   "sideEffects": false,
   "main": "src/templateEmailSend.ts",
-  "bin": {
-    "template": "./bin/template",
-    "template-email-send": "./bin/template"
-  },
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",
