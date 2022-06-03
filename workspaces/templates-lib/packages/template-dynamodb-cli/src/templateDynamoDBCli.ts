@@ -73,15 +73,7 @@ export const run = async ({
     const [, , , ...opArgs] = args;
 
     if (command === 'infra') {
-      if (
-        opArgs[0] === 'up' ||
-        opArgs[0] === 'init' ||
-        opArgs[0] === 'plan' ||
-        opArgs[0] === 'apply' ||
-        opArgs[0] === 'destroy'
-      ) {
-        await dynamoDBCli(migrations, ['init', opArgs[1]]);
-      }
+      await dynamoDBCli(migrations, ['init', opArgs[1]]);
       await terraformAwsCli(opArgs);
       if (opArgs[0] === 'destroy') {
         await dynamoDBCli(migrations, ['delete', opArgs[1]]);
