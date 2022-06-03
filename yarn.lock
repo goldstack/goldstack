@@ -1944,9 +1944,6 @@ __metadata:
     ts-node: ^10.8.0
     typescript: ^4.6.4
     uuid: ^8.3.0
-  bin:
-    template: ./bin/template
-    template-email-send: ./bin/template
   languageName: unknown
   linkType: soft
 
