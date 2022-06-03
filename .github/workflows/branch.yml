@@ -77,7 +77,7 @@ jobs:
           yarn install
       - name: Run Syncpack for all workspaces
         run: |
-          yarn ensure-no-package-mismatches 
+          yarn ensure-no-package-mismatches
 
   compile:
     name: 'Compile and Type Check'
