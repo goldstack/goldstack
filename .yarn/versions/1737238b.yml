@@ -1,0 +1,16 @@
+undecided:
+  - root
+  - "@goldstack/goldstack-email-send"
+  - "@goldstack/app-nextjs"
+  - "@goldstack/app-nextjs-bootstrap"
+  - "@goldstack/dynamodb"
+  - "@goldstack/email-send"
+  - "@goldstack/lambda-express"
+  - "@goldstack/server-go"
+  - "@goldstack/s3"
+  - "@goldstack/serverless-api"
+  - "@goldstack/static-website-aws"
+  - "@goldstack/template-metadata"
+  - "@goldstack/template-email-send"
+  - "@goldstack/template-email-send-cli"
+  - "@goldstack/template-lambda-api-cli"
