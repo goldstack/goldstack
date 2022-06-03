@@ -1078,6 +1078,7 @@ __metadata:
   resolution: "@goldstack/email-send@workspace:workspaces/templates/packages/email-send"
   dependencies:
     "@goldstack/template-email-send": 0.3.106
+    "@goldstack/template-email-send-cli": 0.4.4
     "@goldstack/utils-git": 0.1.35
     "@goldstack/utils-sh": 0.4.32
     "@types/jest": ^27.5.1

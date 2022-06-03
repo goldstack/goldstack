@@ -1960,6 +1960,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/email-send", "workspace:workspaces/templates/packages/email-send"],\
             ["@goldstack/template-email-send", "workspace:workspaces/templates-lib/packages/template-email-send"],\
+            ["@goldstack/template-email-send-cli", "workspace:workspaces/templates-lib/packages/template-email-send-cli"],\
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\
             ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
             ["@types/jest", "npm:27.5.1"],\
