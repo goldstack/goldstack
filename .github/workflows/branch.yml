@@ -63,7 +63,7 @@ jobs:
           yarn npm audit --recursive --severity high
 
   syncpack:
-    name: 'Running Syncpack'
+    name: 'Checking for Package Mismatches'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -77,7 +77,7 @@ jobs:
           yarn install
       - name: Run Syncpack for all workspaces
         run: |
-          yarn syncpack fix-mismatches --workspace -p -d --source package.json --source workspaces/*/package.json --source workspaces/*/packages/*/package.json
+          yarn ensure-no-package-mismatches 
 
   compile:
     name: 'Compile and Type Check'
