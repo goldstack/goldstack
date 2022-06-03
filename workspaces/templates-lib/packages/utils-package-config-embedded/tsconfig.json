@@ -18,9 +18,6 @@
       "path": "../utils-package"
     },
     {
-      "path": "../utils-sh"
-    },
-    {
       "path": "../utils-git"
     }
   ]

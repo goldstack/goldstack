@@ -137,10 +137,19 @@
       "path": "workspaces/templates-lib/packages/template-dynamodb"
     },
     {
+      "path": "workspaces/templates-lib/packages/template-dynamodb-cli"
+    },
+    {
       "path": "workspaces/templates-lib/packages/template-email-send"
     },
     {
+      "path": "workspaces/templates-lib/packages/template-email-send-cli"
+    },
+    {
       "path": "workspaces/templates-lib/packages/template-lambda-api"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-lambda-api-cli"
     },
     {
       "path": "workspaces/templates-lib/packages/template-lambda-express"
@@ -150,6 +159,9 @@
     },
     {
       "path": "workspaces/templates-lib/packages/template-s3"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-s3-cli"
     },
     {
       "path": "workspaces/templates-lib/packages/template-static-website-aws"
@@ -176,6 +188,9 @@
       "path": "workspaces/templates-lib/packages/utils-docs"
     },
     {
+      "path": "workspaces/templates-lib/packages/utils-esbuild"
+    },
+    {
       "path": "workspaces/templates-lib/packages/utils-git"
     },
     {
@@ -194,13 +209,13 @@
       "path": "workspaces/templates-lib/packages/utils-package-config"
     },
     {
+      "path": "workspaces/templates-lib/packages/utils-package-config-embedded"
+    },
+    {
       "path": "workspaces/templates-lib/packages/utils-package-config-generate"
     },
     {
       "path": "workspaces/templates-lib/packages/utils-package-create"
-    },
-    {
-      "path": "workspaces/templates-lib/packages/utils-package-upgrade"
     },
     {
       "path": "workspaces/templates-lib/packages/utils-project"

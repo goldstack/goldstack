@@ -138,7 +138,6 @@ jobs:
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
         run: |
           cd workspaces/templates-lib
-          yarn build # Ensure sources compiled into /dist
           yarn version:apply --deferred patch
           yarn version apply --all
           yarn publish

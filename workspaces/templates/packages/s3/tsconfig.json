@@ -13,6 +13,9 @@
   "references": [
     {
       "path": "../../../templates-lib/packages/template-s3"
+    },
+    {
+      "path": "../../../templates-lib/packages/template-s3-cli"
     }
   ]
 }

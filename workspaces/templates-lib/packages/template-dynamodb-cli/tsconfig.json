@@ -10,22 +10,10 @@
   },
   "references": [
     {
-      "path": "../infra"
-    },
-    {
-      "path": "../infra-aws"
+      "path": "../template-dynamodb"
     },
     {
       "path": "../utils-cli"
-    },
-    {
-      "path": "../utils-config"
-    },
-    {
-      "path": "../utils-docker"
-    },
-    {
-      "path": "../utils-log"
     },
     {
       "path": "../utils-package"
@@ -35,9 +23,6 @@
     },
     {
       "path": "../utils-sh"
-    },
-    {
-      "path": "../utils-template"
     },
     {
       "path": "../utils-terraform"
