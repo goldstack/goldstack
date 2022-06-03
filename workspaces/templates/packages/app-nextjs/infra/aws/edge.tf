@@ -37,7 +37,7 @@ resource "aws_lambda_function" "edge" {
   description      = "Edge Lambda for CloudFront Routing"
   filename         = data.archive_file.empty_lambda.output_path
   handler          = "lambda.handler"
-  runtime          = "nodejs12.x"
+  runtime          = "nodejs16.x"
   role             = aws_iam_role.lambda_exec.arn
   timeout          = 30
   memory_size      = 512
