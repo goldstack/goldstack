@@ -64,6 +64,7 @@ jobs:
 
   syncpack:
     name: 'Checking for Package Mismatches'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
