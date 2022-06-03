@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-dynamodb-cli",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Utilities for building modules for DynamoDB access.",
   "keywords": [
     "goldstack",
@@ -38,7 +38,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/template-dynamodb": "0.1.12",
+    "@goldstack/template-dynamodb": "0.1.13",
     "@goldstack/utils-cli": "0.2.14",
     "@goldstack/utils-package": "0.3.39",
     "@goldstack/utils-package-config": "0.3.40",

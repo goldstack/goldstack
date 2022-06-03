@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-s3-cli",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Building blocks for linking a package to an AWS S3 bucket.",
   "keywords": [
     "goldstack",
@@ -42,7 +42,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/template-s3": "0.3.100",
+    "@goldstack/template-s3": "0.3.101",
     "@goldstack/utils-cli": "0.2.14",
     "@goldstack/utils-docker": "0.3.39",
     "@goldstack/utils-log": "0.2.15",
