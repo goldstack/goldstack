@@ -1077,7 +1077,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/email-send@workspace:workspaces/templates/packages/email-send"
   dependencies:
-    "@goldstack/template-email-send": 0.3.105
+    "@goldstack/template-email-send": 0.3.106
     "@goldstack/utils-git": 0.1.35
     "@goldstack/utils-sh": 0.4.32
     "@types/jest": ^27.5.1
@@ -1156,8 +1156,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/goldstack-email-send@workspace:workspaces/apps/packages/goldstack-email-send"
   dependencies:
-    "@goldstack/template-email-send": 0.3.105
-    "@goldstack/template-email-send-cli": 0.4.3
+    "@goldstack/template-email-send": 0.3.106
+    "@goldstack/template-email-send-cli": 0.4.4
     "@goldstack/utils-git": 0.1.35
     "@goldstack/utils-sh": 0.4.32
     "@types/jest": ^27.5.1
@@ -1892,11 +1892,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-email-send-cli@0.4.3, @goldstack/template-email-send-cli@workspace:workspaces/templates-lib/packages/template-email-send-cli":
+"@goldstack/template-email-send-cli@0.4.4, @goldstack/template-email-send-cli@workspace:workspaces/templates-lib/packages/template-email-send-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-email-send-cli@workspace:workspaces/templates-lib/packages/template-email-send-cli"
   dependencies:
-    "@goldstack/template-email-send": 0.3.105
+    "@goldstack/template-email-send": 0.3.106
     "@goldstack/utils-cli": 0.2.14
     "@goldstack/utils-git": 0.1.35
     "@goldstack/utils-package": 0.3.39
@@ -1919,7 +1919,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-email-send@0.3.105, @goldstack/template-email-send@workspace:workspaces/templates-lib/packages/template-email-send":
+"@goldstack/template-email-send@0.3.106, @goldstack/template-email-send@workspace:workspaces/templates-lib/packages/template-email-send":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-email-send@workspace:workspaces/templates-lib/packages/template-email-send"
   dependencies:
@@ -1944,9 +1944,6 @@ __metadata:
     ts-node: ^10.8.0
     typescript: ^4.6.4
     uuid: ^8.3.0
-  bin:
-    template: ./bin/template
-    template-email-send: ./bin/template
   languageName: unknown
   linkType: soft
 
