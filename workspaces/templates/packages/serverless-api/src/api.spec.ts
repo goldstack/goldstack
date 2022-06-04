@@ -5,6 +5,8 @@ import {
   StartServerResult,
 } from '@goldstack/utils-aws-http-api-local';
 
+jest.setTimeout(120000);
+
 describe('Should create API', () => {
   let port: undefined | number = undefined;
   let server: undefined | StartServerResult = undefined;
