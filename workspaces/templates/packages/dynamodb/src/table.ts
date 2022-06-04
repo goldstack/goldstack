@@ -25,7 +25,8 @@ export const connect = async (deploymentName?: string): Promise<DynamoDB> => {
 
 export interface ConnectTableParams {
   deploymentName?: string;
-  client?: DynamoDB.DocumentClient;
+  documentClient?: DynamoDB.DocumentClient;
+  client?: DynamoDB;
 }
 
 export const connectTable = async <Name extends string>(
@@ -33,10 +34,12 @@ export const connectTable = async <Name extends string>(
 ): Promise<Table<Name, 'pk', 'sk'>> => {
   const tableName = await getTableName(params?.deploymentName);
   return createTable(
-    params?.client ||
-      new DynamoDB.DocumentClient({
-        service: await connect(params?.deploymentName),
-      }),
+    params?.documentClient || params?.client
+      ? new DynamoDB.DocumentClient({ service: params.client })
+      : undefined ||
+          new DynamoDB.DocumentClient({
+            service: await connect(params?.deploymentName),
+          }),
     tableName
   );
 };
