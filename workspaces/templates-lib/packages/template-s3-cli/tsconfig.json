@@ -10,16 +10,10 @@
   },
   "references": [
     {
-      "path": "../infra"
-    },
-    {
-      "path": "../infra-aws"
+      "path": "../template-s3"
     },
     {
       "path": "../utils-cli"
-    },
-    {
-      "path": "../utils-config"
     },
     {
       "path": "../utils-docker"

@@ -19,25 +19,13 @@
       "path": "../utils-cli"
     },
     {
-      "path": "../utils-config"
-    },
-    {
-      "path": "../utils-docker"
-    },
-    {
-      "path": "../utils-log"
+      "path": "../utils-esbuild"
     },
     {
       "path": "../utils-package"
     },
     {
-      "path": "../utils-package-config"
-    },
-    {
-      "path": "../utils-sh"
-    },
-    {
-      "path": "../utils-template"
+      "path": "../utils-package-config-embedded"
     },
     {
       "path": "../utils-terraform"

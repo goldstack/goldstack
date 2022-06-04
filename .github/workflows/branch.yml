@@ -5,6 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
     name: 'Build and Test'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,6 +22,7 @@ jobs:
 
   lint:
     name: 'Lint'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -42,6 +44,7 @@ jobs:
 
   audit:
     name: 'NPM Audit'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -59,8 +62,27 @@ jobs:
         run: |
           yarn npm audit --recursive --severity high
 
+  syncpack:
+    name: 'Checking for Package Mismatches'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install Yarn
+        run: npm install -g
+      - name: Install
+        run: |
+          yarn install
+      - name: Run Syncpack for all workspaces
+        run: |
+          yarn ensure-no-package-mismatches
+
   compile:
     name: 'Compile and Type Check'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -80,6 +102,7 @@ jobs:
 
   test-libraries:
     name: 'Libraries Test'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -102,6 +125,7 @@ jobs:
 
   test-template-management:
     name: 'Templates Management Test'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -124,6 +148,7 @@ jobs:
 
   test-apps:
     name: 'Apps Test'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -147,6 +172,7 @@ jobs:
 
   test-docs:
     name: 'Docs Test'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -169,6 +195,7 @@ jobs:
 
   test-templates:
     name: 'Templates Test'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -191,6 +218,7 @@ jobs:
 
   schema:
     name: 'Generate Schemas'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -210,6 +238,7 @@ jobs:
 
   docs:
     name: 'Generate Docs'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

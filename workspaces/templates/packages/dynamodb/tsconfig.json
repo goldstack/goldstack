@@ -13,6 +13,9 @@
   "references": [
     {
       "path": "../../../templates-lib/packages/template-dynamodb"
+    },
+    {
+      "path": "../../../templates-lib/packages/template-dynamodb-cli"
     }
   ]
 }
