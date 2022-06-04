@@ -27,6 +27,18 @@ describe('DynamoDB Table', () => {
     assert(dynamoDB2);
   });
 
+  it('Should be able to instantiate Toolbox table', async () => {
+    const dynamoDB = await connect();
+    const table1 = await connectTable({ client: dynamoDB });
+    assert(table1);
+    const table2 = await connectTable({
+      documentClient: new DynamoDB.DocumentClient({ service: dynamoDB }),
+    });
+    assert(table2);
+    const table3 = await connectTable();
+    assert(table3);
+  });
+
   it('Should be able to write and read an entity with native toolbox methods', async () => {
     const table = new Table({
       name: await getTableName(),
@@ -80,6 +92,7 @@ describe('DynamoDB Table', () => {
     expect(user.name).toEqual('Joe');
     expect(user.pk).toEqual('joe@email.com');
   });
+
   afterAll(async () => {
     await stopLocalDynamoDB();
   });
