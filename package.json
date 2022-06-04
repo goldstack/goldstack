@@ -13,7 +13,7 @@
   "scripts": {
     "build": "yarn compile",
     "commit": "yarn git:commit \"$0\"",
-    "compile": "tsc -b",
+    "compile": "yarn fix-project-references && tsc --build",
     "compile-watch": "tsc -b -w",
     "ensure-no-package-mismatches": "syncpack list-mismatches --config .syncpackrc.json",
     "eslint": "eslint",
