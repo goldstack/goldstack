@@ -115,7 +115,6 @@ export const connect = async ({
   const client = await createClient(packageConfig, deploymentName);
 
   // ensure table initialisation and migrations are only performed once per cold start
-
   const coldStartKey = getColdStartKey(packageConfig, deploymentName);
   if (!coldStart.has(coldStartKey)) {
     await assertTable(packageConfig, deploymentName, client);
