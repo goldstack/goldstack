@@ -83,9 +83,6 @@
       "path": "workspaces/templates/packages/app-nextjs-bootstrap"
     },
     {
-      "path": "workspaces/templates/packages/app-react"
-    },
-    {
       "path": "workspaces/templates/packages/docker-image-aws"
     },
     {
@@ -107,13 +104,7 @@
       "path": "workspaces/templates/packages/module-template-utils"
     },
     {
-      "path": "workspaces/templates/packages/react-components"
-    },
-    {
       "path": "workspaces/templates/packages/s3"
-    },
-    {
-      "path": "workspaces/templates/packages/server-express"
     },
     {
       "path": "workspaces/templates/packages/serverless-api"
