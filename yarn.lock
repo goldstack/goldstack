@@ -1030,8 +1030,8 @@ __metadata:
   resolution: "@goldstack/dynamodb@workspace:workspaces/templates/packages/dynamodb"
   dependencies:
     "@aws-sdk/util-dynamodb": ^3.87.0
-    "@goldstack/template-dynamodb": 0.1.14
-    "@goldstack/template-dynamodb-cli": 0.4.5
+    "@goldstack/template-dynamodb": 0.1.15
+    "@goldstack/template-dynamodb-cli": 0.4.6
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
     aws-sdk: 2.1055.0
@@ -1467,7 +1467,7 @@ __metadata:
     "@goldstack/utils-project": 0.3.35
     "@goldstack/utils-sh": 0.4.32
     "@goldstack/utils-template-test": 0.1.0
-    "@goldstack/utils-yarn": 0.3.42
+    "@goldstack/utils-yarn": 0.3.43
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
     axios: 0.21.2
@@ -1767,11 +1767,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-dynamodb-cli@0.4.5, @goldstack/template-dynamodb-cli@workspace:workspaces/templates-lib/packages/template-dynamodb-cli":
+"@goldstack/template-dynamodb-cli@0.4.6, @goldstack/template-dynamodb-cli@workspace:workspaces/templates-lib/packages/template-dynamodb-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-dynamodb-cli@workspace:workspaces/templates-lib/packages/template-dynamodb-cli"
   dependencies:
-    "@goldstack/template-dynamodb": 0.1.14
+    "@goldstack/template-dynamodb": 0.1.15
     "@goldstack/utils-cli": 0.2.14
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-git": 0.1.35
@@ -1798,7 +1798,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-dynamodb@0.1.14, @goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb":
+"@goldstack/template-dynamodb@0.1.15, @goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb"
   dependencies:
@@ -2661,7 +2661,7 @@ __metadata:
     "@goldstack/utils-package": 0.3.39
     "@goldstack/utils-sh": 0.4.32
     "@goldstack/utils-template": 0.3.36
-    "@goldstack/utils-yarn": 0.3.42
+    "@goldstack/utils-yarn": 0.3.43
     "@types/jest": ^27.5.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^17.0.33
@@ -2775,7 +2775,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-yarn@0.3.42, @goldstack/utils-yarn@workspace:workspaces/templates-lib/packages/utils-yarn":
+"@goldstack/utils-yarn@0.3.43, @goldstack/utils-yarn@workspace:workspaces/templates-lib/packages/utils-yarn":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-yarn@workspace:workspaces/templates-lib/packages/utils-yarn"
   dependencies:
