@@ -44,10 +44,16 @@ export const assertTable = async (
         let tableStatus: string | undefined = undefined;
         // ensure that able is ACTIVE before proceeding
         while (tableStatus !== 'ACTIVE' && retries < 20) {
-          const tableInfo = await client
-            .describeTable({ TableName: tableName })
-            .promise();
-          tableStatus = tableInfo.Table?.TableStatus;
+          try {
+            const tableInfo = await client
+              .describeTable({ TableName: tableName })
+              .promise();
+            tableStatus = tableInfo.Table?.TableStatus;
+          } catch (e) {
+            console.warn(
+              `Error retrieving table information: ${e.code}.\n${e}`
+            );
+          }
           retries++;
         }
         resolve();

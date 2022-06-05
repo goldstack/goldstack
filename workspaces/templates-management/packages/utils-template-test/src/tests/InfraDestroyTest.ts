@@ -17,6 +17,7 @@ export class InfraDestroyTest implements TemplateTest {
       console.log('Destroying infrastructure for', deployment.name);
       await retryOperation(
         async () => {
+          process.env.GOLDSTACK_DEBUG = 'true';
           yarn(
             params.projectDir,
             `workspace ${packageJson.name} infra destroy ${deployment.name} -y`

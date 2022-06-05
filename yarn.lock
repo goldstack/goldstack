@@ -1038,6 +1038,7 @@ __metadata:
     dynamodb-toolbox: alpha
     jest: ^28.1.0
     rimraf: ^3.0.2
+    source-map-support: ^0.5.21
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
     typescript: ^4.6.4
@@ -1785,6 +1786,7 @@ __metadata:
     "@types/yargs": ^15.0.5
     jest: ^28.1.0
     rimraf: ^3.0.2
+    source-map-support: ^0.5.21
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
     typescript: ^4.6.4

@@ -80,7 +80,7 @@ export const yarn = (
   }
   if (!hasDocker()) {
     throw new Error(
-      'Either yarn needs to be installed locally or Docker be avaialbe. Please install either yarn or Docker.'
+      'Either yarn needs to be installed locally or Docker be available. Please install either yarn or Docker.'
     );
   }
   execWithDocker(dir, args);

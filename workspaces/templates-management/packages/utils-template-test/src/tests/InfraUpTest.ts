@@ -13,6 +13,7 @@ export class InfraUpTest implements TemplateTest {
 
     for (const deployment of packageConfig.deployments) {
       console.log('Building infrastructure for', deployment.name);
+      process.env.GOLDSTACK_DEBUG = 'true';
       // ensuring required dist files are available
       yarn(params.projectDir, `workspace ${packageJson.name} build`);
       yarn(
