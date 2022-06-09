@@ -46,7 +46,7 @@
     "mock-aws-s3": "^4.0.2",
     "source-map-support": "^0.5.21",
     "tmp": "^0.2.1",
-    "yargs": "^15.4.1"
+    "yargs": "^17.5.1"
   },
   "devDependencies": {
     "@goldstack/template-docker-image-aws": "0.3.82",
