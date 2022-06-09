@@ -68,9 +68,9 @@ $ utils-typescript-references --help
 Options:
   --help                 Show help                                     [boolean]
   --version              Show version number                           [boolean]
-  --skipPackages         Only update project references in the root tsConfig    
+  --skipPackages         Only update project references in the root tsConfig
                                                                        [boolean]
-  --skipRoot             Skip updating project references in project root       
+  --skipRoot             Skip updating project references in project root
                          tsConfig                                      [boolean]
   --excludeInReferences  Exclude specific packages from being referenced by
                          other packages                                  [array]

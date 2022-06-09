@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-express",
-  "version": "0.3.114",
+  "version": "0.3.115",
   "description": "Building blocks for packages deployed as Express.js server on AWS Lambda",
   "keywords": [
     "goldstack",
@@ -48,19 +48,19 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.3.37",
-    "@goldstack/infra-aws": "0.3.45",
-    "@goldstack/utils-aws-lambda": "0.1.29",
+    "@goldstack/infra-aws": "0.3.46",
+    "@goldstack/utils-aws-lambda": "0.1.30",
     "@goldstack/utils-cli": "0.2.14",
     "@goldstack/utils-config": "0.3.34",
     "@goldstack/utils-docker": "0.3.39",
     "@goldstack/utils-log": "0.2.15",
-    "@goldstack/utils-package": "0.3.39",
-    "@goldstack/utils-package-config": "0.3.40",
-    "@goldstack/utils-s3-deployment": "0.3.56",
+    "@goldstack/utils-package": "0.3.40",
+    "@goldstack/utils-package-config": "0.3.41",
+    "@goldstack/utils-s3-deployment": "0.3.57",
     "@goldstack/utils-sh": "0.4.32",
     "@goldstack/utils-template": "0.3.36",
-    "@goldstack/utils-terraform": "0.3.69",
-    "@goldstack/utils-terraform-aws": "0.3.68",
+    "@goldstack/utils-terraform": "0.3.70",
+    "@goldstack/utils-terraform-aws": "0.3.69",
     "archiver": "^5.3.1",
     "source-map-support": "^0.5.21",
     "yargs": "^17.5.1"
@@ -68,7 +68,7 @@
   "devDependencies": {
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-git": "0.1.35",
-    "@goldstack/utils-package-config-generate": "0.2.15",
+    "@goldstack/utils-package-config-generate": "0.2.16",
     "@types/jest": "^27.5.1",
     "@types/node": "^17.0.33",
     "@types/yargs": "^17.0.10",
