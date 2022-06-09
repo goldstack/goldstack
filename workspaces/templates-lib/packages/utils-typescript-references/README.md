@@ -59,31 +59,75 @@ yarn fix-typescript-references
 
 The following parameters can be passed when invoking the script:
 
-`utils-typescript-references --skipPackages`
+### --help
+
+Shows a reference of all available options:
+
+```
+$ utils-typescript-references --help
+Options:
+  --help                 Show help                                     [boolean]
+  --version              Show version number                           [boolean]
+  --skipPackages         Only update project references in the root tsConfig    
+                                                                       [boolean]
+  --skipRoot             Skip updating project references in project root       
+                         tsConfig                                      [boolean]
+  --excludeInReferences  Exclude specific packages from being referenced by
+                         other packages                                  [array]
+  --excludeInRoot        Exclude specific packages from being referenced in the
+                         root tsConfig                                   [array]
+  --tsConfigName         Names of tsConfig files to be updated           [array]
+```
+
+### --tsConfigName
+
+Provide one or more name of `tsconfig.json` files in projects across the monorepo that should be updated.
+
+```
+$ utils-typescript-references --tsConfigName tsconfig.json --tsConfigName tsconfig.build.json
+```
+
+Defaults to `tsconfig.json`
+
+This helpful for monorepos where for instance the `tsconfig.build.json` builds the modules that are exported from the package, and thus should be run when you are building using `tsc -b`. In this case the `tsconfig.json` can be set up to type check only (no emit) and have a manually inserted reference to `tsconfig.build.json` for running `tsc -b`.
+
+Note that once any `--tsConfigName` is provided, the default `tsconfig.json` is not updated any more. In order to continue updating `tsconfig.json` along with any custom configuration files, simply provide it as an extra option:
+
+```
+$ utils-typescript-references --tsConfigName tsconfig.build.json --tsConfigName tsconfig.json
+```
+
+This option can also be used if the `tsconfig.json` file is not in the root of packages (e.g. in the `src/` folder). In that case, provide an option as follows:
+
+```
+$ utils-typescript-references --tsConfigName src/tsconfig.json --tsConfigName tsconfig.json
+```
+
+### --excludeInReferences
+
+Will prevent certain packages from being added to the `references` of other projects in the monorepo.
+
+```
+$ utils-typescript-references --excludeInReferences @myproject/packageA --excludeInReferences @myproject/PackageB
+```
+
+The above will cause `@myproject/packageA` and `@myproject/packageB` not to be inserted as referenced in all other packages of the monorepo.
+
+### --skipPackages
 
 Will skip updating the `references` in `tsconfig.json` files for all packages in the project.
 
-`utils-typescript-references --skipRoot`
+```
+$ utils-typescript-references --skipPackages
+```
+
+### -skipRoot
 
 Will skip updating the `references` in the `tsconfig.json` file for the project root.
 
-`utils-typescript-references --tsConfigName tsconfig.build.json`
-
-Will update and reference `tsconfig.build.json` files only; `tsconfig.json` files are ignored, and packages
-with only `tsconfig.json` and not `tsconfig.build.json` will not have references inserted. This is intended
-for monorepos where the `tsconfig.build.json` builds the modules that are exported from the package, and thus
-should be run when you are building using `tsc -b`. In this case the `tsconfig.json` can be set up to type
-check only (no emit) and have a manually inserted reference to `tsconfig.build.json` for running `tsc -b`.
-
-`utils-typescript-references --tsConfigName tsconfig.build.json --tsConfigName tsconfig.json`
-
-This is similar to the above but allows a fallback to referencing / updating `tsconfig.json` for some packages
-where `tsconfig.build.json` is not present (maybe it's not needed as there are no tests to compile separately).
-
-`utils-typescript-references --tsConfigName src/tsconfig.json --tsConfigName tsconfig.json`
-
-Prefer to reference and update `tsconfig.json` inside a `src` subfolder rather than at the top
-of the package / project.
+```
+$ utils-typescript-references --skipRoot
+```
 
 ## Limitations
 
@@ -93,6 +137,7 @@ If these limitations or anything else are an issues, please [raise a ticket in G
 
 ## See Also
 
+- [Code with Joy - The Ultimate Guide to TypeScript Monorepos](https://maxrohde.com/2021/11/20/the-ultimate-guide-to-typescript-monorepos/)
 - [The Full Stack Blog - TypeScript Monorepo with Yarn and Project References](https://maxrohde.com/2021/10/01/typescript-monorepo-with-yarn-and-project-references/)
 - [@monorepo-utils/workspaces-to-typescript-project-references](https://github.com/azu/monorepo-utils/tree/master/packages/@monorepo-utils/workspaces-to-typescript-project-references#readme)
 - [Optimizing multi-package apps with TypeScript Project References](https://ebaytech.berlin/optimizing-multi-package-apps-with-typescript-project-references-d5c57a3b4440)

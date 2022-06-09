@@ -2,13 +2,19 @@ import fs from 'fs';
 import { execSync } from 'child_process';
 import { getPackages, getTsConfigPath, makeReferences } from './sharedUtils';
 
-export const updateRootProjectReferences = (tsConfigNames: string[]): void => {
+export const updateRootProjectReferences = ({
+  tsConfigNames,
+  excludeProjects,
+}: {
+  tsConfigNames: string[];
+  excludeProjects: string[];
+}): void => {
   const cmdRes = execSync('yarn workspaces list --json').toString();
 
   const allPackages = getPackages(cmdRes);
   const tsConfigPath = getTsConfigPath('.', tsConfigNames);
   if (!tsConfigPath) {
-    console.warn('No root-level tsconfig.json found');
+    console.error('No root-level tsconfig.json found');
     return;
   }
 
@@ -17,7 +23,13 @@ export const updateRootProjectReferences = (tsConfigNames: string[]): void => {
 
     const tsConfigData = JSON.parse(tsConfig);
     const oldReferences = tsConfigData.references;
-    const newReferences = makeReferences('.', allPackages, tsConfigNames);
+    const newReferences = makeReferences(
+      '.',
+      allPackages.filter(
+        (packageData) => excludeProjects.indexOf(packageData.name) === -1
+      ),
+      tsConfigNames
+    );
 
     // Don't continue if references are unchanged
     if (JSON.stringify(newReferences) === JSON.stringify(oldReferences)) {

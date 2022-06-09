@@ -6,6 +6,7 @@ import yargs, { Argv } from 'yargs';
 interface RunOptions {
   tsConfigNames: string[];
   excludeInReferences: string[];
+  excludeInRoot: string[];
   skipPackages: boolean;
   skipRoot: boolean;
 }
@@ -13,6 +14,7 @@ interface RunOptions {
 export const run = async (args: string[]): Promise<void> => {
   const argv = await yargs
     .scriptName('utils-typescript-references')
+    .version('0.2.0')
     .option('skipPackages', {
       description: 'Only update project references in the root tsConfig',
       type: 'boolean',
@@ -21,10 +23,15 @@ export const run = async (args: string[]): Promise<void> => {
       description: 'Skip updating project references in project root tsConfig',
       type: 'boolean',
     })
-    .option('exclude', {
+    .option('excludeInReferences', {
       type: 'array',
       description:
         'Exclude specific packages from being referenced by other packages',
+    })
+    .option('excludeInRoot', {
+      type: 'array',
+      description:
+        'Exclude specific packages from being referenced in the root tsConfig',
     })
     .option('tsConfigName', {
       type: 'array',
@@ -35,6 +42,7 @@ export const run = async (args: string[]): Promise<void> => {
   const options: RunOptions = {
     tsConfigNames: [],
     excludeInReferences: [],
+    excludeInRoot: [],
     skipPackages: false,
     skipRoot: false,
   };
@@ -52,8 +60,11 @@ export const run = async (args: string[]): Promise<void> => {
     options.tsConfigNames.push('tsconfig.json');
   }
 
-  if (argv.exclude) {
-    options.excludeInReferences = argv.exclude as string[];
+  if (argv.excludeInReferences) {
+    options.excludeInReferences = argv.excludeInReferences as string[];
+  }
+  if (argv.excludeInRoot) {
+    options.excludeInRoot = argv.excludeInRoot as string[];
   }
   if (!options.skipPackages) {
     updatePackageProjectReferences({
@@ -63,6 +74,9 @@ export const run = async (args: string[]): Promise<void> => {
   }
 
   if (!options.skipRoot) {
-    updateRootProjectReferences(options.tsConfigNames);
+    updateRootProjectReferences({
+      tsConfigNames: options.tsConfigNames,
+      excludeProjects: options.excludeInRoot,
+    });
   }
 };
