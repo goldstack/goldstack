@@ -28,7 +28,7 @@ export const run = async ({
         demandOption: true,
       });
     };
-    const argv = buildCli({
+    const argv = await buildCli({
       yargs,
       deployCommands: buildDeployCommands(),
       infraCommands: infraCommands(),
@@ -59,7 +59,8 @@ export const run = async ({
             );
         }
       )
-      .help().argv;
+      .help()
+      .parse();
 
     const packageConfig = new PackageConfig<
       DynamoDBPackage,

@@ -21,7 +21,7 @@ import {
 export const run = async (): Promise<void> => {
   await wrapCli(
     async (): Promise<any> => {
-      const argv = yargs
+      const argv = await yargs
         .demandCommand(1)
         .usage('Usage: $0 <command> [options]')
         .command('deploy-set', 'Deploys a package set', {
@@ -84,7 +84,8 @@ export const run = async (): Promise<void> => {
               required: false,
             },
           }
-        ).argv;
+        )
+        .parse();
 
       let repo: S3TemplateRepository | undefined = undefined;
       if (argv.repo === 'goldstack-dev') {

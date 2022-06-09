@@ -21,7 +21,7 @@ import { buildLambdas } from './templateLambdaApiBuild';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
-    const argv = buildCli({
+    const argv = await buildCli({
       yargs,
       deployCommands: buildDeployCommands(),
       infraCommands: infraCommands(),
@@ -33,7 +33,8 @@ export const run = async (args: string[]): Promise<void> => {
           default: '',
         });
       })
-      .help().argv;
+      .help()
+      .parse();
 
     const packageConfig = new PackageConfig<
       LambdaApiPackage,

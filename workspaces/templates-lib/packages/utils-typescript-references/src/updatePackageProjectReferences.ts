@@ -10,9 +10,13 @@ import path from 'path';
 
 type ProcessPackageResult = 'success' | 'failure';
 
-export const updatePackageProjectReferences = (
-  tsConfigNames: string[]
-): void => {
+export const updatePackageProjectReferences = ({
+  tsConfigNames,
+  excludeInReferences,
+}: {
+  tsConfigNames: string[];
+  excludeInReferences: string[];
+}): void => {
   const cmdRes = execSync('yarn workspaces list --json').toString();
 
   const allPackages = getPackages(cmdRes);
@@ -23,8 +27,12 @@ export const updatePackageProjectReferences = (
 
     if (fs.existsSync(path.resolve(packageDir, './tsconfig.json'))) {
       isSuccess =
-        processPackage(packageDir, allPackages, packageData, tsConfigNames) ===
-          'success' && isSuccess;
+        processPackage({
+          packageDir,
+          allPackages,
+          tsConfigNames,
+          excludeInReferences,
+        }) === 'success' && isSuccess;
     } else {
       console.log(`Skipping package ${packageDir}`);
     }
@@ -34,12 +42,17 @@ export const updatePackageProjectReferences = (
   }
 };
 
-function processPackage(
-  packageDir: string,
-  allPackages: PackageData[],
-  packageData: PackageData,
-  tsConfigNames: string[]
-): ProcessPackageResult {
+function processPackage({
+  packageDir,
+  allPackages,
+  tsConfigNames,
+  excludeInReferences,
+}: {
+  packageDir: string;
+  allPackages: PackageData[];
+  tsConfigNames: string[];
+  excludeInReferences: string[];
+}): ProcessPackageResult {
   const packageJson = fs
     .readFileSync(path.resolve(packageDir, './package.json'))
     .toString();
@@ -62,6 +75,11 @@ function processPackage(
         // all dependencies that are workspace dependencies and have a tsconfig.json
         .map((dependencyData) =>
           allPackages.find((packageData) => packageData.name === dependencyData)
+        )
+        // remove packages that should be excluded in references
+        .filter(
+          (packageData) =>
+            packageData && excludeInReferences.indexOf(packageData.name) === -1
         ),
       tsConfigNames
     );

@@ -1,16 +1,12 @@
 import { wrapCli } from '@goldstack/utils-cli';
 import yargs from 'yargs';
 
-import { write, rmSafe } from '@goldstack/utils-sh';
-
-import { transpile, getDocsDir } from './markdownDocsCli';
-
 import { generateDocs } from './generateDocs';
 
 export const run = async (): Promise<void> => {
   await wrapCli(
     async (): Promise<any> => {
-      const argv = yargs
+      const argv = await yargs
         .demandCommand(1)
         .usage('Usage: $0 <command> [options]')
         .command(
@@ -31,7 +27,8 @@ export const run = async (): Promise<void> => {
                 demandOption: true,
               });
           }
-        ).argv;
+        )
+        .parse();
 
       if (argv._[0] === 'generate-docs') {
         await generateDocs({
