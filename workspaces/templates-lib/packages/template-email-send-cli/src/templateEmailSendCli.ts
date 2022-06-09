@@ -11,11 +11,13 @@ import yargs from 'yargs';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
-    const argv = buildCli({
+    const argv = await buildCli({
       yargs,
       deployCommands: (yargs) => yargs,
       infraCommands: infraCommands(),
-    }).help().argv;
+    })
+      .help()
+      .parse();
 
     const packageConfig = new PackageConfig<
       EmailSendPackage,
