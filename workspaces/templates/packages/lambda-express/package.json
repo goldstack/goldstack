@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@goldstack/template-lambda-express": "0.3.116",
+    "@goldstack/utils-esbuild": "0.4.2",
     "aws-serverless-express": "^3.3.8",
     "cors": "^2.8.5",
     "express": "^4.17.1",

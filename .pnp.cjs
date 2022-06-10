@@ -2134,6 +2134,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/lambda-express", "workspace:workspaces/templates/packages/lambda-express"],\
             ["@goldstack/template-lambda-express", "workspace:workspaces/templates-lib/packages/template-lambda-express"],\
+            ["@goldstack/utils-esbuild", "workspace:workspaces/templates-lib/packages/utils-esbuild"],\
             ["@jest-mock/express", "npm:1.4.5"],\
             ["@types/aws-serverless-express", "npm:3.3.3"],\
             ["@types/express", "npm:4.17.13"],\
@@ -2490,6 +2491,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/serverless-api", "workspace:workspaces/templates/packages/serverless-api"],\
             ["@goldstack/template-lambda-api-cli", "workspace:workspaces/templates-lib/packages/template-lambda-api-cli"],\
             ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],\
+            ["@goldstack/utils-esbuild", "workspace:workspaces/templates-lib/packages/utils-esbuild"],\
             ["@jest-mock/express", "npm:1.4.5"],\
             ["@types/aws-lambda", "npm:8.10.88"],\
             ["@types/aws-serverless-express", "npm:3.3.3"],\
