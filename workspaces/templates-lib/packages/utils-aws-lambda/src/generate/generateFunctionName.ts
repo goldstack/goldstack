@@ -4,7 +4,7 @@ import crypto from 'crypto';
 const INDEX_MARKER = '__index';
 const DEFAULT_MARKER = '__default';
 
-const santiseFunctionName = (input: string): string => {
+const sanitiseFunctionName = (input: string): string => {
   return input
     .replace(/\//g, '-')
     .replace(/\$/g, '_')
@@ -29,7 +29,7 @@ export const generateFunctionName = (
   if (name === '$index') {
     name = INDEX_MARKER;
   }
-  name = santiseFunctionName(name);
+  name = sanitiseFunctionName(name);
 
   let pathPrefix = '';
   const segments = config.path.split('/');
@@ -39,12 +39,14 @@ export const generateFunctionName = (
   if (segments.length > 2) {
     segments.shift(); // remove first element since path starts with '/' and thus the first element is always ''
     segments.pop(); // remove the last element since that is the name of the function in the route
-    pathPrefix = santiseFunctionName(segments.join('-'));
+    pathPrefix = sanitiseFunctionName(segments.join('-'));
     pathPrefix = `${pathPrefix}-`;
   }
 
   name = `${pathPrefix}${name}`;
-  name = (`${prefix}-` || '') + name;
+  if (prefix) {
+    name = `${prefix}-` + name;
+  }
 
   // Lambda names cannot be larger than 64 characters
   // in that case shorten name and append a hash
