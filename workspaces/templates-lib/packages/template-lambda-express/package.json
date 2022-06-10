@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-express",
-  "version": "0.3.115",
+  "version": "0.3.116",
   "description": "Building blocks for packages deployed as Express.js server on AWS Lambda",
   "keywords": [
     "goldstack",
@@ -49,7 +49,7 @@
   "dependencies": {
     "@goldstack/infra": "0.3.37",
     "@goldstack/infra-aws": "0.3.46",
-    "@goldstack/utils-aws-lambda": "0.1.30",
+    "@goldstack/utils-aws-lambda": "0.1.31",
     "@goldstack/utils-cli": "0.2.14",
     "@goldstack/utils-config": "0.3.34",
     "@goldstack/utils-docker": "0.3.39",
