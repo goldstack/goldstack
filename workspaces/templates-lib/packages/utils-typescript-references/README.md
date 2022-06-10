@@ -113,6 +113,15 @@ $ utils-typescript-references --excludeInReferences @myproject/packageA --exclud
 
 The above will cause `@myproject/packageA` and `@myproject/packageB` not to be inserted as referenced in all other packages of the monorepo.
 
+
+### --excludeInRoot
+
+Will prevent certain packages from being added to the `references` section of the root `tsconfig.json` file.
+
+```
+$ utils-typescript-references --excludeInRoot @myproject/packageA --excludeInRoot @myproject/PackageB
+```
+
 ### --skipPackages
 
 Will skip updating the `references` in `tsconfig.json` files for all packages in the project.
