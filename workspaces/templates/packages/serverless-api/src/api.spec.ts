@@ -1,15 +1,12 @@
 import getPort from 'find-free-port';
 import fetch from 'node-fetch';
-import {
-  startServer,
-  StartServerResult,
-} from '@goldstack/utils-aws-http-api-local';
+
+import { startTestServer, stopTestServer, getEndpoint } from './module';
 
 jest.setTimeout(120000);
 
 describe('Should create API', () => {
   let port: undefined | number = undefined;
-  let server: undefined | StartServerResult = undefined;
 
   beforeAll(async () => {
     port = await new Promise<number>((resolve, reject) => {
@@ -24,21 +21,16 @@ describe('Should create API', () => {
         }
       );
     });
-    server = await startServer({
-      port: `${port}`,
-      routesDir: './src/routes',
-    });
+    await startTestServer(port);
   });
 
   test('Should receive response and support parameters', async () => {
-    const res = await fetch(`http://localhost:${port}/echo?message=abc`);
+    const res = await fetch(`${getEndpoint()}/echo?message=abc`);
     const response = await res.json();
     expect(response.message).toContain('abc');
   });
 
   afterAll(async () => {
-    if (server) {
-      await server.shutdown();
-    }
+    await stopTestServer();
   });
 });

@@ -1,5 +1,7 @@
 import goldstackConfig from './../goldstack.json';
 
+import { excludeInBundle } from '@goldstack/utils-esbuild';
+
 let testServerPort: null | number = null;
 
 let testServer: any = null;
@@ -9,10 +11,9 @@ if (process.env.TEST_SERVER_PORT) {
 }
 
 export const startTestServer = async (port: number): Promise<void> => {
-  // The below is preventing webpack from bundling up the server - it is only required for local tests.
-  testServer = await eval(
-    `var server = require('./server.ts'); var promise = server.start(${port}); promise;`
-  );
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const server = require(excludeInBundle('./server.ts'));
+  testServer = await server.start(port);
   testServerPort = port;
 };
 
