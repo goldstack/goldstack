@@ -1981,6 +1981,94 @@ Request ID: JIQQuxOxsXdcyHuUKxbA88YeFs_NH0h7B6xbG-SZFN88byb5WffF0A<span class="t
     <code class="inline">yarn infra destroy [deploymentName]</code> again until
     it is successful.
   </p>
+  <h3 class="heading">
+    <span
+      id="error-error-creating-cloudfront-distribution-accessdenied-1"
+    ></span
+    ><a href="#error-error-creating-cloudfront-distribution-accessdenied-1"
+      ><span
+        id="error-error-creating-cloudfront-distribution-accessdenied"
+      ></span
+      ><a
+        href="#error-error-creating-cloudfront-distribution-accessdenied"
+        class="relative"
+        >Error: error creating CloudFront Distribution: AccessDenied</a
+      ><span class="permalink"
+        ><svg viewBox="0 0 16 16" width="16" height="16">
+          <g stroke-width="1" fill="#000000" stroke="#000000">
+            <path
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+            ></path>
+            <path
+              fill="none"
+              stroke="#000000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+            ></path>
+          </g></svg></span></a
+    ><span class="permalink"
+      ><svg viewBox="0 0 16 16" width="16" height="16">
+        <g stroke-width="1" fill="#000000" stroke="#000000">
+          <path
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-miterlimit="10"
+            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+          ></path>
+          <path
+            fill="none"
+            stroke="#000000"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-miterlimit="10"
+            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+          ></path>
+        </g></svg
+    ></span>
+  </h3>
+  <p>
+    When standing up the infrastructure, the following error may be displayed:
+  </p>
+  <pre><code>Error: error creating CloudFront Distribution: AccessDenied: Your account must be verified before you can add
+new CloudFront resources. To verify your account, please contact AWS Support (https://console.aws.amazon.com/support/home#/) and include this error message.
+│       status code: 403, request id: xxx
+│
+│   with aws_cloudfront_distribution.website_cdn_root,
+│   on root.tf line 45, in resource "aws_cloudfront_distribution" "website_cdn_root":
+│   45: resource "aws_cloudfront_distribution" "website_cdn_root" {
+</code></pre>
+  <p>This must be resolved by raising a request with AWS as follows:</p>
+  <ul>
+    <li>
+      Create a new
+      <a
+        href="https://us-east-1.console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Service Limit Increase Case</a
+      >
+      <ul>
+        <li>
+          <em>Limit Type</em>: choose
+          <code class="inline">CloudFront Distributions</code>
+        </li>
+        <li><em>Distribution Id</em>: leave empty</li>
+        <li>
+          <em>Limit</em>: choose
+          <code class="inline">Web Distributions per Account</code>
+        </li>
+      </ul>
+    </li>
+    <li>Wait for a few hours until your request is approved</li>
+  </ul>
 </div>
 <p></p>
 <h2 class="heading">

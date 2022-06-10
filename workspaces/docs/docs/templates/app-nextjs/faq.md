@@ -112,7 +112,7 @@ In that case, simply run `yarn infra destroy [deploymentName]` again until it is
 When standing up the infrastructure, the following error may be displayed:
 
 ```
-Error: error creating CloudFront Distribution: AccessDenied: Your account must be verified before you can add 
+Error: error creating CloudFront Distribution: AccessDenied: Your account must be verified before you can add
 new CloudFront resources. To verify your account, please contact AWS Support (https://console.aws.amazon.com/support/home#/) and include this error message.
 │       status code: 403, request id: xxx
 │
@@ -127,5 +127,4 @@ This must be resolved by raising a request with AWS as follows:
   - _Limit Type_: choose `CloudFront Distributions`
   - _Distribution Id_: leave empty
   - _Limit_: choose `Web Distributions per Account`
-- Wait for a few hours until your request is approved 
-
+- Wait for a few hours until your request is approved
