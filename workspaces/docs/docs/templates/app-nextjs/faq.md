@@ -106,3 +106,26 @@ Error: Error deleting Lambda Function: InvalidParameterValueException: Lambda wa
 ```
 
 In that case, simply run `yarn infra destroy [deploymentName]` again until it is successful.
+
+### Error: error creating CloudFront Distribution: AccessDenied
+
+When standing up the infrastructure, the following error may be displayed:
+
+```
+Error: error creating CloudFront Distribution: AccessDenied: Your account must be verified before you can add 
+new CloudFront resources. To verify your account, please contact AWS Support (https://console.aws.amazon.com/support/home#/) and include this error message.
+│       status code: 403, request id: xxx
+│
+│   with aws_cloudfront_distribution.website_cdn_root,
+│   on root.tf line 45, in resource "aws_cloudfront_distribution" "website_cdn_root":
+│   45: resource "aws_cloudfront_distribution" "website_cdn_root" {
+```
+
+This must be resolved by raising a request with AWS as follows:
+
+- Create a new [Service Limit Increase Case](https://us-east-1.console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase)
+  - _Limit Type_: choose `CloudFront Distributions`
+  - _Distribution Id_: leave empty
+  - _Limit_: choose `Web Distributions per Account`
+- Wait for a few hours until your request is approved 
+
