@@ -84,6 +84,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
       }
     }
 
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
     min_ttl                = 0
     default_ttl            = 86400
     max_ttl                = 31536000
@@ -106,6 +107,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
       }
     }
 
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
     min_ttl                = 0
     default_ttl            = 86400
     max_ttl                = 31536000
@@ -129,6 +131,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
       }
     }
 
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
     min_ttl                = 0
     default_ttl            = 86400
     max_ttl                = 31536000
@@ -151,6 +154,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
       }
     }
 
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
     min_ttl                = 0
     default_ttl            = 86400
     max_ttl                = 31536000
@@ -173,6 +177,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
       }
     }
 
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
     min_ttl                = 0
     default_ttl            = 86400
     max_ttl                = 31536000
@@ -199,6 +204,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
       }
     }
 
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
     min_ttl                = 0
     default_ttl            = tostring(var.default_cache_duration)
     max_ttl                = 1200
@@ -218,6 +224,8 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
 
     viewer_protocol_policy = "redirect-to-https" 
     compress               = true
+
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
 
     forwarded_values {
       query_string = false
