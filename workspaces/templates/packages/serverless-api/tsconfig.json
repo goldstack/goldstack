@@ -12,6 +12,9 @@
   },
   "references": [
     {
+      "path": "../../../templates-lib/packages/utils-esbuild"
+    },
+    {
       "path": "../../../templates-lib/packages/template-lambda-api-cli"
     },
     {
