@@ -31,6 +31,7 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
     const copyFilesFromRoot = [
       '.eslintignore',
       '.eslintrc.json',
+      '.gitattributes',
       '.gitconfig',
       '.prettierignore',
       '.prettierrc.json',
