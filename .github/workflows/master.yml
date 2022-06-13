@@ -134,6 +134,14 @@ jobs:
         run: |
           yarn generate-docs
 
+      - name: Commit changes (if any) from schema and doc generation
+        run: |
+          git status
+          git add .
+          git status
+          git diff-index --quiet HEAD || git commit -m "Releasing new library version (ci_skip)"
+          git status
+
       - name: Publish libraries
         if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
         run: |
