@@ -6,21 +6,21 @@ This template provides a simple static website that is deployed on a global [Clo
 
 ## Features
 
-*   Deploy any static website files
-*   Very fast load times due to deployment using AWS CloudFront CDN
-*   Easy to use scripts for standing up infrastructure (`yarn infra up`) and deployment (`yarn deploy`)
-*   Out of the box support for SSL without additional costs (using AWS certificates)
-*   Optimised deployment script for fast and safe upload of changes
-*   Very low cost hosting
+- Deploy any static website files
+- Very fast load times due to deployment using AWS CloudFront CDN
+- Easy to use scripts for standing up infrastructure (`yarn infra up`) and deployment (`yarn deploy`)
+- Out of the box support for SSL without additional costs (using AWS certificates)
+- Optimised deployment script for fast and safe upload of changes
+- Very low cost hosting
 
 ## Configure
 
 The following key properties need to be configured for this template:
 
-*   **Hosted Zone Domain**: A Route 53 hosted zone to which the *Primary Website Domain* and *Redirect Website Domain* can be added as records. For instance, the hosted zone domain `mysite.com` would allow adding the primary domain `mysite.com` and the redirect domain `www.mysite.com`. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
-*   **Primary Website Domain**: This is the domain your users will use to view the site. For instance, if you configure the domain `mysite.com`, users will be able to view your site by opening the URL `https://mysite.com`.
-*   **Redirect Website Domain**: This is a domain that will redirect all requests to your *Primary Website Domain*. The redirect website domain *must be* different to the *Primary Website Domain*. For instance, if you configure the domain `mysite.com` as your primary domain, you can configure `www.mysite.com` as your redirect domain. Users will be redirected to `https://mysite.com` when they attempt to open the URL `https://www.mysite.com`.
-*   **Default Cache Duration**: The number of seconds that files will be cached in the AWS content delivery network. Setting this to `120` for instance, would mean that, unless otherwise specified, webpages and other resources will be cached for 120 s. In that case, when a new version of a page is deployed, it can take up to 120 s for changes to appear when accessing the deployed version of the application.
+- **Hosted Zone Domain**: A Route 53 hosted zone to which the _Primary Website Domain_ and _Redirect Website Domain_ can be added as records. For instance, the hosted zone domain `mysite.com` would allow adding the primary domain `mysite.com` and the redirect domain `www.mysite.com`. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
+- **Primary Website Domain**: This is the domain your users will use to view the site. For instance, if you configure the domain `mysite.com`, users will be able to view your site by opening the URL `https://mysite.com`.
+- **Redirect Website Domain**: This is a domain that will redirect all requests to your _Primary Website Domain_. The redirect website domain _must be_ different to the _Primary Website Domain_. For instance, if you configure the domain `mysite.com` as your primary domain, you can configure `www.mysite.com` as your redirect domain. Users will be redirected to `https://mysite.com` when they attempt to open the URL `https://www.mysite.com`.
+- **Default Cache Duration**: The number of seconds that files will be cached in the AWS content delivery network. Setting this to `120` for instance, would mean that, unless otherwise specified, webpages and other resources will be cached for 120 s. In that case, when a new version of a page is deployed, it can take up to 120 s for changes to appear when accessing the deployed version of the application.
 
 ## Getting Started
 
@@ -90,13 +90,13 @@ The configuration tool will define one deployment. This will be either `dev` or 
 
 Infrastructure commands for this template can be run using `yarn`. There are four commands in total:
 
-*   `yarn infra up`: For standing up infrastructure.
-*   `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
-*   `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
-*   `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
-*   `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
-*   `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
-*   `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
+- `yarn infra up`: For standing up infrastructure.
+- `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
+- `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
+- `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
+- `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+- `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
+- `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
 
 For each command, the deployment they should be applied to must be specified.
 
@@ -148,7 +148,7 @@ This works well for deploying infrastructure from your local development environ
 
 ## Deployment
 
-This template can be packaged up and deployed to the deployments specified in `goldstack.json`. Note that deployment will only work *after* the infrastructure for the respective deployment has been stood up. To deploy your package, run the following script:
+This template can be packaged up and deployed to the deployments specified in `goldstack.json`. Note that deployment will only work _after_ the infrastructure for the respective deployment has been stood up. To deploy your package, run the following script:
 
 ```bash
 yarn deploy [deploymentName]
@@ -167,8 +167,8 @@ Error: error getting S3 Bucket CORS configuration: AccessDenied: Access Denied
 
 There are a number of possible causes for this:
 
-*   You may have configured your AWS user incorrectly. Please see [AWS Configuration](./../goldstack/configuration#aws-configuration) for details on how to configure your AWS user.
-*   You may accidently have a Terraform state in your module. That can happen if you create new modules by copy and pasting from an existing module. In this case, delete the following two folders in your module: `infra/aws/.terraform` and `infra/aws/terraform.tfstate.d`.
+- You may have configured your AWS user incorrectly. Please see [AWS Configuration](./../goldstack/configuration#aws-configuration) for details on how to configure your AWS user.
+- You may accidently have a Terraform state in your module. That can happen if you create new modules by copy and pasting from an existing module. In this case, delete the following two folders in your module: `infra/aws/.terraform` and `infra/aws/terraform.tfstate.d`.
 
 ## Security Hardening
 
