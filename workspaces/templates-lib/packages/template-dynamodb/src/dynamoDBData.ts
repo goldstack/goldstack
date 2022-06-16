@@ -18,7 +18,6 @@ export async function assertTableActive(
   const tableName = await getTableName(packageConfig, deploymentName);
   let retries = 0;
   let tableStatus: string | undefined = undefined;
-  console.log('checking table status');
   // ensure that able is ACTIVE before proceeding
   while (tableStatus !== 'ACTIVE' && retries < 120) {
     try {
