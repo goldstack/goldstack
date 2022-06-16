@@ -1820,7 +1820,7 @@ __metadata:
     aws-sdk: 2.1055.0
     jest: ^28.1.0
     rimraf: ^3.0.2
-    testcontainers: ^8.10.0
+    testcontainers: ^8.10.1
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
     typescript: ^4.6.4
@@ -18656,9 +18656,9 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"testcontainers@npm:^8.10.0":
-  version: 8.10.0
-  resolution: "testcontainers@npm:8.10.0"
+"testcontainers@npm:^8.10.1":
+  version: 8.10.1
+  resolution: "testcontainers@npm:8.10.1"
   dependencies:
     "@balena/dockerignore": ^1.0.2
     "@types/archiver": ^5.3.1
@@ -18672,7 +18672,7 @@ resolve@^1.20.0:
     properties-reader: ^2.2.0
     ssh-remote-port-forward: ^1.0.4
     tar-fs: ^2.1.1
-  checksum: aae0d505eba5c4cb867fa67ac8fc79707dabe8e92ac19dda1cfe0bcab366e4fc9b6820c0dc0f41cdb93c18d708590581e9312c1fec3d4b80d5ab462ad44f0b06
+  checksum: 9eda77d6b5efc36358e0a35644129079748ab399f80f9a8c40cb9d8a8594109fa49394c69c3da3e2250789d460f85555a073c4bb08c552db603e3e33446a66d2
   languageName: node
   linkType: hard
 
