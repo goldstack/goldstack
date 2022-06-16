@@ -31,7 +31,7 @@ export async function assertTableActive(
     console.debug(
       `DynamoDB table '${tableName}' created. Current table status: ${tableStatus}. Retries: ${retries}`
     );
-    // await sleep(1000);
+    await sleep(1000);
     retries++;
   }
   if (retries === 120) {
