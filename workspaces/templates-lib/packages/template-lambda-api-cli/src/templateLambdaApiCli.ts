@@ -64,7 +64,10 @@ export const run = async (args: string[]): Promise<void> => {
     const [, , , ...opArgs] = args;
 
     if (command === 'infra') {
-      await terraformAwsCli(opArgs);
+      await terraformAwsCli(opArgs, {
+        // temporary workaround for https://github.com/goldstack/goldstack/issues/40
+        parallelism: 1,
+      });
       return;
     }
 

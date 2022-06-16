@@ -20,6 +20,7 @@ import { writeDeploymentState, readDeploymentState } from '@goldstack/infra';
 
 import JSONStableStringy from 'json-stable-stringify';
 import path from 'path';
+import { TerraformOptions } from './utilsTerraform';
 
 export const convertToPythonVariable = (variableName: string): string => {
   let res = '';
@@ -338,7 +339,7 @@ export class TerraformBuild {
     }
   };
 
-  apply = (args: string[]): void => {
+  apply = (args: string[], options?: TerraformOptions): void => {
     const deployment = getDeployment(args);
     const version = this.getTfVersion(args);
     const backendConfig = this.getTfStateVariables(deployment);
@@ -352,9 +353,13 @@ export class TerraformBuild {
         version,
         backendConfig,
       });
+      let cliOptions = ['-input=false', 'tfplan'];
+      if (options?.parallelism) {
+        cliOptions = [`-parallelism=${options.parallelism}`, ...cliOptions];
+      }
       tf('apply', {
         provider,
-        options: ['-input=false', 'tfplan'],
+        options: cliOptions,
         version,
       });
 
