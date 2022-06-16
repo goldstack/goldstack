@@ -47,7 +47,7 @@
     "@goldstack/utils-package-config-embedded": "0.4.4",
     "@goldstack/utils-terraform": "0.3.70",
     "aws-sdk": "2.1055.0",
-    "testcontainers": "^8.10.0",
+    "testcontainers": "^8.10.1",
     "umzug": "^3.1.1"
   },
   "devDependencies": {

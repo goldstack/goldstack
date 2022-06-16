@@ -20,6 +20,7 @@ export const localConnect = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName?: string
 ): Promise<DynamoDB> => {
+  console.log('starting local');
   const tableName = await getTableName(packageConfig, deploymentName);
 
   // TODO the key in this map may need to be extended to include the region as well, since dynamodb table names are unique per region.
@@ -29,6 +30,7 @@ export const localConnect = async (
   }
   startedContainer = await startContainer();
 
+  console.log('container started');
   // Check if another container for this table has already been started in the meanwhile
   const startedContainerTest = startedContainers.get(tableName);
   if (startedContainerTest && startedContainerTest !== 'stopped') {

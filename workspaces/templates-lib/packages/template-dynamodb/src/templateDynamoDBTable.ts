@@ -8,7 +8,11 @@ import {
 } from './dynamoDBPackageUtils';
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
-import { assertTable, deleteTable as deleteTableModule } from './dynamoDBData';
+import {
+  assertTable,
+  assertTableActive,
+  deleteTable as deleteTableModule,
+} from './dynamoDBData';
 import { InputMigrations } from 'umzug/lib/types';
 import {
   DynamoDBContext,
@@ -118,6 +122,7 @@ export const connect = async ({
   const coldStartKey = getColdStartKey(packageConfig, deploymentName);
   if (!coldStart.has(coldStartKey)) {
     await assertTable(packageConfig, deploymentName, client);
+    await assertTableActive(packageConfig, deploymentName, client);
 
     await performMigrations(packageConfig, deploymentName, migrations, client);
     coldStart.set(coldStartKey, true);
@@ -176,6 +181,7 @@ export const migrateDownTo = async ({
   const client = await createClient(packageConfig, deploymentName);
 
   await assertTable(packageConfig, deploymentName, client);
+  await assertTableActive(packageConfig, deploymentName, client);
 
   await migrateDownToDynamoDB(
     migrationName,
