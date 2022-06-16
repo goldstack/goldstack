@@ -11,6 +11,7 @@ import {
   terraformCli,
   CloudProvider,
   TerraformDeployment,
+  TerraformOptions,
 } from '@goldstack/utils-terraform';
 import AWS from 'aws-sdk';
 import { createState } from './tfState';
@@ -98,7 +99,10 @@ export class AWSCloudProvider implements CloudProvider {
   }
 }
 
-export const terraformAwsCli = async (args: string[]): Promise<void> => {
+export const terraformAwsCli = async (
+  args: string[],
+  options?: TerraformOptions
+): Promise<void> => {
   const deploymentName = args[1];
 
   const deployment = readDeploymentFromPackageConfig(deploymentName);
@@ -129,6 +133,7 @@ export const terraformAwsCli = async (args: string[]): Promise<void> => {
   });
 
   terraformCli(args, {
+    ...options,
     provider: new AWSCloudProvider(credentials, awsTerraformConfig),
   });
 };

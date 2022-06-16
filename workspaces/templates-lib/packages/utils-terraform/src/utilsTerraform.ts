@@ -94,10 +94,18 @@ export const infraCommands = (): any => {
   };
 };
 
+export interface TerraformOptions {
+  parallelism?: number;
+  provider?: CloudProvider;
+}
+
 export const terraformCli = (
   args: string[],
-  options: { provider: CloudProvider }
+  options: TerraformOptions
 ): void => {
+  if (!options.provider) {
+    throw new Error('Cloud provider not defined');
+  }
   const [operation, ...opArgs] = args;
 
   const build = new TerraformBuild(options.provider);
@@ -105,7 +113,7 @@ export const terraformCli = (
   if (operation === 'up') {
     build.init(opArgs);
     build.plan(opArgs);
-    build.apply(opArgs);
+    build.apply(opArgs, options);
     return;
   }
 
