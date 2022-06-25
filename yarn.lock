@@ -862,7 +862,7 @@ __metadata:
     next-optimized-images: ^2.6.2
     next-transpile-modules: ^8.0.0
     node-sass: 7.0.0
-    react: ^17.0.2
+    react: ^18.2.0
     react-bootstrap: ^2.2.1
     react-dom: ^17.0.2
     react-is: ^17.0.2
@@ -901,7 +901,7 @@ __metadata:
     next-compose-plugins: ^2.2.1
     next-optimized-images: ^2.6.2
     next-transpile-modules: ^8.0.0
-    react: ^17.0.2
+    react: ^18.2.0
     react-dom: ^17.0.2
     react-is: ^17.0.2
     reload: ^3.2.0
@@ -1010,7 +1010,7 @@ __metadata:
     next-optimized-images: ^2.6.2
     next-transpile-modules: ^8.0.0
     node-sass: 7.0.0
-    react: ^17.0.2
+    react: ^18.2.0
     react-bootstrap: ^1.6.1
     react-dom: ^17.0.2
     react-is: ^17.0.2
@@ -1193,7 +1193,7 @@ __metadata:
     next-transpile-modules: ^8.0.0
     node-sass: 7.0.0
     nodemon: ^2.0.15
-    react: ^17.0.2
+    react: ^18.2.0
     react-bootstrap: ^1.6.1
     react-dom: ^17.0.2
     react-is: ^17.0.2
@@ -1577,6 +1577,22 @@ __metadata:
     "@types/node": ^17.0.33
     nodemon: ^2.0.15
     ts-node: ^10.8.0
+  languageName: unknown
+  linkType: soft
+
+"@goldstack/server-side-rendering@workspace:workspaces/templates/packages/server-side-rendering":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/server-side-rendering@workspace:workspaces/templates/packages/server-side-rendering"
+  dependencies:
+    "@types/jest": ^27.5.1
+    "@types/node": ^17.0.33
+    "@types/react": ^16.9.49
+    jest: ^28.1.0
+    react: ^18.2.0
+    rimraf: ^3.0.2
+    ts-jest: ^28.0.2
+    ts-node: ^10.8.0
+    typescript: ^4.6.4
   languageName: unknown
   linkType: soft
 
@@ -2752,7 +2768,7 @@ __metadata:
     "@types/node": ^17.0.33
     "@types/react": ^16.9.49
     jest: ^28.1.0
-    react: ^17.0.2
+    react: ^18.2.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     typescript: ^4.6.4
@@ -5286,7 +5302,7 @@ __metadata:
     eslint-plugin-react: ^7.22.0
     nodemon: ^2.0.15
     prettier: ^2.2.1
-    react: ^17.0.2
+    react: ^18.2.0
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
@@ -8095,7 +8111,7 @@ __metadata:
     eslint-plugin-yaml: ^0.5.0
     nodemon: ^2.0.15
     prettier: ^2.2.1
-    react: ^17.0.2
+    react: ^18.2.0
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
@@ -16144,13 +16160,12 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
+"react@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
+  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
   languageName: node
   linkType: hard
 
@@ -18542,7 +18557,7 @@ resolve@^1.20.0:
     eslint-plugin-react: ^7.22.0
     nodemon: ^2.0.15
     prettier: ^2.2.1
-    react: ^17.0.2
+    react: ^18.2.0
     ts-node: ^10.8.0
     typescript: ^4.6.4
   languageName: unknown
@@ -18564,7 +18579,7 @@ resolve@^1.20.0:
     eslint-plugin-react: ^7.22.0
     nodemon: ^2.0.15
     prettier: ^2.2.1
-    react: ^17.0.2
+    react: ^18.2.0
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
@@ -18588,7 +18603,7 @@ resolve@^1.20.0:
     eslint-plugin-yaml: ^0.5.0
     nodemon: ^2.0.15
     prettier: ^2.2.1
-    react: ^17.0.2
+    react: ^18.2.0
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
