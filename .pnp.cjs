@@ -2494,6 +2494,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/templates/packages/server-side-rendering/",\
           "packageDependencies": [\
             ["@goldstack/server-side-rendering", "workspace:workspaces/templates/packages/server-side-rendering"],\
+            ["@types/aws-lambda", "npm:8.10.88"],\
             ["@types/jest", "npm:27.5.1"],\
             ["@types/node", "npm:17.0.33"],\
             ["@types/react", "npm:16.9.51"],\
