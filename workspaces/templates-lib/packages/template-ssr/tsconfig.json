@@ -1,0 +1,43 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*",
+    "./src/**/*.json"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "."
+  },
+  "references": [
+    {
+      "path": "../infra"
+    },
+    {
+      "path": "../infra-aws"
+    },
+    {
+      "path": "../utils-esbuild"
+    },
+    {
+      "path": "../utils-package"
+    },
+    {
+      "path": "../utils-package-config-embedded"
+    },
+    {
+      "path": "../utils-template"
+    },
+    {
+      "path": "../utils-terraform"
+    },
+    {
+      "path": "../../../docs/packages/utils-docs-cli"
+    },
+    {
+      "path": "../utils-git"
+    },
+    {
+      "path": "../utils-package-config-generate"
+    }
+  ]
+}

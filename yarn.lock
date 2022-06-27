@@ -2220,6 +2220,65 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli"
+  dependencies:
+    "@goldstack/template-ssr": 0.1.0
+    "@goldstack/utils-cli": 0.2.14
+    "@goldstack/utils-docker": 0.3.39
+    "@goldstack/utils-docs-cli": 0.3.11
+    "@goldstack/utils-git": 0.1.35
+    "@goldstack/utils-log": 0.2.15
+    "@goldstack/utils-package": 0.3.40
+    "@goldstack/utils-package-config": 0.3.41
+    "@goldstack/utils-package-config-generate": 0.2.16
+    "@goldstack/utils-sh": 0.4.32
+    "@goldstack/utils-template": 0.3.36
+    "@goldstack/utils-terraform": 0.3.70
+    "@goldstack/utils-terraform-aws": 0.3.69
+    "@types/jest": ^27.5.1
+    "@types/node": ^17.0.33
+    "@types/yargs": ^17.0.10
+    jest: ^28.1.0
+    rimraf: ^3.0.2
+    source-map-support: ^0.5.21
+    ts-jest: ^28.0.2
+    ts-node: ^10.8.0
+    typescript: ^4.6.4
+    yargs: ^17.5.1
+  bin:
+    template: ./bin/template
+    template-s3: ./bin/template
+  languageName: unknown
+  linkType: soft
+
+"@goldstack/template-ssr@0.1.0, @goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr"
+  dependencies:
+    "@goldstack/infra": 0.3.37
+    "@goldstack/infra-aws": 0.3.46
+    "@goldstack/utils-docs-cli": 0.3.11
+    "@goldstack/utils-esbuild": 0.4.2
+    "@goldstack/utils-git": 0.1.35
+    "@goldstack/utils-package": 0.3.40
+    "@goldstack/utils-package-config-embedded": 0.4.4
+    "@goldstack/utils-package-config-generate": 0.2.16
+    "@goldstack/utils-template": 0.3.36
+    "@goldstack/utils-terraform": 0.3.70
+    "@types/jest": ^27.5.1
+    "@types/node": ^17.0.33
+    "@types/yargs": ^17.0.10
+    jest: ^28.1.0
+    rimraf: ^3.0.2
+    source-map-support: ^0.5.21
+    ts-jest: ^28.0.2
+    ts-node: ^10.8.0
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
+
 "@goldstack/template-static-website-aws@0.3.101, @goldstack/template-static-website-aws@workspace:workspaces/templates-lib/packages/template-static-website-aws":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-static-website-aws@workspace:workspaces/templates-lib/packages/template-static-website-aws"
