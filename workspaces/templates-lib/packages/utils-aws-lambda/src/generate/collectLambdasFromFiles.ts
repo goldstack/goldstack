@@ -48,8 +48,8 @@ function flattenConfig(config: LambdaConfigMap): LambdaConfig[] {
   return arr;
 }
 
-function posixPath(pathstring: string): string {
-  return pathstring.split(sep).join(posix.sep);
+function posixPath(pathString: string): string {
+  return pathString.split(sep).join(posix.sep);
 }
 
 function removeExtension(path: string): string {
@@ -63,7 +63,7 @@ function makePath(configRoot: string, dir: string): string {
   }
   if (path.indexOf('$index') !== -1) {
     let newPath = path.replace('$index', '');
-    // API Gateway does not accept routes like /myroute/
+    // API Gateway does not accept routes like /my_route/
     newPath = newPath.slice(0, newPath.length - 1);
     return `/${newPath}`;
   }
