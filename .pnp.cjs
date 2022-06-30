@@ -3183,7 +3183,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/template-ssr", "workspace:workspaces/templates-lib/packages/template-ssr"],\
             ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
-            ["@goldstack/template-lambda-api", "workspace:workspaces/templates-lib/packages/template-lambda-api"],\
+            ["@goldstack/utils-aws-lambda", "workspace:workspaces/templates-lib/packages/utils-aws-lambda"],\
             ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
             ["@goldstack/utils-esbuild", "workspace:workspaces/templates-lib/packages/utils-esbuild"],\
             ["@goldstack/utils-git", "workspace:workspaces/templates-lib/packages/utils-git"],\

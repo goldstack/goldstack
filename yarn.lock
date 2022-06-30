@@ -2274,7 +2274,7 @@ __metadata:
   dependencies:
     "@goldstack/infra": 0.3.37
     "@goldstack/infra-aws": 0.3.46
-    "@goldstack/template-lambda-api": 0.4.45
+    "@goldstack/utils-aws-lambda": 0.1.31
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-esbuild": 0.4.2
     "@goldstack/utils-git": 0.1.35

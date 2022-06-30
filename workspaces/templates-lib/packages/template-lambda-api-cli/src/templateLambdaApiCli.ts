@@ -46,9 +46,9 @@ export const run = async (args: string[]): Promise<void> => {
     const config = packageConfig.getConfig();
 
     // update routes
-    if (!fs.existsSync('./src/routes')) {
+    if (!fs.existsSync(defaultRoutesPath)) {
       throw new Error(
-        'Please specify lambda function handlers in ./src/routes so that API Gateway route configuration can be generated.'
+        `Please specify lambda function handlers in ${defaultRoutesPath} so that API Gateway route configuration can be generated.`
       );
     }
     const lambdaRoutes = readLambdaConfig(defaultRoutesPath);

@@ -4,5 +4,36 @@
   "template": "server-side-rendering",
   "templateVersion": "0.1.0",
   "configuration": {},
-  "deployments": []
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "lambdaNamePrefix": "goldstack-test-ssr",
+        "apiDomain": "ssr.examples.templates.dev.goldstack.party",
+        "hostedZoneDomain": "dev.goldstack.party",
+        "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party",
+        "lambdas": {
+          "ANY /index": {
+            "function_name": "goldstack-test-ssr-index",
+            "route": "ANY /index"
+          },
+          "ANY /indexPage": {
+            "function_name": "goldstack-test-ssr-indexPage",
+            "route": "ANY /indexPage"
+          },
+          "ANY /_app": {
+            "function_name": "goldstack-test-ssr-_app",
+            "route": "ANY /_app"
+          },
+          "ANY /_document": {
+            "function_name": "goldstack-test-ssr-_document",
+            "route": "ANY /_document"
+          }
+        }
+      },
+      "tfStateKey": "server-side-rendering-prod-cef430073a2474be1434.tfstate"
+    }
+  ]
 }

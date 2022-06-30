@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/ThisDeploymentConfiguration",
+  "definitions": {
+    "ThisDeploymentConfiguration": {
+      "type": "object",
+      "properties": {
+        "lambdaNamePrefix": {
+          "type": "string",
+          "description": "The prefix to be used for names of the generated lambdas for the API endpoints.",
+          "title": "Lambda Name Prefix",
+          "pattern": "^[A-Za-z0-9-_]*$"
+        },
+        "apiDomain": {
+          "$ref": "#/definitions/APIDomain"
+        },
+        "hostedZoneDomain": {
+          "$ref": "#/definitions/HostedZoneDomain"
+        },
+        "cors": {
+          "$ref": "#/definitions/CorsHeader"
+        },
+        "lambdas": {
+          "$ref": "#/definitions/LambdaRoutesConfig"
+        }
+      },
+      "required": [
+        "apiDomain",
+        "hostedZoneDomain",
+        "lambdas"
+      ]
+    },
+    "APIDomain": {
+      "type": "string",
+      "description": "The domain name that the API should be deployed to (e.g. api.mysite.com)",
+      "title": "API Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "HostedZoneDomain": {
+      "type": "string",
+      "description": "The domain name of the Route 53 hosted zone that the domain for this API should be added to.",
+      "title": "Hosted Zone Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "CorsHeader": {
+      "type": "string",
+      "description": "Optional URL for an UI that should be allowed to access this server.",
+      "title": "CORS Header",
+      "pattern": "^[^\\s]*"
+    },
+    "LambdaRoutesConfig": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/LambdaRouteConfig"
+      }
+    },
+    "LambdaRouteConfig": {
+      "type": "object",
+      "properties": {
+        "function_name": {
+          "type": "string"
+        },
+        "route": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "function_name",
+        "route"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
