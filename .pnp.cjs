@@ -3207,6 +3207,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/template-ssr-cli", "workspace:workspaces/templates-lib/packages/template-ssr-cli"],\
             ["@goldstack/template-ssr", "workspace:workspaces/templates-lib/packages/template-ssr"],\
+            ["@goldstack/utils-aws-lambda", "workspace:workspaces/templates-lib/packages/utils-aws-lambda"],\
             ["@goldstack/utils-cli", "workspace:workspaces/templates-lib/packages/utils-cli"],\
             ["@goldstack/utils-docker", "workspace:workspaces/templates-lib/packages/utils-docker"],\
             ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\

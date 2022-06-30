@@ -1,13 +1,11 @@
 import type { AWSDeployment } from '@goldstack/infra-aws';
 import type { LambdaApiDeploymentConfiguration } from './types/LambdaDeploymentConfiguration';
 import { getAWSUser } from '@goldstack/infra-aws';
-import {
-  deployFunction,
-  LambdaConfig,
-  generateFunctionName,
-} from '@goldstack/utils-aws-lambda';
+import { deployFunction } from './deployFunction';
+import type { LambdaConfig } from './types/LambdaConfig';
+import { generateFunctionName } from './generate/generateFunctionName';
 
-import { readLambdaConfig } from '@goldstack/utils-aws-lambda';
+import { readLambdaConfig } from './generate/collectLambdasFromFiles';
 
 import { mkdir } from '@goldstack/utils-sh';
 import { getOutDirForLambda } from './buildFunctions';

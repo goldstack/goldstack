@@ -2235,6 +2235,7 @@ __metadata:
   resolution: "@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli"
   dependencies:
     "@goldstack/template-ssr": 0.1.0
+    "@goldstack/utils-aws-lambda": 0.1.31
     "@goldstack/utils-cli": 0.2.14
     "@goldstack/utils-docker": 0.3.39
     "@goldstack/utils-docs-cli": 0.3.11

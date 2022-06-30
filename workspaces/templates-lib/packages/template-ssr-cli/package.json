@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "@goldstack/template-ssr": "0.1.0",
+    "@goldstack/utils-aws-lambda": "0.1.31",
     "@goldstack/utils-cli": "0.2.14",
     "@goldstack/utils-docker": "0.3.39",
     "@goldstack/utils-log": "0.2.15",
