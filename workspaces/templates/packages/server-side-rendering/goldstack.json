@@ -15,21 +15,9 @@
         "hostedZoneDomain": "dev.goldstack.party",
         "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party",
         "lambdas": {
-          "ANY /index": {
-            "function_name": "goldstack-test-ssr-index",
-            "route": "ANY /index"
-          },
-          "ANY /indexPage": {
-            "function_name": "goldstack-test-ssr-indexPage",
-            "route": "ANY /indexPage"
-          },
-          "ANY /_app": {
-            "function_name": "goldstack-test-ssr-_app",
-            "route": "ANY /_app"
-          },
-          "ANY /_document": {
-            "function_name": "goldstack-test-ssr-_document",
-            "route": "ANY /_document"
+          "ANY /": {
+            "function_name": "goldstack-test-ssr--__index",
+            "route": "ANY /"
           }
         }
       },

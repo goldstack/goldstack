@@ -8,8 +8,8 @@ import {
 
 import { renderToString } from 'react-dom/server';
 
-import Index from './indexPage';
-import { renderDocument } from './_document';
+import Index from '../components/indexPage';
+import { renderDocument } from './../_document';
 
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
