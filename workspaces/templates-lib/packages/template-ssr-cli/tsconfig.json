@@ -13,6 +13,9 @@
       "path": "../template-ssr"
     },
     {
+      "path": "../utils-aws-lambda"
+    },
+    {
       "path": "../utils-cli"
     },
     {

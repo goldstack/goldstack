@@ -24,7 +24,7 @@
       "path": "../../../templates-lib/packages/utils-esbuild"
     },
     {
-      "path": "../../../templates-lib/packages/template-lambda-api-cli"
+      "path": "../../../templates-lib/packages/template-ssr-cli"
     },
     {
       "path": "../../../templates-lib/packages/utils-aws-http-api-local"
