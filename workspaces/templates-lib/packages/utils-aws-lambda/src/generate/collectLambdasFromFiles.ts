@@ -1,19 +1,7 @@
 import fs, { Dirent } from 'fs';
 import { relative, resolve, sep, posix } from 'path';
-
-export enum RouteType {
-  DIR = 'DIR',
-  FUNCTION = 'FUNCTION',
-}
-
-export interface LambdaConfig {
-  name: string;
-  type: RouteType;
-  absoluteFilePath: string;
-  relativeFilePath: string;
-  path: string;
-  route: string;
-}
+import type { LambdaConfig } from '../types/LambdaConfig';
+import { RouteType } from '../types/LambdaConfig';
 
 interface LambdaConfigWork extends LambdaConfig {
   children?: LambdaConfigMap;

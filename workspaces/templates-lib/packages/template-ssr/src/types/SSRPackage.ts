@@ -1,6 +1,10 @@
 import { AWSDeployment } from '@goldstack/infra-aws';
 import { TerraformDeployment } from '@goldstack/utils-terraform';
 import { Deployment, DeploymentConfiguration } from '@goldstack/infra';
+import {
+  LambdaApiDeployment,
+  LambdaApiDeploymentConfiguration,
+} from '@goldstack/template-lambda-api';
 import { Package, Configuration } from '@goldstack/utils-package';
 
 /**
@@ -44,7 +48,8 @@ export type LambdaRoutesConfig = {
   [key: string]: LambdaRouteConfig;
 };
 
-export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
+export interface ThisDeploymentConfiguration
+  extends LambdaApiDeploymentConfiguration {
   lambdaNamePrefix?: LambdaNamePrefix;
   apiDomain: APIDomain;
   hostedZoneDomain: HostedZoneDomain;

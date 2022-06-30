@@ -9,6 +9,9 @@
   },
   "references": [
     {
+      "path": "../infra-aws"
+    },
+    {
       "path": "../utils-aws-cli"
     },
     {

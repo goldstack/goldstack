@@ -80,9 +80,6 @@
       "path": "workspaces/templates/packages/app-nextjs"
     },
     {
-      "path": "workspaces/templates/packages/app-nextjs-bootstrap"
-    },
-    {
       "path": "workspaces/templates/packages/docker-image-aws"
     },
     {
@@ -105,6 +102,9 @@
     },
     {
       "path": "workspaces/templates/packages/s3"
+    },
+    {
+      "path": "workspaces/templates/packages/server-side-rendering"
     },
     {
       "path": "workspaces/templates/packages/serverless-api"
@@ -153,6 +153,12 @@
     },
     {
       "path": "workspaces/templates-lib/packages/template-s3-cli"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-ssr"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-ssr-cli"
     },
     {
       "path": "workspaces/templates-lib/packages/template-static-website-aws"

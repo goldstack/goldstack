@@ -1,7 +1,7 @@
 import { RouteType } from '@goldstack/utils-aws-lambda';
 import { read } from '@goldstack/utils-sh';
 import path from 'path';
-import { buildLambdas } from './templateLambdaApiBuild';
+import { buildFunctions } from './buildFunctions';
 import fs from 'fs';
 
 jest.setTimeout(30000);
@@ -10,7 +10,7 @@ describe('Testing lambda build', () => {
   it('Should build lambda', async () => {
     const fileToBuild = path.resolve('./testData/build-test/index.ts');
     expect(fs.existsSync(fileToBuild)).toEqual(true);
-    await buildLambdas({
+    await buildFunctions({
       routesDir: './testData/build-test',
       configs: [
         {
@@ -28,7 +28,7 @@ describe('Testing lambda build', () => {
   });
 
   it('Should build lambda with custom esbuild config', async () => {
-    await buildLambdas({
+    await buildFunctions({
       routesDir: './testData/build-test',
       configs: [
         {

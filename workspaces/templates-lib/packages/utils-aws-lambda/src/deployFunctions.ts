@@ -1,4 +1,5 @@
-import { LambdaApiDeployment } from '@goldstack/template-lambda-api';
+import type { AWSDeployment } from '@goldstack/infra-aws';
+import type { LambdaApiDeploymentConfiguration } from './types/LambdaDeploymentConfiguration';
 import { getAWSUser } from '@goldstack/infra-aws';
 import {
   deployFunction,
@@ -7,24 +8,25 @@ import {
 } from '@goldstack/utils-aws-lambda';
 
 import { readLambdaConfig } from '@goldstack/utils-aws-lambda';
-import { defaultRoutesPath } from './templateLambdaConsts';
 
 import { mkdir } from '@goldstack/utils-sh';
-import { getOutDirForLambda } from './templateLambdaApiBuild';
+import { getOutDirForLambda } from './buildFunctions';
 
-interface DeployLambdaParams {
-  deployment: LambdaApiDeployment;
+export interface DeployFunctionsParams {
+  routesPath: string;
+  configuration: LambdaApiDeploymentConfiguration;
+  deployment: AWSDeployment;
   config: LambdaConfig[];
 }
 
-export const deployLambdas = async (
-  params: DeployLambdaParams
+export const deployFunctions = async (
+  params: DeployFunctionsParams
 ): Promise<void> => {
-  const lambdaConfig = readLambdaConfig(defaultRoutesPath);
+  const lambdaConfig = readLambdaConfig(params.routesPath);
 
   const operations = lambdaConfig.map(async (config) => {
     const functionName = generateFunctionName(
-      params.deployment.configuration.lambdaNamePrefix,
+      params.configuration.lambdaNamePrefix,
       config
     );
     console.log(`[${functionName}]: Starting deployment`);
@@ -41,14 +43,4 @@ export const deployLambdas = async (
     console.log(`[${functionName}]: Deployment completed`);
   });
   await Promise.all(operations);
-};
-
-export const deployCli = async (
-  deployment: LambdaApiDeployment,
-  config: LambdaConfig[]
-): Promise<void> => {
-  await deployLambdas({
-    deployment,
-    config,
-  });
 };

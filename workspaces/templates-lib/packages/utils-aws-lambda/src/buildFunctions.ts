@@ -1,9 +1,7 @@
 import { build, BuildOptions } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
-import {
-  generateFunctionName,
-  LambdaConfig,
-} from '@goldstack/utils-aws-lambda';
+import { LambdaConfig } from './types/LambdaConfig';
+import { generateFunctionName } from './generate/generateFunctionName';
 import {
   changeExtension,
   mkdir,
@@ -23,7 +21,7 @@ export const getOutFileForLambda = (config: LambdaConfig): string => {
   return `${getOutDirForLambda(config)}/lambda.js`;
 };
 
-export const buildLambdas = async ({
+export const buildFunctions = async ({
   routesDir,
   configs,
   lambdaNamePrefix,

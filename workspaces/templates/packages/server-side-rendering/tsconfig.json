@@ -5,7 +5,7 @@
     "./src/**/*.json",
     "./scripts/**/*",
     "./schemas/**/*.json",
-    "./goldstack.json",
+    "./goldstack.json"
   ],
   "compilerOptions": {
     "outDir": "dist",
@@ -20,5 +20,14 @@
     "node_modules"
   ],
   "references": [
+    {
+      "path": "../../../templates-lib/packages/utils-esbuild"
+    },
+    {
+      "path": "../../../templates-lib/packages/template-lambda-api-cli"
+    },
+    {
+      "path": "../../../templates-lib/packages/utils-aws-http-api-local"
+    }
   ]
 }

@@ -4,11 +4,11 @@ import {
 } from '@goldstack/utils-aws-lambda';
 import {
   LambdaRoutesConfig,
-  LambdaApiDeployment,
-} from '@goldstack/template-lambda-api';
+  LambdaApiDeploymentConfiguration,
+} from './types/LambdaDeploymentConfiguration';
 
 export const generateLambdaConfig = (
-  deployment: LambdaApiDeployment,
+  configuration: LambdaApiDeploymentConfiguration,
   config: LambdaConfig[]
 ): LambdaRoutesConfig => {
   return config.reduce((last, curr) => {
@@ -17,10 +17,7 @@ export const generateLambdaConfig = (
       id = 'default';
     }
     last[`${id}`] = {
-      function_name: generateFunctionName(
-        deployment.configuration.lambdaNamePrefix,
-        curr
-      ),
+      function_name: generateFunctionName(configuration.lambdaNamePrefix, curr),
       route: curr.route,
     };
     return last;

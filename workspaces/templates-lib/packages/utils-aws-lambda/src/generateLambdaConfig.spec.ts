@@ -4,29 +4,24 @@ import {
 } from '@goldstack/utils-aws-lambda';
 import assert from 'assert';
 import { generateLambdaConfig } from './generateLambdaConfig';
-import { LambdaApiDeployment } from '@goldstack/template-lambda-api';
-import { getOutDirForLambda } from './templateLambdaApiBuild';
+import { LambdaApiDeploymentConfiguration } from './types/LambdaDeploymentConfiguration';
+import { getOutDirForLambda } from './buildFunctions';
 
-const dummyDeployment: LambdaApiDeployment = {
-  awsRegion: 'ap-east-1',
-  awsUser: 'dummy',
-  configuration: {
-    lambdaNamePrefix: 'test-lambdas',
-    apiDomain: 'domain',
-    hostedZoneDomain: 'domain',
-    lambdas: {},
-  },
-  name: 'test',
+const dummyConfiguration: LambdaApiDeploymentConfiguration = {
+  lambdaNamePrefix: 'test-lambdas',
+  apiDomain: 'domain',
+  hostedZoneDomain: 'domain',
+  lambdas: {},
 };
 
 describe('Generate Lambda config', () => {
   const routesConfig = readLambdaConfig('./testData/routes-test');
-  const config = generateLambdaConfig(dummyDeployment, routesConfig);
+  const config = generateLambdaConfig(dummyConfiguration, routesConfig);
   test('Should render config for Terraform', () => {
     assert(config['default'].function_name);
     assert(
       config['ANY /folder/nested'].function_name.indexOf(
-        dummyDeployment.configuration.lambdaNamePrefix || 'fail'
+        dummyConfiguration.lambdaNamePrefix || 'fail'
       ) !== -1
     );
   });
@@ -36,26 +31,26 @@ describe('Generate Lambda config', () => {
     const dir = getOutDirForLambda(nestedRoute);
     assert(dir === './distLambda/folder/nested');
   });
-  test('Should determine path parametmers for file names', () => {
+  test('Should determine path parameters for file names', () => {
     const nestedRoute = routesConfig.find(
       (e) => e.path === '/folder/{pathparam}'
     );
     assert(nestedRoute);
     const functionName = generateFunctionName(
-      dummyDeployment.configuration.lambdaNamePrefix,
+      dummyConfiguration.lambdaNamePrefix,
       nestedRoute
     );
     assert(functionName.indexOf('folder') !== -1);
     assert(functionName.indexOf('{') === -1);
     assert(functionName.indexOf('}') === -1);
   });
-  test('Should determine path parametmers for folder names', () => {
+  test('Should determine path parameters for folder names', () => {
     const nestedRoute = routesConfig.find(
       (e) => e.path === '/resource/{path}/object'
     );
     assert(nestedRoute);
     const functionName = generateFunctionName(
-      dummyDeployment.configuration.lambdaNamePrefix,
+      dummyConfiguration.lambdaNamePrefix,
       nestedRoute
     );
     assert(functionName.indexOf('object') !== -1);
@@ -68,7 +63,7 @@ describe('Generate Lambda config', () => {
     assert(nestedRoute);
 
     const functionName = generateFunctionName(
-      dummyDeployment.configuration.lambdaNamePrefix,
+      dummyConfiguration.lambdaNamePrefix,
       nestedRoute
     );
     expect(functionName).toContain('health');
@@ -78,7 +73,7 @@ describe('Generate Lambda config', () => {
     assert(nestedRoute);
 
     const functionName = generateFunctionName(
-      dummyDeployment.configuration.lambdaNamePrefix,
+      dummyConfiguration.lambdaNamePrefix,
       nestedRoute
     );
     assert(functionName.match(/resource/g)?.length === 1);

@@ -41,6 +41,7 @@
   "dependencies": {
     "@goldstack/infra": "0.3.37",
     "@goldstack/infra-aws": "0.3.46",
+    "@goldstack/template-lambda-api": "0.4.45",
     "@goldstack/utils-esbuild": "0.4.2",
     "@goldstack/utils-package": "0.3.40",
     "@goldstack/utils-package-config-embedded": "0.4.4",

@@ -16,6 +16,9 @@
       "path": "../infra-aws"
     },
     {
+      "path": "../template-lambda-api"
+    },
+    {
       "path": "../utils-esbuild"
     },
     {

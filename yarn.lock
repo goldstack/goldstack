@@ -1584,17 +1584,27 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/server-side-rendering@workspace:workspaces/templates/packages/server-side-rendering"
   dependencies:
+    "@goldstack/template-lambda-api-cli": 0.4.10
+    "@goldstack/utils-aws-http-api-local": 0.1.33
+    "@goldstack/utils-esbuild": 0.4.2
+    "@jest-mock/express": ^1.4.5
     "@types/aws-lambda": ^8.10.88
+    "@types/aws-serverless-express": ^3.3.3
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^16.9.49
-    "@types/react-dom": ^18
+    "@types/node-fetch": 2
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.1
+    date-fns: ^2.28.0
+    esbuild: ^0.14.34
+    find-free-port: ^2.0.0
     jest: ^28.1.0
-    react: ^18.2.0
-    react-dom: ^18.2.0
+    node-fetch: 2.6.7
     rimraf: ^3.0.2
+    source-map-support: ^0.5.21
+    supertest: ^4.0.2
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
+    ts-node-dev: ^1.1.8
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
@@ -1929,9 +1939,6 @@ __metadata:
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
     "@types/yargs": ^17.0.10
-    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.1
-    archiver: ^5.3.1
-    esbuild: ^0.14.34
     jest: ^28.1.0
     jest-pnp-resolver: ^1.2.2
     rimraf: ^3.0.2
@@ -1953,6 +1960,7 @@ __metadata:
   dependencies:
     "@goldstack/infra": 0.3.37
     "@goldstack/infra-aws": 0.3.46
+    "@goldstack/utils-aws-lambda": 0.1.31
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-git": 0.1.35
     "@goldstack/utils-package": 0.3.40
@@ -2261,6 +2269,7 @@ __metadata:
   dependencies:
     "@goldstack/infra": 0.3.37
     "@goldstack/infra-aws": 0.3.46
+    "@goldstack/template-lambda-api": 0.4.45
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-esbuild": 0.4.2
     "@goldstack/utils-git": 0.1.35
@@ -2378,13 +2387,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-aws-lambda@workspace:workspaces/templates-lib/packages/utils-aws-lambda"
   dependencies:
+    "@goldstack/infra-aws": 0.3.46
     "@goldstack/utils-aws-cli": 0.3.56
     "@goldstack/utils-git": 0.1.35
     "@goldstack/utils-log": 0.2.15
     "@goldstack/utils-sh": 0.4.32
+    "@types/aws-lambda": ^8.10.88
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.1
+    archiver: ^5.3.1
     aws-sdk: 2.1055.0
+    esbuild: ^0.14.34
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -4265,15 +4279,6 @@ __metadata:
   version: 1.2.3
   resolution: "@types/range-parser@npm:1.2.3"
   checksum: a0a4218214d2c599e2128a8965e9183d1f0b8fc614def43a2183cf80534d10fcf86357c823c7907e779df0ab048fd1fa3818b4c8f0f6f99ba150a3f99df7d03d
-  languageName: node
-  linkType: hard
-
-"@types/react-dom@npm:^18":
-  version: 18.0.5
-  resolution: "@types/react-dom@npm:18.0.5"
-  dependencies:
-    "@types/react": "*"
-  checksum: cd48b81950f499b52a3f0c08261f00046f9b7c96699fa249c9664e257e820daf6ecac815cd1028cebc9d105094adc39d047d1efd79214394b8b2d515574c0787
   languageName: node
   linkType: hard
 
@@ -16123,18 +16128,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18.2.0":
-  version: 18.2.0
-  resolution: "react-dom@npm:18.2.0"
-  dependencies:
-    loose-envify: ^1.1.0
-    scheduler: ^0.23.0
-  peerDependencies:
-    react: ^18.2.0
-  checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
-  languageName: node
-  linkType: hard
-
 "react-icons@npm:^3.10.0":
   version: 3.11.0
   resolution: "react-icons@npm:3.11.0"
@@ -17130,15 +17123,6 @@ resolve@^1.20.0:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
   checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
-  languageName: node
-  linkType: hard
-
-"scheduler@npm:^0.23.0":
-  version: 0.23.0
-  resolution: "scheduler@npm:0.23.0"
-  dependencies:
-    loose-envify: ^1.1.0
-  checksum: d79192eeaa12abef860c195ea45d37cbf2bbf5f66e3c4dcd16f54a7da53b17788a70d109ee3d3dde1a0fd50e6a8fc171f4300356c5aee4fc0171de526bf35f8a
   languageName: node
   linkType: hard
 

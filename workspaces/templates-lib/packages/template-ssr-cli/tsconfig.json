@@ -10,7 +10,7 @@
   },
   "references": [
     {
-      "path": "../template-s3"
+      "path": "../template-ssr"
     },
     {
       "path": "../utils-cli"
@@ -26,9 +26,6 @@
     },
     {
       "path": "../utils-package-config"
-    },
-    {
-      "path": "../utils-s3-deployment"
     },
     {
       "path": "../utils-sh"
