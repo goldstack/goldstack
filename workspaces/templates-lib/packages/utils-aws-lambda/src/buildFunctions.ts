@@ -14,6 +14,9 @@ export const getOutDirForLambda = (config: LambdaConfig): string => {
   if (config.path === '$default') {
     return `./distLambda/${config.path}`;
   }
+  if (config.path.endsWith('/')) {
+    return `./distLambda${config.path}index`;
+  }
   return `./distLambda${config.path}`;
 };
 
