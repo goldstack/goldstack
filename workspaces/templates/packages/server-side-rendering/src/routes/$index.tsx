@@ -10,6 +10,8 @@ import {
 
 import { renderDocument } from './../_document';
 
+import { renderPage } from '@goldstack/template-ssr';
+
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
 const Index = (): JSX.Element => {
@@ -29,9 +31,8 @@ const Index = (): JSX.Element => {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const handler: ProxyHandler = async (event, context) => {
-  // require SSR dependency since it is omitted in client-side bundle
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  return require('@goldstack/template-ssr').renderPage({
+  return renderPage({
     element: <Index />,
     entryPoint: __filename,
     event: event,

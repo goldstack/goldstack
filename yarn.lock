@@ -2240,6 +2240,7 @@ __metadata:
   resolution: "@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli"
   dependencies:
     "@goldstack/template-ssr": 0.1.0
+    "@goldstack/template-ssr-server": 0.1.0
     "@goldstack/utils-aws-lambda": 0.1.31
     "@goldstack/utils-cli": 0.2.14
     "@goldstack/utils-docker": 0.3.39
@@ -2269,9 +2270,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr@0.1.0, @goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr":
+"@goldstack/template-ssr-server@0.1.0, @goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server":
   version: 0.0.0-use.local
-  resolution: "@goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr"
+  resolution: "@goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server"
   dependencies:
     "@goldstack/infra": 0.3.37
     "@goldstack/infra-aws": 0.3.46
@@ -2296,6 +2297,35 @@ __metadata:
     jest: ^28.1.0
     react: ^18.2.0
     react-dom: ^18.2.0
+    rimraf: ^3.0.2
+    source-map-support: ^0.5.21
+    ts-jest: ^28.0.2
+    ts-node: ^10.8.0
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
+
+"@goldstack/template-ssr@0.1.0, @goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr"
+  dependencies:
+    "@goldstack/infra": 0.3.37
+    "@goldstack/infra-aws": 0.3.46
+    "@goldstack/template-ssr-server": 0.1.0
+    "@goldstack/utils-aws-lambda": 0.1.31
+    "@goldstack/utils-docs-cli": 0.3.11
+    "@goldstack/utils-esbuild": 0.4.2
+    "@goldstack/utils-git": 0.1.35
+    "@goldstack/utils-package": 0.3.40
+    "@goldstack/utils-package-config-embedded": 0.4.4
+    "@goldstack/utils-package-config-generate": 0.2.16
+    "@goldstack/utils-template": 0.3.36
+    "@goldstack/utils-terraform": 0.3.70
+    "@types/aws-lambda": ^8.10.88
+    "@types/jest": ^27.5.1
+    "@types/node": ^17.0.33
+    "@types/yargs": ^17.0.10
+    jest: ^28.1.0
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2

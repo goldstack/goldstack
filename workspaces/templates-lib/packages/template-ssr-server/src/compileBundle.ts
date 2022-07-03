@@ -11,7 +11,7 @@ const sharedConfig: BuildOptions = {
   external: [
     'esbuild',
     '@yarnpkg/esbuild-plugin-pnp',
-    '@goldstack/template-ssr', // this is only required on the server side
+    '@goldstack/template-ssr-server', // this is only required on the server side
   ],
   minify: true,
   platform: 'browser',
@@ -53,10 +53,9 @@ export const compileBundle = async ({
     write: false,
   });
 
+  const output = Buffer.from(res.outputFiles[0].contents).toString('utf-8');
   let result: CompileBundleResponse = {
-    bundle: removeSourceMap(
-      Buffer.from(res.outputFiles[0].contents).toString('utf-8')
-    ),
+    bundle: removeSourceMap(output),
   };
 
   if (metaFile) {
@@ -69,7 +68,7 @@ export const compileBundle = async ({
   if (sourceMap) {
     result = {
       ...result,
-      sourceMap: extractSourceMap(result.bundle),
+      sourceMap: extractSourceMap(output),
     };
   }
 
