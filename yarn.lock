@@ -846,7 +846,7 @@ __metadata:
     "@testing-library/react": ^10.0.4
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^16.9.49
+    "@types/react": ^18.0.14
     "@types/testing-library__jest-dom": ^5.9.1
     "@types/testing-library__react": ^10.0.1
     concurrently: ^5.2.0
@@ -886,7 +886,7 @@ __metadata:
     "@testing-library/react": ^10.0.4
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^16.9.49
+    "@types/react": ^18.0.14
     "@types/testing-library__jest-dom": ^5.9.1
     "@types/testing-library__react": ^10.0.1
     concurrently: ^5.2.0
@@ -991,7 +991,7 @@ __metadata:
     "@types/cheerio": ^0.22.31
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^16.9.49
+    "@types/react": ^18.0.14
     "@types/styled-components": ^5.1.1
     "@types/testing-library__jest-dom": ^5.9.1
     "@types/testing-library__react": ^10.0.1
@@ -1170,7 +1170,7 @@ __metadata:
     "@testing-library/react": ^10.0.4
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^16.9.49
+    "@types/react": ^18.0.14
     "@types/react-scrollable-anchor": ^0.6.0
     "@types/styled-components": ^5.1.1
     "@types/testing-library__jest-dom": ^5.9.1
@@ -1594,8 +1594,8 @@ __metadata:
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
     "@types/node-fetch": 2
-    "@types/react": ^16.9.49
-    "@types/react-dom": ^18
+    "@types/react": ^18.0.14
+    "@types/react-dom": ^18.0.5
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
     date-fns: ^2.28.0
     esbuild: ^0.14.48
@@ -2289,8 +2289,8 @@ __metadata:
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^16.9.49
-    "@types/react-dom": ^18
+    "@types/react": ^18.0.14
+    "@types/react-dom": ^18.0.5
     "@types/yargs": ^17.0.10
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
     esbuild: ^0.14.48
@@ -2886,7 +2886,7 @@ __metadata:
     "@goldstack/utils-git": 0.1.35
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^16.9.49
+    "@types/react": ^18.0.14
     jest: ^28.1.0
     react: ^18.2.0
     rimraf: ^3.0.2
@@ -4326,7 +4326,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18":
+"@types/react-dom@npm:^18.0.5":
   version: 18.0.5
   resolution: "@types/react-dom@npm:18.0.5"
   dependencies:
@@ -4383,13 +4383,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^16.9.49":
-  version: 16.9.51
-  resolution: "@types/react@npm:16.9.51"
+"@types/react@npm:^18.0.14":
+  version: 18.0.14
+  resolution: "@types/react@npm:18.0.14"
   dependencies:
     "@types/prop-types": "*"
+    "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 1c76b6d4281905524ee04bbca1ae7b990c189802ac992b6942bb7fadabccef0ffd4f8d4db2d14704e2904ca14396b16d330b9a76bcc7283c25da1fe017343d9a
+  checksum: 608eb57a383eedc54c79949673e5e8314f6b0c61542bff58721c8c47a18c23e2832e77c656050c2c2c004b62cf25582136c7c56fe1b6263a285c065fae31dbcf
   languageName: node
   linkType: hard
 
