@@ -3191,6 +3191,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
             ["@goldstack/utils-package-config-embedded", "workspace:workspaces/templates-lib/packages/utils-package-config-embedded"],\
             ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+            ["@goldstack/utils-sh", "workspace:workspaces/templates-lib/packages/utils-sh"],\
             ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
             ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
             ["@types/aws-lambda", "npm:8.10.88"],\

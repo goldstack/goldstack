@@ -20,6 +20,7 @@ const Index = (): JSX.Element => {
       <div
         onClick={() => {
           alert('hi');
+          throw new Error('Havent seen this');
         }}
       >
         Hello, world!
@@ -45,8 +46,6 @@ function isServer(): boolean {
 const hydrate = (): void => {
   const node = document.getElementById('root');
 
-  console.log(node);
-  console.log('hydrating');
   ReactDOM.hydrate(<Index />, node);
 };
 

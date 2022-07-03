@@ -22,12 +22,10 @@ export const renderPage = async ({
   renderDocument: (props: RenderDocumentProps) => string;
   element: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
 }): Promise<APIGatewayProxyResultV2> => {
-  console.log(event.pathParameters);
-  console.log(event.queryStringParameters);
   if (
     event.queryStringParameters &&
-    event.queryStringParameters['js'] &&
-    event.queryStringParameters['js'].indexOf('true') > -1
+    event.queryStringParameters['resource'] &&
+    event.queryStringParameters['resource'].indexOf('js') > -1
   ) {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     return require(excludeInBundle('./compileBundle')).compileBundle(
@@ -35,10 +33,20 @@ export const renderPage = async ({
     );
   }
 
+  if (
+    event.queryStringParameters &&
+    event.queryStringParameters['resource'] &&
+    event.queryStringParameters['resource'].indexOf('sourcemap') > -1
+  ) {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    return require(excludeInBundle('./compileBundle')).compileSourceMap({
+      entryPoint,
+    });
+  }
   const page = renderToString(element);
 
   const document = renderDocument({
-    bundledJsPath: '?js=true',
+    bundledJsPath: '?resource=js',
     renderedHtml: page,
   });
   return {
