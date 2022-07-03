@@ -8,8 +8,6 @@ import {
   APIGatewayProxyResultV2,
 } from 'aws-lambda';
 
-import { renderPage } from '@goldstack/template-ssr';
-
 import { renderDocument } from './../_document';
 
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
@@ -31,7 +29,9 @@ const Index = (): JSX.Element => {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const handler: ProxyHandler = async (event, context) => {
-  return renderPage({
+  // require SSR dependency since it is omitted in client-side bundle
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  return require('@goldstack/template-ssr').renderPage({
     element: <Index />,
     entryPoint: __filename,
     event: event,

@@ -8,7 +8,11 @@ import { dirname } from 'path';
 const sharedConfig: BuildOptions = {
   plugins: [pnpPlugin()],
   bundle: true,
-  external: ['esbuild', '@yarnpkg/esbuild-plugin-pnp'],
+  external: [
+    'esbuild',
+    '@yarnpkg/esbuild-plugin-pnp',
+    '@goldstack/template-ssr', // this is only required on the server side
+  ],
   minify: true,
   platform: 'browser',
   format: 'iife',
@@ -50,7 +54,9 @@ export const compileBundle = async ({
   });
 
   let result: CompileBundleResponse = {
-    bundle: Buffer.from(res.outputFiles[0].contents).toString('utf-8'),
+    bundle: removeSourceMap(
+      Buffer.from(res.outputFiles[0].contents).toString('utf-8')
+    ),
   };
 
   if (metaFile) {
@@ -98,6 +104,13 @@ const extractSourceMap = (output: string): string => {
   return sourceMapData;
 };
 
+const removeSourceMap = (output: string): string => {
+  const marker = '//# sourceMappingURL=data:application/json;base64,';
+  const startContent = output.indexOf(marker);
+  const withoutSourceMap = output.substring(0, startContent);
+
+  return withoutSourceMap;
+};
 export const sourceMapResponse = async ({
   entryPoint,
 }: {

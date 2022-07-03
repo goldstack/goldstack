@@ -1,3 +1,4 @@
+import { clientBundleFileName } from '@goldstack/template-ssr';
 import { compileBundle } from '@goldstack/template-ssr/src/compileBundle';
 import {
   generateFunctionName,
@@ -5,7 +6,6 @@ import {
   LambdaConfig,
 } from '@goldstack/utils-aws-lambda';
 import { mkdir, write } from '@goldstack/utils-sh';
-import { clientBundleFileName } from './templateSSRConsts';
 
 export const buildBundles = async ({
   routesDir,
