@@ -18,10 +18,6 @@
           "ANY /": {
             "function_name": "goldstack-test-ssr--__index",
             "route": "ANY /"
-          },
-          "ANY /folder": {
-            "function_name": "goldstack-test-ssr-folder-__index",
-            "route": "ANY /folder"
           }
         }
       },

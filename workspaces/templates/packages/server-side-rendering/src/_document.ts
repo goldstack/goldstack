@@ -1,7 +1,4 @@
-export interface RenderDocumentProps {
-  bundledJsPath: string;
-  renderedHtml: string;
-}
+import type { RenderDocumentProps } from '@goldstack/template-ssr';
 
 export const renderDocument = ({
   bundledJsPath,
@@ -11,10 +8,10 @@ export const renderDocument = ({
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="${bundledJsPath}"></script>
   </head>
   <body>
     <div id="root">${renderedHtml}</div>
+    <script src="${bundledJsPath}"></script>
   </body>
 </html>
   `;

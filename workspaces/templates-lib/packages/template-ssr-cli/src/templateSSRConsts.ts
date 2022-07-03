@@ -1,1 +1,1 @@
-export const defaultRoutesPath = './src/pages';
+export const defaultRoutesPath = './src/routes';

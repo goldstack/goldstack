@@ -21,6 +21,9 @@
   ],
   "references": [
     {
+      "path": "../../../templates-lib/packages/template-ssr"
+    },
+    {
       "path": "../../../templates-lib/packages/utils-esbuild"
     },
     {

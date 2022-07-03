@@ -46,10 +46,10 @@
     "@goldstack/utils-aws-cli": "0.3.56",
     "@goldstack/utils-log": "0.2.15",
     "@goldstack/utils-sh": "0.4.32",
-    "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.1",
+    "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.11",
     "archiver": "^5.3.1",
     "aws-sdk": "2.1055.0",
-    "esbuild": "^0.14.34"
+    "esbuild": "^0.14.48"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.35",
