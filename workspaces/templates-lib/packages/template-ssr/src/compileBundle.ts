@@ -25,27 +25,57 @@ const getEsBuildConfig = (entryPoint: string): BuildOptions => {
   return { ...esbuildConfig, ...localEsbuildConfig };
 };
 
-export const compileBundle = async (
-  entryPoint: string
-): Promise<APIGatewayProxyResultV2> => {
+export interface CompileBundleResponse {
+  bundle: string;
+  sourceMap?: string;
+  metaFile?: string;
+}
+
+export const compileBundle = async ({
+  entryPoint,
+  metaFile,
+  sourceMap,
+}: {
+  entryPoint: string;
+  metaFile?: boolean;
+  sourceMap?: boolean;
+}): Promise<CompileBundleResponse> => {
   const res = await build({
     ...sharedConfig,
     entryPoints: [entryPoint],
-    // metafile: true,
+    metafile: metaFile,
+    sourcemap: sourceMap ? 'inline' : undefined,
     ...getEsBuildConfig(entryPoint),
     write: false,
   });
-  // if (!res.metafile) {
-  //   throw new Error(`Metafile for ${entryPoint} not defined.`);
-  // }
-  // write(
-  //   JSON.stringify(res.metafile),
-  //   `./distLambda/zips/${functionName}.meta.json`
-  // );
 
-  // for (const out of res.outputFiles) {
-  //   console.log(out.path, out.contents);
-  // }
+  let result: CompileBundleResponse = {
+    bundle: Buffer.from(res.outputFiles[0].contents).toString('utf-8'),
+  };
+
+  if (metaFile) {
+    result = {
+      ...result,
+      metaFile: JSON.stringify(res.metafile),
+    };
+  }
+
+  if (sourceMap) {
+    result = {
+      ...result,
+      sourceMap: extractSourceMap(result.bundle),
+    };
+  }
+
+  return result;
+};
+
+export const bundleResponse = async ({
+  entryPoint,
+}: {
+  entryPoint: string;
+}): Promise<APIGatewayProxyResultV2> => {
+  const res = await compileBundle({ entryPoint });
 
   return {
     statusCode: 201,
@@ -53,11 +83,22 @@ export const compileBundle = async (
       'Content-Type': 'application/javascript',
       SourceMap: '?resource=sourcemap',
     },
-    body: Buffer.from(res.outputFiles[0].contents).toString('utf-8'),
+    body: res.bundle,
   };
 };
 
-export const compileSourceMap = async ({
+const extractSourceMap = (output: string): string => {
+  const marker = '//# sourceMappingURL=data:application/json;base64,';
+  const startContent = output.indexOf(marker) + marker.length;
+  const sourceMapBase64Data = output.substring(startContent);
+
+  const sourceMapData = Buffer.from(sourceMapBase64Data, 'base64').toString(
+    'utf-8'
+  );
+  return sourceMapData;
+};
+
+export const sourceMapResponse = async ({
   entryPoint,
 }: {
   entryPoint: string;
@@ -70,17 +111,8 @@ export const compileSourceMap = async ({
     write: false,
   });
 
-  const marker = '//# sourceMappingURL=data:application/json;base64,';
-
   const output = Buffer.from(res.outputFiles[0].contents).toString('utf-8');
-
-  const startContent = output.indexOf(marker) + marker.length;
-
-  const sourceMapBase64Data = output.substring(startContent);
-
-  const sourceMapData = Buffer.from(sourceMapBase64Data, 'base64').toString(
-    'utf-8'
-  );
+  const sourceMapData = extractSourceMap(output);
 
   return {
     statusCode: 201,

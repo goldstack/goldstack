@@ -18,7 +18,11 @@ export { deployFunction } from './deployFunction';
 export type { DeployFunctionsParams } from './deployFunctions';
 export { deployFunctions } from './deployFunctions';
 
-export { buildFunctions } from './buildFunctions';
+export {
+  buildFunctions,
+  getOutDirForLambda,
+  getOutFileForLambda,
+} from './buildFunctions';
 
 export {
   generateLambdaConfig,

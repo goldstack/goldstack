@@ -22,27 +22,22 @@ export const renderPage = async ({
   renderDocument: (props: RenderDocumentProps) => string;
   element: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
 }): Promise<APIGatewayProxyResultV2> => {
-  if (
-    event.queryStringParameters &&
-    event.queryStringParameters['resource'] &&
-    event.queryStringParameters['resource'].indexOf('js') > -1
-  ) {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    return require(excludeInBundle('./compileBundle')).compileBundle(
-      entryPoint
-    );
+  if (event.queryStringParameters && event.queryStringParameters['resource']) {
+    if (event.queryStringParameters['resource'].indexOf('js') > -1) {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      return require(excludeInBundle('./compileBundle')).bundleResponse({
+        entryPoint,
+      });
+    }
+
+    if (event.queryStringParameters['resource'].indexOf('sourcemap') > -1) {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      return require(excludeInBundle('./compileBundle')).sourceMapResponse({
+        entryPoint,
+      });
+    }
   }
 
-  if (
-    event.queryStringParameters &&
-    event.queryStringParameters['resource'] &&
-    event.queryStringParameters['resource'].indexOf('sourcemap') > -1
-  ) {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    return require(excludeInBundle('./compileBundle')).compileSourceMap({
-      entryPoint,
-    });
-  }
   const page = renderToString(element);
 
   const document = renderDocument({

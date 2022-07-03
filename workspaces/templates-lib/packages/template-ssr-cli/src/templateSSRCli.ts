@@ -15,6 +15,7 @@ import {
   deployFunctions,
 } from '@goldstack/utils-aws-lambda';
 import { defaultRoutesPath } from './templateSSRConsts';
+import { buildBundles } from './buildBundles';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
@@ -69,11 +70,17 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'build') {
+      const lambdaNamePrefix = packageConfig.getDeployment(opArgs[0])
+        .configuration.lambdaNamePrefix;
       await buildFunctions({
         routesDir: defaultRoutesPath,
         configs: lambdaRoutes,
-        lambdaNamePrefix: packageConfig.getDeployment(opArgs[0]).configuration
-          .lambdaNamePrefix,
+        lambdaNamePrefix,
+      });
+      await buildBundles({
+        routesDir: defaultRoutesPath,
+        configs: lambdaRoutes,
+        lambdaNamePrefix,
       });
       return;
     }
