@@ -1,7 +1,5 @@
 import React from 'react';
 
-import ReactDOM from 'react-dom';
-
 import {
   Handler,
   APIGatewayProxyEventV2,
@@ -9,8 +7,7 @@ import {
 } from 'aws-lambda';
 
 import { renderDocument } from './../_document';
-
-import { renderPage } from '@goldstack/template-ssr';
+import { renderPage, hydrate } from '@goldstack/template-ssr';
 
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
@@ -31,7 +28,6 @@ const Index = (): JSX.Element => {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const handler: ProxyHandler = async (event, context) => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   return renderPage({
     element: <Index />,
     entryPoint: __filename,
@@ -40,18 +36,6 @@ export const handler: ProxyHandler = async (event, context) => {
   });
 };
 
-function isServer(): boolean {
-  return !(typeof window != 'undefined' && window.document);
-}
-
-const hydrate = (): void => {
-  const node = document.getElementById('root');
-
-  ReactDOM.hydrate(<Index />, node);
-};
-
-if (!isServer()) {
-  hydrate();
-}
+hydrate(<Index />);
 
 export default Index;
