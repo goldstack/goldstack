@@ -11,7 +11,7 @@ import { renderPage, hydrate } from '@goldstack/template-ssr';
 
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
-const Index = (): JSX.Element => {
+const Index = (props: { message: string }): JSX.Element => {
   return (
     <>
       <div
@@ -20,7 +20,7 @@ const Index = (): JSX.Element => {
           throw new Error('Havent seen this');
         }}
       >
-        Hello, world!
+        {props.message}
       </div>
     </>
   );
@@ -29,13 +29,17 @@ const Index = (): JSX.Element => {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const handler: ProxyHandler = async (event, context) => {
   return renderPage({
-    element: <Index />,
+    component: Index,
+    properties: {
+      message: 'Hi there',
+      dummy: 123,
+    },
     entryPoint: __filename,
     event: event,
     renderDocument,
   });
 };
 
-hydrate(<Index />);
+hydrate(Index);
 
 export default Index;

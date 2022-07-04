@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 
 import type {
   APIGatewayProxyEventV2,
@@ -16,19 +16,21 @@ export interface RenderDocumentProps {
   renderedHtml: string;
 }
 
-export interface RenderPageProps {
+export interface RenderPageProps<PropType> {
   entryPoint: string;
   event: APIGatewayProxyEventV2;
   renderDocument: (props: RenderDocumentProps) => string;
-  element: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
+  component: React.FunctionComponent<PropType>;
+  properties: PropType;
 }
 
-export const renderPage = async ({
+export const renderPage = async <PropType>({
   entryPoint,
   event,
   renderDocument,
-  element,
-}: RenderPageProps): Promise<APIGatewayProxyResultV2> => {
+  component,
+  properties,
+}: RenderPageProps<PropType>): Promise<APIGatewayProxyResultV2> => {
   if (event.queryStringParameters && event.queryStringParameters['resource']) {
     if (event.queryStringParameters['resource'].indexOf('js') > -1) {
       if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
@@ -39,13 +41,16 @@ export const renderPage = async ({
             'Content-Type': 'application/javascript',
             SourceMap: '?resource=sourcemap',
           },
-          body: readFileSync(clientBundleFileName, 'utf-8'),
+          body: `window.initialProperties=${JSON.stringify(
+            properties
+          )};${readFileSync(clientBundleFileName, 'utf-8')}`,
         };
       } else {
         // if not running in Lambda build bundle dynamically
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         return require(excludeInBundle('./compileBundle')).bundleResponse({
           entryPoint,
+          initialProperties: properties,
         });
       }
     }
@@ -69,7 +74,7 @@ export const renderPage = async ({
     }
   }
 
-  const page = renderToString(element);
+  const page = renderToString(React.createElement(component, properties));
 
   const document = renderDocument({
     bundledJsPath: '?resource=js',

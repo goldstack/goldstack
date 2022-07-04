@@ -39,10 +39,12 @@ export const compileBundle = async ({
   entryPoint,
   metaFile,
   sourceMap,
+  initialProperties,
 }: {
   entryPoint: string;
   metaFile?: boolean;
   sourceMap?: boolean;
+  initialProperties?: any;
 }): Promise<CompileBundleResponse> => {
   const res = await build({
     ...sharedConfig,
@@ -55,8 +57,19 @@ export const compileBundle = async ({
 
   const output = Buffer.from(res.outputFiles[0].contents).toString('utf-8');
   let result: CompileBundleResponse = {
-    bundle: removeSourceMap(output),
+    bundle: '',
   };
+  if (!sourceMap) {
+    result.bundle = output;
+  } else {
+    result.bundle = removeSourceMap(output);
+  }
+
+  if (initialProperties) {
+    result.bundle = `window.initialProperties = ${JSON.stringify(
+      initialProperties
+    )};${result.bundle}`;
+  }
 
   if (metaFile) {
     result = {
@@ -77,10 +90,12 @@ export const compileBundle = async ({
 
 export const bundleResponse = async ({
   entryPoint,
+  initialProperties,
 }: {
   entryPoint: string;
+  initialProperties?: any;
 }): Promise<APIGatewayProxyResultV2> => {
-  const res = await compileBundle({ entryPoint });
+  const res = await compileBundle({ entryPoint, initialProperties });
 
   return {
     statusCode: 201,
