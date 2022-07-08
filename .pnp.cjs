@@ -337,6 +337,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates-management/packages/utils-template-test"\
       },\
       {\
+        "name": "lambda-compression",\
+        "reference": "workspace:workspaces/utils/packages/lambda-compression"\
+      },\
+      {\
         "name": "@goldstack/utils-cli",\
         "reference": "workspace:workspaces/utils/packages/utils-cli"\
       },\
@@ -470,6 +474,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/utils-yarn", ["workspace:workspaces/utils/packages/utils-yarn"]],\
       ["apps", ["workspace:workspaces/apps"]],\
       ["docs", ["workspace:workspaces/docs"]],\
+      ["lambda-compression", ["workspace:workspaces/utils/packages/lambda-compression"]],\
       ["root", ["workspace:."]],\
       ["templates", ["workspace:workspaces/templates"]],\
       ["templates-lib", ["workspace:workspaces/templates-lib"]],\
@@ -3235,6 +3240,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.6"],\
             ["@types/yargs", "npm:17.0.10"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
+            ["lambda-compression", "workspace:workspaces/utils/packages/lambda-compression"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
@@ -15843,6 +15849,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["klona", "npm:2.0.4"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lambda-compression", [\
+        ["workspace:workspaces/utils/packages/lambda-compression", {\
+          "packageLocation": "./workspaces/utils/packages/lambda-compression/",\
+          "packageDependencies": [\
+            ["lambda-compression", "workspace:workspaces/utils/packages/lambda-compression"],\
+            ["@types/jest", "npm:27.5.1"],\
+            ["@types/node", "npm:17.0.33"],\
+            ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
+            ["typescript", "patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"]\
+          ],\
+          "linkType": "SOFT"\
         }]\
       ]],\
       ["last-run", [\

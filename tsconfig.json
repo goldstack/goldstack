@@ -83,6 +83,9 @@
       "path": "workspaces/templates/packages/app-nextjs"
     },
     {
+      "path": "workspaces/templates/packages/app-nextjs-bootstrap"
+    },
+    {
       "path": "workspaces/templates/packages/docker-image-aws"
     },
     {
@@ -264,6 +267,9 @@
     },
     {
       "path": "workspaces/templates-management/packages/utils-template-test"
+    },
+    {
+      "path": "workspaces/utils/packages/lambda-compression"
     },
     {
       "path": "workspaces/utils/packages/utils-cli"
