@@ -872,7 +872,7 @@ __metadata:
     "@testing-library/react": ^10.0.4
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^18.0.14
+    "@types/react": ^18.0.15
     "@types/testing-library__jest-dom": ^5.9.1
     "@types/testing-library__react": ^10.0.1
     concurrently: ^5.2.0
@@ -912,7 +912,7 @@ __metadata:
     "@testing-library/react": ^10.0.4
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^18.0.14
+    "@types/react": ^18.0.15
     "@types/testing-library__jest-dom": ^5.9.1
     "@types/testing-library__react": ^10.0.1
     concurrently: ^5.2.0
@@ -1017,7 +1017,7 @@ __metadata:
     "@types/cheerio": ^0.22.31
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^18.0.14
+    "@types/react": ^18.0.15
     "@types/styled-components": ^5.1.25
     "@types/testing-library__jest-dom": ^5.9.1
     "@types/testing-library__react": ^10.0.1
@@ -1621,7 +1621,7 @@ __metadata:
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
     "@types/node-fetch": 2
-    "@types/react": ^18.0.14
+    "@types/react": ^18.0.15
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
     date-fns: ^2.28.0
     esbuild: ^0.14.48
@@ -2315,7 +2315,7 @@ __metadata:
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^18.0.14
+    "@types/react": ^18.0.15
     "@types/yargs": ^17.0.10
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
     esbuild: ^0.14.48
@@ -2349,8 +2349,8 @@ __metadata:
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^18.0.14
-    "@types/react-dom": ^18
+    "@types/react": ^18.0.15
+    "@types/react-dom": ^18.0.6
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
     react: ^18.2.0
@@ -2915,7 +2915,7 @@ __metadata:
     "@goldstack/utils-git": 0.1.35
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^18.0.14
+    "@types/react": ^18.0.15
     jest: ^28.1.0
     react: ^18.2.0
     rimraf: ^3.0.2
@@ -4378,15 +4378,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18":
-  version: 18.0.5
-  resolution: "@types/react-dom@npm:18.0.5"
-  dependencies:
-    "@types/react": "*"
-  checksum: cd48b81950f499b52a3f0c08261f00046f9b7c96699fa249c9664e257e820daf6ecac815cd1028cebc9d105094adc39d047d1efd79214394b8b2d515574c0787
-  languageName: node
-  linkType: hard
-
 "@types/react-dom@npm:^18.0.6":
   version: 18.0.6
   resolution: "@types/react-dom@npm:18.0.6"
@@ -4432,17 +4423,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 4ee41e0c8d0e938f501f80ac75a5ee70b5e8cd5968a1f764960bf7b2694fd0d8ca01345f00325617130643b4af6e072bb3ade023dbc2bd2db7e73504b355b8d9
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^18.0.14":
-  version: 18.0.14
-  resolution: "@types/react@npm:18.0.14"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: 608eb57a383eedc54c79949673e5e8314f6b0c61542bff58721c8c47a18c23e2832e77c656050c2c2c004b62cf25582136c7c56fe1b6263a285c065fae31dbcf
   languageName: node
   linkType: hard
 
