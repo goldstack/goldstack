@@ -120,7 +120,7 @@ jobs:
 
       - name: Test utilities
         run: |
-          cd workspaces/utilities
+          cd workspaces/utils
           yarn test-ci
           cd ../..
 
