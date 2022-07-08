@@ -100,6 +100,31 @@ jobs:
         run: |
           yarn compile
 
+
+  test-utilities:
+    name: 'Utilities Test'
+    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.11
+
+      - name: Install
+        run: |
+          yarn install
+
+      - name: Test utilities
+        run: |
+          cd workspaces/utilities
+          yarn test-ci
+          cd ../..
+
+
   test-libraries:
     name: 'Libraries Test'
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
