@@ -47,6 +47,9 @@
       "path": "workspaces/templates-management"
     },
     {
+      "path": "workspaces/utils"
+    },
+    {
       "path": "workspaces/apps/packages/goldstack-api"
     },
     {
@@ -161,6 +164,9 @@
       "path": "workspaces/templates-lib/packages/template-ssr-cli"
     },
     {
+      "path": "workspaces/templates-lib/packages/template-ssr-server"
+    },
+    {
       "path": "workspaces/templates-lib/packages/template-static-website-aws"
     },
     {
@@ -173,31 +179,10 @@
       "path": "workspaces/templates-lib/packages/utils-aws-lambda"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-cli"
-    },
-    {
       "path": "workspaces/templates-lib/packages/utils-config"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-docker"
-    },
-    {
       "path": "workspaces/templates-lib/packages/utils-docs"
-    },
-    {
-      "path": "workspaces/templates-lib/packages/utils-esbuild"
-    },
-    {
-      "path": "workspaces/templates-lib/packages/utils-git"
-    },
-    {
-      "path": "workspaces/templates-lib/packages/utils-json-to-ts"
-    },
-    {
-      "path": "workspaces/templates-lib/packages/utils-log"
-    },
-    {
-      "path": "workspaces/templates-lib/packages/utils-nodemonx"
     },
     {
       "path": "workspaces/templates-lib/packages/utils-package"
@@ -224,9 +209,6 @@
       "path": "workspaces/templates-lib/packages/utils-s3-deployment"
     },
     {
-      "path": "workspaces/templates-lib/packages/utils-sh"
-    },
-    {
       "path": "workspaces/templates-lib/packages/utils-template"
     },
     {
@@ -234,15 +216,6 @@
     },
     {
       "path": "workspaces/templates-lib/packages/utils-terraform-aws"
-    },
-    {
-      "path": "workspaces/templates-lib/packages/utils-track"
-    },
-    {
-      "path": "workspaces/templates-lib/packages/utils-typescript-references"
-    },
-    {
-      "path": "workspaces/templates-lib/packages/utils-yarn"
     },
     {
       "path": "workspaces/templates-management/packages/auth"
@@ -291,6 +264,39 @@
     },
     {
       "path": "workspaces/templates-management/packages/utils-template-test"
+    },
+    {
+      "path": "workspaces/utils/packages/utils-cli"
+    },
+    {
+      "path": "workspaces/utils/packages/utils-docker"
+    },
+    {
+      "path": "workspaces/utils/packages/utils-esbuild"
+    },
+    {
+      "path": "workspaces/utils/packages/utils-git"
+    },
+    {
+      "path": "workspaces/utils/packages/utils-json-to-ts"
+    },
+    {
+      "path": "workspaces/utils/packages/utils-log"
+    },
+    {
+      "path": "workspaces/utils/packages/utils-nodemonx"
+    },
+    {
+      "path": "workspaces/utils/packages/utils-sh"
+    },
+    {
+      "path": "workspaces/utils/packages/utils-track"
+    },
+    {
+      "path": "workspaces/utils/packages/utils-typescript-references"
+    },
+    {
+      "path": "workspaces/utils/packages/utils-yarn"
     }
   ]
 }

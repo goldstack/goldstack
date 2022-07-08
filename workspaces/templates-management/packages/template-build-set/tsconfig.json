@@ -30,13 +30,13 @@
       "path": "../template-repository"
     },
     {
-      "path": "../../../templates-lib/packages/utils-cli"
+      "path": "../../../utils/packages/utils-cli"
     },
     {
       "path": "../../../templates-lib/packages/utils-config"
     },
     {
-      "path": "../../../templates-lib/packages/utils-git"
+      "path": "../../../utils/packages/utils-git"
     },
     {
       "path": "../../../templates-lib/packages/utils-package"
@@ -45,7 +45,7 @@
       "path": "../../../templates-lib/packages/utils-project"
     },
     {
-      "path": "../../../templates-lib/packages/utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     },
     {
       "path": "../../../templates-lib/packages/utils-template"

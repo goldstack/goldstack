@@ -16,10 +16,10 @@
       "path": "../infra-aws"
     },
     {
-      "path": "../utils-cli"
+      "path": "../../../utils/packages/utils-cli"
     },
     {
-      "path": "../utils-esbuild"
+      "path": "../../../utils/packages/utils-esbuild"
     },
     {
       "path": "../utils-package"
@@ -34,7 +34,7 @@
       "path": "../utils-terraform-aws"
     },
     {
-      "path": "../utils-git"
+      "path": "../../../utils/packages/utils-git"
     },
     {
       "path": "../utils-package-config-generate"

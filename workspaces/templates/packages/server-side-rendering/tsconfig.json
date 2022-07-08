@@ -24,7 +24,7 @@
       "path": "../../../templates-lib/packages/template-ssr"
     },
     {
-      "path": "../../../templates-lib/packages/utils-esbuild"
+      "path": "../../../utils/packages/utils-esbuild"
     },
     {
       "path": "../../../templates-lib/packages/template-ssr-cli"

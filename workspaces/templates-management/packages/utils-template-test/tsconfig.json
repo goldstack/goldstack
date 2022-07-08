@@ -24,13 +24,13 @@
       "path": "../../../templates-lib/packages/utils-package"
     },
     {
-      "path": "../../../templates-lib/packages/utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     },
     {
       "path": "../../../templates-lib/packages/utils-template"
     },
     {
-      "path": "../../../templates-lib/packages/utils-yarn"
+      "path": "../../../utils/packages/utils-yarn"
     }
   ]
 }

@@ -10,16 +10,16 @@
   },
   "references": [
     {
-      "path": "../../../templates-lib/packages/utils-cli"
+      "path": "../../../utils/packages/utils-cli"
     },
     {
       "path": "../../../templates-lib/packages/utils-docs"
     },
     {
-      "path": "../../../templates-lib/packages/utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     },
     {
-      "path": "../../../templates-lib/packages/utils-git"
+      "path": "../../../utils/packages/utils-git"
     }
   ]
 }

@@ -12,7 +12,7 @@
       "path": "../utils-aws-lambda"
     },
     {
-      "path": "../utils-git"
+      "path": "../../../utils/packages/utils-git"
     }
   ]
 }

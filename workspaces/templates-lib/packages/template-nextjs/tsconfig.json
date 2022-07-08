@@ -25,13 +25,13 @@
       "path": "../utils-aws-lambda"
     },
     {
-      "path": "../utils-cli"
+      "path": "../../../utils/packages/utils-cli"
     },
     {
       "path": "../utils-config"
     },
     {
-      "path": "../utils-log"
+      "path": "../../../utils/packages/utils-log"
     },
     {
       "path": "../utils-package"
@@ -40,7 +40,7 @@
       "path": "../utils-package-config"
     },
     {
-      "path": "../utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     },
     {
       "path": "../utils-template"
@@ -52,7 +52,7 @@
       "path": "../../../docs/packages/utils-docs-cli"
     },
     {
-      "path": "../utils-git"
+      "path": "../../../utils/packages/utils-git"
     },
     {
       "path": "../utils-package-config-generate"

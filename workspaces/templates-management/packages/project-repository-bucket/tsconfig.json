@@ -15,10 +15,10 @@
       "path": "../../../templates-lib/packages/template-s3"
     },
     {
-      "path": "../../../templates-lib/packages/utils-git"
+      "path": "../../../utils/packages/utils-git"
     },
     {
-      "path": "../../../templates-lib/packages/utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     },
     {
       "path": "../../../templates-lib/packages/template-s3-cli"

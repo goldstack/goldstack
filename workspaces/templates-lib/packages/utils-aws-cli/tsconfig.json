@@ -12,16 +12,16 @@
       "path": "../infra-aws"
     },
     {
-      "path": "../utils-docker"
+      "path": "../../../utils/packages/utils-docker"
     },
     {
-      "path": "../utils-log"
+      "path": "../../../utils/packages/utils-log"
     },
     {
-      "path": "../utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     },
     {
-      "path": "../utils-git"
+      "path": "../../../utils/packages/utils-git"
     }
   ]
 }

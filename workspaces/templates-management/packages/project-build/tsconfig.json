@@ -18,7 +18,7 @@
       "path": "../../../templates-lib/packages/utils-config"
     },
     {
-      "path": "../../../templates-lib/packages/utils-log"
+      "path": "../../../utils/packages/utils-log"
     },
     {
       "path": "../../../templates-lib/packages/utils-package"
@@ -27,7 +27,7 @@
       "path": "../../../templates-lib/packages/utils-project"
     },
     {
-      "path": "../../../templates-lib/packages/utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     },
     {
       "path": "../template-build"

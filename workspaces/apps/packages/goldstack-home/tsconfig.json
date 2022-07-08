@@ -47,7 +47,7 @@
       "path": "../../../templates-lib/packages/utils-project"
     },
     {
-      "path": "../../../templates-lib/packages/utils-track"
+      "path": "../../../utils/packages/utils-track"
     },
     {
       "path": "../../../templates-lib/packages/template-nextjs"
@@ -56,7 +56,7 @@
       "path": "../../../docs/packages/utils-docs-cli"
     },
     {
-      "path": "../../../templates-lib/packages/utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     }
   ]
 }

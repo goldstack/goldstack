@@ -50,10 +50,12 @@ const BootstrapApp = ({ Component, pageProps }): JSX.Element => {
       }
     };
   }, [router.events]);
+  // see https://github.com/styled-components/styled-components/issues/3731
+  const ThemeProviderPatched = ThemeProvider as any;
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProviderPatched theme={theme}>
       <Component {...pageProps} />
-    </ThemeProvider>
+    </ThemeProviderPatched>
   );
 };
 

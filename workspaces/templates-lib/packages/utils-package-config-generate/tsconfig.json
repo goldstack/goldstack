@@ -9,7 +9,7 @@
   },
   "references": [
     {
-      "path": "../utils-git"
+      "path": "../../../utils/packages/utils-git"
     }
   ]
 }
