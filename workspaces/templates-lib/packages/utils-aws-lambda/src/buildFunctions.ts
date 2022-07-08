@@ -58,6 +58,9 @@ export const buildFunctions = async ({
       format: 'cjs',
       target: 'node16.0',
       treeShaking: true,
+      define: {
+        'process.env.NODE_ENV': '"production"',
+      }, // see https://github.com/evanw/esbuild/issues/2377
       sourcemap: true,
       outfile: getOutFileForLambda(config),
       metafile: true,
