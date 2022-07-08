@@ -1,76 +1,30 @@
-import { awsCli } from '@goldstack/utils-aws-cli';
-import { zip, rmSafe } from '@goldstack/utils-sh';
-
-export {
-  readLambdaConfig,
-  RouteType,
-} from './generate/collectLambdasFromFiles';
+export { readLambdaConfig } from './generate/collectLambdasFromFiles';
 
 export { generateFunctionName } from './generate/generateFunctionName';
 
-export type { LambdaConfig } from './generate/collectLambdasFromFiles';
+export type { LambdaConfig } from './types/LambdaConfig';
+export { RouteType } from './types/LambdaConfig';
 
-import AWS from 'aws-sdk';
+export type {
+  LambdaApiDeploymentConfiguration,
+  APIDomain,
+  CorsHeader,
+  HostedZoneDomain,
+} from './types/LambdaDeploymentConfiguration';
 
-export interface DeployFunctionParams {
-  lambdaPackageDir: string;
-  targetArchiveName?: string;
-  awsCredentials: AWS.Credentials;
-  region: string;
-  functionName: string;
-}
+export type { DeployFunctionParams } from './deployFunction';
+export { deployFunction } from './deployFunction';
 
-export const deployFunction = async (
-  params: DeployFunctionParams
-): Promise<any> => {
-  const targetArchive =
-    params.targetArchiveName || `lambda-${new Date().getTime()}.zip`;
+export type { DeployFunctionsParams } from './deployFunctions';
+export { deployFunctions } from './deployFunctions';
 
-  await rmSafe(targetArchive);
-  await zip({
-    directory: params.lambdaPackageDir,
-    target: targetArchive,
-    mode: 511,
-  });
+export {
+  buildFunctions,
+  getOutDirForLambda,
+  getOutFileForLambda,
+} from './buildFunctions';
 
-  let fixedTargetArchive = targetArchive;
-
-  const isWin = process.platform === 'win32';
-
-  if (!isWin) {
-    fixedTargetArchive = fixedTargetArchive.replace(/\$/g, '\\$');
-  }
-
-  const deployResult = await awsCli({
-    credentials: params.awsCredentials,
-    region: params.region,
-    options: {
-      silent: true,
-    },
-    command: `lambda update-function-code --function-name ${params.functionName} --zip-file fileb://${fixedTargetArchive}`,
-  });
-  if (!params.targetArchiveName) {
-    await rmSafe(targetArchive);
-  }
-
-  // wait until lambda becomes active
-  let counter = 0;
-  let state = '';
-  while (counter < 20 && state !== 'Active') {
-    const res = await awsCli({
-      credentials: params.awsCredentials,
-      region: params.region,
-      options: {
-        silent: true,
-      },
-      command: `lambda get-function --function-name ${params.functionName}`,
-    });
-    const data = JSON.parse(res);
-    state = data.Configuration.State;
-    counter++;
-  }
-  if (counter >= 20) {
-    throw new Error(`Function was still in state '${state}' after deployment`);
-  }
-  return JSON.parse(deployResult);
-};
+export {
+  generateLambdaConfig,
+  validateDeployment,
+} from './generateLambdaConfig';

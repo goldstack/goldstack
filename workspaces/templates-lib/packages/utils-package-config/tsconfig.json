@@ -18,10 +18,10 @@
       "path": "../utils-package"
     },
     {
-      "path": "../utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     },
     {
-      "path": "../utils-git"
+      "path": "../../../utils/packages/utils-git"
     }
   ]
 }

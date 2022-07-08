@@ -193,8 +193,14 @@ export const injectGatewayResultIntoResponse = (
     if (structuredResult.headers) {
       resp.set(structuredResult.headers);
     }
-    if (!structuredResult.headers?.['content-type']) {
+
+    const contentType =
+      structuredResult.headers?.['content-type'] ||
+      structuredResult.headers?.['Content-Type'];
+    if (!contentType) {
       resp.contentType('application/json');
+    } else {
+      // content type would be set by headers above
     }
     if (structuredResult.cookies) {
       structuredResult.cookies.forEach((val) => {
@@ -205,7 +211,7 @@ export const injectGatewayResultIntoResponse = (
       });
     }
     if (structuredResult.body) {
-      resp.json(JSON.parse(structuredResult.body || ''));
+      resp.send(structuredResult.body);
     } else {
       resp.end();
     }

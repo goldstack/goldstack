@@ -13,7 +13,7 @@
       "path": "../template-email-send"
     },
     {
-      "path": "../utils-cli"
+      "path": "../../../utils/packages/utils-cli"
     },
     {
       "path": "../utils-package"
@@ -28,7 +28,7 @@
       "path": "../utils-terraform-aws"
     },
     {
-      "path": "../utils-git"
+      "path": "../../../utils/packages/utils-git"
     },
     {
       "path": "../utils-package-config-generate"

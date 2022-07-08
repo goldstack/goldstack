@@ -25,7 +25,7 @@
       "path": "../../../templates-lib/packages/utils-package"
     },
     {
-      "path": "../../../templates-lib/packages/utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     },
     {
       "path": "../../../templates-lib/packages/utils-template"

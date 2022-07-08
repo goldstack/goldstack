@@ -1,0 +1,26 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "./src/**/*",
+    "./scripts/**/*"
+  ],
+  "compilerOptions": {
+    "incremental": true,
+    "noEmit": false,
+    "declarationMap": false,
+    "jsx": "react",
+    "isolatedModules": false,
+    "module": "CommonJS",
+    "target": "es5",
+    "types": [
+      "node",
+      "dom"
+    ],
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "outDir": "dist",
+    "baseUrl": "."
+  }
+}

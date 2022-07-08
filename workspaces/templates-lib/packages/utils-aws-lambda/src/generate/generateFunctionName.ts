@@ -1,4 +1,4 @@
-import { LambdaConfig } from './collectLambdasFromFiles';
+import type { LambdaConfig } from './../types/LambdaConfig';
 import crypto from 'crypto';
 
 const INDEX_MARKER = '__index';

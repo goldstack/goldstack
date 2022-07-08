@@ -163,12 +163,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-annotate-as-pure@npm:^7.0.0":
-  version: 7.10.4
-  resolution: "@babel/helper-annotate-as-pure@npm:7.10.4"
+"@babel/helper-annotate-as-pure@npm:^7.16.0":
+  version: 7.18.6
+  resolution: "@babel/helper-annotate-as-pure@npm:7.18.6"
   dependencies:
-    "@babel/types": ^7.10.4
-  checksum: a0b82b2ed731adc173db5dcc53731b7ab6de4cbe1a66908badcf492889fc1e86c17e1d482aabc6b5dde0453caf8024329485d3e2ba3e81056951720862ab8bbf
+    "@babel/types": ^7.18.6
+  checksum: 88ccd15ced475ef2243fdd3b2916a29ea54c5db3cd0cfabf9d1d29ff6e63b7f7cd1c27264137d7a40ac2e978b9b9a542c332e78f40eb72abe737a7400788fc1b
   languageName: node
   linkType: hard
 
@@ -254,6 +254,15 @@ __metadata:
   dependencies:
     "@babel/types": ^7.10.4
   checksum: 051e75c8052881316c654b6d58a9f9743317c63f9230badec565095c9102448620bc3038461d2853dace841d1a271c84acb958dd7c39d74af1b2dda4f649b2b0
+  languageName: node
+  linkType: hard
+
+"@babel/helper-module-imports@npm:^7.16.0":
+  version: 7.18.6
+  resolution: "@babel/helper-module-imports@npm:7.18.6"
+  dependencies:
+    "@babel/types": ^7.18.6
+  checksum: f393f8a3b3304b1b7a288a38c10989de754f01d29caf62ce7c4e5835daf0a27b81f3ac687d9d2780d39685aae7b55267324b512150e7b2be967b0c493b6a1def
   languageName: node
   linkType: hard
 
@@ -355,6 +364,13 @@ __metadata:
   version: 7.16.7
   resolution: "@babel/helper-validator-identifier@npm:7.16.7"
   checksum: dbb3db9d184343152520a209b5684f5e0ed416109cde82b428ca9c759c29b10c7450657785a8b5c5256aa74acc6da491c1f0cf6b784939f7931ef82982051b69
+  languageName: node
+  linkType: hard
+
+"@babel/helper-validator-identifier@npm:^7.18.6":
+  version: 7.18.6
+  resolution: "@babel/helper-validator-identifier@npm:7.18.6"
+  checksum: e295254d616bbe26e48c196a198476ab4d42a73b90478c9842536cf910ead887f5af6b5c4df544d3052a25ccb3614866fa808dc1e3a5a4291acd444e243c0648
   languageName: node
   linkType: hard
 
@@ -741,6 +757,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/types@npm:^7.18.6":
+  version: 7.18.8
+  resolution: "@babel/types@npm:7.18.8"
+  dependencies:
+    "@babel/helper-validator-identifier": ^7.18.6
+    to-fast-properties: ^2.0.0
+  checksum: a485531faa9ff3b83ea94ba6502321dd66e39202c46d7765e4336cb4aff2ff69ebc77d97b17e21331a8eedde1f5490ce00e8a430c1041fc26854d636e6701919
+  languageName: node
+  linkType: hard
+
 "@babel/types@npm:^7.8.3":
   version: 7.12.12
   resolution: "@babel/types@npm:7.12.12"
@@ -775,19 +801,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/is-prop-valid@npm:^0.8.8":
-  version: 0.8.8
-  resolution: "@emotion/is-prop-valid@npm:0.8.8"
+"@emotion/is-prop-valid@npm:^1.1.0":
+  version: 1.1.3
+  resolution: "@emotion/is-prop-valid@npm:1.1.3"
   dependencies:
-    "@emotion/memoize": 0.7.4
-  checksum: bb7ec6d48c572c540e24e47cc94fc2f8dec2d6a342ae97bc9c8b6388d9b8d283862672172a1bb62d335c02662afe6291e10c71e9b8642664a8b43416cdceffac
+    "@emotion/memoize": ^0.7.4
+  checksum: 511997c3bbaab5a967db65b65a111afc46c4aac8b3b87a436fd9e3dc2891829a9ada1405b77326f407d93934ee3b831e62248b498c071089312c5be080af75dd
   languageName: node
   linkType: hard
 
-"@emotion/memoize@npm:0.7.4":
-  version: 0.7.4
-  resolution: "@emotion/memoize@npm:0.7.4"
-  checksum: 4e3920d4ec95995657a37beb43d3f4b7d89fed6caa2b173a4c04d10482d089d5c3ea50bbc96618d918b020f26ed6e9c4026bbd45433566576c1f7b056c3271dc
+"@emotion/memoize@npm:^0.7.4":
+  version: 0.7.5
+  resolution: "@emotion/memoize@npm:0.7.5"
+  checksum: 83da8d4a7649a92c72f960817692bc6be13cc13e107b9f7e878d63766525ed4402881bfeb3cda61145c050281e7e260f114a0a2870515527346f2ef896b915b3
   languageName: node
   linkType: hard
 
@@ -846,7 +872,7 @@ __metadata:
     "@testing-library/react": ^10.0.4
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^16.9.49
+    "@types/react": ^18.0.15
     "@types/testing-library__jest-dom": ^5.9.1
     "@types/testing-library__react": ^10.0.1
     concurrently: ^5.2.0
@@ -857,15 +883,15 @@ __metadata:
     jest: ^28.1.0
     jest-environment-jsdom: ^28.1.0
     jest-transform-stub: ^2.0.0
-    next: ^12.1.0
+    next: ^12.2.1
     next-compose-plugins: ^2.2.1
     next-optimized-images: ^2.6.2
     next-transpile-modules: ^8.0.0
     node-sass: 7.0.0
-    react: ^17.0.2
+    react: ^18.2.0
     react-bootstrap: ^2.2.1
-    react-dom: ^17.0.2
-    react-is: ^17.0.2
+    react-dom: ^18.2.0
+    react-is: ^18.2.0
     reload: ^3.2.0
     rimraf: ^3.0.2
     swr: ^0.4.0
@@ -886,7 +912,7 @@ __metadata:
     "@testing-library/react": ^10.0.4
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^16.9.49
+    "@types/react": ^18.0.15
     "@types/testing-library__jest-dom": ^5.9.1
     "@types/testing-library__react": ^10.0.1
     concurrently: ^5.2.0
@@ -897,13 +923,13 @@ __metadata:
     jest: ^28.1.0
     jest-environment-jsdom: ^28.1.0
     jest-transform-stub: ^2.0.0
-    next: ^12.1.0
+    next: ^12.2.1
     next-compose-plugins: ^2.2.1
     next-optimized-images: ^2.6.2
     next-transpile-modules: ^8.0.0
-    react: ^17.0.2
-    react-dom: ^17.0.2
-    react-is: ^17.0.2
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    react-is: ^18.2.0
     reload: ^3.2.0
     rimraf: ^3.0.2
     swr: ^0.4.0
@@ -991,11 +1017,11 @@ __metadata:
     "@types/cheerio": ^0.22.31
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^16.9.49
-    "@types/styled-components": ^5.1.1
+    "@types/react": ^18.0.15
+    "@types/styled-components": ^5.1.25
     "@types/testing-library__jest-dom": ^5.9.1
     "@types/testing-library__react": ^10.0.1
-    babel-plugin-styled-components: ^1.10.7
+    babel-plugin-styled-components: ^2.0.7
     cheerio: 1.0.0-rc.10
     concurrently: ^5.2.0
     extracted-loader: ^1.0.7
@@ -1005,18 +1031,18 @@ __metadata:
     jest: ^28.1.0
     jest-environment-jsdom: ^28.1.0
     jest-transform-stub: ^2.0.0
-    next: ^12.1.0
+    next: ^12.2.1
     next-compose-plugins: ^2.2.1
     next-optimized-images: ^2.6.2
     next-transpile-modules: ^8.0.0
     node-sass: 7.0.0
-    react: ^17.0.2
+    react: ^18.2.0
     react-bootstrap: ^1.6.1
-    react-dom: ^17.0.2
-    react-is: ^17.0.2
+    react-dom: ^18.2.0
+    react-is: ^18.2.0
     reload: ^3.2.0
     rimraf: ^3.0.2
-    styled-components: ^5.1.1
+    styled-components: ^5.3.5
     swr: ^0.4.0
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
@@ -1102,12 +1128,12 @@ __metadata:
     "@types/supertest": ^2.0.10
     "@types/tsc-watch": ^4
     "@types/uuid": ^8.3.0
-    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.1
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
     aws-serverless-express: ^3.3.8
     cookie-parser: ^1.4.5
     cors: ^2.8.5
     crypto-random-string: ^3.2.0
-    esbuild: ^0.14.34
+    esbuild: ^0.14.48
     express: ^4.17.1
     express-requests-logger: ^3.0.2
     helmet: ^4.6.0
@@ -1170,13 +1196,14 @@ __metadata:
     "@testing-library/react": ^10.0.4
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^16.9.49
+    "@types/react": ^18.0.15
+    "@types/react-dom": ^18.0.6
     "@types/react-scrollable-anchor": ^0.6.0
-    "@types/styled-components": ^5.1.1
+    "@types/styled-components": ^5.1.25
     "@types/testing-library__jest-dom": ^5.9.1
     "@types/testing-library__react": ^10.0.1
     ajv: ^6.12.2
-    babel-plugin-styled-components: ^1.10.7
+    babel-plugin-styled-components: ^2.0.7
     concurrently: ^5.2.0
     data-uri-to-buffer: ^3.0.1
     extracted-loader: ^1.0.7
@@ -1187,19 +1214,19 @@ __metadata:
     jest: ^28.1.0
     jest-environment-jsdom: ^28.1.0
     jest-transform-stub: ^2.0.0
-    next: ^12.1.0
+    next: ^12.2.1
     next-compose-plugins: ^2.2.1
     next-optimized-images: ^2.6.2
     next-transpile-modules: ^8.0.0
     node-sass: 7.0.0
     nodemon: ^2.0.15
-    react: ^17.0.2
+    react: ^18.2.0
     react-bootstrap: ^1.6.1
-    react-dom: ^17.0.2
-    react-is: ^17.0.2
+    react-dom: ^18.2.0
+    react-is: ^18.2.0
     react-scrollable-anchor: ^0.6.1
     rimraf: ^3.0.2
-    styled-components: ^5.1.1
+    styled-components: ^5.3.5
     swr: ^0.4.0
     ts-jest: ^28.0.2
     ts-json-schema-generator: ^1.0.0
@@ -1265,10 +1292,10 @@ __metadata:
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
     "@types/source-map-support": ^0.5.4
-    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.1
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
     aws-serverless-express: ^3.3.8
     cors: ^2.8.5
-    esbuild: ^0.14.34
+    esbuild: ^0.14.48
     express: ^4.17.1
     helmet: ^4.6.0
     jest: ^28.1.0
@@ -1349,9 +1376,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/nodemonx@0.3.33, @goldstack/nodemonx@workspace:workspaces/templates-lib/packages/utils-nodemonx":
+"@goldstack/nodemonx@0.3.33, @goldstack/nodemonx@workspace:workspaces/utils/packages/utils-nodemonx":
   version: 0.0.0-use.local
-  resolution: "@goldstack/nodemonx@workspace:workspaces/templates-lib/packages/utils-nodemonx"
+  resolution: "@goldstack/nodemonx@workspace:workspaces/utils/packages/utils-nodemonx"
   dependencies:
     "@goldstack/utils-git": 0.1.35
     "@goldstack/utils-log": 0.2.15
@@ -1580,6 +1607,39 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@goldstack/server-side-rendering@workspace:workspaces/templates/packages/server-side-rendering":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/server-side-rendering@workspace:workspaces/templates/packages/server-side-rendering"
+  dependencies:
+    "@goldstack/template-ssr": 0.1.0
+    "@goldstack/template-ssr-cli": 0.1.0
+    "@goldstack/utils-aws-http-api-local": 0.1.33
+    "@goldstack/utils-esbuild": 0.4.2
+    "@jest-mock/express": ^1.4.5
+    "@types/aws-lambda": ^8.10.88
+    "@types/aws-serverless-express": ^3.3.3
+    "@types/jest": ^27.5.1
+    "@types/node": ^17.0.33
+    "@types/node-fetch": 2
+    "@types/react": ^18.0.15
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
+    date-fns: ^2.28.0
+    esbuild: ^0.14.48
+    find-free-port: ^2.0.0
+    jest: ^28.1.0
+    node-fetch: 2.6.7
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    rimraf: ^3.0.2
+    source-map-support: ^0.5.21
+    supertest: ^4.0.2
+    ts-jest: ^28.0.2
+    ts-node: ^10.8.0
+    ts-node-dev: ^1.1.8
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
+
 "@goldstack/serverless-api@workspace:workspaces/templates/packages/serverless-api":
   version: 0.0.0-use.local
   resolution: "@goldstack/serverless-api@workspace:workspaces/templates/packages/serverless-api"
@@ -1593,9 +1653,9 @@ __metadata:
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
     "@types/node-fetch": 2
-    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.1
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
     date-fns: ^2.28.0
-    esbuild: ^0.14.34
+    esbuild: ^0.14.48
     find-free-port: ^2.0.0
     jest: ^28.1.0
     node-fetch: 2.6.7
@@ -1910,9 +1970,6 @@ __metadata:
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
     "@types/yargs": ^17.0.10
-    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.1
-    archiver: ^5.3.1
-    esbuild: ^0.14.34
     jest: ^28.1.0
     jest-pnp-resolver: ^1.2.2
     rimraf: ^3.0.2
@@ -1934,6 +1991,7 @@ __metadata:
   dependencies:
     "@goldstack/infra": 0.3.37
     "@goldstack/infra-aws": 0.3.46
+    "@goldstack/utils-aws-lambda": 0.1.31
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-git": 0.1.35
     "@goldstack/utils-package": 0.3.40
@@ -2203,6 +2261,109 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@goldstack/template-ssr-cli@0.1.0, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli"
+  dependencies:
+    "@goldstack/template-ssr": 0.1.0
+    "@goldstack/template-ssr-server": 0.1.0
+    "@goldstack/utils-aws-lambda": 0.1.31
+    "@goldstack/utils-cli": 0.2.14
+    "@goldstack/utils-docker": 0.3.39
+    "@goldstack/utils-docs-cli": 0.3.11
+    "@goldstack/utils-git": 0.1.35
+    "@goldstack/utils-log": 0.2.15
+    "@goldstack/utils-package": 0.3.40
+    "@goldstack/utils-package-config": 0.3.41
+    "@goldstack/utils-package-config-generate": 0.2.16
+    "@goldstack/utils-sh": 0.4.32
+    "@goldstack/utils-template": 0.3.36
+    "@goldstack/utils-terraform": 0.3.70
+    "@goldstack/utils-terraform-aws": 0.3.69
+    "@types/jest": ^27.5.1
+    "@types/node": ^17.0.33
+    "@types/yargs": ^17.0.10
+    jest: ^28.1.0
+    rimraf: ^3.0.2
+    source-map-support: ^0.5.21
+    ts-jest: ^28.0.2
+    ts-node: ^10.8.0
+    typescript: ^4.6.4
+    yargs: ^17.5.1
+  bin:
+    template: ./bin/template
+    template-s3: ./bin/template
+  languageName: unknown
+  linkType: soft
+
+"@goldstack/template-ssr-server@0.1.0, @goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server"
+  dependencies:
+    "@goldstack/infra": 0.3.37
+    "@goldstack/infra-aws": 0.3.46
+    "@goldstack/utils-aws-lambda": 0.1.31
+    "@goldstack/utils-docs-cli": 0.3.11
+    "@goldstack/utils-esbuild": 0.4.2
+    "@goldstack/utils-git": 0.1.35
+    "@goldstack/utils-package": 0.3.40
+    "@goldstack/utils-package-config-embedded": 0.4.4
+    "@goldstack/utils-package-config-generate": 0.2.16
+    "@goldstack/utils-sh": 0.4.32
+    "@goldstack/utils-template": 0.3.36
+    "@goldstack/utils-terraform": 0.3.70
+    "@types/aws-lambda": ^8.10.88
+    "@types/jest": ^27.5.1
+    "@types/node": ^17.0.33
+    "@types/react": ^18.0.15
+    "@types/yargs": ^17.0.10
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
+    esbuild: ^0.14.48
+    jest: ^28.1.0
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    rimraf: ^3.0.2
+    source-map-support: ^0.5.21
+    ts-jest: ^28.0.2
+    ts-node: ^10.8.0
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
+
+"@goldstack/template-ssr@0.1.0, @goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr"
+  dependencies:
+    "@goldstack/infra": 0.3.37
+    "@goldstack/infra-aws": 0.3.46
+    "@goldstack/template-ssr-server": 0.1.0
+    "@goldstack/utils-aws-lambda": 0.1.31
+    "@goldstack/utils-docs-cli": 0.3.11
+    "@goldstack/utils-esbuild": 0.4.2
+    "@goldstack/utils-git": 0.1.35
+    "@goldstack/utils-package": 0.3.40
+    "@goldstack/utils-package-config-embedded": 0.4.4
+    "@goldstack/utils-package-config-generate": 0.2.16
+    "@goldstack/utils-template": 0.3.36
+    "@goldstack/utils-terraform": 0.3.70
+    "@types/aws-lambda": ^8.10.88
+    "@types/jest": ^27.5.1
+    "@types/node": ^17.0.33
+    "@types/react": ^18.0.15
+    "@types/react-dom": ^18.0.6
+    "@types/yargs": ^17.0.10
+    jest: ^28.1.0
+    lambda-compression: 0.1.0
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    rimraf: ^3.0.2
+    source-map-support: ^0.5.21
+    ts-jest: ^28.0.2
+    ts-node: ^10.8.0
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
+
 "@goldstack/template-static-website-aws@0.3.101, @goldstack/template-static-website-aws@workspace:workspaces/templates-lib/packages/template-static-website-aws":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-static-website-aws@workspace:workspaces/templates-lib/packages/template-static-website-aws"
@@ -2300,13 +2461,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-aws-lambda@workspace:workspaces/templates-lib/packages/utils-aws-lambda"
   dependencies:
+    "@goldstack/infra-aws": 0.3.46
     "@goldstack/utils-aws-cli": 0.3.56
     "@goldstack/utils-git": 0.1.35
     "@goldstack/utils-log": 0.2.15
     "@goldstack/utils-sh": 0.4.32
+    "@types/aws-lambda": ^8.10.88
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
+    archiver: ^5.3.1
     aws-sdk: 2.1055.0
+    esbuild: ^0.14.48
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2314,9 +2480,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-cli@0.2.14, @goldstack/utils-cli@workspace:workspaces/templates-lib/packages/utils-cli":
+"@goldstack/utils-cli@0.2.14, @goldstack/utils-cli@workspace:workspaces/utils/packages/utils-cli":
   version: 0.0.0-use.local
-  resolution: "@goldstack/utils-cli@workspace:workspaces/templates-lib/packages/utils-cli"
+  resolution: "@goldstack/utils-cli@workspace:workspaces/utils/packages/utils-cli"
   dependencies:
     "@goldstack/utils-git": 0.1.35
     "@types/jest": ^27.5.1
@@ -2346,9 +2512,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-docker@0.3.39, @goldstack/utils-docker@workspace:workspaces/templates-lib/packages/utils-docker":
+"@goldstack/utils-docker@0.3.39, @goldstack/utils-docker@workspace:workspaces/utils/packages/utils-docker":
   version: 0.0.0-use.local
-  resolution: "@goldstack/utils-docker@workspace:workspaces/templates-lib/packages/utils-docker"
+  resolution: "@goldstack/utils-docker@workspace:workspaces/utils/packages/utils-docker"
   dependencies:
     "@goldstack/utils-git": 0.1.35
     "@goldstack/utils-sh": 0.4.32
@@ -2412,9 +2578,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-esbuild@0.4.2, @goldstack/utils-esbuild@workspace:workspaces/templates-lib/packages/utils-esbuild":
+"@goldstack/utils-esbuild@0.4.2, @goldstack/utils-esbuild@workspace:workspaces/utils/packages/utils-esbuild":
   version: 0.0.0-use.local
-  resolution: "@goldstack/utils-esbuild@workspace:workspaces/templates-lib/packages/utils-esbuild"
+  resolution: "@goldstack/utils-esbuild@workspace:workspaces/utils/packages/utils-esbuild"
   dependencies:
     "@goldstack/utils-git": 0.1.35
     "@types/jest": ^27.5.1
@@ -2426,9 +2592,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-git@0.1.35, @goldstack/utils-git@workspace:workspaces/templates-lib/packages/utils-git":
+"@goldstack/utils-git@0.1.35, @goldstack/utils-git@workspace:workspaces/utils/packages/utils-git":
   version: 0.0.0-use.local
-  resolution: "@goldstack/utils-git@workspace:workspaces/templates-lib/packages/utils-git"
+  resolution: "@goldstack/utils-git@workspace:workspaces/utils/packages/utils-git"
   dependencies:
     "@types/command-exists": ^1
     "@types/jest": ^27.5.1
@@ -2444,9 +2610,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-json-to-ts@0.3.33, @goldstack/utils-json-to-ts@workspace:workspaces/templates-lib/packages/utils-json-to-ts":
+"@goldstack/utils-json-to-ts@0.3.33, @goldstack/utils-json-to-ts@workspace:workspaces/utils/packages/utils-json-to-ts":
   version: 0.0.0-use.local
-  resolution: "@goldstack/utils-json-to-ts@workspace:workspaces/templates-lib/packages/utils-json-to-ts"
+  resolution: "@goldstack/utils-json-to-ts@workspace:workspaces/utils/packages/utils-json-to-ts"
   dependencies:
     "@goldstack/utils-git": 0.1.35
     "@goldstack/utils-log": 0.2.15
@@ -2465,9 +2631,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-log@0.2.15, @goldstack/utils-log@workspace:workspaces/templates-lib/packages/utils-log":
+"@goldstack/utils-log@0.2.15, @goldstack/utils-log@workspace:workspaces/utils/packages/utils-log":
   version: 0.0.0-use.local
-  resolution: "@goldstack/utils-log@workspace:workspaces/templates-lib/packages/utils-log"
+  resolution: "@goldstack/utils-log@workspace:workspaces/utils/packages/utils-log"
   dependencies:
     "@goldstack/utils-git": 0.1.35
     "@types/jest": ^27.5.1
@@ -2624,9 +2790,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-sh@0.4.32, @goldstack/utils-sh@workspace:workspaces/templates-lib/packages/utils-sh":
+"@goldstack/utils-sh@0.4.32, @goldstack/utils-sh@workspace:workspaces/utils/packages/utils-sh":
   version: 0.0.0-use.local
-  resolution: "@goldstack/utils-sh@workspace:workspaces/templates-lib/packages/utils-sh"
+  resolution: "@goldstack/utils-sh@workspace:workspaces/utils/packages/utils-sh"
   dependencies:
     "@goldstack/utils-git": 0.1.35
     "@goldstack/utils-log": 0.2.15
@@ -2743,25 +2909,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-track@0.1.17, @goldstack/utils-track@workspace:workspaces/templates-lib/packages/utils-track":
+"@goldstack/utils-track@0.1.17, @goldstack/utils-track@workspace:workspaces/utils/packages/utils-track":
   version: 0.0.0-use.local
-  resolution: "@goldstack/utils-track@workspace:workspaces/templates-lib/packages/utils-track"
+  resolution: "@goldstack/utils-track@workspace:workspaces/utils/packages/utils-track"
   dependencies:
     "@goldstack/utils-git": 0.1.35
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
-    "@types/react": ^16.9.49
+    "@types/react": ^18.0.15
     jest: ^28.1.0
-    react: ^17.0.2
+    react: ^18.2.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-typescript-references@0.2.2, @goldstack/utils-typescript-references@workspace:workspaces/templates-lib/packages/utils-typescript-references":
+"@goldstack/utils-typescript-references@0.2.2, @goldstack/utils-typescript-references@workspace:workspaces/utils/packages/utils-typescript-references":
   version: 0.0.0-use.local
-  resolution: "@goldstack/utils-typescript-references@workspace:workspaces/templates-lib/packages/utils-typescript-references"
+  resolution: "@goldstack/utils-typescript-references@workspace:workspaces/utils/packages/utils-typescript-references"
   dependencies:
     "@goldstack/utils-git": 0.1.35
     "@types/jest": ^27.5.1
@@ -2779,9 +2945,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-yarn@0.3.43, @goldstack/utils-yarn@workspace:workspaces/templates-lib/packages/utils-yarn":
+"@goldstack/utils-yarn@0.3.43, @goldstack/utils-yarn@workspace:workspaces/utils/packages/utils-yarn":
   version: 0.0.0-use.local
-  resolution: "@goldstack/utils-yarn@workspace:workspaces/templates-lib/packages/utils-yarn"
+  resolution: "@goldstack/utils-yarn@workspace:workspaces/utils/packages/utils-yarn"
   dependencies:
     "@goldstack/utils-docker": 0.3.39
     "@goldstack/utils-git": 0.1.35
@@ -3197,86 +3363,100 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/env@npm:12.1.0":
-  version: 12.1.0
-  resolution: "@next/env@npm:12.1.0"
-  checksum: 31037e019846a2c3eeb106d64d54084e0b86d1b9b92fdb7332eeb39d94cb4a8e11ddab1a088088f7aea7b60a4cb57781815539676fddedf4305f19f8c8bf5b7f
+"@next/env@npm:12.2.1":
+  version: 12.2.1
+  resolution: "@next/env@npm:12.2.1"
+  checksum: f1785a375e71aa3742a137de61fa63a3aa5f746f5edbd43bc9e8324ee664ca2bc1262d40c227a3ce9feb67431c14e088c3280665e695356cbfdea794e592f3a5
   languageName: node
   linkType: hard
 
-"@next/swc-android-arm64@npm:12.1.0":
-  version: 12.1.0
-  resolution: "@next/swc-android-arm64@npm:12.1.0"
+"@next/swc-android-arm-eabi@npm:12.2.1":
+  version: 12.2.1
+  resolution: "@next/swc-android-arm-eabi@npm:12.2.1"
+  conditions: os=android & cpu=arm
+  languageName: node
+  linkType: hard
+
+"@next/swc-android-arm64@npm:12.2.1":
+  version: 12.2.1
+  resolution: "@next/swc-android-arm64@npm:12.2.1"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-arm64@npm:12.1.0":
-  version: 12.1.0
-  resolution: "@next/swc-darwin-arm64@npm:12.1.0"
+"@next/swc-darwin-arm64@npm:12.2.1":
+  version: 12.2.1
+  resolution: "@next/swc-darwin-arm64@npm:12.2.1"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-x64@npm:12.1.0":
-  version: 12.1.0
-  resolution: "@next/swc-darwin-x64@npm:12.1.0"
+"@next/swc-darwin-x64@npm:12.2.1":
+  version: 12.2.1
+  resolution: "@next/swc-darwin-x64@npm:12.2.1"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm-gnueabihf@npm:12.1.0":
-  version: 12.1.0
-  resolution: "@next/swc-linux-arm-gnueabihf@npm:12.1.0"
+"@next/swc-freebsd-x64@npm:12.2.1":
+  version: 12.2.1
+  resolution: "@next/swc-freebsd-x64@npm:12.2.1"
+  conditions: os=freebsd & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@next/swc-linux-arm-gnueabihf@npm:12.2.1":
+  version: 12.2.1
+  resolution: "@next/swc-linux-arm-gnueabihf@npm:12.2.1"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-gnu@npm:12.1.0":
-  version: 12.1.0
-  resolution: "@next/swc-linux-arm64-gnu@npm:12.1.0"
-  conditions: os=linux & cpu=arm64
+"@next/swc-linux-arm64-gnu@npm:12.2.1":
+  version: 12.2.1
+  resolution: "@next/swc-linux-arm64-gnu@npm:12.2.1"
+  conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-musl@npm:12.1.0":
-  version: 12.1.0
-  resolution: "@next/swc-linux-arm64-musl@npm:12.1.0"
-  conditions: os=linux & cpu=arm64
+"@next/swc-linux-arm64-musl@npm:12.2.1":
+  version: 12.2.1
+  resolution: "@next/swc-linux-arm64-musl@npm:12.2.1"
+  conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-gnu@npm:12.1.0":
-  version: 12.1.0
-  resolution: "@next/swc-linux-x64-gnu@npm:12.1.0"
-  conditions: os=linux & cpu=x64
+"@next/swc-linux-x64-gnu@npm:12.2.1":
+  version: 12.2.1
+  resolution: "@next/swc-linux-x64-gnu@npm:12.2.1"
+  conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-musl@npm:12.1.0":
-  version: 12.1.0
-  resolution: "@next/swc-linux-x64-musl@npm:12.1.0"
-  conditions: os=linux & cpu=x64
+"@next/swc-linux-x64-musl@npm:12.2.1":
+  version: 12.2.1
+  resolution: "@next/swc-linux-x64-musl@npm:12.2.1"
+  conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-win32-arm64-msvc@npm:12.1.0":
-  version: 12.1.0
-  resolution: "@next/swc-win32-arm64-msvc@npm:12.1.0"
+"@next/swc-win32-arm64-msvc@npm:12.2.1":
+  version: 12.2.1
+  resolution: "@next/swc-win32-arm64-msvc@npm:12.2.1"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-win32-ia32-msvc@npm:12.1.0":
-  version: 12.1.0
-  resolution: "@next/swc-win32-ia32-msvc@npm:12.1.0"
+"@next/swc-win32-ia32-msvc@npm:12.2.1":
+  version: 12.2.1
+  resolution: "@next/swc-win32-ia32-msvc@npm:12.2.1"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@next/swc-win32-x64-msvc@npm:12.1.0":
-  version: 12.1.0
-  resolution: "@next/swc-win32-x64-msvc@npm:12.1.0"
+"@next/swc-win32-x64-msvc@npm:12.2.1":
+  version: 12.2.1
+  resolution: "@next/swc-win32-x64-msvc@npm:12.2.1"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -3494,6 +3674,15 @@ __metadata:
   version: 1.10.0
   resolution: "@stripe/stripe-js@npm:1.10.0"
   checksum: 28b7d1b85647f7852d4a7635e46b914d085b61f6824cee09a6e76eb8431c5ebdf4738303094494dff9e9ef9a0ffb1d4cc74b0f2ae9d3f5a7b7f67958cab2ee2e
+  languageName: node
+  linkType: hard
+
+"@swc/helpers@npm:0.4.2":
+  version: 0.4.2
+  resolution: "@swc/helpers@npm:0.4.2"
+  dependencies:
+    tslib: ^2.4.0
+  checksum: 0b8c86ad03b17b8fe57dc4498e25dc294ea6bc42558a6b92d8fcd789351dac80199409bef38a2e3ac06aae0fedddfc0ab9c34409acbf74e55d1bbbd74f68b6b7
   languageName: node
   linkType: hard
 
@@ -4190,12 +4379,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-native@npm:*":
-  version: 0.63.21
-  resolution: "@types/react-native@npm:0.63.21"
+"@types/react-dom@npm:^18.0.6":
+  version: 18.0.6
+  resolution: "@types/react-dom@npm:18.0.6"
   dependencies:
     "@types/react": "*"
-  checksum: 0c4c0943d92a02b8c7983ecf94bdf4683493155c0d42f8f67ccf5c785b51007a2b4ed893bf10006748847d42621c2db126ad8afaab82e119b5f15985adfa6ee5
+  checksum: db571047af1a567631758700b9f7d143e566df939cfe5fbf7535347cc0c726a1cdbb5e3f8566d076e54cf708b6c1166689de194a9ba09ee35efc9e1d45911685
   languageName: node
   linkType: hard
 
@@ -4238,13 +4427,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^16.9.49":
-  version: 16.9.51
-  resolution: "@types/react@npm:16.9.51"
+"@types/react@npm:^18.0.15":
+  version: 18.0.15
+  resolution: "@types/react@npm:18.0.15"
   dependencies:
     "@types/prop-types": "*"
+    "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 1c76b6d4281905524ee04bbca1ae7b990c189802ac992b6942bb7fadabccef0ffd4f8d4db2d14704e2904ca14396b16d330b9a76bcc7283c25da1fe017343d9a
+  checksum: e22cc388d1c145aa184787e44dc28db4789976c704cd5db475c170bb76a560eb81def5f346cfe750949bb3d43ad88822b8cbb9f19b1286e3795892a8263e7715
   languageName: node
   linkType: hard
 
@@ -4372,15 +4562,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/styled-components@npm:^5.1.1":
-  version: 5.1.3
-  resolution: "@types/styled-components@npm:5.1.3"
+"@types/styled-components@npm:^5.1.25":
+  version: 5.1.25
+  resolution: "@types/styled-components@npm:5.1.25"
   dependencies:
     "@types/hoist-non-react-statics": "*"
     "@types/react": "*"
-    "@types/react-native": "*"
     csstype: ^3.0.2
-  checksum: 306defe8ae12a09a30f7f695d1b558aac4b365a37ffc895e477467fdd28f27b2866b7a9943ba69eecb45f9cbf6c5adb3dedc8088f46726da3f171ecc12207517
+  checksum: 60ce64f13283b01da54fd3a4c5703769d8575c979d5ec6b67ad124c2d4df980c9b96bb91af87e03f6447a816a5d2b0270c63eefad60cfa885091b594984525f5
   languageName: node
   linkType: hard
 
@@ -4890,14 +5079,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/esbuild-plugin-pnp@npm:^3.0.0-rc.1":
-  version: 3.0.0-rc.1
-  resolution: "@yarnpkg/esbuild-plugin-pnp@npm:3.0.0-rc.1"
+"@yarnpkg/esbuild-plugin-pnp@npm:^3.0.0-rc.11":
+  version: 3.0.0-rc.11
+  resolution: "@yarnpkg/esbuild-plugin-pnp@npm:3.0.0-rc.11"
   dependencies:
     tslib: ^1.13.0
   peerDependencies:
     esbuild: ">=0.10.0"
-  checksum: 48d4281d9e0a63ef0b3ad9a9b6d73299f9cb4428547a6a5d2e403e7d4a52e751dee2b1effeaceae452d2e47561b200af9ca940ddab9b63ac555353b527387729
+  checksum: 8649f0266911d835d4f1a1ccd6d339d58ac8e884db5632007ffdaf739ae89ad9f42349fc9313e2f696aaad126fe4f1937072b8ea10b14cab14d2061c1e7b76cb
   languageName: node
   linkType: hard
 
@@ -5286,7 +5475,7 @@ __metadata:
     eslint-plugin-react: ^7.22.0
     nodemon: ^2.0.15
     prettier: ^2.2.1
-    react: ^17.0.2
+    react: ^18.2.0
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
@@ -5805,17 +5994,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-styled-components@npm:>= 1, babel-plugin-styled-components@npm:^1.10.7":
-  version: 1.11.1
-  resolution: "babel-plugin-styled-components@npm:1.11.1"
+"babel-plugin-styled-components@npm:>= 1.12.0, babel-plugin-styled-components@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "babel-plugin-styled-components@npm:2.0.7"
   dependencies:
-    "@babel/helper-annotate-as-pure": ^7.0.0
-    "@babel/helper-module-imports": ^7.0.0
+    "@babel/helper-annotate-as-pure": ^7.16.0
+    "@babel/helper-module-imports": ^7.16.0
     babel-plugin-syntax-jsx: ^6.18.0
     lodash: ^4.17.11
+    picomatch: ^2.3.0
   peerDependencies:
     styled-components: ">= 2"
-  checksum: e8e14018ebd1a883aa2efc8031466c04c8c22c0f88a99da1d6d1bfa13971d16a286175ca161ac3c4b307bb977c3a67d8fafd4a79ed6294d850a41730063682b2
+  checksum: 80b06b10db02d749432a0ac43a5feedd686f6b648628d7433a39b1844260b2b7c72431f6e705c82636ee025fcfd4f6c32fc05677e44033b8a39ddcd4488b3147
   languageName: node
   linkType: hard
 
@@ -6494,13 +6684,6 @@ __metadata:
   version: 1.0.0
   resolution: "camelize@npm:1.0.0"
   checksum: 769f8d10071f57b974d9a51dc02f589dd7fb07ea6a7ecde1a57b52ae68657ba61fe85c60d50661b76c7dbb76b6474fbfd3356aee33cf5f025cd7fd6fb2811b73
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001283":
-  version: 1.0.30001317
-  resolution: "caniuse-lite@npm:1.0.30001317"
-  checksum: 0a5fc7fb8c54dde515c2d468e5fc9e0cf2e82dd40d596cdffed90f64c50b5dadd0ab0c25e04769d86488b3115f949abd31d54d1f74d0029b45fa8206a031f47a
   languageName: node
   linkType: hard
 
@@ -8095,7 +8278,7 @@ __metadata:
     eslint-plugin-yaml: ^0.5.0
     nodemon: ^2.0.15
     prettier: ^2.2.1
-    react: ^17.0.2
+    react: ^18.2.0
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
@@ -8635,170 +8818,170 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild-android-64@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-android-64@npm:0.14.34"
+"esbuild-android-64@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-android-64@npm:0.14.48"
   conditions: os=android & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-android-arm64@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-android-arm64@npm:0.14.34"
+"esbuild-android-arm64@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-android-arm64@npm:0.14.48"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"esbuild-darwin-64@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-darwin-64@npm:0.14.34"
+"esbuild-darwin-64@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-darwin-64@npm:0.14.48"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-darwin-arm64@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-darwin-arm64@npm:0.14.34"
+"esbuild-darwin-arm64@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-darwin-arm64@npm:0.14.48"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"esbuild-freebsd-64@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-freebsd-64@npm:0.14.34"
+"esbuild-freebsd-64@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-freebsd-64@npm:0.14.48"
   conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-freebsd-arm64@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-freebsd-arm64@npm:0.14.34"
+"esbuild-freebsd-arm64@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-freebsd-arm64@npm:0.14.48"
   conditions: os=freebsd & cpu=arm64
   languageName: node
   linkType: hard
 
-"esbuild-linux-32@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-linux-32@npm:0.14.34"
+"esbuild-linux-32@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-linux-32@npm:0.14.48"
   conditions: os=linux & cpu=ia32
   languageName: node
   linkType: hard
 
-"esbuild-linux-64@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-linux-64@npm:0.14.34"
+"esbuild-linux-64@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-linux-64@npm:0.14.48"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-linux-arm64@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-linux-arm64@npm:0.14.34"
+"esbuild-linux-arm64@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-linux-arm64@npm:0.14.48"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"esbuild-linux-arm@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-linux-arm@npm:0.14.34"
+"esbuild-linux-arm@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-linux-arm@npm:0.14.48"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"esbuild-linux-mips64le@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-linux-mips64le@npm:0.14.34"
+"esbuild-linux-mips64le@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-linux-mips64le@npm:0.14.48"
   conditions: os=linux & cpu=mips64el
   languageName: node
   linkType: hard
 
-"esbuild-linux-ppc64le@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-linux-ppc64le@npm:0.14.34"
+"esbuild-linux-ppc64le@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-linux-ppc64le@npm:0.14.48"
   conditions: os=linux & cpu=ppc64
   languageName: node
   linkType: hard
 
-"esbuild-linux-riscv64@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-linux-riscv64@npm:0.14.34"
+"esbuild-linux-riscv64@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-linux-riscv64@npm:0.14.48"
   conditions: os=linux & cpu=riscv64
   languageName: node
   linkType: hard
 
-"esbuild-linux-s390x@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-linux-s390x@npm:0.14.34"
+"esbuild-linux-s390x@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-linux-s390x@npm:0.14.48"
   conditions: os=linux & cpu=s390x
   languageName: node
   linkType: hard
 
-"esbuild-netbsd-64@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-netbsd-64@npm:0.14.34"
+"esbuild-netbsd-64@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-netbsd-64@npm:0.14.48"
   conditions: os=netbsd & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-openbsd-64@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-openbsd-64@npm:0.14.34"
+"esbuild-openbsd-64@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-openbsd-64@npm:0.14.48"
   conditions: os=openbsd & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-sunos-64@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-sunos-64@npm:0.14.34"
+"esbuild-sunos-64@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-sunos-64@npm:0.14.48"
   conditions: os=sunos & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-windows-32@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-windows-32@npm:0.14.34"
+"esbuild-windows-32@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-windows-32@npm:0.14.48"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"esbuild-windows-64@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-windows-64@npm:0.14.34"
+"esbuild-windows-64@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-windows-64@npm:0.14.48"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-windows-arm64@npm:0.14.34":
-  version: 0.14.34
-  resolution: "esbuild-windows-arm64@npm:0.14.34"
+"esbuild-windows-arm64@npm:0.14.48":
+  version: 0.14.48
+  resolution: "esbuild-windows-arm64@npm:0.14.48"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"esbuild@npm:^0.14.34":
-  version: 0.14.34
-  resolution: "esbuild@npm:0.14.34"
+"esbuild@npm:^0.14.48":
+  version: 0.14.48
+  resolution: "esbuild@npm:0.14.48"
   dependencies:
-    esbuild-android-64: 0.14.34
-    esbuild-android-arm64: 0.14.34
-    esbuild-darwin-64: 0.14.34
-    esbuild-darwin-arm64: 0.14.34
-    esbuild-freebsd-64: 0.14.34
-    esbuild-freebsd-arm64: 0.14.34
-    esbuild-linux-32: 0.14.34
-    esbuild-linux-64: 0.14.34
-    esbuild-linux-arm: 0.14.34
-    esbuild-linux-arm64: 0.14.34
-    esbuild-linux-mips64le: 0.14.34
-    esbuild-linux-ppc64le: 0.14.34
-    esbuild-linux-riscv64: 0.14.34
-    esbuild-linux-s390x: 0.14.34
-    esbuild-netbsd-64: 0.14.34
-    esbuild-openbsd-64: 0.14.34
-    esbuild-sunos-64: 0.14.34
-    esbuild-windows-32: 0.14.34
-    esbuild-windows-64: 0.14.34
-    esbuild-windows-arm64: 0.14.34
+    esbuild-android-64: 0.14.48
+    esbuild-android-arm64: 0.14.48
+    esbuild-darwin-64: 0.14.48
+    esbuild-darwin-arm64: 0.14.48
+    esbuild-freebsd-64: 0.14.48
+    esbuild-freebsd-arm64: 0.14.48
+    esbuild-linux-32: 0.14.48
+    esbuild-linux-64: 0.14.48
+    esbuild-linux-arm: 0.14.48
+    esbuild-linux-arm64: 0.14.48
+    esbuild-linux-mips64le: 0.14.48
+    esbuild-linux-ppc64le: 0.14.48
+    esbuild-linux-riscv64: 0.14.48
+    esbuild-linux-s390x: 0.14.48
+    esbuild-netbsd-64: 0.14.48
+    esbuild-openbsd-64: 0.14.48
+    esbuild-sunos-64: 0.14.48
+    esbuild-windows-32: 0.14.48
+    esbuild-windows-64: 0.14.48
+    esbuild-windows-arm64: 0.14.48
   dependenciesMeta:
     esbuild-android-64:
       optional: true
@@ -8842,7 +9025,7 @@ __metadata:
       optional: true
   bin:
     esbuild: bin/esbuild
-  checksum: 2f50fc1d48a307c8e1a4ca790e448fd4742aea0405d424989eb03e0b435faa6f5184b14a8244ab17611f91238605bb129e53a6d2e157f44eacea67e5c648bdae
+  checksum: 352d5f5678b697eaafe0bb3374e3da013b31df98c2da17e94266f0bd9d421c531733df038d5b3548d1e8bc86daac0417f1ba2df1cc184685fdb899e1f309f47d
   languageName: node
   linkType: hard
 
@@ -13080,6 +13263,19 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"lambda-compression@0.1.0, lambda-compression@workspace:workspaces/utils/packages/lambda-compression":
+  version: 0.0.0-use.local
+  resolution: "lambda-compression@workspace:workspaces/utils/packages/lambda-compression"
+  dependencies:
+    "@types/jest": ^27.5.1
+    "@types/node": ^17.0.33
+    jest: ^28.1.0
+    rimraf: ^3.0.2
+    ts-jest: ^28.0.2
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
+
 "last-run@npm:^1.1.0":
   version: 1.1.1
   resolution: "last-run@npm:1.1.1"
@@ -14297,26 +14493,29 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"next@npm:^12.1.0":
-  version: 12.1.0
-  resolution: "next@npm:12.1.0"
+"next@npm:^12.2.1":
+  version: 12.2.1
+  resolution: "next@npm:12.2.1"
   dependencies:
-    "@next/env": 12.1.0
-    "@next/swc-android-arm64": 12.1.0
-    "@next/swc-darwin-arm64": 12.1.0
-    "@next/swc-darwin-x64": 12.1.0
-    "@next/swc-linux-arm-gnueabihf": 12.1.0
-    "@next/swc-linux-arm64-gnu": 12.1.0
-    "@next/swc-linux-arm64-musl": 12.1.0
-    "@next/swc-linux-x64-gnu": 12.1.0
-    "@next/swc-linux-x64-musl": 12.1.0
-    "@next/swc-win32-arm64-msvc": 12.1.0
-    "@next/swc-win32-ia32-msvc": 12.1.0
-    "@next/swc-win32-x64-msvc": 12.1.0
-    caniuse-lite: ^1.0.30001283
+    "@next/env": 12.2.1
+    "@next/swc-android-arm-eabi": 12.2.1
+    "@next/swc-android-arm64": 12.2.1
+    "@next/swc-darwin-arm64": 12.2.1
+    "@next/swc-darwin-x64": 12.2.1
+    "@next/swc-freebsd-x64": 12.2.1
+    "@next/swc-linux-arm-gnueabihf": 12.2.1
+    "@next/swc-linux-arm64-gnu": 12.2.1
+    "@next/swc-linux-arm64-musl": 12.2.1
+    "@next/swc-linux-x64-gnu": 12.2.1
+    "@next/swc-linux-x64-musl": 12.2.1
+    "@next/swc-win32-arm64-msvc": 12.2.1
+    "@next/swc-win32-ia32-msvc": 12.2.1
+    "@next/swc-win32-x64-msvc": 12.2.1
+    "@swc/helpers": 0.4.2
+    caniuse-lite: ^1.0.30001332
     postcss: 8.4.5
-    styled-jsx: 5.0.0
-    use-subscription: 1.5.1
+    styled-jsx: 5.0.2
+    use-sync-external-store: 1.1.0
   peerDependencies:
     fibers: ">= 3.1.0"
     node-sass: ^6.0.0 || ^7.0.0
@@ -14324,11 +14523,15 @@ fsevents@~2.1.2:
     react-dom: ^17.0.2 || ^18.0.0-0
     sass: ^1.3.0
   dependenciesMeta:
+    "@next/swc-android-arm-eabi":
+      optional: true
     "@next/swc-android-arm64":
       optional: true
     "@next/swc-darwin-arm64":
       optional: true
     "@next/swc-darwin-x64":
+      optional: true
+    "@next/swc-freebsd-x64":
       optional: true
     "@next/swc-linux-arm-gnueabihf":
       optional: true
@@ -14355,7 +14558,7 @@ fsevents@~2.1.2:
       optional: true
   bin:
     next: dist/bin/next
-  checksum: 36dbafd5e640c420446dc05077f858ae4a8aaf5f91feb3c6c16c1b3f50b9fb63f743ef282a3bf0c68645442bef8aee643492f6dc62388a17f87064cde064d181
+  checksum: f317cef811b9dc2a8c56335247698ff190f33935ce5056a320b819126c3f5cea8dac276fe8ddfa9c33f18e0023533947a55d8e77ca177d4dc8fec47beb521c64
   languageName: node
   linkType: hard
 
@@ -15347,7 +15550,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"picomatch@npm:^2.2.3, picomatch@npm:^2.3.1":
+"picomatch@npm:^2.2.3, picomatch@npm:^2.3.0, picomatch@npm:^2.3.1":
   version: 2.3.1
   resolution: "picomatch@npm:2.3.1"
   checksum: 050c865ce81119c4822c45d3c84f1ced46f93a0126febae20737bd05ca20589c564d6e9226977df859ed5e03dc73f02584a2b0faad36e896936238238b0446cf
@@ -16023,16 +16226,15 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react-dom@npm:17.0.2"
+"react-dom@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react-dom@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-    scheduler: ^0.20.2
+    scheduler: ^0.23.0
   peerDependencies:
-    react: 17.0.2
-  checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
+    react: ^18.2.0
+  checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
   languageName: node
   linkType: hard
 
@@ -16061,17 +16263,17 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"react-is@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react-is@npm:17.0.2"
-  checksum: 9d6d111d8990dc98bc5402c1266a808b0459b5d54830bbea24c12d908b536df7883f268a7868cfaedde3dd9d4e0d574db456f84d2e6df9c4526f99bb4b5344d8
-  languageName: node
-  linkType: hard
-
 "react-is@npm:^18.0.0":
   version: 18.1.0
   resolution: "react-is@npm:18.1.0"
   checksum: d206a0fe6790851bff168727bfb896de02c5591695afb0c441163e8630136a3e13ee1a7ddd59fdccddcc93968b4721ae112c10f790b194b03b35a3dc13a355ef
+  languageName: node
+  linkType: hard
+
+"react-is@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react-is@npm:18.2.0"
+  checksum: e72d0ba81b5922759e4aff17e0252bd29988f9642ed817f56b25a3e217e13eea8a7f2322af99a06edb779da12d5d636e9fda473d620df9a3da0df2a74141d53e
   languageName: node
   linkType: hard
 
@@ -16144,13 +16346,12 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
+"react@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
+  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
   languageName: node
   linkType: hard
 
@@ -17025,13 +17226,12 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.20.2":
-  version: 0.20.2
-  resolution: "scheduler@npm:0.20.2"
+"scheduler@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "scheduler@npm:0.23.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
+  checksum: d79192eeaa12abef860c195ea45d37cbf2bbf5f66e3c4dcd16f54a7da53b17788a70d109ee3d3dde1a0fd50e6a8fc171f4300356c5aee4fc0171de526bf35f8a
   languageName: node
   linkType: hard
 
@@ -18225,16 +18425,16 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"styled-components@npm:^5.1.1":
-  version: 5.2.0
-  resolution: "styled-components@npm:5.2.0"
+"styled-components@npm:^5.3.5":
+  version: 5.3.5
+  resolution: "styled-components@npm:5.3.5"
   dependencies:
     "@babel/helper-module-imports": ^7.0.0
     "@babel/traverse": ^7.4.5
-    "@emotion/is-prop-valid": ^0.8.8
+    "@emotion/is-prop-valid": ^1.1.0
     "@emotion/stylis": ^0.8.4
     "@emotion/unitless": ^0.7.4
-    babel-plugin-styled-components: ">= 1"
+    babel-plugin-styled-components: ">= 1.12.0"
     css-to-react-native: ^3.0.0
     hoist-non-react-statics: ^3.0.0
     shallowequal: ^1.1.0
@@ -18243,21 +18443,21 @@ resolve@^1.20.0:
     react: ">= 16.8.0"
     react-dom: ">= 16.8.0"
     react-is: ">= 16.8.0"
-  checksum: f6ccd4612351d06cb010c1b85f08fc72c9fcff990e866c54cb6c97d489151ded57026ab28931457d3df5b659b5c26e4c46cae3f25ff7a4aae1282aaa4b3a3079
+  checksum: 05a664dfe423c2906959a0f3f47f9b1ad630e493eb2e06deea0dc0906af33ba5ca17277b98948a6c9642e73894d6533391aebf45576489f5afe920c974e9f8eb
   languageName: node
   linkType: hard
 
-"styled-jsx@npm:5.0.0":
-  version: 5.0.0
-  resolution: "styled-jsx@npm:5.0.0"
+"styled-jsx@npm:5.0.2":
+  version: 5.0.2
+  resolution: "styled-jsx@npm:5.0.2"
   peerDependencies:
-    react: ">= 16.8.0 || 17.x.x || 18.x.x"
+    react: ">= 16.8.0 || 17.x.x || ^18.0.0-0"
   peerDependenciesMeta:
     "@babel/core":
       optional: true
     babel-plugin-macros:
       optional: true
-  checksum: 4958238ac8b8e90ac7d906aca3821e3ffb0c70c34c78b87d27f0f11c830c8237c8f4c0e7952dc51373d6fa097b16a023dcc7c9ededd402d8483b5ed2d8cefda9
+  checksum: 86d55819ebeabd283a574d2f44f7d3f8fa6b8c28fa41687ece161bf1e910e04965611618921d8f5cd33dc6dae1033b926a70421ae5ea045440a9861edc3e0d87
   languageName: node
   linkType: hard
 
@@ -18542,7 +18742,7 @@ resolve@^1.20.0:
     eslint-plugin-react: ^7.22.0
     nodemon: ^2.0.15
     prettier: ^2.2.1
-    react: ^17.0.2
+    react: ^18.2.0
     ts-node: ^10.8.0
     typescript: ^4.6.4
   languageName: unknown
@@ -18564,7 +18764,7 @@ resolve@^1.20.0:
     eslint-plugin-react: ^7.22.0
     nodemon: ^2.0.15
     prettier: ^2.2.1
-    react: ^17.0.2
+    react: ^18.2.0
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
@@ -18588,7 +18788,7 @@ resolve@^1.20.0:
     eslint-plugin-yaml: ^0.5.0
     nodemon: ^2.0.15
     prettier: ^2.2.1
-    react: ^17.0.2
+    react: ^18.2.0
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
@@ -19160,7 +19360,7 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.3.1":
+"tslib@npm:^2.3.1, tslib@npm:^2.4.0":
   version: 2.4.0
   resolution: "tslib@npm:2.4.0"
   checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
@@ -19759,14 +19959,12 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"use-subscription@npm:1.5.1":
-  version: 1.5.1
-  resolution: "use-subscription@npm:1.5.1"
-  dependencies:
-    object-assign: ^4.1.1
+"use-sync-external-store@npm:1.1.0":
+  version: 1.1.0
+  resolution: "use-sync-external-store@npm:1.1.0"
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-  checksum: 96e64977a573244fd11350a3141b2cf57fb72dd9dd902f387c8a0a565d0a948bc81588bd7378c6ef6defc0d1119f37f73aac4a7a287c8443abd444bd4e7bbea8
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 8993a0b642f91d7fcdbb02b7b3ac984bd3af4769686f38291fe7fcfe73dfb73d6c64d20dfb7e5e7fbf5a6da8f5392d6f8e5b00c243a04975595946e82c02b883
   languageName: node
   linkType: hard
 
@@ -19808,6 +20006,28 @@ resolve@^1.20.0:
   checksum: c81095493225ecfc28add49c106ca4f09cdf56bc66731aa8dabc2edbbccb1e1bfe2de6a115e5c6a380d3ea166d1636410b62ef216bb07b3feb1cfde1d95d5080
   languageName: node
   linkType: hard
+
+"utils@workspace:workspaces/utils":
+  version: 0.0.0-use.local
+  resolution: "utils@workspace:workspaces/utils"
+  dependencies:
+    "@goldstack/utils-typescript-references": 0.2.2
+    "@types/jest": ^27.5.1
+    "@types/node": ^17.0.33
+    "@typescript-eslint/eslint-plugin": ^4.14.0
+    "@typescript-eslint/parser": ^4.14.0
+    eslint: 7.32.0
+    eslint-config-prettier: ^7.2.0
+    eslint-plugin-json-format: ^2.0.1
+    eslint-plugin-prettier: ^3.3.1
+    eslint-plugin-react: ^7.22.0
+    nodemon: ^2.0.15
+    prettier: ^2.2.1
+    react: ^18.2.0
+    ts-node: ^10.8.0
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
 
 "uuid@npm:3.3.2":
   version: 3.3.2

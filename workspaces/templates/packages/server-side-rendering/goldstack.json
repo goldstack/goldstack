@@ -1,0 +1,27 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "server-side-rendering",
+  "template": "server-side-rendering",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "lambdaNamePrefix": "goldstack-test-ssr",
+        "apiDomain": "ssr.examples.templates.dev.goldstack.party",
+        "hostedZoneDomain": "dev.goldstack.party",
+        "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party",
+        "lambdas": {
+          "ANY /": {
+            "function_name": "goldstack-test-ssr--__index",
+            "route": "ANY /"
+          }
+        }
+      },
+      "tfStateKey": "server-side-rendering-prod-cef430073a2474be1434.tfstate"
+    }
+  ]
+}

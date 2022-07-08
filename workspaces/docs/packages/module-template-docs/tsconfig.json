@@ -15,7 +15,7 @@
       "path": "../utils-docs-cli"
     },
     {
-      "path": "../../../templates-lib/packages/utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     }
   ]
 }

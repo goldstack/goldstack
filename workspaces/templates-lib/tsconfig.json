@@ -30,7 +30,7 @@
   "include": [],
   "references": [
     {
-      "path": "packages/utils-typescript-references"
+      "path": "../utils/packages/utils-typescript-references"
     }
   ]
 }

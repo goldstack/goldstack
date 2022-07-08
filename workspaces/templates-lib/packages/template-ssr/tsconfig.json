@@ -1,0 +1,52 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*",
+    "./src/**/*.json"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "."
+  },
+  "references": [
+    {
+      "path": "../infra"
+    },
+    {
+      "path": "../infra-aws"
+    },
+    {
+      "path": "../template-ssr-server"
+    },
+    {
+      "path": "../utils-aws-lambda"
+    },
+    {
+      "path": "../../../utils/packages/utils-esbuild"
+    },
+    {
+      "path": "../utils-package"
+    },
+    {
+      "path": "../utils-package-config-embedded"
+    },
+    {
+      "path": "../utils-template"
+    },
+    {
+      "path": "../utils-terraform"
+    },
+    {
+      "path": "../../../utils/packages/lambda-compression"
+    },
+    {
+      "path": "../../../docs/packages/utils-docs-cli"
+    },
+    {
+      "path": "../../../utils/packages/utils-git"
+    },
+    {
+      "path": "../utils-package-config-generate"
+    }
+  ]
+}

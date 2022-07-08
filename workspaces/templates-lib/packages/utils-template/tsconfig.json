@@ -13,13 +13,13 @@
       "path": "../utils-config"
     },
     {
-      "path": "../utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     },
     {
-      "path": "../utils-git"
+      "path": "../../../utils/packages/utils-git"
     },
     {
-      "path": "../utils-json-to-ts"
+      "path": "../../../utils/packages/utils-json-to-ts"
     }
   ]
 }

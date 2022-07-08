@@ -37,12 +37,14 @@ const mockRouter: NextRouter = {
 };
 
 test('Check App component render', () => {
+  // see https://github.com/styled-components/styled-components/issues/3731
+  const ThemeProviderPatched = ThemeProvider as any;
   render(
-    <ThemeProvider theme={theme}>
+    <ThemeProviderPatched theme={theme}>
       <RouterContext.Provider value={{ ...mockRouter }}>
         <Front />
       </RouterContext.Provider>
-    </ThemeProvider>
+    </ThemeProviderPatched>
   );
 
   // expect(

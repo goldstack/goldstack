@@ -43,13 +43,13 @@
       "path": "../../../templates-lib/packages/template-static-website-aws"
     },
     {
-      "path": "../../../templates-lib/packages/utils-cli"
+      "path": "../../../utils/packages/utils-cli"
     },
     {
       "path": "../../../templates-lib/packages/utils-config"
     },
     {
-      "path": "../../../templates-lib/packages/utils-git"
+      "path": "../../../utils/packages/utils-git"
     },
     {
       "path": "../../../templates-lib/packages/utils-package"
@@ -61,7 +61,7 @@
       "path": "../../../templates-lib/packages/template-docker-image-aws"
     },
     {
-      "path": "../../../templates-lib/packages/utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     }
   ]
 }

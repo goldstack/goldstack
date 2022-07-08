@@ -16,7 +16,7 @@
       "path": "../../../templates-lib/packages/utils-s3"
     },
     {
-      "path": "../../../templates-lib/packages/utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     },
     {
       "path": "../../../templates-lib/packages/utils-template"

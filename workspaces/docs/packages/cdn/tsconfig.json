@@ -12,7 +12,7 @@
       "path": "../../../templates-lib/packages/template-static-website-aws"
     },
     {
-      "path": "../../../templates-lib/packages/utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     }
   ]
 }

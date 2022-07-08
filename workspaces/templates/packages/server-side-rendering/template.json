@@ -1,0 +1,8 @@
+{
+  "templateName": "server-side-rendering",
+  "templateVersion": "0.1.0",
+  "previousTemplateVersion": "0.0.0",
+  "templateDescription": "Enables server-side React rendering.",
+  "templateDocumentation": "https://docs.goldstack.party/docs/templates/server-side-rendering",
+  "templateArchive": ""
+}

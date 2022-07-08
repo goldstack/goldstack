@@ -3,8 +3,8 @@
   "include": [
     "./src/**/*",
     "./src/**/*.json",
-    "./scripts/**/*",
     "./schemas/**/*.json",
+    "./scripts/**/*",
     "./goldstack.json",
     "./next-env.d.ts"
   ],
@@ -13,6 +13,7 @@
     "baseUrl": ".",
     "jsx": "preserve",
     "module": "esnext",
+    "incremental": true,
     "noEmit": false,
     "moduleResolution": "node",
     "isolatedModules": true
@@ -25,7 +26,7 @@
       "path": "../../../templates-lib/packages/template-nextjs"
     },
     {
-      "path": "../../../templates-lib/packages/utils-sh"
+      "path": "../../../utils/packages/utils-sh"
     }
   ]
 }

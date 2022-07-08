@@ -39,6 +39,14 @@ jobs:
         run: |
           yarn npm audit --all
 
+      - name: Check if utilities changed
+        uses: marceloprado/has-changed-path@8a75b456df5a44a8110dcaa3111c9acc6249ed15
+        id: changed-utilities
+        with:
+          paths: .
+        env:
+          SOURCE: workspaces/templates-lib
+
       - name: Check if libraries changed
         uses: marceloprado/has-changed-path@8a75b456df5a44a8110dcaa3111c9acc6249ed15
         id: changed-libs
@@ -78,6 +86,12 @@ jobs:
       - name: Compile all
         run: |
           yarn compile
+
+      - name: Test utilities
+        run: |
+          cd workspaces/utils
+          yarn test-ci
+          cd ../..
 
       - name: Test libraries
         run: |
@@ -139,20 +153,28 @@ jobs:
           git status
           git add .
           git status
-          git diff-index --quiet HEAD || git commit -m "Releasing new library version (ci_skip)"
+          git diff-index --quiet HEAD || git commit -m "Updating schemas (ci_skip)"
           git status
 
-      - name: Publish libraries
-        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
+      - name: Publish utilities and libraries
+        if: (steps.changed-libs.outputs.changed == 'true' || steps.changed-utilities.outputs.changed == 'true') && github.ref == 'refs/heads/master'
         run: |
+          # Prepare utils
+          cd workspaces/utils
+          yarn version:apply --deferred patch
+          cd ../..
+          # Prepare template libraries
           cd workspaces/templates-lib
           yarn version:apply --deferred patch
+          cd ../.. 
+
+          # Perform publish
           yarn version apply --all
           yarn publish
           git status
           git add .
           git status
-          git diff-index --quiet HEAD || git commit -m "Releasing new library version (ci_skip)"
+          git diff-index --quiet HEAD || git commit -m "Releasing new library versions (ci_skip)"
           git status
           cd ../..
         env:
