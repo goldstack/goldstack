@@ -190,6 +190,7 @@ export const injectGatewayResultIntoResponse = (
   if (result.statusCode) {
     const structuredResult: APIGatewayProxyStructuredResultV2 = result as APIGatewayProxyStructuredResultV2;
     resp.status(structuredResult.statusCode || 200);
+
     if (structuredResult.headers) {
       resp.set(structuredResult.headers);
     }
@@ -211,7 +212,11 @@ export const injectGatewayResultIntoResponse = (
       });
     }
     if (structuredResult.body) {
-      resp.send(structuredResult.body);
+      if (!structuredResult.isBase64Encoded) {
+        resp.send(structuredResult.body);
+      } else {
+        resp.send(Buffer.from(structuredResult.body, 'base64'));
+      }
     } else {
       resp.end();
     }
