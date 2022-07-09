@@ -13267,6 +13267,7 @@ fsevents@~2.1.2:
   version: 0.0.0-use.local
   resolution: "lambda-compression@workspace:workspaces/utils/packages/lambda-compression"
   dependencies:
+    "@goldstack/utils-git": 0.1.35
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
     jest: ^28.1.0

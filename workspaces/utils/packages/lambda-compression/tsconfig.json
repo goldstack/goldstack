@@ -7,5 +7,9 @@
     "outDir": "dist",
     "baseUrl": "."
   },
-  "references": []
+  "references": [
+    {
+      "path": "../utils-git"
+    }
+  ]
 }
