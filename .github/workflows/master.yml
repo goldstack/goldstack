@@ -171,13 +171,19 @@ jobs:
 
           # Perform publish
           yarn version apply --all
+          cd workspaces/templates-lib
           yarn publish
           git status
           git add .
+          cd ../..
+          cd workspaces/utils
+          yarn publish
+          git status
+          git add .
+          cd ../..
           git status
           git diff-index --quiet HEAD || git commit -m "Releasing new library versions (ci_skip)"
           git status
-          cd ../..
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           YARN_NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
