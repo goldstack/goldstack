@@ -1,6 +1,6 @@
-# Lambda HTTP Payload Compression 
+# Lambda HTTP Payload Compression
 
-This library provides an easy wrapper 
+This library provides an easy wrapper
 
 ## Also See
 

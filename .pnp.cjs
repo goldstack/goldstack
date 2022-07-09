@@ -15857,7 +15857,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["lambda-compression", "workspace:workspaces/utils/packages/lambda-compression"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
-            ["@types/aws-lambda", "npm:8.10.88"],\
             ["@types/jest", "npm:27.5.1"],\
             ["@types/node", "npm:17.0.33"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
