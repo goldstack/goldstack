@@ -45,7 +45,7 @@ jobs:
         with:
           paths: .
         env:
-          SOURCE: workspaces/templates-lib
+          SOURCE: workspaces/utils
 
       - name: Check if libraries changed
         uses: marceloprado/has-changed-path@8a75b456df5a44a8110dcaa3111c9acc6249ed15
@@ -54,6 +54,7 @@ jobs:
           paths: .
         env:
           SOURCE: workspaces/templates-lib
+
       - name: Check if templates changed
         uses: marceloprado/has-changed-path@8a75b456df5a44a8110dcaa3111c9acc6249ed15
         id: changed-templates
@@ -157,7 +158,7 @@ jobs:
           git status
 
       - name: Publish utilities and libraries
-        if: (steps.changed-libs.outputs.changed == 'true' || steps.changed-utilities.outputs.changed == 'true') && github.ref == 'refs/heads/master'
+        if: ${{ (steps.changed-libs.outputs.changed == 'true' || steps.changed-utilities.outputs.changed == 'true') && github.ref == 'refs/heads/master' }}
         run: |
           # Prepare utils
           cd workspaces/utils
