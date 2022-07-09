@@ -897,7 +897,7 @@ __metadata:
     swr: ^0.4.0
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     url-loader: ^4.1.1
   languageName: unknown
   linkType: soft
@@ -935,7 +935,7 @@ __metadata:
     swr: ^0.4.0
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     url-loader: ^4.1.1
   languageName: unknown
   linkType: soft
@@ -960,7 +960,7 @@ __metadata:
     rimraf: ^3.0.2
     semver: ^7.3.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     uuid: ^8.3.0
   languageName: unknown
   linkType: soft
@@ -980,7 +980,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -998,7 +998,7 @@ __metadata:
     nodemon: ^2.0.15
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1046,7 +1046,7 @@ __metadata:
     swr: ^0.4.0
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     url-loader: ^4.1.1
   languageName: unknown
   linkType: soft
@@ -1067,7 +1067,7 @@ __metadata:
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     umzug: ^3.1.1
   languageName: unknown
   linkType: soft
@@ -1088,7 +1088,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1147,7 +1147,7 @@ __metadata:
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
     ts-node-dev: ^1.1.8
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     uuid: ^8.3.0
   languageName: unknown
   linkType: soft
@@ -1168,7 +1168,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1231,7 +1231,7 @@ __metadata:
     ts-jest: ^28.0.2
     ts-json-schema-generator: ^1.0.0
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     url-loader: ^4.1.1
   languageName: unknown
   linkType: soft
@@ -1256,7 +1256,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-json-schema-generator: ^1.0.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1275,7 +1275,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-json-schema-generator: ^1.0.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1307,7 +1307,7 @@ __metadata:
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
     ts-node-dev: ^1.1.8
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1320,7 +1320,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1338,7 +1338,7 @@ __metadata:
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     yargs: ^17.5.1
   bin:
     markdown-docs: ./bin/markdown-docs
@@ -1359,7 +1359,7 @@ __metadata:
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1372,7 +1372,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1391,7 +1391,7 @@ __metadata:
     node-watch: ^0.6.4
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   bin:
     nodemonx: ./bin/utils-nodemonx
   languageName: unknown
@@ -1413,7 +1413,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-json-schema-generator: ^1.0.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1435,7 +1435,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1458,7 +1458,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1477,7 +1477,7 @@ __metadata:
     rimraf: ^3.0.2
     temp-dir: ^2.0.0
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1503,7 +1503,7 @@ __metadata:
     rimraf: ^3.0.2
     temp-dir: ^2.0.0
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1524,7 +1524,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1545,7 +1545,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1573,7 +1573,7 @@ __metadata:
     rimraf: ^3.0.2
     semver: ^7.3.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     uuid: ^8.3.0
   languageName: unknown
   linkType: soft
@@ -1591,7 +1591,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1636,7 +1636,7 @@ __metadata:
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
     ts-node-dev: ^1.1.8
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1665,7 +1665,7 @@ __metadata:
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
     ts-node-dev: ^1.1.8
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1686,7 +1686,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1710,7 +1710,7 @@ __metadata:
     rimraf: ^3.0.2
     stripe: ^8.114.0
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     uuid: ^8.3.0
   languageName: unknown
   linkType: soft
@@ -1736,7 +1736,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1765,7 +1765,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-json-schema-generator: ^1.0.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1787,7 +1787,7 @@ __metadata:
     mock-aws-s3: ^4.0.2
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -1821,7 +1821,7 @@ __metadata:
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     yargs: ^17.5.1
   bin:
     template: ./bin/template
@@ -1851,7 +1851,7 @@ __metadata:
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     umzug: ^3.1.1
     yargs: ^17.5.1
   bin:
@@ -1883,7 +1883,7 @@ __metadata:
     testcontainers: ^8.10.1
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     umzug: ^3.1.1
   languageName: unknown
   linkType: soft
@@ -1908,7 +1908,7 @@ __metadata:
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     yargs: ^17.5.1
   bin:
     template: ./bin/template
@@ -1939,7 +1939,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     uuid: ^8.3.0
   languageName: unknown
   linkType: soft
@@ -1977,7 +1977,7 @@ __metadata:
     ts-jest: ^28.0.2
     ts-json-schema-generator: ^1.0.0
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     yargs: ^17.5.1
   bin:
     template: ./bin/template
@@ -2008,7 +2008,7 @@ __metadata:
     ts-jest: ^28.0.2
     ts-json-schema-generator: ^1.0.0
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2043,7 +2043,7 @@ __metadata:
     ts-jest: ^28.0.2
     ts-json-schema-generator: ^1.0.0
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     yargs: ^17.5.1
   bin:
     template: ./bin/template
@@ -2089,7 +2089,7 @@ __metadata:
     tmp: ^0.2.1
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     webpack: 4.43.0
     webpack-cli: 3.3.12
     yargs: ^17.5.1
@@ -2107,7 +2107,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2143,7 +2143,7 @@ __metadata:
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     webpack: 4.43.0
     yargs: ^17.5.1
   bin:
@@ -2169,7 +2169,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2192,7 +2192,7 @@ __metadata:
     rimraf: ^3.0.2
     semver: ^7.3.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2224,7 +2224,7 @@ __metadata:
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     yargs: ^17.5.1
   bin:
     template: ./bin/template
@@ -2257,7 +2257,7 @@ __metadata:
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2288,7 +2288,7 @@ __metadata:
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     yargs: ^17.5.1
   bin:
     template: ./bin/template
@@ -2327,7 +2327,7 @@ __metadata:
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2360,7 +2360,7 @@ __metadata:
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2391,7 +2391,7 @@ __metadata:
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     yargs: ^17.5.1
   bin:
     template: ./bin/template
@@ -2410,7 +2410,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2429,7 +2429,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2453,7 +2453,7 @@ __metadata:
     node-fetch: 2.6.7
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2476,7 +2476,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2490,7 +2490,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2508,7 +2508,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2523,7 +2523,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2542,7 +2542,7 @@ __metadata:
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     yargs: ^17.5.1
   bin:
     utils-docs-cli: ./bin/utils-docs-cli
@@ -2572,7 +2572,7 @@ __metadata:
     remark-rehype: 5.0.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     unified: 8.4.1
     unist-util-visit: 2.0.0
   languageName: unknown
@@ -2588,7 +2588,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2604,7 +2604,7 @@ __metadata:
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   bin:
     utils-git: ./bin/utils-git
   languageName: unknown
@@ -2625,7 +2625,7 @@ __metadata:
     replace-ext: ^2.0.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   bin:
     utils-json-to-ts: ./bin/jsontots
   languageName: unknown
@@ -2641,7 +2641,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2658,7 +2658,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2675,7 +2675,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-json-schema-generator: ^1.0.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     yargs: ^17.5.1
   bin:
     utils-package-config-generate: ./bin/utils-package-config-generate
@@ -2696,7 +2696,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2713,7 +2713,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2733,7 +2733,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-json-schema-generator: ^1.0.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     yargs: ^17.5.1
   languageName: unknown
   linkType: soft
@@ -2753,7 +2753,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-json-schema-generator: ^1.0.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2771,7 +2771,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2786,7 +2786,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2813,7 +2813,7 @@ __metadata:
     ncp: ^2.0.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     which: ^2.0.2
   languageName: unknown
   linkType: soft
@@ -2839,7 +2839,7 @@ __metadata:
     mock-aws-s3: ^4.0.2
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2856,7 +2856,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2877,7 +2877,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2904,7 +2904,7 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     ts-json-schema-generator: ^1.0.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     yargs: ^17.5.1
   languageName: unknown
   linkType: soft
@@ -2921,7 +2921,7 @@ __metadata:
     react: ^18.2.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -2938,7 +2938,7 @@ __metadata:
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
     yargs: ^17.5.1
   bin:
     utils-typescript-references: ./bin/utils-typescript-references
@@ -2957,7 +2957,7 @@ __metadata:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -5476,7 +5476,7 @@ __metadata:
     nodemon: ^2.0.15
     prettier: ^2.2.1
     react: ^18.2.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -8279,7 +8279,7 @@ __metadata:
     nodemon: ^2.0.15
     prettier: ^2.2.1
     react: ^18.2.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -13274,7 +13274,7 @@ fsevents@~2.1.2:
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -17110,7 +17110,7 @@ resolve@^1.20.0:
     prettier: ^2.2.1
     syncpack: ^8.0.0
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -18746,7 +18746,7 @@ resolve@^1.20.0:
     prettier: ^2.2.1
     react: ^18.2.0
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -18767,7 +18767,7 @@ resolve@^1.20.0:
     nodemon: ^2.0.15
     prettier: ^2.2.1
     react: ^18.2.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -18791,7 +18791,7 @@ resolve@^1.20.0:
     nodemon: ^2.0.15
     prettier: ^2.2.1
     react: ^18.2.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -19510,7 +19510,17 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"typescript@^4.6.4, typescript@npm:~4.6.2":
+"typescript@npm:^4.7.4":
+  version: 4.7.4
+  resolution: "typescript@npm:4.7.4"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 5750181b1cd7e6482c4195825547e70f944114fb47e58e4aa7553e62f11b3f3173766aef9c281783edfd881f7b8299cf35e3ca8caebe73d8464528c907a164df
+  languageName: node
+  linkType: hard
+
+"typescript@npm:~4.6.2":
   version: 4.6.4
   resolution: "typescript@npm:4.6.4"
   bin:
@@ -19520,7 +19530,17 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>, typescript@patch:typescript@~4.6.2#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.7.4#~builtin<compat/typescript>":
+  version: 4.7.4
+  resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 9096d8f6c16cb80ef3bf96fcbbd055bf1c4a43bd14f3b7be45a9fbe7ada46ec977f604d5feed3263b4f2aa7d4c7477ce5f9cd87de0d6feedec69a983f3a4f93e
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@~4.6.2#~builtin<compat/typescript>":
   version: 4.6.4
   resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"
   bin:
@@ -20027,7 +20047,7 @@ resolve@^1.20.0:
     prettier: ^2.2.1
     react: ^18.2.0
     ts-node: ^10.8.0
-    typescript: ^4.6.4
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 

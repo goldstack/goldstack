@@ -59,7 +59,7 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^28.0.2",
     "ts-json-schema-generator": "^1.0.0",
-    "typescript": "^4.6.4"
+    "typescript": "^4.7.4"
   },
   "publishConfig": {
     "main": "dist/src/utilsTerraform.js"
