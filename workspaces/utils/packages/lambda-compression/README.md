@@ -27,7 +27,7 @@ export const handler: ProxyHandler = async (event, context) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: '{"data":"hello"}' 
+    body: '{"data":"hello"}',
   });
 };
 ```

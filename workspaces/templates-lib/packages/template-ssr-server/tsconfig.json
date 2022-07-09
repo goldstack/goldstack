@@ -37,6 +37,9 @@
       "path": "../utils-terraform"
     },
     {
+      "path": "../../../utils/packages/lambda-compression"
+    },
+    {
       "path": "../../../docs/packages/utils-docs-cli"
     },
     {
