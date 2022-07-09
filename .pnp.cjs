@@ -3240,7 +3240,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.6"],\
             ["@types/yargs", "npm:17.0.10"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
-            ["lambda-compression", "workspace:workspaces/utils/packages/lambda-compression"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
@@ -3311,6 +3310,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@yarnpkg/esbuild-plugin-pnp", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:3.0.0-rc.11"],\
             ["esbuild", "npm:0.14.48"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
+            ["lambda-compression", "workspace:workspaces/utils/packages/lambda-compression"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
@@ -5065,13 +5065,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/aws-lambda", [\
-        ["npm:8.10.101", {\
-          "packageLocation": "./.yarn/cache/@types-aws-lambda-npm-8.10.101-2e902322fe-7e81bab6b1.zip/node_modules/@types/aws-lambda/",\
-          "packageDependencies": [\
-            ["@types/aws-lambda", "npm:8.10.101"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:8.10.62", {\
           "packageLocation": "./.yarn/cache/@types-aws-lambda-npm-8.10.62-675c3023bb-21afd764cf.zip/node_modules/@types/aws-lambda/",\
           "packageDependencies": [\
@@ -15863,7 +15856,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/utils/packages/lambda-compression/",\
           "packageDependencies": [\
             ["lambda-compression", "workspace:workspaces/utils/packages/lambda-compression"],\
-            ["@types/aws-lambda", "npm:8.10.101"],\
+            ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@types/aws-lambda", "npm:8.10.88"],\
             ["@types/jest", "npm:27.5.1"],\
             ["@types/node", "npm:17.0.33"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\

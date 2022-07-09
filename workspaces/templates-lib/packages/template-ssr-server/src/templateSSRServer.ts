@@ -5,6 +5,8 @@ import type {
   APIGatewayProxyResultV2,
 } from 'aws-lambda';
 
+import { compress } from 'lambda-compression';
+
 import { renderToString } from 'react-dom/server';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { readFileSync } from 'fs';
@@ -35,7 +37,7 @@ export const renderPage = async <PropType>({
     if (event.queryStringParameters['resource'].indexOf('js') > -1) {
       if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
         // if running in Lambda load bundle from local file system
-        return {
+        return compress(event, {
           statusCode: 201,
           headers: {
             'Content-Type': 'application/javascript',
@@ -44,32 +46,38 @@ export const renderPage = async <PropType>({
           body: `window.initialProperties=${JSON.stringify(
             properties
           )};${readFileSync(clientBundleFileName, 'utf-8')}`,
-        };
+        });
       } else {
         // if not running in Lambda build bundle dynamically
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        return require(excludeInBundle('./compileBundle')).bundleResponse({
-          entryPoint,
-          initialProperties: properties,
-        });
+        return compress(
+          event,
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
+          require(excludeInBundle('./compileBundle')).bundleResponse({
+            entryPoint,
+            initialProperties: properties,
+          })
+        );
       }
     }
 
     if (event.queryStringParameters['resource'].indexOf('sourcemap') > -1) {
       if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
         // if running in Lambda load sourcemap from local file system
-        return {
+        return compress(event, {
           statusCode: 201,
           headers: {
             'Content-Type': 'application/json',
           },
           body: readFileSync(clientBundleFileName + '.map', 'utf-8'),
-        };
-      } else {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        return require(excludeInBundle('./compileBundle')).sourceMapResponse({
-          entryPoint,
         });
+      } else {
+        return compress(
+          event,
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
+          require(excludeInBundle('./compileBundle')).sourceMapResponse({
+            entryPoint,
+          })
+        );
       }
     }
   }
@@ -80,11 +88,11 @@ export const renderPage = async <PropType>({
     bundledJsPath: '?resource=js',
     renderedHtml: page,
   });
-  return {
+  return compress(event, {
     statusCode: 201,
     headers: {
       'Content-Type': 'text/html',
     },
     body: document,
-  };
+  });
 };
