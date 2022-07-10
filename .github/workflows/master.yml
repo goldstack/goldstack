@@ -149,14 +149,6 @@ jobs:
         run: |
           yarn generate-docs
 
-      - name: Commit changes (if any) from schema and doc generation
-        run: |
-          git status
-          git add .
-          git status
-          git diff-index --quiet HEAD || git commit -m "Updating schemas (ci_skip)"
-          git status
-
       - name: Publish utilities and libraries
         if: ${{ (steps.changed-libs.outputs.changed == 'true' || steps.changed-utilities.outputs.changed == 'true') && github.ref == 'refs/heads/master' }}
         run: |
@@ -181,15 +173,20 @@ jobs:
           git status
           git add .
           cd ../..
-          git status
-          git diff-index --quiet HEAD || git commit -m "Releasing new library versions (ci_skip)"
-          git status
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           YARN_NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
+      - name: Commit changes (if any) from schema and doc generation
+        run: |
+          git status
+          git add .
+          git status
+          git diff-index --quiet HEAD || git commit -m "Updates from build pipeline (ci_skip)"
+          git status
+
       - name: Push changes
-        if: steps.changed-libs.outputs.changed == 'true' && github.ref == 'refs/heads/master'
+        if: ${{ (steps.changed-libs.outputs.changed == 'true' || steps.changed-utilities.outputs.changed == 'true') && github.ref == 'refs/heads/master' }}
         uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
