@@ -9,14 +9,14 @@ export interface DeployToS3Params {
 export const deployToS3 = async (params: DeployToS3Params): Promise<void> => {
   await Promise.all([
     upload({
-      bucket: `${params.configuration.apiDomain}-public-files"`,
+      bucket: `${params.configuration.apiDomain}-public-files`,
       bucketPath: '/',
       localPath: 'public/',
       region: params.deployment.awsRegion,
       userName: params.deployment.awsUser,
     }),
     upload({
-      bucket: `${params.configuration.apiDomain}-static-files"`,
+      bucket: `${params.configuration.apiDomain}-static-files`,
       bucketPath: '/',
       localPath: 'static/',
       region: params.deployment.awsRegion,
