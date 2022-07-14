@@ -47,6 +47,15 @@ resource "aws_s3_bucket_website_configuration" "static_files_web" {
     key = "error.html"
   }
 
+  routing_rule {
+    condition {
+      key_prefix_equals = "_goldstack/static/"
+    }
+    redirect {
+      replace_key_prefix_with = ""
+    }
+  }
+
 }
 
 resource "aws_s3_bucket" "public_files" {
@@ -96,4 +105,12 @@ resource "aws_s3_bucket_website_configuration" "public_files_web" {
     key = "error.html"
   }
 
+  routing_rule {
+    condition {
+      key_prefix_equals = "_goldstack/public/"
+    }
+    redirect {
+      replace_key_prefix_with = ""
+    }
+  }
 }
