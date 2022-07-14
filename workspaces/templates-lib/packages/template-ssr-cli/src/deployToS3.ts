@@ -15,9 +15,18 @@ export const deployToS3 = async (params: DeployToS3Params): Promise<void> => {
       region: params.deployment.awsRegion,
       userName: params.deployment.awsUser,
     }),
+    // uploading files again to allow CloudFront routing both to the root
+    // and the subdirectory
+    upload({
+      bucket: `${params.configuration.apiDomain}-public-files`,
+      bucketPath: '/_goldstack/public',
+      localPath: 'public/',
+      region: params.deployment.awsRegion,
+      userName: params.deployment.awsUser,
+    }),
     upload({
       bucket: `${params.configuration.apiDomain}-static-files`,
-      bucketPath: '/',
+      bucketPath: '/_goldstack/static',
       localPath: 'static/',
       region: params.deployment.awsRegion,
       userName: params.deployment.awsUser,
