@@ -16,6 +16,7 @@ import {
 } from '@goldstack/utils-aws-lambda';
 import { defaultRoutesPath } from './templateSSRConsts';
 import { buildBundles } from './buildBundles';
+import { deployToS3 } from './deployToS3';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
@@ -86,12 +87,18 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'deploy') {
-      await deployFunctions({
-        routesPath: defaultRoutesPath,
-        configuration: packageConfig.getDeployment(opArgs[0]).configuration,
-        deployment: packageConfig.getDeployment(opArgs[0]),
-        config: lambdaRoutes,
-      });
+      await Promise.all([
+        deployFunctions({
+          routesPath: defaultRoutesPath,
+          configuration: packageConfig.getDeployment(opArgs[0]).configuration,
+          deployment: packageConfig.getDeployment(opArgs[0]),
+          config: lambdaRoutes,
+        }),
+        deployToS3({
+          configuration: packageConfig.getDeployment(opArgs[0]).configuration,
+          deployment: packageConfig.getDeployment(opArgs[0]),
+        }),
+      ]);
       return;
     }
 

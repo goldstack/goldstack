@@ -8,6 +8,7 @@ data "aws_route53_zone" "main" {
 ## ACM (AWS Certificate Manager)
 # Creates the wildcard certificate *.<yourdomain.com>
 resource "aws_acm_certificate" "wildcard" {
+  provider = aws.us-east-1 # Wilcard certificate used by CloudFront requires this specific region (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html)
 
   domain_name               = var.api_domain
   subject_alternative_names = ["*.${var.api_domain}"]
@@ -26,6 +27,7 @@ resource "aws_acm_certificate" "wildcard" {
 
 # see https://renehernandez.io/snippets/terraform-and-aws-wildcard-certificates-validation/
 resource "aws_route53_record" "wildcard_validation" {
+
   for_each = {
     for dvo in aws_acm_certificate.wildcard.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
@@ -45,22 +47,24 @@ resource "aws_route53_record" "wildcard_validation" {
 }
 
 
-resource aws_route53_record a {
-  type     = "A"
-  name     = var.api_domain
-  zone_id  = data.aws_route53_zone.main.zone_id
+# Creates the DNS record to point on the main CloudFront distribution ID
+resource "aws_route53_record" "cdn_record" {
+  zone_id = data.aws_route53_zone.main.zone_id
+  name    = var.api_domain
+  type    = "A"
 
   alias {
+    name                   = aws_cloudfront_distribution.cdn.domain_name
+    zone_id                = aws_cloudfront_distribution.cdn.hosted_zone_id
     evaluate_target_health = false
-    name                   = aws_apigatewayv2_domain_name.domain.domain_name_configuration[0].target_domain_name
-    zone_id                = aws_apigatewayv2_domain_name.domain.domain_name_configuration[0].hosted_zone_id
   }
 }
-
 
 # Required to force ACM wildcard certificate validation
 # see https://kopi.cloud/blog/2021/terraform-aws_acm_certificate-wildcards/
 resource "aws_acm_certificate_validation" "wildcard_validation" {
+  provider = aws.us-east-1
+
   certificate_arn = aws_acm_certificate.wildcard.arn
 
   validation_record_fqdns = concat(
@@ -73,8 +77,8 @@ resource "aws_acm_certificate_validation" "wildcard_validation" {
   )
 }
 
-
 data "aws_acm_certificate" "wildcard" {
+  provider = aws.us-east-1
 
   depends_on = [
     aws_acm_certificate.wildcard,
@@ -86,21 +90,3 @@ data "aws_acm_certificate" "wildcard" {
   statuses    = ["ISSUED"]
   most_recent = true
 }
-
-
-resource "aws_apigatewayv2_domain_name" "domain" {
-  domain_name = var.api_domain
-
-  domain_name_configuration {
-    certificate_arn = data.aws_acm_certificate.wildcard.arn
-    endpoint_type   = "REGIONAL"
-    security_policy = "TLS_1_2"
-  }
-}
-
-resource "aws_apigatewayv2_api_mapping" "mapping" {
-  api_id      = aws_apigatewayv2_api.api.id
-  domain_name = aws_apigatewayv2_domain_name.domain.id
-  stage       = aws_apigatewayv2_stage.default.id
-}
-

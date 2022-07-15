@@ -1,8 +1,21 @@
+[![npm version](https://badge.fury.io/js/lambda-compression.svg)](https://badge.fury.io/js/lambda-compression)
+
 # Lambda HTTP Payload Compression
 
 This library provides a wrapper that can be used to compress content in responses when using the [AWS HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html).
 
 The library supports compression with `br`, `gzip` and `deflate`. It will return responses with compressed data matching the supported `accept-encoding` header provided by the client.
+
+## Installation
+
+Simply add the `lambda-compression` package to your project:
+
+```sh
+npm add lambda-compression
+
+# when using Yarn
+yarn add lambda-compression
+```
 
 ## Usage
 

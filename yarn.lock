@@ -2265,6 +2265,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli"
   dependencies:
+    "@goldstack/infra-aws": 0.3.47
     "@goldstack/template-ssr": 0.1.1
     "@goldstack/template-ssr-server": 0.1.1
     "@goldstack/utils-aws-lambda": 0.1.32
@@ -2276,6 +2277,7 @@ __metadata:
     "@goldstack/utils-package": 0.3.41
     "@goldstack/utils-package-config": 0.3.42
     "@goldstack/utils-package-config-generate": 0.2.17
+    "@goldstack/utils-s3-deployment": 0.3.58
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-template": 0.3.37
     "@goldstack/utils-terraform": 0.3.71
