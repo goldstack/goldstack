@@ -48,5 +48,6 @@ export const compress = (
     return result;
   }
 
-  throw new Error(`Encodings not supported ${encodings}`);
+  // if there are no supported encodings, return unencoded message
+  return result;
 };
