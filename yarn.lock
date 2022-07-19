@@ -1611,8 +1611,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/server-side-rendering@workspace:workspaces/templates/packages/server-side-rendering"
   dependencies:
-    "@goldstack/template-ssr": 0.1.1
-    "@goldstack/template-ssr-cli": 0.1.1
+    "@goldstack/template-ssr": 0.1.2
+    "@goldstack/template-ssr-cli": 0.1.2
     "@goldstack/utils-aws-http-api-local": 0.1.34
     "@goldstack/utils-esbuild": 0.4.3
     "@jest-mock/express": ^1.4.5
@@ -2261,13 +2261,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr-cli@0.1.1, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
+"@goldstack/template-ssr-cli@0.1.2, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli"
   dependencies:
     "@goldstack/infra-aws": 0.3.47
-    "@goldstack/template-ssr": 0.1.1
-    "@goldstack/template-ssr-server": 0.1.1
+    "@goldstack/template-ssr": 0.1.2
+    "@goldstack/template-ssr-server": 0.1.2
     "@goldstack/utils-aws-lambda": 0.1.32
     "@goldstack/utils-cli": 0.2.15
     "@goldstack/utils-docker": 0.3.40
@@ -2298,7 +2298,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr-server@0.1.1, @goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server":
+"@goldstack/template-ssr-server@0.1.2, @goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server"
   dependencies:
@@ -2322,7 +2322,7 @@ __metadata:
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
     esbuild: ^0.14.48
     jest: ^28.1.0
-    lambda-compression: 0.1.1
+    lambda-compression: 0.1.2
     react: ^18.2.0
     react-dom: ^18.2.0
     rimraf: ^3.0.2
@@ -2333,13 +2333,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr@0.1.1, @goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr":
+"@goldstack/template-ssr@0.1.2, @goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr"
   dependencies:
     "@goldstack/infra": 0.3.38
     "@goldstack/infra-aws": 0.3.47
-    "@goldstack/template-ssr-server": 0.1.1
+    "@goldstack/template-ssr-server": 0.1.2
     "@goldstack/utils-aws-lambda": 0.1.32
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-esbuild": 0.4.3
@@ -13265,7 +13265,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"lambda-compression@0.1.1, lambda-compression@workspace:workspaces/utils/packages/lambda-compression":
+"lambda-compression@0.1.2, lambda-compression@workspace:workspaces/utils/packages/lambda-compression":
   version: 0.0.0-use.local
   resolution: "lambda-compression@workspace:workspaces/utils/packages/lambda-compression"
   dependencies:

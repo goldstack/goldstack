@@ -1,6 +1,6 @@
 {
   "name": "lambda-compression",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "HTTP payload compression for AWS Lambda functions",
   "keywords": [
     "lambda",

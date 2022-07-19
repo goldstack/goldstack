@@ -10,6 +10,9 @@
   },
   "references": [
     {
+      "path": "../infra-aws"
+    },
+    {
       "path": "../template-ssr"
     },
     {
@@ -32,6 +35,9 @@
     },
     {
       "path": "../utils-package-config"
+    },
+    {
+      "path": "../utils-s3-deployment"
     },
     {
       "path": "../../../utils/packages/utils-sh"
