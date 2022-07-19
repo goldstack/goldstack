@@ -5,8 +5,10 @@ import { APIGatewayProxyResultV2 } from 'aws-lambda';
 import { changeExtension, readToType } from '@goldstack/utils-sh';
 import { dirname } from 'path';
 
+import cssModulesPlugin from 'esbuild-css-modules-plugin';
+
 const sharedConfig: BuildOptions = {
-  plugins: [pnpPlugin()],
+  plugins: [pnpPlugin(), cssModulesPlugin()],
   bundle: true,
   external: [
     'esbuild',

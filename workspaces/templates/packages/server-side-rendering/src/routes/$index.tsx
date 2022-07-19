@@ -21,6 +21,7 @@ const Index = (props: { message: string }): JSX.Element => {
           alert('hi');
           throw new Error('Havent seen this');
         }}
+        className={styles.message}
       >
         {props.message}
       </div>

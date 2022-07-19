@@ -32,5 +32,8 @@
     {
       "path": "../../../templates-lib/packages/utils-aws-http-api-local"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  }
 }

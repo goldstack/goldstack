@@ -49,7 +49,8 @@
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.11",
     "archiver": "^5.3.1",
     "aws-sdk": "2.1055.0",
-    "esbuild": "^0.14.48"
+    "esbuild": "^0.14.48",
+    "esbuild-css-modules-plugin": "^2.4.0"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.36",
