@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from './$index.module.css';
+
 import {
   Handler,
   APIGatewayProxyEventV2,
