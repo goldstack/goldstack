@@ -26,11 +26,17 @@ export const hydrate = (
   if (isServer()) return;
 
   const node = document.getElementById('root');
-  if (!node) {
-    throw new Error('No DOM node found with id "root"');
+  if (node) {
+    ReactDOM.hydrateRoot(
+      node,
+      React.createElement(c, (window as any).initialProperties)
+    );
   }
-  ReactDOM.hydrateRoot(
-    node,
-    React.createElement(c, (window as any).initialProperties)
-  );
+
+  // hydration not required in test environments
+  if (!node && !process.env.JEST_WORKER_ID) {
+    throw new Error(
+      'Cannot hydrate server-side rendered content and initialse JavaScript on the client. No element with id "root" found on page.'
+    );
+  }
 };

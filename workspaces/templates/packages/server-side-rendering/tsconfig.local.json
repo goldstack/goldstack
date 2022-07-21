@@ -1,8 +1,15 @@
 {
   "extends": "./tsconfig.json",
+  "ts-node": {
+    "files": true
+  },
+  "files": [
+    "./typings/declarations.d.ts"
+  ],
   "include": [
     "./src/**/*",
-    "./scripts/**/*"
+    "./scripts/**/*",
+    "./typings/**/*"
   ],
   "compilerOptions": {
     "incremental": true,
@@ -21,6 +28,11 @@
       "dom"
     ],
     "outDir": "dist",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ]
   }
 }
