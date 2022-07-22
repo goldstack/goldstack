@@ -1,15 +1,9 @@
 {
   "extends": "./tsconfig.json",
-  "ts-node": {
-    "files": true
-  },
-  "files": [
-    "./typings/declarations.d.ts"
-  ],
   "include": [
     "./src/**/*",
     "./scripts/**/*",
-    "./typings/**/*"
+    "./typings.d.ts"
   ],
   "compilerOptions": {
     "incremental": true,
@@ -18,7 +12,7 @@
     "jsx": "react",
     "isolatedModules": false,
     "module": "CommonJS",
-    "target": "es5",
+    "target": "es2015",
     "types": [
       "node",
       "dom"

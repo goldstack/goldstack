@@ -22,7 +22,7 @@
     "test": "yarn test-ci --watch",
     "test-ci": "TEST_SERVER_PORT=50321 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=jest.config.js --runInBand",
     "watch": "PORT=5054 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev --project tsconfig.local.json --respawn ./scripts/start.ts",
-    "watch-test": "TS_NODE_DEBUG=true TS_NODE_FILES=true ts-node --project tsconfig.local.json --files ./src/dummy.tsx"
+    "watch-test": "ts-node --swc --transpileOnly --files --project tsconfig.local.json ./src/dummy.tsx"
   },
   "dependencies": {
     "@goldstack/template-ssr": "0.1.2",
@@ -55,7 +55,6 @@
     "node-fetch": "2.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "regenerator-runtime": "^0.13.9",
     "rimraf": "^3.0.2",
     "supertest": "^4.0.2",
     "ts-jest": "^28.0.2",
