@@ -3,6 +3,11 @@ const { addHook } = require('pirates');
 
 const postcss = require('postcss');
 const postcssModules = require('postcss-modules-sync');
+const fs = require('fs');
+const { register } = require('@swc-node/register/register');
+const {
+  readDefaultTsConfig,
+} = require('@swc-node/register/read-default-tsconfig');
 
 function compile(code, filename) {
   let exportedTokens = {};
@@ -16,14 +21,10 @@ function compile(code, filename) {
     }),
   ]).process(code);
 
-  console.log(res.css);
-  console.log(exportedTokens);
-
   const js = `module.exports = JSON.parse('${JSON.stringify(
     exportedTokens
   )}');`;
-
-  console.log(js);
+  // styles in res.css
   return js;
 }
 
@@ -31,6 +32,7 @@ addHook((code, filename) => compile(code, filename), {
   exts: ['.css'],
 });
 
-const { register } = require('@swc-node/register/register');
-
-register({});
+// console.log(fs.existsSync(process.env.TS_NODE_PROJECT));
+const tsConfig = readDefaultTsConfig();
+console.log(tsConfig);
+const swcRegister = register({ ...tsConfig });

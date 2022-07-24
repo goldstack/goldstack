@@ -14,7 +14,7 @@
     "declarationMap": false,
     "jsx": "react",
     "isolatedModules": false,
-    "module": "CommonJS",
+    "module": "commonjs",
     "target": "es2015",
     "types": [
       "node",
