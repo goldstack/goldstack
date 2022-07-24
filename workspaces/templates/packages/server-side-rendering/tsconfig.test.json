@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "include": [
     "./src/**/*",
-    "./typings.d.ts"
+    "./src/typings.d.ts"
   ],
   "compilerOptions": {
     "outDir": "dist",

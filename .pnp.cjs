@@ -2557,6 +2557,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],\
             ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
             ["@jest-mock/express", "npm:1.4.5"],\
+            ["@swc-node/register", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:1.5.1"],\
             ["@swc/core", "npm:1.2.218"],\
             ["@swc/jest", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:0.2.22"],\
             ["@testing-library/jest-dom", "npm:5.16.4"],\
@@ -2577,6 +2578,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest-environment-jsdom", "npm:28.1.3"],\
             ["jest-transform-stub", "npm:2.0.0"],\
             ["node-fetch", "virtual:e52ab1021d0edcbba08fe34ad79056b427f09ae8b857649034d16b50b14324ea805344686a01b18d5f1efd6fa4f5c0b9421fcec6bd3b5d12c27fd1fea3ab1143#npm:2.6.7"],\
+            ["pirates", "npm:4.0.5"],\
+            ["postcss", "npm:8.4.14"],\
+            ["postcss-modules", "virtual:30e741cde772c72c440c5fb5a41688da7f51ed67003dd47dd74421f9e293d0dd7c26aff0bf5c0f78e15203040b57cc215bb729b25a2757dc63326faa21629cfd#npm:4.3.1"],\
+            ["postcss-modules-sync", "npm:1.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
@@ -4688,91 +4693,91 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@parcel/css", [\
-        ["npm:1.9.0", {\
-          "packageLocation": "./.yarn/cache/@parcel-css-npm-1.9.0-a352725014-a565e8755d.zip/node_modules/@parcel/css/",\
+        ["npm:1.12.0", {\
+          "packageLocation": "./.yarn/cache/@parcel-css-npm-1.12.0-b4c103e454-4623116c1a.zip/node_modules/@parcel/css/",\
           "packageDependencies": [\
-            ["@parcel/css", "npm:1.9.0"],\
-            ["@parcel/css-darwin-arm64", "npm:1.9.0"],\
-            ["@parcel/css-darwin-x64", "npm:1.9.0"],\
-            ["@parcel/css-linux-arm-gnueabihf", "npm:1.9.0"],\
-            ["@parcel/css-linux-arm64-gnu", "npm:1.9.0"],\
-            ["@parcel/css-linux-arm64-musl", "npm:1.9.0"],\
-            ["@parcel/css-linux-x64-gnu", "npm:1.9.0"],\
-            ["@parcel/css-linux-x64-musl", "npm:1.9.0"],\
-            ["@parcel/css-win32-x64-msvc", "npm:1.9.0"],\
+            ["@parcel/css", "npm:1.12.0"],\
+            ["@parcel/css-darwin-arm64", "npm:1.12.0"],\
+            ["@parcel/css-darwin-x64", "npm:1.12.0"],\
+            ["@parcel/css-linux-arm-gnueabihf", "npm:1.12.0"],\
+            ["@parcel/css-linux-arm64-gnu", "npm:1.12.0"],\
+            ["@parcel/css-linux-arm64-musl", "npm:1.12.0"],\
+            ["@parcel/css-linux-x64-gnu", "npm:1.12.0"],\
+            ["@parcel/css-linux-x64-musl", "npm:1.12.0"],\
+            ["@parcel/css-win32-x64-msvc", "npm:1.12.0"],\
             ["detect-libc", "npm:1.0.3"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@parcel/css-darwin-arm64", [\
-        ["npm:1.9.0", {\
-          "packageLocation": "./.yarn/unplugged/@parcel-css-darwin-arm64-npm-1.9.0-d7572c7831/node_modules/@parcel/css-darwin-arm64/",\
+        ["npm:1.12.0", {\
+          "packageLocation": "./.yarn/unplugged/@parcel-css-darwin-arm64-npm-1.12.0-ce14c2fd94/node_modules/@parcel/css-darwin-arm64/",\
           "packageDependencies": [\
-            ["@parcel/css-darwin-arm64", "npm:1.9.0"]\
+            ["@parcel/css-darwin-arm64", "npm:1.12.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@parcel/css-darwin-x64", [\
-        ["npm:1.9.0", {\
-          "packageLocation": "./.yarn/unplugged/@parcel-css-darwin-x64-npm-1.9.0-6c26674597/node_modules/@parcel/css-darwin-x64/",\
+        ["npm:1.12.0", {\
+          "packageLocation": "./.yarn/unplugged/@parcel-css-darwin-x64-npm-1.12.0-e5c4323456/node_modules/@parcel/css-darwin-x64/",\
           "packageDependencies": [\
-            ["@parcel/css-darwin-x64", "npm:1.9.0"]\
+            ["@parcel/css-darwin-x64", "npm:1.12.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@parcel/css-linux-arm-gnueabihf", [\
-        ["npm:1.9.0", {\
-          "packageLocation": "./.yarn/unplugged/@parcel-css-linux-arm-gnueabihf-npm-1.9.0-2b6bcc35e0/node_modules/@parcel/css-linux-arm-gnueabihf/",\
+        ["npm:1.12.0", {\
+          "packageLocation": "./.yarn/unplugged/@parcel-css-linux-arm-gnueabihf-npm-1.12.0-66e1e69677/node_modules/@parcel/css-linux-arm-gnueabihf/",\
           "packageDependencies": [\
-            ["@parcel/css-linux-arm-gnueabihf", "npm:1.9.0"]\
+            ["@parcel/css-linux-arm-gnueabihf", "npm:1.12.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@parcel/css-linux-arm64-gnu", [\
-        ["npm:1.9.0", {\
-          "packageLocation": "./.yarn/unplugged/@parcel-css-linux-arm64-gnu-npm-1.9.0-b444a4dcdc/node_modules/@parcel/css-linux-arm64-gnu/",\
+        ["npm:1.12.0", {\
+          "packageLocation": "./.yarn/unplugged/@parcel-css-linux-arm64-gnu-npm-1.12.0-4ea55a4c0d/node_modules/@parcel/css-linux-arm64-gnu/",\
           "packageDependencies": [\
-            ["@parcel/css-linux-arm64-gnu", "npm:1.9.0"]\
+            ["@parcel/css-linux-arm64-gnu", "npm:1.12.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@parcel/css-linux-arm64-musl", [\
-        ["npm:1.9.0", {\
-          "packageLocation": "./.yarn/unplugged/@parcel-css-linux-arm64-musl-npm-1.9.0-14792f6217/node_modules/@parcel/css-linux-arm64-musl/",\
+        ["npm:1.12.0", {\
+          "packageLocation": "./.yarn/unplugged/@parcel-css-linux-arm64-musl-npm-1.12.0-44037efd0a/node_modules/@parcel/css-linux-arm64-musl/",\
           "packageDependencies": [\
-            ["@parcel/css-linux-arm64-musl", "npm:1.9.0"]\
+            ["@parcel/css-linux-arm64-musl", "npm:1.12.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@parcel/css-linux-x64-gnu", [\
-        ["npm:1.9.0", {\
-          "packageLocation": "./.yarn/unplugged/@parcel-css-linux-x64-gnu-npm-1.9.0-cc66e527fa/node_modules/@parcel/css-linux-x64-gnu/",\
+        ["npm:1.12.0", {\
+          "packageLocation": "./.yarn/unplugged/@parcel-css-linux-x64-gnu-npm-1.12.0-b70dd54e7a/node_modules/@parcel/css-linux-x64-gnu/",\
           "packageDependencies": [\
-            ["@parcel/css-linux-x64-gnu", "npm:1.9.0"]\
+            ["@parcel/css-linux-x64-gnu", "npm:1.12.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@parcel/css-linux-x64-musl", [\
-        ["npm:1.9.0", {\
-          "packageLocation": "./.yarn/unplugged/@parcel-css-linux-x64-musl-npm-1.9.0-4212a5abf7/node_modules/@parcel/css-linux-x64-musl/",\
+        ["npm:1.12.0", {\
+          "packageLocation": "./.yarn/unplugged/@parcel-css-linux-x64-musl-npm-1.12.0-41d659e6da/node_modules/@parcel/css-linux-x64-musl/",\
           "packageDependencies": [\
-            ["@parcel/css-linux-x64-musl", "npm:1.9.0"]\
+            ["@parcel/css-linux-x64-musl", "npm:1.12.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@parcel/css-win32-x64-msvc", [\
-        ["npm:1.9.0", {\
-          "packageLocation": "./.yarn/unplugged/@parcel-css-win32-x64-msvc-npm-1.9.0-a9e792f6e7/node_modules/@parcel/css-win32-x64-msvc/",\
+        ["npm:1.12.0", {\
+          "packageLocation": "./.yarn/unplugged/@parcel-css-win32-x64-msvc-npm-1.12.0-4fd3ac0df1/node_modules/@parcel/css-win32-x64-msvc/",\
           "packageDependencies": [\
-            ["@parcel/css-win32-x64-msvc", "npm:1.9.0"]\
+            ["@parcel/css-win32-x64-msvc", "npm:1.12.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5045,6 +5050,55 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@stripe-stripe-js-npm-1.10.0-fc25edaae9-28b7d1b856.zip/node_modules/@stripe/stripe-js/",\
           "packageDependencies": [\
             ["@stripe/stripe-js", "npm:1.10.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@swc-node/core", [\
+        ["npm:1.9.0", {\
+          "packageLocation": "./.yarn/cache/@swc-node-core-npm-1.9.0-d3696fed3a-6fb86ce834.zip/node_modules/@swc-node/core/",\
+          "packageDependencies": [\
+            ["@swc-node/core", "npm:1.9.0"],\
+            ["@swc/core", "npm:1.2.218"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@swc-node/register", [\
+        ["npm:1.5.1", {\
+          "packageLocation": "./.yarn/cache/@swc-node-register-npm-1.5.1-396f07ca45-d4e4442e85.zip/node_modules/@swc-node/register/",\
+          "packageDependencies": [\
+            ["@swc-node/register", "npm:1.5.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:1.5.1", {\
+          "packageLocation": "./.yarn/__virtual__/@swc-node-register-virtual-9dd51f8fd0/0/cache/@swc-node-register-npm-1.5.1-396f07ca45-d4e4442e85.zip/node_modules/@swc-node/register/",\
+          "packageDependencies": [\
+            ["@swc-node/register", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:1.5.1"],\
+            ["@swc-node/core", "npm:1.9.0"],\
+            ["@swc-node/sourcemap-support", "npm:0.2.0"],\
+            ["@types/typescript", null],\
+            ["colorette", "npm:2.0.19"],\
+            ["debug", "virtual:428f325a939c2653ad822eb3d75efb02ac311523dd0d4f9645afc39ea00bd86eceac35a9d59c9b6977d76b670a4ef0ae057ea572338a44729aa592711a8c05a3#npm:4.3.4"],\
+            ["pirates", "npm:4.0.5"],\
+            ["tslib", "npm:2.4.0"],\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
+          ],\
+          "packagePeers": [\
+            "@types/typescript",\
+            "typescript"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@swc-node/sourcemap-support", [\
+        ["npm:0.2.0", {\
+          "packageLocation": "./.yarn/cache/@swc-node-sourcemap-support-npm-0.2.0-88829168e4-b202ada283.zip/node_modules/@swc-node/sourcemap-support/",\
+          "packageDependencies": [\
+            ["@swc-node/sourcemap-support", "npm:0.2.0"],\
+            ["source-map-support", "npm:0.5.21"],\
+            ["tslib", "npm:2.4.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7318,6 +7372,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["ansi-styles", [\
+        ["npm:2.2.1", {\
+          "packageLocation": "./.yarn/cache/ansi-styles-npm-2.2.1-f3297e782c-ebc0e00381.zip/node_modules/ansi-styles/",\
+          "packageDependencies": [\
+            ["ansi-styles", "npm:2.2.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:3.2.1", {\
           "packageLocation": "./.yarn/cache/ansi-styles-npm-3.2.1-8cb8107983-d85ade01c1.zip/node_modules/ansi-styles/",\
           "packageDependencies": [\
@@ -8925,6 +8986,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["chalk", [\
+        ["npm:1.1.3", {\
+          "packageLocation": "./.yarn/cache/chalk-npm-1.1.3-59144c3a87-9d2ea6b98f.zip/node_modules/chalk/",\
+          "packageDependencies": [\
+            ["chalk", "npm:1.1.3"],\
+            ["ansi-styles", "npm:2.2.1"],\
+            ["escape-string-regexp", "npm:1.0.5"],\
+            ["has-ansi", "npm:2.0.0"],\
+            ["strip-ansi", "npm:3.0.1"],\
+            ["supports-color", "npm:2.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:2.4.2", {\
           "packageLocation": "./.yarn/cache/chalk-npm-2.4.2-3ea16dd91e-ec3661d38f.zip/node_modules/chalk/",\
           "packageDependencies": [\
@@ -9435,6 +9508,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/colorette-npm-1.2.2-da75bd0b32-69fec14dda.zip/node_modules/colorette/",\
           "packageDependencies": [\
             ["colorette", "npm:1.2.2"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:2.0.19", {\
+          "packageLocation": "./.yarn/cache/colorette-npm-2.0.19-f73dfe6a4e-888cf5493f.zip/node_modules/colorette/",\
+          "packageDependencies": [\
+            ["colorette", "npm:2.0.19"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -11470,7 +11550,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/esbuild-css-modules-plugin-virtual-30e741cde7/0/cache/esbuild-css-modules-plugin-npm-2.4.0-0839ecf2f7-5b63a1ea4a.zip/node_modules/esbuild-css-modules-plugin/",\
           "packageDependencies": [\
             ["esbuild-css-modules-plugin", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:2.4.0"],\
-            ["@parcel/css", "npm:1.9.0"],\
+            ["@parcel/css", "npm:1.12.0"],\
             ["@types/esbuild", null],\
             ["esbuild", "npm:0.14.48"],\
             ["fs-extra", "npm:10.1.0"],\
@@ -13733,7 +13813,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["has-ansi", [\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/has-ansi-npm-2.0.0-9bf0cff2af-1b51daa021.zip/node_modules/has-ansi/",\
+          "packageDependencies": [\
+            ["has-ansi", "npm:2.0.0"],\
+            ["ansi-regex", "npm:2.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["has-flag", [\
+        ["npm:1.0.0", {\
+          "packageLocation": "./.yarn/cache/has-flag-npm-1.0.0-9e0c397172-ce3f8ae978.zip/node_modules/has-flag/",\
+          "packageDependencies": [\
+            ["has-flag", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:3.0.0", {\
           "packageLocation": "./.yarn/cache/has-flag-npm-3.0.0-16ac11fe05-4a15638b45.zip/node_modules/has-flag/",\
           "packageDependencies": [\
@@ -19274,6 +19371,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["postcss", [\
+        ["npm:5.2.18", {\
+          "packageLocation": "./.yarn/cache/postcss-npm-5.2.18-2800d4d3ec-0cb88e7c88.zip/node_modules/postcss/",\
+          "packageDependencies": [\
+            ["postcss", "npm:5.2.18"],\
+            ["chalk", "npm:1.1.3"],\
+            ["js-base64", "npm:2.6.4"],\
+            ["source-map", "npm:0.5.7"],\
+            ["supports-color", "npm:3.2.3"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:6.0.23", {\
           "packageLocation": "./.yarn/cache/postcss-npm-6.0.23-b0e5acc785-cc6cb2c1db.zip/node_modules/postcss/",\
           "packageDependencies": [\
@@ -19432,6 +19540,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["postcss-modules-local-by-default", [\
+        ["npm:1.2.0", {\
+          "packageLocation": "./.yarn/cache/postcss-modules-local-by-default-npm-1.2.0-59f9733827-c8bbe0a958.zip/node_modules/postcss-modules-local-by-default/",\
+          "packageDependencies": [\
+            ["postcss-modules-local-by-default", "npm:1.2.0"],\
+            ["css-selector-tokenizer", "npm:0.7.3"],\
+            ["postcss", "npm:6.0.23"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:4.0.0", {\
           "packageLocation": "./.yarn/cache/postcss-modules-local-by-default-npm-4.0.0-794014f0a5-6cf570badc.zip/node_modules/postcss-modules-local-by-default/",\
           "packageDependencies": [\
@@ -19457,6 +19574,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["postcss-modules-scope", [\
+        ["npm:1.1.0", {\
+          "packageLocation": "./.yarn/cache/postcss-modules-scope-npm-1.1.0-18e35a3e7d-e1b7dd8b1a.zip/node_modules/postcss-modules-scope/",\
+          "packageDependencies": [\
+            ["postcss-modules-scope", "npm:1.1.0"],\
+            ["css-selector-tokenizer", "npm:0.7.3"],\
+            ["postcss", "npm:6.0.23"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:3.0.0", {\
           "packageLocation": "./.yarn/cache/postcss-modules-scope-npm-3.0.0-0678040a26-330b9398db.zip/node_modules/postcss-modules-scope/",\
           "packageDependencies": [\
@@ -19475,6 +19601,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/postcss",\
             "postcss"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["postcss-modules-sync", [\
+        ["npm:1.0.0", {\
+          "packageLocation": "./.yarn/cache/postcss-modules-sync-npm-1.0.0-36f62d4892-3208503ad2.zip/node_modules/postcss-modules-sync/",\
+          "packageDependencies": [\
+            ["postcss-modules-sync", "npm:1.0.0"],\
+            ["generic-names", "npm:1.0.3"],\
+            ["icss-replace-symbols", "npm:1.1.0"],\
+            ["postcss", "npm:5.2.18"],\
+            ["postcss-modules-local-by-default", "npm:1.2.0"],\
+            ["postcss-modules-scope", "npm:1.1.0"],\
+            ["string-hash", "npm:1.1.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -22896,6 +23037,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["supports-color", [\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/supports-color-npm-2.0.0-22c0f0adbc-602538c581.zip/node_modules/supports-color/",\
+          "packageDependencies": [\
+            ["supports-color", "npm:2.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:3.2.3", {\
+          "packageLocation": "./.yarn/cache/supports-color-npm-3.2.3-117b06af49-56afc05fa8.zip/node_modules/supports-color/",\
+          "packageDependencies": [\
+            ["supports-color", "npm:3.2.3"],\
+            ["has-flag", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:5.5.0", {\
           "packageLocation": "./.yarn/cache/supports-color-npm-5.5.0-183ac537bc-95f6f4ba5a.zip/node_modules/supports-color/",\
           "packageDependencies": [\

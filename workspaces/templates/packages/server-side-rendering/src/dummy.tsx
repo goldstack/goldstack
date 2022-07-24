@@ -1,3 +1,8 @@
-import Index from './routes/$index';
+import React from 'react';
+// import Index from './routes/$index';
+import { renderToString } from 'react-dom/server';
 
-console.log('hello;', Index);
+// const el = renderToString(<Index message="jh" />);
+const el = renderToString(<div>hjey</div>);
+
+console.log(el);

@@ -6,7 +6,7 @@
     "./scripts/**/*",
     "./schemas/**/*.json",
     "./goldstack.json",
-    "./typings.d.ts"
+    "./src/typings.d.ts"
   ],
   "compilerOptions": {
     "outDir": "dist",

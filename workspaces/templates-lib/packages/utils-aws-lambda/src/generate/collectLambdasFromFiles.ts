@@ -96,6 +96,10 @@ function readLambdaConfigImpl(
     if (dirEntry.isDirectory()) {
       configItem.children[name] = readLambdaConfigImpl(configRoot, fullPath);
     } else if (dirEntry.isFile()) {
+      if (!(dirEntry.name.endsWith('.ts') || dirEntry.name.endsWith('.tsx'))) {
+        continue;
+      }
+
       const route = makeRoute(configRoot, fullPath);
 
       configItem.children[name] = {

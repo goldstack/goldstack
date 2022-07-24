@@ -1,5 +1,4 @@
 // declare module '*.module.css';
-// j sadlkfjla;skdjf
 // declare module '*.css';
 
 declare module '*.css' {

@@ -10,6 +10,7 @@ import cssModulesPlugin from 'esbuild-css-modules-plugin';
 const sharedConfig: BuildOptions = {
   plugins: [pnpPlugin(), cssModulesPlugin()],
   bundle: true,
+  outdir: './dist/tmp',
   external: [
     'esbuild',
     '@yarnpkg/esbuild-plugin-pnp',

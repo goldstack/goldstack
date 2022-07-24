@@ -3,7 +3,10 @@
   "include": [
     "./src/**/*",
     "./scripts/**/*",
-    "./typings.d.ts"
+    "./src/typings.d.ts"
+  ],
+  "exclude": [
+    "./src/**/*.css"
   ],
   "compilerOptions": {
     "incremental": true,
