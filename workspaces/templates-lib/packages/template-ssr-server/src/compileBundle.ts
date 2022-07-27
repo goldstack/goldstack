@@ -8,7 +8,12 @@ import { dirname } from 'path';
 import cssModulesPlugin from 'esbuild-css-modules-plugin';
 
 const sharedConfig: BuildOptions = {
-  plugins: [pnpPlugin(), cssModulesPlugin()],
+  plugins: [
+    pnpPlugin(),
+    cssModulesPlugin({
+      generateScopedName: '[path][local]-[hash:base64:10]',
+    }),
+  ],
   bundle: true,
   outdir: './dist/tmp',
   external: [

@@ -14,8 +14,6 @@ function compile(code, filename) {
     postcssModules.default({
       generateScopedName: '[path][local]-[hash:base64:10]',
       getJSON: (tokens) => {
-        console.log('TOKEN CALLBACK');
-        console.log(tokens);
         exportedTokens = tokens;
       },
     }),

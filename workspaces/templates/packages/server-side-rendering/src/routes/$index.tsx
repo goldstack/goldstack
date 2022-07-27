@@ -13,6 +13,8 @@ import { renderPage, hydrate } from '@goldstack/template-ssr';
 
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
+console.log(styles);
+
 const Index = (props: { message: string }): JSX.Element => {
   return (
     <>
