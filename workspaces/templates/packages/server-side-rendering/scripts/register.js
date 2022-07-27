@@ -3,7 +3,6 @@ const { addHook } = require('pirates');
 
 const postcss = require('postcss');
 const postcssModules = require('postcss-modules-sync');
-const fs = require('fs');
 const { register } = require('@swc-node/register/register');
 const {
   readDefaultTsConfig,
@@ -32,7 +31,6 @@ addHook((code, filename) => compile(code, filename), {
   exts: ['.css'],
 });
 
-// console.log(fs.existsSync(process.env.TS_NODE_PROJECT));
-const tsConfig = readDefaultTsConfig();
-console.log(tsConfig);
-const swcRegister = register({ ...tsConfig });
+let tsConfig = readDefaultTsConfig();
+tsConfig = {};
+register({ ...tsConfig });
