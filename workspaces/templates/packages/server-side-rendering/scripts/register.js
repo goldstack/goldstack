@@ -14,16 +14,25 @@ function compile(code, filename) {
     postcssModules.default({
       generateScopedName: '[path][local]-[hash:base64:10]',
       getJSON: (tokens) => {
+        console.log('TOKEN CALLBACK');
         console.log(tokens);
         exportedTokens = tokens;
       },
     }),
   ]).process(code);
 
+  // the below is required to properly resolve `exportedTokens`
+  res
+    .then(() => {
+      // all good
+    })
+    .catch((e) => {
+      throw new Error(`Cannot compile CSS ${e.message}`, e);
+    });
+
   const js = `module.exports = JSON.parse('${JSON.stringify(
     exportedTokens
   )}');`;
-  // styles in res.css
   return js;
 }
 
