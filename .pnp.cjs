@@ -2562,6 +2562,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],\
             ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
             ["@jest-mock/express", "npm:1.4.5"],\
+            ["@swc/core", "npm:1.2.220"],\
+            ["@swc/jest", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:0.2.22"],\
             ["@testing-library/jest-dom", "npm:5.16.4"],\
             ["@testing-library/react", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:13.3.0"],\
             ["@types/aws-lambda", "npm:8.10.88"],\
@@ -2585,7 +2587,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["source-map-support", "npm:0.5.21"],\
             ["supertest", "npm:4.0.2"],\
             ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
-            ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
+            ["ts-node", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:10.9.1"],\
             ["ts-node-dev", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:2.0.0"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"],\
             ["typescript-plugin-css-modules", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:3.4.0"]\
@@ -4108,6 +4110,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@jest/create-cache-key-function", [\
+        ["npm:27.5.1", {\
+          "packageLocation": "./.yarn/cache/@jest-create-cache-key-function-npm-27.5.1-d4c8561229-a6c3a8c769.zip/node_modules/@jest/create-cache-key-function/",\
+          "packageDependencies": [\
+            ["@jest/create-cache-key-function", "npm:27.5.1"],\
+            ["@jest/types", "npm:27.5.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@jest/environment", [\
         ["npm:28.1.0", {\
           "packageLocation": "./.yarn/cache/@jest-environment-npm-28.1.0-270850375d-376904d662.zip/node_modules/@jest/environment/",\
@@ -4347,6 +4359,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@jest-types-npm-27.2.5-620da3d425-322603c243.zip/node_modules/@jest/types/",\
           "packageDependencies": [\
             ["@jest/types", "npm:27.2.5"],\
+            ["@types/istanbul-lib-coverage", "npm:2.0.3"],\
+            ["@types/istanbul-reports", "npm:3.0.0"],\
+            ["@types/node", "npm:14.0.13"],\
+            ["@types/yargs", "npm:16.0.4"],\
+            ["chalk", "npm:4.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:27.5.1", {\
+          "packageLocation": "./.yarn/cache/@jest-types-npm-27.5.1-c589ce1890-d1f43cc946.zip/node_modules/@jest/types/",\
+          "packageDependencies": [\
+            ["@jest/types", "npm:27.5.1"],\
             ["@types/istanbul-lib-coverage", "npm:2.0.3"],\
             ["@types/istanbul-reports", "npm:3.0.0"],\
             ["@types/node", "npm:14.0.13"],\
@@ -5098,6 +5122,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@swc/core-win32-x64-msvc", "npm:1.2.218"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:1.2.220", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-npm-1.2.220-e2470cbf88/node_modules/@swc/core/",\
+          "packageDependencies": [\
+            ["@swc/core", "npm:1.2.220"],\
+            ["@swc/core-android-arm-eabi", "npm:1.2.220"],\
+            ["@swc/core-android-arm64", "npm:1.2.220"],\
+            ["@swc/core-darwin-arm64", "npm:1.2.220"],\
+            ["@swc/core-darwin-x64", "npm:1.2.220"],\
+            ["@swc/core-freebsd-x64", "npm:1.2.220"],\
+            ["@swc/core-linux-arm-gnueabihf", "npm:1.2.220"],\
+            ["@swc/core-linux-arm64-gnu", "npm:1.2.220"],\
+            ["@swc/core-linux-arm64-musl", "npm:1.2.220"],\
+            ["@swc/core-linux-x64-gnu", "npm:1.2.220"],\
+            ["@swc/core-linux-x64-musl", "npm:1.2.220"],\
+            ["@swc/core-win32-arm64-msvc", "npm:1.2.220"],\
+            ["@swc/core-win32-ia32-msvc", "npm:1.2.220"],\
+            ["@swc/core-win32-x64-msvc", "npm:1.2.220"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@swc/core-android-arm-eabi", [\
@@ -5105,6 +5149,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/unplugged/@swc-core-android-arm-eabi-npm-1.2.218-095700127d/node_modules/@swc/core-android-arm-eabi/",\
           "packageDependencies": [\
             ["@swc/core-android-arm-eabi", "npm:1.2.218"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.2.220", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-android-arm-eabi-npm-1.2.220-f40a3d651a/node_modules/@swc/core-android-arm-eabi/",\
+          "packageDependencies": [\
+            ["@swc/core-android-arm-eabi", "npm:1.2.220"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5116,6 +5167,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@swc/core-android-arm64", "npm:1.2.218"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:1.2.220", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-android-arm64-npm-1.2.220-4c9865f365/node_modules/@swc/core-android-arm64/",\
+          "packageDependencies": [\
+            ["@swc/core-android-arm64", "npm:1.2.220"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@swc/core-darwin-arm64", [\
@@ -5123,6 +5181,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/unplugged/@swc-core-darwin-arm64-npm-1.2.218-f5ad3bd465/node_modules/@swc/core-darwin-arm64/",\
           "packageDependencies": [\
             ["@swc/core-darwin-arm64", "npm:1.2.218"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.2.220", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-darwin-arm64-npm-1.2.220-10e78ca536/node_modules/@swc/core-darwin-arm64/",\
+          "packageDependencies": [\
+            ["@swc/core-darwin-arm64", "npm:1.2.220"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5134,6 +5199,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@swc/core-darwin-x64", "npm:1.2.218"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:1.2.220", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-darwin-x64-npm-1.2.220-b76109722a/node_modules/@swc/core-darwin-x64/",\
+          "packageDependencies": [\
+            ["@swc/core-darwin-x64", "npm:1.2.220"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@swc/core-freebsd-x64", [\
@@ -5141,6 +5213,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/unplugged/@swc-core-freebsd-x64-npm-1.2.218-ddb32e6eb2/node_modules/@swc/core-freebsd-x64/",\
           "packageDependencies": [\
             ["@swc/core-freebsd-x64", "npm:1.2.218"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.2.220", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-freebsd-x64-npm-1.2.220-38b01e0dfb/node_modules/@swc/core-freebsd-x64/",\
+          "packageDependencies": [\
+            ["@swc/core-freebsd-x64", "npm:1.2.220"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5152,6 +5231,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@swc/core-linux-arm-gnueabihf", "npm:1.2.218"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:1.2.220", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-linux-arm-gnueabihf-npm-1.2.220-e49396069d/node_modules/@swc/core-linux-arm-gnueabihf/",\
+          "packageDependencies": [\
+            ["@swc/core-linux-arm-gnueabihf", "npm:1.2.220"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@swc/core-linux-arm64-gnu", [\
@@ -5159,6 +5245,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/unplugged/@swc-core-linux-arm64-gnu-npm-1.2.218-3717cc6c12/node_modules/@swc/core-linux-arm64-gnu/",\
           "packageDependencies": [\
             ["@swc/core-linux-arm64-gnu", "npm:1.2.218"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.2.220", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-linux-arm64-gnu-npm-1.2.220-66f351dfbb/node_modules/@swc/core-linux-arm64-gnu/",\
+          "packageDependencies": [\
+            ["@swc/core-linux-arm64-gnu", "npm:1.2.220"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5170,6 +5263,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@swc/core-linux-arm64-musl", "npm:1.2.218"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:1.2.220", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-linux-arm64-musl-npm-1.2.220-44014e1bf3/node_modules/@swc/core-linux-arm64-musl/",\
+          "packageDependencies": [\
+            ["@swc/core-linux-arm64-musl", "npm:1.2.220"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@swc/core-linux-x64-gnu", [\
@@ -5177,6 +5277,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.2.218-74ec9f0ccd/node_modules/@swc/core-linux-x64-gnu/",\
           "packageDependencies": [\
             ["@swc/core-linux-x64-gnu", "npm:1.2.218"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.2.220", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.2.220-9975c08faf/node_modules/@swc/core-linux-x64-gnu/",\
+          "packageDependencies": [\
+            ["@swc/core-linux-x64-gnu", "npm:1.2.220"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5188,6 +5295,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@swc/core-linux-x64-musl", "npm:1.2.218"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:1.2.220", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-linux-x64-musl-npm-1.2.220-042e1c9d66/node_modules/@swc/core-linux-x64-musl/",\
+          "packageDependencies": [\
+            ["@swc/core-linux-x64-musl", "npm:1.2.220"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@swc/core-win32-arm64-msvc", [\
@@ -5195,6 +5309,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/unplugged/@swc-core-win32-arm64-msvc-npm-1.2.218-0ede7fd35b/node_modules/@swc/core-win32-arm64-msvc/",\
           "packageDependencies": [\
             ["@swc/core-win32-arm64-msvc", "npm:1.2.218"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.2.220", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-win32-arm64-msvc-npm-1.2.220-0cd5b43ff6/node_modules/@swc/core-win32-arm64-msvc/",\
+          "packageDependencies": [\
+            ["@swc/core-win32-arm64-msvc", "npm:1.2.220"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5206,6 +5327,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@swc/core-win32-ia32-msvc", "npm:1.2.218"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:1.2.220", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-win32-ia32-msvc-npm-1.2.220-1eb60dc358/node_modules/@swc/core-win32-ia32-msvc/",\
+          "packageDependencies": [\
+            ["@swc/core-win32-ia32-msvc", "npm:1.2.220"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@swc/core-win32-x64-msvc", [\
@@ -5213,6 +5341,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/unplugged/@swc-core-win32-x64-msvc-npm-1.2.218-f5cd7262af/node_modules/@swc/core-win32-x64-msvc/",\
           "packageDependencies": [\
             ["@swc/core-win32-x64-msvc", "npm:1.2.218"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.2.220", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-win32-x64-msvc-npm-1.2.220-fcbf7c5366/node_modules/@swc/core-win32-x64-msvc/",\
+          "packageDependencies": [\
+            ["@swc/core-win32-x64-msvc", "npm:1.2.220"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5223,6 +5358,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@swc/helpers", "npm:0.4.2"],\
             ["tslib", "npm:2.4.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@swc/jest", [\
+        ["npm:0.2.22", {\
+          "packageLocation": "./.yarn/cache/@swc-jest-npm-0.2.22-4a6b0339d9-c624cfcc93.zip/node_modules/@swc/jest/",\
+          "packageDependencies": [\
+            ["@swc/jest", "npm:0.2.22"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:0.2.22", {\
+          "packageLocation": "./.yarn/__virtual__/@swc-jest-virtual-b1e22e9d39/0/cache/@swc-jest-npm-0.2.22-4a6b0339d9-c624cfcc93.zip/node_modules/@swc/jest/",\
+          "packageDependencies": [\
+            ["@swc/jest", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:0.2.22"],\
+            ["@jest/create-cache-key-function", "npm:27.5.1"],\
+            ["@swc/core", "npm:1.2.220"],\
+            ["@types/swc__core", null]\
+          ],\
+          "packagePeers": [\
+            "@swc/core",\
+            "@types/swc__core"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -23939,6 +24097,42 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/node14", "npm:1.0.1"],\
             ["@tsconfig/node16", "npm:1.0.2"],\
             ["@types/node", null],\
+            ["@types/swc__core", null],\
+            ["@types/swc__wasm", null],\
+            ["@types/typescript", null],\
+            ["acorn", "npm:8.5.0"],\
+            ["acorn-walk", "npm:8.2.0"],\
+            ["arg", "npm:4.1.3"],\
+            ["create-require", "npm:1.1.1"],\
+            ["diff", "npm:4.0.2"],\
+            ["make-error", "npm:1.3.6"],\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"],\
+            ["v8-compile-cache-lib", "npm:3.0.1"],\
+            ["yn", "npm:3.1.1"]\
+          ],\
+          "packagePeers": [\
+            "@swc/core",\
+            "@swc/wasm",\
+            "@types/node",\
+            "@types/swc__core",\
+            "@types/swc__wasm",\
+            "@types/typescript",\
+            "typescript"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:10.9.1", {\
+          "packageLocation": "./.yarn/__virtual__/ts-node-virtual-8d0015e970/0/cache/ts-node-npm-10.9.1-6c268be7f4-090adff130.zip/node_modules/ts-node/",\
+          "packageDependencies": [\
+            ["ts-node", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:10.9.1"],\
+            ["@cspotcode/source-map-support", "npm:0.8.1"],\
+            ["@swc/core", "npm:1.2.220"],\
+            ["@swc/wasm", null],\
+            ["@tsconfig/node10", "npm:1.0.8"],\
+            ["@tsconfig/node12", "npm:1.0.9"],\
+            ["@tsconfig/node14", "npm:1.0.1"],\
+            ["@tsconfig/node16", "npm:1.0.2"],\
+            ["@types/node", "npm:17.0.33"],\
             ["@types/swc__core", null],\
             ["@types/swc__wasm", null],\
             ["@types/typescript", null],\

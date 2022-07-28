@@ -1625,6 +1625,8 @@ __metadata:
     "@goldstack/utils-aws-http-api-local": 0.1.34
     "@goldstack/utils-esbuild": 0.4.3
     "@jest-mock/express": ^1.4.5
+    "@swc/core": ^1.2.220
+    "@swc/jest": ^0.2.22
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.3.0
     "@types/aws-lambda": ^8.10.88
@@ -3081,6 +3083,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jest/create-cache-key-function@npm:^27.4.2":
+  version: 27.5.1
+  resolution: "@jest/create-cache-key-function@npm:27.5.1"
+  dependencies:
+    "@jest/types": ^27.5.1
+  checksum: a6c3a8c769aca6f66f5dc80f1c77e66980b4f213a6b2a15a92ba3595f032848a1261c06c9c798dcf2b672b1ffbefad5085af89d130548741c85ddbe0cf4284e7
+  languageName: node
+  linkType: hard
+
 "@jest/environment@npm:^28.1.0":
   version: 28.1.0
   resolution: "@jest/environment@npm:28.1.0"
@@ -3311,6 +3322,19 @@ __metadata:
     "@types/yargs": ^16.0.0
     chalk: ^4.0.0
   checksum: 322603c24354a5333b5b7a670464422a46e0244a5a96a35552a7018eb4ac2e84c3b7657336b0ea6aa114963f9b6d0da8b8f6f963cb044fea9e7bc04d464b0ab1
+  languageName: node
+  linkType: hard
+
+"@jest/types@npm:^27.5.1":
+  version: 27.5.1
+  resolution: "@jest/types@npm:27.5.1"
+  dependencies:
+    "@types/istanbul-lib-coverage": ^2.0.0
+    "@types/istanbul-reports": ^3.0.0
+    "@types/node": "*"
+    "@types/yargs": ^16.0.0
+    chalk: ^4.0.0
+  checksum: d1f43cc946d87543ddd79d49547aab2399481d34025d5c5f2025d3d99c573e1d9832fa83cef25e9d9b07a8583500229d15bbb07b8e233d127d911d133e2f14b1
   languageName: node
   linkType: hard
 
@@ -3883,9 +3907,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swc/core-android-arm-eabi@npm:1.2.220":
+  version: 1.2.220
+  resolution: "@swc/core-android-arm-eabi@npm:1.2.220"
+  conditions: os=android & cpu=arm
+  languageName: node
+  linkType: hard
+
 "@swc/core-android-arm64@npm:1.2.218":
   version: 1.2.218
   resolution: "@swc/core-android-arm64@npm:1.2.218"
+  conditions: os=android & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@swc/core-android-arm64@npm:1.2.220":
+  version: 1.2.220
+  resolution: "@swc/core-android-arm64@npm:1.2.220"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
@@ -3897,9 +3935,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swc/core-darwin-arm64@npm:1.2.220":
+  version: 1.2.220
+  resolution: "@swc/core-darwin-arm64@npm:1.2.220"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
 "@swc/core-darwin-x64@npm:1.2.218":
   version: 1.2.218
   resolution: "@swc/core-darwin-x64@npm:1.2.218"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@swc/core-darwin-x64@npm:1.2.220":
+  version: 1.2.220
+  resolution: "@swc/core-darwin-x64@npm:1.2.220"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
@@ -3911,9 +3963,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swc/core-freebsd-x64@npm:1.2.220":
+  version: 1.2.220
+  resolution: "@swc/core-freebsd-x64@npm:1.2.220"
+  conditions: os=freebsd & cpu=x64
+  languageName: node
+  linkType: hard
+
 "@swc/core-linux-arm-gnueabihf@npm:1.2.218":
   version: 1.2.218
   resolution: "@swc/core-linux-arm-gnueabihf@npm:1.2.218"
+  conditions: os=linux & cpu=arm
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-arm-gnueabihf@npm:1.2.220":
+  version: 1.2.220
+  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.2.220"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
@@ -3925,9 +3991,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swc/core-linux-arm64-gnu@npm:1.2.220":
+  version: 1.2.220
+  resolution: "@swc/core-linux-arm64-gnu@npm:1.2.220"
+  conditions: os=linux & cpu=arm64 & libc=glibc
+  languageName: node
+  linkType: hard
+
 "@swc/core-linux-arm64-musl@npm:1.2.218":
   version: 1.2.218
   resolution: "@swc/core-linux-arm64-musl@npm:1.2.218"
+  conditions: os=linux & cpu=arm64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-arm64-musl@npm:1.2.220":
+  version: 1.2.220
+  resolution: "@swc/core-linux-arm64-musl@npm:1.2.220"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
@@ -3939,9 +4019,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swc/core-linux-x64-gnu@npm:1.2.220":
+  version: 1.2.220
+  resolution: "@swc/core-linux-x64-gnu@npm:1.2.220"
+  conditions: os=linux & cpu=x64 & libc=glibc
+  languageName: node
+  linkType: hard
+
 "@swc/core-linux-x64-musl@npm:1.2.218":
   version: 1.2.218
   resolution: "@swc/core-linux-x64-musl@npm:1.2.218"
+  conditions: os=linux & cpu=x64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"@swc/core-linux-x64-musl@npm:1.2.220":
+  version: 1.2.220
+  resolution: "@swc/core-linux-x64-musl@npm:1.2.220"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
@@ -3953,6 +4047,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swc/core-win32-arm64-msvc@npm:1.2.220":
+  version: 1.2.220
+  resolution: "@swc/core-win32-arm64-msvc@npm:1.2.220"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
 "@swc/core-win32-ia32-msvc@npm:1.2.218":
   version: 1.2.218
   resolution: "@swc/core-win32-ia32-msvc@npm:1.2.218"
@@ -3960,9 +4061,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swc/core-win32-ia32-msvc@npm:1.2.220":
+  version: 1.2.220
+  resolution: "@swc/core-win32-ia32-msvc@npm:1.2.220"
+  conditions: os=win32 & cpu=ia32
+  languageName: node
+  linkType: hard
+
 "@swc/core-win32-x64-msvc@npm:1.2.218":
   version: 1.2.218
   resolution: "@swc/core-win32-x64-msvc@npm:1.2.218"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@swc/core-win32-x64-msvc@npm:1.2.220":
+  version: 1.2.220
+  resolution: "@swc/core-win32-x64-msvc@npm:1.2.220"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -4017,12 +4132,73 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@swc/core@npm:^1.2.220":
+  version: 1.2.220
+  resolution: "@swc/core@npm:1.2.220"
+  dependencies:
+    "@swc/core-android-arm-eabi": 1.2.220
+    "@swc/core-android-arm64": 1.2.220
+    "@swc/core-darwin-arm64": 1.2.220
+    "@swc/core-darwin-x64": 1.2.220
+    "@swc/core-freebsd-x64": 1.2.220
+    "@swc/core-linux-arm-gnueabihf": 1.2.220
+    "@swc/core-linux-arm64-gnu": 1.2.220
+    "@swc/core-linux-arm64-musl": 1.2.220
+    "@swc/core-linux-x64-gnu": 1.2.220
+    "@swc/core-linux-x64-musl": 1.2.220
+    "@swc/core-win32-arm64-msvc": 1.2.220
+    "@swc/core-win32-ia32-msvc": 1.2.220
+    "@swc/core-win32-x64-msvc": 1.2.220
+  dependenciesMeta:
+    "@swc/core-android-arm-eabi":
+      optional: true
+    "@swc/core-android-arm64":
+      optional: true
+    "@swc/core-darwin-arm64":
+      optional: true
+    "@swc/core-darwin-x64":
+      optional: true
+    "@swc/core-freebsd-x64":
+      optional: true
+    "@swc/core-linux-arm-gnueabihf":
+      optional: true
+    "@swc/core-linux-arm64-gnu":
+      optional: true
+    "@swc/core-linux-arm64-musl":
+      optional: true
+    "@swc/core-linux-x64-gnu":
+      optional: true
+    "@swc/core-linux-x64-musl":
+      optional: true
+    "@swc/core-win32-arm64-msvc":
+      optional: true
+    "@swc/core-win32-ia32-msvc":
+      optional: true
+    "@swc/core-win32-x64-msvc":
+      optional: true
+  bin:
+    swcx: run_swcx.js
+  checksum: deb39178bbaa372da1b6ef931d1efad93c6f05656ec001e02aeeedb9b3d6dd2773042ccc963fc18ee0505882fa2330f4f0883270c0c5a52ca9a24fa5015ca116
+  languageName: node
+  linkType: hard
+
 "@swc/helpers@npm:0.4.2":
   version: 0.4.2
   resolution: "@swc/helpers@npm:0.4.2"
   dependencies:
     tslib: ^2.4.0
   checksum: 0b8c86ad03b17b8fe57dc4498e25dc294ea6bc42558a6b92d8fcd789351dac80199409bef38a2e3ac06aae0fedddfc0ab9c34409acbf74e55d1bbbd74f68b6b7
+  languageName: node
+  linkType: hard
+
+"@swc/jest@npm:^0.2.22":
+  version: 0.2.22
+  resolution: "@swc/jest@npm:0.2.22"
+  dependencies:
+    "@jest/create-cache-key-function": ^27.4.2
+  peerDependencies:
+    "@swc/core": "*"
+  checksum: c624cfcc9325a719fc7d811536011c4bde0c63c808827b47d7bbcc57621323146cb3891d8702fd01c1bebfc54a9148692f772af4db8e839eb2c6ccd7850fa5f5
   languageName: node
   linkType: hard
 
