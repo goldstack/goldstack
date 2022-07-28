@@ -272,6 +272,9 @@
       "path": "workspaces/utils/packages/lambda-compression"
     },
     {
+      "path": "workspaces/utils/packages/node-css-require"
+    },
+    {
       "path": "workspaces/utils/packages/utils-cli"
     },
     {

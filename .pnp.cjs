@@ -341,6 +341,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/utils/packages/lambda-compression"\
       },\
       {\
+        "name": "node-css-require",\
+        "reference": "workspace:workspaces/utils/packages/node-css-require"\
+      },\
+      {\
         "name": "@goldstack/utils-cli",\
         "reference": "workspace:workspaces/utils/packages/utils-cli"\
       },\
@@ -475,6 +479,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["apps", ["workspace:workspaces/apps"]],\
       ["docs", ["workspace:workspaces/docs"]],\
       ["lambda-compression", ["workspace:workspaces/utils/packages/lambda-compression"]],\
+      ["node-css-require", ["workspace:workspaces/utils/packages/node-css-require"]],\
       ["root", ["workspace:."]],\
       ["templates", ["workspace:workspaces/templates"]],\
       ["templates-lib", ["workspace:workspaces/templates-lib"]],\
@@ -2557,8 +2562,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],\
             ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
             ["@jest-mock/express", "npm:1.4.5"],\
-            ["@swc-node/register", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:1.5.1"],\
-            ["@swc/jest", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:0.2.22"],\
             ["@testing-library/jest-dom", "npm:5.16.4"],\
             ["@testing-library/react", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:13.3.0"],\
             ["@types/aws-lambda", "npm:8.10.88"],\
@@ -2574,10 +2577,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
             ["jest-environment-jsdom", "npm:28.1.3"],\
             ["jest-transform-stub", "npm:2.0.0"],\
+            ["node-css-require", "workspace:workspaces/utils/packages/node-css-require"],\
             ["node-fetch", "virtual:e52ab1021d0edcbba08fe34ad79056b427f09ae8b857649034d16b50b14324ea805344686a01b18d5f1efd6fa4f5c0b9421fcec6bd3b5d12c27fd1fea3ab1143#npm:2.6.7"],\
-            ["pirates", "npm:4.0.5"],\
-            ["postcss", "npm:8.4.14"],\
-            ["postcss-modules-sync", "npm:1.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
@@ -4107,16 +4108,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@jest/create-cache-key-function", [\
-        ["npm:27.5.1", {\
-          "packageLocation": "./.yarn/cache/@jest-create-cache-key-function-npm-27.5.1-d4c8561229-a6c3a8c769.zip/node_modules/@jest/create-cache-key-function/",\
-          "packageDependencies": [\
-            ["@jest/create-cache-key-function", "npm:27.5.1"],\
-            ["@jest/types", "npm:27.5.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["@jest/environment", [\
         ["npm:28.1.0", {\
           "packageLocation": "./.yarn/cache/@jest-environment-npm-28.1.0-270850375d-376904d662.zip/node_modules/@jest/environment/",\
@@ -4356,18 +4347,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@jest-types-npm-27.2.5-620da3d425-322603c243.zip/node_modules/@jest/types/",\
           "packageDependencies": [\
             ["@jest/types", "npm:27.2.5"],\
-            ["@types/istanbul-lib-coverage", "npm:2.0.3"],\
-            ["@types/istanbul-reports", "npm:3.0.0"],\
-            ["@types/node", "npm:14.0.13"],\
-            ["@types/yargs", "npm:16.0.4"],\
-            ["chalk", "npm:4.1.0"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["npm:27.5.1", {\
-          "packageLocation": "./.yarn/cache/@jest-types-npm-27.5.1-c589ce1890-d1f43cc946.zip/node_modules/@jest/types/",\
-          "packageDependencies": [\
-            ["@jest/types", "npm:27.5.1"],\
             ["@types/istanbul-lib-coverage", "npm:2.0.3"],\
             ["@types/istanbul-reports", "npm:3.0.0"],\
             ["@types/node", "npm:14.0.13"],\
@@ -5068,10 +5047,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:1.5.1", {\
-          "packageLocation": "./.yarn/__virtual__/@swc-node-register-virtual-9dd51f8fd0/0/cache/@swc-node-register-npm-1.5.1-396f07ca45-d4e4442e85.zip/node_modules/@swc-node/register/",\
+        ["virtual:417eda6db05d3785224e5cb2e62d425e52a4465dd629155f0b5562c3a073e5b0f338d801c109e19e9735d858ee32b796666deadccd691cf16a78108dfb6946d1#npm:1.5.1", {\
+          "packageLocation": "./.yarn/__virtual__/@swc-node-register-virtual-7ed214c22b/0/cache/@swc-node-register-npm-1.5.1-396f07ca45-d4e4442e85.zip/node_modules/@swc-node/register/",\
           "packageDependencies": [\
-            ["@swc-node/register", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:1.5.1"],\
+            ["@swc-node/register", "virtual:417eda6db05d3785224e5cb2e62d425e52a4465dd629155f0b5562c3a073e5b0f338d801c109e19e9735d858ee32b796666deadccd691cf16a78108dfb6946d1#npm:1.5.1"],\
             ["@swc-node/core", "npm:1.9.0"],\
             ["@swc-node/sourcemap-support", "npm:0.2.0"],\
             ["@types/typescript", null],\
@@ -5244,29 +5223,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@swc/helpers", "npm:0.4.2"],\
             ["tslib", "npm:2.4.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@swc/jest", [\
-        ["npm:0.2.22", {\
-          "packageLocation": "./.yarn/cache/@swc-jest-npm-0.2.22-4a6b0339d9-c624cfcc93.zip/node_modules/@swc/jest/",\
-          "packageDependencies": [\
-            ["@swc/jest", "npm:0.2.22"]\
-          ],\
-          "linkType": "SOFT"\
-        }],\
-        ["virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:0.2.22", {\
-          "packageLocation": "./.yarn/__virtual__/@swc-jest-virtual-b1e22e9d39/0/cache/@swc-jest-npm-0.2.22-4a6b0339d9-c624cfcc93.zip/node_modules/@swc/jest/",\
-          "packageDependencies": [\
-            ["@swc/jest", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:0.2.22"],\
-            ["@jest/create-cache-key-function", "npm:27.5.1"],\
-            ["@swc/core", null],\
-            ["@types/swc__core", null]\
-          ],\
-          "packagePeers": [\
-            "@swc/core",\
-            "@types/swc__core"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -18173,6 +18129,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["nice-try", "npm:1.0.5"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["node-css-require", [\
+        ["workspace:workspaces/utils/packages/node-css-require", {\
+          "packageLocation": "./workspaces/utils/packages/node-css-require/",\
+          "packageDependencies": [\
+            ["node-css-require", "workspace:workspaces/utils/packages/node-css-require"],\
+            ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@swc-node/register", "virtual:417eda6db05d3785224e5cb2e62d425e52a4465dd629155f0b5562c3a073e5b0f338d801c109e19e9735d858ee32b796666deadccd691cf16a78108dfb6946d1#npm:1.5.1"],\
+            ["@types/jest", "npm:27.5.1"],\
+            ["@types/node", "npm:17.0.33"],\
+            ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
+            ["pirates", "npm:4.0.5"],\
+            ["postcss", "npm:8.4.14"],\
+            ["postcss-modules-sync", "npm:1.0.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
+          ],\
+          "linkType": "SOFT"\
         }]\
       ]],\
       ["node-fetch", [\
