@@ -11,6 +11,8 @@ import {
 import { renderDocument } from './../_document';
 import { renderPage, hydrate } from '@goldstack/template-ssr';
 
+import Panel from './../components/Panel';
+
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
 const Index = (props: { message: string }): JSX.Element => {
@@ -25,6 +27,7 @@ const Index = (props: { message: string }): JSX.Element => {
       >
         {props.message}
       </div>
+      <Panel />
     </>
   );
 };

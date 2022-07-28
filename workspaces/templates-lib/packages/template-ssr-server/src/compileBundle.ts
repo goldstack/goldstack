@@ -175,6 +175,9 @@ export const bundleResponse = async ({
     statusCode: 201,
     headers: {
       'Content-Type': 'application/javascript',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      Pragma: 'no-cache',
+      Expire: '0',
       SourceMap: '?resource=sourcemap',
     },
     body: res.bundle,
@@ -194,6 +197,9 @@ export const cssResponse = async ({
     statusCode: 201,
     headers: {
       'Content-Type': 'text/css',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      Pragma: 'no-cache',
+      Expire: '0',
       // SourceMap: '?resource=sourcemap',
     },
     body: res.css,
@@ -237,6 +243,9 @@ export const sourceMapResponse = async ({
     statusCode: 201,
     headers: {
       'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      Pragma: 'no-cache',
+      Expire: '0',
     },
     body: sourceMapData,
   };
