@@ -1,21 +1,65 @@
-import { build, BuildOptions } from 'esbuild';
+import {
+  build,
+  BuildOptions,
+  BuildResult,
+  OnLoadArgs,
+  OnLoadOptions,
+  OnLoadResult,
+  OutputFile,
+  Plugin,
+  PluginBuild,
+} from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
 
 import { APIGatewayProxyResultV2 } from 'aws-lambda';
 import { changeExtension, readToType } from '@goldstack/utils-sh';
 import { dirname } from 'path';
+import fs from 'fs';
+import { compileCss } from 'node-css-require';
 
 import cssModulesPlugin from 'esbuild-css-modules-plugin';
 
+const cssPlugin: Plugin = {
+  name: 'css-plugin',
+  setup: (build: PluginBuild) => {
+    build.onLoad(
+      {
+        filter: /\.css$/,
+      },
+      async (args: OnLoadArgs): Promise<OnLoadResult> => {
+        const text = await fs.promises.readFile(args.path, 'utf8');
+        const css = compileCss(text, args.path);
+        return {
+          contents: css.css,
+          loader: 'css',
+        };
+      }
+    );
+  },
+};
+
 const sharedConfig: BuildOptions = {
   plugins: [
+    // cssModulesPlugin({
+    //   // v2: true,
+    //   generateScopedName: (name, filename, css) => {
+    //     console.log('generateScopedName', name, filename, css);
+    //     return `${filename}-${name}`;
+    //   },
+    //   cssModulesOption: {
+    //     // generateScopedName: '[path][local]-[hash:base64:10]',
+    //     generateScopedName: (name, filename, css) => {
+    //       console.log('generateScopedName', name, filename, css);
+    //       return `${filename}-${name}`;
+    //     },
+    //   },
+    //   inject: false,
+    // }),
+    cssPlugin,
     pnpPlugin(),
-    cssModulesPlugin({
-      generateScopedName: '[path][local]-[hash:base64:10]',
-    }),
   ],
   bundle: true,
-  outdir: './dist/tmp',
+  outfile: '/dist/tmp/bundle.js', // this is used for nothing, but if not supplying it css modules plugin fails
   external: [
     'esbuild',
     '@yarnpkg/esbuild-plugin-pnp',
@@ -41,7 +85,28 @@ export interface CompileBundleResponse {
   bundle: string;
   sourceMap?: string;
   metaFile?: string;
+  css: string;
 }
+
+const getOutput = (
+  extension: string,
+  result: BuildResult & {
+    outputFiles: OutputFile[];
+  }
+): string => {
+  const matchedFiles = result.outputFiles.filter((file) =>
+    file.path.endsWith(extension)
+  );
+
+  if (matchedFiles.length !== 1) {
+    throw new Error(
+      `Invalid output from esbuild. Expected only one '${extension}' file but found ${matchedFiles.length}`
+    );
+  }
+
+  const output = Buffer.from(matchedFiles[0].contents).toString('utf-8');
+  return output;
+};
 
 export const compileBundle = async ({
   entryPoint,
@@ -63,9 +128,10 @@ export const compileBundle = async ({
     write: false,
   });
 
-  const output = Buffer.from(res.outputFiles[0].contents).toString('utf-8');
+  const output = getOutput('.js', res);
   let result: CompileBundleResponse = {
     bundle: '',
+    css: getOutput('.css', res),
   };
   if (!sourceMap) {
     result.bundle = output;
@@ -115,6 +181,24 @@ export const bundleResponse = async ({
   };
 };
 
+export const cssResponse = async ({
+  entryPoint,
+  initialProperties,
+}: {
+  entryPoint: string;
+  initialProperties?: any;
+}): Promise<APIGatewayProxyResultV2> => {
+  const res = await compileBundle({ entryPoint, initialProperties });
+
+  return {
+    statusCode: 201,
+    headers: {
+      'Content-Type': 'text/css',
+      // SourceMap: '?resource=sourcemap',
+    },
+    body: res.css,
+  };
+};
 const extractSourceMap = (output: string): string => {
   const marker = '//# sourceMappingURL=data:application/json;base64,';
   const startContent = output.indexOf(marker) + marker.length;

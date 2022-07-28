@@ -6,8 +6,12 @@ import postcssModules from 'postcss-modules-sync';
 import { register as swcRegister } from '@swc-node/register/register';
 import { readDefaultTsConfig } from '@swc-node/register/read-default-tsconfig';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function compile(code: string, filename: string): string {
+export interface CompileCssResult {
+  css: string;
+  js: string;
+}
+
+export function compileCss(code: string, filename: string): CompileCssResult {
   let exportedTokens = {};
   const res = postcss([
     postcssModules({
@@ -16,7 +20,7 @@ function compile(code: string, filename: string): string {
         exportedTokens = tokens;
       },
     }),
-  ]).process(code);
+  ]).process(code, { from: filename });
 
   // the below is required to properly resolve `exportedTokens`
   res
@@ -30,11 +34,18 @@ function compile(code: string, filename: string): string {
   const js = `module.exports = JSON.parse('${JSON.stringify(
     exportedTokens
   )}');`;
-  return js;
+  return {
+    js,
+    css: res.css,
+  };
+}
+
+function compileJs(code: string, filename: string): string {
+  return compileCss(code, filename).js;
 }
 
 export const register = (): void => {
-  addHook((code, filename) => compile(code, filename), {
+  addHook((code, filename) => compileJs(code, filename), {
     exts: ['.css'],
   });
 

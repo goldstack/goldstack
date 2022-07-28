@@ -12,9 +12,11 @@ import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { readFileSync } from 'fs';
 
 export const clientBundleFileName = 'client.bundle.js';
+export const clientCSSFileName = 'client.bundle.css';
 
 export interface RenderDocumentProps {
   bundledJsPath: string;
+  bundledCssPath: string;
   renderedHtml: string;
 }
 
@@ -60,6 +62,29 @@ export const renderPage = async <PropType>({
       }
     }
 
+    if (event.queryStringParameters['resource'].indexOf('css') > -1) {
+      if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
+        // if running in Lambda load bundle from local file system
+        return compress(event, {
+          statusCode: 201,
+          headers: {
+            'Content-Type': 'text/css',
+            // SourceMap: '?resource=sourcemap',
+          },
+          body: `${readFileSync(clientCSSFileName, 'utf-8')}`,
+        });
+      } else {
+        // if not running in Lambda build CSS bundle dynamically
+        return compress(
+          event,
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
+          require(excludeInBundle('./compileBundle')).cssResponse({
+            entryPoint,
+            initialProperties: properties,
+          })
+        );
+      }
+    }
     if (event.queryStringParameters['resource'].indexOf('sourcemap') > -1) {
       if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
         // if running in Lambda load sourcemap from local file system
@@ -86,6 +111,7 @@ export const renderPage = async <PropType>({
 
   const document = renderDocument({
     bundledJsPath: '?resource=js',
+    bundledCssPath: '?resource=css',
     renderedHtml: page,
   });
   return compress(event, {

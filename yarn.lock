@@ -2338,9 +2338,10 @@ __metadata:
     "@types/yargs": ^17.0.10
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
     esbuild: ^0.14.48
-    esbuild-css-modules-plugin: ^2.4.0
+    esbuild-css-modules-plugin: ^2.5.1
     jest: ^28.1.0
     lambda-compression: 0.1.2
+    node-css-require: 0.1.0
     react: ^18.2.0
     react-dom: ^18.2.0
     rimraf: ^3.0.2
@@ -2493,7 +2494,7 @@ __metadata:
     archiver: ^5.3.1
     aws-sdk: 2.1055.0
     esbuild: ^0.14.48
-    esbuild-css-modules-plugin: ^2.4.0
+    esbuild-css-modules-plugin: ^2.5.1
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -3663,7 +3664,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@parcel/css@npm:1.12.0":
+"@parcel/css@npm:^1.12.0":
   version: 1.12.0
   resolution: "@parcel/css@npm:1.12.0"
   dependencies:
@@ -9526,11 +9527,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild-css-modules-plugin@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "esbuild-css-modules-plugin@npm:2.4.0"
+"esbuild-css-modules-plugin@npm:^2.5.1":
+  version: 2.5.1
+  resolution: "esbuild-css-modules-plugin@npm:2.5.1"
   dependencies:
-    "@parcel/css": 1.12.0
+    "@parcel/css": ^1.12.0
     fs-extra: ^10.1.0
     lodash: ^4.17.21
     postcss: ^8.4.12
@@ -9538,7 +9539,7 @@ __metadata:
     tmp: ^0.2.1
   peerDependencies:
     esbuild: ^0.14.38
-  checksum: 5b63a1ea4ad3186d4051cadbeeb68e883a3c581c8116b312ce19d52ef1c9dc3678a21490c96207eb8aacc3c4eb03ef21b25f83769df6dc1bd21b63215701249a
+  checksum: e1498f2e238b2251c934993f2488c133b883dfee54e7e567bece9058cd5431eaae840c84454cbb9b3ab4d46c25f3925aa1bd2a698fb93f1f34b3e6fb793ca23a
   languageName: node
   linkType: hard
 
