@@ -47,8 +47,16 @@ export const buildFunctions = async ({
     const functionName = generateFunctionName(lambdaNamePrefix, config);
     const localEsbuildConfig = readToType<BuildOptions>(esbuildLocalPath);
 
+    const generatedCss: string[] = [];
     const res = await build({
-      plugins: [cssServerPlugin(), pnpPlugin()],
+      plugins: [
+        cssServerPlugin({
+          onCSSGenerated: (css) => {
+            generatedCss.push(css);
+          },
+        }),
+        pnpPlugin(),
+      ],
       bundle: true,
       entryPoints: [`${routesDir}/${config.relativeFilePath}`],
       external: [
@@ -74,6 +82,11 @@ export const buildFunctions = async ({
     write(
       JSON.stringify(res.metafile),
       `./distLambda/zips/${functionName}.meta.json`
+    );
+    // provide CSS for initial load
+    write(
+      generatedCss.join('\n'),
+      `${getOutDirForLambda(config)}/client.bundle.css`
     );
   }
 };

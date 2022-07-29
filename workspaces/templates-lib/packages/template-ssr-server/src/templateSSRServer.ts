@@ -16,6 +16,7 @@ export const clientCSSFileName = 'client.bundle.css';
 
 export interface RenderDocumentProps {
   bundledJsPath: string;
+  styles?: string;
   renderedHtml: string;
 }
 
@@ -87,6 +88,7 @@ export const renderPage = async <PropType>({
 
   const document = renderDocument({
     bundledJsPath: '?resource=js',
+    styles: readFileSync(clientCSSFileName, 'utf-8'),
     renderedHtml: page,
   });
   return compress(event, {
