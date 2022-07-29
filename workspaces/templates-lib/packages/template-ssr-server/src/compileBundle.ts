@@ -1,13 +1,16 @@
-import { build, BuildOptions } from 'esbuild';
+import { build, BuildOptions, BuildResult, OutputFile } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
+
+import cssPlugin from 'esbuild-css-modules-client-plugin';
 
 import { APIGatewayProxyResultV2 } from 'aws-lambda';
 import { changeExtension, readToType } from '@goldstack/utils-sh';
 import { dirname } from 'path';
 
 const sharedConfig: BuildOptions = {
-  plugins: [pnpPlugin()],
+  plugins: [cssPlugin(), pnpPlugin()],
   bundle: true,
+  outfile: '/dist/tmp/bundle.js', // this is used for nothing, but if not supplying it css modules plugin fails
   external: [
     'esbuild',
     '@yarnpkg/esbuild-plugin-pnp',
@@ -35,6 +38,26 @@ export interface CompileBundleResponse {
   metaFile?: string;
 }
 
+const getOutput = (
+  extension: string,
+  result: BuildResult & {
+    outputFiles: OutputFile[];
+  }
+): string => {
+  const matchedFiles = result.outputFiles.filter((file) =>
+    file.path.endsWith(extension)
+  );
+
+  if (matchedFiles.length !== 1) {
+    throw new Error(
+      `Invalid output from esbuild. Expected only one '${extension}' file but found ${matchedFiles.length}`
+    );
+  }
+
+  const output = Buffer.from(matchedFiles[0].contents).toString('utf-8');
+  return output;
+};
+
 export const compileBundle = async ({
   entryPoint,
   metaFile,
@@ -55,7 +78,7 @@ export const compileBundle = async ({
     write: false,
   });
 
-  const output = Buffer.from(res.outputFiles[0].contents).toString('utf-8');
+  const output = getOutput('.js', res);
   let result: CompileBundleResponse = {
     bundle: '',
   };
@@ -101,6 +124,9 @@ export const bundleResponse = async ({
     statusCode: 201,
     headers: {
       'Content-Type': 'application/javascript',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      Pragma: 'no-cache',
+      Expire: '0',
       SourceMap: '?resource=sourcemap',
     },
     body: res.bundle,
@@ -145,6 +171,9 @@ export const sourceMapResponse = async ({
     statusCode: 201,
     headers: {
       'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      Pragma: 'no-cache',
+      Expire: '0',
     },
     body: sourceMapData,
   };

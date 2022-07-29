@@ -5,7 +5,8 @@
     "./src/**/*.json",
     "./scripts/**/*",
     "./schemas/**/*.json",
-    "./goldstack.json"
+    "./goldstack.json",
+    "./src/typings.d.ts"
   ],
   "compilerOptions": {
     "outDir": "dist",
@@ -14,7 +15,12 @@
     "module": "esnext",
     "noEmit": false,
     "moduleResolution": "node",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ]
   },
   "exclude": [
     "node_modules"
@@ -31,6 +37,9 @@
     },
     {
       "path": "../../../templates-lib/packages/utils-aws-http-api-local"
+    },
+    {
+      "path": "../../../utils/packages/node-css-require"
     }
   ]
 }

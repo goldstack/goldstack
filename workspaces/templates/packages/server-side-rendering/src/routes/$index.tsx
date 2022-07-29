@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import styles from './$index.module.css';
 
 import {
   Handler,
@@ -9,19 +11,25 @@ import {
 import { renderDocument } from './../_document';
 import { renderPage, hydrate } from '@goldstack/template-ssr';
 
+import Panel from './../components/Panel';
+
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
 const Index = (props: { message: string }): JSX.Element => {
+  const [clicked, setClicked] = useState(false);
   return (
     <>
       <div
         onClick={() => {
           alert('hi');
+          setClicked(true);
           throw new Error('Havent seen this');
         }}
+        className={styles.message}
       >
         {props.message}
       </div>
+      {clicked && <Panel />}
     </>
   );
 };

@@ -12,6 +12,7 @@ import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { readFileSync } from 'fs';
 
 export const clientBundleFileName = 'client.bundle.js';
+export const clientCSSFileName = 'client.bundle.css';
 
 export interface RenderDocumentProps {
   bundledJsPath: string;
