@@ -1,6 +1,6 @@
 import { build, BuildOptions } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
-import cssModulesPlugin from 'esbuild-css-modules-plugin';
+import cssServerPlugin from 'esbuild-css-modules-server-plugin';
 import { LambdaConfig } from './types/LambdaConfig';
 import { generateFunctionName } from './generate/generateFunctionName';
 import {
@@ -48,7 +48,7 @@ export const buildFunctions = async ({
     const localEsbuildConfig = readToType<BuildOptions>(esbuildLocalPath);
 
     const res = await build({
-      plugins: [pnpPlugin(), cssModulesPlugin()],
+      plugins: [cssServerPlugin(), pnpPlugin()],
       bundle: true,
       entryPoints: [`${routesDir}/${config.relativeFilePath}`],
       external: [

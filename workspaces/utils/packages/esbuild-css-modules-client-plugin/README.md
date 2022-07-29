@@ -21,7 +21,7 @@ yarn add esbuild-css-modules-client-plugin
 (2) Add this plugin to the list of plugins supplied to esbuild:
 
 ```typescript
-import cssPlugin from '';
+import cssPlugin from 'esbuild-css-modules-client-plugin';
 
 const res = await build({
   plugins: [cssPlugin()],
