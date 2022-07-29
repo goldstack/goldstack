@@ -7,19 +7,26 @@ import { APIGatewayProxyResultV2 } from 'aws-lambda';
 import { changeExtension, readToType } from '@goldstack/utils-sh';
 import { dirname } from 'path';
 
-const sharedConfig: BuildOptions = {
-  plugins: [cssPlugin(), pnpPlugin()],
-  bundle: true,
-  outfile: '/dist/tmp/bundle.js', // this is used for nothing, but if not supplying it css modules plugin fails
-  external: [
-    'esbuild',
-    '@yarnpkg/esbuild-plugin-pnp',
-    '@goldstack/template-ssr-server', // this is only required on the server side
-  ],
-  minify: true,
-  platform: 'browser',
-  format: 'iife',
-  treeShaking: true,
+const sharedConfig = (includeCss: boolean): BuildOptions => {
+  return {
+    plugins: [
+      cssPlugin({
+        excludeCSSInject: !includeCss,
+      }),
+      pnpPlugin(),
+    ],
+    bundle: true,
+    outfile: '/dist/tmp/bundle.js', // this is used for nothing, but if not supplying it css modules plugin fails
+    external: [
+      'esbuild',
+      '@yarnpkg/esbuild-plugin-pnp',
+      '@goldstack/template-ssr-server', // this is only required on the server side
+    ],
+    minify: true,
+    platform: 'browser',
+    format: 'iife',
+    treeShaking: true,
+  };
 };
 
 const getEsBuildConfig = (entryPoint: string): BuildOptions => {
@@ -63,14 +70,16 @@ export const compileBundle = async ({
   metaFile,
   sourceMap,
   initialProperties,
+  includeCss,
 }: {
   entryPoint: string;
   metaFile?: boolean;
   sourceMap?: boolean;
   initialProperties?: any;
+  includeCss: boolean;
 }): Promise<CompileBundleResponse> => {
   const res = await build({
-    ...sharedConfig,
+    ...sharedConfig(includeCss),
     entryPoints: [entryPoint],
     metafile: metaFile,
     sourcemap: sourceMap ? 'inline' : undefined,
@@ -118,7 +127,11 @@ export const bundleResponse = async ({
   entryPoint: string;
   initialProperties?: any;
 }): Promise<APIGatewayProxyResultV2> => {
-  const res = await compileBundle({ entryPoint, initialProperties });
+  const res = await compileBundle({
+    entryPoint,
+    initialProperties,
+    includeCss: true,
+  });
 
   return {
     statusCode: 201,
@@ -157,7 +170,7 @@ export const sourceMapResponse = async ({
   entryPoint: string;
 }): Promise<APIGatewayProxyResultV2> => {
   const res = await build({
-    ...sharedConfig,
+    ...sharedConfig(false),
     entryPoints: [entryPoint],
     sourcemap: 'inline',
     ...getEsBuildConfig(entryPoint),
