@@ -9,7 +9,7 @@ export const renderDocument = ({
 <!DOCTYPE html>
 <html>
   <head>
-    ${styles && `<style>${styles}</style>`}
+    ${styles ? `<style>${styles}</style>` : ''}
   </head>
   <body>
     <div id="root">${renderedHtml}</div>

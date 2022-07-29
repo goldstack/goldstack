@@ -23,6 +23,7 @@ export const buildBundles = async ({
     const compileResult = await compileBundle({
       entryPoint: `${routesDir}/${config.relativeFilePath}`,
       sourceMap: true,
+      includeCss: false,
       metaFile: true,
     });
     const clientJsBundleFileName = `${destDir}/${clientBundleFileName}`;

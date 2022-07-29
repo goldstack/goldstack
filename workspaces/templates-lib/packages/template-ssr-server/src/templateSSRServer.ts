@@ -86,9 +86,17 @@ export const renderPage = async <PropType>({
 
   const page = renderToString(React.createElement(component, properties));
 
+  let styles: string | undefined;
+  // only inject styles when in lambda - otherwise they are loaded dynamically
+  if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
+    styles = readFileSync(clientCSSFileName, 'utf-8');
+  } else {
+    styles = undefined;
+  }
+
   const document = renderDocument({
     bundledJsPath: '?resource=js',
-    styles: readFileSync(clientCSSFileName, 'utf-8'),
+    styles,
     renderedHtml: page,
   });
   return compress(event, {
