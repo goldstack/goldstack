@@ -3,7 +3,6 @@ import {
   BuildOptions,
   BuildResult,
   OnLoadArgs,
-  OnLoadOptions,
   OnLoadResult,
   OutputFile,
   Plugin,
@@ -16,8 +15,20 @@ import { changeExtension, readToType } from '@goldstack/utils-sh';
 import { dirname } from 'path';
 import fs from 'fs';
 import { compileCss } from 'node-css-require';
+import sha256 from 'sha256';
 
-import cssModulesPlugin from 'esbuild-css-modules-plugin';
+async function generateCSSInject(sourcePath: string, css: string) {
+  const styleID = sha256(sourcePath);
+
+  return `(function(){
+        if (!document.getElementById('${styleID}')) {
+            var e = document.createElement('style');
+            e.id = '${styleID}';
+            e.textContent = \`${css}\`;
+            document.head.appendChild(e);
+        }
+    })();`;
+}
 
 const cssPlugin: Plugin = {
   name: 'css-plugin',
@@ -28,10 +39,12 @@ const cssPlugin: Plugin = {
       },
       async (args: OnLoadArgs): Promise<OnLoadResult> => {
         const text = await fs.promises.readFile(args.path, 'utf8');
-        const css = compileCss(text, args.path);
+        const res = compileCss(text, args.path);
+
+        const js = `${await generateCSSInject(args.path, res.css)}\n${res.js}`;
         return {
-          contents: css.css,
-          loader: 'css',
+          contents: js,
+          loader: 'js',
         };
       }
     );
@@ -39,25 +52,7 @@ const cssPlugin: Plugin = {
 };
 
 const sharedConfig: BuildOptions = {
-  plugins: [
-    // cssModulesPlugin({
-    //   // v2: true,
-    //   generateScopedName: (name, filename, css) => {
-    //     console.log('generateScopedName', name, filename, css);
-    //     return `${filename}-${name}`;
-    //   },
-    //   cssModulesOption: {
-    //     // generateScopedName: '[path][local]-[hash:base64:10]',
-    //     generateScopedName: (name, filename, css) => {
-    //       console.log('generateScopedName', name, filename, css);
-    //       return `${filename}-${name}`;
-    //     },
-    //   },
-    //   inject: false,
-    // }),
-    cssPlugin,
-    pnpPlugin(),
-  ],
+  plugins: [cssPlugin, pnpPlugin()],
   bundle: true,
   outfile: '/dist/tmp/bundle.js', // this is used for nothing, but if not supplying it css modules plugin fails
   external: [
@@ -85,7 +80,6 @@ export interface CompileBundleResponse {
   bundle: string;
   sourceMap?: string;
   metaFile?: string;
-  css: string;
 }
 
 const getOutput = (
@@ -131,7 +125,6 @@ export const compileBundle = async ({
   const output = getOutput('.js', res);
   let result: CompileBundleResponse = {
     bundle: '',
-    css: getOutput('.css', res),
   };
   if (!sourceMap) {
     result.bundle = output;
@@ -184,27 +177,6 @@ export const bundleResponse = async ({
   };
 };
 
-export const cssResponse = async ({
-  entryPoint,
-  initialProperties,
-}: {
-  entryPoint: string;
-  initialProperties?: any;
-}): Promise<APIGatewayProxyResultV2> => {
-  const res = await compileBundle({ entryPoint, initialProperties });
-
-  return {
-    statusCode: 201,
-    headers: {
-      'Content-Type': 'text/css',
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-      Pragma: 'no-cache',
-      Expire: '0',
-      // SourceMap: '?resource=sourcemap',
-    },
-    body: res.css,
-  };
-};
 const extractSourceMap = (output: string): string => {
   const marker = '//# sourceMappingURL=data:application/json;base64,';
   const startContent = output.indexOf(marker) + marker.length;
