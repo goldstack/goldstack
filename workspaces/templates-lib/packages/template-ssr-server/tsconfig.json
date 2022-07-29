@@ -37,10 +37,10 @@
       "path": "../utils-terraform"
     },
     {
-      "path": "../../../utils/packages/lambda-compression"
+      "path": "../../../utils/packages/esbuild-css-modules-client-plugin"
     },
     {
-      "path": "../../../utils/packages/node-css-require"
+      "path": "../../../utils/packages/lambda-compression"
     },
     {
       "path": "../../../docs/packages/utils-docs-cli"

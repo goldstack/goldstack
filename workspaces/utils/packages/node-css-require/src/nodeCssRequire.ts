@@ -28,7 +28,7 @@ export function compileCss(code: string, filename: string): CompileCssResult {
       // all good
     })
     .catch((e) => {
-      throw new Error(`Cannot compile CSS ${e.message}`, e);
+      throw new Error(`Cannot compile CSS ${e.message}`);
     });
 
   const js = `module.exports = JSON.parse('${JSON.stringify(

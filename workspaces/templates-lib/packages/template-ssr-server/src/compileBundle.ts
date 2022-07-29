@@ -1,58 +1,14 @@
-import {
-  build,
-  BuildOptions,
-  BuildResult,
-  OnLoadArgs,
-  OnLoadResult,
-  OutputFile,
-  Plugin,
-  PluginBuild,
-} from 'esbuild';
+import { build, BuildOptions, BuildResult, OutputFile } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
+
+import cssPlugin from 'esbuild-css-modules-client-plugin';
 
 import { APIGatewayProxyResultV2 } from 'aws-lambda';
 import { changeExtension, readToType } from '@goldstack/utils-sh';
 import { dirname } from 'path';
-import fs from 'fs';
-import { compileCss } from 'node-css-require';
-import sha256 from 'sha256';
-
-async function generateCSSInject(sourcePath: string, css: string) {
-  const styleID = sha256(sourcePath);
-
-  return `(function(){
-        if (!document.getElementById('${styleID}')) {
-            var e = document.createElement('style');
-            e.id = '${styleID}';
-            e.textContent = \`${css}\`;
-            document.head.appendChild(e);
-        }
-    })();`;
-}
-
-const cssPlugin: Plugin = {
-  name: 'css-plugin',
-  setup: (build: PluginBuild) => {
-    build.onLoad(
-      {
-        filter: /\.css$/,
-      },
-      async (args: OnLoadArgs): Promise<OnLoadResult> => {
-        const text = await fs.promises.readFile(args.path, 'utf8');
-        const res = compileCss(text, args.path);
-
-        const js = `${await generateCSSInject(args.path, res.css)}\n${res.js}`;
-        return {
-          contents: js,
-          loader: 'js',
-        };
-      }
-    );
-  },
-};
 
 const sharedConfig: BuildOptions = {
-  plugins: [cssPlugin, pnpPlugin()],
+  plugins: [cssPlugin(), pnpPlugin()],
   bundle: true,
   outfile: '/dist/tmp/bundle.js', // this is used for nothing, but if not supplying it css modules plugin fails
   external: [

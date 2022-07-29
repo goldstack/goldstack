@@ -337,6 +337,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates-management/packages/utils-template-test"\
       },\
       {\
+        "name": "esbuild-css-modules-client-plugin",\
+        "reference": "workspace:workspaces/utils/packages/esbuild-css-modules-client-plugin"\
+      },\
+      {\
         "name": "lambda-compression",\
         "reference": "workspace:workspaces/utils/packages/lambda-compression"\
       },\
@@ -478,6 +482,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/utils-yarn", ["workspace:workspaces/utils/packages/utils-yarn"]],\
       ["apps", ["workspace:workspaces/apps"]],\
       ["docs", ["workspace:workspaces/docs"]],\
+      ["esbuild-css-modules-client-plugin", ["workspace:workspaces/utils/packages/esbuild-css-modules-client-plugin"]],\
       ["lambda-compression", ["workspace:workspaces/utils/packages/lambda-compression"]],\
       ["node-css-require", ["workspace:workspaces/utils/packages/node-css-require"]],\
       ["root", ["workspace:."]],\
@@ -3333,13 +3338,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/yargs", "npm:17.0.10"],\
             ["@yarnpkg/esbuild-plugin-pnp", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:3.0.0-rc.11"],\
             ["esbuild", "npm:0.14.48"],\
+            ["esbuild-css-modules-client-plugin", "workspace:workspaces/utils/packages/esbuild-css-modules-client-plugin"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
             ["lambda-compression", "workspace:workspaces/utils/packages/lambda-compression"],\
-            ["node-css-require", "workspace:workspaces/utils/packages/node-css-require"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
-            ["sha256", "npm:0.2.0"],\
             ["source-map-support", "npm:0.5.21"],\
             ["ts-jest", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:28.0.2"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
@@ -11676,6 +11680,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["esbuild-android-arm64", "npm:0.14.48"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["esbuild-css-modules-client-plugin", [\
+        ["workspace:workspaces/utils/packages/esbuild-css-modules-client-plugin", {\
+          "packageLocation": "./workspaces/utils/packages/esbuild-css-modules-client-plugin/",\
+          "packageDependencies": [\
+            ["esbuild-css-modules-client-plugin", "workspace:workspaces/utils/packages/esbuild-css-modules-client-plugin"],\
+            ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@types/jest", "npm:27.5.1"],\
+            ["@types/node", "npm:17.0.33"],\
+            ["esbuild", "npm:0.14.48"],\
+            ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
+            ["node-css-require", "workspace:workspaces/utils/packages/node-css-require"],\
+            ["postcss-modules-sync", "npm:1.0.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["sha256", "npm:0.2.0"],\
+            ["ts-jest", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:28.0.2"],\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=7ad353"]\
+          ],\
+          "linkType": "SOFT"\
         }]\
       ]],\
       ["esbuild-css-modules-plugin", [\
