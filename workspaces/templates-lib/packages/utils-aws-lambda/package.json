@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-aws-lambda",
-  "version": "0.1.34",
+  "version": "0.1.35",
   "description": "Utilities for deploying AWS Lambda functions",
   "keywords": [
     "goldstack",
@@ -50,7 +50,7 @@
     "archiver": "^5.3.1",
     "aws-sdk": "2.1055.0",
     "esbuild": "^0.14.48",
-    "esbuild-css-modules-server-plugin": "0.1.2"
+    "esbuild-css-modules-server-plugin": "0.1.3"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.36",

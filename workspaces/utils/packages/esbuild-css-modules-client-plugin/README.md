@@ -40,9 +40,11 @@ The plugin supports one option `excludeCSSInject`. This defaults to `false`. Whe
 import cssPlugin from 'esbuild-css-modules-client-plugin';
 
 const res = await build({
-  plugins: [cssPlugin({
-    excludeCSSInject: true
-  })],
+  plugins: [
+    cssPlugin({
+      excludeCSSInject: true,
+    }),
+  ],
 });
 ```
 

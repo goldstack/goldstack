@@ -41,11 +41,13 @@ import cssPlugin from 'esbuild-css-modules-server-plugin';
 
 const generatedCss: string[] = [];
 const res = await build({
-  plugins: [cssPlugin({
-    onCSSGenerated: (css) => {
-      generatedCss.push(css);
-    },
-  })],
+  plugins: [
+    cssPlugin({
+      onCSSGenerated: (css) => {
+        generatedCss.push(css);
+      },
+    }),
+  ],
 });
 console.log(generatedCss.join('\n'));
 ```
