@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/node-css-require.svg)](https://badge.fury.io/js/node-css-require)
+
 # Node CSS Require
 
 Sometimes it is required to import CSS files into a Node script:
