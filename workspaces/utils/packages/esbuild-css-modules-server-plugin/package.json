@@ -10,7 +10,7 @@
     "esbuild",
     "css"
   ],
-  "homepage": "",
+  "homepage": "https://github.com/goldstack/goldstack/tree/master/workspaces/utils/packages/esbuild-css-modules-server-plugin#readme",
   "bugs": {
     "url": "https://github.com/goldstack/goldstack/issues"
   },
