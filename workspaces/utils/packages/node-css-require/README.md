@@ -44,7 +44,7 @@ node -r register.js myscript.js
 
 This will ensure the logic for registering the loading mechanism for CSS files is loaded before any other script of your application.
 
-Note that the value of the imported variable from a CSS file will be map of class names defined in the CSS file mapped to dynamically generated names using [`css-modes`](https://github.com/css-modules/css-modules).
+Note that the value of the imported variable from a CSS file will be map of class names defined in the CSS file mapped to dynamically generated names using [`css-modules`](https://github.com/css-modules/css-modules).
 
 In order to avoid any errors during TypeScript compilation declare a file `typings.d.ts` with the following contents:
 
