@@ -1622,7 +1622,7 @@ __metadata:
   dependencies:
     "@goldstack/template-ssr": 0.1.5
     "@goldstack/template-ssr-cli": 0.1.5
-    "@goldstack/utils-aws-http-api-local": 0.1.37
+    "@goldstack/utils-aws-http-api-local": 0.1.38
     "@goldstack/utils-esbuild": 0.4.3
     "@jest-mock/express": ^1.4.5
     "@swc/core": ^1.2.220
@@ -1662,7 +1662,7 @@ __metadata:
   resolution: "@goldstack/serverless-api@workspace:workspaces/templates/packages/serverless-api"
   dependencies:
     "@goldstack/template-lambda-api-cli": 0.4.14
-    "@goldstack/utils-aws-http-api-local": 0.1.37
+    "@goldstack/utils-aws-http-api-local": 0.1.38
     "@goldstack/utils-esbuild": 0.4.3
     "@jest-mock/express": ^1.4.5
     "@types/aws-lambda": ^8.10.88
@@ -2454,7 +2454,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-aws-http-api-local@0.1.37, @goldstack/utils-aws-http-api-local@workspace:workspaces/templates-lib/packages/utils-aws-http-api-local":
+"@goldstack/utils-aws-http-api-local@0.1.38, @goldstack/utils-aws-http-api-local@workspace:workspaces/templates-lib/packages/utils-aws-http-api-local":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-aws-http-api-local@workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"
   dependencies:

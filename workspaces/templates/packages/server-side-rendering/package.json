@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@goldstack/template-ssr-cli": "0.1.5",
-    "@goldstack/utils-aws-http-api-local": "0.1.37",
+    "@goldstack/utils-aws-http-api-local": "0.1.38",
     "@jest-mock/express": "^1.4.5",
     "@swc/core": "^1.2.220",
     "@swc/jest": "^0.2.22",
