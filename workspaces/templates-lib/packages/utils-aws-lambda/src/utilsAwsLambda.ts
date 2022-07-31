@@ -6,6 +6,8 @@ export type { LambdaConfig } from './types/LambdaConfig';
 export { RouteType } from './types/LambdaConfig';
 
 export type {
+  LambdaRoutesConfig,
+  LambdaRouteConfig,
   LambdaApiDeploymentConfiguration,
   APIDomain,
   CorsHeader,

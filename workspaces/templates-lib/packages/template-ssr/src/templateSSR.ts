@@ -5,6 +5,8 @@ import type { APIGatewayProxyResultV2 } from 'aws-lambda';
 
 import ReactDOM from 'react-dom/client';
 import type { RenderPageProps } from '@goldstack/template-ssr-server';
+import { LambdaApiDeploymentConfiguration } from '@goldstack/utils-aws-lambda';
+import { SSRDeploymentConfiguration } from './types/SSRPackage';
 
 export type { RenderDocumentProps } from '@goldstack/template-ssr-server';
 
@@ -18,6 +20,17 @@ export const renderPage = async <PropType>(
 function isServer(): boolean {
   return !(typeof window != 'undefined' && window.document);
 }
+
+export const createLambdaAPIDeploymentConfiguration = (
+  configuration: SSRDeploymentConfiguration
+): LambdaApiDeploymentConfiguration => {
+  return {
+    apiDomain: configuration.domain,
+    hostedZoneDomain: configuration.hostedZoneDomain,
+    lambdas: configuration.lambdas,
+    lambdaNamePrefix: configuration.lambdaNamePrefix,
+  };
+};
 
 export const hydrate = (
   // element: React.ReactElement<any, string | React.JSXElementConstructor<any>>

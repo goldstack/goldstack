@@ -1,11 +1,11 @@
 import type { AWSDeployment } from '@goldstack/infra-aws';
 import type { TerraformDeployment } from '@goldstack/utils-terraform';
 import type { Deployment, DeploymentConfiguration } from '@goldstack/infra';
-import type { LambdaApiDeploymentConfiguration } from '@goldstack/utils-aws-lambda';
+import type { SSRDeploymentConfiguration } from './SSRDeploymentConfiguration';
 import type { Package, Configuration } from '@goldstack/utils-package';
 
 export interface ThisDeploymentConfiguration
-  extends LambdaApiDeploymentConfiguration,
+  extends SSRDeploymentConfiguration,
     DeploymentConfiguration {}
 
 export interface ThisDeployment
@@ -16,28 +16,28 @@ export interface ThisDeployment
 }
 
 /**
- * Places where the lambda should be deployed to.
+ * Places where the service should be deployed to.
  *
  * @title Deployments
  */
-export type LambdaApiDeployments = ThisDeployment[];
+export type SSRDeployments = ThisDeployment[];
 
 /**
- * Configures this lambda.
+ * Configures this service.
  *
- * @title Lambda Configuration
+ * @title Service Configuration
  *
  */
 export type ThisPackageConfiguration = Configuration;
 
 /**
- * A deployment for a lambda API.
+ * A deployment for a server-side rendering package.
  *
- * @title Lambda API Package
+ * @title Server-side Rendering Package
  */
 export interface ThisPackage extends Package {
   configuration: ThisPackageConfiguration;
-  deployments: LambdaApiDeployments;
+  deployments: SSRDeployments;
 }
 
 export { ThisDeploymentConfiguration as SSRDeploymentConfiguration };
