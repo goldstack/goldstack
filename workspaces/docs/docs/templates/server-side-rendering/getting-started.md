@@ -2,15 +2,15 @@
 
 [!embed](./../shared/getting-started-infrastructure.md)
 
-Note that your API will not work yet. It first needs to be deployed as per instructions below.
+Note that your website will not work yet. It first needs to be deployed as per instructions below.
 
 [!embed](./../shared/getting-started-deployment.md)
 
-You should now be able to access your API. The domain under which the API is deployed is configured in `goldstack.json` under `"deployments[*].apiDomain"`. You can access this API domain with a browser since the default API provided in the template allows for GET requests to the root.
+You should now be able to access your website. The domain under which the website is deployed is configured in `goldstack.json` under `"deployments[*].domain"`.
 
 ### Development
 
-The source code for the API is defined in the `src/` folder. The entry point for defining new routes is in `src/routes`. The easiest way to get started extending the API is to modify or add new routes to the server by adding new folders and files. The template will automatically update the infrastructure configuration for the new routes defined, such as adding routes to the API Gateway or defining new Lambda functions. Simply run `yarn infra up [environment]` after adding or removing routes.
+The source code for the express server is defined in the `src/` folder. The entry point for defining new routes is in `src/routes`. The easiest way to get started extending the API is to modify or add new routes to the server by adding new folders and files. The template will automatically update the infrastructure configuration for the new routes defined, such as adding routes to the API Gateway or defining new Lambda functions.
 
 There are a few things to keep in mind when defining new endpoints:
 
