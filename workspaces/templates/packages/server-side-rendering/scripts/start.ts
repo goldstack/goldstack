@@ -11,6 +11,11 @@ startServer({
   port,
   routesDir: './src/routes',
   cors,
+  staticRoutes: {
+    '/_goldstack/static': 'static',
+    '/_goldstack/public': 'public',
+    '/': 'public',
+  },
 })
   .then(() => {
     console.log(`API listening on port ${port}!`);

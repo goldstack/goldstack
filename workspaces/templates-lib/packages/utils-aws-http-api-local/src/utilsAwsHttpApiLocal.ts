@@ -5,10 +5,18 @@ import { Server } from 'http';
 import { readLambdaConfig, LambdaConfig } from '@goldstack/utils-aws-lambda';
 import { injectRoutes } from './expressRoutes';
 
+type StaticRoutes = {
+  [key: string]: string;
+};
+
 export interface LocalHttpAPIOptions {
   port: string;
   routesDir: string;
   cors?: string;
+  /**
+   * Maps routes to local directories
+   */
+  staticRoutes?: StaticRoutes;
 }
 
 export interface StartServerResult {
@@ -32,6 +40,12 @@ export const startServer = async (
     app: app,
     lambdaConfigs: lambdaConfig,
   });
+
+  if (options.staticRoutes) {
+    Object.entries(options.staticRoutes).forEach((e) => {
+      app.use(e[0], express.static(e[1]));
+    });
+  }
 
   const result = await new Promise<Server>((resolve) => {
     const server = app.listen(parseInt(options.port), function () {
