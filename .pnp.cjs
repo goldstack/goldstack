@@ -2572,6 +2572,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],\
             ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
             ["@jest-mock/express", "npm:1.4.5"],\
+            ["@jest/transform", "npm:28.1.3"],\
             ["@swc/core", "npm:1.2.220"],\
             ["@swc/jest", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:0.2.22"],\
             ["@testing-library/jest-dom", "npm:5.16.4"],\
@@ -4340,6 +4341,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["write-file-atomic", "npm:4.0.1"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:28.1.3", {\
+          "packageLocation": "./.yarn/cache/@jest-transform-npm-28.1.3-c63694eb02-dadf618936.zip/node_modules/@jest/transform/",\
+          "packageDependencies": [\
+            ["@jest/transform", "npm:28.1.3"],\
+            ["@babel/core", "npm:7.17.10"],\
+            ["@jest/types", "npm:28.1.3"],\
+            ["@jridgewell/trace-mapping", "npm:0.3.14"],\
+            ["babel-plugin-istanbul", "npm:6.1.1"],\
+            ["chalk", "npm:4.1.0"],\
+            ["convert-source-map", "npm:1.7.0"],\
+            ["fast-json-stable-stringify", "npm:2.1.0"],\
+            ["graceful-fs", "npm:4.2.10"],\
+            ["jest-haste-map", "npm:28.1.3"],\
+            ["jest-regex-util", "npm:28.0.2"],\
+            ["jest-util", "npm:28.1.3"],\
+            ["micromatch", "npm:4.0.5"],\
+            ["pirates", "npm:4.0.5"],\
+            ["slash", "npm:3.0.0"],\
+            ["write-file-atomic", "npm:4.0.1"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@jest/types", [\
@@ -4460,6 +4483,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@jridgewell-trace-mapping-npm-0.3.13-b1ff8985e7-e38254e830.zip/node_modules/@jridgewell/trace-mapping/",\
           "packageDependencies": [\
             ["@jridgewell/trace-mapping", "npm:0.3.13"],\
+            ["@jridgewell/resolve-uri", "npm:3.0.5"],\
+            ["@jridgewell/sourcemap-codec", "npm:1.4.11"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:0.3.14", {\
+          "packageLocation": "./.yarn/cache/@jridgewell-trace-mapping-npm-0.3.14-c78fcccfdf-b9537b9630.zip/node_modules/@jridgewell/trace-mapping/",\
+          "packageDependencies": [\
+            ["@jridgewell/trace-mapping", "npm:0.3.14"],\
             ["@jridgewell/resolve-uri", "npm:3.0.5"],\
             ["@jridgewell/sourcemap-codec", "npm:1.4.11"]\
           ],\
@@ -15851,6 +15883,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["walker", "npm:1.0.7"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:28.1.3", {\
+          "packageLocation": "./.yarn/cache/jest-haste-map-npm-28.1.3-9ce0dea452-d05fdc1086.zip/node_modules/jest-haste-map/",\
+          "packageDependencies": [\
+            ["jest-haste-map", "npm:28.1.3"],\
+            ["@jest/types", "npm:28.1.3"],\
+            ["@types/graceful-fs", "npm:4.1.5"],\
+            ["@types/node", "npm:14.0.13"],\
+            ["anymatch", "npm:3.1.1"],\
+            ["fb-watchman", "npm:2.0.1"],\
+            ["fsevents", "patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=18f3a7"],\
+            ["graceful-fs", "npm:4.2.10"],\
+            ["jest-regex-util", "npm:28.0.2"],\
+            ["jest-util", "npm:28.1.3"],\
+            ["jest-worker", "npm:28.1.3"],\
+            ["micromatch", "npm:4.0.5"],\
+            ["walker", "npm:1.0.8"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["jest-leak-detector", [\
@@ -16182,6 +16233,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/jest-worker-npm-28.1.0-8aae9a213c-44b6cfb037.zip/node_modules/jest-worker/",\
           "packageDependencies": [\
             ["jest-worker", "npm:28.1.0"],\
+            ["@types/node", "npm:14.0.13"],\
+            ["merge-stream", "npm:2.0.0"],\
+            ["supports-color", "npm:8.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:28.1.3", {\
+          "packageLocation": "./.yarn/cache/jest-worker-npm-28.1.3-5d0ff9006c-e921c9a1b8.zip/node_modules/jest-worker/",\
+          "packageDependencies": [\
+            ["jest-worker", "npm:28.1.3"],\
             ["@types/node", "npm:14.0.13"],\
             ["merge-stream", "npm:2.0.0"],\
             ["supports-color", "npm:8.1.1"]\
@@ -17168,6 +17229,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/makeerror-npm-1.0.11-f7d070b73c-9a62ec2d96.zip/node_modules/makeerror/",\
           "packageDependencies": [\
             ["makeerror", "npm:1.0.11"],\
+            ["tmpl", "npm:1.0.5"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.0.12", {\
+          "packageLocation": "./.yarn/cache/makeerror-npm-1.0.12-69abf085d7-b38a025a12.zip/node_modules/makeerror/",\
+          "packageDependencies": [\
+            ["makeerror", "npm:1.0.12"],\
             ["tmpl", "npm:1.0.5"]\
           ],\
           "linkType": "HARD"\
@@ -25234,6 +25303,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["walker", "npm:1.0.7"],\
             ["makeerror", "npm:1.0.11"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.0.8", {\
+          "packageLocation": "./.yarn/cache/walker-npm-1.0.8-b0a05b9478-ad7a257ea1.zip/node_modules/walker/",\
+          "packageDependencies": [\
+            ["walker", "npm:1.0.8"],\
+            ["makeerror", "npm:1.0.12"]\
           ],\
           "linkType": "HARD"\
         }]\

@@ -20,7 +20,7 @@
     "template": "template",
     "template-ts": "ts-node --project tsconfig.local.json scripts/template.ts",
     "test": "yarn test-ci --watch",
-    "test-ci": "TEST_SERVER_PORT=50321 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=jest.config.js --runInBand",
+    "test-ci": "TEST_SERVER_PORT=50331 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --verbose --config=jest.config.ts --runInBand",
     "watch": "PORT=5054 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev --transpile-only --project tsconfig.local.json -r ./scripts/register.js ./scripts/start.ts"
   },
   "dependencies": {
@@ -34,6 +34,7 @@
     "@goldstack/template-ssr-cli": "0.1.5",
     "@goldstack/utils-aws-http-api-local": "0.1.37",
     "@jest-mock/express": "^1.4.5",
+    "@jest/transform": "^28.1.3",
     "@swc/core": "^1.2.220",
     "@swc/jest": "^0.2.22",
     "@testing-library/jest-dom": "^5.16.4",

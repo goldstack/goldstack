@@ -2,6 +2,10 @@ import goldstackConfig from './../goldstack.json';
 
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 
+import { register } from 'node-css-require';
+
+register();
+
 const cors = process.env.CORS;
 
 let testServerPort: null | number = null;
@@ -22,6 +26,11 @@ export const startTestServer = async (port?: number): Promise<any> => {
     port: port,
     routesDir: './src/routes',
     cors,
+    staticRoutes: {
+      '/_goldstack/static': 'static',
+      '/_goldstack/public': 'public',
+      '/': 'public',
+    },
   });
   testServerPort = port;
   return testServer;

@@ -5,7 +5,7 @@ module.exports = {
   ...base,
   globals: {
     'ts-jest': {
-      tsconfig: 'tsconfig.test.json',
+      tsconfig: 'tsconfig.local.json',
     },
   },
   transform: {

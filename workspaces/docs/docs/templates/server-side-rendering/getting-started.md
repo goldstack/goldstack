@@ -10,65 +10,81 @@ You should now be able to access your website. The domain under which the websit
 
 ### Development
 
-The source code for the express server is defined in the `src/` folder. The entry point for defining new routes is in `src/routes`. The easiest way to get started extending the API is to modify or add new routes to the server by adding new folders and files. The template will automatically update the infrastructure configuration for the new routes defined, such as adding routes to the API Gateway or defining new Lambda functions.
+The entry point for defining new pages and routes is in `src/routes`. The easiest way to get started is to modify or add new pages routes to the server by adding new folders and files. The template will automatically update the infrastructure configuration for the new routes defined, such as adding routes to the API Gateway or defining new Lambda functions.
 
 There are a few things to keep in mind when defining new endpoints:
 
-#### Defining Handlers
+#### Defining Pages
 
-When defining a new endpoint in the `src/routes` folder by adding a new TypeScript source folder, a handler needs to be defined in the file. The easiest handler function simply returns a JSON object:
-
-```typescript
-import { Handler, APIGatewayProxyEventV2 } from 'aws-lambda';
-
-type ProxyHandler = Handler<APIGatewayProxyEventV2, any>;
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const handler: ProxyHandler = async (event, context) => {
-  const message = event.queryStringParameters?.message || 'no message';
-
-  return {
-    message: `${message}`,
-  };
-};
-```
-
-To customise the HTTP response, we can return an object of the type `APIGatewayProxyResultV2` (see [api-gateway-proxy.d.ts](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/a1260a1f3d40f239b53fd29effba594b0d1bee08/types/aws-lambda/trigger/api-gateway-proxy.d.ts#L224). There is unfortunately little documentation available about building responses specifically for JavaScript - but AWS provides reasonable [general documentation about building responses with Lambdas for the HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html#http-api-develop-integrations-lambda.response).
-
-Here an example of a handler that customised the HTTP response:
+When defining a new page in the `src/routes` folder by adding a new TypeScript, the following template needs to be followed: 
 
 ```typescript
+import React, { useState } from 'react';
+
 import {
   Handler,
   APIGatewayProxyEventV2,
   APIGatewayProxyResultV2,
 } from 'aws-lambda';
 
+import { renderDocument } from './../_document';
+import { renderPage, hydrate } from '@goldstack/template-ssr';
+
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
+
+const Index = (props: { message: string }): JSX.Element => {
+  return (
+    <>
+      <div>
+        {props.message}
+      </div>
+    </>
+  );
+};
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const handler: ProxyHandler = async (event, context) => {
-  return {
-    statusCode: 201,
-    body: JSON.stringify({
-      message: 'Hello World!',
-    }),
-  };
+  return renderPage({
+    component: Index,
+    properties: {
+      message: 'Hi there',
+    },
+    entryPoint: __filename,
+    event,
+    renderDocument,
+  });
 };
+
+hydrate(Index);
+
+export default Index;
 ```
 
-Information about the HTTP request made can be found in the `event` object. For reference about the information available, see [Working with AWS Lambda proxy integrations for HTTP APIs](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html#http-api-develop-integrations-lambda.proxy-format). Note this template uses version `2.0` of the API.
+Note the file should have the `.tsx` extension.
 
 #### Defining Routes
 
 Routes are defined through the names of folders and source folders within the `src/routes` folder. There are a few rules to keep in mind:
 
-- **Basic Routing**: The names of files is used for the names of resources. For instance, `src/routes/resource.ts` will available under `myapi.com/resource`.
-- **Subfolders**: Names of folders will be used in the path to resources. For instance, `src/routes/group/resource.ts` will be available under `myapi.com/group/resource`.
-- **Indices**: For defining a route that matches `/` within a folder (or the root of the API), a source file with the name `$index.ts` can be defined. For instance, `src/routes/group/$index.ts` will be available under `myapi.com/group/`.
-- **Default Fallback**: To define a fallback that is called when no route is matched, define a source file with the name `$default.ts`. There should only be one `$default.ts` file in the API. This will match all paths that are not covered by other routes.
-- **Path Parameters**: Parameters in path are supported using the syntax `{name}`. For instance, `src/user/{name}.ts` will make the parameter `name` available in the endpoint. Parameters are also supported as folder names.
-- **Greedy Paths**: If a parameter should match multiple resource levels, it can be defined as follows `{greedy+}`. For instance `src/group/{greedy+}.ts` will match `myapi.com/group/1` and `myapi.com/group/some/path` and all other paths under `group/`.
+- **Basic Routing**: The names of files is used for the names of resources. For instance, `src/routes/page.tsx` will available under `mypage.com/page`.
+- **Subfolders**: Names of folders will be used in the path to resources. For instance, `src/routes/group/page.tsx` will be available under `mypage.com/group/page`.
+- **Indices**: For defining a route that matches `/` within a folder (or the root of the website), a source file with the name `$index.tsx` can be defined. For instance, `src/routes/group/$index.tsx` will be available under `api.com/group/`.
+- **Default Fallback**: To define a fallback that is called when no route is matched, define a source file with the name `$default.tsx`. There should only be one `$default.tsx` file in the API. This will match all paths that are not covered by other routes.
+- **Path Parameters**: Parameters in path are supported using the syntax `{name}`. For instance, `src/user/{name}.tsx` will make the parameter `name` available in the endpoint. Parameters are also supported as folder names.
+- **Greedy Paths**: If a parameter should match multiple resource levels, it can be defined as follows `{greedy+}`. For instance `src/group/{greedy+}.tsx` will match `mypage.com/group/1` and `mypage.com/group/some/path` and all other paths under `group/`.
+
+#### Static Resources
+
+Files placed in the following folders will be served as static files for the website:
+
+- `public/`
+- `static/`
+
+Files placed in the `static/` folder will automatically be configured to be cached indefinitely by the CloudFront CDN.
+
+Select resources from the `public/` folder will also be served at the root of the website, such as `favicon.ico`.
+
+For details, please check the CloudFront configuration in `infra/aws/cloudfront.ts`.
 
 #### Updating Infrastructure
 

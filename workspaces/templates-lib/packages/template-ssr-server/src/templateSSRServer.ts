@@ -35,6 +35,7 @@ export const renderPage = async <PropType>({
   component,
   properties,
 }: RenderPageProps<PropType>): Promise<APIGatewayProxyResultV2> => {
+  console.log('render page', event);
   if (event.queryStringParameters && event.queryStringParameters['resource']) {
     if (event.queryStringParameters['resource'].indexOf('js') > -1) {
       if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
@@ -86,6 +87,7 @@ export const renderPage = async <PropType>({
 
   const page = renderToString(React.createElement(component, properties));
 
+  console.log('page', page);
   let styles: string | undefined;
   // only inject styles when in lambda - otherwise they are loaded dynamically
   if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
