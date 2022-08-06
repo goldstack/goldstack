@@ -6,7 +6,11 @@ import { PackageConfig } from '@goldstack/utils-package-config';
 import { writePackageConfig } from '@goldstack/utils-package';
 import yargs from 'yargs';
 import fs from 'fs';
-import { SSRDeployment, SSRPackage } from '@goldstack/template-ssr';
+import {
+  createLambdaAPIDeploymentConfiguration,
+  SSRDeployment,
+  SSRPackage,
+} from '@goldstack/template-ssr';
 import {
   readLambdaConfig,
   generateLambdaConfig,
@@ -50,11 +54,13 @@ export const run = async (args: string[]): Promise<void> => {
     const lambdaRoutes = readLambdaConfig(defaultRoutesPath);
     config.deployments = config.deployments.map((e) => {
       const lambdasConfigs = generateLambdaConfig(
-        e.configuration,
+        createLambdaAPIDeploymentConfiguration(e.configuration),
         lambdaRoutes
       );
       e.configuration.lambdas = lambdasConfigs;
-      validateDeployment(e.configuration.lambdas);
+      validateDeployment(
+        createLambdaAPIDeploymentConfiguration(e.configuration).lambdas
+      );
       return e;
     });
     writePackageConfig(config);
@@ -90,12 +96,16 @@ export const run = async (args: string[]): Promise<void> => {
       await Promise.all([
         deployFunctions({
           routesPath: defaultRoutesPath,
-          configuration: packageConfig.getDeployment(opArgs[0]).configuration,
+          configuration: createLambdaAPIDeploymentConfiguration(
+            packageConfig.getDeployment(opArgs[0]).configuration
+          ),
           deployment: packageConfig.getDeployment(opArgs[0]),
           config: lambdaRoutes,
         }),
         deployToS3({
-          configuration: packageConfig.getDeployment(opArgs[0]).configuration,
+          configuration: createLambdaAPIDeploymentConfiguration(
+            packageConfig.getDeployment(opArgs[0]).configuration
+          ),
           deployment: packageConfig.getDeployment(opArgs[0]),
         }),
       ]);

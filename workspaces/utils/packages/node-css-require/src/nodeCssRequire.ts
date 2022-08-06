@@ -4,7 +4,6 @@ import { addHook } from 'pirates';
 import postcss from 'postcss';
 import postcssModules from 'postcss-modules-sync';
 import { register as swcRegister } from '@swc-node/register/register';
-import { readDefaultTsConfig } from '@swc-node/register/read-default-tsconfig';
 
 export interface CompileCssResult {
   css: string;
@@ -49,7 +48,6 @@ export const register = (): void => {
     exts: ['.css'],
   });
 
-  let tsConfig = readDefaultTsConfig();
-  tsConfig = {};
+  const tsConfig = {};
   swcRegister({ ...tsConfig });
 };

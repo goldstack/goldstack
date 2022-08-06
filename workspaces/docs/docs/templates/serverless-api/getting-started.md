@@ -10,7 +10,7 @@ You should now be able to access your API. The domain under which the API is dep
 
 ### Development
 
-The source code for the express server is defined in the `src/` folder. The entry point for defining new routes is in `src/routes`. The easiest way to get started extending the API is to modify or add new routes to the server by adding new folders and files. The template will automatically update the infrastructure configuration for the new routes defined, such as adding routes to the API Gateway or defining new Lambda functions.
+The source code for the API is defined in the `src/` folder. The entry point for defining new routes is in `src/routes`. The easiest way to get started extending the API is to modify or add new routes to the server by adding new folders and files. The template will automatically update the infrastructure configuration for the new routes defined, such as adding routes to the API Gateway or defining new Lambda functions. Simply run `yarn infra up [environment]` after adding or removing routes.
 
 There are a few things to keep in mind when defining new endpoints:
 
