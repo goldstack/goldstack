@@ -25,13 +25,11 @@ describe('Should create page', () => {
   });
 
   test('Should receive response and support parameters', async () => {
-    console.log('RUN TEST', getEndpoint());
     const res = await fetch(`${getEndpoint()}/`);
     const response = await res.text();
     expect(response).toContain('Hi there');
-    // await new Promise((resolve) => {
-    //   setTimeout(resolve, 20000);
-    // });
+    // ensure CSS is compiled correctly and correct class names injected
+    expect(response).toContain('-message-');
   });
 
   afterAll(async () => {

@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import base from './../../jest.config';
 
-import { compileCss } from 'node-css-require';
-
 module.exports = {
   ...base,
   globals: {
@@ -13,7 +11,7 @@ module.exports = {
   transform: {
     '.+\\.(style|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
       'jest-transform-stub',
-    '.+\\.css$': ['./scripts/cssTransformer.js', {}],
+    '\\.(css)$': '<rootDir>/scripts/cssTransformer.js',
     '^.+\\.(t|j)sx?$': ['@swc/jest'],
   },
 };
