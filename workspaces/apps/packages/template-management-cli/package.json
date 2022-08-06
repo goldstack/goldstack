@@ -58,7 +58,7 @@
     "@types/wtfnode": "^0.7.0",
     "@types/yargs": "^17.0.10",
     "aws-sdk": "2.1055.0",
-    "concurrently": "^5.2.0",
+    "concurrently": "^7.3.0",
     "jest": "^28.1.0",
     "nodemon": "^2.0.15",
     "pnp-webpack-plugin": "^1.6.4",
