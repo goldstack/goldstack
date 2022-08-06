@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: 'Build and Test'
+    name: 'Build'
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
@@ -232,6 +232,12 @@ jobs:
       - name: Install
         run: |
           yarn install
+
+      # Required for testing SSR template
+      # Since Jest CSS transformer needs to be loaded from compiled JS
+      - name: Compile all
+        run: |
+          yarn compile
 
       - name: Run tests
         run: |
