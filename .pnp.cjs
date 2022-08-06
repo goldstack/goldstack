@@ -8879,7 +8879,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rimraf", "npm:2.6.3"],\
             ["ssri", "npm:6.0.2"],\
             ["unique-filename", "npm:1.1.1"],\
-            ["y18n", "npm:4.0.0"]\
+            ["y18n", "npm:4.0.3"]\
           ],\
           "linkType": "HARD"\
         }],\
@@ -25866,17 +25866,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["y18n", [\
-        ["npm:3.2.2", {\
-          "packageLocation": "./.yarn/cache/y18n-npm-3.2.2-f9b6b42101-6154fd7544.zip/node_modules/y18n/",\
+        ["npm:4.0.3", {\
+          "packageLocation": "./.yarn/cache/y18n-npm-4.0.3-ced95acdbc-014dfcd9b5.zip/node_modules/y18n/",\
           "packageDependencies": [\
-            ["y18n", "npm:3.2.2"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["npm:4.0.0", {\
-          "packageLocation": "./.yarn/cache/y18n-npm-4.0.0-55cd797cc5-66e22d38bf.zip/node_modules/y18n/",\
-          "packageDependencies": [\
-            ["y18n", "npm:4.0.0"]\
+            ["y18n", "npm:4.0.3"]\
           ],\
           "linkType": "HARD"\
         }],\
@@ -25926,7 +25919,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["set-blocking", "npm:2.0.0"],\
             ["string-width", "npm:3.1.0"],\
             ["which-module", "npm:2.0.0"],\
-            ["y18n", "npm:4.0.0"],\
+            ["y18n", "npm:4.0.3"],\
             ["yargs-parser", "npm:13.1.2"]\
           ],\
           "linkType": "HARD"\
@@ -25974,7 +25967,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["set-blocking", "npm:2.0.0"],\
             ["string-width", "npm:1.0.2"],\
             ["which-module", "npm:1.0.0"],\
-            ["y18n", "npm:3.2.2"],\
+            ["y18n", "npm:4.0.3"],\
             ["yargs-parser", "npm:5.0.0-security.0"]\
           ],\
           "linkType": "HARD"\
