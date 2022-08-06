@@ -94,24 +94,23 @@ Note that after defining a new route, the infrastructure will need to be updated
 
 The Goldstack template for this module contains an example of an integration test for the API. Test are easy to write and very fast to run by utilising a [custom Express.js server](https://github.com/goldstack/goldstack/tree/8645bbe9d450acc3b41da2c4cd75db3afc2e8e5b/workspaces/templates-lib/packages/utils-aws-http-api-local). It is also very cheap to create instances of the API on AWS infrastructure; thus more sophisticated setups can run tests directly against the API deployed on AWS.
 
-Here an example for a local test:
+Here an example for a local test ([`ssr.spec.ts`](https://github.com/goldstack/goldstack/blob/master/workspaces/templates/packages/server-side-rendering/src/__tests__/ssr.spec.ts)):
 
 ```typescript
 import getPort from 'find-free-port';
 import fetch from 'node-fetch';
-import {
-  startServer,
-  StartServerResult,
-} from '@goldstack/utils-aws-http-api-local';
 
-describe('Should create API', () => {
+import { startTestServer, stopTestServer, getEndpoint } from './../module';
+
+jest.setTimeout(120000);
+
+describe('Should create page', () => {
   let port: undefined | number = undefined;
-  let server: undefined | StartServerResult = undefined;
 
   beforeAll(async () => {
     port = await new Promise<number>((resolve, reject) => {
       getPort(
-        process.env.TEST_SERVER_PORT || '50321',
+        process.env.TEST_SERVER_PORT || '50331',
         (err: any, p1: number) => {
           if (err) {
             reject(err);
@@ -121,22 +120,40 @@ describe('Should create API', () => {
         }
       );
     });
-    server = await startServer({
-      port: `${port}`,
-      routesDir: './src/routes',
-    });
+    await startTestServer(port);
   });
 
   test('Should receive response and support parameters', async () => {
-    const res = await fetch(`http://localhost:${port}/echo?message=abc`);
-    const response = await res.json();
-    expect(response.message).toContain('abc');
+    const res = await fetch(`${getEndpoint()}/`);
+    const response = await res.text();
+    expect(response).toContain('Hi there');
+    // ensure CSS is compiled correctly and correct class names injected
+    expect(response).toContain('-message-');
   });
 
   afterAll(async () => {
-    if (server) {
-      await server.shutdown();
-    }
+    await stopTestServer();
+  });
+});
+```
+
+It is also possible to test the React pages directly for asserting client-side behaviour. These tests need to follow a specific naming pattern: `[testname].uispec.tsx` or `[testname].uispect.ts`. The tests against the API instead should use the suffix `[testname].spec.ts[x]`.
+
+This is required since Jest needs to load different test environment for client-side and server-side tests.
+
+See below an example for a client-side test ([`$index.uispec.tsx`](https://github.com/goldstack/goldstack/blob/master/workspaces/templates/packages/server-side-rendering/src/__tests__/%24index.uispec.tsx)):
+
+```typescript
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import Index from '../routes/$index';
+
+describe('Render tests', () => {
+  it('Should render component', () => {
+    render(<Index message="run test"></Index>);
+
+    expect(screen.getByText('run test', { exact: false })).toBeVisible();
   });
 });
 ```
@@ -144,4 +161,4 @@ describe('Should create API', () => {
 #### Best Practices
 
 - **Keep Lambdas Lightweight**: This template will package Lambdas only with the code that they require. Aim to minimise the number of dependencies that are imported into each handler function. The smaller the Lambda functions are, the less noticeable cold starts will be. Cold starts using Lambdas packaged by this module can be as low as 150 ms (with almost all of that time spent on AWS getting the basic infrastructure for the Lambda up and running).
-- **Think RESTful**: This module does not limit in any way which kinds of APIs can be created. However, it is often advisable to develop APIs in a RESTful way. For a reference on best practices, see [RESTful web API design by Microsoft](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design).
+- **Think RESTful**: This module is not limited to server-side rendering. You can also defined backend APIs. For developing APIs it is advisable to develop APIs in a RESTful way. For a reference on best practices, see [RESTful web API design by Microsoft](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design).
