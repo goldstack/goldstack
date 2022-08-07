@@ -9,6 +9,7 @@ import { createEmailSendBuildSetConfig } from './emailSend';
 import { createS3BuildSetConfig } from './s3';
 import { createNextjsBuildSetConfig } from './nextjs';
 import { createDynamoDBBuildSetConfig } from './dynamodb';
+import { createServerSideRenderingBuildSetConfig } from './serverSideRendering';
 
 export const getAllBuildSets = async (): Promise<DeploySetConfig[]> => {
   return [
@@ -22,6 +23,7 @@ export const getAllBuildSets = async (): Promise<DeploySetConfig[]> => {
     await createEmailSendBuildSetConfig(),
     await createS3BuildSetConfig(),
     await createDynamoDBBuildSetConfig(),
+    await createServerSideRenderingBuildSetConfig(),
   ];
 };
 

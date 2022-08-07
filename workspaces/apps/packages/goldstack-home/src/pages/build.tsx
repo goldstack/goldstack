@@ -24,6 +24,7 @@ import NextjsIcon from './../icons/nextjs.svg';
 import BootstrapIcon from './../icons/bootstrap.svg';
 import CloudFrontIcon from './../icons/cloudfront.svg';
 import ExpressIcon from './../icons/nodejs.svg';
+import ReactIcon from './../icons/reactjs.svg';
 import GatewayIcon from './../icons/aws-api-gateway.svg';
 import S3Icon from './../icons/s3.svg';
 import SESIcon from './../icons/ses.svg';
@@ -208,6 +209,18 @@ const ModuleSelection = (props: { elements: string[] }) => {
             <div className="card shadow-soft">
               <div className="card-body space-1 ">
                 <div className="border-bottom mb-4">
+                  <div className="border-bottom pb-2 mb-4">
+                    <h2 className="h3 mb-0">Fullstack</h2>
+                  </div>
+                  <Checkbox
+                    title="React Server-Side Rendering (SSR)"
+                    element="server-side-rendering"
+                    disabled={building}
+                    icon={ReactIcon}
+                    templateLink={'/templates/server-side-rendering'}
+                    checked={elements.indexOf('server-side-rendering') !== -1}
+                    onChange={checkboxChange}
+                  ></Checkbox>
                   <div className="border-bottom pb-2 mb-4">
                     <h2 className="h3 mb-0">UI</h2>
                   </div>

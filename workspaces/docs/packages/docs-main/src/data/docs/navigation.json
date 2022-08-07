@@ -18,6 +18,7 @@
       "children": [
         "app-nextjs-bootstrap/index.md",
         "serverless-api/index.md",
+        "server-side-rendering/index.md",
         "app-nextjs/index.md",
         "lambda-express/index.md",
         "dynamodb/index.md",

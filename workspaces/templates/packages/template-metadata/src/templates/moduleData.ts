@@ -67,6 +67,15 @@ const LambdaAPI: PackageProps = {
   documentationLink:
     'https://docs.goldstack.party/docs/templates/serverless-api',
 };
+
+const ServerSideRendering: PackageProps = {
+  title: 'Server-Side Rendering',
+  link:
+    'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/server-side-rendering#readme',
+  documentationLink:
+    'https://docs.goldstack.party/docs/templates/server-side-rendering',
+};
+
 export {
   StaticWebsite,
   NextJsBootstrap,
@@ -77,4 +86,5 @@ export {
   S3,
   DynamoDB,
   LambdaAPI,
+  ServerSideRendering,
 };

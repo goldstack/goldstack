@@ -12,6 +12,9 @@ export const getPackageIds = (elements: string[]): string[] => {
   if (elements.includes('serverless-api')) {
     res.push('template:serverless-api');
   }
+  if (elements.includes('server-side-rendering')) {
+    res.push('template:server-side-rendering');
+  }
   if (elements.includes('s3')) {
     res.push('template:s3');
   }
