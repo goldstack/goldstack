@@ -22,6 +22,7 @@ import { getEmailSendTemplateData } from './templates/emailSendTemplateData';
 import { getS3TemplateData } from './templates/s3TemplateData';
 import { getStaticWebsiteTemplateData } from './templates/staticWebsiteTemplateData';
 import { getDynamoDBTemplateData } from './templates/dynamoDBTemplate';
+import { getServerSideRenderingTemplate } from './templates/serverSideRenderingTemplateData';
 
 export { getNextJsTemplateData };
 export { getExpressTemplateData };
@@ -33,6 +34,7 @@ export const allTemplates = (): ProjectTemplateProps[] => {
   const templates = [
     getNextjsBootstrapTemplateData(),
     getServerlessApiTemplate(),
+    getServerSideRenderingTemplate(),
     getExpressTemplateData(),
     getNextJsTemplateData(),
     getStaticWebsiteTemplateData(),

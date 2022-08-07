@@ -13,5 +13,6 @@ export const getModuleTemplatesNames = (): string[] => {
     'email-send',
     'lambda-express',
     'serverless-api',
+    'server-side-rendering',
   ];
 };

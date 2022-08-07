@@ -22,7 +22,7 @@ const TemplateCard = (props: TemplateCardProps): JSX.Element => {
               alt="Template Image 1"
             />
           </div>
-          <div className="w-65">
+          <div className="w-65 pr-5">
             <h3 className="mb-1">{props.template.title}</h3>
           </div>
           {/* <div className="w-35">

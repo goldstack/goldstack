@@ -9,6 +9,7 @@
   "templates",
   "templates/app-nextjs-bootstrap",
   "templates/serverless-api",
+  "templates/server-side-rendering",
   "templates/app-nextjs",
   "templates/lambda-express",
   "templates/dynamodb",

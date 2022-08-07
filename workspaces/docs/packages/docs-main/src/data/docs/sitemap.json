@@ -49,6 +49,11 @@
             "children": []
           },
           {
+            "title": "Serverless API",
+            "path": "templates/server-side-rendering",
+            "children": []
+          },
+          {
             "title": "Next.js",
             "path": "templates/app-nextjs",
             "children": []

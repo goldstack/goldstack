@@ -2,6 +2,7 @@ import NextJsIcon from 'src/icons/nextjs.svg';
 import NodeJsIcon from 'src/icons/nodejs.svg';
 import APIGateway from 'src/icons/aws-api-gateway.svg';
 import LambdaIcon from 'src/icons/lambda.svg';
+import ReactIcon from 'src/icons/reactjs.svg';
 import SesIcon from 'src/icons/ses.svg';
 import BootstrapIcon from 'src/icons/bootstrap_large.svg';
 
@@ -40,6 +41,19 @@ export const getTemplateData = (
         { name: 'Bundled with esbuild' },
         { name: 'API Gateway' },
         { name: 'Helmet' },
+      ],
+    },
+    {
+      packageName: 'React SSR',
+      packageId: 'template:server-side-rendering',
+      packageDescription: 'Serverless React Server-Side Rendering',
+      icons: [ReactIcon, APIGateway, LambdaIcon],
+      selected: false,
+      alwaysIncluded: false,
+      features: [
+        { name: 'Server-Side Rendering' },
+        { name: 'API Gateway' },
+        { name: 'Small Lambda Packages' },
       ],
     },
     {

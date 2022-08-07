@@ -107,6 +107,10 @@ const run = async () => {
     paths.buildSets + 'staticWebsite.template.README.md',
     paths.buildSets + 'staticWebsite.README.md'
   );
+  await generateMarkdownDocs(
+    paths.buildSets + 'serverSideRendering.template.README.md',
+    paths.buildSets + 'serverSideRendering.README.md'
+  );
 
   // Step 4:
   //   Generate Goldstack root readme
