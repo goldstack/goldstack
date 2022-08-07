@@ -2,7 +2,7 @@
 resource "aws_cloudfront_distribution" "cdn" {
   enabled     = true
   price_class = "PriceClass_All" 
-  aliases     = [var.api_domain]
+  aliases     = [var.domain]
   provider    = aws.us-east-1
 
   depends_on = [

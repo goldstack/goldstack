@@ -10,8 +10,8 @@ data "aws_route53_zone" "main" {
 resource "aws_acm_certificate" "wildcard" {
   provider = aws.us-east-1 # Wilcard certificate used by CloudFront requires this specific region (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html)
 
-  domain_name               = var.api_domain
-  subject_alternative_names = ["*.${var.api_domain}"]
+  domain_name               = var.domain
+  subject_alternative_names = ["*.${var.domain}"]
   validation_method         = "DNS"
 
   tags = {
@@ -50,7 +50,7 @@ resource "aws_route53_record" "wildcard_validation" {
 # Creates the DNS record to point on the main CloudFront distribution ID
 resource "aws_route53_record" "cdn_record" {
   zone_id = data.aws_route53_zone.main.zone_id
-  name    = var.api_domain
+  name    = var.domain
   type    = "A"
 
   alias {
@@ -86,7 +86,7 @@ data "aws_acm_certificate" "wildcard" {
     aws_acm_certificate_validation.wildcard_validation,
   ]
 
-  domain      = var.api_domain
+  domain      = var.domain
   statuses    = ["ISSUED"]
   most_recent = true
 }

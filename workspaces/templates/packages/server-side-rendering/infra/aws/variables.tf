@@ -4,13 +4,13 @@ variable "aws_region" {
 }
 
 
-variable "api_domain" {
-  description = "Domain under which the API should be deployed."
+variable "domain" {
+  description = "Domain under which the application should be deployed."
   type = string
 }
 
 variable "hosted_zone_domain" {
-  description = "Domain for a hosted zone in AWS Route 53 that api_domain will be configured in."
+  description = "Domain for a hosted zone in AWS Route 53 that domain will be configured in."
   type = string
 }
 
