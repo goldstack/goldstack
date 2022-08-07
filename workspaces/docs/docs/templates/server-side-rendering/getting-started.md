@@ -16,7 +16,7 @@ There are a few things to keep in mind when defining new endpoints:
 
 #### Defining Pages
 
-When defining a new page in the `src/routes` folder by adding a new TypeScript, the following template needs to be followed: 
+When defining a new page in the `src/routes` folder by adding a new TypeScript, the following template needs to be followed:
 
 ```typescript
 import React, { useState } from 'react';
@@ -35,9 +35,7 @@ type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 const Index = (props: { message: string }): JSX.Element => {
   return (
     <>
-      <div>
-        {props.message}
-      </div>
+      <div>{props.message}</div>
     </>
   );
 };

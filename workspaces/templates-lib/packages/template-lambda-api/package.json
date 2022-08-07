@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-api",
-  "version": "0.4.49",
+  "version": "0.4.50",
   "description": "Companion for project templates for deploying Lambdas as a REST API",
   "keywords": [
     "goldstack",
@@ -43,7 +43,7 @@
   "dependencies": {
     "@goldstack/infra": "0.3.38",
     "@goldstack/infra-aws": "0.3.47",
-    "@goldstack/utils-aws-lambda": "0.1.35",
+    "@goldstack/utils-aws-lambda": "0.1.36",
     "@goldstack/utils-package": "0.3.41",
     "@goldstack/utils-terraform": "0.3.71",
     "source-map-support": "^0.5.21"
