@@ -10,7 +10,7 @@
 <li>Server-side rendering of React pages</li>
 <li>Styling using CSS modules supported</li>
 <li>Hydration supported for client-side logic</li>
-<li>Low latency, low cost and highly scalable by using the new <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html" class="absolute" target="_blank" rel="noopener noreferrer">AWS HTTP API</a> and <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html" class="absolute" target="_blank" rel="noopener noreferrer">CloudFront</a> </li>
+<li>Low latency, low cost and highly scalable by using the new <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html" class="absolute" target="_blank" rel="noopener noreferrer">AWS HTTP API</a> and <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html" class="absolute" target="_blank" rel="noopener noreferrer">CloudFront</a></li>
 <li>Minimal cold start times by bundling the source code of each page into separate Lambda functions</li>
 <li>Fast packing and deployment using <a href="https://github.com/evanw/esbuild" class="absolute" target="_blank" rel="noopener noreferrer">esbuild</a></li>
 <li>Rapid configuration by <a href="https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib/packages/utils-aws-lambda" class="absolute" target="_blank" rel="noopener noreferrer">dynamically defining routes through placing source files</a></li>
@@ -120,7 +120,7 @@
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
   </g>
 </svg></span></h4>
-<p>When defining a new page in the <code class="inline">src/routes</code> folder by adding a new TypeScript, the following template needs to be followed: </p>
+<p>When defining a new page in the <code class="inline">src/routes</code> folder by adding a new TypeScript, the following template needs to be followed:</p>
 <pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token maybe-class-name">React</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token punctuation">{</span>
@@ -137,9 +137,7 @@
 <span class="token keyword">const</span> <span class="token maybe-class-name">Index</span> <span class="token operator">=</span> <span class="token punctuation">(</span>props<span class="token punctuation">:</span> <span class="token punctuation">{</span> message<span class="token punctuation">:</span> <span class="token builtin">string</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token constant">JSX</span><span class="token punctuation">.</span><span class="token parameter"><span class="token maybe-class-name">Element</span></span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token operator">&#x3C;</span><span class="token operator">></span>
-      <span class="token operator">&#x3C;</span>div<span class="token operator">></span>
-        <span class="token punctuation">{</span>props<span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">}</span>
-      <span class="token operator">&#x3C;</span><span class="token operator">/</span>div<span class="token operator">></span>
+      <span class="token operator">&#x3C;</span>div<span class="token operator">></span><span class="token punctuation">{</span>props<span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">}</span><span class="token operator">&#x3C;</span><span class="token operator">/</span>div<span class="token operator">></span>
     <span class="token operator">&#x3C;</span><span class="token operator">/</span><span class="token operator">></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>

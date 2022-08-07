@@ -11,7 +11,7 @@ Dynamic routes are implemented using [AWS API Gateway HTTP API](https://docs.aws
 *   Server-side rendering of React pages
 *   Styling using CSS modules supported
 *   Hydration supported for client-side logic
-*   Low latency, low cost and highly scalable by using the new [AWS HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html) and [CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html) 
+*   Low latency, low cost and highly scalable by using the new [AWS HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html) and [CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
 *   Minimal cold start times by bundling the source code of each page into separate Lambda functions
 *   Fast packing and deployment using [esbuild](https://github.com/evanw/esbuild)
 *   Rapid configuration by [dynamically defining routes through placing source files](https://github.com/goldstack/goldstack/tree/master/workspaces/templates-lib/packages/utils-aws-lambda)
@@ -67,7 +67,7 @@ There are a few things to keep in mind when defining new endpoints:
 
 #### Defining Pages
 
-When defining a new page in the `src/routes` folder by adding a new TypeScript, the following template needs to be followed: 
+When defining a new page in the `src/routes` folder by adding a new TypeScript, the following template needs to be followed:
 
 ```typescript
 import React, { useState } from 'react';
@@ -86,9 +86,7 @@ type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 const Index = (props: { message: string }): JSX.Element => {
   return (
     <>
-      <div>
-        {props.message}
-      </div>
+      <div>{props.message}</div>
     </>
   );
 };
