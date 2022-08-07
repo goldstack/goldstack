@@ -11,7 +11,7 @@
     "esbuild.config.json",
     "goldstack.json",
     "jest.config.ui.js",
-    "jest.config.ts",
+    "jest.config.js",
     "package.json",
     "README.md",
     "template.json",
