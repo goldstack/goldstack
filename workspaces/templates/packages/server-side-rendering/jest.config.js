@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import base from './../../jest.config';
+const base = require('./../../jest.config');
 
 module.exports = {
   ...base,
