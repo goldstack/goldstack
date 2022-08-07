@@ -1,5 +1,5 @@
 import { clientBundleFileName } from '@goldstack/template-ssr-server';
-import { compileBundle } from '@goldstack/template-ssr-server/src/compileBundle';
+import { compileBundle } from '@goldstack/template-ssr-server';
 import {
   generateFunctionName,
   getOutDirForLambda,

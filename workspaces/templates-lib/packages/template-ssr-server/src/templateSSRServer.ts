@@ -14,6 +14,8 @@ import { readFileSync } from 'fs';
 export const clientBundleFileName = 'client.bundle.js';
 export const clientCSSFileName = 'client.bundle.css';
 
+export { compileBundle } from './compileBundle';
+
 export interface RenderDocumentProps {
   bundledJsPath: string;
   styles?: string;
