@@ -2,7 +2,7 @@
 
 # Creates bucket to store the static website
 resource "aws_s3_bucket" "static_files" {
-  bucket = "${var.domain}-static-files"
+  bucket = "${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-static-files"
 
   acl = "public-read"
 
@@ -25,7 +25,7 @@ resource "aws_s3_bucket" "static_files" {
         "AWS": "*"
       },
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::${var.domain}-static-files/*"
+      "Resource": "arn:aws:s3:::${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-static-files/*"
     }
   ]
 }
@@ -50,7 +50,7 @@ resource "aws_s3_bucket_website_configuration" "static_files_web" {
 }
 
 resource "aws_s3_bucket" "public_files" {
-  bucket = "${var.domain}-public-files"
+  bucket = "${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-public-files"
 
   acl = "public-read"
 
@@ -73,7 +73,7 @@ resource "aws_s3_bucket" "public_files" {
         "AWS": "*"
       },
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::${var.domain}-public-files/*"
+      "Resource": "arn:aws:s3:::${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-public-files/*"
     }
   ]
 }
