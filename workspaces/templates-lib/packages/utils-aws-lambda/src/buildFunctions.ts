@@ -1,4 +1,5 @@
-import { build, BuildOptions } from 'esbuild';
+import { build } from 'esbuild';
+import type { BuildOptions } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
 import cssServerPlugin from 'esbuild-css-modules-server-plugin';
 import { LambdaConfig } from './types/LambdaConfig';

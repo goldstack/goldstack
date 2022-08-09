@@ -14,8 +14,6 @@ import { readFileSync } from 'fs';
 export const clientBundleFileName = 'client.bundle.js';
 export const clientCSSFileName = 'client.bundle.css';
 
-export { compileBundle } from './compileBundle';
-
 export interface RenderDocumentProps {
   bundledJsPath: string;
   styles?: string;
@@ -56,7 +54,9 @@ export const renderPage = async <PropType>({
         return compress(
           event,
           // eslint-disable-next-line @typescript-eslint/no-var-requires
-          require(excludeInBundle('./compileBundle')).bundleResponse({
+          require(excludeInBundle(
+            '@goldstack/template-ssr-server-compile-bundle'
+          )).bundleResponse({
             entryPoint,
             initialProperties: properties,
           })
@@ -78,7 +78,9 @@ export const renderPage = async <PropType>({
         return compress(
           event,
           // eslint-disable-next-line @typescript-eslint/no-var-requires
-          require(excludeInBundle('./compileBundle')).sourceMapResponse({
+          require(excludeInBundle(
+            '@goldstack/template-ssr-server-compile-bundle'
+          )).sourceMapResponse({
             entryPoint,
           })
         );

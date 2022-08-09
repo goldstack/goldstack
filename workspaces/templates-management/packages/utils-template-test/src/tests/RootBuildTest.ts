@@ -8,8 +8,6 @@ export class RootBuildTest implements TemplateTest {
   async runTest(params: RunTestParams): Promise<void> {
     const projectDir = params.projectDir;
 
-    yarn(projectDir, 'install');
-
     // formatting should work
     yarn(projectDir, 'format');
     yarn(projectDir, 'format-check');

@@ -5,8 +5,8 @@ import type { APIGatewayProxyResultV2 } from 'aws-lambda';
 
 import ReactDOM from 'react-dom/client';
 import type { RenderPageProps } from '@goldstack/template-ssr-server';
-import { LambdaApiDeploymentConfiguration } from '@goldstack/utils-aws-lambda';
-import { SSRDeploymentConfiguration } from './types/SSRPackage';
+import type { LambdaApiDeploymentConfiguration } from '@goldstack/utils-aws-lambda';
+import type { SSRDeploymentConfiguration } from './types/SSRPackage';
 
 export type { RenderDocumentProps } from '@goldstack/template-ssr-server';
 

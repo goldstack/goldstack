@@ -45,6 +45,7 @@
     "@goldstack/infra-aws": "0.3.47",
     "@goldstack/template-ssr": "0.1.7",
     "@goldstack/template-ssr-server": "0.1.7",
+    "@goldstack/template-ssr-server-compile-bundle": "0.1.0",
     "@goldstack/utils-aws-lambda": "0.1.36",
     "@goldstack/utils-cli": "0.2.15",
     "@goldstack/utils-docker": "0.3.40",
