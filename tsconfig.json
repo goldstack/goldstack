@@ -170,6 +170,9 @@
       "path": "workspaces/templates-lib/packages/template-ssr-server"
     },
     {
+      "path": "workspaces/templates-lib/packages/template-ssr-server-compile-bundle"
+    },
+    {
       "path": "workspaces/templates-lib/packages/template-static-website-aws"
     },
     {

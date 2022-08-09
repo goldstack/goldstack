@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-ssr-server-compile-bundle",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Utility for compiling client side bundles for SSR application",
   "keywords": [
     "goldstack",
@@ -38,7 +38,7 @@
   "dependencies": {
     "@goldstack/infra": "0.3.38",
     "@goldstack/infra-aws": "0.3.47",
-    "@goldstack/utils-aws-lambda": "0.1.36",
+    "@goldstack/utils-aws-lambda": "0.1.37",
     "@goldstack/utils-esbuild": "0.4.3",
     "@goldstack/utils-package": "0.3.41",
     "@goldstack/utils-package-config-embedded": "0.4.5",

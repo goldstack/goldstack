@@ -16,6 +16,9 @@
       "path": "../infra-aws"
     },
     {
+      "path": "../template-ssr-server-compile-bundle"
+    },
+    {
       "path": "../utils-aws-lambda"
     },
     {
@@ -35,9 +38,6 @@
     },
     {
       "path": "../utils-terraform"
-    },
-    {
-      "path": "../../../utils/packages/esbuild-css-modules-client-plugin"
     },
     {
       "path": "../../../utils/packages/lambda-compression"

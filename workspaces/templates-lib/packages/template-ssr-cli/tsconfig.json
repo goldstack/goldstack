@@ -19,6 +19,9 @@
       "path": "../template-ssr-server"
     },
     {
+      "path": "../template-ssr-server-compile-bundle"
+    },
+    {
       "path": "../utils-aws-lambda"
     },
     {

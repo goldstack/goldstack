@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-aws-lambda",
-  "version": "0.1.36",
+  "version": "0.1.37",
   "description": "Utilities for deploying AWS Lambda functions",
   "keywords": [
     "goldstack",
