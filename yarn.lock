@@ -2284,6 +2284,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli"
   dependencies:
+    "@goldstack/infra": 0.3.38
     "@goldstack/infra-aws": 0.3.47
     "@goldstack/template-ssr": 0.1.8
     "@goldstack/template-ssr-server": 0.1.8

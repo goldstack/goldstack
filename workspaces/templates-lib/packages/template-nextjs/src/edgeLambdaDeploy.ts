@@ -1,14 +1,13 @@
 import { NextjsDeployment } from './types/NextJsPackage';
 import { getAWSUser } from '@goldstack/infra-aws';
 import { readTerraformStateVariable, DeploymentState } from '@goldstack/infra';
-import { zip, cp, write, rmSafe, read, mkdir } from '@goldstack/utils-sh';
+import { cp, write, rmSafe, read, mkdir } from '@goldstack/utils-sh';
 import { awsCli } from '@goldstack/utils-aws-cli';
 import util from 'util';
 import globFunc from 'glob';
 import { packageEdgeLambda } from './edgeLambdaPackage';
 
 import { deployFunction } from '@goldstack/utils-aws-lambda';
-import { version } from 'yargs';
 
 const glob = util.promisify(globFunc);
 

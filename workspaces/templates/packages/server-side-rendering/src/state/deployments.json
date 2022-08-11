@@ -6,6 +6,16 @@
         "sensitive": false,
         "type": "string",
         "value": "https://38xbcaysyl.execute-api.us-west-2.amazonaws.com"
+      },
+      "public_files_bucket": {
+        "sensitive": false,
+        "type": "string",
+        "value": "ssr.examples.templates.dev.goldstack.p-public-files"
+      },
+      "static_files_bucket": {
+        "sensitive": false,
+        "type": "string",
+        "value": "ssr.examples.templates.dev.goldstack.p-static-files"
       }
     }
   }
