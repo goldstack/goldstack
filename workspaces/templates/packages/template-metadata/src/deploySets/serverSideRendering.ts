@@ -49,7 +49,7 @@ export const createServerSideRenderingBuildSetConfig = async (): Promise<DeployS
               'assert-package-files',
               'infra-up',
               'deploy',
-              'assert-rest-api',
+              'assert-application',
             ],
             packageCleanUp: ['infra-destroy'],
           },
