@@ -1,8 +1,13 @@
 # S3 Buckets for file hosting
 
+# Random id to prevent name collisions when bucket names need to be truncated
+resource "random_id" "bucket_name" {
+	  byte_length = 4
+}
+
 # Creates bucket to store the static website
 resource "aws_s3_bucket" "static_files" {
-  bucket = "${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-static-files"
+  bucket = "${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-static-files-${random_id.bucket_name.hex}"
 
   acl = "public-read"
 
@@ -25,7 +30,7 @@ resource "aws_s3_bucket" "static_files" {
         "AWS": "*"
       },
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-static-files/*"
+      "Resource": "arn:aws:s3:::${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-static-files-${random_id.bucket_name.hex}/*"
     }
   ]
 }
@@ -50,7 +55,7 @@ resource "aws_s3_bucket_website_configuration" "static_files_web" {
 }
 
 resource "aws_s3_bucket" "public_files" {
-  bucket = "${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-public-files"
+  bucket = "${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-public-files-${random_id.bucket_name.hex}"
 
   acl = "public-read"
 
@@ -73,7 +78,7 @@ resource "aws_s3_bucket" "public_files" {
         "AWS": "*"
       },
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-public-files/*"
+      "Resource": "arn:aws:s3:::${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-public-files-${random_id.bucket_name.hex}/*"
     }
   ]
 }

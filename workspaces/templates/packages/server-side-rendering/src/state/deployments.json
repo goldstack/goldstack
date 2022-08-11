@@ -10,12 +10,12 @@
       "public_files_bucket": {
         "sensitive": false,
         "type": "string",
-        "value": "ssr.examples.templates.dev.goldstack.p-public-files"
+        "value": "ssr.examples.templates.dev.goldstack.p-public-files-f3d74658"
       },
       "static_files_bucket": {
         "sensitive": false,
         "type": "string",
-        "value": "ssr.examples.templates.dev.goldstack.p-static-files"
+        "value": "ssr.examples.templates.dev.goldstack.p-static-files-f3d74658"
       }
     }
   }
