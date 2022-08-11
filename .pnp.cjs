@@ -1980,7 +1980,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:27.5.1"],\
             ["@types/node", "npm:17.0.33"],\
             ["aws-sdk", "npm:2.1055.0"],\
-            ["dynamodb-toolbox", "npm:0.4.0-alpha.2"],\
+            ["dynamodb-toolbox", "npm:0.4.3"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
@@ -11287,10 +11287,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["dynamodb-toolbox", [\
-        ["npm:0.4.0-alpha.2", {\
-          "packageLocation": "./.yarn/cache/dynamodb-toolbox-npm-0.4.0-alpha.2-833f4d38a4-0248daab49.zip/node_modules/dynamodb-toolbox/",\
+        ["npm:0.4.3", {\
+          "packageLocation": "./.yarn/cache/dynamodb-toolbox-npm-0.4.3-8c030ae805-6127ae26fe.zip/node_modules/dynamodb-toolbox/",\
           "packageDependencies": [\
-            ["dynamodb-toolbox", "npm:0.4.0-alpha.2"],\
+            ["dynamodb-toolbox", "npm:0.4.3"],\
             ["ts-toolbelt", "npm:6.15.5"]\
           ],\
           "linkType": "HARD"\

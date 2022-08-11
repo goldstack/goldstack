@@ -1070,7 +1070,7 @@ __metadata:
     "@types/jest": ^27.5.1
     "@types/node": ^17.0.33
     aws-sdk: 2.1055.0
-    dynamodb-toolbox: alpha
+    dynamodb-toolbox: ^0.4.3
     jest: ^28.1.0
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
@@ -9210,12 +9210,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dynamodb-toolbox@npm:alpha":
-  version: 0.4.0-alpha.2
-  resolution: "dynamodb-toolbox@npm:0.4.0-alpha.2"
+"dynamodb-toolbox@npm:^0.4.3":
+  version: 0.4.3
+  resolution: "dynamodb-toolbox@npm:0.4.3"
   dependencies:
     ts-toolbelt: ^6.15.5
-  checksum: 0248daab492fb459869872f430daada8147c39821be4a4abcbd7e77fd0d0cc19be12fd8031996e76a6db52d2b5f7b5db7d71a9eaa56ae877624b1fca34b6dcaf
+  checksum: 6127ae26fe0bcba91108a83c6d0b6221a2d12a277754db3d6bf703656bda2f7e6f43aa1e01db8fcdb6640ca3044397185f7ea98859e98c8a33333721eb49c229
   languageName: node
   linkType: hard
 
