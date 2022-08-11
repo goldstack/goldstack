@@ -4,6 +4,10 @@ import { infraCommands } from '@goldstack/utils-terraform';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import { PackageConfig } from '@goldstack/utils-package-config';
 import { writePackageConfig } from '@goldstack/utils-package';
+import {
+  readDeploymentState,
+  readTerraformStateVariable,
+} from '@goldstack/infra';
 import yargs from 'yargs';
 import fs from 'fs';
 import {
@@ -93,20 +97,30 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'deploy') {
+      const deployment = packageConfig.getDeployment(opArgs[0]);
+      const config = deployment.configuration;
+
+      const deploymentState = readDeploymentState('./', deployment.name);
+      const staticFilesBucket = readTerraformStateVariable(
+        deploymentState,
+        'static_files_bucket'
+      );
+      const publicFilesBucket = readTerraformStateVariable(
+        deploymentState,
+        'public_files_bucket'
+      );
       await Promise.all([
         deployFunctions({
           routesPath: defaultRoutesPath,
-          configuration: createLambdaAPIDeploymentConfiguration(
-            packageConfig.getDeployment(opArgs[0]).configuration
-          ),
+          configuration: createLambdaAPIDeploymentConfiguration(config),
           deployment: packageConfig.getDeployment(opArgs[0]),
           config: lambdaRoutes,
         }),
         deployToS3({
-          configuration: createLambdaAPIDeploymentConfiguration(
-            packageConfig.getDeployment(opArgs[0]).configuration
-          ),
+          configuration: createLambdaAPIDeploymentConfiguration(config),
           deployment: packageConfig.getDeployment(opArgs[0]),
+          staticFilesBucket,
+          publicFilesBucket,
         }),
       ]);
       return;

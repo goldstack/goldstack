@@ -3294,6 +3294,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/templates-lib/packages/template-ssr-cli/",\
           "packageDependencies": [\
             ["@goldstack/template-ssr-cli", "workspace:workspaces/templates-lib/packages/template-ssr-cli"],\
+            ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
             ["@goldstack/template-ssr", "workspace:workspaces/templates-lib/packages/template-ssr"],\
             ["@goldstack/template-ssr-server", "workspace:workspaces/templates-lib/packages/template-ssr-server"],\
