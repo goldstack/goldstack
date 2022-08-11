@@ -10,6 +10,9 @@
   },
   "references": [
     {
+      "path": "../infra"
+    },
+    {
       "path": "../infra-aws"
     },
     {

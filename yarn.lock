@@ -875,7 +875,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs-bootstrap@workspace:workspaces/templates/packages/app-nextjs-bootstrap"
   dependencies:
-    "@goldstack/template-nextjs": 0.3.118
+    "@goldstack/template-nextjs": 0.3.119
     "@goldstack/utils-sh": 0.4.33
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.3.0
@@ -915,7 +915,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs@workspace:workspaces/templates/packages/app-nextjs"
   dependencies:
-    "@goldstack/template-nextjs": 0.3.118
+    "@goldstack/template-nextjs": 0.3.119
     "@goldstack/utils-sh": 0.4.33
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.3.0
@@ -1017,7 +1017,7 @@ __metadata:
   dependencies:
     "@fullstory/browser": ^1.4.5
     "@goldstack/markdown-docs": 0.1.0
-    "@goldstack/template-nextjs": 0.3.118
+    "@goldstack/template-nextjs": 0.3.119
     "@goldstack/toc-generator": 0.1.0
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-track": 0.1.18
@@ -1192,7 +1192,7 @@ __metadata:
     "@goldstack/project-config": 0.1.0
     "@goldstack/project-repository": 0.1.0
     "@goldstack/template-metadata": 0.1.0
-    "@goldstack/template-nextjs": 0.3.118
+    "@goldstack/template-nextjs": 0.3.119
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-package": 0.3.41
     "@goldstack/utils-project": 0.3.36
@@ -1621,7 +1621,7 @@ __metadata:
   resolution: "@goldstack/server-side-rendering@workspace:workspaces/templates/packages/server-side-rendering"
   dependencies:
     "@goldstack/template-ssr": 0.1.8
-    "@goldstack/template-ssr-cli": 0.1.8
+    "@goldstack/template-ssr-cli": 0.1.9
     "@goldstack/utils-aws-http-api-local": 0.1.40
     "@goldstack/utils-esbuild": 0.4.3
     "@jest-mock/express": ^1.4.5
@@ -2130,7 +2130,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-nextjs@0.3.118, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
+"@goldstack/template-nextjs@0.3.119, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs"
   dependencies:
@@ -2280,7 +2280,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr-cli@0.1.8, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
+"@goldstack/template-ssr-cli@0.1.9, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli"
   dependencies:
