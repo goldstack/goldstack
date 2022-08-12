@@ -129,7 +129,7 @@ Will skip updating the `references` in `tsconfig.json` files for all packages in
 $ utils-typescript-references --skipPackages
 ```
 
-### -skipRoot
+### --skipRoot
 
 Will skip updating the `references` in the `tsconfig.json` file for the project root.
 
