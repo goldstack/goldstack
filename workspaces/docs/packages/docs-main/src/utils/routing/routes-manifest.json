@@ -158,6 +158,10 @@
       "regex": "^\\/docs\\/templates\\/s3$"
     },
     {
+      "page": "/docs/templates/server-side-rendering",
+      "regex": "^\\/docs\\/templates\\/server-side-rendering$"
+    },
+    {
       "page": "/docs/templates/serverless-api",
       "regex": "^\\/docs\\/templates\\/serverless-api$"
     },
@@ -198,8 +202,8 @@
       "routeKeys": {
         "slug": "slug"
       },
-      "dataRouteRegex": "^/_next/data/41sOkaIJ5LvPTHLpRyRvD/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/41sOkaIJ5LvPTHLpRyRvD/docs/(?<slug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/mkBOrrKQYHddAifjmQwCV/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/mkBOrrKQYHddAifjmQwCV/docs/(?<slug>.+?)\\.json$"
     }
   ],
   "rewrites": []

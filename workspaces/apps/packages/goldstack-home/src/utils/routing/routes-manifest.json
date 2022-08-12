@@ -74,6 +74,10 @@
       "regex": "^\\/templates\\/s3$"
     },
     {
+      "page": "/templates/server-side-rendering",
+      "regex": "^\\/templates\\/server-side-rendering$"
+    },
+    {
       "page": "/templates/serverless-api",
       "regex": "^\\/templates\\/serverless-api$"
     },
@@ -158,8 +162,8 @@
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/KSHfoncGszp\\-Yn8HqhGNo/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/KSHfoncGszp\\-Yn8HqhGNo/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/4t4_G0p536gIuBOH3IY4G/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/4t4_G0p536gIuBOH3IY4G/templates/(?<template>[^/]+?)\\.json$"
     }
   ],
   "rewrites": []
