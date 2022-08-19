@@ -85,3 +85,8 @@ data "aws_acm_certificate" "wildcard_website" {
   most_recent = true
 }
 
+# Id used for unique resource names
+resource "random_id" "id" {
+	  byte_length = 8
+}
+

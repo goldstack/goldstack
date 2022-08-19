@@ -74,6 +74,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
 
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
     forwarded_values {
       query_string = false
       headers      = ["Origin"]
@@ -100,6 +101,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
 
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
     forwarded_values {
       query_string = false
       headers      = ["Origin"]
@@ -127,6 +129,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     max_ttl          = "1200"
 
     viewer_protocol_policy = "redirect-to-https" 
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
     compress               = true
 
     forwarded_values {

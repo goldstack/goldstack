@@ -1,5 +1,5 @@
  resource "aws_cloudfront_response_headers_policy" "security_headers_policy" {
-  name = "security-headers-policy-${random_id.id.hex}"
+  name = "policy-${random_id.id.hex}"
   security_headers_config {
     content_type_options {
       override = true

@@ -1,5 +1,6 @@
 .next/
 webDist/
 out/
+cache/
 .vercel
 lambda.zip

@@ -177,6 +177,14 @@ See [Issue #40](https://github.com/goldstack/goldstack/issues/40)
 
 ## Security Hardening
 
+### Configure HTTP Headers
+
+This template uses CloudFront which can be used [to configure security headers](https://dev.to/aws-builders/apply-cloudfront-security-headers-policy-with-terraform-fd3). Many recommended security headers are configured by the template by default, but some configurations have been purposefully left less strict, especially the [Content Security Policy](https://infosec.mozilla.org/guidelines/web_security#content-security-policy).
+
+Please edit the resource `"security_headers_policy"` in the file `./infra/aws/cloudfront.tf` to adjust the security header configurations according to the needs of your application.
+
+### AWS Service Accounts
+
 This template requires further security hardening when deployed in critical production applications. Specifically the lambdas are given the role `arn:aws:iam::aws:policy/AdministratorAccess"` and this will grant the lambdas access to all resources on the AWS account, including the ability to create and destroy infrastructure. It is therefore recommended to grant the lambdas only rights to resources it needs access to, such as read and write permissions for an S3 bucket. This can be modified in `infra/aws/lambda_shared.tf` in the resource `resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach"`.
 
 Note that in this templates all lambdas for the API share the same permissions. This is by design to simply setup and management of the infrastructure in the understanding that the API forms one integrated element of a system. If there are concerns about access to resourced being shared by multiple lambdas, another API can be created.
