@@ -71,6 +71,7 @@ resource "aws_cloudfront_distribution" "cdn" {
     max_ttl                = 31536000
     compress               = true
     viewer_protocol_policy = "redirect-to-https"
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
   }
 
   # Priority 2 - Public files - these are not cached by default
@@ -94,6 +95,7 @@ resource "aws_cloudfront_distribution" "cdn" {
     max_ttl                = 31536000
     compress               = true
     viewer_protocol_policy = "redirect-to-https"
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
   }
 
   # Config for favicon resources
@@ -117,6 +119,7 @@ resource "aws_cloudfront_distribution" "cdn" {
     max_ttl                = 31536000
     compress               = true
     viewer_protocol_policy = "redirect-to-https"
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
   }
 
   ordered_cache_behavior {
@@ -139,6 +142,7 @@ resource "aws_cloudfront_distribution" "cdn" {
     max_ttl                = 31536000
     compress               = true
     viewer_protocol_policy = "redirect-to-https"
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
   }
 
   ordered_cache_behavior {
@@ -161,6 +165,7 @@ resource "aws_cloudfront_distribution" "cdn" {
     max_ttl                = 31536000
     compress               = true
     viewer_protocol_policy = "redirect-to-https"
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
   }
 
   # Priority 3 - Dynamic resources from API gateway
@@ -217,7 +222,7 @@ resource "aws_cloudfront_distribution" "cdn" {
 }
 
 resource "aws_cloudfront_response_headers_policy" "security_headers_policy" {
-  name = "my-security-headers-policy"
+  name = "policy-${random_id.id.hex}"
   security_headers_config {
 
     content_type_options {

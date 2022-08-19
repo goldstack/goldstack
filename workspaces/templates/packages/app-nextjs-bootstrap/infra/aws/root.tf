@@ -88,6 +88,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     max_ttl                = 31536000
     compress               = true
     viewer_protocol_policy = "redirect-to-https"
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
   }
 
   # Priority 1
@@ -114,6 +115,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     max_ttl                = 1200
     compress               = true
     viewer_protocol_policy = "redirect-to-https"
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
   }
 
   # Priority 2
@@ -127,6 +129,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     max_ttl          = "1200"
 
     viewer_protocol_policy = "redirect-to-https" 
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
     compress               = true
 
     forwarded_values {
