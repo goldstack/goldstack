@@ -248,7 +248,7 @@ resource "aws_cloudfront_response_headers_policy" "security_headers_policy" {
     }
 
     content_security_policy {
-      content_security_policy = "frame-ancestors 'none'; default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+      content_security_policy = "frame-ancestors 'none'; default-src https: data: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
       override = true
     }
   }
