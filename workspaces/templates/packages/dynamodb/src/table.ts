@@ -6,14 +6,14 @@ import {
 } from '@goldstack/template-dynamodb';
 
 import DynamoDB from 'aws-sdk/clients/dynamodb';
-import { Table } from 'dynamodb-toolbox';
+import { Table as ToolboxTable } from 'dynamodb-toolbox';
 import goldstackConfig from './../goldstack.json';
 import goldstackSchema from './../schemas/package.schema.json';
 import { createTable } from './entities';
 import { createMigrations } from './migrations';
 
 export * from './entities';
-
+export type Table = ToolboxTable<string, 'pk', 'sk'>;
 export const connect = async (deploymentName?: string): Promise<DynamoDB> => {
   return await templateConnect({
     goldstackConfig,
@@ -29,9 +29,9 @@ export interface ConnectTableParams {
   client?: DynamoDB;
 }
 
-export const connectTable = async <Name extends string>(
+export const connectTable = async (
   params?: ConnectTableParams
-): Promise<Table<Name, 'pk', 'sk'>> => {
+): Promise<Table> => {
   const tableName = await getTableName(params?.deploymentName);
   return createTable(
     params?.documentClient || params?.client
