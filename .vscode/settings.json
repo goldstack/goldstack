@@ -29,6 +29,7 @@
     "**/.pnp.*": true
   },
   "cSpell.words": [
-    "GOLDSTACK"
+    "GOLDSTACK",
+    "testcontainers"
   ]
 }
