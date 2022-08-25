@@ -8,7 +8,10 @@ import type { RenderPageProps } from '@goldstack/template-ssr-server';
 import type { LambdaApiDeploymentConfiguration } from '@goldstack/utils-aws-lambda';
 import type { SSRDeploymentConfiguration } from './types/SSRPackage';
 
-export type { RenderDocumentProps } from '@goldstack/template-ssr-server';
+export type {
+  RenderDocumentProps,
+  ESBuildConfiguration,
+} from '@goldstack/template-ssr-server';
 
 export const renderPage = async <PropType>(
   props: RenderPageProps<PropType>
@@ -17,7 +20,7 @@ export const renderPage = async <PropType>(
   return require('@goldstack/template-ssr-server').renderPage(props);
 };
 
-function isServer(): boolean {
+export function isServer(): boolean {
   return !(typeof window != 'undefined' && window.document);
 }
 
@@ -49,7 +52,7 @@ export const hydrate = (
   // hydration not required in test environments
   if (!node && !process.env.JEST_WORKER_ID) {
     throw new Error(
-      'Cannot hydrate server-side rendered content and initialse JavaScript on the client. No element with id "root" found on page.'
+      'Cannot hydrate server-side rendered content and initialise JavaScript on the client. No element with id "root" found on page.'
     );
   }
 };

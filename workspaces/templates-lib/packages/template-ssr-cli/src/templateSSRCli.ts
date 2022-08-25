@@ -15,6 +15,8 @@ import {
   SSRDeployment,
   SSRPackage,
 } from '@goldstack/template-ssr';
+import type { ESBuildConfiguration } from '@goldstack/template-ssr';
+
 import {
   readLambdaConfig,
   generateLambdaConfig,
@@ -26,7 +28,10 @@ import { defaultRoutesPath } from './templateSSRConsts';
 import { buildBundles } from './buildBundles';
 import { deployToS3 } from './deployToS3';
 
-export const run = async (args: string[]): Promise<void> => {
+export const run = async (
+  args: string[],
+  esbuildConfig: ESBuildConfiguration
+): Promise<void> => {
   await wrapCli(async () => {
     const argv = await buildCli({
       yargs,
@@ -92,6 +97,7 @@ export const run = async (args: string[]): Promise<void> => {
         routesDir: defaultRoutesPath,
         configs: lambdaRoutes,
         lambdaNamePrefix,
+        esbuildConfig,
       });
       return;
     }

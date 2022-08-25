@@ -9,7 +9,7 @@ import {
 } from 'aws-lambda';
 
 import { renderDocument } from './../_document';
-import { renderPage, hydrate } from '@goldstack/template-ssr';
+import { renderPage, hydrate, isServer } from '@goldstack/template-ssr';
 
 import Panel from './../components/Panel';
 
@@ -45,6 +45,13 @@ export const handler: ProxyHandler = async (event, context) => {
     entryPoint: __filename,
     event: event,
     renderDocument,
+    esbuildConfig: () => {
+      if (!isServer()) {
+        return;
+      }
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      return require('./../esbuild').esbuildConfig();
+    },
   });
 };
 

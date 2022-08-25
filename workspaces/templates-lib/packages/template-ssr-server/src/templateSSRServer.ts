@@ -11,6 +11,10 @@ import { renderToString } from 'react-dom/server';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { readFileSync } from 'fs';
 
+import type { ESBuildConfiguration } from '@goldstack/template-ssr-server-compile-bundle';
+
+export type { ESBuildConfiguration };
+
 export const clientBundleFileName = 'client.bundle.js';
 export const clientCSSFileName = 'client.bundle.css';
 
@@ -26,6 +30,7 @@ export interface RenderPageProps<PropType> {
   renderDocument: (props: RenderDocumentProps) => string;
   component: React.FunctionComponent<PropType>;
   properties: PropType;
+  esbuildConfig: () => ESBuildConfiguration;
 }
 
 export const renderPage = async <PropType>({
@@ -34,6 +39,7 @@ export const renderPage = async <PropType>({
   renderDocument,
   component,
   properties,
+  esbuildConfig,
 }: RenderPageProps<PropType>): Promise<APIGatewayProxyResultV2> => {
   if (event.queryStringParameters && event.queryStringParameters['resource']) {
     if (event.queryStringParameters['resource'].indexOf('js') > -1) {
@@ -59,6 +65,7 @@ export const renderPage = async <PropType>({
           )).bundleResponse({
             entryPoint,
             initialProperties: properties,
+            esbuildConfig: esbuildConfig(),
           })
         );
       }
@@ -82,6 +89,7 @@ export const renderPage = async <PropType>({
             '@goldstack/template-ssr-server-compile-bundle'
           )).sourceMapResponse({
             entryPoint,
+            esbuildConfig: esbuildConfig(),
           })
         );
       }
