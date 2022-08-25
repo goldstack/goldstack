@@ -5,6 +5,8 @@ import postcss, { AcceptedPlugin } from 'postcss';
 import postcssModules from 'postcss-modules-sync';
 import { register as swcRegister } from '@swc-node/register/register';
 
+export type { AcceptedPlugin } from 'postcss';
+
 export interface CompileCssResult {
   css: string;
   js: string;
