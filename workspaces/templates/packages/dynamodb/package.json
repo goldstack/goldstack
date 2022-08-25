@@ -19,7 +19,8 @@
     "infra": "yarn node dist/src/template.js infra",
     "template": "yarn node dist/src/template.js",
     "template-ts": "ts-node src/template.ts",
-    "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
+    "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand",
+    "watch": "GOLDSTACK_DEPLOYMENT=local ts-node scripts/watch.ts"
   },
   "dependencies": {
     "@aws-sdk/util-dynamodb": "^3.87.0",
