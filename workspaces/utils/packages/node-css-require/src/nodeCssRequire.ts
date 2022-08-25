@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { addHook } from 'pirates';
 
-import postcss from 'postcss';
+import postcss, { AcceptedPlugin } from 'postcss';
 import postcssModules from 'postcss-modules-sync';
 import { register as swcRegister } from '@swc-node/register/register';
 
@@ -10,16 +10,30 @@ export interface CompileCssResult {
   js: string;
 }
 
-export function compileCss(code: string, filename: string): CompileCssResult {
+export interface CompileCssConfiguration {
+  plugins?: AcceptedPlugin[];
+  generateScopedName?: string;
+}
+
+export function compileCss(
+  code: string,
+  filename: string,
+  config?: CompileCssConfiguration
+): CompileCssResult {
   let exportedTokens = {};
-  const res = postcss([
+  const plugins = [
     postcssModules({
-      generateScopedName: '[path][local]-[hash:base64:10]',
+      generateScopedName:
+        config?.generateScopedName || '[path][local]-[hash:base64:10]',
       getJSON: (tokens) => {
         exportedTokens = tokens;
       },
     }),
-  ]).process(code, { from: filename });
+  ];
+  if (config?.plugins) {
+    plugins.push(...config.plugins);
+  }
+  const res = postcss(plugins).process(code, { from: filename });
 
   // the below is required to properly resolve `exportedTokens`
   res
