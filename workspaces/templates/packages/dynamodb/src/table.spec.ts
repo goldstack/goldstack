@@ -10,7 +10,7 @@ import {
 } from './table';
 
 // needs to be long to download Docker image etc.
-jest.setTimeout(60000);
+jest.setTimeout(120000);
 
 describe('DynamoDB Table', () => {
   it('Should connect to local table', async () => {
