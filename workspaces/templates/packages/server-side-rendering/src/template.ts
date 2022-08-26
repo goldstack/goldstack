@@ -1,6 +1,6 @@
 import { run } from '@goldstack/template-ssr-cli';
 
-import { esbuildConfig } from './../src/esbuild';
+import { esbuildConfig } from './esbuild';
 
 run(process.argv, esbuildConfig()).catch((e) => {
   console.log(e);
