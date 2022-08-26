@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import React, { useState } from 'react';
 
 import styles from './$index.module.css';
@@ -9,7 +10,9 @@ import {
 } from 'aws-lambda';
 
 import { renderDocument } from './../_document';
-import { renderPage, hydrate, isServer } from '@goldstack/template-ssr';
+import { renderPage, hydrate } from '@goldstack/template-ssr';
+
+import { excludeInBundle } from '@goldstack/utils-esbuild';
 
 import Panel from './../components/Panel';
 
@@ -46,11 +49,7 @@ export const handler: ProxyHandler = async (event, context) => {
     event: event,
     renderDocument,
     esbuildConfig: () => {
-      if (!isServer()) {
-        return;
-      }
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      return require('./../esbuild').esbuildConfig();
+      return require(excludeInBundle('./../esbuild')).esbuildConfig();
     },
   });
 };

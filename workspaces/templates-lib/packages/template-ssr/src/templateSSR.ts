@@ -20,7 +20,7 @@ export const renderPage = async <PropType>(
   return require('@goldstack/template-ssr-server').renderPage(props);
 };
 
-export function isServer(): boolean {
+function isServer(): boolean {
   return !(typeof window != 'undefined' && window.document);
 }
 
