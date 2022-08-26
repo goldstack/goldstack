@@ -1074,8 +1074,8 @@ __metadata:
     "@aws-sdk/util-dynamodb": ^3.87.0
     "@goldstack/template-dynamodb": 0.1.19
     "@goldstack/template-dynamodb-cli": 0.4.10
-    "@types/jest": ^28.1.8
-    "@types/node": ^18.7.13
+    "@types/jest": ^27.5.1
+    "@types/node": ^17.0.33
     aws-sdk: 2.1055.0
     dynamodb-toolbox: ^0.4.3
     jest: ^28.1.0
@@ -1858,11 +1858,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-dynamodb-cli@0.4.10, @goldstack/template-dynamodb-cli@workspace:workspaces/templates-lib/packages/template-dynamodb-cli":
+"@goldstack/template-dynamodb-cli@0.4.11, @goldstack/template-dynamodb-cli@workspace:workspaces/templates-lib/packages/template-dynamodb-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-dynamodb-cli@workspace:workspaces/templates-lib/packages/template-dynamodb-cli"
   dependencies:
-    "@goldstack/template-dynamodb": 0.1.19
+    "@goldstack/template-dynamodb": 0.1.20
     "@goldstack/utils-cli": 0.2.15
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-git": 0.1.36
@@ -1889,7 +1889,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-dynamodb@0.1.19, @goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb":
+"@goldstack/template-dynamodb@0.1.20, @goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb"
   dependencies:
@@ -1909,7 +1909,7 @@ __metadata:
     aws-sdk: 2.1055.0
     jest: ^28.1.0
     rimraf: ^3.0.2
-    testcontainers: ^8.10.1
+    testcontainers: ^8.12.0
     ts-jest: ^28.0.2
     ts-node: ^10.9.1
     typescript: ^4.7.4
@@ -20086,9 +20086,9 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"testcontainers@npm:^8.10.1":
-  version: 8.10.1
-  resolution: "testcontainers@npm:8.10.1"
+"testcontainers@npm:^8.12.0":
+  version: 8.12.0
+  resolution: "testcontainers@npm:8.12.0"
   dependencies:
     "@balena/dockerignore": ^1.0.2
     "@types/archiver": ^5.3.1
@@ -20102,7 +20102,7 @@ resolve@^1.20.0:
     properties-reader: ^2.2.0
     ssh-remote-port-forward: ^1.0.4
     tar-fs: ^2.1.1
-  checksum: 9eda77d6b5efc36358e0a35644129079748ab399f80f9a8c40cb9d8a8594109fa49394c69c3da3e2250789d460f85555a073c4bb08c552db603e3e33446a66d2
+  checksum: b134bf1e4f4aa2d8e8e4143920ec08d90917d4749d6b329df028ac15969036d109c73b6efe6f461554b92ba7bae1b96b2b6a7cefb1e1323373de3934fd992107
   languageName: node
   linkType: hard
 

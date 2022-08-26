@@ -2845,7 +2845,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["aws-sdk", "npm:2.1055.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
             ["rimraf", "npm:3.0.2"],\
-            ["testcontainers", "npm:8.10.1"],\
+            ["testcontainers", "npm:8.12.0"],\
             ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"],\
@@ -23522,10 +23522,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["testcontainers", [\
-        ["npm:8.10.1", {\
-          "packageLocation": "./.yarn/cache/testcontainers-npm-8.10.1-07c90ca80f-9eda77d6b5.zip/node_modules/testcontainers/",\
+        ["npm:8.12.0", {\
+          "packageLocation": "./.yarn/cache/testcontainers-npm-8.12.0-d7f27a2092-b134bf1e4f.zip/node_modules/testcontainers/",\
           "packageDependencies": [\
-            ["testcontainers", "npm:8.10.1"],\
+            ["testcontainers", "npm:8.12.0"],\
             ["@balena/dockerignore", "npm:1.0.2"],\
             ["@types/archiver", "npm:5.3.1"],\
             ["@types/dockerode", "npm:3.3.9"],\

@@ -19,17 +19,18 @@
     "infra": "yarn node dist/src/template.js infra",
     "template": "yarn node dist/src/template.js",
     "template-ts": "ts-node src/template.ts",
-    "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
+    "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand",
+    "watch": "GOLDSTACK_DEPLOYMENT=local ts-node scripts/watch.ts"
   },
   "dependencies": {
     "@aws-sdk/util-dynamodb": "^3.87.0",
-    "@goldstack/template-dynamodb": "0.1.19",
+    "@goldstack/template-dynamodb": "0.1.20",
     "aws-sdk": "2.1055.0",
     "dynamodb-toolbox": "^0.4.3",
     "umzug": "^3.1.1"
   },
   "devDependencies": {
-    "@goldstack/template-dynamodb-cli": "0.4.10",
+    "@goldstack/template-dynamodb-cli": "0.4.11",
     "@types/jest": "^28.1.8",
     "@types/node": "^18.7.13",
     "jest": "^28.1.0",
