@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-s3",
-  "version": "0.3.104",
+  "version": "0.3.105",
   "description": "Building blocks for linking a package to an AWS S3 bucket.",
   "keywords": [
     "goldstack",
@@ -39,21 +39,21 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.3.38",
-    "@goldstack/infra-aws": "0.3.47",
-    "@goldstack/utils-esbuild": "0.4.3",
-    "@goldstack/utils-package": "0.3.41",
-    "@goldstack/utils-package-config-embedded": "0.4.5",
-    "@goldstack/utils-template": "0.3.37",
-    "@goldstack/utils-terraform": "0.3.71",
+    "@goldstack/infra": "0.3.39",
+    "@goldstack/infra-aws": "0.3.48",
+    "@goldstack/utils-esbuild": "0.4.4",
+    "@goldstack/utils-package": "0.3.42",
+    "@goldstack/utils-package-config-embedded": "0.4.6",
+    "@goldstack/utils-template": "0.3.38",
+    "@goldstack/utils-terraform": "0.3.72",
     "aws-sdk": "2.1055.0",
     "mock-aws-s3": "^4.0.2",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
     "@goldstack/utils-docs-cli": "0.3.11",
-    "@goldstack/utils-git": "0.1.36",
-    "@goldstack/utils-package-config-generate": "0.2.17",
+    "@goldstack/utils-git": "0.1.37",
+    "@goldstack/utils-package-config-generate": "0.2.18",
     "@types/jest": "^28.1.8",
     "@types/mock-aws-s3": "^2.6.3",
     "@types/node": "^18.7.13",

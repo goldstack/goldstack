@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@goldstack/template-build-set": "0.1.0",
-    "@goldstack/utils-project": "0.3.36"
+    "@goldstack/utils-project": "0.3.37"
   },
   "devDependencies": {
     "@types/jest": "^28.1.8",
