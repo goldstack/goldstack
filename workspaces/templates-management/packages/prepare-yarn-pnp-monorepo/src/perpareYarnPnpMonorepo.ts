@@ -93,7 +93,7 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
     if (fs.existsSync(terraformConfigPath)) {
       const terraformConfig = JSON.parse(read(terraformConfigPath));
       terraformConfig.remoteState = [];
-      write(JSON.stringify(terraformConfig, null, 2), terraformConfig);
+      write(JSON.stringify(terraformConfig, null, 2), terraformConfigPath);
     } else {
       write(JSON.stringify({ remoteState: [] }, null, 2), terraformConfigPath);
     }
