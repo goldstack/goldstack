@@ -87,6 +87,17 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
       write(JSON.stringify({}, null, 2), goldstackConfigPath);
     }
 
+    // ensure no bucket details in Terraform config
+    const terraformConfigPath =
+      params.destinationDirectory + 'config/infra/aws/terraform.json';
+    if (fs.existsSync(terraformConfigPath)) {
+      const terraformConfig = JSON.parse(terraformConfigPath);
+      terraformConfig.remoteState = [];
+      write(JSON.stringify(terraformConfig, null, 2), terraformConfig);
+    } else {
+      write(JSON.stringify({ remoteState: [] }, null, 2), terraformConfigPath);
+    }
+
     // ensure no npmAuthToken in package
     const yarnRc = read(params.destinationDirectory + '.yarnrc.yml');
 
