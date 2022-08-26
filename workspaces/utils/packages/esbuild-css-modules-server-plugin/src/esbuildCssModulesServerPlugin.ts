@@ -1,9 +1,12 @@
 import { OnLoadArgs, OnLoadResult, Plugin, PluginBuild } from 'esbuild';
 import fs from 'fs';
-import { compileCss } from 'node-css-require';
+import { compileCss, CompileCssConfiguration } from 'node-css-require';
+
+export type { CompileCssConfiguration } from 'node-css-require';
 
 export interface CSSServerPluginOptions {
   onCSSGenerated?: (css: string) => void;
+  cssConfig?: CompileCssConfiguration;
 }
 
 const cssServerPlugin = (opts?: CSSServerPluginOptions) => {
@@ -16,7 +19,7 @@ const cssServerPlugin = (opts?: CSSServerPluginOptions) => {
         },
         async (args: OnLoadArgs): Promise<OnLoadResult> => {
           const text = await fs.promises.readFile(args.path, 'utf8');
-          const res = compileCss(text, args.path);
+          const res = compileCss(text, args.path, opts?.cssConfig);
           const js = res.js;
 
           if (opts?.onCSSGenerated) {

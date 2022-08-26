@@ -840,6 +840,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@esbuild/linux-loong64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "@esbuild/linux-loong64@npm:0.15.5"
+  conditions: os=linux & cpu=loong64
+  languageName: node
+  linkType: hard
+
 "@eslint/eslintrc@npm:^0.4.3":
   version: 0.4.3
   resolution: "@eslint/eslintrc@npm:0.4.3"
@@ -879,8 +886,8 @@ __metadata:
     "@goldstack/utils-sh": 0.4.33
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.3.0
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     "@types/testing-library__jest-dom": ^5.14.5
     "@types/testing-library__react": ^10.2.0
@@ -919,8 +926,8 @@ __metadata:
     "@goldstack/utils-sh": 0.4.33
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.3.0
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     "@types/testing-library__jest-dom": ^5.14.5
     "@types/testing-library__react": ^10.2.0
@@ -959,8 +966,8 @@ __metadata:
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-template": 0.3.37
     "@types/archiver": ^3.1.0
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/semver": ^7.2.0
     archiver: ^5.3.1
     aws-sdk: 2.1055.0
@@ -980,8 +987,8 @@ __metadata:
   dependencies:
     "@goldstack/template-static-website-aws": 0.3.103
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     concurrently: ^7.3.0
     jest: ^28.1.0
     nodemon: ^2.0.15
@@ -1000,8 +1007,8 @@ __metadata:
     "@goldstack/template-docker-image-aws": 0.3.85
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     concurrently: ^7.3.0
     jest: ^28.1.0
     nodemon: ^2.0.15
@@ -1024,8 +1031,8 @@ __metadata:
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.3.0
     "@types/cheerio": ^0.22.31
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     "@types/styled-components": ^5.1.25
     "@types/testing-library__jest-dom": ^5.14.5
@@ -1067,8 +1074,8 @@ __metadata:
     "@aws-sdk/util-dynamodb": ^3.87.0
     "@goldstack/template-dynamodb": 0.1.20
     "@goldstack/template-dynamodb-cli": 0.4.11
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     dynamodb-toolbox: ^0.4.3
     jest: ^28.1.0
@@ -1089,8 +1096,8 @@ __metadata:
     "@goldstack/template-email-send-cli": 0.4.9
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     jest: ^28.1.0
     nodemon: ^2.0.15
@@ -1129,20 +1136,20 @@ __metadata:
     "@types/cors": ^2.8.12
     "@types/express": ^4.17.13
     "@types/helmet": ^4.0.0
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/rimraf": ^3.0.0
     "@types/sanitize-html": ^1.23.3
     "@types/source-map-support": ^0.5.4
     "@types/supertest": ^2.0.10
     "@types/tsc-watch": ^4
     "@types/uuid": ^8.3.0
-    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
     aws-serverless-express: ^3.3.8
     cookie-parser: ^1.4.5
     cors: ^2.8.5
     crypto-random-string: ^3.2.0
-    esbuild: ^0.14.48
+    esbuild: ^0.15.5
     express: ^4.17.1
     express-requests-logger: ^3.0.2
     helmet: ^4.6.0
@@ -1169,8 +1176,8 @@ __metadata:
     "@goldstack/template-email-send-cli": 0.4.9
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     jest: ^28.1.0
     nodemon: ^2.0.15
@@ -1203,8 +1210,8 @@ __metadata:
     "@stripe/stripe-js": ^1.10.0
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.3.0
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     "@types/react-dom": ^18.0.6
     "@types/react-scrollable-anchor": ^0.6.0
@@ -1255,8 +1262,8 @@ __metadata:
     "@goldstack/utils-log": 0.2.16
     "@goldstack/utils-package": 0.3.41
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     axios: 0.21.2
     handlebars: 4.7.7
@@ -1277,8 +1284,8 @@ __metadata:
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-log": 0.2.16
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     renamer: ^0.7.0
     rimraf: ^3.0.2
@@ -1298,13 +1305,13 @@ __metadata:
     "@types/aws-serverless-express": ^3.3.3
     "@types/express": ^4.17.13
     "@types/helmet": ^4.0.0
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/source-map-support": ^0.5.4
-    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
     aws-serverless-express: ^3.3.8
     cors: ^2.8.5
-    esbuild: ^0.14.48
+    esbuild: ^0.15.5
     express: ^4.17.1
     helmet: ^4.6.0
     jest: ^28.1.0
@@ -1324,8 +1331,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/library@workspace:workspaces/templates/packages/library"
   dependencies:
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -1340,8 +1347,8 @@ __metadata:
     "@goldstack/utils-cli": 0.2.15
     "@goldstack/utils-docs": 0.3.39
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1361,8 +1368,8 @@ __metadata:
     "@goldstack/module-template-utils": 0.1.0
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
@@ -1376,8 +1383,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/module-template-utils@workspace:workspaces/templates/packages/module-template-utils"
   dependencies:
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -1392,9 +1399,9 @@ __metadata:
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-log": 0.2.16
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
+    "@types/jest": ^28.1.8
     "@types/minimatch": ^3.0.3
-    "@types/node": ^17.0.33
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     minimatch: ^3.0.4
     node-watch: ^0.6.4
@@ -1414,9 +1421,9 @@ __metadata:
     "@goldstack/utils-package": 0.3.41
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-template": 0.3.37
-    "@types/jest": ^27.5.1
+    "@types/jest": ^28.1.8
     "@types/jsonpath": ^0.2.0
-    "@types/node": ^17.0.33
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     jsonpath: ^1.0.2
     rimraf: ^3.0.2
@@ -1438,8 +1445,8 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.2.17
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-template": 0.3.37
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -1461,8 +1468,8 @@ __metadata:
     "@goldstack/utils-project": 0.3.36
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-template-test": 0.1.0
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     extract-zip: ^2.0.1
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1480,8 +1487,8 @@ __metadata:
     "@goldstack/utils-project": 0.3.36
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-template": 0.3.37
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     temp-dir: ^2.0.0
@@ -1505,8 +1512,8 @@ __metadata:
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-template-test": 0.1.0
     "@goldstack/utils-yarn": 0.3.44
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     axios: 0.21.2
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1524,8 +1531,8 @@ __metadata:
     "@goldstack/template-s3-cli": 0.4.8
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     concurrently: ^7.3.0
     jest: ^28.1.0
@@ -1545,8 +1552,8 @@ __metadata:
     "@goldstack/template-s3-cli": 0.4.8
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     concurrently: ^7.3.0
     jest: ^28.1.0
@@ -1572,8 +1579,8 @@ __metadata:
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-template": 0.3.37
     "@types/archiver": ^3.1.0
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/semver": ^7.2.0
     "@types/uuid": ^8.3.0
     aws-sdk: 2.1055.0
@@ -1593,8 +1600,8 @@ __metadata:
   dependencies:
     "@goldstack/template-s3": 0.3.104
     "@goldstack/template-s3-cli": 0.4.8
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1609,8 +1616,8 @@ __metadata:
   resolution: "@goldstack/server-go@workspace:workspaces/templates/packages/lambda-go-gin"
   dependencies:
     "@goldstack/template-lambda-express": 0.3.122
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     nodemon: ^2.0.15
     ts-node: ^10.9.1
   languageName: unknown
@@ -1632,14 +1639,17 @@ __metadata:
     "@testing-library/react": ^13.3.0
     "@types/aws-lambda": ^8.10.88
     "@types/aws-serverless-express": ^3.3.3
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/node-fetch": 2
     "@types/react": ^18.0.15
     "@types/testing-library__jest-dom": ^5.14.5
     "@types/testing-library__react": ^10.2.0
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
     concurrently: ^7.3.0
     date-fns: ^2.28.0
+    esbuild: ^0.15.5
+    esbuild-css-modules-client-plugin: 0.1.4
     find-free-port: ^2.0.0
     jest: ^28.1.0
     jest-environment-jsdom: ^28.1.3
@@ -1669,12 +1679,12 @@ __metadata:
     "@jest-mock/express": ^1.4.5
     "@types/aws-lambda": ^8.10.88
     "@types/aws-serverless-express": ^3.3.3
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/node-fetch": 2
-    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
     date-fns: ^2.28.0
-    esbuild: ^0.14.48
+    esbuild: ^0.15.5
     find-free-port: ^2.0.0
     jest: ^28.1.0
     node-fetch: 2.6.7
@@ -1696,8 +1706,8 @@ __metadata:
     "@goldstack/template-s3-cli": 0.4.8
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     concurrently: ^7.3.0
     jest: ^28.1.0
@@ -1718,8 +1728,8 @@ __metadata:
     "@goldstack/utils-s3": 0.2.18
     "@goldstack/utils-sh": 0.4.33
     "@types/archiver": ^3.1.0
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/semver": ^7.2.0
     "@types/stripe": ^7.13.24
     "@types/uuid": ^8.3.0
@@ -1742,8 +1752,8 @@ __metadata:
     "@types/gulp": ^4.0.7
     "@types/gulp-changed": ^0.0.33
     "@types/gulp-replace": ^0.0.31
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     concurrently: ^7.3.0
     gulp: ^4.0.2
     gulp-changed: ^4.0.2
@@ -1778,8 +1788,8 @@ __metadata:
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-template": 0.3.37
     "@goldstack/utils-template-test": 0.1.0
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -1798,9 +1808,9 @@ __metadata:
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-template": 0.3.37
     "@types/archiver": ^3.1.0
-    "@types/jest": ^27.5.1
+    "@types/jest": ^28.1.8
     "@types/mock-aws-s3": ^2.6.3
-    "@types/node": ^17.0.33
+    "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     jest: ^28.1.0
     mock-aws-s3: ^4.0.2
@@ -1830,8 +1840,8 @@ __metadata:
     "@goldstack/utils-template": 0.3.37
     "@goldstack/utils-terraform": 0.3.71
     "@goldstack/utils-terraform-aws": 0.3.70
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/source-map-support": ^0.5.4
     "@types/yargs": ^17.0.10
     aws-sdk: 2.1055.0
@@ -1862,8 +1872,8 @@ __metadata:
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-terraform": 0.3.71
     "@goldstack/utils-terraform-aws": 0.3.70
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1893,8 +1903,8 @@ __metadata:
     "@goldstack/utils-package-config-embedded": 0.4.5
     "@goldstack/utils-package-config-generate": 0.2.17
     "@goldstack/utils-terraform": 0.3.71
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     aws-sdk: 2.1055.0
     jest: ^28.1.0
@@ -1919,8 +1929,8 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.2.17
     "@goldstack/utils-terraform": 0.3.71
     "@goldstack/utils-terraform-aws": 0.3.70
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1949,9 +1959,9 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.2.17
     "@goldstack/utils-terraform": 0.3.71
     "@goldstack/utils-terraform-aws": 0.3.70
-    "@types/jest": ^27.5.1
+    "@types/jest": ^28.1.8
     "@types/mock-aws-s3": ^2.6.3
-    "@types/node": ^17.0.33
+    "@types/node": ^18.7.13
     "@types/uuid": ^8.3.0
     aws-sdk: 2.1055.0
     jest: ^28.1.0
@@ -1986,8 +1996,8 @@ __metadata:
     "@goldstack/utils-terraform": 0.3.71
     "@goldstack/utils-terraform-aws": 0.3.70
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
     jest-pnp-resolver: ^1.2.2
@@ -2017,8 +2027,8 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.2.17
     "@goldstack/utils-terraform": 0.3.71
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
     jest-pnp-resolver: ^1.2.2
@@ -2052,8 +2062,8 @@ __metadata:
     "@goldstack/utils-template": 0.3.37
     "@goldstack/utils-terraform": 0.3.71
     "@goldstack/utils-terraform-aws": 0.3.70
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     archiver: ^5.3.1
     jest: ^28.1.0
@@ -2091,9 +2101,9 @@ __metadata:
     "@goldstack/utils-package": 0.3.41
     "@goldstack/utils-project": 0.3.36
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
+    "@types/jest": ^28.1.8
     "@types/mock-aws-s3": ^2.6.3
-    "@types/node": ^17.0.33
+    "@types/node": ^18.7.13
     "@types/source-map-support": ^0.5.4
     "@types/wtfnode": ^0.7.0
     "@types/yargs": ^17.0.10
@@ -2121,8 +2131,8 @@ __metadata:
   dependencies:
     "@goldstack/template-build-set": 0.1.0
     "@goldstack/utils-project": 0.3.36
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2151,8 +2161,8 @@ __metadata:
     "@goldstack/utils-template": 0.3.37
     "@goldstack/utils-terraform": 0.3.71
     "@types/glob": ^7.1.3
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/webpack": ^4.41.26
     "@types/yargs": ^17.0.10
     archiver: ^5.3.1
@@ -2179,8 +2189,8 @@ __metadata:
     "@goldstack/template-s3-cli": 0.4.8
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     concurrently: ^7.3.0
     jest: ^28.1.0
@@ -2202,8 +2212,8 @@ __metadata:
     "@goldstack/utils-template": 0.3.37
     "@types/archiver": ^3.1.0
     "@types/fs-extra": ^9.0.13
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/semver": ^7.2.0
     aws-sdk: 2.1055.0
     fs-extra: ^10.0.0
@@ -2233,9 +2243,9 @@ __metadata:
     "@goldstack/utils-template": 0.3.37
     "@goldstack/utils-terraform": 0.3.71
     "@goldstack/utils-terraform-aws": 0.3.70
-    "@types/jest": ^27.5.1
+    "@types/jest": ^28.1.8
     "@types/mock-aws-s3": ^2.6.3
-    "@types/node": ^17.0.33
+    "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     aws-sdk: 2.1055.0
     jest: ^28.1.0
@@ -2265,9 +2275,9 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.2.17
     "@goldstack/utils-template": 0.3.37
     "@goldstack/utils-terraform": 0.3.71
-    "@types/jest": ^27.5.1
+    "@types/jest": ^28.1.8
     "@types/mock-aws-s3": ^2.6.3
-    "@types/node": ^17.0.33
+    "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     aws-sdk: 2.1055.0
     jest: ^28.1.0
@@ -2303,8 +2313,8 @@ __metadata:
     "@goldstack/utils-template": 0.3.37
     "@goldstack/utils-terraform": 0.3.71
     "@goldstack/utils-terraform-aws": 0.3.70
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2313,9 +2323,6 @@ __metadata:
     ts-node: ^10.9.1
     typescript: ^4.7.4
     yargs: ^17.5.1
-  bin:
-    template: ./bin/template
-    template-s3: ./bin/template
   languageName: unknown
   linkType: soft
 
@@ -2336,14 +2343,12 @@ __metadata:
     "@goldstack/utils-template": 0.3.37
     "@goldstack/utils-terraform": 0.3.71
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     "@types/sha256": ^0
     "@types/yargs": ^17.0.10
-    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
-    esbuild: ^0.14.48
-    esbuild-css-modules-client-plugin: 0.1.4
+    esbuild: ^0.15.5
     jest: ^28.1.0
     lambda-compression: 0.1.2
     react: ^18.2.0
@@ -2374,8 +2379,8 @@ __metadata:
     "@goldstack/utils-template": 0.3.37
     "@goldstack/utils-terraform": 0.3.71
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     "@types/sha256": ^0
     "@types/yargs": ^17.0.10
@@ -2408,8 +2413,8 @@ __metadata:
     "@goldstack/utils-template": 0.3.37
     "@goldstack/utils-terraform": 0.3.71
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     "@types/react-dom": ^18.0.6
     "@types/yargs": ^17.0.10
@@ -2443,8 +2448,8 @@ __metadata:
     "@goldstack/utils-template": 0.3.37
     "@goldstack/utils-terraform": 0.3.71
     "@goldstack/utils-terraform-aws": 0.3.70
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2464,8 +2469,8 @@ __metadata:
   resolution: "@goldstack/toc-generator@workspace:workspaces/docs/packages/toc-generator"
   dependencies:
     "@types/cheerio": ^0.22.31
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     cheerio: 1.0.0-rc.10
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2483,8 +2488,8 @@ __metadata:
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-log": 0.2.16
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2502,8 +2507,8 @@ __metadata:
     "@types/aws-lambda": ^8.10.88
     "@types/cookie": ^0
     "@types/express": ^4.17.13
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/node-fetch": 2
     cookie: ^0.4.1
     cors: ^2.8.5
@@ -2527,12 +2532,12 @@ __metadata:
     "@goldstack/utils-log": 0.2.16
     "@goldstack/utils-sh": 0.4.33
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
-    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.11
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
+    "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
     archiver: ^5.3.1
     aws-sdk: 2.1055.0
-    esbuild: ^0.14.48
+    esbuild: ^0.15.5
     esbuild-css-modules-server-plugin: 0.1.4
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2546,8 +2551,8 @@ __metadata:
   resolution: "@goldstack/utils-cli@workspace:workspaces/utils/packages/utils-cli"
   dependencies:
     "@goldstack/utils-git": 0.1.36
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2562,8 +2567,8 @@ __metadata:
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-log": 0.2.16
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     ajv: ^6.12.2
     handlebars: 4.7.7
     jest: ^28.1.0
@@ -2579,8 +2584,8 @@ __metadata:
   dependencies:
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2596,8 +2601,8 @@ __metadata:
     "@goldstack/utils-docs": 0.3.39
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2617,8 +2622,8 @@ __metadata:
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-sh": 0.4.33
     "@mapbox/rehype-prism": 0.3.1
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     github-slugger: 1.2.0
     gray-matter: ^4.0.2
     hast-util-sanitize: ^3.0.0
@@ -2644,8 +2649,8 @@ __metadata:
   resolution: "@goldstack/utils-esbuild@workspace:workspaces/utils/packages/utils-esbuild"
   dependencies:
     "@goldstack/utils-git": 0.1.36
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2658,8 +2663,8 @@ __metadata:
   resolution: "@goldstack/utils-git@workspace:workspaces/utils/packages/utils-git"
   dependencies:
     "@types/command-exists": ^1
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     command-exists: ^1.2.9
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2678,8 +2683,8 @@ __metadata:
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-log": 0.2.16
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/replace-ext": ^0.0.27
     jest: ^28.1.0
     json-schema-to-typescript: ^9.1.1
@@ -2697,8 +2702,8 @@ __metadata:
   resolution: "@goldstack/utils-log@workspace:workspaces/utils/packages/utils-log"
   dependencies:
     "@goldstack/utils-git": 0.1.36
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2714,8 +2719,8 @@ __metadata:
     "@goldstack/utils-config": 0.3.35
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-package": 0.3.41
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2728,8 +2733,8 @@ __metadata:
   resolution: "@goldstack/utils-package-config-generate@workspace:workspaces/templates-lib/packages/utils-package-config-generate"
   dependencies:
     "@goldstack/utils-git": 0.1.36
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
     renamer: ^0.7.0
@@ -2752,8 +2757,8 @@ __metadata:
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-package": 0.3.41
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2769,8 +2774,8 @@ __metadata:
     "@goldstack/utils-log": 0.2.16
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-template": 0.3.37
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2786,8 +2791,8 @@ __metadata:
     "@goldstack/utils-config": 0.3.35
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
     renamer: ^0.7.0
@@ -2807,8 +2812,8 @@ __metadata:
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-json-to-ts": 0.3.34
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     renamer: ^0.7.0
     rimraf: ^3.0.2
@@ -2827,8 +2832,8 @@ __metadata:
     "@goldstack/utils-docker": 0.3.40
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2841,8 +2846,8 @@ __metadata:
   resolution: "@goldstack/utils-s3@workspace:workspaces/templates-lib/packages/utils-s3"
   dependencies:
     "@goldstack/utils-git": 0.1.36
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2861,9 +2866,9 @@ __metadata:
     "@types/command-exists": ^1
     "@types/fs-extra": ^9.0.13
     "@types/glob": ^7.1.3
-    "@types/jest": ^27.5.1
+    "@types/jest": ^28.1.8
     "@types/ncp": ^2.0.4
-    "@types/node": ^17.0.33
+    "@types/node": ^18.7.13
     "@types/rimraf": ^3.0.0
     "@types/which": ^2
     archiver: ^5.3.1
@@ -2891,9 +2896,9 @@ __metadata:
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-template": 0.3.37
     "@goldstack/utils-yarn": 0.3.44
-    "@types/jest": ^27.5.1
+    "@types/jest": ^28.1.8
     "@types/mock-aws-s3": ^2.6.3
-    "@types/node": ^17.0.33
+    "@types/node": ^18.7.13
     axios: 0.21.2
     extract-zip: ^2.0.1
     jest: ^28.1.0
@@ -2912,8 +2917,8 @@ __metadata:
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-json-to-ts": 0.3.34
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2932,8 +2937,8 @@ __metadata:
     "@goldstack/utils-package": 0.3.41
     "@goldstack/utils-sh": 0.4.33
     "@goldstack/utils-terraform": 0.3.71
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2954,9 +2959,9 @@ __metadata:
     "@goldstack/utils-log": 0.2.16
     "@goldstack/utils-package": 0.3.41
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
+    "@types/jest": ^28.1.8
     "@types/json-stable-stringify": ^1
-    "@types/node": ^17.0.33
+    "@types/node": ^18.7.13
     "@types/prompt-sync": ^4.1.0
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
@@ -2975,8 +2980,8 @@ __metadata:
   resolution: "@goldstack/utils-track@workspace:workspaces/utils/packages/utils-track"
   dependencies:
     "@goldstack/utils-git": 0.1.36
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     jest: ^28.1.0
     react: ^18.2.0
@@ -2991,8 +2996,8 @@ __metadata:
   resolution: "@goldstack/utils-typescript-references@workspace:workspaces/utils/packages/utils-typescript-references"
   dependencies:
     "@goldstack/utils-git": 0.1.36
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@types/source-map-support": ^0.5.4
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
@@ -3013,8 +3018,8 @@ __metadata:
     "@goldstack/utils-docker": 0.3.40
     "@goldstack/utils-git": 0.1.36
     "@goldstack/utils-sh": 0.4.33
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -3162,6 +3167,15 @@ __metadata:
   dependencies:
     jest-get-type: ^28.0.2
   checksum: 5b8b463682bd35ae71868020c87dc654ebed65ded4e74ea3c24bd9e1ab4637a7790c8b78c26cdcb832dd227b9981e8dd24eb3b742891637c24c2a3e38ba153e8
+  languageName: node
+  linkType: hard
+
+"@jest/expect-utils@npm:^28.1.3":
+  version: 28.1.3
+  resolution: "@jest/expect-utils@npm:28.1.3"
+  dependencies:
+    jest-get-type: ^28.0.2
+  checksum: 808ea3a68292a7e0b95490fdd55605c430b4cf209ea76b5b61bfb2a1badcb41bc046810fe4e364bd5fe04663978aa2bd73d8f8465a761dd7c655aeb44cf22987
   languageName: node
   linkType: hard
 
@@ -3372,19 +3386,6 @@ __metadata:
     "@types/yargs": ^15.0.0
     chalk: ^4.0.0
   checksum: 832fcb106870b095a33e93afc130ef4359a5a024317e00101f9ca934fe9c667b8ac6bc350260c8758f519feedc1370277f0169da11153739552dfd30775b474a
-  languageName: node
-  linkType: hard
-
-"@jest/types@npm:^27.2.5":
-  version: 27.2.5
-  resolution: "@jest/types@npm:27.2.5"
-  dependencies:
-    "@types/istanbul-lib-coverage": ^2.0.0
-    "@types/istanbul-reports": ^3.0.0
-    "@types/node": "*"
-    "@types/yargs": ^16.0.0
-    chalk: ^4.0.0
-  checksum: 322603c24354a5333b5b7a670464422a46e0244a5a96a35552a7018eb4ac2e84c3b7657336b0ea6aa114963f9b6d0da8b8f6f963cb044fea9e7bc04d464b0ab1
   languageName: node
   linkType: hard
 
@@ -4729,13 +4730,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "@types/jest@npm:27.5.1"
+"@types/jest@npm:^28.1.8":
+  version: 28.1.8
+  resolution: "@types/jest@npm:28.1.8"
   dependencies:
-    jest-matcher-utils: ^27.0.0
-    pretty-format: ^27.0.0
-  checksum: be20e39f7aaf17179109c0060d0a0489cec2034d4e2e28a631284c7ecd13c5ae52f62697a33a0e89b03b6cfe54e9d5e8c2bd387ab2bd90d6071d68c63b86d1e3
+    expect: ^28.0.0
+    pretty-format: ^28.0.0
+  checksum: d4cd36158a3ae1d4b42cc48a77c95de74bc56b84cf81e09af3ee0399c34f4a7da8ab9e787570f10004bd642f9e781b0033c37327fbbf4a8e4b6e37e8ee3693a7
   languageName: node
   linkType: hard
 
@@ -4872,10 +4873,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^17.0.33":
-  version: 17.0.33
-  resolution: "@types/node@npm:17.0.33"
-  checksum: 6620652cc89ce125e1162e060ec4608c25b3635185e3e5dcaae4ed09e4770dc8bf168ba48bcd7059a1a56087a05000d7ed562e81aea7b6a512e2b13d4409c6b6
+"@types/node@npm:^18.7.13":
+  version: 18.7.13
+  resolution: "@types/node@npm:18.7.13"
+  checksum: 45431e7e89ecaf85c7d2c180d801c132a7c59e2f8ad578726b6d71cc74e3267c18f9ccdcad738bc0479790c078f0c79efb0e58da2c6be535c15995dbb19050c9
   languageName: node
   linkType: hard
 
@@ -5660,14 +5661,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/esbuild-plugin-pnp@npm:^3.0.0-rc.11":
-  version: 3.0.0-rc.11
-  resolution: "@yarnpkg/esbuild-plugin-pnp@npm:3.0.0-rc.11"
+"@yarnpkg/esbuild-plugin-pnp@npm:^3.0.0-rc.15":
+  version: 3.0.0-rc.15
+  resolution: "@yarnpkg/esbuild-plugin-pnp@npm:3.0.0-rc.15"
   dependencies:
-    tslib: ^1.13.0
+    tslib: ^2.4.0
   peerDependencies:
     esbuild: ">=0.10.0"
-  checksum: 8649f0266911d835d4f1a1ccd6d339d58ac8e884db5632007ffdaf739ae89ad9f42349fc9313e2f696aaad126fe4f1937072b8ea10b14cab14d2061c1e7b76cb
+  checksum: 04da15355a99773b441742814ba4d0f3453a83df47aa07e215f167e156f109ab8e971489c8b1a4ddf3c79d568d35213f496ad52e97298228597e1aacc22680aa
   languageName: node
   linkType: hard
 
@@ -6052,8 +6053,8 @@ __metadata:
   resolution: "apps@workspace:workspaces/apps"
   dependencies:
     "@goldstack/utils-typescript-references": 0.2.3
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
     eslint: 7.32.0
@@ -8863,17 +8864,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"diff-sequences@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "diff-sequences@npm:27.5.1"
-  checksum: a00db5554c9da7da225db2d2638d85f8e41124eccbd56cbaefb3b276dcbb1c1c2ad851c32defe2055a54a4806f030656cbf6638105fd6ce97bb87b90b32a33ca
-  languageName: node
-  linkType: hard
-
 "diff-sequences@npm:^28.0.2":
   version: 28.0.2
   resolution: "diff-sequences@npm:28.0.2"
   checksum: 482360a8ec93333ea61bc93a800a1bee37c943b94a48fa1597825076adcad24620b44a0d3aa8f3d190584a4156c4b3315028453ca33e1174001fae3cdaa7f8f8
+  languageName: node
+  linkType: hard
+
+"diff-sequences@npm:^28.1.1":
+  version: 28.1.1
+  resolution: "diff-sequences@npm:28.1.1"
+  checksum: e2529036505567c7ca5a2dea86b6bcd1ca0e3ae63bf8ebf529b8a99cfa915bbf194b7021dc1c57361a4017a6d95578d4ceb29fabc3232a4f4cb866a2726c7690
   languageName: node
   linkType: hard
 
@@ -8951,8 +8952,8 @@ __metadata:
   dependencies:
     "@goldstack/nodemonx": 0.3.34
     "@goldstack/utils-typescript-references": 0.2.3
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
     eslint: 7.32.0
@@ -9535,16 +9536,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild-android-64@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-android-64@npm:0.14.48"
+"esbuild-android-64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-android-64@npm:0.15.5"
   conditions: os=android & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-android-arm64@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-android-arm64@npm:0.14.48"
+"esbuild-android-arm64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-android-arm64@npm:0.15.5"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
@@ -9554,9 +9555,9 @@ __metadata:
   resolution: "esbuild-css-modules-client-plugin@workspace:workspaces/utils/packages/esbuild-css-modules-client-plugin"
   dependencies:
     "@goldstack/utils-git": 0.1.36
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
-    esbuild: ^0.14.48
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
+    esbuild: ^0.15.5
     jest: ^28.1.0
     node-css-require: 0.1.3
     postcss-modules-sync: ^1.0.0
@@ -9572,9 +9573,9 @@ __metadata:
   resolution: "esbuild-css-modules-server-plugin@workspace:workspaces/utils/packages/esbuild-css-modules-server-plugin"
   dependencies:
     "@goldstack/utils-git": 0.1.36
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
-    esbuild: ^0.14.48
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
+    esbuild: ^0.15.5
     jest: ^28.1.0
     node-css-require: 0.1.3
     postcss-modules-sync: ^1.0.0
@@ -9584,157 +9585,160 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"esbuild-darwin-64@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-darwin-64@npm:0.14.48"
+"esbuild-darwin-64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-darwin-64@npm:0.15.5"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-darwin-arm64@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-darwin-arm64@npm:0.14.48"
+"esbuild-darwin-arm64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-darwin-arm64@npm:0.15.5"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"esbuild-freebsd-64@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-freebsd-64@npm:0.14.48"
+"esbuild-freebsd-64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-freebsd-64@npm:0.15.5"
   conditions: os=freebsd & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-freebsd-arm64@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-freebsd-arm64@npm:0.14.48"
+"esbuild-freebsd-arm64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-freebsd-arm64@npm:0.15.5"
   conditions: os=freebsd & cpu=arm64
   languageName: node
   linkType: hard
 
-"esbuild-linux-32@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-linux-32@npm:0.14.48"
+"esbuild-linux-32@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-linux-32@npm:0.15.5"
   conditions: os=linux & cpu=ia32
   languageName: node
   linkType: hard
 
-"esbuild-linux-64@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-linux-64@npm:0.14.48"
+"esbuild-linux-64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-linux-64@npm:0.15.5"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-linux-arm64@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-linux-arm64@npm:0.14.48"
+"esbuild-linux-arm64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-linux-arm64@npm:0.15.5"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"esbuild-linux-arm@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-linux-arm@npm:0.14.48"
+"esbuild-linux-arm@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-linux-arm@npm:0.15.5"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"esbuild-linux-mips64le@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-linux-mips64le@npm:0.14.48"
+"esbuild-linux-mips64le@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-linux-mips64le@npm:0.15.5"
   conditions: os=linux & cpu=mips64el
   languageName: node
   linkType: hard
 
-"esbuild-linux-ppc64le@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-linux-ppc64le@npm:0.14.48"
+"esbuild-linux-ppc64le@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-linux-ppc64le@npm:0.15.5"
   conditions: os=linux & cpu=ppc64
   languageName: node
   linkType: hard
 
-"esbuild-linux-riscv64@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-linux-riscv64@npm:0.14.48"
+"esbuild-linux-riscv64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-linux-riscv64@npm:0.15.5"
   conditions: os=linux & cpu=riscv64
   languageName: node
   linkType: hard
 
-"esbuild-linux-s390x@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-linux-s390x@npm:0.14.48"
+"esbuild-linux-s390x@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-linux-s390x@npm:0.15.5"
   conditions: os=linux & cpu=s390x
   languageName: node
   linkType: hard
 
-"esbuild-netbsd-64@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-netbsd-64@npm:0.14.48"
+"esbuild-netbsd-64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-netbsd-64@npm:0.15.5"
   conditions: os=netbsd & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-openbsd-64@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-openbsd-64@npm:0.14.48"
+"esbuild-openbsd-64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-openbsd-64@npm:0.15.5"
   conditions: os=openbsd & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-sunos-64@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-sunos-64@npm:0.14.48"
+"esbuild-sunos-64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-sunos-64@npm:0.15.5"
   conditions: os=sunos & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-windows-32@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-windows-32@npm:0.14.48"
+"esbuild-windows-32@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-windows-32@npm:0.15.5"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"esbuild-windows-64@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-windows-64@npm:0.14.48"
+"esbuild-windows-64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-windows-64@npm:0.15.5"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"esbuild-windows-arm64@npm:0.14.48":
-  version: 0.14.48
-  resolution: "esbuild-windows-arm64@npm:0.14.48"
+"esbuild-windows-arm64@npm:0.15.5":
+  version: 0.15.5
+  resolution: "esbuild-windows-arm64@npm:0.15.5"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"esbuild@npm:^0.14.48":
-  version: 0.14.48
-  resolution: "esbuild@npm:0.14.48"
+"esbuild@npm:^0.15.5":
+  version: 0.15.5
+  resolution: "esbuild@npm:0.15.5"
   dependencies:
-    esbuild-android-64: 0.14.48
-    esbuild-android-arm64: 0.14.48
-    esbuild-darwin-64: 0.14.48
-    esbuild-darwin-arm64: 0.14.48
-    esbuild-freebsd-64: 0.14.48
-    esbuild-freebsd-arm64: 0.14.48
-    esbuild-linux-32: 0.14.48
-    esbuild-linux-64: 0.14.48
-    esbuild-linux-arm: 0.14.48
-    esbuild-linux-arm64: 0.14.48
-    esbuild-linux-mips64le: 0.14.48
-    esbuild-linux-ppc64le: 0.14.48
-    esbuild-linux-riscv64: 0.14.48
-    esbuild-linux-s390x: 0.14.48
-    esbuild-netbsd-64: 0.14.48
-    esbuild-openbsd-64: 0.14.48
-    esbuild-sunos-64: 0.14.48
-    esbuild-windows-32: 0.14.48
-    esbuild-windows-64: 0.14.48
-    esbuild-windows-arm64: 0.14.48
+    "@esbuild/linux-loong64": 0.15.5
+    esbuild-android-64: 0.15.5
+    esbuild-android-arm64: 0.15.5
+    esbuild-darwin-64: 0.15.5
+    esbuild-darwin-arm64: 0.15.5
+    esbuild-freebsd-64: 0.15.5
+    esbuild-freebsd-arm64: 0.15.5
+    esbuild-linux-32: 0.15.5
+    esbuild-linux-64: 0.15.5
+    esbuild-linux-arm: 0.15.5
+    esbuild-linux-arm64: 0.15.5
+    esbuild-linux-mips64le: 0.15.5
+    esbuild-linux-ppc64le: 0.15.5
+    esbuild-linux-riscv64: 0.15.5
+    esbuild-linux-s390x: 0.15.5
+    esbuild-netbsd-64: 0.15.5
+    esbuild-openbsd-64: 0.15.5
+    esbuild-sunos-64: 0.15.5
+    esbuild-windows-32: 0.15.5
+    esbuild-windows-64: 0.15.5
+    esbuild-windows-arm64: 0.15.5
   dependenciesMeta:
+    "@esbuild/linux-loong64":
+      optional: true
     esbuild-android-64:
       optional: true
     esbuild-android-arm64:
@@ -9777,7 +9781,7 @@ __metadata:
       optional: true
   bin:
     esbuild: bin/esbuild
-  checksum: 352d5f5678b697eaafe0bb3374e3da013b31df98c2da17e94266f0bd9d421c531733df038d5b3548d1e8bc86daac0417f1ba2df1cc184685fdb899e1f309f47d
+  checksum: fc7f5df6542bd18dee1e61c58049ddf3d6b508d8d67eabcba455f7dbb560552e012f169a8afa2f209de554a206935fedf30d576aacdc2b46cb4da229181968fb
   languageName: node
   linkType: hard
 
@@ -10251,6 +10255,19 @@ __metadata:
   version: 1.2.0
   resolution: "expect-more@npm:1.2.0"
   checksum: e98a1c17911ac8b6a71a35a5e4df6f0aadd7b81ba43f61eac711b4c688dd64dad557736cae0d9ae755401bc78d9af2c1cd5508a65e3b0aef9e851fa886583da2
+  languageName: node
+  linkType: hard
+
+"expect@npm:^28.0.0":
+  version: 28.1.3
+  resolution: "expect@npm:28.1.3"
+  dependencies:
+    "@jest/expect-utils": ^28.1.3
+    jest-get-type: ^28.0.2
+    jest-matcher-utils: ^28.1.3
+    jest-message-util: ^28.1.3
+    jest-util: ^28.1.3
+  checksum: 101e0090de300bcafedb7dbfd19223368a2251ce5fe0105bbb6de5720100b89fb6b64290ebfb42febc048324c76d6a4979cdc4b61eb77747857daf7a5de9b03d
   languageName: node
   linkType: hard
 
@@ -13271,18 +13288,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"jest-diff@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "jest-diff@npm:27.5.1"
-  dependencies:
-    chalk: ^4.0.0
-    diff-sequences: ^27.5.1
-    jest-get-type: ^27.5.1
-    pretty-format: ^27.5.1
-  checksum: 8be27c1e1ee57b2bb2bef9c0b233c19621b4c43d53a3c26e2c00a4e805eb4ea11fe1694a06a9fb0e80ffdcfdc0d2b1cb0b85920b3f5c892327ecd1e7bd96b865
-  languageName: node
-  linkType: hard
-
 "jest-diff@npm:^28.1.0":
   version: 28.1.0
   resolution: "jest-diff@npm:28.1.0"
@@ -13292,6 +13297,18 @@ fsevents@~2.1.2:
     jest-get-type: ^28.0.2
     pretty-format: ^28.1.0
   checksum: 4d90d9d18ba1d28f5520fa206831e9e8199facf28c6d2b4967c7e4cd1ee78e7e826187babdeb02073f79a1d2c186520d73f77fa29877c6547b0a79392d08a513
+  languageName: node
+  linkType: hard
+
+"jest-diff@npm:^28.1.3":
+  version: 28.1.3
+  resolution: "jest-diff@npm:28.1.3"
+  dependencies:
+    chalk: ^4.0.0
+    diff-sequences: ^28.1.1
+    jest-get-type: ^28.0.2
+    pretty-format: ^28.1.3
+  checksum: fa8583e0ccbe775714ce850b009be1b0f6b17a4b6759f33ff47adef27942ebc610dbbcc8a5f7cfb7f12b3b3b05afc9fb41d5f766674616025032ff1e4f9866e0
   languageName: node
   linkType: hard
 
@@ -13351,13 +13368,6 @@ fsevents@~2.1.2:
   version: 25.2.6
   resolution: "jest-get-type@npm:25.2.6"
   checksum: d1f59027b0baa6b8a6f4b3f900de1a77714647351907981ea57c16340e6a58a9c702b580055331af25ee3872768f1241c0616de9777a63e4eb32fc409dcbf9ac
-  languageName: node
-  linkType: hard
-
-"jest-get-type@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "jest-get-type@npm:27.5.1"
-  checksum: 63064ab70195c21007d897c1157bf88ff94a790824a10f8c890392e7d17eda9c3900513cb291ca1c8d5722cad79169764e9a1279f7c8a9c4cd6e9109ff04bbc0
   languageName: node
   linkType: hard
 
@@ -13424,18 +13434,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"jest-matcher-utils@npm:^27.0.0":
-  version: 27.5.1
-  resolution: "jest-matcher-utils@npm:27.5.1"
-  dependencies:
-    chalk: ^4.0.0
-    jest-diff: ^27.5.1
-    jest-get-type: ^27.5.1
-    pretty-format: ^27.5.1
-  checksum: bb2135fc48889ff3fe73888f6cc7168ddab9de28b51b3148f820c89fdfd2effdcad005f18be67d0b9be80eda208ad47290f62f03d0a33f848db2dd0273c8217a
-  languageName: node
-  linkType: hard
-
 "jest-matcher-utils@npm:^28.1.0":
   version: 28.1.0
   resolution: "jest-matcher-utils@npm:28.1.0"
@@ -13445,6 +13443,18 @@ fsevents@~2.1.2:
     jest-get-type: ^28.0.2
     pretty-format: ^28.1.0
   checksum: 60e3e83fff67402972b101135d44443981d6519008e435b567f197220f330ec38356f905b6872348d082f0a2a4089612f63d2c72f55ee3c718de6b0ef03f4d6d
+  languageName: node
+  linkType: hard
+
+"jest-matcher-utils@npm:^28.1.3":
+  version: 28.1.3
+  resolution: "jest-matcher-utils@npm:28.1.3"
+  dependencies:
+    chalk: ^4.0.0
+    jest-diff: ^28.1.3
+    jest-get-type: ^28.0.2
+    pretty-format: ^28.1.3
+  checksum: 6b34f0cf66f6781e92e3bec97bf27796bd2ba31121e5c5997218d9adba6deea38a30df5203937d6785b68023ed95cbad73663cc9aad6fb0cb59aeb5813a58daf
   languageName: node
   linkType: hard
 
@@ -14185,8 +14195,8 @@ fsevents@~2.1.2:
   dependencies:
     "@goldstack/utils-git": 0.1.36
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -15587,8 +15597,8 @@ fsevents@~2.1.2:
   dependencies:
     "@goldstack/utils-git": 0.1.36
     "@swc-node/register": ^1.5.1
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     jest: ^28.1.0
     pirates: ^4.0.5
     postcss: ^8.4.14
@@ -16901,19 +16911,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^27.0.0":
-  version: 27.2.5
-  resolution: "pretty-format@npm:27.2.5"
-  dependencies:
-    "@jest/types": ^27.2.5
-    ansi-regex: ^5.0.1
-    ansi-styles: ^5.0.0
-    react-is: ^17.0.1
-  checksum: 83adebba0a1b23c3d289a60e9443665e428c9b74e91cc11b5bba4231ad52b90f5376ab9742ad9e78f955c5c24699904d6baaad7d32c75a220db66a4679332d53
-  languageName: node
-  linkType: hard
-
-"pretty-format@npm:^27.0.2, pretty-format@npm:^27.5.1":
+"pretty-format@npm:^27.0.2":
   version: 27.5.1
   resolution: "pretty-format@npm:27.5.1"
   dependencies:
@@ -16921,6 +16919,18 @@ fsevents@~2.1.2:
     ansi-styles: ^5.0.0
     react-is: ^17.0.1
   checksum: cf610cffcb793885d16f184a62162f2dd0df31642d9a18edf4ca298e909a8fe80bdbf556d5c9573992c102ce8bf948691da91bf9739bee0ffb6e79c8a8a6e088
+  languageName: node
+  linkType: hard
+
+"pretty-format@npm:^28.0.0, pretty-format@npm:^28.1.3":
+  version: 28.1.3
+  resolution: "pretty-format@npm:28.1.3"
+  dependencies:
+    "@jest/schemas": ^28.1.3
+    ansi-regex: ^5.0.1
+    ansi-styles: ^5.0.0
+    react-is: ^18.0.0
+  checksum: e69f857358a3e03d271252d7524bec758c35e44680287f36c1cb905187fbc82da9981a6eb07edfd8a03bc3cbeebfa6f5234c13a3d5b59f2bbdf9b4c4053e0a7f
   languageName: node
   linkType: hard
 
@@ -16933,18 +16943,6 @@ fsevents@~2.1.2:
     ansi-styles: ^5.0.0
     react-is: ^18.0.0
   checksum: c1018099f8f800693449df96c05c243d94e01f7429b6617e1064a1a69b4d715637fc3c579061fbc31548b87d92af74a7933c6eb3856da6f30b29c0ff67004ce0
-  languageName: node
-  linkType: hard
-
-"pretty-format@npm:^28.1.3":
-  version: 28.1.3
-  resolution: "pretty-format@npm:28.1.3"
-  dependencies:
-    "@jest/schemas": ^28.1.3
-    ansi-regex: ^5.0.1
-    ansi-styles: ^5.0.0
-    react-is: ^18.0.0
-  checksum: e69f857358a3e03d271252d7524bec758c35e44680287f36c1cb905187fbc82da9981a6eb07edfd8a03bc3cbeebfa6f5234c13a3d5b59f2bbdf9b4c4053e0a7f
   languageName: node
   linkType: hard
 
@@ -18246,8 +18244,8 @@ resolve@^1.20.0:
     "@goldstack/nodemonx": 0.3.34
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-typescript-references": 0.2.3
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
     concurrently: ^7.3.0
@@ -19963,8 +19961,8 @@ resolve@^1.20.0:
   resolution: "templates-lib@workspace:workspaces/templates-lib"
   dependencies:
     "@goldstack/utils-typescript-references": 0.2.3
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
     eslint: 7.32.0
@@ -19985,8 +19983,8 @@ resolve@^1.20.0:
   resolution: "templates-management@workspace:workspaces/templates-management"
   dependencies:
     "@goldstack/utils-typescript-references": 0.2.3
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
     eslint: 7.32.0
@@ -20007,8 +20005,8 @@ resolve@^1.20.0:
   dependencies:
     "@goldstack/nodemonx": 0.3.34
     "@goldstack/utils-typescript-references": 0.2.3
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
     eslint: 7.32.0
@@ -20569,13 +20567,6 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"tslib@npm:^1.13.0":
-  version: 1.14.1
-  resolution: "tslib@npm:1.14.1"
-  checksum: dbe628ef87f66691d5d2959b3e41b9ca0045c3ee3c7c7b906cc1e328b39f199bb1ad9e671c39025bd56122ac57dfbf7385a94843b1cc07c60a4db74795829acd
-  languageName: node
-  linkType: hard
-
 "tslib@npm:^1.8.1, tslib@npm:^1.9.0":
   version: 1.13.0
   resolution: "tslib@npm:1.13.0"
@@ -20776,7 +20767,7 @@ resolve@^1.20.0:
 
 "typescript@patch:typescript@^4.7.4#~builtin<compat/typescript>":
   version: 4.7.4
-  resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=f456af"
+  resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
@@ -20786,7 +20777,7 @@ resolve@^1.20.0:
 
 "typescript@patch:typescript@~4.6.2#~builtin<compat/typescript>":
   version: 4.6.4
-  resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=f456af"
+  resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=a1c5e5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
@@ -21278,8 +21269,8 @@ resolve@^1.20.0:
   resolution: "utils@workspace:workspaces/utils"
   dependencies:
     "@goldstack/utils-typescript-references": 0.2.3
-    "@types/jest": ^27.5.1
-    "@types/node": ^17.0.33
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
     eslint: 7.32.0

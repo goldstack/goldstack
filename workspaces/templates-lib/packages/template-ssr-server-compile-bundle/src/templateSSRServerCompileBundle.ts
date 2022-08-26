@@ -1,36 +1,13 @@
 import { build } from 'esbuild';
 import type { BuildOptions, BuildResult, OutputFile } from 'esbuild';
-import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
-
-import cssPlugin from 'esbuild-css-modules-client-plugin';
 
 import { APIGatewayProxyResultV2 } from 'aws-lambda';
 import { changeExtension, readToType } from '@goldstack/utils-sh';
 import { dirname } from 'path';
 
-const sharedConfig = (includeCss: boolean): BuildOptions => {
-  return {
-    plugins: [
-      cssPlugin({
-        excludeCSSInject: !includeCss,
-      }),
-      pnpPlugin(),
-    ],
-    bundle: true,
-    outfile: '/dist/tmp/bundle.js', // this is used for nothing, but if not supplying it css modules plugin fails
-    external: [
-      'esbuild',
-      '@yarnpkg/esbuild-plugin-pnp',
-      '@swc/core',
-      '@swc/jest',
-      '@goldstack/template-ssr-server', // this is only required on the server side
-    ],
-    minify: true,
-    platform: 'browser',
-    format: 'iife',
-    treeShaking: true,
-  };
-};
+export interface ESBuildConfiguration {
+  createBuildOptions: (includeCss: boolean) => BuildOptions;
+}
 
 const getEsBuildConfig = (entryPoint: string): BuildOptions => {
   const esbuildConfig = readToType<BuildOptions>('./esbuild.config.json');
@@ -74,15 +51,17 @@ export const compileBundle = async ({
   sourceMap,
   initialProperties,
   includeCss,
+  esbuildConfig,
 }: {
   entryPoint: string;
   metaFile?: boolean;
   sourceMap?: boolean;
   initialProperties?: any;
   includeCss: boolean;
+  esbuildConfig: ESBuildConfiguration;
 }): Promise<CompileBundleResponse> => {
   const res = await build({
-    ...sharedConfig(includeCss),
+    ...esbuildConfig.createBuildOptions(includeCss),
     entryPoints: [entryPoint],
     metafile: metaFile,
     sourcemap: sourceMap ? 'inline' : undefined,
@@ -126,14 +105,17 @@ export const compileBundle = async ({
 export const bundleResponse = async ({
   entryPoint,
   initialProperties,
+  esbuildConfig,
 }: {
   entryPoint: string;
   initialProperties?: any;
+  esbuildConfig: ESBuildConfiguration;
 }): Promise<APIGatewayProxyResultV2> => {
   const res = await compileBundle({
     entryPoint,
     initialProperties,
     includeCss: true,
+    esbuildConfig,
   });
 
   return {
@@ -169,11 +151,13 @@ const removeSourceMap = (output: string): string => {
 };
 export const sourceMapResponse = async ({
   entryPoint,
+  esbuildConfig,
 }: {
   entryPoint: string;
+  esbuildConfig: ESBuildConfiguration;
 }): Promise<APIGatewayProxyResultV2> => {
   const res = await build({
-    ...sharedConfig(false),
+    ...esbuildConfig.createBuildOptions(false),
     entryPoints: [entryPoint],
     sourcemap: 'inline',
     ...getEsBuildConfig(entryPoint),

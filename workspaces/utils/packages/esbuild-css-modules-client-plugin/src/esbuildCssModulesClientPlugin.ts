@@ -1,10 +1,13 @@
 import { OnLoadArgs, OnLoadResult, Plugin, PluginBuild } from 'esbuild';
 import fs from 'fs';
-import { compileCss } from 'node-css-require';
+import { compileCss, CompileCssConfiguration } from 'node-css-require';
 import sha256 from 'sha256';
+
+export type { CompileCssConfiguration } from 'node-css-require';
 
 export interface CSSClientPluginOptions {
   excludeCSSInject?: boolean;
+  cssConfig?: CompileCssConfiguration;
 }
 
 async function generateCSSInject(sourcePath: string, css: string) {
@@ -30,7 +33,7 @@ const cssPlugin = (opts?: CSSClientPluginOptions): Plugin => {
         },
         async (args: OnLoadArgs): Promise<OnLoadResult> => {
           const text = await fs.promises.readFile(args.path, 'utf8');
-          const res = compileCss(text, args.path);
+          const res = compileCss(text, args.path, opts?.cssConfig);
 
           let js: string;
           if (opts?.excludeCSSInject) {

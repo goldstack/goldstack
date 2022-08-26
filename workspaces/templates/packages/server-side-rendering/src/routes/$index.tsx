@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import React, { useState } from 'react';
 
 import styles from './$index.module.css';
@@ -10,6 +11,8 @@ import {
 
 import { renderDocument } from './../_document';
 import { renderPage, hydrate } from '@goldstack/template-ssr';
+
+import { excludeInBundle } from '@goldstack/utils-esbuild';
 
 import Panel from './../components/Panel';
 
@@ -45,6 +48,9 @@ export const handler: ProxyHandler = async (event, context) => {
     entryPoint: __filename,
     event: event,
     renderDocument,
+    esbuildConfig: () => {
+      return require(excludeInBundle('./../esbuild')).esbuildConfig();
+    },
   });
 };
 
