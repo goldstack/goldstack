@@ -2,11 +2,12 @@
 
 let compileCss;
 try {
-  compileCss = require('node-css-require').compileCss;
+  compileCss = require('node-css-require').compileCssSync;
 } catch (e) {
   // Fallback require for local development - Jest does not support loading transformers from .ts source files
   // so we load directly from the compiled JS.
-  compileCss = require('node-css-require/dist/src/nodeCssRequire').compileCss;
+  compileCss = require('node-css-require/dist/src/nodeCssRequire')
+    .compileCssSync;
 }
 
 module.exports = {

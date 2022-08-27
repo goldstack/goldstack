@@ -2,9 +2,12 @@
 import { addHook } from 'pirates';
 
 import postcss, { AcceptedPlugin } from 'postcss';
-import postcssModules from 'postcss-modules-sync';
+import postcssModulesSync from 'postcss-modules-sync';
+import postcssModules from 'postcss-modules';
+
 import { register as swcRegister } from '@swc-node/register/register';
 
+import { createHash } from 'crypto';
 export type { AcceptedPlugin } from 'postcss';
 
 export interface CompileCssResult {
@@ -17,16 +20,54 @@ export interface CompileCssConfiguration {
   generateScopedName?: string;
 }
 
-export function compileCss(
+function generateScopedName(name: string, filename: string, css: string) {
+  const i = css.indexOf(`.${name}`);
+  const lineNumber = css.substr(0, i).split(/[\r\n]/).length;
+  const hash = createHash('md5').update(css).digest('hex');
+
+  return `${name}_${hash}_${lineNumber}`;
+}
+
+export async function compileCss(
+  code: string,
+  filename: string,
+  config?: CompileCssConfiguration
+): Promise<CompileCssResult> {
+  let exportedTokens = {};
+  const plugins: AcceptedPlugin[] = [
+    postcssModules({
+      generateScopedName: generateScopedName,
+      getJSON: (cssFileName, json, outputFileName) => {
+        exportedTokens = json;
+      },
+    }),
+  ];
+  if (config?.plugins) {
+    plugins.push(...config.plugins);
+  }
+  const res = postcss(plugins).process(code, { from: filename });
+
+  await res;
+
+  const js = `module.exports = JSON.parse('${JSON.stringify(
+    exportedTokens
+  )}');`;
+
+  return {
+    js,
+    css: res.css,
+  };
+}
+
+export function compileCssSync(
   code: string,
   filename: string,
   config?: CompileCssConfiguration
 ): CompileCssResult {
   let exportedTokens = {};
   const plugins = [
-    postcssModules({
-      generateScopedName:
-        config?.generateScopedName || '[path][local]-[hash:base64:10]',
+    postcssModulesSync({
+      generateScopedName: generateScopedName,
       getJSON: (tokens) => {
         exportedTokens = tokens;
       },
@@ -55,12 +96,12 @@ export function compileCss(
   };
 }
 
-function compileJs(code: string, filename: string): string {
-  return compileCss(code, filename).js;
+function compileJsSync(code: string, filename: string): string {
+  return compileCssSync(code, filename).js;
 }
 
 export const register = (): void => {
-  addHook((code, filename) => compileJs(code, filename), {
+  addHook((code, filename) => compileJsSync(code, filename), {
     exts: ['.css'],
   });
 

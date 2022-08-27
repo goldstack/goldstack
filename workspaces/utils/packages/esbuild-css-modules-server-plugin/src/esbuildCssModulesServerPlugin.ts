@@ -19,7 +19,7 @@ const cssServerPlugin = (opts?: CSSServerPluginOptions) => {
         },
         async (args: OnLoadArgs): Promise<OnLoadResult> => {
           const text = await fs.promises.readFile(args.path, 'utf8');
-          const res = compileCss(text, args.path, opts?.cssConfig);
+          const res = await compileCss(text, args.path, opts?.cssConfig);
           const js = res.js;
 
           if (opts?.onCSSGenerated) {
