@@ -4,15 +4,19 @@ import cssPlugin from 'esbuild-css-modules-client-plugin';
 
 import type { BuildOptions } from 'esbuild';
 
-import type { ESBuildConfiguration } from '@goldstack/template-ssr';
+import type {
+  BuildConfiguration,
+  ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
+} from '@goldstack/template-ssr';
 
-export const esbuildConfig = (): ESBuildConfiguration => {
+export const buildConfig = (): BuildConfiguration => {
   return {
-    createClientBuildOptions: (includeCss: boolean): BuildOptions => {
+    createClientBuildOptions: (args: ClientBuildOptionsArgs): BuildOptions => {
       return {
         plugins: [
           cssPlugin({
-            excludeCSSInject: !includeCss,
+            excludeCSSInject: !args.includeCss,
             cssConfig: {
               plugins: [],
             },
@@ -34,14 +38,12 @@ export const esbuildConfig = (): ESBuildConfiguration => {
         treeShaking: true,
       };
     },
-    createServerBuildOptions: (
-      onCSSGenerated: (css: string) => void
-    ): BuildOptions => {
+    createServerBuildOptions: (args: ServerBuildOptionsArgs): BuildOptions => {
       return {
         plugins: [
           cssPlugin({
             excludeCSSInject: true,
-            onCSSGenerated,
+            onCSSGenerated: args.onCSSGenerated,
           }),
           pnpPlugin(),
         ],

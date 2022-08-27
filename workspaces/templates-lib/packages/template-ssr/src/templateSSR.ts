@@ -10,7 +10,9 @@ import type { SSRDeploymentConfiguration } from './types/SSRPackage';
 
 export type {
   RenderDocumentProps,
-  ESBuildConfiguration,
+  BuildConfiguration,
+  ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
 } from '@goldstack/template-ssr-server';
 
 export const renderPage = async <PropType>(

@@ -2,15 +2,17 @@ import type { BuildOptions } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
 import cssPlugin from 'esbuild-css-modules-client-plugin';
 
-export function defaultBuildOptions(): (
-  onCSSGenerated: (css: string) => void
-) => BuildOptions {
-  return function (onCSSGenerated: (css: string) => void): BuildOptions {
+export function defaultBuildOptions(): (args: {
+  onCSSGenerated: (css: string) => void;
+}) => BuildOptions {
+  return function (args: {
+    onCSSGenerated: (css: string) => void;
+  }): BuildOptions {
     return {
       plugins: [
         cssPlugin({
           excludeCSSInject: true,
-          onCSSGenerated,
+          onCSSGenerated: args.onCSSGenerated,
         }),
         pnpPlugin(),
       ],

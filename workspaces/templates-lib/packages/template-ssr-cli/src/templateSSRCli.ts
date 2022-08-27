@@ -15,7 +15,7 @@ import {
   SSRDeployment,
   SSRPackage,
 } from '@goldstack/template-ssr';
-import type { ESBuildConfiguration } from '@goldstack/template-ssr';
+import type { BuildConfiguration } from '@goldstack/template-ssr';
 
 import {
   readLambdaConfig,
@@ -30,7 +30,7 @@ import { deployToS3 } from './deployToS3';
 
 export const run = async (
   args: string[],
-  esbuildConfig: ESBuildConfiguration
+  buildConfig: BuildConfiguration
 ): Promise<void> => {
   await wrapCli(async () => {
     const argv = await buildCli({
@@ -90,7 +90,7 @@ export const run = async (
         .configuration.lambdaNamePrefix;
       await buildFunctions({
         routesDir: defaultRoutesPath,
-        buildOptions: esbuildConfig.createServerBuildOptions,
+        buildOptions: buildConfig.createServerBuildOptions,
         configs: lambdaRoutes,
         lambdaNamePrefix,
       });
@@ -98,7 +98,7 @@ export const run = async (
         routesDir: defaultRoutesPath,
         configs: lambdaRoutes,
         lambdaNamePrefix,
-        esbuildConfig,
+        buildConfig,
       });
       return;
     }

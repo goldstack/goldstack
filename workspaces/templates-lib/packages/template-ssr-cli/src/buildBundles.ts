@@ -1,7 +1,15 @@
 import { clientBundleFileName } from '@goldstack/template-ssr-server';
 import { compileBundle } from '@goldstack/template-ssr-server-compile-bundle';
-import type { ESBuildConfiguration } from '@goldstack/template-ssr-server-compile-bundle';
-export type { ESBuildConfiguration };
+import type {
+  BuildConfiguration,
+  ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
+} from '@goldstack/template-ssr-server-compile-bundle';
+export type {
+  BuildConfiguration,
+  ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
+};
 
 import {
   generateFunctionName,
@@ -14,12 +22,12 @@ export const buildBundles = async ({
   routesDir,
   configs,
   lambdaNamePrefix,
-  esbuildConfig,
+  buildConfig,
 }: {
   routesDir: string;
   configs: LambdaConfig[];
   lambdaNamePrefix?: string;
-  esbuildConfig: ESBuildConfiguration;
+  buildConfig: BuildConfiguration;
 }): Promise<void> => {
   for await (const config of configs) {
     const destDir = getOutDirForLambda(config);
@@ -30,7 +38,7 @@ export const buildBundles = async ({
       sourceMap: true,
       includeCss: false,
       metaFile: true,
-      esbuildConfig,
+      buildConfig,
     });
     const clientJsBundleFileName = `${destDir}/${clientBundleFileName}`;
     write(compileResult.bundle, clientJsBundleFileName);

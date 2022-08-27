@@ -34,10 +34,12 @@ export const buildFunctions = async ({
 }: {
   routesDir: string;
   configs: LambdaConfig[];
-  buildOptions: (onCSSGenerated: (css: string) => void) => BuildOptions;
+  buildOptions: (args: {
+    onCSSGenerated: (css: string) => void;
+  }) => BuildOptions;
   lambdaNamePrefix?: string;
 }): Promise<void> => {
-  const esbuildConfig = readToType<BuildOptions>('./esbuild.config.json');
+  const buildConfig = readToType<BuildOptions>('./esbuild.config.json');
 
   await rmSafe('./distLambda');
   mkdir('-p', './distLambda/zips');
@@ -48,18 +50,18 @@ export const buildFunctions = async ({
       '.esbuild.config.json'
     );
     const functionName = generateFunctionName(lambdaNamePrefix, config);
-    const localEsbuildConfig = readToType<BuildOptions>(esbuildLocalPath);
+    const localBuildConfig = readToType<BuildOptions>(esbuildLocalPath);
 
-    const onCSSGenerated = (css) => {
+    const onCSSGenerated = (css: string): void => {
       generatedCss.push(css);
     };
     const generatedCss: string[] = [];
     const res = await build({
-      ...buildOptions(onCSSGenerated),
+      ...buildOptions({ onCSSGenerated }),
       entryPoints: [`${routesDir}/${config.relativeFilePath}`],
       outfile: getOutFileForLambda(config),
-      ...esbuildConfig,
-      ...localEsbuildConfig,
+      ...buildConfig,
+      ...localBuildConfig,
     });
     if (!res.metafile) {
       throw new Error(`Metafile for ${functionName} not defined.`);

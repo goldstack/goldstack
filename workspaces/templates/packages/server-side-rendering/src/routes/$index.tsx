@@ -48,8 +48,8 @@ export const handler: ProxyHandler = async (event, context) => {
     entryPoint: __filename,
     event: event,
     renderDocument,
-    esbuildConfig: () => {
-      return require(excludeInBundle('./../esbuild')).esbuildConfig();
+    buildConfig: () => {
+      return require(excludeInBundle('./../esbuild')).buildConfig();
     },
   });
 };

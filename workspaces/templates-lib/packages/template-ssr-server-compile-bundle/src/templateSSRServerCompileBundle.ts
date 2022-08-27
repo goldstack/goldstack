@@ -5,21 +5,33 @@ import { APIGatewayProxyResultV2 } from 'aws-lambda';
 import { changeExtension, readToType } from '@goldstack/utils-sh';
 import { dirname } from 'path';
 
-export interface ESBuildConfiguration {
-  createClientBuildOptions: (includeCss: boolean) => BuildOptions;
-  createServerBuildOptions: (
-    onCSSGenerated: (css: string) => void
-  ) => BuildOptions;
+export interface ClientBuildOptionsArgs {
+  /**
+   * Whether CSS should be injected in the bundled JavaScript
+   */
+  includeCss: boolean;
 }
 
-const getEsBuildConfig = (entryPoint: string): BuildOptions => {
-  const esbuildConfig = readToType<BuildOptions>('./esbuild.config.json');
+export interface ServerBuildOptionsArgs {
+  /**
+   * Called when CSS is generate for a React component
+   */
+  onCSSGenerated: (css: string) => void;
+}
+
+export interface BuildConfiguration {
+  createClientBuildOptions: (args: ClientBuildOptionsArgs) => BuildOptions;
+  createServerBuildOptions: (args: ServerBuildOptionsArgs) => BuildOptions;
+}
+
+const getBuildConfig = (entryPoint: string): BuildOptions => {
+  const buildConfig = readToType<BuildOptions>('./esbuild.config.json');
   const esbuildLocalPath = changeExtension(
     dirname(entryPoint),
     '.esbuild.config.json'
   );
-  const localEsbuildConfig = readToType<BuildOptions>(esbuildLocalPath);
-  return { ...esbuildConfig, ...localEsbuildConfig };
+  const localBuildConfig = readToType<BuildOptions>(esbuildLocalPath);
+  return { ...buildConfig, ...localBuildConfig };
 };
 
 export interface CompileBundleResponse {
@@ -54,21 +66,21 @@ export const compileBundle = async ({
   sourceMap,
   initialProperties,
   includeCss,
-  esbuildConfig,
+  buildConfig,
 }: {
   entryPoint: string;
   metaFile?: boolean;
   sourceMap?: boolean;
   initialProperties?: any;
   includeCss: boolean;
-  esbuildConfig: ESBuildConfiguration;
+  buildConfig: BuildConfiguration;
 }): Promise<CompileBundleResponse> => {
   const res = await build({
-    ...esbuildConfig.createClientBuildOptions(includeCss),
+    ...buildConfig.createClientBuildOptions({ includeCss }),
     entryPoints: [entryPoint],
     metafile: metaFile,
     sourcemap: sourceMap ? 'inline' : undefined,
-    ...getEsBuildConfig(entryPoint),
+    ...getBuildConfig(entryPoint),
     write: false,
   });
 
@@ -108,17 +120,17 @@ export const compileBundle = async ({
 export const bundleResponse = async ({
   entryPoint,
   initialProperties,
-  esbuildConfig,
+  buildConfig,
 }: {
   entryPoint: string;
   initialProperties?: any;
-  esbuildConfig: ESBuildConfiguration;
+  buildConfig: BuildConfiguration;
 }): Promise<APIGatewayProxyResultV2> => {
   const res = await compileBundle({
     entryPoint,
     initialProperties,
     includeCss: true,
-    esbuildConfig,
+    buildConfig,
   });
 
   return {
@@ -154,16 +166,16 @@ const removeSourceMap = (output: string): string => {
 };
 export const sourceMapResponse = async ({
   entryPoint,
-  esbuildConfig,
+  buildConfig,
 }: {
   entryPoint: string;
-  esbuildConfig: ESBuildConfiguration;
+  buildConfig: BuildConfiguration;
 }): Promise<APIGatewayProxyResultV2> => {
   const res = await build({
-    ...esbuildConfig.createClientBuildOptions(false),
+    ...buildConfig.createClientBuildOptions({ includeCss: false }),
     entryPoints: [entryPoint],
     sourcemap: 'inline',
-    ...getEsBuildConfig(entryPoint),
+    ...getBuildConfig(entryPoint),
     write: false,
   });
 
