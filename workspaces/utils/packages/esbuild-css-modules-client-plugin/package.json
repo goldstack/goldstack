@@ -35,7 +35,7 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "dependencies": {
-    "node-css-require": "0.1.4",
+    "node-css-require": "0.2.0",
     "postcss-modules-sync": "^1.0.0",
     "sha256": "^0.2.0"
   },

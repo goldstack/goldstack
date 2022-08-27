@@ -1,6 +1,6 @@
 {
   "name": "node-css-require",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Load CSS modules when running Node.js CLI and server applications",
   "keywords": [
     "node",

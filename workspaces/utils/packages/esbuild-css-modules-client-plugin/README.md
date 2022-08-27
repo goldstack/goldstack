@@ -34,7 +34,9 @@ const res = await build({
 
 ### Options
 
-The plugin supports one option `excludeCSSInject`. This defaults to `false`. When set, no `<script>` tags are injected to be run during script load.
+#### excludeCSSInject
+
+The plugin supports the option `excludeCSSInject`. This defaults to `false`. When set, no `<script>` tags are injected to be run during script load.
 
 ```typescript
 import cssPlugin from 'esbuild-css-modules-client-plugin';
