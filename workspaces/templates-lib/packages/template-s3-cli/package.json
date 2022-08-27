@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-s3-cli",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "description": "Building blocks for linking a package to an AWS S3 bucket.",
   "keywords": [
     "goldstack",
@@ -42,17 +42,17 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/template-s3": "0.3.105",
+    "@goldstack/template-s3": "0.3.106",
     "@goldstack/utils-cli": "0.2.16",
-    "@goldstack/utils-docker": "0.3.41",
+    "@goldstack/utils-docker": "0.3.42",
     "@goldstack/utils-log": "0.2.17",
-    "@goldstack/utils-package": "0.3.42",
-    "@goldstack/utils-package-config": "0.3.43",
-    "@goldstack/utils-s3-deployment": "0.3.59",
-    "@goldstack/utils-sh": "0.4.34",
-    "@goldstack/utils-template": "0.3.38",
-    "@goldstack/utils-terraform": "0.3.72",
-    "@goldstack/utils-terraform-aws": "0.3.71",
+    "@goldstack/utils-package": "0.3.43",
+    "@goldstack/utils-package-config": "0.3.44",
+    "@goldstack/utils-s3-deployment": "0.3.60",
+    "@goldstack/utils-sh": "0.4.35",
+    "@goldstack/utils-template": "0.3.39",
+    "@goldstack/utils-terraform": "0.3.73",
+    "@goldstack/utils-terraform-aws": "0.3.72",
     "aws-sdk": "2.1055.0",
     "source-map-support": "^0.5.21",
     "yargs": "^17.5.1"

@@ -38,7 +38,7 @@
     "trim": "0.0.3"
   },
   "devDependencies": {
-    "@goldstack/nodemonx": "0.3.35",
+    "@goldstack/nodemonx": "0.3.36",
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-typescript-references": "0.2.4",
     "@types/jest": "^28.1.8",
