@@ -326,8 +326,19 @@ const readToType = <T>(path: string): T | undefined => {
   return result;
 };
 
+/**
+ * Writes to a file - if contents have not changed, do not change the file.
+ */
 const write = (content: string, path: string): void => {
-  fs.writeFileSync(path, content);
+  if (fs.existsSync(path)) {
+    const previousContent = fs.readFileSync(path, 'utf8');
+    if (content === previousContent) {
+      return;
+    }
+  }
+  fs.writeFileSync(path, content, {
+    encoding: 'utf8',
+  });
 };
 
 const pwd = (): string => process.cwd();
