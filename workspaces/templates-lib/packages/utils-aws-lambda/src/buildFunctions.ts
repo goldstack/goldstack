@@ -1,7 +1,7 @@
 import { build } from 'esbuild';
 import type { BuildOptions } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
-import cssServerPlugin from 'esbuild-css-modules-server-plugin';
+import cssPlugin from 'esbuild-css-modules-client-plugin';
 import { LambdaConfig } from './types/LambdaConfig';
 import { generateFunctionName } from './generate/generateFunctionName';
 import {
@@ -29,10 +29,12 @@ export const getOutFileForLambda = (config: LambdaConfig): string => {
 export const buildFunctions = async ({
   routesDir,
   configs,
+  buildOptions,
   lambdaNamePrefix,
 }: {
   routesDir: string;
   configs: LambdaConfig[];
+  buildOptions: (onCSSGenerated: (css: string) => void) => BuildOptions;
   lambdaNamePrefix?: string;
 }): Promise<void> => {
   const esbuildConfig = readToType<BuildOptions>('./esbuild.config.json');
@@ -48,32 +50,14 @@ export const buildFunctions = async ({
     const functionName = generateFunctionName(lambdaNamePrefix, config);
     const localEsbuildConfig = readToType<BuildOptions>(esbuildLocalPath);
 
+    const onCSSGenerated = (css) => {
+      generatedCss.push(css);
+    };
     const generatedCss: string[] = [];
     const res = await build({
-      plugins: [
-        cssServerPlugin({
-          onCSSGenerated: (css) => {
-            generatedCss.push(css);
-          },
-        }),
-        pnpPlugin(),
-      ],
-      bundle: true,
+      ...buildOptions(onCSSGenerated),
       entryPoints: [`${routesDir}/${config.relativeFilePath}`],
-      external: [
-        'aws-sdk', // included in Lambda runtime environment
-      ],
-      minify: true,
-      platform: 'node',
-      format: 'cjs',
-      target: 'node16.0',
-      treeShaking: true,
-      define: {
-        'process.env.NODE_ENV': '"production"',
-      }, // see https://github.com/evanw/esbuild/issues/2377
-      sourcemap: true,
       outfile: getOutFileForLambda(config),
-      metafile: true,
       ...esbuildConfig,
       ...localEsbuildConfig,
     });

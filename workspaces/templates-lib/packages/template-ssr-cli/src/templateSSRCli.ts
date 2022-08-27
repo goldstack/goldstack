@@ -90,6 +90,7 @@ export const run = async (
         .configuration.lambdaNamePrefix;
       await buildFunctions({
         routesDir: defaultRoutesPath,
+        buildOptions: esbuildConfig.createServerBuildOptions,
         configs: lambdaRoutes,
         lambdaNamePrefix,
       });

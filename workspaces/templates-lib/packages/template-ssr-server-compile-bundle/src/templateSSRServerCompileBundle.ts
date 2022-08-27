@@ -6,7 +6,10 @@ import { changeExtension, readToType } from '@goldstack/utils-sh';
 import { dirname } from 'path';
 
 export interface ESBuildConfiguration {
-  createBuildOptions: (includeCss: boolean) => BuildOptions;
+  createClientBuildOptions: (includeCss: boolean) => BuildOptions;
+  createServerBuildOptions: (
+    onCSSGenerated: (css: string) => void
+  ) => BuildOptions;
 }
 
 const getEsBuildConfig = (entryPoint: string): BuildOptions => {
@@ -61,7 +64,7 @@ export const compileBundle = async ({
   esbuildConfig: ESBuildConfiguration;
 }): Promise<CompileBundleResponse> => {
   const res = await build({
-    ...esbuildConfig.createBuildOptions(includeCss),
+    ...esbuildConfig.createClientBuildOptions(includeCss),
     entryPoints: [entryPoint],
     metafile: metaFile,
     sourcemap: sourceMap ? 'inline' : undefined,
@@ -157,7 +160,7 @@ export const sourceMapResponse = async ({
   esbuildConfig: ESBuildConfiguration;
 }): Promise<APIGatewayProxyResultV2> => {
   const res = await build({
-    ...esbuildConfig.createBuildOptions(false),
+    ...esbuildConfig.createClientBuildOptions(false),
     entryPoints: [entryPoint],
     sourcemap: 'inline',
     ...getEsBuildConfig(entryPoint),

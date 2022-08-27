@@ -2538,7 +2538,7 @@ __metadata:
     archiver: ^5.3.1
     aws-sdk: 2.1055.0
     esbuild: ^0.15.5
-    esbuild-css-modules-server-plugin: 0.1.5
+    esbuild-css-modules-client-plugin: 0.1.5
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -9568,7 +9568,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"esbuild-css-modules-server-plugin@0.1.5, esbuild-css-modules-server-plugin@workspace:workspaces/utils/packages/esbuild-css-modules-server-plugin":
+"esbuild-css-modules-server-plugin@workspace:workspaces/utils/packages/esbuild-css-modules-server-plugin":
   version: 0.0.0-use.local
   resolution: "esbuild-css-modules-server-plugin@workspace:workspaces/utils/packages/esbuild-css-modules-server-plugin"
   dependencies:

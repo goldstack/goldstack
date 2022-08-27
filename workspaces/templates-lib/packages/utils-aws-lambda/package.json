@@ -50,7 +50,7 @@
     "archiver": "^5.3.1",
     "aws-sdk": "2.1055.0",
     "esbuild": "^0.15.5",
-    "esbuild-css-modules-server-plugin": "0.1.5"
+    "esbuild-css-modules-client-plugin": "0.1.5"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.1.37",

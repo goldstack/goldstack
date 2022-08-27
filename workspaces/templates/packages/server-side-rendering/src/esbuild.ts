@@ -8,7 +8,7 @@ import type { ESBuildConfiguration } from '@goldstack/template-ssr';
 
 export const esbuildConfig = (): ESBuildConfiguration => {
   return {
-    createBuildOptions: (includeCss: boolean): BuildOptions => {
+    createClientBuildOptions: (includeCss: boolean): BuildOptions => {
       return {
         plugins: [
           cssPlugin({
@@ -32,6 +32,33 @@ export const esbuildConfig = (): ESBuildConfiguration => {
         platform: 'browser',
         format: 'iife',
         treeShaking: true,
+      };
+    },
+    createServerBuildOptions: (
+      onCSSGenerated: (css: string) => void
+    ): BuildOptions => {
+      return {
+        plugins: [
+          cssPlugin({
+            excludeCSSInject: true,
+            onCSSGenerated,
+          }),
+          pnpPlugin(),
+        ],
+        bundle: true,
+        external: [
+          'aws-sdk', // included in Lambda runtime environment
+        ],
+        minify: true,
+        platform: 'node',
+        format: 'cjs',
+        target: 'node16.0',
+        treeShaking: true,
+        define: {
+          'process.env.NODE_ENV': '"production"',
+        }, // see https://github.com/evanw/esbuild/issues/2377
+        sourcemap: true,
+        metafile: true,
       };
     },
   };

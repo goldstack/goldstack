@@ -3,6 +3,7 @@ import { read } from '@goldstack/utils-sh';
 import path from 'path';
 import { buildFunctions } from './buildFunctions';
 import fs from 'fs';
+import { defaultBuildOptions } from './defaultBuildOptions';
 
 jest.setTimeout(30000);
 
@@ -11,6 +12,7 @@ describe('Testing lambda build', () => {
     const fileToBuild = path.resolve('./testData/build-test/index.ts');
     expect(fs.existsSync(fileToBuild)).toEqual(true);
     await buildFunctions({
+      buildOptions: defaultBuildOptions(),
       routesDir: './testData/build-test',
       configs: [
         {
@@ -30,6 +32,7 @@ describe('Testing lambda build', () => {
   it('Should build lambda with custom esbuild config', async () => {
     await buildFunctions({
       routesDir: './testData/build-test',
+      buildOptions: defaultBuildOptions(),
       configs: [
         {
           path: '/customBuild',

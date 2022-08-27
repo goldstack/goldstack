@@ -16,6 +16,7 @@ import {
   validateDeployment,
   buildFunctions,
   deployFunctions,
+  defaultBuildOptions,
 } from '@goldstack/utils-aws-lambda';
 import { defaultRoutesPath } from './templateLambdaConsts';
 
@@ -77,6 +78,7 @@ export const run = async (args: string[]): Promise<void> => {
     if (command === 'build') {
       await buildFunctions({
         routesDir: defaultRoutesPath,
+        buildOptions: defaultBuildOptions(),
         configs: lambdaRoutes,
         lambdaNamePrefix: packageConfig.getDeployment(opArgs[0]).configuration
           .lambdaNamePrefix,
