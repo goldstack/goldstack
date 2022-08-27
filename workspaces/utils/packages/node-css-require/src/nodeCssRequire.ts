@@ -42,12 +42,15 @@ export async function compileCss(
       },
     }),
   ];
-  if (config?.plugins) {
-    plugins.push(...config.plugins);
-  }
-  const res = postcss(plugins).process(code, { from: filename });
+  let res = postcss(plugins).process(code, { from: filename });
 
   await res;
+
+  // apply other postcss magic after class names have been mapped
+  if (config?.plugins && config.plugins.length > 0) {
+    res = postcss(config.plugins).process(res.css, { from: filename });
+    await res;
+  }
 
   const js = `module.exports = JSON.parse('${JSON.stringify(
     exportedTokens

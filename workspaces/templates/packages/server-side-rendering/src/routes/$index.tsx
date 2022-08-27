@@ -28,7 +28,7 @@ const Index = (props: { message: string }): JSX.Element => {
           setClicked(true);
           throw new Error('Havent seen this');
         }}
-        className={styles.message}
+        className={`${styles.message}`}
       >
         {props.message}
       </div>

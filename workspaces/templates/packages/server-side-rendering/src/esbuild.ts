@@ -13,6 +13,9 @@ export const esbuildConfig = (): ESBuildConfiguration => {
         plugins: [
           cssPlugin({
             excludeCSSInject: !includeCss,
+            cssConfig: {
+              plugins: [],
+            },
           }),
           pnpPlugin(),
         ],
