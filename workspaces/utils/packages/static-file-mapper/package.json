@@ -1,0 +1,49 @@
+{
+  "name": "static-file-mapper",
+  "version": "0.1.0",
+  "description": "Helps tracking path to generated static files for deployment bundles",
+  "keywords": [
+    "javascript"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack.git"
+  },
+  "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "src/staticFileMapper.ts",
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:watch": "yarn clean && yarn compile-watch",
+    "clean": "rimraf ./dist",
+    "compile": "tsc -p tsconfig.json",
+    "compile-watch": "tsc -p tsconfig.json --watch",
+    "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
+    "prepublishOnly": "yarn run build",
+    "publish": "utils-git changed --exec \"yarn npm publish $@\"",
+    "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand",
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
+  },
+  "dependencies": {
+    "@goldstack/utils-sh": "0.4.34"
+  },
+  "devDependencies": {
+    "@goldstack/utils-git": "0.1.37",
+    "@types/aws-lambda": "^8.10.88",
+    "@types/jest": "^28.1.8",
+    "@types/node": "^18.7.13",
+    "jest": "^28.1.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^28.0.2",
+    "typescript": "^4.7.4"
+  },
+  "publishConfig": {
+    "main": "dist/src/staticFileMapper.js"
+  }
+}

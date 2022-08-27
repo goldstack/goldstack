@@ -365,6 +365,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/utils/packages/node-css-require"\
       },\
       {\
+        "name": "static-file-mapper",\
+        "reference": "workspace:workspaces/utils/packages/static-file-mapper"\
+      },\
+      {\
         "name": "@goldstack/utils-cli",\
         "reference": "workspace:workspaces/utils/packages/utils-cli"\
       },\
@@ -506,6 +510,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["lessr-react", ["workspace:workspaces/utils/packages/lessr-react"]],\
       ["node-css-require", ["workspace:workspaces/utils/packages/node-css-require"]],\
       ["root", ["workspace:."]],\
+      ["static-file-mapper", ["workspace:workspaces/utils/packages/static-file-mapper"]],\
       ["templates", ["workspace:workspaces/templates"]],\
       ["templates-lib", ["workspace:workspaces/templates-lib"]],\
       ["templates-management", ["workspace:workspaces/templates-management"]],\
@@ -22687,6 +22692,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["object-copy", "npm:0.1.0"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["static-file-mapper", [\
+        ["workspace:workspaces/utils/packages/static-file-mapper", {\
+          "packageLocation": "./workspaces/utils/packages/static-file-mapper/",\
+          "packageDependencies": [\
+            ["static-file-mapper", "workspace:workspaces/utils/packages/static-file-mapper"],\
+            ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+            ["@types/aws-lambda", "npm:8.10.88"],\
+            ["@types/jest", "npm:28.1.8"],\
+            ["@types/node", "npm:18.7.13"],\
+            ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
+          ],\
+          "linkType": "SOFT"\
         }]\
       ]],\
       ["statuses", [\
