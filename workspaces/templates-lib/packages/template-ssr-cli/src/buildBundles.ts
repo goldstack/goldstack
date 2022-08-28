@@ -46,7 +46,7 @@ export const buildBundles = async ({
       const sourceMapFileName = `${functionName}.map`;
       buildConfig.staticFileMapper.put({
         name: sourceMapFileName,
-        generatedName: `${functionName}.[hash].map`,
+        generatedName: `${functionName}.[hash].map.json`,
         content: compileResult.sourceMap,
       });
       // write(compileResult.sourceMap || '', sourceMapFileName);
