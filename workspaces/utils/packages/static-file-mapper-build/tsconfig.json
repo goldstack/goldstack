@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "."
+  },
+  "references": [
+    {
+      "path": "../utils-sh"
+    },
+    {
+      "path": "../static-file-mapper"
+    },
+    {
+      "path": "../utils-git"
+    }
+  ]
+}

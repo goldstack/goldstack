@@ -369,6 +369,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/utils/packages/static-file-mapper"\
       },\
       {\
+        "name": "static-file-mapper-build",\
+        "reference": "workspace:workspaces/utils/packages/static-file-mapper-build"\
+      },\
+      {\
         "name": "@goldstack/utils-cli",\
         "reference": "workspace:workspaces/utils/packages/utils-cli"\
       },\
@@ -511,6 +515,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["node-css-require", ["workspace:workspaces/utils/packages/node-css-require"]],\
       ["root", ["workspace:."]],\
       ["static-file-mapper", ["workspace:workspaces/utils/packages/static-file-mapper"]],\
+      ["static-file-mapper-build", ["workspace:workspaces/utils/packages/static-file-mapper-build"]],\
       ["templates", ["workspace:workspaces/templates"]],\
       ["templates-lib", ["workspace:workspaces/templates-lib"]],\
       ["templates-management", ["workspace:workspaces/templates-management"]],\
@@ -2629,6 +2634,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
+            ["static-file-mapper", "workspace:workspaces/utils/packages/static-file-mapper"],\
+            ["static-file-mapper-build", "workspace:workspaces/utils/packages/static-file-mapper-build"],\
             ["supertest", "npm:4.0.2"],\
             ["ts-jest", "virtual:63f371268dd55028a92f24e2f7aacc86f78741192aef9599aab30cc7883d6ed1b41f2d9ee2f5548ff4edcd0bd02a6998f825c91730c5162727fff96d95679f5e#npm:28.0.2"],\
             ["ts-node", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:10.9.1"],\
@@ -3384,6 +3391,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
+            ["static-file-mapper", "workspace:workspaces/utils/packages/static-file-mapper"],\
             ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
@@ -3421,6 +3429,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
+            ["static-file-mapper", "workspace:workspaces/utils/packages/static-file-mapper"],\
             ["ts-jest", "virtual:63f371268dd55028a92f24e2f7aacc86f78741192aef9599aab30cc7883d6ed1b41f2d9ee2f5548ff4edcd0bd02a6998f825c91730c5162727fff96d95679f5e#npm:28.0.2"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
@@ -22700,12 +22709,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["static-file-mapper", "workspace:workspaces/utils/packages/static-file-mapper"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@types/aws-lambda", "npm:8.10.88"],\
+            ["@types/jest", "npm:28.1.8"],\
+            ["@types/node", "npm:18.7.13"],\
+            ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["static-file-mapper-build", [\
+        ["workspace:workspaces/utils/packages/static-file-mapper-build", {\
+          "packageLocation": "./workspaces/utils/packages/static-file-mapper-build/",\
+          "packageDependencies": [\
+            ["static-file-mapper-build", "workspace:workspaces/utils/packages/static-file-mapper-build"],\
+            ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
             ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
             ["@types/aws-lambda", "npm:8.10.88"],\
             ["@types/jest", "npm:28.1.8"],\
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
             ["rimraf", "npm:3.0.2"],\
+            ["static-file-mapper", "workspace:workspaces/utils/packages/static-file-mapper"],\
             ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
           ],\

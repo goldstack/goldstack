@@ -29,6 +29,9 @@ export const buildBundles = async ({
   lambdaNamePrefix?: string;
   buildConfig: BuildConfiguration;
 }): Promise<void> => {
+  // delete all static files and reset all mappings
+  await buildConfig.staticFileMapper.reset();
+
   for await (const config of configs) {
     const destDir = getOutDirForLambda(config);
     mkdir('-p', destDir);
@@ -42,8 +45,15 @@ export const buildBundles = async ({
     });
     const clientJsBundleFileName = `${destDir}/${clientBundleFileName}`;
     write(compileResult.bundle, clientJsBundleFileName);
-    const sourceMapFileName = `${clientJsBundleFileName}.map`;
-    write(compileResult.sourceMap || '', sourceMapFileName);
+    if (compileResult.sourceMap) {
+      const sourceMapFileName = `${functionName}.map`;
+      buildConfig.staticFileMapper.put({
+        name: sourceMapFileName,
+        generatedName: `${functionName}.[hash].map`,
+        content: compileResult.sourceMap,
+      });
+      // write(compileResult.sourceMap || '', sourceMapFileName);
+    }
     write(
       compileResult.metaFile || '',
       `./distLambda/zips/${functionName}.client.meta.json`

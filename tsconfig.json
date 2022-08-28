@@ -290,6 +290,12 @@
       "path": "workspaces/utils/packages/node-css-require"
     },
     {
+      "path": "workspaces/utils/packages/static-file-mapper"
+    },
+    {
+      "path": "workspaces/utils/packages/static-file-mapper-build"
+    },
+    {
       "path": "workspaces/utils/packages/utils-cli"
     },
     {

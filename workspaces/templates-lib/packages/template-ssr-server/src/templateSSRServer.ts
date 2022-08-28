@@ -23,6 +23,8 @@ export type {
   ClientBuildOptionsArgs,
 };
 
+import { StaticFileMapper } from 'static-file-mapper';
+
 export const clientBundleFileName = 'client.bundle.js';
 export const clientCSSFileName = 'client.bundle.css';
 
@@ -37,6 +39,7 @@ export interface RenderPageProps<PropType> {
   event: APIGatewayProxyEventV2;
   renderDocument: (props: RenderDocumentProps) => string;
   component: React.FunctionComponent<PropType>;
+  staticFileMapper: StaticFileMapper;
   properties: PropType;
   buildConfig: () => BuildConfiguration;
 }
@@ -45,6 +48,7 @@ export const renderPage = async <PropType>({
   entryPoint,
   event,
   renderDocument,
+  staticFileMapper,
   component,
   properties,
   buildConfig,
@@ -57,7 +61,10 @@ export const renderPage = async <PropType>({
           statusCode: 201,
           headers: {
             'Content-Type': 'application/javascript',
-            SourceMap: '?resource=sourcemap',
+            // SourceMap: '?resource=sourcemap',
+            SourceMap: await staticFileMapper.resolve({
+              name: `${process.env.AWS_LAMBDA_FUNCTION_NAME}.map`,
+            }),
           },
           body: `window.initialProperties=${JSON.stringify(
             properties

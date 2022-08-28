@@ -1,6 +1,3 @@
-import { mkdir, read, write } from '@goldstack/utils-sh';
-import { dirname } from 'path';
-
 export interface StaticFileMapping {
   name: string;
   generatedName: string;
@@ -8,16 +5,37 @@ export interface StaticFileMapping {
 
 export type MappingStore = StaticFileMapping[];
 
-export class StaticFileMapper {
-  private dir: string;
-  private storePath: string;
+export interface StaticFileMapper {
+  register({
+    name,
+    generatedName,
+  }: {
+    name: string;
+    generatedName: string;
+  }): Promise<void>;
+  put({
+    name,
+    generatedName,
+    content,
+  }: {
+    name: string;
+    generatedName: string;
+    content: string;
+  }): Promise<void>;
+  reset(): Promise<void>;
+  resolve({ name }: { name: string }): Promise<string>;
+}
+
+export class StaticFileMapperRun implements StaticFileMapper {
+  private store: MappingStore;
+  private baseUrl: string;
 
   private readStore(): MappingStore {
-    return JSON.parse(read(this.storePath));
+    return this.store;
   }
 
   private writeStore(store: MappingStore): void {
-    write(JSON.stringify(store, null, 2), this.storePath);
+    throw new Error('Cannot write store with Run file mapper');
   }
 
   public async register({
@@ -27,22 +45,7 @@ export class StaticFileMapper {
     name: string;
     generatedName: string;
   }): Promise<void> {
-    const store = this.readStore();
-
-    let found = false;
-    store.map((mapping) => {
-      if (mapping.name === name) {
-        mapping.generatedName = generatedName;
-        found = true;
-      }
-    });
-    if (!found) {
-      store.push({
-        name,
-        generatedName,
-      });
-    }
-    this.writeStore(store);
+    throw new Error('Cannot register mappings with Run store');
   }
 
   public async put({
@@ -54,10 +57,7 @@ export class StaticFileMapper {
     generatedName: string;
     content: string;
   }): Promise<void> {
-    const path = `${this.dir}/${generatedName}`;
-    mkdir('-p', dirname(path));
-    write(content, path);
-    await this.register({ name, generatedName });
+    new Error('Cannot put with Run store');
   }
 
   public async resolve({ name }: { name: string }): Promise<string> {
@@ -67,11 +67,14 @@ export class StaticFileMapper {
     if (!mapping) {
       throw new Error(`Cannot find static file mapping for ${name}`);
     }
-    return mapping.generatedName;
+    return `${this.baseUrl}${mapping.generatedName}`;
   }
 
-  constructor({ dir, storePath }: { dir: string; storePath: string }) {
-    this.dir = dir;
-    this.storePath = storePath;
+  public async reset(): Promise<void> {
+    throw new Error('Reset not supported for run stores.');
+  }
+  constructor({ store, baseUrl }: { store: MappingStore; baseUrl: string }) {
+    this.store = store;
+    this.baseUrl = baseUrl;
   }
 }

@@ -1660,6 +1660,8 @@ __metadata:
     react-dom: ^18.2.0
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
+    static-file-mapper: 0.1.0
+    static-file-mapper-build: 0.1.0
     supertest: ^4.0.2
     ts-jest: ^28.0.2
     ts-node: ^10.9.1
@@ -2355,6 +2357,7 @@ __metadata:
     react-dom: ^18.2.0
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
+    static-file-mapper: 0.1.0
     ts-jest: ^28.0.2
     ts-node: ^10.9.1
     typescript: ^4.7.4
@@ -2390,6 +2393,7 @@ __metadata:
     react-dom: ^18.2.0
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
+    static-file-mapper: 0.1.0
     ts-jest: ^28.0.2
     ts-node: ^10.9.1
     typescript: ^4.7.4
@@ -19343,12 +19347,28 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"static-file-mapper@workspace:workspaces/utils/packages/static-file-mapper":
+"static-file-mapper-build@0.1.0, static-file-mapper-build@workspace:workspaces/utils/packages/static-file-mapper-build":
+  version: 0.0.0-use.local
+  resolution: "static-file-mapper-build@workspace:workspaces/utils/packages/static-file-mapper-build"
+  dependencies:
+    "@goldstack/utils-git": 0.1.37
+    "@goldstack/utils-sh": 0.4.34
+    "@types/aws-lambda": ^8.10.88
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
+    jest: ^28.1.0
+    rimraf: ^3.0.2
+    static-file-mapper: 0.1.0
+    ts-jest: ^28.0.2
+    typescript: ^4.7.4
+  languageName: unknown
+  linkType: soft
+
+"static-file-mapper@0.1.0, static-file-mapper@workspace:workspaces/utils/packages/static-file-mapper":
   version: 0.0.0-use.local
   resolution: "static-file-mapper@workspace:workspaces/utils/packages/static-file-mapper"
   dependencies:
     "@goldstack/utils-git": 0.1.37
-    "@goldstack/utils-sh": 0.4.34
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^28.1.8
     "@types/node": ^18.7.13

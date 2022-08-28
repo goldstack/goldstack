@@ -36,6 +36,12 @@
       "path": "../../../utils/packages/esbuild-css-modules-client-plugin"
     },
     {
+      "path": "../../../utils/packages/static-file-mapper"
+    },
+    {
+      "path": "../../../utils/packages/static-file-mapper-build"
+    },
+    {
       "path": "../../../templates-lib/packages/template-ssr-cli"
     },
     {

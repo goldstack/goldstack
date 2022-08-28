@@ -5,6 +5,8 @@ import { APIGatewayProxyResultV2 } from 'aws-lambda';
 import { changeExtension, readToType } from '@goldstack/utils-sh';
 import { dirname } from 'path';
 
+import { StaticFileMapper } from 'static-file-mapper';
+
 export interface ClientBuildOptionsArgs {
   /**
    * Whether CSS should be injected in the bundled JavaScript
@@ -20,6 +22,7 @@ export interface ServerBuildOptionsArgs {
 }
 
 export interface BuildConfiguration {
+  staticFileMapper: StaticFileMapper;
   createClientBuildOptions: (args: ClientBuildOptionsArgs) => BuildOptions;
   createServerBuildOptions: (args: ServerBuildOptionsArgs) => BuildOptions;
 }

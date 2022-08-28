@@ -4,14 +4,23 @@ import cssPlugin from 'esbuild-css-modules-client-plugin';
 
 import type { BuildOptions } from 'esbuild';
 
+import { StaticFileMapperBuild } from 'static-file-mapper-build';
+
 import type {
   BuildConfiguration,
   ClientBuildOptionsArgs,
   ServerBuildOptionsArgs,
 } from '@goldstack/template-ssr';
 
+export function getStaticFileMapper(): StaticFileMapperBuild {
+  return new StaticFileMapperBuild({
+    dir: './static/generated',
+    storePath: './src/state/staticFiles.json',
+  });
+}
 export const buildConfig = (): BuildConfiguration => {
   return {
+    staticFileMapper: getStaticFileMapper(),
     createClientBuildOptions: (args: ClientBuildOptionsArgs): BuildOptions => {
       return {
         plugins: [

@@ -33,7 +33,9 @@
     "esbuild": "^0.15.5",
     "esbuild-css-modules-client-plugin": "0.1.5",
     "jest-transform-stub": "^2.0.0",
-    "source-map-support": "^0.5.21"
+    "source-map-support": "^0.5.21",
+    "static-file-mapper": "0.1.0",
+    "static-file-mapper-build": "0.1.0"
   },
   "devDependencies": {
     "@goldstack/template-ssr-cli": "0.1.10",
