@@ -60,17 +60,14 @@ export const renderPage = async <PropType>({
       if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
         // if running in Lambda load bundle from local file system
         return compress(event, {
-          statusCode: 201,
+          statusCode: 200,
           headers: {
             'Content-Type': 'application/javascript',
-            // SourceMap: '?resource=sourcemap',
             SourceMap: await staticFileMapper.resolve({
               name: `${process.env.AWS_LAMBDA_FUNCTION_NAME}.map`,
             }),
           },
-          body: `window.initialProperties=${JSON.stringify(
-            properties
-          )};${readFileSync(clientBundleFileName, 'utf-8')}`,
+          body: `${readFileSync(clientBundleFileName, 'utf-8')}`,
         });
       } else {
         // if not running in Lambda build bundle dynamically
@@ -81,7 +78,6 @@ export const renderPage = async <PropType>({
             '@goldstack/template-ssr-server-compile-bundle'
           )).bundleResponse({
             entryPoint,
-            initialProperties: properties,
             buildConfig: buildConfig(),
           })
         );
@@ -90,14 +86,17 @@ export const renderPage = async <PropType>({
 
     if (event.queryStringParameters['resource'].indexOf('sourcemap') > -1) {
       if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
+        throw new Error(
+          'sourcemap resource not supported. Please load sourcemap from static files.'
+        );
         // if running in Lambda load sourcemap from local file system
-        return compress(event, {
-          statusCode: 201,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: readFileSync(clientBundleFileName + '.map', 'utf-8'),
-        });
+        // return compress(event, {
+        //   statusCode: 200,
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: readFileSync(clientBundleFileName + '.map', 'utf-8'),
+        // });
       } else {
         return compress(
           event,
@@ -127,14 +126,16 @@ export const renderPage = async <PropType>({
     injectIntoHead: `${styles ? `<style>${styles}</style>` : ''}`,
     injectIntoBody: `
         <div id="root">${page}</div>
+        <script>window.initialProperties=${JSON.stringify(properties)};</script>
         <script src="?resource=js"></script>
     `,
     staticFileMapper: staticFileMapper,
     event,
     properties,
   });
+
   return compress(event, {
-    statusCode: 201,
+    statusCode: 200,
     headers: {
       'Content-Type': 'text/html',
     },

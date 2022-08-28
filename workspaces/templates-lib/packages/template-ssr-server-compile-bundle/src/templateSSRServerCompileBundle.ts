@@ -67,14 +67,12 @@ export const compileBundle = async ({
   entryPoint,
   metaFile,
   sourceMap,
-  initialProperties,
   includeCss,
   buildConfig,
 }: {
   entryPoint: string;
   metaFile?: boolean;
   sourceMap?: boolean;
-  initialProperties?: any;
   includeCss: boolean;
   buildConfig: BuildConfiguration;
 }): Promise<CompileBundleResponse> => {
@@ -97,12 +95,6 @@ export const compileBundle = async ({
     result.bundle = removeSourceMap(output);
   }
 
-  if (initialProperties) {
-    result.bundle = `window.initialProperties = ${JSON.stringify(
-      initialProperties
-    )};${result.bundle}`;
-  }
-
   if (metaFile) {
     result = {
       ...result,
@@ -122,22 +114,19 @@ export const compileBundle = async ({
 
 export const bundleResponse = async ({
   entryPoint,
-  initialProperties,
   buildConfig,
 }: {
   entryPoint: string;
-  initialProperties?: any;
   buildConfig: BuildConfiguration;
 }): Promise<APIGatewayProxyResultV2> => {
   const res = await compileBundle({
     entryPoint,
-    initialProperties,
     includeCss: true,
     buildConfig,
   });
 
   return {
-    statusCode: 201,
+    statusCode: 200,
     headers: {
       'Content-Type': 'application/javascript',
       'Cache-Control': 'no-cache, no-store, must-revalidate',
@@ -167,6 +156,7 @@ const removeSourceMap = (output: string): string => {
 
   return withoutSourceMap;
 };
+
 export const sourceMapResponse = async ({
   entryPoint,
   buildConfig,
@@ -186,7 +176,7 @@ export const sourceMapResponse = async ({
   const sourceMapData = extractSourceMap(output);
 
   return {
-    statusCode: 201,
+    statusCode: 200,
     headers: {
       'Content-Type': 'application/json',
       'Cache-Control': 'no-cache, no-store, must-revalidate',
