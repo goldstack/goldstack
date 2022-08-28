@@ -1,4 +1,4 @@
-import { mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
+import { mkdir, read, rm, rmSafe, write } from '@goldstack/utils-sh';
 import { dirname } from 'path';
 import { StaticFileMapper } from 'static-file-mapper';
 export interface StaticFileMapping {
@@ -37,33 +37,6 @@ export class StaticFileMapperBuild implements StaticFileMapper {
     write(JSON.stringify(store, null, 2), this.storePath);
   }
 
-  public async register({
-    name,
-    generatedName,
-  }: {
-    name: string;
-    generatedName: string;
-  }): Promise<void> {
-    const store = this.readStore();
-
-    const hashedName = generatedName;
-
-    let found = false;
-    store.map((mapping) => {
-      if (mapping.name === name) {
-        mapping.generatedName = hashedName;
-        found = true;
-      }
-    });
-    if (!found) {
-      store.push({
-        name,
-        generatedName: hashedName,
-      });
-    }
-    this.writeStore(store);
-  }
-
   public async put({
     name,
     generatedName,
@@ -83,7 +56,27 @@ export class StaticFileMapperBuild implements StaticFileMapper {
 
     mkdir('-p', dirname(path));
     write(content, path);
-    await this.register({ name, generatedName: hashedName });
+
+    const store = this.readStore();
+
+    let found = false;
+    store.map((mapping) => {
+      if (mapping.name === name) {
+        // clear out replaced file locally
+        // should still continue to exist in S3
+        // bucket
+        rm('-f', `${this.dir}/${mapping.generatedName}`);
+        mapping.generatedName = hashedName;
+        found = true;
+      }
+    });
+    if (!found) {
+      store.push({
+        name,
+        generatedName: hashedName,
+      });
+    }
+    this.writeStore(store);
   }
 
   public async resolve({ name }: { name: string }): Promise<string> {

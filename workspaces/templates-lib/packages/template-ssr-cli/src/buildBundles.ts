@@ -29,9 +29,6 @@ export const buildBundles = async ({
   lambdaNamePrefix?: string;
   buildConfig: BuildConfiguration;
 }): Promise<void> => {
-  // delete all static files and reset all mappings
-  await buildConfig.staticFileMapper.reset();
-
   for await (const config of configs) {
     const destDir = getOutDirForLambda(config);
     mkdir('-p', destDir);

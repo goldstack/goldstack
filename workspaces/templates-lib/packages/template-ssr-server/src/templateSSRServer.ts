@@ -28,16 +28,18 @@ import { StaticFileMapper } from 'static-file-mapper';
 export const clientBundleFileName = 'client.bundle.js';
 export const clientCSSFileName = 'client.bundle.css';
 
-export interface RenderDocumentProps {
-  bundledJsPath: string;
-  styles?: string;
-  renderedHtml: string;
+export interface RenderDocumentProps<PropType> {
+  injectIntoHead: string;
+  injectIntoBody: string;
+  staticFileMapper: StaticFileMapper;
+  event: APIGatewayProxyEventV2;
+  properties: PropType;
 }
 
 export interface RenderPageProps<PropType> {
   entryPoint: string;
   event: APIGatewayProxyEventV2;
-  renderDocument: (props: RenderDocumentProps) => string;
+  renderDocument: (props: RenderDocumentProps<PropType>) => string;
   component: React.FunctionComponent<PropType>;
   staticFileMapper: StaticFileMapper;
   properties: PropType;
@@ -122,9 +124,14 @@ export const renderPage = async <PropType>({
   }
 
   const document = renderDocument({
-    bundledJsPath: '?resource=js',
-    styles,
-    renderedHtml: page,
+    injectIntoHead: `${styles ? `<style>${styles}</style>` : ''}`,
+    injectIntoBody: `
+        <div id="root">${page}</div>
+        <script src="?resource=js"></script>
+    `,
+    staticFileMapper: staticFileMapper,
+    event,
+    properties,
   });
   return compress(event, {
     statusCode: 201,

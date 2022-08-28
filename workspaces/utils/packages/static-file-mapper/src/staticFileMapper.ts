@@ -6,13 +6,6 @@ export interface StaticFileMapping {
 export type MappingStore = StaticFileMapping[];
 
 export interface StaticFileMapper {
-  register({
-    name,
-    generatedName,
-  }: {
-    name: string;
-    generatedName: string;
-  }): Promise<void>;
   put({
     name,
     generatedName,
@@ -36,16 +29,6 @@ export class StaticFileMapperRun implements StaticFileMapper {
 
   private writeStore(store: MappingStore): void {
     throw new Error('Cannot write store with Run file mapper');
-  }
-
-  public async register({
-    name,
-    generatedName,
-  }: {
-    name: string;
-    generatedName: string;
-  }): Promise<void> {
-    throw new Error('Cannot register mappings with Run store');
   }
 
   public async put({
