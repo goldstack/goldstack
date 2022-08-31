@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@goldstack/utils-cli": "0.2.16",
-    "@goldstack/utils-docs": "0.3.40",
-    "@goldstack/utils-sh": "0.4.34",
+    "@goldstack/utils-docs": "0.3.41",
+    "@goldstack/utils-sh": "0.4.35",
     "@types/yargs": "^17.0.10",
     "source-map-support": "^0.5.21",
     "yargs": "^17.5.1"
