@@ -3898,21 +3898,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@goldstack/utils-sh", [\
-        ["npm:0.4.35", {\
-          "packageLocation": "./.yarn/cache/@goldstack-utils-sh-npm-0.4.35-1901b1ba65-dd5d3952d5.zip/node_modules/@goldstack/utils-sh/",\
-          "packageDependencies": [\
-            ["@goldstack/utils-sh", "npm:0.4.35"],\
-            ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
-            ["archiver", "npm:5.3.1"],\
-            ["extract-zip", "npm:2.0.1"],\
-            ["fs-extra", "npm:10.0.0"],\
-            ["glob", "npm:7.1.6"],\
-            ["ncp", "npm:2.0.0"],\
-            ["rimraf", "npm:3.0.2"],\
-            ["which", "npm:2.0.2"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["workspace:workspaces/utils/packages/utils-sh", {\
           "packageLocation": "./workspaces/utils/packages/utils-sh/",\
           "packageDependencies": [\
@@ -22741,7 +22726,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["static-file-mapper-build", "workspace:workspaces/utils/packages/static-file-mapper-build"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
-            ["@goldstack/utils-sh", "npm:0.4.35"],\
+            ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
             ["@types/aws-lambda", "npm:8.10.88"],\
             ["@types/jest", "npm:28.1.8"],\
             ["@types/node", "npm:18.7.13"],\

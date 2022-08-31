@@ -31,7 +31,7 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "dependencies": {
-    "@goldstack/utils-sh": "0.4.35",
+    "@goldstack/utils-sh": "0.4.34",
     "static-file-mapper": "0.1.0"
   },
   "devDependencies": {

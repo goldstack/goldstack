@@ -12,12 +12,13 @@ import type {
   ServerBuildOptionsArgs,
 } from '@goldstack/template-ssr';
 
-export function getStaticFileMapper(): StaticFileMapperBuild {
+function getStaticFileMapper(): StaticFileMapperBuild {
   return new StaticFileMapperBuild({
     dir: './static/generated',
     storePath: './src/state/staticFiles.json',
   });
 }
+
 export const buildConfig = (): BuildConfiguration => {
   return {
     staticFileMapper: getStaticFileMapper(),

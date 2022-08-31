@@ -1,3 +1,3 @@
 # Static File Mapper 
 
-Helps with managing static files for frontend deployments.
+Helps with managing static files for frontend deployments during deployments.

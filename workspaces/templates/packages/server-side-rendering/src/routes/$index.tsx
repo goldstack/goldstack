@@ -56,7 +56,7 @@ export const handler: ProxyHandler = async (event, context) => {
     }),
     renderDocument,
     buildConfig: () => {
-      return require(excludeInBundle('./../esbuild')).buildConfig();
+      return require(excludeInBundle('./../build')).buildConfig();
     },
   });
 };
