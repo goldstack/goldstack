@@ -19352,7 +19352,7 @@ resolve@^1.20.0:
   resolution: "static-file-mapper-build@workspace:workspaces/utils/packages/static-file-mapper-build"
   dependencies:
     "@goldstack/utils-git": 0.1.37
-    "@goldstack/utils-sh": 0.4.34
+    "@goldstack/utils-sh": 0.4.35
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^28.1.8
     "@types/node": ^18.7.13
