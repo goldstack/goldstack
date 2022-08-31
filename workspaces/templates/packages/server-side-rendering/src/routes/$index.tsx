@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import styles from './$index.module.css';
 
-import staticFileMappingStore from './../state/staticFiles.json';
+import staticFileMapperStore from './../state/staticFiles.json';
 
 import {
   Handler,
@@ -17,7 +17,6 @@ import { renderPage, hydrate } from '@goldstack/template-ssr';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 
 import Panel from './../components/Panel';
-import { StaticFileMapperRun } from 'static-file-mapper';
 
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
@@ -50,10 +49,7 @@ export const handler: ProxyHandler = async (event, context) => {
     },
     entryPoint: __filename,
     event: event,
-    staticFileMapper: new StaticFileMapperRun({
-      store: staticFileMappingStore,
-      baseUrl: '_goldstack/static/generated/',
-    }),
+    staticFileMapperStore,
     renderDocument,
     buildConfig: () => {
       return require(excludeInBundle('./../build')).buildConfig();

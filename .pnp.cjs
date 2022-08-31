@@ -349,6 +349,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/utils/packages/esbuild-css-modules-server-plugin"\
       },\
       {\
+        "name": "esbuild-ignore-with-comments-plugin",\
+        "reference": "workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"\
+      },\
+      {\
         "name": "lambda-compression",\
         "reference": "workspace:workspaces/utils/packages/lambda-compression"\
       },\
@@ -509,6 +513,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["docs", ["workspace:workspaces/docs"]],\
       ["esbuild-css-modules-client-plugin", ["workspace:workspaces/utils/packages/esbuild-css-modules-client-plugin"]],\
       ["esbuild-css-modules-server-plugin", ["workspace:workspaces/utils/packages/esbuild-css-modules-server-plugin"]],\
+      ["esbuild-ignore-with-comments-plugin", ["workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"]],\
       ["lambda-compression", ["workspace:workspaces/utils/packages/lambda-compression"]],\
       ["lessr", ["workspace:workspaces/utils/packages/lessr"]],\
       ["lessr-react", ["workspace:workspaces/utils/packages/lessr-react"]],\
@@ -2634,7 +2639,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["static-file-mapper", "workspace:workspaces/utils/packages/static-file-mapper"],\
             ["static-file-mapper-build", "workspace:workspaces/utils/packages/static-file-mapper-build"],\
             ["supertest", "npm:4.0.2"],\
             ["ts-jest", "virtual:63f371268dd55028a92f24e2f7aacc86f78741192aef9599aab30cc7883d6ed1b41f2d9ee2f5548ff4edcd0bd02a6998f825c91730c5162727fff96d95679f5e#npm:28.0.2"],\
@@ -11791,6 +11795,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["esbuild-freebsd-arm64", "npm:0.15.5"]\
           ],\
           "linkType": "HARD"\
+        }]\
+      ]],\
+      ["esbuild-ignore-with-comments-plugin", [\
+        ["workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin", {\
+          "packageLocation": "./workspaces/utils/packages/esbuild-ignore-with-comments-plugin/",\
+          "packageDependencies": [\
+            ["esbuild-ignore-with-comments-plugin", "workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"],\
+            ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@types/jest", "npm:28.1.8"],\
+            ["@types/node", "npm:18.7.13"],\
+            ["esbuild", "npm:0.15.5"],\
+            ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["ts-jest", "virtual:63f371268dd55028a92f24e2f7aacc86f78741192aef9599aab30cc7883d6ed1b41f2d9ee2f5548ff4edcd0bd02a6998f825c91730c5162727fff96d95679f5e#npm:28.0.2"],\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
+          ],\
+          "linkType": "SOFT"\
         }]\
       ]],\
       ["esbuild-linux-32", [\

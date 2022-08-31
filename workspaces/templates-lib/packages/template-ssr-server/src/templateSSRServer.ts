@@ -11,6 +11,8 @@ import { renderToString } from 'react-dom/server';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { readFileSync } from 'fs';
 
+import { MappingStore, StaticFileMapperRun } from 'static-file-mapper';
+
 import type {
   BuildConfiguration,
   ServerBuildOptionsArgs,
@@ -41,7 +43,8 @@ export interface RenderPageProps<PropType> {
   event: APIGatewayProxyEventV2;
   renderDocument: (props: RenderDocumentProps<PropType>) => string;
   component: React.FunctionComponent<PropType>;
-  staticFileMapper: StaticFileMapper;
+  staticFileMapper?: StaticFileMapper;
+  staticFileMapperStore?: unknown;
   properties: PropType;
   buildConfig: () => BuildConfiguration;
 }
@@ -51,10 +54,22 @@ export const renderPage = async <PropType>({
   event,
   renderDocument,
   staticFileMapper,
+  staticFileMapperStore,
   component,
   properties,
   buildConfig,
 }: RenderPageProps<PropType>): Promise<APIGatewayProxyResultV2> => {
+  if (!staticFileMapper && !staticFileMapperStore) {
+    throw new Error(
+      '`staticFileMapper` or `staticFileMapper` store need to be defined for `renderPage`'
+    );
+  }
+  if (!staticFileMapper) {
+    staticFileMapperStore = new StaticFileMapperRun({
+      store: staticFileMapperStore as MappingStore,
+      baseUrl: '_goldstack/static/generated/',
+    });
+  }
   if (event.queryStringParameters && event.queryStringParameters['resource']) {
     if (event.queryStringParameters['resource'].indexOf('js') > -1) {
       if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
