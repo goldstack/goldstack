@@ -3429,7 +3429,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["static-file-mapper", "workspace:workspaces/utils/packages/static-file-mapper"],\
+            ["static-file-mapper-build", "workspace:workspaces/utils/packages/static-file-mapper-build"],\
             ["ts-jest", "virtual:63f371268dd55028a92f24e2f7aacc86f78741192aef9599aab30cc7883d6ed1b41f2d9ee2f5548ff4edcd0bd02a6998f825c91730c5162727fff96d95679f5e#npm:28.0.2"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
@@ -3898,6 +3898,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@goldstack/utils-sh", [\
+        ["npm:0.4.35", {\
+          "packageLocation": "./.yarn/cache/@goldstack-utils-sh-npm-0.4.35-1901b1ba65-dd5d3952d5.zip/node_modules/@goldstack/utils-sh/",\
+          "packageDependencies": [\
+            ["@goldstack/utils-sh", "npm:0.4.35"],\
+            ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
+            ["archiver", "npm:5.3.1"],\
+            ["extract-zip", "npm:2.0.1"],\
+            ["fs-extra", "npm:10.0.0"],\
+            ["glob", "npm:7.1.6"],\
+            ["ncp", "npm:2.0.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["which", "npm:2.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["workspace:workspaces/utils/packages/utils-sh", {\
           "packageLocation": "./workspaces/utils/packages/utils-sh/",\
           "packageDependencies": [\
@@ -22726,7 +22741,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["static-file-mapper-build", "workspace:workspaces/utils/packages/static-file-mapper-build"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
-            ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+            ["@goldstack/utils-sh", "npm:0.4.35"],\
             ["@types/aws-lambda", "npm:8.10.88"],\
             ["@types/jest", "npm:28.1.8"],\
             ["@types/node", "npm:18.7.13"],\

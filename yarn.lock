@@ -2357,7 +2357,7 @@ __metadata:
     react-dom: ^18.2.0
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
-    static-file-mapper: 0.1.0
+    static-file-mapper-build: 0.1.0
     ts-jest: ^28.0.2
     ts-node: ^10.9.1
     typescript: ^4.7.4
@@ -2887,6 +2887,22 @@ __metadata:
     which: ^2.0.2
   languageName: unknown
   linkType: soft
+
+"@goldstack/utils-sh@npm:0.4.35":
+  version: 0.4.35
+  resolution: "@goldstack/utils-sh@npm:0.4.35"
+  dependencies:
+    "@goldstack/utils-log": 0.2.17
+    archiver: ^5.3.1
+    extract-zip: ^2.0.1
+    fs-extra: ^10.0.0
+    glob: ^7.1.6
+    ncp: ^2.0.0
+    rimraf: ^3.0.2
+    which: ^2.0.2
+  checksum: dd5d3952d584257a708900783a6967690252e514926d8c22e7779620e4c6922a3eb3b36e979fe4404c5fb913c16752c12aca2646e77a79ceb39655985d7f622b
+  languageName: node
+  linkType: hard
 
 "@goldstack/utils-template-test@0.1.0, @goldstack/utils-template-test@workspace:workspaces/templates-management/packages/utils-template-test":
   version: 0.0.0-use.local
@@ -19352,7 +19368,7 @@ resolve@^1.20.0:
   resolution: "static-file-mapper-build@workspace:workspaces/utils/packages/static-file-mapper-build"
   dependencies:
     "@goldstack/utils-git": 0.1.37
-    "@goldstack/utils-sh": 0.4.34
+    "@goldstack/utils-sh": 0.4.35
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^28.1.8
     "@types/node": ^18.7.13

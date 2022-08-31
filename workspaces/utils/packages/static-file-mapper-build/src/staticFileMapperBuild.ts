@@ -10,7 +10,24 @@ import { createHash } from 'crypto';
 
 export type MappingStore = StaticFileMapping[];
 
-export class StaticFileMapperBuild implements StaticFileMapper {
+/**
+ * Allows defining static file mappings during build.
+ */
+export interface StaticFileMapperManager extends StaticFileMapper {
+  put({
+    name,
+    generatedName,
+    content,
+  }: {
+    name: string;
+    generatedName: string;
+    content: string;
+  }): Promise<void>;
+  reset(): Promise<void>;
+  resolve({ name }: { name: string }): Promise<string>;
+}
+
+export class StaticFileMapperBuild implements StaticFileMapperManager {
   private dir: string;
   private storePath: string | undefined;
   private store: MappingStore | undefined;
