@@ -29,8 +29,7 @@ export interface StaticFileMapperManager extends StaticFileMapper {
 
 export class StaticFileMapperBuild implements StaticFileMapperManager {
   private dir: string;
-  private storePath: string | undefined;
-  private store: MappingStore | undefined;
+  private storePath: string;
 
   private createContentHash(content: string): string {
     const hash = createHash('md5').update(content).digest('hex');
@@ -38,9 +37,6 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
   }
 
   private readStore(): MappingStore {
-    if (this.store) {
-      return this.store;
-    }
     if (this.storePath) {
       return JSON.parse(read(this.storePath));
     }
@@ -63,6 +59,7 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
     generatedName: string;
     content: string;
   }): Promise<void> {
+    console.log('store put', name);
     let hashedName = generatedName;
 
     if (hashedName.indexOf('[hash]') !== -1) {
@@ -71,6 +68,7 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
     }
     const path = `${this.dir}/${hashedName}`;
 
+    console.log('store path', path);
     mkdir('-p', dirname(path));
     write(content, path);
 
@@ -78,7 +76,7 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
 
     let found = false;
     store.map((mapping) => {
-      if (mapping.name === name) {
+      if (mapping.name === name && mapping.generatedName !== hashedName) {
         // clear out replaced file locally
         // should still continue to exist in S3
         // bucket
@@ -111,17 +109,8 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
     await rmSafe(this.dir);
   }
 
-  constructor({
-    dir,
-    storePath,
-    store,
-  }: {
-    dir: string;
-    storePath?: string;
-    store?: MappingStore;
-  }) {
+  constructor({ dir, storePath }: { dir: string; storePath: string }) {
     this.dir = dir;
     this.storePath = storePath;
-    this.store = store;
   }
 }
