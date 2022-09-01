@@ -3,22 +3,11 @@ import React, { useState } from 'react';
 
 import styles from './$index.module.css';
 
-import staticFileMapperStore from './../state/staticFiles.json';
+import { hydrate, SSRHandler } from '@goldstack/template-ssr';
 
-import {
-  Handler,
-  APIGatewayProxyEventV2,
-  APIGatewayProxyResultV2,
-} from 'aws-lambda';
-
-import renderDocument from './../_document';
-import { renderPage, hydrate } from '@goldstack/template-ssr';
-
-import buildConfig from './../build';
+import { renderPage } from './../render';
 
 import Panel from './../components/Panel';
-
-type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
 const Index = (props: { message: string }): JSX.Element => {
   const [clicked, setClicked] = useState(false);
@@ -40,7 +29,7 @@ const Index = (props: { message: string }): JSX.Element => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const handler: ProxyHandler = async (event, context) => {
+export const handler: SSRHandler = async (event, context) => {
   return renderPage({
     component: Index,
     properties: {
@@ -49,11 +38,6 @@ export const handler: ProxyHandler = async (event, context) => {
     },
     entryPoint: __filename,
     event: event,
-    staticFileMapperStore,
-    renderDocument,
-    buildConfig: () => {
-      return buildConfig();
-    },
   });
 };
 

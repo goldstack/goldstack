@@ -38,6 +38,17 @@ export interface RenderDocumentProps<PropType> {
   properties: PropType;
 }
 
+export interface PartialRenderPageProps<PropType> {
+  entryPoint: string;
+  event: APIGatewayProxyEventV2;
+  renderDocument?: (props: RenderDocumentProps<PropType>) => string;
+  component: React.FunctionComponent<PropType>;
+  staticFileMapper?: StaticFileMapper;
+  staticFileMapperStore?: unknown;
+  properties: PropType;
+  buildConfig?: () => BuildConfiguration;
+}
+
 export interface RenderPageProps<PropType> {
   entryPoint: string;
   event: APIGatewayProxyEventV2;
