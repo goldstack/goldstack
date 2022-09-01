@@ -15,7 +15,7 @@ const Index = (props: { message: string }): JSX.Element => {
     <>
       <div
         onClick={() => {
-          alert('hi there');
+          alert('hi new');
           setClicked(true);
           throw new Error('Havent seen this');
         }}

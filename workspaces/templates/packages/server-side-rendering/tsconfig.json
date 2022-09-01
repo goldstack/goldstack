@@ -30,13 +30,10 @@
       "path": "../../../templates-lib/packages/template-ssr"
     },
     {
-      "path": "../../../utils/packages/utils-esbuild"
-    },
-    {
       "path": "../../../utils/packages/esbuild-css-modules-client-plugin"
     },
     {
-      "path": "../../../utils/packages/static-file-mapper"
+      "path": "../../../utils/packages/esbuild-ignore-with-comments-plugin"
     },
     {
       "path": "../../../utils/packages/static-file-mapper-build"

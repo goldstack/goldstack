@@ -35,21 +35,20 @@ export const buildBundles = async ({
     const functionName = generateFunctionName(lambdaNamePrefix, config);
     const compileResult = await compileBundle({
       entryPoint: `${routesDir}/${config.relativeFilePath}`,
-      sourceMap: true,
       includeCss: false,
-      metaFile: true,
       buildConfig,
     });
     const clientJsBundleFileName = `${destDir}/${clientBundleFileName}`;
     write(compileResult.bundle, clientJsBundleFileName);
+    const sourceMapFileName = `${functionName}.map`;
     if (compileResult.sourceMap) {
-      const sourceMapFileName = `${functionName}.map`;
       buildConfig.staticFileMapper.put({
         name: sourceMapFileName,
         generatedName: `${functionName}.[hash].map.json`,
         content: compileResult.sourceMap,
       });
-      // write(compileResult.sourceMap || '', sourceMapFileName);
+    } else {
+      buildConfig.staticFileMapper.remove({ name: sourceMapFileName });
     }
     write(
       compileResult.metaFile || '',

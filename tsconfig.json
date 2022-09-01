@@ -278,6 +278,9 @@
       "path": "workspaces/utils/packages/esbuild-css-modules-server-plugin"
     },
     {
+      "path": "workspaces/utils/packages/esbuild-ignore-with-comments-plugin"
+    },
+    {
       "path": "workspaces/utils/packages/lambda-compression"
     },
     {

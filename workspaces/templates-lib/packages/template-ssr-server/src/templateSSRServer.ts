@@ -85,13 +85,21 @@ export const renderPage = async <PropType>({
     if (event.queryStringParameters['resource'].indexOf('js') > -1) {
       if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
         // if running in Lambda load bundle from local file system
+        let SourceMap = '';
+        if (
+          await staticFileMapper.has({
+            name: `${process.env.AWS_LAMBDA_FUNCTION_NAME}.map`,
+          })
+        ) {
+          SourceMap = await staticFileMapper.resolve({
+            name: `${process.env.AWS_LAMBDA_FUNCTION_NAME}.map`,
+          });
+        }
         return compress(event, {
           statusCode: 200,
           headers: {
             'Content-Type': 'application/javascript',
-            SourceMap: await staticFileMapper.resolve({
-              name: `${process.env.AWS_LAMBDA_FUNCTION_NAME}.map`,
-            }),
+            SourceMap,
           },
           body: `${readFileSync(clientBundleFileName, 'utf-8')}`,
         });
@@ -113,16 +121,8 @@ export const renderPage = async <PropType>({
     if (event.queryStringParameters['resource'].indexOf('sourcemap') > -1) {
       if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
         throw new Error(
-          'sourcemap resource not supported. Please load sourcemap from static files.'
+          'sourcemap resource not supported in Lambda. Please load sourcemap from static files.'
         );
-        // if running in Lambda load sourcemap from local file system
-        // return compress(event, {
-        //   statusCode: 200,
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        //   body: readFileSync(clientBundleFileName + '.map', 'utf-8'),
-        // });
       } else {
         return compress(
           event,

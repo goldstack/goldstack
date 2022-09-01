@@ -10,6 +10,7 @@ export type MappingStore = StaticFileMapping[];
  */
 export interface StaticFileMapper {
   resolve({ name }: { name: string }): Promise<string>;
+  has({ name }: { name: string }): Promise<boolean>;
 }
 
 export class StaticFileMapperRun implements StaticFileMapper {
@@ -18,6 +19,14 @@ export class StaticFileMapperRun implements StaticFileMapper {
 
   private readStore(): MappingStore {
     return this.store;
+  }
+
+  public async has({ name }: { name: string }): Promise<boolean> {
+    const store = this.readStore();
+
+    const mapping = store.find((mapping) => mapping.name === name);
+
+    return !!mapping;
   }
 
   public async resolve({ name }: { name: string }): Promise<string> {

@@ -49,6 +49,8 @@ const buildConfig = (): BuildConfiguration => {
           '@goldstack/template-ssr-server', // this is only required on the server side
         ],
         minify: true,
+        sourcemap: 'inline',
+        metafile: false,
         platform: 'browser',
         format: 'iife',
         treeShaking: true,

@@ -23,6 +23,7 @@ export interface StaticFileMapperManager extends StaticFileMapper {
     generatedName: string;
     content: string;
   }): Promise<void>;
+  remove({ name }: { name: string }): Promise<void>;
   reset(): Promise<void>;
   resolve({ name }: { name: string }): Promise<string>;
 }
@@ -59,7 +60,6 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
     generatedName: string;
     content: string;
   }): Promise<void> {
-    console.log('store put', name);
     let hashedName = generatedName;
 
     if (hashedName.indexOf('[hash]') !== -1) {
@@ -68,7 +68,6 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
     }
     const path = `${this.dir}/${hashedName}`;
 
-    console.log('store path', path);
     mkdir('-p', dirname(path));
     write(content, path);
 
@@ -76,12 +75,14 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
 
     let found = false;
     store.map((mapping) => {
-      if (mapping.name === name && mapping.generatedName !== hashedName) {
+      if (mapping.name === name) {
         // clear out replaced file locally
         // should still continue to exist in S3
         // bucket
-        rm('-f', `${this.dir}/${mapping.generatedName}`);
-        mapping.generatedName = hashedName;
+        if (mapping.generatedName !== hashedName) {
+          rm('-f', `${this.dir}/${mapping.generatedName}`);
+          mapping.generatedName = hashedName;
+        }
         found = true;
       }
     });
@@ -94,6 +95,21 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
     this.writeStore(store);
   }
 
+  public async remove({ name }: { name: string }): Promise<void> {
+    let store = this.readStore();
+    const element = store.find((el) => el.name === name);
+    if (element) {
+      // clear out removed file locally
+      // should still continue to exist in S3
+      // bucket
+      rm('-f', `${this.dir}/${element.generatedName}`);
+    }
+    store = store.filter((el) => {
+      return el.name !== name;
+    });
+    this.writeStore(store);
+  }
+
   public async resolve({ name }: { name: string }): Promise<string> {
     const store = this.readStore();
 
@@ -102,6 +118,14 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
       throw new Error(`Cannot find static file mapping for ${name}`);
     }
     return mapping.generatedName;
+  }
+
+  public async has({ name }: { name: string }): Promise<boolean> {
+    const store = this.readStore();
+
+    const mapping = store.find((mapping) => mapping.name === name);
+
+    return !!mapping;
   }
 
   public async reset(): Promise<void> {

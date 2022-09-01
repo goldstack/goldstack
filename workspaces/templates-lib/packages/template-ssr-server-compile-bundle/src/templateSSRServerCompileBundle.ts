@@ -66,21 +66,24 @@ const getOutput = (
 export const compileBundle = async ({
   entryPoint,
   metaFile,
-  sourceMap,
   includeCss,
   buildConfig,
 }: {
   entryPoint: string;
   metaFile?: boolean;
-  sourceMap?: boolean;
   includeCss: boolean;
   buildConfig: BuildConfiguration;
 }): Promise<CompileBundleResponse> => {
+  const clientBuildConfig = buildConfig.createClientBuildOptions({
+    includeCss,
+  });
+  if (clientBuildConfig.sourcemap && clientBuildConfig.sourcemap !== 'inline') {
+    throw new Error('Only `inline` is supported for the `sourcemap` parameter');
+  }
   const res = await build({
-    ...buildConfig.createClientBuildOptions({ includeCss }),
+    ...clientBuildConfig,
     entryPoints: [entryPoint],
     metafile: metaFile,
-    sourcemap: sourceMap ? 'inline' : undefined,
     ...getBuildConfig(entryPoint),
     write: false,
   });
@@ -89,7 +92,7 @@ export const compileBundle = async ({
   let result: CompileBundleResponse = {
     bundle: '',
   };
-  if (!sourceMap) {
+  if (!clientBuildConfig.sourcemap) {
     result.bundle = output;
   } else {
     result.bundle = removeSourceMap(output);
@@ -102,7 +105,7 @@ export const compileBundle = async ({
     };
   }
 
-  if (sourceMap) {
+  if (clientBuildConfig.sourcemap) {
     result = {
       ...result,
       sourceMap: extractSourceMap(output),
