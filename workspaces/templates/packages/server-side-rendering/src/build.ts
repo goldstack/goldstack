@@ -1,6 +1,11 @@
+/* esbuild-ignore ui */
+/* esbuild-ignore server */
+
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
 
 import cssPlugin from 'esbuild-css-modules-client-plugin';
+
+import ignorePlugin from 'esbuild-ignore-with-comments-plugin';
 
 import type { BuildOptions } from 'esbuild';
 
@@ -19,12 +24,13 @@ function getStaticFileMapper(): StaticFileMapperBuild {
   });
 }
 
-export const buildConfig = (): BuildConfiguration => {
+const buildConfig = (): BuildConfiguration => {
   return {
     staticFileMapper: getStaticFileMapper(),
     createClientBuildOptions: (args: ClientBuildOptionsArgs): BuildOptions => {
       return {
         plugins: [
+          ignorePlugin({ ignore: ['ui'] }),
           cssPlugin({
             excludeCSSInject: !args.includeCss,
             cssConfig: {
@@ -51,6 +57,7 @@ export const buildConfig = (): BuildConfiguration => {
     createServerBuildOptions: (args: ServerBuildOptionsArgs): BuildOptions => {
       return {
         plugins: [
+          ignorePlugin({ ignore: ['server'] }),
           cssPlugin({
             excludeCSSInject: true,
             onCSSGenerated: args.onCSSGenerated,
@@ -75,3 +82,5 @@ export const buildConfig = (): BuildConfiguration => {
     },
   };
 };
+
+export default buildConfig;

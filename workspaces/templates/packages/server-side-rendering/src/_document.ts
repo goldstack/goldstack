@@ -1,6 +1,11 @@
+/* esbuild-ignore ui */
+
 import type { RenderDocumentProps } from '@goldstack/template-ssr';
 
-export const renderDocument = (props: RenderDocumentProps<unknown>): string => {
+import fs from 'fs';
+
+const renderDocument = (props: RenderDocumentProps<unknown>): string => {
+  fs.existsSync('./dummy');
   const template = `
 <!DOCTYPE html>
 <html>
@@ -18,3 +23,5 @@ export const renderDocument = (props: RenderDocumentProps<unknown>): string => {
   `;
   return template;
 };
+
+export default renderDocument;

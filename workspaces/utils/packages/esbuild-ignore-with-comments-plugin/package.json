@@ -1,6 +1,6 @@
 {
   "name": "esbuild-ignore-with-comments-plugin",
-  "version": "0.1.5",
+  "version": "0.1.0",
   "description": "esbuild plugin for bundling CSS module files for client-side scripts",
   "keywords": [
     "node",

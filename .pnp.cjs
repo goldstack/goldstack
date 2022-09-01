@@ -2629,6 +2629,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["date-fns", "npm:2.28.0"],\
             ["esbuild", "npm:0.15.5"],\
             ["esbuild-css-modules-client-plugin", "workspace:workspaces/utils/packages/esbuild-css-modules-client-plugin"],\
+            ["esbuild-ignore-with-comments-plugin", "workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"],\
             ["find-free-port", "npm:2.0.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
             ["jest-environment-jsdom", "npm:28.1.3"],\

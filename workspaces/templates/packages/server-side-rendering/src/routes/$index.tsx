@@ -11,10 +11,10 @@ import {
   APIGatewayProxyResultV2,
 } from 'aws-lambda';
 
-import { renderDocument } from './../_document';
+import renderDocument from './../_document';
 import { renderPage, hydrate } from '@goldstack/template-ssr';
 
-import { excludeInBundle } from '@goldstack/utils-esbuild';
+import buildConfig from './../build';
 
 import Panel from './../components/Panel';
 
@@ -52,7 +52,7 @@ export const handler: ProxyHandler = async (event, context) => {
     staticFileMapperStore,
     renderDocument,
     buildConfig: () => {
-      return require(excludeInBundle('./../build')).buildConfig();
+      return buildConfig();
     },
   });
 };
