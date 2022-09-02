@@ -78,7 +78,7 @@ const buildConfig = (): BuildConfiguration => {
         define: {
           'process.env.NODE_ENV': '"production"',
         }, // see https://github.com/evanw/esbuild/issues/2377
-        sourcemap: false,
+        sourcemap: true,
         metafile: false,
       };
     },

@@ -27,7 +27,7 @@ export const buildBundles = async ({
 }: {
   routesDir: string;
   configs: LambdaConfig[];
-  lambdaNamePrefix?: string;
+  lambdaNamePrefix: string;
   buildConfig: BuildConfiguration;
   deploymentName: string;
 }): Promise<void> => {
@@ -45,11 +45,16 @@ export const buildBundles = async ({
     });
     const clientJsBundleFileName = `${destDir}/${clientBundleFileName}`;
     write(compileResult.bundle, clientJsBundleFileName);
-    const sourceMapFileName = `${functionName}.map`;
+
+    /**
+     * Generate sourcemap names without prefix to have them transferable between different deployments.
+     */
+    const functionNameWithoutPrefix = generateFunctionName(undefined, config);
+    const sourceMapFileName = `${functionNameWithoutPrefix}.map`;
     if (compileResult.sourceMap) {
       buildConfig.staticFileMapper.put({
         name: sourceMapFileName,
-        generatedName: `${functionName}.[hash].map.json`,
+        generatedName: `${functionNameWithoutPrefix}.[hash].map.json`,
         content: compileResult.sourceMap,
       });
     } else {

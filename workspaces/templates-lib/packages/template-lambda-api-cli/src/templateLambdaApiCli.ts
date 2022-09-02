@@ -82,7 +82,7 @@ export const run = async (args: string[]): Promise<void> => {
         buildOptions: defaultBuildOptions(),
         deploymentName: deployment.name,
         configs: lambdaRoutes,
-        lambdaNamePrefix: deployment.configuration.lambdaNamePrefix,
+        lambdaNamePrefix: deployment.configuration.lambdaNamePrefix || '',
       });
       return;
     }

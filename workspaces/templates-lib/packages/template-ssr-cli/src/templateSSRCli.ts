@@ -93,12 +93,13 @@ export const run = async (
         deploymentName: deployment.name,
         buildOptions: buildConfig.createServerBuildOptions,
         configs: lambdaRoutes,
-        lambdaNamePrefix,
+        lambdaNamePrefix: lambdaNamePrefix || '',
       });
       await buildBundles({
         routesDir: defaultRoutesPath,
         configs: lambdaRoutes,
         deploymentName: deployment.name,
+        lambdaNamePrefix: lambdaNamePrefix || '',
         buildConfig,
       });
       return;

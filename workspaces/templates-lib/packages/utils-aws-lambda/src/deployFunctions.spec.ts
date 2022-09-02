@@ -14,6 +14,7 @@ describe('Testing lambda build', () => {
     await buildFunctions({
       buildOptions: defaultBuildOptions(),
       deploymentName: 'local',
+      lambdaNamePrefix: 'local-test',
       routesDir: './testData/build-test',
       configs: [
         {
@@ -34,6 +35,7 @@ describe('Testing lambda build', () => {
     await buildFunctions({
       routesDir: './testData/build-test',
       buildOptions: defaultBuildOptions(),
+      lambdaNamePrefix: 'local-test',
       deploymentName: 'local',
       configs: [
         {

@@ -57,7 +57,7 @@ export const buildFunctions = async ({
   configs: LambdaConfig[];
   deploymentName: string;
   buildOptions: (args: ServerBuildOptionsArgs) => BuildOptions;
-  lambdaNamePrefix?: string;
+  lambdaNamePrefix: string;
 }): Promise<void> => {
   const buildConfig = readToType<BuildOptions>('./esbuild.config.json');
 
