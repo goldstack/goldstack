@@ -1,7 +1,5 @@
 import { build } from 'esbuild';
 import type { BuildOptions } from 'esbuild';
-import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
-import cssPlugin from 'esbuild-css-modules-client-plugin';
 import { LambdaConfig } from './types/LambdaConfig';
 import { generateFunctionName } from './generate/generateFunctionName';
 import {
@@ -11,6 +9,28 @@ import {
   rmSafe,
   write,
 } from '@goldstack/utils-sh';
+
+export interface ClientBuildOptionsArgs {
+  /**
+   * Whether CSS should be injected in the bundled JavaScript
+   */
+  includeCss: boolean;
+  /**
+   * The Goldstack deployment the build is performed for.
+   */
+  deploymentName: string;
+}
+
+export interface ServerBuildOptionsArgs {
+  /**
+   * Called when CSS is generate for a React component
+   */
+  onCSSGenerated: (css: string) => void;
+  /**
+   * The Goldstack deployment the build is performed for.
+   */
+  deploymentName: string;
+}
 
 export const getOutDirForLambda = (config: LambdaConfig): string => {
   if (config.path === '$default') {
@@ -29,14 +49,14 @@ export const getOutFileForLambda = (config: LambdaConfig): string => {
 export const buildFunctions = async ({
   routesDir,
   configs,
+  deploymentName,
   buildOptions,
   lambdaNamePrefix,
 }: {
   routesDir: string;
   configs: LambdaConfig[];
-  buildOptions: (args: {
-    onCSSGenerated: (css: string) => void;
-  }) => BuildOptions;
+  deploymentName: string;
+  buildOptions: (args: ServerBuildOptionsArgs) => BuildOptions;
   lambdaNamePrefix?: string;
 }): Promise<void> => {
   const buildConfig = readToType<BuildOptions>('./esbuild.config.json');
@@ -57,19 +77,18 @@ export const buildFunctions = async ({
     };
     const generatedCss: string[] = [];
     const res = await build({
-      ...buildOptions({ onCSSGenerated }),
+      ...buildOptions({ onCSSGenerated, deploymentName }),
       entryPoints: [`${routesDir}/${config.relativeFilePath}`],
       outfile: getOutFileForLambda(config),
       ...buildConfig,
       ...localBuildConfig,
     });
-    if (!res.metafile) {
-      throw new Error(`Metafile for ${functionName} not defined.`);
+    if (res.metafile) {
+      write(
+        JSON.stringify(res.metafile),
+        `./distLambda/zips/${functionName}.meta.json`
+      );
     }
-    write(
-      JSON.stringify(res.metafile),
-      `./distLambda/zips/${functionName}.meta.json`
-    );
     // provide CSS for initial load
     write(
       generatedCss.join('\n'),

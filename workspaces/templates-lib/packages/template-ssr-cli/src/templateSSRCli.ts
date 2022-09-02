@@ -86,10 +86,11 @@ export const run = async (
     }
 
     if (command === 'build') {
-      const lambdaNamePrefix = packageConfig.getDeployment(opArgs[0])
-        .configuration.lambdaNamePrefix;
+      const deployment = packageConfig.getDeployment(opArgs[0]);
+      const lambdaNamePrefix = deployment.configuration.lambdaNamePrefix;
       await buildFunctions({
         routesDir: defaultRoutesPath,
+        deploymentName: deployment.name,
         buildOptions: buildConfig.createServerBuildOptions,
         configs: lambdaRoutes,
         lambdaNamePrefix,
@@ -97,7 +98,7 @@ export const run = async (
       await buildBundles({
         routesDir: defaultRoutesPath,
         configs: lambdaRoutes,
-        lambdaNamePrefix,
+        deploymentName: deployment.name,
         buildConfig,
       });
       return;

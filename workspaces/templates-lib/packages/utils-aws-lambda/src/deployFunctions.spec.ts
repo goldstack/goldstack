@@ -13,6 +13,7 @@ describe('Testing lambda build', () => {
     expect(fs.existsSync(fileToBuild)).toEqual(true);
     await buildFunctions({
       buildOptions: defaultBuildOptions(),
+      deploymentName: 'local',
       routesDir: './testData/build-test',
       configs: [
         {
@@ -33,6 +34,7 @@ describe('Testing lambda build', () => {
     await buildFunctions({
       routesDir: './testData/build-test',
       buildOptions: defaultBuildOptions(),
+      deploymentName: 'local',
       configs: [
         {
           path: '/customBuild',

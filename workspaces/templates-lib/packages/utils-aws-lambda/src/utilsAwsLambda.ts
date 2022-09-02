@@ -28,6 +28,11 @@ export {
   getOutFileForLambda,
 } from './buildFunctions';
 
+export type {
+  ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
+} from './buildFunctions';
+
 export {
   generateLambdaConfig,
   validateDeployment,

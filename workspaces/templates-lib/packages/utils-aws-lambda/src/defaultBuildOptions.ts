@@ -1,13 +1,12 @@
 import type { BuildOptions } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
 import cssPlugin from 'esbuild-css-modules-client-plugin';
+import { ServerBuildOptionsArgs } from './buildFunctions';
 
-export function defaultBuildOptions(): (args: {
-  onCSSGenerated: (css: string) => void;
-}) => BuildOptions {
-  return function (args: {
-    onCSSGenerated: (css: string) => void;
-  }): BuildOptions {
+export function defaultBuildOptions(): (
+  args: ServerBuildOptionsArgs
+) => BuildOptions {
+  return function (args: ServerBuildOptionsArgs): BuildOptions {
     return {
       plugins: [
         cssPlugin({

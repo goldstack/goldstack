@@ -30,6 +30,9 @@
       "path": "../../../templates-lib/packages/template-ssr"
     },
     {
+      "path": "../../../utils/packages/utils-esbuild"
+    },
+    {
       "path": "../../../utils/packages/esbuild-css-modules-client-plugin"
     },
     {

@@ -7,19 +7,15 @@ import { dirname } from 'path';
 
 import { StaticFileMapperManager } from 'static-file-mapper-build';
 
-export interface ClientBuildOptionsArgs {
-  /**
-   * Whether CSS should be injected in the bundled JavaScript
-   */
-  includeCss: boolean;
-}
+import type {
+  ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
+} from '@goldstack/utils-aws-lambda';
 
-export interface ServerBuildOptionsArgs {
-  /**
-   * Called when CSS is generate for a React component
-   */
-  onCSSGenerated: (css: string) => void;
-}
+export type {
+  ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
+} from '@goldstack/utils-aws-lambda';
 
 export interface BuildConfiguration {
   staticFileMapper: StaticFileMapperManager;
@@ -66,17 +62,15 @@ const getOutput = (
 export const compileBundle = async ({
   entryPoint,
   metaFile,
-  includeCss,
+  buildOptions,
   buildConfig,
 }: {
   entryPoint: string;
   metaFile?: boolean;
-  includeCss: boolean;
+  buildOptions: ClientBuildOptionsArgs;
   buildConfig: BuildConfiguration;
 }): Promise<CompileBundleResponse> => {
-  const clientBuildConfig = buildConfig.createClientBuildOptions({
-    includeCss,
-  });
+  const clientBuildConfig = buildConfig.createClientBuildOptions(buildOptions);
   if (clientBuildConfig.sourcemap && clientBuildConfig.sourcemap !== 'inline') {
     throw new Error('Only `inline` is supported for the `sourcemap` parameter');
   }
@@ -124,7 +118,10 @@ export const bundleResponse = async ({
 }): Promise<APIGatewayProxyResultV2> => {
   const res = await compileBundle({
     entryPoint,
-    includeCss: true,
+    buildOptions: {
+      deploymentName: 'local',
+      includeCss: true,
+    },
     buildConfig,
   });
 
@@ -168,7 +165,10 @@ export const sourceMapResponse = async ({
   buildConfig: BuildConfiguration;
 }): Promise<APIGatewayProxyResultV2> => {
   const res = await build({
-    ...buildConfig.createClientBuildOptions({ includeCss: false }),
+    ...buildConfig.createClientBuildOptions({
+      includeCss: false,
+      deploymentName: 'local',
+    }),
     entryPoints: [entryPoint],
     sourcemap: 'inline',
     ...getBuildConfig(entryPoint),

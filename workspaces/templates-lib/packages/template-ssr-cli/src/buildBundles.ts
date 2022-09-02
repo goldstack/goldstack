@@ -23,11 +23,13 @@ export const buildBundles = async ({
   configs,
   lambdaNamePrefix,
   buildConfig,
+  deploymentName,
 }: {
   routesDir: string;
   configs: LambdaConfig[];
   lambdaNamePrefix?: string;
   buildConfig: BuildConfiguration;
+  deploymentName: string;
 }): Promise<void> => {
   for await (const config of configs) {
     const destDir = getOutDirForLambda(config);
@@ -35,7 +37,10 @@ export const buildBundles = async ({
     const functionName = generateFunctionName(lambdaNamePrefix, config);
     const compileResult = await compileBundle({
       entryPoint: `${routesDir}/${config.relativeFilePath}`,
-      includeCss: false,
+      buildOptions: {
+        includeCss: false,
+        deploymentName,
+      },
       buildConfig,
     });
     const clientJsBundleFileName = `${destDir}/${clientBundleFileName}`;
@@ -50,9 +55,12 @@ export const buildBundles = async ({
     } else {
       buildConfig.staticFileMapper.remove({ name: sourceMapFileName });
     }
-    write(
-      compileResult.metaFile || '',
-      `./distLambda/zips/${functionName}.client.meta.json`
-    );
+
+    if (compileResult.metaFile) {
+      write(
+        compileResult.metaFile,
+        `./distLambda/zips/${functionName}.client.meta.json`
+      );
+    }
   }
 };
