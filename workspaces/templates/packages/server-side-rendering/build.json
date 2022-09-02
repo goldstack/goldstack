@@ -46,6 +46,15 @@
       ]
     },
     {
+      "file": "src/state/staticFiles.json",
+      "fields": [
+        {
+          "path": "$",
+          "value": []
+        }
+      ]
+    },
+    {
       "file": "tsconfig.json",
       "fields": [
         {
