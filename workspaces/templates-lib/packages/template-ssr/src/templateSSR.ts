@@ -1,16 +1,28 @@
 import React from 'react';
 export * from './types/SSRPackage';
 
-import type { APIGatewayProxyResultV2 } from 'aws-lambda';
+import type {
+  APIGatewayProxyEventV2,
+  APIGatewayProxyResultV2,
+  Handler,
+} from 'aws-lambda';
 
 import ReactDOM from 'react-dom/client';
 import type { RenderPageProps } from '@goldstack/template-ssr-server';
 import type { LambdaApiDeploymentConfiguration } from '@goldstack/utils-aws-lambda';
 import type { SSRDeploymentConfiguration } from './types/SSRPackage';
 
+export type SSRHandler = Handler<
+  APIGatewayProxyEventV2,
+  APIGatewayProxyResultV2
+>;
+
 export type {
   RenderDocumentProps,
-  ESBuildConfiguration,
+  PartialRenderPageProps,
+  BuildConfiguration,
+  ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
 } from '@goldstack/template-ssr-server';
 
 export const renderPage = async <PropType>(

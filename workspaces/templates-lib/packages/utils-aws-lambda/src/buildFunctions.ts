@@ -1,7 +1,5 @@
 import { build } from 'esbuild';
 import type { BuildOptions } from 'esbuild';
-import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
-import cssServerPlugin from 'esbuild-css-modules-server-plugin';
 import { LambdaConfig } from './types/LambdaConfig';
 import { generateFunctionName } from './generate/generateFunctionName';
 import {
@@ -11,6 +9,28 @@ import {
   rmSafe,
   write,
 } from '@goldstack/utils-sh';
+
+export interface ClientBuildOptionsArgs {
+  /**
+   * Whether CSS should be injected in the bundled JavaScript
+   */
+  includeCss: boolean;
+  /**
+   * The Goldstack deployment the build is performed for.
+   */
+  deploymentName: string;
+}
+
+export interface ServerBuildOptionsArgs {
+  /**
+   * Called when CSS is generate for a React component
+   */
+  onCSSGenerated: (css: string) => void;
+  /**
+   * The Goldstack deployment the build is performed for.
+   */
+  deploymentName: string;
+}
 
 export const getOutDirForLambda = (config: LambdaConfig): string => {
   if (config.path === '$default') {
@@ -29,13 +49,17 @@ export const getOutFileForLambda = (config: LambdaConfig): string => {
 export const buildFunctions = async ({
   routesDir,
   configs,
+  deploymentName,
+  buildOptions,
   lambdaNamePrefix,
 }: {
   routesDir: string;
   configs: LambdaConfig[];
-  lambdaNamePrefix?: string;
+  deploymentName: string;
+  buildOptions: (args: ServerBuildOptionsArgs) => BuildOptions;
+  lambdaNamePrefix: string;
 }): Promise<void> => {
-  const esbuildConfig = readToType<BuildOptions>('./esbuild.config.json');
+  const buildConfig = readToType<BuildOptions>('./esbuild.config.json');
 
   await rmSafe('./distLambda');
   mkdir('-p', './distLambda/zips');
@@ -46,44 +70,25 @@ export const buildFunctions = async ({
       '.esbuild.config.json'
     );
     const functionName = generateFunctionName(lambdaNamePrefix, config);
-    const localEsbuildConfig = readToType<BuildOptions>(esbuildLocalPath);
+    const localBuildConfig = readToType<BuildOptions>(esbuildLocalPath);
 
+    const onCSSGenerated = (css: string): void => {
+      generatedCss.push(css);
+    };
     const generatedCss: string[] = [];
     const res = await build({
-      plugins: [
-        cssServerPlugin({
-          onCSSGenerated: (css) => {
-            generatedCss.push(css);
-          },
-        }),
-        pnpPlugin(),
-      ],
-      bundle: true,
+      ...buildOptions({ onCSSGenerated, deploymentName }),
       entryPoints: [`${routesDir}/${config.relativeFilePath}`],
-      external: [
-        'aws-sdk', // included in Lambda runtime environment
-      ],
-      minify: true,
-      platform: 'node',
-      format: 'cjs',
-      target: 'node16.0',
-      treeShaking: true,
-      define: {
-        'process.env.NODE_ENV': '"production"',
-      }, // see https://github.com/evanw/esbuild/issues/2377
-      sourcemap: true,
       outfile: getOutFileForLambda(config),
-      metafile: true,
-      ...esbuildConfig,
-      ...localEsbuildConfig,
+      ...buildConfig,
+      ...localBuildConfig,
     });
-    if (!res.metafile) {
-      throw new Error(`Metafile for ${functionName} not defined.`);
+    if (res.metafile) {
+      write(
+        JSON.stringify(res.metafile),
+        `./distLambda/zips/${functionName}.meta.json`
+      );
     }
-    write(
-      JSON.stringify(res.metafile),
-      `./distLambda/zips/${functionName}.meta.json`
-    );
     // provide CSS for initial load
     write(
       generatedCss.join('\n'),

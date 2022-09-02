@@ -32,6 +32,7 @@ export const deployToS3 = async (params: DeployToS3Params): Promise<void> => {
       localPath: 'static/',
       region: params.deployment.awsRegion,
       userName: params.deployment.awsUser,
+      skipDelete: true, // we want to keep static files in place
     }),
   ]);
 };

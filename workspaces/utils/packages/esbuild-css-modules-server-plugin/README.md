@@ -1,5 +1,9 @@
 [![npm version](https://badge.fury.io/js/esbuild-css-modules-server-plugin.svg)](https://badge.fury.io/js/esbuild-css-modules-server-plugin)
 
+**Deprecation Notice**
+
+This library is deprecated. Use [`esbuild-css-modules-client-plugin`](https://www.npmjs.com/package/esbuild-css-modules-client-plugin) instead using the option `excludeCSSInject: true`.
+
 # esbuild CSS Modules Plugin (Server)
 
 This [esbuild Plugin](https://esbuild.github.io/plugins/) bundles CSS module files for usage in server-side script for server-side rendering.

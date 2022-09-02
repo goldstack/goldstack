@@ -7,6 +7,7 @@ export type { CompileCssConfiguration } from 'node-css-require';
 
 export interface CSSClientPluginOptions {
   excludeCSSInject?: boolean;
+  onCSSGenerated?: (css: string) => void;
   cssConfig?: CompileCssConfiguration;
 }
 
@@ -33,13 +34,16 @@ const cssPlugin = (opts?: CSSClientPluginOptions): Plugin => {
         },
         async (args: OnLoadArgs): Promise<OnLoadResult> => {
           const text = await fs.promises.readFile(args.path, 'utf8');
-          const res = compileCss(text, args.path, opts?.cssConfig);
+          const res = await compileCss(text, args.path, opts?.cssConfig);
 
           let js: string;
           if (opts?.excludeCSSInject) {
             js = res.js;
           } else {
             js = `${await generateCSSInject(args.path, res.css)}\n${res.js}`;
+          }
+          if (opts?.onCSSGenerated) {
+            opts.onCSSGenerated(res.css);
           }
           return {
             contents: js,

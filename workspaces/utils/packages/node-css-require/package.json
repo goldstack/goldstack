@@ -1,6 +1,6 @@
 {
   "name": "node-css-require",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Load CSS modules when running Node.js CLI and server applications",
   "keywords": [
     "node",
@@ -36,6 +36,7 @@
     "@swc-node/register": "^1.5.1",
     "pirates": "^4.0.5",
     "postcss": "^8.4.14",
+    "postcss-modules": "^5.0.0",
     "postcss-modules-sync": "^1.0.0"
   },
   "devDependencies": {

@@ -5,18 +5,32 @@ import { APIGatewayProxyResultV2 } from 'aws-lambda';
 import { changeExtension, readToType } from '@goldstack/utils-sh';
 import { dirname } from 'path';
 
-export interface ESBuildConfiguration {
-  createBuildOptions: (includeCss: boolean) => BuildOptions;
+import { StaticFileMapperManager } from 'static-file-mapper-build';
+
+import type {
+  ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
+} from '@goldstack/utils-aws-lambda';
+
+export type {
+  ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
+} from '@goldstack/utils-aws-lambda';
+
+export interface BuildConfiguration {
+  staticFileMapper: StaticFileMapperManager;
+  createClientBuildOptions: (args: ClientBuildOptionsArgs) => BuildOptions;
+  createServerBuildOptions: (args: ServerBuildOptionsArgs) => BuildOptions;
 }
 
-const getEsBuildConfig = (entryPoint: string): BuildOptions => {
-  const esbuildConfig = readToType<BuildOptions>('./esbuild.config.json');
+const getBuildConfig = (entryPoint: string): BuildOptions => {
+  const buildConfig = readToType<BuildOptions>('./esbuild.config.json');
   const esbuildLocalPath = changeExtension(
     dirname(entryPoint),
     '.esbuild.config.json'
   );
-  const localEsbuildConfig = readToType<BuildOptions>(esbuildLocalPath);
-  return { ...esbuildConfig, ...localEsbuildConfig };
+  const localBuildConfig = readToType<BuildOptions>(esbuildLocalPath);
+  return { ...buildConfig, ...localBuildConfig };
 };
 
 export interface CompileBundleResponse {
@@ -48,24 +62,23 @@ const getOutput = (
 export const compileBundle = async ({
   entryPoint,
   metaFile,
-  sourceMap,
-  initialProperties,
-  includeCss,
-  esbuildConfig,
+  buildOptions,
+  buildConfig,
 }: {
   entryPoint: string;
   metaFile?: boolean;
-  sourceMap?: boolean;
-  initialProperties?: any;
-  includeCss: boolean;
-  esbuildConfig: ESBuildConfiguration;
+  buildOptions: ClientBuildOptionsArgs;
+  buildConfig: BuildConfiguration;
 }): Promise<CompileBundleResponse> => {
+  const clientBuildConfig = buildConfig.createClientBuildOptions(buildOptions);
+  if (clientBuildConfig.sourcemap && clientBuildConfig.sourcemap !== 'inline') {
+    throw new Error('Only `inline` is supported for the `sourcemap` parameter');
+  }
   const res = await build({
-    ...esbuildConfig.createBuildOptions(includeCss),
+    ...clientBuildConfig,
     entryPoints: [entryPoint],
     metafile: metaFile,
-    sourcemap: sourceMap ? 'inline' : undefined,
-    ...getEsBuildConfig(entryPoint),
+    ...getBuildConfig(entryPoint),
     write: false,
   });
 
@@ -73,16 +86,10 @@ export const compileBundle = async ({
   let result: CompileBundleResponse = {
     bundle: '',
   };
-  if (!sourceMap) {
+  if (!clientBuildConfig.sourcemap) {
     result.bundle = output;
   } else {
     result.bundle = removeSourceMap(output);
-  }
-
-  if (initialProperties) {
-    result.bundle = `window.initialProperties = ${JSON.stringify(
-      initialProperties
-    )};${result.bundle}`;
   }
 
   if (metaFile) {
@@ -92,7 +99,7 @@ export const compileBundle = async ({
     };
   }
 
-  if (sourceMap) {
+  if (clientBuildConfig.sourcemap) {
     result = {
       ...result,
       sourceMap: extractSourceMap(output),
@@ -104,22 +111,22 @@ export const compileBundle = async ({
 
 export const bundleResponse = async ({
   entryPoint,
-  initialProperties,
-  esbuildConfig,
+  buildConfig,
 }: {
   entryPoint: string;
-  initialProperties?: any;
-  esbuildConfig: ESBuildConfiguration;
+  buildConfig: BuildConfiguration;
 }): Promise<APIGatewayProxyResultV2> => {
   const res = await compileBundle({
     entryPoint,
-    initialProperties,
-    includeCss: true,
-    esbuildConfig,
+    buildOptions: {
+      deploymentName: 'local',
+      includeCss: true,
+    },
+    buildConfig,
   });
 
   return {
-    statusCode: 201,
+    statusCode: 200,
     headers: {
       'Content-Type': 'application/javascript',
       'Cache-Control': 'no-cache, no-store, must-revalidate',
@@ -149,18 +156,22 @@ const removeSourceMap = (output: string): string => {
 
   return withoutSourceMap;
 };
+
 export const sourceMapResponse = async ({
   entryPoint,
-  esbuildConfig,
+  buildConfig,
 }: {
   entryPoint: string;
-  esbuildConfig: ESBuildConfiguration;
+  buildConfig: BuildConfiguration;
 }): Promise<APIGatewayProxyResultV2> => {
   const res = await build({
-    ...esbuildConfig.createBuildOptions(false),
+    ...buildConfig.createClientBuildOptions({
+      includeCss: false,
+      deploymentName: 'local',
+    }),
     entryPoints: [entryPoint],
     sourcemap: 'inline',
-    ...getEsBuildConfig(entryPoint),
+    ...getBuildConfig(entryPoint),
     write: false,
   });
 
@@ -168,7 +179,7 @@ export const sourceMapResponse = async ({
   const sourceMapData = extractSourceMap(output);
 
   return {
-    statusCode: 201,
+    statusCode: 200,
     headers: {
       'Content-Type': 'application/json',
       'Cache-Control': 'no-cache, no-store, must-revalidate',

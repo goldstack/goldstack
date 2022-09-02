@@ -20,10 +20,17 @@ export { deployFunction } from './deployFunction';
 export type { DeployFunctionsParams } from './deployFunctions';
 export { deployFunctions } from './deployFunctions';
 
+export { defaultBuildOptions } from './defaultBuildOptions';
+
 export {
   buildFunctions,
   getOutDirForLambda,
   getOutFileForLambda,
+} from './buildFunctions';
+
+export type {
+  ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
 } from './buildFunctions';
 
 export {

@@ -43,6 +43,9 @@
       "path": "../../../utils/packages/lambda-compression"
     },
     {
+      "path": "../../../utils/packages/static-file-mapper"
+    },
+    {
       "path": "../../../docs/packages/utils-docs-cli"
     },
     {

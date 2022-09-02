@@ -1,7 +1,15 @@
 import { clientBundleFileName } from '@goldstack/template-ssr-server';
 import { compileBundle } from '@goldstack/template-ssr-server-compile-bundle';
-import type { ESBuildConfiguration } from '@goldstack/template-ssr-server-compile-bundle';
-export type { ESBuildConfiguration };
+import type {
+  BuildConfiguration,
+  ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
+} from '@goldstack/template-ssr-server-compile-bundle';
+export type {
+  BuildConfiguration,
+  ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
+};
 
 import {
   generateFunctionName,
@@ -14,12 +22,14 @@ export const buildBundles = async ({
   routesDir,
   configs,
   lambdaNamePrefix,
-  esbuildConfig,
+  buildConfig,
+  deploymentName,
 }: {
   routesDir: string;
   configs: LambdaConfig[];
-  lambdaNamePrefix?: string;
-  esbuildConfig: ESBuildConfiguration;
+  lambdaNamePrefix: string;
+  buildConfig: BuildConfiguration;
+  deploymentName: string;
 }): Promise<void> => {
   for await (const config of configs) {
     const destDir = getOutDirForLambda(config);
@@ -27,18 +37,35 @@ export const buildBundles = async ({
     const functionName = generateFunctionName(lambdaNamePrefix, config);
     const compileResult = await compileBundle({
       entryPoint: `${routesDir}/${config.relativeFilePath}`,
-      sourceMap: true,
-      includeCss: false,
-      metaFile: true,
-      esbuildConfig,
+      buildOptions: {
+        includeCss: false,
+        deploymentName,
+      },
+      buildConfig,
     });
     const clientJsBundleFileName = `${destDir}/${clientBundleFileName}`;
     write(compileResult.bundle, clientJsBundleFileName);
-    const sourceMapFileName = `${clientJsBundleFileName}.map`;
-    write(compileResult.sourceMap || '', sourceMapFileName);
-    write(
-      compileResult.metaFile || '',
-      `./distLambda/zips/${functionName}.client.meta.json`
-    );
+
+    /**
+     * Generate sourcemap names without prefix to have them transferable between different deployments.
+     */
+    const functionNameWithoutPrefix = generateFunctionName(undefined, config);
+    const sourceMapFileName = `${functionNameWithoutPrefix}.map`;
+    if (compileResult.sourceMap) {
+      buildConfig.staticFileMapper.put({
+        name: sourceMapFileName,
+        generatedName: `${functionNameWithoutPrefix}.[hash].map.json`,
+        content: compileResult.sourceMap,
+      });
+    } else {
+      buildConfig.staticFileMapper.remove({ name: sourceMapFileName });
+    }
+
+    if (compileResult.metaFile) {
+      write(
+        compileResult.metaFile,
+        `./distLambda/zips/${functionName}.client.meta.json`
+      );
+    }
   }
 };

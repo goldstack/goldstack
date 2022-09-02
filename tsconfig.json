@@ -278,10 +278,25 @@
       "path": "workspaces/utils/packages/esbuild-css-modules-server-plugin"
     },
     {
+      "path": "workspaces/utils/packages/esbuild-ignore-with-comments-plugin"
+    },
+    {
       "path": "workspaces/utils/packages/lambda-compression"
     },
     {
+      "path": "workspaces/utils/packages/lessr"
+    },
+    {
+      "path": "workspaces/utils/packages/lessr-react"
+    },
+    {
       "path": "workspaces/utils/packages/node-css-require"
+    },
+    {
+      "path": "workspaces/utils/packages/static-file-mapper"
+    },
+    {
+      "path": "workspaces/utils/packages/static-file-mapper-build"
     },
     {
       "path": "workspaces/utils/packages/utils-cli"

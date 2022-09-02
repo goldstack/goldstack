@@ -8,6 +8,7 @@ interface S3UploadParams {
   localPath: string;
   bucket: string;
   bucketPath: string;
+  skipDelete?: boolean;
 }
 
 export const upload = async (params: S3UploadParams): Promise<void> => {
@@ -26,13 +27,15 @@ export const upload = async (params: S3UploadParams): Promise<void> => {
     workDir: source,
     credentials: user,
     region: params.region,
-    options: { silent: false },
+    options: { silent: true },
   });
-  await awsCli({
-    command: `s3 sync . ${dest} --delete`,
-    workDir: source,
-    credentials: user,
-    region: params.region,
-    options: { silent: false },
-  });
+  if (!params.skipDelete) {
+    await awsCli({
+      command: `s3 sync . ${dest} --delete`,
+      workDir: source,
+      credentials: user,
+      region: params.region,
+      options: { silent: true },
+    });
+  }
 };
