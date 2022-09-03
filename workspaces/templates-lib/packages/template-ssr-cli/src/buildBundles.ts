@@ -43,23 +43,34 @@ export const buildBundles = async ({
       },
       buildConfig,
     });
-    const clientJsBundleFileName = `${destDir}/${clientBundleFileName}`;
-    write(compileResult.bundle, clientJsBundleFileName);
-
     /**
-     * Generate sourcemap names without prefix to have them transferable between different deployments.
+     * Generate static file names without prefix to have them transferable between different deployments.
      */
     const functionNameWithoutPrefix = generateFunctionName(undefined, config);
-    const sourceMapFileName = `${functionNameWithoutPrefix}.map`;
+
+    const sourceMapFileName = `${functionName}.map`;
     if (compileResult.sourceMap) {
-      buildConfig.staticFileMapper.put({
+      await buildConfig.staticFileMapper.put({
         name: sourceMapFileName,
         generatedName: `${functionNameWithoutPrefix}.[hash].map.json`,
         content: compileResult.sourceMap,
       });
     } else {
-      buildConfig.staticFileMapper.remove({ name: sourceMapFileName });
+      await buildConfig.staticFileMapper.remove({ name: sourceMapFileName });
     }
+    let sourceMapComment = '';
+    if (compileResult.sourceMap) {
+      const sourceMapPath = await buildConfig.staticFileMapper.resolve({
+        name: sourceMapFileName,
+      });
+      sourceMapComment = `\n//# sourceMappingURL=/_goldstack/static/generated/${sourceMapPath}`;
+    }
+
+    await buildConfig.staticFileMapper.put({
+      name: `${functionName}-bundle.js`,
+      generatedName: `${functionNameWithoutPrefix}-bundle.[hash].js`,
+      content: compileResult.bundle + sourceMapComment,
+    });
 
     if (compileResult.metaFile) {
       write(

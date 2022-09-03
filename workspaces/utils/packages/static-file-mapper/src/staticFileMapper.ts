@@ -1,5 +1,5 @@
 export interface StaticFileMapping {
-  name: string;
+  names: string[];
   generatedName: string;
 }
 
@@ -24,7 +24,9 @@ export class StaticFileMapperRun implements StaticFileMapper {
   public async has({ name }: { name: string }): Promise<boolean> {
     const store = this.readStore();
 
-    const mapping = store.find((mapping) => mapping.name === name);
+    const mapping = store.find((mapping) =>
+      mapping.names.find((el) => el === name)
+    );
 
     return !!mapping;
   }
@@ -32,7 +34,9 @@ export class StaticFileMapperRun implements StaticFileMapper {
   public async resolve({ name }: { name: string }): Promise<string> {
     const store = this.readStore();
 
-    const mapping = store.find((mapping) => mapping.name === name);
+    const mapping = store.find((mapping) =>
+      mapping.names.find((el) => el === name)
+    );
     if (!mapping) {
       throw new Error(`Cannot find static file mapping for ${name}`);
     }
