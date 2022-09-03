@@ -284,12 +284,6 @@
       "path": "workspaces/utils/packages/lambda-compression"
     },
     {
-      "path": "workspaces/utils/packages/lessr"
-    },
-    {
-      "path": "workspaces/utils/packages/lessr-react"
-    },
-    {
       "path": "workspaces/utils/packages/node-css-require"
     },
     {

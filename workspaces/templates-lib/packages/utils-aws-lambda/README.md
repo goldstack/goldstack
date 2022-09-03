@@ -20,7 +20,6 @@ function async deployFunction(
 ): Promise<any> {}
 ```
 
-
 ## readLambdaConfig
 
 This function will generate a configuration for AWS HTTP API Gateway based on `.ts` files in a folder. For more information, see [Goldstack Documentation - Defining Routes](https://docs.goldstack.party/docs/templates/serverless-api#defining-routes-1)

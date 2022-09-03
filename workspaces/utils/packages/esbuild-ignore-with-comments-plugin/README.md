@@ -1,6 +1,5 @@
 [![npm version](https://badge.fury.io/js/esbuild-ignore-with-comments-plugin.svg)](https://badge.fury.io/js/esbuild-ignore-with-comments-plugin)
 
-
 # ESBuild Ignore with Comments Plugin
 
 Allows inserting comments into TypeScript source files. ESBuild will ignore these files during build.
@@ -22,15 +21,13 @@ import ignorePlugin from 'esbuild-ignore-with-comments-plugin';
 import { build } from 'esbuild';
 
 await build({
-  plugins: [
-    ignorePlugin(),
-  ],
+  plugins: [ignorePlugin()],
 });
 ```
 
 If you are bundling the same files multiple times (such as for server-side rendering) you can group files into sets and only ignore specific sets of files.
 
-For instance, assume you have the following files: 
+For instance, assume you have the following files:
 
 `server.ts`
 
@@ -52,9 +49,7 @@ Then running the following will ignore `server.ts` during the build:
 
 ```typescript
 await build({
-  plugins: [
-    ignorePlugin(["ui"]),
-  ],
+  plugins: [ignorePlugin(['ui'])],
 });
 ```
 
@@ -66,4 +61,3 @@ Also note that if you want to add a file to multiple groups, you need to include
 /* esbuild-ignore server */
 /* esbuild-ignore ui */
 ```
-
