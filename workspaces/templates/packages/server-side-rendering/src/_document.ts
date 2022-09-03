@@ -2,10 +2,7 @@
 
 import type { RenderDocumentProps } from '@goldstack/template-ssr';
 
-import fs from 'fs';
-
 const renderDocument = (props: RenderDocumentProps<unknown>): string => {
-  fs.existsSync('./dummy');
   const template = `
 <!DOCTYPE html>
 <html>

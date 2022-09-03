@@ -1,6 +1,14 @@
 [
   {
-    "name": "-__index.map",
-    "generatedName": "-__index.c2e0f228747498ea06cc87c4c0cabace.map.json"
+    "names": [
+      "goldstack-test-ssr--__index-bundle.js"
+    ],
+    "generatedName": "-__index-bundle.9acec23e0d55cdf20e144ddfd0661a30.js"
+  },
+  {
+    "names": [
+      "goldstack-test-ssr--__index.map"
+    ],
+    "generatedName": "-__index.073ff6fc38d6fe4b3ea8fda7ed712083.map.json"
   }
 ]

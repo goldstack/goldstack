@@ -1,10 +1,6 @@
 import { mkdir, read, rm, rmSafe, write } from '@goldstack/utils-sh';
 import { dirname } from 'path';
-import { StaticFileMapper } from 'static-file-mapper';
-export interface StaticFileMapping {
-  name: string;
-  generatedName: string;
-}
+import { StaticFileMapper, StaticFileMapping } from 'static-file-mapper';
 
 import { createHash } from 'crypto';
 
@@ -73,9 +69,9 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
 
     const store = this.readStore();
 
-    let found = false;
+    let mappingExists = false;
     store.map((mapping) => {
-      if (mapping.name === name) {
+      if (mapping.names.find((el) => el === name)) {
         // clear out replaced file locally
         // should still continue to exist in S3
         // bucket
@@ -83,37 +79,53 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
           rm('-f', `${this.dir}/${mapping.generatedName}`);
           mapping.generatedName = hashedName;
         }
-        found = true;
+        mappingExists = true;
       }
     });
-    if (!found) {
-      store.push({
-        name,
-        generatedName: hashedName,
-      });
+
+    if (!mappingExists) {
+      // check if there is an entry for the generated name
+      const existingElement = store.find(
+        (el) => el.generatedName === hashedName
+      );
+      if (existingElement) {
+        existingElement.names.push(name);
+      } else {
+        store.push({
+          names: [name],
+          generatedName: hashedName,
+        });
+      }
     }
+
     this.writeStore(store);
   }
 
   public async remove({ name }: { name: string }): Promise<void> {
     let store = this.readStore();
-    const element = store.find((el) => el.name === name);
+    const element = store.find((el) => el.names.find((el) => el === name));
     if (element) {
-      // clear out removed file locally
-      // should still continue to exist in S3
-      // bucket
-      rm('-f', `${this.dir}/${element.generatedName}`);
+      element.names = element.names.filter((el) => el !== name);
+
+      if (element.names.length === 0) {
+        store = store.filter((el) => {
+          return el.generatedName !== element.generatedName;
+        });
+        // clear out removed file locally
+        // should still continue to exist in S3
+        // bucket
+        rm('-f', `${this.dir}/${element.generatedName}`);
+      }
     }
-    store = store.filter((el) => {
-      return el.name !== name;
-    });
     this.writeStore(store);
   }
 
   public async resolve({ name }: { name: string }): Promise<string> {
     const store = this.readStore();
 
-    const mapping = store.find((mapping) => mapping.name === name);
+    const mapping = store.find((mapping) =>
+      mapping.names.find((el) => el === name)
+    );
     if (!mapping) {
       throw new Error(`Cannot find static file mapping for ${name}`);
     }
@@ -123,7 +135,9 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
   public async has({ name }: { name: string }): Promise<boolean> {
     const store = this.readStore();
 
-    const mapping = store.find((mapping) => mapping.name === name);
+    const mapping = store.find((mapping) =>
+      mapping.names.find((el) => el === name)
+    );
 
     return !!mapping;
   }

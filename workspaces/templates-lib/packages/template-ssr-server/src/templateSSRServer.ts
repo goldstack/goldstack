@@ -148,12 +148,23 @@ export const renderPage = async <PropType>({
     styles = undefined;
   }
 
+  const functionName = process.env.AWS_LAMBDA_FUNCTION_NAME;
+
+  let clientBundlePath: string;
+  if (!functionName) {
+    clientBundlePath = '?resource=js';
+  } else {
+    clientBundlePath = await staticFileMapper.resolve({
+      name: `${functionName}-bundle.js`,
+    });
+  }
+
   const document = renderDocument({
     injectIntoHead: `${styles ? `<style>${styles}</style>` : ''}`,
     injectIntoBody: `
         <div id="root">${page}</div>
         <script>window.initialProperties=${JSON.stringify(properties)};</script>
-        <script src="?resource=js"></script>
+        <script src="${clientBundlePath}"></script>
     `,
     staticFileMapper: staticFileMapper,
     event,
