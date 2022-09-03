@@ -1,1 +1,0 @@
-# LESSR: Lambda Exquisite Server-Side Rendering

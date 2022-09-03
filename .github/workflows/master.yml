@@ -163,12 +163,12 @@ jobs:
 
           # Perform publish
           yarn version apply --all
-          cd workspaces/templates-lib
+          cd workspaces/utils
           yarn publish
           git status
           git add .
           cd ../..
-          cd workspaces/utils
+          cd workspaces/templates-lib
           yarn publish
           git status
           git add .

@@ -24,13 +24,13 @@
   },
   "dependencies": {
     "@aws-sdk/util-dynamodb": "^3.87.0",
-    "@goldstack/template-dynamodb": "0.1.22",
+    "@goldstack/template-dynamodb": "0.2.0",
     "aws-sdk": "2.1055.0",
     "dynamodb-toolbox": "^0.4.3",
     "umzug": "^3.1.1"
   },
   "devDependencies": {
-    "@goldstack/template-dynamodb-cli": "0.4.13",
+    "@goldstack/template-dynamodb-cli": "0.5.0",
     "@types/jest": "^28.1.8",
     "@types/node": "^18.7.13",
     "jest": "^28.1.0",

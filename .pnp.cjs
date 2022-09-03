@@ -357,14 +357,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/utils/packages/lambda-compression"\
       },\
       {\
-        "name": "lessr",\
-        "reference": "workspace:workspaces/utils/packages/lessr"\
-      },\
-      {\
-        "name": "lessr-react",\
-        "reference": "workspace:workspaces/utils/packages/lessr-react"\
-      },\
-      {\
         "name": "node-css-require",\
         "reference": "workspace:workspaces/utils/packages/node-css-require"\
       },\
@@ -515,8 +507,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["esbuild-css-modules-server-plugin", ["workspace:workspaces/utils/packages/esbuild-css-modules-server-plugin"]],\
       ["esbuild-ignore-with-comments-plugin", ["workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"]],\
       ["lambda-compression", ["workspace:workspaces/utils/packages/lambda-compression"]],\
-      ["lessr", ["workspace:workspaces/utils/packages/lessr"]],\
-      ["lessr-react", ["workspace:workspaces/utils/packages/lessr-react"]],\
       ["node-css-require", ["workspace:workspaces/utils/packages/node-css-require"]],\
       ["root", ["workspace:."]],\
       ["static-file-mapper", ["workspace:workspaces/utils/packages/static-file-mapper"]],\
@@ -16933,45 +16923,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tslib", "npm:2.4.0"]\
           ],\
           "linkType": "HARD"\
-        }]\
-      ]],\
-      ["lessr", [\
-        ["workspace:workspaces/utils/packages/lessr", {\
-          "packageLocation": "./workspaces/utils/packages/lessr/",\
-          "packageDependencies": [\
-            ["lessr", "workspace:workspaces/utils/packages/lessr"],\
-            ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
-            ["@types/aws-lambda", "npm:8.10.88"],\
-            ["@types/jest", "npm:28.1.8"],\
-            ["@types/node", "npm:18.7.13"],\
-            ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
-            ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
-            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
-          ],\
-          "linkType": "SOFT"\
-        }]\
-      ]],\
-      ["lessr-react", [\
-        ["workspace:workspaces/utils/packages/lessr-react", {\
-          "packageLocation": "./workspaces/utils/packages/lessr-react/",\
-          "packageDependencies": [\
-            ["lessr-react", "workspace:workspaces/utils/packages/lessr-react"],\
-            ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
-            ["@types/aws-lambda", "npm:8.10.88"],\
-            ["@types/jest", "npm:28.1.8"],\
-            ["@types/node", "npm:18.7.13"],\
-            ["@types/react", "npm:18.0.15"],\
-            ["@types/react-dom", "npm:18.0.6"],\
-            ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
-            ["lessr", "workspace:workspaces/utils/packages/lessr"],\
-            ["react", "npm:18.2.0"],\
-            ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
-            ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
-            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
-          ],\
-          "linkType": "SOFT"\
         }]\
       ]],\
       ["leven", [\
