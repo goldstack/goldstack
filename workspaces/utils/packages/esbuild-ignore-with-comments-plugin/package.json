@@ -7,7 +7,7 @@
     "javascript",
     "esbuild"
   ],
-  "homepage": "",
+  "homepage": "https://github.com/goldstack/goldstack/tree/master/workspaces/utils/packages/esbuild-ignore-with-comments-plugin",
   "bugs": {
     "url": "https://github.com/goldstack/goldstack/issues"
   },
