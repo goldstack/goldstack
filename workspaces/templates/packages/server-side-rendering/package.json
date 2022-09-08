@@ -38,7 +38,7 @@
     "static-file-mapper-build": "0.3.2"
   },
   "devDependencies": {
-    "@goldstack/template-ssr-cli": "0.3.2",
+    "@goldstack/template-ssr-cli": "0.3.3",
     "@goldstack/utils-aws-http-api-local": "0.3.2",
     "@jest-mock/express": "^1.4.5",
     "@jest/transform": "^28.1.3",

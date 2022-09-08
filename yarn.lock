@@ -1627,7 +1627,7 @@ __metadata:
   resolution: "@goldstack/server-side-rendering@workspace:workspaces/templates/packages/server-side-rendering"
   dependencies:
     "@goldstack/template-ssr": 0.3.2
-    "@goldstack/template-ssr-cli": 0.3.2
+    "@goldstack/template-ssr-cli": 0.3.3
     "@goldstack/utils-aws-http-api-local": 0.3.2
     "@goldstack/utils-esbuild": 0.5.1
     "@jest-mock/express": ^1.4.5
@@ -2291,7 +2291,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr-cli@0.3.2, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
+"@goldstack/template-ssr-cli@0.3.3, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli"
   dependencies:
