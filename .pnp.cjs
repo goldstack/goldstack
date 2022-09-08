@@ -2413,7 +2413,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/project-build", "workspace:workspaces/templates-management/packages/project-build"],\
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+            ["@goldstack/module-template-utils", "workspace:workspaces/templates/packages/module-template-utils"],\
             ["@goldstack/template-build", "workspace:workspaces/templates-management/packages/template-build"],\
+            ["@goldstack/template-metadata", "workspace:workspaces/templates/packages/template-metadata"],\
             ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],\
             ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
             ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\

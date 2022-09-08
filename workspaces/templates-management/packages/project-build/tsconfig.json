@@ -3,6 +3,9 @@
   "include": [
     "./src/**/*"
   ],
+  "exclude": [
+    "./goldstackLocal/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
