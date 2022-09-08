@@ -33,9 +33,6 @@
       "path": "../../../utils/packages/utils-sh"
     },
     {
-      "path": "../template-build"
-    },
-    {
       "path": "../utils-template-test"
     }
   ]
