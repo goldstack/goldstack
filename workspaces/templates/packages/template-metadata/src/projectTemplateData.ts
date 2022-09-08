@@ -28,7 +28,11 @@ export { getNextJsTemplateData };
 export { getExpressTemplateData };
 export { getNextjsBootstrapTemplateData };
 export { getGoGinTemplateData };
-export { getAllBuildSets, getBuildSet } from './deploySets/deploySets';
+export {
+  getAllBuildSets,
+  getBuildSet,
+  createServerSideRenderingBuildSetConfig,
+} from './deploySets/deploySets';
 
 export const allTemplates = (): ProjectTemplateProps[] => {
   const templates = [

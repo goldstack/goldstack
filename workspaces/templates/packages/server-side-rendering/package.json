@@ -17,7 +17,7 @@
     "deploy-ts": "yarn build-lambda-ts \"$@\" && yarn template-ts deploy \"$@\"",
     "infra": "yarn template infra \"$@\"",
     "start": "PORT=5054 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node scripts/start.ts",
-    "template": "yarn node dist/src/template.js",
+    "template": "yarn template-ts",
     "template-ts": "ts-node --project tsconfig.local.json src/template.ts",
     "test": "concurrently \"yarn test-ci-server --watch\" \"yarn test-ci-ui --watch\"",
     "test-ci": "yarn test-ci-server && yarn test-ci-ui",

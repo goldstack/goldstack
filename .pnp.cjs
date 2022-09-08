@@ -141,6 +141,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates/packages/template-metadata"\
       },\
       {\
+        "name": "@goldstack/template-test",\
+        "reference": "workspace:workspaces/templates/packages/template-test"\
+      },\
+      {\
         "name": "@goldstack/infra",\
         "reference": "workspace:workspaces/templates-lib/packages/infra"\
       },\
@@ -472,6 +476,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/template-ssr-server", ["workspace:workspaces/templates-lib/packages/template-ssr-server"]],\
       ["@goldstack/template-ssr-server-compile-bundle", ["workspace:workspaces/templates-lib/packages/template-ssr-server-compile-bundle"]],\
       ["@goldstack/template-static-website-aws", ["workspace:workspaces/templates-lib/packages/template-static-website-aws"]],\
+      ["@goldstack/template-test", ["workspace:workspaces/templates/packages/template-test"]],\
       ["@goldstack/toc-generator", ["workspace:workspaces/docs/packages/toc-generator"]],\
       ["@goldstack/utils-aws-cli", ["workspace:workspaces/templates-lib/packages/utils-aws-cli"]],\
       ["@goldstack/utils-aws-http-api-local", ["workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"]],\
@@ -2413,7 +2418,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/project-build", "workspace:workspaces/templates-management/packages/project-build"],\
             ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
-            ["@goldstack/template-build", "workspace:workspaces/templates-management/packages/template-build"],\
             ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],\
             ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
             ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
@@ -3462,6 +3466,31 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"],\
             ["yargs", "npm:17.5.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@goldstack/template-test", [\
+        ["workspace:workspaces/templates/packages/template-test", {\
+          "packageLocation": "./workspaces/templates/packages/template-test/",\
+          "packageDependencies": [\
+            ["@goldstack/template-test", "workspace:workspaces/templates/packages/template-test"],\
+            ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+            ["@goldstack/module-template-utils", "workspace:workspaces/templates/packages/module-template-utils"],\
+            ["@goldstack/project-build", "workspace:workspaces/templates-management/packages/project-build"],\
+            ["@goldstack/template-build-set", "workspace:workspaces/templates-management/packages/template-build-set"],\
+            ["@goldstack/template-metadata", "workspace:workspaces/templates/packages/template-metadata"],\
+            ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],\
+            ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
+            ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],\
+            ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+            ["@goldstack/utils-template-test", "workspace:workspaces/templates-management/packages/utils-template-test"],\
+            ["@types/jest", "npm:28.1.8"],\
+            ["@types/node", "npm:18.7.13"],\
+            ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
           ],\
           "linkType": "SOFT"\
         }]\

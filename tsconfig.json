@@ -122,6 +122,9 @@
       "path": "workspaces/templates/packages/template-metadata"
     },
     {
+      "path": "workspaces/templates/packages/template-test"
+    },
+    {
       "path": "workspaces/templates-lib/packages/infra"
     },
     {

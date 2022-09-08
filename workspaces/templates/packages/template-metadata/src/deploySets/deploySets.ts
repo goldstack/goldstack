@@ -11,6 +11,8 @@ import { createNextjsBuildSetConfig } from './nextjs';
 import { createDynamoDBBuildSetConfig } from './dynamodb';
 import { createServerSideRenderingBuildSetConfig } from './serverSideRendering';
 
+export { createServerSideRenderingBuildSetConfig } from './serverSideRendering';
+
 export const getAllBuildSets = async (): Promise<DeploySetConfig[]> => {
   return [
     await createBackendNodejsExpressBuildSetConfig(),

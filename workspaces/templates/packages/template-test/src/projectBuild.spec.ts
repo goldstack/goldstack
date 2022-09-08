@@ -6,16 +6,20 @@ import {
 } from '@goldstack/utils-template-test';
 import { S3TemplateRepository } from '@goldstack/template-repository';
 
-import { buildProject } from './projectBuild';
-import { rmSafe, mkdir, read } from '@goldstack/utils-sh';
+import { buildProject } from '@goldstack/project-build';
+import { rmSafe, mkdir, read, write } from '@goldstack/utils-sh';
 import { ProjectConfiguration } from '@goldstack/utils-project';
+
+import { getModuleTemplatesNames } from '@goldstack/module-template-utils';
 
 import { getAwsConfigPath } from '@goldstack/utils-config';
 import { readConfig } from '@goldstack/infra-aws';
 
+import { createServerSideRenderingBuildSetConfig } from '@goldstack/template-metadata';
+
 import assert from 'assert';
 
-jest.setTimeout(60000);
+jest.setTimeout(600000);
 
 describe('Template Building', () => {
   const goldstackTestsDir = './goldstackLocal/tests/build/';
@@ -30,49 +34,21 @@ describe('Template Building', () => {
     expect(config).toBeUndefined();
   });
 
+  it('Should be able to build all templates', async () => {
+    const templateNames = getModuleTemplatesNames();
+
+    for (const templateName of templateNames) {
+      await buildTemplate({
+        templateName,
+        repo,
+        goldstackTestsDir,
+      });
+    }
+  });
+
   it('Should build root template', async () => {
     await buildTemplate({
       templateName: 'yarn-pnp-monorepo',
-      repo,
-      goldstackTestsDir,
-    });
-  });
-
-  it('Should be able to build static website', async () => {
-    await buildTemplate({
-      templateName: 'static-website-aws',
-      repo,
-      goldstackTestsDir,
-    });
-  });
-
-  it('Should be able to build docker-image-aws', async () => {
-    await buildTemplate({
-      templateName: 'docker-image-aws',
-      repo,
-      goldstackTestsDir,
-    });
-  });
-
-  it('Should be able to build s3', async () => {
-    await buildTemplate({
-      templateName: 's3',
-      repo,
-      goldstackTestsDir,
-    });
-  });
-
-  it('Should be able to build lambda go gin template', async () => {
-    await buildTemplate({
-      templateName: 'lambda-go-gin',
-      repo,
-      goldstackTestsDir,
-    });
-  });
-
-  it('Should be able to build lambda email-send template', async () => {
-    await buildTemplate({
-      templateName: 'email-send',
       repo,
       goldstackTestsDir,
     });
@@ -301,5 +277,69 @@ describe('Template Building', () => {
       read(emailSendPackageDir + 'src/state/deployments.json')
     );
     expect(emailSendDeploymentState).toEqual([]);
+  });
+
+  it('Should be able to build a project for server-side-rendering', async () => {
+    const config: ProjectConfiguration = {
+      projectName: 'project-server-side-rendering',
+      rootTemplateReference: {
+        templateName: 'yarn-pnp-monorepo',
+      },
+      packages: [
+        {
+          packageName: 'server-side-rendering-1',
+          templateReference: {
+            templateName: 'server-side-rendering',
+          },
+        },
+      ],
+    };
+
+    assert(repo);
+    const projectDir = goldstackTestsDir + `projects/${config.projectName}/`;
+    await rmSafe(projectDir);
+    mkdir('-p', projectDir);
+
+    await buildProject({
+      destinationDirectory: projectDir,
+      config,
+      s3: repo,
+    });
+
+    // check SSR
+    const ssrPackageDir =
+      projectDir + 'packages/' + config.packages[0].packageName + '/';
+    assertFilesExist([
+      ssrPackageDir + 'infra/aws/.gitignore',
+      ssrPackageDir + 'infra/aws/main.tf',
+      ssrPackageDir + '.gitignore',
+    ]);
+
+    // ensure config values are overwritten
+    const ssrGoldstackConfig = JSON.parse(
+      read(ssrPackageDir + 'goldstack.json')
+    );
+    expect(Object.entries(ssrGoldstackConfig.configuration).length).toEqual(0);
+
+    const ssrDeploymentState = JSON.parse(
+      read(ssrPackageDir + 'src/state/deployments.json')
+    );
+    expect(ssrDeploymentState).toEqual([]);
+
+    const ssrStaticFiles = JSON.parse(
+      read(ssrPackageDir + 'src/state/staticFiles.json')
+    );
+    expect(ssrStaticFiles).toEqual([]);
+
+    const ssrBuildSetConfig = await createServerSideRenderingBuildSetConfig();
+
+    const packageConfig =
+      ssrBuildSetConfig.projects[0].packageConfigurations[0];
+
+    ssrGoldstackConfig.deployments = packageConfig.deployments;
+    write(
+      JSON.stringify(ssrGoldstackConfig, null, 2),
+      ssrPackageDir + 'goldstack.json'
+    );
   });
 });

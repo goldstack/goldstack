@@ -88,19 +88,21 @@ export const run = async (
     if (command === 'build') {
       const deployment = packageConfig.getDeployment(opArgs[0]);
       const lambdaNamePrefix = deployment.configuration.lambdaNamePrefix;
-      await buildFunctions({
-        routesDir: defaultRoutesPath,
-        deploymentName: deployment.name,
-        buildOptions: buildConfig.createServerBuildOptions,
-        configs: lambdaRoutes,
-        lambdaNamePrefix: lambdaNamePrefix || '',
-      });
+      // bundles need to be built first since static mappings are updated
+      // during bundle built and they are injected into function bundle
       await buildBundles({
         routesDir: defaultRoutesPath,
         configs: lambdaRoutes,
         deploymentName: deployment.name,
         lambdaNamePrefix: lambdaNamePrefix || '',
         buildConfig,
+      });
+      await buildFunctions({
+        routesDir: defaultRoutesPath,
+        deploymentName: deployment.name,
+        buildOptions: buildConfig.createServerBuildOptions,
+        configs: lambdaRoutes,
+        lambdaNamePrefix: lambdaNamePrefix || '',
       });
       return;
     }

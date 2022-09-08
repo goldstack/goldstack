@@ -15,16 +15,22 @@
       "path": "../../../templates-lib/packages/infra-aws"
     },
     {
-      "path": "../template-repository"
+      "path": "../module-template-utils"
+    },
+    {
+      "path": "../../../templates-management/packages/project-build"
+    },
+    {
+      "path": "../../../templates-management/packages/template-build-set"
+    },
+    {
+      "path": "../template-metadata"
+    },
+    {
+      "path": "../../../templates-management/packages/template-repository"
     },
     {
       "path": "../../../templates-lib/packages/utils-config"
-    },
-    {
-      "path": "../../../utils/packages/utils-log"
-    },
-    {
-      "path": "../../../templates-lib/packages/utils-package"
     },
     {
       "path": "../../../templates-lib/packages/utils-project"
@@ -33,7 +39,7 @@
       "path": "../../../utils/packages/utils-sh"
     },
     {
-      "path": "../utils-template-test"
+      "path": "../../../templates-management/packages/utils-template-test"
     }
   ]
 }
