@@ -1461,8 +1461,8 @@ __metadata:
   dependencies:
     "@goldstack/infra-aws": 0.4.1
     "@goldstack/module-template-utils": 0.1.0
+    "@goldstack/project-build": 0.1.0
     "@goldstack/template-build": 0.1.0
-    "@goldstack/template-metadata": 0.1.0
     "@goldstack/template-repository": 0.1.0
     "@goldstack/utils-config": 0.4.1
     "@goldstack/utils-log": 0.3.1
@@ -2467,6 +2467,29 @@ __metadata:
   bin:
     template: ./bin/template
     template-static-website-aws: ./bin/template
+  languageName: unknown
+  linkType: soft
+
+"@goldstack/template-test@workspace:workspaces/templates/packages/template-test":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/template-test@workspace:workspaces/templates/packages/template-test"
+  dependencies:
+    "@goldstack/infra-aws": 0.4.1
+    "@goldstack/module-template-utils": 0.1.0
+    "@goldstack/project-build": 0.1.0
+    "@goldstack/template-build-set": 0.1.0
+    "@goldstack/template-metadata": 0.1.0
+    "@goldstack/template-repository": 0.1.0
+    "@goldstack/utils-config": 0.4.1
+    "@goldstack/utils-project": 0.4.1
+    "@goldstack/utils-sh": 0.5.1
+    "@goldstack/utils-template-test": 0.1.0
+    "@types/jest": ^28.1.8
+    "@types/node": ^18.7.13
+    jest: ^28.1.0
+    rimraf: ^3.0.2
+    ts-jest: ^28.0.2
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 

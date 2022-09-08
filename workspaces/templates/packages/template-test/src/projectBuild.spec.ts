@@ -6,7 +6,7 @@ import {
 } from '@goldstack/utils-template-test';
 import { S3TemplateRepository } from '@goldstack/template-repository';
 
-import { buildProject } from './projectBuild';
+import { buildProject } from '@goldstack/project-build';
 import { rmSafe, mkdir, read, write } from '@goldstack/utils-sh';
 import { ProjectConfiguration } from '@goldstack/utils-project';
 
