@@ -32,8 +32,6 @@
     "extract-zip": "^2.0.1"
   },
   "devDependencies": {
-    "@goldstack/module-template-utils": "0.1.0",
-    "@goldstack/template-build": "0.1.0",
     "@goldstack/utils-template-test": "0.1.0",
     "@types/jest": "^28.1.8",
     "@types/node": "^18.7.13",
