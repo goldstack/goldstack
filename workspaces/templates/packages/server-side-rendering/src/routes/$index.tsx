@@ -1,13 +1,9 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import React, { useState } from 'react';
-
-import styles from './$index.module.css';
-
 import { hydrate, SSRHandler } from '@goldstack/template-ssr';
 
 import { renderPage } from './../render';
-
 import Panel from './../components/Panel';
+import styles from './$index.module.css';
 
 const Index = (props: { message: string }): JSX.Element => {
   const [clicked, setClicked] = useState(false);

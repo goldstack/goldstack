@@ -11,7 +11,6 @@ describe('AWS User config', () => {
       return;
     }
 
-    console.log('RUN IN CI');
     const awsCredentials = `
 [default]
 aws_access_key_id=fromProfileKey
