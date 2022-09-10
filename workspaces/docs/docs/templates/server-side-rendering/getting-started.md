@@ -20,9 +20,9 @@ When defining a new page in the `src/routes` folder by adding a new TypeScript, 
 
 ```typescript
 import React, { useState } from 'react';
-import { hydrate, SSRHandler } from '@goldstack/template-ssr';
+import { SSRHandler } from '@goldstack/template-ssr';
 
-import { renderPage } from './../render';
+import { renderPage, hydrate } from './../render';
 import styles from './$index.module.css';
 
 const Index = (props: { message: string }): JSX.Element => {

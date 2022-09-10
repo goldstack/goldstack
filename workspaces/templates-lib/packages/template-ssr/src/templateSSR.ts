@@ -47,10 +47,7 @@ export const createLambdaAPIDeploymentConfiguration = (
   };
 };
 
-export const hydrate = (
-  // element: React.ReactElement<any, string | React.JSXElementConstructor<any>>
-  c: React.FunctionComponent<any>
-): void => {
+export const hydrate = (c: React.FunctionComponent<any>): void => {
   if (isServer()) return;
 
   const node = document.getElementById('root');

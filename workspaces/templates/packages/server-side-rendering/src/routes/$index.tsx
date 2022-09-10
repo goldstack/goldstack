@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { hydrate, SSRHandler } from '@goldstack/template-ssr';
+import { SSRHandler } from '@goldstack/template-ssr';
 
-import { renderPage } from './../render';
+import { renderPage, hydrate } from './../render';
 import Panel from './../components/Panel';
 import styles from './$index.module.css';
 
