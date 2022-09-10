@@ -28,6 +28,7 @@ const Index = (props: { message: string }): JSX.Element => {
 export const handler: SSRHandler = async (event, context) => {
   return renderPage({
     component: Index,
+    appendToHead: '<title>SSR Template</title>',
     properties: {
       message: 'Hi there',
       dummy: 123,
