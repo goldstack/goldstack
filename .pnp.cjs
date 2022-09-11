@@ -3347,9 +3347,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
             ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
             ["@types/jest", "npm:28.1.8"],\
+            ["@types/minimatch", "npm:5.1.2"],\
             ["@types/node", "npm:18.7.13"],\
             ["@types/yargs", "npm:17.0.10"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
+            ["minimatch", "npm:5.1.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
             ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
@@ -3571,6 +3573,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
             ["@types/aws-lambda", "npm:8.10.88"],\
             ["@types/jest", "npm:28.1.8"],\
+            ["@types/minimatch", "npm:5.1.2"],\
             ["@types/node", "npm:18.7.13"],\
             ["@yarnpkg/esbuild-plugin-pnp", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:3.0.0-rc.15"],\
             ["archiver", "npm:5.3.1"],\
@@ -6161,6 +6164,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-minimatch-npm-3.0.3-c8b0625f84-b80259d55b.zip/node_modules/@types/minimatch/",\
           "packageDependencies": [\
             ["@types/minimatch", "npm:3.0.3"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:5.1.2", {\
+          "packageLocation": "./.yarn/cache/@types-minimatch-npm-5.1.2-aab9c394d3-0391a28286.zip/node_modules/@types/minimatch/",\
+          "packageDependencies": [\
+            ["@types/minimatch", "npm:5.1.2"]\
           ],\
           "linkType": "HARD"\
         }]\

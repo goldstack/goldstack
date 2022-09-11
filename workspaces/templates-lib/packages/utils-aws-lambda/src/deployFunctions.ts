@@ -20,7 +20,7 @@ export interface DeployFunctionsParams {
 export const deployFunctions = async (
   params: DeployFunctionsParams
 ): Promise<void> => {
-  const lambdaConfig = readLambdaConfig(params.routesPath);
+  const lambdaConfig = params.config; //readLambdaConfig(params.routesPath);
 
   const operations = lambdaConfig.map(async (config) => {
     const functionName = generateFunctionName(

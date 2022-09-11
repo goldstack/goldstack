@@ -8,7 +8,7 @@ import {
   readDeploymentState,
   readTerraformStateVariable,
 } from '@goldstack/infra';
-import yargs from 'yargs';
+import yargs, { Argv } from 'yargs';
 import fs from 'fs';
 import {
   createLambdaAPIDeploymentConfiguration,
@@ -28,23 +28,59 @@ import { defaultRoutesPath } from './templateSSRConsts';
 import { buildBundles } from './buildBundles';
 import { deployToS3 } from './deployToS3';
 
+import minimatch from 'minimatch';
+
 export const run = async (
   args: string[],
   buildConfig: BuildConfiguration
 ): Promise<void> => {
   await wrapCli(async () => {
-    const argv = await buildCli({
-      yargs,
-      deployCommands: buildDeployCommands(),
-      infraCommands: infraCommands(),
-    })
-      .command('build [deployment]', 'Build all lambdas', () => {
-        return yargs.positional('deployment', {
-          type: 'string',
-          describe: 'Name of the deployment this command should be applied to',
-          default: '',
-        });
-      })
+    const argv = await yargs
+      .scriptName('template')
+      .usage('$0 <infra|build|deploy>')
+      .command(
+        'infra <up|down|init|plan|apply|destroy|upgrade|terraform> <deployment>',
+        'Manage infrastructure for deployment',
+        infraCommands()
+      )
+      .command(
+        'build <deployment> [route]',
+        'Build deployment packages',
+        (yargs: Argv<any>): Argv<any> => {
+          return yargs
+            .positional('deployment', {
+              description:
+                'Name of the deployment where the package should be deployed to.',
+              type: 'string',
+              demandOption: true,
+            })
+            .positional('route', {
+              type: 'string',
+              demandOption: false,
+              description:
+                'A glob filter to select specific routes for deployment',
+            });
+        }
+      )
+      .command(
+        'deploy <deployment> <route>',
+        'Deploy to specified deployment',
+        (yargs: Argv<any>): Argv<any> => {
+          return yargs
+            .positional('deployment', {
+              description:
+                'Name of the deployment where the package should be deployed to.',
+              type: 'string',
+              demandOption: true,
+            })
+            .positional('route', {
+              type: 'string',
+              demandOption: false,
+              description:
+                'A glob filter to select specific routes for deployment',
+            });
+        }
+      )
       .help()
       .parse();
 
@@ -60,7 +96,7 @@ export const run = async (
         `Please specify lambda function handlers in ${defaultRoutesPath} so that API Gateway route configuration can be generated.`
       );
     }
-    const lambdaRoutes = readLambdaConfig(defaultRoutesPath);
+    let lambdaRoutes = readLambdaConfig(defaultRoutesPath);
     config.deployments = config.deployments.map((e) => {
       const lambdasConfigs = generateLambdaConfig(
         createLambdaAPIDeploymentConfiguration(e.configuration),
@@ -77,6 +113,20 @@ export const run = async (
     const command = argv._[0];
     const [, , , ...opArgs] = args;
 
+    if (command === 'build' || command === 'deploy') {
+      if (opArgs.length === 2) {
+        lambdaRoutes = lambdaRoutes.filter((el) =>
+          minimatch(el.relativeFilePath, `*${opArgs[1]}*`)
+        );
+        if (lambdaRoutes.length === 0) {
+          console.warn(
+            `Cannot perform command '${command}'. No routes match supplied filter ${opArgs[1]}.`
+          );
+          return;
+        }
+      }
+    }
+
     if (command === 'infra') {
       await terraformAwsCli(opArgs, {
         // temporary workaround for https://github.com/goldstack/goldstack/issues/40
@@ -87,6 +137,10 @@ export const run = async (
 
     if (command === 'build') {
       const deployment = packageConfig.getDeployment(opArgs[0]);
+      let routeFilter: undefined | string = undefined;
+      if (opArgs.length === 2) {
+        routeFilter = `*${opArgs[1]}*`;
+      }
       const lambdaNamePrefix = deployment.configuration.lambdaNamePrefix;
       // bundles need to be built first since static mappings are updated
       // during bundle built and they are injected into function bundle
@@ -103,6 +157,7 @@ export const run = async (
         buildOptions: buildConfig.createServerBuildOptions,
         configs: lambdaRoutes,
         lambdaNamePrefix: lambdaNamePrefix || '',
+        routeFilter,
       });
       return;
     }

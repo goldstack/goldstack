@@ -31,7 +31,6 @@ export const handler: SSRHandler = async (event, context) => {
     appendToHead: '<title>SSR Template</title>',
     properties: {
       message: 'Hi there',
-      dummy: 123,
     },
     entryPoint: __filename,
     event: event,
