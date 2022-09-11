@@ -96,9 +96,7 @@ If you want to use the DynamoDB Toolbox entities, you can utilise the method `co
 
 ```typescript
 import {
-  User,
   UserEntity,
-  UserKey
   connectTable,
 } from 'your-dynamodb-package';
 ```
@@ -107,7 +105,7 @@ You can then use the return object to instantiate your entities:
 
 ```typescript
 const table = await connectTable();
-const Users = UserEntity(table);
+const Users = new Entity({ ...deepCopy(UserEntity), table } as const);
 
 await Users.put({
   email: 'joe@email.com',
@@ -115,6 +113,8 @@ await Users.put({
   emailVerified: true,
 });
 ```
+
+Note that the attributes defined in `UserEntity` need to be copied due to a bug in DynamoDBToolbox: [jeremydaly/dynamodb-toolbox#310](https://github.com/jeremydaly/dynamodb-toolbox/issues/310).
 
 If you want to use the plain Node.js SDK method, you can utilise the methods `getTableName` and `connect` which are also included in the package:
 
