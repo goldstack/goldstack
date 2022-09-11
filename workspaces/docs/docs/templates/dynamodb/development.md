@@ -12,20 +12,8 @@ While DynamoDB is a NoSQL data store and strictly speaking does not require a da
 The entities we want to store in the table are defined in the file `entities.ts` which is included in the DynamoDB package:
 
 ```typescript
-import { Table, Entity } from 'dynamodb-toolbox';
+import { Table } from 'dynamodb-toolbox';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
-
-export type User = {
-  pk: string;
-  sk: string;
-  name: string;
-  emailVerified: boolean;
-};
-
-export type UserKey = {
-  pk: string;
-  sk: string;
-};
 
 export function createTable<Name extends string>(
   dynamoDB: DynamoDB.DocumentClient,
@@ -39,22 +27,15 @@ export function createTable<Name extends string>(
   });
 }
 
-export function UserEntity<Name extends string>(
-  table: Table<Name, 'pk', 'sk'>
-): Entity<User, UserKey, typeof table> {
-  const e = new Entity<User, UserKey, typeof table>({
-    name: 'User',
-    attributes: {
-      pk: { partitionKey: true },
-      sk: { hidden: true, sortKey: true },
-      name: { type: 'string', required: true },
-      emailVerified: { type: 'boolean', required: true },
-    },
-    table,
-  } as const);
-
-  return e;
-}
+export const UserEntity = {
+  name: 'User',
+  attributes: {
+    email: { partitionKey: true },
+    type: { sortKey: true, default: 'user' },
+    name: { type: 'string', required: true },
+    emailVerified: { type: 'boolean', required: true },
+  },
+} as const;
 ```
 
 You can edit and extend these entities. Note though that it is recommended not to change the name of the `partionKey` (`pk`) and `sortKey` (`sk`).
@@ -129,8 +110,7 @@ const table = await connectTable();
 const Users = UserEntity(table);
 
 await Users.put({
-  pk: 'joe@email.com',
-  sk: 'admin',
+  email: 'joe@email.com',
   name: 'Joe',
   emailVerified: true,
 });
