@@ -2561,7 +2561,6 @@ __metadata:
     "@goldstack/utils-sh": 0.5.1
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^28.1.8
-    "@types/minimatch": ^5.1.2
     "@types/node": ^18.7.13
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
     archiver: ^5.3.1

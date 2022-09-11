@@ -3573,7 +3573,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
             ["@types/aws-lambda", "npm:8.10.88"],\
             ["@types/jest", "npm:28.1.8"],\
-            ["@types/minimatch", "npm:5.1.2"],\
             ["@types/node", "npm:18.7.13"],\
             ["@yarnpkg/esbuild-plugin-pnp", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:3.0.0-rc.15"],\
             ["archiver", "npm:5.3.1"],\

@@ -56,7 +56,6 @@
     "@goldstack/utils-git": "0.2.1",
     "@types/aws-lambda": "^8.10.88",
     "@types/jest": "^28.1.8",
-    "@types/minimatch": "^5.1.2",
     "@types/node": "^18.7.13",
     "jest": "^28.1.0",
     "rimraf": "^3.0.2",
