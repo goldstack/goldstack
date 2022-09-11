@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-s3",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Building blocks for linking a package to an AWS S3 bucket.",
   "keywords": [
     "goldstack",
@@ -40,12 +40,12 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.4.1",
-    "@goldstack/infra-aws": "0.4.1",
+    "@goldstack/infra-aws": "0.4.2",
     "@goldstack/utils-esbuild": "0.5.1",
     "@goldstack/utils-package": "0.4.1",
     "@goldstack/utils-package-config-embedded": "0.5.1",
     "@goldstack/utils-template": "0.4.1",
-    "@goldstack/utils-terraform": "0.4.1",
+    "@goldstack/utils-terraform": "0.4.2",
     "aws-sdk": "2.1055.0",
     "mock-aws-s3": "^4.0.2",
     "source-map-support": "^0.5.21"

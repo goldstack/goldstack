@@ -21,7 +21,7 @@
     "version:apply": "yarn version \"$@\" && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.4.1",
+    "@goldstack/infra-aws": "0.4.2",
     "@goldstack/module-template-utils": "0.1.0",
     "@goldstack/project-build": "0.1.0",
     "@goldstack/template-build-set": "0.1.0",
