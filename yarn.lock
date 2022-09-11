@@ -886,7 +886,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.1
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.3.0
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     "@types/testing-library__jest-dom": ^5.14.5
@@ -926,7 +926,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.1
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.3.0
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     "@types/testing-library__jest-dom": ^5.14.5
@@ -966,7 +966,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.1
     "@goldstack/utils-template": 0.4.1
     "@types/archiver": ^3.1.0
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/semver": ^7.2.0
     archiver: ^5.3.1
@@ -987,7 +987,7 @@ __metadata:
   dependencies:
     "@goldstack/template-static-website-aws": 0.5.2
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     concurrently: ^7.3.0
     jest: ^28.1.0
@@ -1007,7 +1007,7 @@ __metadata:
     "@goldstack/template-docker-image-aws": 0.5.2
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     concurrently: ^7.3.0
     jest: ^28.1.0
@@ -1031,7 +1031,7 @@ __metadata:
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.3.0
     "@types/cheerio": ^0.22.31
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     "@types/styled-components": ^5.1.25
@@ -1074,9 +1074,10 @@ __metadata:
     "@aws-sdk/util-dynamodb": ^3.87.0
     "@goldstack/template-dynamodb": 0.2.2
     "@goldstack/template-dynamodb-cli": 0.5.2
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
+    deep-copy: ^1.4.2
     dynamodb-toolbox: ^0.4.3
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1096,7 +1097,7 @@ __metadata:
     "@goldstack/template-email-send-cli": 0.5.2
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     jest: ^28.1.0
@@ -1136,7 +1137,7 @@ __metadata:
     "@types/cors": ^2.8.12
     "@types/express": ^4.17.13
     "@types/helmet": ^4.0.0
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/rimraf": ^3.0.0
     "@types/sanitize-html": ^1.23.3
@@ -1176,7 +1177,7 @@ __metadata:
     "@goldstack/template-email-send-cli": 0.5.2
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     jest: ^28.1.0
@@ -1210,7 +1211,7 @@ __metadata:
     "@stripe/stripe-js": ^1.10.0
     "@testing-library/jest-dom": ^5.16.4
     "@testing-library/react": ^13.3.0
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     "@types/react-dom": ^18.0.6
@@ -1262,7 +1263,7 @@ __metadata:
     "@goldstack/utils-log": 0.3.1
     "@goldstack/utils-package": 0.4.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     axios: 0.21.2
@@ -1284,7 +1285,7 @@ __metadata:
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-log": 0.3.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     renamer: ^0.7.0
@@ -1305,7 +1306,7 @@ __metadata:
     "@types/aws-serverless-express": ^3.3.3
     "@types/express": ^4.17.13
     "@types/helmet": ^4.0.0
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/source-map-support": ^0.5.4
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
@@ -1331,7 +1332,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/library@workspace:workspaces/templates/packages/library"
   dependencies:
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1347,7 +1348,7 @@ __metadata:
     "@goldstack/utils-cli": 0.3.1
     "@goldstack/utils-docs": 0.4.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
@@ -1368,7 +1369,7 @@ __metadata:
     "@goldstack/module-template-utils": 0.1.0
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1383,7 +1384,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/module-template-utils@workspace:workspaces/templates/packages/module-template-utils"
   dependencies:
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1399,7 +1400,7 @@ __metadata:
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-log": 0.3.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/minimatch": ^5.1.2
     "@types/node": ^18.7.13
     jest: ^28.1.0
@@ -1421,7 +1422,7 @@ __metadata:
     "@goldstack/utils-package": 0.4.1
     "@goldstack/utils-sh": 0.5.1
     "@goldstack/utils-template": 0.4.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/jsonpath": ^0.2.0
     "@types/node": ^18.7.13
     jest: ^28.1.0
@@ -1445,7 +1446,7 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.3.1
     "@goldstack/utils-sh": 0.5.1
     "@goldstack/utils-template": 0.4.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1467,7 +1468,7 @@ __metadata:
     "@goldstack/utils-project": 0.4.1
     "@goldstack/utils-sh": 0.5.1
     "@goldstack/utils-template-test": 0.1.0
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     extract-zip: ^2.0.1
     jest: ^28.1.0
@@ -1486,7 +1487,7 @@ __metadata:
     "@goldstack/utils-project": 0.4.1
     "@goldstack/utils-sh": 0.5.1
     "@goldstack/utils-template": 0.4.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1511,7 +1512,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.1
     "@goldstack/utils-template-test": 0.1.0
     "@goldstack/utils-yarn": 0.4.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     axios: 0.21.2
     jest: ^28.1.0
@@ -1530,7 +1531,7 @@ __metadata:
     "@goldstack/template-s3-cli": 0.6.2
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     concurrently: ^7.3.0
@@ -1551,7 +1552,7 @@ __metadata:
     "@goldstack/template-s3-cli": 0.6.2
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     concurrently: ^7.3.0
@@ -1578,7 +1579,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.1
     "@goldstack/utils-template": 0.4.1
     "@types/archiver": ^3.1.0
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/semver": ^7.2.0
     "@types/uuid": ^8.3.0
@@ -1599,7 +1600,7 @@ __metadata:
   dependencies:
     "@goldstack/template-s3": 0.4.2
     "@goldstack/template-s3-cli": 0.6.2
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     jest: ^28.1.0
@@ -1615,7 +1616,7 @@ __metadata:
   resolution: "@goldstack/server-go@workspace:workspaces/templates/packages/lambda-go-gin"
   dependencies:
     "@goldstack/template-lambda-express": 0.5.2
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     nodemon: ^2.0.15
     ts-node: ^10.9.1
@@ -1638,7 +1639,7 @@ __metadata:
     "@testing-library/react": ^13.3.0
     "@types/aws-lambda": ^8.10.88
     "@types/aws-serverless-express": ^3.3.3
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/node-fetch": 2
     "@types/react": ^18.0.15
@@ -1680,7 +1681,7 @@ __metadata:
     "@jest-mock/express": ^1.4.5
     "@types/aws-lambda": ^8.10.88
     "@types/aws-serverless-express": ^3.3.3
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/node-fetch": 2
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
@@ -1707,7 +1708,7 @@ __metadata:
     "@goldstack/template-s3-cli": 0.6.2
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     concurrently: ^7.3.0
@@ -1729,7 +1730,7 @@ __metadata:
     "@goldstack/utils-s3": 0.3.1
     "@goldstack/utils-sh": 0.5.1
     "@types/archiver": ^3.1.0
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/semver": ^7.2.0
     "@types/stripe": ^7.13.24
@@ -1753,7 +1754,7 @@ __metadata:
     "@types/gulp": ^4.0.7
     "@types/gulp-changed": ^0.0.33
     "@types/gulp-replace": ^0.0.31
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     concurrently: ^7.3.0
     gulp: ^4.0.2
@@ -1789,7 +1790,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.1
     "@goldstack/utils-template": 0.4.1
     "@goldstack/utils-template-test": 0.1.0
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1809,7 +1810,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.1
     "@goldstack/utils-template": 0.4.1
     "@types/archiver": ^3.1.0
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
@@ -1841,7 +1842,7 @@ __metadata:
     "@goldstack/utils-template": 0.4.1
     "@goldstack/utils-terraform": 0.4.2
     "@goldstack/utils-terraform-aws": 0.4.2
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/source-map-support": ^0.5.4
     "@types/yargs": ^17.0.10
@@ -1873,7 +1874,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.1
     "@goldstack/utils-terraform": 0.4.2
     "@goldstack/utils-terraform-aws": 0.4.2
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
@@ -1904,7 +1905,7 @@ __metadata:
     "@goldstack/utils-package-config-embedded": 0.5.1
     "@goldstack/utils-package-config-generate": 0.3.1
     "@goldstack/utils-terraform": 0.4.2
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     aws-sdk: 2.1055.0
@@ -1930,7 +1931,7 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.3.1
     "@goldstack/utils-terraform": 0.4.2
     "@goldstack/utils-terraform-aws": 0.4.2
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
@@ -1960,7 +1961,7 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.3.1
     "@goldstack/utils-terraform": 0.4.2
     "@goldstack/utils-terraform-aws": 0.4.2
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
     "@types/uuid": ^8.3.0
@@ -1997,7 +1998,7 @@ __metadata:
     "@goldstack/utils-terraform": 0.4.2
     "@goldstack/utils-terraform-aws": 0.4.2
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
@@ -2028,7 +2029,7 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.3.1
     "@goldstack/utils-terraform": 0.4.2
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
@@ -2063,7 +2064,7 @@ __metadata:
     "@goldstack/utils-template": 0.4.1
     "@goldstack/utils-terraform": 0.4.2
     "@goldstack/utils-terraform-aws": 0.4.2
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     archiver: ^5.3.1
@@ -2102,7 +2103,7 @@ __metadata:
     "@goldstack/utils-package": 0.4.1
     "@goldstack/utils-project": 0.4.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
     "@types/source-map-support": ^0.5.4
@@ -2132,7 +2133,7 @@ __metadata:
   dependencies:
     "@goldstack/template-build-set": 0.1.0
     "@goldstack/utils-project": 0.4.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2162,7 +2163,7 @@ __metadata:
     "@goldstack/utils-template": 0.4.1
     "@goldstack/utils-terraform": 0.4.2
     "@types/glob": ^7.1.3
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/webpack": ^4.41.26
     "@types/yargs": ^17.0.10
@@ -2190,7 +2191,7 @@ __metadata:
     "@goldstack/template-s3-cli": 0.6.2
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     concurrently: ^7.3.0
@@ -2213,7 +2214,7 @@ __metadata:
     "@goldstack/utils-template": 0.4.1
     "@types/archiver": ^3.1.0
     "@types/fs-extra": ^9.0.13
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/semver": ^7.2.0
     aws-sdk: 2.1055.0
@@ -2244,7 +2245,7 @@ __metadata:
     "@goldstack/utils-template": 0.4.1
     "@goldstack/utils-terraform": 0.4.2
     "@goldstack/utils-terraform-aws": 0.4.2
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
@@ -2276,7 +2277,7 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.3.1
     "@goldstack/utils-template": 0.4.1
     "@goldstack/utils-terraform": 0.4.2
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
@@ -2314,7 +2315,7 @@ __metadata:
     "@goldstack/utils-template": 0.4.1
     "@goldstack/utils-terraform": 0.4.2
     "@goldstack/utils-terraform-aws": 0.4.2
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/minimatch": ^5.1.2
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
@@ -2346,7 +2347,7 @@ __metadata:
     "@goldstack/utils-template": 0.4.1
     "@goldstack/utils-terraform": 0.4.2
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     "@types/sha256": ^0
@@ -2383,7 +2384,7 @@ __metadata:
     "@goldstack/utils-template": 0.4.1
     "@goldstack/utils-terraform": 0.4.2
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     "@types/sha256": ^0
@@ -2418,7 +2419,7 @@ __metadata:
     "@goldstack/utils-template": 0.4.1
     "@goldstack/utils-terraform": 0.4.2
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     "@types/react-dom": ^18.0.6
@@ -2453,7 +2454,7 @@ __metadata:
     "@goldstack/utils-template": 0.4.1
     "@goldstack/utils-terraform": 0.4.2
     "@goldstack/utils-terraform-aws": 0.4.2
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
@@ -2483,7 +2484,7 @@ __metadata:
     "@goldstack/utils-project": 0.4.1
     "@goldstack/utils-sh": 0.5.1
     "@goldstack/utils-template-test": 0.1.0
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2497,7 +2498,7 @@ __metadata:
   resolution: "@goldstack/toc-generator@workspace:workspaces/docs/packages/toc-generator"
   dependencies:
     "@types/cheerio": ^0.22.31
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     cheerio: 1.0.0-rc.10
     jest: ^28.1.0
@@ -2516,7 +2517,7 @@ __metadata:
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-log": 0.3.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     jest: ^28.1.0
@@ -2535,7 +2536,7 @@ __metadata:
     "@types/aws-lambda": ^8.10.88
     "@types/cookie": ^0
     "@types/express": ^4.17.13
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/node-fetch": 2
     cookie: ^0.4.1
@@ -2560,7 +2561,7 @@ __metadata:
     "@goldstack/utils-log": 0.3.1
     "@goldstack/utils-sh": 0.5.1
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
     archiver: ^5.3.1
@@ -2579,7 +2580,7 @@ __metadata:
   resolution: "@goldstack/utils-cli@workspace:workspaces/utils/packages/utils-cli"
   dependencies:
     "@goldstack/utils-git": 0.2.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2595,7 +2596,7 @@ __metadata:
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-log": 0.3.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     ajv: ^6.12.2
     handlebars: 4.7.7
@@ -2612,7 +2613,7 @@ __metadata:
   dependencies:
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2629,7 +2630,7 @@ __metadata:
     "@goldstack/utils-docs": 0.4.1
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
@@ -2650,7 +2651,7 @@ __metadata:
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-sh": 0.5.1
     "@mapbox/rehype-prism": 0.3.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     github-slugger: 1.2.0
     gray-matter: ^4.0.2
@@ -2677,7 +2678,7 @@ __metadata:
   resolution: "@goldstack/utils-esbuild@workspace:workspaces/utils/packages/utils-esbuild"
   dependencies:
     "@goldstack/utils-git": 0.2.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2691,7 +2692,7 @@ __metadata:
   resolution: "@goldstack/utils-git@workspace:workspaces/utils/packages/utils-git"
   dependencies:
     "@types/command-exists": ^1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     command-exists: ^1.2.9
     jest: ^28.1.0
@@ -2711,7 +2712,7 @@ __metadata:
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-log": 0.3.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/replace-ext": ^0.0.27
     jest: ^28.1.0
@@ -2730,7 +2731,7 @@ __metadata:
   resolution: "@goldstack/utils-log@workspace:workspaces/utils/packages/utils-log"
   dependencies:
     "@goldstack/utils-git": 0.2.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2747,7 +2748,7 @@ __metadata:
     "@goldstack/utils-config": 0.4.1
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-package": 0.4.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2761,7 +2762,7 @@ __metadata:
   resolution: "@goldstack/utils-package-config-generate@workspace:workspaces/templates-lib/packages/utils-package-config-generate"
   dependencies:
     "@goldstack/utils-git": 0.2.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
@@ -2785,7 +2786,7 @@ __metadata:
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-package": 0.4.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2802,7 +2803,7 @@ __metadata:
     "@goldstack/utils-log": 0.3.1
     "@goldstack/utils-sh": 0.5.1
     "@goldstack/utils-template": 0.4.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2819,7 +2820,7 @@ __metadata:
     "@goldstack/utils-config": 0.4.1
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
@@ -2840,7 +2841,7 @@ __metadata:
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-json-to-ts": 0.4.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     renamer: ^0.7.0
@@ -2860,7 +2861,7 @@ __metadata:
     "@goldstack/utils-docker": 0.4.1
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2874,7 +2875,7 @@ __metadata:
   resolution: "@goldstack/utils-s3@workspace:workspaces/templates-lib/packages/utils-s3"
   dependencies:
     "@goldstack/utils-git": 0.2.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     jest: ^28.1.0
@@ -2894,7 +2895,7 @@ __metadata:
     "@types/command-exists": ^1
     "@types/fs-extra": ^9.0.13
     "@types/glob": ^7.1.3
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/ncp": ^2.0.4
     "@types/node": ^18.7.13
     "@types/rimraf": ^3.0.0
@@ -2924,7 +2925,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.1
     "@goldstack/utils-template": 0.4.1
     "@goldstack/utils-yarn": 0.4.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
     axios: 0.21.2
@@ -2945,7 +2946,7 @@ __metadata:
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-json-to-ts": 0.4.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2965,7 +2966,7 @@ __metadata:
     "@goldstack/utils-package": 0.4.1
     "@goldstack/utils-sh": 0.5.1
     "@goldstack/utils-terraform": 0.4.2
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     jest: ^28.1.0
@@ -2987,7 +2988,7 @@ __metadata:
     "@goldstack/utils-log": 0.3.1
     "@goldstack/utils-package": 0.4.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/json-stable-stringify": ^1
     "@types/node": ^18.7.13
     "@types/prompt-sync": ^4.1.0
@@ -3008,7 +3009,7 @@ __metadata:
   resolution: "@goldstack/utils-track@workspace:workspaces/utils/packages/utils-track"
   dependencies:
     "@goldstack/utils-git": 0.2.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     jest: ^28.1.0
@@ -3024,7 +3025,7 @@ __metadata:
   resolution: "@goldstack/utils-typescript-references@workspace:workspaces/utils/packages/utils-typescript-references"
   dependencies:
     "@goldstack/utils-git": 0.2.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/source-map-support": ^0.5.4
     "@types/yargs": ^17.0.10
@@ -3046,7 +3047,7 @@ __metadata:
     "@goldstack/utils-docker": 0.4.1
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-sh": 0.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -3198,12 +3199,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/expect-utils@npm:^28.1.3":
-  version: 28.1.3
-  resolution: "@jest/expect-utils@npm:28.1.3"
+"@jest/expect-utils@npm:^29.0.3":
+  version: 29.0.3
+  resolution: "@jest/expect-utils@npm:29.0.3"
   dependencies:
-    jest-get-type: ^28.0.2
-  checksum: 808ea3a68292a7e0b95490fdd55605c430b4cf209ea76b5b61bfb2a1badcb41bc046810fe4e364bd5fe04663978aa2bd73d8f8465a761dd7c655aeb44cf22987
+    jest-get-type: ^29.0.0
+  checksum: af6fa6e0b9cdf42f5778ff0b70c2049ec768598f720ea473773e0c0bebd2416a32ecbede94cfdc95572a021eda5302a9295a5c416ad5ce155c4ec277c40129da
   languageName: node
   linkType: hard
 
@@ -3308,6 +3309,15 @@ __metadata:
   dependencies:
     "@sinclair/typebox": ^0.24.1
   checksum: 3cf1d4b66c9c4ffda58b246de1ddcba8e6ad085af63dccdf07922511f13b68c0cc480a7bc620cb4f3099a6f134801c747e1df7bfc7a4ef4dceefbdea3e31e1de
+  languageName: node
+  linkType: hard
+
+"@jest/schemas@npm:^29.0.0":
+  version: 29.0.0
+  resolution: "@jest/schemas@npm:29.0.0"
+  dependencies:
+    "@sinclair/typebox": ^0.24.1
+  checksum: 41355c78f09eb1097e57a3c5d0ca11c9099e235e01ea5fa4e3953562a79a6a9296c1d300f1ba50ca75236048829e056b00685cd2f1ff8285e56fd2ce01249acb
   languageName: node
   linkType: hard
 
@@ -3455,6 +3465,20 @@ __metadata:
     "@types/yargs": ^17.0.8
     chalk: ^4.0.0
   checksum: 1e258d9c063fcf59ebc91e46d5ea5984674ac7ae6cae3e50aa780d22b4405bf2c925f40350bf30013839eb5d4b5e521d956ddf8f3b7c78debef0e75a07f57350
+  languageName: node
+  linkType: hard
+
+"@jest/types@npm:^29.0.3":
+  version: 29.0.3
+  resolution: "@jest/types@npm:29.0.3"
+  dependencies:
+    "@jest/schemas": ^29.0.0
+    "@types/istanbul-lib-coverage": ^2.0.0
+    "@types/istanbul-reports": ^3.0.0
+    "@types/node": "*"
+    "@types/yargs": ^17.0.8
+    chalk: ^4.0.0
+  checksum: 3bd33e64d87a5421b860396ac7f7b9b8d5abbf0f300f4379bb20c8e3a6169fbbd078933ce0649827cd63e23330c4effeb6b222fa94e8dd0df638dfff6c1fed41
   languageName: node
   linkType: hard
 
@@ -4758,13 +4782,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^28.1.8":
-  version: 28.1.8
-  resolution: "@types/jest@npm:28.1.8"
+"@types/jest@npm:^29.0.1":
+  version: 29.0.1
+  resolution: "@types/jest@npm:29.0.1"
   dependencies:
-    expect: ^28.0.0
-    pretty-format: ^28.0.0
-  checksum: d4cd36158a3ae1d4b42cc48a77c95de74bc56b84cf81e09af3ee0399c34f4a7da8ab9e787570f10004bd642f9e781b0033c37327fbbf4a8e4b6e37e8ee3693a7
+    expect: ^29.0.0
+    pretty-format: ^29.0.0
+  checksum: efd30357c290b5d385382302fae927885f2a9bde0aa45d4c7f970fa6e6d750df83edef73f16d1e9a005e08a5bcd7c6ff56a43f5ac2534a517df9ad1e44dd30c4
   languageName: node
   linkType: hard
 
@@ -6088,7 +6112,7 @@ __metadata:
   resolution: "apps@workspace:workspaces/apps"
   dependencies:
     "@goldstack/utils-typescript-references": 0.3.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
@@ -8708,6 +8732,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"deep-copy@npm:^1.4.2":
+  version: 1.4.2
+  resolution: "deep-copy@npm:1.4.2"
+  checksum: 24ba7db4a9d44800c68659dae0068b681c43be0512c75e700710c3d18776e4c41f7dbd83eed6370bcfc1594c60f84d8798f4058f965ab457ea0232db821f0a4e
+  languageName: node
+  linkType: hard
+
 "deep-extend@npm:^0.6.0, deep-extend@npm:~0.6.0":
   version: 0.6.0
   resolution: "deep-extend@npm:0.6.0"
@@ -8906,10 +8937,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"diff-sequences@npm:^28.1.1":
-  version: 28.1.1
-  resolution: "diff-sequences@npm:28.1.1"
-  checksum: e2529036505567c7ca5a2dea86b6bcd1ca0e3ae63bf8ebf529b8a99cfa915bbf194b7021dc1c57361a4017a6d95578d4ceb29fabc3232a4f4cb866a2726c7690
+"diff-sequences@npm:^29.0.0":
+  version: 29.0.0
+  resolution: "diff-sequences@npm:29.0.0"
+  checksum: 2c084a3db03ecde26f649f6f2559974e01e174451debeb301a7e17199e73423a8e8ddeb9a35ae38638c084b4fa51296a4a20fa7f44f3db0c0ba566bdc704ed3d
   languageName: node
   linkType: hard
 
@@ -8987,7 +9018,7 @@ __metadata:
   dependencies:
     "@goldstack/nodemonx": 0.4.2
     "@goldstack/utils-typescript-references": 0.3.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
@@ -9590,7 +9621,7 @@ __metadata:
   resolution: "esbuild-css-modules-client-plugin@workspace:workspaces/utils/packages/esbuild-css-modules-client-plugin"
   dependencies:
     "@goldstack/utils-git": 0.2.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     esbuild: ^0.15.5
     jest: ^28.1.0
@@ -9608,7 +9639,7 @@ __metadata:
   resolution: "esbuild-css-modules-server-plugin@workspace:workspaces/utils/packages/esbuild-css-modules-server-plugin"
   dependencies:
     "@goldstack/utils-git": 0.2.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     esbuild: ^0.15.5
     jest: ^28.1.0
@@ -9653,7 +9684,7 @@ __metadata:
   resolution: "esbuild-ignore-with-comments-plugin@workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"
   dependencies:
     "@goldstack/utils-git": 0.2.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     esbuild: ^0.15.5
     jest: ^28.1.0
@@ -10308,19 +10339,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expect@npm:^28.0.0":
-  version: 28.1.3
-  resolution: "expect@npm:28.1.3"
-  dependencies:
-    "@jest/expect-utils": ^28.1.3
-    jest-get-type: ^28.0.2
-    jest-matcher-utils: ^28.1.3
-    jest-message-util: ^28.1.3
-    jest-util: ^28.1.3
-  checksum: 101e0090de300bcafedb7dbfd19223368a2251ce5fe0105bbb6de5720100b89fb6b64290ebfb42febc048324c76d6a4979cdc4b61eb77747857daf7a5de9b03d
-  languageName: node
-  linkType: hard
-
 "expect@npm:^28.1.0":
   version: 28.1.0
   resolution: "expect@npm:28.1.0"
@@ -10331,6 +10349,19 @@ __metadata:
     jest-message-util: ^28.1.0
     jest-util: ^28.1.0
   checksum: 53bfa2e094a7d5b270ce9a8dafc5432d51bb369287502acd373b66fe01072260bacd1f83bf741d5de49b008406781ab879a0247f5f6fc10d3f32fbe5a3ccfbdf
+  languageName: node
+  linkType: hard
+
+"expect@npm:^29.0.0":
+  version: 29.0.3
+  resolution: "expect@npm:29.0.3"
+  dependencies:
+    "@jest/expect-utils": ^29.0.3
+    jest-get-type: ^29.0.0
+    jest-matcher-utils: ^29.0.3
+    jest-message-util: ^29.0.3
+    jest-util: ^29.0.3
+  checksum: 21b7fd346c47896a3de8f1103d7be32dab9409eb3dc170b7a9ff5d8d564b8499bd600b9af6251fe2f46064cf4e2f1456a6c6318da15314b7d74ed6dad723b555
   languageName: node
   linkType: hard
 
@@ -13359,15 +13390,15 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"jest-diff@npm:^28.1.3":
-  version: 28.1.3
-  resolution: "jest-diff@npm:28.1.3"
+"jest-diff@npm:^29.0.3":
+  version: 29.0.3
+  resolution: "jest-diff@npm:29.0.3"
   dependencies:
     chalk: ^4.0.0
-    diff-sequences: ^28.1.1
-    jest-get-type: ^28.0.2
-    pretty-format: ^28.1.3
-  checksum: fa8583e0ccbe775714ce850b009be1b0f6b17a4b6759f33ff47adef27942ebc610dbbcc8a5f7cfb7f12b3b3b05afc9fb41d5f766674616025032ff1e4f9866e0
+    diff-sequences: ^29.0.0
+    jest-get-type: ^29.0.0
+    pretty-format: ^29.0.3
+  checksum: 1e12b63ea6254ea25146b6fb19f8b2d1ba334e1b8b635a007767c17dc272728afbdf41ccccce26c2a40cd9c7f3176bcfed53be2572927a3fc7b1ee5fff43eb26
   languageName: node
   linkType: hard
 
@@ -13434,6 +13465,13 @@ fsevents@~2.1.2:
   version: 28.0.2
   resolution: "jest-get-type@npm:28.0.2"
   checksum: 5281d7c89bc8156605f6d15784f45074f4548501195c26e9b188742768f72d40948252d13230ea905b5349038865a1a8eeff0e614cc530ff289dfc41fe843abd
+  languageName: node
+  linkType: hard
+
+"jest-get-type@npm:^29.0.0":
+  version: 29.0.0
+  resolution: "jest-get-type@npm:29.0.0"
+  checksum: 9abdd11d69788963a92fb9d813a7b887654ecc8f3a3c8bf83166d33aaf4d57ed380e74ab8ef106f57565dd235446ca6ebc607679f0c516c4633e6d09f0540a2b
   languageName: node
   linkType: hard
 
@@ -13505,15 +13543,15 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"jest-matcher-utils@npm:^28.1.3":
-  version: 28.1.3
-  resolution: "jest-matcher-utils@npm:28.1.3"
+"jest-matcher-utils@npm:^29.0.3":
+  version: 29.0.3
+  resolution: "jest-matcher-utils@npm:29.0.3"
   dependencies:
     chalk: ^4.0.0
-    jest-diff: ^28.1.3
-    jest-get-type: ^28.0.2
-    pretty-format: ^28.1.3
-  checksum: 6b34f0cf66f6781e92e3bec97bf27796bd2ba31121e5c5997218d9adba6deea38a30df5203937d6785b68023ed95cbad73663cc9aad6fb0cb59aeb5813a58daf
+    jest-diff: ^29.0.3
+    jest-get-type: ^29.0.0
+    pretty-format: ^29.0.3
+  checksum: e39ab74a046ada8fbd75a275bfe54bd5f8ec14a98f77e1162a49d4e1ea82e68c5a4575691767cea0f60dd0b74cb481275012bf3467cd91fdb014311c670b8a83
   languageName: node
   linkType: hard
 
@@ -13548,6 +13586,23 @@ fsevents@~2.1.2:
     slash: ^3.0.0
     stack-utils: ^2.0.3
   checksum: 1f266854166dcc6900d75a88b54a25225a2f3710d463063ff1c99021569045c35c7d58557b25447a17eb3a65ce763b2f9b25550248b468a9d4657db365f39e96
+  languageName: node
+  linkType: hard
+
+"jest-message-util@npm:^29.0.3":
+  version: 29.0.3
+  resolution: "jest-message-util@npm:29.0.3"
+  dependencies:
+    "@babel/code-frame": ^7.12.13
+    "@jest/types": ^29.0.3
+    "@types/stack-utils": ^2.0.0
+    chalk: ^4.0.0
+    graceful-fs: ^4.2.9
+    micromatch: ^4.0.4
+    pretty-format: ^29.0.3
+    slash: ^3.0.0
+    stack-utils: ^2.0.3
+  checksum: 04bee1fee10106f4eb875092e5d06187930d44050a4f99e7aa1d1e42768b18d6d9e5439623d9242202942deb8a1eec08359e0cd19a43ae505d96aeaf243a3f8d
   languageName: node
   linkType: hard
 
@@ -13739,6 +13794,20 @@ fsevents@~2.1.2:
     graceful-fs: ^4.2.9
     picomatch: ^2.2.3
   checksum: fd6459742c941f070223f25e38a2ac0719aad92561591e9fb2a50d602a5d19d754750b79b4074327a42b00055662b95da3b006542ceb8b54309da44d4a62e721
+  languageName: node
+  linkType: hard
+
+"jest-util@npm:^29.0.3":
+  version: 29.0.3
+  resolution: "jest-util@npm:29.0.3"
+  dependencies:
+    "@jest/types": ^29.0.3
+    "@types/node": "*"
+    chalk: ^4.0.0
+    ci-info: ^3.2.0
+    graceful-fs: ^4.2.9
+    picomatch: ^2.2.3
+  checksum: 39c31e75ba5bcb4c3ccdf0895f9fdbb83f839c432e7c6639a688beb414d681b5d50282da017c723ea1f2a7033e74a4938fd33dcff231c3e90f903173919991d5
   languageName: node
   linkType: hard
 
@@ -14254,7 +14323,7 @@ fsevents@~2.1.2:
   dependencies:
     "@goldstack/utils-git": 0.2.1
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -15663,7 +15732,7 @@ fsevents@~2.1.2:
   dependencies:
     "@goldstack/utils-git": 0.2.1
     "@swc-node/register": ^1.5.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     pirates: ^4.0.5
@@ -17068,7 +17137,19 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^28.0.0, pretty-format@npm:^28.1.3":
+"pretty-format@npm:^28.1.0":
+  version: 28.1.0
+  resolution: "pretty-format@npm:28.1.0"
+  dependencies:
+    "@jest/schemas": ^28.0.2
+    ansi-regex: ^5.0.1
+    ansi-styles: ^5.0.0
+    react-is: ^18.0.0
+  checksum: c1018099f8f800693449df96c05c243d94e01f7429b6617e1064a1a69b4d715637fc3c579061fbc31548b87d92af74a7933c6eb3856da6f30b29c0ff67004ce0
+  languageName: node
+  linkType: hard
+
+"pretty-format@npm:^28.1.3":
   version: 28.1.3
   resolution: "pretty-format@npm:28.1.3"
   dependencies:
@@ -17080,15 +17161,14 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^28.1.0":
-  version: 28.1.0
-  resolution: "pretty-format@npm:28.1.0"
+"pretty-format@npm:^29.0.0, pretty-format@npm:^29.0.3":
+  version: 29.0.3
+  resolution: "pretty-format@npm:29.0.3"
   dependencies:
-    "@jest/schemas": ^28.0.2
-    ansi-regex: ^5.0.1
+    "@jest/schemas": ^29.0.0
     ansi-styles: ^5.0.0
     react-is: ^18.0.0
-  checksum: c1018099f8f800693449df96c05c243d94e01f7429b6617e1064a1a69b4d715637fc3c579061fbc31548b87d92af74a7933c6eb3856da6f30b29c0ff67004ce0
+  checksum: 239aa73b09919b195353e62530908b43883af66e3ba8ecb5fda77578b20f297fd774fcf53abbedcb6cfff72521e8a220052a49e6a0e29418082d06386da27bac
   languageName: node
   linkType: hard
 
@@ -18390,7 +18470,7 @@ resolve@^1.20.0:
     "@goldstack/nodemonx": 0.4.2
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-typescript-references": 0.3.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
@@ -19365,7 +19445,7 @@ resolve@^1.20.0:
     "@goldstack/utils-git": 0.2.1
     "@goldstack/utils-sh": 0.5.1
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -19381,7 +19461,7 @@ resolve@^1.20.0:
   dependencies:
     "@goldstack/utils-git": 0.2.1
     "@types/aws-lambda": ^8.10.88
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -20139,7 +20219,7 @@ resolve@^1.20.0:
   resolution: "templates-lib@workspace:workspaces/templates-lib"
   dependencies:
     "@goldstack/utils-typescript-references": 0.3.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
@@ -20161,7 +20241,7 @@ resolve@^1.20.0:
   resolution: "templates-management@workspace:workspaces/templates-management"
   dependencies:
     "@goldstack/utils-typescript-references": 0.3.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
@@ -20183,7 +20263,7 @@ resolve@^1.20.0:
   dependencies:
     "@goldstack/nodemonx": 0.4.2
     "@goldstack/utils-typescript-references": 0.3.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0
@@ -21447,7 +21527,7 @@ resolve@^1.20.0:
   resolution: "utils@workspace:workspaces/utils"
   dependencies:
     "@goldstack/utils-typescript-references": 0.3.1
-    "@types/jest": ^28.1.8
+    "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@typescript-eslint/eslint-plugin": ^4.14.0
     "@typescript-eslint/parser": ^4.14.0

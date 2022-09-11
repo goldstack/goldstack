@@ -12,20 +12,8 @@ While DynamoDB is a NoSQL data store and strictly speaking does not require a da
 The entities we want to store in the table are defined in the file `entities.ts` which is included in the DynamoDB package:
 
 ```typescript
-import { Table, Entity } from 'dynamodb-toolbox';
+import { Table } from 'dynamodb-toolbox';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
-
-export type User = {
-  pk: string;
-  sk: string;
-  name: string;
-  emailVerified: boolean;
-};
-
-export type UserKey = {
-  pk: string;
-  sk: string;
-};
 
 export function createTable<Name extends string>(
   dynamoDB: DynamoDB.DocumentClient,
@@ -39,22 +27,15 @@ export function createTable<Name extends string>(
   });
 }
 
-export function UserEntity<Name extends string>(
-  table: Table<Name, 'pk', 'sk'>
-): Entity<User, UserKey, typeof table> {
-  const e = new Entity<User, UserKey, typeof table>({
-    name: 'User',
-    attributes: {
-      pk: { partitionKey: true },
-      sk: { hidden: true, sortKey: true },
-      name: { type: 'string', required: true },
-      emailVerified: { type: 'boolean', required: true },
-    },
-    table,
-  } as const);
-
-  return e;
-}
+export const UserEntity = {
+  name: 'User',
+  attributes: {
+    email: { partitionKey: true },
+    type: { sortKey: true, default: 'user' },
+    name: { type: 'string', required: true },
+    emailVerified: { type: 'boolean', required: true },
+  },
+} as const;
 ```
 
 You can edit and extend these entities. Note though that it is recommended not to change the name of the `partionKey` (`pk`) and `sortKey` (`sk`).
@@ -115,9 +96,7 @@ If you want to use the DynamoDB Toolbox entities, you can utilise the method `co
 
 ```typescript
 import {
-  User,
   UserEntity,
-  UserKey
   connectTable,
 } from 'your-dynamodb-package';
 ```
@@ -126,15 +105,16 @@ You can then use the return object to instantiate your entities:
 
 ```typescript
 const table = await connectTable();
-const Users = UserEntity(table);
+const Users = new Entity({ ...deepCopy(UserEntity), table } as const);
 
 await Users.put({
-  pk: 'joe@email.com',
-  sk: 'admin',
+  email: 'joe@email.com',
   name: 'Joe',
   emailVerified: true,
 });
 ```
+
+Note that the attributes defined in `UserEntity` need to be copied due to a bug in DynamoDBToolbox: [jeremydaly/dynamodb-toolbox#310](https://github.com/jeremydaly/dynamodb-toolbox/issues/310).
 
 If you want to use the plain Node.js SDK method, you can utilise the methods `getTableName` and `connect` which are also included in the package:
 

@@ -51,7 +51,7 @@
     "@types/command-exists": "^1",
     "@types/fs-extra": "^9.0.13",
     "@types/glob": "^7.1.3",
-    "@types/jest": "^28.1.8",
+    "@types/jest": "^29.0.1",
     "@types/ncp": "^2.0.4",
     "@types/node": "^18.7.13",
     "@types/rimraf": "^3.0.0",

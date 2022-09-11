@@ -34,7 +34,7 @@
     "@goldstack/template-build": "0.1.0",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/utils-template-test": "0.1.0",
-    "@types/jest": "^28.1.8",
+    "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "axios": "0.21.2",
     "jest": "^28.1.0",

@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.1",
-    "@types/jest": "^28.1.8",
+    "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "@types/replace-ext": "^0.0.27",
     "jest": "^28.1.0",
