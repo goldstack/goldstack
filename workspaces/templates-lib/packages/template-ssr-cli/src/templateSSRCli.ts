@@ -23,6 +23,7 @@ import {
   validateDeployment,
   buildFunctions,
   deployFunctions,
+  LambdaConfig,
 } from '@goldstack/utils-aws-lambda';
 import { defaultRoutesPath } from './templateSSRConsts';
 import { buildBundles } from './buildBundles';
@@ -84,23 +85,13 @@ export const run = async (
       .help()
       .parse();
 
-    const packageConfig = new PackageConfig<SSRPackage, SSRDeployment>({
-      packagePath: './',
-    });
+    const { config, lambdaRoutes, packageConfig } = readFunctionConfig();
 
-    const config = packageConfig.getConfig();
-
-    // update routes
-    if (!fs.existsSync(defaultRoutesPath)) {
-      throw new Error(
-        `Please specify lambda function handlers in ${defaultRoutesPath} so that API Gateway route configuration can be generated.`
-      );
-    }
-    let lambdaRoutes = readLambdaConfig(defaultRoutesPath);
+    let filteredLambdaRoutes = lambdaRoutes;
     config.deployments = config.deployments.map((e) => {
       const lambdasConfigs = generateLambdaConfig(
         createLambdaAPIDeploymentConfiguration(e.configuration),
-        lambdaRoutes
+        filteredLambdaRoutes
       );
       e.configuration.lambdas = lambdasConfigs;
       validateDeployment(
@@ -115,10 +106,10 @@ export const run = async (
 
     if (command === 'build' || command === 'deploy') {
       if (opArgs.length === 2) {
-        lambdaRoutes = lambdaRoutes.filter((el) =>
+        filteredLambdaRoutes = filteredLambdaRoutes.filter((el) =>
           minimatch(el.relativeFilePath, `*${opArgs[1]}*`)
         );
-        if (lambdaRoutes.length === 0) {
+        if (filteredLambdaRoutes.length === 0) {
           console.warn(
             `Cannot perform command '${command}'. No routes match supplied filter ${opArgs[1]}.`
           );
@@ -146,7 +137,7 @@ export const run = async (
       // during bundle built and they are injected into function bundle
       await buildBundles({
         routesDir: defaultRoutesPath,
-        configs: lambdaRoutes,
+        configs: filteredLambdaRoutes,
         deploymentName: deployment.name,
         lambdaNamePrefix: lambdaNamePrefix || '',
         buildConfig,
@@ -155,7 +146,7 @@ export const run = async (
         routesDir: defaultRoutesPath,
         deploymentName: deployment.name,
         buildOptions: buildConfig.createServerBuildOptions,
-        configs: lambdaRoutes,
+        configs: filteredLambdaRoutes,
         lambdaNamePrefix: lambdaNamePrefix || '',
         routeFilter,
       });
@@ -180,7 +171,7 @@ export const run = async (
           routesPath: defaultRoutesPath,
           configuration: createLambdaAPIDeploymentConfiguration(config),
           deployment: packageConfig.getDeployment(opArgs[0]),
-          config: lambdaRoutes,
+          config: filteredLambdaRoutes,
         }),
         deployToS3({
           configuration: createLambdaAPIDeploymentConfiguration(config),
@@ -195,3 +186,24 @@ export const run = async (
     throw new Error('Unknown command: ' + command);
   });
 };
+
+export function readFunctionConfig(): {
+  config: SSRPackage;
+  lambdaRoutes: LambdaConfig[];
+  packageConfig: PackageConfig<SSRPackage, SSRDeployment>;
+} {
+  const packageConfig = new PackageConfig<SSRPackage, SSRDeployment>({
+    packagePath: './',
+  });
+
+  const config = packageConfig.getConfig();
+
+  // update routes
+  if (!fs.existsSync(defaultRoutesPath)) {
+    throw new Error(
+      `Please specify lambda function handlers in ${defaultRoutesPath} so that API Gateway route configuration can be generated.`
+    );
+  }
+  const lambdaRoutes = readLambdaConfig(defaultRoutesPath);
+  return { config, lambdaRoutes, packageConfig };
+}

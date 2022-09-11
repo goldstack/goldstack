@@ -20,8 +20,9 @@ export const handler: SSRHandler = async (event, context) => {
     component: Posts,
     appendToHead: '<title>Posts</title>',
     properties: {
-      posts: ['post1', 'post2', 'post3', 'post4'],
+      posts: ['post1', 'post2', 'post3', 'posts4'],
     },
+
     entryPoint: __filename,
     event: event,
   });
