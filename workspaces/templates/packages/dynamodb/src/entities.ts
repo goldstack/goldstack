@@ -16,9 +16,9 @@ export function createTable<Name extends string>(
 export const UserEntity = {
   name: 'User',
   attributes: {
-    pk: { partitionKey: true },
-    sk: { hidden: true, sortKey: true },
+    email: { partitionKey: true },
+    type: { sortKey: true, default: 'user' },
     name: { type: 'string', required: true },
     emailVerified: { type: 'boolean', required: true },
   },
-};
+} as const;

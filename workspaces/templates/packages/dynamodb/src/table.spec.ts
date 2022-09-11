@@ -76,20 +76,21 @@ describe('DynamoDB Table', () => {
   });
 
   it('Should be able to write and read an entity with entities', async () => {
-    // const table = await connectTable();
-    // const Users = new Entity({ ...UserEntity, table } as const);
-    // await Users.put({
-    //   pk: 'joe@email.com',
-    //   sk: 'admin',
-    //   name: 'Joe',
-    //   emailVerified: true,
-    // });
-    // const { Item: user } = await Users.get(
-    //   { pk: 'joe@email.com', sk: 'admin' },
-    //   { attributes: ['name', 'pk'] }
-    // );
-    // expect(user.name).toEqual('Joe');
-    // expect(user.pk).toEqual('joe@email.com');
+    const table = await connectTable();
+    // important to do deep copy here because of
+    //   https://github.com/jeremydaly/dynamodb-toolbox/issues/310
+    const Users = new Entity({ ...deepCopy(UserEntity), table } as const);
+    await Users.put({
+      email: 'joe@email.com',
+      name: 'Joe',
+      emailVerified: true,
+    });
+    const { Item: user } = await Users.get(
+      { email: 'joe@email.com' },
+      { attributes: ['name', 'email'] }
+    );
+    expect(user.name).toEqual('Joe');
+    expect(user.email).toEqual('joe@email.com');
   });
 
   afterAll(async () => {
