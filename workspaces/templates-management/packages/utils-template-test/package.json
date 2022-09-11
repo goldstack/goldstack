@@ -33,7 +33,7 @@
     "mock-aws-s3": "^4.0.2"
   },
   "devDependencies": {
-    "@types/jest": "^28.1.8",
+    "@types/jest": "^29.0.1",
     "@types/mock-aws-s3": "^2.6.3",
     "@types/node": "^18.7.13",
     "jest": "^28.1.0",

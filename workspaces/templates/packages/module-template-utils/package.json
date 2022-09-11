@@ -21,7 +21,7 @@
     "version:apply": "yarn version \"$@\" && yarn version apply"
   },
   "devDependencies": {
-    "@types/jest": "^28.1.8",
+    "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "jest": "^28.1.0",
     "rimraf": "^3.0.2",
