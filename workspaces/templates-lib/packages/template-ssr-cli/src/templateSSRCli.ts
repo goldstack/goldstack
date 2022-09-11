@@ -63,7 +63,7 @@ export const run = async (
         }
       )
       .command(
-        'deploy <deployment> <route>',
+        'deploy <deployment> [route]',
         'Deploy to specified deployment',
         (yargs: Argv<any>): Argv<any> => {
           return yargs

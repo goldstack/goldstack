@@ -25,6 +25,20 @@ title: Serverless API
 
 [!embed](./../shared/deployment.md)
 
+You can deploy each of the routes individually since they are all packaged up into individual lambdas. Provide a pattern that matches the filename/path of the route you want to deploy:
+
+```bash
+yarn deploy [deployment] [route pattern]
+```
+
+For instance, in order to deploy the `$index.tsx` route:
+
+```bash
+yarn deploy [deployment] index
+```
+
+Matching is performed using [minimatch](https://www.npmjs.com/package/minimatch) and a `*` is assumed at the start and end of the pattern provided.
+
 ## Guides and How To
 
 ### Adding environment variables

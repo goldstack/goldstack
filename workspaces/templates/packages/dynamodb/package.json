@@ -18,7 +18,7 @@
     "deploy": "yarn node dist/src/template.js deploy $@",
     "infra": "yarn node dist/src/template.js infra",
     "template": "yarn template-ts",
-    "template-ts": "ts-node src/template.ts",
+    "template-ts": "ts-node --transpile-only src/template.ts",
     "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand",
     "watch": "GOLDSTACK_DEPLOYMENT=local ts-node scripts/watch.ts"
   },

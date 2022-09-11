@@ -2354,10 +2354,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
             ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
             ["@types/jest", "npm:28.1.8"],\
-            ["@types/minimatch", "npm:3.0.3"],\
+            ["@types/minimatch", "npm:5.1.2"],\
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
-            ["minimatch", "npm:3.0.4"],\
+            ["minimatch", "npm:5.1.0"],\
             ["node-watch", "npm:0.6.4"],\
             ["rimraf", "npm:3.0.2"],\
             ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\

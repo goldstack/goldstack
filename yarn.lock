@@ -1400,10 +1400,10 @@ __metadata:
     "@goldstack/utils-log": 0.3.1
     "@goldstack/utils-sh": 0.5.1
     "@types/jest": ^28.1.8
-    "@types/minimatch": ^3.0.3
+    "@types/minimatch": ^5.1.2
     "@types/node": ^18.7.13
     jest: ^28.1.0
-    minimatch: ^3.0.4
+    minimatch: ^5.1.0
     node-watch: ^0.6.4
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2315,7 +2315,7 @@ __metadata:
     "@goldstack/utils-terraform": 0.4.1
     "@goldstack/utils-terraform-aws": 0.4.1
     "@types/jest": ^28.1.8
-    "@types/minimatch": ^5
+    "@types/minimatch": ^5.1.2
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
@@ -2561,7 +2561,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.1
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^28.1.8
-    "@types/minimatch": ^5
+    "@types/minimatch": ^5.1.2
     "@types/node": ^18.7.13
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
     archiver: ^5.3.1
@@ -4845,14 +4845,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/minimatch@npm:*, @types/minimatch@npm:^3.0.3":
+"@types/minimatch@npm:*":
   version: 3.0.3
   resolution: "@types/minimatch@npm:3.0.3"
   checksum: b80259d55b96ef24cb3bb961b6dc18b943f2bb8838b4d8e7bead204f3173e551a416ffa49f9aaf1dc431277fffe36214118628eacf4aea20119df8835229901b
   languageName: node
   linkType: hard
 
-"@types/minimatch@npm:^5":
+"@types/minimatch@npm:^5.1.2":
   version: 5.1.2
   resolution: "@types/minimatch@npm:5.1.2"
   checksum: 0391a282860c7cb6fe262c12b99564732401bdaa5e395bee9ca323c312c1a0f45efbf34dce974682036e857db59a5c9b1da522f3d6055aeead7097264c8705a8
