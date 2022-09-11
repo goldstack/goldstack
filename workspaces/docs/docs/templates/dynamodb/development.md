@@ -95,10 +95,7 @@ There are two different ways in which you can define application logic: using th
 If you want to use the DynamoDB Toolbox entities, you can utilise the method `connectTable` which is include in package:
 
 ```typescript
-import {
-  UserEntity,
-  connectTable,
-} from 'your-dynamodb-package';
+import { UserEntity, connectTable } from 'your-dynamodb-package';
 ```
 
 You can then use the return object to instantiate your entities:

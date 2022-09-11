@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package-config-embedded",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Utilities for working with Goldstack package schemas to be used for embedded configuration.",
   "keywords": [
     "goldstack",
@@ -37,12 +37,12 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.1",
-    "@goldstack/utils-config": "0.4.1",
-    "@goldstack/utils-package": "0.4.1"
+    "@goldstack/infra": "0.4.2",
+    "@goldstack/utils-config": "0.4.2",
+    "@goldstack/utils-package": "0.4.2"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.1",
+    "@goldstack/utils-git": "0.2.2",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "jest": "^28.1.0",

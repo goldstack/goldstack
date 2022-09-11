@@ -6,12 +6,12 @@ The [DynamoDB template](https://goldstack.party/templates/dynamodb) provides a l
 
 ## Features
 
-- Create DynamoDB table
-- Run migrations using Umzug
-- Easy to use API
-- Strong typing using DynamoDB Toolbox
-- Supports multiple environments (development, production)
-- Provides way to extend infrastructure using Terraform
+*   Create DynamoDB table
+*   Run migrations using Umzug
+*   Easy to use API
+*   Strong typing using DynamoDB Toolbox
+*   Supports multiple environments (development, production)
+*   Provides way to extend infrastructure using Terraform
 
 ## Configure
 
@@ -41,8 +41,8 @@ This will be either `yarn infra up dev` or `yarn infra up prod` depending on you
 
 In order to make use of the DynamoDB package we principally want to do two things:
 
-- Define the schema for our table
-- Write application logic to work with the data in the table
+*   Define the schema for our table
+*   Write application logic to work with the data in the table
 
 In this template, the former will be done within the DynamoDB package but the latter can either happen in other packages. For instance, if you have included a [Serverless API](https://goldstack.party/templates/lambda-api) template in your project, you can define your logic for working with the data in DynamoDB in that package. However, you can also write additional code in the DynamoDB package and define a lightweight DOA layer.
 
@@ -53,20 +53,8 @@ While DynamoDB is a NoSQL data store and strictly speaking does not require a da
 The entities we want to store in the table are defined in the file `entities.ts` which is included in the DynamoDB package:
 
 ```typescript
-import { Table, Entity } from 'dynamodb-toolbox';
+import { Table } from 'dynamodb-toolbox';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
-
-export type User = {
-  pk: string;
-  sk: string;
-  name: string;
-  emailVerified: boolean;
-};
-
-export type UserKey = {
-  pk: string;
-  sk: string;
-};
 
 export function createTable<Name extends string>(
   dynamoDB: DynamoDB.DocumentClient,
@@ -80,22 +68,15 @@ export function createTable<Name extends string>(
   });
 }
 
-export function UserEntity<Name extends string>(
-  table: Table<Name, 'pk', 'sk'>
-): Entity<User, UserKey, typeof table> {
-  const e = new Entity<User, UserKey, typeof table>({
-    name: 'User',
-    attributes: {
-      pk: { partitionKey: true },
-      sk: { hidden: true, sortKey: true },
-      name: { type: 'string', required: true },
-      emailVerified: { type: 'boolean', required: true },
-    },
-    table,
-  } as const);
-
-  return e;
-}
+export const UserEntity = {
+  name: 'User',
+  attributes: {
+    email: { partitionKey: true },
+    type: { sortKey: true, default: 'user' },
+    name: { type: 'string', required: true },
+    emailVerified: { type: 'boolean', required: true },
+  },
+} as const;
 ```
 
 You can edit and extend these entities. Note though that it is recommended not to change the name of the `partionKey` (`pk`) and `sortKey` (`sk`).
@@ -155,27 +136,23 @@ There are two different ways in which you can define application logic: using th
 If you want to use the DynamoDB Toolbox entities, you can utilise the method `connectTable` which is include in package:
 
 ```typescript
-import {
-  User,
-  UserEntity,
-  UserKey
-  connectTable,
-} from 'your-dynamodb-package';
+import { UserEntity, connectTable } from 'your-dynamodb-package';
 ```
 
 You can then use the return object to instantiate your entities:
 
 ```typescript
 const table = await connectTable();
-const Users = UserEntity(table);
+const Users = new Entity({ ...deepCopy(UserEntity), table } as const);
 
 await Users.put({
-  pk: 'joe@email.com',
-  sk: 'admin',
+  email: 'joe@email.com',
   name: 'Joe',
   emailVerified: true,
 });
 ```
+
+Note that the attributes defined in `UserEntity` need to be copied due to a bug in DynamoDBToolbox: [jeremydaly/dynamodb-toolbox#310](https://github.com/jeremydaly/dynamodb-toolbox/issues/310).
 
 If you want to use the plain Node.js SDK method, you can utilise the methods `getTableName` and `connect` which are also included in the package:
 
@@ -233,13 +210,13 @@ The configuration tool will define one deployment. This will be either `dev` or 
 
 Infrastructure commands for this template can be run using `yarn`. There are four commands in total:
 
-- `yarn infra up`: For standing up infrastructure.
-- `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
-- `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
-- `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
-- `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
-- `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
-- `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
+*   `yarn infra up`: For standing up infrastructure.
+*   `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
+*   `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
+*   `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
+*   `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+*   `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
+*   `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
 
 For each command, the deployment they should be applied to must be specified.
 

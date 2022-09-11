@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-log",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Utilities for emitting logs.",
   "keywords": [
     "goldstack",
@@ -34,7 +34,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.1",
+    "@goldstack/utils-git": "0.2.2",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "jest": "^28.1.0",
