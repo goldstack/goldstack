@@ -8,7 +8,7 @@ import {
   readDeploymentState,
   readTerraformStateVariable,
 } from '@goldstack/infra';
-import yargs from 'yargs';
+import yargs, { Argv } from 'yargs';
 import fs from 'fs';
 import {
   createLambdaAPIDeploymentConfiguration,
@@ -23,48 +23,75 @@ import {
   validateDeployment,
   buildFunctions,
   deployFunctions,
+  LambdaConfig,
 } from '@goldstack/utils-aws-lambda';
 import { defaultRoutesPath } from './templateSSRConsts';
 import { buildBundles } from './buildBundles';
 import { deployToS3 } from './deployToS3';
+
+import minimatch from 'minimatch';
 
 export const run = async (
   args: string[],
   buildConfig: BuildConfiguration
 ): Promise<void> => {
   await wrapCli(async () => {
-    const argv = await buildCli({
-      yargs,
-      deployCommands: buildDeployCommands(),
-      infraCommands: infraCommands(),
-    })
-      .command('build [deployment]', 'Build all lambdas', () => {
-        return yargs.positional('deployment', {
-          type: 'string',
-          describe: 'Name of the deployment this command should be applied to',
-          default: '',
-        });
-      })
+    const argv = await yargs
+      .scriptName('template')
+      .usage('$0 <infra|build|deploy>')
+      .command(
+        'infra <up|down|init|plan|apply|destroy|upgrade|terraform> <deployment>',
+        'Manage infrastructure for deployment',
+        infraCommands()
+      )
+      .command(
+        'build <deployment> [route]',
+        'Build deployment packages',
+        (yargs: Argv<any>): Argv<any> => {
+          return yargs
+            .positional('deployment', {
+              description:
+                'Name of the deployment where the package should be deployed to.',
+              type: 'string',
+              demandOption: true,
+            })
+            .positional('route', {
+              type: 'string',
+              demandOption: false,
+              description:
+                'A glob filter to select specific routes for deployment',
+            });
+        }
+      )
+      .command(
+        'deploy <deployment> [route]',
+        'Deploy to specified deployment',
+        (yargs: Argv<any>): Argv<any> => {
+          return yargs
+            .positional('deployment', {
+              description:
+                'Name of the deployment where the package should be deployed to.',
+              type: 'string',
+              demandOption: true,
+            })
+            .positional('route', {
+              type: 'string',
+              demandOption: false,
+              description:
+                'A glob filter to select specific routes for deployment',
+            });
+        }
+      )
       .help()
       .parse();
 
-    const packageConfig = new PackageConfig<SSRPackage, SSRDeployment>({
-      packagePath: './',
-    });
+    const { config, lambdaRoutes, packageConfig } = readFunctionConfig();
 
-    const config = packageConfig.getConfig();
-
-    // update routes
-    if (!fs.existsSync(defaultRoutesPath)) {
-      throw new Error(
-        `Please specify lambda function handlers in ${defaultRoutesPath} so that API Gateway route configuration can be generated.`
-      );
-    }
-    const lambdaRoutes = readLambdaConfig(defaultRoutesPath);
+    let filteredLambdaRoutes = lambdaRoutes;
     config.deployments = config.deployments.map((e) => {
       const lambdasConfigs = generateLambdaConfig(
         createLambdaAPIDeploymentConfiguration(e.configuration),
-        lambdaRoutes
+        filteredLambdaRoutes
       );
       e.configuration.lambdas = lambdasConfigs;
       validateDeployment(
@@ -77,6 +104,20 @@ export const run = async (
     const command = argv._[0];
     const [, , , ...opArgs] = args;
 
+    if (command === 'build' || command === 'deploy') {
+      if (opArgs.length === 2) {
+        filteredLambdaRoutes = filteredLambdaRoutes.filter((el) =>
+          minimatch(el.relativeFilePath, `*${opArgs[1]}*`)
+        );
+        if (filteredLambdaRoutes.length === 0) {
+          console.warn(
+            `Cannot perform command '${command}'. No routes match supplied filter ${opArgs[1]}.`
+          );
+          return;
+        }
+      }
+    }
+
     if (command === 'infra') {
       await terraformAwsCli(opArgs, {
         // temporary workaround for https://github.com/goldstack/goldstack/issues/40
@@ -87,12 +128,16 @@ export const run = async (
 
     if (command === 'build') {
       const deployment = packageConfig.getDeployment(opArgs[0]);
+      let routeFilter: undefined | string = undefined;
+      if (opArgs.length === 2) {
+        routeFilter = `*${opArgs[1]}*`;
+      }
       const lambdaNamePrefix = deployment.configuration.lambdaNamePrefix;
       // bundles need to be built first since static mappings are updated
       // during bundle built and they are injected into function bundle
       await buildBundles({
         routesDir: defaultRoutesPath,
-        configs: lambdaRoutes,
+        configs: filteredLambdaRoutes,
         deploymentName: deployment.name,
         lambdaNamePrefix: lambdaNamePrefix || '',
         buildConfig,
@@ -101,8 +146,9 @@ export const run = async (
         routesDir: defaultRoutesPath,
         deploymentName: deployment.name,
         buildOptions: buildConfig.createServerBuildOptions,
-        configs: lambdaRoutes,
+        configs: filteredLambdaRoutes,
         lambdaNamePrefix: lambdaNamePrefix || '',
+        routeFilter,
       });
       return;
     }
@@ -125,7 +171,7 @@ export const run = async (
           routesPath: defaultRoutesPath,
           configuration: createLambdaAPIDeploymentConfiguration(config),
           deployment: packageConfig.getDeployment(opArgs[0]),
-          config: lambdaRoutes,
+          config: filteredLambdaRoutes,
         }),
         deployToS3({
           configuration: createLambdaAPIDeploymentConfiguration(config),
@@ -140,3 +186,24 @@ export const run = async (
     throw new Error('Unknown command: ' + command);
   });
 };
+
+export function readFunctionConfig(): {
+  config: SSRPackage;
+  lambdaRoutes: LambdaConfig[];
+  packageConfig: PackageConfig<SSRPackage, SSRDeployment>;
+} {
+  const packageConfig = new PackageConfig<SSRPackage, SSRDeployment>({
+    packagePath: './',
+  });
+
+  const config = packageConfig.getConfig();
+
+  // update routes
+  if (!fs.existsSync(defaultRoutesPath)) {
+    throw new Error(
+      `Please specify lambda function handlers in ${defaultRoutesPath} so that API Gateway route configuration can be generated.`
+    );
+  }
+  const lambdaRoutes = readLambdaConfig(defaultRoutesPath);
+  return { config, lambdaRoutes, packageConfig };
+}

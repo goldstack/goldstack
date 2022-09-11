@@ -42,6 +42,8 @@ export interface PartialRenderPageProps<PropType> {
   entryPoint: string;
   event: APIGatewayProxyEventV2;
   renderDocument?: (props: RenderDocumentProps<PropType>) => string;
+  appendToHead?: string;
+  appendToBody?: string;
   component: React.FunctionComponent<PropType>;
   staticFileMapper?: StaticFileMapper;
   staticFileMapperStore?: unknown;
@@ -52,6 +54,8 @@ export interface PartialRenderPageProps<PropType> {
 export interface RenderPageProps<PropType> {
   entryPoint: string;
   event: APIGatewayProxyEventV2;
+  appendToHead?: string;
+  appendToBody?: string;
   renderDocument: (props: RenderDocumentProps<PropType>) => string;
   component: React.FunctionComponent<PropType>;
   staticFileMapper?: StaticFileMapper;
@@ -64,6 +68,8 @@ export const renderPage = async <PropType>({
   entryPoint,
   event,
   renderDocument,
+  appendToBody,
+  appendToHead,
   staticFileMapper,
   staticFileMapperStore,
   component,
@@ -160,11 +166,13 @@ export const renderPage = async <PropType>({
   }
 
   const document = renderDocument({
-    injectIntoHead: `${styles ? `<style>${styles}</style>` : ''}`,
+    injectIntoHead: `${styles ? `<style>${styles}</style>` : ''}
+    ${appendToHead ? appendToHead : ''}`,
     injectIntoBody: `
         <div id="root">${page}</div>
         <script>window.initialProperties=${JSON.stringify(properties)};</script>
         <script src="${clientBundlePath}"></script>
+        ${appendToBody ? appendToBody : ''}
     `,
     staticFileMapper: staticFileMapper,
     event,

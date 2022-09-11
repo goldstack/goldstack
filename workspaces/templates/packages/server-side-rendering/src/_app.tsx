@@ -1,19 +1,17 @@
 import React from 'react';
 
-import type { ComponentType } from 'react';
-
-const Wrapped = ({
+function Wrapped<PropType>({
   Component,
-  pageProps,
 }: {
-  Component: ComponentType;
-  pageProps: any;
-}): JSX.Element => {
-  return (
-    <>
-      <Component {...pageProps} />
-    </>
-  );
-};
+  Component: React.FunctionComponent<PropType>;
+}): React.FunctionComponent<PropType> {
+  return function Wrapper(props: PropType): JSX.Element {
+    return (
+      <>
+        <Component {...props}></Component>
+      </>
+    );
+  };
+}
 
 export default Wrapped;

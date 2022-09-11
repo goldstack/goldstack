@@ -52,17 +52,22 @@ export const buildFunctions = async ({
   deploymentName,
   buildOptions,
   lambdaNamePrefix,
+  routeFilter,
 }: {
   routesDir: string;
   configs: LambdaConfig[];
   deploymentName: string;
   buildOptions: (args: ServerBuildOptionsArgs) => BuildOptions;
   lambdaNamePrefix: string;
+  routeFilter?: string;
 }): Promise<void> => {
   const buildConfig = readToType<BuildOptions>('./esbuild.config.json');
 
-  await rmSafe('./distLambda');
-  mkdir('-p', './distLambda/zips');
+  // if we have a filter, we don't remove previous outputs
+  if (!routeFilter) {
+    await rmSafe('./distLambda');
+    mkdir('-p', './distLambda/zips');
+  }
   for await (const config of configs) {
     mkdir('-p', getOutDirForLambda(config));
     const esbuildLocalPath = changeExtension(

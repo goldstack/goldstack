@@ -1,7 +1,12 @@
 import { PartialRenderPageProps } from '@goldstack/template-ssr';
 
-import { renderPage as ssrRenderPage } from '@goldstack/template-ssr';
+import {
+  renderPage as ssrRenderPage,
+  hydrate as ssrHydrate,
+} from '@goldstack/template-ssr';
 import { APIGatewayProxyResultV2 } from 'aws-lambda';
+
+import Wrapped from './_app';
 
 import staticFileMapperStore from './state/staticFiles.json';
 
@@ -19,5 +24,12 @@ export async function renderPage<P>(
       return buildConfig();
     },
     ...props,
+    component: Wrapped({
+      Component: props.component,
+    }),
   });
+}
+
+export function hydrate(c: React.FunctionComponent<any>): void {
+  ssrHydrate(Wrapped({ Component: c }));
 }

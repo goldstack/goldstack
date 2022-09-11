@@ -3,12 +3,24 @@
     "names": [
       "goldstack-test-ssr--__index-bundle.js"
     ],
-    "generatedName": "-__index-bundle.36077e1f0f27491bf615e7d6cc67b2a2.js"
+    "generatedName": "-__index-bundle.930351029dd5c8271be7a5cc64ca99ad.js"
   },
   {
     "names": [
       "goldstack-test-ssr--__index.map"
     ],
-    "generatedName": "-__index.073ff6fc38d6fe4b3ea8fda7ed712083.map.json"
+    "generatedName": "-__index.0000ff79e59d0ba74762da840c0f2be4.map.json"
+  },
+  {
+    "names": [
+      "goldstack-test-ssr-posts.map"
+    ],
+    "generatedName": "posts.b51ccd0b7463feb37566d6747bd9efac.map.json"
+  },
+  {
+    "names": [
+      "goldstack-test-ssr-posts-bundle.js"
+    ],
+    "generatedName": "posts-bundle.8c010962434a654ca92d597d1837da1c.js"
   }
 ]
