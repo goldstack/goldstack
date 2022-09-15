@@ -41,7 +41,7 @@ export interface RenderDocumentProps<PropType> {
 export interface PartialRenderPageProps<PropType> {
   entryPoint: string;
   event: APIGatewayProxyEventV2;
-  renderDocument?: (props: RenderDocumentProps<PropType>) => string;
+  renderDocument?: (props: RenderDocumentProps<PropType>) => Promise<string>;
   appendToHead?: string;
   appendToBody?: string;
   component: React.FunctionComponent<PropType>;
@@ -56,7 +56,7 @@ export interface RenderPageProps<PropType> {
   event: APIGatewayProxyEventV2;
   appendToHead?: string;
   appendToBody?: string;
-  renderDocument: (props: RenderDocumentProps<PropType>) => string;
+  renderDocument: (props: RenderDocumentProps<PropType>) => Promise<string>;
   component: React.FunctionComponent<PropType>;
   staticFileMapper?: StaticFileMapper;
   staticFileMapperStore?: unknown;
@@ -165,7 +165,7 @@ export const renderPage = async <PropType>({
     });
   }
 
-  const document = renderDocument({
+  const document = await renderDocument({
     injectIntoHead: `${styles ? `<style>${styles}</style>` : ''}
     ${appendToHead ? appendToHead : ''}`,
     injectIntoBody: `
