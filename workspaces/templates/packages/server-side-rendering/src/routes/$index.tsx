@@ -33,7 +33,7 @@ export const handler: SSRHandler = async (event, context) => {
       message: 'Hi there',
     },
     entryPoint: __filename,
-    event: event,
+    event,
   });
 };
 

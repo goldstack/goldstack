@@ -36,16 +36,17 @@ export const startServer = async (
   }
   const lambdaConfig = readLambdaConfig(options.routesDir);
 
-  injectRoutes({
-    app: app,
-    lambdaConfigs: lambdaConfig,
-  });
-
+  // these should come before dynamic routes
   if (options.staticRoutes) {
     Object.entries(options.staticRoutes).forEach((e) => {
       app.use(e[0], express.static(e[1]));
     });
   }
+
+  injectRoutes({
+    app: app,
+    lambdaConfigs: lambdaConfig,
+  });
 
   const result = await new Promise<Server>((resolve) => {
     const server = app.listen(parseInt(options.port), function () {
