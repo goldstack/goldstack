@@ -2,7 +2,9 @@
 
 import type { RenderDocumentProps } from '@goldstack/template-ssr';
 
-const renderDocument = (props: RenderDocumentProps<unknown>): string => {
+const renderDocument = async (
+  props: RenderDocumentProps<unknown>
+): Promise<string> => {
   const template = `
 <!DOCTYPE html>
 <html>
