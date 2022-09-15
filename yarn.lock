@@ -1627,9 +1627,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/server-side-rendering@workspace:workspaces/templates/packages/server-side-rendering"
   dependencies:
-    "@goldstack/template-ssr": 0.3.5
-    "@goldstack/template-ssr-cli": 0.3.6
-    "@goldstack/utils-aws-http-api-local": 0.3.4
+    "@goldstack/template-ssr": 0.3.6
+    "@goldstack/template-ssr-cli": 0.3.7
+    "@goldstack/utils-aws-http-api-local": 0.3.5
     "@goldstack/utils-esbuild": 0.5.2
     "@jest-mock/express": ^1.4.5
     "@jest/transform": ^28.1.3
@@ -1676,7 +1676,7 @@ __metadata:
   resolution: "@goldstack/serverless-api@workspace:workspaces/templates/packages/serverless-api"
   dependencies:
     "@goldstack/template-lambda-api-cli": 0.6.3
-    "@goldstack/utils-aws-http-api-local": 0.3.4
+    "@goldstack/utils-aws-http-api-local": 0.3.5
     "@goldstack/utils-esbuild": 0.5.2
     "@jest-mock/express": ^1.4.5
     "@types/aws-lambda": ^8.10.88
@@ -2292,14 +2292,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr-cli@0.3.6, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
+"@goldstack/template-ssr-cli@0.3.7, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli"
   dependencies:
     "@goldstack/infra": 0.4.2
     "@goldstack/infra-aws": 0.4.3
-    "@goldstack/template-ssr": 0.3.5
-    "@goldstack/template-ssr-server": 0.3.5
+    "@goldstack/template-ssr": 0.3.6
+    "@goldstack/template-ssr-server": 0.3.6
     "@goldstack/template-ssr-server-compile-bundle": 0.3.4
     "@goldstack/utils-aws-lambda": 0.3.3
     "@goldstack/utils-cli": 0.3.2
@@ -2366,7 +2366,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr-server@0.3.5, @goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server":
+"@goldstack/template-ssr-server@0.3.6, @goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server"
   dependencies:
@@ -2402,13 +2402,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr@0.3.5, @goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr":
+"@goldstack/template-ssr@0.3.6, @goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr"
   dependencies:
     "@goldstack/infra": 0.4.2
     "@goldstack/infra-aws": 0.4.3
-    "@goldstack/template-ssr-server": 0.3.5
+    "@goldstack/template-ssr-server": 0.3.6
     "@goldstack/utils-aws-lambda": 0.3.3
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-esbuild": 0.5.2
@@ -2527,7 +2527,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-aws-http-api-local@0.3.4, @goldstack/utils-aws-http-api-local@workspace:workspaces/templates-lib/packages/utils-aws-http-api-local":
+"@goldstack/utils-aws-http-api-local@0.3.5, @goldstack/utils-aws-http-api-local@workspace:workspaces/templates-lib/packages/utils-aws-http-api-local":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-aws-http-api-local@workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"
   dependencies:
