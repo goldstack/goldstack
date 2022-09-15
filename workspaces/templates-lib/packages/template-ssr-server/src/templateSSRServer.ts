@@ -84,7 +84,7 @@ export const renderPage = async <PropType>({
   if (!staticFileMapper) {
     staticFileMapper = new StaticFileMapperRun({
       store: staticFileMapperStore as MappingStore,
-      baseUrl: '_goldstack/static/generated/',
+      baseUrl: '/_goldstack/static/generated/',
     });
   }
   if (event.queryStringParameters && event.queryStringParameters['resource']) {
