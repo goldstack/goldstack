@@ -3,24 +3,36 @@
     "names": [
       "goldstack-test-ssr--__index-bundle.js"
     ],
-    "generatedName": "-__index-bundle.930351029dd5c8271be7a5cc64ca99ad.js"
+    "generatedName": "-__index-bundle.e97f3abf7bcee6f636136c32a4138469.js"
   },
   {
     "names": [
       "goldstack-test-ssr--__index.map"
     ],
-    "generatedName": "-__index.0000ff79e59d0ba74762da840c0f2be4.map.json"
+    "generatedName": "-__index.20de119b8e0b6cbd0aeec387e637f962.map.json"
   },
   {
     "names": [
       "goldstack-test-ssr-posts.map"
     ],
-    "generatedName": "posts.b51ccd0b7463feb37566d6747bd9efac.map.json"
+    "generatedName": "posts.b9ce0ae35ba2d08c12d93733d4487582.map.json"
   },
   {
     "names": [
       "goldstack-test-ssr-posts-bundle.js"
     ],
-    "generatedName": "posts-bundle.8c010962434a654ca92d597d1837da1c.js"
+    "generatedName": "posts-bundle.1e939994e4994afd01497c3514c30ba6.js"
+  },
+  {
+    "names": [
+      "goldstack-test-ssr-_greedy__.map"
+    ],
+    "generatedName": "_greedy__.d7f84bd112c7f475fe81f4ba17013d86.map.json"
+  },
+  {
+    "names": [
+      "goldstack-test-ssr-_greedy__-bundle.js"
+    ],
+    "generatedName": "_greedy__-bundle.87bae541feacf843c258c7404ce9d39c.js"
   }
 ]
