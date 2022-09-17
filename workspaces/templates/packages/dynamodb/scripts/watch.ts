@@ -8,7 +8,7 @@ import DynamoDB from 'aws-sdk/clients/dynamodb';
   let localAdminServer: undefined | any = undefined;
   await new Promise<void>(async (resolve, reject) => {
     const localAdmin = await createServer(
-      client,
+      client as any, // otherwise strange type error occurs
       new DynamoDB.DocumentClient({ service: client })
     );
     const adminPort = process.env.DYNAMODB_ADMIN_PORT || '8001';
