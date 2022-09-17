@@ -1,8 +1,10 @@
 import { connect, stopLocalDynamoDB } from './../src/table';
 import * as readline from 'readline';
+import { createServer } from 'dynamodb-admin';
 
 (async () => {
-  await connect();
+  const connection = await connect();
+
   await new Promise((resolve) => {
     const prompt = readline.createInterface({
       input: process.stdin,

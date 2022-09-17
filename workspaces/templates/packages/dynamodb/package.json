@@ -27,6 +27,7 @@
     "@goldstack/template-dynamodb": "0.2.3",
     "aws-sdk": "2.1055.0",
     "deep-copy": "^1.4.2",
+    "dynamodb-admin": "^4.4.0",
     "dynamodb-toolbox": "^0.4.3",
     "umzug": "^3.1.1"
   },
