@@ -94,6 +94,9 @@ describe('DynamoDB Table', () => {
   });
 
   afterAll(async () => {
-    await stopLocalDynamoDB();
+    // not shutting down server is useful when DynamoDB is started using the 'watch' script
+    if (!(process.env.STOP_SERVER === 'false')) {
+      await stopLocalDynamoDB();
+    }
   });
 });

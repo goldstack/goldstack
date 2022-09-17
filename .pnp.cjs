@@ -2006,12 +2006,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@aws-sdk/util-dynamodb", "npm:3.87.0"],\
             ["@goldstack/template-dynamodb", "workspace:workspaces/templates-lib/packages/template-dynamodb"],\
             ["@goldstack/template-dynamodb-cli", "workspace:workspaces/templates-lib/packages/template-dynamodb-cli"],\
+            ["@types/ejs", "npm:3.1.1"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["aws-sdk", "npm:2.1055.0"],\
             ["deep-copy", "npm:1.4.2"],\
             ["dynamodb-admin", "npm:4.4.0"],\
             ["dynamodb-toolbox", "npm:0.4.3"],\
+            ["ejs", "npm:3.1.8"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
@@ -5855,6 +5857,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/dockerode", "npm:3.3.9"],\
             ["@types/docker-modem", "npm:3.0.2"],\
             ["@types/node", "npm:14.0.13"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/ejs", [\
+        ["npm:3.1.1", {\
+          "packageLocation": "./.yarn/cache/@types-ejs-npm-3.1.1-0ab41f0e19-12fa444920.zip/node_modules/@types/ejs/",\
+          "packageDependencies": [\
+            ["@types/ejs", "npm:3.1.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -12653,6 +12664,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cookie-signature", "npm:1.0.6"],\
             ["debug", "virtual:6e177cabfad012f413f9c41366539c04d8701f0567119998690ab02224012faa99ec3a16b9f74f4d7920ab472c12b3e70f47f8f143239c06d0e2569e60ed9f62#npm:2.6.9"],\
             ["depd", "npm:1.1.2"],\
+            ["ejs", "npm:3.1.8"],\
             ["encodeurl", "npm:1.0.2"],\
             ["escape-html", "npm:1.0.3"],\
             ["etag", "npm:1.8.1"],\

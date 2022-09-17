@@ -1074,12 +1074,14 @@ __metadata:
     "@aws-sdk/util-dynamodb": ^3.87.0
     "@goldstack/template-dynamodb": 0.2.3
     "@goldstack/template-dynamodb-cli": 0.5.3
+    "@types/ejs": ^3
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: 2.1055.0
     deep-copy: ^1.4.2
     dynamodb-admin: ^4.4.0
     dynamodb-toolbox: ^0.4.3
+    ejs: ^3.1.8
     jest: ^28.1.0
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
@@ -4571,6 +4573,13 @@ __metadata:
     "@types/docker-modem": "*"
     "@types/node": "*"
   checksum: 3d03c68addb37c50e9557fff17171d26423aa18e544cb24e4caa81ebcec39ccc1cafed7adbfb8f4220d8ed23028d231717826bb77a786d425885c4f4cc37536d
+  languageName: node
+  linkType: hard
+
+"@types/ejs@npm:^3":
+  version: 3.1.1
+  resolution: "@types/ejs@npm:3.1.1"
+  checksum: 12fa444920aaa70af2fae4424fa62b49c23b31a37129c428b7c9f9068e58c0696b4e5601b0449f87bae8794e039c679a43651c356c34f17d1bb460456dd41441
   languageName: node
   linkType: hard
 
@@ -9376,7 +9385,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ejs@npm:^3.1.6":
+"ejs@npm:*, ejs@npm:^3.1.6, ejs@npm:^3.1.8":
   version: 3.1.8
   resolution: "ejs@npm:3.1.8"
   dependencies:
