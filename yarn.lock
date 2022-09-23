@@ -6574,7 +6574,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:2.1222.0":
+"aws-sdk@npm:^2.1222.0":
   version: 2.1222.0
   resolution: "aws-sdk@npm:2.1222.0"
   dependencies:
