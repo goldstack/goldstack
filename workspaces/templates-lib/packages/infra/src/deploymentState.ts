@@ -62,7 +62,7 @@ export const getDeploymentState = (
       };
     }
     throw new Error(
-      `Deployment state not defined for deployment '${deploymentName}'. Did you already deploy this deployment?`
+      `Deployment state not defined for deployment '${deploymentName}'. Did you set up the infrastructure for this deployment with 'yarn infra up [deploymentName]'?`
     );
   }
   return deploymentState;
