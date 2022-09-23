@@ -29,15 +29,15 @@
   },
   "dependencies": {
     "@goldstack/goldstack-email-send": "0.1.0",
-    "@goldstack/infra-aws": "0.4.4",
+    "@goldstack/infra-aws": "0.4.5",
     "@goldstack/project-build": "0.1.0",
     "@goldstack/project-install": "0.1.0",
     "@goldstack/template-build-set": "0.1.0",
     "@goldstack/template-metadata": "0.1.0",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/template-repository-bucket": "0.1.0",
-    "@goldstack/template-s3": "0.4.4",
-    "@goldstack/template-static-website-aws": "0.5.4",
+    "@goldstack/template-s3": "0.4.5",
+    "@goldstack/template-static-website-aws": "0.5.5",
     "@goldstack/utils-cli": "0.3.2",
     "@goldstack/utils-config": "0.4.2",
     "@goldstack/utils-git": "0.2.2",
@@ -49,7 +49,7 @@
     "yargs": "^17.5.1"
   },
   "devDependencies": {
-    "@goldstack/template-docker-image-aws": "0.5.4",
+    "@goldstack/template-docker-image-aws": "0.5.5",
     "@goldstack/utils-sh": "0.5.2",
     "@types/jest": "^29.0.1",
     "@types/mock-aws-s3": "^2.6.3",

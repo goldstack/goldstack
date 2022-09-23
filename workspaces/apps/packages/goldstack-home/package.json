@@ -35,7 +35,7 @@
     "@fullstory/browser": "^1.4.5",
     "@goldstack/goldstack-api": "0.1.0",
     "@goldstack/infra": "0.4.2",
-    "@goldstack/infra-aws": "0.4.4",
+    "@goldstack/infra-aws": "0.4.5",
     "@goldstack/project-config": "0.1.0",
     "@goldstack/project-repository": "0.1.0",
     "@goldstack/template-metadata": "0.1.0",
@@ -62,7 +62,7 @@
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
-    "@goldstack/template-nextjs": "0.5.4",
+    "@goldstack/template-nextjs": "0.5.5",
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-sh": "0.5.2",
     "@testing-library/jest-dom": "^5.16.4",
