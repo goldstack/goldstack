@@ -63,6 +63,7 @@ export const createClient = (
 export const startContainer = (): Promise<StartedTestContainer> => {
   const startedContainer = new GenericContainer(IMAGE_NAME)
     .withExposedPorts(MAPPED_PORT)
+    .withCmd(['-jar', 'DynamoDBLocal.jar', '-inMemory'])
     .withReuse()
     .start();
   return startedContainer;
