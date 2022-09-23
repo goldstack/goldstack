@@ -44,7 +44,7 @@
     "@goldstack/utils-log": "0.3.2",
     "@goldstack/utils-package": "0.4.2",
     "@goldstack/utils-sh": "0.5.2",
-    "aws-sdk": "2.1055.0",
+    "aws-sdk": "^2.1222.0",
     "axios": "0.21.2",
     "handlebars": "4.7.7"
   },

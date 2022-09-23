@@ -970,7 +970,7 @@ __metadata:
     "@types/node": ^18.7.13
     "@types/semver": ^7.2.0
     archiver: ^5.3.1
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     fs-extra: ^10.0.0
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1077,7 +1077,7 @@ __metadata:
     "@types/ejs": ^3
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     deep-copy: ^1.4.2
     dynamodb-admin: ^4.4.0
     dynamodb-toolbox: ^0.4.3
@@ -1102,7 +1102,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.2
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     jest: ^28.1.0
     nodemon: ^2.0.15
     rimraf: ^3.0.2
@@ -1182,7 +1182,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.2
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     jest: ^28.1.0
     nodemon: ^2.0.15
     rimraf: ^3.0.2
@@ -1268,7 +1268,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.2
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     axios: 0.21.2
     handlebars: 4.7.7
     jest: ^28.1.0
@@ -1536,7 +1536,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.2
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     concurrently: ^7.3.0
     jest: ^28.1.0
     nodemon: ^2.0.15
@@ -1557,7 +1557,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.2
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     concurrently: ^7.3.0
     jest: ^28.1.0
     nodemon: ^2.0.15
@@ -1586,7 +1586,7 @@ __metadata:
     "@types/node": ^18.7.13
     "@types/semver": ^7.2.0
     "@types/uuid": ^8.3.0
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     fs-extra: ^10.0.0
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1605,7 +1605,7 @@ __metadata:
     "@goldstack/template-s3-cli": 0.6.3
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -1713,7 +1713,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.2
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     concurrently: ^7.3.0
     jest: ^28.1.0
     nodemon: ^2.0.15
@@ -1738,7 +1738,7 @@ __metadata:
     "@types/semver": ^7.2.0
     "@types/stripe": ^7.13.24
     "@types/uuid": ^8.3.0
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     fs-extra: ^10.0.0
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1816,7 +1816,7 @@ __metadata:
     "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     jest: ^28.1.0
     mock-aws-s3: ^4.0.2
     rimraf: ^3.0.2
@@ -1849,7 +1849,7 @@ __metadata:
     "@types/node": ^18.7.13
     "@types/source-map-support": ^0.5.4
     "@types/yargs": ^17.0.10
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     jest: ^28.1.0
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
@@ -1911,7 +1911,7 @@ __metadata:
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     jest: ^28.1.0
     rimraf: ^3.0.2
     testcontainers: ^8.12.0
@@ -1968,7 +1968,7 @@ __metadata:
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
     "@types/uuid": ^8.3.0
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2112,7 +2112,7 @@ __metadata:
     "@types/source-map-support": ^0.5.4
     "@types/wtfnode": ^0.7.0
     "@types/yargs": ^17.0.10
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     concurrently: ^7.3.0
     jest: ^28.1.0
     mock-aws-s3: ^4.0.2
@@ -2196,7 +2196,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.2
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     concurrently: ^7.3.0
     jest: ^28.1.0
     nodemon: ^2.0.15
@@ -2220,7 +2220,7 @@ __metadata:
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/semver": ^7.2.0
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     fs-extra: ^10.0.0
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -2252,7 +2252,7 @@ __metadata:
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     jest: ^28.1.0
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
@@ -2284,7 +2284,7 @@ __metadata:
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     jest: ^28.1.0
     mock-aws-s3: ^4.0.2
     rimraf: ^3.0.2
@@ -2522,7 +2522,7 @@ __metadata:
     "@goldstack/utils-sh": 0.5.2
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2568,7 +2568,7 @@ __metadata:
     "@types/node": ^18.7.13
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
     archiver: ^5.3.1
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     esbuild: ^0.15.5
     esbuild-css-modules-client-plugin: 0.3.2
     jest: ^28.1.0
@@ -2880,7 +2880,7 @@ __metadata:
     "@goldstack/utils-git": 0.2.2
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
@@ -2971,7 +2971,7 @@ __metadata:
     "@goldstack/utils-terraform": 0.4.3
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: 2.1055.0
+    aws-sdk: ^2.1222.0
     jest: ^28.1.0
     rimraf: ^3.0.2
     ts-jest: ^28.0.2

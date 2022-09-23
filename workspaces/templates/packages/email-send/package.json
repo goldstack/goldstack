@@ -31,7 +31,7 @@
     "@goldstack/template-email-send-cli": "0.5.3",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
-    "aws-sdk": "2.1055.0",
+    "aws-sdk": "^2.1222.0",
     "jest": "^28.1.0",
     "nodemon": "^2.0.15",
     "rimraf": "^3.0.2",

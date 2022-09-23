@@ -49,7 +49,7 @@
     "@goldstack/utils-package-config-embedded": "0.5.2",
     "@goldstack/utils-terraform": "0.4.3",
     "@goldstack/utils-terraform-aws": "0.4.3",
-    "aws-sdk": "2.1055.0",
+    "aws-sdk": "^2.1222.0",
     "uuid": "^8.3.0"
   },
   "devDependencies": {

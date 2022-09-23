@@ -30,7 +30,7 @@
     "@goldstack/utils-s3": "0.3.2",
     "@goldstack/utils-sh": "0.5.2",
     "@goldstack/utils-template": "0.4.2",
-    "aws-sdk": "2.1055.0",
+    "aws-sdk": "^2.1222.0",
     "fs-extra": "^10.0.0",
     "semver": "^7.3.2",
     "uuid": "^8.3.0"
