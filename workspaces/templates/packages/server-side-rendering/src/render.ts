@@ -1,4 +1,4 @@
-import { PartialRenderPageProps } from '@goldstack/template-ssr';
+import { getDeployment, PartialRenderPageProps } from '@goldstack/template-ssr';
 
 import {
   renderPage as ssrRenderPage,
@@ -10,6 +10,8 @@ import Wrapped from './_app';
 
 import staticFileMapperStore from './state/staticFiles.json';
 
+import goldstackJson from './../goldstack.json';
+
 import renderDocument from './_document';
 
 import buildConfig from './build';
@@ -17,9 +19,11 @@ import buildConfig from './build';
 export async function renderPage<P>(
   props: PartialRenderPageProps<P>
 ): Promise<APIGatewayProxyResultV2> {
+  const deployment = getDeployment(goldstackJson);
   return ssrRenderPage({
     staticFileMapperStore,
     renderDocument,
+    deployment,
     buildConfig: () => {
       return buildConfig();
     },

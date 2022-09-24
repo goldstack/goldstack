@@ -26,6 +26,7 @@ export type {
 };
 
 import { StaticFileMapper } from 'static-file-mapper';
+import type { Deployment } from '@goldstack/infra';
 
 export const clientBundleFileName = 'client.bundle.js';
 export const clientCSSFileName = 'client.bundle.css';
@@ -33,6 +34,7 @@ export const clientCSSFileName = 'client.bundle.css';
 export interface RenderDocumentProps<PropType> {
   injectIntoHead: string;
   injectIntoBody: string;
+  deployment: Deployment;
   staticFileMapper: StaticFileMapper;
   event: APIGatewayProxyEventV2;
   properties: PropType;
@@ -56,6 +58,7 @@ export interface RenderPageProps<PropType> {
   event: APIGatewayProxyEventV2;
   appendToHead?: string;
   appendToBody?: string;
+  deployment: Deployment;
   renderDocument: (props: RenderDocumentProps<PropType>) => Promise<string>;
   component: React.FunctionComponent<PropType>;
   staticFileMapper?: StaticFileMapper;
@@ -73,6 +76,7 @@ export const renderPage = async <PropType>({
   staticFileMapper,
   staticFileMapperStore,
   component,
+  deployment,
   properties,
   buildConfig,
 }: RenderPageProps<PropType>): Promise<APIGatewayProxyResultV2> => {
@@ -168,6 +172,7 @@ export const renderPage = async <PropType>({
   const document = await renderDocument({
     injectIntoHead: `${styles ? `<style>${styles}</style>` : ''}
     ${appendToHead ? appendToHead : ''}`,
+    deployment,
     injectIntoBody: `
         <div id="root">${page}</div>
         <script>window.initialProperties=${JSON.stringify(properties)};</script>

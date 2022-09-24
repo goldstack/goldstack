@@ -11,6 +11,8 @@ import ReactDOM from 'react-dom/client';
 import type { RenderPageProps } from '@goldstack/template-ssr-server';
 import type { LambdaApiDeploymentConfiguration } from '@goldstack/utils-aws-lambda';
 import type { SSRDeploymentConfiguration } from './types/SSRPackage';
+import type { Deployment } from '@goldstack/infra';
+import type { Package } from '@goldstack/utils-package';
 
 export type SSRHandler = Handler<
   APIGatewayProxyEventV2,
@@ -24,6 +26,26 @@ export type {
   ClientBuildOptionsArgs,
   ServerBuildOptionsArgs,
 } from '@goldstack/template-ssr-server';
+
+export const getDeployment = (goldstackJson: Package): Deployment => {
+  const envVar = process.env.GOLDSTACK_DEPLOYMENT;
+
+  const deployment: Deployment | undefined = goldstackJson.deployments.find(
+    (d) => d.name === envVar
+  );
+  if (!deployment && envVar === 'local') {
+    return {
+      configuration: {},
+      name: 'local',
+    };
+  }
+  if (!deployment) {
+    throw new Error(
+      `Cannot render page. Could not find deployment configuration for deployment ${envVar}`
+    );
+  }
+  return deployment;
+};
 
 export const renderPage = async <PropType>(
   props: RenderPageProps<PropType>
