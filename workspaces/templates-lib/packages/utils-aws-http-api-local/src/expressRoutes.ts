@@ -80,6 +80,7 @@ export const injectRoutes = (params: InjectRoutesParam): void => {
       async (req: Request, resp: Response): Promise<void> => {
         const functionName = generateFunctionName('local', lambdaConfig);
         process.env.GOLDSTACK_FUNCTION_NAME = functionName;
+        process.env.GOLDSTACK_DEPLOYMENT = 'local';
         const result = await handler(
           convertToGatewayEvent({ req: req, lambdaConfig: lambdaConfig }),
           createContext({
