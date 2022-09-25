@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-ssr-server",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Building blocks for implementing server-side rendered pages.",
   "keywords": [
     "goldstack",
