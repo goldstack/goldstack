@@ -1,0 +1,39 @@
+name: Branch build
+run-name: Branch build by ${{ github.actor }} 🚀
+on: [push]
+
+jobs:
+  build:
+    name: '🛠️ Build'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
+
+  lint:
+    name: '🖋️ Prettier and Lint'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
+      - run: |
+          yarn format-check
+          yarn lint
+
+  test:
+    name: '🔍 Tests'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
+      - run: |
+          yarn test-ci
+
+  audit:
+    name: '🔒 NPM Audit'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
+      - run: |
+          yarn npm audit --recursive --severity high
