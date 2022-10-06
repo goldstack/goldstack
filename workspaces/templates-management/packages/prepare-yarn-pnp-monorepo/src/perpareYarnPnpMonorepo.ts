@@ -54,6 +54,7 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
 
     const copyFilesFromTemplate = [
       '.gitignore',
+      '.github',
       '.nodemonx.json',
       'jest.config.js',
       'README.md',
