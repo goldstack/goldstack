@@ -15,6 +15,7 @@ export const dynamoDBCli = async (
   const packageSchema = JSON.parse(
     read(`${process.cwd()}/schemas/package.schema.json`)
   );
+  process.env.GOLDSTACK_DEPLOYMENT = args[1];
   if (args[0] === 'init') {
     await connect({
       goldstackConfig,
