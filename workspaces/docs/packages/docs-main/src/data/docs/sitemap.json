@@ -49,7 +49,7 @@
             "children": []
           },
           {
-            "title": "Serverless API",
+            "title": "Server-Side Rendering",
             "path": "templates/server-side-rendering",
             "children": []
           },

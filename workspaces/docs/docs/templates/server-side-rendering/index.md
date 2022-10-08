@@ -1,6 +1,6 @@
 ---
-id: template-lambda-api
-title: Serverless API
+id: template-ssr
+title: Server-Side Rendering
 ---
 
 [!embed](./about.md)

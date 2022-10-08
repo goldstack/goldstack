@@ -93,3 +93,29 @@ Note that this command is only supported for a limited number of versions. Also 
 It is recommend to run `yarn infra init [deployment]`, `yarn infra up [deployment]` and `yarn deploy [deployment]` after every `upgrade` command.
 
 Note that you may have to upgrade various versions in `infra/aws/terraform/providers.tf` as well as making various other changes upgrading Terraform may involve, also see [Terraform Upgrade Guides](https://www.terraform.io/language/upgrade-guides).
+
+### Releasing State Locks
+
+Goldstack automatically creates Terraform state files on S3 and maintains a state lock using DynamoDB. Sometimes Terraform state can become locked if an operation fails unexpectedly. When performing further Terraform operations, an error as the following will be reported:
+
+```
+
+│ Error: Error acquiring the state lock
+│
+│ Error message: ConditionalCheckFailedException: The conditional request
+│ failed
+│ Lock Info:
+│   ID:        37ce96a7-3689-8630-f346-9f1e745c038b
+│   Path:      goldstack-tfstate-f865b5cbbebb107ee7639f77a95b6f46c814fff9/env:/prod/server-side-rendering-prod-9241dfab78652931e675.tfstate
+│   Operation: OperationTypeApply
+│   Who:       root@f3f77f0e8b44
+│   Version:   1.1.3
+│   Created:   2022-10-07 22:05:04.2574526 +0000 UTC
+│   Info:
+```
+
+To resolve this error, take note of the `ID` above and the `deployment` for which the state file has been locked and run the command:
+
+```
+yarn infra terraform [deployment] force-unlock -force [ID]
+```
