@@ -132,4 +132,3 @@ Once your AWS user is configured you can run `yarn infra up prod` in the `/packa
 ## 9. Contribute to Goldstack
 
 Have questions or ideas or want to contribute to the project? Please head over to [github.com/goldstack/goldstack](https://github.com/goldstack/goldstack).
-
