@@ -25,6 +25,9 @@ export const createServerSideRenderingBuildSetConfig = async (): Promise<DeployS
     projects: [
       {
         projectConfiguration,
+        targetRepo: 'goldstack/react-ssr',
+        repoReadme:
+          'workspaces/templates/packages/template-metadata/src/deploySets/serverSideRendering.README.md',
         rootTests: ['assert-package-files', 'assert-root-files', 'root-build'],
         packageConfigurations: [
           {
