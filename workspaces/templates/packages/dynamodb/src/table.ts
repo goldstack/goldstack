@@ -16,6 +16,8 @@ import deepCopy from 'deep-copy';
 
 export { deepCopy };
 
+export { DynamoDB };
+
 export { Entity } from 'dynamodb-toolbox';
 
 export * from './entities';
