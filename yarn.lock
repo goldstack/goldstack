@@ -5889,31 +5889,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ajv@npm:^6.1.0, ajv@npm:^6.12.2, ajv@npm:^6.12.4, ajv@npm:^6.7.0":
-  version: 6.12.5
-  resolution: "ajv@npm:6.12.5"
-  dependencies:
-    fast-deep-equal: ^3.1.1
-    fast-json-stable-stringify: ^2.0.0
-    json-schema-traverse: ^0.4.1
-    uri-js: ^4.2.2
-  checksum: 12ff436e79492ddc1642e0fc1b45c671fa793c221adcd4390cee325eebcdf4e8c2391af96fd30fe7f46b533885726002f96c3580690c8d1d1d09b2e9b8008862
-  languageName: node
-  linkType: hard
-
-"ajv@npm:^6.10.0, ajv@npm:^6.10.2, ajv@npm:^6.5.5":
-  version: 6.12.2
-  resolution: "ajv@npm:6.12.2"
-  dependencies:
-    fast-deep-equal: ^3.1.1
-    fast-json-stable-stringify: ^2.0.0
-    json-schema-traverse: ^0.4.1
-    uri-js: ^4.2.2
-  checksum: 4a87256bbe209b71f5cc49ac98e21f36874747a728b39209635ea3be6f12536f401739ef210ce2877aa30e2abfe31bc9b741a7ee402216728ff4e66132e550e4
-  languageName: node
-  linkType: hard
-
-"ajv@npm:^6.12.5":
+"ajv@npm:^6.1.0, ajv@npm:^6.10.0, ajv@npm:^6.10.2, ajv@npm:^6.12.2, ajv@npm:^6.12.4, ajv@npm:^6.12.5, ajv@npm:^6.5.5, ajv@npm:^6.7.0":
   version: 6.12.6
   resolution: "ajv@npm:6.12.6"
   dependencies:
