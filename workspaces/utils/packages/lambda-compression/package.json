@@ -1,6 +1,6 @@
 {
   "name": "lambda-compression",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "HTTP payload compression for AWS Lambda functions",
   "keywords": [
     "lambda",
@@ -35,7 +35,7 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.2",
+    "@goldstack/utils-git": "0.2.3",
     "@types/aws-lambda": "^8.10.88",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
