@@ -4,6 +4,7 @@ export * from './types/SSRPackage';
 import type {
   APIGatewayProxyEventV2,
   APIGatewayProxyResultV2,
+  APIGatewayProxyStructuredResultV2,
   Handler,
 } from 'aws-lambda';
 
@@ -49,7 +50,7 @@ export const getDeployment = (goldstackJson: Package): Deployment => {
 
 export const renderPage = async <PropType>(
   props: RenderPageProps<PropType>
-): Promise<APIGatewayProxyResultV2> => {
+): Promise<APIGatewayProxyStructuredResultV2> => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   return require('@goldstack/template-ssr-server').renderPage(props);
 };

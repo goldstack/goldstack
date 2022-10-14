@@ -3,6 +3,7 @@ import React from 'react';
 import type {
   APIGatewayProxyEventV2,
   APIGatewayProxyResultV2,
+  APIGatewayProxyStructuredResultV2,
 } from 'aws-lambda';
 
 import { compress } from 'lambda-compression';
@@ -79,7 +80,7 @@ export const renderPage = async <PropType>({
   deployment,
   properties,
   buildConfig,
-}: RenderPageProps<PropType>): Promise<APIGatewayProxyResultV2> => {
+}: RenderPageProps<PropType>): Promise<APIGatewayProxyStructuredResultV2> => {
   if (!staticFileMapper && !staticFileMapperStore) {
     throw new Error(
       '`staticFileMapper` or `staticFileMapper` store need to be defined for `renderPage`'
