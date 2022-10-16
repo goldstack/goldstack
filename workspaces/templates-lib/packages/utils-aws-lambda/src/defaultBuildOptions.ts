@@ -1,6 +1,6 @@
 import type { BuildOptions } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
-import cssPlugin from 'esbuild-css-modules-client-plugin';
+import cssPlugin from 'esbuild-ssr-css-modules-plugin';
 import { ServerBuildOptionsArgs } from './buildFunctions';
 
 export function defaultBuildOptions(): (
@@ -10,7 +10,7 @@ export function defaultBuildOptions(): (
     return {
       plugins: [
         cssPlugin({
-          excludeCSSInject: true,
+          jsCSSInject: false,
           onCSSGenerated: args.onCSSGenerated,
         }),
         pnpPlugin(),

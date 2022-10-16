@@ -2,7 +2,7 @@
 
 **Deprecation Notice**
 
-This library is deprecated. Use [`esbuild-css-modules-client-plugin`](https://www.npmjs.com/package/esbuild-css-modules-client-plugin) instead using the option `excludeCSSInject: true`.
+This library is deprecated. Use [`esbuild-ssr-css-modules-plugin`](https://www.npmjs.com/package/esbuild-ssr-css-modules-plugin) instead.
 
 # esbuild CSS Modules Plugin (Server)
 

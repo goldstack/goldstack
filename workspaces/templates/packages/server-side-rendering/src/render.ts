@@ -4,10 +4,7 @@ import {
   renderPage as ssrRenderPage,
   hydrate as ssrHydrate,
 } from '@goldstack/template-ssr';
-import {
-  APIGatewayProxyResultV2,
-  APIGatewayProxyStructuredResultV2,
-} from 'aws-lambda';
+import { APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
 
 import Wrapped from './_app';
 
