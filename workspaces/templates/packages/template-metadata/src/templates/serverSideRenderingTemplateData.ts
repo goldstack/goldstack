@@ -7,6 +7,7 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
     id: 'server-side-rendering',
     title: 'Server-Side Rendering',
     images: ['react', 'api-gateway', 'lambda', 'nodejs', 'typescript'],
+    boilerplateLink: 'https://github.com/goldstack/react-ssr',
     packages: [ServerSideRendering],
     isComposite: false,
     metaTitle: 'Lightweight React Server-Side Rendering with AWS Lambda',
