@@ -4,6 +4,8 @@
 
 This library is deprecated. Use [`esbuild-ssr-css-modules-plugin`](https://www.npmjs.com/package/esbuild-ssr-css-modules-plugin) instead.
 
+**Deprecation Notice**
+
 # esbuild CSS Modules Plugin (Server)
 
 This [esbuild Plugin](https://esbuild.github.io/plugins/) bundles CSS module files for usage in server-side script for server-side rendering.

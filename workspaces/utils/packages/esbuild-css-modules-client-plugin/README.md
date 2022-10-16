@@ -6,6 +6,8 @@
 
 This library is deprecated. Use [`esbuild-ssr-css-modules-plugin`](https://www.npmjs.com/package/esbuild-ssr-css-modules-plugin) instead.
 
+**Deprecation Notice**
+
 This [esbuild Plugin](https://esbuild.github.io/plugins/) bundles CSS module files along with client-side JavaScript.
 
 Thus, import directives such as the following can be used alongside React components:
