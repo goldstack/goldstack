@@ -1,20 +1,16 @@
 {
-  "name": "@goldstack/utils-aws-lambda",
-  "version": "0.3.6",
-  "description": "Utilities for deploying AWS Lambda functions",
+  "name": "esbuild-ssr-css-modules-plugin",
+  "version": "0.1.0",
+  "description": "esbuild plugin for bundling CSS module files for client-side and server-side logic",
   "keywords": [
-    "goldstack",
-    "utility",
-    "infrastructure",
-    "cli",
-    "docker",
-    "aws",
-    "lambda",
-    "aws sdk",
-    "IaC",
-    "configuration"
+    "node",
+    "javascript",
+    "css modules",
+    "esbuild",
+    "ssr",
+    "css"
   ],
-  "homepage": "https://goldstack.party",
+  "homepage": "https://github.com/goldstack/goldstack/tree/master/workspaces/utils/packages/esbuild-ssr-css-modules-plugin",
   "bugs": {
     "url": "https://github.com/goldstack/goldstack/issues"
   },
@@ -25,7 +21,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "src/utilsAwsLambda.ts",
+  "main": "src/esbuildSsrCssModulesPlugin.ts",
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",
@@ -37,32 +33,24 @@
     "prepublishOnly": "yarn run build",
     "publish": "utils-git changed --exec \"yarn npm publish $@\"",
     "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "test-watch": "jest --watch --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.4.6",
-    "@goldstack/utils-aws-cli": "0.4.6",
-    "@goldstack/utils-log": "0.3.3",
-    "@goldstack/utils-sh": "0.5.3",
-    "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
-    "archiver": "^5.3.1",
-    "aws-sdk": "^2.1222.0",
-    "esbuild": "^0.15.5",
-    "esbuild-ssr-css-modules-plugin": "0.1.0"
+    "node-css-require": "0.4.3",
+    "postcss-modules-sync": "^1.0.0",
+    "sha256": "^0.2.0"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.3",
-    "@types/aws-lambda": "^8.10.88",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
+    "esbuild": "^0.15.5",
     "jest": "^28.1.0",
     "rimraf": "^3.0.2",
     "ts-jest": "^28.0.2",
     "typescript": "^4.7.4"
   },
   "publishConfig": {
-    "main": "dist/src/utilsAwsLambda.js"
+    "main": "dist/src/esbuildSsrCssModulesPlugin.js"
   }
 }
