@@ -345,14 +345,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates-management/packages/utils-template-test"\
       },\
       {\
-        "name": "esbuild-css-modules-client-plugin",\
-        "reference": "workspace:workspaces/utils/packages/esbuild-css-modules-client-plugin"\
-      },\
-      {\
-        "name": "esbuild-css-modules-server-plugin",\
-        "reference": "workspace:workspaces/utils/packages/esbuild-css-modules-server-plugin"\
-      },\
-      {\
         "name": "esbuild-ignore-with-comments-plugin",\
         "reference": "workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"\
       },\
@@ -512,8 +504,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/utils-yarn", ["workspace:workspaces/utils/packages/utils-yarn"]],\
       ["apps", ["workspace:workspaces/apps"]],\
       ["docs", ["workspace:workspaces/docs"]],\
-      ["esbuild-css-modules-client-plugin", ["workspace:workspaces/utils/packages/esbuild-css-modules-client-plugin"]],\
-      ["esbuild-css-modules-server-plugin", ["workspace:workspaces/utils/packages/esbuild-css-modules-server-plugin"]],\
       ["esbuild-ignore-with-comments-plugin", ["workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"]],\
       ["esbuild-ssr-css-modules-plugin", ["workspace:workspaces/utils/packages/esbuild-ssr-css-modules-plugin"]],\
       ["lambda-compression", ["workspace:workspaces/utils/packages/lambda-compression"]],\
@@ -11872,45 +11862,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["esbuild-android-arm64", "npm:0.15.5"]\
           ],\
           "linkType": "HARD"\
-        }]\
-      ]],\
-      ["esbuild-css-modules-client-plugin", [\
-        ["workspace:workspaces/utils/packages/esbuild-css-modules-client-plugin", {\
-          "packageLocation": "./workspaces/utils/packages/esbuild-css-modules-client-plugin/",\
-          "packageDependencies": [\
-            ["esbuild-css-modules-client-plugin", "workspace:workspaces/utils/packages/esbuild-css-modules-client-plugin"],\
-            ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
-            ["@types/jest", "npm:29.0.1"],\
-            ["@types/node", "npm:18.7.13"],\
-            ["esbuild", "npm:0.15.5"],\
-            ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
-            ["node-css-require", "workspace:workspaces/utils/packages/node-css-require"],\
-            ["postcss-modules-sync", "npm:1.0.0"],\
-            ["rimraf", "npm:3.0.2"],\
-            ["sha256", "npm:0.2.0"],\
-            ["ts-jest", "virtual:b3cc101de7af18705656f7497fd6fa1fe1831b7b1784ba63e6a342a599f7568d9290d3b25f7378b6d93fc55f89c96be6074d0f8f95674180afeedf4faa3efc64#npm:28.0.2"],\
-            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
-          ],\
-          "linkType": "SOFT"\
-        }]\
-      ]],\
-      ["esbuild-css-modules-server-plugin", [\
-        ["workspace:workspaces/utils/packages/esbuild-css-modules-server-plugin", {\
-          "packageLocation": "./workspaces/utils/packages/esbuild-css-modules-server-plugin/",\
-          "packageDependencies": [\
-            ["esbuild-css-modules-server-plugin", "workspace:workspaces/utils/packages/esbuild-css-modules-server-plugin"],\
-            ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
-            ["@types/jest", "npm:29.0.1"],\
-            ["@types/node", "npm:18.7.13"],\
-            ["esbuild", "npm:0.15.5"],\
-            ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
-            ["node-css-require", "workspace:workspaces/utils/packages/node-css-require"],\
-            ["postcss-modules-sync", "npm:1.0.0"],\
-            ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:b3cc101de7af18705656f7497fd6fa1fe1831b7b1784ba63e6a342a599f7568d9290d3b25f7378b6d93fc55f89c96be6074d0f8f95674180afeedf4faa3efc64#npm:28.0.2"],\
-            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
-          ],\
-          "linkType": "SOFT"\
         }]\
       ]],\
       ["esbuild-darwin-64", [\

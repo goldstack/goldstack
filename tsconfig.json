@@ -275,12 +275,6 @@
       "path": "workspaces/templates-management/packages/utils-template-test"
     },
     {
-      "path": "workspaces/utils/packages/esbuild-css-modules-client-plugin"
-    },
-    {
-      "path": "workspaces/utils/packages/esbuild-css-modules-server-plugin"
-    },
-    {
       "path": "workspaces/utils/packages/esbuild-ignore-with-comments-plugin"
     },
     {
