@@ -16,7 +16,7 @@ This plugin will:
 
 - Replace all CSS files imported into React source files with JavaScript files. This allows looking up the generated style names during server-side rendering.
 - Provide the generated CSS source.
-- (Optional) Inject JavaScript snippets into JavaScript source files that will dynamically load a style tag with the generated CSS. This can be useful for local testing but is not recommended for production deployments. 
+- (Optional) Inject JavaScript snippets into JavaScript source files that will dynamically load a style tag with the generated CSS. This can be useful for local testing but is not recommended for production deployments.
 
 ## Usage
 
@@ -61,7 +61,6 @@ console.log(generatedCss.join('\n'));
 ```
 
 This can be useful for creating a CSS bundle that can be shipped with the other files packaged for the server. When generating a client-side bundle using [`esbuild-css-modules-client-plugin`](https://www.npmjs.com/package/esbuild-css-modules-client-plugin), the option `excludeCSSInject` can then be set to true for a better page load experience (no flicker of the page once CSS is injected).
-
 
 #### jsCSSInject
 

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-ssr-cli",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "CLI tools for server-side rendering template",
   "keywords": [
     "goldstack",
@@ -40,10 +40,10 @@
   "dependencies": {
     "@goldstack/infra": "0.4.3",
     "@goldstack/infra-aws": "0.4.6",
-    "@goldstack/template-ssr": "0.3.10",
-    "@goldstack/template-ssr-server": "0.3.10",
-    "@goldstack/template-ssr-server-compile-bundle": "0.3.7",
-    "@goldstack/utils-aws-lambda": "0.3.6",
+    "@goldstack/template-ssr": "0.3.11",
+    "@goldstack/template-ssr-server": "0.3.11",
+    "@goldstack/template-ssr-server-compile-bundle": "0.3.8",
+    "@goldstack/utils-aws-lambda": "0.3.7",
     "@goldstack/utils-cli": "0.3.3",
     "@goldstack/utils-docker": "0.4.3",
     "@goldstack/utils-log": "0.3.3",

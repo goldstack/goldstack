@@ -1,6 +1,6 @@
 {
   "name": "esbuild-css-modules-client-plugin",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "esbuild plugin for bundling CSS module files for client-side scripts",
   "keywords": [
     "node",
