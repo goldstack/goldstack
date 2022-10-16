@@ -9,7 +9,7 @@
     "esbuild",
     "css"
   ],
-  "homepage": "https://github.com/goldstack/goldstack/tree/2abbb8a9cb8e5e232116483b93c91e1d54da32cf/workspaces/utils/packages/esbuild-css-modules-client-plugin",
+  "homepage": "https://github.com/goldstack/goldstack/tree/534bfad05a659095a8ce910639a86e7d1741c69a/workspaces/utils/packages/esbuild-css-modules-client-plugin",
   "bugs": {
     "url": "https://github.com/goldstack/goldstack/issues"
   },
