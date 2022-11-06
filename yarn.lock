@@ -5913,13 +5913,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"amdefine@npm:>=0.0.4":
-  version: 1.0.1
-  resolution: "amdefine@npm:1.0.1"
-  checksum: 9d4e15b94641643a9385b2841b4cb2bcf4e8e2f741ea4bd475c93ad7bab261ad4ed827a32e9c549b38b98759c4526c173ae4e6dde8caeb75ee5cebedc9863762
-  languageName: node
-  linkType: hard
-
 "ansi-align@npm:^3.0.0":
   version: 3.0.0
   resolution: "ansi-align@npm:3.0.0"
@@ -6774,13 +6767,6 @@ __metadata:
   dependencies:
     tweetnacl: ^0.14.3
   checksum: 4edfc9fe7d07019609ccf797a2af28351736e9d012c8402a07120c4453a3b789a15f2ee1530dc49eee8f7eb9379331a8dd4b3766042b9e502f74a68e7f662291
-  languageName: node
-  linkType: hard
-
-"big.js@npm:^3.1.3":
-  version: 3.2.0
-  resolution: "big.js@npm:3.2.0"
-  checksum: 299449e40555625a308f01d74378677036b2ec98b30aaa89794b3afbd4eaa104b7456a989affadfd7f630dc14b3f1df250de9bddc4a6fc664e60727887bb33e7
   languageName: node
   linkType: hard
 
@@ -9444,13 +9430,6 @@ __metadata:
   version: 8.0.0
   resolution: "emoji-regex@npm:8.0.0"
   checksum: d4c5c39d5a9868b5fa152f00cada8a936868fd3367f33f71be515ecee4c803132d11b31a6222b2571b1e5f7e13890156a94880345594d0ce7e3c9895f560f192
-  languageName: node
-  linkType: hard
-
-"emojis-list@npm:^2.0.0":
-  version: 2.1.0
-  resolution: "emojis-list@npm:2.1.0"
-  checksum: fb61fa6356dfcc9fbe6db8e334c29da365a34d3d82a915cb59621883d3023d804fd5edad5acd42b8eec016936e81d3b38e2faf921b32e073758374253afe1272
   languageName: node
   linkType: hard
 
@@ -14230,7 +14209,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"js-base64@npm:^2.1.8, js-base64@npm:^2.1.9":
+"js-base64@npm:^2.1.9, js-base64@npm:^2.4.9":
   version: 2.6.4
   resolution: "js-base64@npm:2.6.4"
   checksum: 5f4084078d6c46f8529741d110df84b14fac3276b903760c21fa8cc8521370d607325dfe1c1a9fbbeaae1ff8e602665aaeef1362427d8fef704f9e3659472ce8
@@ -14475,15 +14454,6 @@ fsevents@~2.1.2:
   bin:
     json5: lib/cli.js
   checksum: b2de57a66520eca0fbb6c5ef59249b8308efb93fe89a8c75f5a6846e4f5f7d99a5a6f2e4db4d7a1c7047802dd816ed602a052d147a415d0e6b7f834885b62bc3
-  languageName: node
-  linkType: hard
-
-"json5@npm:^0.5.0":
-  version: 0.5.1
-  resolution: "json5@npm:0.5.1"
-  bin:
-    json5: lib/cli.js
-  checksum: 9b85bf06955b23eaa4b7328aa8892e3887e81ca731dd27af04a5f5f1458fbc5e1de57a24442e3272f8a888dd1abe1cb68eb693324035f6b3aeba4fcab7667d62
   languageName: node
   linkType: hard
 
@@ -14866,44 +14836,14 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"loader-utils@npm:^0.2.16":
-  version: 0.2.17
-  resolution: "loader-utils@npm:0.2.17"
-  dependencies:
-    big.js: ^3.1.3
-    emojis-list: ^2.0.0
-    json5: ^0.5.0
-    object-assign: ^4.0.1
-  checksum: 3045c83ef8b19d66d4c25e3245120c579883f473fe0d0559552f55502be913725c4d558a7c866191a74b19ef2af20b094afe3b144ae1e717ea4c245d52f60a09
-  languageName: node
-  linkType: hard
-
-"loader-utils@npm:^1.0.2, loader-utils@npm:^1.1.0, loader-utils@npm:^1.2.3, loader-utils@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "loader-utils@npm:1.4.0"
-  dependencies:
-    big.js: ^5.2.2
-    emojis-list: ^3.0.0
-    json5: ^1.0.1
-  checksum: d150b15e7a42ac47d935c8b484b79e44ff6ab4c75df7cc4cb9093350cf014ec0b17bdb60c5d6f91a37b8b218bd63b973e263c65944f58ca2573e402b9a27e717
-  languageName: node
-  linkType: hard
-
-"loader-utils@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "loader-utils@npm:2.0.0"
+"loader-utils@npm:2.0.3":
+  version: 2.0.3
+  resolution: "loader-utils@npm:2.0.3"
   dependencies:
     big.js: ^5.2.2
     emojis-list: ^3.0.0
     json5: ^2.1.2
-  checksum: 6856423131b50b6f5f259da36f498cfd7fc3c3f8bb17777cf87fdd9159e797d4ba4288d9a96415fd8da62c2906960e88f74711dee72d03a9003bddcd0d364a51
-  languageName: node
-  linkType: hard
-
-"loader-utils@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "loader-utils@npm:3.2.0"
-  checksum: c7b9a8dc4b3bc19e9ef563c48e3a18ea9f8bb2da1ad38a12e4b88358cfba5f148a7baf12d78fe78ffcb718ce1e062ab31fcf5c148459f1247a672a4213471e80
+  checksum: d055c61ce5927b64cb4af40218606603a7d3a39adb7b6eec116bb31d19203875950e478152dea056de404eced8e87e9bfd336ec636591ded040ea451f63c7d88
   languageName: node
   linkType: hard
 
@@ -15741,10 +15681,10 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"moment@npm:^2.19.3":
-  version: 2.29.3
-  resolution: "moment@npm:2.29.3"
-  checksum: 2e780e36d9a1823c08a1b6313cbb08bd01ecbb2a9062095820a34f42c878991ccba53abaa6abb103fd5c01e763724f295162a8c50b7e95b4f1c992ef0772d3f0
+"moment@npm:2.29.4":
+  version: 2.29.4
+  resolution: "moment@npm:2.29.4"
+  checksum: 0ec3f9c2bcba38dc2451b1daed5daded747f17610b92427bebe1d08d48d8b7bdd8d9197500b072d14e326dd0ccf3e326b9e3d07c5895d3d49e39b6803b76e80e
   languageName: node
   linkType: hard
 
@@ -19097,13 +19037,13 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"scss-tokenizer@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "scss-tokenizer@npm:0.2.3"
+"scss-tokenizer@npm:0.4.3":
+  version: 0.4.3
+  resolution: "scss-tokenizer@npm:0.4.3"
   dependencies:
-    js-base64: ^2.1.8
-    source-map: ^0.4.2
-  checksum: ad78bba4466ff7aa6449931a57a980479223c3cad9eccf2180251c2f6fce5b3d982a51f924709e0a0bb2d328dedbb2fad0ccb2a5fdc175513a27cb4e8cf8cfd2
+    js-base64: ^2.4.9
+    source-map: ^0.7.3
+  checksum: f3697bb155ae23d88c7cd0275988a73231fe675fbbd250b4e56849ba66319fc249a597f3799a92f9890b12007f00f8f6a7f441283e634679e2acdb2287a341d1
   languageName: node
   linkType: hard
 
@@ -19641,15 +19581,6 @@ resolve@^1.20.0:
   version: 0.4.0
   resolution: "source-map-url@npm:0.4.0"
   checksum: 63ed54045fcd7b4ec7ca17513f48fdc23b573eef679326ecf1a31333e1aaecc0a9c085adaa7d118283b160e65b71cc72da9e1385f2de4ac5ed68294e3920d719
-  languageName: node
-  linkType: hard
-
-"source-map@npm:^0.4.2":
-  version: 0.4.4
-  resolution: "source-map@npm:0.4.4"
-  dependencies:
-    amdefine: ">=0.0.4"
-  checksum: b31992fcb4a2a6c335617f187bd36f392896dfcc111830ebdb8b716923cf6554b665833b975fc998bdf3a63881b2c8b4c5c34fda0280357b8c18fe6aa5d148ea
   languageName: node
   linkType: hard
 
@@ -20788,16 +20719,16 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"terser@npm:^4.1.2":
-  version: 4.8.0
-  resolution: "terser@npm:4.8.0"
+"terser@npm:4.8.1":
+  version: 4.8.1
+  resolution: "terser@npm:4.8.1"
   dependencies:
     commander: ^2.20.0
     source-map: ~0.6.1
     source-map-support: ~0.5.12
   bin:
     terser: bin/terser
-  checksum: f980789097d4f856c1ef4b9a7ada37beb0bb022fb8aa3057968862b5864ad7c244253b3e269c9eb0ab7d0caf97b9521273f2d1cf1e0e942ff0016e0583859c71
+  checksum: b342819bf7e82283059aaa3f22bb74deb1862d07573ba5a8947882190ad525fd9b44a15074986be083fd379c58b9a879457a330b66dcdb77b485c44267f9a55a
   languageName: node
   linkType: hard
 

@@ -60,7 +60,7 @@ jobs:
           yarn install
       - name: NPM Audit
         run: |
-          yarn npm audit --recursive --severity high
+          yarn npm audit --all --recursive --severity high
 
   syncpack:
     name: 'Checking for Package Mismatches'
