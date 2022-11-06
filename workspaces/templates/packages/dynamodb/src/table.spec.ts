@@ -93,6 +93,24 @@ describe('DynamoDB Table', () => {
     expect(user.email).toEqual('joe@email.com');
   });
 
+  it('Should be able to instantiate entity without deepCopy', async () => {
+    const table = await connectTable();
+    const Users1 = new Entity({ ...UserEntity, table } as const);
+    await Users1.put({
+      email: 'joe@email.com',
+      name: 'Joe',
+      emailVerified: true,
+    });
+
+    const Users2 = new Entity({ ...UserEntity, table } as const);
+    const { Item: user } = await Users2.get(
+      { email: 'joe@email.com' },
+      { attributes: ['name', 'email'] }
+    );
+    expect(user.name).toEqual('Joe');
+    expect(user.email).toEqual('joe@email.com');
+  });
+
   afterAll(async () => {
     // not shutting down server is useful when DynamoDB is started using the 'watch' script
     if (!(process.env.STOP_SERVER === 'false')) {
