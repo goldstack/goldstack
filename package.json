@@ -35,6 +35,7 @@
     "glob-parent": "5.1.2",
     "json-schema": "0.4.0",
     "loader-utils": "2.0.3",
+    "minimatch": "3.0.5",
     "moment": "2.29.4",
     "prismjs": "1.27.0",
     "scss-tokenizer": "0.4.3",
