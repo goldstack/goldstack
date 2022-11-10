@@ -41,7 +41,7 @@
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
-    "@goldstack/template-nextjs": "0.5.8",
+    "@goldstack/template-nextjs": "0.5.9",
     "@goldstack/utils-sh": "0.5.4",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",

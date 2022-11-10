@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-s3-deployment",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "Utility for deploying files to S3",
   "keywords": [
     "goldstack",
