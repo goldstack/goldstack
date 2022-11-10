@@ -65,7 +65,6 @@ export const execWithDocker = async (
 };
 
 export const execWithCli = async (params: AWSExecParams): Promise<string> => {
-  console.log('execwithCli');
   assertAwsCli();
 
   process.env.AWS_ACCESS_KEY_ID = params.credentials.accessKeyId;
