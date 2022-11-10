@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
 import type {
   APIGatewayProxyEventV2,
-  APIGatewayProxyResultV2,
   APIGatewayProxyStructuredResultV2,
 } from 'aws-lambda';
 
@@ -13,6 +12,10 @@ import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { readFileSync } from 'fs';
 
 import { MappingStore, StaticFileMapperRun } from 'static-file-mapper';
+
+export type ReactPropertiesType = unknown &
+  JSX.IntrinsicAttributes &
+  Record<string, any>;
 
 import type {
   BuildConfiguration,
@@ -32,7 +35,7 @@ import type { Deployment } from '@goldstack/infra';
 export const clientBundleFileName = 'client.bundle.js';
 export const clientCSSFileName = 'client.bundle.css';
 
-export interface RenderDocumentProps<PropType> {
+export interface RenderDocumentProps<PropType extends ReactPropertiesType> {
   injectIntoHead: string;
   injectIntoBody: string;
   deployment: Deployment;
@@ -41,7 +44,7 @@ export interface RenderDocumentProps<PropType> {
   properties: PropType;
 }
 
-export interface PartialRenderPageProps<PropType> {
+export interface PartialRenderPageProps<PropType extends ReactPropertiesType> {
   entryPoint: string;
   event: APIGatewayProxyEventV2;
   renderDocument?: (props: RenderDocumentProps<PropType>) => Promise<string>;
@@ -54,7 +57,7 @@ export interface PartialRenderPageProps<PropType> {
   buildConfig?: () => BuildConfiguration;
 }
 
-export interface RenderPageProps<PropType> {
+export interface RenderPageProps<PropType extends ReactPropertiesType> {
   entryPoint: string;
   event: APIGatewayProxyEventV2;
   appendToHead?: string;
@@ -68,7 +71,7 @@ export interface RenderPageProps<PropType> {
   buildConfig: () => BuildConfiguration;
 }
 
-export const renderPage = async <PropType>({
+export const renderPage = async <PropType extends ReactPropertiesType>({
   entryPoint,
   event,
   renderDocument,
@@ -149,7 +152,12 @@ export const renderPage = async <PropType>({
     }
   }
 
-  const page = renderToString(React.createElement(component, properties));
+  const page = renderToString(
+    React.createElement(
+      component as FunctionComponent<unknown>,
+      properties as Record<string, unknown>
+    )
+  );
 
   let styles: string | undefined;
   // only inject styles when in lambda - otherwise they are loaded dynamically
