@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-s3",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Utilities for downloading files from S3",
   "keywords": [
     "goldstack",
@@ -39,7 +39,7 @@
     "aws-sdk": "^2.1222.0"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.3",
+    "@goldstack/utils-git": "0.2.4",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "jest": "^28.1.0",
