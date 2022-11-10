@@ -9,7 +9,13 @@ import type {
 } from 'aws-lambda';
 
 import ReactDOM from 'react-dom/client';
-import type { RenderPageProps } from '@goldstack/template-ssr-server';
+import type {
+  ReactPropertiesType,
+  RenderPageProps,
+} from '@goldstack/template-ssr-server';
+
+export type { ReactPropertiesType };
+
 import type { LambdaApiDeploymentConfiguration } from '@goldstack/utils-aws-lambda';
 import type { SSRDeploymentConfiguration } from './types/SSRPackage';
 import type { Deployment } from '@goldstack/infra';
@@ -48,7 +54,7 @@ export const getDeployment = (goldstackJson: Package): Deployment => {
   return deployment;
 };
 
-export const renderPage = async <PropType>(
+export const renderPage = async <PropType extends ReactPropertiesType>(
   props: RenderPageProps<PropType>
 ): Promise<APIGatewayProxyStructuredResultV2> => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
