@@ -55,14 +55,13 @@ export const execWithDocker = async (
     'Cannot execute AWS cli command since working directory does not exist: aws ' +
       params.command
   );
-  return execAsync(
+  const command =
     'docker run --rm ' +
-      awsUserConfig +
-      `-v "${mountDir}":/app ` +
-      '-w /app ' +
-      ` ${imageAWSCli()} ${params.command}`,
-    params.options
-  );
+    awsUserConfig +
+    `-v "${mountDir}":/app ` +
+    '-w /app ' +
+    ` ${imageAWSCli()} ${params.command}`;
+  return execAsync(command, params.options);
 };
 
 export const execWithCli = async (params: AWSExecParams): Promise<string> => {
@@ -83,7 +82,6 @@ export const execWithCli = async (params: AWSExecParams): Promise<string> => {
   cd(params.workDir || pwd());
   try {
     const command = `aws ${params.command}`;
-    console.log(`s3sync command: ${command}`);
     return await execAsync(command, params.options);
   } finally {
     cd(previousDir);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
 import type {
   APIGatewayProxyEventV2,
@@ -149,7 +149,12 @@ export const renderPage = async <PropType>({
     }
   }
 
-  const page = renderToString(React.createElement(component, properties));
+  const page = renderToString(
+    React.createElement(
+      component as FunctionComponent<unknown>,
+      properties as Record<string, unknown>
+    )
+  );
 
   let styles: string | undefined;
   // only inject styles when in lambda - otherwise they are loaded dynamically
