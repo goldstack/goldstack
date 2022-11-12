@@ -94,7 +94,7 @@ describe('DynamoDB Table', () => {
     expect(user.email).toEqual('joe@email.com');
   });
 
-  it.only('Should be able to instantiate entity without deepCopy', async () => {
+  it('Should be able to instantiate entity without deepCopy', async () => {
     AWS.config.logger = console;
     const table = await connectTable();
     const Users1 = new Entity({ ...deepCopy(UserEntity), table } as const);
