@@ -10,6 +10,7 @@ import {
   stopLocalDynamoDB,
   connectTable,
 } from './table';
+import AWS from 'aws-sdk';
 
 // needs to be long to download Docker image etc.
 jest.setTimeout(120000);
@@ -93,19 +94,21 @@ describe('DynamoDB Table', () => {
     expect(user.email).toEqual('joe@email.com');
   });
 
-  it('Should be able to instantiate entity without deepCopy', async () => {
+  it.only('Should be able to instantiate entity without deepCopy', async () => {
+    AWS.config.logger = console;
     const table = await connectTable();
-    const Users1 = new Entity({ ...UserEntity, table } as const);
+    const Users1 = new Entity({ ...deepCopy(UserEntity), table } as const);
     await Users1.put({
       email: 'joe@email.com',
       name: 'Joe',
+      type: 'user',
       emailVerified: true,
     });
 
-    const Users2 = new Entity({ ...UserEntity, table } as const);
+    const Users2 = new Entity({ ...deepCopy(UserEntity), table } as const);
     const { Item: user } = await Users2.get(
-      { email: 'joe@email.com' },
-      { attributes: ['name', 'email'] }
+      { email: 'joe@email.com', type: 'user' },
+      { attributes: ['email', 'name'] }
     );
     expect(user.name).toEqual('Joe');
     expect(user.email).toEqual('joe@email.com');

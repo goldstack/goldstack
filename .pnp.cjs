@@ -2002,7 +2002,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["aws-sdk", "npm:2.1222.0"],\
             ["deep-copy", "npm:1.4.2"],\
             ["dynamodb-admin", "npm:4.4.0"],\
-            ["dynamodb-toolbox", "npm:0.4.3"],\
+            ["dynamodb-toolbox", "npm:0.5.2"],\
             ["ejs", "npm:3.1.8"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
             ["rimraf", "npm:3.0.2"],\
@@ -11373,11 +11373,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["dynamodb-toolbox", [\
-        ["npm:0.4.3", {\
-          "packageLocation": "./.yarn/cache/dynamodb-toolbox-npm-0.4.3-8c030ae805-6127ae26fe.zip/node_modules/dynamodb-toolbox/",\
+        ["npm:0.5.2", {\
+          "packageLocation": "./.yarn/cache/dynamodb-toolbox-npm-0.5.2-b6fdf5d712-939159ab61.zip/node_modules/dynamodb-toolbox/",\
           "packageDependencies": [\
-            ["dynamodb-toolbox", "npm:0.4.3"],\
-            ["ts-toolbelt", "npm:6.15.5"]\
+            ["dynamodb-toolbox", "npm:0.5.2"],\
+            ["deep-copy", "npm:1.4.2"],\
+            ["ts-toolbelt", "npm:9.6.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -24889,10 +24890,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["ts-toolbelt", [\
-        ["npm:6.15.5", {\
-          "packageLocation": "./.yarn/cache/ts-toolbelt-npm-6.15.5-e42f89942f-24ad00cfd9.zip/node_modules/ts-toolbelt/",\
+        ["npm:9.6.0", {\
+          "packageLocation": "./.yarn/cache/ts-toolbelt-npm-9.6.0-a95699c8d0-9f35fd95d8.zip/node_modules/ts-toolbelt/",\
           "packageDependencies": [\
-            ["ts-toolbelt", "npm:6.15.5"]\
+            ["ts-toolbelt", "npm:9.6.0"]\
           ],\
           "linkType": "HARD"\
         }]\
