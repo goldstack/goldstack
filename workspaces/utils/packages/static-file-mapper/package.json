@@ -1,6 +1,6 @@
 {
   "name": "static-file-mapper",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Helps tracking path to generated static files for deployment bundles",
   "keywords": [
     "javascript"
@@ -31,14 +31,14 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.3",
+    "@goldstack/utils-git": "0.2.4",
     "@types/aws-lambda": "^8.10.88",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "jest": "^28.1.0",
     "rimraf": "^3.0.2",
     "ts-jest": "^28.0.2",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.4"
   },
   "publishConfig": {
     "main": "dist/src/staticFileMapper.js"

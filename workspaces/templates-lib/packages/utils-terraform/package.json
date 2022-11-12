@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-terraform",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "Run Terraform commands easily as npm package scripts",
   "keywords": [
     "goldstack",
@@ -37,19 +37,19 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.3",
-    "@goldstack/infra-aws": "0.4.6",
-    "@goldstack/utils-config": "0.4.3",
-    "@goldstack/utils-docker": "0.4.3",
-    "@goldstack/utils-log": "0.3.3",
-    "@goldstack/utils-package": "0.4.3",
-    "@goldstack/utils-sh": "0.5.3",
+    "@goldstack/infra": "0.4.4",
+    "@goldstack/infra-aws": "0.4.7",
+    "@goldstack/utils-config": "0.4.4",
+    "@goldstack/utils-docker": "0.4.4",
+    "@goldstack/utils-log": "0.3.4",
+    "@goldstack/utils-package": "0.4.4",
+    "@goldstack/utils-sh": "0.5.4",
     "json-stable-stringify": "^1.0.1",
     "prompt-sync": "^4.2.0",
     "yargs": "^17.5.1"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.3",
+    "@goldstack/utils-git": "0.2.4",
     "@types/jest": "^29.0.1",
     "@types/json-stable-stringify": "^1",
     "@types/node": "^18.7.13",
@@ -59,7 +59,7 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^28.0.2",
     "ts-json-schema-generator": "^1.0.0",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.4"
   },
   "publishConfig": {
     "main": "dist/src/utilsTerraform.js"

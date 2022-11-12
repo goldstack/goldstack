@@ -107,13 +107,20 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
       params.destinationDirectory + '.yarnrc.yml'
     );
 
-    // reset package.json
+    // fix package.json
     const packageJson = JSON.parse(
       read(params.destinationDirectory + 'package.json')
     );
-    packageJson.name = '';
+    packageJson.name = 'root';
     packageJson.author = '';
     packageJson.license = '';
+
+    const rootPackageJson = JSON.parse(
+      read(params.monorepoRoot + 'package.json')
+    );
+    packageJson.resolutions = rootPackageJson.resolutions;
+    packageJson.packageManager = rootPackageJson.packageManager;
+
     write(
       JSON.stringify(packageJson, null, 2),
       params.destinationDirectory + 'package.json'

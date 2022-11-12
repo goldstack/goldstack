@@ -9,6 +9,7 @@ interface S3UploadParams {
   bucket: string;
   bucketPath: string;
   skipDelete?: boolean;
+  cacheControl?: string;
 }
 
 export const upload = async (params: S3UploadParams): Promise<void> => {
@@ -22,8 +23,11 @@ export const upload = async (params: S3UploadParams): Promise<void> => {
   // users will not try to request files that no longer exist
   // during the upload process
   // see https://github.com/aws/aws-cli/issues/1417
+  const addHeader = params.cacheControl
+    ? `--cache-control="${params.cacheControl}"`
+    : '';
   await awsCli({
-    command: `s3 sync . ${dest}`,
+    command: `s3 sync ${addHeader} . ${dest}`,
     workDir: source,
     credentials: user,
     region: params.region,

@@ -1,4 +1,8 @@
-import { getDeployment, PartialRenderPageProps } from '@goldstack/template-ssr';
+import {
+  getDeployment,
+  PartialRenderPageProps,
+  ReactPropertiesType,
+} from '@goldstack/template-ssr';
 
 import {
   renderPage as ssrRenderPage,
@@ -16,7 +20,7 @@ import renderDocument from './_document';
 
 import buildConfig from './build';
 
-export async function renderPage<P>(
+export async function renderPage<P extends ReactPropertiesType>(
   props: PartialRenderPageProps<P>
 ): Promise<APIGatewayProxyStructuredResultV2> {
   const deployment = getDeployment(goldstackJson);

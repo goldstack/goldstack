@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-docker-image-aws",
-  "version": "0.5.6",
+  "version": "0.5.8",
   "description": "Utilities for packages that are deployed as Docker Images using AWS Fargate",
   "keywords": [
     "goldstack",
@@ -45,28 +45,28 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.3",
-    "@goldstack/infra-aws": "0.4.6",
-    "@goldstack/utils-aws-cli": "0.4.6",
-    "@goldstack/utils-cli": "0.3.3",
-    "@goldstack/utils-config": "0.4.3",
-    "@goldstack/utils-docker": "0.4.3",
-    "@goldstack/utils-git": "0.2.3",
-    "@goldstack/utils-log": "0.3.3",
-    "@goldstack/utils-package": "0.4.3",
-    "@goldstack/utils-package-config": "0.4.3",
-    "@goldstack/utils-s3-deployment": "0.5.6",
-    "@goldstack/utils-sh": "0.5.3",
-    "@goldstack/utils-template": "0.4.3",
-    "@goldstack/utils-terraform": "0.4.6",
-    "@goldstack/utils-terraform-aws": "0.4.6",
+    "@goldstack/infra": "0.4.4",
+    "@goldstack/infra-aws": "0.4.7",
+    "@goldstack/utils-aws-cli": "0.4.7",
+    "@goldstack/utils-cli": "0.3.4",
+    "@goldstack/utils-config": "0.4.4",
+    "@goldstack/utils-docker": "0.4.4",
+    "@goldstack/utils-git": "0.2.4",
+    "@goldstack/utils-log": "0.3.4",
+    "@goldstack/utils-package": "0.4.4",
+    "@goldstack/utils-package-config": "0.4.4",
+    "@goldstack/utils-s3-deployment": "0.5.8",
+    "@goldstack/utils-sh": "0.5.4",
+    "@goldstack/utils-template": "0.4.4",
+    "@goldstack/utils-terraform": "0.4.7",
+    "@goldstack/utils-terraform-aws": "0.4.7",
     "aws-sdk": "^2.1222.0",
     "source-map-support": "^0.5.21",
     "yargs": "^17.5.1"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.3",
-    "@goldstack/utils-package-config-generate": "0.3.3",
+    "@goldstack/utils-git": "0.2.4",
+    "@goldstack/utils-package-config-generate": "0.3.4",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "@types/source-map-support": "^0.5.4",
@@ -75,7 +75,7 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^28.0.2",
     "ts-node": "^10.9.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.4"
   },
   "publishConfig": {
     "main": "dist/src/templateDockerImageAws.ts"

@@ -30,6 +30,7 @@ export const deployToS3 = async (params: DeployToS3Params): Promise<void> => {
       bucket: params.staticFilesBucket,
       bucketPath: '/_goldstack/static',
       localPath: 'static/',
+      cacheControl: 'max-age=31536000,immutable,public',
       region: params.deployment.awsRegion,
       userName: params.deployment.awsUser,
       skipDelete: true, // we want to keep static files in place

@@ -23,8 +23,8 @@
     "@goldstack/prepare-template": "0.1.0",
     "@goldstack/prepare-yarn-pnp-monorepo": "0.1.1",
     "@goldstack/template-repository": "0.1.0",
-    "@goldstack/utils-sh": "0.5.3",
-    "@goldstack/utils-template": "0.4.3",
+    "@goldstack/utils-sh": "0.5.4",
+    "@goldstack/utils-template": "0.4.4",
     "aws-sdk": "^2.1222.0"
   },
   "devDependencies": {
@@ -36,6 +36,6 @@
     "mock-aws-s3": "^4.0.2",
     "rimraf": "^3.0.2",
     "ts-jest": "^28.0.2",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.4"
   }
 }
