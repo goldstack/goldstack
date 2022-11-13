@@ -85,7 +85,6 @@
     "next-compose-plugins": "^2.2.1",
     "next-transpile-modules": "^8.0.0",
     "node-sass": "7.0.0",
-    "nodemon": "^2.0.15",
     "rimraf": "^3.0.2",
     "ts-jest": "^28.0.2",
     "ts-json-schema-generator": "^1.0.0",
