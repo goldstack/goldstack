@@ -15936,7 +15936,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"nodemon@npm:^2.0.15, nodemon@npm:^2.0.20":
+"nodemon@npm:^2.0.20":
   version: 2.0.20
   resolution: "nodemon@npm:2.0.20"
   dependencies:
@@ -18523,7 +18523,7 @@ resolve@^1.20.0:
     eslint-plugin-prettier: ^4.2.1
     eslint-plugin-react: ^7.31.10
     eslint-plugin-yaml: ^0.5.0
-    nodemon: ^2.0.15
+    nodemon: ^2.0.20
     prettier: ^2.7.1
     syncpack: ^8.0.0
     ts-node: ^10.9.1
