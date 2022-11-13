@@ -28,33 +28,31 @@ const PackageList = (props: PackageListProps): JSX.Element => {
 
   return (
     <>
-      {props.items.map(
-        (item, index): React.ReactNode => {
-          return (
-            <div key={index} className="col-sm-6 col-md-4 px-2 mb-3">
-              <PackageCard
-                packageName={item.packageName}
-                features={item.features}
-                packageDescription={item.packageDescription}
-                icons={item.icons}
-                disabled={props.disabled}
-                selected={
-                  selectedIds &&
-                  selectedIds.includes(item.packageId || 'undefined')
+      {props.items.map((item, index): React.ReactNode => {
+        return (
+          <div key={index} className="col-sm-6 col-md-4 px-2 mb-3">
+            <PackageCard
+              packageName={item.packageName}
+              features={item.features}
+              packageDescription={item.packageDescription}
+              icons={item.icons}
+              disabled={props.disabled}
+              selected={
+                selectedIds &&
+                selectedIds.includes(item.packageId || 'undefined')
+              }
+              alwaysIncluded={item.alwaysIncluded}
+              onChange={(included): void => {
+                if (included) {
+                  props.onSelect(item.packageId || 'wrong package id');
+                } else {
+                  props.onDeselect(item.packageId || 'wrong package id');
                 }
-                alwaysIncluded={item.alwaysIncluded}
-                onChange={(included): void => {
-                  if (included) {
-                    props.onSelect(item.packageId || 'wrong package id');
-                  } else {
-                    props.onDeselect(item.packageId || 'wrong package id');
-                  }
-                }}
-              ></PackageCard>
-            </div>
-          );
-        }
-      )}
+              }}
+            ></PackageCard>
+          </div>
+        );
+      })}
     </>
   );
 };

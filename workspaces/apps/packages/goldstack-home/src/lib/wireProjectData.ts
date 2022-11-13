@@ -18,8 +18,9 @@ export const wireProjectData = (data: ProjectData): ProjectData => {
         deployment.name = data.deploymentNames[0];
         deployment.awsUser = data.awsUsers[0].name;
 
-        deployment.awsRegion = (data.awsUsers[0]
-          .config as AWSAPIKeyUser).awsDefaultRegion;
+        deployment.awsRegion = (
+          data.awsUsers[0].config as AWSAPIKeyUser
+        ).awsDefaultRegion;
       });
     }
   });

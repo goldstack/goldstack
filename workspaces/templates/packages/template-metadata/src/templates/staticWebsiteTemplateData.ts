@@ -113,8 +113,7 @@ export const getStaticWebsiteTemplateData = (): ProjectTemplateProps => {
           content: {
             type: 'gif',
             data: {
-              gif:
-                'https://cdn.goldstack.party/img/202204/cloudfront_website_load.gif',
+              gif: 'https://cdn.goldstack.party/img/202204/cloudfront_website_load.gif',
             },
           },
         },
@@ -149,8 +148,7 @@ export const getStaticWebsiteTemplateData = (): ProjectTemplateProps => {
           content: {
             type: 'gif',
             data: {
-              gif:
-                'https://cdn.goldstack.party/img/202204/local-development.gif',
+              gif: 'https://cdn.goldstack.party/img/202204/local-development.gif',
             },
           },
         },
