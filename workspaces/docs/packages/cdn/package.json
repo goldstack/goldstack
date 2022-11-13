@@ -25,7 +25,7 @@
     "template-ts": "ts-node --project tsconfig.json scripts/template.ts",
     "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand",
     "watch": "yarn build-web $@ && concurrently \"yarn web:watch $@\" \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" ",
-    "web:watch": "yarn build-web $@ && nodemon --watch ./../../ --ignore ./webDist -e '*' --exec \"yarn web:build $@\""
+    "web:watch": "yarn build-web $@ && nodemon --watch ./../../ --ignore ./webDist -e '*' --exec \"yarn build-web $@\""
   },
   "devDependencies": {
     "@goldstack/template-static-website-aws": "0.5.8",
@@ -34,7 +34,7 @@
     "@types/node": "^18.7.13",
     "concurrently": "^7.3.0",
     "jest": "^28.1.0",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.20",
     "reload": "^3.2.0",
     "rimraf": "^3.0.2",
     "ts-jest": "^28.0.2",

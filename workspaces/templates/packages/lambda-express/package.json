@@ -41,7 +41,6 @@
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "esbuild": "^0.15.5",
     "jest": "^28.1.0",
-    "nodemon": "^2.0.15",
     "rimraf": "^3.0.2",
     "source-map-loader": "^1.0.1",
     "supertest": "^4.0.2",
