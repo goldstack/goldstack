@@ -57,9 +57,9 @@ For more information, see [GitHub documentation - Fork a repo](https://docs.gith
 
 A few dependencies need to be available in your development system. Please verify they are present or install them.
 
-*   Node v12+
-*   Yarn v1.22.5+
-*   Docker v19+
+- Node v12+
+- Yarn v1.22.5+
+- Docker v19+
 
 Open a terminal and run the following commands:
 
@@ -75,9 +75,9 @@ This should produce the following output:
 
 If you need to install or update any of the dependencies, please see the following guides:
 
-*   [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-*   [Yarn Installation](https://yarnpkg.com/getting-started/install)
-*   [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
+- [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- [Yarn Installation](https://yarnpkg.com/getting-started/install)
+- [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
 
 ## 3. Initialise project and install NPM Dependencies
 
@@ -113,17 +113,17 @@ You may also be asked if you want to install recommended extensions for this wor
 
 If you want to install the necessary extensions manually, here are links to the extensions required:
 
-*   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-*   [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-*   [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
 
 ## 6. Initialise TypeScript
 
-Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click *Allow*.
+Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click _Allow_.
 
 <img src="https://cdn.goldstack.party/img/202201/allow_typescript.gif"  alt="VSCode Locate TypeScript">
 
-In the status bar on the bottom right-hand corner of the VSCode editor you should now see *TypeScript*.
+In the status bar on the bottom right-hand corner of the VSCode editor you should now see _TypeScript_.
 
 ![TypeScript status icon in VSCode](https://cdn.goldstack.party/img/202203/typescript_init.png)
 
@@ -156,9 +156,9 @@ Specifically, the [goldstack.json](https://github.com/goldstack/dynamodb-boilerp
 
 The key property you will need to update is:
 
-*   `deployments[0].configuration.tableName`
+- `deployments[0].configuration.tableName`
 
-You also need to *delete* `deployments[0].tfStateKey`.
+You also need to _delete_ `deployments[0].tfStateKey`.
 
 You will also need to ensure that you have a valid AWS user configure to deploy to AWS. For this, create a file in `/config/infra/config.json` (relative to project root).
 
@@ -197,8 +197,8 @@ This boilerplate will come with a module that provides the functionalities for c
 
 In order to make use of the DynamoDB package we principally want to do two things:
 
-*   Define the schema for our table
-*   Write application logic to work with the data in the table
+- Define the schema for our table
+- Write application logic to work with the data in the table
 
 In this template, the former will be done within the DynamoDB package but the latter can either happen in other packages. For instance, if you have included a [Serverless API](https://goldstack.party/templates/lambda-api) template in your project, you can define your logic for working with the data in DynamoDB in that package. However, you can also write additional code in the DynamoDB package and define a lightweight DOA layer.
 
