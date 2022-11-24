@@ -1,0 +1,52 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*",
+    "./src/**/*.json"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "."
+  },
+  "references": [
+    {
+      "path": "../template-user-management"
+    },
+    {
+      "path": "../../../utils/packages/utils-cli"
+    },
+    {
+      "path": "../../../utils/packages/utils-docker"
+    },
+    {
+      "path": "../../../utils/packages/utils-log"
+    },
+    {
+      "path": "../utils-package"
+    },
+    {
+      "path": "../utils-package-config"
+    },
+    {
+      "path": "../../../utils/packages/utils-sh"
+    },
+    {
+      "path": "../utils-template"
+    },
+    {
+      "path": "../utils-terraform"
+    },
+    {
+      "path": "../utils-terraform-aws"
+    },
+    {
+      "path": "../../../docs/packages/utils-docs-cli"
+    },
+    {
+      "path": "../../../utils/packages/utils-git"
+    },
+    {
+      "path": "../utils-package-config-generate"
+    }
+  ]
+}

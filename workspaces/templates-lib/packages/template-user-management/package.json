@@ -1,12 +1,12 @@
 {
-  "name": "@goldstack/template-s3",
-  "version": "0.4.7",
-  "description": "Building blocks for linking a package to an AWS S3 bucket.",
+  "name": "@goldstack/template-user-management",
+  "version": "0.1.0",
+  "description": "Template utilities for user management",
   "keywords": [
     "goldstack",
     "utility",
     "infrastructure",
-    "s3",
+    "cognito",
     "aws",
     "IaC",
     "configuration"
@@ -22,7 +22,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "src/templateS3.ts",
+  "main": "src/templateUserManagement.ts",
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",
@@ -30,7 +30,7 @@
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
-    "generate-schema": "ts-node scripts/generateSchemas.ts && cp schemas/* ../../../templates/packages/s3/schemas && cp schemas/* ../../../templates-management/packages/project-repository-bucket/schemas && cp schemas/* ../../../templates-management/packages/template-repository-bucket/schemas",
+    "generate-schema": "ts-node scripts/generateSchemas.ts && cp schemas/* ../../../templates/packages/user-management/schemas",
     "prepublishOnly": "yarn run build",
     "publish": "utils-git changed --exec \"yarn npm publish $@\"",
     "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand",
@@ -45,8 +45,8 @@
     "@goldstack/utils-package-config-embedded": "0.5.4",
     "@goldstack/utils-template": "0.4.4",
     "@goldstack/utils-terraform": "0.4.7",
+    "aws-jwt-verify": "^3.2.0",
     "aws-sdk": "^2.1222.0",
-    "mock-aws-s3": "^4.0.2",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
@@ -54,7 +54,6 @@
     "@goldstack/utils-git": "0.2.4",
     "@goldstack/utils-package-config-generate": "0.3.4",
     "@types/jest": "^29.0.1",
-    "@types/mock-aws-s3": "^2.6.3",
     "@types/node": "^18.7.13",
     "@types/yargs": "^17.0.10",
     "jest": "^28.1.0",
@@ -64,6 +63,6 @@
     "typescript": "^4.8.4"
   },
   "publishConfig": {
-    "main": "dist/src/templateS3.js"
+    "main": "dist/src/templateUserManagement.js"
   }
 }

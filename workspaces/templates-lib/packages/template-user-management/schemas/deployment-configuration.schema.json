@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/ThisDeploymentConfiguration",
+  "definitions": {
+    "ThisDeploymentConfiguration": {
+      "type": "object",
+      "properties": {
+        "userPoolName": {
+          "$ref": "#/definitions/UserPoolName"
+        },
+        "hostedZoneDomain": {
+          "$ref": "#/definitions/HostedZoneDomain"
+        },
+        "cognitoDomain": {
+          "$ref": "#/definitions/CognitoDomain"
+        }
+      },
+      "required": [
+        "userPoolName",
+        "hostedZoneDomain",
+        "cognitoDomain"
+      ]
+    },
+    "UserPoolName": {
+      "type": "string",
+      "description": "The name of the Cognito user pool.",
+      "title": "User Pool Name",
+      "pattern": "^[A-Za-z0-9-]*$"
+    },
+    "HostedZoneDomain": {
+      "type": "string",
+      "description": "The domain name of the Route 53 hosted zone that the cognito domain should be added to.",
+      "title": "Hosted Zone Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "CognitoDomain": {
+      "type": "string",
+      "description": "The domain where Cognito will be deployed to",
+      "title": "Cognito Domain",
+      "pattern": "^[^\\s]*"
+    }
+  }
+}

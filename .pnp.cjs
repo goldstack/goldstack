@@ -140,6 +140,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:workspaces/templates/packages/template-test"\
       },\
       {\
+        "name": "@goldstack/user-management",\
+        "reference": "workspace:workspaces/templates/packages/user-management"\
+      },\
+      {\
         "name": "@goldstack/infra",\
         "reference": "workspace:workspaces/templates-lib/packages/infra"\
       },\
@@ -210,6 +214,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {\
         "name": "@goldstack/template-static-website-aws",\
         "reference": "workspace:workspaces/templates-lib/packages/template-static-website-aws"\
+      },\
+      {\
+        "name": "@goldstack/template-user-management",\
+        "reference": "workspace:workspaces/templates-lib/packages/template-user-management"\
+      },\
+      {\
+        "name": "@goldstack/template-user-management-cli",\
+        "reference": "workspace:workspaces/templates-lib/packages/template-user-management-cli"\
       },\
       {\
         "name": "@goldstack/utils-aws-cli",\
@@ -468,7 +480,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@goldstack/template-ssr-server-compile-bundle", ["workspace:workspaces/templates-lib/packages/template-ssr-server-compile-bundle"]],\
       ["@goldstack/template-static-website-aws", ["workspace:workspaces/templates-lib/packages/template-static-website-aws"]],\
       ["@goldstack/template-test", ["workspace:workspaces/templates/packages/template-test"]],\
+      ["@goldstack/template-user-management", ["workspace:workspaces/templates-lib/packages/template-user-management"]],\
+      ["@goldstack/template-user-management-cli", ["workspace:workspaces/templates-lib/packages/template-user-management-cli"]],\
       ["@goldstack/toc-generator", ["workspace:workspaces/docs/packages/toc-generator"]],\
+      ["@goldstack/user-management", ["workspace:workspaces/templates/packages/user-management"]],\
       ["@goldstack/utils-aws-cli", ["workspace:workspaces/templates-lib/packages/utils-aws-cli"]],\
       ["@goldstack/utils-aws-http-api-local", ["workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"]],\
       ["@goldstack/utils-aws-lambda", ["workspace:workspaces/templates-lib/packages/utils-aws-lambda"]],\
@@ -3473,6 +3488,69 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT"\
         }]\
       ]],\
+      ["@goldstack/template-user-management", [\
+        ["workspace:workspaces/templates-lib/packages/template-user-management", {\
+          "packageLocation": "./workspaces/templates-lib/packages/template-user-management/",\
+          "packageDependencies": [\
+            ["@goldstack/template-user-management", "workspace:workspaces/templates-lib/packages/template-user-management"],\
+            ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+            ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
+            ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
+            ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+            ["@goldstack/utils-package-config-embedded", "workspace:workspaces/templates-lib/packages/utils-package-config-embedded"],\
+            ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+            ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
+            ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+            ["@types/jest", "npm:29.0.1"],\
+            ["@types/node", "npm:18.7.13"],\
+            ["@types/yargs", "npm:17.0.10"],\
+            ["aws-jwt-verify", "npm:3.2.0"],\
+            ["aws-sdk", "npm:2.1222.0"],\
+            ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["source-map-support", "npm:0.5.21"],\
+            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
+            ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
+            ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@goldstack/template-user-management-cli", [\
+        ["workspace:workspaces/templates-lib/packages/template-user-management-cli", {\
+          "packageLocation": "./workspaces/templates-lib/packages/template-user-management-cli/",\
+          "packageDependencies": [\
+            ["@goldstack/template-user-management-cli", "workspace:workspaces/templates-lib/packages/template-user-management-cli"],\
+            ["@goldstack/template-user-management", "workspace:workspaces/templates-lib/packages/template-user-management"],\
+            ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
+            ["@goldstack/utils-docker", "workspace:workspaces/utils/packages/utils-docker"],\
+            ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
+            ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
+            ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+            ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],\
+            ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+            ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+            ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
+            ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+            ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
+            ["@types/jest", "npm:29.0.1"],\
+            ["@types/node", "npm:18.7.13"],\
+            ["@types/yargs", "npm:17.0.10"],\
+            ["aws-sdk", "npm:2.1222.0"],\
+            ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["source-map-support", "npm:0.5.21"],\
+            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
+            ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
+            ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"],\
+            ["yargs", "npm:17.5.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
       ["@goldstack/toc-generator", [\
         ["workspace:workspaces/docs/packages/toc-generator", {\
           "packageLocation": "./workspaces/docs/packages/toc-generator/",\
@@ -3485,6 +3563,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
+            ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@goldstack/user-management", [\
+        ["workspace:workspaces/templates/packages/user-management", {\
+          "packageLocation": "./workspaces/templates/packages/user-management/",\
+          "packageDependencies": [\
+            ["@goldstack/user-management", "workspace:workspaces/templates/packages/user-management"],\
+            ["@goldstack/template-user-management", "workspace:workspaces/templates-lib/packages/template-user-management"],\
+            ["@goldstack/template-user-management-cli", "workspace:workspaces/templates-lib/packages/template-user-management-cli"],\
+            ["@types/jest", "npm:29.0.1"],\
+            ["@types/node", "npm:18.7.13"],\
+            ["aws-sdk", "npm:2.1222.0"],\
+            ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
+            ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"]\
           ],\
           "linkType": "SOFT"\
@@ -8123,6 +8220,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/available-typed-arrays-npm-1.0.5-88f321e4d3-20eb47b3ce.zip/node_modules/available-typed-arrays/",\
           "packageDependencies": [\
             ["available-typed-arrays", "npm:1.0.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["aws-jwt-verify", [\
+        ["npm:3.2.0", {\
+          "packageLocation": "./.yarn/cache/aws-jwt-verify-npm-3.2.0-98de3459d6-0f8dc0a0fa.zip/node_modules/aws-jwt-verify/",\
+          "packageDependencies": [\
+            ["aws-jwt-verify", "npm:3.2.0"]\
           ],\
           "linkType": "HARD"\
         }]\

@@ -1,0 +1,20 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "user-management",
+  "template": "user-management",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "cognitoDomain": "auth-example.dev.goldstack.party",
+        "userPoolName": "example-pool",
+        "hostedZoneDomain": "dev.goldstack.party"
+      },
+      "tfStateKey": "user-management-prod-c24c67342f629ac2217b.tfstate"
+    }
+  ]
+}
