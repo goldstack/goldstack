@@ -1,4 +1,5 @@
 // based on https://github.com/curityio/pkce-javascript-example/blob/master/index.html
+import { excludeInBundle } from '@goldstack/utils-esbuild';
 
 function generateRandomString(length: number) {
   let text = '';
@@ -32,7 +33,7 @@ async function generateCodeChallenge(randomString: string) {
       .replace(/\//g, '_');
   } else {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const { createHash } = require('crypto');
+    const { createHash } = require(excludeInBundle('crypto'));
     digest = createHash('sha256').update(randomString).digest('hex');
     return Buffer.from(digest, 'utf8')
       .toString('base64')

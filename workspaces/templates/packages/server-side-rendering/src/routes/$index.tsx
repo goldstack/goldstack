@@ -5,8 +5,19 @@ import { renderPage, hydrate } from './../render';
 import Panel from './../components/Panel';
 import styles from './$index.module.css';
 
+import { performClientAuth } from '@goldstack/user-management';
+
 const Index = (props: { message: string }): JSX.Element => {
   const [clicked, setClicked] = useState(false);
+  const [token, setToken] = useState<string | undefined | 'error'>(undefined);
+  if (!token) {
+    performClientAuth()
+      .then((token) => setToken(token))
+      .catch((e) => {
+        setToken('error');
+        console.log(e);
+      });
+  }
   return (
     <>
       <div
@@ -18,6 +29,7 @@ const Index = (props: { message: string }): JSX.Element => {
         className={`${styles.message}`}
       >
         {props.message}
+        {token}
       </div>
       {clicked && <Panel />}
     </>

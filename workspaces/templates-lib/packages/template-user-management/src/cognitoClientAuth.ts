@@ -10,17 +10,31 @@ import {
   getDeploymentsOutput,
 } from './userManagementConfig';
 
+export interface GetTokenResults {
+  accessToken: string;
+  refreshToken: string;
+}
+
 export async function getToken(args: {
   goldstackConfig: any;
-  code: string;
+  code?: string;
+  refreshToken?: string;
   packageSchema: any;
   deploymentsOutput: any;
   deploymentName?: string;
-}): Promise<string> {
+}): Promise<GetTokenResults> {
   const deploymentName = getDeploymentName(args.deploymentName);
 
   if (deploymentName === 'local') {
-    return 'https://localhost';
+    if (args.code !== 'dummy-client-token') {
+      throw new Error(
+        `Unexpected code for client auth: '${args.code}'. Expected: dummy-client-token`
+      );
+    }
+    return {
+      accessToken: 'dummyToken',
+      refreshToken: 'dummyRefreshToken',
+    };
   }
 
   const packageConfig = new EmbeddedPackageConfig<
@@ -42,6 +56,7 @@ export async function getToken(args: {
     tokenEndpoint: await getEndpoint({ ...args, endpoint: 'token' }),
     clientId: deploymentOutput.terraform.user_pool_client_id.value,
     code: args.code,
+    refreshToken: args.refreshToken,
     redirectUri: deployment.configuration.callbackUrl,
   });
 }
@@ -49,16 +64,20 @@ export async function getToken(args: {
 export async function executeTokenRequest(args: {
   tokenEndpoint: string;
   clientId: string;
-  code: string;
+  code?: string;
+  refreshToken?: string;
   redirectUri: string;
-}) {
+}): Promise<GetTokenResults> {
   const xhr = new XMLHttpRequest();
 
-  return new Promise<string>(async (resolve, reject) => {
+  return new Promise<GetTokenResults>(async (resolve, reject) => {
     xhr.onload = function () {
       const response = xhr.response;
       if (xhr.status == 200) {
-        resolve(response.access_token);
+        resolve({
+          accessToken: response.access_token,
+          refreshToken: response.refresh_token,
+        });
       } else {
         reject(
           new Error(
@@ -74,10 +93,11 @@ export async function executeTokenRequest(args: {
     xhr.send(
       new URLSearchParams({
         client_id: args.clientId,
-        code_verifier: codeVerifier,
-        grant_type: 'authorization_code',
+        code_verifier: args.code ? codeVerifier : '',
+        grant_type: args.code ? 'authorization_code' : 'refresh_token',
         redirect_uri: args.redirectUri,
-        code: args.code,
+        refresh_token: args.refreshToken || '',
+        code: args.code || '',
       })
     );
   });

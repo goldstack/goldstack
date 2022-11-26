@@ -1,6 +1,5 @@
 import type { Deployment } from '@goldstack/infra';
 import type { Package } from '@goldstack/utils-package';
-import fs from 'fs';
 
 interface EmbeddedPackageConfigConstructorParams {
   packageSchema?: any;
@@ -15,13 +14,8 @@ export class EmbeddedPackageConfig<
   goldstackJson: PackageType;
 
   constructor(params: EmbeddedPackageConfigConstructorParams) {
-    if (
-      !params.packageSchema &&
-      !fs.existsSync('schemas/package.schema.json')
-    ) {
-      throw new Error(
-        'Package schema cannot be found in schemas/package.schema.json'
-      );
+    if (!params.packageSchema) {
+      throw new Error('Package schema was not provided');
     }
     this.packageSchema = params.packageSchema;
 

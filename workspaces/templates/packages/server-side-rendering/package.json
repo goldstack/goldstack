@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@goldstack/template-ssr": "0.3.12",
+    "@goldstack/user-management": "workspace:^",
     "@goldstack/utils-esbuild": "0.5.4",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "date-fns": "^2.28.0",
