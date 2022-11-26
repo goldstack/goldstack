@@ -22,6 +22,7 @@ export { Entity } from 'dynamodb-toolbox';
 
 export * from './entities';
 export type Table = ToolboxTable<string, 'pk', 'sk'>;
+
 export const connect = async (deploymentName?: string): Promise<DynamoDB> => {
   return await templateConnect({
     goldstackConfig,

@@ -8,4 +8,8 @@ module.exports = {
       tsconfig: 'tsconfig.json',
     },
   },
+  // issue in AWS library, see https://github.com/awslabs/aws-jwt-verify/issues/69#issuecomment-1236225304
+  moduleNameMapper: {
+    '#node-web-compat': './node-web-compat-node.js',
+  },
 };

@@ -1,34 +1,39 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* esbuild-ignore ui */
+
 import { CognitoJwtVerifier } from 'aws-jwt-verify';
-import { CognitoVerifyProperties } from 'aws-jwt-verify/cognito-verifier';
 import type { CognitoAccessTokenPayload } from 'aws-jwt-verify/jwt-model';
-import { JwtRsaVerifierProperties } from 'aws-jwt-verify/jwt-rsa';
 
-import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import {
-  UserManagementDeployment,
-  UserManagementPackage,
-} from './templateUserManagement';
+  getDeploymentName,
+  getDeploymentsOutput,
+} from './userManagementConfig';
 
-export async function connectWithCognito(
-  goldstackConfig: any,
-  packageSchema: any,
-  deploymentName?: string
-): Promise<CognitoManager> {
-  const packageConfig = new EmbeddedPackageConfig<
-    UserManagementPackage,
-    UserManagementDeployment
-  >({
-    goldstackJson: goldstackConfig,
-    packageSchema,
-  });
+export async function connectWithCognito({
+  goldstackConfig,
+  packageSchema,
+  deploymentsOutput,
+  deploymentName,
+}: {
+  goldstackConfig: any;
+  packageSchema: any;
+  deploymentsOutput: any;
+  deploymentName?: string;
+}): Promise<CognitoManager> {
+  deploymentName = getDeploymentName(deploymentName);
 
   if (deploymentName === 'local') {
     return new LocalUserManagerImpl();
   }
+
+  const deploymentOutput = getDeploymentsOutput(
+    deploymentsOutput,
+    deploymentName
+  );
   const verifier = CognitoJwtVerifier.create({
-    userPoolId: '<user_pool_id>',
+    userPoolId: deploymentOutput.user_pool_id,
     tokenUse: 'access',
-    clientId: '<client_id>',
+    clientId: deploymentOutput.user_pool_client_id,
   });
   return new CognitoManagerImpl(verifier);
 }

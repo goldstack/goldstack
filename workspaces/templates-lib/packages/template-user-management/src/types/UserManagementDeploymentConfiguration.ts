@@ -26,10 +26,19 @@ export type HostedZoneDomain = string;
  */
 export type CognitoDomain = string;
 
+/**
+ * URL that users should be redirected to after a successful login.
+ *
+ * @title Callback URL
+ * @pattern ^[^\s]*
+ */
+export type CallbackUrl = string;
+
 export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
   userPoolName: UserPoolName;
   hostedZoneDomain: HostedZoneDomain;
   cognitoDomain: CognitoDomain;
+  callbackUrl: CallbackUrl;
 }
 
 export type { ThisDeploymentConfiguration as UserManagementDeploymentConfiguration };

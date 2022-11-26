@@ -51,12 +51,16 @@
         },
         "cognitoDomain": {
           "$ref": "#/definitions/CognitoDomain"
+        },
+        "callbackUrl": {
+          "$ref": "#/definitions/CallbackUrl"
         }
       },
       "required": [
         "userPoolName",
         "hostedZoneDomain",
-        "cognitoDomain"
+        "cognitoDomain",
+        "callbackUrl"
       ]
     },
     "UserPoolName": {
@@ -75,6 +79,12 @@
       "type": "string",
       "description": "The domain where Cognito will be deployed to",
       "title": "Cognito Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "CallbackUrl": {
+      "type": "string",
+      "description": "URL that users should be redirected to after a successful login.",
+      "title": "Callback URL",
       "pattern": "^[^\\s]*"
     },
     "TerraformVariables": {

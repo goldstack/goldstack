@@ -3,16 +3,17 @@ resource "aws_cognito_user_pool" "pool" {
 }
 
 resource "aws_cognito_user_pool_client" "client" {
-  name          = "${var.user_pool_name}-client"
-  user_pool_id  = aws_cognito_user_pool.pool.id
+  name                 = "${var.user_pool_name}-client"
+  user_pool_id         = aws_cognito_user_pool.pool.id
+  callback_urls        = [var.callback_url]
+  default_redirect_uri = var.callback_url
 }
 
 
 resource "aws_cognito_user_pool_domain" "main" {
-  domain          = data.aws_acm_certificate.wildcard.domain
-  certificate_arn = aws_acm_certificate.wildcard.arn
-  user_pool_id    = aws_cognito_user_pool.pool.id
-
+  domain               = data.aws_acm_certificate.wildcard.domain
+  certificate_arn      = aws_acm_certificate.wildcard.arn
+  user_pool_id         = aws_cognito_user_pool.pool.id
   depends_on = [
     aws_acm_certificate_validation.wildcard_validation,
   ]

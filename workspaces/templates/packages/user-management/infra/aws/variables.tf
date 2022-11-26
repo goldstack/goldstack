@@ -14,8 +14,12 @@ variable "cognito_domain" {
   type = string
 }
 
-
 variable "hosted_zone_domain" {
   description = "Domain of hosted zone where Cognito domain should be configured."
+  type = string
+}
+
+variable "callback_url" {
+  description = "URL of page that users should be redirected too after a successful login"
   type = string
 }
