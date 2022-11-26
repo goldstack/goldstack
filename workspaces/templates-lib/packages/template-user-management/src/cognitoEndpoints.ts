@@ -35,13 +35,12 @@ export async function getEndpoint(args: {
     deploymentName
   );
 
-  console.log(deploymentOutput);
-  const baseUrl = `https://${deploymentOutput.terraform.endpoint.value}`;
+  // const baseUrl = `https://${deploymentOutput.terraform.endpoint.value}`;
 
   const deployment = packageConfig.getDeployment(deploymentName);
-
+  const baseUrl = `https://${deployment.configuration.cognitoDomain}`;
   switch (args.endpoint) {
     case 'authorize':
-      return `${baseUrl}/oauth2/authorize?response_type=code&client_id=${deploymentOutput.terraform.user_pool_client_id.value}&redirect_uri=${deployment.configuration.callbackUrl}&state=STATE&`;
+      return `${baseUrl}/oauth2/authorize?response_type=code&client_id=${deploymentOutput.terraform.user_pool_client_id.value}&redirect_uri=${deployment.configuration.callbackUrl}`;
   }
 }
