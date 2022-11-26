@@ -1,6 +1,10 @@
 resource "aws_cognito_user_pool" "pool" {
   name          = var.user_pool_name
 
+  # Add your app name to the below
+  email_verification_subject = "Your verification code"
+  email_verification_message = "Your verification code is {####}."
+
   schema {
     attribute_data_type = "String"
     name                = "email"
@@ -25,6 +29,7 @@ resource "aws_cognito_user_pool" "pool" {
   }
   
   device_configuration {
-    challenge_required_on_new_device = true 
+    challenge_required_on_new_device      = true 
+    device_only_remembered_on_user_prompt = false
   }
 }

@@ -1,4 +1,5 @@
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
+import { getCodeChallenge } from './codeChallenge';
 import {
   Endpoint,
   UserManagementDeployment,
@@ -41,6 +42,16 @@ export async function getEndpoint(args: {
   const baseUrl = `https://${deployment.configuration.cognitoDomain}`;
   switch (args.endpoint) {
     case 'authorize':
-      return `${baseUrl}/oauth2/authorize?response_type=code&client_id=${deploymentOutput.terraform.user_pool_client_id.value}&redirect_uri=${deployment.configuration.callbackUrl}`;
+      return (
+        `${baseUrl}/oauth2/authorize?response_type=code` +
+        `&client_id=${deploymentOutput.terraform.user_pool_client_id.value}` +
+        `&redirect_uri=${deployment.configuration.callbackUrl}` +
+        '&code_challenge_method=S256' +
+        `&code_challenge=${await getCodeChallenge()}`
+      );
+    case 'token':
+      return `${baseUrl}/oauth2/token`;
+    case 'logout':
+      return `${baseUrl}/oauth2/logout?response_type=code&client_id=${deploymentOutput.terraform.user_pool_client_id.value}&redirect_uri=${deployment.configuration.callbackUrl}`;
   }
 }
