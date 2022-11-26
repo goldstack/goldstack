@@ -121,8 +121,14 @@ export async function performClientAuth(args: {
   const refreshToken = window.sessionStorage.getItem('goldstack_refresh_token');
   // if there is a refresh token, try to get a new token with that first before doing a redirect
   if (refreshToken) {
-    const token = await getToken({ ...args, refreshToken });
-    return token.accessToken;
+    try {
+      const token = await getToken({ ...args, refreshToken });
+      return token.accessToken;
+    } catch (e) {
+      // if there is an error, we better discard our refresh token, it could be expired
+      window.sessionStorage.removeItem('goldstack_refresh_token');
+      // then we proceed with the redirect to login
+    }
   }
 
   const endpoint = await getEndpoint({ ...args, endpoint: 'authorize' });

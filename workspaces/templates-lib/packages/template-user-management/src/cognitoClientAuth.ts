@@ -13,6 +13,7 @@ import {
 export interface GetTokenResults {
   accessToken: string;
   refreshToken: string;
+  idToken: string;
 }
 
 export async function getToken(args: {
@@ -34,6 +35,7 @@ export async function getToken(args: {
     return {
       accessToken: 'dummyToken',
       refreshToken: 'dummyRefreshToken',
+      idToken: 'dummyIdToken',
     };
   }
 
@@ -76,7 +78,8 @@ export async function executeTokenRequest(args: {
       if (xhr.status == 200) {
         resolve({
           accessToken: response.access_token,
-          refreshToken: response.refresh_token,
+          refreshToken: args.refreshToken || response.refresh_token,
+          idToken: response.id_token,
         });
       } else {
         reject(

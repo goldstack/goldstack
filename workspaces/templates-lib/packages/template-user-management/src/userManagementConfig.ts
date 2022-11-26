@@ -1,6 +1,6 @@
 export function getDeploymentName(deploymentName?: string) {
   if (!deploymentName) {
-    if (typeof window === undefined) {
+    if (typeof window === 'undefined') {
       deploymentName = process.env.GOLDSTACK_DEPLOYMENT;
     } else {
       deploymentName = (window as any).GOLDSTACK_DEPLOYMENT;
