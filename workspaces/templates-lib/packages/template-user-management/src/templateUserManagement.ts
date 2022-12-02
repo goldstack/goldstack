@@ -50,7 +50,7 @@ export async function getToken(args: {
   return getTokenLib(args);
 }
 
-function createCookie(name: string, value: string, minutes: number) {
+function setCookie(name: string, value: string, minutes: number) {
   let expires: string;
   if (minutes) {
     const date = new Date();
@@ -62,19 +62,42 @@ function createCookie(name: string, value: string, minutes: number) {
   document.cookie = name + '=' + value + expires + '; path=/';
 }
 
+function eraseCookie(name: string) {
+  document.cookie = name + '=; Max-Age=0';
+}
+
+/*
+ * Keeping this only in memory
+ */
+let refreshTokenStorage: string | undefined = undefined;
+
+export interface ClientAuthResult {
+  accessToken: string;
+  idToken: string;
+}
+
+/**
+ * <p>Performs client-side authentication.
+ * <p>Will redirect to Cognito hosted UI for signin if required.
+ * <p>Sets client-side cookies and session variables.
+ * <p>For more control on what gets persisted on the client-side, use the method <code>getToken</code>.
+ */
 export async function performClientAuth(args: {
   goldstackConfig: any;
   packageSchema: any;
   deploymentsOutput: any;
   deploymentName?: string;
-}) {
+}): Promise<ClientAuthResult | undefined> {
   const deploymentName = getDeploymentName(args.deploymentName);
 
   const params = new URLSearchParams(window.location.search);
   const code = params.get('code');
 
-  const existingToken = window.sessionStorage.getItem('goldstack_token');
-  if (existingToken) {
+  const existingAccessToken = window.sessionStorage.getItem(
+    'goldstack_access_token'
+  );
+  const existingIdToken = window.sessionStorage.getItem('goldstack_id_token');
+  if (existingAccessToken && existingIdToken) {
     // remove code from URL
     if (code) {
       const packageConfig = new EmbeddedPackageConfig<
@@ -86,21 +109,26 @@ export async function performClientAuth(args: {
       });
       const deployment = packageConfig.getDeployment(deploymentName);
       window.location.href = deployment.configuration.callbackUrl;
-      return existingToken;
+      return {
+        accessToken: existingAccessToken,
+        idToken: existingIdToken,
+      };
     }
 
-    return existingToken;
+    return {
+      accessToken: existingAccessToken,
+      idToken: existingIdToken,
+    };
   }
 
   if (code) {
     const token = await getToken({ ...args, code });
-    window.sessionStorage.setItem('goldstack_token', token.accessToken);
-    window.sessionStorage.setItem(
-      'goldstack_refresh_token',
-      token.refreshToken
-    );
-    // only store access token in cookie
-    createCookie('goldstack_token', token.accessToken, 60);
+    window.sessionStorage.setItem('goldstack_access_token', token.accessToken);
+    window.sessionStorage.setItem('goldstack_id_token', token.idToken);
+    refreshTokenStorage = token.refreshToken;
+    // only store access and id token in cookie
+    setCookie('goldstack_access_token', token.accessToken, 60);
+    setCookie('goldstack_id_token', token.idToken, 60);
     const packageConfig = new EmbeddedPackageConfig<
       UserManagementPackage,
       UserManagementDeployment
@@ -110,7 +138,10 @@ export async function performClientAuth(args: {
     });
     const deployment = packageConfig.getDeployment(deploymentName);
     window.location.href = deployment.configuration.callbackUrl;
-    return token.accessToken;
+    return {
+      accessToken: token.accessToken,
+      idToken: token.idToken,
+    };
   }
 
   if (deploymentName === 'local') {
@@ -118,15 +149,29 @@ export async function performClientAuth(args: {
     return;
   }
 
-  const refreshToken = window.sessionStorage.getItem('goldstack_refresh_token');
+  const refreshToken = refreshTokenStorage;
   // if there is a refresh token, try to get a new token with that first before doing a redirect
   if (refreshToken) {
     try {
       const token = await getToken({ ...args, refreshToken });
-      return token.accessToken;
+
+      window.sessionStorage.setItem(
+        'goldstack_access_token',
+        token.accessToken
+      );
+      window.sessionStorage.setItem('goldstack_id_token', token.idToken);
+      refreshTokenStorage = token.refreshToken;
+      // only store access and id token in cookie
+      setCookie('goldstack_access_token', token.accessToken, 60);
+      setCookie('goldstack_id_token', token.idToken, 60);
+
+      return {
+        accessToken: token.accessToken,
+        idToken: token.idToken,
+      };
     } catch (e) {
       // if there is an error, we better discard our refresh token, it could be expired
-      window.sessionStorage.removeItem('goldstack_refresh_token');
+      refreshTokenStorage = undefined;
       // then we proceed with the redirect to login
     }
   }
@@ -135,4 +180,23 @@ export async function performClientAuth(args: {
 
   window.location.href = endpoint;
   return undefined;
+}
+
+/**
+ * <p>Will clear all cached variables set in <code>performClientAuth</code> and redirect user to the sign in page.
+ * <p>If you manage your own client-side config, use <code>getEndpoint</code> to obtain the logout endpoint.
+ */
+export async function performLogout(args: {
+  goldstackConfig: any;
+  packageSchema: any;
+  deploymentsOutput: any;
+  deploymentName?: string;
+}) {
+  refreshTokenStorage = undefined;
+  eraseCookie('goldstack_access_token');
+  eraseCookie('goldstack_id_token');
+  window.sessionStorage.removeItem('goldstack_access_token');
+  window.sessionStorage.removeItem('goldstack_id_token');
+  const endpoint = await getEndpoint({ ...args, endpoint: 'logout' });
+  window.location.href = endpoint;
 }
