@@ -1,4 +1,4 @@
-<p></p><div class="markdown-fragment"><p>The S3 template provides a simple means for an application to store and access files on <a href="https://aws.amazon.com/s3/" class="absolute" target="_blank" rel="noopener noreferrer">AWS S3</a>. This template is set up for deploying an S3 bucket using Terraform and provides a simple TypeScript API to work with this bucket.</p></div><p></p>
+<p></p><div class="markdown-fragment"><p>The user management template provides the infrastructure and utility libraries for authenticating users using <a href="https://aws.amazon.com/cognito/" class="absolute" target="_blank" rel="noopener noreferrer">Amazon Cognito</a>.</p></div><p></p>
 <h2 class="heading"><span id="features"></span><a href="#features">Features</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
@@ -6,28 +6,25 @@
   </g>
 </svg></span></h2>
 <p></p><div class="markdown-fragment"><ul>
-<li>S3 bucket defined in Terraform</li>
-<li>Supports definition for multiple environments (staging, production)</li>
-<li>Infrastructure easily stood up using an npm script <code class="inline">yarn infra up</code></li>
-<li>Embed in server applications by linking to the package</li>
-</ul>
-<pre class="language-javascript language-javascript"><code class="language-javascript"><span class="token keyword module">import</span> <span class="token punctuation">{</span> getBucketName<span class="token punctuation">,</span> connect <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'my-s3-module'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> s3 <span class="token operator">=</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">await</span> s3<span class="token punctuation">.</span><span class="token method function property-access">putObject</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  <span class="token maybe-class-name">BucketName</span><span class="token punctuation">:</span> <span class="token function">getBucketName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token maybe-class-name">Key</span><span class="token punctuation">:</span> <span class="token string">'my-doc'</span><span class="token punctuation">,</span>
-  <span class="token maybe-class-name">Body</span><span class="token punctuation">:</span> <span class="token string">'content'</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div><p></p>
+<li>Provides all Terraform resources requires for setting up an identity server using Amazon Cognito.</li>
+<li>Provides customisable UI for signing up and signing in users.</li>
+<li>Library with convenient methods to authenticate user on the client.</li>
+<li>Library to validate tokens on the server.</li>
+<li>Automatically verifies users email addresses.</li>
+</ul></div><p></p>
 <h2 class="heading"><span id="configure"></span><a href="#configure">Configure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
   </g>
 </svg></span></h2>
-<p></p><div class="markdown-fragment"><p>In order to provide a basic configuration for an S3 bucket, we only need to know the name of the bucket you want to create.</p>
-<p>Please note that a bucket name needs to be <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html" class="absolute" target="_blank" rel="noopener noreferrer">globally unique</a>. However, buckets are always created in a specific <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions" class="absolute" target="_blank" rel="noopener noreferrer">AWS region</a>. The bucket will be deployed to the AWS region you have specified.</p></div><p></p>
+<p></p><div class="markdown-fragment"><p>The following key properties need to be configured for this template:</p>
+<ul>
+<li><strong>Cognito Domain</strong>: The domain on which the identity server and the UI pages for login will be hosted.</li>
+<li><strong>User Pool Name</strong>: The name for the Cognito User Pool that should be created by this template. Note no User Pool of the same name should exist in your account.</li>
+<li><strong>Callback URL</strong>: A URL pointing to a page in your applications that users should be redirected after signing in successfully through the Cognito UI.</li>
+<li><strong>Hosted Zone Domain</strong>: A Route 53 hosted zone to which the <em>Cognito Domain</em> an be added as record. For instance, the hosted zone domain <code class="inline">mysite.com</code> would allow adding the cognito domain <code class="inline">auth.mysite.com</code>. For more details, please check <a href="https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration" class="absolute" target="_blank" rel="noopener noreferrer">Hosted Zone Configuration</a> in the Goldstack documentation.</li>
+</ul></div><p></p>
 <h2 class="heading"><span id="getting-started"></span><a href="#getting-started">Getting Started</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
@@ -72,7 +69,8 @@
 <pre class="language-bash language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra up <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
 </code></pre>
 <p>This will be either <code class="inline">yarn infra up dev</code> or <code class="inline">yarn infra up prod</code> depending on your choice of deployment. Note that running this command can take a while.</p></div><p></p>
-<h3 class="heading"><span id="3-development-1"></span><a href="#3-development-1"><span id="3-development"></span><a href="#3-development" class="relative">3. Development</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+<p>Note you will want to combine this template with another template to host a UI and provide a web server. We recommend to use the <a href="https://goldstack.party/templates/server-side-rendering" class="absolute" target="_blank" rel="noopener noreferrer">react-ssr template</a>.</p>
+<h4 class="heading"><span id="development-client-1"></span><a href="#development-client-1"><span id="development-client"></span><a href="#development-client" class="relative">Development (Client)</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
@@ -82,19 +80,70 @@
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
   </g>
-</svg></span></h3>
-<p>This is how an the S3 package can be used from another package:</p>
-<pre class="language-javascript language-javascript"><code class="language-javascript"><span class="token keyword module">import</span> <span class="token punctuation">{</span> getBucketName<span class="token punctuation">,</span> connect <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'my-s3-module'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> s3 <span class="token operator">=</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">await</span> s3<span class="token punctuation">.</span><span class="token method function property-access">putObject</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  <span class="token maybe-class-name">BucketName</span><span class="token punctuation">:</span> <span class="token function">getBucketName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token maybe-class-name">Key</span><span class="token punctuation">:</span> <span class="token string">'my-doc'</span><span class="token punctuation">,</span>
-  <span class="token maybe-class-name">Body</span><span class="token punctuation">:</span> <span class="token string">'content'</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</svg></span></h4>
+<p>This template will be most useful when combined with a templates that provide a user interface and API. For any UI and API modules in your project that require authentication, add the <code class="inline">user-management</code> package to their dependencies:</p>
+<pre><code>yarn add user-management
 </code></pre>
-<p>The object returned from <code class="inline">connect()</code> is an instance of the <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html" class="absolute" target="_blank" rel="noopener noreferrer">AWS S3 client</a>.</p>
-<p>Note it is also possible to add additional TypeScript files in the templates <code class="inline">src/</code> folder. This is a good place to put an abstraction layer on top of the S3 interface, for instance a data repository specific to the needs of your application.</p></div><p></p>
+<p>In UI modules, you can use the <code class="inline">performClientAuth</code> method to force user authentication and obtain the access and id tokens for the user:</p>
+<pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span>
+  performClientAuth<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'user-management'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token maybe-class-name">Index</span> <span class="token operator">=</span> <span class="token punctuation">(</span>props<span class="token punctuation">:</span> <span class="token punctuation">{</span> message<span class="token punctuation">:</span> <span class="token builtin">string</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token constant">JSX</span><span class="token punctuation">.</span><span class="token parameter"><span class="token maybe-class-name">Element</span></span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>token<span class="token punctuation">,</span> setToken<span class="token punctuation">]</span> <span class="token operator">=</span> useState<span class="token operator">&#x3C;</span><span class="token builtin">string</span> <span class="token operator">|</span> undefined <span class="token operator">|</span> <span class="token string">'error'</span><span class="token operator">></span><span class="token punctuation">(</span>undefined<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>token<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">performClientAuth</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">token</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token function">setToken</span><span class="token punctuation">(</span>token<span class="token operator">?</span><span class="token punctuation">.</span><span class="token property-access">accessToken</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+        <span class="token function">setToken</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token operator">&#x3C;</span><span class="token operator">></span><span class="token operator">&#x3C;</span><span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p><code class="inline">performClientAuth</code> will redirect the user to the sign in page if required and return the access and id token. The method will also automatically set the cookies <code class="inline">goldstack_access_token</code> and <code class="inline">goldstack_id_token</code> that will be included in all server requests.</p>
+<p>Authentication also involves requesting a refresh token. The refresh token will be kept in an in-memory variable and will be used to require a new access and id token if the existing ones are expired.</p>
+<p>Note during the sign in process, the user will always be redirected to the callback URL you specified during configuration after a successful sign in.</p>
+<p>The library also supports logging out users. For this, simply call the method <code class="inline">performLogout</code>. The user will be redirected to the Cognito hosted UI sign in screen.</p>
+<pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span>
+  performLogout<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@goldstack/user-management'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">logoutUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">await</span> <span class="token function">performLogout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 class="heading"><span id="development-server-1"></span><a href="#development-server-1"><span id="development-server"></span><a href="#development-server" class="relative">Development (Server)</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<p>If you want to validate if calls to an API have been made by authenticated users, add the <code class="inline">user-management</code> module to the dependencies of the server-side module:</p>
+<pre><code>yarn add user-management
+</code></pre>
+<p>On the server, we can validate the tokens send by the client using the <code class="inline">connectWithCognito</code> method:</p>
+<pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span>
+  connectWithCognito<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@goldstack/user-management'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> handler<span class="token punctuation">:</span> <span class="token function-variable function"><span class="token maybe-class-name">SSRHandler</span></span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> cookies <span class="token operator">=</span> <span class="token function">getCookies</span><span class="token punctuation">(</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token property-access">cookies</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span><span class="token string">';'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>cookies<span class="token punctuation">.</span><span class="token property-access">goldstack_access_token</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> cognito <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">connectWithCognito</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> cognito<span class="token punctuation">.</span><span class="token method function property-access">validate</span><span class="token punctuation">(</span>cookies<span class="token punctuation">.</span><span class="token property-access">goldstack_access_token</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> idToken <span class="token operator">=</span> <span class="token keyword">await</span> cognito<span class="token punctuation">.</span><span class="token method function property-access">validateIdToken</span><span class="token punctuation">(</span>cookies<span class="token punctuation">.</span><span class="token property-access">goldstack_id_token</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    message <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hello </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>idToken<span class="token punctuation">.</span><span class="token property-access">email</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&#x3C;br></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Note that it is recommended we <a href="https://auth0.com/blog/id-token-access-token-what-is-the-difference/" class="absolute" target="_blank" rel="noopener noreferrer">always</a> validate the <em>access token</em>. We validate the <em>id token</em> in the above as well to determine the user's email address, since the access token only contains the <em>username</em>, which in our case is a cognito generated id.</p>
+<p>This template is not designed to support authorization. If you have authorization needs, consider implementing this with <a href="https://build.diligent.com/fast-authorization-with-dynamodb-cd1f133437e3" class="absolute" target="_blank" rel="noopener noreferrer">DynamoDB</a> using the <a href="https://goldstack.party/templates/dynamodb" class="absolute" target="_blank" rel="noopener noreferrer">DynamoDB template</a>.</p></div><p></p>
 <h2 class="heading"><span id="infrastructure"></span><a href="#infrastructure">Infrastructure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
@@ -193,4 +242,49 @@
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
   </g>
 </svg></span></h2>
-<p>The S3 bucket for this template is already configured to allow only private access to the bucket. Be careful when making the bucket public and ensure that it only has contents that can be publicly exposed. For use cases such as using a bucket for hosting content, we recommend using the <a href="./static-website-aws" class="relative">Static Website</a> template.</p>
+<p></p><div class="markdown-fragment"><p>Secure user authentication is not easy to achieve. This template contains a few trade-offs that make it easier to get started with developing your application but introduce potential security issues. Key trade-offs are:</p>
+<h3 class="heading"><span id="cookies-for-access-and-id-token-1"></span><a href="#cookies-for-access-and-id-token-1"><span id="cookies-for-access-and-id-token"></span><a href="#cookies-for-access-and-id-token" class="relative">Cookies for Access and Id Token</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>Access and ID tokens are stored in cookies that are not Http Only when using the <code class="inline">performClientAuth</code> method. To avoid having cookies stored, use the <code class="inline">getToken</code> method instead and manage your own cookie persistence.</p>
+<h3 class="heading"><span id="no-two-factor-authentication-1"></span><a href="#no-two-factor-authentication-1"><span id="no-two-factor-authentication"></span><a href="#no-two-factor-authentication" class="relative">No Two Factor Authentication</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>Two factor authentication is the de facto standard for most serious applications. Cognito is configured in this template without two factor authentication enabled. You can modify the Cognito Terraform configuration to enable two factor authentication.</p></div><p></p>
+<h2 class="heading"><span id="faq"></span><a href="#faq">FAQ</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><h3 class="heading"><span id="error-custom-domain-is-not-a-valid-subdomain-1"></span><a href="#error-custom-domain-is-not-a-valid-subdomain-1"><span id="error-custom-domain-is-not-a-valid-subdomain"></span><a href="#error-custom-domain-is-not-a-valid-subdomain" class="relative">Error 'Custom domain is not a valid subdomain'</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>When running <code class="inline">yarn infra up</code> the following error may be issued by Terraform:</p>
+<pre><code> Error: Error creating Cognito User Pool Domain: InvalidParameterException: Custom domain is not a valid subdomain: Was not able to resolve the root domain, please ensure an A record exists for the root domain.
+</code></pre>
+<p>This error is caused by Cognito <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html" class="absolute" target="_blank" rel="noopener noreferrer">requiring that the parent domain of a specified domain has an A record</a>. So for instance, if you specify the cognito domain <code class="inline">auth.examples.mydomain.com</code>, then this error will occur if there is no A record defined for <code class="inline">examples.mydomain.com</code>.</p></div><p></p>

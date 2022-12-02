@@ -1,32 +1,25 @@
-# S3 Template
+# User Management Template
 
 ❤️ Support development by using the [Goldstack Project Builder](https://goldstack.party) ❤️
 
-The S3 template provides a simple means for an application to store and access files on [AWS S3](https://aws.amazon.com/s3/). This template is set up for deploying an S3 bucket using Terraform and provides a simple TypeScript API to work with this bucket.
+The user management template provides the infrastructure and utility libraries for authenticating users using [Amazon Cognito](https://aws.amazon.com/cognito/).
 
 ## Features
 
-- S3 bucket defined in Terraform
-- Supports definition for multiple environments (staging, production)
-- Infrastructure easily stood up using an npm script `yarn infra up`
-- Embed in server applications by linking to the package
-
-```javascript
-import { getBucketName, connect } from 'my-s3-module';
-
-const s3 = connect();
-await s3.putObject({
-  BucketName: getBucketName(),
-  Key: 'my-doc',
-  Body: 'content',
-});
-```
+*   Provides all Terraform resources requires for setting up an identity server using Amazon Cognito.
+*   Provides customisable UI for signing up and signing in users.
+*   Library with convenient methods to authenticate user on the client.
+*   Library to validate tokens on the server.
+*   Automatically verifies users email addresses.
 
 ## Configure
 
-In order to provide a basic configuration for an S3 bucket, we only need to know the name of the bucket you want to create.
+The following key properties need to be configured for this template:
 
-Please note that a bucket name needs to be [globally unique](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html). However, buckets are always created in a specific [AWS region](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions). The bucket will be deployed to the AWS region you have specified.
+*   **Cognito Domain**: The domain on which the identity server and the UI pages for login will be hosted.
+*   **User Pool Name**: The name for the Cognito User Pool that should be created by this template. Note no User Pool of the same name should exist in your account.
+*   **Callback URL**: A URL pointing to a page in your applications that users should be redirected after signing in successfully through the Cognito UI.
+*   **Hosted Zone Domain**: A Route 53 hosted zone to which the *Cognito Domain* an be added as record. For instance, the hosted zone domain `mysite.com` would allow adding the cognito domain `auth.mysite.com`. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
 
 ## Getting Started
 
@@ -46,24 +39,79 @@ yarn infra up [deploymentName]
 
 This will be either `yarn infra up dev` or `yarn infra up prod` depending on your choice of deployment. Note that running this command can take a while.
 
-### 3. Development
+Note you will want to combine this template with another template to host a UI and provide a web server. We recommend to use the [react-ssr template](https://goldstack.party/templates/server-side-rendering).
 
-This is how an the S3 package can be used from another package:
+#### Development (Client)
 
-```javascript
-import { getBucketName, connect } from 'my-s3-module';
+This template will be most useful when combined with a templates that provide a user interface and API. For any UI and API modules in your project that require authentication, add the `user-management` package to their dependencies:
 
-const s3 = connect();
-await s3.putObject({
-  BucketName: getBucketName(),
-  Key: 'my-doc',
-  Body: 'content',
-});
+    yarn add user-management
+
+In UI modules, you can use the `performClientAuth` method to force user authentication and obtain the access and id tokens for the user:
+
+```typescript
+import {
+  performClientAuth,
+} from 'user-management';
+
+const Index = (props: { message: string }): JSX.Element => {
+  const [token, setToken] = useState<string | undefined | 'error'>(undefined);
+  if (!token) {
+    performClientAuth()
+      .then((token) => setToken(token?.accessToken))
+      .catch((e) => {
+        setToken('error');
+      });
+  }
+  return <></>;
+};
 ```
 
-The object returned from `connect()` is an instance of the [AWS S3 client](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html).
+`performClientAuth` will redirect the user to the sign in page if required and return the access and id token. The method will also automatically set the cookies `goldstack_access_token` and `goldstack_id_token` that will be included in all server requests.
 
-Note it is also possible to add additional TypeScript files in the templates `src/` folder. This is a good place to put an abstraction layer on top of the S3 interface, for instance a data repository specific to the needs of your application.
+Authentication also involves requesting a refresh token. The refresh token will be kept in an in-memory variable and will be used to require a new access and id token if the existing ones are expired.
+
+Note during the sign in process, the user will always be redirected to the callback URL you specified during configuration after a successful sign in.
+
+The library also supports logging out users. For this, simply call the method `performLogout`. The user will be redirected to the Cognito hosted UI sign in screen.
+
+```typescript
+import {
+  performLogout,
+} from '@goldstack/user-management';
+
+async function logoutUser() {
+  await performLogout();
+}
+```
+
+#### Development (Server)
+
+If you want to validate if calls to an API have been made by authenticated users, add the `user-management` module to the dependencies of the server-side module:
+
+    yarn add user-management
+
+On the server, we can validate the tokens send by the client using the `connectWithCognito` method:
+
+```typescript
+import {
+  connectWithCognito,
+} from '@goldstack/user-management';
+
+export const handler: SSRHandler = async (event, context) => {
+  const cookies = getCookies((event.cookies || []).join(';'));
+  if (cookies.goldstack_access_token) {
+    const cognito = await connectWithCognito();
+    await cognito.validate(cookies.goldstack_access_token);
+    const idToken = await cognito.validateIdToken(cookies.goldstack_id_token);
+    message = `Hello ${idToken.email}<br>`;
+  }
+}
+```
+
+Note that it is recommended we [always](https://auth0.com/blog/id-token-access-token-what-is-the-difference/) validate the *access token*. We validate the *id token* in the above as well to determine the user's email address, since the access token only contains the *username*, which in our case is a cognito generated id.
+
+This template is not designed to support authorization. If you have authorization needs, consider implementing this with [DynamoDB](https://build.diligent.com/fast-authorization-with-dynamodb-cd1f133437e3) using the [DynamoDB template](https://goldstack.party/templates/dynamodb).
 
 ## Infrastructure
 
@@ -97,13 +145,13 @@ The configuration tool will define one deployment. This will be either `dev` or 
 
 Infrastructure commands for this template can be run using `yarn`. There are four commands in total:
 
-- `yarn infra up`: For standing up infrastructure.
-- `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
-- `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
-- `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
-- `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
-- `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
-- `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
+*   `yarn infra up`: For standing up infrastructure.
+*   `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
+*   `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
+*   `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
+*   `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+*   `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
+*   `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
 
 For each command, the deployment they should be applied to must be specified.
 
@@ -155,4 +203,22 @@ This works well for deploying infrastructure from your local development environ
 
 ## Security Hardening
 
-The S3 bucket for this template is already configured to allow only private access to the bucket. Be careful when making the bucket public and ensure that it only has contents that can be publicly exposed. For use cases such as using a bucket for hosting content, we recommend using the [Static Website](./static-website-aws) template.
+Secure user authentication is not easy to achieve. This template contains a few trade-offs that make it easier to get started with developing your application but introduce potential security issues. Key trade-offs are:
+
+### Cookies for Access and Id Token
+
+Access and ID tokens are stored in cookies that are not Http Only when using the `performClientAuth` method. To avoid having cookies stored, use the `getToken` method instead and manage your own cookie persistence.
+
+### No Two Factor Authentication
+
+Two factor authentication is the de facto standard for most serious applications. Cognito is configured in this template without two factor authentication enabled. You can modify the Cognito Terraform configuration to enable two factor authentication.
+
+## FAQ
+
+### Error 'Custom domain is not a valid subdomain'
+
+When running `yarn infra up` the following error may be issued by Terraform:
+
+     Error: Error creating Cognito User Pool Domain: InvalidParameterException: Custom domain is not a valid subdomain: Was not able to resolve the root domain, please ensure an A record exists for the root domain.
+
+This error is caused by Cognito [requiring that the parent domain of a specified domain has an A record](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html). So for instance, if you specify the cognito domain `auth.examples.mydomain.com`, then this error will occur if there is no A record defined for `examples.mydomain.com`.
