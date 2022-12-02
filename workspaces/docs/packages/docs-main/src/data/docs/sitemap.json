@@ -54,6 +54,11 @@
             "children": []
           },
           {
+            "title": "User Management",
+            "path": "templates/user-management",
+            "children": []
+          },
+          {
             "title": "Next.js",
             "path": "templates/app-nextjs",
             "children": []

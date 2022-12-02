@@ -1,5 +1,5 @@
 
-## Error 'Custom domain is not a valid subdomain'
+### Error 'Custom domain is not a valid subdomain'
 
 When running `yarn infra up` the following error may be issued by Terraform:
 

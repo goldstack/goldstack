@@ -1,0 +1,5 @@
+- Provides all Terraform resources requires for setting up an identity server using Amazon Cognito.
+- Provides customisable UI for signing up and signing in users.
+- Library with convenient methods to authenticate user on the client.
+- Library to validate tokens on the server.
+- Automatically verifies users email addresses.
