@@ -19,6 +19,7 @@ jobs:
             'email-send',
             's3',
             'static-website',
+            'user-management',
             'dynamodb',
             'server-side-rendering',
           ]
