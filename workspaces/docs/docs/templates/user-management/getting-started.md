@@ -15,9 +15,7 @@ yarn add user-management
 In UI modules, you can use the `performClientAuth` method to force user authentication and obtain the access and id tokens for the user:
 
 ```typescript
-import {
-  performClientAuth,
-} from 'user-management';
+import { performClientAuth } from 'user-management';
 
 const Index = (props: { message: string }): JSX.Element => {
   const [token, setToken] = useState<string | undefined | 'error'>(undefined);
@@ -41,9 +39,7 @@ Note during the sign in process, the user will always be redirected to the callb
 The library also supports logging out users. For this, simply call the method `performLogout`. The user will be redirected to the Cognito hosted UI sign in screen.
 
 ```typescript
-import {
-  performLogout,
-} from '@goldstack/user-management';
+import { performLogout } from '@goldstack/user-management';
 
 async function logoutUser() {
   await performLogout();
@@ -61,9 +57,7 @@ yarn add user-management
 On the server, we can validate the tokens send by the client using the `connectWithCognito` method:
 
 ```typescript
-import {
-  connectWithCognito,
-} from '@goldstack/user-management';
+import { connectWithCognito } from '@goldstack/user-management';
 
 export const handler: SSRHandler = async (event, context) => {
   const cookies = getCookies((event.cookies || []).join(';'));
@@ -73,7 +67,7 @@ export const handler: SSRHandler = async (event, context) => {
     const idToken = await cognito.validateIdToken(cookies.goldstack_id_token);
     message = `Hello ${idToken.email}<br>`;
   }
-}
+};
 ```
 
 Note that it is recommended we [always](https://auth0.com/blog/id-token-access-token-what-is-the-difference/) validate the _access token_. We validate the _id token_ in the above as well to determine the user's email address, since the access token only contains the _username_, which in our case is a cognito generated id.

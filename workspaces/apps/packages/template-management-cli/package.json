@@ -36,7 +36,7 @@
     "@goldstack/template-metadata": "0.1.0",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/template-repository-bucket": "0.1.0",
-    "@goldstack/template-s3": "0.4.7",
+    "@goldstack/template-s3": "0.4.8",
     "@goldstack/template-static-website-aws": "0.5.8",
     "@goldstack/utils-cli": "0.3.4",
     "@goldstack/utils-config": "0.4.4",

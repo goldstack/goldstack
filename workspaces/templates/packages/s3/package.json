@@ -22,11 +22,11 @@
     "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/template-s3": "0.4.7",
+    "@goldstack/template-s3": "0.4.8",
     "aws-sdk": "^2.1222.0"
   },
   "devDependencies": {
-    "@goldstack/template-s3-cli": "0.6.8",
+    "@goldstack/template-s3-cli": "0.6.9",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "jest": "^28.1.0",

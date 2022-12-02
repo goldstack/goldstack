@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-email-send",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "Utilities for packages that implement email sending using AWS SES",
   "keywords": [
     "goldstack",
@@ -46,7 +46,7 @@
     "@goldstack/utils-cli": "0.3.4",
     "@goldstack/utils-esbuild": "0.5.4",
     "@goldstack/utils-package": "0.4.4",
-    "@goldstack/utils-package-config-embedded": "0.5.4",
+    "@goldstack/utils-package-config-embedded": "0.5.5",
     "@goldstack/utils-terraform": "0.4.7",
     "@goldstack/utils-terraform-aws": "0.4.7",
     "aws-sdk": "^2.1222.0",

@@ -20,12 +20,12 @@
     "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/template-s3": "0.4.7",
+    "@goldstack/template-s3": "0.4.8",
     "@goldstack/utils-git": "0.2.4",
     "@goldstack/utils-sh": "0.5.4"
   },
   "devDependencies": {
-    "@goldstack/template-s3-cli": "0.6.8",
+    "@goldstack/template-s3-cli": "0.6.9",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "aws-sdk": "^2.1222.0",
