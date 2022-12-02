@@ -10,6 +10,7 @@ import { createS3BuildSetConfig } from './s3';
 import { createNextjsBuildSetConfig } from './nextjs';
 import { createDynamoDBBuildSetConfig } from './dynamodb';
 import { createServerSideRenderingBuildSetConfig } from './serverSideRendering';
+import { createUserManagementBuildSetConfig } from './userManagement';
 
 export { createServerSideRenderingBuildSetConfig } from './serverSideRendering';
 
@@ -26,6 +27,7 @@ export const getAllBuildSets = async (): Promise<DeploySetConfig[]> => {
     await createS3BuildSetConfig(),
     await createDynamoDBBuildSetConfig(),
     await createServerSideRenderingBuildSetConfig(),
+    await createUserManagementBuildSetConfig(),
   ];
 };
 

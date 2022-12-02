@@ -125,6 +125,9 @@
       "path": "workspaces/templates/packages/template-test"
     },
     {
+      "path": "workspaces/templates/packages/user-management"
+    },
+    {
       "path": "workspaces/templates-lib/packages/infra"
     },
     {
@@ -177,6 +180,12 @@
     },
     {
       "path": "workspaces/templates-lib/packages/template-static-website-aws"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-user-management"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-user-management-cli"
     },
     {
       "path": "workspaces/templates-lib/packages/utils-aws-cli"

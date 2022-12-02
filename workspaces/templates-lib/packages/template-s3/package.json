@@ -29,7 +29,6 @@
     "clean": "rimraf ./dist",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
-    "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "generate-schema": "ts-node scripts/generateSchemas.ts && cp schemas/* ../../../templates/packages/s3/schemas && cp schemas/* ../../../templates-management/packages/project-repository-bucket/schemas && cp schemas/* ../../../templates-management/packages/template-repository-bucket/schemas",
     "prepublishOnly": "yarn run build",

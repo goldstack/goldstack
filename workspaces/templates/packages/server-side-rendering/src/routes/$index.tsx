@@ -13,7 +13,7 @@ const Index = (props: { message: string }): JSX.Element => {
         onClick={() => {
           alert('hi');
           setClicked(true);
-          throw new Error('Havent seen this');
+          // throw new Error('Havent seen this');
         }}
         className={`${styles.message}`}
       >
@@ -26,11 +26,13 @@ const Index = (props: { message: string }): JSX.Element => {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const handler: SSRHandler = async (event, context) => {
+  const message = 'Hi there';
+
   return renderPage({
     component: Index,
     appendToHead: '<title>SSR Template</title>',
     properties: {
-      message: 'Hi there',
+      message,
     },
     entryPoint: __filename,
     event,
