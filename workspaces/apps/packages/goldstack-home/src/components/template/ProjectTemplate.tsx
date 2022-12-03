@@ -44,7 +44,7 @@ const ProjectTemplate = (props: ProjectTemplateProps): JSX.Element => {
             image={props.images[0]}
             isComposite={props.isComposite}
             packages={props.packages}
-            actionLink={props.hero.action?.link || '#'}
+            actionLink={props.actionLink}
             boilerplateLink={props.boilerplateLink}
           ></ProjectTemplateSidebar>
           <ProjectTemplateBody {...props}></ProjectTemplateBody>
