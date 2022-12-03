@@ -2,7 +2,7 @@
   "include": [
     "infra/",
     "docs/",
-    "scripts",
+    "scripts/",
     "src/",
     "schemas/",
     ".gitignore",
