@@ -6,20 +6,20 @@ The user management template provides the infrastructure and utility libraries f
 
 ## Features
 
-- Provides all Terraform resources requires for setting up an identity server using Amazon Cognito.
-- Provides customisable UI for signing up and signing in users.
-- Library with convenient methods to authenticate user on the client.
-- Library to validate tokens on the server.
-- Automatically verifies users email addresses.
+*   Provides all Terraform resources requires for setting up an identity server using Amazon Cognito.
+*   Provides customisable UI for signing up and signing in users.
+*   Library with convenient methods to authenticate user on the client.
+*   Library to validate tokens on the server.
+*   Automatically verifies users email addresses.
 
 ## Configure
 
 The following key properties need to be configured for this template:
 
-- **Cognito Domain**: The domain on which the identity server and the UI pages for login will be hosted.
-- **User Pool Name**: The name for the Cognito User Pool that should be created by this template. Note no User Pool of the same name should exist in your account.
-- **Callback URL**: A URL pointing to a page in your applications that users should be redirected after signing in successfully through the Cognito UI.
-- **Hosted Zone Domain**: A Route 53 hosted zone to which the _Cognito Domain_ an be added as record. For instance, the hosted zone domain `mysite.com` would allow adding the cognito domain `auth.mysite.com`. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
+*   **Cognito Domain**: The domain on which the identity server and the UI pages for login will be hosted.
+*   **User Pool Name**: The name for the Cognito User Pool that should be created by this template. Note no User Pool of the same name should exist in your account.
+*   **Callback URL**: A URL pointing to a page in your applications that users should be redirected after signing in successfully through the Cognito UI.
+*   **Hosted Zone Domain**: A Route 53 hosted zone to which the *Cognito Domain* an be added as record. For instance, the hosted zone domain `mysite.com` would allow adding the cognito domain `auth.mysite.com`. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
 
 ## Getting Started
 
@@ -103,7 +103,7 @@ export const handler: SSRHandler = async (event, context) => {
 };
 ```
 
-Note that it is recommended we [always](https://auth0.com/blog/id-token-access-token-what-is-the-difference/) validate the _access token_. We validate the _id token_ in the above as well to determine the user's email address, since the access token only contains the _username_, which in our case is a cognito generated id.
+Note that it is recommended we [always](https://auth0.com/blog/id-token-access-token-what-is-the-difference/) validate the *access token*. We validate the *id token* in the above as well to determine the user's email address, since the access token only contains the *username*, which in our case is a cognito generated id.
 
 This template is not designed to support authorization. If you have authorization needs, consider implementing this with [DynamoDB](https://build.diligent.com/fast-authorization-with-dynamodb-cd1f133437e3) using the [DynamoDB template](https://goldstack.party/templates/dynamodb).
 
@@ -139,13 +139,13 @@ The configuration tool will define one deployment. This will be either `dev` or 
 
 Infrastructure commands for this template can be run using `yarn`. There are four commands in total:
 
-- `yarn infra up`: For standing up infrastructure.
-- `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
-- `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
-- `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
-- `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
-- `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
-- `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
+*   `yarn infra up`: For standing up infrastructure.
+*   `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
+*   `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
+*   `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
+*   `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+*   `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
+*   `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
 
 For each command, the deployment they should be applied to must be specified.
 
