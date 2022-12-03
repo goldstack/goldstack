@@ -1,3 +1,5 @@
+/* esbuild-ignore ui */
+
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { getCodeVerifier } from './codeChallenge';
 import { getEndpoint } from './cognitoEndpoints';
@@ -5,6 +7,10 @@ import {
   UserManagementDeployment,
   UserManagementPackage,
 } from './templateUserManagement';
+import {
+  getMockedUserAccessToken,
+  getMockedUserIdToken,
+} from './userManagementClientMock';
 import {
   getDeploymentName,
   getDeploymentsOutput,
@@ -33,9 +39,9 @@ export async function getToken(args: {
       );
     }
     return {
-      accessToken: 'dummyToken',
+      accessToken: getMockedUserAccessToken(),
       refreshToken: 'dummyRefreshToken',
-      idToken: 'dummyIdToken',
+      idToken: getMockedUserIdToken(),
     };
   }
 

@@ -11,6 +11,15 @@ import goldstackConfig from './../goldstack.json';
 import packageSchema from './../schemas/package.schema.json';
 import deploymentsOutput from './state/deployments.json';
 
+export {
+  setLocalUserManager,
+  setMockedUserAccessToken,
+  setMockedUserIdToken,
+  generateTestAccessToken,
+  generateTestIdToken,
+  getLocalUserManager,
+} from '@goldstack/template-user-management';
+
 export async function performClientAuth(deploymentName?: string) {
   return templatePerformClientAuth({
     goldstackConfig,

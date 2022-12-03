@@ -1,6 +1,8 @@
 export * from './types/UserManagementPackage';
 
 import * as tokenVerify from './cognitoTokenVerify';
+import * as userManagementServerMock from './userManagementServerMock';
+import * as userManagementClientMock from './userManagementClientMock';
 
 import { getEndpoint as getEndpointLib } from './cognitoEndpoints';
 import { getToken as getTokenLib } from './cognitoClientAuth';
@@ -13,6 +15,10 @@ import UserManagementPackage, {
 export type { CognitoManager } from './cognitoTokenVerify';
 
 import type { GetTokenResults } from './cognitoClientAuth';
+import {
+  CognitoAccessTokenPayload,
+  CognitoIdTokenPayload,
+} from 'aws-jwt-verify/jwt-model';
 export type { GetTokenResults };
 
 export async function connectWithCognito(args: {
@@ -22,6 +28,46 @@ export async function connectWithCognito(args: {
   deploymentName?: string;
 }): Promise<CognitoManager> {
   return tokenVerify.connectWithCognito(args);
+}
+
+export function getLocalUserManager(): CognitoManager {
+  return userManagementServerMock.getLocalUserManager();
+}
+
+export function setLocalUserManager(userManager: CognitoManager): void {
+  userManagementServerMock.setLocalUserManager(userManager);
+}
+
+export function generateTestIdToken(
+  properties: CognitoIdTokenPayload | object
+): string {
+  if (typeof window === 'undefined') {
+    return userManagementServerMock.generateTestIdToken(properties);
+  } else {
+    return userManagementClientMock.getMockedUserAccessToken();
+  }
+}
+
+export function generateTestAccessToken(
+  properties: CognitoAccessTokenPayload | object
+): string {
+  if (typeof window === 'undefined') {
+    return userManagementServerMock.generateTestAccessToken(properties);
+  } else {
+    return userManagementClientMock.getMockedUserIdToken();
+  }
+}
+
+export function setMockedUserIdToken(
+  propertiesOrToken: CognitoIdTokenPayload | object | string
+) {
+  return userManagementClientMock.setMockedUserIdToken(propertiesOrToken);
+}
+
+export function setMockedUserAccessToken(
+  propertiesOrToken: CognitoAccessTokenPayload | object | string
+) {
+  return userManagementClientMock.setMockedUserAccessToken(propertiesOrToken);
 }
 
 export type Endpoint =
