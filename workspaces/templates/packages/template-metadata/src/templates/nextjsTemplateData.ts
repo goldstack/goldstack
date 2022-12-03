@@ -62,7 +62,7 @@ export const featureYarn: ShortTemplateFeature = {
   title: 'Yarn 3',
   id: 'yarn',
   description:
-    'Fast build times and advanced modularity using Yarn 2 workspaces.',
+    'Fast build times and advanced modularity using Yarn 3 workspaces.',
   image: 'yarn',
   details: {
     title: 'Build Modular Applications with Yarn Workspaces',

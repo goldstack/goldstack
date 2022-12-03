@@ -12,25 +12,25 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
     isComposite: false,
     metaTitle: 'Template for User Management using Amazon Cognito',
     metaDescription:
-      'Add sign up and sign in capabilities to your web application in minutes. Also provides libraries to protect your APIs.',
+      'Add sign up and sign in capabilities to your web application in minutes. Also provides libraries to protect your backend APIs.',
     description:
       'Provide sign up and sign up capabilities to your application using Amazon Cognito.',
     longDescription:
-      'This project template provides utilities to define the infrastructure for an SSR application deployed on AWS using AWS API Gateway and Lambda functions.',
+      'This module configures Amazon Cognito to provide sign up and sign in capabilities for your applications. Includes hosted UI for users to perform sign up and sign in operations.',
     actionLink: '/build?stack=user-management',
     tags: ['Amazon Cognito', 'Backend', 'Serverless'],
     featuresOverview: [
       {
-        title: 'Serverless Page Rendering and API',
-        id: 'serverless-rendering-and-api',
+        title: 'Sign Up Users',
+        id: 'user-sign-up',
         description:
-          'Develop a serverless React rendering and API using AWS API Gateway and Lambdas',
-        image: 'api-gateway',
+          'Easily sign up new users using the hosted UI provided by Cognito.',
+        image:
+          'https://cdn.goldstack.party/img/202212/front-icon-white-48-identity.svg',
         details: {
-          title:
-            'Serverless React rendering and API using AWS API Gateway and Lambdas',
+          title: 'Sign Up Users',
           description:
-            'Benefit from low costs, high scaleability and low maintenance by using modern Serverless practices. Each page and route defined in its own Lambda for minimal cold start times.',
+            'Allow users to create new accounts by providing their email address and passwords. Email addresses are verified as well.',
           content: {
             type: 'image',
             data: {
@@ -41,14 +41,15 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
         },
       },
       {
-        title: 'Local Testing',
-        id: 'local-testing-react-ssr',
-        description: 'Test your application using a local server',
-        image: 'https://cdn.goldstack.party/img/202201/search.svg',
+        title: 'User Sign In',
+        id: 'user-sign-in',
+        description: 'Allow users to sign in to your application.',
+        image:
+          'https://cdn.goldstack.party/img/202212/front-icon-white-47-shield.svg',
         details: {
-          title: 'Local Testing',
+          title: 'User Sign In',
           description:
-            'Test all our pages and routes with a local server. No need to deploy to AWS.',
+            'Easily redirect users to a sign in page and have them return to your site with valid security tokens.',
           content: {
             type: 'image',
             data: {
@@ -58,15 +59,15 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
         },
       },
       {
-        title: 'React Components',
-        id: 'react-on-client-and-server',
+        title: 'TypeScript API for React',
+        id: 'react-api',
         description:
-          'Leverage the power of JSX for server-side rendering and for dynamic front-end pages',
+          'Call a simple method to initiate user sign up and sign in.',
         image: 'react',
         details: {
-          title: 'React Components for Client and Server',
+          title: 'TypeScript API for React',
           description:
-            'Define pages in JSX for server-side rendering. Pages hydrated automatically once loaded on the client.',
+            'Call the method <code>performClientAuth()</code> to initiate the auth flow when required, or return cached user credentials.',
           content: {
             type: 'image',
             data: {
@@ -74,36 +75,20 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
                 'https://cdn.goldstack.party/img/202208/react-rendering.png',
             },
           },
-        },
-      },
-      {
-        title: 'CSS',
-        id: 'css-modules',
-        description:
-          'Define styling for your React components using CSS Modules',
-        image: 'https://cdn.goldstack.party/img/202208/css-icon.svg',
-        details: {
-          title: 'CSS Modules for Styling',
-          description:
-            'Configure custom styling using vanilla CSS. CSS automatically packaged for client-side use.',
-          content: {
-            type: 'image',
-            data: {
-              image: 'https://cdn.goldstack.party/img/202208/css-modules.png',
-            },
+          moreDetails: {
+            description: 'Also provides a simple method for user log out.',
           },
         },
       },
       {
-        title: 'TypeScript',
-        id: 'typescript',
-        description:
-          'Develop all pages and routes for your API using TypeScript.',
-        image: 'typescript',
+        title: 'TypeScript API for Node',
+        id: 'typescript-api-for-node',
+        description: 'Protect your APIs by using the provided TypeScript API',
+        image: 'nodejs',
         details: {
-          title: 'Full TypeScript Support',
+          title: 'TypeScript API for Node',
           description:
-            'Benefit from static type checking and code completion when developing your pages and routes.',
+            'Use the API provided by the module to validate credentials and obtain user details.',
           content: {
             type: 'image',
             data: {
@@ -114,50 +99,15 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
         },
       },
       {
-        title: 'Jest',
+        title: 'Unit Testing with Jest',
         id: 'jest',
-        description:
-          'Write tests for React components and rendered pages using Jest.',
+        description: 'Test your frontend and backend code using Jest.',
         image: 'jest',
         details: {
-          title: 'Unit and Integration Testing',
+          title: 'Unit Testing with Jest',
           description:
-            'Test React components using jsdom test environment and test page rendering and API via an embedded server.',
+            'Test your existing frontend and backend code easily with the automatically provided mock implementation for the APIs.',
           icons: ['jest'],
-          content: {
-            type: 'none',
-            data: {},
-          },
-        },
-      },
-      {
-        title: 'ESLint + Prettier',
-        id: 'eslint',
-        description:
-          'Auto-format and validate your TypeScript code easily using ESLint and Prettier.',
-        image: 'eslint',
-        details: {
-          title: 'Linting and Formatting',
-          description:
-            'ESLint and Prettier configured for usage in the CLI and as VSCode plugins.',
-          icons: ['eslint'],
-          content: {
-            type: 'none',
-            data: {},
-          },
-        },
-      },
-      {
-        title: 'VSCode',
-        id: 'vscode',
-        description:
-          'Configured to work seamlessly with the powerful VSCode editor.',
-        image: 'vscode',
-        details: {
-          title: 'Develop in VSCode',
-          description:
-            'All configuration for developing TypeScript code with VSCode provided.',
-          icons: ['vscode'],
           content: {
             type: 'none',
             data: {},
@@ -166,13 +116,13 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
       },
       featureYarn,
       {
-        title: 'AWS',
+        title: 'Production-grade AWS Infrastructure',
         id: 'aws',
         description:
           'Application deployed to reliable and scaleable AWS serverless infrastructure.',
         image: 'aws',
         details: {
-          title: 'Ready for Deployment to AWS',
+          title: 'Production-grade AWS Infrastructure',
           description:
             'Deploy your application to AWS for professional level security, reliability and scaleability.',
           content: {
@@ -181,17 +131,17 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
           },
           moreDetails: {
             description:
-              'Supports multiple, separate deployments for development, staging and production environments. Implemented using CloudFront, HTTP API Gateway and Lambda.',
+              'Supports multiple, separate deployments for development, staging and production environments. Implemented using Amazon Cognito.',
           },
         },
       },
       {
-        title: 'Terraform',
+        title: 'Extend Infrastructure with Terraform',
         id: 'terraform',
-        description: 'Extend and maintain infrastructure using Terraform.',
+        description: 'Extend and maintain the user management using Terraform.',
         image: 'terraform',
         details: {
-          title: 'Extendable and Configurable Infrastructure',
+          title: 'Extend Infrastructure with Terraform',
           description:
             'Customise infrastructure and easily add any service from the AWS cloud to your application by modifying the Terraform files included in the template.',
           icons: ['terraform'],
@@ -208,16 +158,15 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
           'Easily combine with any Goldstack module to compose end-to-end applications.',
         image: 'composition',
         details: {
-          title: 'Integrate with Goldstack Templates',
+          title: 'App Composition',
           description:
             'Combine this template with other modules from Goldstack. Generate a starter project supporting your full stack including the frontend.',
           content: {
             type: 'combine-templates',
             data: {
               templates: [
-                'template:app-nextjs-bootstrap',
-                'template:s3',
-                'template:email-send',
+                'template:server-side-rendering',
+                'template:serverless-api',
               ],
             },
           },

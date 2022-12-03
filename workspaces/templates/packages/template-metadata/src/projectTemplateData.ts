@@ -38,17 +38,17 @@ export {
 export const allTemplates = (): ProjectTemplateProps[] => {
   const templates = [
     getNextjsBootstrapTemplateData(),
-    getServerlessApiTemplate(),
     getServerSideRenderingTemplate(),
+    getUserManagementTemplate(),
+    getServerlessApiTemplate(),
+    getDynamoDBTemplateData(),
     getExpressTemplateData(),
     getNextJsTemplateData(),
+    getS3TemplateData(),
+    getEmailSendTemplateData(),
     getStaticWebsiteTemplateData(),
     getGoGinTemplateData(),
-    getS3TemplateData(),
-    getDynamoDBTemplateData(),
-    getEmailSendTemplateData(),
     getExpressAndEmailSentTemplateData(),
-    getUserManagementTemplate(),
   ];
   return templates;
 };

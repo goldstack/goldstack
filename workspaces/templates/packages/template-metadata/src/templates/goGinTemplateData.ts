@@ -78,7 +78,7 @@ export const getGoGinTemplateData = (): ProjectTemplateProps => {
         },
       },
       {
-        title: 'Yarn 2',
+        title: 'Yarn 3',
         id: 'yarn',
         description:
           'Build scripts managed using Yarn for easy integration with frontend projects.',

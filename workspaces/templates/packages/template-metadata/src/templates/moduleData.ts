@@ -67,7 +67,7 @@ const ServerSideRendering: PackageProps = {
 };
 
 const UserManagement: PackageProps = {
-  title: 'Usser Management',
+  title: 'User Management',
   link: 'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/user-management#readme',
   documentationLink:
     'https://docs.goldstack.party/docs/templates/user-management',
