@@ -14515,10 +14515,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["hosted-git-info", [\
-        ["npm:2.8.8", {\
-          "packageLocation": "./.yarn/cache/hosted-git-info-npm-2.8.8-94a3928c03-fc5bdbd1ce.zip/node_modules/hosted-git-info/",\
+        ["npm:2.8.9", {\
+          "packageLocation": "./.yarn/cache/hosted-git-info-npm-2.8.9-62c44fa93f-c955394bda.zip/node_modules/hosted-git-info/",\
           "packageDependencies": [\
-            ["hosted-git-info", "npm:2.8.8"]\
+            ["hosted-git-info", "npm:2.8.9"]\
           ],\
           "linkType": "HARD"\
         }],\
@@ -18851,7 +18851,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/normalize-package-data-npm-2.5.0-af0345deed-7999112efc.zip/node_modules/normalize-package-data/",\
           "packageDependencies": [\
             ["normalize-package-data", "npm:2.5.0"],\
-            ["hosted-git-info", "npm:2.8.8"],\
+            ["hosted-git-info", "npm:2.8.9"],\
             ["resolve", "patch:resolve@npm%3A1.17.0#~builtin<compat/resolve>::version=1.17.0&hash=07638b"],\
             ["semver", "npm:5.7.1"],\
             ["validate-npm-package-license", "npm:3.0.4"]\
