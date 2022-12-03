@@ -43,25 +43,10 @@ export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
     isComposite: false,
     boilerplateLink: 'https://github.com/goldstack/dynamodb-boilerplate',
     description: 'Insert, update and query data with DynamoDB.',
+    actionLink: '/build?stack=dynamodb',
     longDescription:
       'This template adds the capability to write and query data with DynamoDB to your project.',
     tags: ['AWS', 'DynamoDB', 'Terraform', 'TypeScript', 'Yarn', 'Backend'],
-    hero: {
-      title: 'Manage Data with DynamoDB',
-      content: `
-        <p>
-          The DynamoDB template enables your application to work with data in DynamoDB.
-        </p>
-          <p>
-            Scroll down to learn more about what&apos;s included in this
-            template.
-          </p>
-        `,
-      action: {
-        title: '✔ Start Building Your Project Now',
-        link: '/build?stack=dynamodb',
-      },
-    },
     featuresOverview: [
       getDynamoDBFeature(),
       {

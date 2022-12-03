@@ -43,23 +43,8 @@ export const getEmailSendTemplateData = (): ProjectTemplateProps => {
     description: 'Send emails from your application using AWS SES.',
     longDescription:
       'This project provides a complete setup for sending outbound emails with AWS Simple Email Service (SES).',
+    actionLink: '/build?stack=email-send',
     tags: ['AWS', 'SES', 'TypeScript', 'Terraform', 'Yarn', 'Backend'],
-    hero: {
-      title: 'Sending Email with AWS SES',
-      content: `
-        <p>
-          The Email Send (SES) template enables building an application that sends email through the AWS Simple Email Service (SES).
-        </p>
-          <p>
-            Scroll down to learn more about what&apos;s included in this
-            template.
-          </p>
-        `,
-      action: {
-        title: '✔ Start Building Your Project Now',
-        link: '/build?stack=email-send',
-      },
-    },
     featuresOverview: [
       getEmailSendFeature(),
       {

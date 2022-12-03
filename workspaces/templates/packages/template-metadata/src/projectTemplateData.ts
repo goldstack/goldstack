@@ -23,6 +23,7 @@ import { getS3TemplateData } from './templates/s3TemplateData';
 import { getStaticWebsiteTemplateData } from './templates/staticWebsiteTemplateData';
 import { getDynamoDBTemplateData } from './templates/dynamoDBTemplate';
 import { getServerSideRenderingTemplate } from './templates/serverSideRenderingTemplateData';
+import { getUserManagementTemplate } from './templates/userManagementTemplateData';
 
 export { getNextJsTemplateData };
 export { getExpressTemplateData };
@@ -47,6 +48,7 @@ export const allTemplates = (): ProjectTemplateProps[] => {
     getDynamoDBTemplateData(),
     getEmailSendTemplateData(),
     getExpressAndEmailSentTemplateData(),
+    getUserManagementTemplate(),
   ];
   return templates;
 };

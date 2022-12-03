@@ -1,34 +1,36 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
-import { LambdaAPI } from './moduleData';
+import { UserManagement } from './moduleData';
 import { featureYarn } from './nextjsTemplateData';
 
-export const getServerlessApiTemplate = (): ProjectTemplateProps => {
+export const getUserManagementTemplate = (): ProjectTemplateProps => {
   return {
-    id: 'serverless-api',
-    title: 'Serverless API',
-    images: ['api-gateway', 'lambda', 'nodejs', 'typescript'],
-    packages: [LambdaAPI],
+    id: 'user-management',
+    title: 'User Management',
+    images: ['https://cdn.goldstack.party/img/202212/cognito.svg'],
+    // boilerplateLink: 'https://github.com/goldstack/react-ssr',
+    packages: [UserManagement],
     isComposite: false,
-    metaTitle: 'Serverless API Template and Boilerplate for AWS Lambda',
+    metaTitle: 'Template for User Management using Amazon Cognito',
     metaDescription:
-      'Open source template for developing a Serverless API using AWS API Gateway. Generates unique lambdas for each endpoint for reduced cold start times.',
+      'Add sign up and sign in capabilities to your web application in minutes. Also provides libraries to protect your APIs.',
     description:
-      'Rapidly develop an API using AWS HTTP API and Lambdas with minimal configuration.',
+      'Provide sign up and sign up capabilities to your application using Amazon Cognito.',
     longDescription:
-      'This project template provides utilities to define the infrastructure for an API deployed on AWS using AWS HTTP Gateway and Lambda functions.\n',
-    actionLink: '/build?stack=serverless-api',
-    tags: ['HTTP API', 'REST', 'Backend', 'Lambda', 'Serverless'],
+      'This project template provides utilities to define the infrastructure for an SSR application deployed on AWS using AWS API Gateway and Lambda functions.',
+    actionLink: '/build?stack=user-management',
+    tags: ['Amazon Cognito', 'Backend', 'Serverless'],
     featuresOverview: [
       {
-        title: 'Serverless API',
-        id: 'serverless-api',
+        title: 'Serverless Page Rendering and API',
+        id: 'serverless-rendering-and-api',
         description:
-          'Develop a serverless API using AWS API Gateway and Lambdas',
+          'Develop a serverless React rendering and API using AWS API Gateway and Lambdas',
         image: 'api-gateway',
         details: {
-          title: 'Serverless API using AWS API Gateway and Lambdas',
+          title:
+            'Serverless React rendering and API using AWS API Gateway and Lambdas',
           description:
-            'Benefit from low costs, high scaleability and low maintenance by using modern Serverless practices. Each route defined in its own Lambda for minimal cold start times.',
+            'Benefit from low costs, high scaleability and low maintenance by using modern Serverless practices. Each page and route defined in its own Lambda for minimal cold start times.',
           content: {
             type: 'image',
             data: {
@@ -39,14 +41,69 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
         },
       },
       {
+        title: 'Local Testing',
+        id: 'local-testing-react-ssr',
+        description: 'Test your application using a local server',
+        image: 'https://cdn.goldstack.party/img/202201/search.svg',
+        details: {
+          title: 'Local Testing',
+          description:
+            'Test all our pages and routes with a local server. No need to deploy to AWS.',
+          content: {
+            type: 'image',
+            data: {
+              image: 'https://cdn.goldstack.party/img/202208/ssr-local.gif',
+            },
+          },
+        },
+      },
+      {
+        title: 'React Components',
+        id: 'react-on-client-and-server',
+        description:
+          'Leverage the power of JSX for server-side rendering and for dynamic front-end pages',
+        image: 'react',
+        details: {
+          title: 'React Components for Client and Server',
+          description:
+            'Define pages in JSX for server-side rendering. Pages hydrated automatically once loaded on the client.',
+          content: {
+            type: 'image',
+            data: {
+              image:
+                'https://cdn.goldstack.party/img/202208/react-rendering.png',
+            },
+          },
+        },
+      },
+      {
+        title: 'CSS',
+        id: 'css-modules',
+        description:
+          'Define styling for your React components using CSS Modules',
+        image: 'https://cdn.goldstack.party/img/202208/css-icon.svg',
+        details: {
+          title: 'CSS Modules for Styling',
+          description:
+            'Configure custom styling using vanilla CSS. CSS automatically packaged for client-side use.',
+          content: {
+            type: 'image',
+            data: {
+              image: 'https://cdn.goldstack.party/img/202208/css-modules.png',
+            },
+          },
+        },
+      },
+      {
         title: 'TypeScript',
         id: 'typescript',
-        description: 'Develop all routes for your API using TypeScript.',
+        description:
+          'Develop all pages and routes for your API using TypeScript.',
         image: 'typescript',
         details: {
           title: 'Full TypeScript Support',
           description:
-            'Benefit from static type checking and code completion when developing your routes.',
+            'Benefit from static type checking and code completion when developing your pages and routes.',
           content: {
             type: 'image',
             data: {
@@ -57,30 +114,15 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
         },
       },
       {
-        title: 'Local Testing',
-        id: 'local-testing',
-        description: 'Test your API using a local server',
-        image: 'https://cdn.goldstack.party/img/202201/search.svg',
-        details: {
-          title: 'Local Testing',
-          description: 'Run a local server for testing your API.',
-          content: {
-            type: 'image',
-            data: {
-              image:
-                'https://cdn.goldstack.party/img/202201/lambda-api-local-testing.gif',
-            },
-          },
-        },
-      },
-      {
         title: 'Jest',
         id: 'jest',
-        description: 'Write tests for the Serverless API using Jest.',
+        description:
+          'Write tests for React components and rendered pages using Jest.',
         image: 'jest',
         details: {
           title: 'Unit and Integration Testing',
-          description: 'Write efficient tests against a local API.',
+          description:
+            'Test React components using jsdom test environment and test page rendering and API via an embedded server.',
           icons: ['jest'],
           content: {
             type: 'none',
@@ -127,19 +169,19 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
         title: 'AWS',
         id: 'aws',
         description:
-          'API deployed to reliable and scaleable AWS serverless infrastructure.',
+          'Application deployed to reliable and scaleable AWS serverless infrastructure.',
         image: 'aws',
         details: {
           title: 'Ready for Deployment to AWS',
           description:
-            'Deploy your API for cents on AWS with professional level security, reliability and scaleability.',
+            'Deploy your application to AWS for professional level security, reliability and scaleability.',
           content: {
             type: 'aws-deployment',
             data: {},
           },
           moreDetails: {
             description:
-              'Supports multiple, separate deployments for development, staging and production environments. Implemented using HTTP API Gateway and Lambda.',
+              'Supports multiple, separate deployments for development, staging and production environments. Implemented using CloudFront, HTTP API Gateway and Lambda.',
           },
         },
       },

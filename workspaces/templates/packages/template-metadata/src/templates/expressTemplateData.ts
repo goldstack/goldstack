@@ -19,23 +19,8 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
       'Open source Express.js template configured for deployment with AWS Lambda. Configure the template for your project and download it for free.',
     longDescription:
       'This project template contains an Express.js server ready to be packaged and deployed as an AWS Lambda.\n',
+    actionLink: '/build?stack=express',
     tags: ['Express.js', 'Backend', 'Lambda', 'Serverless'],
-    hero: {
-      title: 'Express.js Lambda Template',
-      content: `
-          <p>
-            Rapidly deploy an Express.js server to AWS Lambda. All infrastructure already defined. Optimised for high-performance deployment using esbuild.
-          </p>
-          <p>
-            Scroll down to learn more about what&apos;s included in this
-            template.
-          </p>
-        `,
-      action: {
-        title: '✔ Start Building Your Project Now',
-        link: '/build?stack=express',
-      },
-    },
     featuresOverview: [
       {
         title: 'Express.js',

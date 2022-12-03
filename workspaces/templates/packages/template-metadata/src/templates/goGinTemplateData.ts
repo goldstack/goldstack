@@ -19,23 +19,8 @@ export const getGoGinTemplateData = (): ProjectTemplateProps => {
     longDescription:
       'This project template contains a fully configured server using the Gin framework ready to be deployed in an AWS Lambda.\n' +
       'See a list of all features included in this template below.',
+    actionLink: '/build?stack=gin',
     tags: ['Go', 'Gin', 'Backend', 'Lambda', 'Serverless'],
-    hero: {
-      title: 'Go Gin Lambda Template',
-      content: `
-          <p>
-            Rapidly deploy an Gin server to AWS Lambda. All infrastructure already defined.
-          </p>
-          <p>
-            Scroll down to learn more about what&apos;s included in this
-            template.
-          </p>
-        `,
-      action: {
-        title: '✔ Start Building Your Project Now',
-        link: '/build?stack=gin',
-      },
-    },
     featuresOverview: [
       {
         title: 'Gin Framework',

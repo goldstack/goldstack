@@ -29,24 +29,8 @@ export const getNextjsBootstrapTemplateData = (): ProjectTemplateProps => {
     longDescription:
       'Configures a Next.js application with Bootstrap.\n' +
       'Scroll down for an overview of the features included in this template.',
+    actionLink: '/build?stack=bootstrap',
     tags: ['Next.js', 'Bootstrap', 'React', 'TypeScript', 'Yarn', 'Frontend'],
-    hero: {
-      title: 'Next.js and Bootstrap Template',
-      content: `
-          <p>
-            Our Next.js + Bootstrap golden template allows building optimized React applications
-            with the Bootstrap CSS framework.
-         </p>
-          <p>
-            Scroll down to learn more about what&apos;s included in this
-            template.
-          </p>
-        `,
-      action: {
-        title: '✔ Start Building Your Project Now',
-        link: '/build?stack=bootstrap',
-      },
-    },
     featuresOverview: [
       {
         title: 'Next.js 12',
