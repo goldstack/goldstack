@@ -66,6 +66,13 @@ const ServerSideRendering: PackageProps = {
     'https://docs.goldstack.party/docs/templates/server-side-rendering',
 };
 
+const UserManagement: PackageProps = {
+  title: 'User Management',
+  link: 'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/user-management#readme',
+  documentationLink:
+    'https://docs.goldstack.party/docs/templates/user-management',
+};
+
 export {
   StaticWebsite,
   NextJsBootstrap,
@@ -77,4 +84,5 @@ export {
   DynamoDB,
   LambdaAPI,
   ServerSideRendering,
+  UserManagement,
 };

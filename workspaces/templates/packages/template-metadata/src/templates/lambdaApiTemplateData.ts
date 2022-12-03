@@ -16,23 +16,8 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
       'Rapidly develop an API using AWS HTTP API and Lambdas with minimal configuration.',
     longDescription:
       'This project template provides utilities to define the infrastructure for an API deployed on AWS using AWS HTTP Gateway and Lambda functions.\n',
+    actionLink: '/build?stack=serverless-api',
     tags: ['HTTP API', 'REST', 'Backend', 'Lambda', 'Serverless'],
-    hero: {
-      title: 'REST API using AWS Gateway and Lambdas',
-      content: `
-          <p>
-            Define an API using API Gateway and AWS Lambdas. All infrastructure dynamically generated from file-based routes.
-          </p>
-          <p>
-            Scroll down to learn more about what&apos;s included in this
-            template.
-          </p>
-        `,
-      action: {
-        title: '✔ Start Building Your Project Now',
-        link: '/build?stack=serverless-api',
-      },
-    },
     featuresOverview: [
       {
         title: 'Serverless API',

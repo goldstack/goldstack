@@ -43,23 +43,8 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
     description: 'Store data in AWS S3.',
     longDescription:
       'This template adds the capability to store data in AWS S3 to your project.',
+    actionLink: '/build?stack=s3',
     tags: ['AWS', 'S3', 'TypeScript', 'Yarn', 'Backend'],
-    hero: {
-      title: 'Store Data in S3',
-      content: `
-        <p>
-          The AWS S3 template enables your application to store data in AWS S3.
-        </p>
-          <p>
-            Scroll down to learn more about what&apos;s included in this
-            template.
-          </p>
-        `,
-      action: {
-        title: '✔ Start Building Your Project Now',
-        link: '/build?stack=s3',
-      },
-    },
     featuresOverview: [
       getS3Feature(),
       {

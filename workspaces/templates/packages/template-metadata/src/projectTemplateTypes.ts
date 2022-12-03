@@ -105,6 +105,6 @@ export interface ProjectTemplateProps {
   images: TemplateFeatureImage[];
   longDescription: string;
   tags: string[];
-  hero: TextSectionProps;
+  actionLink: string;
   featuresOverview: ShortTemplateFeature[];
 }

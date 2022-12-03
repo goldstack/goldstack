@@ -32,7 +32,7 @@ const ProjectTemplateBody = (props: ProjectTemplateProps): JSX.Element => {
             ))}
           <a
             className="link-collapse font-weight-bold collapsed"
-            href={props.hero.action?.link || '#'}
+            href={props.actionLink}
             role="button"
             aria-expanded="false"
             aria-controls="collapseLinkExample"
@@ -60,7 +60,7 @@ const ProjectTemplateBody = (props: ProjectTemplateProps): JSX.Element => {
           ></ProjectTemplateFeaturesDetails>
           <TemplateCallToAction
             action={{
-              link: props.hero.action?.link || '',
+              link: props.actionLink,
               title: '✔ Add Template to Project',
             }}
           ></TemplateCallToAction>

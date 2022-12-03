@@ -81,25 +81,8 @@ export const getStaticWebsiteTemplateData = (): ProjectTemplateProps => {
     description: 'Host a static website on AWS.',
     longDescription:
       'Upload HTML and CSS files to S3 and configure CloudFront to serve them.',
+    actionLink: '/build?stack=static-website',
     tags: ['AWS', 'CloudFront', 'TypeScript', 'Yarn', 'React', 'Frontend'],
-    hero: {
-      title: 'Get a website up and running in minutes',
-      content: `
-          <p>
-            Start working on what matters to you rather than being stuck with
-            project setup. Our Static Website golden template comes packaged with
-            features tailor-made to bring coding joy.
-          </p>
-          <p>
-            Scroll down to learn more about what&apos;s included in this
-            template.
-          </p>
-        `,
-      action: {
-        title: '✔ Start Building Your Project Now',
-        link: '/build?stack=static-website',
-      },
-    },
     featuresOverview: [
       {
         title: 'CloudFront CDN',
