@@ -41,27 +41,27 @@ export function setLocalUserManager(userManager: CognitoManager): void {
 export function generateTestIdToken(
   properties: CognitoIdTokenPayload | object
 ): string {
-  if (typeof window === 'undefined') {
-    return userManagementServerMock.generateTestIdToken(properties);
-  } else {
-    return userManagementClientMock.getMockedUserAccessToken();
-  }
+  return userManagementServerMock.generateTestIdToken(properties);
 }
 
 export function generateTestAccessToken(
   properties: CognitoAccessTokenPayload | object
 ): string {
-  if (typeof window === 'undefined') {
-    return userManagementServerMock.generateTestAccessToken(properties);
-  } else {
-    return userManagementClientMock.getMockedUserIdToken();
-  }
+  return userManagementServerMock.generateTestAccessToken(properties);
+}
+
+export function getMockedUserIdToken() {
+  return userManagementClientMock.getMockedUserIdToken();
 }
 
 export function setMockedUserIdToken(
   propertiesOrToken: CognitoIdTokenPayload | object | string
 ) {
   return userManagementClientMock.setMockedUserIdToken(propertiesOrToken);
+}
+
+export function getMockedUserAccessToken() {
+  return userManagementClientMock.getMockedUserAccessToken();
 }
 
 export function setMockedUserAccessToken(

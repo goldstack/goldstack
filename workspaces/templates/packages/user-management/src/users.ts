@@ -15,6 +15,8 @@ export {
   setLocalUserManager,
   setMockedUserAccessToken,
   setMockedUserIdToken,
+  getMockedUserAccessToken,
+  getMockedUserIdToken,
   generateTestAccessToken,
   generateTestIdToken,
   getLocalUserManager,
