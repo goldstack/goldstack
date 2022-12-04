@@ -4,6 +4,10 @@ export function getDeploymentName(deploymentName?: string) {
       deploymentName = process.env.GOLDSTACK_DEPLOYMENT;
     } else {
       deploymentName = (window as any).GOLDSTACK_DEPLOYMENT;
+      // fallback for Jest tests
+      if (!deploymentName && typeof process !== 'undefined') {
+        deploymentName = process.env.GOLDSTACK_DEPLOYMENT;
+      }
     }
   }
 

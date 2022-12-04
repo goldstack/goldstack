@@ -1617,6 +1617,7 @@ __metadata:
   dependencies:
     "@goldstack/template-ssr": 0.3.13
     "@goldstack/template-ssr-cli": 0.3.15
+    "@goldstack/user-management": "workspace:^"
     "@goldstack/utils-aws-http-api-local": 0.3.12
     "@goldstack/utils-esbuild": 0.5.4
     "@jest-mock/express": ^1.4.5
@@ -2554,7 +2555,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/user-management@workspace:workspaces/templates/packages/user-management":
+"@goldstack/user-management@workspace:^, @goldstack/user-management@workspace:workspaces/templates/packages/user-management":
   version: 0.0.0-use.local
   resolution: "@goldstack/user-management@workspace:workspaces/templates/packages/user-management"
   dependencies:
