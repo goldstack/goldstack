@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-user-management-cli",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Command line tools for User Management template",
   "keywords": [
     "goldstack",
@@ -42,7 +42,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/template-user-management": "0.1.1",
+    "@goldstack/template-user-management": "0.1.2",
     "@goldstack/utils-cli": "0.3.4",
     "@goldstack/utils-docker": "0.4.4",
     "@goldstack/utils-log": "0.3.4",

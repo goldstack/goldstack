@@ -30,6 +30,9 @@
       "path": "../../../templates-lib/packages/template-ssr"
     },
     {
+      "path": "../user-management"
+    },
+    {
       "path": "../../../utils/packages/utils-esbuild"
     },
     {
