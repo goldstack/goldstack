@@ -13,8 +13,12 @@ let mockedUserAccessToken: string | undefined = undefined;
 let mockedUserIdToken: string | undefined = undefined;
 
 export function setMockedUserAccessToken(
-  propertiesOrToken: CognitoAccessTokenPayload | object | string
+  propertiesOrToken: CognitoAccessTokenPayload | object | string | undefined
 ) {
+  if (!propertiesOrToken) {
+    mockedUserAccessToken = undefined;
+    return;
+  }
   if (typeof propertiesOrToken === 'string') {
     mockedUserAccessToken = propertiesOrToken;
   }
@@ -30,8 +34,12 @@ export function setMockedUserAccessToken(
 }
 
 export function setMockedUserIdToken(
-  propertiesOrToken: CognitoIdTokenPayload | object | string
+  propertiesOrToken: CognitoIdTokenPayload | object | string | undefined
 ) {
+  if (!propertiesOrToken) {
+    mockedUserIdToken = undefined;
+    return;
+  }
   if (typeof propertiesOrToken === 'string') {
     mockedUserIdToken = propertiesOrToken;
   }
@@ -72,19 +80,16 @@ function generateToken(properties: unknown): string {
 }
 
 export function getMockedUserAccessToken() {
-  if (!mockedUserAccessToken) {
-    return generateToken(getMockedAccessTokenProperties());
-  }
   return mockedUserAccessToken;
 }
 
 export function getMockedUserIdToken() {
-  if (!mockedUserIdToken) {
-    return generateToken(getMockedIdTokenProperties());
-  }
   return mockedUserIdToken;
 }
 
 export function parseToken(token: string) {
   return JSON.parse(atob(token.split('.')[1]));
 }
+
+setMockedUserAccessToken({});
+setMockedUserIdToken({});

@@ -1,4 +1,4 @@
-/* esbuild-ignore ui */
+/* esbuild-ignore server */
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { getCodeVerifier } from './codeChallenge';
@@ -29,19 +29,24 @@ export async function getToken(args: {
   packageSchema: any;
   deploymentsOutput: any;
   deploymentName?: string;
-}): Promise<GetTokenResults> {
+}): Promise<GetTokenResults | undefined> {
   const deploymentName = getDeploymentName(args.deploymentName);
 
   if (deploymentName === 'local') {
-    if (args.code !== 'dummy-client-token') {
+    if (args.code !== 'dummy-local-client-code') {
       throw new Error(
-        `Unexpected code for client auth: '${args.code}'. Expected: dummy-client-token`
+        `Unexpected code for client auth: '${args.code}'. Expected: dummy-local-client-code`
       );
     }
+    const mockedUserAccessToken = getMockedUserAccessToken();
+    const mockedIdToken = getMockedUserIdToken();
+    if (!mockedUserAccessToken || !mockedIdToken) {
+      return;
+    }
     return {
-      accessToken: getMockedUserAccessToken(),
+      accessToken: mockedUserAccessToken,
       refreshToken: 'dummyRefreshToken',
-      idToken: getMockedUserIdToken(),
+      idToken: mockedIdToken,
     };
   }
 
