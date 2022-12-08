@@ -3,7 +3,8 @@ import {
   getEndpoint as templateGetEndpoint,
   CognitoManager,
   Endpoint,
-  performClientAuth as templatePerformClientAuth,
+  loginWithRedirect as templateLoginWithRedirect,
+  handleRedirectCallback as templateHandleRedirectCallback,
   performLogout as templatePerformLogout,
 } from '@goldstack/template-user-management';
 
@@ -20,10 +21,21 @@ export {
   generateTestAccessToken,
   generateTestIdToken,
   getLocalUserManager,
+  getLoggedInUser,
+  isAuthenticated,
 } from '@goldstack/template-user-management';
 
-export async function performClientAuth(deploymentName?: string) {
-  return templatePerformClientAuth({
+export async function loginWithRedirect(deploymentName?: string) {
+  return templateLoginWithRedirect({
+    goldstackConfig,
+    packageSchema,
+    deploymentsOutput,
+    deploymentName,
+  });
+}
+
+export async function handleRedirectCallback(deploymentName?: string) {
+  return templateHandleRedirectCallback({
     goldstackConfig,
     packageSchema,
     deploymentsOutput,

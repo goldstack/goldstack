@@ -5,14 +5,7 @@ import { renderPage, hydrate } from './../render';
 import Panel from './../components/Panel';
 import styles from './$index.module.css';
 
-import {
-  performClientAuth,
-  performLogout,
-  setMockedUserAccessToken,
-} from '@goldstack/user-management';
 const Index = (props: { message: string }): JSX.Element => {
-  performClientAuth();
-  // performLogout();
   const [clicked, setClicked] = useState(false);
   return (
     <>
@@ -20,8 +13,7 @@ const Index = (props: { message: string }): JSX.Element => {
         onClick={() => {
           alert('hi');
           setClicked(true);
-          performLogout();
-          // throw new Error('Havent seen this');
+          throw new Error('Havent seen this');
         }}
         className={`${styles.message}`}
       >

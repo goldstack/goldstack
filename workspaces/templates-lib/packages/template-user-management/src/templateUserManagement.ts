@@ -135,12 +135,93 @@ export interface ClientAuthResult {
 }
 
 /**
+ * <p>Obtains the information for a user if a user is logged in.
+ * <p>Use <code>performClientAuth</code> to perform a login action.
+ */
+export function getLoggedInUser(): ClientAuthResult | undefined {
+  if (forceLogout) {
+    return;
+  }
+  // const deploymentName = getDeploymentName(args.deploymentName);
+
+  // if running on the server, such as for rendering a page for SSR, client auth
+  // cannot be performed
+  if (typeof window === 'undefined') {
+    return;
+  }
+  const existingAccessToken = window.sessionStorage.getItem(
+    'goldstack_access_token'
+  );
+  const existingIdToken = window.sessionStorage.getItem('goldstack_id_token');
+  if (existingAccessToken && existingIdToken) {
+    return {
+      accessToken: existingAccessToken,
+      idToken: existingIdToken,
+    };
+  }
+  return;
+}
+
+/**
+ * <p>Returns true if a user is authenticated
+ */
+export function isAuthenticated(): boolean {
+  return getLoggedInUser() !== undefined;
+}
+
+export async function handleRedirectCallback(args: {
+  goldstackConfig: any;
+  packageSchema: any;
+  deploymentsOutput: any;
+  deploymentName?: string;
+}): Promise<ClientAuthResult | undefined> {
+  // if running on the server, such as for rendering a page for SSR, client auth
+  // cannot be performed
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  if (!code) {
+    return;
+  }
+  const deploymentName = getDeploymentName(args.deploymentName);
+
+  const token = await getAndPersistToken({ ...args, code });
+  const packageConfig = new EmbeddedPackageConfig<
+    UserManagementPackage,
+    UserManagementDeployment
+  >({
+    goldstackJson: args.goldstackConfig,
+    packageSchema: args.packageSchema,
+  });
+
+  if (deploymentName === 'local') {
+    window.location.href = window.location.href.replace(
+      '?code=dummy-local-client-code',
+      ''
+    );
+  } else {
+    const deployment = packageConfig.getDeployment(deploymentName);
+    window.location.href = deployment.configuration.callbackUrl;
+  }
+  if (!token) {
+    return;
+  }
+  return {
+    accessToken: token.accessToken,
+    idToken: token.idToken,
+  };
+}
+
+/**
  * <p>Performs client-side authentication.
  * <p>Will redirect to Cognito hosted UI for signIn if required.
  * <p>Sets client-side cookies and session variables.
  * <p>For more control on what gets persisted on the client-side, use the method <code>getToken</code>.
  */
-export async function performClientAuth(args: {
+export async function loginWithRedirect(args: {
   goldstackConfig: any;
   packageSchema: any;
   deploymentsOutput: any;
@@ -160,34 +241,34 @@ export async function performClientAuth(args: {
   const params = new URLSearchParams(window.location.search);
   const code = params.get('code');
 
-  const existingAccessToken = window.sessionStorage.getItem(
-    'goldstack_access_token'
-  );
-  const existingIdToken = window.sessionStorage.getItem('goldstack_id_token');
+  // const existingAccessToken = window.sessionStorage.getItem(
+  //   'goldstack_access_token'
+  // );
+  // const existingIdToken = window.sessionStorage.getItem('goldstack_id_token');
 
-  if (existingAccessToken && existingIdToken) {
-    // remove code from URL
-    if (code) {
-      const packageConfig = new EmbeddedPackageConfig<
-        UserManagementPackage,
-        UserManagementDeployment
-      >({
-        goldstackJson: args.goldstackConfig,
-        packageSchema: args.packageSchema,
-      });
-      const deployment = packageConfig.getDeployment(deploymentName);
-      window.location.href = deployment.configuration.callbackUrl;
-      return {
-        accessToken: existingAccessToken,
-        idToken: existingIdToken,
-      };
-    }
+  // if (existingAccessToken && existingIdToken) {
+  //   // remove code from URL
+  //   if (code) {
+  //     const packageConfig = new EmbeddedPackageConfig<
+  //       UserManagementPackage,
+  //       UserManagementDeployment
+  //     >({
+  //       goldstackJson: args.goldstackConfig,
+  //       packageSchema: args.packageSchema,
+  //     });
+  //     const deployment = packageConfig.getDeployment(deploymentName);
+  //     window.location.href = deployment.configuration.callbackUrl;
+  //     return {
+  //       accessToken: existingAccessToken,
+  //       idToken: existingIdToken,
+  //     };
+  //   }
 
-    return {
-      accessToken: existingAccessToken,
-      idToken: existingIdToken,
-    };
-  }
+  //   return {
+  //     accessToken: existingAccessToken,
+  //     idToken: existingIdToken,
+  //   };
+  // }
 
   // do not redirect in Jest tests
   if (typeof process !== 'undefined' && typeof jest !== 'undefined') {
@@ -205,31 +286,7 @@ export async function performClientAuth(args: {
   }
 
   if (code) {
-    const token = await getAndPersistToken({ ...args, code });
-    const packageConfig = new EmbeddedPackageConfig<
-      UserManagementPackage,
-      UserManagementDeployment
-    >({
-      goldstackJson: args.goldstackConfig,
-      packageSchema: args.packageSchema,
-    });
-
-    if (deploymentName === 'local') {
-      window.location.href = window.location.href.replace(
-        '?code=dummy-local-client-code',
-        ''
-      );
-    } else {
-      const deployment = packageConfig.getDeployment(deploymentName);
-      window.location.href = deployment.configuration.callbackUrl;
-    }
-    if (!token) {
-      return;
-    }
-    return {
-      accessToken: token.accessToken,
-      idToken: token.idToken,
-    };
+    return await handleRedirectCallback(args);
   }
 
   if (deploymentName === 'local') {

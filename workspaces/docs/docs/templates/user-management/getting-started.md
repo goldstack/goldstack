@@ -4,7 +4,7 @@
 
 Note you will want to combine this template with another template to host a UI and provide a web server. We recommend to use the [react-ssr template](https://goldstack.party/templates/server-side-rendering).
 
-#### Development (Client)
+### 3. Development (Client)
 
 This template will be most useful when combined with a templates that provide a user interface and API. For any UI and API modules in your project that require authentication, add the `user-management` package to their dependencies:
 
@@ -12,25 +12,29 @@ This template will be most useful when combined with a templates that provide a 
 yarn add user-management
 ```
 
-In UI modules, you can use the `performClientAuth` method to force user authentication and obtain the access and id tokens for the user:
+In UI modules, you can use the `loginWithRedirect` method to force user authentication and obtain the access and id tokens for the user:
 
 ```typescript
-import { performClientAuth } from 'user-management';
+import { getLoggedInUser, handleRedirectCallback, loginWithRedirect } from 'user-management';
 
 const Index = (props: { message: string }): JSX.Element => {
-  const [token, setToken] = useState<string | undefined | 'error'>(undefined);
-  if (!token) {
-    performClientAuth()
-      .then((token) => setToken(token?.accessToken))
-      .catch((e) => {
-        setToken('error');
-      });
-  }
-  return <></>;
+  const user = getLoggedInUser();
+  handleRedirectCallback();
+  return <>
+      {!user && (
+        <button
+          onClick={() => {
+            loginWithRedirect();
+          }}
+        >
+          Login
+        </button>
+      )}
+  </>;
 };
 ```
 
-`performClientAuth` will redirect the user to the sign in page if required and return the access and id token. The method will also automatically set the cookies `goldstack_access_token` and `goldstack_id_token` that will be included in all server requests.
+`loginWithRedirect` will redirect the user to the sign in page if required. The method `handleRedirectCallback` will automatically obtain the access and id token and set the cookies `goldstack_access_token` and `goldstack_id_token` that will be included in all server requests.
 
 Authentication also involves requesting a refresh token. The refresh token will be kept in an in-memory variable and will be used to require a new access and id token if the existing ones are expired.
 
@@ -46,7 +50,7 @@ async function logoutUser() {
 }
 ```
 
-#### Development (Server)
+### 4. Development (Server)
 
 If you want to validate if calls to an API have been made by authenticated users, add the `user-management` module to the dependencies of the server-side module:
 
