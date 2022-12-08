@@ -4,7 +4,7 @@
 
 Note you will want to combine this template with another template to host a UI and provide a web server. We recommend to use the [react-ssr template](https://goldstack.party/templates/server-side-rendering).
 
-#### Development (Client)
+### 3. Development (Client)
 
 This template will be most useful when combined with a templates that provide a user interface and API. For any UI and API modules in your project that require authentication, add the `user-management` package to their dependencies:
 
@@ -46,7 +46,7 @@ async function logoutUser() {
 }
 ```
 
-#### Development (Server)
+### 4. Development (Server)
 
 If you want to validate if calls to an API have been made by authenticated users, add the `user-management` module to the dependencies of the server-side module:
 

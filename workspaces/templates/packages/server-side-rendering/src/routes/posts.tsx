@@ -2,14 +2,7 @@ import React from 'react';
 import { SSRHandler } from '@goldstack/template-ssr';
 import { renderPage, hydrate } from './../render';
 
-import {
-  performClientAuth,
-  performLogout,
-  setMockedUserAccessToken,
-} from '@goldstack/user-management';
-
 const Posts = (props: { posts: string[] }): JSX.Element => {
-  performClientAuth();
   return (
     <>
       <p>Posts:</p>

@@ -35,7 +35,7 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
             type: 'image',
             data: {
               image:
-                'https://cdn.goldstack.party/img/202201/lambda-api-architecture.gif',
+                'https://cdn.goldstack.party/img/202212/cognito-signup.gif',
             },
           },
         },
@@ -53,7 +53,8 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image: 'https://cdn.goldstack.party/img/202208/ssr-local.gif',
+              image:
+                'https://cdn.goldstack.party/img/202212/cognito-signin.gif',
             },
           },
         },
@@ -72,7 +73,7 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
             type: 'image',
             data: {
               image:
-                'https://cdn.goldstack.party/img/202208/react-rendering.png',
+                'https://cdn.goldstack.party/img/202212/typescript-api.png',
             },
           },
           moreDetails: {
@@ -93,7 +94,7 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
             type: 'image',
             data: {
               image:
-                'https://cdn.goldstack.party/img/202201/lambda-api-typescript-example.gif',
+                'https://cdn.goldstack.party/img/202212/typescript-api-server.png',
             },
           },
         },
