@@ -12,25 +12,29 @@ This template will be most useful when combined with a templates that provide a 
 yarn add user-management
 ```
 
-In UI modules, you can use the `performClientAuth` method to force user authentication and obtain the access and id tokens for the user:
+In UI modules, you can use the `loginWithRedirect` method to force user authentication and obtain the access and id tokens for the user:
 
 ```typescript
-import { performClientAuth } from 'user-management';
+import { getLoggedInUser, handleRedirectCallback, loginWithRedirect } from 'user-management';
 
 const Index = (props: { message: string }): JSX.Element => {
-  const [token, setToken] = useState<string | undefined | 'error'>(undefined);
-  if (!token) {
-    performClientAuth()
-      .then((token) => setToken(token?.accessToken))
-      .catch((e) => {
-        setToken('error');
-      });
-  }
-  return <></>;
+  const user = getLoggedInUser();
+  handleRedirectCallback();
+  return <>
+      {!user && (
+        <button
+          onClick={() => {
+            loginWithRedirect();
+          }}
+        >
+          Login
+        </button>
+      )}
+  </>;
 };
 ```
 
-`performClientAuth` will redirect the user to the sign in page if required and return the access and id token. The method will also automatically set the cookies `goldstack_access_token` and `goldstack_id_token` that will be included in all server requests.
+`loginWithRedirect` will redirect the user to the sign in page if required. The method `handleRedirectCallback` will automatically obtain the access and id token and set the cookies `goldstack_access_token` and `goldstack_id_token` that will be included in all server requests.
 
 Authentication also involves requesting a refresh token. The refresh token will be kept in an in-memory variable and will be used to require a new access and id token if the existing ones are expired.
 

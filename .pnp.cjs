@@ -2597,7 +2597,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/server-side-rendering", "workspace:workspaces/templates/packages/server-side-rendering"],\
             ["@goldstack/template-ssr", "workspace:workspaces/templates-lib/packages/template-ssr"],\
             ["@goldstack/template-ssr-cli", "workspace:workspaces/templates-lib/packages/template-ssr-cli"],\
-            ["@goldstack/user-management", "workspace:workspaces/templates/packages/user-management"],\
             ["@goldstack/utils-aws-http-api-local", "workspace:workspaces/templates-lib/packages/utils-aws-http-api-local"],\
             ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
             ["@jest-mock/express", "npm:1.4.5"],\
