@@ -4,6 +4,7 @@ import {
   CognitoManager,
   Endpoint,
   performClientAuth as templatePerformClientAuth,
+  getLoggedInUser as templateGetLoggedInUser,
   performLogout as templatePerformLogout,
 } from '@goldstack/template-user-management';
 
@@ -29,6 +30,10 @@ export async function performClientAuth(deploymentName?: string) {
     deploymentsOutput,
     deploymentName,
   });
+}
+
+export function getLoggedInUser() {
+  return templateGetLoggedInUser();
 }
 
 export async function performLogout(deploymentName?: string) {

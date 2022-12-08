@@ -138,7 +138,7 @@ export interface ClientAuthResult {
  * <p>Obtains the information for a user if a user is logged in.
  * <p>Use <code>performClientAuth</code> to perform a login action.
  */
-export async function getLoggedInUser(): Promise<ClientAuthResult | undefined> {
+export function getLoggedInUser(): ClientAuthResult | undefined {
   if (forceLogout) {
     return;
   }

@@ -6,11 +6,13 @@ import Panel from './../components/Panel';
 import styles from './$index.module.css';
 
 import {
+  getLoggedInUser,
   performClientAuth,
   performLogout,
   setMockedUserAccessToken,
 } from '@goldstack/user-management';
 const Index = (props: { message: string }): JSX.Element => {
+  const user = getLoggedInUser();
   performClientAuth();
   // performLogout();
   const [clicked, setClicked] = useState(false);
@@ -20,12 +22,13 @@ const Index = (props: { message: string }): JSX.Element => {
         onClick={() => {
           alert('hi');
           setClicked(true);
-          performLogout();
+          // performLogout();
           // throw new Error('Havent seen this');
         }}
         className={`${styles.message}`}
       >
         {props.message}
+        {user?.idToken}
       </div>
       {clicked && <Panel />}
     </>
