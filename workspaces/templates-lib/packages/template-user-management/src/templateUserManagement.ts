@@ -135,6 +135,34 @@ export interface ClientAuthResult {
 }
 
 /**
+ * <p>Obtains the information for a user if a user is logged in.
+ * <p>Use <code>performClientAuth</code> to perform a login action.
+ */
+export async function getLoggedInUser(): Promise<ClientAuthResult | undefined> {
+  if (forceLogout) {
+    return;
+  }
+  // const deploymentName = getDeploymentName(args.deploymentName);
+
+  // if running on the server, such as for rendering a page for SSR, client auth
+  // cannot be performed
+  if (typeof window === 'undefined') {
+    return;
+  }
+  const existingAccessToken = window.sessionStorage.getItem(
+    'goldstack_access_token'
+  );
+  const existingIdToken = window.sessionStorage.getItem('goldstack_id_token');
+  if (existingAccessToken && existingIdToken) {
+    return {
+      accessToken: existingAccessToken,
+      idToken: existingIdToken,
+    };
+  }
+  return;
+}
+
+/**
  * <p>Performs client-side authentication.
  * <p>Will redirect to Cognito hosted UI for signIn if required.
  * <p>Sets client-side cookies and session variables.

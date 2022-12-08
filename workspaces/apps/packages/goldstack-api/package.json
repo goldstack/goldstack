@@ -68,7 +68,7 @@
     "@types/uuid": "^8.3.0",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "esbuild": "^0.15.5",
-    "express": "^4.17.1",
+    "express": "4.17.3",
     "jest": "^28.1.0",
     "rimraf": "^3.0.2",
     "supertest": "^4.0.2",
