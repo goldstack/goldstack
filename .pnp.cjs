@@ -20585,10 +20585,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:6.5.2", {\
-          "packageLocation": "./.yarn/cache/qs-npm-6.5.2-dbf9d8386b-24af7b9928.zip/node_modules/qs/",\
+        ["npm:6.5.3", {\
+          "packageLocation": "./.yarn/cache/qs-npm-6.5.3-90b2635484-6f20bf08ca.zip/node_modules/qs/",\
           "packageDependencies": [\
-            ["qs", "npm:6.5.2"]\
+            ["qs", "npm:6.5.3"]\
           ],\
           "linkType": "HARD"\
         }],\
@@ -20596,13 +20596,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/qs-npm-6.7.0-15161a344c-dfd5f6adef.zip/node_modules/qs/",\
           "packageDependencies": [\
             ["qs", "npm:6.7.0"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["npm:6.9.4", {\
-          "packageLocation": "./.yarn/cache/qs-npm-6.9.4-7b853cfa85-5ac0bd145f.zip/node_modules/qs/",\
-          "packageDependencies": [\
-            ["qs", "npm:6.9.4"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -21566,7 +21559,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["mime-types", "npm:2.1.27"],\
             ["oauth-sign", "npm:0.9.0"],\
             ["performance-now", "npm:2.1.0"],\
-            ["qs", "npm:6.5.2"],\
+            ["qs", "npm:6.5.3"],\
             ["safe-buffer", "npm:5.2.1"],\
             ["tough-cookie", "npm:2.5.0"],\
             ["tunnel-agent", "npm:0.6.0"],\
@@ -23322,7 +23315,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["stripe", "npm:8.114.0"],\
             ["@types/node", "npm:14.11.2"],\
-            ["qs", "npm:6.9.4"]\
+            ["qs", "npm:6.10.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -23468,7 +23461,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["formidable", "npm:1.2.2"],\
             ["methods", "npm:1.1.2"],\
             ["mime", "npm:1.6.0"],\
-            ["qs", "npm:6.9.4"],\
+            ["qs", "npm:6.10.3"],\
             ["readable-stream", "npm:2.3.7"]\
           ],\
           "linkType": "HARD"\
