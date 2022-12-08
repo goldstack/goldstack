@@ -8,6 +8,11 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: ${{ always() }}
+        with:
+          api_key: ${{secrets.FORESIGHT_API_KEY}}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -25,6 +30,11 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: ${{ always() }}
+        with:
+          api_key: ${{secrets.FORESIGHT_API_KEY}}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -47,6 +57,12 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: ${{ always() }}
+        with:
+          api_key: ${{secrets.FORESIGHT_API_KEY}}
+
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -67,6 +83,11 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: ${{ always() }}
+        with:
+          api_key: ${{secrets.FORESIGHT_API_KEY}}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -85,6 +106,11 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: ${{ always() }}
+        with:
+          api_key: ${{secrets.FORESIGHT_API_KEY}}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -105,6 +131,11 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: ${{ always() }}
+        with:
+          api_key: ${{secrets.FORESIGHT_API_KEY}}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -128,6 +159,11 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: ${{ always() }}
+        with:
+          api_key: ${{secrets.FORESIGHT_API_KEY}}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -151,6 +187,11 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: ${{ always() }}
+        with:
+          api_key: ${{secrets.FORESIGHT_API_KEY}}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -174,6 +215,11 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: ${{ always() }}
+        with:
+          api_key: ${{secrets.FORESIGHT_API_KEY}}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -198,6 +244,11 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: ${{ always() }}
+        with:
+          api_key: ${{secrets.FORESIGHT_API_KEY}}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -221,6 +272,11 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: ${{ always() }}
+        with:
+          api_key: ${{secrets.FORESIGHT_API_KEY}}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -250,6 +306,11 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: ${{ always() }}
+        with:
+          api_key: ${{secrets.FORESIGHT_API_KEY}}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -270,6 +331,11 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci_skip')"
     runs-on: ubuntu-latest
     steps:
+      - name: Collect Workflow Telemetry
+        uses: runforesight/foresight-workflow-kit-action@v1
+        if: ${{ always() }}
+        with:
+          api_key: ${{secrets.FORESIGHT_API_KEY}}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
