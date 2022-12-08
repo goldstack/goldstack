@@ -7,13 +7,14 @@ import styles from './$index.module.css';
 
 import {
   getLoggedInUser,
-  performClientAuth,
+  handleRedirectCallback,
+  loginWithRedirect,
   performLogout,
   setMockedUserAccessToken,
 } from '@goldstack/user-management';
 const Index = (props: { message: string }): JSX.Element => {
   const user = getLoggedInUser();
-  performClientAuth();
+  handleRedirectCallback();
   // performLogout();
   const [clicked, setClicked] = useState(false);
   return (
@@ -22,6 +23,7 @@ const Index = (props: { message: string }): JSX.Element => {
         onClick={() => {
           alert('hi');
           setClicked(true);
+          loginWithRedirect();
           // performLogout();
           // throw new Error('Havent seen this');
         }}
