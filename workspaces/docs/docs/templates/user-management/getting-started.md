@@ -15,12 +15,17 @@ yarn add user-management
 In UI modules, you can use the `loginWithRedirect` method to force user authentication and obtain the access and id tokens for the user:
 
 ```typescript
-import { getLoggedInUser, handleRedirectCallback, loginWithRedirect } from 'user-management';
+import {
+  getLoggedInUser,
+  handleRedirectCallback,
+  loginWithRedirect,
+} from 'user-management';
 
 const Index = (props: { message: string }): JSX.Element => {
   const user = getLoggedInUser();
   handleRedirectCallback();
-  return <>
+  return (
+    <>
       {!user && (
         <button
           onClick={() => {
@@ -30,7 +35,8 @@ const Index = (props: { message: string }): JSX.Element => {
           Login
         </button>
       )}
-  </>;
+    </>
+  );
 };
 ```
 
