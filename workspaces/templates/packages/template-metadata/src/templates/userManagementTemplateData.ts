@@ -68,7 +68,7 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
         details: {
           title: 'TypeScript API for React',
           description:
-            'Call the method <code>performClientAuth()</code> to initiate the auth flow when required, or return cached user credentials.',
+            'Call the provided methods to initiate the auth flow when required, or return cached user credentials.',
           content: {
             type: 'image',
             data: {
