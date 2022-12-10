@@ -49,6 +49,14 @@ export async function getEndpoint(args: {
         '&code_challenge_method=S256' +
         `&code_challenge=${await getCodeChallenge()}`
       );
+    case 'signup':
+      return (
+        `${baseUrl}/signup?response_type=code` +
+        `&client_id=${deploymentOutput.terraform.user_pool_client_id.value}` +
+        `&redirect_uri=${deployment.configuration.callbackUrl}` +
+        '&code_challenge_method=S256' +
+        `&code_challenge=${await getCodeChallenge()}`
+      );
     case 'token':
       return `${baseUrl}/oauth2/token`;
     case 'logout':
