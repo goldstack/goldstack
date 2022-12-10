@@ -90,6 +90,10 @@
       "regex": "^\\/templates\\/static-website$"
     },
     {
+      "page": "/templates/user-management",
+      "regex": "^\\/templates\\/user-management$"
+    },
+    {
       "page": "/terms-and-conditions",
       "regex": "^\\/terms-and-conditions$"
     },
@@ -162,8 +166,8 @@
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/EXQKFvbIy9yu47R4ed2Z2/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/EXQKFvbIy9yu47R4ed2Z2/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/TPR2kGjn6gTLtaYhaVLln/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/TPR2kGjn6gTLtaYhaVLln/templates/(?<template>[^/]+?)\\.json$"
     }
   ],
   "rewrites": []

@@ -170,6 +170,10 @@
       "regex": "^\\/docs\\/templates\\/static-website-aws$"
     },
     {
+      "page": "/docs/templates/user-management",
+      "regex": "^\\/docs\\/templates\\/user-management$"
+    },
+    {
       "page": "/index",
       "regex": "^\\/index$"
     },
@@ -202,8 +206,8 @@
       "routeKeys": {
         "slug": "slug"
       },
-      "dataRouteRegex": "^/_next/data/OTzvqej0L8dSn4M86_TP8/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/OTzvqej0L8dSn4M86_TP8/docs/(?<slug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/npZBYJVxDLgy145IWPEIj/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/npZBYJVxDLgy145IWPEIj/docs/(?<slug>.+?)\\.json$"
     }
   ],
   "rewrites": []
