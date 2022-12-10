@@ -84,6 +84,7 @@ export function setMockedUserAccessToken(
 
 export type Endpoint =
   | 'authorize' // https://docs.aws.amazon.com/cognito/latest/developerguide/authorization-endpoint.html
+  | 'signup'
   | 'token' // https://docs.aws.amazon.com/cognito/latest/developerguide/token-endpoint.html
   | 'logout'; // https://docs.aws.amazon.com/cognito/latest/developerguide/logout-endpoint.html
 
@@ -217,7 +218,7 @@ export async function handleRedirectCallback(args: {
 
 /**
  * <p>Performs client-side authentication.
- * <p>Will redirect to Cognito hosted UI for signIn if required.
+ * <p>Will redirect to Cognito hosted UI for sign in if required.
  * <p>Sets client-side cookies and session variables.
  * <p>For more control on what gets persisted on the client-side, use the method <code>getToken</code>.
  */
@@ -226,6 +227,31 @@ export async function loginWithRedirect(args: {
   packageSchema: any;
   deploymentsOutput: any;
   deploymentName?: string;
+}): Promise<ClientAuthResult | undefined> {
+  return operationWithRedirect({ ...args, operation: 'authorize' });
+}
+
+/**
+ * <p>Performs client-side authentication.
+ * <p>Will redirect to Cognito hosted UI for signing up if required.
+ * <p>Sets client-side cookies and session variables.
+ * <p>For more control on what gets persisted on the client-side, use the method <code>getToken</code>.
+ */
+export async function signUpWithRedirect(args: {
+  goldstackConfig: any;
+  packageSchema: any;
+  deploymentsOutput: any;
+  deploymentName?: string;
+}): Promise<ClientAuthResult | undefined> {
+  return operationWithRedirect({ ...args, operation: 'signup' });
+}
+
+async function operationWithRedirect(args: {
+  goldstackConfig: any;
+  packageSchema: any;
+  deploymentsOutput: any;
+  deploymentName?: string;
+  operation: 'authorize' | 'signup';
 }): Promise<ClientAuthResult | undefined> {
   if (forceLogout) {
     return;
@@ -316,7 +342,7 @@ export async function loginWithRedirect(args: {
     }
   }
 
-  const endpoint = await getEndpoint({ ...args, endpoint: 'authorize' });
+  const endpoint = await getEndpoint({ ...args, endpoint: args.operation });
 
   window.location.href = endpoint;
   return undefined;
