@@ -14,7 +14,7 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
     metaDescription:
       'Add sign up and sign in capabilities to your web application in minutes. Also provides libraries to protect your backend APIs.',
     description:
-      'Provide sign up and sign up capabilities to your application using Amazon Cognito.',
+      'Provide sign up and sign in capabilities to your application using Amazon Cognito.',
     longDescription:
       'This module configures Amazon Cognito to provide sign up and sign in capabilities for your applications. Includes hosted UI for users to perform sign up and sign in operations.',
     actionLink: '/build?stack=user-management',
