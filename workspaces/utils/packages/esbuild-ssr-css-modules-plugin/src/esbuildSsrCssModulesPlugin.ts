@@ -1,4 +1,4 @@
-import { OnLoadArgs, OnLoadResult, Plugin, PluginBuild } from 'esbuild';
+import type { OnLoadArgs, OnLoadResult, Plugin, PluginBuild } from 'esbuild';
 import fs from 'fs';
 import { compileCss, CompileCssConfiguration } from 'node-css-require';
 import sha256 from 'sha256';
