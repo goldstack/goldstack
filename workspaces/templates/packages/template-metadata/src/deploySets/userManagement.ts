@@ -26,6 +26,9 @@ export const createUserManagementBuildSetConfig =
       projects: [
         {
           projectConfiguration,
+          targetRepo: 'goldstack/cognito-nodejs-template',
+          repoReadme:
+            'workspaces/templates/packages/template-metadata/src/deploySets/userManagement.README.md',
           rootTests: [
             'assert-package-files',
             'assert-root-files',
