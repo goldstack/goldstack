@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@goldstack/markdown-docs": "0.1.0",
-    "@goldstack/template-nextjs": "0.5.10",
+    "@goldstack/template-nextjs": "0.5.11",
     "@goldstack/utils-sh": "0.5.4",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
