@@ -7,7 +7,7 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
     id: 'user-management',
     title: 'User Management',
     images: ['https://cdn.goldstack.party/img/202212/cognito.svg'],
-    // boilerplateLink: 'https://github.com/goldstack/react-ssr',
+    boilerplateLink: 'https://github.com/goldstack/cognito-nodejs-template',
     packages: [UserManagement],
     isComposite: false,
     metaTitle: 'Template for User Management using Amazon Cognito',
