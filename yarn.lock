@@ -2334,7 +2334,7 @@ __metadata:
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/react": ^18.0.15
-    "@types/sha256": ^0
+    "@types/sha256": ^0.2.0
     "@types/yargs": ^17.0.10
     esbuild: ^0.15.5
     jest: ^28.1.0
@@ -2371,7 +2371,7 @@ __metadata:
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/react": ^18.0.15
-    "@types/sha256": ^0
+    "@types/sha256": ^0.2.0
     "@types/yargs": ^17.0.10
     jest: ^28.1.0
     lambda-compression: 0.2.4
@@ -5190,7 +5190,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/sha256@npm:^0":
+"@types/sha256@npm:^0.2.0":
   version: 0.2.0
   resolution: "@types/sha256@npm:0.2.0"
   dependencies:
@@ -9779,6 +9779,8 @@ __metadata:
     rimraf: ^3.0.2
     ts-jest: ^28.0.2
     typescript: ^4.8.4
+  peerDependencies:
+    esbuild: ^0.15.5
   languageName: unknown
   linkType: soft
 
@@ -9859,6 +9861,7 @@ __metadata:
     "@goldstack/utils-git": 0.2.4
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
+    "@types/sha256": ^0.2.0
     esbuild: ^0.15.5
     jest: ^28.1.0
     node-css-require: 0.4.4
@@ -9867,6 +9870,8 @@ __metadata:
     sha256: ^0.2.0
     ts-jest: ^28.0.2
     typescript: ^4.8.4
+  peerDependencies:
+    esbuild: ^0.15.5
   languageName: unknown
   linkType: soft
 
