@@ -17,6 +17,7 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
       'Develop an SSR application using React and serverless AWS infrastructure.',
     longDescription:
       'This project template provides utilities to define the infrastructure for an SSR application deployed on AWS using AWS API Gateway and Lambda functions.',
+    actionLink: '/build?stack=server-side-rendering',
     tags: [
       'Server-Side Rendering',
       'React',
@@ -26,22 +27,6 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
       'Lambda',
       'Serverless',
     ],
-    hero: {
-      title: 'React Server-Side Rendering with Lambda and API Gateway',
-      content: `
-          <p>
-            This project template provides utilities to define the infrastructure for an SSR application deployed on AWS using AWS API Gateway and Lambda functions.
-          </p>
-          <p>
-            Scroll down to learn more about what&apos;s included in this
-            template.
-          </p>
-        `,
-      action: {
-        title: '✔ Start Building Your Project Now',
-        link: '/build?stack=server-side-rendering',
-      },
-    },
     featuresOverview: [
       {
         title: 'Serverless Page Rendering and API',

@@ -62,7 +62,7 @@ export const featureYarn: ShortTemplateFeature = {
   title: 'Yarn 3',
   id: 'yarn',
   description:
-    'Fast build times and advanced modularity using Yarn 2 workspaces.',
+    'Fast build times and advanced modularity using Yarn 3 workspaces.',
   image: 'yarn',
   details: {
     title: 'Build Modular Applications with Yarn Workspaces',
@@ -153,30 +153,12 @@ export const getNextJsTemplateData = (): ProjectTemplateProps => {
       'Open-source template configured for TypeScript, Jest, VSCode, Terraform and deployment to AWS. Configure on Goldstack and download for free.',
     description:
       'Open-source Next.js project configured for TypeScript and AWS.',
+    actionLink: '/build?stack=nextjs',
     longDescription:
       'This free Goldstack <strong>Next.js starter template</strong> helps you kick start your Next.js development project. ' +
       'It has been hand-crafted for optimal developer experience and packed with best practices.\n' +
       'Scroll down to learn more about the features included in this template.',
     tags: ['Next.js', 'TypeScript', 'Yarn', 'React', 'Frontend'],
-    hero: {
-      title: 'Next.js with all the fun and none of the hassle.',
-      content: `
-        
-          <p>
-            Start working on what matters to you rather than being stuck with
-            project setup. Our Next.js golden template comes packaged with
-            features tailor-made to bring coding joy.
-          </p>
-          <p>
-            Scroll down to learn more about what&apos;s included in this
-            template.
-          </p>
-        `,
-      action: {
-        title: '✔ Start Building Your Project Now',
-        link: '/build?stack=nextjs',
-      },
-    },
     featuresOverview: [
       {
         title: 'Next.js 12',

@@ -15,6 +15,9 @@ export const getPackageIds = (elements: string[]): string[] => {
   if (elements.includes('server-side-rendering')) {
     res.push('template:server-side-rendering');
   }
+  if (elements.includes('user-management')) {
+    res.push('template:user-management');
+  }
   if (elements.includes('s3')) {
     res.push('template:s3');
   }

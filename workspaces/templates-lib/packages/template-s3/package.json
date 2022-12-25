@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-s3",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "Building blocks for linking a package to an AWS S3 bucket.",
   "keywords": [
     "goldstack",
@@ -29,7 +29,6 @@
     "clean": "rimraf ./dist",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
-    "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "generate-schema": "ts-node scripts/generateSchemas.ts && cp schemas/* ../../../templates/packages/s3/schemas && cp schemas/* ../../../templates-management/packages/project-repository-bucket/schemas && cp schemas/* ../../../templates-management/packages/template-repository-bucket/schemas",
     "prepublishOnly": "yarn run build",
@@ -43,7 +42,7 @@
     "@goldstack/infra-aws": "0.4.7",
     "@goldstack/utils-esbuild": "0.5.4",
     "@goldstack/utils-package": "0.4.4",
-    "@goldstack/utils-package-config-embedded": "0.5.4",
+    "@goldstack/utils-package-config-embedded": "0.5.5",
     "@goldstack/utils-template": "0.4.4",
     "@goldstack/utils-terraform": "0.4.7",
     "aws-sdk": "^2.1222.0",

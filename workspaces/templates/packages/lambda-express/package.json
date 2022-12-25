@@ -22,11 +22,11 @@
     "watch": "PORT=3030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev --respawn ./src/local.ts"
   },
   "dependencies": {
-    "@goldstack/template-lambda-express": "0.5.9",
+    "@goldstack/template-lambda-express": "0.5.11",
     "@goldstack/utils-esbuild": "0.5.4",
     "aws-serverless-express": "^3.3.8",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "4.17.3",
     "helmet": "^4.6.0",
     "source-map-support": "^0.5.21"
   },
@@ -41,7 +41,6 @@
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "esbuild": "^0.15.5",
     "jest": "^28.1.0",
-    "nodemon": "^2.0.15",
     "rimraf": "^3.0.2",
     "source-map-loader": "^1.0.1",
     "supertest": "^4.0.2",

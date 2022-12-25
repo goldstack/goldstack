@@ -1,0 +1,51 @@
+<p></p>
+<div class="markdown-fragment">
+  <p>
+    The user management template provides the infrastructure and utility
+    libraries for authenticating users using
+    <a
+      href="https://aws.amazon.com/cognito/"
+      class="absolute"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Amazon Cognito</a
+    >.
+  </p>
+</div>
+<p></p>
+<p></p>
+<div class="markdown-fragment">
+  <p>The following key properties need to be configured for this template:</p>
+  <ul>
+    <li>
+      <strong>Cognito Domain</strong>: The domain on which the identity server
+      and the UI pages for login will be hosted.
+    </li>
+    <li>
+      <strong>User Pool Name</strong>: The name for the Cognito User Pool that
+      should be created by this template. Note no User Pool of the same name
+      should exist in your account.
+    </li>
+    <li>
+      <strong>Callback URL</strong>: A URL pointing to a page in your
+      applications that users should be redirected after signing in successfully
+      through the Cognito UI.
+    </li>
+    <li>
+      <strong>Hosted Zone Domain</strong>: A Route 53 hosted zone to which the
+      <em>Cognito Domain</em> an be added as record. For instance, the hosted
+      zone domain <code class="inline">mysite.com</code> would allow adding the
+      cognito domain <code class="inline">auth.mysite.com</code>. For more
+      details, please check
+      <a
+        href="https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Hosted Zone Configuration</a
+      >
+      in the Goldstack documentation.
+    </li>
+  </ul>
+</div>
+<p></p>

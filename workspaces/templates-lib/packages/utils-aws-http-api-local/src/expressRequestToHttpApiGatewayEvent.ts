@@ -188,7 +188,8 @@ export const injectGatewayResultIntoResponse = (
 
   // 2: structured output
   if (result.statusCode) {
-    const structuredResult: APIGatewayProxyStructuredResultV2 = result as APIGatewayProxyStructuredResultV2;
+    const structuredResult: APIGatewayProxyStructuredResultV2 =
+      result as APIGatewayProxyStructuredResultV2;
     resp.status(structuredResult.statusCode || 200);
 
     if (structuredResult.headers) {

@@ -76,8 +76,9 @@ export const getConfigureSteps = (
             newProjectData.project.projectName = newData.projectName;
 
             newProjectData.deploymentNames = [newData.deployment];
-            (newProjectData.awsUsers[0]
-              .config as AWSAPIKeyUser).awsDefaultRegion = newData.awsRegion;
+            (
+              newProjectData.awsUsers[0].config as AWSAPIKeyUser
+            ).awsDefaultRegion = newData.awsRegion;
             return { ...newProjectData };
           },
         },

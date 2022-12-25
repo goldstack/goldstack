@@ -1,0 +1,8 @@
+{
+  "templateName": "user-management",
+  "templateVersion": "0.1.0",
+  "previousTemplateVersion": "0.0.0",
+  "templateDescription": "Allows management and authentication of users using Cognito",
+  "templateDocumentation": "https://docs.goldstack.party/docs/templates/user-management",
+  "templateArchive": ""
+}

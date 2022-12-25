@@ -27,39 +27,37 @@ export const getDocLinks = async (
   });
 
   return await Promise.all(
-    goldstackJsonPaths.map(
-      async (goldstackJsonPath): Promise<DocLink> => {
-        const goldstackConfig = readPackageConfig(
-          path.dirname(goldstackJsonPath) + '/'
-        );
+    goldstackJsonPaths.map(async (goldstackJsonPath): Promise<DocLink> => {
+      const goldstackConfig = readPackageConfig(
+        path.dirname(goldstackJsonPath) + '/'
+      );
 
-        const templateJson = await templateRepo.getLatestTemplateVersion(
+      const templateJson = await templateRepo.getLatestTemplateVersion(
+        goldstackConfig.template
+      );
+
+      if (!templateJson) {
+        console.warn(
+          'Cannot obtain documentation link. Template cannot be loaded',
           goldstackConfig.template
         );
-
-        if (!templateJson) {
-          console.warn(
-            'Cannot obtain documentation link. Template cannot be loaded',
-            goldstackConfig.template
-          );
-          return {
-            packageName: goldstackConfig.name,
-            link: '',
-          };
-        }
-
-        if (!templateJson.templateDocumentation) {
-          console.log(
-            'No documentation link is defined for template:',
-            templateJson.templateDocumentation
-          );
-        }
-
         return {
           packageName: goldstackConfig.name,
-          link: templateJson.templateDocumentation,
+          link: '',
         };
       }
-    )
+
+      if (!templateJson.templateDocumentation) {
+        console.log(
+          'No documentation link is defined for template:',
+          templateJson.templateDocumentation
+        );
+      }
+
+      return {
+        packageName: goldstackConfig.name,
+        link: templateJson.templateDocumentation,
+      };
+    })
   );
 };

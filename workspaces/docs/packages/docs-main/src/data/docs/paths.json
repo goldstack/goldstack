@@ -10,6 +10,7 @@
   "templates/app-nextjs-bootstrap",
   "templates/serverless-api",
   "templates/server-side-rendering",
+  "templates/user-management",
   "templates/app-nextjs",
   "templates/lambda-express",
   "templates/dynamodb",

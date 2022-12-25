@@ -287,6 +287,15 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     <h2 className="h3 mb-0">Services</h2>
                   </div>
                   <Checkbox
+                    title="User Management"
+                    element="user-management"
+                    disabled={building}
+                    icon={'https://cdn.goldstack.party/img/202212/cognito.svg'}
+                    checked={elements.indexOf('user-management') !== -1}
+                    templateLink={'/templates/user-management'}
+                    onChange={checkboxChange}
+                  ></Checkbox>
+                  <Checkbox
                     title="DynamoDB"
                     element="dynamodb"
                     disabled={building}

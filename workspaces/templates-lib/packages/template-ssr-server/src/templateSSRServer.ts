@@ -184,7 +184,9 @@ export const renderPage = async <PropType extends ReactPropertiesType>({
     deployment,
     injectIntoBody: `
         <div id="root">${page}</div>
-        <script>window.initialProperties=${JSON.stringify(properties)};</script>
+        <script>window.initialProperties=${JSON.stringify(
+          properties
+        )};window.GOLDSTACK_DEPLOYMENT="${deployment.name}"</script>
         <script src="${clientBundlePath}"></script>
         ${appendToBody ? appendToBody : ''}
     `,

@@ -323,7 +323,7 @@ async function buildProjects(params: {
       );
       await execAsync('git add .');
       await execAsync(
-        'git diff-index --quiet HEAD || git commit -m "Update boilerplate"'
+        'git diff-index --quiet HEAD || git commit -m "Automated update of generated boilerplate by goldstack.party"'
       );
       await execAsync('git push origin master --force');
       cd(`${currentDir}`);

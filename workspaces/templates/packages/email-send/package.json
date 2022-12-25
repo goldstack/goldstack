@@ -13,8 +13,6 @@
     "build": "yarn clean && yarn compile",
     "clean": "rimraf dist/",
     "compile": "tsc -p tsconfig.json",
-    "compile-watch": "tsc -p tsconfig.json --watch",
-    "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "infra": "template infra",
     "prepublishOnly": "yarn run build",
@@ -23,17 +21,16 @@
     "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/template-email-send": "0.4.7",
+    "@goldstack/template-email-send": "0.4.8",
     "@goldstack/utils-git": "0.2.4",
     "@goldstack/utils-sh": "0.5.4"
   },
   "devDependencies": {
-    "@goldstack/template-email-send-cli": "0.5.7",
+    "@goldstack/template-email-send-cli": "0.5.8",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "aws-sdk": "^2.1222.0",
     "jest": "^28.1.0",
-    "nodemon": "^2.0.15",
     "rimraf": "^3.0.2",
     "ts-jest": "^28.0.2",
     "ts-node": "^10.9.1",
