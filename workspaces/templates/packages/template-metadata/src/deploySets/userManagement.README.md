@@ -36,9 +36,9 @@ Thank you for using this boilerplate. For any questions or feedback, please be w
 
 A few dependencies need to be available in your development system. Please verify they are present or install them.
 
-- Node v12+
-- Yarn v1.22.5+
-- Docker v19+
+*   Node v12+
+*   Yarn v1.22.5+
+*   Docker v19+
 
 Open a terminal and run the following commands:
 
@@ -54,9 +54,9 @@ This should produce the following output:
 
 If you need to install or update any of the dependencies, please see the following guides:
 
-- [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- [Yarn Installation](https://yarnpkg.com/getting-started/install)
-- [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
+*   [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+*   [Yarn Installation](https://yarnpkg.com/getting-started/install)
+*   [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
 
 ## 3. Initialise project and install NPM Dependencies
 
@@ -92,17 +92,17 @@ You may also be asked if you want to install recommended extensions for this wor
 
 If you want to install the necessary extensions manually, here are links to the extensions required:
 
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
+*   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+*   [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+*   [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
 
 ## 6. Initialise TypeScript
 
-Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click _Allow_.
+Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click *Allow*.
 
 <img src="https://cdn.goldstack.party/img/202201/allow_typescript.gif"  alt="VSCode Locate TypeScript">
 
-In the status bar on the bottom right-hand corner of the VSCode editor you should now see _TypeScript_.
+In the status bar on the bottom right-hand corner of the VSCode editor you should now see *TypeScript*.
 
 ![TypeScript status icon in VSCode](https://cdn.goldstack.party/img/202203/typescript_init.png)
 
@@ -110,18 +110,18 @@ In the status bar on the bottom right-hand corner of the VSCode editor you shoul
 
 The code provided in this project works best in combination with client- and server-side application code defined in other packages.
 
-For this, simply import the package provided in `packages/user-management` in your client- and/or server-side logic.
+For this, simply import the package provided in `packages/user-management-1` in your client- and/or server-side logic.
 
 For more information, see the Goldstack documentation:
 
-- [User Management / Development (Client)](https://docs.goldstack.party/docs/templates/user-management#3-development-client-1)
-- [User Management / Development (Server)](https://docs.goldstack.party/docs/templates/user-management#4-development-server-1)
+*   [User Management / Development (Client)](https://docs.goldstack.party/docs/templates/user-management#3-development-client-1)
+*   [User Management / Development (Server)](https://docs.goldstack.party/docs/templates/user-management#4-development-server-1)
 
 ## 8. Deploy to AWS
 
 If you want to deploy your project to AWS, you will need to make some changes to the configuration files included in this project.
 
-Specifically, the [goldstack.json]() in the `packages/user-management` folder.
+Specifically, the [goldstack.json](https://github.com/goldstack/cognito-nodejs-template/blob/master/packages/user-management-1/goldstack.json) in the `packages/user-management-1` folder.
 
 ```json
 {
@@ -141,7 +141,7 @@ Specifically, the [goldstack.json]() in the `packages/user-management` folder.
         "hostedZoneDomain": "",
         "callbackUrl": ""
       },
-      "tfStateKey": "user-management-prod-c24c67342f629ac2217b.tfstate"
+      "tfStateKey": "user-management-prod-xxxxxxx.tfstate"
     }
   ]
 }
@@ -149,12 +149,12 @@ Specifically, the [goldstack.json]() in the `packages/user-management` folder.
 
 The key properties you will need to update are:
 
-- `deployments[0].configuration.cognitoDomain`
-- `deployments[0].configuration.userPoolName`
-- `deployments[0].configuration.hostedZoneDomain`
-- `deployments[0].configuration.callbackUrl`
+*   `deployments[0].configuration.cognitoDomain`
+*   `deployments[0].configuration.userPoolName`
+*   `deployments[0].configuration.hostedZoneDomain`
+*   `deployments[0].configuration.callbackUrl`
 
-Also you need to _delete_ `deployments[0].tfStateKey`.
+Also you need to *delete* `deployments[0].tfStateKey`.
 
 For more information on these configuration options, see [Goldstack Documentation / User Management / Configure](https://docs.goldstack.party/docs/templates/user-management#configure).
 
@@ -185,7 +185,7 @@ You will also need to ensure that you have a valid AWS user configure to deploy 
 
 For more information on configuring your local AWS users, please see [Goldstack Documentation / AWS Configuration](https://docs.goldstack.party/docs/goldstack/configuration#aws-configuration).
 
-Once your AWS user is configured you can run `yarn infra up prod` in the `/packages/user-management` folder. For more information on the infrastructure commands for this project, see [Goldstack Documentation / User Management / Infrastructure](https://docs.goldstack.party/docs/templates/user-management#infrastructure).
+Once your AWS user is configured you can run `yarn infra up prod` in the `/packages/user-management-1` folder. For more information on the infrastructure commands for this project, see [Goldstack Documentation / User Management / Infrastructure](https://docs.goldstack.party/docs/templates/user-management#infrastructure).
 
 ## 9. Contribute to Goldstack
 
