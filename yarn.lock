@@ -1071,7 +1071,7 @@ __metadata:
     aws-sdk: ^2.1222.0
     deep-copy: ^1.4.2
     dynamodb-admin: ^4.4.0
-    dynamodb-toolbox: ^0.5.2
+    dynamodb-toolbox: ^0.6.3
     ejs: ^3.1.8
     jest: ^28.1.0
     rimraf: ^3.0.2
@@ -1897,7 +1897,7 @@ __metadata:
     aws-sdk: ^2.1222.0
     jest: ^28.1.0
     rimraf: ^3.0.2
-    testcontainers: ^8.12.0
+    testcontainers: ^9.1.1
     ts-jest: ^28.0.2
     ts-node: ^10.9.1
     typescript: ^4.8.4
@@ -4644,13 +4644,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/dockerode@npm:^3.3.8":
-  version: 3.3.9
-  resolution: "@types/dockerode@npm:3.3.9"
+"@types/dockerode@npm:^3.3.12":
+  version: 3.3.14
+  resolution: "@types/dockerode@npm:3.3.14"
   dependencies:
     "@types/docker-modem": "*"
     "@types/node": "*"
-  checksum: 3d03c68addb37c50e9557fff17171d26423aa18e544cb24e4caa81ebcec39ccc1cafed7adbfb8f4220d8ed23028d231717826bb77a786d425885c4f4cc37536d
+  checksum: 6a8472622861fb0c97908963a8236d6e439c9feefc845b866326272ad0e5c33f537206fb4633424c5e3c8ec63559cb14bc737e2f88f0fcdf11496a9162d5b139
   languageName: node
   linkType: hard
 
@@ -9017,13 +9017,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dockerode@npm:^3.3.1":
-  version: 3.3.1
-  resolution: "dockerode@npm:3.3.1"
+"dockerode@npm:^3.3.4":
+  version: 3.3.4
+  resolution: "dockerode@npm:3.3.4"
   dependencies:
+    "@balena/dockerignore": ^1.0.2
     docker-modem: ^3.0.0
     tar-fs: ~2.0.1
-  checksum: 930162ae2d8a1fe0e99d9a5885b09aa438da6274d4a30cb90e73046655dbc90764eb755361a63ba08f167e257c4d649d67bce71f650461a20b97fcde0af05ca5
+  checksum: 6cb4b9d1c42feb3acfa77daf103b070cc412351dc7dc0a1553cc774ccd1be1a1412a87f8aa13c3155c63ec5c61a7cadc833b4248c4d8342814bbf708f795b952
   languageName: node
   linkType: hard
 
@@ -9335,13 +9336,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dynamodb-toolbox@npm:^0.5.2":
-  version: 0.5.2
-  resolution: "dynamodb-toolbox@npm:0.5.2"
+"dynamodb-toolbox@npm:^0.6.3":
+  version: 0.6.3
+  resolution: "dynamodb-toolbox@npm:0.6.3"
   dependencies:
     deep-copy: ^1.4.2
     ts-toolbelt: ^9.6.0
-  checksum: 939159ab6152754cb8c52353a2e38dc366a2ed7b8d054f8726d1325e72fba4913cdc8435d2ed48ef05cf221dae1823ab9ff954a93cb3197bb81b21a9efeac90d
+  checksum: 1ef44fee177519a6128583c2435451f9110fe2104c3a79696197b5e1beb8fac4130802b8ccc53e942af5271dd7195dc2caa1e146d0d3dd2407aa0769fa66038a
   languageName: node
   linkType: hard
 
@@ -15988,7 +15989,7 @@ fsevents@~2.1.2:
   languageName: unknown
   linkType: soft
 
-"node-fetch@npm:2.6.7":
+"node-fetch@npm:2.6.7, node-fetch@npm:^2.6.7":
   version: 2.6.7
   resolution: "node-fetch@npm:2.6.7"
   dependencies:
@@ -20638,23 +20639,24 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"testcontainers@npm:^8.12.0":
-  version: 8.12.0
-  resolution: "testcontainers@npm:8.12.0"
+"testcontainers@npm:^9.1.1":
+  version: 9.1.1
+  resolution: "testcontainers@npm:9.1.1"
   dependencies:
     "@balena/dockerignore": ^1.0.2
     "@types/archiver": ^5.3.1
-    "@types/dockerode": ^3.3.8
+    "@types/dockerode": ^3.3.12
     archiver: ^5.3.1
     byline: ^5.0.0
     debug: ^4.3.4
     docker-compose: ^0.23.17
-    dockerode: ^3.3.1
+    dockerode: ^3.3.4
     get-port: ^5.1.1
+    node-fetch: ^2.6.7
     properties-reader: ^2.2.0
     ssh-remote-port-forward: ^1.0.4
     tar-fs: ^2.1.1
-  checksum: b134bf1e4f4aa2d8e8e4143920ec08d90917d4749d6b329df028ac15969036d109c73b6efe6f461554b92ba7bae1b96b2b6a7cefb1e1323373de3934fd992107
+  checksum: 1af59b5e63635c8ab7e48a909e9fcaa76b0ac31198c8a474322c0b06563acc098abcae036339511b368bd654e273604a7be594162e5e9ce19d19463ea1d6ebe3
   languageName: node
   linkType: hard
 
