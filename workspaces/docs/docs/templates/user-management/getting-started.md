@@ -67,7 +67,7 @@ yarn add user-management
 On the server, we can validate the tokens send by the client using the `connectWithCognito` method:
 
 ```typescript
-import { connectWithCognito } from '@goldstack/user-management';
+import { connectWithCognito } from 'user-management';
 
 export const handler: SSRHandler = async (event, context) => {
   const cookies = getCookies((event.cookies || []).join(';'));
