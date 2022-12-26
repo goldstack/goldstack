@@ -26,6 +26,8 @@ export {
   isAuthenticated,
 } from '@goldstack/template-user-management';
 
+export type { ClientAuthResult } from '@goldstack/template-user-management';
+
 export async function loginWithRedirect(deploymentName?: string) {
   return templateLoginWithRedirect({
     goldstackConfig,
