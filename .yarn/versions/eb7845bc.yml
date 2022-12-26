@@ -1,0 +1,23 @@
+undecided:
+  - root
+  - "@goldstack/docs-main"
+  - "@goldstack/app-nextjs"
+  - "@goldstack/app-nextjs-bootstrap"
+  - "@goldstack/dynamodb"
+  - "@goldstack/email-send"
+  - "@goldstack/lambda-express"
+  - "@goldstack/server-go"
+  - "@goldstack/s3"
+  - "@goldstack/server-side-rendering"
+  - "@goldstack/serverless-api"
+  - "@goldstack/static-website-aws"
+  - "@goldstack/template-metadata"
+  - "@goldstack/user-management"
+  - "@goldstack/template-ssr"
+  - "@goldstack/template-ssr-cli"
+  - "@goldstack/template-ssr-server"
+  - "@goldstack/template-ssr-server-compile-bundle"
+  - "@goldstack/template-user-management"
+  - "@goldstack/utils-aws-http-api-local"
+  - esbuild-ignore-with-comments-plugin
+  - lambda-compression
