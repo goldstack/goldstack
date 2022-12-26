@@ -4,6 +4,7 @@ import {
   CognitoManager,
   Endpoint,
   loginWithRedirect as templateLoginWithRedirect,
+  signUpWithRedirect as templateSignUpWithRedirect,
   handleRedirectCallback as templateHandleRedirectCallback,
   performLogout as templatePerformLogout,
 } from '@goldstack/template-user-management';
@@ -27,6 +28,15 @@ export {
 
 export async function loginWithRedirect(deploymentName?: string) {
   return templateLoginWithRedirect({
+    goldstackConfig,
+    packageSchema,
+    deploymentsOutput,
+    deploymentName,
+  });
+}
+
+export async function signUpWithRedirect(deploymentName?: string) {
+  return templateSignUpWithRedirect({
     goldstackConfig,
     packageSchema,
     deploymentsOutput,
