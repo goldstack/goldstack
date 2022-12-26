@@ -38,6 +38,34 @@ const ignorePlugin = (opts?: IgnoreWithCommentsPluginOptions): Plugin => {
           };
         }
       );
+
+      build.onLoad(
+        {
+          filter: /\.(js|jsx)$/,
+        },
+        async (args: OnLoadArgs): Promise<OnLoadResult> => {
+          const text = await fs.promises.readFile(args.path, 'utf8');
+
+          const res = findComments(text);
+          if (mustIgnore(res, opts?.ignore)) {
+            return {
+              contents: `
+              var dummy = {};
+              Object.defineProperty(exports, "__esModule", {
+                value: true
+              });
+              exports["default"] = dummy;
+              `,
+              loader: 'js',
+            };
+          }
+          const type = args.path.endsWith('.js') ? 'js' : 'jsx';
+          return {
+            contents: text,
+            loader: type,
+          };
+        }
+      );
     },
   };
 };

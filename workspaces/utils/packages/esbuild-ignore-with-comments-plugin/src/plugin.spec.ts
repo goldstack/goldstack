@@ -1,4 +1,4 @@
-import { findComments, mustIgnore } from './esbuildIgnoreWithCommentsPlugin';
+import { findComments, mustIgnore } from './plugin';
 
 describe('Comment Ignore plugin', () => {
   it('Should identify instances of comments in text', async () => {

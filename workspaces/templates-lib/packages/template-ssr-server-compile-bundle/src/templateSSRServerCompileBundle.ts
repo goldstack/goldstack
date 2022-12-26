@@ -1,7 +1,7 @@
 import { build } from 'esbuild';
 import type { BuildOptions, BuildResult, OutputFile } from 'esbuild';
 
-import { APIGatewayProxyResultV2 } from 'aws-lambda';
+import type { APIGatewayProxyResultV2 } from 'aws-lambda';
 import { changeExtension, readToType } from '@goldstack/utils-sh';
 import { dirname } from 'path';
 
