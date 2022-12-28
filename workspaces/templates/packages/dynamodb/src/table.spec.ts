@@ -80,7 +80,7 @@ describe('DynamoDB Table', () => {
     const table = await connectTable();
     // important to do deep copy here because of
     //   https://github.com/jeremydaly/dynamodb-toolbox/issues/310
-    const Users = new Entity({ ...deepCopy(UserEntity), table } as const);
+    const Users = UserEntity(table);
     await Users.put({
       email: 'joe@email.com',
       name: 'Joe',
@@ -97,7 +97,7 @@ describe('DynamoDB Table', () => {
   it('Should be able to instantiate entity with deepCopy', async () => {
     AWS.config.logger = console;
     const table = await connectTable();
-    const Users1 = new Entity({ ...deepCopy(UserEntity), table } as const);
+    const Users1 = UserEntity(table);
     await Users1.put({
       email: 'joe@email.com',
       name: 'Joe',
@@ -105,9 +105,9 @@ describe('DynamoDB Table', () => {
       emailVerified: true,
     });
 
-    // const Users2 = new Entity({ ...deepCopy(UserEntity), table } as const);
+    const Users2 = UserEntity(table);
     // Using Users2 will result in an error here, see https://github.com/jeremydaly/dynamodb-toolbox/issues/366#issuecomment-1366311354
-    const { Item: user } = await Users1.get(
+    const { Item: user } = await Users2.get(
       {
         email: 'joe@email.com',
       },

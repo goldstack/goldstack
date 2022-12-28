@@ -2005,6 +2005,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/template-dynamodb-cli", "workspace:workspaces/templates-lib/packages/template-dynamodb-cli"],\
             ["@types/ejs", "npm:3.1.1"],\
             ["@types/jest", "npm:29.0.1"],\
+            ["@types/memoizee", "npm:0.4.8"],\
             ["@types/node", "npm:18.7.13"],\
             ["aws-sdk", "npm:2.1222.0"],\
             ["deep-copy", "npm:1.4.2"],\
@@ -2012,6 +2013,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dynamodb-toolbox", "npm:0.6.3"],\
             ["ejs", "npm:3.1.8"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.1.0"],\
+            ["memoizee", "npm:0.4.15"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
             ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
@@ -6246,6 +6248,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-jsonpath-npm-0.2.0-7e705d9978-c21b6bc016.zip/node_modules/@types/jsonpath/",\
           "packageDependencies": [\
             ["@types/jsonpath", "npm:0.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/memoizee", [\
+        ["npm:0.4.8", {\
+          "packageLocation": "./.yarn/cache/@types-memoizee-npm-0.4.8-1143062d93-fec135ca84.zip/node_modules/@types/memoizee/",\
+          "packageDependencies": [\
+            ["@types/memoizee", "npm:0.4.8"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -11789,6 +11800,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["es6-iterator", "npm:2.0.3"],\
             ["es6-symbol", "npm:3.1.3"],\
             ["next-tick", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:0.10.62", {\
+          "packageLocation": "./.yarn/unplugged/es5-ext-npm-0.10.62-f20aca46cb/node_modules/es5-ext/",\
+          "packageDependencies": [\
+            ["es5-ext", "npm:0.10.62"],\
+            ["es6-iterator", "npm:2.0.3"],\
+            ["es6-symbol", "npm:3.1.3"],\
+            ["next-tick", "npm:1.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -17922,6 +17943,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["memoizee", "npm:0.4.14"],\
             ["d", "npm:1.0.1"],\
             ["es5-ext", "npm:0.10.53"],\
+            ["es6-weak-map", "npm:2.0.3"],\
+            ["event-emitter", "npm:0.3.5"],\
+            ["is-promise", "npm:2.2.2"],\
+            ["lru-queue", "npm:0.1.0"],\
+            ["next-tick", "npm:1.1.0"],\
+            ["timers-ext", "npm:0.1.7"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:0.4.15", {\
+          "packageLocation": "./.yarn/cache/memoizee-npm-0.4.15-69d374fc14-4065d94416.zip/node_modules/memoizee/",\
+          "packageDependencies": [\
+            ["memoizee", "npm:0.4.15"],\
+            ["d", "npm:1.0.1"],\
+            ["es5-ext", "npm:0.10.62"],\
             ["es6-weak-map", "npm:2.0.3"],\
             ["event-emitter", "npm:0.3.5"],\
             ["is-promise", "npm:2.2.2"],\
