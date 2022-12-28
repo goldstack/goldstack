@@ -2008,7 +2008,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/memoizee", "npm:0.4.8"],\
             ["@types/node", "npm:18.7.13"],\
             ["aws-sdk", "npm:2.1222.0"],\
-            ["deep-copy", "npm:1.4.2"],\
             ["dynamodb-admin", "npm:4.4.0"],\
             ["dynamodb-toolbox", "npm:0.6.3"],\
             ["ejs", "npm:3.1.8"],\

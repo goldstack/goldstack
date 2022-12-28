@@ -2,7 +2,6 @@ import assert from 'assert';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
 import { Entity, Table } from 'dynamodb-toolbox';
 import { UserEntity } from './entities';
-import deepCopy from 'deep-copy';
 
 import {
   getTableName,
