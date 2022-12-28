@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-dynamodb",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "Utilities for building modules for DynamoDB access.",
   "keywords": [
     "goldstack",
