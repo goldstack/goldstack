@@ -16,7 +16,7 @@ import AWS from 'aws-sdk';
 jest.setTimeout(120000);
 
 describe('DynamoDB Table', () => {
-  it.only('Should connect to local table', async () => {
+  it('Should connect to local table', async () => {
     const tableName = await getTableName();
     assert(tableName);
     const dynamoDB = await connect();
@@ -94,10 +94,10 @@ describe('DynamoDB Table', () => {
     expect(user.email).toEqual('joe@email.com');
   });
 
-  it.skip('Should be able to instantiate entity without deepCopy', async () => {
+  it('Should be able to instantiate entity with deepCopy', async () => {
     AWS.config.logger = console;
     const table = await connectTable();
-    const Users1 = new Entity({ ...UserEntity, table } as const);
+    const Users1 = new Entity({ ...deepCopy(UserEntity), table } as const);
     await Users1.put({
       email: 'joe@email.com',
       name: 'Joe',
@@ -105,9 +105,12 @@ describe('DynamoDB Table', () => {
       emailVerified: true,
     });
 
-    const Users2 = new Entity({ ...deepCopy(UserEntity), table } as const);
-    const { Item: user } = await Users2.get(
-      { email: 'joe@email.com', type: 'user' },
+    // const Users2 = new Entity({ ...deepCopy(UserEntity), table } as const);
+    // Using Users2 will result in an error here, see https://github.com/jeremydaly/dynamodb-toolbox/issues/366#issuecomment-1366311354
+    const { Item: user } = await Users1.get(
+      {
+        email: 'joe@email.com',
+      },
       { attributes: ['email', 'name'] }
     );
     expect(user.name).toEqual('Joe');
