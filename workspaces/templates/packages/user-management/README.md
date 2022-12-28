@@ -100,7 +100,7 @@ If you want to validate if calls to an API have been made by authenticated users
 On the server, we can validate the tokens send by the client using the `connectWithCognito` method:
 
 ```typescript
-import { connectWithCognito } from '@goldstack/user-management';
+import { connectWithCognito } from 'user-management';
 
 export const handler: SSRHandler = async (event, context) => {
   const cookies = getCookies((event.cookies || []).join(';'));

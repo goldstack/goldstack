@@ -110,7 +110,7 @@ In the status bar on the bottom right-hand corner of the VSCode editor you shoul
 
 The code provided in this project works best in combination with client- and server-side application code defined in other packages.
 
-For this, simply import the package provided in `packages/user-management` in your client- and/or server-side logic.
+For this, simply import the package provided in `packages/user-management-1` in your client- and/or server-side logic.
 
 For more information, see the Goldstack documentation:
 
@@ -121,7 +121,7 @@ For more information, see the Goldstack documentation:
 
 If you want to deploy your project to AWS, you will need to make some changes to the configuration files included in this project.
 
-Specifically, the [goldstack.json]() in the `packages/user-management` folder.
+Specifically, the [goldstack.json](https://github.com/goldstack/cognito-nodejs-template/blob/master/packages/user-management-1/goldstack.json) in the `packages/user-management-1` folder.
 
 ```json
 {
@@ -141,7 +141,7 @@ Specifically, the [goldstack.json]() in the `packages/user-management` folder.
         "hostedZoneDomain": "",
         "callbackUrl": ""
       },
-      "tfStateKey": "user-management-prod-c24c67342f629ac2217b.tfstate"
+      "tfStateKey": "user-management-prod-xxxxxxx.tfstate"
     }
   ]
 }
@@ -185,7 +185,7 @@ You will also need to ensure that you have a valid AWS user configure to deploy 
 
 For more information on configuring your local AWS users, please see [Goldstack Documentation / AWS Configuration](https://docs.goldstack.party/docs/goldstack/configuration#aws-configuration).
 
-Once your AWS user is configured you can run `yarn infra up prod` in the `/packages/user-management` folder. For more information on the infrastructure commands for this project, see [Goldstack Documentation / User Management / Infrastructure](https://docs.goldstack.party/docs/templates/user-management#infrastructure).
+Once your AWS user is configured you can run `yarn infra up prod` in the `/packages/user-management-1` folder. For more information on the infrastructure commands for this project, see [Goldstack Documentation / User Management / Infrastructure](https://docs.goldstack.party/docs/templates/user-management#infrastructure).
 
 ## 9. Contribute to Goldstack
 

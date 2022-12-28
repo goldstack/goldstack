@@ -100,7 +100,7 @@ export const convertToGatewayEvent = (
     rawQueryString: lambdaQuery,
     queryStringParameters,
     pathParameters: pathParams,
-    cookies: params.req.cookies, // ['dummyid=730dd32a-4adf-464e-8097-6f03aac71c7ca14a4a'],
+    cookies: params.req.cookies || normalisedHeaders['cookie']?.split(';'), // ['dummyid=730dd32a-4adf-464e-8097-6f03aac71c7ca14a4a'],
     headers: {
       accept:
         'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
