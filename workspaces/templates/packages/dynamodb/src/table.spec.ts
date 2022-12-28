@@ -2,7 +2,6 @@ import assert from 'assert';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
 import { Entity, Table } from 'dynamodb-toolbox';
 import { UserEntity } from './entities';
-import deepCopy from 'deep-copy';
 
 import {
   getTableName,
@@ -10,6 +9,7 @@ import {
   stopLocalDynamoDB,
   connectTable,
 } from './table';
+import AWS from 'aws-sdk';
 
 // needs to be long to download Docker image etc.
 jest.setTimeout(120000);
@@ -79,7 +79,7 @@ describe('DynamoDB Table', () => {
     const table = await connectTable();
     // important to do deep copy here because of
     //   https://github.com/jeremydaly/dynamodb-toolbox/issues/310
-    const Users = new Entity({ ...deepCopy(UserEntity), table } as const);
+    const Users = UserEntity(table);
     await Users.put({
       email: 'joe@email.com',
       name: 'Joe',
@@ -88,6 +88,29 @@ describe('DynamoDB Table', () => {
     const { Item: user } = await Users.get(
       { email: 'joe@email.com' },
       { attributes: ['name', 'email'] }
+    );
+    expect(user.name).toEqual('Joe');
+    expect(user.email).toEqual('joe@email.com');
+  });
+
+  it('Should be able to instantiate entity with deepCopy', async () => {
+    AWS.config.logger = console;
+    const table = await connectTable();
+    const Users1 = UserEntity(table);
+    await Users1.put({
+      email: 'joe@email.com',
+      name: 'Joe',
+      type: 'user',
+      emailVerified: true,
+    });
+
+    const Users2 = UserEntity(table);
+    // Using Users2 will result in an error here, see https://github.com/jeremydaly/dynamodb-toolbox/issues/366#issuecomment-1366311354
+    const { Item: user } = await Users2.get(
+      {
+        email: 'joe@email.com',
+      },
+      { attributes: ['email', 'name'] }
     );
     expect(user.name).toEqual('Joe');
     expect(user.email).toEqual('joe@email.com');

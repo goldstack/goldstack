@@ -12,10 +12,6 @@ import goldstackSchema from './../schemas/package.schema.json';
 import { createTable } from './entities';
 import { createMigrations } from './migrations';
 
-import deepCopy from 'deep-copy';
-
-export { deepCopy };
-
 export { DynamoDB };
 
 export { Entity } from 'dynamodb-toolbox';
