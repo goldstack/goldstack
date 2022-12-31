@@ -4,8 +4,6 @@ import DesktopComputerImg from 'src/img/desktop_computer.jpg';
 import TabletImg from 'src/img/tablet.jpg';
 import MeetingImg from 'src/img/meeting.jpg';
 
-import Image from 'next/image';
-
 import { TextSectionProps } from '@goldstack/template-metadata';
 
 const TextSection = (props: TextSectionProps): JSX.Element => {
