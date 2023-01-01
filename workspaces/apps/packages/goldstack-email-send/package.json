@@ -21,12 +21,12 @@
     "test-ci": "GOLDSTACK_DEPLOYMENT=local GOLDSTACK_LOG_EMAILS=false jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/template-email-send": "0.4.8",
-    "@goldstack/utils-git": "0.2.4",
-    "@goldstack/utils-sh": "0.5.4"
+    "@goldstack/template-email-send": "0.4.9",
+    "@goldstack/utils-git": "0.2.5",
+    "@goldstack/utils-sh": "0.5.5"
   },
   "devDependencies": {
-    "@goldstack/template-email-send-cli": "0.5.8",
+    "@goldstack/template-email-send-cli": "0.5.9",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "aws-sdk": "^2.1222.0",
