@@ -892,8 +892,7 @@ __metadata:
     jest-transform-stub: ^2.0.0
     next: latest
     next-compose-plugins: ^2.2.1
-    next-optimized-images: ^2.6.2
-    next-transpile-modules: ^8.0.0
+    next-transpile-modules: ^10.0.0
     node-sass: 7.0.0
     react: latest
     react-bootstrap: ^2.2.1
@@ -932,13 +931,13 @@ __metadata:
     jest-transform-stub: ^2.0.0
     next: latest
     next-compose-plugins: ^2.2.1
-    next-optimized-images: ^2.6.2
-    next-transpile-modules: ^8.0.0
+    next-transpile-modules: ^10.0.0
     react: latest
     react-dom: latest
     react-is: ^18.2.0
     reload: ^3.2.0
     rimraf: ^3.0.2
+    svg-url-loader: ^8.0.0
     swr: ^0.4.0
     ts-jest: ^28.0.2
     ts-node: ^10.9.1
@@ -1041,7 +1040,7 @@ __metadata:
     next: latest
     next-compose-plugins: ^2.2.1
     next-optimized-images: ^2.6.2
-    next-transpile-modules: ^8.0.0
+    next-transpile-modules: ^10.0.0
     node-sass: 7.0.0
     react: latest
     react-bootstrap: ^1.6.1
@@ -1227,7 +1226,7 @@ __metadata:
     next: latest
     next-compose-plugins: ^2.2.1
     next-optimized-images: ^2.6.2
-    next-transpile-modules: ^8.0.0
+    next-transpile-modules: ^10.0.0
     node-sass: 7.0.0
     react: latest
     react-bootstrap: ^1.6.1
@@ -9513,13 +9512,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhanced-resolve@npm:^5.7.0":
-  version: 5.8.3
-  resolution: "enhanced-resolve@npm:5.8.3"
+"enhanced-resolve@npm:^5.10.0":
+  version: 5.12.0
+  resolution: "enhanced-resolve@npm:5.12.0"
   dependencies:
     graceful-fs: ^4.2.4
     tapable: ^2.2.0
-  checksum: d79fbe531106448b768bb0673fb623ec0202d7ee70373ab7d4f4745d5dfe0806f38c9db7e7da8c941288fe475ab3d538db3791fce522056eeea40ca398c9e287
+  checksum: bf3f787facaf4ce3439bef59d148646344e372bef5557f0d37ea8aa02c51f50a925cd1f07b8d338f18992c29f544ec235a8c64bcdb56030196c48832a5494174
   languageName: node
   linkType: hard
 
@@ -10828,7 +10827,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-loader@npm:^6.2.0":
+"file-loader@npm:^6.2.0, file-loader@npm:~6.2.0":
   version: 6.2.0
   resolution: "file-loader@npm:6.2.0"
   dependencies:
@@ -15924,13 +15923,12 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"next-transpile-modules@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "next-transpile-modules@npm:8.0.0"
+"next-transpile-modules@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "next-transpile-modules@npm:10.0.0"
   dependencies:
-    enhanced-resolve: ^5.7.0
-    escalade: ^3.1.1
-  checksum: 5535e385fd3a4efa25c46b472b2555436c9f3c0fa27f1a80f0c84f5d4c419981ded6896b03d0b418e7476d30bb41714ca0657204daa7c257a002b77a02b7783a
+    enhanced-resolve: ^5.10.0
+  checksum: 3300fc7081f63b2c9487588db7cbe718f209dfd2111adec22d9c8af0e3c8ade2d95fd45f91e045546d78d98cafc78a49431de9a623360d33831b5e694bf007c9
   languageName: node
   linkType: hard
 
@@ -20407,6 +20405,17 @@ resolve@^1.20.0:
     es6-iterator: ^2.0.1
     es6-symbol: ^3.1.1
   checksum: d6cddb86bd921d105f33b60faa85ebe6cee128e468f983a1f3da00d486f35c0ca4226d14edac5f3f0ffcac0f5ca6afd4e55e4eb1c7db4e81135d2a7d662f9365
+  languageName: node
+  linkType: hard
+
+"svg-url-loader@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "svg-url-loader@npm:8.0.0"
+  dependencies:
+    file-loader: ~6.2.0
+  peerDependencies:
+    webpack: ^5.0.0
+  checksum: 265271f6a5c049705b554518ff1e8b62ea8336e6a563bfbe64aac0c32a10e603fb14a7954c4613e82f6d48aec655284bdeab21022f320e00cf525804175929ad
   languageName: node
   linkType: hard
 

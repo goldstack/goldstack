@@ -1818,13 +1818,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest-transform-stub", "npm:2.0.0"],\
             ["next", "virtual:b28f6f2dcaa3de9aaf6c7d093d23c4c2c32e9cbea00ed9a5cf21e895c3e09ac7db18108871bf828a77a26ad19ff27d6b02e951ed326d7565e29513f7342ba4d9#npm:13.1.1"],\
             ["next-compose-plugins", "npm:2.2.1"],\
-            ["next-optimized-images", "npm:2.6.2"],\
-            ["next-transpile-modules", "npm:8.0.0"],\
+            ["next-transpile-modules", "npm:10.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
             ["react-is", "npm:18.2.0"],\
             ["reload", "npm:3.2.0"],\
             ["rimraf", "npm:3.0.2"],\
+            ["svg-url-loader", "virtual:b28f6f2dcaa3de9aaf6c7d093d23c4c2c32e9cbea00ed9a5cf21e895c3e09ac7db18108871bf828a77a26ad19ff27d6b02e951ed326d7565e29513f7342ba4d9#npm:8.0.0"],\
             ["swr", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:0.4.0"],\
             ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:28.0.2"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
@@ -1858,8 +1858,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest-transform-stub", "npm:2.0.0"],\
             ["next", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:13.1.1"],\
             ["next-compose-plugins", "npm:2.2.1"],\
-            ["next-optimized-images", "npm:2.6.2"],\
-            ["next-transpile-modules", "npm:8.0.0"],\
+            ["next-transpile-modules", "npm:10.0.0"],\
             ["node-sass", "npm:7.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-bootstrap", "virtual:13446954d6ed80c2be8e5fa2493d18a3cb791643ce58cb3e957e09100e1d3d7c00a33850dd7e09965dc92af488bb66195f2cf4a9dec7e959ce772f4497088f89#npm:2.2.1"],\
@@ -1977,7 +1976,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:13.1.1"],\
             ["next-compose-plugins", "npm:2.2.1"],\
             ["next-optimized-images", "npm:2.6.2"],\
-            ["next-transpile-modules", "npm:8.0.0"],\
+            ["next-transpile-modules", "npm:10.0.0"],\
             ["node-sass", "npm:7.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-bootstrap", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:1.6.5"],\
@@ -2173,7 +2172,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:13.1.1"],\
             ["next-compose-plugins", "npm:2.2.1"],\
             ["next-optimized-images", "npm:2.6.2"],\
-            ["next-transpile-modules", "npm:8.0.0"],\
+            ["next-transpile-modules", "npm:10.0.0"],\
             ["node-sass", "npm:7.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-bootstrap", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:1.6.5"],\
@@ -11610,10 +11609,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:5.8.3", {\
-          "packageLocation": "./.yarn/cache/enhanced-resolve-npm-5.8.3-24a728966e-d79fbe5311.zip/node_modules/enhanced-resolve/",\
+        ["npm:5.12.0", {\
+          "packageLocation": "./.yarn/cache/enhanced-resolve-npm-5.12.0-c291ce4ee3-bf3f787fac.zip/node_modules/enhanced-resolve/",\
           "packageDependencies": [\
-            ["enhanced-resolve", "npm:5.8.3"],\
+            ["enhanced-resolve", "npm:5.12.0"],\
             ["graceful-fs", "npm:4.2.4"],\
             ["tapable", "npm:2.2.1"]\
           ],\
@@ -18811,12 +18810,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["next-transpile-modules", [\
-        ["npm:8.0.0", {\
-          "packageLocation": "./.yarn/cache/next-transpile-modules-npm-8.0.0-9ec0150b15-5535e385fd.zip/node_modules/next-transpile-modules/",\
+        ["npm:10.0.0", {\
+          "packageLocation": "./.yarn/cache/next-transpile-modules-npm-10.0.0-35632e5048-3300fc7081.zip/node_modules/next-transpile-modules/",\
           "packageDependencies": [\
-            ["next-transpile-modules", "npm:8.0.0"],\
-            ["enhanced-resolve", "npm:5.8.3"],\
-            ["escalade", "npm:3.1.1"]\
+            ["next-transpile-modules", "npm:10.0.0"],\
+            ["enhanced-resolve", "npm:5.12.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -23847,6 +23845,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["sver-compat", "npm:1.5.0"],\
             ["es6-iterator", "npm:2.0.3"],\
             ["es6-symbol", "npm:3.1.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["svg-url-loader", [\
+        ["npm:8.0.0", {\
+          "packageLocation": "./.yarn/cache/svg-url-loader-npm-8.0.0-4c28fd7afe-265271f6a5.zip/node_modules/svg-url-loader/",\
+          "packageDependencies": [\
+            ["svg-url-loader", "npm:8.0.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:b28f6f2dcaa3de9aaf6c7d093d23c4c2c32e9cbea00ed9a5cf21e895c3e09ac7db18108871bf828a77a26ad19ff27d6b02e951ed326d7565e29513f7342ba4d9#npm:8.0.0", {\
+          "packageLocation": "./.yarn/__virtual__/svg-url-loader-virtual-9ac143e66e/0/cache/svg-url-loader-npm-8.0.0-4c28fd7afe-265271f6a5.zip/node_modules/svg-url-loader/",\
+          "packageDependencies": [\
+            ["svg-url-loader", "virtual:b28f6f2dcaa3de9aaf6c7d093d23c4c2c32e9cbea00ed9a5cf21e895c3e09ac7db18108871bf828a77a26ad19ff27d6b02e951ed326d7565e29513f7342ba4d9#npm:8.0.0"],\
+            ["@types/webpack", null],\
+            ["file-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:6.2.0"],\
+            ["webpack", null]\
+          ],\
+          "packagePeers": [\
+            "@types/webpack",\
+            "webpack"\
           ],\
           "linkType": "HARD"\
         }]\
