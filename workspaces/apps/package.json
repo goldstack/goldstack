@@ -21,7 +21,7 @@
     "test-ci": "yarn workspaces foreach -v run test-ci"
   },
   "devDependencies": {
-    "@goldstack/utils-typescript-references": "0.3.4",
+    "@goldstack/utils-typescript-references": "0.3.5",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
