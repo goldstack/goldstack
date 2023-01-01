@@ -10,7 +10,6 @@
     "clean": "rimraf ./dist ./webDist",
     "compile": "tsc --build",
     "compile-watch": "tsc --isolatedModules false -p tsconfig.compile.json --watch",
-    "compileOld": "tsc --isolatedModules false -p tsconfig.compile.json",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "deploy": "template-nextjs set-nextjs-env $@ && yarn build && yarn web:build && template deploy $@",
     "deploy-ts": "yarn template-ts set-nextjs-env $@ && yarn build && yarn web:build && yarn template-ts deploy $@",
@@ -28,18 +27,11 @@
     "web:watch": "yarn web:build $@ && concurrently \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" "
   },
   "dependencies": {
-    "extracted-loader": "^1.0.7",
-    "file-loader": "^6.2.0",
-    "ignore-loader": "^0.1.2",
-    "img-loader": "^4.0.0",
-    "next": "latest",
-    "next-compose-plugins": "^2.2.1",
-    "react": "latest",
-    "react-dom": "latest",
+    "next": "13.1.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-is": "^18.2.0",
-    "svg-url-loader": "^8.0.0",
-    "swr": "^0.4.0",
-    "url-loader": "^4.1.1"
+    "swr": "^0.4.0"
   },
   "devDependencies": {
     "@goldstack/template-nextjs": "0.5.11",
@@ -52,12 +44,14 @@
     "@types/testing-library__jest-dom": "^5.14.5",
     "@types/testing-library__react": "^10.2.0",
     "concurrently": "^7.3.0",
+    "file-loader": "^6.2.0",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.3",
     "jest-transform-stub": "^2.0.0",
     "next-transpile-modules": "^10.0.0",
     "reload": "^3.2.0",
     "rimraf": "^3.0.2",
+    "svg-url-loader": "^8.0.0",
     "ts-jest": "^28.0.2",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.4"

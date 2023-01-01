@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-const nextComposePlugins = require('next-compose-plugins');
-const { withPlugins } = nextComposePlugins.extend(() => ({}));
 
 const getLocalPackages = require('./scripts/getLocalPackages');
 
@@ -38,8 +36,6 @@ const nextConfig = {
     disableStaticImages: true,
   },
 };
-
-// const config = withPlugins([[withTM()]], nextConfig);
 
 const plugins = [withTM];
 
