@@ -25,7 +25,7 @@
     "version:apply:force": "yarn workspaces foreach -v --topological-dev run version:apply:force \"$@\""
   },
   "devDependencies": {
-    "@goldstack/utils-typescript-references": "0.3.5",
+    "@goldstack/utils-typescript-references": "0.3.6",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "@typescript-eslint/eslint-plugin": "^5.42.1",

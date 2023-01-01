@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-cli",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Utilities for building command line interfaces.",
   "keywords": [
     "goldstack",
@@ -35,7 +35,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.5",
+    "@goldstack/utils-git": "0.2.6",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
     "jest": "^29.3.1",
