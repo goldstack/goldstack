@@ -206,9 +206,13 @@
       "routeKeys": {
         "slug": "slug"
       },
-      "dataRouteRegex": "^/_next/data/xsTQnu2DAYMjUHVwz3VND/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/xsTQnu2DAYMjUHVwz3VND/docs/(?<slug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/aRYpmww756ta3KtAyq6Ig/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/aRYpmww756ta3KtAyq6Ig/docs/(?<slug>.+?)\\.json$"
     }
   ],
+  "rsc": {
+    "header": "RSC",
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch"
+  },
   "rewrites": []
 }

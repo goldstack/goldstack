@@ -18,6 +18,8 @@ const mockRouter: NextRouter = {
   pathname: '/',
   route: '/',
   asPath: '/',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  forward: () => {},
   query: {},
   isReady: true,
   push: jest.fn(),

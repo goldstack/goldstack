@@ -31,7 +31,7 @@ const LinkItem = (props: {
           prefetch={false}
           shallow={true}
         >
-          <a>{props.title}</a>
+          {props.title}
         </Link>
       </span>
     </div>

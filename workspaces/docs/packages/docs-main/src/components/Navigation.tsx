@@ -43,8 +43,8 @@ const Level3Wrapper = (props: {
 
 const Level3Item = (props: { title: string; link: string }): JSX.Element => (
   <li className="hs-sidebar-item">
-    <Link href={navPath + props.link}>
-      <a className="hs-sidebar-link ">{props.title}</a>
+    <Link href={navPath + props.link} className="hs-sidebar-link">
+      {props.title}
     </Link>
   </li>
 );

@@ -1,6 +1,7 @@
 yarn-error.log
 .npmrc
 .DS_Store
+node_modules/
 goldstackLocal/
 dist/
 .yarn/*
