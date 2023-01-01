@@ -77,12 +77,11 @@ const DynamicConfigForm = (props: {
                 props.packageId
               }/configure/${props.currentItem - 1}`}
               prefetch={false}
+              className={'font-weight-bold'}
               shallow={true}
             >
-              <a className={'font-weight-bold'}>
-                <i className="fas fa-angle-left fa-xs mr-1"></i>
-                Previous
-              </a>
+              <i className="fas fa-angle-left fa-xs mr-1"></i>
+              Previous
             </Link>
           )}
           {step.idx <= 0 && (
@@ -90,12 +89,11 @@ const DynamicConfigForm = (props: {
               href="/projects/[id]/packages/[packageId]/download"
               prefetch={false}
               shallow={true}
+              className={'font-weight-bold'}
               as={`/projects/${props.projectData.projectId}/packages/${props.packageId}/download`}
             >
-              <a className={'font-weight-bold'}>
-                <i className="fas fa-angle-left fa-xs mr-1"></i>
-                Back to download
-              </a>
+              <i className="fas fa-angle-left fa-xs mr-1"></i>
+              Back to download
             </Link>
           )}
 
@@ -106,14 +104,11 @@ const DynamicConfigForm = (props: {
                 props.packageId
               }/configure/${props.currentItem + 1}`}
               prefetch={false}
+              className="btn btn-primary btn-pill transition-3d-hover pull-right"
               shallow={true}
+              onClick={onSubmit}
             >
-              <a
-                onClick={onSubmit}
-                className="btn btn-primary btn-pill transition-3d-hover pull-right"
-              >
-                Next
-              </a>
+              Next
             </Link>
           )}
         </div>
