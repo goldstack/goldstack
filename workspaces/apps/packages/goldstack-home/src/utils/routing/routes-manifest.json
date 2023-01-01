@@ -166,9 +166,13 @@
       "routeKeys": {
         "template": "template"
       },
-      "dataRouteRegex": "^/_next/data/jiUI6dwNwtV4tXpLY1EZT/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/jiUI6dwNwtV4tXpLY1EZT/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/3ef_1LFMyoqMqPUyiHkrz/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/3ef_1LFMyoqMqPUyiHkrz/templates/(?<template>[^/]+?)\\.json$"
     }
   ],
+  "rsc": {
+    "header": "RSC",
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch"
+  },
   "rewrites": []
 }
