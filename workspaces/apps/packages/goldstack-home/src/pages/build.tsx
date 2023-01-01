@@ -225,7 +225,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     <h2 className="h3 mb-0">UI</h2>
                   </div>
                   <Checkbox
-                    title="Next.js 12"
+                    title="Next.js 13"
                     element="nextjs"
                     icon={NextjsIcon}
                     disabled={building}
@@ -234,7 +234,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     onChange={checkboxChange}
                   ></Checkbox>
                   <Checkbox
-                    title="Next.js 12 + Bootstrap"
+                    title="Next.js 13 + Bootstrap"
                     icon={BootstrapIcon}
                     element="bootstrap"
                     disabled={building}
