@@ -20,7 +20,7 @@ import SecurityIcon from './../icons/security.svg';
 
 import Header from './../components/Header';
 
-import BuildProject from './../components/BuildProject';
+import BuildProject from './../components/legacyBuild/BuildProject';
 
 import { getPackageIds } from './../lib/stackParamUtils';
 import Footer from 'src/components/Footer';

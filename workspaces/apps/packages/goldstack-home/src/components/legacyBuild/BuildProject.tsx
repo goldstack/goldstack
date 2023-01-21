@@ -7,18 +7,18 @@ import Spinner from 'react-bootstrap/Spinner';
 
 import styled from 'styled-components';
 
-import PackageList from './../components/PackageList';
+import PackageList from './PackageList';
 
-import { buildProjectConfig } from './../lib/buildProject';
+import { buildProjectConfig } from './../../lib/buildProject';
 
 import { getEndpoint } from '@goldstack/goldstack-api';
 
-import Progress from './Progress';
-import { event } from './../lib/ga';
+import Progress from './../Progress';
+import { event } from './../../lib/ga';
 
-import { getTemplateData } from './../lib/templateData';
+import { getTemplateData } from './../../lib/templateData';
 
-import NoModulesAddedModal from './NoModulesAddedModal';
+import NoModulesAddedModal from './../NoModulesAddedModal';
 
 import styles from './BuildProject.module.css';
 

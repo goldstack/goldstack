@@ -8,17 +8,12 @@ const StackElement = (): JSX.Element => {
   return (
     <div className={`card ${styles['element-card']}`}>
       <div className={styles['element-card-head']}>
-        <button
-          type="button"
-          className={`btn btn-outline-success btn-xs ${styles['element-button']} `}
-        >
-          &lt;
+        <button type="button" className={'btn btn-outline-success btn-xs '}>
+          &lt; Add to stack
         </button>
-        <button
-          type="button"
-          className={`btn btn-outline-danger btn-xs ${styles['element-button']} `}
-        >
-          -
+        <h4 className={styles['element-card-title']}>Next.js UI</h4>
+        <button type="button" className={'btn btn-outline-danger btn-xs '}>
+          Remove from stack &gt;
         </button>
       </div>
       <div className={styles['element-card-body']}>
@@ -30,7 +25,6 @@ const StackElement = (): JSX.Element => {
           ></img>
         </div>
         <div className={styles['element-card-content']}>
-          <h4>Next.js UI</h4>
           <p>Fast loading websites and dynamic web applications.</p>
         </div>
       </div>
