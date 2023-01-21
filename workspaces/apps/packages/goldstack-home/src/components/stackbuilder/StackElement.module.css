@@ -1,0 +1,43 @@
+
+.element-card {
+    border: 0.0625rem solid #e7eaf3;
+}
+
+.element-card-head {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   padding: 0.2rem;
+    border-bottom: 0.0625rem solid #e7eaf3;
+}
+
+.element-button {
+  font-size: 2rem;
+  font-weight: 1000;
+  height: 1.8rem;
+  width: 1.8rem;
+  padding: 0.1rem;
+  line-height: 0;
+}
+
+.element-card-body {
+   display: flex;
+   flex-direction: row;
+}
+
+
+.element-card-content {
+  padding: 1rem;
+}
+
+.left-image-col {
+
+  text-align: left;
+}
+
+.left-image {
+  padding: 1rem;
+  max-width: 500px;
+  max-height: 500px;
+  vertical-align: left;
+}
