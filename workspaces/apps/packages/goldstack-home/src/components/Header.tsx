@@ -80,10 +80,15 @@ const Header = (): JSX.Element => {
                     Docs
                   </Nav.Link>
                 </Nav.Item>
-                <Nav.Item as="li">
-                  <Nav.Link href="https://github.com/goldstack/goldstack#readme">
-                    <img src={GitHub} style={{ width: '1rem' }}></img>
-                  </Nav.Link>
+                <Nav.Item as="li" style={{ paddingTop: '0.3rem' }}>
+                  <iframe
+                    src="https://ghbtns.com/github-btn.html?user=goldstack&repo=goldstack&type=star&count=true"
+                    frameBorder="0"
+                    scrolling="0"
+                    width="90"
+                    height="20"
+                    title="GitHub Star Goldstack"
+                  ></iframe>
                 </Nav.Item>
               </Nav>
             </Navbar.Collapse>
