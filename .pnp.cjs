@@ -10093,10 +10093,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["cookiejar", [\
-        ["npm:2.1.2", {\
-          "packageLocation": "./.yarn/cache/cookiejar-npm-2.1.2-081d78ab06-706cad1a56.zip/node_modules/cookiejar/",\
+        ["npm:2.1.4", {\
+          "packageLocation": "./.yarn/cache/cookiejar-npm-2.1.4-e418c49b9e-c444211196.zip/node_modules/cookiejar/",\
           "packageDependencies": [\
-            ["cookiejar", "npm:2.1.2"]\
+            ["cookiejar", "npm:2.1.4"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -23335,7 +23335,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["superagent", "npm:3.8.3"],\
             ["component-emitter", "npm:1.3.0"],\
-            ["cookiejar", "npm:2.1.2"],\
+            ["cookiejar", "npm:2.1.4"],\
             ["debug", "virtual:8bdf672d54f36156a0f721b1434bbc1348d0f0fc5e805c421e22316652d3adb4ab5ec9db167a289ec9115ad44ae048edb781152c06b39311b623662569c1a6c3#npm:3.2.6"],\
             ["extend", "npm:3.0.2"],\
             ["form-data", "npm:2.5.1"],\
@@ -23372,7 +23372,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["supertest-session", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:4.1.0"],\
             ["@types/supertest", "npm:2.0.10"],\
-            ["cookiejar", "npm:2.1.2"],\
+            ["cookiejar", "npm:2.1.4"],\
             ["methods", "npm:1.1.2"],\
             ["object-assign", "npm:4.1.1"],\
             ["supertest", "npm:4.0.2"]\
