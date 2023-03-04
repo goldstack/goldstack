@@ -15,7 +15,7 @@ The easiest way to configure the AWS user for Goldstack is to do it during proje
 
 - Click on the button _Next: Permissions_
 - Select _Attach existing policies directly_
-- Select the Policy _Administrator Access_
+- Select the Policy [_PowerUserAccess_](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#jf_developer-power-user)
 
 ![Select permissions](https://cdn.goldstack.party/img/202010/permissions.png)
 
