@@ -1,20 +1,26 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { DynamoDB } from 'aws-sdk';
-import { GenericContainer, StartedTestContainer } from 'testcontainers';
 
+import dynamoDBLocal from 'dynamo-db-local';
+import { commandExists } from '@goldstack/utils-sh';
 import { getTableName } from './dynamoDBPackageUtils';
 import { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
 
+import { check } from 'tcp-port-used';
+
 const MAPPED_PORT = 8000;
-const IMAGE_NAME = 'amazon/dynamodb-local:1.18.0';
+// const IMAGE_NAME = 'amazon/dynamodb-local:1.21.0';
 
 type DynamoDBTableName = string;
 
-const startedContainers: Map<
-  DynamoDBTableName,
-  StartedTestContainer | 'stopped'
-> = new Map();
+export interface DynamoDBInstance {
+  port: number;
+  stop: () => Promise<void>;
+}
+
+const startedContainers: Map<DynamoDBTableName, DynamoDBInstance | 'stopped'> =
+  new Map();
 
 export const localConnect = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
@@ -40,15 +46,11 @@ export const localConnect = async (
   return createClient(startedContainer);
 };
 
-export const endpointUrl = (startedContainer: StartedTestContainer): string => {
-  return `http://${startedContainer.getHost()}:${startedContainer.getMappedPort(
-    MAPPED_PORT
-  )}`;
+export const endpointUrl = (startedContainer: DynamoDBInstance): string => {
+  return `http://localhost:${startedContainer.port}`;
 };
 
-export const createClient = (
-  startedContainer: StartedTestContainer
-): DynamoDB => {
+export const createClient = (startedContainer: DynamoDBInstance): DynamoDB => {
   const endpoint = endpointUrl(startedContainer);
   return new DynamoDB({
     endpoint,
@@ -60,13 +62,50 @@ export const createClient = (
   });
 };
 
-export const startContainer = (): Promise<StartedTestContainer> => {
-  const startedContainer = new GenericContainer(IMAGE_NAME)
-    .withExposedPorts(MAPPED_PORT)
-    .withCommand(['-jar', 'DynamoDBLocal.jar', '-inMemory'])
-    .withReuse()
-    .start();
-  return startedContainer;
+export const startContainer = async (): Promise<DynamoDBInstance> => {
+  if (await check(MAPPED_PORT)) {
+    console.debug(
+      `Port ${MAPPED_PORT} is already in use. Assuming another instance of DynamoDB is already running.`
+    );
+    return {
+      port: MAPPED_PORT,
+      stop: async () => {
+        // no op, someone else controls this instance
+      },
+    };
+  }
+  if (commandExists('java')) {
+    console.debug('Starting local DynamoDB with Java');
+    const pr = dynamoDBLocal.spawn({ port: MAPPED_PORT, path: null });
+    return {
+      port: MAPPED_PORT,
+      stop: async () => {
+        pr.kill();
+      },
+    };
+  }
+
+  if (commandExists('docker')) {
+    console.debug('Starting local DynamoDB with Docker');
+    console.warn(
+      "Docker doesn't currently support stopping the container, see https://github.com/chrisguttandin/dynamo-db-local/issues/114\nIt is recommended you install Java."
+    );
+    const pr = dynamoDBLocal.spawn({
+      port: MAPPED_PORT,
+      command: 'docker',
+      path: null,
+    });
+    return {
+      port: MAPPED_PORT,
+      stop: async () => {
+        pr.kill();
+      },
+    };
+  }
+
+  throw new Error(
+    'Either Docker or Java needs to be installed to run local DynamoDB'
+  );
 };
 
 export const stopLocalDynamoDB = async (

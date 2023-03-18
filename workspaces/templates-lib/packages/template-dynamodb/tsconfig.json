@@ -25,6 +25,9 @@
       "path": "../utils-package-config-embedded"
     },
     {
+      "path": "../../../utils/packages/utils-sh"
+    },
+    {
       "path": "../utils-terraform"
     },
     {
