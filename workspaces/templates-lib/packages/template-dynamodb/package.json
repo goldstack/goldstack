@@ -45,7 +45,7 @@
     "@goldstack/utils-esbuild": "0.5.6",
     "@goldstack/utils-package": "0.4.6",
     "@goldstack/utils-package-config-embedded": "0.5.7",
-    "@goldstack/utils-sh": "workspace:^",
+    "@goldstack/utils-sh": "0.5.6",
     "@goldstack/utils-terraform": "0.4.9",
     "aws-sdk": "^2.1222.0",
     "dynamo-db-local": "^5.0.0",
