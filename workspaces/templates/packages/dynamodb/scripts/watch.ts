@@ -19,9 +19,7 @@ import DynamoDB from 'aws-sdk/clients/dynamodb';
       if (!address) {
         throw new Error('Local admin server not started successfully.');
       }
-      console.log(
-        `DynamoDB Admin started on http://${address.address}:${address.port}`
-      );
+      console.log(`DynamoDB Admin started on http://localhost:${address.port}`);
       resolve();
     });
     localAdminServer.on('error', () => {
