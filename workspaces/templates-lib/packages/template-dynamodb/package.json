@@ -45,9 +45,11 @@
     "@goldstack/utils-esbuild": "0.5.6",
     "@goldstack/utils-package": "0.4.6",
     "@goldstack/utils-package-config-embedded": "0.5.7",
+    "@goldstack/utils-sh": "0.5.6",
     "@goldstack/utils-terraform": "0.4.9",
     "aws-sdk": "^2.1222.0",
-    "testcontainers": "^9.2.1",
+    "dynamo-db-local": "^5.0.0",
+    "tcp-port-used": "^1.0.2",
     "umzug": "^3.1.1"
   },
   "devDependencies": {
@@ -56,6 +58,7 @@
     "@goldstack/utils-package-config-generate": "0.3.6",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
+    "@types/tcp-port-used": "^1",
     "@types/yargs": "^17.0.10",
     "jest": "^29.3.1",
     "rimraf": "^3.0.2",

@@ -38,6 +38,9 @@
       "path": "workspaces/docs"
     },
     {
+      "path": "workspaces/examples"
+    },
+    {
       "path": "workspaces/templates"
     },
     {
@@ -78,6 +81,9 @@
     },
     {
       "path": "workspaces/docs/packages/utils-docs-cli"
+    },
+    {
+      "path": "workspaces/examples/packages/dynamodb-client"
     },
     {
       "path": "workspaces/templates/packages/app-nextjs"
