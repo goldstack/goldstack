@@ -1,6 +1,6 @@
 [!embed](./../shared/getting-started-project.md)
 
-For local testing, this module uses [DynamoDBLocal](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html). 
+For local testing, this module uses [DynamoDBLocal](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html).
 
 Since DynamoDBLocal is run using Java, we recommend to [install Java](https://www.java.com/download/ie_manual.jsp) to perform local testing.
 

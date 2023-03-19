@@ -6,12 +6,13 @@ The [DynamoDB template](https://goldstack.party/templates/dynamodb) provides a l
 
 ## Features
 
-- Create DynamoDB table
-- Run migrations using Umzug
-- Easy to use API
-- Strong typing using DynamoDB Toolbox
-- Supports multiple environments (development, production)
-- Provides way to extend infrastructure using Terraform
+*   Create DynamoDB table
+*   Run migrations using Umzug
+*   Easy to use API
+*   Strong typing using DynamoDB Toolbox
+*   Easy local testing (recommended to install Java)
+*   Supports multiple environments (development, production)
+*   Provides way to extend infrastructure using Terraform
 
 ## Configure
 
@@ -24,6 +25,19 @@ The template will create a basic table with this name with a partition and sort 
 ### 1. Project Setup
 
 Before using this template, you need to configure the project. For this, please see the [Getting Started Guide](https://docs.goldstack.party/docs/goldstack/getting-started) on the Goldstack documentation.
+
+For local testing, this module uses [DynamoDBLocal](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html).
+
+Since DynamoDBLocal is run using Java, we recommend to [install Java](https://www.java.com/download/ie_manual.jsp) to perform local testing.
+
+You can confirm that Java is configured correctly by running:
+
+    $ java -version
+    java version "11.0.3" 2019-04-16 LTS
+    Java(TM) SE Runtime Environment 18.9 (build 11.0.3+12-LTS)
+    Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.3+12-LTS, mixed mode)
+
+Local testing also supports a fallback using Docker when Java is not installed, but this is currently [not recommended](https://github.com/goldstack/goldstack/pull/309) to be used.
 
 ### 2. Setup Infrastructure
 
@@ -41,8 +55,8 @@ This will be either `yarn infra up dev` or `yarn infra up prod` depending on you
 
 In order to make use of the DynamoDB package we principally want to do two things:
 
-- Define the schema for our table
-- Write application logic to work with the data in the table
+*   Define the schema for our table
+*   Write application logic to work with the data in the table
 
 In this template, the former will be done within the DynamoDB package but the latter can either happen in other packages. For instance, if you have included a [Serverless API](https://goldstack.party/templates/lambda-api) template in your project, you can define your logic for working with the data in DynamoDB in that package. However, you can also write additional code in the DynamoDB package and define a lightweight DOA layer.
 
@@ -210,13 +224,13 @@ The configuration tool will define one deployment. This will be either `dev` or 
 
 Infrastructure commands for this template can be run using `yarn`. There are four commands in total:
 
-- `yarn infra up`: For standing up infrastructure.
-- `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
-- `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
-- `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
-- `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
-- `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
-- `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
+*   `yarn infra up`: For standing up infrastructure.
+*   `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
+*   `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
+*   `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
+*   `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+*   `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
+*   `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
 
 For each command, the deployment they should be applied to must be specified.
 
