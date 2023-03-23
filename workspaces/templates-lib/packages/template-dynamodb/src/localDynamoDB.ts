@@ -80,6 +80,7 @@ export const startContainer = async (): Promise<DynamoDBInstance> => {
     return {
       port: MAPPED_PORT,
       stop: async () => {
+        console.debug('Stopping local Java DynamoDB');
         pr.kill();
       },
     };
