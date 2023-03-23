@@ -1,6 +1,7 @@
 import {
   connect as templateConnect,
   getTableName as templateGetTableName,
+  startLocalDynamoDB as templateStartLocalDynamoDB,
   stopLocalDynamoDB as templateStopLocalDynamoDB,
   migrateDownTo as templateMigrateDownTo,
 } from '@goldstack/template-dynamodb';
@@ -60,6 +61,16 @@ export const migrateDownTo = async (
     deploymentName,
     migrations: createMigrations(),
   });
+};
+
+export const startLocalDynamoDB = async (
+  deploymentName?: string
+): Promise<void> => {
+  return await templateStartLocalDynamoDB(
+    goldstackConfig,
+    goldstackSchema,
+    deploymentName
+  );
 };
 
 export const stopLocalDynamoDB = async (

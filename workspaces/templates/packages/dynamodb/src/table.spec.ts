@@ -7,6 +7,7 @@ import {
   getTableName,
   connect,
   stopLocalDynamoDB,
+  startLocalDynamoDB,
   connectTable,
 } from './table';
 import AWS from 'aws-sdk';
@@ -15,6 +16,9 @@ import AWS from 'aws-sdk';
 jest.setTimeout(120000);
 
 describe('DynamoDB Table', () => {
+  beforeAll(async () => {
+    await startLocalDynamoDB();
+  });
   it('Should connect to local table', async () => {
     const tableName = await getTableName();
     assert(tableName);
@@ -117,9 +121,6 @@ describe('DynamoDB Table', () => {
   });
 
   afterAll(async () => {
-    // not shutting down server is useful when DynamoDB is started using the 'watch' script
-    if (!(process.env.STOP_SERVER === 'false')) {
-      await stopLocalDynamoDB();
-    }
+    await stopLocalDynamoDB();
   });
 });

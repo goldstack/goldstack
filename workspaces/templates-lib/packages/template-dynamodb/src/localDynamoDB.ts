@@ -19,6 +19,10 @@ export interface DynamoDBInstance {
   stop: () => Promise<void>;
 }
 
+function areWeTestingWithJest(): boolean {
+  return process.env.JEST_WORKER_ID !== undefined;
+}
+
 const startedContainers: Map<DynamoDBTableName, DynamoDBInstance | 'stopped'> =
   new Map();
 
@@ -26,24 +30,17 @@ export const localConnect = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName?: string
 ): Promise<DynamoDB> => {
-  const tableName = await getTableName(packageConfig, deploymentName);
-
-  // TODO the key in this map may need to be extended to include the region as well, since dynamodb table names are unique per region.
-  let startedContainer = startedContainers.get(tableName);
-  if (startedContainer && startedContainer !== 'stopped') {
-    return createClient(startedContainer);
-  }
-  startedContainer = await startContainer();
-
-  // Check if another container for this table has already been started in the meanwhile
-  const startedContainerTest = startedContainers.get(tableName);
-  if (startedContainerTest && startedContainerTest !== 'stopped') {
-    await startedContainer.stop();
-    return createClient(startedContainerTest);
+  if (areWeTestingWithJest()) {
+    const tableName = await getTableName(packageConfig, deploymentName);
+    const startedContainer = startedContainers.get(tableName);
+    if (!startedContainer) {
+      throw new Error(
+        'DynamoDB Local has not been started. When running Jest test, start Local DynamoDB explicitly with `startLocalDynamoDB` and shut the instance down with `stopLocalDynamoDB` when tests are completed.'
+      );
+    }
   }
 
-  startedContainers.set(tableName, startedContainer);
-  return createClient(startedContainer);
+  return createClient(await startLocalDynamoDB(packageConfig, deploymentName));
 };
 
 export const endpointUrl = (startedContainer: DynamoDBInstance): string => {
@@ -62,7 +59,31 @@ export const createClient = (startedContainer: DynamoDBInstance): DynamoDB => {
   });
 };
 
-export const startContainer = async (): Promise<DynamoDBInstance> => {
+export const startLocalDynamoDB = async (
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  deploymentName?: string
+): Promise<DynamoDBInstance> => {
+  const tableName = await getTableName(packageConfig, deploymentName);
+
+  // TODO the key in this map may need to be extended to include the region as well, since dynamodb table names are unique per region.
+  let startedContainer = startedContainers.get(tableName);
+  if (startedContainer && startedContainer !== 'stopped') {
+    return startedContainer;
+  }
+  startedContainer = await spawnLocalDynamoDB();
+
+  // Check if another container for this table has already been started in the meanwhile
+  const startedContainerTest = startedContainers.get(tableName);
+  if (startedContainerTest && startedContainerTest !== 'stopped') {
+    await startedContainer.stop();
+    return startedContainerTest;
+  }
+
+  startedContainers.set(tableName, startedContainer);
+  return startedContainer;
+};
+
+const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
   if (await check(MAPPED_PORT)) {
     console.debug(
       `Port ${MAPPED_PORT} is already in use. Assuming another instance of DynamoDB is already running.`

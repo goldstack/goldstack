@@ -45,6 +45,26 @@ export const getTableName = async (
   return getTableNameUtils(packageConfig, deploymentName);
 };
 
+export const startLocalDynamoDB = async (
+  goldstackConfig: DynamoDBPackage | any,
+  packageSchema: any,
+  deploymentName?: string
+): Promise<void> => {
+  deploymentName = getDeploymentName(deploymentName);
+  const packageConfig = new EmbeddedPackageConfig<
+    DynamoDBPackage,
+    DynamoDBDeployment
+  >({
+    goldstackJson: goldstackConfig,
+    packageSchema,
+  });
+
+  // only load this file when we absolutely need it, so we can avoid packaging it
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const lib = require(excludeInBundle('./localDynamoDB'));
+  await lib.startLocalDynamoDB(packageConfig, deploymentName);
+};
+
 export const stopLocalDynamoDB = async (
   goldstackConfig: DynamoDBPackage | any,
   packageSchema: any,
