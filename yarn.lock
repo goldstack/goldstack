@@ -1061,8 +1061,8 @@ __metadata:
   resolution: "@goldstack/dynamodb@workspace:workspaces/templates/packages/dynamodb"
   dependencies:
     "@aws-sdk/util-dynamodb": ^3.87.0
-    "@goldstack/template-dynamodb": 0.2.15
-    "@goldstack/template-dynamodb-cli": 0.5.16
+    "@goldstack/template-dynamodb": 0.2.16
+    "@goldstack/template-dynamodb-cli": 0.5.17
     "@types/ejs": ^3
     "@types/jest": ^29.0.1
     "@types/memoizee": ^0
@@ -1841,11 +1841,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-dynamodb-cli@0.5.16, @goldstack/template-dynamodb-cli@workspace:workspaces/templates-lib/packages/template-dynamodb-cli":
+"@goldstack/template-dynamodb-cli@0.5.17, @goldstack/template-dynamodb-cli@workspace:workspaces/templates-lib/packages/template-dynamodb-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-dynamodb-cli@workspace:workspaces/templates-lib/packages/template-dynamodb-cli"
   dependencies:
-    "@goldstack/template-dynamodb": 0.2.15
+    "@goldstack/template-dynamodb": 0.2.16
     "@goldstack/utils-cli": 0.3.6
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-git": 0.2.6
@@ -1872,7 +1872,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-dynamodb@0.2.15, @goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb":
+"@goldstack/template-dynamodb@0.2.16, @goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb"
   dependencies:
