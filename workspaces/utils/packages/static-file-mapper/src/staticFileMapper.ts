@@ -38,7 +38,9 @@ export class StaticFileMapperRun implements StaticFileMapper {
       mapping.names.find((el) => el === name)
     );
     if (!mapping) {
-      throw new Error(`Cannot find static file mapping for ${name}`);
+      throw new Error(
+        `Cannot find static file mapping for ${name}.\nTry building the project before running it in watch mode.`
+      );
     }
     return `${this.baseUrl}${mapping.generatedName}`;
   }
