@@ -1,6 +1,6 @@
 {
   "name": "static-file-mapper-build",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Helps tracking path to generated static files for deployment bundles",
   "keywords": [
     "javascript"
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@goldstack/utils-sh": "0.5.6",
-    "static-file-mapper": "0.3.7"
+    "static-file-mapper": "0.3.8"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.6",
