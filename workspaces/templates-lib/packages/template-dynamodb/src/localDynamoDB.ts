@@ -95,7 +95,7 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
       },
     };
   }
-  if (commandExists('java')) {
+  if (commandExists('java') && false) {
     console.debug('Starting local DynamoDB with Java');
     const pr = dynamoDBLocal.spawn({ port: MAPPED_PORT, path: null });
     return {
@@ -117,11 +117,18 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
       command: 'docker',
       path: null,
     });
+    const stop = () =>
+      new Promise<void>((resolve) => {
+        pr.stdout.once('end', () => resolve());
+        pr.kill();
+      });
     return {
       port: MAPPED_PORT,
-      stop: async () => {
-        pr.kill();
-      },
+      stop,
+      // stop: async () => {
+      //   console.debug('Stopping local Docker DynamoDB');
+      //   pr.kill();
+      // },
     };
   }
 
