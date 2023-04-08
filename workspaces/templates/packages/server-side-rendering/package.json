@@ -42,7 +42,7 @@
     "@jest/transform": "^29.3.1",
     "@swc/core": "^1.2.224",
     "@swc/jest": "^0.2.22",
-    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@types/aws-lambda": "^8.10.88",
     "@types/aws-serverless-express": "^3.3.3",
