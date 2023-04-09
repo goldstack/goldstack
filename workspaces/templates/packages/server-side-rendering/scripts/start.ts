@@ -12,7 +12,13 @@ startServer({
   routesDir: './src/routes',
   cors,
   staticRoutes: {
-    '/_goldstack/static': 'static',
+    '/_goldstack/static': {
+      path: 'static',
+      options: {
+        immutable: true,
+        maxAge: 1000 * 60 * 60 * 24,
+      },
+    },
     '/_goldstack/public': 'public',
     '/': 'public',
   },
