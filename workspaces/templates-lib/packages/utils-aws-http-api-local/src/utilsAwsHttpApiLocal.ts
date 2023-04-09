@@ -5,8 +5,18 @@ import { Server } from 'http';
 import { readLambdaConfig, LambdaConfig } from '@goldstack/utils-aws-lambda';
 import { injectRoutes } from './expressRoutes';
 
+type StaticRouteOptions = {
+  immutable: boolean;
+  maxAge: number;
+};
+
+type StaticRoute = {
+  path: string;
+  options: StaticRouteOptions;
+};
+
 type StaticRoutes = {
-  [key: string]: string;
+  [key: string]: string | StaticRoute;
 };
 
 export interface LocalHttpAPIOptions {
@@ -39,7 +49,12 @@ export const startServer = async (
   // these should come before dynamic routes
   if (options.staticRoutes) {
     Object.entries(options.staticRoutes).forEach((e) => {
-      app.use(e[0], express.static(e[1]));
+      if (typeof e[1] === 'string') {
+        app.use(e[0], express.static(e[1]));
+      } else {
+        const routeInfo: StaticRoute = e[1];
+        app.use(e[0], express.static(routeInfo.path, routeInfo.options));
+      }
     });
   }
 
