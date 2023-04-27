@@ -1862,7 +1862,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rimraf", "npm:3.0.2"],\
             ["svg-url-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:8.0.0"],\
             ["swr", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:0.4.0"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -1900,7 +1900,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rimraf", "npm:3.0.2"],\
             ["svg-url-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:8.0.0"],\
             ["swr", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:0.4.0"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -1927,7 +1927,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["semver", "npm:7.3.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["uuid", "npm:8.3.0"]\
           ],\
@@ -1948,7 +1948,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["nodemon", "npm:2.0.20"],\
             ["reload", "npm:3.2.0"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -1968,7 +1968,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["concurrently", "npm:7.3.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["nodemon", "npm:2.0.20"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2015,7 +2015,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["styled-components", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:5.3.5"],\
             ["svg-url-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:8.0.0"],\
             ["swr", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:0.4.0"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2042,7 +2042,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["memoizee", "npm:0.4.15"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["umzug", "npm:3.1.1"]\
@@ -2064,7 +2064,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["aws-sdk", "npm:2.1222.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2147,7 +2147,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["aws-sdk", "npm:2.1222.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2207,7 +2207,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["styled-components", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:5.3.5"],\
             ["svg-url-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:8.0.0"],\
             ["swr", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:0.4.0"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-json-schema-generator", "npm:1.0.0"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
@@ -2229,7 +2229,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["renamer", "npm:0.7.3"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-json-schema-generator", "npm:1.0.0"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2255,7 +2255,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["renamer", "npm:0.7.3"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-json-schema-generator", "npm:1.0.0"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2304,7 +2304,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -2324,7 +2324,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["yargs", "npm:17.5.1"]\
           ],\
@@ -2344,7 +2344,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2360,7 +2360,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -2374,6 +2374,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
             ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
             ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/minimatch", "npm:5.1.2"],\
             ["@types/node", "npm:18.7.13"],\
@@ -2381,7 +2383,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["minimatch", "npm:5.1.0"],\
             ["node-watch", "npm:0.6.4"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -2402,7 +2403,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["jsonpath", "npm:1.0.2"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-json-schema-generator", "npm:1.0.0"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2426,7 +2427,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2451,7 +2452,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["extract-zip", "npm:2.0.1"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -2472,7 +2473,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["temp-dir", "npm:2.0.0"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -2500,7 +2501,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["temp-dir", "npm:2.0.0"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -2521,7 +2522,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["concurrently", "npm:7.3.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2552,7 +2553,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["semver", "npm:7.3.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["uuid", "npm:8.3.0"]\
           ],\
@@ -2574,7 +2575,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["concurrently", "npm:7.3.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2593,7 +2594,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["aws-sdk", "npm:2.1222.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2625,8 +2626,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
             ["@jest-mock/express", "npm:1.4.5"],\
             ["@jest/transform", "npm:29.3.1"],\
-            ["@swc/core", "virtual:4e50ce71a9b4e85c99cc6016ea0a23673feabaf776550d341a9bfbb56e298ad0e26109decc39f123e5f1896784ee858ac0c64f9189006e12bd54ccd6f7612343#npm:1.3.55"],\
-            ["@swc/jest", "virtual:4e50ce71a9b4e85c99cc6016ea0a23673feabaf776550d341a9bfbb56e298ad0e26109decc39f123e5f1896784ee858ac0c64f9189006e12bd54ccd6f7612343#npm:0.2.26"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:13.3.0"],\
             ["@types/aws-lambda", "npm:8.10.88"],\
@@ -2715,7 +2716,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["stripe", "npm:8.114.0"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["uuid", "npm:8.3.0"]\
           ],\
@@ -2737,7 +2738,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["concurrently", "npm:7.3.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2763,7 +2764,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["light-server", "npm:2.9.1"],\
             ["reload", "npm:3.2.0"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2788,7 +2789,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["mock-aws-s3", "npm:4.0.2"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -2818,7 +2819,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-json-schema-generator", "npm:1.0.0"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -2854,7 +2855,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["yargs", "npm:17.5.1"]\
@@ -2887,7 +2888,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["tcp-port-used", "npm:1.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["umzug", "npm:3.1.1"]\
@@ -2916,7 +2917,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["umzug", "npm:3.1.1"],\
@@ -2947,7 +2948,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["aws-sdk", "npm:2.1222.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["uuid", "npm:8.3.0"]\
@@ -2974,7 +2975,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["yargs", "npm:17.5.1"]\
@@ -3003,7 +3004,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest-pnp-resolver", "virtual:4f49c740086f3e5913a2063d6aec31d46737f5e1a82924c7e63c0f9d979eb2e0aa85979bf8307ce3da23d4f95a21ef51800e1b385a327985884beb72ab340dcf#npm:1.2.2"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-json-schema-generator", "npm:1.0.0"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
@@ -3042,7 +3043,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest-pnp-resolver", "virtual:4f49c740086f3e5913a2063d6aec31d46737f5e1a82924c7e63c0f9d979eb2e0aa85979bf8307ce3da23d4f95a21ef51800e1b385a327985884beb72ab340dcf#npm:1.2.2"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-json-schema-generator", "npm:1.0.0"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
@@ -3080,7 +3081,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-json-schema-generator", "npm:1.0.0"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
@@ -3125,7 +3126,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
             ["tmp", "npm:0.2.1"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["webpack", "virtual:ffd8a5c78fe9ed0604bd03149579d9c37601b6a5fbbef5acc1044213429d8ca4682502ca7c144e54258e32773d3c25f0530956da1cbd841f2012de99523624f7#npm:4.43.0"],\
@@ -3146,7 +3147,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3183,7 +3184,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["webpack", "virtual:0c42a4a7e96abec67548df8af0143cff51f355aeab0d23272359987eaba0feb51d651b15d995e5c0fcc0a843a2710e9bfcb454984d2bdce054b0f460b4a3e5c1#npm:4.43.0"],\
@@ -3211,7 +3212,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["semver", "npm:7.3.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3232,7 +3233,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["concurrently", "npm:7.3.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -3263,7 +3264,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["mock-aws-s3", "npm:4.0.2"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -3297,7 +3298,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["yargs", "npm:17.5.1"]\
@@ -3333,7 +3334,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -3372,7 +3373,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["minimatch", "npm:5.1.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["yargs", "npm:17.5.1"]\
@@ -3411,7 +3412,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
             ["static-file-mapper", "workspace:workspaces/utils/packages/static-file-mapper"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -3482,7 +3483,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["yargs", "npm:17.5.1"]\
@@ -3509,7 +3510,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3538,7 +3539,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -3570,7 +3571,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["yargs", "npm:17.5.1"]\
@@ -3589,7 +3590,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cheerio", "npm:1.0.0-rc.10"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3607,7 +3608,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["aws-sdk", "npm:2.1222.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -3629,7 +3630,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["aws-sdk", "npm:2.1222.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3655,7 +3656,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["node-fetch", "virtual:e52ab1021d0edcbba08fe34ad79056b427f09ae8b857649034d16b50b14324ea805344686a01b18d5f1efd6fa4f5c0b9421fcec6bd3b5d12c27fd1fea3ab1143#npm:2.6.7"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3693,11 +3694,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3717,7 +3719,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["handlebars", "npm:4.7.7"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3730,11 +3732,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-docker", "workspace:workspaces/utils/packages/utils-docker"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
             ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3763,7 +3766,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["remark-parse", "npm:7.0.1"],\
             ["remark-rehype", "npm:5.0.0"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["unified", "npm:8.4.1"],\
             ["unist-util-visit", "npm:2.0.0"]\
@@ -3786,7 +3789,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["yargs", "npm:17.5.1"]\
           ],\
@@ -3799,11 +3802,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3814,6 +3818,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./workspaces/utils/packages/utils-git/",\
           "packageDependencies": [\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/command-exists", "npm:1.2.0"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
@@ -3821,7 +3827,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3835,6 +3840,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
             ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
             ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["@types/replace-ext", "npm:0.0.27"],\
@@ -3842,7 +3849,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["json-schema-to-typescript", "npm:9.1.1"],\
             ["replace-ext", "npm:2.0.0"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3854,11 +3860,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3879,7 +3886,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["renamer", "npm:0.7.3"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-json-schema-generator", "npm:1.0.0"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["yargs", "npm:17.5.1"]\
@@ -3901,7 +3908,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3920,7 +3927,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3938,7 +3945,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["renamer", "npm:0.7.3"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-json-schema-generator", "npm:1.0.0"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["yargs", "npm:17.5.1"]\
@@ -3959,7 +3966,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -3979,7 +3986,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["renamer", "npm:0.7.3"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-json-schema-generator", "npm:1.0.0"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -3997,7 +4004,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["aws-sdk", "npm:2.1222.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -4017,7 +4024,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -4030,8 +4037,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
             ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
-            ["@swc/core", "virtual:4e50ce71a9b4e85c99cc6016ea0a23673feabaf776550d341a9bfbb56e298ad0e26109decc39f123e5f1896784ee858ac0c64f9189006e12bd54ccd6f7612343#npm:1.3.55"],\
-            ["@swc/jest", "virtual:4e50ce71a9b4e85c99cc6016ea0a23673feabaf776550d341a9bfbb56e298ad0e26109decc39f123e5f1896784ee858ac0c64f9189006e12bd54ccd6f7612343#npm:0.2.26"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/archiver", "npm:3.1.0"],\
             ["@types/command-exists", "npm:1.2.0"],\
             ["@types/fs-extra", "npm:9.0.13"],\
@@ -4067,7 +4074,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -4094,7 +4101,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["mock-aws-s3", "npm:4.0.2"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -4122,7 +4129,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["json-stable-stringify", "npm:1.0.1"],\
             ["prompt-sync", "npm:4.2.0"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-json-schema-generator", "npm:1.0.0"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["yargs", "npm:17.5.1"]\
@@ -4147,7 +4154,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["aws-sdk", "npm:2.1222.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -4159,13 +4166,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/utils-track", "workspace:workspaces/utils/packages/utils-track"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["@types/react", "npm:18.0.15"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["react", "npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -4177,6 +4185,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@goldstack/utils-typescript-references", "workspace:workspaces/utils/packages/utils-typescript-references"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["@types/source-map-support", "npm:0.5.4"],\
@@ -4184,7 +4194,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["source-map-support", "npm:0.5.21"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
             ["yargs", "npm:17.5.1"]\
           ],\
@@ -4199,11 +4208,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@goldstack/utils-docker", "workspace:workspaces/utils/packages/utils-docker"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
             ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -5293,16 +5303,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }],\
         ["npm:1.3.55", {\
-          "packageLocation": "./.yarn/unplugged/@swc-core-virtual-b49da9cae7/node_modules/@swc/core/",\
+          "packageLocation": "./.yarn/unplugged/@swc-core-virtual-3fea2d66e6/node_modules/@swc/core/",\
           "packageDependencies": [\
             ["@swc/core", "npm:1.3.55"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:4e50ce71a9b4e85c99cc6016ea0a23673feabaf776550d341a9bfbb56e298ad0e26109decc39f123e5f1896784ee858ac0c64f9189006e12bd54ccd6f7612343#npm:1.3.55", {\
-          "packageLocation": "./.yarn/unplugged/@swc-core-virtual-b49da9cae7/node_modules/@swc/core/",\
+        ["virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55", {\
+          "packageLocation": "./.yarn/unplugged/@swc-core-virtual-3fea2d66e6/node_modules/@swc/core/",\
           "packageDependencies": [\
-            ["@swc/core", "virtual:4e50ce71a9b4e85c99cc6016ea0a23673feabaf776550d341a9bfbb56e298ad0e26109decc39f123e5f1896784ee858ac0c64f9189006e12bd54ccd6f7612343#npm:1.3.55"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
             ["@swc/core-darwin-arm64", "npm:1.3.55"],\
             ["@swc/core-darwin-x64", "npm:1.3.55"],\
             ["@swc/core-linux-arm-gnueabihf", "npm:1.3.55"],\
@@ -5528,12 +5538,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:4e50ce71a9b4e85c99cc6016ea0a23673feabaf776550d341a9bfbb56e298ad0e26109decc39f123e5f1896784ee858ac0c64f9189006e12bd54ccd6f7612343#npm:0.2.26", {\
-          "packageLocation": "./.yarn/__virtual__/@swc-jest-virtual-3333533bb9/0/cache/@swc-jest-npm-0.2.26-890d01518c-771821ed08.zip/node_modules/@swc/jest/",\
+        ["virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26", {\
+          "packageLocation": "./.yarn/__virtual__/@swc-jest-virtual-a2ea608ca5/0/cache/@swc-jest-npm-0.2.26-890d01518c-771821ed08.zip/node_modules/@swc/jest/",\
           "packageDependencies": [\
-            ["@swc/jest", "virtual:4e50ce71a9b4e85c99cc6016ea0a23673feabaf776550d341a9bfbb56e298ad0e26109decc39f123e5f1896784ee858ac0c64f9189006e12bd54ccd6f7612343#npm:0.2.26"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@jest/create-cache-key-function", "npm:27.5.1"],\
-            ["@swc/core", "virtual:4e50ce71a9b4e85c99cc6016ea0a23673feabaf776550d341a9bfbb56e298ad0e26109decc39f123e5f1896784ee858ac0c64f9189006e12bd54ccd6f7612343#npm:1.3.55"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
             ["@types/swc__core", null],\
             ["jsonc-parser", "npm:3.2.0"]\
           ],\
@@ -11307,7 +11317,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.7.13"],\
             ["@types/yargs", "npm:17.0.10"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.1"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
@@ -11829,6 +11839,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["esbuild-ignore-with-comments-plugin", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/esbuild", null],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
@@ -11849,6 +11861,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["esbuild-ignore-with-comments-plugin", "workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["esbuild", "npm:0.15.5"],\
@@ -11956,6 +11970,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["esbuild-ssr-css-modules-plugin", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#workspace:workspaces/utils/packages/esbuild-ssr-css-modules-plugin"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/esbuild", null],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
@@ -11966,7 +11982,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-modules-sync", "npm:1.0.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["sha256", "npm:0.2.0"],\
-            ["ts-jest", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "packagePeers": [\
@@ -11980,6 +11995,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["esbuild-ssr-css-modules-plugin", "workspace:workspaces/utils/packages/esbuild-ssr-css-modules-plugin"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["@types/sha256", "npm:0.2.0"],\
@@ -11989,7 +12006,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-modules-sync", "npm:1.0.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["sha256", "npm:0.2.0"],\
-            ["ts-jest", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -16899,12 +16915,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["lambda-compression", "workspace:workspaces/utils/packages/lambda-compression"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/aws-lambda", "npm:8.10.88"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -18437,6 +18454,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["node-css-require", "workspace:workspaces/utils/packages/node-css-require"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
             ["@swc-node/register", "virtual:417eda6db05d3785224e5cb2e62d425e52a4465dd629155f0b5562c3a073e5b0f338d801c109e19e9735d858ee32b796666deadccd691cf16a78108dfb6946d1#npm:1.5.1"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
@@ -18445,7 +18464,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss-modules", "virtual:417eda6db05d3785224e5cb2e62d425e52a4465dd629155f0b5562c3a073e5b0f338d801c109e19e9735d858ee32b796666deadccd691cf16a78108dfb6946d1#npm:5.0.0"],\
             ["postcss-modules-sync", "npm:1.0.0"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -22576,12 +22594,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["static-file-mapper", "workspace:workspaces/utils/packages/static-file-mapper"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/aws-lambda", "npm:8.10.88"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -22594,13 +22613,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["static-file-mapper-build", "workspace:workspaces/utils/packages/static-file-mapper-build"],\
             ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
             ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
+            ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.26"],\
             ["@types/aws-lambda", "npm:8.10.88"],\
             ["@types/jest", "npm:29.0.1"],\
             ["@types/node", "npm:18.7.13"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["static-file-mapper", "workspace:workspaces/utils/packages/static-file-mapper"],\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
           ],\
           "linkType": "SOFT"\
@@ -23951,10 +23971,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3", {\
-          "packageLocation": "./.yarn/__virtual__/ts-jest-virtual-648e4f3df0/0/cache/ts-jest-npm-29.0.3-c1e6bc8a8a-541e51776d.zip/node_modules/ts-jest/",\
+        ["virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3", {\
+          "packageLocation": "./.yarn/__virtual__/ts-jest-virtual-120bc5d66f/0/cache/ts-jest-npm-29.0.3-c1e6bc8a8a-541e51776d.zip/node_modules/ts-jest/",\
           "packageDependencies": [\
-            ["ts-jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.0.3"],\
+            ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["@babel/core", null],\
             ["@jest/types", null],\
             ["@types/babel-jest", null],\
@@ -24093,7 +24113,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["ts-node", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#npm:10.9.1"],\
             ["@cspotcode/source-map-support", "npm:0.8.1"],\
-            ["@swc/core", "virtual:4e50ce71a9b4e85c99cc6016ea0a23673feabaf776550d341a9bfbb56e298ad0e26109decc39f123e5f1896784ee858ac0c64f9189006e12bd54ccd6f7612343#npm:1.3.55"],\
+            ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.55"],\
             ["@swc/wasm", null],\
             ["@tsconfig/node10", "npm:1.0.8"],\
             ["@tsconfig/node12", "npm:1.0.9"],\

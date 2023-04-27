@@ -1392,6 +1392,8 @@ __metadata:
     "@goldstack/utils-git": 0.2.6
     "@goldstack/utils-log": 0.3.6
     "@goldstack/utils-sh": 0.5.6
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/minimatch": ^5.1.2
     "@types/node": ^18.7.13
@@ -1399,7 +1401,6 @@ __metadata:
     minimatch: ^5.1.0
     node-watch: ^0.6.4
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   bin:
     nodemonx: ./bin/utils-nodemonx
@@ -2648,11 +2649,12 @@ __metadata:
   resolution: "@goldstack/utils-cli@workspace:workspaces/utils/packages/utils-cli"
   dependencies:
     "@goldstack/utils-git": 0.2.6
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -2681,11 +2683,12 @@ __metadata:
   dependencies:
     "@goldstack/utils-git": 0.2.6
     "@goldstack/utils-sh": 0.5.6
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -2746,11 +2749,12 @@ __metadata:
   resolution: "@goldstack/utils-esbuild@workspace:workspaces/utils/packages/utils-esbuild"
   dependencies:
     "@goldstack/utils-git": 0.2.6
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -2759,6 +2763,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-git@workspace:workspaces/utils/packages/utils-git"
   dependencies:
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/command-exists": ^1
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -2766,7 +2772,6 @@ __metadata:
     jest: ^29.3.1
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   bin:
     utils-git: ./bin/utils-git
@@ -2780,6 +2785,8 @@ __metadata:
     "@goldstack/utils-git": 0.2.6
     "@goldstack/utils-log": 0.3.6
     "@goldstack/utils-sh": 0.5.6
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/replace-ext": ^0.0.27
@@ -2787,7 +2794,6 @@ __metadata:
     json-schema-to-typescript: ^9.1.1
     replace-ext: ^2.0.0
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   bin:
     utils-json-to-ts: ./bin/jsontots
@@ -2799,11 +2805,12 @@ __metadata:
   resolution: "@goldstack/utils-log@workspace:workspaces/utils/packages/utils-log"
   dependencies:
     "@goldstack/utils-git": 0.2.6
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -3078,13 +3085,14 @@ __metadata:
   resolution: "@goldstack/utils-track@workspace:workspaces/utils/packages/utils-track"
   dependencies:
     "@goldstack/utils-git": 0.2.6
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/react": ^18.0.15
     jest: ^29.3.1
     react: 18.2.0
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -3094,6 +3102,8 @@ __metadata:
   resolution: "@goldstack/utils-typescript-references@workspace:workspaces/utils/packages/utils-typescript-references"
   dependencies:
     "@goldstack/utils-git": 0.2.6
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/source-map-support": ^0.5.4
@@ -3101,7 +3111,6 @@ __metadata:
     jest: ^29.3.1
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
     yargs: ^17.5.1
   bin:
@@ -3116,11 +3125,12 @@ __metadata:
     "@goldstack/utils-docker": 0.4.6
     "@goldstack/utils-git": 0.2.6
     "@goldstack/utils-sh": 0.5.6
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -9651,6 +9661,8 @@ __metadata:
   resolution: "esbuild-ignore-with-comments-plugin@workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"
   dependencies:
     "@goldstack/utils-git": 0.2.6
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     esbuild: ^0.15.5
@@ -9738,6 +9750,8 @@ __metadata:
   resolution: "esbuild-ssr-css-modules-plugin@workspace:workspaces/utils/packages/esbuild-ssr-css-modules-plugin"
   dependencies:
     "@goldstack/utils-git": 0.2.6
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/sha256": ^0.2.0
@@ -9747,7 +9761,6 @@ __metadata:
     postcss-modules-sync: ^1.0.0
     rimraf: ^3.0.2
     sha256: ^0.2.0
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   peerDependencies:
     esbuild: ^0.15.5
@@ -14259,12 +14272,13 @@ fsevents@~2.1.2:
   resolution: "lambda-compression@workspace:workspaces/utils/packages/lambda-compression"
   dependencies:
     "@goldstack/utils-git": 0.2.6
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -15626,6 +15640,8 @@ fsevents@~2.1.2:
   dependencies:
     "@goldstack/utils-git": 0.2.6
     "@swc-node/register": ^1.5.1
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -15634,7 +15650,6 @@ fsevents@~2.1.2:
     postcss-modules: ^5.0.0
     postcss-modules-sync: ^1.0.0
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -19264,13 +19279,14 @@ resolve@^1.20.0:
   dependencies:
     "@goldstack/utils-git": 0.2.6
     "@goldstack/utils-sh": 0.5.6
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
     rimraf: ^3.0.2
     static-file-mapper: 0.3.8
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -19280,12 +19296,13 @@ resolve@^1.20.0:
   resolution: "static-file-mapper@workspace:workspaces/utils/packages/static-file-mapper"
   dependencies:
     "@goldstack/utils-git": 0.2.6
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
