@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-aws-lambda",
-  "version": "0.3.12",
+  "version": "0.3.13",
   "description": "Utilities for deploying AWS Lambda functions",
   "keywords": [
     "goldstack",
@@ -42,18 +42,18 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.4.9",
-    "@goldstack/utils-aws-cli": "0.4.9",
-    "@goldstack/utils-log": "0.3.6",
-    "@goldstack/utils-sh": "0.5.6",
+    "@goldstack/infra-aws": "0.4.10",
+    "@goldstack/utils-aws-cli": "0.4.10",
+    "@goldstack/utils-log": "0.3.7",
+    "@goldstack/utils-sh": "0.5.7",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "archiver": "^5.3.1",
     "aws-sdk": "^2.1222.0",
     "esbuild": "^0.15.5",
-    "esbuild-ssr-css-modules-plugin": "0.1.6"
+    "esbuild-ssr-css-modules-plugin": "0.1.7"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.6",
+    "@goldstack/utils-git": "0.2.7",
     "@types/aws-lambda": "^8.10.88",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-email-send",
-  "version": "0.4.10",
+  "version": "0.4.11",
   "description": "Utilities for packages that implement email sending using AWS SES",
   "keywords": [
     "goldstack",
@@ -41,20 +41,20 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.6",
-    "@goldstack/infra-aws": "0.4.9",
-    "@goldstack/utils-cli": "0.3.6",
-    "@goldstack/utils-esbuild": "0.5.6",
-    "@goldstack/utils-package": "0.4.6",
-    "@goldstack/utils-package-config-embedded": "0.5.7",
-    "@goldstack/utils-terraform": "0.4.9",
-    "@goldstack/utils-terraform-aws": "0.4.9",
+    "@goldstack/infra": "0.4.7",
+    "@goldstack/infra-aws": "0.4.10",
+    "@goldstack/utils-cli": "0.3.7",
+    "@goldstack/utils-esbuild": "0.5.7",
+    "@goldstack/utils-package": "0.4.7",
+    "@goldstack/utils-package-config-embedded": "0.5.8",
+    "@goldstack/utils-terraform": "0.4.10",
+    "@goldstack/utils-terraform-aws": "0.4.10",
     "aws-sdk": "^2.1222.0",
     "uuid": "^8.3.0"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.6",
-    "@goldstack/utils-package-config-generate": "0.3.6",
+    "@goldstack/utils-git": "0.2.7",
+    "@goldstack/utils-package-config-generate": "0.3.7",
     "@types/jest": "^29.0.1",
     "@types/mock-aws-s3": "^2.6.3",
     "@types/node": "^18.7.13",
