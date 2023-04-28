@@ -2,8 +2,6 @@
 resource "aws_s3_bucket" "website_root" {
   bucket = "${var.website_domain}-root"
 
-  acl = "public-read"
-
   # Remove this line if you want to prevent accidential deletion of bucket
   force_destroy = true
 
@@ -17,28 +15,38 @@ resource "aws_s3_bucket" "website_root" {
     Changed   = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   }
 
-  policy = <<EOF
-{
-  "Version": "2008-10-17",
-  "Statement": [
-    {
-      "Sid": "PublicReadForGetBucketObjects",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "*"
-      },
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::${var.website_domain}-root/*"
-    }
-  ]
-}
-EOF
 
   lifecycle {
     ignore_changes = [tags]
   }
 }
 
+resource "aws_s3_bucket_public_access_block" "website_root" {
+  bucket = aws_s3_bucket.website_root.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+resource "aws_s3_bucket_ownership_controls" "website_root" {
+  bucket = aws_s3_bucket.website_root.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+resource "aws_s3_bucket_acl" "website_root" {
+  depends_on = [
+	aws_s3_bucket_public_access_block.website_root,
+	aws_s3_bucket_ownership_controls.website_root,
+  ]
+
+  bucket = aws_s3_bucket.website_root.id
+  acl    = "public-read"
+
+}
 
 
 # Creates the CloudFront distribution to serve the static website
