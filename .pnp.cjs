@@ -4123,11 +4123,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:29.0.1"],\
             ["@types/json-stable-stringify", "npm:1.0.33"],\
             ["@types/node", "npm:18.7.13"],\
-            ["@types/prompt-sync", "npm:4.1.0"],\
             ["@types/yargs", "npm:17.0.10"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["json-stable-stringify", "npm:1.0.1"],\
-            ["prompt-sync", "npm:4.2.0"],\
             ["rimraf", "npm:3.0.2"],\
             ["ts-jest", "virtual:747dae2408cd65eb8dcc2da41dda6b74ff3adb04986d9f28e5712f539a937ecaa5c0b59f7c1416c1dd8a09639b7c641efc877cfd851136cc695a018a02dfeac2#npm:29.0.3"],\
             ["ts-json-schema-generator", "npm:1.0.0"],\
@@ -6331,15 +6329,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-prettier-npm-2.4.4-bab324963d-2c2cc57efd.zip/node_modules/@types/prettier/",\
           "packageDependencies": [\
             ["@types/prettier", "npm:2.4.4"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@types/prompt-sync", [\
-        ["npm:4.1.0", {\
-          "packageLocation": "./.yarn/cache/@types-prompt-sync-npm-4.1.0-5d6d03c0bb-e0cc3b3cdc.zip/node_modules/@types/prompt-sync/",\
-          "packageDependencies": [\
-            ["@types/prompt-sync", "npm:4.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -20109,16 +20098,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["promise-retry", "npm:2.0.1"],\
             ["err-code", "npm:2.0.3"],\
             ["retry", "npm:0.12.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["prompt-sync", [\
-        ["npm:4.2.0", {\
-          "packageLocation": "./.yarn/cache/prompt-sync-npm-4.2.0-1ce4e10166-b14dfb7d25.zip/node_modules/prompt-sync/",\
-          "packageDependencies": [\
-            ["prompt-sync", "npm:4.2.0"],\
-            ["strip-ansi", "npm:5.2.0"]\
           ],\
           "linkType": "HARD"\
         }]\

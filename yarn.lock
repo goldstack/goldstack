@@ -3067,11 +3067,9 @@ __metadata:
     "@types/jest": ^29.0.1
     "@types/json-stable-stringify": ^1
     "@types/node": ^18.7.13
-    "@types/prompt-sync": ^4.1.0
     "@types/yargs": ^17.0.10
     jest: ^29.3.1
     json-stable-stringify: ^1.0.1
-    prompt-sync: ^4.2.0
     rimraf: ^3.0.2
     ts-jest: ^29.0.3
     ts-json-schema-generator: ^1.0.0
@@ -4953,13 +4951,6 @@ __metadata:
   version: 2.4.4
   resolution: "@types/prettier@npm:2.4.4"
   checksum: 2c2cc57efd49c7d8907415a72f96c84a6dd8696dd3bf8aa4ca3a667427bebf71cbfbc912673624bdfc935d272d1c008c639cf155f6449315990a4dc110f0d216
-  languageName: node
-  linkType: hard
-
-"@types/prompt-sync@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "@types/prompt-sync@npm:4.1.0"
-  checksum: e0cc3b3cdc8e22262d28ad022f2ad2f68b08d18f11bc4880dffbfdc9647cf21fbf6b12205d186b164bd0b1fbe758ebe9ad3ede5a3f0595be23f243a0e03673c2
   languageName: node
   linkType: hard
 
@@ -17089,15 +17080,6 @@ fsevents@~2.1.2:
   dependencies:
     asap: ~2.0.6
   checksum: 89b71a56154ed7d66a73236d8e8351a9c59adddba3929ecc845f75421ff37fc08ea0c67ad76cd5c0b0d81812c7d07a32bed27e7df5fcc960c6d68b0c1cd771f7
-  languageName: node
-  linkType: hard
-
-"prompt-sync@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "prompt-sync@npm:4.2.0"
-  dependencies:
-    strip-ansi: ^5.0.0
-  checksum: b14dfb7d2520f384324b49a64c033e92cf2889e34a148037d66b0b89e43f530a93344aebf57c4abe3ae4e351080e22388f7141ea0fbc56b1b9a7f152d5d4a423
   languageName: node
   linkType: hard
 
