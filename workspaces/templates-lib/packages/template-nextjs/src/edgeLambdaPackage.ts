@@ -18,6 +18,7 @@ export const packageEdgeLambda = async (
     format: 'cjs',
     platform: 'node',
     target: 'node18',
+    bundle: true,
   });
   if (res.errors && res.errors.length > 0) {
     throw new Error(
