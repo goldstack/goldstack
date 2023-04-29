@@ -50,6 +50,12 @@ resource "aws_s3_bucket_acl" "website_root" {
 
 resource "aws_s3_bucket_policy" "website_root" {
   bucket = aws_s3_bucket.website_root.id
+
+  depends_on = [
+	  aws_s3_bucket_public_access_block.website_root,
+	  aws_s3_bucket_ownership_controls.website_root,
+  ]
+
   policy = data.aws_iam_policy_document.website_root.json
 }
 
