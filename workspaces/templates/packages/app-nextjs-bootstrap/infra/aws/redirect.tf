@@ -55,6 +55,29 @@ resource "aws_s3_bucket_acl" "website_redirect" {
 
 }
 
+resource "aws_s3_bucket_policy" "website_redirect" {
+  bucket = aws_s3_bucket.website_redirect.id
+  policy = data.aws_iam_policy_document.website_redirect.json
+}
+
+data "aws_iam_policy_document" "website_redirect" {
+  statement {
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]
+    }
+
+    actions = [
+      "s3:GetObject",
+    ]
+
+    resources = [ 
+      "arn:aws:s3:::${var.website_domain}-redirect/*"
+    ]
+  }
+}
+
+
 resource "aws_s3_bucket_object" "redirect_file" {
   count  = var.website_domain_redirect != null ? 1 : 0
 
@@ -67,6 +90,8 @@ resource "aws_s3_bucket_object" "redirect_file" {
 
   force_destroy = true
 }
+
+
 
 # CloudFront for redirect (to support https://)
 resource "aws_cloudfront_distribution" "website_cdn_redirect" {

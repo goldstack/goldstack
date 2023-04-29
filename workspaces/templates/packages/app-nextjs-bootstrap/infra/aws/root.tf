@@ -48,6 +48,28 @@ resource "aws_s3_bucket_acl" "website_root" {
 
 }
 
+resource "aws_s3_bucket_policy" "website_root" {
+  bucket = aws_s3_bucket.website_root.id
+  policy = data.aws_iam_policy_document.website_root.json
+}
+
+data "aws_iam_policy_document" "website_root" {
+  statement {
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]
+    }
+
+    actions = [
+      "s3:GetObject",
+    ]
+
+    resources = [ 
+      "arn:aws:s3:::${var.website_domain}-root/*"
+    ]
+  }
+}
+
 
 # Creates the CloudFront distribution to serve the static website
 resource "aws_cloudfront_distribution" "website_cdn_root" {
