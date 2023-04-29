@@ -46,8 +46,8 @@ resource "aws_s3_bucket_acl" "website_redirect" {
   count  = var.website_domain_redirect != null ? 1 : 0
 
   depends_on = [
-	aws_s3_bucket_public_access_block.website_redirect,
-	aws_s3_bucket_ownership_controls.website_redirect,
+	  aws_s3_bucket_public_access_block.website_redirect,
+	  aws_s3_bucket_ownership_controls.website_redirect,
   ]
 
   bucket = aws_s3_bucket.website_redirect[0].id
@@ -56,7 +56,14 @@ resource "aws_s3_bucket_acl" "website_redirect" {
 }
 
 resource "aws_s3_bucket_policy" "website_redirect" {
-  bucket = aws_s3_bucket.website_redirect.id
+  count  = var.website_domain_redirect != null ? 1 : 0
+
+  depends_on = [
+	  aws_s3_bucket_public_access_block.website_redirect,
+	  aws_s3_bucket_ownership_controls.website_redirect,
+  ]
+
+  bucket = aws_s3_bucket.website_redirect[0].id
   policy = data.aws_iam_policy_document.website_redirect.json
 }
 
