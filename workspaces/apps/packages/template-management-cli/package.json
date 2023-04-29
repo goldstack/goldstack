@@ -11,7 +11,6 @@
   "scripts": {
     "build": "yarn clean && yarn compile",
     "build-docker": "ts-node ./src/build.ts build $@",
-    "build:pack": "yarn compile && yarn webpack",
     "clean": "rimraf ./dist && yarn clean-docker",
     "clean-docker": "ts-node ./src/build.ts clean $@",
     "cli": "ts-node ./src/cli.ts",
@@ -60,12 +59,9 @@
     "aws-sdk": "^2.1222.0",
     "concurrently": "^7.3.0",
     "jest": "^29.3.1",
-    "pnp-webpack-plugin": "^1.6.4",
     "rimraf": "^3.0.2",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
-    "typescript": "^4.8.4",
-    "webpack": "4.43.0",
-    "webpack-cli": "3.3.12"
+    "typescript": "^4.8.4"
   }
 }

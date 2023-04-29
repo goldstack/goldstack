@@ -1,4 +1,3 @@
-import prompt from 'prompt-sync';
 import { fatal } from '@goldstack/utils-log';
 import { tf } from './terraformCli';
 import {
@@ -13,8 +12,12 @@ import {
   readPackageConfig,
   writePackageConfig,
 } from '@goldstack/utils-package';
+import child_process, {
+  SpawnSyncOptionsWithStringEncoding,
+} from 'child_process';
 import assert from 'assert';
 import fs from 'fs';
+import os from 'os';
 import crypto from 'crypto';
 import { writeDeploymentState, readDeploymentState } from '@goldstack/infra';
 
@@ -379,6 +382,28 @@ export class TerraformBuild {
     }
   };
 
+  private prompt = (message: string) => {
+    process.stdout.write(message);
+
+    let cmd: string;
+    let args: string[];
+    if (os.platform() == 'win32') {
+      cmd = 'cmd';
+      args = ['/V:ON', '/C', 'set /p response= && echo !response!'];
+    } else {
+      cmd = 'bash';
+      args = ['-c', 'read response; echo "$response"'];
+    }
+
+    const opts: SpawnSyncOptionsWithStringEncoding = {
+      stdio: ['inherit', 'pipe', 'inherit'],
+      shell: false,
+      encoding: 'utf-8',
+    };
+
+    return child_process.spawnSync(cmd, args, opts).stdout.toString().trim();
+  };
+
   destroy = (args: string[]): void => {
     const deployment = getDeployment(args);
     const version = this.getTfVersion(args);
@@ -387,7 +412,7 @@ export class TerraformBuild {
     try {
       const ciConfirmed = args.find((str) => str === '-y');
       if (!ciConfirmed) {
-        const value = prompt()(
+        const value = this.prompt(
           'Are you sure to destroy your deployed resources? If yes, please type `y` and enter.\n' +
             'Otherwise, press enter.\nYour Input: '
         );

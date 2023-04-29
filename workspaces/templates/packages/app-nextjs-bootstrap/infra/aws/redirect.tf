@@ -5,31 +5,12 @@ resource "aws_s3_bucket" "website_redirect" {
 
   bucket = "${var.website_domain}-redirect"
 
-  acl = "public-read"
-
   # Remove this line if you want to prevent accidential deletion of bucket
   force_destroy = true
 
   website {
     redirect_all_requests_to = "https://${var.website_domain}"
   }
-
-  policy = <<EOF
-{
-  "Version": "2008-10-17",
-  "Statement": [
-    {
-      "Sid": "PublicReadForGetBucketObjects",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "*"
-      },
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::${var.website_domain}-redirect/*"
-    }
-  ]
-}
-EOF
 
   tags = {
     ManagedBy = "terraform"
@@ -40,6 +21,69 @@ EOF
     ignore_changes = [tags]
   }
 }
+
+resource "aws_s3_bucket_public_access_block" "website_redirect" {
+  count  = var.website_domain_redirect != null ? 1 : 0
+
+  bucket = aws_s3_bucket.website_redirect[0].id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+resource "aws_s3_bucket_ownership_controls" "website_redirect" {
+  count  = var.website_domain_redirect != null ? 1 : 0
+
+  bucket = aws_s3_bucket.website_redirect[0].id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+resource "aws_s3_bucket_acl" "website_redirect" {
+  count  = var.website_domain_redirect != null ? 1 : 0
+
+  depends_on = [
+	  aws_s3_bucket_public_access_block.website_redirect,
+	  aws_s3_bucket_ownership_controls.website_redirect,
+  ]
+
+  bucket = aws_s3_bucket.website_redirect[0].id
+  acl    = "public-read"
+
+}
+
+resource "aws_s3_bucket_policy" "website_redirect" {
+  count  = var.website_domain_redirect != null ? 1 : 0
+
+  depends_on = [
+	  aws_s3_bucket_public_access_block.website_redirect,
+	  aws_s3_bucket_ownership_controls.website_redirect,
+  ]
+
+  bucket = aws_s3_bucket.website_redirect[0].id
+  policy = data.aws_iam_policy_document.website_redirect.json
+}
+
+data "aws_iam_policy_document" "website_redirect" {
+  statement {
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]
+    }
+
+    actions = [
+      "s3:GetObject",
+    ]
+
+    resources = [ 
+      "arn:aws:s3:::${var.website_domain}-redirect/*"
+    ]
+  }
+}
+
 
 resource "aws_s3_bucket_object" "redirect_file" {
   count  = var.website_domain_redirect != null ? 1 : 0
@@ -53,6 +97,8 @@ resource "aws_s3_bucket_object" "redirect_file" {
 
   force_destroy = true
 }
+
+
 
 # CloudFront for redirect (to support https://)
 resource "aws_cloudfront_distribution" "website_cdn_redirect" {
