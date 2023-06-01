@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const base = require('../../../templates/jest.config');
+const base = require('../../jest.config');
 
 module.exports = {
   ...base,
