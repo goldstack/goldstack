@@ -1,12 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const base = require('../../../templates/jest.config');
+const base = require('../../jest.config');
 
 module.exports = {
   ...base,
   resolver: require.resolve('jest-pnp-resolver'),
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.json',
-    },
-  },
 };
