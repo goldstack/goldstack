@@ -3,9 +3,4 @@ const base = require('../../../templates/jest.config');
 
 module.exports = {
   ...base,
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.json',
-    },
-  },
 };
