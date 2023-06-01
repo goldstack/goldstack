@@ -5,9 +5,4 @@ module.exports = {
   ...base,
   testEnvironment: 'jsdom',
   testRegex: '\\.uispec\\.tsx$',
-  globals: {
-    'ts-jest': {
-      tsConfig: 'tsconfig.ui.json',
-    },
-  },
 };
