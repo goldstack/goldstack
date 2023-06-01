@@ -6,10 +6,4 @@ module.exports = {
   coveragePathIgnorePatterns: ['/goldstackLocal/'],
   modulePathIgnorePatterns: ['/goldstackLocal/'],
   testPathIgnorePatterns: ['/goldstackLocal/'],
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.json',
-      packageJson: 'package.json',
-    },
-  },
 };

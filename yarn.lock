@@ -1112,6 +1112,8 @@ __metadata:
     "@goldstack/utils-project": 0.4.7
     "@goldstack/utils-sh": 0.5.7
     "@goldstack/utils-template": 0.4.7
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/archiver": ^3.1.0
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -1122,7 +1124,6 @@ __metadata:
     jest: ^29.3.1
     rimraf: ^3.0.2
     semver: ^7.3.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
     uuid: ^8.3.0
   languageName: unknown
@@ -1564,13 +1565,14 @@ __metadata:
     "@goldstack/utils-package": 0.4.7
     "@goldstack/utils-sh": 0.5.7
     "@goldstack/utils-template": 0.4.7
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/jsonpath": ^0.2.0
     "@types/node": ^18.7.13
     jest: ^29.3.1
     jsonpath: ^1.0.2
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     ts-json-schema-generator: ^1.0.0
     typescript: ^4.8.4
   languageName: unknown
@@ -1588,11 +1590,12 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.3.7
     "@goldstack/utils-sh": 0.5.7
     "@goldstack/utils-template": 0.4.7
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     ts-node: ^10.9.1
     typescript: ^4.8.4
   languageName: unknown
@@ -1610,12 +1613,13 @@ __metadata:
     "@goldstack/utils-project": 0.4.7
     "@goldstack/utils-sh": 0.5.7
     "@goldstack/utils-template-test": 0.1.0
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     extract-zip: ^2.0.1
     jest: ^29.3.1
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -1629,12 +1633,13 @@ __metadata:
     "@goldstack/utils-project": 0.4.7
     "@goldstack/utils-sh": 0.5.7
     "@goldstack/utils-template": 0.4.7
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
     rimraf: ^3.0.2
     temp-dir: ^2.0.0
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -1654,13 +1659,14 @@ __metadata:
     "@goldstack/utils-sh": 0.5.7
     "@goldstack/utils-template-test": 0.1.0
     "@goldstack/utils-yarn": 0.4.7
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     axios: 0.21.2
     jest: ^29.3.1
     rimraf: ^3.0.2
     temp-dir: ^2.0.0
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -1673,13 +1679,14 @@ __metadata:
     "@goldstack/template-s3-cli": 0.6.13
     "@goldstack/utils-git": 0.2.7
     "@goldstack/utils-sh": 0.5.7
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
     concurrently: ^7.3.0
     jest: ^29.3.1
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     ts-node: ^10.9.1
     typescript: ^4.8.4
   languageName: unknown
@@ -1693,13 +1700,14 @@ __metadata:
     "@goldstack/template-s3-cli": 0.6.13
     "@goldstack/utils-git": 0.2.7
     "@goldstack/utils-sh": 0.5.7
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
     concurrently: ^7.3.0
     jest: ^29.3.1
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     ts-node: ^10.9.1
     typescript: ^4.8.4
   languageName: unknown
@@ -1718,6 +1726,8 @@ __metadata:
     "@goldstack/utils-s3": 0.3.9
     "@goldstack/utils-sh": 0.5.7
     "@goldstack/utils-template": 0.4.7
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/archiver": ^3.1.0
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -1728,7 +1738,6 @@ __metadata:
     jest: ^29.3.1
     rimraf: ^3.0.2
     semver: ^7.3.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
     uuid: ^8.3.0
   languageName: unknown
@@ -1848,13 +1857,14 @@ __metadata:
     "@goldstack/template-s3-cli": 0.6.13
     "@goldstack/utils-git": 0.2.7
     "@goldstack/utils-sh": 0.5.7
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
     concurrently: ^7.3.0
     jest: ^29.3.1
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     ts-node: ^10.9.1
     typescript: ^4.8.4
   languageName: unknown
@@ -1868,6 +1878,8 @@ __metadata:
     "@goldstack/session-repository-bucket": 0.1.0
     "@goldstack/utils-s3": 0.3.9
     "@goldstack/utils-sh": 0.5.7
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/archiver": ^3.1.0
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -1879,7 +1891,6 @@ __metadata:
     jest: ^29.3.1
     rimraf: ^3.0.2
     stripe: ^8.114.0
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
     uuid: ^8.3.0
   languageName: unknown
@@ -1928,11 +1939,12 @@ __metadata:
     "@goldstack/utils-sh": 0.5.7
     "@goldstack/utils-template": 0.4.7
     "@goldstack/utils-template-test": 0.1.0
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     ts-json-schema-generator: ^1.0.0
     typescript: ^4.8.4
   languageName: unknown
@@ -1947,6 +1959,8 @@ __metadata:
     "@goldstack/template-repository": 0.1.0
     "@goldstack/utils-sh": 0.5.7
     "@goldstack/utils-template": 0.4.7
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/archiver": ^3.1.0
     "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
@@ -1955,7 +1969,6 @@ __metadata:
     jest: ^29.3.1
     mock-aws-s3: ^4.0.2
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -2336,13 +2349,14 @@ __metadata:
     "@goldstack/template-s3-cli": 0.6.13
     "@goldstack/utils-git": 0.2.7
     "@goldstack/utils-sh": 0.5.7
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
     concurrently: ^7.3.0
     jest: ^29.3.1
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     ts-node: ^10.9.1
     typescript: ^4.8.4
   languageName: unknown
@@ -2356,6 +2370,8 @@ __metadata:
     "@goldstack/utils-s3": 0.3.9
     "@goldstack/utils-sh": 0.5.7
     "@goldstack/utils-template": 0.4.7
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/archiver": ^3.1.0
     "@types/fs-extra": ^9.0.13
     "@types/jest": ^29.0.1
@@ -2366,7 +2382,6 @@ __metadata:
     jest: ^29.3.1
     rimraf: ^3.0.2
     semver: ^7.3.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -3177,6 +3192,8 @@ __metadata:
     "@goldstack/utils-sh": 0.5.7
     "@goldstack/utils-template": 0.4.7
     "@goldstack/utils-yarn": 0.4.7
+    "@swc/core": ^1.3.55
+    "@swc/jest": ^0.2.26
     "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
@@ -3185,7 +3202,6 @@ __metadata:
     jest: ^29.3.1
     mock-aws-s3: ^4.0.2
     rimraf: ^3.0.2
-    ts-jest: ^29.0.3
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft

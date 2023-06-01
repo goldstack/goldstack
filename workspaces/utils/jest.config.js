@@ -1,6 +1,7 @@
 module.exports = {
   testEnvironment: 'node',
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.ts$',
+  testPathIgnorePatterns: ['<rootDir>/dist/'],
   transform: {
     '^.+\\.(t|j)sx?$': '@swc/jest',
   },
