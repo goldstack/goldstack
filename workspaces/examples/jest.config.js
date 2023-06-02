@@ -1,5 +1,4 @@
 module.exports = {
-  preset: 'ts-jest',
   testEnvironment: 'node',
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.ts$',
   testPathIgnorePatterns: [
@@ -10,10 +9,8 @@ module.exports = {
     '/distLambda/',
     '.d.ts',
   ],
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.base.json',
-    },
+  transform: {
+    '^.+\\.(t|j)sx?$': '@swc/jest',
   },
   coverageThreshold: {
     global: {
