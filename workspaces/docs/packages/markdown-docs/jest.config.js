@@ -3,10 +3,4 @@ const base = require('./../../jest.config');
 
 module.exports = {
   ...base,
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.json',
-      packageJson: 'package.json',
-    },
-  },
 };
