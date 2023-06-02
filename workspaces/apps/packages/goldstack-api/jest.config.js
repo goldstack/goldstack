@@ -4,9 +4,4 @@ const base = require('./../../jest.config');
 module.exports = {
   ...base,
   testPathIgnorePatterns: ['<rootDir>/goldstackLocal/'],
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.json',
-    },
-  },
 };
