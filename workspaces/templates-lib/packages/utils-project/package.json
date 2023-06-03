@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-project",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "Utility for working with Goldstack project configurations.",
   "keywords": [
     "goldstack",
@@ -35,12 +35,12 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-config": "0.4.7",
-    "@goldstack/utils-sh": "0.5.7"
+    "@goldstack/utils-config": "0.4.8",
+    "@goldstack/utils-sh": "0.5.8"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.7",
-    "@goldstack/utils-json-to-ts": "0.4.7",
+    "@goldstack/utils-git": "0.2.8",
+    "@goldstack/utils-json-to-ts": "0.4.8",
     "@swc/core": "^1.3.55",
     "@swc/jest": "^0.2.26",
     "@types/jest": "^29.0.1",

@@ -1,6 +1,6 @@
 {
   "name": "lambda-compression",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "HTTP payload compression for AWS Lambda functions",
   "keywords": [
     "lambda",
@@ -38,7 +38,7 @@
     "@types/aws-lambda": "^8.10.88"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.7",
+    "@goldstack/utils-git": "0.2.8",
     "@swc/core": "^1.3.55",
     "@swc/jest": "^0.2.26",
     "@types/jest": "^29.0.1",
