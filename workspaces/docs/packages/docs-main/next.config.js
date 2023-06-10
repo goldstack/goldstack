@@ -4,7 +4,6 @@
 const getLocalPackages = require('./scripts/getLocalPackages');
 
 const localPackages = getLocalPackages.getLocalPackages();
-const withTM = require('next-transpile-modules')(localPackages);
 
 const nextConfig = {
   webpack: (config, options) => {
@@ -35,6 +34,7 @@ const nextConfig = {
   images: {
     disableStaticImages: true,
   },
+  transpilePackages: localPackages,
   async redirects() {
     return [
       {
@@ -81,9 +81,9 @@ const nextConfig = {
   },
 };
 
-const plugins = [withTM];
+const plugins = [];
 
-module.exports = (_phase, { defaultConfig }) => {
+module.exports = (_phase, {}) => {
   return plugins.reduce(
     (acc, plugin) => {
       if (Array.isArray(plugin)) {

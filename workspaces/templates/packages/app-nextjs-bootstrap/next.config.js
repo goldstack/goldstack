@@ -5,7 +5,7 @@
 const getLocalPackages = require('./scripts/getLocalPackages');
 
 const localPackages = getLocalPackages.getLocalPackages();
-const withTM = require('next-transpile-modules')(localPackages);
+
 const nextConfig = {
   webpack: (config, options) => {
     config.module.rules.push({
@@ -35,11 +35,12 @@ const nextConfig = {
   images: {
     disableStaticImages: true,
   },
+  transpilePackages: localPackages,
 };
 
-const plugins = [withTM];
+const plugins = [];
 
-module.exports = (_phase, { defaultConfig }) => {
+module.exports = (_phase, {}) => {
   return plugins.reduce(
     (acc, plugin) => {
       if (Array.isArray(plugin)) {
