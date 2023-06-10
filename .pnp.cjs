@@ -2045,7 +2045,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest-environment-jsdom", "npm:28.1.3"],\
             ["jest-transform-stub", "npm:2.0.0"],\
             ["next", "virtual:b28f6f2dcaa3de9aaf6c7d093d23c4c2c32e9cbea00ed9a5cf21e895c3e09ac7db18108871bf828a77a26ad19ff27d6b02e951ed326d7565e29513f7342ba4d9#npm:13.1.1"],\
-            ["next-transpile-modules", "npm:10.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
             ["react-is", "npm:18.2.0"],\
@@ -2082,7 +2081,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest-transform-stub", "npm:2.0.0"],\
             ["next", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:13.1.1"],\
             ["next-compose-plugins", "npm:2.2.1"],\
-            ["next-transpile-modules", "npm:10.0.0"],\
             ["node-sass", "npm:8.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-bootstrap", "virtual:13446954d6ed80c2be8e5fa2493d18a3cb791643ce58cb3e957e09100e1d3d7c00a33850dd7e09965dc92af488bb66195f2cf4a9dec7e959ce772f4497088f89#npm:2.2.1"],\
@@ -2200,7 +2198,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest-transform-stub", "npm:2.0.0"],\
             ["next", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:13.1.1"],\
             ["next-compose-plugins", "npm:2.2.1"],\
-            ["next-transpile-modules", "npm:10.0.0"],\
             ["node-sass", "npm:8.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-bootstrap", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:1.6.5"],\
@@ -2397,7 +2394,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jest-transform-stub", "npm:2.0.0"],\
             ["next", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:13.1.1"],\
             ["next-compose-plugins", "npm:2.2.1"],\
-            ["next-transpile-modules", "npm:10.0.0"],\
             ["node-sass", "npm:8.0.0"],\
             ["react", "npm:18.2.0"],\
             ["react-bootstrap", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:1.6.5"],\
@@ -10991,17 +10987,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["enhanced-resolve", [\
-        ["npm:5.12.0", {\
-          "packageLocation": "./.yarn/cache/enhanced-resolve-npm-5.12.0-c291ce4ee3-bf3f787fac.zip/node_modules/enhanced-resolve/",\
-          "packageDependencies": [\
-            ["enhanced-resolve", "npm:5.12.0"],\
-            ["graceful-fs", "npm:4.2.4"],\
-            ["tapable", "npm:2.2.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["entities", [\
         ["npm:1.0.0", {\
           "packageLocation": "./.yarn/cache/entities-npm-1.0.0-9c56bc335a-41b33ab98f.zip/node_modules/entities/",\
@@ -17417,16 +17402,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["next-transpile-modules", [\
-        ["npm:10.0.0", {\
-          "packageLocation": "./.yarn/cache/next-transpile-modules-npm-10.0.0-35632e5048-3300fc7081.zip/node_modules/next-transpile-modules/",\
-          "packageDependencies": [\
-            ["next-transpile-modules", "npm:10.0.0"],\
-            ["enhanced-resolve", "npm:5.12.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["node-css-require", [\
         ["workspace:workspaces/utils/packages/node-css-require", {\
           "packageLocation": "./workspaces/utils/packages/node-css-require/",\
@@ -21937,15 +21912,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lodash.padend", "npm:4.6.1"],\
             ["typical", "npm:2.6.1"],\
             ["wordwrapjs", "npm:3.0.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["tapable", [\
-        ["npm:2.2.1", {\
-          "packageLocation": "./.yarn/cache/tapable-npm-2.2.1-8cf5ff3039-3b7a1b4d86.zip/node_modules/tapable/",\
-          "packageDependencies": [\
-            ["tapable", "npm:2.2.1"]\
           ],\
           "linkType": "HARD"\
         }]\

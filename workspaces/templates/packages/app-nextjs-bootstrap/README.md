@@ -238,28 +238,6 @@ There may be other issues in various edge scenarios. If you come across these, [
 
 ## Troubleshooting and Frequently Asked Questions
 
-### Module parse failed: Unexpected Token
-
-If you receive an error like the following:
-
-    error - ../goldstack-api/src/module.ts
-    Module parse failed: Unexpected token (3:18)
-    You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
-
-Some additional configuration in `next.config.js` is required.
-
-Due to the way Webpack is configured for Next.js it is necessary to manually define all local dependencies in the Next.js config.
-
-Simply ensure the name of all local packages you want to use is listed for the [next-transpile-modules](https://www.npmjs.com/package/next-transpile-modules) plugin in the `next.config.js`.
-
-```javascript
-const withTM = require('next-transpile-modules')([
-  '@goldstack/utils-track',
-  '@goldstack/project-template-data',
-  '@goldstack/goldstack-api',
-]);
-```
-
 ### 404 Not found for files in public folder
 
 Next.js supports static file serving by [placing files into a public/ folder](https://nextjs.org/docs/basic-features/static-file-serving). This is useful for files such as `favicon.ico`. This module by default provides support for `favicon.ico` files but if you want to add other files, these may not be captured by the [CloudFront behaviours configured in Terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution#cache-behavior-arguments).
