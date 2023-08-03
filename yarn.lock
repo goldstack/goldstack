@@ -1040,8 +1040,8 @@ __metadata:
   dependencies:
     "@goldstack/template-nextjs": 0.5.17
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.3.0
     "@types/jest": ^29.0.1
@@ -1076,8 +1076,8 @@ __metadata:
   dependencies:
     "@goldstack/template-nextjs": 0.5.17
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.3.0
     "@types/jest": ^29.0.1
@@ -1112,8 +1112,8 @@ __metadata:
     "@goldstack/utils-project": 0.4.9
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template": 0.4.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/archiver": ^3.1.0
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -1135,8 +1135,8 @@ __metadata:
   dependencies:
     "@goldstack/template-static-website-aws": 0.5.14
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     concurrently: ^7.3.0
@@ -1156,8 +1156,8 @@ __metadata:
     "@goldstack/template-docker-image-aws": 0.5.14
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     concurrently: ^7.3.0
@@ -1178,8 +1178,8 @@ __metadata:
     "@goldstack/toc-generator": 0.1.0
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-track": 0.2.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.3.0
     "@types/cheerio": ^0.22.31
@@ -1220,8 +1220,8 @@ __metadata:
     "@aws-sdk/util-dynamodb": ^3.87.0
     "@goldstack/template-dynamodb": 0.2.21
     "@goldstack/template-dynamodb-cli": 0.5.22
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/ejs": ^3
     "@types/jest": ^29.0.1
     "@types/memoizee": ^0
@@ -1248,8 +1248,8 @@ __metadata:
     "@goldstack/template-email-send-cli": 0.5.14
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
@@ -1283,8 +1283,8 @@ __metadata:
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-template-test": 0.1.0
     "@jest-mock/express": ^1.4.5
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/aws-serverless-express": ^3.3.3
     "@types/cookie-parser": ^1.4.2
     "@types/cors": ^2.8.12
@@ -1329,8 +1329,8 @@ __metadata:
     "@goldstack/template-email-send-cli": 0.5.14
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
@@ -1361,8 +1361,8 @@ __metadata:
     "@rjsf/bootstrap-4": ^2.4.0
     "@rjsf/core": 2.4.2
     "@stripe/stripe-js": ^1.10.0
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.3.0
     "@types/jest": ^29.0.1
@@ -1410,8 +1410,8 @@ __metadata:
     "@goldstack/utils-log": 0.3.9
     "@goldstack/utils-package": 0.4.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
@@ -1433,8 +1433,8 @@ __metadata:
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-log": 0.3.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -1452,8 +1452,8 @@ __metadata:
     "@goldstack/template-lambda-express": 0.5.17
     "@goldstack/utils-esbuild": 0.5.9
     "@jest-mock/express": ^1.4.5
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/aws-serverless-express": ^3.3.3
     "@types/express": ^4.17.13
     "@types/helmet": ^4.0.0
@@ -1481,8 +1481,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/library@workspace:workspaces/templates/packages/library"
   dependencies:
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -1498,8 +1498,8 @@ __metadata:
     "@goldstack/utils-cli": 0.3.9
     "@goldstack/utils-docs": 0.4.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
@@ -1520,8 +1520,8 @@ __metadata:
     "@goldstack/module-template-utils": 0.1.0
     "@goldstack/utils-docs-cli": 0.3.11
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -1536,8 +1536,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/module-template-utils@workspace:workspaces/templates/packages/module-template-utils"
   dependencies:
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -1553,8 +1553,8 @@ __metadata:
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-log": 0.3.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/minimatch": ^5.1.2
     "@types/node": ^18.7.13
@@ -1576,8 +1576,8 @@ __metadata:
     "@goldstack/utils-package": 0.4.9
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template": 0.4.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/jsonpath": ^0.2.0
     "@types/node": ^18.7.13
@@ -1601,8 +1601,8 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.3.9
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template": 0.4.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -1624,8 +1624,8 @@ __metadata:
     "@goldstack/utils-project": 0.4.9
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template-test": 0.1.0
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     extract-zip: ^2.0.1
@@ -1644,8 +1644,8 @@ __metadata:
     "@goldstack/utils-project": 0.4.9
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template": 0.4.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -1670,8 +1670,8 @@ __metadata:
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template-test": 0.1.0
     "@goldstack/utils-yarn": 0.4.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     axios: 0.21.2
@@ -1690,8 +1690,8 @@ __metadata:
     "@goldstack/template-s3-cli": 0.6.15
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
@@ -1711,8 +1711,8 @@ __metadata:
     "@goldstack/template-s3-cli": 0.6.15
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
@@ -1737,8 +1737,8 @@ __metadata:
     "@goldstack/utils-s3": 0.3.11
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template": 0.4.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/archiver": ^3.1.0
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -1760,8 +1760,8 @@ __metadata:
   dependencies:
     "@goldstack/template-s3": 0.4.14
     "@goldstack/template-s3-cli": 0.6.15
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
@@ -1777,6 +1777,7 @@ __metadata:
   resolution: "@goldstack/server-go@workspace:workspaces/templates/packages/lambda-go-gin"
   dependencies:
     "@goldstack/template-lambda-express": 0.5.17
+    "@swc/core": ^1.3.74
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     nodemon: ^2.0.20
@@ -1794,8 +1795,8 @@ __metadata:
     "@goldstack/utils-esbuild": 0.5.9
     "@jest-mock/express": ^1.4.5
     "@jest/transform": ^29.3.1
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.3.0
     "@types/aws-lambda": ^8.10.88
@@ -1839,8 +1840,8 @@ __metadata:
     "@goldstack/utils-aws-http-api-local": 0.3.23
     "@goldstack/utils-esbuild": 0.5.9
     "@jest-mock/express": ^1.4.5
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/aws-lambda": ^8.10.88
     "@types/aws-serverless-express": ^3.3.3
     "@types/jest": ^29.0.1
@@ -1869,8 +1870,8 @@ __metadata:
     "@goldstack/template-s3-cli": 0.6.15
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
@@ -1890,8 +1891,8 @@ __metadata:
     "@goldstack/session-repository-bucket": 0.1.0
     "@goldstack/utils-s3": 0.3.11
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/archiver": ^3.1.0
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -1913,8 +1914,8 @@ __metadata:
   resolution: "@goldstack/static-website-aws@workspace:workspaces/templates/packages/static-website-aws"
   dependencies:
     "@goldstack/template-static-website-aws": 0.5.14
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/gulp": ^4.0.7
     "@types/gulp-changed": ^0.0.33
     "@types/gulp-replace": ^0.0.31
@@ -1952,8 +1953,8 @@ __metadata:
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-template-test": 0.1.0
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -1972,8 +1973,8 @@ __metadata:
     "@goldstack/template-repository": 0.1.0
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template": 0.4.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/archiver": ^3.1.0
     "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
@@ -2006,8 +2007,8 @@ __metadata:
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-terraform": 0.4.13
     "@goldstack/utils-terraform-aws": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/source-map-support": ^0.5.4
@@ -2039,8 +2040,8 @@ __metadata:
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-terraform": 0.4.13
     "@goldstack/utils-terraform-aws": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
@@ -2072,8 +2073,8 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.3.9
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-terraform": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/tcp-port-used": ^1
@@ -2101,8 +2102,8 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.3.9
     "@goldstack/utils-terraform": 0.4.13
     "@goldstack/utils-terraform-aws": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
@@ -2132,8 +2133,8 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.3.9
     "@goldstack/utils-terraform": 0.4.13
     "@goldstack/utils-terraform-aws": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
@@ -2169,8 +2170,8 @@ __metadata:
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-terraform": 0.4.13
     "@goldstack/utils-terraform-aws": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -2201,8 +2202,8 @@ __metadata:
     "@goldstack/utils-package": 0.4.9
     "@goldstack/utils-package-config-generate": 0.3.9
     "@goldstack/utils-terraform": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -2238,8 +2239,8 @@ __metadata:
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-terraform": 0.4.13
     "@goldstack/utils-terraform-aws": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
@@ -2278,8 +2279,8 @@ __metadata:
     "@goldstack/utils-package": 0.4.9
     "@goldstack/utils-project": 0.4.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
@@ -2305,8 +2306,8 @@ __metadata:
   dependencies:
     "@goldstack/template-build-set": 0.1.0
     "@goldstack/utils-project": 0.4.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -2335,8 +2336,8 @@ __metadata:
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-terraform": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/glob": ^7.1.3
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -2364,8 +2365,8 @@ __metadata:
     "@goldstack/template-s3-cli": 0.6.15
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
@@ -2385,8 +2386,8 @@ __metadata:
     "@goldstack/utils-s3": 0.3.11
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template": 0.4.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/archiver": ^3.1.0
     "@types/fs-extra": ^9.0.13
     "@types/jest": ^29.0.1
@@ -2419,8 +2420,8 @@ __metadata:
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-terraform": 0.4.13
     "@goldstack/utils-terraform-aws": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
@@ -2452,8 +2453,8 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.3.9
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-terraform": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
@@ -2491,8 +2492,8 @@ __metadata:
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-terraform": 0.4.13
     "@goldstack/utils-terraform-aws": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/minimatch": ^5.1.2
     "@types/node": ^18.7.13
@@ -2523,8 +2524,8 @@ __metadata:
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-terraform": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -2561,8 +2562,8 @@ __metadata:
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-terraform": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -2597,8 +2598,8 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.3.9
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-terraform": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -2634,8 +2635,8 @@ __metadata:
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-terraform": 0.4.13
     "@goldstack/utils-terraform-aws": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
@@ -2665,8 +2666,8 @@ __metadata:
     "@goldstack/utils-project": 0.4.9
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template-test": 0.1.0
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -2692,8 +2693,8 @@ __metadata:
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-terraform": 0.4.13
     "@goldstack/utils-terraform-aws": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
@@ -2724,8 +2725,8 @@ __metadata:
     "@goldstack/utils-package-config-generate": 0.3.9
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-terraform": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
@@ -2743,8 +2744,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/toc-generator@workspace:workspaces/docs/packages/toc-generator"
   dependencies:
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/cheerio": ^0.22.31
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -2761,8 +2762,8 @@ __metadata:
   dependencies:
     "@goldstack/template-user-management": 0.1.11
     "@goldstack/template-user-management-cli": 0.1.11
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
@@ -2782,8 +2783,8 @@ __metadata:
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-log": 0.3.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
@@ -2799,8 +2800,8 @@ __metadata:
   dependencies:
     "@goldstack/utils-aws-lambda": 0.3.16
     "@goldstack/utils-git": 0.2.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/aws-lambda": ^8.10.88
     "@types/cookie": ^0
     "@types/express": ^4.17.13
@@ -2827,8 +2828,8 @@ __metadata:
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-log": 0.3.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -2848,8 +2849,8 @@ __metadata:
   resolution: "@goldstack/utils-cli@workspace:workspaces/utils/packages/utils-cli"
   dependencies:
     "@goldstack/utils-git": 0.2.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -2865,8 +2866,8 @@ __metadata:
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-log": 0.3.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     ajv: ^6.12.2
@@ -2883,8 +2884,8 @@ __metadata:
   dependencies:
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -2901,8 +2902,8 @@ __metadata:
     "@goldstack/utils-docs": 0.4.9
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
@@ -2923,8 +2924,8 @@ __metadata:
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-sh": 0.5.9
     "@mapbox/rehype-prism": 0.3.1
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     github-slugger: 1.2.0
@@ -2951,8 +2952,8 @@ __metadata:
   resolution: "@goldstack/utils-esbuild@workspace:workspaces/utils/packages/utils-esbuild"
   dependencies:
     "@goldstack/utils-git": 0.2.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -2965,8 +2966,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-git@workspace:workspaces/utils/packages/utils-git"
   dependencies:
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/command-exists": ^1
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -2987,8 +2988,8 @@ __metadata:
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-log": 0.3.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/replace-ext": ^0.0.27
@@ -3007,8 +3008,8 @@ __metadata:
   resolution: "@goldstack/utils-log@workspace:workspaces/utils/packages/utils-log"
   dependencies:
     "@goldstack/utils-git": 0.2.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -3025,8 +3026,8 @@ __metadata:
     "@goldstack/utils-config": 0.4.9
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-package": 0.4.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -3040,8 +3041,8 @@ __metadata:
   resolution: "@goldstack/utils-package-config-generate@workspace:workspaces/templates-lib/packages/utils-package-config-generate"
   dependencies:
     "@goldstack/utils-git": 0.2.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
@@ -3065,8 +3066,8 @@ __metadata:
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-package": 0.4.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -3083,8 +3084,8 @@ __metadata:
     "@goldstack/utils-log": 0.3.9
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template": 0.4.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -3101,8 +3102,8 @@ __metadata:
     "@goldstack/utils-config": 0.4.9
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
@@ -3123,8 +3124,8 @@ __metadata:
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-json-to-ts": 0.4.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -3144,8 +3145,8 @@ __metadata:
     "@goldstack/utils-docker": 0.4.9
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -3159,8 +3160,8 @@ __metadata:
   resolution: "@goldstack/utils-s3@workspace:workspaces/templates-lib/packages/utils-s3"
   dependencies:
     "@goldstack/utils-git": 0.2.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
@@ -3176,8 +3177,8 @@ __metadata:
   dependencies:
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-log": 0.3.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/archiver": ^3.1.0
     "@types/command-exists": ^1
     "@types/fs-extra": ^9.0.13
@@ -3211,8 +3212,8 @@ __metadata:
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-template": 0.4.9
     "@goldstack/utils-yarn": 0.4.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
@@ -3233,8 +3234,8 @@ __metadata:
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-json-to-ts": 0.4.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -3254,8 +3255,8 @@ __metadata:
     "@goldstack/utils-package": 0.4.9
     "@goldstack/utils-sh": 0.5.9
     "@goldstack/utils-terraform": 0.4.13
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     aws-sdk: ^2.1222.0
@@ -3277,8 +3278,8 @@ __metadata:
     "@goldstack/utils-log": 0.3.9
     "@goldstack/utils-package": 0.4.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/json-stable-stringify": ^1
     "@types/node": ^18.7.13
@@ -3297,8 +3298,8 @@ __metadata:
   resolution: "@goldstack/utils-track@workspace:workspaces/utils/packages/utils-track"
   dependencies:
     "@goldstack/utils-git": 0.2.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/react": ^18.0.15
@@ -3314,8 +3315,8 @@ __metadata:
   resolution: "@goldstack/utils-typescript-references@workspace:workspaces/utils/packages/utils-typescript-references"
   dependencies:
     "@goldstack/utils-git": 0.2.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/source-map-support": ^0.5.4
@@ -3337,8 +3338,8 @@ __metadata:
     "@goldstack/utils-docker": 0.4.9
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -4243,9 +4244,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-arm64@npm:1.3.55":
-  version: 1.3.55
-  resolution: "@swc/core-darwin-arm64@npm:1.3.55"
+"@swc/core-darwin-arm64@npm:1.3.74":
+  version: 1.3.74
+  resolution: "@swc/core-darwin-arm64@npm:1.3.74"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
@@ -4257,9 +4258,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-x64@npm:1.3.55":
-  version: 1.3.55
-  resolution: "@swc/core-darwin-x64@npm:1.3.55"
+"@swc/core-darwin-x64@npm:1.3.74":
+  version: 1.3.74
+  resolution: "@swc/core-darwin-x64@npm:1.3.74"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
@@ -4278,9 +4279,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm-gnueabihf@npm:1.3.55":
-  version: 1.3.55
-  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.3.55"
+"@swc/core-linux-arm-gnueabihf@npm:1.3.74":
+  version: 1.3.74
+  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.3.74"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
@@ -4292,9 +4293,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-gnu@npm:1.3.55":
-  version: 1.3.55
-  resolution: "@swc/core-linux-arm64-gnu@npm:1.3.55"
+"@swc/core-linux-arm64-gnu@npm:1.3.74":
+  version: 1.3.74
+  resolution: "@swc/core-linux-arm64-gnu@npm:1.3.74"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
@@ -4306,9 +4307,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-musl@npm:1.3.55":
-  version: 1.3.55
-  resolution: "@swc/core-linux-arm64-musl@npm:1.3.55"
+"@swc/core-linux-arm64-musl@npm:1.3.74":
+  version: 1.3.74
+  resolution: "@swc/core-linux-arm64-musl@npm:1.3.74"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
@@ -4320,9 +4321,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-gnu@npm:1.3.55":
-  version: 1.3.55
-  resolution: "@swc/core-linux-x64-gnu@npm:1.3.55"
+"@swc/core-linux-x64-gnu@npm:1.3.74":
+  version: 1.3.74
+  resolution: "@swc/core-linux-x64-gnu@npm:1.3.74"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
@@ -4334,9 +4335,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-musl@npm:1.3.55":
-  version: 1.3.55
-  resolution: "@swc/core-linux-x64-musl@npm:1.3.55"
+"@swc/core-linux-x64-musl@npm:1.3.74":
+  version: 1.3.74
+  resolution: "@swc/core-linux-x64-musl@npm:1.3.74"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
@@ -4348,9 +4349,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-win32-arm64-msvc@npm:1.3.55":
-  version: 1.3.55
-  resolution: "@swc/core-win32-arm64-msvc@npm:1.3.55"
+"@swc/core-win32-arm64-msvc@npm:1.3.74":
+  version: 1.3.74
+  resolution: "@swc/core-win32-arm64-msvc@npm:1.3.74"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
@@ -4362,9 +4363,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-win32-ia32-msvc@npm:1.3.55":
-  version: 1.3.55
-  resolution: "@swc/core-win32-ia32-msvc@npm:1.3.55"
+"@swc/core-win32-ia32-msvc@npm:1.3.74":
+  version: 1.3.74
+  resolution: "@swc/core-win32-ia32-msvc@npm:1.3.74"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
@@ -4376,9 +4377,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-win32-x64-msvc@npm:1.3.55":
-  version: 1.3.55
-  resolution: "@swc/core-win32-x64-msvc@npm:1.3.55"
+"@swc/core-win32-x64-msvc@npm:1.3.74":
+  version: 1.3.74
+  resolution: "@swc/core-win32-x64-msvc@npm:1.3.74"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -4433,20 +4434,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core@npm:^1.3.55":
-  version: 1.3.55
-  resolution: "@swc/core@npm:1.3.55"
+"@swc/core@npm:^1.3.74":
+  version: 1.3.74
+  resolution: "@swc/core@npm:1.3.74"
   dependencies:
-    "@swc/core-darwin-arm64": 1.3.55
-    "@swc/core-darwin-x64": 1.3.55
-    "@swc/core-linux-arm-gnueabihf": 1.3.55
-    "@swc/core-linux-arm64-gnu": 1.3.55
-    "@swc/core-linux-arm64-musl": 1.3.55
-    "@swc/core-linux-x64-gnu": 1.3.55
-    "@swc/core-linux-x64-musl": 1.3.55
-    "@swc/core-win32-arm64-msvc": 1.3.55
-    "@swc/core-win32-ia32-msvc": 1.3.55
-    "@swc/core-win32-x64-msvc": 1.3.55
+    "@swc/core-darwin-arm64": 1.3.74
+    "@swc/core-darwin-x64": 1.3.74
+    "@swc/core-linux-arm-gnueabihf": 1.3.74
+    "@swc/core-linux-arm64-gnu": 1.3.74
+    "@swc/core-linux-arm64-musl": 1.3.74
+    "@swc/core-linux-x64-gnu": 1.3.74
+    "@swc/core-linux-x64-musl": 1.3.74
+    "@swc/core-win32-arm64-msvc": 1.3.74
+    "@swc/core-win32-ia32-msvc": 1.3.74
+    "@swc/core-win32-x64-msvc": 1.3.74
   peerDependencies:
     "@swc/helpers": ^0.5.0
   dependenciesMeta:
@@ -4473,7 +4474,7 @@ __metadata:
   peerDependenciesMeta:
     "@swc/helpers":
       optional: true
-  checksum: e8ae32e21e78761597b802bd76bb5f0d819441454c4cc5624c077dfa8cf84760eb589e4a1eb6fdc1b1ec65a4b03f7ab42413952b38234f5c13b8b2afb4d453f4
+  checksum: fd61d65fbfceb372178a14cfa998c649481a728e33b68bad90fed0ff05b34fb432f88dafb0c2257d54c4de49cdcdd12d2b5fe66f79abc553656445910f163adb
   languageName: node
   linkType: hard
 
@@ -4486,15 +4487,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/jest@npm:^0.2.26":
-  version: 0.2.26
-  resolution: "@swc/jest@npm:0.2.26"
+"@swc/jest@npm:^0.2.27":
+  version: 0.2.27
+  resolution: "@swc/jest@npm:0.2.27"
   dependencies:
     "@jest/create-cache-key-function": ^27.4.2
     jsonc-parser: ^3.2.0
   peerDependencies:
     "@swc/core": "*"
-  checksum: 771821ed08cf168ca0b6307dee7689253d0af0685acd08408ac431860a7c42ace892db2cb6bb6dcfe297edbdce0f2e22d44ed4ed72d1c621be9e841cffd408a0
+  checksum: db258e13f9eb9441d4d924684452939fb49016a4a2eaf7700cbf5eb4f90dff96bb7ce240ed539adbcd41b45fe62bacdc1d3f3d995403af44d54501b41f1ec72f
   languageName: node
   linkType: hard
 
@@ -8764,8 +8765,8 @@ __metadata:
   resolution: "dynamodb-client@workspace:workspaces/examples/packages/dynamodb-client"
   dependencies:
     "@goldstack/dynamodb": "workspace:^"
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
@@ -9125,8 +9126,8 @@ __metadata:
   resolution: "esbuild-ignore-with-comments-plugin@workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"
   dependencies:
     "@goldstack/utils-git": 0.2.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     esbuild: ^0.17.18
@@ -9143,8 +9144,8 @@ __metadata:
   resolution: "esbuild-ssr-css-modules-plugin@workspace:workspaces/utils/packages/esbuild-ssr-css-modules-plugin"
   dependencies:
     "@goldstack/utils-git": 0.2.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/sha256": ^0.2.0
@@ -13448,8 +13449,8 @@ fsevents@~2.1.2:
   resolution: "lambda-compression@workspace:workspaces/utils/packages/lambda-compression"
   dependencies:
     "@goldstack/utils-git": 0.2.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -14685,8 +14686,8 @@ fsevents@~2.1.2:
   dependencies:
     "@goldstack/utils-git": 0.2.9
     "@swc-node/register": ^1.5.1
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     jest: ^29.3.1
@@ -17968,8 +17969,8 @@ resolve@^1.20.0:
   dependencies:
     "@goldstack/utils-git": 0.2.9
     "@goldstack/utils-sh": 0.5.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
@@ -17985,8 +17986,8 @@ resolve@^1.20.0:
   resolution: "static-file-mapper@workspace:workspaces/utils/packages/static-file-mapper"
   dependencies:
     "@goldstack/utils-git": 0.2.9
-    "@swc/core": ^1.3.55
-    "@swc/jest": ^0.2.26
+    "@swc/core": ^1.3.74
+    "@swc/jest": ^0.2.27
     "@types/aws-lambda": ^8.10.88
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
