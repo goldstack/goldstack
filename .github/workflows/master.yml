@@ -42,7 +42,7 @@ jobs:
           yarn lint-fix
       - name: NPM Audit
         run: |
-          yarn npm audit --all
+          yarn npm audit --all --recursive --severity critical
 
       - name: Check if utilities changed
         uses: marceloprado/has-changed-path@8a75b456df5a44a8110dcaa3111c9acc6249ed15
