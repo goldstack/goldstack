@@ -5,11 +5,11 @@ build({
   plugins: [pnpPlugin()],
   bundle: true,
   entryPoints: ['src/lambda.ts'],
-  external: ['aws-sdk'],
+  external: ['aws-sdk', 'mock-aws-s3', 'testcontainers'], // mock-aws-s3 from s3 template, testcontainers from dynamodb template],
   minify: true,
   format: 'cjs',
   platform: 'node',
-  target: 'node12.0',
+  target: 'node16.0',
   sourcemap: true,
   outfile: 'distLambda/lambda.js',
 }).catch((e) => {

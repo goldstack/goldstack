@@ -15,7 +15,8 @@
         "goldstackWorkdir": "/tmp/",
         "stripeApiKey": ""
       },
-      "tfStateKey": "goldstack-api-dev-060f0ca6440485658cfc.tfstate"
+      "tfStateKey": "goldstack-api-dev-060f0ca6440485658cfc.tfstate",
+      "tfVersion": "1.1"
     },
     {
       "name": "prod",
@@ -29,7 +30,8 @@
         "goldstackWorkdir": "/tmp/",
         "stripeApiKey": ""
       },
-      "tfStateKey": "goldstack-api-prod-9c1fbe2ecc5fe14060c4.tfstate"
+      "tfStateKey": "goldstack-api-prod-9c1fbe2ecc5fe14060c4.tfstate",
+      "tfVersion": "1.1"
     }
   ],
   "templateVersion": "0.1.0",

@@ -1,12 +1,12 @@
 import { awsCli } from '@goldstack/utils-aws-cli';
 import { zip, rmSafe } from '@goldstack/utils-sh';
 
-import AWS from 'aws-sdk';
+import { Credentials } from 'aws-sdk';
 
 export interface DeployFunctionParams {
   lambdaPackageDir: string;
   targetArchiveName?: string;
-  awsCredentials: AWS.Credentials;
+  awsCredentials: Credentials;
   region: string;
   functionName: string;
 }
