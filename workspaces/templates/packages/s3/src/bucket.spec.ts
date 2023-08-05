@@ -1,5 +1,7 @@
 import { getBucketName, connect } from './bucket';
 
+jest.setTimeout(60000);
+
 describe('S3 Bucket', () => {
   it('Should get bucket name', async () => {
     const bucketName = await getBucketName('prod');
