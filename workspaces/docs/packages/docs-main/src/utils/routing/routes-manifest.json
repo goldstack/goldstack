@@ -206,8 +206,8 @@
       "routeKeys": {
         "slug": "slug"
       },
-      "dataRouteRegex": "^/_next/data/k950w6Ra_ihKvOiInY1os/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/k950w6Ra_ihKvOiInY1os/docs/(?<slug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/ZRpvjX2VhqilTzsJItNCu/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/ZRpvjX2VhqilTzsJItNCu/docs/(?<slug>.+?)\\.json$"
     }
   ],
   "rsc": {
