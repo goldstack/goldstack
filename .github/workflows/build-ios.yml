@@ -7,9 +7,13 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
-      - run:
-        - cd workspaces/templates/mobile/ios/App 
-        - fastlane beta
-        env:
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          working-directory: workspaces/templates/mobile/ios/App
+          bundler-cache: true
+      - uses: maierj/fastlane-action@v3.0.0
+        with:
+          subdirectory: workspaces/templates/mobile/ios/App
+          lane: 'beta'
