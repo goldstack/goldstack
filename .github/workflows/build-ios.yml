@@ -2,7 +2,7 @@ name: build-ios-app
 on:
   push:
     branches:
-      - 'master'
+      - 'explore-capacitor'
 jobs:
   build:
     runs-on: macos-latest
