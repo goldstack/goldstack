@@ -1,8 +1,0 @@
-platform :ios do
-  lane :beta do
-    setup_ci if ENV['CI']
-    match(type: 'appstore')
-    build_app
-    # upload_to_testflight(skip_waiting_for_build_processing: true)
-  end
-end
