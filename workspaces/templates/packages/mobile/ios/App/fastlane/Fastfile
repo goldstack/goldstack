@@ -22,7 +22,7 @@ platform :ios do
       scheme: "App",
       configuration: "Debug",
       sdk: 'iphonesimulator',
-      destination: 'platform=iOS Simulator,OS=9.3,name=iPhone 6',
+      destination: 'platform=iOS Simulator,OS=16.2,name=iPhone 11',
       analyze: true
     )
   end
