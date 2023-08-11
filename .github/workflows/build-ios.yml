@@ -16,4 +16,4 @@ jobs:
       - uses: maierj/fastlane-action@v3.0.0
         with:
           subdirectory: workspaces/templates/packages/mobile/ios/App
-          lane: 'beta'
+          lane: 'analyse'

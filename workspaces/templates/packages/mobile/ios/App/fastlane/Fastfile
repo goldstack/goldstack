@@ -12,15 +12,25 @@
 
 opt_out_usage
 
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
-
 default_platform(:ios)
 
 platform :ios do
-  desc "Deploy iOS to TestFlight"
+  desc "Runs linting (and eventually static analysis)"
+  lane :analyse do
+    xcodebuild(
+      workspace: "App.xcworkspace",
+      scheme: "App",
+      configuration: "Debug",
+      sdk: 'iphonesimulator',
+      destination: 'platform=iOS Simulator,OS=9.3,name=iPhone 6',
+      analyze: true
+    )
+  end
+
+  desc "Deploy iOS to TestFlight"  
   lane :beta do
     setup_ci if ENV['CI']
+    increment_build_number
     # match(type: 'appstore')
     build_app
     # upload_to_testflight(skip_waiting_for_build_processing: true)
