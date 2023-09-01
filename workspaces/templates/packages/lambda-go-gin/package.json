@@ -2,7 +2,7 @@
   "name": "@goldstack/server-go",
   "version": "0.1.0",
   "scripts": {
-    "build": "GOOS=linux GIN_MODE=release go build -ldflags=\"-s -w\" -o distLambda/lambda",
+    "build": "GOARCH=amd64 GOOS=linux GIN_MODE=release go build -ldflags=\"-s -w\" -tags lambda.norpc -o distLambda/bootstrap",
     "compile": "yarn build",
     "deploy": "yarn build && yarn template-ts deploy \"$@\"",
     "deploy-ts": "yarn build && yarn template-ts deploy \"$@\"",
