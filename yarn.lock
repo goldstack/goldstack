@@ -2080,7 +2080,7 @@ __metadata:
     "@types/tcp-port-used": ^1
     "@types/yargs": ^17.0.10
     aws-sdk: ^2.1222.0
-    dynamo-db-local: ^5.0.0
+    dynamo-db-local: ^7.0.0
     jest: ^29.3.1
     rimraf: ^3.0.2
     tcp-port-used: ^1.0.2
@@ -8733,10 +8733,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dynamo-db-local@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "dynamo-db-local@npm:5.0.0"
-  checksum: ba1761962cc9826d3c0fb0d106fd3bfc6794db295c7c9ad1e4e3dcb34123be04b56c0f72998bb9ac6416f56dffcd500e99e54fc8a2a791bba2336aaab047d1f1
+"dynamo-db-local@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "dynamo-db-local@npm:7.0.0"
+  checksum: 9de28277aef4644e856843f3c73790bd470aa2949df590ae876588fd99b5a493adf5f6a534a465dfe95c10911bfd06451558d1f70925b436998e313fad9371b9
   languageName: node
   linkType: hard
 
