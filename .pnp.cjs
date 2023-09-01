@@ -3105,7 +3105,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/tcp-port-used", "npm:1.0.1"],\
             ["@types/yargs", "npm:17.0.10"],\
             ["aws-sdk", "npm:2.1222.0"],\
-            ["dynamo-db-local", "npm:5.0.0"],\
+            ["dynamo-db-local", "npm:7.0.0"],\
             ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["tcp-port-used", "npm:1.0.2"],\
@@ -10807,10 +10807,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["dynamo-db-local", [\
-        ["npm:5.0.0", {\
-          "packageLocation": "./.yarn/unplugged/dynamo-db-local-npm-5.0.0-ab7e022bff/node_modules/dynamo-db-local/",\
+        ["npm:7.0.0", {\
+          "packageLocation": "./.yarn/unplugged/dynamo-db-local-npm-7.0.0-97bf626b49/node_modules/dynamo-db-local/",\
           "packageDependencies": [\
-            ["dynamo-db-local", "npm:5.0.0"]\
+            ["dynamo-db-local", "npm:7.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
