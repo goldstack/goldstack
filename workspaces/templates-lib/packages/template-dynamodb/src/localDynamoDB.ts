@@ -95,7 +95,7 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
       },
     };
   }
-  if (commandExists('java')) {
+  if (commandExists('java') && false) {
     console.debug('Starting local DynamoDB with Java');
     const pr = dynamoDBLocal.spawn({ port: MAPPED_PORT, path: null });
     return {
