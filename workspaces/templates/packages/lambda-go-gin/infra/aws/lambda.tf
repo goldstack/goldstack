@@ -14,8 +14,8 @@ resource "aws_lambda_function" "main" {
 
   filename = data.archive_file.empty_lambda.output_path
 
-  handler = "lambda"
-  runtime = "go1.x"
+  handler = "bootstrap"
+  runtime = "provided.al2"
 
   memory_size = 2048
   timeout = 900
