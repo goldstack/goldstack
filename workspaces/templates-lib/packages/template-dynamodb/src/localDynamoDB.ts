@@ -112,7 +112,7 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
     console.warn(
       "Docker doesn't currently support stopping the container, see https://github.com/chrisguttandin/dynamo-db-local/issues/114\nIt is recommended you install Java."
     );
-    const detached = window['CI'] ? true : false;
+    const detached = global['CI'] ? true : false;
     const pr = dynamoDBLocal.spawn({
       port: MAPPED_PORT,
       command: 'docker',
