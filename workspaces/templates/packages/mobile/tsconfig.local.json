@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "./src/**/*",
+    "./scripts/**/*"
+  ],
+  "compilerOptions": {
+    "incremental": true,
+    "noEmit": false,
+    "declarationMap": false,
+    "isolatedModules": false,
+    "module": "CommonJS",
+    "types": [
+      "node",
+      "dom"
+    ],
+    "lib": [
+      "ESNext"
+    ],
+    "outDir": "dist",
+    "baseUrl": "."
+  }
+}

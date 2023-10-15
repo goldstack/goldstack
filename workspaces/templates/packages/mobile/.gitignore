@@ -1,0 +1,11 @@
+.next/
+webDist/
+out/
+dist/
+cache/
+.env.production
+node_modules
+yarn-error.log
+tsconfig.tsbuildinfo
+coverage/
+goldstackLocal/
