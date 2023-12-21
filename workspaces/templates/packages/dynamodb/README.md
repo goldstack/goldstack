@@ -6,13 +6,13 @@ The [DynamoDB template](https://goldstack.party/templates/dynamodb) provides a l
 
 ## Features
 
-- Create DynamoDB table
-- Run migrations using Umzug
-- Easy to use API
-- Strong typing using DynamoDB Toolbox
-- Easy local testing (recommended to install Java)
-- Supports multiple environments (development, production)
-- Provides way to extend infrastructure using Terraform
+*   Create DynamoDB table
+*   Run migrations using Umzug
+*   Easy to use API
+*   Strong typing using DynamoDB Toolbox
+*   Easy local testing (recommended to install Java)
+*   Supports multiple environments (development, production)
+*   Provides way to extend infrastructure using Terraform
 
 ## Configure
 
@@ -55,8 +55,8 @@ This will be either `yarn infra up dev` or `yarn infra up prod` depending on you
 
 In order to make use of the DynamoDB package we principally want to do two things:
 
-- Define the schema for our table
-- Write application logic to work with the data in the table
+*   Define the schema for our table
+*   Write application logic to work with the data in the table
 
 In this template, the former will be done within the DynamoDB package but the latter can either happen in other packages. For instance, if you have included a [Serverless API](https://goldstack.party/templates/lambda-api) template in your project, you can define your logic for working with the data in DynamoDB in that package. However, you can also write additional code in the DynamoDB package and define a lightweight DOA layer.
 
@@ -224,13 +224,13 @@ The configuration tool will define one deployment. This will be either `dev` or 
 
 Infrastructure commands for this template can be run using `yarn`. There are four commands in total:
 
-- `yarn infra up`: For standing up infrastructure.
-- `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
-- `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
-- `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
-- `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
-- `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
-- `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
+*   `yarn infra up`: For standing up infrastructure.
+*   `yarn infra init`: For [initialising Terraform](https://www.terraform.io/docs/commands/init.html).
+*   `yarn infra plan`: For running [Terraform plan](https://www.terraform.io/docs/commands/plan.html).
+*   `yarn infra apply`: For running [Terraform apply](https://www.terraform.io/docs/commands/apply.html).
+*   `yarn infra destroy`: For destroying all infrastructure using [Terraform destroy](https://www.terraform.io/docs/commands/destroy.html).
+*   `yarn infra upgrade`: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use `yarn infra terraform`.
+*   `yarn infra terraform`: For running arbitrary [Terraform commands](https://www.terraform.io/cli/commands).
 
 For each command, the deployment they should be applied to must be specified.
 
