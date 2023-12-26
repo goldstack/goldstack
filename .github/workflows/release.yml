@@ -11,11 +11,6 @@ jobs:
     name: 'Release'
     runs-on: ubuntu-latest
     steps:
-      - name: Collect Workflow Telemetry
-        uses: runforesight/foresight-workflow-kit-action@v1
-        if: ${{ always() }}
-        with:
-          api_key: ${{secrets.FORESIGHT_API_KEY}}
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
