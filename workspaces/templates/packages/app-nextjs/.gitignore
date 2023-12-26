@@ -5,6 +5,7 @@ dist/
 cache/
 .env.production
 node_modules
+lambda.zip
 yarn-error.log
 tsconfig.tsbuildinfo
 coverage/
