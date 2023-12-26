@@ -1,4 +1,5 @@
 import SES from 'aws-sdk/clients/ses';
+import AWS from 'aws-sdk';
 import { Credentials, EnvironmentCredentials } from 'aws-sdk/lib/core';
 import {
   EmailSendPackage,
@@ -52,7 +53,7 @@ export const connect = async (
 
   let awsUser: Credentials;
   if (process.env.AWS_ACCESS_KEY_ID) {
-    awsUser = new EnvironmentCredentials('AWS');
+    awsUser = new AWS.EnvironmentCredentials('AWS');
   } else {
     // load this in lazy to enable omitting the dependency when bundling lambdas
     // eslint-disable-next-line @typescript-eslint/no-var-requires
