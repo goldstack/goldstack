@@ -15,7 +15,8 @@
         "hostedZoneDomain": "dev.goldstack.party",
         "callbackUrl": "https://ssr.examples.templates.dev.goldstack.party"
       },
-      "tfStateKey": "user-management-prod-c24c67342f629ac2217b.tfstate"
+      "tfStateKey": "user-management-prod-c24c67342f629ac2217b.tfstate",
+      "tfVersion": "1.6"
     }
   ]
 }

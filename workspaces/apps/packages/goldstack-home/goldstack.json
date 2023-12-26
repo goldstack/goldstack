@@ -26,7 +26,7 @@
         ]
       },
       "tfStateKey": "goldstack-home-dev-181bf9be096a2f5c100d.tfstate",
-      "tfVersion": "1.1"
+      "tfVersion": "1.6"
     },
     {
       "name": "prod",

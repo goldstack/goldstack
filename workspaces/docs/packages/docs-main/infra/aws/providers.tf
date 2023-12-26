@@ -7,10 +7,10 @@ terraform {
     }
     aws = {
       source  = "hashicorp/aws"
-      version = "4.48.0"
+      version = "5.31.0"
     }
   }
-  required_version = ">= 0.13"
+  required_version = ">= 1.6"
 }
 
 provider "aws" {
@@ -18,7 +18,6 @@ provider "aws" {
 
   # Skipping various checks to speed up AWS provider
   skip_region_validation      = true
-  skip_get_ec2_platforms      = true
   skip_metadata_api_check     = true
   skip_credentials_validation = true
 }
@@ -30,7 +29,6 @@ provider "aws" {
 
   # Skipping various checks to speed up AWS provider
   skip_region_validation      = true
-  skip_get_ec2_platforms      = true
   skip_metadata_api_check     = true
   skip_credentials_validation = true
 }

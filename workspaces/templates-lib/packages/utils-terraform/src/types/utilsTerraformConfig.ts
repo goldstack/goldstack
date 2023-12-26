@@ -30,7 +30,14 @@ export type TerraformVersion =
   | '0.14'
   | '0.15'
   | '1.0'
-  | '1.1';
+  | '1.1'
+  | '1.2'
+  | '1.3'
+  | '1.3'
+  | '1.4'
+  | '1.5'
+  | '1.6'
+  | '1.7';
 
 /**
  * Define which of the deployment variables will be made available for terraform.
