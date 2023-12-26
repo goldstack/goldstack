@@ -246,7 +246,7 @@ export class TerraformBuild {
         version,
         backendConfig,
         workspace: workspace,
-        options: ['-force-copy', '-reconfigure'],
+        options: ['-force-copy', '-reconfigure', '-upgrade'],
       });
       const workspaces = tf('workspace list', {
         provider,
@@ -511,7 +511,7 @@ export class TerraformBuild {
 
   upgrade = (args: string[]): void => {
     const deployment = getDeployment(args);
-    const version = deployment.tfVersion || '0.12';
+    const version = this.getTfVersion([deployment.name]) || '0.12';
     const newVersion = args[1];
     if (version === newVersion) {
       console.log('Already on version', newVersion);
@@ -538,8 +538,12 @@ export class TerraformBuild {
       this.performUpgrade(args[0], '1.1');
       return;
     }
+    if (version.indexOf('1.') === 0 && newVersion.indexOf('1.') === 0) {
+      this.performUpgrade(args[0], newVersion as TerraformVersion);
+      return;
+    }
     throw new Error(
-      `Version upgrade not supported: from [${version}] to [${newVersion}]. Currently only 0.12 -> 0.13 is supported.`
+      `Version upgrade not supported: from [${version}] to [${newVersion}].`
     );
   };
 

@@ -170,6 +170,15 @@ export const imageTerraform = (version?: string): string => {
   if (version === '1.1') {
     return 'hashicorp/terraform:1.1.3';
   }
+  if (version === '1.5') {
+    return 'hashicorp/terraform:1.5.7';
+  }
+  if (version === '1.6') {
+    return 'hashicorp/terraform:1.6.6';
+  }
+  if (version === '1.7') {
+    return 'hashicorp/terraform:1.7.0-rc1';
+  }
   console.warn(
     `Using untested Terraform version ${version}. Consider updating your Goldstack template.`
   );

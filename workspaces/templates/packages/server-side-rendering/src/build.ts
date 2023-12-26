@@ -68,12 +68,12 @@ const buildConfig = (): BuildConfiguration => {
         ],
         bundle: true,
         external: [
-          'aws-sdk', // included in Lambda runtime environment
+          // 'aws-sdk', // included in Lambda runtime environment, not any more for v18+
         ],
         minify: true,
         platform: 'node',
         format: 'cjs',
-        target: 'node16.0',
+        target: 'node18.0',
         treeShaking: true,
         define: {
           'process.env.NODE_ENV': '"production"',

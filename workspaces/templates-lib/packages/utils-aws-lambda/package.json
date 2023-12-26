@@ -48,7 +48,7 @@
     "@goldstack/utils-sh": "0.5.9",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "archiver": "^5.3.1",
-    "aws-sdk": "^2.1222.0",
+    "aws-sdk": "2.1525.0",
     "esbuild": "^0.17.18",
     "esbuild-ssr-css-modules-plugin": "0.1.10"
   },

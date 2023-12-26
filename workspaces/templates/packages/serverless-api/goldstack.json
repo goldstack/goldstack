@@ -45,7 +45,8 @@
           }
         }
       },
-      "tfStateKey": "lambda-api-template-prod-9d3d0e0a2d6a51e5308a.tfstate"
+      "tfStateKey": "lambda-api-template-prod-9d3d0e0a2d6a51e5308a.tfstate",
+      "tfVersion": "1.7"
     }
   ]
 }

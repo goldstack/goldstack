@@ -16,7 +16,7 @@
         "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party"
       },
       "tfStateKey": "lambda-go-gin-template-prod-e346f6ec1a6c006baaa0.tfstate",
-      "tfVersion": "1.1"
+      "tfVersion": "1.6"
     }
   ]
 }

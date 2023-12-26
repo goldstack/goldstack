@@ -45,7 +45,7 @@
     "@goldstack/utils-package-config-embedded": "0.5.10",
     "@goldstack/utils-template": "0.4.9",
     "@goldstack/utils-terraform": "0.4.13",
-    "aws-sdk": "^2.1222.0",
+    "aws-sdk": "2.1525.0",
     "mock-aws-s3": "^4.0.2",
     "source-map-support": "^0.5.21"
   },

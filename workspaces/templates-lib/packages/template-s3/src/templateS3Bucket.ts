@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { Credentials, EnvironmentCredentials } from 'aws-sdk/lib/core';
+import AWS from 'aws-sdk';
 import S3 from 'aws-sdk/clients/s3';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { S3Package, S3Deployment } from './types/S3Package';
@@ -37,7 +38,7 @@ export const connect = async (
 
   let awsUser: Credentials;
   if (process.env.AWS_ACCESS_KEY_ID) {
-    awsUser = new EnvironmentCredentials('AWS');
+    awsUser = new AWS.EnvironmentCredentials('AWS');
   } else {
     // load this in lazy to enable omitting the dependency when bundling lambdas
     // eslint-disable-next-line @typescript-eslint/no-var-requires

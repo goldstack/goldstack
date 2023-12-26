@@ -13,10 +13,10 @@
         "hostedZoneDomain": "dev.goldstack.party",
         "cors": "https://dev.goldstack.party",
         "goldstackWorkdir": "/tmp/",
-        "stripeApiKey": ""
+        "stripeApiKey": "dummy"
       },
       "tfStateKey": "goldstack-api-dev-060f0ca6440485658cfc.tfstate",
-      "tfVersion": "1.1"
+      "tfVersion": "1.6"
     },
     {
       "name": "prod",
@@ -28,10 +28,10 @@
         "hostedZoneDomain": "goldstack.party",
         "cors": "https://goldstack.party",
         "goldstackWorkdir": "/tmp/",
-        "stripeApiKey": ""
+        "stripeApiKey": "dummy"
       },
       "tfStateKey": "goldstack-api-prod-9c1fbe2ecc5fe14060c4.tfstate",
-      "tfVersion": "1.1"
+      "tfVersion": "1.6"
     }
   ],
   "templateVersion": "0.1.0",

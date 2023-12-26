@@ -55,6 +55,9 @@ export type {
   AWSUserName,
 } from './types/awsDeployment';
 
+// deactivate warning message while v3 upgrade in process
+process.env.AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = '1';
+
 export const readDeploymentFromPackageConfig = (
   deploymentName: string,
   path?: string

@@ -38,6 +38,7 @@
     "@goldstack/utils-project": "0.4.9",
     "@goldstack/utils-sh": "0.5.9",
     "@goldstack/utils-template": "0.4.9",
+    "aws-sdk": "2.1525.0",
     "aws-serverless-express": "^3.3.8",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",

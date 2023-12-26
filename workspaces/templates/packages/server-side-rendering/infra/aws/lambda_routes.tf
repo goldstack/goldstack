@@ -18,7 +18,7 @@ resource "aws_lambda_function" "this" {
   filename = data.archive_file.empty_lambda.output_path
 
   handler = "lambda.handler"
-  runtime = "nodejs16.x"
+  runtime = "nodejs18.x"
 
   memory_size = 2048
   timeout = 27 # default Gateway timeout is 29 s

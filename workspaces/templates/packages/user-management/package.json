@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@goldstack/template-user-management": "0.1.11",
-    "aws-sdk": "^2.1222.0"
+    "aws-sdk": "2.1525.0"
   },
   "devDependencies": {
     "@goldstack/template-user-management-cli": "0.1.11",

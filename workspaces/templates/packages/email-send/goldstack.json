@@ -14,7 +14,7 @@
         "hostedZoneDomain": "dev.goldstack.party"
       },
       "tfStateKey": "email-send-prod-c1356c7f30852453a420.tfstate",
-      "tfVersion": "1.1"
+      "tfVersion": "1.6"
     }
   ]
 }

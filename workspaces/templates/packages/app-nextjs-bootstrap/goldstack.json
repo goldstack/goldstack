@@ -15,7 +15,7 @@
         "defaultCacheDuration": 10
       },
       "tfStateKey": "app-nextjs-bootstrap-prod-48a5b466356262fc97d0.tfstate",
-      "tfVersion": "1.1"
+      "tfVersion": "1.6"
     }
   ]
 }
