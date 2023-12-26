@@ -1138,7 +1138,7 @@ __metadata:
     "@types/node": ^18.7.13
     "@types/semver": ^7.2.0
     archiver: ^5.3.1
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     fs-extra: ^10.0.0
     jest: ^29.3.1
     rimraf: ^3.0.2
@@ -1245,7 +1245,7 @@ __metadata:
     "@types/jest": ^29.0.1
     "@types/memoizee": ^0
     "@types/node": ^18.7.13
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     dynamodb-admin: ^4.5.0
     dynamodb-toolbox: ^0.6.3
     ejs: ^3.1.8
@@ -1271,7 +1271,7 @@ __metadata:
     "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     jest: ^29.3.1
     rimraf: ^3.0.2
     ts-node: ^10.9.1
@@ -1318,6 +1318,7 @@ __metadata:
     "@types/tsc-watch": ^4
     "@types/uuid": ^8.3.0
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
+    aws-sdk: 2.1525.0
     aws-serverless-express: ^3.3.8
     cookie-parser: ^1.4.5
     cors: ^2.8.5
@@ -1352,7 +1353,7 @@ __metadata:
     "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     jest: ^29.3.1
     rimraf: ^3.0.2
     ts-node: ^10.9.1
@@ -1433,7 +1434,7 @@ __metadata:
     "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     axios: 0.21.2
     handlebars: 4.7.7
     jest: ^29.3.1
@@ -1713,7 +1714,7 @@ __metadata:
     "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     concurrently: ^7.3.0
     jest: ^29.3.1
     rimraf: ^3.0.2
@@ -1734,7 +1735,7 @@ __metadata:
     "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     concurrently: ^7.3.0
     jest: ^29.3.1
     rimraf: ^3.0.2
@@ -1763,7 +1764,7 @@ __metadata:
     "@types/node": ^18.7.13
     "@types/semver": ^7.2.0
     "@types/uuid": ^8.3.0
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     fs-extra: ^10.0.0
     jest: ^29.3.1
     rimraf: ^3.0.2
@@ -1783,7 +1784,7 @@ __metadata:
     "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     jest: ^29.3.1
     rimraf: ^3.0.2
     ts-node: ^10.9.1
@@ -1893,7 +1894,7 @@ __metadata:
     "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     concurrently: ^7.3.0
     jest: ^29.3.1
     rimraf: ^3.0.2
@@ -1918,7 +1919,7 @@ __metadata:
     "@types/semver": ^7.2.0
     "@types/stripe": ^7.13.24
     "@types/uuid": ^8.3.0
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     fs-extra: ^10.0.0
     jest: ^29.3.1
     rimraf: ^3.0.2
@@ -1998,7 +1999,7 @@ __metadata:
     "@types/jest": ^29.0.1
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     jest: ^29.3.1
     mock-aws-s3: ^4.0.2
     rimraf: ^3.0.2
@@ -2032,7 +2033,7 @@ __metadata:
     "@types/node": ^18.7.13
     "@types/source-map-support": ^0.5.4
     "@types/yargs": ^17.0.10
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     jest: ^29.3.1
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
@@ -2098,7 +2099,7 @@ __metadata:
     "@types/node": ^18.7.13
     "@types/tcp-port-used": ^1
     "@types/yargs": ^17.0.10
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     dynamo-db-local: ^7.0.0
     jest: ^29.3.1
     rimraf: ^3.0.2
@@ -2158,7 +2159,7 @@ __metadata:
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
     "@types/uuid": ^8.3.0
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     jest: ^29.3.1
     rimraf: ^3.0.2
     ts-node: ^10.9.1
@@ -2306,7 +2307,7 @@ __metadata:
     "@types/source-map-support": ^0.5.4
     "@types/wtfnode": ^0.7.0
     "@types/yargs": ^17.0.10
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     concurrently: ^7.3.0
     jest: ^29.3.1
     mock-aws-s3: ^4.0.2
@@ -2388,7 +2389,7 @@ __metadata:
     "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     concurrently: ^7.3.0
     jest: ^29.3.1
     rimraf: ^3.0.2
@@ -2412,7 +2413,7 @@ __metadata:
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/semver": ^7.2.0
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     fs-extra: ^10.0.0
     jest: ^29.3.1
     rimraf: ^3.0.2
@@ -2445,7 +2446,7 @@ __metadata:
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     jest: ^29.3.1
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
@@ -2478,7 +2479,7 @@ __metadata:
     "@types/mock-aws-s3": ^2.6.3
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     jest: ^29.3.1
     mock-aws-s3: ^4.0.2
     rimraf: ^3.0.2
@@ -2717,7 +2718,7 @@ __metadata:
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     jest: ^29.3.1
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
@@ -2750,7 +2751,7 @@ __metadata:
     "@types/node": ^18.7.13
     "@types/yargs": ^17.0.10
     aws-jwt-verify: ^3.2.0
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     jest: ^29.3.1
     rimraf: ^3.0.2
     source-map-support: ^0.5.21
@@ -2785,7 +2786,7 @@ __metadata:
     "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     jest: ^29.3.1
     rimraf: ^3.0.2
     ts-node: ^10.9.1
@@ -2806,7 +2807,7 @@ __metadata:
     "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     jest: ^29.3.1
     rimraf: ^3.0.2
     typescript: ^4.8.4
@@ -2854,7 +2855,7 @@ __metadata:
     "@types/node": ^18.7.13
     "@yarnpkg/esbuild-plugin-pnp": ^3.0.0-rc.15
     archiver: ^5.3.1
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     esbuild: ^0.17.18
     esbuild-ssr-css-modules-plugin: 0.1.10
     jest: ^29.3.1
@@ -3183,7 +3184,7 @@ __metadata:
     "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     jest: ^29.3.1
     rimraf: ^3.0.2
     typescript: ^4.8.4
@@ -3278,7 +3279,7 @@ __metadata:
     "@swc/jest": ^0.2.27
     "@types/jest": ^29.0.1
     "@types/node": ^18.7.13
-    aws-sdk: ^2.1222.0
+    aws-sdk: 2.1525.0
     jest: ^29.3.1
     rimraf: ^3.0.2
     typescript: ^4.8.4
@@ -6433,9 +6434,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1222.0":
-  version: 2.1222.0
-  resolution: "aws-sdk@npm:2.1222.0"
+"aws-sdk@npm:2.1525.0":
+  version: 2.1525.0
+  resolution: "aws-sdk@npm:2.1525.0"
   dependencies:
     buffer: 4.9.2
     events: 1.1.1
@@ -6446,8 +6447,8 @@ __metadata:
     url: 0.10.3
     util: ^0.12.4
     uuid: 8.0.0
-    xml2js: 0.4.19
-  checksum: 2dc98ef933883f398d95b2fc826e9036c70273b6808d7a86aabca5655b0883fd034272b7af1701d23100836996419439ecda48e8caa556639e007b2d85272750
+    xml2js: 0.5.0
+  checksum: dacbe060c99bf6cc7677e30c553883e7c4ca6dd2a26cfa4b20bd6dbec0ad2b272aa054ddb6421badf80a5454d9c475c1094a4eccbdfb1754b092feacff578665
   languageName: node
   linkType: hard
 
@@ -20271,20 +20272,20 @@ resolve@^1.20.0:
   languageName: node
   linkType: hard
 
-"xml2js@npm:0.4.19":
-  version: 0.4.19
-  resolution: "xml2js@npm:0.4.19"
+"xml2js@npm:0.5.0":
+  version: 0.5.0
+  resolution: "xml2js@npm:0.5.0"
   dependencies:
     sax: ">=0.6.0"
-    xmlbuilder: ~9.0.1
-  checksum: ca8b2fee430d450a18947786bfd7cd1a353ee00fc6fd550acbc8a8e65f1b4df5e9786fcb2990c1a5514ecd554d445fb74e1d716b3a4fcfffc10554aeb5db482b
+    xmlbuilder: ~11.0.0
+  checksum: 1aa71d62e5bc2d89138e3929b9ea46459157727759cbc62ef99484b778641c0cd21fb637696c052d901a22f82d092a3e740a16b4ce218e81ac59b933535124ea
   languageName: node
   linkType: hard
 
-"xmlbuilder@npm:~9.0.1":
-  version: 9.0.7
-  resolution: "xmlbuilder@npm:9.0.7"
-  checksum: 8193bb323806a002764f013bea0c6e9ff2dc26fd29109408761b16b59a8ad2214c2abe8e691755fd8b525586e3a0e1efeb92335947d7b0899032b779f1705a53
+"xmlbuilder@npm:~11.0.0":
+  version: 11.0.1
+  resolution: "xmlbuilder@npm:11.0.1"
+  checksum: 7152695e16f1a9976658215abab27e55d08b1b97bca901d58b048d2b6e106b5af31efccbdecf9b07af37c8377d8e7e821b494af10b3a68b0ff4ae60331b415b0
   languageName: node
   linkType: hard
 

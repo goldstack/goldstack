@@ -31,7 +31,7 @@
     "test-watch": "nodemonx --watch . --exec 'yarn test-ci'"
   },
   "resolutions": {
-    "aws-sdk": "^2.1222.0",
+    "aws-sdk": "2.1525.0",
     "glob-parent": "5.1.2",
     "json-schema": "0.4.0",
     "json5": "2.2.2",
