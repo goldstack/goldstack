@@ -3,6 +3,7 @@
     "infra/",
     "docs/",
     "src/",
+    "scripts/",
     "schemas/",
     ".gitignore",
     "goldstack.json",
