@@ -50,7 +50,7 @@ export const createServerSideRenderingBuildSetConfig =
                     cors: '',
                     lambdas: {},
                   },
-                  tfVersion: '1.1',
+                  tfVersion: '1.6',
                 },
               ],
               packageTests: [
