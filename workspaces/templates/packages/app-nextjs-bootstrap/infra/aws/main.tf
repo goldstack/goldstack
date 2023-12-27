@@ -54,7 +54,7 @@ resource "aws_route53_record" "wildcard_validation" {
 # see https://kopi.cloud/blog/2021/terraform-aws_acm_certificate-wildcards/
 resource "aws_acm_certificate_validation" "wildcard_validation" {
   provider = aws.us-east-1
-  certificate_arn = aws_acm_certificate.wildcard_website.arn
+  certificate_arn = data.aws_acm_certificate.wildcard_website.arn
 
   validation_record_fqdns = concat(
     [
@@ -73,7 +73,6 @@ data "aws_acm_certificate" "wildcard_website" {
   depends_on = [
     aws_acm_certificate.wildcard_website,
     aws_route53_record.wildcard_validation,
-    aws_acm_certificate_validation.wildcard_validation,
   ]
 
   domain      = var.website_domain
