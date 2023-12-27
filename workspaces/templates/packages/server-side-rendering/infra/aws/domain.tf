@@ -65,7 +65,7 @@ resource "aws_route53_record" "cdn_record" {
 resource "aws_acm_certificate_validation" "wildcard_validation" {
   provider = aws.us-east-1
 
-  certificate_arn = aws_acm_certificate.wildcard.arn
+  certificate_arn = data.aws_acm_certificate.wildcard.arn
 
   validation_record_fqdns = concat(
     [
@@ -83,7 +83,6 @@ data "aws_acm_certificate" "wildcard" {
   depends_on = [
     aws_acm_certificate.wildcard,
     aws_route53_record.wildcard_validation,
-    aws_acm_certificate_validation.wildcard_validation,
   ]
 
   domain      = var.domain

@@ -61,7 +61,7 @@ resource aws_route53_record a {
 # Required to force ACM wildcard certificate validation
 # see https://kopi.cloud/blog/2021/terraform-aws_acm_certificate-wildcards/
 resource "aws_acm_certificate_validation" "wildcard_validation" {
-  certificate_arn = aws_acm_certificate.wildcard.arn
+  certificate_arn = data.aws_acm_certificate.wildcard.arn
 
   validation_record_fqdns = concat(
     [
@@ -79,7 +79,6 @@ data "aws_acm_certificate" "wildcard" {
   depends_on = [
     aws_acm_certificate.wildcard,
     aws_route53_record.wildcard_validation,
-    aws_acm_certificate_validation.wildcard_validation,
   ]
 
   domain      = var.api_domain
