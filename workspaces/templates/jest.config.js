@@ -8,8 +8,8 @@ module.exports = {
     '/distWeb/',
     '/distLambda/',
     '.d.ts',
+    '<rootDir>/dist/',
   ],
-  testPathIgnorePatterns: ['<rootDir>/dist/'],
   transform: {
     '^.+\\.(t|j)sx?$': '@swc/jest',
   },
