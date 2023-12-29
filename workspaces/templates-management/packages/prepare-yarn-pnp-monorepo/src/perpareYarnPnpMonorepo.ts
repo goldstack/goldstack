@@ -44,7 +44,6 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
     cp('-rf', copyFilesFromRoot, params.destinationDirectory);
 
     const copyFilesFromRootYarn = [
-      '.yarn/plugins',
       '.yarn/pnpify',
       '.yarn/releases',
       '.yarn/sdks',

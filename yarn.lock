@@ -19422,13 +19422,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"underscore@npm:1.7.0":
-  version: 1.7.0
-  resolution: "underscore@npm:1.7.0"
-  checksum: 4b0bb1a30631a4edd64ab1349d3e676ce54cb6dfae50d865a80696418d4e77b689b58dbf5f67e2d336030c4f191e014a1cc8c98d069aee8330358898ce19ab7e
-  languageName: node
-  linkType: hard
-
 "undertaker-registry@npm:^1.0.0":
   version: 1.0.1
   resolution: "undertaker-registry@npm:1.0.1"
