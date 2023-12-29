@@ -27,7 +27,7 @@
     "lint": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml,.html",
     "lint-fix": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml,.html --fix",
     "prettier": "prettier",
-    "test-ci": "yarn workspaces foreach run test-ci",
+    "test-ci": "yarn workspaces foreach -A run test-ci",
     "test-watch": "nodemonx --watch . --exec 'yarn test-ci'"
   },
   "resolutions": {
