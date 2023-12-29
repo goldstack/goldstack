@@ -35,24 +35,6 @@
       "path": "workspaces/apps"
     },
     {
-      "path": "workspaces/docs"
-    },
-    {
-      "path": "workspaces/examples"
-    },
-    {
-      "path": "workspaces/templates"
-    },
-    {
-      "path": "workspaces/templates-lib"
-    },
-    {
-      "path": "workspaces/templates-management"
-    },
-    {
-      "path": "workspaces/utils"
-    },
-    {
       "path": "workspaces/apps/packages/goldstack-api"
     },
     {
@@ -63,6 +45,9 @@
     },
     {
       "path": "workspaces/apps/packages/template-management-cli"
+    },
+    {
+      "path": "workspaces/docs"
     },
     {
       "path": "workspaces/docs/packages/cdn"
@@ -83,7 +68,13 @@
       "path": "workspaces/docs/packages/utils-docs-cli"
     },
     {
+      "path": "workspaces/examples"
+    },
+    {
       "path": "workspaces/examples/packages/dynamodb-client"
+    },
+    {
+      "path": "workspaces/templates"
     },
     {
       "path": "workspaces/templates/packages/app-nextjs"
@@ -132,6 +123,9 @@
     },
     {
       "path": "workspaces/templates/packages/user-management"
+    },
+    {
+      "path": "workspaces/templates-lib"
     },
     {
       "path": "workspaces/templates-lib/packages/infra"
@@ -242,6 +236,9 @@
       "path": "workspaces/templates-lib/packages/utils-terraform-aws"
     },
     {
+      "path": "workspaces/templates-management"
+    },
+    {
       "path": "workspaces/templates-management/packages/auth"
     },
     {
@@ -288,6 +285,9 @@
     },
     {
       "path": "workspaces/templates-management/packages/utils-template-test"
+    },
+    {
+      "path": "workspaces/utils"
     },
     {
       "path": "workspaces/utils/packages/esbuild-ignore-with-comments-plugin"
