@@ -5,13 +5,13 @@ on: [push, pull_request]
 jobs:
   build:
     name: 'Build'
-    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
@@ -22,13 +22,13 @@ jobs:
 
   lint:
     name: 'Lint'
-    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
@@ -44,13 +44,13 @@ jobs:
 
   audit:
     name: 'NPM Audit'
-    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
@@ -64,13 +64,13 @@ jobs:
 
   syncpack:
     name: 'Checking for Package Mismatches'
-    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
       - name: Install Yarn
         run: npm install -g
       - name: Install
@@ -82,13 +82,13 @@ jobs:
 
   compile:
     name: 'Compile and Type Check'
-    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
@@ -102,13 +102,13 @@ jobs:
 
   test-utilities:
     name: 'Utilities Test'
-    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
@@ -125,13 +125,13 @@ jobs:
 
   test-libraries:
     name: 'Libraries Test'
-    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
@@ -148,13 +148,13 @@ jobs:
 
   test-template-management:
     name: 'Templates Management Test'
-    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
@@ -171,13 +171,13 @@ jobs:
 
   test-apps:
     name: 'Apps Test'
-    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
@@ -195,13 +195,13 @@ jobs:
 
   test-docs:
     name: 'Docs Test'
-    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
@@ -218,13 +218,13 @@ jobs:
 
   test-templates:
     name: 'Templates Test'
-    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
@@ -247,13 +247,13 @@ jobs:
 
   schema:
     name: 'Generate Schemas'
-    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
@@ -267,13 +267,13 @@ jobs:
 
   docs:
     name: 'Generate Docs'
-    if: "!contains(github.event.head_commit.message, 'ci_skip')"
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
 
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
