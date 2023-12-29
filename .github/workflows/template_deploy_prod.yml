@@ -35,6 +35,11 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: https://registry.npmjs.org
+      - uses: actions/setup-java@v4 # used for local DynamoDB
+        with:
+          distribution: 'temurin'
+          java-version: '20'
+
       - name: Install Yarn
         run: npm install -g yarn@1.22.11
       - name: Install project dependencies
