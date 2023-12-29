@@ -41,8 +41,8 @@
     "prismjs": "1.27.0",
     "scss-tokenizer": "0.4.3",
     "terser": "4.8.1",
-    "underscore@npm:1.7.0": "1.12.1",
-    "trim": "0.0.3"
+    "trim": "0.0.3",
+    "underscore@npm:1.7.0": "1.12.1"
   },
   "devDependencies": {
     "@goldstack/nodemonx": "0.4.10",
