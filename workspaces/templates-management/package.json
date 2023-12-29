@@ -6,18 +6,18 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach --topological-dev run build",
-    "clean": "yarn workspaces foreach run clean",
+    "build": "yarn workspaces foreach --topological-dev --worktree run build",
+    "clean": "yarn workspaces foreach -W run clean",
     "compile": "tsc --build",
-    "coverage": "yarn workspaces --topological-dev foreach run coverage",
+    "coverage": "yarn workspaces --topological-dev --worktree foreach run coverage",
     "fix-project-references": "utils-typescript-references --skipRoot",
     "format": "prettier --write .",
     "format-check": "prettier .",
-    "generate-schema": "yarn workspaces foreach run generate-schema",
+    "generate-schema": "yarn workspaces foreach -W run generate-schema",
     "lint": "eslint . --ext .js,.ts,.tsx,json",
     "lint-fix": "eslint . --ext .js,.ts,tsx,json --fix",
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
-    "test-ci": "yarn workspaces foreach -v run test-ci"
+    "test-ci": "yarn workspaces foreach -Wv run test-ci"
   },
   "devDependencies": {
     "@goldstack/utils-typescript-references": "0.3.9",

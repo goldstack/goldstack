@@ -102,7 +102,11 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
       port: MAPPED_PORT,
       stop: async () => {
         console.debug('Stopping local Java DynamoDB');
-        pr.kill();
+        if (!pr.kill()) {
+          console.error('Stopping local Java DynamoDB process not successful');
+        } else {
+          console.debug('Local Java DynamoDB stopped');
+        }
       },
     };
   }
