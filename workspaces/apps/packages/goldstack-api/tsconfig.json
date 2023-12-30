@@ -5,6 +5,9 @@
     "./scripts/**/*",
     "./goldstack.json"
   ],
+  "exclude": [
+    "./goldstackLocal/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
