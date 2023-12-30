@@ -1435,7 +1435,7 @@ __metadata:
     "@types/jest": "npm:^29.0.1"
     "@types/node": "npm:^18.7.13"
     aws-sdk: "npm:2.1525.0"
-    axios: "npm:0.21.2"
+    axios: "npm:1.6.0"
     handlebars: "npm:4.7.7"
     jest: "npm:^29.3.1"
     renamer: "npm:^0.7.0"
@@ -1694,7 +1694,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.27"
     "@types/jest": "npm:^29.0.1"
     "@types/node": "npm:^18.7.13"
-    axios: "npm:0.21.2"
+    axios: "npm:1.6.0"
     jest: "npm:^29.3.1"
     rimraf: "npm:^3.0.2"
     temp-dir: "npm:^2.0.0"
@@ -3237,7 +3237,7 @@ __metadata:
     "@types/jest": "npm:^29.0.1"
     "@types/mock-aws-s3": "npm:^2.6.3"
     "@types/node": "npm:^18.7.13"
-    axios: "npm:0.21.2"
+    axios: "npm:1.6.0"
     extract-zip: "npm:^2.0.1"
     jest: "npm:^29.3.1"
     mock-aws-s3: "npm:^4.0.2"
@@ -6462,12 +6462,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:0.21.2":
-  version: 0.21.2
-  resolution: "axios@npm:0.21.2"
+"axios@npm:1.6.0":
+  version: 1.6.0
+  resolution: "axios@npm:1.6.0"
   dependencies:
-    follow-redirects: "npm:^1.14.0"
-  checksum: 00570fb139768996494aad1f34288d8a75eb7c42b59213f39e836e2e0f267b2a7c0e19b2cf20f369034096844257f623f6e1e42818d028157569091b078b8d11
+    follow-redirects: "npm:^1.15.0"
+    form-data: "npm:^4.0.0"
+    proxy-from-env: "npm:^1.1.0"
+  checksum: f069d938a05d2293e27c7cd6f0c08a1cb764f7cc43a1e637572f8d5928837ecd735890ad67a867d696094ee4b8b4dfdb3727a57aae600845e4c295581cb32f9a
   languageName: node
   linkType: hard
 
@@ -10262,13 +10264,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.0":
+"follow-redirects@npm:^1.0.0":
   version: 1.15.2
   resolution: "follow-redirects@npm:1.15.2"
   peerDependenciesMeta:
     debug:
       optional: true
   checksum: 8be0d39919770054812537d376850ccde0b4762b0501c440bd08724971a078123b55f57704f2984e0664fecc0c86adea85add63295804d9dce401cd9604c91d3
+  languageName: node
+  linkType: hard
+
+"follow-redirects@npm:^1.15.0":
+  version: 1.15.4
+  resolution: "follow-redirects@npm:1.15.4"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: 2e8f5f259a6b02dfa8dc199e08431848a7c3beed32eb4c19945966164a52c89f07b86c3afcc32ebe4279cf0a960520e45a63013d6350309c5ec90133c5d9351a
   languageName: node
   linkType: hard
 
@@ -16123,6 +16135,13 @@ __metadata:
     forwarded: "npm:0.2.0"
     ipaddr.js: "npm:1.9.1"
   checksum: f24a0c80af0e75d31e3451398670d73406ec642914da11a2965b80b1898ca6f66a0e3e091a11a4327079b2b268795f6fa06691923fef91887215c3d0e8ea3f68
+  languageName: node
+  linkType: hard
+
+"proxy-from-env@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "proxy-from-env@npm:1.1.0"
+  checksum: f0bb4a87cfd18f77bc2fba23ae49c3b378fb35143af16cc478171c623eebe181678f09439707ad80081d340d1593cd54a33a0113f3ccb3f4bc9451488780ee23
   languageName: node
   linkType: hard
 
