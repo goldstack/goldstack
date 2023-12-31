@@ -3191,7 +3191,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-sh@npm:0.5.9, @goldstack/utils-sh@workspace:workspaces/utils/packages/utils-sh":
+"@goldstack/utils-sh@npm:0.5.9, @goldstack/utils-sh@workspace:^, @goldstack/utils-sh@workspace:workspaces/utils/packages/utils-sh":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-sh@workspace:workspaces/utils/packages/utils-sh"
   dependencies:
@@ -9756,6 +9756,20 @@ __metadata:
   checksum: 1a8ccceca9f5beefb884ff7c4ffd475a579c2ab96372eebee24e887bf9c85c118fbad90e49d0056860b4a04470c3642168c9ef4cc618de063e50324ee47107d5
   languageName: node
   linkType: hard
+
+"expo@workspace:workspaces/templates/packages/expo":
+  version: 0.0.0-use.local
+  resolution: "expo@workspace:workspaces/templates/packages/expo"
+  dependencies:
+    "@goldstack/utils-sh": "workspace:^"
+    "@swc/jest": "npm:^0.2.27"
+    "@types/jest": "npm:^29.0.1"
+    "@types/node": "npm:^18.7.13"
+    jest: "npm:^29.3.1"
+    ts-node: "npm:^10.9.1"
+    typescript: "npm:^4.8.4"
+  languageName: unknown
+  linkType: soft
 
 "express-requests-logger@npm:^3.0.2":
   version: 3.0.2

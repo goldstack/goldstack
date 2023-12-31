@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*",
+    "./src/**/*.json",
+    "./schemas/**/*.json",
+    "goldstack.json"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "."
+  },
+  "references": [
+    {
+      "path": "../../../utils/packages/utils-sh"
+    }
+  ]
+}
