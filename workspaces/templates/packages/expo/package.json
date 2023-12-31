@@ -1,8 +1,5 @@
 {
   "name": "expo",
-  "dependencies": {
-    "@goldstack/utils-sh": "workspace:^"
-  },
   "devDependencies": {
     "@swc/jest": "^0.2.27",
     "@types/jest": "^29.0.1",
