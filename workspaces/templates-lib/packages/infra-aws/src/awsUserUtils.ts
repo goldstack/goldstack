@@ -156,15 +156,15 @@ export async function getAWSUserFromGoldstackConfig(
 
     resetEnvironmentVariables(envVarValues);
 
-    if (!(await validateCredentials(credentials))) {
-      throw new Error(
-        'Cannot load profile ' +
-          userConfig.profile +
-          ' from AWS configuration for user ' +
-          user.name +
-          '. Please perform `aws login` for the profile using the AWS CLI.'
-      );
-    }
+    // if (!(await validateCredentials(credentials))) {
+    //   throw new Error(
+    //     'Cannot load profile ' +
+    //       userConfig.profile +
+    //       ' from AWS configuration for user ' +
+    //       user.name +
+    //       '. Please perform `aws login` for the profile using the AWS CLI.'
+    //   );
+    // }
 
     return credentials;
   }
