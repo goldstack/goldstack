@@ -6,6 +6,7 @@ import {
   writeTerraformConfig,
   AWSTerraformState,
   RemoteState,
+  getAWSCredentials,
 } from '@goldstack/infra-aws';
 import {
   terraformCli,
@@ -111,7 +112,8 @@ export const terraformAwsCli = async (
 
   const deployment = readDeploymentFromPackageConfig(deploymentName);
 
-  const credentials = await getAWSUser(deployment.awsUser);
+  const provider = await getAWSUser(deployment.awsUser);
+  const credentials = await getAWSCredentials(provider);
 
   const awsTerraformConfig = assertTerraformConfig(deployment.awsUser);
 

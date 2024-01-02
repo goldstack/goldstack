@@ -1,12 +1,12 @@
 import { awsCli } from '@goldstack/utils-aws-cli';
 import { zip, rmSafe } from '@goldstack/utils-sh';
-
-import { AwsCredentialIdentity } from '@aws-sdk/types';
+import { getAWSCredentials } from '@goldstack/infra-aws';
+import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 
 export interface DeployFunctionParams {
   lambdaPackageDir: string;
   targetArchiveName?: string;
-  awsCredentials: AwsCredentialIdentity;
+  awsCredentials: AwsCredentialIdentityProvider;
   region: string;
   functionName: string;
 }
