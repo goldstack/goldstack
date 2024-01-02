@@ -6,9 +6,12 @@ import {
   AWSAPIKeyUserConfig,
   AWSEnvironmentVariableUserConfig,
 } from './types/awsAccount';
+
+import { AwsCredentialIdentity } from '@aws-sdk/types';
+
 import AWS from 'aws-sdk';
 
-export async function getAWSUserFromEnvironmentVariables(): Promise<AWS.Credentials> {
+export async function getAWSUserFromEnvironmentVariables(): Promise<AwsCredentialIdentity> {
   assert(process.env.AWS_ACCESS_KEY_ID, 'AWS_ACCESS_KEY_ID not defined.');
   assert(
     process.env.AWS_SECRET_ACCESS_KEY,
@@ -47,7 +50,7 @@ export async function getAWSUserFromContainerEnvironment(): Promise<AWS.ECSCrede
   return ecsCredentials;
 }
 
-export async function getAWSUserFromDefaultLocalProfile(): Promise<AWS.Credentials> {
+export async function getAWSUserFromDefaultLocalProfile(): Promise<AwsCredentialIdentity> {
   let credentials = new AWS.SharedIniFileCredentials();
 
   const envVarValues = {
@@ -71,7 +74,7 @@ export async function getAWSUserFromDefaultLocalProfile(): Promise<AWS.Credentia
 export async function getAWSUserFromGoldstackConfig(
   config: AWSConfiguration,
   userName: string
-): Promise<AWS.Credentials> {
+): Promise<AwsCredentialIdentity> {
   const user = config.users.find((user) => user.name === userName);
   if (!user) {
     throw new Error(`User '${userName}' does not exist in AWS configuration.`);
@@ -101,7 +104,7 @@ export async function getAWSUserFromGoldstackConfig(
       process.env.AWS_CONFIG_FILE = userConfig.awsConfigFileName;
     }
 
-    let credentials: AWS.Credentials;
+    let credentials: AwsCredentialIdentity;
     let filename: string | undefined = undefined;
     if (!process.env.SHARE_CREDENTIALS_FILE) {
       filename = userConfig.awsCredentialsFileName;
@@ -151,7 +154,7 @@ export async function getAWSUserFromGoldstackConfig(
         `AWS Access credentials not defined for user ${userName}. Define them in infra/aws/config.json.`
       );
     }
-    const credentials = new AWS.Credentials({
+    const credentials = new AWSCredentialI({
       accessKeyId: config.awsAccessKeyId || '',
       secretAccessKey: config.awsSecretAccessKey || '',
     });

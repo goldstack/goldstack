@@ -7,7 +7,7 @@ import {
   assertDirectoryExists,
   execAsync,
 } from '@goldstack/utils-sh';
-import AWS from 'aws-sdk';
+import { AwsCredentialIdentity } from '@aws-sdk/types';
 import { fatal } from '@goldstack/utils-log';
 import { hasDocker, assertDocker, imageAWSCli } from '@goldstack/utils-docker';
 
@@ -31,7 +31,7 @@ export const assertAwsCli = (): void => {
 };
 
 interface AWSExecParams {
-  credentials: AWS.Credentials;
+  credentials: AwsCredentialIdentity;
   command: string;
   region: string;
   workDir?: string;

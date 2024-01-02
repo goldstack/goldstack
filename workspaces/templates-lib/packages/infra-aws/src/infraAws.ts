@@ -19,7 +19,7 @@ import {
 import configSchema from './schemas/accountConfigSchema.json';
 import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
 import awsStateConfigSchema from './schemas/awsTerraformStateSchema.json';
-import AWS from 'aws-sdk';
+import { AwsCredentialIdentity } from '@aws-sdk/types';
 
 import { AWSTerraformState, RemoteState } from './types/awsTerraformState';
 
@@ -158,7 +158,7 @@ export const createDefaultConfig = (): AWSConfiguration => {
 export const getAWSUser = async (
   userName: string,
   configPath?: string
-): Promise<AWS.Credentials> => {
+): Promise<AwsCredentialIdentity> => {
   // Load from ECS environment if running in ECS
   if (process.env.AWS_CONTAINER_CREDENTIALS_RELATIVE_URI) {
     return await getAWSUserFromContainerEnvironment();

@@ -14,6 +14,7 @@ import {
   TerraformOptions,
 } from '@goldstack/utils-terraform';
 import AWS from 'aws-sdk';
+import { AwsCredentialIdentity } from '@aws-sdk/types';
 import { createState } from './tfState';
 import crypto from 'crypto';
 
@@ -31,7 +32,7 @@ const getRemoteStateConfig = (
 };
 
 export class AWSCloudProvider implements CloudProvider {
-  user: AWS.Credentials;
+  user: AwsCredentialIdentity;
   remoteStateConfig: AWSTerraformState;
 
   generateEnvVariableString = (): string => {
@@ -93,7 +94,10 @@ export class AWSCloudProvider implements CloudProvider {
     ];
   };
 
-  constructor(credentials: AWS.Credentials, awsConfig: AWSTerraformState) {
+  constructor(
+    credentials: AwsCredentialIdentity,
+    awsConfig: AWSTerraformState
+  ) {
     this.user = credentials;
     this.remoteStateConfig = awsConfig;
   }
