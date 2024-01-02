@@ -7,7 +7,8 @@ import {
   assertDirectoryExists,
   execAsync,
 } from '@goldstack/utils-sh';
-import AWS from 'aws-sdk';
+import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import { getAWSCredentials } from '@goldstack/infra-aws';
 import { fatal } from '@goldstack/utils-log';
 import { hasDocker, assertDocker, imageAWSCli } from '@goldstack/utils-docker';
 
@@ -31,7 +32,7 @@ export const assertAwsCli = (): void => {
 };
 
 interface AWSExecParams {
-  credentials: AWS.Credentials;
+  credentials: AwsCredentialIdentityProvider;
   command: string;
   region: string;
   workDir?: string;
@@ -43,10 +44,11 @@ export const execWithDocker = async (
 ): Promise<string> => {
   assertDocker();
 
+  const credentials = await getAWSCredentials(params.credentials);
   const awsUserConfig =
-    `-e AWS_ACCESS_KEY_ID=${params.credentials.accessKeyId} ` +
-    `-e AWS_SECRET_ACCESS_KEY=${params.credentials.secretAccessKey} ` +
-    `-e AWS_SESSION_TOKEN=${params.credentials.sessionToken || ''} ` +
+    `-e AWS_ACCESS_KEY_ID=${credentials.accessKeyId} ` +
+    `-e AWS_SECRET_ACCESS_KEY=${credentials.secretAccessKey} ` +
+    `-e AWS_SESSION_TOKEN=${credentials.sessionToken || ''} ` +
     `-e AWS_DEFAULT_REGION=${params.region} `;
   const mountDir = params.workDir || pwd();
 
@@ -67,9 +69,10 @@ export const execWithDocker = async (
 export const execWithCli = async (params: AWSExecParams): Promise<string> => {
   assertAwsCli();
 
-  process.env.AWS_ACCESS_KEY_ID = params.credentials.accessKeyId;
-  process.env.AWS_SECRET_ACCESS_KEY = params.credentials.secretAccessKey;
-  process.env.AWS_SESSION_TOKEN = params.credentials.sessionToken || '';
+  const credentials = await getAWSCredentials(params.credentials);
+  process.env.AWS_ACCESS_KEY_ID = credentials.accessKeyId;
+  process.env.AWS_SECRET_ACCESS_KEY = credentials.secretAccessKey;
+  process.env.AWS_SESSION_TOKEN = credentials.sessionToken || '';
   process.env.AWS_DEFAULT_REGION = params.region;
 
   assertDirectoryExists(

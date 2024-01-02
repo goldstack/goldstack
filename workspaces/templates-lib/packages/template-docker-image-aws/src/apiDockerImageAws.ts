@@ -5,7 +5,7 @@ import {
   AWSDockerImageDeployment,
   AWSDockerImagePackage,
 } from './types/AWSDockerImagePackage';
-import { getAWSUser } from '@goldstack/infra-aws';
+import { getAWSUser, getAWSCredentials } from '@goldstack/infra-aws';
 import {
   readDeploymentState,
   readTerraformStateVariable,
@@ -16,9 +16,10 @@ const createECS = async (
   deployment: AWSDockerImageDeployment
 ): Promise<ECS> => {
   const awsUser = await getAWSUser(deployment.awsUser);
+  const credentials = await getAWSCredentials(awsUser);
   return new ECS({
     apiVersion: '2014-11-13',
-    credentials: awsUser,
+    credentials,
   });
 };
 
@@ -26,8 +27,9 @@ const createCloudWatchLogs = async (
   deployment: AWSDockerImageDeployment
 ): Promise<CloudWatchLogs> => {
   const awsUser = await getAWSUser(deployment.awsUser);
+  const credentials = await getAWSCredentials(awsUser);
   return new CloudWatchLogs({
-    credentials: awsUser,
+    credentials,
   });
 };
 

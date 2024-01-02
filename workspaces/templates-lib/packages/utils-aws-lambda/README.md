@@ -10,7 +10,7 @@ This function will deploy an AWS lambda. Note this function will either need Doc
 interface DeployFunctionParams {
   lambdaPackageDir: string;
   targetArchiveName?: string;
-  awsCredentials: AWS.Credentials;
+  awsCredentials: AWSCredentialIdentity;
   region: string;
   functionName: string;
 }

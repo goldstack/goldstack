@@ -6,35 +6,41 @@ import {
   AWSAPIKeyUserConfig,
   AWSEnvironmentVariableUserConfig,
 } from './types/awsAccount';
-import AWS from 'aws-sdk';
 
-export async function getAWSUserFromEnvironmentVariables(): Promise<AWS.Credentials> {
+import { STSClient, GetCallerIdentityCommand } from '@aws-sdk/client-sts';
+
+import {
+  fromContainerMetadata,
+  fromEnv,
+  fromIni,
+  fromProcess,
+} from '@aws-sdk/credential-providers';
+
+import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import { hasInjectedCredentials, injectCredentials } from './awsAuthUtils';
+
+export async function getAWSUserFromEnvironmentVariables(): Promise<AwsCredentialIdentityProvider> {
   assert(process.env.AWS_ACCESS_KEY_ID, 'AWS_ACCESS_KEY_ID not defined.');
   assert(
     process.env.AWS_SECRET_ACCESS_KEY,
     'AWS_SECRET_ACCESS_KEY not defined'
   );
-  const region = process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION;
-  assert(region, 'Neither AWS_REGION nor AWS_DEFAULT_REGION are defined.');
-  const credentials = new AWS.EnvironmentCredentials('AWS');
-  await credentials.getPromise();
-  AWS.config.credentials = credentials;
+  const credentials: AwsCredentialIdentityProvider = fromEnv();
 
-  AWS.config.update({ region });
-
+  injectCredentials(credentials, {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  });
   return credentials;
 }
 /**
  * Obtains AWS user credentials from container environment variables for ECS containers.
  */
-export async function getAWSUserFromContainerEnvironment(): Promise<AWS.ECSCredentials> {
-  const ecsCredentials = new AWS.ECSCredentials({
-    httpOptions: { timeout: 5000 },
+export async function getAWSUserFromContainerEnvironment(): Promise<AwsCredentialIdentityProvider> {
+  const ecsCredentials = fromContainerMetadata({
+    timeout: 5000,
     maxRetries: 10, // retry 10 times
   });
-  await ecsCredentials.getPromise();
-
-  AWS.config.credentials = ecsCredentials;
 
   if (!process.env.AWS_REGION) {
     throw new Error(
@@ -42,36 +48,57 @@ export async function getAWSUserFromContainerEnvironment(): Promise<AWS.ECSCrede
     );
   }
 
-  AWS.config.update({ region: process.env.AWS_REGION });
-
   return ecsCredentials;
 }
 
-export async function getAWSUserFromDefaultLocalProfile(): Promise<AWS.Credentials> {
-  let credentials = new AWS.SharedIniFileCredentials();
+async function validateCredentials(
+  credentials: AwsCredentialIdentityProvider
+): Promise<boolean> {
+  if (hasInjectedCredentials(credentials)) {
+    return true;
+  }
+  const client = new STSClient({
+    credentials,
+  });
+  const input = {};
+  const command = new GetCallerIdentityCommand(input);
+  try {
+    const response = await client.send(command);
+    if (!response.Account) {
+      return false;
+    }
+  } catch (e) {
+    return false;
+  }
+  return true;
+}
+
+export async function getAWSUserFromDefaultLocalProfile(): Promise<AwsCredentialIdentityProvider> {
+  let credentials = fromIni();
 
   const envVarValues = {
     AWS_SDK_LOAD_CONFIG: process.env.AWS_SDK_LOAD_CONFIG,
   };
 
-  // if no access key is found, try loading process_credentials
-  if (!credentials.accessKeyId) {
+  if (!(await validateCredentials(credentials))) {
+    console.warn(
+      'Cannot load credentials from INI file. Trying process credentials instead.'
+    );
+    // if no access key is found, try loading process_credentials
     // see https://github.com/aws/aws-sdk-js/pull/1391
     process.env.AWS_SDK_LOAD_CONFIG = '1';
-    credentials = new AWS.ProcessCredentials();
-    await credentials.refreshPromise();
+    credentials = fromProcess();
   }
 
   resetEnvironmentVariables(envVarValues);
 
-  AWS.config.credentials = credentials;
   return credentials;
 }
 
 export async function getAWSUserFromGoldstackConfig(
   config: AWSConfiguration,
   userName: string
-): Promise<AWS.Credentials> {
+): Promise<AwsCredentialIdentityProvider> {
   const user = config.users.find((user) => user.name === userName);
   if (!user) {
     throw new Error(`User '${userName}' does not exist in AWS configuration.`);
@@ -101,16 +128,16 @@ export async function getAWSUserFromGoldstackConfig(
       process.env.AWS_CONFIG_FILE = userConfig.awsConfigFileName;
     }
 
-    let credentials: AWS.Credentials;
+    let credentials: AwsCredentialIdentityProvider;
     let filename: string | undefined = undefined;
     if (!process.env.SHARE_CREDENTIALS_FILE) {
       filename = userConfig.awsCredentialsFileName;
     }
 
     if (userConfig.credentialsSource !== 'process') {
-      credentials = new AWS.SharedIniFileCredentials({
+      credentials = fromIni({
         profile: userConfig.profile,
-        filename: filename,
+        filepath: filename,
       });
     } else {
       // Allow `AWS.ProcessCredentials` to search the default config location `~/.aws/config` in addition to `credentials`
@@ -121,26 +148,24 @@ export async function getAWSUserFromGoldstackConfig(
         process.env.AWS_SDK_LOAD_CONFIG = '1';
       }
 
-      credentials = new AWS.ProcessCredentials({
+      credentials = fromProcess({
         profile: userConfig.profile,
-        filename: filename,
+        filepath: filename,
       });
-      await credentials.refreshPromise();
     }
 
     resetEnvironmentVariables(envVarValues);
 
-    if (!credentials.accessKeyId) {
-      throw new Error(
-        'Cannot load profile ' +
-          userConfig.profile +
-          ' from AWS configuration for user ' +
-          user.name +
-          '. Please perform `aws login` for the profile using the AWS CLI.'
-      );
-    }
-    AWS.config.credentials = credentials;
-    AWS.config.update({ region: userConfig.awsDefaultRegion });
+    // if (!(await validateCredentials(credentials))) {
+    //   throw new Error(
+    //     'Cannot load profile ' +
+    //       userConfig.profile +
+    //       ' from AWS configuration for user ' +
+    //       user.name +
+    //       '. Please perform `aws login` for the profile using the AWS CLI.'
+    //   );
+    // }
+
     return credentials;
   }
 
@@ -151,12 +176,15 @@ export async function getAWSUserFromGoldstackConfig(
         `AWS Access credentials not defined for user ${userName}. Define them in infra/aws/config.json.`
       );
     }
-    const credentials = new AWS.Credentials({
-      accessKeyId: config.awsAccessKeyId || '',
-      secretAccessKey: config.awsSecretAccessKey || '',
+
+    process.env.AWS_ACCESS_KEY_ID = config.awsAccessKeyId;
+    process.env.AWS_SECRET_ACCESS_KEY = config.awsSecretAccessKey;
+
+    const credentials = fromEnv();
+    injectCredentials(credentials, {
+      accessKeyId: config.awsAccessKeyId,
+      secretAccessKey: config.awsSecretAccessKey,
     });
-    AWS.config.credentials = credentials;
-    AWS.config.update({ region: config.awsDefaultRegion });
     return credentials;
   }
 
@@ -187,12 +215,14 @@ export async function getAWSUserFromGoldstackConfig(
       );
     }
 
-    const credentials = new AWS.Credentials({
-      accessKeyId: awsAccessKeyId,
-      secretAccessKey: awsSecretAccessKey,
+    process.env.AWS_ACCESS_KEY_ID = awsAccessKeyId;
+    process.env.AWS_SECRET_ACCESS_KEY = awsSecretAccessKey;
+    const credentials = fromEnv();
+
+    injectCredentials(credentials, {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     });
-    AWS.config.credentials = credentials;
-    AWS.config.update({ region: awsDefaultRegion });
     return credentials;
   }
 

@@ -1,4 +1,5 @@
 import AWS from 'aws-sdk';
+import { AwsCredentialIdentity } from '@aws-sdk/types';
 
 const assertDynamoDBTable = async (params: {
   dynamoDB: AWS.DynamoDB;
@@ -62,7 +63,7 @@ const assertS3Bucket = async (params: {
 };
 
 export const createState = async (params: {
-  credentials: AWS.Credentials;
+  credentials: AwsCredentialIdentity;
   dynamoDBTableName: string;
   bucketName: string;
 }): Promise<void> => {
