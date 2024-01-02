@@ -192,7 +192,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/client-sts@npm:3.484.0":
+"@aws-sdk/client-sts@npm:3.484.0, @aws-sdk/client-sts@npm:^3.484.0":
   version: 3.484.0
   resolution: "@aws-sdk/client-sts@npm:3.484.0"
   dependencies:
@@ -1978,6 +1978,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/infra-aws@workspace:workspaces/templates-lib/packages/infra-aws"
   dependencies:
+    "@aws-sdk/client-sts": "npm:^3.484.0"
     "@aws-sdk/credential-providers": "npm:^3.484.0"
     "@aws-sdk/types": "npm:^3.468.0"
     "@goldstack/infra": "npm:0.4.9"

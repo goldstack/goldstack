@@ -3049,6 +3049,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./workspaces/templates-lib/packages/infra-aws/",\
         "packageDependencies": [\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+          ["@aws-sdk/client-sts", "npm:3.484.0"],\
           ["@aws-sdk/credential-providers", "npm:3.484.0"],\
           ["@aws-sdk/types", "npm:3.468.0"],\
           ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
