@@ -19,7 +19,7 @@ import {
 import configSchema from './schemas/accountConfigSchema.json';
 import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
 import awsStateConfigSchema from './schemas/awsTerraformStateSchema.json';
-import { AwsCredentialIdentity } from '@aws-sdk/types';
+import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 
 import { AWSTerraformState, RemoteState } from './types/awsTerraformState';
 
@@ -54,6 +54,8 @@ export type {
   AWSDeploymentRegion,
   AWSUserName,
 } from './types/awsDeployment';
+
+export { getAWSCredentials } from './awsAuthUtils';
 
 // deactivate warning message while v3 upgrade in process
 process.env.AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = '1';
@@ -158,7 +160,7 @@ export const createDefaultConfig = (): AWSConfiguration => {
 export const getAWSUser = async (
   userName: string,
   configPath?: string
-): Promise<AwsCredentialIdentity> => {
+): Promise<AwsCredentialIdentityProvider> => {
   // Load from ECS environment if running in ECS
   if (process.env.AWS_CONTAINER_CREDENTIALS_RELATIVE_URI) {
     return await getAWSUserFromContainerEnvironment();

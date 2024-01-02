@@ -16,10 +16,7 @@ import {
   fromProcess,
 } from '@aws-sdk/credential-providers';
 
-import {
-  AwsCredentialIdentity,
-  AwsCredentialIdentityProvider,
-} from '@aws-sdk/types';
+import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 
 export async function getAWSUserFromEnvironmentVariables(): Promise<AwsCredentialIdentityProvider> {
   assert(process.env.AWS_ACCESS_KEY_ID, 'AWS_ACCESS_KEY_ID not defined.');
