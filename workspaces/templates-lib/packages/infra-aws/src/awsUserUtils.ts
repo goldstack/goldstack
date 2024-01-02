@@ -17,6 +17,7 @@ import {
 } from '@aws-sdk/credential-providers';
 
 import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import { hasInjectedCredentials, injectCredentials } from './awsAuthUtils';
 
 export async function getAWSUserFromEnvironmentVariables(): Promise<AwsCredentialIdentityProvider> {
   assert(process.env.AWS_ACCESS_KEY_ID, 'AWS_ACCESS_KEY_ID not defined.');
@@ -24,10 +25,12 @@ export async function getAWSUserFromEnvironmentVariables(): Promise<AwsCredentia
     process.env.AWS_SECRET_ACCESS_KEY,
     'AWS_SECRET_ACCESS_KEY not defined'
   );
-  const region = process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION;
-  assert(region, 'Neither AWS_REGION nor AWS_DEFAULT_REGION are defined.');
   const credentials: AwsCredentialIdentityProvider = fromEnv();
 
+  injectCredentials(credentials, {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  });
   return credentials;
 }
 /**
@@ -51,6 +54,9 @@ export async function getAWSUserFromContainerEnvironment(): Promise<AwsCredentia
 async function validateCredentials(
   credentials: AwsCredentialIdentityProvider
 ): Promise<boolean> {
+  if (hasInjectedCredentials(credentials)) {
+    return true;
+  }
   const client = new STSClient({
     credentials,
   });
@@ -175,6 +181,10 @@ export async function getAWSUserFromGoldstackConfig(
     process.env.AWS_SECRET_ACCESS_KEY = config.awsSecretAccessKey;
 
     const credentials = fromEnv();
+    injectCredentials(credentials, {
+      accessKeyId: config.awsAccessKeyId,
+      secretAccessKey: config.awsSecretAccessKey,
+    });
     return credentials;
   }
 
@@ -208,6 +218,11 @@ export async function getAWSUserFromGoldstackConfig(
     process.env.AWS_ACCESS_KEY_ID = awsAccessKeyId;
     process.env.AWS_SECRET_ACCESS_KEY = awsSecretAccessKey;
     const credentials = fromEnv();
+
+    injectCredentials(credentials, {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    });
     return credentials;
   }
 

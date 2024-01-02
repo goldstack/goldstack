@@ -155,6 +155,14 @@ export const createDefaultConfig = (): AWSConfiguration => {
 };
 
 /**
+ * Resets the environment variables set after obtaining AWS user.
+ */
+export const resetAWSUser = (): void => {
+  delete process.env.AWS_ACCESS_KEY_ID;
+  delete process.env.AWS_SECRET_ACCESS_KEY;
+};
+
+/**
  * Obtains AWS user credentials from config file or environment variables.
  */
 export const getAWSUser = async (
