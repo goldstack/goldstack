@@ -66,9 +66,13 @@ export const createState = async (params: {
   credentials: AwsCredentialIdentity;
   dynamoDBTableName: string;
   bucketName: string;
+  awsRegion: string;
 }): Promise<void> => {
-  const dynamoDB = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
+  const dynamoDB = new AWS.DynamoDB({
+    apiVersion: '2012-08-10',
+    region: params.awsRegion,
+  });
   await assertDynamoDBTable({ dynamoDB, tableName: params.dynamoDBTableName });
-  const s3 = new AWS.S3({ apiVersion: '2006-03-01' });
+  const s3 = new AWS.S3({ apiVersion: '2006-03-01', region: params.awsRegion });
   await assertS3Bucket({ s3, bucketName: params.bucketName });
 };

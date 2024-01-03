@@ -14,7 +14,6 @@ import {
   TerraformDeployment,
   TerraformOptions,
 } from '@goldstack/utils-terraform';
-import AWS from 'aws-sdk';
 import { AwsCredentialIdentity } from '@aws-sdk/types';
 import { createState } from './tfState';
 import crypto from 'crypto';
@@ -34,6 +33,7 @@ const getRemoteStateConfig = (
 
 export class AWSCloudProvider implements CloudProvider {
   user: AwsCredentialIdentity;
+  region: string;
   remoteStateConfig: AWSTerraformState;
 
   generateEnvVariableString = (): string => {
@@ -41,14 +41,14 @@ export class AWSCloudProvider implements CloudProvider {
       `-e AWS_ACCESS_KEY_ID=${this.user.accessKeyId} ` +
       `-e AWS_SECRET_ACCESS_KEY=${this.user.secretAccessKey} ` +
       `-e AWS_SESSION_TOKEN=${this.user.sessionToken || ''} ` +
-      `-e AWS_DEFAULT_REGION=${AWS.config.region} `
+      `-e AWS_DEFAULT_REGION=${this.region} `
     );
   };
 
   setEnvVariables = (): void => {
     process.env.AWS_ACCESS_KEY_ID = this.user.accessKeyId;
     process.env.AWS_SECRET_ACCESS_KEY = this.user.secretAccessKey;
-    process.env.AWS_DEFAULT_REGION = AWS.config.region;
+    process.env.AWS_DEFAULT_REGION = this.region;
     process.env.AWS_SESSION_TOKEN = this.user.sessionToken || '';
   };
 
@@ -77,10 +77,6 @@ export class AWSCloudProvider implements CloudProvider {
       );
     }
 
-    if (!AWS.config.region) {
-      throw new Error('AWS region not defined');
-    }
-
     const tfKey = (deployment as TerraformDeployment).tfStateKey;
 
     if (!tfKey) {
@@ -90,17 +86,19 @@ export class AWSCloudProvider implements CloudProvider {
     return [
       ['bucket', bucket],
       ['key', `${tfKey}`],
-      ['region', AWS.config.region],
+      ['region', this.region],
       ['dynamodb_table', ddTable],
     ];
   };
 
   constructor(
     credentials: AwsCredentialIdentity,
-    awsConfig: AWSTerraformState
+    awsConfig: AWSTerraformState,
+    region: string
   ) {
     this.user = credentials;
     this.remoteStateConfig = awsConfig;
+    this.region = region;
   }
 }
 
@@ -136,10 +134,15 @@ export const terraformAwsCli = async (
     bucketName: remoteStateConfig.terraformStateBucket,
     dynamoDBTableName: remoteStateConfig.terraformStateDynamoDBTable,
     credentials,
+    awsRegion: deployment.awsRegion,
   });
 
   terraformCli(args, {
     ...options,
-    provider: new AWSCloudProvider(credentials, awsTerraformConfig),
+    provider: new AWSCloudProvider(
+      credentials,
+      awsTerraformConfig,
+      deployment.awsRegion
+    ),
   });
 };

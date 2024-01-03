@@ -18,10 +18,9 @@ jobs:
           # Checking out the released tag
           ref: ${{ github.event.inputs.github-ref }}
           token: ${{secrets.BUILD_TOKEN}}
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: '18.x'
-          registry-url: https://registry.npmjs.org
 
       - name: Prepare yarn
         run: |
