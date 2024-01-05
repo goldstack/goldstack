@@ -1,4 +1,4 @@
-import S3 from 'aws-sdk/clients/s3';
+import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
 
 import { v4 as uuid4 } from 'uuid';
 
@@ -15,10 +15,10 @@ import assert from 'assert';
 import ProjectData from './types/ProjectData';
 
 class ProjectRepositoryS3 implements ProjectRepository {
-  private s3: S3;
+  private s3: S3Client;
   private bucketName: string;
 
-  constructor(params: { s3: S3; bucketName: string }) {
+  constructor(params: { s3: S3Client; bucketName: string }) {
     this.s3 = params.s3;
     this.bucketName = params.bucketName;
   }

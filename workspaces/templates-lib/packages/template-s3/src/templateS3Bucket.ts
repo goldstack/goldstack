@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { Credentials, EnvironmentCredentials } from 'aws-sdk/lib/core';
-import AWS from 'aws-sdk';
-import S3 from 'aws-sdk/clients/s3';
+import { fromEnv } from '@aws-sdk/credential-providers';
+import { S3Client } from '@aws-sdk/client-s3';
+import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { S3Package, S3Deployment } from './types/S3Package';
 import assert from 'assert';
@@ -12,7 +12,7 @@ export const connect = async (
   goldstackConfig: any,
   packageSchema: any,
   deploymentName?: string
-): Promise<S3> => {
+): Promise<S3Client> => {
   const packageConfig = new EmbeddedPackageConfig<S3Package, S3Deployment>({
     goldstackJson: goldstackConfig,
     packageSchema,
@@ -36,9 +36,9 @@ export const connect = async (
   }
   const deployment = packageConfig.getDeployment(deploymentName);
 
-  let awsUser: Credentials;
+  let awsUser: AwsCredentialIdentityProvider;
   if (process.env.AWS_ACCESS_KEY_ID) {
-    awsUser = new AWS.EnvironmentCredentials('AWS');
+    awsUser = fromEnv();
   } else {
     // load this in lazy to enable omitting the dependency when bundling lambdas
     // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -46,8 +46,7 @@ export const connect = async (
     awsUser = await infraAWSLib.getAWSUser(deployment.awsUser);
   }
 
-  const s3 = new S3({
-    apiVersion: '2006-03-01',
+  const s3 = new S3Client({
     credentials: awsUser,
     region: deployment.awsRegion,
   });

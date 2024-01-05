@@ -3,7 +3,7 @@ import {
   getBucketName as templateGetBucketName,
 } from '@goldstack/template-s3';
 
-import S3 from 'aws-sdk/clients/s3';
+import { S3 } from '@aws-sdk/client-s3';
 import goldstackConfig from './../goldstack.json';
 import goldstackSchema from './../schemas/package.schema.json';
 
