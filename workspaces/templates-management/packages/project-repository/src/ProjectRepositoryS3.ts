@@ -1,8 +1,12 @@
-import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
+import {
+  S3Client,
+  GetObjectCommand,
+  NoSuchKey,
+  PutObjectCommand,
+} from '@aws-sdk/client-s3';
 
 import { v4 as uuid4 } from 'uuid';
 
-import { AWSError } from 'aws-sdk/lib/core';
 import ProjectRepository, { ProjectId } from './ProjectRepositoryInterface';
 import { ProjectConfiguration } from '@goldstack/utils-project';
 
@@ -27,20 +31,18 @@ class ProjectRepositoryS3 implements ProjectRepository {
     id: string
   ): Promise<ProjectConfiguration | undefined> {
     try {
-      const obj = await this.s3
-        .getObject({
-          Bucket: this.bucketName,
-          Key: `${id}/project.json`,
-        })
-        .promise();
+      const cmd = new GetObjectCommand({
+        Bucket: this.bucketName,
+        Key: `${id}/project.json`,
+      });
+      const obj = await this.s3.send(cmd);
       assert(
         obj.Body,
         `Cannot read key from project S3 bucket: ${id}/project.json`
       );
       return JSON.parse(obj.Body.toString());
     } catch (e) {
-      const awsError = e as AWSError;
-      if (awsError.code === 'NoSuchKey') {
+      if (e instanceof NoSuchKey) {
         return undefined;
       }
       throw e;
@@ -60,22 +62,20 @@ class ProjectRepositoryS3 implements ProjectRepository {
     id: ProjectId,
     projectData: ProjectData
   ): Promise<void> {
-    await this.s3
-      .putObject({
-        Bucket: this.bucketName,
-        Key: `${id}/projectData.json`,
-        Body: JSON.stringify(projectData, null, 2),
-      })
-      .promise();
+    const cmd = new PutObjectCommand({
+      Bucket: this.bucketName,
+      Key: `${id}/projectData.json`,
+      Body: JSON.stringify(projectData, null, 2),
+    });
+    await this.s3.send(cmd);
   }
 
   async getProjectData(id: ProjectId): Promise<ProjectData> {
-    const obj = await this.s3
-      .getObject({
-        Bucket: this.bucketName,
-        Key: `${id}/projectData.json`,
-      })
-      .promise();
+    const cmd = new GetObjectCommand({
+      Bucket: this.bucketName,
+      Key: `${id}/projectData.json`,
+    });
+    const obj = await this.s3.send(cmd);
     assert(
       obj.Body,
       `Cannot read key from project S3 bucket: ${id}/projectData.json`
@@ -88,13 +88,12 @@ class ProjectRepositoryS3 implements ProjectRepository {
     configuration: ProjectConfiguration
   ): Promise<void> {
     configuration.createdAt = new Date().toISOString();
-    await this.s3
-      .putObject({
-        Bucket: this.bucketName,
-        Key: `${id}/project.json`,
-        Body: JSON.stringify(configuration, null, 2),
-      })
-      .promise();
+    const cmd = new PutObjectCommand({
+      Bucket: this.bucketName,
+      Key: `${id}/project.json`,
+      Body: JSON.stringify(configuration, null, 2),
+    });
+    await this.s3.send(cmd);
   }
 
   async downloadProject(id: ProjectId, path: string): Promise<void> {

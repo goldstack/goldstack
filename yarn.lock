@@ -4310,11 +4310,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-s3@npm:0.3.12, @goldstack/utils-s3@workspace:workspaces/templates-lib/packages/utils-s3":
+"@goldstack/utils-s3@npm:0.3.12":
+  version: 0.3.12
+  resolution: "@goldstack/utils-s3@npm:0.3.12"
+  dependencies:
+    aws-sdk: "npm:2.1525.0"
+  checksum: 8e768d4b3e051546a83b7b2ba0b3c8d1e44247ab014055d429a5cf0a83b2a652e321226b01ee9b783514ce6e85125bb34f37158c82740736b854b416a1cb672f
+  languageName: node
+  linkType: hard
+
+"@goldstack/utils-s3@workspace:workspaces/templates-lib/packages/utils-s3":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-s3@workspace:workspaces/templates-lib/packages/utils-s3"
   dependencies:
+    "@aws-sdk/client-s3": "npm:^3.485.0"
     "@goldstack/utils-git": "npm:0.2.9"
+    "@smithy/types": "npm:^2.8.0"
     "@swc/core": "npm:^1.3.74"
     "@swc/jest": "npm:^0.2.27"
     "@types/jest": "npm:^29.0.1"

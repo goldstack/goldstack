@@ -3923,7 +3923,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/project-repository-bucket", "workspace:workspaces/templates-management/packages/project-repository-bucket"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],\
-          ["@goldstack/utils-s3", "workspace:workspaces/templates-lib/packages/utils-s3"],\
+          ["@goldstack/utils-s3", "npm:0.3.12"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
@@ -4089,7 +4089,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/session-repository", "workspace:workspaces/templates-management/packages/session-repository"],\
           ["@goldstack/auth", "workspace:workspaces/templates-management/packages/auth"],\
           ["@goldstack/session-repository-bucket", "workspace:workspaces/templates-management/packages/session-repository-bucket"],\
-          ["@goldstack/utils-s3", "workspace:workspaces/templates-lib/packages/utils-s3"],\
+          ["@goldstack/utils-s3", "npm:0.3.12"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
           ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
@@ -4597,7 +4597,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
-          ["@goldstack/utils-s3", "workspace:workspaces/templates-lib/packages/utils-s3"],\
+          ["@goldstack/utils-s3", "npm:0.3.12"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
@@ -5437,11 +5437,21 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@goldstack/utils-s3", [\
+      ["npm:0.3.12", {\
+        "packageLocation": "./.yarn/cache/@goldstack-utils-s3-npm-0.3.12-0acacf2182-8e768d4b3e.zip/node_modules/@goldstack/utils-s3/",\
+        "packageDependencies": [\
+          ["@goldstack/utils-s3", "npm:0.3.12"],\
+          ["aws-sdk", "npm:2.1525.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["workspace:workspaces/templates-lib/packages/utils-s3", {\
         "packageLocation": "./workspaces/templates-lib/packages/utils-s3/",\
         "packageDependencies": [\
           ["@goldstack/utils-s3", "workspace:workspaces/templates-lib/packages/utils-s3"],\
+          ["@aws-sdk/client-s3", "npm:3.485.0"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@smithy/types", "npm:2.8.0"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
           ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
           ["@types/jest", "npm:29.0.1"],\
