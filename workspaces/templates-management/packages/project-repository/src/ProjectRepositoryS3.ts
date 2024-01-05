@@ -126,13 +126,12 @@ class ProjectRepositoryS3 implements ProjectRepository {
 
     await zip({ directory: path, target: targetArchive });
 
-    await this.s3
-      .putObject({
-        Bucket: this.bucketName,
-        Key: `${id}/project.zip`,
-        Body: fs.createReadStream(targetArchive),
-      })
-      .promise();
+    const cmd = new PutObjectCommand({
+      Bucket: this.bucketName,
+      Key: `${id}/project.zip`,
+      Body: fs.createReadStream(targetArchive),
+    });
+    await this.s3.send(cmd);
     await rmSafe(targetDir);
   }
 }

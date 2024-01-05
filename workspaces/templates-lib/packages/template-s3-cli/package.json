@@ -42,7 +42,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/template-s3": "0.4.16",
+    "@goldstack/template-s3": "0.5.0",
     "@goldstack/utils-cli": "0.3.9",
     "@goldstack/utils-docker": "0.4.10",
     "@goldstack/utils-log": "0.3.9",
