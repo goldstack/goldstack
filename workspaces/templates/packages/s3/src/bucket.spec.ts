@@ -1,3 +1,4 @@
+import { PutObjectCommand } from '@aws-sdk/client-s3';
 import { getBucketName, connect } from './bucket';
 
 jest.setTimeout(60000);
@@ -17,13 +18,12 @@ describe('S3 Bucket', () => {
     }
     const s3 = await connect('prod');
     const bucketName = await getBucketName('prod');
-    await s3
-      .putObject({
-        Key: 'test.txt',
-        Body: 'hello',
-        Bucket: bucketName,
-      })
-      .promise();
+    const cmd = new PutObjectCommand({
+      Key: 'test.txt',
+      Body: 'hello',
+      Bucket: bucketName,
+    });
+    await s3.send(cmd);
   });
 
   it('Should get local bucket name', async () => {
@@ -34,12 +34,11 @@ describe('S3 Bucket', () => {
   it('Should connect to local bucket', async () => {
     const bucketName = await getBucketName();
     const s3 = await connect();
-    await s3
-      .putObject({
-        Key: 'local.txt',
-        Body: 'hello',
-        Bucket: bucketName,
-      })
-      .promise();
+    const cmd = new PutObjectCommand({
+      Key: 'local.txt',
+      Body: 'hello',
+      Bucket: bucketName,
+    });
+    await s3.send(cmd);
   });
 });
