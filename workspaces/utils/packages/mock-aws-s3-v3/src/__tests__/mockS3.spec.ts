@@ -9,7 +9,7 @@ import { createWriteStream, readFileSync } from 'fs';
 import { createS3Client } from './../mockS3';
 
 test('Can store and retrieve text objects', async () => {
-  const mockClient = createS3Client();
+  const mockClient = createS3Client('goldstackLocal/s3');
   await mockClient.send(
     new PutObjectCommand({
       Bucket: 'test-local',
@@ -46,7 +46,7 @@ test('Can store and retrieve text objects', async () => {
 });
 
 test('Can retrieve streams', async () => {
-  const mockClient = createS3Client();
+  const mockClient = createS3Client('goldstackLocal/s3');
 
   await mockClient.send(
     new PutObjectCommand({

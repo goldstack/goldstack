@@ -4304,6 +4304,7 @@ __metadata:
     "@types/jest": "npm:^29.0.1"
     "@types/node": "npm:^18.7.13"
     jest: "npm:^29.3.1"
+    mock-aws-s3-v3: "npm:5.0.0"
     rimraf: "npm:^3.0.2"
     typescript: "npm:^4.8.4"
   languageName: unknown
@@ -16240,7 +16241,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mock-aws-s3-v3@workspace:workspaces/utils/packages/mock-aws-s3-v3":
+"mock-aws-s3-v3@npm:5.0.0, mock-aws-s3-v3@workspace:workspaces/utils/packages/mock-aws-s3-v3":
   version: 0.0.0-use.local
   resolution: "mock-aws-s3-v3@workspace:workspaces/utils/packages/mock-aws-s3-v3"
   dependencies:

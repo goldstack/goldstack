@@ -3,7 +3,7 @@ import assert from 'assert';
 import { createS3Client } from './../mockS3';
 
 test('List objects', async () => {
-  const mockClient = createS3Client();
+  const mockClient = createS3Client('goldstackLocal/s3');
   await mockClient.send(
     new PutObjectCommand({
       Bucket: 'test-list-objects',

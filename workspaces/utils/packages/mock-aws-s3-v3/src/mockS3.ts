@@ -17,20 +17,19 @@ import {
 import { mockClient } from 'aws-sdk-client-mock';
 import S3Mock from 'mock-aws-s3';
 
-import {
-  Command,
-  MetadataBearer,
-  StreamingBlobPayloadOutputTypes,
-} from '@smithy/types';
+import { StreamingBlobPayloadOutputTypes } from '@smithy/types';
 import { WriteStream } from 'fs';
 
-export function createS3Client(s3Client?: S3Client): S3Client {
+export function createS3Client(
+  localDirectory: string,
+  s3Client?: S3Client
+): S3Client {
   if (!s3Client) {
     s3Client = new S3Client();
   }
   const client = mockClient(S3Client);
 
-  S3Mock.config.basePath = 'goldstackLocal/s3';
+  S3Mock.config.basePath = localDirectory;
   const mockS3 = new S3Mock.S3({
     params: {},
   });
