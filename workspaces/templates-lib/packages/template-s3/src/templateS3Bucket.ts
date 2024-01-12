@@ -27,11 +27,9 @@ export const connect = async (
   if (deploymentName === 'local') {
     // only require this for local testing
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const AWSMock = require(excludeInBundle('mock-aws-s3'));
-    AWSMock.config.basePath = 'goldstackLocal/s3';
-    const s3 = new AWSMock.S3({
-      params: {},
-    });
+    const MockS3 = require(excludeInBundle('mock-aws-s3-v3'));
+    const s3 = MockS3.createS3Client('goldstackLocal/s3');
+
     return s3 as any;
   }
   const deployment = packageConfig.getDeployment(deploymentName);

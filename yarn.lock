@@ -3517,6 +3517,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-repository@workspace:workspaces/templates-management/packages/template-repository"
   dependencies:
+    "@aws-sdk/client-s3": "npm:^3.485.0"
     "@goldstack/utils-package": "npm:0.4.9"
     "@goldstack/utils-s3": "npm:0.4.0"
     "@goldstack/utils-sh": "npm:0.5.9"
@@ -3528,7 +3529,6 @@ __metadata:
     "@types/jest": "npm:^29.0.1"
     "@types/node": "npm:^18.7.13"
     "@types/semver": "npm:^7.2.0"
-    aws-sdk: "npm:2.1525.0"
     fs-extra: "npm:^10.0.0"
     jest: "npm:^29.3.1"
     rimraf: "npm:^3.0.2"
@@ -3599,6 +3599,7 @@ __metadata:
     "@types/yargs": "npm:^17.0.10"
     jest: "npm:^29.3.1"
     mock-aws-s3: "npm:^4.0.2"
+    mock-aws-s3-v3: "npm:5.0.0"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.1"
@@ -4359,7 +4360,7 @@ __metadata:
     axios: "npm:1.6.0"
     extract-zip: "npm:^2.0.1"
     jest: "npm:^29.3.1"
-    mock-aws-s3: "npm:^4.0.2"
+    mock-aws-s3-v3: "npm:5.0.0"
     rimraf: "npm:^3.0.2"
     typescript: "npm:^4.8.4"
   languageName: unknown

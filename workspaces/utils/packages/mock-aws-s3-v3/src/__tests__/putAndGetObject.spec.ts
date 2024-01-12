@@ -5,7 +5,12 @@ import {
 } from '@aws-sdk/client-s3';
 import { NodeJsClient } from '@smithy/types';
 import assert from 'assert';
-import { createWriteStream, readFileSync } from 'fs';
+import {
+  createReadStream,
+  createWriteStream,
+  readFileSync,
+  writeFileSync,
+} from 'fs';
 import { createS3Client } from './../mockS3';
 
 test('Can store and retrieve text objects', async () => {
@@ -45,14 +50,18 @@ test('Can store and retrieve text objects', async () => {
   assert((await res2.Body?.transformToString()) === 'hithere2');
 });
 
-test('Can retrieve streams', async () => {
+test('Can put and retrieve streams', async () => {
   const mockClient = createS3Client('goldstackLocal/s3');
+
+  writeFileSync('./goldstackLocal/file.txt', 'streamedfile');
+
+  const fileStream = createReadStream('./goldstackLocal/file.txt');
 
   await mockClient.send(
     new PutObjectCommand({
       Bucket: 'test-local',
       Key: 'teststreamobject',
-      Body: 'Some long story.',
+      Body: fileStream,
     })
   );
 
@@ -74,5 +83,5 @@ test('Can retrieve streams', async () => {
   });
 
   const checkFile = readFileSync('./goldstackLocal/text.txt').toString();
-  assert(checkFile === 'Some long story.');
+  assert(checkFile === 'streamedfile');
 });

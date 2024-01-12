@@ -1,5 +1,5 @@
 import { S3TemplateRepository } from '@goldstack/template-repository';
-import AWSMock from 'mock-aws-s3';
+import { createS3Client } from 'mock-aws-s3-v3';
 import { rmSafe, mkdir } from '@goldstack/utils-sh';
 import { promisify } from 'util';
 import { build } from '@goldstack/template-build';
@@ -39,13 +39,9 @@ export const prepareTestDir = async (
   mkdir('-p', goldstackTestsDir + 's3/repo');
   mkdir('-p', goldstackTestsDir + 'templates/');
 
-  AWSMock.config.basePath = goldstackTestsDir + 's3/repo';
-
-  const s3: AWSMock.S3 = new AWSMock.S3({
-    params: {},
-  });
+  const s3 = createS3Client(goldstackTestsDir + 's3/repo');
   const repo = new S3TemplateRepository({
-    s3: s3 as any,
+    s3: s3,
     bucket: 'repo',
     bucketUrl: 'https://local.goldstack.party/repo/',
   });

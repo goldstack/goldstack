@@ -48,7 +48,7 @@
     "@goldstack/utils-package-config-embedded": "0.5.10",
     "@goldstack/utils-template": "0.4.9",
     "@goldstack/utils-terraform": "0.4.15",
-    "mock-aws-s3": "^4.0.2",
+    "mock-aws-s3-v3": "5.0.0",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
@@ -58,7 +58,6 @@
     "@swc/core": "^1.3.74",
     "@swc/jest": "^0.2.27",
     "@types/jest": "^29.0.1",
-    "@types/mock-aws-s3": "^2.6.3",
     "@types/node": "^18.7.13",
     "@types/yargs": "^17.0.10",
     "jest": "^29.3.1",
