@@ -58,7 +58,7 @@ export class S3TemplateRepository implements TemplateRepository {
       if (!obj.Body) {
         throw new Error('Invalid object body for: ' + templateName);
       }
-      return readTemplateConfigFromString(obj.Body.toString());
+      return readTemplateConfigFromString(await obj.Body.transformToString());
     } catch (e) {
       if (e instanceof NoSuchKey) {
         return undefined;

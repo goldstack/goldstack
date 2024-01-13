@@ -101,6 +101,6 @@ test('Can put and retrieve streams', async () => {
     });
   });
 
-  const checkFile = readFileSync('./goldstackLocal/text.txt').toString();
+  const checkFile = readFileSync('./goldstackLocal/text.txt').toString('utf8');
   assert(checkFile === 'streamedfile');
 });

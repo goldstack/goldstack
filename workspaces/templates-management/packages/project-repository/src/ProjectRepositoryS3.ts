@@ -40,7 +40,7 @@ class ProjectRepositoryS3 implements ProjectRepository {
         obj.Body,
         `Cannot read key from project S3 bucket: ${id}/project.json`
       );
-      return JSON.parse(obj.Body.toString());
+      return JSON.parse(await obj.Body.transformToString());
     } catch (e) {
       if (e instanceof NoSuchKey) {
         return undefined;
@@ -80,7 +80,7 @@ class ProjectRepositoryS3 implements ProjectRepository {
       obj.Body,
       `Cannot read key from project S3 bucket: ${id}/projectData.json`
     );
-    return JSON.parse(obj.Body.toString());
+    return JSON.parse(await obj.Body.transformToString());
   }
 
   async updateProjectConfiguration(
