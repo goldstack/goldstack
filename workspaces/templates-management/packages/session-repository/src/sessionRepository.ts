@@ -59,7 +59,7 @@ export class SessionRepository {
         obj.Body,
         `Cannot read key from sessions S3 bucket: ${sessionId}/session.json`
       );
-      return JSON.parse(obj.Body.toString());
+      return JSON.parse(await obj.Body.transformToString());
     } catch (e) {
       if (e instanceof NoSuchKey) {
         return undefined;

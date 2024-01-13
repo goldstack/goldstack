@@ -48,7 +48,7 @@ export function createS3Client(
       const output: GetObjectOutput = { ...(res as any) };
 
       const body: StreamingBlobPayloadOutputTypes = {
-        toString: () => res.Body?.toString(),
+        // toString: () => res.Body?.toString(), // this is not how toString works in the new client
         transformToString: async () => res.Body?.toString() || '',
         pipe: (destination: WriteStream, options?) => {
           return resOperation.createReadStream().pipe(destination, options);
