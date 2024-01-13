@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-s3",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Building blocks for linking a package to an AWS S3 bucket.",
   "keywords": [
     "goldstack",
@@ -51,7 +51,7 @@
     "@goldstack/utils-terraform": "0.4.16",
     "@smithy/smithy-client": "^2.2.1",
     "@smithy/types": "^2.8.0",
-    "mock-aws-s3-v3": "5.0.1",
+    "mock-aws-s3-v3": "5.0.2",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
