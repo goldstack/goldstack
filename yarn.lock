@@ -173,7 +173,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/client-s3@npm:3.485.0, @aws-sdk/client-s3@npm:^3.485.0":
+"@aws-sdk/client-s3@npm:3.485.0":
   version: 3.485.0
   resolution: "@aws-sdk/client-s3@npm:3.485.0"
   dependencies:
@@ -661,7 +661,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/credential-providers@npm:3.485.0, @aws-sdk/credential-providers@npm:^3.485.0":
+"@aws-sdk/credential-providers@npm:3.485.0":
   version: 3.485.0
   resolution: "@aws-sdk/credential-providers@npm:3.485.0"
   dependencies:
@@ -2424,7 +2424,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/goldstack-api@workspace:workspaces/apps/packages/goldstack-api"
   dependencies:
-    "@aws-sdk/client-s3": "npm:^3.485.0"
+    "@aws-sdk/client-s3": "npm:3.485.0"
     "@goldstack/auth": "npm:0.1.0"
     "@goldstack/goldstack-email-send": "npm:0.1.0"
     "@goldstack/infra-aws": "npm:0.4.14"
@@ -2567,7 +2567,7 @@ __metadata:
   resolution: "@goldstack/infra-aws@workspace:workspaces/templates-lib/packages/infra-aws"
   dependencies:
     "@aws-sdk/client-sts": "npm:^3.484.0"
-    "@aws-sdk/credential-providers": "npm:^3.485.0"
+    "@aws-sdk/credential-providers": "npm:3.485.0"
     "@aws-sdk/types": "npm:^3.485.0"
     "@goldstack/infra": "npm:0.4.9"
     "@goldstack/utils-config": "npm:0.4.9"
@@ -2850,7 +2850,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/project-package-bucket@workspace:workspaces/templates-management/packages/project-package-bucket"
   dependencies:
-    "@aws-sdk/client-s3": "npm:^3.485.0"
+    "@aws-sdk/client-s3": "npm:3.485.0"
     "@goldstack/template-s3": "npm:0.5.0"
     "@goldstack/template-s3-cli": "npm:0.6.18"
     "@goldstack/utils-git": "npm:0.2.9"
@@ -2873,7 +2873,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/project-repository-bucket@workspace:workspaces/templates-management/packages/project-repository-bucket"
   dependencies:
-    "@aws-sdk/client-s3": "npm:^3.485.0"
+    "@aws-sdk/client-s3": "npm:3.485.0"
     "@goldstack/template-s3": "npm:0.5.0"
     "@goldstack/template-s3-cli": "npm:0.6.18"
     "@goldstack/utils-git": "npm:0.2.9"
@@ -2896,7 +2896,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/project-repository@workspace:workspaces/templates-management/packages/project-repository"
   dependencies:
-    "@aws-sdk/client-s3": "npm:^3.485.0"
+    "@aws-sdk/client-s3": "npm:3.485.0"
     "@goldstack/auth": "npm:0.1.0"
     "@goldstack/infra-aws": "npm:0.4.14"
     "@goldstack/project-config": "npm:0.1.0"
@@ -2926,7 +2926,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/s3@workspace:workspaces/templates/packages/s3"
   dependencies:
-    "@aws-sdk/client-s3": "npm:^3.485.0"
+    "@aws-sdk/client-s3": "npm:3.485.0"
     "@goldstack/template-s3": "npm:0.5.0"
     "@goldstack/template-s3-cli": "npm:0.6.18"
     "@smithy/smithy-client": "npm:^2.2.1"
@@ -3036,7 +3036,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/session-repository-bucket@workspace:workspaces/templates-management/packages/session-repository-bucket"
   dependencies:
-    "@aws-sdk/client-s3": "npm:^3.485.0"
+    "@aws-sdk/client-s3": "npm:3.485.0"
     "@goldstack/template-s3": "npm:0.5.0"
     "@goldstack/template-s3-cli": "npm:0.6.18"
     "@goldstack/utils-git": "npm:0.2.9"
@@ -3059,7 +3059,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/session-repository@workspace:workspaces/templates-management/packages/session-repository"
   dependencies:
-    "@aws-sdk/client-s3": "npm:^3.485.0"
+    "@aws-sdk/client-s3": "npm:3.485.0"
     "@goldstack/auth": "npm:0.1.0"
     "@goldstack/session-repository-bucket": "npm:0.1.0"
     "@goldstack/utils-s3": "npm:0.4.0"
@@ -3530,7 +3530,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-repository-bucket@workspace:workspaces/templates-management/packages/template-repository-bucket"
   dependencies:
-    "@aws-sdk/client-s3": "npm:^3.485.0"
+    "@aws-sdk/client-s3": "npm:3.485.0"
     "@goldstack/template-s3": "npm:0.5.0"
     "@goldstack/template-s3-cli": "npm:0.6.18"
     "@goldstack/utils-git": "npm:0.2.9"
@@ -3553,7 +3553,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-repository@workspace:workspaces/templates-management/packages/template-repository"
   dependencies:
-    "@aws-sdk/client-s3": "npm:^3.485.0"
+    "@aws-sdk/client-s3": "npm:3.485.0"
     "@goldstack/utils-package": "npm:0.4.9"
     "@goldstack/utils-s3": "npm:0.4.0"
     "@goldstack/utils-sh": "npm:0.5.9"
@@ -4333,7 +4333,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-s3@workspace:workspaces/templates-lib/packages/utils-s3"
   dependencies:
-    "@aws-sdk/client-s3": "npm:^3.485.0"
+    "@aws-sdk/client-s3": "npm:3.485.0"
     "@goldstack/utils-git": "npm:0.2.9"
     "@smithy/types": "npm:^2.8.0"
     "@swc/core": "npm:^1.3.74"
@@ -16281,7 +16281,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mock-aws-s3-v3@workspace:workspaces/utils/packages/mock-aws-s3-v3"
   dependencies:
-    "@aws-sdk/client-s3": "npm:^3.485.0"
+    "@aws-sdk/client-s3": "npm:3.485.0"
     "@goldstack/utils-git": "npm:0.2.9"
     "@smithy/types": "npm:^2.8.0"
     "@swc/core": "npm:^1.3.74"
