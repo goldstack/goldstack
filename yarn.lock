@@ -173,7 +173,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/client-s3@npm:^3.485.0":
+"@aws-sdk/client-s3@npm:3.485.0, @aws-sdk/client-s3@npm:^3.485.0":
   version: 3.485.0
   resolution: "@aws-sdk/client-s3@npm:3.485.0"
   dependencies:
@@ -661,7 +661,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/credential-providers@npm:^3.485.0":
+"@aws-sdk/credential-providers@npm:3.485.0, @aws-sdk/credential-providers@npm:^3.485.0":
   version: 3.485.0
   resolution: "@aws-sdk/credential-providers@npm:3.485.0"
   dependencies:
@@ -904,6 +904,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@aws-sdk/s3-request-presigner@npm:3.485.0":
+  version: 3.485.0
+  resolution: "@aws-sdk/s3-request-presigner@npm:3.485.0"
+  dependencies:
+    "@aws-sdk/signature-v4-multi-region": "npm:3.485.0"
+    "@aws-sdk/types": "npm:3.485.0"
+    "@aws-sdk/util-format-url": "npm:3.485.0"
+    "@smithy/middleware-endpoint": "npm:^2.3.0"
+    "@smithy/protocol-http": "npm:^3.0.12"
+    "@smithy/smithy-client": "npm:^2.2.1"
+    "@smithy/types": "npm:^2.8.0"
+    tslib: "npm:^2.5.0"
+  checksum: d4d9fbdfe620a9cd89a14f392f7e565846b6a73cfea473b30ea7a22682007da651501be7ea728ac1270efdc2919227688b5fdb8b2298542db06ed9ca37478918
+  languageName: node
+  linkType: hard
+
 "@aws-sdk/signature-v4-multi-region@npm:3.485.0":
   version: 3.485.0
   resolution: "@aws-sdk/signature-v4-multi-region@npm:3.485.0"
@@ -1065,6 +1081,18 @@ __metadata:
     "@smithy/util-endpoints": "npm:^1.0.8"
     tslib: "npm:^2.5.0"
   checksum: c1844fed8bb8fd01490fde9ed6cf3dad5647a51b72a964f7fd525f82a812bb79a128ff24fe0c3a3afb459290da21435548ef32e249d0018fe53bb3b4d4635bcb
+  languageName: node
+  linkType: hard
+
+"@aws-sdk/util-format-url@npm:3.485.0":
+  version: 3.485.0
+  resolution: "@aws-sdk/util-format-url@npm:3.485.0"
+  dependencies:
+    "@aws-sdk/types": "npm:3.485.0"
+    "@smithy/querystring-builder": "npm:^2.0.16"
+    "@smithy/types": "npm:^2.8.0"
+    tslib: "npm:^2.5.0"
+  checksum: 4e73844d4d9b3ff68b287d4c55ec30b9f50aec7830b7b765126859f6dae4cae8588e43e166f7a497164903f3463dcd496ff32ed2add18b477c98bfbe02555dae
   languageName: node
   linkType: hard
 
@@ -2396,6 +2424,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/goldstack-api@workspace:workspaces/apps/packages/goldstack-api"
   dependencies:
+    "@aws-sdk/client-s3": "npm:^3.485.0"
     "@goldstack/auth": "npm:0.1.0"
     "@goldstack/goldstack-email-send": "npm:0.1.0"
     "@goldstack/infra-aws": "npm:0.4.14"
@@ -2896,6 +2925,8 @@ __metadata:
     "@aws-sdk/client-s3": "npm:^3.485.0"
     "@goldstack/template-s3": "npm:0.5.0"
     "@goldstack/template-s3-cli": "npm:0.6.18"
+    "@smithy/smithy-client": "npm:^2.2.1"
+    "@smithy/types": "npm:^2.8.0"
     "@swc/core": "npm:^1.3.74"
     "@swc/jest": "npm:^0.2.27"
     "@types/jest": "npm:^29.0.1"
@@ -3573,8 +3604,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-s3@workspace:workspaces/templates-lib/packages/template-s3"
   dependencies:
-    "@aws-sdk/client-s3": "npm:^3.485.0"
-    "@aws-sdk/credential-providers": "npm:^3.485.0"
+    "@aws-sdk/client-s3": "npm:3.485.0"
+    "@aws-sdk/credential-providers": "npm:3.485.0"
+    "@aws-sdk/s3-request-presigner": "npm:3.485.0"
     "@aws-sdk/types": "npm:^3.485.0"
     "@goldstack/infra": "npm:0.4.9"
     "@goldstack/infra-aws": "npm:0.4.14"
@@ -3586,6 +3618,8 @@ __metadata:
     "@goldstack/utils-package-config-generate": "npm:0.3.9"
     "@goldstack/utils-template": "npm:0.4.9"
     "@goldstack/utils-terraform": "npm:0.4.15"
+    "@smithy/smithy-client": "npm:^2.2.1"
+    "@smithy/types": "npm:^2.8.0"
     "@swc/core": "npm:^1.3.74"
     "@swc/jest": "npm:^0.2.27"
     "@types/jest": "npm:^29.0.1"

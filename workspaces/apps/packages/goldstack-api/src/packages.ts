@@ -3,6 +3,8 @@ import { Router, Request, Response } from 'express';
 import { connectProjectRepository } from '@goldstack/project-repository';
 import { connect, getBucketName } from '@goldstack/project-package-bucket';
 
+import { PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
+
 import { v4 as uuid4 } from 'uuid';
 import { mkdir, rmSafe, tempDir, write, zip, read } from '@goldstack/utils-sh';
 
@@ -99,21 +101,22 @@ const writePackage = async (params: {
     projectData,
   };
 
-  await packageBucket
-    .putObject({
+  await packageBucket.send(
+    new PutObjectCommand({
       Bucket: await getBucketName(),
       Key: `${projectId}/${packageId}/package.json`,
       Body: JSON.stringify(packageData, null, 2),
     })
-    .promise();
+  );
 
-  await packageBucket
-    .putObject({
+  await packageBucket.send(
+    new PutObjectCommand({
       Bucket: await getBucketName(),
       Key: `${projectId}/${packageId}/package.zip`,
       Body: fs.createReadStream(zipPath),
     })
-    .promise();
+  );
+
   await rmSafe(path);
 };
 

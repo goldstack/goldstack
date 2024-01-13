@@ -4,7 +4,11 @@ import { S3Client } from '@aws-sdk/client-s3';
 import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { S3Package, S3Deployment } from './types/S3Package';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import assert from 'assert';
+
+import { MetadataBearer, RequestPresigningArguments } from '@smithy/types';
+import { Client, Command } from '@smithy/smithy-client';
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 
@@ -30,6 +34,7 @@ export const connect = async (
     const MockS3 = require(excludeInBundle('mock-aws-s3-v3'));
     const s3 = MockS3.createS3Client('goldstackLocal/s3');
 
+    (s3 as any)._goldstackIsMocked = true;
     return s3 as any;
   }
   const deployment = packageConfig.getDeployment(deploymentName);
@@ -50,6 +55,25 @@ export const connect = async (
   });
 
   return s3;
+};
+
+export const isMocked = (client: S3Client): boolean => {
+  return (client as any)._goldstackIsMocked === true;
+};
+
+export const getSignedUrlS3 = async <
+  InputTypesUnion extends object,
+  InputType extends InputTypesUnion,
+  OutputType extends MetadataBearer = MetadataBearer
+>(
+  client: Client<any, InputTypesUnion, MetadataBearer, any>,
+  command: Command<InputType, OutputType, any, InputTypesUnion, MetadataBearer>,
+  options: RequestPresigningArguments = {}
+): Promise<string> => {
+  if (isMocked(client as any)) {
+    return 'http://localhost/mockedAWSS3';
+  }
+  return getSignedUrl(client, command, options);
 };
 
 export const getBucketName = async (

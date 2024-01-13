@@ -1493,6 +1493,23 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@aws-sdk/s3-request-presigner", [\
+      ["npm:3.485.0", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-s3-request-presigner-npm-3.485.0-38fd21f5da-d4d9fbdfe6.zip/node_modules/@aws-sdk/s3-request-presigner/",\
+        "packageDependencies": [\
+          ["@aws-sdk/s3-request-presigner", "npm:3.485.0"],\
+          ["@aws-sdk/signature-v4-multi-region", "npm:3.485.0"],\
+          ["@aws-sdk/types", "npm:3.485.0"],\
+          ["@aws-sdk/util-format-url", "npm:3.485.0"],\
+          ["@smithy/middleware-endpoint", "npm:2.3.0"],\
+          ["@smithy/protocol-http", "npm:3.0.12"],\
+          ["@smithy/smithy-client", "npm:2.2.1"],\
+          ["@smithy/types", "npm:2.8.0"],\
+          ["tslib", "npm:2.6.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@aws-sdk/signature-v4-multi-region", [\
       ["npm:3.485.0", {\
         "packageLocation": "./.yarn/cache/@aws-sdk-signature-v4-multi-region-npm-3.485.0-4b0686b3fd-14551f298a.zip/node_modules/@aws-sdk/signature-v4-multi-region/",\
@@ -1655,6 +1672,19 @@ const RAW_RUNTIME_STATE =
           ["@aws-sdk/util-endpoints", "npm:3.485.0"],\
           ["@aws-sdk/types", "npm:3.485.0"],\
           ["@smithy/util-endpoints", "npm:1.0.8"],\
+          ["tslib", "npm:2.6.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@aws-sdk/util-format-url", [\
+      ["npm:3.485.0", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-util-format-url-npm-3.485.0-b5783ef225-4e73844d4d.zip/node_modules/@aws-sdk/util-format-url/",\
+        "packageDependencies": [\
+          ["@aws-sdk/util-format-url", "npm:3.485.0"],\
+          ["@aws-sdk/types", "npm:3.485.0"],\
+          ["@smithy/querystring-builder", "npm:2.0.16"],\
+          ["@smithy/types", "npm:2.8.0"],\
           ["tslib", "npm:2.6.2"]\
         ],\
         "linkType": "HARD"\
@@ -3445,6 +3475,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./workspaces/apps/packages/goldstack-api/",\
         "packageDependencies": [\
           ["@goldstack/goldstack-api", "workspace:workspaces/apps/packages/goldstack-api"],\
+          ["@aws-sdk/client-s3", "npm:3.485.0"],\
           ["@goldstack/auth", "workspace:workspaces/templates-management/packages/auth"],\
           ["@goldstack/goldstack-email-send", "workspace:workspaces/apps/packages/goldstack-email-send"],\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
@@ -3979,6 +4010,8 @@ const RAW_RUNTIME_STATE =
           ["@aws-sdk/client-s3", "npm:3.485.0"],\
           ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],\
           ["@goldstack/template-s3-cli", "workspace:workspaces/templates-lib/packages/template-s3-cli"],\
+          ["@smithy/smithy-client", "npm:2.2.1"],\
+          ["@smithy/types", "npm:2.8.0"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
           ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
           ["@types/jest", "npm:29.0.1"],\
@@ -4648,6 +4681,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],\
           ["@aws-sdk/client-s3", "npm:3.485.0"],\
           ["@aws-sdk/credential-providers", "npm:3.485.0"],\
+          ["@aws-sdk/s3-request-presigner", "npm:3.485.0"],\
           ["@aws-sdk/types", "npm:3.485.0"],\
           ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
@@ -4659,6 +4693,8 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
           ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
           ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+          ["@smithy/smithy-client", "npm:2.2.1"],\
+          ["@smithy/types", "npm:2.8.0"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
           ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
           ["@types/jest", "npm:29.0.1"],\
