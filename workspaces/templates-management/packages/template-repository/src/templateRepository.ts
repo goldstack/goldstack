@@ -172,26 +172,26 @@ export class S3TemplateRepository implements TemplateRepository {
 
     // Upload archive
     try {
-      await this.s3
-        .putObject({
+      await this.s3.send(
+        new PutObjectCommand({
           Bucket: this.bucket,
           Key: templateArchivePath,
           Body: fs.createReadStream(targetArchive),
         })
-        .promise();
+      );
     } catch (e) {
       throw e;
     }
 
     // set latest version, only after archive upload successful
     try {
-      await this.s3
-        .putObject({
+      await this.s3.send(
+        new PutObjectCommand({
           Bucket: this.bucket,
           Key: `templates/${config.templateName}/latest.json`,
           Body: configJson,
         })
-        .promise();
+      );
     } catch (e) {
       throw e;
     }

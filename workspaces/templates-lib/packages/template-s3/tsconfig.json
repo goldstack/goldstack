@@ -31,6 +31,9 @@
       "path": "../utils-terraform"
     },
     {
+      "path": "../../../utils/packages/mock-aws-s3-v3"
+    },
+    {
       "path": "../../../docs/packages/utils-docs-cli"
     },
     {

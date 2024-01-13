@@ -10,12 +10,13 @@ import {
   HeadObjectCommand,
   ListBucketsCommand,
   ListObjectsCommand,
+  NoSuchKey,
   PutObjectCommand,
   PutObjectTaggingCommand,
   S3Client,
 } from '@aws-sdk/client-s3';
 import { mockClient } from 'aws-sdk-client-mock';
-import S3Mock from 'mock-aws-s3';
+import S3Mock, { AWSError } from 'mock-aws-s3';
 
 import { StreamingBlobPayloadOutputTypes } from '@smithy/types';
 import { WriteStream } from 'fs';
@@ -41,17 +42,30 @@ export function createS3Client(
   client.on(GetObjectCommand).callsFake(async (input): Promise<any> => {
     const resOperation = mockS3.getObject(input);
 
-    const output: GetObjectOutput = {};
+    try {
+      const res = await resOperation.promise();
 
-    const body: StreamingBlobPayloadOutputTypes = {
-      transformToString: async () =>
-        (await resOperation.promise()).Body?.toString() || '',
-      pipe: (destination: WriteStream, options?) => {
-        return resOperation.createReadStream().pipe(destination, options);
-      },
-    } as any;
-    output.Body = body;
-    return output;
+      const output: GetObjectOutput = { ...(res as any) };
+
+      const body: StreamingBlobPayloadOutputTypes = {
+        toString: () => res.Body?.toString(),
+        transformToString: async () => res.Body?.toString() || '',
+        pipe: (destination: WriteStream, options?) => {
+          return resOperation.createReadStream().pipe(destination, options);
+        },
+      } as any;
+      output.Body = body;
+      return output;
+    } catch (e) {
+      const awsError = e as AWSError;
+      if (awsError.code === 'NoSuchKey') {
+        throw new NoSuchKey({
+          message: e.message,
+          $metadata: {},
+        });
+      }
+      throw e;
+    }
   });
 
   wrappedAsIs(client, mockS3, CreateBucketCommand, 'createBucket');
