@@ -1,9 +1,13 @@
 import { connect, getBucketName } from '@goldstack/session-repository-bucket';
 
-import S3 from 'aws-sdk/clients/s3';
+import {
+  GetObjectCommand,
+  NoSuchKey,
+  PutObjectCommand,
+  S3Client,
+} from '@aws-sdk/client-s3';
 
 import assert from 'assert';
-import { AWSError } from 'aws-sdk/lib/core';
 
 export interface SessionData {
   sessionId: string;
@@ -15,10 +19,10 @@ export interface SessionData {
 }
 
 export class SessionRepository {
-  private s3: S3;
+  private s3: S3Client;
   private bucketName: string;
 
-  constructor(params: { s3: S3; bucketName: string }) {
+  constructor(params: { s3: S3Client; bucketName: string }) {
     this.s3 = params.s3;
     this.bucketName = params.bucketName;
   }
@@ -30,13 +34,13 @@ export class SessionRepository {
       createdAt: new Date().toISOString(),
     };
 
-    await this.s3
-      .putObject({
+    await this.s3.send(
+      new PutObjectCommand({
         Bucket: this.bucketName,
         Key: `sessions/${sessionId}/session.json`,
         Body: JSON.stringify(sessionData),
       })
-      .promise();
+    );
   }
 
   async readSession(sessionId: string): Promise<SessionData | undefined> {
@@ -44,20 +48,20 @@ export class SessionRepository {
       sessionId = sessionId.substring('session:'.length);
     }
     try {
-      const obj = await this.s3
-        .getObject({
+      const obj = await this.s3.send(
+        new GetObjectCommand({
           Bucket: this.bucketName,
           Key: `sessions/${sessionId}/session.json`,
         })
-        .promise();
+      );
+
       assert(
         obj.Body,
         `Cannot read key from sessions S3 bucket: ${sessionId}/session.json`
       );
       return JSON.parse(obj.Body.toString());
     } catch (e) {
-      const awsError = e as AWSError;
-      if (awsError.code === 'NoSuchKey') {
+      if (e instanceof NoSuchKey) {
         return undefined;
       }
       throw e;
@@ -75,13 +79,13 @@ export class SessionRepository {
       );
     }
     sessionData.stripeId = params.stripeId;
-    await this.s3
-      .putObject({
+    await this.s3.send(
+      new PutObjectCommand({
         Bucket: this.bucketName,
         Key: `sessions/${sessionData.sessionId}/session.json`,
         Body: JSON.stringify(sessionData),
       })
-      .promise();
+    );
   }
 
   async storePayment(params: {
@@ -98,13 +102,13 @@ export class SessionRepository {
 
     sessionData.email = params.email;
     sessionData.coupon = params.coupon;
-    await this.s3
-      .putObject({
+    await this.s3.send(
+      new PutObjectCommand({
         Bucket: this.bucketName,
         Key: `sessions/${sessionData.sessionId}/session.json`,
         Body: JSON.stringify(sessionData),
       })
-      .promise();
+    );
   }
 
   async storePurchase(params: {
@@ -118,8 +122,8 @@ export class SessionRepository {
         `Cannot store purchase  information for session that does not exist: ${params.sessionId}`
       );
     }
-    await this.s3
-      .putObject({
+    await this.s3.send(
+      new PutObjectCommand({
         Bucket: this.bucketName,
         Key: `sessions/${sessionData.sessionId}/${params.projectId}/purchase.json`,
         Body: JSON.stringify({
@@ -129,7 +133,7 @@ export class SessionRepository {
           purchaseDate: new Date().toISOString(),
         }),
       })
-      .promise();
+    );
   }
 }
 
