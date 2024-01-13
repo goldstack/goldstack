@@ -7,7 +7,7 @@ import { S3TemplateRepository } from '@goldstack/template-repository';
 import yargs from 'yargs';
 import assert from 'assert';
 import { getAllBuildSets, getBuildSet } from '@goldstack/template-metadata';
-import AWSMock from 'mock-aws-s3';
+import { createS3Client } from 'mock-aws-s3-v3';
 import { getAwsConfigPath } from '@goldstack/utils-config';
 import { readConfig } from '@goldstack/infra-aws';
 import { scheduleAllDeploySets } from './scheduleAllDeploySets';
@@ -107,12 +107,9 @@ export const run = async (): Promise<void> => {
     }
 
     if (argv.repo === 'dummy') {
-      AWSMock.config.basePath = 'goldstackLocal/s3';
-      const s3: AWSMock.S3 = new AWSMock.S3({
-        params: {},
-      });
+      const s3 = createS3Client('goldstackLocal/s3');
       repo = new S3TemplateRepository({
-        s3: s3 as any,
+        s3: s3,
         bucket: 'repo',
         bucketUrl: 'https://local.goldstack.party/repo/',
       });
