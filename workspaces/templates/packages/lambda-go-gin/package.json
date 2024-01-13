@@ -13,7 +13,7 @@
     "watch": "PORT=8084 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local nodemon --watch ../../ --ext go --exec 'go build -o localDevelopment/server.exe && cd localDevelopment && server.exe'"
   },
   "devDependencies": {
-    "@goldstack/template-lambda-express": "0.5.21",
+    "@goldstack/template-lambda-express": "0.5.22",
     "@swc/core": "^1.3.74",
     "@types/jest": "^29.0.1",
     "@types/node": "^18.7.13",
