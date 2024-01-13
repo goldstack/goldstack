@@ -10,6 +10,9 @@
   "references": [
     {
       "path": "../../../utils/packages/utils-git"
+    },
+    {
+      "path": "../../../utils/packages/mock-aws-s3-v3"
     }
   ]
 }

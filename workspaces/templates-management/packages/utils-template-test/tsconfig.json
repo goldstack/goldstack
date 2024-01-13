@@ -31,6 +31,9 @@
     },
     {
       "path": "../../../utils/packages/utils-yarn"
+    },
+    {
+      "path": "../../../utils/packages/mock-aws-s3-v3"
     }
   ]
 }

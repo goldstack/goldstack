@@ -58,6 +58,9 @@
       "path": "../../../templates-lib/packages/utils-project"
     },
     {
+      "path": "../../../utils/packages/mock-aws-s3-v3"
+    },
+    {
       "path": "../../../templates-lib/packages/template-docker-image-aws"
     },
     {

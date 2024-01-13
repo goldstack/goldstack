@@ -1,6 +1,7 @@
 import fs from 'fs';
-import S3 from 'aws-sdk/clients/s3';
-import { AWSError } from 'aws-sdk/lib/core';
+import { S3Client, NoSuchKey, GetObjectCommand } from '@aws-sdk/client-s3';
+
+import { NodeJsClient } from '@smithy/types';
 
 /**
  * Downloads a file from S3 to a local file.
@@ -8,23 +9,27 @@ import { AWSError } from 'aws-sdk/lib/core';
 export const download = async (params: {
   key: string;
   filePath: string;
-  s3: S3;
+  s3: S3Client;
   bucketName: string;
 }): Promise<boolean> => {
   const filePath = params.filePath;
-  return new Promise<boolean>((resolve, reject) => {
+  return new Promise<boolean>(async (resolve, reject) => {
     const file = fs.createWriteStream(filePath);
     try {
-      params.s3
-        .getObject({
-          Bucket: params.bucketName,
-          Key: params.key,
-        })
-        .createReadStream()
-        .pipe(file);
+      const cmd = new GetObjectCommand({
+        Bucket: params.bucketName,
+        Key: params.key,
+      });
+
+      const res = await (params.s3 as NodeJsClient<S3Client>).send(cmd);
+      if (!res.Body) {
+        throw new Error(
+          'Cannot download from S3 bucket "' + params.bucketName + '".'
+        );
+      }
+      res.Body?.pipe(file);
     } catch (e) {
-      const awsError = e as AWSError;
-      if (awsError.code === 'NoSuchKey') {
+      if (e instanceof NoSuchKey) {
         resolve(false);
         return;
       }

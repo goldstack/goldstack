@@ -1,7 +1,13 @@
 import { Router, Request, Response } from 'express';
 
 import { connectProjectRepository } from '@goldstack/project-repository';
-import { connect, getBucketName } from '@goldstack/project-package-bucket';
+import {
+  connect,
+  getBucketName,
+  getSignedUrl,
+} from '@goldstack/project-package-bucket';
+
+import { PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
 
 import { v4 as uuid4 } from 'uuid';
 import { mkdir, rmSafe, tempDir, write, zip, read } from '@goldstack/utils-sh';
@@ -99,21 +105,22 @@ const writePackage = async (params: {
     projectData,
   };
 
-  await packageBucket
-    .putObject({
+  await packageBucket.send(
+    new PutObjectCommand({
       Bucket: await getBucketName(),
       Key: `${projectId}/${packageId}/package.json`,
       Body: JSON.stringify(packageData, null, 2),
     })
-    .promise();
+  );
 
-  await packageBucket
-    .putObject({
+  await packageBucket.send(
+    new PutObjectCommand({
       Bucket: await getBucketName(),
       Key: `${projectId}/${packageId}/package.zip`,
       Body: fs.createReadStream(zipPath),
     })
-    .promise();
+  );
+
   await rmSafe(path);
 };
 
@@ -234,23 +241,16 @@ export const getPackageHandler = async (
     // generate download URL
     const packageBucket = await connect();
     const bucketName = await getBucketName();
-    const downloadUrl = await new Promise<string>((resolve, reject) => {
-      packageBucket.getSignedUrl(
-        'getObject',
-        {
-          Bucket: bucketName,
-          Key: `${projectId}/${packageId}/package.zip`,
-          Expires: 3000, // duration in seconds that link will be valid for
-        },
-        (err, url) => {
-          if (err) {
-            reject(err);
-            return;
-          }
-          resolve(url);
-        }
-      );
-    });
+    const downloadUrl = await getSignedUrl(
+      packageBucket,
+      new GetObjectCommand({
+        Bucket: bucketName,
+        Key: `${projectId}/${packageId}/package.zip`,
+      }),
+      {
+        expiresIn: 3000, // duration in seconds that link will be valid for
+      }
+    );
     res.status(200).json({ downloadUrl });
     return;
   } catch (e) {

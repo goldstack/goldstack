@@ -4,8 +4,12 @@ import {
   readTemplateConfigFromString,
   readTemplateConfigFromFile,
 } from '@goldstack/utils-template';
-import S3 from 'aws-sdk/clients/s3';
-import { AWSError } from 'aws-sdk/lib/core';
+import {
+  S3Client,
+  GetObjectCommand,
+  NoSuchKey,
+  PutObjectCommand,
+} from '@aws-sdk/client-s3';
 import { rm, write, mkdir, zip, rmSafe } from '@goldstack/utils-sh';
 import semverInc from 'semver/functions/inc';
 import semverGt from 'semver/functions/gt';
@@ -31,11 +35,11 @@ export interface TemplateRepository {
 }
 
 export class S3TemplateRepository implements TemplateRepository {
-  private s3: S3;
+  private s3: S3Client;
   private bucket: string;
   private bucketUrl: string;
 
-  constructor(params: { s3: S3; bucket: string; bucketUrl: string }) {
+  constructor(params: { s3: S3Client; bucket: string; bucketUrl: string }) {
     this.s3 = params.s3;
     this.bucket = params.bucket;
     this.bucketUrl = params.bucketUrl;
@@ -45,24 +49,20 @@ export class S3TemplateRepository implements TemplateRepository {
     templateName: string
   ): Promise<GoldstackTemplateConfiguration | undefined> {
     try {
-      const obj = await this.s3
-        .getObject({
-          Bucket: this.bucket,
-          Key: `templates/${templateName}/latest.json`,
-        })
-        .promise();
+      const cmd = new GetObjectCommand({
+        Bucket: this.bucket,
+        Key: `templates/${templateName}/latest.json`,
+      });
+
+      const obj = await this.s3.send(cmd);
       if (!obj.Body) {
         throw new Error('Invalid object body for: ' + templateName);
       }
       return readTemplateConfigFromString(obj.Body.toString());
     } catch (e) {
-      const awsError = e as AWSError;
-      if (awsError.code === 'NoSuchKey') {
-        // console.warn(
-        //   'Attempting to access non-existing template:',
-        //   templateName
-        // );
+      if (e instanceof NoSuchKey) {
         return undefined;
+        return;
       }
       throw e;
     }
@@ -146,13 +146,12 @@ export class S3TemplateRepository implements TemplateRepository {
 
     // Upload config
     try {
-      await this.s3
-        .putObject({
-          Bucket: this.bucket,
-          Key: templateConfigPath,
-          Body: configJson,
-        })
-        .promise();
+      const cmd = new PutObjectCommand({
+        Bucket: this.bucket,
+        Key: templateConfigPath,
+        Body: configJson,
+      });
+      await this.s3.send(cmd);
     } catch (e) {
       throw e;
     }
@@ -173,26 +172,26 @@ export class S3TemplateRepository implements TemplateRepository {
 
     // Upload archive
     try {
-      await this.s3
-        .putObject({
+      await this.s3.send(
+        new PutObjectCommand({
           Bucket: this.bucket,
           Key: templateArchivePath,
           Body: fs.createReadStream(targetArchive),
         })
-        .promise();
+      );
     } catch (e) {
       throw e;
     }
 
     // set latest version, only after archive upload successful
     try {
-      await this.s3
-        .putObject({
+      await this.s3.send(
+        new PutObjectCommand({
           Bucket: this.bucket,
           Key: `templates/${config.templateName}/latest.json`,
           Body: configJson,
         })
-        .promise();
+      );
     } catch (e) {
       throw e;
     }

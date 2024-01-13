@@ -299,6 +299,9 @@
       "path": "workspaces/utils/packages/lambda-compression"
     },
     {
+      "path": "workspaces/utils/packages/mock-aws-s3-v3"
+    },
+    {
       "path": "workspaces/utils/packages/node-css-require"
     },
     {
