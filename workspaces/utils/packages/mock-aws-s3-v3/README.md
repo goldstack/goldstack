@@ -1,6 +1,6 @@
 [![npm version](https://badge.fury.io/js/mock-aws-s3-v3.svg)](https://badge.fury.io/js/mock-aws-s3-v3)
 
-# mock-aws-s3-v3
+# Mock AWS S3 SDK v3
 
 Local file-based mock for AWS S3 for unit and local testing for AWS JavaScript SDK v3+.
 
