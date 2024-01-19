@@ -14,7 +14,7 @@ import { GetObjectCommand } from '@aws-sdk/client-s3';
 
 const client = createS3Client('./local-folder'); // of type S3Client
 
-client.send(new PutObjectCommand({
+await client.send(new PutObjectCommand({
   Bucket: 'test-bucket',
   Key: 'test-key',
   Body: 'hello',
