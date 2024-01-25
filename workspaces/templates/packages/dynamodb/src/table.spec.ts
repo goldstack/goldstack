@@ -1,5 +1,6 @@
 import assert from 'assert';
-import DynamoDB from 'aws-sdk/clients/dynamodb';
+import { DynamoDBDocument } from '@aws-sdk/lib-dynamodb';
+import { DescribeTableCommand } from '@aws-sdk/client-dynamodb';
 import { Entity, Table } from 'dynamodb-toolbox';
 import { UserEntity } from './entities';
 
@@ -10,7 +11,6 @@ import {
   startLocalDynamoDB,
   connectTable,
 } from './table';
-import AWS from 'aws-sdk';
 
 // needs to be long to download Docker image etc.
 jest.setTimeout(120000);
@@ -24,9 +24,11 @@ describe('DynamoDB Table', () => {
     assert(tableName);
     const dynamoDB = await connect();
     assert(dynamoDB);
-    const tableInfo = await dynamoDB
-      .describeTable({ TableName: tableName })
-      .promise();
+    const tableInfo = await dynamoDB.send(
+      new DescribeTableCommand({
+        TableName: tableName,
+      })
+    );
 
     assert(tableInfo.Table?.TableStatus === 'ACTIVE');
     const dynamoDB2 = await connect();
@@ -38,7 +40,7 @@ describe('DynamoDB Table', () => {
     const table1 = await connectTable({ client: dynamoDB });
     assert(table1);
     const table2 = await connectTable({
-      documentClient: new DynamoDB.DocumentClient({ service: dynamoDB }),
+      documentClient: DynamoDBDocument.from(dynamoDB),
     });
     assert(table2);
     const table3 = await connectTable();
@@ -50,7 +52,7 @@ describe('DynamoDB Table', () => {
       name: await getTableName(),
       partitionKey: 'pk',
       sortKey: 'sk',
-      DocumentClient: new DynamoDB.DocumentClient({ service: await connect() }),
+      DocumentClient: DynamoDBDocument.from(await connect()),
     });
 
     const e = new Entity({
@@ -76,6 +78,9 @@ describe('DynamoDB Table', () => {
       { attributes: ['name', 'pk'] }
     );
 
+    if (!user) {
+      throw new Error('Result not found');
+    }
     expect(user.name).toEqual('Joe');
   });
 
@@ -93,12 +98,14 @@ describe('DynamoDB Table', () => {
       { email: 'joe@email.com' },
       { attributes: ['name', 'email'] }
     );
+    if (!user) {
+      throw new Error('Result not found');
+    }
     expect(user.name).toEqual('Joe');
     expect(user.email).toEqual('joe@email.com');
   });
 
   it('Should be able to instantiate entity with deepCopy', async () => {
-    AWS.config.logger = console;
     const table = await connectTable();
     const Users1 = UserEntity(table);
     await Users1.put({
@@ -116,6 +123,9 @@ describe('DynamoDB Table', () => {
       },
       { attributes: ['email', 'name'] }
     );
+    if (!user) {
+      throw new Error('Result not found');
+    }
     expect(user.name).toEqual('Joe');
     expect(user.email).toEqual('joe@email.com');
   });

@@ -1,7 +1,7 @@
 import { InputMigrations } from 'umzug/lib/types';
 import { DynamoDBContext } from '@goldstack/template-dynamodb';
 
-import { marshall } from '@aws-sdk/util-dynamodb';
+import { DeleteItemCommand, PutItemCommand } from '@aws-sdk/client-dynamodb';
 
 /**
  * Umzug migrations applied during connection see https://github.com/sequelize/umzug#migrations
@@ -11,26 +11,26 @@ export const createMigrations = (): InputMigrations<DynamoDBContext> => {
     {
       name: '00-dummy-migration',
       async up({ context }) {
-        await context.client
-          .putItem({
+        await context.client.send(
+          new PutItemCommand({
             TableName: context.tableName,
-            Item: marshall({
-              pk: '#DUMMY',
-              sk: 'hello-world',
-            }),
+            Item: {
+              pk: { S: '#DUMMY' },
+              sk: { S: 'hello-world' },
+            },
           })
-          .promise();
+        );
       },
       async down({ context }) {
-        await context.client
-          .deleteItem({
+        await context.client.send(
+          new DeleteItemCommand({
             TableName: context.tableName,
-            Key: marshall({
-              pk: '#DUMMY',
-              sk: 'hello-world',
-            }),
+            Key: {
+              pk: { S: '#DUMMY' },
+              sk: { S: 'hello-world' },
+            },
           })
-          .promise();
+        );
       },
     },
   ];

@@ -5,6 +5,8 @@ import {
   stopLocalDynamoDB,
 } from '@goldstack/dynamodb';
 
+import { DescribeTableCommand } from '@aws-sdk/client-dynamodb';
+
 jest.setTimeout(120000);
 
 it('Should connect to DynamoDB table', async () => {
@@ -12,11 +14,11 @@ it('Should connect to DynamoDB table', async () => {
 
   const table = await connect();
 
-  const res = await table
-    .describeTable({
+  const res = await table.send(
+    new DescribeTableCommand({
       TableName: await getTableName(),
     })
-    .promise();
+  );
 
   expect(res.Table?.TableName?.length).toBeGreaterThan(2);
   expect(table).toBeDefined();

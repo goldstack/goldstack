@@ -1,9 +1,9 @@
 import { Entity, Table } from 'dynamodb-toolbox';
-import DynamoDB from 'aws-sdk/clients/dynamodb';
+import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 import memoizee from 'memoizee';
 
 export function createTable<Name extends string>(
-  dynamoDB: DynamoDB.DocumentClient,
+  dynamoDB: DynamoDBDocumentClient,
   tableName: string
 ): Table<Name, 'pk', 'sk'> {
   return new Table({

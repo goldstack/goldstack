@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
-import { DynamoDB } from 'aws-sdk';
+import { DynamoDB } from '@aws-sdk/client-dynamodb';
 
 import dynamoDBLocal from 'dynamo-db-local';
 import { commandExists } from '@goldstack/utils-sh';
@@ -50,8 +50,13 @@ export const endpointUrl = (startedContainer: DynamoDBInstance): string => {
 export const createClient = (startedContainer: DynamoDBInstance): DynamoDB => {
   const endpoint = endpointUrl(startedContainer);
   return new DynamoDB({
+    // The transformation for endpoint is not implemented.
+    // Refer to UPGRADING.md on aws-sdk-js-v3 for changes needed.
+    // Please create/upvote feature request on aws-sdk-js-codemod for endpoint.
     endpoint,
+
     region: 'eu-central-1',
+
     credentials: {
       accessKeyId: 'dummy',
       secretAccessKey: 'dummy',

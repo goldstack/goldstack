@@ -1,13 +1,18 @@
-import DynamoDB from 'aws-sdk/clients/dynamodb';
+import {
+  AttributeValue,
+  DeleteItemCommand,
+  DynamoDBClient,
+  PutItemCommand,
+  QueryCommand,
+  QueryCommandOutput,
+} from '@aws-sdk/client-dynamodb';
 import { marshall, unmarshall } from '@aws-sdk/util-dynamodb';
-import { PromiseResult } from 'aws-sdk/lib/request';
-import { AWSError } from 'aws-sdk/lib/error';
 import { UmzugStorage } from 'umzug';
 import { MigrationParams } from 'umzug/lib/types';
 import { DynamoDBContext } from './dynamoDBMigrations';
 
 export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
-  dynamoClient: DynamoDB;
+  dynamoClient: DynamoDBClient;
   tableName: string;
   migrationsKey: string;
   partitionKey: string;
@@ -20,7 +25,7 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
     partitionKey = 'pk',
     sortKey = 'sk',
   }: {
-    dynamoDB: DynamoDB;
+    dynamoDB: DynamoDBClient;
     tableName: string;
     migrationsKey?: string;
     partitionKey?: string;
@@ -35,15 +40,15 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
 
   async logMigration(params: MigrationParams<DynamoDBContext>): Promise<void> {
     try {
-      await params.context.client
-        .putItem({
+      await params.context.client.send(
+        new PutItemCommand({
           TableName: params.context.tableName,
           Item: marshall({
             [this.partitionKey]: this.migrationsKey,
             [this.sortKey]: params.name,
           }),
         })
-        .promise();
+      );
     } catch (e) {
       throw new Error(`Failed to log migration ${params.name}. ` + e);
     }
@@ -53,15 +58,15 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
     params: MigrationParams<DynamoDBContext>
   ): Promise<void> {
     try {
-      await params.context.client
-        .deleteItem({
+      await params.context.client.send(
+        new DeleteItemCommand({
           TableName: this.tableName,
           Key: marshall({
             [this.partitionKey]: this.migrationsKey,
             [this.sortKey]: params.name,
           }),
         })
-        .promise();
+      );
     } catch (e) {
       throw new Error(`Failed to unlog migration ${params.name}. ` + e);
     }
@@ -69,12 +74,12 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
 
   async executed(): Promise<string[]> {
     const migrations: { [key: string]: any }[] = [];
-    let res: PromiseResult<DynamoDB.QueryOutput, AWSError> | undefined =
+    let itemsLength: number | undefined = undefined;
+    let lastEvaluatedKey: Record<string, AttributeValue> | undefined =
       undefined;
-    let lastEvaluatedKey: DynamoDB.Key | undefined = undefined;
     do {
-      res = await this.dynamoClient
-        .query({
+      const res: QueryCommandOutput = await this.dynamoClient.send(
+        new QueryCommand({
           TableName: this.tableName,
           KeyConditionExpression: '#pk = :pk',
           ExpressionAttributeNames: {
@@ -85,7 +90,7 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
           }),
           ExclusiveStartKey: lastEvaluatedKey,
         })
-        .promise();
+      );
       lastEvaluatedKey = res.LastEvaluatedKey;
       const items: { [key: string]: any }[] | undefined = res?.Items?.map(
         (entry) => {
@@ -95,7 +100,8 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
       if (items) {
         migrations.push(...items);
       }
-    } while (res?.Items?.length && lastEvaluatedKey);
+      itemsLength = res?.Items?.length;
+    } while (itemsLength && lastEvaluatedKey);
 
     return migrations.map((m) => m[this.sortKey]);
   }
