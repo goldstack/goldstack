@@ -4,7 +4,22 @@ import { createServer } from 'dynamodb-admin';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
 
 (async () => {
-  const client = await connect();
+  const clientInner = await connect();
+  if (!clientInner.config.endpoint || !clientInner.config.region) {
+    throw new Error(
+      'DynamoDB client object does not have required configuration properties: endpoint, region'
+    );
+  }
+  const endpointConfig = await clientInner.config.endpoint();
+  const endpoint = `${endpointConfig.protocol}//${endpointConfig.hostname}:${endpointConfig.port}${endpointConfig.path}`;
+  const client = new DynamoDB({
+    region: 'eu-central-1',
+    endpoint: endpoint, // 'http://localhost:8000',
+    credentials: {
+      accessKeyId: 'dummy',
+      secretAccessKey: 'dummy',
+    },
+  });
   let localAdminServer: undefined | any = undefined;
   await new Promise<void>(async (resolve, reject) => {
     const localAdmin = await createServer(

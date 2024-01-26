@@ -1,41 +1,50 @@
-import AWS from 'aws-sdk';
 import { AwsCredentialIdentity } from '@aws-sdk/types';
 
+import {
+  BucketAlreadyOwnedByYou,
+  CreateBucketCommand,
+  S3Client,
+} from '@aws-sdk/client-s3';
+
+import {
+  CreateTableCommand,
+  DynamoDBClient,
+  ResourceInUseException,
+} from '@aws-sdk/client-dynamodb';
+
 const assertDynamoDBTable = async (params: {
-  dynamoDB: AWS.DynamoDB;
+  dynamoDB: DynamoDBClient;
   tableName: string;
 }) => {
   // defining a table as required by Terraform https://www.terraform.io/docs/language/settings/backends/s3.html#dynamodb_table
-  const tableDef = {
-    AttributeDefinitions: [
-      {
-        AttributeName: 'LockID',
-        AttributeType: 'S',
-      },
-    ],
-    KeySchema: [
-      {
-        AttributeName: 'LockID',
-        KeyType: 'HASH',
-      },
-    ],
-    TableName: params.tableName,
-    BillingMode: 'PAY_PER_REQUEST',
-  };
-
   try {
-    await params.dynamoDB.createTable(tableDef).promise();
+    await params.dynamoDB.send(
+      new CreateTableCommand({
+        AttributeDefinitions: [
+          {
+            AttributeName: 'LockID',
+            AttributeType: 'S',
+          },
+        ],
+        KeySchema: [
+          {
+            AttributeName: 'LockID',
+            KeyType: 'HASH',
+          },
+        ],
+        TableName: params.tableName,
+        BillingMode: 'PAY_PER_REQUEST',
+      })
+    );
   } catch (e) {
-    const error = e;
-    // if there is a resource in use exception, ignore it.
-    if (error && error.code !== 'ResourceInUseException') {
-      throw new Error(error.message);
+    if (!(e instanceof ResourceInUseException)) {
+      throw new Error(e.message);
     }
   }
 };
 
 const assertS3Bucket = async (params: {
-  s3: AWS.S3;
+  s3: S3Client;
   bucketName: string;
 }): Promise<void> => {
   const bucketParams = {
@@ -47,17 +56,17 @@ const assertS3Bucket = async (params: {
       bucketParams.Bucket
     );
 
-    await params.s3.createBucket(bucketParams).promise();
-  } catch (error) {
+    await params.s3.send(new CreateBucketCommand(bucketParams));
+  } catch (e) {
     // if bucket already exists, ignore error
-    if (error && error.code !== 'BucketAlreadyOwnedByYou') {
+    if (!(e instanceof BucketAlreadyOwnedByYou)) {
       console.error(
         'Cannot create bucket ',
         params.bucketName,
         ' error code',
-        error.code
+        e.code
       );
-      throw new Error('Cannot create S3 state bucket: ' + error.message);
+      throw new Error('Cannot create S3 state bucket: ' + e.message);
     }
   }
 };
@@ -68,11 +77,14 @@ export const createState = async (params: {
   bucketName: string;
   awsRegion: string;
 }): Promise<void> => {
-  const dynamoDB = new AWS.DynamoDB({
-    apiVersion: '2012-08-10',
+  const dynamoDB = new DynamoDBClient({
     region: params.awsRegion,
+    credentials: params.credentials,
   });
   await assertDynamoDBTable({ dynamoDB, tableName: params.dynamoDBTableName });
-  const s3 = new AWS.S3({ apiVersion: '2006-03-01', region: params.awsRegion });
+  const s3 = new S3Client({
+    region: params.awsRegion,
+    credentials: params.credentials,
+  });
   await assertS3Bucket({ s3, bucketName: params.bucketName });
 };

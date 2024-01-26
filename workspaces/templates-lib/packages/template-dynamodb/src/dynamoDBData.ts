@@ -1,6 +1,12 @@
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
-import { AWSError } from 'aws-sdk';
-import DynamoDB from 'aws-sdk/clients/dynamodb';
+import {
+  CreateTableCommand,
+  DeleteTableCommand,
+  DescribeTableCommand,
+  DynamoDBClient,
+  ResourceInUseException,
+  ResourceNotFoundException,
+} from '@aws-sdk/client-dynamodb';
 import { getTableName } from './dynamoDBPackageUtils';
 import { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
 
@@ -13,7 +19,7 @@ function sleep(ms: number): Promise<void> {
 export async function assertTableActive(
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
-  client: DynamoDB
+  client: DynamoDBClient
 ): Promise<void> {
   const tableName = await getTableName(packageConfig, deploymentName);
   let retries = 0;
@@ -21,9 +27,11 @@ export async function assertTableActive(
   // ensure that able is ACTIVE before proceeding
   while (tableStatus !== 'ACTIVE' && retries < 120) {
     try {
-      const tableInfo = await client
-        .describeTable({ TableName: tableName })
-        .promise();
+      const tableInfo = await client.send(
+        new DescribeTableCommand({
+          TableName: tableName,
+        })
+      );
       tableStatus = tableInfo.Table?.TableStatus;
     } catch (e) {
       console.warn(`Error retrieving table information: ${e.code}.\n${e}`);
@@ -44,11 +52,11 @@ export async function assertTableActive(
 export const assertTable = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
-  client: DynamoDB
+  client: DynamoDBClient
 ): Promise<void> => {
   const tableName = await getTableName(packageConfig, deploymentName);
-  const res = client
-    .createTable({
+  const res = client.send(
+    new CreateTableCommand({
       TableName: tableName,
       AttributeDefinitions: [
         {
@@ -72,7 +80,7 @@ export const assertTable = async (
       ],
       BillingMode: 'PAY_PER_REQUEST',
     })
-    .promise();
+  );
 
   await new Promise<void>((resolve, reject) => {
     res
@@ -80,8 +88,8 @@ export const assertTable = async (
         console.debug(`DynamoDB table '${tableName}' created.`);
         resolve();
       })
-      .catch((e: AWSError) => {
-        if (e.code === 'ResourceInUseException') {
+      .catch((e) => {
+        if (e instanceof ResourceInUseException) {
           // all good if table exists already
           resolve();
           return;
@@ -94,21 +102,21 @@ export const assertTable = async (
 export const deleteTable = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
-  client: DynamoDB
+  client: DynamoDBClient
 ): Promise<void> => {
   const tableName = await getTableName(packageConfig, deploymentName);
-  const res = client
-    .deleteTable({
+  const res = client.send(
+    new DeleteTableCommand({
       TableName: tableName,
     })
-    .promise();
+  );
   await new Promise<void>((resolve, reject) => {
     res
       .then(async () => {
         resolve();
       })
-      .catch((e: AWSError) => {
-        if (e.code === 'ResourceNotFoundException') {
+      .catch((e) => {
+        if (e instanceof ResourceNotFoundException) {
           // all good if table already deleted
           resolve();
           return;

@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import DynamoDB from 'aws-sdk/clients/dynamodb';
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
 import { DynamoDBPackage, DynamoDBDeployment } from './types/DynamoDBPackage';
 import {
@@ -21,8 +20,8 @@ import {
 } from './dynamoDBMigrations';
 
 import { excludeInBundle } from '@goldstack/utils-esbuild';
-import { Credentials, EnvironmentCredentials } from 'aws-sdk/lib/core';
-import AWS from 'aws-sdk';
+import { fromEnv } from '@aws-sdk/credential-providers';
+import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 
 /**
  * Map to keep track for which deployment and tables initialisation and migrations have already been performed
@@ -92,7 +91,7 @@ export const stopLocalDynamoDB = async (
 const createClient = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string
-): Promise<DynamoDB> => {
+): Promise<DynamoDBClient> => {
   if (deploymentName === 'local') {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const lib = require(excludeInBundle('./localDynamoDB'));
@@ -100,17 +99,16 @@ const createClient = async (
   }
   const deployment = packageConfig.getDeployment(deploymentName);
 
-  let awsUser: Credentials;
+  let awsUser: AwsCredentialIdentityProvider;
   if (process.env.AWS_ACCESS_KEY_ID) {
-    awsUser = new AWS.EnvironmentCredentials('AWS');
+    awsUser = fromEnv();
   } else {
     // load this in lazy to enable omitting the dependency when bundling lambdas
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const infraAWSLib = require(excludeInBundle('@goldstack/infra-aws'));
     awsUser = await infraAWSLib.getAWSUser(deployment.awsUser);
   }
-  const dynamoDB = new DynamoDB({
-    apiVersion: '2012-08-10',
+  const dynamoDB = new DynamoDBClient({
     credentials: awsUser,
     region: deployment.awsRegion,
   });
@@ -128,7 +126,7 @@ export const connect = async ({
   packageSchema: any;
   migrations: InputMigrations<DynamoDBContext>;
   deploymentName?: string;
-}): Promise<DynamoDB> => {
+}): Promise<DynamoDBClient> => {
   deploymentName = getDeploymentName(deploymentName);
   const packageConfig = new EmbeddedPackageConfig<
     DynamoDBPackage,
@@ -162,7 +160,7 @@ export const deleteTable = async ({
   goldstackConfig: DynamoDBPackage | any;
   packageSchema: any;
   deploymentName?: string;
-}): Promise<DynamoDB> => {
+}): Promise<DynamoDBClient> => {
   deploymentName = getDeploymentName(deploymentName);
   const packageConfig = new EmbeddedPackageConfig<
     DynamoDBPackage,
@@ -190,7 +188,7 @@ export const migrateDownTo = async ({
   packageSchema: any;
   migrations: InputMigrations<DynamoDBContext>;
   deploymentName?: string;
-}): Promise<DynamoDB> => {
+}): Promise<DynamoDBClient> => {
   deploymentName = getDeploymentName(deploymentName);
   const packageConfig = new EmbeddedPackageConfig<
     DynamoDBPackage,

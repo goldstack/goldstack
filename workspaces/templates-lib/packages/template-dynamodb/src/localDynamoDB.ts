@@ -1,16 +1,15 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
-import { DynamoDB } from 'aws-sdk';
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
 import dynamoDBLocal from 'dynamo-db-local';
 import { commandExists } from '@goldstack/utils-sh';
 import { getTableName } from './dynamoDBPackageUtils';
 import { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
-
+import waitPort from 'wait-port';
 import { check } from 'tcp-port-used';
 
 const MAPPED_PORT = 8000;
-// const IMAGE_NAME = 'amazon/dynamodb-local:1.21.0';
 
 type DynamoDBTableName = string;
 
@@ -29,7 +28,7 @@ const startedContainers: Map<DynamoDBTableName, DynamoDBInstance | 'stopped'> =
 export const localConnect = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName?: string
-): Promise<DynamoDB> => {
+): Promise<DynamoDBClient> => {
   if (areWeTestingWithJest()) {
     const tableName = await getTableName(packageConfig, deploymentName);
     const startedContainer = startedContainers.get(tableName);
@@ -47,9 +46,11 @@ export const endpointUrl = (startedContainer: DynamoDBInstance): string => {
   return `http://localhost:${startedContainer.port}`;
 };
 
-export const createClient = (startedContainer: DynamoDBInstance): DynamoDB => {
+export const createClient = (
+  startedContainer: DynamoDBInstance
+): DynamoDBClient => {
   const endpoint = endpointUrl(startedContainer);
-  return new DynamoDB({
+  return new DynamoDBClient({
     endpoint,
     region: 'eu-central-1',
     credentials: {
@@ -97,7 +98,16 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
   }
   if (commandExists('java')) {
     console.debug('Starting local DynamoDB with Java');
-    const pr = dynamoDBLocal.spawn({ port: MAPPED_PORT, path: null });
+    const pr = dynamoDBLocal.spawn({
+      port: MAPPED_PORT,
+      path: null,
+      detached: false,
+    });
+    await waitPort({
+      host: 'localhost',
+      port: MAPPED_PORT,
+    });
+    console.debug('Started local DynamoDB with Java');
     return {
       port: MAPPED_PORT,
       stop: async () => {
