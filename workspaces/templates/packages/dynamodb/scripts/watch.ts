@@ -1,7 +1,7 @@
 import { connect, stopLocalDynamoDB } from './../src/table';
 import * as readline from 'readline';
 import { createServer } from 'dynamodb-admin';
-import DynamoDB from 'aws-sdk/clients/dynamodb';
+import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 
 (async () => {
   const client = await connect();
@@ -9,7 +9,7 @@ import DynamoDB from 'aws-sdk/clients/dynamodb';
   await new Promise<void>(async (resolve, reject) => {
     const localAdmin = await createServer(
       client as any, // otherwise strange type error occurs
-      new DynamoDB.DocumentClient({ service: client })
+      DynamoDBDocumentClient.from(client)
     );
     const adminPort = process.env.DYNAMODB_ADMIN_PORT || '8001';
     localAdminServer = localAdmin.listen(adminPort, 'localhost');

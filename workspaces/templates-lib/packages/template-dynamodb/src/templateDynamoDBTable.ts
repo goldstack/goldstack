@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-
-import { DynamoDB } from '@aws-sdk/client-dynamodb';
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
 import { DynamoDBPackage, DynamoDBDeployment } from './types/DynamoDBPackage';
 import {
@@ -93,7 +91,7 @@ export const stopLocalDynamoDB = async (
 const createClient = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string
-): Promise<DynamoDB> => {
+): Promise<DynamoDBClient> => {
   if (deploymentName === 'local') {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const lib = require(excludeInBundle('./localDynamoDB'));
@@ -110,7 +108,7 @@ const createClient = async (
     const infraAWSLib = require(excludeInBundle('@goldstack/infra-aws'));
     awsUser = await infraAWSLib.getAWSUser(deployment.awsUser);
   }
-  const dynamoDB = new DynamoDB({
+  const dynamoDB = new DynamoDBClient({
     credentials: awsUser,
     region: deployment.awsRegion,
   });
@@ -128,7 +126,7 @@ export const connect = async ({
   packageSchema: any;
   migrations: InputMigrations<DynamoDBContext>;
   deploymentName?: string;
-}): Promise<DynamoDB> => {
+}): Promise<DynamoDBClient> => {
   deploymentName = getDeploymentName(deploymentName);
   const packageConfig = new EmbeddedPackageConfig<
     DynamoDBPackage,
@@ -162,7 +160,7 @@ export const deleteTable = async ({
   goldstackConfig: DynamoDBPackage | any;
   packageSchema: any;
   deploymentName?: string;
-}): Promise<DynamoDB> => {
+}): Promise<DynamoDBClient> => {
   deploymentName = getDeploymentName(deploymentName);
   const packageConfig = new EmbeddedPackageConfig<
     DynamoDBPackage,
@@ -190,7 +188,7 @@ export const migrateDownTo = async ({
   packageSchema: any;
   migrations: InputMigrations<DynamoDBContext>;
   deploymentName?: string;
-}): Promise<DynamoDB> => {
+}): Promise<DynamoDBClient> => {
   deploymentName = getDeploymentName(deploymentName);
   const packageConfig = new EmbeddedPackageConfig<
     DynamoDBPackage,
