@@ -3579,6 +3579,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:29.0.1"],\
           ["@types/memoizee", "npm:0.4.8"],\
           ["@types/node", "npm:18.7.13"],\
+          ["aws-sdk", "npm:2.1525.0"],\
           ["dynamodb-admin", "npm:4.6.1"],\
           ["dynamodb-toolbox", "virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:0.9.2"],\
           ["ejs", "npm:3.1.8"],\

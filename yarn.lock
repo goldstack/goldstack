@@ -2497,6 +2497,7 @@ __metadata:
     "@types/jest": "npm:^29.0.1"
     "@types/memoizee": "npm:^0"
     "@types/node": "npm:^18.7.13"
+    aws-sdk: "npm:2.1525.0"
     dynamodb-admin: "npm:^4.6.1"
     dynamodb-toolbox: "npm:^0.9.2"
     ejs: "npm:^3.1.8"
