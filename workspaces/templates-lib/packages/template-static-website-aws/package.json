@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-static-website-aws",
-  "version": "0.5.18",
+  "version": "0.5.19",
   "description": "Utilities for deploying a website to CloudFront and S3",
   "keywords": [
     "goldstack",
@@ -57,7 +57,7 @@
     "@goldstack/utils-sh": "0.5.9",
     "@goldstack/utils-template": "0.4.9",
     "@goldstack/utils-terraform": "0.4.16",
-    "@goldstack/utils-terraform-aws": "0.4.17",
+    "@goldstack/utils-terraform-aws": "0.4.18",
     "source-map-support": "^0.5.21",
     "yargs": "^17.5.1"
   },
