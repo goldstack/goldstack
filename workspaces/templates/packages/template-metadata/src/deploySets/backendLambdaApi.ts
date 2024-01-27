@@ -56,7 +56,7 @@ export const createBackendLambdaApiBuildSetConfig =
                 'deploy',
                 'assert-rest-api',
               ],
-              packageCleanUp: ['infra-destroy'],
+              packageCleanUp: ['infra-destroy', 'destroy-state'],
             },
           ],
         },

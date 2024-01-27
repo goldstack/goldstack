@@ -62,7 +62,7 @@ export const createStaticWebsiteBuildSetConfig =
                 'deploy',
                 'assert-static-website-aws-deployments',
               ],
-              packageCleanUp: ['infra-destroy'],
+              packageCleanUp: ['infra-destroy', 'destroy-state'],
             },
           ],
         },
