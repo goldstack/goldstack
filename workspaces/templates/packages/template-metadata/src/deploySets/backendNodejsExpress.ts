@@ -76,7 +76,7 @@ export const createBackendNodejsExpressBuildSetConfig =
                 'deploy',
                 'assert-rest-api',
               ],
-              packageCleanUp: ['infra-destroy'],
+              packageCleanUp: ['infra-destroy', 'destroy-state'],
             },
           ],
         },

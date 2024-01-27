@@ -59,7 +59,7 @@ export const createNextjsBootstrapBuildSetConfig =
                 'deploy',
                 'assert-website',
               ],
-              packageCleanUp: ['infra-destroy'],
+              packageCleanUp: ['infra-destroy', 'destroy-state'],
             },
           ],
         },

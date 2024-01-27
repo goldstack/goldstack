@@ -49,7 +49,7 @@ export const createBackendGoGinBuildSetConfig =
                 },
               ],
               packageTests: ['assert-package-files', 'infra-up'],
-              packageCleanUp: ['infra-destroy'],
+              packageCleanUp: ['infra-destroy', 'destroy-state'],
             },
           ],
         },

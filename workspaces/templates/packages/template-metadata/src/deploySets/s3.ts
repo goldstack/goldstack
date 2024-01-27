@@ -44,7 +44,7 @@ export const createS3BuildSetConfig = async (): Promise<DeploySetConfig> => {
               },
             ],
             packageTests: ['assert-package-files', 'infra-up'],
-            packageCleanUp: ['infra-destroy'],
+            packageCleanUp: ['infra-destroy', 'destroy-state'],
           },
         ],
       },

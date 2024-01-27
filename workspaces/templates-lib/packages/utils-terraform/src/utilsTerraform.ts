@@ -60,6 +60,20 @@ export const infraCommands = (): any => {
         }
       )
       .command(
+        'destroy-state <deployment>',
+        'DANGER: Destroys the remote state stored for this deployment.',
+        (yargs) => {
+          return deploymentPositional(yargs).option('yes', {
+            alias: 'y',
+            description:
+              'DANGER: If provided, confirmation for deleting remote state will be skipped.',
+            default: false,
+            demandOption: false,
+            type: 'boolean',
+          });
+        }
+      )
+      .command(
         'upgrade <deployment> <targetVersion>',
         'Upgrades Terraform version to a new target version (experimental)',
         (yargs) => {
@@ -142,6 +156,11 @@ export const terraformCli = (
   if (operation === 'terraform') {
     build.terraform(opArgs);
     return;
+  }
+  if (operation === 'destroy-state') {
+    throw new Error(
+      'The destroy-state operation should be performed by the provider'
+    );
   }
 
   throw new Error('Unknown infrastructure operation: ' + operation);

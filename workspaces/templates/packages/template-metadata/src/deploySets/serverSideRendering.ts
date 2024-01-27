@@ -59,7 +59,7 @@ export const createServerSideRenderingBuildSetConfig =
                 'deploy',
                 'assert-application',
               ],
-              packageCleanUp: ['infra-destroy'],
+              packageCleanUp: ['infra-destroy', 'destroy-state'],
             },
           ],
         },

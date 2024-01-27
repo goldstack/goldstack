@@ -15,8 +15,11 @@ import {
   TerraformOptions,
 } from '@goldstack/utils-terraform';
 import { AwsCredentialIdentity } from '@aws-sdk/types';
-import { createState } from './tfState';
+import { createState, deleteState } from './tfState';
 import crypto from 'crypto';
+import { spawnSync, SpawnSyncOptionsWithStringEncoding } from 'child_process';
+
+import os from 'os';
 
 const getRemoteStateConfig = (
   config: AWSTerraformState,
@@ -102,6 +105,28 @@ export class AWSCloudProvider implements CloudProvider {
   }
 }
 
+const prompt = (message: string) => {
+  process.stdout.write(message);
+
+  let cmd: string;
+  let args: string[];
+  if (os.platform() == 'win32') {
+    cmd = 'cmd';
+    args = ['/V:ON', '/C', 'set /p response= && echo !response!'];
+  } else {
+    cmd = 'bash';
+    args = ['-c', 'read response; echo "$response"'];
+  }
+
+  const opts: SpawnSyncOptionsWithStringEncoding = {
+    stdio: ['inherit', 'pipe', 'inherit'],
+    shell: false,
+    encoding: 'utf-8',
+  };
+
+  return spawnSync(cmd, args, opts).stdout.toString().trim();
+};
+
 export const terraformAwsCli = async (
   args: string[],
   options?: TerraformOptions
@@ -128,6 +153,27 @@ export const terraformAwsCli = async (
   if (!remoteStateConfig.terraformStateDynamoDBTable) {
     remoteStateConfig.terraformStateDynamoDBTable = `goldstack-tfstate-${projectHash}-lock`;
     writeTerraformConfig(awsTerraformConfig);
+  }
+
+  const [operation] = args;
+  if (operation === 'destroy-state') {
+    const ciConfirmed = args.find((str) => str === '-y');
+    if (!ciConfirmed) {
+      const value = prompt(
+        'Are you sure to destroy your remote deployment state? If yes, please type `y` and enter.\n' +
+          'Otherwise, press enter.\nYour Input: '
+      );
+      if (value !== 'y') {
+        new Error('Prompt not confirmed with `y`');
+      }
+    }
+    await deleteState({
+      bucketName: remoteStateConfig.terraformStateBucket,
+      dynamoDBTableName: remoteStateConfig.terraformStateDynamoDBTable,
+      credentials,
+      awsRegion: deployment.awsRegion,
+    });
+    return;
   }
 
   await createState({
