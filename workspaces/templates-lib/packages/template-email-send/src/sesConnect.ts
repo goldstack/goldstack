@@ -1,6 +1,6 @@
-import SES from 'aws-sdk/clients/ses';
-import AWS from 'aws-sdk';
-import { Credentials, EnvironmentCredentials } from 'aws-sdk/lib/core';
+import { SESClient } from '@aws-sdk/client-ses';
+import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import { fromEnv } from '@aws-sdk/credential-providers';
 import {
   EmailSendPackage,
   EmailSendDeployment,
@@ -9,24 +9,25 @@ import assert from 'assert';
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 
-import { MockedSES } from './mockedSES';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const createSESClient = require(excludeInBundle('./mockedSES')).createSESClient;
 
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 
-let mockedSES: MockedSES | undefined;
+let mockedSES: SESClient | undefined;
 
-export const getMockedSES = (): MockedSES => {
+export const getMockedSES = (): SESClient => {
   if (!mockedSES) {
-    mockedSES = new MockedSES();
+    mockedSES = createSESClient();
   }
-  return mockedSES;
+  return mockedSES as any;
 };
 
 export const connect = async (
   goldstackConfig: any,
   packageSchema: any,
   deploymentName?: string
-): Promise<SES> => {
+): Promise<SESClient> => {
   const packageConfig = new EmbeddedPackageConfig<
     EmailSendPackage,
     EmailSendDeployment
@@ -44,24 +45,23 @@ export const connect = async (
 
   if (deploymentName === 'local') {
     if (!mockedSES) {
-      mockedSES = new MockedSES();
+      mockedSES = createSESClient();
     }
     return mockedSES as any;
   }
 
   const deployment = packageConfig.getDeployment(deploymentName);
 
-  let awsUser: Credentials;
+  let awsUser: AwsCredentialIdentityProvider;
   if (process.env.AWS_ACCESS_KEY_ID) {
-    awsUser = new AWS.EnvironmentCredentials('AWS');
+    awsUser = fromEnv();
   } else {
     // load this in lazy to enable omitting the dependency when bundling lambdas
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const infraAWSLib = require(excludeInBundle('@goldstack/infra-aws'));
     awsUser = await infraAWSLib.getAWSUser(deployment.awsUser);
   }
-  const ses = new SES({
-    apiVersion: '2010-12-01',
+  const ses = new SESClient({
     credentials: awsUser,
     region: deployment.awsRegion,
   });

@@ -1,12 +1,14 @@
-import { connect, getMockedSES, getFromDomain } from './ses';
+import { connect, getFromDomain } from './ses';
+import { SendEmailCommand } from '@aws-sdk/client-ses';
+import { getSentEmailRequests } from '@goldstack/template-email-send';
 
 describe('SES template', () => {
   it('Should connect to mocked SES', async () => {
     const ses = await connect();
     const fromDomain = await getFromDomain();
     expect(fromDomain).toBe('test.local');
-    await ses
-      .sendEmail({
+    await ses.send(
+      new SendEmailCommand({
         Destination: { ToAddresses: ['test@test.com'] },
         Message: {
           Subject: { Charset: 'UTF-8', Data: 'Test email' },
@@ -19,10 +21,9 @@ describe('SES template', () => {
         },
         Source: 'sender@' + fromDomain,
       })
-      .promise();
+    );
 
-    const mockedSES = getMockedSES();
-    const sentEmailRequests = mockedSES.getSentEmailRequests();
+    const sentEmailRequests = getSentEmailRequests(ses);
     expect(sentEmailRequests).toHaveLength(1);
   });
 });

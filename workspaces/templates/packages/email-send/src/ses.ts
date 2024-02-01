@@ -5,11 +5,11 @@ import {
   MockedSES,
 } from '@goldstack/template-email-send';
 
-import SES from 'aws-sdk/clients/ses';
+import { SESClient } from '@aws-sdk/client-ses';
 import goldstackConfig from './../goldstack.json';
 import goldstackSchema from './../schemas/package.schema.json';
 
-export const connect = async (deploymentName?: string): Promise<SES> => {
+export const connect = async (deploymentName?: string): Promise<SESClient> => {
   return await templateConnect(
     goldstackConfig,
     goldstackSchema,

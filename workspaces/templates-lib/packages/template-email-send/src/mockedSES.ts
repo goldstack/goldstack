@@ -1,37 +1,36 @@
-import SES from 'aws-sdk/clients/ses';
+import {
+  SESClient,
+  SendEmailRequest,
+  SendEmailResponse,
+  SendEmailCommand,
+} from '@aws-sdk/client-ses';
 
+import { mockClient } from 'aws-sdk-client-mock';
 import { v4 as uuid4 } from 'uuid';
-import { AWSError, Request } from 'aws-sdk/lib/core';
 
-export class MockedSES {
-  private sendEmailRequests: SES.SendEmailRequest[];
-
-  constructor() {
-    this.sendEmailRequests = [];
+export function createSESClient(sesClient?: SESClient): SESClient {
+  if (!sesClient) {
+    sesClient = new SESClient();
   }
+  const mockedClient = mockClient(sesClient);
 
-  getSentEmailRequests(): SES.SendEmailRequest[] {
-    return this.sendEmailRequests;
-  }
+  const sendEmailRequests: SendEmailRequest[] = [];
 
-  sendEmail(
-    params: SES.SendEmailRequest,
-    callback?: any
-  ): Request<SES.SendEmailResponse, AWSError> {
-    this.sendEmailRequests.push(params);
+  (sesClient as any)._goldstackSentRequests = sendEmailRequests;
+  mockedClient.on(SendEmailCommand).callsFake(async (input): Promise<any> => {
     if (process.env.GOLDSTACK_LOG_EMAILS) {
       console.log('Mocked SES Send email');
-      console.log(JSON.stringify(params, null, 2));
+      console.log(JSON.stringify(input, null, 2));
     }
-    if (callback) {
-      callback(null, { MessageId: uuid4() });
-      return {} as any;
-    }
+    sendEmailRequests.push(input);
     return {
-      promise: (): Promise<SES.SendEmailResponse> =>
-        new Promise<SES.SendEmailResponse>((resolve) =>
-          resolve({ MessageId: uuid4() })
-        ),
-    } as any;
-  }
+      MessageId: uuid4(),
+    };
+  });
+
+  return sesClient;
+}
+
+export function getSentEmailRequests(sesClient: SESClient): SendEmailRequest[] {
+  return (sesClient as any)._goldstackSentRequests;
 }

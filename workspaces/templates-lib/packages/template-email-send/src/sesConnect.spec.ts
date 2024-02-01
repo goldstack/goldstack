@@ -1,9 +1,11 @@
-import { connect, getMockedSES } from './sesConnect';
+import { SendEmailCommand } from '@aws-sdk/client-ses';
+import { getSentEmailRequests } from './mockedSES';
+import { connect } from './sesConnect';
 describe('SES connect', () => {
   it('Should connect to mocked SES', async () => {
     const ses = await connect({}, {}, 'local');
-    await ses
-      .sendEmail({
+    await ses.send(
+      new SendEmailCommand({
         Destination: { ToAddresses: ['test@test.com'] },
         Message: {
           Subject: { Charset: 'UTF-8', Data: 'Test email' },
@@ -16,10 +18,9 @@ describe('SES connect', () => {
         },
         Source: 'sender@example.com',
       })
-      .promise();
+    );
 
-    const mockedSES = getMockedSES();
-    const sentEmailRequests = mockedSES.getSentEmailRequests();
+    const sentEmailRequests = getSentEmailRequests(ses);
     expect(sentEmailRequests).toHaveLength(1);
   });
 });
