@@ -2586,6 +2586,7 @@ __metadata:
   resolution: "@goldstack/goldstack-api@workspace:workspaces/apps/packages/goldstack-api"
   dependencies:
     "@aws-sdk/client-s3": "npm:3.485.0"
+    "@aws-sdk/client-ses": "npm:3.485.0"
     "@goldstack/auth": "npm:0.1.0"
     "@goldstack/goldstack-email-send": "npm:0.1.0"
     "@goldstack/infra-aws": "npm:0.4.15"
@@ -2648,6 +2649,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/goldstack-email-send@workspace:workspaces/apps/packages/goldstack-email-send"
   dependencies:
+    "@aws-sdk/client-ses": "npm:3.485.0"
     "@goldstack/template-email-send": "npm:0.4.20"
     "@goldstack/template-email-send-cli": "npm:0.5.20"
     "@goldstack/utils-git": "npm:0.2.9"
@@ -2656,7 +2658,6 @@ __metadata:
     "@swc/jest": "npm:^0.2.27"
     "@types/jest": "npm:^29.0.1"
     "@types/node": "npm:^18.7.13"
-    aws-sdk: "npm:2.1525.0"
     jest: "npm:^29.3.1"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.1"
@@ -3598,6 +3599,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-management-cli@workspace:workspaces/apps/packages/template-management-cli"
   dependencies:
+    "@aws-sdk/client-ses": "npm:3.485.0"
     "@goldstack/goldstack-email-send": "npm:0.1.0"
     "@goldstack/infra-aws": "npm:0.4.15"
     "@goldstack/project-build": "npm:0.1.0"

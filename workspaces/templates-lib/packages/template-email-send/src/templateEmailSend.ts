@@ -6,4 +6,4 @@ import type {
 export type { EmailSendDeployment, EmailSendPackage };
 
 export { connect, getMockedSES, getFromDomain } from './sesConnect';
-export { getSentEmailRequests } from './mockedSES';
+export { getSentEmailRequests, createSESClient } from './mockedSES';

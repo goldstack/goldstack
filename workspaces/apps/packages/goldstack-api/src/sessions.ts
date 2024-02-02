@@ -20,6 +20,7 @@ import { connectProjectRepository } from '@goldstack/project-repository';
 import { v4 as uuid4 } from 'uuid';
 import { getDocLinks } from './utils/docLinks';
 import { rmSafe, tempDir } from '@goldstack/utils-sh';
+import { SendEmailCommand } from '@aws-sdk/client-ses';
 
 const router = Router();
 
@@ -208,8 +209,8 @@ const performPurchase = async (params: {
     packageId: params.packageId,
   });
   if (params.email) {
-    await ses
-      .sendEmail({
+    await ses.send(
+      new SendEmailCommand({
         Destination: {
           ToAddresses: [params.email],
           BccAddresses: ['maxrohde.public@gmail.com'],
@@ -232,10 +233,10 @@ const performPurchase = async (params: {
         },
         Source: '"Goldstack" <hi@' + (await getFromDomain()) + '>',
       })
-      .promise();
+    );
   } else {
-    await ses
-      .sendEmail({
+    await ses.send(
+      new SendEmailCommand({
         Destination: {
           ToAddresses: ['maxrohde.public@gmail.com'],
         },
@@ -253,7 +254,7 @@ const performPurchase = async (params: {
         },
         Source: '"Goldstack" <hi@' + (await getFromDomain()) + '>',
       })
-      .promise();
+    );
   }
 
   await rmSafe(workspacePath);

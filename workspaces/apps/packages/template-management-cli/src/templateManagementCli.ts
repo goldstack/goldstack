@@ -7,6 +7,7 @@ import { S3TemplateRepository } from '@goldstack/template-repository';
 import yargs from 'yargs';
 import assert from 'assert';
 import { getAllBuildSets, getBuildSet } from '@goldstack/template-metadata';
+import { SendEmailCommand } from '@aws-sdk/client-ses';
 import { createS3Client } from 'mock-aws-s3-v3';
 import { getAwsConfigPath } from '@goldstack/utils-config';
 import { readConfig } from '@goldstack/infra-aws';
@@ -177,8 +178,8 @@ export const run = async (): Promise<void> => {
         process.env.GOLDSTACK_DEPLOYMENT = argv.deployment as string;
         const ses = await connectSes(argv.deployment as string);
 
-        await ses
-          .sendEmail({
+        await ses.send(
+          new SendEmailCommand({
             Destination: {
               ToAddresses: [(argv.emailResultsTo as string) || 'invalid'],
             },
@@ -206,7 +207,7 @@ export const run = async (): Promise<void> => {
             },
             Source: '"Goldstack" <no-reply@' + (await getFromDomain()) + '>',
           })
-          .promise();
+        );
       }
 
       if (
