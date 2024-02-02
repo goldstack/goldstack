@@ -3709,7 +3709,6 @@ const RAW_RUNTIME_STATE =
           ["@types/tsc-watch", "npm:4.2.0"],\
           ["@types/uuid", "npm:8.3.0"],\
           ["@yarnpkg/esbuild-plugin-pnp", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:3.0.0-rc.15"],\
-          ["aws-sdk", "npm:2.1525.0"],\
           ["aws-serverless-express", "npm:3.3.8"],\
           ["cookie-parser", "npm:1.4.5"],\
           ["cors", "npm:2.8.5"],\
@@ -5193,7 +5192,6 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:18.7.13"],\
           ["@types/yargs", "npm:17.0.10"],\
           ["aws-jwt-verify", "npm:3.2.0"],\
-          ["aws-sdk", "npm:2.1525.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["source-map-support", "npm:0.5.21"],\
@@ -5226,7 +5224,6 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:29.0.1"],\
           ["@types/node", "npm:18.7.13"],\
           ["@types/yargs", "npm:17.0.10"],\
-          ["aws-sdk", "npm:2.1525.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["source-map-support", "npm:0.5.21"],\
@@ -5266,7 +5263,6 @@ const RAW_RUNTIME_STATE =
           ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
           ["@types/jest", "npm:29.0.1"],\
           ["@types/node", "npm:18.7.13"],\
-          ["aws-sdk", "npm:2.1525.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.1"],\
@@ -8594,7 +8590,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@types/mock-aws-s3", "npm:2.6.3"],\
           ["@types/node", "npm:14.0.13"],\
-          ["aws-sdk", "npm:2.1525.0"]\
+          ["aws-sdk", "npm:2.1550.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -10155,6 +10151,23 @@ const RAW_RUNTIME_STATE =
           ["util", "npm:0.12.4"],\
           ["uuid", "npm:8.0.0"],\
           ["xml2js", "npm:0.5.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:2.1550.0", {\
+        "packageLocation": "./.yarn/cache/aws-sdk-npm-2.1550.0-d75b4f2096-950e452b51.zip/node_modules/aws-sdk/",\
+        "packageDependencies": [\
+          ["aws-sdk", "npm:2.1550.0"],\
+          ["buffer", "npm:4.9.2"],\
+          ["events", "npm:1.1.1"],\
+          ["ieee754", "npm:1.1.13"],\
+          ["jmespath", "npm:0.16.0"],\
+          ["querystring", "npm:0.2.0"],\
+          ["sax", "npm:1.2.1"],\
+          ["url", "npm:0.10.3"],\
+          ["util", "npm:0.12.4"],\
+          ["uuid", "npm:8.0.0"],\
+          ["xml2js", "npm:0.6.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -12976,7 +12989,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["dynamodb-admin", "npm:4.6.1"],\
           ["argparse", "npm:2.0.1"],\
-          ["aws-sdk", "npm:2.1525.0"],\
+          ["aws-sdk", "npm:2.1550.0"],\
           ["body-parser", "npm:1.20.2"],\
           ["cli-color", "npm:2.0.3"],\
           ["cookie-parser", "npm:1.4.6"],\
@@ -26181,6 +26194,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/xml2js-npm-0.5.0-06e57a2771-27c4d75921.zip/node_modules/xml2js/",\
         "packageDependencies": [\
           ["xml2js", "npm:0.5.0"],\
+          ["sax", "npm:1.2.1"],\
+          ["xmlbuilder", "npm:11.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:0.6.2", {\
+        "packageLocation": "./.yarn/cache/xml2js-npm-0.6.2-64cd781d74-df29de8eee.zip/node_modules/xml2js/",\
+        "packageDependencies": [\
+          ["xml2js", "npm:0.6.2"],\
           ["sax", "npm:1.2.1"],\
           ["xmlbuilder", "npm:11.0.1"]\
         ],\

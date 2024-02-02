@@ -9,14 +9,15 @@ import assert from 'assert';
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const createSESClient = require(excludeInBundle('./mockedSES')).createSESClient;
-
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 
 let mockedSES: SESClient | undefined;
 
 export const getMockedSES = (): SESClient => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const createSESClient = require(excludeInBundle(
+    './mockedSES'
+  )).createSESClient;
   if (!mockedSES) {
     mockedSES = createSESClient();
   }
@@ -45,6 +46,10 @@ export const connect = async (
 
   if (deploymentName === 'local') {
     if (!mockedSES) {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const createSESClient = require(excludeInBundle(
+        './mockedSES'
+      )).createSESClient;
       mockedSES = createSESClient();
     }
     return mockedSES as any;
