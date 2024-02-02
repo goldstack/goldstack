@@ -2622,7 +2622,6 @@ __metadata:
     "@types/tsc-watch": "npm:^4"
     "@types/uuid": "npm:^8.3.0"
     "@yarnpkg/esbuild-plugin-pnp": "npm:^3.0.0-rc.15"
-    aws-sdk: "npm:2.1525.0"
     aws-serverless-express: "npm:^3.3.8"
     cookie-parser: "npm:^1.4.5"
     cors: "npm:^2.8.5"
@@ -3459,7 +3458,7 @@ __metadata:
   dependencies:
     "@aws-sdk/client-ses": "npm:3.485.0"
     "@aws-sdk/credential-providers": "npm:3.485.0"
-    "@aws-sdk/types": "npm:3.485.0"
+    "@aws-sdk/types": "npm:^3.485.0"
     "@goldstack/infra": "npm:0.4.9"
     "@goldstack/infra-aws": "npm:0.4.15"
     "@goldstack/utils-cli": "npm:0.3.9"
@@ -4038,7 +4037,6 @@ __metadata:
     "@types/jest": "npm:^29.0.1"
     "@types/node": "npm:^18.7.13"
     "@types/yargs": "npm:^17.0.10"
-    aws-sdk: "npm:2.1525.0"
     jest: "npm:^29.3.1"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
@@ -4071,7 +4069,6 @@ __metadata:
     "@types/node": "npm:^18.7.13"
     "@types/yargs": "npm:^17.0.10"
     aws-jwt-verify: "npm:^3.2.0"
-    aws-sdk: "npm:2.1525.0"
     jest: "npm:^29.3.1"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
@@ -4106,7 +4103,6 @@ __metadata:
     "@swc/jest": "npm:^0.2.27"
     "@types/jest": "npm:^29.0.1"
     "@types/node": "npm:^18.7.13"
-    aws-sdk: "npm:2.1525.0"
     jest: "npm:^29.3.1"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.1"
@@ -8382,6 +8378,24 @@ __metadata:
     uuid: "npm:8.0.0"
     xml2js: "npm:0.5.0"
   checksum: 4466c2f6a009ad7d526eed216947ef921323daaf93eda8dd0c630bb81f51f236ba9831a8c11900eae39adb7c346b52c3074355fbb288373b13d7030962470511
+  languageName: node
+  linkType: hard
+
+"aws-sdk@npm:>=2.814.0, aws-sdk@npm:^2.1225.0":
+  version: 2.1550.0
+  resolution: "aws-sdk@npm:2.1550.0"
+  dependencies:
+    buffer: "npm:4.9.2"
+    events: "npm:1.1.1"
+    ieee754: "npm:1.1.13"
+    jmespath: "npm:0.16.0"
+    querystring: "npm:0.2.0"
+    sax: "npm:1.2.1"
+    url: "npm:0.10.3"
+    util: "npm:^0.12.4"
+    uuid: "npm:8.0.0"
+    xml2js: "npm:0.6.2"
+  checksum: 950e452b51710e398468a42003e9d815bc7cc36261d1b033f2a4c5e1ca36ba31471e956b852fd9c6c42bfaf266b757b79e66b46313c5dd70416fa108b98868cf
   languageName: node
   linkType: hard
 
@@ -22409,6 +22423,16 @@ __metadata:
     sax: "npm:>=0.6.0"
     xmlbuilder: "npm:~11.0.0"
   checksum: 27c4d759214e99be5ec87ee5cb1290add427fa43df509d3b92d10152b3806fd2f7c9609697a18b158ccf2caa01e96af067cdba93196f69ca10c90e4f79a08896
+  languageName: node
+  linkType: hard
+
+"xml2js@npm:0.6.2":
+  version: 0.6.2
+  resolution: "xml2js@npm:0.6.2"
+  dependencies:
+    sax: "npm:>=0.6.0"
+    xmlbuilder: "npm:~11.0.0"
+  checksum: df29de8eeedb762c367d87945c39bcf54db19a2c522607491c266ed6184b5a749e37ff29cfaed0ac149da9ba332ac3dcf8e5ff2bd0a206be3343eca95faa941d
   languageName: node
   linkType: hard
 
