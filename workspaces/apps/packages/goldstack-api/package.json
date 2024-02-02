@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.485.0",
+    "@aws-sdk/client-ses": "3.485.0",
     "@goldstack/auth": "0.1.0",
     "@goldstack/infra-aws": "0.4.15",
     "@goldstack/project-build": "0.1.0",

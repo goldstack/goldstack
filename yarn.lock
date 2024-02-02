@@ -290,6 +290,56 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@aws-sdk/client-ses@npm:3.485.0":
+  version: 3.485.0
+  resolution: "@aws-sdk/client-ses@npm:3.485.0"
+  dependencies:
+    "@aws-crypto/sha256-browser": "npm:3.0.0"
+    "@aws-crypto/sha256-js": "npm:3.0.0"
+    "@aws-sdk/client-sts": "npm:3.485.0"
+    "@aws-sdk/core": "npm:3.485.0"
+    "@aws-sdk/credential-provider-node": "npm:3.485.0"
+    "@aws-sdk/middleware-host-header": "npm:3.485.0"
+    "@aws-sdk/middleware-logger": "npm:3.485.0"
+    "@aws-sdk/middleware-recursion-detection": "npm:3.485.0"
+    "@aws-sdk/middleware-signing": "npm:3.485.0"
+    "@aws-sdk/middleware-user-agent": "npm:3.485.0"
+    "@aws-sdk/region-config-resolver": "npm:3.485.0"
+    "@aws-sdk/types": "npm:3.485.0"
+    "@aws-sdk/util-endpoints": "npm:3.485.0"
+    "@aws-sdk/util-user-agent-browser": "npm:3.485.0"
+    "@aws-sdk/util-user-agent-node": "npm:3.485.0"
+    "@smithy/config-resolver": "npm:^2.0.23"
+    "@smithy/core": "npm:^1.2.2"
+    "@smithy/fetch-http-handler": "npm:^2.3.2"
+    "@smithy/hash-node": "npm:^2.0.18"
+    "@smithy/invalid-dependency": "npm:^2.0.16"
+    "@smithy/middleware-content-length": "npm:^2.0.18"
+    "@smithy/middleware-endpoint": "npm:^2.3.0"
+    "@smithy/middleware-retry": "npm:^2.0.26"
+    "@smithy/middleware-serde": "npm:^2.0.16"
+    "@smithy/middleware-stack": "npm:^2.0.10"
+    "@smithy/node-config-provider": "npm:^2.1.9"
+    "@smithy/node-http-handler": "npm:^2.2.2"
+    "@smithy/protocol-http": "npm:^3.0.12"
+    "@smithy/smithy-client": "npm:^2.2.1"
+    "@smithy/types": "npm:^2.8.0"
+    "@smithy/url-parser": "npm:^2.0.16"
+    "@smithy/util-base64": "npm:^2.0.1"
+    "@smithy/util-body-length-browser": "npm:^2.0.1"
+    "@smithy/util-body-length-node": "npm:^2.1.0"
+    "@smithy/util-defaults-mode-browser": "npm:^2.0.24"
+    "@smithy/util-defaults-mode-node": "npm:^2.0.32"
+    "@smithy/util-endpoints": "npm:^1.0.8"
+    "@smithy/util-retry": "npm:^2.0.9"
+    "@smithy/util-utf8": "npm:^2.0.2"
+    "@smithy/util-waiter": "npm:^2.0.16"
+    fast-xml-parser: "npm:4.2.5"
+    tslib: "npm:^2.5.0"
+  checksum: 89f71ad9f16ce4c32dcd9a9c8087406dd96d8899a2ff0e2395e67eb704ffdcc81df4163a2fa520bbab0bed842e84153d7a0d4a2320208c6fd046182613d30c7e
+  languageName: node
+  linkType: hard
+
 "@aws-sdk/client-sso@npm:3.484.0":
   version: 3.484.0
   resolution: "@aws-sdk/client-sso@npm:3.484.0"
@@ -2515,6 +2565,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/email-send@workspace:workspaces/templates/packages/email-send"
   dependencies:
+    "@aws-sdk/client-ses": "npm:3.485.0"
     "@goldstack/template-email-send": "npm:0.4.20"
     "@goldstack/template-email-send-cli": "npm:0.5.20"
     "@goldstack/utils-git": "npm:0.2.9"
@@ -2523,7 +2574,6 @@ __metadata:
     "@swc/jest": "npm:^0.2.27"
     "@types/jest": "npm:^29.0.1"
     "@types/node": "npm:^18.7.13"
-    aws-sdk: "npm:2.1525.0"
     jest: "npm:^29.3.1"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.1"
@@ -2536,6 +2586,7 @@ __metadata:
   resolution: "@goldstack/goldstack-api@workspace:workspaces/apps/packages/goldstack-api"
   dependencies:
     "@aws-sdk/client-s3": "npm:3.485.0"
+    "@aws-sdk/client-ses": "npm:3.485.0"
     "@goldstack/auth": "npm:0.1.0"
     "@goldstack/goldstack-email-send": "npm:0.1.0"
     "@goldstack/infra-aws": "npm:0.4.15"
@@ -2598,6 +2649,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/goldstack-email-send@workspace:workspaces/apps/packages/goldstack-email-send"
   dependencies:
+    "@aws-sdk/client-ses": "npm:3.485.0"
     "@goldstack/template-email-send": "npm:0.4.20"
     "@goldstack/template-email-send-cli": "npm:0.5.20"
     "@goldstack/utils-git": "npm:0.2.9"
@@ -2606,7 +2658,6 @@ __metadata:
     "@swc/jest": "npm:^0.2.27"
     "@types/jest": "npm:^29.0.1"
     "@types/node": "npm:^18.7.13"
-    aws-sdk: "npm:2.1525.0"
     jest: "npm:^29.3.1"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.1"
@@ -3406,6 +3457,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-email-send@workspace:workspaces/templates-lib/packages/template-email-send"
   dependencies:
+    "@aws-sdk/client-ses": "npm:3.485.0"
+    "@aws-sdk/credential-providers": "npm:3.485.0"
+    "@aws-sdk/types": "npm:3.485.0"
     "@goldstack/infra": "npm:0.4.9"
     "@goldstack/infra-aws": "npm:0.4.15"
     "@goldstack/utils-cli": "npm:0.3.9"
@@ -3422,7 +3476,7 @@ __metadata:
     "@types/mock-aws-s3": "npm:^2.6.3"
     "@types/node": "npm:^18.7.13"
     "@types/uuid": "npm:^8.3.0"
-    aws-sdk: "npm:2.1525.0"
+    aws-sdk-client-mock: "npm:^3.0.1"
     jest: "npm:^29.3.1"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.1"
@@ -3545,6 +3599,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-management-cli@workspace:workspaces/apps/packages/template-management-cli"
   dependencies:
+    "@aws-sdk/client-ses": "npm:3.485.0"
     "@goldstack/goldstack-email-send": "npm:0.1.0"
     "@goldstack/infra-aws": "npm:0.4.15"
     "@goldstack/project-build": "npm:0.1.0"

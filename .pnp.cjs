@@ -870,6 +870,57 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@aws-sdk/client-ses", [\
+      ["npm:3.485.0", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-client-ses-npm-3.485.0-42bef0946b-89f71ad9f1.zip/node_modules/@aws-sdk/client-ses/",\
+        "packageDependencies": [\
+          ["@aws-sdk/client-ses", "npm:3.485.0"],\
+          ["@aws-crypto/sha256-browser", "npm:3.0.0"],\
+          ["@aws-crypto/sha256-js", "npm:3.0.0"],\
+          ["@aws-sdk/client-sts", "npm:3.485.0"],\
+          ["@aws-sdk/core", "npm:3.485.0"],\
+          ["@aws-sdk/credential-provider-node", "npm:3.485.0"],\
+          ["@aws-sdk/middleware-host-header", "npm:3.485.0"],\
+          ["@aws-sdk/middleware-logger", "npm:3.485.0"],\
+          ["@aws-sdk/middleware-recursion-detection", "npm:3.485.0"],\
+          ["@aws-sdk/middleware-signing", "npm:3.485.0"],\
+          ["@aws-sdk/middleware-user-agent", "npm:3.485.0"],\
+          ["@aws-sdk/region-config-resolver", "npm:3.485.0"],\
+          ["@aws-sdk/types", "npm:3.485.0"],\
+          ["@aws-sdk/util-endpoints", "npm:3.485.0"],\
+          ["@aws-sdk/util-user-agent-browser", "npm:3.485.0"],\
+          ["@aws-sdk/util-user-agent-node", "virtual:5f6733bd23aee10dd05576af160f1b93e0bb4a20b288e9b818dc0b69bdb08ea1a09d5836816f02bdafc9c01487816ae339c6b680c2f7849dfe249436c5f2b499#npm:3.485.0"],\
+          ["@smithy/config-resolver", "npm:2.0.23"],\
+          ["@smithy/core", "npm:1.2.2"],\
+          ["@smithy/fetch-http-handler", "npm:2.3.2"],\
+          ["@smithy/hash-node", "npm:2.0.18"],\
+          ["@smithy/invalid-dependency", "npm:2.0.16"],\
+          ["@smithy/middleware-content-length", "npm:2.0.18"],\
+          ["@smithy/middleware-endpoint", "npm:2.3.0"],\
+          ["@smithy/middleware-retry", "npm:2.0.26"],\
+          ["@smithy/middleware-serde", "npm:2.0.16"],\
+          ["@smithy/middleware-stack", "npm:2.0.10"],\
+          ["@smithy/node-config-provider", "npm:2.1.9"],\
+          ["@smithy/node-http-handler", "npm:2.2.2"],\
+          ["@smithy/protocol-http", "npm:3.0.12"],\
+          ["@smithy/smithy-client", "npm:2.2.1"],\
+          ["@smithy/types", "npm:2.8.0"],\
+          ["@smithy/url-parser", "npm:2.0.16"],\
+          ["@smithy/util-base64", "npm:2.0.1"],\
+          ["@smithy/util-body-length-browser", "npm:2.0.1"],\
+          ["@smithy/util-body-length-node", "npm:2.1.0"],\
+          ["@smithy/util-defaults-mode-browser", "npm:2.0.24"],\
+          ["@smithy/util-defaults-mode-node", "npm:2.0.32"],\
+          ["@smithy/util-endpoints", "npm:1.0.8"],\
+          ["@smithy/util-retry", "npm:2.0.9"],\
+          ["@smithy/util-utf8", "npm:2.0.2"],\
+          ["@smithy/util-waiter", "npm:2.0.16"],\
+          ["fast-xml-parser", "npm:4.2.5"],\
+          ["tslib", "npm:2.6.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@aws-sdk/client-sso", [\
       ["npm:3.484.0", {\
         "packageLocation": "./.yarn/cache/@aws-sdk-client-sso-npm-3.484.0-f5e5a564ba-2a63f49f74.zip/node_modules/@aws-sdk/client-sso/",\
@@ -3599,6 +3650,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./workspaces/templates/packages/email-send/",\
         "packageDependencies": [\
           ["@goldstack/email-send", "workspace:workspaces/templates/packages/email-send"],\
+          ["@aws-sdk/client-ses", "npm:3.485.0"],\
           ["@goldstack/template-email-send", "workspace:workspaces/templates-lib/packages/template-email-send"],\
           ["@goldstack/template-email-send-cli", "workspace:workspaces/templates-lib/packages/template-email-send-cli"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
@@ -3607,7 +3659,6 @@ const RAW_RUNTIME_STATE =
           ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
           ["@types/jest", "npm:29.0.1"],\
           ["@types/node", "npm:18.7.13"],\
-          ["aws-sdk", "npm:2.1525.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.1"],\
@@ -3622,6 +3673,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@goldstack/goldstack-api", "workspace:workspaces/apps/packages/goldstack-api"],\
           ["@aws-sdk/client-s3", "npm:3.485.0"],\
+          ["@aws-sdk/client-ses", "npm:3.485.0"],\
           ["@goldstack/auth", "workspace:workspaces/templates-management/packages/auth"],\
           ["@goldstack/goldstack-email-send", "workspace:workspaces/apps/packages/goldstack-email-send"],\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
@@ -3686,6 +3738,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./workspaces/apps/packages/goldstack-email-send/",\
         "packageDependencies": [\
           ["@goldstack/goldstack-email-send", "workspace:workspaces/apps/packages/goldstack-email-send"],\
+          ["@aws-sdk/client-ses", "npm:3.485.0"],\
           ["@goldstack/template-email-send", "workspace:workspaces/templates-lib/packages/template-email-send"],\
           ["@goldstack/template-email-send-cli", "workspace:workspaces/templates-lib/packages/template-email-send-cli"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
@@ -3694,7 +3747,6 @@ const RAW_RUNTIME_STATE =
           ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
           ["@types/jest", "npm:29.0.1"],\
           ["@types/node", "npm:18.7.13"],\
-          ["aws-sdk", "npm:2.1525.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.1"],\
@@ -4515,6 +4567,9 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./workspaces/templates-lib/packages/template-email-send/",\
         "packageDependencies": [\
           ["@goldstack/template-email-send", "workspace:workspaces/templates-lib/packages/template-email-send"],\
+          ["@aws-sdk/client-ses", "npm:3.485.0"],\
+          ["@aws-sdk/credential-providers", "npm:3.485.0"],\
+          ["@aws-sdk/types", "npm:3.485.0"],\
           ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
@@ -4531,7 +4586,7 @@ const RAW_RUNTIME_STATE =
           ["@types/mock-aws-s3", "npm:2.6.3"],\
           ["@types/node", "npm:18.7.13"],\
           ["@types/uuid", "npm:8.3.0"],\
-          ["aws-sdk", "npm:2.1525.0"],\
+          ["aws-sdk-client-mock", "npm:3.0.1"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.1"],\
@@ -4684,6 +4739,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./workspaces/apps/packages/template-management-cli/",\
         "packageDependencies": [\
           ["@goldstack/template-management-cli", "workspace:workspaces/apps/packages/template-management-cli"],\
+          ["@aws-sdk/client-ses", "npm:3.485.0"],\
           ["@goldstack/goldstack-email-send", "workspace:workspaces/apps/packages/goldstack-email-send"],\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
           ["@goldstack/project-build", "workspace:workspaces/templates-management/packages/project-build"],\
