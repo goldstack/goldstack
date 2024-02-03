@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-email-send",
-  "version": "0.4.22",
+  "version": "0.4.23",
   "description": "Utilities for packages that implement email sending using AWS SES",
   "keywords": [
     "goldstack",
