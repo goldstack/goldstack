@@ -18,6 +18,9 @@ export function defaultBuildOptions(): (
       bundle: true,
       external: [
         // 'aws-sdk', // included in Lambda runtime environment - sdk v2 not included anymore
+        'mock-aws-s3-v3', // for s3 mock
+        'testcontainers',
+        'aws-sdk-client-mock', // for s3 and ses mocks
       ],
       minify: true,
       platform: 'node',

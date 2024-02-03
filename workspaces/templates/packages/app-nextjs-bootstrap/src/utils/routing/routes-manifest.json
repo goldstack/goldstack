@@ -1,6 +1,7 @@
 {
   "version": 3,
   "pages404": true,
+  "caseSensitive": false,
   "basePath": "",
   "redirects": [
     {
@@ -33,7 +34,9 @@
   "dataRoutes": [],
   "rsc": {
     "header": "RSC",
-    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch"
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+    "prefetchHeader": "Next-Router-Prefetch",
+    "contentTypeHeader": "text/x-component"
   },
   "rewrites": []
 }

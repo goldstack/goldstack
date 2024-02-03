@@ -1,7 +1,6 @@
 import {
   SESClient,
   SendEmailRequest,
-  SendEmailResponse,
   SendEmailCommand,
 } from '@aws-sdk/client-ses';
 
@@ -29,8 +28,4 @@ export function createSESClient(sesClient?: SESClient): SESClient {
   });
 
   return sesClient;
-}
-
-export function getSentEmailRequests(sesClient: SESClient): SendEmailRequest[] {
-  return (sesClient as any)._goldstackSentRequests;
 }

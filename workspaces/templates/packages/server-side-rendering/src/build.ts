@@ -46,6 +46,9 @@ const buildConfig = (): BuildConfiguration => {
           '@yarnpkg/esbuild-plugin-pnp',
           '@swc/core',
           '@swc/jest',
+          'mock-aws-s3-v3', // for s3 mock
+          'testcontainers',
+          'aws-sdk-client-mock', // for s3 and ses mocks
           '@goldstack/template-ssr-server', // this is only required on the server side
         ],
         minify: true,
@@ -69,6 +72,9 @@ const buildConfig = (): BuildConfiguration => {
         bundle: true,
         external: [
           // 'aws-sdk', // included in Lambda runtime environment, not any more for v18+
+          'mock-aws-s3-v3', // for s3 mock
+          'testcontainers',
+          'aws-sdk-client-mock', // for s3 and ses mocks
         ],
         minify: true,
         platform: 'node',

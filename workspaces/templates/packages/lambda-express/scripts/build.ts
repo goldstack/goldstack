@@ -5,7 +5,7 @@ build({
   plugins: [pnpPlugin()],
   bundle: true,
   entryPoints: ['src/lambda.ts'],
-  external: ['mock-aws-s3-v3', 'testcontainers'], // mock-aws-s3 from s3 template, testcontainers from dynamodb template
+  external: ['mock-aws-s3-v3', 'testcontainers', 'aws-sdk-client-mock'], // mock-aws-s3-v3 from s3 template, testcontainers from dynamodb template
   minify: true,
   format: 'cjs',
   platform: 'node',
