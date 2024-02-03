@@ -1,5 +1,6 @@
-import { build } from 'esbuild';
+import { build, analyzeMetafile } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
+import { writeFileSync } from 'fs';
 
 build({
   plugins: [pnpPlugin()],
@@ -11,8 +12,14 @@ build({
   platform: 'node',
   target: 'node18.0',
   sourcemap: true,
+  // metafile: true,
   outfile: 'distLambda/lambda.js',
-}).catch((e) => {
-  console.log('Build not successful', e.message);
-  process.exit(1);
-});
+})
+  .catch((e) => {
+    console.log('Build not successful', e.message);
+    process.exit(1);
+  })
+  .then(async (result) => {
+    // writeFileSync('distLambda/meta.json', JSON.stringify(result.metafile));
+    // console.log(await analyzeMetafile(result.metafile));
+  });
