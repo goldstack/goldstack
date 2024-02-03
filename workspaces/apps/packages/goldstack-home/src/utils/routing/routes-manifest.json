@@ -1,6 +1,7 @@
 {
   "version": 3,
   "pages404": true,
+  "caseSensitive": false,
   "basePath": "",
   "redirects": [
     {
@@ -101,37 +102,37 @@
       "page": "/projects/[id]/packages/[packageId]/configure/[step]",
       "regex": "^/projects/([^/]+?)/packages/([^/]+?)/configure/([^/]+?)(?:/)?$",
       "routeKeys": {
-        "id": "id",
-        "packageId": "packageId",
-        "step": "step"
+        "nxtPid": "nxtPid",
+        "nxtPpackageId": "nxtPpackageId",
+        "nxtPstep": "nxtPstep"
       },
-      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/configure/(?<step>[^/]+?)(?:/)?$"
+      "namedRegex": "^/projects/(?<nxtPid>[^/]+?)/packages/(?<nxtPpackageId>[^/]+?)/configure/(?<nxtPstep>[^/]+?)(?:/)?$"
     },
     {
       "page": "/projects/[id]/packages/[packageId]/download",
       "regex": "^/projects/([^/]+?)/packages/([^/]+?)/download(?:/)?$",
       "routeKeys": {
-        "id": "id",
-        "packageId": "packageId"
+        "nxtPid": "nxtPid",
+        "nxtPpackageId": "nxtPpackageId"
       },
-      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/download(?:/)?$"
+      "namedRegex": "^/projects/(?<nxtPid>[^/]+?)/packages/(?<nxtPpackageId>[^/]+?)/download(?:/)?$"
     },
     {
       "page": "/projects/[id]/packages/[packageId]/get-template",
       "regex": "^/projects/([^/]+?)/packages/([^/]+?)/get\\-template(?:/)?$",
       "routeKeys": {
-        "id": "id",
-        "packageId": "packageId"
+        "nxtPid": "nxtPid",
+        "nxtPpackageId": "nxtPpackageId"
       },
-      "namedRegex": "^/projects/(?<id>[^/]+?)/packages/(?<packageId>[^/]+?)/get\\-template(?:/)?$"
+      "namedRegex": "^/projects/(?<nxtPid>[^/]+?)/packages/(?<nxtPpackageId>[^/]+?)/get\\-template(?:/)?$"
     },
     {
       "page": "/templates/[template]",
       "regex": "^/templates/([^/]+?)(?:/)?$",
       "routeKeys": {
-        "template": "template"
+        "nxtPtemplate": "nxtPtemplate"
       },
-      "namedRegex": "^/templates/(?<template>[^/]+?)(?:/)?$"
+      "namedRegex": "^/templates/(?<nxtPtemplate>[^/]+?)(?:/)?$"
     }
   ],
   "staticRoutes": [
@@ -164,15 +165,17 @@
     {
       "page": "/templates/[template]",
       "routeKeys": {
-        "template": "template"
+        "nxtPtemplate": "nxtPtemplate"
       },
-      "dataRouteRegex": "^/_next/data/G7nVUlzzi2zHe6dcM2S_r/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/G7nVUlzzi2zHe6dcM2S_r/templates/(?<template>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/ov2G2vQ6AavBjpCxuv1Gg/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/ov2G2vQ6AavBjpCxuv1Gg/templates/(?<nxtPtemplate>[^/]+?)\\.json$"
     }
   ],
   "rsc": {
     "header": "RSC",
-    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch"
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+    "prefetchHeader": "Next-Router-Prefetch",
+    "contentTypeHeader": "text/x-component"
   },
   "rewrites": []
 }

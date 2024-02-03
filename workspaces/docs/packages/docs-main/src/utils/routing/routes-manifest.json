@@ -1,6 +1,7 @@
 {
   "version": 3,
   "pages404": true,
+  "caseSensitive": false,
   "basePath": "",
   "redirects": [
     {
@@ -181,9 +182,9 @@
       "page": "/docs/[...slug]",
       "regex": "^/docs/(.+?)(?:/)?$",
       "routeKeys": {
-        "slug": "slug"
+        "nxtPslug": "nxtPslug"
       },
-      "namedRegex": "^/docs/(?<slug>.+?)(?:/)?$"
+      "namedRegex": "^/docs/(?<nxtPslug>.+?)(?:/)?$"
     }
   ],
   "staticRoutes": [
@@ -204,15 +205,17 @@
     {
       "page": "/docs/[...slug]",
       "routeKeys": {
-        "slug": "slug"
+        "nxtPslug": "nxtPslug"
       },
-      "dataRouteRegex": "^/_next/data/C\\-H_bQLMPk7sFt15o3iQn/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/C\\-H_bQLMPk7sFt15o3iQn/docs/(?<slug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/23M\\-AOxZfgP21W4EU9M\\-e/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/23M\\-AOxZfgP21W4EU9M\\-e/docs/(?<nxtPslug>.+?)\\.json$"
     }
   ],
   "rsc": {
     "header": "RSC",
-    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch"
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+    "prefetchHeader": "Next-Router-Prefetch",
+    "contentTypeHeader": "text/x-component"
   },
   "rewrites": []
 }
