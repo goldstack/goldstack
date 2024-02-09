@@ -24,8 +24,8 @@
     "@goldstack/template-s3": "0.5.4",
     "@goldstack/utils-git": "0.2.9",
     "@goldstack/utils-sh": "0.5.9",
-    "@smithy/smithy-client": "^2.2.1",
-    "@smithy/types": "^2.8.0"
+    "@smithy/smithy-client": "^2.3.1",
+    "@smithy/types": "^2.9.1"
   },
   "devDependencies": {
     "@goldstack/template-s3-cli": "0.6.23",
