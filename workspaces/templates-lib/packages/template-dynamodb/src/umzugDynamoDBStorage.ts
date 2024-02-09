@@ -42,11 +42,11 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
     try {
       await params.context.client.send(
         new PutItemCommand({
-          TableName: params.context.tableName,
-          Item: marshall({
-            [this.partitionKey]: this.migrationsKey,
-            [this.sortKey]: params.name,
-          }),
+          TableName: this.tableName,
+          Item: {
+            [this.partitionKey]: { S: this.migrationsKey },
+            [this.sortKey]: { S: this.sortKey },
+          },
         })
       );
     } catch (e) {
@@ -61,10 +61,10 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
       await params.context.client.send(
         new DeleteItemCommand({
           TableName: this.tableName,
-          Key: marshall({
-            [this.partitionKey]: this.migrationsKey,
-            [this.sortKey]: params.name,
-          }),
+          Key: {
+            [this.partitionKey]: { S: this.migrationsKey },
+            [this.sortKey]: { S: params.name },
+          },
         })
       );
     } catch (e) {

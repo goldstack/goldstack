@@ -8,6 +8,7 @@ import { getTableName } from './dynamoDBPackageUtils';
 import { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
 import waitPort from 'wait-port';
 import { check } from 'tcp-port-used';
+import { ChildProcess, spawn } from 'child_process';
 
 const MAPPED_PORT = 8000;
 
@@ -84,6 +85,48 @@ export const startLocalDynamoDB = async (
   return startedContainer;
 };
 
+function killProcess(childProcess: ChildProcess): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+    if (process.platform === 'win32') {
+      if (!childProcess.pid) {
+        throw new Error('Process id cannot be identified.');
+      }
+      spawn('taskkill', ['/pid', childProcess.pid?.toString(), '/t']);
+    } else {
+      // Send SIGTERM signal to the process
+      childProcess.kill('SIGTERM');
+    }
+    // Set a timeout to send SIGKILL after 5 seconds
+    const timeout = setTimeout(() => {
+      if (process.platform === 'win32') {
+        if (!childProcess.pid) {
+          throw new Error('Process id cannot be identified.');
+        }
+        spawn('taskkill', ['/pid', childProcess.pid?.toString(), '/f', '/t']);
+      } else {
+        // Send SIGKILL signal if the process hasn't exited after 5 seconds
+        childProcess.kill('SIGKILL');
+      }
+    }, 5000);
+
+    const errorTimeout = setTimeout(() => {
+      clearTimeout(timeout);
+      reject(new Error('Process could not be terminated after 30 s'));
+    }, 30000);
+    // Listen for the exit event
+    childProcess.on('exit', (code, signal) => {
+      // Clear the timeouts since the process has exited
+      clearTimeout(timeout);
+      clearTimeout(errorTimeout);
+
+      console.debug(
+        `Child process exited with code ${code} and signal ${signal}`
+      );
+      resolve();
+    });
+  });
+}
+
 const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
   if (await check(MAPPED_PORT)) {
     console.debug(
@@ -112,11 +155,13 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
       port: MAPPED_PORT,
       stop: async () => {
         console.debug('Stopping local Java DynamoDB');
-        if (!pr.kill()) {
+        try {
+          await killProcess(pr);
+        } catch (e) {
           console.error('Stopping local Java DynamoDB process not successful');
-        } else {
-          console.debug('Local Java DynamoDB stopped');
+          throw e;
         }
+        console.debug('Local Java DynamoDB stopped');
       },
     };
   }
@@ -139,7 +184,16 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
     return {
       port: MAPPED_PORT,
       stop: async () => {
-        pr.kill();
+        console.debug('Stopping local Docker DynamoDB');
+        try {
+          await killProcess(pr);
+        } catch (e) {
+          console.error(
+            'Stopping local Docker DynamoDB process not successful'
+          );
+          throw e;
+        }
+        console.debug('Local Docker DynamoDB stopped');
       },
     };
   }
