@@ -27,7 +27,7 @@
     "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "3.485.0",
+    "@aws-sdk/client-ses": "^3.511.0",
     "@goldstack/goldstack-email-send": "0.1.0",
     "@goldstack/infra-aws": "0.4.15",
     "@goldstack/project-build": "0.1.0",
