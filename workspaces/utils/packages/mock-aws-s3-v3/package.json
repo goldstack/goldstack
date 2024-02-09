@@ -1,6 +1,6 @@
 {
   "name": "mock-aws-s3-v3",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "description": "Local file-based mock for AWS S3 for unit and local testing for AWS JavaScript SDK v3+.",
   "keywords": [
     "node",

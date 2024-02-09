@@ -24,7 +24,7 @@
     "watch": "PORT=5054 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev --respawn --transpile-only --project tsconfig.local.json -r ./scripts/register.js ./scripts/start.ts"
   },
   "dependencies": {
-    "@goldstack/template-ssr": "0.3.28",
+    "@goldstack/template-ssr": "0.3.29",
     "@goldstack/utils-esbuild": "0.5.9",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "date-fns": "^2.28.0",
@@ -36,8 +36,8 @@
     "static-file-mapper-build": "0.3.11"
   },
   "devDependencies": {
-    "@goldstack/template-ssr-cli": "0.3.32",
-    "@goldstack/utils-aws-http-api-local": "0.3.27",
+    "@goldstack/template-ssr-cli": "0.3.33",
+    "@goldstack/utils-aws-http-api-local": "0.3.28",
     "@jest-mock/express": "^1.4.5",
     "@jest/transform": "^29.3.1",
     "@swc/core": "^1.3.74",
