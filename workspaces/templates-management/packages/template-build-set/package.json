@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.4.9",
-    "@goldstack/infra-aws": "0.4.16",
+    "@goldstack/infra-aws": "0.4.17",
     "@goldstack/project-build": "0.1.0",
     "@goldstack/project-config": "0.1.0",
     "@goldstack/project-install": "0.1.0",
