@@ -9206,13 +9206,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"colorette@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "colorette@npm:1.2.2"
-  checksum: cd8451221eaa1cea910daf28c4055ecc9301be26ea26c4f227488d0e4b5f70dc38018d553665a9cf84008d9eb29f8a43c9029415d0794bd31c7ca21d74d60172
-  languageName: node
-  linkType: hard
-
 "colorette@npm:^2.0.16":
   version: 2.0.19
   resolution: "colorette@npm:2.0.19"
@@ -10356,7 +10349,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"domhandler@npm:^5.0.1, domhandler@npm:^5.0.2":
+"domhandler@npm:^5.0.1, domhandler@npm:^5.0.2, domhandler@npm:^5.0.3":
   version: 5.0.3
   resolution: "domhandler@npm:5.0.3"
   dependencies:
@@ -10641,6 +10634,13 @@ __metadata:
   version: 4.4.0
   resolution: "entities@npm:4.4.0"
   checksum: b627cb900e901cc7817037b83bf993a1cbf6a64850540f7526af7bcf9c7d09ebc671198e6182cfae4680f733799e2852e6a1c46aa62ff36eb99680057a038df5
+  languageName: node
+  linkType: hard
+
+"entities@npm:^4.4.0":
+  version: 4.5.0
+  resolution: "entities@npm:4.5.0"
+  checksum: ede2a35c9bce1aeccd055a1b445d41c75a14a2bb1cd22e242f20cf04d236cdcd7f9c859eb83f76885327bfae0c25bf03303665ee1ce3d47c5927b98b0e3e3d48
   languageName: node
   linkType: hard
 
@@ -13110,7 +13110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"htmlparser2@npm:^6.0.0, htmlparser2@npm:^6.1.0":
+"htmlparser2@npm:^6.1.0":
   version: 6.1.0
   resolution: "htmlparser2@npm:6.1.0"
   dependencies:
@@ -13119,6 +13119,18 @@ __metadata:
     domutils: "npm:^2.5.2"
     entities: "npm:^2.0.0"
   checksum: c9c34b0b722f5923c4ae05e59268aeb768582152969e3338a1cd3342b87f8dd2c0420f4745e46d2fd87f1b677ea2f314c3a93436ed8831905997e6347e081a5d
+  languageName: node
+  linkType: hard
+
+"htmlparser2@npm:^8.0.0":
+  version: 8.0.2
+  resolution: "htmlparser2@npm:8.0.2"
+  dependencies:
+    domelementtype: "npm:^2.3.0"
+    domhandler: "npm:^5.0.3"
+    domutils: "npm:^3.0.1"
+    entities: "npm:^4.4.0"
+  checksum: ea5512956eee06f5835add68b4291d313c745e8407efa63848f4b8a90a2dee45f498a698bca8614e436f1ee0cfdd609938b71d67c693794545982b76e53e6f11
   languageName: node
   linkType: hard
 
@@ -15192,13 +15204,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"klona@npm:^2.0.3":
-  version: 2.0.4
-  resolution: "klona@npm:2.0.4"
-  checksum: 7767d79f5b2ce4833321b3af6edd257d5a9f3f4c296c80862c131ce8aa0caf5933071b69452b8e52ea5924d846b42eb0e3d215e3eb093bfdfaae21e3ac8b7116
-  languageName: node
-  linkType: hard
-
 "lambda-compression@npm:0.2.10, lambda-compression@workspace:workspaces/utils/packages/lambda-compression":
   version: 0.0.0-use.local
   resolution: "lambda-compression@workspace:workspaces/utils/packages/lambda-compression"
@@ -16288,21 +16293,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.1.23":
-  version: 3.1.23
-  resolution: "nanoid@npm:3.1.23"
-  bin:
-    nanoid: bin/nanoid.cjs
-  checksum: e620ef310bd3c85a94a6079df08d72f4c29b949237d18ec6158495797600611a1859137a657a0811c27063ed3f0d93254333d943bdb755319d6ed3f018a5a1e7
-  languageName: node
-  linkType: hard
-
 "nanoid@npm:^3.3.4":
   version: 3.3.4
   resolution: "nanoid@npm:3.3.4"
   bin:
     nanoid: bin/nanoid.cjs
   checksum: 4f01aaf742452d8668d1d99a21218eb9eaa703c0291e7ec5bbb17a7c0ac56df3b791723ce4d429f53949b252e1ce26386a0aa6782fce10d44cd617d89c9fe9d2
+  languageName: node
+  linkType: hard
+
+"nanoid@npm:^3.3.7":
+  version: 3.3.7
+  resolution: "nanoid@npm:3.3.7"
+  bin:
+    nanoid: bin/nanoid.cjs
+  checksum: ac1eb60f615b272bccb0e2b9cd933720dad30bf9708424f691b8113826bb91aca7e9d14ef5d9415a6ba15c266b37817256f58d8ce980c82b0ba3185352565679
   languageName: node
   linkType: hard
 
@@ -17634,14 +17639,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.0.2":
-  version: 8.3.6
-  resolution: "postcss@npm:8.3.6"
+"postcss@npm:^8.3.11":
+  version: 8.4.35
+  resolution: "postcss@npm:8.4.35"
   dependencies:
-    colorette: "npm:^1.2.2"
-    nanoid: "npm:^3.1.23"
-    source-map-js: "npm:^0.6.2"
-  checksum: 6d7a350d6faeb7f44a30d8a48c25f6301ee34a3c8ecbc777c5439da58c8259e9f3fe475685cf2d9f36a2a3f193c5b7f8a0e78a0d1948014071558fee31b203b2
+    nanoid: "npm:^3.3.7"
+    picocolors: "npm:^1.0.0"
+    source-map-js: "npm:^1.0.2"
+  checksum: 93a7ce50cd6188f5f486a9ca98950ad27c19dfed996c45c414fa242944497e4d084a8760d3537f078630226f2bd3c6ab84b813b488740f4432e7c7039cd73a20
   languageName: node
   linkType: hard
 
@@ -18969,17 +18974,16 @@ __metadata:
   linkType: hard
 
 "sanitize-html@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "sanitize-html@npm:2.4.0"
+  version: 2.12.1
+  resolution: "sanitize-html@npm:2.12.1"
   dependencies:
     deepmerge: "npm:^4.2.2"
     escape-string-regexp: "npm:^4.0.0"
-    htmlparser2: "npm:^6.0.0"
+    htmlparser2: "npm:^8.0.0"
     is-plain-object: "npm:^5.0.0"
-    klona: "npm:^2.0.3"
     parse-srcset: "npm:^1.0.2"
-    postcss: "npm:^8.0.2"
-  checksum: c7eaf3eb0c4d50606635764d43eee7c62d76eafdcdf0a6af566bba07a7bddb8b678cc1425a670e04f745a7b5225292300f4ecb8b2e6f21cda4bc6662ab720e4e
+    postcss: "npm:^8.3.11"
+  checksum: 0aef3e56a7fe30983921e070d432167df1aabd9e6e4a78b5de127af275c38b41f8e97f0440b6970cee1875dc003bc5e3c3a588ec7d2c242fca6d8f3327ea8efb
   languageName: node
   linkType: hard
 
@@ -19530,13 +19534,6 @@ __metadata:
   version: 1.0.2
   resolution: "source-map-js@npm:1.0.2"
   checksum: 38e2d2dd18d2e331522001fc51b54127ef4a5d473f53b1349c5cca2123562400e0986648b52e9407e348eaaed53bce49248b6e2641e6d793ca57cb2c360d6d51
-  languageName: node
-  linkType: hard
-
-"source-map-js@npm:^0.6.2":
-  version: 0.6.2
-  resolution: "source-map-js@npm:0.6.2"
-  checksum: 7dd3805d964bca9bd7c5fa7e583679bb16b4bc4bd56d59c9b90bc98d30f7ee0a43762686192a34255dedf9eb9deb1b9278f0947976528059827cb9918fe80056
   languageName: node
   linkType: hard
 
