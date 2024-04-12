@@ -10,6 +10,7 @@ import {
   HeadObjectCommand,
   ListBucketsCommand,
   ListObjectsCommand,
+  ListObjectsV2Command,
   NoSuchKey,
   PutObjectCommand,
   PutObjectTaggingCommand,
@@ -71,6 +72,7 @@ export function createS3Client(
   wrappedAsIs(client, mockS3, CreateBucketCommand, 'createBucket');
   wrappedAsIs(client, mockS3, DeleteBucketCommand, 'deleteBucket');
   wrappedAsIs(client, mockS3, ListObjectsCommand, 'listObjects');
+  wrappedAsIs(client, mockS3, ListObjectsV2Command, 'listObjectsV2');
   wrappedAsIs(client, mockS3, DeleteObjectsCommand, 'deleteObjects');
   wrappedAsIs(client, mockS3, DeleteObjectCommand, 'deleteObject');
   wrappedAsIs(client, mockS3, HeadObjectCommand, 'headObject');
