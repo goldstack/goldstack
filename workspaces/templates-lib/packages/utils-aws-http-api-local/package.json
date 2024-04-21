@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-aws-http-api-local",
-  "version": "0.3.29",
+  "version": "0.3.30",
   "description": "Starts a local AWS HTTP API for testing",
   "keywords": [
     "goldstack",
