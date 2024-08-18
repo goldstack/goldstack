@@ -9012,10 +9012,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:10.0.0":
-  version: 10.0.0
-  resolution: "commander@npm:10.0.0"
-  checksum: a4fc6d79b44fd87f6c5fbbdfc8d10fa8b33e1676ae170356419b9e06faf802899fae03a3b151c2e6a18047885ca42d2b70e0a94d4e5042edb948100848d43f91
+"commander@npm:10.0.1":
+  version: 10.0.1
+  resolution: "commander@npm:10.0.1"
+  checksum: 8799faa84a30da985802e661cc9856adfaee324d4b138413013ef7f087e8d7924b144c30a1f1405475f0909f467665cd9e1ce13270a2f41b141dab0b7a58f3fb
   languageName: node
   linkType: hard
 
@@ -9314,15 +9314,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cosmiconfig@npm:8.0.0":
-  version: 8.0.0
-  resolution: "cosmiconfig@npm:8.0.0"
+"cosmiconfig@npm:8.1.3":
+  version: 8.1.3
+  resolution: "cosmiconfig@npm:8.1.3"
   dependencies:
     import-fresh: "npm:^3.2.1"
     js-yaml: "npm:^4.1.0"
     parse-json: "npm:^5.0.0"
     path-type: "npm:^4.0.0"
-  checksum: 623c09750d32328383b6d3eaafcb0b9c3d610c142479a594528d8122a97e741725534158cbc6c6c313e66bcdb82dac440f5e32446ed79bab501e55e57a7b3119
+  checksum: 7a9f514c84a75d2ee1fbbe565381d2508dfccebd1018a9097bd55647718e2a4003afc96be86cbbdd855461d01fd71a84d46991b1d8988006763a5fa8f1140ae7
   languageName: node
   linkType: hard
 
@@ -11109,13 +11109,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expect-more@npm:1.3.0":
-  version: 1.3.0
-  resolution: "expect-more@npm:1.3.0"
-  checksum: 15dad1e7bc94865d13f895fb8ebdc06e7c88be5cdbb1f97df6d5572b81bbafe562e13b4a12e6f9e3bb17c729b0a0e218af60d1faab6ce6dcc08067b6095c1d76
-  languageName: node
-  linkType: hard
-
 "expect@npm:^29.0.0, expect@npm:^29.7.0":
   version: 29.7.0
   resolution: "expect@npm:29.7.0"
@@ -11683,13 +11676,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fp-ts@npm:2.13.1":
-  version: 2.13.1
-  resolution: "fp-ts@npm:2.13.1"
-  checksum: 5c93431cbd8a75335f840c7d7f59b28305d492c2e2c2e1b22ed0d706e675f0541a9d3e7a47c13eb24f3e9fc108810b496d19975e061b8d6c18f6cb657be96c86
-  languageName: node
-  linkType: hard
-
 "fragment-cache@npm:^0.2.1":
   version: 0.2.1
   resolution: "fragment-cache@npm:0.2.1"
@@ -11713,14 +11699,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs-extra@npm:11.1.0":
-  version: 11.1.0
-  resolution: "fs-extra@npm:11.1.0"
+"fs-extra@npm:11.1.1":
+  version: 11.1.1
+  resolution: "fs-extra@npm:11.1.1"
   dependencies:
     graceful-fs: "npm:^4.2.0"
     jsonfile: "npm:^6.0.1"
     universalify: "npm:^2.0.0"
-  checksum: b3f4a411e221f3300cfed7f2c1fa3ea0538cc1688c4276ce38fc404e270526002c5a01a18f64f8dee5e2745f7c2e9ba188cb130240796da67a2a142b133b4b25
+  checksum: c4e9fabf9762a70d1403316b7faa899f3d3303c8afa765b891c2210fdeba368461e04ae1203920b64ef6a7d066a39ab8cef2160b5ce8d1011bb4368688cd9bb7
   languageName: node
   linkType: hard
 
@@ -18284,7 +18270,7 @@ __metadata:
     eslint-plugin-yaml: "npm:^0.5.0"
     nodemon: "npm:^2.0.20"
     prettier: "npm:^2.7.1"
-    syncpack: "npm:^8.0.0"
+    syncpack: "npm:9"
     ts-node: "npm:^10.9.1"
     typescript: "npm:^4.8.4"
   languageName: unknown
@@ -18511,14 +18497,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:7.3.8":
-  version: 7.3.8
-  resolution: "semver@npm:7.3.8"
+"semver@npm:7.5.0":
+  version: 7.5.0
+  resolution: "semver@npm:7.5.0"
   dependencies:
     lru-cache: "npm:^6.0.0"
   bin:
     semver: bin/semver.js
-  checksum: c8c04a4d41d30cffa7277904e0ad6998623dd61e36bca9578b0128d8c683b705a3924beada55eae7fa004fb30a9359a53a4ead2b68468d778b602f3b1a28f8e3
+  checksum: 5aaa7675f8439b845db0a383f1420217a206fa084f2bc4ebc4bb31c0a50b02e9c922be3da274214ba7d9870d77f63085ac163f84f6ac910346675e9ac8681bf8
   languageName: node
   linkType: hard
 
@@ -19763,20 +19749,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"syncpack@npm:^8.0.0":
-  version: 8.5.14
-  resolution: "syncpack@npm:8.5.14"
+"syncpack@npm:9":
+  version: 9.8.6
+  resolution: "syncpack@npm:9.8.6"
   dependencies:
     chalk: "npm:4.1.2"
-    commander: "npm:10.0.0"
-    cosmiconfig: "npm:8.0.0"
-    expect-more: "npm:1.3.0"
-    fp-ts: "npm:2.13.1"
-    fs-extra: "npm:11.1.0"
+    commander: "npm:10.0.1"
+    cosmiconfig: "npm:8.1.3"
+    fs-extra: "npm:11.1.1"
     glob: "npm:8.1.0"
-    minimatch: "npm:6.1.6"
+    minimatch: "npm:6.2.0"
     read-yaml-file: "npm:2.1.0"
-    semver: "npm:7.3.8"
+    semver: "npm:7.5.0"
+    tightrope: "npm:0.1.0"
+    zod: "npm:3.21.4"
   bin:
     syncpack: dist/bin.js
     syncpack-fix-mismatches: dist/bin-fix-mismatches/index.js
@@ -19785,7 +19771,7 @@ __metadata:
     syncpack-list: dist/bin-list/index.js
     syncpack-list-mismatches: dist/bin-list-mismatches/index.js
     syncpack-set-semver-ranges: dist/bin-set-semver-ranges/index.js
-  checksum: 937100bb474222b9339e1243f1a56c76bf46deaeda35fd0c64a48e8f28c4ba0edcb9f2ff89c56e669736c515e5fd8c86d1edb1da4a1a9d2178eae219be4f8c3a
+  checksum: ae085e40d748e40ebb2b1a0da0aa0513e9ec6c3a8be06d38cdf225d6511a9dfd632167c29790e59103a1930e16ffebad144dacd34674e61be04b83e2667c6353
   languageName: node
   linkType: hard
 
@@ -19993,6 +19979,13 @@ __metadata:
     inherits: "npm:^2.0.4"
     readable-stream: "npm:2 || 3"
   checksum: 98bdffba8e877fd8beb2154adc4eb0d52fad281130f56f6e5d18f85d1e1aa528a7b27317b302eb5443f6636ab045d3c272e6dffc61d984775db284823b90532d
+  languageName: node
+  linkType: hard
+
+"tightrope@npm:0.1.0":
+  version: 0.1.0
+  resolution: "tightrope@npm:0.1.0"
+  checksum: f2f2e52f338b36e43bc06270aa7d9288acd14d1d8c80c5c8549eed89c730660d74ae27512c2910169d0ce64206d6b3d64f54c12df723ca698a2c5025fc929e53
   languageName: node
   linkType: hard
 
