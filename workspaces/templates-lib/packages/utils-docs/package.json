@@ -23,6 +23,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
+  "type": "module",
   "main": "src/utilsDocs.ts",
   "scripts": {
     "build": "yarn clean && yarn compile",
@@ -31,11 +32,11 @@
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
-    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.cjs --runInBand",
     "prepublishOnly": "yarn run build",
     "publish": "utils-git changed --exec \"yarn npm publish $@\"",
-    "test": "jest --config=./jest.config.js --watch",
-    "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand",
+    "test": "jest --config=./jest.config.cjs --watch",
+    "test-ci": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest --passWithNoTests --config=./jest.config.cjs --runInBand",
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
