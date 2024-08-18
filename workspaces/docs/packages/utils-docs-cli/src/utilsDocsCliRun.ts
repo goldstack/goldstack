@@ -97,8 +97,8 @@ export const run = async (): Promise<void> => {
 
     if (argv._[0] === 'generate-markdown-doc') {
       // const docsDir = getDocsDir();
-      const result = await resolveMarkdown(argv.path);
-      write(result, argv.dest);
+      const result = await resolveMarkdown(argv.path as string);
+      write(result, argv.dest as string);
       return;
     }
 

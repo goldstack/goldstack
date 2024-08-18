@@ -30,8 +30,8 @@ export const run = async (): Promise<void> => {
 
     if (argv._[0] === 'generate-docs') {
       await generateDocs({
-        source: argv.source,
-        destination: argv.destination,
+        source: argv.source as string,
+        destination: argv.destination as string,
       });
       return;
     }

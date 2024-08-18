@@ -1,6 +1,7 @@
 import unified from 'unified';
 import raw from 'rehype-raw';
 
+
 const ICON_HTML = `<svg viewBox="0 0 16 16" width="16" height="16">
   <g strokeWidth="1" fill="#000000" stroke="#000000">
     <path
@@ -21,9 +22,23 @@ const ICON_HTML = `<svg viewBox="0 0 16 16" width="16" height="16">
   </g>
 </svg>`;
 
-const permalinkIcon = unified().use(raw).runSync({
-  type: 'raw',
-  value: ICON_HTML,
-});
+// const tree: Root = {
+//   type: 'root',
+//   children: [
+//     {
+//       type: 'raw',
+//       value: ICON_HTML,
+//     },
+//   ],
+// };
+
+// const permalinkIcon = unified().use(raw).runSync(tree);
+
+const permalinkIcon = unified()
+  .use(raw)
+  .runSync({
+    type: 'raw',
+    data: ICON_HTML as any,
+  });
 
 export default permalinkIcon;
