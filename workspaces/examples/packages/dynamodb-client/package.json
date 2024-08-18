@@ -12,7 +12,7 @@
     "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.515.0",
+    "@aws-sdk/client-dynamodb": "^3.632.0",
     "@goldstack/dynamodb": "workspace:^"
   },
   "devDependencies": {

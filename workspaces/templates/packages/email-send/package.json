@@ -21,7 +21,7 @@
     "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "^3.515.0",
+    "@aws-sdk/client-ses": "^3.632.0",
     "@goldstack/template-email-send": "0.4.25",
     "@goldstack/utils-git": "0.2.9",
     "@goldstack/utils-sh": "0.5.9"
