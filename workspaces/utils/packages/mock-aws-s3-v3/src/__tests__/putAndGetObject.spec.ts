@@ -84,16 +84,16 @@ test('Can put and retrieve streams', async () => {
     })
   );
 
-  const res = await (mockClient as NodeJsClient<S3Client>).send(
-    new GetObjectCommand({
-      Bucket: 'test-local',
-      Key: 'teststreamobject',
-    })
-  );
+  const cmd: GetObjectCommand = new GetObjectCommand({
+    Bucket: 'test-local',
+    Key: 'teststreamobject',
+  });
+
+  const res = await (mockClient as NodeJsClient<S3Client>).send(cmd);
 
   const file = createWriteStream('./goldstackLocal/text.txt');
 
-  const op = res.Body?.pipe(file);
+  const op = (res as any).Body?.pipe(file);
 
   await new Promise<void>((resolve) => {
     op?.on('finish', () => {

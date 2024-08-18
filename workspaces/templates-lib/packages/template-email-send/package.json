@@ -52,7 +52,7 @@
     "@goldstack/utils-package-config-embedded": "0.5.10",
     "@goldstack/utils-terraform": "0.4.19",
     "@goldstack/utils-terraform-aws": "0.4.21",
-    "aws-sdk-client-mock": "^3.0.1",
+    "aws-sdk-client-mock": "^4.0.1",
     "uuid": "^8.3.0"
   },
   "devDependencies": {
