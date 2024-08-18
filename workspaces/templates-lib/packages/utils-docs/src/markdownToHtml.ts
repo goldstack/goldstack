@@ -1,6 +1,6 @@
 // based on https://github.com/vercel/next-site/blob/e2cb07a057bf75bded2571a1b639b0017572f4b8/lib/docs/markdown-to-html.js
 
-import unified from 'unified';
+import { unified } from 'unified';
 import markdown from 'remark-parse';
 import remarkToRehype from 'remark-rehype';
 import raw from 'rehype-raw';
@@ -11,24 +11,20 @@ import githubSchema from 'hast-util-sanitize/lib/github.json';
 import docs from './rehypeDocs';
 import rehypeMarkdown from './rehypeMarkdownToHtml';
 
+import { Handler } from 'mdast-util-to-hast';
+
 // Allow className for all elements
 githubSchema.attributes['*'].push('className');
 
-const handlers = {
+const handlers: Record<string, Handler> = {
   // Add a className to inlineCode so we can differentiate between it and code fragments
-  inlineCode(h, node) {
-    return {
-      ...node,
-      type: 'element',
-      tagName: 'code',
-      properties: { className: 'inline' },
-      children: [
-        {
-          type: 'text',
-          value: node.value,
-        },
-      ],
-    };
+  inlineCode(h: any, node: any) {
+    return h(node, 'code', { className: 'inline' }, [
+      {
+        type: 'text',
+        value: node.value,
+      },
+    ]);
   },
 };
 
@@ -39,7 +35,7 @@ export async function markdownToHtml(filePath, tag, md): Promise<string> {
     processor = unified()
       .use(markdown as any)
       .use(rehypeMarkdown, { filePath, tag, processor: () => processor })
-      .use(remarkToRehype, { handlers, allowDangerousHTML: true })
+      .use(remarkToRehype, { handlers, allowDangerousHtml: true })
       // Add custom HTML found in the markdown file to the AST
       .use(raw)
       // Sanitize the HTML

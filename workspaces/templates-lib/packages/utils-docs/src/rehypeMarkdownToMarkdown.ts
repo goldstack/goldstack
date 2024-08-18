@@ -6,7 +6,7 @@ import path from 'path';
 
 import { read } from '@goldstack/utils-sh';
 
-import unified from 'unified';
+import { unified } from 'unified';
 import markdown from 'remark-parse';
 
 import matter from 'gray-matter';

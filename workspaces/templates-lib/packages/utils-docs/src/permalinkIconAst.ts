@@ -1,6 +1,6 @@
-import unified from 'unified';
-import raw from 'rehype-raw';
-
+import { unified } from 'unified';
+import stringify from 'rehype-stringify';
+import parse from 'rehype-parse';
 
 const ICON_HTML = `<svg viewBox="0 0 16 16" width="16" height="16">
   <g strokeWidth="1" fill="#000000" stroke="#000000">
@@ -35,10 +35,12 @@ const ICON_HTML = `<svg viewBox="0 0 16 16" width="16" height="16">
 // const permalinkIcon = unified().use(raw).runSync(tree);
 
 const permalinkIcon = unified()
-  .use(raw)
-  .runSync({
-    type: 'raw',
-    data: ICON_HTML as any,
-  });
+  .use(parse)
+  .use(stringify)
+  .processSync(ICON_HTML);
+// .runSync({
+//   type: 'raw',
+//   data: ICON_HTML as any,
+// });
 
 export default permalinkIcon;

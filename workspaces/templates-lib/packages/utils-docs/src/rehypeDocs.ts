@@ -1,5 +1,5 @@
 import visit from 'unist-util-visit';
-import toString from 'mdast-util-to-string';
+import { toString } from 'mdast-util-to-string';
 import GithubSlugger from 'github-slugger';
 import permalinkIcon from './permalinkIconAst';
 
