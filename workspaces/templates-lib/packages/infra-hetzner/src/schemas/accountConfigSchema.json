@@ -1,0 +1,53 @@
+{
+  "$ref": "#/definitions/HetznerConfiguration",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "HetznerConfiguration": {
+      "additionalProperties": false,
+      "description": "Global configuration for deploying to Hetzner.",
+      "properties": {
+        "users": {
+          "items": {
+            "$ref": "#/definitions/HetznerUser"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "users"
+      ],
+      "title": "Hetzner Configuration",
+      "type": "object"
+    },
+    "HetznerUser": {
+      "additionalProperties": false,
+      "description": "Hetzner user",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/HetznerUserConfig"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "config"
+      ],
+      "title": "Hetzner User",
+      "type": "object"
+    },
+    "HetznerUserConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "token"
+      ],
+      "type": "object"
+    }
+  }
+}

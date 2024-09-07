@@ -131,14 +131,8 @@ export const terraformAwsCli = async (
   args: string[],
   options?: TerraformOptions
 ): Promise<void> => {
-  const deploymentName = args[1];
-
-  const deployment = readDeploymentFromPackageConfig(deploymentName);
-
-  const provider = await getAWSUser(deployment.awsUser);
-  const credentials = await getAWSCredentials(provider);
-
-  const awsTerraformConfig = assertTerraformConfig(deployment.awsUser);
+  const { awsTerraformConfig, deployment, credentials, awsProvider } =
+    await initTerraformEnvironment(args);
 
   const projectHash = crypto.randomBytes(20).toString('hex');
 
@@ -190,10 +184,24 @@ export const terraformAwsCli = async (
 
   terraformCli(args, {
     ...options,
-    provider: new AWSCloudProvider(
-      credentials,
-      awsTerraformConfig,
-      deployment.awsRegion
-    ),
+    provider: awsProvider,
   });
 };
+
+export async function initTerraformEnvironment(args: string[]) {
+  const deploymentName = args[1];
+
+  const deployment = readDeploymentFromPackageConfig(deploymentName);
+
+  const awsUser = await getAWSUser(deployment.awsUser);
+  const credentials = await getAWSCredentials(awsUser);
+
+  const awsTerraformConfig = assertTerraformConfig(deployment.awsUser);
+
+  const awsProvider = new AWSCloudProvider(
+    credentials,
+    awsTerraformConfig,
+    deployment.awsRegion
+  );
+  return { awsTerraformConfig, deployment, credentials, awsProvider };
+}

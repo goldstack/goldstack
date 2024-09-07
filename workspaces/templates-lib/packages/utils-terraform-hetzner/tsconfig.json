@@ -1,0 +1,33 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "."
+  },
+  "references": [
+    {
+      "path": "../infra-aws"
+    },
+    {
+      "path": "../utils-config"
+    },
+    {
+      "path": "../../../utils/packages/utils-log"
+    },
+    {
+      "path": "../utils-package"
+    },
+    {
+      "path": "../../../utils/packages/utils-sh"
+    },
+    {
+      "path": "../utils-terraform"
+    },
+    {
+      "path": "../../../utils/packages/utils-git"
+    }
+  ]
+}

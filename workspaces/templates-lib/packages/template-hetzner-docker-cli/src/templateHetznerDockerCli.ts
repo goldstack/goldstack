@@ -1,7 +1,11 @@
 import { buildCli } from '@goldstack/utils-package';
 import { wrapCli } from '@goldstack/utils-cli';
 import { infraCommands } from '@goldstack/utils-terraform';
-import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
+import {
+  terraformAwsCli,
+  initTerraformEnvironment,
+} from '@goldstack/utils-terraform-aws';
+import { terraformHetznerCli } from '@goldstack/utils-terraform-hetzner';
 import { PackageConfig } from '@goldstack/utils-package-config';
 import {
   HetznerDockerPackage,
@@ -31,7 +35,12 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'infra') {
       // use remote managed state from Terraform
-      await terraformAwsCli(['create-state', args[1]]);
+      await terraformAwsCli(['create-state', opArgs[1]]);
+
+      const { awsProvider } = await initTerraformEnvironment(opArgs);
+
+      await terraformHetznerCli(opArgs, awsProvider);
+
       return;
     }
 

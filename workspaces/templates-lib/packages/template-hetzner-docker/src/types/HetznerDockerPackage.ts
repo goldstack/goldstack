@@ -1,6 +1,7 @@
 import { Package } from '@goldstack/utils-package';
 
 import { AWSDeployment } from '@goldstack/infra-aws';
+import { HetznerDeployment } from '@goldstack/infra-hetzner';
 import { TerraformDeployment } from '@goldstack/utils-terraform';
 import { Deployment } from '@goldstack/infra';
 import { DeploymentConfiguration } from '@goldstack/infra';
@@ -17,6 +18,14 @@ export { Configuration };
 export type Location = string;
 
 /**
+ * The Hetzner server name that should be used for this server.
+ *
+ * @title Server Name
+ * @pattern ^[^\s]*
+ */
+export type ServerName = string;
+
+/**
  * The Hetzner server type that should be used for this server.
  *
  * @title Server Type
@@ -25,12 +34,22 @@ export type Location = string;
 export type ServerType = string;
 
 /**
+ * The SSH fingerprint of the SSH user that should be granted access to the server.
+ *
+ * @title SSH User Fingerprint
+ * @pattern ^[^\s]*
+ */
+export type SSHUserFingerprint = string;
+
+/**
  * The Hetzner server deployment configuration
  */
 export interface HetznerDockerDeploymentConfiguration
   extends DeploymentConfiguration {
   location: Location;
   serverType: ServerType;
+  sshUserFingerprint?: SSHUserFingerprint;
+  serverName: ServerName;
 }
 
 /**
@@ -42,6 +61,7 @@ export interface HetznerDockerDeploymentConfiguration
 export interface HetznerDockerDeployment
   extends Deployment,
     AWSDeployment,
+    HetznerDeployment,
     TerraformDeployment {
   configuration: HetznerDockerDeploymentConfiguration;
 }

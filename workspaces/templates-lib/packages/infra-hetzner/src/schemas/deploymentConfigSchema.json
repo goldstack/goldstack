@@ -1,0 +1,41 @@
+{
+  "$ref": "#/definitions/HetznerDeployment",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "DeploymentConfiguration": {
+      "description": "Specifies configuration for a specific deployment.",
+      "title": "Deployment Configuration",
+      "type": "object"
+    },
+    "DeploymentName": {
+      "description": "Identifier for this deployment. No spaces allowed in name.",
+      "pattern": "^[^\\s]*$",
+      "title": "Deployment Name",
+      "type": "string"
+    },
+    "HetznerDeployment": {
+      "properties": {
+        "configuration": {
+          "$ref": "#/definitions/DeploymentConfiguration"
+        },
+        "hetznerUser": {
+          "$ref": "#/definitions/HetznerUserName"
+        },
+        "name": {
+          "$ref": "#/definitions/DeploymentName"
+        }
+      },
+      "required": [
+        "configuration",
+        "hetznerUser",
+        "name"
+      ],
+      "type": "object"
+    },
+    "HetznerUserName": {
+      "description": "Name of the Hetzner user that is used to perform the deployment.",
+      "title": "Hetzner User Name",
+      "type": "string"
+    }
+  }
+}

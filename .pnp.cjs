@@ -154,6 +154,10 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:workspaces/templates-lib/packages/infra-aws"\
     },\
     {\
+      "name": "@goldstack/infra-hetzner",\
+      "reference": "workspace:workspaces/templates-lib/packages/infra-hetzner"\
+    },\
+    {\
       "name": "@goldstack/template-docker-image-aws",\
       "reference": "workspace:workspaces/templates-lib/packages/template-docker-image-aws"\
     },\
@@ -296,6 +300,10 @@ const RAW_RUNTIME_STATE =
     {\
       "name": "@goldstack/utils-terraform-aws",\
       "reference": "workspace:workspaces/templates-lib/packages/utils-terraform-aws"\
+    },\
+    {\
+      "name": "@goldstack/utils-terraform-hetzner",\
+      "reference": "workspace:workspaces/templates-lib/packages/utils-terraform-hetzner"\
     },\
     {\
       "name": "templates-management",\
@@ -459,6 +467,7 @@ const RAW_RUNTIME_STATE =
     ["@goldstack/hetzner-docker", ["workspace:workspaces/templates/packages/hetzner-docker"]],\
     ["@goldstack/infra", ["workspace:workspaces/templates-lib/packages/infra"]],\
     ["@goldstack/infra-aws", ["workspace:workspaces/templates-lib/packages/infra-aws"]],\
+    ["@goldstack/infra-hetzner", ["workspace:workspaces/templates-lib/packages/infra-hetzner"]],\
     ["@goldstack/lambda-express", ["workspace:workspaces/templates/packages/lambda-express"]],\
     ["@goldstack/library", ["workspace:workspaces/templates/packages/library"]],\
     ["@goldstack/markdown-docs", ["workspace:workspaces/docs/packages/markdown-docs"]],\
@@ -534,6 +543,7 @@ const RAW_RUNTIME_STATE =
     ["@goldstack/utils-template-test", ["workspace:workspaces/templates-management/packages/utils-template-test"]],\
     ["@goldstack/utils-terraform", ["workspace:workspaces/templates-lib/packages/utils-terraform"]],\
     ["@goldstack/utils-terraform-aws", ["workspace:workspaces/templates-lib/packages/utils-terraform-aws"]],\
+    ["@goldstack/utils-terraform-hetzner", ["workspace:workspaces/templates-lib/packages/utils-terraform-hetzner"]],\
     ["@goldstack/utils-track", ["workspace:workspaces/utils/packages/utils-track"]],\
     ["@goldstack/utils-typescript-references", ["workspace:workspaces/utils/packages/utils-typescript-references"]],\
     ["@goldstack/utils-yarn", ["workspace:workspaces/utils/packages/utils-yarn"]],\
@@ -3663,6 +3673,32 @@ const RAW_RUNTIME_STATE =
         "linkType": "SOFT"\
       }]\
     ]],\
+    ["@goldstack/infra-hetzner", [\
+      ["workspace:workspaces/templates-lib/packages/infra-hetzner", {\
+        "packageLocation": "./workspaces/templates-lib/packages/infra-hetzner/",\
+        "packageDependencies": [\
+          ["@goldstack/infra-hetzner", "workspace:workspaces/templates-lib/packages/infra-hetzner"],\
+          ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+          ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
+          ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
+          ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+          ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+          ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
+          ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
+          ["@types/jest", "npm:29.0.1"],\
+          ["@types/node", "npm:18.7.13"],\
+          ["axios", "npm:1.6.0"],\
+          ["handlebars", "npm:4.7.7"],\
+          ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
+          ["renamer", "npm:0.7.3"],\
+          ["rimraf", "npm:3.0.2"],\
+          ["ts-json-schema-generator", "npm:1.0.0"],\
+          ["typescript", "patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
     ["@goldstack/lambda-express", [\
       ["workspace:workspaces/templates/packages/lambda-express", {\
         "packageLocation": "./workspaces/templates/packages/lambda-express/",\
@@ -4429,6 +4465,7 @@ const RAW_RUNTIME_STATE =
           ["@aws-sdk/types", "npm:3.515.0"],\
           ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+          ["@goldstack/infra-hetzner", "workspace:workspaces/templates-lib/packages/infra-hetzner"],\
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
           ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
@@ -4464,6 +4501,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
           ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
           ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
+          ["@goldstack/utils-terraform-hetzner", "workspace:workspaces/templates-lib/packages/utils-terraform-hetzner"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
           ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
           ["@types/jest", "npm:29.0.1"],\
@@ -5682,6 +5720,30 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+          ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
+          ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
+          ["@types/jest", "npm:29.0.1"],\
+          ["@types/node", "npm:18.7.13"],\
+          ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
+          ["rimraf", "npm:3.0.2"],\
+          ["typescript", "patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@goldstack/utils-terraform-hetzner", [\
+      ["workspace:workspaces/templates-lib/packages/utils-terraform-hetzner", {\
+        "packageLocation": "./workspaces/templates-lib/packages/utils-terraform-hetzner/",\
+        "packageDependencies": [\
+          ["@goldstack/utils-terraform-hetzner", "workspace:workspaces/templates-lib/packages/utils-terraform-hetzner"],\
+          ["@goldstack/infra-hetzner", "workspace:workspaces/templates-lib/packages/infra-hetzner"],\
+          ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
+          ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
+          ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+          ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+          ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+          ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
           ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
           ["@types/jest", "npm:29.0.1"],\
