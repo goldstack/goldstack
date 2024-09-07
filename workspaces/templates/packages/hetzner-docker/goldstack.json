@@ -1,0 +1,16 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "hetzner-docker",
+  "template": "hetzner-docker",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+      },
+    }
+  ]
+}
