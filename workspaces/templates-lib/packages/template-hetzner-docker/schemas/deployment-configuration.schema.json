@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/EmailSendDeploymentConfiguration",
+  "definitions": {
+    "EmailSendDeploymentConfiguration": {
+      "type": "object",
+      "properties": {
+        "domain": {
+          "$ref": "#/definitions/EmailDomain"
+        },
+        "hostedZoneDomain": {
+          "$ref": "#/definitions/HostedZoneDomain"
+        }
+      },
+      "required": [
+        "domain",
+        "hostedZoneDomain"
+      ]
+    },
+    "EmailDomain": {
+      "type": "string",
+      "description": "The domain that will be used for email sender FROM addresses.",
+      "title": "Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "HostedZoneDomain": {
+      "type": "string",
+      "description": "The domain name of the Route 53 hosted zone that the specific domain will be added to. This is often the same as the domain used for the FROM address.",
+      "title": "Hosted Zone Domain",
+      "pattern": "^[^\\s]*"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/EmailSendPackageConfiguration",
+  "definitions": {
+    "EmailSendPackageConfiguration": {
+      "type": "object",
+      "properties": {},
+      "description": "Email send package configuration",
+      "title": "Email Send Configuration"
+    }
+  }
+}

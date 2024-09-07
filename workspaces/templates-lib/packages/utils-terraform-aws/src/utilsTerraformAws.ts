@@ -183,6 +183,11 @@ export const terraformAwsCli = async (
     awsRegion: deployment.awsRegion,
   });
 
+  if (operation === 'create-state') {
+    // using this operation, we only create the state and do nothing else.
+    return;
+  }
+
   terraformCli(args, {
     ...options,
     provider: new AWSCloudProvider(

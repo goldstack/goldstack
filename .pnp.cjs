@@ -94,6 +94,10 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:workspaces/templates/packages/email-send"\
     },\
     {\
+      "name": "@goldstack/hetzner-docker",\
+      "reference": "workspace:workspaces/templates/packages/hetzner-docker"\
+    },\
+    {\
       "name": "@goldstack/lambda-express",\
       "reference": "workspace:workspaces/templates/packages/lambda-express"\
     },\
@@ -168,6 +172,14 @@ const RAW_RUNTIME_STATE =
     {\
       "name": "@goldstack/template-email-send-cli",\
       "reference": "workspace:workspaces/templates-lib/packages/template-email-send-cli"\
+    },\
+    {\
+      "name": "@goldstack/template-hetzner-docker",\
+      "reference": "workspace:workspaces/templates-lib/packages/template-hetzner-docker"\
+    },\
+    {\
+      "name": "@goldstack/template-hetzner-docker-cli",\
+      "reference": "workspace:workspaces/templates-lib/packages/template-hetzner-docker-cli"\
     },\
     {\
       "name": "@goldstack/template-lambda-api",\
@@ -444,6 +456,7 @@ const RAW_RUNTIME_STATE =
     ["@goldstack/goldstack-api", ["workspace:workspaces/apps/packages/goldstack-api"]],\
     ["@goldstack/goldstack-email-send", ["workspace:workspaces/apps/packages/goldstack-email-send"]],\
     ["@goldstack/goldstack-home", ["workspace:workspaces/apps/packages/goldstack-home"]],\
+    ["@goldstack/hetzner-docker", ["workspace:workspaces/templates/packages/hetzner-docker"]],\
     ["@goldstack/infra", ["workspace:workspaces/templates-lib/packages/infra"]],\
     ["@goldstack/infra-aws", ["workspace:workspaces/templates-lib/packages/infra-aws"]],\
     ["@goldstack/lambda-express", ["workspace:workspaces/templates/packages/lambda-express"]],\
@@ -474,6 +487,8 @@ const RAW_RUNTIME_STATE =
     ["@goldstack/template-dynamodb-cli", ["workspace:workspaces/templates-lib/packages/template-dynamodb-cli"]],\
     ["@goldstack/template-email-send", ["workspace:workspaces/templates-lib/packages/template-email-send"]],\
     ["@goldstack/template-email-send-cli", ["workspace:workspaces/templates-lib/packages/template-email-send-cli"]],\
+    ["@goldstack/template-hetzner-docker", ["workspace:workspaces/templates-lib/packages/template-hetzner-docker"]],\
+    ["@goldstack/template-hetzner-docker-cli", ["workspace:workspaces/templates-lib/packages/template-hetzner-docker-cli"]],\
     ["@goldstack/template-lambda-api", ["workspace:workspaces/templates-lib/packages/template-lambda-api"]],\
     ["@goldstack/template-lambda-api-cli", ["workspace:workspaces/templates-lib/packages/template-lambda-api-cli"]],\
     ["@goldstack/template-lambda-express", ["workspace:workspaces/templates-lib/packages/template-lambda-express"]],\
@@ -3575,6 +3590,28 @@ const RAW_RUNTIME_STATE =
         "linkType": "SOFT"\
       }]\
     ]],\
+    ["@goldstack/hetzner-docker", [\
+      ["workspace:workspaces/templates/packages/hetzner-docker", {\
+        "packageLocation": "./workspaces/templates/packages/hetzner-docker/",\
+        "packageDependencies": [\
+          ["@goldstack/hetzner-docker", "workspace:workspaces/templates/packages/hetzner-docker"],\
+          ["@aws-sdk/client-ses", "npm:3.515.0"],\
+          ["@goldstack/template-hetzner-docker", "workspace:workspaces/templates-lib/packages/template-hetzner-docker"],\
+          ["@goldstack/template-hetzner-docker-cli", "workspace:workspaces/templates-lib/packages/template-hetzner-docker-cli"],\
+          ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+          ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
+          ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
+          ["@types/jest", "npm:29.0.1"],\
+          ["@types/node", "npm:18.7.13"],\
+          ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
+          ["rimraf", "npm:3.0.2"],\
+          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.1"],\
+          ["typescript", "patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
     ["@goldstack/infra", [\
       ["workspace:workspaces/templates-lib/packages/infra", {\
         "packageLocation": "./workspaces/templates-lib/packages/infra/",\
@@ -4361,6 +4398,65 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@goldstack/template-email-send-cli", "workspace:workspaces/templates-lib/packages/template-email-send-cli"],\
           ["@goldstack/template-email-send", "workspace:workspaces/templates-lib/packages/template-email-send"],\
+          ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
+          ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+          ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],\
+          ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+          ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+          ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
+          ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
+          ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
+          ["@types/jest", "npm:29.0.1"],\
+          ["@types/node", "npm:18.7.13"],\
+          ["@types/yargs", "npm:17.0.10"],\
+          ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
+          ["rimraf", "npm:3.0.2"],\
+          ["source-map-support", "npm:0.5.21"],\
+          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.1"],\
+          ["typescript", "patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
+          ["yargs", "npm:17.5.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@goldstack/template-hetzner-docker", [\
+      ["workspace:workspaces/templates-lib/packages/template-hetzner-docker", {\
+        "packageLocation": "./workspaces/templates-lib/packages/template-hetzner-docker/",\
+        "packageDependencies": [\
+          ["@goldstack/template-hetzner-docker", "workspace:workspaces/templates-lib/packages/template-hetzner-docker"],\
+          ["@aws-sdk/credential-providers", "npm:3.515.0"],\
+          ["@aws-sdk/types", "npm:3.515.0"],\
+          ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+          ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+          ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
+          ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
+          ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+          ["@goldstack/utils-package-config-embedded", "workspace:workspaces/templates-lib/packages/utils-package-config-embedded"],\
+          ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+          ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+          ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
+          ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
+          ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
+          ["@types/jest", "npm:29.0.1"],\
+          ["@types/node", "npm:18.7.13"],\
+          ["@types/uuid", "npm:8.3.0"],\
+          ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
+          ["rimraf", "npm:3.0.2"],\
+          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.1"],\
+          ["typescript", "patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
+          ["uuid", "npm:8.3.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@goldstack/template-hetzner-docker-cli", [\
+      ["workspace:workspaces/templates-lib/packages/template-hetzner-docker-cli", {\
+        "packageLocation": "./workspaces/templates-lib/packages/template-hetzner-docker-cli/",\
+        "packageDependencies": [\
+          ["@goldstack/template-hetzner-docker-cli", "workspace:workspaces/templates-lib/packages/template-hetzner-docker-cli"],\
+          ["@goldstack/template-hetzner-docker", "workspace:workspaces/templates-lib/packages/template-hetzner-docker"],\
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
