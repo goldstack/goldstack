@@ -1,0 +1,12 @@
+[
+  {
+    "name": "prod",
+    "terraform": {
+      "server_id": {
+        "sensitive": false,
+        "type": "string",
+        "value": "52802139"
+      }
+    }
+  }
+]

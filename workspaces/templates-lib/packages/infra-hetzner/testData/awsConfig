@@ -1,6 +1,0 @@
-[default]
-region=us-west-2
-
-
-[with-process]
-credential_process=cat ./testData/processCredentials.json
