@@ -12,6 +12,7 @@ import {
   HetznerDockerDeployment,
 } from '@goldstack/template-hetzner-docker';
 import yargs from 'yargs';
+export { createZip } from './fileUpload';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
@@ -32,6 +33,7 @@ export const run = async (args: string[]): Promise<void> => {
     const config = packageConfig.getConfig();
     const command = argv._[0];
     const [, , , ...opArgs] = args;
+
 
     if (command === 'infra') {
       // use remote managed state from Terraform

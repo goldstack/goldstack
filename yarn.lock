@@ -3212,6 +3212,7 @@ __metadata:
     "@goldstack/utils-package": "npm:0.4.9"
     "@goldstack/utils-package-config": "npm:0.4.9"
     "@goldstack/utils-package-config-generate": "npm:0.3.9"
+    "@goldstack/utils-sh": "npm:0.5.9"
     "@goldstack/utils-terraform": "npm:0.4.19"
     "@goldstack/utils-terraform-aws": "npm:0.4.21"
     "@goldstack/utils-terraform-hetzner": "npm:0.1.0"

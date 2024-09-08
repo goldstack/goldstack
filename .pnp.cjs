@@ -4499,6 +4499,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],\
           ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+          ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
           ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
           ["@goldstack/utils-terraform-hetzner", "workspace:workspaces/templates-lib/packages/utils-terraform-hetzner"],\
