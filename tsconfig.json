@@ -92,6 +92,9 @@
       "path": "workspaces/templates/packages/email-send"
     },
     {
+      "path": "workspaces/templates/packages/hetzner-docker"
+    },
+    {
       "path": "workspaces/templates/packages/lambda-express"
     },
     {
@@ -134,6 +137,9 @@
       "path": "workspaces/templates-lib/packages/infra-aws"
     },
     {
+      "path": "workspaces/templates-lib/packages/infra-hetzner"
+    },
+    {
       "path": "workspaces/templates-lib/packages/template-docker-image-aws"
     },
     {
@@ -147,6 +153,12 @@
     },
     {
       "path": "workspaces/templates-lib/packages/template-email-send-cli"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-hetzner-docker"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-hetzner-docker-cli"
     },
     {
       "path": "workspaces/templates-lib/packages/template-lambda-api"
@@ -234,6 +246,9 @@
     },
     {
       "path": "workspaces/templates-lib/packages/utils-terraform-aws"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/utils-terraform-hetzner"
     },
     {
       "path": "workspaces/templates-management"

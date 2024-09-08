@@ -2,7 +2,7 @@ import { getAWSUser } from '@goldstack/infra-aws';
 import { resolve } from 'path';
 import { awsCli } from '@goldstack/utils-aws-cli';
 
-interface S3UploadParams {
+export interface S3UploadParams {
   userName: string;
   region: string;
   localPath: string;

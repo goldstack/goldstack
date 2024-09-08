@@ -74,6 +74,11 @@ export const infraCommands = (): any => {
         }
       )
       .command(
+        'create-state <deployment>',
+        'Creates a remote state for this deployment if it does not already exist.',
+        deploymentPositional
+      )
+      .command(
         'upgrade <deployment> <targetVersion>',
         'Upgrades Terraform version to a new target version (experimental)',
         (yargs) => {

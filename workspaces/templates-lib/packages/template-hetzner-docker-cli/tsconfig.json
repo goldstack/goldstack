@@ -1,0 +1,49 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*",
+    "./src/**/*.json"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "."
+  },
+  "references": [
+    {
+      "path": "../infra-aws"
+    },
+    {
+      "path": "../template-hetzner-docker"
+    },
+    {
+      "path": "../../../utils/packages/utils-cli"
+    },
+    {
+      "path": "../utils-package"
+    },
+    {
+      "path": "../utils-package-config"
+    },
+    {
+      "path": "../utils-s3-deployment"
+    },
+    {
+      "path": "../../../utils/packages/utils-sh"
+    },
+    {
+      "path": "../utils-terraform"
+    },
+    {
+      "path": "../utils-terraform-aws"
+    },
+    {
+      "path": "../utils-terraform-hetzner"
+    },
+    {
+      "path": "../../../utils/packages/utils-git"
+    },
+    {
+      "path": "../utils-package-config-generate"
+    }
+  ]
+}

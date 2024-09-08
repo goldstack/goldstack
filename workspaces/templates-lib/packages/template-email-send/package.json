@@ -41,9 +41,9 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "^3.515.0",
-    "@aws-sdk/credential-providers": "^3.515.0",
-    "@aws-sdk/types": "^3.515.0",
+    "@aws-sdk/client-ses": "^3.645.0",
+    "@aws-sdk/credential-providers": "^3.645.0",
+    "@aws-sdk/types": "^3.609.0",
     "@goldstack/infra": "0.4.9",
     "@goldstack/infra-aws": "0.4.17",
     "@goldstack/utils-cli": "0.3.9",
@@ -52,7 +52,7 @@
     "@goldstack/utils-package-config-embedded": "0.5.10",
     "@goldstack/utils-terraform": "0.4.19",
     "@goldstack/utils-terraform-aws": "0.4.21",
-    "aws-sdk-client-mock": "^3.0.1",
+    "aws-sdk-client-mock": "^4.0.1",
     "uuid": "^8.3.0"
   },
   "devDependencies": {
