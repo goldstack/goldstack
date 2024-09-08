@@ -23,7 +23,7 @@ export async function uploadCredentials({
 
   await upload({
     userName,
-    bucketPath: 'credentials/',
+    bucketPath: '/credentials/',
     region: deployment.awsRegion,
     bucket: deployment.configuration.deploymentsS3Bucket,
     localPath: './dist/credentials',

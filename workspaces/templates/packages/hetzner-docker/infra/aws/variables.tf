@@ -25,3 +25,8 @@ variable "ssh_user_fingerprint" {
   type = string
   default = null
 }
+
+variable "aws_region" {
+  description = "Region where the S3 bucket is deployed."
+  type = string
+}

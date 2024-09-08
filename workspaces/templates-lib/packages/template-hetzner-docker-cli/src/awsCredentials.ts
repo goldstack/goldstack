@@ -13,32 +13,35 @@ import { S3Client, PutBucketPolicyCommand } from '@aws-sdk/client-s3';
 import { getAWSUser, getAWSCredentials } from '@goldstack/infra-aws';
 import { HetznerDockerDeployment } from '@goldstack/template-hetzner-docker';
 
-async function checkIfUserExists(
-  iamClient: IAMClient,
-  userName: string
-): Promise<boolean> {
+import { STSClient, GetCallerIdentityCommand } from '@aws-sdk/client-sts';
+
+async function checkIfUserExists(iamClient: IAMClient, userName: string) {
   try {
     const getUserCommand = new GetUserCommand({ UserName: userName });
     await iamClient.send(getUserCommand);
+    console.log(`User ${userName} exists.`);
     return true;
   } catch (error) {
-    if (error.code === 'NoSuchEntity') {
+    if (error.name === 'NoSuchEntityException') {
+      console.log(`User ${userName} does not exist.`);
       return false;
     }
     throw error;
   }
-  return true;
 }
 
 async function createUser(iamClient: IAMClient, userName: string) {
+  console.log(`Creating user ${userName}...`);
   const createUserCommand = new CreateUserCommand({ UserName: userName });
   const createUserResponse = await iamClient.send(createUserCommand);
   if (!createUserResponse.User) {
     throw new Error('User could not be created.');
   }
+  console.log(`User ${userName} created.`);
 }
 
 async function createAccessKey(iamClient: IAMClient, userName: string) {
+  console.log(`Creating access key for user ${userName}...`);
   const createAccessKeyCommand = new CreateAccessKeyCommand({
     UserName: userName,
   });
@@ -46,18 +49,41 @@ async function createAccessKey(iamClient: IAMClient, userName: string) {
   if (!createAccessKeyResponse.AccessKey) {
     throw new Error('Cannot create new access key for user.');
   }
+  console.log(`Access key created for user ${userName}.`);
   return {
     accessKeyId: createAccessKeyResponse.AccessKey.AccessKeyId,
     secretAccessKey: createAccessKeyResponse.AccessKey.SecretAccessKey,
   };
 }
 
+async function getAccountId(client: STSClient): Promise<string> {
+  const command = new GetCallerIdentityCommand({});
+  try {
+    const data = await client.send(command);
+    if (!data.Account) {
+      throw new Error('Account ID not found in response');
+    }
+    return data.Account;
+  } catch (err) {
+    console.error('Error retrieving account ID:', err);
+    throw err;
+  }
+}
+
 async function attachPolicyToUser(
   iamClient: IAMClient,
   userName: string,
   bucketName: string,
-  s3Client: S3Client
+  s3Client: S3Client,
+  stsClient: STSClient
 ) {
+  console.log(
+    `Attaching policy to user ${userName} for bucket ${bucketName}...`
+  );
+  const principal = `arn:aws:iam::${await getAccountId(
+    stsClient
+  )}:user/${userName}`;
+
   const policy = {
     Version: '2012-10-17',
     Statement: [
@@ -68,6 +94,9 @@ async function attachPolicyToUser(
           `arn:aws:s3:::${bucketName}`,
           `arn:aws:s3:::${bucketName}/*`,
         ],
+        Principal: {
+          AWS: principal,
+        },
       },
     ],
   };
@@ -83,6 +112,7 @@ async function attachPolicyToUser(
     PolicyArn: 'arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess',
   });
   await iamClient.send(attachUserPolicyCommand);
+  console.log(`Policy attached to user ${userName}.`);
 }
 
 export async function createUserWithReadOnlyS3Access(params: {
@@ -108,12 +138,23 @@ export async function createUserWithReadOnlyS3Access(params: {
     region: deployment.awsRegion,
   });
 
+  const stsClient = new STSClient({
+    credentials,
+    region: deployment.awsRegion,
+  });
+
   try {
     const userExists = await checkIfUserExists(iamClient, userName);
 
     if (!userExists) {
       await createUser(iamClient, userName);
-      await attachPolicyToUser(iamClient, userName, bucketName, s3Client);
+      await attachPolicyToUser(
+        iamClient,
+        userName,
+        bucketName,
+        s3Client,
+        stsClient
+      );
     }
 
     const accessKeys = await createAccessKey(iamClient, userName);

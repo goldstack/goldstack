@@ -29,6 +29,7 @@ import crypto from 'crypto';
 import { mkdir, write } from '@goldstack/utils-sh';
 import { uploadCredentials } from './uploadCredentials';
 import { updateCredentialsUrl, updateS3Bucket } from './initScriptUpdate';
+import { createZip } from './createZip';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
@@ -61,12 +62,14 @@ export const run = async (args: string[]): Promise<void> => {
     const deployment = packageConfig.getDeployment(opArgs[1]);
 
     if (command === 'deploy') {
+      await createZip();
       await uploadZip({
         deployment,
       });
     }
 
     if (command === 'infra') {
+      await createZip();
       // use remote managed state from Terraform
       await terraformAwsCli(['create-state', opArgs[1]]);
 

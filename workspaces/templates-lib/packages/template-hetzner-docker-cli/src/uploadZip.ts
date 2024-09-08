@@ -16,7 +16,7 @@ export async function uploadZip({ deployment }: UploadZipParams) {
 
   await upload({
     userName,
-    bucketPath: 'server/',
+    bucketPath: '/server/',
     region: deployment.awsRegion,
     bucket: deployment.configuration.deploymentsS3Bucket,
     localPath: './dist/app',

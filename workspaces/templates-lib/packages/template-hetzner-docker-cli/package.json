@@ -43,6 +43,7 @@
   "dependencies": {
     "@aws-sdk/client-iam": "^3.645.0",
     "@aws-sdk/client-s3": "3.620.0",
+    "@aws-sdk/client-sts": "^3.645.0",
     "@aws-sdk/s3-request-presigner": "^3.645.0",
     "@goldstack/infra-aws": "0.4.17",
     "@goldstack/template-hetzner-docker": "0.1.0",

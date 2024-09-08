@@ -82,7 +82,7 @@ const assertS3Bucket = async (params: {
   };
   try {
     console.log(
-      'Accessing/creating bucket for Terraform state',
+      'Accessing/creating bucket for VPS deployments',
       bucketParams.Bucket
     );
 
