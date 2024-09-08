@@ -41,6 +41,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
+    "@aws-sdk/client-iam": "^3.645.0",
     "@aws-sdk/client-s3": "^3.515.0",
     "@goldstack/infra-aws": "0.4.17",
     "@goldstack/template-hetzner-docker": "0.1.0",

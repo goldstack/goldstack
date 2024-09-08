@@ -30,6 +30,7 @@ export async function assertDeploymentsS3Bucket(
   const credentials = await getAWSCredentials(awsUser);
   const s3Client = new S3Client({
     credentials: credentials,
+    region: deployment.awsRegion,
   });
 
   if (!deployment.configuration.deploymentsS3Bucket) {
@@ -58,6 +59,7 @@ export async function deleteDeploymentsS3Bucket(
   const credentials = await getAWSCredentials(awsUser);
   const s3Client = new S3Client({
     credentials: credentials,
+    region: deployment.awsRegion,
   });
   if (!deployment.configuration.deploymentsS3Bucket) {
     console.warn(
