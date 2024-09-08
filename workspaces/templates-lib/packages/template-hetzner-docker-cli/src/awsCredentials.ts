@@ -136,7 +136,8 @@ export async function createUserWithReadOnlyS3Access(params: {
     };
   } catch (error) {
     throw new Error(
-      `Error creating user or attaching policy: ${error.message}`
+      `Error creating user or attaching policy: ${error.message}`,
+      error
     );
   }
 }
