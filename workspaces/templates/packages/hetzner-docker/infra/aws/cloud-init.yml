@@ -1,0 +1,83 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+packages:
+  - curl
+  - unzip
+  - docker.io  # Install Docker
+
+# Ensure the /home/goldstack directory and /home/goldstack/current file exist
+runcmd:
+  - mkdir -p /home/goldstack
+  - echo "none" > /home/goldstack/current  # Create /home/goldstack/current with 'none' as content
+  - systemctl start docker  # Start Docker
+  - systemctl enable docker  # Enable Docker to run on boot
+  - docker --version  # Check Docker installation
+  - mv /tmp/update-check.sh /home/goldstack/update-check.sh
+  - echo "*/1 * * * * root /home/goldstack/update-check.sh" >> /etc/crontab  # every 30 s
+  - service cron reload
+  # - reboot
+
+# Write the update-check.sh file
+write_files:
+  - path: /home/goldstack/update-check.sh
+    permissions: '0755'
+    content: |
+      #!/bin/bash
+      # Define the URLs
+      CONTENT_URL="https://your-content-url.com/file.txt"
+      ZIP_URL="https://your-zip-url.com/file.zip"
+      CURRENT_FILE="/home/goldstack/current"
+      APP_DIR="/home/goldstack/app"
+
+      # Fetch the content from the URL
+      NEW_CONTENT=$(curl -s $CONTENT_URL)
+    
+      # Compare the content with the stored content
+      STORED_CONTENT=$(cat $CURRENT_FILE)
+      if [ "$NEW_CONTENT" == "$STORED_CONTENT" ]; then
+        exit 0
+      fi
+
+      echo "Content has changed. Stopping app and preparing for update."
+      
+      # Run stop.sh if it exists
+      if [ -f "$APP_DIR/stop.sh" ]; then
+        chmod +x $APP_DIR/stop.sh
+        $APP_DIR/stop.sh
+      fi
+
+      # Remove the app directory before unzipping the new content
+      rm -rf $APP_DIR
+
+      # Download the zip file and unpack it to /home/goldstack/
+      rm -rf /home/goldstack/new_file.zip
+      curl -s -o /home/goldstack/new_file.zip $ZIP_URL
+      unzip -o /home/goldstack/new_file.zip -d /home/goldstack/
+
+      # Make start.sh and stop.sh executable
+      if [ -f "$APP_DIR/start.sh" ]; then
+        chmod +x $APP_DIR/start.sh
+      fi
+      if [ -f "$APP_DIR/stop.sh" ]; then
+        chmod +x $APP_DIR/stop.sh
+      fi
+      if [ -f "$APP_DIR/init.sh" ]; then
+        chmod +x $APP_DIR/init.sh
+      fi
+
+      # on first load, run init script
+      if [ $STORED_CONTENT == "none"]; then
+        if [ -f "$APP_DIR/init.sh" ]; then
+          $APP_DIR/init.sh
+        fi
+      fi
+
+      # Run start.sh if it exists
+      if [ -f "$APP_DIR/start.sh" ]; then
+        $APP_DIR/start.sh
+      fi
+
+      # Update the current file with the new content (hash of the zip)
+      echo "$NEW_CONTENT" > $CURRENT_FILE
+    

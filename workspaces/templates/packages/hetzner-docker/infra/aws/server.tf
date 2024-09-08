@@ -6,7 +6,9 @@ resource "hcloud_server" "docker_server" {
   location    = var.location # https://docs.hetzner.com/cloud/general/locations/
   ssh_keys    = data.hcloud_ssh_key.my_ssh_key.*.id
 
-  user_data = file("cloud-init.sh")  # Pointing to the init script
+  user_data = file("cloud-init.sh")
+
+  shutdown_before_deletion = true
 }
 
 data "hcloud_ssh_key" "my_ssh_key" {
