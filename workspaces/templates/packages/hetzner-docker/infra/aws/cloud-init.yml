@@ -32,12 +32,12 @@ write_files:
       #!/bin/bash
 
       CHECK_INTERVAL="30"
-      CREDENTIALS_URL="https://goldstack-deployments-prod-goldstack-docker-18a53f763861.s3.us-west-2.amazonaws.com/credentials/credentials?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAW5PN5WJ3K5IFORFF%2F20240908%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240908T071920Z&X-Amz-Expires=3600&X-Amz-Signature=3b0eb95e9acc1beb247d5b3f13bef620e9f581232a72fa7752a5fd9ae2dc7a51&X-Amz-SignedHeaders=host&x-id=GetObject"
+      CREDENTIALS_URL="https://injected-url.com"
       CURRENT_FILE="/home/goldstack/current"
       NEW_FILE="/home/goldstack/new"
       APP_DIR="/home/goldstack/app"
       CREDENTIALS_FILE="/home/goldstack/credentials"
-      S3_BUCKET="goldstack-deployments-prod-goldstack-docker-18a53f763861"
+      S3_BUCKET="injected-s3-bucket"
       S3_CURRENT_PATH="server/current"
       S3_ZIP_PATH="server/server.zip"
 

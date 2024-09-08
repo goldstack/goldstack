@@ -9,6 +9,13 @@ resource "hcloud_server" "docker_server" {
   user_data = file("cloud-init.yml")
 
   shutdown_before_deletion = true
+
+  lifecycle {
+    ignore_changes = [
+      user_data, # this is required since we are injecting into this file - usually should only change the files in server/ - if this file needs to be changed, need to destroy first or manually remove this
+    ]
+  }
+
 }
 
 data "hcloud_ssh_key" "my_ssh_key" {

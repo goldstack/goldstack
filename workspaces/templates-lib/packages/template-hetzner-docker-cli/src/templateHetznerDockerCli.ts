@@ -66,19 +66,19 @@ export const run = async (args: string[]): Promise<void> => {
       // use remote managed state from Terraform
       await terraformAwsCli(['create-state', opArgs[1]]);
 
-      await assertDeploymentsS3Bucket({
-        packageConfig,
-        deployment: opArgs[1],
-      });
+      if (opArgs[0] === 'up' || opArgs[0] === 'apply') {
+        await assertDeploymentsS3Bucket({
+          packageConfig,
+          deployment: opArgs[1],
+        });
 
-      if (!deployment.configuration.deploymentsS3Bucket) {
-        throw new Error('Expected bucket to have been created');
-      }
-      updateS3Bucket(deployment.configuration.deploymentsS3Bucket);
+        if (!deployment.configuration.deploymentsS3Bucket) {
+          throw new Error('Expected bucket to have been created');
+        }
+        updateS3Bucket(deployment.configuration.deploymentsS3Bucket);
 
-      writePackageConfig(config);
+        writePackageConfig(config);
 
-      if (!deployment.configuration.vpsIAMUserName) {
         const userHash = crypto.randomBytes(6).toString('hex');
         deployment.configuration.vpsIAMUserName = `vps-${deployment.name}-${deployment.configuration.serverName}-${userHash}`;
 
@@ -111,10 +111,15 @@ export const run = async (args: string[]): Promise<void> => {
       });
 
       if (opArgs[0] === 'deploy') {
+        updateCredentialsUrl('https://injectedurl.com');
+        updateS3Bucket('injected-s3-bucket');
         return;
       }
 
       await terraformHetznerCli(opArgs, awsProvider);
+
+      updateCredentialsUrl('https://injectedurl.com');
+      updateS3Bucket('injected-s3-bucket');
 
       if (opArgs[0] === 'destroy') {
         if (deployment.configuration.vpsIAMUserName) {
