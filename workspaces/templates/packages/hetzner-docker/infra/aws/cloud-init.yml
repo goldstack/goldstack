@@ -14,7 +14,7 @@ runcmd:
   - systemctl enable docker  # Enable Docker to run on boot
   - docker --version  # Check Docker installation
   - mv /tmp/update-check.sh /home/goldstack/update-check.sh
-  - echo "*/1 * * * * root /home/goldstack/update-check.sh" >> /etc/crontab  # every 30 s
+  - echo "*/1 * * * * root /home/goldstack/update-check.sh" >> /etc/crontab  # every 1 m
   - service cron reload
   # - reboot
 
@@ -24,60 +24,62 @@ write_files:
     permissions: '0755'
     content: |
       #!/bin/bash
+      set -euo pipefail
+
       # Define the URLs
       CONTENT_URL="https://your-content-url.com/file.txt"
       ZIP_URL="https://your-zip-url.com/file.zip"
       CURRENT_FILE="/home/goldstack/current"
       APP_DIR="/home/goldstack/app"
 
+      log() {
+        echo "$(date +"%Y-%m-%d %H:%M:%S") - $1"
+      }
+
       # Fetch the content from the URL
-      NEW_CONTENT=$(curl -s $CONTENT_URL)
-    
+      NEW_CONTENT=$(curl -s $CONTENT_URL || { log "Failed to fetch new content"; exit 1; })
+
       # Compare the content with the stored content
-      STORED_CONTENT=$(cat $CURRENT_FILE)
+      STORED_CONTENT=$(cat $CURRENT_FILE || { log "Failed to read current content"; exit 1; })
       if [ "$NEW_CONTENT" == "$STORED_CONTENT" ]; then
+        log "Content has not changed."
         exit 0
       fi
 
-      echo "Content has changed. Stopping app and preparing for update."
-      
+      log "Content has changed. Stopping app and preparing for update."
+
       # Run stop.sh if it exists
       if [ -f "$APP_DIR/stop.sh" ]; then
-        chmod +x $APP_DIR/stop.sh
-        $APP_DIR/stop.sh
+        chmod +x "$APP_DIR/stop.sh"
+        "$APP_DIR/stop.sh" 
       fi
 
       # Remove the app directory before unzipping the new content
-      rm -rf $APP_DIR
+      rm -rf "$APP_DIR" 
 
       # Download the zip file and unpack it to /home/goldstack/
-      rm -rf /home/goldstack/new_file.zip
-      curl -s -o /home/goldstack/new_file.zip $ZIP_URL
-      unzip -o /home/goldstack/new_file.zip -d /home/goldstack/
+      rm -rf /home/goldstack/new_file.zip 
+      curl -s -o /home/goldstack/new_file.zip $ZIP_URL || { log "Failed to download new zip file"; exit 1; }
+      unzip -o /home/goldstack/new_file.zip -d /home/goldstack/ || { log "Failed to unzip new file"; exit 1; }
 
-      # Make start.sh and stop.sh executable
-      if [ -f "$APP_DIR/start.sh" ]; then
-        chmod +x $APP_DIR/start.sh
-      fi
-      if [ -f "$APP_DIR/stop.sh" ]; then
-        chmod +x $APP_DIR/stop.sh
-      fi
-      if [ -f "$APP_DIR/init.sh" ]; then
-        chmod +x $APP_DIR/init.sh
-      fi
+      # Make start.sh, stop.sh, and init.sh executable
+      for script in start.sh stop.sh init.sh; do
+        if [ -f "$APP_DIR/$script" ]; then
+          chmod +x "$APP_DIR/$script" || { log "Failed to make $script executable"; exit 1; }
+        fi
+      done
 
-      # on first load, run init script
-      if [ $STORED_CONTENT == "none"]; then
+      # On first load, run init script
+      if [ "$STORED_CONTENT" == "none" ]; then
         if [ -f "$APP_DIR/init.sh" ]; then
-          $APP_DIR/init.sh
+          "$APP_DIR/init.sh" || { log "Failed to run init script"; exit 1; }
         fi
       fi
 
       # Run start.sh if it exists
       if [ -f "$APP_DIR/start.sh" ]; then
-        $APP_DIR/start.sh
+        "$APP_DIR/start.sh" 
       fi
 
       # Update the current file with the new content (hash of the zip)
-      echo "$NEW_CONTENT" > $CURRENT_FILE
-    
+      echo "$NEW_CONTENT" > "$CURRENT
