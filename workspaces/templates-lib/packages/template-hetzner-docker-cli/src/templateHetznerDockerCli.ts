@@ -1,4 +1,4 @@
-import { buildCli } from '@goldstack/utils-package';
+import { buildCli, writePackageConfig } from '@goldstack/utils-package';
 import { wrapCli } from '@goldstack/utils-cli';
 
 import {
@@ -19,7 +19,13 @@ import {
 } from '@goldstack/template-hetzner-docker';
 import yargs from 'yargs';
 import { uploadZip } from './uploadZip';
+import {
+  createUserWithReadOnlyS3Access,
+  deleteUserAndResources,
+} from './awsCredentials';
 export { createZip } from './createZip';
+
+import crypto from 'crypto';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
@@ -49,9 +55,11 @@ export const run = async (args: string[]): Promise<void> => {
     const command = argv._[0];
     const [, , , ...opArgs] = args;
 
+    const deployment = packageConfig.getDeployment(opArgs[1]);
+
     if (command === 'deploy') {
       await uploadZip({
-        deployment: packageConfig.getDeployment(opArgs[1]),
+        deployment,
       });
     }
 
@@ -63,11 +71,38 @@ export const run = async (args: string[]): Promise<void> => {
         packageConfig,
         deployment: opArgs[1],
       });
+
+      if (!deployment.configuration.vpsIAMUserName) {
+        const userHash = crypto.randomBytes(6).toString('hex');
+        deployment.configuration.vpsIAMUserName = `vps-${deployment.name}-${deployment.configuration.serverName}-${userHash}`;
+
+        if (!deployment.configuration.deploymentsS3Bucket) {
+          throw new Error('Cannot define IAM user since bucket not created.');
+        }
+
+        await createUserWithReadOnlyS3Access({
+          bucketName: deployment.configuration.deploymentsS3Bucket,
+          deployment,
+          vpsUserName: deployment.configuration.vpsIAMUserName,
+        });
+      }
+
+      writePackageConfig(config);
+
+      writePackageConfig(config);
+
       const { awsProvider } = await initTerraformEnvironment(opArgs);
 
       await terraformHetznerCli(opArgs, awsProvider);
 
       if (opArgs[0] === 'destroy') {
+        if (deployment.configuration.vpsIAMUserName) {
+          await deleteUserAndResources({
+            deployment,
+            vpsUserName: deployment.configuration.vpsIAMUserName,
+          });
+        }
+
         await deleteDeploymentsS3Bucket({
           packageConfig,
           deployment: opArgs[1],

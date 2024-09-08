@@ -17,7 +17,10 @@ export async function createUserWithReadOnlyS3Access(params: {
   deployment: HetznerDockerDeployment;
   vpsUserName: string;
   bucketName: string;
-}) {
+}): Promise<{
+  accessKeyId: string | undefined;
+  secretAccessKey: string | undefined;
+}> {
   const bucketName = params.bucketName;
   const userName = params.vpsUserName;
   const awsUser = await getAWSUser(params.deployment.awsUser);
@@ -38,7 +41,37 @@ export async function createUserWithReadOnlyS3Access(params: {
     try {
       const getUserCommand = new GetUserCommand({ UserName: userName });
       await iamClient.send(getUserCommand);
-      return; // User already exists, do nothing
+
+      // if the user doesn't exist, we will go to the catch statement below.
+
+      const listAccessKeysCommand = new ListAccessKeysCommand({
+        UserName: userName,
+      });
+      const listAccessKeysResponse = await iamClient.send(
+        listAccessKeysCommand
+      );
+
+      if (!listAccessKeysResponse.AccessKeyMetadata) {
+        throw new Error('Cannot retrieve credentials for existing user');
+      }
+
+      // Get the secret access key (Note: AWS SDK does not provide a way to retrieve the secret access key for existing keys)
+      // You need to create a new access key to get the secret access key
+      const createAccessKeyCommand = new CreateAccessKeyCommand({
+        UserName: userName,
+      });
+      const createAccessKeyResponse = await iamClient.send(
+        createAccessKeyCommand
+      );
+
+      if (!createAccessKeyResponse.AccessKey) {
+        throw new Error('Cannot create new access key for existing user.');
+      }
+
+      return {
+        accessKeyId: createAccessKeyResponse.AccessKey.AccessKeyId,
+        secretAccessKey: createAccessKeyResponse.AccessKey.SecretAccessKey,
+      };
     } catch (error) {
       if (error.name !== 'NoSuchEntity') {
         throw error;
@@ -108,7 +141,6 @@ export async function createUserWithReadOnlyS3Access(params: {
 export async function deleteUserAndResources(params: {
   deployment: HetznerDockerDeployment;
   vpsUserName: string;
-  bucketName: string;
 }) {
   const userName = params.vpsUserName;
   const awsUser = await getAWSUser(params.deployment.awsUser);

@@ -50,6 +50,14 @@ export type SSHUserFingerprint = string;
 export type DeploymentsS3Bucket = string;
 
 /**
+ * The name of the IAM user that the VPS server uses to access AWS resources
+ *
+ * @title VPS IAM User name
+ * @pattern ^[^\s]*
+ */
+export type VPSIAMUserName = string;
+
+/**
  * The Hetzner server deployment configuration
  */
 export interface HetznerDockerDeploymentConfiguration
@@ -59,6 +67,7 @@ export interface HetznerDockerDeploymentConfiguration
   sshUserFingerprint?: SSHUserFingerprint;
   serverName: ServerName;
   deploymentsS3Bucket?: DeploymentsS3Bucket;
+  vpsIAMUserName?: VPSIAMUserName;
 }
 
 /**
