@@ -61,13 +61,6 @@ export const run = async (args: string[]): Promise<void> => {
 
     const deployment = packageConfig.getDeployment(opArgs[1]);
 
-    if (command === 'deploy') {
-      await createZip();
-      await uploadZip({
-        deployment,
-      });
-    }
-
     if (command === 'infra') {
       await createZip();
       // use remote managed state from Terraform
@@ -116,6 +109,10 @@ export const run = async (args: string[]): Promise<void> => {
       await uploadZip({
         deployment,
       });
+
+      if (opArgs[0] === 'deploy') {
+        return;
+      }
 
       await terraformHetznerCli(opArgs, awsProvider);
 

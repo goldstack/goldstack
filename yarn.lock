@@ -3581,7 +3581,6 @@ __metadata:
   dependencies:
     "@aws-sdk/client-iam": "npm:^3.645.0"
     "@aws-sdk/client-s3": "npm:3.620.0"
-    "@aws-sdk/client-sts": "npm:^3.645.0"
     "@aws-sdk/s3-request-presigner": "npm:^3.645.0"
     "@goldstack/infra-aws": "npm:0.4.17"
     "@goldstack/template-hetzner-docker": "npm:0.1.0"

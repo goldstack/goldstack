@@ -8,12 +8,12 @@ import {
   DeleteAccessKeyCommand,
   ListAccessKeysCommand,
   DetachUserPolicyCommand,
+  CreatePolicyCommand,
+  ListAttachedUserPoliciesCommand,
+  DeletePolicyCommand,
 } from '@aws-sdk/client-iam';
-import { S3Client, PutBucketPolicyCommand } from '@aws-sdk/client-s3';
 import { getAWSUser, getAWSCredentials } from '@goldstack/infra-aws';
 import { HetznerDockerDeployment } from '@goldstack/template-hetzner-docker';
-
-import { STSClient, GetCallerIdentityCommand } from '@aws-sdk/client-sts';
 
 async function checkIfUserExists(iamClient: IAMClient, userName: string) {
   try {
@@ -56,33 +56,14 @@ async function createAccessKey(iamClient: IAMClient, userName: string) {
   };
 }
 
-async function getAccountId(client: STSClient): Promise<string> {
-  const command = new GetCallerIdentityCommand({});
-  try {
-    const data = await client.send(command);
-    if (!data.Account) {
-      throw new Error('Account ID not found in response');
-    }
-    return data.Account;
-  } catch (err) {
-    console.error('Error retrieving account ID:', err);
-    throw err;
-  }
-}
-
 async function attachPolicyToUser(
   iamClient: IAMClient,
   userName: string,
-  bucketName: string,
-  s3Client: S3Client,
-  stsClient: STSClient
+  bucketName: string
 ) {
   console.log(
     `Attaching policy to user ${userName} for bucket ${bucketName}...`
   );
-  const principal = `arn:aws:iam::${await getAccountId(
-    stsClient
-  )}:user/${userName}`;
 
   const policy = {
     Version: '2012-10-17',
@@ -94,24 +75,25 @@ async function attachPolicyToUser(
           `arn:aws:s3:::${bucketName}`,
           `arn:aws:s3:::${bucketName}/*`,
         ],
-        Principal: {
-          AWS: principal,
-        },
       },
     ],
   };
 
-  const putBucketPolicyCommand = new PutBucketPolicyCommand({
-    Bucket: bucketName,
-    Policy: JSON.stringify(policy),
+  const createPolicyCommand = new CreatePolicyCommand({
+    PolicyName: `bucket-access-${bucketName}-${userName}`,
+    PolicyDocument: JSON.stringify(policy),
   });
-  await s3Client.send(putBucketPolicyCommand);
 
-  // const attachUserPolicyCommand = new AttachUserPolicyCommand({
-  //   UserName: userName,
-  //   PolicyArn: 'arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess',
-  // });
-  // await iamClient.send(attachUserPolicyCommand);
+  const createPolicyResponse = await iamClient.send(createPolicyCommand);
+  console.log('Policy created successfully:', createPolicyResponse.Policy?.Arn);
+
+  const attachPolicyCommand = new AttachUserPolicyCommand({
+    PolicyArn: createPolicyResponse.Policy?.Arn,
+    UserName: userName,
+  });
+
+  await iamClient.send(attachPolicyCommand);
+
   console.log(`Policy attached to user ${userName}.`);
 }
 
@@ -128,18 +110,8 @@ export async function createUserWithReadOnlyS3Access(params: {
   const awsUser = await getAWSUser(deployment.awsUser);
   const credentials = await getAWSCredentials(awsUser);
 
-  const s3Client = new S3Client({
-    credentials: credentials,
-    region: deployment.awsRegion,
-  });
-
   const iamClient = new IAMClient({
     credentials: credentials,
-    region: deployment.awsRegion,
-  });
-
-  const stsClient = new STSClient({
-    credentials,
     region: deployment.awsRegion,
   });
 
@@ -148,13 +120,7 @@ export async function createUserWithReadOnlyS3Access(params: {
 
     if (!userExists) {
       await createUser(iamClient, userName);
-      await attachPolicyToUser(
-        iamClient,
-        userName,
-        bucketName,
-        s3Client,
-        stsClient
-      );
+      await attachPolicyToUser(iamClient, userName, bucketName);
     }
 
     const accessKeys = await createAccessKey(iamClient, userName);
@@ -185,6 +151,7 @@ export async function deleteUserAndResources(params: {
   });
 
   try {
+    // Step 1: List and delete all access keys for the user
     const listAccessKeysCommand = new ListAccessKeysCommand({
       UserName: userName,
     });
@@ -202,14 +169,49 @@ export async function deleteUserAndResources(params: {
       await iamClient.send(deleteAccessKeyCommand);
     }
 
-    const detachUserPolicyCommand = new DetachUserPolicyCommand({
-      UserName: userName,
-      PolicyArn: 'arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess',
-    });
-    await iamClient.send(detachUserPolicyCommand);
+    // Step 2: List and detach all policies attached to the user
+    const listAttachedUserPoliciesCommand = new ListAttachedUserPoliciesCommand(
+      {
+        UserName: userName,
+      }
+    );
+    const listAttachedUserPoliciesResponse = await iamClient.send(
+      listAttachedUserPoliciesCommand
+    );
 
+    if (!listAttachedUserPoliciesResponse.AttachedPolicies) {
+      throw new Error('Cannot read attached policies');
+    }
+
+    for (const policy of listAttachedUserPoliciesResponse.AttachedPolicies) {
+      const detachUserPolicyCommand = new DetachUserPolicyCommand({
+        UserName: userName,
+        PolicyArn: policy.PolicyArn,
+      });
+      await iamClient.send(detachUserPolicyCommand);
+
+      if (!policy.PolicyName) {
+        throw new Error(
+          'Could not load policy for detaching it ' + policy.PolicyName
+        );
+      }
+
+      // Step 3: Delete the policy if it was created by the create function
+      if (policy.PolicyName.startsWith('bucket-access-')) {
+        const deletePolicyCommand = new DeletePolicyCommand({
+          PolicyArn: policy.PolicyArn,
+        });
+        await iamClient.send(deletePolicyCommand);
+      }
+    }
+
+    // Step 4: Delete the user
     const deleteUserCommand = new DeleteUserCommand({ UserName: userName });
     await iamClient.send(deleteUserCommand);
+
+    console.log(
+      `User ${userName} and all associated resources have been deleted.`
+    );
   } catch (error) {
     console.error(`Error deleting user or resources: ${error.message}`);
     throw new Error(`Error deleting user or resources: ${error.message}`);

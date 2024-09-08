@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "start"
+echo "the new start"

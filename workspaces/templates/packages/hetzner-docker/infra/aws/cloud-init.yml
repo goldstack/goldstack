@@ -32,8 +32,9 @@ write_files:
       #!/bin/bash
 
       CHECK_INTERVAL="30"
-      CREDENTIALS_URL="https://injectedurl.com"
+      CREDENTIALS_URL="https://goldstack-deployments-prod-goldstack-docker-18a53f763861.s3.us-west-2.amazonaws.com/credentials/credentials?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAW5PN5WJ3K5IFORFF%2F20240908%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240908T071920Z&X-Amz-Expires=3600&X-Amz-Signature=3b0eb95e9acc1beb247d5b3f13bef620e9f581232a72fa7752a5fd9ae2dc7a51&X-Amz-SignedHeaders=host&x-id=GetObject"
       CURRENT_FILE="/home/goldstack/current"
+      NEW_FILE="/home/goldstack/new"
       APP_DIR="/home/goldstack/app"
       CREDENTIALS_FILE="/home/goldstack/credentials"
       S3_BUCKET="goldstack-deployments-prod-goldstack-docker-18a53f763861"
@@ -62,7 +63,7 @@ write_files:
       }
 
       fetch_s3_content() {
-        aws s3 cp "s3://$S3_BUCKET/$S3_CURRENT_PATH" "$CURRENT_FILE"
+        aws s3 cp "s3://$S3_BUCKET/$S3_CURRENT_PATH" "$NEW_FILE"
       }
 
       fetch_s3_zip() {
@@ -71,6 +72,11 @@ write_files:
 
       update_app() {
         log "Content has changed. Stopping app and preparing for update."
+
+
+        # Download the zip file and unpack it to /home/goldstack/
+        rm -rf /home/goldstack/new_file.zip
+        fetch_s3_zip
 
         # Run stop.sh if it exists
         if [ -f "$APP_DIR/stop.sh" ]; then
@@ -81,9 +87,6 @@ write_files:
         # Remove the app directory before unzipping the new content
         rm -rf "$APP_DIR"
 
-        # Download the zip file and unpack it to /home/goldstack/
-        rm -rf /home/goldstack/new_file.zip
-        fetch_s3_zip
         unzip -o /home/goldstack/new_file.zip -d "$APP_DIR"
 
         # Make start.sh, stop.sh, and init.sh executable
@@ -119,7 +122,7 @@ write_files:
 
           # Compare the content with the stored content
           STORED_CONTENT=$(cat "$CURRENT_FILE")
-          NEW_CONTENT=$(cat "$CURRENT_FILE")
+          NEW_CONTENT=$(cat "$NEW_FILE")
 
           if [ "$NEW_CONTENT" == "$STORED_CONTENT" ]; then
             log "Content has not changed."
