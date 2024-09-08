@@ -32,11 +32,11 @@ write_files:
       #!/bin/bash
 
       CHECK_INTERVAL="30"
-      CREDENTIALS_URL="https://your-credentials-url.com/credentials.json"
+      CREDENTIALS_URL="https://injectedurl.com"
       CURRENT_FILE="/home/goldstack/current"
       APP_DIR="/home/goldstack/app"
       CREDENTIALS_FILE="/home/goldstack/credentials"
-      S3_BUCKET="your-s3-bucket-name"
+      S3_BUCKET="goldstack-deployments-prod-goldstack-docker-18a53f763861"
       S3_CURRENT_PATH="server/current"
       S3_ZIP_PATH="server/server.zip"
 

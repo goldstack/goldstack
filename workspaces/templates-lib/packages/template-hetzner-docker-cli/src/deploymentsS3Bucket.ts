@@ -34,7 +34,7 @@ export async function assertDeploymentsS3Bucket(
   });
 
   if (!deployment.configuration.deploymentsS3Bucket) {
-    const projectHash = crypto.randomBytes(20).toString('hex');
+    const projectHash = crypto.randomBytes(6).toString('hex');
     deployment.configuration.deploymentsS3Bucket = `goldstack-deployments-${deployment.name}-${deployment.configuration.serverName}-${projectHash}`;
   }
 
