@@ -2,6 +2,7 @@ import { HetznerDockerDeployment } from '@goldstack/template-hetzner-docker';
 import { upload } from '@goldstack/utils-s3-deployment';
 import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+import { getAWSCredentials, getAWSUser } from '@goldstack/infra-aws';
 
 export interface UploadCredentialsParams {
   deployment: HetznerDockerDeployment;
@@ -43,7 +44,11 @@ async function generateReadOnlyUrl(
     );
   }
 
+  const awsUser = await getAWSUser(deployment.awsUser);
+  const credentials = await getAWSCredentials(awsUser);
+
   const s3Client = new S3Client({
+    credentials,
     region: deployment.awsRegion,
   });
 

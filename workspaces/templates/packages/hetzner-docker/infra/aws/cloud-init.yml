@@ -3,6 +3,8 @@ package_update: true
 package_upgrade: true
 packages:
   - curl
+  - jq
+  - awscli
   - unzip
   - docker.io  # Install Docker
 
@@ -30,66 +32,107 @@ write_files:
       #!/bin/bash
 
       CHECK_INTERVAL="30"
-      CONTENT_URL="https://your-content-url.com/file.txt"
-      ZIP_URL="https://your-zip-url.com/file.zip"
+      CREDENTIALS_URL="https://your-credentials-url.com/credentials.json"
       CURRENT_FILE="/home/goldstack/current"
       APP_DIR="/home/goldstack/app"
+      CREDENTIALS_FILE="/home/goldstack/credentials"
+      S3_BUCKET="your-s3-bucket-name"
+      S3_CURRENT_PATH="server/current"
+      S3_ZIP_PATH="server/server.zip"
 
       log() {
         echo "$(date +"%Y-%m-%d %H:%M:%S") - $1"
       }
 
-      while true; do
-        # Fetch the content from the URL
-        NEW_CONTENT=$(curl -s $CONTENT_URL 
+      download_credentials() {
+        if [ ! -f "$CREDENTIALS_FILE" ]; then
+          log "Downloading credentials..."
+          curl -s -o "$CREDENTIALS_FILE" "$CREDENTIALS_URL"
+        fi
+      }
 
-        # Compare the content with the stored content
-        STORED_CONTENT=$(cat $CURRENT_FILE 
-        if [ "$NEW_CONTENT" == "$STORED_CONTENT" ]; then
-          log "Content has not changed."
-        else
-          log "Content has changed. Stopping app and preparing for update."
+      configure_aws_cli() {
+        local access_key_id=$(jq -r '.accessKeyId' "$CREDENTIALS_FILE")
+        local secret_access_key=$(jq -r '.secretAccessKey' "$CREDENTIALS_FILE")
+        local aws_region=$(jq -r '.awsRegion' "$CREDENTIALS_FILE")
 
-          # Run stop.sh if it exists
-          if [ -f "$APP_DIR/stop.sh" ]; then
-            chmod +x "$APP_DIR/stop.sh"
-            "$APP_DIR/stop.sh" 
-          fi
+        aws configure set aws_access_key_id "$access_key_id"
+        aws configure set aws_secret_access_key "$secret_access_key"
+        aws configure set region "$aws_region"
+      }
 
-          # Remove the app directory before unzipping the new content
-          rm -rf "$APP_DIR"
+      fetch_s3_content() {
+        aws s3 cp "s3://$S3_BUCKET/$S3_CURRENT_PATH" "$CURRENT_FILE"
+      }
 
-          # Download the zip file and unpack it to /home/goldstack/
-          rm -rf /home/goldstack/new_file.zip 
-          curl -s -o /home/goldstack/new_file.zip $ZIP_URL 
-          unzip -o /home/goldstack/new_file.zip -d "$APP_DIR" 
+      fetch_s3_zip() {
+        aws s3 cp "s3://$S3_BUCKET/$S3_ZIP_PATH" /home/goldstack/new_file.zip
+      }
 
-          # Make start.sh, stop.sh, and init.sh executable
-          for script in start.sh stop.sh init.sh; do
-            if [ -f "$APP_DIR/$script" ]; then
-              chmod +x "$APP_DIR/$script" 
-            fi
-          done
+      update_app() {
+        log "Content has changed. Stopping app and preparing for update."
 
-          # On first load, run init script
-          if [ "$STORED_CONTENT" == "none" ]; then
-            if [ -f "$APP_DIR/init.sh" ]; then
-              "$APP_DIR/init.sh" 
-            fi
-          fi
-
-          # Run start.sh if it exists
-          if [ -f "$APP_DIR/start.sh" ]; then
-            "$APP_DIR/start.sh" 
-          fi
-
-          # Update the current file with the new content (hash of the zip)
-          echo "$NEW_CONTENT" > "$CURRENT_FILE"
+        # Run stop.sh if it exists
+        if [ -f "$APP_DIR/stop.sh" ]; then
+          chmod +x "$APP_DIR/stop.sh"
+          "$APP_DIR/stop.sh"
         fi
 
-        # Sleep for 30 seconds before the next iteration
-        sleep $CHECK_INTERVAL
-      done
+        # Remove the app directory before unzipping the new content
+        rm -rf "$APP_DIR"
+
+        # Download the zip file and unpack it to /home/goldstack/
+        rm -rf /home/goldstack/new_file.zip
+        fetch_s3_zip
+        unzip -o /home/goldstack/new_file.zip -d "$APP_DIR"
+
+        # Make start.sh, stop.sh, and init.sh executable
+        for script in start.sh stop.sh init.sh; do
+          if [ -f "$APP_DIR/$script" ]; then
+            chmod +x "$APP_DIR/$script"
+          fi
+        done
+
+        # On first load, run init script
+        if [ "$STORED_CONTENT" == "none" ]; then
+          if [ -f "$APP_DIR/init.sh" ]; then
+            "$APP_DIR/init.sh"
+          fi
+        fi
+
+        # Run start.sh if it exists
+        if [ -f "$APP_DIR/start.sh" ]; then
+          "$APP_DIR/start.sh"
+        fi
+
+        # Update the current file with the new content (hash of the zip)
+        echo "$NEW_CONTENT" > "$CURRENT_FILE"
+      }
+
+      main() {
+        download_credentials
+        configure_aws_cli
+
+        while true; do
+          # Fetch the content from S3
+          fetch_s3_content
+
+          # Compare the content with the stored content
+          STORED_CONTENT=$(cat "$CURRENT_FILE")
+          NEW_CONTENT=$(cat "$CURRENT_FILE")
+
+          if [ "$NEW_CONTENT" == "$STORED_CONTENT" ]; then
+            log "Content has not changed."
+          else
+            update_app
+          fi
+
+          # Sleep for 30 seconds before the next iteration
+          sleep $CHECK_INTERVAL
+        done
+      }
+
+      main
 
 
 # Ensure the /home/goldstack directory and /home/goldstack/current file exist
@@ -103,7 +146,7 @@ runcmd:
   - chmod +x /home/goldstack/update-check.sh
   - systemctl daemon-reload
   - systemctl enable update-check.service
-  - systemctl start update-check
+  - # systemctl start update-check // let me run this manually first
   # - reboot
 
 

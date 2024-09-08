@@ -20,6 +20,7 @@ export async function createUserWithReadOnlyS3Access(params: {
 }): Promise<{
   accessKeyId: string | undefined;
   secretAccessKey: string | undefined;
+  awsRegion: string | undefined;
 }> {
   const bucketName = params.bucketName;
   const userName = params.vpsUserName;
@@ -71,6 +72,7 @@ export async function createUserWithReadOnlyS3Access(params: {
       return {
         accessKeyId: createAccessKeyResponse.AccessKey.AccessKeyId,
         secretAccessKey: createAccessKeyResponse.AccessKey.SecretAccessKey,
+        awsRegion: params.deployment.awsRegion,
       };
     } catch (error) {
       if (error.name !== 'NoSuchEntity') {
@@ -130,6 +132,7 @@ export async function createUserWithReadOnlyS3Access(params: {
     return {
       accessKeyId: createAccessKeyResponse.AccessKey.AccessKeyId,
       secretAccessKey: createAccessKeyResponse.AccessKey.SecretAccessKey,
+      awsRegion: params.deployment.awsRegion,
     };
   } catch (error) {
     throw new Error(

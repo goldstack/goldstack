@@ -27,6 +27,8 @@ export { createZip } from './createZip';
 
 import crypto from 'crypto';
 import { mkdir, write } from '@goldstack/utils-sh';
+import { uploadCredentials } from './uploadCredentials';
+import { updateCredentialsUrl, updateS3Bucket } from './initScriptUpdate';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
@@ -73,6 +75,11 @@ export const run = async (args: string[]): Promise<void> => {
         deployment: opArgs[1],
       });
 
+      if (!deployment.configuration.deploymentsS3Bucket) {
+        throw new Error('Expected bucket to have been created');
+      }
+      updateS3Bucket(deployment.configuration.deploymentsS3Bucket);
+
       writePackageConfig(config);
 
       if (!deployment.configuration.vpsIAMUserName) {
@@ -94,11 +101,18 @@ export const run = async (args: string[]): Promise<void> => {
           JSON.stringify(vpsCredentials, null, 2),
           './dist/credentials/credentials'
         );
+
+        const { url } = await uploadCredentials({ deployment });
+        updateCredentialsUrl(url);
       }
 
       writePackageConfig(config);
 
       const { awsProvider } = await initTerraformEnvironment(opArgs);
+
+      await uploadZip({
+        deployment,
+      });
 
       await terraformHetznerCli(opArgs, awsProvider);
 
