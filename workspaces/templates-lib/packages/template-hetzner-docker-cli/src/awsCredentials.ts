@@ -107,11 +107,11 @@ async function attachPolicyToUser(
   });
   await s3Client.send(putBucketPolicyCommand);
 
-  const attachUserPolicyCommand = new AttachUserPolicyCommand({
-    UserName: userName,
-    PolicyArn: 'arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess',
-  });
-  await iamClient.send(attachUserPolicyCommand);
+  // const attachUserPolicyCommand = new AttachUserPolicyCommand({
+  //   UserName: userName,
+  //   PolicyArn: 'arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess',
+  // });
+  // await iamClient.send(attachUserPolicyCommand);
   console.log(`Policy attached to user ${userName}.`);
 }
 
