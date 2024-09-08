@@ -12,7 +12,7 @@
   },
   "references": [
     {
-      "path": "../../../templates-lib/packages/template-email-send"
+      "path": "../../../templates-lib/packages/template-hetzner-docker"
     },
     {
       "path": "../../../utils/packages/utils-git"
@@ -21,7 +21,7 @@
       "path": "../../../utils/packages/utils-sh"
     },
     {
-      "path": "../../../templates-lib/packages/template-email-send-cli"
+      "path": "../../../templates-lib/packages/template-hetzner-docker-cli"
     }
   ]
 }

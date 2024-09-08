@@ -39,9 +39,9 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@aws-sdk/client-sts": "^3.515.0",
-    "@aws-sdk/credential-providers": "^3.515.0",
-    "@aws-sdk/types": "^3.515.0",
+    "@aws-sdk/client-sts": "^3.645.0",
+    "@aws-sdk/credential-providers": "^3.645.0",
+    "@aws-sdk/types": "^3.609.0",
     "@goldstack/infra": "0.4.9",
     "@goldstack/utils-config": "0.4.9",
     "@goldstack/utils-log": "0.3.9",

@@ -16,6 +16,9 @@
       "path": "../infra-aws"
     },
     {
+      "path": "../infra-hetzner"
+    },
+    {
       "path": "../../../utils/packages/utils-cli"
     },
     {

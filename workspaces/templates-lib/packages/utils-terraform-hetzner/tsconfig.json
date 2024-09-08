@@ -9,7 +9,7 @@
   },
   "references": [
     {
-      "path": "../infra-aws"
+      "path": "../infra-hetzner"
     },
     {
       "path": "../utils-config"
@@ -25,6 +25,9 @@
     },
     {
       "path": "../utils-terraform"
+    },
+    {
+      "path": "../utils-terraform-aws"
     },
     {
       "path": "../../../utils/packages/utils-git"
