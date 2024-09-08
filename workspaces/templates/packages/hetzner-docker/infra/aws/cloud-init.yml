@@ -62,7 +62,7 @@ write_files:
           # Download the zip file and unpack it to /home/goldstack/
           rm -rf /home/goldstack/new_file.zip 
           curl -s -o /home/goldstack/new_file.zip $ZIP_URL 
-          unzip -o /home/goldstack/new_file.zip -d /home/goldstack/ 
+          unzip -o /home/goldstack/new_file.zip -d "$APP_DIR" 
 
           # Make start.sh, stop.sh, and init.sh executable
           for script in start.sh stop.sh init.sh; do

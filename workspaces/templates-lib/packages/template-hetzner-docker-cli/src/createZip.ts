@@ -1,12 +1,12 @@
 import { zip, mkdir, rm } from '@goldstack/utils-sh';
 
 export async function createZip() {
-  mkdir('-p', './dist');
+  mkdir('-p', './dist/app');
 
-  rm('-f', './dist/server.zip');
+  rm('-f', './dist/app/server.zip');
 
   zip({
     directory: './server',
-    target: './dist/server.zip',
+    target: './dist/app/server.zip',
   });
 }

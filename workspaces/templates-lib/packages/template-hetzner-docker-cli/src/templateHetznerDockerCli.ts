@@ -12,7 +12,7 @@ import {
   HetznerDockerDeployment,
 } from '@goldstack/template-hetzner-docker';
 import yargs from 'yargs';
-export { createZip } from './fileUpload';
+export { createZip } from './createZip';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
