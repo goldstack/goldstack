@@ -26,6 +26,7 @@ import {
 export { createZip } from './createZip';
 
 import crypto from 'crypto';
+import { mkdir, write } from '@goldstack/utils-sh';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
@@ -72,6 +73,8 @@ export const run = async (args: string[]): Promise<void> => {
         deployment: opArgs[1],
       });
 
+      writePackageConfig(config);
+
       if (!deployment.configuration.vpsIAMUserName) {
         const userHash = crypto.randomBytes(6).toString('hex');
         deployment.configuration.vpsIAMUserName = `vps-${deployment.name}-${deployment.configuration.serverName}-${userHash}`;
@@ -80,14 +83,18 @@ export const run = async (args: string[]): Promise<void> => {
           throw new Error('Cannot define IAM user since bucket not created.');
         }
 
-        await createUserWithReadOnlyS3Access({
+        const vpsCredentials = await createUserWithReadOnlyS3Access({
           bucketName: deployment.configuration.deploymentsS3Bucket,
           deployment,
           vpsUserName: deployment.configuration.vpsIAMUserName,
         });
-      }
 
-      writePackageConfig(config);
+        mkdir('-p', './dist/credentials');
+        write(
+          JSON.stringify(vpsCredentials, null, 2),
+          './dist/credentials/credentials'
+        );
+      }
 
       writePackageConfig(config);
 
@@ -101,12 +108,16 @@ export const run = async (args: string[]): Promise<void> => {
             deployment,
             vpsUserName: deployment.configuration.vpsIAMUserName,
           });
+          deployment.configuration.vpsIAMUserName = undefined;
+          writePackageConfig(config);
         }
 
         await deleteDeploymentsS3Bucket({
           packageConfig,
           deployment: opArgs[1],
         });
+        deployment.configuration.deploymentsS3Bucket = undefined;
+        writePackageConfig(config);
       }
 
       return;

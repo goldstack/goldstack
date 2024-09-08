@@ -1921,6 +1921,27 @@ const RAW_RUNTIME_STATE =
           ["tslib", "npm:2.6.2"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.635.0", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-middleware-sdk-s3-npm-3.635.0-1f8e6d3a41-e7c2f039fd.zip/node_modules/@aws-sdk/middleware-sdk-s3/",\
+        "packageDependencies": [\
+          ["@aws-sdk/middleware-sdk-s3", "npm:3.635.0"],\
+          ["@aws-sdk/core", "npm:3.635.0"],\
+          ["@aws-sdk/types", "npm:3.609.0"],\
+          ["@aws-sdk/util-arn-parser", "npm:3.568.0"],\
+          ["@smithy/core", "npm:2.4.0"],\
+          ["@smithy/node-config-provider", "npm:3.1.4"],\
+          ["@smithy/protocol-http", "npm:4.1.0"],\
+          ["@smithy/signature-v4", "npm:4.1.0"],\
+          ["@smithy/smithy-client", "npm:3.2.0"],\
+          ["@smithy/types", "npm:3.3.0"],\
+          ["@smithy/util-config-provider", "npm:3.0.0"],\
+          ["@smithy/util-middleware", "npm:3.0.3"],\
+          ["@smithy/util-stream", "npm:3.1.3"],\
+          ["@smithy/util-utf8", "npm:3.0.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@aws-sdk/middleware-signing", [\
@@ -2020,6 +2041,21 @@ const RAW_RUNTIME_STATE =
           ["tslib", "npm:2.6.2"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.645.0", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-s3-request-presigner-npm-3.645.0-783cfd0881-d38ade0064.zip/node_modules/@aws-sdk/s3-request-presigner/",\
+        "packageDependencies": [\
+          ["@aws-sdk/s3-request-presigner", "npm:3.645.0"],\
+          ["@aws-sdk/signature-v4-multi-region", "npm:3.635.0"],\
+          ["@aws-sdk/types", "npm:3.609.0"],\
+          ["@aws-sdk/util-format-url", "npm:3.609.0"],\
+          ["@smithy/middleware-endpoint", "npm:3.1.0"],\
+          ["@smithy/protocol-http", "npm:4.1.0"],\
+          ["@smithy/smithy-client", "npm:3.2.0"],\
+          ["@smithy/types", "npm:3.3.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@aws-sdk/signature-v4-multi-region", [\
@@ -2033,6 +2069,19 @@ const RAW_RUNTIME_STATE =
           ["@smithy/signature-v4", "npm:2.1.1"],\
           ["@smithy/types", "npm:2.9.1"],\
           ["tslib", "npm:2.6.2"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:3.635.0", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-signature-v4-multi-region-npm-3.635.0-198e7ecb23-02c113ca85.zip/node_modules/@aws-sdk/signature-v4-multi-region/",\
+        "packageDependencies": [\
+          ["@aws-sdk/signature-v4-multi-region", "npm:3.635.0"],\
+          ["@aws-sdk/middleware-sdk-s3", "npm:3.635.0"],\
+          ["@aws-sdk/types", "npm:3.609.0"],\
+          ["@smithy/protocol-http", "npm:4.1.0"],\
+          ["@smithy/signature-v4", "npm:4.1.0"],\
+          ["@smithy/types", "npm:3.3.0"],\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2114,6 +2163,14 @@ const RAW_RUNTIME_STATE =
           ["tslib", "npm:2.6.2"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.568.0", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-util-arn-parser-npm-3.568.0-8b1427ba0d-b1a7f93b4f.zip/node_modules/@aws-sdk/util-arn-parser/",\
+        "packageDependencies": [\
+          ["@aws-sdk/util-arn-parser", "npm:3.568.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@aws-sdk/util-dynamodb", [\
@@ -2193,6 +2250,17 @@ const RAW_RUNTIME_STATE =
           ["@smithy/querystring-builder", "npm:2.1.1"],\
           ["@smithy/types", "npm:2.9.1"],\
           ["tslib", "npm:2.6.2"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:3.609.0", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-util-format-url-npm-3.609.0-47645af00d-b903750d82.zip/node_modules/@aws-sdk/util-format-url/",\
+        "packageDependencies": [\
+          ["@aws-sdk/util-format-url", "npm:3.609.0"],\
+          ["@aws-sdk/types", "npm:3.609.0"],\
+          ["@smithy/querystring-builder", "npm:3.0.3"],\
+          ["@smithy/types", "npm:3.3.0"],\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -5020,6 +5088,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/template-hetzner-docker-cli", "workspace:workspaces/templates-lib/packages/template-hetzner-docker-cli"],\
           ["@aws-sdk/client-iam", "npm:3.645.0"],\
           ["@aws-sdk/client-s3", "npm:3.515.0"],\
+          ["@aws-sdk/s3-request-presigner", "npm:3.645.0"],\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
           ["@goldstack/template-hetzner-docker", "workspace:workspaces/templates-lib/packages/template-hetzner-docker"],\
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
