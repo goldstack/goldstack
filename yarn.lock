@@ -3206,6 +3206,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-hetzner-docker-cli@workspace:workspaces/templates-lib/packages/template-hetzner-docker-cli"
   dependencies:
+    "@aws-sdk/client-s3": "npm:^3.515.0"
+    "@goldstack/infra-aws": "npm:0.4.17"
     "@goldstack/template-hetzner-docker": "npm:0.1.0"
     "@goldstack/utils-cli": "npm:0.3.9"
     "@goldstack/utils-git": "npm:0.2.9"

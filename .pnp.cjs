@@ -4493,6 +4493,8 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./workspaces/templates-lib/packages/template-hetzner-docker-cli/",\
         "packageDependencies": [\
           ["@goldstack/template-hetzner-docker-cli", "workspace:workspaces/templates-lib/packages/template-hetzner-docker-cli"],\
+          ["@aws-sdk/client-s3", "npm:3.515.0"],\
+          ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
           ["@goldstack/template-hetzner-docker", "workspace:workspaces/templates-lib/packages/template-hetzner-docker"],\
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\

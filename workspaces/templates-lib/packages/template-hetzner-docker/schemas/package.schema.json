@@ -123,6 +123,9 @@
         },
         "serverName": {
           "$ref": "#/definitions/ServerName"
+        },
+        "deploymentsS3Bucket": {
+          "$ref": "#/definitions/DeploymentsS3Bucket"
         }
       },
       "required": [
@@ -154,6 +157,12 @@
       "type": "string",
       "description": "The Hetzner server name that should be used for this server.",
       "title": "Server Name",
+      "pattern": "^[^\\s]*"
+    },
+    "DeploymentsS3Bucket": {
+      "type": "string",
+      "description": "The S3 Bucket that will be used to transfer the files to the server.",
+      "title": "Deployments S3 Bucket",
       "pattern": "^[^\\s]*"
     },
     "TerraformVariables": {

@@ -42,6 +42,14 @@ export type ServerType = string;
 export type SSHUserFingerprint = string;
 
 /**
+ * The S3 Bucket that will be used to transfer the files to the server.
+ *
+ * @title Deployments S3 Bucket
+ * @pattern ^[^\s]*
+ */
+export type DeploymentsS3Bucket = string;
+
+/**
  * The Hetzner server deployment configuration
  */
 export interface HetznerDockerDeploymentConfiguration
@@ -50,6 +58,7 @@ export interface HetznerDockerDeploymentConfiguration
   serverType: ServerType;
   sshUserFingerprint?: SSHUserFingerprint;
   serverName: ServerName;
+  deploymentsS3Bucket?: DeploymentsS3Bucket;
 }
 
 /**
