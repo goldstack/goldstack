@@ -6,7 +6,7 @@ packages:
   - jq
   - awscli
   - unzip
-  - docker.io  # Install Docker
+  - docker.io # Install Docker
 
 # Write the update-check.sh file
 write_files:
@@ -137,20 +137,16 @@ write_files:
 
       main
 
-
 # Ensure the /home/goldstack directory and /home/goldstack/current file exist
 runcmd:
   - mkdir -p /home/goldstack
-  - echo "none" > /home/goldstack/current  # Create /home/goldstack/current with 'none' as content
-  - systemctl start docker  # Start Docker
-  - systemctl enable docker  # Enable Docker to run on boot
-  - docker --version  # Check Docker installation
+  - echo "none" > /home/goldstack/current # Create /home/goldstack/current with 'none' as content
+  - systemctl start docker # Start Docker
+  - systemctl enable docker # Enable Docker to run on boot
+  - docker --version # Check Docker installation
   - mv /tmp/update-check.sh /home/goldstack/update-check.sh
   - chmod +x /home/goldstack/update-check.sh
   - systemctl daemon-reload
   - systemctl enable update-check.service
-  - # systemctl start update-check // let me run this manually first
+  -  # systemctl start update-check // let me run this manually first
   # - reboot
-
-
- 

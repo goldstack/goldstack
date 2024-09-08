@@ -22,10 +22,10 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.620.0",
-    "@goldstack/utils-package": "0.4.9",
-    "@goldstack/utils-s3": "0.4.6",
+    "@goldstack/utils-package": "0.4.10",
+    "@goldstack/utils-s3": "0.4.7",
     "@goldstack/utils-sh": "0.5.9",
-    "@goldstack/utils-template": "0.4.9",
+    "@goldstack/utils-template": "0.4.10",
     "fs-extra": "^10.0.0",
     "semver": "^7.3.2"
   },

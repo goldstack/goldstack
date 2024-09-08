@@ -1,4 +1,4 @@
-# Goldstack Hetzner Docker CLI 
+# Goldstack Hetzner Docker CLI
 
 This library provide tools to provision a Hetzner server with various Docker applications running on it.
 
