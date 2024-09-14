@@ -15,7 +15,7 @@ import {
   TerraformOptions,
 } from '@goldstack/utils-terraform';
 import { AwsCredentialIdentity } from '@aws-sdk/types';
-import { createState, deleteState } from './tfState';
+import { assertState, deleteState } from './tfState';
 import crypto from 'crypto';
 import { spawnSync, SpawnSyncOptionsWithStringEncoding } from 'child_process';
 
@@ -170,7 +170,7 @@ export const terraformAwsCli = async (
     return;
   }
 
-  await createState({
+  await assertState({
     bucketName: remoteStateConfig.terraformStateBucket,
     dynamoDBTableName: remoteStateConfig.terraformStateDynamoDBTable,
     credentials,

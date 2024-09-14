@@ -1,0 +1,8 @@
+{
+  "templateName": "hetzner-docker",
+  "templateVersion": "0.1.0",
+  "previousTemplateVersion": "0.0.0",
+  "templateDescription": "Create a web server using Docker on Hetzner",
+  "templateDocumentation": "https://docs.goldstack.party/docs/templates/hetzner-vps",
+  "templateArchive": ""
+}

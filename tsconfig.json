@@ -92,7 +92,7 @@
       "path": "workspaces/templates/packages/email-send"
     },
     {
-      "path": "workspaces/templates/packages/hetzner-docker"
+      "path": "workspaces/templates/packages/hetzner-vps"
     },
     {
       "path": "workspaces/templates/packages/lambda-express"
@@ -155,10 +155,10 @@
       "path": "workspaces/templates-lib/packages/template-email-send-cli"
     },
     {
-      "path": "workspaces/templates-lib/packages/template-hetzner-docker"
+      "path": "workspaces/templates-lib/packages/template-hetzner-vps"
     },
     {
-      "path": "workspaces/templates-lib/packages/template-hetzner-docker-cli"
+      "path": "workspaces/templates-lib/packages/template-hetzner-vps-cli"
     },
     {
       "path": "workspaces/templates-lib/packages/template-lambda-api"

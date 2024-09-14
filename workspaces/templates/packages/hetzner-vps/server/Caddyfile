@@ -1,0 +1,5 @@
+:80, :443 {
+    root * /usr/share/caddy/site
+    file_server
+    rewrite * /info.html
+}
