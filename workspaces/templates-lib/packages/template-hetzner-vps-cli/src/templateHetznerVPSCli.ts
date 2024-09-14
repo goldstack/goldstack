@@ -120,13 +120,14 @@ export const run = async (args: string[]): Promise<void> => {
 
       writePackageConfig(config);
 
+      if (infrastructureOp !== 'destroy') {
+        await createZip();
+        await uploadZip({
+          deployment,
+        });
+      }
+
       const { awsProvider } = await initTerraformEnvironment(opArgs);
-
-      await createZip();
-      await uploadZip({
-        deployment,
-      });
-
       await terraformHetznerCli(opArgs, awsProvider);
 
       updateCredentialsUrlInCloudInit('https://injectedurl.com');
