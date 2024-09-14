@@ -14,7 +14,7 @@
     "clean": "rimraf dist/",
     "compile": "tsc -p tsconfig.json",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
-    "deploy": "yarn infra deploy",
+    "deploy": "yarn template-ts deploy",
     "infra": "yarn template-ts infra",
     "prepublishOnly": "yarn run build",
     "template": "yarn template-ts",

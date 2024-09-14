@@ -9,6 +9,11 @@ const loggerVar = pino(
   { level: isDebug ? 'debug' : 'info' },
   pinoPretty({
     colorize: true,
+    hideObject: false,
+    colorizeObjects: true,
+    translateTime: 'HH:MM:ss',
+    ignore: 'pid,hostname',
+    singleLine: false,
     sync: true, // requires for work in Jest see https://github.com/pinojs/pino-pretty?tab=readme-ov-file#usage-with-jest
   })
 );

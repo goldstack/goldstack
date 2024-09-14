@@ -19,10 +19,13 @@ export const upload = async (params: S3UploadParams): Promise<void> => {
   const dest = `s3://${params.bucket}${params.bucketPath}`;
   const source = resolve(params.localPath);
 
-  logger().info('Uploading to S3 using the AWS CLI (Docker)', {
-    source,
-    dest,
-  });
+  logger().info(
+    {
+      source,
+      dest,
+    },
+    'Uploading to S3 using the AWS CLI (Docker)'
+  );
 
   // command run twice, once without and once with delete to ensure that
   // users will not try to request files that no longer exist

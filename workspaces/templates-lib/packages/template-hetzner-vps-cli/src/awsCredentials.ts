@@ -89,8 +89,7 @@ async function attachPolicyToUser(
 
   const createPolicyResponse = await iamClient.send(createPolicyCommand);
   logger().info(
-    'Policy created successfully:',
-    createPolicyResponse.Policy?.Arn
+    `Policy created successfully: ${createPolicyResponse.Policy?.Arn}`
   );
 
   const attachPolicyCommand = new AttachUserPolicyCommand({
@@ -154,10 +153,10 @@ export async function assertUserWithReadOnlyS3Access(params: {
     const userHash = crypto.randomBytes(6).toString('hex');
     params.deployment.configuration.vpsIAMUserName = `vps-${params.deployment.name}-${params.deployment.configuration.serverName}-${userHash}`;
     logger().info(
-      'No AWS IAM user name defined for deployments bucket access. Generated user name',
       {
         userName: params.deployment.configuration.vpsIAMUserName,
-      }
+      },
+      'No AWS IAM user name defined for deployments bucket access. Generated user name'
     );
   }
 
