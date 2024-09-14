@@ -4,6 +4,7 @@
     "docs/",
     "src/",
     "scripts/",
+    "server/",
     "schemas/",
     ".gitignore",
     "goldstack.json",
