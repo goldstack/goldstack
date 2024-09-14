@@ -31,7 +31,7 @@ import {
 } from './awsCredentials';
 export { createZip } from './createZip';
 
-import { mkdir, write } from '@goldstack/utils-sh';
+import { mkdir, rm, write } from '@goldstack/utils-sh';
 import { uploadCredentials } from './uploadCredentials';
 import {
   updateCredentialsUrl as updateCredentialsUrlInCloudInit,
@@ -148,6 +148,8 @@ export const run = async (args: string[]): Promise<void> => {
         });
         deployment.configuration.deploymentsS3Bucket = undefined;
         writePackageConfig(config);
+
+        rm('-f', './dist/credentials/credentials');
       }
 
       return;
