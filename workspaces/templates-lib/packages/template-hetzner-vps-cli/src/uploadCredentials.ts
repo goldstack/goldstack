@@ -30,7 +30,7 @@ export async function uploadCredentials({
     localPath: './dist/credentials',
   });
 
-  rm('-f', './dist/credentials/credentials');
+  // rm('-f', './dist/credentials/credentials');
 
   const url = await generateReadOnlyUrl(deployment);
   return {

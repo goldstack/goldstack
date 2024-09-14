@@ -50,6 +50,10 @@ export async function assertDeploymentsS3Bucket(
     s3: s3Client,
     bucketName: deployment.configuration.deploymentsS3Bucket,
   });
+
+  logger().info(
+    `S3 bucket used for deployments: ${deployment.configuration.deploymentsS3Bucket}`
+  );
 }
 
 export interface DeleteDeploymentsS3BucketParams {
@@ -70,15 +74,19 @@ export async function deleteDeploymentsS3Bucket(
     region: deployment.awsRegion,
   });
   if (!deployment.configuration.deploymentsS3Bucket) {
-    console.warn(
+    logger().warn(
       'No deployments S3 bucket was destroyed since S3 bucket name not specified. This could be due to the S3 bucket not having been created yet.'
     );
     return;
   }
+  logger().info(
+    `Deleting S3 bucket: ${deployment.configuration.deploymentsS3Bucket}`
+  );
   await deleteS3Bucket({
     s3: s3Client,
     bucketName: deployment.configuration.deploymentsS3Bucket,
   });
+  logger().info('S3 bucket deleted');
 }
 const assertS3Bucket = async (params: {
   s3: S3Client;

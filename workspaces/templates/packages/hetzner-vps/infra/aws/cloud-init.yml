@@ -32,7 +32,7 @@ write_files:
       #!/bin/bash
 
       CHECK_INTERVAL="30"
-      CREDENTIALS_URL="https://injected-url.com"
+      CREDENTIALS_URL="https://injectedurl.com"
       CURRENT_FILE="/home/goldstack/current"
       NEW_FILE="/home/goldstack/new"
       APP_DIR="/home/goldstack/app"

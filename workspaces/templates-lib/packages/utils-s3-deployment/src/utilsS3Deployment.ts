@@ -1,6 +1,7 @@
 import { getAWSUser } from '@goldstack/infra-aws';
 import { resolve } from 'path';
 import { awsCli } from '@goldstack/utils-aws-cli';
+import { logger } from '@goldstack/utils-cli';
 
 export interface S3UploadParams {
   userName: string;
@@ -18,7 +19,11 @@ export const upload = async (params: S3UploadParams): Promise<void> => {
   const dest = `s3://${params.bucket}${params.bucketPath}`;
   const source = resolve(params.localPath);
 
-  console.log(`Uploading [${source}] to [${dest}]`);
+  logger().info('Uploading to S3 using the AWS CLI (Docker)', {
+    source,
+    dest,
+  });
+
   // command run twice, once without and once with delete to ensure that
   // users will not try to request files that no longer exist
   // during the upload process

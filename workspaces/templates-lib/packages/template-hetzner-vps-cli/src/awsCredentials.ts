@@ -24,11 +24,9 @@ async function checkIfUserExists(iamClient: IAMClient, userName: string) {
   try {
     const getUserCommand = new GetUserCommand({ UserName: userName });
     await iamClient.send(getUserCommand);
-    console.log(`User ${userName} exists.`);
     return true;
   } catch (error) {
     if (error.name === 'NoSuchEntityException') {
-      console.log(`User ${userName} does not exist.`);
       return false;
     }
     throw error;
@@ -90,7 +88,10 @@ async function attachPolicyToUser(
   });
 
   const createPolicyResponse = await iamClient.send(createPolicyCommand);
-  console.log('Policy created successfully:', createPolicyResponse.Policy?.Arn);
+  logger().info(
+    'Policy created successfully:',
+    createPolicyResponse.Policy?.Arn
+  );
 
   const attachPolicyCommand = new AttachUserPolicyCommand({
     PolicyArn: createPolicyResponse.Policy?.Arn,
@@ -110,7 +111,7 @@ export async function assertAWSCredentials(params: {
   }
 
   logger().info(
-    'AWS credentials for deployment access not found. Creating new access key.'
+    'AWS credentials for deployment access not found. Creating deleting all existing access keys and creating new access key.'
   );
 
   const { deployment } = params;
@@ -130,6 +131,8 @@ export async function assertAWSCredentials(params: {
   await deleteAllAccessKeys(userName, iamClient);
 
   const accessKeys = await createAccessKey(iamClient, userName);
+
+  logger().info(`Access key created: ${accessKeys.accessKeyId}`);
 
   const vpsCredentials = {
     ...accessKeys,
@@ -186,6 +189,8 @@ export async function assertUserWithReadOnlyS3Access(params: {
       `Error creating user or attaching policy: ${error.message}`
     );
   }
+
+  logger().info(`IAM user used for deployments via S3 bucket: ${userName}`);
 }
 
 export async function deleteUserAndResources(params: {
@@ -201,8 +206,11 @@ export async function deleteUserAndResources(params: {
     region: params.deployment.awsRegion,
   });
 
+  logger().info(`Deleting user ${userName} and all associated resources.`);
+
   try {
     // Step 1: List and delete all access keys for the user
+    logger().info('Deleting access keys');
     await deleteAllAccessKeys(userName, iamClient);
 
     // Step 2: List and detach all policies attached to the user
@@ -234,6 +242,7 @@ export async function deleteUserAndResources(params: {
 
       // Step 3: Delete the policy if it was created by the create function
       if (policy.PolicyName.startsWith('bucket-access-')) {
+        logger().info(`Deleting policy ${policy.PolicyName}`);
         const deletePolicyCommand = new DeletePolicyCommand({
           PolicyArn: policy.PolicyArn,
         });
@@ -243,13 +252,14 @@ export async function deleteUserAndResources(params: {
 
     // Step 4: Delete the user
     const deleteUserCommand = new DeleteUserCommand({ UserName: userName });
+    logger().info('Deleting user');
     await iamClient.send(deleteUserCommand);
 
-    console.log(
+    logger().info(
       `User ${userName} and all associated resources have been deleted.`
     );
   } catch (error) {
-    console.error(`Error deleting user or resources: ${error.message}`);
+    logger().error(`Error deleting user or resources: ${error.message}`);
     throw new Error(`Error deleting user or resources: ${error.message}`);
   }
 }
