@@ -39,7 +39,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-cli": "0.3.9",
+    "@goldstack/utils-cli": "0.3.10",
     "@goldstack/utils-docs": "0.4.9",
     "@goldstack/utils-sh": "0.5.9",
     "@types/yargs": "^17.0.10",

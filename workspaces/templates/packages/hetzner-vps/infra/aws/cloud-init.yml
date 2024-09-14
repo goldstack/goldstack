@@ -191,9 +191,9 @@ write_files:
 
 # Ensure the /home/goldstack directory and /home/goldstack/current file exist
 runcmd:
-  - #
-  - # Server hardening, see https://community.hetzner.com/tutorials/basic-cloud-config
-  - #
+  -  #
+  -  # Server hardening, see https://community.hetzner.com/tutorials/basic-cloud-config
+  -  #
   - printf "[sshd]\nenabled = true\nbanaction = iptables-multiport" > /etc/fail2ban/jail.local
   - systemctl enable fail2ban
   - ufw allow OpenSSH
@@ -210,9 +210,9 @@ runcmd:
   - sed -i -e '/^\(#\|\)AllowAgentForwarding/s/^.*$/AllowAgentForwarding no/' /etc/ssh/sshd_config
   - sed -i -e '/^\(#\|\)AuthorizedKeysFile/s/^.*$/AuthorizedKeysFile .ssh\/authorized_keys/' /etc/ssh/sshd_config
   - sed -i '$a AllowUsers goldstack' /etc/ssh/sshd_config
-  - #
-  - # Ensure the newly setup user uses the SSH key passed on by Terraform
-  - #
+  -  #
+  -  # Ensure the newly setup user uses the SSH key passed on by Terraform
+  -  #
   - mkdir -p /home/goldstack
   - cp /root/.ssh/authorized_keys /home/goldstack/.ssh/authorized_keys
   - chown -R goldstack:goldstack /home/goldstack/.ssh
@@ -227,5 +227,5 @@ runcmd:
   - chown -R goldstack:goldstack /home/goldstack
   - systemctl daemon-reload
   - systemctl enable update-check.service
-  - systemctl start update-check.service 
+  - systemctl start update-check.service
   - reboot

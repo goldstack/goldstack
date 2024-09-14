@@ -12,6 +12,9 @@
       "path": "../infra-aws"
     },
     {
+      "path": "../../../utils/packages/utils-cli"
+    },
+    {
       "path": "../utils-config"
     },
     {
