@@ -30,3 +30,9 @@ variable "aws_region" {
   description = "Region where the S3 bucket is deployed."
   type = string
 }
+
+variable "only_allow_ssh_access_from_ip" {
+  description = "Only allow ssh access from the specified IP."
+  type = string
+  default = ""
+}

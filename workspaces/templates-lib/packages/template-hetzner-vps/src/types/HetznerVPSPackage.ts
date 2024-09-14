@@ -42,6 +42,13 @@ export type ServerType = string;
 export type SSHUserFingerprint = string;
 
 /**
+ * Only allow SSH access to the server from the specified IP.
+ *
+ * @title Only allow SSH access from IP
+ */
+export type OnlyAllowSSHAccessFromIP = string;
+
+/**
  * The S3 Bucket that will be used to transfer the files to the server.
  *
  * @title Deployments S3 Bucket
@@ -67,6 +74,7 @@ export interface HetznerVPSDeploymentConfiguration
   sshUserFingerprint?: SSHUserFingerprint;
   serverName: ServerName;
   deploymentsS3Bucket?: DeploymentsS3Bucket;
+  onlyAllowSshAccessFromIp?: OnlyAllowSSHAccessFromIP;
   vpsIAMUserName?: VPSIAMUserName;
 }
 
