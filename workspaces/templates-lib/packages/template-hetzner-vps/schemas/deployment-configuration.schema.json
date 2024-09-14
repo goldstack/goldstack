@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/HetznerVPSDeploymentConfiguration",
+  "definitions": {
+    "HetznerVPSDeploymentConfiguration": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "$ref": "#/definitions/Location"
+        },
+        "serverType": {
+          "$ref": "#/definitions/ServerType"
+        },
+        "sshUserFingerprint": {
+          "$ref": "#/definitions/SSHUserFingerprint"
+        },
+        "serverName": {
+          "$ref": "#/definitions/ServerName"
+        },
+        "deploymentsS3Bucket": {
+          "$ref": "#/definitions/DeploymentsS3Bucket"
+        },
+        "vpsIAMUserName": {
+          "$ref": "#/definitions/VPSIAMUserName"
+        }
+      },
+      "required": [
+        "location",
+        "serverType",
+        "serverName"
+      ],
+      "description": "The Hetzner server deployment configuration"
+    },
+    "Location": {
+      "type": "string",
+      "description": "The Hetzner location this server should be deployed to.",
+      "title": "Location",
+      "pattern": "^[^\\s]*"
+    },
+    "ServerType": {
+      "type": "string",
+      "description": "The Hetzner server type that should be used for this server.",
+      "title": "Server Type",
+      "pattern": "^[^\\s]*"
+    },
+    "SSHUserFingerprint": {
+      "type": "string",
+      "description": "The SSH fingerprint of the SSH user that should be granted access to the server.",
+      "title": "SSH User Fingerprint",
+      "pattern": "^[^\\s]*"
+    },
+    "ServerName": {
+      "type": "string",
+      "description": "The Hetzner server name that should be used for this server.",
+      "title": "Server Name",
+      "pattern": "^[^\\s]*"
+    },
+    "DeploymentsS3Bucket": {
+      "type": "string",
+      "description": "The S3 Bucket that will be used to transfer the files to the server.",
+      "title": "Deployments S3 Bucket",
+      "pattern": "^[^\\s]*"
+    },
+    "VPSIAMUserName": {
+      "type": "string",
+      "description": "The name of the IAM user that the VPS server uses to access AWS resources",
+      "title": "VPS IAM User name",
+      "pattern": "^[^\\s]*"
+    }
+  }
+}

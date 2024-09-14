@@ -94,8 +94,8 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:workspaces/templates/packages/email-send"\
     },\
     {\
-      "name": "@goldstack/hetzner-docker",\
-      "reference": "workspace:workspaces/templates/packages/hetzner-docker"\
+      "name": "@goldstack/hetzner-vps",\
+      "reference": "workspace:workspaces/templates/packages/hetzner-vps"\
     },\
     {\
       "name": "@goldstack/lambda-express",\
@@ -178,12 +178,12 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:workspaces/templates-lib/packages/template-email-send-cli"\
     },\
     {\
-      "name": "@goldstack/template-hetzner-docker",\
-      "reference": "workspace:workspaces/templates-lib/packages/template-hetzner-docker"\
+      "name": "@goldstack/template-hetzner-vps",\
+      "reference": "workspace:workspaces/templates-lib/packages/template-hetzner-vps"\
     },\
     {\
-      "name": "@goldstack/template-hetzner-docker-cli",\
-      "reference": "workspace:workspaces/templates-lib/packages/template-hetzner-docker-cli"\
+      "name": "@goldstack/template-hetzner-vps-cli",\
+      "reference": "workspace:workspaces/templates-lib/packages/template-hetzner-vps-cli"\
     },\
     {\
       "name": "@goldstack/template-lambda-api",\
@@ -464,7 +464,7 @@ const RAW_RUNTIME_STATE =
     ["@goldstack/goldstack-api", ["workspace:workspaces/apps/packages/goldstack-api"]],\
     ["@goldstack/goldstack-email-send", ["workspace:workspaces/apps/packages/goldstack-email-send"]],\
     ["@goldstack/goldstack-home", ["workspace:workspaces/apps/packages/goldstack-home"]],\
-    ["@goldstack/hetzner-docker", ["workspace:workspaces/templates/packages/hetzner-docker"]],\
+    ["@goldstack/hetzner-vps", ["workspace:workspaces/templates/packages/hetzner-vps"]],\
     ["@goldstack/infra", ["workspace:workspaces/templates-lib/packages/infra"]],\
     ["@goldstack/infra-aws", ["workspace:workspaces/templates-lib/packages/infra-aws"]],\
     ["@goldstack/infra-hetzner", ["workspace:workspaces/templates-lib/packages/infra-hetzner"]],\
@@ -496,8 +496,8 @@ const RAW_RUNTIME_STATE =
     ["@goldstack/template-dynamodb-cli", ["workspace:workspaces/templates-lib/packages/template-dynamodb-cli"]],\
     ["@goldstack/template-email-send", ["workspace:workspaces/templates-lib/packages/template-email-send"]],\
     ["@goldstack/template-email-send-cli", ["workspace:workspaces/templates-lib/packages/template-email-send-cli"]],\
-    ["@goldstack/template-hetzner-docker", ["workspace:workspaces/templates-lib/packages/template-hetzner-docker"]],\
-    ["@goldstack/template-hetzner-docker-cli", ["workspace:workspaces/templates-lib/packages/template-hetzner-docker-cli"]],\
+    ["@goldstack/template-hetzner-vps", ["workspace:workspaces/templates-lib/packages/template-hetzner-vps"]],\
+    ["@goldstack/template-hetzner-vps-cli", ["workspace:workspaces/templates-lib/packages/template-hetzner-vps-cli"]],\
     ["@goldstack/template-lambda-api", ["workspace:workspaces/templates-lib/packages/template-lambda-api"]],\
     ["@goldstack/template-lambda-api-cli", ["workspace:workspaces/templates-lib/packages/template-lambda-api-cli"]],\
     ["@goldstack/template-lambda-express", ["workspace:workspaces/templates-lib/packages/template-lambda-express"]],\
@@ -4001,14 +4001,13 @@ const RAW_RUNTIME_STATE =
         "linkType": "SOFT"\
       }]\
     ]],\
-    ["@goldstack/hetzner-docker", [\
-      ["workspace:workspaces/templates/packages/hetzner-docker", {\
-        "packageLocation": "./workspaces/templates/packages/hetzner-docker/",\
+    ["@goldstack/hetzner-vps", [\
+      ["workspace:workspaces/templates/packages/hetzner-vps", {\
+        "packageLocation": "./workspaces/templates/packages/hetzner-vps/",\
         "packageDependencies": [\
-          ["@goldstack/hetzner-docker", "workspace:workspaces/templates/packages/hetzner-docker"],\
-          ["@aws-sdk/client-ses", "npm:3.645.0"],\
-          ["@goldstack/template-hetzner-docker", "workspace:workspaces/templates-lib/packages/template-hetzner-docker"],\
-          ["@goldstack/template-hetzner-docker-cli", "workspace:workspaces/templates-lib/packages/template-hetzner-docker-cli"],\
+          ["@goldstack/hetzner-vps", "workspace:workspaces/templates/packages/hetzner-vps"],\
+          ["@goldstack/template-hetzner-vps", "workspace:workspaces/templates-lib/packages/template-hetzner-vps"],\
+          ["@goldstack/template-hetzner-vps-cli", "workspace:workspaces/templates-lib/packages/template-hetzner-vps-cli"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
@@ -4857,11 +4856,11 @@ const RAW_RUNTIME_STATE =
         "linkType": "SOFT"\
       }]\
     ]],\
-    ["@goldstack/template-hetzner-docker", [\
-      ["workspace:workspaces/templates-lib/packages/template-hetzner-docker", {\
-        "packageLocation": "./workspaces/templates-lib/packages/template-hetzner-docker/",\
+    ["@goldstack/template-hetzner-vps", [\
+      ["workspace:workspaces/templates-lib/packages/template-hetzner-vps", {\
+        "packageLocation": "./workspaces/templates-lib/packages/template-hetzner-vps/",\
         "packageDependencies": [\
-          ["@goldstack/template-hetzner-docker", "workspace:workspaces/templates-lib/packages/template-hetzner-docker"],\
+          ["@goldstack/template-hetzner-vps", "workspace:workspaces/templates-lib/packages/template-hetzner-vps"],\
           ["@aws-sdk/credential-providers", "npm:3.645.0"],\
           ["@aws-sdk/types", "npm:3.609.0"],\
           ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
@@ -4889,16 +4888,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "SOFT"\
       }]\
     ]],\
-    ["@goldstack/template-hetzner-docker-cli", [\
-      ["workspace:workspaces/templates-lib/packages/template-hetzner-docker-cli", {\
-        "packageLocation": "./workspaces/templates-lib/packages/template-hetzner-docker-cli/",\
+    ["@goldstack/template-hetzner-vps-cli", [\
+      ["workspace:workspaces/templates-lib/packages/template-hetzner-vps-cli", {\
+        "packageLocation": "./workspaces/templates-lib/packages/template-hetzner-vps-cli/",\
         "packageDependencies": [\
-          ["@goldstack/template-hetzner-docker-cli", "workspace:workspaces/templates-lib/packages/template-hetzner-docker-cli"],\
+          ["@goldstack/template-hetzner-vps-cli", "workspace:workspaces/templates-lib/packages/template-hetzner-vps-cli"],\
           ["@aws-sdk/client-iam", "npm:3.645.0"],\
           ["@aws-sdk/client-s3", "npm:3.620.0"],\
           ["@aws-sdk/s3-request-presigner", "npm:3.645.0"],\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
-          ["@goldstack/template-hetzner-docker", "workspace:workspaces/templates-lib/packages/template-hetzner-docker"],\
+          ["@goldstack/template-hetzner-vps", "workspace:workspaces/templates-lib/packages/template-hetzner-vps"],\
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\

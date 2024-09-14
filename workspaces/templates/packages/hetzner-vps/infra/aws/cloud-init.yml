@@ -1,0 +1,152 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+packages:
+  - curl
+  - jq
+  - awscli
+  - unzip
+  - docker.io # Install Docker
+
+# Write the update-check.sh file
+write_files:
+  - path: /etc/systemd/system/update-check.service
+    permissions: '0644'
+    content: |
+      [Unit]
+      Description=Update Check Service
+      After=network.target
+
+      [Service]
+      ExecStart=/home/goldstack/update-check.sh
+      Restart=always
+      RestartSec=60
+      User=root
+
+      [Install]
+      WantedBy=multi-user.target
+
+  - path: /tmp/update-check.sh
+    permissions: '0755'
+    content: |
+      #!/bin/bash
+
+      CHECK_INTERVAL="30"
+      CREDENTIALS_URL="https://injected-url.com"
+      CURRENT_FILE="/home/goldstack/current"
+      NEW_FILE="/home/goldstack/new"
+      APP_DIR="/home/goldstack/app"
+      CREDENTIALS_FILE="/home/goldstack/credentials"
+      S3_BUCKET="injected-s3-bucket"
+      S3_CURRENT_PATH="server/current"
+      S3_ZIP_PATH="server/server.zip"
+
+      log() {
+        echo "$(date +"%Y-%m-%d %H:%M:%S") - $1"
+      }
+
+      download_credentials() {
+        if [ ! -f "$CREDENTIALS_FILE" ]; then
+          log "Downloading credentials..."
+          curl -s -o "$CREDENTIALS_FILE" "$CREDENTIALS_URL"
+        fi
+      }
+
+      configure_aws_cli() {
+        local access_key_id=$(jq -r '.accessKeyId' "$CREDENTIALS_FILE")
+        local secret_access_key=$(jq -r '.secretAccessKey' "$CREDENTIALS_FILE")
+        local aws_region=$(jq -r '.awsRegion' "$CREDENTIALS_FILE")
+
+        aws configure set aws_access_key_id "$access_key_id"
+        aws configure set aws_secret_access_key "$secret_access_key"
+        aws configure set region "$aws_region"
+      }
+
+      fetch_s3_content() {
+        aws s3 cp "s3://$S3_BUCKET/$S3_CURRENT_PATH" "$NEW_FILE"
+      }
+
+      fetch_s3_zip() {
+        aws s3 cp "s3://$S3_BUCKET/$S3_ZIP_PATH" /home/goldstack/new_file.zip
+      }
+
+      update_app() {
+        log "Content has changed. Stopping app and preparing for update."
+
+
+        # Download the zip file and unpack it to /home/goldstack/
+        rm -rf /home/goldstack/new_file.zip
+        fetch_s3_zip
+
+        # Run stop.sh if it exists
+        if [ -f "$APP_DIR/stop.sh" ]; then
+          chmod +x "$APP_DIR/stop.sh"
+          "$APP_DIR/stop.sh"
+        fi
+
+        # Remove the app directory before unzipping the new content
+        rm -rf "$APP_DIR"
+
+        unzip -o /home/goldstack/new_file.zip -d "$APP_DIR"
+
+        # Make start.sh, stop.sh, and init.sh executable
+        for script in start.sh stop.sh init.sh; do
+          if [ -f "$APP_DIR/$script" ]; then
+            chmod +x "$APP_DIR/$script"
+          fi
+        done
+
+        # On first load, run init script
+        if [ "$STORED_CONTENT" == "none" ]; then
+          if [ -f "$APP_DIR/init.sh" ]; then
+            "$APP_DIR/init.sh"
+          fi
+        fi
+
+        # Run start.sh if it exists
+        if [ -f "$APP_DIR/start.sh" ]; then
+          "$APP_DIR/start.sh"
+        fi
+
+        # Update the current file with the new content (hash of the zip)
+        echo "$NEW_CONTENT" > "$CURRENT_FILE"
+      }
+
+      main() {
+        download_credentials
+        configure_aws_cli
+
+        while true; do
+          # Fetch the content from S3
+          fetch_s3_content
+
+          # Compare the content with the stored content
+          STORED_CONTENT=$(cat "$CURRENT_FILE")
+          NEW_CONTENT=$(cat "$NEW_FILE")
+
+          if [ "$NEW_CONTENT" == "$STORED_CONTENT" ]; then
+            log "Content has not changed."
+          else
+            update_app
+          fi
+
+          # Sleep for 30 seconds before the next iteration
+          sleep $CHECK_INTERVAL
+        done
+      }
+
+      main
+
+# Ensure the /home/goldstack directory and /home/goldstack/current file exist
+runcmd:
+  - mkdir -p /home/goldstack
+  - echo "none" > /home/goldstack/current # Create /home/goldstack/current with 'none' as content
+  - systemctl start docker # Start Docker
+  - systemctl enable docker # Enable Docker to run on boot
+  - docker --version # Check Docker installation
+  - mv /tmp/update-check.sh /home/goldstack/update-check.sh
+  - chmod +x /home/goldstack/update-check.sh
+  - systemctl daemon-reload
+  - systemctl enable update-check.service
+  -  # systemctl start update-check // let me run this manually first
+  # - reboot
