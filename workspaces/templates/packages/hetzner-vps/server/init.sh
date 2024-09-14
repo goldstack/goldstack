@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "init"
+echo "init ran"

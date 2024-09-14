@@ -1,4 +1,5 @@
 import { HetznerVPSDeployment } from '@goldstack/template-hetzner-vps';
+import { logger } from '@goldstack/utils-cli';
 import { upload } from '@goldstack/utils-s3-deployment';
 
 export interface UploadZipParams {
@@ -13,6 +14,8 @@ export async function uploadZip({ deployment }: UploadZipParams) {
       'Cannot upload server files. Deployments S3 bucket is not defined.'
     );
   }
+
+  logger().info('Uploading application files to S3 bucket');
 
   await upload({
     userName,

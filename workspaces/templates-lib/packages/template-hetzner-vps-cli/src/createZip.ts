@@ -17,6 +17,13 @@ export async function createZip() {
   const zipFileContent = readFileSync(zipFilePath);
   hash.update(zipFileContent);
 
-  const hashValue = hash.digest('hex');
+  let hashValue = hash.digest('hex');
+
+  const credentialsHash = createHash('sha256');
+  const credentialsFilePath = './dist/credentials/credentials';
+  const credentialsFileContent = readFileSync(credentialsFilePath);
+  credentialsHash.update(credentialsFileContent);
+  hashValue += credentialsHash.digest('hex');
+
   writeFileSync('./dist/app/current', hashValue);
 }

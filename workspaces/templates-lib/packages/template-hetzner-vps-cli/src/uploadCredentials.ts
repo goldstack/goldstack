@@ -4,6 +4,7 @@ import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { getAWSCredentials, getAWSUser } from '@goldstack/infra-aws';
 import { rm } from '@goldstack/utils-sh';
+import { logger } from '@goldstack/utils-cli';
 
 export interface UploadCredentialsParams {
   deployment: HetznerVPSDeployment;
@@ -11,17 +12,16 @@ export interface UploadCredentialsParams {
 
 export async function uploadCredentials({
   deployment,
-}: UploadCredentialsParams): Promise<{
-  url: string;
-}> {
+}: UploadCredentialsParams): Promise<void> {
   const userName = deployment.awsUser;
 
   if (!deployment.configuration.deploymentsS3Bucket) {
     throw new Error(
-      'Cannot upload server files. Deployments S3 bucket is not defined.'
+      'Cannot upload credentials files. Deployments S3 bucket is not defined.'
     );
   }
 
+  logger().info('Uploading credentials file to S3 bucket');
   await upload({
     userName,
     bucketPath: '/credentials/',
@@ -29,16 +29,9 @@ export async function uploadCredentials({
     bucket: deployment.configuration.deploymentsS3Bucket,
     localPath: './dist/credentials',
   });
-
-  // rm('-f', './dist/credentials/credentials');
-
-  const url = await generateReadOnlyUrl(deployment);
-  return {
-    url,
-  };
 }
 
-async function generateReadOnlyUrl(
+export async function generateCredentialsReadOnlyUrl(
   deployment: HetznerVPSDeployment
 ): Promise<string> {
   if (!deployment.configuration.deploymentsS3Bucket) {

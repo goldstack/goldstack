@@ -39,7 +39,7 @@ write_files:
     content: |
       #!/bin/bash
 
-      CHECK_INTERVAL="30"
+      CHECK_INTERVAL="10"
       CREDENTIALS_URL="https://injectedurl.com"
       CURRENT_FILE="/home/goldstack/current"
       NEW_FILE="/home/goldstack/new"
@@ -47,6 +47,7 @@ write_files:
       CREDENTIALS_FILE="/home/goldstack/credentials"
       S3_BUCKET="injected-s3-bucket"
       S3_CURRENT_PATH="server/current"
+      S3_CREDENTIALS_PATH="credentials/credentials"
       S3_ZIP_PATH="server/server.zip"
 
       log() {
@@ -58,6 +59,29 @@ write_files:
           log "Downloading credentials..."
           curl -s -o "$CREDENTIALS_FILE" "$CREDENTIALS_URL"
         fi
+      }
+
+      fetch_s3_credentials() {
+        aws s3 cp "s3://$S3_BUCKET/$S3_CREDENTIALS_PATH" "$CREDENTIALS_FILE"
+      }
+
+
+      unpack_secrets() {
+        # Ensure the secrets directory exists
+        local secrets_dir="$APP_DIR/secrets"
+        echo "Secrets dir: $secrets_dir"
+        mkdir -p "$secrets_dir"
+        # clear existing secrets
+        rm -f "$secrets_dir/*"
+        # Extract all keys from the JSON file
+        keys=$(jq -r 'keys[]' "$CREDENTIALS_FILE")
+
+        # Loop through each key and create a corresponding file with the secret value
+        for key in $keys; do
+          value=$(jq -r --arg key "$key" '.[$key]' "$CREDENTIALS_FILE")
+          echo "$value" > "$secrets_dir/${key}.txt"
+          log "Extracted secret for key: $key"
+        done
       }
 
       configure_aws_cli() {
@@ -102,6 +126,8 @@ write_files:
 
         unzip -o /home/goldstack/new_file.zip -d "$APP_DIR"
 
+        fetch_s3_credentials
+        unpack_secrets
         # Make start.sh, stop.sh, and init.sh executable
         for script in start.sh stop.sh init.sh; do
           if [ -f "$APP_DIR/$script" ]; then
@@ -156,7 +182,7 @@ write_files:
             update_app
           fi
 
-          # Sleep for 30 seconds before the next iteration
+          # Sleep for 10 seconds before the next iteration
           sleep $CHECK_INTERVAL
         done
       }

@@ -16,8 +16,8 @@
         "sshUserFingerprint": "73:db:08:81:7f:fe:34:c3:40:2e:10:d0:89:a7:b7:12",
         "serverName": "goldstack-docker",
         "onlyAllowSshAccessFromIp": "210.50.200.68",
-        "deploymentsS3Bucket": "goldstack-deployments-prod-goldstack-docker-604f005a9bb8",
-        "vpsIAMUserName": "vps-prod-goldstack-docker-e91f4d66d4ea"
+        "deploymentsS3Bucket": "goldstack-deployments-prod-goldstack-docker-73c19a7584c9",
+        "vpsIAMUserName": "vps-prod-goldstack-docker-5c0731f75703"
       },
       "tfStateKey": "hetzner-docker-prod-c7e278526542d31fcdec.tfstate"
     }

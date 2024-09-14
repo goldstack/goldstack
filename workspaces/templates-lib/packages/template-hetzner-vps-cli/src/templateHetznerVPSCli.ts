@@ -32,7 +32,10 @@ import {
 export { createZip } from './createZip';
 
 import { mkdir, rm, write } from '@goldstack/utils-sh';
-import { uploadCredentials } from './uploadCredentials';
+import {
+  generateCredentialsReadOnlyUrl,
+  uploadCredentials,
+} from './uploadCredentials';
 import {
   updateCredentialsUrl as updateCredentialsUrlInCloudInit,
   updateS3Bucket as updateS3BucketInCloudInit,
@@ -65,6 +68,8 @@ export const run = async (args: string[]): Promise<void> => {
       logger().info('Starting deployment to Hetzner VPS.');
       const deployment = packageConfig.getDeployment(opArgs[0]);
       await createZip();
+
+      await uploadCredentials({ deployment });
       await uploadZip({
         deployment,
       });
@@ -112,7 +117,9 @@ export const run = async (args: string[]): Promise<void> => {
           deployment,
         });
 
-        const { url } = await uploadCredentials({ deployment });
+        await uploadCredentials({ deployment });
+
+        const url = await generateCredentialsReadOnlyUrl(deployment);
         updateCredentialsUrlInCloudInit(url);
         updateS3BucketInCloudInit(deployment.configuration.deploymentsS3Bucket);
         writePackageConfig(config);
