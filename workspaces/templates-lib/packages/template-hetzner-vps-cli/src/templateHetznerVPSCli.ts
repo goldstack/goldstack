@@ -24,12 +24,13 @@ import {
 import yargs from 'yargs';
 import { uploadZip } from './uploadZip';
 import {
-  createUserWithReadOnlyS3Access,
+  assertAWSCredentials,
+  assertAWSCredentials as createAccessKey,
+  assertUserWithReadOnlyS3Access,
   deleteUserAndResources,
 } from './awsCredentials';
 export { createZip } from './createZip';
 
-import crypto from 'crypto';
 import { mkdir, write } from '@goldstack/utils-sh';
 import { uploadCredentials } from './uploadCredentials';
 import {
@@ -83,8 +84,8 @@ export const run = async (args: string[]): Promise<void> => {
       await terraformAwsCli(['create-state', opArgs[1]]);
 
       if (infrastructureOp === 'up' || infrastructureOp === 'apply') {
-        const userHash = crypto.randomBytes(6).toString('hex');
-        deployment.configuration.vpsIAMUserName = `vps-${deployment.name}-${deployment.configuration.serverName}-${userHash}`;
+        // Ensure S3 Bucket for deployments exist
+
         await assertDeploymentsS3Bucket({
           packageConfig,
           deployment: opArgs[1],
@@ -93,7 +94,6 @@ export const run = async (args: string[]): Promise<void> => {
         if (!deployment.configuration.deploymentsS3Bucket) {
           throw new Error('Expected bucket to have been created');
         }
-        updateS3BucketInCloudInit(deployment.configuration.deploymentsS3Bucket);
 
         writePackageConfig(config);
 
@@ -101,20 +101,20 @@ export const run = async (args: string[]): Promise<void> => {
           throw new Error('Cannot define IAM user since bucket not created.');
         }
 
-        const vpsCredentials = await createUserWithReadOnlyS3Access({
+        await assertUserWithReadOnlyS3Access({
           bucketName: deployment.configuration.deploymentsS3Bucket,
           deployment,
-          vpsUserName: deployment.configuration.vpsIAMUserName,
         });
 
-        mkdir('-p', './dist/credentials');
-        write(
-          JSON.stringify(vpsCredentials, null, 2),
-          './dist/credentials/credentials'
-        );
+        writePackageConfig(config);
+
+        await assertAWSCredentials({
+          deployment,
+        });
 
         const { url } = await uploadCredentials({ deployment });
         updateCredentialsUrlInCloudInit(url);
+        updateS3BucketInCloudInit(deployment.configuration.deploymentsS3Bucket);
         writePackageConfig(config);
       }
 

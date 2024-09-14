@@ -14,6 +14,11 @@ import {
 } from '@aws-sdk/client-iam';
 import { getAWSUser, getAWSCredentials } from '@goldstack/infra-aws';
 import { HetznerVPSDeployment } from '@goldstack/template-hetzner-vps';
+import { logger } from '@goldstack/utils-cli';
+import { mkdir, write } from '@goldstack/utils-sh';
+
+import crypto from 'crypto';
+import { existsSync } from 'fs';
 
 async function checkIfUserExists(iamClient: IAMClient, userName: string) {
   try {
@@ -31,17 +36,17 @@ async function checkIfUserExists(iamClient: IAMClient, userName: string) {
 }
 
 async function createUser(iamClient: IAMClient, userName: string) {
-  console.log(`Creating user ${userName}...`);
+  logger().info(`Creating user ${userName}...`);
   const createUserCommand = new CreateUserCommand({ UserName: userName });
   const createUserResponse = await iamClient.send(createUserCommand);
   if (!createUserResponse.User) {
     throw new Error('User could not be created.');
   }
-  console.log(`User ${userName} created.`);
+  logger().info(`User ${userName} created.`);
 }
 
 async function createAccessKey(iamClient: IAMClient, userName: string) {
-  console.log(`Creating access key for user ${userName}...`);
+  logger().info(`Creating access key for user ${userName}...`);
   const createAccessKeyCommand = new CreateAccessKeyCommand({
     UserName: userName,
   });
@@ -49,7 +54,7 @@ async function createAccessKey(iamClient: IAMClient, userName: string) {
   if (!createAccessKeyResponse.AccessKey) {
     throw new Error('Cannot create new access key for user.');
   }
-  console.log(`Access key created for user ${userName}.`);
+  logger().info(`Access key created for user ${userName}.`);
   return {
     accessKeyId: createAccessKeyResponse.AccessKey.AccessKeyId,
     secretAccessKey: createAccessKeyResponse.AccessKey.SecretAccessKey,
@@ -61,7 +66,7 @@ async function attachPolicyToUser(
   userName: string,
   bucketName: string
 ) {
-  console.log(
+  logger().info(
     `Attaching policy to user ${userName} for bucket ${bucketName}...`
   );
 
@@ -94,19 +99,67 @@ async function attachPolicyToUser(
 
   await iamClient.send(attachPolicyCommand);
 
-  console.log(`Policy attached to user ${userName}.`);
+  logger().info(`Policy attached to user ${userName}.`);
 }
 
-export async function createUserWithReadOnlyS3Access(params: {
+export async function assertAWSCredentials(params: {
   deployment: HetznerVPSDeployment;
-  vpsUserName: string;
+}): Promise<void> {
+  if (existsSync('./dist/credentials/credentials')) {
+    return;
+  }
+
+  logger().info(
+    'AWS credentials for deployment access not found. Creating new access key.'
+  );
+
+  const { deployment } = params;
+  const userName = deployment.configuration.vpsIAMUserName;
+  if (!userName) {
+    throw new Error(`IAM user name for bucket access not defined ${userName}`);
+  }
+  const awsUser = await getAWSUser(deployment.awsUser);
+  const credentials = await getAWSCredentials(awsUser);
+
+  const iamClient = new IAMClient({
+    credentials: credentials,
+    region: deployment.awsRegion,
+  });
+
+  // before creating our new access key, we first delete all existing ones
+  await deleteAllAccessKeys(userName, iamClient);
+
+  const accessKeys = await createAccessKey(iamClient, userName);
+
+  const vpsCredentials = {
+    ...accessKeys,
+    awsRegion: deployment.awsRegion,
+  };
+
+  mkdir('-p', './dist/credentials');
+  write(
+    JSON.stringify(vpsCredentials, null, 2),
+    './dist/credentials/credentials'
+  );
+}
+
+export async function assertUserWithReadOnlyS3Access(params: {
+  deployment: HetznerVPSDeployment;
   bucketName: string;
-}): Promise<{
-  accessKeyId: string | undefined;
-  secretAccessKey: string | undefined;
-  awsRegion: string | undefined;
-}> {
-  const { bucketName, vpsUserName: userName, deployment } = params;
+}): Promise<void> {
+  if (!params.deployment.configuration.vpsIAMUserName) {
+    const userHash = crypto.randomBytes(6).toString('hex');
+    params.deployment.configuration.vpsIAMUserName = `vps-${params.deployment.name}-${params.deployment.configuration.serverName}-${userHash}`;
+    logger().info(
+      'No AWS IAM user name defined for deployments bucket access. Generated user name',
+      {
+        userName: params.deployment.configuration.vpsIAMUserName,
+      }
+    );
+  }
+
+  const userName = params.deployment.configuration.vpsIAMUserName;
+  const { bucketName, deployment } = params;
   const awsUser = await getAWSUser(deployment.awsUser);
   const credentials = await getAWSCredentials(awsUser);
 
@@ -119,18 +172,16 @@ export async function createUserWithReadOnlyS3Access(params: {
     const userExists = await checkIfUserExists(iamClient, userName);
 
     if (!userExists) {
+      logger().info(
+        'AWS IAM user for deployment bucket access does not exist. Creating user.',
+        { userName }
+      );
       await createUser(iamClient, userName);
       await attachPolicyToUser(iamClient, userName, bucketName);
+      logger().info('AWS IAM user created.');
     }
-
-    const accessKeys = await createAccessKey(iamClient, userName);
-
-    return {
-      ...accessKeys,
-      awsRegion: deployment.awsRegion,
-    };
   } catch (error) {
-    console.error(`Error creating user or attaching policy: ${error.message}`);
+    logger().error(`Error creating user or attaching policy: ${error.message}`);
     throw new Error(
       `Error creating user or attaching policy: ${error.message}`
     );
@@ -152,22 +203,7 @@ export async function deleteUserAndResources(params: {
 
   try {
     // Step 1: List and delete all access keys for the user
-    const listAccessKeysCommand = new ListAccessKeysCommand({
-      UserName: userName,
-    });
-    const listAccessKeysResponse = await iamClient.send(listAccessKeysCommand);
-
-    if (!listAccessKeysResponse.AccessKeyMetadata) {
-      throw new Error('Cannot read access key metadata');
-    }
-
-    for (const accessKey of listAccessKeysResponse.AccessKeyMetadata) {
-      const deleteAccessKeyCommand = new DeleteAccessKeyCommand({
-        UserName: userName,
-        AccessKeyId: accessKey.AccessKeyId,
-      });
-      await iamClient.send(deleteAccessKeyCommand);
-    }
+    await deleteAllAccessKeys(userName, iamClient);
 
     // Step 2: List and detach all policies attached to the user
     const listAttachedUserPoliciesCommand = new ListAttachedUserPoliciesCommand(
@@ -215,5 +251,23 @@ export async function deleteUserAndResources(params: {
   } catch (error) {
     console.error(`Error deleting user or resources: ${error.message}`);
     throw new Error(`Error deleting user or resources: ${error.message}`);
+  }
+}
+async function deleteAllAccessKeys(userName: string, iamClient: IAMClient) {
+  const listAccessKeysCommand = new ListAccessKeysCommand({
+    UserName: userName,
+  });
+  const listAccessKeysResponse = await iamClient.send(listAccessKeysCommand);
+
+  if (!listAccessKeysResponse.AccessKeyMetadata) {
+    throw new Error('Cannot read access key metadata');
+  }
+
+  for (const accessKey of listAccessKeysResponse.AccessKeyMetadata) {
+    const deleteAccessKeyCommand = new DeleteAccessKeyCommand({
+      UserName: userName,
+      AccessKeyId: accessKey.AccessKeyId,
+    });
+    await iamClient.send(deleteAccessKeyCommand);
   }
 }
