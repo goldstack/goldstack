@@ -1,7 +1,15 @@
 #cloud-config
+users:
+  - name: goldstack
+    groups: users, admin
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys: []
 package_update: true
 package_upgrade: true
 packages:
+  - fail2ban
+  - ufw
   - curl
   - jq
   - awscli
@@ -73,19 +81,24 @@ write_files:
       update_app() {
         log "Content has changed. Stopping app and preparing for update."
 
-
         # Download the zip file and unpack it to /home/goldstack/
         rm -rf /home/goldstack/new_file.zip
         fetch_s3_zip
 
         # Run stop.sh if it exists
         if [ -f "$APP_DIR/stop.sh" ]; then
+          # Save the original working directory
+          ORIGINAL_DIR=$(pwd)
+          
+          # Change to the directory containing stop.sh
+          cd "$(dirname "$APP_DIR/stop.sh")"
           chmod +x "$APP_DIR/stop.sh"
-          "$APP_DIR/stop.sh"
+          ./stop.sh
+          cd "$ORIGINAL_DIR"
         fi
 
-        # Remove the app directory before unzipping the new content
-        rm -rf "$APP_DIR"
+        # Remove the app directory contents before unzipping the new content
+        rm -rf "$APP_DIR/*"
 
         unzip -o /home/goldstack/new_file.zip -d "$APP_DIR"
 
@@ -99,13 +112,26 @@ write_files:
         # On first load, run init script
         if [ "$STORED_CONTENT" == "none" ]; then
           if [ -f "$APP_DIR/init.sh" ]; then
-            "$APP_DIR/init.sh"
+            # Save the original working directory
+            ORIGINAL_DIR=$(pwd)
+            
+            # Change to the directory containing init.sh
+            cd "$(dirname "$APP_DIR/init.sh")"
+            "./init.sh"
+            cd "$ORIGINAL_DIR"
           fi
         fi
 
         # Run start.sh if it exists
         if [ -f "$APP_DIR/start.sh" ]; then
-          "$APP_DIR/start.sh"
+          # Save the original working directory
+          ORIGINAL_DIR=$(pwd)
+          
+          # Change to the directory containing start.sh
+          cd "$(dirname "$APP_DIR/start.sh")"
+          ./start.sh
+
+          cd "$ORIGINAL_DIR"
         fi
 
         # Update the current file with the new content (hash of the zip)
@@ -139,14 +165,41 @@ write_files:
 
 # Ensure the /home/goldstack directory and /home/goldstack/current file exist
 runcmd:
+  - #
+  - # Server hardening, see https://community.hetzner.com/tutorials/basic-cloud-config
+  - #
+  - printf "[sshd]\nenabled = true\nbanaction = iptables-multiport" > /etc/fail2ban/jail.local
+  - systemctl enable fail2ban
+  - ufw allow OpenSSH
+  - ufw allow http
+  - ufw allow https
+  - ufw --force enable
+  - sed -i -e '/^\(#\|\)PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
+  - sed -i -e '/^\(#\|\)PasswordAuthentication/s/^.*$/PasswordAuthentication no/' /etc/ssh/sshd_config
+  - sed -i -e '/^\(#\|\)KbdInteractiveAuthentication/s/^.*$/KbdInteractiveAuthentication no/' /etc/ssh/sshd_config
+  - sed -i -e '/^\(#\|\)ChallengeResponseAuthentication/s/^.*$/ChallengeResponseAuthentication no/' /etc/ssh/sshd_config
+  - sed -i -e '/^\(#\|\)MaxAuthTries/s/^.*$/MaxAuthTries 2/' /etc/ssh/sshd_config
+  - sed -i -e '/^\(#\|\)AllowTcpForwarding/s/^.*$/AllowTcpForwarding no/' /etc/ssh/sshd_config
+  - sed -i -e '/^\(#\|\)X11Forwarding/s/^.*$/X11Forwarding no/' /etc/ssh/sshd_config
+  - sed -i -e '/^\(#\|\)AllowAgentForwarding/s/^.*$/AllowAgentForwarding no/' /etc/ssh/sshd_config
+  - sed -i -e '/^\(#\|\)AuthorizedKeysFile/s/^.*$/AuthorizedKeysFile .ssh\/authorized_keys/' /etc/ssh/sshd_config
+  - sed -i '$a AllowUsers goldstack' /etc/ssh/sshd_config
+  - #
+  - # Ensure the newly setup user uses the SSH key passed on by Terraform
+  - #
   - mkdir -p /home/goldstack
+  - cp /root/.ssh/authorized_keys /home/goldstack/.ssh/authorized_keys
+  - chown -R goldstack:goldstack /home/goldstack/.ssh
+  - chmod 700 /home/goldstack/.ssh
+  - chmod 600 /home/goldstack/.ssh/authorized_keys
   - echo "none" > /home/goldstack/current # Create /home/goldstack/current with 'none' as content
   - systemctl start docker # Start Docker
   - systemctl enable docker # Enable Docker to run on boot
   - docker --version # Check Docker installation
   - mv /tmp/update-check.sh /home/goldstack/update-check.sh
   - chmod +x /home/goldstack/update-check.sh
+  - chown -R goldstack:goldstack /home/goldstack
   - systemctl daemon-reload
   - systemctl enable update-check.service
-  - systemctl start update-check 
-  # - reboot
+  - systemctl start update-check.service 
+  - reboot
