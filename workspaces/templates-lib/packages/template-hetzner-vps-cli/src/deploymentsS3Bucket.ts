@@ -14,6 +14,7 @@ import {
   S3Client,
 } from '@aws-sdk/client-s3';
 import { getAWSUser, getAWSCredentials } from '@goldstack/infra-aws';
+import { logger } from '@goldstack/utils-cli';
 
 export interface DeploymentsS3BucketParams {
   deployment: string;
@@ -36,6 +37,13 @@ export async function assertDeploymentsS3Bucket(
   if (!deployment.configuration.deploymentsS3Bucket) {
     const projectHash = crypto.randomBytes(6).toString('hex');
     deployment.configuration.deploymentsS3Bucket = `goldstack-deployments-${deployment.name}-${deployment.configuration.serverName}-${projectHash}`;
+
+    logger().info(
+      'Deployments bucket does not exist. Generating bucket name.',
+      {
+        bucketName: deployment.configuration.deploymentsS3Bucket,
+      }
+    );
   }
 
   await assertS3Bucket({
@@ -72,7 +80,6 @@ export async function deleteDeploymentsS3Bucket(
     bucketName: deployment.configuration.deploymentsS3Bucket,
   });
 }
-
 const assertS3Bucket = async (params: {
   s3: S3Client;
   bucketName: string;
@@ -81,16 +88,12 @@ const assertS3Bucket = async (params: {
     Bucket: params.bucketName,
   };
   try {
-    console.log(
-      'Accessing/creating bucket for VPS deployments',
-      bucketParams.Bucket
-    );
-
     await params.s3.send(new CreateBucketCommand(bucketParams));
+    logger().info('S3 bucket created', { bucketName: bucketParams.Bucket });
   } catch (e) {
     // if bucket already exists, ignore error
     if (!(e instanceof BucketAlreadyOwnedByYou)) {
-      console.error(
+      logger().error(
         'Cannot create bucket ',
         params.bucketName,
         ' error code',

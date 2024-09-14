@@ -1,6 +1,21 @@
+import pino from 'pino';
+import pinoPretty from 'pino-pretty';
+
 type AsyncFunction<O> = () => Promise<O>;
 
 const isDebug = process.env.GOLDSTACK_DEBUG || process.env.DEBUG;
+
+const loggerVar = pino(
+  { level: isDebug ? 'debug' : 'info' },
+  pinoPretty({
+    colorize: true,
+    sync: true, // requires for work in Jest see https://github.com/pinojs/pino-pretty?tab=readme-ov-file#usage-with-jest
+  })
+);
+
+export function logger() {
+  return loggerVar;
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const wrapCli = async (func: AsyncFunction<any>): Promise<void> => {

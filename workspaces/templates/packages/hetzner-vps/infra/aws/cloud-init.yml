@@ -148,5 +148,5 @@ runcmd:
   - chmod +x /home/goldstack/update-check.sh
   - systemctl daemon-reload
   - systemctl enable update-check.service
-  -  # systemctl start update-check // let me run this manually first
+  - systemctl start update-check 
   # - reboot

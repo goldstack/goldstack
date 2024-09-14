@@ -16,6 +16,8 @@ import {
   ResourceInUseException,
 } from '@aws-sdk/client-dynamodb';
 
+import { logger } from '@goldstack/utils-cli';
+
 const assertDynamoDBTable = async (params: {
   dynamoDB: DynamoDBClient;
   tableName: string;
@@ -40,6 +42,9 @@ const assertDynamoDBTable = async (params: {
         BillingMode: 'PAY_PER_REQUEST',
       })
     );
+    logger().info('DynamoDB table created for terraform state', {
+      tableName: params.tableName,
+    });
   } catch (e) {
     if (!(e instanceof ResourceInUseException)) {
       throw new Error(e.message);
@@ -70,16 +75,14 @@ const assertS3Bucket = async (params: {
     Bucket: params.bucketName,
   };
   try {
-    console.log(
-      'Accessing/creating bucket for Terraform state',
-      bucketParams.Bucket
-    );
-
     await params.s3.send(new CreateBucketCommand(bucketParams));
+    logger().info('S3 bucket created for storing terraform state', {
+      bucketName: bucketParams.Bucket,
+    });
   } catch (e) {
     // if bucket already exists, ignore error
     if (!(e instanceof BucketAlreadyOwnedByYou)) {
-      console.error(
+      logger().error(
         'Cannot create bucket ',
         params.bucketName,
         ' error code',
@@ -162,12 +165,16 @@ export const deleteState = async (params: {
   });
 };
 
-export const createState = async (params: {
+export const assertState = async (params: {
   credentials: AwsCredentialIdentity;
   dynamoDBTableName: string;
   bucketName: string;
   awsRegion: string;
 }): Promise<void> => {
+  logger().info('Connecting to Terraform State stored on AWS', {
+    bucketName: params.bucketName,
+    tableName: params.dynamoDBTableName,
+  });
   const dynamoDB = new DynamoDBClient({
     region: params.awsRegion,
     credentials: params.credentials,
@@ -178,4 +185,5 @@ export const createState = async (params: {
     credentials: params.credentials,
   });
   await assertS3Bucket({ s3, bucketName: params.bucketName });
+  logger().info('Connected to Terraform State stored on AWS');
 };
