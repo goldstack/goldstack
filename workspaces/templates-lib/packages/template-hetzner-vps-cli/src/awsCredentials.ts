@@ -15,7 +15,7 @@ import {
 import { getAWSUser, getAWSCredentials } from '@goldstack/infra-aws';
 import { HetznerVPSDeployment } from '@goldstack/template-hetzner-vps';
 import { logger } from '@goldstack/utils-cli';
-import { mkdir, write } from '@goldstack/utils-sh';
+import { mkdir, read, write } from '@goldstack/utils-sh';
 
 import crypto from 'crypto';
 import { existsSync } from 'fs';
@@ -133,7 +133,13 @@ export async function assertAWSCredentials(params: {
 
   logger().info(`Access key created: ${accessKeys.accessKeyId}`);
 
+  let existingSecrets = {};
+  if (existsSync('./dist/credentials/credentials')) {
+    existingSecrets = JSON.parse(read('./dist/credentials/credentials'));
+  }
+
   const vpsCredentials = {
+    ...existingSecrets,
     ...accessKeys,
     awsRegion: deployment.awsRegion,
   };

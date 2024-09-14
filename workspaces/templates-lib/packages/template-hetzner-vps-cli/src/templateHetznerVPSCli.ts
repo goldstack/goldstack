@@ -129,6 +129,7 @@ export const run = async (args: string[]): Promise<void> => {
 
       if (infrastructureOp !== 'destroy') {
         await createZip();
+        await uploadCredentials({ deployment });
         await uploadZip({
           deployment,
         });

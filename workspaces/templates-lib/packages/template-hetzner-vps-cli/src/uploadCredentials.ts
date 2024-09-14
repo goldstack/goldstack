@@ -3,7 +3,6 @@ import { upload } from '@goldstack/utils-s3-deployment';
 import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { getAWSCredentials, getAWSUser } from '@goldstack/infra-aws';
-import { rm } from '@goldstack/utils-sh';
 import { logger } from '@goldstack/utils-cli';
 
 export interface UploadCredentialsParams {
