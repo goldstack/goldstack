@@ -84,9 +84,9 @@ runcmd:
   - sed -i -e '/^\(#\|\)AllowAgentForwarding/s/^.*$/AllowAgentForwarding no/' /etc/ssh/sshd_config
   - sed -i -e '/^\(#\|\)AuthorizedKeysFile/s/^.*$/AuthorizedKeysFile .ssh\/authorized_keys/' /etc/ssh/sshd_config
   - sed -i '$a AllowUsers goldstack' /etc/ssh/sshd_config
-  - #
-  - # Ensure the newly setup user uses the SSH key passed using server creation 
-  - #
+  -  #
+  -  # Ensure the newly setup user uses the SSH key passed using server creation
+  -  #
   - mkdir -p /home/goldstack
   - mkdir -p /home/goldstack/app
   - cp /root/.ssh/authorized_keys /home/goldstack/.ssh/authorized_keys
