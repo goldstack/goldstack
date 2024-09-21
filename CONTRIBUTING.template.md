@@ -130,6 +130,7 @@ Creating a new template will involve the following:
 4. Every template must contain a [`template.json`](https://github.com/goldstack/goldstack/blob/master/workspaces/templates/packages/app-nextjs/template.json) file.
 5. Every template must contain a [`build.json`](https://github.com/goldstack/goldstack/blob/master/workspaces/templates/packages/app-nextjs/build.json) file. This determines what files will be included in the template provided in projects.
 6. Template metadata used for building and rendering the template on the Goldstack UI is defined in the [`template-metadata`](https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/template-metadata/src) package.
+7. The folder name of the template (`packages/templates/[folder name]`) needs to be added to [module template names](https://github.com/goldstack/goldstack/blob/hetzner-server-goldstack-integration/workspaces/templates/packages/module-template-utils/src/moduleTemplateUtils.ts#L10)
 7. The deploy set defined in the template metadata needs to be referenced in the GitHub deployment workflows for [dev](https://github.com/goldstack/goldstack/blob/master/.github/workflows/template_deploy_dev.yml#L11) and [prod](https://github.com/goldstack/goldstack/blob/master/.github/workflows/template_deploy_prod.yml#L11).
 
 We plan to simplify contributing templates in the future. For now, please don't hesitate to [reach out for help](https://github.com/goldstack/goldstack/issues).
