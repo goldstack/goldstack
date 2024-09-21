@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-cli",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "description": "Utilities for building command line interfaces.",
   "keywords": [
     "goldstack",

@@ -36,13 +36,13 @@ Editing the file `dist/credentials/credentials` manually can be useful during de
 In the GitHub action, one can use GitHub secrets to set the content of `dist/credentials/credentials` with the secrets required before the infrastructure is created and before a deployment.
 
 ```yaml
-    - name: Create JSON file
-      run: |
-        echo '{
-          "secret1": "${{ secrets.SECRET1 }}",
-          "secret2": "${{ secrets.SECRET2 }}",
-          "secret3": "${{ secrets.SECRET3 }}"
-        }' > dist/credentials/credentials
+- name: Create JSON file
+  run: |
+    echo '{
+      "secret1": "${{ secrets.SECRET1 }}",
+      "secret2": "${{ secrets.SECRET2 }}",
+      "secret3": "${{ secrets.SECRET3 }}"
+    }' > dist/credentials/credentials
 ```
 
 Note the key / name of the secret should always be in camel case.

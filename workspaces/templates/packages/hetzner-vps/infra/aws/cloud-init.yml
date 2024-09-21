@@ -65,9 +65,9 @@ write_files:
 
 # Ensure the /home/goldstack directory and /home/goldstack/current file exist
 runcmd:
-  - #
-  - # Server hardening, see https://community.hetzner.com/tutorials/basic-cloud-config
-  - #
+  -  #
+  -  # Server hardening, see https://community.hetzner.com/tutorials/basic-cloud-config
+  -  #
   - printf "[sshd]\nenabled = true\nbanaction = iptables-multiport" > /etc/fail2ban/jail.local
   - systemctl enable fail2ban
   - ufw allow OpenSSH
