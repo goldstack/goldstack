@@ -1,10 +1,11 @@
 #!/bin/bash
 
-echo "stop"
+ENV_FILE=".env"
 
+if [ -f "$ENV_FILE" ]; then
+  source $ENV_FILE
+fi
 
-# Stop the Docker container named 'caddy'
-docker stop caddy
+echo "Stopping and removing 'caddy' container..."
 
-# Remove the Docker container named 'caddy'
-docker rm caddy
+docker-compose down

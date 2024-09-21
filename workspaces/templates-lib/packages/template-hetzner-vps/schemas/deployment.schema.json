@@ -60,14 +60,11 @@
         "serverName": {
           "$ref": "#/definitions/ServerName"
         },
-        "deploymentsS3Bucket": {
-          "$ref": "#/definitions/DeploymentsS3Bucket"
-        },
         "onlyAllowSshAccessFromIp": {
           "$ref": "#/definitions/OnlyAllowSSHAccessFromIP"
         },
-        "vpsIAMUserName": {
-          "$ref": "#/definitions/VPSIAMUserName"
+        "environmentVariables": {
+          "$ref": "#/definitions/EnvironmentVariables"
         }
       },
       "required": [
@@ -101,22 +98,47 @@
       "title": "Server Name",
       "pattern": "^[^\\s]*"
     },
-    "DeploymentsS3Bucket": {
-      "type": "string",
-      "description": "The S3 Bucket that will be used to transfer the files to the server.",
-      "title": "Deployments S3 Bucket",
-      "pattern": "^[^\\s]*"
-    },
     "OnlyAllowSSHAccessFromIP": {
       "type": "string",
       "description": "Only allow SSH access to the server from the specified IP.",
       "title": "Only allow SSH access from IP"
     },
-    "VPSIAMUserName": {
+    "EnvironmentVariables": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/EnvironmentVariable"
+      },
+      "description": "Environment variables configuration.",
+      "title": "Environment Variables"
+    },
+    "EnvironmentVariable": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/EnvVarName"
+        },
+        "value": {
+          "$ref": "#/definitions/EnvVarValue"
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ],
+      "additionalProperties": false,
+      "description": "Environment variable configuration.",
+      "title": "Environment Variable"
+    },
+    "EnvVarName": {
       "type": "string",
-      "description": "The name of the IAM user that the VPS server uses to access AWS resources",
-      "title": "VPS IAM User name",
+      "description": "Environment variable name.",
+      "title": "Environment Variable Name",
       "pattern": "^[^\\s]*"
+    },
+    "EnvVarValue": {
+      "type": "string",
+      "description": "Environment variable value.",
+      "title": "Environment Variable Value"
     },
     "TerraformVariables": {
       "type": "array",

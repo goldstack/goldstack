@@ -12,182 +12,56 @@ packages:
   - ufw
   - curl
   - jq
-  - awscli
   - unzip
-  - docker.io # Install Docker
+  - docker.io
+  - docker-compose
 
-# Write the update-check.sh file
 write_files:
-  - path: /etc/systemd/system/update-check.service
-    permissions: '0644'
-    content: |
-      [Unit]
-      Description=Update Check Service
-      After=network.target
-
-      [Service]
-      ExecStart=/home/goldstack/update-check.sh
-      Restart=always
-      RestartSec=60
-      User=root
-
-      [Install]
-      WantedBy=multi-user.target
-
-  - path: /tmp/update-check.sh
+  - path: /home/goldstack/deploy.sh
     permissions: '0755'
     content: |
       #!/bin/bash
 
-      CHECK_INTERVAL="10"
-      CREDENTIALS_URL="https://injectedurl.com"
-      CURRENT_FILE="/home/goldstack/current"
-      NEW_FILE="/home/goldstack/new"
       APP_DIR="/home/goldstack/app"
-      CREDENTIALS_FILE="/home/goldstack/credentials"
-      S3_BUCKET="injected-s3-bucket"
-      S3_CURRENT_PATH="server/current"
-      S3_CREDENTIALS_PATH="credentials/credentials"
-      S3_ZIP_PATH="server/server.zip"
+      ZIP_FILE="/home/goldstack/server.zip"
+      SECRETS_DIR="$APP_DIR/secrets"
+      CREDENTIALS_FILE="/home/goldstack/credentials.json"
+      FIRST_DEPLOY_MARKER_FILE="/home/goldstack/.first_deploy"
+      ENV_FILE="/home/goldstack/app/.env"
 
-      log() {
-        echo "$(date +"%Y-%m-%d %H:%M:%S") - $1"
-      }
+      if [ -f "$ENV_FILE" ]; then
+        source $ENV_FILE
+      fi
 
-      download_credentials() {
-        if [ ! -f "$CREDENTIALS_FILE" ]; then
-          log "Downloading credentials..."
-          curl -s -o "$CREDENTIALS_FILE" "$CREDENTIALS_URL"
-        fi
-      }
+      cd $APP_DIR
 
-      fetch_s3_credentials() {
-        aws s3 cp "s3://$S3_BUCKET/$S3_CREDENTIALS_PATH" "$CREDENTIALS_FILE"
-      }
-
-
-      unpack_secrets() {
-        # Ensure the secrets directory exists
-        local secrets_dir="$APP_DIR/secrets"
-        echo "Secrets dir: $secrets_dir"
-        mkdir -p "$secrets_dir"
-        # clear existing secrets
-        rm -f "$secrets_dir/*"
-        # Extract all keys from the JSON file
-        keys=$(jq -r 'keys[]' "$CREDENTIALS_FILE")
-
-        # Loop through each key and create a corresponding file with the secret value
-        for key in $keys; do
-          value=$(jq -r --arg key "$key" '.[$key]' "$CREDENTIALS_FILE")
-          echo "$value" > "$secrets_dir/${key}.txt"
-          log "Extracted secret for key: $key"
-        done
-      }
-
-      configure_aws_cli() {
-        local access_key_id=$(jq -r '.accessKeyId' "$CREDENTIALS_FILE")
-        local secret_access_key=$(jq -r '.secretAccessKey' "$CREDENTIALS_FILE")
-        local aws_region=$(jq -r '.awsRegion' "$CREDENTIALS_FILE")
-
-        aws configure set aws_access_key_id "$access_key_id"
-        aws configure set aws_secret_access_key "$secret_access_key"
-        aws configure set region "$aws_region"
-      }
-
-      fetch_s3_content() {
-        aws s3 cp "s3://$S3_BUCKET/$S3_CURRENT_PATH" "$NEW_FILE"
-      }
-
-      fetch_s3_zip() {
-        aws s3 cp "s3://$S3_BUCKET/$S3_ZIP_PATH" /home/goldstack/new_file.zip
-      }
-
-      update_app() {
-        log "Content has changed. Stopping app and preparing for update."
-
-        # Download the zip file and unpack it to /home/goldstack/
-        rm -rf /home/goldstack/new_file.zip
-        fetch_s3_zip
-
-        # Run stop.sh if it exists
+      if [ ! -f "$FIRST_DEPLOY_MARKER_FILE" ]; then
+        echo "First deploy - run init script"
+        sudo "./init.sh"
+        touch "$FIRST_DEPLOY_MARKER_FILE"
+      else
+        # Step 1: Stop the app by running stop.sh
         if [ -f "$APP_DIR/stop.sh" ]; then
-          # Save the original working directory
-          ORIGINAL_DIR=$(pwd)
-          
-          # Change to the directory containing stop.sh
-          cd "$(dirname "$APP_DIR/stop.sh")"
+          echo "Stopping the app..."
           chmod +x "$APP_DIR/stop.sh"
-          ./stop.sh
-          cd "$ORIGINAL_DIR"
+          sudo "./stop.sh"
         fi
+      fi
 
-        # Remove the app directory contents before unzipping the new content
-        rm -rf "$APP_DIR/*"
+      # Step 2: Delete the existing app contents
+      echo "Deleting old app contents..."
+      rm -rf "$APP_DIR"/*
 
-        unzip -o /home/goldstack/new_file.zip -d "$APP_DIR"
+      # Step 3: Unzip the uploaded file to the app folder
+      echo "Unzipping the file..."
+      unzip -o "$ZIP_FILE" -d "$APP_DIR"
 
-        fetch_s3_credentials
-        unpack_secrets
-        # Make start.sh, stop.sh, and init.sh executable
-        for script in start.sh stop.sh init.sh; do
-          if [ -f "$APP_DIR/$script" ]; then
-            chmod +x "$APP_DIR/$script"
-          fi
-        done
-
-        # On first load, run init script
-        if [ "$STORED_CONTENT" == "none" ]; then
-          if [ -f "$APP_DIR/init.sh" ]; then
-            # Save the original working directory
-            ORIGINAL_DIR=$(pwd)
-            
-            # Change to the directory containing init.sh
-            cd "$(dirname "$APP_DIR/init.sh")"
-            "./init.sh"
-            cd "$ORIGINAL_DIR"
-          fi
-        fi
-
-        # Run start.sh if it exists
-        if [ -f "$APP_DIR/start.sh" ]; then
-          # Save the original working directory
-          ORIGINAL_DIR=$(pwd)
-          
-          # Change to the directory containing start.sh
-          cd "$(dirname "$APP_DIR/start.sh")"
-          ./start.sh
-
-          cd "$ORIGINAL_DIR"
-        fi
-
-        # Update the current file with the new content (hash of the zip)
-        echo "$NEW_CONTENT" > "$CURRENT_FILE"
-      }
-
-      main() {
-        download_credentials
-        configure_aws_cli
-
-        while true; do
-          # Fetch the content from S3
-          fetch_s3_content
-
-          # Compare the content with the stored content
-          STORED_CONTENT=$(cat "$CURRENT_FILE")
-          NEW_CONTENT=$(cat "$NEW_FILE")
-
-          if [ "$NEW_CONTENT" == "$STORED_CONTENT" ]; then
-            log "Content has not changed."
-          else
-            update_app
-          fi
-
-          # Sleep for 10 seconds before the next iteration
-          sleep $CHECK_INTERVAL
-        done
-      }
-
-      main
+      # Step 5: Start the app by running start.sh
+      if [ -f "$APP_DIR/start.sh" ]; then
+        echo "Starting the app..."
+        chmod +x "$APP_DIR/start.sh"
+        sudo "./start.sh"
+      fi
 
 # Ensure the /home/goldstack directory and /home/goldstack/current file exist
 runcmd:
@@ -210,22 +84,18 @@ runcmd:
   - sed -i -e '/^\(#\|\)AllowAgentForwarding/s/^.*$/AllowAgentForwarding no/' /etc/ssh/sshd_config
   - sed -i -e '/^\(#\|\)AuthorizedKeysFile/s/^.*$/AuthorizedKeysFile .ssh\/authorized_keys/' /etc/ssh/sshd_config
   - sed -i '$a AllowUsers goldstack' /etc/ssh/sshd_config
-  -  #
-  -  # Ensure the newly setup user uses the SSH key passed on by Terraform
-  -  #
+  - #
+  - # Ensure the newly setup user uses the SSH key passed using server creation 
+  - #
   - mkdir -p /home/goldstack
+  - mkdir -p /home/goldstack/app
   - cp /root/.ssh/authorized_keys /home/goldstack/.ssh/authorized_keys
   - chown -R goldstack:goldstack /home/goldstack/.ssh
   - chmod 700 /home/goldstack/.ssh
   - chmod 600 /home/goldstack/.ssh/authorized_keys
-  - echo "none" > /home/goldstack/current # Create /home/goldstack/current with 'none' as content
+  - chown -R  goldstack:goldstack /home/goldstack
+  - chown goldstack:goldstack /home/goldstack/deploy.sh
   - systemctl start docker # Start Docker
   - systemctl enable docker # Enable Docker to run on boot
   - docker --version # Check Docker installation
-  - mv /tmp/update-check.sh /home/goldstack/update-check.sh
-  - chmod +x /home/goldstack/update-check.sh
-  - chown -R goldstack:goldstack /home/goldstack
-  - systemctl daemon-reload
-  - systemctl enable update-check.service
-  - systemctl start update-check.service
   - reboot

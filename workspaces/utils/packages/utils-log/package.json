@@ -33,6 +33,9 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
+  "dependencies": {
+    "@goldstack/utils-cli": "0.3.10"
+  },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.9",
     "@swc/core": "^1.3.74",
