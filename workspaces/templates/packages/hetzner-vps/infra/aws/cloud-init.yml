@@ -15,6 +15,51 @@ packages:
   - docker.io
 
 write_files:
+  - path: /home/goldstack/deploy.sh
+    permissions: '0755'
+    content: |
+      #!/bin/bash
+
+      APP_DIR="/home/goldstack/app"
+      ZIP_FILE="/home/goldstack/server.zip"
+      SECRETS_DIR="$APP_DIR/secrets"
+      CREDENTIALS_FILE="/home/goldstack/credentials.json"
+
+      cd $APP_DIR
+      # Step 1: Stop the app by running stop.sh
+      if [ -f "$APP_DIR/stop.sh" ]; then
+        echo "Stopping the app..."
+        chmod +x "$APP_DIR/stop.sh"
+        sudo "./stop.sh"
+      fi
+
+      # Step 2: Delete the existing app contents
+      echo "Deleting old app contents..."
+      rm -rf "$APP_DIR/*"
+
+      # Step 3: Unzip the uploaded file to the app folder
+      echo "Unzipping the file..."
+      unzip -o "$ZIP_FILE" -d "$APP_DIR"
+
+      # Step 4: Unpack secrets if credentials.json exists
+      if [ -f "$CREDENTIALS_FILE" ]; then
+        echo "Unpacking secrets..."
+        mkdir -p "$SECRETS_DIR"
+        rm -f "$SECRETS_DIR/*"
+        keys=$(jq -r 'keys[]' "$CREDENTIALS_FILE")
+        for key in $keys; do
+          value=$(jq -r --arg key "$key" '.[$key]' "$CREDENTIALS_FILE")
+          echo "$value" > "$SECRETS_DIR/${key}.txt"
+        done
+      fi
+
+      # Step 5: Start the app by running start.sh
+      if [ -f "$APP_DIR/start.sh" ]; then
+        echo "Starting the app..."
+        chmod +x "$APP_DIR/start.sh"
+        sudo "./start.sh"
+      fi
+
   - path: /home/goldstack/unpack-secrets.sh
     permissions: '0755'
     content: |
