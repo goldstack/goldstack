@@ -1,16 +1,19 @@
+import { logger } from '@goldstack/utils-cli';
+
 const isDebug = process.env.GOLDSTACK_DEBUG || process.env.DEBUG;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const debug = (msg: any): void => {
-  if (isDebug) {
-    console.log(msg);
-  }
-};
+export function info(msg: string): void {
+  logger().info(msg);
+}
+
+export function error(msg: string): void {
+  logger().error(msg);
+}
 
 export const fatal = (msg: string): void => {
   if (isDebug) {
     throw new Error(msg);
   }
-  console.log(msg);
+  logger().error(msg);
   process.exit(1);
 };

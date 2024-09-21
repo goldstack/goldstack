@@ -11,6 +11,7 @@ packages:
   - fail2ban
   - ufw
   - curl
+  - jq
   - unzip
   - docker.io
 
@@ -24,18 +25,26 @@ write_files:
       ZIP_FILE="/home/goldstack/server.zip"
       SECRETS_DIR="$APP_DIR/secrets"
       CREDENTIALS_FILE="/home/goldstack/credentials.json"
+      FIRST_DEPLOY_MARKER_FILE="/home/goldstack/.first_deploy"
 
       cd $APP_DIR
-      # Step 1: Stop the app by running stop.sh
-      if [ -f "$APP_DIR/stop.sh" ]; then
-        echo "Stopping the app..."
-        chmod +x "$APP_DIR/stop.sh"
-        sudo "./stop.sh"
+
+      if [ ! -f "$FIRST_DEPLOY_MARKER_FILE" ]; then
+        echo "First deploy - run init script"
+        sudo "./init.sh"
+        touch "$FIRST_DEPLOY_MARKER_FILE"
+      else
+        # Step 1: Stop the app by running stop.sh
+        if [ -f "$APP_DIR/stop.sh" ]; then
+          echo "Stopping the app..."
+          chmod +x "$APP_DIR/stop.sh"
+          sudo "./stop.sh"
+        fi
       fi
 
       # Step 2: Delete the existing app contents
       echo "Deleting old app contents..."
-      rm -rf "$APP_DIR/*"
+      rm -rf "$APP_DIR"/*
 
       # Step 3: Unzip the uploaded file to the app folder
       echo "Unzipping the file..."
@@ -45,11 +54,12 @@ write_files:
       if [ -f "$CREDENTIALS_FILE" ]; then
         echo "Unpacking secrets..."
         mkdir -p "$SECRETS_DIR"
-        rm -f "$SECRETS_DIR/*"
+        rm -f "$SECRETS_DIR"/*
         keys=$(jq -r 'keys[]' "$CREDENTIALS_FILE")
         for key in $keys; do
           value=$(jq -r --arg key "$key" '.[$key]' "$CREDENTIALS_FILE")
           echo "$value" > "$SECRETS_DIR/${key}.txt"
+          echo "Extracted secret for key: $key"
         done
       fi
 
@@ -59,25 +69,6 @@ write_files:
         chmod +x "$APP_DIR/start.sh"
         sudo "./start.sh"
       fi
-
-  - path: /home/goldstack/unpack-secrets.sh
-    permissions: '0755'
-    content: |
-      #!/bin/bash
-      SECRETS_DIR="/home/goldstack/app/secrets"
-      CREDENTIALS_FILE="/home/goldstack/credentials.json"
-      
-      mkdir -p "$SECRETS_DIR"
-      rm -f "$SECRETS_DIR/*"
-      
-      keys=$(jq -r 'keys[]' "$CREDENTIALS_FILE")
-      
-      for key in $keys; do
-        value=$(jq -r --arg key "$key" '.[$key]' "$CREDENTIALS_FILE")
-        echo "$value" > "$SECRETS_DIR/${key}.txt"
-        echo "Extracted secret for key: $key"
-      done
-
 
 # Ensure the /home/goldstack directory and /home/goldstack/current file exist
 runcmd:
@@ -104,11 +95,13 @@ runcmd:
   - # Ensure the newly setup user uses the SSH key passed using server creation 
   - #
   - mkdir -p /home/goldstack
+  - mkdir -p /home/goldstack/app
   - cp /root/.ssh/authorized_keys /home/goldstack/.ssh/authorized_keys
   - chown -R goldstack:goldstack /home/goldstack/.ssh
   - chmod 700 /home/goldstack/.ssh
   - chmod 600 /home/goldstack/.ssh/authorized_keys
-  - chown goldstack:goldstack /home/goldstack/unpack-secrets.sh
+  - chown -R  goldstack:goldstack /home/goldstack
+  - chown goldstack:goldstack /home/goldstack/deploy.sh
   - systemctl start docker # Start Docker
   - systemctl enable docker # Enable Docker to run on boot
   - docker --version # Check Docker installation

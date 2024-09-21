@@ -1,7 +1,7 @@
 import { logger } from '@goldstack/utils-cli';
 import { exec, zip } from '@goldstack/utils-sh';
 import { existsSync } from 'fs';
-import { join } from 'path';
+import { stat } from 'fs/promises';
 
 // Helper function to execute commands remotely via SSH
 const sshExec = (host: string, command: string): string => {
@@ -27,7 +27,12 @@ const createZip = async (sourceDir: string, outputZip: string) => {
     target: outputZip,
   });
 
-  logger().info(`Zip created at ${outputZip}`);
+  // Get the size of the zip file
+  const stats = await stat(outputZip);
+  const fileSizeInBytes = stats.size;
+  const fileSizeInMegabytes = (fileSizeInBytes / (1024 * 1024)).toFixed(2);
+
+  logger().info(`Zip file size: ${fileSizeInMegabytes} MB`);
 };
 
 // Deploy function

@@ -2,6 +2,8 @@ import { execSync, execFileSync, exec as processAsync } from 'child_process';
 import fs from 'fs';
 import ncp from 'ncp';
 
+import { error, fatal, info } from '@goldstack/utils-log';
+
 import fse from 'fs-extra';
 
 import path from 'path';
@@ -247,16 +249,22 @@ const exec = (cmd: string, params?: ExecParams): string => {
   try {
     const res = execSync(cmd);
     if (!params?.silent) {
-      console.log(res.toString());
+      info(
+        'Command line operation completed successfully. Results:\n  ' +
+          res.toString().replaceAll(/\\n/g, '\n  ')
+      );
+      console.log();
     }
     return res.toString();
   } catch (e) {
-    console.error('Command failed:', cmd);
+    error('Command line operation failed: ' + cmd);
     if (e.stderr) {
-      console.error(e.stderr.toString());
+      error('Error log:\n  ' + e.stderr.toString().replaceAll(/\\n/g, '\n  '));
     }
     if (e.stdout) {
-      console.log(e.stdout.toString());
+      info(
+        'Standard out:\n  ' + e.stdout.toString().replaceAll(/\\n/g, '\n  ')
+      );
     }
     throw e;
   }
