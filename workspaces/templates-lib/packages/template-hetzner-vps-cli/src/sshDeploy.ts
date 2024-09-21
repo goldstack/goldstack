@@ -55,7 +55,7 @@ export const sshDeploy = async (deployment: HetznerVPSDeployment) => {
   const sourceDir = 'server/';
   const stagingDir = 'dist/server';
   const zipPath = 'dist/server.zip';
-  const secretsDir = 'server/secrets';
+  const secretsStagingDir = 'dist/server/secrets';
   const credentialsDestPath = 'dist/server/credentials.json';
   const credentialsFilePath = './credentials.json';
 
@@ -82,9 +82,10 @@ export const sshDeploy = async (deployment: HetznerVPSDeployment) => {
       const credentials = JSON.parse(read(credentialsFilePath));
       const deploymentCredentials = credentials[deployment.name];
       if (deploymentCredentials) {
-        mkdirSync(secretsDir, { recursive: true });
+        await rmSafe(secretsStagingDir);
+        mkdirSync(secretsStagingDir, { recursive: true });
         for (const [key, value] of Object.entries(deploymentCredentials)) {
-          const secretFilePath = join(secretsDir, `${key}.txt`);
+          const secretFilePath = join(secretsStagingDir, `${key}.txt`);
           writeFileSync(secretFilePath, value as string);
           logger().info(`Extracted secret for key: ${key}`);
         }
