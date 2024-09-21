@@ -306,6 +306,7 @@ export const execAsync = async (
     });
   });
 };
+
 const read = (path: string): string => {
   const buffer = fs.readFileSync(path, 'utf8');
   return buffer.toString();

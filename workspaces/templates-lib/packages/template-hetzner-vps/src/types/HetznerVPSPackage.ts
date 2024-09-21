@@ -49,22 +49,6 @@ export type SSHUserFingerprint = string;
 export type OnlyAllowSSHAccessFromIP = string;
 
 /**
- * The S3 Bucket that will be used to transfer the files to the server.
- *
- * @title Deployments S3 Bucket
- * @pattern ^[^\s]*
- */
-export type DeploymentsS3Bucket = string;
-
-/**
- * The name of the IAM user that the VPS server uses to access AWS resources
- *
- * @title VPS IAM User name
- * @pattern ^[^\s]*
- */
-export type VPSIAMUserName = string;
-
-/**
  * The Hetzner server deployment configuration
  */
 export interface HetznerVPSDeploymentConfiguration
@@ -73,9 +57,7 @@ export interface HetznerVPSDeploymentConfiguration
   serverType: ServerType;
   sshUserFingerprint?: SSHUserFingerprint;
   serverName: ServerName;
-  deploymentsS3Bucket?: DeploymentsS3Bucket;
   onlyAllowSshAccessFromIp?: OnlyAllowSSHAccessFromIP;
-  vpsIAMUserName?: VPSIAMUserName;
 }
 
 /**

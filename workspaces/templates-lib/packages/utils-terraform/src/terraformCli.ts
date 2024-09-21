@@ -1,4 +1,4 @@
-import { exec, execSafe, pwd, commandExists } from '@goldstack/utils-sh';
+import { exec, pwd, commandExists } from '@goldstack/utils-sh';
 import {
   assertDocker,
   hasDocker,
