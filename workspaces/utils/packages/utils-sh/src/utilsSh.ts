@@ -249,22 +249,24 @@ const exec = (cmd: string, params?: ExecParams): string => {
   try {
     const res = execSync(cmd);
     if (!params?.silent) {
-      info(
-        'Command line operation completed successfully. Results:\n  ' +
-          res.toString().replaceAll(/\\n/g, '\n  ')
-      );
+      if (res.toString().trim() !== '') {
+        info(
+          'Command line operation completed successfully. Results:\n  ' +
+            res.toString().replaceAll(/\n/g, '\n  ')
+        );
+      } else {
+        info('Command line operation completed successfully with no output.');
+      }
       console.log();
     }
     return res.toString();
   } catch (e) {
     error('Command line operation failed: ' + cmd);
     if (e.stderr) {
-      error('Error log:\n  ' + e.stderr.toString().replaceAll(/\\n/g, '\n  '));
+      error('Error log:\n  ' + e.stderr.toString().replaceAll(/\n/g, '\n  '));
     }
     if (e.stdout) {
-      info(
-        'Standard out:\n  ' + e.stdout.toString().replaceAll(/\\n/g, '\n  ')
-      );
+      info('Standard out:\n  ' + e.stdout.toString().replaceAll(/\n/g, '\n  '));
     }
     throw e;
   }

@@ -1,5 +1,11 @@
 #!/bin/bash
 
+ENV_FILE=".env"
+
+if [ -f "$ENV_FILE" ]; then
+  source $ENV_FILE
+fi
+
 # Check if a container named 'caddy' is already running
 if [ "$(docker ps -q -f name=caddy)" ]; then
   echo "Stopping and removing existing 'caddy' container..."
@@ -11,7 +17,7 @@ elif [ "$(docker ps -aq -f name=caddy)" ]; then
   docker rm caddy
 fi
 
-echo "Starting server"
+echo "Starting server $DUMMY_ENV"
 
 docker run -d \
   --name caddy \

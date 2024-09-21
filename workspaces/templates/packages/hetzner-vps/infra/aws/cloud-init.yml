@@ -26,6 +26,11 @@ write_files:
       SECRETS_DIR="$APP_DIR/secrets"
       CREDENTIALS_FILE="/home/goldstack/credentials.json"
       FIRST_DEPLOY_MARKER_FILE="/home/goldstack/.first_deploy"
+      ENV_FILE="/home/goldstack/app/.env"
+
+      if [ -f "$ENV_FILE" ]; then
+        source $ENV_FILE
+      fi
 
       cd $APP_DIR
 
@@ -49,19 +54,6 @@ write_files:
       # Step 3: Unzip the uploaded file to the app folder
       echo "Unzipping the file..."
       unzip -o "$ZIP_FILE" -d "$APP_DIR"
-
-      # Step 4: Unpack secrets if credentials.json exists
-      if [ -f "$CREDENTIALS_FILE" ]; then
-        echo "Unpacking secrets..."
-        mkdir -p "$SECRETS_DIR"
-        rm -f "$SECRETS_DIR"/*
-        keys=$(jq -r 'keys[]' "$CREDENTIALS_FILE")
-        for key in $keys; do
-          value=$(jq -r --arg key "$key" '.[$key]' "$CREDENTIALS_FILE")
-          echo "$value" > "$SECRETS_DIR/${key}.txt"
-          echo "Extracted secret for key: $key"
-        done
-      fi
 
       # Step 5: Start the app by running start.sh
       if [ -f "$APP_DIR/start.sh" ]; then

@@ -49,6 +49,38 @@ export type SSHUserFingerprint = string;
 export type OnlyAllowSSHAccessFromIP = string;
 
 /**
+ * Environment variable name.
+ *
+ * @title Environment Variable Name
+ * @pattern ^[^\s]*
+ */
+export type EnvVarName = string;
+
+/**
+ * Environment variable value.
+ *
+ * @title Environment Variable Value
+ */
+export type EnvVarValue = string;
+
+/**
+ * Environment variable configuration.
+ *
+ * @title Environment Variable
+ */
+export interface EnvironmentVariable {
+  name: EnvVarName;
+  value: EnvVarValue;
+}
+
+/**
+ * Environment variables configuration.
+ *
+ * @title Environment Variables
+ */
+export type EnvironmentVariables = EnvironmentVariable[];
+
+/**
  * The Hetzner server deployment configuration
  */
 export interface HetznerVPSDeploymentConfiguration
@@ -58,6 +90,7 @@ export interface HetznerVPSDeploymentConfiguration
   sshUserFingerprint?: SSHUserFingerprint;
   serverName: ServerName;
   onlyAllowSshAccessFromIp?: OnlyAllowSSHAccessFromIP;
+  environmentVariables?: EnvironmentVariables;
 }
 
 /**

@@ -62,6 +62,9 @@
         },
         "onlyAllowSshAccessFromIp": {
           "$ref": "#/definitions/OnlyAllowSSHAccessFromIP"
+        },
+        "environmentVariables": {
+          "$ref": "#/definitions/EnvironmentVariables"
         }
       },
       "required": [
@@ -99,6 +102,43 @@
       "type": "string",
       "description": "Only allow SSH access to the server from the specified IP.",
       "title": "Only allow SSH access from IP"
+    },
+    "EnvironmentVariables": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/EnvironmentVariable"
+      },
+      "description": "Environment variables configuration.",
+      "title": "Environment Variables"
+    },
+    "EnvironmentVariable": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/EnvVarName"
+        },
+        "value": {
+          "$ref": "#/definitions/EnvVarValue"
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ],
+      "additionalProperties": false,
+      "description": "Environment variable configuration.",
+      "title": "Environment Variable"
+    },
+    "EnvVarName": {
+      "type": "string",
+      "description": "Environment variable name.",
+      "title": "Environment Variable Name",
+      "pattern": "^[^\\s]*"
+    },
+    "EnvVarValue": {
+      "type": "string",
+      "description": "Environment variable value.",
+      "title": "Environment Variable Value"
     },
     "TerraformVariables": {
       "type": "array",

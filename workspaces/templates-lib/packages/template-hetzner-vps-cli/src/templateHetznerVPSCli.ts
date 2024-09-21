@@ -14,8 +14,6 @@ import {
 } from '@goldstack/template-hetzner-vps';
 import yargs from 'yargs';
 
-import { read } from '@goldstack/utils-sh';
-
 import { logger } from '@goldstack/utils-cli';
 import { sshDeploy } from './sshDeploy';
 
@@ -42,20 +40,7 @@ export const run = async (args: string[]): Promise<void> => {
     if (command === 'deploy') {
       logger().info('Starting deployment to Hetzner VPS.');
       const deployment = packageConfig.getDeployment(opArgs[0]);
-      const deploymentsInfo = JSON.parse(read('src/state/deployments.json'));
-      const deploymentState = deploymentsInfo.find(
-        (e) => e.name === deployment.name
-      );
-      if (!deploymentState) {
-        logger().error(
-          'Cannot deploy ' +
-            deployment.name +
-            ' since infrastructure not provisioned yet.'
-        );
-      }
-      await sshDeploy(
-        'goldstack@' + deploymentState.terraform.ipv4_address.value
-      );
+      await sshDeploy(deployment);
       return;
     }
 
