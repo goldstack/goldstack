@@ -20,6 +20,14 @@
           {
             "name": "DUMMY_ENV",
             "value": "I rock"
+          },
+          {
+            "name": "HTTP_PORT",
+            "value": "80"
+          },
+          {
+            "name": "HTTPS_PORT",
+            "value": "443"
           }
         ]
       },

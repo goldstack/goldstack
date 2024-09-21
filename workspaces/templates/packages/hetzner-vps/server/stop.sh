@@ -6,11 +6,6 @@ if [ -f "$ENV_FILE" ]; then
   source $ENV_FILE
 fi
 
-echo "stop"
+echo "Stopping and removing 'caddy' container..."
 
-
-# Stop the Docker container named 'caddy'
-docker stop caddy
-
-# Remove the Docker container named 'caddy'
-docker rm caddy
+docker-compose down
