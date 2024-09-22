@@ -5,6 +5,53 @@ title: Hetzner VPS
 
 [!embed](./about.md)
 
+## Features
+
+[!embed](./features.md)
+
+## Configure
+
+[!embed](./configure.md)
+
+## Getting Started
+
+[!embed](./getting-started.md)
+
+## Infrastructure
+
+[!embed](./../shared/infrastructure.md)
+
+### Hetzner Credentials
+
+To use the Hetzner Terraform provider, a token is required. To generate a token, please see [Hetzner Documentation: Generating an API token](https://docs.hetzner.com/cloud/api/getting-started/generating-api-token/). Goldstack will look for this token by looking up the user matching the deployment in: `config/infra/hetzner/config.json`.
+
+You can provide the secret as follows:
+
+```json
+{
+  "users": [
+    {
+      "name": "max",
+      "config": {
+        "token": "xxx"
+      }
+    }
+  ]
+}
+```
+
+Goldstack will also look for the environment variable `HCLOUD_TOKEN`, and if that is defined, will use that as the token for the Hetzner deployment. This makes it easy to provide this in GitHub actions.
+
+Anything in `config.json` will be ignored if the environment variable is set.
+
+### GitHub Actions
+
+To deploy from GitHub actions, you will need an SSH user.
+
+For this, first create an SSH key and add it to Hetzner, see [How to create an SSH key and attach it to a Hetzner server](https://medium.com/@benjaminstorm/how-to-create-an-ssh-key-and-attach-it-to-a-hetzner-server-e183536fd0ce).
+
+Note we will need the fingerprint in configuring `goldstack.json`.
+
 ## Secrets
 
 The VPS will by default be provided with credentials for the AWS IAM user that is used to deploy files to the server.
@@ -13,7 +60,7 @@ Additional secrets can be defined by manually editing the file: `dist/credential
 
 Any additional properties added to the JSON file will be unpacked into files in the `~/app/secrets` folder.
 
-```sh
+```
 goldstack@goldstack-docker:~/app$ ls secrets/
 # -> accessKeyId.txt  awsRegion.txt  mySecret.txt  secretAccessKey.txt
 ```

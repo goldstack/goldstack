@@ -15,5 +15,6 @@ export const getModuleTemplatesNames = (): string[] => {
     'serverless-api',
     'user-management',
     'server-side-rendering',
+    'hetzner-vps',
   ];
 };

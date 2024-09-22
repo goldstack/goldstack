@@ -1,0 +1,4 @@
+- Set up a server on Hetzner from your local CLI with a single command
+- Server hardened (e.g. SSH) by default
+- Customise server configuration using Terraform
+- Deploy an application (e.g. docker-compose.yml) from your development machine or CI pipeline to Hetzner

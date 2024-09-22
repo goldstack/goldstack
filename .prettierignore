@@ -15,3 +15,4 @@ node_modules/
 .pnp.loader.mjs
 .yarnrc.yml
 .yarn/
+README.md
