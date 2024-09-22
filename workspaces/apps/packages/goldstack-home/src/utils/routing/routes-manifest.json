@@ -59,6 +59,10 @@
       "regex": "^\\/templates\\/go-gin$"
     },
     {
+      "page": "/templates/hetzner-vps",
+      "regex": "^\\/templates\\/hetzner-vps$"
+    },
+    {
       "page": "/templates/lambda-api",
       "regex": "^\\/templates\\/lambda-api$"
     },
@@ -167,8 +171,8 @@
       "routeKeys": {
         "nxtPtemplate": "nxtPtemplate"
       },
-      "dataRouteRegex": "^/_next/data/lWxxtOH6wV\\-tvjWezOyUh/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/lWxxtOH6wV\\-tvjWezOyUh/templates/(?<nxtPtemplate>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/f9Q03v6RwgJAg3RGekyfT/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/f9Q03v6RwgJAg3RGekyfT/templates/(?<nxtPtemplate>[^/]+?)\\.json$"
     }
   ],
   "rsc": {

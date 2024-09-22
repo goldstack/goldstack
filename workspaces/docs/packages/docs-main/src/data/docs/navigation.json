@@ -24,6 +24,7 @@
         "lambda-express/index.md",
         "dynamodb/index.md",
         "email-send/index.md",
+        "hetzner-vps/index.md",
         "static-website-aws/index.md",
         "s3/index.md",
         "lambda-go-gin/index.md"

@@ -5140,6 +5140,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],\
           ["@aws-sdk/client-s3", "npm:3.620.0"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-s3", "workspace:workspaces/templates-lib/packages/utils-s3"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\

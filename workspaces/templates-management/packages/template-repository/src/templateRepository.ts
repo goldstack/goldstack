@@ -17,6 +17,8 @@ import { copy } from 'fs-extra';
 import { download } from '@goldstack/utils-s3';
 import fs from 'fs';
 
+import { info } from '@goldstack/utils-log';
+
 import { promisify } from 'util';
 import assert from 'assert';
 
@@ -96,12 +98,17 @@ export class S3TemplateRepository implements TemplateRepository {
   async addTemplateVersion(
     path: string
   ): Promise<GoldstackTemplateConfiguration> {
+    info('Adding template version from ' + path);
     const config = readTemplateConfigFromFile(path + 'template.json');
     const latest = await this.getLatestTemplateVersion(config.templateName);
 
     if (latest === undefined) {
+      info(
+        'First deployment of template. Assuming previous version to be 0.0.0'
+      );
       config.previousTemplateVersion = '0.0.0';
     } else {
+      info('Last version that was deployed: ' + latest);
       if (latest.templateName !== config.templateName) {
         throw new Error(
           'Invalid template or latest version. Not matching template names' +
@@ -114,6 +121,7 @@ export class S3TemplateRepository implements TemplateRepository {
         config.templateVersion === latest.templateVersion ||
         semverGt(latest.templateVersion, config.templateVersion)
       ) {
+        info('Deploying new version: ' + config.templateName);
         const newVersion = semverInc(latest.templateVersion, 'patch');
         if (!newVersion) {
           throw new Error(
@@ -123,7 +131,7 @@ export class S3TemplateRepository implements TemplateRepository {
         config.templateVersion = newVersion;
       } else {
         throw new Error(
-          'Invalid version tor elease. ' +
+          'Invalid version tor release. ' +
             `Trying to release ${config.templateVersion}. Latest version ${latest.templateVersion}`
         );
       }
@@ -145,6 +153,9 @@ export class S3TemplateRepository implements TemplateRepository {
     write(configJson, targetConfigPath);
 
     // Upload config
+    info(
+      'Uploading template config to: ' + this.bucket + '/' + templateConfigPath
+    );
     try {
       const cmd = new PutObjectCommand({
         Bucket: this.bucket,
@@ -172,6 +183,12 @@ export class S3TemplateRepository implements TemplateRepository {
 
     // Upload archive
     try {
+      info(
+        'Uploading template archive to: ' +
+          this.bucket +
+          '/' +
+          templateArchivePath
+      );
       await this.s3.send(
         new PutObjectCommand({
           Bucket: this.bucket,
@@ -185,6 +202,7 @@ export class S3TemplateRepository implements TemplateRepository {
 
     // set latest version, only after archive upload successful
     try {
+      info('Setting latest version to ' + config.templateVersion);
       await this.s3.send(
         new PutObjectCommand({
           Bucket: this.bucket,

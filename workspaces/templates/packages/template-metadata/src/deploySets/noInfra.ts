@@ -55,6 +55,7 @@ export const createNoInfraBuildSetConfig =
         's3',
         'lambda-express',
         'email-send',
+        'hetzner-vps',
         'app-nextjs',
         'app-nextjs-bootstrap',
         'static-website-aws',

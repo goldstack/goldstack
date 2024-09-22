@@ -15,6 +15,7 @@
   "templates/lambda-express",
   "templates/dynamodb",
   "templates/email-send",
+  "templates/hetzner-vps",
   "templates/static-website-aws",
   "templates/s3",
   "templates/lambda-go-gin"

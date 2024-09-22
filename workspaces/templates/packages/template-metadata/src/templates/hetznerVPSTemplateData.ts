@@ -1,12 +1,12 @@
 import { ProjectTemplateProps } from '../projectTemplateTypes';
-import { GoGin } from './moduleData';
+import { HetznerVPS } from './moduleData';
 
 export const getHetznerVPSTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'hetzner-vps',
     title: 'Hetzner VPS',
     images: ['https://cdn.goldstack.party/img/202409/hetzner.svg'],
-    packages: [GoGin],
+    packages: [HetznerVPS],
     isComposite: false,
     description:
       'Define a Hetzner VPS using infrastructure as code and Docker.',

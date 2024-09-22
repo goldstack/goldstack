@@ -40,6 +40,12 @@ const EmailSend: PackageProps = {
   documentationLink: 'https://docs.goldstack.party/docs/templates/email-send',
 };
 
+const HetznerVPS: PackageProps = {
+  title: 'Hetzner VPS',
+  link: 'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/hetzner-vps#readme',
+  documentationLink: 'https://docs.goldstack.party/docs/templates/hetzner-vps',
+};
+
 const S3: PackageProps = {
   title: 'AWS S3',
   link: 'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/s3#readme',
@@ -80,6 +86,7 @@ export {
   Express,
   GoGin,
   EmailSend,
+  HetznerVPS,
   S3,
   DynamoDB,
   LambdaAPI,

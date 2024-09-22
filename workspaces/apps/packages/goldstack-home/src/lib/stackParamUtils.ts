@@ -30,6 +30,9 @@ export const getPackageIds = (elements: string[]): string[] => {
   if (elements.includes('email-send')) {
     res.push('template:email-send');
   }
+  if (elements.includes('hetzner-vps')) {
+    res.push('template:hetzner-vps');
+  }
   if (elements.includes('gin') || elements.includes('go-gin')) {
     res.push('template:lambda-go-gin');
   }

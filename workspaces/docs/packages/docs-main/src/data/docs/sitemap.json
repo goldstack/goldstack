@@ -79,6 +79,11 @@
             "children": []
           },
           {
+            "title": "Hetzner VPS",
+            "path": "templates/hetzner-vps",
+            "children": []
+          },
+          {
             "title": "Static Website AWS",
             "path": "templates/static-website-aws",
             "children": []
