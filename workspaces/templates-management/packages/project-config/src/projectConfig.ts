@@ -15,27 +15,27 @@ export interface PackageConfig {
 
 export const getPackageConfigs = (workspacePath: string): PackageConfig[] => {
   const configPaths = getPackageConfigPaths(workspacePath);
-  const paths = configPaths.map((configPath) =>
-    configPath.substr(0, configPath.lastIndexOf('/') + 1)
-  );
+  const paths = configPaths.map((configPath) => path.dirname(configPath));
   return paths.map((pathEl) => {
-    const packageConfig: Package = JSON.parse(read(pathEl + 'goldstack.json')); //readPackageConfig(pathEl);
+    const packageConfig: Package = JSON.parse(
+      read(path.join(pathEl, 'goldstack.json'))
+    );
 
     if (!packageConfig) {
       throw new Error('Invalid config file at: ' + pathEl);
     }
 
     const packageSchema = JSON.parse(
-      read(`${pathEl}schemas/package.schema.json`)
+      read(path.join(pathEl, 'schemas', 'package.schema.json'))
     );
     const packageConfigSchema = JSON.parse(
-      read(`${pathEl}schemas/package-configuration.schema.json`)
+      read(path.join(pathEl, 'schemas', 'package-configuration.schema.json'))
     );
     const deploymentSchema = JSON.parse(
-      read(`${pathEl}schemas/deployment.schema.json`)
+      read(path.join(pathEl, 'schemas', 'deployment.schema.json'))
     );
     const deploymentConfigSchema = JSON.parse(
-      read(`${pathEl}schemas/deployment-configuration.schema.json`)
+      read(path.join(pathEl, 'schemas', 'deployment-configuration.schema.json'))
     );
     // packageConfig = validateConfig(packageConfig, packageSchema, {
     //   errorMessage: `Cannot validate configuration for ${pathEl}.`,

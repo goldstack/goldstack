@@ -180,12 +180,7 @@ export const rmSafe = async (...files: string[]): Promise<void> => {
 
 export const rm = (options: string, ...files: string[]): void => {
   for (const file of files) {
-    rimraf.sync(file); // sh.rm(options, files);
-    // if (!res || res.code !== 0) {
-    //   sh.echo(res.stdout);
-    //   sh.echo(res.stderr);
-    //   throw new Error(`Cannot remove ${file}`);
-    // }
+    rimraf.sync(file);
   }
 };
 

@@ -159,7 +159,7 @@ export const run = async (): Promise<void> => {
 
       info('Deploy set completed.');
       if (tmpInstance) {
-        rm('-rf', workDir + '*');
+        rm('-rf', workDir.replace(/\\/g, '/') + '*');
         tmpInstance.removeCallback();
       }
 

@@ -6,7 +6,9 @@ import { connect, getBucketName } from '@goldstack/template-repository-bucket';
 import path from 'path';
 
 const getGoldstackJsonPaths = (workspacePath: string): string[] => {
-  const res = globSync(workspacePath + 'packages/*/goldstack.json');
+  const res = globSync(
+    workspacePath.replace(/\\/g, '/') + 'packages/*/goldstack.json'
+  );
   return res;
 };
 

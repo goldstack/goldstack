@@ -21,6 +21,7 @@ import { info } from '@goldstack/utils-log';
 
 import { promisify } from 'util';
 import assert from 'assert';
+import path from 'path';
 
 const sleep = promisify(setTimeout);
 
@@ -75,11 +76,10 @@ export class S3TemplateRepository implements TemplateRepository {
     version: string,
     destinationFolder: string
   ): Promise<string | undefined> {
-    assert(
-      destinationFolder.endsWith('/'),
-      'Destination folder must end with a slash (/)'
+    const filePath = path.join(
+      destinationFolder,
+      `${templateName}-${version}.zip`
     );
-    const filePath = destinationFolder + `${templateName}-${version}.zip`;
     const templatePath = `versions/${templateName}/${version}/${templateName}-${version}.zip`;
     if (
       await download({
@@ -96,10 +96,10 @@ export class S3TemplateRepository implements TemplateRepository {
   }
 
   async addTemplateVersion(
-    path: string
+    pathToTemplate: string
   ): Promise<GoldstackTemplateConfiguration> {
-    info('Adding template version from ' + path);
-    const config = readTemplateConfigFromFile(path + 'template.json');
+    info('Adding template version from ' + pathToTemplate);
+    const config = readTemplateConfigFromFile(pathToTemplate + 'template.json');
     const latest = await this.getLatestTemplateVersion(config.templateName);
 
     if (latest === undefined) {
@@ -144,11 +144,11 @@ export class S3TemplateRepository implements TemplateRepository {
 
     const workDir = `./goldstackLocal/work/repo/${config.templateName}/${config.templateVersion}`;
     rm('-rf', workDir);
-    sleep(200);
+    await sleep(200);
 
     mkdir('-p', workDir);
-    await copy(path, workDir);
-    const targetConfigPath = workDir + '/template.json';
+    await copy(pathToTemplate, workDir);
+    const targetConfigPath = path.join(workDir, 'template.json');
     const configJson = JSON.stringify(config, null, 2);
     write(configJson, targetConfigPath);
 

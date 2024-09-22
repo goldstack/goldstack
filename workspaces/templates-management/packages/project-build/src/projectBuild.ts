@@ -56,12 +56,17 @@ const setPackageName = (packageFolder: string, packageName: string): void => {
   goldstackPackageConfig.name = packageName;
   write(
     JSON.stringify(goldstackPackageConfig, null, 2),
-    packageFolder + 'goldstack.json'
+    path.join(packageFolder, 'goldstack.json')
   );
 
-  const packageJson = JSON.parse(read(packageFolder + 'package.json'));
+  const packageJson = JSON.parse(
+    read(path.join(packageFolder, 'package.json'))
+  );
   packageJson.name = packageName;
-  write(JSON.stringify(packageJson, null, 2), packageFolder + 'package.json');
+  write(
+    JSON.stringify(packageJson, null, 2),
+    path.join(packageFolder, 'package.json')
+  );
 };
 
 const buildTemplate = async (
@@ -69,7 +74,7 @@ const buildTemplate = async (
   packageConfig: PackageProjectConfiguration
 ): Promise<void> => {
   debug(
-    `Building package ${packageConfig.packageName} from ${packageConfig.packageName}`
+    `Building package ${packageConfig.packageName} in ${params.destinationDirectory}`
   );
   const template: TemplateReference = {
     name: packageConfig.templateReference.templateName,
@@ -83,8 +88,11 @@ const buildTemplate = async (
 
   assert(templateReference.version);
 
-  const packageFolder =
-    params.destinationDirectory + `packages/${packageConfig.packageName}/`;
+  const packageFolder = path.join(
+    params.destinationDirectory,
+    'packages',
+    `${packageConfig.packageName}/`
+  );
 
   mkdir('-p', packageFolder);
   const zipPath = await params.s3.downloadTemplateArchive(
@@ -97,7 +105,7 @@ const buildTemplate = async (
   await extract(zipPath, { dir: path.resolve(packageFolder) });
 
   rm('-f', zipPath);
-
+  debug('Template archive extracted to ' + path.resolve(packageFolder));
   setPackageName(packageFolder, packageConfig.packageName);
 };
 

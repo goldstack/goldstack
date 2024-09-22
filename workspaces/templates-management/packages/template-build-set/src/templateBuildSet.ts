@@ -98,6 +98,7 @@ const buildAndTestProject = async (
 
   const packageConfigs = getPackageConfigs(params.projectDir);
 
+  // console.log(JSON.stringify(packageConfigs, null, 2));
   for (const setPackageConfig of params.project.packageConfigurations) {
     const packageConfig = packageConfigs.find(
       (packageConfig) =>

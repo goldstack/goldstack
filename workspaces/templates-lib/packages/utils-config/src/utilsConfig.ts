@@ -46,7 +46,9 @@ export const parseConfig = (
 };
 
 export const getPackageConfigPaths = (workspacePath: string): string[] => {
-  const res = globSync(workspacePath + 'packages/*/goldstack.json');
+  const res = globSync(
+    workspacePath.replace(/\\/g, '/') + 'packages/*/goldstack.json'
+  );
   return res;
 };
 
