@@ -221,6 +221,15 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     checked={elements.indexOf('server-side-rendering') !== -1}
                     onChange={checkboxChange}
                   ></Checkbox>
+                  <Checkbox
+                    title="Hetzner VPS"
+                    element="hetzner-vps"
+                    disabled={building}
+                    icon={ReactIcon}
+                    templateLink={'/templates/hetzner-vps'}
+                    checked={elements.indexOf('hetzner-vps') !== -1}
+                    onChange={checkboxChange}
+                  ></Checkbox>
                   <div className="border-bottom pb-2 mb-4">
                     <h2 className="h3 mb-0">UI</h2>
                   </div>

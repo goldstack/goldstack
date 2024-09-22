@@ -5,6 +5,22 @@ title: Hetzner VPS
 
 [!embed](./about.md)
 
+## Features
+
+[!embed](./features.md)
+
+## Configure
+
+[!embed](./configure.md)
+
+## Getting Started
+
+[!embed](./getting-started.md)
+
+## Infrastructure
+
+[!embed](./../shared/infrastructure.md)
+
 ## Secrets
 
 The VPS will by default be provided with credentials for the AWS IAM user that is used to deploy files to the server.

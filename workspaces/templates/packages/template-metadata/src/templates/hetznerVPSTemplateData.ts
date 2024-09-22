@@ -20,11 +20,11 @@ export const getHetznerVPSTemplateData = (): ProjectTemplateProps => {
     tags: ['Hetzner', 'Terraform', 'VPS'],
     featuresOverview: [
       {
-        title: 'Gin Framework',
+        title: 'Hetzner VPS set up and deployment',
         id: 'gin',
         description:
-          'Develop all routes of your API using the powerful Gin framework.',
-        image: 'https://cdn.goldstack.party/img/202104/go_gin.png',
+          'Define your Hetzner server as Infrastructure as Code and easily deploy from local files or from within your CLI.',
+        image: 'https://cdn.goldstack.party/img/202409/hetzner.svg',
         details: {
           title: 'Develop HTTP Routes',
           description:
@@ -32,63 +32,9 @@ export const getHetznerVPSTemplateData = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image: 'https://cdn.goldstack.party/img/202104/gin_server.png',
+              image:
+                'https://cdn.goldstack.party/img/202409/hetzner_vps_deploy.png',
             },
-          },
-        },
-      },
-      {
-        title: 'Go',
-        id: 'go',
-        description: 'Develop your serverless function using Go.',
-        image: 'https://cdn.goldstack.party/img/202104/gopher.svg',
-        details: {
-          title: 'Go Project Ready in Minutes',
-          description:
-            'Begin your work with a carefully crafted project where everything is ready to start coding.',
-          content: {
-            type: 'project-install',
-            data: {
-              projectName: 'app-go-gin-lambda',
-            },
-          },
-        },
-      },
-      {
-        title: 'AWS',
-        id: 'aws',
-        description:
-          'Go server deployed to reliable and scaleable AWS serverless infrastructure.',
-        image: 'aws',
-        details: {
-          title: 'Ready for Deployment to AWS',
-          description:
-            'Deploy your Go Gin application for cents on AWS with professional level security, reliability and scaleability.',
-          content: {
-            type: 'aws-deployment',
-            data: {},
-          },
-          moreDetails: {
-            description:
-              'Supports multiple, separate deployments for development, staging and production environments. Implemented using CloudFront and S3.',
-          },
-        },
-      },
-      {
-        title: 'Yarn 3',
-        id: 'yarn',
-        description:
-          'Build scripts managed using Yarn for easy integration with frontend projects.',
-        image: 'yarn',
-        details: {
-          title: 'Cross-platform Workspace Management',
-          description:
-            'In addition to Go project definitions, a workspace managed by Yarn is included in the project. ' +
-            'This allows for cross-platform script definition and manage a frontend application in the same workspace.',
-          icons: ['yarn'],
-          content: {
-            type: 'none',
-            data: {},
           },
         },
       },
