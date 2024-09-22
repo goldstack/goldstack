@@ -46,7 +46,8 @@ export const createHetznerVPSBuildSetConfig =
                   configuration: {
                     location: 'hil',
                     serverType: 'cpx11',
-                    sshUserFingerprint: '49:35:14:98:08:d4:71:a6:04:c2:f6',
+                    sshUserFingerprint:
+                      '49:35:14:98:08:d4:71:a6:04:c2:f6:73:f0:68:2d:5c',
                     serverName: 'goldstack-ci-test',
                     environmentVariables: [
                       {

@@ -10,9 +10,9 @@ export const getHetznerVPSTemplateData = (): ProjectTemplateProps => {
     isComposite: false,
     description:
       'Define a Hetzner VPS using infrastructure as code and Docker.',
-    metaTitle: 'Hardened Hetzner VPS Template with IaaC and Deployment Scripts',
+    metaTitle: 'Ready to Use Hardened Hetzner VPS Template',
     metaDescription:
-      'Define a Hetzner VPS in code and get it up and running in minutes.',
+      'Define a Hetzner VPS in code and get it up and running in minutes. Includes Terraform definitions and powerful local scripts.',
     longDescription:
       'This template contains a Terraform configuration for a Hetzner server along with scripts to deploy an application.\n' +
       'See a list of all features included in this template below.',
