@@ -10,18 +10,18 @@ jobs:
       matrix:
         deploy-set:
           [
-            'backend-go-gin',
-            'backend-lambda-api',
-            'backend-nodejs-express',
-            'nextjs',
-            'nextjs-bootstrap',
-            'no-infra',
-            'email-send',
-            's3',
-            'static-website',
-            'user-management',
-            'dynamodb',
-            'server-side-rendering',
+            # 'backend-go-gin',
+            # 'backend-lambda-api',
+            # 'backend-nodejs-express',
+            # 'nextjs',
+            # 'nextjs-bootstrap',
+            # 'no-infra',
+            # 'email-send',
+            # 's3',
+            # 'static-website',
+            # 'user-management',
+            # 'dynamodb',
+            # 'server-side-rendering',
             'hetzner-vps',
           ]
     # temporary enable for testing new template

@@ -34,7 +34,7 @@ export {
   getAllBuildSets,
   getBuildSet,
   createServerSideRenderingBuildSetConfig,
-} from './deploySets/deploySets';
+} from './deploySets';
 
 export const allTemplates = (): ProjectTemplateProps[] => {
   const templates = [
