@@ -15,7 +15,21 @@ import {
 import yargs from 'yargs';
 
 import { logger } from '@goldstack/utils-cli';
-import { sshDeploy } from './sshDeploy';
+import { build, sshDeploy } from './sshDeploy';
+
+export const buildZip = async (): Promise<void> => {
+  const args = process.argv.slice(2); // Skip the first two default args (node and script path)
+  const deploymentName = args[0]; // The first argument after `yarn build` will be `prod` if passed
+
+  const packageConfig = new PackageConfig<
+    HetznerVPSPackage,
+    HetznerVPSDeployment
+  >({
+    packagePath: './',
+  });
+  const deployment = packageConfig.getDeployment(deploymentName);
+  await build(deployment);
+};
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
@@ -40,6 +54,7 @@ export const run = async (args: string[]): Promise<void> => {
     if (command === 'deploy') {
       logger().info('Starting deployment to Hetzner VPS.');
       const deployment = packageConfig.getDeployment(opArgs[0]);
+      await build(deployment);
       await sshDeploy(deployment);
       return;
     }

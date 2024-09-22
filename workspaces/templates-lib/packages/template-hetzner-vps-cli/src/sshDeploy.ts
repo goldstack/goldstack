@@ -5,53 +5,8 @@ import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import { stat } from 'fs/promises';
 import { join } from 'path';
 
-// Helper function to execute commands remotely via SSH
-const sshExec = (host: string, command: string): string => {
-  const sshCmd = `ssh  -o StrictHostKeyChecking=no ${host} "${command}"`;
-  return exec(sshCmd);
-};
-
-// Helper function to upload files via SCP
-const scpUpload = (
-  localPath: string,
-  remotePath: string,
-  host: string
-): string => {
-  const scpCmd = `scp  -o StrictHostKeyChecking=no ${localPath} ${host}:${remotePath}`;
-  return exec(scpCmd);
-};
-
-// Method to create the zip file
-const createZip = async (sourceDir: string, outputZip: string) => {
-  logger().info(`Creating zip from ${sourceDir}...`);
-  await zip({
-    directory: sourceDir,
-    target: outputZip,
-  });
-
-  // Get the size of the zip file
-  const stats = await stat(outputZip);
-  const fileSizeInBytes = stats.size;
-  const fileSizeInMegabytes = (fileSizeInBytes / 1024).toFixed(2);
-
-  logger().info(`Zip file size: ${fileSizeInMegabytes} kB`);
-};
-
-// Deploy function
-export const sshDeploy = async (deployment: HetznerVPSDeployment) => {
-  const deploymentsInfo = JSON.parse(read('src/state/deployments.json'));
-  const deploymentState = deploymentsInfo.find(
-    (e: any) => e.name === deployment.name
-  );
-  if (!deploymentState) {
-    logger().error(
-      'Cannot deploy ' +
-        deployment.name +
-        ' since infrastructure not provisioned yet.'
-    );
-  }
-  const host = 'goldstack@' + deploymentState.terraform.ipv4_address.value;
-
+// Method to build the deployment files (preparing the staging directory, secrets, and creating the zip)
+export const build = async (deployment: HetznerVPSDeployment) => {
   const sourceDir = 'server/';
   const stagingDir = 'dist/server';
   const zipPath = 'dist/server.zip';
@@ -92,8 +47,65 @@ export const sshDeploy = async (deployment: HetznerVPSDeployment) => {
       }
     }
 
-    // Step 1: Create the zip file
-    await createZip(stagingDir, zipPath);
+    // Create the zip file
+    logger().info(`Creating zip from ${stagingDir}...`);
+    await zip({
+      directory: stagingDir,
+      target: zipPath,
+    });
+
+    // Get the size of the zip file
+    const stats = await stat(zipPath);
+    const fileSizeInBytes = stats.size;
+    const fileSizeInMegabytes = (fileSizeInBytes / 1024).toFixed(2);
+
+    logger().info(`Zip file size: ${fileSizeInMegabytes} kB`);
+    logger().info('Build completed successfully.');
+
+    return {
+      zipPath,
+    };
+  } catch (error) {
+    logger().error(`Error during build: ${error}`);
+    throw error;
+  }
+};
+
+// Helper function to execute commands remotely via SSH
+const sshExec = (host: string, command: string): string => {
+  const sshCmd = `ssh  -o StrictHostKeyChecking=no ${host} "${command}"`;
+  return exec(sshCmd);
+};
+
+// Helper function to upload files via SCP
+const scpUpload = (
+  localPath: string,
+  remotePath: string,
+  host: string
+): string => {
+  const scpCmd = `scp  -o StrictHostKeyChecking=no ${localPath} ${host}:${remotePath}`;
+  return exec(scpCmd);
+};
+
+// Deploy function
+export const sshDeploy = async (deployment: HetznerVPSDeployment) => {
+  try {
+    const deploymentsInfo = JSON.parse(read('src/state/deployments.json'));
+    const deploymentState = deploymentsInfo.find(
+      (e: any) => e.name === deployment.name
+    );
+    if (!deploymentState) {
+      logger().error(
+        'Cannot build ' +
+          deployment.name +
+          ' since infrastructure not provisioned yet.'
+      );
+      throw new Error(`No deployment state found for ${deployment.name}`);
+    }
+
+    const host = 'goldstack@' + deploymentState.terraform.ipv4_address.value;
+    // Ensure build was completed separately and get the zip path and host
+    const { zipPath } = await build(deployment);
 
     // Step 2: Upload the zip file via SCP
     logger().info('Uploading zip file...');
