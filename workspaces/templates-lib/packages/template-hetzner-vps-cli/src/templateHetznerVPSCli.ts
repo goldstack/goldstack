@@ -68,6 +68,11 @@ export const run = async (args: string[]): Promise<void> => {
       // use remote managed state from Terraform
       await terraformAwsCli(['create-state', opArgs[1]]);
 
+      if (infrastructureOp === 'destroy-state') {
+        await terraformAwsCli(['destroy-state', opArgs[1]]);
+        return;
+      }
+
       const { awsProvider } = await initTerraformEnvironment(opArgs);
       await terraformHetznerCli(opArgs, awsProvider);
 
