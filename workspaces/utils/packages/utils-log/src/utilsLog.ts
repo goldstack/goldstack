@@ -6,8 +6,12 @@ export function debug(msg: string): void {
   logger().debug(msg);
 }
 
-export function info(msg: string): void {
-  logger().info(msg);
+export function info(msg: string, properties?: { [key: string]: any }): void {
+  logger().info(properties, msg);
+}
+
+export function warn(msg: string): void {
+  logger().warn(msg);
 }
 
 export function error(msg: string): void {

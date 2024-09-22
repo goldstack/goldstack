@@ -29,6 +29,7 @@
     "@goldstack/utils-cli": "0.3.10",
     "@goldstack/utils-config": "0.4.11",
     "@goldstack/utils-git": "0.2.9",
+    "@goldstack/utils-log": "0.3.10",
     "@goldstack/utils-package": "0.4.11",
     "@goldstack/utils-project": "0.4.11",
     "@goldstack/utils-sh": "0.5.10",

@@ -4,6 +4,7 @@ import {
 } from '@goldstack/prepare-template';
 import { PrepareYarnPnpMonorepo } from '@goldstack/prepare-yarn-pnp-monorepo';
 import { TemplateRepository } from '@goldstack/template-repository';
+import { info } from '@goldstack/utils-log';
 import { GoldstackTemplateConfiguration } from '@goldstack/utils-template';
 
 const templateBuilders: PrepareTemplate[] = [new PrepareYarnPnpMonorepo()];
@@ -36,7 +37,14 @@ export const build = async (
     throw new Error(`Cannot find builder for template ${templateName}`);
   }
 
-  console.log('generating to', destinationDirectory);
+  info(
+    'Determined template builder from configuration for template ' +
+      builder.templateName() +
+      ' from folder: ' +
+      sourceTemplateDirectory
+  );
+
+  info('Building template into ' + destinationDirectory);
   await builder.run({
     monorepoRoot,
     destinationDirectory,

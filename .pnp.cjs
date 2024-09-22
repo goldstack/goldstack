@@ -4236,6 +4236,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@goldstack/prepare-template", "workspace:workspaces/templates-management/packages/prepare-template"],\
           ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
@@ -4642,6 +4643,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/prepare-template", "workspace:workspaces/templates-management/packages/prepare-template"],\
           ["@goldstack/prepare-yarn-pnp-monorepo", "workspace:workspaces/templates-management/packages/prepare-yarn-pnp-monorepo"],\
           ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
@@ -4671,6 +4673,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
           ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
@@ -5053,6 +5056,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
           ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
@@ -6021,16 +6025,14 @@ const RAW_RUNTIME_STATE =
           ["@types/fs-extra", "npm:9.0.13"],\
           ["@types/glob", "npm:7.1.3"],\
           ["@types/jest", "npm:29.0.1"],\
-          ["@types/ncp", "npm:2.0.4"],\
           ["@types/node", "npm:18.7.13"],\
           ["@types/rimraf", "npm:3.0.0"],\
           ["@types/which", "npm:2.0.1"],\
           ["archiver", "npm:5.3.1"],\
           ["extract-zip", "npm:2.0.1"],\
-          ["fs-extra", "npm:10.0.0"],\
+          ["fs-extra", "npm:11.2.0"],\
           ["glob", "npm:8.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
-          ["ncp", "npm:2.0.0"],\
           ["rimraf", "npm:3.0.2"],\
           ["typescript", "patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
           ["which", "npm:2.0.2"]\
@@ -8958,16 +8960,6 @@ const RAW_RUNTIME_STATE =
           ["@types/mock-aws-s3", "npm:2.6.3"],\
           ["@types/node", "npm:14.0.13"],\
           ["aws-sdk", "npm:2.1550.0"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["@types/ncp", [\
-      ["npm:2.0.4", {\
-        "packageLocation": "./.yarn/cache/@types-ncp-npm-2.0.4-3a6b65e2ac-c23a3b9c7b.zip/node_modules/@types/ncp/",\
-        "packageDependencies": [\
-          ["@types/ncp", "npm:2.0.4"],\
-          ["@types/node", "npm:14.0.13"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -15177,6 +15169,16 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/fs-extra-npm-10.1.0-86573680ed-05ce2c3b59.zip/node_modules/fs-extra/",\
         "packageDependencies": [\
           ["fs-extra", "npm:10.1.0"],\
+          ["graceful-fs", "npm:4.2.4"],\
+          ["jsonfile", "npm:6.0.1"],\
+          ["universalify", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:11.2.0", {\
+        "packageLocation": "./.yarn/cache/fs-extra-npm-11.2.0-6783080799-0579bf6726.zip/node_modules/fs-extra/",\
+        "packageDependencies": [\
+          ["fs-extra", "npm:11.2.0"],\
           ["graceful-fs", "npm:4.2.4"],\
           ["jsonfile", "npm:6.0.1"],\
           ["universalify", "npm:2.0.0"]\

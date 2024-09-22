@@ -21,6 +21,8 @@ import assert from 'assert';
 import path from 'path';
 export * from './types/DeploySet';
 
+import { info, warn } from '@goldstack/utils-log';
+
 export interface BuildSetParams {
   config: DeploySetConfig;
   workDir: string;
@@ -84,6 +86,10 @@ export const renderTestResults = (results: TestResult[]): string => {
 const buildAndTestProject = async (
   params: BuildAndTestProjectParams
 ): Promise<TestResult[]> => {
+  info('Building and testing project', {
+    destinationDirectory: params.projectDir,
+  });
+
   await buildProject({
     destinationDirectory: params.projectDir,
     config: params.project.projectConfiguration,
@@ -147,13 +153,11 @@ const buildAndTestProject = async (
     try {
       for (const packageTest of packageConfig.packageTests) {
         if (testResults.find((tr) => tr.result === false)) {
-          console.log(
-            `Skipping test ${packageTest} since previous test failed`
-          );
+          warn(`Skipping test ${packageTest} since previous test failed`);
           continue;
         }
 
-        console.log(`Running test ${packageTest} ...`);
+        info(`Running test ${packageTest} ...`);
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let error: any = undefined;
@@ -184,7 +188,7 @@ const buildAndTestProject = async (
     } finally {
       // always run cleanup tests, such as for destroying infrastructure
       for (const packageCleanUp of packageConfig.packageCleanUp) {
-        console.log(`Running cleanup job ${packageCleanUp}`);
+        info(`Running cleanup job ${packageCleanUp}`);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let error: any = undefined;
         let isFail: boolean;
@@ -235,12 +239,10 @@ export const buildSet = async (
   // script runs in dir workspaces/apps/packages/template-management-cli
   // thus monorepo root is four folders up
   const monorepoRoot = path.resolve('./../../../../') + '/';
-  console.log(
-    'Building templates. Working directory ',
+  info('Building templates. Working directory ', {
     templateWorkDir,
-    ' Monorepo root ',
-    monorepoRoot
-  );
+    monorepoRoot,
+  });
   mkdir('-p', templateWorkDir);
   await buildTemplates({
     workDir: templateWorkDir,
@@ -256,19 +258,19 @@ export const buildSet = async (
       res,
       monorepoRoot,
     });
-    console.log('Test results', res.testResultsText);
+    info('Test results', { results: res.testResultsText });
     if (testResults.filter((result) => !result.result).length > 0) {
-      console.log('There are test failures. No templates will be deployed.');
+      warn('There are test failures. No templates will be deployed.');
       res.testFailed = true;
       return res;
     }
     res.testFailed = false;
   } else {
-    console.log('Skipping tests');
+    warn('Skipping tests');
   }
 
   // if everything is good, deploy templates
-  console.log('Deploying templates');
+  info('Deploying templates', { workDir: params.workDir + 'templatesDeploy/' });
   await buildTemplates({
     workDir: params.workDir + 'templatesDeploy/',
     templates: params.config.deployTemplates,
@@ -289,7 +291,7 @@ async function buildProjects(params: {
   const testResults: TestResult[] = [];
   for (const project of params.buildSetParams.config.projects) {
     const projectDir = `${params.buildSetParams.workDir}${project.projectConfiguration.projectName}/`;
-    console.log('Building project in directory ', projectDir);
+    info('Building project in directory ', { projectDir });
     mkdir('-p', projectDir);
 
     const gitHubToken = process.env.GITHUB_TOKEN;
