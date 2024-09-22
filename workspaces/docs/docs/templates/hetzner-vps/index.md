@@ -44,6 +44,14 @@ Goldstack will also look for the environment variable `HCLOUD_TOKEN`, and if tha
 
 Anything in `config.json` will be ignored if the environment variable is set.
 
+### GitHub Actions
+
+To deploy from GitHub actions, you will need an SSH user.
+
+For this, first create an SSH key and add it to Hetzner, see [How to create an SSH key and attach it to a Hetzner server](https://medium.com/@benjaminstorm/how-to-create-an-ssh-key-and-attach-it-to-a-hetzner-server-e183536fd0ce).
+
+Note we will need the fingerprint in configuring `goldstack.json`.
+
 ## Secrets
 
 The VPS will by default be provided with credentials for the AWS IAM user that is used to deploy files to the server.

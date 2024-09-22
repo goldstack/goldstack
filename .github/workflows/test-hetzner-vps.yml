@@ -1,4 +1,4 @@
-name: Branch & PR build
+name: Test Hetzner VPS
 
 on: [push, pull_request]
 

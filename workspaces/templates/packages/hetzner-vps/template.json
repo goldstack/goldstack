@@ -1,5 +1,5 @@
 {
-  "templateName": "hetzner-docker",
+  "templateName": "hetzner-vps",
   "templateVersion": "0.1.0",
   "previousTemplateVersion": "0.0.0",
   "templateDescription": "Create a web server using Docker on Hetzner",

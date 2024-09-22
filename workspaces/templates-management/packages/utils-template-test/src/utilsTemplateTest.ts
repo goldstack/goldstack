@@ -98,7 +98,9 @@ export const buildTemplate = async (params: {
   );
 
   if (!config) {
-    throw new Error('Cannot read template configuration.');
+    throw new Error(
+      'Cannot read template configuration for ' + params.templateName
+    );
   }
 
   assert(config.templateName === params.templateName);
