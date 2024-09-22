@@ -33,10 +33,10 @@ export const createHetznerVPSBuildSetConfig =
           ],
           targetRepo: 'goldstack/hetzner-vps-template',
           repoReadme:
-            'workspaces/templates/packages/template-metadata/src/deploySets/emailSend.README.md',
+            'workspaces/templates/packages/template-metadata/src/deploySets/hetznerVPS.README.md',
           packageConfigurations: [
             {
-              packageName: 'email-send-1',
+              packageName: 'hetzner-vps-1',
               configuration: {},
               deployments: [
                 {
@@ -44,8 +44,25 @@ export const createHetznerVPSBuildSetConfig =
                   awsUser: 'goldstack-dev',
                   awsRegion: 'us-west-2',
                   configuration: {
-                    domain: `email-send-${hash}.tests.dev.goldstack.party`,
-                    hostedZoneDomain: 'dev.goldstack.party',
+                    location: 'hil',
+                    serverType: 'cpx11',
+                    sshUserFingerprint:
+                      '73:db:08:81:7f:fe:34:c3:40:2e:10:d0:89:a7:b7:12',
+                    serverName: 'goldstack-ci-test',
+                    environmentVariables: [
+                      {
+                        name: 'DUMMY_ENV',
+                        value: 'I rock',
+                      },
+                      {
+                        name: 'HTTP_PORT',
+                        value: '80',
+                      },
+                      {
+                        name: 'HTTPS_PORT',
+                        value: '443',
+                      },
+                    ],
                   },
                 },
               ],

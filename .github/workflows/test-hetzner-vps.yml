@@ -1,0 +1,16 @@
+name: Branch & PR build
+
+on: [push, pull_request]
+
+jobs:
+  test-ssh:
+    name: 'Test SSH'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.TMP_SSH_PRIVATE_KEY }}
+      - name: 'Exec SSH'
+        run: |
+          ssh root@5.78.72.129 "echo hi"

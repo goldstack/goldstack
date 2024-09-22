@@ -6,6 +6,8 @@ import {
 } from '@goldstack/utils-config';
 import { read, write } from '@goldstack/utils-sh';
 
+import { info } from '@goldstack/utils-log';
+
 import { readPackageConfig } from '@goldstack/utils-package';
 
 import configSchema from './schemas/accountConfigSchema.json';
@@ -54,11 +56,11 @@ export const readConfig = (path?: string): HetznerConfiguration => {
 
   // otherwise check default config file location
   if (!fs.existsSync(path)) {
-    throw new Error(`AWS configuration file does not exist: ${path}.`);
+    throw new Error(`Hetzner configuration file does not exist: ${path}.`);
   }
 
   return parseConfig(read(path), configSchema, {
-    errorMessage: `Cannot load AWS configuration from ${path}`,
+    errorMessage: `Cannot load Hetzner configuration from ${path}`,
   }) as HetznerConfiguration;
 };
 
@@ -79,12 +81,24 @@ export const createDefaultConfig = (): HetznerConfiguration => {
 };
 
 /**
- * Obtains AWS user credentials from config file or environment variables.
+ * Obtains Hetzner token from config file or environment variables.
  */
 export const getHetznerUser = async (
   userName: string,
   configPath?: string
 ): Promise<HetznerUser> => {
+  if (process.env.HCLOUD_TOKEN) {
+    info(
+      'Environment variable HCLOUD_TOKEN defined. This token will be used to access Hetzner API.'
+    );
+    return {
+      name: 'local',
+      config: {
+        token: process.env.HCLOUD_TOKEN,
+      },
+    };
+  }
+
   const config = readConfig(configPath);
   const user = config.users.find((u) => u.name == userName);
   if (!user) {

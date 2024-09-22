@@ -21,6 +21,29 @@ title: Hetzner VPS
 
 [!embed](./../shared/infrastructure.md)
 
+### Hetzner Credentials
+
+To use the Hetzner Terraform provider, a token is required. To generate a token, please see [Hetzner Documentation: Generating an API token](https://docs.hetzner.com/cloud/api/getting-started/generating-api-token/). Goldstack will look for this token by looking up the user matching the deployment in: `config/infra/hetzner/config.json`.
+
+You can provide the secret as follows:
+
+```json
+{
+  "users": [
+    {
+      "name": "max",
+      "config": {
+        "token": "xxx"
+      }
+    }
+  ]
+}
+```
+
+Goldstack will also look for the environment variable `HCLOUD_TOKEN`, and if that is defined, will use that as the token for the Hetzner deployment. This makes it easy to provide this in GitHub actions.
+
+Anything in `config.json` will be ignored if the environment variable is set.
+
 ## Secrets
 
 The VPS will by default be provided with credentials for the AWS IAM user that is used to deploy files to the server.
