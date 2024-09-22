@@ -13,4 +13,4 @@ jobs:
           ssh-private-key: ${{ secrets.TMP_SSH_PRIVATE_KEY }}
       - name: 'Exec SSH'
         run: |
-          ssh root@5.78.72.129 "echo hi"
+          ssh -o StrictHostKeyChecking=no root@5.78.72.129 "echo hi"
