@@ -23,4 +23,3 @@ For your remote environments defined in `goldstack.json`, environment variables 
 ```
 
 This `credentials.json` will result in the file `/home/goldstack/app/secrets/dummy.txt` to be created with the content `thats the value`. This should make it easy to use it in a docker-compose file, see [How to use secrets in Docker Compose](https://docs.docker.com/compose/how-tos/use-secrets/).
-

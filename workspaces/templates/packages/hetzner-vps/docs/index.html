@@ -186,6 +186,36 @@
 </svg></span></h3>
 <p>In order to manage your infrastructure, Terraform maintains a state for each deployment; to calculate required changes when the infrastructure is updated and also for destroying the infrastructure if it is no longer required. Goldstack by default will store the terraform state in the <code class="inline">infra/aws</code> folder as simple files.</p>
 <p>This works well for deploying infrastructure from your local development environment but is not a good choice when building a CI/CD pipeline for the infrastructure definition. In that case, it is better to define <a href="https://www.terraform.io/docs/state/remote.html" class="absolute" target="_blank" rel="noopener noreferrer">Remote State</a>. A popular choice many projects adopt here is to store the <a href="https://www.terraform.io/docs/backends/types/s3.html" class="absolute" target="_blank" rel="noopener noreferrer">state in an S3 bucket</a>. Please see the Terraform documentation for further details.</p></div><p></p>
+<h3 class="heading"><span id="hetzner-credentials"></span><a href="#hetzner-credentials">Hetzner Credentials</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>To use the Hetzner Terraform provider, a token is required. To generate a token, please see <a href="https://docs.hetzner.com/cloud/api/getting-started/generating-api-token/" class="absolute" target="_blank" rel="noopener noreferrer">Hetzner Documentation: Generating an API token</a>. Goldstack will look for this token by looking up the user matching the deployment in: <code class="inline">config/infra/hetzner/config.json</code>.</p>
+<p>You can provide the secret as follows:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"users"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"max"</span><span class="token punctuation">,</span>
+      <span class="token property">"config"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"token"</span><span class="token operator">:</span> <span class="token string">"xxx"</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Goldstack will also look for the environment variable <code class="inline">HCLOUD_TOKEN</code>, and if that is defined, will use that as the token for the Hetzner deployment. This makes it easy to provide this in GitHub actions.</p>
+<p>Anything in <code class="inline">config.json</code> will be ignored if the environment variable is set.</p>
+<h3 class="heading"><span id="github-actions"></span><a href="#github-actions">GitHub Actions</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>To deploy from GitHub actions, you will need an SSH user.</p>
+<p>For this, first create an SSH key and add it to Hetzner, see <a href="https://medium.com/@benjaminstorm/how-to-create-an-ssh-key-and-attach-it-to-a-hetzner-server-e183536fd0ce" class="absolute" target="_blank" rel="noopener noreferrer">How to create an SSH key and attach it to a Hetzner server</a>.</p>
+<p>Note we will need the fingerprint in configuring <code class="inline">goldstack.json</code>.</p>
 <h2 class="heading"><span id="secrets"></span><a href="#secrets">Secrets</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>

@@ -1,4 +1,3 @@
-
 Thanks for taking the time to contribute! While the following documentation intends to be as comprehensive as possible, please do not hesitate to reach out by [opening a GitHub issue](https://github.com/goldstack/goldstack/issues) or on Twitter: [@mxro](https://twitter.com/mxro).
 
 Contents:
@@ -134,7 +133,7 @@ Creating a new template will involve the following:
 7. The folder name of the template (`packages/templates/[folder name]`) needs to be added to [module template names](https://github.com/goldstack/goldstack/blob/hetzner-server-goldstack-integration/workspaces/templates/packages/module-template-utils/src/moduleTemplateUtils.ts#L10)
 8. The template needs to be added to the stack builder [UI component](https://github.com/goldstack/goldstack/blob/release-hetzner-vps-template/workspaces/apps/packages/goldstack-home/src/pages/build.tsx#L215)
 9. Documentation for template needs to be defined in [template documentation](https://github.com/goldstack/goldstack/tree/release-hetzner-vps-template/workspaces/docs/docs/templates)
-9. Documentation build is updated in [generateTemplateDocs.ts](https://github.com/goldstack/goldstack/blob/release-hetzner-vps-template/workspaces/docs/packages/module-template-docs/src/scripts/generateTemplateDocs.ts#L1)
-8. The deploy set defined in the template metadata needs to be referenced in the GitHub deployment workflows for [dev](https://github.com/goldstack/goldstack/blob/master/.github/workflows/template_deploy_dev.yml#L11) and [prod](https://github.com/goldstack/goldstack/blob/master/.github/workflows/template_deploy_prod.yml#L11).
+10. Documentation build is updated in [generateTemplateDocs.ts](https://github.com/goldstack/goldstack/blob/release-hetzner-vps-template/workspaces/docs/packages/module-template-docs/src/scripts/generateTemplateDocs.ts#L1)
+11. The deploy set defined in the template metadata needs to be referenced in the GitHub deployment workflows for [dev](https://github.com/goldstack/goldstack/blob/master/.github/workflows/template_deploy_dev.yml#L11) and [prod](https://github.com/goldstack/goldstack/blob/master/.github/workflows/template_deploy_prod.yml#L11).
 
 We plan to simplify contributing templates in the future. Always be welcome to [reach out for help](https://github.com/goldstack/goldstack/issues).

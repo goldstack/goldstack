@@ -152,6 +152,37 @@ In order to manage your infrastructure, Terraform maintains a state for each dep
 
 This works well for deploying infrastructure from your local development environment but is not a good choice when building a CI/CD pipeline for the infrastructure definition. In that case, it is better to define [Remote State](https://www.terraform.io/docs/state/remote.html). A popular choice many projects adopt here is to store the [state in an S3 bucket](https://www.terraform.io/docs/backends/types/s3.html). Please see the Terraform documentation for further details.
 
+### Hetzner Credentials
+
+To use the Hetzner Terraform provider, a token is required. To generate a token, please see [Hetzner Documentation: Generating an API token](https://docs.hetzner.com/cloud/api/getting-started/generating-api-token/). Goldstack will look for this token by looking up the user matching the deployment in: `config/infra/hetzner/config.json`.
+
+You can provide the secret as follows:
+
+```json
+{
+  "users": [
+    {
+      "name": "max",
+      "config": {
+        "token": "xxx"
+      }
+    }
+  ]
+}
+```
+
+Goldstack will also look for the environment variable `HCLOUD_TOKEN`, and if that is defined, will use that as the token for the Hetzner deployment. This makes it easy to provide this in GitHub actions.
+
+Anything in `config.json` will be ignored if the environment variable is set.
+
+### GitHub Actions
+
+To deploy from GitHub actions, you will need an SSH user.
+
+For this, first create an SSH key and add it to Hetzner, see [How to create an SSH key and attach it to a Hetzner server](https://medium.com/@benjaminstorm/how-to-create-an-ssh-key-and-attach-it-to-a-hetzner-server-e183536fd0ce).
+
+Note we will need the fingerprint in configuring `goldstack.json`.
+
 ## Secrets
 
 The VPS will by default be provided with credentials for the AWS IAM user that is used to deploy files to the server.

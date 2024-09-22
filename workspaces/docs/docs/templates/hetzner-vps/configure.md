@@ -1,4 +1,3 @@
-
 The following key properties need to be configured for this template:
 
 - **Location**: The Hetzner location this server should be deployed to. This can be any valid location string without spaces. For instance, if the location `fsn1` is chosen, the server will be deployed to the `fsn1` Hetzner data center. Example pattern: `^[^\s]*`
