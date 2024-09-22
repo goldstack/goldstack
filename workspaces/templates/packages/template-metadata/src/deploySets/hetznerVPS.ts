@@ -18,7 +18,6 @@ export const createHetznerVPSBuildSetConfig =
       ],
     };
 
-    const hash = new Date().getTime();
     const setConfig: DeploySetConfig = {
       buildSetName: 'hetzner-vps',
       buildTemplates: ['yarn-pnp-monorepo', 'hetzner-vps'],
