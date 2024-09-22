@@ -99,40 +99,47 @@ export class S3TemplateRepository implements TemplateRepository {
     pathToTemplate: string
   ): Promise<GoldstackTemplateConfiguration> {
     info('Adding template version from ' + pathToTemplate);
-    const config = readTemplateConfigFromFile(pathToTemplate + 'template.json');
-    const latest = await this.getLatestTemplateVersion(config.templateName);
+    const config = readTemplateConfigFromFile(
+      path.join(pathToTemplate, 'template.json')
+    );
+    const latestDeployedToRepo = await this.getLatestTemplateVersion(
+      config.templateName
+    );
 
-    if (latest === undefined) {
+    if (latestDeployedToRepo === undefined) {
       info(
         'First deployment of template. Assuming previous version to be 0.0.0'
       );
       config.previousTemplateVersion = '0.0.0';
     } else {
-      info('Last version that was deployed: ' + latest);
-      if (latest.templateName !== config.templateName) {
+      info('Last version that was deployed: ' + latestDeployedToRepo);
+      if (latestDeployedToRepo.templateName !== config.templateName) {
         throw new Error(
           'Invalid template or latest version. Not matching template names' +
-            ` for ${config.templateName} found latest ${latest.templateName}`
+            ` for ${config.templateName} found latest ${latestDeployedToRepo.templateName}`
         );
       }
 
-      config.previousTemplateVersion = latest.templateVersion;
+      config.previousTemplateVersion = latestDeployedToRepo.templateVersion;
       if (
-        config.templateVersion === latest.templateVersion ||
-        semverGt(latest.templateVersion, config.templateVersion)
+        config.templateVersion === latestDeployedToRepo.templateVersion ||
+        semverGt(latestDeployedToRepo.templateVersion, config.templateVersion)
       ) {
         info('Deploying new version: ' + config.templateName);
-        const newVersion = semverInc(latest.templateVersion, 'patch');
+        const newVersion = semverInc(
+          latestDeployedToRepo.templateVersion,
+          'patch'
+        );
         if (!newVersion) {
           throw new Error(
-            `Cannot generate new version from ${latest.templateVersion}`
+            `Cannot generate new version from ${latestDeployedToRepo.templateVersion}`
           );
         }
         config.templateVersion = newVersion;
       } else {
         throw new Error(
           'Invalid version tor release. ' +
-            `Trying to release ${config.templateVersion}. Latest version ${latest.templateVersion}`
+            `Trying to release ${config.templateVersion}. Latest version ${latestDeployedToRepo.templateVersion}`
         );
       }
     }
