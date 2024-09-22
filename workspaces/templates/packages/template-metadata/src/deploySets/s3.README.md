@@ -7,7 +7,7 @@
   </a>
 </p>
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/9167b94cfaa248858c06734916682a36)](https://www.codacy.com/gh/goldstack/s3-terraform-typescript-boilerplate/dashboard?utm_source=github.com\&utm_medium=referral\&utm_content=goldstack/s3-terraform-typescript-boilerplate\&utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/9167b94cfaa248858c06734916682a36)](https://www.codacy.com/gh/goldstack/s3-terraform-typescript-boilerplate/dashboard?utm_source=github.com&utm_medium=referral&utm_content=goldstack/s3-terraform-typescript-boilerplate&utm_campaign=Badge_Grade)
 
 Boilerplate for setting up the infrastructure for AWS S3 using Terraform and working with S3 using a simple TypeScript API.
 
@@ -54,9 +54,9 @@ For more information, see [GitHub documentation - Fork a repo](https://docs.gith
 
 A few dependencies need to be available in your development system. Please verify they are present or install them.
 
-*   Node v18+
-*   Yarn v1.22.5+
-*   Docker v24+
+- Node v18+
+- Yarn v1.22.5+
+- Docker v24+
 
 Open a terminal and run the following commands:
 
@@ -72,9 +72,9 @@ This should produce the following output:
 
 If you need to install or update any of the dependencies, please see the following guides:
 
-*   [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-*   [Yarn Installation](https://yarnpkg.com/getting-started/install)
-*   [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
+- [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- [Yarn Installation](https://yarnpkg.com/getting-started/install)
+- [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
 
 ## 3. Initialise project and install NPM Dependencies
 
@@ -110,17 +110,17 @@ You may also be asked if you want to install recommended extensions for this wor
 
 If you want to install the necessary extensions manually, here are links to the extensions required:
 
-*   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-*   [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-*   [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
 
 ## 6. Initialise TypeScript
 
-Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click *Allow*.
+Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click _Allow_.
 
 <img src="https://cdn.goldstack.party/img/202201/allow_typescript.gif"  alt="VSCode Locate TypeScript">
 
-In the status bar on the bottom right-hand corner of the VSCode editor you should now see *TypeScript*.
+In the status bar on the bottom right-hand corner of the VSCode editor you should now see _TypeScript_.
 
 ![TypeScript status icon in VSCode](https://cdn.goldstack.party/img/202203/typescript_init.png)
 
@@ -154,9 +154,9 @@ Specifically, the [goldstack.json](https://github.com/goldstack/s3-terraform-typ
 
 The key property you will need to update is:
 
-*   `deployments[0].configuration.bucketName`
+- `deployments[0].configuration.bucketName`
 
-You also need to *delete* `deployments[0].tfStateKey`.
+You also need to _delete_ `deployments[0].tfStateKey`.
 
 For more information on these configuration options, see [Goldstack Documentation / S3 / Configure](https://docs.goldstack.party/docs/templates/s3#configure).
 
