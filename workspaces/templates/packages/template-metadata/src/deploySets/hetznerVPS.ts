@@ -48,6 +48,7 @@ export const createHetznerVPSBuildSetConfig =
                     serverType: 'cpx11',
                     sshUserFingerprint: '49:35:14:98:08:d4:71:a6:04:c2:f6',
                     serverName: 'goldstack-ci-test',
+                    hetznerUser: 'local', // since in CI injected by environment variable
                     environmentVariables: [
                       {
                         name: 'DUMMY_ENV',
