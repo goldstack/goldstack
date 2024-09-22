@@ -6,7 +6,7 @@ import { transpile, resolveMarkdown } from '@goldstack/utils-docs-cli';
 
 import { getModuleTemplatesNames } from '@goldstack/module-template-utils';
 
-import path, { resolve } from 'path';
+import path from 'path';
 import fs from 'fs';
 import assert from 'assert';
 
@@ -94,6 +94,11 @@ const run = async () => {
   await generateMarkdownDocs(
     paths.buildSets + 'emailSend.template.README.md',
     paths.buildSets + 'emailSend.README.md'
+  );
+
+  await generateMarkdownDocs(
+    paths.buildSets + 'hetznerVPS.template.README.md',
+    paths.buildSets + 'hetznerVPS.README.md'
   );
   await generateMarkdownDocs(
     paths.buildSets + 's3.template.README.md',

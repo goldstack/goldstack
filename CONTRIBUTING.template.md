@@ -130,10 +130,11 @@ Creating a new template will involve the following:
 
 4. Every template must contain a [`template.json`](https://github.com/goldstack/goldstack/blob/master/workspaces/templates/packages/app-nextjs/template.json) file.
 5. Every template must contain a [`build.json`](https://github.com/goldstack/goldstack/blob/master/workspaces/templates/packages/app-nextjs/build.json) file. This determines what files will be included in the template provided in projects.
-6. Template metadata used for building and rendering the template on the Goldstack UI is defined in the [`template-metadata`](https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/template-metadata/src) package.
+6. Template metadata used for building and rendering the template on the Goldstack UI is defined in the [`template-metadata`](https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/template-metadata/src) package. This includes defining a CI build to test and release the template in `deploySets`.
 7. The folder name of the template (`packages/templates/[folder name]`) needs to be added to [module template names](https://github.com/goldstack/goldstack/blob/hetzner-server-goldstack-integration/workspaces/templates/packages/module-template-utils/src/moduleTemplateUtils.ts#L10)
 8. The template needs to be added to the stack builder [UI component](https://github.com/goldstack/goldstack/blob/release-hetzner-vps-template/workspaces/apps/packages/goldstack-home/src/pages/build.tsx#L215)
 9. Documentation for template needs to be defined in [template documentation](https://github.com/goldstack/goldstack/tree/release-hetzner-vps-template/workspaces/docs/docs/templates)
+9. Documentation build is updated in [generateTemplateDocs.ts](https://github.com/goldstack/goldstack/blob/release-hetzner-vps-template/workspaces/docs/packages/module-template-docs/src/scripts/generateTemplateDocs.ts#L1)
 8. The deploy set defined in the template metadata needs to be referenced in the GitHub deployment workflows for [dev](https://github.com/goldstack/goldstack/blob/master/.github/workflows/template_deploy_dev.yml#L11) and [prod](https://github.com/goldstack/goldstack/blob/master/.github/workflows/template_deploy_prod.yml#L11).
 
 We plan to simplify contributing templates in the future. Always be welcome to [reach out for help](https://github.com/goldstack/goldstack/issues).

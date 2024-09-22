@@ -24,6 +24,7 @@ import { getStaticWebsiteTemplateData } from './templates/staticWebsiteTemplateD
 import { getDynamoDBTemplateData } from './templates/dynamoDBTemplate';
 import { getServerSideRenderingTemplate } from './templates/serverSideRenderingTemplateData';
 import { getUserManagementTemplate } from './templates/userManagementTemplateData';
+import { getHetznerVPSTemplateData } from './templates/hetznerVPSTemplateData';
 
 export { getNextJsTemplateData };
 export { getExpressTemplateData };
@@ -49,6 +50,7 @@ export const allTemplates = (): ProjectTemplateProps[] => {
     getStaticWebsiteTemplateData(),
     getGoGinTemplateData(),
     getExpressAndEmailSentTemplateData(),
+    getHetznerVPSTemplateData(),
   ];
   return templates;
 };

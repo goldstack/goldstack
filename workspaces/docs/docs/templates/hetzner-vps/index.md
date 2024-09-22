@@ -29,7 +29,7 @@ Additional secrets can be defined by manually editing the file: `dist/credential
 
 Any additional properties added to the JSON file will be unpacked into files in the `~/app/secrets` folder.
 
-```sh
+```
 goldstack@goldstack-docker:~/app$ ls secrets/
 # -> accessKeyId.txt  awsRegion.txt  mySecret.txt  secretAccessKey.txt
 ```
