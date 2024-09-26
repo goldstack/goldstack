@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-terraform-hetzner",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Easily deploy Terraform IaC with npm package scripts for Hetzner Cloud Services",
   "keywords": [
     "goldstack",
@@ -36,13 +36,13 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra-hetzner": "0.1.3",
-    "@goldstack/utils-config": "0.4.11",
-    "@goldstack/utils-log": "0.3.10",
-    "@goldstack/utils-package": "0.4.11",
-    "@goldstack/utils-sh": "0.5.10",
-    "@goldstack/utils-terraform": "0.4.21",
-    "@goldstack/utils-terraform-aws": "0.4.24"
+    "@goldstack/infra-hetzner": "0.1.4",
+    "@goldstack/utils-config": "0.4.12",
+    "@goldstack/utils-log": "0.3.11",
+    "@goldstack/utils-package": "0.4.12",
+    "@goldstack/utils-sh": "0.5.11",
+    "@goldstack/utils-terraform": "0.4.22",
+    "@goldstack/utils-terraform-aws": "0.4.25"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.9",

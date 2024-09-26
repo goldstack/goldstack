@@ -13,6 +13,9 @@
       "path": "../../../templates-lib/packages/utils-config"
     },
     {
+      "path": "../../../utils/packages/utils-log"
+    },
+    {
       "path": "../../../templates-lib/packages/utils-package"
     },
     {

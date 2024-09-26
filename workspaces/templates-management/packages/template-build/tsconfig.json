@@ -19,6 +19,9 @@
       "path": "../template-repository"
     },
     {
+      "path": "../../../utils/packages/utils-log"
+    },
+    {
       "path": "../../../utils/packages/utils-sh"
     },
     {

@@ -19,23 +19,23 @@
     "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.11",
-    "@goldstack/infra-aws": "0.4.19",
+    "@goldstack/infra": "0.4.12",
+    "@goldstack/infra-aws": "0.4.20",
     "@goldstack/project-build": "0.1.0",
     "@goldstack/project-config": "0.1.0",
     "@goldstack/project-install": "0.1.0",
     "@goldstack/template-build": "0.1.0",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/utils-cli": "0.3.10",
-    "@goldstack/utils-config": "0.4.11",
+    "@goldstack/utils-config": "0.4.12",
     "@goldstack/utils-git": "0.2.9",
-    "@goldstack/utils-log": "0.3.10",
-    "@goldstack/utils-package": "0.4.11",
-    "@goldstack/utils-project": "0.4.11",
-    "@goldstack/utils-sh": "0.5.10",
-    "@goldstack/utils-template": "0.4.11",
+    "@goldstack/utils-log": "0.3.11",
+    "@goldstack/utils-package": "0.4.12",
+    "@goldstack/utils-project": "0.4.12",
+    "@goldstack/utils-sh": "0.5.11",
+    "@goldstack/utils-template": "0.4.12",
     "@goldstack/utils-template-test": "0.1.0",
-    "mock-aws-s3-v3": "5.0.7"
+    "mock-aws-s3-v3": "5.0.8"
   },
   "devDependencies": {
     "@swc/core": "^1.3.74",

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-dynamodb-cli",
-  "version": "0.6.9",
+  "version": "0.6.10",
   "description": "Utilities for building modules for DynamoDB access.",
   "keywords": [
     "goldstack",
@@ -42,13 +42,13 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/template-dynamodb": "0.3.8",
+    "@goldstack/template-dynamodb": "0.3.9",
     "@goldstack/utils-cli": "0.3.10",
-    "@goldstack/utils-package": "0.4.11",
-    "@goldstack/utils-package-config": "0.4.11",
-    "@goldstack/utils-sh": "0.5.10",
-    "@goldstack/utils-terraform": "0.4.21",
-    "@goldstack/utils-terraform-aws": "0.4.24",
+    "@goldstack/utils-package": "0.4.12",
+    "@goldstack/utils-package-config": "0.4.12",
+    "@goldstack/utils-sh": "0.5.11",
+    "@goldstack/utils-terraform": "0.4.22",
+    "@goldstack/utils-terraform-aws": "0.4.25",
     "source-map-support": "^0.5.21",
     "umzug": "^3.1.1",
     "yargs": "^17.5.1"
