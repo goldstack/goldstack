@@ -24,14 +24,12 @@ import { WriteStream } from 'fs';
 
 import { createSandbox } from 'sinon';
 
-export class MockedS3Client extends S3Client {}
-
 /**
  * Resets all mocks globally
  */
 export function resetMocks() {
   const s3Client = new S3Client();
-  mockClient(s3Client).reset();
+  // mockClient(s3Client).reset();
 }
 
 /**
@@ -48,10 +46,9 @@ export function createS3Client(
   s3Client?: S3Client
 ): S3Client {
   if (!s3Client) {
-    s3Client = new MockedS3Client();
+    s3Client = new S3Client();
   }
-  const sandbox = createSandbox();
-  const client = mockClient(S3Client, { sandbox });
+  const client = mockClient(S3Client);
 
   S3Mock.config.basePath = localDirectory;
   const mockS3 = new S3Mock.S3({
