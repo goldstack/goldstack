@@ -22,14 +22,36 @@ import S3Mock, { AWSError } from 'mock-aws-s3';
 import { StreamingBlobPayloadOutputTypes } from '@smithy/types';
 import { WriteStream } from 'fs';
 
+import { createSandbox } from 'sinon';
+
+export class MockedS3Client extends S3Client {}
+
+/**
+ * Resets all mocks globally
+ */
+export function resetMocks() {
+  const s3Client = new S3Client();
+  mockClient(s3Client).reset();
+}
+
+/**
+ * Creates a mocked S3 instance.
+ *
+ * WARNING: This mocks ALL S3 instances, not just the created one. To reset mock behaviour, use resetMocks()
+ *
+ * @param localDirectory
+ * @param s3Client
+ * @returns
+ */
 export function createS3Client(
   localDirectory: string,
   s3Client?: S3Client
 ): S3Client {
   if (!s3Client) {
-    s3Client = new S3Client();
+    s3Client = new MockedS3Client();
   }
-  const client = mockClient(S3Client);
+  const sandbox = createSandbox();
+  const client = mockClient(S3Client, { sandbox });
 
   S3Mock.config.basePath = localDirectory;
   const mockS3 = new S3Mock.S3({

@@ -21,6 +21,8 @@ import assert from 'assert';
 import path from 'path';
 export * from './types/DeploySet';
 
+import { resetMocks } from 'mock-aws-s3-v3';
+
 import { info, warn } from '@goldstack/utils-log';
 
 export interface BuildSetParams {
@@ -269,6 +271,9 @@ export const buildSet = async (
   } else {
     warn('Skipping tests');
   }
+
+  // IMPORTANT since otherwise nothing will be deployed
+  resetMocks();
 
   // if everything is good, deploy templates
   info('Deploying templates', { workDir: params.workDir + 'templatesDeploy/' });
