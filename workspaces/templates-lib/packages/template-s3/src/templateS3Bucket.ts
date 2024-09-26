@@ -12,6 +12,10 @@ import { Client, Command } from '@smithy/smithy-client';
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 
+import { warn } from '@goldstack/utils-log';
+
+let s3MockUsed = false;
+
 export const connect = async (
   goldstackConfig: any,
   packageSchema: any,
@@ -35,7 +39,22 @@ export const connect = async (
     const s3 = MockS3.createS3Client('goldstackLocal/s3');
 
     (s3 as any)._goldstackIsMocked = true;
+    s3MockUsed = true;
     return s3 as any;
+  } else {
+    if (s3MockUsed) {
+      warn(
+        'Initialising a real S3 bucket after a mocked one had been created it. All mocks are reset.',
+        {
+          deploymentName,
+          package: goldstackConfig.name,
+        }
+      );
+      // only require this for local testing
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const MockS3 = require(excludeInBundle('mock-aws-s3-v3'));
+      MockS3.resetMocks();
+    }
   }
   const deployment = packageConfig.getDeployment(deploymentName);
 

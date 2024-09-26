@@ -5,10 +5,11 @@ import { mkdir, rm } from '@goldstack/utils-sh';
 import tmp from 'tmp';
 import { S3TemplateRepository } from '@goldstack/template-repository';
 import yargs from 'yargs';
+import { info } from '@goldstack/utils-log';
 import assert from 'assert';
 import { getAllBuildSets, getBuildSet } from '@goldstack/template-metadata';
 import { SendEmailCommand } from '@aws-sdk/client-ses';
-import { createS3Client } from 'mock-aws-s3-v3';
+import { createS3Client, resetMocks } from 'mock-aws-s3-v3';
 import { getAwsConfigPath } from '@goldstack/utils-config';
 import { readConfig } from '@goldstack/infra-aws';
 import { scheduleAllDeploySets } from './scheduleAllDeploySets';
@@ -91,6 +92,7 @@ export const run = async (): Promise<void> => {
     if (argv.repo === 'goldstack-dev') {
       const s3 = await connect('dev');
       const bucketName = await getBucketName('dev');
+      info('Connected to S3 repository dev and bucket: ' + bucketName);
       repo = new S3TemplateRepository({
         s3,
         bucket: bucketName,
@@ -114,6 +116,8 @@ export const run = async (): Promise<void> => {
         bucket: 'repo',
         bucketUrl: 'https://local.goldstack.party/repo/',
       });
+    } else {
+      resetMocks(); // important since otherwise local mock will be used even if not specified for this run
     }
 
     const command = argv._[0];
@@ -126,7 +130,7 @@ export const run = async (): Promise<void> => {
       if (workDir === 'tmp') {
         tmpInstance = tmp.dirSync();
         workDir = tmpInstance.name + '/';
-        console.log('Creating in temporary directory ' + workDir);
+        info('Creating in temporary directory ' + workDir);
       }
       if (!workDir.endsWith('/')) {
         throw new Error(
@@ -139,7 +143,7 @@ export const run = async (): Promise<void> => {
       const awsConfigPath = getAwsConfigPath('./../../');
       let awsConfig: undefined | AWSAPIKeyUser = undefined;
       if (fs.existsSync(awsConfigPath)) {
-        console.info('Using local AWS config');
+        info('Using local AWS config');
         const goldstackDevUser = readConfig(awsConfigPath).users.find(
           (user) => user.name === 'goldstack-dev'
         );
@@ -155,9 +159,9 @@ export const run = async (): Promise<void> => {
         user: awsConfig,
       });
 
-      console.log('Deploy set completed.');
+      info('Deploy set completed.');
       if (tmpInstance) {
-        rm('-rf', workDir + '*');
+        rm('-rf', workDir.replace(/\\/g, '/') + '*');
         tmpInstance.removeCallback();
       }
 

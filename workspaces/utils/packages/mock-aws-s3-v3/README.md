@@ -44,3 +44,15 @@ The following operations are currently supported in this mock:
 - PutObjectTaggingCommand
 
 Same as [mock-aws-s3](https://www.npmjs.com/package/mock-aws-s3) minus `getSignedUrl`. For an example of how `getSignedUrl` could be mocked, see [templateS3Bucket.ts](https://github.com/goldstack/goldstack/blob/5842322ed4f5165da56fc2ab899f11bd9e1821e3/workspaces/templates-lib/packages/template-s3/src/templateS3Bucket.ts#L64).
+
+## ⚠️ Using Multiple Clients ⚠️
+
+The way `aws-sdk-client-mock` is implemented will cause `createS3Client` to mock ALL S3 clients globally. Thus the folder specified will be used for all calls happening after `createS3Client`.
+
+This will also apply to S3 clients that have not been mocked. To reset the mock and have `S3Client` instances behave like _real_ instances, use the method: `resetMocks`
+
+```typescript
+import { resetMocks } from 'mock-aws-s3-v3';
+
+resetMocks();
+```

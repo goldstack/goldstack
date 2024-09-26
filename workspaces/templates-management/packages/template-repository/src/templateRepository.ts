@@ -21,6 +21,7 @@ import { info } from '@goldstack/utils-log';
 
 import { promisify } from 'util';
 import assert from 'assert';
+import path from 'path';
 
 const sleep = promisify(setTimeout);
 
@@ -75,11 +76,10 @@ export class S3TemplateRepository implements TemplateRepository {
     version: string,
     destinationFolder: string
   ): Promise<string | undefined> {
-    assert(
-      destinationFolder.endsWith('/'),
-      'Destination folder must end with a slash (/)'
+    const filePath = path.join(
+      destinationFolder,
+      `${templateName}-${version}.zip`
     );
-    const filePath = destinationFolder + `${templateName}-${version}.zip`;
     const templatePath = `versions/${templateName}/${version}/${templateName}-${version}.zip`;
     if (
       await download({
@@ -96,43 +96,53 @@ export class S3TemplateRepository implements TemplateRepository {
   }
 
   async addTemplateVersion(
-    path: string
+    pathToTemplate: string
   ): Promise<GoldstackTemplateConfiguration> {
-    info('Adding template version from ' + path);
-    const config = readTemplateConfigFromFile(path + 'template.json');
-    const latest = await this.getLatestTemplateVersion(config.templateName);
+    info('Adding template version from ' + pathToTemplate);
+    const config = readTemplateConfigFromFile(
+      path.join(pathToTemplate, 'template.json')
+    );
+    const latestDeployedToRepo = await this.getLatestTemplateVersion(
+      config.templateName
+    );
 
-    if (latest === undefined) {
+    if (latestDeployedToRepo === undefined) {
       info(
         'First deployment of template. Assuming previous version to be 0.0.0'
       );
       config.previousTemplateVersion = '0.0.0';
     } else {
-      info('Last version that was deployed: ' + latest);
-      if (latest.templateName !== config.templateName) {
+      info(
+        'Last version that was deployed: ' +
+          latestDeployedToRepo.templateVersion
+      );
+      if (latestDeployedToRepo.templateName !== config.templateName) {
         throw new Error(
           'Invalid template or latest version. Not matching template names' +
-            ` for ${config.templateName} found latest ${latest.templateName}`
+            ` for ${config.templateName} found latest ${latestDeployedToRepo.templateName}`
         );
       }
 
-      config.previousTemplateVersion = latest.templateVersion;
+      config.previousTemplateVersion = latestDeployedToRepo.templateVersion;
       if (
-        config.templateVersion === latest.templateVersion ||
-        semverGt(latest.templateVersion, config.templateVersion)
+        config.templateVersion === latestDeployedToRepo.templateVersion ||
+        semverGt(latestDeployedToRepo.templateVersion, config.templateVersion)
       ) {
         info('Deploying new version: ' + config.templateName);
-        const newVersion = semverInc(latest.templateVersion, 'patch');
+        const newVersion = semverInc(
+          latestDeployedToRepo.templateVersion,
+          'patch'
+        );
         if (!newVersion) {
           throw new Error(
-            `Cannot generate new version from ${latest.templateVersion}`
+            `Cannot generate new version from ${latestDeployedToRepo.templateVersion}`
           );
         }
         config.templateVersion = newVersion;
       } else {
         throw new Error(
           'Invalid version tor release. ' +
-            `Trying to release ${config.templateVersion}. Latest version ${latest.templateVersion}`
+            `Trying to release ${config.templateVersion}. Latest version ${latestDeployedToRepo.templateVersion}`
         );
       }
     }
@@ -144,11 +154,11 @@ export class S3TemplateRepository implements TemplateRepository {
 
     const workDir = `./goldstackLocal/work/repo/${config.templateName}/${config.templateVersion}`;
     rm('-rf', workDir);
-    sleep(200);
+    await sleep(200);
 
     mkdir('-p', workDir);
-    await copy(path, workDir);
-    const targetConfigPath = workDir + '/template.json';
+    await copy(pathToTemplate, workDir);
+    const targetConfigPath = path.join(workDir, 'template.json');
     const configJson = JSON.stringify(config, null, 2);
     write(configJson, targetConfigPath);
 

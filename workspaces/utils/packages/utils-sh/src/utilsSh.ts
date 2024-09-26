@@ -1,8 +1,9 @@
 import { execSync, execFileSync, exec as processAsync } from 'child_process';
 import fs from 'fs';
-import ncp from 'ncp';
 
-import { error, fatal, info } from '@goldstack/utils-log';
+import { copy as fsExtraCopy } from 'fs-extra';
+
+import { debug, error, info, warn } from '@goldstack/utils-log';
 
 import fse from 'fs-extra';
 
@@ -34,25 +35,26 @@ export const copy = async (
   }
 
   for (const sourceEl of sourceArr) {
-    const files = globSync(sourceEl);
+    const files = globSync(sourceEl.replace(/\\/g, '/'));
+    if (files.length === 0) {
+      warn('No files will be copied since no files matched glob ' + sourceEl);
+      continue;
+    }
+    for (const file of files) {
+      const destCorrected = fs.lstatSync(file).isDirectory()
+        ? dest
+        : path.join(dest, path.basename(file));
 
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      await new Promise<void>((resolve, reject) => {
-        let destCorrected: string;
-        if (!fs.lstatSync(file).isDirectory()) {
-          destCorrected = dest + path.basename(file);
-        } else {
-          destCorrected = dest;
-        }
-        ncp(file, destCorrected, { stopOnErr: true }, (err) => {
-          if (err) {
-            reject(err);
-            return;
-          }
-          resolve();
+      try {
+        await fsExtraCopy(file, destCorrected, {
+          overwrite: true,
+          recursive: true,
         });
-      });
+        debug(`Copied ${file} to ${destCorrected}`);
+      } catch (err) {
+        error(`Error copying ${file} to ${destCorrected}: ` + err);
+        throw err;
+      }
     }
   }
 };
@@ -178,12 +180,7 @@ export const rmSafe = async (...files: string[]): Promise<void> => {
 
 export const rm = (options: string, ...files: string[]): void => {
   for (const file of files) {
-    rimraf.sync(file); // sh.rm(options, files);
-    // if (!res || res.code !== 0) {
-    //   sh.echo(res.stdout);
-    //   sh.echo(res.stderr);
-    //   throw new Error(`Cannot remove ${file}`);
-    // }
+    rimraf.sync(file);
   }
 };
 

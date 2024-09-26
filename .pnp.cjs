@@ -3701,7 +3701,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:18.7.13"],\
           ["@types/semver", "npm:7.3.4"],\
           ["archiver", "npm:5.3.1"],\
-          ["fs-extra", "npm:10.0.0"],\
+          ["fs-extra", "npm:11.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["semver", "npm:7.3.8"],\
@@ -4236,6 +4236,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@goldstack/prepare-template", "workspace:workspaces/templates-management/packages/prepare-template"],\
           ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
@@ -4401,7 +4402,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:18.7.13"],\
           ["@types/semver", "npm:7.3.4"],\
           ["@types/uuid", "npm:8.3.0"],\
-          ["fs-extra", "npm:10.0.0"],\
+          ["fs-extra", "npm:11.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["semver", "npm:7.3.8"],\
@@ -4572,7 +4573,7 @@ const RAW_RUNTIME_STATE =
           ["@types/semver", "npm:7.3.4"],\
           ["@types/stripe", "npm:7.13.24"],\
           ["@types/uuid", "npm:8.3.0"],\
-          ["fs-extra", "npm:10.0.0"],\
+          ["fs-extra", "npm:11.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["stripe", "npm:8.114.0"],\
@@ -4642,6 +4643,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/prepare-template", "workspace:workspaces/templates-management/packages/prepare-template"],\
           ["@goldstack/prepare-yarn-pnp-monorepo", "workspace:workspaces/templates-management/packages/prepare-yarn-pnp-monorepo"],\
           ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
@@ -4671,6 +4673,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
           ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
@@ -4681,6 +4684,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:29.0.1"],\
           ["@types/node", "npm:18.7.13"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
+          ["mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
           ["rimraf", "npm:3.0.2"],\
           ["ts-json-schema-generator", "npm:1.0.0"],\
           ["typescript", "patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
@@ -5053,6 +5057,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
           ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
@@ -5152,7 +5157,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:29.0.1"],\
           ["@types/node", "npm:18.7.13"],\
           ["@types/semver", "npm:7.3.4"],\
-          ["fs-extra", "npm:10.0.0"],\
+          ["fs-extra", "npm:11.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["semver", "npm:7.3.8"],\
@@ -5200,6 +5205,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
           ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-package-config-embedded", "workspace:workspaces/templates-lib/packages/utils-package-config-embedded"],\
           ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
@@ -6021,16 +6027,14 @@ const RAW_RUNTIME_STATE =
           ["@types/fs-extra", "npm:9.0.13"],\
           ["@types/glob", "npm:7.1.3"],\
           ["@types/jest", "npm:29.0.1"],\
-          ["@types/ncp", "npm:2.0.4"],\
           ["@types/node", "npm:18.7.13"],\
           ["@types/rimraf", "npm:3.0.0"],\
           ["@types/which", "npm:2.0.1"],\
           ["archiver", "npm:5.3.1"],\
           ["extract-zip", "npm:2.0.1"],\
-          ["fs-extra", "npm:10.0.0"],\
+          ["fs-extra", "npm:11.2.0"],\
           ["glob", "npm:8.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
-          ["ncp", "npm:2.0.0"],\
           ["rimraf", "npm:3.0.2"],\
           ["typescript", "patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
           ["which", "npm:2.0.2"]\
@@ -7238,6 +7242,14 @@ const RAW_RUNTIME_STATE =
           ["type-detect", "npm:4.0.8"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.0.1", {\
+        "packageLocation": "./.yarn/cache/@sinonjs-commons-npm-3.0.1-bffb9f5a53-a0af217ba7.zip/node_modules/@sinonjs/commons/",\
+        "packageDependencies": [\
+          ["@sinonjs/commons", "npm:3.0.1"],\
+          ["type-detect", "npm:4.0.8"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@sinonjs/fake-timers", [\
@@ -7246,6 +7258,14 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@sinonjs/fake-timers", "npm:10.3.0"],\
           ["@sinonjs/commons", "npm:3.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:13.0.2", {\
+        "packageLocation": "./.yarn/cache/@sinonjs-fake-timers-npm-13.0.2-6d212b1963-77cca5c548.zip/node_modules/@sinonjs/fake-timers/",\
+        "packageDependencies": [\
+          ["@sinonjs/fake-timers", "npm:13.0.2"],\
+          ["@sinonjs/commons", "npm:3.0.1"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -7268,6 +7288,16 @@ const RAW_RUNTIME_STATE =
           ["type-detect", "npm:4.0.8"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:8.0.2", {\
+        "packageLocation": "./.yarn/cache/@sinonjs-samsam-npm-8.0.2-6691110cca-58ca9752e8.zip/node_modules/@sinonjs/samsam/",\
+        "packageDependencies": [\
+          ["@sinonjs/samsam", "npm:8.0.2"],\
+          ["@sinonjs/commons", "npm:3.0.1"],\
+          ["lodash.get", "npm:4.4.2"],\
+          ["type-detect", "npm:4.1.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@sinonjs/text-encoding", [\
@@ -7275,6 +7305,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@sinonjs-text-encoding-npm-0.7.2-ab9862ba52-ec713fb448.zip/node_modules/@sinonjs/text-encoding/",\
         "packageDependencies": [\
           ["@sinonjs/text-encoding", "npm:0.7.2"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:0.7.3", {\
+        "packageLocation": "./.yarn/cache/@sinonjs-text-encoding-npm-0.7.3-3d861e5a19-f0cc89bae3.zip/node_modules/@sinonjs/text-encoding/",\
+        "packageDependencies": [\
+          ["@sinonjs/text-encoding", "npm:0.7.3"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -8962,16 +8999,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["@types/ncp", [\
-      ["npm:2.0.4", {\
-        "packageLocation": "./.yarn/cache/@types-ncp-npm-2.0.4-3a6b65e2ac-c23a3b9c7b.zip/node_modules/@types/ncp/",\
-        "packageDependencies": [\
-          ["@types/ncp", "npm:2.0.4"],\
-          ["@types/node", "npm:14.0.13"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["@types/node", [\
       ["npm:14.0.13", {\
         "packageLocation": "./.yarn/cache/@types-node-npm-14.0.13-12d0173e00-57f59a9d84.zip/node_modules/@types/node/",\
@@ -9208,6 +9235,14 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-sinon-npm-10.0.20-44e0db6294-4c62cb8e45.zip/node_modules/@types/sinon/",\
         "packageDependencies": [\
           ["@types/sinon", "npm:10.0.20"],\
+          ["@types/sinonjs__fake-timers", "npm:8.1.5"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:17.0.3", {\
+        "packageLocation": "./.yarn/cache/@types-sinon-npm-17.0.3-20425e7552-3f82b4a477.zip/node_modules/@types/sinon/",\
+        "packageDependencies": [\
+          ["@types/sinon", "npm:17.0.3"],\
           ["@types/sinonjs__fake-timers", "npm:8.1.5"]\
         ],\
         "linkType": "HARD"\
@@ -13012,6 +13047,13 @@ const RAW_RUNTIME_STATE =
           ["diff", "npm:5.1.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:7.0.0", {\
+        "packageLocation": "./.yarn/cache/diff-npm-7.0.0-dcfd888f89-e9b8e48d05.zip/node_modules/diff/",\
+        "packageDependencies": [\
+          ["diff", "npm:7.0.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["diff-match-patch", [\
@@ -15163,20 +15205,20 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["fs-extra", [\
-      ["npm:10.0.0", {\
-        "packageLocation": "./.yarn/cache/fs-extra-npm-10.0.0-4f8c704115-c333973ece.zip/node_modules/fs-extra/",\
+      ["npm:10.1.0", {\
+        "packageLocation": "./.yarn/cache/fs-extra-npm-10.1.0-86573680ed-05ce2c3b59.zip/node_modules/fs-extra/",\
         "packageDependencies": [\
-          ["fs-extra", "npm:10.0.0"],\
+          ["fs-extra", "npm:10.1.0"],\
           ["graceful-fs", "npm:4.2.4"],\
           ["jsonfile", "npm:6.0.1"],\
           ["universalify", "npm:2.0.0"]\
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:10.1.0", {\
-        "packageLocation": "./.yarn/cache/fs-extra-npm-10.1.0-86573680ed-05ce2c3b59.zip/node_modules/fs-extra/",\
+      ["npm:11.2.0", {\
+        "packageLocation": "./.yarn/cache/fs-extra-npm-11.2.0-6783080799-0579bf6726.zip/node_modules/fs-extra/",\
         "packageDependencies": [\
-          ["fs-extra", "npm:10.1.0"],\
+          ["fs-extra", "npm:11.2.0"],\
           ["graceful-fs", "npm:4.2.4"],\
           ["jsonfile", "npm:6.0.1"],\
           ["universalify", "npm:2.0.0"]\
@@ -18584,6 +18626,13 @@ const RAW_RUNTIME_STATE =
           ["just-extend", "npm:4.2.1"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:6.2.0", {\
+        "packageLocation": "./.yarn/cache/just-extend-npm-6.2.0-25e57ed812-1f487b074b.zip/node_modules/just-extend/",\
+        "packageDependencies": [\
+          ["just-extend", "npm:6.2.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["kind-of", [\
@@ -19678,10 +19727,12 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:29.0.1"],\
           ["@types/mock-aws-s3", "npm:2.6.3"],\
           ["@types/node", "npm:18.7.13"],\
+          ["@types/sinon", "npm:17.0.3"],\
           ["aws-sdk-client-mock", "npm:4.0.1"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["mock-aws-s3", "npm:4.0.2"],\
           ["rimraf", "npm:3.0.2"],\
+          ["sinon", "npm:19.0.2"],\
           ["typescript", "patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
         ],\
         "linkType": "SOFT"\
@@ -20019,6 +20070,18 @@ const RAW_RUNTIME_STATE =
           ["@sinonjs/text-encoding", "npm:0.7.2"],\
           ["just-extend", "npm:4.2.1"],\
           ["path-to-regexp", "npm:1.8.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:6.1.1", {\
+        "packageLocation": "./.yarn/cache/nise-npm-6.1.1-78045699a5-2d3175587c.zip/node_modules/nise/",\
+        "packageDependencies": [\
+          ["nise", "npm:6.1.1"],\
+          ["@sinonjs/commons", "npm:3.0.1"],\
+          ["@sinonjs/fake-timers", "npm:13.0.2"],\
+          ["@sinonjs/text-encoding", "npm:0.7.3"],\
+          ["just-extend", "npm:6.2.0"],\
+          ["path-to-regexp", "npm:8.2.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -20920,6 +20983,13 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["path-to-regexp", "npm:1.8.0"],\
           ["isarray", "npm:0.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:8.2.0", {\
+        "packageLocation": "./.yarn/cache/path-to-regexp-npm-8.2.0-71c92fc0c6-23378276a1.zip/node_modules/path-to-regexp/",\
+        "packageDependencies": [\
+          ["path-to-regexp", "npm:8.2.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -23450,6 +23520,19 @@ const RAW_RUNTIME_STATE =
           ["supports-color", "npm:7.2.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:19.0.2", {\
+        "packageLocation": "./.yarn/cache/sinon-npm-19.0.2-594b36f1b3-0be47968e9.zip/node_modules/sinon/",\
+        "packageDependencies": [\
+          ["sinon", "npm:19.0.2"],\
+          ["@sinonjs/commons", "npm:3.0.1"],\
+          ["@sinonjs/fake-timers", "npm:13.0.2"],\
+          ["@sinonjs/samsam", "npm:8.0.2"],\
+          ["diff", "npm:7.0.0"],\
+          ["nise", "npm:6.1.1"],\
+          ["supports-color", "npm:7.2.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["sisteransi", [\
@@ -25474,6 +25557,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/type-detect-npm-4.0.8-8d8127b901-5179e3b8eb.zip/node_modules/type-detect/",\
         "packageDependencies": [\
           ["type-detect", "npm:4.0.8"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:4.1.0", {\
+        "packageLocation": "./.yarn/cache/type-detect-npm-4.1.0-171d011a73-e363bf0352.zip/node_modules/type-detect/",\
+        "packageDependencies": [\
+          ["type-detect", "npm:4.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\

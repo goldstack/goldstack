@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@goldstack/utils-config": "0.4.11",
+    "@goldstack/utils-log": "0.3.10",
     "@goldstack/utils-package": "0.4.11",
     "@goldstack/utils-sh": "0.5.10",
     "@goldstack/utils-template": "0.4.11",
