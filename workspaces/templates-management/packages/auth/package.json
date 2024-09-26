@@ -27,7 +27,7 @@
     "@goldstack/utils-sh": "0.5.10",
     "@goldstack/utils-template": "0.4.11",
     "archiver": "^5.3.1",
-    "fs-extra": "^10.0.0",
+    "fs-extra": "^11.2.0",
     "semver": "^7.3.2",
     "uuid": "^8.3.0"
   },

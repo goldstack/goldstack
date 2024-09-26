@@ -26,7 +26,7 @@
     "@goldstack/session-repository-bucket": "0.1.0",
     "@goldstack/utils-s3": "0.4.7",
     "@goldstack/utils-sh": "0.5.10",
-    "fs-extra": "^10.0.0",
+    "fs-extra": "^11.2.0",
     "stripe": "^8.114.0",
     "uuid": "^8.3.0"
   },

@@ -3701,7 +3701,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:18.7.13"],\
           ["@types/semver", "npm:7.3.4"],\
           ["archiver", "npm:5.3.1"],\
-          ["fs-extra", "npm:10.0.0"],\
+          ["fs-extra", "npm:11.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["semver", "npm:7.3.8"],\
@@ -4402,7 +4402,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:18.7.13"],\
           ["@types/semver", "npm:7.3.4"],\
           ["@types/uuid", "npm:8.3.0"],\
-          ["fs-extra", "npm:10.0.0"],\
+          ["fs-extra", "npm:11.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["semver", "npm:7.3.8"],\
@@ -4573,7 +4573,7 @@ const RAW_RUNTIME_STATE =
           ["@types/semver", "npm:7.3.4"],\
           ["@types/stripe", "npm:7.13.24"],\
           ["@types/uuid", "npm:8.3.0"],\
-          ["fs-extra", "npm:10.0.0"],\
+          ["fs-extra", "npm:11.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["stripe", "npm:8.114.0"],\
@@ -5157,7 +5157,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:29.0.1"],\
           ["@types/node", "npm:18.7.13"],\
           ["@types/semver", "npm:7.3.4"],\
-          ["fs-extra", "npm:10.0.0"],\
+          ["fs-extra", "npm:11.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["semver", "npm:7.3.8"],\
@@ -15205,16 +15205,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["fs-extra", [\
-      ["npm:10.0.0", {\
-        "packageLocation": "./.yarn/cache/fs-extra-npm-10.0.0-4f8c704115-c333973ece.zip/node_modules/fs-extra/",\
-        "packageDependencies": [\
-          ["fs-extra", "npm:10.0.0"],\
-          ["graceful-fs", "npm:4.2.4"],\
-          ["jsonfile", "npm:6.0.1"],\
-          ["universalify", "npm:2.0.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:10.1.0", {\
         "packageLocation": "./.yarn/cache/fs-extra-npm-10.1.0-86573680ed-05ce2c3b59.zip/node_modules/fs-extra/",\
         "packageDependencies": [\

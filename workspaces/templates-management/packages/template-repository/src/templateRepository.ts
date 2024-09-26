@@ -112,7 +112,10 @@ export class S3TemplateRepository implements TemplateRepository {
       );
       config.previousTemplateVersion = '0.0.0';
     } else {
-      info('Last version that was deployed: ' + latestDeployedToRepo);
+      info(
+        'Last version that was deployed: ' +
+          latestDeployedToRepo.templateVersion
+      );
       if (latestDeployedToRepo.templateName !== config.templateName) {
         throw new Error(
           'Invalid template or latest version. Not matching template names' +

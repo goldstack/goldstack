@@ -29,7 +29,7 @@ import { createSandbox } from 'sinon';
  */
 export function resetMocks() {
   const s3Client = new S3Client();
-  // mockClient(s3Client).reset();
+  mockClient(s3Client).reset();
 }
 
 /**
