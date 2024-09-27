@@ -13,7 +13,7 @@ app.use(helmet());
 console.log('CORS config:', process.env.CORS);
 app.use(cors({ origin: process.env.CORS, credentials: true }));
 app.use(cookieParser() as any);
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 if (process.env.GOLDSTACK_DEPLOYMENT !== 'local') {
   app.use(requestLogger());
