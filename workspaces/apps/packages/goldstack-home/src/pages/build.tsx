@@ -225,7 +225,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     title="Hetzner VPS"
                     element="hetzner-vps"
                     disabled={building}
-                    icon={ReactIcon}
+                    icon={'https://cdn.goldstack.party/img/202409/hetzner.svg'}
                     templateLink={'/templates/hetzner-vps'}
                     checked={elements.indexOf('hetzner-vps') !== -1}
                     onChange={checkboxChange}

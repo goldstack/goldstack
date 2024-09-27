@@ -6,6 +6,6 @@ if [ -f "$ENV_FILE" ]; then
   source $ENV_FILE
 fi
 
-echo "Starting server $DUMMY_ENV"
+echo "Starting server"
 
 docker-compose up -d
