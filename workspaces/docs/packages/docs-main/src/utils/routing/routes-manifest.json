@@ -147,6 +147,10 @@
       "regex": "^\\/docs\\/templates\\/email-send$"
     },
     {
+      "page": "/docs/templates/hetzner-vps",
+      "regex": "^\\/docs\\/templates\\/hetzner-vps$"
+    },
+    {
       "page": "/docs/templates/lambda-express",
       "regex": "^\\/docs\\/templates\\/lambda-express$"
     },
@@ -207,8 +211,8 @@
       "routeKeys": {
         "nxtPslug": "nxtPslug"
       },
-      "dataRouteRegex": "^/_next/data/IMDxZlyOEFCo3PgwLVnsV/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/IMDxZlyOEFCo3PgwLVnsV/docs/(?<nxtPslug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/z4x4UGfisyfHzuXBUR4IL/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/z4x4UGfisyfHzuXBUR4IL/docs/(?<nxtPslug>.+?)\\.json$"
     }
   ],
   "rsc": {
