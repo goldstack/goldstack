@@ -118,12 +118,12 @@ Then you need to update the file `packages/hetzner-vps-1/goldstack.json`:
 
 Here change the following:
 
-- *Delete* the property `tfStateKey`
-- *Update* the `hetznerUser` to the username you defined in `config.json` above
-- *Update* the `sshUserFingerprint` to the fingerprint of an SSH user you have created through Hetzner console
-- *Update* the `serverName` to a name of your choosing
-- *Update* the `location` to what you require
-- *Update* the `serverType` to what you require
+- _Delete_ the property `tfStateKey`
+- _Update_ the `hetznerUser` to the username you defined in `config.json` above
+- _Update_ the `sshUserFingerprint` to the fingerprint of an SSH user you have created through Hetzner console
+- _Update_ the `serverName` to a name of your choosing
+- _Update_ the `location` to what you require
+- _Update_ the `serverType` to what you require
 
 Find more information about the required values in [Hetzner VPS / Configure](https://docs.goldstack.party/docs/templates/hetzner-vps#configure).
 
