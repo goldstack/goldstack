@@ -6,6 +6,7 @@ export const getHetznerVPSTemplateData = (): ProjectTemplateProps => {
     id: 'hetzner-vps',
     title: 'Hetzner VPS',
     images: ['https://cdn.goldstack.party/img/202409/hetzner.svg'],
+    boilerplateLink: 'https://github.com/goldstack/hetzner-vps-template',
     packages: [HetznerVPS],
     isComposite: false,
     description:
