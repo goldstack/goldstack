@@ -22,13 +22,13 @@ async function packageLambda() {
   const currentDir = process.cwd(); // Use the directory where the script is run from
   const lambdaDir = path.join(currentDir, 'lambda');
   const venvDir = path.join(lambdaDir, 'lambda_env');
-  const targetZip = path.join(currentDir, 'my_deployment_package.zip');
+  const targetZip = path.join(currentDir, 'lambda.zip');
   const lambdaFunctionFile = path.join(lambdaDir, 'lambda.py');
 
   // Step 1: Create virtual environment
   if (!fs.existsSync(venvDir)) {
     info('Creating virtual environment...');
-    exec(`python3.12 -m venv ${venvDir}`);
+    exec(`python -m venv ${venvDir}`);
   } else {
     info('Virtual environment already exists.');
   }
