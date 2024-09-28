@@ -16,10 +16,10 @@ COPY lambda.py ./lambda.py
 # Create the zip file
 RUN zip -r /source.zip .
 
-# Use the AWS Lambda Python base image
-FROM public.ecr.aws/lambda/python:3.12
+# Final stage to extract the zip file
+FROM scratch AS export
 
 # Copy the zip file from the build stage
 COPY --from=build /source.zip /source.zip
 
-CMD ["lambda.handler"]
+CMD ["echo", "File can be copied from `/source.zip`"]
