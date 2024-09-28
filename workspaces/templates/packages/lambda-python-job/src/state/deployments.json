@@ -1,6 +1,22 @@
 [
   {
     "name": "prod",
-    "terraform": {}
+    "terraform": {
+      "lambda_arn": {
+        "sensitive": false,
+        "type": "string",
+        "value": "arn:aws:lambda:us-west-2:475629728374:function:lambda-python-job-test"
+      },
+      "lambda_function_name": {
+        "sensitive": false,
+        "type": "string",
+        "value": "lambda-python-job-test"
+      },
+      "lambda_invoke_arn": {
+        "sensitive": false,
+        "type": "string",
+        "value": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:475629728374:function:lambda-python-job-test/invocations"
+      }
+    }
   }
 ]

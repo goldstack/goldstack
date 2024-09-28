@@ -4150,6 +4150,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/lambda-python-job", "workspace:workspaces/templates/packages/lambda-python-job"],\
           ["@goldstack/template-lambda-cli", "workspace:workspaces/templates-lib/packages/template-lambda-cli"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
           ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\

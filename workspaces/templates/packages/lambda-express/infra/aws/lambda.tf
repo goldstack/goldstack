@@ -23,6 +23,7 @@ resource "aws_lambda_function" "main" {
   role = aws_iam_role.lambda_exec.arn
 
   lifecycle {
+    create_before_destroy = true
     ignore_changes = [
        filename,
     ]

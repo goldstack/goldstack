@@ -10,10 +10,10 @@
       "awsRegion": "us-west-2",
       "awsUser": "goldstack-dev",
       "configuration": {
-        "domain": "email-send.templates.dev.goldstack.party",
-        "hostedZoneDomain": "dev.goldstack.party"
+        "lambdaName": "lambda-python-job-test"
       },
-      "tfVersion": "1.6"
+      "tfVersion": "1.6",
+      "tfStateKey": "lambda-python-job-prod-279b0e980347eb11b01d.tfstate"
     }
   ]
 }
