@@ -8,7 +8,7 @@ import {
   rm,
   unzip,
 } from '@goldstack/utils-sh';
-import { debug, info } from '@goldstack/utils-log';
+import { debug, info, warn } from '@goldstack/utils-log';
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -56,6 +56,19 @@ async function packageLambda() {
 
   const prevDistFiles = globSync(distDir.replace(/\\/g, '/') + '/*');
   await rmSafe(...prevDistFiles);
+
+  const activeVenv = getActiveVenv();
+  if (!activeVenv || path.resolve(activeVenv) !== path.resolve(venvDir)) {
+    warn(
+      'No virtual environment is active. `requirements.txt` will not be updated.'
+    );
+  } else {
+    info(`Virtual environment ${activeVenv} is active and maps to lambda_env.`);
+
+    // Step 3: Export a fresh requirements.txt from the currently active virtual environment
+    info('Exporting a fresh requirements.txt...');
+    exec(`python -m pip freeze > ${requirementsFile}`);
+  }
 
   exec(
     'docker build -t python-lambda-build --file=Dockerfile --platform=linux/amd64 .'
