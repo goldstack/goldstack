@@ -106,6 +106,10 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:workspaces/templates/packages/lambda-go-gin"\
     },\
     {\
+      "name": "@goldstack/lambda-python-job",\
+      "reference": "workspace:workspaces/templates/packages/lambda-python-job"\
+    },\
+    {\
       "name": "@goldstack/library",\
       "reference": "workspace:workspaces/templates/packages/library"\
     },\
@@ -194,8 +198,12 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:workspaces/templates-lib/packages/template-lambda-api-cli"\
     },\
     {\
-      "name": "@goldstack/template-lambda-express",\
-      "reference": "workspace:workspaces/templates-lib/packages/template-lambda-express"\
+      "name": "@goldstack/template-lambda-cli",\
+      "reference": "workspace:workspaces/templates-lib/packages/template-lambda-cli"\
+    },\
+    {\
+      "name": "@goldstack/template-lambda-http-cli",\
+      "reference": "workspace:workspaces/templates-lib/packages/template-lambda-http-cli"\
     },\
     {\
       "name": "@goldstack/template-nextjs",\
@@ -469,6 +477,7 @@ const RAW_RUNTIME_STATE =
     ["@goldstack/infra-aws", ["workspace:workspaces/templates-lib/packages/infra-aws"]],\
     ["@goldstack/infra-hetzner", ["workspace:workspaces/templates-lib/packages/infra-hetzner"]],\
     ["@goldstack/lambda-express", ["workspace:workspaces/templates/packages/lambda-express"]],\
+    ["@goldstack/lambda-python-job", ["workspace:workspaces/templates/packages/lambda-python-job"]],\
     ["@goldstack/library", ["workspace:workspaces/templates/packages/library"]],\
     ["@goldstack/markdown-docs", ["workspace:workspaces/docs/packages/markdown-docs"]],\
     ["@goldstack/module-template-docs", ["workspace:workspaces/docs/packages/module-template-docs"]],\
@@ -500,7 +509,8 @@ const RAW_RUNTIME_STATE =
     ["@goldstack/template-hetzner-vps-cli", ["workspace:workspaces/templates-lib/packages/template-hetzner-vps-cli"]],\
     ["@goldstack/template-lambda-api", ["workspace:workspaces/templates-lib/packages/template-lambda-api"]],\
     ["@goldstack/template-lambda-api-cli", ["workspace:workspaces/templates-lib/packages/template-lambda-api-cli"]],\
-    ["@goldstack/template-lambda-express", ["workspace:workspaces/templates-lib/packages/template-lambda-express"]],\
+    ["@goldstack/template-lambda-cli", ["workspace:workspaces/templates-lib/packages/template-lambda-cli"]],\
+    ["@goldstack/template-lambda-http-cli", ["workspace:workspaces/templates-lib/packages/template-lambda-http-cli"]],\
     ["@goldstack/template-management-cli", ["workspace:workspaces/apps/packages/template-management-cli"]],\
     ["@goldstack/template-metadata", ["workspace:workspaces/templates/packages/template-metadata"]],\
     ["@goldstack/template-nextjs", ["workspace:workspaces/templates-lib/packages/template-nextjs"]],\
@@ -3870,7 +3880,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/project-repository", "workspace:workspaces/templates-management/packages/project-repository"],\
           ["@goldstack/session-repository", "workspace:workspaces/templates-management/packages/session-repository"],\
           ["@goldstack/template-build", "workspace:workspaces/templates-management/packages/template-build"],\
-          ["@goldstack/template-lambda-express", "workspace:workspaces/templates-lib/packages/template-lambda-express"],\
+          ["@goldstack/template-lambda-http-cli", "workspace:workspaces/templates-lib/packages/template-lambda-http-cli"],\
           ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],\
           ["@goldstack/template-repository-bucket", "workspace:workspaces/templates-management/packages/template-repository-bucket"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
@@ -4104,7 +4114,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./workspaces/templates/packages/lambda-express/",\
         "packageDependencies": [\
           ["@goldstack/lambda-express", "workspace:workspaces/templates/packages/lambda-express"],\
-          ["@goldstack/template-lambda-express", "workspace:workspaces/templates-lib/packages/template-lambda-express"],\
+          ["@goldstack/template-lambda-http-cli", "workspace:workspaces/templates-lib/packages/template-lambda-http-cli"],\
           ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
           ["@jest-mock/express", "npm:1.4.5"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
@@ -4128,6 +4138,26 @@ const RAW_RUNTIME_STATE =
           ["supertest", "npm:4.0.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.1"],\
           ["ts-node-dev", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:2.0.0"],\
+          ["typescript", "patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@goldstack/lambda-python-job", [\
+      ["workspace:workspaces/templates/packages/lambda-python-job", {\
+        "packageLocation": "./workspaces/templates/packages/lambda-python-job/",\
+        "packageDependencies": [\
+          ["@goldstack/lambda-python-job", "workspace:workspaces/templates/packages/lambda-python-job"],\
+          ["@goldstack/template-lambda-cli", "workspace:workspaces/templates-lib/packages/template-lambda-cli"],\
+          ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+          ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
+          ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
+          ["@types/jest", "npm:29.0.1"],\
+          ["@types/node", "npm:18.7.13"],\
+          ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
+          ["rimraf", "npm:3.0.2"],\
+          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.1"],\
           ["typescript", "patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
         ],\
         "linkType": "SOFT"\
@@ -4464,7 +4494,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./workspaces/templates/packages/lambda-go-gin/",\
         "packageDependencies": [\
           ["@goldstack/server-go", "workspace:workspaces/templates/packages/lambda-go-gin"],\
-          ["@goldstack/template-lambda-express", "workspace:workspaces/templates-lib/packages/template-lambda-express"],\
+          ["@goldstack/template-lambda-http-cli", "workspace:workspaces/templates-lib/packages/template-lambda-http-cli"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
           ["@types/jest", "npm:29.0.1"],\
           ["@types/node", "npm:18.7.13"],\
@@ -4998,25 +5028,22 @@ const RAW_RUNTIME_STATE =
         "linkType": "SOFT"\
       }]\
     ]],\
-    ["@goldstack/template-lambda-express", [\
-      ["workspace:workspaces/templates-lib/packages/template-lambda-express", {\
-        "packageLocation": "./workspaces/templates-lib/packages/template-lambda-express/",\
+    ["@goldstack/template-lambda-cli", [\
+      ["workspace:workspaces/templates-lib/packages/template-lambda-cli", {\
+        "packageLocation": "./workspaces/templates-lib/packages/template-lambda-cli/",\
         "packageDependencies": [\
-          ["@goldstack/template-lambda-express", "workspace:workspaces/templates-lib/packages/template-lambda-express"],\
+          ["@goldstack/template-lambda-cli", "workspace:workspaces/templates-lib/packages/template-lambda-cli"],\
           ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
           ["@goldstack/utils-aws-lambda", "workspace:workspaces/templates-lib/packages/utils-aws-lambda"],\
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
           ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
-          ["@goldstack/utils-docker", "workspace:workspaces/utils/packages/utils-docker"],\
           ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
           ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],\
           ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
-          ["@goldstack/utils-s3-deployment", "workspace:workspaces/templates-lib/packages/utils-s3-deployment"],\
-          ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
           ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
           ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
@@ -5025,7 +5052,42 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:29.0.1"],\
           ["@types/node", "npm:18.7.13"],\
           ["@types/yargs", "npm:17.0.10"],\
-          ["archiver", "npm:5.3.1"],\
+          ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
+          ["rimraf", "npm:3.0.2"],\
+          ["source-map-support", "npm:0.5.21"],\
+          ["ts-json-schema-generator", "npm:1.0.0"],\
+          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.1"],\
+          ["typescript", "patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"],\
+          ["yargs", "npm:17.5.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@goldstack/template-lambda-http-cli", [\
+      ["workspace:workspaces/templates-lib/packages/template-lambda-http-cli", {\
+        "packageLocation": "./workspaces/templates-lib/packages/template-lambda-http-cli/",\
+        "packageDependencies": [\
+          ["@goldstack/template-lambda-http-cli", "workspace:workspaces/templates-lib/packages/template-lambda-http-cli"],\
+          ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+          ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+          ["@goldstack/template-lambda-cli", "workspace:workspaces/templates-lib/packages/template-lambda-cli"],\
+          ["@goldstack/utils-aws-lambda", "workspace:workspaces/templates-lib/packages/utils-aws-lambda"],\
+          ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
+          ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
+          ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
+          ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
+          ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+          ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],\
+          ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+          ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
+          ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+          ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
+          ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
+          ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
+          ["@types/jest", "npm:29.0.1"],\
+          ["@types/node", "npm:18.7.13"],\
+          ["@types/yargs", "npm:17.0.10"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["source-map-support", "npm:0.5.21"],\

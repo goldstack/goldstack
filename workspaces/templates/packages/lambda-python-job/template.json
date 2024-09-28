@@ -1,0 +1,8 @@
+{
+  "templateName": "lambda-python-job",
+  "templateVersion": "0.1.0",
+  "previousTemplateVersion": "0.0.0",
+  "templateDescription": "Provides a Python Lambda that can run on a schedule or in response to events",
+  "templateDocumentation": "https://docs.goldstack.party/docs/templates/lambda-python-job",
+  "templateArchive": ""
+}

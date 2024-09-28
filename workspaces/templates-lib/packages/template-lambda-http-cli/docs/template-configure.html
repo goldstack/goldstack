@@ -1,0 +1,66 @@
+<p></p>
+<div class="markdown-fragment">
+  <p>
+    Goldstack's Lambda Express module provides a basic Express.js server that is
+    deployed as an AWS lambda function.
+  </p>
+</div>
+<p></p>
+<p></p>
+<div class="markdown-fragment">
+  <p>The following key properties need to be configured for this module:</p>
+  <ul>
+    <li>
+      <strong>Lambda Name</strong>: The
+      <a
+        href="https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-FunctionName"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >name</a
+      >
+      to be used for this lambda. Lambda names need to be unique for the AWS
+      Region. It is not possible to have two lambdas with the same name in the
+      same region.
+    </li>
+    <li>
+      <strong>API Domain</strong>: The domain where the API should be deployed
+      to. For instance, to be able to call the API endpoint
+      <code class="inline">https://api.mydomain.com/</code> the API domain
+      <code class="inline">api.mydomain.com</code> needs to be configured.
+    </li>
+    <li>
+      <strong>Hosted Zone Domain</strong>: A Route 53 hosted zone that will
+      allow adding the <em>API Domain</em> as a record. For instance, in order
+      to configure the API domain <code class="inline">api.mydomain.com</code>,
+      the hosted zones <code class="inline">api.mydomain.com</code> or
+      <code class="inline">mydomain.com</code> would be valid. For more details,
+      please check
+      <a
+        href="https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Hosted Zone Configuration</a
+      >
+      in the Goldstack documentation.
+    </li>
+    <li>
+      <strong>CORS Header</strong>: An optional CORS header to enable a UI that
+      is hosted on a different domain to access this API. For instance, for a UI
+      that is deployed to the domain
+      <code class="inline">ui.mydomain.com</code> the CORS header
+      <code class="inline">https://ui.mydomain.com</code> should be supplied. To
+      learn more about CORS, see the
+      <a
+        href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Cross-Origin Resource Sharing (CORS)</a
+      >
+      in the MDN docs.
+    </li>
+  </ul>
+</div>
+<p></p>

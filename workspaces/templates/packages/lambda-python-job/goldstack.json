@@ -1,0 +1,19 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "lambda-python-job",
+  "template": "lambda-python-job",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "domain": "email-send.templates.dev.goldstack.party",
+        "hostedZoneDomain": "dev.goldstack.party"
+      },
+      "tfVersion": "1.6"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*",
+    "./src/**/*.json",
+    "./scripts/**/*",
+    "./schemas/**/*.json",
+    "goldstack.json"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "."
+  },
+  "references": [
+    {
+      "path": "../../../templates-lib/packages/template-lambda-cli"
+    },
+    {
+      "path": "../../../utils/packages/utils-git"
+    },
+    {
+      "path": "../../../utils/packages/utils-sh"
+    }
+  ]
+}
