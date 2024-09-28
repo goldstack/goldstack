@@ -57,12 +57,23 @@ async function packageLambda() {
   const prevDistFiles = globSync(distDir.replace(/\\/g, '/') + '/*');
   await rmSafe(...prevDistFiles);
 
-  exec('docker build -t mylamba . --file=Dockerfile --platform=linux/amd64');
-  exec('docker run --name=mylambda --platform=linux/amd64 mylambda');
-  exec('docker cp mylambda:/source.zip .');
+  exec(
+    'docker build -t python-lambda-build --file=Dockerfile --platform=linux/amd64 .'
+  );
+  exec(
+    'docker run --name=python-lambda-build --platform=linux/amd64 -d python-lambda-build'
+  );
+
+  // Wait for the container to start and complete its task
+  // exec('sleep 5'); // Adjust the sleep duration as needed
+
+  exec('docker cp python-lambda-build:/source.zip .');
+  exec('docker stop python-lambda-build');
+  exec('docker rm python-lambda-build');
+
   await unzip({
     file: 'source.zip',
-    targetDirectory: 'distLambda',
+    targetDirectory: distDir,
   });
 
   // Clean out excluded packages
