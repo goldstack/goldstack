@@ -1,0 +1,14 @@
+{
+  "excludePackages": [
+    "pip",
+    "simplejson",
+    "awslambdaric",
+    "botocore",
+    "boto3",
+    "s3transfer",
+    "jmespath",
+    "python-dateutil",
+    "six",
+    "urllib3"
+  ]
+}

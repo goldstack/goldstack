@@ -1,11 +1,27 @@
-import { zip, exec } from '@goldstack/utils-sh';
-import { info } from '@goldstack/utils-log';
+import {
+  zip,
+  exec,
+  cp,
+  rmSafe,
+  globSync,
+  read,
+  rm,
+  unzip,
+} from '@goldstack/utils-sh';
+import { debug, info } from '@goldstack/utils-log';
 import * as path from 'path';
 import * as fs from 'fs';
 
-async function getSitePackagesDir(venvDir: string): Promise<string> {
-  // Use 'pip show pip' to find the location of the installed libraries
-  const pipShowResult = exec(`source ${venvDir}/bin/activate && pip show pip`);
+// Function to get the current virtual environment
+function getActiveVenv(): string | null {
+  const activeVenv = process.env.VIRTUAL_ENV || null;
+
+  debug(`Active virtual environment: ${activeVenv}`);
+  return activeVenv;
+}
+
+async function getSitePackagesDir(): Promise<string> {
+  const pipShowResult = exec('python -m pip show pip');
 
   const locationMatch = pipShowResult.match(/Location:\s+(.*)/);
   if (locationMatch) {
@@ -19,44 +35,122 @@ async function getSitePackagesDir(venvDir: string): Promise<string> {
 }
 
 async function packageLambda() {
-  const currentDir = process.cwd(); // Use the directory where the script is run from
-  const lambdaDir = path.join(currentDir, 'lambda');
-  const venvDir = path.join(lambdaDir, 'lambda_env');
-  const targetZip = path.join(currentDir, 'lambda.zip');
-  const lambdaFunctionFile = path.join(lambdaDir, 'lambda.py');
-
-  // Step 1: Create virtual environment
-  if (!fs.existsSync(venvDir)) {
-    info('Creating virtual environment...');
-    exec(`python -m venv ${venvDir}`);
-  } else {
-    info('Virtual environment already exists.');
+  const currentDir = process.cwd();
+  if (path.basename(currentDir) !== 'lambda') {
+    throw new Error('Script expects to be run from lambda/ directory');
   }
 
-  // Step 2: Activate virtual environment and install dependencies
-  info('Installing dependencies in the virtual environment...');
-  exec(
-    `source ${venvDir}/bin/activate && pip install -r ${lambdaDir}/requirements.txt`
-  );
+  const projectDir = path.dirname(currentDir);
+  const lambdaDir = path.join(projectDir, 'lambda');
+  const venvDir = path.join(lambdaDir, 'lambda_env');
+  const distDir = path.join(projectDir, 'distLambda'); // Destination folder
+  const targetZip = path.join(projectDir, 'lambda.zip');
+  const lambdaFunctionFile = path.join(lambdaDir, 'lambda.py');
+  const requirementsFile = path.join(lambdaDir, 'requirements.txt');
 
-  // Step 3: Determine site-packages directory in a platform-independent way
-  const sitePackagesDir = await getSitePackagesDir(venvDir);
+  // Step 1: Create distLambda directory if it doesn't exist
+  if (!fs.existsSync(distDir)) {
+    info('Creating distLambda directory...');
+    fs.mkdirSync(distDir);
+  }
+
+  const prevDistFiles = globSync(distDir.replace(/\\/g, '/') + '/*');
+  await rmSafe(...prevDistFiles);
+
+  exec('docker build -t mylamba . --file=Dockerfile --platform=linux/amd64');
+  exec('docker run --name=mylambda --platform=linux/amd64 mylambda');
+  exec('docker cp mylambda:/source.zip .');
+  await unzip({
+    file: 'source.zip',
+    targetDirectory: 'distLambda',
+  });
+
+  // Clean out excluded packages
+  const deployConfig = JSON.parse(read(path.join(lambdaDir, 'deploy.json')));
+  for (const excludedPackage of deployConfig.excludePackages) {
+    const pattern =
+      distDir.replace(/\\/g, '/') + '/site-packages/' + excludedPackage;
+    debug(`Searching for excluded package using pattern: ${pattern}`);
+    const toDelete = globSync(pattern);
+    if (toDelete.length > 0) {
+      debug(
+        `Deleting excluded package ${excludedPackage} in ${toDelete.join(', ')}`
+      );
+      await rmSafe(...toDelete);
+    }
+  }
+}
+
+async function packageLambdaOld() {
+  const currentDir = process.cwd();
+  if (path.basename(currentDir) !== 'lambda') {
+    throw new Error('Script expects to be run from lambda/ directory');
+  }
+
+  const projectDir = path.dirname(currentDir);
+  const lambdaDir = path.join(projectDir, 'lambda');
+  const venvDir = path.join(lambdaDir, 'lambda_env');
+  const distDir = path.join(projectDir, 'distLambda'); // Destination folder
+  const targetZip = path.join(projectDir, 'lambda.zip');
+  const lambdaFunctionFile = path.join(lambdaDir, 'lambda.py');
+  const requirementsFile = path.join(lambdaDir, 'requirements.txt');
+
+  // Step 1: Create distLambda directory if it doesn't exist
+  if (!fs.existsSync(distDir)) {
+    info('Creating distLambda directory...');
+    fs.mkdirSync(distDir);
+  }
+
+  const prevDistFiles = globSync(distDir.replace(/\\/g, '/') + '/*');
+  await rmSafe(...prevDistFiles);
+
+  // Step 2: Check if the virtual environment is already activated and mapped to lambda_env
+  const activeVenv = getActiveVenv();
+  if (!activeVenv || path.resolve(activeVenv) !== path.resolve(venvDir)) {
+    throw new Error(
+      `No virtual environment is activated or it doesn't map to ${venvDir}. Please activate the correct virtual environment.`
+    );
+  }
+
+  info(`Virtual environment ${activeVenv} is active and maps to lambda_env.`);
+
+  // Step 3: Export a fresh requirements.txt from the currently active virtual environment
+  info('Exporting a fresh requirements.txt...');
+  exec(`python -m pip freeze > ${requirementsFile}`);
+
+  // Step 4: Determine site-packages directory in a platform-independent way
+  const sitePackagesDir = await getSitePackagesDir();
 
   if (!fs.existsSync(sitePackagesDir)) {
     throw new Error(`Site-packages directory not found in: ${sitePackagesDir}`);
   }
 
-  // Step 4: Navigate to the site-packages directory and zip the dependencies
-  info('Packaging dependencies into the zip file...');
-  exec(`cd ${sitePackagesDir} && zip -r ${targetZip} .`);
+  // Step 5: Copy dependencies and lambda function to distLambda directory
+  info('Copying dependencies and lambda function to distLambda...');
+  cp('-rf', path.join(sitePackagesDir), distDir);
+  cp('-f', lambdaFunctionFile, path.join(distDir, 'lambda.py'));
 
-  // Step 5: Add the lambda_function.py to the zip package
-  if (fs.existsSync(lambdaFunctionFile)) {
-    info(`Adding ${lambdaFunctionFile} to the zip package...`);
-    exec(`zip -j ${targetZip} ${lambdaFunctionFile}`);
-  } else {
-    throw new Error(`Lambda function file not found: ${lambdaFunctionFile}`);
+  // Clean out excluded packages
+  const deployConfig = JSON.parse(read(path.join(lambdaDir, 'deploy.json')));
+  for (const excludedPackage of deployConfig.excludePackages) {
+    const pattern =
+      distDir.replace(/\\/g, '/') + '/site-packages/' + excludedPackage;
+    debug(`Searching for excluded package using pattern: ${pattern}`);
+    const toDelete = globSync(pattern);
+    if (toDelete.length > 0) {
+      debug(
+        `Deleting excluded package ${excludedPackage} in ${toDelete.join(', ')}`
+      );
+      await rmSafe(...toDelete);
+    }
   }
+
+  // Step 6: Zip the distLambda directory
+
+  // Not necessary, done by library
+
+  // info('Zipping distLambda contents...');
+  // await zip({ directory: distDir, target: targetZip });
 
   info(`Lambda package created successfully at: ${targetZip}`);
 }

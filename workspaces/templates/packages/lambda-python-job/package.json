@@ -11,10 +11,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "yarn clean && yarn compile",
-    "clean": "rimraf dist/",
+    "build": "yarn clean && yarn compile && cd lambda/ && ts-node --swc ../scripts/package.ts",
+    "clean": "rimraf dist/*",
     "compile": "tsc -p tsconfig.json",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
+    "deploy": "yarn build && yarn template-ts deploy",
     "infra": "yarn template-ts infra",
     "prepublishOnly": "yarn run build",
     "template": "yarn template-ts",
