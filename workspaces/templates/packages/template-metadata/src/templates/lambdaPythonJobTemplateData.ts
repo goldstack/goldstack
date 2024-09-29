@@ -11,7 +11,7 @@ export const getLambdaPythonJobTemplateData = (): ProjectTemplateProps => {
     description: 'Deploy a Python scheduled Job using AWS Lambda',
     metaTitle: 'Serverless Python Job Template for AWS Lambda',
     metaDescription:
-      'Deploy a scheduled Python Job to AWS Lambda. Infrastructure defined in Terraform and deployment scripts provided.',
+      'Deploy a  Python application as scheduled job to AWS Lambda. Infrastructure defined in Terraform and deployment scripts provided.',
     longDescription:
       'This project template contains a Python Job deployed to AWS Lambda.\n' +
       'See a list of all features included in this template below.',
