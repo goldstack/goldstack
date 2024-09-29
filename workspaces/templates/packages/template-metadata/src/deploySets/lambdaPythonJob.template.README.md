@@ -68,10 +68,7 @@ Here change the following:
 
 - _Delete_ the property `tfStateKey`
 
-
 Find more information about the required values in [Lambda Python Job / Configure](https://docs.goldstack.party/docs/templates/lambda-python-job#configure).
-
-
 
 ## 8. Contribute to Goldstack
 

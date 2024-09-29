@@ -39,7 +39,7 @@ And finally add this variable to all deployment configurations in `goldstack.jso
 ```json
       "configuration": {
         "lambdaName": "my-lambda",
-        ... 
+        ...
         "myEnv": "Value for deployment"
       }
 ```

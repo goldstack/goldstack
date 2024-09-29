@@ -200,9 +200,7 @@ And finally add this variable to all deployment configurations in `goldstack.jso
 ```json
       "configuration": {
         "lambdaName": "my-lambda",
-        "apiDomain": "api.mysite.com",
-        "hostedZoneDomain": "mysite.com",
-        "cors": "https://mysite.com",
+        ...
         "myEnv": "Value for deployment"
       }
 ```

@@ -1,7 +1,7 @@
 <p align="right"><img src="https://cdn.goldstack.party/img/202203/goldstack_icon.png" height="12"> Generated with <a href="https://goldstack.party">Goldstack</a></p>
 
 <p align="center">
-  <a href="https://goldstack.party/templates/ses">
+  <a href="https://goldstack.party/templates/hetzner-vps">
     <img src="https://cdn.goldstack.party/img/202409/hetzner.svg" height="80">
     <h1 align="center">Starter Template for Hetzner VPS</h1>
   </a>
@@ -38,9 +38,9 @@ For more information, see [GitHub documentation - Fork a repo](https://docs.gith
 
 A few dependencies need to be available in your development system. Please verify they are present or install them.
 
-- Node v18+
-- Yarn v1.22.5+
-- Docker v24+
+*   Node v18+
+*   Yarn v1.22.5+
+*   Docker v24+
 
 Open a terminal and run the following commands:
 
@@ -56,9 +56,9 @@ This should produce the following output:
 
 If you need to install or update any of the dependencies, please see the following guides:
 
-- [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- [Yarn Installation](https://yarnpkg.com/getting-started/install)
-- [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
+*   [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+*   [Yarn Installation](https://yarnpkg.com/getting-started/install)
+*   [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
 
 ## 3. Initialise project and install NPM Dependencies
 
@@ -94,17 +94,17 @@ You may also be asked if you want to install recommended extensions for this wor
 
 If you want to install the necessary extensions manually, here are links to the extensions required:
 
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
+*   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+*   [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+*   [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
 
 ## 6. Initialise TypeScript
 
-Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click _Allow_.
+Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click *Allow*.
 
 <img src="https://cdn.goldstack.party/img/202201/allow_typescript.gif"  alt="VSCode Locate TypeScript">
 
-In the status bar on the bottom right-hand corner of the VSCode editor you should now see _TypeScript_.
+In the status bar on the bottom right-hand corner of the VSCode editor you should now see *TypeScript*.
 
 ![TypeScript status icon in VSCode](https://cdn.goldstack.party/img/202203/typescript_init.png)
 
@@ -172,12 +172,12 @@ Then you need to update the file `packages/hetzner-vps-1/goldstack.json`:
 
 Here change the following:
 
-- _Delete_ the property `tfStateKey`
-- _Update_ the `hetznerUser` to the username you defined in `config.json` above
-- _Update_ the `sshUserFingerprint` to the fingerprint of an SSH user you have created through Hetzner console
-- _Update_ the `serverName` to a name of your choosing
-- _Update_ the `location` to what you require
-- _Update_ the `serverType` to what you require
+*   *Delete* the property `tfStateKey`
+*   *Update* the `hetznerUser` to the username you defined in `config.json` above
+*   *Update* the `sshUserFingerprint` to the fingerprint of an SSH user you have created through Hetzner console
+*   *Update* the `serverName` to a name of your choosing
+*   *Update* the `location` to what you require
+*   *Update* the `serverType` to what you require
 
 Find more information about the required values in [Hetzner VPS / Configure](https://docs.goldstack.party/docs/templates/hetzner-vps#configure).
 

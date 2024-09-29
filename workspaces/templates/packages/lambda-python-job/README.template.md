@@ -1,4 +1,4 @@
-# Python Job template 
+# Python Job template
 
 ❤️ Support development by using the [Goldstack Project Builder](https://goldstack.party) ❤️
 

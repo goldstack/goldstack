@@ -28,7 +28,7 @@ source lambda_env/Scripts/activate # Windows
 source venv/bin/activate # Linux/ iOS
 ```
 
-Finally install the dependencies: 
+Finally install the dependencies:
 
 ```
 pip install -r requirements.txt
@@ -58,7 +58,7 @@ Note it is also possible to only build the ZIP package locally without uploading
 yarn build
 ```
 
-This will copy the files that need to be deployed into the folder `distLambda/`. 
+This will copy the files that need to be deployed into the folder `distLambda/`.
 
 ## Guides and How Tos
 

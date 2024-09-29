@@ -97,6 +97,11 @@
             "title": "Lambda Go Gin",
             "path": "templates/lambda-go-gin",
             "children": []
+          },
+          {
+            "title": "Lambda Python Job",
+            "path": "templates/lambda-python-job",
+            "children": []
           }
         ]
       }
