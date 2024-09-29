@@ -12,6 +12,7 @@ import { createDynamoDBBuildSetConfig } from './deploySets/dynamodb';
 import { createServerSideRenderingBuildSetConfig } from './deploySets/serverSideRendering';
 import { createUserManagementBuildSetConfig } from './deploySets/userManagement';
 import { createHetznerVPSBuildSetConfig } from './deploySets/hetznerVPS';
+import { createLambdaPythonJobBuildSetConfig } from './deploySets/lambdaPythonJob';
 
 export { createServerSideRenderingBuildSetConfig } from './deploySets/serverSideRendering';
 
@@ -20,6 +21,7 @@ export const getAllBuildSets = async (): Promise<DeploySetConfig[]> => {
     await createBackendNodejsExpressBuildSetConfig(),
     await createStaticWebsiteBuildSetConfig(),
     await createBackendGoGinBuildSetConfig(),
+    await createLambdaPythonJobBuildSetConfig(),
     await createNoInfraBuildSetConfig(),
     await createBackendLambdaApiBuildSetConfig(),
     await createNextjsBootstrapBuildSetConfig(),

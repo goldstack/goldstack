@@ -292,6 +292,16 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     checked={elements.indexOf('gin') !== -1}
                     onChange={checkboxChange}
                   ></Checkbox>
+                  <Checkbox
+                    title="Lambda + Python (Background Job)"
+                    element="lambda-python-job"
+                    disabled={building}
+                    icon="https://cdn.goldstack.party/img/202409/python.svg"
+                    isAlpha={true}
+                    templateLink={'/templates/lambda-python-job'}
+                    checked={elements.indexOf('lambda-python-job') !== -1}
+                    onChange={checkboxChange}
+                  ></Checkbox>
                   <div className="border-bottom pb-2 mb-4 mt-6">
                     <h2 className="h3 mb-0">Services</h2>
                   </div>

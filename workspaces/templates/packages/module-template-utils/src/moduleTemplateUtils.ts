@@ -10,6 +10,7 @@ export const getModuleTemplatesNames = (): string[] => {
     'dynamodb',
     'docker-image-aws',
     'lambda-go-gin',
+    'lambda-python-job',
     'email-send',
     'lambda-express',
     'serverless-api',

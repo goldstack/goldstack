@@ -1,18 +1,18 @@
 import { ProjectConfiguration } from '@goldstack/utils-project';
 import { DeploySetConfig } from '@goldstack/template-build-set';
 
-export const createBackendGoGinBuildSetConfig =
+export const createLambdaPythonJobBuildSetConfig =
   async (): Promise<DeploySetConfig> => {
     const projectConfiguration: ProjectConfiguration = {
-      projectName: 'project-backend-go',
+      projectName: 'project-lambda-python-job',
       rootTemplateReference: {
         templateName: 'yarn-pnp-monorepo',
       },
       packages: [
         {
-          packageName: 'lambda-go-gin-1',
+          packageName: 'lambda-python-job-1',
           templateReference: {
-            templateName: 'lambda-go-gin',
+            templateName: 'lambda-python-job',
           },
         },
       ],
@@ -20,9 +20,9 @@ export const createBackendGoGinBuildSetConfig =
 
     const hash = new Date().getTime();
     const setConfig: DeploySetConfig = {
-      buildSetName: 'backend-go-gin',
-      buildTemplates: ['yarn-pnp-monorepo', 'lambda-go-gin'],
-      deployTemplates: ['lambda-go-gin'],
+      buildSetName: 'lambda-python-job',
+      buildTemplates: ['yarn-pnp-monorepo', 'lambda-python-job'],
+      deployTemplates: ['lambda-python-job'],
       projects: [
         {
           projectConfiguration,
@@ -31,9 +31,12 @@ export const createBackendGoGinBuildSetConfig =
             'assert-root-files',
             'root-build',
           ],
+          targetRepo: 'goldstack/python-aws-lambda-job-template',
+          repoReadme:
+            'workspaces/templates/packages/template-metadata/src/deploySets/lambdaPythonJob.README.md',
           packageConfigurations: [
             {
-              packageName: 'lambda-go-gin-1',
+              packageName: 'lambda-python-job-1',
               configuration: {},
               deployments: [
                 {
@@ -41,10 +44,7 @@ export const createBackendGoGinBuildSetConfig =
                   awsUser: 'goldstack-dev',
                   awsRegion: 'us-west-2',
                   configuration: {
-                    lambdaName: `goldstack-ci-test-lambda-go-gin-${hash}`,
-                    apiDomain: `lambda-go-gin-${hash}.tests.dev.goldstack.party`,
-                    hostedZoneDomain: 'dev.goldstack.party',
-                    cors: '',
+                    lambdaName: `goldstack-ci-test-lambda-python-job-${hash}`,
                   },
                 },
               ],
