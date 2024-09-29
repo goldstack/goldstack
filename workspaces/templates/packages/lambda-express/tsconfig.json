@@ -12,7 +12,7 @@
   },
   "references": [
     {
-      "path": "../../../templates-lib/packages/template-lambda-express"
+      "path": "../../../templates-lib/packages/template-lambda-http-cli"
     },
     {
       "path": "../../../utils/packages/utils-esbuild"

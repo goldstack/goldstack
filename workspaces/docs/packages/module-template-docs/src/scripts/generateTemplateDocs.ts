@@ -95,10 +95,13 @@ const run = async () => {
     paths.buildSets + 'emailSend.template.README.md',
     paths.buildSets + 'emailSend.README.md'
   );
-
   await generateMarkdownDocs(
     paths.buildSets + 'hetznerVPS.template.README.md',
     paths.buildSets + 'hetznerVPS.README.md'
+  );
+  await generateMarkdownDocs(
+    paths.buildSets + 'lambdaPythonJob.template.README.md',
+    paths.buildSets + 'lambdaPythonJob.README.md'
   );
   await generateMarkdownDocs(
     paths.buildSets + 's3.template.README.md',

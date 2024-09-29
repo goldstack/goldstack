@@ -17,6 +17,7 @@ import {
 } from '@aws-sdk/client-dynamodb';
 
 import { logger } from '@goldstack/utils-cli';
+import { info } from '@goldstack/utils-log';
 
 const assertDynamoDBTable = async (params: {
   dynamoDB: DynamoDBClient;
@@ -171,7 +172,7 @@ export const assertState = async (params: {
   bucketName: string;
   awsRegion: string;
 }): Promise<void> => {
-  logger().info('Connecting to Terraform State stored on AWS', {
+  info('Connecting to Terraform State stored on AWS', {
     bucketName: params.bucketName,
     tableName: params.dynamoDBTableName,
   });
@@ -185,5 +186,5 @@ export const assertState = async (params: {
     credentials: params.credentials,
   });
   await assertS3Bucket({ s3, bucketName: params.bucketName });
-  logger().info('Connected to Terraform State stored on AWS');
+  info('Connected successfully to Terraform State stored on AWS');
 };

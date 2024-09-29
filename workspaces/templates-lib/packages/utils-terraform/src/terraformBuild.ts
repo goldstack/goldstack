@@ -1,4 +1,4 @@
-import { fatal } from '@goldstack/utils-log';
+import { fatal, info } from '@goldstack/utils-log';
 import { tf } from './terraformCli';
 import {
   TerraformDeployment,
@@ -192,8 +192,8 @@ export class TerraformBuild {
     if (!(deploymentConfig as TerraformDeployment).tfStateKey) {
       const stateHash = crypto.randomBytes(10).toString('hex');
       const stateKey = `${packageConfig.name}-${deployment.name}-${stateHash}.tfstate`;
-      console.log(
-        `Intialising Terraform State key for ${deployment.name} to ${stateKey}`
+      info(
+        `Initialising Terraform State key for ${deployment.name} to ${stateKey}`
       );
       (deploymentConfig as TerraformDeployment).tfStateKey = stateKey;
       writePackageConfig(packageConfig);

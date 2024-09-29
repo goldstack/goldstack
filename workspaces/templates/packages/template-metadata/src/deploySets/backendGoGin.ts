@@ -4,7 +4,7 @@ import { DeploySetConfig } from '@goldstack/template-build-set';
 export const createBackendGoGinBuildSetConfig =
   async (): Promise<DeploySetConfig> => {
     const projectConfiguration: ProjectConfiguration = {
-      projectName: 'project-backend-nodejs',
+      projectName: 'project-backend-go',
       rootTemplateReference: {
         templateName: 'yarn-pnp-monorepo',
       },

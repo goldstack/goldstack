@@ -34,6 +34,13 @@ const GoGin: PackageProps = {
     'https://docs.goldstack.party/docs/templates/lambda-go-gin',
 };
 
+const LambdaPythonJob: PackageProps = {
+  title: 'Lambda Python Job',
+  link: 'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/lambda-python-job#readme',
+  documentationLink:
+    'https://docs.goldstack.party/docs/templates/lambda-python-job',
+};
+
 const EmailSend: PackageProps = {
   title: 'SES Email Send',
   link: 'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/email-send#readme',
@@ -85,6 +92,7 @@ export {
   NextJs,
   Express,
   GoGin,
+  LambdaPythonJob,
   EmailSend,
   HetznerVPS,
   S3,

@@ -101,6 +101,9 @@
       "path": "workspaces/templates/packages/lambda-go-gin"
     },
     {
+      "path": "workspaces/templates/packages/lambda-python-job"
+    },
+    {
       "path": "workspaces/templates/packages/library"
     },
     {
@@ -167,7 +170,10 @@
       "path": "workspaces/templates-lib/packages/template-lambda-api-cli"
     },
     {
-      "path": "workspaces/templates-lib/packages/template-lambda-express"
+      "path": "workspaces/templates-lib/packages/template-lambda-cli"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-lambda-http-cli"
     },
     {
       "path": "workspaces/templates-lib/packages/template-nextjs"

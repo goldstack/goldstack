@@ -21,6 +21,7 @@ import { getServerlessApiTemplate } from './templates/lambdaApiTemplateData';
 import { getEmailSendTemplateData } from './templates/emailSendTemplateData';
 import { getS3TemplateData } from './templates/s3TemplateData';
 import { getStaticWebsiteTemplateData } from './templates/staticWebsiteTemplateData';
+import { getLambdaPythonJobTemplateData } from './templates/lambdaPythonJobTemplateData';
 import { getDynamoDBTemplateData } from './templates/dynamoDBTemplate';
 import { getServerSideRenderingTemplate } from './templates/serverSideRenderingTemplateData';
 import { getUserManagementTemplate } from './templates/userManagementTemplateData';
@@ -49,6 +50,7 @@ export const allTemplates = (): ProjectTemplateProps[] => {
     getEmailSendTemplateData(),
     getStaticWebsiteTemplateData(),
     getGoGinTemplateData(),
+    getLambdaPythonJobTemplateData(),
     getExpressAndEmailSentTemplateData(),
     getHetznerVPSTemplateData(),
   ];
