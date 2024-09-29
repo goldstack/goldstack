@@ -11,15 +11,16 @@ import { Package, Configuration } from '@goldstack/utils-package';
  */
 type LambdaName = string;
 
-export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
+export interface ThisBaseDeploymentConfiguration
+  extends DeploymentConfiguration {
   lambdaName: LambdaName;
 }
 
-export interface ThisDeployment
+export interface ThisBaseDeployment
   extends Deployment,
     AWSDeployment,
     TerraformDeployment {
-  configuration: ThisDeploymentConfiguration;
+  configuration: ThisBaseDeploymentConfiguration;
 }
 
 /**
@@ -27,7 +28,7 @@ export interface ThisDeployment
  *
  * @title Deployments
  */
-export type LambdaDeployments = ThisDeployment[];
+export type LambdaDeployments = ThisBaseDeployment[];
 
 /**
  * Configures this lambda.
@@ -35,19 +36,19 @@ export type LambdaDeployments = ThisDeployment[];
  * @title Lambda Configuration
  *
  */
-export type ThisPackageConfiguration = Configuration;
+export type ThisBasePackageConfiguration = Configuration;
 
 /**
  * A lambda deployment.
  *
  * @title Lambda Package
  */
-export interface ThisPackage extends Package {
-  configuration: ThisPackageConfiguration;
+export interface ThisBasePackage extends Package {
+  configuration: ThisBasePackageConfiguration;
   deployments: LambdaDeployments;
 }
 
-export { ThisDeploymentConfiguration as LambdaDeploymentConfiguration };
-export { ThisDeployment as LambdaDeployment };
-export { ThisPackageConfiguration as LambdaConfiguration };
-export { ThisPackage as LambdaPackage };
+export { ThisBaseDeploymentConfiguration as LambdaDeploymentConfiguration };
+export { ThisBaseDeployment as LambdaDeployment };
+export { ThisBasePackageConfiguration as LambdaConfiguration };
+export { ThisBasePackage as LambdaPackage };

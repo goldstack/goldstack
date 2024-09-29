@@ -22,9 +22,9 @@
         }
       },
       "required": [
-        "lambdaName",
         "apiDomain",
-        "hostedZoneDomain"
+        "hostedZoneDomain",
+        "lambdaName"
       ]
     },
     "APIDomain": {

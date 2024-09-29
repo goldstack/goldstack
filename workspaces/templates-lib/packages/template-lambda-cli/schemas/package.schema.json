@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$ref": "#/definitions/ThisPackage",
+  "$ref": "#/definitions/ThisBasePackage",
   "definitions": {
-    "ThisPackage": {
+    "ThisBasePackage": {
       "type": "object",
       "properties": {
         "template": {
@@ -15,7 +15,7 @@
           "$ref": "#/definitions/Name"
         },
         "configuration": {
-          "$ref": "#/definitions/ThisPackageConfiguration"
+          "$ref": "#/definitions/ThisBasePackageConfiguration"
         },
         "deployments": {
           "$ref": "#/definitions/LambdaDeployments"
@@ -52,7 +52,7 @@
       "description": "Name of this package.",
       "title": "Package Name"
     },
-    "ThisPackageConfiguration": {
+    "ThisBasePackageConfiguration": {
       "$ref": "#/definitions/PackageConfiguration",
       "description": "Configures this lambda.",
       "title": "Lambda Configuration"
@@ -65,19 +65,19 @@
     "LambdaDeployments": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ThisDeployment"
+        "$ref": "#/definitions/ThisBaseDeployment"
       },
       "description": "Places where the lambda should be deployed to.",
       "title": "Deployments"
     },
-    "ThisDeployment": {
+    "ThisBaseDeployment": {
       "type": "object",
       "properties": {
         "name": {
           "$ref": "#/definitions/DeploymentName"
         },
         "configuration": {
-          "$ref": "#/definitions/ThisDeploymentConfiguration"
+          "$ref": "#/definitions/ThisBaseDeploymentConfiguration"
         },
         "terraformVariables": {
           "$ref": "#/definitions/TerraformVariables"
@@ -108,7 +108,7 @@
       "title": "Deployment Name",
       "pattern": "^[^\\s]*$"
     },
-    "ThisDeploymentConfiguration": {
+    "ThisBaseDeploymentConfiguration": {
       "type": "object",
       "properties": {
         "lambdaName": {

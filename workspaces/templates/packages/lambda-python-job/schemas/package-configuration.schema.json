@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$ref": "#/definitions/ThisPackageConfiguration",
+  "$ref": "#/definitions/ThisBasePackageConfiguration",
   "definitions": {
-    "ThisPackageConfiguration": {
+    "ThisBasePackageConfiguration": {
       "$ref": "#/definitions/PackageConfiguration",
       "description": "Configures this lambda.",
       "title": "Lambda Configuration"
