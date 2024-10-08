@@ -67,6 +67,10 @@
       "regex": "^\\/templates\\/lambda-api$"
     },
     {
+      "page": "/templates/lambda-python-job",
+      "regex": "^\\/templates\\/lambda-python-job$"
+    },
+    {
       "page": "/templates/nextjs-bootstrap",
       "regex": "^\\/templates\\/nextjs-bootstrap$"
     },
@@ -171,8 +175,8 @@
       "routeKeys": {
         "nxtPtemplate": "nxtPtemplate"
       },
-      "dataRouteRegex": "^/_next/data/DtN5lgNqCKgFcxef02S9K/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/DtN5lgNqCKgFcxef02S9K/templates/(?<nxtPtemplate>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/JaPiWT36UZ4W01n9EvaP_/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/JaPiWT36UZ4W01n9EvaP_/templates/(?<nxtPtemplate>[^/]+?)\\.json$"
     }
   ],
   "rsc": {
