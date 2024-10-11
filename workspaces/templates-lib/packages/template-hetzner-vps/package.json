@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-hetzner-vps",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Utilities for packages that help provision Hetzner Servers",
   "keywords": [
     "goldstack",

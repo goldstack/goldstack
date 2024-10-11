@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-hetzner-vps-cli",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Utilities for packages that allows provisioning a Hetzner server with Docker",
   "keywords": [
     "goldstack",
@@ -45,7 +45,7 @@
     "@aws-sdk/client-s3": "3.620.0",
     "@aws-sdk/s3-request-presigner": "^3.645.0",
     "@goldstack/infra-aws": "0.4.20",
-    "@goldstack/template-hetzner-vps": "0.1.6",
+    "@goldstack/template-hetzner-vps": "0.1.7",
     "@goldstack/utils-cli": "0.3.10",
     "@goldstack/utils-package": "0.4.12",
     "@goldstack/utils-package-config": "0.4.12",

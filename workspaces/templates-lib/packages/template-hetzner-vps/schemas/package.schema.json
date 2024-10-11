@@ -140,13 +140,13 @@
     },
     "Location": {
       "type": "string",
-      "description": "The Hetzner location this server should be deployed to.",
+      "description": "The Hetzner location this server should be deployed to. See <a href=\"https://docs.hetzner.com/cloud/general/locations/\">Hetzner Locations</a>.",
       "title": "Location",
       "pattern": "^[^\\s]*"
     },
     "ServerType": {
       "type": "string",
-      "description": "The Hetzner server type that should be used for this server.",
+      "description": "The Hetzner server type that should be used for this server. See <a href=\"https://docs.hetzner.com/cloud/servers/overview\">Hetzner Servers</a>.",
       "title": "Server Type",
       "pattern": "^[^\\s]*"
     },
