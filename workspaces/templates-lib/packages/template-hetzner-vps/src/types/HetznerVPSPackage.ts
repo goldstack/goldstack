@@ -10,12 +10,19 @@ import { Configuration } from '@goldstack/utils-package';
 export { Configuration };
 
 /**
- * The Hetzner location this server should be deployed to.
+ * The Hetzner location this server should be deployed to. See <a href="https://docs.hetzner.com/cloud/general/locations/">Hetzner Locations</a>.
  *
  * @title Location
  * @pattern ^[^\s]*
  */
-export type Location = string;
+export type Location =
+  | 'hil'
+  | 'fsn1'
+  | 'nbg1'
+  | 'hel1'
+  | 'ash'
+  | 'sin'
+  | string;
 
 /**
  * The Hetzner server name that should be used for this server.
@@ -26,12 +33,32 @@ export type Location = string;
 export type ServerName = string;
 
 /**
- * The Hetzner server type that should be used for this server.
+ * The Hetzner server type that should be used for this server. See <a href="https://docs.hetzner.com/cloud/servers/overview">Hetzner Servers</a>.
  *
  * @title Server Type
  * @pattern ^[^\s]*
  */
-export type ServerType = string;
+export type ServerType =
+  | 'cx22'
+  | 'cx32'
+  | 'cx42'
+  | 'cx52'
+  | 'cpx11'
+  | 'cpx21'
+  | 'cpx31'
+  | 'cpx41'
+  | 'cpx51'
+  | 'cax11'
+  | 'cax21'
+  | 'cax31'
+  | 'cax41'
+  | 'ccx13'
+  | 'ccx23'
+  | 'ccx33'
+  | 'ccx43'
+  | 'ccx53'
+  | 'ccx63'
+  | string;
 
 /**
  * The SSH fingerprint of the SSH user that should be granted access to the server.
