@@ -13,17 +13,20 @@ Boilerplate for getting started with DynamoDB in Node.js using best practices fr
 const table = await connectTable();
 const Users = UserEntity(table);
 
-await Users.put({
-  pk: 'joe@email.com',
-  sk: 'd',
-  name: 'Joe',
-  emailVerified: true,
-});
+await Users.build(PutItemCommand)
+  .item({
+    email: 'joe@email.com',
+    name: 'Joe',
+    emailVerified: true,
+  })
+  .send();
 
-const { Item: user } = await Users.get(
-  { pk: 'joe@email.com', sk: 'd' },
-  { attributes: ['name', 'pk'] }
-);
+const { Item: user } = await Users.build(GetItemCommand)
+  .key({ email: 'joe@email.com' })
+  .options({
+    attributes: ['name', 'email'],
+  })
+  .send();
 ```
 
 This boilerplate has been automatically generated from the template:
@@ -57,9 +60,9 @@ For more information, see [GitHub documentation - Fork a repo](https://docs.gith
 
 A few dependencies need to be available in your development system. Please verify they are present or install them.
 
-- Node v18+
-- Yarn v1.22.5+
-- Docker v24+
+*   Node v20+
+*   Yarn v1.22.5+
+*   Docker v20+
 
 Open a terminal and run the following commands:
 
@@ -75,9 +78,9 @@ This should produce the following output:
 
 If you need to install or update any of the dependencies, please see the following guides:
 
-- [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- [Yarn Installation](https://yarnpkg.com/getting-started/install)
-- [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
+*   [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+*   [Yarn Installation](https://yarnpkg.com/getting-started/install)
+*   [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
 
 ## 3. Initialise project and install NPM Dependencies
 
@@ -113,17 +116,17 @@ You may also be asked if you want to install recommended extensions for this wor
 
 If you want to install the necessary extensions manually, here are links to the extensions required:
 
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
+*   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+*   [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+*   [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
 
 ## 6. Initialise TypeScript
 
-Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click _Allow_.
+Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click *Allow*.
 
 <img src="https://cdn.goldstack.party/img/202201/allow_typescript.gif"  alt="VSCode Locate TypeScript">
 
-In the status bar on the bottom right-hand corner of the VSCode editor you should now see _TypeScript_.
+In the status bar on the bottom right-hand corner of the VSCode editor you should now see *TypeScript*.
 
 ![TypeScript status icon in VSCode](https://cdn.goldstack.party/img/202203/typescript_init.png)
 
@@ -156,9 +159,9 @@ Specifically, the [goldstack.json](https://github.com/goldstack/dynamodb-boilerp
 
 The key property you will need to update is:
 
-- `deployments[0].configuration.tableName`
+*   `deployments[0].configuration.tableName`
 
-You also need to _delete_ `deployments[0].tfStateKey`.
+You also need to *delete* `deployments[0].tfStateKey`.
 
 You will also need to ensure that you have a valid AWS user configure to deploy to AWS. For this, create a file in `/config/infra/config.json` (relative to project root).
 
@@ -197,8 +200,8 @@ This boilerplate will come with a module that provides the functionalities for c
 
 In order to make use of the DynamoDB package we principally want to do two things:
 
-- Define the schema for our table
-- Write application logic to work with the data in the table
+*   Define the schema for our table
+*   Write application logic to work with the data in the table
 
 In this template, the former will be done within the DynamoDB package but the latter can either happen in other packages. For instance, if you have included a [Serverless API](https://goldstack.party/templates/lambda-api) template in your project, you can define your logic for working with the data in DynamoDB in that package. However, you can also write additional code in the DynamoDB package and define a lightweight DOA layer.
 
@@ -209,30 +212,48 @@ While DynamoDB is a NoSQL data store and strictly speaking does not require a da
 The entities we want to store in the table are defined in the file `entities.ts` which is included in the DynamoDB package:
 
 ```typescript
-import { Table } from 'dynamodb-toolbox';
-import DynamoDB from 'aws-sdk/clients/dynamodb';
+import { boolean, Entity, schema, string, Table } from 'dynamodb-toolbox';
+import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
+import memoizee from 'memoizee';
+import { Key } from 'dynamodb-toolbox/dist/esm/table/types';
 
-export function createTable<Name extends string>(
-  dynamoDB: DynamoDB.DocumentClient,
+export function createTable(
+  dynamoDB: DynamoDBDocumentClient,
   tableName: string
-): Table<Name, 'pk', 'sk'> {
-  return new Table({
+): Table<Key<string, 'string'>, Key<string, 'string'>> {
+  const table = new Table({
     name: tableName,
-    partitionKey: 'pk',
-    sortKey: 'sk',
-    DocumentClient: dynamoDB,
+    partitionKey: {
+      name: 'pk',
+      type: 'string',
+    },
+    sortKey: {
+      name: 'sk',
+      type: 'string',
+    },
+    documentClient: dynamoDB,
   });
+  return table;
 }
 
-export const UserEntity = {
-  name: 'User',
-  attributes: {
-    email: { partitionKey: true },
-    type: { sortKey: true, default: 'user' },
-    name: { type: 'string', required: true },
-    emailVerified: { type: 'boolean', required: true },
-  },
-} as const;
+export function UserEntityFn(
+  table: Table<Key<string, 'string'>, Key<string, 'string'>>
+) {
+  const entity = new Entity({
+    name: 'User',
+    schema: schema({
+      email: string().key().savedAs('pk'),
+      type: string().key().default('user').savedAs('sk'),
+      name: string().required(),
+      emailVerified: boolean().required(),
+    }),
+    table: table,
+  } as const);
+
+  return entity;
+}
+
+export const UserEntity = memoizee(UserEntityFn);
 ```
 
 You can edit and extend these entities. Note though that it is recommended not to change the name of the `partionKey` (`pk`) and `sortKey` (`sk`).
@@ -301,11 +322,13 @@ You can then use the return object to instantiate your entities:
 const table = await connectTable();
 const Users = new Entity({ ...deepCopy(UserEntity), table } as const);
 
-await Users.put({
-  email: 'joe@email.com',
-  name: 'Joe',
-  emailVerified: true,
-});
+await Users.build(PutItemCommand)
+  .item({
+    email: 'joe@email.com',
+    name: 'Joe',
+    emailVerified: true,
+  })
+  .send();
 ```
 
 Note that the attributes defined in `UserEntity` need to be copied due to a bug in DynamoDBToolbox: [jeremydaly/dynamodb-toolbox#310](https://github.com/jeremydaly/dynamodb-toolbox/issues/310).
