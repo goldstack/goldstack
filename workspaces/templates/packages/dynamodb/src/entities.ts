@@ -2,7 +2,6 @@ import { boolean, Entity, schema, string, Table } from 'dynamodb-toolbox';
 import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 import memoizee from 'memoizee';
 import { Key } from 'dynamodb-toolbox/dist/esm/table/types';
-import { doesSchemaValidateTableSchemaKey } from 'dynamodb-toolbox/dist/esm/entity/utils/doesSchemaValidateTableSchema';
 
 export function createTable(
   dynamoDB: DynamoDBDocumentClient,
