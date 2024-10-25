@@ -13,17 +13,20 @@ Boilerplate for getting started with DynamoDB in Node.js using best practices fr
 const table = await connectTable();
 const Users = UserEntity(table);
 
-await Users.put({
-  pk: 'joe@email.com',
-  sk: 'd',
-  name: 'Joe',
-  emailVerified: true,
-});
+await Users.build(PutItemCommand)
+  .item({
+    email: 'joe@email.com',
+    name: 'Joe',
+    emailVerified: true,
+  })
+  .send();
 
-const { Item: user } = await Users.get(
-  { pk: 'joe@email.com', sk: 'd' },
-  { attributes: ['name', 'pk'] }
-);
+const { Item: user } = await Users.build(GetItemCommand)
+  .key({ email: 'joe@email.com' })
+  .options({
+    attributes: ['name', 'email'],
+  })
+  .send();
 ```
 
 This boilerplate has been automatically generated from the template:
