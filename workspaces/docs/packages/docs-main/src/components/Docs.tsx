@@ -59,7 +59,7 @@ const Docs = (props: DocsProps): JSX.Element => {
         <Row>
           <Col className="text-center">
             <a
-              href={`https://github.com/goldstack/goldstack/blob/master/workspaces/docs/${githubPath}`}
+              href={`https://github.com/goldstack/goldstack/blob/master/workspaces/docs/docs/${githubPath}`}
               target="_blank"
               rel="noreferrer"
             >
