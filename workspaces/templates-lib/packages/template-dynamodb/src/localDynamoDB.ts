@@ -168,9 +168,6 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
 
   if (commandExists('docker')) {
     console.debug('Starting local DynamoDB with Docker');
-    console.warn(
-      "Docker doesn't currently support stopping the container, see https://github.com/chrisguttandin/dynamo-db-local/issues/114\nIt is recommended you install Java."
-    );
     const detached = global['CI'] ? true : false;
     const hash = new Date().getTime();
     const containerName = 'goldstack-local-dynamodb-' + hash;
