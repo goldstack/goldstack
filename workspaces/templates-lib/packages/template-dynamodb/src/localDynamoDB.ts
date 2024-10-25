@@ -188,13 +188,17 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
       host: 'localhost',
       port: MAPPED_PORT,
     });
+    // giving DynamoDB some extra time to start up
+    await new Promise<void>((resolve) => {
+      setTimeout(resolve, 5000);
+    });
     return {
       port: MAPPED_PORT,
       stop: async () => {
         console.debug('Stopping local Docker DynamoDB');
         try {
           await killProcess(pr);
-          // await execAsync(`docker stop ${containerName}`);
+          await execAsync(`docker stop ${containerName}`);
         } catch (e) {
           console.error(
             'Stopping local Docker DynamoDB process not successful'
