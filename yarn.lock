@@ -3525,7 +3525,7 @@ __metadata:
     "@types/node": "npm:^18.7.13"
     "@types/tcp-port-used": "npm:^1"
     "@types/yargs": "npm:^17.0.10"
-    dynamo-db-local: "npm:7.3.0"
+    dynamo-db-local: "npm:8.0.0"
     jest: "npm:^29.3.1"
     rimraf: "npm:^3.0.2"
     tcp-port-used: "npm:^1.0.2"
@@ -11086,10 +11086,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dynamo-db-local@npm:7.3.0":
-  version: 7.3.0
-  resolution: "dynamo-db-local@npm:7.3.0"
-  checksum: 55e85bef001b3a52794975038c2e586c58146dc69903e2a1be04b960f7864a0a8f9e1883b50da489ee1583fdd70e8d0f5f46b330f4cf7b372f6ccd1656811ee5
+"dynamo-db-local@npm:8.0.0":
+  version: 8.0.0
+  resolution: "dynamo-db-local@npm:8.0.0"
+  checksum: 0dd77d5d93c73b524b506992259ac4e37eaf0e07403d9e6bb3affe37208fe5993888ffe5080f53774beedb9f1059d1919e7a9a92fe49e250acf651568440c102
   languageName: node
   linkType: hard
 

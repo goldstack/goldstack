@@ -8,7 +8,7 @@ import { getTableName } from './dynamoDBPackageUtils';
 import { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
 import waitPort from 'wait-port';
 import { check } from 'tcp-port-used';
-import { ChildProcess, exec, spawn } from 'child_process';
+import { ChildProcess, spawn } from 'child_process';
 
 const MAPPED_PORT = 8000;
 
@@ -184,13 +184,17 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
     if (detached) {
       pr.unref();
     }
+    await waitPort({
+      host: 'localhost',
+      port: MAPPED_PORT,
+    });
     return {
       port: MAPPED_PORT,
       stop: async () => {
         console.debug('Stopping local Docker DynamoDB');
         try {
           await killProcess(pr);
-          await execAsync(`docker stop ${containerName}`);
+          // await execAsync(`docker stop ${containerName}`);
         } catch (e) {
           console.error(
             'Stopping local Docker DynamoDB process not successful'
