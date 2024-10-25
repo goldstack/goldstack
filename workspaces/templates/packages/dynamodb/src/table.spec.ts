@@ -27,7 +27,7 @@ describe('DynamoDB Table', () => {
   beforeAll(async () => {
     await startLocalDynamoDB();
   });
-  it.only('Should connect to local table', async () => {
+  it('Should connect to local table', async () => {
     const tableName = await getTableName();
     assert(tableName);
     const dynamoDB = await connect();
