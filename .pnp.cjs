@@ -4786,7 +4786,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:18.7.13"],\
           ["@types/tcp-port-used", "npm:1.0.1"],\
           ["@types/yargs", "npm:17.0.10"],\
-          ["dynamo-db-local", "npm:7.3.0"],\
+          ["dynamo-db-local", "npm:8.0.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["tcp-port-used", "npm:1.0.2"],\
@@ -13439,10 +13439,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["dynamo-db-local", [\
-      ["npm:7.3.0", {\
-        "packageLocation": "./.yarn/unplugged/dynamo-db-local-npm-7.3.0-e567b9fb6c/node_modules/dynamo-db-local/",\
+      ["npm:8.0.0", {\
+        "packageLocation": "./.yarn/unplugged/dynamo-db-local-npm-8.0.0-622cc3daed/node_modules/dynamo-db-local/",\
         "packageDependencies": [\
-          ["dynamo-db-local", "npm:7.3.0"]\
+          ["dynamo-db-local", "npm:8.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\

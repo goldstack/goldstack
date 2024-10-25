@@ -8,7 +8,7 @@ import { getTableName } from './dynamoDBPackageUtils';
 import { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
 import waitPort from 'wait-port';
 import { check } from 'tcp-port-used';
-import { ChildProcess, exec, spawn } from 'child_process';
+import { ChildProcess, spawn } from 'child_process';
 
 const MAPPED_PORT = 8000;
 
@@ -168,9 +168,6 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
 
   if (commandExists('docker')) {
     console.debug('Starting local DynamoDB with Docker');
-    console.warn(
-      "Docker doesn't currently support stopping the container, see https://github.com/chrisguttandin/dynamo-db-local/issues/114\nIt is recommended you install Java."
-    );
     const detached = global['CI'] ? true : false;
     const hash = new Date().getTime();
     const containerName = 'goldstack-local-dynamodb-' + hash;
@@ -184,6 +181,14 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
     if (detached) {
       pr.unref();
     }
+    await waitPort({
+      host: 'localhost',
+      port: MAPPED_PORT,
+    });
+    // giving DynamoDB some extra time to start up
+    await new Promise<void>((resolve) => {
+      setTimeout(resolve, 5000);
+    });
     return {
       port: MAPPED_PORT,
       stop: async () => {
