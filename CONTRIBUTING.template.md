@@ -110,7 +110,8 @@ A Goldstack template consists of the following:
 
 - A `template.json` file describing some template metadata
 - A `goldstack.json` file describing the configuration for deployments
-- A set of JSON schemas describing the template configuration. This is used to automatically render the Web interface for defining template configuration.
+- A set of JSON schemas describing the template configuration in the folder `schemas/`. This is used to automatically render the Web interface for defining template configuration.
+- A set of documentation files rendered in HTML in the folder `docs/`. This is used in the template configuration dialogue.
 - A `build.json` file that provides information which files should be included in the template and allows for some file modifications.
 
 Creating a new template will involve the following:
