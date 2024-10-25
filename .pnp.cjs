@@ -2062,10 +2062,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:3eed134ee86ef749f2d6f10158b4a8501e30f380afa3a1aff163398fe06ae700b1e023c309609608fbed330115fc9712c406f5891673c64b08519c65368680d1#npm:3.501.0", {\
-        "packageLocation": "./.yarn/__virtual__/@aws-sdk-util-dynamodb-virtual-5fc343fa40/0/cache/@aws-sdk-util-dynamodb-npm-3.501.0-e7f086dab0-034d4e7d02.zip/node_modules/@aws-sdk/util-dynamodb/",\
+      ["virtual:7aeca1a6e63c9daac1c0f240f0786f5f0babe80eea905b6aad29ba392fe3192dc1653f9c9c8d2d5612d5b800d1a214ae91299efe40adbb59149b330d1d7e8961#npm:3.501.0", {\
+        "packageLocation": "./.yarn/__virtual__/@aws-sdk-util-dynamodb-virtual-da2d0b6ce5/0/cache/@aws-sdk-util-dynamodb-npm-3.501.0-e7f086dab0-034d4e7d02.zip/node_modules/@aws-sdk/util-dynamodb/",\
         "packageDependencies": [\
-          ["@aws-sdk/util-dynamodb", "virtual:3eed134ee86ef749f2d6f10158b4a8501e30f380afa3a1aff163398fe06ae700b1e023c309609608fbed330115fc9712c406f5891673c64b08519c65368680d1#npm:3.501.0"],\
+          ["@aws-sdk/util-dynamodb", "virtual:7aeca1a6e63c9daac1c0f240f0786f5f0babe80eea905b6aad29ba392fe3192dc1653f9c9c8d2d5612d5b800d1a214ae91299efe40adbb59149b330d1d7e8961#npm:3.501.0"],\
           ["@aws-sdk/client-dynamodb", "npm:3.645.0"],\
           ["@types/aws-sdk__client-dynamodb", null],\
           ["tslib", "npm:2.6.2"]\
@@ -3828,7 +3828,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:18.7.13"],\
           ["aws-sdk", "npm:2.1525.0"],\
           ["dynamodb-admin", "npm:4.6.1"],\
-          ["dynamodb-toolbox", "virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:0.9.2"],\
+          ["dynamodb-toolbox", "virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:1.11.8"],\
           ["ejs", "npm:3.1.10"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["memoizee", "npm:0.4.15"],\
@@ -12881,15 +12881,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["deep-copy", [\
-      ["npm:1.4.2", {\
-        "packageLocation": "./.yarn/cache/deep-copy-npm-1.4.2-131a7a9b24-0e31e320fa.zip/node_modules/deep-copy/",\
-        "packageDependencies": [\
-          ["deep-copy", "npm:1.4.2"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["deep-extend", [\
       ["npm:0.6.0", {\
         "packageLocation": "./.yarn/cache/deep-extend-npm-0.6.0-e182924219-7be7e5a8d4.zip/node_modules/deep-extend/",\
@@ -13495,24 +13486,23 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["dynamodb-toolbox", [\
-      ["npm:0.9.2", {\
-        "packageLocation": "./.yarn/cache/dynamodb-toolbox-npm-0.9.2-25efde8214-91d2cd61c2.zip/node_modules/dynamodb-toolbox/",\
+      ["npm:1.11.8", {\
+        "packageLocation": "./.yarn/cache/dynamodb-toolbox-npm-1.11.8-b9047b5d1e-270441d961.zip/node_modules/dynamodb-toolbox/",\
         "packageDependencies": [\
-          ["dynamodb-toolbox", "npm:0.9.2"]\
+          ["dynamodb-toolbox", "npm:1.11.8"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:0.9.2", {\
-        "packageLocation": "./.yarn/__virtual__/dynamodb-toolbox-virtual-3eed134ee8/0/cache/dynamodb-toolbox-npm-0.9.2-25efde8214-91d2cd61c2.zip/node_modules/dynamodb-toolbox/",\
+      ["virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:1.11.8", {\
+        "packageLocation": "./.yarn/__virtual__/dynamodb-toolbox-virtual-7aeca1a6e6/0/cache/dynamodb-toolbox-npm-1.11.8-b9047b5d1e-270441d961.zip/node_modules/dynamodb-toolbox/",\
         "packageDependencies": [\
-          ["dynamodb-toolbox", "virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:0.9.2"],\
+          ["dynamodb-toolbox", "virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:1.11.8"],\
           ["@aws-sdk/client-dynamodb", "npm:3.645.0"],\
           ["@aws-sdk/lib-dynamodb", "virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:3.645.0"],\
-          ["@aws-sdk/util-dynamodb", "virtual:3eed134ee86ef749f2d6f10158b4a8501e30f380afa3a1aff163398fe06ae700b1e023c309609608fbed330115fc9712c406f5891673c64b08519c65368680d1#npm:3.501.0"],\
+          ["@aws-sdk/util-dynamodb", "virtual:7aeca1a6e63c9daac1c0f240f0786f5f0babe80eea905b6aad29ba392fe3192dc1653f9c9c8d2d5612d5b800d1a214ae91299efe40adbb59149b330d1d7e8961#npm:3.501.0"],\
           ["@types/aws-sdk__client-dynamodb", null],\
           ["@types/aws-sdk__lib-dynamodb", null],\
-          ["deep-copy", "npm:1.4.2"],\
-          ["ts-toolbelt", "npm:9.6.0"]\
+          ["hotscript", "npm:1.0.13"]\
         ],\
         "packagePeers": [\
           "@aws-sdk/client-dynamodb",\
@@ -16307,6 +16297,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["hosted-git-info", "npm:4.1.0"],\
           ["lru-cache", "npm:6.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["hotscript", [\
+      ["npm:1.0.13", {\
+        "packageLocation": "./.yarn/cache/hotscript-npm-1.0.13-37ff40a7e9-c384f44965.zip/node_modules/hotscript/",\
+        "packageDependencies": [\
+          ["hotscript", "npm:1.0.13"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -25461,15 +25460,6 @@ const RAW_RUNTIME_STATE =
           "@types/typescript",\
           "node-notifier",\
           "typescript"\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["ts-toolbelt", [\
-      ["npm:9.6.0", {\
-        "packageLocation": "./.yarn/cache/ts-toolbelt-npm-9.6.0-a95699c8d0-2c2dea2631.zip/node_modules/ts-toolbelt/",\
-        "packageDependencies": [\
-          ["ts-toolbelt", "npm:9.6.0"]\
         ],\
         "linkType": "HARD"\
       }]\

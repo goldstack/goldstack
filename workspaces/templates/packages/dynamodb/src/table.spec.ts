@@ -1,7 +1,15 @@
 import assert from 'assert';
 import { DynamoDBDocument } from '@aws-sdk/lib-dynamodb';
 import { DescribeTableCommand } from '@aws-sdk/client-dynamodb';
-import { Entity, Table } from 'dynamodb-toolbox';
+import {
+  boolean,
+  Entity,
+  GetItemCommand,
+  PutItemCommand,
+  schema,
+  string,
+  Table,
+} from 'dynamodb-toolbox';
 import { UserEntity } from './entities';
 
 import {
@@ -50,33 +58,48 @@ describe('DynamoDB Table', () => {
   it('Should be able to write and read an entity with native toolbox methods', async () => {
     const table = new Table({
       name: await getTableName(),
-      partitionKey: 'pk',
-      sortKey: 'sk',
-      DocumentClient: DynamoDBDocument.from(await connect()),
+      partitionKey: {
+        name: 'pk',
+        type: 'string',
+      },
+      sortKey: {
+        name: 'sk',
+        type: 'string',
+      },
+      documentClient: DynamoDBDocument.from(await connect()),
     });
 
     const e = new Entity({
       name: 'User',
-      attributes: {
-        pk: { partitionKey: true },
-        sk: { hidden: true, sortKey: true },
-        name: { type: 'string', required: true },
-        emailVerified: { type: 'boolean', required: true },
-      },
+      schema: schema({
+        pk: string().key(),
+        sk: string().key(),
+        name: string().required(),
+        emailVerified: boolean().required(),
+      }),
       table,
     } as const);
 
-    await e.put({
-      pk: 'joe@email.com',
-      sk: 'admin',
-      name: 'Joe',
-      emailVerified: true,
-    });
+    await e
+      .build(PutItemCommand)
+      .item({
+        pk: 'joe@email.com',
+        sk: 'admin',
+        name: 'Joe',
+        emailVerified: true,
+      })
+      .send();
 
-    const { Item: user } = await e.get(
-      { pk: 'joe@email.com', sk: 'admin' },
-      { attributes: ['name', 'pk'] }
-    );
+    const { Item: user } = await e
+      .build(GetItemCommand)
+      .key({
+        pk: 'joe@email.com',
+        sk: 'admin',
+      })
+      .options({
+        attributes: ['name', 'pk'],
+      })
+      .send();
 
     if (!user) {
       throw new Error('Result not found');
@@ -86,18 +109,23 @@ describe('DynamoDB Table', () => {
 
   it('Should be able to write and read an entity with entities', async () => {
     const table = await connectTable();
-    // important to do deep copy here because of
-    //   https://github.com/jeremydaly/dynamodb-toolbox/issues/310
     const Users = UserEntity(table);
-    await Users.put({
-      email: 'joe@email.com',
-      name: 'Joe',
-      emailVerified: true,
-    });
-    const { Item: user } = await Users.get(
-      { email: 'joe@email.com' },
-      { attributes: ['name', 'email'] }
-    );
+
+    await Users.build(PutItemCommand)
+      .item({
+        email: 'joe@email.com',
+        name: 'Joe',
+        emailVerified: true,
+      })
+      .send();
+
+    const { Item: user } = await Users.build(GetItemCommand)
+      .key({ email: 'joe@email.com' })
+      .options({
+        attributes: ['name', 'email'],
+      })
+      .send();
+
     if (!user) {
       throw new Error('Result not found');
     }
@@ -108,21 +136,28 @@ describe('DynamoDB Table', () => {
   it('Should be able to instantiate entity with deepCopy', async () => {
     const table = await connectTable();
     const Users1 = UserEntity(table);
-    await Users1.put({
-      email: 'joe@email.com',
-      name: 'Joe',
-      type: 'user',
-      emailVerified: true,
-    });
+
+    await Users1.build(PutItemCommand)
+      .item({
+        email: 'joe@email.com',
+        name: 'Joe',
+        type: 'user',
+        emailVerified: true,
+      })
+      .send();
 
     const Users2 = UserEntity(table);
     // Using Users2 will result in an error here, see https://github.com/jeremydaly/dynamodb-toolbox/issues/366#issuecomment-1366311354
-    const { Item: user } = await Users2.get(
-      {
+
+    const { Item: user } = await Users2.build(GetItemCommand)
+      .key({
         email: 'joe@email.com',
-      },
-      { attributes: ['email', 'name'] }
-    );
+      })
+      .options({
+        attributes: ['name', 'email'],
+      })
+      .send();
+
     if (!user) {
       throw new Error('Result not found');
     }

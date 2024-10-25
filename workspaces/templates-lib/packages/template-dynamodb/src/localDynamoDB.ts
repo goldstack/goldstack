@@ -2,13 +2,13 @@
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
-import dynamoDBLocal from 'dynamo-db-local';
-import { commandExists } from '@goldstack/utils-sh';
+import * as dynamoDBLocal from 'dynamo-db-local';
+import { commandExists, execAsync } from '@goldstack/utils-sh';
 import { getTableName } from './dynamoDBPackageUtils';
 import { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
 import waitPort from 'wait-port';
 import { check } from 'tcp-port-used';
-import { ChildProcess, spawn } from 'child_process';
+import { ChildProcess, exec, spawn } from 'child_process';
 
 const MAPPED_PORT = 8000;
 
@@ -172,9 +172,12 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
       "Docker doesn't currently support stopping the container, see https://github.com/chrisguttandin/dynamo-db-local/issues/114\nIt is recommended you install Java."
     );
     const detached = global['CI'] ? true : false;
+    const hash = new Date().getTime();
+    const containerName = 'goldstack-local-dynamodb-' + hash;
     const pr = dynamoDBLocal.spawn({
       port: MAPPED_PORT,
       command: 'docker',
+      name: containerName,
       path: null,
       detached,
     });
@@ -187,6 +190,7 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
         console.debug('Stopping local Docker DynamoDB');
         try {
           await killProcess(pr);
+          await execAsync(`docker stop ${containerName}`);
         } catch (e) {
           console.error(
             'Stopping local Docker DynamoDB process not successful'
