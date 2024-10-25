@@ -14,13 +14,14 @@ import goldstackConfig from './../goldstack.json';
 import goldstackSchema from './../schemas/package.schema.json';
 import { createTable } from './entities';
 import { createMigrations } from './migrations';
+import { Key } from 'dynamodb-toolbox/dist/esm/table/types';
 
 export { DynamoDBClient };
 
 export { Entity } from 'dynamodb-toolbox';
 
 export * from './entities';
-export type Table = ToolboxTable<string, 'pk', 'sk'>;
+export type Table = ToolboxTable<Key<string, 'string'>, Key<string, 'string'>>;
 
 export const connect = async (
   deploymentName?: string
