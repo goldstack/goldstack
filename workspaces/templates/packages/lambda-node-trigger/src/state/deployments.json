@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "name": "prod",
+    "terraform": {
+      "lambda_arn": {
+        "sensitive": false,
+        "type": "string",
+        "value": "arn:aws:lambda:us-west-2:475629728374:function:lambda-node-trigger-test"
+      },
+      "lambda_function_name": {
+        "sensitive": false,
+        "type": "string",
+        "value": "lambda-node-trigger-test"
+      },
+      "lambda_invoke_arn": {
+        "sensitive": false,
+        "type": "string",
+        "value": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:475629728374:function:lambda-node-trigger-test/invocations"
+      },
+      "sqs_dlq_queue_name": {
+        "sensitive": false,
+        "type": "string",
+        "value": "lambda-node-trigger-test-dlq"
+      },
+      "sqs_queue_name": {
+        "sensitive": false,
+        "type": "string",
+        "value": "lambda-node-trigger-sqs-test"
+      }
+    }
+  }
+]

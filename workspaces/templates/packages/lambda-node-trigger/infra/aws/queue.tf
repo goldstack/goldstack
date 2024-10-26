@@ -3,10 +3,12 @@ resource "aws_sqs_queue" "queue" {
   count = length(var.sqs_queue_name) > 0 ? 1 : 0
   name  = "${var.lambda_name}-queue"
 
+  visibility_timeout_seconds = 900
+
   # Redrive policy to send failed messages to the DLQ if DLQ is created
   redrive_policy = count.index == 0 && length(aws_sqs_queue.dlq) > 0 ? jsonencode({
     deadLetterTargetArn = aws_sqs_queue.dlq[0].arn
-    maxReceiveCount     = 5  # Customize this based on your needs
+    maxReceiveCount     = 5  
   }) : null
 }
 
