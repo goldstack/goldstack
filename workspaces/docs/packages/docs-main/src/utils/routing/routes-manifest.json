@@ -159,6 +159,10 @@
       "regex": "^\\/docs\\/templates\\/lambda-go-gin$"
     },
     {
+      "page": "/docs/templates/lambda-node-trigger",
+      "regex": "^\\/docs\\/templates\\/lambda-node-trigger$"
+    },
+    {
       "page": "/docs/templates/lambda-python-job",
       "regex": "^\\/docs\\/templates\\/lambda-python-job$"
     },
@@ -215,8 +219,8 @@
       "routeKeys": {
         "nxtPslug": "nxtPslug"
       },
-      "dataRouteRegex": "^/_next/data/P25KSFClUSFiB3KB\\-irZb/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/P25KSFClUSFiB3KB\\-irZb/docs/(?<nxtPslug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/ReGZtHNWr5S3m1_RrFO6R/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/ReGZtHNWr5S3m1_RrFO6R/docs/(?<nxtPslug>.+?)\\.json$"
     }
   ],
   "rsc": {
