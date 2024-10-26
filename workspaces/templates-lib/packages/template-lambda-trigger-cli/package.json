@@ -24,7 +24,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "src/templateLambdaTrigger.ts",
+  "main": "src/templateLambdaTriggerCli.ts",
   "bin": {
     "template": "./bin/template",
     "template-lambda-http-cli": "./bin/template"
@@ -77,6 +77,6 @@
     "typescript": "^4.8.4"
   },
   "publishConfig": {
-    "main": "dist/src/templateLambdaTrigger.js"
+    "main": "dist/src/templateLambdaTriggerCli.js"
   }
 }
