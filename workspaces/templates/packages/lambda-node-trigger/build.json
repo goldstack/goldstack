@@ -3,7 +3,6 @@
     "infra/",
     "docs/",
     "src/",
-    "lambda/",
     "scripts/",
     "schemas/",
     ".gitignore",

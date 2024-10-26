@@ -2,36 +2,70 @@
 
 ❤️ Support development by using the [Goldstack Project Builder](https://goldstack.party) ❤️
 
-The Lambda Python Job template allows defining an AWS Lambda and Python and triggering this function on a schedule.
+The Lambda Node Trigger template allows defining an AWS Lambda in Node.js triggering this function on a schedule or by an event.
 
 ## Features
 
-*   Write Python code and deploy it to AWS Lambda
+*   Write Node.js code and deploy it to AWS Lambda
 *   Includes command line utilities to package code as ZIP and to deploy to AWS Lambda
-*   Trigger the function according to a schedule (e.g. once per hour)
+*   Trigger the function according to a schedule (e.g. once per hour) and/or based on messages received in an SQS queue
 
 ## Getting Started
 
-In order to develop your Python Lambda, go to the `lambda/` directory contained in the template.
+You can start developing you code in the file `src/handler.ts`. Simply add the logic you require there:
 
-First, we need to initialise a virtual environment:
+```typescript
+export const handler: Handler = async (event, context) => {
+  // SQS message
+  if (event.Records) {
+    const sqsEvent = event as SQSEvent;
+    const message = sqsEvent.Records[0].body;
+    console.log('SQS message received:');
+    console.log(message);
+    return;
+  }
 
-    python -m venv lambda_env
+  if (event['detail-type'] && event['detail-type'] === 'Scheduled Event') {
+    const time = event['time'];
+    console.log(`This is a scheduled event from ${time}`);
+    return;
+  }
+};
+```
 
-Then activate the environment:
+You can send messages from other Lambdas to the queue as follows:
 
-    source lambda_env/Scripts/activate # Windows
-    source venv/bin/activate # Linux/ iOS
+    import { SendMessageCommand, SQSClient } from "@aws-sdk/client-sqs";
 
-Finally install the dependencies:
+    import { getSQSQueueURL } from '@yourproject/your-ses-package';
 
-    pip install -r requirements.txt
+    export const sendHelloWorldMessage = async (queueName: string) => {
+      
+      const client = new SQSClient({});
+      const queueUrl = getSQSQueueURL();
 
-Now you are ready to develop your Python function.
+      const command = new SendMessageCommand({
+        QueueUrl: queueUrl,
+        MessageBody: "Hello World",
+      });
 
-Open the `lambda/lambda.py` file in VSCode.
+      try {
+        const response = await client.send(command);
+        console.log("Message sent successfully:", response);
+        return response;
+      } catch (error) {
+        console.error("Error sending message:", error);
+        throw error;
+      }
+    };
 
-Then ensure that the correct environment is selected (see [VSCode Docs: Select and Activate and Environment](https://code.visualstudio.com/docs/python/environments#\_select-and-activate-an-environment). For this, click on the bottom right of your editor where python is referenced. Click there to select an interpreter, and then point to the Python executable that is in the `lambda_env` folder.
+Make sure to install the SQS client package in the Lambda that should write to the queue:
+
+    yarn add @aws-sdk/client-sqs
+
+Also you need to add your handler lambda as dependency (to the lambda that should send message to it).
+
+    yarn add @yourproject/your-ses-package
 
 ## Infrastructure
 
@@ -120,8 +154,6 @@ Note that due to JavaScript and Terraform using different conventions for naming
 In order to manage your infrastructure, Terraform maintains a state for each deployment; to calculate required changes when the infrastructure is updated and also for destroying the infrastructure if it is no longer required. Goldstack by default will store the terraform state in the `infra/aws` folder as simple files.
 
 This works well for deploying infrastructure from your local development environment but is not a good choice when building a CI/CD pipeline for the infrastructure definition. In that case, it is better to define [Remote State](https://www.terraform.io/docs/state/remote.html). A popular choice many projects adopt here is to store the [state in an S3 bucket](https://www.terraform.io/docs/backends/types/s3.html). Please see the Terraform documentation for further details.
-
-Note this Lambda will be executed on a schedule. The schedule is defined in `infra/aws/schedule.tf`.
 
 ## Deployment
 

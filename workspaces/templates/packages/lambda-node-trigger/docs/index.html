@@ -1,100 +1,70 @@
-<p></p><div class="markdown-fragment"><p>The S3 template provides a simple means for an application to store and access files on <a href="https://aws.amazon.com/s3/" class="absolute" target="_blank" rel="noopener noreferrer">AWS S3</a>. This template is set up for deploying an S3 bucket using Terraform and provides a simple TypeScript API to work with this bucket.</p></div><p></p>
+<p></p><div class="markdown-fragment"><p>The Lambda Node Trigger template allows defining an AWS Lambda in Node.js triggering this function on a schedule or by an event.</p></div><p></p>
 <h2 class="heading"><span id="features"></span><a href="#features">Features</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
   </g>
 </svg></span></h2>
-<p></p><div class="markdown-fragment"><ul>
-<li>S3 bucket defined in Terraform</li>
-<li>Supports definition for multiple environments (staging, production)</li>
-<li>Infrastructure easily stood up using an npm script <code class="inline">yarn infra up</code></li>
-<li>Embed in server applications by linking to the package</li>
+<ul>
+<li>Write Node.js code and deploy it to AWS Lambda</li>
+<li>Includes command line utilities to package code as ZIP and to deploy to AWS Lambda</li>
+<li>Trigger the function according to a schedule (e.g. once per hour) and/or based on messages received in an SQS queue</li>
 </ul>
-<pre class="language-javascript language-javascript"><code class="language-javascript"><span class="token keyword module">import</span> <span class="token punctuation">{</span> getBucketName<span class="token punctuation">,</span> connect <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'my-s3-module'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> s3 <span class="token operator">=</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">await</span> s3<span class="token punctuation">.</span><span class="token method function property-access">putObject</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  <span class="token maybe-class-name">BucketName</span><span class="token punctuation">:</span> <span class="token function">getBucketName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token maybe-class-name">Key</span><span class="token punctuation">:</span> <span class="token string">'my-doc'</span><span class="token punctuation">,</span>
-  <span class="token maybe-class-name">Body</span><span class="token punctuation">:</span> <span class="token string">'content'</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div><p></p>
-<h2 class="heading"><span id="configure"></span><a href="#configure">Configure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
-  <g stroke-width="1" fill="#000000" stroke="#000000">
-    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
-    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
-  </g>
-</svg></span></h2>
-<p></p><div class="markdown-fragment"><p>In order to provide a basic configuration for an S3 bucket, we only need to know the name of the bucket you want to create.</p>
-<p>Please note that a bucket name needs to be <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html" class="absolute" target="_blank" rel="noopener noreferrer">globally unique</a>. However, buckets are always created in a specific <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions" class="absolute" target="_blank" rel="noopener noreferrer">AWS region</a>. The bucket will be deployed to the AWS region you have specified.</p></div><p></p>
 <h2 class="heading"><span id="getting-started"></span><a href="#getting-started">Getting Started</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
   </g>
 </svg></span></h2>
-<p></p><div class="markdown-fragment"><p></p><div class="markdown-fragment"><h3 class="heading"><span id="1-project-setup-2"></span><a href="#1-project-setup-2"><span id="1-project-setup-1"></span><a href="#1-project-setup-1" class="relative"><span id="1-project-setup"></span></a><a href="#1-project-setup" class="relative">1. Project Setup</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
-  <g stroke-width="1" fill="#000000" stroke="#000000">
-    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
-    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
-  </g>
-</svg></span><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
-  <g stroke-width="1" fill="#000000" stroke="#000000">
-    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
-    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
-  </g>
-</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
-  <g stroke-width="1" fill="#000000" stroke="#000000">
-    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
-    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
-  </g>
-</svg></span></h3>
-<p>Before using this template, you need to configure the project. For this, please see the <a href="https://docs.goldstack.party/docs/goldstack/getting-started" class="absolute" target="_blank" rel="noopener noreferrer">Getting Started Guide</a> on the Goldstack documentation.</p></div><p></p>
-<p></p><div class="markdown-fragment"><h3 class="heading"><span id="2-setup-infrastructure-2"></span><a href="#2-setup-infrastructure-2"><span id="2-setup-infrastructure-1"></span><a href="#2-setup-infrastructure-1" class="relative"><span id="2-setup-infrastructure"></span></a><a href="#2-setup-infrastructure" class="relative">2. Setup Infrastructure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
-  <g stroke-width="1" fill="#000000" stroke="#000000">
-    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
-    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
-  </g>
-</svg></span><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
-  <g stroke-width="1" fill="#000000" stroke="#000000">
-    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
-    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
-  </g>
-</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
-  <g stroke-width="1" fill="#000000" stroke="#000000">
-    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
-    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
-  </g>
-</svg></span></h3>
-<p>To stand up the infrastructure for this module, find the directory for this module in the <code class="inline">packages/</code> folder and navigate to this folder in the command line. Then identify the name of the deployment you have defined in the Goldstack configuration tool. This can be found in the <code class="inline">packages/[moduleName]/goldstack.json</code> file. Look for the <code class="inline">"deployments"</code> property and there for the <code class="inline">"name"</code> of the first deployment. The name should either be <code class="inline">dev</code> or <code class="inline">prod</code>.</p>
-<p>In order to stand up the infrastructure, run the following command:</p>
-<pre class="language-bash language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra up <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
-</code></pre>
-<p>This will be either <code class="inline">yarn infra up dev</code> or <code class="inline">yarn infra up prod</code> depending on your choice of deployment. Note that running this command can take a while.</p></div><p></p>
-<h3 class="heading"><span id="3-development-1"></span><a href="#3-development-1"><span id="3-development"></span><a href="#3-development" class="relative">3. Development</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
-  <g stroke-width="1" fill="#000000" stroke="#000000">
-    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
-    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
-  </g>
-</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
-  <g stroke-width="1" fill="#000000" stroke="#000000">
-    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
-    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
-  </g>
-</svg></span></h3>
-<p>This is how an the S3 package can be used from another package:</p>
-<pre class="language-javascript language-javascript"><code class="language-javascript"><span class="token keyword module">import</span> <span class="token punctuation">{</span> getBucketName<span class="token punctuation">,</span> connect <span class="token punctuation">}</span> <span class="token keyword module">from</span> <span class="token string">'my-s3-module'</span><span class="token punctuation">;</span>
+<p>You can start developing you code in the file <code class="inline">src/handler.ts</code>. Simply add the logic you require there:</p>
+<pre class="language-typescript"><code class="language-typescript"><span class="token keyword">export</span> <span class="token keyword">const</span> handler<span class="token punctuation">:</span> <span class="token function-variable function"><span class="token maybe-class-name">Handler</span></span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// SQS message</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">Records</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> sqsEvent <span class="token operator">=</span> event <span class="token keyword">as</span> <span class="token maybe-class-name">SQSEvent</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> message <span class="token operator">=</span> sqsEvent<span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">Records</span></span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token property-access">body</span><span class="token punctuation">;</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'SQS message received:'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-<span class="token keyword">const</span> s3 <span class="token operator">=</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">await</span> s3<span class="token punctuation">.</span><span class="token method function property-access">putObject</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  <span class="token maybe-class-name">BucketName</span><span class="token punctuation">:</span> <span class="token function">getBucketName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token maybe-class-name">Key</span><span class="token punctuation">:</span> <span class="token string">'my-doc'</span><span class="token punctuation">,</span>
-  <span class="token maybe-class-name">Body</span><span class="token punctuation">:</span> <span class="token string">'content'</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">[</span><span class="token string">'detail-type'</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> event<span class="token punctuation">[</span><span class="token string">'detail-type'</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'Scheduled Event'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> time <span class="token operator">=</span> event<span class="token punctuation">[</span><span class="token string">'time'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">This is a scheduled event from </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>time<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-<p>The object returned from <code class="inline">connect()</code> is an instance of the <a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html" class="absolute" target="_blank" rel="noopener noreferrer">AWS S3 client</a>.</p>
-<p>Note it is also possible to add additional TypeScript files in the templates <code class="inline">src/</code> folder. This is a good place to put an abstraction layer on top of the S3 interface, for instance a data repository specific to the needs of your application.</p></div><p></p>
+<p>You can send messages from other Lambdas to the queue as follows:</p>
+<pre><code>import { SendMessageCommand, SQSClient } from "@aws-sdk/client-sqs";
+
+import { getSQSQueueURL } from '@yourproject/your-ses-package';
+
+export const sendHelloWorldMessage = async (queueName: string) => {
+  
+  const client = new SQSClient({});
+  const queueUrl = getSQSQueueURL();
+
+  const command = new SendMessageCommand({
+    QueueUrl: queueUrl,
+    MessageBody: "Hello World",
+  });
+
+  try {
+    const response = await client.send(command);
+    console.log("Message sent successfully:", response);
+    return response;
+  } catch (error) {
+    console.error("Error sending message:", error);
+    throw error;
+  }
+};
+</code></pre>
+<p>Make sure to install the SQS client package in the Lambda that should write to the queue:</p>
+<pre><code>yarn add @aws-sdk/client-sqs
+</code></pre>
+<p>Also you need to add your handler lambda as dependency (to the lambda that should send message to it).</p>
+<pre><code>yarn add @yourproject/your-ses-package
+</code></pre>
 <h2 class="heading"><span id="infrastructure"></span><a href="#infrastructure">Infrastructure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
@@ -187,10 +157,88 @@
 </svg></span></h3>
 <p>In order to manage your infrastructure, Terraform maintains a state for each deployment; to calculate required changes when the infrastructure is updated and also for destroying the infrastructure if it is no longer required. Goldstack by default will store the terraform state in the <code class="inline">infra/aws</code> folder as simple files.</p>
 <p>This works well for deploying infrastructure from your local development environment but is not a good choice when building a CI/CD pipeline for the infrastructure definition. In that case, it is better to define <a href="https://www.terraform.io/docs/state/remote.html" class="absolute" target="_blank" rel="noopener noreferrer">Remote State</a>. A popular choice many projects adopt here is to store the <a href="https://www.terraform.io/docs/backends/types/s3.html" class="absolute" target="_blank" rel="noopener noreferrer">state in an S3 bucket</a>. Please see the Terraform documentation for further details.</p></div><p></p>
+<h2 class="heading"><span id="deployment"></span><a href="#deployment">Deployment</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><p>This template can be packaged up and deployed to the deployments specified in <code class="inline">goldstack.json</code>. Note that deployment will only work <em>after</em> the infrastructure for the respective deployment has been stood up. To deploy your package, run the following script:</p>
+<pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> deploy <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
+</code></pre></div><p></p>
+<p>The ZIP file that is deployed is stored in the template directory as <code class="inline">lambda.zip</code>.</p>
+<p>Note it is also possible to only build the ZIP package locally without uploading it. For this, run:</p>
+<pre><code>yarn build
+</code></pre>
+<p>This will copy the files that need to be deployed into the folder <code class="inline">distLambda/</code>.</p>
+<h2 class="heading"><span id="guides-and-how-tos"></span><a href="#guides-and-how-tos">Guides and How Tos</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<h3 class="heading"><span id="adding-environment-variables"></span><a href="#adding-environment-variables">Adding environment variables</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p></p><div class="markdown-fragment"><p>Environment variables are defined in the Terraform source code for this template. Specifically they are defined in the <code class="inline">infra/aws/lambda.tf</code> file in the resource <code class="inline">resource "aws_lambda_function" "main"</code>. By default, there is one environment variable specified that identifies the Goldstack deployment used.</p>
+<pre class="language-hcl language-hcl"><code class="language-hcl"> <span class="token keyword">environment</span> <span class="token punctuation">{</span>
+    <span class="token property">variables</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span>
+      <span class="token property">GOLDSTACK_DEPLOYMENT</span> <span class="token punctuation">=</span> var.name
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</code></pre>
+<p>Add your environment variables into the <code class="inline">variables</code> map:</p>
+<pre class="language-hcl language-hcl"><code class="language-hcl"> <span class="token keyword">environment</span> <span class="token punctuation">{</span>
+    <span class="token property">variables</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span>
+      <span class="token property">GOLDSTACK_DEPLOYMENT</span> <span class="token punctuation">=</span> var.name
+      <span class="token property">YOUR_ENV_VAR</span> <span class="token punctuation">=</span> 'your env var value'
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</code></pre>
+<p>Usually environment variables should have different values depending on which environment the server is deployed to. This can be accomplished using Terraform variables. Change your variable declaration to the following:</p>
+<pre class="language-hcl language-hcl"><code class="language-hcl"><span class="token property">YOUR_ENV_VAR</span> <span class="token punctuation">=</span> var.my_env
+</code></pre>
+<p>Then go into the file <code class="inline">infra/aws/variables.tf</code> and add the following definition:</p>
+<pre class="language-hcl language-hcl"><code class="language-hcl"><span class="token keyword">variable<span class="token type variable"> "my_env" </span></span><span class="token punctuation">{</span>
+  <span class="token property">description</span> <span class="token punctuation">=</span> <span class="token string">"My environment variable"</span>
+  <span class="token property">type</span> <span class="token punctuation">=</span> string
+<span class="token punctuation">}</span>
+</code></pre>
+<p>And finally add this variable to all deployment configurations in <code class="inline">goldstack.json</code>:</p>
+<pre class="language-json language-json"><code class="language-json">      <span class="token property">"configuration"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"lambdaName"</span><span class="token operator">:</span> <span class="token string">"my-lambda"</span><span class="token punctuation">,</span>
+        ...
+        <span class="token property">"myEnv"</span><span class="token operator">:</span> <span class="token string">"Value for deployment"</span>
+      <span class="token punctuation">}</span>
+</code></pre>
+<p>Note that the Terraform variable <code class="inline">my_env</code> translates to <code class="inline">myEnv</code> in the JSON definition (Just remove all <code class="inline">_</code> and make the first character after <code class="inline">_</code> uppercase for your variable definitions).</p>
+<p>Lastly, to support local development make sure to define the variable correctly in all <code class="inline">scripts</code> in <code class="inline">package.json</code>. Specifically, you may want to define them for <code class="inline">"test"</code>, <code class="inline">"test-ci"</code> and <code class="inline">"watch"</code>.</p>
+<pre class="language-json language-json"><code class="language-json">    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"MY_ENV=localvalue jest --passWithNoTests --watch --config=jest.config.js"</span><span class="token punctuation">,</span>
+    <span class="token property">"test-ci"</span><span class="token operator">:</span> <span class="token string">"MY_ENV=localvalue jest --passWithNoTests --config=jest.config.js --detectOpenHandles"</span><span class="token punctuation">,</span>
+    <span class="token property">"watch"</span><span class="token operator">:</span> <span class="token string">"PORT=8731 MY_ENV=localvalue nodemon --config nodemon.json --exec 'yarn node dist/src/local.js'"</span>
+</code></pre>
+<p>Note that for credentials and other values that should not be committed to source code, it may be better to store these in AWS Secrets Manager and retrieve them using the AWS SDK based on the <code class="inline">process.env.GOLDSTACK_DEPLOYMENT</code> value provided.</p>
+<p>It is also possible to provide the value of Terraform variables through environment variables during build time. For instance, if you have defined the variable <code class="inline">my_env</code>, simply provide the environment variable <code class="inline">MY_ENV</code> when calling <code class="inline">yarn infra</code>.</p>
+<pre class="language-bash language-bash"><code class="language-bash"><span class="token assign-left variable">MY_ENV</span><span class="token operator">=</span>value <span class="token function">yarn</span> infra up prod
+</code></pre>
+<p>This works very well in combination with secrets for GitHub actions.</p>
+<pre class="language-yaml language-yaml"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Deploy API
+  <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+    yarn workspace my-api infra up prod</span>
+  <span class="token key atrule">env</span><span class="token punctuation">:</span>
+    <span class="token key atrule">MY_ENV</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span>secrets.MY_ENV<span class="token punctuation">}</span><span class="token punctuation">}</span>
+    <span class="token key atrule">AWS_USER_NAME</span><span class="token punctuation">:</span> goldstack<span class="token punctuation">-</span>prod
+    <span class="token key atrule">AWS_ACCESS_KEY_ID</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span>secrets.PROD_AWS_ACCESS_KEY_ID<span class="token punctuation">}</span><span class="token punctuation">}</span>
+    <span class="token key atrule">AWS_SECRET_ACCESS_KEY</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span>secrets.PROD_AWS_SECRET_ACCESS_KEY<span class="token punctuation">}</span><span class="token punctuation">}</span>
+    <span class="token key atrule">AWS_DEFAULT_REGION</span><span class="token punctuation">:</span> us<span class="token punctuation">-</span>west<span class="token punctuation">-</span><span class="token number">2</span>
+</code></pre></div><p></p>
 <h2 class="heading"><span id="security-hardening"></span><a href="#security-hardening">Security Hardening</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
   </g>
 </svg></span></h2>
-<p>The S3 bucket for this template is already configured to allow only private access to the bucket. Be careful when making the bucket public and ensure that it only has contents that can be publicly exposed. For use cases such as using a bucket for hosting content, we recommend using the <a href="./static-website-aws" class="relative">Static Website</a> template.</p>
+<p>This module requires further security hardening when deployed in critical production applications. Specifically the lambda is given the role <code class="inline">arn:aws:iam::aws:policy/AdministratorAccess"</code> and this will grant the lambda access to all resources on the AWS account, including the ability to create and destroy infrastructure. It is therefore recommended to grant this lambda only rights to resources it needs access to, such as read and write permissions for an S3 bucket. This can be modified in <code class="inline">infra/aws/lambda.tf</code> in the resource <code class="inline">resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach"</code>.</p>
