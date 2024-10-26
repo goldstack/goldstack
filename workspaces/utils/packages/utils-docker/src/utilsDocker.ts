@@ -146,8 +146,8 @@ export const renderHostEnvironmentVariables = (): string => {
 
 export const imageNodeYarn = (): string => 'node:12.22-alpine';
 
-export const imageTerraform = (version?: string): string => {
-  if (!version || version === '0.12') {
+export const imageTerraform = (version: string): string => {
+  if (version === '0.12') {
     return 'hashicorp/terraform:0.12.26';
   }
 

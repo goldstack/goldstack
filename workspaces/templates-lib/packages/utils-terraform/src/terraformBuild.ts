@@ -220,8 +220,10 @@ export class TerraformBuild {
         );
       }
     }
+
+    throw new Error('Cannot determine Terraform version from ' + args);
     // before Terraform versions were introduced, only version 0.12 was supported
-    return '0.12';
+    //return '0.12';
   };
 
   init = (args: string[]): void => {
