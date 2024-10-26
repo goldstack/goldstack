@@ -1,0 +1,50 @@
+{
+  "include": [
+    "infra/",
+    "docs/",
+    "src/",
+    "scripts/",
+    "schemas/",
+    ".gitignore",
+    "goldstack.json",
+    "jest.config.js",
+    "package.json",
+    "README.md",
+    "template.json",
+    "tsconfig.json"
+  ],
+  "exclude": [
+    "infra/aws/.terraform/",
+    "infra/aws/tfplan",
+    "infra/aws/terraform.tfstate.d/"
+  ],
+  "overwriteFiles": [
+    {
+      "file": "goldstack.json",
+      "fields": [
+        {
+          "path": "$.deployments",
+          "value": []
+        }
+      ]
+    },
+    {
+      "file": "src/state/deployments.json",
+      "fields": [
+        {
+          "path": "$",
+          "value": []
+        }
+      ]
+    },
+    {
+      "file": "tsconfig.json",
+      "fields": [
+        {
+          "path": "$.references",
+          "value": []
+        }
+      ]
+    }
+  ]
+}

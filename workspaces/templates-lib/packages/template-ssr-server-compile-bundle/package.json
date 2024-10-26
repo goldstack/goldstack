@@ -45,7 +45,7 @@
     "@goldstack/utils-sh": "0.5.11",
     "@goldstack/utils-template": "0.4.12",
     "@goldstack/utils-terraform": "0.4.23",
-    "@types/aws-lambda": "^8.10.88",
+    "@types/aws-lambda": "^8.10.145",
     "esbuild": "^0.17.18",
     "lambda-compression": "0.2.10",
     "react": "18.2.0",

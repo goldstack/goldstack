@@ -26,6 +26,7 @@ import { getDynamoDBTemplateData } from './templates/dynamoDBTemplate';
 import { getServerSideRenderingTemplate } from './templates/serverSideRenderingTemplateData';
 import { getUserManagementTemplate } from './templates/userManagementTemplateData';
 import { getHetznerVPSTemplateData } from './templates/hetznerVPSTemplateData';
+import { getLambdaNodeJobTemplateData } from './templates/lambdaNodeTriggerTemplateData';
 
 export { getNextJsTemplateData };
 export { getExpressTemplateData };
@@ -53,6 +54,7 @@ export const allTemplates = (): ProjectTemplateProps[] => {
     getLambdaPythonJobTemplateData(),
     getExpressAndEmailSentTemplateData(),
     getHetznerVPSTemplateData(),
+    getLambdaNodeJobTemplateData(),
   ];
   return templates;
 };

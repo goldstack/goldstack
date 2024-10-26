@@ -13,6 +13,7 @@ import { createServerSideRenderingBuildSetConfig } from './deploySets/serverSide
 import { createUserManagementBuildSetConfig } from './deploySets/userManagement';
 import { createHetznerVPSBuildSetConfig } from './deploySets/hetznerVPS';
 import { createLambdaPythonJobBuildSetConfig } from './deploySets/lambdaPythonJob';
+import { createLambdaNodeTriggerBuildSetConfig } from './deploySets/lambdaNodeTrigger';
 
 export { createServerSideRenderingBuildSetConfig } from './deploySets/serverSideRendering';
 
@@ -32,6 +33,7 @@ export const getAllBuildSets = async (): Promise<DeploySetConfig[]> => {
     await createServerSideRenderingBuildSetConfig(),
     await createUserManagementBuildSetConfig(),
     await createHetznerVPSBuildSetConfig(),
+    await createLambdaNodeTriggerBuildSetConfig(),
   ];
 };
 

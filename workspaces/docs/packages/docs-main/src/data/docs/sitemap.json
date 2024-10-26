@@ -102,6 +102,11 @@
             "title": "Lambda Python Job",
             "path": "templates/lambda-python-job",
             "children": []
+          },
+          {
+            "title": "Lambda Node Trigger",
+            "path": "templates/lambda-node-trigger",
+            "children": []
           }
         ]
       }

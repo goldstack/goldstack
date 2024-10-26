@@ -303,6 +303,16 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     checked={elements.indexOf('lambda-python-job') !== -1}
                     onChange={checkboxChange}
                   ></Checkbox>
+                  <Checkbox
+                    title="Lambda + Node.js (Trigger)"
+                    element="lambda-node-trigger"
+                    disabled={building}
+                    icon="https://cdn.goldstack.party/img/202203/nodejs.svg"
+                    isAlpha={true}
+                    templateLink={'/templates/lambda-node-trigger'}
+                    checked={elements.indexOf('lambda-node-trigger') !== -1}
+                    onChange={checkboxChange}
+                  ></Checkbox>
                   <div className="border-bottom pb-2 mb-4 mt-6">
                     <h2 className="h3 mb-0">Services</h2>
                   </div>

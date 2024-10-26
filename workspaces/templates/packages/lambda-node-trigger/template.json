@@ -1,0 +1,8 @@
+{
+  "templateName": "lambda-node-trigger",
+  "templateVersion": "0.1.0",
+  "previousTemplateVersion": "0.0.0",
+  "templateDescription": "Provides a Node.js Lambda that can run on a schedule or in response to events",
+  "templateDocumentation": "https://docs.goldstack.party/docs/templates/lambda-node-trigger",
+  "templateArchive": ""
+}

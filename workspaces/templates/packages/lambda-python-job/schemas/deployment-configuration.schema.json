@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$ref": "#/definitions/ThisBaseDeploymentConfiguration",
+  "$ref": "#/definitions/ThisDeploymentConfiguration",
   "definitions": {
-    "ThisBaseDeploymentConfiguration": {
+    "ThisDeploymentConfiguration": {
       "type": "object",
       "properties": {
         "lambdaName": {
@@ -10,11 +10,27 @@
           "description": "The name of the lambda.",
           "title": "Lambda Name",
           "pattern": "^[A-Za-z0-9-_]*$"
+        },
+        "schedule": {
+          "$ref": "#/definitions/LambdaSchedule"
+        },
+        "sqsQueueName": {
+          "$ref": "#/definitions/SQSQueueName"
         }
       },
       "required": [
         "lambdaName"
       ]
+    },
+    "LambdaSchedule": {
+      "type": "string",
+      "description": "Optional schedule in which the lambda is triggered. Example: \"rate(1 minute)\". For more information see <a href=\"https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html#eb-rate-expressions\">AWS Schedule Pattern documentation</a>",
+      "title": "LambdaSchedule"
+    },
+    "SQSQueueName": {
+      "type": "string",
+      "description": "Name of the SQS queue that is used to trigger the lambda. SQS queue should not exist and will be created when the name is provided.",
+      "title": "SQS Queue Name"
     }
   }
 }

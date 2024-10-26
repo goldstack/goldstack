@@ -2,13 +2,13 @@
 
 ❤️ Support development by using the [Goldstack Project Builder](https://goldstack.party) ❤️
 
-The Lambda Python Job template allows defining an AWS Lambda and Python and triggering this function on a schedule.
+The Lambda Python Job template allows defining an AWS Lambda in Python and triggering this function on a schedule or by an event.
 
 ## Features
 
 *   Write Python code and deploy it to AWS Lambda
 *   Includes command line utilities to package code as ZIP and to deploy to AWS Lambda
-*   Trigger the function according to a schedule (e.g. once per hour)
+*   Trigger the function according to a schedule (e.g. once per hour) and/or based on messages received in an SQS queue
 
 ## Getting Started
 
@@ -120,8 +120,6 @@ Note that due to JavaScript and Terraform using different conventions for naming
 In order to manage your infrastructure, Terraform maintains a state for each deployment; to calculate required changes when the infrastructure is updated and also for destroying the infrastructure if it is no longer required. Goldstack by default will store the terraform state in the `infra/aws` folder as simple files.
 
 This works well for deploying infrastructure from your local development environment but is not a good choice when building a CI/CD pipeline for the infrastructure definition. In that case, it is better to define [Remote State](https://www.terraform.io/docs/state/remote.html). A popular choice many projects adopt here is to store the [state in an S3 bucket](https://www.terraform.io/docs/backends/types/s3.html). Please see the Terraform documentation for further details.
-
-Note this Lambda will be executed on a schedule. The schedule is defined in `infra/aws/schedule.tf`.
 
 ## Deployment
 

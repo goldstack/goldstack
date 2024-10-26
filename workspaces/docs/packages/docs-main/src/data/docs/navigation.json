@@ -28,7 +28,8 @@
         "static-website-aws/index.md",
         "s3/index.md",
         "lambda-go-gin/index.md",
-        "lambda-python-job/index.md"
+        "lambda-python-job/index.md",
+        "lambda-node-trigger/index.md"
       ]
     }
   ]

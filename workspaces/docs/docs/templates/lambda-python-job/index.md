@@ -9,7 +9,7 @@ title: Lambda Python Job
 
 - Write Python code and deploy it to AWS Lambda
 - Includes command line utilities to package code as ZIP and to deploy to AWS Lambda
-- Trigger the function according to a schedule (e.g. once per hour)
+- Trigger the function according to a schedule (e.g. once per hour) and/or based on messages received in an SQS queue
 
 ## Getting Started
 
@@ -43,8 +43,6 @@ Then ensure that the correct environment is selected (see [VSCode Docs: Select a
 ## Infrastructure
 
 [!embed](./../shared/infrastructure.md)
-
-Note this Lambda will be executed on a schedule. The schedule is defined in `infra/aws/schedule.tf`.
 
 ## Deployment
 

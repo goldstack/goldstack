@@ -10,7 +10,9 @@
       "awsRegion": "us-west-2",
       "awsUser": "goldstack-dev",
       "configuration": {
-        "lambdaName": "lambda-python-job-test"
+        "lambdaName": "lambda-python-job-test",
+        "schedule": "rate(1 minute)",
+        "sqsQueueName": "lambda-python-job-sqs-test"
       },
       "tfVersion": "1.6",
       "tfStateKey": "lambda-python-job-prod-279b0e980347eb11b01d.tfstate"
