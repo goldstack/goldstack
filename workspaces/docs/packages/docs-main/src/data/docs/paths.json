@@ -19,5 +19,6 @@
   "templates/static-website-aws",
   "templates/s3",
   "templates/lambda-go-gin",
-  "templates/lambda-python-job"
+  "templates/lambda-python-job",
+  "templates/lambda-node-trigger"
 ]

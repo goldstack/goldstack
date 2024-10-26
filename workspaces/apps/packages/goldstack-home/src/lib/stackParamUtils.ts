@@ -36,6 +36,9 @@ export const getPackageIds = (elements: string[]): string[] => {
   if (elements.includes('lambda-python-job')) {
     res.push('template:lambda-python-job');
   }
+  if (elements.includes('lambda-node-trigger')) {
+    res.push('template:lambda-node-trigger');
+  }
   if (elements.includes('gin') || elements.includes('go-gin')) {
     res.push('template:lambda-go-gin');
   }

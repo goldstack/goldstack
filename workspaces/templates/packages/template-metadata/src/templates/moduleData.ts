@@ -41,6 +41,13 @@ const LambdaPythonJob: PackageProps = {
     'https://docs.goldstack.party/docs/templates/lambda-python-job',
 };
 
+const LambdaNodeTrigger: PackageProps = {
+  title: 'Lambda Node Trigger Job',
+  link: 'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/lambda-node-trigger#readme',
+  documentationLink:
+    'https://docs.goldstack.party/docs/templates/lambda-node-trigger',
+};
+
 const EmailSend: PackageProps = {
   title: 'SES Email Send',
   link: 'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/email-send#readme',
@@ -93,6 +100,7 @@ export {
   Express,
   GoGin,
   LambdaPythonJob,
+  LambdaNodeTrigger,
   EmailSend,
   HetznerVPS,
   S3,

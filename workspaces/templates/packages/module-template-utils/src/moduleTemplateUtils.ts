@@ -11,6 +11,7 @@ export const getModuleTemplatesNames = (): string[] => {
     'docker-image-aws',
     'lambda-go-gin',
     'lambda-python-job',
+    'lambda-node-trigger',
     'email-send',
     'lambda-express',
     'serverless-api',
