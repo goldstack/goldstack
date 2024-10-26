@@ -2902,6 +2902,7 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.11"
     "@swc/core": "npm:^1.3.74"
     "@swc/jest": "npm:^0.2.27"
+    "@types/aws-lambda": "npm:^8.10.145"
     "@types/jest": "npm:^29.0.1"
     "@types/node": "npm:^18.7.13"
     "@types/source-map-support": "npm:^0.5.4"
@@ -6984,6 +6985,13 @@ __metadata:
   version: 8.10.62
   resolution: "@types/aws-lambda@npm:8.10.62"
   checksum: 039fbce3e4e8880f2945899d0f53a155a45126fe1275f46985f4918ce9af04f7c546db694ce290a1769319c35891667d314f36cb87c475802b96e27e37b95855
+  languageName: node
+  linkType: hard
+
+"@types/aws-lambda@npm:^8.10.145":
+  version: 8.10.145
+  resolution: "@types/aws-lambda@npm:8.10.145"
+  checksum: e83bfa8901f5f2a8b838baa0b280c7ea6f4e4c9317cab508d45e51bc34999fb63adf95b382f388ad8f8163773ad1dd08130dea655aab7b4961ed6d048f0bc8f9
   languageName: node
   linkType: hard
 

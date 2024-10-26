@@ -13,6 +13,9 @@
         },
         "schedule": {
           "$ref": "#/definitions/LambdaSchedule"
+        },
+        "sqsQueueName": {
+          "$ref": "#/definitions/SQSQueueName"
         }
       },
       "required": [
@@ -23,6 +26,11 @@
       "type": "string",
       "description": "Optional schedule in which the lambda is triggered. Example: \"rate(1 minute)\". For more information see <a href=\"https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html#eb-rate-expressions\">AWS Schedule Pattern documentation</a>",
       "title": "LambdaSchedule"
+    },
+    "SQSQueueName": {
+      "type": "string",
+      "description": "Name of the SQS queue that is used to trigger the lambda. SQS queue should not exist and will be created when the name is provided.",
+      "title": "SQS Queue Name"
     }
   }
 }
