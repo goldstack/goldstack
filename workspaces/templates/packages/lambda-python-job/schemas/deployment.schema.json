@@ -1,15 +1,15 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$ref": "#/definitions/ThisBaseDeployment",
+  "$ref": "#/definitions/ThisDeployment",
   "definitions": {
-    "ThisBaseDeployment": {
+    "ThisDeployment": {
       "type": "object",
       "properties": {
         "name": {
           "$ref": "#/definitions/DeploymentName"
         },
         "configuration": {
-          "$ref": "#/definitions/ThisBaseDeploymentConfiguration"
+          "$ref": "#/definitions/ThisDeploymentConfiguration"
         },
         "terraformVariables": {
           "$ref": "#/definitions/TerraformVariables"
@@ -40,7 +40,7 @@
       "title": "Deployment Name",
       "pattern": "^[^\\s]*$"
     },
-    "ThisBaseDeploymentConfiguration": {
+    "ThisDeploymentConfiguration": {
       "type": "object",
       "properties": {
         "lambdaName": {
@@ -48,11 +48,19 @@
           "description": "The name of the lambda.",
           "title": "Lambda Name",
           "pattern": "^[A-Za-z0-9-_]*$"
+        },
+        "schedule": {
+          "$ref": "#/definitions/LambdaSchedule"
         }
       },
       "required": [
         "lambdaName"
       ]
+    },
+    "LambdaSchedule": {
+      "type": "string",
+      "description": "Optional schedule in which the lambda is triggered. Example: \"rate(1 minute)\". For more information see <a href=\"https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html#eb-rate-expressions\">AWS Schedule Pattern documentation</a>",
+      "title": "LambdaSchedule"
     },
     "TerraformVariables": {
       "type": "array",

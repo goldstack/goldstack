@@ -8,6 +8,11 @@ variable "lambda_name" {
   type = string
 }
 
+variable "schedule" {
+  description = "Schedule of the Lambda"
+  type = string
+}
+
 variable "name" {
   description = "Goldstack deployment name."
   type = string

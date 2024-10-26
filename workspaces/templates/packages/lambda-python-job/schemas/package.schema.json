@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$ref": "#/definitions/ThisBasePackage",
+  "$ref": "#/definitions/ThisPackage",
   "definitions": {
-    "ThisBasePackage": {
+    "ThisPackage": {
       "type": "object",
       "properties": {
         "template": {
@@ -15,10 +15,10 @@
           "$ref": "#/definitions/Name"
         },
         "configuration": {
-          "$ref": "#/definitions/ThisBasePackageConfiguration"
+          "$ref": "#/definitions/ThisPackageConfiguration"
         },
         "deployments": {
-          "$ref": "#/definitions/LambdaDeployments"
+          "$ref": "#/definitions/LambdaTriggerDeployments"
         },
         "$schema": {
           "type": "string"
@@ -33,8 +33,8 @@
         "templateVersion"
       ],
       "additionalProperties": false,
-      "description": "A lambda deployment.",
-      "title": "Lambda Package"
+      "description": "A lambda deployment for a lambda that is triggered.",
+      "title": "Lambda Trigger Package"
     },
     "Template": {
       "type": "string",
@@ -52,7 +52,7 @@
       "description": "Name of this package.",
       "title": "Package Name"
     },
-    "ThisBasePackageConfiguration": {
+    "ThisPackageConfiguration": {
       "$ref": "#/definitions/PackageConfiguration",
       "description": "Configures this lambda.",
       "title": "Lambda Configuration"
@@ -62,22 +62,22 @@
       "description": "Configuration of this package",
       "title": "Configuration"
     },
-    "LambdaDeployments": {
+    "LambdaTriggerDeployments": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/ThisBaseDeployment"
+        "$ref": "#/definitions/ThisDeployment"
       },
       "description": "Places where the lambda should be deployed to.",
       "title": "Deployments"
     },
-    "ThisBaseDeployment": {
+    "ThisDeployment": {
       "type": "object",
       "properties": {
         "name": {
           "$ref": "#/definitions/DeploymentName"
         },
         "configuration": {
-          "$ref": "#/definitions/ThisBaseDeploymentConfiguration"
+          "$ref": "#/definitions/ThisDeploymentConfiguration"
         },
         "terraformVariables": {
           "$ref": "#/definitions/TerraformVariables"
@@ -108,7 +108,7 @@
       "title": "Deployment Name",
       "pattern": "^[^\\s]*$"
     },
-    "ThisBaseDeploymentConfiguration": {
+    "ThisDeploymentConfiguration": {
       "type": "object",
       "properties": {
         "lambdaName": {
@@ -116,11 +116,19 @@
           "description": "The name of the lambda.",
           "title": "Lambda Name",
           "pattern": "^[A-Za-z0-9-_]*$"
+        },
+        "schedule": {
+          "$ref": "#/definitions/LambdaSchedule"
         }
       },
       "required": [
         "lambdaName"
       ]
+    },
+    "LambdaSchedule": {
+      "type": "string",
+      "description": "Optional schedule in which the lambda is triggered. Example: \"rate(1 minute)\". For more information see <a href=\"https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html#eb-rate-expressions\">AWS Schedule Pattern documentation</a>",
+      "title": "LambdaSchedule"
     },
     "TerraformVariables": {
       "type": "array",
