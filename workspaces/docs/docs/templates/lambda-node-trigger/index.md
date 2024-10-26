@@ -42,7 +42,7 @@ import { SendMessageCommand, SQSClient } from "@aws-sdk/client-sqs";
 import { getSQSQueueURL } from '@yourproject/your-ses-package';
 
 export const sendHelloWorldMessage = async (queueName: string) => {
-  
+
   const client = new SQSClient({});
   const queueUrl = getSQSQueueURL();
 

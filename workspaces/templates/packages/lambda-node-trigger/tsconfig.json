@@ -12,10 +12,16 @@
   },
   "references": [
     {
-      "path": "../../../templates-lib/packages/template-lambda-http-cli"
+      "path": "../../../templates-lib/packages/template-lambda-trigger-cli"
     },
     {
-      "path": "../../../utils/packages/utils-esbuild"
+      "path": "../../../utils/packages/utils-git"
+    },
+    {
+      "path": "../../../utils/packages/utils-sh"
+    },
+    {
+      "path": "../../../utils/packages/utils-log"
     }
   ]
 }

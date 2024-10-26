@@ -40,7 +40,7 @@ You can send messages from other Lambdas to the queue as follows:
     import { getSQSQueueURL } from '@yourproject/your-ses-package';
 
     export const sendHelloWorldMessage = async (queueName: string) => {
-      
+
       const client = new SQSClient({});
       const queueUrl = getSQSQueueURL();
 

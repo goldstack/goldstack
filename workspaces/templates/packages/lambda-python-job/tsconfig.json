@@ -13,7 +13,7 @@
   },
   "references": [
     {
-      "path": "../../../templates-lib/packages/template-lambda-cli"
+      "path": "../../../templates-lib/packages/template-lambda-trigger-cli"
     },
     {
       "path": "../../../utils/packages/utils-git"

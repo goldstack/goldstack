@@ -101,6 +101,9 @@
       "path": "workspaces/templates/packages/lambda-go-gin"
     },
     {
+      "path": "workspaces/templates/packages/lambda-node-trigger"
+    },
+    {
       "path": "workspaces/templates/packages/lambda-python-job"
     },
     {
@@ -174,6 +177,9 @@
     },
     {
       "path": "workspaces/templates-lib/packages/template-lambda-http-cli"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-lambda-trigger-cli"
     },
     {
       "path": "workspaces/templates-lib/packages/template-nextjs"
