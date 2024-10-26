@@ -1,0 +1,19 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "lambda-node-trigger",
+  "template": "lambda-node-trigger",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "lambdaName": "lambda-node-trigger-test",
+        "schedule": "rate(1 minute)"
+      },
+      "tfVersion": "1.6"
+    }
+  ]
+}

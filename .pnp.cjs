@@ -106,6 +106,10 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:workspaces/templates/packages/lambda-go-gin"\
     },\
     {\
+      "name": "@goldstack/lambda-node-trigger",\
+      "reference": "workspace:workspaces/templates/packages/lambda-node-trigger"\
+    },\
+    {\
       "name": "@goldstack/lambda-python-job",\
       "reference": "workspace:workspaces/templates/packages/lambda-python-job"\
     },\
@@ -481,6 +485,7 @@ const RAW_RUNTIME_STATE =
     ["@goldstack/infra-aws", ["workspace:workspaces/templates-lib/packages/infra-aws"]],\
     ["@goldstack/infra-hetzner", ["workspace:workspaces/templates-lib/packages/infra-hetzner"]],\
     ["@goldstack/lambda-express", ["workspace:workspaces/templates/packages/lambda-express"]],\
+    ["@goldstack/lambda-node-trigger", ["workspace:workspaces/templates/packages/lambda-node-trigger"]],\
     ["@goldstack/lambda-python-job", ["workspace:workspaces/templates/packages/lambda-python-job"]],\
     ["@goldstack/library", ["workspace:workspaces/templates/packages/library"]],\
     ["@goldstack/markdown-docs", ["workspace:workspaces/docs/packages/markdown-docs"]],\
@@ -4143,6 +4148,31 @@ const RAW_RUNTIME_STATE =
           ["supertest", "npm:4.0.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.1"],\
           ["ts-node-dev", "virtual:640d59121dc50aef8c4e2e9c0fc24c425951c20d64b04f5476f7080bfeeaf953e8d8f92366ff62026e8f3b035a2de8fa49aa2900c07271fe8ad998892fded072#npm:2.0.0"],\
+          ["typescript", "patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@goldstack/lambda-node-trigger", [\
+      ["workspace:workspaces/templates/packages/lambda-node-trigger", {\
+        "packageLocation": "./workspaces/templates/packages/lambda-node-trigger/",\
+        "packageDependencies": [\
+          ["@goldstack/lambda-node-trigger", "workspace:workspaces/templates/packages/lambda-node-trigger"],\
+          ["@goldstack/template-lambda-trigger-cli", "workspace:workspaces/templates-lib/packages/template-lambda-trigger-cli"],\
+          ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
+          ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+          ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.3.74"],\
+          ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
+          ["@types/jest", "npm:29.0.1"],\
+          ["@types/node", "npm:18.7.13"],\
+          ["@types/source-map-support", "npm:0.5.4"],\
+          ["@yarnpkg/esbuild-plugin-pnp", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:3.0.0-rc.15"],\
+          ["esbuild", "npm:0.17.18"],\
+          ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
+          ["rimraf", "npm:3.0.2"],\
+          ["source-map-support", "npm:0.5.21"],\
+          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.1"],\
           ["typescript", "patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"]\
         ],\
         "linkType": "SOFT"\

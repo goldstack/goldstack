@@ -33,6 +33,14 @@ resource "aws_lambda_function" "main" {
       GOLDSTACK_DEPLOYMENT = var.name
     }
   }
+
+  dynamic "dead_letter_config" {
+    for_each = aws_sqs_queue.dlq.count > 0 ? [1] : []
+    content {
+      target_arn = aws_sqs_queue.dlq[0].arn
+    }
+  }
+
 }
 
 resource "aws_iam_role" "lambda_exec" {
