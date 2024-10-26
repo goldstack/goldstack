@@ -18,10 +18,18 @@ import {
  */
 export type LambdaSchedule = string;
 
+/**
+ * Name of the SQS queue that is used to trigger the lambda. SQS queue should not exist and will be created when the name is provided.
+ *
+ * @title SQS Queue Name
+ */
+export type SQSQueueName = string;
+
 export interface ThisDeploymentConfiguration
   extends DeploymentConfiguration,
     LambdaDeploymentConfiguration {
   schedule?: LambdaSchedule;
+  sqsQueueName?: SQSQueueName;
 }
 
 export interface ThisDeployment
