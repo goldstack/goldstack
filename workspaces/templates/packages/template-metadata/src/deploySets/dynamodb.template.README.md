@@ -46,6 +46,16 @@ Feel free to fork this repository and modify it for your needs, or use the [Gold
 
 ⚠️ Before forking this boilerplate, consider if you would want to start with a project that contains a server template as well, such as [Serverless API](https://goldstack.party/templates/serverless-api) or [Serverless Express.js](https://goldstack.party/templates/express-lambda).
 
+# Features
+
+[!embed](./../../../../../../workspaces/docs/docs/templates/dynamodb/features.md)
+
+# Development
+
+This boilerplate will come with a module that provides the functionalities for connecting to DynamoDB from Node.js. This module is defined in `packages/dynamodb-1`.
+
+[!embed](./../../../../../../workspaces/docs/docs/templates/dynamodb/development.md)
+
 # Getting Started
 
 Thank you for using this boilerplate. For any questions or feedback, please be welcome to [raise an issue on GitHub](https://github.com/goldstack/goldstack/issues) 🤗 .
@@ -140,12 +150,6 @@ For more information on configuring your local AWS users, please see [Goldstack 
 
 Once your AWS user is configured you can run `yarn infra up prod` in the `/packages/dynamodb-1` folder. For more information on the infrastructure commands for this project, see [Goldstack Documentation / DynamoDB / Infrastructure]().
 
-## 8. Local Development
-
-This boilerplate will come with a module that provides the functionalities for connecting to DynamoDB from Node.js. This module is defined in `packages/dynamodb-1`.
-
-[!embed](./../../../../../../workspaces/docs/docs/templates/dynamodb/development.md)
-
-## 9. Contribute to Goldstack
+## 8. Contribute to Goldstack
 
 Have questions or ideas or want to contribute to the project? Please head over to [github.com/goldstack/goldstack](https://github.com/goldstack/goldstack).
