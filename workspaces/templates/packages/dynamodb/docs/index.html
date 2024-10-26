@@ -74,6 +74,179 @@ Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.3+12-LTS, mixed mode)
 <p>In order to stand up the infrastructure, run the following command:</p>
 <pre class="language-bash language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra up <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
 </code></pre>
+    <p>
+      This will be either <code class="inline">yarn infra up dev</code> or
+      <code class="inline">yarn infra up prod</code> depending on your choice of
+      deployment. Note that running this command can take a while.
+    </p>
+  </div>
+  <p></p>
+  <h3 class="heading">
+    <span id="3-development-1"></span
+    ><a href="#3-development-1"
+      ><span id="3-development"></span
+      ><a href="#3-development" class="relative">3. Development</a
+      ><span class="permalink"
+        ><svg viewBox="0 0 16 16" width="16" height="16">
+          <g stroke-width="1" fill="#000000" stroke="#000000">
+            <path
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+            ></path>
+            <path
+              fill="none"
+              stroke="#000000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+            ></path>
+          </g></svg></span></a
+    ><span class="permalink"
+      ><svg viewBox="0 0 16 16" width="16" height="16">
+        <g stroke-width="1" fill="#000000" stroke="#000000">
+          <path
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-miterlimit="10"
+            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+          ></path>
+          <path
+            fill="none"
+            stroke="#000000"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-miterlimit="10"
+            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+          ></path>
+        </g></svg
+    ></span>
+  </h3>
+  <p></p>
+  <div class="markdown-fragment">
+    <p>
+      In order to make use of the DynamoDB package we principally want to do two
+      things:
+    </p>
+    <ul>
+      <li>Define the schema for our table</li>
+      <li>Write application logic to work with the data in the table</li>
+    </ul>
+    <p>
+      In this template, the former will be done within the DynamoDB package but
+      the latter can either happen in other packages. For instance, if you have
+      included a
+      <a
+        href="https://goldstack.party/templates/lambda-api"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Serverless API</a
+      >
+      template in your project, you can define your logic for working with the
+      data in DynamoDB in that package. However, you can also write additional
+      code in the DynamoDB package and define a lightweight DOA layer.
+    </p>
+    <h4 class="heading">
+      <span id="defining-the-schema-2"></span
+      ><a href="#defining-the-schema-2"
+        ><span id="defining-the-schema-1"></span
+        ><a href="#defining-the-schema-1" class="relative"
+          ><span id="defining-the-schema"></span></a
+        ><a href="#defining-the-schema" class="relative">Defining the Schema</a
+        ><span class="permalink"
+          ><svg viewBox="0 0 16 16" width="16" height="16">
+            <g stroke-width="1" fill="#000000" stroke="#000000">
+              <path
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+              ></path>
+              <path
+                fill="none"
+                stroke="#000000"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+              ></path>
+            </g></svg></span
+        ><span class="permalink"
+          ><svg viewBox="0 0 16 16" width="16" height="16">
+            <g stroke-width="1" fill="#000000" stroke="#000000">
+              <path
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+              ></path>
+              <path
+                fill="none"
+                stroke="#000000"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-miterlimit="10"
+                d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+              ></path>
+            </g></svg></span></a
+      ><span class="permalink"
+        ><svg viewBox="0 0 16 16" width="16" height="16">
+          <g stroke-width="1" fill="#000000" stroke="#000000">
+            <path
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
+            ></path>
+            <path
+              fill="none"
+              stroke="#000000"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
+            ></path>
+          </g></svg
+      ></span>
+    </h4>
+    <p>
+      While DynamoDB is a NoSQL data store and strictly speaking does not
+      require a database schema in the traditional sense, it is strongly
+      recommended to define some basic schema for the data we want to store.
+      This template provides and easy way to define a schema using
+      <a
+        href="https://github.com/jeremydaly/dynamodb-toolbox"
+        class="absolute"
+        target="_blank"
+        rel="noopener noreferrer"
+        >DynamoDB Toolbox</a
+      >. Note though that this is optional.
+    </p>
+    <p>
+      The entities we want to store in the table are defined in the file
+      <code class="inline">entities.ts</code> which is included in the DynamoDB
+      package:
+    </p>
+    <pre
+      class="language-typescript language-typescript language-typescript"
+    ><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token builtin">boolean</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Entity</span><span class="token punctuation">,</span> schema<span class="token punctuation">,</span> <span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Table</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'dynamodb-toolbox'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">DynamoDBDocumentClient</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@aws-sdk/lib-dynamodb'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> memoizee <span class="token keyword">from</span> <span class="token string">'memoizee'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">Key</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'dynamodb-toolbox/dist/esm/table/types'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">createTable</span><span class="token punctuation">(</span>
+  <span class="token parameter">dynamoDB<span class="token punctuation">:</span> <span class="token maybe-class-name">DynamoDBDocumentClient</span><span class="token punctuation">,</span>
+  tableName<span class="token punctuation">:</span> <span class="token builtin">string</span></span>
+<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token maybe-class-name">Table</span><span class="token operator">&#x3C;</span><span class="token maybe-class-name">Key</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token string">'string'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token maybe-class-name">Key</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token string">'string'</span><span class="token operator">>></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> table <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Table</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 <p>This will be either <code class="inline">yarn infra up dev</code> or <code class="inline">yarn infra up prod</code> depending on your choice of deployment. Note that running this command can take a while.</p></div><p></p>
 <h3 class="heading"><span id="3-development-1"></span><a href="#3-development-1"><span id="3-development"></span><a href="#3-development" class="relative">3. Development</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
@@ -130,10 +303,38 @@ Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.3+12-LTS, mixed mode)
       <span class="token keyword">type</span><span class="token punctuation">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     documentClient<span class="token punctuation">:</span> dynamoDB<span class="token punctuation">,</span>
+    partitionKey<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      name<span class="token punctuation">:</span> <span class="token string">'pk'</span><span class="token punctuation">,</span>
+      <span class="token keyword">type</span><span class="token punctuation">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    sortKey<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      name<span class="token punctuation">:</span> <span class="token string">'sk'</span><span class="token punctuation">,</span>
+      <span class="token keyword">type</span><span class="token punctuation">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    documentClient<span class="token punctuation">:</span> dynamoDB<span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> table<span class="token punctuation">;</span>
   <span class="token keyword">return</span> table<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function"><span class="token maybe-class-name">UserEntityFn</span></span><span class="token punctuation">(</span>
+  table<span class="token punctuation">:</span> <span class="token maybe-class-name">Table</span><span class="token operator">&#x3C;</span><span class="token maybe-class-name">Key</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token string">'string'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token maybe-class-name">Key</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token string">'string'</span><span class="token operator">>></span>
+<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> entity <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Entity</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span> <span class="token string">'User'</span><span class="token punctuation">,</span>
+    schema<span class="token punctuation">:</span> <span class="token function">schema</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      email<span class="token punctuation">:</span> <span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">key</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">savedAs</span><span class="token punctuation">(</span><span class="token string">'pk'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token keyword">type</span><span class="token punctuation">:</span> <span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">key</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">default</span><span class="token punctuation">(</span><span class="token string">'user'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">savedAs</span><span class="token punctuation">(</span><span class="token string">'sk'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      name<span class="token punctuation">:</span> <span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">required</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      emailVerified<span class="token punctuation">:</span> <span class="token function">boolean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">required</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    table<span class="token punctuation">:</span> table<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span> <span class="token keyword">as</span> <span class="token keyword">const</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> entity<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token maybe-class-name">UserEntity</span> <span class="token operator">=</span> <span class="token function">memoizee</span><span class="token punctuation">(</span><span class="token maybe-class-name">UserEntityFn</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function"><span class="token maybe-class-name">UserEntityFn</span></span><span class="token punctuation">(</span>
   table<span class="token punctuation">:</span> <span class="token maybe-class-name">Table</span><span class="token operator">&#x3C;</span><span class="token maybe-class-name">Key</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token string">'string'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token maybe-class-name">Key</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token string">'string'</span><span class="token operator">>></span>
 <span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -220,6 +421,13 @@ Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.3+12-LTS, mixed mode)
 <pre class="language-typescript language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">const</span> table <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">connectTable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token maybe-class-name">Users</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Entity</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token spread operator">...</span><span class="token method function property-access">deepCopy</span><span class="token punctuation">(</span><span class="token maybe-class-name">UserEntity</span><span class="token punctuation">)</span><span class="token punctuation">,</span> table <span class="token punctuation">}</span> <span class="token keyword">as</span> <span class="token keyword">const</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+<span class="token keyword">await</span> <span class="token maybe-class-name">Users</span><span class="token punctuation">.</span><span class="token method function property-access">build</span><span class="token punctuation">(</span><span class="token maybe-class-name">PutItemCommand</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">item</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    email<span class="token punctuation">:</span> <span class="token string">'joe@email.com'</span><span class="token punctuation">,</span>
+    name<span class="token punctuation">:</span> <span class="token string">'Joe'</span><span class="token punctuation">,</span>
+    emailVerified<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">await</span> <span class="token maybe-class-name">Users</span><span class="token punctuation">.</span><span class="token method function property-access">build</span><span class="token punctuation">(</span><span class="token maybe-class-name">PutItemCommand</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token method function property-access">item</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     email<span class="token punctuation">:</span> <span class="token string">'joe@email.com'</span><span class="token punctuation">,</span>

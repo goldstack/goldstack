@@ -20,7 +20,20 @@ await Users.build(PutItemCommand)
     emailVerified: true,
   })
   .send();
+await Users.build(PutItemCommand)
+  .item({
+    email: 'joe@email.com',
+    name: 'Joe',
+    emailVerified: true,
+  })
+  .send();
 
+const { Item: user } = await Users.build(GetItemCommand)
+  .key({ email: 'joe@email.com' })
+  .options({
+    attributes: ['name', 'email'],
+  })
+  .send();
 const { Item: user } = await Users.build(GetItemCommand)
   .key({ email: 'joe@email.com' })
   .options({
@@ -216,10 +229,18 @@ import { boolean, Entity, schema, string, Table } from 'dynamodb-toolbox';
 import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 import memoizee from 'memoizee';
 import { Key } from 'dynamodb-toolbox/dist/esm/table/types';
+import { boolean, Entity, schema, string, Table } from 'dynamodb-toolbox';
+import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
+import memoizee from 'memoizee';
+import { Key } from 'dynamodb-toolbox/dist/esm/table/types';
 
 export function createTable(
   dynamoDB: DynamoDBDocumentClient,
+export function createTable(
+  dynamoDB: DynamoDBDocumentClient,
   tableName: string
+): Table<Key<string, 'string'>, Key<string, 'string'>> {
+  const table = new Table({
 ): Table<Key<string, 'string'>, Key<string, 'string'>> {
   const table = new Table({
     name: tableName,
@@ -232,10 +253,38 @@ export function createTable(
       type: 'string',
     },
     documentClient: dynamoDB,
+    partitionKey: {
+      name: 'pk',
+      type: 'string',
+    },
+    sortKey: {
+      name: 'sk',
+      type: 'string',
+    },
+    documentClient: dynamoDB,
   });
+  return table;
   return table;
 }
 
+export function UserEntityFn(
+  table: Table<Key<string, 'string'>, Key<string, 'string'>>
+) {
+  const entity = new Entity({
+    name: 'User',
+    schema: schema({
+      email: string().key().savedAs('pk'),
+      type: string().key().default('user').savedAs('sk'),
+      name: string().required(),
+      emailVerified: boolean().required(),
+    }),
+    table: table,
+  } as const);
+
+  return entity;
+}
+
+export const UserEntity = memoizee(UserEntityFn);
 export function UserEntityFn(
   table: Table<Key<string, 'string'>, Key<string, 'string'>>
 ) {
@@ -322,6 +371,13 @@ You can then use the return object to instantiate your entities:
 const table = await connectTable();
 const Users = new Entity({ ...deepCopy(UserEntity), table } as const);
 
+await Users.build(PutItemCommand)
+  .item({
+    email: 'joe@email.com',
+    name: 'Joe',
+    emailVerified: true,
+  })
+  .send();
 await Users.build(PutItemCommand)
   .item({
     email: 'joe@email.com',
