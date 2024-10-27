@@ -8,23 +8,39 @@ The easiest way to configure the AWS user for Goldstack is to do it during proje
 
 ![Add User in AWS console](https://cdn.goldstack.party/img/202010/add_user.png)
 
-- Provide a username of your choice, for instance 'goldstack-local-dev'
+- Provide a username of your choice, for instance 'goldstack-dev'
 - Select the Access Type _Programmatic Access_
 
-![Provide user details](https://cdn.goldstack.party/img/202010/user_details.png)
+![Provide user details](https://cdn.goldstack.party/img/202410/aws-user-1.png)
 
 - Click on the button _Next: Permissions_
 - Select _Attach existing policies directly_
+
+![Attach policy](https://cdn.goldstack.party/img/202410/aws-user-2.png)
+
 - Select the Policy _PowerUserAccess_
 
-![Select permissions](https://cdn.goldstack.party/img/202010/permissions.png)
+![Search for policy](https://cdn.goldstack.party/img/202410/aws-user-3.png)
 
-- Click on the button _Next: Tags_
-- You do not have to add any tags, just click _Next: Review_
-- On the review page click _Create User_
+- Click on the button _Next_
+- On the review page click _Create user_
+- Click on the name of the user you have just created
+- Then click on the tab _Security credentials_
 
-Now you can copy the _Access Key ID_ and add it to the Goldstack configuration form. Do the same with the _Secret Access Key_ (It can be shown by clicking on Show).
+![Get to security credentials](https://cdn.goldstack.party/img/202410/aws-user-4.png)
 
-![Obtain access keys](https://cdn.goldstack.party/img/202010/keys.png)
+- Scroll down to _Access Keys_ and click _Create Access Key_
+
+![Create access key](https://cdn.goldstack.party/img/202410/aws-user-5.png)
+
+- Select _Local code_ and check the box under _Confirmation_, and click _Next_
+
+![Confirm key type](https://cdn.goldstack.party/img/202410/aws-user-6.png)
+
+- You do not need to provide a description tag value. Click _Create access key_.
+
+Now you can copy the _Access Key ID_ and add it to the Goldstack configuration form or add it into your local configuration file. Do the same with the _Secret Access Key_ (It can be shown by clicking on Show).
+
+![Copy ID and key](https://cdn.goldstack.party/img/202410/aws-user-7.png)
 
 Note that it is recommended to only provide this key and secret for development systems (and prototype/hobby production systems). For all other systems, it is recommended to provide this key and secret only through environment variables (see below).

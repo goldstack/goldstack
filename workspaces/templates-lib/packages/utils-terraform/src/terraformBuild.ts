@@ -221,7 +221,13 @@ export class TerraformBuild {
       }
     }
 
-    throw new Error('Cannot determine Terraform version from ' + args);
+    throw new Error(
+      'Cannot determine Terraform version from ' +
+        args +
+        ' in ' +
+        pwd() +
+        '. Terraform config with version expected in `infra/tfConfig.json` or as part of the deployment.'
+    );
     // before Terraform versions were introduced, only version 0.12 was supported
     //return '0.12';
   };

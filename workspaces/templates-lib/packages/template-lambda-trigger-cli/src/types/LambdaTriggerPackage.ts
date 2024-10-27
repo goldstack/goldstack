@@ -12,10 +12,12 @@ import {
 
 /**
  * Optional schedule in which the lambda is triggered. Example: "rate(1 minute)".
- * For more information see <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html#eb-rate-expressions">AWS Schedule Pattern documentation</a>
  *
- * @title LambdaSchedule
+ * @title Lambda Schedule
+ * @pattern ^[^\s]
+ *
  */
+
 export type LambdaSchedule = string;
 
 /**
