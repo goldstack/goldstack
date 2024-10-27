@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-user-management",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "description": "Template utilities for user management",
   "keywords": [
     "goldstack",
@@ -44,7 +44,7 @@
     "@goldstack/utils-package": "0.4.12",
     "@goldstack/utils-package-config-embedded": "0.5.13",
     "@goldstack/utils-template": "0.4.12",
-    "@goldstack/utils-terraform": "0.4.24",
+    "@goldstack/utils-terraform": "0.4.25",
     "aws-jwt-verify": "^3.2.0",
     "source-map-support": "^0.5.21"
   },

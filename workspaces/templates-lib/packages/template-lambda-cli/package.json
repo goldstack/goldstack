@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-cli",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Utilities for templates that deploy an AWS Lambda function",
   "keywords": [
     "goldstack",
@@ -51,8 +51,8 @@
     "@goldstack/utils-package": "0.4.12",
     "@goldstack/utils-package-config": "0.4.12",
     "@goldstack/utils-template": "0.4.12",
-    "@goldstack/utils-terraform": "0.4.24",
-    "@goldstack/utils-terraform-aws": "0.4.27",
+    "@goldstack/utils-terraform": "0.4.25",
+    "@goldstack/utils-terraform-aws": "0.4.28",
     "source-map-support": "^0.5.21",
     "yargs": "^17.5.1"
   },
