@@ -7,7 +7,7 @@ describe('Local testing for trigger Lambda', () => {
 
     await client.send(
       new SendMessageCommand({
-        QueueUrl: getSQSDLQQueueUrl(),
+        QueueUrl: await getSQSDLQQueueUrl(),
         MessageBody: 'Hello World',
       })
     );

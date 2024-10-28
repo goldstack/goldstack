@@ -2,11 +2,12 @@
 require('source-map-support').install();
 
 import { Handler, SQSEvent } from 'aws-lambda';
+
 import {
-  getSQSQueueName as getQueueName,
-  getSQSQueueUrl as getQueueUrl,
-  getSQSDLQQueueName as getDLQQueueName,
-  getSQSDLQQueueUrl as getDLQQueueUrl,
+  getSQSQueueName as fetchQueueName,
+  getSQSQueueUrl as fetchQueueUrl,
+  getSQSDLQQueueName as fetchDLQQueueName,
+  getSQSDLQQueueUrl as fetchDLQQueueUrl,
 } from '@goldstack/template-sqs';
 
 import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
@@ -92,35 +93,49 @@ export const connectToSQSQueue = async (
 /**
  * Retrieves the name of the SQS queue that triggers this Lambda function.
  *
- * @returns {string} The name of the SQS queue.
+ * @returns {Promise<string>} The name of the SQS queue.
  */
-export function getSQSQueueName(): string {
-  return getQueueName(deployments);
+export async function getSQSQueueName(
+  deploymentName?: string
+): Promise<string> {
+  return await fetchQueueName(goldstackConfig, goldstackSchema, deploymentName);
 }
 
 /**
  * Retrieves the URL of the SQS queue that triggers this Lambda function.
  *
- * @returns {string} The URL of the SQS queue.
+ * @returns {Promise<string>} The URL of the SQS queue.
  */
-export function getSQSQueueUrl(): string {
-  return getQueueUrl(deployments);
+export async function getSQSQueueUrl(deploymentName?: string): Promise<string> {
+  return await fetchQueueUrl(goldstackConfig, goldstackSchema, deploymentName);
 }
 
 /**
  * Retrieves the name of the SQS Dead Letter Queue (DLQ) for failed messages.
  *
- * @returns {string} The name of the SQS DLQ queue.
+ * @returns {Promise<string>} The name of the SQS DLQ queue.
  */
-export function getSQSDLQQueueName(): string {
-  return getDLQQueueName(deployments);
+export async function getSQSDLQQueueName(
+  deploymentName?: string
+): Promise<string> {
+  return await fetchDLQQueueName(
+    goldstackConfig,
+    goldstackSchema,
+    deploymentName
+  );
 }
 
 /**
  * Retrieves the URL of the SQS Dead Letter Queue (DLQ) for failed messages.
  *
- * @returns {string} The URL of the SQS DLQ queue.
+ * @returns {Promise<string>} The URL of the SQS DLQ queue.
  */
-export function getSQSDLQQueueUrl(): string {
-  return getDLQQueueUrl(deployments);
+export async function getSQSDLQQueueUrl(
+  deploymentName?: string
+): Promise<string> {
+  return await fetchDLQQueueUrl(
+    goldstackConfig,
+    goldstackSchema,
+    deploymentName
+  );
 }
