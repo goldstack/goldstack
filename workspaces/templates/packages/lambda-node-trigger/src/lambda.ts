@@ -3,10 +3,10 @@ require('source-map-support').install();
 
 import { Handler, SQSEvent } from 'aws-lambda';
 import {
-  getSQSQueueName,
-  getSQSQueueUrl,
-  getSQSDLQQueueName,
-  getSQSDLQQueueUrl,
+  getSQSQueueName as getQueueName,
+  getSQSQueueUrl as getQueueUrl,
+  getSQSDLQQueueName as getDLQQueueName,
+  getSQSDLQQueueUrl as getDLQQueueUrl,
 } from '@goldstack/template-sqs';
 
 import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
@@ -94,8 +94,8 @@ export const connectToSQSQueue = async (
  *
  * @returns {string} The name of the SQS queue.
  */
-export function getSQSQueueNameWrapper(): string {
-  return getSQSQueueName(deployments);
+export function getSQSQueueName(): string {
+  return getQueueName(deployments);
 }
 
 /**
@@ -103,8 +103,8 @@ export function getSQSQueueNameWrapper(): string {
  *
  * @returns {string} The URL of the SQS queue.
  */
-export function getSQSQueueUrlWrapper(): string {
-  return getSQSQueueUrl(deployments);
+export function getSQSQueueUrl(): string {
+  return getQueueUrl(deployments);
 }
 
 /**
@@ -112,8 +112,8 @@ export function getSQSQueueUrlWrapper(): string {
  *
  * @returns {string} The name of the SQS DLQ queue.
  */
-export function getSQSDLQQueueNameWrapper(): string {
-  return getSQSDLQQueueName(deployments);
+export function getSQSDLQQueueName(): string {
+  return getDLQQueueName(deployments);
 }
 
 /**
@@ -121,6 +121,6 @@ export function getSQSDLQQueueNameWrapper(): string {
  *
  * @returns {string} The URL of the SQS DLQ queue.
  */
-export function getSQSDLQQueueUrlWrapper(): string {
-  return getSQSDLQQueueUrl(deployments);
+export function getSQSDLQQueueUrl(): string {
+  return getDLQQueueUrl(deployments);
 }
