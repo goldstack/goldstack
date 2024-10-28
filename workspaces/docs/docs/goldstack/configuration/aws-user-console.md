@@ -18,9 +18,9 @@ The easiest way to configure the AWS user for Goldstack is to do it during proje
 
 ![Attach policy](https://cdn.goldstack.party/img/202410/aws-user-2.png)
 
-- Select the Policy _PowerUserAccess_
+- Select the Policy _AdministratorAccess_
 
-![Search for policy](https://cdn.goldstack.party/img/202410/aws-user-3.png)
+![Search for policy](https://cdn.goldstack.party/img/202410/aws-user-policy.png)
 
 - Click on the button _Next_
 - On the review page click _Create user_
