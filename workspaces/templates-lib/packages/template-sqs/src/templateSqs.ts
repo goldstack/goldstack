@@ -1,4 +1,11 @@
-export { connect, getMockedSQS } from './sqsConnect'; // Now importing from SQS-related module
+export {
+  connect,
+  getMockedSQS,
+  getSQSDLQQueueName,
+  getSQSDLQQueueUrl,
+  getSQSQueueName,
+  getSQSQueueUrl,
+} from './sqsConnect'; // Now importing from SQS-related module
 
 import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
 import { excludeInBundle } from '@goldstack/utils-esbuild';

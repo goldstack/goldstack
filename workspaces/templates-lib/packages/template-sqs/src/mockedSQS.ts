@@ -5,9 +5,7 @@ import {
 } from '@aws-sdk/client-sqs';
 import { mockClient } from 'aws-sdk-client-mock';
 import { v4 as uuid4 } from 'uuid';
-
-// Define the type for the callback function
-type MessageCallback = (input: SendMessageRequest) => Promise<void> | void;
+import { MessageCallback } from './sqsConnect';
 
 export function createSQSClient(
   sqsClient?: SQSClient,

@@ -2,20 +2,36 @@
 require('source-map-support').install();
 
 import { Handler, SQSEvent } from 'aws-lambda';
+import {
+  getSQSQueueName,
+  getSQSQueueUrl,
+  getSQSDLQQueueName,
+  getSQSDLQQueueUrl,
+} from '@goldstack/template-sqs';
 
-import deployments from './state/deployments.json';
+import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import deployments from './state/deployments.json'; // Import deployments
+
+import {
+  connect as templateConnect,
+  getMockedSQS as templateGetMockedSQS,
+} from '@goldstack/template-sqs';
+import { MessageCallback } from '@goldstack/template-sqs/src/sqsConnect';
+
 export const handler: Handler = async (event, context) => {
-  // SQS message
+  // SQS message handling
   if (event.Records) {
     const sqsEvent = event as SQSEvent;
     const message = sqsEvent.Records[0].body;
     console.log('SQS message received:');
+
+    // Process the message here if needed
     console.log(message);
     return;
   }
 
+  // Handle Scheduled Event
   if (event['detail-type'] && event['detail-type'] === 'Scheduled Event') {
     const time = event['time'];
     console.log(`This is a scheduled event from ${time}`);
@@ -23,73 +39,88 @@ export const handler: Handler = async (event, context) => {
   }
 };
 
-const constructQueueUrl = (queueName: string): string => {
-  const region = process.env.AWS_REGION;
-  const accountId = process.env.AWS_ACCOUNT_ID;
+/**
+ * Mock SQS client for local development.
+ *
+ * Sending a message to a client created in this way will trigger the handler function
+ * with the provided message payload.
+ *
+ * @returns {SQSClient} The mocked SQS client.
+ */
+export const getMockedSQS = (): SQSClient => {
+  const messageSendHandler: MessageCallback = async (
+    message: SendMessageRequest
+  ) => {
+    // Constructing a mock event to pass to the handler
+    const sqsEvent: SQSEvent = {
+      Records: [
+        {
+          body: message.MessageBody as string,
+          // Other required fields can be filled as needed
+          messageId: 'mockMessageId',
+          receiptHandle: 'mockReceiptHandle',
+          attributes: {} as any,
+          messageAttributes: {},
+          md5OfBody: 'mockMd5',
+          eventSource: 'aws:sqs',
+          eventSourceARN: 'mockARN',
+          awsRegion: 'mockRegion',
+        },
+      ],
+    };
 
-  if (!region || !accountId) {
-    throw new Error(
-      'AWS_REGION or AWS_ACCOUNT_ID environment variable is not set.'
-    );
-  }
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    await handler(sqsEvent, {} as any, () => {});
+  };
 
-  return `https://sqs.${region}.amazonaws.com/${accountId}/${queueName}`;
+  return templateGetMockedSQS(messageSendHandler);
+};
+
+import goldstackConfig from './../goldstack.json';
+import goldstackSchema from './../schemas/package.schema.json';
+
+export const connectToSQSQueue = async (
+  deploymentName?: string
+): Promise<SQSClient> => {
+  return await templateConnect(
+    goldstackConfig,
+    goldstackSchema,
+    deploymentName
+  );
 };
 
 /**
+ * Retrieves the name of the SQS queue that triggers this Lambda function.
  *
- * @returns The name of the SQS queue that will trigger this lambda to run.
+ * @returns {string} The name of the SQS queue.
  */
-export function getSQSQueueName(): string {
-  const deployment = process.env.GOLDSTACK_DEPLOYMENT;
-  if (!deployment) {
-    throw new Error('GOLDSTACK_DEPLOYMENT environment variable is not set');
-  }
-  const deploymentData = deployments[deployment];
-  if (!deploymentData) {
-    throw new Error(`No deployment state for ${deployment}`);
-  }
-  const queueName = deploymentData['sqs_queue_name'];
-  if (!queueName) {
-    throw new Error(
-      `No SQS queue name for deployment ${deployment}. Provide the sqs queue name in goldstack.json`
-    );
-  }
-  return queueName;
+export function getSQSQueueNameWrapper(): string {
+  return getSQSQueueName(deployments);
 }
 
 /**
- * @returns Returns the URL of the SQS queue that will trigger this lambda to run.
- */
-export function getSQSQueueUrl(): string {
-  return constructQueueUrl(getSQSQueueName());
-}
-
-/**
+ * Retrieves the URL of the SQS queue that triggers this Lambda function.
  *
- * @returns Name of the SQL Dead Letter Queue that failed messages will be written to.
+ * @returns {string} The URL of the SQS queue.
  */
-export function getSQSDLQQueueName(): string {
-  const deployment = process.env.GOLDSTACK_DEPLOYMENT;
-  if (!deployment) {
-    throw new Error('GOLDSTACK_DEPLOYMENT environment variable is not set');
-  }
-  const deploymentData = deployments[deployment];
-  if (!deploymentData) {
-    throw new Error(`No deployment state for ${deployment}`);
-  }
-  const queueName = deploymentData['sqs_dlq_queue_name'];
-  if (!queueName) {
-    throw new Error(
-      `No SQS DLQ queue name for deployment ${deployment}. Provide the sqs queue name in goldstack.json`
-    );
-  }
-  return queueName;
+export function getSQSQueueUrlWrapper(): string {
+  return getSQSQueueUrl(deployments);
 }
 
 /**
- * @returns Returns the URL of the SQS Dead Letter Queue that failed messages will be written to.
+ * Retrieves the name of the SQS Dead Letter Queue (DLQ) for failed messages.
+ *
+ * @returns {string} The name of the SQS DLQ queue.
  */
-export function getSQSDLQQueueUrl(): string {
-  return constructQueueUrl(getSQSDLQQueueName());
+export function getSQSDLQQueueNameWrapper(): string {
+  return getSQSDLQQueueName(deployments);
+}
+
+/**
+ * Retrieves the URL of the SQS Dead Letter Queue (DLQ) for failed messages.
+ *
+ * @returns {string} The URL of the SQS DLQ queue.
+ */
+export function getSQSDLQQueueUrlWrapper(): string {
+  return getSQSDLQQueueUrl(deployments);
 }

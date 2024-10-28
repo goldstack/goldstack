@@ -2961,7 +2961,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/lambda-node-trigger@workspace:workspaces/templates/packages/lambda-node-trigger"
   dependencies:
+    "@aws-sdk/client-sqs": "npm:3.645.0"
     "@goldstack/template-lambda-trigger-cli": "npm:0.1.4"
+    "@goldstack/template-sqs": "npm:0.1.0"
     "@goldstack/utils-git": "npm:0.2.9"
     "@goldstack/utils-log": "npm:0.3.11"
     "@goldstack/utils-sh": "npm:0.5.11"
@@ -4149,7 +4151,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-sqs@workspace:workspaces/templates-lib/packages/template-sqs":
+"@goldstack/template-sqs@npm:0.1.0, @goldstack/template-sqs@workspace:workspaces/templates-lib/packages/template-sqs":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-sqs@workspace:workspaces/templates-lib/packages/template-sqs"
   dependencies:

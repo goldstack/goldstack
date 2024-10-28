@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { SQSClient, SendMessageCommand } from '@aws-sdk/client-sqs';
+import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
 import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { fromEnv } from '@aws-sdk/credential-providers';
 import assert from 'assert';
@@ -71,18 +71,21 @@ export const getSQSDLQQueueUrl = (deploymentData: any): string => {
   return constructQueueUrl(getSQSDLQQueueName(deploymentData));
 };
 
+export type MessageCallback = (
+  input: SendMessageRequest
+) => Promise<void> | void;
+
 // Mock SQS client for local development
-export const getMockedSQS = (): SQSClient => {
+export const getMockedSQS = (onMessageSend?: MessageCallback): SQSClient => {
   const createSQSClient = require(excludeInBundle(
     './mockedSQS'
   )).createSQSClient;
   if (!mockedSQS) {
-    mockedSQS = createSQSClient();
+    mockedSQS = createSQSClient(onMessageSend);
   }
   return mockedSQS as any;
 };
 
-// Connect to SQS based on deployment data
 export const connect = async (
   goldstackConfig: any,
   packageSchema: any,
