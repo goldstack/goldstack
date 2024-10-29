@@ -28,7 +28,6 @@
     "@aws-sdk/lib-dynamodb": "^3.645.0",
     "@goldstack/template-dynamodb": "0.3.14",
     "dynamodb-toolbox": "^1.11.8",
-    "memoizee": "^0.4.15",
     "umzug": "^3.1.1"
   },
   "devDependencies": {
@@ -37,7 +36,6 @@
     "@swc/jest": "^0.2.27",
     "@types/ejs": "^3",
     "@types/jest": "^29.0.1",
-    "@types/memoizee": "^0",
     "@types/node": "^18.7.13",
     "aws-sdk": "2.1525.0",
     "dynamodb-admin": "^4.6.1",
