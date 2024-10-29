@@ -33,7 +33,6 @@
     "compile-watch": "tsc -p tsconfig.json --watch",
     "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
-    "generate-schema": "ts-node scripts/generateSchemas.ts EmailSend && cp schemas/* ../../../templates/packages/email-send/schemas",
     "prepublishOnly": "yarn run build",
     "publish": "utils-git changed --exec \"yarn npm publish $@\"",
     "test": "GOLDSTACK_DEPLOYMENT=local jest --watch --config=./jest.config.js --runInBand",
