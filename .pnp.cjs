@@ -3906,14 +3906,12 @@ const RAW_RUNTIME_STATE =
           ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.27"],\
           ["@types/ejs", "npm:3.1.1"],\
           ["@types/jest", "npm:29.0.1"],\
-          ["@types/memoizee", "npm:0.4.8"],\
           ["@types/node", "npm:18.7.13"],\
           ["aws-sdk", "npm:2.1525.0"],\
           ["dynamodb-admin", "npm:4.6.1"],\
           ["dynamodb-toolbox", "virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:1.11.8"],\
           ["ejs", "npm:3.1.10"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
-          ["memoizee", "npm:0.4.15"],\
           ["rimraf", "npm:3.0.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.1"],\
@@ -9184,15 +9182,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-jsonpath-npm-0.2.0-7e705d9978-6861e2a57d.zip/node_modules/@types/jsonpath/",\
         "packageDependencies": [\
           ["@types/jsonpath", "npm:0.2.0"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["@types/memoizee", [\
-      ["npm:0.4.8", {\
-        "packageLocation": "./.yarn/cache/@types-memoizee-npm-0.4.8-1143062d93-fec135ca84.zip/node_modules/@types/memoizee/",\
-        "packageDependencies": [\
-          ["@types/memoizee", "npm:0.4.8"]\
         ],\
         "linkType": "HARD"\
       }]\

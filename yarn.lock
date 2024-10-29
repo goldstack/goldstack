@@ -2657,14 +2657,12 @@ __metadata:
     "@swc/jest": "npm:^0.2.27"
     "@types/ejs": "npm:^3"
     "@types/jest": "npm:^29.0.1"
-    "@types/memoizee": "npm:^0"
     "@types/node": "npm:^18.7.13"
     aws-sdk: "npm:2.1525.0"
     dynamodb-admin: "npm:^4.6.1"
     dynamodb-toolbox: "npm:^1.11.8"
     ejs: "npm:^3.1.8"
     jest: "npm:^29.3.1"
-    memoizee: "npm:^0.4.15"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.1"
@@ -7494,13 +7492,6 @@ __metadata:
   version: 0.2.0
   resolution: "@types/jsonpath@npm:0.2.0"
   checksum: 6861e2a57dfdc55a73f4718571b7130623fe8f2f380aa23dc7e91b833d10a41b6f7fd065f0434c11faa9d9ce79bd34a2631ee03c0e1e014bdde56db244d35b9a
-  languageName: node
-  linkType: hard
-
-"@types/memoizee@npm:^0":
-  version: 0.4.8
-  resolution: "@types/memoizee@npm:0.4.8"
-  checksum: fec135ca84426fc22aa69061c62c7139647c87a84b04d9b7abeb6a85dff334ebe901280c315728c096c931a723427b9a8abc52c54546745665b5107146b6b3ba
   languageName: node
   linkType: hard
 

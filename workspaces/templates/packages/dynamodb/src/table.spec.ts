@@ -10,7 +10,13 @@ import {
   string,
   Table,
 } from 'dynamodb-toolbox';
-import { UserEntity } from './entities';
+
+import {
+  createUserEntity,
+  InputUser,
+  UserEntity,
+  ValidUserValue,
+} from './entities';
 
 import {
   getTableName,
@@ -109,33 +115,40 @@ describe('DynamoDB Table', () => {
 
   it('Should be able to write and read an entity with entities', async () => {
     const table = await connectTable();
-    const Users = UserEntity(table);
+    const Users: UserEntity = createUserEntity(table);
 
-    await Users.build(PutItemCommand)
-      .item({
-        email: 'joe@email.com',
-        name: 'Joe',
-        emailVerified: true,
-      })
-      .send();
+    const data: InputUser = {
+      email: 'joe@email.com',
+      name: 'Joe',
+      emailVerified: true,
+    };
 
-    const { Item: user } = await Users.build(GetItemCommand)
+    await Users.build(PutItemCommand).item(data).send();
+
+    const { Item: item } = await Users.build(GetItemCommand)
       .key({ email: 'joe@email.com' })
-      .options({
-        attributes: ['name', 'email'],
-      })
       .send();
 
-    if (!user) {
+    if (!item) {
       throw new Error('Result not found');
     }
+
+    // this cast not really required but illustrates how we can pass
+    // values obtained from the database around.
+    const user: ValidUserValue = item;
     expect(user.name).toEqual('Joe');
     expect(user.email).toEqual('joe@email.com');
   });
 
+  /**
+   * There was in earlier versions some strange behaviour when creating entities multiple times.
+   * This seems to be resolved in version 1 of Dynamo DB Toolbox, but just keeping this test case
+   * to rule out this could be happening in the future.
+   * https://github.com/jeremydaly/dynamodb-toolbox/issues/366#issuecomment-1366311354
+   */
   it('Should be able to instantiate entity with deepCopy', async () => {
     const table = await connectTable();
-    const Users1 = UserEntity(table);
+    const Users1 = createUserEntity(table);
 
     await Users1.build(PutItemCommand)
       .item({
@@ -146,8 +159,7 @@ describe('DynamoDB Table', () => {
       })
       .send();
 
-    const Users2 = UserEntity(table);
-    // Using Users2 will result in an error here, see https://github.com/jeremydaly/dynamodb-toolbox/issues/366#issuecomment-1366311354
+    const Users2 = createUserEntity(table);
 
     const { Item: user } = await Users2.build(GetItemCommand)
       .key({

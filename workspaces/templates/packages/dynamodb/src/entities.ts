@@ -1,13 +1,84 @@
-import { boolean, Entity, schema, string, Table } from 'dynamodb-toolbox';
+import {
+  boolean,
+  Entity,
+  InputItem,
+  InputValue,
+  schema,
+  string,
+  Table as ToolboxTable,
+  TimestampsDefaultOptions,
+  ValidItem,
+  ValidValue,
+} from 'dynamodb-toolbox';
 import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
-import memoizee from 'memoizee';
-import { Key } from 'dynamodb-toolbox/dist/esm/table/types';
+
+// ---
+// Below find an example how to define an entity.
+//
+// Here we are defining the 'User' entity. You will most
+// likely want to delete this declaration and replace
+// it with your own types
+// ---
+
+export const UserSchema = schema({
+  email: string().key().savedAs('pk'),
+  type: string().key().default('user').savedAs('sk'),
+  name: string().required(),
+  emailVerified: boolean().required(),
+});
+
+export type InputUserValue = InputValue<typeof UserSchema>;
+
+export type ValidUserValue = ValidValue<typeof UserSchema>;
+
+export type InputUser = InputItem<UserEntity>;
+
+export type ValidUser = ValidItem<UserEntity>;
+
+export type UserEntity = Entity<
+  'User',
+  Table,
+  typeof UserSchema,
+  'entity',
+  TimestampsDefaultOptions,
+  true
+>;
+
+export function createUserEntity(table: Table): UserEntity {
+  const entity = new Entity({
+    name: 'User',
+    schema: UserSchema,
+    table: table,
+  });
+
+  return entity;
+}
+
+// ---
+// The below provides the typing for the base table that underlies
+// all entities.
+//
+// Here you will for instance add secondary indices.
+// ---
+
+export type Table = ToolboxTable<
+  {
+    name: 'pk';
+    type: 'string';
+  },
+  {
+    name: 'sk';
+    type: 'string';
+  },
+  {},
+  '_et'
+>;
 
 export function createTable(
   dynamoDB: DynamoDBDocumentClient,
   tableName: string
-): Table<Key<string, 'string'>, Key<string, 'string'>> {
-  const table = new Table({
+): Table {
+  const table = new ToolboxTable({
     name: tableName,
     partitionKey: {
       name: 'pk',
@@ -21,22 +92,3 @@ export function createTable(
   });
   return table;
 }
-
-export function UserEntityFn(
-  table: Table<Key<string, 'string'>, Key<string, 'string'>>
-) {
-  const entity = new Entity({
-    name: 'User',
-    schema: schema({
-      email: string().key().savedAs('pk'),
-      type: string().key().default('user').savedAs('sk'),
-      name: string().required(),
-      emailVerified: boolean().required(),
-    }),
-    table: table,
-  } as const);
-
-  return entity;
-}
-
-export const UserEntity = memoizee(UserEntityFn);
