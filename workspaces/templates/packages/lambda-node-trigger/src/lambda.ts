@@ -13,6 +13,8 @@ import {
 import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
 
 import deployments from './state/deployments.json'; // Import deployments
+import goldstackConfig from './../goldstack.json';
+import goldstackSchema from './../schemas/package.schema.json';
 
 import {
   connect as templateConnect,
@@ -77,12 +79,15 @@ export const getMockedSQS = (): SQSClient => {
   return templateGetMockedSQS(messageSendHandler);
 };
 
-import goldstackConfig from './../goldstack.json';
-import goldstackSchema from './../schemas/package.schema.json';
-
 export const connectToSQSQueue = async (
   deploymentName?: string
 ): Promise<SQSClient> => {
+  deploymentName = deploymentName || process.env['GOLDSTACK_DEPLOYMENT'];
+
+  if (deploymentName === 'local') {
+    return getMockedSQS();
+  }
+
   return await templateConnect(
     goldstackConfig,
     goldstackSchema,

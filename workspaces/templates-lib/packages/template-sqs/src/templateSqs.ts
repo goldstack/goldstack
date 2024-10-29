@@ -9,10 +9,20 @@ export {
 
 import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
+import { MessageCallback } from './sqsConnect';
 
-export function createSQSClient(sqsClient?: SQSClient): SQSClient {
+export function createSQSClient({
+  sqsClient,
+  onMessageSend,
+}: {
+  sqsClient?: SQSClient;
+  onMessageSend?: MessageCallback;
+}): SQSClient {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  return require(excludeInBundle('./mockedSQS')).createSQSClient(sqsClient);
+  return require(excludeInBundle('./mockedSQS')).createSQSClient({
+    sqsClient,
+    onMessageSend,
+  });
 }
 
 // Helper function to retrieve sent message requests from the mocked SQS client

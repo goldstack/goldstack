@@ -7,10 +7,15 @@ import { mockClient } from 'aws-sdk-client-mock';
 import { v4 as uuid4 } from 'uuid';
 import { MessageCallback } from './sqsConnect';
 
-export function createSQSClient(
-  sqsClient?: SQSClient,
-  onMessageSend?: MessageCallback
-): SQSClient {
+export type CreateSQSClientSignature = typeof createSQSClient;
+
+export function createSQSClient({
+  sqsClient,
+  onMessageSend,
+}: {
+  sqsClient?: SQSClient;
+  onMessageSend?: MessageCallback;
+}): SQSClient {
   if (!sqsClient) {
     sqsClient = new SQSClient();
   }
