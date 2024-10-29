@@ -988,7 +988,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/credential-providers@npm:3.645.0, @aws-sdk/credential-providers@npm:^3.645.0":
+"@aws-sdk/credential-providers@npm:3.645.0":
   version: 3.645.0
   resolution: "@aws-sdk/credential-providers@npm:3.645.0"
   dependencies:
@@ -2857,7 +2857,7 @@ __metadata:
   resolution: "@goldstack/infra-aws@workspace:workspaces/templates-lib/packages/infra-aws"
   dependencies:
     "@aws-sdk/client-sts": "npm:^3.645.0"
-    "@aws-sdk/credential-providers": "npm:^3.645.0"
+    "@aws-sdk/credential-providers": "npm:3.645.0"
     "@aws-sdk/types": "npm:^3.609.0"
     "@goldstack/infra": "npm:0.4.12"
     "@goldstack/utils-config": "npm:0.4.12"
@@ -3595,7 +3595,7 @@ __metadata:
   resolution: "@goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb"
   dependencies:
     "@aws-sdk/client-dynamodb": "npm:^3.645.0"
-    "@aws-sdk/credential-providers": "npm:^3.645.0"
+    "@aws-sdk/credential-providers": "npm:3.645.0"
     "@aws-sdk/types": "npm:^3.609.0"
     "@aws-sdk/util-dynamodb": "npm:^3.645.0"
     "@goldstack/infra": "npm:0.4.12"
@@ -3659,7 +3659,7 @@ __metadata:
   resolution: "@goldstack/template-email-send@workspace:workspaces/templates-lib/packages/template-email-send"
   dependencies:
     "@aws-sdk/client-ses": "npm:^3.645.0"
-    "@aws-sdk/credential-providers": "npm:^3.645.0"
+    "@aws-sdk/credential-providers": "npm:3.645.0"
     "@aws-sdk/types": "npm:^3.609.0"
     "@goldstack/infra": "npm:0.4.12"
     "@goldstack/infra-aws": "npm:0.4.20"
@@ -3726,7 +3726,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-hetzner-vps@workspace:workspaces/templates-lib/packages/template-hetzner-vps"
   dependencies:
-    "@aws-sdk/credential-providers": "npm:^3.645.0"
+    "@aws-sdk/credential-providers": "npm:3.645.0"
     "@aws-sdk/types": "npm:^3.609.0"
     "@goldstack/infra": "npm:0.4.12"
     "@goldstack/infra-aws": "npm:0.4.20"
@@ -4119,7 +4119,7 @@ __metadata:
   resolution: "@goldstack/template-s3@workspace:workspaces/templates-lib/packages/template-s3"
   dependencies:
     "@aws-sdk/client-s3": "npm:3.620.0"
-    "@aws-sdk/credential-providers": "npm:^3.645.0"
+    "@aws-sdk/credential-providers": "npm:3.645.0"
     "@aws-sdk/s3-request-presigner": "npm:^3.645.0"
     "@aws-sdk/types": "npm:^3.609.0"
     "@goldstack/infra": "npm:0.4.12"
