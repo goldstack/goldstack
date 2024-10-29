@@ -191,6 +191,9 @@
       "path": "workspaces/templates-lib/packages/template-s3-cli"
     },
     {
+      "path": "workspaces/templates-lib/packages/template-sqs"
+    },
+    {
       "path": "workspaces/templates-lib/packages/template-ssr"
     },
     {

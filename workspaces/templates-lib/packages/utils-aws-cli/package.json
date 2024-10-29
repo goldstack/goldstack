@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-aws-cli",
-  "version": "0.4.20",
+  "version": "0.4.21",
   "description": "Wrapper to help with running commands with the AWS cli",
   "keywords": [
     "goldstack",
@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@aws-sdk/types": "^3.609.0",
-    "@goldstack/infra-aws": "0.4.20",
+    "@goldstack/infra-aws": "0.4.21",
     "@goldstack/utils-docker": "0.4.12",
     "@goldstack/utils-log": "0.3.11",
     "@goldstack/utils-sh": "0.5.11"

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-sqs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Utilities for packages that implement SQS functionality",
   "keywords": [
     "goldstack",
@@ -45,13 +45,13 @@
     "@aws-sdk/credential-providers": "3.645.0",
     "@aws-sdk/types": "^3.609.0",
     "@goldstack/infra": "0.4.12",
-    "@goldstack/infra-aws": "0.4.20",
+    "@goldstack/infra-aws": "0.4.21",
     "@goldstack/utils-cli": "0.3.10",
     "@goldstack/utils-esbuild": "0.5.9",
     "@goldstack/utils-package": "0.4.12",
     "@goldstack/utils-package-config-embedded": "0.5.13",
-    "@goldstack/utils-terraform": "0.4.25",
-    "@goldstack/utils-terraform-aws": "0.4.28",
+    "@goldstack/utils-terraform": "0.4.26",
+    "@goldstack/utils-terraform-aws": "0.4.29",
     "aws-sdk-client-mock": "^4.0.1",
     "uuid": "^8.3.0"
   },

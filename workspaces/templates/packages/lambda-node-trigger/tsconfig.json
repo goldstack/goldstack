@@ -16,6 +16,9 @@
       "path": "../../../templates-lib/packages/template-lambda-trigger-cli"
     },
     {
+      "path": "../../../templates-lib/packages/template-sqs"
+    },
+    {
       "path": "../../../utils/packages/utils-git"
     },
     {
