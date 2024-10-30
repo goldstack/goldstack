@@ -11,6 +11,8 @@ import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { MessageCallback } from './sqsConnect';
 
+export { MessageCallback } from './sqsConnect';
+
 export function createSQSClient({
   sqsClient,
   onMessageSend,

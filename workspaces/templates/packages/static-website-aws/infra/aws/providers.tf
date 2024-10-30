@@ -8,9 +8,15 @@ terraform {
       source = "hashicorp/aws"
       version = "5.31.0"
     }
+    time = {
+      source  = "hashicorp/time"
+      version = "~> 0.7"
+    }
   }
   required_version = ">= 1.1"
 }
+
+provider "time" {}
 
 provider "aws" {
   region                  = var.aws_region

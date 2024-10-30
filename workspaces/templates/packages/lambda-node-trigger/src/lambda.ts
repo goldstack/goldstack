@@ -20,7 +20,7 @@ import {
   connect as templateConnect,
   getMockedSQS as templateGetMockedSQS,
 } from '@goldstack/template-sqs';
-import { MessageCallback } from '@goldstack/template-sqs/src/sqsConnect';
+import { MessageCallback } from '@goldstack/template-sqs';
 
 export const handler: Handler = async (event, context) => {
   // SQS message handling

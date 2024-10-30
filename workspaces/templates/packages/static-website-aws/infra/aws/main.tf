@@ -61,10 +61,18 @@ resource "aws_acm_certificate_validation" "wildcard_validation" {
     [
       for record in aws_route53_record.wildcard_validation : record.fqdn
     ],
-    [
-      for record in aws_route53_record.wildcard_validation : record.fqdn
-    ]
   )
+}
+
+# Introduce a wait for 1 minute using time_sleep
+# This may prevent errors like https://github.com/hashicorp/terraform-provider-aws/issues/32309
+resource "time_sleep" "wait_for_cert" {
+  depends_on = [
+    aws_acm_certificate.wildcard_website,
+    aws_route53_record.wildcard_validation
+  ]
+
+  create_duration = "60s"  # Waits for 60 seconds
 }
 
 # Get the ARN of the issued certificate
@@ -72,8 +80,7 @@ data "aws_acm_certificate" "wildcard_website" {
   provider = aws.us-east-1
 
   depends_on = [
-    aws_acm_certificate.wildcard_website,
-    aws_route53_record.wildcard_validation,
+    time_sleep.wait_for_cert
   ]
 
   domain      = var.website_domain
