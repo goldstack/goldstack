@@ -1,46 +1,7 @@
-<p></p>
-<div class="markdown-fragment">
-  <p>
-    The Lambda Python Job template allows defining an AWS Lambda in Python and
-    triggering this function on a schedule or by an event.
-  </p>
-</div>
-<p></p>
-<p></p>
-<div class="markdown-fragment">
-  <p>The following key properties need to be configured for this template:</p>
-  <ul>
-    <li>
-      <strong>Lambda Name</strong>: The
-      <a
-        href="https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-FunctionName"
-        class="absolute"
-        target="_blank"
-        rel="noopener noreferrer"
-        >name</a
-      >
-      to be used for this lambda. Lambda names need to be unique for the AWS
-      Region. It is not possible to have two lambdas with the same name in the
-      same region.
-    </li>
-    <li>
-      <strong>Lambda Schedule</strong> (Optional): This defines the schedule at
-      which the lambda is triggered. For example,
-      <code class="inline">"rate(1 minute)"</code>. For more information, see
-      the
-      <a
-        href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html#eb-rate-expressions"
-        class="absolute"
-        target="_blank"
-        rel="noopener noreferrer"
-        >AWS Schedule Pattern documentation</a
-      >.
-    </li>
-    <li>
-      <strong>SQS Queue Name</strong> (Optional): This defines the name of the
-      SQS queue that is used to trigger the lambda. The SQS queue should not
-      already exist, and it will be created when the name is provided.
-    </li>
-  </ul>
-</div>
-<p></p>
+<p></p><div class="markdown-fragment"><p>The Lambda Python Job template allows defining an AWS Lambda in Python and triggering this function on a schedule or by an event.</p></div><p></p>
+<p></p><div class="markdown-fragment"><p>The following key properties need to be configured for this template:</p>
+<ul>
+<li><strong>Lambda Name</strong>: The <a href="https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-FunctionName" class="absolute" target="_blank" rel="noopener noreferrer">name</a> to be used for this lambda. Lambda names need to be unique for the AWS Region. It is not possible to have two lambdas with the same name in the same region.</li>
+<li><strong>Lambda Schedule</strong> (Optional): This defines the schedule at which the lambda is triggered. For example, <code class="inline">"rate(1 minute)"</code>. For more information, see the <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html#eb-rate-expressions" class="absolute" target="_blank" rel="noopener noreferrer">AWS Schedule Pattern documentation</a>.</li>
+<li><strong>SQS Queue Name</strong> (Optional): This defines the name of the SQS queue that is used to trigger the lambda. The SQS queue should not already exist, and it will be created when the name is provided.</li>
+</ul></div><p></p>
