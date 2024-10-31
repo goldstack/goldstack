@@ -20,13 +20,13 @@ export interface DynamoDBInstance {
 // Define type signatures for the methods
 export type LocalConnectType = (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
-  port: number,
+  options: { port: number },
   deploymentName?: string
 ) => Promise<DynamoDBClient>;
 
 export type StartLocalDynamoDBType = (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
-  port: number,
+  options: { port: number },
   deploymentName?: string
 ) => Promise<DynamoDBInstance>;
 
@@ -44,7 +44,7 @@ const startedContainers: Map<DynamoDBTableName, DynamoDBInstance | 'stopped'> =
 
 export const localConnect: LocalConnectType = async (
   packageConfig,
-  port,
+  { port },
   deploymentName
 ) => {
   if (areWeTestingWithJest()) {
@@ -58,7 +58,7 @@ export const localConnect: LocalConnectType = async (
   }
 
   return createClient(
-    await startLocalDynamoDB(packageConfig, port, deploymentName)
+    await startLocalDynamoDB(packageConfig, { port }, deploymentName)
   );
 };
 
@@ -82,7 +82,7 @@ export const createClient = (
 
 export const startLocalDynamoDB: StartLocalDynamoDBType = async (
   packageConfig,
-  port,
+  { port },
   deploymentName
 ) => {
   const tableName = await getTableName(packageConfig, deploymentName);
