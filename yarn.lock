@@ -2651,8 +2651,8 @@ __metadata:
   dependencies:
     "@aws-sdk/client-dynamodb": "npm:^3.645.0"
     "@aws-sdk/lib-dynamodb": "npm:^3.645.0"
-    "@goldstack/template-dynamodb": "npm:0.3.15"
-    "@goldstack/template-dynamodb-cli": "npm:0.6.16"
+    "@goldstack/template-dynamodb": "npm:0.3.16"
+    "@goldstack/template-dynamodb-cli": "npm:0.6.17"
     "@swc/core": "npm:^1.3.74"
     "@swc/jest": "npm:^0.2.27"
     "@types/ejs": "npm:^3"
@@ -3558,11 +3558,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-dynamodb-cli@npm:0.6.16, @goldstack/template-dynamodb-cli@workspace:workspaces/templates-lib/packages/template-dynamodb-cli":
+"@goldstack/template-dynamodb-cli@npm:0.6.17, @goldstack/template-dynamodb-cli@workspace:workspaces/templates-lib/packages/template-dynamodb-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-dynamodb-cli@workspace:workspaces/templates-lib/packages/template-dynamodb-cli"
   dependencies:
-    "@goldstack/template-dynamodb": "npm:0.3.15"
+    "@goldstack/template-dynamodb": "npm:0.3.16"
     "@goldstack/utils-cli": "npm:0.3.10"
     "@goldstack/utils-docs-cli": "npm:0.3.11"
     "@goldstack/utils-git": "npm:0.2.9"
@@ -3590,7 +3590,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-dynamodb@npm:0.3.15, @goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb":
+"@goldstack/template-dynamodb@npm:0.3.16, @goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-dynamodb@workspace:workspaces/templates-lib/packages/template-dynamodb"
   dependencies:
