@@ -10,14 +10,30 @@ import waitPort from 'wait-port';
 import { check } from 'tcp-port-used';
 import { ChildProcess, spawn } from 'child_process';
 
-const MAPPED_PORT = 8000;
-
 type DynamoDBTableName = string;
 
 export interface DynamoDBInstance {
   port: number;
   stop: () => Promise<void>;
 }
+
+// Define type signatures for the methods
+export type LocalConnectType = (
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  port: number,
+  deploymentName?: string
+) => Promise<DynamoDBClient>;
+
+export type StartLocalDynamoDBType = (
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  port: number,
+  deploymentName?: string
+) => Promise<DynamoDBInstance>;
+
+export type StopLocalDynamoDBType = (
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  deploymentName?: string
+) => Promise<void>;
 
 function areWeTestingWithJest(): boolean {
   return process.env.JEST_WORKER_ID !== undefined;
@@ -26,10 +42,11 @@ function areWeTestingWithJest(): boolean {
 const startedContainers: Map<DynamoDBTableName, DynamoDBInstance | 'stopped'> =
   new Map();
 
-export const localConnect = async (
-  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
-  deploymentName?: string
-): Promise<DynamoDBClient> => {
+export const localConnect: LocalConnectType = async (
+  packageConfig,
+  port,
+  deploymentName
+) => {
   if (areWeTestingWithJest()) {
     const tableName = await getTableName(packageConfig, deploymentName);
     const startedContainer = startedContainers.get(tableName);
@@ -40,7 +57,9 @@ export const localConnect = async (
     }
   }
 
-  return createClient(await startLocalDynamoDB(packageConfig, deploymentName));
+  return createClient(
+    await startLocalDynamoDB(packageConfig, port, deploymentName)
+  );
 };
 
 export const endpointUrl = (startedContainer: DynamoDBInstance): string => {
@@ -61,20 +80,19 @@ export const createClient = (
   });
 };
 
-export const startLocalDynamoDB = async (
-  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
-  deploymentName?: string
-): Promise<DynamoDBInstance> => {
+export const startLocalDynamoDB: StartLocalDynamoDBType = async (
+  packageConfig,
+  port,
+  deploymentName
+) => {
   const tableName = await getTableName(packageConfig, deploymentName);
 
-  // TODO the key in this map may need to be extended to include the region as well, since dynamodb table names are unique per region.
   let startedContainer = startedContainers.get(tableName);
   if (startedContainer && startedContainer !== 'stopped') {
     return startedContainer;
   }
-  startedContainer = await spawnLocalDynamoDB();
+  startedContainer = await spawnLocalDynamoDB(port);
 
-  // Check if another container for this table has already been started in the meanwhile
   const startedContainerTest = startedContainers.get(tableName);
   if (startedContainerTest && startedContainerTest !== 'stopped') {
     await startedContainer.stop();
@@ -93,10 +111,8 @@ function killProcess(childProcess: ChildProcess): Promise<void> {
       }
       spawn('taskkill', ['/pid', childProcess.pid?.toString(), '/t']);
     } else {
-      // Send SIGTERM signal to the process
       childProcess.kill('SIGTERM');
     }
-    // Set a timeout to send SIGKILL after 5 seconds
     const timeout = setTimeout(() => {
       if (process.platform === 'win32') {
         if (!childProcess.pid) {
@@ -104,7 +120,6 @@ function killProcess(childProcess: ChildProcess): Promise<void> {
         }
         spawn('taskkill', ['/pid', childProcess.pid?.toString(), '/f', '/t']);
       } else {
-        // Send SIGKILL signal if the process hasn't exited after 5 seconds
         childProcess.kill('SIGKILL');
       }
     }, 5000);
@@ -113,9 +128,7 @@ function killProcess(childProcess: ChildProcess): Promise<void> {
       clearTimeout(timeout);
       reject(new Error('Process could not be terminated after 30 s'));
     }, 30000);
-    // Listen for the exit event
     childProcess.on('exit', (code, signal) => {
-      // Clear the timeouts since the process has exited
       clearTimeout(timeout);
       clearTimeout(errorTimeout);
 
@@ -127,13 +140,13 @@ function killProcess(childProcess: ChildProcess): Promise<void> {
   });
 }
 
-const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
-  if (await check(MAPPED_PORT)) {
+const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
+  if (await check(port)) {
     console.debug(
-      `Port ${MAPPED_PORT} is already in use. Assuming another instance of DynamoDB is already running.`
+      `Port ${port} is already in use. Assuming another instance of DynamoDB is already running.`
     );
     return {
-      port: MAPPED_PORT,
+      port,
       stop: async () => {
         // no op, someone else controls this instance
       },
@@ -142,17 +155,17 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
   if (commandExists('java')) {
     console.debug('Starting local DynamoDB with Java');
     const pr = dynamoDBLocal.spawn({
-      port: MAPPED_PORT,
+      port,
       path: null,
       detached: false,
     });
     await waitPort({
       host: 'localhost',
-      port: MAPPED_PORT,
+      port,
     });
     console.debug('Started local DynamoDB with Java');
     return {
-      port: MAPPED_PORT,
+      port,
       stop: async () => {
         console.debug('Stopping local Java DynamoDB');
         try {
@@ -172,7 +185,7 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
     const hash = new Date().getTime();
     const containerName = 'goldstack-local-dynamodb-' + hash;
     const pr = dynamoDBLocal.spawn({
-      port: MAPPED_PORT,
+      port,
       command: 'docker',
       name: containerName,
       path: null,
@@ -183,14 +196,13 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
     }
     await waitPort({
       host: 'localhost',
-      port: MAPPED_PORT,
+      port,
     });
-    // giving DynamoDB some extra time to start up
     await new Promise<void>((resolve) => {
       setTimeout(resolve, 5000);
     });
     return {
-      port: MAPPED_PORT,
+      port,
       stop: async () => {
         console.debug('Stopping local Docker DynamoDB');
         try {
@@ -212,10 +224,10 @@ const spawnLocalDynamoDB = async (): Promise<DynamoDBInstance> => {
   );
 };
 
-export const stopLocalDynamoDB = async (
-  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
-  deploymentName?: string
-): Promise<void> => {
+export const stopLocalDynamoDB: StopLocalDynamoDBType = async (
+  packageConfig,
+  deploymentName
+) => {
   const tableName = await getTableName(packageConfig, deploymentName);
   const startedContainer = startedContainers.get(tableName);
   if (!startedContainer) {
