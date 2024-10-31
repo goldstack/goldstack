@@ -71,11 +71,14 @@ export const migrateDownTo = async (
 };
 
 export const startLocalDynamoDB = async (
+  port?: number,
   deploymentName?: string
 ): Promise<void> => {
+  port = port || 8000;
   return await templateStartLocalDynamoDB(
     goldstackConfig,
     goldstackSchema,
+    port,
     deploymentName
   );
 };

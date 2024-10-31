@@ -23,6 +23,13 @@ import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { fromEnv } from '@aws-sdk/credential-providers';
 import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 
+// Importing type signatures from localDynamoDB
+import {
+  LocalConnectType,
+  StartLocalDynamoDBType,
+  StopLocalDynamoDBType,
+} from './localDynamoDB';
+
 /**
  * Map to keep track for which deployment and tables initialisation and migrations have already been performed
  */
@@ -48,6 +55,7 @@ export const getTableName = async (
 export const startLocalDynamoDB = async (
   goldstackConfig: DynamoDBPackage | any,
   packageSchema: any,
+  port: number,
   deploymentName?: string
 ): Promise<void> => {
   deploymentName = getDeploymentName(deploymentName);
@@ -59,10 +67,12 @@ export const startLocalDynamoDB = async (
     packageSchema,
   });
 
-  // only load this file when we absolutely need it, so we can avoid packaging it
+  // Suppress ESLint error for dynamic require
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const lib = require(excludeInBundle('./localDynamoDB'));
-  await lib.startLocalDynamoDB(packageConfig, deploymentName);
+  const lib = require(excludeInBundle('./localDynamoDB')) as {
+    startLocalDynamoDB: StartLocalDynamoDBType;
+  };
+  await lib.startLocalDynamoDB(packageConfig, { port }, deploymentName);
 };
 
 export const stopLocalDynamoDB = async (
@@ -79,9 +89,11 @@ export const stopLocalDynamoDB = async (
     packageSchema,
   });
 
-  // only load this file when we absolutely need it, so we can avoid packaging it
+  // Suppress ESLint error for dynamic require
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const lib = require(excludeInBundle('./localDynamoDB'));
+  const lib = require(excludeInBundle('./localDynamoDB')) as {
+    stopLocalDynamoDB: StopLocalDynamoDBType;
+  };
   await lib.stopLocalDynamoDB(packageConfig, deploymentName);
 
   const coldStartKey = getColdStartKey(packageConfig, deploymentName);
@@ -93,9 +105,12 @@ const createClient = async (
   deploymentName: string
 ): Promise<DynamoDBClient> => {
   if (deploymentName === 'local') {
+    // Suppress ESLint error for dynamic require
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const lib = require(excludeInBundle('./localDynamoDB'));
-    return lib.localConnect(packageConfig, deploymentName);
+    const lib = require(excludeInBundle('./localDynamoDB')) as {
+      localConnect: LocalConnectType;
+    };
+    return lib.localConnect(packageConfig, { port: 8000 }, deploymentName);
   }
   const deployment = packageConfig.getDeployment(deploymentName);
 
