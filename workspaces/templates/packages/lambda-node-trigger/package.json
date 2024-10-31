@@ -6,7 +6,7 @@
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
-  "main": "src/main.ts",
+  "main": "src/lambda.ts",
   "files": [
     "dist"
   ],
