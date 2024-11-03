@@ -10,6 +10,8 @@ import waitPort from 'wait-port';
 import { check } from 'tcp-port-used';
 import { ChildProcess, spawn } from 'child_process';
 
+import { debug } from '@goldstack/utils-log';
+
 type DynamoDBTableName = string;
 
 export interface DynamoDBInstance {
@@ -47,29 +49,38 @@ export const localConnect: LocalConnectType = async (
   { port },
   deploymentName
 ) => {
-  if (areWeTestingWithJest()) {
-    const tableName = await getTableName(packageConfig, deploymentName);
-    const startedContainer = startedContainers.get(tableName);
-    if (!startedContainer) {
-      throw new Error(
-        'DynamoDB Local has not been started. When running Jest test, start Local DynamoDB explicitly with `startLocalDynamoDB` and shut the instance down with `stopLocalDynamoDB` when tests are completed.'
-      );
-    }
+  const tableName = await getTableName(packageConfig, deploymentName);
+  const startedContainer = startedContainers.get(tableName);
+
+  if (areWeTestingWithJest() && !startedContainer) {
+    throw new Error(
+      'DynamoDB Local has not been started. When running Jest test, start Local DynamoDB explicitly with `startLocalDynamoDB` and shut the instance down with `stopLocalDynamoDB` when tests are completed.'
+    );
   }
 
-  return createClient(
-    await startLocalDynamoDB(packageConfig, { port }, deploymentName)
+  if (startedContainer && startedContainer !== 'stopped') {
+    return createClient(startedContainer);
+  }
+
+  const newContainer = await startLocalDynamoDB(
+    packageConfig,
+    { port },
+    deploymentName
   );
+  return createClient(newContainer);
 };
 
 export const endpointUrl = (startedContainer: DynamoDBInstance): string => {
-  return `http://localhost:${startedContainer.port}`;
+  const result = `http://localhost:${startedContainer.port}`;
+
+  return result;
 };
 
 export const createClient = (
   startedContainer: DynamoDBInstance
 ): DynamoDBClient => {
   const endpoint = endpointUrl(startedContainer);
+  debug(`Connecting to local DynamoDB instance on endpoint: ${endpoint}`);
   return new DynamoDBClient({
     endpoint,
     region: 'eu-central-1',
