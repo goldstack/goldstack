@@ -1,71 +1,62 @@
-import { startLocalDynamoDB, stopLocalDynamoDB } from './templateDynamoDBTable';
+import {
+  getTableName,
+  startLocalDynamoDB,
+  stopLocalDynamoDB,
+} from './templateDynamoDBTable';
 import { ThisPackage } from './types/DynamoDBPackage';
 import { check } from 'tcp-port-used';
 import { connect } from './templateDynamoDBTable';
 import { PutItemCommand, GetItemCommand } from '@aws-sdk/client-dynamodb';
 import { createTestMigrations } from './testUtils/testMigrations';
 
+jest.setTimeout(240000);
+
 describe('DynamoDB Template', () => {
-  const mockConfig1: ThisPackage = {
-    name: 'test-dynamodb-1',
-    template: 'dynamodb',
-    templateVersion: '0.1.0',
-    $schema: '../schemas/package.schema.json',
-    configuration: {
-      // Package level configuration if needed
-    },
-    deployments: [
-      {
-        name: 'local',
-        awsRegion: 'us-east-1',
-        awsUser: 'local',
-        configuration: {
-          tableName: 'test-table-1',
-        },
-      },
-    ],
-  };
-
-  const mockConfig2: ThisPackage = {
-    name: 'test-dynamodb-2',
-    template: 'dynamodb',
-    templateVersion: '0.1.0',
-    $schema: '../schemas/package.schema.json',
-    configuration: {
-      // Package level configuration if needed
-    },
-    deployments: [
-      {
-        name: 'local',
-        awsRegion: 'us-east-1',
-        awsUser: 'local',
-        configuration: {
-          tableName: 'test-table-2',
-        },
-      },
-    ],
-  };
-
-  const mockSchema = {
-    type: 'object',
-    properties: {},
-  };
-
-  afterEach(async () => {
-    // Clean up both instances if they exist
-    try {
-      await stopLocalDynamoDB(mockConfig1, mockSchema, 'local');
-    } catch (e) {
-      // Ignore errors if instance wasn't running
-    }
-    try {
-      await stopLocalDynamoDB(mockConfig2, mockSchema, 'local');
-    } catch (e) {
-      // Ignore errors if instance wasn't running
-    }
-  });
-
   it('should be able to run two DynamoDB instances with different tables on different ports', async () => {
+    const mockConfig1: ThisPackage = {
+      name: 'test-dynamodb-1',
+      template: 'dynamodb',
+      templateVersion: '0.1.0',
+      $schema: '../schemas/package.schema.json',
+      configuration: {
+        // Package level configuration if needed
+      },
+      deployments: [
+        {
+          name: 'local',
+          awsRegion: 'us-east-1',
+          awsUser: 'local',
+          configuration: {
+            tableName: 'test-table-1',
+          },
+        },
+      ],
+    };
+
+    const mockConfig2: ThisPackage = {
+      name: 'test-dynamodb-2',
+      template: 'dynamodb',
+      templateVersion: '0.1.0',
+      $schema: '../schemas/package.schema.json',
+      configuration: {
+        // Package level configuration if needed
+      },
+      deployments: [
+        {
+          name: 'local',
+          awsRegion: 'us-east-1',
+          awsUser: 'local',
+          configuration: {
+            tableName: 'test-table-2',
+          },
+        },
+      ],
+    };
+
+    const mockSchema = {
+      type: 'object',
+      properties: {},
+    };
     // Start first instance on port 8000
     await startLocalDynamoDB(mockConfig1, mockSchema, 8000, 'local');
     expect(await check(8000)).toBe(true);
@@ -91,13 +82,16 @@ describe('DynamoDB Template', () => {
 
     // Write item to first table
     const testItem = {
-      id: { S: 'test-id' },
-      data: { S: 'test-data' },
+      pk: { S: 'test-id' },
+      sk: { S: 'test-data' },
     };
+
+    const tableName1 = await getTableName(mockConfig1, mockSchema, 'local');
+    const tableName2 = await getTableName(mockConfig2, mockSchema, 'local');
 
     await client1.send(
       new PutItemCommand({
-        TableName: 'test-table-1',
+        TableName: tableName1,
         Item: testItem,
       })
     );
@@ -105,9 +99,10 @@ describe('DynamoDB Template', () => {
     // Try to read from first table - should succeed
     const response1 = await client1.send(
       new GetItemCommand({
-        TableName: 'test-table-1',
+        TableName: tableName1,
         Key: {
-          id: { S: 'test-id' },
+          pk: { S: 'test-id' },
+          sk: { S: 'test-data' },
         },
       })
     );
@@ -116,9 +111,10 @@ describe('DynamoDB Template', () => {
     // Try to read from second table - should not find the item
     const response2 = await client2.send(
       new GetItemCommand({
-        TableName: 'test-table-2',
+        TableName: tableName2,
         Key: {
-          id: { S: 'test-id' },
+          pk: { S: 'test-id' },
+          sk: { S: 'test-data' },
         },
       })
     );
@@ -134,5 +130,5 @@ describe('DynamoDB Template', () => {
     // Stop second instance
     await stopLocalDynamoDB(mockConfig2, mockSchema, 'local');
     expect(await check(8001)).toBe(false);
-  }, 30000); // Increase timeout to 30s since starting DynamoDB instances can take time
+  }); // Increase timeout to 30s since starting DynamoDB instances can take time
 });

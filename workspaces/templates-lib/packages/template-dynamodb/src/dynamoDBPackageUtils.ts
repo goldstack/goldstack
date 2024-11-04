@@ -9,7 +9,7 @@ export const getTableName = async (
 ): Promise<string> => {
   deploymentName = getDeploymentName(deploymentName);
   if (deploymentName === 'local') {
-    return `local-${packageConfig.getConfig().name}`;
+    return `${packageConfig.getConfig().name}`;
   }
   const deployment = packageConfig.getDeployment(deploymentName);
   return deployment.configuration.tableName;
