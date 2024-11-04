@@ -3616,6 +3616,8 @@ __metadata:
     "@types/tcp-port-used": "npm:^1"
     "@types/yargs": "npm:^17.0.10"
     dynamo-db-local: "npm:8.0.0"
+    find-free-port: "npm:^2.0.0"
+    find-free-ports: "npm:^3.1.1"
     jest: "npm:^29.3.1"
     rimraf: "npm:^3.0.2"
     tcp-port-used: "npm:^1.0.2"
@@ -4521,7 +4523,7 @@ __metadata:
     cookie: "npm:^0.4.1"
     cors: "npm:^2.8.5"
     express: "npm:4.19.2"
-    find-free-port: "npm:^2.0.0"
+    find-free-ports: "npm:^3.1.1"
     jest: "npm:^29.3.1"
     node-fetch: "npm:2.6.7"
     rimraf: "npm:^3.0.2"
@@ -12614,6 +12616,13 @@ __metadata:
   version: 2.0.0
   resolution: "find-free-port@npm:2.0.0"
   checksum: 81c920e57f92cb7123d3d22e8f2631c96d1cfd3a319d5db3b38c6ad82a78a08c4150680062980f9967afb67175e9f1718033e77b794b075197a072a5bfc3bc60
+  languageName: node
+  linkType: hard
+
+"find-free-ports@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "find-free-ports@npm:3.1.1"
+  checksum: c2e09a92c5c3046fa850317e96cfbacc608cd89e2e1beacdaee84370fec5dad3d97c9f76736208aeffe9ff19498dd673497c7c4ab0af8d193ad74cb2057447d1
   languageName: node
   linkType: hard
 

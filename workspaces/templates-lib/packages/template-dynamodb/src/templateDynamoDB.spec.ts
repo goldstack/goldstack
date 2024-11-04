@@ -8,6 +8,8 @@ import { check } from 'tcp-port-used';
 import { connect } from './templateDynamoDBTable';
 import { PutItemCommand, GetItemCommand } from '@aws-sdk/client-dynamodb';
 import { createTestMigrations } from './testUtils/testMigrations';
+import { findFreePorts } from 'find-free-ports';
+import { promisify } from 'util';
 
 jest.setTimeout(240000);
 
@@ -58,13 +60,16 @@ describe('DynamoDB Template', () => {
   };
 
   it('should be able to run two DynamoDB instances with different tables on different ports', async () => {
-    // Start first instance on port 8000
-    await startLocalDynamoDB(mockConfig1, mockSchema, 8903, 'local');
-    expect(await check(8903)).toBe(true);
+    // Get two free ports for our DynamoDB instances
+    const [port1, port2] = await findFreePorts(2);
 
-    // Start second instance on port 8001
-    await startLocalDynamoDB(mockConfig2, mockSchema, 8904, 'local');
-    expect(await check(8904)).toBe(true);
+    // Start first instance on first free port
+    await startLocalDynamoDB(mockConfig1, mockSchema, port1, 'local');
+    expect(await check(port1)).toBe(true);
+
+    // Start second instance on second free port
+    await startLocalDynamoDB(mockConfig2, mockSchema, port2, 'local');
+    expect(await check(port2)).toBe(true);
 
     // Create clients for both instances
     const client1 = await connect({
@@ -123,14 +128,14 @@ describe('DynamoDB Template', () => {
 
     // Stop first instance
     await stopLocalDynamoDB(mockConfig1, mockSchema, 'local');
-    expect(await check(8903)).toBe(false);
+    expect(await check(port1)).toBe(false);
 
     // Verify second instance is still running
-    expect(await check(8904)).toBe(true);
+    expect(await check(port2)).toBe(true);
 
     // Stop second instance
     await stopLocalDynamoDB(mockConfig2, mockSchema, 'local');
-    expect(await check(8904)).toBe(false);
+    expect(await check(port2)).toBe(false);
   });
   afterAll(async () => {
     // Clean up both instances if they exist
