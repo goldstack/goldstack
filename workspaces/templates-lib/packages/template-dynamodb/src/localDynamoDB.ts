@@ -10,7 +10,7 @@ import waitPort from 'wait-port';
 import { check } from 'tcp-port-used';
 import { ChildProcess, spawn } from 'child_process';
 
-import { debug } from '@goldstack/utils-log';
+import { debug, error, info, warn } from '@goldstack/utils-log';
 
 type DynamoDBTableName = string;
 
@@ -22,7 +22,6 @@ export interface DynamoDBInstance {
 // Define type signatures for the methods
 export type LocalConnectType = (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
-  options: { port: number },
   deploymentName?: string
 ) => Promise<DynamoDBClient>;
 
@@ -46,7 +45,6 @@ const startedContainers: Map<DynamoDBTableName, DynamoDBInstance | 'stopped'> =
 
 export const localConnect: LocalConnectType = async (
   packageConfig,
-  { port },
   deploymentName
 ) => {
   const tableName = await getTableName(packageConfig, deploymentName);
@@ -59,19 +57,22 @@ export const localConnect: LocalConnectType = async (
   }
 
   if (startedContainer && startedContainer !== 'stopped') {
+    debug(
+      `Connecting to local DynamoDB instance on port ${startedContainer.port}`
+    );
     return createClient(startedContainer);
   }
 
   const newContainer = await startLocalDynamoDB(
     packageConfig,
-    { port },
+    { port: 8000 },
     deploymentName
   );
   return createClient(newContainer);
 };
 
 export const endpointUrl = (startedContainer: DynamoDBInstance): string => {
-  const result = `http://localhost:${startedContainer.port}`;
+  const result = `http://127.0.0.1:${startedContainer.port}`;
 
   return result;
 };
@@ -143,8 +144,8 @@ function killProcess(childProcess: ChildProcess): Promise<void> {
       clearTimeout(timeout);
       clearTimeout(errorTimeout);
 
-      console.debug(
-        `Child process exited with code ${code} and signal ${signal}`
+      debug(
+        `DynamoDB child process exited with code ${code} and signal ${signal}`
       );
       resolve();
     });
@@ -153,7 +154,7 @@ function killProcess(childProcess: ChildProcess): Promise<void> {
 
 const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
   if (await check(port)) {
-    console.debug(
+    warn(
       `Port ${port} is already in use. Assuming another instance of DynamoDB is already running.`
     );
     return {
@@ -164,28 +165,33 @@ const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
     };
   }
   if (commandExists('java')) {
-    console.debug('Starting local DynamoDB with Java');
+    info('Starting local DynamoDB with Java');
     const pr = dynamoDBLocal.spawn({
       port,
       path: null,
       detached: false,
     });
-    await waitPort({
-      host: 'localhost',
-      port,
-    });
-    console.debug('Started local DynamoDB with Java');
+    await Promise.all([
+      await waitPort({
+        host: 'localhost',
+        port,
+      }),
+      await new Promise<void>((resolve) => {
+        pr.stdout.once('data', () => resolve());
+      }),
+    ]);
+    info('Started local DynamoDB with Java');
     return {
       port,
       stop: async () => {
-        console.debug('Stopping local Java DynamoDB');
+        info('Stopping local Java DynamoDB');
         try {
           await killProcess(pr);
         } catch (e) {
-          console.error('Stopping local Java DynamoDB process not successful');
+          error('Stopping local Java DynamoDB process not successful');
           throw e;
         }
-        console.debug('Local Java DynamoDB stopped');
+        info('Local Java DynamoDB stopped');
       },
     };
   }
@@ -220,12 +226,10 @@ const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
           await killProcess(pr);
           await execAsync(`docker stop ${containerName}`);
         } catch (e) {
-          console.error(
-            'Stopping local Docker DynamoDB process not successful'
-          );
+          error('Stopping local Docker DynamoDB process not successful');
           throw e;
         }
-        console.debug('Local Docker DynamoDB stopped');
+        info('Local Docker DynamoDB stopped');
       },
     };
   }

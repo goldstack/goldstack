@@ -4896,6 +4896,8 @@ const RAW_RUNTIME_STATE =
           ["@types/tcp-port-used", "npm:1.0.1"],\
           ["@types/yargs", "npm:17.0.10"],\
           ["dynamo-db-local", "npm:8.0.0"],\
+          ["find-free-port", "npm:2.0.0"],\
+          ["find-free-ports", "npm:3.1.1"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["rimraf", "npm:3.0.2"],\
           ["tcp-port-used", "npm:1.0.2"],\
@@ -5860,7 +5862,7 @@ const RAW_RUNTIME_STATE =
           ["cookie", "npm:0.4.1"],\
           ["cors", "npm:2.8.5"],\
           ["express", "npm:4.19.2"],\
-          ["find-free-port", "npm:2.0.0"],\
+          ["find-free-ports", "npm:3.1.1"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.3.1"],\
           ["node-fetch", "virtual:e52ab1021d0edcbba08fe34ad79056b427f09ae8b857649034d16b50b14324ea805344686a01b18d5f1efd6fa4f5c0b9421fcec6bd3b5d12c27fd1fea3ab1143#npm:2.6.7"],\
           ["rimraf", "npm:3.0.2"],\
@@ -15150,6 +15152,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/find-free-port-npm-2.0.0-a6f135602d-81c920e57f.zip/node_modules/find-free-port/",\
         "packageDependencies": [\
           ["find-free-port", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["find-free-ports", [\
+      ["npm:3.1.1", {\
+        "packageLocation": "./.yarn/cache/find-free-ports-npm-3.1.1-9468a40788-c2e09a92c5.zip/node_modules/find-free-ports/",\
+        "packageDependencies": [\
+          ["find-free-ports", "npm:3.1.1"]\
         ],\
         "linkType": "HARD"\
       }]\

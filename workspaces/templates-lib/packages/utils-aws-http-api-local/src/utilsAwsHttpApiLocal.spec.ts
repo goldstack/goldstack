@@ -1,4 +1,4 @@
-import getPort from 'find-free-port';
+import { findFreePorts } from 'find-free-ports';
 import fetch from 'node-fetch';
 import { startServer, StartServerResult } from './utilsAwsHttpApiLocal';
 
@@ -7,15 +7,7 @@ describe('Should create API', () => {
   let server: undefined | StartServerResult = undefined;
 
   beforeAll(async () => {
-    port = await new Promise<number>((resolve, reject) => {
-      getPort(50141, (err: any, p1: number) => {
-        if (err) {
-          reject(err);
-          return;
-        }
-        resolve(p1);
-      });
-    });
+    [port] = await findFreePorts(1);
     server = await startServer({
       port: `${port}`,
       routesDir: './testData/routes',
