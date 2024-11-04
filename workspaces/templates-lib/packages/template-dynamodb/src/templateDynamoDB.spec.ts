@@ -12,58 +12,59 @@ import { createTestMigrations } from './testUtils/testMigrations';
 jest.setTimeout(240000);
 
 describe('DynamoDB Template', () => {
+  const mockConfig1: ThisPackage = {
+    name: 'test-dynamodb-1',
+    template: 'dynamodb',
+    templateVersion: '0.1.0',
+    $schema: '../schemas/package.schema.json',
+    configuration: {
+      // Package level configuration if needed
+    },
+    deployments: [
+      {
+        name: 'local',
+        awsRegion: 'us-east-1',
+        awsUser: 'local',
+        configuration: {
+          tableName: 'test-table-1',
+        },
+      },
+    ],
+  };
+
+  const mockConfig2: ThisPackage = {
+    name: 'test-dynamodb-2',
+    template: 'dynamodb',
+    templateVersion: '0.1.0',
+    $schema: '../schemas/package.schema.json',
+    configuration: {
+      // Package level configuration if needed
+    },
+    deployments: [
+      {
+        name: 'local',
+        awsRegion: 'us-east-1',
+        awsUser: 'local',
+        configuration: {
+          tableName: 'test-table-2',
+        },
+      },
+    ],
+  };
+
+  const mockSchema = {
+    type: 'object',
+    properties: {},
+  };
+
   it('should be able to run two DynamoDB instances with different tables on different ports', async () => {
-    const mockConfig1: ThisPackage = {
-      name: 'test-dynamodb-1',
-      template: 'dynamodb',
-      templateVersion: '0.1.0',
-      $schema: '../schemas/package.schema.json',
-      configuration: {
-        // Package level configuration if needed
-      },
-      deployments: [
-        {
-          name: 'local',
-          awsRegion: 'us-east-1',
-          awsUser: 'local',
-          configuration: {
-            tableName: 'test-table-1',
-          },
-        },
-      ],
-    };
-
-    const mockConfig2: ThisPackage = {
-      name: 'test-dynamodb-2',
-      template: 'dynamodb',
-      templateVersion: '0.1.0',
-      $schema: '../schemas/package.schema.json',
-      configuration: {
-        // Package level configuration if needed
-      },
-      deployments: [
-        {
-          name: 'local',
-          awsRegion: 'us-east-1',
-          awsUser: 'local',
-          configuration: {
-            tableName: 'test-table-2',
-          },
-        },
-      ],
-    };
-
-    const mockSchema = {
-      type: 'object',
-      properties: {},
-    };
     // Start first instance on port 8000
     await startLocalDynamoDB(mockConfig1, mockSchema, 8903, 'local');
-    expect(await check(8000)).toBe(true);
+    expect(await check(8903)).toBe(true);
 
     // Start second instance on port 8001
     await startLocalDynamoDB(mockConfig2, mockSchema, 8904, 'local');
-    expect(await check(8001)).toBe(true);
+    expect(await check(8904)).toBe(true);
 
     // Create clients for both instances
     const client1 = await connect({
@@ -122,13 +123,26 @@ describe('DynamoDB Template', () => {
 
     // Stop first instance
     await stopLocalDynamoDB(mockConfig1, mockSchema, 'local');
-    expect(await check(8000)).toBe(false);
+    expect(await check(8903)).toBe(false);
 
     // Verify second instance is still running
-    expect(await check(8001)).toBe(true);
+    expect(await check(8904)).toBe(true);
 
     // Stop second instance
     await stopLocalDynamoDB(mockConfig2, mockSchema, 'local');
-    expect(await check(8001)).toBe(false);
-  }); // Increase timeout to 30s since starting DynamoDB instances can take time
+    expect(await check(8904)).toBe(false);
+  });
+  afterAll(async () => {
+    // Clean up both instances if they exist
+    try {
+      await stopLocalDynamoDB(mockConfig1, mockSchema, 'local');
+    } catch (e) {
+      // Ignore errors if instance wasn't running
+    }
+    try {
+      await stopLocalDynamoDB(mockConfig2, mockSchema, 'local');
+    } catch (e) {
+      // Ignore errors if instance wasn't running
+    }
+  });
 });
