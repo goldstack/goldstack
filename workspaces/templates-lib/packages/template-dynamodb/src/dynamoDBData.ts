@@ -9,6 +9,7 @@ import {
 } from '@aws-sdk/client-dynamodb';
 import { getTableName } from './dynamoDBPackageUtils';
 import { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
+import { debug, warn } from '@goldstack/utils-log';
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => {
@@ -34,9 +35,9 @@ export async function assertTableActive(
       );
       tableStatus = tableInfo.Table?.TableStatus;
     } catch (e) {
-      console.warn(`Error retrieving table information: ${e.code}.\n${e}`);
+      warn(`Error retrieving table information: ${e.code}.\n${e}`);
     }
-    console.debug(
+    debug(
       `DynamoDB table '${tableName}' created. Current table status: ${tableStatus}. Retries: ${retries}`
     );
     await sleep(1000);
@@ -85,7 +86,7 @@ export const assertTable = async (
   await new Promise<void>((resolve, reject) => {
     res
       .then(async () => {
-        console.debug(`DynamoDB table '${tableName}' created.`);
+        debug(`DynamoDB table '${tableName}' created.`);
         resolve();
       })
       .catch((e) => {

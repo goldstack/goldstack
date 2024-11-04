@@ -29,6 +29,7 @@ import {
   StartLocalDynamoDBType,
   StopLocalDynamoDBType,
 } from './localDynamoDB';
+import { debug } from '@goldstack/utils-log';
 
 /**
  * Map to keep track for which deployment and tables initialisation and migrations have already been performed
@@ -96,7 +97,7 @@ export const stopLocalDynamoDB = async (
   };
   await lib.stopLocalDynamoDB(packageConfig, deploymentName);
 
-  const coldStartKey = getColdStartKey(packageConfig, deploymentName);
+  const coldStartKey = await getColdStartKey(packageConfig, deploymentName);
   coldStart.delete(coldStartKey);
 };
 
@@ -105,12 +106,13 @@ const createClient = async (
   deploymentName: string
 ): Promise<DynamoDBClient> => {
   if (deploymentName === 'local') {
+    debug('Connecting to local DynamoDB instance');
     // Suppress ESLint error for dynamic require
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const lib = require(excludeInBundle('./localDynamoDB')) as {
       localConnect: LocalConnectType;
     };
-    return lib.localConnect(packageConfig, { port: 8000 }, deploymentName);
+    return lib.localConnect(packageConfig, deploymentName);
   }
   const deployment = packageConfig.getDeployment(deploymentName);
 
@@ -153,7 +155,8 @@ export const connect = async ({
   const client = await createClient(packageConfig, deploymentName);
 
   // ensure table initialisation and migrations are only performed once per cold start
-  const coldStartKey = getColdStartKey(packageConfig, deploymentName);
+  const coldStartKey = await getColdStartKey(packageConfig, deploymentName);
+
   if (!coldStart.has(coldStartKey)) {
     await assertTable(packageConfig, deploymentName, client);
     await assertTableActive(packageConfig, deploymentName, client);
@@ -228,12 +231,12 @@ export const migrateDownTo = async ({
   return client;
 };
 
-function getColdStartKey(
+async function getColdStartKey(
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string
 ) {
   if (deploymentName === 'local') {
-    return `local-${getTableNameUtils(packageConfig, deploymentName)}`;
+    return `local-${await getTableNameUtils(packageConfig, deploymentName)}`;
   }
   const deployment = packageConfig.getDeployment(deploymentName);
   const coldStartKey = `${deployment.awsRegion}-${deploymentName}-${deployment.tableName}`;
