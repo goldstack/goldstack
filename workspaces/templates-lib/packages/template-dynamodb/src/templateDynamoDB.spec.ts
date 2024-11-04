@@ -58,11 +58,11 @@ describe('DynamoDB Template', () => {
       properties: {},
     };
     // Start first instance on port 8000
-    await startLocalDynamoDB(mockConfig1, mockSchema, 8000, 'local');
+    await startLocalDynamoDB(mockConfig1, mockSchema, 8903, 'local');
     expect(await check(8000)).toBe(true);
 
     // Start second instance on port 8001
-    await startLocalDynamoDB(mockConfig2, mockSchema, 8001, 'local');
+    await startLocalDynamoDB(mockConfig2, mockSchema, 8904, 'local');
     expect(await check(8001)).toBe(true);
 
     // Create clients for both instances
