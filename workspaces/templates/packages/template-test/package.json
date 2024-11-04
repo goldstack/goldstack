@@ -21,15 +21,15 @@
     "version:apply": "yarn version \"$@\" && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.4.21",
+    "@goldstack/infra-aws": "0.4.22",
     "@goldstack/module-template-utils": "0.1.0",
     "@goldstack/project-build": "0.1.0",
     "@goldstack/template-build-set": "0.1.0",
     "@goldstack/template-metadata": "0.1.0",
     "@goldstack/template-repository": "0.1.0",
-    "@goldstack/utils-config": "0.4.12",
-    "@goldstack/utils-project": "0.4.12",
-    "@goldstack/utils-sh": "0.5.11",
+    "@goldstack/utils-config": "0.4.13",
+    "@goldstack/utils-project": "0.4.13",
+    "@goldstack/utils-sh": "0.5.12",
     "@goldstack/utils-template-test": "0.1.0"
   },
   "devDependencies": {
