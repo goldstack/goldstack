@@ -71,6 +71,9 @@ describe('DynamoDB Template', () => {
     await startLocalDynamoDB(mockConfig2, mockSchema, port2, 'local');
     expect(await check(port2)).toBe(true);
 
+    await new Promise<void>((resolve) => {
+      setTimeout(resolve, 5000);
+    });
     // Create clients for both instances
     const client1 = await connect({
       goldstackConfig: mockConfig1,
