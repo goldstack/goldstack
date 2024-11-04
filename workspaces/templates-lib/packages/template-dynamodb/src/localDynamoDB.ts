@@ -72,7 +72,7 @@ export const localConnect: LocalConnectType = async (
 };
 
 export const endpointUrl = (startedContainer: DynamoDBInstance): string => {
-  const result = `http://localhost:${startedContainer.port}`;
+  const result = `http://127.0.0.1:${startedContainer.port}`;
 
   return result;
 };
