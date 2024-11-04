@@ -8,7 +8,7 @@ describe('The module', () => {
     console.log('Test server started');
   });
   it('Should get correct endpoint for tests', async () => {
-    const endpoint = await getEndpoint();
+    const endpoint = getEndpoint();
     expect(endpoint).toEqual('http://localhost:8737');
   });
   afterAll(async () => {

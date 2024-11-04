@@ -171,10 +171,15 @@ const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
       path: null,
       detached: false,
     });
-    await waitPort({
-      host: 'localhost',
-      port,
-    });
+    await Promise.all([
+      await waitPort({
+        host: 'localhost',
+        port,
+      }),
+      await new Promise<void>((resolve) => {
+        pr.stdout.once('data', () => resolve());
+      }),
+    ]);
     info('Started local DynamoDB with Java');
     return {
       port,
