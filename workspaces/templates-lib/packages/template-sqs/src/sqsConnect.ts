@@ -1,13 +1,17 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
+import {
+  GetQueueUrlCommand,
+  SendMessageRequest,
+  SQSClient,
+} from '@aws-sdk/client-sqs';
 import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { fromEnv } from '@aws-sdk/credential-providers';
-import assert from 'assert';
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { CreateSQSClientSignature } from './mockedSQS';
 import { SqsDeployment, SqsPackage } from './templateSqs';
+import { AWSDeploymentRegion, getAWSUser } from '@goldstack/infra-aws';
 
 let mockedSQS: SQSClient | undefined;
 
@@ -22,19 +26,6 @@ const getEnvVar = (key: string): string => {
   if (!value) throw new Error(`${key} environment variable is not set.`);
   return value;
 };
-
-/**
- * Constructs the SQS Queue URL based on the queue name, region, and account ID.
- * @param {string} queueName - The name of the SQS queue.
- * @param {string} region - AWS region.
- * @param {string} accountId - AWS account ID.
- * @returns {string} The constructed SQS Queue URL.
- */
-const constructQueueUrl = (
-  queueName: string,
-  region: string,
-  accountId: string
-): string => `https://sqs.${region}.amazonaws.com/${accountId}/${queueName}`;
 
 export type MessageCallback = (
   input: SendMessageRequest
@@ -59,19 +50,20 @@ export const getMockedSQS = (onMessageSend?: MessageCallback): SQSClient => {
 };
 
 /**
- * Connects to SQS, using a mocked client for local deployment or a real SQS client for other environments.
- * @param {any} goldstackConfig - Goldstack configuration object.
- * @param {any} packageSchema - Package schema.
- * @param {any} deploymentData - Deployment data.
- * @param {string} [deploymentName] - Optional deployment name. Defaults to environment variable GOLDSTACK_DEPLOYMENT.
- * @returns {Promise<SQSClient>} The SQS client.
+ * Gets the package configuration and deployment for SQS operations
+ * @param {any} goldstackConfig - Goldstack configuration object
+ * @param {any} packageSchema - Package schema
+ * @param {string} [deploymentName] - Optional deployment name
+ * @returns {{ packageConfig: EmbeddedPackageConfig<SqsPackage, SqsDeployment>, deployment: SqsDeployment }} Package config and deployment
  */
-export const connect = async (
+const getPackageConfigAndDeployment = (
   goldstackConfig: any,
   packageSchema: any,
-  deploymentData: any,
   deploymentName?: string
-): Promise<SQSClient> => {
+): {
+  packageConfig: EmbeddedPackageConfig<SqsPackage, SqsDeployment>;
+  deployment: SqsDeployment;
+} => {
   const packageConfig = new EmbeddedPackageConfig<SqsPackage, SqsDeployment>({
     goldstackJson: goldstackConfig,
     packageSchema,
@@ -80,15 +72,52 @@ export const connect = async (
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
 
   if (deploymentName === 'local') {
-    return getMockedSQS();
+    return {
+      packageConfig,
+      deployment: {
+        name: 'local',
+        awsRegion: 'us-east-1' as AWSDeploymentRegion,
+        awsUser: process.env.AWS_USER || 'local',
+        configuration: {
+          sqs_queue_name: 'test-local-queue',
+          sqs_dlq_queue_name: 'test-local-dlq',
+        },
+      } as SqsDeployment,
+    };
   }
 
   const deployment = packageConfig.getDeployment(deploymentName);
   if (!deployment) {
-    throw new Error(
-      `Cannot connect to SQS queue since deployment ${deploymentName} cannot be found.`
-    );
+    throw new Error(`Cannot find deployment ${deploymentName}.`);
   }
+
+  return { packageConfig, deployment };
+};
+
+/**
+ * Connects to SQS, using a mocked client for local deployment or a real SQS client for other environments.
+ * @param {any} goldstackConfig - Goldstack configuration object.
+ * @param {any} packageSchema - Package schema.
+ * @param {any} deploymentsData - Deployment data.
+ * @param {string} [deploymentName] - Optional deployment name. Defaults to environment variable GOLDSTACK_DEPLOYMENT.
+ * @returns {Promise<SQSClient>} The SQS client.
+ */
+export const connect = async (
+  goldstackConfig: any,
+  packageSchema: any,
+  deploymentsData: any,
+  deploymentName?: string
+): Promise<SQSClient> => {
+  const { deployment } = getPackageConfigAndDeployment(
+    goldstackConfig,
+    packageSchema,
+    deploymentName
+  );
+
+  if (deployment.name === 'local') {
+    return getMockedSQS();
+  }
+
   const awsUser = process.env.AWS_ACCESS_KEY_ID
     ? fromEnv()
     : await getAwsUser(deployment.awsUser);
@@ -100,144 +129,131 @@ export const connect = async (
 };
 
 /**
- * Retrieves the AWS user credentials based on the given configuration.
- * @param {any} awsUserConfig - Configuration for the AWS user.
+ * Retrieves the AWS user credentials based on a user name.
+ * @param {any} awsUserName - Name of the user
  * @returns {Promise<AwsCredentialIdentityProvider>} The AWS credential provider.
  */
 const getAwsUser = async (
-  awsUserConfig: any
+  awsUserName: string
 ): Promise<AwsCredentialIdentityProvider> => {
-  const infraAWSLib = require(excludeInBundle('@goldstack/infra-aws'));
-  return infraAWSLib.getAWSUser(awsUserConfig);
+  return getAWSUser(awsUserName);
+};
+
+/**
+ * Gets the deployment data for the specified deployment name
+ * @param {any} deploymentsData - The deployments data
+ * @param {string} deploymentName - The deployment name
+ * @returns {any} The deployment data
+ */
+const getDeploymentData = (
+  deploymentsData: any,
+  deploymentName: string
+): any => {
+  const deployment = deploymentsData.find(
+    (d: any) => d.name === deploymentName
+  );
+  if (!deployment) {
+    throw new Error(
+      `Cannot find deployment ${deploymentName} in deployments data`
+    );
+  }
+  return deployment;
 };
 
 /**
  * Retrieves the SQS queue name for the specified deployment or environment.
  * @param {any} goldstackConfig - Goldstack configuration object.
  * @param {any} packageSchema - Package schema.
+ * @param {any} deploymentsData - Deployment data.
  * @param {string} [deploymentName] - Optional deployment name. Defaults to environment variable GOLDSTACK_DEPLOYMENT.
  * @returns {Promise<string>} The name of the SQS queue.
  */
 export const getSQSQueueName = async (
   goldstackConfig: any,
   packageSchema: any,
+  deploymentsData: any,
   deploymentName?: string
 ): Promise<string> => {
-  const packageConfig = new EmbeddedPackageConfig({
-    goldstackJson: goldstackConfig,
-    packageSchema,
-  });
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
 
-  if (deploymentName === 'local') return 'test-local-queue';
-
-  const deployment = packageConfig.getDeployment(deploymentName);
-  return getRequiredConfig(deployment, 'sqs_queue_name', deploymentName);
-};
-
-/**
- * Retrieves the SQS Dead Letter Queue (DLQ) name for the specified deployment or environment.
- * @param {any} goldstackConfig - Goldstack configuration object.
- * @param {any} packageSchema - Package schema.
- * @param {string} [deploymentName] - Optional deployment name. Defaults to environment variable GOLDSTACK_DEPLOYMENT.
- * @returns {Promise<string>} The name of the SQS DLQ queue.
- */
-export const getSQSDLQQueueName = async (
-  goldstackConfig: any,
-  packageSchema: any,
-  deploymentName?: string
-): Promise<string> => {
-  const packageConfig = new EmbeddedPackageConfig({
-    goldstackJson: goldstackConfig,
-    packageSchema,
-  });
-  deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
-
-  if (deploymentName === 'local') return 'test-local-dlq';
-
-  const deployment = packageConfig.getDeployment(deploymentName);
-  return getRequiredConfig(deployment, 'sqs_dlq_queue_name', deploymentName);
-};
-
-/**
- * Retrieves the required configuration value from the deployment configuration.
- * @param {any} deployment - Deployment configuration.
- * @param {string} configKey - Key for the configuration value (e.g., sqs_queue_name).
- * @param {string} deploymentName - Name of the deployment.
- * @returns {string} The configuration value.
- * @throws Will throw an error if the configuration value is not found.
- */
-const getRequiredConfig = (
-  deployment: any,
-  configKey: string,
-  deploymentName: string
-): string => {
-  const value = deployment.configuration[configKey];
-  if (!value) {
-    throw new Error(
-      `No ${configKey} for deployment ${deploymentName}. Provide it in the configuration.`
-    );
+  if (deploymentName === 'local') {
+    return 'test-local-queue';
   }
-  return value;
+
+  const deployment = getDeploymentData(deploymentsData, deploymentName);
+  return deployment.terraform.sqs_queue_name.value;
 };
 
 /**
- * Constructs the SQS queue URL for the given deployment.
+ * Retrieves the SQS queue URL for the specified deployment or environment.
  * @param {any} goldstackConfig - Goldstack configuration object.
  * @param {any} packageSchema - Package schema.
+ * @param {any} deploymentsData - Deployment data.
  * @param {string} [deploymentName] - Optional deployment name. Defaults to environment variable GOLDSTACK_DEPLOYMENT.
  * @returns {Promise<string>} The URL of the SQS queue.
  */
 export const getSQSQueueUrl = async (
   goldstackConfig: any,
   packageSchema: any,
+  deploymentsData: any,
   deploymentName?: string
 ): Promise<string> => {
-  const queueName = await getSQSQueueName(
-    goldstackConfig,
-    packageSchema,
-    deploymentName
-  );
-  const { region, accountId } = getAwsInfo(deploymentName);
+  deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
 
-  return constructQueueUrl(queueName, region, accountId);
+  if (deploymentName === 'local') {
+    return 'http://localhost:4566/000000000000/test-local-queue';
+  }
+
+  const deployment = getDeploymentData(deploymentsData, deploymentName);
+  return deployment.terraform.sqs_queue_url.value;
+};
+
+/**
+ * Retrieves the SQS Dead Letter Queue (DLQ) name for the specified deployment or environment.
+ * @param {any} goldstackConfig - Goldstack configuration object.
+ * @param {any} packageSchema - Package schema.
+ * @param {any} deploymentsData - Deployment data.
+ * @param {string} [deploymentName] - Optional deployment name. Defaults to environment variable GOLDSTACK_DEPLOYMENT.
+ * @returns {Promise<string>} The name of the SQS DLQ queue.
+ */
+export const getSQSDLQQueueName = async (
+  goldstackConfig: any,
+  packageSchema: any,
+  deploymentsData: any,
+  deploymentName?: string
+): Promise<string> => {
+  deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
+
+  if (deploymentName === 'local') {
+    return 'test-local-dlq';
+  }
+
+  const deployment = getDeploymentData(deploymentsData, deploymentName);
+  return deployment.terraform.sqs_dlq_queue_name.value;
 };
 
 /**
  * Constructs the SQS Dead Letter Queue (DLQ) URL for the given deployment.
  * @param {any} goldstackConfig - Goldstack configuration object.
  * @param {any} packageSchema - Package schema.
+ * @param {any} deploymentsData - Deployment data.
  * @param {string} [deploymentName] - Optional deployment name. Defaults to environment variable GOLDSTACK_DEPLOYMENT.
  * @returns {Promise<string>} The URL of the SQS DLQ queue.
  */
 export const getSQSDLQQueueUrl = async (
   goldstackConfig: any,
   packageSchema: any,
+  deploymentsData: any,
   deploymentName?: string
 ): Promise<string> => {
-  const dlqQueueName = await getSQSDLQQueueName(
-    goldstackConfig,
-    packageSchema,
-    deploymentName
-  );
-  const { region, accountId } = getAwsInfo(deploymentName);
-
-  return constructQueueUrl(dlqQueueName, region, accountId);
-};
-
-/**
- * Helper function to retrieve the AWS region and account ID. Defaults to mock values for local deployment.
- * @param {string} [deploymentName] - Optional deployment name.
- * @returns {{region: string, accountId: string}} The AWS region and account ID.
- */
-const getAwsInfo = (
-  deploymentName?: string
-): { region: string; accountId: string } => {
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
+
   if (deploymentName === 'local') {
-    return { region: 'mock-region', accountId: '123456789012' };
+    return 'http://localhost:4566/000000000000/test-local-dlq';
   }
-  const region = getEnvVar('AWS_REGION');
-  const accountId = getEnvVar('AWS_ACCOUNT_ID');
-  return { region, accountId };
+
+  const deployment = getDeploymentData(deploymentsData, deploymentName);
+  const region = deployment.terraform.sqs_queue_url.value.split('.')[1];
+  const accountId = deployment.terraform.sqs_queue_url.value.split('/')[3];
+  return `https://sqs.${region}.amazonaws.com/${accountId}/${deployment.terraform.sqs_dlq_queue_name.value}`;
 };

@@ -12,7 +12,7 @@ import {
 
 import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
 
-import deployments from './state/deployments.json'; // Import deployments
+import deployments from './state/deployments.json';
 import goldstackConfig from './../goldstack.json';
 import goldstackSchema from './../schemas/package.schema.json';
 
@@ -41,6 +41,8 @@ export const handler: Handler = async (event, context) => {
   }
 
   const queue = await connectToSQSQueue();
+  console.log('QueueName: ' + (await getSQSQueueName()));
+  console.log('Queue URL: ' + (await getSQSQueueUrl()));
 };
 
 /**
@@ -105,7 +107,12 @@ export const connectToSQSQueue = async (
 export async function getSQSQueueName(
   deploymentName?: string
 ): Promise<string> {
-  return await fetchQueueName(goldstackConfig, goldstackSchema, deploymentName);
+  return await fetchQueueName(
+    goldstackConfig,
+    goldstackSchema,
+    deployments,
+    deploymentName
+  );
 }
 
 /**
@@ -114,7 +121,12 @@ export async function getSQSQueueName(
  * @returns {Promise<string>} The URL of the SQS queue.
  */
 export async function getSQSQueueUrl(deploymentName?: string): Promise<string> {
-  return await fetchQueueUrl(goldstackConfig, goldstackSchema, deploymentName);
+  return await fetchQueueUrl(
+    goldstackConfig,
+    goldstackSchema,
+    deployments,
+    deploymentName
+  );
 }
 
 /**
@@ -128,6 +140,7 @@ export async function getSQSDLQQueueName(
   return await fetchDLQQueueName(
     goldstackConfig,
     goldstackSchema,
+    deployments,
     deploymentName
   );
 }
@@ -143,6 +156,7 @@ export async function getSQSDLQQueueUrl(
   return await fetchDLQQueueUrl(
     goldstackConfig,
     goldstackSchema,
+    deployments,
     deploymentName
   );
 }
