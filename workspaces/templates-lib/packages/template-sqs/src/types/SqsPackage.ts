@@ -15,18 +15,18 @@ export { Configuration };
  */
 export type SQSQueueName = string;
 
-export interface ThisDeploymentConfiguration
+export interface ThisSqsDeploymentConfiguration
   extends DeploymentConfiguration,
     DeploymentConfiguration {
   sqsQueueName?: SQSQueueName;
 }
 
-export interface ThisDeployment
+export interface ThisSqsDeployment
   extends Deployment,
     AWSDeployment,
     Deployment,
     TerraformDeployment {
-  configuration: ThisDeploymentConfiguration;
+  configuration: ThisSqsDeploymentConfiguration;
 }
 
 /**
@@ -34,7 +34,7 @@ export interface ThisDeployment
  *
  * @title Deployments
  */
-export type SqsDeployments = ThisDeployment[];
+export type SqsDeployments = ThisSqsDeployment[];
 
 /**
  * Configures this queue.
@@ -42,19 +42,19 @@ export type SqsDeployments = ThisDeployment[];
  * @title Configuration
  *
  */
-export type ThisPackageConfiguration = Configuration;
+export type ThisSqsPackageConfiguration = Configuration;
 
 /**
  * A queue deployment.
  *
  * @title SQS Package
  */
-export interface ThisPackage extends Package, Package {
-  configuration: ThisPackageConfiguration;
+export interface ThisSqsPackage extends Package, Package {
+  configuration: ThisSqsPackageConfiguration;
   deployments: SqsDeployments;
 }
 
-export { ThisDeploymentConfiguration as SqsDeploymentConfiguration };
-export { ThisDeployment as SqsDeployment };
-export { ThisPackageConfiguration as SqsConfiguration };
-export { ThisPackage as SqsPackage };
+export { ThisSqsDeploymentConfiguration as SqsDeploymentConfiguration };
+export { ThisSqsDeployment as SqsDeployment };
+export { ThisSqsPackageConfiguration as SqsConfiguration };
+export { ThisSqsPackage as SqsPackage };
