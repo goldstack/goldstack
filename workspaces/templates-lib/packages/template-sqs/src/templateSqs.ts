@@ -13,6 +13,8 @@ import { MessageCallback } from './sqsConnect';
 
 export { MessageCallback } from './sqsConnect';
 
+export * from './types/SqsPackage';
+
 export function createSQSClient({
   sqsClient,
   onMessageSend,

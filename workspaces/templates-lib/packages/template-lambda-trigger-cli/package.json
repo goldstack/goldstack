@@ -49,6 +49,7 @@
     "@goldstack/infra": "0.4.13",
     "@goldstack/infra-aws": "0.4.22",
     "@goldstack/template-lambda-cli": "0.1.7",
+    "@goldstack/template-sqs": "0.1.4",
     "@goldstack/utils-aws-lambda": "0.3.28",
     "@goldstack/utils-cli": "0.3.10",
     "@goldstack/utils-config": "0.4.13",

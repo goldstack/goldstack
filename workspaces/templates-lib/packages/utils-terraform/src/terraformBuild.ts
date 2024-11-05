@@ -90,7 +90,7 @@ export const parseVariables = (hcl: string): string[] => {
 
 export const getVariablesFromHCL = (properties: object): Variables => {
   if (!fs.existsSync('./variables.tf')) {
-    console.warn(
+    warn(
       `No variables.tf file exists in ${pwd()}. Goldstack only supports declaring variables in a variables.tf file.`
     );
     return [];
@@ -103,10 +103,10 @@ export const getVariablesFromHCL = (properties: object): Variables => {
 
   jsVariableNames.forEach((key) => {
     if (!properties.hasOwnProperty(key)) {
-      console.warn(
+      warn(
         `Cannot find property "${key}" in Goldstack configuration. Therefore terraform variable ${convertToPythonVariable(
           key
-        )} will not be provided by Goldstack.`
+        )} will not be read from goldstack.json.`
       );
     }
   });
@@ -114,7 +114,7 @@ export const getVariablesFromHCL = (properties: object): Variables => {
   const vars: Variables = [];
   for (const key in properties) {
     if (key.indexOf('_') !== -1) {
-      console.warn(
+      warn(
         'Property in Goldstack configuration contains "_". This is not recommended. Property: ' +
           key +
           ' Please use valid JavaScript variable names. For instance, use "myVar" instead of "my_var". ' +

@@ -24,3 +24,4 @@ variable "name" {
   description = "Goldstack deployment name."
   type = string
 }
+

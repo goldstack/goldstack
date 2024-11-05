@@ -11,7 +11,7 @@
       "awsUser": "goldstack-dev",
       "configuration": {
         "lambdaName": "lambda-node-trigger-test",
-        "schedule": "rate(1 minute)",
+        "schedule": "rate(1 day)",
         "sqsQueueName": "lambda-node-trigger-sqs-test"
       },
       "tfVersion": "1.6",
