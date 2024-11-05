@@ -20,6 +20,9 @@
       "path": "../template-lambda-cli"
     },
     {
+      "path": "../template-sqs"
+    },
+    {
       "path": "../utils-aws-lambda"
     },
     {
