@@ -11,9 +11,17 @@ output "lambda_function_name" {
 }
 
 output "sqs_queue_name" {
-  value = var.sqs_queue_name 
+  value = length(var.sqs_queue_name) > 0 ? aws_sqs_queue.queue[0].name : null
+}
+
+output "sqs_queue_url" {
+  value = length(var.sqs_queue_name) > 0 ? aws_sqs_queue.queue[0].url : null
 }
 
 output "sqs_dlq_queue_name" {
-  value = "${var.lambda_name}-dlq" 
+  value = length(var.sqs_queue_name) > 0 ? aws_sqs_queue.dlq[0].name : null
+}
+
+output "sqs_dlq_queue_url" {
+  value = length(var.sqs_queue_name) > 0 ? aws_sqs_queue.dlq[0].url : null
 }

@@ -25,7 +25,12 @@
       "sqs_queue_name": {
         "sensitive": false,
         "type": "string",
-        "value": "lambda-node-trigger-sqs-test"
+        "value": "lambda-node-trigger-test-queue"
+      },
+      "sqs_queue_url": {
+        "sensitive": false,
+        "type": "string",
+        "value": "https://sqs.us-west-2.amazonaws.com/475629728374/lambda-node-trigger-test-queue"
       }
     }
   }
