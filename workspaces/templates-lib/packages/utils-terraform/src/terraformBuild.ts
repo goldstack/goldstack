@@ -1,4 +1,4 @@
-import { fatal, info } from '@goldstack/utils-log';
+import { debug, fatal, info, warn } from '@goldstack/utils-log';
 import { tf } from './terraformCli';
 import {
   TerraformDeployment,
@@ -122,30 +122,42 @@ export const getVariablesFromHCL = (properties: object): Variables => {
       );
     }
     if (jsVariableNames.find((varName) => varName === key)) {
-      const variableName = convertToPythonVariable(key);
+      const pythonVariableName = convertToPythonVariable(key);
       const variableValue = properties[key];
       if (variableValue !== '') {
         if (typeof variableValue === 'string') {
-          vars.push([variableName, variableValue]);
+          vars.push([pythonVariableName, variableValue]);
         } else if (typeof variableValue === 'number') {
-          vars.push([variableName, `${variableValue}`]);
+          vars.push([pythonVariableName, `${variableValue}`]);
         } else if (typeof variableValue === 'object') {
-          vars.push([variableName, `${JSONStableStringy(variableValue)}`]);
+          vars.push([
+            pythonVariableName,
+            `${JSONStableStringy(variableValue)}`,
+          ]);
         } else {
           throw new Error(
-            `Not supported type for variable ${variableName}: ${typeof variableValue}`
+            `Not supported type for variable ${pythonVariableName}: ${typeof variableValue}`
           );
         }
       } else {
-        const environmentVarialbeName = variableName.toLocaleUpperCase();
+        const environmentVariableName = pythonVariableName.toLocaleUpperCase();
+        debug(
+          `Checking environment variable to set terraform variable: ${environmentVariableName}`
+        );
         if (
-          process.env[environmentVarialbeName] ||
-          process.env[environmentVarialbeName] === ''
+          process.env[environmentVariableName] ||
+          process.env[environmentVariableName] === ''
         ) {
-          console.log('Setting terraform variable from environment variable');
-          vars.push([variableName, process.env[environmentVarialbeName] || '']);
+          info(
+            'Setting terraform variable from environment variable ' +
+              environmentVariableName
+          );
+          vars.push([
+            pythonVariableName,
+            process.env[environmentVariableName] || '',
+          ]);
         } else {
-          console.log('Terraform variable will not be defined', variableName);
+          warn('Terraform variable will not be defined ' + pythonVariableName);
         }
       }
     }
