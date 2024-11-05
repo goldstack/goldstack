@@ -3905,6 +3905,7 @@ __metadata:
     "@goldstack/infra": "npm:0.4.13"
     "@goldstack/infra-aws": "npm:0.4.22"
     "@goldstack/template-lambda-cli": "npm:0.1.7"
+    "@goldstack/template-sqs": "npm:0.1.4"
     "@goldstack/utils-aws-lambda": "npm:0.3.28"
     "@goldstack/utils-cli": "npm:0.3.10"
     "@goldstack/utils-config": "npm:0.4.13"

@@ -5219,6 +5219,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
           ["@goldstack/template-lambda-cli", "workspace:workspaces/templates-lib/packages/template-lambda-cli"],\
+          ["@goldstack/template-sqs", "workspace:workspaces/templates-lib/packages/template-sqs"],\
           ["@goldstack/utils-aws-lambda", "workspace:workspaces/templates-lib/packages/utils-aws-lambda"],\
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
           ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\

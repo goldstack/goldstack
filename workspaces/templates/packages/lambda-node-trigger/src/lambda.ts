@@ -38,8 +38,9 @@ export const handler: Handler = async (event, context) => {
   if (event['detail-type'] && event['detail-type'] === 'Scheduled Event') {
     const time = event['time'];
     console.log(`This is a scheduled event from ${time}`);
-    return;
   }
+
+  const queue = await connectToSQSQueue();
 };
 
 /**
@@ -91,6 +92,7 @@ export const connectToSQSQueue = async (
   return await templateConnect(
     goldstackConfig,
     goldstackSchema,
+    deployments,
     deploymentName
   );
 };

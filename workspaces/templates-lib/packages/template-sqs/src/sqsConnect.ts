@@ -7,6 +7,7 @@ import assert from 'assert';
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { CreateSQSClientSignature } from './mockedSQS';
+import { SqsDeployment, SqsPackage } from './templateSqs';
 
 let mockedSQS: SQSClient | undefined;
 
@@ -71,13 +72,23 @@ export const connect = async (
   deploymentData: any,
   deploymentName?: string
 ): Promise<SQSClient> => {
+  const packageConfig = new EmbeddedPackageConfig<SqsPackage, SqsDeployment>({
+    goldstackJson: goldstackConfig,
+    packageSchema,
+  });
+
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
 
   if (deploymentName === 'local') {
     return getMockedSQS();
   }
 
-  const deployment = deploymentData[deploymentName];
+  const deployment = packageConfig.getDeployment(deploymentName);
+  if (!deployment) {
+    throw new Error(
+      `Cannot connect to SQS queue since deployment ${deploymentName} cannot be found.`
+    );
+  }
   const awsUser = process.env.AWS_ACCESS_KEY_ID
     ? fromEnv()
     : await getAwsUser(deployment.awsUser);

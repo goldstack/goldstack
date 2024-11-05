@@ -111,6 +111,9 @@
     "ThisDeploymentConfiguration": {
       "type": "object",
       "properties": {
+        "sqsQueueName": {
+          "$ref": "#/definitions/SQSQueueName"
+        },
         "lambdaName": {
           "type": "string",
           "description": "The name of the lambda.",
@@ -119,25 +122,22 @@
         },
         "schedule": {
           "$ref": "#/definitions/LambdaSchedule"
-        },
-        "sqsQueueName": {
-          "$ref": "#/definitions/SQSQueueName"
         }
       },
       "required": [
         "lambdaName"
       ]
     },
+    "SQSQueueName": {
+      "type": "string",
+      "description": "Name of the SQS queue that is used to trigger the lambda. SQS queue should not exist and will be created when the name is provided.",
+      "title": "SQS Queue Name"
+    },
     "LambdaSchedule": {
       "type": "string",
       "description": "Optional schedule in which the lambda is triggered. Example: \"rate(1 minute)\".",
       "title": "Lambda Schedule",
       "pattern": "^[^\\s]"
-    },
-    "SQSQueueName": {
-      "type": "string",
-      "description": "Name of the SQS queue that is used to trigger the lambda. SQS queue should not exist and will be created when the name is provided.",
-      "title": "SQS Queue Name"
     },
     "TerraformVariables": {
       "type": "array",

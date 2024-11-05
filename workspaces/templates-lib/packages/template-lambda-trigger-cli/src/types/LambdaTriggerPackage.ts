@@ -9,6 +9,11 @@ import {
   LambdaDeployments,
   LambdaPackage,
 } from '@goldstack/template-lambda-cli';
+import {
+  SqsDeploymentConfiguration,
+  SqsDeployment,
+  SqsPackage,
+} from '@goldstack/template-sqs';
 
 /**
  * Optional schedule in which the lambda is triggered. Example: "rate(1 minute)".
@@ -29,15 +34,16 @@ export type SQSQueueName = string;
 
 export interface ThisDeploymentConfiguration
   extends DeploymentConfiguration,
-    LambdaDeploymentConfiguration {
+    LambdaDeploymentConfiguration,
+    SqsDeploymentConfiguration {
   schedule?: LambdaSchedule;
-  sqsQueueName?: SQSQueueName;
 }
 
 export interface ThisDeployment
   extends Deployment,
     AWSDeployment,
     LambdaDeployment,
+    SqsDeployment,
     TerraformDeployment {
   configuration: ThisDeploymentConfiguration;
 }
@@ -62,7 +68,7 @@ export type ThisPackageConfiguration = Configuration;
  *
  * @title Lambda Trigger Package
  */
-export interface ThisPackage extends Package, LambdaPackage {
+export interface ThisPackage extends Package, LambdaPackage, SqsPackage {
   configuration: ThisPackageConfiguration;
   deployments: LambdaTriggerDeployments;
 }
