@@ -16,7 +16,7 @@ export const createMigrations = (): InputMigrations<DynamoDBContext> => {
             TableName: context.tableName,
             Item: {
               pk: { S: '#DUMMY' },
-              sk: { S: 'hello-world' },
+              sk: { S: 'hello-world-again' },
             },
           })
         );

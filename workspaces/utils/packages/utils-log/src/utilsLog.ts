@@ -18,14 +18,13 @@ export function warn(msg: string, properties?: { [key: string]: any }): void {
   logger().warn(properties, msg);
 }
 
-export function error(msg: string): void {
-  logger().error(msg);
+export function error(msg: string, properties?: { [key: string]: any }): void {
+  logger().error(properties, msg);
 }
-
 export const fatal = (msg: string): void => {
   if (isDebug) {
     throw new Error(msg);
   }
-  logger().error(msg);
+  logger().error({}, msg);
   process.exit(1);
 };
