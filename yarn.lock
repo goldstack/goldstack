@@ -3700,6 +3700,7 @@ __metadata:
     "@goldstack/template-hetzner-vps": "npm:0.1.13"
     "@goldstack/utils-cli": "npm:0.3.10"
     "@goldstack/utils-git": "npm:0.2.9"
+    "@goldstack/utils-log": "npm:0.3.12"
     "@goldstack/utils-package": "npm:0.4.13"
     "@goldstack/utils-package-config": "npm:0.4.13"
     "@goldstack/utils-package-config-generate": "npm:0.3.10"

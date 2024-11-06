@@ -1,5 +1,5 @@
 import { HetznerVPSDeployment } from '@goldstack/template-hetzner-vps';
-import { logger } from '@goldstack/utils-cli';
+import { error, info } from '@goldstack/utils-log';
 import { cp, exec, read, rmSafe, write, zip } from '@goldstack/utils-sh';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import { stat } from 'fs/promises';
@@ -42,13 +42,13 @@ export const build = async (deployment: HetznerVPSDeployment) => {
         for (const [key, value] of Object.entries(deploymentCredentials)) {
           const secretFilePath = join(secretsStagingDir, `${key}.txt`);
           writeFileSync(secretFilePath, value as string);
-          logger().info(`Extracted secret for key: ${key}`);
+          info(`Extracted secret for key: ${key}`);
         }
       }
     }
 
     // Create the zip file
-    logger().info(`Creating zip from ${stagingDir}...`);
+    info(`Creating zip from ${stagingDir}...`);
     await zip({
       directory: stagingDir,
       target: zipPath,
@@ -59,14 +59,14 @@ export const build = async (deployment: HetznerVPSDeployment) => {
     const fileSizeInBytes = stats.size;
     const fileSizeInMegabytes = (fileSizeInBytes / 1024).toFixed(2);
 
-    logger().info(`Zip file size: ${fileSizeInMegabytes} kB`);
-    logger().info('Build completed successfully.');
+    info(`Zip file size: ${fileSizeInMegabytes} kB`);
+    info('Build completed successfully.');
 
     return {
       zipPath,
     };
   } catch (error) {
-    logger().error(`Error during build: ${error}`);
+    error(`Error during build: ${error}`);
     throw error;
   }
 };
@@ -95,7 +95,7 @@ export const sshDeploy = async (deployment: HetznerVPSDeployment) => {
       (e: any) => e.name === deployment.name
     );
     if (!deploymentState) {
-      logger().error(
+      error(
         'Cannot build ' +
           deployment.name +
           ' since infrastructure not provisioned yet.'
@@ -108,16 +108,16 @@ export const sshDeploy = async (deployment: HetznerVPSDeployment) => {
     const { zipPath } = await build(deployment);
 
     // Step 2: Upload the zip file via SCP
-    logger().info('Uploading zip file...');
+    info('Uploading zip file...');
     scpUpload(zipPath, '/home/goldstack', host);
 
     // Step 5: Run deploy.sh to stop the app, unzip the file, unpack secrets, and start the app
-    logger().info('Running deploy.sh...');
+    info('Running deploy.sh...');
     sshExec(host, 'bash /home/goldstack/deploy.sh');
 
-    logger().info('Deployment completed successfully.');
+    info('Deployment completed successfully.');
   } catch (error) {
-    logger().error(`Error during deployment: ${error}`);
+    error(`Error during deployment: ${error}`);
     throw error;
   }
 };

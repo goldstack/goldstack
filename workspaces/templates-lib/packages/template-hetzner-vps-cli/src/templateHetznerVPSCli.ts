@@ -14,7 +14,7 @@ import {
 } from '@goldstack/template-hetzner-vps';
 import yargs from 'yargs';
 
-import { logger } from '@goldstack/utils-cli';
+import { info } from '@goldstack/utils-log';
 import { build, sshDeploy } from './sshDeploy';
 
 export const buildZip = async (): Promise<void> => {
@@ -52,7 +52,7 @@ export const run = async (args: string[]): Promise<void> => {
     const [, , , ...opArgs] = args;
 
     if (command === 'deploy') {
-      logger().info('Starting deployment to Hetzner VPS.');
+      info('Starting deployment to Hetzner VPS.');
       const deployment = packageConfig.getDeployment(opArgs[0]);
       await build(deployment);
       await sshDeploy(deployment);
@@ -62,7 +62,7 @@ export const run = async (args: string[]): Promise<void> => {
     if (command === 'infra') {
       const deployment = packageConfig.getDeployment(opArgs[1]);
       const infrastructureOp = opArgs[0];
-      logger().info(
+      info(
         `Running infrastructure operation ${infrastructureOp} for ${deployment.name}`
       );
       // use remote managed state from Terraform

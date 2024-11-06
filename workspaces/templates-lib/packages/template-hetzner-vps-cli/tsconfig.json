@@ -19,6 +19,9 @@
       "path": "../../../utils/packages/utils-cli"
     },
     {
+      "path": "../../../utils/packages/utils-log"
+    },
+    {
       "path": "../utils-package"
     },
     {

@@ -16,8 +16,7 @@ import {
   ResourceInUseException,
 } from '@aws-sdk/client-dynamodb';
 
-import { logger } from '@goldstack/utils-cli';
-import { info } from '@goldstack/utils-log';
+import { error, info } from '@goldstack/utils-log';
 
 const assertDynamoDBTable = async (params: {
   dynamoDB: DynamoDBClient;
@@ -43,7 +42,7 @@ const assertDynamoDBTable = async (params: {
         BillingMode: 'PAY_PER_REQUEST',
       })
     );
-    logger().info('DynamoDB table created for terraform state', {
+    info('DynamoDB table created for terraform state', {
       tableName: params.tableName,
     });
   } catch (e) {
@@ -77,17 +76,14 @@ const assertS3Bucket = async (params: {
   };
   try {
     await params.s3.send(new CreateBucketCommand(bucketParams));
-    logger().info('S3 bucket created for storing terraform state', {
+    info('S3 bucket created for storing terraform state', {
       bucketName: bucketParams.Bucket,
     });
   } catch (e) {
     // if bucket already exists, ignore error
     if (!(e instanceof BucketAlreadyOwnedByYou)) {
-      logger().error(
-        'Cannot create bucket ',
-        params.bucketName,
-        ' error code',
-        e.code
+      error(
+        'Cannot create bucket ' + params.bucketName + ' error code' + e.code
       );
       throw new Error('Cannot create S3 state bucket: ' + e.message);
     }

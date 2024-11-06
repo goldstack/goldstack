@@ -5046,6 +5046,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/template-hetzner-vps", "workspace:workspaces/templates-lib/packages/template-hetzner-vps"],\
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-package-config", "workspace:workspaces/templates-lib/packages/utils-package-config"],\
           ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
