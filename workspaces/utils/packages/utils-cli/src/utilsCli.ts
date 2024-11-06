@@ -5,21 +5,53 @@ type AsyncFunction<O> = () => Promise<O>;
 
 const isDebug = process.env.GOLDSTACK_DEBUG || process.env.DEBUG;
 
-const loggerVar = pino(
+/**
+ * Interface defining the required logger instance methods
+ */
+export interface LoggerInstance {
+  debug: (obj: object | null | undefined, msg?: string) => void;
+  info: (obj: object | null | undefined, msg?: string) => void;
+  warn: (obj: object | null | undefined, msg?: string) => void;
+  error: (msg: string) => void;
+}
+
+/**
+ * Configuration options for the logger
+ */
+export interface LoggerConfig {
+  /** Custom logger instance implementing LoggerInstance interface */
+  instance?: LoggerInstance;
+}
+
+let loggerInstance: LoggerInstance | undefined;
+
+const defaultLogger = pino(
   { level: isDebug ? 'debug' : 'info' },
   pinoPretty({
-    colorize: true,
+    colorize: process.env.AWS_LAMBDA_FUNCTION_NAME ? false : true,
     hideObject: false,
-    colorizeObjects: true,
+    colorizeObjects: process.env.AWS_LAMBDA_FUNCTION_NAME ? false : true,
     translateTime: 'HH:MM:ss',
     ignore: 'pid,hostname',
-    singleLine: false,
+    singleLine: process.env.AWS_LAMBDA_FUNCTION_NAME ? true : false,
     sync: true, // requires for work in Jest see https://github.com/pinojs/pino-pretty?tab=readme-ov-file#usage-with-jest
   })
 );
 
-export function logger() {
-  return loggerVar;
+/**
+ * Configure the logger instance
+ * @param config - Configuration options for the logger
+ */
+export function configureLogger(config: LoggerConfig): void {
+  loggerInstance = config.instance;
+}
+
+/**
+ * Get the current logger instance
+ * @returns The configured logger instance or the default pino logger
+ */
+export function logger(): LoggerInstance {
+  return loggerInstance || defaultLogger;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

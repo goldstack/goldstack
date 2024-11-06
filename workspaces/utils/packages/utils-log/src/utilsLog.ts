@@ -1,6 +1,10 @@
-import { logger } from '@goldstack/utils-cli';
+import { configureLogger, logger, LoggerConfig } from '@goldstack/utils-cli';
 
 const isDebug = process.env.GOLDSTACK_DEBUG || process.env.DEBUG;
+
+export function setLogger(config: LoggerConfig): void {
+  configureLogger(config);
+}
 
 export function debug(msg: string, properties?: { [key: string]: any }): void {
   logger().debug(properties, msg);
