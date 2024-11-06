@@ -16,7 +16,8 @@
   "exclude": [
     "infra/aws/.terraform/",
     "infra/aws/tfplan",
-    "infra/aws/terraform.tfstate.d/"
+    "infra/aws/terraform.tfstate.d/",
+    "src/lambda-prod.spec.ts"
   ],
   "overwriteFiles": [
     {
