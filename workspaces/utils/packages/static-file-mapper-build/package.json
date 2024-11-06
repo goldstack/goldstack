@@ -1,6 +1,6 @@
 {
   "name": "static-file-mapper-build",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "description": "Helps tracking path to generated static files for deployment bundles",
   "keywords": [
     "javascript"
@@ -31,7 +31,7 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "dependencies": {
-    "@goldstack/utils-sh": "0.5.12",
+    "@goldstack/utils-sh": "0.5.13",
     "static-file-mapper": "0.3.12"
   },
   "devDependencies": {

@@ -39,9 +39,9 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-cli": "0.3.10",
-    "@goldstack/utils-docs": "0.4.12",
-    "@goldstack/utils-sh": "0.5.12",
+    "@goldstack/utils-cli": "0.3.11",
+    "@goldstack/utils-docs": "0.4.13",
+    "@goldstack/utils-sh": "0.5.13",
     "@types/yargs": "^17.0.10",
     "source-map-support": "^0.5.21",
     "yargs": "^17.5.1"
