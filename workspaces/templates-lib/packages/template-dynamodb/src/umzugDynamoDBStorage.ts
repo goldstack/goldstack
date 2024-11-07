@@ -7,6 +7,7 @@ import {
   QueryCommandOutput,
 } from '@aws-sdk/client-dynamodb';
 import { marshall, unmarshall } from '@aws-sdk/util-dynamodb';
+import { debug } from '@goldstack/utils-log';
 import { UmzugStorage } from 'umzug';
 import { MigrationParams } from 'umzug/lib/types';
 import { DynamoDBContext } from './dynamoDBMigrations';
@@ -45,12 +46,15 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
           TableName: this.tableName,
           Item: {
             [this.partitionKey]: { S: this.migrationsKey },
-            [this.sortKey]: { S: this.sortKey },
+            [this.sortKey]: { S: params.name },
           },
         })
       );
     } catch (e) {
-      throw new Error(`Failed to log migration ${params.name}. ` + e);
+      const errorMessage = e instanceof Error ? e.message : String(e);
+      throw new Error(
+        `Failed to log migration ${params.name}. DynamoDB error: ${errorMessage}`
+      );
     }
   }
 
@@ -68,40 +72,44 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
         })
       );
     } catch (e) {
-      throw new Error(`Failed to unlog migration ${params.name}. ` + e);
+      const errorMessage = e instanceof Error ? e.message : String(e);
+      throw new Error(
+        `Failed to unlog migration ${params.name}. DynamoDB error: ${errorMessage}`
+      );
     }
   }
 
   async executed(): Promise<string[]> {
     const migrations: { [key: string]: any }[] = [];
-    let itemsLength: number | undefined = undefined;
     let lastEvaluatedKey: Record<string, AttributeValue> | undefined =
       undefined;
+
     do {
-      const res: QueryCommandOutput = await this.dynamoClient.send(
-        new QueryCommand({
-          TableName: this.tableName,
-          KeyConditionExpression: '#pk = :pk',
-          ExpressionAttributeNames: {
-            '#pk': this.partitionKey,
-          },
-          ExpressionAttributeValues: marshall({
-            ':pk': this.migrationsKey,
-          }),
-          ExclusiveStartKey: lastEvaluatedKey,
-        })
-      );
-      lastEvaluatedKey = res.LastEvaluatedKey;
-      const items: { [key: string]: any }[] | undefined = res?.Items?.map(
-        (entry) => {
-          return unmarshall(entry);
-        }
-      );
-      if (items) {
+      try {
+        const res: QueryCommandOutput = await this.dynamoClient.send(
+          new QueryCommand({
+            TableName: this.tableName,
+            KeyConditionExpression: '#pk = :pk',
+            ExpressionAttributeNames: {
+              '#pk': this.partitionKey,
+            },
+            ExpressionAttributeValues: marshall({
+              ':pk': this.migrationsKey,
+            }),
+            ExclusiveStartKey: lastEvaluatedKey,
+          })
+        );
+
+        lastEvaluatedKey = res.LastEvaluatedKey;
+        const items = res.Items?.map((entry) => unmarshall(entry)) || [];
         migrations.push(...items);
+      } catch (e) {
+        const errorMessage = e instanceof Error ? e.message : String(e);
+        throw new Error(
+          `Failed to fetch executed migrations. DynamoDB error: ${errorMessage}`
+        );
       }
-      itemsLength = res?.Items?.length;
-    } while (itemsLength && lastEvaluatedKey);
+    } while (lastEvaluatedKey);
 
     return migrations.map((m) => m[this.sortKey]);
   }

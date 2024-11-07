@@ -66,16 +66,25 @@ async function initUmzug(
     },
     logger: {
       debug: (message: Record<string, unknown>) =>
-        debug(JSON.stringify(message)),
+        debug(
+          `Migrating ${tableName} ${message.name ? message.name : ''}`,
+          message
+        ),
       warn: (message: Record<string, unknown>) =>
-        debug(JSON.stringify(message)),
+        debug(
+          `Migrating ${tableName} ${message.name ? message.name : ''}`,
+          message
+        ),
       info: (message: Record<string, unknown>) =>
         info(
           `Migrating ${tableName} ${message.name ? message.name : ''}`,
           message
         ),
       error: (message: Record<string, unknown>) =>
-        error(JSON.stringify(message)),
+        error(
+          `Migrating ${tableName} ${message.name ? message.name : ''}`,
+          message
+        ),
     },
     storage: storage,
   });

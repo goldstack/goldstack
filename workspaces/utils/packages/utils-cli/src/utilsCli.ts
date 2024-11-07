@@ -13,7 +13,7 @@ export interface LoggerInstance {
   debug: (obj: object | null | undefined, msg?: string) => void;
   info: (obj: object | null | undefined, msg?: string) => void;
   warn: (obj: object | null | undefined, msg?: string) => void;
-  error: (msg: string) => void;
+  error: (obj: object | null | undefined, msg?: string) => void;
 }
 
 /**
