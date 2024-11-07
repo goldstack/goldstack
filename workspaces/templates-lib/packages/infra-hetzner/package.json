@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/infra-hetzner",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Utilities to work with Hetzner infrastructure via the cli.",
   "keywords": [
     "goldstack",
@@ -39,11 +39,11 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.14",
-    "@goldstack/utils-config": "0.4.14",
-    "@goldstack/utils-log": "0.3.13",
-    "@goldstack/utils-package": "0.4.14",
-    "@goldstack/utils-sh": "0.5.13",
+    "@goldstack/infra": "0.4.15",
+    "@goldstack/utils-config": "0.4.15",
+    "@goldstack/utils-log": "0.3.14",
+    "@goldstack/utils-package": "0.4.15",
+    "@goldstack/utils-sh": "0.5.14",
     "axios": "1.6.0",
     "handlebars": "4.7.7"
   },

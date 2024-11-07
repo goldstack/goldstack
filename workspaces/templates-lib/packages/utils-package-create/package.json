@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package-create",
-  "version": "0.4.14",
+  "version": "0.4.15",
   "description": "Utilities for creating new Goldstack packages.",
   "keywords": [
     "goldstack",
@@ -34,9 +34,9 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-log": "0.3.13",
-    "@goldstack/utils-sh": "0.5.13",
-    "@goldstack/utils-template": "0.4.14"
+    "@goldstack/utils-log": "0.3.14",
+    "@goldstack/utils-sh": "0.5.14",
+    "@goldstack/utils-template": "0.4.15"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.9",
