@@ -10,7 +10,7 @@ Based on [mock-aws-s3](https://www.npmjs.com/package/mock-aws-s3) and [aws-sdk-m
 
 ```typescript
 import { createS3Client } from 'mock-aws-s3-v3';
-import { GetObjectCommand } from '@aws-sdk/client-s3';
+import { PutObjectCommand } from '@aws-sdk/client-s3';
 
 const client = createS3Client('./local-folder'); // of type S3Client
 
@@ -18,7 +18,7 @@ await client.send(new PutObjectCommand({
   Bucket: 'test-bucket',
   Key: 'test-key',
   Body: 'hello',
-});
+}));
 ```
 
 This will create:
