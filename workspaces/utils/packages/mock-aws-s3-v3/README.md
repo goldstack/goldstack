@@ -18,7 +18,7 @@ await client.send(new PutObjectCommand({
   Bucket: 'test-bucket',
   Key: 'test-key',
   Body: 'hello',
-});
+}));
 ```
 
 This will create:
