@@ -98,6 +98,50 @@ This will copy the files that need to be deployed into the folder `distLambda/`.
 
 [!embed](./../lambda-express/environment-variables.md)
 
+### Changing into a FIFO Queue
+
+If you would like the Lambda to processes messages in order and one by one, it is best to use a [FIFO queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue.html#fifo-queue).
+
+Modify `queue.tf` by adding `.fifo` to the `name` property and adding the property `fifo_queue` as below for both the main queue and DLQ queue:
+
+```
+# Only create the SQS queue if sqs_queue_name is provided
+resource "aws_sqs_queue" "queue" {
+  # ...
+  name  = "${var.lambda_name}-queue.fifo"
+  fifo_queue                  = true # this ensures the lambda processes messages one by one
+  # ...
+}
+```
+
+resource "aws_sqs_queue" "dlq" {
+  count = length(var.sqs_queue_name) > 0 ? 1 : 0
+  name  = "${var.lambda_name}-dlq.fifo"
+  fifo_queue                  = true # this ensures the lambda processes messages one by one
+}
+```
+
+Ensure that for every message sent to the queue to provide the following two fields:
+
+```
+MessageGroupId: ';
+MessageDeduplicationId: ''
+```
+
+We also need to remove the DQL configuration from `lambda.tf` - specifically REMOVE the following:
+
+```
+  # Configure Dead-letter Queue for Lambda errors if DLQ is created
+  dynamic "dead_letter_config" {
+    for_each = length(aws_sqs_queue.dlq) > 0 ? [1] : []
+    content {
+      target_arn = aws_sqs_queue.dlq[0].arn
+    }
+  }
+```
+
+If you want to use a DLQ for the main lambda, simply create another queue.
+
 ## Security Hardening
 
 This module requires further security hardening when deployed in critical production applications. Specifically the lambda is given the role `arn:aws:iam::aws:policy/AdministratorAccess"` and this will grant the lambda access to all resources on the AWS account, including the ability to create and destroy infrastructure. It is therefore recommended to grant this lambda only rights to resources it needs access to, such as read and write permissions for an S3 bucket. This can be modified in `infra/aws/lambda.tf` in the resource `resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach"`.

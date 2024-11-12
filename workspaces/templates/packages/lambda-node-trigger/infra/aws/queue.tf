@@ -1,9 +1,11 @@
 # Only create the SQS queue if sqs_queue_name is provided
 resource "aws_sqs_queue" "queue" {
   count = length(var.sqs_queue_name) > 0 ? 1 : 0
-  name  = "${var.lambda_name}-queue"
+  name  = "${var.sqs_queue_name}"
 
-  visibility_timeout_seconds = 900
+  visibility_timeout_seconds = 950 # longer than max runtime for Lambda
+
+  message_retention_seconds = 1209600 # 14 days, maximum
 
   # Redrive policy to send failed messages to the DLQ if DLQ is created
   redrive_policy = count.index == 0 && length(aws_sqs_queue.dlq) > 0 ? jsonencode({
@@ -15,7 +17,8 @@ resource "aws_sqs_queue" "queue" {
 # Only create the DLQ if sqs_queue_name is provided
 resource "aws_sqs_queue" "dlq" {
   count = length(var.sqs_queue_name) > 0 ? 1 : 0
-  name  = "${var.lambda_name}-dlq"
+  message_retention_seconds = 1209600 # 14 days, maximum
+  name  = "${var.sqs_queue_name}-dlq"
 }
 
 # Only attach the DLQ access policy if both SQS queue and DLQ are created
