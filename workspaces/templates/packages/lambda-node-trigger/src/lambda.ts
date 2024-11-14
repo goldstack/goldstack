@@ -19,31 +19,13 @@ import goldstackSchema from './../schemas/package.schema.json';
 import {
   connect as templateConnect,
   getMockedSQS as templateGetMockedSQS,
+  getMockedDLQSQS as templateGetMockedDLQSQS,
 } from '@goldstack/template-sqs';
 import { MessageCallback } from '@goldstack/template-sqs';
+import { handler as lambdaHandler } from './handler';
+import { warn } from '@goldstack/utils-log';
 
-export const handler: Handler = async (event, context) => {
-  // SQS message handling
-  if (event.Records) {
-    const sqsEvent = event as SQSEvent;
-    const message = sqsEvent.Records[0].body;
-    console.log('SQS message received:');
-
-    // Process the message here if needed
-    console.log(message);
-    return;
-  }
-
-  // Handle Scheduled Event
-  if (event['detail-type'] && event['detail-type'] === 'Scheduled Event') {
-    const time = event['time'];
-    console.log(`This is a scheduled event from ${time}`);
-  }
-
-  const queue = await connectToSQSQueue();
-  console.log('QueueName: ' + (await getSQSQueueName()));
-  console.log('Queue URL: ' + (await getSQSQueueUrl()));
-};
+export const handler: Handler = lambdaHandler;
 
 /**
  * Mock SQS client for local development.
@@ -79,7 +61,42 @@ export const getMockedSQS = (): SQSClient => {
     await handler(sqsEvent, {} as any, () => {});
   };
 
-  return templateGetMockedSQS(messageSendHandler);
+  return templateGetMockedSQS(goldstackConfig, messageSendHandler);
+};
+
+/**
+ * Mock SQS client for local development for testing the DLQ.
+ *
+ * Sending a message to a client created in this way will trigger the handler function
+ * with the provided message payload.
+ *
+ * @returns {SQSClient} The mocked SQS client.
+ */
+export const getMockedDLQSQS = (): SQSClient => {
+  const messageSendHandler: MessageCallback = async (
+    message: SendMessageRequest
+  ) => {
+    warn('DLQ Message received ' + message.MessageBody);
+  };
+
+  return templateGetMockedDLQSQS(goldstackConfig, messageSendHandler);
+};
+
+export const connectToSQSDLQQueue = async (
+  deploymentName?: string
+): Promise<SQSClient> => {
+  deploymentName = deploymentName || process.env['GOLDSTACK_DEPLOYMENT'];
+
+  if (deploymentName === 'local') {
+    return getMockedDLQSQS();
+  }
+
+  return await templateConnect(
+    goldstackConfig,
+    goldstackSchema,
+    deployments,
+    deploymentName
+  );
 };
 
 export const connectToSQSQueue = async (

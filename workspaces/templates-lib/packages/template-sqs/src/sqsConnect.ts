@@ -1,9 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import {
-  GetQueueUrlCommand,
-  SendMessageRequest,
-  SQSClient,
-} from '@aws-sdk/client-sqs';
+import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
 import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { fromEnv } from '@aws-sdk/credential-providers';
 
@@ -36,12 +32,44 @@ export type MessageCallback = (
  * @param {MessageCallback} [onMessageSend] - Optional callback to handle the message sent event.
  * @returns {SQSClient} The mocked SQS client.
  */
-export const getMockedSQS = (onMessageSend?: MessageCallback): SQSClient => {
+export const getMockedSQS = (
+  goldstackConfig: any,
+  onMessageSend?: MessageCallback
+): SQSClient => {
   if (!mockedSQS) {
     const createSQSClient: CreateSQSClientSignature = require(excludeInBundle(
       './mockedSQS'
     )).createSQSClient;
-    mockedSQS = createSQSClient({ sqsClient: undefined, onMessageSend });
+    mockedSQS = createSQSClient({
+      queueUrl: getLocalSQSQueueUrl(goldstackConfig),
+      sqsClient: undefined,
+      onMessageSend,
+    });
+  }
+  if (!mockedSQS) {
+    throw new Error('Mocked SQS client not initialized');
+  }
+  return mockedSQS;
+};
+
+/**
+ * Retrieves a mocked SQS client for local development for the DLQ queue. Initializes the client if not already created.
+ * @param {MessageCallback} [onMessageSend] - Optional callback to handle the message sent event.
+ * @returns {SQSClient} The mocked SQS client.
+ */
+export const getMockedDLQSQS = (
+  goldstackConfig: any,
+  onMessageSend?: MessageCallback
+): SQSClient => {
+  if (!mockedSQS) {
+    const createSQSClient: CreateSQSClientSignature = require(excludeInBundle(
+      './mockedSQS'
+    )).createSQSClient;
+    mockedSQS = createSQSClient({
+      queueUrl: getLocalSQSDLQUrl(goldstackConfig),
+      sqsClient: undefined,
+      onMessageSend,
+    });
   }
   if (!mockedSQS) {
     throw new Error('Mocked SQS client not initialized');
@@ -115,7 +143,7 @@ export const connect = async (
   );
 
   if (deployment.name === 'local') {
-    return getMockedSQS();
+    return getMockedSQS(goldstackConfig);
   }
 
   const awsUser = process.env.AWS_ACCESS_KEY_ID
@@ -201,7 +229,7 @@ export const getSQSQueueUrl = async (
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
 
   if (deploymentName === 'local') {
-    return 'http://localhost:4566/000000000000/test-local-queue';
+    return getLocalSQSQueueUrl(goldstackConfig);
   }
 
   const deployment = getDeploymentData(deploymentsData, deploymentName);
@@ -249,11 +277,17 @@ export const getSQSDLQQueueUrl = async (
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
 
   if (deploymentName === 'local') {
-    return 'http://localhost:4566/000000000000/test-local-dlq';
+    return getLocalSQSDLQUrl(goldstackConfig);
   }
 
   const deployment = getDeploymentData(deploymentsData, deploymentName);
-  const region = deployment.terraform.sqs_queue_url.value.split('.')[1];
-  const accountId = deployment.terraform.sqs_queue_url.value.split('/')[3];
-  return `https://sqs.${region}.amazonaws.com/${accountId}/${deployment.terraform.sqs_dlq_queue_name.value}`;
+
+  return deployment.terraform.sqs_dlq_queue_url.value;
 };
+function getLocalSQSDLQUrl(goldstackConfig: any): string {
+  return `http://localhost:4566/000000000000/${goldstackConfig.name}-dlq`;
+}
+
+function getLocalSQSQueueUrl(goldstackConfig: any): string {
+  return 'http://localhost:4566/000000000000/' + goldstackConfig.name;
+}

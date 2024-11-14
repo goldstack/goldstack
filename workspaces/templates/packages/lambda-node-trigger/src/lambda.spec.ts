@@ -1,7 +1,9 @@
 import { SendMessageCommand } from '@aws-sdk/client-sqs';
 import { info } from '@goldstack/utils-log';
+import { getSentMessageRequests } from '@goldstack/template-sqs';
 import {
   connectToSQSQueue,
+  connectToSQSDLQQueue,
   getSQSDLQQueueUrl,
   getSQSQueueName,
   getSQSQueueUrl,
@@ -14,10 +16,25 @@ describe('Lambda SQS Integration', () => {
       const client = await connectToSQSQueue();
       await client.send(
         new SendMessageCommand({
-          QueueUrl: await getSQSDLQQueueUrl(),
+          QueueUrl: await getSQSQueueUrl(),
           MessageBody: 'Hello World',
         })
       );
+
+      expect(getSentMessageRequests(client)).toHaveLength(1);
+    });
+
+    test('should connect and send message to SQS DLQ queue', async () => {
+      const dlqClient = await connectToSQSDLQQueue();
+      await dlqClient.send(
+        new SendMessageCommand({
+          QueueUrl: await getSQSDLQQueueUrl(),
+          MessageBody: 'Hello DLQ World',
+        })
+      );
+
+      const sentRequests = getSentMessageRequests(dlqClient);
+      expect(sentRequests).toHaveLength(2);
     });
 
     test('should connect to default SQS queue', async () => {

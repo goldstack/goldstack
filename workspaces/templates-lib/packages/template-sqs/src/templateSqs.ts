@@ -1,6 +1,7 @@
 export {
   connect,
   getMockedSQS,
+  getMockedDLQSQS,
   getSQSDLQQueueName,
   getSQSDLQQueueUrl,
   getSQSQueueName,
@@ -36,6 +37,19 @@ export const getSentMessageRequests = (
   // Check if the _goldstackSentRequests property exists and return the array of sent requests
   if ((sqsClient as any)._goldstackSentRequests) {
     return (sqsClient as any)._goldstackSentRequests;
+  }
+
+  // If no messages have been sent, return an empty array
+  return [];
+};
+
+// Helper function to retrieve sent message requests from the mocked SQS client
+export const getSentMessageBatchRequests = (
+  sqsClient: SQSClient
+): SendMessageRequest[] => {
+  // Check if the _goldstackSentRequests property exists and return the array of sent requests
+  if ((sqsClient as any)._goldstackSentBatchRequests) {
+    return (sqsClient as any)._goldstackSentBatchRequests;
   }
 
   // If no messages have been sent, return an empty array
