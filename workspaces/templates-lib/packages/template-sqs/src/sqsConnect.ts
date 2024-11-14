@@ -53,6 +53,31 @@ export const getMockedSQS = (
 };
 
 /**
+ * Retrieves a mocked SQS client for local development for the DLQ queue. Initializes the client if not already created.
+ * @param {MessageCallback} [onMessageSend] - Optional callback to handle the message sent event.
+ * @returns {SQSClient} The mocked SQS client.
+ */
+export const getMockedDLQSQS = (
+  goldstackConfig: any,
+  onMessageSend?: MessageCallback
+): SQSClient => {
+  if (!mockedSQS) {
+    const createSQSClient: CreateSQSClientSignature = require(excludeInBundle(
+      './mockedSQS'
+    )).createSQSClient;
+    mockedSQS = createSQSClient({
+      queueUrl: getLocalSQSDLQUrl(goldstackConfig),
+      sqsClient: undefined,
+      onMessageSend,
+    });
+  }
+  if (!mockedSQS) {
+    throw new Error('Mocked SQS client not initialized');
+  }
+  return mockedSQS;
+};
+
+/**
  * Gets the package configuration and deployment for SQS operations
  * @param {any} goldstackConfig - Goldstack configuration object
  * @param {any} packageSchema - Package schema
@@ -252,13 +277,17 @@ export const getSQSDLQQueueUrl = async (
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
 
   if (deploymentName === 'local') {
-    return `http://localhost:4566/000000000000/${goldstackConfig.name}-dlq`;
+    return getLocalSQSDLQUrl(goldstackConfig);
   }
 
   const deployment = getDeploymentData(deploymentsData, deploymentName);
 
   return deployment.terraform.sqs_dlq_queue_url.value;
 };
+function getLocalSQSDLQUrl(goldstackConfig: any): string {
+  return `http://localhost:4566/000000000000/${goldstackConfig.name}-dlq`;
+}
+
 function getLocalSQSQueueUrl(goldstackConfig: any): string {
   return 'http://localhost:4566/000000000000/' + goldstackConfig.name;
 }

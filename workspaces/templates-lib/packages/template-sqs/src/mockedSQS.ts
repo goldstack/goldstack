@@ -14,6 +14,9 @@ export type CreateSQSClientSignature = typeof createSQSClient;
 let singleMockClient: ReturnType<typeof mockClient> | undefined;
 const messageHandlers = new Map<string, MessageCallback>();
 
+const sendMessageRequests: SendMessageRequest[] = [];
+const sendMessageBatchRequests: SendMessageBatchRequest[] = [];
+
 export function createSQSClient({
   queueUrl,
   sqsClient,
@@ -23,12 +26,17 @@ export function createSQSClient({
   onMessageSend?: MessageCallback;
   queueUrl: string;
 }): SQSClient {
+  if (!sqsClient) {
+    sqsClient = new SQSClient();
+  }
   if (!singleMockClient) {
-    singleMockClient = mockClient(new SQSClient());
-
+    singleMockClient = mockClient(sqsClient);
+    (sqsClient as any)._goldstackSentRequests = sendMessageRequests;
+    (sqsClient as any)._goldstackSentBatchRequests = sendMessageBatchRequests;
     singleMockClient
       .on(SendMessageCommand)
       .callsFake(async (input: SendMessageRequest): Promise<any> => {
+        sendMessageRequests.push(input);
         const handler = messageHandlers.get(input.QueueUrl || '');
         if (handler) {
           await handler(input);
@@ -42,6 +50,7 @@ export function createSQSClient({
     singleMockClient
       .on(SendMessageBatchCommand)
       .callsFake(async (input: SendMessageBatchRequest): Promise<any> => {
+        sendMessageBatchRequests.push(input);
         const handler = messageHandlers.get(input.QueueUrl || '');
         if (handler && input.Entries) {
           for (const entry of input.Entries) {
@@ -60,5 +69,5 @@ export function createSQSClient({
     messageHandlers.set(queueUrl, onMessageSend);
   }
 
-  return sqsClient || new SQSClient();
+  return sqsClient;
 }
