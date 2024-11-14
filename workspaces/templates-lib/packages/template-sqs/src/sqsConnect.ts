@@ -32,12 +32,19 @@ export type MessageCallback = (
  * @param {MessageCallback} [onMessageSend] - Optional callback to handle the message sent event.
  * @returns {SQSClient} The mocked SQS client.
  */
-export const getMockedSQS = (onMessageSend?: MessageCallback): SQSClient => {
+export const getMockedSQS = (
+  goldstackConfig: any,
+  onMessageSend?: MessageCallback
+): SQSClient => {
   if (!mockedSQS) {
     const createSQSClient: CreateSQSClientSignature = require(excludeInBundle(
       './mockedSQS'
     )).createSQSClient;
-    mockedSQS = createSQSClient({ sqsClient: undefined, onMessageSend });
+    mockedSQS = createSQSClient({
+      queueUrl: getLocalSQSQueueUrl(goldstackConfig),
+      sqsClient: undefined,
+      onMessageSend,
+    });
   }
   if (!mockedSQS) {
     throw new Error('Mocked SQS client not initialized');
@@ -111,7 +118,7 @@ export const connect = async (
   );
 
   if (deployment.name === 'local') {
-    return getMockedSQS();
+    return getMockedSQS(goldstackConfig);
   }
 
   const awsUser = process.env.AWS_ACCESS_KEY_ID
@@ -197,7 +204,7 @@ export const getSQSQueueUrl = async (
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
 
   if (deploymentName === 'local') {
-    return 'http://localhost:4566/000000000000/' + goldstackConfig.name;
+    return getLocalSQSQueueUrl(goldstackConfig);
   }
 
   const deployment = getDeploymentData(deploymentsData, deploymentName);
@@ -252,3 +259,6 @@ export const getSQSDLQQueueUrl = async (
 
   return deployment.terraform.sqs_dlq_queue_url.value;
 };
+function getLocalSQSQueueUrl(goldstackConfig: any): string {
+  return 'http://localhost:4566/000000000000/' + goldstackConfig.name;
+}

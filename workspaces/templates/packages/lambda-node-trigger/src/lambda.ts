@@ -21,30 +21,9 @@ import {
   getMockedSQS as templateGetMockedSQS,
 } from '@goldstack/template-sqs';
 import { MessageCallback } from '@goldstack/template-sqs';
+import { handler as lambdaHandler } from './handler';
 
-export const handler: Handler = async (event, context) => {
-  // SQS message handling
-  if (event.Records) {
-    const sqsEvent = event as SQSEvent;
-    const message = sqsEvent.Records[0].body;
-    console.log('SQS message received:');
-
-    // Process the message here if needed
-    console.log(message);
-    return;
-  }
-
-  // Handle Scheduled Event
-  if (event['detail-type'] && event['detail-type'] === 'Scheduled Event') {
-    const time = event['time'];
-    console.log(`This is a scheduled event from ${time}`);
-  }
-
-  const queue = await connectToSQSQueue();
-  console.log('QueueName: ' + (await getSQSQueueName()));
-  console.log('Queue URL: ' + (await getSQSQueueUrl()));
-};
-
+export const handler: Handler = lambdaHandler;
 /**
  * Mock SQS client for local development.
  *
@@ -79,7 +58,7 @@ export const getMockedSQS = (): SQSClient => {
     await handler(sqsEvent, {} as any, () => {});
   };
 
-  return templateGetMockedSQS(messageSendHandler);
+  return templateGetMockedSQS(goldstackConfig, messageSendHandler);
 };
 
 export const connectToSQSQueue = async (
