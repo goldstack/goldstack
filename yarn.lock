@@ -2960,8 +2960,8 @@ __metadata:
   resolution: "@goldstack/lambda-node-trigger@workspace:workspaces/templates/packages/lambda-node-trigger"
   dependencies:
     "@aws-sdk/client-sqs": "npm:3.645.0"
-    "@goldstack/template-lambda-trigger-cli": "npm:0.1.11"
-    "@goldstack/template-sqs": "npm:0.1.8"
+    "@goldstack/template-lambda-trigger-cli": "npm:0.1.12"
+    "@goldstack/template-sqs": "npm:0.1.9"
     "@goldstack/utils-git": "npm:0.2.9"
     "@goldstack/utils-log": "npm:0.3.14"
     "@goldstack/utils-sh": "npm:0.5.14"
@@ -2985,7 +2985,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/lambda-python-job@workspace:workspaces/templates/packages/lambda-python-job"
   dependencies:
-    "@goldstack/template-lambda-trigger-cli": "npm:0.1.11"
+    "@goldstack/template-lambda-trigger-cli": "npm:0.1.12"
     "@goldstack/utils-git": "npm:0.2.9"
     "@goldstack/utils-log": "npm:0.3.14"
     "@goldstack/utils-sh": "npm:0.5.14"
@@ -3899,14 +3899,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-lambda-trigger-cli@npm:0.1.11, @goldstack/template-lambda-trigger-cli@workspace:workspaces/templates-lib/packages/template-lambda-trigger-cli":
+"@goldstack/template-lambda-trigger-cli@npm:0.1.12, @goldstack/template-lambda-trigger-cli@workspace:workspaces/templates-lib/packages/template-lambda-trigger-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-lambda-trigger-cli@workspace:workspaces/templates-lib/packages/template-lambda-trigger-cli"
   dependencies:
     "@goldstack/infra": "npm:0.4.15"
     "@goldstack/infra-aws": "npm:0.4.24"
     "@goldstack/template-lambda-cli": "npm:0.1.10"
-    "@goldstack/template-sqs": "npm:0.1.8"
+    "@goldstack/template-sqs": "npm:0.1.9"
     "@goldstack/utils-aws-lambda": "npm:0.3.30"
     "@goldstack/utils-cli": "npm:0.3.12"
     "@goldstack/utils-config": "npm:0.4.15"
@@ -4154,7 +4154,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-sqs@npm:0.1.8, @goldstack/template-sqs@workspace:workspaces/templates-lib/packages/template-sqs":
+"@goldstack/template-sqs@npm:0.1.9, @goldstack/template-sqs@workspace:workspaces/templates-lib/packages/template-sqs":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-sqs@workspace:workspaces/templates-lib/packages/template-sqs"
   dependencies:
