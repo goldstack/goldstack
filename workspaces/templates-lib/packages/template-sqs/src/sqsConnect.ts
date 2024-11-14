@@ -1,9 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import {
-  GetQueueUrlCommand,
-  SendMessageRequest,
-  SQSClient,
-} from '@aws-sdk/client-sqs';
+import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
 import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { fromEnv } from '@aws-sdk/credential-providers';
 
@@ -201,7 +197,7 @@ export const getSQSQueueUrl = async (
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
 
   if (deploymentName === 'local') {
-    return 'http://localhost:4566/000000000000/test-local-queue';
+    return 'http://localhost:4566/000000000000/' + goldstackConfig.name;
   }
 
   const deployment = getDeploymentData(deploymentsData, deploymentName);
@@ -249,11 +245,10 @@ export const getSQSDLQQueueUrl = async (
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
 
   if (deploymentName === 'local') {
-    return 'http://localhost:4566/000000000000/test-local-dlq';
+    return `http://localhost:4566/000000000000/${goldstackConfig.name}-dlq`;
   }
 
   const deployment = getDeploymentData(deploymentsData, deploymentName);
-  const region = deployment.terraform.sqs_queue_url.value.split('.')[1];
-  const accountId = deployment.terraform.sqs_queue_url.value.split('/')[3];
-  return `https://sqs.${region}.amazonaws.com/${accountId}/${deployment.terraform.sqs_dlq_queue_name.value}`;
+
+  return deployment.terraform.sqs_dlq_queue_url.value;
 };

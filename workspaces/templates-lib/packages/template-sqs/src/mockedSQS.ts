@@ -26,6 +26,7 @@ export function createSQSClient({
   (sqsClient as any)._goldstackSentRequests = sendMessageRequests;
 
   mockedClient.on(SendMessageCommand).callsFake(async (input): Promise<any> => {
+    const queueUrl = input.QueueUrl;
     sendMessageRequests.push(input);
 
     // If a callback is provided, invoke it with the message input
