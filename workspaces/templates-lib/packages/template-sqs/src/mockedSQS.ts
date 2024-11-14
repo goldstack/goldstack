@@ -8,9 +8,10 @@ import {
 import { mockClient } from 'aws-sdk-client-mock';
 import { v4 as uuid4 } from 'uuid';
 import { MessageCallback } from './sqsConnect';
-
+import { warn } from '@goldstack/utils-log';
 export type CreateSQSClientSignature = typeof createSQSClient;
 
+let singleSQSClient: SQSClient | undefined;
 let singleMockClient: ReturnType<typeof mockClient> | undefined;
 const messageHandlers = new Map<string, MessageCallback>();
 
@@ -27,7 +28,10 @@ export function createSQSClient({
   queueUrl: string;
 }): SQSClient {
   if (!sqsClient) {
-    sqsClient = new SQSClient();
+    if (!singleSQSClient) {
+      singleSQSClient = new SQSClient();
+    }
+    sqsClient = singleSQSClient;
   }
   if (!singleMockClient) {
     singleMockClient = mockClient(sqsClient);
@@ -40,6 +44,10 @@ export function createSQSClient({
         const handler = messageHandlers.get(input.QueueUrl || '');
         if (handler) {
           await handler(input);
+        } else {
+          warn(
+            `No message handler registered for queue ${input.QueueUrl}. Message will not be processed. Ensure you connect to the correct SQS queue to create the client.`
+          );
         }
 
         return {
