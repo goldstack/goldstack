@@ -11,12 +11,9 @@ import { MessageCallback } from './sqsConnect';
 import { warn } from '@goldstack/utils-log';
 export type CreateSQSClientSignature = typeof createSQSClient;
 
-let singleSQSClient: SQSClient | undefined;
-let singleMockClient: ReturnType<typeof mockClient> | undefined;
+const clientsByUrl = new Map<string, SQSClient>();
+const mockClientsByUrl = new Map<string, ReturnType<typeof mockClient>>();
 const messageHandlers = new Map<string, MessageCallback>();
-
-const sendMessageRequests: SendMessageRequest[] = [];
-const sendMessageBatchRequests: SendMessageBatchRequest[] = [];
 
 export function createSQSClient({
   queueUrl,
@@ -28,19 +25,21 @@ export function createSQSClient({
   queueUrl: string;
 }): SQSClient {
   if (!sqsClient) {
-    if (!singleSQSClient) {
-      singleSQSClient = new SQSClient();
-    }
-    sqsClient = singleSQSClient;
+    sqsClient = clientsByUrl.get(queueUrl) || new SQSClient();
+    clientsByUrl.set(queueUrl, sqsClient);
   }
-  if (!singleMockClient) {
-    singleMockClient = mockClient(sqsClient);
-    (sqsClient as any)._goldstackSentRequests = sendMessageRequests;
-    (sqsClient as any)._goldstackSentBatchRequests = sendMessageBatchRequests;
-    singleMockClient
+
+  if (!mockClientsByUrl.has(queueUrl)) {
+    const mockClient_ = mockClient(sqsClient);
+    mockClientsByUrl.set(queueUrl, mockClient_);
+
+    (sqsClient as any)._goldstackSentRequests = [];
+    (sqsClient as any)._goldstackSentBatchRequests = [];
+
+    mockClient_
       .on(SendMessageCommand)
       .callsFake(async (input: SendMessageRequest): Promise<any> => {
-        sendMessageRequests.push(input);
+        (sqsClient as any)._goldstackSentRequests.push(input);
         const handler = messageHandlers.get(input.QueueUrl || '');
         if (handler) {
           await handler(input);
@@ -55,10 +54,10 @@ export function createSQSClient({
         };
       });
 
-    singleMockClient
+    mockClient_
       .on(SendMessageBatchCommand)
       .callsFake(async (input: SendMessageBatchRequest): Promise<any> => {
-        sendMessageBatchRequests.push(input);
+        (sqsClient as any)._goldstackSentBatchRequests.push(input);
         const handler = messageHandlers.get(input.QueueUrl || '');
         if (handler && input.Entries) {
           for (const entry of input.Entries) {

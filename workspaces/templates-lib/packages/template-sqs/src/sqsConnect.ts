@@ -8,8 +8,7 @@ import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { CreateSQSClientSignature } from './mockedSQS';
 import { SqsDeployment, SqsPackage } from './templateSqs';
 import { AWSDeploymentRegion, getAWSUser } from '@goldstack/infra-aws';
-
-let mockedSQS: SQSClient | undefined;
+import { warn } from '@goldstack/utils-log';
 
 /**
  * Retrieves an environment variable by key. Throws an error if the variable is not set.
@@ -36,20 +35,14 @@ export const getMockedSQS = (
   goldstackConfig: any,
   onMessageSend?: MessageCallback
 ): SQSClient => {
-  if (!mockedSQS) {
-    const createSQSClient: CreateSQSClientSignature = require(excludeInBundle(
-      './mockedSQS'
-    )).createSQSClient;
-    mockedSQS = createSQSClient({
-      queueUrl: getLocalSQSQueueUrl(goldstackConfig),
-      sqsClient: undefined,
-      onMessageSend,
-    });
-  }
-  if (!mockedSQS) {
-    throw new Error('Mocked SQS client not initialized');
-  }
-  return mockedSQS;
+  const createSQSClient: CreateSQSClientSignature = require(excludeInBundle(
+    './mockedSQS'
+  )).createSQSClient;
+  return createSQSClient({
+    queueUrl: getLocalSQSQueueUrl(goldstackConfig),
+    sqsClient: undefined,
+    onMessageSend,
+  });
 };
 
 /**
@@ -61,20 +54,14 @@ export const getMockedDLQSQS = (
   goldstackConfig: any,
   onMessageSend?: MessageCallback
 ): SQSClient => {
-  if (!mockedSQS) {
-    const createSQSClient: CreateSQSClientSignature = require(excludeInBundle(
-      './mockedSQS'
-    )).createSQSClient;
-    mockedSQS = createSQSClient({
-      queueUrl: getLocalSQSDLQUrl(goldstackConfig),
-      sqsClient: undefined,
-      onMessageSend,
-    });
-  }
-  if (!mockedSQS) {
-    throw new Error('Mocked SQS client not initialized');
-  }
-  return mockedSQS;
+  const createSQSClient: CreateSQSClientSignature = require(excludeInBundle(
+    './mockedSQS'
+  )).createSQSClient;
+  return createSQSClient({
+    queueUrl: getLocalSQSDLQUrl(goldstackConfig),
+    sqsClient: undefined,
+    onMessageSend,
+  });
 };
 
 /**
@@ -143,6 +130,9 @@ export const connect = async (
   );
 
   if (deployment.name === 'local') {
+    warn(
+      `Initializing mocked SQS without handler for ${goldstackConfig.name}. Consider calling the connect() method from the instantiated template or use getMockedSQS()`
+    );
     return getMockedSQS(goldstackConfig);
   }
 
