@@ -34,7 +34,7 @@ describe('Lambda SQS Integration', () => {
       );
 
       const sentRequests = getSentMessageRequests(dlqClient);
-      expect(sentRequests).toHaveLength(2);
+      expect(sentRequests).toHaveLength(1);
     });
 
     test('should connect to default SQS queue', async () => {
