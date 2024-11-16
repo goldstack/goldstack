@@ -173,6 +173,16 @@ This will copy the files that need to be deployed into the folder `distLambda/`.
 
 ## Guides and How Tos
 
+### Performing a DLQ redrive
+
+The main queue is configured to send all failed messages to a DLQ. You can send these messages back to the main queue through a DLQ redrive. For this, simply go to the queue
+ending on `[your queue name]-dlq` in SQS in the AWS console. And then click on 'Start DLQ Redrive' at the top righthand side of the screen. Select 'source queue' as the source.
+No need to provide your queue name, since the main and DLQ queue were already linked during infrastructure set up.
+
+This will send the messages back to the main queue.
+
+To learn more, see [Learn how to configure a dead-letter queue redrive in Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-dead-letter-queue-redrive.html)
+
 ### Adding environment variables
 
 Environment variables are defined in the Terraform source code for this template. Specifically they are defined in the `infra/aws/lambda.tf` file in the resource `resource "aws_lambda_function" "main"`. By default, there is one environment variable specified that identifies the Goldstack deployment used.
