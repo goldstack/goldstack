@@ -266,3 +266,7 @@ This works very well in combination with secrets for GitHub actions.
 ## Security Hardening
 
 This module requires further security hardening when deployed in critical production applications. Specifically the lambda is given the role `arn:aws:iam::aws:policy/AdministratorAccess"` and this will grant the lambda access to all resources on the AWS account, including the ability to create and destroy infrastructure. It is therefore recommended to grant this lambda only rights to resources it needs access to, such as read and write permissions for an S3 bucket. This can be modified in `infra/aws/lambda.tf` in the resource `resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach"`.
+
+## Related Projects / Reference
+
+*   [terraform-module-sqs](https://github.com/damacus/terraform-aws-sqs-with-dlq/tree/master)
