@@ -1,4 +1,3 @@
-
 data "archive_file" "empty_lambda" {
   type = "zip"
   output_path = "${path.module}/empty_lambda.zip"
@@ -18,10 +17,15 @@ resource "aws_lambda_function" "main" {
   handler = "lambda.handler"
   runtime = "nodejs20.x"
 
-  memory_size = 2048
+  memory_size = 512
   timeout = 900
 
   role = aws_iam_role.lambda_exec.arn
+
+  logging_config {
+    log_format = "Text"
+    log_group = aws_cloudwatch_log_group.lambda_log_group.name
+  }
 
   lifecycle {
     create_before_destroy = true
@@ -45,6 +49,7 @@ resource "aws_lambda_function" "main" {
   }
 
 }
+
 
 resource "aws_iam_role" "lambda_exec" {
   name = "${var.lambda_name}-role"
@@ -73,33 +78,3 @@ resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach" {
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }
 
-# Explicit roles to allow logging for Lambda. Not strictly required here due to the full admin access
-# granted in the lambda_admin_role_attach above. But added here to make it easier to fine-tune permissions
-# in the above at a later point. 
-resource "aws_iam_policy" "lambda_logging" {
-  name        = "${var.lambda_name}-lambda-logging-role"
-  path        = "/"
-  description = "IAM policy for logging from a lambda"
-
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "logs:CreateLogGroup",
-        "logs:CreateLogStream",
-        "logs:PutLogEvents"
-      ],
-      "Resource": "arn:aws:logs:*:*:*",
-      "Effect": "Allow"
-    }
-  ]
-}
-EOF
-}
-
-resource "aws_iam_role_policy_attachment" "lambda_logs" {
-  role       = aws_iam_role.lambda_exec.name
-  policy_arn = aws_iam_policy.lambda_logging.arn
-}
