@@ -20,6 +20,12 @@ variable "sqs_queue_name" {
   default = ""
 }
 
+variable "sqs_queue_max_items" {
+  type    = string
+  description = "The maximum items of we want in the queue - otherwise an alert is triggerd."
+  default = 1000
+}
+
 variable "name" {
   description = "Goldstack deployment name."
   type = string

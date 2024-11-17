@@ -10,6 +10,8 @@ output "lambda_function_name" {
   value = aws_lambda_function.main.function_name
 }
 
+
+
 output "sqs_queue_name" {
   value = length(var.sqs_queue_name) > 0 ? aws_sqs_queue.queue[0].name : null
 }
