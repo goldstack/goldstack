@@ -25,7 +25,9 @@ import { MessageCallback } from '@goldstack/template-sqs';
 import { handler as lambdaHandler } from './handler';
 import { warn } from '@goldstack/utils-log';
 
-export const handler: Handler = lambdaHandler;
+export const handler: Handler = (event, context, callback) => {
+  return lambdaHandler(event, context, callback);
+};
 
 /**
  * Mock SQS client for local development.

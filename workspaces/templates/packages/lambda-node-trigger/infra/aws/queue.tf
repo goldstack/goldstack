@@ -18,6 +18,16 @@ resource "aws_sqs_queue" "dlq" {
   name  = "${var.lambda_name}-dlq"
 }
 
+# To ensure redrive doesn't go to the wrong queue
+resource "aws_sqs_queue_redrive_allow_policy" "dlq" {
+  queue_url = aws_sqs_queue.dlq[0].url
+
+  redrive_allow_policy = jsonencode({
+    redrivePermission = "byQueue",
+    sourceQueueArns   = [aws_sqs_queue.queue[0].arn]
+  })
+}
+
 # Only attach the DLQ access policy if both SQS queue and DLQ are created
 resource "aws_iam_role_policy_attachment" "lambda_dlq_access" {
   count      = length(var.sqs_queue_name) > 0 ? 1 : 0
