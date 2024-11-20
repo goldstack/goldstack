@@ -183,6 +183,8 @@ This will send the messages back to the main queue.
 
 To learn more, see [Learn how to configure a dead-letter queue redrive in Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-dead-letter-queue-redrive.html)
 
+Note that if you manually sent messages to the queue (as opposed to them being added by the Lambda having raised an exception), you [will need to manually select the queue to redrive to](https://repost.aws/questions/QUDvfq49eKSeq3M3cQGpbPOg/is-it-true-that-the-redrive-to-source-queue-s-option-in-the-aws-console-will-not-work-for-messages-that-have-been-manually-sent-to-the-dlq-by-a-lambda-function).
+
 ### Adding environment variables
 
 Environment variables are defined in the Terraform source code for this template. Specifically they are defined in the `infra/aws/lambda.tf` file in the resource `resource "aws_lambda_function" "main"`. By default, there is one environment variable specified that identifies the Goldstack deployment used.
