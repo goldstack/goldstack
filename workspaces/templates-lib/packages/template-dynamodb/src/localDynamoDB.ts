@@ -164,7 +164,22 @@ const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
       },
     };
   }
-  if (commandExists('java')) {
+
+  let javaViable = commandExists('java');
+
+  if (javaViable) {
+    try {
+      await execAsync('java -version');
+    } catch (e) {
+      warn(
+        "'java' command is available but it does not work. This is common on never versions of Mac OS X without Java installed.\n" +
+          'To use Java, please install it.'
+      );
+      javaViable = false;
+    }
+  }
+
+  if (javaViable) {
     info('Starting local DynamoDB with Java');
     const pr = dynamoDBLocal.spawn({
       port,
@@ -224,7 +239,15 @@ const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
         console.debug('Stopping local Docker DynamoDB');
         try {
           await killProcess(pr);
-          await execAsync(`docker stop ${containerName}`);
+          const containersAfterKillProcess = await execAsync(
+            'docker container ls',
+            {
+              silent: true,
+            }
+          );
+          if (containersAfterKillProcess.indexOf(containerName) !== -1) {
+            await execAsync(`docker stop ${containerName}`);
+          }
         } catch (e) {
           error('Stopping local Docker DynamoDB process not successful');
           throw e;
