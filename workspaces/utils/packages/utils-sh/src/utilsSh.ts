@@ -299,7 +299,11 @@ export const execAsync = async (
   return new Promise((resolve, reject) => {
     processAsync(cmd, (err, stdout, stderr) => {
       if (!params?.silent) {
-        console.log(stdout.toString());
+        const output = stdout.toString();
+        // do not log anything if output is empty
+        if (output.trim()) {
+          console.log(output);
+        }
       }
       if (err) {
         console.error('Command failed:', cmd);

@@ -1,4 +1,3 @@
-
 data "archive_file" "empty_lambda" {
   type = "zip"
   output_path = "${path.module}/empty_lambda.zip"
@@ -7,6 +6,11 @@ data "archive_file" "empty_lambda" {
     content = "exports.handler = function() { };"
     filename = "lambda.js"
   }
+}
+
+resource "aws_cloudwatch_log_group" "main" {
+  name              = "/aws/lambda/${var.lambda_name}"
+  retention_in_days = 30
 }
 
 resource "aws_lambda_function" "main" {
@@ -34,6 +38,11 @@ resource "aws_lambda_function" "main" {
       GOLDSTACK_DEPLOYMENT = var.name
       CORS = var.cors
     }
+  }
+
+  logging_config {
+    log_format = "Text"
+    log_group = aws_cloudwatch_log_group.main.name
   }
 }
 

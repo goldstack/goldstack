@@ -39,6 +39,12 @@ data "archive_file" "empty_lambda" {
   }
 }
 
+resource "aws_cloudwatch_log_group" "edge" {
+  provider          = aws.us-east-1
+  name              = "/aws/lambda/${replace(var.website_domain, ".", "-")}-edge"
+  retention_in_days = 30
+}
+
 resource "aws_lambda_function" "edge" {
   provider         = aws.us-east-1
   function_name    =  "${replace(var.website_domain, ".", "-")}-edge"
@@ -50,14 +56,18 @@ resource "aws_lambda_function" "edge" {
   timeout          = 30
   memory_size      = 512
   publish          = true
+
+  logging_config {
+    log_format = "Text"
+    log_group = aws_cloudwatch_log_group.edge.name
+  }
+
   lifecycle {
     ignore_changes = [
        filename,
     ]
   }
 }
-
-
 
 # Explicit roles to allow logging for Lambda. Not strictly required here due to the full admin access
 # granted in the lambda_admin_role_attach above. But added here to make it easier to fine-tune permissions
