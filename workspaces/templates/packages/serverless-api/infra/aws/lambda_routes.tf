@@ -49,7 +49,7 @@ resource "aws_lambda_function" "this" {
 resource "aws_cloudwatch_log_group" "this" {
   for_each = var.lambdas
 
-  name              = "/aws/lambda/${aws_lambda_function.this[each.key].function_name}"
+  name              = "/aws/lambda/${lookup(each.value, "function_name", null)}"
   retention_in_days = 30
 }
 
