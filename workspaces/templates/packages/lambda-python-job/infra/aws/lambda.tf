@@ -1,4 +1,3 @@
-
 data "archive_file" "empty_lambda" {
   type = "zip"
   output_path = "${path.module}/empty_lambda.zip"
@@ -7,6 +6,11 @@ data "archive_file" "empty_lambda" {
     content = "def handler(event, context):\n  return {\n    'statusCode': '200',\n    'body': 'lambda not defined'\n  }\n"
     filename = "lambda.py"
   }
+}
+
+resource "aws_cloudwatch_log_group" "main" {
+  name              = "/aws/lambda/${var.lambda_name}"
+  retention_in_days = 30
 }
 
 resource "aws_lambda_function" "main" {
@@ -32,6 +36,11 @@ resource "aws_lambda_function" "main" {
     variables = {
       GOLDSTACK_DEPLOYMENT = var.name
     }
+  }
+
+  logging_config {
+    log_format = "Text"
+    log_group = aws_cloudwatch_log_group.main.name
   }
 
   # Configure Dead-letter Queue for Lambda errors if DLQ is created

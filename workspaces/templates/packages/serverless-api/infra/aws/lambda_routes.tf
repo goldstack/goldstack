@@ -39,6 +39,18 @@ resource "aws_lambda_function" "this" {
       NODE_OPTIONS         = "--enable-source-maps"
     }
   }
+
+  logging_config {
+    log_format = "Text"
+    log_group = aws_cloudwatch_log_group.this[each.key].name
+  }
+}
+
+resource "aws_cloudwatch_log_group" "this" {
+  for_each = var.lambdas
+
+  name              = "/aws/lambda/${aws_lambda_function.this[each.key].function_name}"
+  retention_in_days = 30
 }
 
 resource "aws_apigatewayv2_route" "this" {
@@ -59,7 +71,7 @@ resource "aws_apigatewayv2_integration" "this" {
   connection_type           = "INTERNET"
   description               = "Dynamic lambda integration"
   integration_method        = "POST"
-  integration_uri           = aws_lambda_function.this[each.key].invoke_arn
+  integration_uri          = aws_lambda_function.this[each.key].invoke_arn
 }
 
 resource "aws_lambda_permission" "this" {
