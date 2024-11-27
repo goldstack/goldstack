@@ -261,10 +261,15 @@ export class TerraformBuild {
         workspace = deployment.name;
       }
 
+      const variables = [
+        ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
+      ];
+
       tf('init', {
         provider,
         version,
         backendConfig,
+        variables,
         workspace: workspace,
         options: ['-force-copy', '-reconfigure', '-upgrade'],
       });

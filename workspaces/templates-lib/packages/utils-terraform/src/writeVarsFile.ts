@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { Variables, formatTerraformValue } from './terraformCli';
+import { Variables } from './terraformCli';
 
 const isJsonString = (str: string): boolean => {
   try {
@@ -9,6 +9,24 @@ const isJsonString = (str: string): boolean => {
   } catch (e) {
     return false;
   }
+};
+
+const formatTerraformValue = (value: any): string => {
+  if (typeof value === 'string') {
+    return `"${value.replace(/"/g, '\\"')}"`;
+  }
+  if (typeof value === 'number' || typeof value === 'boolean') {
+    return value.toString();
+  }
+  if (Array.isArray(value)) {
+    return `[${value.map(formatTerraformValue).join(', ')}]`;
+  }
+  if (typeof value === 'object' && value !== null) {
+    return `{${Object.entries(value)
+      .map(([k, v]) => `"${k}" = ${formatTerraformValue(v)}`)
+      .join(', ')}}`;
+  }
+  return 'null';
 };
 
 export function writeVarsFile(variables: Variables, dir: string): void {
@@ -39,5 +57,8 @@ export function writeVarsFile(variables: Variables, dir: string): void {
     .join('\n');
 
   const varsFilePath = path.join(dir, 'terraform.tfvars');
-  fs.writeFileSync(varsFilePath, varFileContent);
+  fs.writeFileSync(
+    varsFilePath,
+    '# This file is generated. DO NOT CHANGE.\n\n' + varFileContent
+  );
 }

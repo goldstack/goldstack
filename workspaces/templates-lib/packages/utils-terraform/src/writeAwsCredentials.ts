@@ -19,7 +19,9 @@ export function writeAwsCredentials(envVarString: string, dir: string): void {
       return acc;
     }, {} as Record<string, string>);
 
-  const credContent = `[default]
+  const credContent = `# This file is generated. Do not change it
+  
+[default]
 aws_access_key_id = ${envVars['AWS_ACCESS_KEY_ID'] || ''}
 aws_secret_access_key = ${envVars['AWS_SECRET_ACCESS_KEY'] || ''}
 aws_region = ${envVars['AWS_REGION'] || envVars['AWS_DEFAULT_REGION'] || ''}`;

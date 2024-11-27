@@ -9,80 +9,9 @@ import { CloudProvider } from './cloudProvider';
 import { TerraformVersion } from './types/utilsTerraformConfig';
 import { writeAwsCredentials } from './writeAwsCredentials';
 import { writeVarsFile } from './writeVarsFile';
-import * as fs from 'fs';
-import * as path from 'path';
+import { writeBackendConfig } from './writeBackendConfig';
 
 export type Variables = [string, string][];
-
-const renderVariables = (variables: Variables): string => {
-  if (variables.length === 0) {
-    return '';
-  }
-  return variables
-    .map(([key, value]) => {
-      const isWin = process.platform === 'win32';
-      let valueFixed = value.replace(/"/g, '\\"');
-
-      // on anything that is not Windows, ensure '$' is escaped
-      // so it is not replaced with a variable
-      if (!isWin) {
-        valueFixed = valueFixed.replace(/\$/g, '\\$');
-      }
-
-      return `-var \"${key}=${valueFixed}\" `;
-    })
-    .join('');
-};
-
-const writeBackendConfig = (backendConfig: Variables, dir: string): void => {
-  if (!backendConfig || backendConfig.length === 0) {
-    return;
-  }
-
-  const bucket = backendConfig.find(([key]) => key === 'bucket')?.[1];
-  const key = backendConfig.find(([key]) => key === 'key')?.[1];
-  const dynamodbTable = backendConfig.find(
-    ([key]) => key === 'dynamodb_table'
-  )?.[1];
-  const region = backendConfig.find(([key]) => key === 'region')?.[1];
-
-  const backendContent = `terraform {
-  backend "s3" {
-    bucket = "${bucket}"
-    key    = "${key}"
-    region = "${region}"
-    dynamodb_table = "${dynamodbTable}"
-
-    # Skipping various checks to speed up backend initialisation
-    skip_credentials_validation = true
-    skip_metadata_api_check     = true
-    skip_region_validation      = true
-
-    shared_config_files = ["aws_credentials"]
-  }
-}`;
-
-  const backendPath = path.join(dir, 'backend.tf');
-  fs.writeFileSync(backendPath, backendContent);
-};
-
-export const formatTerraformValue = (value: any): string => {
-  if (typeof value === 'string') {
-    return `"${value.replace(/"/g, '\\"')}"`;
-  }
-  if (typeof value === 'number' || typeof value === 'boolean') {
-    return value.toString();
-  }
-  if (Array.isArray(value)) {
-    return `[${value.map(formatTerraformValue).join(', ')}]`;
-  }
-  if (typeof value === 'object' && value !== null) {
-    return `{${Object.entries(value)
-      .map(([k, v]) => `"${k}" = ${formatTerraformValue(v)}`)
-      .join(', ')}}`;
-  }
-  return 'null';
-};
 
 interface TerraformOptions {
   dir?: string;
@@ -127,7 +56,8 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
 
   const cmd3 =
     `docker run --rm -v "${options.dir}":/app ` +
-    ` ${options.provider.generateEnvVariableString()} ${workspaceEnvVariable} ` +
+    // ` ${options.provider.generateEnvVariableString()} ` +
+    ` ${workspaceEnvVariable} ` +
     '-w /app ' +
     `${imageTerraform(options.version)} ` +
     ` ${command} ` +
