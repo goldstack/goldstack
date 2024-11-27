@@ -269,7 +269,7 @@ const exec = (cmd: string, params?: ExecParams): string => {
   }
 };
 
-const execSafe = (
+export const execSafe = (
   file: string,
   args: string[],
   params?: ExecParams
@@ -373,7 +373,6 @@ const changeExtension = (file: string, extension: string): string => {
 
 export {
   exec,
-  execSafe,
   pwd,
   read,
   write,
