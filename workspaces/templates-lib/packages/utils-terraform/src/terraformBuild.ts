@@ -261,10 +261,15 @@ export class TerraformBuild {
         workspace = deployment.name;
       }
 
+      const variables = [
+        ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
+      ];
+
       tf('init', {
         provider,
         version,
         backendConfig,
+        variables,
         workspace: workspace,
         options: ['-force-copy', '-reconfigure', '-upgrade'],
       });
@@ -291,11 +296,13 @@ export class TerraformBuild {
         tf(`workspace select ${deploymentName}`, {
           provider,
           version,
+          silent: true,
         });
       } else {
         tf(`workspace select ${deploymentName}`, {
           provider,
           version,
+          silent: true,
         });
       }
     } finally {
@@ -445,7 +452,7 @@ export class TerraformBuild {
         ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
       ];
 
-      tf(`workspace select ${args[0]}`, { provider, version });
+      tf(`workspace select ${args[0]}`, { provider, version, silent: true });
       tf('init', {
         provider,
         backendConfig,
@@ -496,6 +503,7 @@ export class TerraformBuild {
         tf(`workspace select ${deploymentName}`, {
           provider,
           version,
+          silent: true,
         });
       } else {
         // Sometimes it seems that Terraform forgets/destroys a workspace when upgrading the version of
@@ -590,7 +598,7 @@ export class TerraformBuild {
           }),
         ];
       }
-      tf(`workspace select ${opArgs[0]}`, { provider, version });
+      tf(`workspace select ${opArgs[0]}`, { provider, version, silent: true });
       const remainingArgs = opArgs
         .slice(1)
         .filter(

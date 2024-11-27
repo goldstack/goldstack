@@ -4,40 +4,15 @@ import {
   hasDocker,
   imageTerraform,
 } from '@goldstack/utils-docker';
-import { fatal } from '@goldstack/utils-log';
+import { fatal, warn } from '@goldstack/utils-log';
 import { CloudProvider } from './cloudProvider';
 import { TerraformVersion } from './types/utilsTerraformConfig';
+import { writeAwsCredentials } from './writeAwsCredentials';
+import { writeVarsFile } from './writeVarsFile';
+import { writeBackendConfig } from './writeBackendConfig';
 
 export type Variables = [string, string][];
 
-const renderVariables = (variables: Variables): string => {
-  if (variables.length === 0) {
-    return '';
-  }
-  return variables
-    .map(([key, value]) => {
-      const isWin = process.platform === 'win32';
-      let valueFixed = value.replace(/"/g, '\\"');
-
-      // on anything that is not Windows, ensure '$' is escaped
-      // so it is not replaced with a variable
-      if (!isWin) {
-        valueFixed = valueFixed.replace(/\$/g, '\\$');
-      }
-
-      return `-var \"${key}=${valueFixed}\" `;
-    })
-    .join('');
-};
-
-const renderBackendConfig = (variables: Variables): string => {
-  if (variables.length === 0) {
-    return '';
-  }
-  return variables
-    .map(([key, value]) => `-backend-config=\"${key}=${value}\" `)
-    .join('');
-};
 interface TerraformOptions {
   dir?: string;
   provider: CloudProvider;
@@ -56,18 +31,38 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
 
   assertDocker();
 
+  // Write variables to tfvars file
+  if (options.variables) {
+    writeVarsFile(options.variables, options.dir);
+  }
+
+  // Write backend config to backend.tf
+  if (options.backendConfig) {
+    writeBackendConfig(options.backendConfig, options.dir);
+  }
+
+  // Write AWS credentials file
+  writeAwsCredentials(
+    options.provider.generateEnvVariableString(),
+    options.dir
+  );
+
   let workspaceEnvVariable = '';
   if (options.workspace) {
     workspaceEnvVariable = `-e TF_WORKSPACE=${options.workspace}`;
   }
+
+  const [command, ...rest] = cmd.split(' ');
+
   const cmd3 =
     `docker run --rm -v "${options.dir}":/app ` +
-    ` ${options.provider.generateEnvVariableString()} ${workspaceEnvVariable} ` +
+    // ` ${options.provider.generateEnvVariableString()} ` +
+    ` ${workspaceEnvVariable} ` +
     '-w /app ' +
-    `${imageTerraform(options.version)} ${cmd} ` +
-    ` ${renderBackendConfig(options.backendConfig || [])} ` +
-    ` ${renderVariables(options.variables || [])} ` +
-    ` ${options.options?.join(' ') || ''} `;
+    `${imageTerraform(options.version)} ` +
+    ` ${command} ` +
+    ` ${options.options?.join(' ') || ''} ` +
+    ` ${rest.join(' ')} `;
 
   return exec(cmd3, { silent: options.silent });
 };
@@ -82,16 +77,20 @@ export const assertTerraform = (): void => {
   }
 };
 
+export const hasLocalTerraform = (): boolean => {
+  return commandExists('terraform');
+};
+
 const execWithCli = (cmd: string, options: TerraformOptions): string => {
   if (!options.dir) {
     options.dir = pwd();
   }
 
   assertTerraform();
-  const version = exec('terraform version');
+  const version = exec('terraform version', { silent: true });
   if (version.indexOf(options.version) === -1) {
-    throw new Error(
-      `Invalid local Terraform version detected: [${
+    warn(
+      `Not matching local Terraform version detected: [${
         version.split('\n')[0]
       }], expected version compatible with [${
         options.version
@@ -99,26 +98,66 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     );
   }
 
-  options.provider.setEnvVariables();
+  // Write variables to tfvars file
+  if (options.variables) {
+    writeVarsFile(options.variables, options.dir);
+  }
+
+  // Write backend config to backend.tf
+  if (options.backendConfig) {
+    writeBackendConfig(options.backendConfig, options.dir);
+  }
+
+  // Write AWS credentials file
+  writeAwsCredentials(
+    options.provider.generateEnvVariableString(),
+    options.dir
+  );
+
+  // Set environment variables from provider
+  const envVars = options.provider
+    .generateEnvVariableString()
+    .split(' -e ')
+    .filter((v) => v)
+    .map((v) => v.trim());
+
+  for (const envVar of envVars) {
+    const [key, value] = envVar.split('=');
+    if (key && value) {
+      process.env[key] = value.replace(/["']/g, '');
+    }
+  }
 
   if (options.workspace) {
     process.env.TF_WORKSPACE = options.workspace;
+  } else {
+    delete process.env.TF_WORKSPACE;
   }
 
+  const [command, ...rest] = cmd.split(' ');
+
+  // Change to specified directory, execute command, then change back
+  const currentDir = pwd();
   const execCmd =
-    `terraform ${cmd} ` +
-    ` ${renderBackendConfig(options.backendConfig || [])} ` +
-    ` ${renderVariables(options.variables || [])} ` +
-    ` ${options.options?.join(' ') || ''} `;
+    `cd "${options.dir}" && terraform ` +
+    ` ${command} ` +
+    ` ${options.options?.join(' ') || ''} ` +
+    ` ${rest.join(' ')} ` +
+    ` && cd "${currentDir}"`;
 
   return exec(execCmd, { silent: options.silent });
 };
 
 export const tf = (cmd: string, options: TerraformOptions): string => {
-  // always prefer running with Docker
+  if (hasLocalTerraform()) {
+    return execWithCli(cmd, options);
+  }
+
   if (hasDocker()) {
     return execWithDocker(cmd, options);
   }
 
-  return execWithCli(cmd, options);
+  throw new Error(
+    'Neither Terraform nor Docker installed. Please install one of them'
+  );
 };

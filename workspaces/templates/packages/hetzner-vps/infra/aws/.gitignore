@@ -3,3 +3,6 @@ hetzner.tfvars
 *.tfstate.backup
 .terraform
 tfplan
+terraform.tfvars
+aws_credentials
+backend.tf
