@@ -9,6 +9,8 @@ import { CloudProvider } from './cloudProvider';
 import { TerraformVersion } from './types/utilsTerraformConfig';
 import { writeAwsCredentials } from './writeAwsCredentials';
 import { writeVarsFile } from './writeVarsFile';
+import * as fs from 'fs';
+import * as path from 'path';
 
 export type Variables = [string, string][];
 
@@ -32,13 +34,36 @@ const renderVariables = (variables: Variables): string => {
     .join('');
 };
 
-const renderBackendConfig = (variables: Variables): string => {
-  if (variables.length === 0) {
-    return '';
+const writeBackendConfig = (backendConfig: Variables, dir: string): void => {
+  if (!backendConfig || backendConfig.length === 0) {
+    return;
   }
-  return variables
-    .map(([key, value]) => `-backend-config=\"${key}=${value}\" `)
-    .join('');
+
+  const bucket = backendConfig.find(([key]) => key === 'bucket')?.[1];
+  const key = backendConfig.find(([key]) => key === 'key')?.[1];
+  const dynamodbTable = backendConfig.find(
+    ([key]) => key === 'dynamodb_table'
+  )?.[1];
+  const region = backendConfig.find(([key]) => key === 'region')?.[1];
+
+  const backendContent = `terraform {
+  backend "s3" {
+    bucket = "${bucket}"
+    key    = "${key}"
+    region = "${region}"
+    dynamodb_table = "${dynamodbTable}"
+
+    # Skipping various checks to speed up backend initialisation
+    skip_credentials_validation = true
+    skip_metadata_api_check     = true
+    skip_region_validation      = true
+
+    shared_config_files = ["aws_credentials"]
+  }
+}`;
+
+  const backendPath = path.join(dir, 'backend.tf');
+  fs.writeFileSync(backendPath, backendContent);
 };
 
 export const formatTerraformValue = (value: any): string => {
@@ -82,6 +107,11 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
     writeVarsFile(options.variables, options.dir);
   }
 
+  // Write backend config to backend.tf
+  if (options.backendConfig) {
+    writeBackendConfig(options.backendConfig, options.dir);
+  }
+
   // Write AWS credentials file
   writeAwsCredentials(
     options.provider.generateEnvVariableString(),
@@ -101,8 +131,6 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
     '-w /app ' +
     `${imageTerraform(options.version)} ` +
     ` ${command} ` +
-    ` ${renderBackendConfig(options.backendConfig || [])} ` +
-    ` ${renderVariables(options.variables || [])} ` +
     ` ${options.options?.join(' ') || ''} ` +
     ` ${rest.join(' ')} `;
 
@@ -145,6 +173,11 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     writeVarsFile(options.variables, options.dir);
   }
 
+  // Write backend config to backend.tf
+  if (options.backendConfig) {
+    writeBackendConfig(options.backendConfig, options.dir);
+  }
+
   // Write AWS credentials file
   writeAwsCredentials(
     options.provider.generateEnvVariableString(),
@@ -178,8 +211,6 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
   const execCmd =
     `cd "${options.dir}" && terraform ` +
     ` ${command} ` +
-    ` ${renderBackendConfig(options.backendConfig || [])} ` +
-    // ` ${renderVariables(options.variables || [])} ` +
     ` ${options.options?.join(' ') || ''} ` +
     ` ${rest.join(' ')} ` +
     ` && cd "${currentDir}"`;

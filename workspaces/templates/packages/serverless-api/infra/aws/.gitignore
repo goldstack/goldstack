@@ -4,3 +4,4 @@ tfplan
 *.zip
 terraform.tfvars
 aws_credentials
+backend.tf
