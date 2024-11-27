@@ -1,4 +1,3 @@
-
 terraform {
   required_providers {
     aws = {
@@ -10,21 +9,11 @@ terraform {
 }
 
 provider "aws" {
-  region                  = var.aws_region
+  region                      = var.aws_region
 
-   # Skipping various checks to speed up AWS provider
+  # Skipping various checks to speed up AWS provider
   skip_region_validation      = true
   skip_metadata_api_check     = true
   skip_credentials_validation = true
-}
-
-terraform {
-  backend "s3" {
-    # config provided dynamically using `--backend-config` CLI parameters
-
-    # Skipping various checks to speed up backend initialisation
-    skip_credentials_validation = true
-    skip_metadata_api_check     = true
-    skip_region_validation      = true
-  }
+  shared_credentials_files = ["aws_credentials"]
 }

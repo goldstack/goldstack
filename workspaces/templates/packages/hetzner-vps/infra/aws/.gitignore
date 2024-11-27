@@ -4,3 +4,5 @@ hetzner.tfvars
 .terraform
 tfplan
 terraform.tfvars
+aws_credentials
+backend.tf
