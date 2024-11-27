@@ -22,6 +22,7 @@ provider "aws" {
   skip_region_validation      = true
   skip_metadata_api_check     = true
   skip_credentials_validation = true
+  shared_credentials_files = ["aws_credentials"]
 }
 
 provider "archive" {
@@ -29,11 +30,15 @@ provider "archive" {
 
 terraform {
   backend "s3" {
-    # config provided dynamically using `--backend-config` CLI parameters
+    bucket = var.state_bucket
+    key    = var.state_key
+    dynamodb_table = var.state_dynamodb_table
 
     # Skipping various checks to speed up backend initialisation
     skip_credentials_validation = true
     skip_metadata_api_check     = true
     skip_region_validation      = true
+
+    shared_config_files = ["aws_credentials"]
   }
 }

@@ -7,8 +7,8 @@ import {
 import { fatal, warn } from '@goldstack/utils-log';
 import { CloudProvider } from './cloudProvider';
 import { TerraformVersion } from './types/utilsTerraformConfig';
-import * as fs from 'fs';
-import * as path from 'path';
+import { writeAwsCredentials } from './writeAwsCredentials';
+import { writeVarsFile } from './writeVarsFile';
 
 export type Variables = [string, string][];
 
@@ -41,44 +41,22 @@ const renderBackendConfig = (variables: Variables): string => {
     .join('');
 };
 
-const isJsonString = (str: string): boolean => {
-  try {
-    JSON.parse(str);
-    return true;
-  } catch (e) {
-    return false;
+export const formatTerraformValue = (value: any): string => {
+  if (typeof value === 'string') {
+    return `"${value.replace(/"/g, '\\"')}"`;
   }
-};
-
-const writeVarsFile = (variables: Variables, dir: string): void => {
-  if (variables.length === 0) {
-    return;
+  if (typeof value === 'number' || typeof value === 'boolean') {
+    return value.toString();
   }
-
-  const varFileContent = variables
-    .map(([key, value]) => {
-      // Handle multiline strings by using heredoc syntax
-      if (value.includes('\n')) {
-        return `${key} = <<-EOT\n${value}\nEOT`;
-      }
-
-      // Handle JSON strings differently - only escape quotes
-      if (isJsonString(value)) {
-        const escapedValue = value.replace(/"/g, '\\"');
-        return `${key} = "${escapedValue}"`;
-      }
-
-      // Handle regular strings with proper escaping
-      const escapedValue = value
-        .replace(/\\/g, '\\\\') // Escape backslashes first
-        .replace(/"/g, '\\"'); // Escape quotes
-
-      return `${key} = "${escapedValue}"`;
-    })
-    .join('\n');
-
-  const varsFilePath = path.join(dir, 'terraform.tfvars');
-  fs.writeFileSync(varsFilePath, varFileContent);
+  if (Array.isArray(value)) {
+    return `[${value.map(formatTerraformValue).join(', ')}]`;
+  }
+  if (typeof value === 'object' && value !== null) {
+    return `{${Object.entries(value)
+      .map(([k, v]) => `"${k}" = ${formatTerraformValue(v)}`)
+      .join(', ')}}`;
+  }
+  return 'null';
 };
 
 interface TerraformOptions {
@@ -103,6 +81,12 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
   if (options.variables) {
     writeVarsFile(options.variables, options.dir);
   }
+
+  // Write AWS credentials file
+  writeAwsCredentials(
+    options.provider.generateEnvVariableString(),
+    options.dir
+  );
 
   let workspaceEnvVariable = '';
   if (options.workspace) {
@@ -161,6 +145,12 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     writeVarsFile(options.variables, options.dir);
   }
 
+  // Write AWS credentials file
+  writeAwsCredentials(
+    options.provider.generateEnvVariableString(),
+    options.dir
+  );
+
   // Set environment variables from provider
   const envVars = options.provider
     .generateEnvVariableString()
@@ -189,7 +179,7 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     `cd "${options.dir}" && terraform ` +
     ` ${command} ` +
     ` ${renderBackendConfig(options.backendConfig || [])} ` +
-    ` ${renderVariables(options.variables || [])} ` +
+    // ` ${renderVariables(options.variables || [])} ` +
     ` ${options.options?.join(' ') || ''} ` +
     ` ${rest.join(' ')} ` +
     ` && cd "${currentDir}"`;
