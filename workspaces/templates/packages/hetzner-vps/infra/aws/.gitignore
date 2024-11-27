@@ -3,3 +3,4 @@ hetzner.tfvars
 *.tfstate.backup
 .terraform
 tfplan
+terraform.tfvars

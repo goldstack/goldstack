@@ -2,3 +2,4 @@
 tfplan
 .terraform.tfstate.lock.info
 *.zip
+terraform.tfvars

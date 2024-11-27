@@ -7,6 +7,8 @@ import {
 import { fatal, warn } from '@goldstack/utils-log';
 import { CloudProvider } from './cloudProvider';
 import { TerraformVersion } from './types/utilsTerraformConfig';
+import * as fs from 'fs';
+import * as path from 'path';
 
 export type Variables = [string, string][];
 
@@ -38,6 +40,47 @@ const renderBackendConfig = (variables: Variables): string => {
     .map(([key, value]) => `-backend-config=\"${key}=${value}\" `)
     .join('');
 };
+
+const isJsonString = (str: string): boolean => {
+  try {
+    JSON.parse(str);
+    return true;
+  } catch (e) {
+    return false;
+  }
+};
+
+const writeVarsFile = (variables: Variables, dir: string): void => {
+  if (variables.length === 0) {
+    return;
+  }
+
+  const varFileContent = variables
+    .map(([key, value]) => {
+      // Handle multiline strings by using heredoc syntax
+      if (value.includes('\n')) {
+        return `${key} = <<-EOT\n${value}\nEOT`;
+      }
+
+      // Handle JSON strings differently - only escape quotes
+      if (isJsonString(value)) {
+        const escapedValue = value.replace(/"/g, '\\"');
+        return `${key} = "${escapedValue}"`;
+      }
+
+      // Handle regular strings with proper escaping
+      const escapedValue = value
+        .replace(/\\/g, '\\\\') // Escape backslashes first
+        .replace(/"/g, '\\"'); // Escape quotes
+
+      return `${key} = "${escapedValue}"`;
+    })
+    .join('\n');
+
+  const varsFilePath = path.join(dir, 'terraform.tfvars');
+  fs.writeFileSync(varsFilePath, varFileContent);
+};
+
 interface TerraformOptions {
   dir?: string;
   provider: CloudProvider;
@@ -56,18 +99,28 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
 
   assertDocker();
 
+  // Write variables to tfvars file
+  if (options.variables) {
+    writeVarsFile(options.variables, options.dir);
+  }
+
   let workspaceEnvVariable = '';
   if (options.workspace) {
     workspaceEnvVariable = `-e TF_WORKSPACE=${options.workspace}`;
   }
+
+  const [command, ...rest] = cmd.split(' ');
+
   const cmd3 =
     `docker run --rm -v "${options.dir}":/app ` +
     ` ${options.provider.generateEnvVariableString()} ${workspaceEnvVariable} ` +
     '-w /app ' +
-    `${imageTerraform(options.version)} ${cmd} ` +
+    `${imageTerraform(options.version)} ` +
+    ` ${command} ` +
     ` ${renderBackendConfig(options.backendConfig || [])} ` +
     ` ${renderVariables(options.variables || [])} ` +
-    ` ${options.options?.join(' ') || ''} `;
+    ` ${options.options?.join(' ') || ''} ` +
+    ` ${rest.join(' ')} `;
 
   return exec(cmd3, { silent: options.silent });
 };
@@ -103,6 +156,11 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     );
   }
 
+  // Write variables to tfvars file
+  if (options.variables) {
+    writeVarsFile(options.variables, options.dir);
+  }
+
   // Set environment variables from provider
   const envVars = options.provider
     .generateEnvVariableString()
@@ -123,13 +181,17 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     delete process.env.TF_WORKSPACE;
   }
 
+  const [command, ...rest] = cmd.split(' ');
+
   // Change to specified directory, execute command, then change back
   const currentDir = pwd();
   const execCmd =
-    `cd "${options.dir}" && terraform ${cmd} ` +
+    `cd "${options.dir}" && terraform ` +
+    ` ${command} ` +
     ` ${renderBackendConfig(options.backendConfig || [])} ` +
     ` ${renderVariables(options.variables || [])} ` +
     ` ${options.options?.join(' ') || ''} ` +
+    ` ${rest.join(' ')} ` +
     ` && cd "${currentDir}"`;
 
   return exec(execCmd, { silent: options.silent });
