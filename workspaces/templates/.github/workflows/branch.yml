@@ -39,10 +39,6 @@ jobs:
     strategy:
       matrix:
         package: ${{ fromJson(needs.get-packages.outputs.packages) }}
-    env:
-      NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v4 # used for local DynamoDB
@@ -52,7 +48,7 @@ jobs:
       - uses: ./.github/actions/goldstack-setup
       - run: |
           cd packages/${{ matrix.package }}
-          GOLDSTACK_DEBUG=true yarn test-ci
+          yarn test-ci
 
   audit:
     name: '🔒 NPM Audit'
