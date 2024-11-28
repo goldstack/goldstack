@@ -33,7 +33,7 @@
     "@goldstack/project-repository": "0.1.0",
     "@goldstack/session-repository": "0.1.0",
     "@goldstack/template-build": "0.1.0",
-    "@goldstack/template-lambda-http-cli": "0.5.42",
+    "@goldstack/template-lambda-http-cli": "0.5.43",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/template-repository-bucket": "0.1.0",
     "@goldstack/utils-package": "0.4.17",
