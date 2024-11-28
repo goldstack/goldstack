@@ -20,7 +20,7 @@
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
     "publish": "yarn workspaces foreach --topological-dev --worktree run publish",
     "set-npm-ignore": "ts-node scripts/setNpmIgnore.ts",
-    "test-ci": "yarn workspaces foreach -Wv run test-ci",
+    "test": "yarn workspaces foreach -Wv run test",
     "version:apply": "yarn workspaces foreach -Wv --topological-dev run version:apply \"$@\"",
     "version:apply:force": "yarn workspaces foreach -Wv --topological-dev run version:apply:force \"$@\""
   },

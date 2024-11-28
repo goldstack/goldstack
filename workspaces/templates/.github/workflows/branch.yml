@@ -48,7 +48,7 @@ jobs:
       - uses: ./.github/actions/goldstack-setup
       - run: |
           cd packages/${{ matrix.package }}
-          yarn test-ci
+          yarn test
 
   audit:
     name: '🔒 NPM Audit'

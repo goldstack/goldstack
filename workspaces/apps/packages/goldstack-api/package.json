@@ -19,7 +19,7 @@
     "template": "yarn template-ts",
     "template-ts": "ts-node --swc scripts/template.ts",
     "test": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --watch --config=jest.config.js",
-    "test-ci": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --config=jest.config.js --detectOpenHandles --runInBand",
+    "test": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --config=jest.config.js --detectOpenHandles --runInBand",
     "watch": "PORT=8731 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local GOLDSTACK_LOG_EMAILS=true ts-node-dev --respawn ./src/local.ts"
   },
   "dependencies": {

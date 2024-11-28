@@ -19,8 +19,8 @@
     "start": "PORT=5054 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node scripts/start.ts",
     "template": "yarn template-ts",
     "template-ts": "ts-node --swc scripts/template.ts",
-    "test": "yarn test-ci --watch",
-    "test-ci": "TEST_SERVER_PORT=50321 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=jest.config.js --runInBand",
+    "test": "yarn test --watch",
+    "test": "TEST_SERVER_PORT=50321 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=jest.config.js --runInBand",
     "watch": "PORT=5054 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev --respawn ./scripts/start.ts"
   },
   "dependencies": {

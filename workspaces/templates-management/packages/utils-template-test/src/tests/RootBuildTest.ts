@@ -28,7 +28,7 @@ export class RootBuildTest implements TemplateTest {
     yarn(projectDir, 'compile');
 
     // tests should work
-    yarn(projectDir, 'test-ci');
+    yarn(projectDir, 'test');
 
     // testing clean after build
     yarn(projectDir, 'clean');

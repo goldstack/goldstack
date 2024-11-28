@@ -25,8 +25,8 @@
     "start:next": "next start",
     "template": "yarn template-ts",
     "template-ts": "ts-node --project tsconfig.local.json scripts/template.ts",
-    "test": "yarn test-ci --watch",
-    "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand",
+    "test": "yarn test --watch",
+    "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
     "watch": "yarn next:watch",
     "web:build": "NODE_ENV=production yarn build:next",
     "web:watch": "yarn web:build && concurrently \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" "

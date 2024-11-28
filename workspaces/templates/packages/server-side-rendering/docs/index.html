@@ -1610,12 +1610,12 @@ jest<span class="token punctuation">.</span><span class="token method function p
   correctly in all <code class="inline">scripts</code> in
   <code class="inline">package.json</code>. Specifically, you may want to define
   them for <code class="inline">"test"</code>,
-  <code class="inline">"test-ci"</code> and <code class="inline">"watch"</code>.
+  <code class="inline">"test"</code> and <code class="inline">"watch"</code>.
 </p>
 <pre
   class="language-json"
 ><code class="language-json">    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"MY_ENV=localvalue jest --passWithNoTests --watch --config=jest.config.js"</span><span class="token punctuation">,</span>
-    <span class="token property">"test-ci"</span><span class="token operator">:</span> <span class="token string">"MY_ENV=localvalue jest --passWithNoTests --config=jest.config.js --detectOpenHandles"</span><span class="token punctuation">,</span>
+    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"MY_ENV=localvalue jest --passWithNoTests --config=jest.config.js --detectOpenHandles"</span><span class="token punctuation">,</span>
     <span class="token property">"watch"</span><span class="token operator">:</span> <span class="token string">"PORT=8731 MY_ENV=localvalue nodemon --config nodemon.json --exec 'yarn node dist/src/local.js'"</span>
 </code></pre>
 <p>

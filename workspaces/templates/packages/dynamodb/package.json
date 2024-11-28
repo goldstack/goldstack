@@ -20,7 +20,7 @@
     "template": "yarn template-ts",
     "template-ts": "ts-node --swc src/template.ts",
     "test": "STOP_SERVER=false GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand --watch",
-    "test-ci": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand",
+    "test": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand",
     "watch": "DYNAMODB_ADMIN_PORT=8001 GOLDSTACK_DEPLOYMENT=local ts-node scripts/watch.ts"
   },
   "dependencies": {

@@ -120,7 +120,7 @@ jobs:
       - name: Test utilities
         run: |
           cd workspaces/utils
-          yarn test-ci
+          yarn test
           cd ../..
 
   test-libraries:
@@ -143,7 +143,7 @@ jobs:
       - name: Test libraries
         run: |
           cd workspaces/templates-lib
-          GOLDSTACK_DEBUG=true yarn test-ci
+          GOLDSTACK_DEBUG=true yarn test
           cd ../..
 
   test-template-management:
@@ -166,7 +166,7 @@ jobs:
       - name: Test template management
         run: |
           cd workspaces/templates-management
-          yarn test-ci
+          yarn test
           cd ../..
 
   test-apps:
@@ -190,7 +190,7 @@ jobs:
         run: |
           cd workspaces/apps
           yarn workspace @goldstack/goldstack-api seed-templates
-          yarn test-ci
+          yarn test
           cd ../..
 
   test-docs:
@@ -213,7 +213,7 @@ jobs:
       - name: Run tests
         run: |
           cd workspaces/docs
-          yarn test-ci
+          yarn test
           cd ../..
 
   test-templates:
@@ -246,7 +246,7 @@ jobs:
       - name: Run tests
         run: |
           cd workspaces/templates
-          yarn test-ci
+          yarn test
           cd ../..
 
   schema:

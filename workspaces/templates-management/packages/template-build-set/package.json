@@ -16,7 +16,7 @@
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "generate-schema": "ts-json-schema-generator --tsconfig tsconfig.generate.json --no-type-check --path './src/types/**/*' --type 'DeploySetConfig' -o src/schemas/configSchema.json",
     "prepublishOnly": "yarn run build",
-    "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand"
+    "test": "jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
     "@goldstack/infra": "0.4.18",

@@ -19,7 +19,7 @@
     "infra": "yarn template infra",
     "template": "yarn template-ts",
     "template-ts": "ts-node --swc scripts/template.ts",
-    "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand",
+    "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
     "watch": "yarn compile && yarn build-web local && concurrently \"yarn watch-web local\" \"light-server --serve ./webDist --watchexp ./webDist/* --port 8077 --delay 500 --open\" ",
     "watch-web": "ts-node --swc ./src/watch.ts $@"
   },
