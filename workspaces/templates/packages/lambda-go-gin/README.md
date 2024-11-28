@@ -142,7 +142,6 @@ Note that the Terraform variable `my_env` translates to `myEnv` in the JSON defi
 Lastly, to support local development make sure to define the variable correctly in all `scripts` in `package.json`. Specifically, you may want to define them for `"test"`, `"test"` and `"watch"`.
 
 ```json
-    "test": "MY_ENV=localvalue jest --passWithNoTests --watch --config=jest.config.js",
     "test": "MY_ENV=localvalue jest --passWithNoTests --config=jest.config.js --detectOpenHandles",
     "watch": "PORT=8731 MY_ENV=localvalue nodemon --config nodemon.json --exec 'yarn node dist/src/local.js'"
 ```

@@ -29,7 +29,7 @@
     "gulp-replace": "^1.0.0"
   },
   "devDependencies": {
-    "@goldstack/template-static-website-aws": "0.5.39",
+    "@goldstack/template-static-website-aws": "0.5.40",
     "@swc/core": "^1.9.3",
     "@swc/jest": "^0.2.37",
     "@types/gulp": "^4.0.7",

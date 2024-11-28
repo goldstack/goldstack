@@ -24,13 +24,13 @@
     "watch": "PORT=5054 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev --respawn ./scripts/start.ts"
   },
   "dependencies": {
-    "@goldstack/utils-esbuild": "0.5.10",
+    "@goldstack/utils-esbuild": "0.5.11",
     "date-fns": "^2.28.0",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@goldstack/template-lambda-api-cli": "0.6.44",
-    "@goldstack/utils-aws-http-api-local": "0.3.41",
+    "@goldstack/template-lambda-api-cli": "0.6.45",
+    "@goldstack/utils-aws-http-api-local": "0.3.42",
     "@jest-mock/express": "^1.4.5",
     "@swc/core": "^1.9.3",
     "@swc/jest": "^0.2.37",
