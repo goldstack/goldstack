@@ -16,8 +16,8 @@
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish",
-    "test": "jest --config=./jest.config.js --watch",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
+    "test-watch": "jest --config=./jest.config.js --watch",
     "version:apply": "yarn version \"$@\" && yarn version apply"
   },
   "dependencies": {

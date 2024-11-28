@@ -25,7 +25,6 @@
     "start:next": "next start",
     "template": "yarn template-ts",
     "template-ts": "ts-node --project tsconfig.local.json scripts/template.ts",
-    "test": "yarn test --watch",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
     "watch": "yarn next:watch",
     "web:build": "NODE_ENV=production yarn build:next",
