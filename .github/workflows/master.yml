@@ -6,8 +6,8 @@ on:
       - master
 
 jobs:
-  setup:
-    name: 'Setup Environment'
+  build:
+    name: 'Build and Test'
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
@@ -19,10 +19,11 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '20'
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v4 # used for local DynamoDB
         with:
           distribution: 'temurin'
           java-version: '20'
+
       - name: Configure git
         run: |
           git config --global user.email "goldstack@pureleap.com"
@@ -32,26 +33,9 @@ jobs:
         run: npm install -g yarn@1.22.11
       - name: Configure yarn
         run: 'yarn config set --home --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''"${{secrets.NPM_TOKEN}}"''" } }'''
-      - name: Install dependencies
-        run: yarn install
-      - name: Cache workspace
-        uses: actions/cache@v2
-        with:
-          path: .
-          key: ${{ github.sha }}
-
-  lint-and-audit:
-    needs: setup
-    name: 'Lint and Audit'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Restore workspace
-        uses: actions/cache@v2
-        with:
-          path: .
-          key: ${{ github.sha }}
-      - name: Format and Lint
+      - name: Install root repo and lint
         run: |
+          yarn install
           yarn format
           yarn format-check
           yarn lint-fix
@@ -59,23 +43,6 @@ jobs:
         run: |
           yarn npm audit --all --recursive --severity critical
 
-  detect-changes:
-    needs: setup
-    name: 'Detect Changes'
-    runs-on: ubuntu-latest
-    outputs:
-      changed-utilities: ${{ steps.changed-utilities.outputs.changed }}
-      changed-libs: ${{ steps.changed-libs.outputs.changed }}
-      changed-templates: ${{ steps.changed-templates.outputs.changed }}
-      changed-mgmt: ${{ steps.changed-mgmt.outputs.changed }}
-      changed-apps: ${{ steps.changed-apps.outputs.changed }}
-      changed-docs: ${{ steps.changed-docs.outputs.changed }}
-    steps:
-      - name: Restore workspace
-        uses: actions/cache@v2
-        with:
-          path: .
-          key: ${{ github.sha }}
       - name: Check if utilities changed
         uses: marceloprado/has-changed-path@8a75b456df5a44a8110dcaa3111c9acc6249ed15
         id: changed-utilities
@@ -83,6 +50,7 @@ jobs:
           paths: .
         env:
           SOURCE: workspaces/utils
+
       - name: Check if libraries changed
         uses: marceloprado/has-changed-path@8a75b456df5a44a8110dcaa3111c9acc6249ed15
         id: changed-libs
@@ -90,6 +58,7 @@ jobs:
           paths: .
         env:
           SOURCE: workspaces/templates-lib
+
       - name: Check if templates changed
         uses: marceloprado/has-changed-path@8a75b456df5a44a8110dcaa3111c9acc6249ed15
         id: changed-templates
@@ -119,61 +88,22 @@ jobs:
         env:
           SOURCE: workspaces/docs
 
-  compile:
-    needs: [lint-and-audit, detect-changes]
-    name: 'Compile'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Restore workspace
-        uses: actions/cache@v2
-        with:
-          path: .
-          key: ${{ github.sha }}
       - name: Compile all
-        run: yarn compile
+        run: |
+          yarn compile
 
-  test-utilities:
-    needs: compile
-    name: 'Test Utilities'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Restore workspace
-        uses: actions/cache@v2
-        with:
-          path: .
-          key: ${{ github.sha }}
       - name: Test utilities
         run: |
           cd workspaces/utils
           yarn test
           cd ../..
 
-  test-libraries:
-    needs: compile
-    name: 'Test Libraries'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Restore workspace
-        uses: actions/cache@v2
-        with:
-          path: .
-          key: ${{ github.sha }}
       - name: Test libraries
         run: |
           cd workspaces/templates-lib
           yarn test
           cd ../..
 
-  test-templates:
-    needs: compile
-    name: 'Test Templates'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Restore workspace
-        uses: actions/cache@v2
-        with:
-          path: .
-          key: ${{ github.sha }}
       - name: Test templates
         run: |
           cd workspaces/templates
@@ -185,32 +115,12 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
 
-  test-template-management:
-    needs: compile
-    name: 'Test Template Management'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Restore workspace
-        uses: actions/cache@v2
-        with:
-          path: .
-          key: ${{ github.sha }}
       - name: Test template management
         run: |
           cd workspaces/templates-management
           yarn test
           cd ../..
 
-  test-apps:
-    needs: compile
-    name: 'Test Apps'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Restore workspace
-        uses: actions/cache@v2
-        with:
-          path: .
-          key: ${{ github.sha }}
       - name: Test apps
         run: |
           cd workspaces/apps
@@ -223,16 +133,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
 
-  test-docs:
-    needs: compile
-    name: 'Test Docs'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Restore workspace
-        uses: actions/cache@v2
-        with:
-          path: .
-          key: ${{ github.sha }}
       - name: Test docs
         run: |
           cd workspaces/docs
@@ -244,48 +144,28 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
 
-  generate:
-    needs: [test-utilities, test-libraries, test-templates, test-template-management, test-apps, test-docs]
-    name: 'Generate Schemas and Docs'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Restore workspace
-        uses: actions/cache@v2
-        with:
-          path: .
-          key: ${{ github.sha }}
+      # Generate schemas and docs
       - name: Generate schemas
-        run: yarn generate-schema
-      - name: Generate docs
-        run: yarn generate-docs
-      - name: Commit changes
         run: |
-          git status
-          git add .
-          git status
-          git diff-index --quiet HEAD || git commit -m "Updates from build pipeline (ci_skip)"
-          git status
+          yarn generate-schema
 
-  publish:
-    needs: [generate, detect-changes]
-    name: 'Publish Libraries'
-    if: ${{ (needs.detect-changes.outputs.changed-libs == 'true' || needs.detect-changes.outputs.changed-utilities == 'true') && github.ref == 'refs/heads/master' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Restore workspace
-        uses: actions/cache@v2
-        with:
-          path: .
-          key: ${{ github.sha }}
-      - name: Publish utilities and libraries
+      - name: Generate docs
         run: |
+          yarn generate-docs
+
+      - name: Publish utilities and libraries
+        if: ${{ (steps.changed-libs.outputs.changed == 'true' || steps.changed-utilities.outputs.changed == 'true') && github.ref == 'refs/heads/master' }}
+        run: |
+          # Prepare utils
           cd workspaces/utils
           yarn version:apply --deferred patch
           cd ../..
+          # Prepare template libraries
           cd workspaces/templates-lib
           yarn version:apply --deferred patch
           cd ../.. 
 
+          # Perform publish
           yarn version apply --all
           cd workspaces/utils
           yarn publish
@@ -300,50 +180,71 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           YARN_NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - name: Commit changes (if any) from schema and doc generation
+        run: |
+          git status
+          git add .
+          git status
+          git diff-index --quiet HEAD || git commit -m "Updates from build pipeline (ci_skip)"
+          git status
+
       - name: Push changes
+        if: ${{ (steps.changed-libs.outputs.changed == 'true' || steps.changed-utilities.outputs.changed == 'true') && github.ref == 'refs/heads/master' }}
         uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
-      - name: Write current git commit
+
+      - name: Write current git commit to output
+        if: github.ref == 'refs/heads/master'
         run: |
           echo "Writing git commit hash to output $(git rev-parse HEAD)"
           git rev-parse HEAD
           echo "::set-output name=patchedcommit::$(git rev-parse HEAD)"
 
-  cleanup-and-deploy:
-    needs: [publish, generate]
-    if: always() && github.ref == 'refs/heads/master'
-    name: 'Cleanup and Deploy'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Restore workspace
-        uses: actions/cache@v2
-        with:
-          path: .
-          key: ${{ github.sha }}
+      # - name: Build and publish image to DEV
+      #   if: github.ref == 'refs/heads/master'
+      #   run: DEBUG=true yarn workspace @goldstack/template-management-cli deploy-ts dev
+      #   env:
+      #     AWS_USER_NAME: goldstack-dev
+      #     AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+      #     AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+      #     AWS_DEFAULT_REGION: us-west-2
+
       - name: Remove yarn secret
         run: 'yarn config set --home --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''""''" } }'''
+
       - name: Write build date
+        if: github.ref == 'refs/heads/master'
         run: echo "$(date +'%Y-%m-%dT%H:%M:%S')" >> build_dev_timestamp
+
       - name: Linting and prettier
         run: |
           yarn format
           yarn lint-fix
+
       - name: Commit latest build info
+        if: github.ref == 'refs/heads/master'
         run: |
           git add .
           git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy_dev)"
           git status
+
       - name: Push changes
+        if: github.ref == 'refs/heads/master'
         uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
         with:
           github_token: ${{secrets.BUILD_TOKEN}}
-      - name: Write current git commit
+
+      - name: Write current git commit to output
+        if: github.ref == 'refs/heads/master'
         run: |
           echo "Writing git commit hash to output $(git rev-parse HEAD)"
           git rev-parse HEAD
           echo "::set-output name=patchedclicommit::$(git rev-parse HEAD)"
+
       - name: Deploy docs
+        if: github.ref == 'refs/heads/master'
         run: |
           yarn workspace @goldstack/docs-main deploy-ts dev
         env:
@@ -351,7 +252,9 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
+
       - name: Deploy API
+        if: github.ref == 'refs/heads/master'
         run: |
           yarn workspace @goldstack/goldstack-api deploy-ts dev
         env:
@@ -359,8 +262,11 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2
+          # Not actually used, only when infra gets into CI/CD
           STRIPE_API_KEY: ${{secrets.DEV_STRIPE_PRIVATE_KEY}}
+
       - name: Deploy UI
+        if: github.ref == 'refs/heads/master'
         run: |
           yarn workspace @goldstack/goldstack-home deploy-ts dev
         env:
