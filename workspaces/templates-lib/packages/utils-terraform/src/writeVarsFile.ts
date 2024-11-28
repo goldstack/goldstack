@@ -29,7 +29,7 @@ const formatTerraformValue = (value: any): string => {
   return 'null';
 };
 
-export function writeVarsFile(variables: Variables, dir: string): void {
+export function writeVarsFile(variables: Variables, filePath: string): void {
   if (variables.length === 0) {
     return;
   }
@@ -56,7 +56,8 @@ export function writeVarsFile(variables: Variables, dir: string): void {
     })
     .join('\n');
 
-  const varsFilePath = path.join(dir, 'terraform.tfvars');
+  const varsFilePath = filePath; // path.join(dir, 'terraform.tfvars');
+
   fs.writeFileSync(
     varsFilePath,
     '# This file is generated. DO NOT CHANGE.\n\n' + varFileContent
