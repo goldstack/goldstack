@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-dynamodb-cli",
-  "version": "0.6.27",
+  "version": "0.6.28",
   "description": "Utilities for building modules for DynamoDB access.",
   "keywords": [
     "goldstack",
@@ -42,21 +42,21 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/template-dynamodb": "0.3.26",
-    "@goldstack/utils-cli": "0.3.12",
-    "@goldstack/utils-package": "0.4.17",
-    "@goldstack/utils-package-config": "0.4.17",
-    "@goldstack/utils-sh": "0.5.16",
-    "@goldstack/utils-terraform": "0.4.34",
-    "@goldstack/utils-terraform-aws": "0.4.37",
+    "@goldstack/template-dynamodb": "0.3.27",
+    "@goldstack/utils-cli": "0.3.13",
+    "@goldstack/utils-package": "0.4.18",
+    "@goldstack/utils-package-config": "0.4.18",
+    "@goldstack/utils-sh": "0.5.17",
+    "@goldstack/utils-terraform": "0.4.35",
+    "@goldstack/utils-terraform-aws": "0.4.38",
     "source-map-support": "^0.5.21",
     "umzug": "^3.8.2",
     "yargs": "^17.5.1"
   },
   "devDependencies": {
     "@goldstack/utils-docs-cli": "0.3.11",
-    "@goldstack/utils-git": "0.2.9",
-    "@goldstack/utils-package-config-generate": "0.3.10",
+    "@goldstack/utils-git": "0.2.10",
+    "@goldstack/utils-package-config-generate": "0.3.11",
     "@swc/core": "^1.9.3",
     "@swc/jest": "^0.2.37",
     "@types/jest": "^29.5.14",

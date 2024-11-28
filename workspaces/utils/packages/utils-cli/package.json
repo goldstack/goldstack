@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-cli",
-  "version": "0.3.12",
+  "version": "0.3.13",
   "description": "Utilities for building command line interfaces.",
   "keywords": [
     "goldstack",
@@ -39,7 +39,7 @@
     "pino-pretty": "^11.2.2"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.9",
+    "@goldstack/utils-git": "0.2.10",
     "@swc/core": "^1.9.3",
     "@swc/jest": "^0.2.37",
     "@types/jest": "^29.5.14",
