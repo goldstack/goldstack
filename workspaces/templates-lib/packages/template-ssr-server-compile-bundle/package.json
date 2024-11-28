@@ -61,7 +61,7 @@
     "@swc/jest": "^0.2.37",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.0",
-    "@types/react": "^18.0.15",
+    "@types/react": "^18",
     "@types/sha256": "^0.2.0",
     "@types/yargs": "^17.0.10",
     "jest": "^29.3.1",

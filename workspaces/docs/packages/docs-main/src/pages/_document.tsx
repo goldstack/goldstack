@@ -8,7 +8,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
   static async getStaticProps(ctx: any): Promise<any> {
-    const sheet = new ServerStyleSheet();
+    const sheet = new ServerStyleSheet() as any;
     const originalRenderPage = ctx.renderPage;
     try {
       ctx.renderPage = (): any =>
@@ -16,7 +16,7 @@ class MyDocument extends Document {
           enhanceApp:
             (App: any) =>
             (props: any): JSX.Element =>
-              sheet.collectStyles(<App {...props} />),
+              sheet.collectStyles(<App {...props} />) as any,
         });
       const initialProps = await Document.getInitialProps(ctx);
       return {

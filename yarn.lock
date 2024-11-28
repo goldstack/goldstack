@@ -2479,7 +2479,7 @@ __metadata:
     "@testing-library/react": "npm:^13.3.0"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.0"
-    "@types/react": "npm:^18.0.15"
+    "@types/react": "npm:^18"
     "@types/testing-library__jest-dom": "npm:^5.14.5"
     "@types/testing-library__react": "npm:^10.2.0"
     concurrently: "npm:^7.3.0"
@@ -2515,7 +2515,7 @@ __metadata:
     "@testing-library/react": "npm:^13.3.0"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.0"
-    "@types/react": "npm:^18.0.15"
+    "@types/react": "npm:^18"
     "@types/testing-library__jest-dom": "npm:^5.14.5"
     "@types/testing-library__react": "npm:^10.2.0"
     concurrently: "npm:^7.3.0"
@@ -2617,7 +2617,7 @@ __metadata:
     "@types/cheerio": "npm:^0.22.31"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.0"
-    "@types/react": "npm:^18.0.15"
+    "@types/react": "npm:^18"
     "@types/styled-components": "npm:^5.1.25"
     "@types/testing-library__jest-dom": "npm:^5.14.5"
     "@types/testing-library__react": "npm:^10.2.0"
@@ -2800,8 +2800,8 @@ __metadata:
     "@testing-library/react": "npm:^13.3.0"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.0"
-    "@types/react": "npm:^18.0.15"
-    "@types/react-dom": "npm:^18.0.6"
+    "@types/react": "npm:^18"
+    "@types/react-dom": "npm:^18"
     "@types/react-scrollable-anchor": "npm:^0.6.0"
     "@types/styled-components": "npm:^5.1.25"
     "@types/testing-library__jest-dom": "npm:^5.14.5"
@@ -3334,7 +3334,7 @@ __metadata:
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.0"
     "@types/node-fetch": "npm:2"
-    "@types/react": "npm:^18.0.15"
+    "@types/react": "npm:^18"
     "@types/testing-library__jest-dom": "npm:^5.14.5"
     "@types/testing-library__react": "npm:^10.2.0"
     "@yarnpkg/esbuild-plugin-pnp": "npm:^3.0.0-rc.15"
@@ -4247,7 +4247,7 @@ __metadata:
     "@types/aws-lambda": "npm:^8.10.145"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.0"
-    "@types/react": "npm:^18.0.15"
+    "@types/react": "npm:^18"
     "@types/sha256": "npm:^0.2.0"
     "@types/yargs": "npm:^17.0.10"
     esbuild: "npm:^0.17.18"
@@ -4285,7 +4285,7 @@ __metadata:
     "@types/aws-lambda": "npm:^8.10.145"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.0"
-    "@types/react": "npm:^18.0.15"
+    "@types/react": "npm:^18"
     "@types/sha256": "npm:^0.2.0"
     "@types/yargs": "npm:^17.0.10"
     jest: "npm:^29.3.1"
@@ -4321,8 +4321,8 @@ __metadata:
     "@types/aws-lambda": "npm:^8.10.145"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.0"
-    "@types/react": "npm:^18.0.15"
-    "@types/react-dom": "npm:^18.0.6"
+    "@types/react": "npm:^18"
+    "@types/react-dom": "npm:^18"
     "@types/yargs": "npm:^17.0.10"
     jest: "npm:^29.3.1"
     react: "npm:18.2.0"
@@ -5047,7 +5047,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.37"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.0"
-    "@types/react": "npm:^18.0.15"
+    "@types/react": "npm:^18"
     jest: "npm:^29.3.1"
     react: "npm:18.2.0"
     rimraf: "npm:^3.0.2"
@@ -7700,7 +7700,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.0, @types/react-dom@npm:^18.0.6":
+"@types/react-dom@npm:^18":
+  version: 18.3.1
+  resolution: "@types/react-dom@npm:18.3.1"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 10/33f9ba79b26641ddf00a8699c30066b7e3573ab254e97475bf08f82fab83a6d3ce8d4ebad86afeb49bb8df3374390a9ba93125cece33badc4b3e8f7eac3c84d8
+  languageName: node
+  linkType: hard
+
+"@types/react-dom@npm:^18.0.0":
   version: 18.0.6
   resolution: "@types/react-dom@npm:18.0.6"
   dependencies:
@@ -7748,14 +7757,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.0.15":
-  version: 18.0.15
-  resolution: "@types/react@npm:18.0.15"
+"@types/react@npm:^18":
+  version: 18.3.12
+  resolution: "@types/react@npm:18.3.12"
   dependencies:
     "@types/prop-types": "npm:*"
-    "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10/7b149d1ee747947c1c665ce9d9f51c67cdbdec77210a6421ff29a08274e452bf8e05c3af0c177cd044e51bcd9f0359108a5ab387ea772f94f2e8eba73639716d
+  checksum: 10/c9bbdfeacd5347d2240e0d2cb5336bc57dbc1b9ff557b6c4024b49df83419e4955553518169d3736039f1b62608e15b35762a6c03d49bd86e33add4b43b19033
   languageName: node
   linkType: hard
 
