@@ -19,8 +19,8 @@
     "lint": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml",
     "lint-fix": "eslint . --ext .js,.ts,.tsx,.json,.yml,.yaml --fix",
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
-    "test-ci": "yarn workspaces foreach -Wv run test-ci",
-    "test-watch": "nodemonx --watch . --exec 'yarn test-ci'"
+    "test": "yarn workspaces foreach -Wv run test",
+    "test-watch": "nodemonx --watch . --exec 'yarn test'"
   },
   "devDependencies": {
     "@goldstack/nodemonx": "0.4.18",

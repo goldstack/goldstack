@@ -30,7 +30,7 @@
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "prepublishOnly": "yarn run build",
     "publish": "yarn node bin/utils-git changed --exec \"yarn npm publish $@\"",
-    "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand",
+    "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
     "version:apply": "yarn node bin/utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "dependencies": {

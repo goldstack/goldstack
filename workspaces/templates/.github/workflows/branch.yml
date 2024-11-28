@@ -20,9 +20,25 @@ jobs:
           yarn format-check
           yarn lint
 
-  test:
-    name: '🔍 Tests'
+  get-packages:
+    name: '📦 Get Packages'
     runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.set-packages.outputs.packages }}
+    steps:
+      - uses: actions/checkout@v3
+      - id: set-packages
+        run: |
+          PACKAGES=$(ls -d packages/*/ | cut -f2 -d'/' | jq -R -s -c 'split("\n")[:-1]')
+          echo "packages=$PACKAGES" >> $GITHUB_OUTPUT
+
+  test:
+    name: '🔍 Tests (${{ matrix.package }})'
+    needs: get-packages
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package: ${{ fromJson(needs.get-packages.outputs.packages) }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v4 # used for local DynamoDB
@@ -31,7 +47,8 @@ jobs:
           java-version: '20'
       - uses: ./.github/actions/goldstack-setup
       - run: |
-          yarn test-ci
+          cd packages/${{ matrix.package }}
+          yarn test
 
   audit:
     name: '🔒 NPM Audit'

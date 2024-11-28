@@ -46,11 +46,10 @@ And finally add this variable to all deployment configurations in `goldstack.jso
 
 Note that the Terraform variable `my_env` translates to `myEnv` in the JSON definition (Just remove all `_` and make the first character after `_` uppercase for your variable definitions).
 
-Lastly, to support local development make sure to define the variable correctly in all `scripts` in `package.json`. Specifically, you may want to define them for `"test"`, `"test-ci"` and `"watch"`.
+Lastly, to support local development make sure to define the variable correctly in all `scripts` in `package.json`. Specifically, you may want to define them for `"test"`, `"test"` and `"watch"`.
 
 ```json
-    "test": "MY_ENV=localvalue jest --passWithNoTests --watch --config=jest.config.js",
-    "test-ci": "MY_ENV=localvalue jest --passWithNoTests --config=jest.config.js --detectOpenHandles",
+    "test": "MY_ENV=localvalue jest --passWithNoTests --config=jest.config.js --detectOpenHandles",
     "watch": "PORT=8731 MY_ENV=localvalue nodemon --config nodemon.json --exec 'yarn node dist/src/local.js'"
 ```
 

@@ -17,10 +17,10 @@
     "start": "PORT=5054 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node scripts/start.ts",
     "template": "yarn template-ts",
     "template-ts": "ts-node --project tsconfig.local.json --swc src/template.ts",
-    "test": "concurrently \"yarn test-ci-server --watch\" \"yarn test-ci-ui --watch\"",
-    "test-ci": "GOLDSTACK_DEPLOYMENT=local yarn test-ci-server && yarn test-ci-ui",
-    "test-ci-server": "TEST_SERVER_PORT=50331 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --verbose --config=jest.config.js --runInBand",
-    "test-ci-ui": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --verbose --config=jest.config.ui.js --runInBand",
+    "test": "GOLDSTACK_DEPLOYMENT=local yarn test-server && yarn test-ui",
+    "test-server": "TEST_SERVER_PORT=50331 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --verbose --config=jest.config.js --runInBand",
+    "test-ui": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --verbose --config=jest.config.ui.js --runInBand",
+    "test-watch": "concurrently \"yarn test-server --watch\" \"yarn test-ui --watch\"",
     "watch": "PORT=5054 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev --respawn --transpile-only --project tsconfig.local.json -r ./scripts/register.js ./scripts/start.ts"
   },
   "dependencies": {

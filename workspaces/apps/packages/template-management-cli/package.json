@@ -24,7 +24,7 @@
     "infra": "yarn template infra",
     "template": "template-docker-image-aws",
     "template-ts": "ts-node scripts/template.ts",
-    "test-ci": "jest --passWithNoTests --config=./jest.config.js --runInBand"
+    "test": "jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.645.0",

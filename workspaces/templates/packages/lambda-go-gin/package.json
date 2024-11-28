@@ -9,7 +9,7 @@
     "infra": "yarn template infra \"$@\"",
     "template": "yarn template-ts",
     "template-ts": "ts-node --swc scripts/template.ts",
-    "test-ci": "echo 'not implemented'",
+    "test": "echo 'not implemented'",
     "watch": "PORT=8084 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local nodemon --watch ../../ --ext go --exec 'go build -o localDevelopment/server.exe && cd localDevelopment && server.exe'"
   },
   "devDependencies": {
