@@ -13,7 +13,7 @@ import Document, {
 
 class MyDocument extends Document {
   static async getStaticProps(ctx: DocumentContext): Promise<any> {
-    const sheet = new ServerStyleSheet();
+    const sheet = new ServerStyleSheet() as any;
     const originalRenderPage = ctx.renderPage;
 
     try {
@@ -22,7 +22,7 @@ class MyDocument extends Document {
           enhanceApp:
             (App: any) =>
             (props: any): JSX.Element =>
-              sheet.collectStyles(<App {...props} />),
+              sheet.collectStyles(<App {...props} />) as any,
         });
 
       const initialProps = await Document.getInitialProps(ctx);
