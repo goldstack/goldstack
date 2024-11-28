@@ -7,9 +7,10 @@ import {
 import { fatal, warn } from '@goldstack/utils-log';
 import { CloudProvider } from './cloudProvider';
 import { TerraformVersion } from './types/utilsTerraformConfig';
-import { writeAwsCredentials } from './writeAwsCredentials';
+import { writeCredentials as writeCredentials } from './writeCredentials';
 import { writeVarsFile } from './writeVarsFile';
 import { writeBackendConfig } from './writeBackendConfig';
+import path from 'path';
 
 export type Variables = [string, string][];
 
@@ -33,7 +34,10 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
 
   // Write variables to tfvars file
   if (options.variables) {
-    writeVarsFile(options.variables, options.dir);
+    writeVarsFile(
+      options.variables,
+      path.join(options.dir, 'terraform.tfvars')
+    );
   }
 
   // Write backend config to backend.tf
@@ -42,10 +46,7 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
   }
 
   // Write AWS credentials file
-  writeAwsCredentials(
-    options.provider.generateEnvVariableString(),
-    options.dir
-  );
+  writeCredentials(options.provider.generateEnvVariableString(), options.dir);
 
   let workspaceEnvVariable = '';
   if (options.workspace) {
@@ -100,7 +101,10 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
 
   // Write variables to tfvars file
   if (options.variables) {
-    writeVarsFile(options.variables, options.dir);
+    writeVarsFile(
+      options.variables,
+      path.join(options.dir, 'terraform.tfvars')
+    );
   }
 
   // Write backend config to backend.tf
@@ -109,10 +113,7 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
   }
 
   // Write AWS credentials file
-  writeAwsCredentials(
-    options.provider.generateEnvVariableString(),
-    options.dir
-  );
+  writeCredentials(options.provider.generateEnvVariableString(), options.dir);
 
   // Set environment variables from provider
   const envVars = options.provider

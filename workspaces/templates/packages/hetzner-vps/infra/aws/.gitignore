@@ -6,3 +6,4 @@ tfplan
 terraform.tfvars
 aws_credentials
 backend.tf
+hetzner.auto.tfvars
