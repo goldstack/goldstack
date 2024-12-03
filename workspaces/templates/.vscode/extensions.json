@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "arcanis.vscode-zipfs",
+    "q.typescript-mono-repo-import-helper",
+    "GitHub.vscode-github-actions",
+  ]
+}
