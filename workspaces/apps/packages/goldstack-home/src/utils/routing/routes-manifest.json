@@ -179,8 +179,8 @@
       "routeKeys": {
         "nxtPtemplate": "nxtPtemplate"
       },
-      "dataRouteRegex": "^/_next/data/bsBIxp1X0ZdlbStoeLSlw/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/bsBIxp1X0ZdlbStoeLSlw/templates/(?<nxtPtemplate>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/CKPjsXC5mSd6qtzn6l9VU/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/CKPjsXC5mSd6qtzn6l9VU/templates/(?<nxtPtemplate>[^/]+?)\\.json$"
     }
   ],
   "rsc": {
