@@ -39,7 +39,7 @@ export class StaticFileMapperRun implements StaticFileMapper {
     );
     if (!mapping) {
       throw new Error(
-        `Cannot find static file mapping for ${name}.\nTry building the project before running it in watch mode.`
+        `Cannot find static file mapping for ${name}.\nTry building the lambdas for the project using 'yarn build-lambda' before running watch mode.`
       );
     }
     return `${this.baseUrl}${mapping.generatedName}`;

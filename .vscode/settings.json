@@ -35,5 +35,8 @@
     "pino",
     "runcmd",
     "testcontainers"
+  ],
+  "github-actions.workflows.pinned.workflows": [
+    ".github/workflows/branch.yml"
   ]
 }

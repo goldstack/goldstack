@@ -95,7 +95,7 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
         version.split('\n')[0]
       }], expected version compatible with [${
         options.version
-      }]. Please install this version locally or install Docker for Goldstack to run the correct Terraform version required for this deployment using Docker.`
+      }]. Please install this version locally or uninstall Terraform and install Docker for Goldstack to run the correct Terraform version required for this deployment using Docker.`
     );
   }
 
