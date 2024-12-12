@@ -14,7 +14,7 @@
         "schedule": "rate(1 minute)",
         "sqsQueueName": "lambda-python-job-sqs-test"
       },
-      "tfVersion": "1.6",
+      "tfVersion": "1.10",
       "tfStateKey": "lambda-python-job-prod-279b0e980347eb11b01d.tfstate"
     }
   ]

@@ -12,7 +12,7 @@
       "configuration": {
         "tableName": "goldstack-test-dynamodb-table"
       },
-      "tfVersion": "1.6",
+      "tfVersion": "1.10",
       "tfStateKey": "dynamodb-prod-edaaa7b3e6697ea8adba.tfstate"
     }
   ]

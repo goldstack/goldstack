@@ -16,7 +16,7 @@
         "stripeApiKey": "dummy"
       },
       "tfStateKey": "goldstack-api-dev-060f0ca6440485658cfc.tfstate",
-      "tfVersion": "1.6"
+      "tfVersion": "1.10"
     },
     {
       "name": "prod",
@@ -31,7 +31,7 @@
         "stripeApiKey": "dummy"
       },
       "tfStateKey": "goldstack-api-prod-9c1fbe2ecc5fe14060c4.tfstate",
-      "tfVersion": "1.6"
+      "tfVersion": "1.10"
     }
   ],
   "templateVersion": "0.1.0",
