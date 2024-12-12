@@ -26,7 +26,7 @@
         ]
       },
       "tfStateKey": "goldstack-home-dev-181bf9be096a2f5c100d.tfstate",
-      "tfVersion": "1.6"
+      "tfVersion": "1.10"
     },
     {
       "name": "prod",
@@ -49,7 +49,7 @@
         ]
       },
       "tfStateKey": "goldstack-home-prod-af8fc0afddf00dd7793c.tfstate",
-      "tfVersion": "1.6"
+      "tfVersion": "1.10"
     }
   ]
 }

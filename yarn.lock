@@ -4600,6 +4600,7 @@ __metadata:
   resolution: "@goldstack/utils-docker@workspace:workspaces/utils/packages/utils-docker"
   dependencies:
     "@goldstack/utils-git": "npm:0.2.11"
+    "@goldstack/utils-log": "npm:0.3.16"
     "@goldstack/utils-sh": "npm:0.5.18"
     "@swc/core": "npm:^1.9.3"
     "@swc/jest": "npm:^0.2.37"

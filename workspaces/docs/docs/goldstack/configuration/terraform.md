@@ -54,7 +54,7 @@ First note that Goldstack allows defining the version of Terraform that is to be
 
 ```json
 {
-  "tfVersion": "1.1"
+  "tfVersion": "1.10"
 }
 ```
 
@@ -73,7 +73,7 @@ First note that Goldstack allows defining the version of Terraform that is to be
       "awsRegion": "us-west-2",
       "awsUser": "goldstack-dev",
       "configuration": {
-        "tfVersion": "1.1"
+        "tfVersion": "1.10"
       }
     }
   ]

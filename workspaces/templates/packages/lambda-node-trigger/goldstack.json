@@ -14,7 +14,7 @@
         "schedule": "rate(1 day)",
         "sqsQueueName": "lambda-node-trigger-sqs-test"
       },
-      "tfVersion": "1.6",
+      "tfVersion": "1.10",
       "tfStateKey": "lambda-node-trigger-prod-5001cd04b339e4a7da56.tfstate"
     }
   ]

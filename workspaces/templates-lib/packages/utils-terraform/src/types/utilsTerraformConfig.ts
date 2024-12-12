@@ -22,7 +22,7 @@ export type TerraformStateKey = string;
  *
  * Go to the next version using `yarn infra upgrade [deploymentName] [targetVersion]`. Note that Terraform versions should only be increased one at a time, so for instance you can go from v0.12 to v0.13 but not from v0.12 to v0.14.
  *
- * @default '1.6'
+ * @default '1.10'
  */
 export type TerraformVersion =
   | '0.12'
@@ -37,7 +37,11 @@ export type TerraformVersion =
   | '1.4'
   | '1.5'
   | '1.6'
-  | '1.7';
+  | '1.7'
+  | '1.8'
+  | '1.9'
+  | '1.10'
+  | string;
 
 /**
  * Define which of the deployment variables will be made available for terraform.
