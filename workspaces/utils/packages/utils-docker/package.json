@@ -34,6 +34,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
+    "@goldstack/utils-log": "0.3.16",
     "@goldstack/utils-sh": "0.5.18"
   },
   "devDependencies": {

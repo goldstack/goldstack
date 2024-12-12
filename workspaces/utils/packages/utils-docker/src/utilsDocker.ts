@@ -1,3 +1,4 @@
+import { warn } from '@goldstack/utils-log';
 import { commandExists, exec } from '@goldstack/utils-sh';
 
 export const hasDocker = (): boolean => {
@@ -179,7 +180,13 @@ export const imageTerraform = (version: string): string => {
   if (version === '1.7') {
     return 'hashicorp/terraform:1.7.5';
   }
-  console.warn(
+  if (version === '1.95') {
+    return 'hashicorp/terraform:1.9.5';
+  }
+  if (version === '1.10') {
+    return 'hashicorp/terraform:1.10.2';
+  }
+  warn(
     `Using untested Terraform version ${version}. Consider updating your Goldstack template.`
   );
   return `hashicorp/terraform:${version}`;
