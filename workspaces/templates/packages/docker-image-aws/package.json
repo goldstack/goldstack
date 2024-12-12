@@ -25,7 +25,7 @@
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/template-docker-image-aws": "0.5.41",
+    "@goldstack/template-docker-image-aws": "0.5.42",
     "@goldstack/utils-git": "0.2.11",
     "@goldstack/utils-sh": "0.5.18"
   },

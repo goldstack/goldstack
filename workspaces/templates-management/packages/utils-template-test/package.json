@@ -28,7 +28,7 @@
     "@goldstack/utils-package": "0.4.19",
     "@goldstack/utils-sh": "0.5.18",
     "@goldstack/utils-template": "0.4.19",
-    "@goldstack/utils-yarn": "0.4.19",
+    "@goldstack/utils-yarn": "0.4.20",
     "axios": "1.6.0",
     "extract-zip": "^2.0.1",
     "mock-aws-s3-v3": "5.0.11"
