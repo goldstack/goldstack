@@ -5023,6 +5023,7 @@ __metadata:
     "@goldstack/template-build": "npm:0.1.0"
     "@goldstack/template-repository": "npm:0.1.0"
     "@goldstack/utils-config": "npm:0.4.19"
+    "@goldstack/utils-log": "npm:0.3.16"
     "@goldstack/utils-package": "npm:0.4.19"
     "@goldstack/utils-sh": "npm:0.5.18"
     "@goldstack/utils-template": "npm:0.4.19"

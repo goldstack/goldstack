@@ -25,7 +25,7 @@ describe('Should create page', () => {
   });
 
   test('Should receive response and support parameters', async () => {
-    const res = await fetch(`${getEndpoint()}/`);
+    const res = await fetch(`${getEndpoint()}/`, { timeout: 10000 });
     const response = await res.text();
     expect(response).toContain('Hi there');
     // ensure CSS is compiled correctly and correct class names injected

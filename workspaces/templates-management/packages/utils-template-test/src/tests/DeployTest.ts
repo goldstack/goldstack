@@ -2,6 +2,7 @@ import { TemplateTest, RunTestParams } from './../types/TemplateTest';
 import { yarn } from '@goldstack/utils-yarn';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
 import { read } from '@goldstack/utils-sh';
+import { info } from '@goldstack/utils-log';
 
 export class DeployTest implements TemplateTest {
   getName(): string {
@@ -12,7 +13,7 @@ export class DeployTest implements TemplateTest {
     const packageJson = JSON.parse(read(params.packageDir + 'package.json'));
 
     for (const deployment of packageConfig.deployments) {
-      console.log('Deploying', deployment.name);
+      info('Deploying: ' + deployment.name);
       yarn(
         params.projectDir,
         `workspace ${packageJson.name} deploy ${deployment.name}`

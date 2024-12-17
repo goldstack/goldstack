@@ -47,7 +47,7 @@ export const createBackendLambdaApiBuildSetConfig =
                     cors: '',
                     lambdas: {},
                   },
-                  tfVersion: '1.6',
+                  tfVersion: '1.10',
                 },
               ],
               packageTests: [

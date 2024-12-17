@@ -6414,6 +6414,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/template-build", "workspace:workspaces/templates-management/packages/template-build"],\
           ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],\
           ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\

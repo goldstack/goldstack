@@ -14,7 +14,7 @@
     "clean": "rimraf ./dist && yarn clean-docker",
     "clean-docker": "ts-node ./src/build.ts clean $@",
     "cli": "ts-node --swc ./src/cli.ts",
-    "cli-deploy-set-dev": "yarn cli deploy-set --set s3 --repo goldstack-dev --deployment dev --emailResultsTo maxrohde.public@gmail.com --workDir tmp --skipTests true",
+    "cli-deploy-set-dev": "yarn cli deploy-set --set server-side-rendering --repo goldstack-dev --deployment dev --workDir tmp --skipTests false",
     "cli-schedule-all-deploy-sets-dev": "yarn cli schedule-all-deploy-sets --repo goldstack-dev --deployment dev",
     "compile": "tsc --build",
     "compile-watch": "tsc --build --watch",

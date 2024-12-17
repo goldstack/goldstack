@@ -255,6 +255,7 @@ export const buildSet = async (
   });
 
   if (params.deployBeforeTest) {
+    // TODO this will not work due to mocks!
     info('Deploying templates before tests', {
       workDir: params.workDir + 'templatesDeploy/',
     });
@@ -290,7 +291,8 @@ export const buildSet = async (
   resetMocks();
 
   // if everything is good, deploy templates
-  if (!params.deployBeforeTest) {
+  // TODO see above logic will not work due to lacking mock reset
+  if (!params.deployBeforeTest || true) {
     info('Deploying templates', {
       workDir: params.workDir + 'templatesDeploy/',
     });

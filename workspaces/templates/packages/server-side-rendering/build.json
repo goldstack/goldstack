@@ -16,6 +16,7 @@
     "package.json",
     "README.md",
     "template.json",
+    "tailwind.config.js",
     "tsconfig.compile.json",
     "tsconfig.json",
     "tsconfig.local.json",
@@ -25,7 +26,6 @@
     "infra/aws/.terraform/",
     "infra/aws/tfplan",
     "infra/aws/terraform.tfstate.d/",
-    "src/bucket.spec.ts",
     "static/generated/"
   ],
   "overwriteFiles": [

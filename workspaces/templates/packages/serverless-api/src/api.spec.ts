@@ -25,7 +25,9 @@ describe('Should create API', () => {
   });
 
   test('Should receive response and support parameters', async () => {
-    const res = await fetch(`${getEndpoint()}/echo?message=abc`);
+    const res = await fetch(`${getEndpoint()}/echo?message=abc`, {
+      timeout: 10000,
+    });
     const response = await res.json();
     expect(response.message).toContain('abc');
   });
