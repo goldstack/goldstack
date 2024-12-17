@@ -3435,7 +3435,7 @@ __metadata:
     esbuild: "npm:^0.17.18"
     esbuild-ignore-with-comments-plugin: "npm:0.3.14"
     esbuild-ssr-css-modules-plugin: "npm:0.1.12"
-    esbuild-tailwind-ssr-plugin: "npm:0.1.1"
+    esbuild-tailwind-ssr-plugin: "npm:0.1.2"
     find-free-port: "npm:^2.0.0"
     jest: "npm:^29.3.1"
     jest-environment-jsdom: "npm:^28.1.3"
@@ -12217,7 +12217,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"esbuild-tailwind-ssr-plugin@npm:0.1.1, esbuild-tailwind-ssr-plugin@workspace:workspaces/utils/packages/esbuild-tailwind-ssr-plugin":
+"esbuild-tailwind-ssr-plugin@npm:0.1.2, esbuild-tailwind-ssr-plugin@workspace:workspaces/utils/packages/esbuild-tailwind-ssr-plugin":
   version: 0.0.0-use.local
   resolution: "esbuild-tailwind-ssr-plugin@workspace:workspaces/utils/packages/esbuild-tailwind-ssr-plugin"
   dependencies:
