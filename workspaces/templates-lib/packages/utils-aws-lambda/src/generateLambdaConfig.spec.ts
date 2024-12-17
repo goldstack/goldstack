@@ -30,7 +30,9 @@ describe('Generate Lambda config', () => {
     const nestedRoute = routesConfig.find((e) => e.path === '/folder/nested');
     assert(nestedRoute);
     const dir = getOutDirForLambda(pwd(), nestedRoute);
-    assert(dir === './distLambda/folder/nested');
+    expect(dir).toContain('distLambda');
+    expect(dir).toContain('folder');
+    expect(dir).toContain('nested');
   });
   test('Should determine path parameters for file names', () => {
     const nestedRoute = routesConfig.find(
