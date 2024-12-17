@@ -43,7 +43,7 @@ export const getOutDirForLambda = (
   if (config.path.endsWith('/')) {
     return path.join(packageRootDir, `distLambda${config.path}index`);
   }
-  return `./distLambda${config.path}`;
+  return path.join(packageRootDir, `distLambda${config.path}`);
 };
 
 export const getOutFileForLambda = (

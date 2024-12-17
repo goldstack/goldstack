@@ -34,5 +34,29 @@
       "goldstack-test-ssr-_greedy__-bundle.js"
     ],
     "generatedName": "_greedy__-bundle.87bae541feacf843c258c7404ce9d39c.js"
+  },
+  {
+    "names": [
+      "goldstack-test-ssr-v2--__index.map"
+    ],
+    "generatedName": "-__index.f01002e150f45ec5d75adafc0cc23c78.map.json"
+  },
+  {
+    "names": [
+      "goldstack-test-ssr-v2--__index-bundle.js"
+    ],
+    "generatedName": "-__index-bundle.2dca4784d198ee37b05c2244a923eaa8.js"
+  },
+  {
+    "names": [
+      "goldstack-test-ssr-v2-posts.map"
+    ],
+    "generatedName": "posts.aa0661ea150e32701183677cf0ad2f3c.map.json"
+  },
+  {
+    "names": [
+      "goldstack-test-ssr-v2-posts-bundle.js"
+    ],
+    "generatedName": "posts-bundle.5671f532fca331e82b25f3f201d45f29.js"
   }
 ]

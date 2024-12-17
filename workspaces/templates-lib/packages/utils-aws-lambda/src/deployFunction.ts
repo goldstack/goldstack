@@ -2,6 +2,7 @@ import { awsCli } from '@goldstack/utils-aws-cli';
 import { zip, rmSafe } from '@goldstack/utils-sh';
 import { getAWSCredentials } from '@goldstack/infra-aws';
 import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import { debug } from '@goldstack/utils-log';
 
 export interface DeployFunctionParams {
   lambdaPackageDir: string;
@@ -18,6 +19,9 @@ export const deployFunction = async (
     params.targetArchiveName || `lambda-${new Date().getTime()}.zip`;
 
   await rmSafe(targetArchive);
+  // debug(
+  //   `[${params.functionName}] Preparing Zip from ${params.lambdaPackageDir}`
+  // );
   await zip({
     directory: params.lambdaPackageDir,
     target: targetArchive,
@@ -30,6 +34,8 @@ export const deployFunction = async (
 
   if (!isWin) {
     fixedTargetArchive = fixedTargetArchive.replace(/\$/g, '\\$');
+  } else {
+    fixedTargetArchive = fixedTargetArchive.replaceAll('\\', '\\\\');
   }
 
   const deployResult = await awsCli({
