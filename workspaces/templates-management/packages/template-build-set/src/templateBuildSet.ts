@@ -291,6 +291,7 @@ export const buildSet = async (
   resetMocks();
 
   // if everything is good, deploy templates
+
   // TODO see above logic will not work due to lacking mock reset
   if (!params.deployBeforeTest || true) {
     info('Deploying templates', {
