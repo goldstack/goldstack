@@ -22,6 +22,4 @@ runs:
     - name: Install
       run: yarn install
       shell: bash
-    - name: Build
-      run: yarn build
-      shell: bash
+

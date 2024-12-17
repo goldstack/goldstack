@@ -8,34 +8,19 @@ jobs:
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Install Yarn
-        run: npm install -g yarn@1.22.11
-
-      - name: Install
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
+      - name: Build
         run: |
-          yarn install
+          yarn build
 
   lint:
     name: 'Lint'
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Install Yarn
-        run: npm install -g yarn@1.22.11
-
-      - name: Install
-        run: |
-          yarn install
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
       - name: Linting and formatting
         run: |
           yarn format
@@ -47,17 +32,8 @@ jobs:
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Install Yarn
-        run: npm install -g yarn@1.22.11
-
-      - name: Install
-        run: |
-          yarn install
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
       - name: NPM Audit
         run: |
           yarn npm audit --all --recursive --severity critical
@@ -67,15 +43,8 @@ jobs:
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-      - name: Install Yarn
-        run: npm install -g
-      - name: Install
-        run: |
-          yarn install
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
       - name: Run Syncpack for all workspaces
         run: |
           yarn ensure-no-package-mismatches
@@ -85,17 +54,8 @@ jobs:
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Install Yarn
-        run: npm install -g yarn@1.22.11
-
-      - name: Install
-        run: |
-          yarn install
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
       - name: Compile all
         run: |
           yarn compile
@@ -105,17 +65,11 @@ jobs:
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
       - uses: actions/setup-node@v2
         with:
           node-version: '20'
-
-      - name: Install Yarn
-        run: npm install -g yarn@1.22.11
-
-      - name: Install
-        run: |
-          yarn install
 
       - name: Test utilities
         run: |
@@ -128,17 +82,8 @@ jobs:
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Install Yarn
-        run: npm install -g yarn@1.22.11
-
-      - name: Install
-        run: |
-          yarn install
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
 
       - name: Test libraries
         run: |
@@ -151,17 +96,8 @@ jobs:
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Install Yarn
-        run: npm install -g yarn@1.22.11
-
-      - name: Install
-        run: |
-          yarn install
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
 
       - name: Test template management
         run: |
@@ -174,17 +110,8 @@ jobs:
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Install Yarn
-        run: npm install -g yarn@1.22.11
-
-      - name: Install
-        run: |
-          yarn install
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
 
       - name: Run tests
         run: |
@@ -198,18 +125,9 @@ jobs:
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Install Yarn
-        run: npm install -g yarn@1.22.11
-
-      - name: Install
-        run: |
-          yarn install
-
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
+    
       - name: Run tests
         run: |
           cd workspaces/docs
@@ -221,21 +139,12 @@ jobs:
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '20'
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '20'
-
-      - name: Install Yarn
-        run: npm install -g yarn@1.22.11
-
-      - name: Install
-        run: |
-          yarn install
 
       # Required for testing SSR template
       # Since Jest CSS transformer needs to be loaded from compiled JS
@@ -254,17 +163,9 @@ jobs:
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Install Yarn
-        run: npm install -g yarn@1.22.11
-
-      - name: Install
-        run: |
-          yarn install
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
+    
       - name: Generate schemas
         run: |
           yarn generate-schema
@@ -274,17 +175,8 @@ jobs:
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Install Yarn
-        run: npm install -g yarn@1.22.11
-
-      - name: Install
-        run: |
-          yarn install
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
       - name: Generate docs
         run: |
           yarn generate-docs
