@@ -9,6 +9,7 @@ import {
   rmSafe,
   write,
 } from '@goldstack/utils-sh';
+import path from 'path';
 
 export interface ClientBuildOptionsArgs {
   /**
@@ -32,18 +33,24 @@ export interface ServerBuildOptionsArgs {
   deploymentName: string;
 }
 
-export const getOutDirForLambda = (config: LambdaConfig): string => {
+export const getOutDirForLambda = (
+  packageRootDir: string,
+  config: LambdaConfig
+): string => {
   if (config.path === '$default') {
-    return `./distLambda/${config.path}`;
+    return path.join(packageRootDir, `distLambda/${config.path}`);
   }
   if (config.path.endsWith('/')) {
-    return `./distLambda${config.path}index`;
+    return path.join(packageRootDir, `distLambda${config.path}index`);
   }
   return `./distLambda${config.path}`;
 };
 
-export const getOutFileForLambda = (config: LambdaConfig): string => {
-  return `${getOutDirForLambda(config)}/lambda.js`;
+export const getOutFileForLambda = (
+  packageRootDir: string,
+  config: LambdaConfig
+): string => {
+  return `${getOutDirForLambda(packageRootDir, config)}/lambda.js`;
 };
 
 export const buildFunctions = async ({
@@ -53,6 +60,7 @@ export const buildFunctions = async ({
   buildOptions,
   lambdaNamePrefix,
   routeFilter,
+  packageRootDir,
 }: {
   routesDir: string;
   configs: LambdaConfig[];
@@ -60,16 +68,17 @@ export const buildFunctions = async ({
   buildOptions: (args: ServerBuildOptionsArgs) => BuildOptions;
   lambdaNamePrefix: string;
   routeFilter?: string;
+  packageRootDir: string;
 }): Promise<void> => {
   const buildConfig = readToType<BuildOptions>('./esbuild.config.json');
 
   // if we have a filter, we don't remove previous outputs
   if (!routeFilter) {
-    await rmSafe('./distLambda');
-    mkdir('-p', './distLambda/zips');
+    await rmSafe(path.join(packageRootDir, 'distLambda'));
+    mkdir('-p', path.join(packageRootDir, 'distLambda/zips'));
   }
   for await (const config of configs) {
-    mkdir('-p', getOutDirForLambda(config));
+    mkdir('-p', getOutDirForLambda(packageRootDir, config));
     const esbuildLocalPath = changeExtension(
       `${routesDir}/${config.relativeFilePath}`,
       '.esbuild.config.json'
@@ -84,20 +93,20 @@ export const buildFunctions = async ({
     const res = await build({
       ...buildOptions({ onCSSGenerated, deploymentName }),
       entryPoints: [`${routesDir}/${config.relativeFilePath}`],
-      outfile: getOutFileForLambda(config),
+      outfile: getOutFileForLambda(packageRootDir, config),
       ...buildConfig,
       ...localBuildConfig,
     });
     if (res.metafile) {
       write(
         JSON.stringify(res.metafile),
-        `./distLambda/zips/${functionName}.meta.json`
+        path.join(packageRootDir, `distLambda/zips/${functionName}.meta.json`)
       );
     }
     // provide CSS for initial load
     write(
       generatedCss.join('\n'),
-      `${getOutDirForLambda(config)}/client.bundle.css`
+      `${getOutDirForLambda(packageRootDir, config)}/client.bundle.css`
     );
   }
 };

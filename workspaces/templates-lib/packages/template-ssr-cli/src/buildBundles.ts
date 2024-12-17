@@ -16,6 +16,7 @@ import {
   LambdaConfig,
 } from '@goldstack/utils-aws-lambda';
 import { mkdir, write } from '@goldstack/utils-sh';
+import path from 'path';
 
 export const buildBundles = async ({
   routesDir,
@@ -23,15 +24,17 @@ export const buildBundles = async ({
   lambdaNamePrefix,
   buildConfig,
   deploymentName,
+  packageRootDir,
 }: {
   routesDir: string;
   configs: LambdaConfig[];
   lambdaNamePrefix: string;
   buildConfig: BuildConfiguration;
   deploymentName: string;
+  packageRootDir: string;
 }): Promise<void> => {
   for await (const config of configs) {
-    const destDir = getOutDirForLambda(config);
+    const destDir = getOutDirForLambda(packageRootDir, config);
     mkdir('-p', destDir);
     const functionName = generateFunctionName(lambdaNamePrefix, config);
     const compileResult = await compileBundle({
@@ -74,7 +77,10 @@ export const buildBundles = async ({
     if (compileResult.metaFile) {
       write(
         compileResult.metaFile,
-        `./distLambda/zips/${functionName}.client.meta.json`
+        path.join(
+          packageRootDir,
+          `distLambda/zips/${functionName}.client.meta.json`
+        )
       );
     }
   }

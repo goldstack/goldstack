@@ -6,6 +6,7 @@ import assert from 'assert';
 import { generateLambdaConfig } from './generateLambdaConfig';
 import { LambdaApiDeploymentConfiguration } from './types/LambdaDeploymentConfiguration';
 import { getOutDirForLambda } from './buildFunctions';
+import { pwd } from '@goldstack/utils-sh';
 
 const dummyConfiguration: LambdaApiDeploymentConfiguration = {
   lambdaNamePrefix: 'test-lambdas',
@@ -28,7 +29,7 @@ describe('Generate Lambda config', () => {
   test('Should determine correct output dirs for dist', () => {
     const nestedRoute = routesConfig.find((e) => e.path === '/folder/nested');
     assert(nestedRoute);
-    const dir = getOutDirForLambda(nestedRoute);
+    const dir = getOutDirForLambda(pwd(), nestedRoute);
     assert(dir === './distLambda/folder/nested');
   });
   test('Should determine path parameters for file names', () => {

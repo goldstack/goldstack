@@ -30,23 +30,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Goldstack repo
-        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
+        uses: actions/checkout@v3
         with:
           fetch-depth: 20
           token: ${{secrets.BUILD_TOKEN}}
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '20'
+      - uses: ./.github/actions/goldstack-setup
       - uses: actions/setup-java@v4 # used for local DynamoDB
         with:
           distribution: 'temurin'
           java-version: '20'
 
-      - name: Install Yarn
-        run: npm install -g yarn@1.22.11
-      - name: Install project dependencies
-        run: |
-          yarn install
+      
       - name: Setting SSH key for Hetzner deployment
         uses: webfactory/ssh-agent@v0.9.0
         with:

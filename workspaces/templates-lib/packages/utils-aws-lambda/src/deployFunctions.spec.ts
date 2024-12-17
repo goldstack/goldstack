@@ -1,5 +1,5 @@
 import { RouteType } from '@goldstack/utils-aws-lambda';
-import { read } from '@goldstack/utils-sh';
+import { pwd, read } from '@goldstack/utils-sh';
 import path from 'path';
 import { buildFunctions } from './buildFunctions';
 import fs from 'fs';
@@ -15,6 +15,7 @@ describe('Testing lambda build', () => {
       buildOptions: defaultBuildOptions(),
       deploymentName: 'local',
       lambdaNamePrefix: 'local-test',
+      packageRootDir: pwd(),
       routesDir: './testData/build-test',
       configs: [
         {
@@ -36,6 +37,7 @@ describe('Testing lambda build', () => {
       routesDir: './testData/build-test',
       buildOptions: defaultBuildOptions(),
       lambdaNamePrefix: 'local-test',
+      packageRootDir: pwd(),
       deploymentName: 'local',
       configs: [
         {
