@@ -35,7 +35,7 @@
   "dependencies": {
     "@swc-node/register": "^1.5.1",
     "pirates": "^4.0.5",
-    "postcss": "^8.4.14",
+    "postcss": "^8.4.21",
     "postcss-modules": "^5.0.0",
     "postcss-modules-sync": "^1.0.0"
   },
