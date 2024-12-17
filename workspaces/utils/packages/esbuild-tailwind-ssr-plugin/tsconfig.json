@@ -5,19 +5,8 @@
   ],
   "compilerOptions": {
     "outDir": "dist",
-    "baseUrl": ".",
-    "jsx": "preserve",
-    "module": "esnext",
-    "noEmit": false,
-    "moduleResolution": "node",
-    "isolatedModules": true,
-    "plugins": [
-      {}
-    ]
+    "baseUrl": "."
   },
-  "exclude": [
-    "node_modules"
-  ],
   "references": [
     {
       "path": "../static-file-mapper-build"
