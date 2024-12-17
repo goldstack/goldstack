@@ -17,5 +17,13 @@
   },
   "exclude": [
     "node_modules"
+  ],
+  "references": [
+    {
+      "path": "../static-file-mapper-build"
+    },
+    {
+      "path": "../utils-git"
+    }
   ]
 }

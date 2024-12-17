@@ -39,7 +39,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '20'
-    
+
       - uses: actions/setup-java@v4 # used for local DynamoDB
         with:
           distribution: 'temurin'

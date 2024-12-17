@@ -10,6 +10,7 @@ Dynamic routes are implemented using [AWS API Gateway HTTP API](https://docs.aws
 
 *   Server-side rendering of React pages
 *   Styling using CSS modules supported
+*   Styling using Tailwind supported
 *   Hydration supported for client-side logic
 *   Low latency, low cost and highly scalable by using the new [AWS HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html) and [CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
 *   Minimal cold start times by bundling the source code of each page into separate Lambda functions
@@ -79,7 +80,7 @@ import styles from './$index.module.css';
 const Index = (props: { message: string }): JSX.Element => {
   return (
     <>
-      <div>{props.message}</div>
+      <div className="m-12">{props.message}</div>
     </>
   );
 };

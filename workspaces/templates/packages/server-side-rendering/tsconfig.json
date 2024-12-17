@@ -39,6 +39,9 @@
       "path": "../../../utils/packages/esbuild-ssr-css-modules-plugin"
     },
     {
+      "path": "../../../utils/packages/esbuild-tailwind-ssr-plugin"
+    },
+    {
       "path": "../../../utils/packages/static-file-mapper-build"
     },
     {

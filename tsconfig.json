@@ -326,6 +326,9 @@
       "path": "workspaces/utils/packages/esbuild-ssr-css-modules-plugin"
     },
     {
+      "path": "workspaces/utils/packages/esbuild-tailwind-ssr-plugin"
+    },
+    {
       "path": "workspaces/utils/packages/lambda-compression"
     },
     {

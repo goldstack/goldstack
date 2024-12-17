@@ -10,12 +10,12 @@ runs:
     - id: install-aws-cli
       uses: unfor19/install-aws-cli-action@v1
       with:
-        version: 2                         
-        verbose: false                     
-        arch: amd64                       
+        version: 2
+        verbose: false
+        arch: amd64
     - uses: hashicorp/setup-terraform@v3
       with:
-        terraform_version: "1.10"
+        terraform_version: '1.10'
     - name: Install Yarn
       run: npm install -g yarn@1.22.11
       shell: bash
