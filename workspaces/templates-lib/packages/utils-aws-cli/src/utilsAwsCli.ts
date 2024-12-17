@@ -9,8 +9,12 @@ import {
 } from '@goldstack/utils-sh';
 import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { getAWSCredentials } from '@goldstack/infra-aws';
-import { fatal } from '@goldstack/utils-log';
+import { debug, fatal } from '@goldstack/utils-log';
 import { hasDocker, assertDocker, imageAWSCli } from '@goldstack/utils-docker';
+
+export const hasAwsCli = (): boolean => {
+  return commandExists('aws');
+};
 
 export const assertAwsCli = (): void => {
   if (!commandExists('aws')) {
@@ -25,7 +29,7 @@ export const assertAwsCli = (): void => {
   if (version.indexOf('aws-cli/2.') <= -1) {
     fatal(
       `Wrong AWS cli version installed. Expected version 2 but found version '${version}'` +
-        '\n\nEither install AWS cli or Docker (preferred).'
+        '\n\nEither install AWS cli or Docker.'
     );
     throw new Error();
   }
@@ -84,6 +88,7 @@ export const execWithCli = async (params: AWSExecParams): Promise<string> => {
   cd(params.workDir || pwd());
   try {
     const command = `aws ${params.command}`;
+    debug(`AWS command to be executed:\n  aws ${params.command}`);
     return await execAsync(command, params.options);
   } finally {
     cd(previousDir);
@@ -91,9 +96,15 @@ export const execWithCli = async (params: AWSExecParams): Promise<string> => {
 };
 
 export const awsCli = async (params: AWSExecParams): Promise<string> => {
-  if (hasDocker()) {
-    return execWithDocker(params);
+  if (hasAwsCli()) {
+    return execWithCli(params);
   }
 
-  return execWithCli(params);
+  if (!hasDocker()) {
+    fatal(
+      'AWS CLI version 2 not available.\n\nEnsure AWS cli (preferred) or Docker are available commands in the command line.'
+    );
+  }
+
+  return execWithDocker(params);
 };

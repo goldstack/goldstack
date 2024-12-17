@@ -10,17 +10,17 @@
       "awsRegion": "us-west-2",
       "awsUser": "goldstack-dev",
       "configuration": {
-        "lambdaNamePrefix": "goldstack-test-ssr",
-        "domain": "ssr.examples.templates.dev.goldstack.party",
+        "lambdaNamePrefix": "goldstack-test-ssr-v2",
+        "domain": "ssr-v2.examples.templates.dev.goldstack.party",
         "hostedZoneDomain": "dev.goldstack.party",
         "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party",
         "lambdas": {
           "ANY /": {
-            "function_name": "goldstack-test-ssr--__index",
+            "function_name": "goldstack-test-ssr-v2--__index",
             "route": "ANY /"
           },
           "ANY /posts": {
-            "function_name": "goldstack-test-ssr-posts",
+            "function_name": "goldstack-test-ssr-v2-posts",
             "route": "ANY /posts"
           }
         }

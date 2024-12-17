@@ -30,6 +30,7 @@ import { buildBundles } from './buildBundles';
 import { deployToS3 } from './deployToS3';
 
 import minimatch from 'minimatch';
+import { pwd } from '@goldstack/utils-sh';
 
 export const run = async (
   args: string[],
@@ -135,12 +136,14 @@ export const run = async (
       const lambdaNamePrefix = deployment.configuration.lambdaNamePrefix;
       // bundles need to be built first since static mappings are updated
       // during bundle built and they are injected into function bundle
+      const packageRootDir = pwd();
       await buildBundles({
         routesDir: defaultRoutesPath,
         configs: filteredLambdaRoutes,
         deploymentName: deployment.name,
         lambdaNamePrefix: lambdaNamePrefix || '',
         buildConfig,
+        packageRootDir,
       });
       await buildFunctions({
         routesDir: defaultRoutesPath,
@@ -149,6 +152,7 @@ export const run = async (
         configs: filteredLambdaRoutes,
         lambdaNamePrefix: lambdaNamePrefix || '',
         routeFilter,
+        packageRootDir,
       });
       return;
     }
@@ -166,18 +170,21 @@ export const run = async (
         deploymentState,
         'public_files_bucket'
       );
+      const packageRootFolder = pwd();
       await Promise.all([
         deployFunctions({
           routesPath: defaultRoutesPath,
           configuration: createLambdaAPIDeploymentConfiguration(config),
           deployment: packageConfig.getDeployment(opArgs[0]),
           config: filteredLambdaRoutes,
+          packageRootFolder,
         }),
         deployToS3({
           configuration: createLambdaAPIDeploymentConfiguration(config),
           deployment: packageConfig.getDeployment(opArgs[0]),
           staticFilesBucket,
           publicFilesBucket,
+          packageRootFolder,
         }),
       ]);
       return;

@@ -19,6 +19,7 @@ import {
   defaultBuildOptions,
 } from '@goldstack/utils-aws-lambda';
 import { defaultRoutesPath } from './templateLambdaConsts';
+import { pwd } from '@goldstack/utils-sh';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
@@ -83,6 +84,7 @@ export const run = async (args: string[]): Promise<void> => {
         deploymentName: deployment.name,
         configs: lambdaRoutes,
         lambdaNamePrefix: deployment.configuration.lambdaNamePrefix || '',
+        packageRootDir: pwd(),
       });
       return;
     }
@@ -93,6 +95,7 @@ export const run = async (args: string[]): Promise<void> => {
         configuration: packageConfig.getDeployment(opArgs[0]).configuration,
         deployment: packageConfig.getDeployment(opArgs[0]),
         config: lambdaRoutes,
+        packageRootFolder: pwd(),
       });
       return;
     }

@@ -9,12 +9,15 @@ import { readLambdaConfig } from './generate/collectLambdasFromFiles';
 
 import { mkdir } from '@goldstack/utils-sh';
 import { getOutDirForLambda } from './buildFunctions';
+import { info } from '@goldstack/utils-log';
+import path from 'path';
 
 export interface DeployFunctionsParams {
   routesPath: string;
   configuration: LambdaApiDeploymentConfiguration;
   deployment: AWSDeployment;
   config: LambdaConfig[];
+  packageRootFolder: string;
 }
 
 export const deployFunctions = async (
@@ -27,10 +30,13 @@ export const deployFunctions = async (
       params.configuration.lambdaNamePrefix,
       config
     );
-    console.log(`[${functionName}]: Starting deployment`);
-    const functionDir = getOutDirForLambda(config);
+    info(`[${functionName}]: Starting deployment`);
+    const functionDir = getOutDirForLambda(params.packageRootFolder, config);
     mkdir('-p', functionDir);
-    const targetArchive = `./distLambda/zips/${functionName}.zip`;
+    const targetArchive = path.join(
+      params.packageRootFolder,
+      `distLambda/zips/${functionName}.zip`
+    );
     await deployFunction({
       targetArchiveName: targetArchive,
       lambdaPackageDir: functionDir,
@@ -38,7 +44,7 @@ export const deployFunctions = async (
       region: params.deployment.awsRegion,
       functionName,
     });
-    console.log(`[${functionName}]: Deployment completed`);
+    info(`[${functionName}]: Deployment completed`);
   });
   await Promise.all(operations);
 };
