@@ -31,9 +31,11 @@
     "esbuild": "^0.17.18",
     "esbuild-ignore-with-comments-plugin": "0.3.14",
     "esbuild-ssr-css-modules-plugin": "0.1.12",
+    "esbuild-tailwind-ssr-plugin": "0.1.0",
     "jest-transform-stub": "^2.0.0",
     "source-map-support": "^0.5.21",
-    "static-file-mapper-build": "0.3.22"
+    "static-file-mapper-build": "0.3.22",
+    "tailwindcss": "^3.4.16"
   },
   "devDependencies": {
     "@goldstack/template-ssr-cli": "0.3.55",

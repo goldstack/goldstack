@@ -3,8 +3,10 @@
 
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
 
+import tailwindPlugin from 'esbuild-tailwind-ssr-plugin';
 import cssPlugin from 'esbuild-ssr-css-modules-plugin';
 
+import fs from 'fs';
 import ignorePlugin from 'esbuild-ignore-with-comments-plugin';
 
 import type { BuildOptions } from 'esbuild';
@@ -36,6 +38,10 @@ const buildConfig = (): BuildConfiguration => {
             cssConfig: {
               plugins: [],
             },
+          }),
+          tailwindPlugin({
+            css: fs.readFileSync('./src/root.css').toString(),
+            staticFileMapper: getStaticFileMapper(),
           }),
           pnpPlugin(),
         ],
@@ -71,7 +77,7 @@ const buildConfig = (): BuildConfiguration => {
         ],
         bundle: true,
         external: [
-          // 'aws-sdk', // included in Lambda runtime environment, not any more for v18+
+          // 'aws-sdk', // included in Lambda runtime environment
           'mock-aws-s3-v3', // for s3 mock
           'testcontainers',
           'aws-sdk-client-mock', // for s3 and ses mocks
