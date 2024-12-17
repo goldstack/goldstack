@@ -18,6 +18,7 @@ import { AssertRestApiTest } from './tests/AssertRestApiTest';
 import { AssertWebsiteTest } from './tests/AssertWebsiteTest';
 import { AssertApplicationTest } from './tests/AssertApplicationTest';
 import { DestroyStateTest } from './tests/DestroyStateTest';
+import { PackageBuildTest } from './tests/PackageBuildTest';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function assert(condition: any, msg?: string): asserts condition {
@@ -53,6 +54,7 @@ export const getTemplateTests = (): TemplateTest[] => {
   return [
     new AssertPackageFilesTest(),
     new RootBuildTest(),
+    new PackageBuildTest(),
     new AssertRootFilesTest(),
     new InfraUpTest(),
     new InfraPlanTest(),
