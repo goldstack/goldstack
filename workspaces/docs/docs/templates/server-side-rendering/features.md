@@ -1,5 +1,6 @@
 - Server-side rendering of React pages
 - Styling using CSS modules supported
+- Styling using Tailwind supported
 - Hydration supported for client-side logic
 - Low latency, low cost and highly scalable by using the new [AWS HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html) and [CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
 - Minimal cold start times by bundling the source code of each page into separate Lambda functions

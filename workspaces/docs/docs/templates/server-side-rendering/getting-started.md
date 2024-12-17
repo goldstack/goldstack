@@ -28,7 +28,7 @@ import styles from './$index.module.css';
 const Index = (props: { message: string }): JSX.Element => {
   return (
     <>
-      <div>{props.message}</div>
+      <div className="m-12">{props.message}</div>
     </>
   );
 };
