@@ -8,6 +8,18 @@ import type {
 const renderDocument = async (
   props: RenderDocumentProps<ReactPropertiesType>
 ): Promise<string> => {
+  const tailwindPath = await props.staticFileMapper.resolve({
+    name: 'tailwind.css',
+  });
+
+  let tailwindConfig: string | undefined = undefined;
+  if (process.env.GOLDSTACK_DEPLOYMENT === 'local') {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const config = require('./../tailwind.config');
+
+    tailwindConfig = JSON.stringify(config.theme);
+  }
+
   const template = `
 <!DOCTYPE html>
 <html>
@@ -19,6 +31,21 @@ const renderDocument = async (
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+
+     ${
+       process.env.GOLDSTACK_DEPLOYMENT === 'local'
+         ? `<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+        `
+         : ''
+     }
+     ${
+       tailwindConfig
+         ? `<script>tailwind.config = {theme: ${tailwindConfig}};</script>
+        `
+         : ''
+     }
+    ${`<link rel="stylesheet" type="text/css" href="${tailwindPath}"  />`}
+
   </head>
   <body>
     ${props.injectIntoBody}
