@@ -55,6 +55,13 @@ export const run = async (): Promise<void> => {
           choices: ['true', 'false'],
           required: false,
         },
+        deployBeforeTest: {
+          describe:
+            'Deploy the template before tests have completed (useful for development)',
+          type: 'string',
+          choices: ['true', 'false'],
+          required: false,
+        },
       })
       .command(
         'schedule-all-deploy-sets',
@@ -155,7 +162,8 @@ export const run = async (): Promise<void> => {
         s3repo: repo,
         workDir: workDir,
         config,
-        skipTests: argv.skipTests ? argv.skipTests === 'true' : false,
+        skipTests: argv.skipTests === 'true',
+        deployBeforeTest: argv.deployBeforeTest === 'true',
         user: awsConfig,
       });
 

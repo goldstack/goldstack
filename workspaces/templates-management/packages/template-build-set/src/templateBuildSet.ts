@@ -30,6 +30,7 @@ export interface BuildSetParams {
   workDir: string;
   s3repo: S3TemplateRepository;
   skipTests?: boolean;
+  deployBeforeTest?: boolean;
   user?: AWSAPIKeyUser;
 }
 
@@ -100,7 +101,6 @@ const buildAndTestProject = async (
 
   const packageConfigs = getPackageConfigs(params.projectDir);
 
-  // console.log(JSON.stringify(packageConfigs, null, 2));
   for (const setPackageConfig of params.project.packageConfigurations) {
     const packageConfig = packageConfigs.find(
       (packageConfig) =>
@@ -254,6 +254,20 @@ export const buildSet = async (
     monorepoRoot,
   });
 
+  if (params.deployBeforeTest) {
+    info('Deploying templates before tests', {
+      workDir: params.workDir + 'templatesDeploy/',
+    });
+    await buildTemplates({
+      workDir: params.workDir + 'templatesDeploy/',
+      templates: params.config.deployTemplates,
+      monorepoRoot,
+      templateRepository: params.s3repo,
+    });
+
+    res.deployed = true;
+  }
+
   if (!params.skipTests) {
     const testResults: TestResult[] = await buildProjects({
       buildSetParams: params,
@@ -276,15 +290,19 @@ export const buildSet = async (
   resetMocks();
 
   // if everything is good, deploy templates
-  info('Deploying templates', { workDir: params.workDir + 'templatesDeploy/' });
-  await buildTemplates({
-    workDir: params.workDir + 'templatesDeploy/',
-    templates: params.config.deployTemplates,
-    monorepoRoot,
-    templateRepository: params.s3repo,
-  });
+  if (!params.deployBeforeTest) {
+    info('Deploying templates', {
+      workDir: params.workDir + 'templatesDeploy/',
+    });
+    await buildTemplates({
+      workDir: params.workDir + 'templatesDeploy/',
+      templates: params.config.deployTemplates,
+      monorepoRoot,
+      templateRepository: params.s3repo,
+    });
 
-  res.deployed = true;
+    res.deployed = true;
+  }
   return res;
 };
 
@@ -324,7 +342,7 @@ async function buildProjects(params: {
         write(read(params.monorepoRoot + project.repoReadme), 'README.md');
       }
       await execAsync(
-        'git config --global user.email "goldstack@pureleap.com"'
+        'git config --global user.email "1448524+mxro@users.noreply.github.com"'
       );
       await execAsync(
         'git config --global user.name "Goldstack Project Builder"'
