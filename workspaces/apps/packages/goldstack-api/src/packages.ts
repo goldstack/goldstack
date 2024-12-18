@@ -20,6 +20,7 @@ import { isSessionPaid } from './lib/stripe';
 
 import fs from 'fs';
 import assert from 'assert';
+import { join } from 'path';
 
 const router = Router({
   mergeParams: true,
@@ -68,7 +69,7 @@ const writePackage = async (params: {
   // write latest version for project config
   const owner = project.owner;
   project.owner = undefined;
-  write(JSON.stringify(project, null, 2), path + 'project.json');
+  write(JSON.stringify(project, null, 2), join(path, 'project.json'));
 
   // write owner into gitignored config file
   write(
@@ -77,16 +78,16 @@ const writePackage = async (params: {
   );
 
   // set project name in package json
-  const packageJson = JSON.parse(read(path + 'package.json'));
+  const packageJson = JSON.parse(read(join(path, 'package.json')));
   packageJson.name = project.projectName || '';
-  write(JSON.stringify(packageJson, null, 2), path + 'package.json');
+  write(JSON.stringify(packageJson, null, 2), join(path, 'package.json'));
 
   // write latest version for package configs
   const { packageConfigs } = await repo.getProjectData(projectId);
   writePackageConfigs(path, packageConfigs);
 
   // write aws user config
-  const userConfigPath = path + 'config/infra/aws/config.json';
+  const userConfigPath = join(path, 'config/infra/aws/config.json');
   write(
     JSON.stringify({ users: projectData.awsUsers }, null, 2),
     userConfigPath

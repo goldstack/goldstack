@@ -51,6 +51,20 @@ function assert(condition: any, msg?: string): asserts condition {
   }
 }
 
+function sortKeys(obj: any): any {
+  if (Array.isArray(obj)) {
+    return obj.map(sortKeys); // Recursively sort array elements
+  } else if (obj && typeof obj === 'object') {
+    return Object.keys(obj)
+      .sort() // Sort the keys
+      .reduce((sortedObj, key) => {
+        sortedObj[key] = sortKeys(obj[key]); // Recursively sort sub-objects
+        return sortedObj;
+      }, {} as Record<string, any>);
+  }
+  return obj; // Return the value if it's not an object or array
+}
+
 const setPackageName = (packageFolder: string, packageName: string): void => {
   const goldstackPackageConfig = readPackageConfig(packageFolder);
   goldstackPackageConfig.name = packageName;
@@ -64,7 +78,7 @@ const setPackageName = (packageFolder: string, packageName: string): void => {
   );
   packageJson.name = packageName;
   write(
-    JSON.stringify(packageJson, null, 2),
+    JSON.stringify(sortKeys(packageJson), null, 2),
     path.join(packageFolder, 'package.json')
   );
 };
