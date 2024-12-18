@@ -5730,6 +5730,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/utils-docs-cli", "workspace:workspaces/docs/packages/utils-docs-cli"],\
           ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-package-config-embedded", "workspace:workspaces/templates-lib/packages/utils-package-config-embedded"],\
           ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\

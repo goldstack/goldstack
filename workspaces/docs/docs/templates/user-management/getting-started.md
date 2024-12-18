@@ -66,6 +66,8 @@ yarn add user-management
 
 On the server, we can validate the tokens send by the client using the `connectWithCognito` method:
 
+For full example, see [SSR Example](https://github.com/goldstack/cognito-react-nodejs-example/blob/master/packages/server-side-rendering/src/routes/%24index.tsx#L124)
+
 ```typescript
 import { connectWithCognito } from 'user-management';
 
