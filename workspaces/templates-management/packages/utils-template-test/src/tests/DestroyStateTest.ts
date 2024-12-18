@@ -4,6 +4,7 @@ import { readPackageConfigFromDir } from '@goldstack/utils-package';
 
 import { read } from '@goldstack/utils-sh';
 import { retryOperation } from './Utils';
+import { info } from '@goldstack/utils-log';
 
 export class DestroyStateTest implements TemplateTest {
   getName(): string {
@@ -14,7 +15,7 @@ export class DestroyStateTest implements TemplateTest {
     const packageJson = JSON.parse(read(params.packageDir + 'package.json'));
 
     for (const deployment of packageConfig.deployments) {
-      console.log('Destroying remote state for', deployment.name);
+      info('Destroying remote state for ' + deployment.name);
       await retryOperation(
         async () => {
           process.env.GOLDSTACK_DEBUG = 'true';

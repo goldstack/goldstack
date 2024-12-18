@@ -56,6 +56,8 @@ export const createServerSideRenderingBuildSetConfig =
               packageTests: [
                 'assert-package-files',
                 'package-build',
+                'package-build-lambda',
+                'package-test',
                 'infra-up',
                 'deploy',
                 'assert-application',

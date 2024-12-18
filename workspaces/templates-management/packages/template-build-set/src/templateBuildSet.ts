@@ -126,7 +126,7 @@ const buildAndTestProject = async (
   // setting local AWS config file
   if (params.user) {
     const awsConfigPath = getAwsConfigPath(params.projectDir);
-    console.info('Writing AWS config to', path.resolve(awsConfigPath));
+    info('Writing AWS config to ' + path.resolve(awsConfigPath));
     mkdir('-p', path.dirname(awsConfigPath));
     write(
       JSON.stringify({
