@@ -8,7 +8,15 @@ import path from 'path';
  * Interface representing the state that will be persisted to file
  */
 interface PersistedState {
-  instances: { [port: string]: 'stopped' | { port: number } };
+  instances: {
+    [port: string]:
+      | 'stopped'
+      | {
+          port: number;
+          processId?: number;
+          dockerContainerId?: string;
+        };
+  };
   usageCounts: { [port: string]: number };
 }
 
@@ -66,12 +74,11 @@ class LocalInstancesManagerImpl implements LocalInstancesManager {
         if (instance === 'stopped') {
           this.startedInstances.set(portNum, 'stopped');
         } else {
-          // Create a dummy instance that will be replaced when actually started
+          // Restore instance with its process/container info
           this.startedInstances.set(portNum, {
             port: portNum,
-            stop: async () => {
-              // no-op since this is just a placeholder
-            },
+            processId: instance.processId,
+            dockerContainerId: instance.dockerContainerId,
           });
         }
       });
@@ -98,7 +105,13 @@ class LocalInstancesManagerImpl implements LocalInstancesManager {
       // Save instances
       this.startedInstances.forEach((instance, port) => {
         state.instances[port] =
-          instance === 'stopped' ? 'stopped' : { port: instance.port };
+          instance === 'stopped'
+            ? 'stopped'
+            : {
+                port: instance.port,
+                processId: instance.processId,
+                dockerContainerId: instance.dockerContainerId,
+              };
       });
 
       // Save usage counts

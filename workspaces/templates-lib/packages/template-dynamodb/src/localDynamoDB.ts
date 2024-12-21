@@ -15,7 +15,26 @@ import { localInstancesManager } from './localInstances';
 
 export interface DynamoDBInstance {
   port: number;
-  stop: () => Promise<void>;
+  processId?: number;
+  dockerContainerId?: string;
+}
+
+export async function stopInstance(instance: DynamoDBInstance): Promise<void> {
+  if (instance.processId) {
+    if (process.platform === 'win32') {
+      spawn('taskkill', ['/pid', instance.processId.toString(), '/t']);
+      // Give it some time before force kill
+      await new Promise<void>((resolve) => setTimeout(resolve, 5000));
+      spawn('taskkill', ['/pid', instance.processId.toString(), '/f', '/t']);
+    } else {
+      process.kill(instance.processId, 'SIGTERM');
+      // Give it some time before force kill
+      await new Promise<void>((resolve) => setTimeout(resolve, 5000));
+      process.kill(instance.processId, 'SIGKILL');
+    }
+  } else if (instance.dockerContainerId) {
+    await execAsync(`docker stop ${instance.dockerContainerId}`);
+  }
 }
 
 // Define type signatures for the methods
@@ -131,43 +150,6 @@ export const startLocalDynamoDB: StartLocalDynamoDBType = async (
   return newInstance;
 };
 
-function killProcess(childProcess: ChildProcess): Promise<void> {
-  return new Promise<void>((resolve, reject) => {
-    if (process.platform === 'win32') {
-      if (!childProcess.pid) {
-        throw new Error('Process id cannot be identified.');
-      }
-      spawn('taskkill', ['/pid', childProcess.pid?.toString(), '/t']);
-    } else {
-      childProcess.kill('SIGTERM');
-    }
-    const timeout = setTimeout(() => {
-      if (process.platform === 'win32') {
-        if (!childProcess.pid) {
-          throw new Error('Process id cannot be identified.');
-        }
-        spawn('taskkill', ['/pid', childProcess.pid?.toString(), '/f', '/t']);
-      } else {
-        childProcess.kill('SIGKILL');
-      }
-    }, 5000);
-
-    const errorTimeout = setTimeout(() => {
-      clearTimeout(timeout);
-      reject(new Error('Process could not be terminated after 30 s'));
-    }, 30000);
-    childProcess.on('exit', (code, signal) => {
-      clearTimeout(timeout);
-      clearTimeout(errorTimeout);
-
-      debug(
-        `DynamoDB child process exited with code ${code} and signal ${signal}`
-      );
-      resolve();
-    });
-  });
-}
-
 const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
   if (await check(port)) {
     warn(
@@ -175,9 +157,6 @@ const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
     );
     return {
       port,
-      stop: async () => {
-        // no op, someone else controls this instance
-      },
     };
   }
 
@@ -202,6 +181,11 @@ const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
       path: null,
       detached: false,
     });
+
+    if (!pr.pid) {
+      throw new Error('Process id cannot be identified.');
+    }
+
     await Promise.all([
       await waitPort({
         host: 'localhost',
@@ -215,21 +199,12 @@ const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
     info(`Started local DynamoDB with Java on port ${port}`);
     return {
       port,
-      stop: async () => {
-        info(`Stopping local Java DynamoDB on port ${port}`);
-        try {
-          await killProcess(pr);
-        } catch (e) {
-          error('Stopping local Java DynamoDB process not successful');
-          throw e;
-        }
-        info(`Local Java DynamoDB stopped on port ${port}`);
-      },
+      processId: pr.pid,
     };
   }
 
   if (commandExists('docker')) {
-    console.debug('Starting local DynamoDB with Docker');
+    info('Starting local DynamoDB with Docker');
     const detached = global['CI'] ? true : false;
     const hash = new Date().getTime();
     const containerName = 'goldstack-local-dynamodb-' + hash;
@@ -253,25 +228,7 @@ const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
     });
     return {
       port,
-      stop: async () => {
-        console.debug('Stopping local Docker DynamoDB');
-        try {
-          await killProcess(pr);
-          const containersAfterKillProcess = await execAsync(
-            'docker container ls',
-            {
-              silent: true,
-            }
-          );
-          if (containersAfterKillProcess.indexOf(containerName) !== -1) {
-            await execAsync(`docker stop ${containerName}`);
-          }
-        } catch (e) {
-          error('Stopping local Docker DynamoDB process not successful');
-          throw e;
-        }
-        info('Local Docker DynamoDB stopped');
-      },
+      dockerContainerId: containerName,
     };
   }
 
@@ -295,7 +252,7 @@ export const stopAllLocalDynamoDB: StopAllLocalDynamoDBType = async (
       debug(`Stopping instance on port ${port}`);
       localInstancesManager.setInstance(port, 'stopped');
       localInstancesManager.removeUsageCounter(port);
-      await instance.stop();
+      await stopInstance(instance);
     }
   }
 };
@@ -320,7 +277,7 @@ export const stopLocalDynamoDB: StopLocalDynamoDBType = async (
     if (remainingUsers === 0) {
       // Last user, stop the instance
       localInstancesManager.setInstance(portToStop, 'stopped');
-      await instance.stop();
+      await stopInstance(instance);
     }
   }
 };
