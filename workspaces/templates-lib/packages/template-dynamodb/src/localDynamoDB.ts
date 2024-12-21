@@ -11,17 +11,12 @@ import { check } from 'tcp-port-used';
 import { ChildProcess, spawn } from 'child_process';
 
 import { debug, error, info, warn } from '@goldstack/utils-log';
+import { localInstancesManager } from './localInstances';
 
 export interface DynamoDBInstance {
   port: number;
   stop: () => Promise<void>;
 }
-
-// Track instances by port instead of table name
-const startedInstances: Map<number, DynamoDBInstance | 'stopped'> = new Map();
-
-// Track number of active users per port
-const portUsageCounter: Map<number, number> = new Map();
 
 // Define type signatures for the methods
 export type LocalConnectType = (
@@ -58,12 +53,9 @@ export const localConnect: LocalConnectType = async (
   packageConfig,
   deploymentName
 ) => {
-  // Check if any instance is running
-  for (const [port, instance] of startedInstances.entries()) {
-    if (instance !== 'stopped') {
-      debug(`Connecting to existing local DynamoDB instance on port ${port}`);
-      return createClient(instance);
-    }
+  const existingInstance = localInstancesManager.getFirstRunningInstance();
+  if (existingInstance) {
+    return createClient(existingInstance);
   }
 
   if (areWeTestingWithJest()) {
@@ -113,35 +105,29 @@ export const startLocalDynamoDB: StartLocalDynamoDBType = async (
   deploymentName
 ) => {
   // Check if instance already exists on requested port
-  const existingInstance = startedInstances.get(port);
+  const existingInstance = localInstancesManager.getInstance(port);
   if (existingInstance && existingInstance !== 'stopped') {
     debug(
       `Starting DynamoDB local not required since instance already running on port ${port}`
     );
-    // Increment usage counter
-    portUsageCounter.set(port, (portUsageCounter.get(port) || 0) + 1);
+    localInstancesManager.incrementUsageCounter(port);
     return existingInstance;
   }
 
   // Check if any instance is already running on a different port
-  for (const [existingPort, instance] of startedInstances.entries()) {
+  const allInstances = localInstancesManager.getAllInstances();
+  for (const [existingPort, instance] of allInstances.entries()) {
     if (instance !== 'stopped') {
       warn(`You are starting a new DynamoDB instance on port ${port}. But a local DynamoDB instance is already running on port ${existingPort}.
         It is recommended to have only one instance of local DynamoDB running at a time (since one instance can support multiple tables).`);
-      // debug(`Using existing DynamoDB instance on port ${existingPort}`);
-      // return instance;
     }
   }
 
   debug(`Starting new DynamoDB local instance on port ${port}`);
   // No running instance found, start a new one
   const newInstance = await spawnLocalDynamoDB(port);
-  startedInstances.set(port, newInstance);
-  // Initialize usage counter
-  portUsageCounter.set(port, 1);
-  debug(
-    `DynamoDB local instance started on port ${port}. Currently defined instances: ${startedInstances.size}`
-  );
+  localInstancesManager.setInstance(port, newInstance);
+  localInstancesManager.incrementUsageCounter(port);
   return newInstance;
 };
 
@@ -300,14 +286,15 @@ export const stopAllLocalDynamoDB: StopAllLocalDynamoDBType = async (
 ) => {
   debug(
     'Stopping all local DynamoDB instances. Currently defined: ' +
-      startedInstances.size
+      localInstancesManager.getInstanceCount()
   );
   // Stop all running instances regardless of reference count
-  for (const [port, instance] of startedInstances.entries()) {
+  const allInstances = localInstancesManager.getAllInstances();
+  for (const [port, instance] of allInstances.entries()) {
     if (instance && instance !== 'stopped') {
       debug(`Stopping instance on port ${port}`);
-      startedInstances.set(port, 'stopped');
-      portUsageCounter.delete(port);
+      localInstancesManager.setInstance(port, 'stopped');
+      localInstancesManager.removeUsageCounter(port);
       await instance.stop();
     }
   }
@@ -326,18 +313,14 @@ export const stopLocalDynamoDB: StopLocalDynamoDBType = async (
   const portToStop = options?.port ?? defaultPort;
 
   // Stop specific instance
-  const instance = startedInstances.get(portToStop);
+  const instance = localInstancesManager.getInstance(portToStop);
   if (instance && instance !== 'stopped') {
-    // Decrement usage counter
-    const currentCount = portUsageCounter.get(portToStop) || 0;
-    if (currentCount <= 1) {
+    const remainingUsers =
+      localInstancesManager.decrementUsageCounter(portToStop);
+    if (remainingUsers === 0) {
       // Last user, stop the instance
-      startedInstances.set(portToStop, 'stopped');
-      portUsageCounter.delete(portToStop);
+      localInstancesManager.setInstance(portToStop, 'stopped');
       await instance.stop();
-    } else {
-      // Decrement counter
-      portUsageCounter.set(portToStop, currentCount - 1);
     }
   }
 };
