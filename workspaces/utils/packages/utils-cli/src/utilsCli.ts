@@ -91,9 +91,21 @@ export const wrapCli = async (func: AsyncFunction<any>): Promise<void> => {
     process.exit(0);
   } catch (e) {
     if (isDebug) {
+      logger().error(
+        {},
+        `Error while executing CLI command: ${
+          e.error || e.errorMessage || e.message
+        }`
+      );
+      console.error(e);
       throw e;
     } else {
-      console.log('❌ ' + e.message);
+      logger().info(
+        {},
+        '❌ Error while executing CLI command:' +
+          e.message +
+          '\n  For more information about this error, run this command with the environment variable GOLDSTACK_DEBUG set to true'
+      );
       process.exit(1);
     }
   }

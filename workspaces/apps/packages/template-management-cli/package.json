@@ -10,20 +10,14 @@
   ],
   "scripts": {
     "build": "yarn clean && yarn compile",
-    "build-docker": "ts-node ./src/build.ts build $@",
-    "clean": "rimraf ./dist && yarn clean-docker",
-    "clean-docker": "ts-node ./src/build.ts clean $@",
+    "clean": "rimraf ./dist",
     "cli": "ts-node --swc ./src/cli.ts",
     "cli-deploy-set-dev": "yarn cli deploy-set --set server-side-rendering --repo goldstack-dev --deployment dev --workDir tmp --skipTests false",
     "cli-schedule-all-deploy-sets-dev": "yarn cli schedule-all-deploy-sets --repo goldstack-dev --deployment dev",
     "compile": "tsc --build",
     "compile-watch": "tsc --build --watch",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
-    "deploy": "yarn build && yarn build-docker $@ && yarn template deploy $@",
-    "deploy-ts": "yarn build && yarn build-docker $@ && yarn template-ts deploy $@",
     "infra": "yarn template infra",
-    "template": "template-docker-image-aws",
-    "template-ts": "ts-node scripts/template.ts",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {

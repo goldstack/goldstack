@@ -31,6 +31,7 @@ import { deployToS3 } from './deployToS3';
 
 import minimatch from 'minimatch';
 import { pwd } from '@goldstack/utils-sh';
+import { warn } from '@goldstack/utils-log';
 
 export const run = async (
   args: string[],
@@ -111,7 +112,7 @@ export const run = async (
           minimatch(el.relativeFilePath, `*${opArgs[1]}*`)
         );
         if (filteredLambdaRoutes.length === 0) {
-          console.warn(
+          warn(
             `Cannot perform command '${command}'. No routes match supplied filter ${opArgs[1]}.`
           );
           return;
