@@ -44,7 +44,7 @@
     "underscore@npm:1.7.0": "1.12.1"
   },
   "devDependencies": {
-    "@goldstack/nodemonx": "0.4.19",
+    "@goldstack/nodemonx": "0.4.20",
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-typescript-references": "0.3.11",
     "@types/jest": "^29.5.14",
