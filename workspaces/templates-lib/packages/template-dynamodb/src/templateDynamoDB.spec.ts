@@ -1,6 +1,7 @@
 import {
   getTableName,
   startLocalDynamoDB,
+  stopAllLocalDynamoDB,
   stopLocalDynamoDB,
 } from './templateDynamoDBTable';
 import { ThisPackage } from './types/DynamoDBPackage';
@@ -9,7 +10,7 @@ import { connect } from './templateDynamoDBTable';
 import { PutItemCommand, GetItemCommand } from '@aws-sdk/client-dynamodb';
 import { createTestMigrations } from './testUtils/testMigrations';
 import { findFreePorts } from 'find-free-ports';
-import { promisify } from 'util';
+import { debug } from '@goldstack/utils-log';
 
 jest.setTimeout(240000);
 
@@ -150,12 +151,12 @@ describe('DynamoDB Template', () => {
   });
 
   it('should handle default port when no port specified', async () => {
-    const defaultPort = 8000; // Default port when no env variable set
     const [customPort] = await findFreePorts(1);
 
+    const defaultPort = 8000;
     // Start an instance on the default port with multiple references
-    await startLocalDynamoDB(mockConfig1, mockSchema, defaultPort, 'local');
-    await startLocalDynamoDB(mockConfig1, mockSchema, defaultPort, 'local');
+    await startLocalDynamoDB(mockConfig1, mockSchema, undefined, 'local');
+    await startLocalDynamoDB(mockConfig1, mockSchema, undefined, 'local');
     expect(await check(defaultPort)).toBe(true);
 
     // Start another instance on a custom port
@@ -169,6 +170,7 @@ describe('DynamoDB Template', () => {
 
     // Second stop call without port should stop default port instance
     await stopLocalDynamoDB(mockConfig1, mockSchema, 'local');
+    debug('Stop local dynamoDB completed');
     expect(await check(defaultPort)).toBe(false); // Stopped as counter reached 0
     expect(await check(customPort)).toBe(true); // Still unaffected
 
@@ -178,16 +180,6 @@ describe('DynamoDB Template', () => {
   });
 
   afterAll(async () => {
-    // Clean up both instances if they exist
-    try {
-      await stopLocalDynamoDB(mockConfig1, mockSchema, undefined, 'local');
-    } catch (e) {
-      // Ignore errors if instance wasn't running
-    }
-    try {
-      await stopLocalDynamoDB(mockConfig2, mockSchema, undefined, 'local');
-    } catch (e) {
-      // Ignore errors if instance wasn't running
-    }
+    await stopAllLocalDynamoDB(mockConfig1, mockSchema, 'local');
   });
 });

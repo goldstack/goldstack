@@ -2,7 +2,6 @@
 import { debug, error } from '@goldstack/utils-log';
 import { DynamoDBInstance } from './localDynamoDB';
 import fs from 'fs';
-import path from 'path';
 
 /**
  * Interface representing the state that will be persisted to file
@@ -146,7 +145,14 @@ class LocalInstancesManagerImpl implements LocalInstancesManager {
         instance === 'stopped' ? 'stopped' : 'started'
       } on port ${port}. Currently defined instances: ${
         this.startedInstances.size
-      }`
+      }`,
+      {
+        definedInstances: this.startedInstances.size,
+        stoppedInstances: [...this.startedInstances.entries()].filter(
+          (e) => e[1] === 'stopped'
+        ).length,
+        allInstances: [...this.startedInstances.entries()],
+      }
     );
     this.saveState();
   }

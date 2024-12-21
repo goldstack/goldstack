@@ -8,7 +8,7 @@ import { getTableName } from './dynamoDBPackageUtils';
 import { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
 import waitPort from 'wait-port';
 import { check } from 'tcp-port-used';
-import { ChildProcess, spawn } from 'child_process';
+import { ChildProcess, spawn, spawnSync } from 'child_process';
 
 import { debug, error, info, warn } from '@goldstack/utils-log';
 import { localInstancesManager } from './localInstances';
@@ -22,15 +22,76 @@ export interface DynamoDBInstance {
 export async function stopInstance(instance: DynamoDBInstance): Promise<void> {
   if (instance.processId) {
     if (process.platform === 'win32') {
-      spawn('taskkill', ['/pid', instance.processId.toString(), '/t']);
+      // Try graceful termination first
+      const result = spawnSync('taskkill', [
+        '/pid',
+        instance.processId.toString(),
+        '/t',
+      ]);
+      if (result.status !== 0) {
+        warn(
+          `Failed to terminate process ${instance.processId} gracefully: ${result.stderr}`
+        );
+      }
       // Give it some time before force kill
       await new Promise<void>((resolve) => setTimeout(resolve, 5000));
-      spawn('taskkill', ['/pid', instance.processId.toString(), '/f', '/t']);
+      // Force kill
+      const forceResult = spawnSync('taskkill', [
+        '/pid',
+        instance.processId.toString(),
+        '/f',
+        '/t',
+      ]);
+      if (forceResult.status !== 0) {
+        error(
+          `Failed to force kill process ${instance.processId}: ${forceResult.stderr}`
+        );
+        throw new Error(`Failed to terminate process ${instance.processId}`);
+      }
     } else {
-      process.kill(instance.processId, 'SIGTERM');
-      // Give it some time before force kill
-      await new Promise<void>((resolve) => setTimeout(resolve, 5000));
-      process.kill(instance.processId, 'SIGKILL');
+      try {
+        // Try graceful termination first
+        process.kill(instance.processId, 'SIGTERM');
+        // Give it some time before force kill
+        await new Promise<void>((resolve) => setTimeout(resolve, 5000));
+
+        // Check if process still exists
+        try {
+          process.kill(instance.processId, 0); // Signal 0 is used to check existence
+          // Process still exists, try force kill
+          process.kill(instance.processId, 'SIGKILL');
+
+          // Wait a moment and verify process is gone
+          await new Promise<void>((resolve) => setTimeout(resolve, 1000));
+          try {
+            process.kill(instance.processId, 0);
+            // If we get here, process still exists
+            error(
+              `Failed to terminate process ${instance.processId} after SIGKILL`
+            );
+            throw new Error(
+              `Process ${instance.processId} could not be terminated`
+            );
+          } catch (e) {
+            if ((e as NodeJS.ErrnoException).code === 'ESRCH') {
+              // Process successfully terminated
+              debug(`Process ${instance.processId} successfully terminated`);
+            } else {
+              throw e;
+            }
+          }
+        } catch (e) {
+          if ((e as NodeJS.ErrnoException).code === 'ESRCH') {
+            // Process already terminated after SIGTERM
+            debug(`Process ${instance.processId} terminated gracefully`);
+          } else {
+            throw e;
+          }
+        }
+      } catch (e) {
+        error(`Failed to terminate process ${instance.processId}: ${e}`);
+        throw e;
+      }
     }
   } else if (instance.dockerContainerId) {
     await execAsync(`docker stop ${instance.dockerContainerId}`);
