@@ -39,30 +39,42 @@
     "names": [
       "goldstack-test-ssr-v2--__index.map"
     ],
-    "generatedName": "-__index.3fba57a4e263a4943ee938e48e0da0a2.map.json"
+    "generatedName": "-__index.68bf551dc6f05aaf615dc40dc7f0bc71.map.json"
   },
   {
     "names": [
       "goldstack-test-ssr-v2--__index-bundle.js"
     ],
-    "generatedName": "-__index-bundle.356eb33ca335092eca61a0eb4676b2f2.js"
+    "generatedName": "-__index-bundle.0e0032ddddff8cc2dc4c708f15ff375e.js"
   },
   {
     "names": [
       "goldstack-test-ssr-v2-posts.map"
     ],
-    "generatedName": "posts.d10a189c330287db3c1f8285204799a3.map.json"
+    "generatedName": "posts.002bee16e86c649655d655c8c60e0e31.map.json"
   },
   {
     "names": [
       "goldstack-test-ssr-v2-posts-bundle.js"
     ],
-    "generatedName": "posts-bundle.f9b041d9dcd2a6a63cf952fca3b81199.js"
+    "generatedName": "posts-bundle.dc26b7292f6f400d1b200390f10baa1f.js"
   },
   {
     "names": [
       "tailwind.css"
     ],
     "generatedName": "tailwind.2e13786bf9d3b38dae1a31780ebc224b.css"
+  },
+  {
+    "names": [
+      "goldstack-test-ssr-v2-robots_txt.map"
+    ],
+    "generatedName": "robots_txt.bc53b17a7eeaae75bc8ee62372fbb8a7.map.json"
+  },
+  {
+    "names": [
+      "goldstack-test-ssr-v2-robots_txt-bundle.js"
+    ],
+    "generatedName": "robots_txt-bundle.309fefc463b5621ba3a34d76eed0c7fc.js"
   }
 ]

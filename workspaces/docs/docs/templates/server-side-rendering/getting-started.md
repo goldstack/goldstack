@@ -52,6 +52,42 @@ export default Index;
 
 Note the file should have the `.tsx` extension.
 
+#### Defining API Endpoints
+
+
+It is also possible to define API endpoints that do not include SSR.
+
+See the following example that defines a file `[id].ts`.
+
+Note the `/* esbuild-ignore ui */` at the beginning of the file. We should add this to any file that should
+not be included in the client bundle.
+
+```typescript
+/* esbuild-ignore ui */
+
+import {
+  Handler,
+  APIGatewayProxyEventV2,
+  APIGatewayProxyResultV2,
+} from 'aws-lambda';
+
+type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const handler: ProxyHandler = async (event, context) => {
+  const id = event.pathParameters?.['id'] || 'not specified';
+
+  return {
+    statusCode: 201,
+    body: JSON.stringify({
+      message: `Accessing order [${id}]`,
+    }),
+  };
+};
+```
+
+Note that endpoints that do not require SSR, can have the extension `.ts`.
+
 #### Defining Routes
 
 Routes are defined through the names of folders and source folders within the `src/routes` folder. There are a few rules to keep in mind:

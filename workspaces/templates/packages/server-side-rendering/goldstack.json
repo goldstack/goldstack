@@ -22,6 +22,10 @@
           "ANY /posts": {
             "function_name": "goldstack-test-ssr-v2-posts",
             "route": "ANY /posts"
+          },
+          "ANY /robots.txt": {
+            "function_name": "goldstack-test-ssr-v2-robots_txt",
+            "route": "ANY /robots.txt"
           }
         }
       },

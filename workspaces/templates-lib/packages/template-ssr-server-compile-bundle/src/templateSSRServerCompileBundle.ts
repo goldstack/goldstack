@@ -11,6 +11,7 @@ import type {
   ClientBuildOptionsArgs,
   ServerBuildOptionsArgs,
 } from '@goldstack/utils-aws-lambda';
+import { debug } from '@goldstack/utils-log';
 
 export type {
   ClientBuildOptionsArgs,
@@ -74,6 +75,7 @@ export const compileBundle = async ({
   if (clientBuildConfig.sourcemap && clientBuildConfig.sourcemap !== 'inline') {
     throw new Error('Only `inline` is supported for the `sourcemap` parameter');
   }
+  debug(`Compiling client bundle for ${entryPoint}`, { entryPoint });
   const res = await build({
     ...clientBuildConfig,
     entryPoints: [entryPoint],

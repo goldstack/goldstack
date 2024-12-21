@@ -4330,6 +4330,7 @@ __metadata:
     "@goldstack/utils-docs-cli": "npm:0.3.11"
     "@goldstack/utils-esbuild": "npm:0.5.11"
     "@goldstack/utils-git": "npm:0.2.11"
+    "@goldstack/utils-log": "npm:0.3.16"
     "@goldstack/utils-package": "npm:0.4.19"
     "@goldstack/utils-package-config-embedded": "npm:0.5.20"
     "@goldstack/utils-package-config-generate": "npm:0.3.12"

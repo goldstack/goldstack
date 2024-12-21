@@ -15,6 +15,7 @@ import {
   getOutDirForLambda,
   LambdaConfig,
 } from '@goldstack/utils-aws-lambda';
+import { debug } from '@goldstack/utils-log';
 import { mkdir, write } from '@goldstack/utils-sh';
 import path from 'path';
 
@@ -37,6 +38,11 @@ export const buildBundles = async ({
     const destDir = getOutDirForLambda(packageRootDir, config);
     mkdir('-p', destDir);
     const functionName = generateFunctionName(lambdaNamePrefix, config);
+
+    debug(`[${functionName}] Building function`, {
+      destinationDirectory: destDir,
+    });
+
     const compileResult = await compileBundle({
       entryPoint: `${routesDir}/${config.relativeFilePath}`,
       buildOptions: {
