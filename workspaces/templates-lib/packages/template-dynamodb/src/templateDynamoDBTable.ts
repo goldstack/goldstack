@@ -56,7 +56,7 @@ export const getTableName = async (
 export const startLocalDynamoDB = async (
   goldstackConfig: DynamoDBPackage | any,
   packageSchema: any,
-  port: number,
+  port?: number,
   deploymentName?: string
 ): Promise<void> => {
   deploymentName = getDeploymentName(deploymentName);
@@ -73,7 +73,16 @@ export const startLocalDynamoDB = async (
   const lib = require(excludeInBundle('./localDynamoDB')) as {
     startLocalDynamoDB: StartLocalDynamoDBType;
   };
-  await lib.startLocalDynamoDB(packageConfig, { port }, deploymentName);
+  const portToUse =
+    port ||
+    (process.env.DYNAMODB_LOCAL_PORT &&
+      parseInt(process.env.DYNAMODB_LOCAL_PORT)) ||
+    8000;
+  await lib.startLocalDynamoDB(
+    packageConfig,
+    { port: portToUse },
+    deploymentName
+  );
 };
 
 export const stopLocalDynamoDB = async (

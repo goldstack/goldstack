@@ -12,12 +12,13 @@ import { ChildProcess, spawn } from 'child_process';
 
 import { debug, error, info, warn } from '@goldstack/utils-log';
 
-type DynamoDBTableName = string;
-
 export interface DynamoDBInstance {
   port: number;
   stop: () => Promise<void>;
 }
+
+// Track instances by port instead of table name
+const startedInstances: Map<number, DynamoDBInstance | 'stopped'> = new Map();
 
 // Define type signatures for the methods
 export type LocalConnectType = (
@@ -40,35 +41,36 @@ function areWeTestingWithJest(): boolean {
   return process.env.JEST_WORKER_ID !== undefined;
 }
 
-const startedContainers: Map<DynamoDBTableName, DynamoDBInstance | 'stopped'> =
-  new Map();
-
 export const localConnect: LocalConnectType = async (
   packageConfig,
   deploymentName
 ) => {
-  const tableName = await getTableName(packageConfig, deploymentName);
-  const startedContainer = startedContainers.get(tableName);
+  // Check if any instance is running
+  for (const [port, instance] of startedInstances.entries()) {
+    if (instance !== 'stopped') {
+      debug(`Connecting to existing local DynamoDB instance on port ${port}`);
+      return createClient(instance);
+    }
+  }
 
-  if (areWeTestingWithJest() && !startedContainer) {
+  if (areWeTestingWithJest()) {
     throw new Error(
       'DynamoDB Local has not been started. When running Jest test, start Local DynamoDB explicitly with `startLocalDynamoDB` and shut the instance down with `stopLocalDynamoDB` when tests are completed.'
     );
   }
 
-  if (startedContainer && startedContainer !== 'stopped') {
-    debug(
-      `Connecting to local DynamoDB instance on port ${startedContainer.port}`
-    );
-    return createClient(startedContainer);
-  }
-
-  const newContainer = await startLocalDynamoDB(
+  const portToUse =
+    (process.env.DYNAMODB_LOCAL_PORT &&
+      parseInt(process.env.DYNAMODB_LOCAL_PORT)) ||
+    8000;
+  debug(`Starting new local DynamoDB instance on port ${portToUse}.`);
+  // No running instance found, start a new one
+  const newInstance = await startLocalDynamoDB(
     packageConfig,
-    { port: 8000 },
+    { port: portToUse },
     deploymentName
   );
-  return createClient(newContainer);
+  return createClient(newInstance);
 };
 
 export const endpointUrl = (startedContainer: DynamoDBInstance): string => {
@@ -97,22 +99,30 @@ export const startLocalDynamoDB: StartLocalDynamoDBType = async (
   { port },
   deploymentName
 ) => {
-  const tableName = await getTableName(packageConfig, deploymentName);
-
-  let startedContainer = startedContainers.get(tableName);
-  if (startedContainer && startedContainer !== 'stopped') {
-    return startedContainer;
-  }
-  startedContainer = await spawnLocalDynamoDB(port);
-
-  const startedContainerTest = startedContainers.get(tableName);
-  if (startedContainerTest && startedContainerTest !== 'stopped') {
-    await startedContainer.stop();
-    return startedContainerTest;
+  // Check if instance already exists on requested port
+  const existingInstance = startedInstances.get(port);
+  if (existingInstance && existingInstance !== 'stopped') {
+    debug(
+      `Starting DynamoDB local not required since instance already running on port ${port}`
+    );
+    return existingInstance;
   }
 
-  startedContainers.set(tableName, startedContainer);
-  return startedContainer;
+  // Check if any instance is already running on a different port
+  for (const [existingPort, instance] of startedInstances.entries()) {
+    if (instance !== 'stopped') {
+      warn(`You are starting a new DynamoDB instance on port ${port}. But a local DynamoDB instance is already running on port ${existingPort}.
+        It is recommended to have only one instance of local DynamoDB running at a time (since one instance can support multiple tables).`);
+      // debug(`Using existing DynamoDB instance on port ${existingPort}`);
+      // return instance;
+    }
+  }
+
+  debug(`Starting new DynamoDB local instance on port ${port}`);
+  // No running instance found, start a new one
+  const newInstance = await spawnLocalDynamoDB(port);
+  startedInstances.set(port, newInstance);
+  return newInstance;
 };
 
 function killProcess(childProcess: ChildProcess): Promise<void> {
@@ -180,7 +190,7 @@ const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
   }
 
   if (javaViable) {
-    info('Starting local DynamoDB with Java');
+    info(`Starting local DynamoDB with Java on port ${port}`);
     const pr = dynamoDBLocal.spawn({
       port,
       path: null,
@@ -190,23 +200,24 @@ const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
       await waitPort({
         host: 'localhost',
         port,
+        output: 'silent',
       }),
       await new Promise<void>((resolve) => {
         pr.stdout.once('data', () => resolve());
       }),
     ]);
-    info('Started local DynamoDB with Java');
+    info(`Started local DynamoDB with Java on port ${port}`);
     return {
       port,
       stop: async () => {
-        info('Stopping local Java DynamoDB');
+        info(`Stopping local Java DynamoDB on port ${port}`);
         try {
           await killProcess(pr);
         } catch (e) {
           error('Stopping local Java DynamoDB process not successful');
           throw e;
         }
-        info('Local Java DynamoDB stopped');
+        info(`Local Java DynamoDB stopped on port ${port}`);
       },
     };
   }
@@ -229,6 +240,7 @@ const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
     await waitPort({
       host: 'localhost',
       port,
+      output: 'silent',
     });
     await new Promise<void>((resolve) => {
       setTimeout(resolve, 5000);
@@ -266,16 +278,11 @@ export const stopLocalDynamoDB: StopLocalDynamoDBType = async (
   packageConfig,
   deploymentName
 ) => {
-  const tableName = await getTableName(packageConfig, deploymentName);
-  const startedContainer = startedContainers.get(tableName);
-  if (!startedContainer) {
-    throw new Error(
-      `Attempting to stop container that has not been started for DynamoDB table ${tableName}`
-    );
+  // Stop all running instances
+  for (const [port, instance] of startedInstances.entries()) {
+    if (instance !== 'stopped') {
+      startedInstances.set(port, 'stopped');
+      await instance.stop();
+    }
   }
-  if (startedContainer === 'stopped') {
-    return;
-  }
-  startedContainers.set(tableName, 'stopped');
-  await startedContainer.stop();
 };
