@@ -188,3 +188,34 @@ await startLocalDynamoDB(8080);
 ```
 
 By default the port `8000` will be used or the value of the environment variable `DYNAMODB_LOCAL_PORT)`.
+
+Since starting local DynamoDB instances takes a long time, it is recommended, to only call the `startLocalDynamoDB` in your tests or test suites.
+
+Then call `stopAllLocalDynamoDB` in a global teardown:
+
+
+`scripts/globalTeardown.ts`:
+
+```typescript
+import { info } from '@goldstack/utils-log';
+import { stopAllLocalDynamoDB } from './../src/table';
+
+export default async () => {
+  info(
+    'Jest global teardown: Stopping all left over local DynamoDB instances.'
+  );
+  await stopAllLocalDynamoDB();
+};
+```
+
+`jest.config.js`:
+
+```javascript
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const base = require('./../../jest.config');
+
+module.exports = {
+  ...base,
+  globalTeardown: '<rootDir>/scripts/globalTeardown.ts',
+};
+```

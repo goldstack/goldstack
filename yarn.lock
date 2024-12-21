@@ -2745,6 +2745,7 @@ __metadata:
     "@aws-sdk/lib-dynamodb": "npm:^3.645.0"
     "@goldstack/template-dynamodb": "npm:0.3.30"
     "@goldstack/template-dynamodb-cli": "npm:0.6.31"
+    "@goldstack/utils-log": "npm:0.3.16"
     "@swc/core": "npm:^1.9.3"
     "@swc/jest": "npm:^0.2.37"
     "@types/ejs": "npm:^3"

@@ -20,6 +20,9 @@ export interface DynamoDBInstance {
 // Track instances by port instead of table name
 const startedInstances: Map<number, DynamoDBInstance | 'stopped'> = new Map();
 
+// Track number of active users per port
+const portUsageCounter: Map<number, number> = new Map();
+
 // Define type signatures for the methods
 export type LocalConnectType = (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
@@ -32,7 +35,17 @@ export type StartLocalDynamoDBType = (
   deploymentName?: string
 ) => Promise<DynamoDBInstance>;
 
+export interface StopLocalDynamoDBOptions {
+  port?: number;
+}
+
 export type StopLocalDynamoDBType = (
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  options?: StopLocalDynamoDBOptions,
+  deploymentName?: string
+) => Promise<void>;
+
+export type StopAllLocalDynamoDBType = (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName?: string
 ) => Promise<void>;
@@ -105,6 +118,8 @@ export const startLocalDynamoDB: StartLocalDynamoDBType = async (
     debug(
       `Starting DynamoDB local not required since instance already running on port ${port}`
     );
+    // Increment usage counter
+    portUsageCounter.set(port, (portUsageCounter.get(port) || 0) + 1);
     return existingInstance;
   }
 
@@ -122,6 +137,11 @@ export const startLocalDynamoDB: StartLocalDynamoDBType = async (
   // No running instance found, start a new one
   const newInstance = await spawnLocalDynamoDB(port);
   startedInstances.set(port, newInstance);
+  // Initialize usage counter
+  portUsageCounter.set(port, 1);
+  debug(
+    `DynamoDB local instance started on port ${port}. Currently defined instances: ${startedInstances.size}`
+  );
   return newInstance;
 };
 
@@ -274,15 +294,50 @@ const spawnLocalDynamoDB = async (port: number): Promise<DynamoDBInstance> => {
   );
 };
 
-export const stopLocalDynamoDB: StopLocalDynamoDBType = async (
+export const stopAllLocalDynamoDB: StopAllLocalDynamoDBType = async (
   packageConfig,
   deploymentName
 ) => {
-  // Stop all running instances
+  debug(
+    'Stopping all local DynamoDB instances. Currently defined: ' +
+      startedInstances.size
+  );
+  // Stop all running instances regardless of reference count
   for (const [port, instance] of startedInstances.entries()) {
-    if (instance !== 'stopped') {
+    if (instance && instance !== 'stopped') {
+      debug(`Stopping instance on port ${port}`);
       startedInstances.set(port, 'stopped');
+      portUsageCounter.delete(port);
       await instance.stop();
+    }
+  }
+};
+
+export const stopLocalDynamoDB: StopLocalDynamoDBType = async (
+  packageConfig,
+  options,
+  deploymentName
+) => {
+  // If no port specified, use default port
+  const defaultPort =
+    (process.env.DYNAMODB_LOCAL_PORT &&
+      parseInt(process.env.DYNAMODB_LOCAL_PORT)) ||
+    8000;
+  const portToStop = options?.port ?? defaultPort;
+
+  // Stop specific instance
+  const instance = startedInstances.get(portToStop);
+  if (instance && instance !== 'stopped') {
+    // Decrement usage counter
+    const currentCount = portUsageCounter.get(portToStop) || 0;
+    if (currentCount <= 1) {
+      // Last user, stop the instance
+      startedInstances.set(portToStop, 'stopped');
+      portUsageCounter.delete(portToStop);
+      await instance.stop();
+    } else {
+      // Decrement counter
+      portUsageCounter.set(portToStop, currentCount - 1);
     }
   }
 };

@@ -3,6 +3,7 @@ import {
   getTableName as templateGetTableName,
   startLocalDynamoDB as templateStartLocalDynamoDB,
   stopLocalDynamoDB as templateStopLocalDynamoDB,
+  stopAllLocalDynamoDB as templateStopAllLocalDynamoDB,
   migrateDownTo as templateMigrateDownTo,
 } from '@goldstack/template-dynamodb';
 
@@ -84,14 +85,27 @@ export const startLocalDynamoDB = async (
 };
 
 export const stopLocalDynamoDB = async (
+  port?: string,
   deploymentName?: string
 ): Promise<void> => {
   return await templateStopLocalDynamoDB(
     goldstackConfig,
     goldstackSchema,
+    port,
     deploymentName
   );
 };
+
+export const stopAllLocalDynamoDB = async (
+  deploymentName?: string
+): Promise<void> => {
+  return await templateStopAllLocalDynamoDB(
+    goldstackConfig,
+    goldstackSchema,
+    deploymentName
+  );
+};
+
 export const getTableName = async (
   deploymentName?: string
 ): Promise<string> => {

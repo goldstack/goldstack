@@ -3,4 +3,5 @@ const base = require('./../../jest.config');
 
 module.exports = {
   ...base,
+  globalTeardown: '<rootDir>/scripts/globalTeardown.ts',
 };

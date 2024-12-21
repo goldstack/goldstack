@@ -27,6 +27,7 @@
     "@aws-sdk/client-dynamodb": "^3.645.0",
     "@aws-sdk/lib-dynamodb": "^3.645.0",
     "@goldstack/template-dynamodb": "0.3.30",
+    "@goldstack/utils-log": "0.3.16",
     "dynamodb-toolbox": "^1.11.8",
     "umzug": "^3.8.2"
   },
