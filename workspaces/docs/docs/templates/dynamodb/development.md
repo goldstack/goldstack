@@ -193,7 +193,6 @@ Since starting local DynamoDB instances takes a long time, it is recommended, to
 
 Then call `stopAllLocalDynamoDB` in a global teardown:
 
-
 `scripts/globalTeardown.ts`:
 
 ```typescript

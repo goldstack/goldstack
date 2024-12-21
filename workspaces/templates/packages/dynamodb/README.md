@@ -212,6 +212,66 @@ const documentClient = new DynamoDB.DocumentClient({
 });
 ```
 
+#### Testing
+
+To run test, you can use the methods `startLocalDynamoDB` and `stopLocalDynamoDB`:
+
+```
+it('Should connect to DynamoDB table', async () => {
+  await startLocalDynamoDB();
+
+  const table = await connect();
+
+  const res = await table.send(
+    new DescribeTableCommand({
+      TableName: await getTableName(),
+    })
+  );
+
+  expect(res.Table?.TableName?.length).toBeGreaterThan(2);
+  expect(table).toBeDefined();
+
+  await stopLocalDynamoDB();
+});
+
+```
+
+You can specify a port where the local DynamoDB server should run:
+
+    await startLocalDynamoDB(8080);
+
+By default the port `8000` will be used or the value of the environment variable `DYNAMODB_LOCAL_PORT)`.
+
+Since starting local DynamoDB instances takes a long time, it is recommended, to only call the `startLocalDynamoDB` in your tests or test suites.
+
+Then call `stopAllLocalDynamoDB` in a global teardown:
+
+`scripts/globalTeardown.ts`:
+
+```typescript
+import { info } from '@goldstack/utils-log';
+import { stopAllLocalDynamoDB } from './../src/table';
+
+export default async () => {
+  info(
+    'Jest global teardown: Stopping all left over local DynamoDB instances.'
+  );
+  await stopAllLocalDynamoDB();
+};
+```
+
+`jest.config.js`:
+
+```javascript
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const base = require('./../../jest.config');
+
+module.exports = {
+  ...base,
+  globalTeardown: '<rootDir>/scripts/globalTeardown.ts',
+};
+```
+
 ## Infrastructure
 
 All infrastructure for this module is defined in Terraform. You can find the Terraform files for this template in the directory `[moduleDir]/infra/aws`. You can define multiple deployments for this template, for instance for development, staging and production environments.
