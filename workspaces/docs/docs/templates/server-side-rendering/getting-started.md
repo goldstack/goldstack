@@ -54,7 +54,6 @@ Note the file should have the `.tsx` extension.
 
 #### Defining API Endpoints
 
-
 It is also possible to define API endpoints that do not include SSR.
 
 See the following example that defines a file `[id].ts`.
