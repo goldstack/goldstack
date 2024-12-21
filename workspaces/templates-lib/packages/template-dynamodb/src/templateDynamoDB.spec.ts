@@ -1,6 +1,7 @@
 import {
   getTableName,
   startLocalDynamoDB,
+  stopAllLocalDynamoDB,
   stopLocalDynamoDB,
 } from './templateDynamoDBTable';
 import { ThisPackage } from './types/DynamoDBPackage';
@@ -9,7 +10,7 @@ import { connect } from './templateDynamoDBTable';
 import { PutItemCommand, GetItemCommand } from '@aws-sdk/client-dynamodb';
 import { createTestMigrations } from './testUtils/testMigrations';
 import { findFreePorts } from 'find-free-ports';
-import { promisify } from 'util';
+import { debug } from '@goldstack/utils-log';
 
 jest.setTimeout(240000);
 
@@ -59,7 +60,7 @@ describe('DynamoDB Template', () => {
     properties: {},
   };
 
-  it('should be able to run two DynamoDB instances with different tables on different ports', async () => {
+  it('should handle reference counting and port-specific stopping correctly', async () => {
     // Get two free ports for our DynamoDB instances
     const [port1, port2] = await findFreePorts(2);
 
@@ -129,28 +130,56 @@ describe('DynamoDB Template', () => {
     );
     expect(response2.Item).toBeUndefined();
 
-    // Stop first instance
-    await stopLocalDynamoDB(mockConfig1, mockSchema, 'local');
+    // Start first instance again to test reference counting
+    await startLocalDynamoDB(mockConfig1, mockSchema, port1, 'local');
+    expect(await check(port1)).toBe(true);
+
+    // First stop call should not actually stop the instance due to reference count
+    await stopLocalDynamoDB(mockConfig1, mockSchema, port1, 'local');
+    expect(await check(port1)).toBe(true);
+
+    // Second stop call should stop the instance as reference count reaches 0
+    await stopLocalDynamoDB(mockConfig1, mockSchema, port1, 'local');
     expect(await check(port1)).toBe(false);
 
     // Verify second instance is still running
     expect(await check(port2)).toBe(true);
 
-    // Stop second instance
-    await stopLocalDynamoDB(mockConfig2, mockSchema, 'local');
+    // Stop second instance with port parameter
+    await stopLocalDynamoDB(mockConfig2, mockSchema, port2, 'local');
     expect(await check(port2)).toBe(false);
   });
+
+  it('should handle default port when no port specified', async () => {
+    const [customPort] = await findFreePorts(1);
+
+    const defaultPort = 8000;
+    // Start an instance on the default port with multiple references
+    await startLocalDynamoDB(mockConfig1, mockSchema, undefined, 'local');
+    await startLocalDynamoDB(mockConfig1, mockSchema, undefined, 'local');
+    expect(await check(defaultPort)).toBe(true);
+
+    // Start another instance on a custom port
+    await startLocalDynamoDB(mockConfig2, mockSchema, customPort, 'local');
+    expect(await check(customPort)).toBe(true);
+
+    // First stop call without port should only decrement default port counter
+    await stopLocalDynamoDB(mockConfig1, mockSchema, 'local');
+    expect(await check(defaultPort)).toBe(true); // Still running due to second reference
+    expect(await check(customPort)).toBe(true); // Unaffected
+
+    // Second stop call without port should stop default port instance
+    await stopLocalDynamoDB(mockConfig1, mockSchema, 'local');
+    debug('Stop local dynamoDB completed');
+    expect(await check(defaultPort)).toBe(false); // Stopped as counter reached 0
+    expect(await check(customPort)).toBe(true); // Still unaffected
+
+    // Clean up custom port instance
+    await stopLocalDynamoDB(mockConfig2, mockSchema, customPort, 'local');
+    expect(await check(customPort)).toBe(false);
+  });
+
   afterAll(async () => {
-    // Clean up both instances if they exist
-    try {
-      await stopLocalDynamoDB(mockConfig1, mockSchema, 'local');
-    } catch (e) {
-      // Ignore errors if instance wasn't running
-    }
-    try {
-      await stopLocalDynamoDB(mockConfig2, mockSchema, 'local');
-    } catch (e) {
-      // Ignore errors if instance wasn't running
-    }
+    await stopAllLocalDynamoDB(mockConfig1, mockSchema, 'local');
   });
 });

@@ -28,6 +28,7 @@ import {
   LocalConnectType,
   StartLocalDynamoDBType,
   StopLocalDynamoDBType,
+  StopAllLocalDynamoDBType,
 } from './localDynamoDB';
 import { debug } from '@goldstack/utils-log';
 
@@ -56,7 +57,7 @@ export const getTableName = async (
 export const startLocalDynamoDB = async (
   goldstackConfig: DynamoDBPackage | any,
   packageSchema: any,
-  port: number,
+  port?: number,
   deploymentName?: string
 ): Promise<void> => {
   deploymentName = getDeploymentName(deploymentName);
@@ -73,10 +74,19 @@ export const startLocalDynamoDB = async (
   const lib = require(excludeInBundle('./localDynamoDB')) as {
     startLocalDynamoDB: StartLocalDynamoDBType;
   };
-  await lib.startLocalDynamoDB(packageConfig, { port }, deploymentName);
+  const portToUse =
+    port ||
+    (process.env.DYNAMODB_LOCAL_PORT &&
+      parseInt(process.env.DYNAMODB_LOCAL_PORT)) ||
+    8000;
+  await lib.startLocalDynamoDB(
+    packageConfig,
+    { port: portToUse },
+    deploymentName
+  );
 };
 
-export const stopLocalDynamoDB = async (
+export const stopAllLocalDynamoDB = async (
   goldstackConfig: DynamoDBPackage | any,
   packageSchema: any,
   deploymentName?: string
@@ -93,11 +103,55 @@ export const stopLocalDynamoDB = async (
   // Suppress ESLint error for dynamic require
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const lib = require(excludeInBundle('./localDynamoDB')) as {
-    stopLocalDynamoDB: StopLocalDynamoDBType;
+    stopAllLocalDynamoDB: StopAllLocalDynamoDBType;
   };
-  await lib.stopLocalDynamoDB(packageConfig, deploymentName);
+  await lib.stopAllLocalDynamoDB(packageConfig, deploymentName);
 
   const coldStartKey = await getColdStartKey(packageConfig, deploymentName);
+  coldStart.delete(coldStartKey);
+};
+
+export const stopLocalDynamoDB = async (
+  goldstackConfig: DynamoDBPackage | any,
+  packageSchema: any,
+  portOrDeploymentName?: number | string,
+  deploymentName?: string
+): Promise<void> => {
+  // Handle optional port parameter
+  let port: number | undefined;
+  let resolvedDeploymentName: string | undefined;
+
+  if (typeof portOrDeploymentName === 'number') {
+    port = portOrDeploymentName;
+    resolvedDeploymentName = deploymentName;
+  } else {
+    resolvedDeploymentName = portOrDeploymentName;
+  }
+
+  resolvedDeploymentName = getDeploymentName(resolvedDeploymentName);
+  const packageConfig = new EmbeddedPackageConfig<
+    DynamoDBPackage,
+    DynamoDBDeployment
+  >({
+    goldstackJson: goldstackConfig,
+    packageSchema,
+  });
+
+  // Suppress ESLint error for dynamic require
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const lib = require(excludeInBundle('./localDynamoDB')) as {
+    stopLocalDynamoDB: StopLocalDynamoDBType;
+  };
+  await lib.stopLocalDynamoDB(
+    packageConfig,
+    port ? { port } : {},
+    resolvedDeploymentName
+  );
+
+  const coldStartKey = await getColdStartKey(
+    packageConfig,
+    resolvedDeploymentName
+  );
   coldStart.delete(coldStartKey);
 };
 

@@ -178,6 +178,7 @@ describe('DynamoDB Table', () => {
   });
 
   afterAll(async () => {
-    await stopLocalDynamoDB();
+    // no need for us to do this, we rely on `scripts/globalTeardown.ts`
+    // await stopLocalDynamoDB();
   });
 });
