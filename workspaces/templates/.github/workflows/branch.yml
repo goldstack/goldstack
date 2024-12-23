@@ -6,6 +6,7 @@ jobs:
   build:
     name: '🛠️ Build'
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/goldstack-setup
@@ -13,6 +14,7 @@ jobs:
   lint:
     name: '🖋️ Prettier and Lint'
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/goldstack-setup
@@ -23,6 +25,7 @@ jobs:
   get-packages:
     name: '📦 Get Packages'
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     outputs:
       packages: ${{ steps.set-packages.outputs.packages }}
     steps:
@@ -36,6 +39,7 @@ jobs:
     name: '🔍 Tests (${{ matrix.package }})'
     needs: get-packages
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
@@ -54,6 +58,7 @@ jobs:
   audit:
     name: '🔒 NPM Audit'
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/goldstack-setup

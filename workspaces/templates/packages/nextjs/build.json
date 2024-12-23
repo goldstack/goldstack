@@ -1,0 +1,59 @@
+{
+  "include": [
+    "infra/",
+    "src/",
+    "schemas/",
+    "scripts/",
+    "docs/",
+    ".babelrc",
+    ".env",
+    ".gitignore",
+    "goldstack.json",
+    "postcss.config.js",
+    "open-next.config.js",
+    "tailwind.config.js",
+    "jest.config.js",
+    "next.config.js",
+    "next-env.d.ts",
+    "package.json",
+    "README.md",
+    "template.json",
+    "tsconfig.json",
+    "tsconfig.local.json",
+    "tsconfig.test.json"
+  ],
+  "exclude": [
+    "infra/aws/.terraform/",
+    "infra/aws/tfplan",
+    "infra/aws/terraform.tfstate.d/"
+  ],
+  "overwriteFiles": [
+    {
+      "file": "goldstack.json",
+      "fields": [
+        {
+          "path": "$.deployments",
+          "value": []
+        }
+      ]
+    },
+    {
+      "file": "src/state/deployments.json",
+      "fields": [
+        {
+          "path": "$",
+          "value": []
+        }
+      ]
+    },
+    {
+      "file": "tsconfig.json",
+      "fields": [
+        {
+          "path": "$.references",
+          "value": []
+        }
+      ]
+    }
+  ]
+}

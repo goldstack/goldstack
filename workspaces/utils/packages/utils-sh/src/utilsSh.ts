@@ -46,9 +46,21 @@ export const copy = async (
         : path.join(dest, path.basename(file));
 
       try {
-        await fsExtraCopy(file, destCorrected, {
-          overwrite: true,
-          recursive: true,
+        await new Promise<void>((success, err) => {
+          fsExtraCopy(
+            file,
+            destCorrected,
+            {
+              overwrite: true,
+            },
+            (ex) => {
+              if (ex) {
+                err(ex);
+                return;
+              }
+              success();
+            }
+          );
         });
         debug(`Copied ${file} to ${destCorrected}`);
       } catch (err) {

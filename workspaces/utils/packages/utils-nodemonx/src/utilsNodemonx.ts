@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import watch from 'node-watch';
 import { cd, exec, read } from '@goldstack/utils-sh';
-import match from 'minimatch';
+import { match } from 'minimatch';
 import { debug } from '@goldstack/utils-log';
 
 export const getNearestPackageJson = (name: string): string => {
@@ -53,12 +53,12 @@ export const run = async (args: string[]): Promise<void> => {
 
   watch(watchDir, { recursive: true }, function (evt, name) {
     // check if in file whitelist
-    if (!config.include.find((glob: string) => match(name, glob))) {
+    if (!config.include.find((glob: string) => match([name], glob))) {
       debug('Ignoring changed file since it is not in whitelist: ' + name);
       return;
     }
     // check if in file blacklist
-    if (config.exclude.find((glob: string) => match(name, glob))) {
+    if (config.exclude.find((glob: string) => match([name], glob))) {
       debug('Ignoring changed file since it is in blacklist: ' + name);
       return;
     }
