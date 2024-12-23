@@ -50,7 +50,7 @@ export const getOutFileForLambda = (
   packageRootDir: string,
   config: LambdaConfig
 ): string => {
-  return `${getOutDirForLambda(packageRootDir, config)}/lambda.js`;
+  return path.join(getOutDirForLambda(packageRootDir, config), 'lambda.js');
 };
 
 export const buildFunctions = async ({
@@ -70,7 +70,9 @@ export const buildFunctions = async ({
   routeFilter?: string;
   packageRootDir: string;
 }): Promise<void> => {
-  const buildConfig = readToType<BuildOptions>('./esbuild.config.json');
+  const buildConfig = readToType<BuildOptions>(
+    path.join(packageRootDir, 'esbuild.config.json')
+  );
 
   // if we have a filter, we don't remove previous outputs
   if (!routeFilter) {
