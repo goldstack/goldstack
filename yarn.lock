@@ -12,13 +12,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@adobe/css-tools@npm:^4.4.0":
-  version: 4.4.1
-  resolution: "@adobe/css-tools@npm:4.4.1"
-  checksum: 10/a0ea05517308593a52728936a833b1075c4cf1a6b68baaea817063f34e75faa1dba1209dd285003c4f8072804227dfa563e7e903f72ae2d39cb520aaee3f4bcc
-  languageName: node
-  linkType: hard
-
 "@alloc/quick-lru@npm:^5.2.0":
   version: 5.2.0
   resolution: "@alloc/quick-lru@npm:5.2.0"
@@ -3637,8 +3630,8 @@ __metadata:
     "@testing-library/react": "npm:^13.3.0"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
-    "@types/react": "npm:^19.0.2"
-    "@types/testing-library__jest-dom": "npm:^6.0.0"
+    "@types/react": "npm:18"
+    "@types/testing-library__jest-dom": "npm:5"
     "@types/testing-library__react": "npm:^10.2.0"
     concurrently: "npm:^7.3.0"
     file-loader: "npm:^6.2.0"
@@ -3673,8 +3666,8 @@ __metadata:
     "@testing-library/react": "npm:^13.3.0"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
-    "@types/react": "npm:^19.0.2"
-    "@types/testing-library__jest-dom": "npm:^6.0.0"
+    "@types/react": "npm:18"
+    "@types/testing-library__jest-dom": "npm:5"
     "@types/testing-library__react": "npm:^10.2.0"
     concurrently: "npm:^7.3.0"
     file-loader: "npm:^6.2.0"
@@ -3775,9 +3768,9 @@ __metadata:
     "@types/cheerio": "npm:^0.22.35"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
-    "@types/react": "npm:^19.0.2"
-    "@types/styled-components": "npm:^5.1.34"
-    "@types/testing-library__jest-dom": "npm:^6.0.0"
+    "@types/react": "npm:18"
+    "@types/styled-components": "npm:5.1.25"
+    "@types/testing-library__jest-dom": "npm:5"
     "@types/testing-library__react": "npm:^10.2.0"
     babel-plugin-styled-components: "npm:^2.0.7"
     cheerio: "npm:1.0.0-rc.10"
@@ -3959,11 +3952,11 @@ __metadata:
     "@testing-library/react": "npm:^13.3.0"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
-    "@types/react": "npm:^19.0.2"
+    "@types/react": "npm:18"
     "@types/react-dom": "npm:^19.0.2"
     "@types/react-scrollable-anchor": "npm:^0.6.4"
-    "@types/styled-components": "npm:^5.1.34"
-    "@types/testing-library__jest-dom": "npm:^6.0.0"
+    "@types/styled-components": "npm:5.1.25"
+    "@types/testing-library__jest-dom": "npm:5"
     "@types/testing-library__react": "npm:^10.2.0"
     ajv: "npm:^6.12.2"
     babel-plugin-styled-components: "npm:^2.0.7"
@@ -4240,8 +4233,8 @@ __metadata:
     "@testing-library/react": "npm:^13.3.0"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
-    "@types/react": "npm:^19.0.2"
-    "@types/testing-library__jest-dom": "npm:^6.0.0"
+    "@types/react": "npm:18"
+    "@types/testing-library__jest-dom": "npm:5"
     "@types/testing-library__react": "npm:^10.2.0"
     concurrently: "npm:^7.3.0"
     file-loader: "npm:^6.2.0"
@@ -4528,8 +4521,8 @@ __metadata:
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
     "@types/node-fetch": "npm:^2.6.12"
-    "@types/react": "npm:^19.0.2"
-    "@types/testing-library__jest-dom": "npm:^6.0.0"
+    "@types/react": "npm:18"
+    "@types/testing-library__jest-dom": "npm:5"
     "@types/testing-library__react": "npm:^10.2.0"
     "@yarnpkg/esbuild-plugin-pnp": "npm:^3.0.0-rc.15"
     concurrently: "npm:^7.3.0"
@@ -5444,7 +5437,7 @@ __metadata:
     "@types/aws-lambda": "npm:^8.10.146"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
-    "@types/react": "npm:^19.0.2"
+    "@types/react": "npm:18"
     "@types/sha256": "npm:^0.2.2"
     "@types/yargs": "npm:^17.0.33"
     esbuild: "npm:^0.17.18"
@@ -5482,7 +5475,7 @@ __metadata:
     "@types/aws-lambda": "npm:^8.10.146"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
-    "@types/react": "npm:^19.0.2"
+    "@types/react": "npm:18"
     "@types/sha256": "npm:^0.2.2"
     "@types/yargs": "npm:^17.0.33"
     jest: "npm:^29.7.0"
@@ -5518,7 +5511,7 @@ __metadata:
     "@types/aws-lambda": "npm:^8.10.146"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
-    "@types/react": "npm:^19.0.2"
+    "@types/react": "npm:18"
     "@types/react-dom": "npm:^19.0.2"
     "@types/yargs": "npm:^17.0.33"
     jest: "npm:^29.7.0"
@@ -6246,7 +6239,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.37"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
-    "@types/react": "npm:^19.0.2"
+    "@types/react": "npm:18"
     jest: "npm:^29.7.0"
     react: "npm:18.2.0"
     rimraf: "npm:^3.0.2"
@@ -8777,21 +8770,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/jest-dom@npm:*":
-  version: 6.6.3
-  resolution: "@testing-library/jest-dom@npm:6.6.3"
-  dependencies:
-    "@adobe/css-tools": "npm:^4.4.0"
-    aria-query: "npm:^5.0.0"
-    chalk: "npm:^3.0.0"
-    css.escape: "npm:^1.5.1"
-    dom-accessibility-api: "npm:^0.6.3"
-    lodash: "npm:^4.17.21"
-    redent: "npm:^3.0.0"
-  checksum: 10/1f3427e45870eab9dcc59d6504b780d4a595062fe1687762ae6e67d06a70bf439b40ab64cf58cbace6293a99e3764d4647fdc8300a633b721764f5ce39dade18
-  languageName: node
-  linkType: hard
-
 "@testing-library/jest-dom@npm:^5.16.5":
   version: 5.16.5
   resolution: "@testing-library/jest-dom@npm:5.16.5"
@@ -9531,6 +9509,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react@npm:18":
+  version: 18.3.18
+  resolution: "@types/react@npm:18.3.18"
+  dependencies:
+    "@types/prop-types": "npm:*"
+    csstype: "npm:^3.0.2"
+  checksum: 10/7fdd8b853e0d291d4138133f93f8d5c333da918e5804afcea61a923aab4bdfc9bb15eb21a5640959b452972b8715ddf10ffb12b3bd071898b9e37738636463f2
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:>=16.14.8, @types/react@npm:>=16.9.11":
   version: 17.0.15
   resolution: "@types/react@npm:17.0.15"
@@ -9539,15 +9527,6 @@ __metadata:
     "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
   checksum: 10/2bdcca92d5ea6dd0394b754787338c819e85e8e6cb600d7e49c54c6f746c0081ac7869df831dc88cc691e3bb200eb15cb99ef2ba19caafd37942551905040ad8
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^19.0.2":
-  version: 19.0.2
-  resolution: "@types/react@npm:19.0.2"
-  dependencies:
-    csstype: "npm:^3.0.2"
-  checksum: 10/b355cfa22814e934b381c4f6de67c66652255377c3ddc6a757ea195ccbd0e7095aadfe1a28713d8ab1221222b8f2ec237903f4ec0e54eaf656ac832782d25dd2
   languageName: node
   linkType: hard
 
@@ -9706,14 +9685,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/styled-components@npm:^5.1.34":
-  version: 5.1.34
-  resolution: "@types/styled-components@npm:5.1.34"
+"@types/styled-components@npm:5.1.25":
+  version: 5.1.25
+  resolution: "@types/styled-components@npm:5.1.25"
   dependencies:
     "@types/hoist-non-react-statics": "npm:*"
     "@types/react": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10/3da291b46f03d378a0176c9d034deee7ee0684c5d62e1c5ce82f3be0972918eaa806f45c62e9a4f1c8d24c5ba6571c260caba2493fc7e82b528ac7d15903e2c1
+  checksum: 10/b84e6414f310f74781cbb5313dfb4f98bdd1592de8596226ed5f0f1bb9193c231403dcfef1542ac9e09ea913834422413ced74800ae70b0a1923d1dd36cbe087
   languageName: node
   linkType: hard
 
@@ -9746,21 +9725,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/testing-library__jest-dom@npm:5":
+  version: 5.14.9
+  resolution: "@types/testing-library__jest-dom@npm:5.14.9"
+  dependencies:
+    "@types/jest": "npm:*"
+  checksum: 10/e257de95a4a9385cc09ae4ca3396d23ad4b5cfb8e021a1ca3454c424c34636075f6fe151b2f881f79bf9d497aa04fbfae62449b135f293e8d2d614fa899898a8
+  languageName: node
+  linkType: hard
+
 "@types/testing-library__jest-dom@npm:^5.9.1":
   version: 5.9.2
   resolution: "@types/testing-library__jest-dom@npm:5.9.2"
   dependencies:
     "@types/jest": "npm:*"
   checksum: 10/85ecafafe9031a049cbcbea55a6dd5704f37ec347277e17a4a7d0326ff2f89dc3e4c7b5ddd9e63688785f7c43a39c89ad72a487a2913a9cebae595f8b43e1986
-  languageName: node
-  linkType: hard
-
-"@types/testing-library__jest-dom@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "@types/testing-library__jest-dom@npm:6.0.0"
-  dependencies:
-    "@testing-library/jest-dom": "npm:*"
-  checksum: 10/1b4db1aa3c4225524203b4d1c3b36c7129e9d1e0547e46d2e5283c3ece226a3c16f5f20387cc71b33ab0eecd99d0cf91111bb327e8adb240388d99fb94af7a4d
   languageName: node
   linkType: hard
 
@@ -13292,13 +13271,6 @@ __metadata:
   version: 0.5.14
   resolution: "dom-accessibility-api@npm:0.5.14"
   checksum: 10/19d7a7de931fcc7d9d67c270341220c6bda97124c3b1444b2bea6e8c6c3964ee09c339e3e69be5b830e3fcb60258d43e6377039974b69c5cec2f75db0114ac59
-  languageName: node
-  linkType: hard
-
-"dom-accessibility-api@npm:^0.6.3":
-  version: 0.6.3
-  resolution: "dom-accessibility-api@npm:0.6.3"
-  checksum: 10/83d3371f8226487fbad36e160d44f1d9017fb26d46faba6a06fcad15f34633fc827b8c3e99d49f71d5f3253d866e2131826866fd0a3c86626f8eccfc361881ff
   languageName: node
   linkType: hard
 

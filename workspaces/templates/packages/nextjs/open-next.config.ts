@@ -1,5 +1,5 @@
 import type { OpenNextConfig } from 'open-next/types/open-next';
-const config = {
+const config: OpenNextConfig = {
   default: {},
   functions: {
     ssr: {
@@ -7,7 +7,7 @@ const config = {
       patterns: ['api/ssr', 'api/ssr/*'],
     },
   },
-} satisfies OpenNextConfig;
+};
 
 export default config;
 export type Config = typeof config;

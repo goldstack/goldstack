@@ -113,6 +113,9 @@
       "path": "workspaces/templates/packages/module-template-utils"
     },
     {
+      "path": "workspaces/templates/packages/nextjs"
+    },
+    {
       "path": "workspaces/templates/packages/s3"
     },
     {
