@@ -1,0 +1,35 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*",
+    "./open-next.config.ts",
+    "./src/**/*.json",
+    "./schemas/**/*.json",
+    "./scripts/**/*",
+    "./goldstack.json",
+    "./next-env.d.ts",
+    ".next/types/**/*.ts"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "module": "esnext",
+    "incremental": true,
+    "noEmit": false,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "moduleResolution": "node",
+    "isolatedModules": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "references": [
+    {
+      "path": "../../../templates-lib/packages/template-nextjs"
+    },
+    {
+      "path": "../../../utils/packages/utils-sh"
+    }
+  ]
+}
