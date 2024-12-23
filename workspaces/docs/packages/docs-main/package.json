@@ -31,7 +31,7 @@
   "dependencies": {
     "@fullstory/browser": "^1.4.5",
     "@goldstack/toc-generator": "0.1.0",
-    "@goldstack/utils-track": "0.2.11",
+    "@goldstack/utils-track": "0.2.12",
     "cheerio": "1.0.0-rc.10",
     "next": "13.5.1",
     "react": "18.2.0",
@@ -43,8 +43,8 @@
   },
   "devDependencies": {
     "@goldstack/markdown-docs": "0.1.0",
-    "@goldstack/template-nextjs": "0.5.48",
-    "@goldstack/utils-sh": "0.5.19",
+    "@goldstack/template-nextjs": "0.5.49",
+    "@goldstack/utils-sh": "0.5.20",
     "@swc/core": "^1.10.1",
     "@swc/jest": "^0.2.37",
     "@testing-library/jest-dom": "^5.16.5",

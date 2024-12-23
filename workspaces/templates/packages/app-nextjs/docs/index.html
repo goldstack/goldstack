@@ -1651,23 +1651,23 @@ dummy.tsx
   ><code class="language-hcl">  <span class="token keyword">ordered_cache_behavior</span> <span class="token punctuation">{</span>
     <span class="token property">path_pattern</span>     <span class="token punctuation">=</span> <span class="token string">"myfolder/*"</span>
     <span class="token property">allowed_methods</span>  <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">"GET"</span>, <span class="token string">"HEAD"</span>, <span class="token string">"OPTIONS"</span><span class="token punctuation">]</span>
-    <span class="token property">cached_methods</span>   <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">"GET"</span>, <span class="token string">"HEAD"</span>, <span class="token string">"OPTIONS"</span><span class="token punctuation">]</span>
-    <span class="token property">target_origin_id</span> <span class="token punctuation">=</span> <span class="token string">"origin-bucket-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span>aws_s<span class="token number">3</span>_bucket<span class="token punctuation">.</span>website_root<span class="token punctuation">.</span>id<span class="token punctuation">}</span></span>"</span>
+    cached_methods   <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">"GET"</span>, <span class="token string">"HEAD"</span>, <span class="token string">"OPTIONS"</span><span class="token punctuation">]</span>
+    target_origin_id <span class="token punctuation">=</span> <span class="token string">"origin-bucket-<span class="token interpolation"><span class="token punctuation">$</span><span class="token punctuation">{</span>aws_s<span class="token number">3</span>_bucket<span class="token punctuation">.</span>website_root<span class="token punctuation">.</span>id<span class="token punctuation">}</span></span>"</span>
 
     <span class="token keyword">forwarded_values</span> <span class="token punctuation">{</span>
-      <span class="token property">query_string</span> <span class="token punctuation">=</span> <span class="token boolean">false</span>
-      <span class="token property">headers</span>      <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">"Origin"</span><span class="token punctuation">]</span>
+      query_string <span class="token punctuation">=</span> <span class="token boolean">false</span>
+      headers      <span class="token punctuation">=</span> <span class="token punctuation">[</span><span class="token string">"Origin"</span><span class="token punctuation">]</span>
 
-      <span class="token keyword">cookies</span> <span class="token punctuation">{</span>
-        <span class="token property">forward</span> <span class="token punctuation">=</span> <span class="token string">"none"</span>
+      cookies <span class="token punctuation">{</span>
+        forward <span class="token punctuation">=</span> <span class="token string">"none"</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 
-    <span class="token property">min_ttl</span>                <span class="token punctuation">=</span> <span class="token number">0</span>
-    <span class="token property">default_ttl</span>            <span class="token punctuation">=</span> tostring(var.default_cache_duration)
-    <span class="token property">max_ttl</span>                <span class="token punctuation">=</span> <span class="token number">1200</span>
-    <span class="token property">compress</span>               <span class="token punctuation">=</span> <span class="token boolean">true</span>
-    <span class="token property">viewer_protocol_policy</span> <span class="token punctuation">=</span> <span class="token string">"redirect-to-https"</span>
+    min_ttl                <span class="token punctuation">=</span> <span class="token number">0</span>
+    default_ttl            <span class="token punctuation">=</span> tostring(var.default_cache_duration)
+    max_ttl                <span class="token punctuation">=</span> <span class="token number">1200</span>
+    compress               <span class="token punctuation">=</span> <span class="token boolean">true</span>
+    viewer_protocol_policy <span class="token punctuation">=</span> <span class="token string">"redirect-to-https"</span>
   <span class="token punctuation">}</span>
 </code></pre>
   <h3 class="heading">
