@@ -40,7 +40,7 @@
     "esbuild": "^0.17.18",
     "postcss": "^8.4.21",
     "static-file-mapper-build": "0.3.23",
-    "tailwindcss": "^3.4.16"
+    "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.11",
