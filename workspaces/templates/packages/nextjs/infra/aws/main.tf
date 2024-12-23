@@ -11,9 +11,14 @@ module "open_next_zone" {
     aws.global          = aws.global
   }
 
+
   prefix = "open-next-${data.aws_caller_identity.current.account_id}"
 
   folder_path          = "./../../.open-next"
+
+scripts =  {
+ interpreter = "C:/Program Files/Git/bin/bash.exe" 
+}
 
   continuous_deployment = {
     use = false
