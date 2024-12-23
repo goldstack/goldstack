@@ -16,9 +16,9 @@ module "open_next_zone" {
 
   folder_path          = "./../../.open-next"
 
-scripts =  {
- interpreter = "C:/Program Files/Git/bin/bash.exe" 
-}
+  scripts =  {
+    interpreter = "C:/Progra~1/Git/bin/bash.exe" 
+  }
 
   continuous_deployment = {
     use = false

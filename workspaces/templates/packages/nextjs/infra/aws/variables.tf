@@ -1,9 +1,3 @@
-variable "scripts" {
-  type = map(string)
-  default = {
-    interpreter = "C:/Program Files/Git/bin/bash.exe"
-  }
-}
 
 variable "aws_region" {
   description = "Region where S3 buckets are deployed."
