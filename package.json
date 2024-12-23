@@ -31,17 +31,7 @@
     "test-watch": "nodemonx --watch . --exec 'yarn test'"
   },
   "resolutions": {
-    "@node-minify/terser": "^9.0.0",
-    "glob-parent": "5.1.2",
-    "json-schema": "0.4.0",
-    "json5": "2.2.2",
-    "loader-utils": "2.0.4",
-    "moment": "2.29.4",
-    "prismjs": "1.27.0",
-    "scss-tokenizer": "0.4.3",
-    "terser": "^5.27.2",
-    "trim": "0.0.3",
-    "underscore@npm:1.7.0": "1.12.1"
+    "generic-names": "4.0.0"
   },
   "devDependencies": {
     "@goldstack/nodemonx": "0.4.20",

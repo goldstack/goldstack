@@ -57,5 +57,10 @@
   },
   "publishConfig": {
     "main": "dist/src/esbuildSsrCssModulesPlugin.js"
+  },
+  "overrides": {
+    "postcss-modules-sync": {
+      "generic-names": "4.0.0"
+    }
   }
 }
