@@ -51,10 +51,5 @@
   },
   "publishConfig": {
     "main": "dist/src/nodeCssRequire.js"
-  },
-  "overrides": {
-    "postcss-modules-sync": {
-      "generic-names": "4.0.0"
-    }
   }
 }

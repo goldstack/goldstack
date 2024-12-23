@@ -36,7 +36,7 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "dependencies": {
-    "autoprefixer": "^10.4.11",
+    "autoprefixer": "^10.4.20",
     "esbuild": "^0.17.18",
     "postcss": "^8.4.21",
     "static-file-mapper-build": "0.3.23",
