@@ -36,7 +36,6 @@
     "json-schema": "0.4.0",
     "json5": "2.2.2",
     "loader-utils": "2.0.4",
-    "minimatch": "^9.0.3",
     "moment": "2.29.4",
     "prismjs": "1.27.0",
     "scss-tokenizer": "0.4.3",

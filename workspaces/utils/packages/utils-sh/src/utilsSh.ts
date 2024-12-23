@@ -53,9 +53,9 @@ export const copy = async (
             {
               overwrite: true,
             },
-            (e) => {
-              if (err) {
-                err(e);
+            (ex) => {
+              if (ex) {
+                err(ex);
                 return;
               }
               success();
