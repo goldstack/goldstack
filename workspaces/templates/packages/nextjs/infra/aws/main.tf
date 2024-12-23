@@ -1,21 +1,15 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.0"
-    }
-  }
-
-  required_version = ">= 1.0.0"
-}
-
-provider "aws" {
-  region = var.aws_region
-}
 
 module "open_next_zone" {
   source = "registry.terraform.io/RJPearson94/open-next/aws//modules/tf-aws-open-next-zone"
   version = "3.0.2"
+
+  providers = {
+    aws                  = aws
+    aws.server_function  = aws.server_function
+    aws.iam             = aws.iam
+    aws.dns             = aws.dns
+    aws.global          = aws.global
+  }
 
   prefix = "open-next-${data.aws_caller_identity.current.account_id}"
 

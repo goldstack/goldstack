@@ -14,7 +14,8 @@
         "websiteDomain": "app-nextjs-v2.templates.dev.goldstack.party",
         "defaultCacheDuration": 10
       },
-      "tfVersion": "1.10"
+      "tfVersion": "1.10",
+      "tfStateKey": "nextjs-prod-0130ef2422bb8d65fa0e.tfstate"
     }
   ]
 }

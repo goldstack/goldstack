@@ -29,7 +29,7 @@ import { defaultRoutesPath } from './templateSSRConsts';
 import { buildBundles } from './buildBundles';
 import { deployToS3 } from './deployToS3';
 
-import minimatch from 'minimatch';
+import { match } from 'minimatch';
 import { pwd } from '@goldstack/utils-sh';
 import { warn } from '@goldstack/utils-log';
 
@@ -109,7 +109,7 @@ export const run = async (
     if (command === 'build' || command === 'deploy') {
       if (opArgs.length === 2) {
         filteredLambdaRoutes = filteredLambdaRoutes.filter((el) =>
-          minimatch(el.relativeFilePath, `*${opArgs[1]}*`)
+          match([el.relativeFilePath], `*${opArgs[1]}*`)
         );
         if (filteredLambdaRoutes.length === 0) {
           warn(
