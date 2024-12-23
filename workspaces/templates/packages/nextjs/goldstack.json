@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/package.schema.json",
-  "name": "app-nextjs",
-  "template": "app-nextjs",
+  "name": "nextjs",
+  "template": "nextjs",
   "templateVersion": "0.1.0",
   "configuration": {},
   "deployments": [
@@ -11,10 +11,9 @@
       "awsUser": "goldstack-dev",
       "configuration": {
         "hostedZoneDomain": "dev.goldstack.party",
-        "websiteDomain": "app-nextjs.templates.dev.goldstack.party",
+        "websiteDomain": "app-nextjs-v2.templates.dev.goldstack.party",
         "defaultCacheDuration": 10
       },
-      "tfStateKey": "app-nextjs-prod-bfe30e556c467437d714.tfstate",
       "tfVersion": "1.10"
     }
   ]
