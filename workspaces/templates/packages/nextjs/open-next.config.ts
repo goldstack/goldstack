@@ -1,7 +1,6 @@
 import type { OpenNextConfig } from 'open-next/types/open-next';
 const config: OpenNextConfig = {
-  default: {
-  },
+  default: {},
   functions: {
     ssr: {
       routes: ['app/api/ssr/route'],
