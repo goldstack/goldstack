@@ -1,14 +1,15 @@
 {
   "extends": "../../tsconfig.base.json",
   "include": [
-    "./src/**/*",
+    "./app/**/*",
     "./open-next.config.ts",
-    "./src/**/*.json",
+    "./app/**/*.json",
     "./schemas/**/*.json",
     "./scripts/**/*",
     "./goldstack.json",
     "./next-env.d.ts",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "webDist/types/**/*.ts"
   ],
   "compilerOptions": {
     "outDir": "dist",
@@ -17,9 +18,18 @@
     "module": "esnext",
     "incremental": true,
     "noEmit": false,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "moduleResolution": "node",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "exclude": [
     "node_modules"

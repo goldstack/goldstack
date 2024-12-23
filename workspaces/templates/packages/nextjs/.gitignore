@@ -1,4 +1,5 @@
 .next/
+.open-next/
 webDist/
 out/
 dist/

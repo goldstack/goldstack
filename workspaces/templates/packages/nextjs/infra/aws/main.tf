@@ -20,7 +20,6 @@ module "open_next_zone" {
   prefix = "open-next-${data.aws_caller_identity.current.account_id}"
 
   folder_path          = "./.open-next"
-  s3_exclusion_regex   = ".*\\.terragrunt*"
 
   continuous_deployment = {
     use = false
