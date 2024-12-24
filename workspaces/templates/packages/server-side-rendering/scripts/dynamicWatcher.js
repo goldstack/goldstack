@@ -1,51 +1,47 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const chokidar = require('chokidar');
-const Module = require('module');
+const { spawn } = require('child_process');
 const path = require('path');
 
-// Keep track of watched files
-const watchedFiles = new Set();
-const watcher = chokidar.watch([], {
-  ignored: /node_modules|\.git/,
-  persistent: true,
-});
-
-// Restart logic
-const { spawn } = require('child_process');
 let childProcess;
+
+// Initialize watcher
+const watcher = chokidar.watch(['src/**/*', 'scripts/**/*'], {
+  ignored: [/node_modules/, /\.git/, /dist/, /\.swc/],
+  persistent: true,
+  ignoreInitial: true,
+});
 
 function restartScript() {
   if (childProcess) {
     childProcess.kill();
   }
-  console.log('Restarting script...');
-  childProcess = spawn(
-    'node -r @swc-node/register -r ./scripts/register.js',
-    process.argv.slice(1),
-    {
-      stdio: 'inherit',
-    }
+
+  console.log('\nRestarting server...');
+
+  childProcess = exec(
+    'yarn node -r @swc-node/register -r ./scripts/register.js ./scripts/start.ts'
   );
+
+  childProcess.on('error', (error) => {
+    console.error('Failed to start server:', error);
+  });
 }
 
 // Watch for file changes
 watcher.on('change', (file) => {
-  console.log(`File changed: ${file}`);
+  console.log(`\nFile changed: ${path.relative(process.cwd(), file)}`);
   restartScript();
 });
 
-// Override the default `require`
-const originalRequire = Module.prototype.require;
-
-Module.prototype.require = function (filePath) {
-  const resolvedPath = Module._resolveFilename(filePath, this);
-  if (!watchedFiles.has(resolvedPath)) {
-    watchedFiles.add(resolvedPath);
-    watcher.add(resolvedPath);
-    console.log(`Watching file: ${resolvedPath}`);
+// Handle process termination
+process.on('SIGINT', () => {
+  if (childProcess) {
+    childProcess.kill();
   }
-  return originalRequire.call(this, filePath);
-};
+  process.exit(0);
+});
 
 // Initial script run
+console.log('Starting server...');
 restartScript();
