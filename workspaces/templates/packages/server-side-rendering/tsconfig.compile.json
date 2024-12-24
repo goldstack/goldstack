@@ -3,6 +3,8 @@
   "include": [
     "./src/**/*",
     "./src/**/*.json",
+    "./src/**/*.css",
+    "./src/routes/**/*.module.css",
     "./goldstack.json",
     "./src/typings.d.ts"
   ],

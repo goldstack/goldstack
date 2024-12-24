@@ -6,7 +6,7 @@
     "./src/typings.d.ts"
   ],
   "exclude": [
-    "./src/**/*.css"
+    "node_modules"
   ],
   "compilerOptions": {
     "incremental": true,
