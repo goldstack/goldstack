@@ -4613,6 +4613,7 @@ __metadata:
     static-file-mapper-build: "npm:0.3.24"
     supertest: "npm:^4.0.2"
     tailwindcss: "npm:^3.4.17"
+    tree-kill: "npm:^1.2.2"
     ts-node: "npm:^10.9.2"
     ts-node-dev: "npm:^2.0.0"
     typescript: "npm:^5.7.2"
