@@ -3,6 +3,7 @@
   "include": [
     "./src/**/*",
     "./src/**/*.json",
+    "./src/**/*.css",
     "./scripts/**/*",
     "./schemas/**/*.json",
     "./goldstack.json",

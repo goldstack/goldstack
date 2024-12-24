@@ -31,10 +31,9 @@ async function startServer() {
   killPort = port;
 
   const server = http.createServer((req, res) => {
-    console.log(req.method + ' ' + req.url);
     if (req.method === 'GET' && req.url === '/restart') {
       try {
-        console.log('\nReceived restart signal');
+        console.info('\nReceived restart signal');
         restartScript();
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ status: 'restarting' }));
@@ -49,7 +48,7 @@ async function startServer() {
   });
 
   server.listen(port, () => {
-    console.log(`Watcher server listening on port ${port}`);
+    console.info(`Watcher server listening on port ${port}`);
   });
 
   return port;
@@ -86,7 +85,7 @@ async function killProcess(proc) {
 async function restartScript() {
   await killProcess(childProcess);
 
-  console.log('\nStarting new server...');
+  console.info('\nStarting server...');
 
   process.env.KILL_URL = `http://localhost:${killPort}/restart`;
   childProcess = spawn(
@@ -101,28 +100,7 @@ async function restartScript() {
   childProcess.on('error', (error) => {
     console.error('Failed to start server:', error);
   });
-
-  childProcess.on('exit', (code, signal) => {
-    if (code !== null) {
-      console.log(`Process exited with code ${code}`);
-    } else if (signal !== null) {
-      console.log(`Process killed with signal ${signal}`);
-    }
-  });
 }
-
-// Handle process termination
-process.on('SIGINT', async () => {
-  await killProcess(childProcess);
-  process.exit(0);
-});
-
-// Ensure child process is killed when parent exits
-process.on('exit', () => {
-  if (childProcess) {
-    treeKill(childProcess.pid, 'SIGKILL');
-  }
-});
 
 // Initial setup
 console.log('Starting watcher and server...');

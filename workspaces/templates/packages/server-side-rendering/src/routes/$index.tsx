@@ -26,7 +26,7 @@ const Index = (props: { message: string }): JSX.Element => {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const handler: SSRHandler = async (event, context) => {
-  const message = 'Hi there again';
+  const message = 'Hi there!';
 
   return renderPage({
     component: Index,

@@ -10933,6 +10933,28 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@tailwindcss/line-clamp", [\
+      ["npm:0.4.4", {\
+        "packageLocation": "./.yarn/cache/@tailwindcss-line-clamp-npm-0.4.4-23cb911440-3d2ad992aa.zip/node_modules/@tailwindcss/line-clamp/",\
+        "packageDependencies": [\
+          ["@tailwindcss/line-clamp", "npm:0.4.4"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:403059edc194f8eee9f9b8f9ab634e67126b182288b0cf3b56c13ed0ebaeda2fb24025b868e17fbbf02f6cd6a0b5ab93ce2bfe51d215138ea74d0736d87896c8#npm:0.4.4", {\
+        "packageLocation": "./.yarn/__virtual__/@tailwindcss-line-clamp-virtual-5c27fe132e/0/cache/@tailwindcss-line-clamp-npm-0.4.4-23cb911440-3d2ad992aa.zip/node_modules/@tailwindcss/line-clamp/",\
+        "packageDependencies": [\
+          ["@tailwindcss/line-clamp", "virtual:403059edc194f8eee9f9b8f9ab634e67126b182288b0cf3b56c13ed0ebaeda2fb24025b868e17fbbf02f6cd6a0b5ab93ce2bfe51d215138ea74d0736d87896c8#npm:0.4.4"],\
+          ["@types/tailwindcss", null],\
+          ["tailwindcss", "npm:3.4.17"]\
+        ],\
+        "packagePeers": [\
+          "@types/tailwindcss",\
+          "tailwindcss"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@testing-library/dom", [\
       ["npm:7.24.2", {\
         "packageLocation": "./.yarn/cache/@testing-library-dom-npm-7.24.2-626e7f11fe-15871d186f.zip/node_modules/@testing-library/dom/",\
@@ -29622,6 +29644,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["tailwindcss", "npm:3.4.17"],\
           ["@alloc/quick-lru", "npm:5.2.0"],\
+          ["@tailwindcss/line-clamp", "virtual:403059edc194f8eee9f9b8f9ab634e67126b182288b0cf3b56c13ed0ebaeda2fb24025b868e17fbbf02f6cd6a0b5ab93ce2bfe51d215138ea74d0736d87896c8#npm:0.4.4"],\
           ["arg", "npm:5.0.2"],\
           ["chokidar", "npm:3.6.0"],\
           ["didyoumean", "npm:1.2.2"],\

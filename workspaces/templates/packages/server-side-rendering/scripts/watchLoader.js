@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const chokidar = require('chokidar');
 const Module = require('module');
-
 const http = require('http');
 
 // Keep track of watched files
@@ -13,14 +12,8 @@ const watcher = chokidar.watch([], {
 
 function restartScript() {
   http
-    .get(process.env.KILL_URL, (response) => {
-      let data = '';
-      response.on('data', (chunk) => {
-        data += chunk;
-      });
-      response.on('end', () => {
-        console.log('Received kill signal:', data);
-      });
+    .get(process.env.KILL_URL, () => {
+      // noop
     })
     .on('error', (error) => {
       console.error('Error making kill request:', error);
@@ -29,7 +22,7 @@ function restartScript() {
 
 // Watch for file changes
 watcher.on('change', (file) => {
-  console.log(`File changed: ${file}`);
+  console.info(`File changed: ${file}`);
   restartScript();
 });
 
@@ -37,11 +30,18 @@ watcher.on('change', (file) => {
 const originalRequire = Module.prototype.require;
 
 Module.prototype.require = function (filePath) {
-  const resolvedPath = Module._resolveFilename(filePath, this);
-  if (!watchedFiles.has(resolvedPath)) {
-    watchedFiles.add(resolvedPath);
-    watcher.add(resolvedPath);
-    console.log(`Watching file: ${resolvedPath}`);
-  }
+  setTimeout(() => {
+    const resolvedPath = Module._resolveFilename(filePath, this);
+    if (
+      // resolvedPath !== filePath &&
+      !/node_modules|\.git|\.yarn/.test(resolvedPath) &&
+      /[.\/\\]/.test(resolvedPath) && // Check if the path contains at least one of ., \, or /
+      !watchedFiles.has(resolvedPath)
+    ) {
+      watchedFiles.add(resolvedPath);
+      watcher.add(resolvedPath);
+      // console.log(`Watching file: ${resolvedPath}`);
+    }
+  }, 1000);
   return originalRequire.call(this, filePath);
 };
