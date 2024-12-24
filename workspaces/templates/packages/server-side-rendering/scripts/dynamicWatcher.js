@@ -19,12 +19,25 @@ function restartScript() {
 
   console.log('\nRestarting server...');
 
-  childProcess = exec(
-    'yarn node -r @swc-node/register -r ./scripts/register.js ./scripts/start.ts'
+  childProcess = spawn(
+    'yarn node -r @swc-node/register -r ./scripts/register.js ./scripts/start.ts',
+    {
+      shell: true,
+      stdio: 'inherit',
+      env: process.env,
+    }
   );
 
   childProcess.on('error', (error) => {
     console.error('Failed to start server:', error);
+  });
+
+  childProcess.on('exit', (code, signal) => {
+    if (code !== null) {
+      console.log(`Process exited with code ${code}`);
+    } else if (signal !== null) {
+      console.log(`Process killed with signal ${signal}`);
+    }
   });
 }
 
