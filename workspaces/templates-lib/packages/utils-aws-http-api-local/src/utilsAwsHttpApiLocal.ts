@@ -58,15 +58,15 @@ export const startServer = async (
     });
   }
 
-  injectRoutes({
-    app: app,
-    lambdaConfigs: lambdaConfig,
-  });
-
   const result = await new Promise<Server>((resolve) => {
     const server = app.listen(parseInt(options.port), function () {
       resolve(server);
     });
+  });
+
+  injectRoutes({
+    app: app,
+    lambdaConfigs: lambdaConfig,
   });
 
   return {
