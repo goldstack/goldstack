@@ -2,6 +2,7 @@
 const { spawn } = require('child_process');
 const http = require('http');
 const net = require('net');
+const fs = require('fs');
 const treeKill = require('tree-kill');
 const { promisify } = require('util');
 
@@ -88,8 +89,14 @@ async function restartScript() {
   console.info('\nStarting server...');
 
   process.env.KILL_URL = `http://localhost:${killPort}/restart`;
+
+  let pnpJsPath = './../../.pnp.cjs';
+  if (!fs.existsSync()) {
+    pnpJsPath = './../../../../.pnp.cjs';
+  }
+
   childProcess = spawn(
-    'yarn node -r @swc-node/register -r ./scripts/register.js -r ./scripts/watchLoader.js ./scripts/start.ts ',
+    `node --require ${pnpJsPath} -r @swc-node/register -r ./scripts/register.js -r ./scripts/watchLoader.js ./scripts/start.ts`,
     {
       shell: true,
       stdio: 'inherit',
