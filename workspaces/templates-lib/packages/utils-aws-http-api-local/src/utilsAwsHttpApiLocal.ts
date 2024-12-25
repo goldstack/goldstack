@@ -4,6 +4,7 @@ import { Server } from 'http';
 
 import { readLambdaConfig, LambdaConfig } from '@goldstack/utils-aws-lambda';
 import { injectRoutes } from './expressRoutes';
+import assert from 'assert';
 
 type StaticRouteOptions = {
   immutable: boolean;
@@ -23,10 +24,11 @@ export interface LocalHttpAPIOptions {
   port: string;
   routesDir: string;
   cors?: string;
-  /**
-   * Maps routes to local directories
-   */
   staticRoutes?: StaticRoutes;
+  versionTimestamp?: {
+    value: string;
+    path: string;
+  };
 }
 
 export interface StartServerResult {
@@ -46,7 +48,13 @@ export const startServer = async (
   }
   const lambdaConfig = readLambdaConfig(options.routesDir);
 
-  // these should come before dynamic routes
+  if (options.versionTimestamp) {
+    app.get(options.versionTimestamp.path, (req, res) => {
+      assert(options.versionTimestamp);
+      res.send(options.versionTimestamp.value);
+    });
+  }
+
   if (options.staticRoutes) {
     Object.entries(options.staticRoutes).forEach((e) => {
       if (typeof e[1] === 'string') {
