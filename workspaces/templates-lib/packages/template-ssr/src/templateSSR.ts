@@ -34,6 +34,8 @@ export type {
   ServerBuildOptionsArgs,
 } from '@goldstack/template-ssr-server';
 
+export { getLocalHelperJs } from './localHelper';
+
 export const getDeployment = (goldstackJson: Package): Deployment => {
   const envVar = process.env.GOLDSTACK_DEPLOYMENT;
 

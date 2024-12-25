@@ -1,8 +1,9 @@
 /* esbuild-ignore ui */
 
-import type {
-  RenderDocumentProps,
-  ReactPropertiesType,
+import {
+  type RenderDocumentProps,
+  type ReactPropertiesType,
+  getLocalHelperJs,
 } from '@goldstack/template-ssr';
 
 const renderDocument = async (
@@ -13,11 +14,15 @@ const renderDocument = async (
   });
 
   let tailwindConfig: string | undefined = undefined;
+  let localHelperJs: string | undefined = undefined;
   if (process.env.GOLDSTACK_DEPLOYMENT === 'local') {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const config = require('./../tailwind.config');
 
     tailwindConfig = JSON.stringify(config.theme);
+
+    // only show helper in development environment
+    localHelperJs = getLocalHelperJs();
   }
 
   const template = `
@@ -49,6 +54,8 @@ const renderDocument = async (
   </head>
   <body>
     ${props.injectIntoBody}
+
+    ${localHelperJs ? `<script>${localHelperJs}</script>` : ''}
   </body>
 </html>
   `;

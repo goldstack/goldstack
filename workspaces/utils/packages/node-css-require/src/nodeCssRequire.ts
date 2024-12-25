@@ -5,7 +5,7 @@ import postcss, { AcceptedPlugin } from 'postcss';
 import postcssModulesSync from 'postcss-modules-sync';
 import postcssModules from 'postcss-modules';
 
-import { register as swcRegister } from '@swc-node/register/register';
+// import { register as swcRegister } from '@swc-node/register/register';
 
 import { createHash } from 'crypto';
 export type { AcceptedPlugin } from 'postcss';
@@ -109,5 +109,5 @@ export const register = (): void => {
   });
 
   const tsConfig = {};
-  swcRegister({ ...tsConfig });
+  // swcRegister({ ...tsConfig });
 };

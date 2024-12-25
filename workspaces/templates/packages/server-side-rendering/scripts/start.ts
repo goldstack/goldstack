@@ -7,10 +7,16 @@ const cors = process.env.CORS;
 if (cors) {
   console.info(`Starting server with CORS domain: ${process.env.CORS}`);
 }
+const versionTimestamp = {
+  value: new Date().toISOString(),
+  path: '/_goldstack/local/versionTimestamp',
+};
+console.info('Starting API server');
 startServer({
   port,
   routesDir: './src/routes',
   cors,
+  versionTimestamp,
   staticRoutes: {
     '/_goldstack/static': {
       path: 'static',
@@ -24,8 +30,8 @@ startServer({
   },
 })
   .then(() => {
-    console.log(`API listening on port ${port}!`);
-    console.log(`http://localhost:${port}/`);
+    console.info(`API listening on port ${port}!`);
+    console.info(`http://localhost:${port}/`);
   })
   .catch((err) => {
     console.error(err);
