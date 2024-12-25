@@ -35,15 +35,16 @@ async function checkVersionTimestamp() {
     const response = await fetchWithTimeout('_goldstack/local/versionTimestamp', { cache: 'no-store' });
     if (!response.ok) throw new Error('Failed to fetch');
     const newTimestamp = await response.text();
-      if (versionTimestamp === null) {
-        showMessage('✅', 'Connected to server', 3000);
+    if (versionTimestamp === null) {
+      showMessage('✅', 'Connected to server', 3000);
     } else if (newTimestamp !== versionTimestamp) {
-              location.reload();
-            }
+      location.reload();
+    }
 
     versionTimestamp = newTimestamp;
   } catch (error) {
       showMessage('❌', 'Connection to server lost. Waiting for restart ...');
+      versionTimestamp = null;
   }
 }
 

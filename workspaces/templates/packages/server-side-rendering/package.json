@@ -68,7 +68,6 @@
     "supertest": "^4.0.2",
     "tree-kill": "^1.2.2",
     "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
     "typescript": "^5.7.2",
     "typescript-plugin-css-modules": "^5.1.0"
   }

@@ -91,7 +91,7 @@ async function restartScript() {
   process.env.KILL_URL = `http://localhost:${killPort}/restart`;
 
   let pnpJsPath = './../../.pnp.cjs';
-  if (!fs.existsSync()) {
+  if (!fs.existsSync(pnpJsPath)) {
     pnpJsPath = './../../../../.pnp.cjs';
   }
 
