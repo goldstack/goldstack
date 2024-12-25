@@ -4573,8 +4573,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/server-side-rendering@workspace:workspaces/templates/packages/server-side-rendering"
   dependencies:
-    "@goldstack/template-ssr": "npm:0.3.54"
-    "@goldstack/template-ssr-cli": "npm:0.3.59"
+    "@goldstack/template-ssr": "npm:0.3.55"
+    "@goldstack/template-ssr-cli": "npm:0.3.60"
     "@goldstack/utils-aws-http-api-local": "npm:0.3.46"
     "@goldstack/utils-esbuild": "npm:0.5.12"
     "@jest-mock/express": "npm:^1.4.5"
@@ -4615,7 +4615,6 @@ __metadata:
     tailwindcss: "npm:^3.4.17"
     tree-kill: "npm:^1.2.2"
     ts-node: "npm:^10.9.2"
-    ts-node-dev: "npm:^2.0.0"
     typescript: "npm:^5.7.2"
     typescript-plugin-css-modules: "npm:^5.1.0"
   languageName: unknown
@@ -5446,13 +5445,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr-cli@npm:0.3.59, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
+"@goldstack/template-ssr-cli@npm:0.3.60, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli"
   dependencies:
     "@goldstack/infra": "npm:0.4.21"
     "@goldstack/infra-aws": "npm:0.4.30"
-    "@goldstack/template-ssr": "npm:0.3.54"
+    "@goldstack/template-ssr": "npm:0.3.55"
     "@goldstack/template-ssr-server": "npm:0.3.54"
     "@goldstack/template-ssr-server-compile-bundle": "npm:0.3.51"
     "@goldstack/utils-aws-lambda": "npm:0.3.38"
@@ -5560,7 +5559,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr@npm:0.3.54, @goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr":
+"@goldstack/template-ssr@npm:0.3.55, @goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr"
   dependencies:
