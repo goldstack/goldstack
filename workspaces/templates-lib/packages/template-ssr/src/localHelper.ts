@@ -1,6 +1,7 @@
 export function getLocalHelperJs(): string {
   return `
 let versionTimestamp = null;
+let isInErrorState = false;
 let initialLoad = true;
 
 const messageContainer = document.createElement('div');
@@ -35,16 +36,19 @@ async function checkVersionTimestamp() {
     const response = await fetchWithTimeout('_goldstack/local/versionTimestamp', { cache: 'no-store' });
     if (!response.ok) throw new Error('Failed to fetch');
     const newTimestamp = await response.text();
-    if (versionTimestamp === null) {
+    if (versionTimestamp === null || isInErrorState) {
       showMessage('✅', 'Connected to server', 3000);
-    } else if (newTimestamp !== versionTimestamp) {
+      isInErrorState = false;
+    } 
+      
+    if (versionTimestamp !== null && newTimestamp !== versionTimestamp) {
       location.reload();
     }
 
     versionTimestamp = newTimestamp;
   } catch (error) {
       showMessage('❌', 'Connection to server lost. Waiting for restart ...');
-      versionTimestamp = null;
+      isInErrorState = true; 
   }
 }
 
