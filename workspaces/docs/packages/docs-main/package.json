@@ -63,7 +63,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-transform-stub": "^2.0.0",
     "next-compose-plugins": "^2.2.1",
-    "node-sass": "^8.0.0",
+    "node-sass": "^9",
     "reload": "^3.2.0",
     "rimraf": "^3.0.2",
     "svg-url-loader": "^8.0.0",

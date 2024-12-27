@@ -5067,7 +5067,7 @@ const RAW_RUNTIME_STATE =
           ["jest-transform-stub", "npm:2.0.0"],\
           ["next", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:13.5.1"],\
           ["next-compose-plugins", "npm:2.2.1"],\
-          ["node-sass", "npm:8.0.0"],\
+          ["node-sass", "npm:9.0.0"],\
           ["react", "npm:18.2.0"],\
           ["react-bootstrap", "virtual:13446954d6ed80c2be8e5fa2493d18a3cb791643ce58cb3e957e09100e1d3d7c00a33850dd7e09965dc92af488bb66195f2cf4a9dec7e959ce772f4497088f89#npm:2.2.1"],\
           ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
@@ -5183,7 +5183,7 @@ const RAW_RUNTIME_STATE =
           ["jest-transform-stub", "npm:2.0.0"],\
           ["next", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:13.5.1"],\
           ["next-compose-plugins", "npm:2.2.1"],\
-          ["node-sass", "npm:8.0.0"],\
+          ["node-sass", "npm:9.0.0"],\
           ["react", "npm:18.2.0"],\
           ["react-bootstrap", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:1.6.5"],\
           ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
@@ -5381,7 +5381,7 @@ const RAW_RUNTIME_STATE =
           ["jest-transform-stub", "npm:2.0.0"],\
           ["next", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:13.5.1"],\
           ["next-compose-plugins", "npm:2.2.1"],\
-          ["node-sass", "npm:8.0.0"],\
+          ["node-sass", "npm:9.0.0"],\
           ["react", "npm:18.2.0"],\
           ["react-bootstrap", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:1.6.5"],\
           ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:18.2.0"],\
@@ -24245,10 +24245,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["node-sass", [\
-      ["npm:8.0.0", {\
-        "packageLocation": "./.yarn/unplugged/node-sass-npm-8.0.0-d992352209/node_modules/node-sass/",\
+      ["npm:9.0.0", {\
+        "packageLocation": "./.yarn/unplugged/node-sass-npm-9.0.0-21d7c06baa/node_modules/node-sass/",\
         "packageDependencies": [\
-          ["node-sass", "npm:8.0.0"],\
+          ["node-sass", "npm:9.0.0"],\
           ["async-foreach", "npm:0.1.3"],\
           ["chalk", "npm:4.1.2"],\
           ["cross-spawn", "npm:7.0.3"],\
