@@ -3696,7 +3696,7 @@ __metadata:
   resolution: "@goldstack/app-nextjs-bootstrap@workspace:workspaces/templates/packages/app-nextjs-bootstrap"
   dependencies:
     "@babel/runtime": "npm:^7.26.0"
-    "@goldstack/template-nextjs": "npm:0.5.50"
+    "@goldstack/template-nextjs": "npm:0.5.51"
     "@goldstack/utils-sh": "npm:0.5.20"
     "@swc/core": "npm:^1.10.1"
     "@swc/jest": "npm:^0.2.37"
@@ -3733,7 +3733,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs@workspace:workspaces/templates/packages/app-nextjs"
   dependencies:
-    "@goldstack/template-nextjs": "npm:0.5.50"
+    "@goldstack/template-nextjs": "npm:0.5.51"
     "@goldstack/utils-sh": "npm:0.5.20"
     "@swc/core": "npm:^1.10.1"
     "@swc/jest": "npm:^0.2.37"
@@ -3833,7 +3833,7 @@ __metadata:
   dependencies:
     "@fullstory/browser": "npm:^1.4.5"
     "@goldstack/markdown-docs": "npm:0.1.0"
-    "@goldstack/template-nextjs": "npm:0.5.50"
+    "@goldstack/template-nextjs": "npm:0.5.51"
     "@goldstack/toc-generator": "npm:0.1.0"
     "@goldstack/utils-sh": "npm:0.5.20"
     "@goldstack/utils-track": "npm:0.2.12"
@@ -4013,7 +4013,7 @@ __metadata:
     "@goldstack/project-config": "npm:0.1.0"
     "@goldstack/project-repository": "npm:0.1.0"
     "@goldstack/template-metadata": "npm:0.1.0"
-    "@goldstack/template-nextjs": "npm:0.5.50"
+    "@goldstack/template-nextjs": "npm:0.5.51"
     "@goldstack/utils-docs-cli": "npm:0.3.11"
     "@goldstack/utils-package": "npm:0.4.21"
     "@goldstack/utils-project": "npm:0.4.21"
@@ -4303,7 +4303,7 @@ __metadata:
   dependencies:
     "@aws-sdk/client-sso-oidc": "npm:^3.645.0"
     "@aws-sdk/client-sts": "npm:^3.645.0"
-    "@goldstack/template-nextjs": "npm:0.5.50"
+    "@goldstack/template-nextjs": "npm:0.5.51"
     "@goldstack/utils-sh": "npm:0.5.20"
     "@swc/core": "npm:^1.10.1"
     "@swc/jest": "npm:^0.2.37"
@@ -5283,7 +5283,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-nextjs@npm:0.5.50, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
+"@goldstack/template-nextjs@npm:0.5.51, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs"
   dependencies:
