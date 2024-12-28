@@ -35,7 +35,7 @@ const HomePage = (): JSX.Element => {
 
   return (
     <>
-      <h1 className={styles.title}>Welcome to Next.js!</h1>
+      <h1 className={styles.title}>Welcome to Next.js</h1>
       <p>
         <img src={ReactIcon} width="60"></img>
       </p>
