@@ -6,7 +6,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "yarn clean && yarn compile",
-    "build:next": "NEXT_TELEMETRY_DISABLED=1 next build && next export -o webDist/",
+    "build:next": "NEXT_TELEMETRY_DISABLED=1 next build",
     "clean": "rimraf ./dist ./webDist",
     "compile": "tsc --build",
     "compile-watch": "tsc --isolatedModules false -p tsconfig.compile.json --watch",
@@ -36,6 +36,7 @@
     "swr": "^0.4.0"
   },
   "devDependencies": {
+    "@babel/runtime": "^7.26.0",
     "@goldstack/template-nextjs": "0.5.50",
     "@goldstack/utils-sh": "0.5.20",
     "@swc/core": "^1.10.1",

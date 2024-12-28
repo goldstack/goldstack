@@ -4318,6 +4318,14 @@ const RAW_RUNTIME_STATE =
           ["regenerator-runtime", "npm:0.13.5"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:7.26.0", {\
+        "packageLocation": "./.yarn/cache/@babel-runtime-npm-7.26.0-9afa3c4ef6-9f4ea1c1d5.zip/node_modules/@babel/runtime/",\
+        "packageDependencies": [\
+          ["@babel/runtime", "npm:7.26.0"],\
+          ["regenerator-runtime", "npm:0.14.1"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@babel/runtime-corejs2", [\
@@ -5082,6 +5090,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./workspaces/templates/packages/app-nextjs-bootstrap/",\
         "packageDependencies": [\
           ["@goldstack/app-nextjs-bootstrap", "workspace:workspaces/templates/packages/app-nextjs-bootstrap"],\
+          ["@babel/runtime", "npm:7.26.0"],\
           ["@goldstack/template-nextjs", "workspace:workspaces/templates-lib/packages/template-nextjs"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.10.1"],\
@@ -28727,6 +28736,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/regenerator-runtime-npm-0.13.7-41bcbe64ea-0de0ec7b5e.zip/node_modules/regenerator-runtime/",\
         "packageDependencies": [\
           ["regenerator-runtime", "npm:0.13.7"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:0.14.1", {\
+        "packageLocation": "./.yarn/cache/regenerator-runtime-npm-0.14.1-a6c97c609a-5db3161abb.zip/node_modules/regenerator-runtime/",\
+        "packageDependencies": [\
+          ["regenerator-runtime", "npm:0.14.1"]\
         ],\
         "linkType": "HARD"\
       }]\

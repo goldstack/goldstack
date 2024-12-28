@@ -37,6 +37,8 @@
     "testcontainers"
   ],
   "github-actions.workflows.pinned.workflows": [
-    ".github/workflows/branch.yml"
+    ".github/workflows/branch.yml",
+    ".github/workflows/template_deploy_dev.yml",
+    ".github/workflows/master.yml"
   ]
 }
