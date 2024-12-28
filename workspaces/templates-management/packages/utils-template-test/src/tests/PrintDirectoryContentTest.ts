@@ -12,11 +12,11 @@ export class PrintDirectoryContentTest implements TemplateTest {
     const projectDir = params.projectDir;
 
     cd(projectDir);
-    info('File in ' + projectDir);
+    info('Files in ' + projectDir);
     exec('ls -la', { silent: false });
 
     cd(packageDir);
-    info('File in ' + packageDir);
+    info('Files in ' + packageDir);
     exec('ls -la', { silent: false });
   }
 }

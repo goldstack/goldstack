@@ -17,10 +17,9 @@ import { copy } from 'fs-extra';
 import { download } from '@goldstack/utils-s3';
 import fs from 'fs';
 
-import { info } from '@goldstack/utils-log';
+import { debug, info } from '@goldstack/utils-log';
 
 import { promisify } from 'util';
-import assert from 'assert';
 import path from 'path';
 
 const sleep = promisify(setTimeout);
@@ -81,6 +80,7 @@ export class S3TemplateRepository implements TemplateRepository {
       `${templateName}-${version}.zip`
     );
     const templatePath = `versions/${templateName}/${version}/${templateName}-${version}.zip`;
+    debug(`Downloading template from ${this.bucket} to ${filePath}`);
     if (
       await download({
         s3: this.s3,
@@ -98,7 +98,9 @@ export class S3TemplateRepository implements TemplateRepository {
   async addTemplateVersion(
     pathToTemplate: string
   ): Promise<GoldstackTemplateConfiguration> {
-    info('Adding template version from ' + pathToTemplate);
+    info('Adding template version from ' + pathToTemplate, {
+      bucket: this.bucket,
+    });
     const config = readTemplateConfigFromFile(
       path.join(pathToTemplate, 'template.json')
     );
@@ -108,13 +110,17 @@ export class S3TemplateRepository implements TemplateRepository {
 
     if (latestDeployedToRepo === undefined) {
       info(
-        'First deployment of template. Assuming previous version to be 0.0.0'
+        'First deployment of template. Assuming previous version to be 0.0.0',
+        {
+          bucket: this.bucket,
+        }
       );
       config.previousTemplateVersion = '0.0.0';
     } else {
       info(
         'Last version that was deployed: ' +
-          latestDeployedToRepo.templateVersion
+          latestDeployedToRepo.templateVersion,
+        { bucket: this.bucket }
       );
       if (latestDeployedToRepo.templateName !== config.templateName) {
         throw new Error(
@@ -128,7 +134,9 @@ export class S3TemplateRepository implements TemplateRepository {
         config.templateVersion === latestDeployedToRepo.templateVersion ||
         semverGt(latestDeployedToRepo.templateVersion, config.templateVersion)
       ) {
-        info('Deploying new version: ' + config.templateName);
+        info('Deploying new version: ' + config.templateName, {
+          bucket: this.bucket,
+        });
         const newVersion = semverInc(
           latestDeployedToRepo.templateVersion,
           'patch'
@@ -164,7 +172,8 @@ export class S3TemplateRepository implements TemplateRepository {
 
     // Upload config
     info(
-      'Uploading template config to: ' + this.bucket + '/' + templateConfigPath
+      'Uploading template config to: ' + this.bucket + '/' + templateConfigPath,
+      { bucket: this.bucket }
     );
     try {
       const cmd = new PutObjectCommand({
@@ -197,7 +206,8 @@ export class S3TemplateRepository implements TemplateRepository {
         'Uploading template archive to: ' +
           this.bucket +
           '/' +
-          templateArchivePath
+          templateArchivePath,
+        { bucket: this.bucket }
       );
       await this.s3.send(
         new PutObjectCommand({
@@ -212,7 +222,10 @@ export class S3TemplateRepository implements TemplateRepository {
 
     // set latest version, only after archive upload successful
     try {
-      info('Setting latest version to ' + config.templateVersion);
+      info('Setting latest version to ' + config.templateVersion, {
+        bucket: this.bucket,
+        templatePath: templateConfigPath,
+      });
       await this.s3.send(
         new PutObjectCommand({
           Bucket: this.bucket,

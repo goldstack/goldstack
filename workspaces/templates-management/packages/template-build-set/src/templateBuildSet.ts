@@ -177,11 +177,11 @@ const buildAndTestProject = async (
         } catch (e) {
           isFail = true;
           error = e.message || '';
-          console.log(e);
-          console.log(`❌ Test failed ${packageTest}`);
+          console.error(e);
+          error(`❌ Test failed ${packageTest}`);
         }
         if (!isFail) {
-          console.log(`✔️ Test success ${packageTest}`);
+          info(`✔️ Test success ${packageTest}`);
         }
         testResults.push({
           testName: `${params.project.projectConfiguration.projectName} ${packageConfig.packageName} ${packageTest}`,
@@ -205,7 +205,8 @@ const buildAndTestProject = async (
           });
           isFail = false;
         } catch (e) {
-          console.log(`❌ Cleanup job failed ${packageCleanUp}`);
+          console.error(e);
+          error(`❌ Cleanup job failed ${packageCleanUp}`);
           isFail = true;
           error = e.message || '';
         }
@@ -321,8 +322,11 @@ async function buildProjects(params: {
 }): Promise<TestResult[]> {
   const testResults: TestResult[] = [];
   for (const project of params.buildSetParams.config.projects) {
-    const projectDir = `${params.buildSetParams.workDir}${project.projectConfiguration.projectName}/`;
-    info('Building project in directory ', { projectDir });
+    const projectDir = join(
+      params.buildSetParams.workDir,
+      project.projectConfiguration.projectName + '/'
+    );
+    info('Building project in directory', { projectDir });
     mkdir('-p', projectDir);
 
     const gitHubToken = process.env.GITHUB_TOKEN;
