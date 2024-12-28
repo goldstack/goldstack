@@ -30,6 +30,7 @@ export const createNextjsBootstrapBuildSetConfig =
         {
           projectConfiguration,
           rootTests: [
+            'print-directory-content',
             'assert-package-files',
             'assert-root-files',
             'root-build',
@@ -64,7 +65,9 @@ export const createNextjsBootstrapBuildSetConfig =
                 // 'print-directory-content',
                 // 'assert-website',
               ],
-              packageCleanUp: ['infra-destroy', 'destroy-state'],
+              packageCleanUp: [
+                // 'infra-destroy', 'destroy-state'
+              ],
             },
           ],
         },
