@@ -7,6 +7,7 @@ import {
   makeReferences,
 } from './sharedUtils';
 import path from 'path';
+import { error, info } from '@goldstack/utils-log';
 
 type ProcessPackageResult = 'success' | 'failure';
 
@@ -34,7 +35,7 @@ export const updatePackageProjectReferences = ({
           excludeInReferences,
         }) === 'success' && isSuccess;
     } else {
-      console.log(`Skipping package ${packageDir}`);
+      info(`Skipping package ${packageDir}`);
     }
   }
   if (!isSuccess) {
@@ -101,17 +102,17 @@ function processPackage({
 
     // only update the config file when it has changed
     if (newReferences.length) {
-      console.log(
+      info(
         `Updating project references in ${tsConfigPath} to:` +
           newReferences.map((refData) => `\n  ${refData.path}`).join('')
       );
     } else {
-      console.log(`Removing project references in ${tsConfigPath}`);
+      info(`Removing project references in ${tsConfigPath}`);
     }
     fs.writeFileSync(tsConfigPath, newData);
     return 'success';
   } catch (e) {
-    console.error(`Error while processing ${tsConfigPath}\n${e}`);
+    error(`Error while processing ${tsConfigPath}\n${e}`);
     return 'failure';
   }
 }

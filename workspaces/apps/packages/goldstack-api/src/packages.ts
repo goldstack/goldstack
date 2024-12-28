@@ -26,6 +26,20 @@ const router = Router({
   mergeParams: true,
 });
 
+function sortKeys(obj: any): any {
+  if (Array.isArray(obj)) {
+    return obj.map(sortKeys); // Recursively sort array elements
+  } else if (obj && typeof obj === 'object') {
+    return Object.keys(obj)
+      .sort() // Sort the keys
+      .reduce((sortedObj, key) => {
+        sortedObj[key] = sortKeys(obj[key]); // Recursively sort sub-objects
+        return sortedObj;
+      }, {} as Record<string, any>);
+  }
+  return obj; // Return the value if it's not an object or array
+}
+
 const writePackage = async (params: {
   projectId: string;
   packageId: string;
@@ -74,13 +88,16 @@ const writePackage = async (params: {
   // write owner into gitignored config file
   write(
     JSON.stringify({ owner }, null, 2),
-    path + 'config/goldstack/config.json'
+    join(path, 'config/goldstack/config.json')
   );
 
   // set project name in package json
   const packageJson = JSON.parse(read(join(path, 'package.json')));
   packageJson.name = project.projectName || '';
-  write(JSON.stringify(packageJson, null, 2), join(path, 'package.json'));
+  write(
+    JSON.stringify(sortKeys(packageJson), null, 2),
+    join(path, 'package.json')
+  );
 
   // write latest version for package configs
   const { packageConfigs } = await repo.getProjectData(projectId);

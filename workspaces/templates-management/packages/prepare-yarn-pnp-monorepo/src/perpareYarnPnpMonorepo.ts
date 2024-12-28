@@ -12,6 +12,7 @@ import { readConfig, createDefaultConfig } from '@goldstack/infra-aws';
 import { assert } from 'console';
 import fs from 'fs';
 import packageSchema from './../schemas/package.schema.json';
+import { join } from 'path';
 
 export const removeNpmRegistry = (params: { yarnRc: string }): string => {
   const authTokenRegex = /npmAuthToken: [^\s]*\s/gi;
@@ -22,6 +23,20 @@ export const removeNpmRegistry = (params: { yarnRc: string }): string => {
   const withoutRegistries = withoutRegistry.replace(registriesRegex, '');
   return withoutRegistries;
 };
+
+function sortKeys(obj: any): any {
+  if (Array.isArray(obj)) {
+    return obj.map(sortKeys); // Recursively sort array elements
+  } else if (obj && typeof obj === 'object') {
+    return Object.keys(obj)
+      .sort() // Sort the keys
+      .reduce((sortedObj, key) => {
+        sortedObj[key] = sortKeys(obj[key]); // Recursively sort sub-objects
+        return sortedObj;
+      }, {} as Record<string, any>);
+  }
+  return obj; // Return the value if it's not an object or array
+}
 
 export class PrepareYarnPnpMonorepo implements PrepareTemplate {
   templateName(): string {
@@ -77,8 +92,10 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
     }
 
     // ensure no Goldstack user details included in package
-    const goldstackConfigPath =
-      params.destinationDirectory + 'config/goldstack/config.json';
+    const goldstackConfigPath = join(
+      params.destinationDirectory,
+      'config/goldstack/config.json'
+    );
     if (fs.existsSync(goldstackConfigPath)) {
       const goldstackConfig = JSON.parse(read(goldstackConfigPath));
       goldstackConfig.owner = undefined;
@@ -88,8 +105,10 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
     }
 
     // ensure no bucket details in Terraform config
-    const terraformConfigPath =
-      params.destinationDirectory + 'config/infra/aws/terraform.json';
+    const terraformConfigPath = join(
+      params.destinationDirectory,
+      'config/infra/aws/terraform.json'
+    );
     if (fs.existsSync(terraformConfigPath)) {
       const terraformConfig = JSON.parse(read(terraformConfigPath));
       terraformConfig.remoteState = [];
@@ -99,37 +118,38 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
     }
 
     // ensure no npmAuthToken in package
-    const yarnRc = read(params.destinationDirectory + '.yarnrc.yml');
+    const yarnRc = read(join(params.destinationDirectory, '.yarnrc.yml'));
 
     write(
       removeNpmRegistry({ yarnRc }),
-      params.destinationDirectory + '.yarnrc.yml'
+      join(params.destinationDirectory, '.yarnrc.yml')
     );
 
     // fix package.json
     const packageJson = JSON.parse(
-      read(params.destinationDirectory + 'package.json')
+      read(join(params.destinationDirectory, 'package.json'))
     );
+
     packageJson.name = 'root';
     packageJson.author = '';
     packageJson.license = '';
 
     const rootPackageJson = JSON.parse(
-      read(params.monorepoRoot + 'package.json')
+      read(join(params.monorepoRoot, 'package.json'))
     );
     packageJson.resolutions = rootPackageJson.resolutions;
     packageJson.packageManager = rootPackageJson.packageManager;
 
     write(
-      JSON.stringify(packageJson, null, 2),
-      params.destinationDirectory + 'package.json'
+      JSON.stringify(sortKeys(packageJson), null, 2),
+      join(params.destinationDirectory, 'package.json')
     );
 
-    mkdir('-p', params.destinationDirectory + 'packages/');
+    mkdir('-p', join(params.destinationDirectory, 'packages/'));
     cp(
       '-rf',
-      params.monorepoRoot + 'workspaces/templates/packages/README.md',
-      params.destinationDirectory + 'packages/'
+      join(params.monorepoRoot, 'workspaces/templates/packages/README.md'),
+      join(params.destinationDirectory, 'packages/')
     );
 
     const packageConfig: Package = {
@@ -142,21 +162,21 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
     };
 
     write(
-      JSON.stringify(packageConfig, null, 2),
-      params.destinationDirectory + 'goldstack.json'
+      JSON.stringify(sortKeys(packageConfig), null, 2),
+      join(params.destinationDirectory, 'goldstack.json')
     );
 
-    mkdir('-p', params.destinationDirectory + 'schemas/');
+    mkdir('-p', join(params.destinationDirectory, 'schemas/'));
     write(
       JSON.stringify(packageSchema, null, 2),
-      params.destinationDirectory + 'schemas/package.schema.json'
+      join(params.destinationDirectory, 'schemas/package.schema.json')
     );
 
     const config = readTemplateConfigFromFile(
-      params.monorepoRoot + 'workspaces/templates/' + 'template.json'
+      join(params.monorepoRoot, 'workspaces/templates/template.json')
     );
     assert(config.templateName === this.templateName());
-    const templateJsonPath = params.destinationDirectory + 'template.json';
+    const templateJsonPath = join(params.destinationDirectory, 'template.json');
     const templateJsonContent = JSON.stringify(config, null, 2);
     write(templateJsonContent, templateJsonPath);
 
