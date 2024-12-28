@@ -35,6 +35,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
+    "@goldstack/utils-log": "0.3.18",
     "source-map-support": "^0.5.21",
     "yargs": "^17.5.1"
   },
