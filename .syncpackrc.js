@@ -15,8 +15,14 @@ const config = {
       pinVersion: '^1.6.1',
     },
     {
-      dependencies: ['next'],
+      dependencies: ['next', 'react', 'react-dom', 'eslint-config-next'],
       packages: ['@goldstack/nextjs'],
+      pinVersion: '^14',
+    },
+    {
+
+      dependencies: ['next', 'react', 'react-dom', 'eslint-config-next'],
+      packages: ['@goldstack/app-nextjs'],
       pinVersion: '^14',
     },
   ],
