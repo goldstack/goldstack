@@ -59,18 +59,23 @@ const config = {
     },
     {
       dependencies: ['next'],
-      packages: ['@goldstack/nextjs', '@goldstack/app-nextjs'],
-      pinVersion: '^14',
+      packages: [ '@goldstack/app-nextjs', '@goldstack/app-nextjs-bootstrap' ],
+      pinVersion: '^15',
     },
     {
       dependencies: ['react', 'react-dom'],
-      packages: ['@goldstack/nextjs', '@goldstack/app-nextjs'],
+      packages: [ '@goldstack/app-nextjs', '@goldstack/app-nextjs-bootstrap'],
       pinVersion: '^19',
     },
     {
       dependencies: ['eslint-config-next'],
-      packages: ['@goldstack/nextjs', '@goldstack/app-nextjs'],
-      pinVersion: 'next-14',
+      packages: [ '@goldstack/app-nextjs',  '@goldstack/app-nextjs-bootstrap'],
+      pinVersion: '^15.1.3',
+    },
+     {
+      dependencies: ['next'],
+      packages: ['@goldstack/nextjs',],
+      pinVersion: '^14',
     },
   ],
 };
