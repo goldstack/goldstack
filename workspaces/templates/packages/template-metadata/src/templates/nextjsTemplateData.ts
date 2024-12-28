@@ -161,7 +161,7 @@ export const getNextJsTemplateData = (): ProjectTemplateProps => {
     tags: ['Next.js', 'TypeScript', 'Yarn', 'React', 'Frontend'],
     featuresOverview: [
       {
-        title: 'Next.js 13',
+        title: 'Next.js 15',
         id: 'nextjs',
         description: 'Start developing with the Next.js framework in minutes.',
         image: 'nextjs',

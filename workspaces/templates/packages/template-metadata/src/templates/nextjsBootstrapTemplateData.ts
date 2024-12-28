@@ -33,7 +33,7 @@ export const getNextjsBootstrapTemplateData = (): ProjectTemplateProps => {
     tags: ['Next.js', 'Bootstrap', 'React', 'TypeScript', 'Yarn', 'Frontend'],
     featuresOverview: [
       {
-        title: 'Next.js 13',
+        title: 'Next.js 15',
         id: 'nextjs',
         description: 'Get coding with the Next.js framework in minutes.',
         image: 'nextjs',
