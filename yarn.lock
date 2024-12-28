@@ -3706,9 +3706,9 @@ __metadata:
     next: "npm:^15"
     next-compose-plugins: "npm:^2.2.1"
     node-sass: "npm:^9"
-    react: "npm:^19.0.0"
+    react: "npm:^19"
     react-bootstrap: "npm:^2.2.1"
-    react-dom: "npm:^19.0.0"
+    react-dom: "npm:^19"
     react-is: "npm:^18.2.0"
     reload: "npm:^3.2.0"
     rimraf: "npm:^3.0.2"
@@ -24366,7 +24366,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^19, react-dom@npm:^19.0.0":
+"react-dom@npm:^19":
   version: 19.0.0
   resolution: "react-dom@npm:19.0.0"
   dependencies:
@@ -24494,7 +24494,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^19, react@npm:^19.0.0":
+"react@npm:^19":
   version: 19.0.0
   resolution: "react@npm:19.0.0"
   checksum: 10/2490969c503f644703c88990d20e4011fa6119ddeca451e9de48f6d7ab058d670d2852a5fcd3aa3cd90a923ab2815d532637bd4a814add402ae5c0d4f129ee71

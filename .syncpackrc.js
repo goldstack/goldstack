@@ -51,30 +51,27 @@ const config = {
     },
     {
       dependencies: ['react-bootstrap'],
-      packages: [
-        '@goldstack/goldstack-home',
-        '@goldstack/docs-main'
-      ],
+      packages: ['@goldstack/goldstack-home', '@goldstack/docs-main'],
       pinVersion: '^1.6.1',
     },
     {
       dependencies: ['next'],
-      packages: [ '@goldstack/app-nextjs', '@goldstack/app-nextjs-bootstrap' ],
+      packages: ['@goldstack/app-nextjs', '@goldstack/app-nextjs-bootstrap'],
       pinVersion: '^15',
     },
     {
       dependencies: ['react', 'react-dom'],
-      packages: [ '@goldstack/app-nextjs', '@goldstack/app-nextjs-bootstrap'],
+      packages: ['@goldstack/app-nextjs', '@goldstack/app-nextjs-bootstrap'],
       pinVersion: '^19',
     },
     {
       dependencies: ['eslint-config-next'],
-      packages: [ '@goldstack/app-nextjs',  '@goldstack/app-nextjs-bootstrap'],
+      packages: ['@goldstack/app-nextjs', '@goldstack/app-nextjs-bootstrap'],
       pinVersion: '^15.1.3',
     },
-     {
+    {
       dependencies: ['next'],
-      packages: ['@goldstack/nextjs',],
+      packages: ['@goldstack/nextjs'],
       pinVersion: '^14',
     },
   ],
