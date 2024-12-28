@@ -1,3 +1,4 @@
+import { info } from '@goldstack/utils-log';
 import { TemplateTest, RunTestParams } from '../types/TemplateTest';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
 
@@ -21,11 +22,11 @@ export class AssertWebsiteTest implements TemplateTest {
     const packageConfig = readPackageConfigFromDir(params.packageDir);
 
     for (const deployment of packageConfig.deployments) {
-      console.log(
-        'Asserting website deployed for',
-        deployment.name,
-        'deployed to',
-        deployment.configuration.websiteDomain
+      info(
+        'Asserting website deployed for ' +
+          deployment.name +
+          ' deployed to ' +
+          deployment.configuration.websiteDomain
       );
 
       const website1Url =

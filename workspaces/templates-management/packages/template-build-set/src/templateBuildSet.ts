@@ -18,7 +18,7 @@ import {
   getTemplateTest,
 } from '@goldstack/utils-template-test';
 import assert from 'assert';
-import path from 'path';
+import path, { join } from 'path';
 export * from './types/DeploySet';
 
 import { resetMocks } from 'mock-aws-s3-v3';
@@ -144,6 +144,7 @@ const buildAndTestProject = async (
   // run project level tests first to have everything initialised
   for (const projectTest of params.project.rootTests) {
     const test = getTemplateTest(projectTest);
+    info('Executing test ' + test.getName());
     await test.runTest({
       packageDir: params.projectDir,
       projectDir: params.projectDir,
@@ -234,10 +235,10 @@ export const buildSet = async (
   };
 
   // set up local repo to run tests before deploying
-  const localRepo = await prepareTestDir(params.workDir + 's3/');
+  const localRepo = await prepareTestDir(join(params.workDir, 's3/'));
 
   // build templates for local repo
-  const templateWorkDir = params.workDir + 'templates/';
+  const templateWorkDir = join(params.workDir, 'templates/');
 
   // script runs in dir workspaces/apps/packages/template-management-cli
   // thus monorepo root is four folders up
@@ -345,7 +346,7 @@ async function buildProjects(params: {
       const currentDir = process.cwd();
       cd(`${projectDir}`);
       if (project.repoReadme) {
-        write(read(params.monorepoRoot + project.repoReadme), 'README.md');
+        write(read(join(params.monorepoRoot, project.repoReadme)), 'README.md');
       }
       await execAsync(
         'git config --global user.email "1448524+mxro@users.noreply.github.com"'

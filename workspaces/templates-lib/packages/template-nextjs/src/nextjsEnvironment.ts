@@ -1,18 +1,19 @@
 import { write } from '@goldstack/utils-sh';
 import { NextjsDeployment } from './types/NextJsPackage';
+import { info } from '@goldstack/utils-log';
 
 export const setNextjsEnvironmentVariables = async (
   deployment: NextjsDeployment
 ): Promise<void> => {
-  const vars = deployment?.configuration.environmentVariables || [];
+  const variables = deployment?.configuration.environmentVariables || [];
 
-  vars.push({
+  variables.push({
     name: 'NEXT_PUBLIC_GOLDSTACK_DEPLOYMENT',
     value: deployment.name,
   });
 
-  console.log('Set production environment variables', vars);
-  const envContent = vars
+  info('Set production environment variables', variables);
+  const envContent = variables
     .map((envVar) => `${envVar.name}=${envVar.value}\n`)
     .join('');
 
