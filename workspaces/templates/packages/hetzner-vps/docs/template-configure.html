@@ -1,60 +1,11 @@
-<p></p>
-<div class="markdown-fragment">
-  <p>
-    This templates allows setting up and deploy an application to a VPS server
-    hosted on Hetzner.
-  </p>
-</div>
-<p></p>
-<p></p>
-<div class="markdown-fragment">
-  <p>The following key properties need to be configured for this template:</p>
-  <ul>
-    <li>
-      <strong>Location</strong>: The Hetzner location this server should be
-      deployed to. This can be any valid location string without spaces. For
-      instance, if the location <code class="inline">fsn1</code> is chosen, the
-      server will be deployed to the <code class="inline">fsn1</code> Hetzner
-      data center. Example pattern: <code class="inline">^[^\s]*</code>
-    </li>
-    <li>
-      <strong>Server Name</strong>: The Hetzner server name that should be used
-      for this server. The name must not contain any spaces. For example, if the
-      server name <code class="inline">my-server</code> is chosen, the server
-      will be identified as <code class="inline">my-server</code>. Example
-      pattern: <code class="inline">^[^\s]*</code>
-    </li>
-    <li>
-      <strong>Server Type</strong>: The Hetzner server type that should be used
-      for this server. The server type string must not contain any spaces. For
-      example, <code class="inline">cx11</code> refers to a small cloud server
-      instance. Example pattern: <code class="inline">^[^\s]*</code>
-    </li>
-    <li>
-      <strong>SSH User Fingerprint</strong> (optional): The SSH fingerprint of
-      the user that should be granted access to the server. This must be a valid
-      SSH fingerprint string, for example,
-      <code class="inline">SHA256:xyz</code>. Example pattern:
-      <code class="inline">^[^\s]*</code>
-    </li>
-    <li>
-      <strong>Only Allow SSH Access from IP</strong> (optional): The specific IP
-      address from which SSH access is allowed. For instance, setting this to
-      <code class="inline">192.168.1.1</code> would limit SSH access to that IP
-      address only.
-    </li>
-    <li>
-      <strong>Environment Variables</strong> (optional): The environment
-      variables that should be set for the server. Each environment variable
-      consists of a name and a value. For example, a variable with the name
-      <code class="inline">NODE_ENV</code> and the value
-      <code class="inline">production</code> can be configured to set the
-      environment to production.
-    </li>
-  </ul>
-  <p>
-    For more details on deployment, refer to the Hetzner server deployment
-    configuration in the Goldstack documentation.
-  </p>
-</div>
-<p></p>
+<p></p><div class="markdown-fragment"><p>This templates allows setting up and deploy an application to a VPS server hosted on Hetzner.</p></div><p></p>
+<p></p><div class="markdown-fragment"><p>The following key properties need to be configured for this template:</p>
+<ul>
+<li><strong>Location</strong>: The Hetzner location this server should be deployed to. This can be any valid location string without spaces. For instance, if the location <code class="inline">fsn1</code> is chosen, the server will be deployed to the <code class="inline">fsn1</code> Hetzner data center. Example pattern: <code class="inline">^[^\s]*</code></li>
+<li><strong>Server Name</strong>: The Hetzner server name that should be used for this server. The name must not contain any spaces. For example, if the server name <code class="inline">my-server</code> is chosen, the server will be identified as <code class="inline">my-server</code>. Example pattern: <code class="inline">^[^\s]*</code></li>
+<li><strong>Server Type</strong>: The Hetzner server type that should be used for this server. The server type string must not contain any spaces. For example, <code class="inline">cx11</code> refers to a small cloud server instance. Example pattern: <code class="inline">^[^\s]*</code></li>
+<li><strong>SSH User Fingerprint</strong> (optional): The SSH fingerprint of the user that should be granted access to the server. This must be a valid SSH fingerprint string, for example, <code class="inline">SHA256:xyz</code>. Example pattern: <code class="inline">^[^\s]*</code></li>
+<li><strong>Only Allow SSH Access from IP</strong> (optional): The specific IP address from which SSH access is allowed. For instance, setting this to <code class="inline">192.168.1.1</code> would limit SSH access to that IP address only.</li>
+<li><strong>Environment Variables</strong> (optional): The environment variables that should be set for the server. Each environment variable consists of a name and a value. For example, a variable with the name <code class="inline">NODE_ENV</code> and the value <code class="inline">production</code> can be configured to set the environment to production.</li>
+</ul>
+<p>For more details on deployment, refer to the Hetzner server deployment configuration in the Goldstack documentation.</p></div><p></p>
