@@ -6316,11 +6316,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-typescript-references@npm:0.3.12, @goldstack/utils-typescript-references@workspace:workspaces/utils/packages/utils-typescript-references":
+"@goldstack/utils-typescript-references@npm:0.3.13, @goldstack/utils-typescript-references@workspace:workspaces/utils/packages/utils-typescript-references":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-typescript-references@workspace:workspaces/utils/packages/utils-typescript-references"
   dependencies:
     "@goldstack/utils-git": "npm:0.2.12"
+    "@goldstack/utils-log": "npm:0.3.18"
     "@swc/core": "npm:^1.10.1"
     "@swc/jest": "npm:^0.2.37"
     "@types/jest": "npm:^29.5.14"
@@ -10806,7 +10807,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "apps@workspace:workspaces/apps"
   dependencies:
-    "@goldstack/utils-typescript-references": "npm:0.3.12"
+    "@goldstack/utils-typescript-references": "npm:0.3.13"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
     "@typescript-eslint/eslint-plugin": "npm:^5.42.1"
@@ -13690,7 +13691,7 @@ __metadata:
   resolution: "docs@workspace:workspaces/docs"
   dependencies:
     "@goldstack/nodemonx": "npm:0.4.21"
-    "@goldstack/utils-typescript-references": "npm:0.3.12"
+    "@goldstack/utils-typescript-references": "npm:0.3.13"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
     "@typescript-eslint/eslint-plugin": "npm:^5.42.1"
@@ -15049,7 +15050,7 @@ __metadata:
   resolution: "examples@workspace:workspaces/examples"
   dependencies:
     "@goldstack/nodemonx": "npm:0.4.21"
-    "@goldstack/utils-typescript-references": "npm:0.3.12"
+    "@goldstack/utils-typescript-references": "npm:0.3.13"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
     "@typescript-eslint/eslint-plugin": "npm:^5.42.1"
@@ -23823,7 +23824,7 @@ __metadata:
   dependencies:
     "@goldstack/nodemonx": "npm:0.4.21"
     "@goldstack/utils-docs-cli": "npm:0.3.11"
-    "@goldstack/utils-typescript-references": "npm:0.3.12"
+    "@goldstack/utils-typescript-references": "npm:0.3.13"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
     "@typescript-eslint/eslint-plugin": "npm:^5.42.1"
@@ -25683,7 +25684,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "templates-lib@workspace:workspaces/templates-lib"
   dependencies:
-    "@goldstack/utils-typescript-references": "npm:0.3.12"
+    "@goldstack/utils-typescript-references": "npm:0.3.13"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
     "@typescript-eslint/eslint-plugin": "npm:^5.42.1"
@@ -25705,7 +25706,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "templates-management@workspace:workspaces/templates-management"
   dependencies:
-    "@goldstack/utils-typescript-references": "npm:0.3.12"
+    "@goldstack/utils-typescript-references": "npm:0.3.13"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
     "@typescript-eslint/eslint-plugin": "npm:^5.42.1"
@@ -25727,7 +25728,7 @@ __metadata:
   resolution: "templates@workspace:workspaces/templates"
   dependencies:
     "@goldstack/nodemonx": "npm:0.4.21"
-    "@goldstack/utils-typescript-references": "npm:0.3.12"
+    "@goldstack/utils-typescript-references": "npm:0.3.13"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
     "@typescript-eslint/eslint-plugin": "npm:^5.42.1"
@@ -26942,7 +26943,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "utils@workspace:workspaces/utils"
   dependencies:
-    "@goldstack/utils-typescript-references": "npm:0.3.12"
+    "@goldstack/utils-typescript-references": "npm:0.3.13"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
     "@typescript-eslint/eslint-plugin": "npm:^5.42.1"
