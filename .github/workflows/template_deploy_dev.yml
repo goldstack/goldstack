@@ -54,7 +54,6 @@ jobs:
             --repo goldstack-dev \
             --workDir /tmp/set/ \
             --emailResultsTo false \
-            --deployBeforeTest true
         env:
           AWS_USER_NAME: goldstack-dev
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}

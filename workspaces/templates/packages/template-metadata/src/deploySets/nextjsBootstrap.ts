@@ -55,6 +55,7 @@ export const createNextjsBootstrapBuildSetConfig =
               ],
               packageTests: [
                 'assert-package-files',
+                'package-build',
                 'infra-up',
                 'deploy',
                 'assert-website',

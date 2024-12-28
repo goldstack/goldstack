@@ -254,11 +254,14 @@ export const buildSet = async (
     monorepoRoot,
   });
 
-  if (params.deployBeforeTest) {
+  if (params.deployBeforeTest && false) {
     // TODO this will not work due to mocks!
     info('Deploying templates before tests', {
       workDir: params.workDir + 'templatesDeploy/',
     });
+    throw new Error(
+      'Deploying before test not available, since S3 local mocks would be overwritten'
+    );
     await buildTemplates({
       workDir: params.workDir + 'templatesDeploy/',
       templates: params.config.deployTemplates,
@@ -284,7 +287,7 @@ export const buildSet = async (
     }
     res.testFailed = false;
   } else {
-    warn('Skipping tests');
+    warn('Skipping tests for ' + params.config.buildSetName);
   }
 
   // IMPORTANT since otherwise nothing will be deployed
