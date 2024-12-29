@@ -6,6 +6,7 @@ import {
   renderHostEnvironmentVariables,
 } from '@goldstack/utils-docker';
 import path from 'path';
+import { debug, info } from '@goldstack/utils-log';
 
 export const hasYarn = (): boolean => {
   if (!commandExists('yarn')) {
@@ -32,7 +33,7 @@ export const configureForTemplateBuild = (
   projectDir: string,
   globalDir: string
 ): void => {
-  console.log('Perform Yarn config overwrite for template building:');
+  info('Perform Yarn config overwrite for template building:');
   yarn(projectDir, `config set globalFolder ${globalDir}`);
   yarn(projectDir, 'config set checksumBehavior update');
   yarn(projectDir, 'config set enableImmutableInstalls false');
@@ -73,6 +74,7 @@ export const yarn = (
   args: string,
   options?: YarnRunOptions
 ): void => {
+  debug('Performing yarn command: yarn ' + args);
   // always prefer to run with cli
   if (hasYarn() && !options?.preferDocker) {
     execWithCli(dir, args);

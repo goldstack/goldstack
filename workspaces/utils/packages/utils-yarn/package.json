@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@goldstack/utils-docker": "0.4.22",
+    "@goldstack/utils-log": "0.3.18",
     "@goldstack/utils-sh": "0.5.20"
   },
   "devDependencies": {

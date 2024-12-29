@@ -80,7 +80,7 @@ export class S3TemplateRepository implements TemplateRepository {
       `${templateName}-${version}.zip`
     );
     const templatePath = `versions/${templateName}/${version}/${templateName}-${version}.zip`;
-    debug(`Downloading template from ${this.bucket} to ${filePath}`);
+    debug(`Downloading template from '${this.bucket}' to '${filePath}'`);
     if (
       await download({
         s3: this.s3,
