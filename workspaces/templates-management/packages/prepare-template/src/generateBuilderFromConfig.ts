@@ -153,6 +153,13 @@ export const generateBuilderFromConfig = async (
         JSON.stringify(packageJson, null, 2),
         join(params.destinationDirectory, 'package.json')
       );
+
+      debug('Template files written', {
+        destinationDirectory: params.destinationDirectory,
+        filesInDestinationDirectory: fs
+          .readdirSync(params.destinationDirectory)
+          .join(', '),
+      });
     }
   }
 

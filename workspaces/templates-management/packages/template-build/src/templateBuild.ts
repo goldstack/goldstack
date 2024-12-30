@@ -42,10 +42,10 @@ export const build = async (
   }
 
   info(
-    `Building template '${builder.templateName}' in directory ` +
+    `Building template '${builder.templateName()}' in directory ` +
       destinationDirectory,
     {
-      templateName: builder.templateName,
+      templateName: builder.templateName(),
       destinationDirectory,
       sourceTemplateDirectory,
     }
