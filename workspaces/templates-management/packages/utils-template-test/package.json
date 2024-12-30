@@ -29,10 +29,10 @@
     "@goldstack/utils-package": "0.4.21",
     "@goldstack/utils-sh": "0.5.20",
     "@goldstack/utils-template": "0.4.21",
-    "@goldstack/utils-yarn": "0.4.22",
+    "@goldstack/utils-yarn": "0.4.23",
     "axios": "1.6.0",
     "extract-zip": "^2.0.1",
-    "mock-aws-s3-v3": "6.0.0"
+    "mock-aws-s3-v3": "6.0.1"
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "3.620.0",

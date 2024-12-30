@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-ssr",
-  "version": "0.3.56",
+  "version": "0.3.57",
   "description": "Building blocks for implementing server-side rendered pages.",
   "keywords": [
     "goldstack",
@@ -40,14 +40,14 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.4.21",
-    "@goldstack/infra-aws": "0.4.30",
-    "@goldstack/template-ssr-server": "0.3.54",
-    "@goldstack/utils-aws-lambda": "0.3.38",
+    "@goldstack/infra-aws": "0.4.31",
+    "@goldstack/template-ssr-server": "0.3.55",
+    "@goldstack/utils-aws-lambda": "0.3.39",
     "@goldstack/utils-esbuild": "0.5.12",
     "@goldstack/utils-package": "0.4.21",
     "@goldstack/utils-package-config-embedded": "0.5.22",
     "@goldstack/utils-template": "0.4.21",
-    "@goldstack/utils-terraform": "0.4.40",
+    "@goldstack/utils-terraform": "0.4.41",
     "@types/aws-lambda": "^8.10.146",
     "react": "18.2.0",
     "react-dom": "18.2.0",
