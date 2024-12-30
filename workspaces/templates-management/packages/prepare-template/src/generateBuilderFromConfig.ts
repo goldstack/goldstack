@@ -18,7 +18,7 @@ import configSchema from './schemas/configSchema.json';
 import fs from 'fs';
 import jsonpath from 'jsonpath';
 import { debug, info, warn } from '@goldstack/utils-log';
-import path from 'path';
+import path, { join } from 'path';
 
 const readBuildConfigFromString = (
   data: string
@@ -75,9 +75,11 @@ const overwriteFields = async (
 export const generateBuilderFromConfig = async (
   templateDirectory: string
 ): Promise<PrepareTemplate | undefined> => {
-  const buildConfig = readBuildConfigFromFile(templateDirectory + 'build.json');
+  const buildConfig = readBuildConfigFromFile(
+    join(templateDirectory, 'build.json')
+  );
   const templateConfig = readTemplateConfigFromFile(
-    templateDirectory + 'template.json'
+    join(templateDirectory, 'template.json')
   );
 
   class GeneratedBuilderConfig implements PrepareTemplate {
