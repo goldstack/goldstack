@@ -103,6 +103,7 @@ export function createS3Client({
   const client = s3Client || new S3Client();
   const mockClientInstance = mockClient(client);
 
+  s3Mock.config.basePath = resolve(localDirectory);
   const mockS3 = new s3Mock.S3({
     params: { Bucket: bucket },
   });
@@ -113,7 +114,6 @@ export function createS3Client({
     mockS3,
     localDirectory: resolve(localDirectory),
   };
-  s3Mock.config.basePath = context.localDirectory;
 
   bucketContexts.set(bucket, context);
   (client as any)._goldstackRequests = [];
