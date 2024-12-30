@@ -1,5 +1,5 @@
 import {
-  prepareTestDir,
+  prepareLocalS3Repo,
   buildTemplate,
   assertFilesExist,
   assertFilesDoNotExist,
@@ -26,7 +26,7 @@ describe('Template Building', () => {
   let repo: S3TemplateRepository | undefined = undefined;
 
   beforeAll(async () => {
-    repo = await prepareTestDir(goldstackTestsDir);
+    repo = await prepareLocalS3Repo(goldstackTestsDir);
   });
 
   it('Should return undefined when template does not exist.', async () => {

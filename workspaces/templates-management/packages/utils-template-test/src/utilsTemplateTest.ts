@@ -34,8 +34,8 @@ function assert(condition: any, msg?: string): asserts condition {
 
 const sleep = promisify(setTimeout);
 
-export const prepareTestDir = async (
-  goldstackTestsDir = './goldstackLocal/test/'
+export const prepareLocalS3Repo = async (
+  goldstackTestsDir: string
 ): Promise<S3TemplateRepository> => {
   await rmSafe(goldstackTestsDir);
 

@@ -113,6 +113,7 @@ export function createS3Client({
     mockS3,
     localDirectory: resolve(localDirectory),
   };
+  s3Mock.config.basePath = context.localDirectory;
 
   bucketContexts.set(bucket, context);
   (client as any)._goldstackRequests = [];

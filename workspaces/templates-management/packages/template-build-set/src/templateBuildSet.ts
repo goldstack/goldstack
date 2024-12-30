@@ -14,7 +14,7 @@ import { write } from '@goldstack/utils-sh';
 import { S3TemplateRepository } from '@goldstack/template-repository';
 import { getAwsConfigPath } from '@goldstack/utils-config';
 import {
-  prepareTestDir,
+  prepareLocalS3Repo,
   getTemplateTest,
 } from '@goldstack/utils-template-test';
 import assert from 'assert';
@@ -236,7 +236,7 @@ export const buildSet = async (
   };
 
   // set up local repo to run tests before deploying
-  const localRepo = await prepareTestDir(join(params.workDir, 's3/'));
+  const localRepo = await prepareLocalS3Repo(join(params.workDir, 's3/'));
 
   // build templates for local repo
   const templateWorkDir = resolve(join(params.workDir, 'templates/'));
