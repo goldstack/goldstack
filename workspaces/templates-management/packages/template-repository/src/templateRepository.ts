@@ -20,7 +20,7 @@ import fs from 'fs';
 import { debug, info } from '@goldstack/utils-log';
 
 import { promisify } from 'util';
-import path from 'path';
+import path, { join } from 'path';
 
 const sleep = promisify(setTimeout);
 
@@ -40,11 +40,18 @@ export class S3TemplateRepository implements TemplateRepository {
   private s3: S3Client;
   private bucket: string;
   private bucketUrl: string;
+  private workDir: string;
 
-  constructor(params: { s3: S3Client; bucket: string; bucketUrl: string }) {
+  constructor(params: {
+    s3: S3Client;
+    bucket: string;
+    bucketUrl: string;
+    workDir: string;
+  }) {
     this.s3 = params.s3;
     this.bucket = params.bucket;
     this.bucketUrl = params.bucketUrl;
+    this.workDir = params.workDir;
   }
 
   async getLatestTemplateVersion(
@@ -160,7 +167,11 @@ export class S3TemplateRepository implements TemplateRepository {
     const templateConfigPath = `versions/${templatePath}template.json`;
     config.templateArchive = `arn:aws:s3:::${this.bucket}/${templateArchivePath}`;
 
-    const workDir = `./goldstackLocal/work/repo/${config.templateName}/${config.templateVersion}`;
+    const workDir = join(
+      this.workDir,
+      config.templateName,
+      config.templateVersion
+    );
     rm('-rf', workDir);
     await sleep(200);
 
