@@ -35,7 +35,11 @@ export const createNextjsBuildSetConfig =
               packageName: 'app-nextjs-1',
               configuration: {},
               deployments: [],
-              packageTests: ['assert-package-files'],
+              packageTests: [
+                'assert-package-files',
+                'ensure-babelrc-does-not-exist',
+                'package-build',
+              ],
               packageCleanUp: [],
             },
           ],
