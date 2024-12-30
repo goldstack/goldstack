@@ -149,8 +149,8 @@ export function createS3Client({
           input,
         });
 
-        console.log('input', input);
-        console.log('context', context);
+        console.log('input', input, 'operation', command.name);
+        console.log('local dir', context.localDirectory);
         const operation = context.mockS3[method](input);
 
         if (method === 'getObject') {
