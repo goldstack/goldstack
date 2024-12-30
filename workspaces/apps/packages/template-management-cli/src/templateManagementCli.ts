@@ -19,7 +19,7 @@ import {
   connect as connectSes,
   getFromDomain,
 } from '@goldstack/goldstack-email-send';
-import { join } from 'path';
+import { join, resolve } from 'path';
 
 export const run = async (): Promise<void> => {
   await wrapCli(async (): Promise<any> => {
@@ -155,7 +155,7 @@ export const run = async (): Promise<void> => {
 
       const config = await getBuildSet(argv.set as string);
 
-      const workDirBuild = join(workDir, 'build/');
+      const workDirBuild = resolve(join(workDir, 'build/'));
 
       rm('-rf', workDirBuild);
       mkdir('-p', workDirBuild);

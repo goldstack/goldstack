@@ -20,7 +20,7 @@ import fs from 'fs';
 import { debug, info } from '@goldstack/utils-log';
 
 import { promisify } from 'util';
-import path, { join } from 'path';
+import path, { join, resolve } from 'path';
 
 const sleep = promisify(setTimeout);
 
@@ -51,7 +51,7 @@ export class S3TemplateRepository implements TemplateRepository {
     this.s3 = params.s3;
     this.bucket = params.bucket;
     this.bucketUrl = params.bucketUrl;
-    this.workDir = params.workDir;
+    this.workDir = resolve(params.workDir);
   }
 
   async getLatestTemplateVersion(
@@ -184,7 +184,7 @@ export class S3TemplateRepository implements TemplateRepository {
     // Upload config
     info(
       'Uploading template config to: ' + this.bucket + '/' + templateConfigPath,
-      { bucket: this.bucket }
+      { bucket: this.bucket, workDir }
     );
     try {
       const cmd = new PutObjectCommand({
@@ -200,18 +200,19 @@ export class S3TemplateRepository implements TemplateRepository {
     // template.json does not need to be included in archive
     rm('-rf', targetConfigPath);
 
-    const targetPackageConfigPath = workDir + '/goldstack.json';
+    const targetPackageConfigPath = join(workDir, 'goldstack.json');
     const packageConfig = readPackageConfig(workDir + '/');
     packageConfig.template = config.templateName;
     packageConfig.templateVersion = config.templateVersion;
     write(JSON.stringify(packageConfig, null, 2), targetPackageConfigPath);
 
     const targetArchive = join(
-      workDir,
+      this.workDir,
       `${config.templateName}-${config.templateVersion}.zip`
     );
     await rmSafe(targetArchive);
 
+    debug('Preparing template zip', { source: workDir, target: targetArchive });
     await zip({ directory: workDir, target: targetArchive });
 
     // Upload archive
@@ -234,6 +235,7 @@ export class S3TemplateRepository implements TemplateRepository {
       throw e;
     }
 
+    rm('-rf', targetArchive);
     // set latest version, only after archive upload successful
     try {
       info('Setting latest version to ' + config.templateVersion, {

@@ -23,6 +23,7 @@ import { PackageBuildLambdaTest } from './tests/PackageBuildLambdaTest';
 import { PackageTestTest } from './tests/PackageTestTest';
 import { PrintDirectoryContentTest } from './tests/PrintDirectoryContentTest';
 import { EnsureBabelRcDoesNotExist } from './tests/EnsureBabelRcDoesNotExist';
+import { join, resolve } from 'path';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function assert(condition: any, msg?: string): asserts condition {
@@ -42,8 +43,8 @@ export const prepareTestDir = async (
   await sleep(100);
 
   mkdir('-p', goldstackTestsDir);
-  mkdir('-p', goldstackTestsDir + 's3/repo');
-  mkdir('-p', goldstackTestsDir + 'templates/');
+  mkdir('-p', join(goldstackTestsDir, 's3/repo'));
+  mkdir('-p', join(goldstackTestsDir, 'templates/'));
 
   const s3 = createS3Client({
     localDirectory: goldstackTestsDir + 's3/repo',
@@ -52,7 +53,7 @@ export const prepareTestDir = async (
   const repo = new S3TemplateRepository({
     s3: s3,
     bucket: 'local-dummy-template-repo',
-    workDir: './goldstackLocal/templateTest',
+    workDir: './goldstackLocal/templateTestRepo',
     bucketUrl: 'https://local.goldstack.party/repo/',
   });
   return repo;
@@ -102,8 +103,8 @@ export const buildTemplate = async (params: {
   if (!params.repo) throw new Error('Invalid test state.');
 
   const newVersion = await build(params.templateName, {
-    monorepoRoot: './../../../../',
-    destinationDirectory: params.goldstackTestsDir + 'templates/',
+    monorepoRoot: resolve('./../../../../'),
+    destinationDirectory: resolve(join(params.goldstackTestsDir, 'templates/')),
     templateRepository: params.repo,
   });
 

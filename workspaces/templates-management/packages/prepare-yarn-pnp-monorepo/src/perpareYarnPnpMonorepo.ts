@@ -54,7 +54,7 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
       '.nvmrc',
       '.vscode/',
       'yarn.lock',
-    ].map((name) => params.monorepoRoot + name);
+    ].map((name) => join(params.monorepoRoot, name));
     mkdir('-p', params.destinationDirectory);
     cp('-rf', copyFilesFromRoot, params.destinationDirectory);
 
@@ -62,7 +62,7 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
       '.yarn/pnpify',
       '.yarn/releases',
       '.yarn/sdks',
-    ].map((name) => params.monorepoRoot + name);
+    ].map((name) => join(params.monorepoRoot, name));
     mkdir('-p', params.destinationDirectory + '.yarn/');
     cp('-rf', copyFilesFromRootYarn, params.destinationDirectory + '.yarn/');
 
@@ -78,7 +78,7 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
       'tsconfig.ui.json',
       'tsconfig.json',
       'config',
-    ].map((name) => params.monorepoRoot + 'workspaces/templates/' + name);
+    ].map((name) => join(params.monorepoRoot, 'workspaces/templates/', name));
     cp('-rf', copyFilesFromTemplate, params.destinationDirectory);
 
     // ensure no AWS user details included in package

@@ -23,7 +23,9 @@ export const build = async (
   let builder = templateBuilders.find(
     (builder) => templateName === builder.templateName()
   );
-  const monorepoRoot = config.monorepoRoot;
+  const monorepoRoot = config.monorepoRoot.endsWith('/')
+    ? config.monorepoRoot
+    : config.monorepoRoot + '/';
   const destinationDirectory = config.destinationDirectory
     ? join(config.destinationDirectory, templateName + '/')
     : `./templates/${templateName}/`;

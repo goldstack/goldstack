@@ -18,7 +18,7 @@ import {
   getTemplateTest,
 } from '@goldstack/utils-template-test';
 import assert from 'assert';
-import path, { join } from 'path';
+import path, { join, resolve } from 'path';
 export * from './types/DeploySet';
 
 import { resetMocks } from 'mock-aws-s3-v3';
@@ -239,7 +239,7 @@ export const buildSet = async (
   const localRepo = await prepareTestDir(join(params.workDir, 's3/'));
 
   // build templates for local repo
-  const templateWorkDir = join(params.workDir, 'templates/');
+  const templateWorkDir = resolve(join(params.workDir, 'templates/'));
 
   // script runs in dir workspaces/apps/packages/template-management-cli
   // thus monorepo root is four folders up
