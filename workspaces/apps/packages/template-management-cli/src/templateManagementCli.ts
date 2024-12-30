@@ -141,14 +141,19 @@ export const run = async (): Promise<void> => {
         tmpInstance = tmp.dirSync();
         workDir = tmpInstance.name + '/';
         info('Creating in temporary directory ' + workDir);
+      } else {
+        rm('-rf', workDir);
+        mkdir('-p', workDir);
       }
       if (!workDir.endsWith('/')) {
         throw new Error(
           `Working directory must end with a /. Supplied working directory: ${workDir}`
         );
       }
-      rm('-rf', workDir);
-      mkdir('-p', workDir);
+      assert(
+        fs.readdirSync(workDir).length === 0,
+        `Working directory ${workDir} is not empty`
+      );
 
       const awsConfigPath = getAwsConfigPath('./../../');
       let awsConfig: undefined | AWSAPIKeyUser = undefined;

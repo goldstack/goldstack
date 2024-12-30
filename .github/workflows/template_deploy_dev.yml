@@ -31,9 +31,6 @@ jobs:
     steps:
       - name: Checkout Goldstack repo
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 20
-          token: ${{secrets.BUILD_TOKEN}}
       - uses: ./.github/actions/goldstack-setup
       - uses: actions/setup-java@v4 # used for local DynamoDB
         with:
