@@ -20,6 +20,7 @@
     "tsconfig.test.json"
   ],
   "exclude": [
+    ".babelrc",
     "infra/aws/.terraform/",
     "infra/aws/tfplan",
     "infra/aws/terraform.tfstate.d/"

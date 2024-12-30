@@ -132,12 +132,12 @@ export const generateBuilderFromConfig = async (
       packageConfig.templateVersion = '0.0.0';
       write(
         JSON.stringify(packageConfig, null, 2),
-        params.destinationDirectory + 'goldstack.json'
+        join(params.destinationDirectory, 'goldstack.json')
       );
 
       // cleaning up packageJson
       const packageJson = JSON.parse(
-        read(params.destinationDirectory + 'package.json')
+        read(join(params.destinationDirectory, 'package.json'))
       );
       packageJson.name = '';
       packageJson.author = '';
@@ -145,7 +145,7 @@ export const generateBuilderFromConfig = async (
       packageJson['private'] = undefined;
       write(
         JSON.stringify(packageJson, null, 2),
-        params.destinationDirectory + 'package.json'
+        join(params.destinationDirectory, 'package.json')
       );
     }
   }
