@@ -53,7 +53,7 @@ jobs:
             --deployment prod \
             --repo goldstack-prod \
             --skipTests true \
-            --workDir /tmp/set/ \
+            --workDir tmp \
             --emailResultsTo false
         env:
           AWS_USER_NAME: goldstack-prod
