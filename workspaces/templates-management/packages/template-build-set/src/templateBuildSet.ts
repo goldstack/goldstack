@@ -23,7 +23,7 @@ export * from './types/DeploySet';
 
 import { resetMocks } from 'mock-aws-s3-v3';
 
-import { info, warn } from '@goldstack/utils-log';
+import { info, warn, error } from '@goldstack/utils-log';
 
 export interface BuildSetParams {
   config: DeploySetConfig;
@@ -164,7 +164,7 @@ const buildAndTestProject = async (
         info(`Running test ${packageTest} ...`);
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let error: any = undefined;
+        let errorFound: any = undefined;
         let isFail: boolean;
         try {
           const test = getTemplateTest(packageTest);
@@ -176,7 +176,7 @@ const buildAndTestProject = async (
           isFail = false;
         } catch (e) {
           isFail = true;
-          error = e.message || '';
+          errorFound = e.message || '';
           console.error(e);
           error(`❌ Test failed ${packageTest}`);
         }
@@ -186,7 +186,7 @@ const buildAndTestProject = async (
         testResults.push({
           testName: `${params.project.projectConfiguration.projectName} ${packageConfig.packageName} ${packageTest}`,
           result: !isFail,
-          error,
+          error: errorFound,
         });
       }
     } finally {
@@ -194,7 +194,7 @@ const buildAndTestProject = async (
       for (const packageCleanUp of packageConfig.packageCleanUp) {
         info(`Running cleanup job ${packageCleanUp}`);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let error: any = undefined;
+        let errorFound: any = undefined;
         let isFail: boolean;
         try {
           const test = getTemplateTest(packageCleanUp);
@@ -208,12 +208,12 @@ const buildAndTestProject = async (
           console.error(e);
           error(`❌ Cleanup job failed ${packageCleanUp}`);
           isFail = true;
-          error = e.message || '';
+          errorFound = e.message || '';
         }
         testResults.push({
           testName: `${params.project.projectConfiguration.projectName} ${packageConfig.packageName} ${packageCleanUp}`,
           result: !isFail,
-          error,
+          error: errorFound,
         });
       }
     }

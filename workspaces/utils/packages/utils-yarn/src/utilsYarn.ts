@@ -38,7 +38,7 @@ export const configureForTemplateBuild = (
   yarn(projectDir, 'config set checksumBehavior update');
   yarn(projectDir, 'config set enableImmutableInstalls false');
   yarn(projectDir, 'config set enableImmutableCache false');
-  yarn(projectDir, 'config');
+  // yarn(projectDir, 'config');
 };
 
 const execWithDocker = (dir: string, args: string): void => {
