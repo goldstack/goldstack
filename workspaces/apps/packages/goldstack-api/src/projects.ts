@@ -19,6 +19,7 @@ import { ProjectData } from '@goldstack/project-repository';
 import { getDocLinks } from './utils/docLinks';
 
 import packagesRouter from './packages';
+import { join } from 'path';
 
 const router = Router();
 
@@ -52,6 +53,7 @@ export const postProjectHandler = async (
       bucket: await getBucketName(),
       bucketUrl: 's3',
       s3: templateS3,
+      workDir: join(tempDir(), 'template-repo-work'),
     });
     mkdir('-p', buildDir);
     await buildProject({
