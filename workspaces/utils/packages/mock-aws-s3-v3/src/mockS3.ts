@@ -22,8 +22,6 @@ import S3Mock, { AWSError } from 'mock-aws-s3';
 import { StreamingBlobPayloadOutputTypes } from '@smithy/types';
 import { WriteStream } from 'fs';
 
-import { createSandbox } from 'sinon';
-
 /**
  * Resets all mocks globally
  */

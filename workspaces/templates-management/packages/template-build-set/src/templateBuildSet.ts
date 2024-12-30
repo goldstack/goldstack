@@ -300,10 +300,10 @@ export const buildSet = async (
   // TODO see above logic will not work due to lacking mock reset
   if (!params.deployBeforeTest || true) {
     info('Deploying templates', {
-      workDir: params.workDir + 'templatesDeploy/',
+      workDir: join(params.workDir, 'templatesDeploy/'),
     });
     await buildTemplates({
-      workDir: params.workDir + 'templatesDeploy/',
+      workDir: join(params.workDir, 'templatesDeploy/'),
       templates: params.config.deployTemplates,
       monorepoRoot,
       templateRepository: params.s3repo,
