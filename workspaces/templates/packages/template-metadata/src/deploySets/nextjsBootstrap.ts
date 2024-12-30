@@ -30,7 +30,6 @@ export const createNextjsBootstrapBuildSetConfig =
         {
           projectConfiguration,
           rootTests: [
-            'print-directory-content',
             'assert-package-files',
             'assert-root-files',
             'root-build',

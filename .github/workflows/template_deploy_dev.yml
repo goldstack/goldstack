@@ -10,7 +10,6 @@ jobs:
       matrix:
         deploy-set:
           [
-            'nextjs-bootstrap',
             'backend-go-gin',
             'backend-lambda-api',
             'backend-nodejs-express',
@@ -27,7 +26,7 @@ jobs:
             'lambda-python-job',
             'lambda-node-trigger',
           ]
-    if: ${{ contains(github.event.head_commit.message, 'trigger_template_deploy_dev') && github.ref == 'refs/heads/master' }}
+    # if: ${{ contains(github.event.head_commit.message, 'trigger_template_deploy_dev') && github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Goldstack repo

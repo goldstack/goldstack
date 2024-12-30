@@ -5,6 +5,7 @@
     "schemas/",
     "scripts/",
     "docs/",
+    ".babelrc",
     ".env",
     ".env.production",
     ".gitignore",
