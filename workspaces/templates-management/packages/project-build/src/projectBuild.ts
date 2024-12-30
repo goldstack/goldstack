@@ -10,6 +10,7 @@ import {
 } from '@goldstack/utils-project';
 
 import { readPackageConfig } from '@goldstack/utils-package';
+import { readdirSync } from 'fs';
 
 export interface TemplateReference {
   name: string;
@@ -119,7 +120,10 @@ const buildTemplate = async (
   await extract(zipPath, { dir: path.resolve(packageFolder) });
 
   rm('-f', zipPath);
-  debug('Template archive extracted to ' + path.resolve(packageFolder));
+  debug('Template archive extracted to ' + path.resolve(packageFolder), {
+    packageFolder: path.resolve(packageFolder),
+    filesInPackageFolder: readdirSync(path.resolve(packageFolder)).join(', '),
+  });
   setPackageName(packageFolder, packageConfig.packageName);
 };
 
