@@ -12,7 +12,12 @@ import { Client, Command } from '@smithy/smithy-client';
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 
-import { connectLocal, resetMocksIfRequired, isMocked } from './connectLocal';
+import {
+  getMockedS3,
+  resetMocksIfRequired,
+  isMocked,
+  getLocalBucketName,
+} from './connectLocal';
 
 export const connect = async (
   goldstackConfig: any,
@@ -33,7 +38,7 @@ export const connect = async (
   if (deploymentName === 'local') {
     // only require this for local testing
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    return connectLocal();
+    return getMockedS3(goldstackConfig);
   } else {
     resetMocksIfRequired(deploymentName, goldstackConfig);
   }
@@ -89,7 +94,7 @@ export const getBucketName = async (
     deploymentName = process.env.GOLDSTACK_DEPLOYMENT;
   }
   if (deploymentName === 'local') {
-    return `local-${goldstackConfig.name}`;
+    return getLocalBucketName(goldstackConfig);
   }
   const deployment = packageConfig.getDeployment(deploymentName);
   return deployment.configuration.bucketName;
