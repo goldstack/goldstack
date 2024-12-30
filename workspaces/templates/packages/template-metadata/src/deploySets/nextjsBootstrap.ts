@@ -56,6 +56,7 @@ export const createNextjsBootstrapBuildSetConfig =
               ],
               packageTests: [
                 'print-directory-content',
+                'ensure-babelrc-does-not-exist',
                 'assert-package-files',
                 'package-build',
                 // 'print-directory-content',

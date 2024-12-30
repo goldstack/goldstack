@@ -22,6 +22,7 @@ import { PackageBuildTest } from './tests/PackageBuildTest';
 import { PackageBuildLambdaTest } from './tests/PackageBuildLambdaTest';
 import { PackageTestTest } from './tests/PackageTestTest';
 import { PrintDirectoryContentTest } from './tests/PrintDirectoryContentTest';
+import { EnsureBabelRcDoesNotExist } from './tests/EnsureBabelRcDoesNotExist';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function assert(condition: any, msg?: string): asserts condition {
@@ -71,6 +72,7 @@ export const getTemplateTests = (): TemplateTest[] => {
     new AssertRestApiTest(),
     new AssertApplicationTest(),
     new AssertWebsiteTest(),
+    new EnsureBabelRcDoesNotExist(),
   ];
 };
 
