@@ -206,7 +206,7 @@ export class S3TemplateRepository implements TemplateRepository {
     packageConfig.templateVersion = config.templateVersion;
     write(JSON.stringify(packageConfig, null, 2), targetPackageConfigPath);
 
-    const targetArchive = `./goldstackLocal/work/repo/${config.templateName}-${config.templateVersion}.zip`;
+    const targetArchive = join(workDir, `${config.templateName}-${config.templateVersion}.zip`;
     await rmSafe(targetArchive);
 
     await zip({ directory: workDir, target: targetArchive });
