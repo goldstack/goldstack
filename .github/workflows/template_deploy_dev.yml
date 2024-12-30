@@ -10,6 +10,7 @@ jobs:
       matrix:
         deploy-set:
           [
+            'nextjs-bootstrap',
             'backend-go-gin',
             'backend-lambda-api',
             'backend-nodejs-express',
@@ -56,6 +57,7 @@ jobs:
             --emailResultsTo false \
         env:
           AWS_USER_NAME: goldstack-dev
+          GOLDSTACK_DEBUG: true
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_DEFAULT_REGION: us-west-2

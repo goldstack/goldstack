@@ -4,9 +4,6 @@ import { run } from './templateManagementCli';
 
 run()
   .catch((e) => {
-    console.log(e);
-    console.log('Unexpected invocation of top level cli handler.');
+    throw new Error('CLI command failed: ' + e.message, e);
   })
-  .then(() => {
-    console.log('Unexpected invocation of top level cli handler.');
-  });
+  .then(() => {});

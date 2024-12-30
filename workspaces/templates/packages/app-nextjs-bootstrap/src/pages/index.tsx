@@ -43,13 +43,13 @@ const HomePage = (): JSX.Element => {
         <Col>
           <h1>Next.js React Bootstrap</h1>
           <p>Welcome to Next.js with Bootstrap!</p>
-          <p>
-            <img src={BootstrapIcon} />
-          </p>
+          <p>{BootstrapIcon && <img src={BootstrapIcon} />}</p>
           <Button onClick={toggleData}>Toggle Data Display</Button>
           {displayData && <FetchedContent />}
           <p>
-            <Image src={RocketLaunchImage} fluid rounded></Image>
+            {RocketLaunchImage && (
+              <Image src={RocketLaunchImage} fluid rounded></Image>
+            )}
           </p>
         </Col>
       </Row>

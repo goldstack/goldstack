@@ -12,10 +12,13 @@ import {
   readFileSync,
   writeFileSync,
 } from 'fs';
-import { createS3Client } from './../mockS3';
+import { createS3Client } from '../mockS3';
 
 test('Returns objects that do not exist as undefined', async () => {
-  const mockClient = createS3Client('goldstackLocal/s3');
+  const mockClient = createS3Client({
+    localDirectory: 'goldstackLocal/s3',
+    bucket: 'test-local',
+  });
   try {
     await mockClient.send(
       new GetObjectCommand({
@@ -33,7 +36,10 @@ test('Returns objects that do not exist as undefined', async () => {
 });
 
 test('Can store and retrieve text objects', async () => {
-  const mockClient = createS3Client('goldstackLocal/s3');
+  const mockClient = createS3Client({
+    localDirectory: 'goldstackLocal/s3',
+    bucket: 'test-local',
+  });
   await mockClient.send(
     new PutObjectCommand({
       Bucket: 'test-local',
@@ -70,7 +76,10 @@ test('Can store and retrieve text objects', async () => {
 });
 
 test('Can put and retrieve streams', async () => {
-  const mockClient = createS3Client('goldstackLocal/s3');
+  const mockClient = createS3Client({
+    localDirectory: 'goldstackLocal/s3',
+    bucket: 'test-local',
+  });
 
   writeFileSync('./goldstackLocal/file.txt', 'streamedfile');
 

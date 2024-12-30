@@ -23,7 +23,7 @@ export * from './types/DeploySet';
 
 import { resetMocks } from 'mock-aws-s3-v3';
 
-import { info, warn } from '@goldstack/utils-log';
+import { info, warn, error } from '@goldstack/utils-log';
 
 export interface BuildSetParams {
   config: DeploySetConfig;
@@ -164,7 +164,7 @@ const buildAndTestProject = async (
         info(`Running test ${packageTest} ...`);
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let error: any = undefined;
+        let errorFound: any = undefined;
         let isFail: boolean;
         try {
           const test = getTemplateTest(packageTest);
@@ -176,17 +176,17 @@ const buildAndTestProject = async (
           isFail = false;
         } catch (e) {
           isFail = true;
-          error = e.message || '';
-          console.log(e);
-          console.log(`❌ Test failed ${packageTest}`);
+          errorFound = e.message || '';
+          console.error(e);
+          error(`❌ Test failed ${packageTest}`);
         }
         if (!isFail) {
-          console.log(`✔️ Test success ${packageTest}`);
+          info(`✔️ Test success ${packageTest}`);
         }
         testResults.push({
           testName: `${params.project.projectConfiguration.projectName} ${packageConfig.packageName} ${packageTest}`,
           result: !isFail,
-          error,
+          error: errorFound,
         });
       }
     } finally {
@@ -194,7 +194,7 @@ const buildAndTestProject = async (
       for (const packageCleanUp of packageConfig.packageCleanUp) {
         info(`Running cleanup job ${packageCleanUp}`);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let error: any = undefined;
+        let errorFound: any = undefined;
         let isFail: boolean;
         try {
           const test = getTemplateTest(packageCleanUp);
@@ -205,14 +205,15 @@ const buildAndTestProject = async (
           });
           isFail = false;
         } catch (e) {
-          console.log(`❌ Cleanup job failed ${packageCleanUp}`);
+          console.error(e);
+          error(`❌ Cleanup job failed ${packageCleanUp}`);
           isFail = true;
-          error = e.message || '';
+          errorFound = e.message || '';
         }
         testResults.push({
           testName: `${params.project.projectConfiguration.projectName} ${packageConfig.packageName} ${packageCleanUp}`,
           result: !isFail,
-          error,
+          error: errorFound,
         });
       }
     }
@@ -299,10 +300,10 @@ export const buildSet = async (
   // TODO see above logic will not work due to lacking mock reset
   if (!params.deployBeforeTest || true) {
     info('Deploying templates', {
-      workDir: params.workDir + 'templatesDeploy/',
+      workDir: join(params.workDir, 'templatesDeploy/'),
     });
     await buildTemplates({
-      workDir: params.workDir + 'templatesDeploy/',
+      workDir: join(params.workDir, 'templatesDeploy/'),
       templates: params.config.deployTemplates,
       monorepoRoot,
       templateRepository: params.s3repo,
@@ -321,8 +322,11 @@ async function buildProjects(params: {
 }): Promise<TestResult[]> {
   const testResults: TestResult[] = [];
   for (const project of params.buildSetParams.config.projects) {
-    const projectDir = `${params.buildSetParams.workDir}${project.projectConfiguration.projectName}/`;
-    info('Building project in directory ', { projectDir });
+    const projectDir = join(
+      params.buildSetParams.workDir,
+      project.projectConfiguration.projectName + '/'
+    );
+    info('Building project in directory', { projectDir });
     mkdir('-p', projectDir);
 
     const gitHubToken = process.env.GITHUB_TOKEN;

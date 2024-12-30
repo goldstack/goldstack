@@ -6,7 +6,6 @@ runs:
     - uses: actions/setup-node@v3
       with:
         node-version: 20
-        cache: 'npm'
     - id: install-aws-cli
       uses: unfor19/install-aws-cli-action@v1
       with:

@@ -4,10 +4,13 @@ import {
   ListObjectsV2Command,
 } from '@aws-sdk/client-s3';
 import assert from 'assert';
-import { createS3Client } from './../mockS3';
+import { createS3Client } from '../mockS3';
 
 test('List objects', async () => {
-  const mockClient = createS3Client('goldstackLocal/s3');
+  const mockClient = createS3Client({
+    localDirectory: 'goldstackLocal/s3',
+    bucket: 'test-list-objects',
+  });
   await mockClient.send(
     new PutObjectCommand({
       Bucket: 'test-list-objects',
@@ -26,7 +29,10 @@ test('List objects', async () => {
 });
 
 test('List objects V2', async () => {
-  const mockClient = createS3Client('goldstackLocal/s3');
+  const mockClient = createS3Client({
+    localDirectory: 'goldstackLocal/s3',
+    bucket: 'test-list-objects',
+  });
   await mockClient.send(
     new PutObjectCommand({
       Bucket: 'test-list-objects',

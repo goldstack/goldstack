@@ -127,7 +127,7 @@ export const buildProject = async (
   params: ProjectBuildParams
 ): Promise<void> => {
   debug(
-    `Building project ${params.config.projectName} to ${params.destinationDirectory}`
+    `Building project ${params.config.projectName} from to ${params.destinationDirectory}`
   );
   const config = params.config;
 

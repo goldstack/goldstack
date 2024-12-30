@@ -12,9 +12,12 @@ import { Client, Command } from '@smithy/smithy-client';
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 
-import { warn } from '@goldstack/utils-log';
-
-let s3MockUsed = false;
+import {
+  getMockedS3,
+  resetMocksIfRequired,
+  isMocked,
+  getLocalBucketName,
+} from './connectLocal';
 
 export const connect = async (
   goldstackConfig: any,
@@ -35,26 +38,9 @@ export const connect = async (
   if (deploymentName === 'local') {
     // only require this for local testing
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const MockS3 = require(excludeInBundle('mock-aws-s3-v3'));
-    const s3 = MockS3.createS3Client('goldstackLocal/s3');
-
-    (s3 as any)._goldstackIsMocked = true;
-    s3MockUsed = true;
-    return s3 as any;
+    return getMockedS3(goldstackConfig);
   } else {
-    if (s3MockUsed) {
-      warn(
-        'Initialising a real S3 bucket after a mocked one had been created it. All mocks are reset.',
-        {
-          deploymentName,
-          package: goldstackConfig.name,
-        }
-      );
-      // only require this for local testing
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const MockS3 = require(excludeInBundle('mock-aws-s3-v3'));
-      MockS3.resetMocks();
-    }
+    resetMocksIfRequired(deploymentName, goldstackConfig);
   }
   const deployment = packageConfig.getDeployment(deploymentName);
 
@@ -74,10 +60,6 @@ export const connect = async (
   });
 
   return s3;
-};
-
-export const isMocked = (client: S3Client): boolean => {
-  return (client as any)._goldstackIsMocked === true;
 };
 
 export const getSignedUrlS3 = async <
@@ -112,7 +94,7 @@ export const getBucketName = async (
     deploymentName = process.env.GOLDSTACK_DEPLOYMENT;
   }
   if (deploymentName === 'local') {
-    return `local-${goldstackConfig.name}`;
+    return getLocalBucketName(goldstackConfig);
   }
   const deployment = packageConfig.getDeployment(deploymentName);
   return deployment.configuration.bucketName;
