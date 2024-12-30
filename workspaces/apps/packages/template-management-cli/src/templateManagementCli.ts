@@ -156,6 +156,9 @@ export const run = async (): Promise<void> => {
       const config = await getBuildSet(argv.set as string);
 
       const workDirBuild = join(workDir, 'build/');
+
+      rm('-rf', workDirBuild);
+      mkdir('-p', workDirBuild);
       assert(
         fs.readdirSync(workDirBuild).length === 0,
         `Working directory ${workDirBuild} is not empty`
