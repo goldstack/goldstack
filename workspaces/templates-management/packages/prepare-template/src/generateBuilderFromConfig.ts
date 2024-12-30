@@ -89,7 +89,13 @@ export const generateBuilderFromConfig = async (
     async run(params: PrepareTemplateParams): Promise<void> {
       info(
         'Building template by copying files matching pattern defined in build.json to ' +
-          params.destinationDirectory
+          params.destinationDirectory,
+        {
+          templateDirectory: templateDirectory,
+          filesInTemplateDirectory: fs
+            .readdirSync(templateDirectory)
+            .join(', '),
+        }
       );
       // just copy all files and then delete ignored files
       for (const glob of buildConfig.include) {
