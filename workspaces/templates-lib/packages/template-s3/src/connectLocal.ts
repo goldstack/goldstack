@@ -85,7 +85,7 @@ export const getMockedS3 = (
  * Gets the local bucket name for a given configuration
  */
 export function getLocalBucketName(goldstackConfig: any): string {
-  return goldstackConfig.name;
+  return `local-${goldstackConfig.name}`;
 }
 
 /**

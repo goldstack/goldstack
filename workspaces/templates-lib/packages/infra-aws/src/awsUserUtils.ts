@@ -18,6 +18,7 @@ import {
 
 import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { hasInjectedCredentials, injectCredentials } from './awsAuthUtils';
+import { warn } from '@goldstack/utils-log';
 
 export async function getAWSUserFromEnvironmentVariables(): Promise<AwsCredentialIdentityProvider> {
   assert(process.env.AWS_ACCESS_KEY_ID, 'AWS_ACCESS_KEY_ID not defined.');
@@ -81,7 +82,7 @@ export async function getAWSUserFromDefaultLocalProfile(): Promise<AwsCredential
   };
 
   if (!(await validateCredentials(credentials))) {
-    console.warn(
+    warn(
       'Cannot load credentials from INI file. Trying process credentials instead.'
     );
     // if no access key is found, try loading process_credentials
@@ -108,7 +109,7 @@ export async function getAWSUserFromGoldstackConfig(
     const userConfig = user.config as AWSProfileConfig;
 
     if (process.env.AWS_SHARED_CREDENTIALS_FILE) {
-      console.warn(
+      warn(
         `Using AWS_SHARED_CREDENTIALS_FILE environment variable: '${process.env.AWS_SHARED_CREDENTIALS_FILE}'. awsCredentialsFileName in configuration will be ignored.`
       );
     }
