@@ -117,7 +117,10 @@ export const run = async (): Promise<void> => {
     }
 
     if (argv.repo === 'dummy') {
-      const s3 = createS3Client('goldstackLocal/s3');
+      const s3 = createS3Client({
+        localDirectory: 'goldstackLocal/s3',
+        bucket: 'local-dummy-template-repository',
+      });
       repo = new S3TemplateRepository({
         s3: s3,
         bucket: 'repo',

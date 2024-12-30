@@ -4,7 +4,10 @@ import { createS3Client } from 'mock-aws-s3-v3';
 import { download } from './utilsS3';
 
 test('Should download file', async () => {
-  const client = createS3Client('./goldstackLocal/s3');
+  const client = createS3Client({
+    localDirectory: './goldstackLocal/s3',
+    bucket: 'download-file-test-bucket',
+  });
 
   const putCmd = new PutObjectCommand({
     Bucket: 'test-download',

@@ -12,6 +12,9 @@
       "path": "../utils-docker"
     },
     {
+      "path": "../utils-log"
+    },
+    {
       "path": "../utils-sh"
     },
     {

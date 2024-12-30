@@ -45,7 +45,10 @@ export const prepareTestDir = async (
   mkdir('-p', goldstackTestsDir + 's3/repo');
   mkdir('-p', goldstackTestsDir + 'templates/');
 
-  const s3 = createS3Client(goldstackTestsDir + 's3/repo');
+  const s3 = createS3Client({
+    localDirectory: goldstackTestsDir + 's3/repo',
+    bucket: 'local-dummy-template-repo',
+  });
   const repo = new S3TemplateRepository({
     s3: s3,
     bucket: 'repo',
