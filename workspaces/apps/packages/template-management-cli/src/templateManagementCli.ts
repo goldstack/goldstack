@@ -123,7 +123,7 @@ export const run = async (): Promise<void> => {
       });
       repo = new S3TemplateRepository({
         s3: s3,
-        bucket: 'repo',
+        bucket: 'local-dummy-template-repository',
         bucketUrl: 'https://local.goldstack.party/repo/',
       });
     } else {

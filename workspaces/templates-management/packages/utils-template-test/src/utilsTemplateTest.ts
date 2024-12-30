@@ -51,7 +51,7 @@ export const prepareTestDir = async (
   });
   const repo = new S3TemplateRepository({
     s3: s3,
-    bucket: 'repo',
+    bucket: 'local-dummy-template-repo',
     bucketUrl: 'https://local.goldstack.party/repo/',
   });
   return repo;
