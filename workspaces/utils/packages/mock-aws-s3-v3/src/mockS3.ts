@@ -20,7 +20,6 @@ import { mockClient } from 'aws-sdk-client-mock';
 import { AWSError, S3 } from 'mock-aws-s3';
 import { StreamingBlobPayloadOutputTypes } from '@smithy/types';
 import { WriteStream } from 'fs';
-import { patchApplyBasePath } from './mockS3Wrapper';
 import { resolve } from 'path';
 import * as s3Mock from 'mock-aws-s3';
 

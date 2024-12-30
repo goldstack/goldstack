@@ -120,7 +120,7 @@ export const run = async (): Promise<void> => {
         s3,
         bucket: bucketName,
         bucketUrl: 'https://repo.dev.goldstack.party/',
-        workDir: join(workDir, 'dev-templates/'),
+        workDir: join(workDir, 'dev-templates-build/'),
       });
     }
     if (argv.repo === 'goldstack-prod') {
@@ -130,20 +130,20 @@ export const run = async (): Promise<void> => {
         s3,
         bucket: bucketName,
         bucketUrl: 'https://repo.goldstack.party/repo',
-        workDir: join(workDir, 'prod-templates/'),
+        workDir: join(workDir, 'prod-templates-build/'),
       });
     }
 
     if (argv.repo === 'dummy') {
       const s3 = createS3Client({
-        localDirectory: 'goldstackLocal/s3',
+        localDirectory: join(workDir, 'dummy-template-repo'),
         bucket: 'local-dummy-template-repository',
       });
       repo = new S3TemplateRepository({
         s3: s3,
         bucket: 'local-dummy-template-repository',
         bucketUrl: 'https://local.goldstack.party/repo/',
-        workDir: join(workDir, 'dummy-templates/'),
+        workDir: join(workDir, 'dummy-templates-build/'),
       });
     } else {
       resetMocks(); // important since otherwise local mock will be used even if not specified for this run
