@@ -47,13 +47,13 @@ export const prepareTestDir = async (
   mkdir('-p', join(goldstackTestsDir, 'templates/'));
 
   const s3 = createS3Client({
-    localDirectory: goldstackTestsDir + 's3/repo',
+    localDirectory: join(goldstackTestsDir, 's3/repo'),
     bucket: 'local-dummy-template-repo',
   });
   const repo = new S3TemplateRepository({
     s3: s3,
     bucket: 'local-dummy-template-repo',
-    workDir: './goldstackLocal/templateTestRepo',
+    workDir: join(goldstackTestsDir, 'templateBuildRepo'),
     bucketUrl: 'https://local.goldstack.party/repo/',
   });
   return repo;
