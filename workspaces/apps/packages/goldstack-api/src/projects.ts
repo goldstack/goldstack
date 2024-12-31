@@ -6,7 +6,7 @@ import { connectProjectRepository } from '@goldstack/project-repository';
 
 import { v4 as uuid4 } from 'uuid';
 import { readProjectConfigFromString } from '@goldstack/utils-project';
-import { mkdir, rmSafe, tempDir, read } from '@goldstack/utils-sh';
+import { mkdir, rmSafe, goldstackLocalDir, read } from '@goldstack/utils-sh';
 
 import { S3TemplateRepository } from '@goldstack/template-repository';
 import { connect, getBucketName } from '@goldstack/template-repository-bucket';
@@ -47,13 +47,13 @@ export const postProjectHandler = async (
       return;
     }
     const projectId = await projectRepo.addProject(req.body);
-    const buildDir = `${tempDir()}work/build/${projectId}/${uuid4()}/`;
+    const buildDir = `${goldstackLocalDir()}work/build/${projectId}/${uuid4()}/`;
     const templateS3 = await connect();
     const templateRepo = new S3TemplateRepository({
       bucket: await getBucketName(),
       bucketUrl: 's3',
       s3: templateS3,
-      workDir: join(tempDir(), 'template-repo-work'),
+      workDir: join(goldstackLocalDir(), 'template-repo-work'),
     });
     mkdir('-p', buildDir);
     await buildProject({
@@ -186,7 +186,7 @@ export const getProjectDocsHandler = async (
       return;
     }
     const repo = await connectProjectRepository();
-    const workspacePath = `${tempDir()}work/get-project-docs/${projectId}/${uuid4()}/`;
+    const workspacePath = `${goldstackLocalDir()}work/get-project-docs/${projectId}/${uuid4()}/`;
     await repo.downloadProject(projectId, workspacePath);
 
     if (!links) {

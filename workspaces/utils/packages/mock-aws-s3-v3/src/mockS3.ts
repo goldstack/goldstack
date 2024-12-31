@@ -144,7 +144,7 @@ export function createS3Client({
       .on(command)
       .callsFake(async (input: any): Promise<any> => {
         const context = validateBucketContext(input.Bucket);
-        s3Mock.config.basePath = context.localDirectory;
+        s3Mock.config.basePath = context.localDirectory; // TODO does this really worker, or on gh actions we default back to a common dir???
         (context.client as any)._goldstackRequests.push({
           command: command.name,
           input,

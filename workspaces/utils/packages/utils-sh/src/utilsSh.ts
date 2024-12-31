@@ -247,7 +247,7 @@ export const unzip = async (params: {
   });
 };
 
-export const tempDir = (): string => {
+export const goldstackLocalDir = (): string => {
   if (process.env.GOLDSTACK_WORKDIR) {
     return process.env.GOLDSTACK_WORKDIR;
   }

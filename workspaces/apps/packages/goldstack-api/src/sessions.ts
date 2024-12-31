@@ -19,7 +19,7 @@ import { connectProjectRepository } from '@goldstack/project-repository';
 
 import { v4 as uuid4 } from 'uuid';
 import { getDocLinks } from './utils/docLinks';
-import { rmSafe, tempDir } from '@goldstack/utils-sh';
+import { rmSafe, goldstackLocalDir } from '@goldstack/utils-sh';
 import { SendEmailCommand } from '@aws-sdk/client-ses';
 
 const router = Router();
@@ -184,7 +184,7 @@ const performPurchase = async (params: {
   );
 
   const repo = await connectProjectRepository();
-  const workspacePath = `${tempDir()}work/session-purchase/${
+  const workspacePath = `${goldstackLocalDir()}work/session-purchase/${
     params.projectId
   }/${uuid4()}/`;
   await repo.downloadProject(params.projectId, workspacePath);
