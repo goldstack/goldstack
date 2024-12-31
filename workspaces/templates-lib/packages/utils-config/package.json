@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-config",
-  "version": "0.4.21",
+  "version": "0.4.22",
   "description": "Utilities to work with JSON configuration files.",
   "keywords": [
     "goldstack",
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@goldstack/utils-log": "0.3.18",
-    "@goldstack/utils-sh": "0.5.20",
+    "@goldstack/utils-sh": "0.5.21",
     "ajv": "^6.12.2",
     "handlebars": "4.7.7"
   },

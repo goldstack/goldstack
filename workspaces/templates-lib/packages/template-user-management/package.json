@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-user-management",
-  "version": "0.1.40",
+  "version": "0.1.41",
   "description": "Template utilities for user management",
   "keywords": [
     "goldstack",
@@ -38,13 +38,13 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.21",
-    "@goldstack/infra-aws": "0.4.31",
+    "@goldstack/infra": "0.4.22",
+    "@goldstack/infra-aws": "0.4.32",
     "@goldstack/utils-esbuild": "0.5.12",
-    "@goldstack/utils-package": "0.4.21",
-    "@goldstack/utils-package-config-embedded": "0.5.22",
-    "@goldstack/utils-template": "0.4.21",
-    "@goldstack/utils-terraform": "0.4.41",
+    "@goldstack/utils-package": "0.4.22",
+    "@goldstack/utils-package-config-embedded": "0.5.23",
+    "@goldstack/utils-template": "0.4.22",
+    "@goldstack/utils-terraform": "0.4.42",
     "aws-jwt-verify": "^3.2.0",
     "source-map-support": "^0.5.21"
   },
