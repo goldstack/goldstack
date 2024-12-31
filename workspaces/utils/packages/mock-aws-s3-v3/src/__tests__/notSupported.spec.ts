@@ -7,7 +7,11 @@ test('Provides error message for not implemented method.', async () => {
       localDirectory: 'goldstackLocal/s3',
       bucket: 'test-bucket',
     });
-    await mockClient.send(new ListBucketsCommand({}));
+    await mockClient.send(
+      new ListBucketsCommand({
+        Bucket: 'test-bucket',
+      })
+    );
   } catch (e) {
     expect(e.message).toContain('not implemented');
   }

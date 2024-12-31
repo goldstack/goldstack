@@ -149,7 +149,7 @@ export function createS3Client({
         if (!method) {
           throw new Error(`Method ${command.name} not implemented.`);
         }
-        s3Mock.config.basePath = context.localDirectory; // TODO does this really worker, or on gh actions we default back to a common dir???
+        s3Mock.config.basePath = context.localDirectory;
         (context.client as any)._goldstackRequests.push({
           command: command.name,
           input,
