@@ -3,7 +3,7 @@ import extract from 'extract-zip';
 import { rm, mkdir, write, read } from '@goldstack/utils-sh';
 import { AssertionError } from 'assert';
 import { debug } from '@goldstack/utils-log';
-import path from 'path';
+import path, { resolve } from 'path';
 import {
   ProjectConfiguration,
   PackageProjectConfiguration,
@@ -150,9 +150,21 @@ export const buildProject = async (
   );
   assert(zipPath);
 
-  debug(`Extracting zip archive ${zipPath}`);
+  debug(`Extracting zip archive ${zipPath}`, {
+    zipPath,
+    destinationDirectory: resolve(params.destinationDirectory),
+    filesInDestinationDirBeforeUnzip: readdirSync(
+      resolve(params.destinationDirectory)
+    ).join(', '),
+  });
   await extract(zipPath, { dir: path.resolve(params.destinationDirectory) });
-  debug(`Zip file extracted ${zipPath}.`);
+  debug(`Zip file extracted ${zipPath}.`, {
+    zipPath,
+    destinationDirectory: resolve(params.destinationDirectory),
+    filesInDestinationDirAfterUnzip: readdirSync(
+      resolve(params.destinationDirectory)
+    ).join(', '),
+  });
   rm('-f', zipPath);
 
   // Set package name
