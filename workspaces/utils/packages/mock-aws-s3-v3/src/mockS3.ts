@@ -68,13 +68,8 @@ export interface CreateS3ClientOptions {
  * @param bucket - Bucket name to validate
  * @returns BucketContext for the specified bucket
  */
-function validateBucketContext(bucket: string): BucketContext {
+function getBucketContext(bucket: string): BucketContext | undefined {
   const context = bucketContexts.get(bucket);
-  if (!context) {
-    throw new Error(
-      `Attempting to mock call to s3 client for which bucket was not mocked: ${bucket}`
-    );
-  }
   return context;
 }
 
@@ -101,6 +96,7 @@ export function createS3Client({
   }
 
   const client = s3Client || new S3Client();
+  const clientSend = client.send.bind(client);
   const mockClientInstance = mockClient(client);
 
   s3Mock.config.basePath = resolve(localDirectory);
@@ -121,7 +117,7 @@ export function createS3Client({
   // Setup standard S3 operations
   type S3Operation = {
     command: any;
-    method: keyof typeof mockS3 & string;
+    method: (keyof typeof mockS3 & string) | undefined;
   };
 
   const operations: S3Operation[] = [
@@ -137,21 +133,33 @@ export function createS3Client({
     { command: CopyObjectCommand, method: 'copyObject' },
     { command: GetObjectTaggingCommand, method: 'getObjectTagging' },
     { command: PutObjectTaggingCommand, method: 'putObjectTagging' },
+    { command: ListBucketsCommand, method: undefined }, // not supported
   ];
 
   operations.forEach(({ command, method }) => {
     mockClientInstance
       .on(command)
       .callsFake(async (input: any): Promise<any> => {
-        const context = validateBucketContext(input.Bucket);
+        const context = getBucketContext(input.Bucket);
+        if (!context) {
+          // if no context defined for bucket, send command to real client
+          const commandWithInput = new command(input);
+          return await clientSend(commandWithInput);
+        }
+        if (!method) {
+          throw new Error(`Method ${command.name} not implemented.`);
+        }
         s3Mock.config.basePath = context.localDirectory; // TODO does this really worker, or on gh actions we default back to a common dir???
         (context.client as any)._goldstackRequests.push({
           command: command.name,
           input,
         });
 
-        console.log('input', input, 'operation', command.name);
-        console.log('local dir', context.localDirectory);
+        if (process.env.GOLDSTACK_DEBUG) {
+          console.debug(
+            `Performing command ${command.name} on mock S3 client.\n  Folder for local bucket: ${context.localDirectory}`
+          );
+        }
         const operation = context.mockS3[method](input);
 
         if (method === 'getObject') {
@@ -189,11 +197,6 @@ export function createS3Client({
         return await operation.promise();
       });
   });
-
-  // Mark unsupported operations
-  mockClientInstance
-    .on(ListBucketsCommand)
-    .rejects(`Method ${ListBucketsCommand.name} not implemented.`);
 
   return client;
 }
