@@ -76,7 +76,7 @@ describe('Template Building', () => {
     mkdir('-p', projectDir);
 
     await buildProject({
-      destinationDirectory: projectDir,
+      projectDirectory: projectDir,
       config,
       s3: repo,
     });
@@ -148,7 +148,7 @@ describe('Template Building', () => {
     mkdir('-p', projectDir);
 
     await buildProject({
-      destinationDirectory: projectDir,
+      projectDirectory: projectDir,
       config,
       s3: repo,
     });
@@ -224,7 +224,7 @@ describe('Template Building', () => {
     mkdir('-p', projectDir);
 
     await buildProject({
-      destinationDirectory: projectDir,
+      projectDirectory: projectDir,
       config,
       s3: repo,
     });
@@ -301,7 +301,7 @@ describe('Template Building', () => {
     mkdir('-p', projectDir);
 
     await buildProject({
-      destinationDirectory: projectDir,
+      projectDirectory: projectDir,
       config,
       s3: repo,
     });

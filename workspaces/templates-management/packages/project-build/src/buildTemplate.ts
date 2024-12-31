@@ -17,7 +17,7 @@ export const buildTemplate = async (
   packageConfig: PackageProjectConfiguration
 ): Promise<void> => {
   debug(
-    `Building package ${packageConfig.packageName} in ${params.projectDirector}`
+    `Building package ${packageConfig.packageName} in ${params.projectDirectory}`
   );
   const template: TemplateReference = {
     name: packageConfig.templateReference.templateName,
@@ -32,7 +32,7 @@ export const buildTemplate = async (
   assert(templateReference.version);
 
   const packageFolder = path.join(
-    params.projectDirector,
+    params.projectDirectory,
     'packages',
     `${packageConfig.packageName}/`
   );

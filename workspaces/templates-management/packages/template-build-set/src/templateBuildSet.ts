@@ -95,7 +95,7 @@ const buildAndTestProject = async (
   });
 
   await buildProject({
-    projectDirector: params.projectDir,
+    projectDirectory: params.projectDir,
     config: params.project.projectConfiguration,
     s3: params.templateRepository,
   });
@@ -341,12 +341,18 @@ export async function buildProjects(params: {
       await execAsync(
         `git clone https://${gitHubToken}@github.com/${project.targetRepo}.git ${projectDir}`
       );
-      // IMPORTANT - delete all files - they will be recreated
-      // otherwise we cannot delete files
+      // Preserve .git directory while removing all other files
+      const gitDir = path.join(projectDir, '.git');
+      // First move .git directory to temp location
+      const tempGitDir = path.join(projectDir, '../.git-temp');
+      await execAsync(`mv "${gitDir}" "${tempGitDir}"`);
+      // Delete all files
       await rmSafe(projectDir);
+      // Recreate project directory
       mkdir('-p', projectDir);
+      // Move .git directory back
+      await execAsync(`mv "${tempGitDir}" "${gitDir}"`);
     }
-
     testResults.push(
       ...(await buildAndTestProject({
         project,

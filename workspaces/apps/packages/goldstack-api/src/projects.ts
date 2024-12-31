@@ -59,7 +59,7 @@ export const postProjectHandler = async (
     await buildProject({
       config: req.body,
       s3: templateRepo,
-      destinationDirectory: buildDir,
+      projectDirectory: buildDir,
     });
     await projectRepo.uploadProject(projectId, buildDir);
     const packageConfigs = getPackageConfigs(buildDir);
