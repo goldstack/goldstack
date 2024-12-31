@@ -157,7 +157,7 @@ export function createS3Client({
 
         if (process.env.GOLDSTACK_DEBUG) {
           console.debug(
-            `Performing command ${command.name} on mock S3 client.\n  Folder for local bucket: ${context.localDirectory}`
+            `Performing command ${command.name} on mock S3 bucket ${input.Bucket}.\n  Folder for local bucket: ${context.localDirectory}`
           );
         }
         const operation = context.mockS3[method](input);

@@ -212,7 +212,11 @@ export class S3TemplateRepository implements TemplateRepository {
     );
     await rmSafe(targetArchive);
 
-    debug('Preparing template zip', { source: workDir, target: targetArchive });
+    debug('Preparing template zip', {
+      source: workDir,
+      target: targetArchive,
+      filesInSourceDir: fs.readdirSync(workDir).join(', '),
+    });
     await zip({ directory: workDir, target: targetArchive });
 
     // Upload archive
