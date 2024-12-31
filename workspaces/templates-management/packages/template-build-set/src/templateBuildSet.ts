@@ -24,6 +24,7 @@ export * from './types/DeploySet';
 import { resetMocks } from 'mock-aws-s3-v3';
 
 import { info, warn, error } from '@goldstack/utils-log';
+import { readdirSync } from 'fs';
 
 export interface BuildSetParams {
   config: DeploySetConfig;
@@ -314,7 +315,7 @@ export const buildSet = async (
   return res;
 };
 
-async function buildProjects(params: {
+export async function buildProjects(params: {
   buildSetParams: BuildSetParams;
   localRepo: S3TemplateRepository;
   res: BuildSetResult;
@@ -328,6 +329,11 @@ async function buildProjects(params: {
     );
     info('Building project in directory', { projectDir });
     mkdir('-p', projectDir);
+    const projectDirFiles = readdirSync(projectDir);
+    assert(
+      projectDirFiles.length === 0,
+      `Working directory ${projectDir} is not empty. Files found ${projectDirFiles}`
+    );
 
     const gitHubToken = process.env.GITHUB_TOKEN;
     if (project.targetRepo && gitHubToken) {
