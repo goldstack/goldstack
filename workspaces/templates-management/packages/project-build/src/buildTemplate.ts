@@ -50,7 +50,6 @@ export const buildTemplate = async (
   rm('-f', zipPath);
   debug('Template archive extracted to ' + path.resolve(packageFolder), {
     packageFolder: path.resolve(packageFolder),
-    filesInPackageFolder: readdirSync(path.resolve(packageFolder)).join(', '),
   });
   setPackageName(packageFolder, packageConfig.packageName);
 };

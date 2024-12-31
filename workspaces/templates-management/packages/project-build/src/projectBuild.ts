@@ -111,17 +111,11 @@ export const buildProject = async (
   debug(`Extracting zip archive ${zipPath}`, {
     zipPath,
     destinationDirectory: resolve(params.projectDirectory),
-    filesInDestinationDirBeforeUnzip: readdirSync(
-      resolve(params.projectDirectory)
-    ).join(', '),
   });
   await extract(zipPath, { dir: path.resolve(params.projectDirectory) });
   debug(`Zip file extracted ${zipPath}.`, {
     zipPath,
     destinationDirectory: resolve(params.projectDirectory),
-    filesInDestinationDirAfterUnzip: readdirSync(
-      resolve(params.projectDirectory)
-    ).join(', '),
   });
   rm('-f', zipPath);
 
