@@ -1,6 +1,6 @@
 import { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet';
 
-import { cd, execAsync, mkdir, read } from '@goldstack/utils-sh';
+import { cd, execAsync, mkdir, read, rmSafe } from '@goldstack/utils-sh';
 import {
   writePackageConfigs,
   getPackageConfigs,
@@ -95,7 +95,7 @@ const buildAndTestProject = async (
   });
 
   await buildProject({
-    destinationDirectory: params.projectDir,
+    projectDirector: params.projectDir,
     config: params.project.projectConfiguration,
     s3: params.templateRepository,
   });
@@ -329,6 +329,7 @@ export async function buildProjects(params: {
     );
     info('Building project in directory', { projectDir });
     mkdir('-p', projectDir);
+
     const projectDirFiles = readdirSync(projectDir);
     assert(
       projectDirFiles.length === 0,
@@ -340,6 +341,10 @@ export async function buildProjects(params: {
       await execAsync(
         `git clone https://${gitHubToken}@github.com/${project.targetRepo}.git ${projectDir}`
       );
+      // IMPORTANT - delete all files - they will be recreated
+      // otherwise we cannot delete files
+      await rmSafe(projectDir);
+      mkdir('-p', projectDir);
     }
 
     testResults.push(

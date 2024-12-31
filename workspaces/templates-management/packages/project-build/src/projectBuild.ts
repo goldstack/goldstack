@@ -18,7 +18,7 @@ export interface TemplateReference {
 export interface ProjectBuildParams {
   s3: S3TemplateRepository;
   config: ProjectConfiguration;
-  destinationDirectory: string;
+  projectDirector: string;
 }
 
 export const assertTemplateReferenceVersion = async (
@@ -89,7 +89,7 @@ export const buildProject = async (
   params: ProjectBuildParams
 ): Promise<void> => {
   debug(
-    `Building project ${params.config.projectName} into ${params.destinationDirectory}`
+    `Building project ${params.config.projectName} into ${params.projectDirector}`
   );
   const config = params.config;
 
@@ -104,29 +104,29 @@ export const buildProject = async (
   const zipPath = await params.s3.downloadTemplateArchive(
     rootReference.name,
     rootReference.version,
-    params.destinationDirectory
+    params.projectDirector
   );
   assert(zipPath);
 
   debug(`Extracting zip archive ${zipPath}`, {
     zipPath,
-    destinationDirectory: resolve(params.destinationDirectory),
+    destinationDirectory: resolve(params.projectDirector),
     filesInDestinationDirBeforeUnzip: readdirSync(
-      resolve(params.destinationDirectory)
+      resolve(params.projectDirector)
     ).join(', '),
   });
-  await extract(zipPath, { dir: path.resolve(params.destinationDirectory) });
+  await extract(zipPath, { dir: path.resolve(params.projectDirector) });
   debug(`Zip file extracted ${zipPath}.`, {
     zipPath,
-    destinationDirectory: resolve(params.destinationDirectory),
+    destinationDirectory: resolve(params.projectDirector),
     filesInDestinationDirAfterUnzip: readdirSync(
-      resolve(params.destinationDirectory)
+      resolve(params.projectDirector)
     ).join(', '),
   });
   rm('-f', zipPath);
 
   // Set package name
-  setPackageName(params.destinationDirectory, params.config.projectName);
+  setPackageName(params.projectDirector, params.config.projectName);
 
   // building packages
   for (const packageConfig of config.packages) {
