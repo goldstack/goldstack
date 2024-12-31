@@ -1,6 +1,6 @@
 import { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet';
 
-import { cd, execAsync, mkdir, read } from '@goldstack/utils-sh';
+import { cd, execAsync, mkdir, read, rmSafe } from '@goldstack/utils-sh';
 import {
   writePackageConfigs,
   getPackageConfigs,
@@ -14,16 +14,17 @@ import { write } from '@goldstack/utils-sh';
 import { S3TemplateRepository } from '@goldstack/template-repository';
 import { getAwsConfigPath } from '@goldstack/utils-config';
 import {
-  prepareTestDir,
+  prepareLocalS3Repo,
   getTemplateTest,
 } from '@goldstack/utils-template-test';
 import assert from 'assert';
-import path, { join } from 'path';
+import path, { join, resolve } from 'path';
 export * from './types/DeploySet';
 
 import { resetMocks } from 'mock-aws-s3-v3';
 
 import { info, warn, error } from '@goldstack/utils-log';
+import { readdirSync } from 'fs';
 
 export interface BuildSetParams {
   config: DeploySetConfig;
@@ -94,7 +95,7 @@ const buildAndTestProject = async (
   });
 
   await buildProject({
-    destinationDirectory: params.projectDir,
+    projectDirectory: params.projectDir,
     config: params.project.projectConfiguration,
     s3: params.templateRepository,
   });
@@ -236,10 +237,10 @@ export const buildSet = async (
   };
 
   // set up local repo to run tests before deploying
-  const localRepo = await prepareTestDir(join(params.workDir, 's3/'));
+  const localRepo = await prepareLocalS3Repo(join(params.workDir, 's3/'));
 
   // build templates for local repo
-  const templateWorkDir = join(params.workDir, 'templates/');
+  const templateWorkDir = resolve(join(params.workDir, 'templates/'));
 
   // script runs in dir workspaces/apps/packages/template-management-cli
   // thus monorepo root is four folders up
@@ -314,7 +315,7 @@ export const buildSet = async (
   return res;
 };
 
-async function buildProjects(params: {
+export async function buildProjects(params: {
   buildSetParams: BuildSetParams;
   localRepo: S3TemplateRepository;
   res: BuildSetResult;
@@ -329,13 +330,29 @@ async function buildProjects(params: {
     info('Building project in directory', { projectDir });
     mkdir('-p', projectDir);
 
+    const projectDirFiles = readdirSync(projectDir);
+    assert(
+      projectDirFiles.length === 0,
+      `Working directory ${projectDir} is not empty. Files found ${projectDirFiles}`
+    );
+
     const gitHubToken = process.env.GITHUB_TOKEN;
     if (project.targetRepo && gitHubToken) {
       await execAsync(
         `git clone https://${gitHubToken}@github.com/${project.targetRepo}.git ${projectDir}`
       );
+      // Preserve .git directory while removing all other files
+      const gitDir = path.join(projectDir, '.git');
+      // First move .git directory to temp location
+      const tempGitDir = path.join(projectDir, '../.git-temp');
+      await execAsync(`mv "${gitDir}" "${tempGitDir}"`);
+      // Delete all files
+      await rmSafe(projectDir);
+      // Recreate project directory
+      mkdir('-p', projectDir);
+      // Move .git directory back
+      await execAsync(`mv "${tempGitDir}" "${gitDir}"`);
     }
-
     testResults.push(
       ...(await buildAndTestProject({
         project,

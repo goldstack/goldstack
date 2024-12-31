@@ -15,7 +15,6 @@ jobs:
             'backend-lambda-api',
             'backend-nodejs-express',
             'nextjs',
-            'nextjs-bootstrap',
             'no-infra',
             'email-send',
             's3',
@@ -32,9 +31,6 @@ jobs:
     steps:
       - name: Checkout Goldstack repo
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 20
-          token: ${{secrets.BUILD_TOKEN}}
       - uses: ./.github/actions/goldstack-setup
       - uses: actions/setup-java@v4 # used for local DynamoDB
         with:
@@ -53,7 +49,7 @@ jobs:
             --set ${{ matrix.deploy-set }} \
             --deployment dev \
             --repo goldstack-dev \
-            --workDir /tmp/set/ \
+            --workDir tmp \
             --emailResultsTo false \
         env:
           AWS_USER_NAME: goldstack-dev

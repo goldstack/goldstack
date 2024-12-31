@@ -1,15 +1,14 @@
 import { S3TemplateRepository } from '@goldstack/template-repository';
 import extract from 'extract-zip';
-import { rm, mkdir, write, read } from '@goldstack/utils-sh';
+import { rm, write, read } from '@goldstack/utils-sh';
 import { AssertionError } from 'assert';
 import { debug } from '@goldstack/utils-log';
-import path from 'path';
-import {
-  ProjectConfiguration,
-  PackageProjectConfiguration,
-} from '@goldstack/utils-project';
+import path, { resolve } from 'path';
+import { ProjectConfiguration } from '@goldstack/utils-project';
 
 import { readPackageConfig } from '@goldstack/utils-package';
+import { readdirSync } from 'fs';
+import { buildTemplate } from './buildTemplate';
 
 export interface TemplateReference {
   name: string;
@@ -19,10 +18,10 @@ export interface TemplateReference {
 export interface ProjectBuildParams {
   s3: S3TemplateRepository;
   config: ProjectConfiguration;
-  destinationDirectory: string;
+  projectDirectory: string;
 }
 
-const assertTemplateReferenceVersion = async (
+export const assertTemplateReferenceVersion = async (
   s3: S3TemplateRepository,
   templateReference: TemplateReference
 ): Promise<TemplateReference> => {
@@ -45,7 +44,7 @@ const assertTemplateReferenceVersion = async (
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function assert(condition: any, msg?: string): asserts condition {
+export function assert(condition: any, msg?: string): asserts condition {
   if (!condition) {
     throw new AssertionError({ message: msg });
   }
@@ -65,7 +64,10 @@ function sortKeys(obj: any): any {
   return obj; // Return the value if it's not an object or array
 }
 
-const setPackageName = (packageFolder: string, packageName: string): void => {
+export const setPackageName = (
+  packageFolder: string,
+  packageName: string
+): void => {
   const goldstackPackageConfig = readPackageConfig(packageFolder);
   goldstackPackageConfig.name = packageName;
   write(
@@ -83,51 +85,11 @@ const setPackageName = (packageFolder: string, packageName: string): void => {
   );
 };
 
-const buildTemplate = async (
-  params: ProjectBuildParams,
-  packageConfig: PackageProjectConfiguration
-): Promise<void> => {
-  debug(
-    `Building package ${packageConfig.packageName} in ${params.destinationDirectory}`
-  );
-  const template: TemplateReference = {
-    name: packageConfig.templateReference.templateName,
-    version: packageConfig.templateReference.templateVersion,
-  };
-
-  const templateReference = await assertTemplateReferenceVersion(
-    params.s3,
-    template
-  );
-
-  assert(templateReference.version);
-
-  const packageFolder = path.join(
-    params.destinationDirectory,
-    'packages',
-    `${packageConfig.packageName}/`
-  );
-
-  mkdir('-p', packageFolder);
-  const zipPath = await params.s3.downloadTemplateArchive(
-    templateReference.name,
-    templateReference.version,
-    packageFolder
-  );
-
-  assert(zipPath);
-  await extract(zipPath, { dir: path.resolve(packageFolder) });
-
-  rm('-f', zipPath);
-  debug('Template archive extracted to ' + path.resolve(packageFolder));
-  setPackageName(packageFolder, packageConfig.packageName);
-};
-
 export const buildProject = async (
   params: ProjectBuildParams
 ): Promise<void> => {
   debug(
-    `Building project ${params.config.projectName} from to ${params.destinationDirectory}`
+    `Building project ${params.config.projectName} into ${params.projectDirectory}`
   );
   const config = params.config;
 
@@ -142,17 +104,23 @@ export const buildProject = async (
   const zipPath = await params.s3.downloadTemplateArchive(
     rootReference.name,
     rootReference.version,
-    params.destinationDirectory
+    params.projectDirectory
   );
   assert(zipPath);
 
-  debug(`Extracting zip archive ${zipPath}`);
-  await extract(zipPath, { dir: path.resolve(params.destinationDirectory) });
-  debug(`Zip file extracted ${zipPath}.`);
+  debug(`Extracting zip archive ${zipPath}`, {
+    zipPath,
+    destinationDirectory: resolve(params.projectDirectory),
+  });
+  await extract(zipPath, { dir: path.resolve(params.projectDirectory) });
+  debug(`Zip file extracted ${zipPath}.`, {
+    zipPath,
+    destinationDirectory: resolve(params.projectDirectory),
+  });
   rm('-f', zipPath);
 
   // Set package name
-  setPackageName(params.destinationDirectory, params.config.projectName);
+  setPackageName(params.projectDirectory, params.config.projectName);
 
   // building packages
   for (const packageConfig of config.packages) {

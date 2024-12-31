@@ -6,7 +6,7 @@ import { download } from './utilsS3';
 test('Should download file', async () => {
   const client = createS3Client({
     localDirectory: './goldstackLocal/s3',
-    bucket: 'download-file-test-bucket',
+    bucket: 'test-download',
   });
 
   const putCmd = new PutObjectCommand({

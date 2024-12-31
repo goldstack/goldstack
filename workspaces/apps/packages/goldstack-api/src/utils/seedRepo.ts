@@ -13,6 +13,7 @@ const seed = async (): Promise<void> => {
   const templateS3 = await connect();
   const templateRepo = new S3TemplateRepository({
     bucket: await getBucketName(),
+    workDir: './goldstackLocal/work/repo/',
     bucketUrl: 's3',
     s3: templateS3,
   });

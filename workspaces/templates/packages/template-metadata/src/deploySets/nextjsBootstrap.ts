@@ -30,7 +30,6 @@ export const createNextjsBootstrapBuildSetConfig =
         {
           projectConfiguration,
           rootTests: [
-            'print-directory-content',
             'assert-package-files',
             'assert-root-files',
             'root-build',
@@ -55,20 +54,18 @@ export const createNextjsBootstrapBuildSetConfig =
                 },
               ],
               packageTests: [
-                'print-directory-content',
+                // 'print-directory-content',
                 'ensure-babelrc-does-not-exist',
                 'assert-package-files',
                 'package-build',
                 // 'print-directory-content',
-                // 'infra-up',
+                'infra-up',
                 // 'print-directory-content',
-                // 'deploy',
+                'deploy',
                 // 'print-directory-content',
-                // 'assert-website',
+                'assert-website',
               ],
-              packageCleanUp: [
-                // 'infra-destroy', 'destroy-state'
-              ],
+              packageCleanUp: ['infra-destroy', 'destroy-state'],
             },
           ],
         },

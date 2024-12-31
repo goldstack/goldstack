@@ -19,6 +19,7 @@ import {
   connect as connectSes,
   getFromDomain,
 } from '@goldstack/goldstack-email-send';
+import { join, resolve } from 'path';
 
 export const run = async (): Promise<void> => {
   await wrapCli(async (): Promise<any> => {
@@ -95,6 +96,21 @@ export const run = async (): Promise<void> => {
       )
       .parse();
 
+    let workDir = argv.workDir as string;
+    let tmpInstance: any = undefined;
+    if (workDir === 'tmp') {
+      tmpInstance = tmp.dirSync();
+      workDir = tmpInstance.name + '/';
+      info('Creating in temporary directory ' + workDir);
+    } else {
+      rm('-rf', workDir);
+      mkdir('-p', workDir);
+    }
+    if (!workDir.endsWith('/')) {
+      throw new Error(
+        `Working directory must end with a /. Supplied working directory: ${workDir}`
+      );
+    }
     let repo: S3TemplateRepository | undefined = undefined;
     if (argv.repo === 'goldstack-dev') {
       const s3 = await connect('dev');
@@ -104,6 +120,7 @@ export const run = async (): Promise<void> => {
         s3,
         bucket: bucketName,
         bucketUrl: 'https://repo.dev.goldstack.party/',
+        workDir: join(workDir, 'dev-templates-build/'),
       });
     }
     if (argv.repo === 'goldstack-prod') {
@@ -113,18 +130,20 @@ export const run = async (): Promise<void> => {
         s3,
         bucket: bucketName,
         bucketUrl: 'https://repo.goldstack.party/repo',
+        workDir: join(workDir, 'prod-templates-build/'),
       });
     }
 
     if (argv.repo === 'dummy') {
       const s3 = createS3Client({
-        localDirectory: 'goldstackLocal/s3',
+        localDirectory: join(workDir, 'dummy-template-repo'),
         bucket: 'local-dummy-template-repository',
       });
       repo = new S3TemplateRepository({
         s3: s3,
-        bucket: 'repo',
+        bucket: 'local-dummy-template-repository',
         bucketUrl: 'https://local.goldstack.party/repo/',
+        workDir: join(workDir, 'dummy-templates-build/'),
       });
     } else {
       resetMocks(); // important since otherwise local mock will be used even if not specified for this run
@@ -135,20 +154,15 @@ export const run = async (): Promise<void> => {
       assert(repo, `Repo could not be loaded from option ${argv.repo}`);
 
       const config = await getBuildSet(argv.set as string);
-      let workDir = argv.workDir as string;
-      let tmpInstance: any = undefined;
-      if (workDir === 'tmp') {
-        tmpInstance = tmp.dirSync();
-        workDir = tmpInstance.name + '/';
-        info('Creating in temporary directory ' + workDir);
-      }
-      if (!workDir.endsWith('/')) {
-        throw new Error(
-          `Working directory must end with a /. Supplied working directory: ${workDir}`
-        );
-      }
-      rm('-rf', workDir);
-      mkdir('-p', workDir);
+
+      const workDirBuild = resolve(join(workDir, 'build/'));
+
+      rm('-rf', workDirBuild);
+      mkdir('-p', workDirBuild);
+      assert(
+        fs.readdirSync(workDirBuild).length === 0,
+        `Working directory ${workDirBuild} is not empty`
+      );
 
       const awsConfigPath = getAwsConfigPath('./../../');
       let awsConfig: undefined | AWSAPIKeyUser = undefined;
@@ -163,7 +177,7 @@ export const run = async (): Promise<void> => {
 
       const res = await buildSet({
         s3repo: repo,
-        workDir: workDir,
+        workDir: workDirBuild,
         config,
         skipTests: argv.skipTests === 'true',
         deployBeforeTest: argv.deployBeforeTest === 'true',
@@ -239,7 +253,17 @@ export const run = async (): Promise<void> => {
       console.log('Schedule all deploy sets');
       await scheduleAllDeploySets(argv);
       console.log('Schedule all deploy sets completed');
+      if (tmpInstance) {
+        rm('-rf', workDir.replace(/\\/g, '/') + '*');
+        tmpInstance.removeCallback();
+      }
+
       return;
+    }
+
+    if (tmpInstance) {
+      rm('-rf', workDir.replace(/\\/g, '/') + '*');
+      tmpInstance.removeCallback();
     }
 
     throw new Error(`Command not handled: ${command}`);

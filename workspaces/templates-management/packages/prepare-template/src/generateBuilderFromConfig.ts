@@ -18,7 +18,7 @@ import configSchema from './schemas/configSchema.json';
 import fs from 'fs';
 import jsonpath from 'jsonpath';
 import { debug, info, warn } from '@goldstack/utils-log';
-import path from 'path';
+import path, { join } from 'path';
 
 const readBuildConfigFromString = (
   data: string
@@ -75,9 +75,11 @@ const overwriteFields = async (
 export const generateBuilderFromConfig = async (
   templateDirectory: string
 ): Promise<PrepareTemplate | undefined> => {
-  const buildConfig = readBuildConfigFromFile(templateDirectory + 'build.json');
+  const buildConfig = readBuildConfigFromFile(
+    join(templateDirectory, 'build.json')
+  );
   const templateConfig = readTemplateConfigFromFile(
-    templateDirectory + 'template.json'
+    join(templateDirectory, 'template.json')
   );
 
   class GeneratedBuilderConfig implements PrepareTemplate {
@@ -87,7 +89,13 @@ export const generateBuilderFromConfig = async (
     async run(params: PrepareTemplateParams): Promise<void> {
       info(
         'Building template by copying files matching pattern defined in build.json to ' +
-          params.destinationDirectory
+          params.destinationDirectory,
+        {
+          templateDirectory: templateDirectory,
+          filesInTemplateDirectory: fs
+            .readdirSync(templateDirectory)
+            .join(', '),
+        }
       );
       // just copy all files and then delete ignored files
       for (const glob of buildConfig.include) {
@@ -130,12 +138,12 @@ export const generateBuilderFromConfig = async (
       packageConfig.templateVersion = '0.0.0';
       write(
         JSON.stringify(packageConfig, null, 2),
-        params.destinationDirectory + 'goldstack.json'
+        join(params.destinationDirectory, 'goldstack.json')
       );
 
       // cleaning up packageJson
       const packageJson = JSON.parse(
-        read(params.destinationDirectory + 'package.json')
+        read(join(params.destinationDirectory, 'package.json'))
       );
       packageJson.name = '';
       packageJson.author = '';
@@ -143,8 +151,15 @@ export const generateBuilderFromConfig = async (
       packageJson['private'] = undefined;
       write(
         JSON.stringify(packageJson, null, 2),
-        params.destinationDirectory + 'package.json'
+        join(params.destinationDirectory, 'package.json')
       );
+
+      debug('Template files written', {
+        destinationDirectory: params.destinationDirectory,
+        filesInDestinationDirectory: fs
+          .readdirSync(params.destinationDirectory)
+          .join(', '),
+      });
     }
   }
 

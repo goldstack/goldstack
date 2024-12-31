@@ -10,7 +10,7 @@ import {
 import { PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
 
 import { v4 as uuid4 } from 'uuid';
-import { mkdir, rmSafe, tempDir, write, zip, read } from '@goldstack/utils-sh';
+import { mkdir, rmSafe, goldstackLocalDir, write, zip, read } from '@goldstack/utils-sh';
 
 import { connectSessionRepository } from '@goldstack/session-repository';
 import { writePackageConfigs } from '@goldstack/project-config';
@@ -74,7 +74,7 @@ const writePackage = async (params: {
     return;
   }
 
-  const path = `${tempDir()}work/post-project-package/${projectId}/${packageId}/`;
+  const path = `${goldstackLocalDir()}work/post-project-package/${projectId}/${packageId}/`;
   await rmSafe(path);
   mkdir('-p', path);
 
@@ -110,7 +110,7 @@ const writePackage = async (params: {
     userConfigPath
   );
 
-  const zipPath = `${tempDir()}work/post-project-package/${projectId}/${packageId}.zip`;
+  const zipPath = `${goldstackLocalDir()}work/post-project-package/${projectId}/${packageId}.zip`;
   await zip({ directory: path, target: zipPath });
 
   const packageBucket = await connect();

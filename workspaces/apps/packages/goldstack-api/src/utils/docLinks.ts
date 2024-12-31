@@ -26,6 +26,7 @@ export const getDocLinks = async (
     s3: await connect(),
     bucket: await getBucketName(),
     bucketUrl: '',
+    workDir: './goldstackLocal/work/repo/',
   });
 
   return await Promise.all(

@@ -10,7 +10,13 @@ import { v4 as uuid4 } from 'uuid';
 import ProjectRepository, { ProjectId } from './ProjectRepositoryInterface';
 import { ProjectConfiguration } from '@goldstack/utils-project';
 
-import { zip, rmSafe, unzip, mkdir, tempDir } from '@goldstack/utils-sh';
+import {
+  zip,
+  rmSafe,
+  unzip,
+  mkdir,
+  goldstackLocalDir,
+} from '@goldstack/utils-sh';
 import { download } from '@goldstack/utils-s3';
 import fs from 'fs';
 
@@ -97,7 +103,8 @@ class ProjectRepositoryS3 implements ProjectRepository {
   }
 
   async downloadProject(id: ProjectId, path: string): Promise<void> {
-    const targetDir = tempDir() + 'work/project-download/' + uuid4() + '/';
+    const targetDir =
+      goldstackLocalDir() + 'work/project-download/' + uuid4() + '/';
     mkdir('-p', targetDir);
     const targetArchive = `${targetDir}${id}.zip`;
     if (
@@ -119,7 +126,8 @@ class ProjectRepositoryS3 implements ProjectRepository {
   }
 
   async uploadProject(id: ProjectId, path: string): Promise<void> {
-    const targetDir = tempDir() + 'work/project-upload/' + uuid4() + '/';
+    const targetDir =
+      goldstackLocalDir() + 'work/project-upload/' + uuid4() + '/';
     mkdir('-p', targetDir);
     const targetArchive = `${targetDir}${id}.zip`;
     await rmSafe(targetArchive);

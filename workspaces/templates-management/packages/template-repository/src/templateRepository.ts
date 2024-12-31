@@ -20,7 +20,7 @@ import fs from 'fs';
 import { debug, info } from '@goldstack/utils-log';
 
 import { promisify } from 'util';
-import path from 'path';
+import path, { join, resolve } from 'path';
 
 const sleep = promisify(setTimeout);
 
@@ -40,11 +40,18 @@ export class S3TemplateRepository implements TemplateRepository {
   private s3: S3Client;
   private bucket: string;
   private bucketUrl: string;
+  private workDir: string;
 
-  constructor(params: { s3: S3Client; bucket: string; bucketUrl: string }) {
+  constructor(params: {
+    s3: S3Client;
+    bucket: string;
+    bucketUrl: string;
+    workDir: string;
+  }) {
     this.s3 = params.s3;
     this.bucket = params.bucket;
     this.bucketUrl = params.bucketUrl;
+    this.workDir = resolve(params.workDir);
   }
 
   async getLatestTemplateVersion(
@@ -80,7 +87,16 @@ export class S3TemplateRepository implements TemplateRepository {
       `${templateName}-${version}.zip`
     );
     const templatePath = `versions/${templateName}/${version}/${templateName}-${version}.zip`;
-    debug(`Downloading template from '${this.bucket}' to '${filePath}'`);
+    debug(`Downloading template from '${this.bucket}' to '${filePath}'`, {
+      bucket: this.bucket,
+      key: templatePath,
+      workDir: this.workDir,
+      destinationFolder,
+      filesInDestinationDirBeforeDownload: fs
+        .readdirSync(destinationFolder)
+        .join(', '),
+      destinationFilePath: filePath,
+    });
     if (
       await download({
         s3: this.s3,
@@ -160,7 +176,11 @@ export class S3TemplateRepository implements TemplateRepository {
     const templateConfigPath = `versions/${templatePath}template.json`;
     config.templateArchive = `arn:aws:s3:::${this.bucket}/${templateArchivePath}`;
 
-    const workDir = `./goldstackLocal/work/repo/${config.templateName}/${config.templateVersion}`;
+    const workDir = join(
+      this.workDir,
+      config.templateName,
+      config.templateVersion
+    );
     rm('-rf', workDir);
     await sleep(200);
 
@@ -173,7 +193,7 @@ export class S3TemplateRepository implements TemplateRepository {
     // Upload config
     info(
       'Uploading template config to: ' + this.bucket + '/' + templateConfigPath,
-      { bucket: this.bucket }
+      { bucket: this.bucket, workDir }
     );
     try {
       const cmd = new PutObjectCommand({
@@ -189,15 +209,23 @@ export class S3TemplateRepository implements TemplateRepository {
     // template.json does not need to be included in archive
     rm('-rf', targetConfigPath);
 
-    const targetPackageConfigPath = workDir + '/goldstack.json';
+    const targetPackageConfigPath = join(workDir, 'goldstack.json');
     const packageConfig = readPackageConfig(workDir + '/');
     packageConfig.template = config.templateName;
     packageConfig.templateVersion = config.templateVersion;
     write(JSON.stringify(packageConfig, null, 2), targetPackageConfigPath);
 
-    const targetArchive = `./goldstackLocal/work/repo/${config.templateName}-${config.templateVersion}.zip`;
+    const targetArchive = join(
+      this.workDir,
+      `${config.templateName}-${config.templateVersion}.zip`
+    );
     await rmSafe(targetArchive);
 
+    debug('Preparing template zip', {
+      source: workDir,
+      target: targetArchive,
+      filesInSourceDir: fs.readdirSync(workDir).join(', '),
+    });
     await zip({ directory: workDir, target: targetArchive });
 
     // Upload archive
@@ -220,6 +248,7 @@ export class S3TemplateRepository implements TemplateRepository {
       throw e;
     }
 
+    rm('-rf', targetArchive);
     // set latest version, only after archive upload successful
     try {
       info('Setting latest version to ' + config.templateVersion, {
