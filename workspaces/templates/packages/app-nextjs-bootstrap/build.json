@@ -2,6 +2,7 @@
   "include": [
     "infra/",
     "src/",
+    "pages/",
     "schemas/",
     "scripts/",
     "docs/",
