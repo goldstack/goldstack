@@ -1,12 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Homepage from '../../pages/index';
 
 test('Check App component render', () => {
-  render(<Homepage />);
+  const res = render(<Homepage />);
 
-  expect(
-    screen.getByText('Toggle Data Display', { exact: false })
-  ).toBeVisible();
+  expect(res.getByText('Toggle Data Display', { exact: false })).toBeVisible();
 });
