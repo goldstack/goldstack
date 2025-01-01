@@ -8,8 +8,8 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 
-import BootstrapIcon from './../icons/bootstrap.svg';
-import RocketLaunchImage from './../img/rocket-launch.jpg';
+import BootstrapIcon from './../src/icons/bootstrap.svg';
+import RocketLaunchImage from './../src/img/rocket-launch.jpg';
 
 const fetcher = (url: string): any => fetch(url).then((r) => r.json());
 
@@ -43,12 +43,12 @@ const HomePage = (): JSX.Element => {
         <Col>
           <h1>Next.js React Bootstrap</h1>
           <p>Welcome to Next.js with Bootstrap!</p>
-          <p>{BootstrapIcon && <img src={BootstrapIcon} />}</p>
+          <p>{BootstrapIcon && <img src={BootstrapIcon || 'dummy'} />}</p>
           <Button onClick={toggleData}>Toggle Data Display</Button>
           {displayData && <FetchedContent />}
           <p>
             {RocketLaunchImage && (
-              <Image src={RocketLaunchImage} fluid rounded></Image>
+              <Image src={RocketLaunchImage || 'dummy'} fluid rounded></Image>
             )}
           </p>
         </Col>

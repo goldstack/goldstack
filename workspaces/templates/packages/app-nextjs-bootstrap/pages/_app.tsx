@@ -2,7 +2,7 @@
 import { AppProps } from 'next/app';
 import React from 'react';
 
-import './../styles/app.css';
+import './../src/styles/app.css';
 
 const BootstrapApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   process.env.GOLDSTACK_DEPLOYMENT =
