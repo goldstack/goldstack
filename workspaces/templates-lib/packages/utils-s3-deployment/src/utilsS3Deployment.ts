@@ -24,7 +24,7 @@ export const upload = async (params: S3UploadParams): Promise<void> => {
       source,
       dest,
     },
-    'Uploading to S3 using the AWS CLI (Docker)'
+    'Uploading to S3 using the AWS CLI'
   );
 
   // command run twice, once without and once with delete to ensure that

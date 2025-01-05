@@ -39,25 +39,25 @@
     "names": [
       "goldstack-test-ssr-v2--__index.map"
     ],
-    "generatedName": "-__index.d96366673347399820231411ef2c648b.map.json"
+    "generatedName": "-__index.cc39d9dc36087d7f9406a6fc6379baa4.map.json"
   },
   {
     "names": [
       "goldstack-test-ssr-v2--__index-bundle.js"
     ],
-    "generatedName": "-__index-bundle.20a11d2c2966f71074b03d80d084129a.js"
+    "generatedName": "-__index-bundle.4e4b0f352f6cd681f490f7bd4120d740.js"
   },
   {
     "names": [
       "goldstack-test-ssr-v2-posts.map"
     ],
-    "generatedName": "posts.91d575dc4d35986c8860da887ea13ac9.map.json"
+    "generatedName": "posts.edc56c768b51ea50e4efb13020b00b2c.map.json"
   },
   {
     "names": [
       "goldstack-test-ssr-v2-posts-bundle.js"
     ],
-    "generatedName": "posts-bundle.8efd9a65a8759cc1dede794efe32a725.js"
+    "generatedName": "posts-bundle.5f7d3f330ce6f9b076981d0076d06b91.js"
   },
   {
     "names": [
@@ -69,12 +69,12 @@
     "names": [
       "goldstack-test-ssr-v2-robots_txt.map"
     ],
-    "generatedName": "robots_txt.bc53b17a7eeaae75bc8ee62372fbb8a7.map.json"
+    "generatedName": "robots_txt.c4c8fdfec1f40887ef0cb8f058db78cd.map.json"
   },
   {
     "names": [
       "goldstack-test-ssr-v2-robots_txt-bundle.js"
     ],
-    "generatedName": "robots_txt-bundle.309fefc463b5621ba3a34d76eed0c7fc.js"
+    "generatedName": "robots_txt-bundle.45f8f424438fce1c46a43d959f2c05c8.js"
   }
 ]
