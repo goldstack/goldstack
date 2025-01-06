@@ -1,3 +1,4 @@
 distLambda/
 static/generated
 *.zip
+.localInstances.json

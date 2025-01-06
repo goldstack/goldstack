@@ -1,3 +1,4 @@
 goldstackLocal/
 distLambda/
 lambda.zip
+.localInstances.json

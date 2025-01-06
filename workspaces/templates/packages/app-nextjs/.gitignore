@@ -10,3 +10,4 @@ yarn-error.log
 tsconfig.tsbuildinfo
 coverage/
 goldstackLocal/
+.localInstances.json

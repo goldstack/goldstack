@@ -4,3 +4,4 @@ out/
 cache/
 lambda.zip
 .env.production
+.localInstances.json
