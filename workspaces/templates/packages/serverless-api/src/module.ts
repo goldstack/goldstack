@@ -13,7 +13,7 @@ if (process.env.TEST_SERVER_PORT) {
 }
 
 export const startTestServer = async (port?: number): Promise<any> => {
-  port = port || 3047;
+  port = port || 5054;
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { startServer } = require(excludeInBundle(
     '@goldstack/utils-aws-http-api-local'
@@ -36,7 +36,7 @@ export const getEndpoint = (deploymentName?: string): string => {
     deploymentName = process.env.GOLDSTACK_DEPLOYMENT;
   }
   if (deploymentName === 'local') {
-    const port = testServerPort || 3047;
+    const port = testServerPort || 5054;
 
     return `http://localhost:${port}`;
   }
