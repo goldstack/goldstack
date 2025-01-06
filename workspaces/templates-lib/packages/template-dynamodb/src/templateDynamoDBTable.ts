@@ -29,7 +29,7 @@ import {
   StartLocalDynamoDBType,
   StopLocalDynamoDBType,
   StopAllLocalDynamoDBType,
-} from './localDynamoDB';
+} from './local/localDynamoDB';
 import { debug } from '@goldstack/utils-log';
 
 /**
@@ -71,7 +71,7 @@ export const startLocalDynamoDB = async (
 
   // Suppress ESLint error for dynamic require
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const lib = require(excludeInBundle('./localDynamoDB')) as {
+  const lib = require(excludeInBundle('./local/localDynamoDB')) as {
     startLocalDynamoDB: StartLocalDynamoDBType;
   };
   const portToUse =
@@ -102,7 +102,7 @@ export const stopAllLocalDynamoDB = async (
 
   // Suppress ESLint error for dynamic require
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const lib = require(excludeInBundle('./localDynamoDB')) as {
+  const lib = require(excludeInBundle('./local/localDynamoDB')) as {
     stopAllLocalDynamoDB: StopAllLocalDynamoDBType;
   };
   await lib.stopAllLocalDynamoDB(packageConfig, deploymentName);
@@ -139,7 +139,7 @@ export const stopLocalDynamoDB = async (
 
   // Suppress ESLint error for dynamic require
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const lib = require(excludeInBundle('./localDynamoDB')) as {
+  const lib = require(excludeInBundle('./local/localDynamoDB')) as {
     stopLocalDynamoDB: StopLocalDynamoDBType;
   };
   await lib.stopLocalDynamoDB(
@@ -163,7 +163,7 @@ const createClient = async (
     debug('Connecting to local DynamoDB instance');
     // Suppress ESLint error for dynamic require
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const lib = require(excludeInBundle('./localDynamoDB')) as {
+    const lib = require(excludeInBundle('./local/localDynamoDB')) as {
       localConnect: LocalConnectType;
     };
     return lib.localConnect(packageConfig, deploymentName);
