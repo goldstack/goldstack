@@ -27,6 +27,14 @@ export type HostedZoneDomain = string;
 export type CognitoDomain = string;
 
 /**
+ * The domain that cookies will be set for. Consider starting the domain with a '.' if API hosted on subdomain.
+ *
+ * @title Cookie Domain
+ * @pattern ^[^\s]*
+ */
+export type CookieDomain = string;
+
+/**
  * URL that users should be redirected to after a successful login.
  *
  * @title Callback URL
@@ -38,6 +46,7 @@ export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
   userPoolName: UserPoolName;
   hostedZoneDomain: HostedZoneDomain;
   cognitoDomain: CognitoDomain;
+  cookieDomain: CookieDomain;
   callbackUrl: CallbackUrl;
 }
 

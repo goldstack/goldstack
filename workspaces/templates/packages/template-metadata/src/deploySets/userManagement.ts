@@ -47,6 +47,7 @@ export const createUserManagementBuildSetConfig =
                     cognitoDomain: `auth-integration-${hash}.dev.goldstack.party`,
                     userPoolName: `integration-pool-${hash}`,
                     hostedZoneDomain: 'dev.goldstack.party',
+                    cookieDomain: '.dev.goldstack.party',
                     callbackUrl:
                       'https://ssr.examples.templates.dev.goldstack.party',
                   },
