@@ -27,12 +27,20 @@ export type HostedZoneDomain = string;
 export type CognitoDomain = string;
 
 /**
- * The domain that cookies will be set for. Consider starting the domain with a '.' if API hosted on subdomain.
+ * The domain that cookies will be set for. Consider starting the domain with a '.' if API hosted on subdomain, e.g. set to '.yourdomain.com' if your API is hosted on 'api.yourdomain.com'.
  *
  * @title Cookie Domain
  * @pattern ^[^\s]*
  */
 export type CookieDomain = string;
+
+/**
+ * Value for the 'SameSite' attribute for the cookie. 'None' is recommend if your API is hosted on a different subdomain.
+ *
+ * @title Cookie SameSite
+ * @pattern ^[^\s]*
+ */
+export type CookieSameSite = string;
 
 /**
  * URL that users should be redirected to after a successful login.
@@ -47,6 +55,7 @@ export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
   hostedZoneDomain: HostedZoneDomain;
   cognitoDomain: CognitoDomain;
   cookieDomain: CookieDomain;
+  cookieSameSite: CookieSameSite;
   callbackUrl: CallbackUrl;
 }
 

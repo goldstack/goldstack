@@ -113,7 +113,8 @@ function setCookie(
   name: string,
   value: string,
   minutes: number,
-  domain: string
+  domain: string,
+  sameSite: string
 ) {
   let expires: string;
   if (minutes) {
@@ -128,7 +129,7 @@ function setCookie(
     '=' +
     value +
     expires +
-    `; path=/; domain=${domain}; SameSite=Strict`;
+    `; path=/; domain=${domain}; SameSite=${sameSite}`;
 }
 
 function eraseCookie(name: string) {
@@ -388,8 +389,23 @@ async function getAndPersistToken(args: {
   // only store access and id token in cookie
   const cookieDomain =
     packageConfig.getDeployment(deploymentName).configuration.cookieDomain;
-  setCookie('goldstack_access_token', token.accessToken, 60, cookieDomain);
-  setCookie('goldstack_id_token', token.idToken, 60, cookieDomain);
+
+  const cookieSameSite =
+    packageConfig.getDeployment(deploymentName).configuration.cookieSameSite;
+  setCookie(
+    'goldstack_access_token',
+    token.accessToken,
+    60,
+    cookieDomain,
+    cookieSameSite
+  );
+  setCookie(
+    'goldstack_id_token',
+    token.idToken,
+    60,
+    cookieDomain,
+    cookieSameSite
+  );
   return token;
 }
 

@@ -13,6 +13,7 @@
         "cognitoDomain": "auth-example.dev.goldstack.party",
         "userPoolName": "example-pool",
         "cookieDomain": ".dev.goldstack.party",
+        "cookieSameSite": "None",
         "hostedZoneDomain": "dev.goldstack.party",
         "callbackUrl": "https://ssr.examples.templates.dev.goldstack.party"
       },

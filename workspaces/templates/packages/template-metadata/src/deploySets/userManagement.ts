@@ -48,6 +48,7 @@ export const createUserManagementBuildSetConfig =
                     userPoolName: `integration-pool-${hash}`,
                     hostedZoneDomain: 'dev.goldstack.party',
                     cookieDomain: '.dev.goldstack.party',
+                    cookieSameSite: 'None',
                     callbackUrl:
                       'https://ssr.examples.templates.dev.goldstack.party',
                   },
