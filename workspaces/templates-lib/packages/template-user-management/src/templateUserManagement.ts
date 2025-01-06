@@ -129,7 +129,7 @@ function setCookie(
     '=' +
     value +
     expires +
-    `; path=/; domain=${domain}; SameSite=${sameSite}`;
+    `; path=/; domain=${domain}; SameSite=${sameSite}; Secure`;
 }
 
 function eraseCookie(name: string) {
@@ -379,19 +379,26 @@ async function getAndPersistToken(args: {
 
   const deploymentName = getDeploymentName(args.deploymentName);
 
-  const packageConfig = new EmbeddedPackageConfig<
-    UserManagementPackage,
-    UserManagementDeployment
-  >({
-    goldstackJson: args.goldstackConfig,
-    packageSchema: args.packageSchema,
-  });
-  // only store access and id token in cookie
-  const cookieDomain =
-    packageConfig.getDeployment(deploymentName).configuration.cookieDomain;
+  let cookieDomain: string;
+  let cookieSameSite: string;
+  if (deploymentName === 'local') {
+    cookieDomain = 'localhost';
+    cookieSameSite = 'None';
+  } else {
+    const packageConfig = new EmbeddedPackageConfig<
+      UserManagementPackage,
+      UserManagementDeployment
+    >({
+      goldstackJson: args.goldstackConfig,
+      packageSchema: args.packageSchema,
+    });
+    // only store access and id token in cookie
+    cookieDomain =
+      packageConfig.getDeployment(deploymentName).configuration.cookieDomain;
 
-  const cookieSameSite =
-    packageConfig.getDeployment(deploymentName).configuration.cookieSameSite;
+    cookieSameSite =
+      packageConfig.getDeployment(deploymentName).configuration.cookieSameSite;
+  }
   setCookie(
     'goldstack_access_token',
     token.accessToken,
