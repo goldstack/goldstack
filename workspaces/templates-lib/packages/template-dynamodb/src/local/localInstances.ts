@@ -5,7 +5,7 @@ import fs from 'fs';
 import { check } from 'tcp-port-used';
 
 /**
- * Interface representing the state that will be persisted to file
+ * Interface representing the state that will be persisted to file.
  */
 interface PersistedState {
   instances: {

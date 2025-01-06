@@ -1,7 +1,12 @@
-import { connect, stopLocalDynamoDB } from './../src/table';
+import {
+  connect,
+  stopAllLocalDynamoDB,
+  stopLocalDynamoDB,
+} from './../src/table';
 import * as readline from 'readline';
 import { createServer } from 'dynamodb-admin';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
+import { info, warn } from '@goldstack/utils-log';
 
 (async () => {
   const clientInner = await connect();
@@ -34,11 +39,11 @@ import DynamoDB from 'aws-sdk/clients/dynamodb';
       if (!address) {
         throw new Error('Local admin server not started successfully.');
       }
-      console.log(`DynamoDB Admin started on http://localhost:${address.port}`);
+      info(`DynamoDB Admin started on http://localhost:${address.port}`);
       resolve();
     });
     localAdminServer.on('error', () => {
-      console.warn(
+      warn(
         `Cannot start admin server on port ${adminPort}. Possibly admin server already started.`
       );
       resolve();
@@ -55,13 +60,14 @@ import DynamoDB from 'aws-sdk/clients/dynamodb';
     });
   });
   if (localAdminServer) {
-    console.log('Shutting down local DynamoDB admin ...');
+    info('Shutting down local DynamoDB admin ...');
     await new Promise<void>((resolve, reject) => {
       localAdminServer.close(() => resolve());
     });
-    console.log('  Local admin server shut down successfully');
+    info('  Local admin server shut down successfully');
   }
-  console.log('Shutting down local DynamoDB ...');
+  info('Shutting down local DynamoDB ...');
   await stopLocalDynamoDB();
-  console.log('  Local DynamoDB shut down successfully');
+  await stopAllLocalDynamoDB();
+  info('  Local DynamoDB shut down successfully');
 })();
