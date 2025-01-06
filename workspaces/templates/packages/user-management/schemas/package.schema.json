@@ -116,6 +116,12 @@
         "cognitoDomain": {
           "$ref": "#/definitions/CognitoDomain"
         },
+        "cookieDomain": {
+          "$ref": "#/definitions/CookieDomain"
+        },
+        "cookieSameSite": {
+          "$ref": "#/definitions/CookieSameSite"
+        },
         "callbackUrl": {
           "$ref": "#/definitions/CallbackUrl"
         }
@@ -124,6 +130,8 @@
         "userPoolName",
         "hostedZoneDomain",
         "cognitoDomain",
+        "cookieDomain",
+        "cookieSameSite",
         "callbackUrl"
       ]
     },
@@ -143,6 +151,18 @@
       "type": "string",
       "description": "The domain where Cognito will be deployed to",
       "title": "Cognito Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "CookieDomain": {
+      "type": "string",
+      "description": "The domain that cookies will be set for. Consider starting the domain with a '.' if API hosted on subdomain, e.g. set to '.yourdomain.com' if your API is hosted on 'api.yourdomain.com'.",
+      "title": "Cookie Domain",
+      "pattern": "^[^\\s]*"
+    },
+    "CookieSameSite": {
+      "type": "string",
+      "description": "Value for the 'SameSite' attribute for the cookie. 'None' is recommend if your API is hosted on a different subdomain.",
+      "title": "Cookie SameSite",
       "pattern": "^[^\\s]*"
     },
     "CallbackUrl": {
