@@ -109,7 +109,13 @@ export async function getToken(args: {
   return cognitoClientAuth.getToken(args);
 }
 
-function setCookie(name: string, value: string, minutes: number) {
+function setCookie(
+  name: string,
+  value: string,
+  minutes: number,
+  domain: string,
+  sameSite: string
+) {
   let expires: string;
   if (minutes) {
     const date = new Date();
@@ -118,7 +124,12 @@ function setCookie(name: string, value: string, minutes: number) {
   } else {
     expires = '';
   }
-  document.cookie = name + '=' + value + expires + '; path=/; SameSite=Strict';
+  document.cookie =
+    name +
+    '=' +
+    value +
+    expires +
+    `; path=/; domain=${domain}; SameSite=${sameSite}`;
 }
 
 function eraseCookie(name: string) {
@@ -365,9 +376,36 @@ async function getAndPersistToken(args: {
   window.sessionStorage.setItem('goldstack_access_token', token.accessToken);
   window.sessionStorage.setItem('goldstack_id_token', token.idToken);
   refreshTokenStorage = token.refreshToken;
+
+  const deploymentName = getDeploymentName(args.deploymentName);
+
+  const packageConfig = new EmbeddedPackageConfig<
+    UserManagementPackage,
+    UserManagementDeployment
+  >({
+    goldstackJson: args.goldstackConfig,
+    packageSchema: args.packageSchema,
+  });
   // only store access and id token in cookie
-  setCookie('goldstack_access_token', token.accessToken, 60);
-  setCookie('goldstack_id_token', token.idToken, 60);
+  const cookieDomain =
+    packageConfig.getDeployment(deploymentName).configuration.cookieDomain;
+
+  const cookieSameSite =
+    packageConfig.getDeployment(deploymentName).configuration.cookieSameSite;
+  setCookie(
+    'goldstack_access_token',
+    token.accessToken,
+    60,
+    cookieDomain,
+    cookieSameSite
+  );
+  setCookie(
+    'goldstack_id_token',
+    token.idToken,
+    60,
+    cookieDomain,
+    cookieSameSite
+  );
   return token;
 }
 
