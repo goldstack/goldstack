@@ -6,7 +6,9 @@ import {
   loginWithRedirect as templateLoginWithRedirect,
   signUpWithRedirect as templateSignUpWithRedirect,
   handleRedirectCallback as templateHandleRedirectCallback,
+  getCookieSettings as templateGetCookieSettings,
   performLogout as templatePerformLogout,
+  GetCookieSettingsResult,
 } from '@goldstack/template-user-management';
 
 import goldstackConfig from './../goldstack.json';
@@ -81,6 +83,17 @@ export async function getEndpoint(
 ): Promise<string> {
   return templateGetEndpoint({
     endpoint,
+    goldstackConfig,
+    packageSchema,
+    deploymentsOutput,
+    deploymentName,
+  });
+}
+
+export function getCookieSettings(
+  deploymentName?: string
+): GetCookieSettingsResult {
+  return templateGetCookieSettings({
     goldstackConfig,
     packageSchema,
     deploymentsOutput,

@@ -3,6 +3,7 @@ import {
   generateTestAccessToken,
   generateTestIdToken,
   getEndpoint,
+  getCookieSettings,
 } from './users';
 
 it('Should validate tokens', async () => {
@@ -27,4 +28,16 @@ it('Generate endpoints', async () => {
   expect(endpoint).toContain('oauth2/authorize');
   expect(endpoint).toContain('client_id');
   expect(endpoint).toContain('redirect_uri');
+});
+
+it('Should get local cookie settings', () => {
+  const cookieSettings = getCookieSettings();
+  expect(cookieSettings.cookieDomain).toBe('localhost');
+  expect(cookieSettings.cookieSameSite).toBe('None');
+});
+
+it('Should get prod cookie settings', () => {
+  const cookieSettings = getCookieSettings('prod');
+  expect(cookieSettings.cookieDomain).toBe('.dev.goldstack.party');
+  expect(cookieSettings.cookieSameSite).toBe('None');
 });
