@@ -361,6 +361,39 @@ async function operationWithRedirect(args: {
 
 let forceLogout = false;
 
+export interface GetCookieSettingsResult {
+  cookieDomain: string;
+  cookieSameSite: string;
+}
+
+export function getCookieSettings(args: {
+  goldstackConfig: any;
+  packageSchema: any;
+  deploymentsOutput: any;
+  deploymentName?: string | undefined;
+}): GetCookieSettingsResult {
+  const deploymentName = getDeploymentName(args.deploymentName);
+  if (deploymentName === 'local') {
+    return {
+      cookieDomain: 'localhost',
+      cookieSameSite: 'None',
+    };
+  }
+  const packageConfig = new EmbeddedPackageConfig<
+    UserManagementPackage,
+    UserManagementDeployment
+  >({
+    goldstackJson: args.goldstackConfig,
+    packageSchema: args.packageSchema,
+  });
+  // only store access and id token in cookie
+  const config = packageConfig.getDeployment(deploymentName).configuration;
+  return {
+    cookieDomain: config.cookieDomain,
+    cookieSameSite: config.cookieSameSite,
+  };
+}
+
 async function getAndPersistToken(args: {
   goldstackConfig: any;
   packageSchema: any;
@@ -377,28 +410,11 @@ async function getAndPersistToken(args: {
   window.sessionStorage.setItem('goldstack_id_token', token.idToken);
   refreshTokenStorage = token.refreshToken;
 
-  const deploymentName = getDeploymentName(args.deploymentName);
+  const cookieSettings = getCookieSettings({ ...args });
+  // only store access and id token in cookie
+  const cookieDomain = cookieSettings.cookieDomain;
 
-  let cookieDomain: string;
-  let cookieSameSite: string;
-  if (deploymentName === 'local') {
-    cookieDomain = 'localhost';
-    cookieSameSite = 'None';
-  } else {
-    const packageConfig = new EmbeddedPackageConfig<
-      UserManagementPackage,
-      UserManagementDeployment
-    >({
-      goldstackJson: args.goldstackConfig,
-      packageSchema: args.packageSchema,
-    });
-    // only store access and id token in cookie
-    cookieDomain =
-      packageConfig.getDeployment(deploymentName).configuration.cookieDomain;
-
-    cookieSameSite =
-      packageConfig.getDeployment(deploymentName).configuration.cookieSameSite;
-  }
+  const cookieSameSite = cookieSettings.cookieSameSite;
   setCookie(
     'goldstack_access_token',
     token.accessToken,
