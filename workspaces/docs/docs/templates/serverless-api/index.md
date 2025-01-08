@@ -29,6 +29,8 @@ title: Serverless API
 
 ### Adding environment variables
 
+For local development, simply define your environment variables in the `.env` file. You can simply rename `.env.template` and then go from there. 
+
 Environment variables are defined in the Terraform source code for this template. Specifically they are defined in the `infra/aws/lambda_routes.tf` file in the resource `resource "aws_lambda_function" "this"`. Note that all lambdas share the same environment variables. By default, there are a few environment variables specified:
 
 ```hcl

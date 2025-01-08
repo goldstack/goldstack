@@ -6088,6 +6088,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node-fetch", "npm:2.6.12"],\
           ["@yarnpkg/esbuild-plugin-pnp", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:3.0.0-rc.15"],\
           ["date-fns", "npm:2.28.0"],\
+          ["dotenv", "npm:16.4.7"],\
           ["esbuild", "npm:0.17.18"],\
           ["find-free-port", "npm:2.0.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.7.0"],\

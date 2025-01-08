@@ -4662,6 +4662,7 @@ __metadata:
     "@types/node-fetch": "npm:^2.6.12"
     "@yarnpkg/esbuild-plugin-pnp": "npm:^3.0.0-rc.15"
     date-fns: "npm:^2.28.0"
+    dotenv: "npm:^16.4.7"
     esbuild: "npm:^0.17.18"
     find-free-port: "npm:^2.0.0"
     jest: "npm:^29.7.0"
@@ -14539,7 +14540,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.4.2":
+"dotenv@npm:^16.4.2, dotenv@npm:^16.4.7":
   version: 16.4.7
   resolution: "dotenv@npm:16.4.7"
   checksum: 10/f13bfe97db88f0df4ec505eeffb8925ec51f2d56a3d0b6d916964d8b4af494e6fb1633ba5d09089b552e77ab2a25de58d70259b2c5ed45ec148221835fc99a0c
