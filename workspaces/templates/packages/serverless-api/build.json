@@ -5,6 +5,7 @@
     "scripts/",
     "src/",
     "schemas/",
+    ".env.template",
     ".gitignore",
     "goldstack.json",
     "jest.config.js",

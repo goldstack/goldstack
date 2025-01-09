@@ -1,5 +1,9 @@
 import { startServer } from '@goldstack/utils-aws-http-api-local';
 
+import { config } from 'dotenv';
+
+config();
+
 const port = process.env.PORT || '5054';
 
 const cors = process.env.CORS;

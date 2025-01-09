@@ -5,6 +5,10 @@ import { startTestServer, stopTestServer, getEndpoint } from './module';
 
 jest.setTimeout(120000);
 
+import { config } from 'dotenv';
+
+config();
+
 describe('Should create API', () => {
   let port: undefined | number = undefined;
 

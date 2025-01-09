@@ -1,3 +1,5 @@
 distLambda/
 *.zip
 .localInstances.json
+.gitignore
+.env
