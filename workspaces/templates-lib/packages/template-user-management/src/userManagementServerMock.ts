@@ -84,7 +84,9 @@ function assertNotInProd() {
 export class LocalUserManagerImpl implements CognitoManager {
   async validateIdToken(
     idToken: string
-  ): Promise<CognitoIdTokenPayload & { email: string }> {
+  ): Promise<
+    CognitoIdTokenPayload & { email: string; 'custom:app_user_id': string }
+  > {
     assertNotInProd();
     return JSON.parse(Buffer.from(idToken.split('.')[1], 'base64').toString());
   }

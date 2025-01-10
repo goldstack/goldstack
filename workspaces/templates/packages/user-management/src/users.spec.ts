@@ -21,6 +21,7 @@ it('Should validate tokens', async () => {
   const idTokenData = await cognito.validateIdToken(idToken);
   expect(idTokenData.email).toEqual('testUser@email.com');
   expect(idTokenData.token_use).toEqual('id');
+  expect(idTokenData['custom:app_user_id']).toBeDefined();
 });
 
 it('Generate endpoints', async () => {
