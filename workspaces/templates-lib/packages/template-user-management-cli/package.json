@@ -42,8 +42,8 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "workspace:^",
-    "@goldstack/infra-aws": "workspace:^",
+    "@goldstack/infra": "0.4.22",
+    "@goldstack/infra-aws": "0.4.32",
     "@goldstack/template-user-management": "0.1.44",
     "@goldstack/utils-aws-lambda": "0.3.41",
     "@goldstack/utils-cli": "0.3.16",

@@ -33,7 +33,7 @@
     "@goldstack/utils-template": "0.4.22",
     "fs-extra": "^11.2.0",
     "semver": "^7.6.3",
-    "uuid": "^8.3.0"
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@goldstack/auth": "0.1.0",

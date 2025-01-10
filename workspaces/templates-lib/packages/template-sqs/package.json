@@ -54,7 +54,7 @@
     "@goldstack/utils-terraform": "0.4.42",
     "@goldstack/utils-terraform-aws": "0.4.45",
     "aws-sdk-client-mock": "^4.0.1",
-    "uuid": "^8.3.0"
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.12",

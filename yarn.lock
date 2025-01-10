@@ -3797,7 +3797,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     semver: "npm:^7.6.3"
     typescript: "npm:^5.7.2"
-    uuid: "npm:^8.3.0"
+    uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
 
@@ -3992,7 +3992,7 @@ __metadata:
     ts-node: "npm:^10.9.2"
     ts-node-dev: "npm:^2.0.0"
     typescript: "npm:^5.7.2"
-    uuid: "npm:^8.3.0"
+    uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
 
@@ -4577,7 +4577,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     semver: "npm:^7.6.3"
     typescript: "npm:^5.7.2"
-    uuid: "npm:^8.3.0"
+    uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
 
@@ -4742,7 +4742,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     stripe: "npm:^8.114.0"
     typescript: "npm:^5.7.2"
-    uuid: "npm:^8.3.0"
+    uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
 
@@ -4990,7 +4990,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.7.2"
-    uuid: "npm:^8.3.0"
+    uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
 
@@ -5057,7 +5057,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.7.2"
-    uuid: "npm:^8.3.0"
+    uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
 
@@ -5488,7 +5488,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.7.2"
-    uuid: "npm:^8.3.0"
+    uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
 
@@ -5800,7 +5800,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.7.2"
-    uuid: "npm:^11.0.4"
+    uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
 
@@ -15216,7 +15216,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     typescript: "npm:^5.7.2"
   peerDependencies:
-    esbuild: ^0.17.18
+    esbuild: ^0.24.2
   languageName: unknown
   linkType: soft
 
@@ -15238,7 +15238,7 @@ __metadata:
     sha256: "npm:^0.2.0"
     typescript: "npm:^5.7.2"
   peerDependencies:
-    esbuild: ^0.17.18
+    esbuild: 0.24.2
   languageName: unknown
   linkType: soft
 
@@ -28783,21 +28783,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^11.0.4":
-  version: 11.0.4
-  resolution: "uuid@npm:11.0.4"
+"uuid@npm:^11.0.5":
+  version: 11.0.5
+  resolution: "uuid@npm:11.0.5"
   bin:
     uuid: dist/esm/bin/uuid
-  checksum: 10/5fd9832d2819f4535c92805f381e26ac254dfc601424a1000bc277ea38440538385db948645ef23c800906eeda28d3da9e037b049e71b2efe1eff1d05c9f61a2
-  languageName: node
-  linkType: hard
-
-"uuid@npm:^8.3.0":
-  version: 8.3.0
-  resolution: "uuid@npm:8.3.0"
-  bin:
-    uuid: dist/bin/uuid
-  checksum: 10/a9760cd58e2cec7015d5e1a615f6c4ed8d0bf47574558fb49ccb7fd6021f50311cc8a091099ee1f9ead3e823b95f1a661be3b0dcdd5ff15cd8d4e23b53430308
+  checksum: 10/0594ecdff3051e15d4a2c614b4c72e73af373bde0a5d156512353c01156975295d024ae8d7151846d7bd4d22ccd251b16ed51b4318fa71505fb20ad984102dc1
   languageName: node
   linkType: hard
 
