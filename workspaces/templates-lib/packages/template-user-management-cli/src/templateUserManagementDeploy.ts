@@ -1,9 +1,45 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { UserManagementConfiguration } from '@goldstack/template-user-management';
+import {
+  UserManagementConfiguration,
+  UserManagementDeployment,
+} from '@goldstack/template-user-management';
+import { getAWSUser } from '@goldstack/infra-aws';
+import {
+  readDeploymentState,
+  readTerraformStateVariable,
+  DeploymentState,
+} from '@goldstack/infra';
+import { deployFunction } from '@goldstack/utils-aws-lambda';
 
 export const deployCli = async (
   config: UserManagementConfiguration,
-  args: string[]
+  deployment: UserManagementDeployment
 ): Promise<void> => {
-  throw new Error('Deploy not supported yet.');
+  const deploymentState = readDeploymentState('./', deployment.name);
+
+  const preSignUpFunctionName = readTerraformStateVariable(
+    deploymentState,
+    'pre_sign_up_lambda_function_name'
+  );
+
+  const postConfirmationLambdaName = readTerraformStateVariable(
+    deploymentState,
+    'post_confirmation_lambda_function_name'
+  );
+
+  await deployFunction({
+    functionName: preSignUpFunctionName,
+    awsCredentials: await getAWSUser(deployment.awsUser),
+    lambdaPackageDir: './distLambda/preSignUp',
+    region: deployment.awsRegion,
+    targetArchiveName: './distLambda/preSignUp.zip',
+  });
+
+  await deployFunction({
+    functionName: postConfirmationLambdaName,
+    awsCredentials: await getAWSUser(deployment.awsUser),
+    lambdaPackageDir: './distLambda/postConfirmation',
+    region: deployment.awsRegion,
+    targetArchiveName: './distLambda/postConfirmation.zip',
+  });
 };

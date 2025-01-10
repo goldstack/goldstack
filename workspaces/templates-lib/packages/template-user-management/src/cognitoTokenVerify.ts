@@ -27,7 +27,9 @@ export interface CognitoManager {
    */
   validateIdToken(
     idToken: string
-  ): Promise<CognitoIdTokenPayload & { email: string }>;
+  ): Promise<
+    CognitoIdTokenPayload & { email: string; 'custom:app_user_id': string }
+  >;
 }
 
 /**
@@ -107,7 +109,9 @@ export class CognitoManagerImpl implements CognitoManager {
 
   async validateIdToken(
     jwtToken: string
-  ): Promise<CognitoIdTokenPayload & { email: string }> {
+  ): Promise<
+    CognitoIdTokenPayload & { email: string; 'custom:app_user_id': string }
+  > {
     try {
       const payload = await this.idTokenVerifier.verify(jwtToken);
       return payload as any;

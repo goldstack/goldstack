@@ -8,6 +8,7 @@ export function getMockedIdTokenProperties() {
     'cognito:roles': [],
     identities: [],
     iss: 'https://cognito-idp.us-west-2.amazonaws.com/us-west-2_AnBhna7ph',
+    'custom:app_user_id': '11218936-07ce-4c17-8ed9-278fdd354332',
     'cognito:username': '9ad18936-07ce-4c17-8ed9-278fdd35406a',
     origin_jti: '72408fc1-2223-4a04-9a45-f10aaefd77ee',
     aud: '7cuiqmug2c50sgqi93igjk16mf',

@@ -47,13 +47,13 @@
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.2",
     "@types/sha256": "^0.2.2",
-    "esbuild": "^0.17.18",
+    "esbuild": "^0.24.2",
     "jest": "^29.7.0",
     "rimraf": "^3.0.2",
     "typescript": "^5.7.2"
   },
   "peerDependencies": {
-    "esbuild": "^0.17.18"
+    "esbuild": "^0.24.2"
   },
   "publishConfig": {
     "main": "dist/src/esbuildSsrCssModulesPlugin.js"

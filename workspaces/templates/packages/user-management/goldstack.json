@@ -10,8 +10,8 @@
       "awsRegion": "us-west-2",
       "awsUser": "goldstack-dev",
       "configuration": {
-        "cognitoDomain": "auth-example.dev.goldstack.party",
-        "userPoolName": "example-pool",
+        "cognitoDomain": "auth-example-v2.dev.goldstack.party",
+        "userPoolName": "example-pool-v2",
         "cookieDomain": ".dev.goldstack.party",
         "cookieSameSite": "None",
         "hostedZoneDomain": "dev.goldstack.party",

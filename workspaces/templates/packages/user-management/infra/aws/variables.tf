@@ -23,3 +23,8 @@ variable "callback_url" {
   description = "URL of page that users should be redirected too after a successful login"
   type = string
 }
+
+variable "name" {
+  description = "Goldstack deployment name."
+  type = string
+}

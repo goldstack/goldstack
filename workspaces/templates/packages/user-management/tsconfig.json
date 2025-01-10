@@ -16,6 +16,9 @@
     },
     {
       "path": "../../../templates-lib/packages/template-user-management-cli"
+    },
+    {
+      "path": "../../../utils/packages/utils-log"
     }
   ]
 }
