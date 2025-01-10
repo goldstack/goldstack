@@ -111,6 +111,7 @@ export const handler: SSRHandler = async (event, context) => {
     await cognito.validate(cookies.goldstack_access_token);
     const idToken = await cognito.validateIdToken(cookies.goldstack_id_token);
     message = `Hello ${idToken.email}<br>`;
+    userId = idToken['custom:app_user_id'];
   }
 };
 ```
@@ -118,6 +119,12 @@ export const handler: SSRHandler = async (event, context) => {
 Note that it is recommended we [always](https://auth0.com/blog/id-token-access-token-what-is-the-difference/) validate the *access token*. We validate the *id token* in the above as well to determine the user's email address, since the access token only contains the *username*, which in our case is a cognito generated id.
 
 This template is not designed to support authorization. If you have authorization needs, consider implementing this with [DynamoDB](https://build.diligent.com/fast-authorization-with-dynamodb-cd1f133437e3) using the [DynamoDB template](https://goldstack.party/templates/dynamodb).
+
+Note that while Cognito creates a unique ID for every user (attribute `sub`) it is not recommended to use this ID in your own data. Since, if you accidentally delete the Cognito user pool (Pro tip: Don't do this!!!), you cannot restore this ID. Instead, use the custom attribute created by the template:
+
+    custom:app_user_id
+
+Store this id along with the users email address (and any other critical information you collect through Cognito) in your own database. This will protect you against using the Cognito User pool (though in that event your users would need to set new passwords and also set up their 2FA again).
 
 ## Infrastructure
 

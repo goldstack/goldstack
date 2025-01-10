@@ -78,7 +78,7 @@ export const handler: SSRHandler = async (event, context) => {
     await cognito.validate(cookies.goldstack_access_token);
     const idToken = await cognito.validateIdToken(cookies.goldstack_id_token);
     message = `Hello ${idToken.email}<br>`;
-    userId = idToken["custom:app_user_id"];
+    userId = idToken['custom:app_user_id'];
   }
 };
 ```

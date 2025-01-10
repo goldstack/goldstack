@@ -1,6 +1,6 @@
 {
   "name": "esbuild-ssr-css-modules-plugin",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "esbuild plugin for bundling CSS module files for client-side and server-side logic",
   "keywords": [
     "node",

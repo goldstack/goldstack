@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-sqs",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "description": "Utilities for packages that implement SQS functionality",
   "keywords": [
     "goldstack",
