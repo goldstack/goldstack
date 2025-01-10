@@ -10,7 +10,16 @@
   },
   "references": [
     {
+      "path": "../infra"
+    },
+    {
+      "path": "../infra-aws"
+    },
+    {
       "path": "../template-user-management"
+    },
+    {
+      "path": "../utils-aws-lambda"
     },
     {
       "path": "../../../utils/packages/utils-cli"
