@@ -11,7 +11,7 @@ data "aws_route53_zone" "main" {
 ## ACM (AWS Certificate Manager)
 # Creates the wildcard certificate *.<yourdomain.com>
 resource "aws_acm_certificate" "wildcard" {
-  provider = aws.us-east-1 # Wilcard certificate used by CloudFront requires this specific region (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html)
+  provider = aws.us-east-1 # Wildcard certificate used by CloudFront requires this specific region (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html)
 
   domain_name               = var.cognito_domain
   subject_alternative_names = ["*.${var.cognito_domain}"]
