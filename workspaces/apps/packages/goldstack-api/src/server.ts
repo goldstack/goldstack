@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import projects from './projects';
 import sessions from './sessions';
-import requestLogger from 'express-requests-logger';
+// import requestLogger from 'express-requests-logger';
 
 export const app: express.Application = express();
 
@@ -15,9 +15,9 @@ app.use(cors({ origin: process.env.CORS, credentials: true }));
 app.use(cookieParser() as any);
 app.use(express.json({ limit: '10mb' }));
 
-if (process.env.GOLDSTACK_DEPLOYMENT !== 'local') {
-  app.use(requestLogger());
-}
+// if (process.env.GOLDSTACK_DEPLOYMENT !== 'local') {
+//   app.use(requestLogger());
+// }
 
 app.get('/', (req, res) => {
   res.send('Goldstack API');
