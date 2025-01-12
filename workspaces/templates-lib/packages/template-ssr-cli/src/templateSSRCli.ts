@@ -29,7 +29,8 @@ import { defaultRoutesPath } from './templateSSRConsts';
 import { buildBundles } from './buildBundles';
 import { deployToS3 } from './deployToS3';
 
-import { match } from 'minimatch';
+import outmatch from 'outmatch';
+
 import { pwd } from '@goldstack/utils-sh';
 import { warn } from '@goldstack/utils-log';
 
@@ -108,8 +109,10 @@ export const run = async (
 
     if (command === 'build' || command === 'deploy') {
       if (opArgs.length === 2) {
-        filteredLambdaRoutes = filteredLambdaRoutes.filter((el) =>
-          match([el.relativeFilePath], `*${opArgs[1]}*`)
+        filteredLambdaRoutes = filteredLambdaRoutes.filter(
+          (el) =>
+            outmatch(`**/*${opArgs[1]}*`)(el.relativeFilePath) ||
+            outmatch(`**/*${opArgs[1]}*/*`)(el.relativeFilePath)
         );
         if (filteredLambdaRoutes.length === 0) {
           warn(

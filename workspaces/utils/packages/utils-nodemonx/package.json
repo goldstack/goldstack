@@ -41,7 +41,7 @@
   "dependencies": {
     "@goldstack/utils-log": "0.3.18",
     "@goldstack/utils-sh": "0.5.21",
-    "minimatch": "^5.1.0",
+    "minimatch": "^10.0.1",
     "node-watch": "^0.6.4"
   },
   "devDependencies": {

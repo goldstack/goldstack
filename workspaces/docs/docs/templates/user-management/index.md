@@ -22,7 +22,9 @@ title: User Management
 NOTE! Consider enabling `prevent_destroy` in `main.tf`. Bad things happen if user pools are destroyed!
 
 For the same reason, the template by default uses `ignore_changes` to ignore any changes to the `schema` since existing attributes cannot
-be changed. Thus it is probably best to make any modifications in the console, to get the appropriate warnings when performing operations. 
+be changed. Thus it is probably best to make any modifications in the console, to get the appropriate warnings when performing operations
+and to explicitly destroy and create the pool if required.
+
 
 [!embed](./../shared/infrastructure.md)
 

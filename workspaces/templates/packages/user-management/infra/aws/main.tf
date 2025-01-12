@@ -19,9 +19,10 @@ resource "aws_cognito_user_pool" "pool" {
 
   schema {
     attribute_data_type      = "String"
-    name                     = "custom:app_user_id"
+    name                     = "app_user_id"
     required                 = false
-    mutable                  = false
+    mutable                  = true
+
     string_attribute_constraints {
       max_length = 36
       min_length = 36
@@ -49,20 +50,19 @@ resource "aws_cognito_user_pool" "pool" {
     post_confirmation = aws_lambda_function.post_confirmation.arn
   }
 
-  # Pool needs to be recreated if MODIFYING existing attributes
-  # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool#schema
-  #
-  # Recommended to do this manually through the console to avoid
-  # accidental loss of the user pool data
-  lifecycle {
-    ignore_changes = [
-      "schema",
-    ]
-  }
 
-  # Bad things happen when you destroy a user pool, so it is recommended
-  # to enable this setting
   lifecycle {
+    # Bad things happen when you destroy a user pool, so it is recommended
+    # to enable the following setting
     # prevent_destroy = true
+
+    # Pool needs to be recreated if MODIFYING existing attributes
+    # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool#schema
+    #
+    # Recommended to do this manually through the console to avoid
+    # accidental loss of the user pool data
+    ignore_changes = [
+      # "schema",
+    ]
   }
 }

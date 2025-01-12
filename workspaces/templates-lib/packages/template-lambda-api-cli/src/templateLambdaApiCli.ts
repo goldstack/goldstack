@@ -19,7 +19,9 @@ import {
   defaultBuildOptions,
 } from '@goldstack/utils-aws-lambda';
 import { defaultRoutesPath } from './templateLambdaConsts';
+import outmatch from 'outmatch';
 import { pwd } from '@goldstack/utils-sh';
+import { debug, warn } from '@goldstack/utils-log';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
@@ -54,10 +56,12 @@ export const run = async (args: string[]): Promise<void> => {
       );
     }
     const lambdaRoutes = readLambdaConfig(defaultRoutesPath);
+
+    let filteredLambdaRoutes = lambdaRoutes;
     config.deployments = config.deployments.map((e) => {
       const lambdasConfigs = generateLambdaConfig(
         e.configuration,
-        lambdaRoutes
+        filteredLambdaRoutes
       );
       e.configuration.lambdas = lambdasConfigs;
       validateDeployment(e.configuration.lambdas);
@@ -67,6 +71,30 @@ export const run = async (args: string[]): Promise<void> => {
 
     const command = argv._[0];
     const [, , , ...opArgs] = args;
+
+    if (command === 'build' || command === 'deploy') {
+      console.log(opArgs[1]);
+      if (opArgs.length === 2) {
+        filteredLambdaRoutes = filteredLambdaRoutes.filter((el) => {
+          const result =
+            outmatch(`**/*${opArgs[1]}*`)(el.relativeFilePath) ||
+            outmatch(`**/*${opArgs[1]}*/*`)(el.relativeFilePath);
+          debug(
+            `Filtering lambdas. Testing: ${
+              el.relativeFilePath
+            } to match ${`*${opArgs[1]}*`}. Result: ${result}`
+          );
+          return result;
+        });
+        if (filteredLambdaRoutes.length === 0) {
+          warn(
+            `Cannot perform command '${command}'. No routes match supplied filter ${opArgs[1]}.`
+          );
+          return;
+        }
+        // console.log(filteredLambdaRoutes);
+      }
+    }
 
     if (command === 'infra') {
       await terraformAwsCli(opArgs, {
@@ -78,11 +106,16 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'build') {
       const deployment = packageConfig.getDeployment(opArgs[0]);
+      let routeFilter: undefined | string = undefined;
+      if (opArgs.length === 2) {
+        routeFilter = `*${opArgs[1]}*`;
+      }
       await buildFunctions({
         routesDir: defaultRoutesPath,
         buildOptions: defaultBuildOptions(),
         deploymentName: deployment.name,
-        configs: lambdaRoutes,
+        configs: filteredLambdaRoutes,
+        routeFilter,
         lambdaNamePrefix: deployment.configuration.lambdaNamePrefix || '',
         packageRootDir: pwd(),
       });
@@ -94,7 +127,7 @@ export const run = async (args: string[]): Promise<void> => {
         routesPath: defaultRoutesPath,
         configuration: packageConfig.getDeployment(opArgs[0]).configuration,
         deployment: packageConfig.getDeployment(opArgs[0]),
-        config: lambdaRoutes,
+        config: filteredLambdaRoutes,
         packageRootFolder: pwd(),
       });
       return;
