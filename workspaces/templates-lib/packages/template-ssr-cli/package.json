@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-ssr-cli",
-  "version": "0.3.65",
+  "version": "0.3.66",
   "description": "CLI tools for server-side rendering template",
   "keywords": [
     "goldstack",

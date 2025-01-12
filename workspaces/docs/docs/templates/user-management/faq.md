@@ -10,7 +10,7 @@ This error is caused by Cognito [requiring that the parent domain of a specified
 
 ### Error 'Updating Cognito User Pool: cannot modify or remove schema items'
 
-This error is issued by Terraform if trying to change an attribute for the user pool 
+This error is issued by Terraform if trying to change an attribute for the user pool
 (see [cognito-user-pool](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool#schema) Terraform documentation).
 
 ```

@@ -4828,7 +4828,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/nodemonx@npm:0.4.22, @goldstack/nodemonx@workspace:workspaces/utils/packages/utils-nodemonx":
+"@goldstack/nodemonx@npm:0.4.23, @goldstack/nodemonx@workspace:workspaces/utils/packages/utils-nodemonx":
   version: 0.0.0-use.local
   resolution: "@goldstack/nodemonx@workspace:workspaces/utils/packages/utils-nodemonx"
   dependencies:
@@ -5079,7 +5079,7 @@ __metadata:
   resolution: "@goldstack/server-side-rendering@workspace:workspaces/templates/packages/server-side-rendering"
   dependencies:
     "@goldstack/template-ssr": "npm:0.3.60"
-    "@goldstack/template-ssr-cli": "npm:0.3.65"
+    "@goldstack/template-ssr-cli": "npm:0.3.66"
     "@goldstack/utils-aws-http-api-local": "npm:0.3.50"
     "@goldstack/utils-esbuild": "npm:0.5.12"
     "@jest-mock/express": "npm:^1.4.5"
@@ -5130,7 +5130,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/serverless-api@workspace:workspaces/templates/packages/serverless-api"
   dependencies:
-    "@goldstack/template-lambda-api-cli": "npm:0.6.54"
+    "@goldstack/template-lambda-api-cli": "npm:0.6.55"
     "@goldstack/utils-aws-http-api-local": "npm:0.3.50"
     "@goldstack/utils-esbuild": "npm:0.5.12"
     "@jest-mock/express": "npm:^1.4.5"
@@ -5521,7 +5521,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-lambda-api-cli@npm:0.6.54, @goldstack/template-lambda-api-cli@workspace:workspaces/templates-lib/packages/template-lambda-api-cli":
+"@goldstack/template-lambda-api-cli@npm:0.6.55, @goldstack/template-lambda-api-cli@workspace:workspaces/templates-lib/packages/template-lambda-api-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-lambda-api-cli@workspace:workspaces/templates-lib/packages/template-lambda-api-cli"
   dependencies:
@@ -5953,7 +5953,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr-cli@npm:0.3.65, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
+"@goldstack/template-ssr-cli@npm:0.3.66, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli"
   dependencies:
@@ -15253,7 +15253,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "docs@workspace:workspaces/docs"
   dependencies:
-    "@goldstack/nodemonx": "npm:0.4.22"
+    "@goldstack/nodemonx": "npm:0.4.23"
     "@goldstack/utils-typescript-references": "npm:0.3.13"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
@@ -16925,7 +16925,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "examples@workspace:workspaces/examples"
   dependencies:
-    "@goldstack/nodemonx": "npm:0.4.22"
+    "@goldstack/nodemonx": "npm:0.4.23"
     "@goldstack/utils-typescript-references": "npm:0.3.13"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
@@ -26241,7 +26241,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root@workspace:."
   dependencies:
-    "@goldstack/nodemonx": "npm:0.4.22"
+    "@goldstack/nodemonx": "npm:0.4.23"
     "@goldstack/utils-docs-cli": "npm:0.3.11"
     "@goldstack/utils-typescript-references": "npm:0.3.13"
     "@types/jest": "npm:^29.5.14"
@@ -28377,7 +28377,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "templates@workspace:workspaces/templates"
   dependencies:
-    "@goldstack/nodemonx": "npm:0.4.22"
+    "@goldstack/nodemonx": "npm:0.4.23"
     "@goldstack/utils-typescript-references": "npm:0.3.13"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"

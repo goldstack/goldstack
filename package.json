@@ -34,7 +34,7 @@
     "generic-names": "4.0.0"
   },
   "devDependencies": {
-    "@goldstack/nodemonx": "0.4.22",
+    "@goldstack/nodemonx": "0.4.23",
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-typescript-references": "0.3.13",
     "@types/jest": "^29.5.14",
