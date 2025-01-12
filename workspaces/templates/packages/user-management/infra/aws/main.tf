@@ -48,4 +48,21 @@ resource "aws_cognito_user_pool" "pool" {
     pre_sign_up = aws_lambda_function.pre_sign_up.arn
     post_confirmation = aws_lambda_function.post_confirmation.arn
   }
+
+  # Pool needs to be recreated if MODIFYING existing attributes
+  # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool#schema
+  #
+  # Recommended to do this manually through the console to avoid
+  # accidental loss of the user pool data
+  lifecycle {
+    ignore_changes = [
+      "schema",
+    ]
+  }
+
+  # Bad things happen when you destroy a user pool, so it is recommended
+  # to enable this setting
+  lifecycle {
+    # prevent_destroy = true
+  }
 }

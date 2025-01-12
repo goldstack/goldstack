@@ -19,6 +19,11 @@ title: User Management
 
 ## Infrastructure
 
+NOTE! Consider enabling `prevent_destroy` in `main.tf`. Bad things happen if user pools are destroyed!
+
+For the same reason, the template by default uses `ignore_changes` to ignore any changes to the `schema` since existing attributes cannot
+be changed. Thus it is probably best to make any modifications in the console, to get the appropriate warnings when performing operations. 
+
 [!embed](./../shared/infrastructure.md)
 
 ## Security Hardening
