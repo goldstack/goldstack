@@ -9,7 +9,7 @@ import {
 } from '@aws-sdk/client-dynamodb';
 import { getTableName } from './dynamoDBPackageUtils';
 import { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
-import { debug, warn } from '@goldstack/utils-log';
+import { debug, info, warn } from '@goldstack/utils-log';
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => {
@@ -86,7 +86,7 @@ export const assertTable = async (
   await new Promise<void>((resolve, reject) => {
     res
       .then(async () => {
-        debug(`DynamoDB table '${tableName}' created.`);
+        info(`DynamoDB table '${tableName}' created.`);
         resolve();
       })
       .catch((e) => {
@@ -111,6 +111,7 @@ export const deleteTable = async (
       TableName: tableName,
     })
   );
+  info(`Deleted DynamoDB table: '${tableName}'`);
   await new Promise<void>((resolve, reject) => {
     res
       .then(async () => {

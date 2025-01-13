@@ -44,6 +44,7 @@
   "dependencies": {
     "@goldstack/template-dynamodb": "0.3.36",
     "@goldstack/utils-cli": "0.3.16",
+    "@goldstack/utils-log": "0.3.18",
     "@goldstack/utils-package": "0.4.22",
     "@goldstack/utils-package-config": "0.4.22",
     "@goldstack/utils-sh": "0.5.21",

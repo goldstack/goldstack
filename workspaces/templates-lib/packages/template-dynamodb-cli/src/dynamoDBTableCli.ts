@@ -6,6 +6,7 @@ import {
   deleteTable,
   migrateDownTo,
 } from '@goldstack/template-dynamodb';
+import { info } from '@goldstack/utils-log';
 
 export const dynamoDBCli = async (
   migrations: InputMigrations<DynamoDBContext>,
@@ -31,6 +32,7 @@ export const dynamoDBCli = async (
       packageSchema,
       deploymentName: args[1],
     });
+
     return;
   }
   if (args[0] === 'migrate-to') {
