@@ -112,6 +112,7 @@ export async function executeTokenRequest(args: {
         redirect_uri: args.redirectUri,
         refresh_token: args.refreshToken || '',
         code: args.code || '',
+        scope: 'openid email',
       })
     );
   });
