@@ -10,37 +10,37 @@
       "awsRegion": "us-west-2",
       "awsUser": "goldstack-dev",
       "configuration": {
-        "lambdaNamePrefix": "goldstack-test-lambda-api",
-        "apiDomain": "lambda-api.examples.templates.dev.goldstack.party",
+        "lambdaNamePrefix": "goldstack-test-lambda-api-v2",
+        "apiDomain": "lambda-api-v2.examples.templates.dev.goldstack.party",
         "hostedZoneDomain": "dev.goldstack.party",
         "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party",
         "lambdas": {
           "default": {
-            "function_name": "goldstack-test-lambda-api-__default",
+            "function_name": "goldstack-test-lambda-api-v2-__default",
             "route": "$default"
           },
           "ANY /admin/{proxy+}": {
-            "function_name": "goldstack-test-lambda-api-admin-_proxy__",
+            "function_name": "goldstack-test-lambda-api-v2-admin-_proxy__",
             "route": "ANY /admin/{proxy+}"
           },
           "ANY /cart/{sessionId}/items": {
-            "function_name": "goldstack-test-lambda-api-cart-_sessionId_-items",
+            "function_name": "goldstack-test-lambda-api-v2-cart-_sessionId_-items",
             "route": "ANY /cart/{sessionId}/items"
           },
           "ANY /echo": {
-            "function_name": "goldstack-test-lambda-api-echo",
+            "function_name": "goldstack-test-lambda-api-v2-echo",
             "route": "ANY /echo"
           },
           "ANY /order/{id}": {
-            "function_name": "goldstack-test-lambda-api-order-_id_",
+            "function_name": "goldstack-test-lambda-api-v2-order-_id_",
             "route": "ANY /order/{id}"
           },
           "ANY /user": {
-            "function_name": "goldstack-test-lambda-api-user-__index",
+            "function_name": "goldstack-test-lambda-api-v2-user-__index",
             "route": "ANY /user"
           },
           "ANY /user/{userId}": {
-            "function_name": "goldstack-test-lambda-api-user-_userId_",
+            "function_name": "goldstack-test-lambda-api-v2-user-_userId_",
             "route": "ANY /user/{userId}"
           }
         }

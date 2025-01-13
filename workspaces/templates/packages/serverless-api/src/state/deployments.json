@@ -5,7 +5,7 @@
       "gateway_url": {
         "sensitive": false,
         "type": "string",
-        "value": "https://j54dphr76c.execute-api.us-west-2.amazonaws.com"
+        "value": "https://5jvdu8nvme.execute-api.us-west-2.amazonaws.com"
       }
     }
   }
