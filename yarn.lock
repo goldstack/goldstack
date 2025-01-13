@@ -6160,13 +6160,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-user-management-cli@npm:0.1.48, @goldstack/template-user-management-cli@workspace:workspaces/templates-lib/packages/template-user-management-cli":
+"@goldstack/template-user-management-cli@npm:0.1.49, @goldstack/template-user-management-cli@workspace:workspaces/templates-lib/packages/template-user-management-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-user-management-cli@workspace:workspaces/templates-lib/packages/template-user-management-cli"
   dependencies:
     "@goldstack/infra": "npm:0.4.22"
     "@goldstack/infra-aws": "npm:0.4.32"
-    "@goldstack/template-user-management": "npm:0.1.45"
+    "@goldstack/template-user-management": "npm:0.1.46"
     "@goldstack/utils-aws-lambda": "npm:0.3.42"
     "@goldstack/utils-cli": "npm:0.3.16"
     "@goldstack/utils-docker": "npm:0.4.23"
@@ -6197,7 +6197,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-user-management@npm:0.1.45, @goldstack/template-user-management@workspace:workspaces/templates-lib/packages/template-user-management":
+"@goldstack/template-user-management@npm:0.1.46, @goldstack/template-user-management@workspace:workspaces/templates-lib/packages/template-user-management":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-user-management@workspace:workspaces/templates-lib/packages/template-user-management"
   dependencies:
@@ -6246,8 +6246,8 @@ __metadata:
   resolution: "@goldstack/user-management@workspace:workspaces/templates/packages/user-management"
   dependencies:
     "@aws-sdk/client-cognito-identity-provider": "npm:^3.645.0"
-    "@goldstack/template-user-management": "npm:0.1.45"
-    "@goldstack/template-user-management-cli": "npm:0.1.48"
+    "@goldstack/template-user-management": "npm:0.1.46"
+    "@goldstack/template-user-management-cli": "npm:0.1.49"
     "@goldstack/utils-log": "npm:0.3.18"
     "@swc/core": "npm:^1.10.1"
     "@swc/jest": "npm:^0.2.37"
