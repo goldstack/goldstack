@@ -6,7 +6,21 @@ resource "aws_cognito_user_pool_client" "client" {
   default_redirect_uri                 = var.callback_url
   allowed_oauth_flows_user_pool_client = true
   allowed_oauth_flows                  = ["code", "implicit"]
-  allowed_oauth_scopes                 = ["email", "openid"]
+  allowed_oauth_scopes                 = ["email", "openid", "profile"]
+
+  read_attributes = [
+    "custom:app_user_id",
+    "email",
+    "name",
+    "email_verified",
+    "updated_at",
+  ]
+
+  write_attributes = [
+    "email"
+  ]
+
+
   supported_identity_providers         = ["COGNITO", 
     # uncomment this to enable login with Google
     # - remember to provide your application details in identity-providers.tf
