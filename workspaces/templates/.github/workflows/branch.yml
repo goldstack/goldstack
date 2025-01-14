@@ -10,6 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/goldstack-setup
+      - run: |
+          yarn build
 
   lint:
     name: '🖋️ Prettier and Lint'
