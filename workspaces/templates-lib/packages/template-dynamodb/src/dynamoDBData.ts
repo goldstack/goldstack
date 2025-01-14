@@ -38,7 +38,7 @@ export async function assertTableActive(
       warn(`Error retrieving table information: ${e.code}.\n${e}`);
     }
     debug(
-      `DynamoDB table '${tableName}' created. Current table status: ${tableStatus}. Retries: ${retries}`
+      `DynamoDB table '${tableName}' current table status: ${tableStatus}. Retries: ${retries}`
     );
     await sleep(1000);
     retries++;
