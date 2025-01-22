@@ -73,7 +73,6 @@ export const run = async (args: string[]): Promise<void> => {
     const [, , , ...opArgs] = args;
 
     if (command === 'build' || command === 'deploy') {
-      console.log(opArgs[1]);
       if (opArgs.length === 2) {
         filteredLambdaRoutes = filteredLambdaRoutes.filter((el) => {
           const result =
