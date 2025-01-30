@@ -33,7 +33,7 @@ export async function getAWSCredentials(
 
   const client = new STSClient({ credentials: provider });
   const input = {
-    DurationSeconds: 600,
+    DurationSeconds: 900,
   };
   const command = new GetSessionTokenCommand(input);
   const response = await client.send(command);
