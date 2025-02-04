@@ -4285,7 +4285,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/docker-image-aws@workspace:workspaces/templates/packages/docker-image-aws"
   dependencies:
-    "@goldstack/template-docker-image-aws": "npm:0.5.48"
+    "@goldstack/template-docker-image-aws": "npm:0.5.49"
     "@goldstack/utils-git": "npm:0.2.12"
     "@goldstack/utils-sh": "npm:0.5.21"
     "@swc/core": "npm:^1.10.1"
@@ -5283,7 +5283,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-docker-image-aws@npm:0.5.48, @goldstack/template-docker-image-aws@workspace:workspaces/templates-lib/packages/template-docker-image-aws":
+"@goldstack/template-docker-image-aws@npm:0.5.49, @goldstack/template-docker-image-aws@workspace:workspaces/templates-lib/packages/template-docker-image-aws":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-docker-image-aws@workspace:workspaces/templates-lib/packages/template-docker-image-aws"
   dependencies:
@@ -5713,7 +5713,7 @@ __metadata:
     "@goldstack/project-build": "npm:0.1.0"
     "@goldstack/project-install": "npm:0.1.0"
     "@goldstack/template-build-set": "npm:0.1.0"
-    "@goldstack/template-docker-image-aws": "npm:0.5.48"
+    "@goldstack/template-docker-image-aws": "npm:0.5.49"
     "@goldstack/template-metadata": "npm:0.1.0"
     "@goldstack/template-repository": "npm:0.1.0"
     "@goldstack/template-repository-bucket": "npm:0.1.0"

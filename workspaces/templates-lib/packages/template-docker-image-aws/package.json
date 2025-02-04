@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-docker-image-aws",
-  "version": "0.5.48",
+  "version": "0.5.49",
   "description": "Utilities for packages that are deployed as Docker Images using AWS Fargate",
   "keywords": [
     "goldstack",
