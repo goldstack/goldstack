@@ -3,6 +3,7 @@
     "infra/",
     "src/",
     "pages/",
+    "public/",
     "schemas/",
     "scripts/",
     "docs/",
