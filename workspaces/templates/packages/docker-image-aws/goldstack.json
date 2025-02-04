@@ -12,7 +12,7 @@
       "awsRegion": "us-west-2",
       "awsUser": "goldstack-dev",
       "configuration": {
-        "repositoryName": "docker-image-aws-template-repo"
+        "repositoryName": "docker-image-aws-template-repo-v2"
       },
       "tfStateKey": "docker-image-aws-template-prod-0dcb9f77687a3870cc13.tfstate"
     }

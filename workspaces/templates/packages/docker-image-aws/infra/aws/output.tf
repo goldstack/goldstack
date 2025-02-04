@@ -28,7 +28,7 @@ output "vpc" {
 }
 
 output "subnet" {
-  value = "${sort(data.aws_subnet_ids.default.ids)[0]}"
+  value = "${sort(data.aws_subnets.default.ids)[0]}"
 }
 
 output "container_security_group" {
