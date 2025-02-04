@@ -5,22 +5,22 @@
       "cluster_name": {
         "sensitive": false,
         "type": "string",
-        "value": "docker-image-aws-template-repo-cluster"
+        "value": "docker-image-aws-template-repo-v2-cluster"
       },
       "container_security_group": {
         "sensitive": false,
         "type": "string",
-        "value": "sg-09aa302e4e4124eeb"
+        "value": "sg-0908115f7fbf6e5b2"
       },
       "ecs_task_execution_role_arn": {
         "sensitive": false,
         "type": "string",
-        "value": "arn:aws:iam::475629728374:role/ecs_task_execution_role_docker-image-aws-template-repo"
+        "value": "arn:aws:iam::475629728374:role/ecs_task_execution_role_docker-image-aws-template-repo-v2"
       },
       "ecs_task_role_arn": {
         "sensitive": false,
         "type": "string",
-        "value": "arn:aws:iam::475629728374:role/ecs_task_role_docker-image-aws-template-repo"
+        "value": "arn:aws:iam::475629728374:role/ecs_task_role_docker-image-aws-template-repo-v2"
       },
       "registry_id": {
         "sensitive": false,
@@ -30,12 +30,12 @@
       "repo_arn": {
         "sensitive": false,
         "type": "string",
-        "value": "arn:aws:ecr:us-west-2:475629728374:repository/docker-image-aws-template-repo"
+        "value": "arn:aws:ecr:us-west-2:475629728374:repository/docker-image-aws-template-repo-v2"
       },
       "repo_url": {
         "sensitive": false,
         "type": "string",
-        "value": "475629728374.dkr.ecr.us-west-2.amazonaws.com/docker-image-aws-template-repo"
+        "value": "475629728374.dkr.ecr.us-west-2.amazonaws.com/docker-image-aws-template-repo-v2"
       },
       "subnet": {
         "sensitive": false,
@@ -48,6 +48,6 @@
         "value": "vpc-be1d6fc6"
       }
     },
-    "latest": "475629728374.dkr.ecr.us-west-2.amazonaws.com/docker-image-aws-template-repo:4def9564"
+    "latest": "475629728374.dkr.ecr.us-west-2.amazonaws.com/docker-image-aws-template-repo-v2:70c4a1077"
   }
 ]

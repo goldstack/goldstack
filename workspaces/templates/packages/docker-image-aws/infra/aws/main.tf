@@ -103,8 +103,11 @@ data "aws_vpcs" "default" {
   }
 }
 
-data "aws_subnet_ids" "default" {
-  vpc_id = "${sort(data.aws_vpcs.default.ids)[0]}"
+data "aws_subnets" "default" {
+  filter {
+    name   = "vpc-id"
+    values = [sort(data.aws_vpcs.default.ids)[0]]
+  }
 }
 
 resource "aws_security_group" "main" {
