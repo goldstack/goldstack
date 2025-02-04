@@ -54,6 +54,16 @@ const Footer = (): JSX.Element => {
                     Terms and Conditions
                   </a>
                 </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    target="_blank"
+                    href="https://pureleap.com/privacy-policy"
+                    rel="noreferrer"
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -61,7 +71,7 @@ const Footer = (): JSX.Element => {
           <div className="row align-items-md-center">
             <div className="col-md-6 mb-4 mb-md-0">
               <p className="small text-white-70 mb-0">
-                © 2020-2023 Pureleap Pty. Ltd. All rights reserved.
+                © 2020-2025 Pureleap Pty. Ltd. All rights reserved.
               </p>
             </div>
 
