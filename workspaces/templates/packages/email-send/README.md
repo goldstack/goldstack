@@ -64,6 +64,22 @@ await ses
 
 Note it is also possible to add additional files into the `src/` directory of this template. This can be a good place to implement an interface specific to your application needs.
 
+### 4. Apply for Production Access
+
+AWS does not allow sending emails to any address for new accounts and puts SES into 'Sandbox mode'. In order to send emails to any addresses, it is require to apply for production access.
+
+For this, head to:
+
+[AWS Console - SES Home](https://us-west-2.console.aws.amazon.com/ses/home?region=us-west-2#/get-set-up)
+
+Then click the button [Request Production Access]
+
+or alternatively you can go directly to:
+
+[AWS SES - Request Production Access](https://us-west-2.console.aws.amazon.com/ses/home?region=us-west-2#/account/request-production-access)
+
+Then fill in the form and press submit. Your request should be processed within a few days.
+
 ## Infrastructure
 
 All infrastructure for this module is defined in Terraform. You can find the Terraform files for this template in the directory `[moduleDir]/infra/aws`. You can define multiple deployments for this template, for instance for development, staging and production environments.
@@ -157,6 +173,12 @@ This works well for deploying infrastructure from your local development environ
 Setting the environment variable `GOLDSTACK_LOG_EMAILS=true` will log out all emails that are sent when in local development mode. This can be useful when testing an API server locally or when debugging unit tests.
 
 ## Troubleshooting
+
+### Message Rejected: Email address is not verified.
+
+AWS by default puts all new accounts into 'Sandbox mode'. This mode only allows sending emails to email addresses that have been validated.
+
+To send emails to a arbitrary email addresses, apply for production access. More on that above in the Getting Started Section.
 
 ### TXT record already exists
 
