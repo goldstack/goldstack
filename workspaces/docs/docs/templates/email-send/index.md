@@ -27,6 +27,12 @@ Setting the environment variable `GOLDSTACK_LOG_EMAILS=true` will log out all em
 
 ## Troubleshooting
 
+### Message Rejected: Email address is not verified.
+
+AWS by default puts all new accounts into 'Sandbox mode'. This mode only allows sending emails to email addresses that have been validated.
+
+To send emails to a arbitrary email addresses, apply for production access. More on that above in the Getting Started Section.
+
 ### TXT record already exists
 
 [%Video Walkthrough](https://www.youtube.com/embed/TQlIQkM1wms)
