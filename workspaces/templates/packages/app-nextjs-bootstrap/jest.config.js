@@ -9,7 +9,7 @@ module.exports = {
   },
   transform: {
     ...base.transform,
-    '.+\\.(css|style|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
+    '.+\\.(css|style|less|sass|scss|gif|svg|png|jpg|ttf|woff|woff2)$':
       'jest-transform-stub',
   },
 };

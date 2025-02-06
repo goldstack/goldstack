@@ -9,7 +9,7 @@ module.exports = {
   },
   transform: {
     ...base.transform,
-    '.+\\.(style|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
+    '.+\\.(style|less|sass|scss|svg|png|gif|jpg|ttf|woff|woff2)$':
       'jest-transform-stub',
     '\\.(css)$': '<rootDir>/scripts/cssTransformer.js',
   },
