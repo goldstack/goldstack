@@ -14,7 +14,7 @@
     "deploy": "yarn build && yarn template deploy \"$@\"",
     "deploy-ts": "yarn build && yarn template-ts deploy",
     "infra": "yarn template infra \"$@\"",
-    "start": "yarn compile && yarn node dist/local.js",
+    "start": "yarn compile && yarn node dist/src/local.js",
     "template": "yarn template-ts",
     "template-ts": "ts-node --swc scripts/template.ts",
     "test": "TEST_SERVER_PORT=5030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=jest.config.js --runInBand",
