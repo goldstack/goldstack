@@ -20,6 +20,7 @@ resource "aws_sqs_queue" "dlq" {
 
 # To ensure redrive doesn't go to the wrong queue
 resource "aws_sqs_queue_redrive_allow_policy" "dlq" {
+  count = length(var.sqs_queue_name) > 0 ? 1 : 0
   queue_url = aws_sqs_queue.dlq[0].url
 
   redrive_allow_policy = jsonencode({
