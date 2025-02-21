@@ -16,7 +16,7 @@ variable "schedule" {
 
 variable "sqs_queue_name" {
   type    = string
-  description = "A name of a SQS queue to be created. Any messages posted to this queue will trigger the Lambda"
+  description = "A name of a SQS queue to be created. Any messages posted to this queue will trigger the Lambda."
   default = ""
 }
 
