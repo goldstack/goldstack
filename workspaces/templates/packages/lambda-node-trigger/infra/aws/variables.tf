@@ -22,7 +22,7 @@ variable "sqs_queue_name" {
 
 variable "sqs_queue_max_items" {
   type    = string
-  description = "The maximum items of we want in the queue - otherwise an alert is triggerd."
+  description = "The maximum items of we want in the queue - otherwise an alert is triggered."
   default = 1000
 }
 
