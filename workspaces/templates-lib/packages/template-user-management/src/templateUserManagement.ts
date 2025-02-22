@@ -14,10 +14,10 @@ import {
   CognitoIdTokenPayload,
 } from 'aws-jwt-verify/jwt-model';
 export type { GetTokenResults };
-import type { ClientAuthResult } from './client/auth';
+import type { ClientAuthResult } from './client/getLoggedInUser';
 import { operationWithRedirect } from './client/operationWithRedirect';
 
-export type { ClientAuthResult } from './client/auth';
+export type { ClientAuthResult } from './client/getLoggedInUser';
 export { connectWithCognito } from './cognitoTokenVerify';
 export {
   getLocalUserManager,
@@ -31,10 +31,10 @@ export {
   getMockedUserAccessToken,
   setMockedUserAccessToken,
 } from './userManagementClientMock';
-export { getLoggedInUser, isAuthenticated } from './client/auth';
+export { getLoggedInUser, isAuthenticated } from './client/getLoggedInUser';
 export { handleRedirectCallback } from './client/handleRedirectCallback';
-export { getCookieSettings } from './client/cookieSettings';
-export { performLogout } from './client/logout';
+export { getCookieSettings } from './client/getCookieSettings';
+export { performLogout } from './client/performLogout';
 export { operationWithRedirect } from './client/operationWithRedirect';
 
 export type Endpoint =

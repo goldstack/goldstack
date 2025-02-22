@@ -2,7 +2,7 @@ import { getDeploymentName } from '../userManagementConfig';
 import { getEndpoint } from './getEndpoints';
 import { handleRedirectCallback } from './handleRedirectCallback';
 import { getMockedUserAccessToken } from '../userManagementClientMock';
-import type { ClientAuthResult } from './auth';
+import type { ClientAuthResult } from './getLoggedInUser';
 import { getAndPersistToken } from './getAndPersistToken';
 
 import {

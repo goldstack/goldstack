@@ -1,5 +1,5 @@
 import { getToken } from './getToken';
-import { getCookieSettings } from './cookieSettings';
+import { getCookieSettings } from './getCookieSettings';
 
 import { setRefreshTokenStorage } from './state';
 

@@ -2,7 +2,7 @@ import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded'
 import { getDeploymentName } from '../userManagementConfig';
 import type { UserManagementDeployment } from '../types/UserManagementPackage';
 import type UserManagementPackage from '../types/UserManagementPackage';
-import type { ClientAuthResult } from './auth';
+import type { ClientAuthResult } from './getLoggedInUser';
 import { getAndPersistToken } from './getAndPersistToken';
 
 /**
