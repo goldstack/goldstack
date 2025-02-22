@@ -3,9 +3,9 @@ export * from './types/UserManagementPackage';
 import * as tokenVerify from './cognitoTokenVerify';
 import * as userManagementServerMock from './userManagementServerMock';
 import * as userManagementClientMock from './userManagementClientMock';
-import * as cognitoClientAuth from './cognitoClientAuth';
+import * as cognitoClientAuth from './client/getToken';
 
-import { getEndpoint as getEndpointLib } from './cognitoEndpoints';
+import { getEndpoint as getEndpointLib } from './client/getEndpoints';
 import type { CognitoManager } from './cognitoTokenVerify';
 import { getDeploymentName } from './userManagementConfig';
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
@@ -14,7 +14,7 @@ import UserManagementPackage, {
 } from './types/UserManagementPackage';
 export type { CognitoManager } from './cognitoTokenVerify';
 
-import type { GetTokenResults } from './cognitoClientAuth';
+import type { GetTokenResults } from './client/getToken';
 import {
   CognitoAccessTokenPayload,
   CognitoIdTokenPayload,
