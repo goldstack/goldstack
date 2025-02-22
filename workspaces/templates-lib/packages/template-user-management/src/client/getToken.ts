@@ -35,7 +35,7 @@ export async function getToken(args: {
   if (deploymentName === 'local') {
     if (args.code !== 'dummy-local-client-code') {
       throw new Error(
-        `Unexpected code for client auth: '${args.code}'. Expected: dummy-local-client-code`
+        `Unexpected code for local client auth: '${args.code}'. Expected: dummy-local-client-code`
       );
     }
     const mockedUserAccessToken = getMockedUserAccessToken();
