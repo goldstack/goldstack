@@ -9,6 +9,7 @@ export type { GetTokenResults };
 import type { ClientAuthResult } from './client/getLoggedInUser';
 import { operationWithRedirect } from './client/operationWithRedirect';
 
+export type { GetCookieSettingsResult } from './client/getCookieSettings';
 export type { ClientAuthResult } from './client/getLoggedInUser';
 export { connectWithCognito } from './cognitoTokenVerify';
 export {
