@@ -1,14 +1,14 @@
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
-import { getCodeChallenge } from './codeChallenge';
+import { getCodeChallenge } from './getCodeVerifier';
 import {
   Endpoint,
   UserManagementDeployment,
   UserManagementPackage,
-} from './templateUserManagement';
+} from '../templateUserManagement';
 import {
   getDeploymentName,
   getDeploymentsOutput,
-} from './userManagementConfig';
+} from '../userManagementConfig';
 
 export async function getEndpoint(args: {
   goldstackConfig: any;

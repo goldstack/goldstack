@@ -35,7 +35,7 @@ jobs:
       - uses: actions/setup-java@v4 # used for local DynamoDB
         with:
           distribution: 'temurin'
-          java-version: '20'
+          java-version: '21'
 
       - name: Setting SSH key for Hetzner deployment
         uses: webfactory/ssh-agent@v0.9.0

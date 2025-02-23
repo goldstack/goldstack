@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-java@v4 # used for local DynamoDB
         with:
           distribution: 'temurin'
-          java-version: '20'
+          java-version: '21'
 
       - name: Configure git
         run: |
