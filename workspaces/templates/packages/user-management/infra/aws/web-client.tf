@@ -8,6 +8,11 @@ resource "aws_cognito_user_pool_client" "client" {
   allowed_oauth_flows                  = ["code", "implicit"]
   allowed_oauth_scopes                 = ["email", "openid", "profile"]
 
+  access_token_validity = 24 # hours
+  auth_session_validity = 15 # minutes
+  id_token_validity = 24 # hours
+  refresh_token_validity = 14 # days
+
   read_attributes = [
     "custom:app_user_id",
     "email",
