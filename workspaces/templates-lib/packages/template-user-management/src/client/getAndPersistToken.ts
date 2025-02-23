@@ -53,14 +53,14 @@ export async function getAndPersistToken(args: {
   setCookie(
     'goldstack_access_token',
     token.accessToken,
-    60,
+    60 * 24,
     cookieDomain,
     cookieSameSite
   );
   setCookie(
     'goldstack_id_token',
     token.idToken,
-    60,
+    60 * 24,
     cookieDomain,
     cookieSameSite
   );

@@ -24,6 +24,7 @@ export {
   getMockedUserAccessToken,
   setMockedUserAccessToken,
 } from './userManagementClientMock';
+
 export { getLoggedInUser, isAuthenticated } from './client/getLoggedInUser';
 export { handleRedirectCallback } from './client/handleRedirectCallback';
 export { getCookieSettings } from './client/getCookieSettings';
