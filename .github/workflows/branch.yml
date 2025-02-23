@@ -144,7 +144,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '20'
+          java-version: '21'
 
       # Required for testing SSR template
       # Since Jest CSS transformer needs to be loaded from compiled JS
