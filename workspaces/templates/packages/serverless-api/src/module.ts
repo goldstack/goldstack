@@ -28,6 +28,9 @@ export const startTestServer = async (port?: number): Promise<any> => {
 };
 
 export const stopTestServer = async (): Promise<void> => {
+  if (!testServer) {
+    return;
+  }
   return testServer.shutdown();
 };
 
