@@ -91,11 +91,11 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
   const version = exec('terraform version', { silent: true });
   if (version.indexOf(options.version) === -1) {
     warn(
-      `Not matching local Terraform version detected: [${
+      `Local Terraform version [${
         version.split('\n')[0]
-      }], expected version compatible with [${
+      }], does not match version defined in package configuration [${
         options.version
-      }]. Please install this version locally or uninstall Terraform and install Docker for Goldstack to run the correct Terraform version required for this deployment using Docker.`
+      }] (goldstack.json and/or infra/tfConfig.json). Consider installing the configured version locally or uninstall Terraform and install Docker. Then, Goldstack will run the correct Terraform version required for this deployment using Docker.`
     );
   }
 

@@ -8,6 +8,7 @@
     "build": "yarn clean && yarn compile",
     "build:next": "next build && rimraf ./webDist && next export -o webDist/",
     "clean": "rimraf ./dist ./webDist",
+    "clean-terraform": "rimraf ./infra/aws/.terraform",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.compile.json --watch",
     "compile:sass": "node-sass src/styles/app.scss src/styles/app.css --source-map src/styles/app.css.map",

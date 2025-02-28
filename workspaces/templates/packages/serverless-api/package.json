@@ -11,6 +11,7 @@
     "build-lambda": "yarn template build",
     "build-lambda-ts": "yarn template-ts build",
     "clean": "rimraf ./dist && rimraf ./distLambda",
+    "clean-terraform": "rimraf ./infra/aws/.terraform",
     "compile": "tsc --build",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "deploy": "yarn build-lambda \"$@\" && yarn template deploy \"$@\"",

@@ -12,6 +12,7 @@
     "build": "yarn clean && yarn compile",
     "build-web": "ts-node --swc ./src/build.ts $@",
     "clean": "rimraf ./dist && rimraf ./webDist",
+    "clean-terraform": "rimraf ./infra/aws/.terraform",
     "compile": "tsc --build",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "deploy": "yarn build-web $@ && yarn template deploy $@",
