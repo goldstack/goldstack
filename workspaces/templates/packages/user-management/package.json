@@ -13,6 +13,7 @@
     "build": "yarn clean && yarn compile && yarn build-trigger-lambdas",
     "build-trigger-lambdas": "ts-node --swc ./scripts/build-trigger-lambdas.ts",
     "clean": "rimraf dist/ distLambda/",
+    "clean-terraform": "rimraf ./infra/aws/.terraform",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",

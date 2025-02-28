@@ -8,6 +8,7 @@
   "scripts": {
     "build": "yarn workspaces foreach --topological-dev --worktree run build",
     "clean": "yarn workspaces foreach -W run clean",
+    "clean-terraform": "yarn workspaces foreach -W run clean-terraform",
     "compile": "tsc --build",
     "coverage": "yarn workspaces --topological-dev --worktree foreach run coverage",
     "fix-project-references": "utils-typescript-references --skipRoot",

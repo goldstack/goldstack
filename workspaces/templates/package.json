@@ -8,6 +8,7 @@
   "scripts": {
     "build": "yarn clean && yarn compile",
     "clean": "yarn workspaces foreach -W run clean",
+    "clean-terraform": "yarn workspaces foreach -W run clean-terraform",
     "compile": "yarn fix-project-references-all && tsc --build",
     "coverage": "yarn workspaces foreach --topological-devs --worktree run coverage",
     "deploy": "yarn workspaces foreach -W run deploy \"$@\"",

@@ -13,6 +13,7 @@
     "build": "yarn clean && yarn compile && yarn build-web $@",
     "build-web": "ts-node ./src/build.ts $@",
     "clean": "rimraf ./dist ./webDist",
+    "clean-terraform": "rimraf ./infra/aws/.terraform",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",

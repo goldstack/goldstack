@@ -9,6 +9,7 @@
     "build-next": "NEXT_TELEMETRY_DISABLED=1 next build",
     "build-open-next": "open-next build",
     "clean": "rimraf ./dist ./webDist",
+    "clean-terraform": "rimraf ./infra/aws/.terraform",
     "compile": "tsc --build",
     "compile-watch": "tsc --isolatedModules false -p tsconfig.compile.json --watch",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",

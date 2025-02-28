@@ -12,6 +12,7 @@
   "scripts": {
     "build": "yarn clean && yarn compile",
     "clean": "rimraf dist/",
+    "clean-terraform": "rimraf ./infra/aws/.terraform",
     "compile": "tsc -p tsconfig.json",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "infra": "yarn template-ts infra",

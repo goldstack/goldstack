@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "build": "GOARCH=amd64 GOOS=linux GIN_MODE=release go build -ldflags=\"-s -w\" -tags lambda.norpc -o distLambda/bootstrap",
+    "clean-terraform": "rimraf ./infra/aws/.terraform",
     "compile": "yarn build",
     "deploy": "yarn build && yarn template-ts deploy \"$@\"",
     "deploy-ts": "yarn build && yarn template-ts deploy \"$@\"",
@@ -18,6 +19,7 @@
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.2",
     "nodemon": "^2.0.20",
+    "rimraf": "^3.0.2",
     "ts-node": "^10.9.2"
   }
 }

@@ -13,6 +13,7 @@
   "scripts": {
     "build": "yarn clean && yarn compile && cd lambda/ && ts-node --swc ../scripts/package.ts",
     "clean": "rimraf 'dist/'",
+    "clean-terraform": "rimraf ./infra/aws/.terraform",
     "compile": "tsc -p tsconfig.json",
     "deploy": "yarn build && yarn template-ts deploy",
     "infra": "yarn template-ts infra",
