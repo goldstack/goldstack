@@ -4572,7 +4572,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.37"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
-    axios: "npm:1.6.0"
+    axios: "npm:^1.8.3"
     handlebars: "npm:4.7.7"
     jest: "npm:^29.7.0"
     renamer: "npm:^0.7.0"
@@ -4596,7 +4596,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.37"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
-    axios: "npm:1.6.0"
+    axios: "npm:^1.8.3"
     handlebars: "npm:4.7.7"
     jest: "npm:^29.7.0"
     renamer: "npm:^0.7.0"
@@ -4957,7 +4957,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.37"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
-    axios: "npm:1.6.0"
+    axios: "npm:^1.8.3"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     temp-dir: "npm:^2.0.0"
@@ -6716,7 +6716,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.37"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^22.10.2"
-    axios: "npm:1.6.0"
+    axios: "npm:^1.8.3"
     extract-zip: "npm:^2.0.1"
     jest: "npm:^29.7.0"
     mock-aws-s3-v3: "npm:6.0.2"
@@ -12746,14 +12746,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:1.6.0":
-  version: 1.6.0
-  resolution: "axios@npm:1.6.0"
+"axios@npm:^1.8.3":
+  version: 1.8.3
+  resolution: "axios@npm:1.8.3"
   dependencies:
-    follow-redirects: "npm:^1.15.0"
+    follow-redirects: "npm:^1.15.6"
     form-data: "npm:^4.0.0"
     proxy-from-env: "npm:^1.1.0"
-  checksum: 10/f069d938a05d2293e27c7cd6f0c08a1cb764f7cc43a1e637572f8d5928837ecd735890ad67a867d696094ee4b8b4dfdb3727a57aae600845e4c295581cb32f9a
+  checksum: 10/050f911cadd6d47a38ddbf91d2f8da2c34661dda8077e7ad6546e8178701125366fddbba07211a648b6815cf6c2c3c91c0a65d8b968e3d1a6054a21141ff9c01
   languageName: node
   linkType: hard
 
@@ -17554,13 +17554,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.15.0":
+"follow-redirects@npm:^1.0.0":
   version: 1.15.6
   resolution: "follow-redirects@npm:1.15.6"
   peerDependenciesMeta:
     debug:
       optional: true
   checksum: 10/70c7612c4cab18e546e36b991bbf8009a1a41cf85354afe04b113d1117569abf760269409cb3eb842d9f7b03d62826687086b081c566ea7b1e6613cf29030bf7
+  languageName: node
+  linkType: hard
+
+"follow-redirects@npm:^1.15.6":
+  version: 1.15.9
+  resolution: "follow-redirects@npm:1.15.9"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: 10/e3ab42d1097e90d28b913903841e6779eb969b62a64706a3eb983e894a5db000fbd89296f45f08885a0e54cd558ef62e81be1165da9be25a6c44920da10f424c
   languageName: node
   linkType: hard
 
