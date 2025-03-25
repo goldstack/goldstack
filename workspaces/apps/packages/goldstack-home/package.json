@@ -48,7 +48,7 @@
     "ajv": "^6.12.2",
     "data-uri-to-buffer": "^3.0.1",
     "install": "^0.13.0",
-    "next": "13.5.1",
+    "next": "13.5.9",
     "react": "18.2.0",
     "react-bootstrap": "^1.6.1",
     "react-dom": "18.2.0",

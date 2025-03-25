@@ -32,7 +32,7 @@
     "@aws-sdk/client-sso-oidc": "^3.645.0",
     "@aws-sdk/client-sts": "^3.645.0",
     "autoprefixer": "^10.4.20",
-    "next": "^14",
+    "next": "14.2.25",
     "react": "^19",
     "react-dom": "^19",
     "react-is": "^18.2.0",
