@@ -91,7 +91,6 @@ Define environment variables for deployments in their `"configuration"` in `gold
     }
 ```
 
-
 ## Secrets
 
 The VPS will by default be provided with credentials for the AWS IAM user that is used to deploy files to the server.

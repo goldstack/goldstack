@@ -183,6 +183,43 @@ For this, first create an SSH key and add it to Hetzner, see [How to create an S
 
 Note we will need the fingerprint in configuring `goldstack.json`.
 
+## Environment Variables
+
+Environment variables can be supplied in a number of ways.
+
+### For Local Development
+
+Define environment variables in a `.env` file, stored in the `server/` directory.
+
+    MY_ENV=value
+
+### For Deployments
+
+Define environment variables for deployments in their `"configuration"` in `goldstack.json`:
+
+```json
+ "deployments": [
+    {
+      "name": "prod",
+      "configuration": {
+        "environmentVariables": [
+          {
+            "name": "DUMMY_ENV",
+            "value": "I rock"
+          },
+          {
+            "name": "HTTP_PORT",
+            "value": "80"
+          },
+          {
+            "name": "HTTPS_PORT",
+            "value": "443"
+          }
+        ]
+      },
+    }
+```
+
 ## Secrets
 
 The VPS will by default be provided with credentials for the AWS IAM user that is used to deploy files to the server.
