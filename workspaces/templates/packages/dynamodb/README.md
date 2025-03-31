@@ -360,6 +360,12 @@ In order to manage your infrastructure, Terraform maintains a state for each dep
 
 This works well for deploying infrastructure from your local development environment but is not a good choice when building a CI/CD pipeline for the infrastructure definition. In that case, it is better to define [Remote State](https://www.terraform.io/docs/state/remote.html). A popular choice many projects adopt here is to store the [state in an S3 bucket](https://www.terraform.io/docs/backends/types/s3.html). Please see the Terraform documentation for further details.
 
+## Reliability Hardening
+
+It is highly recommended you enable Point-in-time recovery (PITR) for your DynamoDB databases and consider additional backup needs.
+
+Point-in-time recovery (PITR) can easily be enabled through the AWS console: [Enable point-in-time recovery in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/PointInTimeRecovery_Howitworks.html#howitworks-enable-pitr-console).
+
 ## Frequently Asked Questions
 
 ### How to define a table with only a partition key
