@@ -27,7 +27,7 @@ const config = {
         'templates-management',
         'utils',
       ],
-      pinVersion: '13.5.1',
+      pinVersion: '13.5.9',
     },
     {
       dependencies: ['react', 'react-dom'],
@@ -57,7 +57,7 @@ const config = {
     {
       dependencies: ['next'],
       packages: ['@goldstack/app-nextjs', '@goldstack/app-nextjs-bootstrap'],
-      pinVersion: '^15',
+      pinVersion: '15.2.3',
     },
     {
       dependencies: ['react', 'react-dom'],
@@ -72,7 +72,7 @@ const config = {
     {
       dependencies: ['next'],
       packages: ['@goldstack/nextjs'],
-      pinVersion: '^14',
+      pinVersion: '14.2.25',
     },
   ],
 };
