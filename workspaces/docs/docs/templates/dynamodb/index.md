@@ -21,6 +21,12 @@ title: DynamoDB
 
 [!embed](./../shared/infrastructure.md)
 
+## Reliability Hardening
+
+It is highly recommended you enable Point-in-time recovery (PITR) for your DynamoDB databases and consider additional backup needs.
+
+Point-in-time recovery (PITR) can easily be enabled through the AWS console: [Enable point-in-time recovery in DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/PointInTimeRecovery_Howitworks.html#howitworks-enable-pitr-console).
+
 ## Frequently Asked Questions
 
 ### How to define a table with only a partition key
