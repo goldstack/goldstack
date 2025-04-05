@@ -21,6 +21,7 @@ write_files:
     permissions: '0755'
     content: |
       #!/bin/bash
+      set -e
 
       APP_DIR="/home/goldstack/app"
       ZIP_FILE="/home/goldstack/server.zip"
@@ -37,8 +38,11 @@ write_files:
 
       if [ ! -f "$FIRST_DEPLOY_MARKER_FILE" ]; then
         echo "First deploy - run init script"
-        sudo "./init.sh"
+        sudo "$APP_DIR/init.sh"
         touch "$FIRST_DEPLOY_MARKER_FILE"
+        # Step 3: Unzip the uploaded file to the app folder
+        echo "Unzipping the file..."
+        unzip -o "$ZIP_FILE" -d "$APP_DIR"
       else
         # Step 1: Stop the app by running stop.sh
         if [ -f "$APP_DIR/stop.sh" ]; then
@@ -46,15 +50,15 @@ write_files:
           chmod +x "$APP_DIR/stop.sh"
           sudo "./stop.sh"
         fi
+        # Step 3: Unzip the uploaded file to the app folder
+        echo "Unzipping the file..."
+        unzip -o "$ZIP_FILE" -d "$APP_DIR"
       fi
 
       # Step 2: Delete the existing app contents
       echo "Deleting old app contents..."
       rm -rf "$APP_DIR"/*
 
-      # Step 3: Unzip the uploaded file to the app folder
-      echo "Unzipping the file..."
-      unzip -o "$ZIP_FILE" -d "$APP_DIR"
 
       # Step 5: Start the app by running start.sh
       if [ -f "$APP_DIR/start.sh" ]; then
@@ -84,6 +88,8 @@ runcmd:
   - sed -i -e '/^\(#\|\)AllowAgentForwarding/s/^.*$/AllowAgentForwarding no/' /etc/ssh/sshd_config
   - sed -i -e '/^\(#\|\)AuthorizedKeysFile/s/^.*$/AuthorizedKeysFile .ssh\/authorized_keys/' /etc/ssh/sshd_config
   - sed -i '$a AllowUsers goldstack' /etc/ssh/sshd_config
+  - echo 'goldstack ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/goldstack
+  - sudo chmod 440 /etc/sudoers.d/goldstack
   -  #
   -  # Ensure the newly setup user uses the SSH key passed using server creation
   -  #
