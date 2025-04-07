@@ -121,8 +121,8 @@ export const sshDeploy = async (deployment: HetznerVPSDeployment) => {
     sshExec(host, 'bash /home/goldstack/deploy.sh');
 
     info('Deployment completed successfully.');
-  } catch (error) {
-    error(`Error during deployment: ${error}`);
-    throw error;
+  } catch (err) {
+    error(`Error during deployment: ${err}`);
+    throw err;
   }
 };
