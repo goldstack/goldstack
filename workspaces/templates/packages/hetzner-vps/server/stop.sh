@@ -6,6 +6,7 @@ if [ -f "$ENV_FILE" ]; then
   source $ENV_FILE
 fi
 
-echo "Stopping and removing 'caddy' container..."
+chmod +x "$APP_DIR/load-secrets.sh"
+source "$APP_DIR/load-secrets.sh"
 
-docker-compose down
+COMPOSE_PROJECT_NAME=server docker-compose down

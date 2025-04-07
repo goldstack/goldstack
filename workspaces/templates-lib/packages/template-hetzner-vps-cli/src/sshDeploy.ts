@@ -20,14 +20,15 @@ export const build = async (deployment: HetznerVPSDeployment) => {
 
     const envVariables = deployment.configuration.environmentVariables;
     if (envVariables) {
-      const envContent = envVariables
-        .map(
-          (envVar) =>
-            `${envVar.name}="${envVar.value
-              .replace(/"/g, '\\"')
-              .replace(/\\/g, '\\\\')}"`
-        )
-        .join('\n');
+      const envContent =
+        envVariables
+          .map(
+            (envVar) =>
+              `${envVar.name}="${envVar.value
+                .replace(/"/g, '\\"')
+                .replace(/\\/g, '\\\\')}"`
+          )
+          .join('\n') + `\nGOLDSTACK_DEPLOYMENT="${deployment.name}"`;
       const envFilePath = `${stagingDir}/.env`;
       write(envContent, envFilePath);
     }

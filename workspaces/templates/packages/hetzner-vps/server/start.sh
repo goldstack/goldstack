@@ -1,11 +1,17 @@
 #!/bin/bash
+set -e
 
-ENV_FILE=".env"
+APP_DIR="/home/goldstack/app"
+ENV_FILE="$APP_DIR/.env"
 
 if [ -f "$ENV_FILE" ]; then
   source $ENV_FILE
 fi
 
-echo "Starting server"
+chmod +x "$APP_DIR/load-secrets.sh"
+source "$APP_DIR/load-secrets.sh"
 
-docker-compose up -d
+echo "Starting server in ${ENVIRONMENT:-development} mode"
+
+
+cd "$APP_DIR" && COMPOSE_PROJECT_NAME=server docker-compose up -d
