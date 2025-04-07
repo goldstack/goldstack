@@ -185,6 +185,13 @@ Note we will need the fingerprint in configuring `goldstack.json`.
 
 ## Environment Variables
 
+The following environment variables will be available on the server:
+
+*   `GOLDSTACK_DEPLOYMENT`
+*   `SERVER_NAME`
+*   `HETZNER_LOCATION`
+*   `HETZNER_SSH_USER_FINGERPRINT`
+
 Environment variables can be supplied in a number of ways.
 
 ### For Local Development
