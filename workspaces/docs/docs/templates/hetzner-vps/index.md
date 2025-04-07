@@ -122,17 +122,17 @@ Editing the file `dist/credentials/credentials` manually can be useful during de
 In the GitHub action, one can use GitHub secrets to set the content of `credentials.json` with the secrets required before the infrastructure is created and before a deployment.
 
 ```yaml
-      - name: Create credentials file
-        run: |
-          cd packages/node2
-          echo '
-          {
-            "dev": {
-              "CF_TUNNEL": "${{ secrets.CF_TUNNEL_DEV }}",
-              "AWS_ACCESS_KEY_ID": "${{secrets.AWS_ACCESS_KEY_ID_DEV}}",
-              "AWS_SECRET_ACCESS_KEY": "${{secrets.AWS_SECRET_ACCESS_KEY_DEV}}",
-            }
-          }' > credentials.json
+- name: Create credentials file
+  run: |
+    cd packages/node2
+    echo '
+    {
+      "dev": {
+        "CF_TUNNEL": "${{ secrets.CF_TUNNEL_DEV }}",
+        "AWS_ACCESS_KEY_ID": "${{secrets.AWS_ACCESS_KEY_ID_DEV}}",
+        "AWS_SECRET_ACCESS_KEY": "${{secrets.AWS_SECRET_ACCESS_KEY_DEV}}",
+      }
+    }' > credentials.json
 ```
 
 These secrets will be written into the `server/secrets` folder. For instance: `server/secrets/secret1.txt`.

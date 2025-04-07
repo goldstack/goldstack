@@ -246,16 +246,22 @@ secrets:
 
 Editing the file `dist/credentials/credentials` manually can be useful during development. However, a better way is to define a GitHub action to deploy the server.
 
-In the GitHub action, one can use GitHub secrets to set the content of `dist/credentials/credentials` with the secrets required before the infrastructure is created and before a deployment.
+In the GitHub action, one can use GitHub secrets to set the content of `credentials.json` with the secrets required before the infrastructure is created and before a deployment.
 
 ```yaml
-- name: Create JSON file
+- name: Create credentials file
   run: |
-    echo '{
-      "secret1": "${{ secrets.SECRET1 }}",
-      "secret2": "${{ secrets.SECRET2 }}",
-      "secret3": "${{ secrets.SECRET3 }}"
-    }' > dist/credentials/credentials
+    cd packages/node2
+    echo '
+    {
+      "dev": {
+        "CF_TUNNEL": "${{ secrets.CF_TUNNEL_DEV }}",
+        "AWS_ACCESS_KEY_ID": "${{secrets.AWS_ACCESS_KEY_ID_DEV}}",
+        "AWS_SECRET_ACCESS_KEY": "${{secrets.AWS_SECRET_ACCESS_KEY_DEV}}",
+      }
+    }' > credentials.json
 ```
 
-Note the key / name of the secret should always be in camel case.
+These secrets will be written into the `server/secrets` folder. For instance: `server/secrets/secret1.txt`.
+
+Note these secrets will be loaded as environment variables on the server during `yarn deploy [environment]` within the scripts `init.sh` and `start.sh`.

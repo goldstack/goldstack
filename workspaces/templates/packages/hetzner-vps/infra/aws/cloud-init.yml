@@ -21,10 +21,10 @@ write_files:
     permissions: '0755'
     content: |
       #!/bin/bash
-      
+
       # Exit on error, but allow for controlled error handling
       set -o pipefail
-      
+
       # Configuration
       APP_DIR="/home/goldstack/app"
       ZIP_FILE="/home/goldstack/server.zip"
@@ -34,13 +34,13 @@ write_files:
       FIRST_DEPLOY_MARKER_FILE="/home/goldstack/.first_deploy"
       ENV_FILE="/home/goldstack/app/.env"
       LOG_FILE="/home/goldstack/deploy.log"
-      
+
       # Logging function
       log() {
         local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
         echo "[$timestamp] $1" | tee -a "$LOG_FILE"
       }
-      
+
       # Error handling function
       handle_error() {
         local exit_code=$1
@@ -64,7 +64,7 @@ write_files:
         
         exit $exit_code
       }
-      
+
       # Validate ZIP file
       validate_zip() {
         if [ ! -f "$ZIP_FILE" ]; then
@@ -82,21 +82,21 @@ write_files:
           handle_error 3 "ZIP file missing required file: start.sh"
         fi
       }
-      
+
       # Start deployment process
       log "Starting deployment process"
-      
+
       # Create app directory if it doesn't exist
       if [ ! -d "$APP_DIR" ]; then
         log "Creating app directory: $APP_DIR"
         mkdir -p "$APP_DIR"
       fi
-      
+
       cd "$APP_DIR" || handle_error 4 "Failed to change directory to $APP_DIR"
-      
+
       # Validate the ZIP file
       validate_zip
-      
+
       if [ ! -f "$FIRST_DEPLOY_MARKER_FILE" ]; then
         log "First deployment detected"
         
@@ -178,7 +178,7 @@ write_files:
           handle_error 18 "Missing load-secrets.sh file"
         fi
       fi
-      
+
       # Step 5: Start the app by running start.sh
       if [ -f "$APP_DIR/start.sh" ]; then
         log "Starting the app..."
@@ -189,9 +189,9 @@ write_files:
       else
         handle_error 20 "Missing start.sh file"
       fi
-      
+
       log "Deployment completed successfully"
-      
+
 # Ensure the /home/goldstack directory and /home/goldstack/current file exist
 runcmd:
   -  #
