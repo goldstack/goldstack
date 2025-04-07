@@ -28,9 +28,13 @@ export const build = async (deployment: HetznerVPSDeployment) => {
                 .replace(/"/g, '\\"')
                 .replace(/\\/g, '\\\\')}"`
           )
-          .join('\n') + `\nGOLDSTACK_DEPLOYMENT="${deployment.name}"`;
+          .join('\n') +
+        `\nGOLDSTACK_DEPLOYMENT="${deployment.name}"\n` +
+        `SERVER_NAME="${deployment.configuration.serverName}"\n` +
+        `HETZNER_LOCATION="${deployment.configuration.location}"\n` +
+        `HETZNER_SSH_USER_FINGERPRINT=${deployment.configuration.sshUserFingerprint}\n`;
       const envFilePath = `${stagingDir}/.env`;
-      write(envContent, envFilePath);
+      deployment.configuration.write(envContent, envFilePath);
     }
 
     if (existsSync(credentialsFilePath)) {
