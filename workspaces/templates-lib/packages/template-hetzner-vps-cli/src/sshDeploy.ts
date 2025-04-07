@@ -34,7 +34,7 @@ export const build = async (deployment: HetznerVPSDeployment) => {
         `HETZNER_LOCATION="${deployment.configuration.location}"\n` +
         `HETZNER_SSH_USER_FINGERPRINT=${deployment.configuration.sshUserFingerprint}\n`;
       const envFilePath = `${stagingDir}/.env`;
-      deployment.configuration.write(envContent, envFilePath);
+      write(envContent, envFilePath);
     }
 
     if (existsSync(credentialsFilePath)) {
@@ -70,9 +70,9 @@ export const build = async (deployment: HetznerVPSDeployment) => {
     return {
       zipPath,
     };
-  } catch (error) {
-    error(`Error during build: ${error}`);
-    throw error;
+  } catch (err) {
+    error(`Error during build: ${err}`);
+    throw err;
   }
 };
 

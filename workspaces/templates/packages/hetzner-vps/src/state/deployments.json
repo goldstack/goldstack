@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "name": "prod",
+    "terraform": {
+      "ipv4_address": {
+        "sensitive": false,
+        "type": "string",
+        "value": "5.78.122.237"
+      },
+      "ipv6_address": {
+        "sensitive": false,
+        "type": "string",
+        "value": "2a01:4ff:1f0:90dd::1"
+      },
+      "server_id": {
+        "sensitive": false,
+        "type": "string",
+        "value": "62409674"
+      }
+    }
+  }
+]
