@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-hetzner-vps-cli",
-  "version": "0.1.36",
+  "version": "0.1.37",
   "description": "Utilities for packages that allows provisioning a Hetzner server with Docker",
   "keywords": [
     "goldstack",
