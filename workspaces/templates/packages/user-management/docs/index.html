@@ -1,388 +1,91 @@
-<p></p>
-<div class="markdown-fragment">
-  <p>
-    The user management template provides the infrastructure and utility
-    libraries for authenticating users using
-    <a
-      href="https://aws.amazon.com/cognito/"
-      class="absolute"
-      target="_blank"
-      rel="noopener noreferrer"
-      >Amazon Cognito</a
-    >.
-  </p>
-</div>
-<p></p>
-<h2 class="heading">
-  <span id="features"></span><a href="#features">Features</a
-  ><span class="permalink"
-    ><svg viewBox="0 0 16 16" width="16" height="16">
-      <g stroke-width="1" fill="#000000" stroke="#000000">
-        <path
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-        ></path>
-        <path
-          fill="none"
-          stroke="#000000"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-        ></path>
-      </g></svg
-  ></span>
-</h2>
-<p></p>
-<div class="markdown-fragment">
-  <ul>
-    <li>
-      Provides all Terraform resources requires for setting up an identity
-      server using Amazon Cognito.
-    </li>
-    <li>Provides customisable UI for signing up and signing in users.</li>
-    <li>Library with convenient methods to authenticate user on the client.</li>
-    <li>Library to validate tokens on the server.</li>
-    <li>Automatically verifies users email addresses.</li>
-  </ul>
-</div>
-<p></p>
-<h2 class="heading">
-  <span id="configure"></span><a href="#configure">Configure</a
-  ><span class="permalink"
-    ><svg viewBox="0 0 16 16" width="16" height="16">
-      <g stroke-width="1" fill="#000000" stroke="#000000">
-        <path
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-        ></path>
-        <path
-          fill="none"
-          stroke="#000000"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-        ></path>
-      </g></svg
-  ></span>
-</h2>
-<p></p>
-<div class="markdown-fragment">
-  <p>The following key properties need to be configured for this template:</p>
-  <ul>
-    <li>
-      <strong>Cognito Domain</strong>: The domain on which the identity server
-      and the UI pages for login will be hosted.
-    </li>
-    <li>
-      <strong>User Pool Name</strong>: The name for the Cognito User Pool that
-      should be created by this template. Note no User Pool of the same name
-      should exist in your account.
-    </li>
-    <li>
-      <strong>Callback URL</strong>: A URL pointing to a page in your
-      applications that users should be redirected after signing in successfully
-      through the Cognito UI.
-    </li>
-    <li>
-      <strong>Hosted Zone Domain</strong>: A Route 53 hosted zone to which the
-      <em>Cognito Domain</em> an be added as record. For instance, the hosted
-      zone domain <code class="inline">mysite.com</code> would allow adding the
-      cognito domain <code class="inline">auth.mysite.com</code>. For more
-      details, please check
-      <a
-        href="https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration"
-        class="absolute"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Hosted Zone Configuration</a
-      >
-      in the Goldstack documentation.
-    </li>
-  </ul>
-</div>
-<p></p>
-<h2 class="heading">
-  <span id="getting-started"></span
-  ><a href="#getting-started">Getting Started</a
-  ><span class="permalink"
-    ><svg viewBox="0 0 16 16" width="16" height="16">
-      <g stroke-width="1" fill="#000000" stroke="#000000">
-        <path
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-        ></path>
-        <path
-          fill="none"
-          stroke="#000000"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-        ></path>
-      </g></svg
-  ></span>
-</h2>
-<p></p>
-<div class="markdown-fragment">
-  <p></p>
-  <div class="markdown-fragment">
-    <h3 class="heading">
-      <span id="1-project-setup-2"></span
-      ><a href="#1-project-setup-2"
-        ><span id="1-project-setup-1"></span
-        ><a href="#1-project-setup-1" class="relative"
-          ><span id="1-project-setup"></span></a
-        ><a href="#1-project-setup" class="relative">1. Project Setup</a
-        ><span class="permalink"
-          ><svg viewBox="0 0 16 16" width="16" height="16">
-            <g stroke-width="1" fill="#000000" stroke="#000000">
-              <path
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-              ></path>
-              <path
-                fill="none"
-                stroke="#000000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-              ></path>
-            </g></svg></span
-        ><span class="permalink"
-          ><svg viewBox="0 0 16 16" width="16" height="16">
-            <g stroke-width="1" fill="#000000" stroke="#000000">
-              <path
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-              ></path>
-              <path
-                fill="none"
-                stroke="#000000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-              ></path>
-            </g></svg></span></a
-      ><span class="permalink"
-        ><svg viewBox="0 0 16 16" width="16" height="16">
-          <g stroke-width="1" fill="#000000" stroke="#000000">
-            <path
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-            ></path>
-            <path
-              fill="none"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-            ></path>
-          </g></svg
-      ></span>
-    </h3>
-    <p>
-      Before using this template, you need to configure the project. For this,
-      please see the
-      <a
-        href="https://docs.goldstack.party/docs/goldstack/getting-started"
-        class="absolute"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Getting Started Guide</a
-      >
-      on the Goldstack documentation.
-    </p>
-  </div>
-  <p></p>
-  <p></p>
-  <div class="markdown-fragment">
-    <h3 class="heading">
-      <span id="2-setup-infrastructure-2"></span
-      ><a href="#2-setup-infrastructure-2"
-        ><span id="2-setup-infrastructure-1"></span
-        ><a href="#2-setup-infrastructure-1" class="relative"
-          ><span id="2-setup-infrastructure"></span></a
-        ><a href="#2-setup-infrastructure" class="relative"
-          >2. Setup Infrastructure</a
-        ><span class="permalink"
-          ><svg viewBox="0 0 16 16" width="16" height="16">
-            <g stroke-width="1" fill="#000000" stroke="#000000">
-              <path
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-              ></path>
-              <path
-                fill="none"
-                stroke="#000000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-              ></path>
-            </g></svg></span
-        ><span class="permalink"
-          ><svg viewBox="0 0 16 16" width="16" height="16">
-            <g stroke-width="1" fill="#000000" stroke="#000000">
-              <path
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-              ></path>
-              <path
-                fill="none"
-                stroke="#000000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-              ></path>
-            </g></svg></span></a
-      ><span class="permalink"
-        ><svg viewBox="0 0 16 16" width="16" height="16">
-          <g stroke-width="1" fill="#000000" stroke="#000000">
-            <path
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-            ></path>
-            <path
-              fill="none"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-            ></path>
-          </g></svg
-      ></span>
-    </h3>
-    <p>
-      To stand up the infrastructure for this module, find the directory for
-      this module in the <code class="inline">packages/</code> folder and
-      navigate to this folder in the command line. Then identify the name of the
-      deployment you have defined in the Goldstack configuration tool. This can
-      be found in the
-      <code class="inline">packages/[moduleName]/goldstack.json</code> file.
-      Look for the <code class="inline">"deployments"</code> property and there
-      for the <code class="inline">"name"</code> of the first deployment. The
-      name should either be <code class="inline">dev</code> or
-      <code class="inline">prod</code>.
-    </p>
-    <p>In order to stand up the infrastructure, run the following command:</p>
-    <pre
-      class="language-bash language-bash language-bash"
-    ><code class="language-bash"><span class="token function">yarn</span> infra up <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
+<p></p><div class="markdown-fragment"><p>The user management template provides the infrastructure and utility libraries for authenticating users using <a href="https://aws.amazon.com/cognito/" class="absolute" target="_blank" rel="noopener noreferrer">Amazon Cognito</a>.</p></div><p></p>
+<h2 class="heading"><span id="features"></span><a href="#features">Features</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><ul>
+<li>Provides all Terraform resources requires for setting up an identity server using Amazon Cognito.</li>
+<li>Provides customisable UI for signing up and signing in users.</li>
+<li>Library with convenient methods to authenticate user on the client.</li>
+<li>Library to validate tokens on the server.</li>
+<li>Automatically verifies users email addresses.</li>
+</ul></div><p></p>
+<h2 class="heading"><span id="configure"></span><a href="#configure">Configure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><p>The following key properties need to be configured for this template:</p>
+<ul>
+<li><strong>Cognito Domain</strong>: The domain on which the identity server and the UI pages for login will be hosted.</li>
+<li><strong>User Pool Name</strong>: The name for the Cognito User Pool that should be created by this template. Note no User Pool of the same name should exist in your account.</li>
+<li><strong>Callback URL</strong>: A URL pointing to a page in your applications that users should be redirected after signing in successfully through the Cognito UI.</li>
+<li><strong>Hosted Zone Domain</strong>: A Route 53 hosted zone to which the <em>Cognito Domain</em> an be added as record. For instance, the hosted zone domain <code class="inline">mysite.com</code> would allow adding the cognito domain <code class="inline">auth.mysite.com</code>. For more details, please check <a href="https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration" class="absolute" target="_blank" rel="noopener noreferrer">Hosted Zone Configuration</a> in the Goldstack documentation.</li>
+</ul></div><p></p>
+<h2 class="heading"><span id="getting-started"></span><a href="#getting-started">Getting Started</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><p></p><div class="markdown-fragment"><h3 class="heading"><span id="1-project-setup-2"></span><a href="#1-project-setup-2"><span id="1-project-setup-1"></span><a href="#1-project-setup-1" class="relative"><span id="1-project-setup"></span></a><a href="#1-project-setup" class="relative">1. Project Setup</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>Before using this template, you need to configure the project. For this, please see the <a href="https://docs.goldstack.party/docs/goldstack/getting-started" class="absolute" target="_blank" rel="noopener noreferrer">Getting Started Guide</a> on the Goldstack documentation.</p></div><p></p>
+<p></p><div class="markdown-fragment"><h3 class="heading"><span id="2-setup-infrastructure-2"></span><a href="#2-setup-infrastructure-2"><span id="2-setup-infrastructure-1"></span><a href="#2-setup-infrastructure-1" class="relative"><span id="2-setup-infrastructure"></span></a><a href="#2-setup-infrastructure" class="relative">2. Setup Infrastructure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>To stand up the infrastructure for this module, find the directory for this module in the <code class="inline">packages/</code> folder and navigate to this folder in the command line. Then identify the name of the deployment you have defined in the Goldstack configuration tool. This can be found in the <code class="inline">packages/[moduleName]/goldstack.json</code> file. Look for the <code class="inline">"deployments"</code> property and there for the <code class="inline">"name"</code> of the first deployment. The name should either be <code class="inline">dev</code> or <code class="inline">prod</code>.</p>
+<p>In order to stand up the infrastructure, run the following command:</p>
+<pre class="language-bash language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra up <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
 </code></pre>
-    <p>
-      This will be either <code class="inline">yarn infra up dev</code> or
-      <code class="inline">yarn infra up prod</code> depending on your choice of
-      deployment. Note that running this command can take a while.
-    </p>
-  </div>
-  <p></p>
-  <p>
-    Note you will want to combine this template with another template to host a
-    UI and provide a web server. We recommend to use the
-    <a
-      href="https://goldstack.party/templates/server-side-rendering"
-      class="absolute"
-      target="_blank"
-      rel="noopener noreferrer"
-      >react-ssr template</a
-    >.
-  </p>
-  <h3 class="heading">
-    <span id="3-development-client-1"></span
-    ><a href="#3-development-client-1"
-      ><span id="3-development-client"></span
-      ><a href="#3-development-client" class="relative"
-        >3. Development (Client)</a
-      ><span class="permalink"
-        ><svg viewBox="0 0 16 16" width="16" height="16">
-          <g stroke-width="1" fill="#000000" stroke="#000000">
-            <path
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-            ></path>
-            <path
-              fill="none"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-            ></path>
-          </g></svg></span></a
-    ><span class="permalink"
-      ><svg viewBox="0 0 16 16" width="16" height="16">
-        <g stroke-width="1" fill="#000000" stroke="#000000">
-          <path
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-          ></path>
-          <path
-            fill="none"
-            stroke="#000000"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-          ></path>
-        </g></svg
-    ></span>
-  </h3>
-  <p>
-    This template will be most useful when combined with a templates that
-    provide a user interface and API. For any UI and API modules in your project
-    that require authentication, add the
-    <code class="inline">user-management</code> package to their dependencies:
-  </p>
-  <pre><code>yarn add user-management
+<p>This will be either <code class="inline">yarn infra up dev</code> or <code class="inline">yarn infra up prod</code> depending on your choice of deployment. Note that running this command can take a while.</p></div><p></p>
+<p>Note you will want to combine this template with another template to host a UI and provide a web server. We recommend to use the <a href="https://goldstack.party/templates/server-side-rendering" class="absolute" target="_blank" rel="noopener noreferrer">react-ssr template</a>.</p>
+<h3 class="heading"><span id="3-development-client-1"></span><a href="#3-development-client-1"><span id="3-development-client"></span><a href="#3-development-client" class="relative">3. Development (Client)</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>This template will be most useful when combined with a templates that provide a user interface and API. For any UI and API modules in your project that require authentication, add the <code class="inline">user-management</code> package to their dependencies:</p>
+<pre><code>yarn add user-management
 </code></pre>
-  <p>
-    In UI modules, you can use the
-    <code class="inline">loginWithRedirect</code> method to force user
-    authentication and obtain the access and id tokens for the user:
-  </p>
-  <pre
-    class="language-typescript language-typescript"
-  ><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span>
+<p>In UI modules, you can use the <code class="inline">loginWithRedirect</code> method to force user authentication and obtain the access and id tokens for the user:</p>
+<pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span>
   getLoggedInUser<span class="token punctuation">,</span>
   handleRedirectCallback<span class="token punctuation">,</span>
   loginWithRedirect<span class="token punctuation">,</span>
@@ -406,107 +109,33 @@
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-  <p>
-    <code class="inline">loginWithRedirect</code> will redirect the user to the
-    sign in page if required. The method
-    <code class="inline">handleRedirectCallback</code> will automatically obtain
-    the access and id token and set the cookies
-    <code class="inline">goldstack_access_token</code> and
-    <code class="inline">goldstack_id_token</code> that will be included in all
-    server requests.
-  </p>
-  <p>
-    Authentication also involves requesting a refresh token. The refresh token
-    will be kept in an in-memory variable and will be used to require a new
-    access and id token if the existing ones are expired.
-  </p>
-  <p>
-    Note during the sign in process, the user will always be redirected to the
-    callback URL you specified during configuration after a successful sign in.
-  </p>
-  <p>
-    The library also supports logging out users. For this, simply call the
-    method <code class="inline">performLogout</code>. The user will be
-    redirected to the Cognito hosted UI sign in screen.
-  </p>
-  <pre
-    class="language-typescript language-typescript"
-  ><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> performLogout <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@goldstack/user-management'</span><span class="token punctuation">;</span>
+<p><code class="inline">loginWithRedirect</code> will redirect the user to the sign in page if required. The method <code class="inline">handleRedirectCallback</code> will automatically obtain the access and id token and set the cookies <code class="inline">goldstack_access_token</code> and <code class="inline">goldstack_id_token</code> that will be included in all server requests.</p>
+<p>Authentication also involves requesting a refresh token. The refresh token will be kept in an in-memory variable and will be used to require a new access and id token if the existing ones are expired.</p>
+<p>Note during the sign in process, the user will always be redirected to the callback URL you specified during configuration after a successful sign in.</p>
+<p>The library also supports logging out users. For this, simply call the method <code class="inline">performLogout</code>. The user will be redirected to the Cognito hosted UI sign in screen.</p>
+<pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> performLogout <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@goldstack/user-management'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">logoutUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">await</span> <span class="token function">performLogout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-  <h3 class="heading">
-    <span id="4-development-server-1"></span
-    ><a href="#4-development-server-1"
-      ><span id="4-development-server"></span
-      ><a href="#4-development-server" class="relative"
-        >4. Development (Server)</a
-      ><span class="permalink"
-        ><svg viewBox="0 0 16 16" width="16" height="16">
-          <g stroke-width="1" fill="#000000" stroke="#000000">
-            <path
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-            ></path>
-            <path
-              fill="none"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-            ></path>
-          </g></svg></span></a
-    ><span class="permalink"
-      ><svg viewBox="0 0 16 16" width="16" height="16">
-        <g stroke-width="1" fill="#000000" stroke="#000000">
-          <path
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-          ></path>
-          <path
-            fill="none"
-            stroke="#000000"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-          ></path>
-        </g></svg
-    ></span>
-  </h3>
-  <p>
-    If you want to validate if calls to an API have been made by authenticated
-    users, add the <code class="inline">user-management</code> module to the
-    dependencies of the server-side module:
-  </p>
-  <pre><code>yarn add user-management
+<h3 class="heading"><span id="4-development-server-1"></span><a href="#4-development-server-1"><span id="4-development-server"></span><a href="#4-development-server" class="relative">4. Development (Server)</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>If you want to validate if calls to an API have been made by authenticated users, add the <code class="inline">user-management</code> module to the dependencies of the server-side module:</p>
+<pre><code>yarn add user-management
 </code></pre>
-  <p>
-    On the server, we can validate the tokens send by the client using the
-    <code class="inline">connectWithCognito</code> method:
-  </p>
-  <p>
-    For full example, see
-    <a
-      href="https://github.com/goldstack/cognito-react-nodejs-example/blob/master/packages/server-side-rendering/src/routes/%24index.tsx#L124"
-      class="absolute"
-      target="_blank"
-      rel="noopener noreferrer"
-      >SSR Example</a
-    >
-  </p>
-  <pre
-    class="language-typescript language-typescript"
-  ><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> connectWithCognito <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'user-management'</span><span class="token punctuation">;</span>
+<p>On the server, we can validate the tokens send by the client using the <code class="inline">connectWithCognito</code> method:</p>
+<p>For full example, see <a href="https://github.com/goldstack/cognito-react-nodejs-example/blob/master/packages/server-side-rendering/src/routes/%24index.tsx#L124" class="absolute" target="_blank" rel="noopener noreferrer">SSR Example</a></p>
+<pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> connectWithCognito <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'user-management'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">const</span> handler<span class="token punctuation">:</span> <span class="token function-variable function"><span class="token maybe-class-name">SSRHandler</span></span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> cookies <span class="token operator">=</span> <span class="token function">getCookies</span><span class="token punctuation">(</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token property-access">cookies</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span><span class="token string">';'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -519,117 +148,26 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-  <p>
-    Note that it is recommended we
-    <a
-      href="https://auth0.com/blog/id-token-access-token-what-is-the-difference/"
-      class="absolute"
-      target="_blank"
-      rel="noopener noreferrer"
-      >always</a
-    >
-    validate the <em>access token</em>. We validate the <em>id token</em> in the
-    above as well to determine the user's email address, since the access token
-    only contains the <em>username</em>, which in our case is a cognito
-    generated id.
-  </p>
-  <p>
-    This template is not designed to support authorization. If you have
-    authorization needs, consider implementing this with
-    <a
-      href="https://build.diligent.com/fast-authorization-with-dynamodb-cd1f133437e3"
-      class="absolute"
-      target="_blank"
-      rel="noopener noreferrer"
-      >DynamoDB</a
-    >
-    using the
-    <a
-      href="https://goldstack.party/templates/dynamodb"
-      class="absolute"
-      target="_blank"
-      rel="noopener noreferrer"
-      >DynamoDB template</a
-    >.
-  </p>
-  <p>
-    Note that while Cognito creates a unique ID for every user (attribute
-    <code class="inline">sub</code>) it is not recommended to use this ID in
-    your own data. Since, if you accidentally delete the Cognito user pool (Pro
-    tip: Don't do this!!!), you cannot restore this ID. Instead, use the custom
-    attribute created by the template:
-  </p>
-  <pre><code>custom:app_user_id
+<p>Note that it is recommended we <a href="https://auth0.com/blog/id-token-access-token-what-is-the-difference/" class="absolute" target="_blank" rel="noopener noreferrer">always</a> validate the <em>access token</em>. We validate the <em>id token</em> in the above as well to determine the user's email address, since the access token only contains the <em>username</em>, which in our case is a cognito generated id.</p>
+<p>This template is not designed to support authorization. If you have authorization needs, consider implementing this with <a href="https://build.diligent.com/fast-authorization-with-dynamodb-cd1f133437e3" class="absolute" target="_blank" rel="noopener noreferrer">DynamoDB</a> using the <a href="https://goldstack.party/templates/dynamodb" class="absolute" target="_blank" rel="noopener noreferrer">DynamoDB template</a>.</p>
+<p>Note that while Cognito creates a unique ID for every user (attribute <code class="inline">sub</code>) it is not recommended to use this ID in your own data. Since, if you accidentally delete the Cognito user pool (Pro tip: Don't do this!!!), you cannot restore this ID. Instead, use the custom attribute created by the template:</p>
+<pre><code>custom:app_user_id
 </code></pre>
-  <p>
-    Store this id along with the users email address (and any other critical
-    information you collect through Cognito) in your own database. This will
-    protect you against using the Cognito User pool (though in that event your
-    users would need to set new passwords and also set up their 2FA again).
-  </p>
-</div>
-<p></p>
-<h2 class="heading">
-  <span id="infrastructure"></span><a href="#infrastructure">Infrastructure</a
-  ><span class="permalink"
-    ><svg viewBox="0 0 16 16" width="16" height="16">
-      <g stroke-width="1" fill="#000000" stroke="#000000">
-        <path
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-        ></path>
-        <path
-          fill="none"
-          stroke="#000000"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-        ></path>
-      </g></svg
-  ></span>
-</h2>
-<p>
-  NOTE! Consider enabling <code class="inline">prevent_destroy</code> in
-  <code class="inline">main.tf</code>. Bad things happen if user pools are
-  destroyed!
-</p>
-<p>
-  For the same reason, the template by default uses
-  <code class="inline">ignore_changes</code> to ignore any changes to the
-  <code class="inline">schema</code> since existing attributes cannot be
-  changed. Thus it is probably best to make any modifications in the console, to
-  get the appropriate warnings when performing operations and to explicitly
-  destroy and create the pool if required.
-</p>
-<p></p>
-<div class="markdown-fragment">
-  <p>
-    All infrastructure for this module is defined in Terraform. You can find the
-    Terraform files for this template in the directory
-    <code class="inline">[moduleDir]/infra/aws</code>. You can define multiple
-    deployments for this template, for instance for development, staging and
-    production environments.
-  </p>
-  <p>
-    If you configured AWS deployment before downloading your project, the
-    deployments and their respective configurations are defined in
-    <code class="inline">[moduleDir]/goldstack.json</code>.
-  </p>
-  <p>
-    The configuration tool will define one deployment. This will be either
-    <code class="inline">dev</code> or
-    <code class="inline">prod</code> depending on your choice during project
-    configuration. In the example
-    <code class="inline">goldstack.json</code> below, a deployment with the name
-    <code class="inline">dev</code> is defined.
-  </p>
-  <pre
-    class="language-json language-json"
-  ><code class="language-json"><span class="token punctuation">{</span>
+<p>Store this id along with the users email address (and any other critical information you collect through Cognito) in your own database. This will protect you against using the Cognito User pool (though in that event your users would need to set new passwords and also set up their 2FA again).</p></div><p></p>
+<h2 class="heading"><span id="infrastructure"></span><a href="#infrastructure">Infrastructure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p>NOTE! Consider enabling <code class="inline">prevent_destroy</code> in <code class="inline">main.tf</code>. Bad things happen if user pools are destroyed!</p>
+<p>For the same reason, the template by default uses <code class="inline">ignore_changes</code> to ignore any changes to the <code class="inline">schema</code> since existing attributes cannot
+be changed. Thus it is probably best to make any modifications in the console, to get the appropriate warnings when performing operations
+and to explicitly destroy and create the pool if required.</p>
+<p></p><div class="markdown-fragment"><p>All infrastructure for this module is defined in Terraform. You can find the Terraform files for this template in the directory <code class="inline">[moduleDir]/infra/aws</code>. You can define multiple deployments for this template, for instance for development, staging and production environments.</p>
+<p>If you configured AWS deployment before downloading your project, the deployments and their respective configurations are defined in <code class="inline">[moduleDir]/goldstack.json</code>.</p>
+<p>The configuration tool will define one deployment. This will be either <code class="inline">dev</code> or <code class="inline">prod</code> depending on your choice during project configuration. In the example <code class="inline">goldstack.json</code> below, a deployment with the name <code class="inline">dev</code> is defined.</p>
+<pre class="language-json language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"$schema"</span><span class="token operator">:</span> <span class="token string">"./schemas/package.schema.json"</span><span class="token punctuation">,</span>
   <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
   <span class="token property">"template"</span><span class="token operator">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
@@ -647,631 +185,144 @@
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 </code></pre>
-  <h3 class="heading">
-    <span id="infrastructure-commands-1"></span
-    ><a href="#infrastructure-commands-1"
-      ><span id="infrastructure-commands"></span
-      ><a href="#infrastructure-commands" class="relative"
-        >Infrastructure Commands</a
-      ><span class="permalink"
-        ><svg viewBox="0 0 16 16" width="16" height="16">
-          <g stroke-width="1" fill="#000000" stroke="#000000">
-            <path
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-            ></path>
-            <path
-              fill="none"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-            ></path>
-          </g></svg></span></a
-    ><span class="permalink"
-      ><svg viewBox="0 0 16 16" width="16" height="16">
-        <g stroke-width="1" fill="#000000" stroke="#000000">
-          <path
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-          ></path>
-          <path
-            fill="none"
-            stroke="#000000"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-          ></path>
-        </g></svg
-    ></span>
-  </h3>
-  <p>
-    Infrastructure commands for this template can be run using
-    <code class="inline">yarn</code>. There are four commands in total:
-  </p>
-  <ul>
-    <li>
-      <code class="inline">yarn infra up</code>: For standing up infrastructure.
-    </li>
-    <li>
-      <code class="inline">yarn infra init</code>: For
-      <a
-        href="https://www.terraform.io/docs/commands/init.html"
-        class="absolute"
-        target="_blank"
-        rel="noopener noreferrer"
-        >initialising Terraform</a
-      >.
-    </li>
-    <li>
-      <code class="inline">yarn infra plan</code>: For running
-      <a
-        href="https://www.terraform.io/docs/commands/plan.html"
-        class="absolute"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Terraform plan</a
-      >.
-    </li>
-    <li>
-      <code class="inline">yarn infra apply</code>: For running
-      <a
-        href="https://www.terraform.io/docs/commands/apply.html"
-        class="absolute"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Terraform apply</a
-      >.
-    </li>
-    <li>
-      <code class="inline">yarn infra destroy</code>: For destroying all
-      infrastructure using
-      <a
-        href="https://www.terraform.io/docs/commands/destroy.html"
-        class="absolute"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Terraform destroy</a
-      >.
-    </li>
-    <li>
-      <code class="inline">yarn infra upgrade</code>: For upgrading the
-      Terraform versions (supported by the template). To upgrade to an arbitrary
-      version, use <code class="inline">yarn infra terraform</code>.
-    </li>
-    <li>
-      <code class="inline">yarn infra terraform</code>: For running arbitrary
-      <a
-        href="https://www.terraform.io/cli/commands"
-        class="absolute"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Terraform commands</a
-      >.
-    </li>
-  </ul>
-  <p>
-    For each command, the deployment they should be applied to must be
-    specified.
-  </p>
-  <pre
-    class="language-bash language-bash"
-  ><code class="language-bash"><span class="token function">yarn</span> infra <span class="token punctuation">[</span>command<span class="token punctuation">]</span> <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
+<h3 class="heading"><span id="infrastructure-commands-1"></span><a href="#infrastructure-commands-1"><span id="infrastructure-commands"></span><a href="#infrastructure-commands" class="relative">Infrastructure Commands</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>Infrastructure commands for this template can be run using <code class="inline">yarn</code>. The following commands are supported:</p>
+<ul>
+<li><code class="inline">yarn infra up</code>: For standing up infrastructure.</li>
+<li><code class="inline">yarn infra init</code>: For <a href="https://www.terraform.io/docs/commands/init.html" class="absolute" target="_blank" rel="noopener noreferrer">initialising Terraform</a>.</li>
+<li><code class="inline">yarn infra plan</code>: For running <a href="https://www.terraform.io/docs/commands/plan.html" class="absolute" target="_blank" rel="noopener noreferrer">Terraform plan</a>.</li>
+<li><code class="inline">yarn infra apply</code>: For running <a href="https://www.terraform.io/docs/commands/apply.html" class="absolute" target="_blank" rel="noopener noreferrer">Terraform apply</a>.</li>
+<li><code class="inline">yarn infra destroy</code>: For destroying all infrastructure using <a href="https://www.terraform.io/docs/commands/destroy.html" class="absolute" target="_blank" rel="noopener noreferrer">Terraform destroy</a>.</li>
+<li><code class="inline">yarn infra upgrade</code>: For upgrading the Terraform versions (supported by the template). To upgrade to an arbitrary version, use <code class="inline">yarn infra terraform</code>.</li>
+<li><code class="inline">yarn infra terraform</code>: For running arbitrary <a href="https://www.terraform.io/cli/commands" class="absolute" target="_blank" rel="noopener noreferrer">Terraform commands</a>.</li>
+<li><code class="inline">yarn infra is-up</code>: Will return <code class="inline">is-up: true</code> if infrastructure for a deployment exists, otherwise returns <code class="inline">is-up: false</code></li>
+</ul>
+<p>For each command, the deployment they should be applied to must be specified.</p>
+<pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra <span class="token punctuation">[</span>command<span class="token punctuation">]</span> <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
 </code></pre>
-  <p>
-    For instance, to stand up the infrastructure for the
-    <code class="inline">dev</code> deployment, the following command would need
-    to be issued:
-  </p>
-  <pre
-    class="language-bash language-bash"
-  ><code class="language-bash"><span class="token function">yarn</span> infra up dev
+<p>For instance, to stand up the infrastructure for the <code class="inline">dev</code> deployment, the following command would need to be issued:</p>
+<pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra up dev
 </code></pre>
-  <p>
-    Generally you will only need to run
-    <code class="inline">yarn infra up</code>. However, if you are familiar with
-    Terraform and want more fine-grained control over the deployment of your
-    infrastructure, you can also use the other commands as required.
-  </p>
-  <p>
-    Note that for running <code class="inline">yarn infra terraform</code>, you
-    will need to specify which command line arguments you want to provide to
-    Terraform. By default, no extra arguments are provided:
-  </p>
-  <pre
-    class="language-bash language-bash"
-  ><code class="language-bash"><span class="token function">yarn</span> infra terraform <span class="token punctuation">[</span>deployment<span class="token punctuation">]</span> plan
+<p>Generally you will only need to run <code class="inline">yarn infra up</code>. However, if you are familiar with Terraform and want more fine-grained control over the deployment of your infrastructure, you can also use the other commands as required.</p>
+<p>Note that for running <code class="inline">yarn infra terraform</code>, you will need to specify which command line arguments you want to provide to Terraform. By default, no extra arguments are provided:</p>
+<pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra terraform <span class="token punctuation">[</span>deployment<span class="token punctuation">]</span> plan
 </code></pre>
-  <p>
-    If extra arguments are needed, such as variables, you can use the
-    <code class="inline">--inject-variables</code> option, such as for running
-    <code class="inline">terraform plan</code>:
-  </p>
-  <pre
-    class="language-bash language-bash"
-  ><code class="language-bash"><span class="token function">yarn</span> infra terraform <span class="token punctuation">[</span>deployment<span class="token punctuation">]</span> --inject-variables plan
+<p>If extra arguments are needed, such as variables, you can use the <code class="inline">--inject-variables</code> option, such as for running <code class="inline">terraform plan</code>:</p>
+<pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra terraform <span class="token punctuation">[</span>deployment<span class="token punctuation">]</span> --inject-variables plan
 </code></pre>
-  <p>
-    If you want to interact with the remote backend, you can also provide the
-    <code class="inline">--inject-backend-config</code> option, such as for
-    running <code class="inline">terraform init</code>:
-  </p>
-  <pre
-    class="language-bash language-bash"
-  ><code class="language-bash"><span class="token function">yarn</span> infra terraform <span class="token punctuation">[</span>deployment<span class="token punctuation">]</span> --inject-backend-config init
+<p>If you want to interact with the remote backend, you can also provide the <code class="inline">--inject-backend-config</code> option, such as for running <code class="inline">terraform init</code>:</p>
+<pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra terraform <span class="token punctuation">[</span>deployment<span class="token punctuation">]</span> --inject-backend-config init
 </code></pre>
-  <h3 class="heading">
-    <span id="customizing-terraform-1"></span
-    ><a href="#customizing-terraform-1"
-      ><span id="customizing-terraform"></span
-      ><a href="#customizing-terraform" class="relative"
-        >Customizing Terraform</a
-      ><span class="permalink"
-        ><svg viewBox="0 0 16 16" width="16" height="16">
-          <g stroke-width="1" fill="#000000" stroke="#000000">
-            <path
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-            ></path>
-            <path
-              fill="none"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-            ></path>
-          </g></svg></span></a
-    ><span class="permalink"
-      ><svg viewBox="0 0 16 16" width="16" height="16">
-        <g stroke-width="1" fill="#000000" stroke="#000000">
-          <path
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-          ></path>
-          <path
-            fill="none"
-            stroke="#000000"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-          ></path>
-        </g></svg
-    ></span>
-  </h3>
-  <p>
-    Goldstack templates make it very easy to customize infrastructure to your
-    specific needs. The easiest way to do this is to simply edit the
-    <code class="inline">*.tf</code> files in the
-    <code class="inline">infra/aws</code> folder. You can make the changes you
-    need and then run
-    <code class="inline">yarn infra up [deploymentName]</code> to apply the
-    changes.
-  </p>
-  <p>
-    The <code class="inline">infra/aws</code> folder contains a file
-    <code class="inline">variables.tf</code> that contains the variables
-    required for your deployment; for instance the domain name for a website.
-    The values for these variables are defined in the module's
-    <code class="inline">goldstack.json</code> file in the
-    <code class="inline">"configuration"</code> property. There is one global
-    <code class="inline">configuration</code> property that applies for all
-    deployments and each deployment also has its own
-    <code class="inline">configuration</code> property. In order to add a new
-    variable, add the variable to <code class="inline">variables.tf</code> and
-    then add it to the configuration for your template or to the configurations
-    for the deployments.
-  </p>
-  <p>
-    Note that due to JavaScript and Terraform using different conventions for
-    naming variables, Goldstack applies a basic transformation to variable
-    names. Camel-case variables names are converted to valid variables names for
-    Terraform by replacing every instance of a capital letter
-    <code class="inline">C</code> with <code class="inline">_c</code> in the
-    variable name. For instance:
-  </p>
-  <p>
-    <code class="inline">myVariableName</code> in the Goldstack configuration
-    will translate to the Terraform variable
-    <code class="inline">my_variable_name</code> as defined in
-    <code class="inline">variables.tf</code>.
-  </p>
-  <h3 class="heading">
-    <span id="terraform-state-1"></span
-    ><a href="#terraform-state-1"
-      ><span id="terraform-state"></span
-      ><a href="#terraform-state" class="relative">Terraform State</a
-      ><span class="permalink"
-        ><svg viewBox="0 0 16 16" width="16" height="16">
-          <g stroke-width="1" fill="#000000" stroke="#000000">
-            <path
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-            ></path>
-            <path
-              fill="none"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-            ></path>
-          </g></svg></span></a
-    ><span class="permalink"
-      ><svg viewBox="0 0 16 16" width="16" height="16">
-        <g stroke-width="1" fill="#000000" stroke="#000000">
-          <path
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-          ></path>
-          <path
-            fill="none"
-            stroke="#000000"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-          ></path>
-        </g></svg
-    ></span>
-  </h3>
-  <p>
-    In order to manage your infrastructure, Terraform maintains a state for each
-    deployment; to calculate required changes when the infrastructure is updated
-    and also for destroying the infrastructure if it is no longer required.
-    Goldstack by default will store the terraform state in the
-    <code class="inline">infra/aws</code> folder as simple files.
-  </p>
-  <p>
-    This works well for deploying infrastructure from your local development
-    environment but is not a good choice when building a CI/CD pipeline for the
-    infrastructure definition. In that case, it is better to define
-    <a
-      href="https://www.terraform.io/docs/state/remote.html"
-      class="absolute"
-      target="_blank"
-      rel="noopener noreferrer"
-      >Remote State</a
-    >. A popular choice many projects adopt here is to store the
-    <a
-      href="https://www.terraform.io/docs/backends/types/s3.html"
-      class="absolute"
-      target="_blank"
-      rel="noopener noreferrer"
-      >state in an S3 bucket</a
-    >. Please see the Terraform documentation for further details.
-  </p>
-</div>
-<p></p>
-<h2 class="heading">
-  <span id="security-hardening"></span
-  ><a href="#security-hardening">Security Hardening</a
-  ><span class="permalink"
-    ><svg viewBox="0 0 16 16" width="16" height="16">
-      <g stroke-width="1" fill="#000000" stroke="#000000">
-        <path
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-        ></path>
-        <path
-          fill="none"
-          stroke="#000000"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-        ></path>
-      </g></svg
-  ></span>
-</h2>
-<p></p>
-<div class="markdown-fragment">
-  <p>
-    Secure user authentication is not easy to achieve. This template contains a
-    few trade-offs that make it easier to get started with developing your
-    application but introduce potential security issues. Key trade-offs are:
-  </p>
-  <h3 class="heading">
-    <span id="cookies-for-access-and-id-token-1"></span
-    ><a href="#cookies-for-access-and-id-token-1"
-      ><span id="cookies-for-access-and-id-token"></span
-      ><a href="#cookies-for-access-and-id-token" class="relative"
-        >Cookies for Access and Id Token</a
-      ><span class="permalink"
-        ><svg viewBox="0 0 16 16" width="16" height="16">
-          <g stroke-width="1" fill="#000000" stroke="#000000">
-            <path
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-            ></path>
-            <path
-              fill="none"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-            ></path>
-          </g></svg></span></a
-    ><span class="permalink"
-      ><svg viewBox="0 0 16 16" width="16" height="16">
-        <g stroke-width="1" fill="#000000" stroke="#000000">
-          <path
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-          ></path>
-          <path
-            fill="none"
-            stroke="#000000"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-          ></path>
-        </g></svg
-    ></span>
-  </h3>
-  <p>
-    Access and ID tokens are stored in cookies that are not Http Only when using
-    the <code class="inline">performClientAuth</code> method. To avoid having
-    cookies stored, use the <code class="inline">getToken</code> method instead
-    and manage your own cookie persistence.
-  </p>
-  <h3 class="heading">
-    <span id="no-two-factor-authentication-1"></span
-    ><a href="#no-two-factor-authentication-1"
-      ><span id="no-two-factor-authentication"></span
-      ><a href="#no-two-factor-authentication" class="relative"
-        >No Two Factor Authentication</a
-      ><span class="permalink"
-        ><svg viewBox="0 0 16 16" width="16" height="16">
-          <g stroke-width="1" fill="#000000" stroke="#000000">
-            <path
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-            ></path>
-            <path
-              fill="none"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-            ></path>
-          </g></svg></span></a
-    ><span class="permalink"
-      ><svg viewBox="0 0 16 16" width="16" height="16">
-        <g stroke-width="1" fill="#000000" stroke="#000000">
-          <path
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-          ></path>
-          <path
-            fill="none"
-            stroke="#000000"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-          ></path>
-        </g></svg
-    ></span>
-  </h3>
-  <p>
-    Two factor authentication is the de facto standard for most serious
-    applications. Cognito is configured in this template without two factor
-    authentication enabled. You can modify the Cognito Terraform configuration
-    to enable two factor authentication.
-  </p>
-</div>
-<p></p>
-<h2 class="heading">
-  <span id="faq"></span><a href="#faq">FAQ</a
-  ><span class="permalink"
-    ><svg viewBox="0 0 16 16" width="16" height="16">
-      <g stroke-width="1" fill="#000000" stroke="#000000">
-        <path
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-        ></path>
-        <path
-          fill="none"
-          stroke="#000000"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-miterlimit="10"
-          d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-        ></path>
-      </g></svg
-  ></span>
-</h2>
-<p></p>
-<div class="markdown-fragment">
-  <h3 class="heading">
-    <span id="error-custom-domain-is-not-a-valid-subdomain-1"></span
-    ><a href="#error-custom-domain-is-not-a-valid-subdomain-1"
-      ><span id="error-custom-domain-is-not-a-valid-subdomain"></span
-      ><a href="#error-custom-domain-is-not-a-valid-subdomain" class="relative"
-        >Error 'Custom domain is not a valid subdomain'</a
-      ><span class="permalink"
-        ><svg viewBox="0 0 16 16" width="16" height="16">
-          <g stroke-width="1" fill="#000000" stroke="#000000">
-            <path
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-            ></path>
-            <path
-              fill="none"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-            ></path>
-          </g></svg></span></a
-    ><span class="permalink"
-      ><svg viewBox="0 0 16 16" width="16" height="16">
-        <g stroke-width="1" fill="#000000" stroke="#000000">
-          <path
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-          ></path>
-          <path
-            fill="none"
-            stroke="#000000"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-          ></path>
-        </g></svg
-    ></span>
-  </h3>
-  <p>
-    When running <code class="inline">yarn infra up</code> the following error
-    may be issued by Terraform:
-  </p>
-  <pre><code> Error: Error creating Cognito User Pool Domain: InvalidParameterException: Custom domain is not a valid subdomain: Was not able to resolve the root domain, please ensure an A record exists for the root domain.
+<h3 class="heading"><span id="customizing-terraform-1"></span><a href="#customizing-terraform-1"><span id="customizing-terraform"></span><a href="#customizing-terraform" class="relative">Customizing Terraform</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>Goldstack templates make it very easy to customize infrastructure to your specific needs. The easiest way to do this is to simply edit the <code class="inline">*.tf</code> files in the <code class="inline">infra/aws</code> folder. You can make the changes you need and then run <code class="inline">yarn infra up [deploymentName]</code> to apply the changes.</p>
+<p>The <code class="inline">infra/aws</code> folder contains a file <code class="inline">variables.tf</code> that contains the variables required for your deployment; for instance the domain name for a website. The values for these variables are defined in the module's <code class="inline">goldstack.json</code> file in the <code class="inline">"configuration"</code> property. There is one global <code class="inline">configuration</code> property that applies for all deployments and each deployment also has its own <code class="inline">configuration</code> property. In order to add a new variable, add the variable to <code class="inline">variables.tf</code> and then add it to the configuration for your template or to the configurations for the deployments.</p>
+<p>Note that due to JavaScript and Terraform using different conventions for naming variables, Goldstack applies a basic transformation to variable names. Camel-case variables names are converted to valid variables names for Terraform by replacing every instance of a capital letter <code class="inline">C</code> with <code class="inline">_c</code> in the variable name. For instance:</p>
+<p><code class="inline">myVariableName</code> in the Goldstack configuration will translate to the Terraform variable <code class="inline">my_variable_name</code> as defined in <code class="inline">variables.tf</code>.</p>
+<h3 class="heading"><span id="terraform-state-1"></span><a href="#terraform-state-1"><span id="terraform-state"></span><a href="#terraform-state" class="relative">Terraform State</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>In order to manage your infrastructure, Terraform maintains a state for each deployment; to calculate required changes when the infrastructure is updated and also for destroying the infrastructure if it is no longer required. Goldstack by default will store the terraform state in the <code class="inline">infra/aws</code> folder as simple files.</p>
+<p>This works well for deploying infrastructure from your local development environment but is not a good choice when building a CI/CD pipeline for the infrastructure definition. In that case, it is better to define <a href="https://www.terraform.io/docs/state/remote.html" class="absolute" target="_blank" rel="noopener noreferrer">Remote State</a>. A popular choice many projects adopt here is to store the <a href="https://www.terraform.io/docs/backends/types/s3.html" class="absolute" target="_blank" rel="noopener noreferrer">state in an S3 bucket</a>. Please see the Terraform documentation for further details.</p></div><p></p>
+<h2 class="heading"><span id="security-hardening"></span><a href="#security-hardening">Security Hardening</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><p>Secure user authentication is not easy to achieve. This template contains a few trade-offs that make it easier to get started with developing your application but introduce potential security issues. Key trade-offs are:</p>
+<h3 class="heading"><span id="cookies-for-access-and-id-token-1"></span><a href="#cookies-for-access-and-id-token-1"><span id="cookies-for-access-and-id-token"></span><a href="#cookies-for-access-and-id-token" class="relative">Cookies for Access and Id Token</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>Access and ID tokens are stored in cookies that are not Http Only when using the <code class="inline">performClientAuth</code> method. To avoid having cookies stored, use the <code class="inline">getToken</code> method instead and manage your own cookie persistence.</p>
+<h3 class="heading"><span id="no-two-factor-authentication-1"></span><a href="#no-two-factor-authentication-1"><span id="no-two-factor-authentication"></span><a href="#no-two-factor-authentication" class="relative">No Two Factor Authentication</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>Two factor authentication is the de facto standard for most serious applications. Cognito is configured in this template without two factor authentication enabled. You can modify the Cognito Terraform configuration to enable two factor authentication.</p></div><p></p>
+<h2 class="heading"><span id="faq"></span><a href="#faq">FAQ</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h2>
+<p></p><div class="markdown-fragment"><h3 class="heading"><span id="error-custom-domain-is-not-a-valid-subdomain-1"></span><a href="#error-custom-domain-is-not-a-valid-subdomain-1"><span id="error-custom-domain-is-not-a-valid-subdomain"></span><a href="#error-custom-domain-is-not-a-valid-subdomain" class="relative">Error 'Custom domain is not a valid subdomain'</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>When running <code class="inline">yarn infra up</code> the following error may be issued by Terraform:</p>
+<pre><code> Error: Error creating Cognito User Pool Domain: InvalidParameterException: Custom domain is not a valid subdomain: Was not able to resolve the root domain, please ensure an A record exists for the root domain.
 </code></pre>
-  <p>
-    This error is caused by Cognito
-    <a
-      href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html"
-      class="absolute"
-      target="_blank"
-      rel="noopener noreferrer"
-      >requiring that the parent domain of a specified domain has an A record</a
-    >. So for instance, if you specify the cognito domain
-    <code class="inline">auth.examples.mydomain.com</code>, then this error will
-    occur if there is no A record defined for
-    <code class="inline">examples.mydomain.com</code>.
-  </p>
-  <h3 class="heading">
-    <span
-      id="error-updating-cognito-user-pool-cannot-modify-or-remove-schema-items-1"
-    ></span
-    ><a
-      href="#error-updating-cognito-user-pool-cannot-modify-or-remove-schema-items-1"
-      ><span
-        id="error-updating-cognito-user-pool-cannot-modify-or-remove-schema-items"
-      ></span
-      ><a
-        href="#error-updating-cognito-user-pool-cannot-modify-or-remove-schema-items"
-        class="relative"
-        >Error 'Updating Cognito User Pool: cannot modify or remove schema
-        items'</a
-      ><span class="permalink"
-        ><svg viewBox="0 0 16 16" width="16" height="16">
-          <g stroke-width="1" fill="#000000" stroke="#000000">
-            <path
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-            ></path>
-            <path
-              fill="none"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-miterlimit="10"
-              d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-            ></path>
-          </g></svg></span></a
-    ><span class="permalink"
-      ><svg viewBox="0 0 16 16" width="16" height="16">
-        <g stroke-width="1" fill="#000000" stroke="#000000">
-          <path
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"
-          ></path>
-          <path
-            fill="none"
-            stroke="#000000"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-miterlimit="10"
-            d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"
-          ></path>
-        </g></svg
-    ></span>
-  </h3>
-  <p>
-    This error is issued by Terraform if trying to change an attribute for the
-    user pool (see
-    <a
-      href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool#schema"
-      class="absolute"
-      target="_blank"
-      rel="noopener noreferrer"
-      >cognito-user-pool</a
-    >
-    Terraform documentation).
-  </p>
-  <pre><code>Error: updating Cognito User Pool (us-west-xxx): cannot modify or remove schema items
+<p>This error is caused by Cognito <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html" class="absolute" target="_blank" rel="noopener noreferrer">requiring that the parent domain of a specified domain has an A record</a>. So for instance, if you specify the cognito domain <code class="inline">auth.examples.mydomain.com</code>, then this error will occur if there is no A record defined for <code class="inline">examples.mydomain.com</code>.</p>
+<h3 class="heading"><span id="error-updating-cognito-user-pool-cannot-modify-or-remove-schema-items-1"></span><a href="#error-updating-cognito-user-pool-cannot-modify-or-remove-schema-items-1"><span id="error-updating-cognito-user-pool-cannot-modify-or-remove-schema-items"></span><a href="#error-updating-cognito-user-pool-cannot-modify-or-remove-schema-items" class="relative">Error 'Updating Cognito User Pool: cannot modify or remove schema items'</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>This error is issued by Terraform if trying to change an attribute for the user pool
+(see <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool#schema" class="absolute" target="_blank" rel="noopener noreferrer">cognito-user-pool</a> Terraform documentation).</p>
+<pre><code>Error: updating Cognito User Pool (us-west-xxx): cannot modify or remove schema items
 
 with aws_cognito_user_pool.pool,
 on main.tf line 1, in resource "aws_cognito_user_pool" "pool":
 1: resource "aws_cognito_user_pool" "pool" {
 
 </code></pre>
-  <p>
-    You can change the lifecycle configuration in
-    <code class="inline">main.tf</code> to ignore schema changes as well.
-  </p>
-  <p>
-    Otherwise you will have to delete and recreate the user pool but DO SO WITH
-    CAUTION since all your existing user data will be irrecoverably lost,
-    including the passwords your users have set.
-  </p>
-</div>
-<p></p>
+<p>You can change the lifecycle configuration in <code class="inline">main.tf</code> to ignore schema changes as well.</p>
+<p>Otherwise you will have to delete and recreate the user pool but DO SO WITH CAUTION since all
+your existing user data will be irrecoverably lost, including the passwords your users have set.</p></div><p></p>
