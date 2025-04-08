@@ -60,6 +60,11 @@ export const infraCommands = (): any => {
         }
       )
       .command(
+        'is-up <deployment>',
+        'Checks whether infrastructure for a deployment is currently provisioned.',
+        deploymentPositional
+      )
+      .command(
         'destroy-state <deployment>',
         'DANGER: Destroys the remote state stored for this deployment.',
         (yargs) => {
@@ -151,6 +156,11 @@ export const terraformCli = (
 
   if (operation === 'destroy') {
     build.destroy(opArgs);
+    return;
+  }
+
+  if (operation === 'is-up') {
+    build.isUp(opArgs);
     return;
   }
 

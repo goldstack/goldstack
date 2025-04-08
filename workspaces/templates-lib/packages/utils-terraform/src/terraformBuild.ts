@@ -472,6 +472,11 @@ export class TerraformBuild {
         version,
         options: ['-input=false', '-auto-approve'],
       });
+      const deploymentState = readDeploymentState('./../../', args[0], {
+        createIfNotExist: true,
+      });
+      deploymentState.terraform = undefined;
+      writeDeploymentState('./../../', deploymentState);
     } finally {
       cd('../..');
     }
@@ -573,6 +578,19 @@ export class TerraformBuild {
     throw new Error(
       `Version upgrade not supported: from [${version}] to [${newVersion}].`
     );
+  };
+
+  isUp = (args: string[]): void => {
+    const deploymentsInfo = JSON.parse(read('src/state/deployments.json'));
+    const deployment = getDeployment(args);
+    const deploymentState = deploymentsInfo.find(
+      (e: any) => e.name === deployment.name
+    );
+    if (!deploymentState || !deploymentState.terraform) {
+      info('is-up: false');
+    } else {
+      info('is-up: true');
+    }
   };
 
   terraform(opArgs: string[]): void {

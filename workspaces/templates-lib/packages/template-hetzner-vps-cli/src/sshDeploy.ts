@@ -99,11 +99,11 @@ export const sshDeploy = async (deployment: HetznerVPSDeployment) => {
     const deploymentState = deploymentsInfo.find(
       (e: any) => e.name === deployment.name
     );
-    if (!deploymentState) {
+    if (!deploymentState || !deploymentState.terraform) {
       error(
         'Cannot build ' +
           deployment.name +
-          ' since infrastructure not provisioned yet.'
+          ' since infrastructure is not provisioned.'
       );
       throw new Error(`No deployment state found for ${deployment.name}`);
     }
