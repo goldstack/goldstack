@@ -109,7 +109,6 @@ Change the included migration or add a migration to create GSIs using the Node.j
 #### Example: Add GSI
 
 ```typescript
-
 export const createMigrations = (): InputMigrations<DynamoDBContext> => {
   return [
     {
@@ -190,7 +189,7 @@ export const createMigrations = (): InputMigrations<DynamoDBContext> => {
             retriesLeft--;
           }
 
-          // you may want to migrate existing data to match to the GSI fields 
+          // you may want to migrate existing data to match to the GSI fields
         } catch (e) {
           error('Error running migration: ' + e.message, { error: e });
           throw e;

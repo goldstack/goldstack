@@ -161,6 +161,131 @@ export const createMigrations = (): InputMigrations<DynamoDBContext> => {
 
 Change the included migration or add a migration to create GSIs using the Node.js SDK using the [`updateTable`](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#updateTable-property) command.
 
+#### Example: Add GSI
+
+```typescript
+export const createMigrations = (): InputMigrations<DynamoDBContext> => {
+  return [
+    {
+      name: '00-add-gs1-index',
+      async up({ context }) {
+        try {
+          // First, check if the GSI already exists
+          const tableDescription = await context.client.send(
+            new DescribeTableCommand({
+              TableName: context.tableName,
+            })
+          );
+          // Check if the gs1 index already exists
+          const indexExists =
+            tableDescription.Table?.GlobalSecondaryIndexes?.some(
+              (index) => index.IndexName === 'gs1'
+            );
+          // Only create the index if it doesn't exist
+          if (!indexExists) {
+            const newAttributes: AttributeDefinition[] = [
+              ...(tableDescription.Table?.AttributeDefinitions || []),
+              {
+                AttributeName: 'gs1_pk',
+                AttributeType: 'S',
+              },
+              {
+                AttributeName: 'gs1_sk',
+                AttributeType: 'S',
+              },
+            ];
+            // console.log(newAttributes);
+
+            await context.client.send(
+              new UpdateTableCommand({
+                TableName: context.tableName,
+                AttributeDefinitions: newAttributes,
+                GlobalSecondaryIndexUpdates: [
+                  {
+                    Create: {
+                      IndexName: 'gs1',
+                      KeySchema: [
+                        {
+                          AttributeName: 'gs1_pk',
+                          KeyType: 'HASH',
+                        },
+                        {
+                          AttributeName: 'gs1_sk',
+                          KeyType: 'RANGE',
+                        },
+                      ],
+                      Projection: {
+                        ProjectionType: 'ALL',
+                      },
+                    },
+                  },
+                ],
+              })
+            );
+          }
+
+          let active = false;
+          let retriesLeft = 60;
+          debug('Waiting for GSI to become active...');
+          while (!active && retriesLeft > 0) {
+            const describe = await context.client.send(
+              new DescribeTableCommand({ TableName: context.tableName })
+            );
+
+            const gsi = describe.Table?.GlobalSecondaryIndexes?.find(
+              (idx) => idx.IndexName === 'gs1'
+            );
+
+            debug('Index status: ' + gsi?.IndexStatus);
+            active = gsi?.IndexStatus === 'ACTIVE';
+            if (!active) {
+              await new Promise((resolve) => setTimeout(resolve, 1000));
+            }
+            retriesLeft--;
+          }
+
+          // you may want to migrate existing data to match to the GSI fields
+        } catch (e) {
+          error('Error running migration: ' + e.message, { error: e });
+          throw e;
+        }
+      },
+      async down({ context }) {
+        const tableDescription = await context.client.send(
+          new DescribeTableCommand({
+            TableName: context.tableName,
+          })
+        );
+
+        // Check if the gs1 index already exists
+        const indexExists =
+          tableDescription.Table?.GlobalSecondaryIndexes?.some(
+            (index) => index.IndexName === 'gs1'
+          );
+
+        // Nothing to do if index does not exist
+        if (!indexExists) {
+          return;
+        }
+
+        await context.client.send(
+          new UpdateTableCommand({
+            TableName: context.tableName,
+            GlobalSecondaryIndexUpdates: [
+              {
+                Delete: {
+                  IndexName: 'gs1',
+                },
+              },
+            ],
+          })
+        );
+      },
+    },
+  ];
+};
+```
+
 #### Write Application Logic
 
 There are two different ways in which you can define application logic: using the DynamoDB Toolbox entities (see previous section) or using the classes from the Node.js SDK.
