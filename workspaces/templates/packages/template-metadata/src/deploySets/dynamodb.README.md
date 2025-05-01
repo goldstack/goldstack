@@ -48,13 +48,13 @@ Feel free to fork this repository and modify it for your needs, or use the [Gold
 
 # Features
 
-- Create DynamoDB table
-- Run migrations using Umzug
-- Easy to use API
-- Strong typing using DynamoDB Toolbox
-- Easy local testing (recommended to install Java)
-- Supports multiple environments (development, production)
-- Provides way to extend infrastructure using Terraform
+*   Create DynamoDB table
+*   Run migrations using Umzug
+*   Easy to use API
+*   Strong typing using DynamoDB Toolbox
+*   Easy local testing (recommended to install Java)
+*   Supports multiple environments (development, production)
+*   Provides way to extend infrastructure using Terraform
 
 # Development
 
@@ -62,8 +62,8 @@ This boilerplate will come with a module that provides the functionalities for c
 
 In order to make use of the DynamoDB package we principally want to do two things:
 
-- Define the schema for our table
-- Write application logic to work with the data in the table
+*   Define the schema for our table
+*   Write application logic to work with the data in the table
 
 In this template, the former will be done within the DynamoDB package but the latter can either happen in other packages. For instance, if you have included a [Serverless API](https://goldstack.party/templates/lambda-api) template in your project, you can define your logic for working with the data in DynamoDB in that package. However, you can also write additional code in the DynamoDB package and define a lightweight DOA layer.
 
@@ -170,6 +170,33 @@ Change the included migration or add a migration to create GSIs using the Node.j
 
 #### Example: Add GSI
 
+Extend the schema with the attributes required for the Global Secondary Index:
+
+```typescript
+const BaseSchema = schema({
+  userId: string().key(),
+  relationId: string().key(),
+  databaseId: string().key(),
+  possibleCreationDuplicates: list(string()).optional(),
+  possibleUpdateDuplicates: list(string()).optional(),
+});
+
+export const DatabaseStateSchema = BaseSchema.and({
+  gs1_pk: string()
+    .optional()
+    .link<typeof BaseSchema>(
+      ({ databaseId }) => `DATABASE_STATE#${databaseId}`
+    ),
+  gs1_sk: string()
+    .optional()
+    .link<typeof BaseSchema>(({ relationId }) => `${relationId}`),
+});
+```
+
+Then create the index in a migration (this will ensure it is available for local testing).
+
+Note: Creating a new GSI can take a LONG time
+
 ```typescript
 export const createMigrations = (): InputMigrations<DynamoDBContext> => {
   return [
@@ -232,7 +259,7 @@ export const createMigrations = (): InputMigrations<DynamoDBContext> => {
           }
 
           let active = false;
-          let retriesLeft = 60;
+          let retriesLeft = 520;
           debug('Waiting for GSI to become active...');
           while (!active && retriesLeft > 0) {
             const describe = await context.client.send(
@@ -251,6 +278,9 @@ export const createMigrations = (): InputMigrations<DynamoDBContext> => {
             retriesLeft--;
           }
 
+          if (retriesLeft === 0) {
+            warn('GSI did not fully become active after migration');
+          }
           // you may want to migrate existing data to match to the GSI fields
         } catch (e) {
           error('Error running migration: ' + e.message, { error: e });
@@ -418,9 +448,9 @@ For more information, see [GitHub documentation - Fork a repo](https://docs.gith
 
 A few dependencies need to be available in your development system. Please verify they are present or install them.
 
-- Node v20+
-- Yarn v1.22.5+
-- Docker v20+
+*   Node v20+
+*   Yarn v1.22.5+
+*   Docker v20+
 
 Open a terminal and run the following commands:
 
@@ -436,9 +466,9 @@ This should produce the following output:
 
 If you need to install or update any of the dependencies, please see the following guides:
 
-- [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- [Yarn Installation](https://yarnpkg.com/getting-started/install)
-- [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
+*   [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+*   [Yarn Installation](https://yarnpkg.com/getting-started/install)
+*   [Install Docker for Windows](https://docs.docker.com/docker-for-windows/install/) / [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
 
 ## 3. Initialise project and install NPM Dependencies
 
@@ -474,17 +504,17 @@ You may also be asked if you want to install recommended extensions for this wor
 
 If you want to install the necessary extensions manually, here are links to the extensions required:
 
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
+*   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+*   [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+*   [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
 
 ## 6. Initialise TypeScript
 
-Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click _Allow_.
+Locate a `.ts` or `.tsx` file in the workspace and open it. When asked whether to use the workspace TypeScript version, click *Allow*.
 
 <img src="https://cdn.goldstack.party/img/202201/allow_typescript.gif"  alt="VSCode Locate TypeScript">
 
-In the status bar on the bottom right-hand corner of the VSCode editor you should now see _TypeScript_.
+In the status bar on the bottom right-hand corner of the VSCode editor you should now see *TypeScript*.
 
 ![TypeScript status icon in VSCode](https://cdn.goldstack.party/img/202203/typescript_init.png)
 
@@ -517,9 +547,9 @@ Specifically, the [goldstack.json](https://github.com/goldstack/dynamodb-boilerp
 
 The key property you will need to update is:
 
-- `deployments[0].configuration.tableName`
+*   `deployments[0].configuration.tableName`
 
-You also need to _delete_ `deployments[0].tfStateKey`.
+You also need to *delete* `deployments[0].tfStateKey`.
 
 You will also need to ensure that you have a valid AWS user configure to deploy to AWS. For this, create a file in `/config/infra/config.json` (relative to project root).
 
