@@ -108,6 +108,33 @@ Change the included migration or add a migration to create GSIs using the Node.j
 
 #### Example: Add GSI
 
+Extend the schema with the attributes required for the Global Secondary Index:
+
+```typescript
+const BaseSchema = schema({
+  userId: string().key(),
+  relationId: string().key(),
+  databaseId: string().key(),
+  possibleCreationDuplicates: list(string()).optional(),
+  possibleUpdateDuplicates: list(string()).optional(),
+});
+
+export const DatabaseStateSchema = BaseSchema.and({
+  gs1_pk: string()
+    .optional()
+    .link<typeof BaseSchema>(
+      ({ databaseId }) => `DATABASE_STATE#${databaseId}`
+    ),
+  gs1_sk: string()
+    .optional()
+    .link<typeof BaseSchema>(({ relationId }) => `${relationId}`),
+});
+```
+
+Then create the index in a migration (this will ensure it is available for local testing).
+
+Note: Creating a new GSI can take a LONG time
+
 ```typescript
 export const createMigrations = (): InputMigrations<DynamoDBContext> => {
   return [
@@ -170,7 +197,7 @@ export const createMigrations = (): InputMigrations<DynamoDBContext> => {
           }
 
           let active = false;
-          let retriesLeft = 60;
+          let retriesLeft = 520;
           debug('Waiting for GSI to become active...');
           while (!active && retriesLeft > 0) {
             const describe = await context.client.send(
@@ -189,6 +216,9 @@ export const createMigrations = (): InputMigrations<DynamoDBContext> => {
             retriesLeft--;
           }
 
+          if (retriesLeft === 0) {
+            warn('GSI did not fully become active after migration');
+          }
           // you may want to migrate existing data to match to the GSI fields
         } catch (e) {
           error('Error running migration: ' + e.message, { error: e });

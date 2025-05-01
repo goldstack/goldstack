@@ -14,6 +14,9 @@ resource "aws_lambda_function" "main" {
 
   filename = data.archive_file.empty_lambda.output_path
 
+  reserved_concurrent_executions = 10 # this is a failsafe in case things go very wrong and prevent us from creating high AWS costs.
+                                      # if you need higher concurrency, please alter
+
   handler = "lambda.handler"
   runtime = "nodejs20.x"
 
