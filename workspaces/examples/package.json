@@ -26,7 +26,7 @@
     "@goldstack/nodemonx": "0.4.23",
     "@goldstack/utils-typescript-references": "0.3.13",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.10.2",
+    "@types/node": "^24.0.13",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "eslint": "^8.27.0",
@@ -39,6 +39,6 @@
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
     "react": "18.2.0",
-    "typescript": "^5.7.2"
+    "typescript": "^5.8.3"
   }
 }

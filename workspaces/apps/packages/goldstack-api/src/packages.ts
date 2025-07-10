@@ -29,22 +29,14 @@ import fs from 'fs';
 import assert from 'assert';
 import { join } from 'path';
 
+import sortPackageJson from 'sort-package-json';
+
 const router = Router({
   mergeParams: true,
 });
 
 function sortKeys(obj: any): any {
-  if (Array.isArray(obj)) {
-    return obj.map(sortKeys); // Recursively sort array elements
-  } else if (obj && typeof obj === 'object') {
-    return Object.keys(obj)
-      .sort() // Sort the keys
-      .reduce((sortedObj, key) => {
-        sortedObj[key] = sortKeys(obj[key]); // Recursively sort sub-objects
-        return sortedObj;
-      }, {} as Record<string, any>);
-  }
-  return obj; // Return the value if it's not an object or array
+  sortPackageJson(obj);
 }
 
 const writePackage = async (params: {

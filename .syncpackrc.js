@@ -52,7 +52,7 @@ const config = {
     {
       dependencies: ['react-bootstrap'],
       packages: ['@goldstack/goldstack-home', '@goldstack/docs-main'],
-      pinVersion: '^1.6.1',
+      pinVersion: '^2.10.10',
     },
     {
       dependencies: ['next'],

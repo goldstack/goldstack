@@ -36,7 +36,7 @@
             "route": "ANY /order/{id}"
           },
           "ANY /user": {
-            "function_name": "goldstack-test-lambda-api-v2-user-__index",
+            "function_name": "goldstack-test-lambda-api-v2-user-index-__index",
             "route": "ANY /user"
           },
           "ANY /user/{userId}": {
