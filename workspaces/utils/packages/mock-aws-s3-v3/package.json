@@ -1,6 +1,6 @@
 {
   "name": "mock-aws-s3-v3",
-  "version": "6.0.2",
+  "version": "6.0.3",
   "description": "Local file-based mock for AWS S3 for unit and local testing for AWS JavaScript SDK v3+.",
   "keywords": [
     "node",
@@ -41,7 +41,7 @@
     "mock-aws-s3": "^4.0.2"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.12",
+    "@goldstack/utils-git": "0.2.13",
     "@swc/core": "^1.12.11",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^29.5.14",
