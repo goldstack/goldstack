@@ -4,15 +4,14 @@ import crypto from 'crypto';
 const INDEX_MARKER = '__index';
 const DEFAULT_MARKER = '__default';
 
-const sanitiseFunctionName = (input: string): string => {
-  return input
+const sanitiseFunctionName = (input: string): string =>
+  input
     .replace(/\//g, '-')
     .replace(/\$/g, '_')
     .replace(/\{/g, '_')
     .replace(/\}/g, '_')
     .replace(/\+/g, '_')
     .replace(/[^\w\-_]/gi, '_');
-};
 
 /**
  * Generates a valid function name for a route
@@ -23,7 +22,6 @@ export const generateFunctionName = (
 ): string => {
   let name = config.name;
   if (name === '$default') {
-    // '$' is not a valid character in a lambda function name
     name = DEFAULT_MARKER;
   }
   if (name === '$index') {
@@ -31,31 +29,27 @@ export const generateFunctionName = (
   }
   name = sanitiseFunctionName(name);
 
-  let pathPrefix = '';
+  // Start with sanitized path (excluding the function name itself)
   const segments = config.path.split('/');
-  if (segments.length === 2 && name === INDEX_MARKER) {
-    pathPrefix = `${segments[1]}-`;
-  }
-  if (segments.length > 2) {
-    segments.shift(); // remove first element since path starts with '/' and thus the first element is always ''
-    segments.pop(); // remove the last element since that is the name of the function in the route
-    pathPrefix = sanitiseFunctionName(segments.join('-'));
-    pathPrefix = `${pathPrefix}-`;
+  const pathSegments = segments.slice(1, -1); // remove empty root + function name
+
+  // Edge case: index route needs disambiguation
+  let pathPrefix = pathSegments.join('-');
+  if (name === INDEX_MARKER && pathPrefix) {
+    pathPrefix += '-index';
   }
 
-  name = `${pathPrefix}${name}`;
-  if (prefix) {
-    name = `${prefix}-` + name;
-  }
+  let fullName = [prefix, pathPrefix, name].filter(Boolean).join('-');
+  fullName = sanitiseFunctionName(fullName);
 
-  // Lambda names cannot be larger than 64 characters
-  // in that case shorten name and append a hash
-  if (name.length > 64) {
-    name = `${name.substring(0, 40)}-${crypto
+  // Ensure max 64 chars
+  if (fullName.length > 64) {
+    fullName = `${fullName.substring(0, 40)}-${crypto
       .createHash('md5')
-      .update(name)
+      .update(fullName)
       .digest('hex')
       .substring(0, 20)}`;
   }
-  return name;
+
+  return fullName;
 };
