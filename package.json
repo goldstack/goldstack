@@ -39,7 +39,7 @@
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-typescript-references": "0.3.13",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.10.2",
+    "@types/node": "^24.0.13",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "concurrently": "^7.3.0",
@@ -54,7 +54,7 @@
     "prettier": "^2.7.1",
     "syncpack": "^13.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.8.3"
   },
   "packageManager": "yarn@4.9.2"
 }

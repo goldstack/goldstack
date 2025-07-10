@@ -61,14 +61,14 @@
     "@goldstack/template-nextjs": "0.5.59",
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-sh": "0.5.21",
-    "@swc/core": "^1.10.1",
-    "@swc/jest": "^0.2.37",
+    "@swc/core": "^1.12.11",
+    "@swc/jest": "^0.2.39",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.10.2",
-    "@types/react": "18",
+    "@types/node": "^24.0.13",
+    "@types/react": "^19.1.8",
     "@types/react-dom": "^19.0.2",
     "@types/react-scrollable-anchor": "^0.6.4",
     "@types/styled-components": "5.1.25",
@@ -86,6 +86,6 @@
     "svg-url-loader": "^8.0.0",
     "ts-json-schema-generator": "^1.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.8.3"
   }
 }
