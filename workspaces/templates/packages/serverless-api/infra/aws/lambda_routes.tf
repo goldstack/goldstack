@@ -42,7 +42,7 @@ resource "aws_lambda_function" "this" {
 
   logging_config {
     log_format = "Text"
-    log_group = aws_cloudwatch_log_group.this[each.key].name
+    log_group = aws_cloudwatch_log_group.lambda_log_group.name
   }
 }
 

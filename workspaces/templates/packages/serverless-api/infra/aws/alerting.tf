@@ -4,6 +4,11 @@ locals {
 }
 
 
+resource "aws_cloudwatch_log_group" "lambda_log_group" {
+  name              = "/aws/lambda/api-${var.api_domain}"
+  retention_in_days = 30
+}
+
 # Create metric filter for ERROR logs
 resource "aws_cloudwatch_log_metric_filter" "error_logs" {
   name           = "${var.api_domain}-error-logs"
