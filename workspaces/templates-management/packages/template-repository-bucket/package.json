@@ -20,12 +20,12 @@
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.620.0",
+    "@aws-sdk/client-s3": "^3.844.0",
     "@goldstack/template-s3": "0.5.35",
     "@goldstack/utils-git": "0.2.12",
     "@goldstack/utils-sh": "0.5.21",
-    "@smithy/smithy-client": "^3.2.0",
-    "@smithy/types": "^3.3.0"
+    "@smithy/smithy-client": "^4.4.6",
+    "@smithy/types": "^4.3.1"
   },
   "devDependencies": {
     "@goldstack/template-s3-cli": "0.6.56",

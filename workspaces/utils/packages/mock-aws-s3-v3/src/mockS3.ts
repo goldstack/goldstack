@@ -102,6 +102,7 @@ export function createS3Client({
   s3Mock.config.basePath = resolve(localDirectory);
   const mockS3 = new s3Mock.S3({
     params: { Bucket: bucket },
+    region: 'us-west-2',
   });
 
   context = {
