@@ -5920,6 +5920,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:24.0.13"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.7.0"],\
           ["rimraf", "npm:3.0.2"],\
+          ["sort-package-json", "npm:3.4.0"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"]\
         ],\
@@ -5946,6 +5947,7 @@ const RAW_RUNTIME_STATE =
           ["extract-zip", "npm:2.0.1"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.7.0"],\
           ["rimraf", "npm:3.0.2"],\
+          ["sort-package-json", "npm:3.4.0"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\

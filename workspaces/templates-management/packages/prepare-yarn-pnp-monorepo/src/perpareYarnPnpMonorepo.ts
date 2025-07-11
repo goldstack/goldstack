@@ -14,6 +14,8 @@ import fs from 'fs';
 import packageSchema from './../schemas/package.schema.json';
 import { join } from 'path';
 
+import sortPackageJson from 'sort-package-json';
+
 export const removeNpmRegistry = (params: { yarnRc: string }): string => {
   const authTokenRegex = /npmAuthToken: [^\s]*\s/gi;
   const withoutAuthToken = params.yarnRc.replace(authTokenRegex, '');
@@ -25,17 +27,7 @@ export const removeNpmRegistry = (params: { yarnRc: string }): string => {
 };
 
 function sortKeys(obj: any): any {
-  if (Array.isArray(obj)) {
-    return obj.map(sortKeys); // Recursively sort array elements
-  } else if (obj && typeof obj === 'object') {
-    return Object.keys(obj)
-      .sort() // Sort the keys
-      .reduce((sortedObj, key) => {
-        sortedObj[key] = sortKeys(obj[key]); // Recursively sort sub-objects
-        return sortedObj;
-      }, {} as Record<string, any>);
-  }
-  return obj; // Return the value if it's not an object or array
+  return sortPackageJson(obj);
 }
 
 export class PrepareYarnPnpMonorepo implements PrepareTemplate {

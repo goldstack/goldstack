@@ -27,7 +27,8 @@
     "@goldstack/utils-config": "0.4.23",
     "@goldstack/utils-package": "0.4.23",
     "@goldstack/utils-sh": "0.5.22",
-    "@goldstack/utils-template": "0.4.23"
+    "@goldstack/utils-template": "0.4.23",
+    "sort-package-json": "^3.4.0"
   },
   "devDependencies": {
     "@goldstack/utils-package-config-generate": "0.3.14",

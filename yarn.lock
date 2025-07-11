@@ -4581,6 +4581,7 @@ __metadata:
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
+    sort-package-json: "npm:^3.4.0"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.8.3"
   languageName: unknown
@@ -4605,6 +4606,7 @@ __metadata:
     extract-zip: "npm:^2.0.1"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
+    sort-package-json: "npm:^3.4.0"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft

@@ -36,7 +36,7 @@ const router = Router({
 });
 
 function sortKeys(obj: any): any {
-  sortPackageJson(obj);
+  return sortPackageJson(obj);
 }
 
 const writePackage = async (params: {

@@ -7,8 +7,9 @@ import path, { resolve } from 'path';
 import { ProjectConfiguration } from '@goldstack/utils-project';
 
 import { readPackageConfig } from '@goldstack/utils-package';
-import { readdirSync } from 'fs';
 import { buildTemplate } from './buildTemplate';
+
+import sortPackageJson from 'sort-package-json';
 
 export interface TemplateReference {
   name: string;
@@ -51,17 +52,7 @@ export function assert(condition: any, msg?: string): asserts condition {
 }
 
 function sortKeys(obj: any): any {
-  if (Array.isArray(obj)) {
-    return obj.map(sortKeys); // Recursively sort array elements
-  } else if (obj && typeof obj === 'object') {
-    return Object.keys(obj)
-      .sort() // Sort the keys
-      .reduce((sortedObj, key) => {
-        sortedObj[key] = sortKeys(obj[key]); // Recursively sort sub-objects
-        return sortedObj;
-      }, {} as Record<string, any>);
-  }
-  return obj; // Return the value if it's not an object or array
+  return sortPackageJson(obj);
 }
 
 export const setPackageName = (
