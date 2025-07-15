@@ -35,6 +35,9 @@ const nextConfig = {
   images: {
     disableStaticImages: true,
   },
+  compiler: {
+    styledComponents: true,
+  },
   transpilePackages: localPackages,
 };
 

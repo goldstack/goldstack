@@ -29,11 +29,11 @@
     "web:watch": "yarn web:build && concurrently \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" "
   },
   "dependencies": {
-    "next": "15.2.3",
-    "react": "^19",
+    "next": "^15.4.1",
+    "react": "^19.1.0",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "^19",
-    "react-is": "^18.2.0",
+    "react-dom": "^19.1.0",
+    "react-is": "^19.1.0",
     "swr": "^0.4.0"
   },
   "devDependencies": {

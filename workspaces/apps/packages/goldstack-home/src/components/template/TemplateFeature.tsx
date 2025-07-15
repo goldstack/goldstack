@@ -17,8 +17,6 @@ import EmailSendImg from 'src/img/ses_email_send.png';
 import EndpointTypeScript from 'src/img/endpoint_typescript.png';
 import FeatureBootstrap from './FeatureBootstrap';
 
-import ScrollableAnchor from 'react-scrollable-anchor';
-
 import {
   ShortTemplateFeature,
   TemplateIcons,
@@ -127,13 +125,12 @@ const TemplateFeature = (props: ShortTemplateFeature): JSX.Element => {
     }
   }
 
-  const ScrollableAnchorPatched = ScrollableAnchor as any;
   return (
     <>
       <div className="position-relative gradient-y-gray">
         <div className="container space-2 space-bottom-sm-3">
           <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-5">
-            <ScrollableAnchorPatched id={props.id || ''}>
+            <div id={props.id || ''}>
               <span
                 className="d-block small font-weight-bold text-cap mb-2"
                 style={{ cursor: 'pointer' }}
@@ -141,7 +138,7 @@ const TemplateFeature = (props: ShortTemplateFeature): JSX.Element => {
               >
                 {props.title} ⤴
               </span>
-            </ScrollableAnchorPatched>
+            </div>
             <h2>{details.title}</h2>
             <p>{details.description}</p>
           </div>
