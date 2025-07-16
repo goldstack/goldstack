@@ -6869,6 +6869,7 @@ const RAW_RUNTIME_STATE =
       ["workspace:workspaces/templates-lib/packages/template-nextjs", {\
         "packageLocation": "./workspaces/templates-lib/packages/template-nextjs/",\
         "packageDependencies": [\
+          ["@aws-sdk/types", "npm:3.840.0"],\
           ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
           ["@goldstack/template-nextjs", "workspace:workspaces/templates-lib/packages/template-nextjs"],\
