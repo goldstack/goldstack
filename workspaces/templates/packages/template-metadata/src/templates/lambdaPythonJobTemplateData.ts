@@ -30,8 +30,7 @@ export const getLambdaPythonJobTemplateData = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202409/python_lambda_code.png',
+              image: 'https://cdn.goldstack.party/img/202409/python_lambda_code.png',
             },
           },
         },
@@ -39,8 +38,7 @@ export const getLambdaPythonJobTemplateData = (): ProjectTemplateProps => {
       {
         title: 'AWS',
         id: 'aws',
-        description:
-          'Lambda deployed to reliable and scaleable AWS serverless infrastructure.',
+        description: 'Lambda deployed to reliable and scaleable AWS serverless infrastructure.',
         image: 'aws',
         details: {
           title: 'Ready for Deployment to AWS',
@@ -93,8 +91,7 @@ export const getLambdaPythonJobTemplateData = (): ProjectTemplateProps => {
       {
         title: 'App Composition',
         id: 'composition',
-        description:
-          'Easily combine with any Goldstack module to compose end-to-end applications.',
+        description: 'Easily combine with any Goldstack module to compose end-to-end applications.',
         image: 'composition',
         details: {
           title: 'Integrate with Goldstack Templates',
@@ -103,11 +100,7 @@ export const getLambdaPythonJobTemplateData = (): ProjectTemplateProps => {
           content: {
             type: 'combine-templates',
             data: {
-              templates: [
-                'template:app-nextjs-bootstrap',
-                'template:s3',
-                'template:email-send',
-              ],
+              templates: ['template:app-nextjs-bootstrap', 'template:s3', 'template:email-send'],
             },
           },
           moreDetails: {

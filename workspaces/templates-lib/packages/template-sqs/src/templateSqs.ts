@@ -31,9 +31,7 @@ export function createSQSClient({
 }
 
 // Helper function to retrieve sent message requests from the mocked SQS client
-export const getSentMessageRequests = (
-  sqsClient: SQSClient
-): SendMessageRequest[] => {
+export const getSentMessageRequests = (sqsClient: SQSClient): SendMessageRequest[] => {
   // Check if the _goldstackSentRequests property exists and return the array of sent requests
   if ((sqsClient as any)._goldstackSentRequests) {
     return (sqsClient as any)._goldstackSentRequests;
@@ -44,9 +42,7 @@ export const getSentMessageRequests = (
 };
 
 // Helper function to retrieve sent message requests from the mocked SQS client
-export const getSentMessageBatchRequests = (
-  sqsClient: SQSClient
-): SendMessageRequest[] => {
+export const getSentMessageBatchRequests = (sqsClient: SQSClient): SendMessageRequest[] => {
   // Check if the _goldstackSentRequests property exists and return the array of sent requests
   if ((sqsClient as any)._goldstackSentBatchRequests) {
     return (sqsClient as any)._goldstackSentBatchRequests;

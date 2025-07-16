@@ -22,13 +22,8 @@ import { infraCommands } from '@goldstack/utils-terraform';
 
 export { infraAwsStaticWebsiteCli };
 
-export const getDeploymentConfig = (
-  deploymentName: string
-): AWSStaticWebsiteDeployment => {
-  const packageConfig = new PackageConfig<
-    AWSStaticWebsitePackage,
-    AWSStaticWebsiteDeployment
-  >({
+export const getDeploymentConfig = (deploymentName: string): AWSStaticWebsiteDeployment => {
+  const packageConfig = new PackageConfig<AWSStaticWebsitePackage, AWSStaticWebsiteDeployment>({
     packagePath: './',
   });
   return packageConfig.getDeployment(deploymentName);
@@ -44,10 +39,7 @@ export const run = async (args: string[]): Promise<void> => {
       .help()
       .parse();
 
-    const packageConfig = new PackageConfig<
-      AWSStaticWebsitePackage,
-      AWSStaticWebsiteDeployment
-    >({
+    const packageConfig = new PackageConfig<AWSStaticWebsitePackage, AWSStaticWebsiteDeployment>({
       packagePath: './',
     });
 

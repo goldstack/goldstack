@@ -3,8 +3,8 @@ import fetch from 'node-fetch';
 import { startServer, type StartServerResult } from './utilsAwsHttpApiLocal';
 
 describe('Should create API', () => {
-  let port: undefined | number ;
-  let server: undefined | StartServerResult ;
+  let port: undefined | number;
+  let server: undefined | StartServerResult;
 
   beforeAll(async () => {
     [port] = await findFreePorts(1);

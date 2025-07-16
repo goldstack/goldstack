@@ -12,23 +12,16 @@ import CloudFrontIcon from 'src/icons/cloudfront.svg';
 
 import type { PackageListItem } from 'src/components/PackageList';
 
-export const getTemplateData = (
-  preferredElements: string[]
-): PackageListItem[] => {
+export const getTemplateData = (preferredElements: string[]): PackageListItem[] => {
   const baseList = [
     {
       packageName: 'NextJs + Bootstrap',
       packageId: 'template:app-nextjs-bootstrap',
-      packageDescription:
-        'NextJS wired to work with Bootstrap and be deployed to CloudFront CDN',
+      packageDescription: 'NextJS wired to work with Bootstrap and be deployed to CloudFront CDN',
       icons: [NextJsIcon, BootstrapIcon],
       selected: false,
       alwaysIncluded: false,
-      features: [
-        { name: 'S3 + CloudFront CDN' },
-        { name: 'SASS' },
-        { name: 'SVG Icons' },
-      ],
+      features: [{ name: 'S3 + CloudFront CDN' }, { name: 'SASS' }, { name: 'SVG Icons' }],
     },
     {
       packageName: 'Lambda + Express',
@@ -37,11 +30,7 @@ export const getTemplateData = (
       icons: [LambdaIcon, NodeJsIcon],
       selected: false,
       alwaysIncluded: false,
-      features: [
-        { name: 'Bundled with esbuild' },
-        { name: 'API Gateway' },
-        { name: 'Helmet' },
-      ],
+      features: [{ name: 'Bundled with esbuild' }, { name: 'API Gateway' }, { name: 'Helmet' }],
     },
     {
       packageName: 'React SSR',
@@ -72,8 +61,7 @@ export const getTemplateData = (
     {
       packageName: 'NextJs',
       packageId: 'template:app-nextjs',
-      packageDescription:
-        'Rapidly develop React applications deployed to AWS CloudFront CDN',
+      packageDescription: 'Rapidly develop React applications deployed to AWS CloudFront CDN',
       icons: [NextJsIcon],
       selected: false,
       alwaysIncluded: false,

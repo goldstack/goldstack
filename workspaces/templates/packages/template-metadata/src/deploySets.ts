@@ -37,9 +37,7 @@ export const getAllBuildSets = async (): Promise<DeploySetConfig[]> => {
   ];
 };
 
-export const getBuildSet = async (
-  buildSetName: string
-): Promise<DeploySetConfig> => {
+export const getBuildSet = async (buildSetName: string): Promise<DeploySetConfig> => {
   const sets = await getAllBuildSets();
   const set = sets.find((buildSet) => {
     return buildSet.buildSetName === buildSetName;

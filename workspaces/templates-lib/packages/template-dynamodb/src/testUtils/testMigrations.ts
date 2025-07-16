@@ -18,7 +18,7 @@ export const createTestMigrations = (): InputMigrations<DynamoDBContext> => {
               pk: { S: '#DUMMY' },
               sk: { S: 'hello-world' },
             },
-          })
+          }),
         );
       },
       async down({ context }) {
@@ -29,7 +29,7 @@ export const createTestMigrations = (): InputMigrations<DynamoDBContext> => {
               pk: { S: '#DUMMY' },
               sk: { S: 'hello-world' },
             },
-          })
+          }),
         );
       },
     },

@@ -49,7 +49,7 @@ const cssPlugin = (opts?: CSSClientPluginOptions): Plugin => {
             contents: js,
             loader: 'js',
           };
-        }
+        },
       );
     },
   };

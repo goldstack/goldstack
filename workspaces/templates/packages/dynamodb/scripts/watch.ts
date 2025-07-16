@@ -1,8 +1,4 @@
-import {
-  connect,
-  stopAllLocalDynamoDB,
-  stopLocalDynamoDB,
-} from './../src/table';
+import { connect, stopAllLocalDynamoDB, stopLocalDynamoDB } from './../src/table';
 import * as readline from 'readline';
 import { createServer } from 'dynamodb-admin';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
@@ -12,7 +8,7 @@ import { info, warn } from '@goldstack/utils-log';
   const clientInner = await connect();
   if (!clientInner.config.endpoint || !clientInner.config.region) {
     throw new Error(
-      'DynamoDB client object does not have required configuration properties: endpoint, region'
+      'DynamoDB client object does not have required configuration properties: endpoint, region',
     );
   }
   const endpointConfig = await clientInner.config.endpoint();
@@ -25,11 +21,11 @@ import { info, warn } from '@goldstack/utils-log';
       secretAccessKey: 'dummy',
     },
   });
-  let localAdminServer: undefined | any ;
+  let localAdminServer: undefined | any;
   await new Promise<void>(async (resolve, reject) => {
     const localAdmin = await createServer(
       client as any, // otherwise strange type error occurs
-      new DynamoDB.DocumentClient({ service: client })
+      new DynamoDB.DocumentClient({ service: client }),
     );
     const adminPort = process.env.DYNAMODB_ADMIN_PORT || '8001';
     localAdminServer = localAdmin.listen(adminPort, 'localhost');
@@ -44,7 +40,7 @@ import { info, warn } from '@goldstack/utils-log';
     });
     localAdminServer.on('error', () => {
       warn(
-        `Cannot start admin server on port ${adminPort}. Possibly admin server already started.`
+        `Cannot start admin server on port ${adminPort}. Possibly admin server already started.`,
       );
       resolve();
     });

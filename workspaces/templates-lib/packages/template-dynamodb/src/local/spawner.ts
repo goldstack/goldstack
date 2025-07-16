@@ -17,12 +17,10 @@ interface SpawnOptions {
 /**
  * Spawns a new DynamoDB instance using either Java or Docker
  */
-export async function spawnInstance(
-  options: SpawnOptions
-): Promise<DynamoDBInstance> {
+export async function spawnInstance(options: SpawnOptions): Promise<DynamoDBInstance> {
   if (await check(options.port)) {
     warn(
-      `Port ${options.port} is already in use. Assuming another instance of DynamoDB is already running.`
+      `Port ${options.port} is already in use. Assuming another instance of DynamoDB is already running.`,
     );
     return {
       port: options.port,
@@ -41,14 +39,10 @@ export async function spawnInstance(
     return dockerInstance;
   }
 
-  throw new Error(
-    'Either Docker or Java needs to be installed to run local DynamoDB'
-  );
+  throw new Error('Either Docker or Java needs to be installed to run local DynamoDB');
 }
 
-async function tryJavaSpawn(
-  options: SpawnOptions
-): Promise<DynamoDBInstance | null> {
+async function tryJavaSpawn(options: SpawnOptions): Promise<DynamoDBInstance | null> {
   let javaViable = commandExists('java');
 
   if (javaViable) {
@@ -57,7 +51,7 @@ async function tryJavaSpawn(
     } catch (e) {
       warn(
         "'java' command is available but it does not work. This is common on never versions of Mac OS X without Java installed.\n" +
-          'To use Java, please install it.'
+          'To use Java, please install it.',
       );
       javaViable = false;
     }
@@ -96,9 +90,7 @@ async function tryJavaSpawn(
   };
 }
 
-async function tryDockerSpawn(
-  options: SpawnOptions
-): Promise<DynamoDBInstance | null> {
+async function tryDockerSpawn(options: SpawnOptions): Promise<DynamoDBInstance | null> {
   if (!commandExists('docker')) {
     return null;
   }

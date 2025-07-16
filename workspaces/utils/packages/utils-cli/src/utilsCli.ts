@@ -65,7 +65,7 @@ const defaultLogger = pino(
         ignore: 'pid,hostname',
         singleLine: false,
         sync: true, // required for work in Jest see https://github.com/pinojs/pino-pretty?tab=readme-ov-file#usage-with-jest
-      })
+      }),
 );
 
 /**
@@ -93,9 +93,7 @@ export const wrapCli = async (func: AsyncFunction<any>): Promise<void> => {
     if (isDebug) {
       logger().error(
         {},
-        `Error while executing CLI command: ${
-          e.error || e.errorMessage || e.message
-        }`
+        `Error while executing CLI command: ${e.error || e.errorMessage || e.message}`,
       );
       console.error(e);
       throw e;
@@ -104,7 +102,7 @@ export const wrapCli = async (func: AsyncFunction<any>): Promise<void> => {
         {},
         '❌ Error while executing CLI command:' +
           e.message +
-          '\n  For more information about this error, run this command with the environment variable GOLDSTACK_DEBUG set to true'
+          '\n  For more information about this error, run this command with the environment variable GOLDSTACK_DEBUG set to true',
       );
       process.exit(1);
     }

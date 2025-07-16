@@ -20,10 +20,7 @@ export const run = async (args: string[]): Promise<void> => {
       .help()
       .parse();
 
-    const packageConfig = new PackageConfig<
-      UserManagementPackage,
-      UserManagementDeployment
-    >({
+    const packageConfig = new PackageConfig<UserManagementPackage, UserManagementDeployment>({
       packagePath: './',
     });
     const config = packageConfig.getConfig();

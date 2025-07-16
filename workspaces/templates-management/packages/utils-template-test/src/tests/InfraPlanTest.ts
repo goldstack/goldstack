@@ -12,14 +12,8 @@ export class InfraPlanTest implements TemplateTest {
 
     for (const deployment of packageConfig.deployments) {
       console.log('Building infrastructure for', deployment.name);
-      yarn(
-        params.projectDir,
-        `workspace ${packageJson.name} infra init ${deployment.name}`
-      );
-      yarn(
-        params.projectDir,
-        `workspace ${packageJson.name} infra plan ${deployment.name}`
-      );
+      yarn(params.projectDir, `workspace ${packageJson.name} infra init ${deployment.name}`);
+      yarn(params.projectDir, `workspace ${packageJson.name} infra plan ${deployment.name}`);
     }
   }
 }

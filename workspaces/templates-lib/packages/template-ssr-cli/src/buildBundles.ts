@@ -4,11 +4,7 @@ import type {
   ClientBuildOptionsArgs,
   ServerBuildOptionsArgs,
 } from '@goldstack/template-ssr-server-compile-bundle';
-export type {
-  BuildConfiguration,
-  ClientBuildOptionsArgs,
-  ServerBuildOptionsArgs,
-};
+export type { BuildConfiguration, ClientBuildOptionsArgs, ServerBuildOptionsArgs };
 
 import {
   generateFunctionName,
@@ -83,10 +79,7 @@ export const buildBundles = async ({
     if (compileResult.metaFile) {
       write(
         compileResult.metaFile,
-        path.join(
-          packageRootDir,
-          `distLambda/zips/${functionName}.client.meta.json`
-        )
+        path.join(packageRootDir, `distLambda/zips/${functionName}.client.meta.json`),
       );
     }
   }

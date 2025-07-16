@@ -37,9 +37,7 @@ export interface StartServerResult {
   lambdaConfig: LambdaConfig[];
 }
 
-export const startServer = async (
-  options: LocalHttpAPIOptions
-): Promise<StartServerResult> => {
+export const startServer = async (options: LocalHttpAPIOptions): Promise<StartServerResult> => {
   const app: express.Application = express();
   app.use(express.json());
 

@@ -29,9 +29,7 @@ export default function rehypeDocs({ filePath }): any {
       const combinedPath = path.normalize(dirname(filePath) + '/' + file);
 
       if (!fs.existsSync(combinedPath)) {
-        throw Error(
-          `Invalid fragment specified; no such file "${combinedPath}"`
-        );
+        throw Error(`Invalid fragment specified; no such file "${combinedPath}"`);
       }
 
       const tree = fileToMarkdownTree(combinedPath);
@@ -70,9 +68,7 @@ export default function rehypeDocs({ filePath }): any {
       node.children[0].value &&
       node.children[0].value.indexOf('%') === 0
     ) {
-      node.value = `[Video: ${node.children[0].value.substring(1)}](${
-        node.url
-      })`;
+      node.value = `[Video: ${node.children[0].value.substring(1)}](${node.url})`;
       node.type = 'text';
     }
   }

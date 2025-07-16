@@ -21,15 +21,10 @@ import { spawnSync, type SpawnSyncOptionsWithStringEncoding } from 'child_proces
 
 import os from 'os';
 
-const getRemoteStateConfig = (
-  config: AWSTerraformState,
-  userName: string
-): RemoteState => {
+const getRemoteStateConfig = (config: AWSTerraformState, userName: string): RemoteState => {
   const userConfig = config.remoteState.filter((u) => u.user === userName);
   if (userConfig.length === 0) {
-    throw new Error(
-      `Cannot find aws user ${userName} in project terraform config`
-    );
+    throw new Error(`Cannot find aws user ${userName} in project terraform config`);
   }
   return userConfig[0];
 };
@@ -55,28 +50,22 @@ export class AWSCloudProvider implements CloudProvider {
     process.env.AWS_SESSION_TOKEN = this.user.sessionToken || '';
   };
 
-  getTfStateVariables = (
-    deployment: TerraformDeployment
-  ): [string, string][] => {
+  getTfStateVariables = (deployment: TerraformDeployment): [string, string][] => {
     const remoteStateConfig = getRemoteStateConfig(
       this.remoteStateConfig,
-      (deployment as AWSDeployment).awsUser
+      (deployment as AWSDeployment).awsUser,
     );
     const bucket = remoteStateConfig.terraformStateBucket;
     if (!bucket) {
       throw new Error(
-        `TF state bucket not defined for user ${
-          (deployment as AWSDeployment).awsUser
-        }`
+        `TF state bucket not defined for user ${(deployment as AWSDeployment).awsUser}`,
       );
     }
 
     const ddTable = remoteStateConfig.terraformStateDynamoDBTable;
     if (!ddTable) {
       throw new Error(
-        `TF state DynamoDB table not defined for user ${
-          (deployment as AWSDeployment).awsUser
-        }`
+        `TF state DynamoDB table not defined for user ${(deployment as AWSDeployment).awsUser}`,
       );
     }
 
@@ -94,11 +83,7 @@ export class AWSCloudProvider implements CloudProvider {
     ];
   };
 
-  constructor(
-    credentials: AwsCredentialIdentity,
-    awsConfig: AWSTerraformState,
-    region: string
-  ) {
+  constructor(credentials: AwsCredentialIdentity, awsConfig: AWSTerraformState, region: string) {
     this.user = credentials;
     this.remoteStateConfig = awsConfig;
     this.region = region;
@@ -129,7 +114,7 @@ const prompt = (message: string) => {
 
 export const terraformAwsCli = async (
   args: string[],
-  options?: TerraformOptions
+  options?: TerraformOptions,
 ): Promise<void> => {
   const { awsTerraformConfig, deployment, credentials, awsProvider } =
     await initTerraformEnvironment(args);
@@ -138,7 +123,7 @@ export const terraformAwsCli = async (
 
   const remoteStateConfig = getRemoteStateConfig(
     awsTerraformConfig,
-    (deployment as AWSDeployment).awsUser
+    (deployment as AWSDeployment).awsUser,
   );
   if (!remoteStateConfig.terraformStateBucket) {
     remoteStateConfig.terraformStateBucket = `goldstack-tfstate-${projectHash}`;
@@ -155,7 +140,7 @@ export const terraformAwsCli = async (
     if (!ciConfirmed) {
       const value = prompt(
         'Are you sure to destroy your remote deployment state? If yes, please type `y` and enter.\n' +
-          'Otherwise, press enter.\nYour Input: '
+          'Otherwise, press enter.\nYour Input: ',
       );
       if (value !== 'y') {
         new Error('Prompt not confirmed with `y`');
@@ -198,10 +183,6 @@ export async function initTerraformEnvironment(args: string[]) {
 
   const awsTerraformConfig = assertTerraformConfig(deployment.awsUser);
 
-  const awsProvider = new AWSCloudProvider(
-    credentials,
-    awsTerraformConfig,
-    deployment.awsRegion
-  );
+  const awsProvider = new AWSCloudProvider(credentials, awsTerraformConfig, deployment.awsRegion);
   return { awsTerraformConfig, deployment, credentials, awsProvider };
 }

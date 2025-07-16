@@ -9,7 +9,7 @@ interface ValidateOptions {
 export const validateConfig = (
   config: object,
   schema: object,
-  options?: ValidateOptions
+  options?: ValidateOptions,
 ): object => {
   const ajv = new Ajv();
   if (options?.additionalSchemas) {
@@ -18,10 +18,9 @@ export const validateConfig = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const buildError = (e: any): Error => {
     return new Error(
-      `${options?.errorMessage || 'Cannot read configuration'}\n` +
-        ajv.errorsText() ||
+      `${options?.errorMessage || 'Cannot read configuration'}\n` + ajv.errorsText() ||
         '' + e ||
-        ''
+        '',
     );
   };
   let valid;
@@ -36,19 +35,13 @@ export const validateConfig = (
   return config;
 };
 
-export const parseConfig = (
-  data: string,
-  schema: object,
-  options: ValidateOptions
-): object => {
+export const parseConfig = (data: string, schema: object, options: ValidateOptions): object => {
   const config = JSON.parse(data);
   return validateConfig(config, schema, options);
 };
 
 export const getPackageConfigPaths = (workspacePath: string): string[] => {
-  const res = globSync(
-    workspacePath.replace(/\\/g, '/') + 'packages/*/goldstack.json'
-  );
+  const res = globSync(workspacePath.replace(/\\/g, '/') + 'packages/*/goldstack.json');
   return res;
 };
 

@@ -1,9 +1,5 @@
 import { getMockReq, getMockRes } from '@jest-mock/express';
-import {
-  postProjectHandler,
-  getProjectHandler,
-  putProjectHandler,
-} from './projects';
+import { postProjectHandler, getProjectHandler, putProjectHandler } from './projects';
 import type { ProjectConfiguration } from '@goldstack/utils-project';
 import { dummyUser } from '@goldstack/auth';
 

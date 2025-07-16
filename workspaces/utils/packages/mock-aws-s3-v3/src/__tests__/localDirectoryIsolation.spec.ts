@@ -1,8 +1,4 @@
-import {
-  GetObjectCommand,
-  PutObjectCommand,
-  NoSuchKey,
-} from '@aws-sdk/client-s3';
+import { GetObjectCommand, PutObjectCommand, NoSuchKey } from '@aws-sdk/client-s3';
 import assert from 'assert';
 import { createS3Client } from '../mockS3';
 
@@ -23,7 +19,7 @@ test('Clients with different local directories cannot access each others objects
       Bucket: 'test-local',
       Key: 'test-object',
       Body: 'client1-data',
-    })
+    }),
   );
 
   // Client 2 should not be able to see client1's object
@@ -32,7 +28,7 @@ test('Clients with different local directories cannot access each others objects
       new GetObjectCommand({
         Bucket: 'test-local-2',
         Key: 'test-object',
-      })
+      }),
     );
     assert(false, 'Should have thrown NoSuchKey error');
   } catch (e) {
@@ -44,7 +40,7 @@ test('Clients with different local directories cannot access each others objects
     new GetObjectCommand({
       Bucket: 'test-local',
       Key: 'test-object',
-    })
+    }),
   );
   assert((await res.Body?.transformToString()) === 'client1-data');
 });

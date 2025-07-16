@@ -44,9 +44,7 @@ interface ConfigureStepParams extends ProjectData {
   docs: DocsData[] | undefined;
 }
 
-export const getConfigureSteps = (
-  params: ConfigureStepParams
-): ConfigureStep[] => {
+export const getConfigureSteps = (params: ConfigureStepParams): ConfigureStep[] => {
   const head: ConfigureStep[] = [
     {
       idx: 0,
@@ -63,22 +61,17 @@ export const getConfigureSteps = (
             return {
               ...projectData.project,
               deployment:
-                projectData.deploymentNames.length > 0
-                  ? projectData.deploymentNames[0]
-                  : undefined,
+                projectData.deploymentNames.length > 0 ? projectData.deploymentNames[0] : undefined,
               awsRegion: awsUser.awsDefaultRegion,
             };
           },
           writeData: (projectData: ProjectData, newData: any): ProjectData => {
-            const newProjectData: ProjectData = JSON.parse(
-              JSON.stringify(projectData)
-            );
+            const newProjectData: ProjectData = JSON.parse(JSON.stringify(projectData));
             newProjectData.project.projectName = newData.projectName;
 
             newProjectData.deploymentNames = [newData.deployment];
-            (
-              newProjectData.awsUsers[0].config as AWSAPIKeyUser
-            ).awsDefaultRegion = newData.awsRegion;
+            (newProjectData.awsUsers[0].config as AWSAPIKeyUser).awsDefaultRegion =
+              newData.awsRegion;
             return { ...newProjectData };
           },
         },
@@ -87,15 +80,13 @@ export const getConfigureSteps = (
   ];
 
   const packages: ConfigureStep[] = params.packageConfigs.map((config, idx) => {
-    let configureDocHtml: string | undefined ;
+    let configureDocHtml: string | undefined;
     if (params.docs && params.docs.find) {
       const packageName = config.package.name;
 
       const packageDoc = params.docs.find((el) => el.package === packageName);
       if (packageDoc) {
-        const configureDoc = packageDoc.docs.find(
-          (el) => el.doc === 'template-configure'
-        );
+        const configureDoc = packageDoc.docs.find((el) => el.doc === 'template-configure');
         configureDocHtml = configureDoc?.html;
       }
     }
@@ -104,15 +95,12 @@ export const getConfigureSteps = (
       schema: config.deploymentConfigSchema,
       uiSchema: {},
       getData: (projectData: ProjectData): any => {
-        const data =
-          projectData.packageConfigs[idx].package.deployments[0].configuration;
+        const data = projectData.packageConfigs[idx].package.deployments[0].configuration;
         return data;
       },
       writeData: (projectData: ProjectData, newData: any): ProjectData => {
         const newProjectData = JSON.parse(JSON.stringify(projectData));
-        newProjectData.packageConfigs[
-          idx
-        ].package.deployments[0].configuration = {
+        newProjectData.packageConfigs[idx].package.deployments[0].configuration = {
           ...newData,
         };
         return newProjectData;
@@ -166,19 +154,15 @@ export const getConfigureSteps = (
             },
           },
           getData: (projectData: ProjectData): any => {
-            const awsUserConfig = projectData.awsUsers[0]
-              .config as AWSAPIKeyUser;
+            const awsUserConfig = projectData.awsUsers[0].config as AWSAPIKeyUser;
             return {
               awsAccessKeyId: awsUserConfig.awsAccessKeyId || '',
               awsSecretAccessKey: awsUserConfig.awsSecretAccessKey || '',
             };
           },
           writeData: (projectData: ProjectData, newData: any): ProjectData => {
-            const newProjectData: ProjectData = JSON.parse(
-              JSON.stringify(projectData)
-            );
-            const awsUserConfig = newProjectData.awsUsers[0]
-              .config as AWSAPIKeyUser;
+            const newProjectData: ProjectData = JSON.parse(JSON.stringify(projectData));
+            const awsUserConfig = newProjectData.awsUsers[0].config as AWSAPIKeyUser;
             awsUserConfig.awsAccessKeyId = newData.awsAccessKeyId || '';
             awsUserConfig.awsSecretAccessKey = newData.awsSecretAccessKey || '';
 

@@ -23,9 +23,7 @@ export function getLoggedInUser(): ClientAuthResult | undefined {
   if (typeof window === 'undefined') {
     return;
   }
-  const existingAccessToken = window.sessionStorage.getItem(
-    'goldstack_access_token'
-  );
+  const existingAccessToken = window.sessionStorage.getItem('goldstack_access_token');
   const existingIdToken = window.sessionStorage.getItem('goldstack_id_token');
   if (existingAccessToken && existingIdToken) {
     return {

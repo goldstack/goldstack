@@ -85,9 +85,7 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
 
     if (!mappingExists) {
       // check if there is an entry for the generated name
-      const existingElement = store.find(
-        (el) => el.generatedName === hashedName
-      );
+      const existingElement = store.find((el) => el.generatedName === hashedName);
       if (existingElement) {
         existingElement.names.push(name);
       } else {
@@ -123,9 +121,7 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
   public async resolve({ name }: { name: string }): Promise<string> {
     const store = this.readStore();
 
-    const mapping = store.find((mapping) =>
-      mapping.names.find((el) => el === name)
-    );
+    const mapping = store.find((mapping) => mapping.names.find((el) => el === name));
     if (!mapping) {
       throw new Error(`Cannot find static file mapping for ${name}`);
     }
@@ -135,9 +131,7 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
   public async has({ name }: { name: string }): Promise<boolean> {
     const store = this.readStore();
 
-    const mapping = store.find((mapping) =>
-      mapping.names.find((el) => el === name)
-    );
+    const mapping = store.find((mapping) => mapping.names.find((el) => el === name));
 
     return !!mapping;
   }

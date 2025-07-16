@@ -7,8 +7,7 @@ export const handler = (event: any, context: any, callback: any): void => {
 
   const dynamicRoutes: any = manifest.dynamicRoutes;
 
-  const extension =
-    request.uri.indexOf('.') !== -1 ? request.uri.split('.').pop() : '.html';
+  const extension = request.uri.indexOf('.') !== -1 ? request.uri.split('.').pop() : '.html';
 
   for (const route of dynamicRoutes) {
     if (new RegExp(route.regex).test(request.uri)) {

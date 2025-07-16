@@ -15,14 +15,7 @@ export { Configuration };
  * @title Location
  * @pattern ^[^\s]*
  */
-export type Location =
-  | 'hil'
-  | 'fsn1'
-  | 'nbg1'
-  | 'hel1'
-  | 'ash'
-  | 'sin'
-  | string;
+export type Location = 'hil' | 'fsn1' | 'nbg1' | 'hel1' | 'ash' | 'sin' | string;
 
 /**
  * The Hetzner server name that should be used for this server.
@@ -110,8 +103,7 @@ export type EnvironmentVariables = EnvironmentVariable[];
 /**
  * The Hetzner server deployment configuration
  */
-export interface HetznerVPSDeploymentConfiguration
-  extends DeploymentConfiguration {
+export interface HetznerVPSDeploymentConfiguration extends DeploymentConfiguration {
   location: Location;
   serverType: ServerType;
   sshUserFingerprint?: SSHUserFingerprint;

@@ -1,23 +1,17 @@
 import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { S3 } from './moduleData';
 import type { ShortTemplateFeature } from '../projectTemplateData';
-import {
-  featureAppComposition,
-  featureVSCode,
-  featureYarn3,
-} from './sharedFeatures';
+import { featureAppComposition, featureVSCode, featureYarn3 } from './sharedFeatures';
 
 export const getS3Feature = (): ShortTemplateFeature => {
   return {
     title: 'Storing files and data in AWS S3',
     id: 's3',
-    description:
-      'Easily store files and data with high durability and low costs in AWS S3.',
+    description: 'Easily store files and data with high durability and low costs in AWS S3.',
     image: 's3',
     details: {
       title: 'Easy to Use API to Connect with AWS S3',
-      description:
-        'Connect to an S3 bucket and add objects using the TypeScript API.',
+      description: 'Connect to an S3 bucket and add objects using the TypeScript API.',
       content: {
         type: 'image',
         data: {
@@ -38,11 +32,9 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
     images: ['s3', 'terraform', 'typescript'],
     packages: [S3],
     isComposite: false,
-    boilerplateLink:
-      'https://github.com/goldstack/s3-terraform-typescript-boilerplate',
+    boilerplateLink: 'https://github.com/goldstack/s3-terraform-typescript-boilerplate',
     description: 'Store data in AWS S3.',
-    longDescription:
-      'This template adds the capability to store data in AWS S3 to your project.',
+    longDescription: 'This template adds the capability to store data in AWS S3 to your project.',
     actionLink: '/build?stack=s3',
     tags: ['AWS', 'S3', 'TypeScript', 'Yarn', 'Backend'],
     featuresOverview: [
@@ -119,10 +111,7 @@ export const getS3TemplateData = (): ProjectTemplateProps => {
       },
       featureYarn3(),
       featureVSCode(),
-      featureAppComposition([
-        'template:serverless-api',
-        'template:express-lambda',
-      ]),
+      featureAppComposition(['template:serverless-api', 'template:express-lambda']),
     ],
   };
 };

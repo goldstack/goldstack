@@ -21,11 +21,11 @@ export class DestroyStateTest implements TemplateTest {
           process.env.GOLDSTACK_DEBUG = 'true';
           yarn(
             params.projectDir,
-            `workspace ${packageJson.name} infra destroy-state ${deployment.name} -y`
+            `workspace ${packageJson.name} infra destroy-state ${deployment.name} -y`,
           );
         },
         120000,
-        20
+        20,
       );
     }
   }

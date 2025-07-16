@@ -16,10 +16,7 @@ const sanitiseFunctionName = (input: string): string =>
 /**
  * Generates a valid function name for a route
  */
-export const generateFunctionName = (
-  prefix: string | undefined,
-  config: LambdaConfig
-): string => {
+export const generateFunctionName = (prefix: string | undefined, config: LambdaConfig): string => {
   let name = config.name;
 
   if (name === '$default') {

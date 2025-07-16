@@ -25,8 +25,7 @@ export interface NextjsEnvironmentVariable {
   value: string;
 }
 
-export interface NextjsDeploymentConfiguration
-  extends AWSStaticWebsiteDeploymentConfiguration {
+export interface NextjsDeploymentConfiguration extends AWSStaticWebsiteDeploymentConfiguration {
   /**
    * Define environment variables for the NextJs application.
    *

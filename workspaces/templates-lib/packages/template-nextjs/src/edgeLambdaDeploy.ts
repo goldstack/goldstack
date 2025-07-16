@@ -16,9 +16,7 @@ interface DeployLambdaParams {
   deploymentState: DeploymentState;
 }
 
-export const deployEdgeLambda = async (
-  params: DeployLambdaParams
-): Promise<void> => {
+export const deployEdgeLambda = async (params: DeployLambdaParams): Promise<void> => {
   const targetArchive = 'lambda.zip';
   const lambdaSourceDir = './src/utils/routing/';
   const lambdaCompiledDir = './dist/src/utils/routing/';
@@ -36,14 +34,12 @@ export const deployEdgeLambda = async (
     const withoutRootDir = els.join('/');
     return withoutRootDir;
   });
-  const htmlPagePathsWithoutExtension = htmlPagePathsWithoutRootDir.map(
-    (match) => {
-      const comps = match.split('.');
-      comps.pop();
-      const withoutExtension = comps.join('.');
-      return withoutExtension;
-    }
-  );
+  const htmlPagePathsWithoutExtension = htmlPagePathsWithoutRootDir.map((match) => {
+    const comps = match.split('.');
+    comps.pop();
+    const withoutExtension = comps.join('.');
+    return withoutExtension;
+  });
 
   const staticRoutes = htmlPagePathsWithoutExtension.map((match) => ({
     page: '/' + match,
@@ -53,16 +49,9 @@ export const deployEdgeLambda = async (
   routesManifest.dynamicRoutes = [...staticRoutes, ...dynamicRoutes];
   // Making sure there are no linting errors with copied file
   await rmSafe(`${lambdaSourceDir}routes-manifest.json`);
-  write(
-    JSON.stringify(routesManifest, null, 2),
-    `${lambdaSourceDir}routes-manifest.json`
-  );
+  write(JSON.stringify(routesManifest, null, 2), `${lambdaSourceDir}routes-manifest.json`);
   await rmSafe(`${lambdaCompiledDir}routes-manifest.json`);
-  cp(
-    '-f',
-    `${lambdaSourceDir}routes-manifest.json`,
-    `${lambdaCompiledDir}routes-manifest.json`
-  );
+  cp('-f', `${lambdaSourceDir}routes-manifest.json`, `${lambdaCompiledDir}routes-manifest.json`);
 
   // pack source for Lambda Node.js runtime
 
@@ -74,10 +63,7 @@ export const deployEdgeLambda = async (
     destFile: `${lambdaPackageDir}lambda.js`,
   });
 
-  const functionName = readTerraformStateVariable(
-    params.deploymentState,
-    'edge_function_name'
-  );
+  const functionName = readTerraformStateVariable(params.deploymentState, 'edge_function_name');
   const credentials = await getAWSUser(params.deployment.awsUser);
   const deployResult = await deployFunction({
     targetArchiveName: targetArchive,
@@ -111,7 +97,7 @@ export const deployEdgeLambda = async (
     region: 'us-east-1',
     command: `cloudfront get-distribution-config --id ${readTerraformStateVariable(
       params.deploymentState,
-      'website_cdn_root_id'
+      'website_cdn_root_id',
     )}`,
     options: { silent: true },
   });
@@ -120,21 +106,17 @@ export const deployEdgeLambda = async (
 
   const eTag = cfDistribution.ETag;
   const lambdaFunctionAssociations =
-    cfDistribution.DistributionConfig.DefaultCacheBehavior
-      .LambdaFunctionAssociations.Items;
+    cfDistribution.DistributionConfig.DefaultCacheBehavior.LambdaFunctionAssociations.Items;
   lambdaFunctionAssociations[0].LambdaFunctionARN = `${qualifiedArn}`;
 
   await rmSafe('./dist/cf.json');
-  write(
-    JSON.stringify(cfDistribution.DistributionConfig, null, 2),
-    './dist/cf.json'
-  );
+  write(JSON.stringify(cfDistribution.DistributionConfig, null, 2), './dist/cf.json');
   await awsCli({
     credentials: credentials,
     region: 'us-east-1',
     command: `cloudfront update-distribution --id ${readTerraformStateVariable(
       params.deploymentState,
-      'website_cdn_root_id'
+      'website_cdn_root_id',
     )} --distribution-config file://dist/cf.json --if-match ${eTag}`,
     options: { silent: true },
   });

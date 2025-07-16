@@ -6,12 +6,10 @@ describe('Project configuration', () => {
     const workspacePath = './../../../templates/';
     const configs = getPackageConfigs(workspacePath);
     const staticWebsiteConfig = configs.find(
-      (config) => config.package.template === 'static-website-aws'
+      (config) => config.package.template === 'static-website-aws',
     );
     expect(staticWebsiteConfig?.packageSchema).toBeDefined();
     expect(staticWebsiteConfig?.pathInWorkspace).toBeDefined();
-    expect(
-      fs.existsSync(workspacePath + staticWebsiteConfig?.pathInWorkspace)
-    ).toBeTruthy();
+    expect(fs.existsSync(workspacePath + staticWebsiteConfig?.pathInWorkspace)).toBeTruthy();
   });
 });

@@ -1,15 +1,9 @@
 /* esbuild-ignore ui */
 import crypto from 'crypto';
 
-import type {
-  CognitoAccessTokenPayload,
-  CognitoIdTokenPayload,
-} from 'aws-jwt-verify/jwt-model';
+import type { CognitoAccessTokenPayload, CognitoIdTokenPayload } from 'aws-jwt-verify/jwt-model';
 import type { CognitoManager } from './cognitoTokenVerify';
-import {
-  getMockedAccessTokenProperties,
-  getMockedIdTokenProperties,
-} from './userManagementMock';
+import { getMockedAccessTokenProperties, getMockedIdTokenProperties } from './userManagementMock';
 
 let localCognitoManager: CognitoManager | undefined;
 
@@ -52,9 +46,7 @@ function generateToken(properties: unknown): string {
   return result;
 }
 
-export function generateTestIdToken(
-  properties: CognitoIdTokenPayload | object
-): string {
+export function generateTestIdToken(properties: CognitoIdTokenPayload | object): string {
   const data = {
     ...getMockedIdTokenProperties(),
     ...properties,
@@ -62,9 +54,7 @@ export function generateTestIdToken(
   return generateToken(data);
 }
 
-export function generateTestAccessToken(
-  properties: CognitoAccessTokenPayload | object
-): string {
+export function generateTestAccessToken(properties: CognitoAccessTokenPayload | object): string {
   const data = {
     ...getMockedAccessTokenProperties(),
     ...properties,
@@ -76,17 +66,15 @@ function assertNotInProd() {
   if (process.env.LAMBDA_TASK_ROOT) {
     console.warn(
       'JWT token validated using mock validator. ' +
-        'This validator does not verify if the token is verified correctly.'
+        'This validator does not verify if the token is verified correctly.',
     );
   }
 }
 
 export class LocalUserManagerImpl implements CognitoManager {
   async validateIdToken(
-    idToken: string
-  ): Promise<
-    CognitoIdTokenPayload & { email: string; 'custom:app_user_id': string }
-  > {
+    idToken: string,
+  ): Promise<CognitoIdTokenPayload & { email: string; 'custom:app_user_id': string }> {
     assertNotInProd();
     return JSON.parse(Buffer.from(idToken.split('.')[1], 'base64').toString());
   }

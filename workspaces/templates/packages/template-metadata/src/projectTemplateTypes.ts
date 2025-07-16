@@ -43,13 +43,7 @@ export interface ShortTemplateFeature {
   details?: TemplateFeatureProps;
 }
 
-export type TemplateIcons =
-  | 'eslint'
-  | 'terraform'
-  | 'jest'
-  | 'vscode'
-  | 'yarn'
-  | string;
+export type TemplateIcons = 'eslint' | 'terraform' | 'jest' | 'vscode' | 'yarn' | string;
 
 export interface TemplateFeatureProps {
   title: string;

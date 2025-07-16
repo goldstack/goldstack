@@ -9,9 +9,7 @@ import replace from 'gulp-replace';
 export const init = async (args: string[]): Promise<Gulp> => {
   // The config for a selected deployment
   if (args.length < 3) {
-    throw new Error(
-      'Expected a parameter providing the name of the deployment.'
-    );
+    throw new Error('Expected a parameter providing the name of the deployment.');
   }
   const deployment = args[2];
   let deploymentConfig: AWSStaticWebsiteDeployment;

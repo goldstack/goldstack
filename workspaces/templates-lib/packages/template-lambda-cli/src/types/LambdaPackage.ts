@@ -11,15 +11,11 @@ import type { Package, Configuration } from '@goldstack/utils-package';
  */
 type LambdaName = string;
 
-export interface ThisBaseDeploymentConfiguration
-  extends DeploymentConfiguration {
+export interface ThisBaseDeploymentConfiguration extends DeploymentConfiguration {
   lambdaName: LambdaName;
 }
 
-export interface ThisBaseDeployment
-  extends Deployment,
-    AWSDeployment,
-    TerraformDeployment {
+export interface ThisBaseDeployment extends Deployment, AWSDeployment, TerraformDeployment {
   configuration: ThisBaseDeploymentConfiguration;
 }
 

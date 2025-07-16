@@ -1,9 +1,5 @@
 import { exec, pwd, commandExists } from '@goldstack/utils-sh';
-import {
-  assertDocker,
-  hasDocker,
-  imageTerraform,
-} from '@goldstack/utils-docker';
+import { assertDocker, hasDocker, imageTerraform } from '@goldstack/utils-docker';
 import { fatal, warn } from '@goldstack/utils-log';
 import type { CloudProvider } from './cloudProvider';
 import type { TerraformVersion } from './types/utilsTerraformConfig';
@@ -34,10 +30,7 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
 
   // Write variables to tfvars file
   if (options.variables) {
-    writeVarsFile(
-      options.variables,
-      path.join(options.dir, 'terraform.tfvars')
-    );
+    writeVarsFile(options.variables, path.join(options.dir, 'terraform.tfvars'));
   }
 
   // Write backend config to backend.tf
@@ -70,10 +63,7 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
 
 export const assertTerraform = (): void => {
   if (!commandExists('terraform')) {
-    fatal(
-      'Terraform is not installed.\n\n' +
-        'Install terraform CLI or Docker (preferred).'
-    );
+    fatal('Terraform is not installed.\n\n' + 'Install terraform CLI or Docker (preferred).');
     throw new Error();
   }
 };
@@ -95,16 +85,13 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
         version.split('\n')[0]
       }], does not match version defined in package configuration [${
         options.version
-      }] (goldstack.json and/or infra/tfConfig.json). Consider installing the configured version locally or uninstall Terraform and install Docker. Then, Goldstack will run the correct Terraform version required for this deployment using Docker.`
+      }] (goldstack.json and/or infra/tfConfig.json). Consider installing the configured version locally or uninstall Terraform and install Docker. Then, Goldstack will run the correct Terraform version required for this deployment using Docker.`,
     );
   }
 
   // Write variables to tfvars file
   if (options.variables) {
-    writeVarsFile(
-      options.variables,
-      path.join(options.dir, 'terraform.tfvars')
-    );
+    writeVarsFile(options.variables, path.join(options.dir, 'terraform.tfvars'));
   }
 
   // Write backend config to backend.tf
@@ -158,7 +145,5 @@ export const tf = (cmd: string, options: TerraformOptions): string => {
     return execWithDocker(cmd, options);
   }
 
-  throw new Error(
-    'Neither Terraform nor Docker installed. Please install one of them'
-  );
+  throw new Error('Neither Terraform nor Docker installed. Please install one of them');
 };

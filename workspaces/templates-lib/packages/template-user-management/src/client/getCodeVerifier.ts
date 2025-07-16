@@ -3,8 +3,7 @@ import { excludeInBundle } from '@goldstack/utils-esbuild';
 
 function generateRandomString(length: number) {
   let text = '';
-  const possible =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
   for (let i = 0; i < length; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -21,16 +20,10 @@ async function generateCodeChallenge(randomString: string) {
   if (typeof window !== 'undefined') {
     digest = String.fromCharCode(
       ...new Uint8Array(
-        await crypto.subtle.digest(
-          'SHA-256',
-          new TextEncoder().encode(randomString)
-        )
-      )
+        await crypto.subtle.digest('SHA-256', new TextEncoder().encode(randomString)),
+      ),
     );
-    return btoa(digest)
-      .replace(/=/g, '')
-      .replace(/\+/g, '-')
-      .replace(/\//g, '_');
+    return btoa(digest).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
   } else {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const { createHash } = require(excludeInBundle('crypto'));
@@ -43,7 +36,7 @@ async function generateCodeChallenge(randomString: string) {
   }
 }
 
-let codeVerifier: undefined | string ;
+let codeVerifier: undefined | string;
 
 export async function getCodeChallenge() {
   return await generateCodeChallenge(await getCodeVerifier());
@@ -55,9 +48,7 @@ export async function getCodeVerifier() {
   }
 
   if (typeof window !== 'undefined' && window.sessionStorage) {
-    const inSessionStorage = window.sessionStorage.getItem(
-      'goldstack_code_verifier'
-    );
+    const inSessionStorage = window.sessionStorage.getItem('goldstack_code_verifier');
     if (inSessionStorage) {
       codeVerifier = inSessionStorage;
       return codeVerifier;

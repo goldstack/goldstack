@@ -30,10 +30,7 @@ const moduleTemplates = getModuleTemplatesNames().map((e) => {
   };
 });
 
-const generateMarkdownDocs = async (
-  sourceFileName: string,
-  targetFileName: string
-) => {
+const generateMarkdownDocs = async (sourceFileName: string, targetFileName: string) => {
   const result = await resolveMarkdown(sourceFileName);
   write(result, targetFileName);
   console.log('Writing Markdown docs', path.resolve(targetFileName));
@@ -48,9 +45,7 @@ const run = async () => {
   });
 
   console.log(
-    `Processing templates:\n    ${fixedModuleTemplates
-      .map((t) => t.dirName)
-      .join('\n    ')}`
+    `Processing templates:\n    ${fixedModuleTemplates.map((t) => t.dirName).join('\n    ')}`,
   );
   assert(fixedModuleTemplates.length > 0, 'No templates found');
   // Step 1:
@@ -78,10 +73,8 @@ const run = async () => {
   //   Generate template Markdown docs
   for (let i = 0; i < fixedModuleTemplates.length; i++) {
     const moduleTemplate = fixedModuleTemplates[i];
-    const sourceFileName =
-      paths.templates + moduleTemplate.dirName + paths.readmeTemplatePath;
-    const targetFileName =
-      paths.templates + moduleTemplate.dirName + paths.readmePath;
+    const sourceFileName = paths.templates + moduleTemplate.dirName + paths.readmeTemplatePath;
+    const targetFileName = paths.templates + moduleTemplate.dirName + paths.readmePath;
     await generateMarkdownDocs(sourceFileName, targetFileName);
   }
 
@@ -89,65 +82,58 @@ const run = async () => {
   //    Generate boilerplate docs
   await generateMarkdownDocs(
     paths.buildSets + 'nextjsBootstrap.template.README.md',
-    paths.buildSets + 'nextjsBootstrap.README.md'
+    paths.buildSets + 'nextjsBootstrap.README.md',
   );
   await generateMarkdownDocs(
     paths.buildSets + 'emailSend.template.README.md',
-    paths.buildSets + 'emailSend.README.md'
+    paths.buildSets + 'emailSend.README.md',
   );
   await generateMarkdownDocs(
     paths.buildSets + 'hetznerVPS.template.README.md',
-    paths.buildSets + 'hetznerVPS.README.md'
+    paths.buildSets + 'hetznerVPS.README.md',
   );
   await generateMarkdownDocs(
     paths.buildSets + 'lambdaPythonJob.template.README.md',
-    paths.buildSets + 'lambdaPythonJob.README.md'
+    paths.buildSets + 'lambdaPythonJob.README.md',
   );
   await generateMarkdownDocs(
     paths.buildSets + 's3.template.README.md',
-    paths.buildSets + 's3.README.md'
+    paths.buildSets + 's3.README.md',
   );
   await generateMarkdownDocs(
     paths.buildSets + 'dynamodb.template.README.md',
-    paths.buildSets + 'dynamodb.README.md'
+    paths.buildSets + 'dynamodb.README.md',
   );
   await generateMarkdownDocs(
     paths.buildSets + 'staticWebsite.template.README.md',
-    paths.buildSets + 'staticWebsite.README.md'
+    paths.buildSets + 'staticWebsite.README.md',
   );
   await generateMarkdownDocs(
     paths.buildSets + 'serverSideRendering.template.README.md',
-    paths.buildSets + 'serverSideRendering.README.md'
+    paths.buildSets + 'serverSideRendering.README.md',
   );
   await generateMarkdownDocs(
     paths.buildSets + 'userManagement.template.README.md',
-    paths.buildSets + 'userManagement.README.md'
+    paths.buildSets + 'userManagement.README.md',
   );
 
   // Step 4:
   //   Generate Goldstack root readme
-  const sourceFileName = path.resolve(
-    `${paths.root}${paths.readmeTemplatePath}`
-  );
+  const sourceFileName = path.resolve(`${paths.root}${paths.readmeTemplatePath}`);
   const targetFileName = `${paths.root}${paths.readmePath}`;
   await generateMarkdownDocs(sourceFileName, targetFileName);
 
   // Step 5:
   //   Generate Goldstack root contributing guidelines
-  const sourceFileNameContributing = path.resolve(
-    `${paths.root}${paths.contributingTemplatePath}`
-  );
+  const sourceFileNameContributing = path.resolve(`${paths.root}${paths.contributingTemplatePath}`);
   const targetFileNameContributing = `${paths.root}${paths.contributingPath}`;
-  await generateMarkdownDocs(
-    sourceFileNameContributing,
-    targetFileNameContributing
-  );
+  await generateMarkdownDocs(sourceFileNameContributing, targetFileNameContributing);
 
   // Step 6:
   //    Generate Readme included in project project.
   await generateMarkdownDocs(
     `${paths.docs}templates/yarn-pnp-monorepo/index.md`,
-    `${paths.root}/workspaces/templates/README.md`
+    `${paths.root}/workspaces/templates/README.md`,
   );
 };
 

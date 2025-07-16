@@ -4,17 +4,9 @@ import type { Deployment } from '@goldstack/infra';
 
 import type { S3DeploymentConfiguration } from './S3DeploymentConfiguration';
 
-export type {
-  AWSDeployment,
-  TerraformDeployment,
-  Deployment,
-  S3DeploymentConfiguration,
-};
+export type { AWSDeployment, TerraformDeployment, Deployment, S3DeploymentConfiguration };
 
-export interface ThisDeployment
-  extends Deployment,
-    AWSDeployment,
-    TerraformDeployment {
+export interface ThisDeployment extends Deployment, AWSDeployment, TerraformDeployment {
   configuration: S3DeploymentConfiguration;
 }
 

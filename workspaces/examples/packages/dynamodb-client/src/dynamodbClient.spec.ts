@@ -1,9 +1,4 @@
-import {
-  connect,
-  getTableName,
-  startLocalDynamoDB,
-  stopLocalDynamoDB,
-} from '@goldstack/dynamodb';
+import { connect, getTableName, startLocalDynamoDB, stopLocalDynamoDB } from '@goldstack/dynamodb';
 
 import { DescribeTableCommand } from '@aws-sdk/client-dynamodb';
 
@@ -17,7 +12,7 @@ it('Should connect to DynamoDB table', async () => {
   const res = await table.send(
     new DescribeTableCommand({
       TableName: await getTableName(),
-    })
+    }),
   );
 
   expect(res.Table?.TableName?.length).toBeGreaterThan(2);

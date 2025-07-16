@@ -36,7 +36,7 @@ const ignorePlugin = (opts?: IgnoreWithCommentsPluginOptions): Plugin => {
             contents: text,
             loader: type,
           };
-        }
+        },
       );
 
       build.onLoad(
@@ -64,16 +64,13 @@ const ignorePlugin = (opts?: IgnoreWithCommentsPluginOptions): Plugin => {
             contents: text,
             loader: type,
           };
-        }
+        },
       );
     },
   };
 };
 
-export function mustIgnore(
-  comments: string[],
-  ignore: string[] | undefined
-): boolean {
+export function mustIgnore(comments: string[], ignore: string[] | undefined): boolean {
   if (comments.length === 0) {
     return false;
   }
@@ -81,9 +78,7 @@ export function mustIgnore(
     return true;
   }
   const reducer = (prev: boolean, curr: string): boolean => {
-    return (
-      prev && comments.find((el) => el === curr || el === '') !== undefined
-    );
+    return prev && comments.find((el) => el === curr || el === '') !== undefined;
   };
   return ignore.reduce(reducer, true);
 }

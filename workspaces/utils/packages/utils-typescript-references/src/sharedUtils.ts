@@ -48,7 +48,7 @@ export function getPackages(cmdRes: string): PackageData[] {
  */
 export function getTsConfigPath(
   workspacePath: string,
-  tsConfigNames: string[]
+  tsConfigNames: string[],
 ): string | undefined {
   return tsConfigNames
     .map((tsConfigName) => path.posix.join(workspacePath, tsConfigName))
@@ -65,14 +65,12 @@ export function getTsConfigPath(
 export function makeReferences(
   packagePath: string,
   packages: Array<PackageData | null | undefined>,
-  tsConfigNames: string[]
+  tsConfigNames: string[],
 ): Array<{ path: string }> {
   return (
     packages
       .filter((p): p is PackageData => !!p)
-      .map((dependencyData) =>
-        getTsConfigPath(dependencyData.path, tsConfigNames)
-      )
+      .map((dependencyData) => getTsConfigPath(dependencyData.path, tsConfigNames))
       .filter((p): p is string => !!p)
       // for each add a path
       .map((tsConfigPath) => ({
@@ -80,7 +78,7 @@ export function makeReferences(
           packagePath,
           path.basename(tsConfigPath) === 'tsconfig.json'
             ? path.dirname(tsConfigPath)
-            : tsConfigPath
+            : tsConfigPath,
         ),
       }))
   );

@@ -15,13 +15,13 @@ export interface DynamoDBInstance {
 // Define type signatures for the methods
 export type LocalConnectType = (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
-  deploymentName?: string
+  deploymentName?: string,
 ) => Promise<DynamoDBClient>;
 
 export type StartLocalDynamoDBType = (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   options: { port: number },
-  deploymentName?: string
+  deploymentName?: string,
 ) => Promise<DynamoDBInstance>;
 
 export interface StopLocalDynamoDBOptions {
@@ -31,20 +31,18 @@ export interface StopLocalDynamoDBOptions {
 export type StopLocalDynamoDBType = (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   options?: StopLocalDynamoDBOptions,
-  deploymentName?: string
+  deploymentName?: string,
 ) => Promise<void>;
 
 export type StopAllLocalDynamoDBType = (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
-  deploymentName?: string
+  deploymentName?: string,
 ) => Promise<void>;
 
 /**
  * Creates a DynamoDB client for a local instance
  */
-async function createClient(
-  instance: DynamoDBInstance
-): Promise<DynamoDBClient> {
+async function createClient(instance: DynamoDBInstance): Promise<DynamoDBClient> {
   const endpoint = getEndpointUrl(instance.port);
   debug(`Connecting to local DynamoDB instance on endpoint: ${endpoint}`);
   return new DynamoDBClient({
@@ -57,10 +55,7 @@ async function createClient(
 /**
  * Connects to a local DynamoDB instance, starting one if necessary
  */
-export const localConnect: LocalConnectType = async (
-  packageConfig,
-  deploymentName
-) => {
+export const localConnect: LocalConnectType = async (packageConfig, deploymentName) => {
   const manager = await getInstanceManager();
   const existingInstance = await manager.getFirstRunningInstance();
   if (existingInstance) {
@@ -69,7 +64,7 @@ export const localConnect: LocalConnectType = async (
 
   if (isTestEnvironment()) {
     throw new Error(
-      'DynamoDB Local has not been started. When running Jest test, start Local DynamoDB explicitly with `startLocalDynamoDB` and shut the instance down with `stopLocalDynamoDB` when tests are completed.'
+      'DynamoDB Local has not been started. When running Jest test, start Local DynamoDB explicitly with `startLocalDynamoDB` and shut the instance down with `stopLocalDynamoDB` when tests are completed.',
     );
   }
 
@@ -77,7 +72,7 @@ export const localConnect: LocalConnectType = async (
   const newInstance = await startLocalDynamoDB(
     packageConfig,
     { port: defaultConfig.port },
-    deploymentName
+    deploymentName,
   );
   return await createClient(newInstance);
 };
@@ -88,16 +83,14 @@ export const localConnect: LocalConnectType = async (
 export const startLocalDynamoDB: StartLocalDynamoDBType = async (
   packageConfig,
   { port },
-  deploymentName
+  deploymentName,
 ) => {
   const manager = await getInstanceManager();
 
   // Check if instance already exists on requested port
   const existingInstance = await manager.getInstance(port);
   if (existingInstance && existingInstance !== 'stopped') {
-    debug(
-      `Starting DynamoDB local not required since instance already running on port ${port}`
-    );
+    debug(`Starting DynamoDB local not required since instance already running on port ${port}`);
     manager.incrementUsageCounter(port);
     return existingInstance;
   }
@@ -123,13 +116,10 @@ export const startLocalDynamoDB: StartLocalDynamoDBType = async (
  */
 export const stopAllLocalDynamoDB: StopAllLocalDynamoDBType = async (
   packageConfig,
-  deploymentName
+  deploymentName,
 ) => {
   const manager = await getInstanceManager();
-  debug(
-    'Stopping all local DynamoDB instances. Currently defined: ' +
-      manager.getInstanceCount()
-  );
+  debug('Stopping all local DynamoDB instances. Currently defined: ' + manager.getInstanceCount());
 
   const allInstances = manager.getAllInstances();
   for (const [port, instance] of allInstances.entries()) {
@@ -148,7 +138,7 @@ export const stopAllLocalDynamoDB: StopAllLocalDynamoDBType = async (
 export const stopLocalDynamoDB: StopLocalDynamoDBType = async (
   packageConfig,
   options,
-  deploymentName
+  deploymentName,
 ) => {
   const manager = await getInstanceManager();
   const portToStop = options?.port ?? defaultConfig.port;

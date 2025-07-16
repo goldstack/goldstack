@@ -9,7 +9,7 @@ import type ProjectData from './types/ProjectData';
 export type { ProjectData };
 
 export const connectProjectRepository = async (
-  deploymentName?: string
+  deploymentName?: string,
 ): Promise<ProjectRepository> => {
   const s3 = await connect(deploymentName);
   const bucketName = await getBucketName(deploymentName);

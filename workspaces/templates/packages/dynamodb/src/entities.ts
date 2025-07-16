@@ -74,10 +74,7 @@ export type Table = ToolboxTable<
   '_et'
 >;
 
-export function createTable(
-  dynamoDB: DynamoDBDocumentClient,
-  tableName: string
-): Table {
+export function createTable(dynamoDB: DynamoDBDocumentClient, tableName: string): Table {
   const table = new ToolboxTable({
     name: tableName,
     partitionKey: {

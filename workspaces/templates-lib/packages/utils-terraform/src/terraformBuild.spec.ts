@@ -10,16 +10,10 @@ describe('Terraform Utils', () => {
   it('Should convert variable names to Python variable Names', () => {
     expect(convertToPythonVariable('myVarName')).toEqual('my_var_name');
     expect(convertToPythonVariable('awsRegion')).toEqual('aws_region');
-    expect(convertToPythonVariable('hostedZoneDomain')).toEqual(
-      'hosted_zone_domain'
-    );
+    expect(convertToPythonVariable('hostedZoneDomain')).toEqual('hosted_zone_domain');
     expect(convertToPythonVariable('websiteDomain')).toEqual('website_domain');
-    expect(convertToPythonVariable('websiteDomainRedirect')).toEqual(
-      'website_domain_redirect'
-    );
-    expect(convertToPythonVariable('defaultCacheDuration')).toEqual(
-      'default_cache_duration'
-    );
+    expect(convertToPythonVariable('websiteDomainRedirect')).toEqual('website_domain_redirect');
+    expect(convertToPythonVariable('defaultCacheDuration')).toEqual('default_cache_duration');
   });
 
   it('Should convert variables name from Pything variable names', () => {
@@ -43,7 +37,7 @@ variable "bucket_name" {
   description = "Name of the S3 bucket."
   type = string
 }`,
-      './variables.tf'
+      './variables.tf',
     );
     const vars = getVariablesFromHCL({
       awsRegion: 'us-east-1',

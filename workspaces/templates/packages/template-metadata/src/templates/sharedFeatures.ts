@@ -4,8 +4,7 @@ export const featureYarn3 = (): ShortTemplateFeature => {
   return {
     title: 'Yarn 3',
     id: 'yarn',
-    description:
-      'Fast build times and advanced modularity using Yarn 3 workspaces.',
+    description: 'Fast build times and advanced modularity using Yarn 3 workspaces.',
     image: 'yarn',
     details: {
       title: 'Build Modular Applications with Yarn Workspaces',
@@ -24,13 +23,11 @@ export const featureVSCode = (): ShortTemplateFeature => {
   return {
     title: 'VSCode',
     id: 'vscode',
-    description:
-      'Template configured to work seamlessly with the powerful VSCode editor.',
+    description: 'Template configured to work seamlessly with the powerful VSCode editor.',
     image: 'vscode',
     details: {
       title: 'Develop in VSCode',
-      description:
-        'All configuration for developing TypeScript code for VSCode provided.',
+      description: 'All configuration for developing TypeScript code for VSCode provided.',
       icons: ['vscode'],
       content: {
         type: 'none',
@@ -40,14 +37,11 @@ export const featureVSCode = (): ShortTemplateFeature => {
   };
 };
 
-export const featureAppComposition = (
-  templates: string[]
-): ShortTemplateFeature => {
+export const featureAppComposition = (templates: string[]): ShortTemplateFeature => {
   return {
     title: 'App Composition',
     id: 'composition',
-    description:
-      'Easily combine with any Goldstack module to compose end-to-end applications.',
+    description: 'Easily combine with any Goldstack module to compose end-to-end applications.',
     image: 'composition',
     details: {
       title: 'Integrate with Goldstack Templates',

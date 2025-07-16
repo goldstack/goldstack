@@ -24,8 +24,7 @@ export type EmailDomain = string;
  */
 export type HostedZoneDomain = string;
 
-export interface EmailSendDeploymentConfiguration
-  extends DeploymentConfiguration {
+export interface EmailSendDeploymentConfiguration extends DeploymentConfiguration {
   domain: EmailDomain;
   hostedZoneDomain: HostedZoneDomain;
 }
@@ -36,10 +35,7 @@ export interface EmailSendDeploymentConfiguration
  * @Title Deployment
  *
  */
-export interface EmailSendDeployment
-  extends Deployment,
-    AWSDeployment,
-    TerraformDeployment {
+export interface EmailSendDeployment extends Deployment, AWSDeployment, TerraformDeployment {
   configuration: EmailSendDeploymentConfiguration;
 }
 

@@ -14,34 +14,29 @@ import {
 
 export const buildTemplate = async (
   params: ProjectBuildParams,
-  packageConfig: PackageProjectConfiguration
+  packageConfig: PackageProjectConfiguration,
 ): Promise<void> => {
-  debug(
-    `Building package ${packageConfig.packageName} in ${params.projectDirectory}`
-  );
+  debug(`Building package ${packageConfig.packageName} in ${params.projectDirectory}`);
   const template: TemplateReference = {
     name: packageConfig.templateReference.templateName,
     version: packageConfig.templateReference.templateVersion,
   };
 
-  const templateReference = await assertTemplateReferenceVersion(
-    params.s3,
-    template
-  );
+  const templateReference = await assertTemplateReferenceVersion(params.s3, template);
 
   assert(templateReference.version);
 
   const packageFolder = path.join(
     params.projectDirectory,
     'packages',
-    `${packageConfig.packageName}/`
+    `${packageConfig.packageName}/`,
   );
 
   mkdir('-p', packageFolder);
   const zipPath = await params.s3.downloadTemplateArchive(
     templateReference.name,
     templateReference.version,
-    packageFolder
+    packageFolder,
   );
 
   assert(zipPath);

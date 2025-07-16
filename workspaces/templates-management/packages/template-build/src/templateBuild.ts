@@ -1,7 +1,4 @@
-import {
-  type PrepareTemplate,
-  generateBuilderFromConfig,
-} from '@goldstack/prepare-template';
+import { type PrepareTemplate, generateBuilderFromConfig } from '@goldstack/prepare-template';
 import { PrepareYarnPnpMonorepo } from '@goldstack/prepare-yarn-pnp-monorepo';
 import type { TemplateRepository } from '@goldstack/template-repository';
 import { info } from '@goldstack/utils-log';
@@ -18,11 +15,9 @@ export interface TemplateBuildConfig {
 
 export const build = async (
   templateName: string,
-  config: TemplateBuildConfig
+  config: TemplateBuildConfig,
 ): Promise<GoldstackTemplateConfiguration> => {
-  let builder = templateBuilders.find(
-    (builder) => templateName === builder.templateName()
-  );
+  let builder = templateBuilders.find((builder) => templateName === builder.templateName());
   const monorepoRoot = config.monorepoRoot.endsWith('/')
     ? config.monorepoRoot
     : config.monorepoRoot + '/';
@@ -32,7 +27,7 @@ export const build = async (
   const sourceTemplateDirectory = join(
     monorepoRoot,
     'workspaces/templates/packages/',
-    templateName + '/'
+    templateName + '/',
   );
 
   if (!builder) {
@@ -43,23 +38,17 @@ export const build = async (
     throw new Error(`Cannot find builder for template ${templateName}`);
   }
 
-  info(
-    `Building template '${builder.templateName()}' in directory ` +
-      destinationDirectory,
-    {
-      templateName: builder.templateName(),
-      destinationDirectory,
-      sourceTemplateDirectory,
-    }
-  );
+  info(`Building template '${builder.templateName()}' in directory ` + destinationDirectory, {
+    templateName: builder.templateName(),
+    destinationDirectory,
+    sourceTemplateDirectory,
+  });
   await builder.run({
     monorepoRoot,
     destinationDirectory,
     sourceTemplateDirectory,
   });
-  const templateConfig = await config.templateRepository.addTemplateVersion(
-    destinationDirectory
-  );
+  const templateConfig = await config.templateRepository.addTemplateVersion(destinationDirectory);
 
   return templateConfig;
 };

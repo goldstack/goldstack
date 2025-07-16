@@ -38,9 +38,7 @@ export default function rehypeDocs({ filePath, tag, processor }) {
     // The URL is relative at this point
     props.className = 'relative';
     // Update the hash used by anchors to match the one set for headers
-    props.href = hash
-      ? `${relativePath}#${anchorSlugger.slug(hash)}`
-      : relativePath;
+    props.href = hash ? `${relativePath}#${anchorSlugger.slug(hash)}` : relativePath;
   }
 
   function visitHeading(node: any): void {

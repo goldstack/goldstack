@@ -14,16 +14,10 @@ export class InfraDestroyTest implements TemplateTest {
   }
   async runTest(params: RunTestParams): Promise<void> {
     const packageConfig = readPackageConfigFromDir(params.packageDir);
-    const packageJson = JSON.parse(
-      read(path.join(params.packageDir, 'package.json'))
-    );
+    const packageJson = JSON.parse(read(path.join(params.packageDir, 'package.json')));
 
-    if (
-      !existsSync(path.join(params.packageDir, 'infra', 'aws', '.terraform'))
-    ) {
-      warn(
-        'Skipping destroying infrastructure since terraform not initialised.'
-      );
+    if (!existsSync(path.join(params.packageDir, 'infra', 'aws', '.terraform'))) {
+      warn('Skipping destroying infrastructure since terraform not initialised.');
       return;
     }
 
@@ -34,11 +28,11 @@ export class InfraDestroyTest implements TemplateTest {
           process.env.GOLDSTACK_DEBUG = 'true';
           yarn(
             params.projectDir,
-            `workspace ${packageJson.name} infra destroy ${deployment.name} -y`
+            `workspace ${packageJson.name} infra destroy ${deployment.name} -y`,
           );
         },
         120000,
-        20
+        20,
       );
     }
   }

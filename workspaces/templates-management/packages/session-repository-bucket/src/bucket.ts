@@ -11,31 +11,21 @@ import type { Client, Command } from '@smithy/smithy-client';
 import goldstackConfig from './../goldstack.json';
 
 export const connect = async (deploymentName?: string): Promise<S3Client> => {
-  return await templateConnect(
-    goldstackConfig,
-    goldstackSchema,
-    deploymentName
-  );
+  return await templateConnect(goldstackConfig, goldstackSchema, deploymentName);
 };
 
 export const getSignedUrl = async <
   InputTypesUnion extends object,
   InputType extends InputTypesUnion,
-  OutputType extends MetadataBearer = MetadataBearer
+  OutputType extends MetadataBearer = MetadataBearer,
 >(
   client: Client<any, InputTypesUnion, MetadataBearer, any>,
   command: Command<InputType, OutputType, any, InputTypesUnion, MetadataBearer>,
-  options: RequestPresigningArguments = {}
+  options: RequestPresigningArguments = {},
 ): Promise<string> => {
   return templateGetSignedUrl(client, command, options);
 };
 
-export const getBucketName = async (
-  deploymentName?: string
-): Promise<string> => {
-  return await tempalteGetBucketName(
-    goldstackConfig,
-    goldstackSchema,
-    deploymentName
-  );
+export const getBucketName = async (deploymentName?: string): Promise<string> => {
+  return await tempalteGetBucketName(goldstackConfig, goldstackSchema, deploymentName);
 };

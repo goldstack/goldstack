@@ -1,7 +1,4 @@
-import type {
-  EmailSendPackage,
-  EmailSendDeployment,
-} from './types/EmailSendPackage';
+import type { EmailSendPackage, EmailSendDeployment } from './types/EmailSendPackage';
 
 export type { EmailSendDeployment, EmailSendPackage };
 
@@ -24,9 +21,9 @@ import type { CreateSESClientType } from './mockedSES';
  */
 export const createSESClient: CreateSESClientType = (sesClient) => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const createSESClient: CreateSESClientType = require(excludeInBundle(
-    './mockedSES'
-  )).createSESClient;
+  const createSESClient: CreateSESClientType = require(
+    excludeInBundle('./mockedSES'),
+  ).createSESClient;
   return createSESClient(sesClient);
 };
 

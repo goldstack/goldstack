@@ -38,9 +38,7 @@ export const handler: Handler = (event, context, callback) => {
  * @returns {SQSClient} The mocked SQS client.
  */
 export const getMockedSQS = (): SQSClient => {
-  const messageSendHandler: MessageCallback = async (
-    message: SendMessageRequest
-  ) => {
+  const messageSendHandler: MessageCallback = async (message: SendMessageRequest) => {
     // Constructing a mock event to pass to the handler
     const sqsEvent: SQSEvent = {
       Records: [
@@ -75,47 +73,31 @@ export const getMockedSQS = (): SQSClient => {
  * @returns {SQSClient} The mocked SQS client.
  */
 export const getMockedDLQSQS = (): SQSClient => {
-  const messageSendHandler: MessageCallback = async (
-    message: SendMessageRequest
-  ) => {
+  const messageSendHandler: MessageCallback = async (message: SendMessageRequest) => {
     warn('DLQ Message received ' + message.MessageBody);
   };
 
   return templateGetMockedDLQSQS(goldstackConfig, messageSendHandler);
 };
 
-export const connectToSQSDLQQueue = async (
-  deploymentName?: string
-): Promise<SQSClient> => {
+export const connectToSQSDLQQueue = async (deploymentName?: string): Promise<SQSClient> => {
   deploymentName = deploymentName || process.env['GOLDSTACK_DEPLOYMENT'];
 
   if (deploymentName === 'local') {
     return getMockedDLQSQS();
   }
 
-  return await templateConnect(
-    goldstackConfig,
-    goldstackSchema,
-    deployments,
-    deploymentName
-  );
+  return await templateConnect(goldstackConfig, goldstackSchema, deployments, deploymentName);
 };
 
-export const connectToSQSQueue = async (
-  deploymentName?: string
-): Promise<SQSClient> => {
+export const connectToSQSQueue = async (deploymentName?: string): Promise<SQSClient> => {
   deploymentName = deploymentName || process.env['GOLDSTACK_DEPLOYMENT'];
 
   if (deploymentName === 'local') {
     return getMockedSQS();
   }
 
-  return await templateConnect(
-    goldstackConfig,
-    goldstackSchema,
-    deployments,
-    deploymentName
-  );
+  return await templateConnect(goldstackConfig, goldstackSchema, deployments, deploymentName);
 };
 
 /**
@@ -123,15 +105,8 @@ export const connectToSQSQueue = async (
  *
  * @returns {Promise<string>} The name of the SQS queue.
  */
-export async function getSQSQueueName(
-  deploymentName?: string
-): Promise<string> {
-  return await fetchQueueName(
-    goldstackConfig,
-    goldstackSchema,
-    deployments,
-    deploymentName
-  );
+export async function getSQSQueueName(deploymentName?: string): Promise<string> {
+  return await fetchQueueName(goldstackConfig, goldstackSchema, deployments, deploymentName);
 }
 
 /**
@@ -140,12 +115,7 @@ export async function getSQSQueueName(
  * @returns {Promise<string>} The URL of the SQS queue.
  */
 export async function getSQSQueueUrl(deploymentName?: string): Promise<string> {
-  return await fetchQueueUrl(
-    goldstackConfig,
-    goldstackSchema,
-    deployments,
-    deploymentName
-  );
+  return await fetchQueueUrl(goldstackConfig, goldstackSchema, deployments, deploymentName);
 }
 
 /**
@@ -153,15 +123,8 @@ export async function getSQSQueueUrl(deploymentName?: string): Promise<string> {
  *
  * @returns {Promise<string>} The name of the SQS DLQ queue.
  */
-export async function getSQSDLQQueueName(
-  deploymentName?: string
-): Promise<string> {
-  return await fetchDLQQueueName(
-    goldstackConfig,
-    goldstackSchema,
-    deployments,
-    deploymentName
-  );
+export async function getSQSDLQQueueName(deploymentName?: string): Promise<string> {
+  return await fetchDLQQueueName(goldstackConfig, goldstackSchema, deployments, deploymentName);
 }
 
 /**
@@ -169,13 +132,6 @@ export async function getSQSDLQQueueName(
  *
  * @returns {Promise<string>} The URL of the SQS DLQ queue.
  */
-export async function getSQSDLQQueueUrl(
-  deploymentName?: string
-): Promise<string> {
-  return await fetchDLQQueueUrl(
-    goldstackConfig,
-    goldstackSchema,
-    deployments,
-    deploymentName
-  );
+export async function getSQSDLQQueueUrl(deploymentName?: string): Promise<string> {
+  return await fetchDLQQueueUrl(goldstackConfig, goldstackSchema, deployments, deploymentName);
 }

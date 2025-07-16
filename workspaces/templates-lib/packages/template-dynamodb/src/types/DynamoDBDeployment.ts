@@ -4,17 +4,9 @@ import type { Deployment } from '@goldstack/infra';
 
 import type { DynamoDBDeploymentConfiguration } from './DynamoDBDeploymentConfiguration';
 
-export type {
-  AWSDeployment,
-  TerraformDeployment,
-  Deployment,
-  DynamoDBDeploymentConfiguration,
-};
+export type { AWSDeployment, TerraformDeployment, Deployment, DynamoDBDeploymentConfiguration };
 
-export interface ThisDeployment
-  extends Deployment,
-    AWSDeployment,
-    TerraformDeployment {
+export interface ThisDeployment extends Deployment, AWSDeployment, TerraformDeployment {
   configuration: DynamoDBDeploymentConfiguration;
 }
 

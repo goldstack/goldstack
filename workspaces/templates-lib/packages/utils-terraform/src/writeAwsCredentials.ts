@@ -7,17 +7,20 @@ export function writeAwsCredentials(envVarString: string, dir: string): void {
     .split(' -e ')
     .filter((v) => v)
     .map((v) => v.trim())
-    .reduce((acc, curr) => {
-      // Remove any leading '-e ' that might have been included in the split
-      const cleaned = curr.replace(/^-e\s+/, '');
-      const [key, ...valueParts] = cleaned.split('=');
-      // Join value parts back together in case the value itself contained '='
-      const value = valueParts.join('=');
-      if (key && value) {
-        acc[key] = value.replace(/["']/g, '');
-      }
-      return acc;
-    }, {} as Record<string, string>);
+    .reduce(
+      (acc, curr) => {
+        // Remove any leading '-e ' that might have been included in the split
+        const cleaned = curr.replace(/^-e\s+/, '');
+        const [key, ...valueParts] = cleaned.split('=');
+        // Join value parts back together in case the value itself contained '='
+        const value = valueParts.join('=');
+        if (key && value) {
+          acc[key] = value.replace(/["']/g, '');
+        }
+        return acc;
+      },
+      {} as Record<string, string>,
+    );
 
   const credContent = `# This file is generated. Do not change it
   

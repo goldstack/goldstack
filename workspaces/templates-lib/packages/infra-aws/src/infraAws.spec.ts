@@ -96,18 +96,12 @@ credential_process=cat ~/processCredentials.json
     const testDir = './goldstackLocal/tests/getAWSUser';
     mkdir('-p', testDir);
     write(awsConfig, testDir + '/config-embedded.json');
-    const providerDev = await getAWSUser(
-      'goldstack-dev',
-      testDir + '/config-embedded.json'
-    );
+    const providerDev = await getAWSUser('goldstack-dev', testDir + '/config-embedded.json');
     const credentialsDev = await getAWSCredentials(providerDev);
     assert(credentialsDev.accessKeyId === 'dummy');
 
     resetAWSUser();
-    const providerProd = await getAWSUser(
-      'goldstack-prod',
-      testDir + '/config-embedded.json'
-    );
+    const providerProd = await getAWSUser('goldstack-prod', testDir + '/config-embedded.json');
     const credentialsProd = await getAWSCredentials(providerProd);
     assert.equal(credentialsProd.accessKeyId, 'dummy-prod');
   });
@@ -123,9 +117,7 @@ credential_process=cat ~/processCredentials.json
       "config": {
         "profile": "goldstack-dev",
         "awsDefaultRegion": "us-west-2",
-        "awsCredentialsFileName": "${path
-          .resolve('./testData/awsCredentials')
-          .replace(/\\/g, '/')}"
+        "awsCredentialsFileName": "${path.resolve('./testData/awsCredentials').replace(/\\/g, '/')}"
       }
     }
   ]
@@ -155,9 +147,7 @@ credential_process=cat ~/processCredentials.json
         "profile": "with-process",
         "awsDefaultRegion": "us-west-2",
         "credentialsSource": "process",
-        "awsCredentialsFileName": "${path
-          .resolve('./testData/awsCredentials')
-          .replace(/\\/g, '/')}"
+        "awsCredentialsFileName": "${path.resolve('./testData/awsCredentials').replace(/\\/g, '/')}"
       }
     }
   ]
@@ -166,10 +156,7 @@ credential_process=cat ~/processCredentials.json
     mkdir('-p', testDir);
     write(awsConfig, testDir + '/config.json');
 
-    const providerProcess = await getAWSUser(
-      'process',
-      testDir + '/config.json'
-    );
+    const providerProcess = await getAWSUser('process', testDir + '/config.json');
     assert(providerProcess);
 
     // cannot validate in v3
@@ -190,9 +177,7 @@ credential_process=cat ~/processCredentials.json
         "profile": "with-process",
         "awsDefaultRegion": "us-west-2",
         "credentialsSource": "process",
-        "awsConfigFileName": "${path
-          .resolve('./testData/awsConfig')
-          .replace(/\\/g, '/')}"
+        "awsConfigFileName": "${path.resolve('./testData/awsConfig').replace(/\\/g, '/')}"
       }
     }
   ]
@@ -201,10 +186,7 @@ credential_process=cat ~/processCredentials.json
     mkdir('-p', testDir);
     write(awsConfig, testDir + '/config.json');
 
-    const provider = await getAWSUser(
-      'process-from-config',
-      testDir + '/config.json'
-    );
+    const provider = await getAWSUser('process-from-config', testDir + '/config.json');
     assert(provider);
 
     // cannot validate in v3

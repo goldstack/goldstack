@@ -10,29 +10,29 @@ export const assertWebsiteAvailable = async (url: string): Promise<void> => {
   const resp = await axios.get(url);
   assert(
     resp.status === 200 || resp.status === 304,
-    `HTTP call to website resulted in non success reponse code: ${resp.status} ${resp.statusText} (${url})`
+    `HTTP call to website resulted in non success reponse code: ${resp.status} ${resp.statusText} (${url})`,
   );
 };
 
 export const assertWebsiteRedirect = async (
   url: string,
-  expectedForwardUrl: string
+  expectedForwardUrl: string,
 ): Promise<void> => {
   const resp = await axios.get(url);
   if (resp.status === 200 || resp.status === 304) {
     assert(
       resp.request.res.responseUrl === expectedForwardUrl,
-      `Forwarded to unepxected URL ${resp.request.res.responseUrl}. Expected: ${expectedForwardUrl}`
+      `Forwarded to unepxected URL ${resp.request.res.responseUrl}. Expected: ${expectedForwardUrl}`,
     );
     return;
   }
   assert(
     resp.status === 301,
-    `HTTP call to website resulted in no redirect reponse code: ${resp.status} ${resp.statusText} (${url})`
+    `HTTP call to website resulted in no redirect reponse code: ${resp.status} ${resp.statusText} (${url})`,
   );
   assert(
     resp.headers.Location === expectedForwardUrl,
-    `Unexpected forward URL: ${resp.headers.Location}. Expected: ${expectedForwardUrl}`
+    `Unexpected forward URL: ${resp.headers.Location}. Expected: ${expectedForwardUrl}`,
   );
 };
 
@@ -48,23 +48,22 @@ export class AssertStaticWebsiteAwsDeploymentsTest implements TemplateTest {
         'Asserting website deployed for ' +
           deployment.name +
           ' deployed to ' +
-          deployment.configuration.websiteDomain
+          deployment.configuration.websiteDomain,
       );
 
-      const staticWebsite1Url =
-        'https://' + deployment.configuration.websiteDomain + '/';
+      const staticWebsite1Url = 'https://' + deployment.configuration.websiteDomain + '/';
       await assertWebsiteAvailable(staticWebsite1Url);
       await assertWebsiteRedirect(
         'http://' + deployment.configuration.websiteDomain,
-        staticWebsite1Url
+        staticWebsite1Url,
       );
       await assertWebsiteRedirect(
         'https://' + deployment.configuration.websiteDomainRedirect,
-        staticWebsite1Url
+        staticWebsite1Url,
       );
       await assertWebsiteRedirect(
         'http://' + deployment.configuration.websiteDomainRedirect,
-        staticWebsite1Url
+        staticWebsite1Url,
       );
     }
   }

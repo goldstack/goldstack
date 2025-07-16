@@ -11,7 +11,7 @@ import { read } from '@goldstack/utils-sh';
 
 export async function resolveMarkdown(filePath: string): Promise<string> {
   try {
-    let tree: any ;
+    let tree: any;
     tree = unified()
       .use(markdown as any)
       // .use(rehypeMarkdown, { filePath })

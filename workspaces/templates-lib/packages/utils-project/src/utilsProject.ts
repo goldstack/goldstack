@@ -5,18 +5,14 @@ import { parseConfig } from '@goldstack/utils-config';
 
 export * from './types/projectConfigurationSchema';
 
-export const readProjectConfigFromString = (
-  data: string
-): ProjectConfiguration => {
+export const readProjectConfigFromString = (data: string): ProjectConfiguration => {
   const config = parseConfig(data, configSchema, {
     errorMessage: 'Cannot load template config.',
   }) as ProjectConfiguration;
   return config;
 };
 
-export const readProjectConfigFromFile = (
-  path = 'project.json'
-): ProjectConfiguration => {
+export const readProjectConfigFromFile = (path = 'project.json'): ProjectConfiguration => {
   const data = read(path);
   return readProjectConfigFromString(data);
 };

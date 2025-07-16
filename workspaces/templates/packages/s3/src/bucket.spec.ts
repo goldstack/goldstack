@@ -11,9 +11,7 @@ describe('S3 Bucket', () => {
 
   it('Should be able to upload file', async () => {
     if (!process.env.AWS_ACCESS_KEY_ID) {
-      console.warn(
-        'Testing of S3 upload skipped since no AWS credentials available'
-      );
+      console.warn('Testing of S3 upload skipped since no AWS credentials available');
       return;
     }
     const s3 = await connect('prod');
@@ -55,9 +53,7 @@ describe('S3 Bucket', () => {
 
   it('Should be able to get rel mock signed url', async () => {
     if (!process.env.AWS_ACCESS_KEY_ID) {
-      console.warn(
-        'Testing of S3 upload skipped since no AWS credentials available'
-      );
+      console.warn('Testing of S3 upload skipped since no AWS credentials available');
       return;
     }
     const s3 = await connect('prod');

@@ -35,7 +35,7 @@ function assert(condition: any, msg?: string): asserts condition {
 const sleep = promisify(setTimeout);
 
 export const prepareLocalS3Repo = async (
-  goldstackTestsDir: string
+  goldstackTestsDir: string,
 ): Promise<S3TemplateRepository> => {
   await rmSafe(goldstackTestsDir);
 
@@ -84,9 +84,7 @@ export const getTemplateTests = (): TemplateTest[] => {
 export const getTemplateTest = (templateTestName: string): TemplateTest => {
   const tests = getTemplateTests();
 
-  const test = tests.find(
-    (templateTest) => templateTest.getName() === templateTestName
-  );
+  const test = tests.find((templateTest) => templateTest.getName() === templateTestName);
 
   if (!test) {
     throw new Error(`Cannot find test definition for ${templateTestName}`);
@@ -108,14 +106,10 @@ export const buildTemplate = async (params: {
     templateRepository: params.repo,
   });
 
-  const config = await params.repo.getLatestTemplateVersion(
-    params.templateName
-  );
+  const config = await params.repo.getLatestTemplateVersion(params.templateName);
 
   if (!config) {
-    throw new Error(
-      'Cannot read template configuration for ' + params.templateName
-    );
+    throw new Error('Cannot read template configuration for ' + params.templateName);
   }
 
   assert(config.templateName === params.templateName);
@@ -126,7 +120,7 @@ export const buildTemplate = async (params: {
   const path = await params.repo.downloadTemplateArchive(
     config.templateName,
     newVersion.templateVersion,
-    './goldstackLocal/work/templates/'
+    './goldstackLocal/work/templates/',
   );
 
   if (!path) {
@@ -137,7 +131,7 @@ export const buildTemplate = async (params: {
   const archiveSize = fs.statSync(path).size > 1000;
   assert(
     archiveSize,
-    `Resulting archive for template build too small. Archive ${path} has size ${archiveSize}`
+    `Resulting archive for template build too small. Archive ${path} has size ${archiveSize}`,
   );
 
   await rmSafe('./goldstackLocal/work/templates');

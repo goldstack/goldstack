@@ -22,22 +22,17 @@ const getEnvVar = (key: string): string => {
   return value;
 };
 
-export type MessageCallback = (
-  input: SendMessageRequest
-) => Promise<void> | void;
+export type MessageCallback = (input: SendMessageRequest) => Promise<void> | void;
 
 /**
  * Retrieves a mocked SQS client for local development. Initializes the client if not already created.
  * @param {MessageCallback} [onMessageSend] - Optional callback to handle the message sent event.
  * @returns {SQSClient} The mocked SQS client.
  */
-export const getMockedSQS = (
-  goldstackConfig: any,
-  onMessageSend?: MessageCallback
-): SQSClient => {
-  const createSQSClient: CreateSQSClientSignature = require(excludeInBundle(
-    './mockedSQS'
-  )).createSQSClient;
+export const getMockedSQS = (goldstackConfig: any, onMessageSend?: MessageCallback): SQSClient => {
+  const createSQSClient: CreateSQSClientSignature = require(
+    excludeInBundle('./mockedSQS'),
+  ).createSQSClient;
   return createSQSClient({
     queueUrl: getLocalSQSQueueUrl(goldstackConfig),
     sqsClient: undefined,
@@ -52,11 +47,11 @@ export const getMockedSQS = (
  */
 export const getMockedDLQSQS = (
   goldstackConfig: any,
-  onMessageSend?: MessageCallback
+  onMessageSend?: MessageCallback,
 ): SQSClient => {
-  const createSQSClient: CreateSQSClientSignature = require(excludeInBundle(
-    './mockedSQS'
-  )).createSQSClient;
+  const createSQSClient: CreateSQSClientSignature = require(
+    excludeInBundle('./mockedSQS'),
+  ).createSQSClient;
   return createSQSClient({
     queueUrl: getLocalSQSDLQUrl(goldstackConfig),
     sqsClient: undefined,
@@ -74,7 +69,7 @@ export const getMockedDLQSQS = (
 const getPackageConfigAndDeployment = (
   goldstackConfig: any,
   packageSchema: any,
-  deploymentName?: string
+  deploymentName?: string,
 ): {
   packageConfig: EmbeddedPackageConfig<SqsPackage, SqsDeployment>;
   deployment: SqsDeployment;
@@ -121,24 +116,22 @@ export const connect = async (
   goldstackConfig: any,
   packageSchema: any,
   deploymentsData: any,
-  deploymentName?: string
+  deploymentName?: string,
 ): Promise<SQSClient> => {
   const { deployment } = getPackageConfigAndDeployment(
     goldstackConfig,
     packageSchema,
-    deploymentName
+    deploymentName,
   );
 
   if (deployment.name === 'local') {
     warn(
-      `Initializing mocked SQS without handler for ${goldstackConfig.name}. Consider calling the connect() method from the instantiated template or use getMockedSQS()`
+      `Initializing mocked SQS without handler for ${goldstackConfig.name}. Consider calling the connect() method from the instantiated template or use getMockedSQS()`,
     );
     return getMockedSQS(goldstackConfig);
   }
 
-  const awsUser = process.env.AWS_ACCESS_KEY_ID
-    ? fromEnv()
-    : await getAwsUser(deployment.awsUser);
+  const awsUser = process.env.AWS_ACCESS_KEY_ID ? fromEnv() : await getAwsUser(deployment.awsUser);
 
   return new SQSClient({
     credentials: awsUser,
@@ -151,9 +144,7 @@ export const connect = async (
  * @param {any} awsUserName - Name of the user
  * @returns {Promise<AwsCredentialIdentityProvider>} The AWS credential provider.
  */
-const getAwsUser = async (
-  awsUserName: string
-): Promise<AwsCredentialIdentityProvider> => {
+const getAwsUser = async (awsUserName: string): Promise<AwsCredentialIdentityProvider> => {
   return getAWSUser(awsUserName);
 };
 
@@ -163,17 +154,10 @@ const getAwsUser = async (
  * @param {string} deploymentName - The deployment name
  * @returns {any} The deployment data
  */
-const getDeploymentData = (
-  deploymentsData: any,
-  deploymentName: string
-): any => {
-  const deployment = deploymentsData.find(
-    (d: any) => d.name === deploymentName
-  );
+const getDeploymentData = (deploymentsData: any, deploymentName: string): any => {
+  const deployment = deploymentsData.find((d: any) => d.name === deploymentName);
   if (!deployment) {
-    throw new Error(
-      `Cannot find deployment ${deploymentName} in deployments data`
-    );
+    throw new Error(`Cannot find deployment ${deploymentName} in deployments data`);
   }
   return deployment;
 };
@@ -190,7 +174,7 @@ export const getSQSQueueName = async (
   goldstackConfig: any,
   packageSchema: any,
   deploymentsData: any,
-  deploymentName?: string
+  deploymentName?: string,
 ): Promise<string> => {
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
 
@@ -214,7 +198,7 @@ export const getSQSQueueUrl = async (
   goldstackConfig: any,
   packageSchema: any,
   deploymentsData: any,
-  deploymentName?: string
+  deploymentName?: string,
 ): Promise<string> => {
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
 
@@ -238,7 +222,7 @@ export const getSQSDLQQueueName = async (
   goldstackConfig: any,
   packageSchema: any,
   deploymentsData: any,
-  deploymentName?: string
+  deploymentName?: string,
 ): Promise<string> => {
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
 
@@ -262,7 +246,7 @@ export const getSQSDLQQueueUrl = async (
   goldstackConfig: any,
   packageSchema: any,
   deploymentsData: any,
-  deploymentName?: string
+  deploymentName?: string,
 ): Promise<string> => {
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
 

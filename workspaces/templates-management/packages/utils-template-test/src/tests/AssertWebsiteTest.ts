@@ -10,7 +10,7 @@ export const assertWebsiteAvailable = async (url: string): Promise<void> => {
   const resp = await axios.get(url);
   assert(
     resp.status === 200 || resp.status === 304,
-    `HTTP call to website resulted in non success response code: ${resp.status} ${resp.statusText} (${url})`
+    `HTTP call to website resulted in non success response code: ${resp.status} ${resp.statusText} (${url})`,
   );
 };
 
@@ -26,11 +26,10 @@ export class AssertWebsiteTest implements TemplateTest {
         'Asserting website deployed for ' +
           deployment.name +
           ' deployed to ' +
-          deployment.configuration.websiteDomain
+          deployment.configuration.websiteDomain,
       );
 
-      const website1Url =
-        'https://' + deployment.configuration.websiteDomain + '/';
+      const website1Url = 'https://' + deployment.configuration.websiteDomain + '/';
       await assertWebsiteAvailable(website1Url);
     }
   }

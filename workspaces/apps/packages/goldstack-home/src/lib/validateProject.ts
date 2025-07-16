@@ -25,9 +25,7 @@ export const validateProject = (projectData: ProjectData): StepValidation[] => {
     ...projectData.packageConfigs.map((packageConfig) => {
       const schema = packageConfig.deploymentConfigSchema;
       const validate = ajv.compile(schema);
-      const valid = validate(
-        packageConfig.package.deployments[0].configuration
-      ) as boolean;
+      const valid = validate(packageConfig.package.deployments[0].configuration) as boolean;
       // if (!valid) console.log(validate.errors);
       return {
         stepName: packageConfig.package.name + ' Module',

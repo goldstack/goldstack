@@ -72,30 +72,20 @@ export const run = async (args: string[]): Promise<void> => {
       exec(command, { silent: false });
       console.log(`✔️ Command successfully run in ${packageDir}`);
     } catch {
-      console.log(
-        `❌ ERROR building: ${packageDir}. Package will be rebuilt on next change.`
-      );
+      console.log(`❌ ERROR building: ${packageDir}. Package will be rebuilt on next change.`);
       failedPackages.push(packageDir);
     }
-    const failedPackagesToTest = failedPackages.filter(
-      (pkg) => pkg !== packageDir
-    );
+    const failedPackagesToTest = failedPackages.filter((pkg) => pkg !== packageDir);
     if (failedPackagesToTest.length > 0) {
-      console.log(
-        `Running command for ${failedPackagesToTest.length} previously failed packages.`
-      );
+      console.log(`Running command for ${failedPackagesToTest.length} previously failed packages.`);
       for (const failedPackage of failedPackagesToTest) {
         cd(failedPackage);
 
         try {
           exec(command, { silent: false });
 
-          failedPackages = failedPackages.filter(
-            (pkg) => pkg !== failedPackage
-          );
-          console.log(
-            `✔️ Command successfully run for previously failed package: ${failedPackage}`
-          );
+          failedPackages = failedPackages.filter((pkg) => pkg !== failedPackage);
+          console.log(`✔️ Command successfully run for previously failed package: ${failedPackage}`);
         } catch {
           console.log(`❌ Command still failing for ${failedPackage}`);
         }

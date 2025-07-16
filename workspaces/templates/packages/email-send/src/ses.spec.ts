@@ -19,7 +19,7 @@ describe('SES template', () => {
           },
         },
         Source: 'sender@' + fromDomain,
-      })
+      }),
     );
 
     const sentEmailRequests = getSentEmailRequests(ses);

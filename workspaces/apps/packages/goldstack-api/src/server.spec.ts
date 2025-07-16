@@ -32,9 +32,7 @@ describe('Goldstack API', () => {
     const session = supertestSession(app, { cookieAccess });
     const sessionRes = await session.post('/sessions').send();
     expect(sessionRes.status).toEqual(200);
-    const cookie = session.cookies.find(
-      (cookie: any) => cookie.name === 'userToken'
-    );
+    const cookie = session.cookies.find((cookie: any) => cookie.name === 'userToken');
     expect(cookie).toBeDefined();
     // somehow the following requests don't use the cookie unless the domain is set to undefined
     cookie.domain = undefined;
@@ -45,14 +43,10 @@ describe('Goldstack API', () => {
     const projectId = res.body.projectId;
 
     config.projectName = 'updated';
-    const putRes = await session
-      .put(`/projects/${projectId}`)
-      .send({ project: config });
+    const putRes = await session.put(`/projects/${projectId}`).send({ project: config });
     expect(putRes.status).toEqual(200);
 
-    const invalidRequest = await request(app)
-      .get(`/projects/${projectId}`)
-      .send();
+    const invalidRequest = await request(app).get(`/projects/${projectId}`).send();
     expect(invalidRequest.status).toBeGreaterThanOrEqual(400);
     expect(invalidRequest.body).toHaveProperty('errorMessage');
 
@@ -66,18 +60,14 @@ describe('Goldstack API', () => {
     getRes.body.packageConfigs[0].package.configuration = { dummy: 'hello' };
     getRes.body.packageConfigs[0].package.deployments.push({ name: 'prod' });
 
-    const put2Res = await session
-      .put(`/projects/${projectId}`)
-      .send(getRes.body);
+    const put2Res = await session.put(`/projects/${projectId}`).send(getRes.body);
     expect(put2Res.status).toEqual(200);
 
     const get2Res = await session.get(`/projects/${projectId}`).send();
     expect(get2Res.status).toEqual(200);
     expect(get2Res.body.project.projectName).toEqual('updated');
     expect(get2Res.body.project.packages).toHaveLength(1);
-    expect(get2Res.body.packageConfigs[0].package.configuration.dummy).toEqual(
-      'hello'
-    );
+    expect(get2Res.body.packageConfigs[0].package.configuration.dummy).toEqual('hello');
     expect(get2Res.body.packageConfigs[0].package.deployments).toHaveLength(1);
 
     const getDocsRes = await session

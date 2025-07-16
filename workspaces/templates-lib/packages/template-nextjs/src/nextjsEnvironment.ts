@@ -3,7 +3,7 @@ import type { NextjsDeployment } from './types/NextJsPackage';
 import { info } from '@goldstack/utils-log';
 
 export const setNextjsEnvironmentVariables = async (
-  deployment: NextjsDeployment
+  deployment: NextjsDeployment,
 ): Promise<void> => {
   const variables = deployment?.configuration.environmentVariables || [];
 
@@ -13,9 +13,7 @@ export const setNextjsEnvironmentVariables = async (
   });
 
   info('Set production environment variables', variables);
-  const envContent = variables
-    .map((envVar) => `${envVar.name}=${envVar.value}\n`)
-    .join('');
+  const envContent = variables.map((envVar) => `${envVar.name}=${envVar.value}\n`).join('');
 
   write(envContent, '.env.production');
 };

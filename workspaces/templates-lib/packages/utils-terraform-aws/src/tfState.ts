@@ -18,10 +18,7 @@ import {
 
 import { error, info } from '@goldstack/utils-log';
 
-const assertDynamoDBTable = async (params: {
-  dynamoDB: DynamoDBClient;
-  tableName: string;
-}) => {
+const assertDynamoDBTable = async (params: { dynamoDB: DynamoDBClient; tableName: string }) => {
   // defining a table as required by Terraform https://www.terraform.io/docs/language/settings/backends/s3.html#dynamodb_table
   try {
     await params.dynamoDB.send(
@@ -40,7 +37,7 @@ const assertDynamoDBTable = async (params: {
         ],
         TableName: params.tableName,
         BillingMode: 'PAY_PER_REQUEST',
-      })
+      }),
     );
     info('DynamoDB table created for terraform state', {
       tableName: params.tableName,
@@ -60,17 +57,14 @@ const deleteDynamoDBTable = async (params: {
     await params.dynamoDB.send(
       new DeleteTableCommand({
         TableName: params.tableName,
-      })
+      }),
     );
   } catch (e) {
     throw e;
   }
 };
 
-const assertS3Bucket = async (params: {
-  s3: S3Client;
-  bucketName: string;
-}): Promise<void> => {
+const assertS3Bucket = async (params: { s3: S3Client; bucketName: string }): Promise<void> => {
   const bucketParams = {
     Bucket: params.bucketName,
   };
@@ -82,26 +76,21 @@ const assertS3Bucket = async (params: {
   } catch (e) {
     // if bucket already exists, ignore error
     if (!(e instanceof BucketAlreadyOwnedByYou)) {
-      error(
-        'Cannot create bucket ' + params.bucketName + ' error code' + e.code
-      );
+      error('Cannot create bucket ' + params.bucketName + ' error code' + e.code);
       throw new Error('Cannot create S3 state bucket: ' + e.message);
     }
   }
 };
 
-const deleteAllObjectsFromBucket = async (
-  s3: S3Client,
-  bucketName: string
-): Promise<void> => {
-  let continuationToken: string | undefined ;
+const deleteAllObjectsFromBucket = async (s3: S3Client, bucketName: string): Promise<void> => {
+  let continuationToken: string | undefined;
   do {
     // List objects in the bucket
     const listResponse = await s3.send(
       new ListObjectsV2Command({
         Bucket: bucketName,
         ContinuationToken: continuationToken,
-      })
+      }),
     );
 
     // Check if there are any objects to delete
@@ -121,18 +110,13 @@ const deleteAllObjectsFromBucket = async (
   } while (continuationToken);
 };
 
-const deleteS3Bucket = async (params: {
-  s3: S3Client;
-  bucketName: string;
-}): Promise<void> => {
+const deleteS3Bucket = async (params: { s3: S3Client; bucketName: string }): Promise<void> => {
   try {
     // First, delete all objects from the bucket
     await deleteAllObjectsFromBucket(params.s3, params.bucketName);
 
     // Then, delete the empty bucket
-    await params.s3.send(
-      new DeleteBucketCommand({ Bucket: params.bucketName })
-    );
+    await params.s3.send(new DeleteBucketCommand({ Bucket: params.bucketName }));
   } catch (e) {
     throw e; // Rethrow the error to handle it in the calling code if necessary
   }

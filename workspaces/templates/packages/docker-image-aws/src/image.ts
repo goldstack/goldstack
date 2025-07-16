@@ -27,10 +27,7 @@ interface RunParams {
 
 export const run = async (params: RunParams): Promise<StartTaskResult> => {
   const config = goldstackConfig as AWSDockerImagePackage;
-  const deploymentState = getDeploymentState(
-    params.deploymentName,
-    deploymentsState
-  );
+  const deploymentState = getDeploymentState(params.deploymentName, deploymentsState);
 
   return await runTask({
     cmd: params.command,
@@ -43,10 +40,7 @@ export const run = async (params: RunParams): Promise<StartTaskResult> => {
 
 export const start = async (params: RunParams): Promise<StartTaskResult> => {
   const config = goldstackConfig as AWSDockerImagePackage;
-  const deploymentState = getDeploymentState(
-    params.deploymentName,
-    deploymentsState
-  );
+  const deploymentState = getDeploymentState(params.deploymentName, deploymentsState);
 
   return await startTask({
     cmd: params.command,

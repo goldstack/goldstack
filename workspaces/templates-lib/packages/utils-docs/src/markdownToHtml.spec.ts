@@ -6,7 +6,7 @@ describe('markdownToHtml', () => {
     const result = await markdownToHtml(
       __dirname + '/markdown/configure.md',
       {},
-      read(__dirname + '/markdown/configure.md')
+      read(__dirname + '/markdown/configure.md'),
     );
     expect(result).toContain('<p>');
     expect(result).toContain('<a');

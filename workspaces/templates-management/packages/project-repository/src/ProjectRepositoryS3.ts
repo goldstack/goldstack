@@ -1,9 +1,4 @@
-import {
-  type S3Client,
-  GetObjectCommand,
-  NoSuchKey,
-  PutObjectCommand,
-} from '@aws-sdk/client-s3';
+import { type S3Client, GetObjectCommand, NoSuchKey, PutObjectCommand } from '@aws-sdk/client-s3';
 
 import { v4 as uuid4 } from 'uuid';
 
@@ -11,13 +6,7 @@ import type ProjectRepository from './ProjectRepositoryInterface';
 import type { ProjectId } from './ProjectRepositoryInterface';
 import type { ProjectConfiguration } from '@goldstack/utils-project';
 
-import {
-  zip,
-  rmSafe,
-  unzip,
-  mkdir,
-  goldstackLocalDir,
-} from '@goldstack/utils-sh';
+import { zip, rmSafe, unzip, mkdir, goldstackLocalDir } from '@goldstack/utils-sh';
 import { download } from '@goldstack/utils-s3';
 import fs from 'fs';
 
@@ -34,19 +23,14 @@ class ProjectRepositoryS3 implements ProjectRepository {
     this.bucketName = params.bucketName;
   }
 
-  async readProjectConfiguration(
-    id: string
-  ): Promise<ProjectConfiguration | undefined> {
+  async readProjectConfiguration(id: string): Promise<ProjectConfiguration | undefined> {
     try {
       const cmd = new GetObjectCommand({
         Bucket: this.bucketName,
         Key: `${id}/project.json`,
       });
       const obj = await this.s3.send(cmd);
-      assert(
-        obj.Body,
-        `Cannot read key from project S3 bucket: ${id}/project.json`
-      );
+      assert(obj.Body, `Cannot read key from project S3 bucket: ${id}/project.json`);
       return JSON.parse(await obj.Body.transformToString());
     } catch (e) {
       if (e instanceof NoSuchKey) {
@@ -65,10 +49,7 @@ class ProjectRepositoryS3 implements ProjectRepository {
     return id;
   }
 
-  async updateProjectData(
-    id: ProjectId,
-    projectData: ProjectData
-  ): Promise<void> {
+  async updateProjectData(id: ProjectId, projectData: ProjectData): Promise<void> {
     const cmd = new PutObjectCommand({
       Bucket: this.bucketName,
       Key: `${id}/projectData.json`,
@@ -83,16 +64,13 @@ class ProjectRepositoryS3 implements ProjectRepository {
       Key: `${id}/projectData.json`,
     });
     const obj = await this.s3.send(cmd);
-    assert(
-      obj.Body,
-      `Cannot read key from project S3 bucket: ${id}/projectData.json`
-    );
+    assert(obj.Body, `Cannot read key from project S3 bucket: ${id}/projectData.json`);
     return JSON.parse(await obj.Body.transformToString());
   }
 
   async updateProjectConfiguration(
     id: ProjectId,
-    configuration: ProjectConfiguration
+    configuration: ProjectConfiguration,
   ): Promise<void> {
     configuration.createdAt = new Date().toISOString();
     const cmd = new PutObjectCommand({
@@ -104,8 +82,7 @@ class ProjectRepositoryS3 implements ProjectRepository {
   }
 
   async downloadProject(id: ProjectId, path: string): Promise<void> {
-    const targetDir =
-      goldstackLocalDir() + 'work/project-download/' + uuid4() + '/';
+    const targetDir = goldstackLocalDir() + 'work/project-download/' + uuid4() + '/';
     mkdir('-p', targetDir);
     const targetArchive = `${targetDir}${id}.zip`;
     if (
@@ -127,8 +104,7 @@ class ProjectRepositoryS3 implements ProjectRepository {
   }
 
   async uploadProject(id: ProjectId, path: string): Promise<void> {
-    const targetDir =
-      goldstackLocalDir() + 'work/project-upload/' + uuid4() + '/';
+    const targetDir = goldstackLocalDir() + 'work/project-upload/' + uuid4() + '/';
     mkdir('-p', targetDir);
     const targetArchive = `${targetDir}${id}.zip`;
     await rmSafe(targetArchive);

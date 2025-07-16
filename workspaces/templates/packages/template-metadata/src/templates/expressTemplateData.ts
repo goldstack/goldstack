@@ -1,10 +1,6 @@
 import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { Express } from './moduleData';
-import {
-  featureAppComposition,
-  featureVSCode,
-  featureYarn3,
-} from './sharedFeatures';
+import { featureAppComposition, featureVSCode, featureYarn3 } from './sharedFeatures';
 
 export const getExpressTemplateData = (): ProjectTemplateProps => {
   return {
@@ -25,8 +21,7 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
       {
         title: 'Express.js',
         id: 'expressjs',
-        description:
-          'Start developing your Serverless Express server in minutes.',
+        description: 'Start developing your Serverless Express server in minutes.',
         image: 'nodejs',
         details: {
           title: 'Express.js Project Ready in Minutes',
@@ -43,8 +38,7 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
       {
         title: 'TypeScript',
         id: 'typescript',
-        description:
-          'Develop all routes for your Express.js application with TypeScript.',
+        description: 'Develop all routes for your Express.js application with TypeScript.',
         image: 'typescript',
         details: {
           title: 'Full TypeScript Support',

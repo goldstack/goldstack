@@ -1,13 +1,6 @@
 import type { PrepareTemplate, PrepareTemplateParams } from './prepareTemplateTypes';
 import { parseConfig } from '@goldstack/utils-config';
-import {
-  read,
-  write,
-  mkdir,
-  copy,
-  rmSafe,
-  globSync,
-} from '@goldstack/utils-sh';
+import { read, write, mkdir, copy, rmSafe, globSync } from '@goldstack/utils-sh';
 import { readPackageConfig } from '@goldstack/utils-package';
 import { readTemplateConfigFromFile } from '@goldstack/utils-template';
 import type {
@@ -20,31 +13,27 @@ import jsonpath from 'jsonpath';
 import { debug, info, warn } from '@goldstack/utils-log';
 import path, { join } from 'path';
 
-const readBuildConfigFromString = (
-  data: string
-): TemplateBuildConfiguration => {
+const readBuildConfigFromString = (data: string): TemplateBuildConfiguration => {
   const config = parseConfig(data, configSchema, {
     errorMessage: 'Cannot load template config.',
   }) as TemplateBuildConfiguration;
   return config;
 };
 
-const readBuildConfigFromFile = (
-  path = 'build.json'
-): TemplateBuildConfiguration => {
+const readBuildConfigFromFile = (path = 'build.json'): TemplateBuildConfiguration => {
   const data = read(path);
   return readBuildConfigFromString(data);
 };
 
 const overwriteFieldsInFile = async (
   params: PrepareTemplateParams,
-  overwriteFile: FileOverwriteConfiguration
+  overwriteFile: FileOverwriteConfiguration,
 ): Promise<void> => {
   const filePath = params.destinationDirectory + overwriteFile.file;
 
   if (!fs.existsSync(filePath)) {
     throw new Error(
-      `Invalid file path in build config for field overwrite. Cannot find ${filePath}.`
+      `Invalid file path in build config for field overwrite. Cannot find ${filePath}.`,
     );
   }
 
@@ -65,7 +54,7 @@ const overwriteFieldsInFile = async (
 
 const overwriteFields = async (
   params: PrepareTemplateParams,
-  overwriteFiles: FileOverwriteConfiguration[]
+  overwriteFiles: FileOverwriteConfiguration[],
 ): Promise<void> => {
   for (const overwriteFile of overwriteFiles) {
     await overwriteFieldsInFile(params, overwriteFile);
@@ -73,14 +62,10 @@ const overwriteFields = async (
 };
 
 export const generateBuilderFromConfig = async (
-  templateDirectory: string
+  templateDirectory: string,
 ): Promise<PrepareTemplate | undefined> => {
-  const buildConfig = readBuildConfigFromFile(
-    join(templateDirectory, 'build.json')
-  );
-  const templateConfig = readTemplateConfigFromFile(
-    join(templateDirectory, 'template.json')
-  );
+  const buildConfig = readBuildConfigFromFile(join(templateDirectory, 'build.json'));
+  const templateConfig = readTemplateConfigFromFile(join(templateDirectory, 'template.json'));
 
   class GeneratedBuilderConfig implements PrepareTemplate {
     templateName(): string {
@@ -92,10 +77,8 @@ export const generateBuilderFromConfig = async (
           params.destinationDirectory,
         {
           templateDirectory: templateDirectory,
-          filesInTemplateDirectory: fs
-            .readdirSync(templateDirectory)
-            .join(', '),
-        }
+          filesInTemplateDirectory: fs.readdirSync(templateDirectory).join(', '),
+        },
       );
       // just copy all files and then delete ignored files
       for (const glob of buildConfig.include) {
@@ -118,7 +101,7 @@ export const generateBuilderFromConfig = async (
       for (const glob of buildConfig.exclude) {
         debug('Looking for files to delete matching ' + glob);
         const filesToDelete = globSync(
-          path.join(params.destinationDirectory, glob).replace(/\\/g, '/')
+          path.join(params.destinationDirectory, glob).replace(/\\/g, '/'),
         );
         if (filesToDelete.length === 0) {
           warn('No files will be deleted since no files matched glob ' + glob);
@@ -138,27 +121,23 @@ export const generateBuilderFromConfig = async (
       packageConfig.templateVersion = '0.0.0';
       write(
         JSON.stringify(packageConfig, null, 2),
-        join(params.destinationDirectory, 'goldstack.json')
+        join(params.destinationDirectory, 'goldstack.json'),
       );
 
       // cleaning up packageJson
-      const packageJson = JSON.parse(
-        read(join(params.destinationDirectory, 'package.json'))
-      );
+      const packageJson = JSON.parse(read(join(params.destinationDirectory, 'package.json')));
       packageJson.name = '';
       packageJson.author = '';
       packageJson.license = '';
       packageJson['private'] = undefined;
       write(
         JSON.stringify(packageJson, null, 2),
-        join(params.destinationDirectory, 'package.json')
+        join(params.destinationDirectory, 'package.json'),
       );
 
       debug('Template files written', {
         destinationDirectory: params.destinationDirectory,
-        filesInDestinationDirectory: fs
-          .readdirSync(params.destinationDirectory)
-          .join(', '),
+        filesInDestinationDirectory: fs.readdirSync(params.destinationDirectory).join(', '),
       });
     }
   }

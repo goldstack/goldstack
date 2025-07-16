@@ -18,7 +18,7 @@ describe('Lambda SQS Integration', () => {
         new SendMessageCommand({
           QueueUrl: await getSQSQueueUrl(),
           MessageBody: 'Hello World',
-        })
+        }),
       );
 
       expect(getSentMessageRequests(client)).toHaveLength(1);
@@ -30,7 +30,7 @@ describe('Lambda SQS Integration', () => {
         new SendMessageCommand({
           QueueUrl: await getSQSDLQQueueUrl(),
           MessageBody: 'Hello DLQ World',
-        })
+        }),
       );
 
       const sentRequests = getSentMessageRequests(dlqClient);

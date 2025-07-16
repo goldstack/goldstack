@@ -1,8 +1,6 @@
 import type { ProjectConfiguration } from '@goldstack/utils-project';
 
-export const buildProjectConfig = (
-  selectedIds: string[]
-): ProjectConfiguration => {
+export const buildProjectConfig = (selectedIds: string[]): ProjectConfiguration => {
   const project: ProjectConfiguration = {
     projectName: '',
     packages: [],

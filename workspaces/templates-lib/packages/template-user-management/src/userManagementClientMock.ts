@@ -1,19 +1,13 @@
 /* esbuild-ignore server */
 
-import type {
-  CognitoAccessTokenPayload,
-  CognitoIdTokenPayload,
-} from 'aws-jwt-verify/jwt-model';
-import {
-  getMockedAccessTokenProperties,
-  getMockedIdTokenProperties,
-} from './userManagementMock';
+import type { CognitoAccessTokenPayload, CognitoIdTokenPayload } from 'aws-jwt-verify/jwt-model';
+import { getMockedAccessTokenProperties, getMockedIdTokenProperties } from './userManagementMock';
 
-let mockedUserAccessToken: string | undefined ;
-let mockedUserIdToken: string | undefined ;
+let mockedUserAccessToken: string | undefined;
+let mockedUserIdToken: string | undefined;
 
 export function setMockedUserAccessToken(
-  propertiesOrToken: CognitoAccessTokenPayload | object | string | undefined
+  propertiesOrToken: CognitoAccessTokenPayload | object | string | undefined,
 ) {
   if (!propertiesOrToken) {
     mockedUserAccessToken = undefined;
@@ -23,9 +17,7 @@ export function setMockedUserAccessToken(
     mockedUserAccessToken = propertiesOrToken;
   }
   if (!(typeof propertiesOrToken === 'object')) {
-    throw new Error(
-      'Properties for access token must be an object if not string token provided.'
-    );
+    throw new Error('Properties for access token must be an object if not string token provided.');
   }
   mockedUserAccessToken = generateToken({
     ...getMockedAccessTokenProperties(),
@@ -34,7 +26,7 @@ export function setMockedUserAccessToken(
 }
 
 export function setMockedUserIdToken(
-  propertiesOrToken: CognitoIdTokenPayload | object | string | undefined
+  propertiesOrToken: CognitoIdTokenPayload | object | string | undefined,
 ) {
   if (!propertiesOrToken) {
     mockedUserIdToken = undefined;
@@ -44,9 +36,7 @@ export function setMockedUserIdToken(
     mockedUserIdToken = propertiesOrToken;
   }
   if (!(typeof propertiesOrToken === 'object')) {
-    throw new Error(
-      'Properties for id token must be an object if not string token provided.'
-    );
+    throw new Error('Properties for id token must be an object if not string token provided.');
   }
   mockedUserIdToken = generateToken({
     ...getMockedIdTokenProperties(),

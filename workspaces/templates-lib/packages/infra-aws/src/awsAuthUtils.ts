@@ -1,31 +1,26 @@
-import type {
-  AwsCredentialIdentityProvider,
-  AwsCredentialIdentity,
-} from '@aws-sdk/types';
+import type { AwsCredentialIdentityProvider, AwsCredentialIdentity } from '@aws-sdk/types';
 
 import { STSClient, GetSessionTokenCommand } from '@aws-sdk/client-sts';
 
 export function injectCredentials(
   provider: AwsCredentialIdentityProvider,
-  credentials: AwsCredentialIdentity
+  credentials: AwsCredentialIdentity,
 ): void {
   (provider as any)._injectedCredentials = credentials;
 }
 
-export function hasInjectedCredentials(
-  provider: AwsCredentialIdentityProvider
-): boolean {
+export function hasInjectedCredentials(provider: AwsCredentialIdentityProvider): boolean {
   return (provider as any)._injectedCredentials !== undefined;
 }
 
 export function retrieveInjectedCredentials(
-  provider: AwsCredentialIdentityProvider
+  provider: AwsCredentialIdentityProvider,
 ): AwsCredentialIdentity {
   return (provider as any)._injectedCredentials as AwsCredentialIdentity;
 }
 
 export async function getAWSCredentials(
-  provider: AwsCredentialIdentityProvider
+  provider: AwsCredentialIdentityProvider,
 ): Promise<AwsCredentialIdentity> {
   if (hasInjectedCredentials(provider)) {
     return retrieveInjectedCredentials(provider);

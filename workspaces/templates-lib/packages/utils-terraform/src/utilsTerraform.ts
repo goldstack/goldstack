@@ -28,22 +28,22 @@ export const infraCommands = (): any => {
       .command(
         'up <deployment>',
         'Stands up infrastructure for the specified deployment',
-        deploymentPositional
+        deploymentPositional,
       )
       .command(
         'init <deployment>',
         'Initialises Terraform working directory for deployment',
-        deploymentPositional
+        deploymentPositional,
       )
       .command(
         'plan <deployment>',
         'Creates a Terraform execution plan for deployment',
-        deploymentPositional
+        deploymentPositional,
       )
       .command(
         'apply <deployment>',
         'Applies the last Terraform execution plan calculated using `infra plan`',
-        deploymentPositional
+        deploymentPositional,
       )
       .command(
         'destroy <deployment>',
@@ -57,12 +57,12 @@ export const infraCommands = (): any => {
             demandOption: false,
             type: 'boolean',
           });
-        }
+        },
       )
       .command(
         'is-up <deployment>',
         'Checks whether infrastructure for a deployment is currently provisioned.',
-        deploymentPositional
+        deploymentPositional,
       )
       .command(
         'destroy-state <deployment>',
@@ -76,12 +76,12 @@ export const infraCommands = (): any => {
             demandOption: false,
             type: 'boolean',
           });
-        }
+        },
       )
       .command(
         'create-state <deployment>',
         'Creates a remote state for this deployment if it does not already exist.',
-        deploymentPositional
+        deploymentPositional,
       )
       .command(
         'upgrade <deployment> <targetVersion>',
@@ -89,11 +89,10 @@ export const infraCommands = (): any => {
         (yargs) => {
           return deploymentPositional(yargs).positional('targetVersion', {
             type: 'string',
-            description:
-              'Provides the target Terraform version that should be migrated to.',
+            description: 'Provides the target Terraform version that should be migrated to.',
             demandOption: true,
           });
-        }
+        },
       )
       .command(
         'terraform <deployment> [command..]',
@@ -107,13 +106,12 @@ export const infraCommands = (): any => {
               demandOption: false,
             })
             .option('inject-backend-config', {
-              description:
-                'Injects backend config into the Terraform CLI command.',
+              description: 'Injects backend config into the Terraform CLI command.',
               default: false,
               type: 'boolean',
               demandOption: false,
             });
-        }
+        },
       );
   };
 };
@@ -123,10 +121,7 @@ export interface TerraformOptions {
   provider?: CloudProvider;
 }
 
-export const terraformCli = (
-  args: string[],
-  options: TerraformOptions
-): void => {
+export const terraformCli = (args: string[], options: TerraformOptions): void => {
   if (!options.provider) {
     throw new Error('Cloud provider not defined');
   }
@@ -173,9 +168,7 @@ export const terraformCli = (
     return;
   }
   if (operation === 'destroy-state') {
-    throw new Error(
-      'The destroy-state operation should be performed by the provider'
-    );
+    throw new Error('The destroy-state operation should be performed by the provider');
   }
 
   throw new Error('Unknown infrastructure operation: ' + operation);

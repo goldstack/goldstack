@@ -1,10 +1,7 @@
 import type { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet';
 
 import { cd, execAsync, mkdir, read, rmSafe } from '@goldstack/utils-sh';
-import {
-  writePackageConfigs,
-  getPackageConfigs,
-} from '@goldstack/project-config';
+import { writePackageConfigs, getPackageConfigs } from '@goldstack/project-config';
 import { build } from '@goldstack/template-build';
 import type { GoldstackTemplateConfiguration } from '@goldstack/utils-template';
 import { buildProject } from '@goldstack/project-build';
@@ -13,10 +10,7 @@ import { installProject } from '@goldstack/project-install';
 import { write } from '@goldstack/utils-sh';
 import type { S3TemplateRepository } from '@goldstack/template-repository';
 import { getAwsConfigPath } from '@goldstack/utils-config';
-import {
-  prepareLocalS3Repo,
-  getTemplateTest,
-} from '@goldstack/utils-template-test';
+import { prepareLocalS3Repo, getTemplateTest } from '@goldstack/utils-template-test';
 import assert from 'assert';
 import path, { join, resolve } from 'path';
 export * from './types/DeploySet';
@@ -43,7 +37,7 @@ interface BuildTemplatesParams {
 }
 
 const buildTemplates = async (
-  params: BuildTemplatesParams
+  params: BuildTemplatesParams,
 ): Promise<GoldstackTemplateConfiguration[]> => {
   const configurations: GoldstackTemplateConfiguration[] = [];
 
@@ -87,9 +81,7 @@ export const renderTestResults = (results: TestResult[]): string => {
     .join('');
 };
 
-const buildAndTestProject = async (
-  params: BuildAndTestProjectParams
-): Promise<TestResult[]> => {
+const buildAndTestProject = async (params: BuildAndTestProjectParams): Promise<TestResult[]> => {
   info('Building and testing project', {
     destinationDirectory: params.projectDir,
   });
@@ -104,14 +96,10 @@ const buildAndTestProject = async (
 
   for (const setPackageConfig of params.project.packageConfigurations) {
     const packageConfig = packageConfigs.find(
-      (packageConfig) =>
-        packageConfig.package.name === setPackageConfig.packageName
+      (packageConfig) => packageConfig.package.name === setPackageConfig.packageName,
     );
 
-    assert(
-      packageConfig,
-      `Cannot find package configuration for ${setPackageConfig.packageName}`
-    );
+    assert(packageConfig, `Cannot find package configuration for ${setPackageConfig.packageName}`);
 
     packageConfig.package.deployments = setPackageConfig.deployments;
     packageConfig.package.configuration = setPackageConfig.configuration;
@@ -139,7 +127,7 @@ const buildAndTestProject = async (
           },
         ],
       }),
-      awsConfigPath
+      awsConfigPath,
     );
   }
   // run project level tests first to have everything initialised
@@ -165,13 +153,12 @@ const buildAndTestProject = async (
         info(`Running test ${packageTest} ...`);
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let errorFound: any ;
+        let errorFound: any;
         let isFail: boolean;
         try {
           const test = getTemplateTest(packageTest);
           await test.runTest({
-            packageDir:
-              params.projectDir + `packages/${packageConfig.packageName}/`,
+            packageDir: params.projectDir + `packages/${packageConfig.packageName}/`,
             projectDir: params.projectDir,
           });
           isFail = false;
@@ -195,13 +182,12 @@ const buildAndTestProject = async (
       for (const packageCleanUp of packageConfig.packageCleanUp) {
         info(`Running cleanup job ${packageCleanUp}`);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let errorFound: any ;
+        let errorFound: any;
         let isFail: boolean;
         try {
           const test = getTemplateTest(packageCleanUp);
           await test.runTest({
-            packageDir:
-              params.projectDir + `packages/${packageConfig.packageName}/`,
+            packageDir: params.projectDir + `packages/${packageConfig.packageName}/`,
             projectDir: params.projectDir,
           });
           isFail = false;
@@ -229,9 +215,7 @@ export interface BuildSetResult {
   testResults?: TestResult[];
 }
 
-export const buildSet = async (
-  params: BuildSetParams
-): Promise<BuildSetResult> => {
+export const buildSet = async (params: BuildSetParams): Promise<BuildSetResult> => {
   const res: BuildSetResult = {
     deployed: false,
   };
@@ -257,7 +241,7 @@ export const buildSet = async (
     monorepoRoot,
   });
 
-      // TODO this will not work due to mocks!
+  // TODO this will not work due to mocks!
   // if (params.deployBeforeTest && false) {
   //   info('Deploying templates before tests', {
   //     workDir: params.workDir + 'templatesDeploy/',
@@ -301,17 +285,17 @@ export const buildSet = async (
   // TODO see above logic will not work due to lacking mock reset
   // therefore we always deploy
   // if (!params.deployBeforeTest || true) {
-    info('Deploying templates', {
-      workDir: join(params.workDir, 'templatesDeploy/'),
-    });
-    await buildTemplates({
-      workDir: join(params.workDir, 'templatesDeploy/'),
-      templates: params.config.deployTemplates,
-      monorepoRoot,
-      templateRepository: params.s3repo,
-    });
+  info('Deploying templates', {
+    workDir: join(params.workDir, 'templatesDeploy/'),
+  });
+  await buildTemplates({
+    workDir: join(params.workDir, 'templatesDeploy/'),
+    templates: params.config.deployTemplates,
+    monorepoRoot,
+    templateRepository: params.s3repo,
+  });
 
-    res.deployed = true;
+  res.deployed = true;
   // }
   return res;
 };
@@ -326,7 +310,7 @@ export async function buildProjects(params: {
   for (const project of params.buildSetParams.config.projects) {
     const projectDir = join(
       params.buildSetParams.workDir,
-      project.projectConfiguration.projectName + '/'
+      project.projectConfiguration.projectName + '/',
     );
     info('Building project in directory', { projectDir });
     mkdir('-p', projectDir);
@@ -334,13 +318,13 @@ export async function buildProjects(params: {
     const projectDirFiles = readdirSync(projectDir);
     assert(
       projectDirFiles.length === 0,
-      `Working directory ${projectDir} is not empty. Files found ${projectDirFiles}`
+      `Working directory ${projectDir} is not empty. Files found ${projectDirFiles}`,
     );
 
     const gitHubToken = process.env.GITHUB_TOKEN;
     if (project.targetRepo && gitHubToken) {
       await execAsync(
-        `git clone https://${gitHubToken}@github.com/${project.targetRepo}.git ${projectDir}`
+        `git clone https://${gitHubToken}@github.com/${project.targetRepo}.git ${projectDir}`,
       );
       // Preserve .git directory while removing all other files
       const gitDir = path.join(projectDir, '.git');
@@ -361,7 +345,7 @@ export async function buildProjects(params: {
         setParams: params.buildSetParams,
         templateRepository: params.localRepo,
         user: params.buildSetParams.user,
-      }))
+      })),
     );
 
     if (project.targetRepo && gitHubToken) {
@@ -370,15 +354,11 @@ export async function buildProjects(params: {
       if (project.repoReadme) {
         write(read(join(params.monorepoRoot, project.repoReadme)), 'README.md');
       }
-      await execAsync(
-        'git config --global user.email "1448524+mxro@users.noreply.github.com"'
-      );
-      await execAsync(
-        'git config --global user.name "Goldstack Project Builder"'
-      );
+      await execAsync('git config --global user.email "1448524+mxro@users.noreply.github.com"');
+      await execAsync('git config --global user.name "Goldstack Project Builder"');
       await execAsync('git add .');
       await execAsync(
-        'git diff-index --quiet HEAD || git commit -m "Automated update of generated boilerplate by goldstack.party"'
+        'git diff-index --quiet HEAD || git commit -m "Automated update of generated boilerplate by goldstack.party"',
       );
       await execAsync('git push origin master --force');
       cd(`${currentDir}`);

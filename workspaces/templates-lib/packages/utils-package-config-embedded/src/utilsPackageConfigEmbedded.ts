@@ -6,10 +6,7 @@ interface EmbeddedPackageConfigConstructorParams {
   goldstackJson?: Package;
 }
 
-export class EmbeddedPackageConfig<
-  PackageType extends Package,
-  DeploymentType extends Deployment
-> {
+export class EmbeddedPackageConfig<PackageType extends Package, DeploymentType extends Deployment> {
   packageSchema: any;
   goldstackJson: PackageType;
 
@@ -32,7 +29,7 @@ export class EmbeddedPackageConfig<
     const name = deploymentName;
 
     const deployment = this.goldstackJson.deployments.find(
-      (deployment) => deployment.name === name
+      (deployment) => deployment.name === name,
     );
 
     if (!deployment) {

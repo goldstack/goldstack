@@ -66,9 +66,7 @@ export async function performLogout(deploymentName?: string) {
   });
 }
 
-export async function connectWithCognito(
-  deploymentName?: string
-): Promise<CognitoManager> {
+export async function connectWithCognito(deploymentName?: string): Promise<CognitoManager> {
   return templateConnect({
     goldstackConfig,
     packageSchema,
@@ -77,10 +75,7 @@ export async function connectWithCognito(
   });
 }
 
-export async function getEndpoint(
-  endpoint: Endpoint,
-  deploymentName?: string
-): Promise<string> {
+export async function getEndpoint(endpoint: Endpoint, deploymentName?: string): Promise<string> {
   return templateGetEndpoint({
     endpoint,
     goldstackConfig,
@@ -90,9 +85,7 @@ export async function getEndpoint(
   });
 }
 
-export function getCookieSettings(
-  deploymentName?: string
-): GetCookieSettingsResult {
+export function getCookieSettings(deploymentName?: string): GetCookieSettingsResult {
   return templateGetCookieSettings({
     goldstackConfig,
     packageSchema,

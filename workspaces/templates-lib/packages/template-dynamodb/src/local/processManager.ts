@@ -17,21 +17,14 @@ async function terminateWindowsProcess(processId: number): Promise<void> {
   // Try graceful termination first
   const result = spawnSync('taskkill', ['/pid', processId.toString(), '/t']);
   if (result.status !== 0) {
-    warn(
-      `Failed to terminate process ${processId} gracefully: ${result.stderr}`
-    );
+    warn(`Failed to terminate process ${processId} gracefully: ${result.stderr}`);
   }
 
   // Give it some time before force kill
   await new Promise<void>((resolve) => setTimeout(resolve, 5000));
 
   // Force kill
-  const forceResult = spawnSync('taskkill', [
-    '/pid',
-    processId.toString(),
-    '/f',
-    '/t',
-  ]);
+  const forceResult = spawnSync('taskkill', ['/pid', processId.toString(), '/f', '/t']);
   if (forceResult.status !== 0) {
     error(`Failed to force kill process ${processId}: ${forceResult.stderr}`);
     throw new Error(`Failed to terminate process ${processId}`);

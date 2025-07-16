@@ -6,15 +6,13 @@ import {
   getLocalHelperJs,
 } from '@goldstack/template-ssr';
 
-const renderDocument = async (
-  props: RenderDocumentProps<ReactPropertiesType>
-): Promise<string> => {
+const renderDocument = async (props: RenderDocumentProps<ReactPropertiesType>): Promise<string> => {
   const tailwindPath = await props.staticFileMapper.resolve({
     name: 'tailwind.css',
   });
 
-  let tailwindConfig: string | undefined ;
-  let localHelperJs: string | undefined ;
+  let tailwindConfig: string | undefined;
+  let localHelperJs: string | undefined;
   if (process.env.GOLDSTACK_DEPLOYMENT === 'local') {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const config = require('./../tailwind.config');

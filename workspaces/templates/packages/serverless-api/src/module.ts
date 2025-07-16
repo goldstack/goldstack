@@ -15,9 +15,7 @@ if (process.env.TEST_SERVER_PORT) {
 export const startTestServer = async (port?: number): Promise<any> => {
   port = port || 5054;
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { startServer } = require(excludeInBundle(
-    '@goldstack/utils-aws-http-api-local'
-  ));
+  const { startServer } = require(excludeInBundle('@goldstack/utils-aws-http-api-local'));
   testServer = await startServer({
     port: port,
     routesDir: './src/routes',
@@ -44,7 +42,7 @@ export const getEndpoint = (deploymentName?: string): string => {
     return `http://localhost:${port}`;
   }
   const deployment = goldstackConfig.deployments.find(
-    (deployment) => (deployment as any).name === deploymentName
+    (deployment) => (deployment as any).name === deploymentName,
   );
   if (!deployment) {
     throw new Error(`Cannot find deployment with name ${deploymentName}`);

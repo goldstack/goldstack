@@ -28,19 +28,13 @@ export async function handleRedirectCallback(args: {
   const deploymentName = getDeploymentName(args.deploymentName);
 
   const token = await getAndPersistToken({ ...args, code });
-  const packageConfig = new EmbeddedPackageConfig<
-    UserManagementPackage,
-    UserManagementDeployment
-  >({
+  const packageConfig = new EmbeddedPackageConfig<UserManagementPackage, UserManagementDeployment>({
     goldstackJson: args.goldstackConfig,
     packageSchema: args.packageSchema,
   });
 
   if (deploymentName === 'local') {
-    window.location.href = window.location.href.replace(
-      '?code=dummy-local-client-code',
-      ''
-    );
+    window.location.href = window.location.href.replace('?code=dummy-local-client-code', '');
   } else {
     const deployment = packageConfig.getDeployment(deploymentName);
     window.location.href = deployment.configuration.callbackUrl;

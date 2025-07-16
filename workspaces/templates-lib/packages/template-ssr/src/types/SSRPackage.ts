@@ -8,10 +8,7 @@ export interface ThisDeploymentConfiguration
   extends SSRDeploymentConfiguration,
     DeploymentConfiguration {}
 
-export interface ThisDeployment
-  extends Deployment,
-    AWSDeployment,
-    TerraformDeployment {
+export interface ThisDeployment extends Deployment, AWSDeployment, TerraformDeployment {
   configuration: ThisDeploymentConfiguration;
 }
 

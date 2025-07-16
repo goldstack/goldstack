@@ -5,10 +5,7 @@ import type {
   UserManagementDeployment,
   UserManagementPackage,
 } from '../templateUserManagement';
-import {
-  getDeploymentName,
-  getDeploymentsOutput,
-} from '../userManagementConfig';
+import { getDeploymentName, getDeploymentsOutput } from '../userManagementConfig';
 
 export async function getEndpoint(args: {
   goldstackConfig: any;
@@ -23,18 +20,12 @@ export async function getEndpoint(args: {
     return 'https://localhost';
   }
 
-  const packageConfig = new EmbeddedPackageConfig<
-    UserManagementPackage,
-    UserManagementDeployment
-  >({
+  const packageConfig = new EmbeddedPackageConfig<UserManagementPackage, UserManagementDeployment>({
     goldstackJson: args.goldstackConfig,
     packageSchema: args.packageSchema,
   });
 
-  const deploymentOutput = getDeploymentsOutput(
-    args.deploymentsOutput,
-    deploymentName
-  );
+  const deploymentOutput = getDeploymentsOutput(args.deploymentsOutput, deploymentName);
 
   // const baseUrl = `https://${deploymentOutput.terraform.endpoint.value}`;
 

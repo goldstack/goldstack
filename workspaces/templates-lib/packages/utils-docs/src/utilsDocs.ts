@@ -13,9 +13,7 @@ export interface RenderPageResult {
   data: any;
 }
 
-export const renderPage = async (
-  filePath: string
-): Promise<RenderPageResult> => {
+export const renderPage = async (filePath: string): Promise<RenderPageResult> => {
   const fileContent = read(filePath);
   const { data, content } = matter(fileContent);
 

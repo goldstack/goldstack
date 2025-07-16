@@ -1,7 +1,4 @@
-import {
-  type LambdaConfig,
-  generateFunctionName,
-} from '@goldstack/utils-aws-lambda';
+import { type LambdaConfig, generateFunctionName } from '@goldstack/utils-aws-lambda';
 
 import type express from 'express';
 
@@ -19,9 +16,7 @@ export interface InjectRoutesParam {
 /*
 Ensure more generic routes are handled later
 */
-export const sortRoutesBySpecificity = (
-  configs: LambdaConfig[]
-): LambdaConfig[] => {
+export const sortRoutesBySpecificity = (configs: LambdaConfig[]): LambdaConfig[] => {
   const res: LambdaConfig[] = [...configs];
 
   res.sort((first, second) => {
@@ -46,8 +41,7 @@ export const sortRoutesBySpecificity = (
 
     // ensure longer routes come first
     return (
-      second.route.replace(/\{(.*?)\}/g, '').length -
-      first.route.replace(/\{(.*?)\}/g, '').length
+      second.route.replace(/\{(.*?)\}/g, '').length - first.route.replace(/\{(.*?)\}/g, '').length
     );
   });
 
@@ -75,20 +69,17 @@ export const injectRoutes = (params: InjectRoutesParam): void => {
 
     const expressPath = gatewayRouteToExpressPath(lambdaConfig.path);
 
-    params.app.all(
-      expressPath,
-      async (req: Request, resp: Response): Promise<void> => {
-        const functionName = generateFunctionName('local', lambdaConfig);
-        process.env.GOLDSTACK_FUNCTION_NAME = functionName;
-        process.env.GOLDSTACK_DEPLOYMENT = 'local';
-        const result = await handler(
-          convertToGatewayEvent({ req: req, lambdaConfig: lambdaConfig }),
-          createContext({
-            functionName,
-          })
-        );
-        injectGatewayResultIntoResponse(result, resp);
-      }
-    );
+    params.app.all(expressPath, async (req: Request, resp: Response): Promise<void> => {
+      const functionName = generateFunctionName('local', lambdaConfig);
+      process.env.GOLDSTACK_FUNCTION_NAME = functionName;
+      process.env.GOLDSTACK_DEPLOYMENT = 'local';
+      const result = await handler(
+        convertToGatewayEvent({ req: req, lambdaConfig: lambdaConfig }),
+        createContext({
+          functionName,
+        }),
+      );
+      injectGatewayResultIntoResponse(result, resp);
+    });
   }
 };

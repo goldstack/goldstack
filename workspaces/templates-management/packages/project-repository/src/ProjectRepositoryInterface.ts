@@ -4,13 +4,8 @@ export type ProjectId = string;
 
 interface ProjectRepository {
   addProject(configuration: ProjectConfiguration): Promise<ProjectId>;
-  updateProjectConfiguration(
-    id: ProjectId,
-    configuration: ProjectConfiguration
-  ): Promise<void>;
-  readProjectConfiguration(
-    id: ProjectId
-  ): Promise<ProjectConfiguration | undefined>;
+  updateProjectConfiguration(id: ProjectId, configuration: ProjectConfiguration): Promise<void>;
+  readProjectConfiguration(id: ProjectId): Promise<ProjectConfiguration | undefined>;
   updateProjectData(id: ProjectId, projectData: ProjectData): Promise<void>;
   getProjectData(id: ProjectId): Promise<ProjectData>;
   downloadProject(id: ProjectId, path: string): Promise<void>;

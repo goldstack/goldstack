@@ -24,9 +24,7 @@ export class StaticFileMapperRun implements StaticFileMapper {
   public async has({ name }: { name: string }): Promise<boolean> {
     const store = this.readStore();
 
-    const mapping = store.find((mapping) =>
-      mapping.names.find((el) => el === name)
-    );
+    const mapping = store.find((mapping) => mapping.names.find((el) => el === name));
 
     return !!mapping;
   }
@@ -34,12 +32,10 @@ export class StaticFileMapperRun implements StaticFileMapper {
   public async resolve({ name }: { name: string }): Promise<string> {
     const store = this.readStore();
 
-    const mapping = store.find((mapping) =>
-      mapping.names.find((el) => el === name)
-    );
+    const mapping = store.find((mapping) => mapping.names.find((el) => el === name));
     if (!mapping) {
       throw new Error(
-        `Cannot find static file mapping for ${name}.\nTry building the lambdas for the project using 'yarn build-lambda' before running watch mode.`
+        `Cannot find static file mapping for ${name}.\nTry building the lambdas for the project using 'yarn build-lambda' before running watch mode.`,
       );
     }
     return `${this.baseUrl}${mapping.generatedName}`;

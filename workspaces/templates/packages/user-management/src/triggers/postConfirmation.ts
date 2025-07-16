@@ -11,10 +11,7 @@ import {
 
 const cognitoClient = new CognitoIdentityProviderClient({});
 
-export const handler: PostConfirmationTriggerHandler = async (
-  event,
-  context
-) => {
+export const handler: PostConfirmationTriggerHandler = async (event, context) => {
   const userData = {
     id: event.request.userAttributes.sub,
     email: event.request.userAttributes.email,
@@ -35,7 +32,7 @@ export const handler: PostConfirmationTriggerHandler = async (
             Value: userId,
           },
         ],
-      })
+      }),
     );
   }
 

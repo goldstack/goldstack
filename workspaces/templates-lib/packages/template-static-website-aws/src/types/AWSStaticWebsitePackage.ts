@@ -49,10 +49,7 @@ export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
  *
  * @title Deployment
  */
-export interface ThisDeployment
-  extends Deployment,
-    AWSDeployment,
-    TerraformDeployment {
+export interface ThisDeployment extends Deployment, AWSDeployment, TerraformDeployment {
   configuration: ThisDeploymentConfiguration;
 }
 

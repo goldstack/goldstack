@@ -24,10 +24,7 @@ export function getCookieSettings(args: {
       cookieSameSite: 'None',
     };
   }
-  const packageConfig = new EmbeddedPackageConfig<
-    UserManagementPackage,
-    UserManagementDeployment
-  >({
+  const packageConfig = new EmbeddedPackageConfig<UserManagementPackage, UserManagementDeployment>({
     goldstackJson: args.goldstackConfig,
     packageSchema: args.packageSchema,
   });

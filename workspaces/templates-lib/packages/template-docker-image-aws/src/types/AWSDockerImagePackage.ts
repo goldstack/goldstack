@@ -20,10 +20,7 @@ export interface AWSDockerImageDeploymentConfiguration {
  *
  * @title Deployment
  */
-export interface AWSDockerImageDeployment
-  extends Deployment,
-    AWSDeployment,
-    TerraformDeployment {
+export interface AWSDockerImageDeployment extends Deployment, AWSDeployment, TerraformDeployment {
   configuration: AWSDockerImageDeploymentConfiguration;
 }
 

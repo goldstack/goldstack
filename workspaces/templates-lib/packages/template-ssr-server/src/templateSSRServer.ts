@@ -1,9 +1,6 @@
 import React, { type FunctionComponent } from 'react';
 
-import type {
-  APIGatewayProxyEventV2,
-  APIGatewayProxyStructuredResultV2,
-} from 'aws-lambda';
+import type { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
 
 import { compress } from 'lambda-compression';
 
@@ -13,9 +10,7 @@ import { readFileSync } from 'fs';
 
 import { type MappingStore, StaticFileMapperRun } from 'static-file-mapper';
 
-export type ReactPropertiesType = unknown &
-  JSX.IntrinsicAttributes &
-  Record<string, any>;
+export type ReactPropertiesType = unknown & JSX.IntrinsicAttributes & Record<string, any>;
 
 import type {
   BuildConfiguration,
@@ -23,11 +18,7 @@ import type {
   ClientBuildOptionsArgs,
 } from '@goldstack/template-ssr-server-compile-bundle';
 
-export type {
-  BuildConfiguration,
-  ServerBuildOptionsArgs,
-  ClientBuildOptionsArgs,
-};
+export type { BuildConfiguration, ServerBuildOptionsArgs, ClientBuildOptionsArgs };
 
 import type { StaticFileMapper } from 'static-file-mapper';
 import type { Deployment } from '@goldstack/infra';
@@ -86,7 +77,7 @@ export const renderPage = async <PropType extends ReactPropertiesType>({
 }: RenderPageProps<PropType>): Promise<APIGatewayProxyStructuredResultV2> => {
   if (!staticFileMapper && !staticFileMapperStore) {
     throw new Error(
-      '`staticFileMapper` or `staticFileMapper` store need to be defined for `renderPage`'
+      '`staticFileMapper` or `staticFileMapper` store need to be defined for `renderPage`',
     );
   }
   if (!staticFileMapper) {
@@ -122,12 +113,10 @@ export const renderPage = async <PropType extends ReactPropertiesType>({
         return compress(
           event,
           // eslint-disable-next-line @typescript-eslint/no-var-requires
-          require(excludeInBundle(
-            '@goldstack/template-ssr-server-compile-bundle'
-          )).bundleResponse({
+          require(excludeInBundle('@goldstack/template-ssr-server-compile-bundle')).bundleResponse({
             entryPoint,
             buildConfig: buildConfig(),
-          })
+          }),
         );
       }
     }
@@ -135,18 +124,18 @@ export const renderPage = async <PropType extends ReactPropertiesType>({
     if (event.queryStringParameters['resource'].indexOf('sourcemap') > -1) {
       if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
         throw new Error(
-          'sourcemap resource not supported in Lambda. Please load sourcemap from static files.'
+          'sourcemap resource not supported in Lambda. Please load sourcemap from static files.',
         );
       } else {
         return compress(
           event,
           // eslint-disable-next-line @typescript-eslint/no-var-requires
-          require(excludeInBundle(
-            '@goldstack/template-ssr-server-compile-bundle'
-          )).sourceMapResponse({
+          require(
+            excludeInBundle('@goldstack/template-ssr-server-compile-bundle'),
+          ).sourceMapResponse({
             entryPoint,
             buildConfig: buildConfig(),
-          })
+          }),
         );
       }
     }
@@ -155,8 +144,8 @@ export const renderPage = async <PropType extends ReactPropertiesType>({
   const page = renderToString(
     React.createElement(
       component as FunctionComponent<unknown>,
-      properties as Record<string, unknown>
-    )
+      properties as Record<string, unknown>,
+    ),
   );
 
   let styles: string | undefined;
@@ -185,7 +174,7 @@ export const renderPage = async <PropType extends ReactPropertiesType>({
     injectIntoBody: `
         <div id="root">${page}</div>
         <script>window.initialProperties=${JSON.stringify(
-          properties
+          properties,
         )};window.GOLDSTACK_DEPLOYMENT="${deployment.name}"</script>
         <script src="${clientBundlePath}"></script>
         ${appendToBody ? appendToBody : ''}

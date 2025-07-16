@@ -4,20 +4,11 @@
 import { CognitoJwtVerifier } from 'aws-jwt-verify';
 import { SimpleJwksCache } from 'aws-jwt-verify/jwk';
 
-import type {
-  CognitoAccessTokenPayload,
-  CognitoIdTokenPayload,
-} from 'aws-jwt-verify/jwt-model';
+import type { CognitoAccessTokenPayload, CognitoIdTokenPayload } from 'aws-jwt-verify/jwt-model';
 
-import {
-  getDeploymentName,
-  getDeploymentsOutput,
-} from './userManagementConfig';
+import { getDeploymentName, getDeploymentsOutput } from './userManagementConfig';
 
-import {
-  getLocalUserManager,
-  LocalUserManagerImpl,
-} from './userManagementServerMock';
+import { getLocalUserManager, LocalUserManagerImpl } from './userManagementServerMock';
 
 export interface CognitoManager {
   validate(accessToken: string): Promise<CognitoAccessTokenPayload>;
@@ -26,16 +17,14 @@ export interface CognitoManager {
    * It is not recommended practice to assert authentication for an API using an id token only.
    */
   validateIdToken(
-    idToken: string
-  ): Promise<
-    CognitoIdTokenPayload & { email: string; 'custom:app_user_id': string }
-  >;
+    idToken: string,
+  ): Promise<CognitoIdTokenPayload & { email: string; 'custom:app_user_id': string }>;
 }
 
 /**
  * We want to keep only one JWKS cache globally for our application.
  */
-let sharedJwksCache: SimpleJwksCache | undefined ;
+let sharedJwksCache: SimpleJwksCache | undefined;
 
 export async function connectWithCognito({
   goldstackConfig,
@@ -54,10 +43,7 @@ export async function connectWithCognito({
     return getLocalUserManager();
   }
 
-  const deploymentOutput = getDeploymentsOutput(
-    deploymentsOutput,
-    deploymentName
-  );
+  const deploymentOutput = getDeploymentsOutput(deploymentsOutput, deploymentName);
 
   if (!sharedJwksCache) {
     sharedJwksCache = new SimpleJwksCache();
@@ -71,7 +57,7 @@ export async function connectWithCognito({
     },
     {
       jwksCache: sharedJwksCache,
-    }
+    },
   );
   const idTokenVerifier = CognitoJwtVerifier.create(
     {
@@ -81,7 +67,7 @@ export async function connectWithCognito({
     },
     {
       jwksCache: sharedJwksCache,
-    }
+    },
   );
   return new CognitoManagerImpl(accessTokenVerifier, idTokenVerifier);
 }
@@ -92,7 +78,7 @@ export class CognitoManagerImpl implements CognitoManager {
 
   constructor(
     accessTokenVerifier: CognitoJwtVerifier<any, any, any>,
-    idTokenVerifier: CognitoJwtVerifier<any, any, any>
+    idTokenVerifier: CognitoJwtVerifier<any, any, any>,
   ) {
     this.accessTokenVerifier = accessTokenVerifier;
     this.idTokenVerifier = idTokenVerifier;
@@ -108,10 +94,8 @@ export class CognitoManagerImpl implements CognitoManager {
   }
 
   async validateIdToken(
-    jwtToken: string
-  ): Promise<
-    CognitoIdTokenPayload & { email: string; 'custom:app_user_id': string }
-  > {
+    jwtToken: string,
+  ): Promise<CognitoIdTokenPayload & { email: string; 'custom:app_user_id': string }> {
     try {
       const payload = await this.idTokenVerifier.verify(jwtToken);
       return payload as any;

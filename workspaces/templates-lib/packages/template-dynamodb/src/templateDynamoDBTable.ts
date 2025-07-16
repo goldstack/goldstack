@@ -1,17 +1,10 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
 import type { DynamoDBPackage, DynamoDBDeployment } from './types/DynamoDBPackage';
-import {
-  getDeploymentName,
-  getTableName as getTableNameUtils,
-} from './dynamoDBPackageUtils';
+import { getDeploymentName, getTableName as getTableNameUtils } from './dynamoDBPackageUtils';
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
-import {
-  assertTable,
-  assertTableActive,
-  deleteTable as deleteTableModule,
-} from './dynamoDBData';
+import { assertTable, assertTableActive, deleteTable as deleteTableModule } from './dynamoDBData';
 import type { InputMigrations } from 'umzug/lib/types';
 import {
   type DynamoDBContext,
@@ -40,13 +33,10 @@ const coldStart: Map<string, boolean> = new Map();
 export const getTableName = async (
   goldstackConfig: DynamoDBPackage | any,
   packageSchema: any,
-  deploymentName?: string
+  deploymentName?: string,
 ): Promise<string> => {
   deploymentName = getDeploymentName(deploymentName);
-  const packageConfig = new EmbeddedPackageConfig<
-    DynamoDBPackage,
-    DynamoDBDeployment
-  >({
+  const packageConfig = new EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>({
     goldstackJson: goldstackConfig,
     packageSchema,
   });
@@ -58,13 +48,10 @@ export const startLocalDynamoDB = async (
   goldstackConfig: DynamoDBPackage | any,
   packageSchema: any,
   port?: number,
-  deploymentName?: string
+  deploymentName?: string,
 ): Promise<void> => {
   deploymentName = getDeploymentName(deploymentName);
-  const packageConfig = new EmbeddedPackageConfig<
-    DynamoDBPackage,
-    DynamoDBDeployment
-  >({
+  const packageConfig = new EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>({
     goldstackJson: goldstackConfig,
     packageSchema,
   });
@@ -75,27 +62,17 @@ export const startLocalDynamoDB = async (
     startLocalDynamoDB: StartLocalDynamoDBType;
   };
   const portToUse =
-    port ||
-    (process.env.DYNAMODB_LOCAL_PORT &&
-      parseInt(process.env.DYNAMODB_LOCAL_PORT)) ||
-    8000;
-  await lib.startLocalDynamoDB(
-    packageConfig,
-    { port: portToUse },
-    deploymentName
-  );
+    port || (process.env.DYNAMODB_LOCAL_PORT && parseInt(process.env.DYNAMODB_LOCAL_PORT)) || 8000;
+  await lib.startLocalDynamoDB(packageConfig, { port: portToUse }, deploymentName);
 };
 
 export const stopAllLocalDynamoDB = async (
   goldstackConfig: DynamoDBPackage | any,
   packageSchema: any,
-  deploymentName?: string
+  deploymentName?: string,
 ): Promise<void> => {
   deploymentName = getDeploymentName(deploymentName);
-  const packageConfig = new EmbeddedPackageConfig<
-    DynamoDBPackage,
-    DynamoDBDeployment
-  >({
+  const packageConfig = new EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>({
     goldstackJson: goldstackConfig,
     packageSchema,
   });
@@ -115,7 +92,7 @@ export const stopLocalDynamoDB = async (
   goldstackConfig: DynamoDBPackage | any,
   packageSchema: any,
   portOrDeploymentName?: number | string,
-  deploymentName?: string
+  deploymentName?: string,
 ): Promise<void> => {
   // Handle optional port parameter
   let port: number | undefined;
@@ -129,10 +106,7 @@ export const stopLocalDynamoDB = async (
   }
 
   resolvedDeploymentName = getDeploymentName(resolvedDeploymentName);
-  const packageConfig = new EmbeddedPackageConfig<
-    DynamoDBPackage,
-    DynamoDBDeployment
-  >({
+  const packageConfig = new EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>({
     goldstackJson: goldstackConfig,
     packageSchema,
   });
@@ -142,22 +116,15 @@ export const stopLocalDynamoDB = async (
   const lib = require(excludeInBundle('./local/localDynamoDB')) as {
     stopLocalDynamoDB: StopLocalDynamoDBType;
   };
-  await lib.stopLocalDynamoDB(
-    packageConfig,
-    port ? { port } : {},
-    resolvedDeploymentName
-  );
+  await lib.stopLocalDynamoDB(packageConfig, port ? { port } : {}, resolvedDeploymentName);
 
-  const coldStartKey = await getColdStartKey(
-    packageConfig,
-    resolvedDeploymentName
-  );
+  const coldStartKey = await getColdStartKey(packageConfig, resolvedDeploymentName);
   coldStart.delete(coldStartKey);
 };
 
 const createClient = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
-  deploymentName: string
+  deploymentName: string,
 ): Promise<DynamoDBClient> => {
   if (deploymentName === 'local') {
     debug('Connecting to local DynamoDB instance');
@@ -199,10 +166,7 @@ export const connect = async ({
   deploymentName?: string;
 }): Promise<DynamoDBClient> => {
   deploymentName = getDeploymentName(deploymentName);
-  const packageConfig = new EmbeddedPackageConfig<
-    DynamoDBPackage,
-    DynamoDBDeployment
-  >({
+  const packageConfig = new EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>({
     goldstackJson: goldstackConfig,
     packageSchema,
   });
@@ -234,10 +198,7 @@ export const deleteTable = async ({
   deploymentName?: string;
 }): Promise<DynamoDBClient> => {
   deploymentName = getDeploymentName(deploymentName);
-  const packageConfig = new EmbeddedPackageConfig<
-    DynamoDBPackage,
-    DynamoDBDeployment
-  >({
+  const packageConfig = new EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>({
     goldstackJson: goldstackConfig,
     packageSchema,
   });
@@ -262,10 +223,7 @@ export const migrateDownTo = async ({
   deploymentName?: string;
 }): Promise<DynamoDBClient> => {
   deploymentName = getDeploymentName(deploymentName);
-  const packageConfig = new EmbeddedPackageConfig<
-    DynamoDBPackage,
-    DynamoDBDeployment
-  >({
+  const packageConfig = new EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>({
     goldstackJson: goldstackConfig,
     packageSchema,
   });
@@ -274,20 +232,14 @@ export const migrateDownTo = async ({
   await assertTable(packageConfig, deploymentName, client);
   await assertTableActive(packageConfig, deploymentName, client);
 
-  await migrateDownToDynamoDB(
-    migrationName,
-    packageConfig,
-    deploymentName,
-    migrations,
-    client
-  );
+  await migrateDownToDynamoDB(migrationName, packageConfig, deploymentName, migrations, client);
 
   return client;
 };
 
 async function getColdStartKey(
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
-  deploymentName: string
+  deploymentName: string,
 ) {
   if (deploymentName === 'local') {
     return `local-${await getTableNameUtils(packageConfig, deploymentName)}`;

@@ -2,16 +2,10 @@ import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
 import { wrapCli } from '@goldstack/utils-cli';
 
 import { infraCommands } from '@goldstack/utils-terraform';
-import {
-  terraformAwsCli,
-  initTerraformEnvironment,
-} from '@goldstack/utils-terraform-aws';
+import { terraformAwsCli, initTerraformEnvironment } from '@goldstack/utils-terraform-aws';
 import { terraformHetznerCli } from '@goldstack/utils-terraform-hetzner';
 import { PackageConfig } from '@goldstack/utils-package-config';
-import type {
-  HetznerVPSPackage,
-  HetznerVPSDeployment,
-} from '@goldstack/template-hetzner-vps';
+import type { HetznerVPSPackage, HetznerVPSDeployment } from '@goldstack/template-hetzner-vps';
 import yargs from 'yargs';
 
 import { info } from '@goldstack/utils-log';
@@ -21,10 +15,7 @@ export const buildZip = async (): Promise<void> => {
   const args = process.argv.slice(2); // Skip the first two default args (node and script path)
   const deploymentName = args[0]; // The first argument after `yarn build` will be `prod` if passed
 
-  const packageConfig = new PackageConfig<
-    HetznerVPSPackage,
-    HetznerVPSDeployment
-  >({
+  const packageConfig = new PackageConfig<HetznerVPSPackage, HetznerVPSDeployment>({
     packagePath: './',
   });
   const deployment = packageConfig.getDeployment(deploymentName);
@@ -41,10 +32,7 @@ export const run = async (args: string[]): Promise<void> => {
       .help()
       .parse();
 
-    const packageConfig = new PackageConfig<
-      HetznerVPSPackage,
-      HetznerVPSDeployment
-    >({
+    const packageConfig = new PackageConfig<HetznerVPSPackage, HetznerVPSDeployment>({
       packagePath: './',
     });
     const config = packageConfig.getConfig();
@@ -62,9 +50,7 @@ export const run = async (args: string[]): Promise<void> => {
     if (command === 'infra') {
       const deployment = packageConfig.getDeployment(opArgs[1]);
       const infrastructureOp = opArgs[0];
-      info(
-        `Running infrastructure operation ${infrastructureOp} for ${deployment.name}`
-      );
+      info(`Running infrastructure operation ${infrastructureOp} for ${deployment.name}`);
       // use remote managed state from Terraform
       await terraformAwsCli(['create-state', opArgs[1]]);
 

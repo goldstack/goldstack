@@ -22,7 +22,7 @@ export type CreateS3ClientSignature = (options: {
 const getPackageConfigAndDeployment = (
   goldstackConfig: any,
   packageSchema: any,
-  deploymentName?: string
+  deploymentName?: string,
 ): {
   packageConfig: EmbeddedPackageConfig<S3Package, S3Deployment>;
   deployment: S3Deployment;
@@ -62,14 +62,11 @@ const getPackageConfigAndDeployment = (
 /**
  * Gets a mocked S3 client for local development
  */
-export const getMockedS3 = (
-  goldstackConfig: any,
-  bucket?: string
-): S3Client => {
+export const getMockedS3 = (goldstackConfig: any, bucket?: string): S3Client => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const createS3Client: CreateS3ClientSignature = require(excludeInBundle(
-    'mock-aws-s3-v3'
-  )).createS3Client;
+  const createS3Client: CreateS3ClientSignature = require(
+    excludeInBundle('mock-aws-s3-v3'),
+  ).createS3Client;
 
   const client = createS3Client({
     localDirectory: 'goldstackLocal/s3',
@@ -101,23 +98,18 @@ export function getLocalBucketUrl(goldstackConfig: any): string {
 export async function connect(
   goldstackConfig: any,
   packageSchema: any,
-  bucket?: string
+  bucket?: string,
 ): Promise<S3Client> {
-  const { deployment } = getPackageConfigAndDeployment(
-    goldstackConfig,
-    packageSchema
-  );
+  const { deployment } = getPackageConfigAndDeployment(goldstackConfig, packageSchema);
 
   if (deployment.name === 'local') {
     warn(
-      `Initializing mocked S3 for ${goldstackConfig.name}. Consider using getMockedS3() directly if you need bucket-specific configuration.`
+      `Initializing mocked S3 for ${goldstackConfig.name}. Consider using getMockedS3() directly if you need bucket-specific configuration.`,
     );
     return getMockedS3(goldstackConfig, bucket);
   }
 
-  const awsUser = process.env.AWS_ACCESS_KEY_ID
-    ? undefined
-    : await getAWSUser(deployment.awsUser);
+  const awsUser = process.env.AWS_ACCESS_KEY_ID ? undefined : await getAWSUser(deployment.awsUser);
 
   return new S3Client({
     credentials: awsUser,
@@ -129,17 +121,14 @@ export const isMocked = (client: S3Client): boolean => {
   return (client as any)._goldstackIsMocked === true;
 };
 
-export function resetMocksIfRequired(
-  deploymentName: string | undefined,
-  goldstackConfig: any
-) {
+export function resetMocksIfRequired(deploymentName: string | undefined, goldstackConfig: any) {
   if (s3MockUsed) {
     warn(
       'Initialising a real S3 bucket after a mocked one had been created. All mocks are reset.',
       {
         deploymentName,
         package: goldstackConfig.name,
-      }
+      },
     );
     // only require this for local testing
     // eslint-disable-next-line @typescript-eslint/no-var-requires

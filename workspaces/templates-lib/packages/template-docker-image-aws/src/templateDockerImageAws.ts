@@ -12,10 +12,7 @@ import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
 import { infraCommands } from '@goldstack/utils-terraform';
 import type { Argv } from 'yargs';
 import { PackageConfig } from '@goldstack/utils-package-config';
-import {
-  AWSDockerImagePackage,
-  AWSDockerImageDeployment,
-} from './types/AWSDockerImagePackage';
+import { AWSDockerImagePackage, AWSDockerImageDeployment } from './types/AWSDockerImagePackage';
 export { AWSDockerImagePackage, AWSDockerImageDeployment };
 export {
   runTask,
@@ -25,22 +22,14 @@ export {
 } from './apiDockerImageAws';
 
 export const getConfig = (): AWSDockerImagePackage => {
-  const packageConfig = new PackageConfig<
-    AWSDockerImagePackage,
-    AWSDockerImageDeployment
-  >({
+  const packageConfig = new PackageConfig<AWSDockerImagePackage, AWSDockerImageDeployment>({
     packagePath: './',
   });
   return packageConfig.getConfig();
 };
 
-export const getDeployment = (
-  deploymentName: string
-): AWSDockerImageDeployment => {
-  const packageConfig = new PackageConfig<
-    AWSDockerImagePackage,
-    AWSDockerImageDeployment
-  >({
+export const getDeployment = (deploymentName: string): AWSDockerImageDeployment => {
+  const packageConfig = new PackageConfig<AWSDockerImagePackage, AWSDockerImageDeployment>({
     packagePath: './',
   });
   return packageConfig.getDeployment(deploymentName);
@@ -58,17 +47,13 @@ const imageCommands = () => {
     return yargs
       .command('run <deployment>', 'Runs the image', deploymentPositional)
       .command('start <deployment>', 'Starts the image', deploymentPositional)
-      .command(
-        'logs <taskId>',
-        'Prints the logs for an image',
-        (yargs: Argv<any>): Argv<any> => {
-          return yargs.positional('taskId', {
-            type: 'string',
-            describe: 'Id of the tasks for which logs should be obtained.',
-            demandOption: true,
-          });
-        }
-      );
+      .command('logs <taskId>', 'Prints the logs for an image', (yargs: Argv<any>): Argv<any> => {
+        return yargs.positional('taskId', {
+          type: 'string',
+          describe: 'Id of the tasks for which logs should be obtained.',
+          demandOption: true,
+        });
+      });
   };
 };
 export const run = async (args: string[]): Promise<void> => {
@@ -82,10 +67,7 @@ export const run = async (args: string[]): Promise<void> => {
       .help()
       .parse();
 
-    const packageConfig = new PackageConfig<
-      AWSDockerImagePackage,
-      AWSDockerImageDeployment
-    >({
+    const packageConfig = new PackageConfig<AWSDockerImagePackage, AWSDockerImageDeployment>({
       packagePath: './',
     });
     const config = packageConfig.getConfig();

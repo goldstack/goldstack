@@ -45,7 +45,7 @@ export function createSQSClient({
           await handler(input);
         } else {
           warn(
-            `No message handler registered for queue ${input.QueueUrl}. Message will not be processed. Ensure you connect to the correct SQS queue to create the client.`
+            `No message handler registered for queue ${input.QueueUrl}. Message will not be processed. Ensure you connect to the correct SQS queue to create the client.`,
           );
         }
 

@@ -2,13 +2,7 @@ import { build } from 'esbuild';
 import type { BuildOptions } from 'esbuild';
 import type { LambdaConfig } from './types/LambdaConfig';
 import { generateFunctionName } from './generate/generateFunctionName';
-import {
-  changeExtension,
-  mkdir,
-  readToType,
-  rmSafe,
-  write,
-} from '@goldstack/utils-sh';
+import { changeExtension, mkdir, readToType, rmSafe, write } from '@goldstack/utils-sh';
 import path from 'path';
 
 export interface ClientBuildOptionsArgs {
@@ -33,10 +27,7 @@ export interface ServerBuildOptionsArgs {
   deploymentName: string;
 }
 
-export const getOutDirForLambda = (
-  packageRootDir: string,
-  config: LambdaConfig
-): string => {
+export const getOutDirForLambda = (packageRootDir: string, config: LambdaConfig): string => {
   if (config.path === '$default') {
     return path.join(packageRootDir, `distLambda/${config.path}`);
   }
@@ -46,10 +37,7 @@ export const getOutDirForLambda = (
   return path.join(packageRootDir, `distLambda${config.path}`);
 };
 
-export const getOutFileForLambda = (
-  packageRootDir: string,
-  config: LambdaConfig
-): string => {
+export const getOutFileForLambda = (packageRootDir: string, config: LambdaConfig): string => {
   return path.join(getOutDirForLambda(packageRootDir, config), 'lambda.js');
 };
 
@@ -70,9 +58,7 @@ export const buildFunctions = async ({
   routeFilter?: string;
   packageRootDir: string;
 }): Promise<void> => {
-  const buildConfig = readToType<BuildOptions>(
-    path.join(packageRootDir, 'esbuild.config.json')
-  );
+  const buildConfig = readToType<BuildOptions>(path.join(packageRootDir, 'esbuild.config.json'));
 
   // if we have a filter, we don't remove previous outputs
   if (!routeFilter) {
@@ -83,7 +69,7 @@ export const buildFunctions = async ({
     mkdir('-p', getOutDirForLambda(packageRootDir, config));
     const esbuildLocalPath = changeExtension(
       `${routesDir}/${config.relativeFilePath}`,
-      '.esbuild.config.json'
+      '.esbuild.config.json',
     );
     const functionName = generateFunctionName(lambdaNamePrefix, config);
     const localBuildConfig = readToType<BuildOptions>(esbuildLocalPath);
@@ -102,13 +88,13 @@ export const buildFunctions = async ({
     if (res.metafile) {
       write(
         JSON.stringify(res.metafile),
-        path.join(packageRootDir, `distLambda/zips/${functionName}.meta.json`)
+        path.join(packageRootDir, `distLambda/zips/${functionName}.meta.json`),
       );
     }
     // provide CSS for initial load
     write(
       generatedCss.join('\n'),
-      `${getOutDirForLambda(packageRootDir, config)}/client.bundle.css`
+      `${getOutDirForLambda(packageRootDir, config)}/client.bundle.css`,
     );
   }
 };

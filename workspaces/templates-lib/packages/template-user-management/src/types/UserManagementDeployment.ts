@@ -11,10 +11,7 @@ export type {
   UserManagementDeploymentConfiguration,
 };
 
-export interface ThisDeployment
-  extends Deployment,
-    AWSDeployment,
-    TerraformDeployment {
+export interface ThisDeployment extends Deployment, AWSDeployment, TerraformDeployment {
   configuration: UserManagementDeploymentConfiguration;
 }
 

@@ -39,9 +39,7 @@ export class InstanceManager {
   /**
    * Gets an instance for a specific port
    */
-  async getInstance(
-    port: number
-  ): Promise<DynamoDBInstance | 'stopped' | undefined> {
+  async getInstance(port: number): Promise<DynamoDBInstance | 'stopped' | undefined> {
     const instance = this.instances.get(port);
     if (instance && instance !== 'stopped') {
       const isPortInUse = await check(port);
@@ -84,11 +82,9 @@ export class InstanceManager {
       } on port ${port}. Currently defined instances: ${this.instances.size}`,
       {
         definedInstances: this.instances.size,
-        stoppedInstances: [...this.instances.entries()].filter(
-          (e) => e[1] === 'stopped'
-        ).length,
+        stoppedInstances: [...this.instances.entries()].filter((e) => e[1] === 'stopped').length,
         allInstances: [...this.instances.entries()],
-      }
+      },
     );
     this.saveState();
   }

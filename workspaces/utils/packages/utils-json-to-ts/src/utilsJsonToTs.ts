@@ -7,9 +7,9 @@ import replaceExt from 'replace-ext';
 const processSchema = async (
   jsonSource: string,
   dest: string,
-  options: Partial<Options>
+  options: Partial<Options>,
 ): Promise<void> => {
-  let bannerComment: string | undefined ;
+  let bannerComment: string | undefined;
   const tsHeader = replaceExt(jsonSource, '.head.ts');
   if (fs.existsSync(tsHeader)) {
     bannerComment = read(tsHeader);

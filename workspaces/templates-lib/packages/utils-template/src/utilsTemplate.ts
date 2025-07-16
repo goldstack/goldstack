@@ -5,9 +5,7 @@ import type { GoldstackTemplateConfiguration } from './generated/goldstackTempla
 
 export type { GoldstackTemplateConfiguration } from './generated/goldstackTemplateConfigurationSchema';
 
-export const readTemplateConfigFromString = (
-  data: string
-): GoldstackTemplateConfiguration => {
+export const readTemplateConfigFromString = (data: string): GoldstackTemplateConfiguration => {
   const config = parseConfig(data, configSchema, {
     errorMessage: 'Cannot load template config.',
   }) as GoldstackTemplateConfiguration;
@@ -15,14 +13,12 @@ export const readTemplateConfigFromString = (
 };
 
 export const readTemplateConfigFromFile = (
-  path = 'template.json'
+  path = 'template.json',
 ): GoldstackTemplateConfiguration => {
   try {
     const data = read(path);
     return readTemplateConfigFromString(data);
   } catch (e) {
-    throw new Error(
-      `Cannot load template config from ${path}. Error: ${e.message}`
-    );
+    throw new Error(`Cannot load template config from ${path}. Error: ${e.message}`);
   }
 };

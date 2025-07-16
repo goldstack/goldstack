@@ -22,18 +22,13 @@ export const run = async (args: string[]): Promise<void> => {
       deployCommands: buildDeployCommands(),
       infraCommands: infraCommands(),
     })
-      .command(
-        'set-nextjs-env <deployment>',
-        'Set NextJs environment variables',
-        () => {
-          return yargs.positional('deployment', {
-            type: 'string',
-            describe:
-              'Name of the deployment this command should be applied to',
-            demandOption: true,
-          });
-        }
-      )
+      .command('set-nextjs-env <deployment>', 'Set NextJs environment variables', () => {
+        return yargs.positional('deployment', {
+          type: 'string',
+          describe: 'Name of the deployment this command should be applied to',
+          demandOption: true,
+        });
+      })
       .help()
       .parse();
     const packageConfig = new PackageConfig<NextjsPackage, NextjsDeployment>({
@@ -44,9 +39,7 @@ export const run = async (args: string[]): Promise<void> => {
     const [, , , ...opArgs] = args;
 
     if (command === 'set-nextjs-env') {
-      await setNextjsEnvironmentVariables(
-        packageConfig.getDeployment(opArgs[0])
-      );
+      await setNextjsEnvironmentVariables(packageConfig.getDeployment(opArgs[0]));
       return;
     }
 

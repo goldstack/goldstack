@@ -12,17 +12,12 @@ import type { Client, Command } from '@smithy/smithy-client';
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 
-import {
-  getMockedS3,
-  resetMocksIfRequired,
-  isMocked,
-  getLocalBucketName,
-} from './connectLocal';
+import { getMockedS3, resetMocksIfRequired, isMocked, getLocalBucketName } from './connectLocal';
 
 export const connect = async (
   goldstackConfig: any,
   packageSchema: any,
-  deploymentName?: string
+  deploymentName?: string,
 ): Promise<S3Client> => {
   const packageConfig = new EmbeddedPackageConfig<S3Package, S3Deployment>({
     goldstackJson: goldstackConfig,
@@ -31,7 +26,7 @@ export const connect = async (
   if (!deploymentName) {
     assert(
       process.env.GOLDSTACK_DEPLOYMENT,
-      `Cannot connect to S3 bucket for package ${goldstackConfig.name}. Either specify a deploymentName or ensure environment variable GOLDSTACK_DEPLOYMENT is defined.`
+      `Cannot connect to S3 bucket for package ${goldstackConfig.name}. Either specify a deploymentName or ensure environment variable GOLDSTACK_DEPLOYMENT is defined.`,
     );
     deploymentName = process.env.GOLDSTACK_DEPLOYMENT;
   }
@@ -65,11 +60,11 @@ export const connect = async (
 export const getSignedUrlS3 = async <
   InputTypesUnion extends object,
   InputType extends InputTypesUnion,
-  OutputType extends MetadataBearer = MetadataBearer
+  OutputType extends MetadataBearer = MetadataBearer,
 >(
   client: Client<any, InputTypesUnion, MetadataBearer, any>,
   command: Command<InputType, OutputType, any, InputTypesUnion, MetadataBearer>,
-  options: RequestPresigningArguments = {}
+  options: RequestPresigningArguments = {},
 ): Promise<string> => {
   if (isMocked(client as any)) {
     return 'http://localhost/mockedAWSS3';
@@ -80,7 +75,7 @@ export const getSignedUrlS3 = async <
 export const getBucketName = async (
   goldstackConfig: any,
   packageSchema: any,
-  deploymentName?: string
+  deploymentName?: string,
 ): Promise<string> => {
   const packageConfig = new EmbeddedPackageConfig<S3Package, S3Deployment>({
     goldstackJson: goldstackConfig,
@@ -89,7 +84,7 @@ export const getBucketName = async (
   if (!deploymentName) {
     assert(
       process.env.GOLDSTACK_DEPLOYMENT,
-      `Cannot get S3 bucket name for package ${goldstackConfig.name}. Either specify a deploymentName or ensure environment variable GOLDSTACK_DEPLOYMENT is defined.`
+      `Cannot get S3 bucket name for package ${goldstackConfig.name}. Either specify a deploymentName or ensure environment variable GOLDSTACK_DEPLOYMENT is defined.`,
     );
     deploymentName = process.env.GOLDSTACK_DEPLOYMENT;
   }

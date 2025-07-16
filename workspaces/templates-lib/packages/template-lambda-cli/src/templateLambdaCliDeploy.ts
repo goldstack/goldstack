@@ -12,15 +12,10 @@ interface DeployLambdaParams {
   deploymentState: DeploymentState;
 }
 
-export const deployLambda = async (
-  params: DeployLambdaParams
-): Promise<void> => {
+export const deployLambda = async (params: DeployLambdaParams): Promise<void> => {
   const targetArchive = 'lambda.zip';
   const lambdaDistDir = './distLambda';
-  const functionName = readTerraformStateVariable(
-    params.deploymentState,
-    'lambda_function_name'
-  );
+  const functionName = readTerraformStateVariable(params.deploymentState, 'lambda_function_name');
 
   await deployFunction({
     targetArchiveName: targetArchive,
@@ -31,9 +26,7 @@ export const deployLambda = async (
   });
 };
 
-export const deployCli = async (
-  deployment: LambdaDeployment
-): Promise<void> => {
+export const deployCli = async (deployment: LambdaDeployment): Promise<void> => {
   const deploymentState = readDeploymentState('./', deployment.name);
 
   await deployLambda({

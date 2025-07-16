@@ -19,7 +19,7 @@ export const hasAwsCli = (): boolean => {
 export const assertAwsCli = (): void => {
   if (!commandExists('aws')) {
     fatal(
-      'AWS CLI version 2 not available.\n\nEnsure AWS cli or Docker (preferred) are available commands in the command line.'
+      'AWS CLI version 2 not available.\n\nEnsure AWS cli or Docker (preferred) are available commands in the command line.',
     );
     throw new Error();
   }
@@ -29,7 +29,7 @@ export const assertAwsCli = (): void => {
   if (version.indexOf('aws-cli/2.') <= -1) {
     fatal(
       `Wrong AWS cli version installed. Expected version 2 but found version '${version}'` +
-        '\n\nEither install AWS cli or Docker.'
+        '\n\nEither install AWS cli or Docker.',
     );
     throw new Error();
   }
@@ -43,9 +43,7 @@ interface AWSExecParams {
   options?: ExecParams;
 }
 
-export const execWithDocker = async (
-  params: AWSExecParams
-): Promise<string> => {
+export const execWithDocker = async (params: AWSExecParams): Promise<string> => {
   assertDocker();
 
   const credentials = await getAWSCredentials(params.credentials);
@@ -58,8 +56,7 @@ export const execWithDocker = async (
 
   assertDirectoryExists(
     mountDir,
-    'Cannot execute AWS cli command since working directory does not exist: aws ' +
-      params.command
+    'Cannot execute AWS cli command since working directory does not exist: aws ' + params.command,
   );
   const command =
     'docker run --rm ' +
@@ -81,7 +78,7 @@ export const execWithCli = async (params: AWSExecParams): Promise<string> => {
 
   assertDirectoryExists(
     params.workDir || pwd(),
-    'Cannot execute command for AWS cli: aws ' + params.command
+    'Cannot execute command for AWS cli: aws ' + params.command,
   );
 
   const previousDir = pwd();
@@ -102,7 +99,7 @@ export const awsCli = async (params: AWSExecParams): Promise<string> => {
 
   if (!hasDocker()) {
     fatal(
-      'AWS CLI version 2 not available.\n\nEnsure AWS cli (preferred) or Docker are available commands in the command line.'
+      'AWS CLI version 2 not available.\n\nEnsure AWS cli (preferred) or Docker are available commands in the command line.',
     );
   }
 

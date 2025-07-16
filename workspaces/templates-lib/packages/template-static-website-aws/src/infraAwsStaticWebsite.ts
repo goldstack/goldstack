@@ -10,16 +10,14 @@ import path from 'path';
 
 const getDeployment = (
   config: AWSStaticWebsitePackage,
-  args: string[]
+  args: string[],
 ): AWSStaticWebsiteDeployment => {
   if (args.length < 1) {
     fatal('Please specify the name of the deployment.');
   }
   const name = args[0];
 
-  const deployment = config.deployments.find(
-    (deployment) => deployment.name === name
-  );
+  const deployment = config.deployments.find((deployment) => deployment.name === name);
 
   if (!deployment) {
     fatal(`Cannot find configuration for deployment '${name}''`);
@@ -29,10 +27,7 @@ const getDeployment = (
   return deployment;
 };
 
-export const deploy = async (
-  config: AWSStaticWebsitePackage,
-  args: string[]
-): Promise<void> => {
+export const deploy = async (config: AWSStaticWebsitePackage, args: string[]): Promise<void> => {
   const deployment = getDeployment(config, args);
 
   const webDistDir = path.resolve('./webDist');
@@ -48,11 +43,11 @@ export const deploy = async (
 
 export const infraAwsStaticWebsiteCli = async (
   config: AWSStaticWebsitePackage,
-  args: string[]
+  args: string[],
 ): Promise<void> => {
   if (args.length < 1) {
     fatal(
-      'Please provide the operation in the arguments: "up", "init", "plan", "apply", "deploy", "destroy", "upgrade", "terraform".'
+      'Please provide the operation in the arguments: "up", "init", "plan", "apply", "deploy", "destroy", "upgrade", "terraform".',
     );
     throw new Error();
   }

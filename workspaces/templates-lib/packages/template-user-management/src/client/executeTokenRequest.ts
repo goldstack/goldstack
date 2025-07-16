@@ -20,11 +20,7 @@ export async function executeTokenRequest(args: {
           idToken: response.id_token,
         });
       } else {
-        reject(
-          new Error(
-            `Cannot obtain token ${response.error_description} (${response.error})`
-          )
-        );
+        reject(new Error(`Cannot obtain token ${response.error_description} (${response.error})`));
       }
     };
     xhr.responseType = 'json';
@@ -40,7 +36,7 @@ export async function executeTokenRequest(args: {
         refresh_token: args.refreshToken || '',
         code: args.code || '',
         scope: 'openid email profile',
-      })
+      }),
     );
   });
 }

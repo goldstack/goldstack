@@ -6,10 +6,7 @@ import {
   setMockedUserAccessToken,
   setMockedUserIdToken,
 } from './userManagementClientMock';
-import {
-  getMockedAccessTokenProperties,
-  getMockedIdTokenProperties,
-} from './userManagementMock';
+import { getMockedAccessTokenProperties, getMockedIdTokenProperties } from './userManagementMock';
 
 test('Should generate client-side tokens', () => {
   setMockedUserAccessToken({
@@ -18,12 +15,8 @@ test('Should generate client-side tokens', () => {
   const accessToken = getMockedUserAccessToken();
   assert(accessToken);
   const accessTokenData = parseToken(accessToken);
-  expect(accessTokenData.username).toEqual(
-    '024651bd-6c2d-4890-a15b-51fe281516b7'
-  );
-  expect(accessTokenData.client_id).toEqual(
-    getMockedAccessTokenProperties().client_id
-  );
+  expect(accessTokenData.username).toEqual('024651bd-6c2d-4890-a15b-51fe281516b7');
+  expect(accessTokenData.client_id).toEqual(getMockedAccessTokenProperties().client_id);
 
   setMockedUserIdToken({
     email: 'frontend@email.com',

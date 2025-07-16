@@ -12,9 +12,7 @@ it('Should validate tokens', async () => {
     username: '37ba5b3e-2e76-4c45-baa3-e7b21101f40d',
   });
   const accessTokenData = await cognito.validate(accessToken);
-  expect(accessTokenData.username).toEqual(
-    '37ba5b3e-2e76-4c45-baa3-e7b21101f40d'
-  );
+  expect(accessTokenData.username).toEqual('37ba5b3e-2e76-4c45-baa3-e7b21101f40d');
   expect(accessTokenData.token_use).toEqual('access');
 
   const idToken = generateTestIdToken({ email: 'testUser@email.com' });

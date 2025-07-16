@@ -18,14 +18,9 @@ export const performMigrations = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
   migrations: InputMigrations<DynamoDBContext>,
-  client: DynamoDBClient
+  client: DynamoDBClient,
 ): Promise<void> => {
-  const umzug = await initUmzug(
-    packageConfig,
-    deploymentName,
-    client,
-    migrations
-  );
+  const umzug = await initUmzug(packageConfig, deploymentName, client, migrations);
 
   await umzug.up();
 };
@@ -35,14 +30,9 @@ export const migrateDownTo = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
   migrations: InputMigrations<DynamoDBContext>,
-  client: DynamoDBClient
+  client: DynamoDBClient,
 ): Promise<void> => {
-  const umzug = await initUmzug(
-    packageConfig,
-    deploymentName,
-    client,
-    migrations
-  );
+  const umzug = await initUmzug(packageConfig, deploymentName, client, migrations);
 
   await umzug.down({ to: migrationName });
 };
@@ -51,7 +41,7 @@ async function initUmzug(
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
   client: DynamoDBClient,
-  migrations: InputMigrations<DynamoDBContext>
+  migrations: InputMigrations<DynamoDBContext>,
 ) {
   const tableName = await getTableName(packageConfig, deploymentName);
   const storage = new DynamoDBStorage({
@@ -67,25 +57,13 @@ async function initUmzug(
     },
     logger: {
       debug: (message: Record<string, unknown>) =>
-        debug(
-          `Migrating ${tableName} ${message.name ? message.name : ''}`,
-          message
-        ),
+        debug(`Migrating ${tableName} ${message.name ? message.name : ''}`, message),
       warn: (message: Record<string, unknown>) =>
-        debug(
-          `Migrating ${tableName} ${message.name ? message.name : ''}`,
-          message
-        ),
+        debug(`Migrating ${tableName} ${message.name ? message.name : ''}`, message),
       info: (message: Record<string, unknown>) =>
-        info(
-          `Migrating ${tableName} ${message.name ? message.name : ''}`,
-          message
-        ),
+        info(`Migrating ${tableName} ${message.name ? message.name : ''}`, message),
       error: (message: Record<string, unknown>) =>
-        error(
-          `Migrating ${tableName} ${message.name ? message.name : ''}`,
-          message
-        ),
+        error(`Migrating ${tableName} ${message.name ? message.name : ''}`, message),
     },
     storage: storage,
   });
