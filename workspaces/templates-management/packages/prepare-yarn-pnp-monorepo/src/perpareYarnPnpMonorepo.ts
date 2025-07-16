@@ -1,17 +1,14 @@
+import { createDefaultConfig, readConfig } from '@goldstack/infra-aws';
 import type { PrepareTemplate, PrepareTemplateParams } from '@goldstack/prepare-template';
-
-import { cp, mkdir, write, read } from '@goldstack/utils-sh';
-
-import type { Package } from '@goldstack/utils-package';
 import { getAwsConfigPath } from '@goldstack/utils-config';
+import type { Package } from '@goldstack/utils-package';
+import { cp, mkdir, read, write } from '@goldstack/utils-sh';
 import { readTemplateConfigFromFile } from '@goldstack/utils-template';
-import { readConfig, createDefaultConfig } from '@goldstack/infra-aws';
 import { assert } from 'console';
 import fs from 'fs';
-import packageSchema from './../schemas/package.schema.json';
 import { join } from 'path';
-
 import sortPackageJson from 'sort-package-json';
+import packageSchema from './../schemas/package.schema.json';
 
 export const removeNpmRegistry = (params: { yarnRc: string }): string => {
   const authTokenRegex = /npmAuthToken: [^\s]*\s/gi;
@@ -33,12 +30,9 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
   }
   run(params: PrepareTemplateParams): Promise<void> {
     const copyFilesFromRoot = [
-      '.eslintignore',
-      '.eslintrc.json',
+      'biome.jsonc',
       '.gitattributes',
       '.gitconfig',
-      '.prettierignore',
-      '.prettierrc.json',
       '.yarnrc.yml',
       '.nvmrc',
       '.vscode/',

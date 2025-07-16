@@ -42,7 +42,11 @@
     "includes": [
       "**/*.ts",
       "**/*.json",
+      "**/*.jsonc",
       "**/*.tsx",
+      "**/*.tf",
+      "**/*.yml",
+      "**/*.yaml",
       "!**/dist/**",
       "!**/webDist/**",
       "!**/distLambda/**",
