@@ -17,7 +17,6 @@
     "compile": "yarn fix-project-references && tsc --build",
     "compile-watch": "tsc -b -w",
     "ensure-no-package-mismatches": "syncpack list-mismatches --config .syncpackrc.js",
-    "eslint": "eslint",
     "fix-package-mismatches": "syncpack fix-mismatches --config .syncpackrc.js",
     "fix-project-references": "ts-node scripts/fixProjectReferences.ts",
     "format": "biome format --write",
@@ -45,8 +44,7 @@
     "syncpack": "^13.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
-    "ultracite": "5.0.36",
-    "yaml-eslint-parser": "^1.3.0"
+    "ultracite": "5.0.36"
   },
   "packageManager": "yarn@4.9.2"
 }

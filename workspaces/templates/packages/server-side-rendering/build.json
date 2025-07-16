@@ -7,7 +7,7 @@
     "src/",
     "schemas/",
     "static/",
-    ".eslintrc.js",
+    "biome.jsonc",
     ".gitignore",
     "esbuild.config.json",
     "goldstack.json",

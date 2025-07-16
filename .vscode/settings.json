@@ -4,7 +4,6 @@
   "editor.formatOnSave": true,
   "gitlens.advanced.repositorySearchDepth": 2,
   "editor.tabSize": 2,
-  "eslint.nodePath": ".yarn/sdks",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
