@@ -1,38 +1,30 @@
+import { allTemplates } from '@goldstack/template-metadata';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React from 'react';
-
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
-import TypeScriptIcon from './../icons/typescript.svg';
-import ESLintIcon from './../icons/eslint.svg';
-import TerraformIcon from './../icons/terraform.svg';
-import AWSIcon from './../icons/aws.svg';
-import YarnIcon from './../icons/yarn.svg';
-import JestIcon from './../icons/jestjs.svg';
-import VSCodeIcon from './../icons/vscode.svg';
-import DockerIcon from './../icons/docker.svg';
-import DocusaurusIcon from './../icons/docusaurus.svg';
-import SecurityIcon from './../icons/security.svg';
-
-import RelaxedCoder from './../illustrations/relaxing-man.svg';
-
-import { useRouter } from 'next/router';
-import Head from 'next/head';
-import Header from './../components/Header';
-
-import { allTemplates } from '@goldstack/template-metadata';
-import PackageList from './../components/PackageList';
-
-import Foundation from './../components/Foundation';
-import GoldstackProcess from './../components/GoldstackProcess';
-import GoldstackBenefits from './../components/GoldstackBenefits';
-
-import GitHubIcon from './../icons/github-tile.svg';
-
 import Footer from './../components/Footer';
+import Foundation from './../components/Foundation';
+import GoldstackBenefits from './../components/GoldstackBenefits';
+import GoldstackProcess from './../components/GoldstackProcess';
+import Header from './../components/Header';
+import PackageList from './../components/PackageList';
 import TemplateCallToAction from './../components/template/TemplateCallToAction';
 import TemplateCard from './../components/template/TemplateCard';
+import AWSIcon from './../icons/aws.svg';
+import BiomeIcon from './../icons/biomejs.svg';
+import DockerIcon from './../icons/docker.svg';
+import DocusaurusIcon from './../icons/docusaurus.svg';
+import GitHubIcon from './../icons/github-tile.svg';
+import JestIcon from './../icons/jestjs.svg';
+import SecurityIcon from './../icons/security.svg';
+import TerraformIcon from './../icons/terraform.svg';
+import TypeScriptIcon from './../icons/typescript.svg';
+import VSCodeIcon from './../icons/vscode.svg';
+import YarnIcon from './../icons/yarn.svg';
+import RelaxedCoder from './../illustrations/relaxing-man.svg';
 
 const Front = (): JSX.Element => {
   const router = useRouter();
@@ -140,8 +132,8 @@ const Front = (): JSX.Element => {
                     highlight: elements.includes('yarn'),
                   },
                   {
-                    icon: ESLintIcon,
-                    title: 'ESLint and Prettier',
+                    icon: BiomeIcon,
+                    title: 'Biome (Lint & Format)',
                     highlight: elements.includes('eslint'),
                   },
                   {
@@ -212,7 +204,7 @@ const Front = (): JSX.Element => {
                       {/* <p>Well-configured statically typed goodness</p> */}
                       <ul>
                         <li>TypeScript</li>
-                        <li>Eslint and prettier</li>
+                        <li>Biome linting and formatting</li>
                         <li>Jest</li>
                         <li>Yarn workspaces</li>
                         <li>VSCode config</li>

@@ -1,6 +1,6 @@
-import type { TemplateTest, RunTestParams } from '../types/TemplateTest';
-import { assertFilesExist } from '../utilsTemplateTest';
 import { getAwsConfigPath } from '@goldstack/utils-config';
+import type { RunTestParams, TemplateTest } from '../types/TemplateTest';
+import { assertFilesExist } from '../utilsTemplateTest';
 
 export class AssertRootFilesTest implements TemplateTest {
   getName(): string {
@@ -10,7 +10,7 @@ export class AssertRootFilesTest implements TemplateTest {
     const projectDir = params.projectDir;
     const awsConfigPath = getAwsConfigPath(params.projectDir);
     assertFilesExist([
-      projectDir + '.eslintrc.json',
+      projectDir + 'biome.jsonc',
       projectDir + 'config/infra/aws/.gitignore',
       projectDir + 'config/goldstack/.gitignore',
       awsConfigPath,

@@ -1,21 +1,18 @@
-import {
-  prepareLocalS3Repo,
-  buildTemplate,
-  assertFilesExist,
-  assertFilesDoNotExist,
-} from '@goldstack/utils-template-test';
-import type { S3TemplateRepository } from '@goldstack/template-repository';
-
-import { buildProject } from '@goldstack/project-build';
-import { rmSafe, mkdir, read, write } from '@goldstack/utils-sh';
-import type { ProjectConfiguration } from '@goldstack/utils-project';
-
+import { readConfig } from '@goldstack/infra-aws';
 import { getModuleTemplatesNames } from '@goldstack/module-template-utils';
 
-import { getAwsConfigPath } from '@goldstack/utils-config';
-import { readConfig } from '@goldstack/infra-aws';
-
+import { buildProject } from '@goldstack/project-build';
 import { createServerSideRenderingBuildSetConfig } from '@goldstack/template-metadata';
+import type { S3TemplateRepository } from '@goldstack/template-repository';
+import { getAwsConfigPath } from '@goldstack/utils-config';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
+import { mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
+import {
+  assertFilesDoNotExist,
+  assertFilesExist,
+  buildTemplate,
+  prepareLocalS3Repo,
+} from '@goldstack/utils-template-test';
 
 import assert from 'assert';
 
@@ -83,7 +80,7 @@ describe('Template Building', () => {
 
     const awsConfigPath = getAwsConfigPath(projectDir);
     assertFilesExist([
-      projectDir + '.eslintrc.json',
+      projectDir + 'biome.jsonc',
       projectDir + 'package.json',
       projectDir + '.yarnrc.yml',
       projectDir + 'goldstack.json',
