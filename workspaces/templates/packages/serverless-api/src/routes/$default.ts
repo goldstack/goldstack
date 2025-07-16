@@ -1,4 +1,4 @@
-import {
+import type {
   Handler,
   APIGatewayProxyEventV2,
   APIGatewayProxyResultV2,

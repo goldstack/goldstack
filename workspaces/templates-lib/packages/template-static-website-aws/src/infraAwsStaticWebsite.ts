@@ -2,7 +2,7 @@ import { fatal } from '@goldstack/utils-log';
 import { upload } from '@goldstack/utils-s3-deployment';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import { assertDirectoryExists } from '@goldstack/utils-sh';
-import {
+import type {
   AWSStaticWebsitePackage,
   AWSStaticWebsiteDeployment,
 } from './types/AWSStaticWebsitePackage';

@@ -14,10 +14,10 @@ import configSchema from './schemas/accountConfigSchema.json';
 
 import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
 
-import { HetznerConfiguration } from './types/HetznerConfiguration';
+import type { HetznerConfiguration } from './types/HetznerConfiguration';
 
-import { HetznerUser } from './types/HetznerConfiguration';
-import { HetznerDeployment } from './types/HetznerDeployment';
+import type { HetznerUser } from './types/HetznerConfiguration';
+import type { HetznerDeployment } from './types/HetznerDeployment';
 
 export type { HetznerUser, HetznerDeployment };
 

@@ -1,6 +1,6 @@
 import { existsSync } from 'fs';
 import { join } from 'path';
-import { RunTestParams, TemplateTest } from '../types/TemplateTest';
+import type { RunTestParams, TemplateTest } from '../types/TemplateTest';
 
 export class EnsureBabelRcDoesNotExist implements TemplateTest {
   getName(): string {

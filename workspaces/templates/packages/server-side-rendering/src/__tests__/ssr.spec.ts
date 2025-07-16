@@ -6,7 +6,7 @@ import { startTestServer, stopTestServer, getEndpoint } from './../module';
 jest.setTimeout(120000);
 
 describe('Should create page', () => {
-  let port: undefined | number = undefined;
+  let port: undefined | number ;
 
   beforeAll(async () => {
     port = await new Promise<number>((resolve, reject) => {

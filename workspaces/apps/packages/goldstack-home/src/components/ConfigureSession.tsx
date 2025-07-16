@@ -19,7 +19,7 @@ interface ConfigureSessionProps {
 
 function validateEmail(email: string): boolean {
   const re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
 
@@ -137,7 +137,7 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
             <a
               href="/terms-and-conditions"
               className="link-underline"
-              target="_blank"
+              target="_blank" rel="noopener"
             >
               Terms and Conditions
             </a>{' '}

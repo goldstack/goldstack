@@ -3,7 +3,7 @@ import { info, warn } from '@goldstack/utils-log';
 import { check } from 'tcp-port-used';
 import waitPort from 'wait-port';
 import * as dynamoDBLocal from 'dynamo-db-local';
-import { DynamoDBInstance } from './localDynamoDB';
+import type { DynamoDBInstance } from './localDynamoDB';
 
 /**
  * Options for spawning a DynamoDB instance

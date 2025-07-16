@@ -1,14 +1,14 @@
 import {
   getDeployment,
-  PartialRenderPageProps,
-  ReactPropertiesType,
+  type PartialRenderPageProps,
+  type ReactPropertiesType,
 } from '@goldstack/template-ssr';
 
 import {
   renderPage as ssrRenderPage,
   hydrate as ssrHydrate,
 } from '@goldstack/template-ssr';
-import { APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
+import type { APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
 
 import Wrapped from './_app';
 

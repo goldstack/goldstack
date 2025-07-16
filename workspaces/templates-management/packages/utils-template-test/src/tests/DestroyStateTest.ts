@@ -1,4 +1,4 @@
-import { TemplateTest, RunTestParams } from './../types/TemplateTest';
+import type { TemplateTest, RunTestParams } from './../types/TemplateTest';
 import { yarn } from '@goldstack/utils-yarn';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
 

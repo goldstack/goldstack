@@ -1,11 +1,11 @@
 import {
-  PrepareTemplate,
+  type PrepareTemplate,
   generateBuilderFromConfig,
 } from '@goldstack/prepare-template';
 import { PrepareYarnPnpMonorepo } from '@goldstack/prepare-yarn-pnp-monorepo';
-import { TemplateRepository } from '@goldstack/template-repository';
+import type { TemplateRepository } from '@goldstack/template-repository';
 import { info } from '@goldstack/utils-log';
-import { GoldstackTemplateConfiguration } from '@goldstack/utils-template';
+import type { GoldstackTemplateConfiguration } from '@goldstack/utils-template';
 import { join } from 'path';
 
 const templateBuilders: PrepareTemplate[] = [new PrepareYarnPnpMonorepo()];

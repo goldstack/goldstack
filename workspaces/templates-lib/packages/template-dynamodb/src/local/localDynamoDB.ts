@@ -1,10 +1,10 @@
-import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
+import type { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { debug, warn } from '@goldstack/utils-log';
 import { getInstanceManager } from './instanceManager';
 import { defaultConfig, getEndpointUrl, isTestEnvironment } from './config';
 import { spawnInstance } from './spawner';
-import { DynamoDBPackage, DynamoDBDeployment } from '../types/DynamoDBPackage';
+import type { DynamoDBPackage, DynamoDBDeployment } from '../types/DynamoDBPackage';
 
 export interface DynamoDBInstance {
   port: number;

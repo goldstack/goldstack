@@ -8,7 +8,7 @@ import {
 } from '@goldstack/utils-terraform-aws';
 import { terraformHetznerCli } from '@goldstack/utils-terraform-hetzner';
 import { PackageConfig } from '@goldstack/utils-package-config';
-import {
+import type {
   HetznerVPSPackage,
   HetznerVPSDeployment,
 } from '@goldstack/template-hetzner-vps';

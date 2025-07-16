@@ -1,23 +1,23 @@
 import {
   readDeploymentFromPackageConfig,
   getAWSUser,
-  AWSDeployment,
+  type AWSDeployment,
   assertTerraformConfig,
   writeTerraformConfig,
-  AWSTerraformState,
-  RemoteState,
+  type AWSTerraformState,
+  type RemoteState,
   getAWSCredentials,
 } from '@goldstack/infra-aws';
 import {
   terraformCli,
-  CloudProvider,
-  TerraformDeployment,
-  TerraformOptions,
+  type CloudProvider,
+  type TerraformDeployment,
+  type TerraformOptions,
 } from '@goldstack/utils-terraform';
-import { AwsCredentialIdentity } from '@aws-sdk/types';
+import type { AwsCredentialIdentity } from '@aws-sdk/types';
 import { assertState, deleteState } from './tfState';
 import crypto from 'crypto';
-import { spawnSync, SpawnSyncOptionsWithStringEncoding } from 'child_process';
+import { spawnSync, type SpawnSyncOptionsWithStringEncoding } from 'child_process';
 
 import os from 'os';
 

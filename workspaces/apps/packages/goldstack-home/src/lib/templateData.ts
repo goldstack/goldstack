@@ -10,7 +10,7 @@ import S3Icon from 'src/icons/s3.svg';
 
 import CloudFrontIcon from 'src/icons/cloudfront.svg';
 
-import { PackageListItem } from 'src/components/PackageList';
+import type { PackageListItem } from 'src/components/PackageList';
 
 export const getTemplateData = (
   preferredElements: string[]

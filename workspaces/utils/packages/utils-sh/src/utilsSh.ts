@@ -215,7 +215,7 @@ export const zip = async (params: {
       zlib: { level: 9 },
     });
 
-    archive.on('warning', function (err) {
+    archive.on('warning', (err) => {
       console.warn(err.message);
     });
 
@@ -345,7 +345,7 @@ const tryRead = (path: string): string | undefined => {
 
 const readToType = <T>(path: string): T | undefined => {
   const stringObject = tryRead(path);
-  let result: T | undefined = undefined;
+  let result: T | undefined ;
   if (stringObject) result = JSON.parse(stringObject) as T;
   return result;
 };

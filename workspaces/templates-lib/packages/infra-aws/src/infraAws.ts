@@ -7,7 +7,7 @@ import {
 } from '@goldstack/utils-config';
 import { readPackageConfig } from '@goldstack/utils-package';
 import { read, write } from '@goldstack/utils-sh';
-import {
+import type {
   AWSConfiguration,
   AWSUser,
   AWSProfileConfig,
@@ -19,11 +19,11 @@ import {
 import configSchema from './schemas/accountConfigSchema.json';
 import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
 import awsStateConfigSchema from './schemas/awsTerraformStateSchema.json';
-import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 
-import { AWSTerraformState, RemoteState } from './types/awsTerraformState';
+import type { AWSTerraformState, RemoteState } from './types/awsTerraformState';
 
-import {
+import type {
   AWSRegion,
   AWSEnvironmentVariableUserConfig,
 } from './types/awsAccount';
@@ -41,7 +41,7 @@ export type {
   RemoteState,
 };
 
-import { AWSDeployment } from './types/awsDeployment';
+import type { AWSDeployment } from './types/awsDeployment';
 import {
   getAWSUserFromContainerEnvironment,
   getAWSUserFromDefaultLocalProfile,

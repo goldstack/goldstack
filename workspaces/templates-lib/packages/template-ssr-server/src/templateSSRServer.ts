@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { type FunctionComponent } from 'react';
 
 import type {
   APIGatewayProxyEventV2,
@@ -11,7 +11,7 @@ import { renderToString } from 'react-dom/server';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { readFileSync } from 'fs';
 
-import { MappingStore, StaticFileMapperRun } from 'static-file-mapper';
+import { type MappingStore, StaticFileMapperRun } from 'static-file-mapper';
 
 export type ReactPropertiesType = unknown &
   JSX.IntrinsicAttributes &
@@ -29,7 +29,7 @@ export type {
   ClientBuildOptionsArgs,
 };
 
-import { StaticFileMapper } from 'static-file-mapper';
+import type { StaticFileMapper } from 'static-file-mapper';
 import type { Deployment } from '@goldstack/infra';
 
 export const clientBundleFileName = 'client.bundle.js';

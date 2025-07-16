@@ -1,12 +1,12 @@
 import { wrapCli } from '@goldstack/utils-cli';
 import { fatal } from '@goldstack/utils-log';
 import { infraAwsStaticWebsiteCli } from './infraAwsStaticWebsite';
-import {
+import type {
   AWSStaticWebsiteConfiguration,
   AWSStaticWebsitePackage,
   AWSStaticWebsiteDeploymentConfiguration,
 } from './types/AWSStaticWebsitePackage';
-import { AWSStaticWebsiteDeployment } from './types/AWSStaticWebsitePackage';
+import type { AWSStaticWebsiteDeployment } from './types/AWSStaticWebsitePackage';
 
 export type {
   AWSStaticWebsitePackage,

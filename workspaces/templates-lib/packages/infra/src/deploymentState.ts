@@ -1,4 +1,4 @@
-import {
+import type {
   DeploymentsState,
   DeploymentState,
 } from './types/deploymentStatesTypes';

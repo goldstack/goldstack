@@ -2,7 +2,7 @@
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { getEndpoint } from './getEndpoints';
-import {
+import type {
   UserManagementDeployment,
   UserManagementPackage,
 } from '../templateUserManagement';

@@ -2,8 +2,8 @@ import { S3Client } from '@aws-sdk/client-s3';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { warn } from '@goldstack/utils-log';
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
-import { S3Deployment, S3Package } from './templateS3';
-import { AWSDeploymentRegion, getAWSUser } from '@goldstack/infra-aws';
+import type { S3Deployment, S3Package } from './templateS3';
+import { type AWSDeploymentRegion, getAWSUser } from '@goldstack/infra-aws';
 
 let s3MockUsed = false;
 

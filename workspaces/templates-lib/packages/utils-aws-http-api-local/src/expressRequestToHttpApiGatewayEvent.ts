@@ -1,13 +1,13 @@
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 
-import {
+import type {
   APIGatewayProxyEventV2,
   APIGatewayProxyStructuredResultV2,
   Context,
 } from 'aws-lambda';
 
 import cookie from 'cookie';
-import { LambdaConfig } from '@goldstack/utils-aws-lambda';
+import type { LambdaConfig } from '@goldstack/utils-aws-lambda';
 
 export interface CovertToGatewayEventParams {
   req: Request;

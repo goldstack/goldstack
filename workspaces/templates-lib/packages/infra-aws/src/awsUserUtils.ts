@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {
+import type {
   AWSConfiguration,
   AWSRegion,
   AWSProfileConfig,
@@ -16,7 +16,7 @@ import {
   fromProcess,
 } from '@aws-sdk/credential-providers';
 
-import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { hasInjectedCredentials, injectCredentials } from './awsAuthUtils';
 import { warn } from '@goldstack/utils-log';
 
@@ -130,7 +130,7 @@ export async function getAWSUserFromGoldstackConfig(
     }
 
     let credentials: AwsCredentialIdentityProvider;
-    let filename: string | undefined = undefined;
+    let filename: string | undefined ;
     if (!process.env.SHARE_CREDENTIALS_FILE) {
       filename = userConfig.awsCredentialsFileName;
     }

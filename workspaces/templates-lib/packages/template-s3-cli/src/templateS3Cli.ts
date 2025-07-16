@@ -4,7 +4,7 @@ import { infraCommands } from '@goldstack/utils-terraform';
 import { deployCli } from './templateS3Deploy';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import { PackageConfig } from '@goldstack/utils-package-config';
-import { S3Package, S3Deployment } from '@goldstack/template-s3';
+import type { S3Package, S3Deployment } from '@goldstack/template-s3';
 import yargs from 'yargs';
 
 export const run = async (args: string[]): Promise<void> => {

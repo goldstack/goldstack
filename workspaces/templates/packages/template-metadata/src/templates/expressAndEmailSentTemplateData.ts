@@ -1,4 +1,4 @@
-import { ProjectTemplateProps } from '../projectTemplateTypes';
+import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { Express, EmailSend } from './moduleData';
 import { getExpressTemplateData } from './expressTemplateData';
 import { getEmailSendFeature } from './emailSendTemplateData';

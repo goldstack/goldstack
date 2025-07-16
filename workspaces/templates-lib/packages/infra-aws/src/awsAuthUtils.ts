@@ -1,4 +1,4 @@
-import {
+import type {
   AwsCredentialIdentityProvider,
   AwsCredentialIdentity,
 } from '@aws-sdk/types';

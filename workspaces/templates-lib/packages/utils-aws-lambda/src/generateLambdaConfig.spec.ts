@@ -4,7 +4,7 @@ import {
 } from '@goldstack/utils-aws-lambda';
 import assert from 'assert';
 import { generateLambdaConfig } from './generateLambdaConfig';
-import { LambdaApiDeploymentConfiguration } from './types/LambdaDeploymentConfiguration';
+import type { LambdaApiDeploymentConfiguration } from './types/LambdaDeploymentConfiguration';
 import { getOutDirForLambda } from './buildFunctions';
 import { pwd } from '@goldstack/utils-sh';
 

@@ -1,6 +1,6 @@
-import React from 'react';
+import type React from 'react';
 import Link from 'next/link';
-import { SitemapItem } from '@goldstack/markdown-docs';
+import type { SitemapItem } from '@goldstack/markdown-docs';
 
 const navPath = '/docs/';
 

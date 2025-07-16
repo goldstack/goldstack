@@ -6,7 +6,7 @@ process.env.GOLDSTACK_DEPLOYMENT = 'local';
 
 const port: number = parseInt(process.env.PORT || '3000', 10);
 
-app.listen(port, function () {
+app.listen(port, () => {
   console.log(`Server is listening on port ${port}!`);
   console.log(`http://localhost:${port}/`);
 });

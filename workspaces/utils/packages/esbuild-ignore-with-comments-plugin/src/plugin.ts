@@ -89,7 +89,7 @@ export function mustIgnore(
 }
 
 export function findComments(text: string): string[] {
-  const commentRegex = /^\s*\/\* esbuild-ignore ([^\s\*]*)/gm;
+  const commentRegex = /^\s*\/\* esbuild-ignore ([^\s*]*)/gm;
   const res: string[] = [];
   let matches: RegExpExecArray | null;
   do {

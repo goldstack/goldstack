@@ -3,7 +3,7 @@ import { execSync } from 'child_process';
 import {
   getPackages,
   getTsConfigPath,
-  PackageData,
+  type PackageData,
   makeReferences,
 } from './sharedUtils';
 import path from 'path';

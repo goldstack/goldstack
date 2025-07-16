@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { debug, error } from '@goldstack/utils-log';
-import { DynamoDBInstance } from './localDynamoDB';
+import type { DynamoDBInstance } from './localDynamoDB';
 import fs from 'fs';
 import { check } from 'tcp-port-used';
 

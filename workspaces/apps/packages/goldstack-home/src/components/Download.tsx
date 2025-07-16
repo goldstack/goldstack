@@ -12,7 +12,7 @@ import Col from 'react-bootstrap/Col';
 
 import { dataUriToSrc } from 'src/utils/utils';
 import { getEndpoint } from '@goldstack/goldstack-api';
-import { DocLink } from '@goldstack/goldstack-api/dist/src/utils/docLinks';
+import type { DocLink } from '@goldstack/goldstack-api/dist/src/utils/docLinks';
 
 import assert from 'assert';
 import { loadStripe } from '@stripe/stripe-js';

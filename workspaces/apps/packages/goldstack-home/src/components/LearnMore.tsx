@@ -5,7 +5,7 @@ import { dataUriToSrc } from './../utils/utils';
 
 import styles from './LearnMore.module.css';
 
-import { MoreDetails } from '@goldstack/template-metadata';
+import type { MoreDetails } from '@goldstack/template-metadata';
 
 export const LeftArrow = (): JSX.Element => {
   const angleRight = dataUriToSrc(AngleRight);

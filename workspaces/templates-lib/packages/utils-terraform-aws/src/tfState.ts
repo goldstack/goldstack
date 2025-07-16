@@ -1,4 +1,4 @@
-import { AwsCredentialIdentity } from '@aws-sdk/types';
+import type { AwsCredentialIdentity } from '@aws-sdk/types';
 
 import {
   BucketAlreadyOwnedByYou,
@@ -94,7 +94,7 @@ const deleteAllObjectsFromBucket = async (
   s3: S3Client,
   bucketName: string
 ): Promise<void> => {
-  let continuationToken: string | undefined = undefined;
+  let continuationToken: string | undefined ;
   do {
     // List objects in the bucket
     const listResponse = await s3.send(

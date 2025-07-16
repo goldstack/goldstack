@@ -1,4 +1,4 @@
-import { ProjectTemplateProps } from '../projectTemplateTypes';
+import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { UserManagement } from './moduleData';
 import { featureYarn } from './nextjsTemplateData';
 

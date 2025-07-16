@@ -13,9 +13,9 @@ import {
 
 import {
   createUserEntity,
-  InputUser,
-  UserEntity,
-  ValidUserValue,
+  type InputUser,
+  type UserEntity,
+  type ValidUserValue,
 } from './entities';
 
 import {

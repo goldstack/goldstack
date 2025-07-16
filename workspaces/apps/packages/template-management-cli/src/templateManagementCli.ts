@@ -14,7 +14,7 @@ import { getAwsConfigPath } from '@goldstack/utils-config';
 import { readConfig } from '@goldstack/infra-aws';
 import { scheduleAllDeploySets } from './scheduleAllDeploySets';
 import fs from 'fs';
-import { AWSAPIKeyUser } from '@goldstack/infra-aws';
+import type { AWSAPIKeyUser } from '@goldstack/infra-aws';
 import {
   connect as connectSes,
   getFromDomain,
@@ -97,7 +97,7 @@ export const run = async (): Promise<void> => {
       .parse();
 
     let workDir = argv.workDir as string;
-    let tmpInstance: any = undefined;
+    let tmpInstance: any ;
     if (workDir === 'tmp') {
       tmpInstance = tmp.dirSync();
       workDir = tmpInstance.name + '/';
@@ -111,7 +111,7 @@ export const run = async (): Promise<void> => {
         `Working directory must end with a /. Supplied working directory: ${workDir}`
       );
     }
-    let repo: S3TemplateRepository | undefined = undefined;
+    let repo: S3TemplateRepository | undefined ;
     if (argv.repo === 'goldstack-dev') {
       const s3 = await connect('dev');
       const bucketName = await getBucketName('dev');
@@ -165,7 +165,7 @@ export const run = async (): Promise<void> => {
       );
 
       const awsConfigPath = getAwsConfigPath('./../../');
-      let awsConfig: undefined | AWSAPIKeyUser = undefined;
+      let awsConfig: undefined | AWSAPIKeyUser ;
       if (fs.existsSync(awsConfigPath)) {
         info('Using local AWS config');
         const goldstackDevUser = readConfig(awsConfigPath).users.find(

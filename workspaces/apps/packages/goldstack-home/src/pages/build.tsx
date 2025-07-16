@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import type React from 'react';
+import { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -13,7 +14,7 @@ import Button from 'react-bootstrap/Button';
 import { event } from './../lib/ga';
 import NoModulesAddedModal from './../components/NoModulesAddedModal';
 
-import { ProjectData } from '@goldstack/project-repository';
+import type { ProjectData } from '@goldstack/project-repository';
 import { getPackageIds } from './../lib/stackParamUtils';
 
 import { buildProjectConfig } from './../lib/buildProject';

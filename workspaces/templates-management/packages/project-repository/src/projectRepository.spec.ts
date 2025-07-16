@@ -1,5 +1,5 @@
 import { connectProjectRepository } from './projectRepository';
-import { ProjectConfiguration } from '@goldstack/utils-project';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
 
 import { dummyUser } from '@goldstack/auth';
 

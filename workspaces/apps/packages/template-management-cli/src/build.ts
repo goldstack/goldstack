@@ -6,7 +6,7 @@ const build = async (): Promise<void> => {
   const config = getConfig();
   const rootDir = './../../../../';
 
-  let commitHash: string | undefined = undefined;
+  let commitHash: string | undefined ;
   try {
     commitHash = hash();
   } catch (e) {

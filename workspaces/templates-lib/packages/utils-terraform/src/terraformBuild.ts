@@ -1,19 +1,19 @@
 import { debug, fatal, info, warn } from '@goldstack/utils-log';
 import { tf } from './terraformCli';
-import {
+import type {
   TerraformDeployment,
   TerraformVariables,
   TerraformVersion,
 } from './types/utilsTerraformConfig';
-import { CloudProvider } from './cloudProvider';
+import type { CloudProvider } from './cloudProvider';
 import { cd, read, pwd } from '@goldstack/utils-sh';
-import { Variables } from './terraformCli';
+import type { Variables } from './terraformCli';
 import {
   readPackageConfig,
   writePackageConfig,
 } from '@goldstack/utils-package';
 import child_process, {
-  SpawnSyncOptionsWithStringEncoding,
+  type SpawnSyncOptionsWithStringEncoding,
 } from 'child_process';
 import assert from 'assert';
 import fs from 'fs';
@@ -23,7 +23,7 @@ import { writeDeploymentState, readDeploymentState } from '@goldstack/infra';
 
 import JSONStableStringy from 'json-stable-stringify';
 import path from 'path';
-import { TerraformOptions } from './utilsTerraform';
+import type { TerraformOptions } from './utilsTerraform';
 
 export const convertToPythonVariable = (variableName: string): string => {
   let res = '';
@@ -102,7 +102,7 @@ export const getVariablesFromHCL = (properties: object): Variables => {
   );
 
   jsVariableNames.forEach((key) => {
-    if (!properties.hasOwnProperty(key)) {
+    if (!Object.hasOwn(properties, key)) {
       warn(
         `Cannot find property "${key}" in Goldstack configuration. Therefore terraform variable ${convertToPythonVariable(
           key
@@ -252,7 +252,7 @@ export class TerraformBuild {
     try {
       const provider = this.provider;
 
-      let workspace: undefined | string = undefined;
+      let workspace: undefined | string ;
 
       // supplying workspace does not work for first initialisation
       // https://discuss.hashicorp.com/t/terraform-init-ignores-input-false-option/16065

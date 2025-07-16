@@ -1,8 +1,8 @@
-import { AWSDeployment } from '@goldstack/infra-aws';
-import { TerraformDeployment } from '@goldstack/utils-terraform';
-import { Deployment } from '@goldstack/infra';
+import type { AWSDeployment } from '@goldstack/infra-aws';
+import type { TerraformDeployment } from '@goldstack/utils-terraform';
+import type { Deployment } from '@goldstack/infra';
 
-import { DynamoDBDeploymentConfiguration } from './DynamoDBDeploymentConfiguration';
+import type { DynamoDBDeploymentConfiguration } from './DynamoDBDeploymentConfiguration';
 
 export type {
   AWSDeployment,

@@ -8,12 +8,12 @@ import {
   readDeploymentState,
   readTerraformStateVariable,
 } from '@goldstack/infra';
-import yargs, { Argv } from 'yargs';
+import yargs, { type Argv } from 'yargs';
 import fs from 'fs';
 import {
   createLambdaAPIDeploymentConfiguration,
-  SSRDeployment,
-  SSRPackage,
+  type SSRDeployment,
+  type SSRPackage,
 } from '@goldstack/template-ssr';
 import type { BuildConfiguration } from '@goldstack/template-ssr';
 
@@ -23,7 +23,7 @@ import {
   validateDeployment,
   buildFunctions,
   deployFunctions,
-  LambdaConfig,
+  type LambdaConfig,
 } from '@goldstack/utils-aws-lambda';
 import { defaultRoutesPath } from './templateSSRConsts';
 import { buildBundles } from './buildBundles';
@@ -133,7 +133,7 @@ export const run = async (
 
     if (command === 'build') {
       const deployment = packageConfig.getDeployment(opArgs[0]);
-      let routeFilter: undefined | string = undefined;
+      let routeFilter: undefined | string ;
       if (opArgs.length === 2) {
         routeFilter = `*${opArgs[1]}*`;
       }

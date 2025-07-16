@@ -1,6 +1,6 @@
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { getCodeChallenge } from './getCodeVerifier';
-import {
+import type {
   Endpoint,
   UserManagementDeployment,
   UserManagementPackage,

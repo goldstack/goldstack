@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { GetStaticProps, GetStaticPaths } from 'next';
+import type { GetStaticProps, GetStaticPaths } from 'next';
 
 import Header from 'src/components/Header';
 
 import {
-  ProjectTemplateProps,
+  type ProjectTemplateProps,
   allTemplates,
 } from '@goldstack/template-metadata';
 

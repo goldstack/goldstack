@@ -33,7 +33,7 @@ const BootstrapApp = ({ Component, pageProps }): JSX.Element => {
 
   // see https://medium.com/frontend-digest/using-nextjs-with-google-analytics-and-typescript-620ba2359dea
   useEffect(() => {
-    let handleRouteChange: any = undefined;
+    let handleRouteChange: any ;
     if (process.env.GOLDSTACK_DEPLOYMENT === 'prod') {
       handleRouteChange = (url): void => {
         pageview({

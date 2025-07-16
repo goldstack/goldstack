@@ -5,7 +5,7 @@ import {
   DeleteObjectCommand,
   DeleteObjectsCommand,
   GetObjectCommand,
-  GetObjectOutput,
+  type GetObjectOutput,
   GetObjectTaggingCommand,
   HeadObjectCommand,
   ListBucketsCommand,
@@ -17,9 +17,9 @@ import {
   S3Client,
 } from '@aws-sdk/client-s3';
 import { mockClient } from 'aws-sdk-client-mock';
-import { AWSError, S3 } from 'mock-aws-s3';
-import { StreamingBlobPayloadOutputTypes } from '@smithy/types';
-import { WriteStream } from 'fs';
+import { type AWSError, S3 } from 'mock-aws-s3';
+import type { StreamingBlobPayloadOutputTypes } from '@smithy/types';
+import type { WriteStream } from 'fs';
 import { resolve } from 'path';
 import * as s3Mock from 'mock-aws-s3';
 

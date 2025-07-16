@@ -1,12 +1,12 @@
 import { debug } from '@goldstack/utils-log';
-import { PackageProjectConfiguration } from '@goldstack/utils-project';
+import type { PackageProjectConfiguration } from '@goldstack/utils-project';
 import { mkdir, rm } from '@goldstack/utils-sh';
 import extract from 'extract-zip';
 import { readdirSync } from 'fs';
 import path from 'path';
 import {
-  ProjectBuildParams,
-  TemplateReference,
+  type ProjectBuildParams,
+  type TemplateReference,
   assertTemplateReferenceVersion,
   assert,
   setPackageName,

@@ -1,4 +1,4 @@
-import { HetznerVPSDeployment } from '@goldstack/template-hetzner-vps';
+import type { HetznerVPSDeployment } from '@goldstack/template-hetzner-vps';
 import { error, info } from '@goldstack/utils-log';
 import { cp, exec, read, rmSafe, write, zip } from '@goldstack/utils-sh';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';

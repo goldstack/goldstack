@@ -1,4 +1,4 @@
-import { Name } from './awsAccount';
+import type { Name } from './awsAccount';
 
 /**
  * The name of the bucket where the Terraform state for the packages will be stored.

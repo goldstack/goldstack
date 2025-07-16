@@ -11,7 +11,7 @@ import Col from 'react-bootstrap/Col';
 
 import sitemap from './../data/docs/sitemap.json';
 
-import { Heading } from '@goldstack/toc-generator';
+import type { Heading } from '@goldstack/toc-generator';
 import styles from './Docs.module.css';
 
 import Toc from './Toc';

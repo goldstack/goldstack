@@ -13,7 +13,7 @@ export type {
 import {
   generateFunctionName,
   getOutDirForLambda,
-  LambdaConfig,
+  type LambdaConfig,
 } from '@goldstack/utils-aws-lambda';
 import { debug } from '@goldstack/utils-log';
 import { mkdir, write } from '@goldstack/utils-sh';

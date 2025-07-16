@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router, type Request, type Response } from 'express';
 
 import { connectProjectRepository } from '@goldstack/project-repository';
 import {
@@ -21,7 +21,7 @@ import {
 
 import { connectSessionRepository } from '@goldstack/session-repository';
 import { writePackageConfigs } from '@goldstack/project-config';
-import { ProjectData } from '@goldstack/project-repository';
+import type { ProjectData } from '@goldstack/project-repository';
 
 import { isSessionPaid } from './lib/stripe';
 

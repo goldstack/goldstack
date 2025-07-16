@@ -1,4 +1,4 @@
-import { configureLogger, logger, LoggerConfig } from '@goldstack/utils-cli';
+import { configureLogger, logger, type LoggerConfig } from '@goldstack/utils-cli';
 
 const isDebug = process.env.GOLDSTACK_DEBUG || process.env.DEBUG;
 

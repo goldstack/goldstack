@@ -4,7 +4,7 @@ import {
   stopAllLocalDynamoDB,
   stopLocalDynamoDB,
 } from './templateDynamoDBTable';
-import { ThisPackage } from './types/DynamoDBPackage';
+import type { ThisPackage } from './types/DynamoDBPackage';
 import { check } from 'tcp-port-used';
 import { connect } from './templateDynamoDBTable';
 import { PutItemCommand, GetItemCommand } from '@aws-sdk/client-dynamodb';

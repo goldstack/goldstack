@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
 import { useRouter } from 'next/router';
-import { ProjectData } from '@goldstack/project-repository';
+import type { ProjectData } from '@goldstack/project-repository';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import assert from 'assert';
 import styled from 'styled-components';
 
 import { getEndpoint } from '@goldstack/goldstack-api';
-import { validateProject, StepValidation } from './../lib/validateProject';
+import { validateProject, type StepValidation } from './../lib/validateProject';
 
 import * as Fullstory from '@fullstory/browser';
 import Progress from './Progress';

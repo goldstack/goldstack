@@ -1,4 +1,4 @@
-import { allTemplates, MoreDetails } from './projectTemplateData';
+import { allTemplates, type MoreDetails } from './projectTemplateData';
 
 describe('Project Template Data', () => {
   it('Should be able to provide types', () => {

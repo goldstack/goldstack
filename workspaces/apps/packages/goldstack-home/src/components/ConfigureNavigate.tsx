@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ConfigureStep } from 'src/lib/getConfigureSteps';
+import type { ConfigureStep } from 'src/lib/getConfigureSteps';
 
 const SelectedItem = (props: { title: string }): JSX.Element => {
   return (

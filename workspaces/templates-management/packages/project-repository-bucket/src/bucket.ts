@@ -5,9 +5,9 @@ import {
 } from '@goldstack/template-s3';
 
 import goldstackSchema from './../schemas/package.schema.json';
-import { S3Client } from '@aws-sdk/client-s3';
-import { MetadataBearer, RequestPresigningArguments } from '@smithy/types';
-import { Client, Command } from '@smithy/smithy-client';
+import type { S3Client } from '@aws-sdk/client-s3';
+import type { MetadataBearer, RequestPresigningArguments } from '@smithy/types';
+import type { Client, Command } from '@smithy/smithy-client';
 import goldstackConfig from './../goldstack.json';
 
 export const connect = async (deploymentName?: string): Promise<S3Client> => {

@@ -1,6 +1,6 @@
 import { build } from 'esbuild';
 import type { BuildOptions } from 'esbuild';
-import { LambdaConfig } from './types/LambdaConfig';
+import type { LambdaConfig } from './types/LambdaConfig';
 import { generateFunctionName } from './generate/generateFunctionName';
 import {
   changeExtension,

@@ -1,4 +1,4 @@
-import { SendMessageCommand, SendMessageRequest } from '@aws-sdk/client-sqs';
+import { SendMessageCommand, type SendMessageRequest } from '@aws-sdk/client-sqs';
 import {
   getSentMessageRequests,
   connect,

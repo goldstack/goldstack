@@ -1,8 +1,8 @@
-import { Package } from '@goldstack/utils-package';
+import type { Package } from '@goldstack/utils-package';
 
-import { AWSDeployment } from '@goldstack/infra-aws';
-import { TerraformDeployment } from '@goldstack/utils-terraform';
-import { Deployment } from '@goldstack/infra';
+import type { AWSDeployment } from '@goldstack/infra-aws';
+import type { TerraformDeployment } from '@goldstack/utils-terraform';
+import type { Deployment } from '@goldstack/infra';
 import { DeploymentConfiguration } from '@goldstack/infra';
 export { DeploymentConfiguration };
 import { Configuration } from '@goldstack/utils-package';

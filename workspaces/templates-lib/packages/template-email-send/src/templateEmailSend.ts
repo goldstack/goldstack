@@ -7,7 +7,7 @@ export type { EmailSendDeployment, EmailSendPackage };
 
 export { connect, getMockedSES, getFromDomain } from './sesConnect';
 
-import { SendEmailRequest, SESClient } from '@aws-sdk/client-ses';
+import type { SendEmailRequest, SESClient } from '@aws-sdk/client-ses';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 
 // Import the CreateSESClientType type

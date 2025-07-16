@@ -6,7 +6,7 @@ import { PackageConfig } from '@goldstack/utils-package-config';
 import { writePackageConfig } from '@goldstack/utils-package';
 import yargs from 'yargs';
 import fs from 'fs';
-import {
+import type {
   LambdaApiPackage,
   LambdaApiDeployment,
 } from '@goldstack/template-lambda-api';
@@ -105,7 +105,7 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'build') {
       const deployment = packageConfig.getDeployment(opArgs[0]);
-      let routeFilter: undefined | string = undefined;
+      let routeFilter: undefined | string ;
       if (opArgs.length === 2) {
         routeFilter = `*${opArgs[1]}*`;
       }

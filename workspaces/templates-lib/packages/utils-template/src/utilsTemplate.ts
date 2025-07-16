@@ -1,7 +1,7 @@
 import { parseConfig } from '@goldstack/utils-config';
 import configSchema from './schemas/goldstackTemplateConfigurationSchema.json';
 import { read } from '@goldstack/utils-sh';
-import { GoldstackTemplateConfiguration } from './generated/goldstackTemplateConfigurationSchema';
+import type { GoldstackTemplateConfiguration } from './generated/goldstackTemplateConfigurationSchema';
 
 export type { GoldstackTemplateConfiguration } from './generated/goldstackTemplateConfigurationSchema';
 

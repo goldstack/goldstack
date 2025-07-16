@@ -1,6 +1,6 @@
 import { read } from '@goldstack/utils-sh';
-import { InputMigrations } from 'umzug/lib/types';
-import { DynamoDBContext } from '@goldstack/template-dynamodb';
+import type { InputMigrations } from 'umzug/lib/types';
+import type { DynamoDBContext } from '@goldstack/template-dynamodb';
 import {
   connect,
   deleteTable,

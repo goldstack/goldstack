@@ -35,7 +35,7 @@ const handlers = {
 export async function markdownToHtml(filePath, tag, md): Promise<string> {
   try {
     // Init the processor with our custom plugin
-    let processor: any = undefined;
+    let processor: any ;
     processor = unified()
       .use(markdown as any)
       .use(rehypeMarkdown, { filePath, tag, processor: () => processor })

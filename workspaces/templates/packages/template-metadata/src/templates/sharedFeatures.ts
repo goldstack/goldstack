@@ -1,4 +1,4 @@
-import { ShortTemplateFeature } from './../projectTemplateTypes';
+import type { ShortTemplateFeature } from './../projectTemplateTypes';
 
 export const featureYarn3 = (): ShortTemplateFeature => {
   return {

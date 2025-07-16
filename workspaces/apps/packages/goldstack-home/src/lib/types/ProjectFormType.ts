@@ -1,5 +1,5 @@
-import { ProjectName } from '@goldstack/utils-project';
-import { AWSRegion } from '@goldstack/infra-aws';
+import type { ProjectName } from '@goldstack/utils-project';
+import type { AWSRegion } from '@goldstack/infra-aws';
 
 /**
  * Choose if you want to use this tool to define your development or production infrastructure.

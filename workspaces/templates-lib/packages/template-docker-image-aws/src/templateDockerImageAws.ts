@@ -10,7 +10,7 @@ import { apiDockerImageAwsCli } from './apiDockerImageAws';
 import yargs from 'yargs';
 import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
 import { infraCommands } from '@goldstack/utils-terraform';
-import { Argv } from 'yargs';
+import type { Argv } from 'yargs';
 import { PackageConfig } from '@goldstack/utils-package-config';
 import {
   AWSDockerImagePackage,

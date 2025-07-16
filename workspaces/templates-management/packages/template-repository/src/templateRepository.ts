@@ -1,11 +1,11 @@
 import { readPackageConfig } from '@goldstack/utils-package';
 import {
-  GoldstackTemplateConfiguration,
+  type GoldstackTemplateConfiguration,
   readTemplateConfigFromString,
   readTemplateConfigFromFile,
 } from '@goldstack/utils-template';
 import {
-  S3Client,
+  type S3Client,
   GetObjectCommand,
   NoSuchKey,
   PutObjectCommand,

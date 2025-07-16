@@ -1,11 +1,11 @@
 import {
-  LambdaConfig,
+  type LambdaConfig,
   generateFunctionName,
 } from '@goldstack/utils-aws-lambda';
 
-import express from 'express';
+import type express from 'express';
 
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 import {
   convertToGatewayEvent,
   createContext,

@@ -1,6 +1,6 @@
 /* esbuild-ignore server */
 
-import {
+import type {
   CognitoAccessTokenPayload,
   CognitoIdTokenPayload,
 } from 'aws-jwt-verify/jwt-model';
@@ -9,8 +9,8 @@ import {
   getMockedIdTokenProperties,
 } from './userManagementMock';
 
-let mockedUserAccessToken: string | undefined = undefined;
-let mockedUserIdToken: string | undefined = undefined;
+let mockedUserAccessToken: string | undefined ;
+let mockedUserIdToken: string | undefined ;
 
 export function setMockedUserAccessToken(
   propertiesOrToken: CognitoAccessTokenPayload | object | string | undefined

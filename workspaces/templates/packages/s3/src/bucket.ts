@@ -4,10 +4,10 @@ import {
   getSignedUrlS3 as templateGetSignedUrl,
 } from '@goldstack/template-s3';
 
-import { S3Client } from '@aws-sdk/client-s3';
+import type { S3Client } from '@aws-sdk/client-s3';
 
-import { MetadataBearer, RequestPresigningArguments } from '@smithy/types';
-import { Client, Command } from '@smithy/smithy-client';
+import type { MetadataBearer, RequestPresigningArguments } from '@smithy/types';
+import type { Client, Command } from '@smithy/smithy-client';
 
 import goldstackConfig from './../goldstack.json';
 import goldstackSchema from './../schemas/package.schema.json';

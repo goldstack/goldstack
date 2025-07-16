@@ -1,14 +1,14 @@
-import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
+import type { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import {
   CreateTableCommand,
   DeleteTableCommand,
   DescribeTableCommand,
-  DynamoDBClient,
+  type DynamoDBClient,
   ResourceInUseException,
   ResourceNotFoundException,
 } from '@aws-sdk/client-dynamodb';
 import { getTableName } from './dynamoDBPackageUtils';
-import { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
+import type { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
 import { debug, info, warn } from '@goldstack/utils-log';
 
 function sleep(ms: number): Promise<void> {
@@ -24,7 +24,7 @@ export async function assertTableActive(
 ): Promise<void> {
   const tableName = await getTableName(packageConfig, deploymentName);
   let retries = 0;
-  let tableStatus: string | undefined = undefined;
+  let tableStatus: string | undefined ;
   // ensure that able is ACTIVE before proceeding
   while (tableStatus !== 'ACTIVE' && retries < 120) {
     try {

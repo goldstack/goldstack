@@ -4,7 +4,7 @@ import {
   GetObjectCommand,
   NoSuchKey,
   PutObjectCommand,
-  S3Client,
+  type S3Client,
 } from '@aws-sdk/client-s3';
 
 import assert from 'assert';

@@ -1,4 +1,4 @@
-import { PackageProps } from '../projectTemplateTypes';
+import type { PackageProps } from '../projectTemplateTypes';
 
 const NextJsBootstrap: PackageProps = {
   title: 'Next.js + Bootstrap',

@@ -1,8 +1,8 @@
-import { AWSDeployment } from '@goldstack/infra-aws';
-import { TerraformDeployment } from '@goldstack/utils-terraform';
-import { Deployment, DeploymentConfiguration } from '@goldstack/infra';
-import { Package, Configuration } from '@goldstack/utils-package';
-import { LambdaApiDeploymentConfiguration } from '@goldstack/utils-aws-lambda';
+import type { AWSDeployment } from '@goldstack/infra-aws';
+import type { TerraformDeployment } from '@goldstack/utils-terraform';
+import type { Deployment, DeploymentConfiguration } from '@goldstack/infra';
+import type { Package, Configuration } from '@goldstack/utils-package';
+import type { LambdaApiDeploymentConfiguration } from '@goldstack/utils-aws-lambda';
 
 export interface ThisDeploymentConfiguration
   extends LambdaApiDeploymentConfiguration,
@@ -40,7 +40,7 @@ export interface ThisPackage extends Package {
   deployments: LambdaApiDeployments;
 }
 
-export { ThisDeploymentConfiguration as LambdaApiDeploymentConfiguration };
-export { ThisDeployment as LambdaApiDeployment };
-export { ThisPackageConfiguration as LambdaApiConfiguration };
-export { ThisPackage as LambdaApiPackage };
+export type { ThisDeploymentConfiguration as LambdaApiDeploymentConfiguration };
+export type { ThisDeployment as LambdaApiDeployment };
+export type { ThisPackageConfiguration as LambdaApiConfiguration };
+export type { ThisPackage as LambdaApiPackage };

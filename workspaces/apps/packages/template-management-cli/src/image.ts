@@ -7,8 +7,8 @@ import {
   startTask,
   getDeploymentState,
   getDeployment,
-  StartTaskResult,
-  AWSDockerImagePackage,
+  type StartTaskResult,
+  type AWSDockerImagePackage,
 } from '@goldstack/template-docker-image-aws';
 
 /**

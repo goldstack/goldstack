@@ -1,14 +1,14 @@
 import {
   connectWithCognito as templateConnect,
   getEndpoint as templateGetEndpoint,
-  CognitoManager,
-  Endpoint,
+  type CognitoManager,
+  type Endpoint,
   loginWithRedirect as templateLoginWithRedirect,
   signUpWithRedirect as templateSignUpWithRedirect,
   handleRedirectCallback as templateHandleRedirectCallback,
   getCookieSettings as templateGetCookieSettings,
   performLogout as templatePerformLogout,
-  GetCookieSettingsResult,
+  type GetCookieSettingsResult,
 } from '@goldstack/template-user-management';
 
 import goldstackConfig from './../goldstack.json';

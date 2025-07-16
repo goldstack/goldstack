@@ -1,13 +1,13 @@
-import { AWSDeployment } from '@goldstack/infra-aws';
-import { TerraformDeployment } from '@goldstack/utils-terraform';
-import { Deployment, DeploymentConfiguration } from '@goldstack/infra';
-import { Package, Configuration } from '@goldstack/utils-package';
+import type { AWSDeployment } from '@goldstack/infra-aws';
+import type { TerraformDeployment } from '@goldstack/utils-terraform';
+import type { Deployment, DeploymentConfiguration } from '@goldstack/infra';
+import type { Package, Configuration } from '@goldstack/utils-package';
 import {
   LambdaConfiguration,
-  LambdaDeployment,
-  LambdaDeploymentConfiguration,
+  type LambdaDeployment,
+  type LambdaDeploymentConfiguration,
   LambdaDeployments,
-  LambdaPackage,
+  type LambdaPackage,
 } from '@goldstack/template-lambda-cli';
 
 /**
@@ -75,7 +75,7 @@ export interface ThisPackage extends Package, LambdaPackage {
   deployments: LambdaExpressDeployments;
 }
 
-export { ThisDeploymentConfiguration as LambdaExpressDeploymentConfiguration };
-export { ThisDeployment as LambdaExpressDeployment };
-export { ThisPackageConfiguration as LambdaExpressConfiguration };
-export { ThisPackage as LambdaExpressPackage };
+export type { ThisDeploymentConfiguration as LambdaExpressDeploymentConfiguration };
+export type { ThisDeployment as LambdaExpressDeployment };
+export type { ThisPackageConfiguration as LambdaExpressConfiguration };
+export type { ThisPackage as LambdaExpressPackage };

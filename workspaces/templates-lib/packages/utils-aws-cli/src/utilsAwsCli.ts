@@ -3,11 +3,11 @@ import {
   exec,
   pwd,
   cd,
-  ExecParams,
+  type ExecParams,
   assertDirectoryExists,
   execAsync,
 } from '@goldstack/utils-sh';
-import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { getAWSCredentials } from '@goldstack/infra-aws';
 import { debug, fatal } from '@goldstack/utils-log';
 import { hasDocker, assertDocker, imageAWSCli } from '@goldstack/utils-docker';

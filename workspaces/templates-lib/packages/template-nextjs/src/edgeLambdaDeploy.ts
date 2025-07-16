@@ -1,6 +1,6 @@
-import { NextjsDeployment } from './types/NextJsPackage';
+import type { NextjsDeployment } from './types/NextJsPackage';
 import { getAWSUser } from '@goldstack/infra-aws';
-import { readTerraformStateVariable, DeploymentState } from '@goldstack/infra';
+import { readTerraformStateVariable, type DeploymentState } from '@goldstack/infra';
 import { cp, write, rmSafe, read, mkdir } from '@goldstack/utils-sh';
 import { awsCli } from '@goldstack/utils-aws-cli';
 import util from 'util';

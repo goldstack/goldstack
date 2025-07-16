@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
+import type { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import assert from 'assert';
-import DynamoDBPackage, { DynamoDBDeployment } from './types/DynamoDBPackage';
+import type DynamoDBPackage from './types/DynamoDBPackage';
+import type { DynamoDBDeployment } from './types/DynamoDBPackage';
 
 export const getTableName = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,

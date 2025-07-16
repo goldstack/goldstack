@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime';
-import { NextRouter } from 'next/router';
+import type { NextRouter } from 'next/router';
 import '@testing-library/jest-dom';
 import Front from '../pages/index';
 

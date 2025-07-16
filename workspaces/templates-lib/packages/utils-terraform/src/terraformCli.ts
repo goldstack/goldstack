@@ -5,9 +5,9 @@ import {
   imageTerraform,
 } from '@goldstack/utils-docker';
 import { fatal, warn } from '@goldstack/utils-log';
-import { CloudProvider } from './cloudProvider';
-import { TerraformVersion } from './types/utilsTerraformConfig';
-import { writeCredentials as writeCredentials } from './writeCredentials';
+import type { CloudProvider } from './cloudProvider';
+import type { TerraformVersion } from './types/utilsTerraformConfig';
+import { writeCredentials } from './writeCredentials';
 import { writeVarsFile } from './writeVarsFile';
 import { writeBackendConfig } from './writeBackendConfig';
 import path from 'path';

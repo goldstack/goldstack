@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('source-map-support').install();
 import { info } from '@goldstack/utils-log';
-import { PostConfirmationTriggerHandler } from 'aws-lambda';
+import type { PostConfirmationTriggerHandler } from 'aws-lambda';
 import { generateUserId } from './generateUserId';
 
 import {

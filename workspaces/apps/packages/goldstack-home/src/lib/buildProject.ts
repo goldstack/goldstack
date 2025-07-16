@@ -1,4 +1,4 @@
-import { ProjectConfiguration } from '@goldstack/utils-project';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
 
 export const buildProjectConfig = (
   selectedIds: string[]

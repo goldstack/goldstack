@@ -1,5 +1,5 @@
 import configSchema from './schemas/configSchema.json';
-import { ProjectConfiguration } from './types/projectConfigurationSchema';
+import type { ProjectConfiguration } from './types/projectConfigurationSchema';
 import { read } from '@goldstack/utils-sh';
 import { parseConfig } from '@goldstack/utils-config';
 

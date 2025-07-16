@@ -1,11 +1,11 @@
-import {
+import type {
   PrepareTemplate,
   PrepareTemplateParams,
 } from '@goldstack/prepare-template';
 
 import { cp, mkdir, write, read } from '@goldstack/utils-sh';
 
-import { Package } from '@goldstack/utils-package';
+import type { Package } from '@goldstack/utils-package';
 import { getAwsConfigPath } from '@goldstack/utils-config';
 import { readTemplateConfigFromFile } from '@goldstack/utils-template';
 import { readConfig, createDefaultConfig } from '@goldstack/infra-aws';

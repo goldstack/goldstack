@@ -27,7 +27,7 @@ const getPackages = (cmdRes) => {
     .filter((packageData) => packageData.path && packageData.name);
 };
 
-exports.getLocalPackages = function () {
+exports.getLocalPackages = () => {
   const allWorkspaces = getPackages(
     childProcess.execSync('yarn workspaces list --json').toString()
   );

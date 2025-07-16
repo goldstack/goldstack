@@ -1,10 +1,10 @@
 import { parseConfig, validateConfig } from '@goldstack/utils-config';
 import configSchema from './schemas/configSchema.json';
 import { read, write } from '@goldstack/utils-sh';
-import { Package } from './types/packageTypes';
+import type { Package } from './types/packageTypes';
 import pathLib from 'path';
 
-import { Argv } from 'yargs';
+import type { Argv } from 'yargs';
 import { assert } from 'console';
 
 export type {

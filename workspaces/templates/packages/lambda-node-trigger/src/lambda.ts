@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('source-map-support').install();
 
-import { Handler, SQSEvent } from 'aws-lambda';
+import type { Handler, SQSEvent } from 'aws-lambda';
 
 import {
   getSQSQueueName as fetchQueueName,
@@ -10,7 +10,7 @@ import {
   getSQSDLQQueueUrl as fetchDLQQueueUrl,
 } from '@goldstack/template-sqs';
 
-import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
+import type { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
 
 import deployments from './state/deployments.json';
 import goldstackConfig from './../goldstack.json';
@@ -21,7 +21,7 @@ import {
   getMockedSQS as templateGetMockedSQS,
   getMockedDLQSQS as templateGetMockedDLQSQS,
 } from '@goldstack/template-sqs';
-import { MessageCallback } from '@goldstack/template-sqs';
+import type { MessageCallback } from '@goldstack/template-sqs';
 import { handler as lambdaHandler } from './handler';
 import { warn } from '@goldstack/utils-log';
 

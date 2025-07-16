@@ -3,15 +3,15 @@ import { wrapCli } from '@goldstack/utils-cli';
 import { infraCommands } from '@goldstack/utils-terraform';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import { PackageConfig } from '@goldstack/utils-package-config';
-import {
+import type {
   DynamoDBPackage,
   DynamoDBDeployment,
 } from '@goldstack/template-dynamodb';
-import yargs, { Argv } from 'yargs';
+import yargs, { type Argv } from 'yargs';
 import assert from 'assert';
 import { dynamoDBCli } from './dynamoDBTableCli';
-import { InputMigrations } from 'umzug/lib/types';
-import { DynamoDBContext } from '@goldstack/template-dynamodb';
+import type { InputMigrations } from 'umzug/lib/types';
+import type { DynamoDBContext } from '@goldstack/template-dynamodb';
 
 export const run = async ({
   args,

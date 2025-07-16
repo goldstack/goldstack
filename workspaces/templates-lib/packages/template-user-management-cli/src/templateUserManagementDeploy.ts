@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
+import type {
   UserManagementConfiguration,
   UserManagementDeployment,
 } from '@goldstack/template-user-management';

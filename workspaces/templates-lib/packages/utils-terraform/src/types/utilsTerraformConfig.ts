@@ -1,4 +1,4 @@
-import { Deployment } from '@goldstack/infra';
+import type { Deployment } from '@goldstack/infra';
 
 /**
  * Name of the property that should be converted into a Terraform variable.

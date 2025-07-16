@@ -1,13 +1,12 @@
 import type { BuildOptions } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
 import cssPlugin from 'esbuild-ssr-css-modules-plugin';
-import { ServerBuildOptionsArgs } from './buildFunctions';
+import type { ServerBuildOptionsArgs } from './buildFunctions';
 
 export function defaultBuildOptions(): (
   args: ServerBuildOptionsArgs
 ) => BuildOptions {
-  return function (args: ServerBuildOptionsArgs): BuildOptions {
-    return {
+  return (args: ServerBuildOptionsArgs): BuildOptions => ({
       plugins: [
         cssPlugin({
           jsCSSInject: false,
@@ -32,6 +31,5 @@ export function defaultBuildOptions(): (
       }, // see https://github.com/evanw/esbuild/issues/2377
       sourcemap: true,
       metafile: true,
-    };
-  };
+    });
 }

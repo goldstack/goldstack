@@ -1,9 +1,9 @@
-import { LambdaDeployment } from './types/LambdaPackage';
+import type { LambdaDeployment } from './types/LambdaPackage';
 import { getAWSUser } from '@goldstack/infra-aws';
 import {
   readDeploymentState,
   readTerraformStateVariable,
-  DeploymentState,
+  type DeploymentState,
 } from '@goldstack/infra';
 import { deployFunction } from '@goldstack/utils-aws-lambda';
 

@@ -1,6 +1,6 @@
-import { ProjectTemplateProps } from '../projectTemplateTypes';
+import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { S3 } from './moduleData';
-import { ShortTemplateFeature } from '../projectTemplateData';
+import type { ShortTemplateFeature } from '../projectTemplateData';
 import {
   featureAppComposition,
   featureVSCode,

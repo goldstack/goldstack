@@ -1,5 +1,5 @@
 import { yarn } from '@goldstack/utils-yarn';
-import { TemplateTest, RunTestParams } from '../types/TemplateTest';
+import type { TemplateTest, RunTestParams } from '../types/TemplateTest';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
 import { read } from '@goldstack/utils-sh';
 

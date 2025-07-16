@@ -1,5 +1,5 @@
 import {
-  S3Client,
+  type S3Client,
   GetObjectCommand,
   NoSuchKey,
   PutObjectCommand,
@@ -7,8 +7,9 @@ import {
 
 import { v4 as uuid4 } from 'uuid';
 
-import ProjectRepository, { ProjectId } from './ProjectRepositoryInterface';
-import { ProjectConfiguration } from '@goldstack/utils-project';
+import type ProjectRepository from './ProjectRepositoryInterface';
+import type { ProjectId } from './ProjectRepositoryInterface';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
 
 import {
   zip,
@@ -22,7 +23,7 @@ import fs from 'fs';
 
 import assert from 'assert';
 
-import ProjectData from './types/ProjectData';
+import type ProjectData from './types/ProjectData';
 
 class ProjectRepositoryS3 implements ProjectRepository {
   private s3: S3Client;

@@ -1,6 +1,6 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
-import { DynamoDBPackage, DynamoDBDeployment } from './types/DynamoDBPackage';
+import type { DynamoDBPackage, DynamoDBDeployment } from './types/DynamoDBPackage';
 import {
   getDeploymentName,
   getTableName as getTableNameUtils,
@@ -12,19 +12,19 @@ import {
   assertTableActive,
   deleteTable as deleteTableModule,
 } from './dynamoDBData';
-import { InputMigrations } from 'umzug/lib/types';
+import type { InputMigrations } from 'umzug/lib/types';
 import {
-  DynamoDBContext,
+  type DynamoDBContext,
   performMigrations,
   migrateDownTo as migrateDownToDynamoDB,
 } from './dynamoDBMigrations';
 
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { fromEnv } from '@aws-sdk/credential-providers';
-import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 
 // Importing type signatures from localDynamoDB
-import {
+import type {
   LocalConnectType,
   StartLocalDynamoDBType,
   StopLocalDynamoDBType,

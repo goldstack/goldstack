@@ -1,5 +1,5 @@
 import { getCodeVerifier } from './getCodeVerifier';
-import { GetTokenResults } from './getToken';
+import type { GetTokenResults } from './getToken';
 
 export async function executeTokenRequest(args: {
   tokenEndpoint: string;
@@ -11,7 +11,7 @@ export async function executeTokenRequest(args: {
   const xhr = new XMLHttpRequest();
 
   return new Promise<GetTokenResults>(async (resolve, reject) => {
-    xhr.onload = function () {
+    xhr.onload = () => {
       const response = xhr.response;
       if (xhr.status == 200) {
         resolve({

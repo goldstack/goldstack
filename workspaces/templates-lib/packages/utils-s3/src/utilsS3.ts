@@ -1,7 +1,7 @@
 import fs from 'fs';
-import { S3Client, NoSuchKey, GetObjectCommand } from '@aws-sdk/client-s3';
+import { type S3Client, NoSuchKey, GetObjectCommand } from '@aws-sdk/client-s3';
 
-import { NodeJsClient } from '@smithy/types';
+import type { NodeJsClient } from '@smithy/types';
 
 /**
  * Downloads a file from S3 to a local file.

@@ -1,5 +1,5 @@
 import { getPackageConfigPaths, validateConfig } from '@goldstack/utils-config';
-import { readPackageConfig, Package } from '@goldstack/utils-package';
+import { readPackageConfig, type Package } from '@goldstack/utils-package';
 
 import path from 'path';
 import { write, read } from '@goldstack/utils-sh';

@@ -5,7 +5,7 @@ import DocumentIcon from './../../icons/document.svg';
 
 import styles from './ProjectTemplateSidebar.module.css';
 
-import {
+import type {
   TemplateFeatureImage,
   PackageProps,
 } from '@goldstack/template-metadata';

@@ -1,7 +1,7 @@
 /* esbuild-ignore ui */
 
 import assert from 'assert';
-import {
+import type {
   Handler,
   APIGatewayProxyEventV2,
   APIGatewayProxyResultV2,

@@ -1,5 +1,5 @@
 import { info } from '@goldstack/utils-log';
-import { TemplateTest, RunTestParams } from '../types/TemplateTest';
+import type { TemplateTest, RunTestParams } from '../types/TemplateTest';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
 
 import assert from 'assert';

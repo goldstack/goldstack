@@ -3,7 +3,7 @@ import { wrapCli } from '@goldstack/utils-cli';
 import { infraCommands } from '@goldstack/utils-terraform';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import { PackageConfig } from '@goldstack/utils-package-config';
-import {
+import type {
   EmailSendPackage,
   EmailSendDeployment,
 } from '@goldstack/template-email-send';

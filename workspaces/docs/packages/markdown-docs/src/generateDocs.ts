@@ -29,7 +29,7 @@ const processNode = async (params: {
   destination: string;
   rootDirectory: string;
 }): Promise<Results> => {
-  let filePath: string | undefined = undefined;
+  let filePath: string | undefined ;
   if (typeof params.node === 'string') {
     filePath = params.node;
   } else {

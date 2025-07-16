@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router, type Request, type Response } from 'express';
 
 import randomString from 'crypto-random-string';
 
@@ -8,8 +8,8 @@ import { isSessionPaid, createSession } from './lib/stripe';
 
 import {
   connectSessionRepository,
-  SessionRepository,
-  SessionData,
+  type SessionRepository,
+  type SessionData,
 } from '@goldstack/session-repository';
 
 import { connect, getFromDomain } from '@goldstack/goldstack-email-send';

@@ -1,16 +1,16 @@
 import {
   boolean,
   Entity,
-  InputItem,
-  InputValue,
+  type InputItem,
+  type InputValue,
   schema,
   string,
   Table as ToolboxTable,
-  TimestampsDefaultOptions,
-  ValidItem,
-  ValidValue,
+  type TimestampsDefaultOptions,
+  type ValidItem,
+  type ValidValue,
 } from 'dynamodb-toolbox';
-import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
+import type { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 
 // ---
 // Below find an example how to define an entity.

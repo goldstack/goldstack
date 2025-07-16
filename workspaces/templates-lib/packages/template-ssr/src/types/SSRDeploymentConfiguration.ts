@@ -1,4 +1,4 @@
-import { LambdaRoutesConfig } from '@goldstack/utils-aws-lambda';
+import type { LambdaRoutesConfig } from '@goldstack/utils-aws-lambda';
 
 /**
  * The prefix to be used for names of the generated lambdas for the dynamic endpoints.

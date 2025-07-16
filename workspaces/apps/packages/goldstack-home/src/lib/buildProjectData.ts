@@ -1,4 +1,4 @@
-import { ProjectData } from '@goldstack/project-repository';
+import type { ProjectData } from '@goldstack/project-repository';
 
 /**
  * Completing project data with information that is not provided in the configuration steps.

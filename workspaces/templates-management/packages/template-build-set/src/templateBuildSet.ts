@@ -1,4 +1,4 @@
-import { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet';
+import type { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet';
 
 import { cd, execAsync, mkdir, read, rmSafe } from '@goldstack/utils-sh';
 import {
@@ -6,12 +6,12 @@ import {
   getPackageConfigs,
 } from '@goldstack/project-config';
 import { build } from '@goldstack/template-build';
-import { GoldstackTemplateConfiguration } from '@goldstack/utils-template';
+import type { GoldstackTemplateConfiguration } from '@goldstack/utils-template';
 import { buildProject } from '@goldstack/project-build';
-import { AWSAPIKeyUser } from '@goldstack/infra-aws';
+import type { AWSAPIKeyUser } from '@goldstack/infra-aws';
 import { installProject } from '@goldstack/project-install';
 import { write } from '@goldstack/utils-sh';
-import { S3TemplateRepository } from '@goldstack/template-repository';
+import type { S3TemplateRepository } from '@goldstack/template-repository';
 import { getAwsConfigPath } from '@goldstack/utils-config';
 import {
   prepareLocalS3Repo,
@@ -165,7 +165,7 @@ const buildAndTestProject = async (
         info(`Running test ${packageTest} ...`);
 
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let errorFound: any = undefined;
+        let errorFound: any ;
         let isFail: boolean;
         try {
           const test = getTemplateTest(packageTest);
@@ -195,7 +195,7 @@ const buildAndTestProject = async (
       for (const packageCleanUp of packageConfig.packageCleanUp) {
         info(`Running cleanup job ${packageCleanUp}`);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let errorFound: any = undefined;
+        let errorFound: any ;
         let isFail: boolean;
         try {
           const test = getTemplateTest(packageCleanUp);

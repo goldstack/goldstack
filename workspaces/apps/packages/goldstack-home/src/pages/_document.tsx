@@ -8,7 +8,7 @@ import Document, {
   Head,
   Main,
   NextScript,
-  DocumentContext,
+  type DocumentContext,
 } from 'next/document';
 
 class MyDocument extends Document {

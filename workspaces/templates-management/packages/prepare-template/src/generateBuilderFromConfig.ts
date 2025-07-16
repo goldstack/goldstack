@@ -1,4 +1,4 @@
-import { PrepareTemplate, PrepareTemplateParams } from './prepareTemplateTypes';
+import type { PrepareTemplate, PrepareTemplateParams } from './prepareTemplateTypes';
 import { parseConfig } from '@goldstack/utils-config';
 import {
   read,
@@ -10,7 +10,7 @@ import {
 } from '@goldstack/utils-sh';
 import { readPackageConfig } from '@goldstack/utils-package';
 import { readTemplateConfigFromFile } from '@goldstack/utils-template';
-import {
+import type {
   TemplateBuildConfiguration,
   FileOverwriteConfiguration,
 } from './types/templateBuildSchema';

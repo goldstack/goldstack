@@ -1,11 +1,11 @@
 /* esbuild-ignore ui */
 import crypto from 'crypto';
 
-import {
+import type {
   CognitoAccessTokenPayload,
   CognitoIdTokenPayload,
 } from 'aws-jwt-verify/jwt-model';
-import { CognitoManager } from './cognitoTokenVerify';
+import type { CognitoManager } from './cognitoTokenVerify';
 import {
   getMockedAccessTokenProperties,
   getMockedIdTokenProperties,

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
-import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import { type SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
+import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { fromEnv } from '@aws-sdk/credential-providers';
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
-import { CreateSQSClientSignature } from './mockedSQS';
-import { SqsDeployment, SqsPackage } from './templateSqs';
-import { AWSDeploymentRegion, getAWSUser } from '@goldstack/infra-aws';
+import type { CreateSQSClientSignature } from './mockedSQS';
+import type { SqsDeployment, SqsPackage } from './templateSqs';
+import { type AWSDeploymentRegion, getAWSUser } from '@goldstack/infra-aws';
 import { warn } from '@goldstack/utils-log';
 
 /**

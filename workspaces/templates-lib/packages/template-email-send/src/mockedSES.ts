@@ -1,6 +1,6 @@
 import {
   SESClient,
-  SendEmailRequest,
+  type SendEmailRequest,
   SendEmailCommand,
 } from '@aws-sdk/client-ses';
 

@@ -1,7 +1,7 @@
 import { SESClient } from '@aws-sdk/client-ses';
-import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { fromEnv } from '@aws-sdk/credential-providers';
-import {
+import type {
   EmailSendPackage,
   EmailSendDeployment,
 } from './types/EmailSendPackage';

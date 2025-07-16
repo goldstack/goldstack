@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router, type Request, type Response } from 'express';
 
 import sanitizeHtml from 'sanitize-html';
 
@@ -14,7 +14,7 @@ import { connect, getBucketName } from '@goldstack/template-repository-bucket';
 import { buildProject } from '@goldstack/project-build';
 import { getPackageConfigs } from '@goldstack/project-config';
 
-import { ProjectData } from '@goldstack/project-repository';
+import type { ProjectData } from '@goldstack/project-repository';
 
 import { getDocLinks } from './utils/docLinks';
 

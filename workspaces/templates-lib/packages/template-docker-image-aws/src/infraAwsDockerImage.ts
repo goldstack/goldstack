@@ -1,7 +1,7 @@
 import configSchema from './schemas/configSchema.json';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 
-import {
+import type {
   AWSDockerImagePackage,
   AWSDockerImageDeployment,
 } from './types/AWSDockerImagePackage';
@@ -14,7 +14,7 @@ import {
   readDeploymentState,
   writeDeploymentState,
   readTerraformStateVariable,
-  DeploymentState,
+  type DeploymentState,
   validateDeploymentsState,
   getDeploymentState as infraGetDeploymentState,
 } from '@goldstack/infra';
@@ -44,7 +44,7 @@ export const deploy = async (
 
   exec(`docker login --username AWS --password ${ecrLoginPassword} ${repoUrl}`);
 
-  let commitHash: string | undefined = undefined;
+  let commitHash: string | undefined ;
   try {
     commitHash = hash();
   } catch (e) {

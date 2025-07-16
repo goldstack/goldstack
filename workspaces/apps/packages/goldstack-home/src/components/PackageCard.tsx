@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 
 import Plus from './../icons/font-awesome/solid/plus.svg';
 import Check from './../icons/font-awesome/solid/check.svg';
@@ -6,7 +6,7 @@ import Check from './../icons/font-awesome/solid/check.svg';
 import { dataUriToSrc } from './../utils/utils';
 
 import styles from './PackageCard.module.css';
-import { PackageFeatureData } from './PackageList';
+import type { PackageFeatureData } from './PackageList';
 
 interface PackageCardProps {
   packageName: string;

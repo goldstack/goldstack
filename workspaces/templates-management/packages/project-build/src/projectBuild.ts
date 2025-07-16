@@ -1,10 +1,10 @@
-import { S3TemplateRepository } from '@goldstack/template-repository';
+import type { S3TemplateRepository } from '@goldstack/template-repository';
 import extract from 'extract-zip';
 import { rm, write, read } from '@goldstack/utils-sh';
 import { AssertionError } from 'assert';
 import { debug } from '@goldstack/utils-log';
 import path, { resolve } from 'path';
-import { ProjectConfiguration } from '@goldstack/utils-project';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
 
 import { readPackageConfig } from '@goldstack/utils-package';
 import { buildTemplate } from './buildTemplate';

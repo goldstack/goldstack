@@ -2,9 +2,9 @@ import {
   GetObjectCommand,
   PutObjectCommand,
   NoSuchKey,
-  S3Client,
+  type S3Client,
 } from '@aws-sdk/client-s3';
-import { NodeJsClient } from '@smithy/types';
+import type { NodeJsClient } from '@smithy/types';
 import assert from 'assert';
 import {
   createReadStream,

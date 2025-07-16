@@ -1,6 +1,6 @@
-import { ProjectConfiguration } from '@goldstack/utils-project';
-import { Configuration } from '@goldstack/utils-package';
-import { Deployment } from '@goldstack/infra';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
+import type { Configuration } from '@goldstack/utils-package';
+import type { Deployment } from '@goldstack/infra';
 
 export interface DeploySetPackageConfig {
   packageName: string;

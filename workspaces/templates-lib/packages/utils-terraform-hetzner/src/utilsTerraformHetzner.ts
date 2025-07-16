@@ -1,14 +1,14 @@
 import {
   terraformCli,
-  CloudProvider,
-  TerraformDeployment,
-  TerraformOptions,
+  type CloudProvider,
+  type TerraformDeployment,
+  type TerraformOptions,
 } from '@goldstack/utils-terraform';
 import {
   getHetznerUser,
   readDeploymentFromPackageConfig,
 } from '@goldstack/infra-hetzner';
-import { AWSCloudProvider } from '@goldstack/utils-terraform-aws';
+import type { AWSCloudProvider } from '@goldstack/utils-terraform-aws';
 
 export class HetznerCloudProvider implements CloudProvider {
   token: string;

@@ -1,4 +1,4 @@
-import { ProjectData } from '@goldstack/project-repository';
+import type { ProjectData } from '@goldstack/project-repository';
 
 import projectFormSchema from 'src/lib/schemas/projectForm.json';
 import projectFormUiSchema from 'src/lib/schemas/projectFormUi';
@@ -8,7 +8,7 @@ import awsUserDocs from 'src/docs/aws-user.json';
 
 import projectDocs from 'src/docs/project.json';
 
-import { AWSAPIKeyUser } from '@goldstack/infra-aws';
+import type { AWSAPIKeyUser } from '@goldstack/infra-aws';
 
 export interface ConfigureStepSection {
   title?: string;
@@ -87,7 +87,7 @@ export const getConfigureSteps = (
   ];
 
   const packages: ConfigureStep[] = params.packageConfigs.map((config, idx) => {
-    let configureDocHtml: string | undefined = undefined;
+    let configureDocHtml: string | undefined ;
     if (params.docs && params.docs.find) {
       const packageName = config.package.name;
 

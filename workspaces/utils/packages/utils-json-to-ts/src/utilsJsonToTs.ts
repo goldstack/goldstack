@@ -1,4 +1,4 @@
-import { compileFromFile, Options } from 'json-schema-to-typescript';
+import { compileFromFile, type Options } from 'json-schema-to-typescript';
 import { read, mkdir, write, globSync } from '@goldstack/utils-sh';
 import fs from 'fs';
 import path from 'path';
@@ -9,7 +9,7 @@ const processSchema = async (
   dest: string,
   options: Partial<Options>
 ): Promise<void> => {
-  let bannerComment: string | undefined = undefined;
+  let bannerComment: string | undefined ;
   const tsHeader = replaceExt(jsonSource, '.head.ts');
   if (fs.existsSync(tsHeader)) {
     bannerComment = read(tsHeader);

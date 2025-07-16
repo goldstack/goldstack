@@ -1,13 +1,13 @@
 import {
   SQSClient,
   SendMessageCommand,
-  SendMessageRequest,
+  type SendMessageRequest,
   SendMessageBatchCommand,
-  SendMessageBatchRequest,
+  type SendMessageBatchRequest,
 } from '@aws-sdk/client-sqs';
 import { mockClient } from 'aws-sdk-client-mock';
 import { v4 as uuid4 } from 'uuid';
-import { MessageCallback } from './sqsConnect';
+import type { MessageCallback } from './sqsConnect';
 import { warn } from '@goldstack/utils-log';
 export type CreateSQSClientSignature = typeof createSQSClient;
 

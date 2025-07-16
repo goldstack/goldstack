@@ -4,7 +4,7 @@ export type {
   TerraformVariables,
 } from './types/utilsTerraformConfig';
 
-import { CloudProvider } from './cloudProvider';
+import type { CloudProvider } from './cloudProvider';
 
 export type { CloudProvider } from './cloudProvider';
 
@@ -13,7 +13,7 @@ import { TerraformBuild } from './terraformBuild';
 export { tf } from './terraformCli';
 export { getVariablesFromProperties } from './terraformBuild';
 
-import { Argv } from 'yargs';
+import type { Argv } from 'yargs';
 
 export const infraCommands = (): any => {
   const deploymentPositional = (yargs: Argv<any>): Argv<any> => {

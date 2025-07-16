@@ -43,7 +43,7 @@ async function generateCodeChallenge(randomString: string) {
   }
 }
 
-let codeVerifier: undefined | string = undefined;
+let codeVerifier: undefined | string ;
 
 export async function getCodeChallenge() {
   return await generateCodeChallenge(await getCodeVerifier());

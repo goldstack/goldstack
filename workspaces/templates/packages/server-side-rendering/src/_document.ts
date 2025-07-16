@@ -13,8 +13,8 @@ const renderDocument = async (
     name: 'tailwind.css',
   });
 
-  let tailwindConfig: string | undefined = undefined;
-  let localHelperJs: string | undefined = undefined;
+  let tailwindConfig: string | undefined ;
+  let localHelperJs: string | undefined ;
   if (process.env.GOLDSTACK_DEPLOYMENT === 'local') {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const config = require('./../tailwind.config');

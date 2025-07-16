@@ -5,7 +5,7 @@ import type { APIGatewayProxyResultV2 } from 'aws-lambda';
 import { changeExtension, readToType } from '@goldstack/utils-sh';
 import { dirname } from 'path';
 
-import { StaticFileMapperManager } from 'static-file-mapper-build';
+import type { StaticFileMapperManager } from 'static-file-mapper-build';
 
 import type {
   ClientBuildOptionsArgs,

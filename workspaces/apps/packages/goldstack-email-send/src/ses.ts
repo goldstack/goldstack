@@ -6,7 +6,7 @@ import {
   createSESClient as templateCreateSESClient,
 } from '@goldstack/template-email-send';
 
-import { SendEmailRequest, SESClient } from '@aws-sdk/client-ses';
+import type { SendEmailRequest, SESClient } from '@aws-sdk/client-ses';
 import goldstackConfig from './../goldstack.json';
 import goldstackSchema from './../schemas/package.schema.json';
 

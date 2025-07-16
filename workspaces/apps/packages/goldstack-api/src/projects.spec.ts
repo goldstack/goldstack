@@ -4,7 +4,7 @@ import {
   getProjectHandler,
   putProjectHandler,
 } from './projects';
-import { ProjectConfiguration } from '@goldstack/utils-project';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
 import { dummyUser } from '@goldstack/auth';
 
 jest.setTimeout(20000);

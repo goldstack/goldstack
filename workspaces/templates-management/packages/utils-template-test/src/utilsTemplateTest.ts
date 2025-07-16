@@ -5,7 +5,7 @@ import { promisify } from 'util';
 import { build } from '@goldstack/template-build';
 import { AssertionError } from 'assert';
 import fs from 'fs';
-import { TemplateTest } from './types/TemplateTest';
+import type { TemplateTest } from './types/TemplateTest';
 import { AssertPackageFilesTest } from './tests/AssertPackageFilesTest';
 import { RootBuildTest } from './tests/RootBuildTest';
 import { AssertRootFilesTest } from './tests/AssertRootFilesTest';

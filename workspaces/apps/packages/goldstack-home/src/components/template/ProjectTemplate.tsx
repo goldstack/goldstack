@@ -1,4 +1,4 @@
-import { ProjectTemplateProps } from '@goldstack/template-metadata';
+import type { ProjectTemplateProps } from '@goldstack/template-metadata';
 import React from 'react';
 import ProjectTemplateBody from './ProjectTemplateBody';
 import ProjectTemplateSidebar from './ProjectTemplateSidebar';

@@ -16,7 +16,7 @@ import SESIcon from './../../icons/ses2.svg';
 import S3Icon from './../../icons/s3.svg';
 import APIGateway from './../../icons/aws-api-gateway.svg';
 
-import { TemplateFeatureImage } from '@goldstack/template-metadata';
+import type { TemplateFeatureImage } from '@goldstack/template-metadata';
 
 export const resolveImage = (image: TemplateFeatureImage): any => {
   if (image.indexOf('http') === 0) {

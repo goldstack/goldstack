@@ -1,4 +1,4 @@
-import { DeploymentConfiguration } from '@goldstack/infra';
+import type { DeploymentConfiguration } from '@goldstack/infra';
 
 export type { DeploymentConfiguration };
 

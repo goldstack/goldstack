@@ -25,7 +25,7 @@ import { info, warn } from '@goldstack/utils-log';
       secretAccessKey: 'dummy',
     },
   });
-  let localAdminServer: undefined | any = undefined;
+  let localAdminServer: undefined | any ;
   await new Promise<void>(async (resolve, reject) => {
     const localAdmin = await createServer(
       client as any, // otherwise strange type error occurs

@@ -1,8 +1,8 @@
 import {
-  LambdaConfig,
+  type LambdaConfig,
   generateFunctionName,
 } from '@goldstack/utils-aws-lambda';
-import {
+import type {
   LambdaRoutesConfig,
   LambdaApiDeploymentConfiguration,
 } from './types/LambdaDeploymentConfiguration';

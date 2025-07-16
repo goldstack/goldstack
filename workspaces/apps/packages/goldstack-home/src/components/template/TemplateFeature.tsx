@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 
 import { dataUriToSrc } from 'src/utils/utils';
 
@@ -17,7 +17,7 @@ import EmailSendImg from 'src/img/ses_email_send.png';
 import EndpointTypeScript from 'src/img/endpoint_typescript.png';
 import FeatureBootstrap from './FeatureBootstrap';
 
-import {
+import type {
   ShortTemplateFeature,
   TemplateIcons,
 } from '@goldstack/template-metadata';

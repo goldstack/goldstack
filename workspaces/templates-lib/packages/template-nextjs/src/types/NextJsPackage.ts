@@ -1,4 +1,4 @@
-import {
+import type {
   AWSStaticWebsiteDeployment,
   AWSStaticWebsitePackage,
   AWSStaticWebsiteConfiguration,

@@ -1,5 +1,5 @@
-import { ReactPropertiesType } from '@goldstack/template-ssr';
-import React from 'react';
+import type { ReactPropertiesType } from '@goldstack/template-ssr';
+import type React from 'react';
 
 function Wrapped<PropType extends ReactPropertiesType>({
   Component,

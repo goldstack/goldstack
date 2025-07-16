@@ -1,5 +1,5 @@
-import { ProjectConfiguration } from '@goldstack/utils-project';
-import ProjectData from './types/ProjectData';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
+import type ProjectData from './types/ProjectData';
 export type ProjectId = string;
 
 interface ProjectRepository {

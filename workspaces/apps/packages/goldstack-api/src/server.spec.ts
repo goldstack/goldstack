@@ -3,7 +3,7 @@ import supertestSession from 'supertest-session';
 import { app } from './server';
 
 import { dummyUser } from '@goldstack/auth';
-import { ProjectConfiguration } from '@goldstack/utils-project';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
 
 process.env.CORS = 'http://localhost';
 

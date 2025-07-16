@@ -10,7 +10,7 @@ import { config } from 'dotenv';
 config();
 
 describe('Should create API', () => {
-  let port: undefined | number = undefined;
+  let port: undefined | number ;
 
   beforeAll(async () => {
     port = await new Promise<number>((resolve, reject) => {

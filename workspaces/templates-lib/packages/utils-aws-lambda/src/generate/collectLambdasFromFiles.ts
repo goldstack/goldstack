@@ -1,4 +1,4 @@
-import fs, { Dirent } from 'fs';
+import fs, { type Dirent } from 'fs';
 import { relative, resolve, sep, posix } from 'path';
 import type { LambdaConfig } from '../types/LambdaConfig';
 import { RouteType } from '../types/LambdaConfig';
@@ -111,7 +111,6 @@ function readLambdaConfigImpl(
         route: route,
       };
     } else {
-      continue;
     }
   }
   dirHandle.closeSync();

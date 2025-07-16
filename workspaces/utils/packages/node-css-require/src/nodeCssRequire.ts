@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { addHook } from 'pirates';
 
-import postcss, { AcceptedPlugin } from 'postcss';
+import postcss, { type AcceptedPlugin } from 'postcss';
 import postcssModulesSync from 'postcss-modules-sync';
 import postcssModules from 'postcss-modules';
 

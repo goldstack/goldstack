@@ -6,7 +6,7 @@ import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import { PackageConfig } from '@goldstack/utils-package-config';
 export * from './types/LambdaPackage';
 import yargs from 'yargs';
-import { LambdaPackage, LambdaDeployment } from './types/LambdaPackage';
+import type { LambdaPackage, LambdaDeployment } from './types/LambdaPackage';
 
 export { deployCli as deployLambda } from './templateLambdaCliDeploy';
 

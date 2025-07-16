@@ -1,7 +1,7 @@
 import { wrapCli } from '@goldstack/utils-cli';
 import { fatal } from '@goldstack/utils-log';
 import { infraAwsStaticWebsiteCli } from '@goldstack/template-static-website-aws';
-import { NextjsPackage, NextjsDeployment } from './types/NextJsPackage';
+import type { NextjsPackage, NextjsDeployment } from './types/NextJsPackage';
 
 export type { NextjsPackage };
 

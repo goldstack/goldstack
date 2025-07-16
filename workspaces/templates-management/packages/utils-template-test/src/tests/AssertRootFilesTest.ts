@@ -1,4 +1,4 @@
-import { TemplateTest, RunTestParams } from '../types/TemplateTest';
+import type { TemplateTest, RunTestParams } from '../types/TemplateTest';
 import { assertFilesExist } from '../utilsTemplateTest';
 import { getAwsConfigPath } from '@goldstack/utils-config';
 

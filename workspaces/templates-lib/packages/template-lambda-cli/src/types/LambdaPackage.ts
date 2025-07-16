@@ -1,7 +1,7 @@
-import { AWSDeployment } from '@goldstack/infra-aws';
-import { TerraformDeployment } from '@goldstack/utils-terraform';
-import { Deployment, DeploymentConfiguration } from '@goldstack/infra';
-import { Package, Configuration } from '@goldstack/utils-package';
+import type { AWSDeployment } from '@goldstack/infra-aws';
+import type { TerraformDeployment } from '@goldstack/utils-terraform';
+import type { Deployment, DeploymentConfiguration } from '@goldstack/infra';
+import type { Package, Configuration } from '@goldstack/utils-package';
 
 /**
  * The name of the lambda.
@@ -48,7 +48,7 @@ export interface ThisBasePackage extends Package {
   deployments: LambdaDeployments;
 }
 
-export { ThisBaseDeploymentConfiguration as LambdaDeploymentConfiguration };
-export { ThisBaseDeployment as LambdaDeployment };
-export { ThisBasePackageConfiguration as LambdaConfiguration };
-export { ThisBasePackage as LambdaPackage };
+export type { ThisBaseDeploymentConfiguration as LambdaDeploymentConfiguration };
+export type { ThisBaseDeployment as LambdaDeployment };
+export type { ThisBasePackageConfiguration as LambdaConfiguration };
+export type { ThisBasePackage as LambdaPackage };

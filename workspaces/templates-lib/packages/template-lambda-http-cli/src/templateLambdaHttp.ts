@@ -6,7 +6,7 @@ import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import { PackageConfig } from '@goldstack/utils-package-config';
 export * from './types/LambdaHttpPackage';
 import yargs from 'yargs';
-import {
+import type {
   LambdaExpressPackage,
   LambdaExpressDeployment,
 } from './types/LambdaHttpPackage';

@@ -1,16 +1,16 @@
 import {
-  AttributeValue,
+  type AttributeValue,
   DeleteItemCommand,
-  DynamoDBClient,
+  type DynamoDBClient,
   PutItemCommand,
   QueryCommand,
-  QueryCommandOutput,
+  type QueryCommandOutput,
 } from '@aws-sdk/client-dynamodb';
 import { marshall, unmarshall } from '@aws-sdk/util-dynamodb';
 import { debug } from '@goldstack/utils-log';
-import { UmzugStorage } from 'umzug';
-import { MigrationParams } from 'umzug/lib/types';
-import { DynamoDBContext } from './dynamoDBMigrations';
+import type { UmzugStorage } from 'umzug';
+import type { MigrationParams } from 'umzug/lib/types';
+import type { DynamoDBContext } from './dynamoDBMigrations';
 
 export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
   dynamoClient: DynamoDBClient;
@@ -81,8 +81,7 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
 
   async executed(): Promise<string[]> {
     const migrations: { [key: string]: any }[] = [];
-    let lastEvaluatedKey: Record<string, AttributeValue> | undefined =
-      undefined;
+    let lastEvaluatedKey: Record<string, AttributeValue> | undefined ;
 
     do {
       try {

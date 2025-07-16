@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { fromEnv } from '@aws-sdk/credential-providers';
 import { S3Client } from '@aws-sdk/client-s3';
-import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
-import { S3Package, S3Deployment } from './types/S3Package';
+import type { S3Package, S3Deployment } from './types/S3Package';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import assert from 'assert';
 
-import { MetadataBearer, RequestPresigningArguments } from '@smithy/types';
-import { Client, Command } from '@smithy/smithy-client';
+import type { MetadataBearer, RequestPresigningArguments } from '@smithy/types';
+import type { Client, Command } from '@smithy/smithy-client';
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 

@@ -1,5 +1,5 @@
-import { ProjectConfiguration } from '@goldstack/utils-project';
-import { DeploySetConfig } from '@goldstack/template-build-set';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
+import type { DeploySetConfig } from '@goldstack/template-build-set';
 
 export const createLambdaNodeTriggerBuildSetConfig =
   async (): Promise<DeploySetConfig> => {

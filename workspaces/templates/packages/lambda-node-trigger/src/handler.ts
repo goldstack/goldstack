@@ -1,4 +1,4 @@
-import { Handler, SQSEvent } from 'aws-lambda';
+import type { Handler, SQSEvent } from 'aws-lambda';
 import { connectToSQSQueue, getSQSQueueName, getSQSQueueUrl } from './lambda';
 
 export const handler: Handler = async (event, context) => {

@@ -1,7 +1,7 @@
 import { awsCli, hasAwsCli } from '@goldstack/utils-aws-cli';
 import { zip, rmSafe } from '@goldstack/utils-sh';
 import { getAWSCredentials } from '@goldstack/infra-aws';
-import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { debug } from '@goldstack/utils-log';
 import { relative, sep, isAbsolute } from 'path';
 

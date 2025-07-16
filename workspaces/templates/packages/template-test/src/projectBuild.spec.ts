@@ -4,11 +4,11 @@ import {
   assertFilesExist,
   assertFilesDoNotExist,
 } from '@goldstack/utils-template-test';
-import { S3TemplateRepository } from '@goldstack/template-repository';
+import type { S3TemplateRepository } from '@goldstack/template-repository';
 
 import { buildProject } from '@goldstack/project-build';
 import { rmSafe, mkdir, read, write } from '@goldstack/utils-sh';
-import { ProjectConfiguration } from '@goldstack/utils-project';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
 
 import { getModuleTemplatesNames } from '@goldstack/module-template-utils';
 
@@ -23,7 +23,7 @@ jest.setTimeout(600000);
 
 describe('Template Building', () => {
   const goldstackTestsDir = './goldstackLocal/tests/build/';
-  let repo: S3TemplateRepository | undefined = undefined;
+  let repo: S3TemplateRepository | undefined ;
 
   beforeAll(async () => {
     repo = await prepareLocalS3Repo(goldstackTestsDir);

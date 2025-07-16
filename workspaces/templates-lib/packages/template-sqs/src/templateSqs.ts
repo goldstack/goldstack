@@ -8,9 +8,9 @@ export {
   getSQSQueueUrl,
 } from './sqsConnect';
 
-import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
+import type { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
-import { MessageCallback } from './sqsConnect';
+import type { MessageCallback } from './sqsConnect';
 
 export { MessageCallback } from './sqsConnect';
 

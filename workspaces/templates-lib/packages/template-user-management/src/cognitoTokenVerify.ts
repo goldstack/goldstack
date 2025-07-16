@@ -35,7 +35,7 @@ export interface CognitoManager {
 /**
  * We want to keep only one JWKS cache globally for our application.
  */
-let sharedJwksCache: SimpleJwksCache | undefined = undefined;
+let sharedJwksCache: SimpleJwksCache | undefined ;
 
 export async function connectWithCognito({
   goldstackConfig,

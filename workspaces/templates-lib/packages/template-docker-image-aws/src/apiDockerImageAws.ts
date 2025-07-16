@@ -1,7 +1,7 @@
 import ECS from 'aws-sdk/clients/ecs';
 import CloudWatchLogs from 'aws-sdk/clients/cloudwatchlogs';
 import assert from 'assert';
-import {
+import type {
   AWSDockerImageDeployment,
   AWSDockerImagePackage,
 } from './types/AWSDockerImagePackage';
@@ -9,7 +9,7 @@ import { getAWSUser, getAWSCredentials } from '@goldstack/infra-aws';
 import {
   readDeploymentState,
   readTerraformStateVariable,
-  DeploymentState,
+  type DeploymentState,
 } from '@goldstack/infra';
 
 const createECS = async (
