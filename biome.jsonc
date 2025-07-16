@@ -22,20 +22,27 @@
         "noExplicitAny": "warn",
         "noImplicitAnyLet": "warn",
         "noAssignInExpressions": "warn",
-        "noAsyncPromiseExecutor": "warn"
+        "noAsyncPromiseExecutor": "warn",
+        "noArrayIndexKey": "warn"
       },
       "correctness": {
         "noUnusedFunctionParameters": "warn",
-        "noUnusedVariables": "warn"
+        "noUnusedVariables": "warn",
+        "useHookAtTopLevel": "warn",
+        "useExhaustiveDependencies": "warn"
       },
       "security": {
-        "noGlobalEval": "warn"
-      }
+        "noGlobalEval": "warn",
+        "noDangerouslySetInnerHtml": "warn"
+      },
+      "a11y": "warn"
     }
   },
   "files": {
     "includes": [
       "**/*.ts",
+      "**/*.json",
+      "**/*.tsx",
       "!**/dist/**",
       "!**/webDist/**",
       "!**/distLambda/**",
