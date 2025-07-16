@@ -61,6 +61,11 @@
     }
   ],
   "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
   "dynamicRoutes": [
     {
       "page": "/404",
@@ -219,15 +224,24 @@
       "routeKeys": {
         "nxtPslug": "nxtPslug"
       },
-      "dataRouteRegex": "^/_next/data/qz4fJIiTbZ9znCAv8kcVt/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/qz4fJIiTbZ9znCAv8kcVt/docs/(?<nxtPslug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/86VkLtRBa_BqAm1_oYoxA/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/86VkLtRBa_BqAm1_oYoxA/docs/(?<nxtPslug>.+?)\\.json$"
     }
   ],
   "rsc": {
     "header": "RSC",
-    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url",
+    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch",
     "prefetchHeader": "Next-Router-Prefetch",
-    "contentTypeHeader": "text/x-component"
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "Next-Router-Segment-Prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
   },
-  "rewrites": []
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
 }

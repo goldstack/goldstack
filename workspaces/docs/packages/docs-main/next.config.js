@@ -6,6 +6,8 @@ const getLocalPackages = require('./scripts/getLocalPackages');
 const localPackages = getLocalPackages.getLocalPackages();
 
 const nextConfig = {
+  output: 'export',
+  distDir: 'webDist/',
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.svg/,
