@@ -100,7 +100,7 @@ export const getHetznerUser = async (
   }
 
   const config = readConfig(configPath);
-  const user = config.users.find((u) => u.name == userName);
+  const user = config.users.find((u) => u.name === userName);
   if (!user) {
     throw new Error('Cannot find Hetzner user ' + userName);
   }

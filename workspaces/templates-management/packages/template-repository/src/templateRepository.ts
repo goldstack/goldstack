@@ -71,7 +71,6 @@ export class S3TemplateRepository implements TemplateRepository {
     } catch (e) {
       if (e instanceof NoSuchKey) {
         return undefined;
-        return;
       }
       throw e;
     }

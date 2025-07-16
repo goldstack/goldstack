@@ -1,5 +1,5 @@
 import visit from 'unist-util-visit';
-import toString from 'mdast-util-to-string';
+import toStringMdCast from 'mdast-util-to-string';
 import GithubSlugger from 'github-slugger';
 import permalinkIcon from './permalinkIconAst';
 
@@ -44,7 +44,7 @@ export default function rehypeDocs({ filePath, tag, processor }) {
   }
 
   function visitHeading(node: any): void {
-    const text = toString(node);
+    const text = toStringMdCast(node);
 
     if (!text) return;
 

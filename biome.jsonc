@@ -3,12 +3,23 @@
   "linter": {
     "rules": {
       "suspicious": {
+        "noExplicitAny": "warn",
+        "noImplicitAnyLet": "warn",
+        "noAssignInExpressions": "warn",
+        "noAsyncPromiseExecutor": "warn"
+      },
+      "correctness": {
+        "noUnusedFunctionParameters": "warn",
+        "noUnusedVariables": "warn"
+      },
+      "security": {
+        "noGlobalEval": "warn"
       }
     }
   },
     "files": {
     "includes": [
-      "**",
+      "**/*.ts",
       "!**/dist/**",
       "!**/webDist/**",
       "!**/distLambda/**",

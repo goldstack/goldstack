@@ -64,7 +64,7 @@ export const renderPage = async <PropType extends ReactPropertiesType>(
 };
 
 function isServer(): boolean {
-  return !(typeof window != 'undefined' && window.document);
+  return !(typeof window !== 'undefined' && window.document);
 }
 
 export const createLambdaAPIDeploymentConfiguration = (

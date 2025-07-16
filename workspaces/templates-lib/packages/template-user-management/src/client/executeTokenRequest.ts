@@ -13,7 +13,7 @@ export async function executeTokenRequest(args: {
   return new Promise<GetTokenResults>(async (resolve, reject) => {
     xhr.onload = () => {
       const response = xhr.response;
-      if (xhr.status == 200) {
+      if (xhr.status === 200) {
         resolve({
           accessToken: response.access_token,
           refreshToken: args.refreshToken || response.refresh_token,

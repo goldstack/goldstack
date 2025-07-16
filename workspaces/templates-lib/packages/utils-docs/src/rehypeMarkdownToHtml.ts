@@ -83,7 +83,7 @@ export default function rehypeDocs({ filePath, tag, processor }): any {
     }
   }
 
-  return function transformer(tree: any): void {
+  return function transformer(tree: any): any {
     visit(tree, 'inlineCode', visitInlineCode);
     visit(tree, (node: any) => node.type === 'link', visitLink);
     return tree;

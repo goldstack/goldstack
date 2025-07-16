@@ -15,7 +15,7 @@ export function injectCredentials(
 export function hasInjectedCredentials(
   provider: AwsCredentialIdentityProvider
 ): boolean {
-  return (provider as any)._injectedCredentials != undefined;
+  return (provider as any)._injectedCredentials !== undefined;
 }
 
 export function retrieveInjectedCredentials(

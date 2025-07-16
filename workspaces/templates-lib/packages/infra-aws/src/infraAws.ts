@@ -98,7 +98,7 @@ export const assertTerraformConfig = (
     };
   }
 
-  if (!res.remoteState.find((el) => el.user == user)) {
+  if (!res.remoteState.find((el) => el.user === user)) {
     res.remoteState.push({
       user: user,
     });

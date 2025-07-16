@@ -257,23 +257,23 @@ export const buildSet = async (
     monorepoRoot,
   });
 
-  if (params.deployBeforeTest && false) {
-    // TODO this will not work due to mocks!
-    info('Deploying templates before tests', {
-      workDir: params.workDir + 'templatesDeploy/',
-    });
-    throw new Error(
-      'Deploying before test not available, since S3 local mocks would be overwritten'
-    );
-    await buildTemplates({
-      workDir: params.workDir + 'templatesDeploy/',
-      templates: params.config.deployTemplates,
-      monorepoRoot,
-      templateRepository: params.s3repo,
-    });
+      // TODO this will not work due to mocks!
+  // if (params.deployBeforeTest && false) {
+  //   info('Deploying templates before tests', {
+  //     workDir: params.workDir + 'templatesDeploy/',
+  //   });
+  //   throw new Error(
+  //     'Deploying before test not available, since S3 local mocks would be overwritten'
+  //   );
+  //   await buildTemplates({
+  //     workDir: params.workDir + 'templatesDeploy/',
+  //     templates: params.config.deployTemplates,
+  //     monorepoRoot,
+  //     templateRepository: params.s3repo,
+  //   });
 
-    res.deployed = true;
-  }
+  //   res.deployed = true;
+  // }
 
   if (!params.skipTests) {
     const testResults: TestResult[] = await buildProjects({
@@ -299,7 +299,8 @@ export const buildSet = async (
   // if everything is good, deploy templates
 
   // TODO see above logic will not work due to lacking mock reset
-  if (!params.deployBeforeTest || true) {
+  // therefore we always deploy
+  // if (!params.deployBeforeTest || true) {
     info('Deploying templates', {
       workDir: join(params.workDir, 'templatesDeploy/'),
     });
@@ -311,7 +312,7 @@ export const buildSet = async (
     });
 
     res.deployed = true;
-  }
+  // }
   return res;
 };
 

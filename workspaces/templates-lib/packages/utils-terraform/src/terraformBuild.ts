@@ -414,7 +414,7 @@ export class TerraformBuild {
 
     let cmd: string;
     let args: string[];
-    if (os.platform() == 'win32') {
+    if (os.platform() === 'win32') {
       cmd = 'cmd';
       args = ['/V:ON', '/C', 'set /p response= && echo !response!'];
     } else {
