@@ -49,8 +49,8 @@
     "@goldstack/utils-template": "0.4.23",
     "@goldstack/utils-terraform": "0.4.47",
     "@types/aws-lambda": "^8.10.147",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
