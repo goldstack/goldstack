@@ -4,8 +4,7 @@ import { NextJs } from './moduleData';
 export const featureESLint: ShortTemplateFeature = {
   title: 'Biome (Linting & Formatting)',
   id: 'biome',
-  description:
-    'Auto-format and validate your TypeScript and React code easily using Biome.',
+  description: 'Auto-format and validate your TypeScript and React code easily using Biome.',
   image: 'biome',
   details: {
     title: 'Linting and Formatting',

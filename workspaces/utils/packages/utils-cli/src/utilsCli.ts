@@ -84,8 +84,6 @@ export function logger(): LoggerInstance {
   return loggerInstance || defaultLogger;
 }
 
-
-
 export const wrapCli = async (func: AsyncFunction<any>): Promise<void> => {
   try {
     await func();
@@ -109,8 +107,6 @@ export const wrapCli = async (func: AsyncFunction<any>): Promise<void> => {
     }
   }
 };
-
-
 
 process.on('unhandledRejection', (e: any) => {
   if (isDebug) {

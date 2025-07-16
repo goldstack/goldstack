@@ -12,7 +12,6 @@ export type DeploymentName = string;
  * @title Deployment Configuration
  */
 
-
 export interface DeploymentConfiguration {
   [propName: string]: any;
 }

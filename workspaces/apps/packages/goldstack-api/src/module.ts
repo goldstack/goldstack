@@ -2,7 +2,6 @@ import goldstackConfig from './../goldstack.json';
 
 let testServerPort: null | number = null;
 
-
 let testServer: any = null;
 
 export const startTestServer = async (port: number): Promise<void> => {

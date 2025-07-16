@@ -40,8 +40,8 @@
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
-    "@goldstack/template-nextjs": "0.5.60",
-    "@goldstack/utils-sh": "0.5.22",
+    "@goldstack/template-nextjs": "0.5.61",
+    "@goldstack/utils-sh": "0.5.23",
     "@swc/core": "^1.12.11",
     "@swc/jest": "^0.2.39",
     "@testing-library/jest-dom": "^6.6.3",

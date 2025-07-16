@@ -125,8 +125,7 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
       {
         title: 'Biome (Linting & Formatting)',
         id: 'biome',
-        description:
-          'Auto-format and validate your TypeScript code easily using Biome.',
+        description: 'Auto-format and validate your TypeScript code easily using Biome.',
         image: 'biome',
         details: {
           title: 'Linting and Formatting',

@@ -55,7 +55,8 @@ const GetTemplateDescription = (): JSX.Element => {
           className="mt-1 mr-2"
         ></FontIcon>
         <div className="media-body">
-          Biome (Linting and Formatting), TypeScript and Yarn Workspaces configured with sensible defaults
+          Biome (Linting and Formatting), TypeScript and Yarn Workspaces configured with sensible
+          defaults
         </div>
       </div>
       <div className="media text-body mb-3">

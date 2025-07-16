@@ -9,7 +9,6 @@ describe('Edge Lambda packaging', () => {
       sourceFile: './testData/compiledLambda/lambda.js',
       destFile,
     });
-    
 
     const lib = require(destFile);
     assert(typeof lib.handler === 'function');

@@ -8,7 +8,6 @@ export type Files = Glob[];
 
 export interface FieldOverwriteConfig {
   path: string;
-  
 
   value: any;
 }

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-user-management",
-  "version": "0.1.54",
+  "version": "0.1.55",
   "description": "Template utilities for user management",
   "keywords": [
     "goldstack",
@@ -38,20 +38,20 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.23",
-    "@goldstack/infra-aws": "0.4.35",
-    "@goldstack/utils-esbuild": "0.5.13",
-    "@goldstack/utils-package": "0.4.23",
-    "@goldstack/utils-package-config-embedded": "0.5.24",
-    "@goldstack/utils-template": "0.4.23",
-    "@goldstack/utils-terraform": "0.4.47",
+    "@goldstack/infra": "0.4.24",
+    "@goldstack/infra-aws": "0.4.36",
+    "@goldstack/utils-esbuild": "0.5.14",
+    "@goldstack/utils-package": "0.4.24",
+    "@goldstack/utils-package-config-embedded": "0.5.25",
+    "@goldstack/utils-template": "0.4.24",
+    "@goldstack/utils-terraform": "0.4.48",
     "aws-jwt-verify": "^3.2.0",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
     "@goldstack/utils-docs-cli": "0.3.11",
-    "@goldstack/utils-git": "0.2.13",
-    "@goldstack/utils-package-config-generate": "0.3.14",
+    "@goldstack/utils-git": "0.2.14",
+    "@goldstack/utils-package-config-generate": "0.3.15",
     "@swc/core": "^1.12.11",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^29.5.14",
