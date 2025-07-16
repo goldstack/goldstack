@@ -8,8 +8,7 @@ const config = {
     'workspaces/*/packages/*/package.json',
   ],
   specifierTypes: ['**'],
-  versionGroups: [
-  ],
+  versionGroups: [],
 };
 
 module.exports = config;

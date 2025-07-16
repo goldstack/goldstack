@@ -25,7 +25,7 @@
     "watch": "PORT=5054 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local yarn node ./scripts/watchServer.js"
   },
   "dependencies": {
-    "@goldstack/template-ssr": "0.3.65",
+    "@goldstack/template-ssr": "0.3.66",
     "@goldstack/utils-esbuild": "0.5.13",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "date-fns": "^2.28.0",
@@ -39,7 +39,7 @@
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
-    "@goldstack/template-ssr-cli": "0.3.71",
+    "@goldstack/template-ssr-cli": "0.3.72",
     "@goldstack/utils-aws-http-api-local": "0.3.53",
     "@jest-mock/express": "^1.4.5",
     "@jest/transform": "^29.3.1",

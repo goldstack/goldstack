@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-ssr-server-compile-bundle",
-  "version": "0.3.60",
+  "version": "0.3.61",
   "description": "Utility for compiling client side bundles for SSR application",
   "keywords": [
     "goldstack",
