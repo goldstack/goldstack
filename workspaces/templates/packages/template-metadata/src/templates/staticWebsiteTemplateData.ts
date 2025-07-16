@@ -2,16 +2,16 @@ import type { ProjectTemplateProps, ShortTemplateFeature } from '../projectTempl
 import { StaticWebsite } from './moduleData';
 import { featureYarn } from './nextjsTemplateData';
 
-export const featureESLint: ShortTemplateFeature = {
-  title: 'ESLint + Prettier',
-  id: 'eslint',
-  description: 'Auto-format and validate your HTML and CSS code easily using ESLint and Prettier.',
-  image: 'eslint',
+export const featureBiome: ShortTemplateFeature = {
+  title: 'Biome (Linting & Formatting)',
+  id: 'biome',
+  description: 'Auto-format and validate your HTML and CSS code easily using Biome.',
+  image: 'biome',
   details: {
     title: 'Linting and Formatting',
     description:
-      'ESLint and Prettier configured for usage in the CLI and as VSCode plugins. Optimized to work with HTML and CSS.',
-    icons: ['eslint'],
+      'Biome configured for usage in the CLI and as VSCode plugins. Optimized to work with HTML and CSS.',
+    icons: ['biome'],
     content: {
       type: 'none',
       data: {},
@@ -171,7 +171,7 @@ export const getStaticWebsiteTemplateData = (): ProjectTemplateProps => {
           },
         },
       },
-      featureESLint,
+      featureBiome,
       featureVSCode,
       featureYarn,
       featureStaticWebsiteComposition,

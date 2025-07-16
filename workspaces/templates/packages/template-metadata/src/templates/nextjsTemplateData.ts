@@ -2,16 +2,16 @@ import type { ProjectTemplateProps, ShortTemplateFeature } from '../projectTempl
 import { NextJs } from './moduleData';
 
 export const featureESLint: ShortTemplateFeature = {
-  title: 'ESLint + Prettier',
-  id: 'eslint',
+  title: 'Biome (Linting & Formatting)',
+  id: 'biome',
   description:
-    'Auto-format and validate your TypeScript and React code easily using ESLint and Prettier.',
-  image: 'eslint',
+    'Auto-format and validate your TypeScript and React code easily using Biome.',
+  image: 'biome',
   details: {
     title: 'Linting and Formatting',
     description:
-      'ESLint and Prettier configured for usage in the CLI and as VSCode plugins. Optimized to work with Next.js, TypeScript and JSX.',
-    icons: ['eslint'],
+      'Biome configured for usage in the CLI and as VSCode plugins. Optimised to work with Next.js, TypeScript and JSX.',
+    icons: ['biome'],
     content: {
       type: 'none',
       data: {},

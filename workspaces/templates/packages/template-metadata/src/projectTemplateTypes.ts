@@ -26,6 +26,7 @@ export type TemplateFeatureImage =
   | 'typescript'
   | 'nextjs'
   | 'eslint'
+  | 'biome'
   | 'vscode'
   | 'yarn'
   | 'aws'
@@ -43,7 +44,7 @@ export interface ShortTemplateFeature {
   details?: TemplateFeatureProps;
 }
 
-export type TemplateIcons = 'eslint' | 'terraform' | 'jest' | 'vscode' | 'yarn' | string;
+export type TemplateIcons = 'eslint' | 'terraform' | 'jest' | 'vscode' | 'yarn' | 'biome' | string;
 
 export interface TemplateFeatureProps {
   title: string;

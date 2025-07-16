@@ -134,7 +134,7 @@ const Front = (): JSX.Element => {
                   {
                     icon: BiomeIcon,
                     title: 'Biome (Lint & Format)',
-                    highlight: elements.includes('eslint'),
+                    highlight: elements.includes('biome'),
                   },
                   {
                     icon: JestIcon,

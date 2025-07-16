@@ -85,15 +85,16 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
         },
       },
       {
-        title: 'ESLint + Prettier',
-        id: 'eslint',
+        title: 'Biome (Linting & Formatting)',
+        id: 'biome',
         description:
-          'Auto-format and validate your TypeScript code easily using ESLint and Prettier.',
-        image: 'eslint',
+          'Auto-format and validate your TypeScript code easily using Biome.',
+        image: 'biome',
         details: {
           title: 'Linting and Formatting',
-          description: 'ESLint and Prettier configured for usage in the CLI and as VSCode plugins.',
-          icons: ['eslint'],
+          description:
+            'Biome configured for usage in the CLI and as VSCode plugins. Optimised to work with TypeScript.',
+          icons: ['biome'],
           content: {
             type: 'none',
             data: {},
