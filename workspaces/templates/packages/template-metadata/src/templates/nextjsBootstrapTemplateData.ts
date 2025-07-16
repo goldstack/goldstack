@@ -1,4 +1,4 @@
-import { ProjectTemplateProps } from '../projectTemplateTypes';
+import type { ProjectTemplateProps } from '../projectTemplateTypes';
 
 import {
   featureESLint,
@@ -16,13 +16,11 @@ export const getNextjsBootstrapTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'nextjs-bootstrap',
     title: 'Next.js + Bootstrap',
-    boilerplateLink:
-      'https://github.com/goldstack/nextjs-bootstrap-boilerplate',
+    boilerplateLink: 'https://github.com/goldstack/nextjs-bootstrap-boilerplate',
     images: ['nextjs-bootstrap', 'typescript'],
     packages: [NextJsBootstrap],
     isComposite: false,
-    description:
-      'Ready-to-use, open source template for a Next.js project with Bootstrap styling.',
+    description: 'Ready-to-use, open source template for a Next.js project with Bootstrap styling.',
     metaTitle: 'Free Next.js + Bootstrap Template by Goldstack',
     metaDescription:
       'Open source template and boilerplate for a Next.js project with Bootstrap styling. Configure the template for your project and download it for free.',
@@ -53,8 +51,7 @@ export const getNextjsBootstrapTemplateData = (): ProjectTemplateProps => {
         title: 'Bootstrap',
         id: 'bootstrap',
         image: 'bootstrap',
-        description:
-          'Next.js application configured for using the Bootstrap CSS framework.',
+        description: 'Next.js application configured for using the Bootstrap CSS framework.',
         details: {
           title: 'Bootstrap Styling for React Components',
           description:

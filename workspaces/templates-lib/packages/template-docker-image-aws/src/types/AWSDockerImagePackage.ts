@@ -1,8 +1,8 @@
-import { Package, Configuration } from '@goldstack/utils-package';
+import type { Package, Configuration } from '@goldstack/utils-package';
 
-import { AWSDeployment } from '@goldstack/infra-aws';
-import { TerraformDeployment } from '@goldstack/utils-terraform';
-import { Deployment } from '@goldstack/infra';
+import type { AWSDeployment } from '@goldstack/infra-aws';
+import type { TerraformDeployment } from '@goldstack/utils-terraform';
+import type { Deployment } from '@goldstack/infra';
 
 /**
  * Defines the name for the docker repository. This name must be unique in the AWS region.
@@ -20,10 +20,7 @@ export interface AWSDockerImageDeploymentConfiguration {
  *
  * @title Deployment
  */
-export interface AWSDockerImageDeployment
-  extends Deployment,
-    AWSDeployment,
-    TerraformDeployment {
+export interface AWSDockerImageDeployment extends Deployment, AWSDeployment, TerraformDeployment {
   configuration: AWSDockerImageDeploymentConfiguration;
 }
 

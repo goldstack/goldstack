@@ -1,11 +1,7 @@
-import { ProjectTemplateProps } from '../projectTemplateTypes';
+import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { DynamoDB } from './moduleData';
-import { ShortTemplateFeature } from '../projectTemplateData';
-import {
-  featureAppComposition,
-  featureVSCode,
-  featureYarn3,
-} from './sharedFeatures';
+import type { ShortTemplateFeature } from '../projectTemplateData';
+import { featureAppComposition, featureVSCode, featureYarn3 } from './sharedFeatures';
 
 export const getDynamoDBFeature = (): ShortTemplateFeature => {
   return {
@@ -15,8 +11,7 @@ export const getDynamoDBFeature = (): ShortTemplateFeature => {
     image: 'https://cdn.goldstack.party/img/202205/dynamodb.svg',
     details: {
       title: 'Start coding in minutes.',
-      description:
-        'Connect to a DynamoDB table and insert and query data with a beautiful API.',
+      description: 'Connect to a DynamoDB table and insert and query data with a beautiful API.',
       content: {
         type: 'image',
         data: {
@@ -34,11 +29,7 @@ export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
     metaTitle: 'DynamoDB template for Node.js implemented with TypeScript',
     metaDescription:
       'Open source template for working with DynamoDB in Node.js. Configure for your needs in our project builder or clone boilerplate.',
-    images: [
-      'https://cdn.goldstack.party/img/202205/dynamodb.svg',
-      'terraform',
-      'typescript',
-    ],
+    images: ['https://cdn.goldstack.party/img/202205/dynamodb.svg', 'terraform', 'typescript'],
     packages: [DynamoDB],
     isComposite: false,
     boilerplateLink: 'https://github.com/goldstack/dynamodb-boilerplate',
@@ -61,8 +52,7 @@ export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202205/dynamodb-typescript.png',
+              image: 'https://cdn.goldstack.party/img/202205/dynamodb-typescript.png',
             },
           },
         },
@@ -123,10 +113,7 @@ export const getDynamoDBTemplateData = (): ProjectTemplateProps => {
       },
       featureYarn3(),
       featureVSCode(),
-      featureAppComposition([
-        'template:serverless-api',
-        'template:express-lambda',
-      ]),
+      featureAppComposition(['template:serverless-api', 'template:express-lambda']),
     ],
   };
 };

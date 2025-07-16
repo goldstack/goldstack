@@ -1,4 +1,4 @@
-import { ProjectTemplateProps } from '../projectTemplateTypes';
+import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { HetznerVPS } from './moduleData';
 
 export const getHetznerVPSTemplateData = (): ProjectTemplateProps => {
@@ -9,8 +9,7 @@ export const getHetznerVPSTemplateData = (): ProjectTemplateProps => {
     boilerplateLink: 'https://github.com/goldstack/hetzner-vps-template',
     packages: [HetznerVPS],
     isComposite: false,
-    description:
-      'Define a Hetzner VPS using infrastructure as code and Docker.',
+    description: 'Define a Hetzner VPS using infrastructure as code and Docker.',
     metaTitle: 'Ready to Use Hardened Hetzner VPS Template',
     metaDescription:
       'Define a Hetzner VPS in code and get it up and running in minutes. Includes Terraform definitions and powerful local scripts.',
@@ -28,13 +27,11 @@ export const getHetznerVPSTemplateData = (): ProjectTemplateProps => {
         image: 'https://cdn.goldstack.party/img/202409/hetzner.svg',
         details: {
           title: 'Develop HTTP Routes',
-          description:
-            'The Gin framework allows building high performance HTTP APIs using Go.',
+          description: 'The Gin framework allows building high performance HTTP APIs using Go.',
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202409/hetzner_vps_deploy.png',
+              image: 'https://cdn.goldstack.party/img/202409/hetzner_vps_deploy.png',
             },
           },
         },
@@ -58,8 +55,7 @@ export const getHetznerVPSTemplateData = (): ProjectTemplateProps => {
       {
         title: 'App Composition',
         id: 'composition',
-        description:
-          'Easily combine with any Goldstack module to compose end-to-end applications.',
+        description: 'Easily combine with any Goldstack module to compose end-to-end applications.',
         image: 'composition',
         details: {
           title: 'Integrate with Goldstack Templates',
@@ -68,11 +64,7 @@ export const getHetznerVPSTemplateData = (): ProjectTemplateProps => {
           content: {
             type: 'combine-templates',
             data: {
-              templates: [
-                'template:app-nextjs-bootstrap',
-                'template:s3',
-                'template:email-send',
-              ],
+              templates: ['template:app-nextjs-bootstrap', 'template:s3', 'template:email-send'],
             },
           },
           moreDetails: {

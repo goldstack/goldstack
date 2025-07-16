@@ -1,5 +1,5 @@
 import assert from 'assert';
-import {
+import type {
   AWSConfiguration,
   AWSRegion,
   AWSProfileConfig,
@@ -16,16 +16,13 @@ import {
   fromProcess,
 } from '@aws-sdk/credential-providers';
 
-import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { hasInjectedCredentials, injectCredentials } from './awsAuthUtils';
 import { warn } from '@goldstack/utils-log';
 
 export async function getAWSUserFromEnvironmentVariables(): Promise<AwsCredentialIdentityProvider> {
   assert(process.env.AWS_ACCESS_KEY_ID, 'AWS_ACCESS_KEY_ID not defined.');
-  assert(
-    process.env.AWS_SECRET_ACCESS_KEY,
-    'AWS_SECRET_ACCESS_KEY not defined'
-  );
+  assert(process.env.AWS_SECRET_ACCESS_KEY, 'AWS_SECRET_ACCESS_KEY not defined');
   const credentials: AwsCredentialIdentityProvider = fromEnv();
 
   injectCredentials(credentials, {
@@ -44,17 +41,13 @@ export async function getAWSUserFromContainerEnvironment(): Promise<AwsCredentia
   });
 
   if (!process.env.AWS_REGION) {
-    throw new Error(
-      'AWS region environment variable ("AWS_REGION") not defined for ECS task.'
-    );
+    throw new Error('AWS region environment variable ("AWS_REGION") not defined for ECS task.');
   }
 
   return ecsCredentials;
 }
 
-async function validateCredentials(
-  credentials: AwsCredentialIdentityProvider
-): Promise<boolean> {
+async function validateCredentials(credentials: AwsCredentialIdentityProvider): Promise<boolean> {
   if (hasInjectedCredentials(credentials)) {
     return true;
   }
@@ -82,9 +75,7 @@ export async function getAWSUserFromDefaultLocalProfile(): Promise<AwsCredential
   };
 
   if (!(await validateCredentials(credentials))) {
-    warn(
-      'Cannot load credentials from INI file. Trying process credentials instead.'
-    );
+    warn('Cannot load credentials from INI file. Trying process credentials instead.');
     // if no access key is found, try loading process_credentials
     // see https://github.com/aws/aws-sdk-js/pull/1391
     process.env.AWS_SDK_LOAD_CONFIG = '1';
@@ -98,7 +89,7 @@ export async function getAWSUserFromDefaultLocalProfile(): Promise<AwsCredential
 
 export async function getAWSUserFromGoldstackConfig(
   config: AWSConfiguration,
-  userName: string
+  userName: string,
 ): Promise<AwsCredentialIdentityProvider> {
   const user = config.users.find((user) => user.name === userName);
   if (!user) {
@@ -110,7 +101,7 @@ export async function getAWSUserFromGoldstackConfig(
 
     if (process.env.AWS_SHARED_CREDENTIALS_FILE) {
       warn(
-        `Using AWS_SHARED_CREDENTIALS_FILE environment variable: '${process.env.AWS_SHARED_CREDENTIALS_FILE}'. awsCredentialsFileName in configuration will be ignored.`
+        `Using AWS_SHARED_CREDENTIALS_FILE environment variable: '${process.env.AWS_SHARED_CREDENTIALS_FILE}'. awsCredentialsFileName in configuration will be ignored.`,
       );
     }
 
@@ -124,13 +115,12 @@ export async function getAWSUserFromGoldstackConfig(
       // support loading from both `config` and `credentials` files, see https://github.com/goldstack/goldstack/issues/17#issuecomment-1044811805  https://github.com/aws/aws-sdk-js/pull/1391
       process.env.AWS_SDK_LOAD_CONFIG = '1';
       // filename property is ignored if AWS_SDK_LOAD_CONFIG is set; thus need to set AWS_SHARED_CREDENTIALS_FILE.
-      process.env.AWS_SHARED_CREDENTIALS_FILE =
-        userConfig.awsCredentialsFileName;
+      process.env.AWS_SHARED_CREDENTIALS_FILE = userConfig.awsCredentialsFileName;
       process.env.AWS_CONFIG_FILE = userConfig.awsConfigFileName;
     }
 
     let credentials: AwsCredentialIdentityProvider;
-    let filename: string | undefined = undefined;
+    let filename: string | undefined;
     if (!process.env.SHARE_CREDENTIALS_FILE) {
       filename = userConfig.awsCredentialsFileName;
     }
@@ -174,7 +164,7 @@ export async function getAWSUserFromGoldstackConfig(
     const config = user.config as AWSAPIKeyUserConfig;
     if (!config.awsAccessKeyId || !config.awsSecretAccessKey) {
       throw new Error(
-        `AWS Access credentials not defined for user ${userName}. Define them in infra/aws/config.json.`
+        `AWS Access credentials not defined for user ${userName}. Define them in infra/aws/config.json.`,
       );
     }
 
@@ -195,24 +185,21 @@ export async function getAWSUserFromGoldstackConfig(
     const awsAccessKeyId = process.env[userConfig.awsAccessKeyIdVariableName];
     if (!awsAccessKeyId) {
       throw new Error(
-        `Environment variable expected but not found: ${userConfig.awsAccessKeyIdVariableName}`
+        `Environment variable expected but not found: ${userConfig.awsAccessKeyIdVariableName}`,
       );
     }
 
-    const awsSecretAccessKey =
-      process.env[userConfig.awsSecretAccessKeyVariableName];
+    const awsSecretAccessKey = process.env[userConfig.awsSecretAccessKeyVariableName];
     if (!awsSecretAccessKey) {
       throw new Error(
-        `Environment variable expected but not found: ${userConfig.awsSecretAccessKeyVariableName}`
+        `Environment variable expected but not found: ${userConfig.awsSecretAccessKeyVariableName}`,
       );
     }
 
-    const awsDefaultRegion = process.env[
-      userConfig.awsDefaultRegionVariableName
-    ] as AWSRegion;
+    const awsDefaultRegion = process.env[userConfig.awsDefaultRegionVariableName] as AWSRegion;
     if (!awsDefaultRegion) {
       throw new Error(
-        `Environment variable expected but not found: ${userConfig.awsDefaultRegionVariableName}`
+        `Environment variable expected but not found: ${userConfig.awsDefaultRegionVariableName}`,
       );
     }
 
@@ -229,9 +216,7 @@ export async function getAWSUserFromGoldstackConfig(
 
   throw new Error(`Unknown user config type ${user.type}`);
 }
-function resetEnvironmentVariables(envVarValues: {
-  [key: string]: string | undefined;
-}) {
+function resetEnvironmentVariables(envVarValues: { [key: string]: string | undefined }) {
   Object.entries(envVarValues).forEach(([key, value]) => {
     if (process.env[key] === undefined) {
       delete process.env[key];

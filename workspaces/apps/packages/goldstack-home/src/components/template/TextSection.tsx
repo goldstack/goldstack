@@ -4,7 +4,7 @@ import DesktopComputerImg from 'src/img/desktop_computer.jpg';
 import TabletImg from 'src/img/tablet.jpg';
 import MeetingImg from 'src/img/meeting.jpg';
 
-import { TextSectionProps } from '@goldstack/template-metadata';
+import type { TextSectionProps } from '@goldstack/template-metadata';
 
 const TextSection = (props: TextSectionProps): JSX.Element => {
   return (
@@ -30,10 +30,7 @@ const TextSection = (props: TextSectionProps): JSX.Element => {
           </div>
 
           <div className="col-lg-6 col-xl-5">
-            <div
-              className="position-relative min-h-500rem mx-auto"
-              style={{ maxWidth: '28rem' }}
-            >
+            <div className="position-relative min-h-500rem mx-auto" style={{ maxWidth: '28rem' }}>
               <figure className="position-absolute top-0 right-0 z-index-2 mr-11">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -55,11 +52,7 @@ const TextSection = (props: TextSectionProps): JSX.Element => {
                       <use xlinkHref="#circleImgID2" />
                     </clipPath>
                     <g clipPath="url(#circleImgID1)">
-                      <image
-                        width="450"
-                        height="450"
-                        xlinkHref={DesktopComputerImg.src}
-                      ></image>
+                      <image width="450" height="450" xlinkHref={DesktopComputerImg.src}></image>
                     </g>
                   </g>
                 </svg>

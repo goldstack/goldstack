@@ -23,7 +23,5 @@ test('Should download file', async () => {
     filePath: './goldstackLocal/download.txt',
   });
 
-  expect(readFileSync('./goldstackLocal/download.txt').toString()).toEqual(
-    'hithere'
-  );
+  expect(readFileSync('./goldstackLocal/download.txt').toString()).toEqual('hithere');
 });

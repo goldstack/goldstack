@@ -10,10 +10,7 @@ import RocketLaunchImg from './../src/img/rocket-launch.jpg';
 const fetcher = (url: string): any => fetch(url).then((r) => r.json());
 
 const FetchedContent = (): JSX.Element => {
-  const { data, error } = useSWR(
-    'https://jsonplaceholder.typicode.com/todos/1',
-    fetcher
-  );
+  const { data, error } = useSWR('https://jsonplaceholder.typicode.com/todos/1', fetcher);
 
   if (error) {
     return <div>Cannot load data</div>;

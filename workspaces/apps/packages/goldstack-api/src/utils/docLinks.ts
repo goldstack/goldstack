@@ -6,9 +6,7 @@ import { connect, getBucketName } from '@goldstack/template-repository-bucket';
 import path from 'path';
 
 const getGoldstackJsonPaths = (workspacePath: string): string[] => {
-  const res = globSync(
-    workspacePath.replace(/\\/g, '/') + 'packages/*/goldstack.json'
-  );
+  const res = globSync(workspacePath.replace(/\\/g, '/') + 'packages/*/goldstack.json');
   return res;
 };
 
@@ -17,9 +15,7 @@ export interface DocLink {
   link: string;
 }
 
-export const getDocLinks = async (
-  workspacePath: string
-): Promise<DocLink[]> => {
+export const getDocLinks = async (workspacePath: string): Promise<DocLink[]> => {
   const goldstackJsonPaths = getGoldstackJsonPaths(workspacePath);
 
   const templateRepo = new S3TemplateRepository({
@@ -31,18 +27,14 @@ export const getDocLinks = async (
 
   return await Promise.all(
     goldstackJsonPaths.map(async (goldstackJsonPath): Promise<DocLink> => {
-      const goldstackConfig = readPackageConfig(
-        path.dirname(goldstackJsonPath) + '/'
-      );
+      const goldstackConfig = readPackageConfig(path.dirname(goldstackJsonPath) + '/');
 
-      const templateJson = await templateRepo.getLatestTemplateVersion(
-        goldstackConfig.template
-      );
+      const templateJson = await templateRepo.getLatestTemplateVersion(goldstackConfig.template);
 
       if (!templateJson) {
         console.warn(
           'Cannot obtain documentation link. Template cannot be loaded',
-          goldstackConfig.template
+          goldstackConfig.template,
         );
         return {
           packageName: goldstackConfig.name,
@@ -53,7 +45,7 @@ export const getDocLinks = async (
       if (!templateJson.templateDocumentation) {
         console.log(
           'No documentation link is defined for template:',
-          templateJson.templateDocumentation
+          templateJson.templateDocumentation,
         );
       }
 
@@ -61,6 +53,6 @@ export const getDocLinks = async (
         packageName: goldstackConfig.name,
         link: templateJson.templateDocumentation,
       };
-    })
+    }),
   );
 };

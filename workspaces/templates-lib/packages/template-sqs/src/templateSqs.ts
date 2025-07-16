@@ -1,16 +1,16 @@
 export {
   connect,
-  getMockedSQS,
   getMockedDLQSQS,
+  getMockedSQS,
   getSQSDLQQueueName,
   getSQSDLQQueueUrl,
   getSQSQueueName,
   getSQSQueueUrl,
 } from './sqsConnect';
 
-import { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
+import type { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
-import { MessageCallback } from './sqsConnect';
+import type { MessageCallback } from './sqsConnect';
 
 export { MessageCallback } from './sqsConnect';
 
@@ -23,7 +23,6 @@ export function createSQSClient({
   sqsClient?: SQSClient;
   onMessageSend?: MessageCallback;
 }): SQSClient {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   return require(excludeInBundle('./mockedSQS')).createSQSClient({
     sqsClient,
     onMessageSend,
@@ -31,9 +30,7 @@ export function createSQSClient({
 }
 
 // Helper function to retrieve sent message requests from the mocked SQS client
-export const getSentMessageRequests = (
-  sqsClient: SQSClient
-): SendMessageRequest[] => {
+export const getSentMessageRequests = (sqsClient: SQSClient): SendMessageRequest[] => {
   // Check if the _goldstackSentRequests property exists and return the array of sent requests
   if ((sqsClient as any)._goldstackSentRequests) {
     return (sqsClient as any)._goldstackSentRequests;
@@ -44,9 +41,7 @@ export const getSentMessageRequests = (
 };
 
 // Helper function to retrieve sent message requests from the mocked SQS client
-export const getSentMessageBatchRequests = (
-  sqsClient: SQSClient
-): SendMessageRequest[] => {
+export const getSentMessageBatchRequests = (sqsClient: SQSClient): SendMessageRequest[] => {
   // Check if the _goldstackSentRequests property exists and return the array of sent requests
   if ((sqsClient as any)._goldstackSentBatchRequests) {
     return (sqsClient as any)._goldstackSentBatchRequests;

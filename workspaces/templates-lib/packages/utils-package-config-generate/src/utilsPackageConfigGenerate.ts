@@ -1,5 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const tsj = require('ts-json-schema-generator');
+
 import fs from 'fs';
 
 export const run = (argv: string[]): void => {
@@ -27,12 +27,6 @@ export const run = (argv: string[]): void => {
 
   generateSchema('deployment.schema.json', `${prefix}Deployment`);
   generateSchema('package.schema.json', `${prefix}Package`);
-  generateSchema(
-    'package-configuration.schema.json',
-    `${prefix}PackageConfiguration`
-  );
-  generateSchema(
-    'deployment-configuration.schema.json',
-    `${prefix}DeploymentConfiguration`
-  );
+  generateSchema('package-configuration.schema.json', `${prefix}PackageConfiguration`);
+  generateSchema('deployment-configuration.schema.json', `${prefix}DeploymentConfiguration`);
 };

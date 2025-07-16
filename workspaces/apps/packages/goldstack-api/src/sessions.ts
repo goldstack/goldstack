@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router, type Request, type Response } from 'express';
 
 import randomString from 'crypto-random-string';
 
@@ -8,8 +8,8 @@ import { isSessionPaid, createSession } from './lib/stripe';
 
 import {
   connectSessionRepository,
-  SessionRepository,
-  SessionData,
+  type SessionRepository,
+  type SessionData,
 } from '@goldstack/session-repository';
 
 import { connect, getFromDomain } from '@goldstack/goldstack-email-send';
@@ -29,15 +29,11 @@ if (!process.env.CORS) {
 }
 
 function hostname(url: string): string {
-  const splitComponents =
-    url.indexOf('://') > -1 ? url.split('/')[2] : url.split('/')[0];
+  const splitComponents = url.indexOf('://') > -1 ? url.split('/')[2] : url.split('/')[0];
   return splitComponents.split(':')[0];
 }
 
-export const postSessionHandler = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+export const postSessionHandler = async (req: Request, res: Response): Promise<void> => {
   try {
     console.debug('Post session handler called');
     const domain = process.env.CORS;
@@ -79,10 +75,7 @@ export const postSessionHandler = async (
       const sessionData = await repo.readSession(userToken);
 
       // if token already defined, do not create new session
-      if (
-        sessionData &&
-        new Date(sessionData?.validUntil).getTime() > new Date().getTime()
-      ) {
+      if (sessionData && new Date(sessionData?.validUntil).getTime() > new Date().getTime()) {
         res.status(200).json({ result: 'success' });
         return;
       }
@@ -91,9 +84,7 @@ export const postSessionHandler = async (
     const sessionId = randomString({ length: 42 });
     await repo.createSession(
       sessionId,
-      new Date(
-        new Date().getTime() + sessionValidityInSeconds * 1000
-      ).toISOString()
+      new Date(new Date().getTime() + sessionValidityInSeconds * 1000).toISOString(),
     );
 
     res
@@ -108,15 +99,11 @@ export const postSessionHandler = async (
       .json({ result: 'success' });
   } catch (e) {
     console.error(e);
-    res
-      .status(500)
-      .json({ errorMessage: `Cannot create session. ${e.message}` });
+    res.status(500).json({ errorMessage: `Cannot create session. ${e.message}` });
   }
 };
 
-const isPaymentReceived = async (
-  sessionData: SessionData
-): Promise<boolean> => {
+const isPaymentReceived = async (sessionData: SessionData): Promise<boolean> => {
   if (!sessionData.coupon && !sessionData.stripeId) {
     return false;
   }
@@ -129,16 +116,11 @@ const isPaymentReceived = async (
   return await isSessionPaid({ sessionId: sessionData.stripeId });
 };
 
-export const getSessionHandler = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+export const getSessionHandler = async (req: Request, res: Response): Promise<void> => {
   try {
     const { userToken } = req.cookies;
     if (!userToken) {
-      res
-        .status(400)
-        .json({ errorMessage: 'Expected userToken cookie to be set' });
+      res.status(400).json({ errorMessage: 'Expected userToken cookie to be set' });
       return;
     }
     const repo = await connectSessionRepository();
@@ -162,9 +144,7 @@ export const getSessionHandler = async (
   } catch (e) {
     console.log('Error while getting session details: ' + e.message);
     console.error(e);
-    res
-      .status(500)
-      .json({ errorMessage: 'Cannot retrieve session. Error: ' + e.message });
+    res.status(500).json({ errorMessage: 'Cannot retrieve session. Error: ' + e.message });
   }
 };
 
@@ -179,9 +159,7 @@ const performPurchase = async (params: {
   const ses = await connect();
   const sessionData = await params.repo.readSession(params.userToken);
   assert(sessionData);
-  console.debug(
-    `Sending out download URL: ${params.downloadUrl} to ${params.email}`
-  );
+  console.debug(`Sending out download URL: ${params.downloadUrl} to ${params.email}`);
 
   const repo = await connectProjectRepository();
   const workspacePath = `${goldstackLocalDir()}work/session-purchase/${
@@ -232,7 +210,7 @@ const performPurchase = async (params: {
           },
         },
         Source: '"Goldstack" <hi@' + (await getFromDomain()) + '>',
-      })
+      }),
     );
   } else {
     await ses.send(
@@ -253,24 +231,19 @@ const performPurchase = async (params: {
           },
         },
         Source: '"Goldstack" <hi@' + (await getFromDomain()) + '>',
-      })
+      }),
     );
   }
 
   await rmSafe(workspacePath);
 };
 
-export const putSessionHandler = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+export const putSessionHandler = async (req: Request, res: Response): Promise<void> => {
   try {
     const { email, coupon, downloadUrl, projectId, packageId } = req.body;
     const { userToken } = req.cookies;
     if (!userToken) {
-      res
-        .status(400)
-        .json({ errorMessage: 'Expected userToken cookie to be set' });
+      res.status(400).json({ errorMessage: 'Expected userToken cookie to be set' });
       return;
     }
     const repo = await connectSessionRepository();
@@ -323,24 +296,17 @@ export const putSessionHandler = async (
     res.status(200).json({ result: 'success' });
   } catch (e) {
     console.error(e);
-    res
-      .status(500)
-      .json({ errorMessage: `Cannot update session. ${e.message}` });
+    res.status(500).json({ errorMessage: `Cannot update session. ${e.message}` });
   }
 };
 
-export const postPurchase = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+export const postPurchase = async (req: Request, res: Response): Promise<void> => {
   try {
     const { projectId, downloadUrl, packageId } = req.body;
     const repo = await connectSessionRepository();
     const { userToken } = req.cookies;
     if (!userToken) {
-      res
-        .status(400)
-        .json({ errorMessage: 'Expected userToken cookie to be set' });
+      res.status(400).json({ errorMessage: 'Expected userToken cookie to be set' });
       return;
     }
     const sessionData = await repo.readSession(userToken);
@@ -359,7 +325,7 @@ export const postPurchase = async (
         'PackageId:',
         packageId,
         'SessionId',
-        sessionData.sessionId
+        sessionData.sessionId,
       );
       res.status(400).json({
         errorMessage:
@@ -380,9 +346,7 @@ export const postPurchase = async (
   } catch (e) {
     console.error('Error during postPurchase');
     console.error(e);
-    res
-      .status(500)
-      .json({ errorMessage: `Cannot process purchase ${e.message}` });
+    res.status(500).json({ errorMessage: `Cannot process purchase ${e.message}` });
     return;
   }
 };

@@ -18,10 +18,7 @@ const FeatureAWSDeployment = (): JSX.Element => {
             </span>
           </div>
           <div className="mb-0">
-            <span className="d-block text-white-70">
-              {' '}
-              $ yarn infra destroy dev
-            </span>
+            <span className="d-block text-white-70"> $ yarn infra destroy dev</span>
             <span className="d-block h4 text-success font-weight-normal">
               Development infrastructure teared down.
             </span>

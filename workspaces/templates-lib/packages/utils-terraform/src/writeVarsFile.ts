@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { Variables } from './terraformCli';
+import type { Variables } from './terraformCli';
 
 const isJsonString = (str: string): boolean => {
   try {
@@ -58,8 +58,5 @@ export function writeVarsFile(variables: Variables, filePath: string): void {
 
   const varsFilePath = filePath; // path.join(dir, 'terraform.tfvars');
 
-  fs.writeFileSync(
-    varsFilePath,
-    '# This file is generated. DO NOT CHANGE.\n\n' + varFileContent
-  );
+  fs.writeFileSync(varsFilePath, '# This file is generated. DO NOT CHANGE.\n\n' + varFileContent);
 }

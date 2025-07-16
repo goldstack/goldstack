@@ -17,7 +17,7 @@ describe('SES connect', () => {
           },
         },
         Source: 'sender@example.com',
-      })
+      }),
     );
 
     const sentEmailRequests = getSentEmailRequests(ses);

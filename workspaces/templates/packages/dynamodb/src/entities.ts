@@ -1,16 +1,16 @@
 import {
   boolean,
   Entity,
-  InputItem,
-  InputValue,
+  type InputItem,
+  type InputValue,
   schema,
   string,
   Table as ToolboxTable,
-  TimestampsDefaultOptions,
-  ValidItem,
-  ValidValue,
+  type TimestampsDefaultOptions,
+  type ValidItem,
+  type ValidValue,
 } from 'dynamodb-toolbox';
-import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
+import type { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 
 // ---
 // Below find an example how to define an entity.
@@ -74,10 +74,7 @@ export type Table = ToolboxTable<
   '_et'
 >;
 
-export function createTable(
-  dynamoDB: DynamoDBDocumentClient,
-  tableName: string
-): Table {
+export function createTable(dynamoDB: DynamoDBDocumentClient, tableName: string): Table {
   const table = new ToolboxTable({
     name: tableName,
     partitionKey: {

@@ -1,11 +1,6 @@
 import { connect, getBucketName } from '@goldstack/session-repository-bucket';
 
-import {
-  GetObjectCommand,
-  NoSuchKey,
-  PutObjectCommand,
-  S3Client,
-} from '@aws-sdk/client-s3';
+import { GetObjectCommand, NoSuchKey, PutObjectCommand, type S3Client } from '@aws-sdk/client-s3';
 
 import assert from 'assert';
 
@@ -39,7 +34,7 @@ export class SessionRepository {
         Bucket: this.bucketName,
         Key: `sessions/${sessionId}/session.json`,
         Body: JSON.stringify(sessionData),
-      })
+      }),
     );
   }
 
@@ -52,13 +47,10 @@ export class SessionRepository {
         new GetObjectCommand({
           Bucket: this.bucketName,
           Key: `sessions/${sessionId}/session.json`,
-        })
+        }),
       );
 
-      assert(
-        obj.Body,
-        `Cannot read key from sessions S3 bucket: ${sessionId}/session.json`
-      );
+      assert(obj.Body, `Cannot read key from sessions S3 bucket: ${sessionId}/session.json`);
       return JSON.parse(await obj.Body.transformToString());
     } catch (e) {
       if (e instanceof NoSuchKey) {
@@ -68,15 +60,10 @@ export class SessionRepository {
     }
   }
 
-  async storeStripeId(params: {
-    sessionId: string;
-    stripeId: string;
-  }): Promise<void> {
+  async storeStripeId(params: { sessionId: string; stripeId: string }): Promise<void> {
     const sessionData = await this.readSession(params.sessionId);
     if (!sessionData) {
-      throw new Error(
-        `Cannot store stripeId for session that does not exist: ${params.sessionId}`
-      );
+      throw new Error(`Cannot store stripeId for session that does not exist: ${params.sessionId}`);
     }
     sessionData.stripeId = params.stripeId;
     await this.s3.send(
@@ -84,19 +71,15 @@ export class SessionRepository {
         Bucket: this.bucketName,
         Key: `sessions/${sessionData.sessionId}/session.json`,
         Body: JSON.stringify(sessionData),
-      })
+      }),
     );
   }
 
-  async storePayment(params: {
-    sessionId: string;
-    email: string;
-    coupon?: string;
-  }): Promise<void> {
+  async storePayment(params: { sessionId: string; email: string; coupon?: string }): Promise<void> {
     const sessionData = await this.readSession(params.sessionId);
     if (!sessionData) {
       throw new Error(
-        `Cannot store payment information for session that does not exist: ${params.sessionId} `
+        `Cannot store payment information for session that does not exist: ${params.sessionId} `,
       );
     }
 
@@ -107,7 +90,7 @@ export class SessionRepository {
         Bucket: this.bucketName,
         Key: `sessions/${sessionData.sessionId}/session.json`,
         Body: JSON.stringify(sessionData),
-      })
+      }),
     );
   }
 
@@ -119,7 +102,7 @@ export class SessionRepository {
     const sessionData = await this.readSession(params.sessionId);
     if (!sessionData) {
       throw new Error(
-        `Cannot store purchase  information for session that does not exist: ${params.sessionId}`
+        `Cannot store purchase  information for session that does not exist: ${params.sessionId}`,
       );
     }
     await this.s3.send(
@@ -132,13 +115,13 @@ export class SessionRepository {
           packageId: params.packageId,
           purchaseDate: new Date().toISOString(),
         }),
-      })
+      }),
     );
   }
 }
 
 export const connectSessionRepository = async (
-  deploymentName?: string
+  deploymentName?: string,
 ): Promise<SessionRepository> => {
   const s3 = await connect(deploymentName);
   const bucketName = await getBucketName(deploymentName);

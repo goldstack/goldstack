@@ -14,8 +14,7 @@ export const run = async (): Promise<void> => {
         (yargs) => {
           return yargs
             .positional('source', {
-              describe:
-                'A directory from where Markdown and navigation files should be loaded',
+              describe: 'A directory from where Markdown and navigation files should be loaded',
               type: 'string',
               demandOption: true,
             })
@@ -24,7 +23,7 @@ export const run = async (): Promise<void> => {
               type: 'string',
               demandOption: true,
             });
-        }
+        },
       )
       .parse();
 

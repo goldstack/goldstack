@@ -6,16 +6,12 @@ import {
   getSentEmailRequests as templateGetSentEmailRequests,
 } from '@goldstack/template-email-send';
 
-import { SendEmailRequest, SESClient } from '@aws-sdk/client-ses';
+import type { SendEmailRequest, SESClient } from '@aws-sdk/client-ses';
 import goldstackConfig from './../goldstack.json';
 import goldstackSchema from './../schemas/package.schema.json';
 
 export const connect = async (deploymentName?: string): Promise<SESClient> => {
-  return await templateConnect(
-    goldstackConfig,
-    goldstackSchema,
-    deploymentName
-  );
+  return await templateConnect(goldstackConfig, goldstackSchema, deploymentName);
 };
 
 export const getSentEmailRequests = (client: SESClient): SendEmailRequest[] => {
@@ -30,12 +26,6 @@ export const getMockedSES = (): SESClient => {
   return templateGetMockedSES();
 };
 
-export const getFromDomain = async (
-  deploymentName?: string
-): Promise<string> => {
-  return templateGetFromDomain(
-    goldstackConfig,
-    goldstackSchema,
-    deploymentName
-  );
+export const getFromDomain = async (deploymentName?: string): Promise<string> => {
+  return templateGetFromDomain(goldstackConfig, goldstackSchema, deploymentName);
 };

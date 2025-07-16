@@ -1,38 +1,30 @@
+import { allTemplates } from '@goldstack/template-metadata';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React from 'react';
-
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
-import TypeScriptIcon from './../icons/typescript.svg';
-import ESLintIcon from './../icons/eslint.svg';
-import TerraformIcon from './../icons/terraform.svg';
-import AWSIcon from './../icons/aws.svg';
-import YarnIcon from './../icons/yarn.svg';
-import JestIcon from './../icons/jestjs.svg';
-import VSCodeIcon from './../icons/vscode.svg';
-import DockerIcon from './../icons/docker.svg';
-import DocusaurusIcon from './../icons/docusaurus.svg';
-import SecurityIcon from './../icons/security.svg';
-
-import RelaxedCoder from './../illustrations/relaxing-man.svg';
-
-import { useRouter } from 'next/router';
-import Head from 'next/head';
-import Header from './../components/Header';
-
-import { allTemplates } from '@goldstack/template-metadata';
-import PackageList from './../components/PackageList';
-
-import Foundation from './../components/Foundation';
-import GoldstackProcess from './../components/GoldstackProcess';
-import GoldstackBenefits from './../components/GoldstackBenefits';
-
-import GitHubIcon from './../icons/github-tile.svg';
-
 import Footer from './../components/Footer';
+import Foundation from './../components/Foundation';
+import GoldstackBenefits from './../components/GoldstackBenefits';
+import GoldstackProcess from './../components/GoldstackProcess';
+import Header from './../components/Header';
+import PackageList from './../components/PackageList';
 import TemplateCallToAction from './../components/template/TemplateCallToAction';
 import TemplateCard from './../components/template/TemplateCard';
+import AWSIcon from './../icons/aws.svg';
+import BiomeIcon from './../icons/biomejs.svg';
+import DockerIcon from './../icons/docker.svg';
+import DocusaurusIcon from './../icons/docusaurus.svg';
+import GitHubIcon from './../icons/github-tile.svg';
+import JestIcon from './../icons/jestjs.svg';
+import SecurityIcon from './../icons/security.svg';
+import TerraformIcon from './../icons/terraform.svg';
+import TypeScriptIcon from './../icons/typescript.svg';
+import VSCodeIcon from './../icons/vscode.svg';
+import YarnIcon from './../icons/yarn.svg';
+import RelaxedCoder from './../illustrations/relaxing-man.svg';
 
 const Front = (): JSX.Element => {
   const router = useRouter();
@@ -63,24 +55,14 @@ const Front = (): JSX.Element => {
             <div className="col-lg-5 mb-7 mb-lg-0">
               <div className="mb-4">
                 <h1>First-Class Starter Projects</h1>
-                <p>
-                  Save tons of time by starting with a starter project assembled
-                  by Goldstack.
-                </p>
-                <a
-                  className="btn btn-primary btn-wide transition-3d-hover"
-                  href="/build"
-                >
+                <p>Save tons of time by starting with a starter project assembled by Goldstack.</p>
+                <a className="btn btn-primary btn-wide transition-3d-hover" href="/build">
                   ✔ Start Building Your Project Now
                 </a>
                 <p className="mt-3">
                   Open source on{' '}
                   <a href="https://github.com/goldstack/goldstack">
-                    <img
-                      style={{ height: '1rem' }}
-                      className="mr-1"
-                      src={GitHubIcon}
-                    />
+                    <img style={{ height: '1rem' }} className="mr-1" src={GitHubIcon} />
                     goldstack/goldstack
                   </a>
                 </p>
@@ -88,11 +70,7 @@ const Front = (): JSX.Element => {
             </div>
 
             <div className="col-lg-7">
-              <img
-                className="img-fluid"
-                src={RelaxedCoder}
-                alt="Relaxing coder"
-              />
+              <img className="img-fluid" src={RelaxedCoder} alt="Relaxing coder" />
             </div>
           </Row>
           <div className="w-md-80 w-lg-40 text-center mx-md-auto mb-5 space-top-3 mb-md-9">
@@ -116,16 +94,16 @@ const Front = (): JSX.Element => {
               <div className="row">
                 <div className="col-lg-6">
                   <p>
-                    It often takes hours, if not days, to get the basic setup
-                    for a new JavaScript/ TypeScript project working, especially
-                    if you are aiming for something fancy such as a monorepo 😕.
+                    It often takes hours, if not days, to get the basic setup for a new JavaScript/
+                    TypeScript project working, especially if you are aiming for something fancy
+                    such as a monorepo 😕.
                   </p>
                 </div>
 
                 <div className="col-lg-6">
                   <p>
-                    Goldstack provides high-quality starter projects tailored to
-                    your specific requirements using our
+                    Goldstack provides high-quality starter projects tailored to your specific
+                    requirements using our
                     <em>starter project builder</em> 🛠️.{' '}
                   </p>
                 </div>
@@ -154,9 +132,9 @@ const Front = (): JSX.Element => {
                     highlight: elements.includes('yarn'),
                   },
                   {
-                    icon: ESLintIcon,
-                    title: 'ESLint and Prettier',
-                    highlight: elements.includes('eslint'),
+                    icon: BiomeIcon,
+                    title: 'Biome (Lint & Format)',
+                    highlight: elements.includes('biome'),
                   },
                   {
                     icon: JestIcon,
@@ -226,7 +204,7 @@ const Front = (): JSX.Element => {
                       {/* <p>Well-configured statically typed goodness</p> */}
                       <ul>
                         <li>TypeScript</li>
-                        <li>Eslint and prettier</li>
+                        <li>Biome linting and formatting</li>
                         <li>Jest</li>
                         <li>Yarn workspaces</li>
                         <li>VSCode config</li>
@@ -245,13 +223,8 @@ const Front = (): JSX.Element => {
                       {/* <p>Robust and nimble builds and infrastructre</p> */}
                       <ul>
                         <li>npm scripts for testing, build and deployment</li>
-                        <li>
-                          Terraform configuration, easy to adapt and extend
-                        </li>
-                        <li>
-                          Scalable, low-cost serverless resources on the AWS
-                          cloud
-                        </li>
+                        <li>Terraform configuration, easy to adapt and extend</li>
+                        <li>Scalable, low-cost serverless resources on the AWS cloud</li>
                         <li>Docker-based builds</li>
                       </ul>
                     </>

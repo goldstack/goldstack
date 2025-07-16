@@ -35,9 +35,7 @@ export const event = ({ action, category, label, value }): void => {
       value: value,
     });
   } catch (e) {
-    console.error(
-      `Cannot log Google Analytics event: ${action} ${category} ${label} ${value}`
-    );
+    console.error(`Cannot log Google Analytics event: ${action} ${category} ${label} ${value}`);
     console.error(e);
   }
 };
@@ -49,10 +47,7 @@ export const TagFragment = (): JSX.Element => {
   return (
     <Fragment>
       {/* Global Site Tag (gtag.js) - Google Analytics */}
-      <script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-      />
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
       <script
         dangerouslySetInnerHTML={{
           __html: `

@@ -1,15 +1,9 @@
+import { allTemplates, type ProjectTemplateProps } from '@goldstack/template-metadata';
+
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
-
-import { GetStaticProps, GetStaticPaths } from 'next';
-
-import Header from 'src/components/Header';
-
-import {
-  ProjectTemplateProps,
-  allTemplates,
-} from '@goldstack/template-metadata';
-
 import Footer from 'src/components/Footer';
+import Header from 'src/components/Header';
 import Breadcrumb from '../../components/Breadcrumb';
 import ProjectTemplate from '../../components/template/ProjectTemplate';
 
@@ -55,9 +49,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   const templates = allTemplates();
-  const template: ProjectTemplateProps | undefined = templates.find(
-    (t) => t.id == templateId
-  );
+  const template: ProjectTemplateProps | undefined = templates.find((t) => t.id === templateId);
 
   return {
     props: {

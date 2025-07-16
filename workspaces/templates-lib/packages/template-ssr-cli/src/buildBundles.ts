@@ -4,16 +4,12 @@ import type {
   ClientBuildOptionsArgs,
   ServerBuildOptionsArgs,
 } from '@goldstack/template-ssr-server-compile-bundle';
-export type {
-  BuildConfiguration,
-  ClientBuildOptionsArgs,
-  ServerBuildOptionsArgs,
-};
+export type { BuildConfiguration, ClientBuildOptionsArgs, ServerBuildOptionsArgs };
 
 import {
   generateFunctionName,
   getOutDirForLambda,
-  LambdaConfig,
+  type LambdaConfig,
 } from '@goldstack/utils-aws-lambda';
 import { debug } from '@goldstack/utils-log';
 import { mkdir, write } from '@goldstack/utils-sh';
@@ -83,10 +79,7 @@ export const buildBundles = async ({
     if (compileResult.metaFile) {
       write(
         compileResult.metaFile,
-        path.join(
-          packageRootDir,
-          `distLambda/zips/${functionName}.client.meta.json`
-        )
+        path.join(packageRootDir, `distLambda/zips/${functionName}.client.meta.json`),
       );
     }
   }

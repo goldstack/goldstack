@@ -1,4 +1,4 @@
-import { ProjectTemplateProps } from '../projectTemplateTypes';
+import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { Express, EmailSend } from './moduleData';
 import { getExpressTemplateData } from './expressTemplateData';
 import { getEmailSendFeature } from './emailSendTemplateData';
@@ -19,9 +19,6 @@ export const getExpressAndEmailSentTemplateData = (): ProjectTemplateProps => {
       'Also sets up all infrastructure required for sending emails through AWS SES.',
     actionLink: '/build?stack=express,email-send',
     tags: ['Express.js', 'AWS', 'SES', 'TypeScript', 'Yarn', 'Backend'],
-    featuresOverview: [
-      getEmailSendFeature(),
-      ...getExpressTemplateData().featuresOverview,
-    ],
+    featuresOverview: [getEmailSendFeature(), ...getExpressTemplateData().featuresOverview],
   };
 };

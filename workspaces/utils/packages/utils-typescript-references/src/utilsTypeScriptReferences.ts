@@ -25,13 +25,11 @@ export const run = async (args: string[]): Promise<void> => {
     })
     .option('excludeInReferences', {
       type: 'array',
-      description:
-        'Exclude specific packages from being referenced by other packages',
+      description: 'Exclude specific packages from being referenced by other packages',
     })
     .option('excludeInRoot', {
       type: 'array',
-      description:
-        'Exclude specific packages from being referenced in the root tsConfig',
+      description: 'Exclude specific packages from being referenced in the root tsConfig',
     })
     .option('tsConfigName', {
       type: 'array',

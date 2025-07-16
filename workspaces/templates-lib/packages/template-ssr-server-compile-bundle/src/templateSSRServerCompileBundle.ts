@@ -5,12 +5,9 @@ import type { APIGatewayProxyResultV2 } from 'aws-lambda';
 import { changeExtension, readToType } from '@goldstack/utils-sh';
 import { dirname } from 'path';
 
-import { StaticFileMapperManager } from 'static-file-mapper-build';
+import type { StaticFileMapperManager } from 'static-file-mapper-build';
 
-import type {
-  ClientBuildOptionsArgs,
-  ServerBuildOptionsArgs,
-} from '@goldstack/utils-aws-lambda';
+import type { ClientBuildOptionsArgs, ServerBuildOptionsArgs } from '@goldstack/utils-aws-lambda';
 import { debug } from '@goldstack/utils-log';
 
 export type {
@@ -26,10 +23,7 @@ export interface BuildConfiguration {
 
 const getBuildConfig = (entryPoint: string): BuildOptions => {
   const buildConfig = readToType<BuildOptions>('./esbuild.config.json');
-  const esbuildLocalPath = changeExtension(
-    dirname(entryPoint),
-    '.esbuild.config.json'
-  );
+  const esbuildLocalPath = changeExtension(dirname(entryPoint), '.esbuild.config.json');
   const localBuildConfig = readToType<BuildOptions>(esbuildLocalPath);
   return { ...buildConfig, ...localBuildConfig };
 };
@@ -44,15 +38,13 @@ const getOutput = (
   extension: string,
   result: BuildResult & {
     outputFiles: OutputFile[];
-  }
+  },
 ): string => {
-  const matchedFiles = result.outputFiles.filter((file) =>
-    file.path.endsWith(extension)
-  );
+  const matchedFiles = result.outputFiles.filter((file) => file.path.endsWith(extension));
 
   if (matchedFiles.length !== 1) {
     throw new Error(
-      `Invalid output from esbuild. Expected only one '${extension}' file but found ${matchedFiles.length}`
+      `Invalid output from esbuild. Expected only one '${extension}' file but found ${matchedFiles.length}`,
     );
   }
 
@@ -145,9 +137,7 @@ const extractSourceMap = (output: string): string => {
   const startContent = output.indexOf(marker) + marker.length;
   const sourceMapBase64Data = output.substring(startContent);
 
-  const sourceMapData = Buffer.from(sourceMapBase64Data, 'base64').toString(
-    'utf-8'
-  );
+  const sourceMapData = Buffer.from(sourceMapBase64Data, 'base64').toString('utf-8');
   return sourceMapData;
 };
 

@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import { Server } from 'http';
+import type { Server } from 'http';
 
-import { readLambdaConfig, LambdaConfig } from '@goldstack/utils-aws-lambda';
+import { readLambdaConfig, type LambdaConfig } from '@goldstack/utils-aws-lambda';
 import { injectRoutes } from './expressRoutes';
 import assert from 'assert';
 
@@ -37,9 +37,7 @@ export interface StartServerResult {
   lambdaConfig: LambdaConfig[];
 }
 
-export const startServer = async (
-  options: LocalHttpAPIOptions
-): Promise<StartServerResult> => {
+export const startServer = async (options: LocalHttpAPIOptions): Promise<StartServerResult> => {
   const app: express.Application = express();
   app.use(express.json());
 
@@ -67,7 +65,7 @@ export const startServer = async (
   }
 
   const result = await new Promise<Server>((resolve) => {
-    const server = app.listen(parseInt(options.port), function () {
+    const server = app.listen(parseInt(options.port), () => {
       resolve(server);
     });
   });

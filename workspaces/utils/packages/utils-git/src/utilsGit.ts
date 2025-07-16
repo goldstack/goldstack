@@ -1,13 +1,13 @@
-import path from 'path';
-// included here in preference to goldstack utils-sh to avoid circular dependency
-import { assert } from 'console';
 import { execSync } from 'child_process';
 import cmdExists from 'command-exists';
+// included here in preference to goldstack utils-sh to avoid circular dependency
+import { assert } from 'console';
+import path from 'path';
 
 const isDebug = process.env.GOLDSTACK_DEBUG || process.env.DEBUG;
 
 // included here to avoid circular dependency for log package
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 const debug = (msg: any): void => {
   if (isDebug) {
     console.log(msg);

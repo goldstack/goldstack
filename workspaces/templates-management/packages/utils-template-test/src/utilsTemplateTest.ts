@@ -1,31 +1,30 @@
-import { S3TemplateRepository } from '@goldstack/template-repository';
-import { createS3Client } from 'mock-aws-s3-v3';
-import { rmSafe, mkdir } from '@goldstack/utils-sh';
-import { promisify } from 'util';
 import { build } from '@goldstack/template-build';
+import { S3TemplateRepository } from '@goldstack/template-repository';
+import { mkdir, rmSafe } from '@goldstack/utils-sh';
 import { AssertionError } from 'assert';
 import fs from 'fs';
-import { TemplateTest } from './types/TemplateTest';
-import { AssertPackageFilesTest } from './tests/AssertPackageFilesTest';
-import { RootBuildTest } from './tests/RootBuildTest';
-import { AssertRootFilesTest } from './tests/AssertRootFilesTest';
-import { InfraUpTest } from './tests/InfraUpTest';
-import { InfraPlanTest } from './tests/InfraPlanTest';
-import { InfraDestroyTest } from './tests/InfraDestroyTest';
-import { DeployTest } from './tests/DeployTest';
-import { AssertStaticWebsiteAwsDeploymentsTest } from './tests/AssertStaticWebsiteAwsDeploymentsTest';
-import { AssertRestApiTest } from './tests/AssertRestApiTest';
-import { AssertWebsiteTest } from './tests/AssertWebsiteTest';
+import { createS3Client } from 'mock-aws-s3-v3';
+import { join, resolve } from 'path';
+import { promisify } from 'util';
 import { AssertApplicationTest } from './tests/AssertApplicationTest';
+import { AssertPackageFilesTest } from './tests/AssertPackageFilesTest';
+import { AssertRestApiTest } from './tests/AssertRestApiTest';
+import { AssertRootFilesTest } from './tests/AssertRootFilesTest';
+import { AssertStaticWebsiteAwsDeploymentsTest } from './tests/AssertStaticWebsiteAwsDeploymentsTest';
+import { AssertWebsiteTest } from './tests/AssertWebsiteTest';
+import { DeployTest } from './tests/DeployTest';
 import { DestroyStateTest } from './tests/DestroyStateTest';
-import { PackageBuildTest } from './tests/PackageBuildTest';
+import { EnsureBabelRcDoesNotExist } from './tests/EnsureBabelRcDoesNotExist';
+import { InfraDestroyTest } from './tests/InfraDestroyTest';
+import { InfraPlanTest } from './tests/InfraPlanTest';
+import { InfraUpTest } from './tests/InfraUpTest';
 import { PackageBuildLambdaTest } from './tests/PackageBuildLambdaTest';
+import { PackageBuildTest } from './tests/PackageBuildTest';
 import { PackageTestTest } from './tests/PackageTestTest';
 import { PrintDirectoryContentTest } from './tests/PrintDirectoryContentTest';
-import { EnsureBabelRcDoesNotExist } from './tests/EnsureBabelRcDoesNotExist';
-import { join, resolve } from 'path';
+import { RootBuildTest } from './tests/RootBuildTest';
+import type { TemplateTest } from './types/TemplateTest';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function assert(condition: any, msg?: string): asserts condition {
   if (!condition) {
     throw new AssertionError({ message: msg });
@@ -35,7 +34,7 @@ function assert(condition: any, msg?: string): asserts condition {
 const sleep = promisify(setTimeout);
 
 export const prepareLocalS3Repo = async (
-  goldstackTestsDir: string
+  goldstackTestsDir: string,
 ): Promise<S3TemplateRepository> => {
   await rmSafe(goldstackTestsDir);
 
@@ -84,9 +83,7 @@ export const getTemplateTests = (): TemplateTest[] => {
 export const getTemplateTest = (templateTestName: string): TemplateTest => {
   const tests = getTemplateTests();
 
-  const test = tests.find(
-    (templateTest) => templateTest.getName() === templateTestName
-  );
+  const test = tests.find((templateTest) => templateTest.getName() === templateTestName);
 
   if (!test) {
     throw new Error(`Cannot find test definition for ${templateTestName}`);
@@ -108,14 +105,10 @@ export const buildTemplate = async (params: {
     templateRepository: params.repo,
   });
 
-  const config = await params.repo.getLatestTemplateVersion(
-    params.templateName
-  );
+  const config = await params.repo.getLatestTemplateVersion(params.templateName);
 
   if (!config) {
-    throw new Error(
-      'Cannot read template configuration for ' + params.templateName
-    );
+    throw new Error('Cannot read template configuration for ' + params.templateName);
   }
 
   assert(config.templateName === params.templateName);
@@ -126,7 +119,7 @@ export const buildTemplate = async (params: {
   const path = await params.repo.downloadTemplateArchive(
     config.templateName,
     newVersion.templateVersion,
-    './goldstackLocal/work/templates/'
+    './goldstackLocal/work/templates/',
   );
 
   if (!path) {
@@ -137,7 +130,7 @@ export const buildTemplate = async (params: {
   const archiveSize = fs.statSync(path).size > 1000;
   assert(
     archiveSize,
-    `Resulting archive for template build too small. Archive ${path} has size ${archiveSize}`
+    `Resulting archive for template build too small. Archive ${path} has size ${archiveSize}`,
   );
 
   await rmSafe('./goldstackLocal/work/templates');

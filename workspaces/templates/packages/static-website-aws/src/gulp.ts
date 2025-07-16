@@ -1,17 +1,15 @@
 import {
   getDeploymentConfig,
-  AWSStaticWebsiteDeployment,
+  type AWSStaticWebsiteDeployment,
 } from '@goldstack/template-static-website-aws';
-import gulp, { Gulp } from 'gulp';
+import gulp, { type Gulp } from 'gulp';
 import changed from 'gulp-changed';
 import replace from 'gulp-replace';
 
 export const init = async (args: string[]): Promise<Gulp> => {
   // The config for a selected deployment
   if (args.length < 3) {
-    throw new Error(
-      'Expected a parameter providing the name of the deployment.'
-    );
+    throw new Error('Expected a parameter providing the name of the deployment.');
   }
   const deployment = args[2];
   let deploymentConfig: AWSStaticWebsiteDeployment;

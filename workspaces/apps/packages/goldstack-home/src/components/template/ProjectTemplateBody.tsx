@@ -1,4 +1,4 @@
-import { ProjectTemplateProps } from '@goldstack/template-metadata';
+import type { ProjectTemplateProps } from '@goldstack/template-metadata';
 import React from 'react';
 
 import TopTemplateIcon from './../../icons/front/top-template.svg';
@@ -25,11 +25,9 @@ const ProjectTemplateBody = (props: ProjectTemplateProps): JSX.Element => {
             </h2>
           </div>
           {/* <h4 className="mb-4">Description</h4> */}
-          {(props.longDescription || props.description)
-            .split('\n')
-            .map((para, idx) => (
-              <p key={idx} dangerouslySetInnerHTML={{ __html: para }}></p>
-            ))}
+          {(props.longDescription || props.description).split('\n').map((para, idx) => (
+            <p key={idx} dangerouslySetInnerHTML={{ __html: para }}></p>
+          ))}
           <a
             className="link-collapse font-weight-bold collapsed"
             href={props.actionLink}

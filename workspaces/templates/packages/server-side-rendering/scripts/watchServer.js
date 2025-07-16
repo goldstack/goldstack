@@ -7,7 +7,7 @@ const treeKill = require('tree-kill');
 const { promisify } = require('util');
 
 let childProcess;
-let killPort = undefined;
+let killPort ;
 const treeKillAsync = promisify(treeKill);
 
 // Find an available port

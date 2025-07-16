@@ -5,9 +5,7 @@ import { connect, getFromDomain } from './ses';
 describe('SES template', () => {
   it('Should sent dev email', async () => {
     if (!process.env.AWS_ACCESS_KEY_ID) {
-      console.warn(
-        'Testing of email send skipped since no AWS credentials available'
-      );
+      console.warn('Testing of email send skipped since no AWS credentials available');
       return;
     }
     const ses = await connect('dev');
@@ -26,7 +24,7 @@ describe('SES template', () => {
           },
         },
         Source: '"Goldstack" <no-reply@' + fromDomain + '>',
-      })
+      }),
     );
     expect(res.MessageId).toBeDefined();
   });
@@ -47,7 +45,7 @@ describe('SES template', () => {
           },
         },
         Source: 'sender@' + fromDomain,
-      })
+      }),
     );
 
     const sentEmailRequests = getSentEmailRequests(ses);

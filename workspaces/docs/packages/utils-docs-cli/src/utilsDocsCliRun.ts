@@ -11,24 +11,19 @@ export const run = async (): Promise<void> => {
     const argv = await yargs
       .demandCommand(1)
       .usage('Usage: $0 <command> [options]')
-      .command(
-        'generate-doc <path>',
-        'Converts a documentation page to HTML',
-        (yargs) => {
-          return yargs
-            .option('json', {
-              type: 'boolean',
-              describe: 'If specified, output will be generated as JSON.',
-              demandOption: false,
-            })
-            .positional('path', {
-              describe:
-                'The path in the Goldstack documentation where the page is located',
-              type: 'string',
-              demandOption: true,
-            });
-        }
-      )
+      .command('generate-doc <path>', 'Converts a documentation page to HTML', (yargs) => {
+        return yargs
+          .option('json', {
+            type: 'boolean',
+            describe: 'If specified, output will be generated as JSON.',
+            demandOption: false,
+          })
+          .positional('path', {
+            describe: 'The path in the Goldstack documentation where the page is located',
+            type: 'string',
+            demandOption: true,
+          });
+      })
       .command(
         'generate-template-docs <path> <dest>',
         'Generates all documentation pages for a templates',
@@ -41,12 +36,11 @@ export const run = async (): Promise<void> => {
               demandOption: true,
             })
             .positional('dest', {
-              describe:
-                'The path where generated documentation should be placed into.',
+              describe: 'The path where generated documentation should be placed into.',
               type: 'string',
               demandOption: true,
             });
-        }
+        },
       )
       .command(
         'generate-markdown-doc <path> <dest>',
@@ -60,12 +54,11 @@ export const run = async (): Promise<void> => {
               demandOption: true,
             })
             .positional('dest', {
-              describe:
-                'The path where generated Markdown file should be stored.',
+              describe: 'The path where generated Markdown file should be stored.',
               type: 'string',
               demandOption: true,
             });
-        }
+        },
       )
       .parse();
 
@@ -87,8 +80,7 @@ export const run = async (): Promise<void> => {
       for (const docFile of templateDocFiles) {
         const sourcePath = docsDir + argv.path + docFile;
         const result = await transpile(sourcePath);
-        const targetFileName =
-          argv.dest + path.parse(sourcePath).name + '.html';
+        const targetFileName = argv.dest + path.parse(sourcePath).name + '.html';
         await rmSafe(targetFileName);
         write(result, targetFileName);
       }

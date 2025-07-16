@@ -1,4 +1,4 @@
-import { AWSAccessKeyId, AWSSecretAccessKey } from '@goldstack/infra-aws';
+import type { AWSAccessKeyId, AWSSecretAccessKey } from '@goldstack/infra-aws';
 
 export interface AWSUserFormType {
   awsAccessKeyId?: AWSAccessKeyId;

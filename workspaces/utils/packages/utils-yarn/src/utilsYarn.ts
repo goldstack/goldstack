@@ -29,10 +29,7 @@ export const assertYarn = (): void => {
  * @param projectDir
  * @param globalDir
  */
-export const configureForTemplateBuild = (
-  projectDir: string,
-  globalDir: string
-): void => {
+export const configureForTemplateBuild = (projectDir: string, globalDir: string): void => {
   info('Perform Yarn config overwrite for template building:');
   yarn(projectDir, `config set globalFolder ${globalDir}`);
   yarn(projectDir, 'config set checksumBehavior update');
@@ -50,7 +47,7 @@ const execWithDocker = (dir: string, args: string): void => {
       renderHostEnvironmentVariables() +
       ' ' +
       `${imageNodeYarn()} ` +
-      `yarn ${args}`
+      `yarn ${args}`,
   );
 };
 
@@ -69,11 +66,7 @@ export interface YarnRunOptions {
   preferDocker?: boolean;
 }
 
-export const yarn = (
-  dir: string,
-  args: string,
-  options?: YarnRunOptions
-): void => {
+export const yarn = (dir: string, args: string, options?: YarnRunOptions): void => {
   debug('Performing yarn command: yarn ' + args);
   // always prefer to run with cli
   if (hasYarn() && !options?.preferDocker) {
@@ -82,7 +75,7 @@ export const yarn = (
   }
   if (!hasDocker()) {
     throw new Error(
-      'Either yarn needs to be installed locally or Docker be available. Please install either yarn or Docker.'
+      'Either yarn needs to be installed locally or Docker be available. Please install either yarn or Docker.',
     );
   }
   execWithDocker(dir, args);

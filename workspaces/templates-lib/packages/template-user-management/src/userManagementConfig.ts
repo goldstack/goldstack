@@ -18,16 +18,13 @@ export function getDeploymentName(deploymentName?: string) {
   return deploymentName;
 }
 
-export function getDeploymentsOutput(
-  deploymentsOutput: any,
-  deploymentName: string
-) {
+export function getDeploymentsOutput(deploymentsOutput: any, deploymentName: string) {
   const deploymentOutput = deploymentsOutput.find(
-    (deployment) => (deployment.name = deploymentName)
+    (deployment) => (deployment.name = deploymentName),
   );
   if (!deploymentOutput) {
     throw new Error(
-      `No outputs from Terraform Apply available for deployment '${deploymentName}'. Did you run 'yarn infra up' for this deployment?`
+      `No outputs from Terraform Apply available for deployment '${deploymentName}'. Did you run 'yarn infra up' for this deployment?`,
     );
   }
   return deploymentOutput;

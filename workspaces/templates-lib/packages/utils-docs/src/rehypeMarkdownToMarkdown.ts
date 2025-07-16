@@ -1,22 +1,17 @@
-import fs from 'fs';
-import { dirname } from 'path';
-import visit from 'unist-util-visit';
-
-import path from 'path';
-
 import { read } from '@goldstack/utils-sh';
-
-import unified from 'unified';
-import markdown from 'remark-parse';
-
+import fs from 'fs';
 import matter from 'gray-matter';
+import path, { dirname } from 'path';
+import markdown from 'remark-parse';
+import unified from 'unified';
+import visit from 'unist-util-visit';
 
 function fileToMarkdownTree(filePath: string): any {
   const data = matter(read(filePath)).content;
   const tree = unified()
     .use(markdown as any)
     .parse(data);
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
+
   return rehypeDocs({ filePath })(tree);
 }
 
@@ -29,9 +24,7 @@ export default function rehypeDocs({ filePath }): any {
       const combinedPath = path.normalize(dirname(filePath) + '/' + file);
 
       if (!fs.existsSync(combinedPath)) {
-        throw Error(
-          `Invalid fragment specified; no such file "${combinedPath}"`
-        );
+        throw Error(`Invalid fragment specified; no such file "${combinedPath}"`);
       }
 
       const tree = fileToMarkdownTree(combinedPath);
@@ -70,14 +63,12 @@ export default function rehypeDocs({ filePath }): any {
       node.children[0].value &&
       node.children[0].value.indexOf('%') === 0
     ) {
-      node.value = `[Video: ${node.children[0].value.substring(1)}](${
-        node.url
-      })`;
+      node.value = `[Video: ${node.children[0].value.substring(1)}](${node.url})`;
       node.type = 'text';
     }
   }
 
-  return function transformer(tree: any): void {
+  return function transformer(tree: any): any {
     visit(tree, 'inlineCode', visitInlineCode);
     visit(tree, (node: any) => node.type === 'link', visitLink);
     return tree;

@@ -1,4 +1,4 @@
-import { ProjectTemplateProps } from '../projectTemplateTypes';
+import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { LambdaAPI } from './moduleData';
 import { featureYarn } from './nextjsTemplateData';
 
@@ -22,8 +22,7 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
       {
         title: 'Serverless API',
         id: 'serverless-api',
-        description:
-          'Develop a serverless API using AWS API Gateway and Lambdas',
+        description: 'Develop a serverless API using AWS API Gateway and Lambdas',
         image: 'api-gateway',
         details: {
           title: 'Serverless API using AWS API Gateway and Lambdas',
@@ -32,8 +31,7 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202201/lambda-api-architecture.gif',
+              image: 'https://cdn.goldstack.party/img/202201/lambda-api-architecture.gif',
             },
           },
         },
@@ -50,8 +48,7 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202201/lambda-api-typescript-example.gif',
+              image: 'https://cdn.goldstack.party/img/202201/lambda-api-typescript-example.gif',
             },
           },
         },
@@ -67,8 +64,7 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202201/lambda-api-local-testing.gif',
+              image: 'https://cdn.goldstack.party/img/202201/lambda-api-local-testing.gif',
             },
           },
         },
@@ -89,16 +85,16 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
         },
       },
       {
-        title: 'ESLint + Prettier',
-        id: 'eslint',
+        title: 'Biome (Linting & Formatting)',
+        id: 'biome',
         description:
-          'Auto-format and validate your TypeScript code easily using ESLint and Prettier.',
-        image: 'eslint',
+          'Auto-format and validate your TypeScript code easily using Biome.',
+        image: 'biome',
         details: {
           title: 'Linting and Formatting',
           description:
-            'ESLint and Prettier configured for usage in the CLI and as VSCode plugins.',
-          icons: ['eslint'],
+            'Biome configured for usage in the CLI and as VSCode plugins. Optimised to work with TypeScript.',
+          icons: ['biome'],
           content: {
             type: 'none',
             data: {},
@@ -108,13 +104,11 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
       {
         title: 'VSCode',
         id: 'vscode',
-        description:
-          'Configured to work seamlessly with the powerful VSCode editor.',
+        description: 'Configured to work seamlessly with the powerful VSCode editor.',
         image: 'vscode',
         details: {
           title: 'Develop in VSCode',
-          description:
-            'All configuration for developing TypeScript code with VSCode provided.',
+          description: 'All configuration for developing TypeScript code with VSCode provided.',
           icons: ['vscode'],
           content: {
             type: 'none',
@@ -126,8 +120,7 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
       {
         title: 'AWS',
         id: 'aws',
-        description:
-          'API deployed to reliable and scaleable AWS serverless infrastructure.',
+        description: 'API deployed to reliable and scaleable AWS serverless infrastructure.',
         image: 'aws',
         details: {
           title: 'Ready for Deployment to AWS',
@@ -162,8 +155,7 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
       {
         title: 'App Composition',
         id: 'composition',
-        description:
-          'Easily combine with any Goldstack module to compose end-to-end applications.',
+        description: 'Easily combine with any Goldstack module to compose end-to-end applications.',
         image: 'composition',
         details: {
           title: 'Integrate with Goldstack Templates',
@@ -172,11 +164,7 @@ export const getServerlessApiTemplate = (): ProjectTemplateProps => {
           content: {
             type: 'combine-templates',
             data: {
-              templates: [
-                'template:app-nextjs-bootstrap',
-                'template:s3',
-                'template:email-send',
-              ],
+              templates: ['template:app-nextjs-bootstrap', 'template:s3', 'template:email-send'],
             },
           },
           moreDetails: {

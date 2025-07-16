@@ -1,5 +1,5 @@
-import { ProjectConfiguration } from '@goldstack/utils-project';
-import { DeploySetConfig } from '@goldstack/template-build-set';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
+import type { DeploySetConfig } from '@goldstack/template-build-set';
 
 export const createS3BuildSetConfig = async (): Promise<DeploySetConfig> => {
   const projectConfiguration: ProjectConfiguration = {
@@ -27,8 +27,7 @@ export const createS3BuildSetConfig = async (): Promise<DeploySetConfig> => {
         projectConfiguration,
         rootTests: ['assert-package-files', 'assert-root-files', 'root-build'],
         targetRepo: 'goldstack/s3-terraform-typescript-boilerplate',
-        repoReadme:
-          'workspaces/templates/packages/template-metadata/src/deploySets/s3.README.md',
+        repoReadme: 'workspaces/templates/packages/template-metadata/src/deploySets/s3.README.md',
         packageConfigurations: [
           {
             packageName: 's3-1',

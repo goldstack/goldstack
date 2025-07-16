@@ -1,13 +1,13 @@
 import {
   SQSClient,
   SendMessageCommand,
-  SendMessageRequest,
+  type SendMessageRequest,
   SendMessageBatchCommand,
-  SendMessageBatchRequest,
+  type SendMessageBatchRequest,
 } from '@aws-sdk/client-sqs';
 import { mockClient } from 'aws-sdk-client-mock';
 import { v4 as uuid4 } from 'uuid';
-import { MessageCallback } from './sqsConnect';
+import type { MessageCallback } from './sqsConnect';
 import { warn } from '@goldstack/utils-log';
 export type CreateSQSClientSignature = typeof createSQSClient;
 
@@ -45,7 +45,7 @@ export function createSQSClient({
           await handler(input);
         } else {
           warn(
-            `No message handler registered for queue ${input.QueueUrl}. Message will not be processed. Ensure you connect to the correct SQS queue to create the client.`
+            `No message handler registered for queue ${input.QueueUrl}. Message will not be processed. Ensure you connect to the correct SQS queue to create the client.`,
           );
         }
 

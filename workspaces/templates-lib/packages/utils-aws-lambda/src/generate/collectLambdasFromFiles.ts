@@ -1,4 +1,4 @@
-import fs, { Dirent } from 'fs';
+import fs, { type Dirent } from 'fs';
 import { relative, resolve, sep, posix } from 'path';
 import type { LambdaConfig } from '../types/LambdaConfig';
 import { RouteType } from '../types/LambdaConfig';
@@ -18,9 +18,7 @@ export function readLambdaConfig(dir: string): LambdaConfig[] {
     throw new Error('Invalid directory ' + dir);
   }
 
-  return flattenConfig(result.children).filter(
-    (e) => e.type === RouteType.FUNCTION
-  );
+  return flattenConfig(result.children).filter((e) => e.type === RouteType.FUNCTION);
 }
 
 function flattenConfig(config: LambdaConfigMap): LambdaConfig[] {
@@ -69,10 +67,7 @@ function makeRoute(configRoot: string, dir: string): string {
   return `ANY ${route}`;
 }
 
-function readLambdaConfigImpl(
-  configRoot: string,
-  dir: string
-): LambdaConfigWork {
+function readLambdaConfigImpl(configRoot: string, dir: string): LambdaConfigWork {
   const root = dir;
 
   const rootRoute = makeRoute(configRoot, dir);
@@ -111,7 +106,6 @@ function readLambdaConfigImpl(
         route: route,
       };
     } else {
-      continue;
     }
   }
   dirHandle.closeSync();

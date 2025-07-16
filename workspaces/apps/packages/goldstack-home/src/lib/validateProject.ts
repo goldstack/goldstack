@@ -1,5 +1,5 @@
 import Ajv from 'ajv';
-import { ProjectData } from '@goldstack/project-repository';
+import type { ProjectData } from '@goldstack/project-repository';
 
 export interface StepValidation {
   stepName: string;
@@ -25,9 +25,7 @@ export const validateProject = (projectData: ProjectData): StepValidation[] => {
     ...projectData.packageConfigs.map((packageConfig) => {
       const schema = packageConfig.deploymentConfigSchema;
       const validate = ajv.compile(schema);
-      const valid = validate(
-        packageConfig.package.deployments[0].configuration
-      ) as boolean;
+      const valid = validate(packageConfig.package.deployments[0].configuration) as boolean;
       // if (!valid) console.log(validate.errors);
       return {
         stepName: packageConfig.package.name + ' Module',

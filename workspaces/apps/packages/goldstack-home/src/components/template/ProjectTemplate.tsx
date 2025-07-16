@@ -1,4 +1,4 @@
-import { ProjectTemplateProps } from '@goldstack/template-metadata';
+import type { ProjectTemplateProps } from '@goldstack/template-metadata';
 import React from 'react';
 import ProjectTemplateBody from './ProjectTemplateBody';
 import ProjectTemplateSidebar from './ProjectTemplateSidebar';
@@ -13,10 +13,7 @@ const ProjectTemplate = (props: ProjectTemplateProps): JSX.Element => {
     throw new Error('Meta description must be between 120 and 156 characters.');
   }
 
-  if (
-    props.metaTitle &&
-    (props.metaTitle.length < 40 || props.metaTitle.length > 60)
-  ) {
+  if (props.metaTitle && (props.metaTitle.length < 40 || props.metaTitle.length > 60)) {
     throw new Error('Meta title must be between 40 and 60 characters.');
   }
   return (
@@ -28,14 +25,8 @@ const ProjectTemplate = (props: ProjectTemplateProps): JSX.Element => {
           content={props.metaTitle || `${props.title} Template`}
           key="title"
         />
-        <meta
-          name="description"
-          content={props.metaDescription || props.description}
-        />
-        <meta
-          property="og:description"
-          content={props.metaDescription || props.description}
-        />
+        <meta name="description" content={props.metaDescription || props.description} />
+        <meta property="og:description" content={props.metaDescription || props.description} />
       </Head>
       <div className="container space-top-2 space-bottom-lg-2">
         <div className="row">

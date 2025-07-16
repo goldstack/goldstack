@@ -5,9 +5,7 @@ export interface InstallProjectParams {
   globalDirectory?: string;
 }
 
-export const installProject = async (
-  params: InstallProjectParams
-): Promise<void> => {
+export const installProject = async (params: InstallProjectParams): Promise<void> => {
   if (params.globalDirectory) {
     configureForTemplateBuild(params.projectDirectory, params.globalDirectory);
   }

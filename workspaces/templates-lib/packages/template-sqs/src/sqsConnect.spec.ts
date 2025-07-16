@@ -1,27 +1,21 @@
-import { SendMessageCommand, SendMessageRequest } from '@aws-sdk/client-sqs';
+import { SendMessageCommand, type SendMessageRequest } from '@aws-sdk/client-sqs';
 import {
-  getSentMessageRequests,
   connect,
   getMockedDLQSQS,
-  getSQSQueueUrl,
-  getSQSDLQQueueUrl,
   getMockedSQS,
+  getSentMessageRequests,
+  getSQSDLQQueueUrl,
+  getSQSQueueUrl,
 } from './templateSqs';
 
 describe('SQS connect', () => {
   it('Should connect to mocked SQS', async () => {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const sqs = getMockedSQS({ name: 'template-sqs' }, () => {});
     await sqs.send(
       new SendMessageCommand({
-        QueueUrl: await getSQSQueueUrl(
-          { name: 'template-sqs' },
-          {},
-          {},
-          'local'
-        ),
+        QueueUrl: await getSQSQueueUrl({ name: 'template-sqs' }, {}, {}, 'local'),
         MessageBody: 'This is a test message',
-      })
+      }),
     );
 
     const sentMessageRequests = getSentMessageRequests(sqs);
@@ -32,21 +26,14 @@ describe('SQS connect', () => {
     const sqs = getMockedDLQSQS({ name: 'template-sqs' });
     await sqs.send(
       new SendMessageCommand({
-        QueueUrl: await getSQSDLQQueueUrl(
-          { name: 'template-sqs' },
-          {},
-          {},
-          'local'
-        ),
+        QueueUrl: await getSQSDLQQueueUrl({ name: 'template-sqs' }, {}, {}, 'local'),
         MessageBody: 'This is a second test message',
-      })
+      }),
     );
 
     const sentMessageRequests = getSentMessageRequests(sqs);
     expect(sentMessageRequests).toHaveLength(1);
-    expect(sentMessageRequests[0].MessageBody).toBe(
-      'This is a second test message'
-    );
+    expect(sentMessageRequests[0].MessageBody).toBe('This is a second test message');
   });
   it('Should connect to multiple mocked SQS', async () => {
     const callbackHandledRequests1: SendMessageRequest[] = [];
@@ -60,34 +47,22 @@ describe('SQS connect', () => {
     });
     await sqs1.send(
       new SendMessageCommand({
-        QueueUrl: await getSQSQueueUrl(
-          { name: 'template-sqs-1' },
-          {},
-          {},
-          'local'
-        ),
+        QueueUrl: await getSQSQueueUrl({ name: 'template-sqs-1' }, {}, {}, 'local'),
         MessageBody: 'This is a test message for queue 1',
-      })
+      }),
     );
 
     sqs2.send(
       new SendMessageCommand({
-        QueueUrl: await getSQSQueueUrl(
-          { name: 'template-sqs-2' },
-          {},
-          {},
-          'local'
-        ),
+        QueueUrl: await getSQSQueueUrl({ name: 'template-sqs-2' }, {}, {}, 'local'),
         MessageBody: 'This is a test message for queue 2',
-      })
+      }),
     );
 
     expect(callbackHandledRequests1).toHaveLength(1);
     expect(callbackHandledRequests2).toHaveLength(1);
     const sentMessageRequests = getSentMessageRequests(sqs1);
     expect(sentMessageRequests).toHaveLength(1);
-    expect(sentMessageRequests[0].MessageBody).toBe(
-      'This is a test message for queue 1'
-    );
+    expect(sentMessageRequests[0].MessageBody).toBe('This is a test message for queue 1');
   });
 });

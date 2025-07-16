@@ -6,20 +6,17 @@ import { startTestServer, stopTestServer, getEndpoint } from './../module';
 jest.setTimeout(120000);
 
 describe('Should create page', () => {
-  let port: undefined | number = undefined;
+  let port: undefined | number;
 
   beforeAll(async () => {
     port = await new Promise<number>((resolve, reject) => {
-      getPort(
-        process.env.TEST_SERVER_PORT || '50331',
-        (err: any, p1: number) => {
-          if (err) {
-            reject(err);
-            return;
-          }
-          resolve(p1);
+      getPort(process.env.TEST_SERVER_PORT || '50331', (err: any, p1: number) => {
+        if (err) {
+          reject(err);
+          return;
         }
-      );
+        resolve(p1);
+      });
     });
     await startTestServer(port);
   });

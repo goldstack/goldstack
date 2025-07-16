@@ -34,9 +34,7 @@ async function packageLambda() {
 
   const activeVenv = getActiveVenv();
   if (!activeVenv || path.resolve(activeVenv) !== path.resolve(venvDir)) {
-    warn(
-      'No virtual environment is active. `requirements.txt` will not be updated.'
-    );
+    warn('No virtual environment is active. `requirements.txt` will not be updated.');
   } else {
     info(`Virtual environment ${activeVenv} is active and maps to lambda_env.`);
 
@@ -45,9 +43,7 @@ async function packageLambda() {
     exec(`python -m pip freeze > ${requirementsFile}`);
   }
 
-  exec(
-    'docker build -t python-lambda-build --file=Dockerfile --platform=linux/amd64 .'
-  );
+  exec('docker build -t python-lambda-build --file=Dockerfile --platform=linux/amd64 .');
   exec('docker create --name python-lambda-container python-lambda-build');
 
   if (fs.existsSync('source.zip')) {
@@ -64,14 +60,11 @@ async function packageLambda() {
   // Clean out excluded packages
   const deployConfig = JSON.parse(read(path.join(lambdaDir, 'deploy.json')));
   for (const excludedPackage of deployConfig.excludePackages) {
-    const pattern =
-      distDir.replace(/\\/g, '/') + '/site-packages/' + excludedPackage;
+    const pattern = distDir.replace(/\\/g, '/') + '/site-packages/' + excludedPackage;
     debug(`Searching for excluded package using pattern: ${pattern}`);
     const toDelete = globSync(pattern);
     if (toDelete.length > 0) {
-      debug(
-        `Deleting excluded package ${excludedPackage} in ${toDelete.join(', ')}`
-      );
+      debug(`Deleting excluded package ${excludedPackage} in ${toDelete.join(', ')}`);
       await rmSafe(...toDelete);
     }
   }

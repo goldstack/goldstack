@@ -1,10 +1,8 @@
-import { ShortTemplateFeature } from '@goldstack/template-metadata';
+import type { ShortTemplateFeature } from '@goldstack/template-metadata';
 import React from 'react';
 import TemplateFeature from './TemplateFeature';
 
-const ProjectTemplateFeatureDetail = (props: {
-  feature: ShortTemplateFeature;
-}): JSX.Element => {
+const ProjectTemplateFeatureDetail = (props: { feature: ShortTemplateFeature }): JSX.Element => {
   if (!props.feature.details) {
     return <></>;
   }
@@ -22,10 +20,7 @@ const ProjectTemplateFeaturesDetails = (props: {
     <>
       {props.features.map((feature, idx) => {
         return (
-          <ProjectTemplateFeatureDetail
-            key={idx}
-            feature={feature}
-          ></ProjectTemplateFeatureDetail>
+          <ProjectTemplateFeatureDetail key={idx} feature={feature}></ProjectTemplateFeatureDetail>
         );
       })}
     </>

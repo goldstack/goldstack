@@ -22,10 +22,7 @@ export interface ExecParams {
   silent?: boolean;
 }
 
-export const copy = async (
-  source: string[] | string,
-  dest: string
-): Promise<void> => {
+export const copy = async (source: string[] | string, dest: string): Promise<void> => {
   let sourceArr: string[];
 
   if (Array.isArray(source)) {
@@ -59,7 +56,7 @@ export const copy = async (
                 return;
               }
               success();
-            }
+            },
           );
         });
         debug(`Copied ${file} to ${destCorrected}`);
@@ -76,28 +73,21 @@ export const assertFileExists = (filePath: string): void => {
     throw new Error(`File '${filePath}' expected to exist but it does not`);
   }
   if (!fs.statSync(filePath).isFile()) {
-    throw new Error(
-      `Expected file at path '${filePath}' but found directory instead.`
-    );
+    throw new Error(`Expected file at path '${filePath}' but found directory instead.`);
   }
 };
 
-export const assertDirectoryExists = (
-  directoryPath: string,
-  errorMesssage?: string
-): void => {
+export const assertDirectoryExists = (directoryPath: string, errorMesssage?: string): void => {
   if (!fs.existsSync(directoryPath)) {
     throw new Error(
-      `Directory '${directoryPath}' expected to exist but it does not. ${
-        errorMesssage || ''
-      }`
+      `Directory '${directoryPath}' expected to exist but it does not. ${errorMesssage || ''}`,
     );
   }
   if (!fs.statSync(directoryPath).isDirectory()) {
     throw new Error(
       `Expected directory at path '${directoryPath}' but found file instead. ${
         errorMesssage || ''
-      }`
+      }`,
     );
   }
 };
@@ -111,13 +101,8 @@ interface CopyOptions {
   overwrite: boolean;
 }
 
-const cpSingle = (
-  singleSource: string,
-  dest: string,
-  copySyncOptions: CopyOptions
-): void => {
-  const isDestDirectory =
-    fs.existsSync(dest) && fs.lstatSync(dest).isDirectory();
+const cpSingle = (singleSource: string, dest: string, copySyncOptions: CopyOptions): void => {
+  const isDestDirectory = fs.existsSync(dest) && fs.lstatSync(dest).isDirectory();
   const isSourceDirectory = fs.lstatSync(singleSource).isDirectory();
   if (isDestDirectory) {
     assertDir(dest);
@@ -125,30 +110,18 @@ const cpSingle = (
   // see https://github.com/jprichardson/node-fs-extra/blob/HEAD/docs/copy-sync.md
   // https://github.com/jprichardson/node-fs-extra/issues/323
   if (isDestDirectory && !isSourceDirectory) {
-    fse.copySync(
-      singleSource,
-      `${dest}/${path.basename(singleSource)}`,
-      copySyncOptions
-    );
+    fse.copySync(singleSource, `${dest}/${path.basename(singleSource)}`, copySyncOptions);
     return;
   }
   if (isDestDirectory && isSourceDirectory) {
     // copy directory as sub-directory
-    fse.copySync(
-      singleSource,
-      `${dest}/${path.basename(singleSource)}`,
-      copySyncOptions
-    );
+    fse.copySync(singleSource, `${dest}/${path.basename(singleSource)}`, copySyncOptions);
     return;
   }
   fse.copySync(singleSource, dest, copySyncOptions);
 };
 
-export const cp = (
-  options: string,
-  source: string | string[],
-  dest: string
-): void => {
+export const cp = (options: string, source: string | string[], dest: string): void => {
   if (options !== '-f' && options !== '-rf' && options !== '') {
     throw new Error('Unknown option for cp ' + options);
   }
@@ -184,7 +157,7 @@ export const rmSafe = async (...files: string[]): Promise<void> => {
             return;
           }
           resolve();
-        }
+        },
       );
     });
   }
@@ -215,7 +188,7 @@ export const zip = async (params: {
       zlib: { level: 9 },
     });
 
-    archive.on('warning', function (err) {
+    archive.on('warning', (err) => {
       console.warn(err.message);
     });
 
@@ -238,10 +211,7 @@ export const zip = async (params: {
 /**
  * Unzips a zip file into directly into a directory.
  */
-export const unzip = async (params: {
-  file: string;
-  targetDirectory: string;
-}): Promise<void> => {
+export const unzip = async (params: { file: string; targetDirectory: string }): Promise<void> => {
   await extract(params.file, {
     dir: path.resolve(params.targetDirectory),
   });
@@ -261,7 +231,7 @@ const exec = (cmd: string, params?: ExecParams): string => {
       if (res.toString().trim() !== '') {
         info(
           'Command line operation completed successfully. Results:\n  ' +
-            res.toString().replaceAll(/\n/g, '\n  ')
+            res.toString().replaceAll(/\n/g, '\n  '),
         );
       } else {
         info('Command line operation completed successfully with no output.');
@@ -281,11 +251,7 @@ const exec = (cmd: string, params?: ExecParams): string => {
   }
 };
 
-export const execSafe = (
-  file: string,
-  args: string[],
-  params?: ExecParams
-): string => {
+export const execSafe = (file: string, args: string[], params?: ExecParams): string => {
   try {
     const res = execFileSync(file, args);
     if (!params?.silent) {
@@ -304,10 +270,7 @@ export const execSafe = (
   }
 };
 
-export const execAsync = async (
-  cmd: string,
-  params?: ExecParams
-): Promise<string> => {
+export const execAsync = async (cmd: string, params?: ExecParams): Promise<string> => {
   return new Promise((resolve, reject) => {
     processAsync(cmd, (err, stdout, stderr) => {
       if (!params?.silent) {
@@ -345,7 +308,7 @@ const tryRead = (path: string): string | undefined => {
 
 const readToType = <T>(path: string): T | undefined => {
   const stringObject = tryRead(path);
-  let result: T | undefined = undefined;
+  let result: T | undefined;
   if (stringObject) result = JSON.parse(stringObject) as T;
   return result;
 };

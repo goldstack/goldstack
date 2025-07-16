@@ -1,4 +1,4 @@
-import { ProjectTemplateProps } from '../projectTemplateTypes';
+import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { UserManagement } from './moduleData';
 import { featureYarn } from './nextjsTemplateData';
 
@@ -23,10 +23,8 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
       {
         title: 'Sign Up Users',
         id: 'user-sign-up',
-        description:
-          'Easily sign up new users using the hosted UI provided by Cognito.',
-        image:
-          'https://cdn.goldstack.party/img/202212/front-icon-white-48-identity.svg',
+        description: 'Easily sign up new users using the hosted UI provided by Cognito.',
+        image: 'https://cdn.goldstack.party/img/202212/front-icon-white-48-identity.svg',
         details: {
           title: 'Sign Up Users',
           description:
@@ -34,8 +32,7 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202212/cognito-signup.gif',
+              image: 'https://cdn.goldstack.party/img/202212/cognito-signup.gif',
             },
           },
         },
@@ -44,8 +41,7 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
         title: 'User Sign In',
         id: 'user-sign-in',
         description: 'Allow users to sign in to your application.',
-        image:
-          'https://cdn.goldstack.party/img/202212/front-icon-white-47-shield.svg',
+        image: 'https://cdn.goldstack.party/img/202212/front-icon-white-47-shield.svg',
         details: {
           title: 'User Sign In',
           description:
@@ -53,8 +49,7 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202212/cognito-signin.gif',
+              image: 'https://cdn.goldstack.party/img/202212/cognito-signin.gif',
             },
           },
         },
@@ -62,8 +57,7 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
       {
         title: 'TypeScript API for React',
         id: 'react-api',
-        description:
-          'Call a simple method to initiate user sign up and sign in.',
+        description: 'Call a simple method to initiate user sign up and sign in.',
         image: 'react',
         details: {
           title: 'TypeScript API for React',
@@ -72,8 +66,7 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202212/typescript-api.png',
+              image: 'https://cdn.goldstack.party/img/202212/typescript-api.png',
             },
           },
           moreDetails: {
@@ -93,8 +86,7 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202212/typescript-api-server.png',
+              image: 'https://cdn.goldstack.party/img/202212/typescript-api-server.png',
             },
           },
         },
@@ -155,8 +147,7 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
       {
         title: 'App Composition',
         id: 'composition',
-        description:
-          'Easily combine with any Goldstack module to compose end-to-end applications.',
+        description: 'Easily combine with any Goldstack module to compose end-to-end applications.',
         image: 'composition',
         details: {
           title: 'App Composition',
@@ -165,10 +156,7 @@ export const getUserManagementTemplate = (): ProjectTemplateProps => {
           content: {
             type: 'combine-templates',
             data: {
-              templates: [
-                'template:server-side-rendering',
-                'template:serverless-api',
-              ],
+              templates: ['template:server-side-rendering', 'template:serverless-api'],
             },
           },
           moreDetails: {

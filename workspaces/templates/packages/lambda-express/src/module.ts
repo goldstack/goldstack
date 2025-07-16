@@ -1,6 +1,5 @@
-import goldstackConfig from './../goldstack.json';
-
 import { excludeInBundle } from '@goldstack/utils-esbuild';
+import goldstackConfig from './../goldstack.json';
 
 let testServerPort: null | number = null;
 
@@ -11,7 +10,6 @@ if (process.env.TEST_SERVER_PORT) {
 }
 
 export const startTestServer = async (port: number): Promise<void> => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const server = require(excludeInBundle('./server.ts'));
   testServer = await server.start(port);
   testServerPort = port;
@@ -36,7 +34,7 @@ export const getEndpoint = (deploymentName?: string): string => {
     return `http://localhost:${port}`;
   }
   const deployment = goldstackConfig.deployments.find(
-    (deployment) => (deployment as any).name === deploymentName
+    (deployment) => (deployment as any).name === deploymentName,
   );
   if (!deployment) {
     throw new Error(`Cannot find deployment with name ${deploymentName}`);

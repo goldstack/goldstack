@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { addHook } from 'pirates';
 
-import postcss, { AcceptedPlugin } from 'postcss';
+import postcss, { type AcceptedPlugin } from 'postcss';
 import postcssModulesSync from 'postcss-modules-sync';
 import postcssModules from 'postcss-modules';
 
@@ -31,7 +31,7 @@ function generateScopedName(name: string, filename: string, css: string) {
 export async function compileCss(
   code: string,
   filename: string,
-  config?: CompileCssConfiguration
+  config?: CompileCssConfiguration,
 ): Promise<CompileCssResult> {
   let exportedTokens = {};
   const plugins: AcceptedPlugin[] = [
@@ -52,9 +52,7 @@ export async function compileCss(
     await res;
   }
 
-  const js = `module.exports = JSON.parse('${JSON.stringify(
-    exportedTokens
-  )}');`;
+  const js = `module.exports = JSON.parse('${JSON.stringify(exportedTokens)}');`;
 
   return {
     js,
@@ -65,7 +63,7 @@ export async function compileCss(
 export function compileCssSync(
   code: string,
   filename: string,
-  config?: CompileCssConfiguration
+  config?: CompileCssConfiguration,
 ): CompileCssResult {
   let exportedTokens = {};
   const plugins = [
@@ -90,9 +88,7 @@ export function compileCssSync(
       throw new Error(`Cannot compile CSS ${e.message}`);
     });
 
-  const js = `module.exports = JSON.parse('${JSON.stringify(
-    exportedTokens
-  )}');`;
+  const js = `module.exports = JSON.parse('${JSON.stringify(exportedTokens)}');`;
   return {
     js,
     css: res.css,

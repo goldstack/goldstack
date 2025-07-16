@@ -1,13 +1,13 @@
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 
-import {
+import type {
   APIGatewayProxyEventV2,
   APIGatewayProxyStructuredResultV2,
   Context,
 } from 'aws-lambda';
 
 import cookie from 'cookie';
-import { LambdaConfig } from '@goldstack/utils-aws-lambda';
+import type { LambdaConfig } from '@goldstack/utils-aws-lambda';
 
 export interface CovertToGatewayEventParams {
   req: Request;
@@ -20,54 +20,45 @@ export interface StringMap {
 
 export const sortPropertiesByAppearanceInPath = (
   params: CovertToGatewayEventParams,
-  pathParams: StringMap
+  pathParams: StringMap,
 ): [string, string][] => {
   const pathElements = Object.entries(pathParams)
     .filter((e) => e[0] !== '0')
     .sort((a, b) => {
-      return (
-        params.lambdaConfig.path.indexOf(a[0]) -
-        params.lambdaConfig.path.indexOf(b[0])
-      );
+      return params.lambdaConfig.path.indexOf(a[0]) - params.lambdaConfig.path.indexOf(b[0]);
     });
   return pathElements;
 };
 
 export const convertToGatewayEvent = (
-  params: CovertToGatewayEventParams
+  params: CovertToGatewayEventParams,
 ): APIGatewayProxyEventV2 => {
   const incomingHeaders = params.req.headers;
 
-  const normalisedHeaders = Object.entries(incomingHeaders).reduce(
-    (prev, curr) => {
-      if (typeof curr[1] === 'string') {
-        prev[curr[0]] = curr[1];
-        return prev;
-      } else if (curr[1]) {
-        prev[curr[0]] = curr[1].join(',');
-        return prev;
-      }
+  const normalisedHeaders = Object.entries(incomingHeaders).reduce((prev, curr) => {
+    if (typeof curr[1] === 'string') {
+      prev[curr[0]] = curr[1];
       return prev;
-    },
-    {}
-  );
+    } else if (curr[1]) {
+      prev[curr[0]] = curr[1].join(',');
+      return prev;
+    }
+    return prev;
+  }, {});
 
   const expressQuery = params.req.query;
   const lambdaQuery = Object.entries(expressQuery)
     .map((e) => `${e[0]}=${e[1]}`)
     .join('&');
 
-  const queryStringParameters = Object.entries(expressQuery).reduce(
-    (prev, curr) => {
-      if (typeof curr[1] === 'string') {
-        prev[curr[0]] = curr[1];
-      } else {
-        prev[curr[0]] = (curr[1] as string[]).join(',');
-      }
-      return prev;
-    },
-    {}
-  );
+  const queryStringParameters = Object.entries(expressQuery).reduce((prev, curr) => {
+    if (typeof curr[1] === 'string') {
+      prev[curr[0]] = curr[1];
+    } else {
+      prev[curr[0]] = (curr[1] as string[]).join(',');
+    }
+    return prev;
+  }, {});
 
   const pathParams = { ...params.req.params };
   // some complicated stuff happening
@@ -75,10 +66,7 @@ export const convertToGatewayEvent = (
   // since express does not provide the full path
   // but rather the 'matches' of the regex
   if (pathParams['0']) {
-    const sortedPathParams = sortPropertiesByAppearanceInPath(
-      params,
-      pathParams
-    );
+    const sortedPathParams = sortPropertiesByAppearanceInPath(params, pathParams);
     if (sortedPathParams.length > 0) {
       const lastPathParam = sortedPathParams[sortedPathParams.length - 1];
       const lastPathParamObject = Object.entries(pathParams).find((e) => {
@@ -87,9 +75,7 @@ export const convertToGatewayEvent = (
       if (lastPathParamObject) {
         // here we append the regex match to the path
         // so the path is the full path that was matched
-        pathParams[
-          lastPathParamObject[0]
-        ] = `${lastPathParamObject[1]}${pathParams['0']}`;
+        pathParams[lastPathParamObject[0]] = `${lastPathParamObject[1]}${pathParams['0']}`;
       }
     }
   }
@@ -108,8 +94,7 @@ export const convertToGatewayEvent = (
       'accept-language': 'en-US,en;q=0.9,de;q=0.8',
       'content-length': '0',
       dnt: '1',
-      'sec-ch-ua':
-        '" Not A;Brand";v="99", "Chromium";v="96", "Google Chrome";v="96"',
+      'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="96", "Google Chrome";v="96"',
       'sec-ch-ua-mobile': '?0',
       'sec-ch-ua-platform': '"Windows"',
       'sec-fetch-dest': 'document',
@@ -174,7 +159,7 @@ export const createContext = (params: CreateContextParams): Context => {
 
 export const injectGatewayResultIntoResponse = (
   result: APIGatewayProxyStructuredResultV2 | string | any,
-  resp: Response
+  resp: Response,
 ): void => {
   // result can have three different structures https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html
 
@@ -197,8 +182,7 @@ export const injectGatewayResultIntoResponse = (
     }
 
     const contentType =
-      structuredResult.headers?.['content-type'] ||
-      structuredResult.headers?.['Content-Type'];
+      structuredResult.headers?.['content-type'] || structuredResult.headers?.['Content-Type'];
     if (!contentType) {
       resp.contentType('application/json');
     } else {

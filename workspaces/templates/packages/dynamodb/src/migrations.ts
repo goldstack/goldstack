@@ -1,5 +1,5 @@
-import { InputMigrations } from 'umzug/lib/types';
-import { DynamoDBContext } from '@goldstack/template-dynamodb';
+import type { InputMigrations } from 'umzug/lib/types';
+import type { DynamoDBContext } from '@goldstack/template-dynamodb';
 
 import { DeleteItemCommand, PutItemCommand } from '@aws-sdk/client-dynamodb';
 
@@ -18,7 +18,7 @@ export const createMigrations = (): InputMigrations<DynamoDBContext> => {
               pk: { S: '#DUMMY' },
               sk: { S: 'hello-world-again' },
             },
-          })
+          }),
         );
       },
       async down({ context }) {
@@ -29,7 +29,7 @@ export const createMigrations = (): InputMigrations<DynamoDBContext> => {
               pk: { S: '#DUMMY' },
               sk: { S: 'hello-world' },
             },
-          })
+          }),
         );
       },
     },

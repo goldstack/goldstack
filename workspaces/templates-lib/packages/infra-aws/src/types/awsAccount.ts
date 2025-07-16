@@ -1,4 +1,4 @@
-import { AWSDeploymentRegion } from './awsDeployment';
+import type { AWSDeploymentRegion } from './awsDeployment';
 
 export type AWSUsers = AWSUser[];
 

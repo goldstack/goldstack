@@ -5,11 +5,7 @@ import { getMockedUserAccessToken } from '../userManagementClientMock';
 import type { ClientAuthResult } from './getLoggedInUser';
 import { getAndPersistToken } from './getAndPersistToken';
 
-import {
-  forceLogout,
-  refreshTokenStorage,
-  setRefreshTokenStorage,
-} from './state';
+import { forceLogout, refreshTokenStorage, setRefreshTokenStorage } from './state';
 
 /**
  * Performs a redirect operation for authentication

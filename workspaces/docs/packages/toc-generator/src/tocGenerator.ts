@@ -1,4 +1,4 @@
-import { CheerioAPI, Cheerio, Document, Element } from 'cheerio';
+import type { CheerioAPI, Cheerio, Document, Element } from 'cheerio';
 
 export interface Heading {
   title: string;
@@ -6,11 +6,7 @@ export interface Heading {
   subheadings: Heading[];
 }
 
-const generateLevel = (
-  root: Cheerio<Document>,
-  level: number,
-  $: CheerioAPI
-): Heading[] => {
+const generateLevel = (root: Cheerio<Document>, level: number, $: CheerioAPI): Heading[] => {
   const headings = root
     .find(`h${level}`)
     .add(root.filter(`h${level}`))
@@ -47,7 +43,7 @@ const generateLevel = (
 const getHighestLevelHeading = (
   $: CheerioAPI,
   max: number,
-  current: number
+  current: number,
 ): number | undefined => {
   if (current > max) {
     return undefined;

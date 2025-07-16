@@ -7,7 +7,7 @@ import {
 } from '@goldstack/utils-config';
 import { readPackageConfig } from '@goldstack/utils-package';
 import { read, write } from '@goldstack/utils-sh';
-import {
+import type {
   AWSConfiguration,
   AWSUser,
   AWSProfileConfig,
@@ -19,14 +19,11 @@ import {
 import configSchema from './schemas/accountConfigSchema.json';
 import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
 import awsStateConfigSchema from './schemas/awsTerraformStateSchema.json';
-import { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 
-import { AWSTerraformState, RemoteState } from './types/awsTerraformState';
+import type { AWSTerraformState, RemoteState } from './types/awsTerraformState';
 
-import {
-  AWSRegion,
-  AWSEnvironmentVariableUserConfig,
-} from './types/awsAccount';
+import type { AWSRegion, AWSEnvironmentVariableUserConfig } from './types/awsAccount';
 
 export type {
   AWSConfiguration,
@@ -41,7 +38,7 @@ export type {
   RemoteState,
 };
 
-import { AWSDeployment } from './types/awsDeployment';
+import type { AWSDeployment } from './types/awsDeployment';
 import {
   getAWSUserFromContainerEnvironment,
   getAWSUserFromDefaultLocalProfile,
@@ -62,13 +59,11 @@ process.env.AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = '1';
 
 export const readDeploymentFromPackageConfig = (
   deploymentName: string,
-  path?: string
+  path?: string,
 ): AWSDeployment => {
   const packageConfig = readPackageConfig(path);
 
-  const deployment = packageConfig.deployments.find(
-    (d) => d.name === deploymentName
-  );
+  const deployment = packageConfig.deployments.find((d) => d.name === deploymentName);
   if (!deployment) {
     throw new Error('Cannot find deployment with name: ' + deploymentName);
   }
@@ -79,10 +74,7 @@ export const readDeploymentFromPackageConfig = (
   return deployment as AWSDeployment;
 };
 
-export const assertTerraformConfig = (
-  user: Name,
-  path?: string
-): AWSTerraformState => {
+export const assertTerraformConfig = (user: Name, path?: string): AWSTerraformState => {
   if (!path) {
     path = getAwsTerraformConfigPath('./../../');
   }
@@ -98,7 +90,7 @@ export const assertTerraformConfig = (
     };
   }
 
-  if (!res.remoteState.find((el) => el.user == user)) {
+  if (!res.remoteState.find((el) => el.user === user)) {
     res.remoteState.push({
       user: user,
     });
@@ -107,10 +99,7 @@ export const assertTerraformConfig = (
   return res;
 };
 
-export const writeTerraformConfig = (
-  config: AWSTerraformState,
-  path?: string
-): void => {
+export const writeTerraformConfig = (config: AWSTerraformState, path?: string): void => {
   if (!path) {
     path = getAwsTerraformConfigPath('./../../');
   }
@@ -167,7 +156,7 @@ export const resetAWSUser = (): void => {
  */
 export const getAWSUser = async (
   userName: string,
-  configPath?: string
+  configPath?: string,
 ): Promise<AwsCredentialIdentityProvider> => {
   // Load from ECS environment if running in ECS
   if (process.env.AWS_CONTAINER_CREDENTIALS_RELATIVE_URI) {

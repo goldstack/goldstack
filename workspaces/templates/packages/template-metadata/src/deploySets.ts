@@ -1,7 +1,7 @@
 import { createBackendNodejsExpressBuildSetConfig } from './deploySets/backendNodejsExpress';
 import { createBackendGoGinBuildSetConfig } from './deploySets/backendGoGin';
 import { createStaticWebsiteBuildSetConfig } from './deploySets/staticWebsite';
-import { DeploySetConfig } from '@goldstack/template-build-set';
+import type { DeploySetConfig } from '@goldstack/template-build-set';
 import { createNoInfraBuildSetConfig } from './deploySets/noInfra';
 import { createBackendLambdaApiBuildSetConfig } from './deploySets/backendLambdaApi';
 import { createNextjsBootstrapBuildSetConfig } from './deploySets/nextjsBootstrap';
@@ -37,9 +37,7 @@ export const getAllBuildSets = async (): Promise<DeploySetConfig[]> => {
   ];
 };
 
-export const getBuildSet = async (
-  buildSetName: string
-): Promise<DeploySetConfig> => {
+export const getBuildSet = async (buildSetName: string): Promise<DeploySetConfig> => {
   const sets = await getAllBuildSets();
   const set = sets.find((buildSet) => {
     return buildSet.buildSetName === buildSetName;

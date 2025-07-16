@@ -1,14 +1,14 @@
-import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
+import type { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import {
   CreateTableCommand,
   DeleteTableCommand,
   DescribeTableCommand,
-  DynamoDBClient,
+  type DynamoDBClient,
   ResourceInUseException,
   ResourceNotFoundException,
 } from '@aws-sdk/client-dynamodb';
 import { getTableName } from './dynamoDBPackageUtils';
-import { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
+import type { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
 import { debug, info, warn } from '@goldstack/utils-log';
 
 function sleep(ms: number): Promise<void> {
@@ -20,40 +20,38 @@ function sleep(ms: number): Promise<void> {
 export async function assertTableActive(
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
-  client: DynamoDBClient
+  client: DynamoDBClient,
 ): Promise<void> {
   const tableName = await getTableName(packageConfig, deploymentName);
   let retries = 0;
-  let tableStatus: string | undefined = undefined;
+  let tableStatus: string | undefined;
   // ensure that able is ACTIVE before proceeding
   while (tableStatus !== 'ACTIVE' && retries < 120) {
     try {
       const tableInfo = await client.send(
         new DescribeTableCommand({
           TableName: tableName,
-        })
+        }),
       );
       tableStatus = tableInfo.Table?.TableStatus;
     } catch (e) {
       warn(`Error retrieving table information: ${e.code}.\n${e}`);
     }
     debug(
-      `DynamoDB table '${tableName}' current table status: ${tableStatus}. Retries: ${retries}`
+      `DynamoDB table '${tableName}' current table status: ${tableStatus}. Retries: ${retries}`,
     );
     await sleep(1000);
     retries++;
   }
   if (retries === 120) {
-    throw new Error(
-      `DynamoDB table '${tableName}' creation timed out. Status: ${tableStatus}`
-    );
+    throw new Error(`DynamoDB table '${tableName}' creation timed out. Status: ${tableStatus}`);
   }
 }
 
 export const assertTable = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
-  client: DynamoDBClient
+  client: DynamoDBClient,
 ): Promise<void> => {
   const tableName = await getTableName(packageConfig, deploymentName);
   const res = client.send(
@@ -80,7 +78,7 @@ export const assertTable = async (
         },
       ],
       BillingMode: 'PAY_PER_REQUEST',
-    })
+    }),
   );
 
   await new Promise<void>((resolve, reject) => {
@@ -103,13 +101,13 @@ export const assertTable = async (
 export const deleteTable = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
-  client: DynamoDBClient
+  client: DynamoDBClient,
 ): Promise<void> => {
   const tableName = await getTableName(packageConfig, deploymentName);
   const res = client.send(
     new DeleteTableCommand({
       TableName: tableName,
-    })
+    }),
   );
   info(`Deleted DynamoDB table: '${tableName}'`);
   await new Promise<void>((resolve, reject) => {

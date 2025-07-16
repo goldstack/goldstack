@@ -1,23 +1,17 @@
-import { ProjectTemplateProps } from '../projectTemplateTypes';
+import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { EmailSend } from './moduleData';
-import { ShortTemplateFeature } from '../projectTemplateData';
-import {
-  featureAppComposition,
-  featureVSCode,
-  featureYarn3,
-} from './sharedFeatures';
+import type { ShortTemplateFeature } from '../projectTemplateData';
+import { featureAppComposition, featureVSCode, featureYarn3 } from './sharedFeatures';
 
 export const getEmailSendFeature = (): ShortTemplateFeature => {
   return {
     title: 'Sending Emails with AWS SES',
     id: 'ses',
-    description:
-      'Send emails through AWS highly reliable, low cost infrastructure.',
+    description: 'Send emails through AWS highly reliable, low cost infrastructure.',
     image: 'ses',
     details: {
       title: 'Start Sending Emails from you Application in Minutes',
-      description:
-        'Quickly get started with sending emails with SES from your application.',
+      description: 'Quickly get started with sending emails with SES from your application.',
       content: {
         type: 'image',
         data: {
@@ -35,8 +29,7 @@ export const getEmailSendTemplateData = (): ProjectTemplateProps => {
     metaTitle: 'AWS SES Email Send Template and Boilerplate for Terraform',
     metaDescription:
       'Open source template for sending outbound email using AWS SES from TypeScript applications. All infrastructure defined using Terraform. Download for free.',
-    boilerplateLink:
-      'https://github.com/goldstack/ses-terraform-typescript-boilerplate',
+    boilerplateLink: 'https://github.com/goldstack/ses-terraform-typescript-boilerplate',
     images: ['ses', 'terraform', 'typescript'],
     packages: [EmailSend],
     isComposite: false,
@@ -60,8 +53,7 @@ export const getEmailSendTemplateData = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202204/ses_typescript.png',
+              image: 'https://cdn.goldstack.party/img/202204/ses_typescript.png',
             },
           },
         },
@@ -122,10 +114,7 @@ export const getEmailSendTemplateData = (): ProjectTemplateProps => {
       },
       featureYarn3(),
       featureVSCode(),
-      featureAppComposition([
-        'template:serverless-api',
-        'template:express-lambda',
-      ]),
+      featureAppComposition(['template:serverless-api', 'template:express-lambda']),
     ],
   };
 };

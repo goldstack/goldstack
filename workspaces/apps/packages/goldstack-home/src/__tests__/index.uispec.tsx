@@ -1,11 +1,11 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime';
-import { NextRouter } from 'next/router';
+import React from 'react';
 import '@testing-library/jest-dom';
-import Front from '../pages/index';
+import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime';
+import type { NextRouter } from 'next/router';
 
 import { ThemeProvider } from 'styled-components';
+import Front from '../pages/index';
 
 const theme = {
   colors: {
@@ -46,7 +46,7 @@ test('Check App component render', () => {
       <RouterContext.Provider value={{ ...mockRouter }}>
         <Front />
       </RouterContext.Provider>
-    </ThemeProviderPatched>
+    </ThemeProviderPatched>,
   );
 
   // expect(

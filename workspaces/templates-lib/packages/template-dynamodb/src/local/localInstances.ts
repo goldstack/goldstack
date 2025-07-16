@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { debug, error } from '@goldstack/utils-log';
-import { DynamoDBInstance } from './localDynamoDB';
+import type { DynamoDBInstance } from './localDynamoDB';
 import fs from 'fs';
 import { check } from 'tcp-port-used';
 
@@ -50,8 +50,7 @@ export interface LocalInstancesManager {
 class LocalInstancesManagerImpl implements LocalInstancesManager {
   private readonly stateFile = '.localInstances.json';
   // Track instances by port instead of table name
-  private startedInstances: Map<number, DynamoDBInstance | 'stopped'> =
-    new Map();
+  private startedInstances: Map<number, DynamoDBInstance | 'stopped'> = new Map();
   // Track number of active users per port
   private portUsageCounter: Map<number, number> = new Map();
 
@@ -160,16 +159,13 @@ class LocalInstancesManagerImpl implements LocalInstancesManager {
     debug(
       `DynamoDB local instance ${
         instance === 'stopped' ? 'stopped' : 'started'
-      } on port ${port}. Currently defined instances: ${
-        this.startedInstances.size
-      }`,
+      } on port ${port}. Currently defined instances: ${this.startedInstances.size}`,
       {
         definedInstances: this.startedInstances.size,
-        stoppedInstances: [...this.startedInstances.entries()].filter(
-          (e) => e[1] === 'stopped'
-        ).length,
+        stoppedInstances: [...this.startedInstances.entries()].filter((e) => e[1] === 'stopped')
+          .length,
         allInstances: [...this.startedInstances.entries()],
-      }
+      },
     );
     this.saveState();
   }
@@ -231,57 +227,34 @@ LocalInstancesManagerImpl.create().then((instance) => {
 export const localInstancesManager = {} as LocalInstancesManager;
 Object.defineProperties(localInstancesManager, {
   getInstance: {
-    get: () =>
-      localInstancesManagerInstance?.getInstance.bind(
-        localInstancesManagerInstance
-      ),
+    get: () => localInstancesManagerInstance?.getInstance.bind(localInstancesManagerInstance),
   },
   getFirstRunningInstance: {
     get: () =>
-      localInstancesManagerInstance?.getFirstRunningInstance.bind(
-        localInstancesManagerInstance
-      ),
+      localInstancesManagerInstance?.getFirstRunningInstance.bind(localInstancesManagerInstance),
   },
   setInstance: {
-    get: () =>
-      localInstancesManagerInstance?.setInstance.bind(
-        localInstancesManagerInstance
-      ),
+    get: () => localInstancesManagerInstance?.setInstance.bind(localInstancesManagerInstance),
   },
   getAllInstances: {
-    get: () =>
-      localInstancesManagerInstance?.getAllInstances.bind(
-        localInstancesManagerInstance
-      ),
+    get: () => localInstancesManagerInstance?.getAllInstances.bind(localInstancesManagerInstance),
   },
   getInstanceCount: {
-    get: () =>
-      localInstancesManagerInstance?.getInstanceCount.bind(
-        localInstancesManagerInstance
-      ),
+    get: () => localInstancesManagerInstance?.getInstanceCount.bind(localInstancesManagerInstance),
   },
   incrementUsageCounter: {
     get: () =>
-      localInstancesManagerInstance?.incrementUsageCounter.bind(
-        localInstancesManagerInstance
-      ),
+      localInstancesManagerInstance?.incrementUsageCounter.bind(localInstancesManagerInstance),
   },
   decrementUsageCounter: {
     get: () =>
-      localInstancesManagerInstance?.decrementUsageCounter.bind(
-        localInstancesManagerInstance
-      ),
+      localInstancesManagerInstance?.decrementUsageCounter.bind(localInstancesManagerInstance),
   },
   getUsageCount: {
-    get: () =>
-      localInstancesManagerInstance?.getUsageCount.bind(
-        localInstancesManagerInstance
-      ),
+    get: () => localInstancesManagerInstance?.getUsageCount.bind(localInstancesManagerInstance),
   },
   removeUsageCounter: {
     get: () =>
-      localInstancesManagerInstance?.removeUsageCounter.bind(
-        localInstancesManagerInstance
-      ),
+      localInstancesManagerInstance?.removeUsageCounter.bind(localInstancesManagerInstance),
   },
 });

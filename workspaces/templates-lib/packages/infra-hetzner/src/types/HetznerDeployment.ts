@@ -1,4 +1,4 @@
-import { Deployment } from '@goldstack/infra';
+import type { Deployment } from '@goldstack/infra';
 
 /**
  * Name of the Hetzner user that is used to perform the deployment.

@@ -1,4 +1,4 @@
-import { Deployment } from '@goldstack/infra';
+import type { Deployment } from '@goldstack/infra';
 
 /**
  * AWS region that infrastructure should be deployed to.

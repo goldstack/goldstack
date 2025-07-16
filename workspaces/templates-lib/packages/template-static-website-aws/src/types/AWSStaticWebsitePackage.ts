@@ -1,8 +1,8 @@
-import { Package, Configuration } from '@goldstack/utils-package';
+import type { Package, Configuration } from '@goldstack/utils-package';
 
-import { AWSDeployment } from '@goldstack/infra-aws';
-import { TerraformDeployment } from '@goldstack/utils-terraform';
-import { Deployment, DeploymentConfiguration } from '@goldstack/infra';
+import type { AWSDeployment } from '@goldstack/infra-aws';
+import type { TerraformDeployment } from '@goldstack/utils-terraform';
+import type { Deployment, DeploymentConfiguration } from '@goldstack/infra';
 
 /**
  * The domain name of the Route 53 hosted zone that this website should be added to.
@@ -49,10 +49,7 @@ export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
  *
  * @title Deployment
  */
-export interface ThisDeployment
-  extends Deployment,
-    AWSDeployment,
-    TerraformDeployment {
+export interface ThisDeployment extends Deployment, AWSDeployment, TerraformDeployment {
   configuration: ThisDeploymentConfiguration;
 }
 

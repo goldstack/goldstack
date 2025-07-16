@@ -1,9 +1,9 @@
 import React from 'react';
 
-import ProjectData from '@goldstack/project-repository/src/types/ProjectData';
+import type ProjectData from '@goldstack/project-repository/src/types/ProjectData';
 import Head from 'next/head';
 import { ConfigForm } from 'src/components/ConfigForm';
-import { ConfigureStep } from 'src/lib/getConfigureSteps';
+import type { ConfigureStep } from 'src/lib/getConfigureSteps';
 
 import Link from 'next/link';
 import ProjectConfigSummary from './ProjectConfigSummary';

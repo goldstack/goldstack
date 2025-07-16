@@ -1,16 +1,16 @@
 import {
-  AttributeValue,
+  type AttributeValue,
   DeleteItemCommand,
-  DynamoDBClient,
+  type DynamoDBClient,
   PutItemCommand,
   QueryCommand,
-  QueryCommandOutput,
+  type QueryCommandOutput,
 } from '@aws-sdk/client-dynamodb';
 import { marshall, unmarshall } from '@aws-sdk/util-dynamodb';
 import { debug } from '@goldstack/utils-log';
-import { UmzugStorage } from 'umzug';
-import { MigrationParams } from 'umzug/lib/types';
-import { DynamoDBContext } from './dynamoDBMigrations';
+import type { UmzugStorage } from 'umzug';
+import type { MigrationParams } from 'umzug/lib/types';
+import type { DynamoDBContext } from './dynamoDBMigrations';
 
 export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
   dynamoClient: DynamoDBClient;
@@ -48,19 +48,15 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
             [this.partitionKey]: { S: this.migrationsKey },
             [this.sortKey]: { S: params.name },
           },
-        })
+        }),
       );
     } catch (e) {
       const errorMessage = e instanceof Error ? e.message : String(e);
-      throw new Error(
-        `Failed to log migration ${params.name}. DynamoDB error: ${errorMessage}`
-      );
+      throw new Error(`Failed to log migration ${params.name}. DynamoDB error: ${errorMessage}`);
     }
   }
 
-  async unlogMigration(
-    params: MigrationParams<DynamoDBContext>
-  ): Promise<void> {
+  async unlogMigration(params: MigrationParams<DynamoDBContext>): Promise<void> {
     try {
       await params.context.client.send(
         new DeleteItemCommand({
@@ -69,20 +65,17 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
             [this.partitionKey]: { S: this.migrationsKey },
             [this.sortKey]: { S: params.name },
           },
-        })
+        }),
       );
     } catch (e) {
       const errorMessage = e instanceof Error ? e.message : String(e);
-      throw new Error(
-        `Failed to unlog migration ${params.name}. DynamoDB error: ${errorMessage}`
-      );
+      throw new Error(`Failed to unlog migration ${params.name}. DynamoDB error: ${errorMessage}`);
     }
   }
 
   async executed(): Promise<string[]> {
     const migrations: { [key: string]: any }[] = [];
-    let lastEvaluatedKey: Record<string, AttributeValue> | undefined =
-      undefined;
+    let lastEvaluatedKey: Record<string, AttributeValue> | undefined;
 
     do {
       try {
@@ -97,7 +90,7 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
               ':pk': this.migrationsKey,
             }),
             ExclusiveStartKey: lastEvaluatedKey,
-          })
+          }),
         );
 
         lastEvaluatedKey = res.LastEvaluatedKey;
@@ -105,9 +98,7 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
         migrations.push(...items);
       } catch (e) {
         const errorMessage = e instanceof Error ? e.message : String(e);
-        throw new Error(
-          `Failed to fetch executed migrations. DynamoDB error: ${errorMessage}`
-        );
+        throw new Error(`Failed to fetch executed migrations. DynamoDB error: ${errorMessage}`);
       }
     } while (lastEvaluatedKey);
 

@@ -11,9 +11,7 @@ describe('nodemonx', () => {
 
     const packageJsonParent = getNearestPackageJson(path.resolve('./../'));
     expect(
-      packageJsonParent.indexOf(
-        path.basename(path.dirname(path.resolve('.')))
-      ) === -1
+      packageJsonParent.indexOf(path.basename(path.dirname(path.resolve('.')))) === -1,
     ).toBeTruthy();
   });
 });

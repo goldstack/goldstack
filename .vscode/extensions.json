@@ -1,7 +1,6 @@
 {
   "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
+    "biomejs.biome",
     "arcanis.vscode-zipfs",
     "q.typescript-mono-repo-import-helper"
   ]

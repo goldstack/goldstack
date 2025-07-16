@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ConfigureStep } from 'src/lib/getConfigureSteps';
+import type { ConfigureStep } from 'src/lib/getConfigureSteps';
 
 const SelectedItem = (props: { title: string }): JSX.Element => {
   return (
@@ -13,11 +13,7 @@ const SelectedItem = (props: { title: string }): JSX.Element => {
   );
 };
 
-const LinkItem = (props: {
-  title: string;
-  id: string;
-  idx: number;
-}): JSX.Element => {
+const LinkItem = (props: { title: string; id: string; idx: number }): JSX.Element => {
   const router = useRouter();
   const { id, packageId } = router.query;
   return (
@@ -25,9 +21,7 @@ const LinkItem = (props: {
       <span className="d-block font-size-1 mr-3">
         <Link
           href="/projects/[id]/packages/[packageId]/configure/[step]"
-          as={`/projects/${id}/packages/${packageId}/configure/${
-            props.idx + 1
-          }`}
+          as={`/projects/${id}/packages/${packageId}/configure/${props.idx + 1}`}
           prefetch={false}
           shallow={true}
         >
@@ -47,9 +41,7 @@ const Item = (props: {
   if (props.idx === props.currentItem - 1) {
     return <SelectedItem title={props.title}></SelectedItem>;
   }
-  return (
-    <LinkItem title={props.title} id={props.id} idx={props.idx}></LinkItem>
-  );
+  return <LinkItem title={props.title} id={props.id} idx={props.idx}></LinkItem>;
 };
 
 const ConfigureNavigate = (props: {

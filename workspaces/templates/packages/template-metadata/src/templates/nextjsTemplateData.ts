@@ -1,20 +1,17 @@
-import {
-  ProjectTemplateProps,
-  ShortTemplateFeature,
-} from '../projectTemplateTypes';
+import type { ProjectTemplateProps, ShortTemplateFeature } from '../projectTemplateTypes';
 import { NextJs } from './moduleData';
 
 export const featureESLint: ShortTemplateFeature = {
-  title: 'ESLint + Prettier',
-  id: 'eslint',
+  title: 'Biome (Linting & Formatting)',
+  id: 'biome',
   description:
-    'Auto-format and validate your TypeScript and React code easily using ESLint and Prettier.',
-  image: 'eslint',
+    'Auto-format and validate your TypeScript and React code easily using Biome.',
+  image: 'biome',
   details: {
     title: 'Linting and Formatting',
     description:
-      'ESLint and Prettier configured for usage in the CLI and as VSCode plugins. Optimized to work with Next.js, TypeScript and JSX.',
-    icons: ['eslint'],
+      'Biome configured for usage in the CLI and as VSCode plugins. Optimised to work with Next.js, TypeScript and JSX.',
+    icons: ['biome'],
     content: {
       type: 'none',
       data: {},
@@ -25,8 +22,7 @@ export const featureESLint: ShortTemplateFeature = {
 export const featureJest: ShortTemplateFeature = {
   title: 'Jest',
   id: 'jest',
-  description:
-    'Run tests for components and the Next.js application using Jest.',
+  description: 'Run tests for components and the Next.js application using Jest.',
   image: 'jest',
   details: {
     title: 'Unit and Integration Testing',
@@ -43,13 +39,11 @@ export const featureJest: ShortTemplateFeature = {
 export const featureVSCode: ShortTemplateFeature = {
   title: 'VSCode',
   id: 'vscode',
-  description:
-    'Template configured to work seamlessly with the powerful VSCode editor.',
+  description: 'Template configured to work seamlessly with the powerful VSCode editor.',
   image: 'vscode',
   details: {
     title: 'Develop in VSCode',
-    description:
-      'All configuration for developing TypeScript and TSX code for VSCode provided.',
+    description: 'All configuration for developing TypeScript and TSX code for VSCode provided.',
     icons: ['vscode'],
     content: {
       type: 'none',
@@ -61,8 +55,7 @@ export const featureVSCode: ShortTemplateFeature = {
 export const featureYarn: ShortTemplateFeature = {
   title: 'Yarn 3',
   id: 'yarn',
-  description:
-    'Fast build times and advanced modularity using Yarn 3 workspaces.',
+  description: 'Fast build times and advanced modularity using Yarn 3 workspaces.',
   image: 'yarn',
   details: {
     title: 'Build Modular Applications with Yarn Workspaces',
@@ -79,8 +72,7 @@ export const featureYarn: ShortTemplateFeature = {
 export const featureAws: ShortTemplateFeature = {
   title: 'AWS',
   id: 'aws',
-  description:
-    'Next.js app deployed to reliable and scaleable AWS serverless infrastructure.',
+  description: 'Next.js app deployed to reliable and scaleable AWS serverless infrastructure.',
   image: 'aws',
   details: {
     title: 'Ready for Deployment to AWS',
@@ -117,8 +109,7 @@ export const featureTerraform: ShortTemplateFeature = {
 export const featureNextJsComposition: ShortTemplateFeature = {
   title: 'App Composition',
   id: 'composition',
-  description:
-    'Easily combine with any Goldstack module to compose end-to-end applications.',
+  description: 'Easily combine with any Goldstack module to compose end-to-end applications.',
   image: 'composition',
   details: {
     title: 'Integrate with Goldstack Templates',
@@ -127,11 +118,7 @@ export const featureNextJsComposition: ShortTemplateFeature = {
     content: {
       type: 'combine-templates',
       data: {
-        templates: [
-          'template:lambda-express',
-          'template:s3',
-          'template:email-send',
-        ],
+        templates: ['template:lambda-express', 'template:s3', 'template:email-send'],
       },
     },
     moreDetails: {
@@ -151,8 +138,7 @@ export const getNextJsTemplateData = (): ProjectTemplateProps => {
     metaTitle: 'Free Next.js Template and Boilerplate by Goldstack',
     metaDescription:
       'Open-source template configured for TypeScript, Jest, VSCode, Terraform and deployment to AWS. Configure on Goldstack and download for free.',
-    description:
-      'Open-source Next.js project configured for TypeScript and AWS.',
+    description: 'Open-source Next.js project configured for TypeScript and AWS.',
     actionLink: '/build?stack=nextjs',
     longDescription:
       'This free Goldstack <strong>Next.js starter template</strong> helps you kick start your Next.js development project. ' +

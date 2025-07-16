@@ -2,18 +2,9 @@
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { getEndpoint } from './getEndpoints';
-import {
-  UserManagementDeployment,
-  UserManagementPackage,
-} from '../templateUserManagement';
-import {
-  getMockedUserAccessToken,
-  getMockedUserIdToken,
-} from '../userManagementClientMock';
-import {
-  getDeploymentName,
-  getDeploymentsOutput,
-} from '../userManagementConfig';
+import type { UserManagementDeployment, UserManagementPackage } from '../templateUserManagement';
+import { getMockedUserAccessToken, getMockedUserIdToken } from '../userManagementClientMock';
+import { getDeploymentName, getDeploymentsOutput } from '../userManagementConfig';
 import { executeTokenRequest } from './executeTokenRequest';
 
 export interface GetTokenResults {
@@ -35,7 +26,7 @@ export async function getToken(args: {
   if (deploymentName === 'local') {
     if (args.code !== 'dummy-local-client-code') {
       throw new Error(
-        `Unexpected code for local client auth: '${args.code}'. Expected: dummy-local-client-code`
+        `Unexpected code for local client auth: '${args.code}'. Expected: dummy-local-client-code`,
       );
     }
     const mockedUserAccessToken = getMockedUserAccessToken();
@@ -50,18 +41,12 @@ export async function getToken(args: {
     };
   }
 
-  const packageConfig = new EmbeddedPackageConfig<
-    UserManagementPackage,
-    UserManagementDeployment
-  >({
+  const packageConfig = new EmbeddedPackageConfig<UserManagementPackage, UserManagementDeployment>({
     goldstackJson: args.goldstackConfig,
     packageSchema: args.packageSchema,
   });
 
-  const deploymentOutput = getDeploymentsOutput(
-    args.deploymentsOutput,
-    deploymentName
-  );
+  const deploymentOutput = getDeploymentsOutput(args.deploymentsOutput, deploymentName);
 
   const deployment = packageConfig.getDeployment(deploymentName);
 

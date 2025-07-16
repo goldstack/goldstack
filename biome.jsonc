@@ -1,0 +1,72 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.1.1/schema.json",
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "attributePosition": "auto",
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100,
+    "lineEnding": "lf"
+  },
+
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single"
+    }
+  },
+
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "noExplicitAny": "warn",
+        "noImplicitAnyLet": "warn",
+        "noAssignInExpressions": "warn",
+        "noAsyncPromiseExecutor": "warn",
+        "noArrayIndexKey": "warn"
+      },
+      "correctness": {
+        "noUnusedFunctionParameters": "warn",
+        "noUnusedVariables": "warn",
+        "useHookAtTopLevel": "warn",
+        "useExhaustiveDependencies": "warn"
+      },
+      "security": {
+        "noGlobalEval": "warn",
+        "noDangerouslySetInnerHtml": "warn"
+      },
+      "style": {
+        "useImportType": "off"
+      },
+      "a11y": "warn"
+    }
+  },
+  "files": {
+    "includes": [
+      "**/*.ts",
+      "**/*.json",
+      "**/*.jsonc",
+      "**/*.tsx",
+      "**/*.tf",
+      "**/*.yml",
+      "**/*.yaml",
+      "!**/dist/**",
+      "!**/webDist/**",
+      "!**/distLambda/**",
+      "!**/goldstackLocal/**",
+      "!**/coverage/**",
+      "!**/node_modules/**",
+      "!**/.next/**",
+      "!**/.terraform/**",
+      "!**/*.tfstate",
+      "!**/*.tfstate.backup",
+      "!**/.pnp.js",
+      "!**/.pnp.cjs",
+      "!**/*.json",
+      "!**/.pnp.loader.mjs",
+      "!**/.yarnrc.yml",
+      "!**/.yarn/**",
+      "!**/README.md"
+    ]
+  }
+}

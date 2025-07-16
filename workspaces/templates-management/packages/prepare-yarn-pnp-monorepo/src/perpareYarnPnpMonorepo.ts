@@ -1,20 +1,14 @@
-import {
-  PrepareTemplate,
-  PrepareTemplateParams,
-} from '@goldstack/prepare-template';
-
-import { cp, mkdir, write, read } from '@goldstack/utils-sh';
-
-import { Package } from '@goldstack/utils-package';
+import { createDefaultConfig, readConfig } from '@goldstack/infra-aws';
+import type { PrepareTemplate, PrepareTemplateParams } from '@goldstack/prepare-template';
 import { getAwsConfigPath } from '@goldstack/utils-config';
+import type { Package } from '@goldstack/utils-package';
+import { cp, mkdir, read, write } from '@goldstack/utils-sh';
 import { readTemplateConfigFromFile } from '@goldstack/utils-template';
-import { readConfig, createDefaultConfig } from '@goldstack/infra-aws';
 import { assert } from 'console';
 import fs from 'fs';
-import packageSchema from './../schemas/package.schema.json';
 import { join } from 'path';
-
 import sortPackageJson from 'sort-package-json';
+import packageSchema from './../schemas/package.schema.json';
 
 export const removeNpmRegistry = (params: { yarnRc: string }): string => {
   const authTokenRegex = /npmAuthToken: [^\s]*\s/gi;
@@ -36,12 +30,9 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
   }
   run(params: PrepareTemplateParams): Promise<void> {
     const copyFilesFromRoot = [
-      '.eslintignore',
-      '.eslintrc.json',
+      'biome.jsonc',
       '.gitattributes',
       '.gitconfig',
-      '.prettierignore',
-      '.prettierrc.json',
       '.yarnrc.yml',
       '.nvmrc',
       '.vscode/',
@@ -50,13 +41,11 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
     mkdir('-p', params.destinationDirectory);
     cp('-rf', copyFilesFromRoot, params.destinationDirectory);
 
-    const copyFilesFromRootYarn = [
-      '.yarn/pnpify',
-      '.yarn/releases',
-      '.yarn/sdks',
-    ].map((name) => join(params.monorepoRoot, name));
-    mkdir('-p', params.destinationDirectory + '.yarn/');
-    cp('-rf', copyFilesFromRootYarn, params.destinationDirectory + '.yarn/');
+    const copyFilesFromRootYarn = ['.yarn/pnpify', '.yarn/releases', '.yarn/sdks'].map((name) =>
+      join(params.monorepoRoot, name),
+    );
+    mkdir('-p', `${params.destinationDirectory}.yarn/`);
+    cp('-rf', copyFilesFromRootYarn, `${params.destinationDirectory}.yarn/`);
 
     const copyFilesFromTemplate = [
       '.gitignore',
@@ -84,10 +73,7 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
     }
 
     // ensure no Goldstack user details included in package
-    const goldstackConfigPath = join(
-      params.destinationDirectory,
-      'config/goldstack/config.json'
-    );
+    const goldstackConfigPath = join(params.destinationDirectory, 'config/goldstack/config.json');
     if (fs.existsSync(goldstackConfigPath)) {
       const goldstackConfig = JSON.parse(read(goldstackConfigPath));
       goldstackConfig.owner = undefined;
@@ -99,7 +85,7 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
     // ensure no bucket details in Terraform config
     const terraformConfigPath = join(
       params.destinationDirectory,
-      'config/infra/aws/terraform.json'
+      'config/infra/aws/terraform.json',
     );
     if (fs.existsSync(terraformConfigPath)) {
       const terraformConfig = JSON.parse(read(terraformConfigPath));
@@ -112,36 +98,29 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
     // ensure no npmAuthToken in package
     const yarnRc = read(join(params.destinationDirectory, '.yarnrc.yml'));
 
-    write(
-      removeNpmRegistry({ yarnRc }),
-      join(params.destinationDirectory, '.yarnrc.yml')
-    );
+    write(removeNpmRegistry({ yarnRc }), join(params.destinationDirectory, '.yarnrc.yml'));
 
     // fix package.json
-    const packageJson = JSON.parse(
-      read(join(params.destinationDirectory, 'package.json'))
-    );
+    const packageJson = JSON.parse(read(join(params.destinationDirectory, 'package.json')));
 
     packageJson.name = 'root';
     packageJson.author = '';
     packageJson.license = '';
 
-    const rootPackageJson = JSON.parse(
-      read(join(params.monorepoRoot, 'package.json'))
-    );
+    const rootPackageJson = JSON.parse(read(join(params.monorepoRoot, 'package.json')));
     packageJson.resolutions = rootPackageJson.resolutions;
     packageJson.packageManager = rootPackageJson.packageManager;
 
     write(
       JSON.stringify(sortKeys(packageJson), null, 2),
-      join(params.destinationDirectory, 'package.json')
+      join(params.destinationDirectory, 'package.json'),
     );
 
     mkdir('-p', join(params.destinationDirectory, 'packages/'));
     cp(
       '-rf',
       join(params.monorepoRoot, 'workspaces/templates/packages/README.md'),
-      join(params.destinationDirectory, 'packages/')
+      join(params.destinationDirectory, 'packages/'),
     );
 
     const packageConfig: Package = {
@@ -155,17 +134,17 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
 
     write(
       JSON.stringify(sortKeys(packageConfig), null, 2),
-      join(params.destinationDirectory, 'goldstack.json')
+      join(params.destinationDirectory, 'goldstack.json'),
     );
 
     mkdir('-p', join(params.destinationDirectory, 'schemas/'));
     write(
       JSON.stringify(packageSchema, null, 2),
-      join(params.destinationDirectory, 'schemas/package.schema.json')
+      join(params.destinationDirectory, 'schemas/package.schema.json'),
     );
 
     const config = readTemplateConfigFromFile(
-      join(params.monorepoRoot, 'workspaces/templates/template.json')
+      join(params.monorepoRoot, 'workspaces/templates/template.json'),
     );
     assert(config.templateName === this.templateName());
     const templateJsonPath = join(params.destinationDirectory, 'template.json');

@@ -1,19 +1,13 @@
-import {
-  DeploymentsState,
-  DeploymentState,
-} from './types/deploymentStatesTypes';
-import { write, read } from '@goldstack/utils-sh';
 import { validateConfig } from '@goldstack/utils-config';
+import { read, write } from '@goldstack/utils-sh';
 import fs from 'fs';
-import deploymentsStateSchema from './schemas/deploymentsStateSchema.json';
 import path from 'path';
+import deploymentsStateSchema from './schemas/deploymentsStateSchema.json';
+import type { DeploymentState, DeploymentsState } from './types/deploymentStatesTypes';
 
 const deploymentsStatePath = 'src/state/deployments.json';
 
-export const validateDeploymentsState = (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  deploymentsState: any
-): DeploymentsState => {
+export const validateDeploymentsState = (deploymentsState: any): DeploymentsState => {
   return validateConfig(deploymentsState, deploymentsStateSchema, {
     errorMessage: 'Cannot validate deployments state.',
   }) as DeploymentsState;
@@ -29,7 +23,7 @@ export interface ReadDeploymentsStateOptions {
 
 export const readDeploymentsState = (
   packageDir: string,
-  options?: ReadDeploymentsStateOptions
+  options?: ReadDeploymentsStateOptions,
 ): DeploymentsState => {
   if (!hasDeploymentsState(packageDir)) {
     if (options && options.createIfNotExist) {
@@ -38,8 +32,8 @@ export const readDeploymentsState = (
 
     throw new Error(
       `Deployments state does not exist in ${path.resolve(
-        packageDir + deploymentsStatePath
-      )}. Have you deployed this package yet?`
+        packageDir + deploymentsStatePath,
+      )}. Have you deployed this package yet?`,
     );
   }
 
@@ -50,10 +44,10 @@ export const readDeploymentsState = (
 export const getDeploymentState = (
   deploymentsState: DeploymentsState,
   deploymentName: string,
-  options?: ReadDeploymentsStateOptions
+  options?: ReadDeploymentsStateOptions,
 ): DeploymentState => {
   const deploymentState = deploymentsState.find(
-    (deploymentState) => deploymentState.name === deploymentName
+    (deploymentState) => deploymentState.name === deploymentName,
   );
   if (!deploymentState) {
     if (options && options.createIfNotExist) {
@@ -62,7 +56,7 @@ export const getDeploymentState = (
       };
     }
     throw new Error(
-      `Deployment state not defined for deployment '${deploymentName}'. Did you set up the infrastructure for this deployment with 'yarn infra up [deploymentName]'?`
+      `Deployment state not defined for deployment '${deploymentName}'. Did you set up the infrastructure for this deployment with 'yarn infra up [deploymentName]'?`,
     );
   }
   return deploymentState;
@@ -71,7 +65,7 @@ export const getDeploymentState = (
 export const readDeploymentState = (
   packageDir: string,
   deploymentName: string,
-  options?: ReadDeploymentsStateOptions
+  options?: ReadDeploymentsStateOptions,
 ): DeploymentState => {
   const deploymentsState = readDeploymentsState(packageDir, options);
 
@@ -80,17 +74,14 @@ export const readDeploymentState = (
 
 export const writeDeploymentsState = (
   packageDir: string,
-  deploymentsState: DeploymentsState
+  deploymentsState: DeploymentsState,
 ): void => {
-  write(
-    JSON.stringify(deploymentsState, null, 2),
-    packageDir + deploymentsStatePath
-  );
+  write(JSON.stringify(deploymentsState, null, 2), packageDir + deploymentsStatePath);
 };
 
 export const writeDeploymentState = (
   packageDir: string,
-  deploymentState: DeploymentState
+  deploymentState: DeploymentState,
 ): void => {
   let deploymentsState: DeploymentsState;
   if (hasDeploymentsState(packageDir)) {
@@ -98,9 +89,7 @@ export const writeDeploymentState = (
   } else {
     deploymentsState = [];
   }
-  const idx = deploymentsState.findIndex(
-    (deployment) => deployment.name === deploymentState.name
-  );
+  const idx = deploymentsState.findIndex((deployment) => deployment.name === deploymentState.name);
   if (idx === -1) {
     deploymentsState.push(deploymentState);
   } else {
@@ -111,19 +100,16 @@ export const writeDeploymentState = (
 
 export const readTerraformStateVariable = (
   deploymentState: DeploymentState,
-  variableName: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  variableName: string,
 ): any => {
   if (!deploymentState.terraform) {
     throw new Error(
-      `Terraform configuration not defined in deployment state for ${deploymentState.name}. Make sure to stand up the infrastructure for this module using 'yarn infra up'.`
+      `Terraform configuration not defined in deployment state for ${deploymentState.name}. Make sure to stand up the infrastructure for this module using 'yarn infra up'.`,
     );
   }
   const tfVar = deploymentState.terraform[variableName];
   if (!tfVar) {
-    throw new Error(
-      `Terraform variable '${variableName}' not defined in deployment state.`
-    );
+    throw new Error(`Terraform variable '${variableName}' not defined in deployment state.`);
   }
   return tfVar.value;
 };

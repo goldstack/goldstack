@@ -12,7 +12,7 @@ export const hasDocker = (): boolean => {
 export const assertDocker = (): void => {
   if (!commandExists('docker')) {
     throw new Error(
-      'Docker must be installed. Please install Docker and ensure the "docker" command is available in your terminal.'
+      'Docker must be installed. Please install Docker and ensure the "docker" command is available in your terminal.',
     );
   }
 
@@ -186,9 +186,7 @@ export const imageTerraform = (version: string): string => {
   if (version === '1.10') {
     return 'hashicorp/terraform:1.10.2';
   }
-  warn(
-    `Using untested Terraform version ${version}. Consider updating your Goldstack template.`
-  );
+  warn(`Using untested Terraform version ${version}. Consider updating your Goldstack template.`);
   return `hashicorp/terraform:${version}`;
 };
 

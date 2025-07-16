@@ -29,7 +29,7 @@ const processNode = async (params: {
   destination: string;
   rootDirectory: string;
 }): Promise<Results> => {
-  let filePath: string | undefined = undefined;
+  let filePath: string | undefined;
   if (typeof params.node === 'string') {
     filePath = params.node;
   } else {
@@ -43,16 +43,13 @@ const processNode = async (params: {
   const { dir, name } = path.parse(filePath);
   mkdir('-p', params.destination + dir);
   const sourceFile = params.source + filePath;
-  const destinationFile =
-    params.destination + dir + (dir ? '/' : '') + name + '.json';
+  const destinationFile = params.destination + dir + (dir ? '/' : '') + name + '.json';
   const data = await renderPage(sourceFile);
   write(JSON.stringify(data, null, 2), destinationFile);
 
   let pagePath =
     (dir
-      ? path
-          .relative(params.rootDirectory, params.destination + dir)
-          .replace(/\\/g, '/') + '/'
+      ? path.relative(params.rootDirectory, params.destination + dir).replace(/\\/g, '/') + '/'
       : '') + name;
   if (pagePath === 'index' && !dir) {
     pagePath = '/';
@@ -73,9 +70,7 @@ const processNode = async (params: {
     };
   }
 
-  const newSource = params.node.directory
-    ? params.source + params.node.directory
-    : params.source;
+  const newSource = params.node.directory ? params.source + params.node.directory : params.source;
   const newDestination = params.node.directory
     ? params.destination + params.node.directory
     : params.destination;
@@ -105,7 +100,7 @@ const processNode = async (params: {
           children: childrenSitemap,
         },
       ],
-    }
+    },
   );
 };
 
@@ -115,11 +110,7 @@ export const generateDocs = async (params: {
 }): Promise<Results> => {
   const navigation = JSON.parse(read(params.source + 'navigation.json'));
 
-  cp(
-    '-f',
-    params.source + 'navigation.json',
-    params.destination + 'navigation.json'
-  );
+  cp('-f', params.source + 'navigation.json', params.destination + 'navigation.json');
   const res = await processNode({
     node: navigation,
     source: params.source,
@@ -128,9 +119,6 @@ export const generateDocs = async (params: {
   });
 
   write(JSON.stringify(res.paths, null, 2), params.destination + 'paths.json');
-  write(
-    JSON.stringify(res.sitemap, null, 2),
-    params.destination + 'sitemap.json'
-  );
+  write(JSON.stringify(res.sitemap, null, 2), params.destination + 'sitemap.json');
   return res;
 };

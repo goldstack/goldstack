@@ -10,20 +10,17 @@ import { config } from 'dotenv';
 config();
 
 describe('Should create API', () => {
-  let port: undefined | number = undefined;
+  let port: undefined | number;
 
   beforeAll(async () => {
     port = await new Promise<number>((resolve, reject) => {
-      getPort(
-        process.env.TEST_SERVER_PORT || '50321',
-        (err: any, p1: number) => {
-          if (err) {
-            reject(err);
-            return;
-          }
-          resolve(p1);
+      getPort(process.env.TEST_SERVER_PORT || '50321', (err: any, p1: number) => {
+        if (err) {
+          reject(err);
+          return;
         }
-      );
+        resolve(p1);
+      });
     });
     await startTestServer(port);
   });

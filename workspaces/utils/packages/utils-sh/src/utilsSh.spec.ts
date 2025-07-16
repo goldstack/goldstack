@@ -20,10 +20,7 @@ describe('Copy', () => {
     const destDir = './goldstackLocal/work/copyAllDest/';
     await copy(testDir, destDir);
 
-    assert(
-      fs.existsSync(destDir + 'normal.txt'),
-      `Cannot find ${destDir + 'normal.txt'}`
-    );
+    assert(fs.existsSync(destDir + 'normal.txt'), `Cannot find ${destDir + 'normal.txt'}`);
     assert(fs.existsSync(destDir + '.hidden'));
     assert(fs.existsSync(destDir + 'dir/.hidden'));
     assert(fs.existsSync(destDir + 'dir/normal.txt'));

@@ -1,13 +1,14 @@
 import goldstackConfig from './../goldstack.json';
 
 let testServerPort: null | number = null;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
 let testServer: any = null;
 
 export const startTestServer = async (port: number): Promise<void> => {
   // The below is preventing webpack from bundling up the server - it is only required for local tests.
   testServer = await eval(
-    `var server = require('./server.ts'); var promise = server.start(${port}); promise;`
+    `var server = require('./server.ts'); var promise = server.start(${port}); promise;`,
   );
   testServerPort = port;
 };
@@ -31,7 +32,7 @@ export const getEndpoint = (deploymentName?: string): string => {
     return `http://localhost:${port || '8731'}`;
   }
   const deployment = goldstackConfig.deployments.find(
-    (deployment) => deployment.name === deploymentName
+    (deployment) => deployment.name === deploymentName,
   );
   if (!deployment) {
     throw new Error(`Cannot find deployment with name ${deploymentName}`);

@@ -1,13 +1,10 @@
-import type {
-  APIGatewayProxyEventV2,
-  APIGatewayProxyStructuredResultV2,
-} from 'aws-lambda';
+import type { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
 
 import zlib from 'zlib';
 
 export const compress = (
   event: APIGatewayProxyEventV2,
-  result: APIGatewayProxyStructuredResultV2
+  result: APIGatewayProxyStructuredResultV2,
 ): APIGatewayProxyStructuredResultV2 => {
   // when there is no body, there is nothing to compress
   if (!result.body) {

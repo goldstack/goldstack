@@ -1,14 +1,14 @@
 import {
   connectWithCognito as templateConnect,
   getEndpoint as templateGetEndpoint,
-  CognitoManager,
-  Endpoint,
+  type CognitoManager,
+  type Endpoint,
   loginWithRedirect as templateLoginWithRedirect,
   signUpWithRedirect as templateSignUpWithRedirect,
   handleRedirectCallback as templateHandleRedirectCallback,
   getCookieSettings as templateGetCookieSettings,
   performLogout as templatePerformLogout,
-  GetCookieSettingsResult,
+  type GetCookieSettingsResult,
 } from '@goldstack/template-user-management';
 
 import goldstackConfig from './../goldstack.json';
@@ -66,9 +66,7 @@ export async function performLogout(deploymentName?: string) {
   });
 }
 
-export async function connectWithCognito(
-  deploymentName?: string
-): Promise<CognitoManager> {
+export async function connectWithCognito(deploymentName?: string): Promise<CognitoManager> {
   return templateConnect({
     goldstackConfig,
     packageSchema,
@@ -77,10 +75,7 @@ export async function connectWithCognito(
   });
 }
 
-export async function getEndpoint(
-  endpoint: Endpoint,
-  deploymentName?: string
-): Promise<string> {
+export async function getEndpoint(endpoint: Endpoint, deploymentName?: string): Promise<string> {
   return templateGetEndpoint({
     endpoint,
     goldstackConfig,
@@ -90,9 +85,7 @@ export async function getEndpoint(
   });
 }
 
-export function getCookieSettings(
-  deploymentName?: string
-): GetCookieSettingsResult {
+export function getCookieSettings(deploymentName?: string): GetCookieSettingsResult {
   return templateGetCookieSettings({
     goldstackConfig,
     packageSchema,

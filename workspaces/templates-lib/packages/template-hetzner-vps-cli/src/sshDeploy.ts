@@ -1,4 +1,4 @@
-import { HetznerVPSDeployment } from '@goldstack/template-hetzner-vps';
+import type { HetznerVPSDeployment } from '@goldstack/template-hetzner-vps';
 import { error, info } from '@goldstack/utils-log';
 import { cp, exec, read, rmSafe, write, zip } from '@goldstack/utils-sh';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
@@ -24,9 +24,7 @@ export const build = async (deployment: HetznerVPSDeployment) => {
         envVariables
           .map(
             (envVar) =>
-              `${envVar.name}="${envVar.value
-                .replace(/"/g, '\\"')
-                .replace(/\\/g, '\\\\')}"`
+              `${envVar.name}="${envVar.value.replace(/"/g, '\\"').replace(/\\/g, '\\\\')}"`,
           )
           .join('\n') +
         `\nGOLDSTACK_DEPLOYMENT="${deployment.name}"\n` +
@@ -83,11 +81,7 @@ const sshExec = (host: string, command: string): string => {
 };
 
 // Helper function to upload files via SCP
-const scpUpload = (
-  localPath: string,
-  remotePath: string,
-  host: string
-): string => {
+const scpUpload = (localPath: string, remotePath: string, host: string): string => {
   const scpCmd = `scp  -o StrictHostKeyChecking=no ${localPath} ${host}:${remotePath}`;
   return exec(scpCmd);
 };
@@ -96,15 +90,9 @@ const scpUpload = (
 export const sshDeploy = async (deployment: HetznerVPSDeployment) => {
   try {
     const deploymentsInfo = JSON.parse(read('src/state/deployments.json'));
-    const deploymentState = deploymentsInfo.find(
-      (e: any) => e.name === deployment.name
-    );
+    const deploymentState = deploymentsInfo.find((e: any) => e.name === deployment.name);
     if (!deploymentState || !deploymentState.terraform) {
-      error(
-        'Cannot build ' +
-          deployment.name +
-          ' since infrastructure is not provisioned.'
-      );
+      error('Cannot build ' + deployment.name + ' since infrastructure is not provisioned.');
       throw new Error(`No deployment state found for ${deployment.name}`);
     }
 

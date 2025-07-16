@@ -14,11 +14,8 @@ import { getAwsConfigPath } from '@goldstack/utils-config';
 import { readConfig } from '@goldstack/infra-aws';
 import { scheduleAllDeploySets } from './scheduleAllDeploySets';
 import fs from 'fs';
-import { AWSAPIKeyUser } from '@goldstack/infra-aws';
-import {
-  connect as connectSes,
-  getFromDomain,
-} from '@goldstack/goldstack-email-send';
+import type { AWSAPIKeyUser } from '@goldstack/infra-aws';
+import { connect as connectSes, getFromDomain } from '@goldstack/goldstack-email-send';
 import { join, resolve } from 'path';
 
 export const run = async (): Promise<void> => {
@@ -46,8 +43,7 @@ export const run = async (): Promise<void> => {
           default: './goldstackWork/',
         },
         emailResultsTo: {
-          describe:
-            'Provide an email address that test results will be sent to',
+          describe: 'Provide an email address that test results will be sent to',
           required: false,
         },
         skipTests: {
@@ -57,47 +53,42 @@ export const run = async (): Promise<void> => {
           required: false,
         },
         deployBeforeTest: {
-          describe:
-            'Deploy the template before tests have completed (useful for development)',
+          describe: 'Deploy the template before tests have completed (useful for development)',
           type: 'string',
           choices: ['true', 'false'],
           required: false,
         },
       })
-      .command(
-        'schedule-all-deploy-sets',
-        'Creates tasks for all default deploy-sets',
-        {
-          repo: {
-            describe: 'The target S3 repo to use',
-            choices: ['dummy', 'goldstack-dev', 'goldstack-prod'],
-            type: 'string',
-            required: true,
-          },
-          deployment: {
-            describe: 'The image deployment to use',
-            type: 'string',
-            required: true,
-          },
-          skipTests: {
-            describe: 'Skip running tests',
-            type: 'string',
-            choices: ['true', 'false'],
-            required: false,
-          },
-          emailResultsTo: {
-            describe:
-              'Provide an email address that test results will be sent to. Provide "false" when no email should be sent',
-            type: 'string',
-            default: 'false',
-            required: false,
-          },
-        }
-      )
+      .command('schedule-all-deploy-sets', 'Creates tasks for all default deploy-sets', {
+        repo: {
+          describe: 'The target S3 repo to use',
+          choices: ['dummy', 'goldstack-dev', 'goldstack-prod'],
+          type: 'string',
+          required: true,
+        },
+        deployment: {
+          describe: 'The image deployment to use',
+          type: 'string',
+          required: true,
+        },
+        skipTests: {
+          describe: 'Skip running tests',
+          type: 'string',
+          choices: ['true', 'false'],
+          required: false,
+        },
+        emailResultsTo: {
+          describe:
+            'Provide an email address that test results will be sent to. Provide "false" when no email should be sent',
+          type: 'string',
+          default: 'false',
+          required: false,
+        },
+      })
       .parse();
 
     let workDir = argv.workDir as string;
-    let tmpInstance: any = undefined;
+    let tmpInstance: any;
     if (workDir === 'tmp') {
       tmpInstance = tmp.dirSync();
       workDir = tmpInstance.name + '/';
@@ -108,10 +99,10 @@ export const run = async (): Promise<void> => {
     }
     if (!workDir.endsWith('/')) {
       throw new Error(
-        `Working directory must end with a /. Supplied working directory: ${workDir}`
+        `Working directory must end with a /. Supplied working directory: ${workDir}`,
       );
     }
-    let repo: S3TemplateRepository | undefined = undefined;
+    let repo: S3TemplateRepository | undefined;
     if (argv.repo === 'goldstack-dev') {
       const s3 = await connect('dev');
       const bucketName = await getBucketName('dev');
@@ -161,15 +152,15 @@ export const run = async (): Promise<void> => {
       mkdir('-p', workDirBuild);
       assert(
         fs.readdirSync(workDirBuild).length === 0,
-        `Working directory ${workDirBuild} is not empty`
+        `Working directory ${workDirBuild} is not empty`,
       );
 
       const awsConfigPath = getAwsConfigPath('./../../');
-      let awsConfig: undefined | AWSAPIKeyUser = undefined;
+      let awsConfig: undefined | AWSAPIKeyUser;
       if (fs.existsSync(awsConfigPath)) {
         info('Using local AWS config');
         const goldstackDevUser = readConfig(awsConfigPath).users.find(
-          (user) => user.name === 'goldstack-dev'
+          (user) => user.name === 'goldstack-dev',
         );
         assert(goldstackDevUser, 'No goldstack-dev user defined in config');
         awsConfig = goldstackDevUser.config as AWSAPIKeyUser;
@@ -192,16 +183,14 @@ export const run = async (): Promise<void> => {
 
       if (argv.emailResultsTo && argv.emailResultsTo !== 'false') {
         if (!argv.deployment) {
-          console.error(
-            'Cannot email results. Argument --deployment not defined.'
-          );
+          console.error('Cannot email results. Argument --deployment not defined.');
           return;
         }
         console.log(
           'Sending email with results to',
           argv.emailResultsTo,
           'in deployment ',
-          argv.deployment
+          argv.deployment,
         );
 
         process.env.GOLDSTACK_DEPLOYMENT = argv.deployment as string;
@@ -222,27 +211,22 @@ export const run = async (): Promise<void> => {
                   (res.testFailed && !argv.skipTests
                     ? 'FAILED TESTS'
                     : res.deployed
-                    ? 'SUCCESS'
-                    : 'FAILED DEPLOY'),
+                      ? 'SUCCESS'
+                      : 'FAILED DEPLOY'),
               },
               Body: {
                 Text: {
                   Charset: 'UTF-8',
-                  Data:
-                    'Test Results:\n' + res.testResultsText ||
-                    'No results available',
+                  Data: 'Test Results:\n' + res.testResultsText || 'No results available',
                 },
               },
             },
             Source: '"Goldstack" <no-reply@' + (await getFromDomain()) + '>',
-          })
+          }),
         );
       }
 
-      if (
-        res.testResults &&
-        res.testResults.find((tr) => !tr.result) !== undefined
-      ) {
+      if (res.testResults && res.testResults.find((tr) => !tr.result) !== undefined) {
         throw new Error('Build set not built successfully.');
       }
 

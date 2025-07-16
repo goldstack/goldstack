@@ -1,11 +1,8 @@
-import {
-  LambdaConfig,
-  generateFunctionName,
-} from '@goldstack/utils-aws-lambda';
+import { generateFunctionName, type LambdaConfig } from '@goldstack/utils-aws-lambda';
 
-import express from 'express';
+import type express from 'express';
 
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 import {
   convertToGatewayEvent,
   createContext,
@@ -19,9 +16,7 @@ export interface InjectRoutesParam {
 /*
 Ensure more generic routes are handled later
 */
-export const sortRoutesBySpecificity = (
-  configs: LambdaConfig[]
-): LambdaConfig[] => {
+export const sortRoutesBySpecificity = (configs: LambdaConfig[]): LambdaConfig[] => {
   const res: LambdaConfig[] = [...configs];
 
   res.sort((first, second) => {
@@ -46,8 +41,7 @@ export const sortRoutesBySpecificity = (
 
     // ensure longer routes come first
     return (
-      second.route.replace(/\{(.*?)\}/g, '').length -
-      first.route.replace(/\{(.*?)\}/g, '').length
+      second.route.replace(/\{(.*?)\}/g, '').length - first.route.replace(/\{(.*?)\}/g, '').length
     );
   });
 
@@ -69,26 +63,22 @@ export const gatewayRouteToExpressPath = (route: string): string => {
 export const injectRoutes = (params: InjectRoutesParam): void => {
   const sortedConfigs = sortRoutesBySpecificity(params.lambdaConfigs);
   for (const lambdaConfig of sortedConfigs) {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const script = require(lambdaConfig.absoluteFilePath);
     const handler = script.handler;
 
     const expressPath = gatewayRouteToExpressPath(lambdaConfig.path);
 
-    params.app.all(
-      expressPath,
-      async (req: Request, resp: Response): Promise<void> => {
-        const functionName = generateFunctionName('local', lambdaConfig);
-        process.env.GOLDSTACK_FUNCTION_NAME = functionName;
-        process.env.GOLDSTACK_DEPLOYMENT = 'local';
-        const result = await handler(
-          convertToGatewayEvent({ req: req, lambdaConfig: lambdaConfig }),
-          createContext({
-            functionName,
-          })
-        );
-        injectGatewayResultIntoResponse(result, resp);
-      }
-    );
+    params.app.all(expressPath, async (req: Request, resp: Response): Promise<void> => {
+      const functionName = generateFunctionName('local', lambdaConfig);
+      process.env.GOLDSTACK_FUNCTION_NAME = functionName;
+      process.env.GOLDSTACK_DEPLOYMENT = 'local';
+      const result = await handler(
+        convertToGatewayEvent({ req: req, lambdaConfig: lambdaConfig }),
+        createContext({
+          functionName,
+        }),
+      );
+      injectGatewayResultIntoResponse(result, resp);
+    });
   }
 };

@@ -6,10 +6,7 @@ import { PackageConfig } from '@goldstack/utils-package-config';
 import { writePackageConfig } from '@goldstack/utils-package';
 import yargs from 'yargs';
 import fs from 'fs';
-import {
-  LambdaApiPackage,
-  LambdaApiDeployment,
-} from '@goldstack/template-lambda-api';
+import type { LambdaApiPackage, LambdaApiDeployment } from '@goldstack/template-lambda-api';
 import {
   readLambdaConfig,
   generateLambdaConfig,
@@ -40,10 +37,7 @@ export const run = async (args: string[]): Promise<void> => {
       .help()
       .parse();
 
-    const packageConfig = new PackageConfig<
-      LambdaApiPackage,
-      LambdaApiDeployment
-    >({
+    const packageConfig = new PackageConfig<LambdaApiPackage, LambdaApiDeployment>({
       packagePath: './',
     });
 
@@ -52,17 +46,14 @@ export const run = async (args: string[]): Promise<void> => {
     // update routes
     if (!fs.existsSync(defaultRoutesPath)) {
       throw new Error(
-        `Please specify lambda function handlers in ${defaultRoutesPath} so that API Gateway route configuration can be generated.`
+        `Please specify lambda function handlers in ${defaultRoutesPath} so that API Gateway route configuration can be generated.`,
       );
     }
     const lambdaRoutes = readLambdaConfig(defaultRoutesPath);
 
     let filteredLambdaRoutes = lambdaRoutes;
     config.deployments = config.deployments.map((e) => {
-      const lambdasConfigs = generateLambdaConfig(
-        e.configuration,
-        filteredLambdaRoutes
-      );
+      const lambdasConfigs = generateLambdaConfig(e.configuration, filteredLambdaRoutes);
       e.configuration.lambdas = lambdasConfigs;
       validateDeployment(e.configuration.lambdas);
       return e;
@@ -81,13 +72,13 @@ export const run = async (args: string[]): Promise<void> => {
           debug(
             `Filtering lambdas. Testing: ${
               el.relativeFilePath
-            } to match ${`*${opArgs[1]}*`}. Result: ${result}`
+            } to match ${`*${opArgs[1]}*`}. Result: ${result}`,
           );
           return result;
         });
         if (filteredLambdaRoutes.length === 0) {
           warn(
-            `Cannot perform command '${command}'. No routes match supplied filter ${opArgs[1]}.`
+            `Cannot perform command '${command}'. No routes match supplied filter ${opArgs[1]}.`,
           );
           return;
         }
@@ -105,7 +96,7 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'build') {
       const deployment = packageConfig.getDeployment(opArgs[0]);
-      let routeFilter: undefined | string = undefined;
+      let routeFilter: undefined | string;
       if (opArgs.length === 2) {
         routeFilter = `*${opArgs[1]}*`;
       }

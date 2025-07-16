@@ -1,15 +1,11 @@
-import { ProjectTemplateProps } from '../projectTemplateTypes';
+import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { GoGin } from './moduleData';
 
 export const getGoGinTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'go-gin',
     title: 'Go Gin Lambda',
-    images: [
-      'https://cdn.goldstack.party/img/202104/go_gin.png',
-      'lambda',
-      'yarn',
-    ],
+    images: ['https://cdn.goldstack.party/img/202104/go_gin.png', 'lambda', 'yarn'],
     packages: [GoGin],
     isComposite: false,
     description: 'Deploy a serverless Go HTTP server using AWS Lambda.',
@@ -25,13 +21,11 @@ export const getGoGinTemplateData = (): ProjectTemplateProps => {
       {
         title: 'Gin Framework',
         id: 'gin',
-        description:
-          'Develop all routes of your API using the powerful Gin framework.',
+        description: 'Develop all routes of your API using the powerful Gin framework.',
         image: 'https://cdn.goldstack.party/img/202104/go_gin.png',
         details: {
           title: 'Develop HTTP Routes',
-          description:
-            'The Gin framework allows building high performance HTTP APIs using Go.',
+          description: 'The Gin framework allows building high performance HTTP APIs using Go.',
           content: {
             type: 'image',
             data: {
@@ -60,8 +54,7 @@ export const getGoGinTemplateData = (): ProjectTemplateProps => {
       {
         title: 'AWS',
         id: 'aws',
-        description:
-          'Go server deployed to reliable and scaleable AWS serverless infrastructure.',
+        description: 'Go server deployed to reliable and scaleable AWS serverless infrastructure.',
         image: 'aws',
         details: {
           title: 'Ready for Deployment to AWS',
@@ -114,8 +107,7 @@ export const getGoGinTemplateData = (): ProjectTemplateProps => {
       {
         title: 'App Composition',
         id: 'composition',
-        description:
-          'Easily combine with any Goldstack module to compose end-to-end applications.',
+        description: 'Easily combine with any Goldstack module to compose end-to-end applications.',
         image: 'composition',
         details: {
           title: 'Integrate with Goldstack Templates',
@@ -124,11 +116,7 @@ export const getGoGinTemplateData = (): ProjectTemplateProps => {
           content: {
             type: 'combine-templates',
             data: {
-              templates: [
-                'template:app-nextjs-bootstrap',
-                'template:s3',
-                'template:email-send',
-              ],
+              templates: ['template:app-nextjs-bootstrap', 'template:s3', 'template:email-send'],
             },
           },
           moreDetails: {

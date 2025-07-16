@@ -1,4 +1,4 @@
-import { TemplateTest, RunTestParams } from '../types/TemplateTest';
+import type { TemplateTest, RunTestParams } from '../types/TemplateTest';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
 
 import assert from 'assert';
@@ -9,11 +9,9 @@ export const assertEndpointAvaialble = async (url: string): Promise<void> => {
   const resp = await axios.get(url);
   assert(
     resp.status === 200 || resp.status === 304 || resp.status === 201,
-    `HTTP call to API resulted in non success response code: ${resp.status} ${resp.statusText} (${url})`
+    `HTTP call to API resulted in non success response code: ${resp.status} ${resp.statusText} (${url})`,
   );
-  console.log(
-    `Received result from API '${JSON.stringify(resp.data, null, 2)}'`
-  );
+  console.log(`Received result from API '${JSON.stringify(resp.data, null, 2)}'`);
   // assert(
   //   resp.data === 'success',
   //   `API returned unexpected data: '${resp.data}'`
@@ -33,7 +31,7 @@ export class AssertApplicationTest implements TemplateTest {
         'Asserting application deployed for',
         deployment.name,
         'deployed to',
-        applicationUrl
+        applicationUrl,
       );
       // in case there are delays with DNS resolution
       await retryOperation(
@@ -41,7 +39,7 @@ export class AssertApplicationTest implements TemplateTest {
           await assertEndpointAvaialble(applicationUrl);
         },
         10000,
-        6 * 15 // 15 min
+        6 * 15, // 15 min
       );
     }
   }

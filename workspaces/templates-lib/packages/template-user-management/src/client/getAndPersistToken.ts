@@ -3,13 +3,7 @@ import { getCookieSettings } from './getCookieSettings';
 
 import { setRefreshTokenStorage } from './state';
 
-function setCookie(
-  name: string,
-  value: string,
-  minutes: number,
-  domain: string,
-  sameSite: string
-) {
+function setCookie(name: string, value: string, minutes: number, domain: string, sameSite: string) {
   let expires: string;
   if (minutes) {
     const date = new Date();
@@ -19,11 +13,7 @@ function setCookie(
     expires = '';
   }
   document.cookie =
-    name +
-    '=' +
-    value +
-    expires +
-    `; path=/; domain=${domain}; SameSite=${sameSite}; Secure`;
+    name + '=' + value + expires + `; path=/; domain=${domain}; SameSite=${sameSite}; Secure`;
 }
 
 /**
@@ -50,19 +40,7 @@ export async function getAndPersistToken(args: {
   const cookieDomain = cookieSettings.cookieDomain;
 
   const cookieSameSite = cookieSettings.cookieSameSite;
-  setCookie(
-    'goldstack_access_token',
-    token.accessToken,
-    60 * 24,
-    cookieDomain,
-    cookieSameSite
-  );
-  setCookie(
-    'goldstack_id_token',
-    token.idToken,
-    60 * 24,
-    cookieDomain,
-    cookieSameSite
-  );
+  setCookie('goldstack_access_token', token.accessToken, 60 * 24, cookieDomain, cookieSameSite);
+  setCookie('goldstack_id_token', token.idToken, 60 * 24, cookieDomain, cookieSameSite);
   return token;
 }

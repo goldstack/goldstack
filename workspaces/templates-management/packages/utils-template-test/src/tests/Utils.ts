@@ -3,7 +3,7 @@ const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 export const retryOperation = (
   operation: () => Promise<any>,
   delay: number,
-  retries: number
+  retries: number,
 ): Promise<any> =>
   new Promise((resolve, reject) => {
     return operation()

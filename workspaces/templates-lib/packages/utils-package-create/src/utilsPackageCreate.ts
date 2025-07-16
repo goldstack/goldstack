@@ -9,24 +9,15 @@ interface CreatePackageParams {
   installFolder?: string;
 }
 
-const copyFromLocal = async (
-  params: CreatePackageParams,
-  path: string
-): Promise<void> => {
+const copyFromLocal = async (params: CreatePackageParams, path: string): Promise<void> => {
   const templateConfig = readTemplateConfigFromFile(path + '/template.json');
 
   const installFolder = params.installFolder;
 
-  cp(
-    '-r',
-    path + '/template',
-    './' + installFolder + '/' + params.newPackageName
-  );
+  cp('-r', path + '/template', './' + installFolder + '/' + params.newPackageName);
 };
 
-export const createPackage = async (
-  params: CreatePackageParams
-): Promise<void> => {
+export const createPackage = async (params: CreatePackageParams): Promise<void> => {
   const localPath = `./templates/${params.templateName}/${params.templateVersion}`;
   if (fs.existsSync(localPath)) {
     await copyFromLocal(params, localPath);

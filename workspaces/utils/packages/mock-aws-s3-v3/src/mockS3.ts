@@ -5,7 +5,7 @@ import {
   DeleteObjectCommand,
   DeleteObjectsCommand,
   GetObjectCommand,
-  GetObjectOutput,
+  type GetObjectOutput,
   GetObjectTaggingCommand,
   HeadObjectCommand,
   ListBucketsCommand,
@@ -17,9 +17,9 @@ import {
   S3Client,
 } from '@aws-sdk/client-s3';
 import { mockClient } from 'aws-sdk-client-mock';
-import { AWSError, S3 } from 'mock-aws-s3';
-import { StreamingBlobPayloadOutputTypes } from '@smithy/types';
-import { WriteStream } from 'fs';
+import { type AWSError, S3 } from 'mock-aws-s3';
+import type { StreamingBlobPayloadOutputTypes } from '@smithy/types';
+import type { WriteStream } from 'fs';
 import { resolve } from 'path';
 import * as s3Mock from 'mock-aws-s3';
 
@@ -138,65 +138,63 @@ export function createS3Client({
   ];
 
   operations.forEach(({ command, method }) => {
-    mockClientInstance
-      .on(command)
-      .callsFake(async (input: any): Promise<any> => {
-        const context = getBucketContext(input.Bucket);
-        if (!context) {
-          // if no context defined for bucket, send command to real client
-          const commandWithInput = new command(input);
-          return await clientSend(commandWithInput);
-        }
-        if (!method) {
-          throw new Error(`Method ${command.name} not implemented.`);
-        }
-        s3Mock.config.basePath = context.localDirectory;
-        (context.client as any)._goldstackRequests.push({
-          command: command.name,
-          input,
-        });
-
-        if (process.env.GOLDSTACK_DEBUG) {
-          console.debug(
-            `Performing command ${command.name} on mock S3 bucket ${input.Bucket}.\n  Folder for local bucket: ${context.localDirectory}`
-          );
-        }
-        const operation = context.mockS3[method](input);
-
-        if (method === 'getObject') {
-          let stream: any;
-          try {
-            const res = await operation.promise();
-            const output: GetObjectOutput = { ...(res as any) };
-
-            const body: StreamingBlobPayloadOutputTypes = {
-              transformToString: async () => res.Body?.toString() || '',
-              pipe: (destination: WriteStream, options?) => {
-                stream = operation.createReadStream();
-                return stream.pipe(destination, options);
-              },
-            } as any;
-
-            output.Body = body;
-            return output;
-          } catch (e) {
-            if (stream) {
-              stream.destroy();
-            }
-
-            const awsError = e as AWSError;
-            if (awsError.code === 'NoSuchKey') {
-              throw new NoSuchKey({
-                message: e.message,
-                $metadata: {},
-              });
-            }
-            throw e;
-          }
-        }
-
-        return await operation.promise();
+    mockClientInstance.on(command).callsFake(async (input: any): Promise<any> => {
+      const context = getBucketContext(input.Bucket);
+      if (!context) {
+        // if no context defined for bucket, send command to real client
+        const commandWithInput = new command(input);
+        return await clientSend(commandWithInput);
+      }
+      if (!method) {
+        throw new Error(`Method ${command.name} not implemented.`);
+      }
+      s3Mock.config.basePath = context.localDirectory;
+      (context.client as any)._goldstackRequests.push({
+        command: command.name,
+        input,
       });
+
+      if (process.env.GOLDSTACK_DEBUG) {
+        console.debug(
+          `Performing command ${command.name} on mock S3 bucket ${input.Bucket}.\n  Folder for local bucket: ${context.localDirectory}`,
+        );
+      }
+      const operation = context.mockS3[method](input);
+
+      if (method === 'getObject') {
+        let stream: any;
+        try {
+          const res = await operation.promise();
+          const output: GetObjectOutput = { ...(res as any) };
+
+          const body: StreamingBlobPayloadOutputTypes = {
+            transformToString: async () => res.Body?.toString() || '',
+            pipe: (destination: WriteStream, options?) => {
+              stream = operation.createReadStream();
+              return stream.pipe(destination, options);
+            },
+          } as any;
+
+          output.Body = body;
+          return output;
+        } catch (e) {
+          if (stream) {
+            stream.destroy();
+          }
+
+          const awsError = e as AWSError;
+          if (awsError.code === 'NoSuchKey') {
+            throw new NoSuchKey({
+              message: e.message,
+              $metadata: {},
+            });
+          }
+          throw e;
+        }
+      }
+
+      return await operation.promise();
+    });
   });
 
   return client;

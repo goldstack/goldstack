@@ -1,15 +1,13 @@
-import { S3TemplateRepository } from '@goldstack/template-repository';
-import extract from 'extract-zip';
-import { rm, write, read } from '@goldstack/utils-sh';
-import { AssertionError } from 'assert';
+import type { S3TemplateRepository } from '@goldstack/template-repository';
 import { debug } from '@goldstack/utils-log';
-import path, { resolve } from 'path';
-import { ProjectConfiguration } from '@goldstack/utils-project';
-
 import { readPackageConfig } from '@goldstack/utils-package';
-import { buildTemplate } from './buildTemplate';
-
+import type { ProjectConfiguration } from '@goldstack/utils-project';
+import { read, rm, write } from '@goldstack/utils-sh';
+import { AssertionError } from 'assert';
+import extract from 'extract-zip';
+import path, { resolve } from 'path';
 import sortPackageJson from 'sort-package-json';
+import { buildTemplate } from './buildTemplate';
 
 export interface TemplateReference {
   name: string;
@@ -24,7 +22,7 @@ export interface ProjectBuildParams {
 
 export const assertTemplateReferenceVersion = async (
   s3: S3TemplateRepository,
-  templateReference: TemplateReference
+  templateReference: TemplateReference,
 ): Promise<TemplateReference> => {
   if (templateReference.version) {
     return templateReference;
@@ -33,9 +31,7 @@ export const assertTemplateReferenceVersion = async (
   const config = await s3.getLatestTemplateVersion(templateReference.name);
 
   if (!config) {
-    throw new Error(
-      'Cannot load latest template version for ' + templateReference.name
-    );
+    throw new Error('Cannot load latest template version for ' + templateReference.name);
   }
 
   return {
@@ -44,7 +40,6 @@ export const assertTemplateReferenceVersion = async (
   };
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function assert(condition: any, msg?: string): asserts condition {
   if (!condition) {
     throw new AssertionError({ message: msg });
@@ -55,33 +50,21 @@ function sortKeys(obj: any): any {
   return sortPackageJson(obj);
 }
 
-export const setPackageName = (
-  packageFolder: string,
-  packageName: string
-): void => {
+export const setPackageName = (packageFolder: string, packageName: string): void => {
   const goldstackPackageConfig = readPackageConfig(packageFolder);
   goldstackPackageConfig.name = packageName;
   write(
     JSON.stringify(goldstackPackageConfig, null, 2),
-    path.join(packageFolder, 'goldstack.json')
+    path.join(packageFolder, 'goldstack.json'),
   );
 
-  const packageJson = JSON.parse(
-    read(path.join(packageFolder, 'package.json'))
-  );
+  const packageJson = JSON.parse(read(path.join(packageFolder, 'package.json')));
   packageJson.name = packageName;
-  write(
-    JSON.stringify(sortKeys(packageJson), null, 2),
-    path.join(packageFolder, 'package.json')
-  );
+  write(JSON.stringify(sortKeys(packageJson), null, 2), path.join(packageFolder, 'package.json'));
 };
 
-export const buildProject = async (
-  params: ProjectBuildParams
-): Promise<void> => {
-  debug(
-    `Building project ${params.config.projectName} into ${params.projectDirectory}`
-  );
+export const buildProject = async (params: ProjectBuildParams): Promise<void> => {
+  debug(`Building project ${params.config.projectName} into ${params.projectDirectory}`);
   const config = params.config;
 
   // building workspaces project
@@ -95,7 +78,7 @@ export const buildProject = async (
   const zipPath = await params.s3.downloadTemplateArchive(
     rootReference.name,
     rootReference.version,
-    params.projectDirectory
+    params.projectDirectory,
   );
   assert(zipPath);
 

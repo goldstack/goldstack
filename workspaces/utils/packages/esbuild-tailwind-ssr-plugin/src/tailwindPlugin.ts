@@ -1,7 +1,7 @@
-import { OnLoadArgs, OnLoadResult, Plugin, PluginBuild } from 'esbuild';
+import { OnLoadArgs, OnLoadResult, type Plugin, type PluginBuild } from 'esbuild';
 
 import postcss from 'postcss';
-import { StaticFileMapperBuild } from 'static-file-mapper-build';
+import type { StaticFileMapperBuild } from 'static-file-mapper-build';
 
 import autoprefixer from 'autoprefixer';
 import tailwindcss from 'tailwindcss';

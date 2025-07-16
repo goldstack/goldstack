@@ -1,6 +1,6 @@
-import { ProjectData } from '@goldstack/project-repository';
+import type { ProjectData } from '@goldstack/project-repository';
 
-import { AWSAPIKeyUser } from '@goldstack/infra-aws';
+import type { AWSAPIKeyUser } from '@goldstack/infra-aws';
 
 export const wireProjectData = (data: ProjectData): ProjectData => {
   // ensure at least one deployment configured per project
@@ -18,9 +18,7 @@ export const wireProjectData = (data: ProjectData): ProjectData => {
         deployment.name = data.deploymentNames[0];
         deployment.awsUser = data.awsUsers[0].name;
 
-        deployment.awsRegion = (
-          data.awsUsers[0].config as AWSAPIKeyUser
-        ).awsDefaultRegion;
+        deployment.awsRegion = (data.awsUsers[0].config as AWSAPIKeyUser).awsDefaultRegion;
       });
     }
   });

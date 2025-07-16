@@ -1,21 +1,17 @@
-import {
-  ProjectTemplateProps,
-  ShortTemplateFeature,
-} from '../projectTemplateTypes';
+import type { ProjectTemplateProps, ShortTemplateFeature } from '../projectTemplateTypes';
 import { StaticWebsite } from './moduleData';
 import { featureYarn } from './nextjsTemplateData';
 
-export const featureESLint: ShortTemplateFeature = {
-  title: 'ESLint + Prettier',
-  id: 'eslint',
-  description:
-    'Auto-format and validate your HTML and CSS code easily using ESLint and Prettier.',
-  image: 'eslint',
+export const featureBiome: ShortTemplateFeature = {
+  title: 'Biome (Linting & Formatting)',
+  id: 'biome',
+  description: 'Auto-format and validate your HTML and CSS code easily using Biome.',
+  image: 'biome',
   details: {
     title: 'Linting and Formatting',
     description:
-      'ESLint and Prettier configured for usage in the CLI and as VSCode plugins. Optimized to work with HTML and CSS.',
-    icons: ['eslint'],
+      'Biome configured for usage in the CLI and as VSCode plugins. Optimized to work with HTML and CSS.',
+    icons: ['biome'],
     content: {
       type: 'none',
       data: {},
@@ -26,13 +22,11 @@ export const featureESLint: ShortTemplateFeature = {
 export const featureVSCode: ShortTemplateFeature = {
   title: 'VSCode',
   id: 'vscode',
-  description:
-    'Template configured to work seamlessly with the powerful VSCode editor.',
+  description: 'Template configured to work seamlessly with the powerful VSCode editor.',
   image: 'vscode',
   details: {
     title: 'Develop in VSCode',
-    description:
-      'All configuration for developing HTML and CSS code in VSCode provided.',
+    description: 'All configuration for developing HTML and CSS code in VSCode provided.',
     icons: ['vscode'],
     content: {
       type: 'none',
@@ -44,13 +38,11 @@ export const featureVSCode: ShortTemplateFeature = {
 export const featureStaticWebsiteComposition: ShortTemplateFeature = {
   title: 'App Composition',
   id: 'composition',
-  description:
-    'Easily combine with other Goldstack templates to compose fullstack applications.',
+  description: 'Easily combine with other Goldstack templates to compose fullstack applications.',
   image: 'composition',
   details: {
     title: 'Compose a Fullstack Application',
-    description:
-      'Combine this template with other templates such as Node.js backend.',
+    description: 'Combine this template with other templates such as Node.js backend.',
     content: {
       type: 'combine-templates',
       data: {
@@ -74,13 +66,9 @@ export const getStaticWebsiteTemplateData = (): ProjectTemplateProps => {
     metaTitle: 'AWS Static Website Template and Boilerplate with Terraform',
     metaDescription:
       'Upload your static website to AWS using S3, CloudFront with this easy-to-configure open source template provided by Goldstack.',
-    images: [
-      'https://cdn.goldstack.party/img/202204/cloudfront.svg',
-      'typescript',
-    ],
+    images: ['https://cdn.goldstack.party/img/202204/cloudfront.svg', 'typescript'],
     description: 'Host a static website on AWS.',
-    longDescription:
-      'Upload HTML and CSS files to S3 and configure CloudFront to serve them.',
+    longDescription: 'Upload HTML and CSS files to S3 and configure CloudFront to serve them.',
     actionLink: '/build?stack=static-website',
     tags: ['AWS', 'CloudFront', 'TypeScript', 'Yarn', 'React', 'Frontend'],
     featuresOverview: [
@@ -113,8 +101,7 @@ export const getStaticWebsiteTemplateData = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202204/ssl_certificate.png',
+              image: 'https://cdn.goldstack.party/img/202204/ssl_certificate.png',
             },
           },
         },
@@ -144,8 +131,7 @@ export const getStaticWebsiteTemplateData = (): ProjectTemplateProps => {
         details: {
           title: 'Cheap Storage on S3.',
           icons: ['https://cdn.goldstack.party/img/202204/s3.svg'],
-          description:
-            'Store files small and large for your website easily in AWS S3.',
+          description: 'Store files small and large for your website easily in AWS S3.',
           content: {
             type: 'none',
             data: {},
@@ -185,7 +171,7 @@ export const getStaticWebsiteTemplateData = (): ProjectTemplateProps => {
           },
         },
       },
-      featureESLint,
+      featureBiome,
       featureVSCode,
       featureYarn,
       featureStaticWebsiteComposition,

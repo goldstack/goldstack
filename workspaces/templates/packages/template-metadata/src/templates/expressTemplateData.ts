@@ -1,10 +1,6 @@
-import { ProjectTemplateProps } from '../projectTemplateTypes';
+import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { Express } from './moduleData';
-import {
-  featureAppComposition,
-  featureVSCode,
-  featureYarn3,
-} from './sharedFeatures';
+import { featureAppComposition, featureVSCode, featureYarn3 } from './sharedFeatures';
 
 export const getExpressTemplateData = (): ProjectTemplateProps => {
   return {
@@ -25,8 +21,7 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
       {
         title: 'Express.js',
         id: 'expressjs',
-        description:
-          'Start developing your Serverless Express server in minutes.',
+        description: 'Start developing your Serverless Express server in minutes.',
         image: 'nodejs',
         details: {
           title: 'Express.js Project Ready in Minutes',
@@ -43,8 +38,7 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
       {
         title: 'TypeScript',
         id: 'typescript',
-        description:
-          'Develop all routes for your Express.js application with TypeScript.',
+        description: 'Develop all routes for your Express.js application with TypeScript.',
         image: 'typescript',
         details: {
           title: 'Full TypeScript Support',
@@ -59,16 +53,16 @@ export const getExpressTemplateData = (): ProjectTemplateProps => {
         },
       },
       {
-        title: 'ESLint + Prettier',
-        id: 'eslint',
+        title: 'Biome (Linting & Formatting)',
+        id: 'biome',
         description:
-          'Auto-format and validate your TypeScript and Express code easily using ESLint and Prettier.',
-        image: 'eslint',
+          'Auto-format and validate your TypeScript and Express code easily using Biome.',
+        image: 'biome',
         details: {
           title: 'Linting and Formatting',
           description:
-            'ESLint and Prettier configured for usage in the CLI and as VSCode plugins. Optimized to work with Express.js and TypeScript.',
-          icons: ['eslint'],
+            'Biome configured for usage in the CLI and as VSCode plugins. Optimised to work with Express.js and TypeScript.',
+          icons: ['biome'],
           content: {
             type: 'none',
             data: {},

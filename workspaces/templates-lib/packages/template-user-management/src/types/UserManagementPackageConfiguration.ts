@@ -1,4 +1,4 @@
-import { Configuration } from '@goldstack/utils-package';
+import type { Configuration } from '@goldstack/utils-package';
 
 export type { Configuration };
 

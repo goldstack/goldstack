@@ -1,7 +1,4 @@
-import {
-  generateTestIdToken,
-  getLocalUserManager,
-} from './userManagementServerMock';
+import { generateTestIdToken, getLocalUserManager } from './userManagementServerMock';
 
 test('Should generate valid test tokens', async () => {
   const cognitoManager = getLocalUserManager();
@@ -14,7 +11,5 @@ test('Should generate valid test tokens', async () => {
     username: '99918936-07ce-4c17-8ed9-278fdd35406a',
   });
   const accessTokenData = await cognitoManager.validateIdToken(accessToken);
-  expect(accessTokenData.username).toEqual(
-    '99918936-07ce-4c17-8ed9-278fdd35406a'
-  );
+  expect(accessTokenData.username).toEqual('99918936-07ce-4c17-8ed9-278fdd35406a');
 });

@@ -5,10 +5,7 @@ import DocumentIcon from './../../icons/document.svg';
 
 import styles from './ProjectTemplateSidebar.module.css';
 
-import {
-  TemplateFeatureImage,
-  PackageProps,
-} from '@goldstack/template-metadata';
+import type { TemplateFeatureImage, PackageProps } from '@goldstack/template-metadata';
 
 import { resolveImage } from './imageUtil';
 
@@ -21,9 +18,7 @@ interface ProjectTemplateSidebarProps {
   boilerplateLink?: string;
 }
 
-const ProjectTemplateSidebar = (
-  props: ProjectTemplateSidebarProps
-): JSX.Element => {
+const ProjectTemplateSidebar = (props: ProjectTemplateSidebarProps): JSX.Element => {
   return (
     <>
       <div className="col-md-4 col-lg-3 mb-9 mb-md-0">
@@ -51,8 +46,7 @@ const ProjectTemplateSidebar = (
                 className="btn btn-sm btn-block btn-white transition-3d-hover"
                 href={props.boilerplateLink}
               >
-                <img src={GitHubIcon as any} style={{ width: '1rem' }}></img>{' '}
-                View Boilerplate
+                <img src={GitHubIcon as any} style={{ width: '1rem' }}></img> View Boilerplate
               </a>
             )}
           </div>
@@ -79,10 +73,7 @@ const ProjectTemplateSidebar = (
               <dd className="col-sm-8 text-body">
                 {props.tags.map((tag, idx) => (
                   <span className="d-inline-block mr-1 mb-2" key={idx}>
-                    <a
-                      className="btn btn-xs btn-soft-secondary disabled"
-                      href="#"
-                    >
+                    <a className="btn btn-xs btn-soft-secondary disabled" href="#">
                       {tag}
                     </a>
                   </span>

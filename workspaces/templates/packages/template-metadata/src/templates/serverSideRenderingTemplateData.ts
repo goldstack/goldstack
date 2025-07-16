@@ -1,4 +1,4 @@
-import { ProjectTemplateProps } from '../projectTemplateTypes';
+import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { ServerSideRendering } from './moduleData';
 import { featureYarn } from './nextjsTemplateData';
 
@@ -13,20 +13,11 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
     metaTitle: 'Lightweight React Server-Side Rendering with AWS Lambda',
     metaDescription:
       'Open source template for developing a React Server-Side Rendering (SSR) application using AWS API Gateway and AWS Lambda.',
-    description:
-      'Develop an SSR application using React and serverless AWS infrastructure.',
+    description: 'Develop an SSR application using React and serverless AWS infrastructure.',
     longDescription:
       'This project template provides utilities to define the infrastructure for an SSR application deployed on AWS using AWS API Gateway and Lambda functions.',
     actionLink: '/build?stack=server-side-rendering',
-    tags: [
-      'Server-Side Rendering',
-      'React',
-      'HTTP API',
-      'REST',
-      'Backend',
-      'Lambda',
-      'Serverless',
-    ],
+    tags: ['Server-Side Rendering', 'React', 'HTTP API', 'REST', 'Backend', 'Lambda', 'Serverless'],
     featuresOverview: [
       {
         title: 'Serverless Page Rendering and API',
@@ -35,15 +26,13 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
           'Develop a serverless React rendering and API using AWS API Gateway and Lambdas',
         image: 'api-gateway',
         details: {
-          title:
-            'Serverless React rendering and API using AWS API Gateway and Lambdas',
+          title: 'Serverless React rendering and API using AWS API Gateway and Lambdas',
           description:
             'Benefit from low costs, high scaleability and low maintenance by using modern Serverless practices. Each page and route defined in its own Lambda for minimal cold start times.',
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202201/lambda-api-architecture.gif',
+              image: 'https://cdn.goldstack.party/img/202201/lambda-api-architecture.gif',
             },
           },
         },
@@ -78,8 +67,7 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202208/react-rendering.png',
+              image: 'https://cdn.goldstack.party/img/202208/react-rendering.png',
             },
           },
         },
@@ -87,8 +75,7 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
       {
         title: 'CSS',
         id: 'css-modules',
-        description:
-          'Define styling for your React components using CSS Modules',
+        description: 'Define styling for your React components using CSS Modules',
         image: 'https://cdn.goldstack.party/img/202208/css-icon.svg',
         details: {
           title: 'CSS Modules for Styling',
@@ -105,8 +92,7 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
       {
         title: 'TypeScript',
         id: 'typescript',
-        description:
-          'Develop all pages and routes for your API using TypeScript.',
+        description: 'Develop all pages and routes for your API using TypeScript.',
         image: 'typescript',
         details: {
           title: 'Full TypeScript Support',
@@ -115,8 +101,7 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
           content: {
             type: 'image',
             data: {
-              image:
-                'https://cdn.goldstack.party/img/202201/lambda-api-typescript-example.gif',
+              image: 'https://cdn.goldstack.party/img/202201/lambda-api-typescript-example.gif',
             },
           },
         },
@@ -124,8 +109,7 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
       {
         title: 'Jest',
         id: 'jest',
-        description:
-          'Write tests for React components and rendered pages using Jest.',
+        description: 'Write tests for React components and rendered pages using Jest.',
         image: 'jest',
         details: {
           title: 'Unit and Integration Testing',
@@ -139,16 +123,16 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
         },
       },
       {
-        title: 'ESLint + Prettier',
-        id: 'eslint',
+        title: 'Biome (Linting & Formatting)',
+        id: 'biome',
         description:
-          'Auto-format and validate your TypeScript code easily using ESLint and Prettier.',
-        image: 'eslint',
+          'Auto-format and validate your TypeScript code easily using Biome.',
+        image: 'biome',
         details: {
           title: 'Linting and Formatting',
           description:
-            'ESLint and Prettier configured for usage in the CLI and as VSCode plugins.',
-          icons: ['eslint'],
+            'Biome configured for usage in the CLI and as VSCode plugins. Optimised to work with TypeScript.',
+          icons: ['biome'],
           content: {
             type: 'none',
             data: {},
@@ -158,13 +142,11 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
       {
         title: 'VSCode',
         id: 'vscode',
-        description:
-          'Configured to work seamlessly with the powerful VSCode editor.',
+        description: 'Configured to work seamlessly with the powerful VSCode editor.',
         image: 'vscode',
         details: {
           title: 'Develop in VSCode',
-          description:
-            'All configuration for developing TypeScript code with VSCode provided.',
+          description: 'All configuration for developing TypeScript code with VSCode provided.',
           icons: ['vscode'],
           content: {
             type: 'none',
@@ -212,8 +194,7 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
       {
         title: 'App Composition',
         id: 'composition',
-        description:
-          'Easily combine with any Goldstack module to compose end-to-end applications.',
+        description: 'Easily combine with any Goldstack module to compose end-to-end applications.',
         image: 'composition',
         details: {
           title: 'Integrate with Goldstack Templates',
@@ -222,11 +203,7 @@ export const getServerSideRenderingTemplate = (): ProjectTemplateProps => {
           content: {
             type: 'combine-templates',
             data: {
-              templates: [
-                'template:app-nextjs-bootstrap',
-                'template:s3',
-                'template:email-send',
-              ],
+              templates: ['template:app-nextjs-bootstrap', 'template:s3', 'template:email-send'],
             },
           },
           moreDetails: {

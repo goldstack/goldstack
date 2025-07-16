@@ -20,22 +20,17 @@ export interface DeployFunctionsParams {
   packageRootFolder: string;
 }
 
-export const deployFunctions = async (
-  params: DeployFunctionsParams
-): Promise<void> => {
+export const deployFunctions = async (params: DeployFunctionsParams): Promise<void> => {
   const lambdaConfig = params.config; //readLambdaConfig(params.routesPath);
 
   const operations = lambdaConfig.map(async (config) => {
-    const functionName = generateFunctionName(
-      params.configuration.lambdaNamePrefix,
-      config
-    );
+    const functionName = generateFunctionName(params.configuration.lambdaNamePrefix, config);
     info(`[${functionName}]: Starting deployment`);
     const functionDir = getOutDirForLambda(params.packageRootFolder, config);
     mkdir('-p', functionDir);
     const targetArchive = path.join(
       params.packageRootFolder,
-      `distLambda/zips/${functionName}.zip`
+      `distLambda/zips/${functionName}.zip`,
     );
     await deployFunction({
       targetArchiveName: targetArchive,

@@ -1,13 +1,10 @@
-import type {
-  EmailSendPackage,
-  EmailSendDeployment,
-} from './types/EmailSendPackage';
+import type { EmailSendDeployment, EmailSendPackage } from './types/EmailSendPackage';
 
 export type { EmailSendDeployment, EmailSendPackage };
 
-export { connect, getMockedSES, getFromDomain } from './sesConnect';
+export { connect, getFromDomain, getMockedSES } from './sesConnect';
 
-import { SendEmailRequest, SESClient } from '@aws-sdk/client-ses';
+import type { SESClient, SendEmailRequest } from '@aws-sdk/client-ses';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 
 // Import the CreateSESClientType type
@@ -23,10 +20,9 @@ import type { CreateSESClientType } from './mockedSES';
  * @returns {SESClient} The SES client instance.
  */
 export const createSESClient: CreateSESClientType = (sesClient) => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const createSESClient: CreateSESClientType = require(excludeInBundle(
-    './mockedSES'
-  )).createSESClient;
+  const createSESClient: CreateSESClientType = require(
+    excludeInBundle('./mockedSES'),
+  ).createSESClient;
   return createSESClient(sesClient);
 };
 

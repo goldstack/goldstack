@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router, type Request, type Response } from 'express';
 
 import sanitizeHtml from 'sanitize-html';
 
@@ -14,7 +14,7 @@ import { connect, getBucketName } from '@goldstack/template-repository-bucket';
 import { buildProject } from '@goldstack/project-build';
 import { getPackageConfigs } from '@goldstack/project-config';
 
-import { ProjectData } from '@goldstack/project-repository';
+import type { ProjectData } from '@goldstack/project-repository';
 
 import { getDocLinks } from './utils/docLinks';
 
@@ -23,16 +23,11 @@ import { join } from 'path';
 
 const router = Router();
 
-export const postProjectHandler = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+export const postProjectHandler = async (req: Request, res: Response): Promise<void> => {
   try {
     const { userToken } = req.cookies;
     if (!userToken) {
-      res
-        .status(400)
-        .json({ errorMessage: 'Expected userToken cookie to be set' });
+      res.status(400).json({ errorMessage: 'Expected userToken cookie to be set' });
       return;
     }
     const projectRepo = await connectProjectRepository();
@@ -41,9 +36,7 @@ export const postProjectHandler = async (
       readProjectConfigFromString(JSON.stringify(req.body));
     } catch (e) {
       console.warn('Invalid project config', e);
-      res
-        .status(400)
-        .json({ errorMessage: `Invalid project configuration: ${e.message}` });
+      res.status(400).json({ errorMessage: `Invalid project configuration: ${e.message}` });
       return;
     }
     const projectId = await projectRepo.addProject(req.body);
@@ -88,10 +81,7 @@ export const postProjectHandler = async (
   }
 };
 
-export const getProjectHandler = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+export const getProjectHandler = async (req: Request, res: Response): Promise<void> => {
   try {
     const { projectId } = req.params;
     const { userToken } = req.cookies;
@@ -100,9 +90,7 @@ export const getProjectHandler = async (
       return;
     }
     if (!userToken) {
-      res
-        .status(400)
-        .json({ errorMessage: 'Expected userToken cookie to be set' });
+      res.status(400).json({ errorMessage: 'Expected userToken cookie to be set' });
       return;
     }
     const repo = await connectProjectRepository();
@@ -124,10 +112,7 @@ export const getProjectHandler = async (
   }
 };
 
-export const putProjectHandler = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+export const putProjectHandler = async (req: Request, res: Response): Promise<void> => {
   try {
     const { projectId } = req.params;
     const { body }: { body: ProjectData } = req;
@@ -137,9 +122,7 @@ export const putProjectHandler = async (
       return;
     }
     if (!userToken) {
-      res
-        .status(400)
-        .json({ errorMessage: 'Expected userToken cookie to be set' });
+      res.status(400).json({ errorMessage: 'Expected userToken cookie to be set' });
       return;
     }
     const repo = await connectProjectRepository();
@@ -166,10 +149,7 @@ export const putProjectHandler = async (
   }
 };
 
-export const getProjectDocsHandler = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+export const getProjectDocsHandler = async (req: Request, res: Response): Promise<void> => {
   try {
     const { projectId } = req.params;
     const { doc, linksOnly: links } = req.query;
@@ -180,9 +160,7 @@ export const getProjectDocsHandler = async (
     }
 
     if (!userToken) {
-      res
-        .status(400)
-        .json({ errorMessage: 'Expected userToken cookie to be set' });
+      res.status(400).json({ errorMessage: 'Expected userToken cookie to be set' });
       return;
     }
     const repo = await connectProjectRepository();
@@ -194,9 +172,7 @@ export const getProjectDocsHandler = async (
         res.status(400).json({ errorMessage: 'Expected doc in request' });
         return;
       }
-      const docs: string[] = Array.isArray(doc)
-        ? (doc as string[])
-        : [doc as string];
+      const docs: string[] = Array.isArray(doc) ? (doc as string[]) : [doc as string];
       // send over actual rendered content of documentation
       const packageConfigs = getPackageConfigs(workspacePath);
       const result = await Promise.all(
@@ -216,10 +192,10 @@ export const getProjectDocsHandler = async (
                   doc: docPath.name,
                   html,
                 };
-              })
+              }),
             ),
           };
-        })
+        }),
       );
       res.status(200).json(result);
     } else {

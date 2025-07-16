@@ -1,15 +1,10 @@
 import { readPackageConfig } from '@goldstack/utils-package';
 import {
-  GoldstackTemplateConfiguration,
+  type GoldstackTemplateConfiguration,
   readTemplateConfigFromString,
   readTemplateConfigFromFile,
 } from '@goldstack/utils-template';
-import {
-  S3Client,
-  GetObjectCommand,
-  NoSuchKey,
-  PutObjectCommand,
-} from '@aws-sdk/client-s3';
+import { type S3Client, GetObjectCommand, NoSuchKey, PutObjectCommand } from '@aws-sdk/client-s3';
 import { rm, write, mkdir, zip, rmSafe } from '@goldstack/utils-sh';
 import semverInc from 'semver/functions/inc';
 import semverGt from 'semver/functions/gt';
@@ -26,12 +21,12 @@ const sleep = promisify(setTimeout);
 
 export interface TemplateRepository {
   getLatestTemplateVersion(
-    templateName: string
+    templateName: string,
   ): Promise<GoldstackTemplateConfiguration | undefined>;
   downloadTemplateArchive(
     templateName: string,
     version: string,
-    destinationFolder: string
+    destinationFolder: string,
   ): Promise<string | undefined>;
   addTemplateVersion(path: string): Promise<GoldstackTemplateConfiguration>;
 }
@@ -55,7 +50,7 @@ export class S3TemplateRepository implements TemplateRepository {
   }
 
   async getLatestTemplateVersion(
-    templateName: string
+    templateName: string,
   ): Promise<GoldstackTemplateConfiguration | undefined> {
     try {
       const cmd = new GetObjectCommand({
@@ -71,7 +66,6 @@ export class S3TemplateRepository implements TemplateRepository {
     } catch (e) {
       if (e instanceof NoSuchKey) {
         return undefined;
-        return;
       }
       throw e;
     }
@@ -80,21 +74,16 @@ export class S3TemplateRepository implements TemplateRepository {
   async downloadTemplateArchive(
     templateName: string,
     version: string,
-    destinationFolder: string
+    destinationFolder: string,
   ): Promise<string | undefined> {
-    const filePath = path.join(
-      destinationFolder,
-      `${templateName}-${version}.zip`
-    );
+    const filePath = path.join(destinationFolder, `${templateName}-${version}.zip`);
     const templatePath = `versions/${templateName}/${version}/${templateName}-${version}.zip`;
     debug(`Downloading template from '${this.bucket}' to '${filePath}'`, {
       bucket: this.bucket,
       key: templatePath,
       workDir: this.workDir,
       destinationFolder,
-      filesInDestinationDirBeforeDownload: fs
-        .readdirSync(destinationFolder)
-        .join(', '),
+      filesInDestinationDirBeforeDownload: fs.readdirSync(destinationFolder).join(', '),
       destinationFilePath: filePath,
     });
     if (
@@ -111,37 +100,26 @@ export class S3TemplateRepository implements TemplateRepository {
     }
   }
 
-  async addTemplateVersion(
-    pathToTemplate: string
-  ): Promise<GoldstackTemplateConfiguration> {
+  async addTemplateVersion(pathToTemplate: string): Promise<GoldstackTemplateConfiguration> {
     info('Adding template version from ' + pathToTemplate, {
       bucket: this.bucket,
     });
-    const config = readTemplateConfigFromFile(
-      path.join(pathToTemplate, 'template.json')
-    );
-    const latestDeployedToRepo = await this.getLatestTemplateVersion(
-      config.templateName
-    );
+    const config = readTemplateConfigFromFile(path.join(pathToTemplate, 'template.json'));
+    const latestDeployedToRepo = await this.getLatestTemplateVersion(config.templateName);
 
     if (latestDeployedToRepo === undefined) {
-      info(
-        'First deployment of template. Assuming previous version to be 0.0.0',
-        {
-          bucket: this.bucket,
-        }
-      );
+      info('First deployment of template. Assuming previous version to be 0.0.0', {
+        bucket: this.bucket,
+      });
       config.previousTemplateVersion = '0.0.0';
     } else {
-      info(
-        'Last version that was deployed: ' +
-          latestDeployedToRepo.templateVersion,
-        { bucket: this.bucket }
-      );
+      info('Last version that was deployed: ' + latestDeployedToRepo.templateVersion, {
+        bucket: this.bucket,
+      });
       if (latestDeployedToRepo.templateName !== config.templateName) {
         throw new Error(
           'Invalid template or latest version. Not matching template names' +
-            ` for ${config.templateName} found latest ${latestDeployedToRepo.templateName}`
+            ` for ${config.templateName} found latest ${latestDeployedToRepo.templateName}`,
         );
       }
 
@@ -153,20 +131,17 @@ export class S3TemplateRepository implements TemplateRepository {
         info('Deploying new version: ' + config.templateName, {
           bucket: this.bucket,
         });
-        const newVersion = semverInc(
-          latestDeployedToRepo.templateVersion,
-          'patch'
-        );
+        const newVersion = semverInc(latestDeployedToRepo.templateVersion, 'patch');
         if (!newVersion) {
           throw new Error(
-            `Cannot generate new version from ${latestDeployedToRepo.templateVersion}`
+            `Cannot generate new version from ${latestDeployedToRepo.templateVersion}`,
           );
         }
         config.templateVersion = newVersion;
       } else {
         throw new Error(
           'Invalid version tor release. ' +
-            `Trying to release ${config.templateVersion}. Latest version ${latestDeployedToRepo.templateVersion}`
+            `Trying to release ${config.templateVersion}. Latest version ${latestDeployedToRepo.templateVersion}`,
         );
       }
     }
@@ -176,11 +151,7 @@ export class S3TemplateRepository implements TemplateRepository {
     const templateConfigPath = `versions/${templatePath}template.json`;
     config.templateArchive = `arn:aws:s3:::${this.bucket}/${templateArchivePath}`;
 
-    const workDir = join(
-      this.workDir,
-      config.templateName,
-      config.templateVersion
-    );
+    const workDir = join(this.workDir, config.templateName, config.templateVersion);
     rm('-rf', workDir);
     await sleep(200);
 
@@ -191,10 +162,10 @@ export class S3TemplateRepository implements TemplateRepository {
     write(configJson, targetConfigPath);
 
     // Upload config
-    info(
-      'Uploading template config to: ' + this.bucket + '/' + templateConfigPath,
-      { bucket: this.bucket, workDir }
-    );
+    info('Uploading template config to: ' + this.bucket + '/' + templateConfigPath, {
+      bucket: this.bucket,
+      workDir,
+    });
     try {
       const cmd = new PutObjectCommand({
         Bucket: this.bucket,
@@ -217,7 +188,7 @@ export class S3TemplateRepository implements TemplateRepository {
 
     const targetArchive = join(
       this.workDir,
-      `${config.templateName}-${config.templateVersion}.zip`
+      `${config.templateName}-${config.templateVersion}.zip`,
     );
     await rmSafe(targetArchive);
 
@@ -230,19 +201,15 @@ export class S3TemplateRepository implements TemplateRepository {
 
     // Upload archive
     try {
-      info(
-        'Uploading template archive to: ' +
-          this.bucket +
-          '/' +
-          templateArchivePath,
-        { bucket: this.bucket }
-      );
+      info('Uploading template archive to: ' + this.bucket + '/' + templateArchivePath, {
+        bucket: this.bucket,
+      });
       await this.s3.send(
         new PutObjectCommand({
           Bucket: this.bucket,
           Key: templateArchivePath,
           Body: fs.createReadStream(targetArchive),
-        })
+        }),
       );
     } catch (e) {
       throw e;
@@ -260,7 +227,7 @@ export class S3TemplateRepository implements TemplateRepository {
           Bucket: this.bucket,
           Key: `templates/${config.templateName}/latest.json`,
           Body: configJson,
-        })
+        }),
       );
     } catch (e) {
       throw e;

@@ -1,15 +1,12 @@
-import {
-  LambdaConfig,
-  generateFunctionName,
-} from '@goldstack/utils-aws-lambda';
-import {
+import { type LambdaConfig, generateFunctionName } from '@goldstack/utils-aws-lambda';
+import type {
   LambdaRoutesConfig,
   LambdaApiDeploymentConfiguration,
 } from './types/LambdaDeploymentConfiguration';
 
 export const generateLambdaConfig = (
   configuration: LambdaApiDeploymentConfiguration,
-  config: LambdaConfig[]
+  config: LambdaConfig[],
 ): LambdaRoutesConfig => {
   return config.reduce((last, curr) => {
     let id = curr.route;

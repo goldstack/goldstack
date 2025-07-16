@@ -3,15 +3,12 @@ import { wrapCli } from '@goldstack/utils-cli';
 import { infraCommands } from '@goldstack/utils-terraform';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import { PackageConfig } from '@goldstack/utils-package-config';
-import {
-  DynamoDBPackage,
-  DynamoDBDeployment,
-} from '@goldstack/template-dynamodb';
-import yargs, { Argv } from 'yargs';
+import type { DynamoDBPackage, DynamoDBDeployment } from '@goldstack/template-dynamodb';
+import yargs, { type Argv } from 'yargs';
 import assert from 'assert';
 import { dynamoDBCli } from './dynamoDBTableCli';
-import { InputMigrations } from 'umzug/lib/types';
-import { DynamoDBContext } from '@goldstack/template-dynamodb';
+import type { InputMigrations } from 'umzug/lib/types';
+import type { DynamoDBContext } from '@goldstack/template-dynamodb';
 
 export const run = async ({
   args,
@@ -42,30 +39,22 @@ export const run = async ({
             .command(
               'init',
               'Initialise DynamoDB table and run all applicable migrations',
-              deploymentPositional
+              deploymentPositional,
             )
-            .command(
-              'delete',
-              'Deletes DynamoDB table and all its data',
-              deploymentPositional
-            )
+            .command('delete', 'Deletes DynamoDB table and all its data', deploymentPositional)
             .command('migrate-to', 'Migrate DynamoDB table', (yargs) =>
               deploymentPositional(yargs).positional('migration-name', {
                 type: 'string',
-                describe:
-                  'The name of the migration that the table should be migrated to.',
+                describe: 'The name of the migration that the table should be migrated to.',
                 demandOption: true,
-              })
+              }),
             );
-        }
+        },
       )
       .help()
       .parse();
 
-    const packageConfig = new PackageConfig<
-      DynamoDBPackage,
-      DynamoDBDeployment
-    >({
+    const packageConfig = new PackageConfig<DynamoDBPackage, DynamoDBDeployment>({
       packagePath: './',
     });
     const config = packageConfig.getConfig();

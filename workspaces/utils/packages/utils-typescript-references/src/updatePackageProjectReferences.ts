@@ -1,11 +1,6 @@
 import fs from 'fs';
 import { execSync } from 'child_process';
-import {
-  getPackages,
-  getTsConfigPath,
-  PackageData,
-  makeReferences,
-} from './sharedUtils';
+import { getPackages, getTsConfigPath, type PackageData, makeReferences } from './sharedUtils';
 import path from 'path';
 import { error, info } from '@goldstack/utils-log';
 
@@ -54,9 +49,7 @@ function processPackage({
   tsConfigNames: string[];
   excludeInReferences: string[];
 }): ProcessPackageResult {
-  const packageJson = fs
-    .readFileSync(path.resolve(packageDir, './package.json'))
-    .toString();
+  const packageJson = fs.readFileSync(path.resolve(packageDir, './package.json')).toString();
   const packageJsonData = JSON.parse(packageJson);
   const tsConfigPath = getTsConfigPath(packageDir, tsConfigNames);
   if (!tsConfigPath) {
@@ -75,14 +68,13 @@ function processPackage({
       ]
         // all dependencies that are workspace dependencies and have a tsconfig.json
         .map((dependencyData) =>
-          allPackages.find((packageData) => packageData.name === dependencyData)
+          allPackages.find((packageData) => packageData.name === dependencyData),
         )
         // remove packages that should be excluded in references
         .filter(
-          (packageData) =>
-            packageData && excludeInReferences.indexOf(packageData.name) === -1
+          (packageData) => packageData && excludeInReferences.indexOf(packageData.name) === -1,
         ),
-      tsConfigNames
+      tsConfigNames,
     );
 
     // Exit early if references are unchanged (using JSON for deep comparison)
@@ -97,14 +89,14 @@ function processPackage({
         references: newReferences.length ? newReferences : undefined,
       },
       null,
-      2
+      2,
     );
 
     // only update the config file when it has changed
     if (newReferences.length) {
       info(
         `Updating project references in ${tsConfigPath} to:` +
-          newReferences.map((refData) => `\n  ${refData.path}`).join('')
+          newReferences.map((refData) => `\n  ${refData.path}`).join(''),
       );
     } else {
       info(`Removing project references in ${tsConfigPath}`);

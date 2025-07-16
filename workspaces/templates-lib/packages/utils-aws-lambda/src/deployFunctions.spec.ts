@@ -44,9 +44,7 @@ describe('Testing lambda build', () => {
           path: '/customBuild',
           relativeFilePath: 'customBuild.ts',
           name: 'test-lambda-customBuild',
-          absoluteFilePath: path.resolve(
-            './testData/build-test/customBuild.ts'
-          ),
+          absoluteFilePath: path.resolve('./testData/build-test/customBuild.ts'),
           route: 'ANY /',
           type: RouteType.FUNCTION,
         },

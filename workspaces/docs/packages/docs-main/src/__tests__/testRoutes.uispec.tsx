@@ -5,8 +5,7 @@ it('Should match a route', () => {
     uri: '/docs/modules/app-nextjs',
   };
 
-  const extension =
-    request.uri.indexOf('.') !== -1 ? request.uri.split('.').pop() : '.html';
+  const extension = request.uri.indexOf('.') !== -1 ? request.uri.split('.').pop() : '.html';
   const dynamicRoutes = routes.dynamicRoutes;
   for (const route of dynamicRoutes) {
     if (new RegExp(route.regex).test(request.uri)) {

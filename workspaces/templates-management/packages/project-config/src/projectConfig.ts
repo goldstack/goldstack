@@ -1,5 +1,5 @@
 import { getPackageConfigPaths, validateConfig } from '@goldstack/utils-config';
-import { readPackageConfig, Package } from '@goldstack/utils-package';
+import { readPackageConfig, type Package } from '@goldstack/utils-package';
 
 import path from 'path';
 import { write, read } from '@goldstack/utils-sh';
@@ -17,25 +17,21 @@ export const getPackageConfigs = (workspacePath: string): PackageConfig[] => {
   const configPaths = getPackageConfigPaths(workspacePath);
   const paths = configPaths.map((configPath) => path.dirname(configPath));
   return paths.map((pathEl) => {
-    const packageConfig: Package = JSON.parse(
-      read(path.join(pathEl, 'goldstack.json'))
-    );
+    const packageConfig: Package = JSON.parse(read(path.join(pathEl, 'goldstack.json')));
 
     if (!packageConfig) {
       throw new Error('Invalid config file at: ' + pathEl);
     }
 
-    const packageSchema = JSON.parse(
-      read(path.join(pathEl, 'schemas', 'package.schema.json'))
-    );
+    const packageSchema = JSON.parse(read(path.join(pathEl, 'schemas', 'package.schema.json')));
     const packageConfigSchema = JSON.parse(
-      read(path.join(pathEl, 'schemas', 'package-configuration.schema.json'))
+      read(path.join(pathEl, 'schemas', 'package-configuration.schema.json')),
     );
     const deploymentSchema = JSON.parse(
-      read(path.join(pathEl, 'schemas', 'deployment.schema.json'))
+      read(path.join(pathEl, 'schemas', 'deployment.schema.json')),
     );
     const deploymentConfigSchema = JSON.parse(
-      read(path.join(pathEl, 'schemas', 'deployment-configuration.schema.json'))
+      read(path.join(pathEl, 'schemas', 'deployment-configuration.schema.json')),
     );
     // packageConfig = validateConfig(packageConfig, packageSchema, {
     //   errorMessage: `Cannot validate configuration for ${pathEl}.`,
@@ -52,10 +48,7 @@ export const getPackageConfigs = (workspacePath: string): PackageConfig[] => {
   });
 };
 
-export const writePackageConfigs = (
-  workspacePath: string,
-  configs: PackageConfig[]
-): void => {
+export const writePackageConfigs = (workspacePath: string, configs: PackageConfig[]): void => {
   for (const config of configs) {
     // validateConfig(config.package, config.packageSchema);
 
@@ -63,7 +56,7 @@ export const writePackageConfigs = (
     // console.log(JSON.stringify(config.package, null, 2));
     write(
       JSON.stringify(config.package, null, 2),
-      workspacePath + config.pathInWorkspace + '/goldstack.json'
+      workspacePath + config.pathInWorkspace + '/goldstack.json',
     );
   }
 };

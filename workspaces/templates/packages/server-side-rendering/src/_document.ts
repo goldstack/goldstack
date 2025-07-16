@@ -1,22 +1,19 @@
 /* esbuild-ignore ui */
 
 import {
-  type RenderDocumentProps,
-  type ReactPropertiesType,
   getLocalHelperJs,
+  type ReactPropertiesType,
+  type RenderDocumentProps,
 } from '@goldstack/template-ssr';
 
-const renderDocument = async (
-  props: RenderDocumentProps<ReactPropertiesType>
-): Promise<string> => {
+const renderDocument = async (props: RenderDocumentProps<ReactPropertiesType>): Promise<string> => {
   const tailwindPath = await props.staticFileMapper.resolve({
     name: 'tailwind.css',
   });
 
-  let tailwindConfig: string | undefined = undefined;
-  let localHelperJs: string | undefined = undefined;
+  let tailwindConfig: string | undefined;
+  let localHelperJs: string | undefined;
   if (process.env.GOLDSTACK_DEPLOYMENT === 'local') {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const config = require('./../tailwind.config');
 
     tailwindConfig = JSON.stringify(config.theme);

@@ -12,7 +12,7 @@ import Col from 'react-bootstrap/Col';
 
 import { dataUriToSrc } from 'src/utils/utils';
 import { getEndpoint } from '@goldstack/goldstack-api';
-import { DocLink } from '@goldstack/goldstack-api/dist/src/utils/docLinks';
+import type { DocLink } from '@goldstack/goldstack-api/dist/src/utils/docLinks';
 
 import assert from 'assert';
 import { loadStripe } from '@stripe/stripe-js';
@@ -20,7 +20,7 @@ import { DownloadInstructions } from './DownloadInstructions';
 
 assert(
   process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY,
-  'Environment variable NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY must be defined.'
+  'Environment variable NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY must be defined.',
 );
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_API_KEY);
@@ -46,10 +46,7 @@ const DownloadReady = (props: {
     <>
       <div className="container space-2">
         <div className="w-md-80 text-center mx-md-auto">
-          <div
-            className={styles.check}
-            dangerouslySetInnerHTML={{ __html: checkCircle }}
-          ></div>
+          <div className={styles.check} dangerouslySetInnerHTML={{ __html: checkCircle }}></div>
           <div className="mb-5">
             <h1 className="h2">Project successfully generated</h1>
             <p>Follow the steps below to setup your project.</p>
@@ -70,12 +67,12 @@ const DownloadReady = (props: {
 const Download = (props: DownloadProps): JSX.Element => {
   const { data: packageData, error: packageDataError } = useSWR(
     `${getEndpoint()}/projects/${props.projectId}/packages/${props.packageId}`,
-    fetcher
+    fetcher,
   );
 
   const { data: docsData, error: docsError } = useSWR(
     `${getEndpoint()}/projects/${props.projectId}/docs?linksOnly=true`,
-    fetcher
+    fetcher,
   );
 
   if (docsError) {
@@ -109,9 +106,7 @@ const Download = (props: DownloadProps): JSX.Element => {
       <div className="container space-2" style={{ minHeight: '1000px' }}>
         <Row>
           <Col lg={12} md={12}>
-            {packageDataError && (
-              <p>Something went wrong: {packageDataError + ''}</p>
-            )}
+            {packageDataError && <p>Something went wrong: {packageDataError + ''}</p>}
             {packageData && (
               <DownloadReady
                 projectId={props.projectId}

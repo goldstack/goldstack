@@ -1,24 +1,18 @@
 import {
   terraformCli,
-  CloudProvider,
-  TerraformDeployment,
-  TerraformOptions,
+  type CloudProvider,
+  type TerraformDeployment,
+  type TerraformOptions,
 } from '@goldstack/utils-terraform';
-import {
-  getHetznerUser,
-  readDeploymentFromPackageConfig,
-} from '@goldstack/infra-hetzner';
-import { AWSCloudProvider } from '@goldstack/utils-terraform-aws';
+import { getHetznerUser, readDeploymentFromPackageConfig } from '@goldstack/infra-hetzner';
+import type { AWSCloudProvider } from '@goldstack/utils-terraform-aws';
 
 export class HetznerCloudProvider implements CloudProvider {
   token: string;
   awsProvider: AWSCloudProvider;
 
   generateEnvVariableString = (): string => {
-    return (
-      `-e TF_VAR_hcloud_token=${this.token} ` +
-      this.awsProvider.generateEnvVariableString()
-    );
+    return `-e TF_VAR_hcloud_token=${this.token} ` + this.awsProvider.generateEnvVariableString();
   };
 
   setEnvVariables = (): void => {
@@ -26,9 +20,7 @@ export class HetznerCloudProvider implements CloudProvider {
     this.awsProvider.setEnvVariables();
   };
 
-  getTfStateVariables = (
-    deployment: TerraformDeployment
-  ): [string, string][] => {
+  getTfStateVariables = (deployment: TerraformDeployment): [string, string][] => {
     return this.awsProvider.getTfStateVariables(deployment);
   };
 
@@ -41,7 +33,7 @@ export class HetznerCloudProvider implements CloudProvider {
 export const terraformHetznerCli = async (
   args: string[],
   provider: AWSCloudProvider,
-  options?: TerraformOptions
+  options?: TerraformOptions,
 ): Promise<void> => {
   const deploymentName = args[1];
 

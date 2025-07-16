@@ -1,4 +1,4 @@
-import { TemplateTest, RunTestParams } from './../types/TemplateTest';
+import type { TemplateTest, RunTestParams } from './../types/TemplateTest';
 import { yarn } from '@goldstack/utils-yarn';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
 
@@ -21,11 +21,11 @@ export class DestroyStateTest implements TemplateTest {
           process.env.GOLDSTACK_DEBUG = 'true';
           yarn(
             params.projectDir,
-            `workspace ${packageJson.name} infra destroy-state ${deployment.name} -y`
+            `workspace ${packageJson.name} infra destroy-state ${deployment.name} -y`,
           );
         },
         120000,
-        20
+        20,
       );
     }
   }

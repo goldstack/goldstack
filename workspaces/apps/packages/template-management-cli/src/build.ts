@@ -6,7 +6,7 @@ const build = async (): Promise<void> => {
   const config = getConfig();
   const rootDir = './../../../../';
 
-  let commitHash: string | undefined = undefined;
+  let commitHash: string | undefined;
   try {
     commitHash = hash();
   } catch (e) {
@@ -15,14 +15,14 @@ const build = async (): Promise<void> => {
 
   if (!commitHash) {
     exec(
-      `docker build -f ./docker/Dockerfile -t ${config.configuration.imageTag}:latest ${rootDir}`
+      `docker build -f ./docker/Dockerfile -t ${config.configuration.imageTag}:latest ${rootDir}`,
     );
   } else {
     exec(
-      `docker build -f ./docker/Dockerfile -t ${config.configuration.imageTag}:${commitHash} ${rootDir}`
+      `docker build -f ./docker/Dockerfile -t ${config.configuration.imageTag}:${commitHash} ${rootDir}`,
     );
     exec(
-      `docker image tag ${config.configuration.imageTag}:${commitHash} ${config.configuration.imageTag}:latest`
+      `docker image tag ${config.configuration.imageTag}:${commitHash} ${config.configuration.imageTag}:latest`,
     );
   }
 };

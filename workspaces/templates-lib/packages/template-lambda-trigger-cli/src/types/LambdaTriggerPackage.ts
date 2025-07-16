@@ -1,15 +1,15 @@
-import { AWSDeployment } from '@goldstack/infra-aws';
-import { TerraformDeployment } from '@goldstack/utils-terraform';
-import { Deployment, DeploymentConfiguration } from '@goldstack/infra';
-import { Package, Configuration } from '@goldstack/utils-package';
+import type { AWSDeployment } from '@goldstack/infra-aws';
+import type { TerraformDeployment } from '@goldstack/utils-terraform';
+import type { Deployment, DeploymentConfiguration } from '@goldstack/infra';
+import type { Package, Configuration } from '@goldstack/utils-package';
 import {
   LambdaConfiguration,
-  LambdaDeployment,
-  LambdaDeploymentConfiguration,
+  type LambdaDeployment,
+  type LambdaDeploymentConfiguration,
   LambdaDeployments,
-  LambdaPackage,
+  type LambdaPackage,
 } from '@goldstack/template-lambda-cli';
-import {
+import type {
   SqsDeploymentConfiguration,
   SqsDeployment,
   SqsPackage,
@@ -73,7 +73,7 @@ export interface ThisPackage extends Package, LambdaPackage, SqsPackage {
   deployments: LambdaTriggerDeployments;
 }
 
-export { ThisDeploymentConfiguration as LambdaTriggerDeploymentConfiguration };
-export { ThisDeployment as LambdaTriggerDeployment };
-export { ThisPackageConfiguration as LambdaTriggerConfiguration };
-export { ThisPackage as LambdaTriggerPackage };
+export type { ThisDeploymentConfiguration as LambdaTriggerDeploymentConfiguration };
+export type { ThisDeployment as LambdaTriggerDeployment };
+export type { ThisPackageConfiguration as LambdaTriggerConfiguration };
+export type { ThisPackage as LambdaTriggerPackage };

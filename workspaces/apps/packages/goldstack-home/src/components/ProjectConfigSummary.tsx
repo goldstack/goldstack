@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
 import { useRouter } from 'next/router';
-import { ProjectData } from '@goldstack/project-repository';
+import type { ProjectData } from '@goldstack/project-repository';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import assert from 'assert';
 import styled from 'styled-components';
 
 import { getEndpoint } from '@goldstack/goldstack-api';
-import { validateProject, StepValidation } from './../lib/validateProject';
+import { validateProject, type StepValidation } from './../lib/validateProject';
 
 import * as Fullstory from '@fullstory/browser';
 import Progress from './Progress';
@@ -32,10 +32,7 @@ const ValidationResult = (props: { result: StepValidation }): JSX.Element => {
   );
 };
 
-const buildPackage = async (
-  packageId: string,
-  data: ProjectData
-): Promise<any> => {
+const buildPackage = async (packageId: string, data: ProjectData): Promise<any> => {
   const packageRes = await fetch(
     `${getEndpoint()}/projects/${data.projectId}/packages/${packageId}`,
     {
@@ -45,7 +42,7 @@ const buildPackage = async (
         'Content-Type': 'application/json;charset=utf-8',
       },
       body: JSON.stringify(data),
-    }
+    },
   );
   if (packageRes.status !== 200) {
     throw new Error('Cannot build package for project');
@@ -57,9 +54,7 @@ const ProjectConfigSummary = (props: {
   projectData: ProjectData;
   packageId: string;
 }): JSX.Element => {
-  const [progressMessage, setProgressMessage] = useState<string | undefined>(
-    undefined
-  );
+  const [progressMessage, setProgressMessage] = useState<string | undefined>(undefined);
   const router = useRouter();
   const validationResult = validateProject(props.projectData);
 
@@ -80,26 +75,19 @@ const ProjectConfigSummary = (props: {
     try {
       Fullstory.setUserVars({
         selectedTemplates_strs: props.projectData.packageConfigs.map(
-          (config) => config.package.template
+          (config) => config.package.template,
         ),
       });
     } catch (e) {
-      console.warn(
-        'Cannot set Fullstory custom env variables for build project.'
-      );
+      console.warn('Cannot set Fullstory custom env variables for build project.');
       console.log(e);
     }
 
     setProgressMessage('Building project package ...');
-    const { packageId } = await buildPackage(
-      props.packageId,
-      props.projectData
-    );
+    const { packageId } = await buildPackage(props.packageId, props.projectData);
     setProgressMessage('Done!');
     assert(packageId);
-    router.push(
-      `/projects/${props.projectData.projectId}/packages/${packageId}/download`
-    );
+    router.push(`/projects/${props.projectData.projectId}/packages/${packageId}/download`);
   };
 
   return (
@@ -107,17 +95,10 @@ const ProjectConfigSummary = (props: {
       {validationResult.map((result, idx) => (
         <ValidationResult result={result} key={idx}></ValidationResult>
       ))}
-      {!allValid && (
-        <p>
-          Please complete the configuration for the steps marked with ❌ above.
-        </p>
-      )}
+      {!allValid && <p>Please complete the configuration for the steps marked with ❌ above.</p>}
 
       {allValid && (
-        <p>
-          Click the button below to build the downloadable archive for your
-          project.
-        </p>
+        <p>Click the button below to build the downloadable archive for your project.</p>
       )}
       <Row className="space-top-2 space-bottom-2">
         <Col xs={3}></Col>

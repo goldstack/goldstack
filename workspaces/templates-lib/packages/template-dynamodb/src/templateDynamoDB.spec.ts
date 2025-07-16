@@ -4,7 +4,7 @@ import {
   stopAllLocalDynamoDB,
   stopLocalDynamoDB,
 } from './templateDynamoDBTable';
-import { ThisPackage } from './types/DynamoDBPackage';
+import type { ThisPackage } from './types/DynamoDBPackage';
 import { check } from 'tcp-port-used';
 import { connect } from './templateDynamoDBTable';
 import { PutItemCommand, GetItemCommand } from '@aws-sdk/client-dynamodb';
@@ -103,7 +103,7 @@ describe('DynamoDB Template', () => {
       new PutItemCommand({
         TableName: tableName1,
         Item: testItem,
-      })
+      }),
     );
 
     // Try to read from first table - should succeed
@@ -114,7 +114,7 @@ describe('DynamoDB Template', () => {
           pk: { S: 'test-id' },
           sk: { S: 'test-data' },
         },
-      })
+      }),
     );
     expect(response1.Item).toEqual(testItem);
 
@@ -126,7 +126,7 @@ describe('DynamoDB Template', () => {
           pk: { S: 'test-id' },
           sk: { S: 'test-data' },
         },
-      })
+      }),
     );
     expect(response2.Item).toBeUndefined();
 

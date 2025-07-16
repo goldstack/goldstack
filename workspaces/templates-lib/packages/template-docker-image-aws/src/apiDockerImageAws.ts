@@ -1,20 +1,18 @@
-import ECS from 'aws-sdk/clients/ecs';
-import CloudWatchLogs from 'aws-sdk/clients/cloudwatchlogs';
-import assert from 'assert';
 import {
+  type DeploymentState,
+  readDeploymentState,
+  readTerraformStateVariable,
+} from '@goldstack/infra';
+import { getAWSCredentials, getAWSUser } from '@goldstack/infra-aws';
+import assert from 'assert';
+import CloudWatchLogs from 'aws-sdk/clients/cloudwatchlogs';
+import ECS from 'aws-sdk/clients/ecs';
+import type {
   AWSDockerImageDeployment,
   AWSDockerImagePackage,
 } from './types/AWSDockerImagePackage';
-import { getAWSUser, getAWSCredentials } from '@goldstack/infra-aws';
-import {
-  readDeploymentState,
-  readTerraformStateVariable,
-  DeploymentState,
-} from '@goldstack/infra';
 
-const createECS = async (
-  deployment: AWSDockerImageDeployment
-): Promise<ECS> => {
+const createECS = async (deployment: AWSDockerImageDeployment): Promise<ECS> => {
   const awsUser = await getAWSUser(deployment.awsUser);
   const credentials = await getAWSCredentials(awsUser);
   return new ECS({
@@ -24,7 +22,7 @@ const createECS = async (
 };
 
 const createCloudWatchLogs = async (
-  deployment: AWSDockerImageDeployment
+  deployment: AWSDockerImageDeployment,
 ): Promise<CloudWatchLogs> => {
   const awsUser = await getAWSUser(deployment.awsUser);
   const credentials = await getAWSCredentials(awsUser);
@@ -44,9 +42,7 @@ interface GetLogsParams {
   endTime?: number;
 }
 
-export const getLogs = async (
-  params: GetLogsParams
-): Promise<CloudWatchLogs.OutputLogEvents> => {
+export const getLogs = async (params: GetLogsParams): Promise<CloudWatchLogs.OutputLogEvents> => {
   const ecs = await createECS(params.deployment);
   const deploymentState = params.deploymentState;
   const taskId = params.taskId;
@@ -109,16 +105,12 @@ interface RunParams {
 
 export const getTaskStatus = async (
   deployment: AWSDockerImageDeployment,
-  taskExecutionArn: string
+  taskExecutionArn: string,
 ): Promise<ECS.Task> => {
   const ecs = await createECS(deployment);
-  const tasksState = await ecs
-    .describeTasks({ tasks: [taskExecutionArn] })
-    .promise();
+  const tasksState = await ecs.describeTasks({ tasks: [taskExecutionArn] }).promise();
   if (tasksState.failures && tasksState.failures.length > 0) {
-    throw new Error(
-      `Cannot determine state of launched tast. ${tasksState.failures[0].reason}`
-    );
+    throw new Error(`Cannot determine state of launched tast. ${tasksState.failures[0].reason}`);
   }
 
   assert(tasksState.tasks);
@@ -133,16 +125,14 @@ export interface StartTaskResult {
   ecsConsoleLink: string;
 }
 
-export const startTask = async (
-  params: RunParams
-): Promise<StartTaskResult> => {
+export const startTask = async (params: RunParams): Promise<StartTaskResult> => {
   const deployment = params.deployment;
   const ecs = await createECS(params.deployment);
   const config = params.config;
   const deploymentState = params.deploymentState;
   if (!deploymentState) {
     throw new Error(
-      `Deployment state for '${params.deployment.name}' is not defined. Make sure to have deployed the image to this environment.`
+      `Deployment state for '${params.deployment.name}' is not defined. Make sure to have deployed the image to this environment.`,
     );
   }
   const repo = readTerraformStateVariable(deploymentState, 'repo_url');
@@ -152,7 +142,7 @@ export const startTask = async (
   if (!params.imageHash) {
     if (!deploymentState['latest']) {
       throw new Error(
-        `Cannot run image since image has not been deployed for deployment '${params.deployment.name}'.`
+        `Cannot run image since image has not been deployed for deployment '${params.deployment.name}'.`,
       );
     }
 
@@ -184,30 +174,22 @@ export const startTask = async (
             },
           },
         ],
-        taskRoleArn: readTerraformStateVariable(
-          deploymentState,
-          'ecs_task_role_arn'
-        ),
+        taskRoleArn: readTerraformStateVariable(deploymentState, 'ecs_task_role_arn'),
         networkMode: 'awsvpc',
         cpu: '1 vcpu',
         memory: '4 GB',
         executionRoleArn: readTerraformStateVariable(
           deploymentState,
-          'ecs_task_execution_role_arn'
+          'ecs_task_execution_role_arn',
         ),
         requiresCompatibilities: ['FARGATE'],
-        family: `temp-${
-          config.configuration.imageTag
-        }-${new Date().getTime()}-${imageHash}`,
+        family: `temp-${config.configuration.imageTag}-${new Date().getTime()}-${imageHash}`,
       })
       .promise()
   ).taskDefinition;
   assert(taskDefinition);
 
-  const clusterName = readTerraformStateVariable(
-    deploymentState,
-    'cluster_name'
-  );
+  const clusterName = readTerraformStateVariable(deploymentState, 'cluster_name');
   const runTaskResponse = await ecs
     .runTask({
       cluster: clusterName,
@@ -217,12 +199,7 @@ export const startTask = async (
         awsvpcConfiguration: {
           subnets: [readTerraformStateVariable(deploymentState, 'subnet')],
           assignPublicIp: 'ENABLED',
-          securityGroups: [
-            readTerraformStateVariable(
-              deploymentState,
-              'container_security_group'
-            ),
-          ],
+          securityGroups: [readTerraformStateVariable(deploymentState, 'container_security_group')],
         },
       },
       taskDefinition: `${taskDefinition.family}:${taskDefinition.revision}`,
@@ -233,9 +210,7 @@ export const startTask = async (
 
   const tasks = runTaskResponse.tasks;
   if (!tasks) {
-    throw new Error(
-      `Task definitions not supplied after running define tasks for ${imageName}`
-    );
+    throw new Error(`Task definitions not supplied after running define tasks for ${imageName}`);
   }
 
   const taskExecution = tasks[0];
@@ -249,19 +224,15 @@ export const startTask = async (
     deployment.awsRegion
   }#logsV2:log-groups/log-group/${awsLogsGroup.replace(
     /\//g,
-    '$252F'
+    '$252F',
   )}/log-events/${`ecs/main/${taskExecution.taskArn.split('/')[2]}`
     .replace('$', '$2524')
     .replace('[', '$255B')
     .replace(']', '$255D')
     .replace(/\//g, '$252F')}`;
-  const ecsConsoleLink = `https://${
+  const ecsConsoleLink = `https://${deployment.awsRegion}.console.aws.amazon.com/ecs/home?region=${
     deployment.awsRegion
-  }.console.aws.amazon.com/ecs/home?region=${
-    deployment.awsRegion
-  }#/clusters/${clusterName}/tasks/${
-    taskExecution.taskArn.split('/')[2]
-  }/details`;
+  }#/clusters/${clusterName}/tasks/${taskExecution.taskArn.split('/')[2]}/details`;
   return {
     taskArn: taskExecution.taskArn,
     taskId,
@@ -291,9 +262,8 @@ export const runTask = async (params: RunParams): Promise<StartTaskResult> => {
 
   console.log(`Task status: ${task.lastStatus}`);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const waitForStateRunning: any = 'tasksRunning';
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const waitForParams: any = {
     tasks: [taskId],
     cluster: readTerraformStateVariable(deploymentState, 'cluster_name'),
@@ -303,7 +273,6 @@ export const runTask = async (params: RunParams): Promise<StartTaskResult> => {
 
   console.log('Task started up successfully ...');
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const waitForStateStopped: any = 'tasksStopped';
 
   await ecs.waitFor(waitForStateStopped, waitForParams).promise();
@@ -355,11 +324,11 @@ export const runTask = async (params: RunParams): Promise<StartTaskResult> => {
 export const apiDockerImageAwsCli = async (
   config: AWSDockerImagePackage,
   deployment: AWSDockerImageDeployment,
-  args: string[]
+  args: string[],
 ): Promise<void> => {
   if (args.length < 1) {
     throw new Error(
-      'Please specify an operation along with the image command. Supported operations ["run"]'
+      'Please specify an operation along with the image command. Supported operations ["run"]',
     );
   }
   const [, deploymentName] = args;

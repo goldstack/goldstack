@@ -71,9 +71,7 @@ const GetTemplatePage = (): JSX.Element => {
                 stripeId={data.stripeId as string}
               ></ConfigureSession>
             )}
-            {data && data.paymentReceived && (
-              <p>User session already confirmed. Thank you!</p>
-            )}
+            {data && data.paymentReceived && <p>User session already confirmed. Thank you!</p>}
           </Col>
           <Col lg={5} className="mb-7 mb-lg-0 pt-5">
             <GetTemplateDescription></GetTemplateDescription>

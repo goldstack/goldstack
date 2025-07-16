@@ -6,10 +6,7 @@ import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import { PackageConfig } from '@goldstack/utils-package-config';
 export * from './types/LambdaHttpPackage';
 import yargs from 'yargs';
-import {
-  LambdaExpressPackage,
-  LambdaExpressDeployment,
-} from './types/LambdaHttpPackage';
+import type { LambdaExpressPackage, LambdaExpressDeployment } from './types/LambdaHttpPackage';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
@@ -21,10 +18,7 @@ export const run = async (args: string[]): Promise<void> => {
       .help()
       .parse();
 
-    const packageConfig = new PackageConfig<
-      LambdaExpressPackage,
-      LambdaExpressDeployment
-    >({
+    const packageConfig = new PackageConfig<LambdaExpressPackage, LambdaExpressDeployment>({
       packagePath: './',
     });
 

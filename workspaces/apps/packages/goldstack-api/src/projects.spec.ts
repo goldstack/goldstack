@@ -1,10 +1,6 @@
 import { getMockReq, getMockRes } from '@jest-mock/express';
-import {
-  postProjectHandler,
-  getProjectHandler,
-  putProjectHandler,
-} from './projects';
-import { ProjectConfiguration } from '@goldstack/utils-project';
+import { postProjectHandler, getProjectHandler, putProjectHandler } from './projects';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
 import { dummyUser } from '@goldstack/auth';
 
 jest.setTimeout(20000);

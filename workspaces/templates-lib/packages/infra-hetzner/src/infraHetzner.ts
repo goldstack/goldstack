@@ -1,9 +1,5 @@
 import fs from 'fs';
-import {
-  parseConfig,
-  getHetznerConfigPath,
-  validateConfig,
-} from '@goldstack/utils-config';
+import { parseConfig, getHetznerConfigPath, validateConfig } from '@goldstack/utils-config';
 import { read, write } from '@goldstack/utils-sh';
 
 import { info } from '@goldstack/utils-log';
@@ -14,22 +10,20 @@ import configSchema from './schemas/accountConfigSchema.json';
 
 import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
 
-import { HetznerConfiguration } from './types/HetznerConfiguration';
+import type { HetznerConfiguration } from './types/HetznerConfiguration';
 
-import { HetznerUser } from './types/HetznerConfiguration';
-import { HetznerDeployment } from './types/HetznerDeployment';
+import type { HetznerUser } from './types/HetznerConfiguration';
+import type { HetznerDeployment } from './types/HetznerDeployment';
 
 export type { HetznerUser, HetznerDeployment };
 
 export const readDeploymentFromPackageConfig = (
   deploymentName: string,
-  path?: string
+  path?: string,
 ): HetznerDeployment => {
   const packageConfig = readPackageConfig(path);
 
-  const deployment = packageConfig.deployments.find(
-    (d) => d.name === deploymentName
-  );
+  const deployment = packageConfig.deployments.find((d) => d.name === deploymentName);
   if (!deployment) {
     throw new Error('Cannot find deployment with name: ' + deploymentName);
   }
@@ -64,10 +58,7 @@ export const readConfig = (path?: string): HetznerConfiguration => {
   }) as HetznerConfiguration;
 };
 
-export const writeConfig = (
-  config: HetznerConfiguration,
-  path?: string
-): void => {
+export const writeConfig = (config: HetznerConfiguration, path?: string): void => {
   if (!path) {
     path = getHetznerConfigPath('./../../');
   }
@@ -85,11 +76,11 @@ export const createDefaultConfig = (): HetznerConfiguration => {
  */
 export const getHetznerUser = async (
   userName: string,
-  configPath?: string
+  configPath?: string,
 ): Promise<HetznerUser> => {
   if (process.env.HCLOUD_TOKEN) {
     info(
-      'Environment variable HCLOUD_TOKEN defined. This token will be used to access Hetzner API.'
+      'Environment variable HCLOUD_TOKEN defined. This token will be used to access Hetzner API.',
     );
     return {
       name: 'local',
@@ -100,7 +91,7 @@ export const getHetznerUser = async (
   }
 
   const config = readConfig(configPath);
-  const user = config.users.find((u) => u.name == userName);
+  const user = config.users.find((u) => u.name === userName);
   if (!user) {
     throw new Error('Cannot find Hetzner user ' + userName);
   }

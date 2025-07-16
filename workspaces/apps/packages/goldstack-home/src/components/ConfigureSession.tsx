@@ -19,7 +19,7 @@ interface ConfigureSessionProps {
 
 function validateEmail(email: string): boolean {
   const re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
 
@@ -65,10 +65,7 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
         coupon: 'FREEBETA',
       }),
     });
-    if (
-      sessionRes.status === 400 &&
-      (await sessionRes.json()).error === 'invalid-coupon'
-    ) {
+    if (sessionRes.status === 400 && (await sessionRes.json()).error === 'invalid-coupon') {
       alert('Invalid coupon');
       setProgressMessage('');
       return;
@@ -110,9 +107,8 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
         <div className="row">
           <div className="col-sm-12 mb-3">
             <p>
-              If you provide your email address, we will send a link with your
-              generated template for safekeeping and inform you about important
-              updates for your template.
+              If you provide your email address, we will send a link with your generated template
+              for safekeeping and inform you about important updates for your template.
             </p>
             <div className="js-form-message form-group">
               <label htmlFor="emailAddress" className="input-label">
@@ -138,6 +134,7 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
               href="/terms-and-conditions"
               className="link-underline"
               target="_blank"
+              rel="noopener"
             >
               Terms and Conditions
             </a>{' '}

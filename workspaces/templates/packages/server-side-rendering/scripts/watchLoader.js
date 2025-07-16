@@ -30,14 +30,14 @@ watcher.on('change', (file) => {
 // Override the default `require`
 const originalRequire = Module.prototype.require;
 
-let loadWatcher = undefined;
+let loadWatcher ;
 
 Module.prototype.require = function (filePath) {
   const resolvedPath = Module._resolveFilename(filePath, this);
   if (
     // resolvedPath !== filePath &&
     !/node_modules|\.git|\.yarn/.test(resolvedPath) &&
-    /[.\/\\]/.test(resolvedPath) && // Check if the path contains at least one of ., \, or /
+    /[./\\]/.test(resolvedPath) && // Check if the path contains at least one of ., \, or /
     !watchedFiles.has(resolvedPath)
   ) {
     watchedFiles.add(resolvedPath);

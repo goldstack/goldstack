@@ -1,20 +1,15 @@
 import { debug, fatal, info, warn } from '@goldstack/utils-log';
 import { tf } from './terraformCli';
-import {
+import type {
   TerraformDeployment,
   TerraformVariables,
   TerraformVersion,
 } from './types/utilsTerraformConfig';
-import { CloudProvider } from './cloudProvider';
+import type { CloudProvider } from './cloudProvider';
 import { cd, read, pwd } from '@goldstack/utils-sh';
-import { Variables } from './terraformCli';
-import {
-  readPackageConfig,
-  writePackageConfig,
-} from '@goldstack/utils-package';
-import child_process, {
-  SpawnSyncOptionsWithStringEncoding,
-} from 'child_process';
+import type { Variables } from './terraformCli';
+import { readPackageConfig, writePackageConfig } from '@goldstack/utils-package';
+import child_process, { type SpawnSyncOptionsWithStringEncoding } from 'child_process';
 import assert from 'assert';
 import fs from 'fs';
 import os from 'os';
@@ -23,7 +18,7 @@ import { writeDeploymentState, readDeploymentState } from '@goldstack/infra';
 
 import JSONStableStringy from 'json-stable-stringify';
 import path from 'path';
-import { TerraformOptions } from './utilsTerraform';
+import type { TerraformOptions } from './utilsTerraform';
 
 export const convertToPythonVariable = (variableName: string): string => {
   let res = '';
@@ -54,7 +49,7 @@ export const convertFromPythonVariable = (variableName: string): string => {
 
 export const getVariablesFromProperties = (
   properties: object,
-  terraformVariables?: TerraformVariables
+  terraformVariables?: TerraformVariables,
 ): Variables => {
   const vars: Variables = [];
   if (!terraformVariables) {
@@ -67,10 +62,7 @@ export const getVariablesFromProperties = (
       if (variableValue !== '') {
         vars.push([variableName, variableValue]);
       } else {
-        vars.push([
-          variableName,
-          process.env[variableName.toLocaleUpperCase()] || '',
-        ]);
+        vars.push([variableName, process.env[variableName.toLocaleUpperCase()] || '']);
       }
     }
   }
@@ -91,22 +83,22 @@ export const parseVariables = (hcl: string): string[] => {
 export const getVariablesFromHCL = (properties: object): Variables => {
   if (!fs.existsSync('./variables.tf')) {
     warn(
-      `No variables.tf file exists in ${pwd()}. Goldstack only supports declaring variables in a variables.tf file.`
+      `No variables.tf file exists in ${pwd()}. Goldstack only supports declaring variables in a variables.tf file.`,
     );
     return [];
   }
   const variablesHCL = read('./variables.tf');
   const hclVariableNames = parseVariables(variablesHCL);
   const jsVariableNames = hclVariableNames.map((hclVarName) =>
-    convertFromPythonVariable(hclVarName)
+    convertFromPythonVariable(hclVarName),
   );
 
   jsVariableNames.forEach((key) => {
-    if (!properties.hasOwnProperty(key)) {
+    if (!Object.hasOwn(properties, key)) {
       warn(
         `Cannot find property "${key}" in Goldstack configuration. Therefore terraform variable ${convertToPythonVariable(
-          key
-        )} will not be read from goldstack.json.`
+          key,
+        )} will not be read from goldstack.json.`,
       );
     }
   });
@@ -118,7 +110,7 @@ export const getVariablesFromHCL = (properties: object): Variables => {
         'Property in Goldstack configuration contains "_". This is not recommended. Property: ' +
           key +
           ' Please use valid JavaScript variable names. For instance, use "myVar" instead of "my_var". ' +
-          ' Goldstack will automatically convert these to Terraform variables ("myVar" -> "my_var") when required.'
+          ' Goldstack will automatically convert these to Terraform variables ("myVar" -> "my_var") when required.',
       );
     }
     if (jsVariableNames.find((varName) => varName === key)) {
@@ -130,32 +122,20 @@ export const getVariablesFromHCL = (properties: object): Variables => {
         } else if (typeof variableValue === 'number') {
           vars.push([pythonVariableName, `${variableValue}`]);
         } else if (typeof variableValue === 'object') {
-          vars.push([
-            pythonVariableName,
-            `${JSONStableStringy(variableValue)}`,
-          ]);
+          vars.push([pythonVariableName, `${JSONStableStringy(variableValue)}`]);
         } else {
           throw new Error(
-            `Not supported type for variable ${pythonVariableName}: ${typeof variableValue}`
+            `Not supported type for variable ${pythonVariableName}: ${typeof variableValue}`,
           );
         }
       } else {
         const environmentVariableName = pythonVariableName.toLocaleUpperCase();
         debug(
-          `Checking environment variable to set terraform variable: ${environmentVariableName}`
+          `Checking environment variable to set terraform variable: ${environmentVariableName}`,
         );
-        if (
-          process.env[environmentVariableName] ||
-          process.env[environmentVariableName] === ''
-        ) {
-          info(
-            'Setting terraform variable from environment variable ' +
-              environmentVariableName
-          );
-          vars.push([
-            pythonVariableName,
-            process.env[environmentVariableName] || '',
-          ]);
+        if (process.env[environmentVariableName] || process.env[environmentVariableName] === '') {
+          info('Setting terraform variable from environment variable ' + environmentVariableName);
+          vars.push([pythonVariableName, process.env[environmentVariableName] || '']);
         } else {
           warn('Terraform variable will not be defined ' + pythonVariableName);
         }
@@ -173,9 +153,7 @@ const getDeployment = (args: string[]): TerraformDeployment => {
 
   const packageConfig = readPackageConfig();
 
-  const deployment = packageConfig.deployments.find(
-    (deployment) => deployment.name === name
-  );
+  const deployment = packageConfig.deployments.find((deployment) => deployment.name === name);
 
   if (!deployment) {
     fatal(`Cannot find configuration for deployment '${name}''`);
@@ -188,13 +166,9 @@ const getDeployment = (args: string[]): TerraformDeployment => {
 export class TerraformBuild {
   provider: CloudProvider;
 
-  private getTfStateVariables = (
-    deployment: TerraformDeployment
-  ): [string, string][] => {
+  private getTfStateVariables = (deployment: TerraformDeployment): [string, string][] => {
     const packageConfig = readPackageConfig();
-    const deployments = packageConfig.deployments.filter(
-      (d) => d.name === deployment.name
-    );
+    const deployments = packageConfig.deployments.filter((d) => d.name === deployment.name);
     if (deployments.length !== 1) {
       throw new Error(`Cannot find deployment ${deployment.name}`);
     }
@@ -204,9 +178,7 @@ export class TerraformBuild {
     if (!(deploymentConfig as TerraformDeployment).tfStateKey) {
       const stateHash = crypto.randomBytes(10).toString('hex');
       const stateKey = `${packageConfig.name}-${deployment.name}-${stateHash}.tfstate`;
-      info(
-        `Initialising Terraform State key for ${deployment.name} to ${stateKey}`
-      );
+      info(`Initialising Terraform State key for ${deployment.name} to ${stateKey}`);
       (deploymentConfig as TerraformDeployment).tfStateKey = stateKey;
       writePackageConfig(packageConfig);
     }
@@ -227,8 +199,7 @@ export class TerraformBuild {
         return tsConfig.tfVersion;
       } catch (e) {
         throw new Error(
-          'Invalid Terraform configuration in ' +
-            path.resolve('./infra/tfConfig.json')
+          'Invalid Terraform configuration in ' + path.resolve('./infra/tfConfig.json'),
         );
       }
     }
@@ -238,7 +209,7 @@ export class TerraformBuild {
         args +
         ' in ' +
         pwd() +
-        '. Terraform config with version expected in `infra/tfConfig.json` or as part of the deployment.'
+        '. Terraform config with version expected in `infra/tfConfig.json` or as part of the deployment.',
     );
     // before Terraform versions were introduced, only version 0.12 was supported
     //return '0.12';
@@ -252,7 +223,7 @@ export class TerraformBuild {
     try {
       const provider = this.provider;
 
-      let workspace: undefined | string = undefined;
+      let workspace: undefined | string;
 
       // supplying workspace does not work for first initialisation
       // https://discuss.hashicorp.com/t/terraform-init-ignores-input-false-option/16065
@@ -261,9 +232,7 @@ export class TerraformBuild {
         workspace = deployment.name;
       }
 
-      const variables = [
-        ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
-      ];
+      const variables = [...getVariablesFromHCL({ ...deployment, ...deployment.configuration })];
 
       tf('init', {
         provider,
@@ -354,9 +323,7 @@ export class TerraformBuild {
         backendConfig,
       });
 
-      const variables = [
-        ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
-      ];
+      const variables = [...getVariablesFromHCL({ ...deployment, ...deployment.configuration })];
 
       tf('plan', {
         provider,
@@ -414,7 +381,7 @@ export class TerraformBuild {
 
     let cmd: string;
     let args: string[];
-    if (os.platform() == 'win32') {
+    if (os.platform() === 'win32') {
       cmd = 'cmd';
       args = ['/V:ON', '/C', 'set /p response= && echo !response!'];
     } else {
@@ -441,16 +408,14 @@ export class TerraformBuild {
       if (!ciConfirmed) {
         const value = this.prompt(
           'Are you sure to destroy your deployed resources? If yes, please type `y` and enter.\n' +
-            'Otherwise, press enter.\nYour Input: '
+            'Otherwise, press enter.\nYour Input: ',
         );
         if (value !== 'y') {
           fatal('Prompt not confirmed with `y`');
         }
       }
       const provider = this.provider;
-      const variables = [
-        ...getVariablesFromHCL({ ...deployment, ...deployment.configuration }),
-      ];
+      const variables = [...getVariablesFromHCL({ ...deployment, ...deployment.configuration })];
 
       tf(`workspace select ${args[0]}`, { provider, version, silent: true });
       tf('init', {
@@ -482,10 +447,7 @@ export class TerraformBuild {
     }
   };
 
-  private performUpgrade = (
-    deploymentName: string,
-    targetVersion: TerraformVersion
-  ) => {
+  private performUpgrade = (deploymentName: string, targetVersion: TerraformVersion) => {
     const provider = this.provider;
     const version = this.getTfVersion([deploymentName]);
     cd('./infra/aws');
@@ -514,7 +476,7 @@ export class TerraformBuild {
         // Sometimes it seems that Terraform forgets/destroys a workspace when upgrading the version of
         // another deployment.
         throw new Error(
-          `Please initialise the deployment to be upgraded first with 'yarn infra init ${deploymentName}'. Please note that the 'init' command may fail with the error 'Error: Invalid legacy provider address' (if you have upgraded another deployment before this). In that case, run the 'upgrade' command regardless after the 'init' command has completed.`
+          `Please initialise the deployment to be upgraded first with 'yarn infra init ${deploymentName}'. Please note that the 'init' command may fail with the error 'Error: Invalid legacy provider address' (if you have upgraded another deployment before this). In that case, run the 'upgrade' command regardless after the 'init' command has completed.`,
         );
       }
     }
@@ -530,15 +492,13 @@ export class TerraformBuild {
     }
     cd('../..');
     const packageConfig = readPackageConfig();
-    const deploymentInConfig = packageConfig.deployments.find(
-      (e) => e.name === deploymentName
-    );
+    const deploymentInConfig = packageConfig.deployments.find((e) => e.name === deploymentName);
     assert(deploymentInConfig);
     deploymentInConfig.tfVersion = targetVersion;
     writePackageConfig(packageConfig);
     this.init([deploymentName]);
     console.log(
-      `Version upgraded to ${targetVersion}. Please run deployment to upgrade remote state before further upgrades.`
+      `Version upgraded to ${targetVersion}. Please run deployment to upgrade remote state before further upgrades.`,
     );
   };
 
@@ -575,17 +535,13 @@ export class TerraformBuild {
       this.performUpgrade(args[0], newVersion as TerraformVersion);
       return;
     }
-    throw new Error(
-      `Version upgrade not supported: from [${version}] to [${newVersion}].`
-    );
+    throw new Error(`Version upgrade not supported: from [${version}] to [${newVersion}].`);
   };
 
   isUp = (args: string[]): void => {
     const deploymentsInfo = JSON.parse(read('src/state/deployments.json'));
     const deployment = getDeployment(args);
-    const deploymentState = deploymentsInfo.find(
-      (e: any) => e.name === deployment.name
-    );
+    const deploymentState = deploymentsInfo.find((e: any) => e.name === deployment.name);
     if (!deploymentState || !deploymentState.terraform) {
       info('is-up: false');
     } else {
@@ -619,10 +575,7 @@ export class TerraformBuild {
       tf(`workspace select ${opArgs[0]}`, { provider, version, silent: true });
       const remainingArgs = opArgs
         .slice(1)
-        .filter(
-          (arg) =>
-            arg !== '--inject-backend-config' && arg !== '--inject-variables'
-        );
+        .filter((arg) => arg !== '--inject-backend-config' && arg !== '--inject-variables');
       tf(remainingArgs.join(' '), {
         provider,
         backendConfig,

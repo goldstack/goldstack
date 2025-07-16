@@ -1,5 +1,5 @@
 import visit from 'unist-util-visit';
-import toString from 'mdast-util-to-string';
+import toStringMdCast from 'mdast-util-to-string';
 import GithubSlugger from 'github-slugger';
 import permalinkIcon from './permalinkIconAst';
 
@@ -38,13 +38,11 @@ export default function rehypeDocs({ filePath, tag, processor }) {
     // The URL is relative at this point
     props.className = 'relative';
     // Update the hash used by anchors to match the one set for headers
-    props.href = hash
-      ? `${relativePath}#${anchorSlugger.slug(hash)}`
-      : relativePath;
+    props.href = hash ? `${relativePath}#${anchorSlugger.slug(hash)}` : relativePath;
   }
 
   function visitHeading(node: any): void {
-    const text = toString(node);
+    const text = toStringMdCast(node);
 
     if (!text) return;
 

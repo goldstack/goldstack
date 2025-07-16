@@ -1,22 +1,22 @@
-import TypeScriptIcon from './../../icons/typescript.svg';
+import type { TemplateFeatureImage } from '@goldstack/template-metadata';
+import AWSIcon from './../../icons/aws.svg';
+import APIGateway from './../../icons/aws-api-gateway.svg';
+import BiomeIcon from './../../icons/biomejs.svg';
+import BootstrapIcon from './../../icons/bootstrap.svg';
+import ESLintIcon from './../../icons/eslint.svg';
+import CompositionIcon from './../../icons/front/icon-29-composition.svg';
+import JestIcon from './../../icons/jestjs.svg';
+import LambdaIcon from './../../icons/lambda.svg';
 import NextjsIcon from './../../icons/nextjs.svg';
 import NextjsBootstrapIcon from './../../icons/nextjs_bootstrap.svg';
-import ESLintIcon from './../../icons/eslint.svg';
-import VSCodeIcon from './../../icons/vscode.svg';
-import YarnIcon from './../../icons/yarn.svg';
-import AWSIcon from './../../icons/aws.svg';
-import TerraformIcon from './../../icons/terraform.svg';
-import JestIcon from './../../icons/jestjs.svg';
-import CompositionIcon from './../../icons/front/icon-29-composition.svg';
-import BootstrapIcon from './../../icons/bootstrap.svg';
 import NodejsIcon from './../../icons/nodejs.svg';
 import ReactIcon from './../../icons/reactjs.svg';
-import LambdaIcon from './../../icons/lambda.svg';
-import SESIcon from './../../icons/ses2.svg';
 import S3Icon from './../../icons/s3.svg';
-import APIGateway from './../../icons/aws-api-gateway.svg';
-
-import { TemplateFeatureImage } from '@goldstack/template-metadata';
+import SESIcon from './../../icons/ses2.svg';
+import TerraformIcon from './../../icons/terraform.svg';
+import TypeScriptIcon from './../../icons/typescript.svg';
+import VSCodeIcon from './../../icons/vscode.svg';
+import YarnIcon from './../../icons/yarn.svg';
 
 export const resolveImage = (image: TemplateFeatureImage): any => {
   if (image.indexOf('http') === 0) {
@@ -30,6 +30,9 @@ export const resolveImage = (image: TemplateFeatureImage): any => {
   }
   if (image === 'nextjs-bootstrap') {
     return NextjsBootstrapIcon;
+  }
+  if (image === 'biome') {
+    return BiomeIcon;
   }
   if (image === 'eslint') {
     return ESLintIcon;

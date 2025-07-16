@@ -11,12 +11,7 @@ import {
   Table,
 } from 'dynamodb-toolbox';
 
-import {
-  createUserEntity,
-  InputUser,
-  UserEntity,
-  ValidUserValue,
-} from './entities';
+import { createUserEntity, type InputUser, type UserEntity, type ValidUserValue } from './entities';
 
 import {
   getTableName,
@@ -41,7 +36,7 @@ describe('DynamoDB Table', () => {
     const tableInfo = await dynamoDB.send(
       new DescribeTableCommand({
         TableName: tableName,
-      })
+      }),
     );
 
     assert(tableInfo.Table?.TableStatus === 'ACTIVE');
@@ -125,9 +120,7 @@ describe('DynamoDB Table', () => {
 
     await Users.build(PutItemCommand).item(data).send();
 
-    const { Item: item } = await Users.build(GetItemCommand)
-      .key({ email: 'joe@email.com' })
-      .send();
+    const { Item: item } = await Users.build(GetItemCommand).key({ email: 'joe@email.com' }).send();
 
     if (!item) {
       throw new Error('Result not found');

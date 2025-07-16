@@ -1,12 +1,12 @@
 import { wrapCli } from '@goldstack/utils-cli';
 import { fatal } from '@goldstack/utils-log';
 import { infraAwsStaticWebsiteCli } from './infraAwsStaticWebsite';
-import {
+import type {
   AWSStaticWebsiteConfiguration,
   AWSStaticWebsitePackage,
   AWSStaticWebsiteDeploymentConfiguration,
 } from './types/AWSStaticWebsitePackage';
-import { AWSStaticWebsiteDeployment } from './types/AWSStaticWebsitePackage';
+import type { AWSStaticWebsiteDeployment } from './types/AWSStaticWebsitePackage';
 
 export type {
   AWSStaticWebsitePackage,
@@ -22,13 +22,8 @@ import { infraCommands } from '@goldstack/utils-terraform';
 
 export { infraAwsStaticWebsiteCli };
 
-export const getDeploymentConfig = (
-  deploymentName: string
-): AWSStaticWebsiteDeployment => {
-  const packageConfig = new PackageConfig<
-    AWSStaticWebsitePackage,
-    AWSStaticWebsiteDeployment
-  >({
+export const getDeploymentConfig = (deploymentName: string): AWSStaticWebsiteDeployment => {
+  const packageConfig = new PackageConfig<AWSStaticWebsitePackage, AWSStaticWebsiteDeployment>({
     packagePath: './',
   });
   return packageConfig.getDeployment(deploymentName);
@@ -44,10 +39,7 @@ export const run = async (args: string[]): Promise<void> => {
       .help()
       .parse();
 
-    const packageConfig = new PackageConfig<
-      AWSStaticWebsitePackage,
-      AWSStaticWebsiteDeployment
-    >({
+    const packageConfig = new PackageConfig<AWSStaticWebsitePackage, AWSStaticWebsiteDeployment>({
       packagePath: './',
     });
 

@@ -1,7 +1,7 @@
 import fs from 'fs';
-import { S3Client, NoSuchKey, GetObjectCommand } from '@aws-sdk/client-s3';
+import { type S3Client, NoSuchKey, GetObjectCommand } from '@aws-sdk/client-s3';
 
-import { NodeJsClient } from '@smithy/types';
+import type { NodeJsClient } from '@smithy/types';
 
 /**
  * Downloads a file from S3 to a local file.
@@ -23,9 +23,7 @@ export const download = async (params: {
 
       const res = await (params.s3 as NodeJsClient<S3Client>).send(cmd);
       if (!res.Body) {
-        throw new Error(
-          'Cannot download from S3 bucket "' + params.bucketName + '".'
-        );
+        throw new Error('Cannot download from S3 bucket "' + params.bucketName + '".');
       }
       res.Body?.pipe(file);
     } catch (e) {

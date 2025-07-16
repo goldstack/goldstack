@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -69,25 +69,22 @@ const Front = (): JSX.Element => {
           <Row>
             <Col md={9}>
               <Container fluid className="overflow-hidden p-6">
-                <BuildProject
-                  selectedIds={getPackageIds(elements)}
-                ></BuildProject>
+                <BuildProject selectedIds={getPackageIds(elements)}></BuildProject>
               </Container>
             </Col>
             <Col md={3} className="p-4 bg-light">
               <h4>How does this work?</h4>
               <p>
-                Add the stack building blocks you need. Then configure some
-                basics such as which domain(s) your project should be deployed
-                to.
+                Add the stack building blocks you need. Then configure some basics such as which
+                domain(s) your project should be deployed to.
               </p>
               <p>
-                We then put together a downloadable archive of a sleek project.
-                Just extract it and start coding.
+                We then put together a downloadable archive of a sleek project. Just extract it and
+                start coding.
               </p>
               <p>
-                We get all the following pesky details configured for you so you
-                will be at peak productivity from the very beginning:
+                We get all the following pesky details configured for you so you will be at peak
+                productivity from the very beginning:
               </p>
               <Item icon={TypeScriptIcon} index={0}>
                 Enjoy code completion and static type checking with TypeScript.
@@ -105,28 +102,24 @@ const Front = (): JSX.Element => {
                 Build modular applications using Yarn workspaces.
               </Item>
               <Item icon={TerraformIcon} index={0}>
-                Deploy infrastructure right away by using predefined Terraform
-                for every module.
+                Deploy infrastructure right away by using predefined Terraform for every module.
               </Item>
               <Item icon={AWSIcon} index={0}>
-                Every module deploys as scaleable, low cost serverless
-                infrastructure on AWS.
+                Every module deploys as scaleable, low cost serverless infrastructure on AWS.
               </Item>
               <Item icon={DockerIcon} index={0}>
                 Builds run locally or in your CI in Docker containers.
               </Item>
               <Item icon={SecurityIcon} index={0}>
-                Extensive documentation on how to deploy all resources with
-                enterprise level security.
+                Extensive documentation on how to deploy all resources with enterprise level
+                security.
               </Item>
               <p>
-                Goldstack provides professional, battle tested, and frequently
-                updated starter templates. Starting with a Goldstack template
-                will save you tons of time. But likewise it is a huge
-                committment from us to develop and maintain these templates;
-                thus we charge a small fee that will unlock support and
-                unlimited template downloads for a month. Thank you for your
-                support 🙏
+                Goldstack provides professional, battle tested, and frequently updated starter
+                templates. Starting with a Goldstack template will save you tons of time. But
+                likewise it is a huge committment from us to develop and maintain these templates;
+                thus we charge a small fee that will unlock support and unlimited template downloads
+                for a month. Thank you for your support 🙏
               </p>
             </Col>
           </Row>

@@ -1,27 +1,16 @@
-import { Router, Request, Response } from 'express';
+import { Router, type Request, type Response } from 'express';
 
 import { connectProjectRepository } from '@goldstack/project-repository';
-import {
-  connect,
-  getBucketName,
-  getSignedUrl,
-} from '@goldstack/project-package-bucket';
+import { connect, getBucketName, getSignedUrl } from '@goldstack/project-package-bucket';
 
 import { PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
 
 import { v4 as uuid4 } from 'uuid';
-import {
-  mkdir,
-  rmSafe,
-  goldstackLocalDir,
-  write,
-  zip,
-  read,
-} from '@goldstack/utils-sh';
+import { mkdir, rmSafe, goldstackLocalDir, write, zip, read } from '@goldstack/utils-sh';
 
 import { connectSessionRepository } from '@goldstack/session-repository';
 import { writePackageConfigs } from '@goldstack/project-config';
-import { ProjectData } from '@goldstack/project-repository';
+import type { ProjectData } from '@goldstack/project-repository';
 
 import { isSessionPaid } from './lib/stripe';
 
@@ -56,9 +45,7 @@ const writePackage = async (params: {
     return;
   }
   if (!userToken) {
-    res
-      .status(400)
-      .json({ errorMessage: 'Expected userToken cookie to be set' });
+    res.status(400).json({ errorMessage: 'Expected userToken cookie to be set' });
     return;
   }
   const repo = await connectProjectRepository();
@@ -85,18 +72,12 @@ const writePackage = async (params: {
   write(JSON.stringify(project, null, 2), join(path, 'project.json'));
 
   // write owner into gitignored config file
-  write(
-    JSON.stringify({ owner }, null, 2),
-    join(path, 'config/goldstack/config.json')
-  );
+  write(JSON.stringify({ owner }, null, 2), join(path, 'config/goldstack/config.json'));
 
   // set project name in package json
   const packageJson = JSON.parse(read(join(path, 'package.json')));
   packageJson.name = project.projectName || '';
-  write(
-    JSON.stringify(sortKeys(packageJson), null, 2),
-    join(path, 'package.json')
-  );
+  write(JSON.stringify(sortKeys(packageJson), null, 2), join(path, 'package.json'));
 
   // write latest version for package configs
   const { packageConfigs } = await repo.getProjectData(projectId);
@@ -104,10 +85,7 @@ const writePackage = async (params: {
 
   // write aws user config
   const userConfigPath = join(path, 'config/infra/aws/config.json');
-  write(
-    JSON.stringify({ users: projectData.awsUsers }, null, 2),
-    userConfigPath
-  );
+  write(JSON.stringify({ users: projectData.awsUsers }, null, 2), userConfigPath);
 
   const zipPath = `${goldstackLocalDir()}work/post-project-package/${projectId}/${packageId}.zip`;
   await zip({ directory: path, target: zipPath });
@@ -127,7 +105,7 @@ const writePackage = async (params: {
       Bucket: await getBucketName(),
       Key: `${projectId}/${packageId}/package.json`,
       Body: JSON.stringify(packageData, null, 2),
-    })
+    }),
   );
 
   await packageBucket.send(
@@ -135,16 +113,13 @@ const writePackage = async (params: {
       Bucket: await getBucketName(),
       Key: `${projectId}/${packageId}/package.zip`,
       Body: fs.createReadStream(zipPath),
-    })
+    }),
   );
 
   await rmSafe(path);
 };
 
-export const postPackageHandler = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+export const postPackageHandler = async (req: Request, res: Response): Promise<void> => {
   try {
     const { projectId } = req.params;
     const { userToken } = req.cookies;
@@ -167,10 +142,7 @@ export const postPackageHandler = async (
   }
 };
 
-export const putPackageHandler = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+export const putPackageHandler = async (req: Request, res: Response): Promise<void> => {
   try {
     const { projectId, packageId } = req.params;
     const { userToken } = req.cookies;
@@ -192,23 +164,16 @@ export const putPackageHandler = async (
   }
 };
 
-export const getPackageHandler = async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+export const getPackageHandler = async (req: Request, res: Response): Promise<void> => {
   try {
     const { projectId, packageId } = req.params;
     const { userToken } = req.cookies;
     if (!projectId || !packageId) {
-      res
-        .status(400)
-        .json({ errorMessage: 'Expected projectId and packageId in request' });
+      res.status(400).json({ errorMessage: 'Expected projectId and packageId in request' });
       return;
     }
     if (!userToken) {
-      res
-        .status(400)
-        .json({ errorMessage: 'Expected userToken cookie to be set' });
+      res.status(400).json({ errorMessage: 'Expected userToken cookie to be set' });
       return;
     }
     const repo = await connectProjectRepository();
@@ -228,9 +193,7 @@ export const getPackageHandler = async (
     const sessionData = await sessionRepo.readSession(userToken);
     if (!sessionData) {
       console.error('Cannot retrieve session data for', userToken);
-      res
-        .status(500)
-        .json({ errorMessage: 'Cannot retrieve session data ' + userToken });
+      res.status(500).json({ errorMessage: 'Cannot retrieve session data ' + userToken });
       return;
     }
 
@@ -266,7 +229,7 @@ export const getPackageHandler = async (
       }),
       {
         expiresIn: 3000, // duration in seconds that link will be valid for
-      }
+      },
     );
     res.status(200).json({ downloadUrl });
     return;

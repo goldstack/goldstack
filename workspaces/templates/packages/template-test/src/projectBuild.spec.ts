@@ -1,21 +1,18 @@
-import {
-  prepareLocalS3Repo,
-  buildTemplate,
-  assertFilesExist,
-  assertFilesDoNotExist,
-} from '@goldstack/utils-template-test';
-import { S3TemplateRepository } from '@goldstack/template-repository';
-
-import { buildProject } from '@goldstack/project-build';
-import { rmSafe, mkdir, read, write } from '@goldstack/utils-sh';
-import { ProjectConfiguration } from '@goldstack/utils-project';
-
+import { readConfig } from '@goldstack/infra-aws';
 import { getModuleTemplatesNames } from '@goldstack/module-template-utils';
 
-import { getAwsConfigPath } from '@goldstack/utils-config';
-import { readConfig } from '@goldstack/infra-aws';
-
+import { buildProject } from '@goldstack/project-build';
 import { createServerSideRenderingBuildSetConfig } from '@goldstack/template-metadata';
+import type { S3TemplateRepository } from '@goldstack/template-repository';
+import { getAwsConfigPath } from '@goldstack/utils-config';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
+import { mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
+import {
+  assertFilesDoNotExist,
+  assertFilesExist,
+  buildTemplate,
+  prepareLocalS3Repo,
+} from '@goldstack/utils-template-test';
 
 import assert from 'assert';
 
@@ -23,7 +20,7 @@ jest.setTimeout(600000);
 
 describe('Template Building', () => {
   const goldstackTestsDir = './goldstackLocal/tests/build/';
-  let repo: S3TemplateRepository | undefined = undefined;
+  let repo: S3TemplateRepository | undefined;
 
   beforeAll(async () => {
     repo = await prepareLocalS3Repo(goldstackTestsDir);
@@ -83,7 +80,7 @@ describe('Template Building', () => {
 
     const awsConfigPath = getAwsConfigPath(projectDir);
     assertFilesExist([
-      projectDir + '.eslintrc.json',
+      projectDir + 'biome.jsonc',
       projectDir + 'package.json',
       projectDir + '.yarnrc.yml',
       projectDir + 'goldstack.json',
@@ -101,12 +98,8 @@ describe('Template Building', () => {
     expect(yarnRc.indexOf('npmAuthToken') === -1).toBeTruthy();
 
     for (const packageConfig of config.packages) {
-      const packageDir =
-        projectDir + 'packages/' + packageConfig.packageName + '/';
-      assertFilesExist([
-        packageDir + 'package.json',
-        packageDir + 'goldstack.json',
-      ]);
+      const packageDir = projectDir + 'packages/' + packageConfig.packageName + '/';
+      assertFilesExist([packageDir + 'package.json', packageDir + 'goldstack.json']);
       assertFilesDoNotExist([packageDir + 'template.json']);
     }
 
@@ -154,8 +147,7 @@ describe('Template Building', () => {
     });
 
     // check docker image package
-    const dockerImage1PackageDir =
-      projectDir + 'packages/' + config.packages[0].packageName + '/';
+    const dockerImage1PackageDir = projectDir + 'packages/' + config.packages[0].packageName + '/';
     assertFilesExist([
       dockerImage1PackageDir + 'infra/aws/.gitignore',
       dockerImage1PackageDir + 'infra/aws/main.tf',
@@ -163,19 +155,16 @@ describe('Template Building', () => {
     ]);
 
     // ensure config values are overwritten
-    const dockerImage1GoldstackConfig = JSON.parse(
-      read(dockerImage1PackageDir + 'goldstack.json')
-    );
+    const dockerImage1GoldstackConfig = JSON.parse(read(dockerImage1PackageDir + 'goldstack.json'));
     expect(dockerImage1GoldstackConfig.configuration.imageTag).toEqual('');
 
     const dockerImage1DeploymentState = JSON.parse(
-      read(dockerImage1PackageDir + 'src/state/deployments.json')
+      read(dockerImage1PackageDir + 'src/state/deployments.json'),
     );
     expect(dockerImage1DeploymentState).toEqual([]);
 
     // check s3 package
-    const s31PackageDir =
-      projectDir + 'packages/' + config.packages[1].packageName + '/';
+    const s31PackageDir = projectDir + 'packages/' + config.packages[1].packageName + '/';
     assertFilesExist([
       s31PackageDir + 'infra/aws/.gitignore',
       s31PackageDir + 'infra/aws/main.tf',
@@ -183,16 +172,12 @@ describe('Template Building', () => {
     ]);
 
     // ensure config values are overwritten
-    const s31GoldstackConfig = JSON.parse(
-      read(s31PackageDir + 'goldstack.json')
-    );
+    const s31GoldstackConfig = JSON.parse(read(s31PackageDir + 'goldstack.json'));
     const configEntries = Object.entries(s31GoldstackConfig.configuration);
     // console.log(JSON.stringify(configEntries));
     expect(configEntries.length).toEqual(0);
 
-    const s31DeploymentState = JSON.parse(
-      read(s31PackageDir + 'src/state/deployments.json')
-    );
+    const s31DeploymentState = JSON.parse(read(s31PackageDir + 'src/state/deployments.json'));
     expect(s31DeploymentState).toEqual([]);
   });
 
@@ -230,8 +215,7 @@ describe('Template Building', () => {
     });
 
     // check go gin
-    const goGinPackageDir =
-      projectDir + 'packages/' + config.packages[0].packageName + '/';
+    const goGinPackageDir = projectDir + 'packages/' + config.packages[0].packageName + '/';
     assertFilesExist([
       goGinPackageDir + 'infra/aws/.gitignore',
       goGinPackageDir + 'infra/aws/main.tf',
@@ -244,21 +228,14 @@ describe('Template Building', () => {
     ]);
 
     // ensure config values are overwritten
-    const goGinGoldstackConfig = JSON.parse(
-      read(goGinPackageDir + 'goldstack.json')
-    );
-    expect(Object.entries(goGinGoldstackConfig.configuration).length).toEqual(
-      0
-    );
+    const goGinGoldstackConfig = JSON.parse(read(goGinPackageDir + 'goldstack.json'));
+    expect(Object.entries(goGinGoldstackConfig.configuration).length).toEqual(0);
 
-    const goGinDeploymentState = JSON.parse(
-      read(goGinPackageDir + 'src/state/deployments.json')
-    );
+    const goGinDeploymentState = JSON.parse(read(goGinPackageDir + 'src/state/deployments.json'));
     expect(goGinDeploymentState).toEqual([]);
 
     // check email-send package
-    const emailSendPackageDir =
-      projectDir + 'packages/' + config.packages[0].packageName + '/';
+    const emailSendPackageDir = projectDir + 'packages/' + config.packages[0].packageName + '/';
     assertFilesExist([
       emailSendPackageDir + 'infra/aws/.gitignore',
       emailSendPackageDir + 'infra/aws/main.tf',
@@ -266,15 +243,11 @@ describe('Template Building', () => {
     ]);
 
     // ensure config values are overwritten
-    const emailSendGoldstackConfig = JSON.parse(
-      read(emailSendPackageDir + 'goldstack.json')
-    );
-    expect(
-      Object.entries(emailSendGoldstackConfig.configuration).length
-    ).toEqual(0);
+    const emailSendGoldstackConfig = JSON.parse(read(emailSendPackageDir + 'goldstack.json'));
+    expect(Object.entries(emailSendGoldstackConfig.configuration).length).toEqual(0);
 
     const emailSendDeploymentState = JSON.parse(
-      read(emailSendPackageDir + 'src/state/deployments.json')
+      read(emailSendPackageDir + 'src/state/deployments.json'),
     );
     expect(emailSendDeploymentState).toEqual([]);
   });
@@ -307,8 +280,7 @@ describe('Template Building', () => {
     });
 
     // check SSR
-    const ssrPackageDir =
-      projectDir + 'packages/' + config.packages[0].packageName + '/';
+    const ssrPackageDir = projectDir + 'packages/' + config.packages[0].packageName + '/';
     assertFilesExist([
       ssrPackageDir + 'infra/aws/.gitignore',
       ssrPackageDir + 'infra/aws/main.tf',
@@ -316,30 +288,20 @@ describe('Template Building', () => {
     ]);
 
     // ensure config values are overwritten
-    const ssrGoldstackConfig = JSON.parse(
-      read(ssrPackageDir + 'goldstack.json')
-    );
+    const ssrGoldstackConfig = JSON.parse(read(ssrPackageDir + 'goldstack.json'));
     expect(Object.entries(ssrGoldstackConfig.configuration).length).toEqual(0);
 
-    const ssrDeploymentState = JSON.parse(
-      read(ssrPackageDir + 'src/state/deployments.json')
-    );
+    const ssrDeploymentState = JSON.parse(read(ssrPackageDir + 'src/state/deployments.json'));
     expect(ssrDeploymentState).toEqual([]);
 
-    const ssrStaticFiles = JSON.parse(
-      read(ssrPackageDir + 'src/state/staticFiles.json')
-    );
+    const ssrStaticFiles = JSON.parse(read(ssrPackageDir + 'src/state/staticFiles.json'));
     expect(ssrStaticFiles).toEqual([]);
 
     const ssrBuildSetConfig = await createServerSideRenderingBuildSetConfig();
 
-    const packageConfig =
-      ssrBuildSetConfig.projects[0].packageConfigurations[0];
+    const packageConfig = ssrBuildSetConfig.projects[0].packageConfigurations[0];
 
     ssrGoldstackConfig.deployments = packageConfig.deployments;
-    write(
-      JSON.stringify(ssrGoldstackConfig, null, 2),
-      ssrPackageDir + 'goldstack.json'
-    );
+    write(JSON.stringify(ssrGoldstackConfig, null, 2), ssrPackageDir + 'goldstack.json');
   });
 });

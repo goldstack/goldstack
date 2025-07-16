@@ -13,9 +13,7 @@ export default function rehypeDocs({ filePath, tag, processor }): any {
       const combinedPath = path.normalize(dirname(filePath) + '/' + file);
 
       if (!fs.existsSync(combinedPath)) {
-        throw Error(
-          `Invalid fragment specified; no such file "${combinedPath}"`
-        );
+        throw Error(`Invalid fragment specified; no such file "${combinedPath}"`);
       }
 
       const code = fs.readFileSync(combinedPath, 'utf8');
@@ -23,9 +21,7 @@ export default function rehypeDocs({ filePath, tag, processor }): any {
       const markdown = processor();
 
       try {
-        node.value = `<div class=\"markdown-fragment\">${markdown.processSync(
-          code
-        )}</div>`;
+        node.value = `<div class=\"markdown-fragment\">${markdown.processSync(code)}</div>`;
         node.type = 'html';
       } catch (e) {
         throw Error(`${e.message} \nFile: ${file}`);
@@ -39,9 +35,7 @@ export default function rehypeDocs({ filePath, tag, processor }): any {
       const combinedPath = path.normalize(dirname(filePath) + '/' + file);
 
       if (!fs.existsSync(combinedPath)) {
-        throw Error(
-          `Invalid fragment specified; no such file "${combinedPath}"`
-        );
+        throw Error(`Invalid fragment specified; no such file "${combinedPath}"`);
       }
 
       const code = fs.readFileSync(combinedPath, 'utf8');
@@ -49,9 +43,7 @@ export default function rehypeDocs({ filePath, tag, processor }): any {
       const markdown = processor();
 
       try {
-        node.value = `<div class=\"markdown-fragment\">${markdown.processSync(
-          code
-        )}</div>`;
+        node.value = `<div class=\"markdown-fragment\">${markdown.processSync(code)}</div>`;
         node.type = 'html';
       } catch (e) {
         throw Error(`${e.message} \nFile: ${file}`);
@@ -64,9 +56,7 @@ export default function rehypeDocs({ filePath, tag, processor }): any {
         <h5 class="card-title">${node.children[0].value.substring(1)}</h5>
           <div class="card-text">
             <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="${
-                node.url
-              }" allowfullscreen></iframe>
+              <iframe class="embed-responsive-item" src="${node.url}" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -83,7 +73,7 @@ export default function rehypeDocs({ filePath, tag, processor }): any {
     }
   }
 
-  return function transformer(tree: any): void {
+  return function transformer(tree: any): any {
     visit(tree, 'inlineCode', visitInlineCode);
     visit(tree, (node: any) => node.type === 'link', visitLink);
     return tree;

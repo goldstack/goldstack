@@ -25,10 +25,8 @@ export const updateRootProjectReferences = ({
     const oldReferences = tsConfigData.references;
     const newReferences = makeReferences(
       '.',
-      allPackages.filter(
-        (packageData) => excludeProjects.indexOf(packageData.name) === -1
-      ),
-      tsConfigNames
+      allPackages.filter((packageData) => excludeProjects.indexOf(packageData.name) === -1),
+      tsConfigNames,
     );
 
     // Don't continue if references are unchanged
@@ -43,22 +41,20 @@ export const updateRootProjectReferences = ({
         references: newReferences.length ? newReferences : undefined,
       },
       null,
-      2
+      2,
     );
 
     if (newReferences.length) {
       console.log(
         `Updating project references in ${tsConfigPath} to:` +
-          newReferences.map((refData) => `\n  ${refData.path}`).join('')
+          newReferences.map((refData) => `\n  ${refData.path}`).join(''),
       );
     } else {
       console.log(`Removing project references in ${tsConfigPath}`);
     }
     fs.writeFileSync(tsConfigPath, newContent);
   } catch (e) {
-    console.error(
-      `Error while processing top level config file ${tsConfigPath} \n${e}`
-    );
+    console.error(`Error while processing top level config file ${tsConfigPath} \n${e}`);
     throw e;
   }
 };

@@ -1,4 +1,4 @@
-import { TemplateTest, RunTestParams } from '../types/TemplateTest';
+import type { TemplateTest, RunTestParams } from '../types/TemplateTest';
 import { cd, exec } from '@goldstack/utils-sh';
 import { info } from '@goldstack/utils-log';
 

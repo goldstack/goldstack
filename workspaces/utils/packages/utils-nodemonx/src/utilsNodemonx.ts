@@ -1,10 +1,10 @@
-import assert from 'assert';
-import path from 'path';
-import fs from 'fs';
-import watch from 'node-watch';
-import { cd, exec, read } from '@goldstack/utils-sh';
-import { match } from 'minimatch';
 import { debug } from '@goldstack/utils-log';
+import { cd, exec, read } from '@goldstack/utils-sh';
+import assert from 'assert';
+import fs from 'fs';
+import { match } from 'minimatch';
+import watch from 'node-watch';
+import path from 'path';
 
 export const getNearestPackageJson = (name: string): string => {
   if (fs.existsSync(name + '/package.json')) {
@@ -37,7 +37,7 @@ export const run = async (args: string[]): Promise<void> => {
   const [, , , , , ...commandArgs] = args;
   let command = commandArgs.join(' ');
   // removing quotation marks if present
-  // eslint-disable-next-line quotes
+
   if (command.charAt(0) === "'" || command.charAt(0) === '"') {
     command = command.substr(1, command.length - 2);
   }
@@ -51,7 +51,7 @@ export const run = async (args: string[]): Promise<void> => {
   }
   const config = JSON.parse(read('./.nodemonx.json'));
 
-  watch(watchDir, { recursive: true }, function (evt, name) {
+  watch(watchDir, { recursive: true }, (evt, name) => {
     // check if in file whitelist
     if (!config.include.find((glob: string) => match([name], glob))) {
       debug('Ignoring changed file since it is not in whitelist: ' + name);
@@ -72,30 +72,20 @@ export const run = async (args: string[]): Promise<void> => {
       exec(command, { silent: false });
       console.log(`✔️ Command successfully run in ${packageDir}`);
     } catch {
-      console.log(
-        `❌ ERROR building: ${packageDir}. Package will be rebuilt on next change.`
-      );
+      console.log(`❌ ERROR building: ${packageDir}. Package will be rebuilt on next change.`);
       failedPackages.push(packageDir);
     }
-    const failedPackagesToTest = failedPackages.filter(
-      (pkg) => pkg !== packageDir
-    );
+    const failedPackagesToTest = failedPackages.filter((pkg) => pkg !== packageDir);
     if (failedPackagesToTest.length > 0) {
-      console.log(
-        `Running command for ${failedPackagesToTest.length} previously failed packages.`
-      );
+      console.log(`Running command for ${failedPackagesToTest.length} previously failed packages.`);
       for (const failedPackage of failedPackagesToTest) {
         cd(failedPackage);
 
         try {
           exec(command, { silent: false });
 
-          failedPackages = failedPackages.filter(
-            (pkg) => pkg !== failedPackage
-          );
-          console.log(
-            `✔️ Command successfully run for previously failed package: ${failedPackage}`
-          );
+          failedPackages = failedPackages.filter((pkg) => pkg !== failedPackage);
+          console.log(`✔️ Command successfully run for previously failed package: ${failedPackage}`);
         } catch {
           console.log(`❌ Command still failing for ${failedPackage}`);
         }

@@ -16,9 +16,7 @@ export const FoundationCard = (props: FoundationCardProps): JSX.Element => {
           </div>
           <div className="media-body">
             <div className="d-flex align-items-center">
-              <span className="d-block text-dark font-weight-bold">
-                {props.title}
-              </span>
+              <span className="d-block text-dark font-weight-bold">{props.title}</span>
             </div>
             <small className="d-block text-body">{props.caption}</small>
           </div>

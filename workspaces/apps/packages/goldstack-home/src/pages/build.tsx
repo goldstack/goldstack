@@ -1,33 +1,28 @@
-import React, { useState, useEffect } from 'react';
-
-import { useRouter } from 'next/router';
+import { getEndpoint } from '@goldstack/goldstack-api';
+import type { ProjectData } from '@goldstack/project-repository';
 import Head from 'next/head';
-import Header from './../components/Header';
-import Footer from './../components/Footer';
-
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-
-import { event } from './../lib/ga';
+import Footer from './../components/Footer';
+import Header from './../components/Header';
 import NoModulesAddedModal from './../components/NoModulesAddedModal';
-
-import { ProjectData } from '@goldstack/project-repository';
-import { getPackageIds } from './../lib/stackParamUtils';
-
-import { buildProjectConfig } from './../lib/buildProject';
-
-import { getEndpoint } from '@goldstack/goldstack-api';
-
-import NextjsIcon from './../icons/nextjs.svg';
+import GatewayIcon from './../icons/aws-api-gateway.svg';
 import BootstrapIcon from './../icons/bootstrap.svg';
 import CloudFrontIcon from './../icons/cloudfront.svg';
+
+import NextjsIcon from './../icons/nextjs.svg';
 import ExpressIcon from './../icons/nodejs.svg';
 import ReactIcon from './../icons/reactjs.svg';
-import GatewayIcon from './../icons/aws-api-gateway.svg';
 import S3Icon from './../icons/s3.svg';
 import SESIcon from './../icons/ses.svg';
+import { buildProjectConfig } from './../lib/buildProject';
+import { event } from './../lib/ga';
+import { getPackageIds } from './../lib/stackParamUtils';
+
 interface CheckboxProps {
   title: string;
   className?: string;
@@ -54,10 +49,7 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
             onChange={props.onChange}
           ></input>
           <label className="custom-control-label" htmlFor={props.element}>
-            <img
-              style={{ width: '1.5em', marginRight: '0.5em' }}
-              src={props.icon}
-            ></img>
+            <img style={{ width: '1.5em', marginRight: '0.5em' }} src={props.icon}></img>
             {props.title}
 
             {props.isAlpha && (
@@ -89,11 +81,7 @@ const ProgressIndicator = (props: { message: string }): JSX.Element => {
   return (
     <>
       <div style={{ display: 'inline-block' }}>
-        <div
-          className="spinner-border ml-4"
-          role="status"
-          style={{ display: 'inline-block' }}
-        >
+        <div className="spinner-border ml-4" role="status" style={{ display: 'inline-block' }}>
           <span className="sr-only">Progress indicator</span>
         </div>
         <div className="ml-2" style={{ display: 'inline-block' }}>
@@ -178,17 +166,14 @@ const ModuleSelection = (props: { elements: string[] }) => {
     const projectId = projectData.projectId;
     setProgressMessage('Creating download bundle');
 
-    const packageRes = await fetch(
-      `${getEndpoint()}/projects/${projectId}/packages`,
-      {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-        body: JSON.stringify(projectData),
-      }
-    );
+    const packageRes = await fetch(`${getEndpoint()}/projects/${projectId}/packages`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify(projectData),
+    });
 
     const packageId = (await packageRes.json()).packageId;
     router.push(`/projects/${projectId}/packages/${packageId}/get-template`);
@@ -360,11 +345,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                 >
                   🛠 Build Project
                 </Button>
-                {building && (
-                  <ProgressIndicator
-                    message={progressMessage}
-                  ></ProgressIndicator>
-                )}
+                {building && <ProgressIndicator message={progressMessage}></ProgressIndicator>}
               </div>
             </div>
           </Col>

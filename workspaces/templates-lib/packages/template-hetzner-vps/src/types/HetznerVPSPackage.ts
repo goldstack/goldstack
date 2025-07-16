@@ -1,9 +1,9 @@
-import { Package } from '@goldstack/utils-package';
+import type { Package } from '@goldstack/utils-package';
 
-import { AWSDeployment } from '@goldstack/infra-aws';
-import { HetznerDeployment } from '@goldstack/infra-hetzner';
-import { TerraformDeployment } from '@goldstack/utils-terraform';
-import { Deployment } from '@goldstack/infra';
+import type { AWSDeployment } from '@goldstack/infra-aws';
+import type { HetznerDeployment } from '@goldstack/infra-hetzner';
+import type { TerraformDeployment } from '@goldstack/utils-terraform';
+import type { Deployment } from '@goldstack/infra';
 import { DeploymentConfiguration } from '@goldstack/infra';
 export { DeploymentConfiguration };
 import { Configuration } from '@goldstack/utils-package';
@@ -15,14 +15,7 @@ export { Configuration };
  * @title Location
  * @pattern ^[^\s]*
  */
-export type Location =
-  | 'hil'
-  | 'fsn1'
-  | 'nbg1'
-  | 'hel1'
-  | 'ash'
-  | 'sin'
-  | string;
+export type Location = 'hil' | 'fsn1' | 'nbg1' | 'hel1' | 'ash' | 'sin' | string;
 
 /**
  * The Hetzner server name that should be used for this server.
@@ -110,8 +103,7 @@ export type EnvironmentVariables = EnvironmentVariable[];
 /**
  * The Hetzner server deployment configuration
  */
-export interface HetznerVPSDeploymentConfiguration
-  extends DeploymentConfiguration {
+export interface HetznerVPSDeploymentConfiguration extends DeploymentConfiguration {
   location: Location;
   serverType: ServerType;
   sshUserFingerprint?: SSHUserFingerprint;

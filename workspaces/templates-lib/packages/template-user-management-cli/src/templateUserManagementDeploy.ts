@@ -1,30 +1,26 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
+import type {
   UserManagementConfiguration,
   UserManagementDeployment,
 } from '@goldstack/template-user-management';
 import { getAWSUser } from '@goldstack/infra-aws';
-import {
-  readDeploymentState,
-  readTerraformStateVariable,
-  DeploymentState,
-} from '@goldstack/infra';
+import { readDeploymentState, readTerraformStateVariable, DeploymentState } from '@goldstack/infra';
 import { deployFunction } from '@goldstack/utils-aws-lambda';
 
 export const deployCli = async (
   config: UserManagementConfiguration,
-  deployment: UserManagementDeployment
+  deployment: UserManagementDeployment,
 ): Promise<void> => {
   const deploymentState = readDeploymentState('./', deployment.name);
 
   const preSignUpFunctionName = readTerraformStateVariable(
     deploymentState,
-    'pre_sign_up_lambda_function_name'
+    'pre_sign_up_lambda_function_name',
   );
 
   const postConfirmationLambdaName = readTerraformStateVariable(
     deploymentState,
-    'post_confirmation_lambda_function_name'
+    'post_confirmation_lambda_function_name',
   );
 
   await deployFunction({

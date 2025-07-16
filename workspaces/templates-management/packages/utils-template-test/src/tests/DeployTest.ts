@@ -1,4 +1,4 @@
-import { TemplateTest, RunTestParams } from './../types/TemplateTest';
+import type { TemplateTest, RunTestParams } from './../types/TemplateTest';
 import { yarn } from '@goldstack/utils-yarn';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
 import { read } from '@goldstack/utils-sh';
@@ -14,10 +14,7 @@ export class DeployTest implements TemplateTest {
 
     for (const deployment of packageConfig.deployments) {
       info('Deploying: ' + deployment.name);
-      yarn(
-        params.projectDir,
-        `workspace ${packageJson.name} deploy ${deployment.name}`
-      );
+      yarn(params.projectDir, `workspace ${packageJson.name} deploy ${deployment.name}`);
     }
   }
 }
