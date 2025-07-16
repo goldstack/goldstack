@@ -1,42 +1,51 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.1.1/schema.json",
-  "linter": {
-    "rules": {
-      "suspicious": {
-        "noExplicitAny": "warn",
-        "noImplicitAnyLet": "warn",
-        "noAssignInExpressions": "warn",
-        "noAsyncPromiseExecutor": "warn"
-      },
-      "correctness": {
-        "noUnusedFunctionParameters": "warn",
-        "noUnusedVariables": "warn"
-      },
-      "security": {
-        "noGlobalEval": "warn"
-      }
-    }
-  },
+    "$schema": "https://biomejs.dev/schemas/2.1.1/schema.json",
+    "formatter": {
+        "enabled": true,
+        "formatWithErrors": false,
+        "attributePosition": "auto",
+        "indentStyle": "space",
+        "indentWidth": 2,
+        "lineWidth": 100,
+        "lineEnding": "lf"
+    },
+    "linter": {
+        "rules": {
+            "suspicious": {
+                "noExplicitAny": "warn",
+                "noImplicitAnyLet": "warn",
+                "noAssignInExpressions": "warn",
+                "noAsyncPromiseExecutor": "warn"
+            },
+            "correctness": {
+                "noUnusedFunctionParameters": "warn",
+                "noUnusedVariables": "warn"
+            },
+            "security": {
+                "noGlobalEval": "warn"
+            }
+        }
+    },
     "files": {
-    "includes": [
-      "**/*.ts",
-      "!**/dist/**",
-      "!**/webDist/**",
-      "!**/distLambda/**",
-      "!**/goldstackLocal/**",
-      "!**/coverage/**",
-      "!**/node_modules/**",
-      "!**/.next/**",
-      "!**/.terraform/**",
-      "!**/*.tfstate",
-      "!**/*.tfstate.backup",
-      "!**/.pnp.js",
-      "!**/.pnp.cjs",
-      "!**/*.json",
-      "!**/.pnp.loader.mjs",
-      "!**/.yarnrc.yml",
-      "!**/.yarn/**",
-      "!**/README.md"
-    ]
-  }
+        "includes": [
+            "**/*.ts",
+            "!**/dist/**",
+            "!**/webDist/**",
+            "!**/distLambda/**",
+            "!**/goldstackLocal/**",
+            "!**/coverage/**",
+            "!**/node_modules/**",
+            "!**/.next/**",
+            "!**/.terraform/**",
+            "!**/*.tfstate",
+            "!**/*.tfstate.backup",
+            "!**/.pnp.js",
+            "!**/.pnp.cjs",
+            "!**/*.json",
+            "!**/.pnp.loader.mjs",
+            "!**/.yarnrc.yml",
+            "!**/.yarn/**",
+            "!**/README.md"
+        ]
+    }
 }
