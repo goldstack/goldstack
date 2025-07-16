@@ -47,9 +47,9 @@
   "dependencies": {
     "@goldstack/utils-aws-lambda": "0.3.45",
     "@types/aws-lambda": "^8.10.147",
-    "cookie": "^0.4.1",
+    "cookie": "^1.0.2",
     "cors": "^2.8.5",
-    "express": "4.19.2"
+    "express": "4.20.0"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.13",
