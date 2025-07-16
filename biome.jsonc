@@ -1,0 +1,31 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.1.1/schema.json",
+  "linter": {
+    "rules": {
+      "suspicious": {
+      }
+    }
+  },
+    "files": {
+    "includes": [
+      "**",
+      "!**/dist/**",
+      "!**/webDist/**",
+      "!**/distLambda/**",
+      "!**/goldstackLocal/**",
+      "!**/coverage/**",
+      "!**/node_modules/**",
+      "!**/.next/**",
+      "!**/.terraform/**",
+      "!**/*.tfstate",
+      "!**/*.tfstate.backup",
+      "!**/.pnp.js",
+      "!**/.pnp.cjs",
+      "!**/*.json",
+      "!**/.pnp.loader.mjs",
+      "!**/.yarnrc.yml",
+      "!**/.yarn/**",
+      "!**/README.md"
+    ]
+  }
+}
