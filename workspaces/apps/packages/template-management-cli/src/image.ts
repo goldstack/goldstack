@@ -1,15 +1,14 @@
-import deploymentsState from './state/deployments.json';
-import goldstackConfig from './../goldstack.json';
-
 import {
-  getRepo as templateGetRepo,
-  runTask,
-  startTask,
-  getDeploymentState,
-  getDeployment,
-  type StartTaskResult,
   type AWSDockerImagePackage,
+  getDeployment,
+  getDeploymentState,
+  runTask,
+  type StartTaskResult,
+  startTask,
+  getRepo as templateGetRepo,
 } from '@goldstack/template-docker-image-aws';
+import goldstackConfig from './../goldstack.json';
+import deploymentsState from './state/deployments.json';
 
 /**
  * Returns the URL for the repository where the image is deployed to.
@@ -21,7 +20,7 @@ export const getRepo = (deploymentName: string): string => {
 interface RunParams {
   deploymentName: string;
   command: string[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   env: any;
 }
 

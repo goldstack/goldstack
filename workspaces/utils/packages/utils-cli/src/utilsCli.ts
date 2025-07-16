@@ -84,7 +84,8 @@ export function logger(): LoggerInstance {
   return loggerInstance || defaultLogger;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
 export const wrapCli = async (func: AsyncFunction<any>): Promise<void> => {
   try {
     await func();
@@ -109,7 +110,8 @@ export const wrapCli = async (func: AsyncFunction<any>): Promise<void> => {
   }
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
 process.on('unhandledRejection', (e: any) => {
   if (isDebug) {
     console.log(e);

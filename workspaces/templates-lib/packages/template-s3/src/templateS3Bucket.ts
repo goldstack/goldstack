@@ -1,18 +1,17 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { fromEnv } from '@aws-sdk/credential-providers';
+
 import { S3Client } from '@aws-sdk/client-s3';
+import { fromEnv } from '@aws-sdk/credential-providers';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
-import type { S3Package, S3Deployment } from './types/S3Package';
-import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import assert from 'assert';
-
-import type { MetadataBearer, RequestPresigningArguments } from '@smithy/types';
+import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import type { Client, Command } from '@smithy/smithy-client';
 
-import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
-
-import { getMockedS3, resetMocksIfRequired, isMocked, getLocalBucketName } from './connectLocal';
+import type { MetadataBearer, RequestPresigningArguments } from '@smithy/types';
+import assert from 'assert';
+import { getLocalBucketName, getMockedS3, isMocked, resetMocksIfRequired } from './connectLocal';
+import type { S3Deployment, S3Package } from './types/S3Package';
 
 export const connect = async (
   goldstackConfig: any,
@@ -32,7 +31,7 @@ export const connect = async (
   }
   if (deploymentName === 'local') {
     // only require this for local testing
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+
     return getMockedS3(goldstackConfig);
   } else {
     resetMocksIfRequired(deploymentName, goldstackConfig);
@@ -44,7 +43,7 @@ export const connect = async (
     awsUser = fromEnv();
   } else {
     // load this in lazy to enable omitting the dependency when bundling lambdas
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+
     const infraAWSLib = require(excludeInBundle('@goldstack/infra-aws'));
     awsUser = await infraAWSLib.getAWSUser(deployment.awsUser);
   }

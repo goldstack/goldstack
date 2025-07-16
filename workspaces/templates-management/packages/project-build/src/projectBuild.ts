@@ -1,15 +1,13 @@
 import type { S3TemplateRepository } from '@goldstack/template-repository';
-import extract from 'extract-zip';
-import { rm, write, read } from '@goldstack/utils-sh';
-import { AssertionError } from 'assert';
 import { debug } from '@goldstack/utils-log';
-import path, { resolve } from 'path';
-import type { ProjectConfiguration } from '@goldstack/utils-project';
-
 import { readPackageConfig } from '@goldstack/utils-package';
-import { buildTemplate } from './buildTemplate';
-
+import type { ProjectConfiguration } from '@goldstack/utils-project';
+import { read, rm, write } from '@goldstack/utils-sh';
+import { AssertionError } from 'assert';
+import extract from 'extract-zip';
+import path, { resolve } from 'path';
 import sortPackageJson from 'sort-package-json';
+import { buildTemplate } from './buildTemplate';
 
 export interface TemplateReference {
   name: string;
@@ -42,7 +40,6 @@ export const assertTemplateReferenceVersion = async (
   };
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function assert(condition: any, msg?: string): asserts condition {
   if (!condition) {
     throw new AssertionError({ message: msg });

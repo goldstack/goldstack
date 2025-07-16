@@ -1,22 +1,17 @@
-import fs from 'fs';
-import { dirname } from 'path';
-import visit from 'unist-util-visit';
-
-import path from 'path';
-
 import { read } from '@goldstack/utils-sh';
-
-import unified from 'unified';
-import markdown from 'remark-parse';
-
+import fs from 'fs';
 import matter from 'gray-matter';
+import path, { dirname } from 'path';
+import markdown from 'remark-parse';
+import unified from 'unified';
+import visit from 'unist-util-visit';
 
 function fileToMarkdownTree(filePath: string): any {
   const data = matter(read(filePath)).content;
   const tree = unified()
     .use(markdown as any)
     .parse(data);
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
+
   return rehypeDocs({ filePath })(tree);
 }
 

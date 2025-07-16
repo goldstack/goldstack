@@ -1,23 +1,22 @@
-import configSchema from './schemas/configSchema.json';
-import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
-
-import type {
-  AWSDockerImagePackage,
-  AWSDockerImageDeployment,
-} from './types/AWSDockerImagePackage';
-import { exec } from '@goldstack/utils-sh';
-import { hash } from '@goldstack/utils-git';
-import { assertDocker } from '@goldstack/utils-docker';
-import { awsCli } from '@goldstack/utils-aws-cli';
-import { getAWSUser } from '@goldstack/infra-aws';
 import {
-  readDeploymentState,
-  writeDeploymentState,
-  readTerraformStateVariable,
   type DeploymentState,
-  validateDeploymentsState,
   getDeploymentState as infraGetDeploymentState,
+  readDeploymentState,
+  readTerraformStateVariable,
+  validateDeploymentsState,
+  writeDeploymentState,
 } from '@goldstack/infra';
+import { getAWSUser } from '@goldstack/infra-aws';
+import { awsCli } from '@goldstack/utils-aws-cli';
+import { assertDocker } from '@goldstack/utils-docker';
+import { hash } from '@goldstack/utils-git';
+import { exec } from '@goldstack/utils-sh';
+import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
+import configSchema from './schemas/configSchema.json';
+import type {
+  AWSDockerImageDeployment,
+  AWSDockerImagePackage,
+} from './types/AWSDockerImagePackage';
 
 export const getConfigSchema = (): object => configSchema;
 
@@ -70,7 +69,7 @@ export const deploy = async (
 
 export const getDeploymentState = (
   deploymentName: string,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   deploymentsState: any,
 ): DeploymentState => {
   let state: DeploymentState;
@@ -84,7 +83,7 @@ export const getDeploymentState = (
 
 export const getRepo = (
   deploymentName: string,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   deploymentsState?: any,
 ): string => {
   const state = getDeploymentState(deploymentName, deploymentsState);

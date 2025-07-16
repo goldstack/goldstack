@@ -1,14 +1,11 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('source-map-support').install();
 
-import { write, rmSafe } from '@goldstack/utils-sh';
-import { transpile, resolveMarkdown } from '@goldstack/utils-docs-cli';
-
 import { getModuleTemplatesNames } from '@goldstack/module-template-utils';
-
-import path from 'path';
-import fs from 'fs';
+import { resolveMarkdown, transpile } from '@goldstack/utils-docs-cli';
+import { rmSafe, write } from '@goldstack/utils-sh';
 import assert from 'assert';
+import fs from 'fs';
+import path from 'path';
 
 // relative to the root of this package
 const paths = {

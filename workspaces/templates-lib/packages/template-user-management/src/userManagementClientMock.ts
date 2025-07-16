@@ -52,7 +52,8 @@ function stringify(obj: unknown) {
   return JSON.stringify(obj);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+
 function checkSumGen(head: string, body: string): string {
   return 'vCooWRquc3jzGtERLzDmO1JIjdXSwTVKHbA1T34VR0w';
 }

@@ -1,12 +1,10 @@
-import React, { type FunctionComponent } from 'react';
+import { excludeInBundle } from '@goldstack/utils-esbuild';
 
 import type { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
-
-import { compress } from 'lambda-compression';
-
-import { renderToString } from 'react-dom/server';
-import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { readFileSync } from 'fs';
+import { compress } from 'lambda-compression';
+import React, { type FunctionComponent } from 'react';
+import { renderToString } from 'react-dom/server';
 
 import { type MappingStore, StaticFileMapperRun } from 'static-file-mapper';
 
@@ -14,14 +12,14 @@ export type ReactPropertiesType = unknown & JSX.IntrinsicAttributes & Record<str
 
 import type {
   BuildConfiguration,
-  ServerBuildOptionsArgs,
   ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
 } from '@goldstack/template-ssr-server-compile-bundle';
 
 export type { BuildConfiguration, ServerBuildOptionsArgs, ClientBuildOptionsArgs };
 
-import type { StaticFileMapper } from 'static-file-mapper';
 import type { Deployment } from '@goldstack/infra';
+import type { StaticFileMapper } from 'static-file-mapper';
 
 export const clientBundleFileName = 'client.bundle.js';
 export const clientCSSFileName = 'client.bundle.css';
@@ -112,7 +110,7 @@ export const renderPage = async <PropType extends ReactPropertiesType>({
         // if not running in Lambda build bundle dynamically
         return compress(
           event,
-          // eslint-disable-next-line @typescript-eslint/no-var-requires
+
           require(excludeInBundle('@goldstack/template-ssr-server-compile-bundle')).bundleResponse({
             entryPoint,
             buildConfig: buildConfig(),
@@ -129,7 +127,7 @@ export const renderPage = async <PropType extends ReactPropertiesType>({
       } else {
         return compress(
           event,
-          // eslint-disable-next-line @typescript-eslint/no-var-requires
+
           require(
             excludeInBundle('@goldstack/template-ssr-server-compile-bundle'),
           ).sourceMapResponse({

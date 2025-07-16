@@ -1,10 +1,10 @@
-import assert from 'assert';
-import path from 'path';
-import fs from 'fs';
-import watch from 'node-watch';
-import { cd, exec, read } from '@goldstack/utils-sh';
-import { match } from 'minimatch';
 import { debug } from '@goldstack/utils-log';
+import { cd, exec, read } from '@goldstack/utils-sh';
+import assert from 'assert';
+import fs from 'fs';
+import { match } from 'minimatch';
+import watch from 'node-watch';
+import path from 'path';
 
 export const getNearestPackageJson = (name: string): string => {
   if (fs.existsSync(name + '/package.json')) {
@@ -37,7 +37,7 @@ export const run = async (args: string[]): Promise<void> => {
   const [, , , , , ...commandArgs] = args;
   let command = commandArgs.join(' ');
   // removing quotation marks if present
-  // eslint-disable-next-line quotes
+
   if (command.charAt(0) === "'" || command.charAt(0) === '"') {
     command = command.substr(1, command.length - 2);
   }

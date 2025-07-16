@@ -1,7 +1,8 @@
 import goldstackConfig from './../goldstack.json';
 
 let testServerPort: null | number = null;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
 let testServer: any = null;
 
 export const startTestServer = async (port: number): Promise<void> => {

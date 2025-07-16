@@ -1,16 +1,15 @@
 import { SendMessageCommand, type SendMessageRequest } from '@aws-sdk/client-sqs';
 import {
-  getSentMessageRequests,
   connect,
   getMockedDLQSQS,
-  getSQSQueueUrl,
-  getSQSDLQQueueUrl,
   getMockedSQS,
+  getSentMessageRequests,
+  getSQSDLQQueueUrl,
+  getSQSQueueUrl,
 } from './templateSqs';
 
 describe('SQS connect', () => {
   it('Should connect to mocked SQS', async () => {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const sqs = getMockedSQS({ name: 'template-sqs' }, () => {});
     await sqs.send(
       new SendMessageCommand({

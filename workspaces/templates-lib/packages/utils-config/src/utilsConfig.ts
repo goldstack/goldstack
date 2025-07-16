@@ -1,5 +1,5 @@
-import Ajv from 'ajv';
 import { globSync } from '@goldstack/utils-sh';
+import Ajv from 'ajv';
 
 interface ValidateOptions {
   errorMessage?: string;
@@ -15,7 +15,7 @@ export const validateConfig = (
   if (options?.additionalSchemas) {
     options.additionalSchemas.forEach((schema) => ajv.addSchema(schema));
   }
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const buildError = (e: any): Error => {
     return new Error(
       `${options?.errorMessage || 'Cannot read configuration'}\n` + ajv.errorsText() ||

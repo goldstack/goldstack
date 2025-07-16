@@ -1,30 +1,30 @@
 import React from 'react';
+
 export * from './types/SSRPackage';
 
+import type { ReactPropertiesType, RenderPageProps } from '@goldstack/template-ssr-server';
 import type {
   APIGatewayProxyEventV2,
   APIGatewayProxyResultV2,
   APIGatewayProxyStructuredResultV2,
   Handler,
 } from 'aws-lambda';
-
 import ReactDOM from 'react-dom/client';
-import type { ReactPropertiesType, RenderPageProps } from '@goldstack/template-ssr-server';
 
 export type { ReactPropertiesType };
 
-import type { LambdaApiDeploymentConfiguration } from '@goldstack/utils-aws-lambda';
-import type { SSRDeploymentConfiguration } from './types/SSRPackage';
 import type { Deployment } from '@goldstack/infra';
+import type { LambdaApiDeploymentConfiguration } from '@goldstack/utils-aws-lambda';
 import type { Package } from '@goldstack/utils-package';
+import type { SSRDeploymentConfiguration } from './types/SSRPackage';
 
 export type SSRHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
 export type {
-  RenderDocumentProps,
-  PartialRenderPageProps,
   BuildConfiguration,
   ClientBuildOptionsArgs,
+  PartialRenderPageProps,
+  RenderDocumentProps,
   ServerBuildOptionsArgs,
 } from '@goldstack/template-ssr-server';
 
@@ -53,7 +53,6 @@ export const getDeployment = (goldstackJson: Package): Deployment => {
 export const renderPage = async <PropType extends ReactPropertiesType>(
   props: RenderPageProps<PropType>,
 ): Promise<APIGatewayProxyStructuredResultV2> => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   return require('@goldstack/template-ssr-server').renderPage(props);
 };
 

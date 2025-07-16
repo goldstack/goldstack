@@ -1,11 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('source-map-support').install();
-import { build } from '@goldstack/template-build';
-import { rmSafe, mkdir } from '@goldstack/utils-sh';
-import { S3TemplateRepository } from '@goldstack/template-repository';
-import { connect, getBucketName } from '@goldstack/template-repository-bucket';
 
 import { getModuleTemplatesNames } from '@goldstack/module-template-utils';
+import { build } from '@goldstack/template-build';
+import { S3TemplateRepository } from '@goldstack/template-repository';
+import { connect, getBucketName } from '@goldstack/template-repository-bucket';
+import { mkdir, rmSafe } from '@goldstack/utils-sh';
 
 const seed = async (): Promise<void> => {
   const templates = getModuleTemplatesNames();

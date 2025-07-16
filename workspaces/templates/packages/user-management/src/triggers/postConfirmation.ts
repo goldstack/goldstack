@@ -1,13 +1,12 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('source-map-support').install();
+
+import {
+  AdminUpdateUserAttributesCommand,
+  CognitoIdentityProviderClient,
+} from '@aws-sdk/client-cognito-identity-provider';
 import { info } from '@goldstack/utils-log';
 import type { PostConfirmationTriggerHandler } from 'aws-lambda';
 import { generateUserId } from './generateUserId';
-
-import {
-  CognitoIdentityProviderClient,
-  AdminUpdateUserAttributesCommand,
-} from '@aws-sdk/client-cognito-identity-provider';
 
 const cognitoClient = new CognitoIdentityProviderClient({});
 

@@ -1,7 +1,7 @@
 export {
   connect,
-  getMockedSQS,
   getMockedDLQSQS,
+  getMockedSQS,
   getSQSDLQQueueName,
   getSQSDLQQueueUrl,
   getSQSQueueName,
@@ -23,7 +23,6 @@ export function createSQSClient({
   sqsClient?: SQSClient;
   onMessageSend?: MessageCallback;
 }): SQSClient {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   return require(excludeInBundle('./mockedSQS')).createSQSClient({
     sqsClient,
     onMessageSend,

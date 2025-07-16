@@ -9,7 +9,8 @@ describe('Edge Lambda packaging', () => {
       sourceFile: './testData/compiledLambda/lambda.js',
       destFile,
     });
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    
+
     const lib = require(destFile);
     assert(typeof lib.handler === 'function');
   });

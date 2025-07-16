@@ -8,7 +8,8 @@ export type Files = Glob[];
 
 export interface FieldOverwriteConfig {
   path: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  
+
   value: any;
 }
 

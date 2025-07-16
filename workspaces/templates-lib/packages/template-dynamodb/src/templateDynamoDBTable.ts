@@ -1,29 +1,26 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
-
-import type { DynamoDBPackage, DynamoDBDeployment } from './types/DynamoDBPackage';
-import { getDeploymentName, getTableName as getTableNameUtils } from './dynamoDBPackageUtils';
-
-import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
-import { assertTable, assertTableActive, deleteTable as deleteTableModule } from './dynamoDBData';
-import type { InputMigrations } from 'umzug/lib/types';
-import {
-  type DynamoDBContext,
-  performMigrations,
-  migrateDownTo as migrateDownToDynamoDB,
-} from './dynamoDBMigrations';
-
-import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { fromEnv } from '@aws-sdk/credential-providers';
 import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import { excludeInBundle } from '@goldstack/utils-esbuild';
+import { debug } from '@goldstack/utils-log';
+import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
+import type { InputMigrations } from 'umzug/lib/types';
+import { assertTable, assertTableActive, deleteTable as deleteTableModule } from './dynamoDBData';
+import {
+  type DynamoDBContext,
+  migrateDownTo as migrateDownToDynamoDB,
+  performMigrations,
+} from './dynamoDBMigrations';
+import { getDeploymentName, getTableName as getTableNameUtils } from './dynamoDBPackageUtils';
 
 // Importing type signatures from localDynamoDB
 import type {
   LocalConnectType,
   StartLocalDynamoDBType,
-  StopLocalDynamoDBType,
   StopAllLocalDynamoDBType,
+  StopLocalDynamoDBType,
 } from './local/localDynamoDB';
-import { debug } from '@goldstack/utils-log';
+import type { DynamoDBDeployment, DynamoDBPackage } from './types/DynamoDBPackage';
 
 /**
  * Map to keep track for which deployment and tables initialisation and migrations have already been performed
@@ -57,7 +54,7 @@ export const startLocalDynamoDB = async (
   });
 
   // Suppress ESLint error for dynamic require
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+
   const lib = require(excludeInBundle('./local/localDynamoDB')) as {
     startLocalDynamoDB: StartLocalDynamoDBType;
   };
@@ -78,7 +75,7 @@ export const stopAllLocalDynamoDB = async (
   });
 
   // Suppress ESLint error for dynamic require
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+
   const lib = require(excludeInBundle('./local/localDynamoDB')) as {
     stopAllLocalDynamoDB: StopAllLocalDynamoDBType;
   };
@@ -112,7 +109,7 @@ export const stopLocalDynamoDB = async (
   });
 
   // Suppress ESLint error for dynamic require
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+
   const lib = require(excludeInBundle('./local/localDynamoDB')) as {
     stopLocalDynamoDB: StopLocalDynamoDBType;
   };
@@ -129,7 +126,7 @@ const createClient = async (
   if (deploymentName === 'local') {
     debug('Connecting to local DynamoDB instance');
     // Suppress ESLint error for dynamic require
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+
     const lib = require(excludeInBundle('./local/localDynamoDB')) as {
       localConnect: LocalConnectType;
     };
@@ -142,7 +139,7 @@ const createClient = async (
     awsUser = fromEnv();
   } else {
     // load this in lazy to enable omitting the dependency when bundling lambdas
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+
     const infraAWSLib = require(excludeInBundle('@goldstack/infra-aws'));
     awsUser = await infraAWSLib.getAWSUser(deployment.awsUser);
   }

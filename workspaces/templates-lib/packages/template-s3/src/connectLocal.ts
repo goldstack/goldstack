@@ -1,9 +1,9 @@
 import { S3Client } from '@aws-sdk/client-s3';
+import { type AWSDeploymentRegion, getAWSUser } from '@goldstack/infra-aws';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { warn } from '@goldstack/utils-log';
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import type { S3Deployment, S3Package } from './templateS3';
-import { type AWSDeploymentRegion, getAWSUser } from '@goldstack/infra-aws';
 
 let s3MockUsed = false;
 
@@ -63,7 +63,6 @@ const getPackageConfigAndDeployment = (
  * Gets a mocked S3 client for local development
  */
 export const getMockedS3 = (goldstackConfig: any, bucket?: string): S3Client => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const createS3Client: CreateS3ClientSignature = require(
     excludeInBundle('mock-aws-s3-v3'),
   ).createS3Client;
@@ -131,7 +130,7 @@ export function resetMocksIfRequired(deploymentName: string | undefined, goldsta
       },
     );
     // only require this for local testing
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+
     const MockS3 = require(excludeInBundle('mock-aws-s3-v3'));
     MockS3.resetMocks();
   }

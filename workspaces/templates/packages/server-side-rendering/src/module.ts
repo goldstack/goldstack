@@ -1,8 +1,6 @@
-import goldstackConfig from './../goldstack.json';
-
 import { excludeInBundle } from '@goldstack/utils-esbuild';
-
 import { register } from 'node-css-require';
+import goldstackConfig from './../goldstack.json';
 
 register();
 
@@ -18,7 +16,7 @@ if (process.env.TEST_SERVER_PORT) {
 
 export const startTestServer = async (port?: number): Promise<any> => {
   port = port || 3047;
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+
   const { startServer } = require(excludeInBundle('@goldstack/utils-aws-http-api-local'));
   testServer = await startServer({
     port: port,

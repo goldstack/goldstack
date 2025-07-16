@@ -1,16 +1,16 @@
-import ECS from 'aws-sdk/clients/ecs';
-import CloudWatchLogs from 'aws-sdk/clients/cloudwatchlogs';
+import {
+  type DeploymentState,
+  readDeploymentState,
+  readTerraformStateVariable,
+} from '@goldstack/infra';
+import { getAWSCredentials, getAWSUser } from '@goldstack/infra-aws';
 import assert from 'assert';
+import CloudWatchLogs from 'aws-sdk/clients/cloudwatchlogs';
+import ECS from 'aws-sdk/clients/ecs';
 import type {
   AWSDockerImageDeployment,
   AWSDockerImagePackage,
 } from './types/AWSDockerImagePackage';
-import { getAWSUser, getAWSCredentials } from '@goldstack/infra-aws';
-import {
-  readDeploymentState,
-  readTerraformStateVariable,
-  type DeploymentState,
-} from '@goldstack/infra';
 
 const createECS = async (deployment: AWSDockerImageDeployment): Promise<ECS> => {
   const awsUser = await getAWSUser(deployment.awsUser);
@@ -262,9 +262,8 @@ export const runTask = async (params: RunParams): Promise<StartTaskResult> => {
 
   console.log(`Task status: ${task.lastStatus}`);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const waitForStateRunning: any = 'tasksRunning';
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const waitForParams: any = {
     tasks: [taskId],
     cluster: readTerraformStateVariable(deploymentState, 'cluster_name'),
@@ -274,7 +273,6 @@ export const runTask = async (params: RunParams): Promise<StartTaskResult> => {
 
   console.log('Task started up successfully ...');
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const waitForStateStopped: any = 'tasksStopped';
 
   await ecs.waitFor(waitForStateStopped, waitForParams).promise();

@@ -1,24 +1,22 @@
-import type { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet';
-
-import { cd, execAsync, mkdir, read, rmSafe } from '@goldstack/utils-sh';
-import { writePackageConfigs, getPackageConfigs } from '@goldstack/project-config';
-import { build } from '@goldstack/template-build';
-import type { GoldstackTemplateConfiguration } from '@goldstack/utils-template';
-import { buildProject } from '@goldstack/project-build';
 import type { AWSAPIKeyUser } from '@goldstack/infra-aws';
+import { buildProject } from '@goldstack/project-build';
+import { getPackageConfigs, writePackageConfigs } from '@goldstack/project-config';
 import { installProject } from '@goldstack/project-install';
-import { write } from '@goldstack/utils-sh';
+import { build } from '@goldstack/template-build';
 import type { S3TemplateRepository } from '@goldstack/template-repository';
 import { getAwsConfigPath } from '@goldstack/utils-config';
-import { prepareLocalS3Repo, getTemplateTest } from '@goldstack/utils-template-test';
+import { cd, execAsync, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
+import type { GoldstackTemplateConfiguration } from '@goldstack/utils-template';
+import { getTemplateTest, prepareLocalS3Repo } from '@goldstack/utils-template-test';
 import assert from 'assert';
 import path, { join, resolve } from 'path';
+import type { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet';
+
 export * from './types/DeploySet';
 
-import { resetMocks } from 'mock-aws-s3-v3';
-
-import { info, warn, error } from '@goldstack/utils-log';
+import { error, info, warn } from '@goldstack/utils-log';
 import { readdirSync } from 'fs';
+import { resetMocks } from 'mock-aws-s3-v3';
 
 export interface BuildSetParams {
   config: DeploySetConfig;
@@ -152,7 +150,6 @@ const buildAndTestProject = async (params: BuildAndTestProjectParams): Promise<T
 
         info(`Running test ${packageTest} ...`);
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let errorFound: any;
         let isFail: boolean;
         try {
@@ -181,7 +178,7 @@ const buildAndTestProject = async (params: BuildAndTestProjectParams): Promise<T
       // always run cleanup tests, such as for destroying infrastructure
       for (const packageCleanUp of packageConfig.packageCleanUp) {
         info(`Running cleanup job ${packageCleanUp}`);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
         let errorFound: any;
         let isFail: boolean;
         try {

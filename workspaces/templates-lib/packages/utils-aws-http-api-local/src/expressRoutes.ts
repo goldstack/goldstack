@@ -1,4 +1,4 @@
-import { type LambdaConfig, generateFunctionName } from '@goldstack/utils-aws-lambda';
+import { generateFunctionName, type LambdaConfig } from '@goldstack/utils-aws-lambda';
 
 import type express from 'express';
 
@@ -63,7 +63,6 @@ export const gatewayRouteToExpressPath = (route: string): string => {
 export const injectRoutes = (params: InjectRoutesParam): void => {
   const sortedConfigs = sortRoutesBySpecificity(params.lambdaConfigs);
   for (const lambdaConfig of sortedConfigs) {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const script = require(lambdaConfig.absoluteFilePath);
     const handler = script.handler;
 

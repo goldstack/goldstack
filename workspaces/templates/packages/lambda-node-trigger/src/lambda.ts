@@ -1,29 +1,22 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('source-map-support').install();
 
-import type { Handler, SQSEvent } from 'aws-lambda';
-
+import type { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
+import type { MessageCallback } from '@goldstack/template-sqs';
 import {
-  getSQSQueueName as fetchQueueName,
-  getSQSQueueUrl as fetchQueueUrl,
   getSQSDLQQueueName as fetchDLQQueueName,
   getSQSDLQQueueUrl as fetchDLQQueueUrl,
+  getSQSQueueName as fetchQueueName,
+  getSQSQueueUrl as fetchQueueUrl,
+  connect as templateConnect,
+  getMockedDLQSQS as templateGetMockedDLQSQS,
+  getMockedSQS as templateGetMockedSQS,
 } from '@goldstack/template-sqs';
-
-import type { SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
-
-import deployments from './state/deployments.json';
+import { warn } from '@goldstack/utils-log';
+import type { Handler, SQSEvent } from 'aws-lambda';
 import goldstackConfig from './../goldstack.json';
 import goldstackSchema from './../schemas/package.schema.json';
-
-import {
-  connect as templateConnect,
-  getMockedSQS as templateGetMockedSQS,
-  getMockedDLQSQS as templateGetMockedDLQSQS,
-} from '@goldstack/template-sqs';
-import type { MessageCallback } from '@goldstack/template-sqs';
 import { handler as lambdaHandler } from './handler';
-import { warn } from '@goldstack/utils-log';
+import deployments from './state/deployments.json';
 
 export const handler: Handler = (event, context, callback) => {
   return lambdaHandler(event, context, callback);
@@ -57,7 +50,6 @@ export const getMockedSQS = (): SQSClient => {
       ],
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     await handler(sqsEvent, {} as any, () => {});
   };
 

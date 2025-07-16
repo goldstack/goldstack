@@ -1,16 +1,13 @@
-import type { DeploymentsState, DeploymentState } from './types/deploymentStatesTypes';
-import { write, read } from '@goldstack/utils-sh';
 import { validateConfig } from '@goldstack/utils-config';
+import { read, write } from '@goldstack/utils-sh';
 import fs from 'fs';
-import deploymentsStateSchema from './schemas/deploymentsStateSchema.json';
 import path from 'path';
+import deploymentsStateSchema from './schemas/deploymentsStateSchema.json';
+import type { DeploymentState, DeploymentsState } from './types/deploymentStatesTypes';
 
 const deploymentsStatePath = 'src/state/deployments.json';
 
-export const validateDeploymentsState = (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  deploymentsState: any,
-): DeploymentsState => {
+export const validateDeploymentsState = (deploymentsState: any): DeploymentsState => {
   return validateConfig(deploymentsState, deploymentsStateSchema, {
     errorMessage: 'Cannot validate deployments state.',
   }) as DeploymentsState;
@@ -104,7 +101,6 @@ export const writeDeploymentState = (
 export const readTerraformStateVariable = (
   deploymentState: DeploymentState,
   variableName: string,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any => {
   if (!deploymentState.terraform) {
     throw new Error(

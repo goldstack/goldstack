@@ -25,7 +25,8 @@ async function generateCodeChallenge(randomString: string) {
     );
     return btoa(digest).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
   } else {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    
+
     const { createHash } = require(excludeInBundle('crypto'));
     digest = createHash('sha256').update(randomString).digest('hex');
     return Buffer.from(digest, 'utf8')
