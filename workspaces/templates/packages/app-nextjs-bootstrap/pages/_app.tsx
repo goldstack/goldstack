@@ -5,8 +5,7 @@ import React from 'react';
 import './../src/styles/app.css';
 
 const BootstrapApp = ({ Component, pageProps }: AppProps): JSX.Element => {
-  process.env.GOLDSTACK_DEPLOYMENT =
-    process.env.NEXT_PUBLIC_GOLDSTACK_DEPLOYMENT;
+  process.env.GOLDSTACK_DEPLOYMENT = process.env.NEXT_PUBLIC_GOLDSTACK_DEPLOYMENT;
   return <Component {...pageProps} />;
 };
 

@@ -14,27 +14,18 @@ const Level2Wrapper = (props: { children: React.ReactNode }): JSX.Element => (
   <ul className="hs-sidebar-nav">{props.children}</ul>
 );
 
-const Level2Item = (props: {
-  title: string;
-  link: string;
-  currentPath: string;
-}): JSX.Element => (
+const Level2Item = (props: { title: string; link: string; currentPath: string }): JSX.Element => (
   <li className="hs-sidebar-item">
     <a
       href={navPath + props.link}
-      className={`hs-sidebar-link ${
-        props.link === props.currentPath ? 'active' : ''
-      }`}
+      className={`hs-sidebar-link ${props.link === props.currentPath ? 'active' : ''}`}
     >
       {props.title}
     </a>
   </li>
 );
 
-const Level3Wrapper = (props: {
-  title: string;
-  children: React.ReactNode;
-}): JSX.Element => (
+const Level3Wrapper = (props: { title: string; children: React.ReactNode }): JSX.Element => (
   <li className="hs-sidebar-item">
     <span className="hs-sidebar-link">{props.title}</span>
     <ul className="hs-sidebar-nav ml-2">{props.children}</ul>
@@ -93,10 +84,7 @@ const buildNavLevel2 = (params: {
   );
 };
 
-const buildNavLevel1 = (params: {
-  items: SitemapItem[];
-  currentPath: string;
-}): JSX.Element => {
+const buildNavLevel1 = (params: { items: SitemapItem[]; currentPath: string }): JSX.Element => {
   return (
     <>
       {params.items.map((item, idx) => (
@@ -122,10 +110,7 @@ interface NavigationProps {
 const Navigation = (props: NavigationProps): JSX.Element => {
   return (
     <>
-      <div
-        id="sidebarNav"
-        className={`hs-sidebar-sticky pl-2 pl-md-0 pr-2 ${styles.sidebarmain}`}
-      >
+      <div id="sidebarNav" className={`hs-sidebar-sticky pl-2 pl-md-0 pr-2 ${styles.sidebarmain}`}>
         {buildNavLevel1({ items: props.items, currentPath: props.currentPath })}
       </div>
     </>

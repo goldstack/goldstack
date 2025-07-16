@@ -46,7 +46,7 @@ test('Check App component render', () => {
       <RouterContext.Provider value={{ ...mockRouter }}>
         <Front />
       </RouterContext.Provider>
-    </ThemeProviderPatched>
+    </ThemeProviderPatched>,
   );
 
   // expect(

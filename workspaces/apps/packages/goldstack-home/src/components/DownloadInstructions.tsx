@@ -9,10 +9,7 @@ import { DownloadInstructionsStep } from './DownloadInstructionsStep';
 const AngleRightComponent = (): JSX.Element => {
   const angleRight = dataUriToSrc(AngleRight);
   return (
-    <span
-      className={styles['angle-right']}
-      dangerouslySetInnerHTML={{ __html: angleRight }}
-    ></span>
+    <span className={styles['angle-right']} dangerouslySetInnerHTML={{ __html: angleRight }}></span>
   );
 };
 
@@ -33,8 +30,8 @@ const DocsLinks = (props: { data: DocLink[] }): JSX.Element => {
   return (
     <>
       <p>
-        Also see the following guides for more information on project setup and
-        documentation for the specific modules you have selected:
+        Also see the following guides for more information on project setup and documentation for
+        the specific modules you have selected:
       </p>
       <div>
         <div className="mb-2">
@@ -86,13 +83,11 @@ export const DownloadInstructions = (props: {
       </div>
       <DownloadInstructionsStep stepNumber={1} title="Configure AWS Deployment">
         <p>
-          Define how your project should be deployed to the cloud, such as the
-          domain name for your website.
+          Define how your project should be deployed to the cloud, such as the domain name for your
+          website.
         </p>
         <div className="font-size-1">
-          <span>
-            ℹ️ Skip this step if you do not want to deploy your project on AWS.
-          </span>
+          <span>ℹ️ Skip this step if you do not want to deploy your project on AWS.</span>
         </div>
         <div className="mb-3 mt-3">
           <a
@@ -106,39 +101,32 @@ export const DownloadInstructions = (props: {
       <DownloadInstructionsStep stepNumber={2} title="Download project">
         <p>Get the ZIP file that contains your generated project.</p>
         <div className="mb-3 mt-3">
-          <a
-            className="btn btn-primary btn-pill transition-3d-hover px-5"
-            href={props.downloadUrl}
-          >
+          <a className="btn btn-primary btn-pill transition-3d-hover px-5" href={props.downloadUrl}>
             Download Project Package
           </a>
         </div>
       </DownloadInstructionsStep>
       <DownloadInstructionsStep stepNumber={3} title="Extract project">
         <p>
-          Extract the ZIP file and move the extracted files to a folder where
-          you want to store your code.
+          Extract the ZIP file and move the extracted files to a folder where you want to store your
+          code.
         </p>
         <img
           className="img-fluid"
           src="https://cdn.goldstack.party/img/202201/extract_project.gif"
         ></img>
       </DownloadInstructionsStep>
-      <DownloadInstructionsStep
-        stepNumber={4}
-        title="Open extracted folder in VSCode"
-      >
+      <DownloadInstructionsStep stepNumber={4} title="Open extracted folder in VSCode">
         <p>
-          Open VSCode and go to <i>File / Open Folder</i> to open the folder you
-          have extracted.
+          Open VSCode and go to <i>File / Open Folder</i> to open the folder you have extracted.
         </p>
         <img
           className="img-fluid mb-4"
           src="https://cdn.goldstack.party/img/202201/open_folder.png"
         ></img>
         <p>
-          VSCode may prompt you to ask if you trust the authors of the
-          workspace. Respond with <i>Yes</i>.
+          VSCode may prompt you to ask if you trust the authors of the workspace. Respond with{' '}
+          <i>Yes</i>.
         </p>
         <img
           className="img-fluid mb-4"
@@ -146,9 +134,9 @@ export const DownloadInstructions = (props: {
           src="https://cdn.goldstack.party/img/202201/trust_authors.png"
         ></img>
         <p>
-          You may also be asked if you want to install recommended extensions
-          for this workspace. We recommend to do so since the template will be
-          optimised to work with the suggested extensions.
+          You may also be asked if you want to install recommended extensions for this workspace. We
+          recommend to do so since the template will be optimised to work with the suggested
+          extensions.
         </p>
         <img
           className="img-fluid mb-4"
@@ -160,8 +148,8 @@ export const DownloadInstructions = (props: {
         title="Install project dependencies and build project"
       >
         <p>
-          Open the terminal in VSCode by going to <i>Terminal / New Terminal</i>
-          . Run the following commands:
+          Open the terminal in VSCode by going to <i>Terminal / New Terminal</i>. Run the following
+          commands:
         </p>
         <pre className="mb-1">{'node -v'}</pre>
         <div className="font-size-1">
@@ -181,11 +169,7 @@ export const DownloadInstructions = (props: {
         <div className="font-size-1">
           <span>
             You should have at least Yarn v1.22.5+ installed. If not, please{' '}
-            <a
-              href="https://yarnpkg.com/getting-started/install"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="https://yarnpkg.com/getting-started/install" target="_blank" rel="noreferrer">
               install Yarn
             </a>
             .
@@ -200,9 +184,8 @@ export const DownloadInstructions = (props: {
 
       <DownloadInstructionsStep stepNumber={6} title="Initialise TypeScript">
         <p>
-          Locate a <code>.ts</code> or <code>.tsx</code> file in the workspace
-          and open it. When asked whether to use the workspace TypeScript
-          version, click <i>Allow</i>.
+          Locate a <code>.ts</code> or <code>.tsx</code> file in the workspace and open it. When
+          asked whether to use the workspace TypeScript version, click <i>Allow</i>.
         </p>
         <img
           className="img-fluid"
@@ -210,15 +193,11 @@ export const DownloadInstructions = (props: {
         ></img>
       </DownloadInstructionsStep>
 
-      <DownloadInstructionsStep
-        stepNumber={7}
-        title="Start working with the project"
-      >
+      <DownloadInstructionsStep stepNumber={7} title="Start working with the project">
         <p>
-          You should now be all set to start working with the project. A good
-          starting point is usually to open a terminal in one of the{' '}
-          <code>packages</code> and run the <code>yarn watch</code> command to
-          get started with some local testing.
+          You should now be all set to start working with the project. A good starting point is
+          usually to open a terminal in one of the <code>packages</code> and run the{' '}
+          <code>yarn watch</code> command to get started with some local testing.
         </p>
         <img
           className="img-fluid mb-4"

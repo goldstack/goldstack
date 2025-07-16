@@ -41,21 +41,15 @@ const PackageCard = (props: PackageCardProps): JSX.Element => {
         <div className="media">
           <div className="avatar avatar-xs mt-1 mr-3">
             {props.icons.map((icon, index) => {
-              return (
-                <img key={index} className="avatar-img" src={icon} alt="" />
-              );
+              return <img key={index} className="avatar-img" src={icon} alt="" />;
             })}
           </div>
           <div className="media-body">
             <div className="d-flex align-items-center">
-              <span className="d-block text-dark font-weight-bold">
-                {props.packageName}
-              </span>
+              <span className="d-block text-dark font-weight-bold">{props.packageName}</span>
             </div>
             <span className={'d-block text-body'}>
-              <div className={styles['package-description']}>
-                {props.packageDescription}
-              </div>
+              <div className={styles['package-description']}>{props.packageDescription}</div>
               <ul className={styles['feature-list']}>
                 {props.features.map((feature, index) => (
                   <li key={index}>{feature.name}</li>
@@ -72,10 +66,7 @@ const PackageCard = (props: PackageCardProps): JSX.Element => {
           } ${props.disabled ? 'disabled' : ''}`}
           onClick={toggleIncluded}
         >
-          <span
-            className={styles['icon']}
-            dangerouslySetInnerHTML={{ __html: plusSvg }}
-          ></span>
+          <span className={styles['icon']} dangerouslySetInnerHTML={{ __html: plusSvg }}></span>
           Add to Project
         </div>
       )}
@@ -84,21 +75,13 @@ const PackageCard = (props: PackageCardProps): JSX.Element => {
           className={`card-footer btn btn-success btn-sm ${styles['included-footer']}`}
           onClick={toggleIncluded}
         >
-          <span
-            className={styles['icon']}
-            dangerouslySetInnerHTML={{ __html: checkSvg }}
-          ></span>
+          <span className={styles['icon']} dangerouslySetInnerHTML={{ __html: checkSvg }}></span>
           Included in Project
         </div>
       )}
       {props.alwaysIncluded && false && (
-        <div
-          className={`card-footer text-center btn-sm ${styles['always-included-footer']}`}
-        >
-          <span
-            className={styles['icon']}
-            dangerouslySetInnerHTML={{ __html: checkSvg }}
-          ></span>
+        <div className={`card-footer text-center btn-sm ${styles['always-included-footer']}`}>
+          <span className={styles['icon']} dangerouslySetInnerHTML={{ __html: checkSvg }}></span>
           Included in Project
         </div>
       )}

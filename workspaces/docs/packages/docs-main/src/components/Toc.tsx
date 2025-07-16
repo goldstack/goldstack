@@ -57,19 +57,12 @@ const getItemPadding = (level: number): string => {
   return padding;
 };
 
-const LeafItem = (props: {
-  title: string;
-  link: string;
-  level: number;
-}): JSX.Element => {
+const LeafItem = (props: { title: string; link: string; level: number }): JSX.Element => {
   const padding = getItemPadding(props.level);
 
   return (
     <>
-      <a
-        className={`dropdown-item ${padding} ${styles.nowhitespace}`}
-        href={props.link}
-      >
+      <a className={`dropdown-item ${padding} ${styles.nowhitespace}`} href={props.link}>
         {props.title}
       </a>
     </>
@@ -95,9 +88,7 @@ const Item = (props: { heading: Heading; level: number }): JSX.Element => {
       className={getItemPadding(props.level + 1)}
     >
       {props.heading.subheadings.map((subheading, idx) => {
-        return (
-          <Item heading={subheading} level={props.level + 1} key={idx}></Item>
-        );
+        return <Item heading={subheading} level={props.level + 1} key={idx}></Item>;
       })}
     </ExpandableItem>
   );

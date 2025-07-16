@@ -23,11 +23,7 @@ const Breadcrumb = (props: BreadcrumbProps): JSX.Element => {
                     return (
                       <li
                         key={idx}
-                        className={
-                          element.active
-                            ? 'breadcrumb-item active'
-                            : 'breadcrumb-item'
-                        }
+                        className={element.active ? 'breadcrumb-item active' : 'breadcrumb-item'}
                         aria-current={element.active ? 'page' : 'false'}
                       >
                         {element.link ? (

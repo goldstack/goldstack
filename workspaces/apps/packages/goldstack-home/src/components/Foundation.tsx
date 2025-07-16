@@ -33,8 +33,7 @@ const Foundation = (props: FoundationProps): JSX.Element => {
                     fontWeight: feature.highlight ? 'bold' : 'normal',
                   }}
                 >
-                  {feature.title}{' '}
-                  {feature.highlight && <img src={GoldDiamondIcon}></img>}
+                  {feature.title} {feature.highlight && <img src={GoldDiamondIcon}></img>}
                 </span>
               </div>
             </div>

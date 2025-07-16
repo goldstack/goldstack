@@ -42,10 +42,7 @@ const Footer = (): JSX.Element => {
               <h5 className="text-white font-weight-bold">Learn More</h5>
               <ul className="nav nav-sm nav-x-0 nav-white flex-column">
                 <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    href={process.env.NEXT_PUBLIC_GOLDSTACK_DOCS}
-                  >
+                  <a className="nav-link" href={process.env.NEXT_PUBLIC_GOLDSTACK_DOCS}>
                     Documentation
                   </a>
                 </li>

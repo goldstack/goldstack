@@ -105,15 +105,10 @@ export const BuildProject = (params: BuildProjectParams): JSX.Element => {
           items={packages}
           disabled={progressMessage !== ''}
           onDeselect={(packageId): void => {
-            setSelectedPackages(
-              selectedPackages.filter((el) => el !== packageId)
-            );
+            setSelectedPackages(selectedPackages.filter((el) => el !== packageId));
           }}
           onSelect={(packageId): void => {
-            setSelectedPackages([
-              ...selectedPackages.filter((el) => el !== packageId),
-              packageId,
-            ]);
+            setSelectedPackages([...selectedPackages.filter((el) => el !== packageId), packageId]);
           }}
         ></PackageList>
       </Row>

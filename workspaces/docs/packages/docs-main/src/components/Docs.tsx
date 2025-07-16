@@ -39,18 +39,12 @@ const Docs = (props: DocsProps): JSX.Element => {
         <div className="row justify-content-lg-end space-bottom-3">
           <nav className="mt-2 col-lg-3 col-xl-2 hs-sidebar navbar-expand-lg px-0 ml-xl-7">
             <div className="collapse navbar-collapse " id="sidebar-nav">
-              <Navigation
-                items={sitemap[0].children}
-                currentPath={path}
-              ></Navigation>
+              <Navigation items={sitemap[0].children} currentPath={path}></Navigation>
             </div>
           </nav>
           <div className="col-lg-6">
             {props.title && <h1>{props.title}</h1>}
-            <div
-              dangerouslySetInnerHTML={{ __html: content }}
-              id="doc-content"
-            ></div>
+            <div dangerouslySetInnerHTML={{ __html: content }} id="doc-content"></div>
           </div>
           <div className="col-lg-3">
             <Toc headings={props.toc}></Toc>

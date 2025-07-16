@@ -12,8 +12,8 @@ const GoldstackBenefits = (): JSX.Element => {
         <div className="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
           <h2 className="h2">Key Benefits</h2>
           <p>
-            Get started faster and enjoy the benefits of high quality components
-            for the whole lifecycle of your application.
+            Get started faster and enjoy the benefits of high quality components for the whole
+            lifecycle of your application.
           </p>
         </div>
 
@@ -29,8 +29,7 @@ const GoldstackBenefits = (): JSX.Element => {
                 </figure>
                 <h4>Excellent Components</h4>
                 <p className="font-size-1 text-body mb-0">
-                  We choose only the best frameworks and solutions for our
-                  templates.
+                  We choose only the best frameworks and solutions for our templates.
                 </p>
               </div>
               <div className="card-footer border-0 pt-0">
@@ -49,8 +48,7 @@ const GoldstackBenefits = (): JSX.Element => {
                 </figure>
                 <h4>Customizable</h4>
                 <p className="font-size-1 text-body mb-0">
-                  Goldstack provides powerful tools to customize our templates
-                  to your needs.
+                  Goldstack provides powerful tools to customize our templates to your needs.
                 </p>
               </div>
               <div className="card-footer border-0 pt-0">
@@ -72,8 +70,7 @@ const GoldstackBenefits = (): JSX.Element => {
                 </figure>
                 <h4>Documentation</h4>
                 <p className="font-size-1 text-body mb-0">
-                  Detailed documentation and getting started guides for every
-                  template.
+                  Detailed documentation and getting started guides for every template.
                 </p>
               </div>
               <div className="card-footer border-0 pt-0">

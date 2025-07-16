@@ -43,12 +43,7 @@ const DownloadPage = (): JSX.Element => {
   return (
     <>
       <Header></Header>
-      {!token && (
-        <Download
-          projectId={id as string}
-          packageId={packageId as string}
-        ></Download>
-      )}
+      {!token && <Download projectId={id as string} packageId={packageId as string}></Download>}
       {token && <p>Restoring session</p>}
     </>
   );

@@ -55,10 +55,7 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
             onChange={props.onChange}
           ></input>
           <label className="custom-control-label" htmlFor={props.element}>
-            <img
-              style={{ width: '1.5em', marginRight: '0.5em' }}
-              src={props.icon}
-            ></img>
+            <img style={{ width: '1.5em', marginRight: '0.5em' }} src={props.icon}></img>
             {props.title}
 
             {props.isAlpha && (
@@ -90,11 +87,7 @@ const ProgressIndicator = (props: { message: string }): JSX.Element => {
   return (
     <>
       <div style={{ display: 'inline-block' }}>
-        <div
-          className="spinner-border ml-4"
-          role="status"
-          style={{ display: 'inline-block' }}
-        >
+        <div className="spinner-border ml-4" role="status" style={{ display: 'inline-block' }}>
           <span className="sr-only">Progress indicator</span>
         </div>
         <div className="ml-2" style={{ display: 'inline-block' }}>
@@ -179,17 +172,14 @@ const ModuleSelection = (props: { elements: string[] }) => {
     const projectId = projectData.projectId;
     setProgressMessage('Creating download bundle');
 
-    const packageRes = await fetch(
-      `${getEndpoint()}/projects/${projectId}/packages`,
-      {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-        body: JSON.stringify(projectData),
-      }
-    );
+    const packageRes = await fetch(`${getEndpoint()}/projects/${projectId}/packages`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify(projectData),
+    });
 
     const packageId = (await packageRes.json()).packageId;
     router.push(`/projects/${projectId}/packages/${packageId}/get-template`);
@@ -361,11 +351,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                 >
                   🛠 Build Project
                 </Button>
-                {building && (
-                  <ProgressIndicator
-                    message={progressMessage}
-                  ></ProgressIndicator>
-                )}
+                {building && <ProgressIndicator message={progressMessage}></ProgressIndicator>}
               </div>
             </div>
           </Col>

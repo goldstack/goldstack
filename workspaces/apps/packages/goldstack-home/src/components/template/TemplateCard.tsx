@@ -11,9 +11,7 @@ export interface TemplateCardProps {
 const TemplateCard = (props: TemplateCardProps): JSX.Element => {
   return (
     <>
-      <div
-        className={`card border shadow-none d-block ${styles['package-card']} `}
-      >
+      <div className={`card border shadow-none d-block ${styles['package-card']} `}>
         <div className="card-body d-flex align-items-center p-0">
           <div className="w-35 ">
             <img
@@ -43,9 +41,7 @@ const TemplateCard = (props: TemplateCardProps): JSX.Element => {
           </div> */}
         </div>
         <div className="card-footer text-center py-4">
-          <span className="d-block text-muted font-size-1 mb-3">
-            {props.template.description}
-          </span>
+          <span className="d-block text-muted font-size-1 mb-3">{props.template.description}</span>
           <a
             className="btn btn-sm btn-outline-primary btn-pill transition-3d-hover px-5 "
             href={`/templates/${props.template.id}`}

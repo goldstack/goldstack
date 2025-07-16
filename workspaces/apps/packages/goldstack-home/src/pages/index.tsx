@@ -63,24 +63,14 @@ const Front = (): JSX.Element => {
             <div className="col-lg-5 mb-7 mb-lg-0">
               <div className="mb-4">
                 <h1>First-Class Starter Projects</h1>
-                <p>
-                  Save tons of time by starting with a starter project assembled
-                  by Goldstack.
-                </p>
-                <a
-                  className="btn btn-primary btn-wide transition-3d-hover"
-                  href="/build"
-                >
+                <p>Save tons of time by starting with a starter project assembled by Goldstack.</p>
+                <a className="btn btn-primary btn-wide transition-3d-hover" href="/build">
                   ✔ Start Building Your Project Now
                 </a>
                 <p className="mt-3">
                   Open source on{' '}
                   <a href="https://github.com/goldstack/goldstack">
-                    <img
-                      style={{ height: '1rem' }}
-                      className="mr-1"
-                      src={GitHubIcon}
-                    />
+                    <img style={{ height: '1rem' }} className="mr-1" src={GitHubIcon} />
                     goldstack/goldstack
                   </a>
                 </p>
@@ -88,11 +78,7 @@ const Front = (): JSX.Element => {
             </div>
 
             <div className="col-lg-7">
-              <img
-                className="img-fluid"
-                src={RelaxedCoder}
-                alt="Relaxing coder"
-              />
+              <img className="img-fluid" src={RelaxedCoder} alt="Relaxing coder" />
             </div>
           </Row>
           <div className="w-md-80 w-lg-40 text-center mx-md-auto mb-5 space-top-3 mb-md-9">
@@ -116,16 +102,16 @@ const Front = (): JSX.Element => {
               <div className="row">
                 <div className="col-lg-6">
                   <p>
-                    It often takes hours, if not days, to get the basic setup
-                    for a new JavaScript/ TypeScript project working, especially
-                    if you are aiming for something fancy such as a monorepo 😕.
+                    It often takes hours, if not days, to get the basic setup for a new JavaScript/
+                    TypeScript project working, especially if you are aiming for something fancy
+                    such as a monorepo 😕.
                   </p>
                 </div>
 
                 <div className="col-lg-6">
                   <p>
-                    Goldstack provides high-quality starter projects tailored to
-                    your specific requirements using our
+                    Goldstack provides high-quality starter projects tailored to your specific
+                    requirements using our
                     <em>starter project builder</em> 🛠️.{' '}
                   </p>
                 </div>
@@ -245,13 +231,8 @@ const Front = (): JSX.Element => {
                       {/* <p>Robust and nimble builds and infrastructre</p> */}
                       <ul>
                         <li>npm scripts for testing, build and deployment</li>
-                        <li>
-                          Terraform configuration, easy to adapt and extend
-                        </li>
-                        <li>
-                          Scalable, low-cost serverless resources on the AWS
-                          cloud
-                        </li>
+                        <li>Terraform configuration, easy to adapt and extend</li>
+                        <li>Scalable, low-cost serverless resources on the AWS cloud</li>
                         <li>Docker-based builds</li>
                       </ul>
                     </>

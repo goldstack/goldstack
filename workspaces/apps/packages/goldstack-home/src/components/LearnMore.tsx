@@ -10,10 +10,7 @@ import type { MoreDetails } from '@goldstack/template-metadata';
 export const LeftArrow = (): JSX.Element => {
   const angleRight = dataUriToSrc(AngleRight);
   return (
-    <span
-      className={styles['angle-right']}
-      dangerouslySetInnerHTML={{ __html: angleRight }}
-    ></span>
+    <span className={styles['angle-right']} dangerouslySetInnerHTML={{ __html: angleRight }}></span>
   );
 };
 

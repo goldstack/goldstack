@@ -24,20 +24,15 @@ const fetcher = (url: string): any =>
     credentials: 'include',
   }).then((r) => r.json());
 
-const updateProject = async (
-  projectData: ProjectData
-): Promise<ProjectData> => {
-  const projectRes = await fetch(
-    `${getEndpoint()}/projects/${projectData.projectId}`,
-    {
-      method: 'PUT',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-      body: JSON.stringify(projectData),
-    }
-  );
+const updateProject = async (projectData: ProjectData): Promise<ProjectData> => {
+  const projectRes = await fetch(`${getEndpoint()}/projects/${projectData.projectId}`, {
+    method: 'PUT',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify(projectData),
+  });
   if (projectRes.status !== 200) {
     throw new Error('Cannot update project');
   }
@@ -67,7 +62,7 @@ const ConfigureProject = (): JSX.Element => {
     fetcher,
     {
       dedupingInterval: 100000,
-    }
+    },
   );
   useEffect(() => {
     if (data) {
@@ -130,9 +125,7 @@ const ConfigureProject = (): JSX.Element => {
                     <div className="col">
                       <DynamicConfigForm
                         currentItem={
-                          Array.isArray(step)
-                            ? parseInt(step[0])
-                            : parseInt(step as string)
+                          Array.isArray(step) ? parseInt(step[0]) : parseInt(step as string)
                         }
                         projectData={projectData}
                         packageId={packageId.toString()}
@@ -157,9 +150,7 @@ const ConfigureProject = (): JSX.Element => {
                     <ConfigureNavigate
                       configureSteps={configureSteps}
                       currentItem={
-                        Array.isArray(step)
-                          ? parseInt(step[0])
-                          : parseInt(step as string)
+                        Array.isArray(step) ? parseInt(step[0]) : parseInt(step as string)
                       }
                     ></ConfigureNavigate>
                   </div>

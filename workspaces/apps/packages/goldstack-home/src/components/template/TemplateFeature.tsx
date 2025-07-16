@@ -17,10 +17,7 @@ import EmailSendImg from 'src/img/ses_email_send.png';
 import EndpointTypeScript from 'src/img/endpoint_typescript.png';
 import FeatureBootstrap from './FeatureBootstrap';
 
-import type {
-  ShortTemplateFeature,
-  TemplateIcons,
-} from '@goldstack/template-metadata';
+import type { ShortTemplateFeature, TemplateIcons } from '@goldstack/template-metadata';
 import { resolveImage } from './imageUtil';
 
 const IconList = (props: { icons: TemplateIcons[] }): JSX.Element => {
@@ -89,9 +86,7 @@ const TemplateFeature = (props: ShortTemplateFeature): JSX.Element => {
     }
     case 'image': {
       if (!details.content.data.image) {
-        throw new Error(
-          'Invalid data for image ' + JSON.stringify(details.content)
-        );
+        throw new Error('Invalid data for image ' + JSON.stringify(details.content));
       }
       content = createImage(details.content.data.image);
       break;

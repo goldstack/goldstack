@@ -25,11 +25,9 @@ const ProjectTemplateBody = (props: ProjectTemplateProps): JSX.Element => {
             </h2>
           </div>
           {/* <h4 className="mb-4">Description</h4> */}
-          {(props.longDescription || props.description)
-            .split('\n')
-            .map((para, idx) => (
-              <p key={idx} dangerouslySetInnerHTML={{ __html: para }}></p>
-            ))}
+          {(props.longDescription || props.description).split('\n').map((para, idx) => (
+            <p key={idx} dangerouslySetInnerHTML={{ __html: para }}></p>
+          ))}
           <a
             className="link-collapse font-weight-bold collapsed"
             href={props.actionLink}

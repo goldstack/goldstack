@@ -14,10 +14,7 @@ const GoldstackProcess = (): JSX.Element => {
               <span className="step-icon step-icon-soft-primary">1</span>
               <div className="step-content">
                 <h3>Choose Modules</h3>
-                <p>
-                  Select the modules you need from our library of golden
-                  templates.
-                </p>
+                <p>Select the modules you need from our library of golden templates.</p>
               </div>
             </div>
           </li>
@@ -27,10 +24,7 @@ const GoldstackProcess = (): JSX.Element => {
               <span className="step-icon step-icon-soft-primary">2</span>
               <div className="step-content">
                 <h3>Configure</h3>
-                <p>
-                  Provide basic configuration for your project with our
-                  web-based UI.
-                </p>
+                <p>Provide basic configuration for your project with our web-based UI.</p>
               </div>
             </div>
           </li>
@@ -41,8 +35,7 @@ const GoldstackProcess = (): JSX.Element => {
               <div className="step-content">
                 <h3>Download and Install</h3>
                 <p>
-                  Download ZIP archive with your customized project and run{' '}
-                  <code>yarn</code>.
+                  Download ZIP archive with your customized project and run <code>yarn</code>.
                 </p>
               </div>
             </div>

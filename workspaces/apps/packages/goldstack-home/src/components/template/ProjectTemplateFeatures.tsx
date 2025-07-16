@@ -6,9 +6,7 @@ import styles from './ProjectTemplateFeatures.module.css';
 
 import { resolveImage } from './imageUtil';
 
-const ProjectTemplateFeature = (props: {
-  feature: ShortTemplateFeature;
-}): JSX.Element => {
+const ProjectTemplateFeature = (props: { feature: ShortTemplateFeature }): JSX.Element => {
   return (
     <>
       <a
@@ -16,11 +14,7 @@ const ProjectTemplateFeature = (props: {
         className={`media border border-light mb-4 p-2 ${styles['clickable-media']}`}
       >
         <div className="avatar mr-3 p-1">
-          <img
-            className="avatar-img"
-            src={resolveImage(props.feature.image)}
-            alt="Feature Icon"
-          />
+          <img className="avatar-img" src={resolveImage(props.feature.image)} alt="Feature Icon" />
         </div>
         <div className="media-body">
           <span className="h4">{props.feature.title}</span>
@@ -36,18 +30,11 @@ interface ProjectTemplateFeaturesProps {
   features: ShortTemplateFeature[];
 }
 
-const ProjectTemplateFeatures = (
-  props: ProjectTemplateFeaturesProps
-): JSX.Element => {
+const ProjectTemplateFeatures = (props: ProjectTemplateFeaturesProps): JSX.Element => {
   return (
     <>
       {props.features.map((feature, idx) => {
-        return (
-          <ProjectTemplateFeature
-            key={idx}
-            feature={feature}
-          ></ProjectTemplateFeature>
-        );
+        return <ProjectTemplateFeature key={idx} feature={feature}></ProjectTemplateFeature>;
       })}
     </>
   );

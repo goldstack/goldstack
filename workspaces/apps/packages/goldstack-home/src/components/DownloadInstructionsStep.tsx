@@ -15,9 +15,7 @@ export const DownloadInstructionsStep = (props: {
             </span>
           </div>
           <div className="media-body">
-            <span className="d-block text-dark font-weight-bold">
-              {props.title}
-            </span>
+            <span className="d-block text-dark font-weight-bold">{props.title}</span>
             {props.children}
           </div>
         </div>

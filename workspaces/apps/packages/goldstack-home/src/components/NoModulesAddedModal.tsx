@@ -47,26 +47,15 @@ const NoModulesAddedModal = (props: NoModulesAddedModalProps): JSX.Element => {
 
             <div className="modal-body">
               <div>
-                <p>
-                  Looks like you have not selected any modules to be included in
-                  your project.{' '}
-                </p>
+                <p>Looks like you have not selected any modules to be included in your project. </p>
                 <p>Do you want to add modules to your project?</p>
               </div>
 
               <div className="d-flex justify-content-end">
-                <button
-                  type="button"
-                  className="btn btn-white mr-2"
-                  onClick={props.handleProceed}
-                >
+                <button type="button" className="btn btn-white mr-2" onClick={props.handleProceed}>
                   No, proceed as is
                 </button>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={props.handleAddModules}
-                >
+                <button type="button" className="btn btn-primary" onClick={props.handleAddModules}>
                   Yep, let me add some modules
                 </button>
               </div>

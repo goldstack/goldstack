@@ -20,8 +20,7 @@ const theme = {
 };
 
 const BootstrapApp = ({ Component, pageProps }): JSX.Element => {
-  process.env.GOLDSTACK_DEPLOYMENT =
-    process.env.NEXT_PUBLIC_GOLDSTACK_DEPLOYMENT;
+  process.env.GOLDSTACK_DEPLOYMENT = process.env.NEXT_PUBLIC_GOLDSTACK_DEPLOYMENT;
   initGtm('UA-180192522-1');
   const router = useRouter();
 
@@ -33,7 +32,7 @@ const BootstrapApp = ({ Component, pageProps }): JSX.Element => {
 
   // see https://medium.com/frontend-digest/using-nextjs-with-google-analytics-and-typescript-620ba2359dea
   useEffect(() => {
-    let handleRouteChange: any ;
+    let handleRouteChange: any;
     if (process.env.GOLDSTACK_DEPLOYMENT === 'prod') {
       handleRouteChange = (url): void => {
         pageview({

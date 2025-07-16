@@ -14,10 +14,7 @@ import RocketLaunchImage from './../src/img/rocket-launch.jpg';
 const fetcher = (url: string): any => fetch(url).then((r) => r.json());
 
 const FetchedContent = (): JSX.Element => {
-  const { data, error } = useSWR(
-    'https://jsonplaceholder.typicode.com/todos/1',
-    fetcher
-  );
+  const { data, error } = useSWR('https://jsonplaceholder.typicode.com/todos/1', fetcher);
 
   if (error) {
     return <p>Cannot load data</p>;
@@ -47,9 +44,7 @@ const HomePage = (): JSX.Element => {
           <Button onClick={toggleData}>Toggle Data Display</Button>
           {displayData && <FetchedContent />}
           <p>
-            {RocketLaunchImage && (
-              <Image src={RocketLaunchImage || 'dummy'} fluid rounded></Image>
-            )}
+            {RocketLaunchImage && <Image src={RocketLaunchImage || 'dummy'} fluid rounded></Image>}
           </p>
         </Col>
       </Row>
