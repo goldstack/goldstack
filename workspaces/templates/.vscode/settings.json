@@ -3,7 +3,6 @@
   "files.eol": "\n",
   "editor.formatOnSave": false,
   "editor.tabSize": 2,
-  "prettier.prettierPath": ".vscode/pnpify/prettier/index.js",
   "typescript.tsdk": ".vscode/pnpify/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "github-actions.workflows.pinned.workflows": [
