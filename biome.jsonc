@@ -35,6 +35,9 @@
         "noGlobalEval": "warn",
         "noDangerouslySetInnerHtml": "warn"
       },
+      "style": {
+        "useImportType": "off"
+      },
       "a11y": "warn"
     }
   },

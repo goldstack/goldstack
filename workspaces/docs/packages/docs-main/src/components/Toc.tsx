@@ -1,6 +1,5 @@
-import type React from 'react';
-
 import type { Heading } from '@goldstack/toc-generator';
+import React from 'react';
 
 import styles from './Toc.module.css';
 

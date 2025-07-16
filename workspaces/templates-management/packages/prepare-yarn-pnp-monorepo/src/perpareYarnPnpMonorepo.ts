@@ -44,8 +44,8 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
     const copyFilesFromRootYarn = ['.yarn/pnpify', '.yarn/releases', '.yarn/sdks'].map((name) =>
       join(params.monorepoRoot, name),
     );
-    mkdir('-p', params.destinationDirectory + '.yarn/');
-    cp('-rf', copyFilesFromRootYarn, params.destinationDirectory + '.yarn/');
+    mkdir('-p', `${params.destinationDirectory}.yarn/`);
+    cp('-rf', copyFilesFromRootYarn, `${params.destinationDirectory}.yarn/`);
 
     const copyFilesFromTemplate = [
       '.gitignore',

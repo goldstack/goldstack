@@ -1,7 +1,6 @@
-import type React from 'react';
-
-import Plus from './../icons/font-awesome/solid/plus.svg';
+import React from 'react';
 import Check from './../icons/font-awesome/solid/check.svg';
+import Plus from './../icons/font-awesome/solid/plus.svg';
 
 import { dataUriToSrc } from './../utils/utils';
 

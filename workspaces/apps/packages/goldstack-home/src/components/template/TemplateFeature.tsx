@@ -1,24 +1,20 @@
-import type React from 'react';
-
-import { dataUriToSrc } from 'src/utils/utils';
-
-import Plus from 'src/icons/font-awesome/solid/plus.svg';
-import styles from './TemplateFeature.module.css';
-
-import FeatureAWSDeployment from 'src/components/template/FeatureAWSDeployment';
-import FeatureProjectInstall from 'src/components/template/FeatureProjectInstall';
-import FeatureCombineTemplates from 'src/components/template/FeatureCombineTemplates';
+import type { ShortTemplateFeature, TemplateIcons } from '@goldstack/template-metadata';
+import React from 'react';
 import LearnMore from 'src/components/LearnMore';
+import FeatureAWSDeployment from 'src/components/template/FeatureAWSDeployment';
+import FeatureCombineTemplates from 'src/components/template/FeatureCombineTemplates';
+import FeatureProjectInstall from 'src/components/template/FeatureProjectInstall';
+import Plus from 'src/icons/font-awesome/solid/plus.svg';
+import EndpointTypeScript from 'src/img/endpoint_typescript.png';
+import LambdaConfigImg from 'src/img/lambda_config.png';
 import NextJsConfigGif from 'src/img/nextjs-config.gif';
 import ReactTypeScriptGif from 'src/img/react-typescript.gif';
-import VercelDeployedImg from 'src/img/vercel_deployed.png';
-import LambdaConfigImg from 'src/img/lambda_config.png';
 import EmailSendImg from 'src/img/ses_email_send.png';
-import EndpointTypeScript from 'src/img/endpoint_typescript.png';
+import VercelDeployedImg from 'src/img/vercel_deployed.png';
+import { dataUriToSrc } from 'src/utils/utils';
 import FeatureBootstrap from './FeatureBootstrap';
-
-import type { ShortTemplateFeature, TemplateIcons } from '@goldstack/template-metadata';
 import { resolveImage } from './imageUtil';
+import styles from './TemplateFeature.module.css';
 
 const IconList = (props: { icons: TemplateIcons[] }): JSX.Element => {
   const images = props.icons.map((icon) => resolveImage(icon));

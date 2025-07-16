@@ -1,11 +1,11 @@
-import React from 'react';
 import { render } from '@testing-library/react';
+import React from 'react';
+import '@testing-library/jest-dom';
 import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime';
 import type { NextRouter } from 'next/router';
-import '@testing-library/jest-dom';
-import Front from '../pages/index';
 
 import { ThemeProvider } from 'styled-components';
+import Front from '../pages/index';
 
 const theme = {
   colors: {

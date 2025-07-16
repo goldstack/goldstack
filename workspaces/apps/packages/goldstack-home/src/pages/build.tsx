@@ -1,34 +1,28 @@
-import type React from 'react';
-import { useState, useEffect } from 'react';
-
-import { useRouter } from 'next/router';
+import { getEndpoint } from '@goldstack/goldstack-api';
+import type { ProjectData } from '@goldstack/project-repository';
 import Head from 'next/head';
-import Header from './../components/Header';
-import Footer from './../components/Footer';
-
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-
-import { event } from './../lib/ga';
+import Footer from './../components/Footer';
+import Header from './../components/Header';
 import NoModulesAddedModal from './../components/NoModulesAddedModal';
-
-import type { ProjectData } from '@goldstack/project-repository';
-import { getPackageIds } from './../lib/stackParamUtils';
-
-import { buildProjectConfig } from './../lib/buildProject';
-
-import { getEndpoint } from '@goldstack/goldstack-api';
-
-import NextjsIcon from './../icons/nextjs.svg';
+import GatewayIcon from './../icons/aws-api-gateway.svg';
 import BootstrapIcon from './../icons/bootstrap.svg';
 import CloudFrontIcon from './../icons/cloudfront.svg';
+
+import NextjsIcon from './../icons/nextjs.svg';
 import ExpressIcon from './../icons/nodejs.svg';
 import ReactIcon from './../icons/reactjs.svg';
-import GatewayIcon from './../icons/aws-api-gateway.svg';
 import S3Icon from './../icons/s3.svg';
 import SESIcon from './../icons/ses.svg';
+import { buildProjectConfig } from './../lib/buildProject';
+import { event } from './../lib/ga';
+import { getPackageIds } from './../lib/stackParamUtils';
+
 interface CheckboxProps {
   title: string;
   className?: string;
