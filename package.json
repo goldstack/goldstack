@@ -43,8 +43,7 @@
     "nodemon": "^2.0.20",
     "syncpack": "^13.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "ultracite": "5.0.36"
+    "typescript": "^5.8.3"
   },
   "packageManager": "yarn@4.9.2"
 }

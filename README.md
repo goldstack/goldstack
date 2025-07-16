@@ -76,14 +76,14 @@ It should be a surprise to no one that setting up a dynamic monorepo for JavaScr
 | ------ | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 👌     | Install and Build      | Yarn Workspaces using Yarn v2 (Berry) overall works very well and allows for very fast install and build speeds.                                                                                         |
 | 👌     | TypeScript             | Well-supported, only workaround required is to run `yarn fix-project-references` when new inter-project dependencies are added.                                                                          |
-| 👌     | Linting and Formatting | ESLint and Prettier are configured to work effectively across all packages.                                                                                                                              |
+| 👌     | Linting and Formatting | Biome configured to work effectively across all packages.                                                                                                                              |
 | 👌     | Testing                | Running tests with Jest works across all packages                                                                                                                                                        |
 | 👌     | IDE Integration        | VSCode including Intellisense works across the monorepo                                                                                                                                                  |
 | 🤷     | AWS                    | Deployment into AWS using Terraform overall works very well. Just initial configuration and the way credentials are provided can be improved. See [#3](https://github.com/goldstack/goldstack/issues/3). |
 
 # About
 
-Getting started with a new project often takes so much longer than it should. Rather than writing code for the problem we want to solve, we fiddle around with the tooling. This problem is often substantial especially in JavaScript ecosystems, where getting common tools such as ESLint, TypeScript, Jest and React work together takes a lot of time and can be frustrating.
+Getting started with a new project often takes so much longer than it should. Rather than writing code for the problem we want to solve, we fiddle around with the tooling. This problem is often substantial especially in JavaScript ecosystems, where getting common tools such as Biome, TypeScript, Jest and React work together takes a lot of time and can be frustrating.
 
 Goldstack provides high quality starter projects that are configured based on best practices and sensible defaults. Using a Goldstack starter project rather than a hand-rolled one, will save you dozens of development hours. Moreover, at Goldstack we obsess with every detail of our starter projects and have the freedom to spend the time on optimizing things; something often lost in the race to get goals delivered in many development projects.
 
@@ -603,7 +603,7 @@ You may also be asked if you want to install recommended extensions for this wor
 
 If you want to install the necessary extensions manually, here are links to the extensions required:
 
-*   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+*   [Biome](https://marketplace.visualstudio.com/items?itemName=biomejs.biome)
 *   [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 *   [ZipFS](https://marketplace.visualstudio.com/items?itemName=arcanis.vscode-zipfs) (optional)
 
@@ -629,8 +629,8 @@ Each module you have selected comes with its own instructions about how to get s
 *   `yarn compile`: Will compile all TypeScript code.
 *   `yarn fix-project-references`: Will ensure all [TypeScript project references](https://www.typescriptlang.org/docs/handbook/project-references.html) between the packages in the project are correct. Always run this after adding a new package or changing the dependencies between packages in the project.
 *   `yarn test-watch`: Will run tests when modules have changed.
-*   `yarn format-check` and `yarn format`: Will check or fix source code formatting using Prettier
-*   `yarn lint` and `yarn lint-fix`: Will check or auto-fix linting issues using ESLint.
+*   `yarn format-check` and `yarn format`: Will check or fix source code formatting using Biome.
+*   `yarn lint` and `yarn lint-fix`: Will check or auto-fix linting issues using Biome.
 
 Note that you can run all of these commands in the context of individual modules as well. If you only modify code within one module, this is sufficient. However, if you develop multiple modules at the same time, it is important to run these commands at the project root.
 
