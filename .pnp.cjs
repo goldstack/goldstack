@@ -17055,7 +17055,7 @@ const RAW_RUNTIME_STATE =
           ["dynamodb-admin", "npm:4.6.1"],\
           ["ejs", "npm:3.1.10"],\
           ["errorhandler", "npm:1.5.1"],\
-          ["express", "npm:4.19.2"],\
+          ["express", "npm:4.20.0"],\
           ["lodash.pickby", "npm:4.6.0"],\
           ["open", "npm:8.4.2"]\
         ],\
@@ -17955,45 +17955,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["express", [\
-      ["npm:4.19.2", {\
-        "packageLocation": "./.yarn/cache/express-npm-4.19.2-f81334a22a-3fcd792536.zip/node_modules/express/",\
-        "packageDependencies": [\
-          ["accepts", "npm:1.3.8"],\
-          ["array-flatten", "npm:1.1.1"],\
-          ["body-parser", "npm:1.20.2"],\
-          ["content-disposition", "npm:0.5.4"],\
-          ["content-type", "npm:1.0.4"],\
-          ["cookie", "npm:0.6.0"],\
-          ["cookie-signature", "npm:1.0.6"],\
-          ["debug", "virtual:c7b184cd14c02e3ce555ab1875e60cf5033c617e17d82c4c02ea822101d3c817f48bf25a766b4d4335742dc5c9c14c2e88a57ed955a56c4ad0613899f82f5618#npm:2.6.9"],\
-          ["depd", "npm:2.0.0"],\
-          ["ejs", "npm:3.1.10"],\
-          ["encodeurl", "npm:1.0.2"],\
-          ["escape-html", "npm:1.0.3"],\
-          ["etag", "npm:1.8.1"],\
-          ["express", "npm:4.19.2"],\
-          ["finalhandler", "npm:1.2.0"],\
-          ["fresh", "npm:0.5.2"],\
-          ["http-errors", "npm:2.0.0"],\
-          ["merge-descriptors", "npm:1.0.1"],\
-          ["methods", "npm:1.1.2"],\
-          ["on-finished", "npm:2.4.1"],\
-          ["parseurl", "npm:1.3.3"],\
-          ["path-to-regexp", "npm:0.1.7"],\
-          ["proxy-addr", "npm:2.0.7"],\
-          ["qs", "npm:6.11.0"],\
-          ["range-parser", "npm:1.2.1"],\
-          ["safe-buffer", "npm:5.2.1"],\
-          ["send", "npm:0.18.0"],\
-          ["serve-static", "npm:1.15.0"],\
-          ["setprototypeof", "npm:1.2.0"],\
-          ["statuses", "npm:2.0.1"],\
-          ["type-is", "npm:1.6.18"],\
-          ["utils-merge", "npm:1.0.1"],\
-          ["vary", "npm:1.1.2"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:4.20.0", {\
         "packageLocation": "./.yarn/cache/express-npm-4.20.0-a4b76bf3f8-4131f566cf.zip/node_modules/express/",\
         "packageDependencies": [\
@@ -22994,13 +22955,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["merge-descriptors", [\
-      ["npm:1.0.1", {\
-        "packageLocation": "./.yarn/cache/merge-descriptors-npm-1.0.1-615287aaa8-5abc259d2a.zip/node_modules/merge-descriptors/",\
-        "packageDependencies": [\
-          ["merge-descriptors", "npm:1.0.1"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:1.0.3", {\
         "packageLocation": "./.yarn/cache/merge-descriptors-npm-1.0.3-10b44ad75c-52117adbe0.zip/node_modules/merge-descriptors/",\
         "packageDependencies": [\
@@ -24763,13 +24717,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/path-to-regexp-npm-0.1.10-63516149e0-894e31f1b2.zip/node_modules/path-to-regexp/",\
         "packageDependencies": [\
           ["path-to-regexp", "npm:0.1.10"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:0.1.7", {\
-        "packageLocation": "./.yarn/cache/path-to-regexp-npm-0.1.7-2605347373-701c99e1f0.zip/node_modules/path-to-regexp/",\
-        "packageDependencies": [\
-          ["path-to-regexp", "npm:0.1.7"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -27274,17 +27221,6 @@ const RAW_RUNTIME_STATE =
           ["parseurl", "npm:1.3.3"],\
           ["send", "npm:0.17.2"],\
           ["serve-static", "npm:1.14.2"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:1.15.0", {\
-        "packageLocation": "./.yarn/cache/serve-static-npm-1.15.0-86c81879f5-699b2d4c29.zip/node_modules/serve-static/",\
-        "packageDependencies": [\
-          ["encodeurl", "npm:1.0.2"],\
-          ["escape-html", "npm:1.0.3"],\
-          ["parseurl", "npm:1.3.3"],\
-          ["send", "npm:0.18.0"],\
-          ["serve-static", "npm:1.15.0"]\
         ],\
         "linkType": "HARD"\
       }],\
