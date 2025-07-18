@@ -27,7 +27,7 @@
     "@goldstack/utils-esbuild": "0.5.14",
     "aws-serverless-express": "^3.3.8",
     "cors": "^2.8.5",
-    "express": "4.19.2",
+    "express": "4.20.0",
     "helmet": "^4.6.0",
     "source-map-support": "^0.5.21"
   },
