@@ -4889,7 +4889,6 @@ __metadata:
     jest-environment-jsdom: "npm:^29.7.0"
     jest-transform-stub: "npm:^2.0.0"
     node-css-require: "npm:0.4.15"
-    node-fetch: "npm:^3.3.2"
     react: "npm:^19.1.0"
     react-dom: "npm:^19.1.0"
     rimraf: "npm:^3.0.2"

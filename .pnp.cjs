@@ -6219,7 +6219,6 @@ const RAW_RUNTIME_STATE =
           ["jest-environment-jsdom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:29.7.0"],\
           ["jest-transform-stub", "npm:2.0.0"],\
           ["node-css-require", "workspace:workspaces/utils/packages/node-css-require"],\
-          ["node-fetch", "npm:3.3.2"],\
           ["react", "npm:19.1.0"],\
           ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:19.1.0"],\
           ["rimraf", "npm:3.0.2"],\
