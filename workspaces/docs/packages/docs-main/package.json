@@ -11,7 +11,7 @@
     "clean-terraform": "rimraf ./infra/aws/.terraform",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.compile.json --watch",
-    "compile:sass": "node-sass src/styles/app.scss src/styles/app.css --source-map src/styles/app.css.map",
+    "compile:sass": "sass src/styles/app.scss src/styles/app.css --source-map ",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "deploy": "yarn template set-nextjs-env $@ && yarn build && yarn web:build && yarn template-ts deploy $@",
     "deploy-ts": "yarn template-ts set-nextjs-env $@ && yarn build && yarn web:build && yarn template-ts deploy $@",
