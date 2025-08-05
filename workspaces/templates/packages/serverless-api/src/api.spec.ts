@@ -1,7 +1,7 @@
 import getPort from 'find-free-port';
 import fetch from 'node-fetch';
 
-import { startTestServer, stopTestServer, getEndpoint } from './module';
+import { getEndpoint, startTestServer, stopTestServer } from './module';
 
 jest.setTimeout(120000);
 
@@ -26,10 +26,8 @@ describe('Should create API', () => {
   });
 
   test('Should receive response and support parameters', async () => {
-    const res = await fetch(`${getEndpoint()}/echo?message=abc`, {
-      timeout: 10000,
-    });
-    const response = await res.json();
+    const res = await fetch(`${getEndpoint()}/echo?message=abc`);
+    const response = (await res.json()) as { message: string };
     expect(response.message).toContain('abc');
   });
 

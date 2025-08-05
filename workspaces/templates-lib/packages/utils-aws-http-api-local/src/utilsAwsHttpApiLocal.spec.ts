@@ -37,7 +37,7 @@ describe('Should create API', () => {
 
   test('Should support path parameters at end of path', async () => {
     const res = await fetch(`http://localhost:${port}/order/abcd`);
-    const response = await res.json();
+    const response = (await res.json()) as { message: string };
     expect(response.message).toContain('order [abcd]');
   });
 
@@ -48,19 +48,19 @@ describe('Should create API', () => {
 
   test('Should support greedy paths', async () => {
     const res = await fetch(`http://localhost:${port}/admin/my/nested/path`);
-    const response = await res.json();
+    const response = (await res.json()) as { message: string };
     expect(response.message).toContain('[my/nested/path]');
   });
 
   test('Should support greedy paths', async () => {
     const res = await fetch(`http://localhost:${port}/admin/short`);
-    const response = await res.json();
+    const response = (await res.json()) as { message: string };
     expect(response.message).toContain('[short]');
   });
 
   test('Should not match root for greedy paths', async () => {
     const res = await fetch(`http://localhost:${port}/admin`);
-    const response = await res.json();
+    const response = (await res.json()) as { message: string };
     expect(response.message).toContain('Unknown endpoint');
   });
 
