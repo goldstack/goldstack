@@ -30,7 +30,8 @@
     "test-watch": "nodemonx --watch . --exec 'yarn test'"
   },
   "resolutions": {
-    "generic-names": "4.0.0"
+    "generic-names": "4.0.0",
+    "form-data": "^4.0.4"
   },
   "devDependencies": {
     "@biomejs/biome": "2.1.1",
