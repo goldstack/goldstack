@@ -1,6 +1,5 @@
 import { findFreePorts } from 'find-free-ports';
-import fetch from 'node-fetch';
-import { startServer, type StartServerResult } from './utilsAwsHttpApiLocal';
+import { type StartServerResult, startServer } from './utilsAwsHttpApiLocal';
 
 describe('Should create API', () => {
   let port: undefined | number;
@@ -37,7 +36,7 @@ describe('Should create API', () => {
 
   test('Should support path parameters at end of path', async () => {
     const res = await fetch(`http://localhost:${port}/order/abcd`);
-    const response = await res.json();
+    const response = (await res.json()) as { message: string };
     expect(response.message).toContain('order [abcd]');
   });
 
@@ -48,19 +47,19 @@ describe('Should create API', () => {
 
   test('Should support greedy paths', async () => {
     const res = await fetch(`http://localhost:${port}/admin/my/nested/path`);
-    const response = await res.json();
+    const response = (await res.json()) as { message: string };
     expect(response.message).toContain('[my/nested/path]');
   });
 
   test('Should support greedy paths', async () => {
     const res = await fetch(`http://localhost:${port}/admin/short`);
-    const response = await res.json();
+    const response = (await res.json()) as { message: string };
     expect(response.message).toContain('[short]');
   });
 
   test('Should not match root for greedy paths', async () => {
     const res = await fetch(`http://localhost:${port}/admin`);
-    const response = await res.json();
+    const response = (await res.json()) as { message: string };
     expect(response.message).toContain('Unknown endpoint');
   });
 

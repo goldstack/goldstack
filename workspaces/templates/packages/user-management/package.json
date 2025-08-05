@@ -29,7 +29,7 @@
     "uuid": "^11.0.5"
   },
   "devDependencies": {
-    "@aws-sdk/client-cognito-identity-provider": "^3.844.0",
+    "@aws-sdk/client-cognito-identity-provider": "^3.859.0",
     "@goldstack/template-user-management-cli": "0.1.58",
     "@goldstack/utils-log": "0.3.20",
     "@swc/core": "^1.12.11",

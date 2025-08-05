@@ -59,10 +59,9 @@
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^24.0.13",
-    "@types/node-fetch": "^2.6.12",
     "find-free-ports": "^3.1.1",
     "jest": "^29.7.0",
-    "node-fetch": "2.6.7",
+    "node-fetch": "^3.3.2",
     "rimraf": "^3.0.2",
     "typescript": "^5.8.3"
   },
