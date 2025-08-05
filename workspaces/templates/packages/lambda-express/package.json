@@ -46,7 +46,7 @@
     "jest": "^29.7.0",
     "rimraf": "^3.0.2",
     "source-map-loader": "^1.0.1",
-    "supertest": "^4.0.2",
+    "supertest": "^7.1.4",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
