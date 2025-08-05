@@ -1,5 +1,4 @@
 import getPort from 'find-free-port';
-import fetch from 'node-fetch';
 
 import { getEndpoint, startTestServer, stopTestServer } from './module';
 
