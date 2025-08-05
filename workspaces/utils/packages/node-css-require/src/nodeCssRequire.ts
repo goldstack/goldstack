@@ -2,12 +2,15 @@
 import { addHook } from 'pirates';
 
 import postcss, { type AcceptedPlugin } from 'postcss';
-import postcssModulesSync from 'postcss-modules-sync';
 import postcssModules from 'postcss-modules';
+
+const postcssModulesSync =
+  require('postcss-modules-sync').default ?? require('postcss-modules-sync');
 
 // import { register as swcRegister } from '@swc-node/register/register';
 
 import { createHash } from 'crypto';
+
 export type { AcceptedPlugin } from 'postcss';
 
 export interface CompileCssResult {

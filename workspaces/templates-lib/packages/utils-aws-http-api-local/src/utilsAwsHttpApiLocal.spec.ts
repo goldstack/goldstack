@@ -1,6 +1,5 @@
 import { findFreePorts } from 'find-free-ports';
-import fetch from 'node-fetch';
-import { startServer, type StartServerResult } from './utilsAwsHttpApiLocal';
+import { type StartServerResult, startServer } from './utilsAwsHttpApiLocal';
 
 describe('Should create API', () => {
   let port: undefined | number;
