@@ -34,7 +34,7 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.844.0",
+    "@aws-sdk/client-s3": "^3.859.0",
     "@smithy/types": "^4.3.1",
     "@types/sinon": "^17.0.4",
     "aws-sdk-client-mock": "^4.1.0",
