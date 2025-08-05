@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-s3-deployment",
-  "version": "0.5.40",
+  "version": "0.5.41",
   "description": "Utility for deploying files to S3",
   "keywords": [
     "goldstack",
@@ -36,8 +36,8 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.4.36",
-    "@goldstack/utils-aws-cli": "0.4.37",
+    "@goldstack/infra-aws": "0.4.37",
+    "@goldstack/utils-aws-cli": "0.4.38",
     "@goldstack/utils-cli": "0.3.18",
     "@goldstack/utils-docker": "0.4.25",
     "@goldstack/utils-sh": "0.5.23"
