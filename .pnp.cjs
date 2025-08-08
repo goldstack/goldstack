@@ -14403,25 +14403,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["body-parser", [\
-      ["npm:1.20.2", {\
-        "packageLocation": "./.yarn/cache/body-parser-npm-1.20.2-44738662cf-3cf171b821.zip/node_modules/body-parser/",\
-        "packageDependencies": [\
-          ["body-parser", "npm:1.20.2"],\
-          ["bytes", "npm:3.1.2"],\
-          ["content-type", "npm:1.0.5"],\
-          ["debug", "virtual:c7b184cd14c02e3ce555ab1875e60cf5033c617e17d82c4c02ea822101d3c817f48bf25a766b4d4335742dc5c9c14c2e88a57ed955a56c4ad0613899f82f5618#npm:2.6.9"],\
-          ["depd", "npm:2.0.0"],\
-          ["destroy", "npm:1.2.0"],\
-          ["http-errors", "npm:2.0.0"],\
-          ["iconv-lite", "npm:0.4.24"],\
-          ["on-finished", "npm:2.4.1"],\
-          ["qs", "npm:6.11.0"],\
-          ["raw-body", "npm:2.5.2"],\
-          ["type-is", "npm:1.6.18"],\
-          ["unpipe", "npm:1.0.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:1.20.3", {\
         "packageLocation": "./.yarn/cache/body-parser-npm-1.20.3-c7b184cd14-8723e3d7a6.zip/node_modules/body-parser/",\
         "packageDependencies": [\
@@ -16927,7 +16908,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["argparse", "npm:2.0.1"],\
           ["aws-sdk", "npm:2.1550.0"],\
-          ["body-parser", "npm:1.20.2"],\
+          ["body-parser", "npm:1.20.3"],\
           ["cli-color", "npm:2.0.3"],\
           ["cookie-parser", "npm:1.4.6"],\
           ["dynamodb-admin", "npm:4.6.1"],\
