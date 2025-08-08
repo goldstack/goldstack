@@ -6858,7 +6858,7 @@ const RAW_RUNTIME_STATE =
           ["mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
           ["rimraf", "npm:3.0.2"],\
           ["source-map-support", "npm:0.5.21"],\
-          ["tmp", "npm:0.2.1"],\
+          ["tmp", "npm:0.2.4"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"],\
           ["yargs", "npm:17.5.1"]\
@@ -28704,11 +28704,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["tmp", [\
-      ["npm:0.2.1", {\
-        "packageLocation": "./.yarn/cache/tmp-npm-0.2.1-a9c8d9c0ca-445148d72d.zip/node_modules/tmp/",\
+      ["npm:0.2.4", {\
+        "packageLocation": "./.yarn/cache/tmp-npm-0.2.4-59e60ac7e1-6fa6c4e674.zip/node_modules/tmp/",\
         "packageDependencies": [\
-          ["rimraf", "npm:3.0.2"],\
-          ["tmp", "npm:0.2.1"]\
+          ["tmp", "npm:0.2.4"]\
         ],\
         "linkType": "HARD"\
       }]\
