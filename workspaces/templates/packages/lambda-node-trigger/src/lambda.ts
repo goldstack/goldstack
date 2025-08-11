@@ -55,7 +55,7 @@ export const getMockedSQS = (): SQSClient => {
       ],
     };
 
-    await handler(sqsEvent, {} as any, () => {});
+    await handler(sqsEvent, {} as any);
   };
 
   return templateGetMockedSQS(goldstackConfig, messageSendHandler);
