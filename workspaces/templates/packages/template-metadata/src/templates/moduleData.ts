@@ -12,6 +12,12 @@ const NextJs: PackageProps = {
   documentationLink: 'https://docs.goldstack.party/docs/templates/app-nextjs',
 };
 
+const NextJsTailwind: PackageProps = {
+  title: 'Next.js + Tailwind',
+  link: 'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/app-nextjs-tailwind#readme',
+  documentationLink: 'https://docs.goldstack.party/docs/templates/app-nextjs-tailwind',
+};
+
 const StaticWebsite: PackageProps = {
   title: 'Static Website',
   link: 'https://github.com/goldstack/goldstack/tree/master/workspaces/templates/packages/static-website-aws#readme',
@@ -88,6 +94,7 @@ export {
   StaticWebsite,
   NextJsBootstrap,
   NextJs,
+  NextJsTailwind,
   Express,
   GoGin,
   LambdaPythonJob,

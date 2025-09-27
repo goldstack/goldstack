@@ -21,6 +21,7 @@
         "server-side-rendering/index.md",
         "user-management/index.md",
         "app-nextjs/index.md",
+        "app-nextjs-tailwind/index.md",
         "lambda-express/index.md",
         "dynamodb/index.md",
         "email-send/index.md",

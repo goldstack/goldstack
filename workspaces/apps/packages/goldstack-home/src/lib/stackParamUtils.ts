@@ -6,6 +6,9 @@ export const getPackageIds = (elements: string[]): string[] => {
   if (elements.includes('bootstrap')) {
     res.push('template:app-nextjs-bootstrap');
   }
+  if (elements.includes('nextjs-tailwind')) {
+    res.push('template:app-nextjs-tailwind');
+  }
   if (elements.includes('express') || elements.includes('lambda')) {
     res.push('template:lambda-express');
   }

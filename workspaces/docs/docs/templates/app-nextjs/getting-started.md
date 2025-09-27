@@ -4,4 +4,4 @@
 
 [!embed](./../shared/getting-started-deployment.md)
 
-[!embed](./getting-started-development.md)
+[!embed](./../app-nextjs/getting-started-development.md)

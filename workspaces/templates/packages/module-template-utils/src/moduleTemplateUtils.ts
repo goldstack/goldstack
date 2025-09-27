@@ -6,6 +6,7 @@ export const getModuleTemplatesNames = (): string[] => {
     'static-website-aws',
     'app-nextjs',
     'app-nextjs-bootstrap',
+    'app-nextjs-tailwind',
     's3',
     'dynamodb',
     'docker-image-aws',

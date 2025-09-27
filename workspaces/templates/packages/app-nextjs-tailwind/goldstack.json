@@ -1,0 +1,21 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "app-nextjs-tailwind",
+  "template": "app-nextjs-tailwind",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "hostedZoneDomain": "dev.goldstack.party",
+        "websiteDomain": "app-nextjs-tailwind.templates.dev.goldstack.party",
+        "defaultCacheDuration": 10
+      },
+      "tfVersion": "1.10",
+      "tfStateKey": "app-nextjs-tailwind-prod-8e04598176c0b2dedc30.tfstate"
+    }
+  ]
+}

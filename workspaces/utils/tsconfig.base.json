@@ -2,7 +2,7 @@
   "compilerOptions": {
     "incremental": true,
     "target": "ES2019",
-    "module": "commonjs",
+    "module": "node16",
     "lib": [
       "dom",
       "ESNext"
@@ -22,6 +22,7 @@
     "useUnknownInCatchVariables": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node16",
     "types": [
       "jest",
       "node"
