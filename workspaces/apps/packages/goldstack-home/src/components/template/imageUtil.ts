@@ -13,6 +13,7 @@ import NodejsIcon from './../../icons/nodejs.svg';
 import ReactIcon from './../../icons/reactjs.svg';
 import S3Icon from './../../icons/s3.svg';
 import SESIcon from './../../icons/ses2.svg';
+import TailwindIcon from './../../icons/tailwind.svg';
 import TerraformIcon from './../../icons/terraform.svg';
 import TypeScriptIcon from './../../icons/typescript.svg';
 import VSCodeIcon from './../../icons/vscode.svg';
@@ -30,6 +31,9 @@ export const resolveImage = (image: TemplateFeatureImage): any => {
   }
   if (image === 'nextjs-bootstrap') {
     return NextjsBootstrapIcon;
+  }
+  if (image === 'nextjs-tailwind') {
+    return TailwindIcon;
   }
   if (image === 'biome') {
     return BiomeIcon;
