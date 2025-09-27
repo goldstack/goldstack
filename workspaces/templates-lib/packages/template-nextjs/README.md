@@ -11,3 +11,4 @@ This library is used in the following Goldstack templates:
 
 - [Next.js](https://goldstack.party/templates/nextjs)
 - [Next.js + Bootstrap](https://goldstack.party/templates/nextjs-bootstrap)
+
