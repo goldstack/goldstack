@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+// biome-ignore lint/correctness/noUnusedImports: React
 import React from 'react';
 
 const App = ({ Component, pageProps }): JSX.Element => {

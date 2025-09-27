@@ -15,6 +15,7 @@ jobs:
             'backend-nodejs-express',
             'nextjs',
             'nextjs-bootstrap',
+            'nextjs-tailwind',
             'no-infra',
             'email-send',
             's3',

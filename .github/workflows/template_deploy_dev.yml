@@ -15,6 +15,7 @@ jobs:
             'backend-lambda-api',
             'backend-nodejs-express',
             'nextjs',
+            'nextjs-tailwind',
             'no-infra',
             'email-send',
             's3',

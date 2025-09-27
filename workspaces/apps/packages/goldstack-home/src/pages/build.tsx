@@ -238,6 +238,15 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     onChange={checkboxChange}
                   ></Checkbox>
                   <Checkbox
+                    title="Next.js 15 + Tailwind CSS"
+                    icon={NextjsIcon}
+                    element="nextjs-tailwind"
+                    disabled={building}
+                    templateLink={'/templates/app-nextjs-tailwind'}
+                    checked={elements.indexOf('nextjs-tailwind') !== -1}
+                    onChange={checkboxChange}
+                  ></Checkbox>
+                  <Checkbox
                     title="Static Website"
                     element="static-website"
                     icon={CloudFrontIcon}
