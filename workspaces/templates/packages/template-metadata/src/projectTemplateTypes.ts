@@ -10,7 +10,8 @@ export type FeatureContentType =
   | 'aws-deployment'
   | 'combine-templates'
   | 'project-install'
-  | 'bootstrap';
+  | 'bootstrap'
+  | 'tailwind';
 
 export interface FeatureContent {
   type: FeatureContentType;
