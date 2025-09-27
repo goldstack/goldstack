@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/nodemonx",
-  "version": "0.4.25",
+  "version": "0.4.26",
   "description": "Enhanced utility for watching for changes in directories",
   "keywords": [
     "goldstack",
@@ -39,13 +39,13 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-log": "0.3.20",
-    "@goldstack/utils-sh": "0.5.23",
+    "@goldstack/utils-log": "0.3.21",
+    "@goldstack/utils-sh": "0.5.24",
     "minimatch": "^10.0.1",
     "node-watch": "^0.6.4"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.14",
+    "@goldstack/utils-git": "0.2.15",
     "@swc/core": "^1.12.11",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^29.5.14",
