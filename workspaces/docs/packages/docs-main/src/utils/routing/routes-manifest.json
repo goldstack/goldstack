@@ -140,6 +140,10 @@
       "regex": "^\\/docs\\/templates\\/app-nextjs-bootstrap$"
     },
     {
+      "page": "/docs/templates/app-nextjs-tailwind",
+      "regex": "^\\/docs\\/templates\\/app-nextjs-tailwind$"
+    },
+    {
       "page": "/docs/templates/app-nextjs",
       "regex": "^\\/docs\\/templates\\/app-nextjs$"
     },
@@ -224,8 +228,8 @@
       "routeKeys": {
         "nxtPslug": "nxtPslug"
       },
-      "dataRouteRegex": "^/_next/data/u0RSF9eqhsBKYLnr5U1rk/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/u0RSF9eqhsBKYLnr5U1rk/docs/(?<nxtPslug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/bkaU0OzWZ30h6uShQu7rw/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/bkaU0OzWZ30h6uShQu7rw/docs/(?<nxtPslug>.+?)\\.json$"
     }
   ],
   "rsc": {

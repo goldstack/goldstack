@@ -14,7 +14,7 @@ export const getNextjsTailwindTemplateData = (): ProjectTemplateProps => {
   return {
     id: 'nextjs-tailwind',
     title: 'Next.js + Tailwind',
-    boilerplateLink: 'https://github.com/goldstack/nextjs-tailwind-boilerplate',
+    // boilerplateLink: 'https://github.com/goldstack/nextjs-tailwind-boilerplate',
     images: ['nextjs-tailwind', 'typescript'],
     packages: [NextJsTailwind],
     isComposite: false,
