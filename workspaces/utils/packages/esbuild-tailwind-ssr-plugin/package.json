@@ -1,6 +1,6 @@
 {
   "name": "esbuild-tailwind-ssr-plugin",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "esbuild plugin for compiling Tailwind CSS",
   "keywords": [
     "node",

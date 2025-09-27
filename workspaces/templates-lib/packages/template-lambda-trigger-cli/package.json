@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-trigger-cli",
-  "version": "0.1.35",
+  "version": "0.1.36",
   "description": "Utilities for templates that allow a Lambda to be triggered.",
   "keywords": [
     "goldstack",
@@ -48,9 +48,9 @@
   "dependencies": {
     "@goldstack/infra": "0.4.25",
     "@goldstack/infra-aws": "0.4.38",
-    "@goldstack/template-lambda-cli": "0.1.32",
+    "@goldstack/template-lambda-cli": "0.1.33",
     "@goldstack/template-sqs": "0.1.30",
-    "@goldstack/utils-aws-lambda": "0.3.48",
+    "@goldstack/utils-aws-lambda": "0.3.49",
     "@goldstack/utils-cli": "0.3.19",
     "@goldstack/utils-config": "0.4.25",
     "@goldstack/utils-log": "0.3.21",

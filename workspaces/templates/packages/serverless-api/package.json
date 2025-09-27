@@ -30,8 +30,8 @@
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@goldstack/template-lambda-api-cli": "0.6.63",
-    "@goldstack/utils-aws-http-api-local": "0.3.57",
+    "@goldstack/template-lambda-api-cli": "0.6.64",
+    "@goldstack/utils-aws-http-api-local": "0.3.58",
     "@jest-mock/express": "^1.4.5",
     "@swc/core": "^1.12.11",
     "@swc/jest": "^0.2.39",
