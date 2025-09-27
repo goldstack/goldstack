@@ -12,6 +12,7 @@
   "templates/server-side-rendering",
   "templates/user-management",
   "templates/app-nextjs",
+  "templates/app-nextjs-tailwind",
   "templates/lambda-express",
   "templates/dynamodb",
   "templates/email-send",

@@ -83,6 +83,9 @@
       "path": "workspaces/templates/packages/app-nextjs-bootstrap"
     },
     {
+      "path": "workspaces/templates/packages/app-nextjs-tailwind"
+    },
+    {
       "path": "workspaces/templates/packages/docker-image-aws"
     },
     {

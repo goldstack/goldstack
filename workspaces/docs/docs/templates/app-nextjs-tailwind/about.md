@@ -1,1 +1,0 @@
-Goldstack's Next.js template provides a [Next.js](https://nextjs.org/) application that is deployed on AWS using the [CloudFront CDN](https://aws.amazon.com/cloudfront/) and [Lambda@Edge](https://aws.amazon.com/lambda/edge/).

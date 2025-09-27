@@ -3,19 +3,25 @@ id: template-app-nextjs-tailwind
 title: Next.js + Tailwind CSS
 ---
 
-[!embed](./about.md)
+[!embed](./../app-nextjs/about.md)
+
+This template comes preloaded with all Tailwind config you need to start a project.
 
 ## Features
 
-[!embed](./features.md)
+### Tailwind Configured
+
+Get started applying those classes right away and enjoy Tailwind styling.
+
+[!embed](./../app-nextjs/features.md)
 
 ## Configure
 
-[!embed](./configure.md)
+[!embed](./../app-nextjs/configure.md)
 
 ## Getting Started
 
-[!embed](./getting-started.md)
+[!embed](./../app-nextjs/getting-started.md)
 
 ## Infrastructure
 
@@ -25,16 +31,16 @@ title: Next.js + Tailwind CSS
 
 [!embed](./../shared/deployment.md)
 
-[!embed](./vercel-deployment.md)
+[!embed](./../app-nextjs/vercel-deployment.md)
 
 ## Limitations for AWS Deployments
 
-[!embed](./limitations.md)
+[!embed](./../app-nextjs/limitations.md)
 
 ## Troubleshooting and Frequently Asked Questions
 
-[!embed](./faq.md)
+[!embed](./../app-nextjs/faq.md)
 
 ## Security Hardening
 
-[!embed](./security-hardening.md)
+[!embed](./../app-nextjs/security-hardening.md)

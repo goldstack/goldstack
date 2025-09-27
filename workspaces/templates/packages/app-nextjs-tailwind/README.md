@@ -1,10 +1,16 @@
-# Next.js Template
+# Next.js Template (with Tailwind Support)
 
 ❤️ Check out the [Goldstack Project Builder](https://goldstack.party) to use this template ❤️
 
 Goldstack's Next.js template provides a [Next.js](https://nextjs.org/) application that is deployed on AWS using the [CloudFront CDN](https://aws.amazon.com/cloudfront/) and [Lambda@Edge](https://aws.amazon.com/lambda/edge/).
 
+This template comes preloaded with all Tailwind config you need to start a project.
+
 ## Features
+
+### Tailwind Configured
+
+Get started applying those classes right away and enjoy Tailwind styling.
 
 ### Configured for TypeScript
 

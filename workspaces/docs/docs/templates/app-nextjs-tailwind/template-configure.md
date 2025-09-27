@@ -1,3 +1,3 @@
-[!embed](./about.md)
+[!embed](./../app-nextjs/about.md)
 
-[!embed](./configure.md)
+[!embed](./../app-nextjs/configure.md)

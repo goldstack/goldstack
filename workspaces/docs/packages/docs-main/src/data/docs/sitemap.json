@@ -64,6 +64,11 @@
             "children": []
           },
           {
+            "title": "Next.js + Tailwind CSS",
+            "path": "templates/app-nextjs-tailwind",
+            "children": []
+          },
+          {
             "title": "Lambda Express",
             "path": "templates/lambda-express",
             "children": []
