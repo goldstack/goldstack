@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import useSWR from 'swr';
-
+import ReactIcon from '../icons/react.svg';
+import RocketLaunchImg from '../img/rocket-launch.jpg';
 import styles from './index.module.css';
-
-import ReactIcon from './../src/icons/react.svg';
-import RocketLaunchImg from './../src/img/rocket-launch.jpg';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const fetcher = (url: string): any => fetch(url).then((r) => r.json());
