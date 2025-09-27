@@ -1,0 +1,8 @@
+{
+  "templateName": "app-nextjs-tailwind",
+  "templateVersion": "0.1.0",
+  "previousTemplateVersion": "0.0.0",
+  "templateDescription": "Next.js application with dynamic and static rendering (no server-side rendering) with Tailwind CSS styling.",
+  "templateDocumentation": "https://docs.goldstack.party/docs/templates/app-nextjs-tailwind",
+  "templateArchive": ""
+}
