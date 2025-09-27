@@ -22,10 +22,10 @@
     "test": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/template-lambda-trigger-cli": "0.1.34",
-    "@goldstack/utils-git": "0.2.14",
-    "@goldstack/utils-log": "0.3.20",
-    "@goldstack/utils-sh": "0.5.23"
+    "@goldstack/template-lambda-trigger-cli": "0.1.35",
+    "@goldstack/utils-git": "0.2.15",
+    "@goldstack/utils-log": "0.3.21",
+    "@goldstack/utils-sh": "0.5.24"
   },
   "devDependencies": {
     "@swc/core": "^1.12.11",
