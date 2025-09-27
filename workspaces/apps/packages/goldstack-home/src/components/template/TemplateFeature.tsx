@@ -13,6 +13,7 @@ import EmailSendImg from 'src/img/ses_email_send.png';
 import VercelDeployedImg from 'src/img/vercel_deployed.png';
 import { dataUriToSrc } from 'src/utils/utils';
 import FeatureBootstrap from './FeatureBootstrap';
+import FeatureTailwind from './FeatureTailwind';
 import { resolveImage } from './imageUtil';
 import styles from './TemplateFeature.module.css';
 
@@ -109,6 +110,10 @@ const TemplateFeature = (props: ShortTemplateFeature): JSX.Element => {
     }
     case 'bootstrap': {
       content = <FeatureBootstrap></FeatureBootstrap>;
+      break;
+    }
+    case 'tailwind': {
+      content = <FeatureTailwind></FeatureTailwind>;
       break;
     }
     default: {
