@@ -4048,8 +4048,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs-tailwind@workspace:workspaces/templates/packages/app-nextjs-tailwind"
   dependencies:
-    "@goldstack/template-nextjs": "npm:0.5.63"
-    "@goldstack/utils-sh": "npm:0.5.23"
+    "@goldstack/template-nextjs": "npm:0.5.64"
+    "@goldstack/utils-sh": "npm:0.5.24"
     "@swc/core": "npm:^1.12.11"
     "@swc/jest": "npm:^0.2.39"
     "@testing-library/dom": "npm:^10.4.0"
@@ -14992,8 +14992,8 @@ __metadata:
     jest: "npm:^29.7.0"
     postcss: "npm:^8.5.6"
     rimraf: "npm:^3.0.2"
-    tailwindcss: "npm:^3"
     static-file-mapper-build: "npm:0.3.29"
+    tailwindcss: "npm:^3"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft
