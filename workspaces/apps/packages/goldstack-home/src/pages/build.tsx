@@ -243,7 +243,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
                     element="nextjs-tailwind"
                     disabled={building}
                     templateLink={'/templates/nextjs-tailwind'}
-                    checked={elements.indexOf('tailwind') !== -1}
+                    checked={elements.indexOf('nextjs-tailwind') !== -1}
                     onChange={checkboxChange}
                   ></Checkbox>
                   <Checkbox

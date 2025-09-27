@@ -26,7 +26,7 @@ export const getNextjsTailwindTemplateData = (): ProjectTemplateProps => {
     longDescription:
       'Configures a Next.js application with Tailwind CSS.\n' +
       'Scroll down for an overview of the features included in this template.',
-    actionLink: '/build?stack=tailwind',
+    actionLink: '/build?stack=nextjs-tailwind',
     tags: ['Next.js', 'Tailwind', 'React', 'TypeScript', 'Yarn', 'Frontend'],
     featuresOverview: [
       {
