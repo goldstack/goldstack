@@ -32,7 +32,7 @@ export const resolveImage = (image: TemplateFeatureImage): any => {
   if (image === 'nextjs-bootstrap') {
     return NextjsBootstrapIcon;
   }
-  if (image === 'nextjs-tailwind') {
+  if (image === 'nextjs-tailwind' || image === 'tailwind') {
     return TailwindIcon;
   }
   if (image === 'biome') {
