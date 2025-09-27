@@ -57,7 +57,7 @@
     "swr": "^0.4.0"
   },
   "devDependencies": {
-    "@goldstack/template-nextjs": "0.5.65",
+    "@goldstack/template-nextjs": "0.5.66",
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-sh": "0.5.24",
     "@swc/core": "^1.12.11",

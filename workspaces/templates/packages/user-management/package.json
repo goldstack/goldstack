@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.896.0",
-    "@goldstack/template-user-management-cli": "0.1.61",
+    "@goldstack/template-user-management-cli": "0.1.62",
     "@goldstack/utils-log": "0.3.21",
     "@swc/core": "^1.12.11",
     "@swc/jest": "^0.2.39",
