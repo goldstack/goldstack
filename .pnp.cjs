@@ -83,6 +83,10 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:workspaces/templates/packages/app-nextjs-bootstrap"\
     },\
     {\
+      "name": "@goldstack/app-nextjs-tailwind",\
+      "reference": "workspace:workspaces/templates/packages/app-nextjs-tailwind"\
+    },\
+    {\
       "name": "@goldstack/docker-image-aws",\
       "reference": "workspace:workspaces/templates/packages/docker-image-aws"\
     },\
@@ -485,6 +489,7 @@ const RAW_RUNTIME_STATE =
   "fallbackExclusionList": [\
     ["@goldstack/app-nextjs", ["workspace:workspaces/templates/packages/app-nextjs"]],\
     ["@goldstack/app-nextjs-bootstrap", ["workspace:workspaces/templates/packages/app-nextjs-bootstrap"]],\
+    ["@goldstack/app-nextjs-tailwind", ["workspace:workspaces/templates/packages/app-nextjs-tailwind"]],\
     ["@goldstack/auth", ["workspace:workspaces/templates-management/packages/auth"]],\
     ["@goldstack/cdn", ["workspace:workspaces/docs/packages/cdn"]],\
     ["@goldstack/docker-image-aws", ["workspace:workspaces/templates/packages/docker-image-aws"]],\
@@ -5284,6 +5289,45 @@ const RAW_RUNTIME_STATE =
           ["sass", "npm:1.89.2"],\
           ["svg-url-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:8.0.0"],\
           ["swr", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:0.4.0"],\
+          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
+          ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@goldstack/app-nextjs-tailwind", [\
+      ["workspace:workspaces/templates/packages/app-nextjs-tailwind", {\
+        "packageLocation": "./workspaces/templates/packages/app-nextjs-tailwind/",\
+        "packageDependencies": [\
+          ["@goldstack/app-nextjs-tailwind", "workspace:workspaces/templates/packages/app-nextjs-tailwind"],\
+          ["@goldstack/template-nextjs", "workspace:workspaces/templates-lib/packages/template-nextjs"],\
+          ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+          ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.12.11"],\
+          ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.39"],\
+          ["@testing-library/dom", "npm:10.4.0"],\
+          ["@testing-library/jest-dom", "npm:6.6.3"],\
+          ["@testing-library/react", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:16.1.0"],\
+          ["@types/jest", "npm:29.5.14"],\
+          ["@types/node", "npm:24.0.13"],\
+          ["@types/react", "npm:18.3.23"],\
+          ["@types/testing-library__jest-dom", "npm:5.14.9"],\
+          ["@types/testing-library__react", "npm:10.2.0"],\
+          ["autoprefixer", "virtual:6e6a19ccf8c83346d9f79f4676f574e62d32bf92e99e6749c22e13d87c7c6992254aa59106ce2f48cb8675403ba55b493da6bb46258c31710cda5fb0f1e8ecdc#npm:10.4.20"],\
+          ["concurrently", "npm:7.3.0"],\
+          ["file-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:6.2.0"],\
+          ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.7.0"],\
+          ["jest-environment-jsdom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:29.7.0"],\
+          ["jest-transform-stub", "npm:2.0.0"],\
+          ["next", "virtual:b28f6f2dcaa3de9aaf6c7d093d23c4c2c32e9cbea00ed9a5cf21e895c3e09ac7db18108871bf828a77a26ad19ff27d6b02e951ed326d7565e29513f7342ba4d9#npm:15.4.1"],\
+          ["postcss", "npm:8.5.6"],\
+          ["react", "npm:19.1.0"],\
+          ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:19.1.0"],\
+          ["react-is", "npm:19.1.0"],\
+          ["reload", "npm:3.2.0"],\
+          ["rimraf", "npm:3.0.2"],\
+          ["svg-url-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:8.0.0"],\
+          ["swr", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:0.4.0"],\
+          ["tailwindcss", "npm:3.4.17"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"]\
         ],\
@@ -13800,6 +13844,25 @@ const RAW_RUNTIME_STATE =
           ["autoprefixer", "npm:10.4.20"]\
         ],\
         "linkType": "SOFT"\
+      }],\
+      ["virtual:6e6a19ccf8c83346d9f79f4676f574e62d32bf92e99e6749c22e13d87c7c6992254aa59106ce2f48cb8675403ba55b493da6bb46258c31710cda5fb0f1e8ecdc#npm:10.4.20", {\
+        "packageLocation": "./.yarn/__virtual__/autoprefixer-virtual-c73a912ff5/0/cache/autoprefixer-npm-10.4.20-dd5fd05d27-d3c4b562fc.zip/node_modules/autoprefixer/",\
+        "packageDependencies": [\
+          ["@types/postcss", null],\
+          ["autoprefixer", "virtual:6e6a19ccf8c83346d9f79f4676f574e62d32bf92e99e6749c22e13d87c7c6992254aa59106ce2f48cb8675403ba55b493da6bb46258c31710cda5fb0f1e8ecdc#npm:10.4.20"],\
+          ["browserslist", "npm:4.24.3"],\
+          ["caniuse-lite", "npm:1.0.30001689"],\
+          ["fraction.js", "npm:4.3.7"],\
+          ["normalize-range", "npm:0.1.2"],\
+          ["picocolors", "npm:1.1.1"],\
+          ["postcss", "npm:8.5.6"],\
+          ["postcss-value-parser", "npm:4.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/postcss",\
+          "postcss"\
+        ],\
+        "linkType": "HARD"\
       }],\
       ["virtual:7f1ad5621b12feac9ce1d739dae53c323b9a19ff3ee3c16c2ed17a334a21447b81516193f7074b5e6545905b18c586da0ef07f56f8f5eaeed55b3c270c7964ce#npm:10.4.20", {\
         "packageLocation": "./.yarn/__virtual__/autoprefixer-virtual-248c6e4dd7/0/cache/autoprefixer-npm-10.4.20-dd5fd05d27-d3c4b562fc.zip/node_modules/autoprefixer/",\
@@ -23227,6 +23290,13 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
+      ["npm:3.3.11", {\
+        "packageLocation": "./.yarn/cache/nanoid-npm-3.3.11-f98c1f9ef6-73b5afe597.zip/node_modules/nanoid/",\
+        "packageDependencies": [\
+          ["nanoid", "npm:3.3.11"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:3.3.7", {\
         "packageLocation": "./.yarn/cache/nanoid-npm-3.3.7-98824ba130-ac1eb60f61.zip/node_modules/nanoid/",\
         "packageDependencies": [\
@@ -24764,6 +24834,16 @@ const RAW_RUNTIME_STATE =
           ["nanoid", "npm:3.3.7"],\
           ["picocolors", "npm:1.1.1"],\
           ["postcss", "npm:8.4.49"],\
+          ["source-map-js", "npm:1.2.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:8.5.6", {\
+        "packageLocation": "./.yarn/cache/postcss-npm-8.5.6-e7f126c6f3-9e4fbe9757.zip/node_modules/postcss/",\
+        "packageDependencies": [\
+          ["nanoid", "npm:3.3.11"],\
+          ["picocolors", "npm:1.1.1"],\
+          ["postcss", "npm:8.5.6"],\
           ["source-map-js", "npm:1.2.1"]\
         ],\
         "linkType": "HARD"\
