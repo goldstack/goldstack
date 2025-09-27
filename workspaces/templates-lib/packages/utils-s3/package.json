@@ -36,8 +36,8 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.859.0",
-    "@smithy/types": "^4.3.1"
+    "@aws-sdk/client-s3": "^3.896.0",
+    "@smithy/types": "^4.5.0"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.14",
