@@ -1,9 +1,5 @@
 {
-  "include": [
-    "**/src/**/*",
-    "**/*.json",
-    "**/*.config.js"
-  ],
+  "include": ["**/src/**/*", "**/*.json", "**/*.config.js"],
   "exclude": [
     "**/dist/**/*",
     "**/distImg/**/*",

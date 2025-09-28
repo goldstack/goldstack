@@ -11,9 +11,7 @@
           "title": "Repository Name"
         }
       },
-      "required": [
-        "repositoryName"
-      ],
+      "required": ["repositoryName"],
       "additionalProperties": false
     }
   }

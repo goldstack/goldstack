@@ -1,8 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": [
-    "./src/**/*"
-  ],
+  "include": ["./src/**/*"],
   "compilerOptions": {
     "incremental": true,
     "noEmit": false,
@@ -10,9 +8,7 @@
     "isolatedModules": false,
     "module": "CommonJS",
     "types": [],
-    "lib": [
-      "ESNext"
-    ],
+    "lib": ["ESNext"],
     "outDir": "dist",
     "baseUrl": "."
   }

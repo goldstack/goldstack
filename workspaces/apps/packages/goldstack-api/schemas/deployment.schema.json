@@ -21,12 +21,7 @@
           "$ref": "#/definitions/AWSUserName"
         }
       },
-      "required": [
-        "awsRegion",
-        "awsUser",
-        "configuration",
-        "name"
-      ]
+      "required": ["awsRegion", "awsUser", "configuration", "name"]
     },
     "DeploymentName": {
       "type": "string",
@@ -49,11 +44,7 @@
           "$ref": "#/definitions/HostedZoneDomain"
         }
       },
-      "required": [
-        "lambdaName",
-        "apiDomain",
-        "hostedZoneDomain"
-      ]
+      "required": ["lambdaName", "apiDomain", "hostedZoneDomain"]
     },
     "APIDomain": {
       "type": "string",

@@ -3,10 +3,7 @@
     "incremental": true,
     "target": "es5",
     "module": "commonjs",
-    "lib": [
-      "dom",
-      "ESNext"
-    ],
+    "lib": ["dom", "ESNext"],
     "allowJs": true,
     "checkJs": false,
     "declaration": true,
@@ -19,9 +16,6 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
-    "types": [
-      "jest",
-      "node"
-    ]
+    "types": ["jest", "node"]
   }
 }

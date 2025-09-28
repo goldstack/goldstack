@@ -17,12 +17,7 @@
           "$ref": "#/definitions/DeploymentName"
         }
       },
-      "required": [
-        "awsRegion",
-        "awsUser",
-        "configuration",
-        "name"
-      ],
+      "required": ["awsRegion", "awsUser", "configuration", "name"],
       "type": "object"
     },
     "AWSDeploymentRegion": {

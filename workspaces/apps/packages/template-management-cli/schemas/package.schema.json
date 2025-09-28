@@ -61,9 +61,7 @@
           "title": "Image Tag"
         }
       },
-      "required": [
-        "imageTag"
-      ],
+      "required": ["imageTag"],
       "description": "Configures a docker image deployed to AWS.",
       "title": "AWS Docker Image Configuration"
     },
@@ -94,12 +92,7 @@
           "$ref": "#/definitions/AWSUserName"
         }
       },
-      "required": [
-        "awsRegion",
-        "awsUser",
-        "configuration",
-        "name"
-      ],
+      "required": ["awsRegion", "awsUser", "configuration", "name"],
       "description": "Configures a static website deployment.",
       "title": "Deployment"
     },
@@ -118,9 +111,7 @@
           "title": "Repository Name"
         }
       },
-      "required": [
-        "repositoryName"
-      ],
+      "required": ["repositoryName"],
       "additionalProperties": false
     },
     "TerraformVariables": {

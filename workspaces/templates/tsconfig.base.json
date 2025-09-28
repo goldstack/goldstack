@@ -4,10 +4,7 @@
     "target": "ES2019",
     "composite": true,
     "module": "commonjs",
-    "lib": [
-      "dom",
-      "ESNext"
-    ],
+    "lib": ["dom", "ESNext"],
     "allowJs": true,
     "checkJs": false,
     "declaration": true,
@@ -21,9 +18,6 @@
     "useUnknownInCatchVariables": false,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
-    "types": [
-      "jest",
-      "node"
-    ]
+    "types": ["jest", "node"]
   }
 }

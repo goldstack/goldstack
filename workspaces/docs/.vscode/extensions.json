@@ -1,6 +1,3 @@
 {
-  "recommendations": [
-    "biomejs.biome",
-    "arcanis.vscode-zipfs"
-  ]
+  "recommendations": ["biomejs.biome", "arcanis.vscode-zipfs"]
 }

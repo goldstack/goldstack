@@ -17,11 +17,7 @@
           "$ref": "#/definitions/HostedZoneDomain"
         }
       },
-      "required": [
-        "lambdaName",
-        "apiDomain",
-        "hostedZoneDomain"
-      ]
+      "required": ["lambdaName", "apiDomain", "hostedZoneDomain"]
     },
     "APIDomain": {
       "type": "string",

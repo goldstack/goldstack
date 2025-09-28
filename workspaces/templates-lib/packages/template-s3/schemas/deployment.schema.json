@@ -27,12 +27,7 @@
           "$ref": "#/definitions/AWSUserName"
         }
       },
-      "required": [
-        "awsRegion",
-        "awsUser",
-        "configuration",
-        "name"
-      ]
+      "required": ["awsRegion", "awsUser", "configuration", "name"]
     },
     "DeploymentName": {
       "type": "string",
@@ -50,9 +45,7 @@
           "pattern": "^[A-Za-z0-9-]*$"
         }
       },
-      "required": [
-        "bucketName"
-      ]
+      "required": ["bucketName"]
     },
     "TerraformVariables": {
       "type": "array",

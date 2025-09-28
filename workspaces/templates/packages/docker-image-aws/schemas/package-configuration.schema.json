@@ -11,9 +11,7 @@
           "title": "Image Tag"
         }
       },
-      "required": [
-        "imageTag"
-      ],
+      "required": ["imageTag"],
       "description": "Configures a docker image deployed to AWS.",
       "title": "AWS Docker Image Configuration"
     }

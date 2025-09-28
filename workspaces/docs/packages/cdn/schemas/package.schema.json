@@ -80,12 +80,7 @@
           "$ref": "#/definitions/AWSUserName"
         }
       },
-      "required": [
-        "awsRegion",
-        "awsUser",
-        "configuration",
-        "name"
-      ],
+      "required": ["awsRegion", "awsUser", "configuration", "name"],
       "description": "Configures a static website deployment.",
       "title": "Deployment"
     },
@@ -111,11 +106,7 @@
           "$ref": "#/definitions/DefaultCacheDuration"
         }
       },
-      "required": [
-        "hostedZoneDomain",
-        "websiteDomain",
-        "websiteDomainRedirect"
-      ]
+      "required": ["hostedZoneDomain", "websiteDomain", "websiteDomainRedirect"]
     },
     "HostedZoneDomain": {
       "type": "string",

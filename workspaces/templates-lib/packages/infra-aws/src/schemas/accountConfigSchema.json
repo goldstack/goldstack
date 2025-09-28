@@ -16,9 +16,7 @@
           "$ref": "#/definitions/AWSSecretAccessKey"
         }
       },
-      "required": [
-        "awsDefaultRegion"
-      ],
+      "required": ["awsDefaultRegion"],
       "title": "AWS API Key User Configuration",
       "type": "object"
     },
@@ -42,9 +40,7 @@
           "$ref": "#/definitions/AWSUsers"
         }
       },
-      "required": [
-        "users"
-      ],
+      "required": ["users"],
       "title": "AWS Configuration",
       "type": "object"
     },
@@ -127,10 +123,7 @@
           "$ref": "#/definitions/Profile"
         }
       },
-      "required": [
-        "profile",
-        "awsDefaultRegion"
-      ],
+      "required": ["profile", "awsDefaultRegion"],
       "title": "AWS Local User Configuration",
       "type": "object"
     },
@@ -166,11 +159,7 @@
           "$ref": "#/definitions/Type"
         }
       },
-      "required": [
-        "name",
-        "type",
-        "config"
-      ],
+      "required": ["name", "type", "config"],
       "title": "AWS User",
       "type": "object"
     },
@@ -211,11 +200,7 @@
     },
     "Type": {
       "description": "Type of this user.",
-      "enum": [
-        "apiKey",
-        "profile",
-        "environmentVariables"
-      ],
+      "enum": ["apiKey", "profile", "environmentVariables"],
       "title": "Type",
       "type": "string"
     }

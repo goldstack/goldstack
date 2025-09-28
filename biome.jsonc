@@ -9,13 +9,26 @@
     "lineWidth": 100,
     "lineEnding": "lf"
   },
-
   "javascript": {
     "formatter": {
-      "quoteStyle": "single"
+      "enabled": true,
+      "quoteStyle": "single",
+      "trailingCommas": "all"
     }
   },
-
+  "json": {
+    "parser": {
+      "allowComments": false,
+      "allowTrailingCommas": false
+    },
+    "formatter": {
+      "enabled": true,
+      "trailingCommas": "none"
+    },
+    "linter": {
+      "enabled": true
+    }
+  },
   "linter": {
     "rules": {
       "suspicious": {
@@ -47,7 +60,6 @@
       "**/*.json",
       "**/*.jsonc",
       "**/*.tsx",
-      "**/*.tf",
       "**/*.yml",
       "**/*.yaml",
       "!**/dist/**",
@@ -62,7 +74,6 @@
       "!**/*.tfstate.backup",
       "!**/.pnp.js",
       "!**/.pnp.cjs",
-      "!**/*.json",
       "!**/.pnp.loader.mjs",
       "!**/.yarnrc.yml",
       "!**/.yarn/**",

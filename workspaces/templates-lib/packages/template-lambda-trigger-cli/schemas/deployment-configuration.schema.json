@@ -18,9 +18,7 @@
           "$ref": "#/definitions/LambdaSchedule"
         }
       },
-      "required": [
-        "lambdaName"
-      ]
+      "required": ["lambdaName"]
     },
     "SQSQueueName": {
       "type": "string",

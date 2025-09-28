@@ -3,10 +3,7 @@
     "incremental": true,
     "target": "es5",
     "module": "commonjs",
-    "lib": [
-      "dom",
-      "ESNext"
-    ],
+    "lib": ["dom", "ESNext"],
     "allowJs": true,
     "checkJs": false,
     "declaration": true,
@@ -20,16 +17,11 @@
     "useUnknownInCatchVariables": false,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
-    "types": [
-      "jest",
-      "node"
-    ],
+    "types": ["jest", "node"],
     "outDir": "dist",
     "baseUrl": "."
   },
-  "include": [
-    "scripts/*"
-  ],
+  "include": ["scripts/*"],
   "references": [
     {
       "path": "workspaces/apps"

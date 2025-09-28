@@ -10,10 +10,7 @@
         },
         "value": {}
       },
-      "required": [
-        "path",
-        "value"
-      ],
+      "required": ["path", "value"],
       "type": "object"
     },
     "FileOverwriteConfiguration": {
@@ -29,10 +26,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "file",
-        "fields"
-      ],
+      "required": ["file", "fields"],
       "type": "object"
     },
     "Files": {
@@ -63,10 +57,7 @@
           "type": "array"
         }
       },
-      "required": [
-        "include",
-        "exclude"
-      ],
+      "required": ["include", "exclude"],
       "title": "Template Build Configuration",
       "type": "object"
     }
