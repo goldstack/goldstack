@@ -30,13 +30,7 @@
           "$ref": "#/definitions/AWSUserName"
         }
       },
-      "required": [
-        "awsRegion",
-        "awsUser",
-        "configuration",
-        "hetznerUser",
-        "name"
-      ],
+      "required": ["awsRegion", "awsUser", "configuration", "hetznerUser", "name"],
       "description": "Configures a deployment target for the Hetzner server."
     },
     "DeploymentName": {
@@ -67,11 +61,7 @@
           "$ref": "#/definitions/EnvironmentVariables"
         }
       },
-      "required": [
-        "location",
-        "serverType",
-        "serverName"
-      ],
+      "required": ["location", "serverType", "serverName"],
       "description": "The Hetzner server deployment configuration"
     },
     "Location": {
@@ -121,10 +111,7 @@
           "$ref": "#/definitions/EnvVarValue"
         }
       },
-      "required": [
-        "name",
-        "value"
-      ],
+      "required": ["name", "value"],
       "additionalProperties": false,
       "description": "Environment variable configuration.",
       "title": "Environment Variable"

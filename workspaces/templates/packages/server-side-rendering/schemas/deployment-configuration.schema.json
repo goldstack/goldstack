@@ -21,11 +21,7 @@
           "$ref": "#/definitions/LambdaRoutesConfig"
         }
       },
-      "required": [
-        "domain",
-        "hostedZoneDomain",
-        "lambdas"
-      ]
+      "required": ["domain", "hostedZoneDomain", "lambdas"]
     },
     "Domain": {
       "type": "string",
@@ -55,10 +51,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "function_name",
-        "route"
-      ],
+      "required": ["function_name", "route"],
       "additionalProperties": false
     }
   }

@@ -21,11 +21,7 @@
           "$ref": "#/definitions/CorsHeader"
         }
       },
-      "required": [
-        "apiDomain",
-        "hostedZoneDomain",
-        "lambdaName"
-      ]
+      "required": ["apiDomain", "hostedZoneDomain", "lambdaName"]
     },
     "APIDomain": {
       "type": "string",

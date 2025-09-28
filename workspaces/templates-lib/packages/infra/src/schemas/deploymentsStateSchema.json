@@ -11,9 +11,7 @@
           "$ref": "#/definitions/TerraformState"
         }
       },
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "type": "object"
     },
     "DeploymentsState": {
