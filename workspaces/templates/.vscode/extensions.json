@@ -3,6 +3,7 @@
     "biomejs.biome",
     "arcanis.vscode-zipfs",
     "q.typescript-mono-repo-import-helper",
-    "GitHub.vscode-github-actions"
+    "GitHub.vscode-github-actions",
+    "hashicorp.terraform"
   ]
 }
