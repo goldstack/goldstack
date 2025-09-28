@@ -27,7 +27,12 @@
           "type": "array"
         }
       },
-      "required": ["buildSetName", "buildTemplates", "deployTemplates", "projects"],
+      "required": [
+        "buildSetName",
+        "buildTemplates",
+        "deployTemplates",
+        "projects"
+      ],
       "type": "object"
     },
     "DeploySetPackageConfig": {
@@ -58,7 +63,13 @@
           "type": "array"
         }
       },
-      "required": ["packageName", "deployments", "configuration", "packageTests", "packageCleanUp"],
+      "required": [
+        "packageName",
+        "deployments",
+        "configuration",
+        "packageTests",
+        "packageCleanUp"
+      ],
       "type": "object"
     },
     "DeploySetProjectConfig": {
@@ -88,7 +99,11 @@
           "type": "string"
         }
       },
-      "required": ["projectConfiguration", "packageConfigurations", "rootTests"],
+      "required": [
+        "projectConfiguration",
+        "packageConfigurations",
+        "rootTests"
+      ],
       "type": "object"
     },
     "Deployment": {
@@ -101,7 +116,10 @@
           "$ref": "#/definitions/DeploymentName"
         }
       },
-      "required": ["name", "configuration"],
+      "required": [
+        "name",
+        "configuration"
+      ],
       "title": "Deployment",
       "type": "object"
     },
@@ -143,11 +161,16 @@
               "$ref": "#/definitions/TemplateVersion1"
             }
           },
-          "required": ["templateName"],
+          "required": [
+            "templateName"
+          ],
           "type": "object"
         }
       },
-      "required": ["packageName", "templateReference"],
+      "required": [
+        "packageName",
+        "templateReference"
+      ],
       "type": "object"
     },
     "Packages": {
@@ -177,7 +200,11 @@
           "$ref": "#/definitions/RootTemplateReference"
         }
       },
-      "required": ["projectName", "rootTemplateReference", "packages"],
+      "required": [
+        "projectName",
+        "rootTemplateReference",
+        "packages"
+      ],
       "type": "object"
     },
     "ProjectName": {
@@ -197,7 +224,9 @@
           "$ref": "#/definitions/TemplateVersion"
         }
       },
-      "required": ["templateName"],
+      "required": [
+        "templateName"
+      ],
       "type": "object"
     },
     "TempalteName": {

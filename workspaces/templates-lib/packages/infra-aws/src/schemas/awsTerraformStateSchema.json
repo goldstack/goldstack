@@ -12,7 +12,9 @@
           "type": "array"
         }
       },
-      "required": ["remoteState"],
+      "required": [
+        "remoteState"
+      ],
       "type": "object"
     },
     "Name": {
@@ -34,7 +36,9 @@
           "$ref": "#/definitions/Name"
         }
       },
-      "required": ["user"],
+      "required": [
+        "user"
+      ],
       "type": "object"
     },
     "TerraformDynamoDBTable": {

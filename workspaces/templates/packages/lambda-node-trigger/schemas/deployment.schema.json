@@ -27,7 +27,12 @@
           "$ref": "#/definitions/AWSUserName"
         }
       },
-      "required": ["awsRegion", "awsUser", "configuration", "name"]
+      "required": [
+        "awsRegion",
+        "awsUser",
+        "configuration",
+        "name"
+      ]
     },
     "DeploymentName": {
       "type": "string",
@@ -51,7 +56,9 @@
           "$ref": "#/definitions/LambdaSchedule"
         }
       },
-      "required": ["lambdaName"]
+      "required": [
+        "lambdaName"
+      ]
     },
     "SQSQueueName": {
       "type": "string",

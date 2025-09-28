@@ -91,7 +91,12 @@
           "$ref": "#/definitions/AWSUserName"
         }
       },
-      "required": ["awsRegion", "awsUser", "configuration", "name"],
+      "required": [
+        "awsRegion",
+        "awsUser",
+        "configuration",
+        "name"
+      ],
       "description": "Configure NextJs deployment",
       "title": "NextJs Deployment"
     },
@@ -125,7 +130,10 @@
           "title": "Environment Variables"
         }
       },
-      "required": ["hostedZoneDomain", "websiteDomain"]
+      "required": [
+        "hostedZoneDomain",
+        "websiteDomain"
+      ]
     },
     "HostedZoneDomain": {
       "type": "string",
@@ -166,7 +174,10 @@
           "title": "Value"
         }
       },
-      "required": ["name", "value"],
+      "required": [
+        "name",
+        "value"
+      ],
       "additionalProperties": false,
       "description": "Define the name and value for the environment variable.",
       "title": "NextJs Environment Variable"
