@@ -1,10 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": [
-    "./src/**/*",
-    "./pages/**/*",
-    "./next-env.d.ts"
-  ],
+  "include": ["./src/**/*", "./pages/**/*", "./next-env.d.ts"],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",

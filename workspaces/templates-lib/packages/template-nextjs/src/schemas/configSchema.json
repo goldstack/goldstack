@@ -67,9 +67,7 @@
           "type": "array"
         }
       },
-      "required": [
-        "deployments"
-      ],
+      "required": ["deployments"],
       "title": "NextJs App Infrastructure",
       "type": "object"
     },
@@ -80,9 +78,7 @@
           "$ref": "#/definitions/NextJsInfrastructureConfiguration"
         }
       },
-      "required": [
-        "infrastructure"
-      ],
+      "required": ["infrastructure"],
       "title": "NextJs Configuration",
       "type": "object"
     },
@@ -146,10 +142,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "name",
-        "value"
-      ],
+      "required": ["name", "value"],
       "title": "NextJs Environment Variable",
       "type": "object"
     },
@@ -170,12 +163,7 @@
           "$ref": "#/definitions/TemplateVersion"
         }
       },
-      "required": [
-        "configuration",
-        "name",
-        "template",
-        "templateVersion"
-      ],
+      "required": ["configuration", "name", "template", "templateVersion"],
       "title": "NextJs Package",
       "type": "object"
     },

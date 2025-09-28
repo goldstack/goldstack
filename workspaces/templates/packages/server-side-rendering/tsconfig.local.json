@@ -1,13 +1,7 @@
 {
   "extends": "./tsconfig.json",
-  "include": [
-    "./src/**/*",
-    "./scripts/**/*",
-    "./src/typings.d.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+  "include": ["./src/**/*", "./scripts/**/*", "./src/typings.d.ts"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "incremental": true,
     "noEmit": false,
@@ -16,14 +10,8 @@
     "isolatedModules": false,
     "module": "commonjs",
     "target": "es2015",
-    "types": [
-      "node",
-      "dom"
-    ],
-    "lib": [
-      "es6",
-      "dom"
-    ],
+    "types": ["node", "dom"],
+    "lib": ["es6", "dom"],
     "outDir": "dist",
     "baseUrl": ".",
     "plugins": [

@@ -85,12 +85,7 @@
           "$ref": "#/definitions/AWSUserName"
         }
       },
-      "required": [
-        "awsRegion",
-        "awsUser",
-        "configuration",
-        "name"
-      ]
+      "required": ["awsRegion", "awsUser", "configuration", "name"]
     },
     "DeploymentName": {
       "type": "string",
@@ -108,10 +103,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "domain",
-        "hostedZoneDomain"
-      ]
+      "required": ["domain", "hostedZoneDomain"]
     },
     "TerraformVariables": {
       "type": "array",

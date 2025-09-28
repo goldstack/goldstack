@@ -24,11 +24,7 @@
           }
         }
       },
-      "required": [
-        "hostedZoneDomain",
-        "websiteDomain",
-        "websiteDomainRedirect"
-      ]
+      "required": ["hostedZoneDomain", "websiteDomain", "websiteDomainRedirect"]
     },
     "HostedZoneDomain": {
       "type": "string",
@@ -65,10 +61,7 @@
           "title": "Value"
         }
       },
-      "required": [
-        "name",
-        "value"
-      ],
+      "required": ["name", "value"],
       "additionalProperties": false,
       "description": "NextJs public environment variable for web application (see https://nextjs.org/docs/basic-features/environment-variables)",
       "title": "NextJs Environment Variable"

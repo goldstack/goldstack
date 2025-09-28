@@ -18,11 +18,7 @@
           "$ref": "#/definitions/DefaultCacheDuration"
         }
       },
-      "required": [
-        "hostedZoneDomain",
-        "websiteDomain",
-        "websiteDomainRedirect"
-      ]
+      "required": ["hostedZoneDomain", "websiteDomain", "websiteDomainRedirect"]
     },
     "HostedZoneDomain": {
       "type": "string",

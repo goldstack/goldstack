@@ -1,8 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": [
-    "./src/types/**/*"
-  ],
+  "include": ["./src/types/**/*"],
   "compilerOptions": {
     "incremental": false,
     "declarationMap": false,

@@ -5,7 +5,5 @@
   "editor.tabSize": 2,
   "typescript.tsdk": ".vscode/pnpify/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "github-actions.workflows.pinned.workflows": [
-    ".github/workflows/branch.yml"
-  ]
+  "github-actions.workflows.pinned.workflows": [".github/workflows/branch.yml"]
 }

@@ -12,9 +12,7 @@
           "pattern": "^[A-Za-z0-9-]*$"
         }
       },
-      "required": [
-        "bucketName"
-      ]
+      "required": ["bucketName"]
     }
   }
 }

@@ -15,11 +15,7 @@
     "go.mod",
     "go.sum"
   ],
-  "exclude": [
-    "infra/aws/.terraform/",
-    "infra/aws/tfplan",
-    "infra/aws/terraform.tfstate.d/"
-  ],
+  "exclude": ["infra/aws/.terraform/", "infra/aws/tfplan", "infra/aws/terraform.tfstate.d/"],
   "overwriteFiles": [
     {
       "file": "goldstack.json",

@@ -12,10 +12,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "domain",
-        "hostedZoneDomain"
-      ]
+      "required": ["domain", "hostedZoneDomain"]
     }
   }
 }

@@ -1,10 +1,5 @@
 {
-  "_args": [
-    [
-      "bootstrap@4.5.0",
-      "/Applications/MAMP/htdocs/Front-v1.0"
-    ]
-  ],
+  "_args": [["bootstrap@4.5.0", "/Applications/MAMP/htdocs/Front-v1.0"]],
   "_from": "bootstrap@4.5.0",
   "_id": "bootstrap@4.5.0",
   "_inBundle": false,
@@ -21,9 +16,7 @@
     "saveSpec": null,
     "fetchSpec": "4.5.0"
   },
-  "_requiredBy": [
-    "/"
-  ],
+  "_requiredBy": ["/"],
   "_resolved": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.5.0.tgz",
   "_spec": "4.5.0",
   "_where": "/Applications/MAMP/htdocs/Front-v1.0",
@@ -86,11 +79,7 @@
     "terser": "^4.6.13",
     "vnu-jar": "20.3.16"
   },
-  "files": [
-    "dist/{css,js}/*.{css,js,map}",
-    "js/{src,dist}/**/*.{js,map}",
-    "scss/**/*.scss"
-  ],
+  "files": ["dist/{css,js}/*.{css,js,map}", "js/{src,dist}/**/*.{js,map}", "scss/**/*.scss"],
   "funding": {
     "type": "opencollective",
     "url": "https://opencollective.com/bootstrap"
@@ -104,10 +93,7 @@
     },
     "shim": {
       "js/bootstrap": {
-        "deps": [
-          "jquery",
-          "popper.js"
-        ],
+        "deps": ["jquery", "popper.js"],
         "exports": "$"
       }
     },
@@ -117,15 +103,7 @@
       "popper.js": "^1.16.0"
     }
   },
-  "keywords": [
-    "css",
-    "sass",
-    "mobile-first",
-    "responsive",
-    "front-end",
-    "framework",
-    "web"
-  ],
+  "keywords": ["css", "sass", "mobile-first", "responsive", "front-end", "framework", "web"],
   "license": "MIT",
   "main": "dist/js/bootstrap.js",
   "name": "bootstrap",

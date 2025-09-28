@@ -25,9 +25,7 @@
       }
     ]
   },
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "references": [
     {
       "path": "../../../templates-lib/packages/template-ssr"

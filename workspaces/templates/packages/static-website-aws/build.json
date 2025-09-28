@@ -14,11 +14,7 @@
     "template.json",
     "tsconfig.json"
   ],
-  "exclude": [
-    "infra/aws/.terraform/",
-    "infra/aws/tfplan",
-    "infra/aws/terraform.tfstate.d/"
-  ],
+  "exclude": ["infra/aws/.terraform/", "infra/aws/tfplan", "infra/aws/terraform.tfstate.d/"],
   "overwriteFiles": [
     {
       "file": "goldstack.json",

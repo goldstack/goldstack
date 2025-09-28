@@ -41,10 +41,7 @@
           "$ref": "#/definitions/AWSDockerImageInfrastructureConfiguration"
         }
       },
-      "required": [
-        "imageTag",
-        "infrastructure"
-      ],
+      "required": ["imageTag", "infrastructure"],
       "title": "AWS Docker Image Configuration",
       "type": "object"
     },
@@ -56,9 +53,7 @@
           "$ref": "#/definitions/Deployments"
         }
       },
-      "required": [
-        "deployments"
-      ],
+      "required": ["deployments"],
       "title": "AWS Static Website Infrastructure Configuration",
       "type": "object"
     },
@@ -83,12 +78,7 @@
           "$ref": "#/definitions/TerraformVariables"
         }
       },
-      "required": [
-        "awsRegion",
-        "awsUser",
-        "name",
-        "repositoryName"
-      ],
+      "required": ["awsRegion", "awsUser", "name", "repositoryName"],
       "title": "Deployment",
       "type": "object"
     },
@@ -109,12 +99,7 @@
           "$ref": "#/definitions/TemplateVersion"
         }
       },
-      "required": [
-        "configuration",
-        "name",
-        "template",
-        "templateVersion"
-      ],
+      "required": ["configuration", "name", "template", "templateVersion"],
       "title": "AWS Docker Image Package",
       "type": "object"
     },

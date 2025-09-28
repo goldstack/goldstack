@@ -15,10 +15,7 @@
           "$ref": "#/definitions/DeploymentConfiguration"
         }
       },
-      "required": [
-        "name",
-        "configuration"
-      ],
+      "required": ["name", "configuration"],
       "description": "Configures a deployment.",
       "title": "Deployment"
     },

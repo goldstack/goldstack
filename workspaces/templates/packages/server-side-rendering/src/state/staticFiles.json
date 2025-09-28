@@ -1,80 +1,54 @@
 [
   {
-    "names": [
-      "goldstack-test-ssr--__index-bundle.js"
-    ],
+    "names": ["goldstack-test-ssr--__index-bundle.js"],
     "generatedName": "-__index-bundle.bcba07010c00d3d206b6d2e5da2fb7b6.js"
   },
   {
-    "names": [
-      "goldstack-test-ssr--__index.map"
-    ],
+    "names": ["goldstack-test-ssr--__index.map"],
     "generatedName": "-__index.ff7ecc4976480a3a780aa693eef992b3.map.json"
   },
   {
-    "names": [
-      "goldstack-test-ssr-posts.map"
-    ],
+    "names": ["goldstack-test-ssr-posts.map"],
     "generatedName": "posts.a83ae6fa9caa99b75af24b174def416d.map.json"
   },
   {
-    "names": [
-      "goldstack-test-ssr-posts-bundle.js"
-    ],
+    "names": ["goldstack-test-ssr-posts-bundle.js"],
     "generatedName": "posts-bundle.04b56113ba397dfcb6d4f7d0d32674e6.js"
   },
   {
-    "names": [
-      "goldstack-test-ssr-_greedy__.map"
-    ],
+    "names": ["goldstack-test-ssr-_greedy__.map"],
     "generatedName": "_greedy__.d7f84bd112c7f475fe81f4ba17013d86.map.json"
   },
   {
-    "names": [
-      "goldstack-test-ssr-_greedy__-bundle.js"
-    ],
+    "names": ["goldstack-test-ssr-_greedy__-bundle.js"],
     "generatedName": "_greedy__-bundle.87bae541feacf843c258c7404ce9d39c.js"
   },
   {
-    "names": [
-      "goldstack-test-ssr-v2--__index.map"
-    ],
+    "names": ["goldstack-test-ssr-v2--__index.map"],
     "generatedName": "-__index.b3e39816858063e807af501420fe8286.map.json"
   },
   {
-    "names": [
-      "goldstack-test-ssr-v2--__index-bundle.js"
-    ],
+    "names": ["goldstack-test-ssr-v2--__index-bundle.js"],
     "generatedName": "-__index-bundle.76b6d4faba5d77020963f2f8016e50cf.js"
   },
   {
-    "names": [
-      "goldstack-test-ssr-v2-posts.map"
-    ],
+    "names": ["goldstack-test-ssr-v2-posts.map"],
     "generatedName": "posts.5384de20ef670b23d560cb4df1e91c56.map.json"
   },
   {
-    "names": [
-      "goldstack-test-ssr-v2-posts-bundle.js"
-    ],
+    "names": ["goldstack-test-ssr-v2-posts-bundle.js"],
     "generatedName": "posts-bundle.b82b26534abff6101c6f4e34ce300c95.js"
   },
   {
-    "names": [
-      "tailwind.css"
-    ],
+    "names": ["tailwind.css"],
     "generatedName": "tailwind.5d82a9ac4efd969ee4113c0c07961588.css"
   },
   {
-    "names": [
-      "goldstack-test-ssr-v2-robots_txt.map"
-    ],
+    "names": ["goldstack-test-ssr-v2-robots_txt.map"],
     "generatedName": "robots_txt.c4c8fdfec1f40887ef0cb8f058db78cd.map.json"
   },
   {
-    "names": [
-      "goldstack-test-ssr-v2-robots_txt-bundle.js"
-    ],
+    "names": ["goldstack-test-ssr-v2-robots_txt-bundle.js"],
     "generatedName": "robots_txt-bundle.45f8f424438fce1c46a43d959f2c05c8.js"
   }
 ]

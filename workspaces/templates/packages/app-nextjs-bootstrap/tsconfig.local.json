@@ -1,23 +1,14 @@
 {
   "extends": "./tsconfig.json",
-  "include": [
-    "./src/**/*",
-    "./pages/**/*",
-    "./scripts/**/*"
-  ],
+  "include": ["./src/**/*", "./pages/**/*", "./scripts/**/*"],
   "compilerOptions": {
     "incremental": true,
     "noEmit": false,
     "declarationMap": false,
     "isolatedModules": false,
     "module": "CommonJS",
-    "types": [
-      "node",
-      "dom"
-    ],
-    "lib": [
-      "ESNext"
-    ],
+    "types": ["node", "dom"],
+    "lib": ["ESNext"],
     "outDir": "dist",
     "baseUrl": "."
   }
