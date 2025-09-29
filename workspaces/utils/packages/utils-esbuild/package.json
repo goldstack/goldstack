@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-esbuild",
-  "version": "0.5.15",
+  "version": "0.5.16",
   "description": "Utilities for esbuild.",
   "keywords": [
     "goldstack",
@@ -34,7 +34,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.15",
+    "@goldstack/utils-git": "0.2.16",
     "@swc/core": "^1.12.11",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^29.5.14",
