@@ -5,23 +5,36 @@
   "gitlens.advanced.repositorySearchDepth": 2,
   "editor.tabSize": 2,
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "[html]": {
-    "editor.formatOnSave": true
-  },
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "search.exclude": {
     "**/.yarn": true,
     "**/.pnp.*": true
   },
-  "cSpell.words": ["GOLDSTACK", "hetzner", "Jwks", "pino", "runcmd", "testcontainers"],
+  "cSpell.words": [
+    "GOLDSTACK",
+    "hetzner",
+    "Jwks",
+    "pino",
+    "runcmd",
+    "testcontainers"
+  ],
   "github-actions.workflows.pinned.workflows": [
     ".github/workflows/branch.yml",
     ".github/workflows/template_deploy_dev.yml",
     ".github/workflows/master.yml"
   ],
-  "[javascript][typescript][javascriptreact][typescriptreact][json][jsonc][css][graphql]": {
+  "[javascript][typescript][javascriptreact][typescriptreact][css][graphql]": {
     "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[html]": {
+    "editor.formatOnSave": true
+  },
+  "[json][jsonc]": {
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": true
   },
   "[terraform]": {
     "editor.defaultFormatter": "hashicorp.terraform"
