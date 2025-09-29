@@ -23,12 +23,12 @@
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.896.0",
-    "@goldstack/template-email-send": "0.4.60",
-    "@goldstack/utils-git": "0.2.16",
-    "@goldstack/utils-sh": "0.5.25"
+    "@goldstack/template-email-send": "0.4.61",
+    "@goldstack/utils-git": "0.2.17",
+    "@goldstack/utils-sh": "0.5.26"
   },
   "devDependencies": {
-    "@goldstack/template-email-send-cli": "0.5.60",
+    "@goldstack/template-email-send-cli": "0.5.61",
     "@swc/core": "^1.12.11",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^29.5.14",

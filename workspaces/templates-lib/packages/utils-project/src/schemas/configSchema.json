@@ -24,11 +24,16 @@
               "$ref": "#/definitions/TemplateVersion1"
             }
           },
-          "required": ["templateName"],
+          "required": [
+            "templateName"
+          ],
           "type": "object"
         }
       },
-      "required": ["packageName", "templateReference"],
+      "required": [
+        "packageName",
+        "templateReference"
+      ],
       "type": "object"
     },
     "Packages": {
@@ -58,7 +63,11 @@
           "$ref": "#/definitions/RootTemplateReference"
         }
       },
-      "required": ["projectName", "rootTemplateReference", "packages"],
+      "required": [
+        "projectName",
+        "rootTemplateReference",
+        "packages"
+      ],
       "type": "object"
     },
     "ProjectName": {
@@ -78,7 +87,9 @@
           "$ref": "#/definitions/TemplateVersion"
         }
       },
-      "required": ["templateName"],
+      "required": [
+        "templateName"
+      ],
       "type": "object"
     },
     "TempalteName": {

@@ -26,7 +26,10 @@
           "title": "Environment Variables"
         }
       },
-      "required": ["hostedZoneDomain", "websiteDomain"]
+      "required": [
+        "hostedZoneDomain",
+        "websiteDomain"
+      ]
     },
     "HostedZoneDomain": {
       "type": "string",
@@ -67,7 +70,10 @@
           "title": "Value"
         }
       },
-      "required": ["name", "value"],
+      "required": [
+        "name",
+        "value"
+      ],
       "additionalProperties": false,
       "description": "Define the name and value for the environment variable.",
       "title": "NextJs Environment Variable"

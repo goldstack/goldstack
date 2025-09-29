@@ -31,7 +31,10 @@
           "$ref": "#/definitions/TerraformVersion"
         }
       },
-      "required": ["configuration", "name"],
+      "required": [
+        "configuration",
+        "name"
+      ],
       "type": "object"
     },
     "TerraformStateKey": {

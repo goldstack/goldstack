@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-typescript-references",
-  "version": "0.3.17",
+  "version": "0.3.18",
   "description": "Utility for keeping TypeScript references in sync in a Yarn monorepo",
   "keywords": [
     "goldstack",
@@ -35,12 +35,12 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-log": "0.3.22",
+    "@goldstack/utils-log": "0.3.23",
     "source-map-support": "^0.5.21",
     "yargs": "^17.5.1"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.16",
+    "@goldstack/utils-git": "0.2.17",
     "@swc/core": "^1.12.11",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^29.5.14",

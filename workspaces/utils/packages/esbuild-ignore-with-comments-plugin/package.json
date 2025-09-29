@@ -1,6 +1,6 @@
 {
   "name": "esbuild-ignore-with-comments-plugin",
-  "version": "0.3.20",
+  "version": "0.3.21",
   "description": "esbuild Plugin for ignoring files with specific comments in them",
   "keywords": [
     "node",
@@ -33,7 +33,7 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.16",
+    "@goldstack/utils-git": "0.2.17",
     "@swc/core": "^1.12.11",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^29.5.14",
