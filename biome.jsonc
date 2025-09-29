@@ -44,6 +44,9 @@
         "useHookAtTopLevel": "warn",
         "useExhaustiveDependencies": "warn"
       },
+      "performance": {
+        "noImgElement": "off"
+      },
       "security": {
         "noGlobalEval": "warn",
         "noDangerouslySetInnerHtml": "warn"
