@@ -60,6 +60,7 @@
   "files": {
     "includes": [
       "**/*.ts",
+      "**/*.js",
       "**/*.json",
       "**/*.jsonc",
       "**/*.tsx",
