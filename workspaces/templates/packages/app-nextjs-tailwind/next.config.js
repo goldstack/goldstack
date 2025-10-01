@@ -51,6 +51,6 @@ module.exports = (_phase, { defaultConfig }) => {
       }
       return plugin(acc);
     },
-    { ...nextConfig }
+    { ...nextConfig },
   );
 };

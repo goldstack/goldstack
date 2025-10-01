@@ -9,8 +9,7 @@ module.exports = {
   },
   transform: {
     ...base.transform,
-    '.+\\.(style|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
-      'jest-transform-stub',
+    '.+\\.(style|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
     '\\.(css)$': '<rootDir>/scripts/cssTransformer.js',
   },
 };

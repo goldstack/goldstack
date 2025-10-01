@@ -5,7 +5,6 @@ module.exports = {
   ...base,
   transform: {
     ...base.transform,
-    '.+\\.(css|style|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
-      'jest-transform-stub',
+    '.+\\.(css|style|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
   },
 };

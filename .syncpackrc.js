@@ -2,11 +2,7 @@
 
 /** @type {import("syncpack").RcFile} */
 const config = {
-  source: [
-    'package.json',
-    'workspaces/*/package.json',
-    'workspaces/*/packages/*/package.json',
-  ],
+  source: ['package.json', 'workspaces/*/package.json', 'workspaces/*/packages/*/package.json'],
   specifierTypes: ['**'],
   versionGroups: [],
 };

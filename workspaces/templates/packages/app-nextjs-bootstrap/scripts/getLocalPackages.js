@@ -29,7 +29,7 @@ const getPackages = (cmdRes) => {
 
 exports.getLocalPackages = () => {
   const allWorkspaces = getPackages(
-    childProcess.execSync('yarn workspaces list --json').toString()
+    childProcess.execSync('yarn workspaces list --json').toString(),
   );
 
   const packageJson = fs.readFileSync('./package.json').toString();
@@ -41,9 +41,6 @@ exports.getLocalPackages = () => {
   ];
 
   return allDependencies.filter((dependency) => {
-    return (
-      allWorkspaces.filter((localDep) => localDep.name === dependency).length >
-      0
-    );
+    return allWorkspaces.filter((localDep) => localDep.name === dependency).length > 0;
   });
 };

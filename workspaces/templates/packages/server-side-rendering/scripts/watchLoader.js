@@ -30,7 +30,7 @@ watcher.on('change', (file) => {
 // Override the default `require`
 const originalRequire = Module.prototype.require;
 
-let loadWatcher ;
+let loadWatcher;
 
 Module.prototype.require = function (filePath) {
   const resolvedPath = Module._resolveFilename(filePath, this);
