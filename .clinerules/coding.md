@@ -6,3 +6,4 @@ e.g. don't use `import { getNotionToken } from 'notion-data/src/user/getNotionTo
 - When a new method is imported into a module, always add the import and call of the method in one edit operation.
 - Try to batch changes for single files together and apply them in one go (rather than splitting a task into multiple smaller changes)
 - create React components by exporting a function
+- This repo uses Yarn PnP
