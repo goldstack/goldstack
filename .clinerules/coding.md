@@ -7,3 +7,7 @@ e.g. don't use `import { getNotionToken } from 'notion-data/src/user/getNotionTo
 - Try to batch changes for single files together and apply them in one go (rather than splitting a task into multiple smaller changes)
 - create React components by exporting a function
 - This repo uses Yarn PnP
+- The following commands can be executed in the relevant package folder or the project root:
+  - yarn compile (preferred at project root)
+  - yarn build
+  - yarn test (preferred at package folder)
