@@ -16,7 +16,7 @@
         "cors": "https://app-nextjs-bootstrap.templates.dev.goldstack.party",
         "lambdas": {
           "ANY /": {
-            "function_name": "goldstack-test-ssr-v2--__index",
+            "function_name": "goldstack-test-ssr-v2-__index",
             "route": "ANY /"
           },
           "ANY /posts": {

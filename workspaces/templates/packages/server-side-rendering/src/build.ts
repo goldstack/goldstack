@@ -57,6 +57,7 @@ const buildConfig = (): BuildConfiguration => {
         metafile: false,
         platform: 'browser',
         format: 'iife',
+        jsx: 'automatic',
         treeShaking: true,
       };
     },
@@ -82,6 +83,7 @@ const buildConfig = (): BuildConfiguration => {
         format: 'cjs',
         target: 'node20.0',
         treeShaking: true,
+        jsx: 'automatic',
         define: {
           'process.env.NODE_ENV': '"production"',
         }, // see https://github.com/evanw/esbuild/issues/2377
