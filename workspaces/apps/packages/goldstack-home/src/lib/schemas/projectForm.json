@@ -10,7 +10,10 @@
         },
         "deployment": {
           "type": "string",
-          "enum": ["prod", "dev"],
+          "enum": [
+            "prod",
+            "dev"
+          ],
           "description": "Choose if you want to use this tool to define your development or production infrastructure.",
           "title": "Deployment",
           "default": "dev"
@@ -21,7 +24,11 @@
           "default": "us-east-2"
         }
       },
-      "required": ["projectName", "deployment", "awsRegion"]
+      "required": [
+        "projectName",
+        "deployment",
+        "awsRegion"
+      ]
     },
     "ProjectName": {
       "type": "string",

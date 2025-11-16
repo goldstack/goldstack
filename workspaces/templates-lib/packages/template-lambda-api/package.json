@@ -61,7 +61,7 @@
     "jest": "^29.7.0",
     "jest-pnp-resolver": "^1.2.3",
     "rimraf": "^3.0.2",
-    "ts-json-schema-generator": "^1.0.0",
+    "ts-json-schema-generator": "^2.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
