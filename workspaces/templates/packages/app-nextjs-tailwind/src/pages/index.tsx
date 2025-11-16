@@ -1,5 +1,5 @@
 // biome-ignore lint/correctness/noUnusedImports: React
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useSWR from 'swr';
 import ReactIcon from '../icons/react.svg';
 import RocketLaunchImg from '../img/rocket-launch.jpg';

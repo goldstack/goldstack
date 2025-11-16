@@ -1,7 +1,6 @@
 import { allTemplates } from '@goldstack/template-metadata';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

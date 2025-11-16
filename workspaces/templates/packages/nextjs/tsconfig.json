@@ -14,11 +14,15 @@
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
-    "jsx": "preserve",
-    "module": "esnext",
+    "jsx": "react-jsx",
+    "module": "ES2015",
     "incremental": true,
     "noEmit": false,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "moduleResolution": "node",
     "isolatedModules": true,
     "plugins": [
@@ -27,7 +31,9 @@
       }
     ]
   },
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules"
+  ],
   "references": [
     {
       "path": "../../../templates-lib/packages/template-nextjs"

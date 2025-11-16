@@ -1,9 +1,12 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
-    "jsx": "react",
+    "jsx": "react-jsx",
+    "module": "ES2015",
     "baseUrl": "."
   },
   "references": [
