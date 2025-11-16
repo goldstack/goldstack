@@ -1,5 +1,5 @@
 import type { SSRHandler } from '@goldstack/template-ssr';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Panel from './../components/Panel';
 import { hydrate, renderPage } from './../render';
 import styles from './$index.module.css';

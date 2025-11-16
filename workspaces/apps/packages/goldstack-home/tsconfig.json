@@ -11,14 +11,16 @@
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
-    "module": "esnext",
+    "module": "ES2015",
     "noEmit": false,
     "moduleResolution": "node",
     "isolatedModules": true
   },
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules"
+  ],
   "references": [
     {
       "path": "../goldstack-api"
