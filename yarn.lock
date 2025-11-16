@@ -4189,7 +4189,7 @@ __metadata:
     "@goldstack/template-nextjs": "npm:0.5.69"
     "@goldstack/toc-generator": "npm:0.1.0"
     "@goldstack/utils-sh": "npm:0.5.27"
-    "@goldstack/utils-track": "npm:0.2.20"
+    "@goldstack/utils-track": "npm:0.2.21"
     "@swc/core": "npm:^1.12.11"
     "@swc/jest": "npm:^0.2.39"
     "@testing-library/dom": "npm:^10.4.0"
@@ -4372,7 +4372,7 @@ __metadata:
     "@goldstack/utils-package": "npm:0.4.28"
     "@goldstack/utils-project": "npm:0.4.28"
     "@goldstack/utils-sh": "npm:0.5.27"
-    "@goldstack/utils-track": "npm:0.2.20"
+    "@goldstack/utils-track": "npm:0.2.21"
     "@rjsf/bootstrap-4": "npm:^2.4.0"
     "@rjsf/core": "npm:2.4.2"
     "@stripe/stripe-js": "npm:^1.10.0"
@@ -6694,7 +6694,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-track@npm:0.2.20, @goldstack/utils-track@workspace:workspaces/utils/packages/utils-track":
+"@goldstack/utils-track@npm:0.2.21, @goldstack/utils-track@workspace:workspaces/utils/packages/utils-track":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-track@workspace:workspaces/utils/packages/utils-track"
   dependencies:
