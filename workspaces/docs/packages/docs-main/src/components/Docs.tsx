@@ -1,20 +1,18 @@
-import React from 'react';
-import { useRouter } from 'next/router';
-
+import type { Heading } from '@goldstack/toc-generator';
 import Head from 'next/head';
-import Header from 'src/components/Header';
-
-import Navigation from './Navigation';
-
-import Row from 'react-bootstrap/Row';
+import { useRouter } from 'next/router';
+import React from 'react';
 import Col from 'react-bootstrap/Col';
 
-import sitemap from './../data/docs/sitemap.json';
+import Row from 'react-bootstrap/Row';
+import Header from 'src/components/Header';
 
-import type { Heading } from '@goldstack/toc-generator';
+import sitemap from './../data/docs/sitemap.json';
 import styles from './Docs.module.css';
+import Navigation from './Navigation';
 
 import Toc from './Toc';
+
 interface DocsProps {
   contentHtml?: string;
   title?: string;

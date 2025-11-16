@@ -1,24 +1,21 @@
-import assert from 'assert';
-import type {
-  AWSConfiguration,
-  AWSRegion,
-  AWSProfileConfig,
-  AWSAPIKeyUserConfig,
-  AWSEnvironmentVariableUserConfig,
-} from './types/awsAccount';
-
-import { STSClient, GetCallerIdentityCommand } from '@aws-sdk/client-sts';
-
+import { GetCallerIdentityCommand, STSClient } from '@aws-sdk/client-sts';
 import {
   fromContainerMetadata,
   fromEnv,
   fromIni,
   fromProcess,
 } from '@aws-sdk/credential-providers';
-
 import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
-import { hasInjectedCredentials, injectCredentials } from './awsAuthUtils';
 import { warn } from '@goldstack/utils-log';
+import assert from 'assert';
+import { hasInjectedCredentials, injectCredentials } from './awsAuthUtils';
+import type {
+  AWSAPIKeyUserConfig,
+  AWSConfiguration,
+  AWSEnvironmentVariableUserConfig,
+  AWSProfileConfig,
+  AWSRegion,
+} from './types/awsAccount';
 
 export async function getAWSUserFromEnvironmentVariables(): Promise<AwsCredentialIdentityProvider> {
   assert(process.env.AWS_ACCESS_KEY_ID, 'AWS_ACCESS_KEY_ID not defined.');

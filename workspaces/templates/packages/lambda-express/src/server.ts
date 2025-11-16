@@ -1,5 +1,5 @@
-import express from 'express';
 import cors from 'cors';
+import express from 'express';
 import helmet from 'helmet';
 
 import { rootHandler } from './root';

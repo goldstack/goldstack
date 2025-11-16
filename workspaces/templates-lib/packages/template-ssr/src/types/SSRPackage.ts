@@ -1,8 +1,8 @@
-import type { AWSDeployment } from '@goldstack/infra-aws';
-import type { TerraformDeployment } from '@goldstack/utils-terraform';
 import type { Deployment, DeploymentConfiguration } from '@goldstack/infra';
+import type { AWSDeployment } from '@goldstack/infra-aws';
+import type { Configuration, Package } from '@goldstack/utils-package';
+import type { TerraformDeployment } from '@goldstack/utils-terraform';
 import type { SSRDeploymentConfiguration } from './SSRDeploymentConfiguration';
-import type { Package, Configuration } from '@goldstack/utils-package';
 
 export interface ThisDeploymentConfiguration
   extends SSRDeploymentConfiguration,

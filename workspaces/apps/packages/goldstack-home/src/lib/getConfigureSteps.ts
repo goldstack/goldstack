@@ -1,14 +1,10 @@
+import type { AWSAPIKeyUser } from '@goldstack/infra-aws';
 import type { ProjectData } from '@goldstack/project-repository';
-
+import awsUserDocs from 'src/docs/aws-user.json';
+import projectDocs from 'src/docs/project.json';
+import awsUserFormSchema from 'src/lib/schemas/awsUserForm.json';
 import projectFormSchema from 'src/lib/schemas/projectForm.json';
 import projectFormUiSchema from 'src/lib/schemas/projectFormUi';
-
-import awsUserFormSchema from 'src/lib/schemas/awsUserForm.json';
-import awsUserDocs from 'src/docs/aws-user.json';
-
-import projectDocs from 'src/docs/project.json';
-
-import type { AWSAPIKeyUser } from '@goldstack/infra-aws';
 
 export interface ConfigureStepSection {
   title?: string;

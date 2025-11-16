@@ -1,9 +1,8 @@
 import type { ProjectTemplateProps } from '@goldstack/template-metadata';
+import Head from 'next/head';
 import React from 'react';
 import ProjectTemplateBody from './ProjectTemplateBody';
 import ProjectTemplateSidebar from './ProjectTemplateSidebar';
-
-import Head from 'next/head';
 
 const ProjectTemplate = (props: ProjectTemplateProps): JSX.Element => {
   if (

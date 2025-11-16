@@ -1,5 +1,5 @@
-import type { LambdaConfig } from './../types/LambdaConfig';
 import crypto from 'crypto';
+import type { LambdaConfig } from './../types/LambdaConfig';
 
 const INDEX_MARKER = '__index';
 const DEFAULT_MARKER = '__default';

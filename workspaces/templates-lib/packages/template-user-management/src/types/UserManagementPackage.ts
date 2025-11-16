@@ -1,7 +1,6 @@
 import type { Package } from '@goldstack/utils-package';
-
-import type { UserManagementConfiguration } from './UserManagementPackageConfiguration';
 import type { UserManagementDeployment } from './UserManagementDeployment';
+import type { UserManagementConfiguration } from './UserManagementPackageConfiguration';
 
 export type { UserManagementConfiguration, UserManagementDeployment };
 

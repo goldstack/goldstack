@@ -1,5 +1,5 @@
-import { filesChanged } from './utilsGit';
 import fs from 'fs';
+import { filesChanged } from './utilsGit';
 
 const read = (path: string): string => {
   const buffer = fs.readFileSync(path, 'utf8');

@@ -1,4 +1,3 @@
-import type { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import {
   CreateTableCommand,
   DeleteTableCommand,
@@ -7,9 +6,10 @@ import {
   ResourceInUseException,
   ResourceNotFoundException,
 } from '@aws-sdk/client-dynamodb';
+import { debug, info, warn } from '@goldstack/utils-log';
+import type { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { getTableName } from './dynamoDBPackageUtils';
 import type { DynamoDBDeployment, DynamoDBPackage } from './templateDynamoDB';
-import { debug, info, warn } from '@goldstack/utils-log';
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => {

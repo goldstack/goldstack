@@ -1,1 +1,1 @@
-export { pageview, event, initGtm } from '@goldstack/utils-track';
+export { event, initGtm, pageview } from '@goldstack/utils-track';

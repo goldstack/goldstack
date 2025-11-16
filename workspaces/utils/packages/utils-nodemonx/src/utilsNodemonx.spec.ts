@@ -1,5 +1,5 @@
-import { getNearestPackageJson } from './utilsNodemonx';
 import path from 'path';
+import { getNearestPackageJson } from './utilsNodemonx';
 
 describe('nodemonx', () => {
   it('Should find package.json', () => {

@@ -1,9 +1,9 @@
-import { build } from 'esbuild';
-import type { BuildOptions } from 'esbuild';
-import type { LambdaConfig } from './types/LambdaConfig';
-import { generateFunctionName } from './generate/generateFunctionName';
 import { changeExtension, mkdir, readToType, rmSafe, write } from '@goldstack/utils-sh';
+import type { BuildOptions } from 'esbuild';
+import { build } from 'esbuild';
 import path from 'path';
+import { generateFunctionName } from './generate/generateFunctionName';
+import type { LambdaConfig } from './types/LambdaConfig';
 
 export interface ClientBuildOptionsArgs {
   /**

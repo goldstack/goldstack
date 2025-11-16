@@ -4,21 +4,21 @@ import { infraAwsDockerImageCli } from './infraAwsDockerImage';
 
 import configSchema from './schemas/configSchema.json';
 
-export { getRepo, getDeploymentState } from './infraAwsDockerImage';
-import { apiDockerImageAwsCli } from './apiDockerImageAws';
+export { getDeploymentState, getRepo } from './infraAwsDockerImage';
 
-import yargs from 'yargs';
 import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
+import { PackageConfig } from '@goldstack/utils-package-config';
 import { infraCommands } from '@goldstack/utils-terraform';
 import type { Argv } from 'yargs';
-import { PackageConfig } from '@goldstack/utils-package-config';
-import { AWSDockerImagePackage, AWSDockerImageDeployment } from './types/AWSDockerImagePackage';
+import yargs from 'yargs';
+import { apiDockerImageAwsCli } from './apiDockerImageAws';
+import { AWSDockerImageDeployment, AWSDockerImagePackage } from './types/AWSDockerImagePackage';
 export { AWSDockerImagePackage, AWSDockerImageDeployment };
 export {
-  runTask,
-  startTask,
   getLogs,
+  runTask,
   StartTaskResult,
+  startTask,
 } from './apiDockerImageAws';
 
 export const getConfig = (): AWSDockerImagePackage => {

@@ -1,10 +1,10 @@
 import { info } from '@goldstack/utils-log';
 import {
   connectToSQSQueue,
+  getSQSDLQQueueName,
   getSQSDLQQueueUrl,
   getSQSQueueName,
   getSQSQueueUrl,
-  getSQSDLQQueueName,
 } from './lambda';
 
 /**

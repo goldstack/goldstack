@@ -1,6 +1,5 @@
-import { connect, getBucketName } from '@goldstack/session-repository-bucket';
-
 import { GetObjectCommand, NoSuchKey, PutObjectCommand, type S3Client } from '@aws-sdk/client-s3';
+import { connect, getBucketName } from '@goldstack/session-repository-bucket';
 
 import assert from 'assert';
 

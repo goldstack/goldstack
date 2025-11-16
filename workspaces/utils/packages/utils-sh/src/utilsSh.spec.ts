@@ -1,6 +1,6 @@
-import fs from 'fs';
-import { rmSafe, write, mkdir, copy, commandExists } from './utilsSh';
 import assert from 'assert';
+import fs from 'fs';
+import { commandExists, copy, mkdir, rmSafe, write } from './utilsSh';
 
 describe('Copy', () => {
   beforeAll(async () => {

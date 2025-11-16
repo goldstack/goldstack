@@ -1,6 +1,6 @@
-import { compileFromFile, type Options } from 'json-schema-to-typescript';
-import { read, mkdir, write, globSync } from '@goldstack/utils-sh';
+import { globSync, mkdir, read, write } from '@goldstack/utils-sh';
 import fs from 'fs';
+import { compileFromFile, type Options } from 'json-schema-to-typescript';
 import path from 'path';
 import replaceExt from 'replace-ext';
 

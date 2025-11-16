@@ -1,12 +1,11 @@
-export type {
-  Deployment,
-  DeploymentName,
-  DeploymentConfiguration,
-} from './types/InfrastructureConfiguration';
+export * from './deploymentState';
 
 export type {
   DeploymentState,
   DeploymentsState,
 } from './types/deploymentStatesTypes';
-
-export * from './deploymentState';
+export type {
+  Deployment,
+  DeploymentConfiguration,
+  DeploymentName,
+} from './types/InfrastructureConfiguration';

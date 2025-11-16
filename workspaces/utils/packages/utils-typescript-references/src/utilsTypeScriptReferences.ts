@@ -1,7 +1,6 @@
+import yargs, { Argv } from 'yargs';
 import { updatePackageProjectReferences } from './updatePackageProjectReferences';
 import { updateRootProjectReferences } from './updateRootProjectReferences';
-
-import yargs, { Argv } from 'yargs';
 
 interface RunOptions {
   tsConfigNames: string[];

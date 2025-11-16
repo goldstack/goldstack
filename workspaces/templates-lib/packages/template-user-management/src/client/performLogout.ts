@@ -1,7 +1,7 @@
 import { getDeploymentName } from '../userManagementConfig';
 import { getEndpoint } from './getEndpoints';
 
-import { setRefreshTokenStorage, setForceLogout } from './state';
+import { setForceLogout, setRefreshTokenStorage } from './state';
 
 function eraseCookie(name: string) {
   document.cookie = name + '=; Max-Age=0; SameSite=Strict';

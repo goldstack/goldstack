@@ -1,8 +1,6 @@
 import fs from 'fs';
-import { dirname } from 'path';
+import path, { dirname } from 'path';
 import visit from 'unist-util-visit';
-
-import path from 'path';
 
 export default function rehypeDocs({ filePath, tag, processor }): any {
   function visitInlineCode(node: any): void {
@@ -21,7 +19,7 @@ export default function rehypeDocs({ filePath, tag, processor }): any {
       const markdown = processor();
 
       try {
-        node.value = `<div class=\"markdown-fragment\">${markdown.processSync(code)}</div>`;
+        node.value = `<div class="markdown-fragment">${markdown.processSync(code)}</div>`;
         node.type = 'html';
       } catch (e) {
         throw Error(`${e.message} \nFile: ${file}`);
@@ -43,7 +41,7 @@ export default function rehypeDocs({ filePath, tag, processor }): any {
       const markdown = processor();
 
       try {
-        node.value = `<div class=\"markdown-fragment\">${markdown.processSync(code)}</div>`;
+        node.value = `<div class="markdown-fragment">${markdown.processSync(code)}</div>`;
         node.type = 'html';
       } catch (e) {
         throw Error(`${e.message} \nFile: ${file}`);

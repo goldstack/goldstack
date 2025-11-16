@@ -1,7 +1,6 @@
-import type { InputMigrations } from 'umzug/lib/types';
-import type { DynamoDBContext } from '@goldstack/template-dynamodb';
-
 import { DeleteItemCommand, PutItemCommand } from '@aws-sdk/client-dynamodb';
+import type { DynamoDBContext } from '@goldstack/template-dynamodb';
+import type { InputMigrations } from 'umzug/lib/types';
 
 /**
  * Umzug migrations applied during connection see https://github.com/sequelize/umzug#migrations

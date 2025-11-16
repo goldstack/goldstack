@@ -1,17 +1,17 @@
-import type { PrepareTemplate, PrepareTemplateParams } from './prepareTemplateTypes';
 import { parseConfig } from '@goldstack/utils-config';
-import { read, write, mkdir, copy, rmSafe, globSync } from '@goldstack/utils-sh';
+import { debug, info, warn } from '@goldstack/utils-log';
 import { readPackageConfig } from '@goldstack/utils-package';
+import { copy, globSync, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
 import { readTemplateConfigFromFile } from '@goldstack/utils-template';
-import type {
-  TemplateBuildConfiguration,
-  FileOverwriteConfiguration,
-} from './types/templateBuildSchema';
-import configSchema from './schemas/configSchema.json';
 import fs from 'fs';
 import jsonpath from 'jsonpath';
-import { debug, info, warn } from '@goldstack/utils-log';
 import path, { join } from 'path';
+import type { PrepareTemplate, PrepareTemplateParams } from './prepareTemplateTypes';
+import configSchema from './schemas/configSchema.json';
+import type {
+  FileOverwriteConfiguration,
+  TemplateBuildConfiguration,
+} from './types/templateBuildSchema';
 
 const readBuildConfigFromString = (data: string): TemplateBuildConfiguration => {
   const config = parseConfig(data, configSchema, {

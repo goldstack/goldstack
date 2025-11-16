@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-
-import useSWR from 'swr';
-
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
+import useSWR from 'swr';
 
 import BootstrapIcon from './../src/icons/bootstrap.svg';
 import RocketLaunchImage from './../src/img/rocket-launch.jpg';

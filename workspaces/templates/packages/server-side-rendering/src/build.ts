@@ -1,23 +1,18 @@
 /* esbuild-ignore ui */
 /* esbuild-ignore server */
 
-import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
-
-import tailwindPlugin from 'esbuild-tailwind-ssr-plugin';
-import cssPlugin from 'esbuild-ssr-css-modules-plugin';
-
-import fs from 'fs';
-import ignorePlugin from 'esbuild-ignore-with-comments-plugin';
-
-import type { BuildOptions } from 'esbuild';
-
-import { StaticFileMapperBuild } from 'static-file-mapper-build';
-
 import type {
   BuildConfiguration,
   ClientBuildOptionsArgs,
   ServerBuildOptionsArgs,
 } from '@goldstack/template-ssr';
+import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
+import type { BuildOptions } from 'esbuild';
+import ignorePlugin from 'esbuild-ignore-with-comments-plugin';
+import cssPlugin from 'esbuild-ssr-css-modules-plugin';
+import tailwindPlugin from 'esbuild-tailwind-ssr-plugin';
+import fs from 'fs';
+import { StaticFileMapperBuild } from 'static-file-mapper-build';
 
 function getStaticFileMapper(): StaticFileMapperBuild {
   return new StaticFileMapperBuild({

@@ -1,16 +1,13 @@
+import type { PackageListItem } from 'src/components/PackageList';
+import APIGateway from 'src/icons/aws-api-gateway.svg';
+import BootstrapIcon from 'src/icons/bootstrap_large.svg';
+import CloudFrontIcon from 'src/icons/cloudfront.svg';
+import LambdaIcon from 'src/icons/lambda.svg';
 import NextJsIcon from 'src/icons/nextjs.svg';
 import NodeJsIcon from 'src/icons/nodejs.svg';
-import APIGateway from 'src/icons/aws-api-gateway.svg';
-import LambdaIcon from 'src/icons/lambda.svg';
 import ReactIcon from 'src/icons/reactjs.svg';
-import SesIcon from 'src/icons/ses.svg';
-import BootstrapIcon from 'src/icons/bootstrap_large.svg';
-
 import S3Icon from 'src/icons/s3.svg';
-
-import CloudFrontIcon from 'src/icons/cloudfront.svg';
-
-import type { PackageListItem } from 'src/components/PackageList';
+import SesIcon from 'src/icons/ses.svg';
 
 export const getTemplateData = (preferredElements: string[]): PackageListItem[] => {
   const baseList = [

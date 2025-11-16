@@ -1,8 +1,6 @@
 import React from 'react';
-
-import styles from './Foundation.module.css';
-
 import GoldDiamondIcon from './../icons/gold-diamond.svg';
+import styles from './Foundation.module.css';
 
 interface Feature {
   title: string;

@@ -1,35 +1,31 @@
-import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
-import { wrapCli } from '@goldstack/utils-cli';
-import { infraCommands } from '@goldstack/utils-terraform';
-import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
-import { PackageConfig } from '@goldstack/utils-package-config';
-import { writePackageConfig } from '@goldstack/utils-package';
 import { readDeploymentState, readTerraformStateVariable } from '@goldstack/infra';
-import yargs, { type Argv } from 'yargs';
-import fs from 'fs';
+import type { BuildConfiguration } from '@goldstack/template-ssr';
 import {
   createLambdaAPIDeploymentConfiguration,
   type SSRDeployment,
   type SSRPackage,
 } from '@goldstack/template-ssr';
-import type { BuildConfiguration } from '@goldstack/template-ssr';
-
 import {
-  readLambdaConfig,
-  generateLambdaConfig,
-  validateDeployment,
   buildFunctions,
   deployFunctions,
+  generateLambdaConfig,
   type LambdaConfig,
+  readLambdaConfig,
+  validateDeployment,
 } from '@goldstack/utils-aws-lambda';
-import { defaultRoutesPath } from './templateSSRConsts';
+import { wrapCli } from '@goldstack/utils-cli';
+import { warn } from '@goldstack/utils-log';
+import { buildCli, buildDeployCommands, writePackageConfig } from '@goldstack/utils-package';
+import { PackageConfig } from '@goldstack/utils-package-config';
+import { pwd } from '@goldstack/utils-sh';
+import { infraCommands } from '@goldstack/utils-terraform';
+import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
+import fs from 'fs';
+import outmatch from 'outmatch';
+import yargs, { type Argv } from 'yargs';
 import { buildBundles } from './buildBundles';
 import { deployToS3 } from './deployToS3';
-
-import outmatch from 'outmatch';
-
-import { pwd } from '@goldstack/utils-sh';
-import { warn } from '@goldstack/utils-log';
+import { defaultRoutesPath } from './templateSSRConsts';
 
 export const run = async (args: string[], buildConfig: BuildConfiguration): Promise<void> => {
   await wrapCli(async () => {

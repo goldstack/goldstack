@@ -1,7 +1,7 @@
+import { parseConfig } from '@goldstack/utils-config';
+import { read } from '@goldstack/utils-sh';
 import configSchema from './schemas/configSchema.json';
 import type { ProjectConfiguration } from './types/projectConfigurationSchema';
-import { read } from '@goldstack/utils-sh';
-import { parseConfig } from '@goldstack/utils-config';
 
 export * from './types/projectConfigurationSchema';
 

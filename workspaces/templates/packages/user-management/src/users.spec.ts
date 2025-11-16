@@ -2,8 +2,8 @@ import {
   connectWithCognito,
   generateTestAccessToken,
   generateTestIdToken,
-  getEndpoint,
   getCookieSettings,
+  getEndpoint,
 } from './users';
 
 it('Should validate tokens', async () => {

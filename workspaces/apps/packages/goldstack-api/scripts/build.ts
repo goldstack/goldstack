@@ -1,5 +1,5 @@
-import { build, analyzeMetafile } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
+import { analyzeMetafile, build } from 'esbuild';
 import { writeFileSync } from 'fs';
 
 build({

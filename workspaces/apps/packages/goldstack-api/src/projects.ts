@@ -1,25 +1,18 @@
-import { Router, type Request, type Response } from 'express';
-
-import sanitizeHtml from 'sanitize-html';
-
-import { connectProjectRepository } from '@goldstack/project-repository';
-
-import { v4 as uuid4 } from 'uuid';
-import { readProjectConfigFromString } from '@goldstack/utils-project';
-import { mkdir, rmSafe, goldstackLocalDir, read } from '@goldstack/utils-sh';
-
-import { S3TemplateRepository } from '@goldstack/template-repository';
-import { connect, getBucketName } from '@goldstack/template-repository-bucket';
-
 import { buildProject } from '@goldstack/project-build';
 import { getPackageConfigs } from '@goldstack/project-config';
-
 import type { ProjectData } from '@goldstack/project-repository';
-
-import { getDocLinks } from './utils/docLinks';
+import { connectProjectRepository } from '@goldstack/project-repository';
+import { S3TemplateRepository } from '@goldstack/template-repository';
+import { connect, getBucketName } from '@goldstack/template-repository-bucket';
+import { readProjectConfigFromString } from '@goldstack/utils-project';
+import { goldstackLocalDir, mkdir, read, rmSafe } from '@goldstack/utils-sh';
+import { type Request, type Response, Router } from 'express';
+import { join } from 'path';
+import sanitizeHtml from 'sanitize-html';
+import { v4 as uuid4 } from 'uuid';
 
 import packagesRouter from './packages';
-import { join } from 'path';
+import { getDocLinks } from './utils/docLinks';
 
 const router = Router();
 

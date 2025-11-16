@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { debug, error } from '@goldstack/utils-log';
-import type { DynamoDBInstance } from './localDynamoDB';
 import fs from 'fs';
 import { check } from 'tcp-port-used';
+import type { DynamoDBInstance } from './localDynamoDB';
 
 /**
  * Interface representing the state that will be persisted to file.

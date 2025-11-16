@@ -1,6 +1,6 @@
-import fs from 'fs';
-import { readTemplateConfigFromFile } from '@goldstack/utils-template';
 import { cp } from '@goldstack/utils-sh';
+import { readTemplateConfigFromFile } from '@goldstack/utils-template';
+import fs from 'fs';
 
 interface CreatePackageParams {
   newPackageName: string;

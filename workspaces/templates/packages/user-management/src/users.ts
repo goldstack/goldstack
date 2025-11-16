@@ -1,34 +1,33 @@
 import {
-  connectWithCognito as templateConnect,
-  getEndpoint as templateGetEndpoint,
   type CognitoManager,
   type Endpoint,
-  loginWithRedirect as templateLoginWithRedirect,
-  signUpWithRedirect as templateSignUpWithRedirect,
-  handleRedirectCallback as templateHandleRedirectCallback,
-  getCookieSettings as templateGetCookieSettings,
-  performLogout as templatePerformLogout,
   type GetCookieSettingsResult,
+  connectWithCognito as templateConnect,
+  getCookieSettings as templateGetCookieSettings,
+  getEndpoint as templateGetEndpoint,
+  handleRedirectCallback as templateHandleRedirectCallback,
+  loginWithRedirect as templateLoginWithRedirect,
+  performLogout as templatePerformLogout,
+  signUpWithRedirect as templateSignUpWithRedirect,
 } from '@goldstack/template-user-management';
 
 import goldstackConfig from './../goldstack.json';
 import packageSchema from './../schemas/package.schema.json';
 import deploymentsOutput from './state/deployments.json';
 
+export type { ClientAuthResult } from '@goldstack/template-user-management';
 export {
-  setLocalUserManager,
-  setMockedUserAccessToken,
-  setMockedUserIdToken,
-  getMockedUserAccessToken,
-  getMockedUserIdToken,
   generateTestAccessToken,
   generateTestIdToken,
   getLocalUserManager,
   getLoggedInUser,
+  getMockedUserAccessToken,
+  getMockedUserIdToken,
   isAuthenticated,
+  setLocalUserManager,
+  setMockedUserAccessToken,
+  setMockedUserIdToken,
 } from '@goldstack/template-user-management';
-
-export type { ClientAuthResult } from '@goldstack/template-user-management';
 
 export async function loginWithRedirect(deploymentName?: string) {
   return templateLoginWithRedirect({

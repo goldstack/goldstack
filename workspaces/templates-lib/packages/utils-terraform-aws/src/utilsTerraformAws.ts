@@ -1,25 +1,24 @@
+import type { AwsCredentialIdentity } from '@aws-sdk/types';
 import {
-  readDeploymentFromPackageConfig,
-  getAWSUser,
   type AWSDeployment,
-  assertTerraformConfig,
-  writeTerraformConfig,
   type AWSTerraformState,
-  type RemoteState,
+  assertTerraformConfig,
   getAWSCredentials,
+  getAWSUser,
+  type RemoteState,
+  readDeploymentFromPackageConfig,
+  writeTerraformConfig,
 } from '@goldstack/infra-aws';
 import {
-  terraformCli,
   type CloudProvider,
   type TerraformDeployment,
   type TerraformOptions,
+  terraformCli,
 } from '@goldstack/utils-terraform';
-import type { AwsCredentialIdentity } from '@aws-sdk/types';
-import { assertState, deleteState } from './tfState';
+import { type SpawnSyncOptionsWithStringEncoding, spawnSync } from 'child_process';
 import crypto from 'crypto';
-import { spawnSync, type SpawnSyncOptionsWithStringEncoding } from 'child_process';
-
 import os from 'os';
+import { assertState, deleteState } from './tfState';
 
 const getRemoteStateConfig = (config: AWSTerraformState, userName: string): RemoteState => {
   const userConfig = config.remoteState.filter((u) => u.user === userName);

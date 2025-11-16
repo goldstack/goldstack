@@ -1,5 +1,5 @@
-import { PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
-import { getBucketName, connect, getSignedUrl } from './bucket';
+import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+import { connect, getBucketName, getSignedUrl } from './bucket';
 
 jest.setTimeout(60000);
 

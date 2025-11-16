@@ -1,6 +1,6 @@
-import assert from 'assert';
-import { DynamoDBDocument } from '@aws-sdk/lib-dynamodb';
 import { DescribeTableCommand } from '@aws-sdk/client-dynamodb';
+import { DynamoDBDocument } from '@aws-sdk/lib-dynamodb';
+import assert from 'assert';
 import {
   boolean,
   Entity,
@@ -14,11 +14,11 @@ import {
 import { createUserEntity, type InputUser, type UserEntity, type ValidUserValue } from './entities';
 
 import {
-  getTableName,
   connect,
-  stopLocalDynamoDB,
-  startLocalDynamoDB,
   connectTable,
+  getTableName,
+  startLocalDynamoDB,
+  stopLocalDynamoDB,
 } from './table';
 
 // needs to be long to download Docker image etc.

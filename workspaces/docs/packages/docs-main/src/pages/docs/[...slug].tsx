@@ -1,12 +1,10 @@
-import Docs from './../../components/Docs';
-
-import type { GetStaticProps, GetStaticPaths } from 'next';
-import paths from './../../data/docs/paths.json';
-import { read, pwd } from '@goldstack/utils-sh';
-import fs from 'fs';
-
 import { generateToc, type Heading } from '@goldstack/toc-generator';
+import { pwd, read } from '@goldstack/utils-sh';
 import cheerio from 'cheerio';
+import fs from 'fs';
+import type { GetStaticPaths, GetStaticProps } from 'next';
+import Docs from './../../components/Docs';
+import paths from './../../data/docs/paths.json';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {

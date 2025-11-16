@@ -1,9 +1,9 @@
-import { awsCli, hasAwsCli } from '@goldstack/utils-aws-cli';
-import { zip, rmSafe } from '@goldstack/utils-sh';
-import { getAWSCredentials } from '@goldstack/infra-aws';
 import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import { getAWSCredentials } from '@goldstack/infra-aws';
+import { awsCli, hasAwsCli } from '@goldstack/utils-aws-cli';
 import { debug } from '@goldstack/utils-log';
-import { relative, sep, isAbsolute } from 'path';
+import { rmSafe, zip } from '@goldstack/utils-sh';
+import { isAbsolute, relative, sep } from 'path';
 
 export interface DeployFunctionParams {
   lambdaPackageDir: string;

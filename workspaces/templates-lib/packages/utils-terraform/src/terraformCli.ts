@@ -1,12 +1,12 @@
-import { exec, pwd, commandExists } from '@goldstack/utils-sh';
 import { assertDocker, hasDocker, imageTerraform } from '@goldstack/utils-docker';
 import { fatal, warn } from '@goldstack/utils-log';
+import { commandExists, exec, pwd } from '@goldstack/utils-sh';
+import path from 'path';
 import type { CloudProvider } from './cloudProvider';
 import type { TerraformVersion } from './types/utilsTerraformConfig';
+import { writeBackendConfig } from './writeBackendConfig';
 import { writeCredentials } from './writeCredentials';
 import { writeVarsFile } from './writeVarsFile';
-import { writeBackendConfig } from './writeBackendConfig';
-import path from 'path';
 
 export type Variables = [string, string][];
 

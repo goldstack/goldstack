@@ -1,4 +1,4 @@
-import type { CheerioAPI, Cheerio, Document, Element } from 'cheerio';
+import type { Cheerio, CheerioAPI, Document, Element } from 'cheerio';
 
 export interface Heading {
   title: string;

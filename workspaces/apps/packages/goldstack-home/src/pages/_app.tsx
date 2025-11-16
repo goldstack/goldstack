@@ -2,14 +2,13 @@
 // ensure all pages have Bootstrap CSS
 import '../styles/fonts.css';
 import '../styles/app.css';
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
-
-import * as gtag from './../lib/ga';
-
-import { ThemeProvider } from 'styled-components';
 
 import { init } from '@fullstory/browser';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
+
+import { ThemeProvider } from 'styled-components';
+import * as gtag from './../lib/ga';
 
 const theme = {};
 

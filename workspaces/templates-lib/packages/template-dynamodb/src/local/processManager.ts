@@ -1,6 +1,6 @@
-import { spawnSync } from 'child_process';
-import { execAsync } from '@goldstack/utils-sh';
 import { debug, error, warn } from '@goldstack/utils-log';
+import { execAsync } from '@goldstack/utils-sh';
+import { spawnSync } from 'child_process';
 
 /**
  * Handles process termination for both Windows and Unix systems

@@ -1,13 +1,9 @@
+import type { PackageProps, TemplateFeatureImage } from '@goldstack/template-metadata';
 import React from 'react';
-
-import GitHubIcon from './../../icons/github-tile.svg';
 import DocumentIcon from './../../icons/document.svg';
-
-import styles from './ProjectTemplateSidebar.module.css';
-
-import type { TemplateFeatureImage, PackageProps } from '@goldstack/template-metadata';
-
+import GitHubIcon from './../../icons/github-tile.svg';
 import { resolveImage } from './imageUtil';
+import styles from './ProjectTemplateSidebar.module.css';
 
 interface ProjectTemplateSidebarProps {
   tags: string[];

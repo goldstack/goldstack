@@ -1,12 +1,11 @@
+import type { SESClient, SendEmailRequest } from '@aws-sdk/client-ses';
 import {
   connect as templateConnect,
-  getMockedSES as templateGetMockedSES,
-  getFromDomain as templateGetFromDomain,
   createSESClient as templateCreateSESClient,
+  getFromDomain as templateGetFromDomain,
+  getMockedSES as templateGetMockedSES,
   getSentEmailRequests as templateGetSentEmailRequests,
 } from '@goldstack/template-email-send';
-
-import type { SendEmailRequest, SESClient } from '@aws-sdk/client-ses';
 import goldstackConfig from './../goldstack.json';
 import goldstackSchema from './../schemas/package.schema.json';
 

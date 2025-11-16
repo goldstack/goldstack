@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
 import type { SSRHandler } from '@goldstack/template-ssr';
-
-import { renderPage, hydrate } from './../render';
+import React, { useState } from 'react';
 import Panel from './../components/Panel';
+import { hydrate, renderPage } from './../render';
 import styles from './$index.module.css';
 
 const Index = (props: { message: string }): JSX.Element => {

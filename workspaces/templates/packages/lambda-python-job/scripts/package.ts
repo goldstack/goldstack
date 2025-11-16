@@ -1,7 +1,7 @@
-import { exec, rmSafe, globSync, read, unzip } from '@goldstack/utils-sh';
 import { debug, info, warn } from '@goldstack/utils-log';
-import * as path from 'path';
+import { exec, globSync, read, rmSafe, unzip } from '@goldstack/utils-sh';
 import * as fs from 'fs';
+import * as path from 'path';
 
 // Function to get the current virtual environment
 function getActiveVenv(): string | null {

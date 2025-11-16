@@ -1,26 +1,19 @@
-import React, { useState, useEffect } from 'react';
-
-import { useRouter } from 'next/router';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Spinner from 'react-bootstrap/Spinner';
-
-import styled from 'styled-components';
-
-import PackageList from './../components/PackageList';
-
-import { buildProjectConfig } from './../lib/buildProject';
-
 import { getEndpoint } from '@goldstack/goldstack-api';
 
-import Progress from './Progress';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Spinner from 'react-bootstrap/Spinner';
+import styled from 'styled-components';
+import PackageList from './../components/PackageList';
+import { buildProjectConfig } from './../lib/buildProject';
 import { event } from './../lib/ga';
-
 import { getTemplateData } from './../lib/templateData';
+import styles from './BuildProject.module.css';
 
 import NoModulesAddedModal from './NoModulesAddedModal';
-
-import styles from './BuildProject.module.css';
+import Progress from './Progress';
 
 const ConfigureProjectButton = styled.button`
   &:hover {

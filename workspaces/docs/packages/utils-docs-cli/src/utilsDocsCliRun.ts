@@ -1,10 +1,8 @@
 import { wrapCli } from '@goldstack/utils-cli';
-import yargs from 'yargs';
-
-import { write, rmSafe } from '@goldstack/utils-sh';
-
-import { transpile, getDocsDir, resolveMarkdown } from './utilsDocsCli';
+import { rmSafe, write } from '@goldstack/utils-sh';
 import path from 'path';
+import yargs from 'yargs';
+import { getDocsDir, resolveMarkdown, transpile } from './utilsDocsCli';
 
 export const run = async (): Promise<void> => {
   await wrapCli(async (): Promise<any> => {

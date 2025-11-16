@@ -1,6 +1,5 @@
-import { connect, getTableName, startLocalDynamoDB, stopLocalDynamoDB } from '@goldstack/dynamodb';
-
 import { DescribeTableCommand } from '@aws-sdk/client-dynamodb';
+import { connect, getTableName, startLocalDynamoDB, stopLocalDynamoDB } from '@goldstack/dynamodb';
 
 jest.setTimeout(120000);
 

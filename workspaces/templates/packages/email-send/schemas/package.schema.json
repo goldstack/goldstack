@@ -91,12 +91,7 @@
           "$ref": "#/definitions/AWSUserName"
         }
       },
-      "required": [
-        "awsRegion",
-        "awsUser",
-        "configuration",
-        "name"
-      ],
+      "required": ["awsRegion", "awsUser", "configuration", "name"],
       "description": "Configures a deployment target for the email infrastrucutre."
     },
     "DeploymentName": {
@@ -115,10 +110,7 @@
           "$ref": "#/definitions/HostedZoneDomain"
         }
       },
-      "required": [
-        "domain",
-        "hostedZoneDomain"
-      ]
+      "required": ["domain", "hostedZoneDomain"]
     },
     "EmailDomain": {
       "type": "string",

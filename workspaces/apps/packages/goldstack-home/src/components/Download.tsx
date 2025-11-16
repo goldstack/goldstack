@@ -1,21 +1,16 @@
-import React from 'react';
-
-import styles from './Download.module.css';
-import Head from 'next/head';
-import useSWR from 'swr';
-
-import CheckCircle from './../icons/font-awesome/solid/check-circle.svg';
-
-import Footer from 'src/components/Footer';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
-import { dataUriToSrc } from 'src/utils/utils';
 import { getEndpoint } from '@goldstack/goldstack-api';
 import type { DocLink } from '@goldstack/goldstack-api/dist/src/utils/docLinks';
-
-import assert from 'assert';
 import { loadStripe } from '@stripe/stripe-js';
+import assert from 'assert';
+import Head from 'next/head';
+import React from 'react';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Footer from 'src/components/Footer';
+import { dataUriToSrc } from 'src/utils/utils';
+import useSWR from 'swr';
+import CheckCircle from './../icons/font-awesome/solid/check-circle.svg';
+import styles from './Download.module.css';
 import { DownloadInstructions } from './DownloadInstructions';
 
 assert(

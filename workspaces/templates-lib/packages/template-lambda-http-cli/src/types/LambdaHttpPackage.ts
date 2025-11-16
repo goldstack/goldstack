@@ -1,7 +1,5 @@
-import type { AWSDeployment } from '@goldstack/infra-aws';
-import type { TerraformDeployment } from '@goldstack/utils-terraform';
 import type { Deployment, DeploymentConfiguration } from '@goldstack/infra';
-import type { Package, Configuration } from '@goldstack/utils-package';
+import type { AWSDeployment } from '@goldstack/infra-aws';
 import {
   LambdaConfiguration,
   type LambdaDeployment,
@@ -9,6 +7,8 @@ import {
   LambdaDeployments,
   type LambdaPackage,
 } from '@goldstack/template-lambda-cli';
+import type { Configuration, Package } from '@goldstack/utils-package';
+import type { TerraformDeployment } from '@goldstack/utils-terraform';
 
 /**
  * The domain name that the API should be deployed to (e.g. api.mysite.com)

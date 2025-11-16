@@ -1,14 +1,17 @@
-import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
+import type {
+  DynamoDBContext,
+  DynamoDBDeployment,
+  DynamoDBPackage,
+} from '@goldstack/template-dynamodb';
 import { wrapCli } from '@goldstack/utils-cli';
+import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
+import { PackageConfig } from '@goldstack/utils-package-config';
 import { infraCommands } from '@goldstack/utils-terraform';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
-import { PackageConfig } from '@goldstack/utils-package-config';
-import type { DynamoDBPackage, DynamoDBDeployment } from '@goldstack/template-dynamodb';
-import yargs, { type Argv } from 'yargs';
 import assert from 'assert';
-import { dynamoDBCli } from './dynamoDBTableCli';
 import type { InputMigrations } from 'umzug/lib/types';
-import type { DynamoDBContext } from '@goldstack/template-dynamodb';
+import yargs, { type Argv } from 'yargs';
+import { dynamoDBCli } from './dynamoDBTableCli';
 
 export const run = async ({
   args,

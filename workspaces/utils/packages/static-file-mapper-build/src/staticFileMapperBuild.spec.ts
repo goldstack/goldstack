@@ -1,7 +1,6 @@
-import { StaticFileMapperBuild } from './staticFileMapperBuild';
-
 import { mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
 import assert from 'assert';
+import { StaticFileMapperBuild } from './staticFileMapperBuild';
 
 describe('Static file mapper', () => {
   let mapper: StaticFileMapperBuild | undefined;

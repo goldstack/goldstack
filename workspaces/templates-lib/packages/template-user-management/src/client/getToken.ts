@@ -1,11 +1,11 @@
 /* esbuild-ignore server */
 
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
-import { getEndpoint } from './getEndpoints';
 import type { UserManagementDeployment, UserManagementPackage } from '../templateUserManagement';
 import { getMockedUserAccessToken, getMockedUserIdToken } from '../userManagementClientMock';
 import { getDeploymentName, getDeploymentsOutput } from '../userManagementConfig';
 import { executeTokenRequest } from './executeTokenRequest';
+import { getEndpoint } from './getEndpoints';
 
 export interface GetTokenResults {
   accessToken: string;

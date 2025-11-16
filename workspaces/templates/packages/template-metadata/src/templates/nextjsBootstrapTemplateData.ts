@@ -1,16 +1,14 @@
 import type { ProjectTemplateProps } from '../projectTemplateTypes';
-
+import { NextJsBootstrap } from './moduleData';
 import {
+  featureAws,
   featureESLint,
   featureJest,
+  featureNextJsComposition,
+  featureTerraform,
   featureVSCode,
   featureYarn,
-  featureAws,
-  featureTerraform,
-  featureNextJsComposition,
 } from './nextjsTemplateData';
-
-import { NextJsBootstrap } from './moduleData';
 
 export const getNextjsBootstrapTemplateData = (): ProjectTemplateProps => {
   return {

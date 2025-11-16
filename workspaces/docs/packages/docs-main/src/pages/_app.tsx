@@ -6,12 +6,10 @@ import './../styles/app.css';
 import './../styles/docs.css';
 import './../styles/goldstack-docs.css';
 
-import { ThemeProvider } from 'styled-components';
-
-import { useRouter } from 'next/router';
-import { initGtm, pageview } from '@goldstack/utils-track';
-
 import { init } from '@fullstory/browser';
+import { initGtm, pageview } from '@goldstack/utils-track';
+import { useRouter } from 'next/router';
+import { ThemeProvider } from 'styled-components';
 
 const theme = {
   colors: {

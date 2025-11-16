@@ -1,16 +1,12 @@
-import { type S3Client, GetObjectCommand, NoSuchKey, PutObjectCommand } from '@aws-sdk/client-s3';
-
+import { GetObjectCommand, NoSuchKey, PutObjectCommand, type S3Client } from '@aws-sdk/client-s3';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
+import { download } from '@goldstack/utils-s3';
+import { goldstackLocalDir, mkdir, rmSafe, unzip, zip } from '@goldstack/utils-sh';
+import assert from 'assert';
+import fs from 'fs';
 import { v4 as uuid4 } from 'uuid';
-
 import type ProjectRepository from './ProjectRepositoryInterface';
 import type { ProjectId } from './ProjectRepositoryInterface';
-import type { ProjectConfiguration } from '@goldstack/utils-project';
-
-import { zip, rmSafe, unzip, mkdir, goldstackLocalDir } from '@goldstack/utils-sh';
-import { download } from '@goldstack/utils-s3';
-import fs from 'fs';
-
-import assert from 'assert';
 
 import type ProjectData from './types/ProjectData';
 

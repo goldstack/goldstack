@@ -1,8 +1,8 @@
 import {
-  S3Client,
   DeleteBucketCommand,
   DeleteObjectsCommand,
   ListObjectsV2Command,
+  S3Client,
 } from '@aws-sdk/client-s3';
 
 const bucketsToDelete = [];

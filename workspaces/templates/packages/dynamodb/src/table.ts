@@ -1,18 +1,16 @@
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
+import { DynamoDBDocument, DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 import {
   connect as templateConnect,
   getTableName as templateGetTableName,
-  startLocalDynamoDB as templateStartLocalDynamoDB,
-  stopLocalDynamoDB as templateStopLocalDynamoDB,
-  stopAllLocalDynamoDB as templateStopAllLocalDynamoDB,
   migrateDownTo as templateMigrateDownTo,
+  startLocalDynamoDB as templateStartLocalDynamoDB,
+  stopAllLocalDynamoDB as templateStopAllLocalDynamoDB,
+  stopLocalDynamoDB as templateStopLocalDynamoDB,
 } from '@goldstack/template-dynamodb';
-
-import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
-import { DynamoDBDocument } from '@aws-sdk/lib-dynamodb';
-import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
-import type { Table } from './entities';
 import goldstackConfig from './../goldstack.json';
 import goldstackSchema from './../schemas/package.schema.json';
+import type { Table } from './entities';
 import { createTable } from './entities';
 import { createMigrations } from './migrations';
 

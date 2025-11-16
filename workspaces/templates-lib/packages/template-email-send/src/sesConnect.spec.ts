@@ -1,5 +1,5 @@
 import { SendEmailCommand } from '@aws-sdk/client-ses';
-import { getSentEmailRequests, connect } from './templateEmailSend';
+import { connect, getSentEmailRequests } from './templateEmailSend';
 
 describe('SES connect', () => {
   it('Should connect to mocked SES', async () => {

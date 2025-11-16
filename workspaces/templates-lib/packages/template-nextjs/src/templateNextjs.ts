@@ -1,19 +1,17 @@
+import { infraAwsStaticWebsiteCli } from '@goldstack/template-static-website-aws';
 import { wrapCli } from '@goldstack/utils-cli';
 import { fatal } from '@goldstack/utils-log';
-import { infraAwsStaticWebsiteCli } from '@goldstack/template-static-website-aws';
-import type { NextjsPackage, NextjsDeployment } from './types/NextJsPackage';
+import type { NextjsDeployment, NextjsPackage } from './types/NextJsPackage';
 
 export type { NextjsPackage };
 
-import yargs from 'yargs';
-import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
 import { readDeploymentState } from '@goldstack/infra';
-import { infraCommands } from '@goldstack/utils-terraform';
-
+import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
 import { PackageConfig } from '@goldstack/utils-package-config';
-import { setNextjsEnvironmentVariables } from './nextjsEnvironment';
-
+import { infraCommands } from '@goldstack/utils-terraform';
+import yargs from 'yargs';
 import { deployEdgeLambda } from './edgeLambdaDeploy';
+import { setNextjsEnvironmentVariables } from './nextjsEnvironment';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {

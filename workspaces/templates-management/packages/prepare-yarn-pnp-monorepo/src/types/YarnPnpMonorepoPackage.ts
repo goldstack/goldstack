@@ -1,5 +1,5 @@
-import type { Package, Configuration } from '@goldstack/utils-package';
 import type { Deployment, DeploymentConfiguration } from '@goldstack/infra';
+import type { Configuration, Package } from '@goldstack/utils-package';
 
 export type YarnPnpMonorepoDeploymentConfiguration = DeploymentConfiguration;
 

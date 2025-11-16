@@ -1,8 +1,8 @@
-import { connect, stopAllLocalDynamoDB, stopLocalDynamoDB } from './../src/table';
-import * as readline from 'readline';
-import { createServer } from 'dynamodb-admin';
-import DynamoDB from 'aws-sdk/clients/dynamodb';
 import { info, warn } from '@goldstack/utils-log';
+import DynamoDB from 'aws-sdk/clients/dynamodb';
+import { createServer } from 'dynamodb-admin';
+import * as readline from 'readline';
+import { connect, stopAllLocalDynamoDB, stopLocalDynamoDB } from './../src/table';
 
 (async () => {
   const clientInner = await connect();

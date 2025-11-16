@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
-
-import { useRouter } from 'next/router';
-import type { ProjectData } from '@goldstack/project-repository';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import assert from 'assert';
-import styled from 'styled-components';
-
-import { getEndpoint } from '@goldstack/goldstack-api';
-import { validateProject, type StepValidation } from './../lib/validateProject';
-
 import * as Fullstory from '@fullstory/browser';
-import Progress from './Progress';
-
-import { event } from './../lib/ga';
+import { getEndpoint } from '@goldstack/goldstack-api';
+import type { ProjectData } from '@goldstack/project-repository';
+import assert from 'assert';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import Spinner from 'react-bootstrap/Spinner';
+import styled from 'styled-components';
+import { event } from './../lib/ga';
+import { type StepValidation, validateProject } from './../lib/validateProject';
+import Progress from './Progress';
 
 const BuildProjectButton = styled.button`
   &:hover {

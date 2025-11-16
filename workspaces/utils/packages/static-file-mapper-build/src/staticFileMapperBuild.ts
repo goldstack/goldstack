@@ -1,8 +1,7 @@
 import { mkdir, read, rm, rmSafe, write } from '@goldstack/utils-sh';
+import { createHash } from 'crypto';
 import { dirname } from 'path';
 import type { StaticFileMapper, StaticFileMapping } from 'static-file-mapper';
-
-import { createHash } from 'crypto';
 
 export type MappingStore = StaticFileMapping[];
 

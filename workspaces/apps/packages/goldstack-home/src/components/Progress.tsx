@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
+
 const ProgressWrapper = styled.div`
   padding-top: 1.375rem;
   display: inline;

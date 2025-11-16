@@ -1,5 +1,5 @@
-import unified from 'unified';
 import raw from 'rehype-raw';
+import unified from 'unified';
 
 const ICON_HTML = `<svg viewBox="0 0 16 16" width="16" height="16">
   <g strokeWidth="1" fill="#000000" stroke="#000000">

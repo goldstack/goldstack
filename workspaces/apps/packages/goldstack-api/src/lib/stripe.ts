@@ -1,5 +1,5 @@
-import Stripe from 'stripe';
 import assert from 'assert';
+import Stripe from 'stripe';
 
 const initStripe = (): Stripe => {
   assert(process.env.STRIPE_API_KEY, 'Environment variable STRIPE_API_KEY not defined');

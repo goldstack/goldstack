@@ -1,24 +1,23 @@
-import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
+import type { LambdaApiDeployment, LambdaApiPackage } from '@goldstack/template-lambda-api';
+import {
+  buildFunctions,
+  defaultBuildOptions,
+  deployFunctions,
+  generateLambdaConfig,
+  readLambdaConfig,
+  validateDeployment,
+} from '@goldstack/utils-aws-lambda';
 import { wrapCli } from '@goldstack/utils-cli';
+import { debug, warn } from '@goldstack/utils-log';
+import { buildCli, buildDeployCommands, writePackageConfig } from '@goldstack/utils-package';
+import { PackageConfig } from '@goldstack/utils-package-config';
+import { pwd } from '@goldstack/utils-sh';
 import { infraCommands } from '@goldstack/utils-terraform';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
-import { PackageConfig } from '@goldstack/utils-package-config';
-import { writePackageConfig } from '@goldstack/utils-package';
-import yargs from 'yargs';
 import fs from 'fs';
-import type { LambdaApiPackage, LambdaApiDeployment } from '@goldstack/template-lambda-api';
-import {
-  readLambdaConfig,
-  generateLambdaConfig,
-  validateDeployment,
-  buildFunctions,
-  deployFunctions,
-  defaultBuildOptions,
-} from '@goldstack/utils-aws-lambda';
-import { defaultRoutesPath } from './templateLambdaConsts';
 import outmatch from 'outmatch';
-import { pwd } from '@goldstack/utils-sh';
-import { debug, warn } from '@goldstack/utils-log';
+import yargs from 'yargs';
+import { defaultRoutesPath } from './templateLambdaConsts';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {

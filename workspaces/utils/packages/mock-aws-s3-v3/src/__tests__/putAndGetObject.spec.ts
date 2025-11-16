@@ -1,4 +1,4 @@
-import { GetObjectCommand, PutObjectCommand, NoSuchKey, type S3Client } from '@aws-sdk/client-s3';
+import { GetObjectCommand, NoSuchKey, PutObjectCommand, type S3Client } from '@aws-sdk/client-s3';
 import type { NodeJsClient } from '@smithy/types';
 import assert from 'assert';
 import { createReadStream, createWriteStream, readFileSync, writeFileSync } from 'fs';

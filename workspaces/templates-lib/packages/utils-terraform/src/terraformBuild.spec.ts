@@ -1,9 +1,9 @@
-import { mkdir, write, pwd, cd } from '@goldstack/utils-sh';
+import { cd, mkdir, pwd, write } from '@goldstack/utils-sh';
 
 import {
+  convertFromPythonVariable,
   convertToPythonVariable,
   getVariablesFromHCL,
-  convertFromPythonVariable,
 } from './terraformBuild';
 
 describe('Terraform Utils', () => {

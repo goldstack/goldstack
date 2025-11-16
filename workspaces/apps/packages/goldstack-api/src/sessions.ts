@@ -1,26 +1,20 @@
-import { Router, type Request, type Response } from 'express';
-
-import randomString from 'crypto-random-string';
-
+import { SendEmailCommand } from '@aws-sdk/client-ses';
 import { sessionUser } from '@goldstack/auth';
-
-import { isSessionPaid, createSession } from './lib/stripe';
+import { connect, getFromDomain } from '@goldstack/goldstack-email-send';
+import { connectProjectRepository } from '@goldstack/project-repository';
 
 import {
   connectSessionRepository,
-  type SessionRepository,
   type SessionData,
+  type SessionRepository,
 } from '@goldstack/session-repository';
-
-import { connect, getFromDomain } from '@goldstack/goldstack-email-send';
+import { goldstackLocalDir, rmSafe } from '@goldstack/utils-sh';
 import assert from 'assert';
-
-import { connectProjectRepository } from '@goldstack/project-repository';
-
+import randomString from 'crypto-random-string';
+import { type Request, type Response, Router } from 'express';
 import { v4 as uuid4 } from 'uuid';
+import { createSession, isSessionPaid } from './lib/stripe';
 import { getDocLinks } from './utils/docLinks';
-import { rmSafe, goldstackLocalDir } from '@goldstack/utils-sh';
-import { SendEmailCommand } from '@aws-sdk/client-ses';
 
 const router = Router();
 

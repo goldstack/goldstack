@@ -1,23 +1,18 @@
-import React, { useEffect } from 'react';
+import { getEndpoint } from '@goldstack/goldstack-api';
+import type { ProjectData } from '@goldstack/project-repository';
 import { useRouter } from 'next/router';
-
-import useSWR, { mutate } from 'swr';
-
-import Header from 'src/components/Header';
+import React, { useEffect } from 'react';
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
 
 import ConfigureNavigate from 'src/components/ConfigureNavigate';
 import DynamicConfigForm from 'src/components/DynamicConfigForm';
-
-import type { ProjectData } from '@goldstack/project-repository';
-
-import { getEndpoint } from '@goldstack/goldstack-api';
-
+import Header from 'src/components/Header';
 import { getConfigureSteps } from 'src/lib/getConfigureSteps';
 import { wireProjectData } from 'src/lib/wireProjectData';
+import useSWR, { mutate } from 'swr';
 
 const fetcher = (url: string): any =>
   fetch(url, {

@@ -1,23 +1,22 @@
+import { readDeploymentState, writeDeploymentState } from '@goldstack/infra';
 import { debug, fatal, info, warn } from '@goldstack/utils-log';
+import { readPackageConfig, writePackageConfig } from '@goldstack/utils-package';
+import { cd, pwd, read } from '@goldstack/utils-sh';
+import assert from 'assert';
+import child_process, { type SpawnSyncOptionsWithStringEncoding } from 'child_process';
+import crypto from 'crypto';
+import fs from 'fs';
+import JSONStableStringy from 'json-stable-stringify';
+import os from 'os';
+import path from 'path';
+import type { CloudProvider } from './cloudProvider';
+import type { Variables } from './terraformCli';
 import { tf } from './terraformCli';
 import type {
   TerraformDeployment,
   TerraformVariables,
   TerraformVersion,
 } from './types/utilsTerraformConfig';
-import type { CloudProvider } from './cloudProvider';
-import { cd, read, pwd } from '@goldstack/utils-sh';
-import type { Variables } from './terraformCli';
-import { readPackageConfig, writePackageConfig } from '@goldstack/utils-package';
-import child_process, { type SpawnSyncOptionsWithStringEncoding } from 'child_process';
-import assert from 'assert';
-import fs from 'fs';
-import os from 'os';
-import crypto from 'crypto';
-import { writeDeploymentState, readDeploymentState } from '@goldstack/infra';
-
-import JSONStableStringy from 'json-stable-stringify';
-import path from 'path';
 import type { TerraformOptions } from './utilsTerraform';
 
 export const convertToPythonVariable = (variableName: string): string => {

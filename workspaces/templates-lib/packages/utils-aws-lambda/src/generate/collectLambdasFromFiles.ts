@@ -1,5 +1,5 @@
 import fs, { type Dirent } from 'fs';
-import { relative, resolve, sep, posix } from 'path';
+import { posix, relative, resolve, sep } from 'path';
 import type { LambdaConfig } from '../types/LambdaConfig';
 import { RouteType } from '../types/LambdaConfig';
 

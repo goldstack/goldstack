@@ -1,6 +1,6 @@
+import { RouteType } from '@goldstack/utils-aws-lambda';
 import path from 'path';
 import { buildLambdas } from './../src/templateLambdaApiBuild';
-import { RouteType } from '@goldstack/utils-aws-lambda';
 
 const fileToBuild = path.resolve('./testData/build-test/index.ts');
 

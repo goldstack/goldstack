@@ -1,14 +1,13 @@
-import React from 'react';
-import { useRouter } from 'next/router';
+import { getEndpoint } from '@goldstack/goldstack-api';
 import Head from 'next/head';
-import Header from 'src/components/Header';
+import { useRouter } from 'next/router';
+import React from 'react';
+import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import ConfigureSession from 'src/components/ConfigureSession';
 import GetTemplateDescription from 'src/components/GetTemplateDescription';
-
-import { getEndpoint } from '@goldstack/goldstack-api';
+import Header from 'src/components/Header';
 import useSWR from 'swr';
 
 const fetcher = (url: string): any =>

@@ -1,9 +1,8 @@
 import React from 'react';
-
-import Icon23 from './../icons/front/icon-23.svg';
+import Icon2 from './../icons/front/icon-2.svg';
 import Icon3 from './../icons/front/icon-3.svg';
 import Icon5 from './../icons/front/icon-5.svg';
-import Icon2 from './../icons/front/icon-2.svg';
+import Icon23 from './../icons/front/icon-23.svg';
 
 const GoldstackBenefits = (): JSX.Element => {
   return (

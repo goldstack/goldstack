@@ -1,8 +1,8 @@
-import fs from 'fs';
-import { execSync } from 'child_process';
-import { getPackages, getTsConfigPath, type PackageData, makeReferences } from './sharedUtils';
-import path from 'path';
 import { error, info } from '@goldstack/utils-log';
+import { execSync } from 'child_process';
+import fs from 'fs';
+import path from 'path';
+import { getPackages, getTsConfigPath, makeReferences, type PackageData } from './sharedUtils';
 
 type ProcessPackageResult = 'success' | 'failure';
 

@@ -1,8 +1,6 @@
 import { connect, getBucketName } from '@goldstack/project-repository-bucket';
-
-import ProjectRepositoryS3 from './ProjectRepositoryS3';
-
 import type ProjectRepository from './ProjectRepositoryInterface';
+import ProjectRepositoryS3 from './ProjectRepositoryS3';
 
 import type ProjectData from './types/ProjectData';
 

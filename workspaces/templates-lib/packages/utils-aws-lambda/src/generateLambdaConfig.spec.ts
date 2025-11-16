@@ -1,9 +1,9 @@
-import { readLambdaConfig, generateFunctionName } from '@goldstack/utils-aws-lambda';
+import { generateFunctionName, readLambdaConfig } from '@goldstack/utils-aws-lambda';
+import { pwd } from '@goldstack/utils-sh';
 import assert from 'assert';
+import { getOutDirForLambda } from './buildFunctions';
 import { generateLambdaConfig } from './generateLambdaConfig';
 import type { LambdaApiDeploymentConfiguration } from './types/LambdaDeploymentConfiguration';
-import { getOutDirForLambda } from './buildFunctions';
-import { pwd } from '@goldstack/utils-sh';
 
 const dummyConfiguration: LambdaApiDeploymentConfiguration = {
   lambdaNamePrefix: 'test-lambdas',

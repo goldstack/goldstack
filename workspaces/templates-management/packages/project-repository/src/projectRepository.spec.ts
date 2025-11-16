@@ -1,9 +1,7 @@
-import { connectProjectRepository } from './projectRepository';
-import type { ProjectConfiguration } from '@goldstack/utils-project';
-
 import { dummyUser } from '@goldstack/auth';
-
+import type { ProjectConfiguration } from '@goldstack/utils-project';
 import assert from 'assert';
+import { connectProjectRepository } from './projectRepository';
 
 describe('Project Repository', () => {
   it('Should be able to create, read and update projects', async () => {

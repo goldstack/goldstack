@@ -1,13 +1,12 @@
-import type { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import type { DynamoDBClient } from '@aws-sdk/client-dynamodb';
+import { debug, error, info } from '@goldstack/utils-log';
+import type { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
+import { Umzug } from 'umzug';
+import type { InputMigrations } from 'umzug/lib/types';
 import { getTableName } from './dynamoDBPackageUtils';
 import type DynamoDBPackage from './types/DynamoDBPackage';
 import type { DynamoDBDeployment } from './types/DynamoDBPackage';
 import { DynamoDBStorage } from './umzugDynamoDBStorage';
-import { debug, error, info } from '@goldstack/utils-log';
-
-import type { InputMigrations } from 'umzug/lib/types';
-import { Umzug } from 'umzug';
 
 export interface DynamoDBContext {
   client: DynamoDBClient;

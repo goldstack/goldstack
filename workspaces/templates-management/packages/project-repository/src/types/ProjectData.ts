@@ -1,6 +1,6 @@
+import type { AWSUser } from '@goldstack/infra-aws';
 import type { PackageConfig } from '@goldstack/project-config';
 import type { ProjectConfiguration } from '@goldstack/utils-project';
-import type { AWSUser } from '@goldstack/infra-aws';
 
 interface ProjectData {
   packageConfigs: PackageConfig[];

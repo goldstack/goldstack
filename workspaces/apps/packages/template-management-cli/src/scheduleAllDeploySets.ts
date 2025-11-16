@@ -1,5 +1,5 @@
-import { start } from './image';
 import { getAllBuildSets } from '@goldstack/template-metadata';
+import { start } from './image';
 
 export const scheduleAllDeploySets = async (argv: any): Promise<void> => {
   const sets = await getAllBuildSets();
