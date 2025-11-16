@@ -27,6 +27,7 @@ jobs:
             'lambda-python-job',
             'lambda-node-trigger',
           ]
+    # Ensure we trigger after MASTER
     if: ${{ contains(github.event.head_commit.message, 'trigger_template_deploy_dev') && github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
     steps:
