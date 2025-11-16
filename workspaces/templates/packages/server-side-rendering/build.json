@@ -9,6 +9,7 @@
     "static/",
     "biome.jsonc",
     ".gitignore",
+    ".swcrc",
     "esbuild.config.json",
     "goldstack.json",
     "jest.config.ui.js",

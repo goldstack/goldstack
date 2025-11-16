@@ -9,6 +9,7 @@
     "docs/",
     ".env",
     ".env.production",
+    ".swcrc",
     ".gitignore",
     "goldstack.json",
     "next-env.d.ts",
@@ -21,7 +22,11 @@
     "tsconfig.local.json",
     "tsconfig.test.json"
   ],
-  "exclude": ["infra/aws/.terraform/", "infra/aws/tfplan", "infra/aws/terraform.tfstate.d/"],
+  "exclude": [
+    "infra/aws/.terraform/",
+    "infra/aws/tfplan",
+    "infra/aws/terraform.tfstate.d/"
+  ],
   "overwriteFiles": [
     {
       "file": "goldstack.json",

@@ -1,4 +1,3 @@
-// biome-ignore lint/correctness/noUnusedImports: React
 import { useState } from 'react';
 import useSWR from 'swr';
 import ReactIcon from '../icons/react.svg';
