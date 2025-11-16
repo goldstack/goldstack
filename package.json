@@ -24,7 +24,7 @@
     "generate-docs": "yarn workspace templates-lib generate-docs && yarn workspace docs generate-docs && yarn workspace apps generate-docs",
     "generate-schema": "yarn workspace templates-lib generate-schema && yarn workspace templates-management generate-schema && yarn workspace apps generate-schema",
     "git:set-user": "git config user.email \"$@\" && git submodule foreach --recursive git config user.email \"$@\"",
-    "lint": "biome lint",
+    "lint": "biome lint --diagnostic-level=error",
     "lint-fix": "biome lint --write",
     "test": "yarn workspaces foreach -A run test",
     "test-watch": "nodemonx --watch . --exec 'yarn test'"

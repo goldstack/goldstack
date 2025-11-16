@@ -70,7 +70,7 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
     const store = this.readStore();
 
     let mappingExists = false;
-    store.map((mapping) => {
+    store.forEach((mapping) => {
       if (mapping.names.find((el) => el === name)) {
         // clear out replaced file locally
         // should still continue to exist in S3

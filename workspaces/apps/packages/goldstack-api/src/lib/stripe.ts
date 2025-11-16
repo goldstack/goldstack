@@ -46,7 +46,3 @@ export const isSessionPaid = async (params: { sessionId: string }): Promise<bool
   const session = await stripe.checkout.sessions.retrieve(params.sessionId);
   return session.payment_status === 'paid';
 };
-
-export const updateEmail = async (params: { sessionId: string; email: string }): Promise<void> => {
-  const stripe = initStripe();
-};

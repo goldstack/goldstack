@@ -11,3 +11,7 @@ e.g. don't use `import { getNotionToken } from 'notion-data/src/user/getNotionTo
   - yarn compile (preferred at project root)
   - yarn build
   - yarn test (preferred at package folder)
+
+- To check formatting (uses Biome JS), use `yarn format-check` in the project root
+- To check linting (uses Biome JS), use `yarn lint` in the project root
+- DO NOT use npx to run Biome - only use the commands above

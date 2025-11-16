@@ -13,7 +13,9 @@ export const validateConfig = (
 ): object => {
   const ajv = new Ajv();
   if (options?.additionalSchemas) {
-    options.additionalSchemas.forEach((schema) => ajv.addSchema(schema));
+    options.additionalSchemas.forEach((schema) => {
+      ajv.addSchema(schema);
+    });
   }
 
   const buildError = (e: any): Error => {
