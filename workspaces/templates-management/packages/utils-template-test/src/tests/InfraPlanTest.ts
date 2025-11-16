@@ -1,7 +1,7 @@
-import type { TemplateTest, RunTestParams } from './../types/TemplateTest';
-import { yarn } from '@goldstack/utils-yarn';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
 import { read } from '@goldstack/utils-sh';
+import { yarn } from '@goldstack/utils-yarn';
+import type { RunTestParams, TemplateTest } from './../types/TemplateTest';
 export class InfraPlanTest implements TemplateTest {
   getName(): string {
     return 'infra-plan';

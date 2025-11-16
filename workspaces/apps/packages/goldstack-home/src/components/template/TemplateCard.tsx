@@ -1,5 +1,5 @@
-import React from 'react';
 import type { ProjectTemplateProps } from '@goldstack/template-metadata';
+import React from 'react';
 
 import { resolveImage } from './imageUtil';
 

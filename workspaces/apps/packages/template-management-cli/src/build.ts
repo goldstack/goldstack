@@ -1,6 +1,6 @@
-import { exec } from '@goldstack/utils-sh';
-import { hash } from '@goldstack/utils-git';
 import { getConfig } from '@goldstack/template-docker-image-aws';
+import { hash } from '@goldstack/utils-git';
+import { exec } from '@goldstack/utils-sh';
 
 const build = async (): Promise<void> => {
   const config = getConfig();

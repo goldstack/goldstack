@@ -10,8 +10,8 @@ export type { CloudProvider } from './cloudProvider';
 
 import { TerraformBuild } from './terraformBuild';
 
-export { tf } from './terraformCli';
 export { getVariablesFromProperties } from './terraformBuild';
+export { tf } from './terraformCli';
 
 import type { Argv } from 'yargs';
 

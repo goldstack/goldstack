@@ -1,5 +1,5 @@
-import fs from 'fs';
 import { execSync } from 'child_process';
+import fs from 'fs';
 import { getPackages, getTsConfigPath, makeReferences } from './sharedUtils';
 
 export const updateRootProjectReferences = ({

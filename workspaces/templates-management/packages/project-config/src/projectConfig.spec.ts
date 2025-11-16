@@ -1,5 +1,5 @@
-import { getPackageConfigs } from './projectConfig';
 import fs from 'fs';
+import { getPackageConfigs } from './projectConfig';
 
 describe('Project configuration', () => {
   it('Should read package configs', () => {

@@ -1,4 +1,5 @@
 import { getEndpoint, startTestServer, stopTestServer } from './module';
+
 describe('The module', () => {
   process.env.PORT = '8737';
   beforeAll(async () => {

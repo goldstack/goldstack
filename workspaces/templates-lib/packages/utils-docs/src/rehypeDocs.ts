@@ -1,6 +1,6 @@
-import visit from 'unist-util-visit';
-import toStringMdCast from 'mdast-util-to-string';
 import GithubSlugger from 'github-slugger';
+import toStringMdCast from 'mdast-util-to-string';
+import visit from 'unist-util-visit';
 import permalinkIcon from './permalinkIconAst';
 
 const ABSOLUTE_URL = /^(https?:\/\/|\/\/)/i;

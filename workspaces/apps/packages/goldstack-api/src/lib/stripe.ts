@@ -1,5 +1,5 @@
-import Stripe from 'stripe';
 import assert from 'assert';
+import Stripe from 'stripe';
 
 const initStripe = (): Stripe => {
   assert(process.env.STRIPE_API_KEY, 'Environment variable STRIPE_API_KEY not defined');
@@ -45,8 +45,4 @@ export const isSessionPaid = async (params: { sessionId: string }): Promise<bool
   const stripe = initStripe();
   const session = await stripe.checkout.sessions.retrieve(params.sessionId);
   return session.payment_status === 'paid';
-};
-
-export const updateEmail = async (params: { sessionId: string; email: string }): Promise<void> => {
-  const stripe = initStripe();
 };

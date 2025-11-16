@@ -1,7 +1,7 @@
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
-import { getDeploymentName } from '../userManagementConfig';
-import type { UserManagementDeployment } from '../types/UserManagementPackage';
 import type UserManagementPackage from '../types/UserManagementPackage';
+import type { UserManagementDeployment } from '../types/UserManagementPackage';
+import { getDeploymentName } from '../userManagementConfig';
 
 export interface GetCookieSettingsResult {
   cookieDomain: string;

@@ -1,18 +1,13 @@
-import fs from 'fs';
-import { parseConfig, getHetznerConfigPath, validateConfig } from '@goldstack/utils-config';
-import { read, write } from '@goldstack/utils-sh';
-
+import { getHetznerConfigPath, parseConfig, validateConfig } from '@goldstack/utils-config';
 import { info } from '@goldstack/utils-log';
-
 import { readPackageConfig } from '@goldstack/utils-package';
+import { read, write } from '@goldstack/utils-sh';
+import fs from 'fs';
 
 import configSchema from './schemas/accountConfigSchema.json';
 
 import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
-
-import type { HetznerConfiguration } from './types/HetznerConfiguration';
-
-import type { HetznerUser } from './types/HetznerConfiguration';
+import type { HetznerConfiguration, HetznerUser } from './types/HetznerConfiguration';
 import type { HetznerDeployment } from './types/HetznerDeployment';
 
 export type { HetznerUser, HetznerDeployment };

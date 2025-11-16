@@ -1,9 +1,9 @@
-import { getDeploymentName } from '../userManagementConfig';
-import { getEndpoint } from './getEndpoints';
-import { handleRedirectCallback } from './handleRedirectCallback';
 import { getMockedUserAccessToken } from '../userManagementClientMock';
-import type { ClientAuthResult } from './getLoggedInUser';
+import { getDeploymentName } from '../userManagementConfig';
 import { getAndPersistToken } from './getAndPersistToken';
+import { getEndpoint } from './getEndpoints';
+import type { ClientAuthResult } from './getLoggedInUser';
+import { handleRedirectCallback } from './handleRedirectCallback';
 
 import { forceLogout, refreshTokenStorage, setRefreshTokenStorage } from './state';
 

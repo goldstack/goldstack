@@ -1,8 +1,7 @@
-import type { TemplateTest, RunTestParams } from '../types/TemplateTest';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
-
 import assert from 'assert';
 import axios from 'axios';
+import type { RunTestParams, TemplateTest } from '../types/TemplateTest';
 import { retryOperation } from './Utils';
 
 export const assertEndpointAvaialble = async (url: string): Promise<void> => {

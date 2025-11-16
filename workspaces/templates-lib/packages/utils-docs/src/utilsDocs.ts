@@ -1,8 +1,7 @@
-import matter from 'gray-matter';
-
 import { read } from '@goldstack/utils-sh';
-import { markdownToHtml } from './markdownToHtml';
+import matter from 'gray-matter';
 import path from 'path';
+import { markdownToHtml } from './markdownToHtml';
 
 export { markdownToHtml } from './markdownToHtml';
 

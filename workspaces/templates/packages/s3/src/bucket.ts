@@ -1,13 +1,11 @@
+import type { S3Client } from '@aws-sdk/client-s3';
 import {
   connect as templateConnect,
   getBucketName as templateGetBucketName,
   getSignedUrlS3 as templateGetSignedUrl,
 } from '@goldstack/template-s3';
-
-import type { S3Client } from '@aws-sdk/client-s3';
-
-import type { MetadataBearer, RequestPresigningArguments } from '@smithy/types';
 import type { Client, Command } from '@smithy/smithy-client';
+import type { MetadataBearer, RequestPresigningArguments } from '@smithy/types';
 
 import goldstackConfig from './../goldstack.json';
 import goldstackSchema from './../schemas/package.schema.json';

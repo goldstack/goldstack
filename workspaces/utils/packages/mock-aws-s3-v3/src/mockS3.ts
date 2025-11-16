@@ -16,12 +16,12 @@ import {
   PutObjectTaggingCommand,
   S3Client,
 } from '@aws-sdk/client-s3';
-import { mockClient } from 'aws-sdk-client-mock';
-import { type AWSError, S3 } from 'mock-aws-s3';
 import type { StreamingBlobPayloadOutputTypes } from '@smithy/types';
+import { mockClient } from 'aws-sdk-client-mock';
 import type { WriteStream } from 'fs';
-import { resolve } from 'path';
 import * as s3Mock from 'mock-aws-s3';
+import { type AWSError, S3 } from 'mock-aws-s3';
+import { resolve } from 'path';
 
 /**
  * Represents the context for a mocked S3 bucket instance

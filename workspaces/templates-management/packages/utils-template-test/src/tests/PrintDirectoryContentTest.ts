@@ -1,6 +1,6 @@
-import type { TemplateTest, RunTestParams } from '../types/TemplateTest';
-import { cd, exec } from '@goldstack/utils-sh';
 import { info } from '@goldstack/utils-log';
+import { cd, exec } from '@goldstack/utils-sh';
+import type { RunTestParams, TemplateTest } from '../types/TemplateTest';
 
 export class PrintDirectoryContentTest implements TemplateTest {
   getName(): string {

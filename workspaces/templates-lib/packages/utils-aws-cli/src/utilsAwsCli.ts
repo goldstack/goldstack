@@ -1,16 +1,16 @@
-import {
-  commandExists,
-  exec,
-  pwd,
-  cd,
-  type ExecParams,
-  assertDirectoryExists,
-  execAsync,
-} from '@goldstack/utils-sh';
 import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { getAWSCredentials } from '@goldstack/infra-aws';
+import { assertDocker, hasDocker, imageAWSCli } from '@goldstack/utils-docker';
 import { debug, fatal } from '@goldstack/utils-log';
-import { hasDocker, assertDocker, imageAWSCli } from '@goldstack/utils-docker';
+import {
+  assertDirectoryExists,
+  cd,
+  commandExists,
+  type ExecParams,
+  exec,
+  execAsync,
+  pwd,
+} from '@goldstack/utils-sh';
 
 export const hasAwsCli = (): boolean => {
   return commandExists('aws');

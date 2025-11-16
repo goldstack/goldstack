@@ -1,11 +1,8 @@
+import type { MoreDetails } from '@goldstack/template-metadata';
 import React from 'react';
-
 import AngleRight from './../icons/font-awesome/solid/angle-right.svg';
 import { dataUriToSrc } from './../utils/utils';
-
 import styles from './LearnMore.module.css';
-
-import type { MoreDetails } from '@goldstack/template-metadata';
 
 export const LeftArrow = (): JSX.Element => {
   const angleRight = dataUriToSrc(AngleRight);

@@ -1,21 +1,19 @@
+import { GetObjectCommand, NoSuchKey, PutObjectCommand, type S3Client } from '@aws-sdk/client-s3';
+import { debug, info } from '@goldstack/utils-log';
 import { readPackageConfig } from '@goldstack/utils-package';
+import { download } from '@goldstack/utils-s3';
+import { mkdir, rm, rmSafe, write, zip } from '@goldstack/utils-sh';
 import {
   type GoldstackTemplateConfiguration,
-  readTemplateConfigFromString,
   readTemplateConfigFromFile,
+  readTemplateConfigFromString,
 } from '@goldstack/utils-template';
-import { type S3Client, GetObjectCommand, NoSuchKey, PutObjectCommand } from '@aws-sdk/client-s3';
-import { rm, write, mkdir, zip, rmSafe } from '@goldstack/utils-sh';
-import semverInc from 'semver/functions/inc';
-import semverGt from 'semver/functions/gt';
-import { copy } from 'fs-extra';
-import { download } from '@goldstack/utils-s3';
 import fs from 'fs';
-
-import { debug, info } from '@goldstack/utils-log';
-
-import { promisify } from 'util';
+import { copy } from 'fs-extra';
 import path, { join, resolve } from 'path';
+import semverGt from 'semver/functions/gt';
+import semverInc from 'semver/functions/inc';
+import { promisify } from 'util';
 
 const sleep = promisify(setTimeout);
 

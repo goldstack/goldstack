@@ -1,5 +1,5 @@
-import { build } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
+import { build } from 'esbuild';
 
 build({
   plugins: [pnpPlugin()],

@@ -35,7 +35,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "ts-json-schema-generator": "^1.0.0",
+    "ts-json-schema-generator": "^2.4.0",
     "yargs": "^17.5.1"
   },
   "devDependencies": {

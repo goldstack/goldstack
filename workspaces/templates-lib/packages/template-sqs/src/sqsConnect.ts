@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { type SendMessageRequest, SQSClient } from '@aws-sdk/client-sqs';
-import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { fromEnv } from '@aws-sdk/credential-providers';
-
-import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
+import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import { type AWSDeploymentRegion, getAWSUser } from '@goldstack/infra-aws';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
+import { warn } from '@goldstack/utils-log';
+import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import type { CreateSQSClientSignature } from './mockedSQS';
 import type { SqsDeployment, SqsPackage } from './templateSqs';
-import { type AWSDeploymentRegion, getAWSUser } from '@goldstack/infra-aws';
-import { warn } from '@goldstack/utils-log';
 
 /**
  * Retrieves an environment variable by key. Throws an error if the variable is not set.

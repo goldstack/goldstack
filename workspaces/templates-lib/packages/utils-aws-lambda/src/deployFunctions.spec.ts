@@ -1,8 +1,8 @@
 import { RouteType } from '@goldstack/utils-aws-lambda';
 import { pwd, read } from '@goldstack/utils-sh';
+import fs from 'fs';
 import path from 'path';
 import { buildFunctions } from './buildFunctions';
-import fs from 'fs';
 import { defaultBuildOptions } from './defaultBuildOptions';
 
 jest.setTimeout(30000);

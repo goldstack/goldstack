@@ -1,14 +1,13 @@
-import React, { useRef, useState } from 'react';
-import Link from 'next/link';
+import * as Fullstory from '@fullstory/browser';
+import { getEndpoint } from '@goldstack/goldstack-api';
 
 import assert from 'assert';
-
-import Progress from './Progress';
-import { getEndpoint } from '@goldstack/goldstack-api';
+import Link from 'next/link';
+import React, { useRef, useState } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 
 import { event } from '../lib/ga';
-import * as Fullstory from '@fullstory/browser';
+import Progress from './Progress';
 
 interface ConfigureSessionProps {
   projectId: string;

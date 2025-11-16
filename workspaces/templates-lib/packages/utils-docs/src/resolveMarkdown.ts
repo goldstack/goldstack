@@ -1,13 +1,11 @@
-import unified from 'unified';
-import markdown from 'remark-parse';
-import rehypeMarkdown from './rehypeMarkdownToMarkdown';
+import { read } from '@goldstack/utils-sh';
+import matter from 'gray-matter';
+import table from 'mdast-util-gfm-table';
 // import stringify from 'rehype-stringify';
 import stringify from 'mdast-util-to-markdown';
-
-import table from 'mdast-util-gfm-table';
-
-import matter from 'gray-matter';
-import { read } from '@goldstack/utils-sh';
+import markdown from 'remark-parse';
+import unified from 'unified';
+import rehypeMarkdown from './rehypeMarkdownToMarkdown';
 
 export async function resolveMarkdown(filePath: string): Promise<string> {
   try {

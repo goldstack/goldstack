@@ -1,11 +1,11 @@
-import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
+import type { S3Deployment, S3Package } from '@goldstack/template-s3';
 import { wrapCli } from '@goldstack/utils-cli';
-import { infraCommands } from '@goldstack/utils-terraform';
-import { deployCli } from './templateS3Deploy';
-import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
+import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
 import { PackageConfig } from '@goldstack/utils-package-config';
-import type { S3Package, S3Deployment } from '@goldstack/template-s3';
+import { infraCommands } from '@goldstack/utils-terraform';
+import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import yargs from 'yargs';
+import { deployCli } from './templateS3Deploy';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {

@@ -1,9 +1,8 @@
-import moduleDoc from './data/module-nextjs.json';
+import cheerio from 'cheerio';
 import aboutDoc from './data/about.json';
 import howDoesItWorkDoc from './data/how-does-it-work.json';
-
+import moduleDoc from './data/module-nextjs.json';
 import { generateToc } from './tocGenerator';
-import cheerio from 'cheerio';
 
 describe('TOC Generator', () => {
   it('Should render multi-level TOC', () => {

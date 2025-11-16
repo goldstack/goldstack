@@ -1,13 +1,13 @@
 import { SendMessageCommand } from '@aws-sdk/client-sqs';
-import { info } from '@goldstack/utils-log';
 import { getSentMessageRequests } from '@goldstack/template-sqs';
+import { info } from '@goldstack/utils-log';
 import {
-  connectToSQSQueue,
   connectToSQSDLQQueue,
+  connectToSQSQueue,
+  getSQSDLQQueueName,
   getSQSDLQQueueUrl,
   getSQSQueueName,
   getSQSQueueUrl,
-  getSQSDLQQueueName,
 } from './lambda';
 
 describe('Lambda SQS Integration', () => {

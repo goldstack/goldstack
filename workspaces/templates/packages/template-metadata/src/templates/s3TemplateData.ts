@@ -1,6 +1,6 @@
+import type { ShortTemplateFeature } from '../projectTemplateData';
 import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { S3 } from './moduleData';
-import type { ShortTemplateFeature } from '../projectTemplateData';
 import { featureAppComposition, featureVSCode, featureYarn3 } from './sharedFeatures';
 
 export const getS3Feature = (): ShortTemplateFeature => {

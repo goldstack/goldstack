@@ -1,8 +1,8 @@
-import { commandExists, execAsync } from '@goldstack/utils-sh';
 import { info, warn } from '@goldstack/utils-log';
+import { commandExists, execAsync } from '@goldstack/utils-sh';
+import * as dynamoDBLocal from 'dynamo-db-local';
 import { check } from 'tcp-port-used';
 import waitPort from 'wait-port';
-import * as dynamoDBLocal from 'dynamo-db-local';
 import type { DynamoDBInstance } from './localDynamoDB';
 
 /**

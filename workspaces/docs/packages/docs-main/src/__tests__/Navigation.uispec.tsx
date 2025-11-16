@@ -1,7 +1,7 @@
-import React from 'react';
-import sitemap from './../data/docs/sitemap.json';
 import type { SitemapItem } from '@goldstack/markdown-docs';
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import sitemap from './../data/docs/sitemap.json';
 import '@testing-library/jest-dom';
 
 import Navigation from './../components/Navigation';

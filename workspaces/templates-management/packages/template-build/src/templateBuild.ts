@@ -1,4 +1,4 @@
-import { type PrepareTemplate, generateBuilderFromConfig } from '@goldstack/prepare-template';
+import { generateBuilderFromConfig, type PrepareTemplate } from '@goldstack/prepare-template';
 import { PrepareYarnPnpMonorepo } from '@goldstack/prepare-yarn-pnp-monorepo';
 import type { TemplateRepository } from '@goldstack/template-repository';
 import { info } from '@goldstack/utils-log';

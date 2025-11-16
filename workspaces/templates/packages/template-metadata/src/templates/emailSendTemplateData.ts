@@ -1,6 +1,6 @@
+import type { ShortTemplateFeature } from '../projectTemplateData';
 import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { EmailSend } from './moduleData';
-import type { ShortTemplateFeature } from '../projectTemplateData';
 import { featureAppComposition, featureVSCode, featureYarn3 } from './sharedFeatures';
 
 export const getEmailSendFeature = (): ShortTemplateFeature => {

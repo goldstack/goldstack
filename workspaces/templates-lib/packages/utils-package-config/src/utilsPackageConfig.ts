@@ -1,10 +1,9 @@
 import type { Deployment } from '@goldstack/infra';
-import type { Package } from '@goldstack/utils-package';
-import fs from 'fs';
-
 import { validateConfig } from '@goldstack/utils-config';
+import type { Package } from '@goldstack/utils-package';
 import { readPackageConfig } from '@goldstack/utils-package';
 import { read } from '@goldstack/utils-sh';
+import fs from 'fs';
 
 interface PackageConfigConstructorParams {
   packageSchema?: any;

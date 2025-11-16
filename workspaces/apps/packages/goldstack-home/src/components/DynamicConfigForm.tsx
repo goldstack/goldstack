@@ -1,11 +1,9 @@
-import React from 'react';
-
 import type ProjectData from '@goldstack/project-repository/src/types/ProjectData';
 import Head from 'next/head';
+import Link from 'next/link';
+import React from 'react';
 import { ConfigForm } from 'src/components/ConfigForm';
 import type { ConfigureStep } from 'src/lib/getConfigureSteps';
-
-import Link from 'next/link';
 import ProjectConfigSummary from './ProjectConfigSummary';
 
 const DynamicConfigForm = (props: {

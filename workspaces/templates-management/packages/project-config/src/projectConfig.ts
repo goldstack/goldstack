@@ -1,8 +1,7 @@
 import { getPackageConfigPaths, validateConfig } from '@goldstack/utils-config';
-import { readPackageConfig, type Package } from '@goldstack/utils-package';
-
+import { type Package, readPackageConfig } from '@goldstack/utils-package';
+import { read, write } from '@goldstack/utils-sh';
 import path from 'path';
-import { write, read } from '@goldstack/utils-sh';
 
 export interface PackageConfig {
   pathInWorkspace: string;

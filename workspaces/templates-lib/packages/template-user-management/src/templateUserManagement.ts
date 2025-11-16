@@ -1,35 +1,36 @@
 export * from './types/UserManagementPackage';
 
+import { getEndpoint as getEndpointLib } from './client/getEndpoints';
 import * as cognitoClientAuth from './client/getToken';
 
-import { getEndpoint as getEndpointLib } from './client/getEndpoints';
 export type { CognitoManager } from './cognitoTokenVerify';
+
 import type { GetTokenResults } from './client/getToken';
 export type { GetTokenResults };
+
 import type { ClientAuthResult } from './client/getLoggedInUser';
 import { operationWithRedirect } from './client/operationWithRedirect';
 
 export type { GetCookieSettingsResult } from './client/getCookieSettings';
+export { getCookieSettings } from './client/getCookieSettings';
 export type { ClientAuthResult } from './client/getLoggedInUser';
-export { connectWithCognito } from './cognitoTokenVerify';
-export {
-  getLocalUserManager,
-  setLocalUserManager,
-  generateTestIdToken,
-  generateTestAccessToken,
-} from './userManagementServerMock';
-export {
-  getMockedUserIdToken,
-  setMockedUserIdToken,
-  getMockedUserAccessToken,
-  setMockedUserAccessToken,
-} from './userManagementClientMock';
-
 export { getLoggedInUser, isAuthenticated } from './client/getLoggedInUser';
 export { handleRedirectCallback } from './client/handleRedirectCallback';
-export { getCookieSettings } from './client/getCookieSettings';
-export { performLogout } from './client/performLogout';
 export { operationWithRedirect } from './client/operationWithRedirect';
+export { performLogout } from './client/performLogout';
+export { connectWithCognito } from './cognitoTokenVerify';
+export {
+  getMockedUserAccessToken,
+  getMockedUserIdToken,
+  setMockedUserAccessToken,
+  setMockedUserIdToken,
+} from './userManagementClientMock';
+export {
+  generateTestAccessToken,
+  generateTestIdToken,
+  getLocalUserManager,
+  setLocalUserManager,
+} from './userManagementServerMock';
 
 export type Endpoint =
   | 'authorize' // https://docs.aws.amazon.com/cognito/latest/developerguide/authorization-endpoint.html

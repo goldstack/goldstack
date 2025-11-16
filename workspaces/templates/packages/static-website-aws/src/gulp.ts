@@ -1,6 +1,6 @@
 import {
-  getDeploymentConfig,
   type AWSStaticWebsiteDeployment,
+  getDeploymentConfig,
 } from '@goldstack/template-static-website-aws';
 import gulp, { type Gulp } from 'gulp';
 import changed from 'gulp-changed';

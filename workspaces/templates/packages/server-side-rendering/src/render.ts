@@ -2,20 +2,15 @@ import {
   getDeployment,
   type PartialRenderPageProps,
   type ReactPropertiesType,
+  hydrate as ssrHydrate,
+  renderPage as ssrRenderPage,
 } from '@goldstack/template-ssr';
-
-import { renderPage as ssrRenderPage, hydrate as ssrHydrate } from '@goldstack/template-ssr';
 import type { APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
-
-import Wrapped from './_app';
-
-import staticFileMapperStore from './state/staticFiles.json';
-
 import goldstackJson from './../goldstack.json';
-
+import Wrapped from './_app';
 import renderDocument from './_document';
-
 import buildConfig from './build';
+import staticFileMapperStore from './state/staticFiles.json';
 
 export async function renderPage<P extends ReactPropertiesType>(
   props: PartialRenderPageProps<P>,

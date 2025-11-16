@@ -1,5 +1,5 @@
-import type { BuildOptions } from 'esbuild';
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
+import type { BuildOptions } from 'esbuild';
 import cssPlugin from 'esbuild-ssr-css-modules-plugin';
 import type { ServerBuildOptionsArgs } from './buildFunctions';
 

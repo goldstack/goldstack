@@ -1,6 +1,6 @@
-import { assertYarn, hasYarn, yarn } from './utilsYarn';
 import assert from 'assert';
 import path from 'path';
+import { assertYarn, hasYarn, yarn } from './utilsYarn';
 
 describe('Utils yarn', () => {
   it('Should be able to run yarn', () => {

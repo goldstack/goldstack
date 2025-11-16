@@ -1,8 +1,8 @@
 import type {
-  AWSStaticWebsiteDeployment,
-  AWSStaticWebsitePackage,
   AWSStaticWebsiteConfiguration,
+  AWSStaticWebsiteDeployment,
   AWSStaticWebsiteDeploymentConfiguration,
+  AWSStaticWebsitePackage,
 } from '@goldstack/template-static-website-aws';
 
 /**

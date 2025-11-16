@@ -1,6 +1,6 @@
+import type { ShortTemplateFeature } from '../projectTemplateData';
 import type { ProjectTemplateProps } from '../projectTemplateTypes';
 import { DynamoDB } from './moduleData';
-import type { ShortTemplateFeature } from '../projectTemplateData';
 import { featureAppComposition, featureVSCode, featureYarn3 } from './sharedFeatures';
 
 export const getDynamoDBFeature = (): ShortTemplateFeature => {

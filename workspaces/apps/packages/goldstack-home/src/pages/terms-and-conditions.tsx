@@ -1,9 +1,8 @@
-import React from 'react';
 import Head from 'next/head';
-import Header from 'src/components/Header';
-
-import AbstractShapes from '../styles/front-3.2.1/assets/svg/components/abstract-shapes-12.svg';
+import React from 'react';
 import Footer from 'src/components/Footer';
+import Header from 'src/components/Header';
+import AbstractShapes from '../styles/front-3.2.1/assets/svg/components/abstract-shapes-12.svg';
 
 const Hero = (): JSX.Element => {
   return (

@@ -1,6 +1,6 @@
+import type { AWSDeployment } from '@goldstack/infra-aws';
 import type { LambdaApiDeploymentConfiguration } from '@goldstack/utils-aws-lambda';
 import { upload } from '@goldstack/utils-s3-deployment';
-import type { AWSDeployment } from '@goldstack/infra-aws';
 import path from 'path';
 
 export interface DeployToS3Params {

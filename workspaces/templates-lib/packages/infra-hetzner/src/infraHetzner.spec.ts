@@ -1,6 +1,6 @@
-import { write, mkdir } from '@goldstack/utils-sh';
-import { getHetznerUser } from './infraHetzner';
+import { mkdir, write } from '@goldstack/utils-sh';
 import assert from 'assert';
+import { getHetznerUser } from './infraHetzner';
 
 describe('Hetzner User config', () => {
   it('Should load credentials using a credentials source defined in the credentials file', async () => {

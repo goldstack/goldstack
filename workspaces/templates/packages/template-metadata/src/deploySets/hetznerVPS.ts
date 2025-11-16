@@ -1,5 +1,5 @@
-import type { ProjectConfiguration } from '@goldstack/utils-project';
 import type { DeploySetConfig } from '@goldstack/template-build-set';
+import type { ProjectConfiguration } from '@goldstack/utils-project';
 
 export const createHetznerVPSBuildSetConfig = async (): Promise<DeploySetConfig> => {
   const projectConfiguration: ProjectConfiguration = {

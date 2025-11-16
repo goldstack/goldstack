@@ -1,8 +1,7 @@
-import { read, write, mkdir, cp } from '@goldstack/utils-sh';
 import { renderPage } from '@goldstack/utils-docs';
-
-import path from 'path';
+import { cp, mkdir, read, write } from '@goldstack/utils-sh';
 import assert from 'assert';
+import path from 'path';
 
 export interface SitemapItem {
   title: string;

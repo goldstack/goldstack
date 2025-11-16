@@ -1,7 +1,7 @@
-import { globSync } from '@goldstack/utils-sh';
-import { readPackageConfig } from '@goldstack/utils-package';
 import { S3TemplateRepository } from '@goldstack/template-repository';
 import { connect, getBucketName } from '@goldstack/template-repository-bucket';
+import { readPackageConfig } from '@goldstack/utils-package';
+import { globSync } from '@goldstack/utils-sh';
 
 import path from 'path';
 

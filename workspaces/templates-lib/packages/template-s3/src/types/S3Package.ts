@@ -1,7 +1,6 @@
 import type { Package } from '@goldstack/utils-package';
-
-import type { S3Configuration } from './S3PackageConfiguration';
 import type { S3Deployment } from './S3Deployment';
+import type { S3Configuration } from './S3PackageConfiguration';
 
 export type { S3Configuration, S3Deployment };
 

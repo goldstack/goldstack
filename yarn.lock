@@ -3419,18 +3419,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@biomejs/biome@npm:2.1.1":
-  version: 2.1.1
-  resolution: "@biomejs/biome@npm:2.1.1"
+"@biomejs/biome@npm:2.3.5":
+  version: 2.3.5
+  resolution: "@biomejs/biome@npm:2.3.5"
   dependencies:
-    "@biomejs/cli-darwin-arm64": "npm:2.1.1"
-    "@biomejs/cli-darwin-x64": "npm:2.1.1"
-    "@biomejs/cli-linux-arm64": "npm:2.1.1"
-    "@biomejs/cli-linux-arm64-musl": "npm:2.1.1"
-    "@biomejs/cli-linux-x64": "npm:2.1.1"
-    "@biomejs/cli-linux-x64-musl": "npm:2.1.1"
-    "@biomejs/cli-win32-arm64": "npm:2.1.1"
-    "@biomejs/cli-win32-x64": "npm:2.1.1"
+    "@biomejs/cli-darwin-arm64": "npm:2.3.5"
+    "@biomejs/cli-darwin-x64": "npm:2.3.5"
+    "@biomejs/cli-linux-arm64": "npm:2.3.5"
+    "@biomejs/cli-linux-arm64-musl": "npm:2.3.5"
+    "@biomejs/cli-linux-x64": "npm:2.3.5"
+    "@biomejs/cli-linux-x64-musl": "npm:2.3.5"
+    "@biomejs/cli-win32-arm64": "npm:2.3.5"
+    "@biomejs/cli-win32-x64": "npm:2.3.5"
   dependenciesMeta:
     "@biomejs/cli-darwin-arm64":
       optional: true
@@ -3450,62 +3450,62 @@ __metadata:
       optional: true
   bin:
     biome: bin/biome
-  checksum: 10/f114f220d388b76c2c28f56e7477df6545e65c009af0d279d63ca30efa7eca1ffb67bb8ce8305b8d25dfb7176b8f1b71e650c34ef8bb09c805c7f9c36166b3a7
+  checksum: 10/97e17231acb19757e58d43f98681bb47f117115a1df9da03c4ea16d6e2edcf31358e64ea4f170a83925e1b62a2b436736b95fd13952b0a2bb6b195023dc69d6f
   languageName: node
   linkType: hard
 
-"@biomejs/cli-darwin-arm64@npm:2.1.1":
-  version: 2.1.1
-  resolution: "@biomejs/cli-darwin-arm64@npm:2.1.1"
+"@biomejs/cli-darwin-arm64@npm:2.3.5":
+  version: 2.3.5
+  resolution: "@biomejs/cli-darwin-arm64@npm:2.3.5"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@biomejs/cli-darwin-x64@npm:2.1.1":
-  version: 2.1.1
-  resolution: "@biomejs/cli-darwin-x64@npm:2.1.1"
+"@biomejs/cli-darwin-x64@npm:2.3.5":
+  version: 2.3.5
+  resolution: "@biomejs/cli-darwin-x64@npm:2.3.5"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-arm64-musl@npm:2.1.1":
-  version: 2.1.1
-  resolution: "@biomejs/cli-linux-arm64-musl@npm:2.1.1"
+"@biomejs/cli-linux-arm64-musl@npm:2.3.5":
+  version: 2.3.5
+  resolution: "@biomejs/cli-linux-arm64-musl@npm:2.3.5"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-arm64@npm:2.1.1":
-  version: 2.1.1
-  resolution: "@biomejs/cli-linux-arm64@npm:2.1.1"
+"@biomejs/cli-linux-arm64@npm:2.3.5":
+  version: 2.3.5
+  resolution: "@biomejs/cli-linux-arm64@npm:2.3.5"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-x64-musl@npm:2.1.1":
-  version: 2.1.1
-  resolution: "@biomejs/cli-linux-x64-musl@npm:2.1.1"
+"@biomejs/cli-linux-x64-musl@npm:2.3.5":
+  version: 2.3.5
+  resolution: "@biomejs/cli-linux-x64-musl@npm:2.3.5"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-x64@npm:2.1.1":
-  version: 2.1.1
-  resolution: "@biomejs/cli-linux-x64@npm:2.1.1"
+"@biomejs/cli-linux-x64@npm:2.3.5":
+  version: 2.3.5
+  resolution: "@biomejs/cli-linux-x64@npm:2.3.5"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@biomejs/cli-win32-arm64@npm:2.1.1":
-  version: 2.1.1
-  resolution: "@biomejs/cli-win32-arm64@npm:2.1.1"
+"@biomejs/cli-win32-arm64@npm:2.3.5":
+  version: 2.3.5
+  resolution: "@biomejs/cli-win32-arm64@npm:2.3.5"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@biomejs/cli-win32-x64@npm:2.1.1":
-  version: 2.1.1
-  resolution: "@biomejs/cli-win32-x64@npm:2.1.1"
+"@biomejs/cli-win32-x64@npm:2.3.5":
+  version: 2.3.5
+  resolution: "@biomejs/cli-win32-x64@npm:2.3.5"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -4408,7 +4408,7 @@ __metadata:
     styled-components: "npm:^5.3.5"
     svg-url-loader: "npm:^8.0.0"
     swr: "npm:^0.4.0"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.8.3"
   languageName: unknown
@@ -4455,7 +4455,7 @@ __metadata:
     jest: "npm:^29.7.0"
     renamer: "npm:^0.7.0"
     rimraf: "npm:^3.0.2"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft
@@ -4479,7 +4479,7 @@ __metadata:
     jest: "npm:^29.7.0"
     renamer: "npm:^0.7.0"
     rimraf: "npm:^3.0.2"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft
@@ -4499,7 +4499,7 @@ __metadata:
     jest: "npm:^29.7.0"
     renamer: "npm:^0.7.0"
     rimraf: "npm:^3.0.2"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft
@@ -4745,7 +4745,7 @@ __metadata:
     jest: "npm:^29.7.0"
     jsonpath: "npm:^1.1.1"
     rimraf: "npm:^3.0.2"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft
@@ -5135,7 +5135,7 @@ __metadata:
     jest: "npm:^29.7.0"
     mock-aws-s3-v3: "npm:6.0.8"
     rimraf: "npm:^3.0.2"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft
@@ -5432,7 +5432,7 @@ __metadata:
     outmatch: "npm:^1.0.0"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.8.3"
     yargs: "npm:^17.5.1"
@@ -5464,7 +5464,7 @@ __metadata:
     jest-pnp-resolver: "npm:^1.2.3"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.8.3"
   languageName: unknown
@@ -5496,7 +5496,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.8.3"
     yargs: "npm:^17.5.1"
@@ -5533,7 +5533,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.8.3"
     yargs: "npm:^17.5.1"
@@ -5571,7 +5571,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.8.3"
     yargs: "npm:^17.5.1"
@@ -6422,7 +6422,7 @@ __metadata:
     jest: "npm:^29.7.0"
     renamer: "npm:^0.7.0"
     rimraf: "npm:^3.0.2"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     typescript: "npm:^5.8.3"
     yargs: "npm:^17.5.1"
   bin:
@@ -6483,7 +6483,7 @@ __metadata:
     jest: "npm:^29.7.0"
     renamer: "npm:^0.7.0"
     rimraf: "npm:^3.0.2"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     typescript: "npm:^5.8.3"
     yargs: "npm:^17.5.1"
   languageName: unknown
@@ -6504,7 +6504,7 @@ __metadata:
     jest: "npm:^29.7.0"
     renamer: "npm:^0.7.0"
     rimraf: "npm:^3.0.2"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft
@@ -6688,7 +6688,7 @@ __metadata:
     jest: "npm:^29.7.0"
     json-stable-stringify: "npm:^1.0.1"
     rimraf: "npm:^3.0.2"
-    ts-json-schema-generator: "npm:^1.0.0"
+    ts-json-schema-generator: "npm:^2.4.0"
     typescript: "npm:^5.8.3"
     yargs: "npm:^17.5.1"
   languageName: unknown
@@ -6949,6 +6949,22 @@ __metadata:
   version: 0.34.3
   resolution: "@img/sharp-win32-x64@npm:0.34.3"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@isaacs/balanced-match@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@isaacs/balanced-match@npm:4.0.1"
+  checksum: 10/102fbc6d2c0d5edf8f6dbf2b3feb21695a21bc850f11bc47c4f06aa83bd8884fde3fe9d6d797d619901d96865fdcb4569ac2a54c937992c48885c5e3d9967fe8
+  languageName: node
+  linkType: hard
+
+"@isaacs/brace-expansion@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@isaacs/brace-expansion@npm:5.0.0"
+  dependencies:
+    "@isaacs/balanced-match": "npm:^4.0.1"
+  checksum: 10/cf3b7f206aff12128214a1df764ac8cdbc517c110db85249b945282407e3dfc5c6e66286383a7c9391a059fc8e6e6a8ca82262fc9d2590bd615376141fbebd2d
   languageName: node
   linkType: hard
 
@@ -10565,6 +10581,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/json-schema@npm:^7.0.15":
+  version: 7.0.15
+  resolution: "@types/json-schema@npm:7.0.15"
+  checksum: 10/1a3c3e06236e4c4aab89499c428d585527ce50c24fe8259e8b3926d3df4cfbbbcf306cfc73ddfb66cbafc973116efd15967020b0f738f63e09e64c7d260519e7
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:^7.0.4, @types/json-schema@npm:^7.0.5":
   version: 7.0.6
   resolution: "@types/json-schema@npm:7.0.6"
@@ -10576,13 +10599,6 @@ __metadata:
   version: 7.0.8
   resolution: "@types/json-schema@npm:7.0.8"
   checksum: 10/efac477280f17051746b570e97c18d781c9a8c8d90d5158596b9a326f76925ac2538decd17b3b4bc7dcd67b21d641767caba5291ca6415036ab1363f686c9e61
-  languageName: node
-  linkType: hard
-
-"@types/json-schema@npm:^7.0.9":
-  version: 7.0.9
-  resolution: "@types/json-schema@npm:7.0.9"
-  checksum: 10/7ceb41e396240aa69ae15c02ffbb6548ea2bb2f845a7378c711c7c908a9a8438a0330f3135f1ccb6e82e334b9e2ec5b94fb57a1435f2b15362d38e9d5109e5ea
   languageName: node
   linkType: hard
 
@@ -11593,7 +11609,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "apps@workspace:workspaces/apps"
   dependencies:
-    "@biomejs/biome": "npm:2.1.1"
+    "@biomejs/biome": "npm:2.3.5"
     "@goldstack/utils-typescript-references": "npm:0.3.18"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -13298,6 +13314,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"commander@npm:^13.1.0":
+  version: 13.1.0
+  resolution: "commander@npm:13.1.0"
+  checksum: 10/d3b4b79e6be8471ddadacbb8cd441fe82154d7da7393b50e76165a9e29ccdb74fa911a186437b9a211d0fc071db6051915c94fb8ef16d77511d898e9dbabc6af
+  languageName: node
+  linkType: hard
+
 "commander@npm:^2.20.0":
   version: 2.20.3
   resolution: "commander@npm:2.20.3"
@@ -13316,13 +13339,6 @@ __metadata:
   version: 6.2.1
   resolution: "commander@npm:6.2.1"
   checksum: 10/25b88c2efd0380c84f7844b39cf18510da7bfc5013692d68cdc65f764a1c34e6c8a36ea6d72b6620e3710a930cf8fab2695bdec2bf7107a0f4fa30a3ef3b7d0e
-  languageName: node
-  linkType: hard
-
-"commander@npm:^9.0.0":
-  version: 9.2.0
-  resolution: "commander@npm:9.2.0"
-  checksum: 10/db4855c6cd7694d4117e17ec353c7fcc678695e008e12dd5cd45ebaf3fd15607a476df690bf658c7a20a661743580fb0150c825087d773847a24392891e7b4bc
   languageName: node
   linkType: hard
 
@@ -13724,7 +13740,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.3":
+"cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.3, cross-spawn@npm:^7.0.6":
   version: 7.0.6
   resolution: "cross-spawn@npm:7.0.6"
   dependencies:
@@ -14324,7 +14340,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "docs@workspace:workspaces/docs"
   dependencies:
-    "@biomejs/biome": "npm:2.1.1"
+    "@biomejs/biome": "npm:2.3.5"
     "@goldstack/nodemonx": "npm:0.4.28"
     "@goldstack/utils-typescript-references": "npm:0.3.18"
     "@types/jest": "npm:^29.5.14"
@@ -15327,7 +15343,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "examples@workspace:workspaces/examples"
   dependencies:
-    "@biomejs/biome": "npm:2.1.1"
+    "@biomejs/biome": "npm:2.3.5"
     "@goldstack/nodemonx": "npm:0.4.28"
     "@goldstack/utils-typescript-references": "npm:0.3.18"
     "@types/jest": "npm:^29.5.14"
@@ -15972,6 +15988,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"foreground-child@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "foreground-child@npm:3.3.1"
+  dependencies:
+    cross-spawn: "npm:^7.0.6"
+    signal-exit: "npm:^4.0.1"
+  checksum: 10/427b33f997a98073c0424e5c07169264a62cda806d8d2ded159b5b903fdfc8f0a1457e06b5fc35506497acb3f1e353f025edee796300209ac6231e80edece835
+  languageName: node
+  linkType: hard
+
 "form-data@npm:^4.0.0, form-data@npm:^4.0.4":
   version: 4.0.4
   resolution: "form-data@npm:4.0.4"
@@ -16460,6 +16486,22 @@ __metadata:
   bin:
     glob: dist/esm/bin.mjs
   checksum: 10/e66939201d11ae30fe97e3364ac2be5c59d6c9bfce18ac633edfad473eb6b46a7553f6f73658f67caaf6cccc1df1ae336298a45e9021fa5695fd78754cc1603e
+  languageName: node
+  linkType: hard
+
+"glob@npm:^11.0.1":
+  version: 11.0.3
+  resolution: "glob@npm:11.0.3"
+  dependencies:
+    foreground-child: "npm:^3.3.1"
+    jackspeak: "npm:^4.1.1"
+    minimatch: "npm:^10.0.3"
+    minipass: "npm:^7.1.2"
+    package-json-from-dist: "npm:^1.0.0"
+    path-scurry: "npm:^2.0.0"
+  bin:
+    glob: dist/esm/bin.mjs
+  checksum: 10/2ae536c1360c0266b523b2bfa6aadc10144a8b7e08869b088e37ac3c27cd30774f82e4bfb291cde796776e878f9e13200c7ff44010eb7054e00f46f649397893
   languageName: node
   linkType: hard
 
@@ -18281,6 +18323,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jackspeak@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "jackspeak@npm:4.1.1"
+  dependencies:
+    "@isaacs/cliui": "npm:^8.0.2"
+  checksum: 10/ffceb270ec286841f48413bfb4a50b188662dfd599378ce142b6540f3f0a66821dc9dcb1e9ebc55c6c3b24dc2226c96e5819ba9bd7a241bd29031b61911718c7
+  languageName: node
+  linkType: hard
+
 "jake@npm:^10.8.5":
   version: 10.8.5
   resolution: "jake@npm:10.8.5"
@@ -19182,7 +19233,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json5@npm:^2.1.2, json5@npm:^2.2.0, json5@npm:^2.2.1, json5@npm:^2.2.2, json5@npm:^2.2.3":
+"json5@npm:^2.1.2, json5@npm:^2.2.1, json5@npm:^2.2.2, json5@npm:^2.2.3":
   version: 2.2.3
   resolution: "json5@npm:2.2.3"
   bin:
@@ -20071,6 +20122,15 @@ __metadata:
   dependencies:
     brace-expansion: "npm:^2.0.1"
   checksum: 10/082e7ccbc090d5f8c4e4e029255d5a1d1e3af37bda837da2b8b0085b1503a1210c91ac90d9ebfe741d8a5f286ece820a1abb4f61dc1f82ce602a055d461d93f3
+  languageName: node
+  linkType: hard
+
+"minimatch@npm:^10.0.3":
+  version: 10.1.1
+  resolution: "minimatch@npm:10.1.1"
+  dependencies:
+    "@isaacs/brace-expansion": "npm:^5.0.0"
+  checksum: 10/110f38921ea527022e90f7a5f43721838ac740d0a0c26881c03b57c261354fb9a0430e40b2c56dfcea2ef3c773768f27210d1106f1f2be19cde3eea93f26f45e
   languageName: node
   linkType: hard
 
@@ -23273,7 +23333,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root@workspace:."
   dependencies:
-    "@biomejs/biome": "npm:2.1.1"
+    "@biomejs/biome": "npm:2.3.5"
     "@goldstack/nodemonx": "npm:0.4.28"
     "@goldstack/utils-docs-cli": "npm:0.3.11"
     "@goldstack/utils-typescript-references": "npm:0.3.18"
@@ -23348,6 +23408,13 @@ __metadata:
   version: 2.3.1
   resolution: "safe-stable-stringify@npm:2.3.1"
   checksum: 10/8a6ed4e5fb80694970f1939538518c44a59c71c74305e12b5964cbe3850636212eddac881da1f676b0232015213676e07750fe75bc402afbfe29851c8b52381e
+  languageName: node
+  linkType: hard
+
+"safe-stable-stringify@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "safe-stable-stringify@npm:2.5.0"
+  checksum: 10/2697fa186c17c38c3ca5309637b4ac6de2f1c3d282da27cd5e1e3c88eca0fb1f9aea568a6aabdf284111592c8782b94ee07176f17126031be72ab1313ed46c5c
   languageName: node
   linkType: hard
 
@@ -25113,7 +25180,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "templates-lib@workspace:workspaces/templates-lib"
   dependencies:
-    "@biomejs/biome": "npm:2.1.1"
+    "@biomejs/biome": "npm:2.3.5"
     "@goldstack/utils-typescript-references": "npm:0.3.18"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -25128,7 +25195,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "templates-management@workspace:workspaces/templates-management"
   dependencies:
-    "@biomejs/biome": "npm:2.1.1"
+    "@biomejs/biome": "npm:2.3.5"
     "@goldstack/utils-typescript-references": "npm:0.3.18"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -25142,7 +25209,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "templates@workspace:workspaces/templates"
   dependencies:
-    "@biomejs/biome": "npm:2.1.1"
+    "@biomejs/biome": "npm:2.3.5"
     "@goldstack/nodemonx": "npm:0.4.28"
     "@goldstack/utils-typescript-references": "npm:0.3.18"
     "@types/jest": "npm:^29.5.14"
@@ -25487,19 +25554,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-json-schema-generator@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "ts-json-schema-generator@npm:1.0.0"
+"ts-json-schema-generator@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "ts-json-schema-generator@npm:2.4.0"
   dependencies:
-    "@types/json-schema": "npm:^7.0.9"
-    commander: "npm:^9.0.0"
-    glob: "npm:^7.2.0"
-    json5: "npm:^2.2.0"
-    safe-stable-stringify: "npm:^2.3.1"
-    typescript: "npm:~4.6.2"
+    "@types/json-schema": "npm:^7.0.15"
+    commander: "npm:^13.1.0"
+    glob: "npm:^11.0.1"
+    json5: "npm:^2.2.3"
+    normalize-path: "npm:^3.0.0"
+    safe-stable-stringify: "npm:^2.5.0"
+    tslib: "npm:^2.8.1"
+    typescript: "npm:^5.8.2"
   bin:
-    ts-json-schema-generator: bin/ts-json-schema-generator
-  checksum: 10/3dfa683e5267bcdce85c00ca8a99896810881cf8cb0768042f2770b57e1daeb08321fba34cfa4fcac1440d11c64670707e8684a8e7d42f9eae3d0c2cb351c52a
+    ts-json-schema-generator: bin/ts-json-schema-generator.js
+  checksum: 10/5d67f9894b1d43b8f0bccbe66b32839a916316a699d4eb82912fb1dbd608f3b174453ca33db4169ca6c4e34efe5009414f7462cd06e62717b99b22ba58ad0327
   languageName: node
   linkType: hard
 
@@ -25664,7 +25733,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.6.3, tslib@npm:^2.8.0":
+"tslib@npm:^2.6.3, tslib@npm:^2.8.0, tslib@npm:^2.8.1":
   version: 2.8.1
   resolution: "tslib@npm:2.8.1"
   checksum: 10/3e2e043d5c2316461cb54e5c7fe02c30ef6dccb3384717ca22ae5c6b5bc95232a6241df19c622d9c73b809bea33b187f6dbc73030963e29950c2141bc32a79f7
@@ -25781,6 +25850,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^5.8.2":
+  version: 5.9.3
+  resolution: "typescript@npm:5.9.3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10/c089d9d3da2729fd4ac517f9b0e0485914c4b3c26f80dc0cffcb5de1719a17951e92425d55db59515c1a7ddab65808466debb864d0d56dcf43f27007d0709594
+  languageName: node
+  linkType: hard
+
 "typescript@npm:^5.8.3":
   version: 5.8.3
   resolution: "typescript@npm:5.8.3"
@@ -25791,13 +25870,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:~4.6.2":
-  version: 4.6.4
-  resolution: "typescript@npm:4.6.4"
+"typescript@patch:typescript@npm%3A^5.8.2#optional!builtin<compat/typescript>":
+  version: 5.9.3
+  resolution: "typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10/330d1e128efd90d78fff3892846a3b493998f2b09a04717922a84592ba1d7ae62b0a5e48b65a312c90eba1a1bdebf26c4441c84a3c633e88484006eecd893ccb
+  checksum: 10/696e1b017bc2635f4e0c94eb4435357701008e2f272f553d06e35b494b8ddc60aa221145e286c28ace0c89ee32827a28c2040e3a69bdc108b1a5dc8fb40b72e3
   languageName: node
   linkType: hard
 
@@ -25808,16 +25887,6 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10/b9b1e73dabac5dc730c041325dbd9c99467c1b0d239f1b74ec3b90d831384af3e2ba973946232df670519147eb51a2c20f6f96163cea2b359f03de1e2091cc4f
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A~4.6.2#optional!builtin<compat/typescript>":
-  version: 4.6.4
-  resolution: "typescript@patch:typescript@npm%3A4.6.4#optional!builtin<compat/typescript>::version=4.6.4&hash=5d3a66"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10/e237c7cc9b91b2bef546c43f87adef848a42bac95938972f6059aa804ce2d66298d7e13676939bc737bc0a6080561af8439e83dba37c721aa0cbf67a37151bbd
   languageName: node
   linkType: hard
 
@@ -26266,7 +26335,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "utils@workspace:workspaces/utils"
   dependencies:
-    "@biomejs/biome": "npm:2.1.1"
+    "@biomejs/biome": "npm:2.3.5"
     "@goldstack/utils-typescript-references": "npm:0.3.18"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"

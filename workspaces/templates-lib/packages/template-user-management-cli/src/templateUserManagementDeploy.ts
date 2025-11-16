@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+
+import { DeploymentState, readDeploymentState, readTerraformStateVariable } from '@goldstack/infra';
+import { getAWSUser } from '@goldstack/infra-aws';
 import type {
   UserManagementConfiguration,
   UserManagementDeployment,
 } from '@goldstack/template-user-management';
-import { getAWSUser } from '@goldstack/infra-aws';
-import { readDeploymentState, readTerraformStateVariable, DeploymentState } from '@goldstack/infra';
 import { deployFunction } from '@goldstack/utils-aws-lambda';
 
 export const deployCli = async (

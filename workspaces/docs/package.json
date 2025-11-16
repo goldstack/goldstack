@@ -24,7 +24,7 @@
     "test-watch": "nodemonx --watch . --exec 'yarn test'"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.1.1",
+    "@biomejs/biome": "2.3.5",
     "@goldstack/nodemonx": "0.4.28",
     "@goldstack/utils-typescript-references": "0.3.18",
     "@types/jest": "^29.5.14",

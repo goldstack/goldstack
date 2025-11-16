@@ -1,29 +1,28 @@
-import fs from 'fs';
+import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import {
-  parseConfig,
   getAwsConfigPath,
   getAwsTerraformConfigPath,
+  parseConfig,
   validateConfig,
 } from '@goldstack/utils-config';
 import { readPackageConfig } from '@goldstack/utils-package';
 import { read, write } from '@goldstack/utils-sh';
+import fs from 'fs';
+import configSchema from './schemas/accountConfigSchema.json';
+import awsStateConfigSchema from './schemas/awsTerraformStateSchema.json';
+import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
 import type {
-  AWSConfiguration,
-  AWSUser,
-  AWSProfileConfig,
-  AWSAPIKeyUserConfig,
   AWSAccessKeyId,
+  AWSAPIKeyUserConfig,
+  AWSConfiguration,
+  AWSEnvironmentVariableUserConfig,
+  AWSProfileConfig,
+  AWSRegion,
   AWSSecretAccessKey,
+  AWSUser,
   Name,
 } from './types/awsAccount';
-import configSchema from './schemas/accountConfigSchema.json';
-import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
-import awsStateConfigSchema from './schemas/awsTerraformStateSchema.json';
-import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
-
 import type { AWSTerraformState, RemoteState } from './types/awsTerraformState';
-
-import type { AWSRegion, AWSEnvironmentVariableUserConfig } from './types/awsAccount';
 
 export type {
   AWSConfiguration,
@@ -38,21 +37,20 @@ export type {
   RemoteState,
 };
 
-import type { AWSDeployment } from './types/awsDeployment';
 import {
   getAWSUserFromContainerEnvironment,
   getAWSUserFromDefaultLocalProfile,
   getAWSUserFromEnvironmentVariables,
   getAWSUserFromGoldstackConfig,
 } from './awsUserUtils';
+import type { AWSDeployment } from './types/awsDeployment';
 
+export { getAWSCredentials } from './awsAuthUtils';
 export type {
   AWSDeployment,
   AWSDeploymentRegion,
   AWSUserName,
 } from './types/awsDeployment';
-
-export { getAWSCredentials } from './awsAuthUtils';
 
 // deactivate warning message while v3 upgrade in process
 process.env.AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = '1';

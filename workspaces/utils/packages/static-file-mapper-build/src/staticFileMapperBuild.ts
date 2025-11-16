@@ -1,8 +1,7 @@
 import { mkdir, read, rm, rmSafe, write } from '@goldstack/utils-sh';
+import { createHash } from 'crypto';
 import { dirname } from 'path';
 import type { StaticFileMapper, StaticFileMapping } from 'static-file-mapper';
-
-import { createHash } from 'crypto';
 
 export type MappingStore = StaticFileMapping[];
 
@@ -70,7 +69,7 @@ export class StaticFileMapperBuild implements StaticFileMapperManager {
     const store = this.readStore();
 
     let mappingExists = false;
-    store.map((mapping) => {
+    store.forEach((mapping) => {
       if (mapping.names.find((el) => el === name)) {
         // clear out replaced file locally
         // should still continue to exist in S3

@@ -1,9 +1,9 @@
-import { compileBundle } from '@goldstack/template-ssr-server-compile-bundle';
 import type {
   BuildConfiguration,
   ClientBuildOptionsArgs,
   ServerBuildOptionsArgs,
 } from '@goldstack/template-ssr-server-compile-bundle';
+import { compileBundle } from '@goldstack/template-ssr-server-compile-bundle';
 export type { BuildConfiguration, ClientBuildOptionsArgs, ServerBuildOptionsArgs };
 
 import {

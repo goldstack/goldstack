@@ -1,9 +1,9 @@
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
-import { getDeploymentName } from '../userManagementConfig';
-import type { UserManagementDeployment } from '../types/UserManagementPackage';
 import type UserManagementPackage from '../types/UserManagementPackage';
-import type { ClientAuthResult } from './getLoggedInUser';
+import type { UserManagementDeployment } from '../types/UserManagementPackage';
+import { getDeploymentName } from '../userManagementConfig';
 import { getAndPersistToken } from './getAndPersistToken';
+import type { ClientAuthResult } from './getLoggedInUser';
 
 /**
  * Handles the redirect callback from the authentication provider

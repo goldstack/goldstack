@@ -1,14 +1,12 @@
-import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
+import type { HetznerVPSDeployment, HetznerVPSPackage } from '@goldstack/template-hetzner-vps';
 import { wrapCli } from '@goldstack/utils-cli';
-
-import { infraCommands } from '@goldstack/utils-terraform';
-import { terraformAwsCli, initTerraformEnvironment } from '@goldstack/utils-terraform-aws';
-import { terraformHetznerCli } from '@goldstack/utils-terraform-hetzner';
-import { PackageConfig } from '@goldstack/utils-package-config';
-import type { HetznerVPSPackage, HetznerVPSDeployment } from '@goldstack/template-hetzner-vps';
-import yargs from 'yargs';
-
 import { info } from '@goldstack/utils-log';
+import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
+import { PackageConfig } from '@goldstack/utils-package-config';
+import { infraCommands } from '@goldstack/utils-terraform';
+import { initTerraformEnvironment, terraformAwsCli } from '@goldstack/utils-terraform-aws';
+import { terraformHetznerCli } from '@goldstack/utils-terraform-hetzner';
+import yargs from 'yargs';
 import { build, sshDeploy } from './sshDeploy';
 
 export const buildZip = async (): Promise<void> => {

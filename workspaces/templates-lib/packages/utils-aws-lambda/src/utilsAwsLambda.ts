@@ -1,39 +1,30 @@
-export { readLambdaConfig } from './generate/collectLambdasFromFiles';
-
-export { generateFunctionName } from './generate/generateFunctionName';
-
-export type { LambdaConfig } from './types/LambdaConfig';
-export { RouteType } from './types/LambdaConfig';
-
 export type {
-  LambdaRoutesConfig,
-  LambdaRouteConfig,
-  LambdaApiDeploymentConfiguration,
-  APIDomain,
-  CorsHeader,
-  HostedZoneDomain,
-} from './types/LambdaDeploymentConfiguration';
-
-export type { DeployFunctionParams } from './deployFunction';
-export { deployFunction } from './deployFunction';
-
-export type { DeployFunctionsParams } from './deployFunctions';
-export { deployFunctions } from './deployFunctions';
-
-export { defaultBuildOptions } from './defaultBuildOptions';
-
+  ClientBuildOptionsArgs,
+  ServerBuildOptionsArgs,
+} from './buildFunctions';
 export {
   buildFunctions,
   getOutDirForLambda,
   getOutFileForLambda,
 } from './buildFunctions';
-
-export type {
-  ClientBuildOptionsArgs,
-  ServerBuildOptionsArgs,
-} from './buildFunctions';
-
+export { defaultBuildOptions } from './defaultBuildOptions';
+export type { DeployFunctionParams } from './deployFunction';
+export { deployFunction } from './deployFunction';
+export type { DeployFunctionsParams } from './deployFunctions';
+export { deployFunctions } from './deployFunctions';
+export { readLambdaConfig } from './generate/collectLambdasFromFiles';
+export { generateFunctionName } from './generate/generateFunctionName';
 export {
   generateLambdaConfig,
   validateDeployment,
 } from './generateLambdaConfig';
+export type { LambdaConfig } from './types/LambdaConfig';
+export { RouteType } from './types/LambdaConfig';
+export type {
+  APIDomain,
+  CorsHeader,
+  HostedZoneDomain,
+  LambdaApiDeploymentConfiguration,
+  LambdaRouteConfig,
+  LambdaRoutesConfig,
+} from './types/LambdaDeploymentConfiguration';

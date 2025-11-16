@@ -1,16 +1,16 @@
+import { GetItemCommand, PutItemCommand } from '@aws-sdk/client-dynamodb';
+import { debug } from '@goldstack/utils-log';
+import { findFreePorts } from 'find-free-ports';
+import { check } from 'tcp-port-used';
 import {
+  connect,
   getTableName,
   startLocalDynamoDB,
   stopAllLocalDynamoDB,
   stopLocalDynamoDB,
 } from './templateDynamoDBTable';
-import type { ThisPackage } from './types/DynamoDBPackage';
-import { check } from 'tcp-port-used';
-import { connect } from './templateDynamoDBTable';
-import { PutItemCommand, GetItemCommand } from '@aws-sdk/client-dynamodb';
 import { createTestMigrations } from './testUtils/testMigrations';
-import { findFreePorts } from 'find-free-ports';
-import { debug } from '@goldstack/utils-log';
+import type { ThisPackage } from './types/DynamoDBPackage';
 
 jest.setTimeout(240000);
 

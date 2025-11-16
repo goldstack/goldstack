@@ -1,7 +1,5 @@
-import type { AWSDeployment } from '@goldstack/infra-aws';
-import type { TerraformDeployment } from '@goldstack/utils-terraform';
 import type { Deployment, DeploymentConfiguration } from '@goldstack/infra';
-import type { Package, Configuration } from '@goldstack/utils-package';
+import type { AWSDeployment } from '@goldstack/infra-aws';
 import {
   LambdaConfiguration,
   type LambdaDeployment,
@@ -10,10 +8,12 @@ import {
   type LambdaPackage,
 } from '@goldstack/template-lambda-cli';
 import type {
-  SqsDeploymentConfiguration,
   SqsDeployment,
+  SqsDeploymentConfiguration,
   SqsPackage,
 } from '@goldstack/template-sqs';
+import type { Configuration, Package } from '@goldstack/utils-package';
+import type { TerraformDeployment } from '@goldstack/utils-terraform';
 
 /**
  * Optional schedule in which the lambda is triggered. Example: "rate(1 minute)".

@@ -1,12 +1,14 @@
-import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
-import { wrapCli } from '@goldstack/utils-cli';
-import { infraCommands } from '@goldstack/utils-terraform';
 import { deployLambda } from '@goldstack/template-lambda-cli';
-import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
+import { wrapCli } from '@goldstack/utils-cli';
+import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
 import { PackageConfig } from '@goldstack/utils-package-config';
+import { infraCommands } from '@goldstack/utils-terraform';
+import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
+
 export * from './types/LambdaHttpPackage';
+
 import yargs from 'yargs';
-import type { LambdaExpressPackage, LambdaExpressDeployment } from './types/LambdaHttpPackage';
+import type { LambdaExpressDeployment, LambdaExpressPackage } from './types/LambdaHttpPackage';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {

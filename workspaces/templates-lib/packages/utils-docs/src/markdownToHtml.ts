@@ -1,13 +1,13 @@
 // based on https://github.com/vercel/next-site/blob/e2cb07a057bf75bded2571a1b639b0017572f4b8/lib/docs/markdown-to-html.js
 
-import unified from 'unified';
-import markdown from 'remark-parse';
-import remarkToRehype from 'remark-rehype';
-import raw from 'rehype-raw';
 import prism from '@mapbox/rehype-prism';
-import html from 'rehype-stringify';
 // https://github.com/syntax-tree/hast-util-sanitize/blob/master/lib/github.json
 import githubSchema from 'hast-util-sanitize/lib/github.json';
+import raw from 'rehype-raw';
+import html from 'rehype-stringify';
+import markdown from 'remark-parse';
+import remarkToRehype from 'remark-rehype';
+import unified from 'unified';
 import docs from './rehypeDocs';
 import rehypeMarkdown from './rehypeMarkdownToHtml';
 

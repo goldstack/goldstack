@@ -1,14 +1,11 @@
-import { build } from 'esbuild';
-import type { BuildOptions, BuildResult, OutputFile } from 'esbuild';
-
-import type { APIGatewayProxyResultV2 } from 'aws-lambda';
-import { changeExtension, readToType } from '@goldstack/utils-sh';
-import { dirname } from 'path';
-
-import type { StaticFileMapperManager } from 'static-file-mapper-build';
-
 import type { ClientBuildOptionsArgs, ServerBuildOptionsArgs } from '@goldstack/utils-aws-lambda';
 import { debug } from '@goldstack/utils-log';
+import { changeExtension, readToType } from '@goldstack/utils-sh';
+import type { APIGatewayProxyResultV2 } from 'aws-lambda';
+import type { BuildOptions, BuildResult, OutputFile } from 'esbuild';
+import { build } from 'esbuild';
+import { dirname } from 'path';
+import type { StaticFileMapperManager } from 'static-file-mapper-build';
 
 export type {
   ClientBuildOptionsArgs,

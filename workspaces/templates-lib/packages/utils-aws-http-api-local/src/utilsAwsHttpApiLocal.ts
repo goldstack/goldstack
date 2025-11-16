@@ -1,10 +1,9 @@
-import express from 'express';
-import cors from 'cors';
-import type { Server } from 'http';
-
-import { readLambdaConfig, type LambdaConfig } from '@goldstack/utils-aws-lambda';
-import { injectRoutes } from './expressRoutes';
+import { type LambdaConfig, readLambdaConfig } from '@goldstack/utils-aws-lambda';
 import assert from 'assert';
+import cors from 'cors';
+import express from 'express';
+import type { Server } from 'http';
+import { injectRoutes } from './expressRoutes';
 
 type StaticRouteOptions = {
   immutable: boolean;

@@ -1,16 +1,15 @@
 import { parseConfig, validateConfig } from '@goldstack/utils-config';
-import configSchema from './schemas/configSchema.json';
 import { read, write } from '@goldstack/utils-sh';
-import type { Package } from './types/packageTypes';
-import pathLib from 'path';
-
-import type { Argv } from 'yargs';
 import { assert } from 'console';
+import pathLib from 'path';
+import type { Argv } from 'yargs';
+import configSchema from './schemas/configSchema.json';
+import type { Package } from './types/packageTypes';
 
 export type {
+  Name,
   Package,
   PackageConfiguration as Configuration,
-  Name,
 } from './types/packageTypes';
 
 export const getPackageConfigSchema = (): object => {

@@ -1,8 +1,8 @@
-import { getAWSCredentials, getAWSUser, resetAWSUser } from './infraAws';
-import { write, mkdir, rmSafe } from '@goldstack/utils-sh';
+import { mkdir, rmSafe, write } from '@goldstack/utils-sh';
 import assert from 'assert';
-import path from 'path';
 import os from 'os';
+import path from 'path';
+import { getAWSCredentials, getAWSUser, resetAWSUser } from './infraAws';
 
 describe('AWS User config', () => {
   afterEach(() => {

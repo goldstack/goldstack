@@ -1,8 +1,7 @@
 import { mkdir } from '@goldstack/utils-sh';
-import { tf } from './terraformCli';
-import MockCloudProvider from './MockCloudProvider';
-
 import path from 'path';
+import MockCloudProvider from './MockCloudProvider';
+import { tf } from './terraformCli';
 
 describe('Terraform CLI', () => {
   it('Should accept folder with spaces (v0.12)', async () => {

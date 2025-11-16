@@ -1,5 +1,5 @@
-import type { TemplateTest, RunTestParams } from '../types/TemplateTest';
 import { yarn } from '@goldstack/utils-yarn';
+import type { RunTestParams, TemplateTest } from '../types/TemplateTest';
 
 export class RootBuildTest implements TemplateTest {
   getName(): string {
@@ -15,6 +15,10 @@ export class RootBuildTest implements TemplateTest {
     // linting should work
     yarn(projectDir, 'lint-fix');
     yarn(projectDir, 'lint');
+
+    // checking (sorting imports) should work
+    yarn(projectDir, 'check-fix');
+    yarn(projectDir, 'check');
 
     // workspace dependencies should be valid
     // some error with package:doctor coming up during local install

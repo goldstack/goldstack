@@ -1,4 +1,4 @@
-import { SESClient, type SendEmailRequest, SendEmailCommand } from '@aws-sdk/client-ses';
+import { SESClient, SendEmailCommand, type SendEmailRequest } from '@aws-sdk/client-ses';
 
 import { mockClient } from 'aws-sdk-client-mock';
 import { v4 as uuid4 } from 'uuid';

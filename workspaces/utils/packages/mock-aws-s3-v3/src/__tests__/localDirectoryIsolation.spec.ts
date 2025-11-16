@@ -1,4 +1,4 @@
-import { GetObjectCommand, PutObjectCommand, NoSuchKey } from '@aws-sdk/client-s3';
+import { GetObjectCommand, NoSuchKey, PutObjectCommand } from '@aws-sdk/client-s3';
 import assert from 'assert';
 import { createS3Client } from '../mockS3';
 

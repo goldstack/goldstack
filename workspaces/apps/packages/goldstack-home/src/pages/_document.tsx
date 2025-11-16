@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { initGtm, TagFragment } from '@goldstack/utils-track';
+import Document, { type DocumentContext, Head, Html, Main, NextScript } from 'next/document';
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
-import { TagFragment, initGtm } from '@goldstack/utils-track';
-
-import Document, { Html, Head, Main, NextScript, type DocumentContext } from 'next/document';
 
 class MyDocument extends Document {
   static async getStaticProps(ctx: DocumentContext): Promise<any> {

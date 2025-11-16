@@ -1,7 +1,7 @@
 import type { ProjectTemplateProps } from '../projectTemplateTypes';
-import { Express, EmailSend } from './moduleData';
-import { getExpressTemplateData } from './expressTemplateData';
 import { getEmailSendFeature } from './emailSendTemplateData';
+import { getExpressTemplateData } from './expressTemplateData';
+import { EmailSend, Express } from './moduleData';
 
 export const getExpressAndEmailSentTemplateData = (): ProjectTemplateProps => {
   return {

@@ -1,22 +1,13 @@
-import { execSync, execFileSync, exec as processAsync } from 'child_process';
-import fs from 'fs';
-
-import { copy as fsExtraCopy } from 'fs-extra';
-
 import { debug, error, info, warn } from '@goldstack/utils-log';
-
-import fse from 'fs-extra';
-
-import path from 'path';
-
-import rimraf from 'rimraf';
-
 import archiver from 'archiver';
+import { execFileSync, execSync, exec as processAsync } from 'child_process';
 import extract from 'extract-zip';
-
-import which from 'which';
-
+import fs from 'fs';
+import fse, { copy as fsExtraCopy } from 'fs-extra';
 import { sync as globSync } from 'glob';
+import path from 'path';
+import rimraf from 'rimraf';
+import which from 'which';
 
 export interface ExecParams {
   silent?: boolean;

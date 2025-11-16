@@ -1,9 +1,9 @@
-import AngleRight from './../icons/font-awesome/solid/angle-right.svg';
+import type { DocLink } from '@goldstack/goldstack-api/dist/src/utils/docLinks';
 
 import React from 'react';
-import styles from './DownloadInstructions.module.css';
 import { dataUriToSrc } from 'src/utils/utils';
-import type { DocLink } from '@goldstack/goldstack-api/dist/src/utils/docLinks';
+import AngleRight from './../icons/font-awesome/solid/angle-right.svg';
+import styles from './DownloadInstructions.module.css';
 import { DownloadInstructionsStep } from './DownloadInstructionsStep';
 
 const AngleRightComponent = (): JSX.Element => {

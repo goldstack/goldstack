@@ -1,8 +1,8 @@
 import { debug, error, info, warn } from '@goldstack/utils-log';
-import { check } from 'tcp-port-used';
 import fs from 'fs';
+import { check } from 'tcp-port-used';
 import type { DynamoDBInstance } from './localDynamoDB';
-import { terminateProcess, stopContainer } from './processManager';
+import { stopContainer, terminateProcess } from './processManager';
 
 interface PersistedState {
   instances: {

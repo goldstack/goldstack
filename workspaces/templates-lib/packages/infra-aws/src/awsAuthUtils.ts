@@ -1,6 +1,5 @@
-import type { AwsCredentialIdentityProvider, AwsCredentialIdentity } from '@aws-sdk/types';
-
-import { STSClient, GetSessionTokenCommand } from '@aws-sdk/client-sts';
+import { GetSessionTokenCommand, STSClient } from '@aws-sdk/client-sts';
+import type { AwsCredentialIdentity, AwsCredentialIdentityProvider } from '@aws-sdk/types';
 
 export function injectCredentials(
   provider: AwsCredentialIdentityProvider,

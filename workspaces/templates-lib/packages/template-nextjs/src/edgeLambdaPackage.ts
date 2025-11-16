@@ -1,6 +1,6 @@
-import path from 'path';
 import { assertFileExists } from '@goldstack/utils-sh';
 import { build } from 'esbuild';
+import path from 'path';
 
 export interface PackageEdgeLambdaParams {
   sourceFile: string;

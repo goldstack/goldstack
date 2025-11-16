@@ -1,4 +1,9 @@
-import type { AwsCredentialIdentity } from '@aws-sdk/types';
+import {
+  CreateTableCommand,
+  DeleteTableCommand,
+  DynamoDBClient,
+  ResourceInUseException,
+} from '@aws-sdk/client-dynamodb';
 
 import {
   BucketAlreadyOwnedByYou,
@@ -8,13 +13,7 @@ import {
   ListObjectsV2Command,
   S3Client,
 } from '@aws-sdk/client-s3';
-
-import {
-  CreateTableCommand,
-  DeleteTableCommand,
-  DynamoDBClient,
-  ResourceInUseException,
-} from '@aws-sdk/client-dynamodb';
+import type { AwsCredentialIdentity } from '@aws-sdk/types';
 
 import { error, info } from '@goldstack/utils-log';
 

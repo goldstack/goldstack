@@ -1,14 +1,13 @@
+import type { S3Client } from '@aws-sdk/client-s3';
 import {
-  connect as templateConnect,
   getBucketName as tempalteGetBucketName,
+  connect as templateConnect,
   getSignedUrlS3 as templateGetSignedUrl,
 } from '@goldstack/template-s3';
-
-import goldstackSchema from './../schemas/package.schema.json';
-import type { S3Client } from '@aws-sdk/client-s3';
-import type { MetadataBearer, RequestPresigningArguments } from '@smithy/types';
 import type { Client, Command } from '@smithy/smithy-client';
+import type { MetadataBearer, RequestPresigningArguments } from '@smithy/types';
 import goldstackConfig from './../goldstack.json';
+import goldstackSchema from './../schemas/package.schema.json';
 
 export const connect = async (deploymentName?: string): Promise<S3Client> => {
   return await templateConnect(goldstackConfig, goldstackSchema, deploymentName);

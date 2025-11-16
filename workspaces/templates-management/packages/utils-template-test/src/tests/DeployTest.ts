@@ -1,8 +1,8 @@
-import type { TemplateTest, RunTestParams } from './../types/TemplateTest';
-import { yarn } from '@goldstack/utils-yarn';
+import { info } from '@goldstack/utils-log';
 import { readPackageConfigFromDir } from '@goldstack/utils-package';
 import { read } from '@goldstack/utils-sh';
-import { info } from '@goldstack/utils-log';
+import { yarn } from '@goldstack/utils-yarn';
+import type { RunTestParams, TemplateTest } from './../types/TemplateTest';
 
 export class DeployTest implements TemplateTest {
   getName(): string {

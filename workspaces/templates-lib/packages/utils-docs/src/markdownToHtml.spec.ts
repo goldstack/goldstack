@@ -1,5 +1,5 @@
-import { markdownToHtml } from './markdownToHtml';
 import { read } from '@goldstack/utils-sh';
+import { markdownToHtml } from './markdownToHtml';
 
 describe('markdownToHtml', () => {
   it('Should render documentation markdown to html', async () => {

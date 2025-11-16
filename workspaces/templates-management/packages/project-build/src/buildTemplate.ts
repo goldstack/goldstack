@@ -5,11 +5,11 @@ import extract from 'extract-zip';
 import { readdirSync } from 'fs';
 import path from 'path';
 import {
-  type ProjectBuildParams,
-  type TemplateReference,
-  assertTemplateReferenceVersion,
   assert,
+  assertTemplateReferenceVersion,
+  type ProjectBuildParams,
   setPackageName,
+  type TemplateReference,
 } from './projectBuild';
 
 export const buildTemplate = async (

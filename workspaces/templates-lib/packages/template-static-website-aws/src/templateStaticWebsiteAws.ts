@@ -3,10 +3,10 @@ import { fatal } from '@goldstack/utils-log';
 import { infraAwsStaticWebsiteCli } from './infraAwsStaticWebsite';
 import type {
   AWSStaticWebsiteConfiguration,
-  AWSStaticWebsitePackage,
+  AWSStaticWebsiteDeployment,
   AWSStaticWebsiteDeploymentConfiguration,
+  AWSStaticWebsitePackage,
 } from './types/AWSStaticWebsitePackage';
-import type { AWSStaticWebsiteDeployment } from './types/AWSStaticWebsitePackage';
 
 export type {
   AWSStaticWebsitePackage,
@@ -15,10 +15,10 @@ export type {
   AWSStaticWebsiteDeploymentConfiguration,
 };
 
-import { PackageConfig } from '@goldstack/utils-package-config';
-import yargs from 'yargs';
 import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
+import { PackageConfig } from '@goldstack/utils-package-config';
 import { infraCommands } from '@goldstack/utils-terraform';
+import yargs from 'yargs';
 
 export { infraAwsStaticWebsiteCli };
 

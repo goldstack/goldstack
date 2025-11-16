@@ -1,10 +1,9 @@
-import type { ProjectData } from '@goldstack/project-repository';
-
 import type { AWSAPIKeyUser } from '@goldstack/infra-aws';
+import type { ProjectData } from '@goldstack/project-repository';
 
 export const wireProjectData = (data: ProjectData): ProjectData => {
   // ensure at least one deployment configured per project
-  data.packageConfigs.map((packageConfig) => {
+  data.packageConfigs.forEach((packageConfig) => {
     const deployments = packageConfig.package.deployments;
     if (deployments.length === 0) {
       deployments.push({

@@ -1,22 +1,22 @@
-import { wrapCli } from '@goldstack/utils-cli';
-import { buildSet } from '@goldstack/template-build-set';
-import { connect, getBucketName } from '@goldstack/template-repository-bucket';
-import { mkdir, rm } from '@goldstack/utils-sh';
-import tmp from 'tmp';
-import { S3TemplateRepository } from '@goldstack/template-repository';
-import yargs from 'yargs';
-import { info } from '@goldstack/utils-log';
-import assert from 'assert';
-import { getAllBuildSets, getBuildSet } from '@goldstack/template-metadata';
 import { SendEmailCommand } from '@aws-sdk/client-ses';
-import { createS3Client, resetMocks } from 'mock-aws-s3-v3';
-import { getAwsConfigPath } from '@goldstack/utils-config';
-import { readConfig } from '@goldstack/infra-aws';
-import { scheduleAllDeploySets } from './scheduleAllDeploySets';
-import fs from 'fs';
-import type { AWSAPIKeyUser } from '@goldstack/infra-aws';
 import { connect as connectSes, getFromDomain } from '@goldstack/goldstack-email-send';
+import type { AWSAPIKeyUser } from '@goldstack/infra-aws';
+import { readConfig } from '@goldstack/infra-aws';
+import { buildSet } from '@goldstack/template-build-set';
+import { getAllBuildSets, getBuildSet } from '@goldstack/template-metadata';
+import { S3TemplateRepository } from '@goldstack/template-repository';
+import { connect, getBucketName } from '@goldstack/template-repository-bucket';
+import { wrapCli } from '@goldstack/utils-cli';
+import { getAwsConfigPath } from '@goldstack/utils-config';
+import { info } from '@goldstack/utils-log';
+import { mkdir, rm } from '@goldstack/utils-sh';
+import assert from 'assert';
+import fs from 'fs';
+import { createS3Client, resetMocks } from 'mock-aws-s3-v3';
 import { join, resolve } from 'path';
+import tmp from 'tmp';
+import yargs from 'yargs';
+import { scheduleAllDeploySets } from './scheduleAllDeploySets';
 
 export const run = async (): Promise<void> => {
   await wrapCli(async (): Promise<any> => {

@@ -1,6 +1,5 @@
-import { generateDocs } from './generateDocs';
-
 import { mkdir } from '@goldstack/utils-sh';
+import { generateDocs } from './generateDocs';
 
 const getDocsDir = (): string => {
   return './../../docs/';

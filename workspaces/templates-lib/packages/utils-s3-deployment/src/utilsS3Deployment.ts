@@ -1,7 +1,7 @@
 import { getAWSUser } from '@goldstack/infra-aws';
-import { resolve } from 'path';
 import { awsCli } from '@goldstack/utils-aws-cli';
 import { logger } from '@goldstack/utils-cli';
+import { resolve } from 'path';
 
 export interface S3UploadParams {
   userName: string;

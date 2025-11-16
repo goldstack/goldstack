@@ -1,10 +1,7 @@
-import React from 'react';
-
 import type { ShortTemplateFeature } from '@goldstack/template-metadata';
-
-import styles from './ProjectTemplateFeatures.module.css';
-
+import React from 'react';
 import { resolveImage } from './imageUtil';
+import styles from './ProjectTemplateFeatures.module.css';
 
 const ProjectTemplateFeature = (props: { feature: ShortTemplateFeature }): JSX.Element => {
   return (

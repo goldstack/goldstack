@@ -1,7 +1,6 @@
 import type { Package } from '@goldstack/utils-package';
-
-import type { DynamoDBConfiguration } from './DynamoDBPackageConfiguration';
 import type { DynamoDBDeployment } from './DynamoDBDeployment';
+import type { DynamoDBConfiguration } from './DynamoDBPackageConfiguration';
 
 export type { DynamoDBConfiguration, DynamoDBDeployment };
 

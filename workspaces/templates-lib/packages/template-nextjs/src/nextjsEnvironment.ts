@@ -1,6 +1,6 @@
+import { info } from '@goldstack/utils-log';
 import { write } from '@goldstack/utils-sh';
 import type { NextjsDeployment } from './types/NextJsPackage';
-import { info } from '@goldstack/utils-log';
 
 export const setNextjsEnvironmentVariables = async (
   deployment: NextjsDeployment,

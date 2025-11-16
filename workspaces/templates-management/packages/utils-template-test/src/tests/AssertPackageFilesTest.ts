@@ -1,5 +1,5 @@
-import type { TemplateTest, RunTestParams } from '../types/TemplateTest';
-import { assertFilesExist, assertFilesDoNotExist } from '../utilsTemplateTest';
+import type { RunTestParams, TemplateTest } from '../types/TemplateTest';
+import { assertFilesDoNotExist, assertFilesExist } from '../utilsTemplateTest';
 
 export class AssertPackageFilesTest implements TemplateTest {
   getName(): string {
