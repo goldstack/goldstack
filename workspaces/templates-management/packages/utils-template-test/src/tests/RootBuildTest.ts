@@ -16,6 +16,10 @@ export class RootBuildTest implements TemplateTest {
     yarn(projectDir, 'lint-fix');
     yarn(projectDir, 'lint');
 
+    // checking (sorting imports) should work
+    yarn(projectDir, 'check-fix');
+    yarn(projectDir, 'check');
+
     // workspace dependencies should be valid
     // some error with package:doctor coming up during local install
     // yarn(projectDir, 'package:doctor');
