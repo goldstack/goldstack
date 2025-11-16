@@ -13,7 +13,9 @@
           "type": "array"
         }
       },
-      "required": ["users"],
+      "required": [
+        "users"
+      ],
       "title": "Hetzner Configuration",
       "type": "object"
     },
@@ -28,7 +30,10 @@
           "type": "string"
         }
       },
-      "required": ["name", "config"],
+      "required": [
+        "name",
+        "config"
+      ],
       "title": "Hetzner User",
       "type": "object"
     },
@@ -39,7 +44,9 @@
           "type": "string"
         }
       },
-      "required": ["token"],
+      "required": [
+        "token"
+      ],
       "type": "object"
     }
   }

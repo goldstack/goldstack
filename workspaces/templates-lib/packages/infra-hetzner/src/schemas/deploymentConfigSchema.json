@@ -25,7 +25,11 @@
           "$ref": "#/definitions/DeploymentName"
         }
       },
-      "required": ["configuration", "hetznerUser", "name"],
+      "required": [
+        "configuration",
+        "hetznerUser",
+        "name"
+      ],
       "type": "object"
     },
     "HetznerUserName": {

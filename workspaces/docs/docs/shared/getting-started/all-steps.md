@@ -34,5 +34,6 @@ Each module you have selected comes with its own instructions about how to get s
 - `yarn test-watch`: Will run tests when modules have changed.
 - `yarn format-check` and `yarn format`: Will check or fix source code formatting using Prettier
 - `yarn lint` and `yarn lint-fix`: Will check or auto-fix linting issues using ESLint.
+- `yarn check` and `yarn check-fix`: Will check and auto-fix import order, linting and formatting issues  
 
 Note that you can run all of these commands in the context of individual modules as well. If you only modify code within one module, this is sufficient. However, if you develop multiple modules at the same time, it is important to run these commands at the project root.

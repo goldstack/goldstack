@@ -12,7 +12,10 @@
           "$ref": "#/definitions/DeploymentName"
         }
       },
-      "required": ["name", "configuration"],
+      "required": [
+        "name",
+        "configuration"
+      ],
       "title": "Deployment",
       "type": "object"
     },

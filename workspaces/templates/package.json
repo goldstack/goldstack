@@ -19,6 +19,8 @@
     "infra": "yarn workspaces foreach -W run infra \"$@\"",
     "lint": "biome lint",
     "lint-fix": "biome lint --write",
+    "check": "biome check",
+    "check-fix": "biome check --write",
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
     "test": "yarn workspaces foreach -Wv run test",
     "test-watch": "nodemonx --watch . --exec 'yarn test'"

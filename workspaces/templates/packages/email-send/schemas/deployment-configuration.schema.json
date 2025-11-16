@@ -12,7 +12,10 @@
           "$ref": "#/definitions/HostedZoneDomain"
         }
       },
-      "required": ["domain", "hostedZoneDomain"]
+      "required": [
+        "domain",
+        "hostedZoneDomain"
+      ]
     },
     "EmailDomain": {
       "type": "string",

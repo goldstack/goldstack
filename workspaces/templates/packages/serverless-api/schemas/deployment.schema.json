@@ -27,7 +27,12 @@
           "$ref": "#/definitions/AWSUserName"
         }
       },
-      "required": ["awsRegion", "awsUser", "configuration", "name"]
+      "required": [
+        "awsRegion",
+        "awsUser",
+        "configuration",
+        "name"
+      ]
     },
     "DeploymentName": {
       "type": "string",
@@ -57,7 +62,11 @@
           "$ref": "#/definitions/LambdaRoutesConfig"
         }
       },
-      "required": ["apiDomain", "hostedZoneDomain", "lambdas"]
+      "required": [
+        "apiDomain",
+        "hostedZoneDomain",
+        "lambdas"
+      ]
     },
     "APIDomain": {
       "type": "string",
@@ -93,7 +102,10 @@
           "type": "string"
         }
       },
-      "required": ["function_name", "route"],
+      "required": [
+        "function_name",
+        "route"
+      ],
       "additionalProperties": false
     },
     "TerraformVariables": {
