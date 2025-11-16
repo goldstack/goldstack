@@ -6,7 +6,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "jsx": "react-jsx",
-    "module": "ES2015",
+    "module": "node16",
     "baseUrl": "."
   },
   "references": [
