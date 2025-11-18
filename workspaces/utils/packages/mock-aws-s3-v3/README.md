@@ -33,7 +33,7 @@ The following operations are currently supported in this mock:
 - CreateBucketCommand
 - DeleteBucketCommand
 - ListObjectsCommand
-- ListObjectsV2Command
+- ListObjectsV2Command (see issue [#454](https://github.com/goldstack/goldstack/issues/454))
 - DeleteObjectsCommand
 - DeleteObjectCommand
 - GetObjectCommand
