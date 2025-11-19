@@ -72,7 +72,7 @@ export const createNoInfraBuildSetConfig = async (): Promise<DeploySetConfig> =>
             packageName: 's3-1',
             configuration: {},
             deployments: [],
-            packageTests: ['assert-package-files'],
+            packageTests: ['assert-package-files', 'ignore-missing-deployments-test'],
             packageCleanUp: [],
           },
           {

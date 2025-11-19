@@ -15,6 +15,7 @@ import { AssertWebsiteTest } from './tests/AssertWebsiteTest';
 import { DeployTest } from './tests/DeployTest';
 import { DestroyStateTest } from './tests/DestroyStateTest';
 import { EnsureBabelRcDoesNotExist } from './tests/EnsureBabelRcDoesNotExist';
+import { IgnoreMissingDeploymentsTest } from './tests/IgnoreMissingDeploymentsTest';
 import { InfraDestroyTest } from './tests/InfraDestroyTest';
 import { InfraPlanTest } from './tests/InfraPlanTest';
 import { InfraUpTest } from './tests/InfraUpTest';
@@ -77,6 +78,7 @@ export const getTemplateTests = (): TemplateTest[] => {
     new AssertApplicationTest(),
     new AssertWebsiteTest(),
     new EnsureBabelRcDoesNotExist(),
+    new IgnoreMissingDeploymentsTest(),
   ];
 };
 
