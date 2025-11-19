@@ -12,11 +12,16 @@ import type { HetznerDeployment } from './types/HetznerDeployment';
 
 export type { HetznerUser, HetznerDeployment };
 
+export interface ReadDeploymentFromPackageConfigOptions {
+  deploymentName: string;
+  path?: string;
+  ignoreMissing?: boolean;
+}
+
 export const readDeploymentFromPackageConfig = (
-  deploymentName: string,
-  path?: string,
-  ignoreMissing?: boolean,
+  options: ReadDeploymentFromPackageConfigOptions,
 ): HetznerDeployment | null => {
+  const { deploymentName, path, ignoreMissing } = options;
   const packageConfig = readPackageConfig(path);
 
   const deployment = packageConfig.deployments.find((d) => d.name === deploymentName);

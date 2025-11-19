@@ -187,11 +187,10 @@ export const terraformAwsCli = async (
 export async function initTerraformEnvironment(args: string[], ignoreMissingDeployments?: boolean) {
   const deploymentName = args[1];
 
-  const deployment = readDeploymentFromPackageConfig(
+  const deployment = readDeploymentFromPackageConfig({
     deploymentName,
-    undefined,
-    ignoreMissingDeployments,
-  );
+    ignoreMissing: ignoreMissingDeployments,
+  });
 
   if (!deployment && ignoreMissingDeployments) {
     // Deployment doesn't exist and we're ignoring missing deployments

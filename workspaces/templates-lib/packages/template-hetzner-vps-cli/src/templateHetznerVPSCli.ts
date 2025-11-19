@@ -46,7 +46,19 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'infra') {
-      const deployment = packageConfig.getDeployment(opArgs[1]);
+      const ignoreMissingDeployments = args.includes('--ignore-missing-deployments');
+      let deployment: HetznerVPSDeployment | undefined;
+
+      try {
+        deployment = packageConfig.getDeployment(opArgs[1]);
+      } catch (e) {
+        if (ignoreMissingDeployments) {
+          console.warn(`Warning: Deployment '${opArgs[1]}' does not exist. Skipping operation.`);
+          return;
+        }
+        throw e;
+      }
+
       const infrastructureOp = opArgs[0];
       info(`Running infrastructure operation ${infrastructureOp} for ${deployment.name}`);
       // use remote managed state from Terraform
@@ -57,7 +69,12 @@ export const run = async (args: string[]): Promise<void> => {
         return;
       }
 
-      const { awsProvider } = await initTerraformEnvironment(opArgs);
+      const envResult = await initTerraformEnvironment(opArgs, ignoreMissingDeployments);
+      if (!envResult) {
+        console.warn(`Warning: Deployment '${opArgs[1]}' does not exist. Skipping operation.`);
+        return;
+      }
+      const { awsProvider } = envResult;
       await terraformHetznerCli(opArgs, awsProvider);
 
       return;

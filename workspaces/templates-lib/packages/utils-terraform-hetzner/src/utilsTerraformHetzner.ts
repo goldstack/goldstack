@@ -38,11 +38,10 @@ export const terraformHetznerCli = async (
   const ignoreMissingDeployments = args.includes('--ignore-missing-deployments');
   const deploymentName = args[1];
 
-  const deployment = readDeploymentFromPackageConfig(
+  const deployment = readDeploymentFromPackageConfig({
     deploymentName,
-    undefined,
-    ignoreMissingDeployments,
-  );
+    ignoreMissing: ignoreMissingDeployments,
+  });
 
   if (!deployment && ignoreMissingDeployments) {
     // Deployment doesn't exist and we're ignoring missing deployments
