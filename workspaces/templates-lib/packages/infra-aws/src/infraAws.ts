@@ -58,20 +58,16 @@ process.env.AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = '1';
 export interface ReadDeploymentFromPackageConfigOptions {
   deploymentName: string;
   path?: string;
-  ignoreMissing?: boolean;
 }
 
 export const readDeploymentFromPackageConfig = (
   options: ReadDeploymentFromPackageConfigOptions,
-): AWSDeployment | null => {
-  const { deploymentName, path, ignoreMissing } = options;
+): AWSDeployment => {
+  const { deploymentName, path } = options;
   const packageConfig = readPackageConfig(path);
 
   const deployment = packageConfig.deployments.find((d) => d.name === deploymentName);
   if (!deployment) {
-    if (ignoreMissing) {
-      return null;
-    }
     throw new Error('Cannot find deployment with name: ' + deploymentName);
   }
 

@@ -12,7 +12,7 @@ e.g. don't use `import { getNotionToken } from 'notion-data/src/user/getNotionTo
   - yarn build
   - yarn test (preferred at package folder)
 - For compilation, always prefer to run yarn compile in the project root
-
+- For all Git commands, add --no-pager 
 - To check formatting (uses Biome JS), use `yarn format-check` in the project root
 - To check linting (uses Biome JS), use `yarn lint` in the project root
 - DO NOT use npx to run Biome - only use the commands above

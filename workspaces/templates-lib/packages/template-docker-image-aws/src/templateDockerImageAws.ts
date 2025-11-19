@@ -78,7 +78,8 @@ export const run = async (args: string[]): Promise<void> => {
     if (command === 'infra') {
       const deploymentName = opArgs[1];
       const ignoreMissingDeployments = args.includes('--ignore-missing-deployments');
-      let deployment: AWSDockerImageDeployment | undefined;
+
+      let deployment: AWSDockerImageDeployment;
 
       try {
         deployment = packageConfig.getDeployment(deploymentName);

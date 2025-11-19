@@ -47,7 +47,7 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'infra') {
       const ignoreMissingDeployments = args.includes('--ignore-missing-deployments');
-      let deployment: HetznerVPSDeployment | undefined;
+      let deployment: HetznerVPSDeployment;
 
       try {
         deployment = packageConfig.getDeployment(opArgs[1]);
@@ -69,12 +69,7 @@ export const run = async (args: string[]): Promise<void> => {
         return;
       }
 
-      const envResult = await initTerraformEnvironment(opArgs, ignoreMissingDeployments);
-      if (!envResult) {
-        console.warn(`Warning: Deployment '${opArgs[1]}' does not exist. Skipping operation.`);
-        return;
-      }
-      const { awsProvider } = envResult;
+      const { awsProvider } = await initTerraformEnvironment(opArgs);
       await terraformHetznerCli(opArgs, awsProvider);
 
       return;
