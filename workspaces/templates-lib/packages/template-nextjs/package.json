@@ -67,7 +67,7 @@
     "yargs": "^17.5.1"
   },
   "devDependencies": {
-    "@aws-sdk/types": "^3.893.0",
+    "@aws-sdk/types": "^3.930.0",
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-git": "0.2.18",
     "@goldstack/utils-package-config-generate": "0.3.19",

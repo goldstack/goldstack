@@ -41,8 +41,8 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@aws-sdk/credential-providers": "^3.896.0",
-    "@aws-sdk/types": "^3.893.0",
+    "@aws-sdk/credential-providers": "3.934.0",
+    "@aws-sdk/types": "^3.930.0",
     "@goldstack/infra": "0.4.28",
     "@goldstack/infra-aws": "0.4.42",
     "@goldstack/infra-hetzner": "0.1.23",
