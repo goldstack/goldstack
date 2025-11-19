@@ -159,6 +159,10 @@
 <p>If you want to interact with the remote backend, you can also provide the <code class="inline">--inject-backend-config</code> option, such as for running <code class="inline">terraform init</code>:</p>
 <pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra terraform <span class="token punctuation">[</span>deployment<span class="token punctuation">]</span> --inject-backend-config init
 </code></pre>
+<p>By default, if you provide a deployment name that does not exist, the command will fail. In CI environments or for larger projects, it sometimes makes sense to run <code class="inline">yarn infra xx</code> over the whole project and skip packages for which the deployment is not defined. In that case, you can use the following flag:</p>
+<pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra <span class="token punctuation">[</span>command<span class="token punctuation">]</span> <span class="token punctuation">[</span>deployment<span class="token punctuation">]</span> --ignore-missing-deployments
+</code></pre>
+<p>Now the CLI will output a warning if the deployment does not exist but not an error.</p>
 <h3 class="heading"><span id="customizing-terraform-1"></span><a href="#customizing-terraform-1"><span id="customizing-terraform"></span><a href="#customizing-terraform" class="relative">Customizing Terraform</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>

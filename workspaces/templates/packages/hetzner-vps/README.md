@@ -137,6 +137,14 @@ If you want to interact with the remote backend, you can also provide the `--inj
 yarn infra terraform [deployment] --inject-backend-config init
 ```
 
+By default, if you provide a deployment name that does not exist, the command will fail. In CI environments or for larger projects, it sometimes makes sense to run `yarn infra xx` over the whole project and skip packages for which the deployment is not defined. In that case, you can use the following flag:
+
+```bash
+yarn infra [command] [deployment] --ignore-missing-deployments
+```
+
+Now the CLI will output a warning if the deployment does not exist but not an error.
+
 ### Customizing Terraform
 
 Goldstack templates make it very easy to customize infrastructure to your specific needs. The easiest way to do this is to simply edit the `*.tf` files in the `infra/aws` folder. You can make the changes you need and then run `yarn infra up [deploymentName]` to apply the changes.

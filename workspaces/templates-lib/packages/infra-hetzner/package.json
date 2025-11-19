@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/infra-hetzner",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "Utilities to work with Hetzner infrastructure via the cli.",
   "keywords": [
     "goldstack",
