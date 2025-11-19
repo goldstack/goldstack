@@ -12,10 +12,15 @@ import type { HetznerDeployment } from './types/HetznerDeployment';
 
 export type { HetznerUser, HetznerDeployment };
 
+export interface ReadDeploymentFromPackageConfigOptions {
+  deploymentName: string;
+  path?: string;
+}
+
 export const readDeploymentFromPackageConfig = (
-  deploymentName: string,
-  path?: string,
+  options: ReadDeploymentFromPackageConfigOptions,
 ): HetznerDeployment => {
+  const { deploymentName, path } = options;
   const packageConfig = readPackageConfig(path);
 
   const deployment = packageConfig.deployments.find((d) => d.name === deploymentName);

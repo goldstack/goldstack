@@ -23,33 +23,41 @@ export const infraCommands = (): any => {
       demandOption: true,
     });
   };
+
+  const ignoreMissingDeploymentsOption = (yargs: Argv<any>): Argv<any> => {
+    return yargs.option('ignore-missing-deployments', {
+      description: 'If the deployment does not exist, show a warning instead of failing.',
+      default: false,
+      demandOption: false,
+      type: 'boolean',
+    });
+  };
+
   return (yargs: Argv<any>): Argv<any> => {
     return yargs
       .command(
         'up <deployment>',
         'Stands up infrastructure for the specified deployment',
-        deploymentPositional,
+        (yargs) => deploymentPositional(ignoreMissingDeploymentsOption(yargs)),
       )
       .command(
         'init <deployment>',
         'Initialises Terraform working directory for deployment',
-        deploymentPositional,
+        (yargs) => deploymentPositional(ignoreMissingDeploymentsOption(yargs)),
       )
-      .command(
-        'plan <deployment>',
-        'Creates a Terraform execution plan for deployment',
-        deploymentPositional,
+      .command('plan <deployment>', 'Creates a Terraform execution plan for deployment', (yargs) =>
+        deploymentPositional(ignoreMissingDeploymentsOption(yargs)),
       )
       .command(
         'apply <deployment>',
         'Applies the last Terraform execution plan calculated using `infra plan`',
-        deploymentPositional,
+        (yargs) => deploymentPositional(ignoreMissingDeploymentsOption(yargs)),
       )
       .command(
         'destroy <deployment>',
         'DANGER: Destroys all deployed infrastructure for the deployment',
         (yargs) => {
-          return deploymentPositional(yargs).option('yes', {
+          return deploymentPositional(ignoreMissingDeploymentsOption(yargs)).option('yes', {
             alias: 'y',
             description:
               'DANGER: If provided, confirmation for deleting infrastructure resources will be skipped.',
@@ -62,13 +70,13 @@ export const infraCommands = (): any => {
       .command(
         'is-up <deployment>',
         'Checks whether infrastructure for a deployment is currently provisioned.',
-        deploymentPositional,
+        (yargs) => deploymentPositional(ignoreMissingDeploymentsOption(yargs)),
       )
       .command(
         'destroy-state <deployment>',
         'DANGER: Destroys the remote state stored for this deployment.',
         (yargs) => {
-          return deploymentPositional(yargs).option('yes', {
+          return deploymentPositional(ignoreMissingDeploymentsOption(yargs)).option('yes', {
             alias: 'y',
             description:
               'DANGER: If provided, confirmation for deleting remote state will be skipped.',
@@ -81,24 +89,27 @@ export const infraCommands = (): any => {
       .command(
         'create-state <deployment>',
         'Creates a remote state for this deployment if it does not already exist.',
-        deploymentPositional,
+        (yargs) => deploymentPositional(ignoreMissingDeploymentsOption(yargs)),
       )
       .command(
         'upgrade <deployment> <targetVersion>',
         'Upgrades Terraform version to a new target version (experimental)',
         (yargs) => {
-          return deploymentPositional(yargs).positional('targetVersion', {
-            type: 'string',
-            description: 'Provides the target Terraform version that should be migrated to.',
-            demandOption: true,
-          });
+          return deploymentPositional(ignoreMissingDeploymentsOption(yargs)).positional(
+            'targetVersion',
+            {
+              type: 'string',
+              description: 'Provides the target Terraform version that should be migrated to.',
+              demandOption: true,
+            },
+          );
         },
       )
       .command(
         'terraform <deployment> [command..]',
         'Runs an arbitrary Terraform CLI command',
         (yargs) => {
-          return deploymentPositional(yargs)
+          return deploymentPositional(ignoreMissingDeploymentsOption(yargs))
             .option('inject-variables', {
               description: 'Injects variables into the Terraform CLI command.',
               default: false,

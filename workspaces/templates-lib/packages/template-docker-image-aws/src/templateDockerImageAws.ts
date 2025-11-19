@@ -77,7 +77,22 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'infra') {
       const deploymentName = opArgs[1];
-      const deployment = packageConfig.getDeployment(deploymentName);
+      const ignoreMissingDeployments = args.includes('--ignore-missing-deployments');
+
+      let deployment: AWSDockerImageDeployment;
+
+      try {
+        deployment = packageConfig.getDeployment(deploymentName);
+      } catch (e) {
+        if (ignoreMissingDeployments) {
+          console.warn(
+            `Warning: Deployment '${deploymentName}' does not exist. Skipping operation.`,
+          );
+          return;
+        }
+        throw e;
+      }
+
       await infraAwsDockerImageCli(config, deployment, opArgs);
       return;
     }

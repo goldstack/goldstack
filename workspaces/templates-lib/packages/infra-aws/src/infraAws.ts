@@ -55,10 +55,15 @@ export type {
 // deactivate warning message while v3 upgrade in process
 process.env.AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = '1';
 
+export interface ReadDeploymentFromPackageConfigOptions {
+  deploymentName: string;
+  path?: string;
+}
+
 export const readDeploymentFromPackageConfig = (
-  deploymentName: string,
-  path?: string,
+  options: ReadDeploymentFromPackageConfigOptions,
 ): AWSDeployment => {
+  const { deploymentName, path } = options;
   const packageConfig = readPackageConfig(path);
 
   const deployment = packageConfig.deployments.find((d) => d.name === deploymentName);

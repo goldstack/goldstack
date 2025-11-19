@@ -115,8 +115,23 @@ export const terraformAwsCli = async (
   args: string[],
   options?: TerraformOptions,
 ): Promise<void> => {
-  const { awsTerraformConfig, deployment, credentials, awsProvider } =
-    await initTerraformEnvironment(args);
+  const ignoreMissingDeployments = args.includes('--ignore-missing-deployments');
+
+  let awsTerraformConfig: AWSTerraformState;
+  let deployment: AWSDeployment;
+  let credentials: AwsCredentialIdentity;
+  let awsProvider: AWSCloudProvider;
+
+  try {
+    const envResult = await initTerraformEnvironment(args);
+    ({ awsTerraformConfig, deployment, credentials, awsProvider } = envResult);
+  } catch (e) {
+    if (ignoreMissingDeployments) {
+      console.warn(`Warning: Deployment '${args[1]}' does not exist. Skipping operation.`);
+      return;
+    }
+    throw e;
+  }
 
   const projectHash = crypto.randomBytes(20).toString('hex');
 
@@ -175,7 +190,9 @@ export const terraformAwsCli = async (
 export async function initTerraformEnvironment(args: string[]) {
   const deploymentName = args[1];
 
-  const deployment = readDeploymentFromPackageConfig(deploymentName);
+  const deployment = readDeploymentFromPackageConfig({
+    deploymentName,
+  });
 
   const awsUser = await getAWSUser(deployment.awsUser);
   const credentials = await getAWSCredentials(awsUser);

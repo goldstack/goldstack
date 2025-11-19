@@ -35,9 +35,22 @@ export const terraformHetznerCli = async (
   provider: AWSCloudProvider,
   options?: TerraformOptions,
 ): Promise<void> => {
+  const ignoreMissingDeployments = args.includes('--ignore-missing-deployments');
   const deploymentName = args[1];
 
-  const deployment = readDeploymentFromPackageConfig(deploymentName);
+  let deployment: any;
+
+  try {
+    deployment = readDeploymentFromPackageConfig({
+      deploymentName,
+    });
+  } catch (e) {
+    if (ignoreMissingDeployments) {
+      console.warn(`Warning: Deployment '${deploymentName}' does not exist. Skipping operation.`);
+      return;
+    }
+    throw e;
+  }
 
   const user = await getHetznerUser(deployment.hetznerUser);
 
