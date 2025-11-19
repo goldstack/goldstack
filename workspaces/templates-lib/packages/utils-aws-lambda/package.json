@@ -42,7 +42,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@aws-sdk/types": "^3.893.0",
+    "@aws-sdk/types": "^3.930.0",
     "@goldstack/infra-aws": "0.4.42",
     "@goldstack/utils-aws-cli": "0.4.43",
     "@goldstack/utils-log": "0.3.24",
