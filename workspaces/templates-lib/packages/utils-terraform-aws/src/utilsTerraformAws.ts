@@ -115,8 +115,20 @@ export const terraformAwsCli = async (
   args: string[],
   options?: TerraformOptions,
 ): Promise<void> => {
-  const { awsTerraformConfig, deployment, credentials, awsProvider } =
-    await initTerraformEnvironment(args);
+  const ignoreMissingDeployments = args.includes('--ignore-missing-deployments');
+  const envResult = await initTerraformEnvironment(args, ignoreMissingDeployments);
+
+  if (!envResult) {
+    if (ignoreMissingDeployments) {
+      // Deployment doesn't exist and we're ignoring missing deployments
+      console.warn(`Warning: Deployment '${args[1]}' does not exist. Skipping operation.`);
+      return;
+    } else {
+      throw new Error('Cannot find deployment with name: ' + args[1]);
+    }
+  }
+
+  const { awsTerraformConfig, deployment, credentials, awsProvider } = envResult;
 
   const projectHash = crypto.randomBytes(20).toString('hex');
 
@@ -172,10 +184,23 @@ export const terraformAwsCli = async (
   });
 };
 
-export async function initTerraformEnvironment(args: string[]) {
+export async function initTerraformEnvironment(args: string[], ignoreMissingDeployments?: boolean) {
   const deploymentName = args[1];
 
-  const deployment = readDeploymentFromPackageConfig(deploymentName);
+  const deployment = readDeploymentFromPackageConfig(
+    deploymentName,
+    undefined,
+    ignoreMissingDeployments,
+  );
+
+  if (!deployment && ignoreMissingDeployments) {
+    // Deployment doesn't exist and we're ignoring missing deployments
+    return null;
+  }
+
+  if (!deployment) {
+    throw new Error('Cannot find deployment with name: ' + deploymentName);
+  }
 
   const awsUser = await getAWSUser(deployment.awsUser);
   const credentials = await getAWSCredentials(awsUser);

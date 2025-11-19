@@ -15,11 +15,15 @@ export type { HetznerUser, HetznerDeployment };
 export const readDeploymentFromPackageConfig = (
   deploymentName: string,
   path?: string,
-): HetznerDeployment => {
+  ignoreMissing?: boolean,
+): HetznerDeployment | null => {
   const packageConfig = readPackageConfig(path);
 
   const deployment = packageConfig.deployments.find((d) => d.name === deploymentName);
   if (!deployment) {
+    if (ignoreMissing) {
+      return null;
+    }
     throw new Error('Cannot find deployment with name: ' + deploymentName);
   }
 
