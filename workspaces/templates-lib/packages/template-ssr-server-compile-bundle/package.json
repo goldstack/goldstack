@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-ssr-server-compile-bundle",
-  "version": "0.3.72",
+  "version": "0.3.73",
   "description": "Utility for compiling client side bundles for SSR application",
   "keywords": [
     "goldstack",
@@ -45,7 +45,7 @@
     "@goldstack/utils-package-config-embedded": "0.5.29",
     "@goldstack/utils-sh": "0.5.27",
     "@goldstack/utils-template": "0.4.28",
-    "@goldstack/utils-terraform": "0.4.55",
+    "@goldstack/utils-terraform": "0.4.56",
     "@types/aws-lambda": "^8.10.147",
     "esbuild": "^0.25.6",
     "lambda-compression": "0.2.21",
