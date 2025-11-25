@@ -363,8 +363,10 @@ export class TerraformBuild {
         provider,
         options: ['-json'],
         version,
+        silent: true,
       }).trim();
 
+      console.log('Terraform Output:', res);
       const deploymentState = readDeploymentState('./../../', deploymentName, {
         createIfNotExist: true,
       });
