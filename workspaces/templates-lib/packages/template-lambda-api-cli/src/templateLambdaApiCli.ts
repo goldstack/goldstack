@@ -33,6 +33,11 @@ export const run = async (args: string[]): Promise<void> => {
           default: '',
         });
       })
+      .option('ignore-missing-deployments', {
+        type: 'boolean',
+        describe: 'Ignore missing deployments',
+        default: false,
+      })
       .help()
       .parse();
 
@@ -59,18 +64,16 @@ export const run = async (args: string[]): Promise<void> => {
     });
     writePackageConfig(config);
 
-    const command = argv._[0];
-    const [, , , ...opArgs] = args;
+    const command = argv._[0] as string;
+    const deploymentName = argv._[1] as string;
+    const routeFilterArg = argv._[2] as string;
+    const routeFilter = routeFilterArg ? `*${routeFilterArg}*` : undefined;
 
-    const nonFlagArgs = opArgs.filter((arg) => arg !== '--ignore-missing-deployments');
-    const deploymentName = nonFlagArgs[0];
-    const routeFilter = nonFlagArgs[1] ? `*${nonFlagArgs[1]}*` : undefined;
-
-    if (routeFilter) {
+    if (routeFilter && (command === 'build' || command === 'deploy')) {
       filteredLambdaRoutes = filteredLambdaRoutes.filter((el) => {
         const result =
-          outmatch(`**/*${nonFlagArgs[1]}*`)(el.relativeFilePath) ||
-          outmatch(`**/*${nonFlagArgs[1]}*/*`)(el.relativeFilePath);
+          outmatch(`**/*${routeFilterArg}*`)(el.relativeFilePath) ||
+          outmatch(`**/*${routeFilterArg}*/*`)(el.relativeFilePath);
         debug(
           `Filtering lambdas. Testing: ${
             el.relativeFilePath
@@ -80,7 +83,7 @@ export const run = async (args: string[]): Promise<void> => {
       });
       if (filteredLambdaRoutes.length === 0) {
         warn(
-          `Cannot perform command '${command}'. No routes match supplied filter ${nonFlagArgs[1]}.`,
+          `Cannot perform command '${command}'. No routes match supplied filter ${routeFilterArg}.`,
         );
         return;
       }
@@ -88,7 +91,7 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'infra') {
-      await terraformAwsCli(opArgs, {
+      await terraformAwsCli(argv._.slice(1), {
         // temporary workaround for https://github.com/goldstack/goldstack/issues/40
         parallelism: 1,
       });
@@ -96,6 +99,10 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'build') {
+      if (!packageConfig.hasDeployment(deploymentName)) {
+        warn(`Deployment '${deploymentName}' does not exist. Skipping build.`);
+        return;
+      }
       const deployment = packageConfig.getDeployment(deploymentName);
       await buildFunctions({
         routesDir: defaultRoutesPath,
