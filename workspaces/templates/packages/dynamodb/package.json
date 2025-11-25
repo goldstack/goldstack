@@ -16,7 +16,7 @@
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
-    "deploy": "yarn template deploy \"$@\"",
+    "deploy": "yarn template deploy $@",
     "infra": "yarn template infra",
     "template": "yarn template-ts",
     "template-ts": "ts-node --swc src/template.ts",
