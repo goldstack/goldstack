@@ -67,7 +67,7 @@ export const run = async ({
     const [, , , ...opArgs] = args;
 
     if (command === 'infra') {
-      const deploymentName = opArgs[1];
+      const deploymentName = argv.deployment;
       if (!packageConfig.hasDeployment(deploymentName)) {
         if (argv['ignore-missing-deployments']) {
           warn(
@@ -78,16 +78,16 @@ export const run = async ({
           throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
         }
       }
-      await dynamoDBCli(migrations, ['init', opArgs[1]]);
+      await dynamoDBCli(migrations, ['init', deploymentName]);
       await terraformAwsCli(opArgs);
       if (opArgs[0] === 'destroy') {
-        await dynamoDBCli(migrations, ['delete', opArgs[1]]);
+        await dynamoDBCli(migrations, ['delete', deploymentName]);
       }
       return;
     }
 
     if (command === 'deploy') {
-      const deploymentName = opArgs[0];
+      const deploymentName = argv.deployment;
       if (!packageConfig.hasDeployment(deploymentName)) {
         if (argv['ignore-missing-deployments']) {
           warn(
