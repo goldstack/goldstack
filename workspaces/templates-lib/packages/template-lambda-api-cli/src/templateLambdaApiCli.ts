@@ -62,27 +62,29 @@ export const run = async (args: string[]): Promise<void> => {
     const command = argv._[0];
     const [, , , ...opArgs] = args;
 
-    if (command === 'build' || command === 'deploy') {
-      if (opArgs.length === 2) {
-        filteredLambdaRoutes = filteredLambdaRoutes.filter((el) => {
-          const result =
-            outmatch(`**/*${opArgs[1]}*`)(el.relativeFilePath) ||
-            outmatch(`**/*${opArgs[1]}*/*`)(el.relativeFilePath);
-          debug(
-            `Filtering lambdas. Testing: ${
-              el.relativeFilePath
-            } to match ${`*${opArgs[1]}*`}. Result: ${result}`,
-          );
-          return result;
-        });
-        if (filteredLambdaRoutes.length === 0) {
-          warn(
-            `Cannot perform command '${command}'. No routes match supplied filter ${opArgs[1]}.`,
-          );
-          return;
-        }
-        // console.log(filteredLambdaRoutes);
+    const nonFlagArgs = opArgs.filter((arg) => arg !== '--ignore-missing-deployments');
+    const deploymentName = nonFlagArgs[0];
+    const routeFilter = nonFlagArgs[1] ? `*${nonFlagArgs[1]}*` : undefined;
+
+    if (routeFilter) {
+      filteredLambdaRoutes = filteredLambdaRoutes.filter((el) => {
+        const result =
+          outmatch(`**/*${nonFlagArgs[1]}*`)(el.relativeFilePath) ||
+          outmatch(`**/*${nonFlagArgs[1]}*/*`)(el.relativeFilePath);
+        debug(
+          `Filtering lambdas. Testing: ${
+            el.relativeFilePath
+          } to match ${routeFilter}. Result: ${result}`,
+        );
+        return result;
+      });
+      if (filteredLambdaRoutes.length === 0) {
+        warn(
+          `Cannot perform command '${command}'. No routes match supplied filter ${nonFlagArgs[1]}.`,
+        );
+        return;
       }
+      // console.log(filteredLambdaRoutes);
     }
 
     if (command === 'infra') {
@@ -94,11 +96,7 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'build') {
-      const deployment = packageConfig.getDeployment(opArgs[0]);
-      let routeFilter: undefined | string;
-      if (opArgs.length === 2) {
-        routeFilter = `*${opArgs[1]}*`;
-      }
+      const deployment = packageConfig.getDeployment(deploymentName);
       await buildFunctions({
         routesDir: defaultRoutesPath,
         buildOptions: defaultBuildOptions(),
@@ -112,7 +110,6 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'deploy') {
-      const deploymentName = opArgs[0];
       if (!packageConfig.hasDeployment(deploymentName)) {
         if (argv['ignore-missing-deployments']) {
           warn(

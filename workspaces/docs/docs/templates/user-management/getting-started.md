@@ -4,7 +4,40 @@
 
 Note you will want to combine this template with another template to host a UI and provide a web server. We recommend to use the [react-ssr template](https://goldstack.party/templates/server-side-rendering).
 
-### 3. Development (Client)
+### 3. Apply Branding to UI
+
+When deploying the infrastructure out of the box, the interface for the login flow is very basic.
+
+It is very tricky to improve this design using the UI, so we recommend that you customise the styling through the Cognito Web interface on the AWS console.
+
+This also generally applies for this template - make changes through the console, since that is safer.
+
+The AWS documentation provides a good starting point for customising the styling:
+
+[Apply branding to managed login pages](https://docs.aws.amazon.com/cognito/latest/developerguide/managed-login-branding.html)
+
+By default, this template will deploy a 'Hosted UI', so the first thing you would want to do is switch to the 'Managed login'.
+
+This is how you can do that:
+
+- Head to Cognito in the AWS console
+- On the side menu select 'Branding / Domain' 
+- In the 'Custom Domain' section click [Edit] and the 'Edit custom domain branding version'
+- Then switch to 'Managed login - Recommended'
+- Click [Save changes]
+
+Now we can start doing the styling:
+
+- On the side menu select 'Branding / Managed login'
+- Then scroll down to 'Styles'
+- Click [Create a style]
+- Select your app client
+- Click [Create]
+
+You can start customising your styling from here, please see the [AWS Documentation](https://docs.aws.amazon.com/cognito/latest/developerguide/managed-login-branding.html) on how to do that.
+
+
+### 4. Development (Client)
 
 This template will be most useful when combined with a templates that provide a user interface and API. For any UI and API modules in your project that require authentication, add the `user-management` package to their dependencies:
 
@@ -56,7 +89,7 @@ async function logoutUser() {
 }
 ```
 
-### 4. Development (Server)
+### 5. Development (Server)
 
 If you want to validate if calls to an API have been made by authenticated users, add the `user-management` module to the dependencies of the server-side module:
 
