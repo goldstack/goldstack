@@ -345,6 +345,8 @@ This template can be packaged up and deployed to the deployments specified in `g
 yarn deploy [deploymentName]
 ```
 
+This command supports the flag `--ignore-missing-deployments`. If this is not provided, the command will fail if the deployment does not exist. If the flag is provided, only a warning will be shown. This is useful if not all components of an application are required for all deployments.
+
 You can deploy each of the routes individually since they are all packaged up into individual lambdas. Provide a pattern that matches the filename/path of the route you want to deploy:
 
 ```bash

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package",
-  "version": "0.4.28",
+  "version": "0.4.29",
   "description": "Utilities to work with Goldstack package configurations.",
   "keywords": [
     "goldstack",

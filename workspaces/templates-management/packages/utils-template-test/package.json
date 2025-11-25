@@ -26,7 +26,7 @@
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/utils-config": "0.4.28",
     "@goldstack/utils-log": "0.3.24",
-    "@goldstack/utils-package": "0.4.28",
+    "@goldstack/utils-package": "0.4.29",
     "@goldstack/utils-sh": "0.5.27",
     "@goldstack/utils-template": "0.4.28",
     "@goldstack/utils-yarn": "0.4.30",

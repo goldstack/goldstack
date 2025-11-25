@@ -430,7 +430,8 @@ jest<span class="token punctuation">.</span><span class="token method function p
 </svg></span></h2>
 <p></p><div class="markdown-fragment"><p>This template can be packaged up and deployed to the deployments specified in <code class="inline">goldstack.json</code>. Note that deployment will only work <em>after</em> the infrastructure for the respective deployment has been stood up. To deploy your package, run the following script:</p>
 <pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> deploy <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
-</code></pre></div><p></p>
+</code></pre>
+<p>This command supports the flag <code class="inline">--ignore-missing-deployments</code>. If this is not provided, the command will fail if the deployment does not exist. If the flag is provided, only a warning will be shown. This is useful if not all components of an application are required for all deployments.</p></div><p></p>
 <p>You can deploy each of the routes individually since they are all packaged up into individual lambdas. Provide a pattern that matches the filename/path of the route you want to deploy:</p>
 <pre class="language-bash"><code class="language-bash"><span class="token function">yarn</span> deploy <span class="token punctuation">[</span>deployment<span class="token punctuation">]</span> <span class="token punctuation">[</span>route pattern<span class="token punctuation">]</span>
 </code></pre>

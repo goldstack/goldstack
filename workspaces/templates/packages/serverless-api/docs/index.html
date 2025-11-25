@@ -360,7 +360,8 @@
 </svg></span></h2>
 <p></p><div class="markdown-fragment"><p>This template can be packaged up and deployed to the deployments specified in <code class="inline">goldstack.json</code>. Note that deployment will only work <em>after</em> the infrastructure for the respective deployment has been stood up. To deploy your package, run the following script:</p>
 <pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> deploy <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
-</code></pre></div><p></p>
+</code></pre>
+<p>This command supports the flag <code class="inline">--ignore-missing-deployments</code>. If this is not provided, the command will fail if the deployment does not exist. If the flag is provided, only a warning will be shown. This is useful if not all components of an application are required for all deployments.</p></div><p></p>
 <h2 class="heading"><span id="guides-and-how-to"></span><a href="#guides-and-how-to">Guides and How To</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
