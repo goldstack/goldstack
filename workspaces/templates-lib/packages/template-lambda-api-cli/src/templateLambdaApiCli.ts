@@ -66,7 +66,7 @@ export const run = async (args: string[]): Promise<void> => {
 
     const command = argv._[0] as string;
     const deploymentName = argv._[1] as string;
-    const routeFilterArg = argv._[2] as string;
+    const routeFilterArg = argv._[2] ? (argv._[2] as string) : undefined;
     const routeFilter = routeFilterArg ? `*${routeFilterArg}*` : undefined;
 
     if (routeFilter && (command === 'build' || command === 'deploy')) {
@@ -91,7 +91,7 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'infra') {
-      await terraformAwsCli(argv._.slice(1), {
+      await terraformAwsCli(argv._.slice(1) as string[], {
         // temporary workaround for https://github.com/goldstack/goldstack/issues/40
         parallelism: 1,
       });
@@ -99,7 +99,7 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'build') {
-      if (!packageConfig.hasDeployment(deploymentName)) {
+      if (argv.ignoreMissingDeployments && !packageConfig.hasDeployment(deploymentName)) {
         warn(`Deployment '${deploymentName}' does not exist. Skipping build.`);
         return;
       }
@@ -118,7 +118,7 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'deploy') {
       if (!packageConfig.hasDeployment(deploymentName)) {
-        if (argv['ignore-missing-deployments']) {
+        if (argv.ignoreMissingDeployments) {
           warn(
             `Deployment '${deploymentName}' does not exist. Skipping deploy due to --ignore-missing-deployments flag.`,
           );
