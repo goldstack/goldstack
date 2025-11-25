@@ -70,7 +70,41 @@
 </code></pre>
 <p>This will be either <code class="inline">yarn infra up dev</code> or <code class="inline">yarn infra up prod</code> depending on your choice of deployment. Note that running this command can take a while.</p></div><p></p>
 <p>Note you will want to combine this template with another template to host a UI and provide a web server. We recommend to use the <a href="https://goldstack.party/templates/server-side-rendering" class="absolute" target="_blank" rel="noopener noreferrer">react-ssr template</a>.</p>
-<h3 class="heading"><span id="3-development-client-1"></span><a href="#3-development-client-1"><span id="3-development-client"></span><a href="#3-development-client" class="relative">3. Development (Client)</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+<h3 class="heading"><span id="3-apply-branding-to-ui-1"></span><a href="#3-apply-branding-to-ui-1"><span id="3-apply-branding-to-ui"></span><a href="#3-apply-branding-to-ui" class="relative">3. Apply Branding to UI</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>When deploying the infrastructure out of the box, the interface for the login flow is very basic.</p>
+<p>It is very tricky to improve this design using the UI, so we recommend that you customise the styling through the Cognito Web interface on the AWS console.</p>
+<p>This also generally applies for this template - make changes through the console, since that is safer.</p>
+<p>The AWS documentation provides a good starting point for customising the styling:</p>
+<p><a href="https://docs.aws.amazon.com/cognito/latest/developerguide/managed-login-branding.html" class="absolute" target="_blank" rel="noopener noreferrer">Apply branding to managed login pages</a></p>
+<p>By default, this template will deploy a 'Hosted UI', so the first thing you would want to do is switch to the 'Managed login'.</p>
+<p>This is how you can do that:</p>
+<ul>
+<li>Head to Cognito in the AWS console</li>
+<li>On the side menu select 'Branding / Domain' </li>
+<li>In the 'Custom Domain' section click [Edit] and the 'Edit custom domain branding version'</li>
+<li>Then switch to 'Managed login - Recommended'</li>
+<li>Click [Save changes]</li>
+</ul>
+<p>Now we can start doing the styling:</p>
+<ul>
+<li>On the side menu select 'Branding / Managed login'</li>
+<li>Then scroll down to 'Styles'</li>
+<li>Click [Create a style]</li>
+<li>Select your app client</li>
+<li>Click [Create]</li>
+</ul>
+<p>You can start customising your styling from here, please see the <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/managed-login-branding.html" class="absolute" target="_blank" rel="noopener noreferrer">AWS Documentation</a> on how to do that.</p>
+<h3 class="heading"><span id="4-development-client-1"></span><a href="#4-development-client-1"><span id="4-development-client"></span><a href="#4-development-client" class="relative">4. Development (Client)</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
@@ -119,7 +153,7 @@
   <span class="token keyword">await</span> <span class="token function">performLogout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 class="heading"><span id="4-development-server-1"></span><a href="#4-development-server-1"><span id="4-development-server"></span><a href="#4-development-server" class="relative">4. Development (Server)</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+<h3 class="heading"><span id="5-development-server-1"></span><a href="#5-development-server-1"><span id="5-development-server"></span><a href="#5-development-server" class="relative">5. Development (Server)</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
