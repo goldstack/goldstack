@@ -50,4 +50,11 @@ export class PackageConfig<PackageType extends Package, DeploymentType extends D
 
     return deployment as DeploymentType;
   }
+
+  hasDeployment(deploymentName: string): boolean {
+    const deployment = this.goldstackJson.deployments.find(
+      (deployment) => deployment.name === deploymentName,
+    );
+    return !!deployment;
+  }
 }

@@ -1,6 +1,6 @@
 import type { HetznerVPSDeployment, HetznerVPSPackage } from '@goldstack/template-hetzner-vps';
 import { wrapCli } from '@goldstack/utils-cli';
-import { info } from '@goldstack/utils-log';
+import { info, warn } from '@goldstack/utils-log';
 import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
 import { PackageConfig } from '@goldstack/utils-package-config';
 import { infraCommands } from '@goldstack/utils-terraform';
@@ -39,21 +39,34 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'deploy') {
       info('Starting deployment to Hetzner VPS.');
-      const deployment = packageConfig.getDeployment(opArgs[0]);
+      const deploymentName = opArgs[0];
+      if (!packageConfig.hasDeployment(deploymentName)) {
+        if (argv['ignore-missing-deployments']) {
+          warn(
+            `Deployment '${deploymentName}' does not exist. Skipping deploy due to --ignore-missing-deployments flag.`,
+          );
+          return;
+        } else {
+          throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
+        }
+      }
+      const deployment = packageConfig.getDeployment(deploymentName);
       await build(deployment);
       await sshDeploy(deployment);
       return;
     }
 
     if (command === 'infra') {
-      const ignoreMissingDeployments = args.includes('--ignore-missing-deployments');
+      const ignoreMissingDeployments = argv['ignore-missing-deployments'];
       let deployment: HetznerVPSDeployment;
 
       try {
         deployment = packageConfig.getDeployment(opArgs[1]);
       } catch (e) {
         if (ignoreMissingDeployments) {
-          console.warn(`Warning: Deployment '${opArgs[1]}' does not exist. Skipping operation.`);
+          warn(
+            `Deployment '${opArgs[1]}' does not exist. Skipping operation due to --ignore-missing-deployments flag.`,
+          );
           return;
         }
         throw e;

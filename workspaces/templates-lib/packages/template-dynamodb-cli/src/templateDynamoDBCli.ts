@@ -4,6 +4,7 @@ import type {
   DynamoDBPackage,
 } from '@goldstack/template-dynamodb';
 import { wrapCli } from '@goldstack/utils-cli';
+import { warn } from '@goldstack/utils-log';
 import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
 import { PackageConfig } from '@goldstack/utils-package-config';
 import { infraCommands } from '@goldstack/utils-terraform';
@@ -66,6 +67,17 @@ export const run = async ({
     const [, , , ...opArgs] = args;
 
     if (command === 'infra') {
+      const deploymentName = opArgs[1];
+      if (!packageConfig.hasDeployment(deploymentName)) {
+        if (argv['ignore-missing-deployments']) {
+          warn(
+            `Deployment '${deploymentName}' does not exist. Skipping infra due to --ignore-missing-deployments flag.`,
+          );
+          return;
+        } else {
+          throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
+        }
+      }
       await dynamoDBCli(migrations, ['init', opArgs[1]]);
       await terraformAwsCli(opArgs);
       if (opArgs[0] === 'destroy') {
@@ -75,7 +87,18 @@ export const run = async ({
     }
 
     if (command === 'deploy') {
-      await dynamoDBCli(migrations, ['init', opArgs[0]]);
+      const deploymentName = opArgs[0];
+      if (!packageConfig.hasDeployment(deploymentName)) {
+        if (argv['ignore-missing-deployments']) {
+          warn(
+            `Deployment '${deploymentName}' does not exist. Skipping deploy due to --ignore-missing-deployments flag.`,
+          );
+          return;
+        } else {
+          throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
+        }
+      }
+      await dynamoDBCli(migrations, ['init', deploymentName]);
       return;
     }
 

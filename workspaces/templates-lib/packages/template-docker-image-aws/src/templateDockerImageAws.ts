@@ -1,4 +1,5 @@
 import { wrapCli } from '@goldstack/utils-cli';
+import { warn } from '@goldstack/utils-log';
 
 import { infraAwsDockerImageCli } from './infraAwsDockerImage';
 
@@ -77,28 +78,33 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'infra') {
       const deploymentName = opArgs[1];
-      const ignoreMissingDeployments = args.includes('--ignore-missing-deployments');
-
-      let deployment: AWSDockerImageDeployment;
-
-      try {
-        deployment = packageConfig.getDeployment(deploymentName);
-      } catch (e) {
-        if (ignoreMissingDeployments) {
-          console.warn(
-            `Warning: Deployment '${deploymentName}' does not exist. Skipping operation.`,
+      if (!packageConfig.hasDeployment(deploymentName)) {
+        if (argv['ignore-missing-deployments']) {
+          warn(
+            `Deployment '${deploymentName}' does not exist. Skipping operation due to --ignore-missing-deployments flag.`,
           );
           return;
+        } else {
+          throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
         }
-        throw e;
       }
-
+      const deployment = packageConfig.getDeployment(deploymentName);
       await infraAwsDockerImageCli(config, deployment, opArgs);
       return;
     }
 
     if (command === 'deploy') {
       const deploymentName = opArgs[0];
+      if (!packageConfig.hasDeployment(deploymentName)) {
+        if (argv['ignore-missing-deployments']) {
+          warn(
+            `Deployment '${deploymentName}' does not exist. Skipping deploy due to --ignore-missing-deployments flag.`,
+          );
+          return;
+        } else {
+          throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
+        }
+      }
       const deployment = packageConfig.getDeployment(deploymentName);
       await infraAwsDockerImageCli(config, deployment, ['deploy', ...opArgs]);
       return;
@@ -106,6 +112,16 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'image') {
       const deploymentName = opArgs[1];
+      if (!packageConfig.hasDeployment(deploymentName)) {
+        if (argv['ignore-missing-deployments']) {
+          warn(
+            `Deployment '${deploymentName}' does not exist. Skipping operation due to --ignore-missing-deployments flag.`,
+          );
+          return;
+        } else {
+          throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
+        }
+      }
       const deployment = packageConfig.getDeployment(deploymentName);
       await apiDockerImageAwsCli(config, deployment, opArgs);
       return;

@@ -57,10 +57,17 @@ export const buildCli = (params: BuildCliParams): Argv<any> => {
 
 export const buildDeployCommands = () => {
   return (yargs: Argv<any>): Argv<any> => {
-    return yargs.positional('deployment', {
-      description: 'Name of the deployment where the package should be deployed to.',
-      type: 'string',
-      demandOption: true,
-    });
+    return yargs
+      .positional('deployment', {
+        description: 'Name of the deployment where the package should be deployed to.',
+        type: 'string',
+        demandOption: true,
+      })
+      .option('ignore-missing-deployments', {
+        description: 'If the deployment does not exist, show a warning instead of failing.',
+        default: false,
+        demandOption: false,
+        type: 'boolean',
+      });
   };
 };

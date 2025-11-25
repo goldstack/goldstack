@@ -1,5 +1,6 @@
 import type { S3Deployment, S3Package } from '@goldstack/template-s3';
 import { wrapCli } from '@goldstack/utils-cli';
+import { warn } from '@goldstack/utils-log';
 import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
 import { PackageConfig } from '@goldstack/utils-package-config';
 import { infraCommands } from '@goldstack/utils-terraform';
@@ -30,6 +31,17 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'deploy') {
+      const deploymentName = opArgs[0];
+      if (!packageConfig.hasDeployment(deploymentName)) {
+        if (argv['ignore-missing-deployments']) {
+          warn(
+            `Deployment '${deploymentName}' does not exist. Skipping deploy due to --ignore-missing-deployments flag.`,
+          );
+          return;
+        } else {
+          throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
+        }
+      }
       await deployCli(config, ['deploy', ...opArgs]);
       return;
     }

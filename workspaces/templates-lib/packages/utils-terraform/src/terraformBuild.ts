@@ -366,7 +366,7 @@ export class TerraformBuild {
         silent: true,
       }).trim();
 
-      console.log('Terraform Output:', res);
+      info(`Terraform Output:\n${res}`);
       const deploymentState = readDeploymentState('./../../', deploymentName, {
         createIfNotExist: true,
       });
