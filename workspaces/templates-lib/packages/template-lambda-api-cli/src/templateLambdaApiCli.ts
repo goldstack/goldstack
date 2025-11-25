@@ -112,10 +112,21 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'deploy') {
+      const deploymentName = opArgs[0];
+      if (!packageConfig.hasDeployment(deploymentName)) {
+        if (argv['ignore-missing-deployments']) {
+          warn(
+            `Deployment '${deploymentName}' does not exist. Skipping deploy due to --ignore-missing-deployments flag.`,
+          );
+          return;
+        } else {
+          throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
+        }
+      }
       await deployFunctions({
         routesPath: defaultRoutesPath,
-        configuration: packageConfig.getDeployment(opArgs[0]).configuration,
-        deployment: packageConfig.getDeployment(opArgs[0]),
+        configuration: packageConfig.getDeployment(deploymentName).configuration,
+        deployment: packageConfig.getDeployment(deploymentName),
         config: filteredLambdaRoutes,
         packageRootFolder: pwd(),
       });

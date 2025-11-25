@@ -1,6 +1,6 @@
 import { infraAwsStaticWebsiteCli } from '@goldstack/template-static-website-aws';
 import { wrapCli } from '@goldstack/utils-cli';
-import { fatal } from '@goldstack/utils-log';
+import { fatal, warn } from '@goldstack/utils-log';
 import type { NextjsDeployment, NextjsPackage } from './types/NextJsPackage';
 
 export type { NextjsPackage };
@@ -47,8 +47,19 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'deploy') {
+      const deploymentName = opArgs[0];
+      if (!packageConfig.hasDeployment(deploymentName)) {
+        if (argv['ignore-missing-deployments']) {
+          warn(
+            `Deployment '${deploymentName}' does not exist. Skipping deploy due to --ignore-missing-deployments flag.`,
+          );
+          return;
+        } else {
+          throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
+        }
+      }
       await infraAwsStaticWebsiteCli(config, ['deploy', ...opArgs]);
-      const deployment = packageConfig.getDeployment(opArgs[0]);
+      const deployment = packageConfig.getDeployment(deploymentName);
       const deploymentState = readDeploymentState('./', deployment.name);
       await deployEdgeLambda({
         deployment,
