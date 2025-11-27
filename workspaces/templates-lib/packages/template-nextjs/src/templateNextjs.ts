@@ -45,7 +45,7 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'infra') {
-      const [, infraOperation, ...rest] = opArgs;
+      const infraOperation = argv._[1] as string;
       let targetVersion: string | undefined;
       let confirm: boolean | undefined;
       let commandArgs: string[] | undefined;
@@ -55,7 +55,7 @@ export const run = async (args: string[]): Promise<void> => {
       } else if (infraOperation === 'destroy') {
         confirm = argv.yes;
       } else if (infraOperation === 'terraform') {
-        commandArgs = rest.length > 0 ? rest : undefined;
+        commandArgs = opArgs.slice(2);
       }
 
       const params: InfraAwsStaticWebsiteCliParams = {
