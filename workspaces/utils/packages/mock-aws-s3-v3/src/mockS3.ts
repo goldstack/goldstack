@@ -37,6 +37,29 @@ interface BucketContext {
   localDirectory: string;
 }
 
+/**
+ * Creates a NoSuchKey error with expected properties set
+ * @param error - The error containing the message
+ * @returns A NoSuchKey instance with all expected properties
+ */
+function mockNoSuchKey(error: { message: string }): NoSuchKey {
+  // https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/Package/-aws-sdk-client-s3/Class/NoSuchKey/
+  const noSuchKey = new NoSuchKey({
+    message: error.message,
+    $metadata: {
+      httpStatusCode: 404,
+    },
+  });
+  (noSuchKey as any).$fault = 'client';
+  (noSuchKey as any).$response = {
+    statusCode: 404,
+  };
+  (noSuchKey as any).$retryable = {
+    throttling: false,
+  };
+  return noSuchKey;
+}
+
 const bucketContexts = new Map<string, BucketContext>();
 
 /**
@@ -184,10 +207,7 @@ export function createS3Client({
 
           const awsError = e as AWSError;
           if (awsError.code === 'NoSuchKey') {
-            throw new NoSuchKey({
-              message: e.message,
-              $metadata: {},
-            });
+            throw mockNoSuchKey(e);
           }
           throw e;
         }
@@ -197,19 +217,13 @@ export function createS3Client({
         try {
           const result = await operation.promise();
           if (method === 'headObject' && result === undefined) {
-            throw new NoSuchKey({
-              message: 'The specified key does not exist.',
-              $metadata: {},
-            });
+            throw mockNoSuchKey({ message: 'The specified key does not exist.' });
           }
           return result;
         } catch (e) {
           const awsError = e as AWSError;
           if (awsError.code === 'NoSuchKey' || awsError.code === 'ENOENT') {
-            throw new NoSuchKey({
-              message: e.message,
-              $metadata: {},
-            });
+            throw mockNoSuchKey(e);
           }
           throw e;
         }

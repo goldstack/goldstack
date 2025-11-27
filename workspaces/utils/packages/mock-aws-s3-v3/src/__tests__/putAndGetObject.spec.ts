@@ -51,6 +51,8 @@ test('Throws NoSuchKey for HeadObjectCommand on non-existent objects', async () 
   } catch (e) {
     if (e instanceof NoSuchKey) {
       // pass - this is the expected behavior
+      // console.log(e);
+      // console.log(JSON.stringify(e, null, 2));
       expectedErrorThrown = true;
     } else {
       throw e;
