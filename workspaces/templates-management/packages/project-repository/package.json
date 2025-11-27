@@ -28,7 +28,7 @@
     "@goldstack/project-repository-bucket": "0.1.0",
     "@goldstack/utils-package": "0.4.30",
     "@goldstack/utils-project": "0.4.29",
-    "@goldstack/utils-s3": "0.4.23",
+    "@goldstack/utils-s3": "0.4.24",
     "@goldstack/utils-sh": "0.5.28",
     "@goldstack/utils-template": "0.4.29",
     "fs-extra": "^11.2.0",
