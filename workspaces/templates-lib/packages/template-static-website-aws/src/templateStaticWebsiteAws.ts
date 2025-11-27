@@ -45,15 +45,33 @@ export const run = async (args: string[]): Promise<void> => {
 
     const config = packageConfig.getConfig();
     const command = argv._[0];
-    const [, , , ...opArgs] = args;
 
     if (command === 'infra') {
-      await infraAwsStaticWebsiteCli(config, opArgs);
+      const infraOperation = argv._[1] as string;
+      const deploymentName = argv.deployment;
+      let targetVersion: string | undefined;
+      let confirm: boolean | undefined;
+      let commandArgs: string[] | undefined;
+
+      if (infraOperation === 'upgrade') {
+        targetVersion = argv.targetVersion;
+      } else if (infraOperation === 'terraform') {
+        commandArgs = argv.command;
+      } else if (infraOperation === 'destroy') {
+        confirm = argv.yes;
+      }
+
+      await infraAwsStaticWebsiteCli(config, [
+        infraOperation,
+        deploymentName,
+        ...(targetVersion ? [targetVersion] : []),
+        ...(commandArgs || []),
+      ]);
       return;
     }
 
     if (command === 'deploy') {
-      const deploymentName = opArgs[0];
+      const deploymentName = argv.deployment;
       if (!packageConfig.hasDeployment(deploymentName)) {
         if (argv['ignore-missing-deployments']) {
           warn(
@@ -64,7 +82,7 @@ export const run = async (args: string[]): Promise<void> => {
           throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
         }
       }
-      await infraAwsStaticWebsiteCli(config, ['deploy', ...opArgs]);
+      await infraAwsStaticWebsiteCli(config, ['deploy', deploymentName]);
       return;
     }
 

@@ -22,16 +22,39 @@ export const run = async (args: string[]): Promise<void> => {
       packagePath: './',
     });
     const config = packageConfig.getConfig();
-    const command = argv._[0];
     const [, , , ...opArgs] = args;
+    const command = argv._[0];
 
     if (command === 'infra') {
-      await terraformAwsCli(opArgs);
+      const infraOperation = argv._[1] as string;
+      const deploymentName = argv.deployment;
+      let targetVersion: string | undefined;
+      let confirm: boolean | undefined;
+      let commandArgs: string[] | undefined;
+
+      if (infraOperation === 'upgrade') {
+        targetVersion = argv.targetVersion;
+      } else if (infraOperation === 'terraform') {
+        commandArgs = opArgs.slice(2);
+      } else if (infraOperation === 'destroy') {
+        confirm = argv.yes;
+      }
+
+      await terraformAwsCli({
+        infraOperation,
+        deploymentName,
+        targetVersion,
+        confirm,
+        commandArguments: commandArgs,
+        ignoreMissingDeployments: argv['ignore-missing-deployments'] || false,
+        skipConfirmations: argv.yes || false,
+        options: undefined,
+      });
       return;
     }
 
     if (command === 'deploy') {
-      const deploymentName = opArgs[0];
+      const deploymentName = argv.deployment;
       if (!packageConfig.hasDeployment(deploymentName)) {
         if (argv['ignore-missing-deployments']) {
           warn(
@@ -42,7 +65,7 @@ export const run = async (args: string[]): Promise<void> => {
           throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
         }
       }
-      await deployCli(config, ['deploy', ...opArgs]);
+      await deployCli(config, ['deploy', deploymentName]);
       return;
     }
 

@@ -79,8 +79,30 @@ export const run = async ({
         }
       }
       await dynamoDBCli(migrations, ['init', deploymentName]);
-      await terraformAwsCli(opArgs);
-      if (opArgs[0] === 'destroy') {
+      const infraOperation = argv._[1] as string;
+      let targetVersion: string | undefined;
+      let confirm: boolean | undefined;
+      let commandArgs: string[] | undefined;
+
+      if (infraOperation === 'upgrade') {
+        targetVersion = argv.targetVersion;
+      } else if (infraOperation === 'terraform') {
+        commandArgs = opArgs.slice(2);
+      } else if (infraOperation === 'destroy') {
+        confirm = argv.yes;
+      }
+
+      await terraformAwsCli({
+        infraOperation,
+        deploymentName,
+        targetVersion,
+        confirm,
+        commandArguments: commandArgs,
+        ignoreMissingDeployments: argv['ignore-missing-deployments'] || false,
+        skipConfirmations: argv.yes || false,
+        options: undefined,
+      });
+      if (infraOperation === 'destroy') {
         await dynamoDBCli(migrations, ['delete', deploymentName]);
       }
       return;

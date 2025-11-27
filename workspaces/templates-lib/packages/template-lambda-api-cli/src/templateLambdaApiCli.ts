@@ -26,12 +26,31 @@ export const run = async (args: string[]): Promise<void> => {
       deployCommands: buildDeployCommands(),
       infraCommands: infraCommands(),
     })
-      .command('build [deployment]', 'Build all lambdas', () => {
-        return yargs.positional('deployment', {
-          type: 'string',
-          describe: 'Name of the deployment this command should be applied to',
-          default: '',
-        });
+      .command('build [deployment] [filter]', 'Build lambdas', () => {
+        return yargs
+          .positional('deployment', {
+            type: 'string',
+            describe: 'Name of the deployment this command should be applied to',
+            default: '',
+          })
+          .positional('filter', {
+            type: 'string',
+            describe: 'Regex filter for lambda name',
+            demandOption: false,
+          });
+      })
+      .command('deploy [deployment] [filter]', 'Deploy lambdas', () => {
+        return yargs
+          .positional('deployment', {
+            type: 'string',
+            describe: 'Name of the deployment this command should be applied to',
+            default: '',
+          })
+          .positional('filter', {
+            type: 'string',
+            describe: 'Regex filter for lambda name',
+            demandOption: false,
+          });
       })
       .option('ignore-missing-deployments', {
         type: 'boolean',
@@ -46,6 +65,7 @@ export const run = async (args: string[]): Promise<void> => {
     });
 
     const config = packageConfig.getConfig();
+    const [, , , ...opArgs] = args;
 
     // update routes
     if (!fs.existsSync(defaultRoutesPath)) {
@@ -64,9 +84,10 @@ export const run = async (args: string[]): Promise<void> => {
     });
     writePackageConfig(config);
 
+    // console.log(JSON.stringify(argv));
     const command = argv._[0] as string;
-    const deploymentName = argv._[1] as string;
-    const routeFilterArg = argv._[2] as string;
+    const deploymentName = argv.deployment;
+    const routeFilterArg = argv.filter;
     const routeFilter = routeFilterArg ? `*${routeFilterArg}*` : undefined;
 
     if (routeFilter && (command === 'build' || command === 'deploy')) {
@@ -87,19 +108,41 @@ export const run = async (args: string[]): Promise<void> => {
         );
         return;
       }
-      // console.log(filteredLambdaRoutes);
     }
 
     if (command === 'infra') {
-      await terraformAwsCli(argv._.slice(1), {
-        // temporary workaround for https://github.com/goldstack/goldstack/issues/40
-        parallelism: 1,
+      const infraOperation = argv._[1] as string;
+      const deploymentName = argv.deployment;
+      let targetVersion: string | undefined;
+      let confirm: boolean | undefined;
+      let commandArgs: string[] | undefined;
+
+      if (infraOperation === 'upgrade') {
+        targetVersion = argv.targetVersion;
+      } else if (infraOperation === 'terraform') {
+        commandArgs = opArgs.slice(2);
+      } else if (infraOperation === 'destroy') {
+        confirm = argv.yes;
+      }
+
+      await terraformAwsCli({
+        infraOperation,
+        deploymentName,
+        targetVersion,
+        confirm,
+        commandArguments: commandArgs,
+        ignoreMissingDeployments: argv['ignore-missing-deployments'] || false,
+        skipConfirmations: argv.yes || false,
+        options: {
+          // temporary workaround for https://github.com/goldstack/goldstack/issues/40
+          parallelism: 1,
+        },
       });
       return;
     }
 
     if (command === 'build') {
-      if (!packageConfig.hasDeployment(deploymentName)) {
+      if (argv.ignoreMissingDeployments && !packageConfig.hasDeployment(deploymentName)) {
         warn(`Deployment '${deploymentName}' does not exist. Skipping build.`);
         return;
       }
@@ -118,7 +161,7 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'deploy') {
       if (!packageConfig.hasDeployment(deploymentName)) {
-        if (argv['ignore-missing-deployments']) {
+        if (argv.ignoreMissingDeployments) {
           warn(
             `Deployment '${deploymentName}' does not exist. Skipping deploy due to --ignore-missing-deployments flag.`,
           );

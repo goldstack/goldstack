@@ -106,5 +106,28 @@ export const infraAwsDockerImageCli = async (
     return;
   }
 
-  await terraformAwsCli(args);
+  const infraOperation = args[0];
+  const deploymentName = deployment.name;
+  let targetVersion: string | undefined;
+  let confirm: boolean | undefined;
+  let commandArgs: string[] | undefined;
+
+  if (infraOperation === 'upgrade') {
+    targetVersion = args[1];
+  } else if (infraOperation === 'terraform') {
+    commandArgs = args.slice(1);
+  } else if (infraOperation === 'destroy') {
+    confirm = args.includes('-y');
+  }
+
+  await terraformAwsCli({
+    infraOperation,
+    deploymentName,
+    targetVersion,
+    confirm,
+    commandArguments: commandArgs,
+    ignoreMissingDeployments: false,
+    skipConfirmations: false,
+    options: undefined,
+  });
 };

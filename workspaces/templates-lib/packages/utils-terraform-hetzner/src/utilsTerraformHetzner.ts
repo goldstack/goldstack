@@ -36,7 +36,19 @@ export const terraformHetznerCli = async (
   options?: TerraformOptions,
 ): Promise<void> => {
   const ignoreMissingDeployments = args.includes('--ignore-missing-deployments');
+  const infraOperation = args[0];
   const deploymentName = args[1];
+  let targetVersion: string | undefined;
+  let confirm: boolean | undefined;
+  let commandArgs: string[] | undefined;
+
+  if (infraOperation === 'upgrade') {
+    targetVersion = args[2];
+  } else if (infraOperation === 'terraform') {
+    commandArgs = args.slice(2);
+  } else if (infraOperation === 'destroy') {
+    confirm = args.includes('-y');
+  }
 
   let deployment: any;
 
@@ -54,8 +66,15 @@ export const terraformHetznerCli = async (
 
   const user = await getHetznerUser(deployment.hetznerUser);
 
-  terraformCli(args, {
-    ...options,
-    provider: new HetznerCloudProvider(user.config.token, provider),
+  terraformCli({
+    infraOperation,
+    deploymentName,
+    targetVersion,
+    confirm,
+    commandArguments: commandArgs,
+    options: {
+      ...options,
+      provider: new HetznerCloudProvider(user.config.token, provider),
+    },
   });
 };

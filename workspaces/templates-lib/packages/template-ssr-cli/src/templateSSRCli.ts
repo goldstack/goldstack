@@ -71,6 +71,11 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
             });
         },
       )
+      .option('ignore-missing-deployments', {
+        type: 'boolean',
+        describe: 'Ignore missing deployments',
+        default: false,
+      })
       .help()
       .parse();
 
@@ -88,19 +93,19 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
     });
     writePackageConfig(config);
 
-    const command = argv._[0];
     const [, , , ...opArgs] = args;
+    const command = argv._[0];
 
     if (command === 'build' || command === 'deploy') {
-      if (opArgs.length === 2) {
+      if (argv.route) {
         filteredLambdaRoutes = filteredLambdaRoutes.filter(
           (el) =>
-            outmatch(`**/*${opArgs[1]}*`)(el.relativeFilePath) ||
-            outmatch(`**/*${opArgs[1]}*/*`)(el.relativeFilePath),
+            outmatch(`**/*${argv.route}*`)(el.relativeFilePath) ||
+            outmatch(`**/*${argv.route}*/*`)(el.relativeFilePath),
         );
         if (filteredLambdaRoutes.length === 0) {
           warn(
-            `Cannot perform command '${command}'. No routes match supplied filter ${opArgs[1]}.`,
+            `Cannot perform command '${command}'. No routes match supplied filter ${argv.route}.`,
           );
           return;
         }
@@ -108,18 +113,48 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
     }
 
     if (command === 'infra') {
-      await terraformAwsCli(opArgs, {
-        // temporary workaround for https://github.com/goldstack/goldstack/issues/40
-        parallelism: 1,
+      const infraOperation = argv._[1] as string;
+      const deploymentName = argv.deployment as string;
+      let targetVersion: string | undefined;
+      let confirm: boolean | undefined;
+      let commandArgs: string[] | undefined;
+
+      if (infraOperation === 'upgrade') {
+        targetVersion = argv.targetVersion as string;
+      } else if (infraOperation === 'terraform') {
+        commandArgs = opArgs.slice(2);
+      } else if (infraOperation === 'destroy') {
+        confirm = argv.yes as boolean;
+      }
+
+      await terraformAwsCli({
+        infraOperation,
+        deploymentName,
+        targetVersion,
+        confirm,
+        commandArguments: commandArgs,
+        ignoreMissingDeployments: argv['ignore-missing-deployments'] || false,
+        skipConfirmations: false,
+        options: {
+          // temporary workaround for https://github.com/goldstack/goldstack/issues/40
+          parallelism: 1,
+        },
       });
       return;
     }
 
     if (command === 'build') {
-      const deployment = packageConfig.getDeployment(opArgs[0]);
+      if (
+        argv['ignore-missing-deployments'] &&
+        !packageConfig.hasDeployment(argv.deployment as string)
+      ) {
+        warn(`Deployment '${argv.deployment}' does not exist. Skipping build.`);
+        return;
+      }
+      const deployment = packageConfig.getDeployment(argv.deployment as string);
       let routeFilter: undefined | string;
-      if (opArgs.length === 2) {
-        routeFilter = `*${opArgs[1]}*`;
+      if (argv.route) {
+        routeFilter = `*${argv.route}*`;
       }
       const lambdaNamePrefix = deployment.configuration.lambdaNamePrefix;
       // bundles need to be built first since static mappings are updated
@@ -146,7 +181,14 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
     }
 
     if (command === 'deploy') {
-      const deployment = packageConfig.getDeployment(opArgs[0]);
+      const deploymentName = argv.deployment as string;
+      if (argv['ignore-missing-deployments'] && !packageConfig.hasDeployment(deploymentName)) {
+        warn(
+          `Deployment '${deploymentName}' does not exist. Skipping deploy due to --ignore-missing-deployments flag.`,
+        );
+        return;
+      }
+      const deployment = packageConfig.getDeployment(deploymentName);
       const config = deployment.configuration;
 
       const deploymentState = readDeploymentState('./', deployment.name);
@@ -157,13 +199,13 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
         deployFunctions({
           routesPath: defaultRoutesPath,
           configuration: createLambdaAPIDeploymentConfiguration(config),
-          deployment: packageConfig.getDeployment(opArgs[0]),
+          deployment,
           config: filteredLambdaRoutes,
           packageRootFolder,
         }),
         deployToS3({
           configuration: createLambdaAPIDeploymentConfiguration(config),
-          deployment: packageConfig.getDeployment(opArgs[0]),
+          deployment,
           staticFilesBucket,
           publicFilesBucket,
           packageRootFolder,

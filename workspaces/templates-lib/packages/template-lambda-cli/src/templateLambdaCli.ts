@@ -21,23 +21,52 @@ export const run = async (args: string[]): Promise<void> => {
       infraCommands: infraCommands(),
     })
       .help()
-      .parse();
+      .parse(args);
 
     const packageConfig = new PackageConfig<LambdaPackage, LambdaDeployment>({
       packagePath: './',
     });
 
     const config = packageConfig.getConfig();
-    const command = argv._[0];
     const [, , , ...opArgs] = args;
+    const command = argv._[0];
 
     if (command === 'infra') {
-      await terraformAwsCli(opArgs);
+      const infraOperation = argv._[1] as string;
+      const deploymentName = argv.deployment;
+      let targetVersion: string | undefined;
+      let confirm: boolean | undefined;
+      let commandArgs: string[] | undefined;
+
+      if (infraOperation === 'upgrade') {
+        targetVersion = opArgs[2];
+      } else if (infraOperation === 'terraform') {
+        commandArgs = opArgs.slice(2);
+      } else if (infraOperation === 'destroy') {
+        confirm = argv.yes || opArgs.includes('-y');
+      }
+
+      await terraformAwsCli({
+        infraOperation,
+        deploymentName,
+        targetVersion,
+        confirm,
+        commandArguments: commandArgs,
+        ignoreMissingDeployments: argv['ignore-missing-deployments'] || false,
+        skipConfirmations: argv.yes || false,
+        options: undefined,
+      });
       return;
     }
 
     if (command === 'deploy') {
-      const deploymentName = opArgs[0];
+      // Determine deployment name from parsed argv (positional) or fallback to argv._ array
+      const deploymentName = argv.deployment;
+
+      if (!deploymentName) {
+        throw new Error('No deployment provided');
+      }
+
       if (!packageConfig.hasDeployment(deploymentName)) {
         if (argv['ignore-missing-deployments']) {
           warn(

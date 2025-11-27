@@ -111,11 +111,19 @@ const prompt = (message: string) => {
   return spawnSync(cmd, args, opts).stdout.toString().trim();
 };
 
-export const terraformAwsCli = async (
-  args: string[],
-  options?: TerraformOptions,
-): Promise<void> => {
-  const ignoreMissingDeployments = args.includes('--ignore-missing-deployments');
+export interface TerraformAWSCliParams {
+  ignoreMissingDeployments: boolean;
+  infraOperation: string;
+  options?: TerraformOptions;
+  deploymentName: string;
+  skipConfirmations: boolean;
+  targetVersion?: string;
+  confirm?: boolean;
+  commandArguments?: string[];
+}
+
+export const terraformAwsCli = async (params: TerraformAWSCliParams): Promise<void> => {
+  const ignoreMissingDeployments = params.ignoreMissingDeployments;
 
   let awsTerraformConfig: AWSTerraformState;
   let deployment: AWSDeployment;
@@ -123,11 +131,13 @@ export const terraformAwsCli = async (
   let awsProvider: AWSCloudProvider;
 
   try {
-    const envResult = await initTerraformEnvironment(args);
+    const envResult = await initTerraformEnvironment(params.deploymentName);
     ({ awsTerraformConfig, deployment, credentials, awsProvider } = envResult);
   } catch (e) {
     if (ignoreMissingDeployments) {
-      console.warn(`Warning: Deployment '${args[1]}' does not exist. Skipping operation.`);
+      console.warn(
+        `Warning: Deployment '${params.deploymentName}' does not exist. Skipping operation.`,
+      );
       return;
     }
     throw e;
@@ -148,9 +158,9 @@ export const terraformAwsCli = async (
     writeTerraformConfig(awsTerraformConfig);
   }
 
-  const [operation] = args;
+  const operation = params.infraOperation;
   if (operation === 'destroy-state') {
-    const ciConfirmed = args.find((str) => str === '-y');
+    const ciConfirmed = params.skipConfirmations;
     if (!ciConfirmed) {
       const value = prompt(
         'Are you sure to destroy your remote deployment state? If yes, please type `y` and enter.\n' +
@@ -181,15 +191,16 @@ export const terraformAwsCli = async (
     return;
   }
 
-  terraformCli(args, {
-    ...options,
-    provider: awsProvider,
+  terraformCli({
+    ...params,
+    options: {
+      ...params.options,
+      provider: awsProvider,
+    },
   });
 };
 
-export async function initTerraformEnvironment(args: string[]) {
-  const deploymentName = args[1];
-
+export async function initTerraformEnvironment(deploymentName: string) {
   const deployment = readDeploymentFromPackageConfig({
     deploymentName,
   });

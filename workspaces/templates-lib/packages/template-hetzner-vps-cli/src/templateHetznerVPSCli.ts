@@ -39,7 +39,7 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'deploy') {
       info('Starting deployment to Hetzner VPS.');
-      const deploymentName = opArgs[0];
+      const deploymentName = argv.deployment;
       if (!packageConfig.hasDeployment(deploymentName)) {
         if (argv['ignore-missing-deployments']) {
           warn(
@@ -58,31 +58,44 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'infra') {
       const ignoreMissingDeployments = argv['ignore-missing-deployments'];
+      const deploymentName = argv.deployment;
       let deployment: HetznerVPSDeployment;
 
       try {
-        deployment = packageConfig.getDeployment(opArgs[1]);
+        deployment = packageConfig.getDeployment(deploymentName);
       } catch (e) {
         if (ignoreMissingDeployments) {
           warn(
-            `Deployment '${opArgs[1]}' does not exist. Skipping operation due to --ignore-missing-deployments flag.`,
+            `Deployment '${deploymentName}' does not exist. Skipping operation due to --ignore-missing-deployments flag.`,
           );
           return;
         }
         throw e;
       }
 
-      const infrastructureOp = opArgs[0];
+      const infrastructureOp = argv._[1] as string;
       info(`Running infrastructure operation ${infrastructureOp} for ${deployment.name}`);
       // use remote managed state from Terraform
-      await terraformAwsCli(['create-state', opArgs[1]]);
+      await terraformAwsCli({
+        infraOperation: 'create-state',
+        deploymentName,
+        ignoreMissingDeployments,
+        skipConfirmations: false,
+        options: undefined,
+      });
 
       if (infrastructureOp === 'destroy-state') {
-        await terraformAwsCli(['destroy-state', opArgs[1]]);
+        await terraformAwsCli({
+          infraOperation: 'destroy-state',
+          deploymentName,
+          ignoreMissingDeployments,
+          skipConfirmations: false,
+          options: undefined,
+        });
         return;
       }
 
-      const { awsProvider } = await initTerraformEnvironment(opArgs);
+      const { awsProvider } = await initTerraformEnvironment(deploymentName);
       await terraformHetznerCli(opArgs, awsProvider);
 
       return;
