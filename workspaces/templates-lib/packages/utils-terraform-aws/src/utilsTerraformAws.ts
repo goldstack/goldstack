@@ -117,6 +117,9 @@ export interface TerraformAWSCliParams {
   options?: TerraformOptions;
   deploymentName: string;
   skipConfirmations: boolean;
+  targetVersion?: string;
+  confirm?: boolean;
+  command?: string[];
 }
 
 export const terraformAwsCli = async (params: TerraformAWSCliParams): Promise<void> => {
@@ -188,9 +191,12 @@ export const terraformAwsCli = async (params: TerraformAWSCliParams): Promise<vo
     return;
   }
 
-  terraformCli(args, {
-    ...params.options,
-    provider: awsProvider,
+  terraformCli({
+    ...params,
+    options: {
+      ...params.options,
+      provider: awsProvider,
+    },
   });
 };
 

@@ -113,9 +113,32 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
     }
 
     if (command === 'infra') {
-      await terraformAwsCli(opArgs, {
-        // temporary workaround for https://github.com/goldstack/goldstack/issues/40
-        parallelism: 1,
+      const infraOperation = opArgs[0];
+      const deploymentName = opArgs[1];
+      let targetVersion: string | undefined;
+      let confirm: boolean | undefined;
+      let commandArgs: string[] | undefined;
+
+      if (infraOperation === 'upgrade') {
+        targetVersion = opArgs[2];
+      } else if (infraOperation === 'terraform') {
+        commandArgs = opArgs.slice(2);
+      } else if (infraOperation === 'destroy') {
+        confirm = opArgs.includes('-y');
+      }
+
+      await terraformAwsCli({
+        infraOperation,
+        deploymentName,
+        targetVersion,
+        confirm,
+        command: commandArgs,
+        ignoreMissingDeployments: argv['ignore-missing-deployments'] || false,
+        skipConfirmations: false,
+        options: {
+          // temporary workaround for https://github.com/goldstack/goldstack/issues/40
+          parallelism: 1,
+        },
       });
       return;
     }

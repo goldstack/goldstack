@@ -57,5 +57,28 @@ export const infraAwsStaticWebsiteCli = async (
     return;
   }
 
-  await terraformAwsCli(args);
+  const infraOperation = args[0];
+  const deploymentName = args[1];
+  let targetVersion: string | undefined;
+  let confirm: boolean | undefined;
+  let commandArgs: string[] | undefined;
+
+  if (infraOperation === 'upgrade') {
+    targetVersion = args[2];
+  } else if (infraOperation === 'terraform') {
+    commandArgs = args.slice(2);
+  } else if (infraOperation === 'destroy') {
+    confirm = args.includes('-y');
+  }
+
+  await terraformAwsCli({
+    infraOperation,
+    deploymentName,
+    targetVersion,
+    confirm,
+    command: commandArgs,
+    ignoreMissingDeployments: false,
+    skipConfirmations: false,
+    options: undefined,
+  });
 };

@@ -75,14 +75,26 @@ export const run = async (args: string[]): Promise<void> => {
       const infrastructureOp = opArgs[0];
       info(`Running infrastructure operation ${infrastructureOp} for ${deployment.name}`);
       // use remote managed state from Terraform
-      await terraformAwsCli(['create-state', opArgs[1]]);
+      await terraformAwsCli({
+        infraOperation: 'create-state',
+        deploymentName: opArgs[1],
+        ignoreMissingDeployments,
+        skipConfirmations: false,
+        options: undefined,
+      });
 
       if (infrastructureOp === 'destroy-state') {
-        await terraformAwsCli(['destroy-state', opArgs[1]]);
+        await terraformAwsCli({
+          infraOperation: 'destroy-state',
+          deploymentName: opArgs[1],
+          ignoreMissingDeployments,
+          skipConfirmations: false,
+          options: undefined,
+        });
         return;
       }
 
-      const { awsProvider } = await initTerraformEnvironment(opArgs);
+      const { awsProvider } = await initTerraformEnvironment(opArgs[1]);
       await terraformHetznerCli(opArgs, awsProvider);
 
       return;

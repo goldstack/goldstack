@@ -20,27 +20,27 @@ import type {
 import type { TerraformOptions } from './utilsTerraform';
 
 /**
- * Parameters for initializing a Terraform deployment.
+ * Base parameters for Terraform operations that require a deployment name.
  */
-export interface InitParams {
-  /** The name of the deployment to initialize. */
+export interface BaseTerraformParams {
+  /** The name of the deployment. */
   deploymentName: string;
 }
+
+/**
+ * Parameters for initializing a Terraform deployment.
+ */
+export interface InitParams extends BaseTerraformParams {}
 
 /**
  * Parameters for planning a Terraform deployment.
  */
-export interface PlanParams {
-  /** The name of the deployment to plan. */
-  deploymentName: string;
-}
+export interface PlanParams extends BaseTerraformParams {}
 
 /**
  * Parameters for applying a Terraform deployment.
  */
-export interface ApplyParams {
-  /** The name of the deployment to apply. */
-  deploymentName: string;
+export interface ApplyParams extends BaseTerraformParams {
   /** Optional Terraform options for the apply operation. */
   options?: TerraformOptions;
 }
@@ -48,9 +48,7 @@ export interface ApplyParams {
 /**
  * Parameters for destroying a Terraform deployment.
  */
-export interface DestroyParams {
-  /** The name of the deployment to destroy. */
-  deploymentName: string;
+export interface DestroyParams extends BaseTerraformParams {
   /** Whether to skip confirmation prompt (equivalent to -y flag). */
   confirm?: boolean;
 }
@@ -58,9 +56,7 @@ export interface DestroyParams {
 /**
  * Parameters for upgrading Terraform version for a deployment.
  */
-export interface UpgradeParams {
-  /** The name of the deployment to upgrade. */
-  deploymentName: string;
+export interface UpgradeParams extends BaseTerraformParams {
   /** The target Terraform version to upgrade to. */
   targetVersion: string;
 }
@@ -68,17 +64,12 @@ export interface UpgradeParams {
 /**
  * Parameters for checking if a deployment is up.
  */
-export interface IsUpParams {
-  /** The name of the deployment to check. */
-  deploymentName: string;
-}
+export interface IsUpParams extends BaseTerraformParams {}
 
 /**
  * Parameters for running arbitrary Terraform commands.
  */
-export interface TerraformParams {
-  /** The name of the deployment. */
-  deploymentName: string;
+export interface TerraformParams extends BaseTerraformParams {
   /** The Terraform command arguments to execute. */
   command: string[];
   /** Whether to inject variables into the command. */
