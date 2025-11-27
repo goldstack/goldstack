@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-hetzner-vps",
-  "version": "0.1.42",
+  "version": "0.1.43",
   "description": "Utilities for packages that help provision Hetzner Servers",
   "keywords": [
     "goldstack",
@@ -43,15 +43,15 @@
   "dependencies": {
     "@aws-sdk/credential-providers": "3.934.0",
     "@aws-sdk/types": "^3.930.0",
-    "@goldstack/infra": "0.4.28",
-    "@goldstack/infra-aws": "0.4.44",
-    "@goldstack/infra-hetzner": "0.1.24",
-    "@goldstack/utils-cli": "0.3.22",
+    "@goldstack/infra": "0.4.29",
+    "@goldstack/infra-aws": "0.4.45",
+    "@goldstack/infra-hetzner": "0.1.25",
+    "@goldstack/utils-cli": "0.3.23",
     "@goldstack/utils-esbuild": "0.5.18",
-    "@goldstack/utils-package": "0.4.29",
-    "@goldstack/utils-package-config-embedded": "0.5.30",
-    "@goldstack/utils-terraform": "0.4.57",
-    "@goldstack/utils-terraform-aws": "0.4.60",
+    "@goldstack/utils-package": "0.4.30",
+    "@goldstack/utils-package-config-embedded": "0.5.31",
+    "@goldstack/utils-terraform": "0.4.58",
+    "@goldstack/utils-terraform-aws": "0.4.61",
     "uuid": "^11.0.5"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-ssr-server",
-  "version": "0.3.77",
+  "version": "0.3.78",
   "description": "Building blocks for implementing server-side rendered pages.",
   "keywords": [
     "goldstack",
@@ -38,16 +38,16 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.28",
-    "@goldstack/infra-aws": "0.4.44",
-    "@goldstack/template-ssr-server-compile-bundle": "0.3.74",
-    "@goldstack/utils-aws-lambda": "0.3.56",
+    "@goldstack/infra": "0.4.29",
+    "@goldstack/infra-aws": "0.4.45",
+    "@goldstack/template-ssr-server-compile-bundle": "0.3.75",
+    "@goldstack/utils-aws-lambda": "0.3.57",
     "@goldstack/utils-esbuild": "0.5.18",
-    "@goldstack/utils-package": "0.4.29",
-    "@goldstack/utils-package-config-embedded": "0.5.30",
-    "@goldstack/utils-sh": "0.5.27",
-    "@goldstack/utils-template": "0.4.28",
-    "@goldstack/utils-terraform": "0.4.57",
+    "@goldstack/utils-package": "0.4.30",
+    "@goldstack/utils-package-config-embedded": "0.5.31",
+    "@goldstack/utils-sh": "0.5.28",
+    "@goldstack/utils-template": "0.4.29",
+    "@goldstack/utils-terraform": "0.4.58",
     "@types/aws-lambda": "^8.10.147",
     "lambda-compression": "0.2.21",
     "react": "^19.1.0",
