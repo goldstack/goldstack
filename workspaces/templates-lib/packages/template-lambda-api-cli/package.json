@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-api-cli",
-  "version": "0.6.74",
+  "version": "0.6.75",
   "description": "Companion for project templates for deploying Lambdas as a REST API",
   "keywords": [
     "goldstack",
