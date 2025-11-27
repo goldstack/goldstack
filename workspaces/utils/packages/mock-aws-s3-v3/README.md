@@ -56,3 +56,7 @@ import { resetMocks } from 'mock-aws-s3-v3';
 
 resetMocks();
 ```
+
+## Versions
+
+- `0.6.1`: Improving behaviour when objects are missing. Throwing 'NoSuchKey' exceptions instead of file IO errors (see [#460](https://github.com/goldstack/goldstack/issues/460) by [jpike88](https://github.com/jpike88))
