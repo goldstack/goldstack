@@ -25,8 +25,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.5",
-    "@goldstack/nodemonx": "0.4.29",
-    "@goldstack/utils-typescript-references": "0.3.19",
+    "@goldstack/nodemonx": "0.4.30",
+    "@goldstack/utils-typescript-references": "0.3.20",
     "@types/jest": "^29.5.14",
     "@types/node": "^24.0.13",
     "nodemon": "^2.0.20",

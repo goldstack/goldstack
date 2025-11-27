@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-docker",
-  "version": "0.4.29",
+  "version": "0.4.30",
   "description": "Utilities to run commands in local docker containers.",
   "keywords": [
     "goldstack",
@@ -34,8 +34,8 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/utils-log": "0.3.24",
-    "@goldstack/utils-sh": "0.5.27"
+    "@goldstack/utils-log": "0.3.25",
+    "@goldstack/utils-sh": "0.5.28"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.18",
