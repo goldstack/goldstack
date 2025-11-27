@@ -84,7 +84,6 @@ export const run = async (args: string[]): Promise<void> => {
     });
     writePackageConfig(config);
 
-    // console.log(JSON.stringify(argv));
     const command = argv._[0] as string;
     const deploymentName = argv.deployment;
     const routeFilterArg = argv.filter;
@@ -180,6 +179,6 @@ export const run = async (args: string[]): Promise<void> => {
       return;
     }
 
-    throw new Error('Unknown command: ' + command);
+    throw new Error(`Unknown command: ${command}`);
   });
 };

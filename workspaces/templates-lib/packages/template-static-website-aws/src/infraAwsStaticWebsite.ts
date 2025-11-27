@@ -8,6 +8,14 @@ import type {
   AWSStaticWebsitePackage,
 } from './types/AWSStaticWebsitePackage';
 
+export interface InfraAwsStaticWebsiteCliParams {
+  operation: string;
+  deploymentName: string;
+  targetVersion?: string;
+  confirm?: boolean;
+  commandArgs?: string[];
+}
+
 const getDeployment = (
   config: AWSStaticWebsitePackage,
   args: string[],
@@ -43,40 +51,19 @@ export const deploy = async (config: AWSStaticWebsitePackage, args: string[]): P
 
 export const infraAwsStaticWebsiteCli = async (
   config: AWSStaticWebsitePackage,
-  args: string[],
+  params: InfraAwsStaticWebsiteCliParams,
 ): Promise<void> => {
-  if (args.length < 1) {
-    fatal(
-      'Please provide the operation in the arguments: "up", "init", "plan", "apply", "deploy", "destroy", "upgrade", "terraform".',
-    );
-    throw new Error();
-  }
-  const [operation, ...opArgs] = args;
-  if (operation === 'deploy') {
-    await deploy(config, opArgs);
+  if (params.operation === 'deploy') {
+    await deploy(config, [params.deploymentName]);
     return;
   }
 
-  const infraOperation = args[0];
-  const deploymentName = args[1];
-  let targetVersion: string | undefined;
-  let confirm: boolean | undefined;
-  let commandArgs: string[] | undefined;
-
-  if (infraOperation === 'upgrade') {
-    targetVersion = args[2];
-  } else if (infraOperation === 'terraform') {
-    commandArgs = args.slice(2);
-  } else if (infraOperation === 'destroy') {
-    confirm = args.includes('-y');
-  }
-
   await terraformAwsCli({
-    infraOperation,
-    deploymentName,
-    targetVersion,
-    confirm,
-    commandArguments: commandArgs,
+    infraOperation: params.operation,
+    deploymentName: params.deploymentName,
+    targetVersion: params.targetVersion,
+    confirm: params.confirm,
+    commandArguments: params.commandArgs,
     ignoreMissingDeployments: false,
     skipConfirmations: false,
     options: undefined,

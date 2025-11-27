@@ -1,6 +1,9 @@
 import { wrapCli } from '@goldstack/utils-cli';
 import { fatal, warn } from '@goldstack/utils-log';
-import { infraAwsStaticWebsiteCli } from './infraAwsStaticWebsite';
+import {
+  type InfraAwsStaticWebsiteCliParams,
+  infraAwsStaticWebsiteCli,
+} from './infraAwsStaticWebsite';
 import type {
   AWSStaticWebsiteConfiguration,
   AWSStaticWebsiteDeployment,
@@ -21,6 +24,7 @@ import { infraCommands } from '@goldstack/utils-terraform';
 import yargs from 'yargs';
 
 export { infraAwsStaticWebsiteCli };
+export type { InfraAwsStaticWebsiteCliParams };
 
 export const getDeploymentConfig = (deploymentName: string): AWSStaticWebsiteDeployment => {
   const packageConfig = new PackageConfig<AWSStaticWebsitePackage, AWSStaticWebsiteDeployment>({
@@ -38,7 +42,7 @@ export const run = async (args: string[]): Promise<void> => {
     })
       .help()
       .parse();
-
+    const [, , , ...opArgs] = args;
     const packageConfig = new PackageConfig<AWSStaticWebsitePackage, AWSStaticWebsiteDeployment>({
       packagePath: './',
     });
@@ -46,6 +50,7 @@ export const run = async (args: string[]): Promise<void> => {
     const config = packageConfig.getConfig();
     const command = argv._[0];
 
+    // console.log(JSON.stringify(argv, null, 2));
     if (command === 'infra') {
       const infraOperation = argv._[1] as string;
       const deploymentName = argv.deployment;
@@ -56,17 +61,19 @@ export const run = async (args: string[]): Promise<void> => {
       if (infraOperation === 'upgrade') {
         targetVersion = argv.targetVersion;
       } else if (infraOperation === 'terraform') {
-        commandArgs = argv.command;
+        commandArgs = opArgs.slice(2);
       } else if (infraOperation === 'destroy') {
         confirm = argv.yes;
       }
 
-      await infraAwsStaticWebsiteCli(config, [
-        infraOperation,
+      const params: InfraAwsStaticWebsiteCliParams = {
+        operation: infraOperation,
         deploymentName,
-        ...(targetVersion ? [targetVersion] : []),
-        ...(commandArgs || []),
-      ]);
+        targetVersion,
+        confirm,
+        commandArgs,
+      };
+      await infraAwsStaticWebsiteCli(config, params);
       return;
     }
 
@@ -82,11 +89,15 @@ export const run = async (args: string[]): Promise<void> => {
           throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
         }
       }
-      await infraAwsStaticWebsiteCli(config, ['deploy', deploymentName]);
+      const params: InfraAwsStaticWebsiteCliParams = {
+        operation: 'deploy',
+        deploymentName,
+      };
+      await infraAwsStaticWebsiteCli(config, params);
       return;
     }
 
-    fatal('Unknown command: ' + command);
+    fatal(`Unknown command: ${command}`);
     throw new Error();
   });
 };

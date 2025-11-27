@@ -1,4 +1,7 @@
-import { infraAwsStaticWebsiteCli } from '@goldstack/template-static-website-aws';
+import {
+  type InfraAwsStaticWebsiteCliParams,
+  infraAwsStaticWebsiteCli,
+} from '@goldstack/template-static-website-aws';
 import { wrapCli } from '@goldstack/utils-cli';
 import { fatal, warn } from '@goldstack/utils-log';
 import type { NextjsDeployment, NextjsPackage } from './types/NextJsPackage';
@@ -42,12 +45,32 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'infra') {
-      await infraAwsStaticWebsiteCli(config, opArgs);
+      const [, infraOperation, ...rest] = opArgs;
+      let targetVersion: string | undefined;
+      let confirm: boolean | undefined;
+      let commandArgs: string[] | undefined;
+
+      if (infraOperation === 'upgrade') {
+        targetVersion = argv.targetVersion;
+      } else if (infraOperation === 'destroy') {
+        confirm = argv.yes;
+      } else if (infraOperation === 'terraform') {
+        commandArgs = rest.length > 0 ? rest : undefined;
+      }
+
+      const params: InfraAwsStaticWebsiteCliParams = {
+        operation: infraOperation,
+        deploymentName: argv.deployment,
+        targetVersion,
+        confirm,
+        commandArgs,
+      };
+      await infraAwsStaticWebsiteCli(config, params);
       return;
     }
 
     if (command === 'deploy') {
-      const deploymentName = opArgs[0];
+      const deploymentName = argv.deployment;
       if (!packageConfig.hasDeployment(deploymentName)) {
         if (argv['ignore-missing-deployments']) {
           warn(
@@ -58,7 +81,11 @@ export const run = async (args: string[]): Promise<void> => {
           throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
         }
       }
-      await infraAwsStaticWebsiteCli(config, ['deploy', ...opArgs]);
+      const params: InfraAwsStaticWebsiteCliParams = {
+        operation: 'deploy',
+        deploymentName,
+      };
+      await infraAwsStaticWebsiteCli(config, params);
       const deployment = packageConfig.getDeployment(deploymentName);
       const deploymentState = readDeploymentState('./', deployment.name);
       await deployEdgeLambda({
@@ -68,7 +95,7 @@ export const run = async (args: string[]): Promise<void> => {
       return;
     }
 
-    fatal('Unknown command: ' + command);
+    fatal(`Unknown command: ${command}`);
     throw new Error();
   });
 };

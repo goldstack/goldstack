@@ -21,7 +21,7 @@ export const run = async (args: string[]): Promise<void> => {
       infraCommands: infraCommands(),
     })
       .help()
-      .parse(args);
+      .parse();
 
     const packageConfig = new PackageConfig<LambdaPackage, LambdaDeployment>({
       packagePath: './',
@@ -31,6 +31,7 @@ export const run = async (args: string[]): Promise<void> => {
     const [, , , ...opArgs] = args;
     const command = argv._[0];
 
+    // console.log(JSON.stringify(argv, null, 2));
     if (command === 'infra') {
       const infraOperation = argv._[1] as string;
       const deploymentName = argv.deployment;
