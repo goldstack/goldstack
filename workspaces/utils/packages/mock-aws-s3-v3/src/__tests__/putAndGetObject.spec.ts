@@ -39,6 +39,7 @@ test('Throws NoSuchKey for HeadObjectCommand on non-existent objects', async () 
     localDirectory: 'goldstackLocal/s3',
     bucket: 'test-local',
   });
+  let expectedErrorThrown = false;
   try {
     await mockClient.send(
       new HeadObjectCommand({
@@ -50,10 +51,12 @@ test('Throws NoSuchKey for HeadObjectCommand on non-existent objects', async () 
   } catch (e) {
     if (e instanceof NoSuchKey) {
       // pass - this is the expected behavior
+      expectedErrorThrown = true;
     } else {
       throw e;
     }
   }
+  expect(expectedErrorThrown).toBeTruthy();
 });
 
 test('Throws NoSuchKey for GetObjectTaggingCommand on non-existent objects', async () => {
