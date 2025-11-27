@@ -119,7 +119,7 @@ export interface TerraformAWSCliParams {
   skipConfirmations: boolean;
   targetVersion?: string;
   confirm?: boolean;
-  command?: string[];
+  commandArguments?: string[];
 }
 
 export const terraformAwsCli = async (params: TerraformAWSCliParams): Promise<void> => {

@@ -132,7 +132,7 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
         deploymentName,
         targetVersion,
         confirm,
-        command: commandArgs,
+        commandArguments: commandArgs,
         ignoreMissingDeployments: argv['ignore-missing-deployments'] || false,
         skipConfirmations: false,
         options: {

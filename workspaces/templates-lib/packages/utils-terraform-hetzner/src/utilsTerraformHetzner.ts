@@ -71,7 +71,7 @@ export const terraformHetznerCli = async (
     deploymentName,
     targetVersion,
     confirm,
-    command: commandArgs,
+    commandArguments: commandArgs,
     options: {
       ...options,
       provider: new HetznerCloudProvider(user.config.token, provider),

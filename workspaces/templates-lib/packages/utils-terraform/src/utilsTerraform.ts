@@ -138,7 +138,7 @@ export type TerraformCliParams = {
   deploymentName: string;
   targetVersion?: string;
   confirm?: boolean;
-  command?: string[];
+  commandArguments?: string[];
   injectVariables?: boolean;
   injectBackendConfig?: boolean;
 };
@@ -188,7 +188,7 @@ export const terraformCli = (params: TerraformCliParams): void => {
   if (operation === 'terraform') {
     build.terraform({
       deploymentName: params.deploymentName,
-      command: params.command!,
+      command: params.commandArguments!,
       injectVariables: params.injectVariables,
       injectBackendConfig: params.injectBackendConfig,
     });

@@ -76,7 +76,7 @@ export const infraAwsStaticWebsiteCli = async (
     deploymentName,
     targetVersion,
     confirm,
-    command: commandArgs,
+    commandArguments: commandArgs,
     ignoreMissingDeployments: false,
     skipConfirmations: false,
     options: undefined,

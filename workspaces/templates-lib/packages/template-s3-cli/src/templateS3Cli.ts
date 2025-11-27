@@ -45,7 +45,7 @@ export const run = async (args: string[]): Promise<void> => {
         deploymentName,
         targetVersion,
         confirm,
-        command: commandArgs,
+        commandArguments: commandArgs,
         ignoreMissingDeployments: argv['ignore-missing-deployments'] || false,
         skipConfirmations: argv.yes || false,
         options: undefined,
