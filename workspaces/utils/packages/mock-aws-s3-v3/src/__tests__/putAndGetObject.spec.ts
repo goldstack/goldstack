@@ -1,4 +1,13 @@
-import { GetObjectCommand, NoSuchKey, PutObjectCommand, type S3Client } from '@aws-sdk/client-s3';
+import {
+  CopyObjectCommand,
+  GetObjectCommand,
+  GetObjectTaggingCommand,
+  HeadObjectCommand,
+  NoSuchKey,
+  PutObjectCommand,
+  PutObjectTaggingCommand,
+  type S3Client,
+} from '@aws-sdk/client-s3';
 import type { NodeJsClient } from '@smithy/types';
 import assert from 'assert';
 import { createReadStream, createWriteStream, readFileSync, writeFileSync } from 'fs';
@@ -19,6 +28,98 @@ test('Returns objects that do not exist as undefined', async () => {
   } catch (e) {
     if (e instanceof NoSuchKey) {
       // pass
+    } else {
+      throw e;
+    }
+  }
+});
+
+test('Throws NoSuchKey for HeadObjectCommand on non-existent objects', async () => {
+  const mockClient = createS3Client({
+    localDirectory: 'goldstackLocal/s3',
+    bucket: 'test-local',
+  });
+  try {
+    await mockClient.send(
+      new HeadObjectCommand({
+        Bucket: 'test-local',
+        Key: 'iamcertainlynotthere',
+      }),
+    );
+    throw new Error('Expected HeadObjectCommand to throw NoSuchKey');
+  } catch (e) {
+    if (e instanceof NoSuchKey) {
+      // pass - this is the expected behavior
+    } else {
+      throw e;
+    }
+  }
+});
+
+test('Throws NoSuchKey for GetObjectTaggingCommand on non-existent objects', async () => {
+  const mockClient = createS3Client({
+    localDirectory: 'goldstackLocal/s3',
+    bucket: 'test-local',
+  });
+  try {
+    await mockClient.send(
+      new GetObjectTaggingCommand({
+        Bucket: 'test-local',
+        Key: 'iamcertainlynotthere',
+      }),
+    );
+    throw new Error('Expected GetObjectTaggingCommand to throw NoSuchKey');
+  } catch (e) {
+    if (e instanceof NoSuchKey) {
+      // pass - this is the expected behavior
+    } else {
+      throw e;
+    }
+  }
+});
+
+test('Throws NoSuchKey for PutObjectTaggingCommand on non-existent objects', async () => {
+  const mockClient = createS3Client({
+    localDirectory: 'goldstackLocal/s3',
+    bucket: 'test-local',
+  });
+  try {
+    await mockClient.send(
+      new PutObjectTaggingCommand({
+        Bucket: 'test-local',
+        Key: 'iamcertainlynotthere',
+        Tagging: {
+          TagSet: [{ Key: 'test', Value: 'value' }],
+        },
+      }),
+    );
+    throw new Error('Expected PutObjectTaggingCommand to throw NoSuchKey');
+  } catch (e) {
+    if (e instanceof NoSuchKey) {
+      // pass - this is the expected behavior
+    } else {
+      throw e;
+    }
+  }
+});
+
+test('Throws NoSuchKey for CopyObjectCommand with non-existent source', async () => {
+  const mockClient = createS3Client({
+    localDirectory: 'goldstackLocal/s3',
+    bucket: 'test-local',
+  });
+  try {
+    await mockClient.send(
+      new CopyObjectCommand({
+        Bucket: 'test-local',
+        Key: 'destination',
+        CopySource: 'test-local/iamcertainlynotthere',
+      }),
+    );
+    throw new Error('Expected CopyObjectCommand to throw NoSuchKey');
+  } catch (e) {
+    if (e instanceof NoSuchKey) {
+      // pass - this is the expected behavior
     } else {
       throw e;
     }

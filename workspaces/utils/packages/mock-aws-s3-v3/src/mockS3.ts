@@ -193,6 +193,28 @@ export function createS3Client({
         }
       }
 
+      if (['headObject', 'getObjectTagging', 'putObjectTagging', 'copyObject'].includes(method)) {
+        try {
+          const result = await operation.promise();
+          if (method === 'headObject' && result === undefined) {
+            throw new NoSuchKey({
+              message: 'The specified key does not exist.',
+              $metadata: {},
+            });
+          }
+          return result;
+        } catch (e) {
+          const awsError = e as AWSError;
+          if (awsError.code === 'NoSuchKey' || awsError.code === 'ENOENT') {
+            throw new NoSuchKey({
+              message: e.message,
+              $metadata: {},
+            });
+          }
+          throw e;
+        }
+      }
+
       return await operation.promise();
     });
   });

@@ -52,7 +52,7 @@
     "@goldstack/utils-terraform": "0.4.58",
     "@smithy/smithy-client": "4.9.7",
     "@smithy/types": "4.9.0",
-    "mock-aws-s3-v3": "6.0.11",
+    "mock-aws-s3-v3": "6.1.0",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
