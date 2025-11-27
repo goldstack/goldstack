@@ -26,12 +26,31 @@ export const run = async (args: string[]): Promise<void> => {
       deployCommands: buildDeployCommands(),
       infraCommands: infraCommands(),
     })
-      .command('build [deployment]', 'Build all lambdas', () => {
-        return yargs.positional('deployment', {
-          type: 'string',
-          describe: 'Name of the deployment this command should be applied to',
-          default: '',
-        });
+      .command('build [deployment] [filter]', 'Build lambdas', () => {
+        return yargs
+          .positional('deployment', {
+            type: 'string',
+            describe: 'Name of the deployment this command should be applied to',
+            default: '',
+          })
+          .positional('filter', {
+            type: 'string',
+            describe: 'Regex filter for lambda name',
+            demandOption: false,
+          });
+      })
+      .command('deploy [deployment] [filter]', 'Deploy lambdas', () => {
+        return yargs
+          .positional('deployment', {
+            type: 'string',
+            describe: 'Name of the deployment this command should be applied to',
+            default: '',
+          })
+          .positional('filter', {
+            type: 'string',
+            describe: 'Regex filter for lambda name',
+            demandOption: false,
+          });
       })
       .option('ignore-missing-deployments', {
         type: 'boolean',
@@ -46,6 +65,7 @@ export const run = async (args: string[]): Promise<void> => {
     });
 
     const config = packageConfig.getConfig();
+    const [, , , ...opArgs] = args;
 
     // update routes
     if (!fs.existsSync(defaultRoutesPath)) {
@@ -64,9 +84,10 @@ export const run = async (args: string[]): Promise<void> => {
     });
     writePackageConfig(config);
 
+    // console.log(JSON.stringify(argv));
     const command = argv._[0] as string;
-    const deploymentName = argv._[1] as string;
-    const routeFilterArg = argv._[2] ? (argv._[2] as string) : undefined;
+    const deploymentName = argv.deployment;
+    const routeFilterArg = argv.filter;
     const routeFilter = routeFilterArg ? `*${routeFilterArg}*` : undefined;
 
     if (routeFilter && (command === 'build' || command === 'deploy')) {
@@ -87,11 +108,10 @@ export const run = async (args: string[]): Promise<void> => {
         );
         return;
       }
-      // console.log(filteredLambdaRoutes);
     }
 
     if (command === 'infra') {
-      await terraformAwsCli(argv._.slice(1) as string[], {
+      await terraformAwsCli(opArgs, {
         // temporary workaround for https://github.com/goldstack/goldstack/issues/40
         parallelism: 1,
       });

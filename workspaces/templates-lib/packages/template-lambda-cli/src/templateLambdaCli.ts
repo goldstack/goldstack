@@ -21,23 +21,36 @@ export const run = async (args: string[]): Promise<void> => {
       infraCommands: infraCommands(),
     })
       .help()
-      .parse();
+      .parse(args);
 
     const packageConfig = new PackageConfig<LambdaPackage, LambdaDeployment>({
       packagePath: './',
     });
 
     const config = packageConfig.getConfig();
-    const command = argv._[0];
     const [, , , ...opArgs] = args;
+    const command = argv._[0];
 
     if (command === 'infra') {
+      if (opArgs.length < 1 || !opArgs[0]) {
+        throw new Error('No infrastructure operation provided');
+      }
+      if (opArgs.length < 2 || !opArgs[1]) {
+        throw new Error('No deployment provided');
+      }
+
       await terraformAwsCli(opArgs);
       return;
     }
 
     if (command === 'deploy') {
-      const deploymentName = opArgs[0];
+      // Determine deployment name from parsed argv (positional) or fallback to argv._ array
+      const deploymentName = argv.deployment;
+
+      if (!deploymentName) {
+        throw new Error('No deployment provided');
+      }
+
       if (!packageConfig.hasDeployment(deploymentName)) {
         if (argv['ignore-missing-deployments']) {
           warn(

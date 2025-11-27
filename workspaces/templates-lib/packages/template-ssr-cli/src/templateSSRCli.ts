@@ -71,6 +71,11 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
             });
         },
       )
+      .option('ignore-missing-deployments', {
+        type: 'boolean',
+        describe: 'Ignore missing deployments',
+        default: false,
+      })
       .help()
       .parse();
 
@@ -116,6 +121,10 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
     }
 
     if (command === 'build') {
+      if (argv['ignore-missing-deployments'] && !packageConfig.hasDeployment(opArgs[0])) {
+        warn(`Deployment '${opArgs[0]}' does not exist. Skipping build.`);
+        return;
+      }
       const deployment = packageConfig.getDeployment(opArgs[0]);
       let routeFilter: undefined | string;
       if (opArgs.length === 2) {
@@ -146,6 +155,12 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
     }
 
     if (command === 'deploy') {
+      if (argv['ignore-missing-deployments'] && !packageConfig.hasDeployment(opArgs[0])) {
+        warn(
+          `Deployment '${opArgs[0]}' does not exist. Skipping deploy due to --ignore-missing-deployments flag.`,
+        );
+        return;
+      }
       const deployment = packageConfig.getDeployment(opArgs[0]);
       const config = deployment.configuration;
 

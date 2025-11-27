@@ -132,50 +132,66 @@ export interface TerraformOptions {
   provider?: CloudProvider;
 }
 
-export const terraformCli = (args: string[], options: TerraformOptions): void => {
-  if (!options.provider) {
+export type TerraformCliParams = {
+  options: TerraformOptions;
+  infraOperation: string;
+  deploymentName: string;
+  targetVersion?: string;
+  confirm?: boolean;
+  command?: string[];
+  injectVariables?: boolean;
+  injectBackendConfig?: boolean;
+};
+
+export const terraformCli = (params: TerraformCliParams): void => {
+  if (!params.options.provider) {
     throw new Error('Cloud provider not defined');
   }
-  const [operation, ...opArgs] = args;
+  const operation = params.infraOperation;
 
-  const build = new TerraformBuild(options.provider);
+  const build = new TerraformBuild(params.options.provider);
 
   if (operation === 'up') {
-    build.init(opArgs);
-    build.plan(opArgs);
-    build.apply(opArgs, options);
+    build.init({ deploymentName: params.deploymentName });
+    build.plan({ deploymentName: params.deploymentName });
+    build.apply({ deploymentName: params.deploymentName, options: params.options });
     return;
   }
 
   if (operation === 'init') {
-    build.init(opArgs);
+    build.init({ deploymentName: params.deploymentName });
     return;
   }
   if (operation === 'plan') {
-    build.plan(opArgs);
+    build.plan({ deploymentName: params.deploymentName });
     return;
   }
   if (operation === 'apply') {
-    build.apply(opArgs);
+    build.apply({ deploymentName: params.deploymentName, options: params.options });
     return;
   }
 
   if (operation === 'destroy') {
-    build.destroy(opArgs);
+    build.destroy({ deploymentName: params.deploymentName, confirm: params.confirm });
     return;
   }
 
   if (operation === 'is-up') {
-    build.isUp(opArgs);
+    build.isUp({ deploymentName: params.deploymentName });
     return;
   }
 
   if (operation === 'upgrade') {
-    build.upgrade(opArgs);
+    build.upgrade({ deploymentName: params.deploymentName, targetVersion: params.targetVersion! });
     return;
   }
   if (operation === 'terraform') {
-    build.terraform(opArgs);
+    build.terraform({
+      deploymentName: params.deploymentName,
+      command: params.command!,
+      injectVariables: params.injectVariables,
+      injectBackendConfig: params.injectBackendConfig,
+    });
     return;
   }
   if (operation === 'destroy-state') {

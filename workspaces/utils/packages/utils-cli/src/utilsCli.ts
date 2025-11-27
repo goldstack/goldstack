@@ -97,7 +97,7 @@ export const wrapCli = async (func: AsyncFunction<any>): Promise<void> => {
       console.error(e);
       throw e;
     } else {
-      logger().info(
+      logger().error(
         {},
         '❌ Error while executing CLI command:' +
           e.message +

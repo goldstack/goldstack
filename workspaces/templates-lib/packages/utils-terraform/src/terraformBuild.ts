@@ -19,6 +19,74 @@ import type {
 } from './types/utilsTerraformConfig';
 import type { TerraformOptions } from './utilsTerraform';
 
+/**
+ * Parameters for initializing a Terraform deployment.
+ */
+export interface InitParams {
+  /** The name of the deployment to initialize. */
+  deploymentName: string;
+}
+
+/**
+ * Parameters for planning a Terraform deployment.
+ */
+export interface PlanParams {
+  /** The name of the deployment to plan. */
+  deploymentName: string;
+}
+
+/**
+ * Parameters for applying a Terraform deployment.
+ */
+export interface ApplyParams {
+  /** The name of the deployment to apply. */
+  deploymentName: string;
+  /** Optional Terraform options for the apply operation. */
+  options?: TerraformOptions;
+}
+
+/**
+ * Parameters for destroying a Terraform deployment.
+ */
+export interface DestroyParams {
+  /** The name of the deployment to destroy. */
+  deploymentName: string;
+  /** Whether to skip confirmation prompt (equivalent to -y flag). */
+  confirm?: boolean;
+}
+
+/**
+ * Parameters for upgrading Terraform version for a deployment.
+ */
+export interface UpgradeParams {
+  /** The name of the deployment to upgrade. */
+  deploymentName: string;
+  /** The target Terraform version to upgrade to. */
+  targetVersion: string;
+}
+
+/**
+ * Parameters for checking if a deployment is up.
+ */
+export interface IsUpParams {
+  /** The name of the deployment to check. */
+  deploymentName: string;
+}
+
+/**
+ * Parameters for running arbitrary Terraform commands.
+ */
+export interface TerraformParams {
+  /** The name of the deployment. */
+  deploymentName: string;
+  /** The Terraform command arguments to execute. */
+  command: string[];
+  /** Whether to inject variables into the command. */
+  injectVariables?: boolean;
+  /** Whether to inject backend configuration into the command. */
+  injectBackendConfig?: boolean;
+}
+
 export const convertToPythonVariable = (variableName: string): string => {
   let res = '';
 
@@ -144,18 +212,15 @@ export const getVariablesFromHCL = (properties: object): Variables => {
   return vars;
 };
 
-const getDeployment = (args: string[]): TerraformDeployment => {
-  if (args.length < 1) {
-    throw new Error('Please specify the name of the deployment.');
-  }
-  const name = args[0];
-
+const getDeployment = (deploymentName: string): TerraformDeployment => {
   const packageConfig = readPackageConfig();
 
-  const deployment = packageConfig.deployments.find((deployment) => deployment.name === name);
+  const deployment = packageConfig.deployments.find(
+    (deployment) => deployment.name === deploymentName,
+  );
 
   if (!deployment) {
-    fatal(`Cannot find configuration for deployment '${name}''`);
+    fatal(`Cannot find configuration for deployment '${deploymentName}''`);
     throw new Error('Cannot parse configuration.');
   }
 
@@ -185,9 +250,9 @@ export class TerraformBuild {
     return this.provider.getTfStateVariables(deploymentConfig);
   };
 
-  private getTfVersion = (args: string[]): TerraformVersion => {
-    if (args.length > 0) {
-      const deployment = getDeployment(args);
+  private getTfVersion = (deploymentName?: string): TerraformVersion => {
+    if (deploymentName) {
+      const deployment = getDeployment(deploymentName);
       if (deployment.tfVersion) {
         return deployment.tfVersion;
       }
@@ -205,7 +270,7 @@ export class TerraformBuild {
 
     throw new Error(
       'Cannot determine Terraform version from ' +
-        args +
+        deploymentName +
         ' in ' +
         pwd() +
         '. Terraform config with version expected in `infra/tfConfig.json` or as part of the deployment.',
@@ -214,9 +279,9 @@ export class TerraformBuild {
     //return '0.12';
   };
 
-  init = (args: string[]): void => {
-    const deployment = getDeployment(args);
-    const version = this.getTfVersion(args);
+  init = (params: InitParams): void => {
+    const deployment = getDeployment(params.deploymentName);
+    const version = this.getTfVersion(params.deploymentName);
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     try {
@@ -247,7 +312,7 @@ export class TerraformBuild {
         silent: true,
       });
 
-      const deploymentName = args[0];
+      const deploymentName = params.deploymentName;
       let workspaceExists = workspaces.split('\n').find((line) => {
         return line.indexOf(deploymentName) >= 0;
       });
@@ -307,16 +372,16 @@ export class TerraformBuild {
     }
   };
 
-  plan = (args: string[]): void => {
-    const deployment = getDeployment(args);
-    const version = this.getTfVersion(args);
+  plan = (params: PlanParams): void => {
+    const deployment = getDeployment(params.deploymentName);
+    const version = this.getTfVersion(params.deploymentName);
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     try {
       const provider = this.provider;
 
       this.ensureInCorrectWorkspace({
-        deploymentName: args[0],
+        deploymentName: params.deploymentName,
         provider,
         version,
         backendConfig,
@@ -335,23 +400,23 @@ export class TerraformBuild {
     }
   };
 
-  apply = (args: string[], options?: TerraformOptions): void => {
-    const deployment = getDeployment(args);
-    const version = this.getTfVersion(args);
+  apply = (params: ApplyParams): void => {
+    const deployment = getDeployment(params.deploymentName);
+    const version = this.getTfVersion(params.deploymentName);
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     try {
       const provider = this.provider;
-      const deploymentName = args[0];
+      const deploymentName = params.deploymentName;
       this.ensureInCorrectWorkspace({
-        deploymentName: args[0],
+        deploymentName: params.deploymentName,
         provider,
         version,
         backendConfig,
       });
       let cliOptions = ['-input=false', 'tfplan'];
-      if (options?.parallelism) {
-        cliOptions = [`-parallelism=${options.parallelism}`, ...cliOptions];
+      if (params.options?.parallelism) {
+        cliOptions = [`-parallelism=${params.options.parallelism}`, ...cliOptions];
       }
       tf('apply', {
         provider,
@@ -399,13 +464,13 @@ export class TerraformBuild {
     return child_process.spawnSync(cmd, args, opts).stdout.toString().trim();
   };
 
-  destroy = (args: string[]): void => {
-    const deployment = getDeployment(args);
-    const version = this.getTfVersion(args);
+  destroy = (params: DestroyParams): void => {
+    const deployment = getDeployment(params.deploymentName);
+    const version = this.getTfVersion(params.deploymentName);
     const backendConfig = this.getTfStateVariables(deployment);
     cd('./infra/aws');
     try {
-      const ciConfirmed = args.find((str) => str === '-y');
+      const ciConfirmed = params.confirm;
       if (!ciConfirmed) {
         const value = this.prompt(
           'Are you sure to destroy your deployed resources? If yes, please type `y` and enter.\n' +
@@ -418,7 +483,7 @@ export class TerraformBuild {
       const provider = this.provider;
       const variables = [...getVariablesFromHCL({ ...deployment, ...deployment.configuration })];
 
-      tf(`workspace select ${args[0]}`, { provider, version, silent: true });
+      tf(`workspace select ${params.deploymentName}`, { provider, version, silent: true });
       tf('init', {
         provider,
         backendConfig,
@@ -429,7 +494,7 @@ export class TerraformBuild {
         provider,
         variables,
         version,
-        workspace: args[0],
+        workspace: params.deploymentName,
         options: ['-input=false', '-out tfplan'],
       });
       tf('destroy', {
@@ -438,7 +503,7 @@ export class TerraformBuild {
         version,
         options: ['-input=false', '-auto-approve'],
       });
-      const deploymentState = readDeploymentState('./../../', args[0], {
+      const deploymentState = readDeploymentState('./../../', params.deploymentName, {
         createIfNotExist: true,
       });
       deploymentState.terraform = undefined;
@@ -450,7 +515,7 @@ export class TerraformBuild {
 
   private performUpgrade = (deploymentName: string, targetVersion: TerraformVersion) => {
     const provider = this.provider;
-    const version = this.getTfVersion([deploymentName]);
+    const version = this.getTfVersion(deploymentName);
     cd('./infra/aws');
     const currentWorkspace = tf('workspace show', {
       provider: provider,
@@ -497,51 +562,51 @@ export class TerraformBuild {
     assert(deploymentInConfig);
     deploymentInConfig.tfVersion = targetVersion;
     writePackageConfig(packageConfig);
-    this.init([deploymentName]);
+    this.init({ deploymentName });
     console.log(
       `Version upgraded to ${targetVersion}. Please run deployment to upgrade remote state before further upgrades.`,
     );
   };
 
-  upgrade = (args: string[]): void => {
-    const deployment = getDeployment(args);
-    const version = this.getTfVersion([deployment.name]) || '0.12';
-    const newVersion = args[1];
+  upgrade = (params: UpgradeParams): void => {
+    const deployment = getDeployment(params.deploymentName);
+    const version = this.getTfVersion(deployment.name) || '0.12';
+    const newVersion = params.targetVersion;
     if (version === newVersion) {
       console.log('Already on version', newVersion);
       return;
     }
     if (version === '0.12' && newVersion === '0.13') {
-      this.performUpgrade(args[0], '0.13');
+      this.performUpgrade(params.deploymentName, '0.13');
       return;
     }
 
     if (version === '0.13' && newVersion === '0.14') {
-      this.performUpgrade(args[0], '0.14');
+      this.performUpgrade(params.deploymentName, '0.14');
       return;
     }
     if (version === '0.14' && newVersion === '0.15') {
-      this.performUpgrade(args[0], '0.15');
+      this.performUpgrade(params.deploymentName, '0.15');
       return;
     }
     if (version === '0.15' && newVersion === '1.0') {
-      this.performUpgrade(args[0], '1.0');
+      this.performUpgrade(params.deploymentName, '1.0');
       return;
     }
     if (version === '1.0' && newVersion === '1.1') {
-      this.performUpgrade(args[0], '1.1');
+      this.performUpgrade(params.deploymentName, '1.1');
       return;
     }
     if (version.indexOf('1.') === 0 && newVersion.indexOf('1.') === 0) {
-      this.performUpgrade(args[0], newVersion as TerraformVersion);
+      this.performUpgrade(params.deploymentName, newVersion as TerraformVersion);
       return;
     }
     throw new Error(`Version upgrade not supported: from [${version}] to [${newVersion}].`);
   };
 
-  isUp = (args: string[]): void => {
+  isUp = (params: IsUpParams): void => {
     const deploymentsInfo = JSON.parse(read('src/state/deployments.json'));
-    const deployment = getDeployment(args);
+    const deployment = getDeployment(params.deploymentName);
     const deploymentState = deploymentsInfo.find((e: any) => e.name === deployment.name);
     if (!deploymentState || !deploymentState.terraform) {
       info('is-up: false');
@@ -550,14 +615,14 @@ export class TerraformBuild {
     }
   };
 
-  terraform(opArgs: string[]): void {
+  terraform = (params: TerraformParams): void => {
     const provider = this.provider;
-    const deployment = getDeployment(opArgs);
-    const version = this.getTfVersion(opArgs);
+    const deployment = getDeployment(params.deploymentName);
+    const version = this.getTfVersion(params.deploymentName);
 
     let backendConfig: [string, string][] | undefined;
 
-    if (opArgs.find((arg) => arg === '--inject-backend-config')) {
+    if (params.injectBackendConfig) {
       backendConfig = this.getTfStateVariables(deployment);
     }
 
@@ -565,7 +630,7 @@ export class TerraformBuild {
 
     cd('./infra/aws');
     try {
-      if (opArgs.find((arg) => arg === '--inject-variables')) {
+      if (params.injectVariables) {
         variables = [
           ...getVariablesFromHCL({
             ...deployment,
@@ -573,10 +638,10 @@ export class TerraformBuild {
           }),
         ];
       }
-      tf(`workspace select ${opArgs[0]}`, { provider, version, silent: true });
-      const remainingArgs = opArgs
-        .slice(1)
-        .filter((arg) => arg !== '--inject-backend-config' && arg !== '--inject-variables');
+      tf(`workspace select ${params.deploymentName}`, { provider, version, silent: true });
+      const remainingArgs = params.command.filter(
+        (arg) => arg !== '--inject-backend-config' && arg !== '--inject-variables',
+      );
       tf(remainingArgs.join(' '), {
         provider,
         backendConfig,
@@ -586,7 +651,7 @@ export class TerraformBuild {
     } finally {
       cd('../..');
     }
-  }
+  };
 
   constructor(provider: CloudProvider) {
     assert(provider);
