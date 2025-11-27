@@ -10,19 +10,19 @@
   ],
   "scripts": {
     "build": "yarn clean && yarn compile",
-    "build-web": "ts-node --swc ./src/build.ts $@",
+    "build-web": "ts-node --swc ./src/build.ts \"$@\"",
     "clean": "rimraf ./dist && rimraf ./webDist",
     "clean-terraform": "rimraf ./infra/aws/.terraform",
     "compile": "tsc --build",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
-    "deploy": "yarn build-web $@ && yarn template deploy $@",
-    "deploy-ts": "yarn build-web $@ && yarn template-ts deploy $@",
+    "deploy": "yarn build-web \"$@\" && yarn template deploy \"$@\"",
+    "deploy-ts": "yarn build-web \"$@\" && yarn template-ts deploy \"$@\"",
     "infra": "yarn template infra",
     "template": "yarn template-ts",
     "template-ts": "ts-node --swc scripts/template.ts",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
     "watch": "yarn compile && yarn build-web local && concurrently \"yarn watch-web local\" \"light-server --serve ./webDist --watchexp ./webDist/* --port 8077 --delay 500 --open\" ",
-    "watch-web": "ts-node --swc ./src/watch.ts $@"
+    "watch-web": "ts-node --swc ./src/watch.ts \"$@\""
   },
   "dependencies": {
     "gulp": "^4.0.2",

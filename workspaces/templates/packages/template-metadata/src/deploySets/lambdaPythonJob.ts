@@ -17,7 +17,7 @@ export const createLambdaPythonJobBuildSetConfig = async (): Promise<DeploySetCo
     ],
   };
 
-  const hash = new Date().getTime();
+  const hash = Date.now();
   const setConfig: DeploySetConfig = {
     buildSetName: 'lambda-python-job',
     buildTemplates: ['yarn-pnp-monorepo', 'lambda-python-job'],

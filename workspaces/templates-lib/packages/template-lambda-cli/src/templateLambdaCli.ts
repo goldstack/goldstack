@@ -81,6 +81,6 @@ export const run = async (args: string[]): Promise<void> => {
       return;
     }
 
-    throw new Error('Unknown command: ' + command);
+    throw new Error(`Unknown command: ${command}`);
   });
 };
