@@ -4007,7 +4007,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs-bootstrap@workspace:workspaces/templates/packages/app-nextjs-bootstrap"
   dependencies:
-    "@goldstack/template-nextjs": "npm:0.5.75"
+    "@goldstack/template-nextjs": "npm:0.5.76"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@swc/core": "npm:^1.12.11"
     "@swc/jest": "npm:^0.2.39"
@@ -4044,7 +4044,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs-tailwind@workspace:workspaces/templates/packages/app-nextjs-tailwind"
   dependencies:
-    "@goldstack/template-nextjs": "npm:0.5.75"
+    "@goldstack/template-nextjs": "npm:0.5.76"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@swc/core": "npm:^1.12.11"
     "@swc/jest": "npm:^0.2.39"
@@ -4081,7 +4081,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs@workspace:workspaces/templates/packages/app-nextjs"
   dependencies:
-    "@goldstack/template-nextjs": "npm:0.5.75"
+    "@goldstack/template-nextjs": "npm:0.5.76"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@swc/core": "npm:^1.12.11"
     "@swc/jest": "npm:^0.2.39"
@@ -4182,7 +4182,7 @@ __metadata:
   dependencies:
     "@fullstory/browser": "npm:^1.4.5"
     "@goldstack/markdown-docs": "npm:0.1.0"
-    "@goldstack/template-nextjs": "npm:0.5.75"
+    "@goldstack/template-nextjs": "npm:0.5.76"
     "@goldstack/toc-generator": "npm:0.1.0"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-track": "npm:0.2.23"
@@ -4363,7 +4363,7 @@ __metadata:
     "@goldstack/project-config": "npm:0.1.0"
     "@goldstack/project-repository": "npm:0.1.0"
     "@goldstack/template-metadata": "npm:0.1.0"
-    "@goldstack/template-nextjs": "npm:0.5.75"
+    "@goldstack/template-nextjs": "npm:0.5.76"
     "@goldstack/utils-docs-cli": "npm:0.3.11"
     "@goldstack/utils-package": "npm:0.4.30"
     "@goldstack/utils-project": "npm:0.4.29"
@@ -4652,7 +4652,7 @@ __metadata:
   dependencies:
     "@aws-sdk/client-sso-oidc": "npm:3.934.0"
     "@aws-sdk/client-sts": "npm:3.934.0"
-    "@goldstack/template-nextjs": "npm:0.5.75"
+    "@goldstack/template-nextjs": "npm:0.5.76"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@swc/core": "npm:^1.12.11"
     "@swc/jest": "npm:^0.2.39"
@@ -5635,7 +5635,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-nextjs@npm:0.5.75, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
+"@goldstack/template-nextjs@npm:0.5.76, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs"
   dependencies:
@@ -6035,13 +6035,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-user-management-cli@npm:0.1.71, @goldstack/template-user-management-cli@workspace:workspaces/templates-lib/packages/template-user-management-cli":
+"@goldstack/template-user-management-cli@npm:0.1.72, @goldstack/template-user-management-cli@workspace:workspaces/templates-lib/packages/template-user-management-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-user-management-cli@workspace:workspaces/templates-lib/packages/template-user-management-cli"
   dependencies:
     "@goldstack/infra": "npm:0.4.29"
     "@goldstack/infra-aws": "npm:0.4.45"
-    "@goldstack/template-user-management": "npm:0.1.65"
+    "@goldstack/template-user-management": "npm:0.1.66"
     "@goldstack/utils-aws-lambda": "npm:0.3.57"
     "@goldstack/utils-cli": "npm:0.3.23"
     "@goldstack/utils-docker": "npm:0.4.30"
@@ -6072,7 +6072,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-user-management@npm:0.1.65, @goldstack/template-user-management@workspace:workspaces/templates-lib/packages/template-user-management":
+"@goldstack/template-user-management@npm:0.1.66, @goldstack/template-user-management@workspace:workspaces/templates-lib/packages/template-user-management":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-user-management@workspace:workspaces/templates-lib/packages/template-user-management"
   dependencies:
@@ -6121,8 +6121,8 @@ __metadata:
   resolution: "@goldstack/user-management@workspace:workspaces/templates/packages/user-management"
   dependencies:
     "@aws-sdk/client-cognito-identity-provider": "npm:3.934.0"
-    "@goldstack/template-user-management": "npm:0.1.65"
-    "@goldstack/template-user-management-cli": "npm:0.1.71"
+    "@goldstack/template-user-management": "npm:0.1.66"
+    "@goldstack/template-user-management-cli": "npm:0.1.72"
     "@goldstack/utils-log": "npm:0.3.25"
     "@swc/core": "npm:^1.12.11"
     "@swc/jest": "npm:^0.2.39"
