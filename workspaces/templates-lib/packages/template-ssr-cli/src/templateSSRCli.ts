@@ -144,11 +144,14 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
     }
 
     if (command === 'build') {
-      if (argv['ignore-missing-deployments'] && !packageConfig.hasDeployment(argv.deployment)) {
+      if (
+        argv['ignore-missing-deployments'] &&
+        !packageConfig.hasDeployment(argv.deployment as string)
+      ) {
         warn(`Deployment '${argv.deployment}' does not exist. Skipping build.`);
         return;
       }
-      const deployment = packageConfig.getDeployment(argv.deployment);
+      const deployment = packageConfig.getDeployment(argv.deployment as string);
       let routeFilter: undefined | string;
       if (argv.route) {
         routeFilter = `*${argv.route}*`;
