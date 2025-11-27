@@ -32,15 +32,8 @@ export const run = async (args: string[]): Promise<void> => {
     const command = argv._[0];
 
     if (command === 'infra') {
-      if (opArgs.length < 1 || !opArgs[0]) {
-        throw new Error('No infrastructure operation provided');
-      }
-      if (opArgs.length < 2 || !opArgs[1]) {
-        throw new Error('No deployment provided');
-      }
-
-      const infraOperation = opArgs[0];
-      const deploymentName = opArgs[1];
+      const infraOperation = argv._[1] as string;
+      const deploymentName = argv.deployment;
       let targetVersion: string | undefined;
       let confirm: boolean | undefined;
       let commandArgs: string[] | undefined;

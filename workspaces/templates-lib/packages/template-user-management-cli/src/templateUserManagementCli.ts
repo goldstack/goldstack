@@ -25,12 +25,12 @@ export const run = async (args: string[]): Promise<void> => {
       packagePath: './',
     });
     const config = packageConfig.getConfig();
-    const command = argv._[0];
     const [, , , ...opArgs] = args;
+    const command = argv._[0];
 
     if (command === 'infra') {
-      const infraOperation = opArgs[0];
-      const deploymentName = opArgs[1];
+      const infraOperation = argv._[1] as string;
+      const deploymentName = argv.deployment;
       let targetVersion: string | undefined;
       let confirm: boolean | undefined;
       let commandArgs: string[] | undefined;
@@ -57,7 +57,7 @@ export const run = async (args: string[]): Promise<void> => {
     }
 
     if (command === 'deploy') {
-      const deploymentName = opArgs[0];
+      const deploymentName = argv.deployment;
       if (!packageConfig.hasDeployment(deploymentName)) {
         if (argv['ignore-missing-deployments']) {
           warn(

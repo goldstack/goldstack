@@ -20,22 +20,22 @@ export const run = async (args: string[]): Promise<void> => {
       packagePath: './',
     });
     const config = packageConfig.getConfig();
-    const command = argv._[0];
     const [, , , ...opArgs] = args;
+    const command = argv._[0];
 
     if (command === 'infra') {
-      const infraOperation = opArgs[0];
-      const deploymentName = opArgs[1];
+      const infraOperation = argv._[1] as string;
+      const deploymentName = argv.deployment;
       let targetVersion: string | undefined;
       let confirm: boolean | undefined;
       let commandArgs: string[] | undefined;
 
       if (infraOperation === 'upgrade') {
-        targetVersion = opArgs[2];
+        targetVersion = argv.targetVersion;
       } else if (infraOperation === 'terraform') {
         commandArgs = opArgs.slice(2);
       } else if (infraOperation === 'destroy') {
-        confirm = argv.yes || opArgs.includes('-y');
+        confirm = argv.yes;
       }
 
       await terraformAwsCli({
