@@ -169,7 +169,10 @@ export function createS3Client({
     mockClientInstance.on(command).callsFake(async (input: any): Promise<any> => {
       const context = getBucketContext(input.Bucket);
       if (!context) {
-        // if no context defined for bucket, send command to real client
+        // if no context defined for bucket, warn and fall back to real client
+        console.warn(
+          `Bucket '${input.Bucket}' is not mocked. Falling back to real AWS S3 client. Only buckets created with createS3Client() can be accessed through this mock client.`,
+        );
         const commandWithInput = new command(input);
         return await clientSend(commandWithInput);
       }

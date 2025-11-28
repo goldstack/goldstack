@@ -81,3 +81,30 @@ test('Correct error when accessing not existing object', async () => {
     return response;
   }
 });
+
+test('Warns when accessing invalid bucket and falls back to real client', async () => {
+  const client = createS3Client({
+    localDirectory: 's3Mock',
+    bucket: 'bucket',
+  });
+
+  const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+
+  await expect(getFileFromS3('invalid-bucket', 'some-file', client)).rejects.toThrow();
+
+  expect(consoleWarnSpy).toHaveBeenCalledWith(
+    "Bucket 'invalid-bucket' is not mocked. Falling back to real AWS S3 client. Only buckets created with createS3Client() can be accessed through this mock client.",
+  );
+
+  consoleWarnSpy.mockRestore();
+
+  async function getFileFromS3(bucket: string, key: string, s3Client: S3Client) {
+    const response = await s3Client.send(
+      new GetObjectCommand({
+        Bucket: bucket,
+        Key: key,
+      }),
+    );
+    return response;
+  }
+});
