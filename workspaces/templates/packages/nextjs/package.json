@@ -40,7 +40,7 @@
     "tailwindcss": "^3"
   },
   "devDependencies": {
-    "@goldstack/template-nextjs": "0.5.76",
+    "@goldstack/template-nextjs": "0.5.77",
     "@goldstack/utils-sh": "0.5.28",
     "@swc/core": "^1.12.11",
     "@swc/jest": "^0.2.39",
