@@ -160,6 +160,11 @@ export function createS3Client({
     { command: ListBucketsCommand, method: undefined }, // not supported
   ];
 
+  // mockClientInstance.onAnyCommand((input: any) => {
+  //   throw new Error(
+  //     'Unrecognised command for AWS Mock Library. Please ensure you are not using incompatible AWS SDK versions.',
+  //   );
+  // });
   operations.forEach(({ command, method }) => {
     mockClientInstance.on(command).callsFake(async (input: any): Promise<any> => {
       const context = getBucketContext(input.Bucket);

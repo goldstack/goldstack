@@ -64,7 +64,7 @@ test('Can retrieve file with empty content using getFileFromS3 function if it ex
 test('Correct error when accessing not existing object', async () => {
   const client = createS3Client({
     localDirectory: 's3Mock',
-    bucket: 'bucket',
+    bucket: 'new-bucket',
   });
 
   await expect(getFileFromS3('bucket', 'some-key-that-does-not-exist', client)).rejects.toThrow(

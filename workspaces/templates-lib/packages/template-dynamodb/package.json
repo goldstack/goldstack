@@ -39,10 +39,10 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "3.934.0",
-    "@aws-sdk/credential-providers": "3.934.0",
-    "@aws-sdk/types": "^3.930.0",
-    "@aws-sdk/util-dynamodb": "3.934.0",
+    "@aws-sdk/client-dynamodb": "^3.940.0",
+    "@aws-sdk/credential-providers": "^3.940.0",
+    "@aws-sdk/types": "^3.936.0",
+    "@aws-sdk/util-dynamodb": "^3.940.0",
     "@goldstack/infra": "0.4.29",
     "@goldstack/infra-aws": "0.4.45",
     "@goldstack/utils-esbuild": "0.5.18",
