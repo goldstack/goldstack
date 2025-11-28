@@ -596,7 +596,7 @@ const RAW_RUNTIME_STATE =
     ["esbuild-tailwind-ssr-plugin", ["workspace:workspaces/utils/packages/esbuild-tailwind-ssr-plugin"]],\
     ["examples", ["workspace:workspaces/examples"]],\
     ["lambda-compression", ["workspace:workspaces/utils/packages/lambda-compression"]],\
-    ["mock-aws-s3-v3", ["virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#workspace:workspaces/utils/packages/mock-aws-s3-v3", "virtual:fc29b19fd4f8b3956c74bf53a75ab77797066f607bea3e7d36a7865168ce8cb5e2d890c2391d56c02be10c68fdac8372272865d69b8c600d66e1cefb784a0d8d#workspace:workspaces/utils/packages/mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"]],\
+    ["mock-aws-s3-v3", ["workspace:workspaces/utils/packages/mock-aws-s3-v3"]],\
     ["node-css-require", ["workspace:workspaces/utils/packages/node-css-require"]],\
     ["root", ["workspace:."]],\
     ["static-file-mapper", ["workspace:workspaces/utils/packages/static-file-mapper"]],\
@@ -6569,7 +6569,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:29.5.14"],\
           ["@types/node", "npm:24.0.13"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.7.0"],\
-          ["mock-aws-s3-v3", "virtual:fc29b19fd4f8b3956c74bf53a75ab77797066f607bea3e7d36a7865168ce8cb5e2d890c2391d56c02be10c68fdac8372272865d69b8c600d66e1cefb784a0d8d#workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
+          ["mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
           ["rimraf", "npm:3.0.2"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"]\
@@ -7030,7 +7030,7 @@ const RAW_RUNTIME_STATE =
           ["@types/yargs", "npm:17.0.33"],\
           ["concurrently", "npm:7.3.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.7.0"],\
-          ["mock-aws-s3-v3", "virtual:fc29b19fd4f8b3956c74bf53a75ab77797066f607bea3e7d36a7865168ce8cb5e2d890c2391d56c02be10c68fdac8372272865d69b8c600d66e1cefb784a0d8d#workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
+          ["mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
           ["rimraf", "npm:3.0.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["tmp", "npm:0.2.4"],\
@@ -7180,7 +7180,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:24.0.13"],\
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.7.0"],\
-          ["mock-aws-s3-v3", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
+          ["mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
           ["rimraf", "npm:3.0.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
@@ -7990,7 +7990,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:29.5.14"],\
           ["@types/node", "npm:24.0.13"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.7.0"],\
-          ["mock-aws-s3-v3", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
+          ["mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
           ["rimraf", "npm:3.0.2"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"]\
         ],\
@@ -8090,7 +8090,7 @@ const RAW_RUNTIME_STATE =
           ["axios", "npm:1.12.2"],\
           ["extract-zip", "npm:2.0.1"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.7.0"],\
-          ["mock-aws-s3-v3", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
+          ["mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
           ["rimraf", "npm:3.0.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"]\
@@ -23451,61 +23451,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["mock-aws-s3-v3", [\
-      ["virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#workspace:workspaces/utils/packages/mock-aws-s3-v3", {\
-        "packageLocation": "./.yarn/__virtual__/mock-aws-s3-v3-virtual-e8d5b92d37/1/workspaces/utils/packages/mock-aws-s3-v3/",\
-        "packageDependencies": [\
-          ["@aws-sdk/client-s3", "npm:3.940.0"],\
-          ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
-          ["@smithy/types", "npm:4.9.0"],\
-          ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.12.11"],\
-          ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.39"],\
-          ["@types/aws-sdk__client-s3", null],\
-          ["@types/jest", "npm:29.5.14"],\
-          ["@types/mock-aws-s3", "npm:2.6.3"],\
-          ["@types/node", "npm:24.0.13"],\
-          ["@types/sinon", "npm:17.0.4"],\
-          ["aws-sdk-client-mock", "npm:4.1.0"],\
-          ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.7.0"],\
-          ["mock-aws-s3", "npm:4.0.2"],\
-          ["mock-aws-s3-v3", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
-          ["rimraf", "npm:3.0.2"],\
-          ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"]\
-        ],\
-        "packagePeers": [\
-          "@aws-sdk/client-s3",\
-          "@types/aws-sdk__client-s3"\
-        ],\
-        "linkType": "SOFT"\
-      }],\
-      ["virtual:fc29b19fd4f8b3956c74bf53a75ab77797066f607bea3e7d36a7865168ce8cb5e2d890c2391d56c02be10c68fdac8372272865d69b8c600d66e1cefb784a0d8d#workspace:workspaces/utils/packages/mock-aws-s3-v3", {\
-        "packageLocation": "./.yarn/__virtual__/mock-aws-s3-v3-virtual-0ead438539/1/workspaces/utils/packages/mock-aws-s3-v3/",\
-        "packageDependencies": [\
-          ["@aws-sdk/client-s3", null],\
-          ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
-          ["@smithy/types", "npm:4.9.0"],\
-          ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.12.11"],\
-          ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.39"],\
-          ["@types/aws-sdk__client-s3", null],\
-          ["@types/jest", "npm:29.5.14"],\
-          ["@types/mock-aws-s3", "npm:2.6.3"],\
-          ["@types/node", "npm:24.0.13"],\
-          ["@types/sinon", "npm:17.0.4"],\
-          ["aws-sdk-client-mock", "npm:4.1.0"],\
-          ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.7.0"],\
-          ["mock-aws-s3", "npm:4.0.2"],\
-          ["mock-aws-s3-v3", "virtual:fc29b19fd4f8b3956c74bf53a75ab77797066f607bea3e7d36a7865168ce8cb5e2d890c2391d56c02be10c68fdac8372272865d69b8c600d66e1cefb784a0d8d#workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
-          ["rimraf", "npm:3.0.2"],\
-          ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"]\
-        ],\
-        "packagePeers": [\
-          "@aws-sdk/client-s3",\
-          "@types/aws-sdk__client-s3"\
-        ],\
-        "linkType": "SOFT"\
-      }],\
       ["workspace:workspaces/utils/packages/mock-aws-s3-v3", {\
         "packageLocation": "./workspaces/utils/packages/mock-aws-s3-v3/",\
         "packageDependencies": [\
+          ["@aws-sdk/client-s3", "npm:3.940.0"],\
           ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
           ["@smithy/types", "npm:4.9.0"],\
           ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.12.11"],\

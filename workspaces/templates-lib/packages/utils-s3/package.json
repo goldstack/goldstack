@@ -36,7 +36,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.940.0",
+    "@aws-sdk/client-s3": "^3.0.0",
     "@smithy/types": "^4.9.0"
   },
   "devDependencies": {
