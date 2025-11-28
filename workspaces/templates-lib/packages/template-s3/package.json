@@ -50,8 +50,8 @@
     "@goldstack/utils-package-config-embedded": "0.5.31",
     "@goldstack/utils-template": "0.4.29",
     "@goldstack/utils-terraform": "0.4.58",
-    "@smithy/smithy-client": "4.9.7",
-    "@smithy/types": "4.9.0",
+    "@smithy/smithy-client": "^4.9.8",
+    "@smithy/types": "^4.9.0",
     "mock-aws-s3-v3": "6.1.1",
     "source-map-support": "^0.5.21"
   },
