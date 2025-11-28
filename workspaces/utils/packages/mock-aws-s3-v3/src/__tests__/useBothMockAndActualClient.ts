@@ -32,7 +32,7 @@ test('use both actual and mock', async () => {
     ),
   ).rejects.toThrow(NoSuchKey);
 
-  // When using a non-mocked bucket through mock client, it should forward to real client and throw
+  // When using a non-mocked bucket through mock client, it should warn and fall back to real client
   await expect(
     mockClient.send(
       new GetObjectCommand({

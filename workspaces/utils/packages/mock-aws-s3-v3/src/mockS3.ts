@@ -160,11 +160,19 @@ export function createS3Client({
     { command: ListBucketsCommand, method: undefined }, // not supported
   ];
 
+  // mockClientInstance.onAnyCommand((input: any) => {
+  //   throw new Error(
+  //     'Unrecognised command for AWS Mock Library. Please ensure you are not using incompatible AWS SDK versions.',
+  //   );
+  // });
   operations.forEach(({ command, method }) => {
     mockClientInstance.on(command).callsFake(async (input: any): Promise<any> => {
       const context = getBucketContext(input.Bucket);
       if (!context) {
-        // if no context defined for bucket, send command to real client
+        // if no context defined for bucket, warn and fall back to real client
+        console.warn(
+          `Bucket '${input.Bucket}' is not mocked. Falling back to real AWS S3 client. Only buckets created with createS3Client() can be accessed through this mock client.`,
+        );
         const commandWithInput = new command(input);
         return await clientSend(commandWithInput);
       }
