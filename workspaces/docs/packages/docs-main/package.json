@@ -34,7 +34,7 @@
     "@goldstack/toc-generator": "0.1.0",
     "@goldstack/utils-track": "0.2.23",
     "cheerio": "1.0.0-rc.10",
-    "next": "^15.4.1",
+    "next": "^15",
     "react": "^19.1.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.0",
