@@ -41,7 +41,7 @@
     "@goldstack/template-metadata": "0.1.0",
     "@goldstack/utils-package": "0.4.30",
     "@goldstack/utils-project": "0.4.29",
-    "@goldstack/utils-track": "0.2.23",
+    "@goldstack/utils-track": "0.2.24",
     "@rjsf/bootstrap-4": "^2.4.0",
     "@rjsf/core": "2.4.2",
     "@stripe/stripe-js": "^1.10.0",
