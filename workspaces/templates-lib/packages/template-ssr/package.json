@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-ssr",
-  "version": "0.3.82",
+  "version": "0.3.83",
   "description": "Building blocks for implementing server-side rendered pages.",
   "keywords": [
     "goldstack",
@@ -39,15 +39,15 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.29",
-    "@goldstack/infra-aws": "0.4.46",
-    "@goldstack/template-ssr-server": "0.3.80",
-    "@goldstack/utils-aws-lambda": "0.3.58",
-    "@goldstack/utils-esbuild": "0.5.18",
-    "@goldstack/utils-package": "0.4.30",
-    "@goldstack/utils-package-config-embedded": "0.5.31",
-    "@goldstack/utils-template": "0.4.29",
-    "@goldstack/utils-terraform": "0.4.59",
+    "@goldstack/infra": "0.4.30",
+    "@goldstack/infra-aws": "0.4.47",
+    "@goldstack/template-ssr-server": "0.3.81",
+    "@goldstack/utils-aws-lambda": "0.3.59",
+    "@goldstack/utils-esbuild": "0.5.19",
+    "@goldstack/utils-package": "0.4.31",
+    "@goldstack/utils-package-config-embedded": "0.5.32",
+    "@goldstack/utils-template": "0.4.30",
+    "@goldstack/utils-terraform": "0.4.60",
     "@types/aws-lambda": "^8.10.147",
     "react": "^19",
     "react-dom": "^19",
@@ -55,8 +55,8 @@
   },
   "devDependencies": {
     "@goldstack/utils-docs-cli": "0.3.11",
-    "@goldstack/utils-git": "0.2.18",
-    "@goldstack/utils-package-config-generate": "0.3.19",
+    "@goldstack/utils-git": "0.2.19",
+    "@goldstack/utils-package-config-generate": "0.3.20",
     "@swc/core": "^1.15.3",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^29.5.14",
