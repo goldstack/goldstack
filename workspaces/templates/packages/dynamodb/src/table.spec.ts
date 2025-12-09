@@ -5,8 +5,8 @@ import {
   boolean,
   Entity,
   GetItemCommand,
+  item,
   PutItemCommand,
-  schema,
   string,
   Table,
 } from 'dynamodb-toolbox';
@@ -72,7 +72,7 @@ describe('DynamoDB Table', () => {
 
     const e = new Entity({
       name: 'User',
-      schema: schema({
+      schema: item({
         pk: string().key(),
         sk: string().key(),
         name: string().required(),
@@ -128,7 +128,7 @@ describe('DynamoDB Table', () => {
 
     // this cast not really required but illustrates how we can pass
     // values obtained from the database around.
-    const user: ValidUserValue = item;
+    const user = item as ValidUserValue;
     expect(user.name).toEqual('Joe');
     expect(user.email).toEqual('joe@email.com');
   });
@@ -157,6 +157,7 @@ describe('DynamoDB Table', () => {
     const { Item: user } = await Users2.build(GetItemCommand)
       .key({
         email: 'joe@email.com',
+        type: 'user',
       })
       .options({
         attributes: ['name', 'email'],

@@ -3066,11 +3066,11 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:7aeca1a6e63c9daac1c0f240f0786f5f0babe80eea905b6aad29ba392fe3192dc1653f9c9c8d2d5612d5b800d1a214ae91299efe40adbb59149b330d1d7e8961#npm:3.501.0", {\
-        "packageLocation": "./.yarn/__virtual__/@aws-sdk-util-dynamodb-virtual-da2d0b6ce5/0/cache/@aws-sdk-util-dynamodb-npm-3.501.0-e7f086dab0-034d4e7d02.zip/node_modules/@aws-sdk/util-dynamodb/",\
+      ["virtual:c4a617baaf5982e188f55c4dc3ba315fab4101fb6f696efbb2b2264f945f316231583e351d29cb80ea254791f083541d00589f45789b67c9289e505ce182b6e6#npm:3.501.0", {\
+        "packageLocation": "./.yarn/__virtual__/@aws-sdk-util-dynamodb-virtual-7ee8539ddd/0/cache/@aws-sdk-util-dynamodb-npm-3.501.0-e7f086dab0-034d4e7d02.zip/node_modules/@aws-sdk/util-dynamodb/",\
         "packageDependencies": [\
           ["@aws-sdk/client-dynamodb", "npm:3.940.0"],\
-          ["@aws-sdk/util-dynamodb", "virtual:7aeca1a6e63c9daac1c0f240f0786f5f0babe80eea905b6aad29ba392fe3192dc1653f9c9c8d2d5612d5b800d1a214ae91299efe40adbb59149b330d1d7e8961#npm:3.501.0"],\
+          ["@aws-sdk/util-dynamodb", "virtual:c4a617baaf5982e188f55c4dc3ba315fab4101fb6f696efbb2b2264f945f316231583e351d29cb80ea254791f083541d00589f45789b67c9289e505ce182b6e6#npm:3.501.0"],\
           ["@types/aws-sdk__client-dynamodb", null],\
           ["tslib", "npm:2.6.2"]\
         ],\
@@ -5593,7 +5593,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:24.0.13"],\
           ["aws-sdk", "npm:2.1525.0"],\
           ["dynamodb-admin", "npm:4.6.1"],\
-          ["dynamodb-toolbox", "virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:1.11.8"],\
+          ["dynamodb-toolbox", "virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:2.7.2"],\
           ["ejs", "npm:3.1.10"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:29.7.0"],\
           ["rimraf", "npm:3.0.2"],\
@@ -17211,22 +17211,22 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["dynamodb-toolbox", [\
-      ["npm:1.11.8", {\
-        "packageLocation": "./.yarn/cache/dynamodb-toolbox-npm-1.11.8-b9047b5d1e-270441d961.zip/node_modules/dynamodb-toolbox/",\
+      ["npm:2.7.2", {\
+        "packageLocation": "./.yarn/cache/dynamodb-toolbox-npm-2.7.2-82b8a77d3d-c36a3a3385.zip/node_modules/dynamodb-toolbox/",\
         "packageDependencies": [\
-          ["dynamodb-toolbox", "npm:1.11.8"]\
+          ["dynamodb-toolbox", "npm:2.7.2"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:1.11.8", {\
-        "packageLocation": "./.yarn/__virtual__/dynamodb-toolbox-virtual-7aeca1a6e6/0/cache/dynamodb-toolbox-npm-1.11.8-b9047b5d1e-270441d961.zip/node_modules/dynamodb-toolbox/",\
+      ["virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:2.7.2", {\
+        "packageLocation": "./.yarn/__virtual__/dynamodb-toolbox-virtual-c4a617baaf/0/cache/dynamodb-toolbox-npm-2.7.2-82b8a77d3d-c36a3a3385.zip/node_modules/dynamodb-toolbox/",\
         "packageDependencies": [\
           ["@aws-sdk/client-dynamodb", "npm:3.940.0"],\
           ["@aws-sdk/lib-dynamodb", "virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:3.940.0"],\
-          ["@aws-sdk/util-dynamodb", "virtual:7aeca1a6e63c9daac1c0f240f0786f5f0babe80eea905b6aad29ba392fe3192dc1653f9c9c8d2d5612d5b800d1a214ae91299efe40adbb59149b330d1d7e8961#npm:3.501.0"],\
+          ["@aws-sdk/util-dynamodb", "virtual:c4a617baaf5982e188f55c4dc3ba315fab4101fb6f696efbb2b2264f945f316231583e351d29cb80ea254791f083541d00589f45789b67c9289e505ce182b6e6#npm:3.501.0"],\
           ["@types/aws-sdk__client-dynamodb", null],\
           ["@types/aws-sdk__lib-dynamodb", null],\
-          ["dynamodb-toolbox", "virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:1.11.8"],\
+          ["dynamodb-toolbox", "virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:2.7.2"],\
           ["hotscript", "npm:1.0.13"]\
         ],\
         "packagePeers": [\

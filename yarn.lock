@@ -4256,7 +4256,7 @@ __metadata:
     "@types/node": "npm:^24.0.13"
     aws-sdk: "npm:2.1525.0"
     dynamodb-admin: "npm:^4.6.1"
-    dynamodb-toolbox: "npm:^1.11.8"
+    dynamodb-toolbox: "npm:^2.7.2"
     ejs: "npm:^3.1.8"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
@@ -14599,15 +14599,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"dynamodb-toolbox@npm:^1.11.8":
-  version: 1.11.8
-  resolution: "dynamodb-toolbox@npm:1.11.8"
+"dynamodb-toolbox@npm:^2.7.2":
+  version: 2.7.2
+  resolution: "dynamodb-toolbox@npm:2.7.2"
   dependencies:
     hotscript: "npm:^1.0.13"
   peerDependencies:
     "@aws-sdk/client-dynamodb": ^3.0.0
     "@aws-sdk/lib-dynamodb": ^3.0.0
-  checksum: 10/270441d961bae0049e61d01bf74ad4c070f8bf35ac1157b26c7e5f0abc1bc09bdd5628763b4414da85eab530d4822406f99c8eda9e2e571297deeed45d1b0d6f
+  checksum: 10/c36a3a3385fe4705102ace3607c0ff5e5c4a5177e31c2ee563baeed52153c2c2ac5aa743654994e53fc76abdb424c1c6d524db9a50720ffbe2370ec710aaf9d3
   languageName: node
   linkType: hard
 

@@ -12,16 +12,24 @@ While DynamoDB is a NoSQL data store and strictly speaking does not require a da
 The entities we want to store in the table are defined in the file `entities.ts` which is included in the DynamoDB package:
 
 ```typescript
-import { boolean, Entity, schema, string, Table } from 'dynamodb-toolbox';
+import { boolean, Entity, item, string, Table as ToolboxTable } from 'dynamodb-toolbox';
 import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 import memoizee from 'memoizee';
-import { Key } from 'dynamodb-toolbox/dist/esm/table/types';
 
 export function createTable(
   dynamoDB: DynamoDBDocumentClient,
   tableName: string
-): Table<Key<string, 'string'>, Key<string, 'string'>> {
-  const table = new Table({
+): ToolboxTable<
+  {
+    name: 'pk';
+    type: 'string';
+  },
+  {
+    name: 'sk';
+    type: 'string';
+  }
+> {
+  const table = new ToolboxTable({
     name: tableName,
     partitionKey: {
       name: 'pk',
@@ -36,19 +44,17 @@ export function createTable(
   return table;
 }
 
-export function UserEntityFn(
-  table: Table<Key<string, 'string'>, Key<string, 'string'>>
-) {
+export function UserEntityFn(table: ReturnType<typeof createTable>) {
   const entity = new Entity({
     name: 'User',
-    schema: schema({
+    schema: item({
       email: string().key().savedAs('pk'),
       type: string().key().default('user').savedAs('sk'),
       name: string().required(),
       emailVerified: boolean().required(),
     }),
     table: table,
-  } as const);
+  });
 
   return entity;
 }
@@ -111,7 +117,9 @@ Change the included migration or add a migration to create GSIs using the Node.j
 Extend the schema with the attributes required for the Global Secondary Index:
 
 ```typescript
-const BaseSchema = schema({
+import { list } from 'dynamodb-toolbox/schema/list';
+
+const BaseSchema = item({
   userId: string().key(),
   relationId: string().key(),
   databaseId: string().key(),
@@ -119,7 +127,8 @@ const BaseSchema = schema({
   possibleUpdateDuplicates: list(string()).optional(),
 });
 
-export const DatabaseStateSchema = BaseSchema.and({
+export const DatabaseStateSchema = item({
+  ...BaseSchema.props,
   gs1_pk: string()
     .optional()
     .link<typeof BaseSchema>(
@@ -373,3 +382,114 @@ module.exports = {
   globalTeardown: '<rootDir>/scripts/globalTeardown.ts',
 };
 ```
+
+#### Upgrading from DynamoDB Toolbox v1 to v2
+
+This template uses DynamoDB Toolbox v2, which introduced several breaking changes from v1. If you're upgrading an existing project, here are the key changes you need to make:
+
+##### Schema Creation
+
+**v1:**
+```typescript
+import { schema } from 'dynamodb-toolbox';
+
+const UserSchema = schema({
+  email: string().key().savedAs('pk'),
+  type: string().key().default('user').savedAs('sk'),
+  name: string().required(),
+  emailVerified: boolean().required(),
+});
+```
+
+**v2:**
+```typescript
+import { item } from 'dynamodb-toolbox';
+
+const UserSchema = item({
+  email: string().key().savedAs('pk'),
+  type: string().key().default('user').savedAs('sk'),
+  name: string().required(),
+  emailVerified: boolean().required(),
+});
+```
+
+##### Entity Type Definitions
+
+**v1:**
+```typescript
+export type UserEntity = Entity<
+  'User',
+  Table,
+  typeof UserSchema,
+  'entity',
+  TimestampsDefaultOptions,
+  true
+>;
+```
+
+**v2:**
+```typescript
+export type UserEntity = Entity;
+```
+
+##### Entity Constructor
+
+**v1:**
+```typescript
+const entity = new Entity({
+  name: 'User',
+  schema: UserSchema,
+  table: table,
+});
+```
+
+**v2:**
+```typescript
+const entity = new Entity({
+  name: 'User',
+  schema: UserSchema,
+  table: table,
+});
+// computeKey is no longer required when schema defines keys with .key()
+```
+
+##### Key Operations
+
+When performing key-based operations, ensure all key attributes are provided:
+
+**v2:**
+```typescript
+// For entities with email and type as keys
+await Users.build(GetItemCommand)
+  .key({
+    email: 'user@example.com',
+    type: 'user',
+  })
+  .send();
+```
+
+##### Import Changes
+
+Update your imports to use the new structure:
+
+**v1:**
+```typescript
+import { boolean, Entity, schema, string, Table } from 'dynamodb-toolbox';
+```
+
+**v2:**
+```typescript
+import { boolean, Entity, item, string, Table as ToolboxTable } from 'dynamodb-toolbox';
+```
+
+##### Migration Steps
+
+1. Update package.json to use `"dynamodb-toolbox": "^2.7.2"`
+2. Change all `schema({...})` calls to `item({...})`
+3. Update imports: replace `schema` with `item`
+4. Simplify Entity type definitions to just `Entity`
+5. Remove `computeKey` from Entity constructors (unless you have custom key computation)
+6. Ensure all `.key()` calls in queries include all required key attributes
+7. Update any custom schema extensions (like GSI examples) to use v2 syntax
+
+The v2 API is more streamlined and provides better TypeScript support while maintaining the same core functionality.
