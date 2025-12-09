@@ -45,6 +45,6 @@
     "jest": "^29.7.0",
     "rimraf": "^3.0.2",
     "ts-json-schema-generator": "^2.4.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   }
 }

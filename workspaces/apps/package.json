@@ -28,6 +28,6 @@
     "@types/node": "^24.0.13",
     "nodemon": "^2.0.20",
     "react": "^19",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   }
 }

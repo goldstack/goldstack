@@ -79,7 +79,7 @@
     "rimraf": "^3.0.2",
     "ts-json-schema-generator": "^2.4.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   },
   "publishConfig": {
     "main": "dist/src/templateLambdaApiCli.js"

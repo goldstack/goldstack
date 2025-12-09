@@ -52,7 +52,7 @@
     "@types/replace-ext": "^2.0.2",
     "jest": "^29.7.0",
     "rimraf": "^3.0.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   },
   "publishConfig": {
     "main": "dist/src/utilsJsonToTs.js"
