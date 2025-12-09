@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.18",
-    "@swc/core": "^1.12.11",
+    "@swc/core": "^1.15.3",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^29.5.14",
     "@types/node": "^24.0.13",
@@ -51,7 +51,7 @@
     "renamer": "^0.7.0",
     "rimraf": "^3.0.2",
     "ts-json-schema-generator": "^2.4.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   },
   "publishConfig": {
     "main": "dist/src/infra.js"

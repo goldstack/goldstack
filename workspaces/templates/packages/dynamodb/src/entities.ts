@@ -4,9 +4,8 @@ import {
   Entity,
   type InputItem,
   type InputValue,
-  schema,
+  item,
   string,
-  type TimestampsDefaultOptions,
   Table as ToolboxTable,
   type ValidItem,
   type ValidValue,
@@ -20,7 +19,7 @@ import {
 // it with your own types
 // ---
 
-export const UserSchema = schema({
+export const UserSchema = item({
   email: string().key().savedAs('pk'),
   type: string().key().default('user').savedAs('sk'),
   name: string().required(),
@@ -35,14 +34,7 @@ export type InputUser = InputItem<UserEntity>;
 
 export type ValidUser = ValidItem<UserEntity>;
 
-export type UserEntity = Entity<
-  'User',
-  Table,
-  typeof UserSchema,
-  'entity',
-  TimestampsDefaultOptions,
-  true
->;
+export type UserEntity = Entity;
 
 export function createUserEntity(table: Table): UserEntity {
   const entity = new Entity({

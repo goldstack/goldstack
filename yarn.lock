@@ -4027,7 +4027,7 @@ __metadata:
   dependencies:
     "@goldstack/template-nextjs": "npm:0.5.77"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/jest-dom": "npm:^6.6.3"
@@ -4054,7 +4054,7 @@ __metadata:
     svg-url-loader: "npm:^8.0.0"
     swr: "npm:^0.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4064,7 +4064,7 @@ __metadata:
   dependencies:
     "@goldstack/template-nextjs": "npm:0.5.77"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/jest-dom": "npm:^6.6.3"
@@ -4091,7 +4091,7 @@ __metadata:
     swr: "npm:^0.4.0"
     tailwindcss: "npm:^3"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4101,7 +4101,7 @@ __metadata:
   dependencies:
     "@goldstack/template-nextjs": "npm:0.5.77"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/jest-dom": "npm:^6.6.3"
@@ -4125,7 +4125,7 @@ __metadata:
     svg-url-loader: "npm:^8.0.0"
     swr: "npm:^0.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4138,7 +4138,7 @@ __metadata:
     "@goldstack/utils-project": "npm:0.4.29"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template": "npm:0.4.29"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/archiver": "npm:^6.0.3"
     "@types/jest": "npm:^29.5.14"
@@ -4149,7 +4149,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     semver: "npm:^7.6.3"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
@@ -4160,7 +4160,7 @@ __metadata:
   dependencies:
     "@goldstack/template-static-website-aws": "npm:0.5.65"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -4170,7 +4170,7 @@ __metadata:
     reload: "npm:^3.2.0"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4181,7 +4181,7 @@ __metadata:
     "@goldstack/template-docker-image-aws": "npm:0.5.65"
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -4190,7 +4190,7 @@ __metadata:
     nodemon: "npm:^2.0.20"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4204,7 +4204,7 @@ __metadata:
     "@goldstack/toc-generator": "npm:0.1.0"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-track": "npm:0.2.24"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/jest-dom": "npm:^6.6.3"
@@ -4236,7 +4236,7 @@ __metadata:
     svg-url-loader: "npm:^8.0.0"
     swr: "npm:^0.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4249,20 +4249,20 @@ __metadata:
     "@goldstack/template-dynamodb": "npm:0.3.54"
     "@goldstack/template-dynamodb-cli": "npm:0.6.56"
     "@goldstack/utils-log": "npm:0.3.25"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/ejs": "npm:^3.1.5"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     aws-sdk: "npm:2.1525.0"
     dynamodb-admin: "npm:^4.6.1"
-    dynamodb-toolbox: "npm:^1.11.8"
+    dynamodb-toolbox: "npm:^2.7.2"
     ejs: "npm:^3.1.8"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     umzug: "npm:^3.8.2"
   languageName: unknown
   linkType: soft
@@ -4276,14 +4276,14 @@ __metadata:
     "@goldstack/template-email-send-cli": "npm:0.5.68"
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4312,7 +4312,7 @@ __metadata:
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-template-test": "npm:0.1.0"
     "@jest-mock/express": "npm:^1.4.5"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-serverless-express": "npm:^3.3.10"
     "@types/cookie-parser": "npm:^1.4.8"
@@ -4345,7 +4345,7 @@ __metadata:
     supertest-session: "npm:^5.0.1"
     ts-node: "npm:^10.9.2"
     ts-node-dev: "npm:^2.0.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
@@ -4359,14 +4359,14 @@ __metadata:
     "@goldstack/template-email-send-cli": "npm:0.5.68"
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4390,7 +4390,7 @@ __metadata:
     "@rjsf/bootstrap-4": "npm:^2.4.0"
     "@rjsf/core": "npm:2.4.2"
     "@stripe/stripe-js": "npm:^1.10.0"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/jest-dom": "npm:^6.6.3"
@@ -4424,7 +4424,7 @@ __metadata:
     swr: "npm:^0.4.0"
     ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4436,14 +4436,14 @@ __metadata:
     "@goldstack/template-hetzner-vps-cli": "npm:0.1.51"
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4460,7 +4460,7 @@ __metadata:
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-package": "npm:0.4.30"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -4470,7 +4470,7 @@ __metadata:
     renamer: "npm:^0.7.0"
     rimraf: "npm:^3.0.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4484,7 +4484,7 @@ __metadata:
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-package": "npm:0.4.30"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -4494,7 +4494,7 @@ __metadata:
     renamer: "npm:^0.7.0"
     rimraf: "npm:^3.0.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4506,7 +4506,7 @@ __metadata:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -4514,7 +4514,7 @@ __metadata:
     renamer: "npm:^0.7.0"
     rimraf: "npm:^3.0.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4525,7 +4525,7 @@ __metadata:
     "@goldstack/template-lambda-http-cli": "npm:0.5.74"
     "@goldstack/utils-esbuild": "npm:0.5.18"
     "@jest-mock/express": "npm:^1.4.5"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-serverless-express": "npm:^3.3.10"
     "@types/express": "npm:^5.0.0"
@@ -4546,7 +4546,7 @@ __metadata:
     supertest: "npm:^7.1.4"
     ts-node: "npm:^10.9.2"
     ts-node-dev: "npm:^2.0.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4560,7 +4560,7 @@ __metadata:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-lambda": "npm:^8.10.147"
     "@types/jest": "npm:^29.5.14"
@@ -4572,7 +4572,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4584,14 +4584,14 @@ __metadata:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4599,13 +4599,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/library@workspace:workspaces/templates/packages/library"
   dependencies:
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4616,7 +4616,7 @@ __metadata:
     "@goldstack/utils-cli": "npm:0.3.23"
     "@goldstack/utils-docs": "npm:0.4.28"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -4624,7 +4624,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     markdown-docs: ./bin/markdown-docs
@@ -4638,7 +4638,7 @@ __metadata:
     "@goldstack/module-template-utils": "npm:0.1.0"
     "@goldstack/utils-docs-cli": "npm:0.3.11"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -4646,7 +4646,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4654,13 +4654,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/module-template-utils@workspace:workspaces/templates/packages/module-template-utils"
   dependencies:
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4672,7 +4672,7 @@ __metadata:
     "@aws-sdk/client-sts": "npm:^3.0.0"
     "@goldstack/template-nextjs": "npm:0.5.77"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@testing-library/jest-dom": "npm:^6.6.3"
     "@testing-library/react": "npm:^16.1.0"
@@ -4716,7 +4716,7 @@ __metadata:
     tar-fs: "npm:^3.0.6"
     ts-node: "npm:^10.9.2"
     tunnel-agent: "npm:^0.6.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4727,7 +4727,7 @@ __metadata:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/minimatch": "npm:^5.1.2"
@@ -4736,7 +4736,7 @@ __metadata:
     minimatch: "npm:^10.0.1"
     node-watch: "npm:^0.6.4"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   bin:
     nodemonx: ./bin/utils-nodemonx
   languageName: unknown
@@ -4751,7 +4751,7 @@ __metadata:
     "@goldstack/utils-package": "npm:0.4.30"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template": "npm:0.4.29"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/jsonpath": "npm:^0.2.4"
@@ -4760,7 +4760,7 @@ __metadata:
     jsonpath: "npm:^1.1.1"
     rimraf: "npm:^3.0.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4776,7 +4776,7 @@ __metadata:
     "@goldstack/utils-package-config-generate": "npm:0.3.19"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template": "npm:0.4.29"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -4784,7 +4784,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     sort-package-json: "npm:^3.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4800,7 +4800,7 @@ __metadata:
     "@goldstack/utils-project": "npm:0.4.29"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template-test": "npm:0.1.0"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -4808,7 +4808,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     sort-package-json: "npm:^3.4.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4821,14 +4821,14 @@ __metadata:
     "@goldstack/utils-project": "npm:0.4.29"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template": "npm:0.4.29"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     temp-dir: "npm:^2.0.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4847,7 +4847,7 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template-test": "npm:0.1.0"
     "@goldstack/utils-yarn": "npm:0.4.31"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -4855,7 +4855,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     temp-dir: "npm:^2.0.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4870,7 +4870,7 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.28"
     "@smithy/smithy-client": "npm:^4.9.8"
     "@smithy/types": "npm:^4.9.0"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -4878,7 +4878,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4893,7 +4893,7 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.28"
     "@smithy/smithy-client": "npm:^4.9.8"
     "@smithy/types": "npm:^4.9.0"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -4901,7 +4901,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4919,7 +4919,7 @@ __metadata:
     "@goldstack/utils-s3": "npm:0.4.25"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template": "npm:0.4.29"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/archiver": "npm:^6.0.3"
     "@types/jest": "npm:^29.5.14"
@@ -4930,7 +4930,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     semver: "npm:^7.6.3"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
@@ -4944,14 +4944,14 @@ __metadata:
     "@goldstack/template-s3-cli": "npm:0.6.71"
     "@smithy/smithy-client": "npm:^4.9.8"
     "@smithy/types": "npm:^4.9.0"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -4960,7 +4960,7 @@ __metadata:
   resolution: "@goldstack/server-go@workspace:workspaces/templates/packages/lambda-go-gin"
   dependencies:
     "@goldstack/template-lambda-http-cli": "npm:0.5.74"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     nodemon: "npm:^2.0.20"
@@ -4980,7 +4980,7 @@ __metadata:
     "@jest-mock/express": "npm:^1.4.5"
     "@jest/transform": "npm:^29.3.1"
     "@swc-node/register": "npm:^1.10.9"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/jest-dom": "npm:^6.6.3"
@@ -5014,7 +5014,7 @@ __metadata:
     tailwindcss: "npm:^3"
     tree-kill: "npm:^1.2.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     typescript-plugin-css-modules: "npm:^5.1.0"
   languageName: unknown
   linkType: soft
@@ -5027,7 +5027,7 @@ __metadata:
     "@goldstack/utils-aws-http-api-local": "npm:0.3.67"
     "@goldstack/utils-esbuild": "npm:0.5.18"
     "@jest-mock/express": "npm:^1.4.5"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-lambda": "npm:^8.10.147"
     "@types/aws-serverless-express": "npm:^3.3.10"
@@ -5044,7 +5044,7 @@ __metadata:
     supertest: "npm:^7.1.4"
     ts-node: "npm:^10.9.2"
     ts-node-dev: "npm:^2.0.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -5059,7 +5059,7 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.28"
     "@smithy/smithy-client": "npm:^4.9.8"
     "@smithy/types": "npm:^4.9.0"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5067,7 +5067,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -5080,7 +5080,7 @@ __metadata:
     "@goldstack/session-repository-bucket": "npm:0.1.0"
     "@goldstack/utils-s3": "npm:0.4.25"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/archiver": "npm:^6.0.3"
     "@types/jest": "npm:^29.5.14"
@@ -5092,7 +5092,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     stripe: "npm:^8.114.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
@@ -5102,7 +5102,7 @@ __metadata:
   resolution: "@goldstack/static-website-aws@workspace:workspaces/templates/packages/static-website-aws"
   dependencies:
     "@goldstack/template-static-website-aws": "npm:0.5.65"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/gulp": "npm:^4.0.17"
     "@types/gulp-changed": "npm:^0.0.39"
@@ -5118,7 +5118,7 @@ __metadata:
     reload: "npm:^3.2.0"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -5142,7 +5142,7 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-template-test": "npm:0.1.0"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5150,7 +5150,7 @@ __metadata:
     mock-aws-s3-v3: "npm:6.1.2"
     rimraf: "npm:^3.0.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -5164,14 +5164,14 @@ __metadata:
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template": "npm:0.4.29"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/archiver": "npm:^6.0.3"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -5195,7 +5195,7 @@ __metadata:
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5206,7 +5206,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     template: ./bin/template
@@ -5229,7 +5229,7 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5238,7 +5238,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     umzug: "npm:^3.8.2"
     yargs: "npm:^17.5.1"
   bin:
@@ -5266,7 +5266,7 @@ __metadata:
     "@goldstack/utils-package-config-generate": "npm:0.3.19"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-terraform": "npm:0.4.59"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5279,7 +5279,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     tcp-port-used: "npm:^1.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     umzug: "npm:^3.8.2"
     wait-port: "npm:^1.1.0"
   languageName: unknown
@@ -5297,7 +5297,7 @@ __metadata:
     "@goldstack/utils-package-config-generate": "npm:0.3.19"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5306,7 +5306,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     template: ./bin/template
@@ -5331,7 +5331,7 @@ __metadata:
     "@goldstack/utils-package-config-generate": "npm:0.3.19"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/mock-aws-s3": "npm:^2.6.3"
@@ -5341,7 +5341,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
@@ -5366,7 +5366,7 @@ __metadata:
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
     "@goldstack/utils-terraform-hetzner": "npm:0.1.42"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5375,7 +5375,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     template: ./bin/template
@@ -5400,7 +5400,7 @@ __metadata:
     "@goldstack/utils-package-config-generate": "npm:0.3.19"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5408,7 +5408,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
@@ -5435,7 +5435,7 @@ __metadata:
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-lambda": "npm:^8.10.147"
     "@types/jest": "npm:^29.5.14"
@@ -5448,7 +5448,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     template: ./bin/template
@@ -5468,7 +5468,7 @@ __metadata:
     "@goldstack/utils-package": "npm:0.4.30"
     "@goldstack/utils-package-config-generate": "npm:0.3.19"
     "@goldstack/utils-terraform": "npm:0.4.59"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-lambda": "npm:^8.10.147"
     "@types/jest": "npm:^29.5.14"
@@ -5480,7 +5480,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -5502,7 +5502,7 @@ __metadata:
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5512,7 +5512,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     template: ./bin/template
@@ -5539,7 +5539,7 @@ __metadata:
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5549,7 +5549,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     template: ./bin/template
@@ -5577,7 +5577,7 @@ __metadata:
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5587,7 +5587,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     template: ./bin/template
@@ -5618,7 +5618,7 @@ __metadata:
     "@goldstack/utils-package": "npm:0.4.30"
     "@goldstack/utils-project": "npm:0.4.29"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5632,7 +5632,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     tmp: "npm:^0.2.1"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   languageName: unknown
   linkType: soft
@@ -5643,13 +5643,13 @@ __metadata:
   dependencies:
     "@goldstack/template-build-set": "npm:0.1.0"
     "@goldstack/utils-project": "npm:0.4.29"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -5674,7 +5674,7 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-terraform": "npm:0.4.59"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/glob": "npm:^8.1.0"
     "@types/jest": "npm:^29.5.14"
@@ -5687,7 +5687,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     template: ./bin/template
@@ -5706,7 +5706,7 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.28"
     "@smithy/smithy-client": "npm:^4.9.8"
     "@smithy/types": "npm:^4.9.0"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5714,7 +5714,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -5728,7 +5728,7 @@ __metadata:
     "@goldstack/utils-s3": "npm:0.4.25"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template": "npm:0.4.29"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/archiver": "npm:^6.0.3"
     "@types/fs-extra": "npm:^11.0.4"
@@ -5739,7 +5739,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     semver: "npm:^7.6.3"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -5761,7 +5761,7 @@ __metadata:
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5770,7 +5770,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     template: ./bin/template
@@ -5799,7 +5799,7 @@ __metadata:
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@smithy/smithy-client": "npm:^4.9.8"
     "@smithy/types": "npm:^4.9.0"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5809,7 +5809,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -5831,7 +5831,7 @@ __metadata:
     "@goldstack/utils-package-config-generate": "npm:0.3.19"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/mock-aws-s3": "npm:^2.6.3"
@@ -5841,7 +5841,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
@@ -5869,7 +5869,7 @@ __metadata:
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -5879,7 +5879,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   languageName: unknown
   linkType: soft
@@ -5901,7 +5901,7 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-terraform": "npm:0.4.59"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-lambda": "npm:^8.10.147"
     "@types/jest": "npm:^29.5.14"
@@ -5918,7 +5918,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     static-file-mapper-build: "npm:0.3.33"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -5939,7 +5939,7 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-terraform": "npm:0.4.59"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-lambda": "npm:^8.10.147"
     "@types/jest": "npm:^29.5.14"
@@ -5955,7 +5955,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     static-file-mapper: "npm:0.3.23"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -5975,7 +5975,7 @@ __metadata:
     "@goldstack/utils-package-config-generate": "npm:0.3.19"
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-terraform": "npm:0.4.59"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-lambda": "npm:^8.10.147"
     "@types/jest": "npm:^29.5.14"
@@ -5989,7 +5989,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6012,7 +6012,7 @@ __metadata:
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -6021,7 +6021,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     template: ./bin/template
@@ -6043,13 +6043,13 @@ __metadata:
     "@goldstack/utils-project": "npm:0.4.29"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template-test": "npm:0.1.0"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6073,7 +6073,7 @@ __metadata:
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -6082,7 +6082,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     template: ./bin/template
@@ -6104,7 +6104,7 @@ __metadata:
     "@goldstack/utils-package-config-generate": "npm:0.3.19"
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-terraform": "npm:0.4.59"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -6114,7 +6114,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6122,7 +6122,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/toc-generator@workspace:workspaces/docs/packages/toc-generator"
   dependencies:
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/cheerio": "npm:^0.22.35"
     "@types/jest": "npm:^29.5.14"
@@ -6130,7 +6130,7 @@ __metadata:
     cheerio: "npm:1.0.0-rc.10"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6142,7 +6142,7 @@ __metadata:
     "@goldstack/template-user-management": "npm:0.1.67"
     "@goldstack/template-user-management-cli": "npm:0.1.73"
     "@goldstack/utils-log": "npm:0.3.25"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-lambda": "npm:^8.10.147"
     "@types/jest": "npm:^29.5.14"
@@ -6153,7 +6153,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     uuid: "npm:^11.0.5"
   languageName: unknown
   linkType: soft
@@ -6168,13 +6168,13 @@ __metadata:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6184,7 +6184,7 @@ __metadata:
   dependencies:
     "@goldstack/utils-aws-lambda": "npm:0.3.58"
     "@goldstack/utils-git": "npm:0.2.18"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-lambda": "npm:^8.10.147"
     "@types/cookie": "npm:^1.0.0"
@@ -6198,7 +6198,7 @@ __metadata:
     jest: "npm:^29.7.0"
     node-fetch: "npm:^3.3.2"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6212,7 +6212,7 @@ __metadata:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-lambda": "npm:^8.10.147"
     "@types/jest": "npm:^29.5.14"
@@ -6223,7 +6223,7 @@ __metadata:
     esbuild-ssr-css-modules-plugin: "npm:0.1.24"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6232,7 +6232,7 @@ __metadata:
   resolution: "@goldstack/utils-cli@workspace:workspaces/utils/packages/utils-cli"
   dependencies:
     "@goldstack/utils-git": "npm:0.2.18"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -6240,7 +6240,7 @@ __metadata:
     pino: "npm:^9.4.0"
     pino-pretty: "npm:^11.2.2"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6251,7 +6251,7 @@ __metadata:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -6259,7 +6259,7 @@ __metadata:
     handlebars: "npm:4.7.7"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6270,13 +6270,13 @@ __metadata:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6288,7 +6288,7 @@ __metadata:
     "@goldstack/utils-docs": "npm:0.4.28"
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -6296,7 +6296,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     utils-docs-cli: ./bin/utils-docs-cli
@@ -6310,7 +6310,7 @@ __metadata:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@mapbox/rehype-prism": "npm:0.3.1"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -6327,7 +6327,7 @@ __metadata:
     remark-parse: "npm:7.0.1"
     remark-rehype: "npm:5.0.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     unified: "npm:8.4.1"
     unist-util-visit: "npm:2.0.0"
   languageName: unknown
@@ -6338,13 +6338,13 @@ __metadata:
   resolution: "@goldstack/utils-esbuild@workspace:workspaces/utils/packages/utils-esbuild"
   dependencies:
     "@goldstack/utils-git": "npm:0.2.18"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6352,7 +6352,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-git@workspace:workspaces/utils/packages/utils-git"
   dependencies:
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/command-exists": "npm:^1.2.3"
     "@types/jest": "npm:^29.5.14"
@@ -6361,7 +6361,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   bin:
     utils-git: ./bin/utils-git
   languageName: unknown
@@ -6374,7 +6374,7 @@ __metadata:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -6383,7 +6383,7 @@ __metadata:
     json-schema-to-typescript: "npm:^9.1.1"
     replace-ext: "npm:^2.0.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   bin:
     utils-json-to-ts: ./bin/jsontots
   languageName: unknown
@@ -6395,13 +6395,13 @@ __metadata:
   dependencies:
     "@goldstack/utils-cli": "npm:0.3.23"
     "@goldstack/utils-git": "npm:0.2.18"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6413,13 +6413,13 @@ __metadata:
     "@goldstack/utils-config": "npm:0.4.29"
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-package": "npm:0.4.30"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6428,7 +6428,7 @@ __metadata:
   resolution: "@goldstack/utils-package-config-generate@workspace:workspaces/templates-lib/packages/utils-package-config-generate"
   dependencies:
     "@goldstack/utils-git": "npm:0.2.18"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -6437,7 +6437,7 @@ __metadata:
     renamer: "npm:^0.7.0"
     rimraf: "npm:^3.0.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     utils-package-config-generate: ./bin/utils-package-config-generate
@@ -6453,13 +6453,13 @@ __metadata:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-package": "npm:0.4.30"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6471,13 +6471,13 @@ __metadata:
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template": "npm:0.4.29"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6489,7 +6489,7 @@ __metadata:
     "@goldstack/utils-config": "npm:0.4.29"
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -6498,7 +6498,7 @@ __metadata:
     renamer: "npm:^0.7.0"
     rimraf: "npm:^3.0.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   languageName: unknown
   linkType: soft
@@ -6511,7 +6511,7 @@ __metadata:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-json-to-ts": "npm:0.4.28"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -6519,7 +6519,7 @@ __metadata:
     renamer: "npm:^0.7.0"
     rimraf: "npm:^3.0.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6533,13 +6533,13 @@ __metadata:
     "@goldstack/utils-docker": "npm:0.4.30"
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6550,14 +6550,14 @@ __metadata:
     "@aws-sdk/client-s3": "npm:^3.0.0"
     "@goldstack/utils-git": "npm:0.2.18"
     "@smithy/types": "npm:^4.9.0"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     mock-aws-s3-v3: "npm:6.1.2"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6567,7 +6567,7 @@ __metadata:
   dependencies:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-log": "npm:0.3.25"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/archiver": "npm:^6.0.3"
     "@types/command-exists": "npm:^1.2.3"
@@ -6583,7 +6583,7 @@ __metadata:
     glob: "npm:^8.0.3"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     which: "npm:^2.0.2"
   languageName: unknown
   linkType: soft
@@ -6602,7 +6602,7 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-template": "npm:0.4.29"
     "@goldstack/utils-yarn": "npm:0.4.31"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -6612,7 +6612,7 @@ __metadata:
     mock-aws-s3-v3: "npm:6.1.2"
     rimraf: "npm:^3.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6624,13 +6624,13 @@ __metadata:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-json-to-ts": "npm:0.4.28"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6649,13 +6649,13 @@ __metadata:
     "@goldstack/utils-package": "npm:0.4.30"
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-terraform": "npm:0.4.59"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6671,13 +6671,13 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.28"
     "@goldstack/utils-terraform": "npm:0.4.59"
     "@goldstack/utils-terraform-aws": "npm:0.4.62"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6693,7 +6693,7 @@ __metadata:
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-package": "npm:0.4.30"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/json-stable-stringify": "npm:^1.1.0"
@@ -6703,7 +6703,7 @@ __metadata:
     json-stable-stringify: "npm:^1.0.1"
     rimraf: "npm:^3.0.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   languageName: unknown
   linkType: soft
@@ -6713,7 +6713,7 @@ __metadata:
   resolution: "@goldstack/utils-track@workspace:workspaces/utils/packages/utils-track"
   dependencies:
     "@goldstack/utils-git": "npm:0.2.18"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -6721,7 +6721,7 @@ __metadata:
     jest: "npm:^29.7.0"
     react: "npm:^19"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -6731,7 +6731,7 @@ __metadata:
   dependencies:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-log": "npm:0.3.25"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -6740,7 +6740,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
     yargs: "npm:^17.5.1"
   bin:
     utils-typescript-references: ./bin/utils-typescript-references
@@ -6755,13 +6755,13 @@ __metadata:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-log": "npm:0.3.25"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -9879,92 +9879,92 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-arm64@npm:1.12.11":
-  version: 1.12.11
-  resolution: "@swc/core-darwin-arm64@npm:1.12.11"
+"@swc/core-darwin-arm64@npm:1.15.3":
+  version: 1.15.3
+  resolution: "@swc/core-darwin-arm64@npm:1.15.3"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-x64@npm:1.12.11":
-  version: 1.12.11
-  resolution: "@swc/core-darwin-x64@npm:1.12.11"
+"@swc/core-darwin-x64@npm:1.15.3":
+  version: 1.15.3
+  resolution: "@swc/core-darwin-x64@npm:1.15.3"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm-gnueabihf@npm:1.12.11":
-  version: 1.12.11
-  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.12.11"
+"@swc/core-linux-arm-gnueabihf@npm:1.15.3":
+  version: 1.15.3
+  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.15.3"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-gnu@npm:1.12.11":
-  version: 1.12.11
-  resolution: "@swc/core-linux-arm64-gnu@npm:1.12.11"
+"@swc/core-linux-arm64-gnu@npm:1.15.3":
+  version: 1.15.3
+  resolution: "@swc/core-linux-arm64-gnu@npm:1.15.3"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-musl@npm:1.12.11":
-  version: 1.12.11
-  resolution: "@swc/core-linux-arm64-musl@npm:1.12.11"
+"@swc/core-linux-arm64-musl@npm:1.15.3":
+  version: 1.15.3
+  resolution: "@swc/core-linux-arm64-musl@npm:1.15.3"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-gnu@npm:1.12.11":
-  version: 1.12.11
-  resolution: "@swc/core-linux-x64-gnu@npm:1.12.11"
+"@swc/core-linux-x64-gnu@npm:1.15.3":
+  version: 1.15.3
+  resolution: "@swc/core-linux-x64-gnu@npm:1.15.3"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-musl@npm:1.12.11":
-  version: 1.12.11
-  resolution: "@swc/core-linux-x64-musl@npm:1.12.11"
+"@swc/core-linux-x64-musl@npm:1.15.3":
+  version: 1.15.3
+  resolution: "@swc/core-linux-x64-musl@npm:1.15.3"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-win32-arm64-msvc@npm:1.12.11":
-  version: 1.12.11
-  resolution: "@swc/core-win32-arm64-msvc@npm:1.12.11"
+"@swc/core-win32-arm64-msvc@npm:1.15.3":
+  version: 1.15.3
+  resolution: "@swc/core-win32-arm64-msvc@npm:1.15.3"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-win32-ia32-msvc@npm:1.12.11":
-  version: 1.12.11
-  resolution: "@swc/core-win32-ia32-msvc@npm:1.12.11"
+"@swc/core-win32-ia32-msvc@npm:1.15.3":
+  version: 1.15.3
+  resolution: "@swc/core-win32-ia32-msvc@npm:1.15.3"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@swc/core-win32-x64-msvc@npm:1.12.11":
-  version: 1.12.11
-  resolution: "@swc/core-win32-x64-msvc@npm:1.12.11"
+"@swc/core-win32-x64-msvc@npm:1.15.3":
+  version: 1.15.3
+  resolution: "@swc/core-win32-x64-msvc@npm:1.15.3"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core@npm:^1.12.11":
-  version: 1.12.11
-  resolution: "@swc/core@npm:1.12.11"
+"@swc/core@npm:^1.15.3":
+  version: 1.15.3
+  resolution: "@swc/core@npm:1.15.3"
   dependencies:
-    "@swc/core-darwin-arm64": "npm:1.12.11"
-    "@swc/core-darwin-x64": "npm:1.12.11"
-    "@swc/core-linux-arm-gnueabihf": "npm:1.12.11"
-    "@swc/core-linux-arm64-gnu": "npm:1.12.11"
-    "@swc/core-linux-arm64-musl": "npm:1.12.11"
-    "@swc/core-linux-x64-gnu": "npm:1.12.11"
-    "@swc/core-linux-x64-musl": "npm:1.12.11"
-    "@swc/core-win32-arm64-msvc": "npm:1.12.11"
-    "@swc/core-win32-ia32-msvc": "npm:1.12.11"
-    "@swc/core-win32-x64-msvc": "npm:1.12.11"
+    "@swc/core-darwin-arm64": "npm:1.15.3"
+    "@swc/core-darwin-x64": "npm:1.15.3"
+    "@swc/core-linux-arm-gnueabihf": "npm:1.15.3"
+    "@swc/core-linux-arm64-gnu": "npm:1.15.3"
+    "@swc/core-linux-arm64-musl": "npm:1.15.3"
+    "@swc/core-linux-x64-gnu": "npm:1.15.3"
+    "@swc/core-linux-x64-musl": "npm:1.15.3"
+    "@swc/core-win32-arm64-msvc": "npm:1.15.3"
+    "@swc/core-win32-ia32-msvc": "npm:1.15.3"
+    "@swc/core-win32-x64-msvc": "npm:1.15.3"
     "@swc/counter": "npm:^0.1.3"
-    "@swc/types": "npm:^0.1.23"
+    "@swc/types": "npm:^0.1.25"
   peerDependencies:
     "@swc/helpers": ">=0.5.17"
   dependenciesMeta:
@@ -9991,7 +9991,7 @@ __metadata:
   peerDependenciesMeta:
     "@swc/helpers":
       optional: true
-  checksum: 10/d274fd5f994cf8ea9117e9a7d1c470e8519d9ce193a28d111f4d83ceb8520461894e61d848165140e68123558ee860c579eacdf83a28a152d95c4aaaba85c05d
+  checksum: 10/280330d82328818138ed64fdcf9ea9abde6b6f16eca65a9d4db27dde06a8dfffd2649f3447d2243387277513c7430fa4142cafcfd64e943d682ce6a713cb8c2d
   languageName: node
   linkType: hard
 
@@ -10033,12 +10033,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/types@npm:^0.1.23":
-  version: 0.1.23
-  resolution: "@swc/types@npm:0.1.23"
+"@swc/types@npm:^0.1.25":
+  version: 0.1.25
+  resolution: "@swc/types@npm:0.1.25"
   dependencies:
     "@swc/counter": "npm:^0.1.3"
-  checksum: 10/8d9d73dd1fc9335105105da57595ab913bad6addd4fbcb2eb147300694630232225eb7dc74b733205af33352803e4fcefc18e3a36f8924cf821ef91384767670
+  checksum: 10/f6741450224892d12df43e5ca7f3cc0287df644dcd672626eb0cc2a3a8e3e875f4b29eb11336f37c7240cf6e010ba59eb3a79f4fb8bee5cbd168dfc1326ff369
   languageName: node
   linkType: hard
 
@@ -11629,7 +11629,7 @@ __metadata:
     "@types/node": "npm:^24.0.13"
     nodemon: "npm:^2.0.20"
     react: "npm:^19"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -14361,7 +14361,7 @@ __metadata:
     "@types/node": "npm:^24.0.13"
     nodemon: "npm:^2.0.20"
     react: "npm:^19"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -14588,26 +14588,26 @@ __metadata:
   dependencies:
     "@aws-sdk/client-dynamodb": "npm:^3.0.0"
     "@goldstack/dynamodb": "npm:0.1.0"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     "@types/yargs": "npm:^17.0.33"
     jest: "npm:^29.7.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
-"dynamodb-toolbox@npm:^1.11.8":
-  version: 1.11.8
-  resolution: "dynamodb-toolbox@npm:1.11.8"
+"dynamodb-toolbox@npm:^2.7.2":
+  version: 2.7.2
+  resolution: "dynamodb-toolbox@npm:2.7.2"
   dependencies:
     hotscript: "npm:^1.0.13"
   peerDependencies:
     "@aws-sdk/client-dynamodb": ^3.0.0
     "@aws-sdk/lib-dynamodb": ^3.0.0
-  checksum: 10/270441d961bae0049e61d01bf74ad4c070f8bf35ac1157b26c7e5f0abc1bc09bdd5628763b4414da85eab530d4822406f99c8eda9e2e571297deeed45d1b0d6f
+  checksum: 10/c36a3a3385fe4705102ace3607c0ff5e5c4a5177e31c2ee563baeed52153c2c2ac5aa743654994e53fc76abdb424c1c6d524db9a50720ffbe2370ec710aaf9d3
   languageName: node
   linkType: hard
 
@@ -14972,14 +14972,14 @@ __metadata:
   resolution: "esbuild-ignore-with-comments-plugin@workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"
   dependencies:
     "@goldstack/utils-git": "npm:0.2.18"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     esbuild: "npm:^0.25.6"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   peerDependencies:
     esbuild: ^0.25.6
   languageName: unknown
@@ -14990,7 +14990,7 @@ __metadata:
   resolution: "esbuild-ssr-css-modules-plugin@workspace:workspaces/utils/packages/esbuild-ssr-css-modules-plugin"
   dependencies:
     "@goldstack/utils-git": "npm:0.2.18"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -15001,7 +15001,7 @@ __metadata:
     postcss-modules-sync: "npm:^1.0.0"
     rimraf: "npm:^3.0.2"
     sha256: "npm:^0.2.0"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   peerDependencies:
     esbuild: ^0.25.6
   languageName: unknown
@@ -15012,7 +15012,7 @@ __metadata:
   resolution: "esbuild-tailwind-ssr-plugin@workspace:workspaces/utils/packages/esbuild-tailwind-ssr-plugin"
   dependencies:
     "@goldstack/utils-git": "npm:0.2.18"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -15024,7 +15024,7 @@ __metadata:
     rimraf: "npm:^3.0.2"
     static-file-mapper-build: "npm:0.3.33"
     tailwindcss: "npm:^3"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -15364,7 +15364,7 @@ __metadata:
     "@types/node": "npm:^24.0.13"
     nodemon: "npm:^2.0.20"
     react: "npm:^19"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -19378,14 +19378,14 @@ __metadata:
   resolution: "lambda-compression@workspace:workspaces/utils/packages/lambda-compression"
   dependencies:
     "@goldstack/utils-git": "npm:0.2.18"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-lambda": "npm:^8.10.147"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -20349,7 +20349,7 @@ __metadata:
     "@aws-sdk/client-s3": "npm:^3.0.0"
     "@goldstack/utils-git": "npm:0.2.18"
     "@smithy/types": "npm:^4.9.0"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/mock-aws-s3": "npm:^2.6.3"
@@ -20359,7 +20359,7 @@ __metadata:
     jest: "npm:^29.7.0"
     mock-aws-s3: "npm:^4.0.2"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -20658,7 +20658,7 @@ __metadata:
   resolution: "node-css-require@workspace:workspaces/utils/packages/node-css-require"
   dependencies:
     "@goldstack/utils-git": "npm:0.2.18"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
@@ -20668,7 +20668,7 @@ __metadata:
     postcss-modules: "npm:^5.0.0"
     postcss-modules-sync: "npm:^1.0.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -23357,7 +23357,7 @@ __metadata:
     nodemon: "npm:^2.0.20"
     syncpack: "npm:^13.0.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -24444,7 +24444,7 @@ __metadata:
   dependencies:
     "@goldstack/utils-git": "npm:0.2.18"
     "@goldstack/utils-sh": "npm:0.5.28"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-lambda": "npm:^8.10.147"
     "@types/jest": "npm:^29.5.14"
@@ -24452,7 +24452,7 @@ __metadata:
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
     static-file-mapper: "npm:0.3.23"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -24461,14 +24461,14 @@ __metadata:
   resolution: "static-file-mapper@workspace:workspaces/utils/packages/static-file-mapper"
   dependencies:
     "@goldstack/utils-git": "npm:0.2.18"
-    "@swc/core": "npm:^1.12.11"
+    "@swc/core": "npm:^1.15.3"
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-lambda": "npm:^8.10.147"
     "@types/jest": "npm:^29.5.14"
     "@types/node": "npm:^24.0.13"
     jest: "npm:^29.7.0"
     rimraf: "npm:^3.0.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -25201,7 +25201,7 @@ __metadata:
     nodemon: "npm:^2.0.20"
     react: "npm:^19"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -25215,7 +25215,7 @@ __metadata:
     "@types/node": "npm:^24.0.13"
     nodemon: "npm:^2.0.20"
     react: "npm:^19"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -25230,7 +25230,7 @@ __metadata:
     "@types/node": "npm:^24.0.13"
     nodemon: "npm:^2.0.20"
     react: "npm:^19"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -25864,7 +25864,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.8.2":
+"typescript@npm:^5.8.2, typescript@npm:^5.9.3":
   version: 5.9.3
   resolution: "typescript@npm:5.9.3"
   bin:
@@ -25874,33 +25874,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.8.3":
-  version: 5.8.3
-  resolution: "typescript@npm:5.8.3"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10/65c40944c51b513b0172c6710ee62e951b70af6f75d5a5da745cb7fab132c09ae27ffdf7838996e3ed603bb015dadd099006658046941bd0ba30340cc563ae92
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A^5.8.2#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A^5.8.2#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.9.3#optional!builtin<compat/typescript>":
   version: 5.9.3
   resolution: "typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10/696e1b017bc2635f4e0c94eb4435357701008e2f272f553d06e35b494b8ddc60aa221145e286c28ace0c89ee32827a28c2040e3a69bdc108b1a5dc8fb40b72e3
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A^5.8.3#optional!builtin<compat/typescript>":
-  version: 5.8.3
-  resolution: "typescript@patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10/b9b1e73dabac5dc730c041325dbd9c99467c1b0d239f1b74ec3b90d831384af3e2ba973946232df670519147eb51a2c20f6f96163cea2b359f03de1e2091cc4f
   languageName: node
   linkType: hard
 
@@ -26356,7 +26336,7 @@ __metadata:
     nodemon: "npm:^2.0.20"
     react: "npm:^19"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.8.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 

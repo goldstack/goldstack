@@ -31,7 +31,7 @@
     "@goldstack/utils-sh": "0.5.28"
   },
   "devDependencies": {
-    "@swc/core": "^1.12.11",
+    "@swc/core": "^1.15.3",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^29.5.14",
     "@types/node": "^24.0.13",
@@ -40,6 +40,6 @@
     "nodemon": "^2.0.20",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   }
 }

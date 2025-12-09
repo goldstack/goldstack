@@ -29,12 +29,12 @@
     "@aws-sdk/lib-dynamodb": "^3.0.0",
     "@goldstack/template-dynamodb": "0.3.54",
     "@goldstack/utils-log": "0.3.25",
-    "dynamodb-toolbox": "^1.11.8",
+    "dynamodb-toolbox": "^2.7.2",
     "umzug": "^3.8.2"
   },
   "devDependencies": {
     "@goldstack/template-dynamodb-cli": "0.6.56",
-    "@swc/core": "^1.12.11",
+    "@swc/core": "^1.15.3",
     "@swc/jest": "^0.2.39",
     "@types/ejs": "^3.1.5",
     "@types/jest": "^29.5.14",
@@ -46,6 +46,6 @@
     "rimraf": "^3.0.2",
     "source-map-support": "^0.5.21",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   }
 }

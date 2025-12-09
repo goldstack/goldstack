@@ -42,7 +42,7 @@
   "devDependencies": {
     "@goldstack/template-nextjs": "0.5.77",
     "@goldstack/utils-sh": "0.5.28",
-    "@swc/core": "^1.12.11",
+    "@swc/core": "^1.15.3",
     "@swc/jest": "^0.2.39",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
@@ -79,6 +79,6 @@
     "tar-fs": "^3.0.6",
     "ts-node": "^10.9.2",
     "tunnel-agent": "^0.6.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   }
 }

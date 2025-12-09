@@ -1,1 +1,1 @@
-The [DynamoDB template](https://goldstack.party/templates/dynamodb) provides a lightweight wrapper around the [AWS DynamoDB](https://aws.amazon.com/dynamodb/) service.
+The [DynamoDB template](https://goldstack.party/templates/dynamodb) provides a lightweight wrapper around the [AWS DynamoDB](https://aws.amazon.com/dynamodb/) service using [DynamoDB Toolbox v2](https://github.com/jeremydaly/dynamodb-toolbox).
