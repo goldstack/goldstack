@@ -32,7 +32,7 @@
     "@aws-sdk/client-cognito-identity-provider": "^3.0.0",
     "@goldstack/template-user-management-cli": "0.1.73",
     "@goldstack/utils-log": "0.3.25",
-    "@swc/core": "^1.12.11",
+    "@swc/core": "^1.15.3",
     "@swc/jest": "^0.2.39",
     "@types/aws-lambda": "^8.10.147",
     "@types/jest": "^29.5.14",

@@ -46,7 +46,7 @@
     "@goldstack/markdown-docs": "0.1.0",
     "@goldstack/template-nextjs": "0.5.77",
     "@goldstack/utils-sh": "0.5.28",
-    "@swc/core": "^1.12.11",
+    "@swc/core": "^1.15.3",
     "@swc/jest": "^0.2.39",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",

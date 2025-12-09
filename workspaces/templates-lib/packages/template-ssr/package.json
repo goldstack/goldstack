@@ -57,7 +57,7 @@
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-git": "0.2.18",
     "@goldstack/utils-package-config-generate": "0.3.19",
-    "@swc/core": "^1.12.11",
+    "@swc/core": "^1.15.3",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^29.5.14",
     "@types/node": "^24.0.13",
