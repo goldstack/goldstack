@@ -114,7 +114,6 @@ describe('DynamoDB Table', () => {
 
     const data: InputUserValue = {
       userId: 'user-123',
-      type: 'admin',
       name: 'Joe',
       email: 'joe@email.com',
       emailVerified: true,
@@ -122,9 +121,7 @@ describe('DynamoDB Table', () => {
 
     await Users.build(PutItemCommand).item(data).send();
 
-    const { Item: item } = await Users.build(GetItemCommand)
-      .key({ userId: 'user-123', type: 'admin' })
-      .send();
+    const { Item: item } = await Users.build(GetItemCommand).key({ userId: 'user-123' }).send();
 
     if (!item) {
       throw new Error('Result not found');
@@ -132,9 +129,10 @@ describe('DynamoDB Table', () => {
 
     // this cast not really required but illustrates how we can pass
     // values obtained from the database around.
-    const user = item as ValidUser;
+    const user = item as InputUserValue;
     expect(user.name).toEqual('Joe');
     expect(user.email).toEqual('joe@email.com');
+    expect(user.userId).toEqual('user-123');
   });
 
   /**
@@ -150,7 +148,6 @@ describe('DynamoDB Table', () => {
     await Users1.build(PutItemCommand)
       .item({
         userId: 'user-456',
-        type: 'user',
         name: 'Joe',
         email: 'joe@email.com',
         emailVerified: true,
@@ -162,7 +159,6 @@ describe('DynamoDB Table', () => {
     const { Item: user } = await Users2.build(GetItemCommand)
       .key({
         userId: 'user-456',
-        type: 'user',
       })
       .options({
         attributes: ['name', 'email'],

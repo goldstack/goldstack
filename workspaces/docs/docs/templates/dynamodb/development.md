@@ -58,7 +58,6 @@ export function createTable(dynamoDB: DynamoDBDocumentClient, tableName: string)
  */
 export const UserSchema = item({
   userId: string().key(),
-  type: string().key(),
   name: string().required(),
   email: string().required(),
   emailVerified: boolean().required(),
@@ -82,9 +81,9 @@ export function createUserEntity(table: Table) {
     name: 'User',
     schema: UserSchema,
     table: table,
-    computeKey: ({ userId, type }) => ({
+    computeKey: ({ userId }) => ({
       pk: `USER#${userId}`,
-      sk: `${type}`,
+      sk: `self`,
     }),
   });
 
