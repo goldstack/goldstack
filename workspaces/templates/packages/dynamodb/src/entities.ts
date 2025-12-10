@@ -2,12 +2,11 @@ import type { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
 import {
   boolean,
   Entity,
-  type InputItem,
   type InputValue,
   item,
   string,
   Table as ToolboxTable,
-  type ValidItem,
+  type TransformedValue,
   type ValidValue,
 } from 'dynamodb-toolbox';
 
@@ -19,10 +18,13 @@ import {
 // it with your own types
 // ---
 
+/**
+ * Schema for User entity that defines user metadata
+ */
 export const UserSchema = item({
-  email: string().key().savedAs('pk'),
-  type: string().key().default('user').savedAs('sk'),
+  userId: string().key(),
   name: string().required(),
+  email: string().required(),
   emailVerified: boolean().required(),
 });
 
@@ -30,17 +32,24 @@ export type InputUserValue = InputValue<typeof UserSchema>;
 
 export type ValidUserValue = ValidValue<typeof UserSchema>;
 
-export type InputUser = InputItem<UserEntity>;
+export type TransformedUserValue = TransformedValue<typeof UserSchema>;
 
-export type ValidUser = ValidItem<UserEntity>;
+export type ValidUser = ValidUserValue & { entity: 'User' };
 
-export type UserEntity = Entity;
-
-export function createUserEntity(table: Table): UserEntity {
+/**
+ * Creates a new User entity for the given DynamoDB table
+ * @param table The DynamoDB table to create the entity for
+ * @returns A new User entity
+ */
+export function createUserEntity(table: Table) {
   const entity = new Entity({
     name: 'User',
     schema: UserSchema,
     table: table,
+    computeKey: ({ userId }) => ({
+      pk: `USER#${userId}`,
+      sk: `self`,
+    }),
   });
 
   return entity;
