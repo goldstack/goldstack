@@ -74,14 +74,19 @@ While DynamoDB is a NoSQL data store and strictly speaking does not require a da
 The entities we want to store in the table are defined in the file `entities.ts` which is included in the DynamoDB package:
 
 ```typescript
-import { boolean, Entity, item, string, Table as ToolboxTable } from 'dynamodb-toolbox';
-import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
-import memoizee from 'memoizee';
+import type { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
+import {
+  boolean,
+  Entity,
+  type InputValue,
+  item,
+  string,
+  Table as ToolboxTable,
+  type TransformedValue,
+  type ValidValue,
+} from 'dynamodb-toolbox';
 
-export function createTable(
-  dynamoDB: DynamoDBDocumentClient,
-  tableName: string
-): ToolboxTable<
+export type Table = ToolboxTable<
   {
     name: 'pk';
     type: 'string';
@@ -89,8 +94,12 @@ export function createTable(
   {
     name: 'sk';
     type: 'string';
-  }
-> {
+  },
+  {},
+  '_et'
+>;
+
+export function createTable(dynamoDB: DynamoDBDocumentClient, tableName: string): Table {
   const table = new ToolboxTable({
     name: tableName,
     partitionKey: {
@@ -106,22 +115,42 @@ export function createTable(
   return table;
 }
 
-export function UserEntityFn(table: ReturnType<typeof createTable>) {
+/**
+ * Schema for User entity that defines user metadata
+ */
+export const UserSchema = item({
+  userId: string().key(),
+  name: string().required(),
+  email: string().required(),
+  emailVerified: boolean().required(),
+});
+
+export type InputUserValue = InputValue<typeof UserSchema>;
+
+export type ValidUserValue = ValidValue<typeof UserSchema>;
+
+export type TransformedUserValue = TransformedValue<typeof UserSchema>;
+
+export type ValidUser = ValidUserValue & { entity: 'User' };
+
+/**
+ * Creates a new User entity for the given DynamoDB table
+ * @param table The DynamoDB table to create the entity for
+ * @returns A new User entity
+ */
+export function createUserEntity(table: Table) {
   const entity = new Entity({
     name: 'User',
-    schema: item({
-      email: string().key().savedAs('pk'),
-      type: string().key().default('user').savedAs('sk'),
-      name: string().required(),
-      emailVerified: boolean().required(),
-    }),
+    schema: UserSchema,
     table: table,
+    computeKey: ({ userId }) => ({
+      pk: `USER#${userId}`,
+      sk: `self`,
+    }),
   });
 
   return entity;
 }
-
-export const UserEntity = memoizee(UserEntityFn);
 ```
 
 You can edit and extend these entities. Note though that it is recommended not to change the name of the `partionKey` (`pk`) and `sortKey` (`sk`).
