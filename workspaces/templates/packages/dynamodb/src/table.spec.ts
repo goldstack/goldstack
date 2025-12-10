@@ -11,7 +11,7 @@ import {
   Table,
 } from 'dynamodb-toolbox';
 
-import { createUserEntity, type InputUser, type UserEntity, type ValidUserValue } from './entities';
+import { createUserEntity, type InputUserValue, type ValidUser } from './entities';
 
 import {
   connect,
@@ -110,17 +110,21 @@ describe('DynamoDB Table', () => {
 
   it('Should be able to write and read an entity with entities', async () => {
     const table = await connectTable();
-    const Users: UserEntity = createUserEntity(table);
+    const Users = createUserEntity(table);
 
-    const data: InputUser = {
-      email: 'joe@email.com',
+    const data: InputUserValue = {
+      userId: 'user-123',
+      type: 'admin',
       name: 'Joe',
+      email: 'joe@email.com',
       emailVerified: true,
     };
 
     await Users.build(PutItemCommand).item(data).send();
 
-    const { Item: item } = await Users.build(GetItemCommand).key({ email: 'joe@email.com' }).send();
+    const { Item: item } = await Users.build(GetItemCommand)
+      .key({ userId: 'user-123', type: 'admin' })
+      .send();
 
     if (!item) {
       throw new Error('Result not found');
@@ -128,7 +132,7 @@ describe('DynamoDB Table', () => {
 
     // this cast not really required but illustrates how we can pass
     // values obtained from the database around.
-    const user = item as ValidUserValue;
+    const user = item as ValidUser;
     expect(user.name).toEqual('Joe');
     expect(user.email).toEqual('joe@email.com');
   });
@@ -145,9 +149,10 @@ describe('DynamoDB Table', () => {
 
     await Users1.build(PutItemCommand)
       .item({
-        email: 'joe@email.com',
-        name: 'Joe',
+        userId: 'user-456',
         type: 'user',
+        name: 'Joe',
+        email: 'joe@email.com',
         emailVerified: true,
       })
       .send();
@@ -156,7 +161,7 @@ describe('DynamoDB Table', () => {
 
     const { Item: user } = await Users2.build(GetItemCommand)
       .key({
-        email: 'joe@email.com',
+        userId: 'user-456',
         type: 'user',
       })
       .options({
