@@ -209,3 +209,60 @@ test('Can put and retrieve streams', async () => {
   const checkFile = readFileSync('./goldstackLocal/text.txt').toString('utf8');
   assert(checkFile === 'streamedfile');
 });
+
+test('Can use transformToByteArray on retrieved objects', async () => {
+  const mockClient = createS3Client({
+    localDirectory: 'goldstackLocal/s3',
+    bucket: 'test-local',
+  });
+
+  const testContent = 'test byte array content';
+  await mockClient.send(
+    new PutObjectCommand({
+      Bucket: 'test-local',
+      Key: 'testbytearray',
+      Body: testContent,
+    }),
+  );
+
+  const res = await mockClient.send(
+    new GetObjectCommand({
+      Bucket: 'test-local',
+      Key: 'testbytearray',
+    }),
+  );
+
+  const byteArray = await res.Body?.transformToByteArray();
+  assert(byteArray instanceof Uint8Array);
+  assert(Buffer.from(byteArray!).toString() === testContent);
+});
+
+test('Can use transformToWebStream on retrieved objects', async () => {
+  const mockClient = createS3Client({
+    localDirectory: 'goldstackLocal/s3',
+    bucket: 'test-local',
+  });
+
+  const testContent = 'test web stream content';
+  await mockClient.send(
+    new PutObjectCommand({
+      Bucket: 'test-local',
+      Key: 'testwebstream',
+      Body: testContent,
+    }),
+  );
+
+  const res = await mockClient.send(
+    new GetObjectCommand({
+      Bucket: 'test-local',
+      Key: 'testwebstream',
+    }),
+  );
+
+  const webStream = res.Body?.transformToWebStream();
+  assert(webStream);
+  // Should return a readable stream
+  assert(
+    webStream instanceof require('stream').Readable || typeof webStream.getReader === 'function',
+  );
+});
