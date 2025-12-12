@@ -30,7 +30,7 @@
     "@goldstack/template-metadata": "0.1.0",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/template-repository-bucket": "0.1.0",
-    "@goldstack/template-s3": "0.5.51",
+    "@goldstack/template-s3": "0.5.52",
     "@goldstack/template-static-website-aws": "0.5.66",
     "@goldstack/utils-cli": "0.3.24",
     "@goldstack/utils-config": "0.4.30",
@@ -38,7 +38,7 @@
     "@goldstack/utils-log": "0.3.26",
     "@goldstack/utils-package": "0.4.31",
     "@goldstack/utils-project": "0.4.30",
-    "mock-aws-s3-v3": "6.1.3",
+    "mock-aws-s3-v3": "6.1.4",
     "source-map-support": "^0.5.21",
     "tmp": "^0.2.1",
     "yargs": "^17.5.1"
