@@ -270,127 +270,61 @@ Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.3+12-LTS, mixed mode)
     <span class="token punctuation">.</span><span class="token property-access">link</span><span class="token operator">&#x3C;</span><span class="token keyword">typeof</span> <span class="token maybe-class-name">BaseSchema</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> relationId <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>relationId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Then create the index in a migration (this will ensure it is available for local testing).</p>
-<p>Note: Creating a new GSI can take a LONG time</p>
-<pre class="language-typescript language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">export</span> <span class="token keyword">const</span> createMigrations <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token maybe-class-name">InputMigrations</span><span class="token operator">&#x3C;</span><span class="token maybe-class-name">DynamoDBContext</span><span class="token operator">></span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+<p>Then create the index in a migration using the GSI utility functions from the <code class="inline">template-dynamodb-cli</code> package (this will ensure it is available for local testing). The utilities handle checking for existing GSIs, creating new ones, and waiting for activation automatically.</p>
+<pre class="language-typescript language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> debug<span class="token punctuation">,</span> error <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@goldstack/utils-log'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> gsiExists<span class="token punctuation">,</span> getExistingAttributes<span class="token punctuation">,</span> createGsi<span class="token punctuation">,</span> deleteGsi <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'template-dynamodb-cli'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> createMigrations <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token maybe-class-name">InputMigrations</span><span class="token operator">&#x3C;</span><span class="token maybe-class-name">DynamoDBContext</span><span class="token operator">></span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
-      name<span class="token punctuation">:</span> <span class="token string">'00-add-gs1-index'</span><span class="token punctuation">,</span>
+      name<span class="token punctuation">:</span> <span class="token string">'00-add-gs1'</span><span class="token punctuation">,</span>
       <span class="token keyword">async</span> <span class="token function">up</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> context <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">try</span> <span class="token punctuation">{</span>
-          <span class="token comment">// First, check if the GSI already exists</span>
-          <span class="token keyword">const</span> tableDescription <span class="token operator">=</span> <span class="token keyword">await</span> context<span class="token punctuation">.</span><span class="token property-access">client</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span>
-            <span class="token keyword">new</span> <span class="token class-name">DescribeTableCommand</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-              <span class="token maybe-class-name">TableName</span><span class="token punctuation">:</span> context<span class="token punctuation">.</span><span class="token property-access">tableName</span><span class="token punctuation">,</span>
-            <span class="token punctuation">}</span><span class="token punctuation">)</span>
-          <span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token comment">// Check if the gs1 index already exists</span>
-          <span class="token keyword">const</span> indexExists <span class="token operator">=</span>
-            tableDescription<span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">Table</span></span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">GlobalSecondaryIndexes</span></span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token method function property-access">some</span><span class="token punctuation">(</span>
-              <span class="token punctuation">(</span><span class="token parameter">index</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> index<span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">IndexName</span></span> <span class="token operator">===</span> <span class="token string">'gs1'</span>
-            <span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token comment">// Only create the index if it doesn't exist</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>indexExists<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">const</span> newAttributes<span class="token punctuation">:</span> <span class="token maybe-class-name">AttributeDefinition</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
-              <span class="token spread operator">...</span><span class="token punctuation">(</span>tableDescription<span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">Table</span></span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">AttributeDefinitions</span></span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-              <span class="token punctuation">{</span>
-                <span class="token maybe-class-name">AttributeName</span><span class="token punctuation">:</span> <span class="token string">'gs1_pk'</span><span class="token punctuation">,</span>
-                <span class="token maybe-class-name">AttributeType</span><span class="token punctuation">:</span> <span class="token string">'S'</span><span class="token punctuation">,</span>
-              <span class="token punctuation">}</span><span class="token punctuation">,</span>
-              <span class="token punctuation">{</span>
-                <span class="token maybe-class-name">AttributeName</span><span class="token punctuation">:</span> <span class="token string">'gs1_sk'</span><span class="token punctuation">,</span>
-                <span class="token maybe-class-name">AttributeType</span><span class="token punctuation">:</span> <span class="token string">'S'</span><span class="token punctuation">,</span>
-              <span class="token punctuation">}</span><span class="token punctuation">,</span>
-            <span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token comment">// console.log(newAttributes);</span>
+          <span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">'Starting migration 00-add-gs1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-            <span class="token keyword">await</span> context<span class="token punctuation">.</span><span class="token property-access">client</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span>
-              <span class="token keyword">new</span> <span class="token class-name">UpdateTableCommand</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-                <span class="token maybe-class-name">TableName</span><span class="token punctuation">:</span> context<span class="token punctuation">.</span><span class="token property-access">tableName</span><span class="token punctuation">,</span>
-                <span class="token maybe-class-name">AttributeDefinitions</span><span class="token punctuation">:</span> newAttributes<span class="token punctuation">,</span>
-                <span class="token maybe-class-name">GlobalSecondaryIndexUpdates</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-                  <span class="token punctuation">{</span>
-                    <span class="token maybe-class-name">Create</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-                      <span class="token maybe-class-name">IndexName</span><span class="token punctuation">:</span> <span class="token string">'gs1'</span><span class="token punctuation">,</span>
-                      <span class="token maybe-class-name">KeySchema</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-                        <span class="token punctuation">{</span>
-                          <span class="token maybe-class-name">AttributeName</span><span class="token punctuation">:</span> <span class="token string">'gs1_pk'</span><span class="token punctuation">,</span>
-                          <span class="token maybe-class-name">KeyType</span><span class="token punctuation">:</span> <span class="token string">'HASH'</span><span class="token punctuation">,</span>
-                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-                        <span class="token punctuation">{</span>
-                          <span class="token maybe-class-name">AttributeName</span><span class="token punctuation">:</span> <span class="token string">'gs1_sk'</span><span class="token punctuation">,</span>
-                          <span class="token maybe-class-name">KeyType</span><span class="token punctuation">:</span> <span class="token string">'RANGE'</span><span class="token punctuation">,</span>
-                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-                      <span class="token punctuation">]</span><span class="token punctuation">,</span>
-                      <span class="token maybe-class-name">Projection</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-                        <span class="token maybe-class-name">ProjectionType</span><span class="token punctuation">:</span> <span class="token string">'ALL'</span><span class="token punctuation">,</span>
-                      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-                  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-                <span class="token punctuation">]</span><span class="token punctuation">,</span>
-              <span class="token punctuation">}</span><span class="token punctuation">)</span>
-            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token comment">// Check if GSI already exists</span>
+          <span class="token keyword">const</span> exists <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">gsiExists</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token string">'gs1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>exists<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">'GSI gs1 already exists, skipping migration'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
           <span class="token punctuation">}</span>
 
-          <span class="token keyword">let</span> active <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-          <span class="token keyword">let</span> retriesLeft <span class="token operator">=</span> <span class="token number">520</span><span class="token punctuation">;</span>
-          <span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">'Waiting for GSI to become active...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>active <span class="token operator">&#x26;&#x26;</span> retriesLeft <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">const</span> describe <span class="token operator">=</span> <span class="token keyword">await</span> context<span class="token punctuation">.</span><span class="token property-access">client</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span>
-              <span class="token keyword">new</span> <span class="token class-name">DescribeTableCommand</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token maybe-class-name">TableName</span><span class="token punctuation">:</span> context<span class="token punctuation">.</span><span class="token property-access">tableName</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
-            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">'GSI gs1 does not exist, proceeding with creation'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-            <span class="token keyword">const</span> gsi <span class="token operator">=</span> describe<span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">Table</span></span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">GlobalSecondaryIndexes</span></span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token method function property-access">find</span><span class="token punctuation">(</span>
-              <span class="token punctuation">(</span><span class="token parameter">idx</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> idx<span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">IndexName</span></span> <span class="token operator">===</span> <span class="token string">'gs1'</span>
-            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token comment">// Get existing attributes</span>
+          <span class="token keyword">const</span> existingAttributes <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getExistingAttributes</span><span class="token punctuation">(</span>context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">debug</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Found </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>existingAttributes<span class="token punctuation">.</span><span class="token property-access">length</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> existing attribute definitions</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-            <span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">'Index status: '</span> <span class="token operator">+</span> gsi<span class="token operator">?</span><span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">IndexStatus</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            active <span class="token operator">=</span> gsi<span class="token operator">?</span><span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">IndexStatus</span></span> <span class="token operator">===</span> <span class="token string">'ACTIVE'</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>active<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-              <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            retriesLeft<span class="token operator">--</span><span class="token punctuation">;</span>
-          <span class="token punctuation">}</span>
+          <span class="token comment">// Create the GSI</span>
+          <span class="token keyword">await</span> <span class="token function">createGsi</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token string">'gs1'</span><span class="token punctuation">,</span> existingAttributes<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>retriesLeft <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">'GSI did not fully become active after migration'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token punctuation">}</span>
-          <span class="token comment">// you may want to migrate existing data to match to the GSI fields</span>
+          <span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">'Migration 00-add-gs1 completed successfully'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          <span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'Error running migration: '</span> <span class="token operator">+</span> e<span class="token punctuation">.</span><span class="token property-access">message</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> error<span class="token punctuation">:</span> e <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Error running migration 00-add-gs1: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>e<span class="token punctuation">.</span><span class="token property-access">message</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span> error<span class="token punctuation">:</span> e <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
           <span class="token keyword">throw</span> e<span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token keyword">async</span> <span class="token function">down</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> context <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">const</span> tableDescription <span class="token operator">=</span> <span class="token keyword">await</span> context<span class="token punctuation">.</span><span class="token property-access">client</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span>
-          <span class="token keyword">new</span> <span class="token class-name">DescribeTableCommand</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-            <span class="token maybe-class-name">TableName</span><span class="token punctuation">:</span> context<span class="token punctuation">.</span><span class="token property-access">tableName</span><span class="token punctuation">,</span>
-          <span class="token punctuation">}</span><span class="token punctuation">)</span>
-        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+          <span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">'Starting migration 00-add-gs1 down (deleting gs1)'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token comment">// Check if the gs1 index already exists</span>
-        <span class="token keyword">const</span> indexExists <span class="token operator">=</span>
-          tableDescription<span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">Table</span></span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">GlobalSecondaryIndexes</span></span><span class="token operator">?</span><span class="token punctuation">.</span><span class="token method function property-access">some</span><span class="token punctuation">(</span>
-            <span class="token punctuation">(</span><span class="token parameter">index</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> index<span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">IndexName</span></span> <span class="token operator">===</span> <span class="token string">'gs1'</span>
-          <span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token comment">// Check if GSI exists</span>
+          <span class="token keyword">const</span> exists <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">gsiExists</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token string">'gs1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>exists<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">'GSI gs1 does not exist, skipping deletion'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
 
-        <span class="token comment">// Nothing to do if index does not exist</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>indexExists<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          <span class="token keyword">return</span><span class="token punctuation">;</span>
+          <span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">'GSI gs1 exists, proceeding with deletion'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+          <span class="token comment">// Delete the GSI</span>
+          <span class="token keyword">await</span> <span class="token function">deleteGsi</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token string">'gs1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+          <span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">'Migration 00-add-gs1 down completed successfully'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Error running migration 00-add-gs1 down: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>e<span class="token punctuation">.</span><span class="token property-access">message</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span> error<span class="token punctuation">:</span> e <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">throw</span> e<span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-
-        <span class="token keyword">await</span> context<span class="token punctuation">.</span><span class="token property-access">client</span><span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span>
-          <span class="token keyword">new</span> <span class="token class-name">UpdateTableCommand</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-            <span class="token maybe-class-name">TableName</span><span class="token punctuation">:</span> context<span class="token punctuation">.</span><span class="token property-access">tableName</span><span class="token punctuation">,</span>
-            <span class="token maybe-class-name">GlobalSecondaryIndexUpdates</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-              <span class="token punctuation">{</span>
-                <span class="token maybe-class-name">Delete</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-                  <span class="token maybe-class-name">IndexName</span><span class="token punctuation">:</span> <span class="token string">'gs1'</span><span class="token punctuation">,</span>
-                <span class="token punctuation">}</span><span class="token punctuation">,</span>
-              <span class="token punctuation">}</span><span class="token punctuation">,</span>
-            <span class="token punctuation">]</span><span class="token punctuation">,</span>
-          <span class="token punctuation">}</span><span class="token punctuation">)</span>
-        <span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span><span class="token punctuation">;</span>
