@@ -169,130 +169,63 @@ export const DatabaseStateSchema = item({
 });
 ```
 
-Then create the index in a migration (this will ensure it is available for local testing).
-
-Note: Creating a new GSI can take a LONG time
+Then create the index in a migration using the GSI utility functions from the `template-dynamodb-cli` package (this will ensure it is available for local testing). The utilities handle checking for existing GSIs, creating new ones, and waiting for activation automatically.
 
 ```typescript
+import { debug, error } from '@goldstack/utils-log';
+import { gsiExists, getExistingAttributes, createGsi, deleteGsi } from 'template-dynamodb-cli';
+
 export const createMigrations = (): InputMigrations<DynamoDBContext> => {
   return [
     {
-      name: '00-add-gs1-index',
+      name: '00-add-gs1',
       async up({ context }) {
         try {
-          // First, check if the GSI already exists
-          const tableDescription = await context.client.send(
-            new DescribeTableCommand({
-              TableName: context.tableName,
-            })
-          );
-          // Check if the gs1 index already exists
-          const indexExists =
-            tableDescription.Table?.GlobalSecondaryIndexes?.some(
-              (index) => index.IndexName === 'gs1'
-            );
-          // Only create the index if it doesn't exist
-          if (!indexExists) {
-            const newAttributes: AttributeDefinition[] = [
-              ...(tableDescription.Table?.AttributeDefinitions || []),
-              {
-                AttributeName: 'gs1_pk',
-                AttributeType: 'S',
-              },
-              {
-                AttributeName: 'gs1_sk',
-                AttributeType: 'S',
-              },
-            ];
-            // console.log(newAttributes);
+          debug('Starting migration 00-add-gs1');
 
-            await context.client.send(
-              new UpdateTableCommand({
-                TableName: context.tableName,
-                AttributeDefinitions: newAttributes,
-                GlobalSecondaryIndexUpdates: [
-                  {
-                    Create: {
-                      IndexName: 'gs1',
-                      KeySchema: [
-                        {
-                          AttributeName: 'gs1_pk',
-                          KeyType: 'HASH',
-                        },
-                        {
-                          AttributeName: 'gs1_sk',
-                          KeyType: 'RANGE',
-                        },
-                      ],
-                      Projection: {
-                        ProjectionType: 'ALL',
-                      },
-                    },
-                  },
-                ],
-              })
-            );
+          // Check if GSI already exists
+          const exists = await gsiExists(context, 'gs1');
+          if (exists) {
+            debug('GSI gs1 already exists, skipping migration');
+            return;
           }
 
-          let active = false;
-          let retriesLeft = 520;
-          debug('Waiting for GSI to become active...');
-          while (!active && retriesLeft > 0) {
-            const describe = await context.client.send(
-              new DescribeTableCommand({ TableName: context.tableName })
-            );
+          debug('GSI gs1 does not exist, proceeding with creation');
 
-            const gsi = describe.Table?.GlobalSecondaryIndexes?.find(
-              (idx) => idx.IndexName === 'gs1'
-            );
+          // Get existing attributes
+          const existingAttributes = await getExistingAttributes(context);
+          debug(`Found ${existingAttributes.length} existing attribute definitions`);
 
-            debug('Index status: ' + gsi?.IndexStatus);
-            active = gsi?.IndexStatus === 'ACTIVE';
-            if (!active) {
-              await new Promise((resolve) => setTimeout(resolve, 1000));
-            }
-            retriesLeft--;
-          }
+          // Create the GSI
+          await createGsi(context, 'gs1', existingAttributes);
 
-          if (retriesLeft === 0) {
-            warn('GSI did not fully become active after migration');
-          }
-          // you may want to migrate existing data to match to the GSI fields
+          debug('Migration 00-add-gs1 completed successfully');
         } catch (e) {
-          error('Error running migration: ' + e.message, { error: e });
+          error(`Error running migration 00-add-gs1: ${e.message}`, { error: e });
           throw e;
         }
       },
       async down({ context }) {
-        const tableDescription = await context.client.send(
-          new DescribeTableCommand({
-            TableName: context.tableName,
-          })
-        );
+        try {
+          debug('Starting migration 00-add-gs1 down (deleting gs1)');
 
-        // Check if the gs1 index already exists
-        const indexExists =
-          tableDescription.Table?.GlobalSecondaryIndexes?.some(
-            (index) => index.IndexName === 'gs1'
-          );
+          // Check if GSI exists
+          const exists = await gsiExists(context, 'gs1');
+          if (!exists) {
+            debug('GSI gs1 does not exist, skipping deletion');
+            return;
+          }
 
-        // Nothing to do if index does not exist
-        if (!indexExists) {
-          return;
+          debug('GSI gs1 exists, proceeding with deletion');
+
+          // Delete the GSI
+          await deleteGsi(context, 'gs1');
+
+          debug('Migration 00-add-gs1 down completed successfully');
+        } catch (e) {
+          error(`Error running migration 00-add-gs1 down: ${e.message}`, { error: e });
+          throw e;
         }
-
-        await context.client.send(
-          new UpdateTableCommand({
-            TableName: context.tableName,
-            GlobalSecondaryIndexUpdates: [
-              {
-                Delete: {
-                  IndexName: 'gs1',
-                },
-              },
-            ],
-          })
-        );
       },
     },
   ];

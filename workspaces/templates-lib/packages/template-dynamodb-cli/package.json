@@ -42,6 +42,7 @@
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.0.0",
     "@goldstack/template-dynamodb": "0.3.55",
     "@goldstack/utils-cli": "0.3.24",
     "@goldstack/utils-log": "0.3.26",

@@ -14,6 +14,8 @@ import type { InputMigrations } from 'umzug/lib/types';
 import yargs, { type Argv } from 'yargs';
 import { dynamoDBCli } from './dynamoDBTableCli';
 
+export * from './gsiMigrationUtils';
+
 export const run = async ({
   args,
   migrations,
