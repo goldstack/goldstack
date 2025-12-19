@@ -1,4 +1,4 @@
-import { DescribeTableCommand } from '@aws-sdk/client-dynamodb';
+import { DescribeTableCommand, QueryCommand } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocument } from '@aws-sdk/lib-dynamodb';
 import assert from 'assert';
 import {
@@ -170,6 +170,65 @@ describe('DynamoDB Table', () => {
     }
     expect(user.name).toEqual('Joe');
     expect(user.email).toEqual('joe@email.com');
+  });
+
+  it('Should be able to search users by email using GSI', async () => {
+    const table = await connectTable();
+    const Users = createUserEntity(table);
+
+    // Create multiple users
+    const users = [
+      {
+        userId: 'user-789',
+        name: 'Alice',
+        email: 'alice@example.com',
+        emailVerified: true,
+      },
+      {
+        userId: 'user-790',
+        name: 'Bob',
+        email: 'bob@example.com',
+        emailVerified: false,
+      },
+      {
+        userId: 'user-791',
+        name: 'Charlie',
+        email: 'alice@example.com', // Same email as Alice to test multiple users
+        emailVerified: true,
+      },
+    ];
+
+    for (const user of users) {
+      await Users.build(PutItemCommand).item(user).send();
+    }
+
+    // Query the GSI for users with email 'alice@example.com'
+    const client = await connect();
+    const queryResult = await client.send(
+      new QueryCommand({
+        TableName: await getTableName(),
+        IndexName: 'gs1',
+        KeyConditionExpression: 'gs1_pk = :gs1_pk',
+        ExpressionAttributeValues: {
+          ':gs1_pk': { S: 'EMAIL#alice@example.com' },
+        },
+      }),
+    );
+
+    if (!queryResult.Items || queryResult.Items.length === 0) {
+      throw new Error('No users found for email');
+    }
+
+    // Should find both Alice users
+    expect(queryResult.Items.length).toBe(2);
+
+    // Check that both have the correct email
+    const emails = queryResult.Items.map((item) => item.email?.S).sort();
+    expect(emails).toEqual(['alice@example.com', 'alice@example.com']);
+
+    // Check names
+    const names = queryResult.Items.map((item) => item.name?.S).sort();
+    expect(names).toEqual(['Alice', 'Charlie']);
   });
 
   afterAll(async () => {

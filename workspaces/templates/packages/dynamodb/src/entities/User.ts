@@ -4,9 +4,23 @@ import {
   type InputValue,
   item,
   string,
+  Table as ToolboxTable,
   type TransformedValue,
   type ValidValue,
 } from 'dynamodb-toolbox';
+
+export type Table = ToolboxTable<
+  {
+    name: 'pk';
+    type: 'string';
+  },
+  {
+    name: 'sk';
+    type: 'string';
+  },
+  {},
+  '_et'
+>;
 
 /**
  * Schema for User entity that defines user metadata
@@ -16,6 +30,12 @@ export const UserSchema = item({
   name: string().required(),
   email: string().required(),
   emailVerified: boolean().required(),
+  gs1_pk: string()
+    .optional()
+    .link(({ email }: any) => `EMAIL#${email}`),
+  gs1_sk: string()
+    .optional()
+    .link(({ userId }: any) => `${userId}`),
 });
 
 export type InputUserValue = InputValue<typeof UserSchema>;
