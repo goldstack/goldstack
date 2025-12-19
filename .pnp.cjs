@@ -6659,6 +6659,7 @@ const RAW_RUNTIME_STATE =
       ["workspace:workspaces/templates-lib/packages/template-dynamodb-cli", {\
         "packageLocation": "./workspaces/templates-lib/packages/template-dynamodb-cli/",\
         "packageDependencies": [\
+          ["@aws-sdk/client-dynamodb", "npm:3.940.0"],\
           ["@goldstack/template-dynamodb", "workspace:workspaces/templates-lib/packages/template-dynamodb"],\
           ["@goldstack/template-dynamodb-cli", "workspace:workspaces/templates-lib/packages/template-dynamodb-cli"],\
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\

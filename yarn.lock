@@ -5218,6 +5218,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-dynamodb-cli@workspace:workspaces/templates-lib/packages/template-dynamodb-cli"
   dependencies:
+    "@aws-sdk/client-dynamodb": "npm:^3.0.0"
     "@goldstack/template-dynamodb": "npm:0.3.55"
     "@goldstack/utils-cli": "npm:0.3.24"
     "@goldstack/utils-docs-cli": "npm:0.3.11"
