@@ -78,8 +78,10 @@ export const run = async ({
           throw new Error(`Cannot find configuration for deployment '${deploymentName}'`);
         }
       }
-      await dynamoDBCli(migrations, ['init', deploymentName]);
       const infraOperation = argv._[1] as string;
+      if (infraOperation !== 'destroy') {
+        await dynamoDBCli(migrations, ['init', deploymentName]);
+      }
       let targetVersion: string | undefined;
       let confirm: boolean | undefined;
       let commandArgs: string[] | undefined;
