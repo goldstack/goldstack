@@ -15,3 +15,7 @@ echo "Starting server in ${ENVIRONMENT:-development} mode"
 
 
 cd "$APP_DIR" && COMPOSE_PROJECT_NAME=server docker-compose up -d
+
+
+# Clean up images
+sudo docker image prune -a -f
