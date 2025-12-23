@@ -171,6 +171,8 @@ describe('DynamoDB Template', () => {
     // Second stop call without port should stop default port instance
     await stopLocalDynamoDB(mockConfig1, mockSchema, 'local');
     debug('Stop local dynamoDB completed');
+    // Wait a bit for port to be released
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     expect(await check(defaultPort)).toBe(false); // Stopped as counter reached 0
     expect(await check(customPort)).toBe(true); // Still unaffected
 

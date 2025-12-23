@@ -119,7 +119,7 @@ export const stopAllLocalDynamoDB: StopAllLocalDynamoDBType = async (
   deploymentName,
 ) => {
   const manager = await getInstanceManager();
-  debug('Stopping all local DynamoDB instances. Currently defined: ' + manager.getInstanceCount());
+  debug(`Stopping all local DynamoDB instances. Currently defined: ${manager.getInstanceCount()}`);
 
   const allInstances = manager.getAllInstances();
   for (const [port, instance] of allInstances.entries()) {
