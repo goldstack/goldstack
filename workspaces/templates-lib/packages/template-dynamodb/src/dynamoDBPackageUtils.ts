@@ -10,6 +10,12 @@ export const getTableName = async (
 ): Promise<string> => {
   deploymentName = getDeploymentName(deploymentName);
   if (deploymentName === 'local') {
+    // For local development, use the table name from the first deployment
+    const deployments = packageConfig.getConfig().deployments;
+    if (deployments.length > 0) {
+      return deployments[0].configuration.tableName;
+    }
+    // Fallback to package name if no deployments
     return `${packageConfig.getConfig().name}`;
   }
   const deployment = packageConfig.getDeployment(deploymentName);
