@@ -44,6 +44,8 @@ export interface LocalInstancesManager {
   removeUsageCounter(port: number): void;
 }
 
+let localMessageShown = false;
+
 /**
  * Implementation of LocalInstancesManager for managing DynamoDB local instances
  */
@@ -147,7 +149,10 @@ class LocalInstancesManagerImpl implements LocalInstancesManager {
   getFirstRunningInstance(): DynamoDBInstance | undefined {
     for (const [port, instance] of this.startedInstances.entries()) {
       if (instance !== 'stopped') {
-        debug(`Found existing local DynamoDB instance on port ${port}`);
+        if (localMessageShown === false) {
+          debug(`Found existing local DynamoDB instance on port ${port}`);
+          localMessageShown = true;
+        }
         return instance;
       }
     }

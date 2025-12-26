@@ -39,12 +39,17 @@ export type StopAllLocalDynamoDBType = (
   deploymentName?: string,
 ) => Promise<void>;
 
+let localMessageShown = false;
+
 /**
  * Creates a DynamoDB client for a local instance
  */
 async function createClient(instance: DynamoDBInstance): Promise<DynamoDBClient> {
   const endpoint = getEndpointUrl(instance.port);
-  debug(`Connecting to local DynamoDB instance on endpoint: ${endpoint}`);
+  if (!localMessageShown) {
+    debug(`Connecting to local DynamoDB instance on endpoint: ${endpoint}`);
+    localMessageShown = true;
+  }
   return new DynamoDBClient({
     endpoint,
     region: defaultConfig.region,
