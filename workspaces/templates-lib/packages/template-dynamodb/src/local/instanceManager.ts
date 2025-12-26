@@ -17,6 +17,8 @@ interface PersistedState {
   usageCounts: { [port: string]: number };
 }
 
+let localMessageShown = false;
+
 /**
  * Manages DynamoDB instance lifecycle and state
  */
@@ -64,7 +66,11 @@ export class InstanceManager {
           this.setInstance(port, 'stopped');
           continue;
         }
-        debug(`Found existing local DynamoDB instance on port ${port}`);
+        if (!localMessageShown) {
+          debug(`Found existing local DynamoDB instance on port ${port}`);
+          localMessageShown = true;
+        }
+
         return instance;
       }
     }

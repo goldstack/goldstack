@@ -119,13 +119,17 @@ export const stopLocalDynamoDB = async (
   coldStart.delete(coldStartKey);
 };
 
+let localMessageShown = false;
+
 const createClient = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,
 ): Promise<DynamoDBClient> => {
   if (deploymentName === 'local') {
-    debug('Connecting to local DynamoDB instance');
-    // Suppress ESLint error for dynamic require
+    if (!localMessageShown) {
+      debug('Connecting to local DynamoDB instance');
+      localMessageShown = true;
+    }
 
     const lib = require(excludeInBundle('./local/localDynamoDB')) as {
       localConnect: LocalConnectType;
