@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.19",
-    "@swc/core": "^1.15.3",
+    "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/aws-lambda": "^8.10.147",
     "@types/jest": "^29.5.14",

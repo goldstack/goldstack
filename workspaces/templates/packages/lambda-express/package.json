@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@jest-mock/express": "^1.4.5",
-    "@swc/core": "^1.15.3",
+    "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/aws-serverless-express": "^3.3.10",
     "@types/express": "^5.0.0",

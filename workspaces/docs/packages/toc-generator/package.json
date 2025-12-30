@@ -23,7 +23,7 @@
     "cheerio": "1.0.0-rc.10"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.3",
+    "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/cheerio": "^0.22.35",
     "@types/jest": "^29.5.14",

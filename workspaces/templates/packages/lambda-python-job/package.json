@@ -28,7 +28,7 @@
     "@goldstack/utils-sh": "0.5.29"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.3",
+    "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^29.5.14",
     "@types/node": "^24.0.13",

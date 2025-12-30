@@ -42,7 +42,7 @@
   "devDependencies": {
     "@goldstack/template-nextjs": "0.5.78",
     "@goldstack/utils-sh": "0.5.29",
-    "@swc/core": "^1.15.3",
+    "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",

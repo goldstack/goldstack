@@ -31,7 +31,7 @@
     "semver": "^7.6.3"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.3",
+    "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/archiver": "^6.0.3",
     "@types/fs-extra": "^11.0.4",
