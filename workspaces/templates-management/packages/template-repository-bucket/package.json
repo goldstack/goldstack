@@ -31,10 +31,10 @@
     "@goldstack/template-s3-cli": "0.6.73",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
-    "@types/jest": "^29.5.14",
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
     "concurrently": "^7.3.0",
-    "jest": "^29.7.0",
+    "jest": "^30.2.0",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
