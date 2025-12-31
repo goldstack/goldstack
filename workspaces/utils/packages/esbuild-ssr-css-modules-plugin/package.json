@@ -1,6 +1,6 @@
 {
   "name": "esbuild-ssr-css-modules-plugin",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "description": "esbuild plugin for bundling CSS module files for client-side and server-side logic",
   "keywords": [
     "node",
@@ -36,12 +36,12 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "dependencies": {
-    "node-css-require": "0.4.23",
+    "node-css-require": "0.4.24",
     "postcss-modules-sync": "^1.0.0",
     "sha256": "^0.2.0"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.19",
+    "@goldstack/utils-git": "0.2.20",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

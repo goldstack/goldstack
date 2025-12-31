@@ -22,11 +22,11 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.958.0",
-    "@goldstack/utils-log": "0.3.26",
-    "@goldstack/utils-package": "0.4.31",
-    "@goldstack/utils-s3": "0.4.27",
-    "@goldstack/utils-sh": "0.5.29",
-    "@goldstack/utils-template": "0.4.30",
+    "@goldstack/utils-log": "0.3.27",
+    "@goldstack/utils-package": "0.4.32",
+    "@goldstack/utils-s3": "0.4.28",
+    "@goldstack/utils-sh": "0.5.30",
+    "@goldstack/utils-template": "0.4.31",
     "fs-extra": "^11.2.0",
     "semver": "^7.6.3"
   },
