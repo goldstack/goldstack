@@ -22,7 +22,7 @@
     "test": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@aws-sdk/client-sqs": "^3.0.0",
+    "@aws-sdk/client-sqs": "^3.960.0",
     "@goldstack/template-lambda-trigger-cli": "0.1.48",
     "@goldstack/template-sqs": "0.1.40",
     "@goldstack/utils-git": "0.2.19",
@@ -35,7 +35,7 @@
     "@swc/jest": "^0.2.39",
     "@types/aws-lambda": "^8.10.147",
     "@types/jest": "^29.5.14",
-    "@types/node": "^24.0.13",
+    "@types/node": "^25.0.3",
     "@types/source-map-support": "^0.5.10",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "esbuild": "^0.25.6",

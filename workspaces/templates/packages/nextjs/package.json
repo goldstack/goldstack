@@ -29,8 +29,8 @@
     "web:watch": "yarn web:build $@ && concurrently \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" "
   },
   "dependencies": {
-    "@aws-sdk/client-sso-oidc": "^3.0.0",
-    "@aws-sdk/client-sts": "^3.0.0",
+    "@aws-sdk/client-sso-oidc": "^3.958.0",
+    "@aws-sdk/client-sts": "^3.958.0",
     "autoprefixer": "^10.4.20",
     "next": "^15",
     "react": "^19",
@@ -48,7 +48,7 @@
     "@testing-library/react": "^16.1.0",
     "@types/jest": "^29.5.14",
     "@types/minimist": "^1",
-    "@types/node": "^24.0.13",
+    "@types/node": "^25.0.3",
     "@types/node-abi": "^3",
     "@types/rc": "^1",
     "@types/react": "^18",

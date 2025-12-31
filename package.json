@@ -40,7 +40,7 @@
     "@goldstack/utils-docs-cli": "0.3.11",
     "@goldstack/utils-typescript-references": "0.3.21",
     "@types/jest": "^29.5.14",
-    "@types/node": "^24.0.13",
+    "@types/node": "^25.0.3",
     "concurrently": "^7.3.0",
     "nodemon": "^2.0.20",
     "syncpack": "^13.0.0",

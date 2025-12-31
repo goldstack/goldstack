@@ -44,7 +44,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/jest": "^29.5.14",
-    "@types/node": "^24.0.13",
+    "@types/node": "^25.0.3",
     "@types/react": "^18",
     "@types/testing-library__jest-dom": "5",
     "@types/testing-library__react": "^10.2.0",

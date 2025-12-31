@@ -38,7 +38,7 @@
     "@types/aws-lambda": "^8.10.147",
     "@types/aws-serverless-express": "^3.3.10",
     "@types/jest": "^29.5.14",
-    "@types/node": "^24.0.13",
+    "@types/node": "^25.0.3",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "dotenv": "^16.4.7",
     "esbuild": "^0.25.6",
