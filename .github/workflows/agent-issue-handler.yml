@@ -6,11 +6,18 @@ on:
 
 jobs:
   run-agent:
-    if: startsWith(github.event.issue.title, 'Agent:') 
+    if: startsWith(github.event.issue.title, 'Agent:')
+    name: Run Agent for Issue
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
     steps:
+      - name: Debug Issue Info
+        run: |
+          echo "Issue Title: ${{ github.event.issue.title }}"
+          echo "Issue User Login: ${{ github.event.issue.user.login }}"
+          echo "Issue Number: ${{ github.event.issue.number }}"
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -23,8 +30,8 @@ jobs:
 
       - name: Configure Cline
         run: |
-          cline config set apiKey ${{ secrets.DEEPSEEK_API_KEY }}
-          cline config set provider deepseek
+          cline config set apiKey=${{ secrets.DEEPSEEK_API_KEY }}
+          cline config set provider=deepseek
 
       - name: Extract task from issue
         id: issue
@@ -35,7 +42,8 @@ jobs:
 
       - name: Run Cline agent
         run: |
-          cline -y "${{ steps.issue.outputs.task }}" <<EOF
+          echo "Running Cline with task: ${{ steps.issue.outputs.task }}"
+          cline -y -v "${{ steps.issue.outputs.task }}" <<EOF
           ${{ github.event.issue.body }}
           EOF
 
