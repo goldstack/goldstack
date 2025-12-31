@@ -6,8 +6,8 @@ on:
 
 jobs:
   run-agent:
-    if: startsWith(github.event.issue.title, 'Agent:')
-    name: Run Agent for Issue
+    if: startsWith(github.event.issue.title, 'Agent:') && (github.event.issue.user.login == 'mxro' || github.event.issue.user.login == 'goldstack')
+    name: Run Agent for Issue by authorized user
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -30,8 +30,7 @@ jobs:
 
       - name: Configure Cline
         run: |
-          cline config set apiKey=${{ secrets.DEEPSEEK_API_KEY }}
-          cline config set provider=deepseek
+          cline auth deepseek ${{ secrets.DEEPSEEK_API_KEY }}
 
       - name: Extract task from issue
         id: issue
