@@ -6,7 +6,7 @@ on:
 
 jobs:
   run-agent:
-    if: startsWith(github.event.issue.title, 'Agent:') && github.event.issue.user.login == 'mxro'
+    if: startsWith(github.event.issue.title, 'Agent:') 
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
