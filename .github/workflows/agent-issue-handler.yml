@@ -1,0 +1,60 @@
+name: Agent Issue Handler
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  run-agent:
+    if: startsWith(github.event.issue.title, 'Agent:') && github.event.issue.user.login == 'mxro'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - uses: ./.github/actions/goldstack-setup
+
+      - name: Install Cline CLI
+        run: npm install -g cline
+
+      - name: Configure Cline
+        run: |
+          cline config set apiKey ${{ secrets.DEEPSEEK_API_KEY }}
+          cline config set provider deepseek
+
+      - name: Extract task from issue
+        id: issue
+        run: |
+          TITLE="${{ github.event.issue.title }}"
+          TASK="${TITLE#Agent: }"
+          echo "task=$TASK" >> $GITHUB_OUTPUT
+
+      - name: Run Cline agent
+        run: |
+          cline -y "${{ steps.issue.outputs.task }}" <<EOF
+          ${{ github.event.issue.body }}
+          EOF
+
+      - name: Create branch and push
+        run: |
+          BRANCH="agent-issue-${{ github.event.issue.number }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add -A
+          git commit -m "Agent: ${{ steps.issue.outputs.task }}" || exit 0
+          git push origin "$BRANCH"
+
+      - name: Create PR
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          PR_URL=$(gh pr create \
+            --title "Agent: ${{ steps.issue.outputs.task }}" \
+            --body "From issue #$ ${{ github.event.issue.number }}" \
+            --head "agent-issue-${{ github.event.issue.number }}")
+          gh issue comment ${{ github.event.issue.number }} --body "🤖 PR created: $PR_URL"
