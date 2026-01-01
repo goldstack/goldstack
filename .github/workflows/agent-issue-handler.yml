@@ -57,7 +57,7 @@ jobs:
             BRANCH_NAME="agent-issue-$ISSUE_NUMBER"
           fi
 
-          FULL_TASK="${TASK}"$'\n\n'"${BODY}"$'\n\n'"Consult AGENTS.md for every action you undertake.Create a commit with a clear message for every change you make.Record the timestamp when your work starts.Check the current time every 5 actions.If you have been working for more than 25 minutes, commit your changes with a note that further work is required and stop your work."
+          FULL_TASK="${TASK}"$'\n\n'"${BODY}"$'\n\n'"Consult AGENTS.md for every action you undertake.Create a commit with a clear message for every change you make.Record the timestamp when your work starts.Check the current time every 5 actions.If you have been working for more than 25 minutes, commit your changes with a note that further work is required and stop your work"
 
           printf 'task=%s\n' "$TASK" >> "$GITHUB_OUTPUT"
           printf 'branch_name=%s\n' "$BRANCH_NAME" >> "$GITHUB_OUTPUT"
