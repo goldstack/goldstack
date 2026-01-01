@@ -30,7 +30,7 @@ jobs:
 
       - name: Configure Cline
         run: |
-          cline auth --provider deepseek --apikey ${{ secrets.DEEPSEEK_API_KEY }} --modelid deepseek-coder
+          cline auth --provider openrouter --apikey ${{ secrets.OPENROUTER_API_KEY }} --modelid deepseek/deepseek-v3.2
 
       - name: Extract task from issue
         id: issue
