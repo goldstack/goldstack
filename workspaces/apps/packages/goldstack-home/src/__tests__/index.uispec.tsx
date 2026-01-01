@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-import React from 'react';
 import '@testing-library/jest-dom';
 import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime';
 import type { NextRouter } from 'next/router';
@@ -40,6 +39,7 @@ const mockRouter: NextRouter = {
 
 test('Check App component render', () => {
   // see https://github.com/styled-components/styled-components/issues/3731
+  // biome-ignore lint/suspicious/noExplicitAny: Known TypeScript compatibility issue with styled-components
   const ThemeProviderPatched = ThemeProvider as any;
   render(
     <ThemeProviderPatched theme={theme}>
