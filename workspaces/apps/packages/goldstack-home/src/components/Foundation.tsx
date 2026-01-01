@@ -3,7 +3,7 @@ import styles from './Foundation.module.css';
 
 interface Feature {
   title: string;
-  icon: any;
+  icon: string;
   highlight?: boolean;
 }
 
@@ -17,10 +17,10 @@ const Foundation = (props: FoundationProps): JSX.Element => {
     <div className="card h-100 transition-3d-hover">
       <div className="card-body">
         <h3 className="mb-3">{props.heading}</h3>
-        {props.features.map((feature, index) => (
-          <div className="media align-items-center mb-3" key={index}>
+        {props.features.map((feature) => (
+          <div className="media align-items-center mb-3" key={feature.title}>
             <figure className="w-100 max-w-5rem mr-3">
-              <img className="img-fluid" src={feature.icon}></img>
+              <img className="img-fluid" src={feature.icon} alt="" />
             </figure>
             <div className="media-body">
               <span
@@ -29,7 +29,7 @@ const Foundation = (props: FoundationProps): JSX.Element => {
                   fontWeight: feature.highlight ? 'bold' : 'normal',
                 }}
               >
-                {feature.title} {feature.highlight && <img src={GoldDiamondIcon}></img>}
+                {feature.title} {feature.highlight && <img src={GoldDiamondIcon} alt="" />}
               </span>
             </div>
           </div>

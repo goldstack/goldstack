@@ -6,7 +6,11 @@ import styles from './LearnMore.module.css';
 export const LeftArrow = (): JSX.Element => {
   const angleRight = dataUriToSrc(AngleRight);
   return (
-    <span className={styles['angle-right']} dangerouslySetInnerHTML={{ __html: angleRight }}></span>
+    <span
+      className={styles['angle-right']}
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted SVG
+      dangerouslySetInnerHTML={{ __html: angleRight }}
+    ></span>
   );
 };
 

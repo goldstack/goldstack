@@ -1,5 +1,12 @@
 import { Fragment } from 'react';
 
+declare global {
+  interface Window {
+    // biome-ignore lint/suspicious/noExplicitAny: gtag is a third-party function with variable arguments
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 export let GA_TRACKING_ID: undefined | string = undefined;
 
 export const initGtm = (ga_tracking_id: string): void => {
@@ -8,28 +15,38 @@ export const initGtm = (ga_tracking_id: string): void => {
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (params: { url: string; path: string }): void => {
-  if (!(window as any).gtag) {
+  if (!window.gtag) {
     return;
   }
   if (!GA_TRACKING_ID) {
     throw new Error('Please define tracking id with initGtm()');
   }
-  (window as any).gtag('config', GA_TRACKING_ID, {
+  window.gtag('config', GA_TRACKING_ID, {
     page_path: params.path,
     page_location: params.url,
   });
 };
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events
-export const event = ({ action, category, label, value }): void => {
-  if (!(window as any).gtag) {
+export const event = ({
+  action,
+  category,
+  label,
+  value,
+}: {
+  action: string;
+  category: string;
+  label: string;
+  value: number;
+}): void => {
+  if (!window.gtag) {
     return;
   }
   if (!GA_TRACKING_ID) {
     throw new Error('Please define tracking id with initGtm()');
   }
   try {
-    (window as any).gtag('event', action, {
+    window.gtag('event', action, {
       event_category: category,
       event_label: label,
       value: value,
@@ -49,6 +66,7 @@ export const TagFragment = (): JSX.Element => {
       {/* Global Site Tag (gtag.js) - Google Analytics */}
       <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
       <script
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: standard Google Analytics script
         dangerouslySetInnerHTML={{
           __html: `
 window.dataLayer = window.dataLayer || [];
