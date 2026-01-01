@@ -20,6 +20,13 @@ export { Entity } from 'dynamodb-toolbox';
 
 export * from './entities';
 
+/**
+ * Connects to the DynamoDB table for the specified deployment.
+ *
+ * @param deploymentName - Optional name of the deployment to use. If not provided,
+ *                         uses the deployment specified in environment variables.
+ * @returns A promise that resolves with a DynamoDBClient instance.
+ */
 export const connect = async (deploymentName?: string): Promise<DynamoDBClient> => {
   return await templateConnect({
     goldstackConfig,
@@ -29,12 +36,24 @@ export const connect = async (deploymentName?: string): Promise<DynamoDBClient> 
   });
 };
 
+/**
+ * Parameters for connecting to a DynamoDB table.
+ */
 export interface ConnectTableParams {
+  /** Optional name of the deployment to use. */
   deploymentName?: string;
+  /** Optional DynamoDBDocumentClient to use. */
   documentClient?: DynamoDBDocumentClient;
+  /** Optional DynamoDBClient to use. */
   client?: DynamoDBClient;
 }
 
+/**
+ * Connects to the DynamoDB table and returns a Table instance for data operations.
+ *
+ * @param params - Optional parameters for connecting to the table.
+ * @returns A promise that resolves with a Table instance.
+ */
 export const connectTable = async (params?: ConnectTableParams): Promise<Table> => {
   const tableName = await getTableName(params?.deploymentName);
 
@@ -49,6 +68,14 @@ export const connectTable = async (params?: ConnectTableParams): Promise<Table> 
   return createTable(DynamoDBDocument.from(await connect(params?.deploymentName)), tableName);
 };
 
+/**
+ * Migrates the DynamoDB table down to a specific migration.
+ *
+ * @param migrationName - The name of the migration to roll back to.
+ * @param deploymentName - Optional name of the deployment to use. If not provided,
+ *                         uses the deployment specified in environment variables.
+ * @returns A promise that resolves with a DynamoDBClient instance.
+ */
 export const migrateDownTo = async (
   migrationName: string,
   deploymentName?: string,
@@ -62,19 +89,46 @@ export const migrateDownTo = async (
   });
 };
 
+/**
+ * Starts a local DynamoDB instance for development and testing.
+ *
+ * @param port - Optional port number to start the local DynamoDB on. Defaults to 8000.
+ * @param deploymentName - Optional name of the deployment to use.
+ * @returns A promise that resolves when the local DynamoDB has started.
+ */
 export const startLocalDynamoDB = async (port?: number, deploymentName?: string): Promise<void> => {
   port = port || 8000;
   return await templateStartLocalDynamoDB(goldstackConfig, goldstackSchema, port, deploymentName);
 };
 
+/**
+ * Stops a local DynamoDB instance.
+ *
+ * @param port - Optional port number of the local DynamoDB to stop.
+ * @param deploymentName - Optional name of the deployment to use.
+ * @returns A promise that resolves when the local DynamoDB has stopped.
+ */
 export const stopLocalDynamoDB = async (port?: string, deploymentName?: string): Promise<void> => {
   return await templateStopLocalDynamoDB(goldstackConfig, goldstackSchema, port, deploymentName);
 };
 
+/**
+ * Stops all local DynamoDB instances.
+ *
+ * @param deploymentName - Optional name of the deployment to use.
+ * @returns A promise that resolves when all local DynamoDB instances have stopped.
+ */
 export const stopAllLocalDynamoDB = async (deploymentName?: string): Promise<void> => {
   return await templateStopAllLocalDynamoDB(goldstackConfig, goldstackSchema, deploymentName);
 };
 
+/**
+ * Gets the name of the DynamoDB table for the specified deployment.
+ *
+ * @param deploymentName - Optional name of the deployment to use. If not provided,
+ *                         uses the deployment specified in environment variables.
+ * @returns A promise that resolves with the table name string.
+ */
 export const getTableName = async (deploymentName?: string): Promise<string> => {
   return await templateGetTableName(goldstackConfig, goldstackSchema, deploymentName);
 };

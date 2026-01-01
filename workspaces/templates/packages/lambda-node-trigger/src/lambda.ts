@@ -18,6 +18,13 @@ import goldstackSchema from './../schemas/package.schema.json';
 import { handler as lambdaHandler } from './handler';
 import deployments from './state/deployments.json';
 
+/**
+ * AWS Lambda handler function for processing SQS events or scheduled events.
+ *
+ * @param event - The AWS Lambda event (SQS event or scheduled event).
+ * @param context - The AWS Lambda context object.
+ * @returns A promise that resolves when the event processing is complete.
+ */
 export const handler = async (
   event: ScheduledEvent | SQSEvent,
   context: Context,
@@ -75,6 +82,13 @@ export const getMockedDLQSQS = (): SQSClient => {
   return templateGetMockedDLQSQS(goldstackConfig, messageSendHandler);
 };
 
+/**
+ * Connects to the SQS Dead Letter Queue (DLQ) for the specified deployment.
+ *
+ * @param deploymentName - Optional name of the deployment to use. If not provided,
+ *                         uses the deployment specified in environment variables.
+ * @returns A promise that resolves with an SQSClient connected to the DLQ.
+ */
 export const connectToSQSDLQQueue = async (deploymentName?: string): Promise<SQSClient> => {
   deploymentName = deploymentName || process.env['GOLDSTACK_DEPLOYMENT'];
 
@@ -85,6 +99,13 @@ export const connectToSQSDLQQueue = async (deploymentName?: string): Promise<SQS
   return await templateConnect(goldstackConfig, goldstackSchema, deployments, deploymentName);
 };
 
+/**
+ * Connects to the main SQS queue that triggers this Lambda function.
+ *
+ * @param deploymentName - Optional name of the deployment to use. If not provided,
+ *                         uses the deployment specified in environment variables.
+ * @returns A promise that resolves with an SQSClient connected to the main queue.
+ */
 export const connectToSQSQueue = async (deploymentName?: string): Promise<SQSClient> => {
   deploymentName = deploymentName || process.env['GOLDSTACK_DEPLOYMENT'];
 
