@@ -1,7 +1,7 @@
 import { getEndpoint } from '@goldstack/goldstack-api';
 
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Spinner from 'react-bootstrap/Spinner';
@@ -26,19 +26,18 @@ interface BuildProjectParams {
 }
 
 export const BuildProject = (params: BuildProjectParams): JSX.Element => {
-  let packages = getTemplateData(params.selectedIds);
+  const packages = getTemplateData(params.selectedIds);
   const [selectedPackages, setSelectedPackages] = useState<string[]>([]);
   const [showWarningModal, setShowWarningModal] = useState<boolean>(false);
   useEffect(() => {
     const initSelected: string[] = [];
-    packages = getTemplateData(params.selectedIds);
     packages
       .filter((el) => el.selected)
       .forEach((el) => {
         initSelected.push(el.packageId || 'error id not defined');
       });
     setSelectedPackages(initSelected);
-  }, [params.selectedIds]);
+  }, [packages]);
   const [progressMessage, setProgressMessage] = useState('');
   const router = useRouter();
 
