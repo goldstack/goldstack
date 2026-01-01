@@ -39,7 +39,7 @@ jobs:
           SHORT_TASK=$(printf '%s' "$SHORT_TASK" | tr -d '\r\n' | tr -d '\000-\031' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
 
           # Extract branch name from title if present (e.g., "Task (branch)")
-          if [[ $SHORT_TASK =~ \(([^)]+)\)$ ]]; then
+          if [[ $SHORT_TASK =~ '\(([^)]+)\)$' ]]; then
             BRANCH="${BASH_REMATCH[1]}"
             TASK="${SHORT_TASK% (*)}"
           else
