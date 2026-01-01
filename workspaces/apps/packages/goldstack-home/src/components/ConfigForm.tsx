@@ -1,4 +1,3 @@
-import React from 'react';
 import Form from './Form';
 
 export const ConfigForm = (props: {
@@ -8,7 +7,7 @@ export const ConfigForm = (props: {
   idx: number;
   onChange: (data: any) => void;
 }): JSX.Element => {
-  const onChange = ({ formData, errors }): void => {
+  const onChange = ({ formData }): void => {
     // if (!errors || errors.length === 0) {
     props.onChange(formData);
     // }
