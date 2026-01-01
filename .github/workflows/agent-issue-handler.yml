@@ -43,6 +43,7 @@ jobs:
         env:
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
         shell: bash
         run: |
           set -euo pipefail
@@ -57,9 +58,29 @@ jobs:
           # Ensure the short task is always a single line (safe for commit/PR titles).
           SHORT_TASK=$(printf '%s' "$SHORT_TASK" | tr -d '\r\n' | tr -d '\000-\031' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
 
-          FULL_TASK="${SHORT_TASK}"$'\n\n'"${BODY}"$'\n\n'"Please consult AGENTS.md for project guidelines and coding standards before making changes."
+          # Extract branch name from title if present (e.g., "Task (branch)")
+          if [[ $SHORT_TASK =~ \(([^)]+)\)$ ]]; then
+            BRANCH="${BASH_REMATCH[1]}"
+            TASK="${SHORT_TASK% (*)}"
+          else
+            TASK="$SHORT_TASK"
+            BRANCH=""
+          fi
 
-          printf 'task=%s\n' "$SHORT_TASK" >> "$GITHUB_OUTPUT"
+          # Sanitize branch name
+          BRANCH=$(echo "$BRANCH" | tr -d '[:space:]' | tr -c '[:alnum:]-_' '_')
+
+          # Determine branch name
+          if [ -n "$BRANCH" ]; then
+            BRANCH_NAME="agent-$BRANCH-$ISSUE_NUMBER"
+          else
+            BRANCH_NAME="agent-issue-$ISSUE_NUMBER"
+          fi
+
+          FULL_TASK="${TASK}"$'\n\n'"${BODY}"$'\n\n'"Please consult AGENTS.md for project guidelines and coding standards before making changes."
+
+          printf 'task=%s\n' "$TASK" >> "$GITHUB_OUTPUT"
+          printf 'branch_name=%s\n' "$BRANCH_NAME" >> "$GITHUB_OUTPUT"
 
           # Multiline-safe output.
           {
@@ -80,12 +101,12 @@ jobs:
 
       - name: Create branch and push
         env:
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
           TASK: ${{ steps.issue.outputs.task }}
         shell: bash
         run: |
           set -euo pipefail
-          BRANCH="agent-issue-$ISSUE_NUMBER"
+          BRANCH="$BRANCH_NAME"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
@@ -96,6 +117,7 @@ jobs:
       - name: Create PR
         env:
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           TASK: ${{ steps.issue.outputs.task }}
         shell: bash
@@ -104,5 +126,5 @@ jobs:
           PR_URL=$(gh pr create \
             --title "Agent: $TASK" \
             --body "Closes #$ISSUE_NUMBER" \
-            --head "agent-issue-$ISSUE_NUMBER")
+            --head "$BRANCH_NAME")
           gh issue comment "$ISSUE_NUMBER" --body "🤖 PR created: $PR_URL"
