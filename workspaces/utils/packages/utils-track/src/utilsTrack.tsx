@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
 export let GA_TRACKING_ID: undefined | string = undefined;
 
