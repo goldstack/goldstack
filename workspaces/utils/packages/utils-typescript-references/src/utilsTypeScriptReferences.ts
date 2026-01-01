@@ -1,4 +1,4 @@
-import yargs, { Argv } from 'yargs';
+import yargs from 'yargs';
 import { updatePackageProjectReferences } from './updatePackageProjectReferences';
 import { updateRootProjectReferences } from './updateRootProjectReferences';
 
@@ -10,7 +10,7 @@ interface RunOptions {
   skipRoot: boolean;
 }
 
-export const run = async (args: string[]): Promise<void> => {
+export const run = async (_args: string[]): Promise<void> => {
   const argv = await yargs
     .scriptName('utils-typescript-references')
     .version('0.2.0')
