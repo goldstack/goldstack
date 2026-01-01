@@ -1,9 +1,7 @@
 import * as Fullstory from '@fullstory/browser';
 import { getEndpoint } from '@goldstack/goldstack-api';
 
-import assert from 'assert';
-import Link from 'next/link';
-import React, { useRef, useState } from 'react';
+import { useRef, useState, type MouseEvent } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 
 import { event } from '../lib/ga';
@@ -27,7 +25,7 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
 
   const [progressMessage, setProgressMessage] = useState('');
 
-  const onSubmit = async (evt: any): Promise<void> => {
+  const onSubmit = async (evt: MouseEvent<HTMLButtonElement>): Promise<void> => {
     evt.preventDefault();
     let email: string;
     if (emailInput.current) {
