@@ -13,10 +13,16 @@ jobs:
 
     steps:
       - name: Debug Issue Info
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_USER_LOGIN: ${{ github.event.issue.user.login }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        shell: bash
         run: |
-          echo "Issue Title: ${{ github.event.issue.title }}"
-          echo "Issue User Login: ${{ github.event.issue.user.login }}"
-          echo "Issue Number: ${{ github.event.issue.number }}"
+          set -euo pipefail
+          printf 'Issue Title: %s\n' "$ISSUE_TITLE"
+          printf 'Issue User Login: %s\n' "$ISSUE_USER_LOGIN"
+          printf 'Issue Number: %s\n' "$ISSUE_NUMBER"
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,37 +40,69 @@ jobs:
 
       - name: Extract task from issue
         id: issue
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        shell: bash
         run: |
-          TITLE="${{ github.event.issue.title }}"
-          BODY="${{ github.event.issue.body }}"
-          BODY=$(echo "$BODY" | sed 's|\\|/|g; s|\r$||g' | tr -d '\000-\031' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+          set -euo pipefail
+
+          TITLE="$ISSUE_TITLE"
+          BODY="$ISSUE_BODY"
+
+          # Normalize body AFTER assigning safely from env.
+          BODY=$(printf '%s' "$BODY" | sed 's|\\|/|g; s/\r$//g' | tr -d '\000-\031' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+
           SHORT_TASK="${TITLE#Agent: }"
+          # Ensure the short task is always a single line (safe for commit/PR titles).
+          SHORT_TASK=$(printf '%s' "$SHORT_TASK" | tr -d '\r\n' | tr -d '\000-\031' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+
           FULL_TASK="${SHORT_TASK}"$'\n\n'"${BODY}"$'\n\n'"Please consult AGENTS.md for project guidelines and coding standards before making changes."
-          echo "task=$SHORT_TASK" >> $GITHUB_OUTPUT
-          echo "full_task=$FULL_TASK" >> $GITHUB_OUTPUT
+
+          printf 'task=%s\n' "$SHORT_TASK" >> "$GITHUB_OUTPUT"
+
+          # Multiline-safe output.
+          {
+            echo 'full_task<<EOF'
+            printf '%s\n' "$FULL_TASK"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
 
       - name: Run Cline agent
+        env:
+          FULL_TASK: ${{ steps.issue.outputs.full_task }}
+        shell: bash
         run: |
+          set -euo pipefail
           echo "Running Cline with task:"
-          echo "${{ steps.issue.outputs.full_task }}"
-          cline -y "${{ steps.issue.outputs.full_task }}"
+          printf '%s\n' "$FULL_TASK"
+          cline -y "$FULL_TASK"
 
       - name: Create branch and push
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          TASK: ${{ steps.issue.outputs.task }}
+        shell: bash
         run: |
-          BRANCH="agent-issue-${{ github.event.issue.number }}"
+          set -euo pipefail
+          BRANCH="agent-issue-$ISSUE_NUMBER"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
           git add -A
-          git commit -m "Agent: ${{ steps.issue.outputs.task }}" || exit 0
+          git commit -m "Agent: $TASK" || exit 0
           git push origin "$BRANCH"
 
       - name: Create PR
         env:
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          TASK: ${{ steps.issue.outputs.task }}
+        shell: bash
         run: |
+          set -euo pipefail
           PR_URL=$(gh pr create \
-            --title "Agent: ${{ steps.issue.outputs.task }}" \
-            --body "From issue #$ ${{ github.event.issue.number }}" \
-            --head "agent-issue-${{ github.event.issue.number }}")
-          gh issue comment ${{ github.event.issue.number }} --body "🤖 PR created: $PR_URL"
+            --title "Agent: $TASK" \
+            --body "From issue #$ISSUE_NUMBER" \
+            --head "agent-issue-$ISSUE_NUMBER")
+          gh issue comment "$ISSUE_NUMBER" --body "🤖 PR created: $PR_URL"
