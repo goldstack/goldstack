@@ -10,11 +10,11 @@ import Spinner from 'react-bootstrap/Spinner';
 import ConfigureNavigate from 'src/components/ConfigureNavigate';
 import DynamicConfigForm from 'src/components/DynamicConfigForm';
 import Header from 'src/components/Header';
-import { getConfigureSteps } from 'src/lib/getConfigureSteps';
+import { getConfigureSteps, type DocsData } from 'src/lib/getConfigureSteps';
 import { wireProjectData } from 'src/lib/wireProjectData';
 import useSWR, { mutate } from 'swr';
 
-const fetcher = (url: string): any =>
+const fetcher = (url: string): Promise<unknown> =>
   fetch(url, {
     credentials: 'include',
   }).then((r) => r.json());
@@ -39,19 +39,14 @@ const ConfigureProject = (): JSX.Element => {
   const { id, step, packageId } = router.query;
   // when page changes, trigger save to backend
 
-  if (!id || !step || !packageId) {
-    return (
-      <Header></Header>
-    );
-  }
-
-  const { data, error } = useSWR(`${getEndpoint()}/projects/${id}`, fetcher, {
+  // Hooks must be called unconditionally at the top level
+  const { data, error } = useSWR(id ? `${getEndpoint()}/projects/${id}` : null, fetcher, {
     focusThrottleInterval: 5000,
     // we more or less never want the ui to fetch new versions
     dedupingInterval: 100000,
   });
   const { data: docsData, error: docsError } = useSWR(
-    `${getEndpoint()}/projects/${id}/docs?doc=template-configure`,
+    id ? `${getEndpoint()}/projects/${id}/docs?doc=template-configure` : null,
     fetcher,
     {
       dedupingInterval: 100000,
@@ -61,9 +56,14 @@ const ConfigureProject = (): JSX.Element => {
     if (data) {
       // trigger async remote save
       mutate(`${getEndpoint()}/projects/${id}`, data, false);
-      mutate(`${getEndpoint()}/projects/${id}`, updateProject(data));
+      mutate(`${getEndpoint()}/projects/${id}`, updateProject(data as ProjectData));
     }
   }, [data, id]);
+
+  if (!id || !step || !packageId) {
+    return <Header></Header>;
+  }
+
   if (error) {
     console.error('Cannot load project data');
     console.error(error);
@@ -94,8 +94,11 @@ const ConfigureProject = (): JSX.Element => {
     );
   }
 
-  const projectData: ProjectData = wireProjectData(data);
-  const configureSteps = getConfigureSteps({ ...data, docs: docsData });
+  const projectData: ProjectData = wireProjectData(data as ProjectData);
+  const configureSteps = getConfigureSteps({
+    ...(data as ProjectData),
+    docs: docsData as DocsData[] | undefined,
+  });
   const onChange = (newData: ProjectData): void => {
     // local save
     mutate(`${getEndpoint()}/projects/${id}`, newData, false);
@@ -108,7 +111,7 @@ const ConfigureProject = (): JSX.Element => {
   return (
     <>
       <Header></Header>
-      <main id="content" >
+      <main id="content">
         <Container className="space-1 space-md-2">
           <Row>
             <Col xs={8}>

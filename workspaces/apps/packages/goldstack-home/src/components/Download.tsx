@@ -38,21 +38,21 @@ const DownloadReady = (props: {
   const checkCircle = dataUriToSrc(CheckCircle);
   return (
     <div className="container space-2">
-        <div className="w-md-80 text-center mx-md-auto">
-          <div className={styles.check} dangerouslySetInnerHTML={{ __html: checkCircle }}></div>
-          <div className="mb-5">
-            <h1 className="h2">Project successfully generated</h1>
-            <p>Follow the steps below to setup your project.</p>
-          </div>
+      <div className="w-md-80 text-center mx-md-auto">
+        <div className={styles.check} dangerouslySetInnerHTML={{ __html: checkCircle }}></div>
+        <div className="mb-5">
+          <h1 className="h2">Project successfully generated</h1>
+          <p>Follow the steps below to setup your project.</p>
         </div>
-
-        <DownloadInstructions
-          packageId={props.packageId}
-          downloadUrl={props.downloadUrl}
-          projectId={props.projectId}
-          docLinks={props.docLinks}
-        ></DownloadInstructions>
       </div>
+
+      <DownloadInstructions
+        packageId={props.packageId}
+        downloadUrl={props.downloadUrl}
+        projectId={props.projectId}
+        docLinks={props.docLinks}
+      ></DownloadInstructions>
+    </div>
   );
 };
 

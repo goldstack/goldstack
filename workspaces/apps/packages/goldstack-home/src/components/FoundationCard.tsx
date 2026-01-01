@@ -1,5 +1,3 @@
-
-
 interface FoundationCardProps {
   img: any;
   title: string;

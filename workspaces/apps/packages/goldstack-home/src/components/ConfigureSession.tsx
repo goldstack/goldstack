@@ -37,7 +37,7 @@ const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
     } else {
       email = '';
     }
-    if (evt.target.dataset.email === 'yes' && !email) {
+    if (evt.currentTarget.dataset.email === 'yes' && !email) {
       alert('Please enter an email address or click Proceed without Email.');
       return;
     }
