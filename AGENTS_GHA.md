@@ -11,7 +11,7 @@
 
 ## Every 2-3 commits
 1. Run `date` and check elapsed time
-2. If >25 minutes have passed: commit with message "WIP: further work required", push, then STOP
+2. If >30 minutes have passed: commit with message "WIP: further work required", push, then STOP
 
 ## References
 - Consult AGENTS.md and AGENTS_GHA.md for all actions
