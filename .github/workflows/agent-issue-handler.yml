@@ -12,31 +12,11 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      - name: Debug Issue Info
-        env:
-          ISSUE_TITLE: ${{ github.event.issue.title }}
-          ISSUE_USER_LOGIN: ${{ github.event.issue.user.login }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          printf 'Issue Title: %s\n' "$ISSUE_TITLE"
-          printf 'Issue User Login: %s\n' "$ISSUE_USER_LOGIN"
-          printf 'Issue Number: %s\n' "$ISSUE_NUMBER"
-
       - name: Checkout
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT_TOKEN }}
-
-      - uses: ./.github/actions/goldstack-setup
-
-      - name: Install Cline CLI
-        run: npm install -g cline@1.0.8
-
-      - name: Configure Cline
-        run: |
-          cline auth --provider openrouter --apikey ${{ secrets.OPENROUTER_API_KEY }} --modelid deepseek/deepseek-v3.2
+          fetch-depth: 0
 
       - name: Extract task from issue
         id: issue
@@ -77,7 +57,7 @@ jobs:
             BRANCH_NAME="agent-issue-$ISSUE_NUMBER"
           fi
 
-          FULL_TASK="${TASK}"$'\n\n'"${BODY}"$'\n\n'"Please consult AGENTS.md for project guidelines and coding standards before making changes."
+          FULL_TASK="${TASK}"$'\n\n'"${BODY}"$'\n\n'"Consult AGENTS.md for project guidelines and coding standards before making changes.Create commits with clear messages once a subtask is completed."
 
           printf 'task=%s\n' "$TASK" >> "$GITHUB_OUTPUT"
           printf 'branch_name=%s\n' "$BRANCH_NAME" >> "$GITHUB_OUTPUT"
@@ -89,6 +69,33 @@ jobs:
             echo 'EOF'
           } >> "$GITHUB_OUTPUT"
 
+      - name: Create or checkout branch
+        env:
+          BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git ls-remote --exit-code --heads origin "$BRANCH_NAME" >/dev/null 2>&1; then
+            echo "Branch $BRANCH_NAME exists remotely, checking out..."
+            git fetch origin "$BRANCH_NAME"
+            git checkout "$BRANCH_NAME"
+          else
+            echo "Creating new branch $BRANCH_NAME..."
+            git checkout -b "$BRANCH_NAME"
+          fi
+
+      - uses: ./.github/actions/goldstack-setup
+
+      - name: Install Cline CLI
+        run: npm install -g cline@1.0.8
+
+      - name: Configure Cline
+        run: |
+          cline auth --provider openrouter --apikey ${{ secrets.OPENROUTER_API_KEY }} --modelid deepseek/deepseek-v3.2
+
       - name: Run Cline agent
         env:
           FULL_TASK: ${{ steps.issue.outputs.full_task }}
@@ -99,22 +106,28 @@ jobs:
           printf '%s\n' "$FULL_TASK"
           cline -y "$FULL_TASK"
 
-      - name: Create branch and push
+      - name: Commit and push if changes
+        id: commit
         env:
           BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
           TASK: ${{ steps.issue.outputs.task }}
         shell: bash
         run: |
           set -euo pipefail
-          BRANCH="$BRANCH_NAME"
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$BRANCH"
+
           git add -A
-          git commit -m "Agent: $TASK" || exit 0
-          git push origin "$BRANCH"
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Agent: $TASK"
+            git push origin "$BRANCH_NAME"
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Create PR
+        if: steps.commit.outputs.has_changes == 'true'
         env:
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
           BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
@@ -123,8 +136,26 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          PR_URL=$(gh pr create \
-            --title "Agent: $TASK" \
-            --body "Closes #$ISSUE_NUMBER" \
-            --head "$BRANCH_NAME")
-          gh issue comment "$ISSUE_NUMBER" --body "🤖 PR created: $PR_URL"
+
+          # Check if PR already exists
+          EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --json url --jq '.[0].url' || true)
+
+          if [ -n "$EXISTING_PR" ]; then
+            echo "PR already exists: $EXISTING_PR"
+            gh issue comment "$ISSUE_NUMBER" --body "🤖 Changes pushed to existing PR: $EXISTING_PR"
+          else
+            PR_URL=$(gh pr create \
+              --title "Agent: $TASK" \
+              --body "Closes #$ISSUE_NUMBER" \
+              --head "$BRANCH_NAME")
+            gh issue comment "$ISSUE_NUMBER" --body "🤖 PR created: $PR_URL"
+          fi
+
+      - name: Comment if no changes
+        if: steps.commit.outputs.has_changes == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        shell: bash
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "🤖 Agent ran but made no changes."
