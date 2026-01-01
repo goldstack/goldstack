@@ -37,6 +37,7 @@ jobs:
         run: |
           TITLE="${{ github.event.issue.title }}"
           BODY="${{ github.event.issue.body }}"
+          BODY=$(echo "$BODY" | sed 's|\\|/|g; s|\r$||g' | tr -d '\000-\031' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
           SHORT_TASK="${TITLE#Agent: }"
           FULL_TASK="${SHORT_TASK}"$'\n\n'"${BODY}"$'\n\n'"Please consult AGENTS.md for project guidelines and coding standards before making changes."
           echo "task=$SHORT_TASK" >> $GITHUB_OUTPUT
