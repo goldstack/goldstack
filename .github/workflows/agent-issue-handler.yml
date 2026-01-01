@@ -44,6 +44,8 @@ jobs:
           echo "Running Cline with task: ${{ steps.issue.outputs.task }}"
           cline -y -v "${{ steps.issue.outputs.task }}" <<EOF
           ${{ github.event.issue.body }}
+
+          Please consult AGENTS.md for project guidelines and coding standards before making changes.
           EOF
 
       - name: Create branch and push
