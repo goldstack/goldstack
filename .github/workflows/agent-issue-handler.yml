@@ -141,7 +141,7 @@ jobs:
             echo "has_changes=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Create PR
+      - name: Create or update PR
         if: steps.commit.outputs.has_changes == 'true'
         env:
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
@@ -152,18 +152,52 @@ jobs:
         run: |
           set -euo pipefail
 
+          # Get the last commit message
+          LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+          IS_WIP=false
+          if [[ "$LAST_COMMIT_MESSAGE" == WIP:* ]]; then
+            IS_WIP=true
+          fi
+
           # Check if PR already exists
           EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --json url --jq '.[0].url' || true)
 
           if [ -n "$EXISTING_PR" ]; then
             echo "PR already exists: $EXISTING_PR"
+
+            # Check current draft status
+            CURRENT_IS_DRAFT=$(gh pr view "$EXISTING_PR" --json isDraft --jq '.isDraft')
+
+            # Update draft status based on WIP
+            if [ "$IS_WIP" = "true" ] && [ "$CURRENT_IS_DRAFT" = "false" ]; then
+              gh pr edit "$EXISTING_PR" --draft
+            elif [ "$IS_WIP" = "false" ] && [ "$CURRENT_IS_DRAFT" = "true" ]; then
+              gh pr edit "$EXISTING_PR" --draft=false
+            fi
+
             gh issue comment "$ISSUE_NUMBER" --body "🤖 Changes pushed to existing PR: $EXISTING_PR"
+
+            if [ "$IS_WIP" = "true" ]; then
+              gh issue comment "$ISSUE_NUMBER" --body "🤖 Agent has determined that further work is required"
+            fi
           else
-            PR_URL=$(gh pr create \
-              --title "Agent: $TASK" \
-              --body "Closes #$ISSUE_NUMBER" \
-              --head "$BRANCH_NAME")
+            if [ "$IS_WIP" = "true" ]; then
+              PR_URL=$(gh pr create \
+                --title "Agent: $TASK" \
+                --body "Closes #$ISSUE_NUMBER" \
+                --head "$BRANCH_NAME" \
+                --draft)
+            else
+              PR_URL=$(gh pr create \
+                --title "Agent: $TASK" \
+                --body "Closes #$ISSUE_NUMBER" \
+                --head "$BRANCH_NAME")
+            fi
             gh issue comment "$ISSUE_NUMBER" --body "🤖 PR created: $PR_URL"
+
+            if [ "$IS_WIP" = "true" ]; then
+              gh issue comment "$ISSUE_NUMBER" --body "🤖 Agent has determined that further work is required"
+            fi
           fi
 
       - name: Comment if no changes
