@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT_TOKEN }}
-          fetch-depth: 1 
+          fetch-depth: 1
 
       - name: Extract task from issue
         id: issue
@@ -76,6 +76,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Create or checkout branch
+        id: checkout_branch
         env:
           BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
         shell: bash
@@ -85,12 +86,44 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           if git ls-remote --exit-code --heads origin "$BRANCH_NAME" >/dev/null 2>&1; then
+            echo "new_branch=false" >> "$GITHUB_OUTPUT"
             echo "Branch $BRANCH_NAME exists remotely, checking out..."
             git fetch origin "$BRANCH_NAME"
             git checkout "$BRANCH_NAME"
           else
+            echo "new_branch=true" >> "$GITHUB_OUTPUT"
             echo "Creating new branch $BRANCH_NAME..."
             git checkout -b "$BRANCH_NAME"
+          fi
+
+      - name: Check existing commits on branch
+        id: existing
+        if: steps.checkout_branch.outputs.new_branch == 'false'
+        shell: bash
+        run: |
+          LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
+          echo "existing_commits=true" >> "$GITHUB_OUTPUT"
+          {
+            echo 'last_commit_msg<<EOF'
+            printf '%s\n' "$LAST_COMMIT_MSG"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Prepare task with previous work
+        id: prepare_task
+        env:
+          FULL_TASK: ${{ steps.issue.outputs.full_task }}
+          LAST_COMMIT_MSG: ${{ steps.existing.outputs.last_commit_msg }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -n "$LAST_COMMIT_MSG" ] && [[ "$LAST_COMMIT_MSG" == WIP:* ]]; then
+            UPDATED_TASK="$FULL_TASK"$'\n\nNote: This is a continuation of previous work. The last commit message was:\n'"$LAST_COMMIT_MSG"
+            {
+              echo 'updated_full_task<<EOF'
+              printf '%s\n' "$UPDATED_TASK"
+              echo 'EOF'
+            } >> "$GITHUB_OUTPUT"
           fi
 
       - name: Capture current commit
@@ -111,7 +144,7 @@ jobs:
 
       - name: Run Cline agent
         env:
-          FULL_TASK: ${{ steps.issue.outputs.full_task }}
+          FULL_TASK: ${{ steps.prepare_task.outputs.updated_full_task || steps.issue.outputs.full_task }}
         shell: bash
         run: |
           set -euo pipefail
@@ -168,10 +201,16 @@ jobs:
             # Check current draft status
             CURRENT_IS_DRAFT=$(gh pr view "$EXISTING_PR" --json isDraft --jq '.isDraft')
 
-            # Update draft status based on WIP
-            if [ "$IS_WIP" = "true" ] && [ "$CURRENT_IS_DRAFT" = "false" ]; then
+            # Determine previous WIP status
+            IS_PREV_WIP=false
+            if [ "${{ steps.existing.outputs.existing_commits }}" == "true" ] && [[ "${{ steps.existing.outputs.last_commit_msg }}" == WIP:* ]]; then
+              IS_PREV_WIP=true
+            fi
+
+            # Update draft status based on previous WIP
+            if [ "$IS_PREV_WIP" = "true" ] && [ "$CURRENT_IS_DRAFT" = "false" ]; then
               gh pr edit "$EXISTING_PR" --draft
-            elif [ "$IS_WIP" = "false" ] && [ "$CURRENT_IS_DRAFT" = "true" ]; then
+            elif [ "$IS_PREV_WIP" = "false" ] && [ "$CURRENT_IS_DRAFT" = "true" ]; then
               gh pr edit "$EXISTING_PR" --draft=false
             fi
 
@@ -181,22 +220,24 @@ jobs:
               gh issue comment "$ISSUE_NUMBER" --body "🤖 Agent has determined that further work is required"
             fi
           else
-            if [ "$IS_WIP" = "true" ]; then
-              PR_URL=$(gh pr create \
-                --title "Agent: $TASK" \
-                --body "Closes #$ISSUE_NUMBER" \
-                --head "$BRANCH_NAME" \
-                --draft)
-            else
-              PR_URL=$(gh pr create \
-                --title "Agent: $TASK" \
-                --body "Closes #$ISSUE_NUMBER" \
-                --head "$BRANCH_NAME")
-            fi
+            PR_URL=$(gh pr create \
+              --title "Agent: $TASK" \
+              --body "Closes #$ISSUE_NUMBER" \
+              --head "$BRANCH_NAME" \
+              --draft)
             gh issue comment "$ISSUE_NUMBER" --body "🤖 PR created: $PR_URL"
 
             if [ "$IS_WIP" = "true" ]; then
               gh issue comment "$ISSUE_NUMBER" --body "🤖 Agent has determined that further work is required"
+            fi
+          fi
+
+          # Make PR ready if conditions met
+          if [ "${{ steps.existing.outputs.existing_commits }}" == "true" ] && [[ ! "${{ steps.existing.outputs.last_commit_msg }}" == WIP:* ]]; then
+            if [ -n "$EXISTING_PR" ]; then
+              gh pr ready "$EXISTING_PR"
+            else
+              gh pr ready "$PR_URL"
             fi
           fi
 
