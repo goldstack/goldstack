@@ -3,8 +3,19 @@
 This repository uses:
 
 - Yarn PnP / Berry, with workspaces
+  - NEVER run commands via npx
 - Biome JS for format checking and linting
 - Jests for testing
+
+## Common Package Commands
+
+The following commands should usually be executed on the project root:
+
+- `yarn compile`
+- `yarn format-check`
+- `yarn format`
+- `yarn lint`
+- `yarn lint-fix`
 
 ## Coding
 
@@ -13,6 +24,7 @@ This repository uses:
 - When a new method is imported into a module, always add the import and call of the method in one edit operation.
 - If multiple lines need to be changed in a file, do not use replace in file, instead write the whole file 
 - Define new methods by using function() rather than a new constant.
+- If there are formatting issues, try to fix with `yarn format`
 
 ### Comments
 
