@@ -1,7 +1,5 @@
-import React from 'react';
-
 interface FoundationCardProps {
-  img: any;
+  img: string;
   title: string;
   caption: string;
 }

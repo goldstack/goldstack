@@ -30,7 +30,7 @@ interface TemplateDocsData {
   html: string;
 }
 
-interface DocsData {
+export interface DocsData {
   /* Name of the package */
   package: string;
   docs: TemplateDocsData[];
