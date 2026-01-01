@@ -36,17 +36,17 @@ jobs:
         id: issue
         run: |
           TITLE="${{ github.event.issue.title }}"
-          TASK="${TITLE#Agent: }"
-          echo "task=$TASK" >> $GITHUB_OUTPUT
+          BODY="${{ github.event.issue.body }}"
+          SHORT_TASK="${TITLE#Agent: }"
+          FULL_TASK="${SHORT_TASK}"$'\n\n'"${BODY}"$'\n\n'"Please consult AGENTS.md for project guidelines and coding standards before making changes."
+          echo "task=$SHORT_TASK" >> $GITHUB_OUTPUT
+          echo "full_task=$FULL_TASK" >> $GITHUB_OUTPUT
 
       - name: Run Cline agent
         run: |
-          echo "Running Cline with task: ${{ steps.issue.outputs.task }}"
-          cline -y "${{ steps.issue.outputs.task }}" <<EOF
-          ${{ github.event.issue.body }}
-
-          Please consult AGENTS.md for project guidelines and coding standards before making changes.
-          EOF
+          echo "Running Cline with task:"
+          echo "${{ steps.issue.outputs.full_task }}"
+          cline -y "${{ steps.issue.outputs.full_task }}"
 
       - name: Create branch and push
         run: |
