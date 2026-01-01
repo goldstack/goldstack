@@ -23,6 +23,7 @@ const DynamicConfigForm = (props: {
   const onSubmit = (): void => {
     props.onStepSubmit(props.projectData);
   };
+  // biome-ignore lint/suspicious/noExplicitAny: data shape is determined by JSON schema
   const onChange = (data: any): void => {
     props.onChange(data);
   };
@@ -39,18 +40,20 @@ const DynamicConfigForm = (props: {
         <div
           className="bg-light p-4 mb-4"
           style={{ fontSize: '0.9rem' }}
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted HTML from docs
           dangerouslySetInnerHTML={{ __html: docHtml }}
         ></div>
       )}
       {step.type === 'form' &&
         step.sections.map((section, idx) => {
+          // biome-ignore lint/suspicious/noExplicitAny: data shape is determined by JSON schema
           const onSectionChange = (data: any): void => {
             const newData = section.writeData(props.projectData, data);
             onChange(newData);
           };
           return (
             <ConfigForm
-              key={idx}
+              key={section.title || idx}
               idx={step.idx * 100 + idx}
               schema={section.schema}
               uiSchema={section.uiSchema}
