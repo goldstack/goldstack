@@ -57,7 +57,7 @@ jobs:
             BRANCH_NAME="agent-issue-$ISSUE_NUMBER"
           fi
 
-          FULL_TASK="${TASK}"$'\n\n'"${BODY}"$'\n\n'"Consult AGENTS.md for project guidelines and coding standards before making changes.Create commits with clear messages once a subtask is completed."
+          FULL_TASK="${TASK}"$'\n\n'"${BODY}"$'\n\n'"Consult AGENTS.md for every action you undertake.Create a commit with a clear message once a subtask is completed."
 
           printf 'task=%s\n' "$TASK" >> "$GITHUB_OUTPUT"
           printf 'branch_name=%s\n' "$BRANCH_NAME" >> "$GITHUB_OUTPUT"
