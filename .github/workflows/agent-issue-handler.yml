@@ -126,6 +126,35 @@ jobs:
             } >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Create PR
+        id: create_pr
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          TASK: ${{ steps.issue.outputs.task }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --json url --jq '.[0].url' || true)
+
+          if [ -n "$EXISTING_PR" ]; then
+            echo "PR already exists: $EXISTING_PR"
+            PR_URL="$EXISTING_PR"
+          else
+            PR_URL=$(gh pr create \
+              --title "Agent: $TASK" \
+              --body "Closes #$ISSUE_NUMBER" \
+              --head "$BRANCH_NAME" \
+              --draft)
+            echo "PR created: $PR_URL"
+          fi
+
+          echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
+
+
+
       - name: Capture current commit
         id: current_commit
         shell: bash
@@ -163,6 +192,7 @@ jobs:
         id: commit
         env:
           BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
+          PR_URL: ${{ steps.create_pr.outputs.pr_url }}
         shell: bash
         run: |
           set -euo pipefail
@@ -170,82 +200,24 @@ jobs:
           if [ "${{ steps.current_commit.outputs.current_commit }}" != "${{ steps.new_commit.outputs.new_commit }}" ]; then
             git push origin "$BRANCH_NAME"
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
+
+            # Get the last commit message
+            LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+            IS_WIP=false
+            if [[ "$LAST_COMMIT_MESSAGE" == WIP:* ]]; then
+              IS_WIP=true
+            fi
+
+            gh pr comment "$PR_URL" --body "🤖 Changes pushed"
+
+            if [ "$IS_WIP" = "true" ]; then
+              gh pr comment "$PR_URL" --body "🤖 Agent has determined that further work is required"
+            fi
+            if [ "$IS_WIP" = "false" ]; then
+              gh pr ready "$PR_URL"
+              gh pr comment "$PR_URL" --body "🤖 Determined PR ready for review."
+            fi
           else
             echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            gh pr comment "$PR_URL" --body "🤖 Agent ran but made no changes."
           fi
-
-      - name: Create or update PR
-        if: steps.commit.outputs.has_changes == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
-          BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-          TASK: ${{ steps.issue.outputs.task }}
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          # Get the last commit message
-          LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
-          IS_WIP=false
-          if [[ "$LAST_COMMIT_MESSAGE" == WIP:* ]]; then
-            IS_WIP=true
-          fi
-
-          # Check if PR already exists
-          EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --json url --jq '.[0].url' || true)
-
-          if [ -n "$EXISTING_PR" ]; then
-            echo "PR already exists: $EXISTING_PR"
-
-            # Check current draft status
-            CURRENT_IS_DRAFT=$(gh pr view "$EXISTING_PR" --json isDraft --jq '.isDraft')
-
-            # Determine previous WIP status
-            IS_PREV_WIP=false
-            if [ "${{ steps.existing.outputs.existing_commits }}" == "true" ] && [[ "${{ steps.existing.outputs.last_commit_msg }}" == WIP:* ]]; then
-              IS_PREV_WIP=true
-            fi
-
-            # Update draft status based on previous WIP
-            if [ "$IS_PREV_WIP" = "true" ] && [ "$CURRENT_IS_DRAFT" = "false" ]; then
-              gh pr edit "$EXISTING_PR" --draft
-            elif [ "$IS_PREV_WIP" = "false" ] && [ "$CURRENT_IS_DRAFT" = "true" ]; then
-              gh pr edit "$EXISTING_PR" --draft=false
-            fi
-
-            gh issue comment "$ISSUE_NUMBER" --body "🤖 Changes pushed to existing PR: $EXISTING_PR"
-
-            if [ "$IS_WIP" = "true" ]; then
-              gh issue comment "$ISSUE_NUMBER" --body "🤖 Agent has determined that further work is required"
-            fi
-          else
-            PR_URL=$(gh pr create \
-              --title "Agent: $TASK" \
-              --body "Closes #$ISSUE_NUMBER" \
-              --head "$BRANCH_NAME" \
-              --draft)
-            gh issue comment "$ISSUE_NUMBER" --body "🤖 PR created: $PR_URL"
-
-            if [ "$IS_WIP" = "true" ]; then
-              gh issue comment "$ISSUE_NUMBER" --body "🤖 Agent has determined that further work is required"
-            fi
-          fi
-
-          # Make PR ready if conditions met
-          if [ "${{ steps.existing.outputs.existing_commits }}" == "true" ] && [[ ! "${{ steps.existing.outputs.last_commit_msg }}" == WIP:* ]]; then
-            if [ -n "$EXISTING_PR" ]; then
-              gh pr ready "$EXISTING_PR"
-            else
-              gh pr ready "$PR_URL"
-            fi
-          fi
-
-      - name: Comment if no changes
-        if: steps.commit.outputs.has_changes == 'false'
-        env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-        shell: bash
-        run: |
-          gh issue comment "$ISSUE_NUMBER" --body "🤖 Agent ran but made no changes."
