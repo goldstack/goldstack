@@ -7,7 +7,7 @@ This repository uses:
 - Biome JS for format checking and linting
 - Jests for testing
 
-## Common Package Commands
+## Common Commands
 
 The following commands should usually be executed on the project root:
 
@@ -16,6 +16,7 @@ The following commands should usually be executed on the project root:
 - `yarn format`
 - `yarn lint`
 - `yarn lint-fix`
+- For fixing the linting for a particular file: `yarn biome lint [filePath] --write --unsafe`
 
 ## Coding
 

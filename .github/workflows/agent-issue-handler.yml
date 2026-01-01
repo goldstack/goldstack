@@ -57,7 +57,13 @@ jobs:
             BRANCH_NAME="agent-issue-$ISSUE_NUMBER"
           fi
 
-          FULL_TASK="${TASK}"$'\n\n'"${BODY}"$'\n\n'"Consult AGENTS.md and AGENTS_GHA.md for every step you undertake."
+          AGENTS_GHA_CONTENT=$(cat AGENTS_GHA.md)
+
+          AGENTS_MD_CONTENT=$(cat AGENTS.md)
+
+          INSTRUCTIONS=$'YOU MUST FOLLOW THESE INSTRUCTIONS:\n\nAGENTS_GHA.md:\n'"$AGENTS_GHA_CONTENT"$'\n\nAGENTS.md:\n'"$AGENTS_MD_CONTENT"
+
+          FULL_TASK="${TASK}"$'\n\n'"${BODY}"$'\n\n'"$INSTRUCTIONS"
 
           printf 'task=%s\n' "$TASK" >> "$GITHUB_OUTPUT"
           printf 'branch_name=%s\n' "$BRANCH_NAME" >> "$GITHUB_OUTPUT"
