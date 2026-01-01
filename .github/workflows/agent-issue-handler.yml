@@ -103,6 +103,6 @@ jobs:
           set -euo pipefail
           PR_URL=$(gh pr create \
             --title "Agent: $TASK" \
-            --body "From issue #$ISSUE_NUMBER" \
+            --body "Closes #$ISSUE_NUMBER" \
             --head "agent-issue-$ISSUE_NUMBER")
           gh issue comment "$ISSUE_NUMBER" --body "🤖 PR created: $PR_URL"
