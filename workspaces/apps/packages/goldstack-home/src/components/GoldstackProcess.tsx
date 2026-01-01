@@ -1,9 +1,8 @@
-import React from 'react';
+
 
 const GoldstackProcess = (): JSX.Element => {
   return (
-    <>
-      <div className="container ">
+    <div className="container ">
         <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
           <h2>Build Your Starter Project in Three Simple Steps</h2>
         </div>
@@ -42,7 +41,6 @@ const GoldstackProcess = (): JSX.Element => {
           </li>
         </ul>
       </div>
-    </>
   );
 };
 

@@ -3,7 +3,6 @@ import type { DocLink } from '@goldstack/goldstack-api/dist/src/utils/docLinks';
 import { loadStripe } from '@stripe/stripe-js';
 import assert from 'assert';
 import Head from 'next/head';
-import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Footer from 'src/components/Footer';
@@ -38,8 +37,7 @@ const DownloadReady = (props: {
 }): JSX.Element => {
   const checkCircle = dataUriToSrc(CheckCircle);
   return (
-    <>
-      <div className="container space-2">
+    <div className="container space-2">
         <div className="w-md-80 text-center mx-md-auto">
           <div className={styles.check} dangerouslySetInnerHTML={{ __html: checkCircle }}></div>
           <div className="mb-5">
@@ -55,7 +53,6 @@ const DownloadReady = (props: {
           docLinks={props.docLinks}
         ></DownloadInstructions>
       </div>
-    </>
   );
 };
 
@@ -101,7 +98,7 @@ const Download = (props: DownloadProps): JSX.Element => {
       <div className="container space-2" style={{ minHeight: '1000px' }}>
         <Row>
           <Col lg={12} md={12}>
-            {packageDataError && <p>Something went wrong: {packageDataError + ''}</p>}
+            {packageDataError && <p>Something went wrong: {`${packageDataError}`}</p>}
             {packageData && (
               <DownloadReady
                 projectId={props.projectId}

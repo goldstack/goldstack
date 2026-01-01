@@ -1,7 +1,7 @@
 import { getEndpoint } from '@goldstack/goldstack-api';
 import type { ProjectData } from '@goldstack/project-repository';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -41,9 +41,7 @@ const ConfigureProject = (): JSX.Element => {
 
   if (!id || !step || !packageId) {
     return (
-      <>
-        <Header></Header>
-      </>
+      <Header></Header>
     );
   }
 
@@ -65,7 +63,7 @@ const ConfigureProject = (): JSX.Element => {
       mutate(`${getEndpoint()}/projects/${id}`, data, false);
       mutate(`${getEndpoint()}/projects/${id}`, updateProject(data));
     }
-  }, [step]);
+  }, [data, id]);
   if (error) {
     console.error('Cannot load project data');
     console.error(error);
@@ -102,7 +100,7 @@ const ConfigureProject = (): JSX.Element => {
     // local save
     mutate(`${getEndpoint()}/projects/${id}`, newData, false);
   };
-  const onStepSubmit = async (data: ProjectData): Promise<void> => {
+  const onStepSubmit = async (_data: ProjectData): Promise<void> => {
     // await updateProject(data);
     // mutate(`${process.env.API_URL}projects/${id}`);
   };
@@ -110,7 +108,7 @@ const ConfigureProject = (): JSX.Element => {
   return (
     <>
       <Header></Header>
-      <main id="content" role="main">
+      <main id="content" >
         <Container className="space-1 space-md-2">
           <Row>
             <Col xs={8}>
@@ -120,7 +118,7 @@ const ConfigureProject = (): JSX.Element => {
                     <div className="col">
                       <DynamicConfigForm
                         currentItem={
-                          Array.isArray(step) ? parseInt(step[0]) : parseInt(step as string)
+                          Array.isArray(step) ? parseInt(step[0], 10) : parseInt(step as string, 10)
                         }
                         projectData={projectData}
                         packageId={packageId.toString()}
@@ -145,7 +143,7 @@ const ConfigureProject = (): JSX.Element => {
                     <ConfigureNavigate
                       configureSteps={configureSteps}
                       currentItem={
-                        Array.isArray(step) ? parseInt(step[0]) : parseInt(step as string)
+                        Array.isArray(step) ? parseInt(step[0], 10) : parseInt(step as string, 10)
                       }
                     ></ConfigureNavigate>
                   </div>

@@ -1,13 +1,11 @@
-import React from 'react';
+
 import Icon2 from './../icons/front/icon-2.svg';
 import Icon3 from './../icons/front/icon-3.svg';
-import Icon5 from './../icons/front/icon-5.svg';
 import Icon23 from './../icons/front/icon-23.svg';
 
 const GoldstackBenefits = (): JSX.Element => {
   return (
-    <>
-      <div className="container space-2">
+    <div className="container space-2">
         <div className="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
           <h2 className="h2">Key Benefits</h2>
           <p>
@@ -81,7 +79,6 @@ const GoldstackBenefits = (): JSX.Element => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 

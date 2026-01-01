@@ -1,4 +1,4 @@
-import React from 'react';
+
 import GoldDiamondIcon from './../icons/gold-diamond.svg';
 import styles from './Foundation.module.css';
 
@@ -15,8 +15,7 @@ interface FoundationProps {
 
 const Foundation = (props: FoundationProps): JSX.Element => {
   return (
-    <>
-      <div className="card h-100 transition-3d-hover">
+    <div className="card h-100 transition-3d-hover">
         <div className="card-body">
           <h3 className="mb-3">{props.heading}</h3>
           {props.features.map((feature, index) => (
@@ -38,7 +37,6 @@ const Foundation = (props: FoundationProps): JSX.Element => {
           ))}
         </div>
       </div>
-    </>
   );
 };
 
