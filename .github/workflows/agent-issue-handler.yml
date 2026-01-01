@@ -67,6 +67,7 @@ jobs:
 
           printf 'task=%s\n' "$TASK" >> "$GITHUB_OUTPUT"
           printf 'branch_name=%s\n' "$BRANCH_NAME" >> "$GITHUB_OUTPUT"
+          printf 'base_branch=%s\n' "$BRANCH" >> "$GITHUB_OUTPUT"
 
           # Multiline-safe output.
           {
@@ -133,9 +134,16 @@ jobs:
           BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           TASK: ${{ steps.issue.outputs.task }}
+          BASE_BRANCH: ${{ steps.issue.outputs.base_branch }}
         shell: bash
         run: |
           set -euo pipefail
+
+          if [ -n "$BASE_BRANCH" ]; then
+            BASE_ARG="--base $BASE_BRANCH"
+          else
+            BASE_ARG=""
+          fi
 
           EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --json url --jq '.[0].url' || true)
 
@@ -143,7 +151,7 @@ jobs:
             echo "PR already exists: $EXISTING_PR"
             PR_URL="$EXISTING_PR"
           else
-            PR_URL=$(gh pr create \
+            PR_URL=$(gh pr create $BASE_ARG \
               --title "Agent: $TASK" \
               --body "Closes #$ISSUE_NUMBER" \
               --head "$BRANCH_NAME" \
