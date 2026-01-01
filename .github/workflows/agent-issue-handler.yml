@@ -93,6 +93,13 @@ jobs:
             git checkout -b "$BRANCH_NAME"
           fi
 
+      - name: Capture current commit
+        id: current_commit
+        shell: bash
+        run: |
+          CURRENT_COMMIT=$(git rev-parse HEAD)
+          echo "current_commit=$CURRENT_COMMIT" >> "$GITHUB_OUTPUT"
+
       - uses: ./.github/actions/goldstack-setup
 
       - name: Install Cline CLI
@@ -112,24 +119,26 @@ jobs:
           printf '%s\n' "$FULL_TASK"
           cline -y "$FULL_TASK"
 
-      - name: Commit and push if changes
+      - name: Capture new commit
+        id: new_commit
+        shell: bash
+        run: |
+          NEW_COMMIT=$(git rev-parse HEAD)
+          echo "new_commit=$NEW_COMMIT" >> "$GITHUB_OUTPUT"
+
+      - name: Push changes if any
         id: commit
         env:
           BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
-          TASK: ${{ steps.issue.outputs.task }}
         shell: bash
         run: |
           set -euo pipefail
 
-          git add -A
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-            echo "has_changes=false" >> "$GITHUB_OUTPUT"
-          else
-            git commit -m "Agent: $TASK"
+          if [ "${{ steps.current_commit.outputs.current_commit }}" != "${{ steps.new_commit.outputs.new_commit }}" ]; then
             git push origin "$BRANCH_NAME"
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Create PR
