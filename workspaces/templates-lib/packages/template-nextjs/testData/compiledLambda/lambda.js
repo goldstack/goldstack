@@ -1,5 +1,5 @@
 import manifest from './routes-manifest.json';
-export const handler = (event, context, callback) => {
+export const handler = (event, _context, callback) => {
   const request = event.Records[0].cf.request;
   const dynamicRoutes = manifest.dynamicRoutes;
   const extension = request.uri.indexOf('.') !== -1 ? request.uri.split('.').pop() : '.html';

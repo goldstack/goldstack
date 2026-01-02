@@ -52,7 +52,7 @@ function stringify(obj: unknown) {
   return JSON.stringify(obj);
 }
 
-function checkSumGen(head: string, body: string): string {
+function checkSumGen(_head: string, _body: string): string {
   return 'vCooWRquc3jzGtERLzDmO1JIjdXSwTVKHbA1T34VR0w';
 }
 

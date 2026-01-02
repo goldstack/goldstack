@@ -12,7 +12,7 @@ const treeKillAsync = promisify(treeKill);
 
 // Find an available port
 async function getAvailablePort(startPort = 3100) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve, _reject) => {
     const server = net.createServer();
     server.unref();
     server.on('error', () => {

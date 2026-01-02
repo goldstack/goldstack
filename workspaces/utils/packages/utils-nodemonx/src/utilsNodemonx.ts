@@ -51,7 +51,7 @@ export const run = async (args: string[]): Promise<void> => {
   }
   const config = JSON.parse(read('./.nodemonx.json'));
 
-  watch(watchDir, { recursive: true }, (evt, name) => {
+  watch(watchDir, { recursive: true }, (_evt, name) => {
     // check if in file whitelist
     if (!config.include.find((glob: string) => match([name], glob))) {
       debug('Ignoring changed file since it is not in whitelist: ' + name);

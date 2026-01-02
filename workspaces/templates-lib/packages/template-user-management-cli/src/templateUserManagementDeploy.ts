@@ -9,7 +9,7 @@ import type {
 import { deployFunction } from '@goldstack/utils-aws-lambda';
 
 export const deployCli = async (
-  config: UserManagementConfiguration,
+  _config: UserManagementConfiguration,
   deployment: UserManagementDeployment,
 ): Promise<void> => {
   const deploymentState = readDeploymentState('./', deployment.name);

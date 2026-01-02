@@ -10,7 +10,7 @@ import { generateUserId } from './generateUserId';
 
 const cognitoClient = new CognitoIdentityProviderClient({});
 
-export const handler: PostConfirmationTriggerHandler = async (event, context) => {
+export const handler: PostConfirmationTriggerHandler = async (event, _context) => {
   const userData = {
     id: event.request.userAttributes.sub,
     email: event.request.userAttributes.email,

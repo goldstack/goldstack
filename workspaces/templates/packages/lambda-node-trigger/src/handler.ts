@@ -3,7 +3,7 @@ import { connectToSQSQueue, getSQSQueueName, getSQSQueueUrl } from './lambda';
 
 export const handler = async (
   event: ScheduledEvent | SQSEvent,
-  context: Context,
+  _context: Context,
 ): Promise<void> => {
   // SQS message handling
   if ('Records' in event) {

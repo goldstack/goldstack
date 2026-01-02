@@ -154,7 +154,7 @@ export const rmSafe = async (...files: string[]): Promise<void> => {
   }
 };
 
-export const rm = (options: string, ...files: string[]): void => {
+export const rm = (_options: string, ...files: string[]): void => {
   for (const file of files) {
     rimraf.sync(file);
   }
