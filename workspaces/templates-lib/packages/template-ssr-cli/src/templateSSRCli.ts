@@ -15,7 +15,7 @@ import {
 } from '@goldstack/utils-aws-lambda';
 import { wrapCli } from '@goldstack/utils-cli';
 import { warn } from '@goldstack/utils-log';
-import { buildCli, buildDeployCommands, writePackageConfig } from '@goldstack/utils-package';
+import { writePackageConfig } from '@goldstack/utils-package';
 import { PackageConfig } from '@goldstack/utils-package-config';
 import { pwd } from '@goldstack/utils-sh';
 import { infraCommands } from '@goldstack/utils-terraform';

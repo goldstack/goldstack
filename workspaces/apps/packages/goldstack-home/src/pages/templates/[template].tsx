@@ -1,7 +1,6 @@
 import { allTemplates, type ProjectTemplateProps } from '@goldstack/template-metadata';
 
 import type { GetStaticPaths, GetStaticProps } from 'next';
-import React from 'react';
 import Footer from 'src/components/Footer';
 import Header from 'src/components/Header';
 import Breadcrumb from '../../components/Breadcrumb';

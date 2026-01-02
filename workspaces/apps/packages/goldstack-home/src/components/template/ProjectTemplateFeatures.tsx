@@ -1,5 +1,4 @@
 import type { ShortTemplateFeature } from '@goldstack/template-metadata';
-import React from 'react';
 import { resolveImage } from './imageUtil';
 import styles from './ProjectTemplateFeatures.module.css';
 

@@ -1,4 +1,4 @@
-import { debug, error, info, warn } from '@goldstack/utils-log';
+import { debug, error } from '@goldstack/utils-log';
 import fs from 'fs';
 import { check } from 'tcp-port-used';
 import type { DynamoDBInstance } from './localDynamoDB';

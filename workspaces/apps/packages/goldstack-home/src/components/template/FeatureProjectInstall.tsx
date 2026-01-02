@@ -1,5 +1,3 @@
-import React from 'react';
-
 const FeatureProjectInstall = (props: { projectName: string }): JSX.Element => {
   return (
     <>

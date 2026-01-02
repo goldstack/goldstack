@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { getTemplateData } from 'src/lib/templateData';
 import PackageCard from '../PackageCard';
 

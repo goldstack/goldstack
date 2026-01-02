@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React, { type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -10,7 +10,6 @@ import BuildProject from './../components/BuildProject';
 import Header from './../components/Header';
 import AWSIcon from './../icons/aws.svg';
 import DockerIcon from './../icons/docker.svg';
-import DocusaurusIcon from './../icons/docusaurus.svg';
 import ESLintIcon from './../icons/eslint.svg';
 import JestIcon from './../icons/jestjs.svg';
 import SecurityIcon from './../icons/security.svg';

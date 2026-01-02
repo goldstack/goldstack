@@ -8,7 +8,7 @@ import type { CognitoAccessTokenPayload, CognitoIdTokenPayload } from 'aws-jwt-v
 
 import { getDeploymentName, getDeploymentsOutput } from './userManagementConfig';
 
-import { getLocalUserManager, LocalUserManagerImpl } from './userManagementServerMock';
+import { getLocalUserManager } from './userManagementServerMock';
 
 export interface CognitoManager {
   validate(accessToken: string): Promise<CognitoAccessTokenPayload>;

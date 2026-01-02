@@ -1,5 +1,4 @@
 import type { PackageProps, TemplateFeatureImage } from '@goldstack/template-metadata';
-import React from 'react';
 import DocumentIcon from './../../icons/document.svg';
 import GitHubIcon from './../../icons/github-tile.svg';
 import { resolveImage } from './imageUtil';

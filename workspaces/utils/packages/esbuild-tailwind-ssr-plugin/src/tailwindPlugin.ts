@@ -1,5 +1,5 @@
 import autoprefixer from 'autoprefixer';
-import { OnLoadArgs, OnLoadResult, type Plugin, type PluginBuild } from 'esbuild';
+import { type Plugin, type PluginBuild } from 'esbuild';
 import postcss from 'postcss';
 import type { StaticFileMapperBuild } from 'static-file-mapper-build';
 import tailwindcss from 'tailwindcss';

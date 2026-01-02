@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Modal from 'react-bootstrap/Modal';
 export interface NoModulesAddedModalProps {
   show: boolean;
