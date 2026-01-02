@@ -85,6 +85,7 @@ export function logger(): LoggerInstance {
 }
 
 export const wrapCli = async (func: AsyncFunction<any>): Promise<void> => {
+  // biome-ignore lint/suspicious/noExplicitAny: Function needs to accept any return type
   try {
     await func();
     process.exit(0);
@@ -109,6 +110,7 @@ export const wrapCli = async (func: AsyncFunction<any>): Promise<void> => {
 };
 
 process.on('unhandledRejection', (e: any) => {
+  // biome-ignore lint/suspicious/noExplicitAny: Error handler needs to accept any error type
   if (isDebug) {
     console.log(e);
   }

@@ -25,7 +25,7 @@ export const validateConfig = (
         '',
     );
   };
-  let valid;
+  let valid: boolean | PromiseLike<any>;
   try {
     valid = ajv.validate(schema, config);
   } catch (e) {

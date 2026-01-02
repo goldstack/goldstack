@@ -8,7 +8,7 @@ const isDebug = process.env.GOLDSTACK_DEBUG || process.env.DEBUG;
 
 // included here to avoid circular dependency for log package
 
-const debug = (msg: any): void => {
+const debug = (msg: unknown): void => {
   if (isDebug) {
     console.log(msg);
   }
