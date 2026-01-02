@@ -5,6 +5,7 @@ import { app } from './server';
 
 const server = awsServerlessExpress.createServer(app);
 
-exports.handler = (event: any, context: any): any => {
+exports.handler = (event: any, context: any): void => {
+  // biome-ignore lint/suspicious/noExplicitAny: AWS Lambda event and context types are complex and vary
   awsServerlessExpress.proxy(server, event, context);
 };

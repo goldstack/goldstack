@@ -31,7 +31,9 @@ describe('Goldstack API', () => {
     const session = supertestSession(app, { cookieAccess });
     const sessionRes = await session.post('/sessions').send();
     expect(sessionRes.status).toEqual(200);
-    const cookie = session.cookies.find((cookie: any) => cookie.name === 'userToken');
+    const cookie = session.cookies.find(
+      (cookie: { name: string; domain?: string }) => cookie.name === 'userToken',
+    );
     expect(cookie).toBeDefined();
     // somehow the following requests don't use the cookie unless the domain is set to undefined
     cookie.domain = undefined;
