@@ -37,7 +37,7 @@ const PackageList = (props: PackageListProps): JSX.Element => {
               packageDescription={item.packageDescription}
               icons={item.icons}
               disabled={props.disabled}
-              selected={selectedIds && selectedIds.includes(item.packageId || 'undefined')}
+              selected={selectedIds?.includes(item.packageId || 'undefined')}
               alwaysIncluded={item.alwaysIncluded}
               onChange={(included): void => {
                 if (included) {
