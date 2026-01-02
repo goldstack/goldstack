@@ -127,7 +127,7 @@ export const convertToGatewayEvent = (
       routeKey: params.lambdaConfig.route, // 'ANY /echo',
       stage: '$default',
       time: '31/Dec/2021:01:34:12 +0000',
-      timeEpoch: new Date().getTime(),
+      timeEpoch: Date.now(),
     },
     isBase64Encoded: false,
     body: JSON.stringify(params.req.body),

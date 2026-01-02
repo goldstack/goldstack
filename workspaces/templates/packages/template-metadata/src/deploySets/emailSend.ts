@@ -17,7 +17,7 @@ export const createEmailSendBuildSetConfig = async (): Promise<DeploySetConfig> 
     ],
   };
 
-  const hash = new Date().getTime();
+  const hash = Date.now();
   const setConfig: DeploySetConfig = {
     buildSetName: 'email-send',
     buildTemplates: ['yarn-pnp-monorepo', 'email-send'],

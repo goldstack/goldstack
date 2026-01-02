@@ -17,7 +17,7 @@ export const createServerSideRenderingBuildSetConfig = async (): Promise<DeployS
     ],
   };
 
-  const hash = new Date().getTime();
+  const hash = Date.now();
   const setConfig: DeploySetConfig = {
     buildSetName: 'server-side-rendering',
     buildTemplates: ['yarn-pnp-monorepo', 'server-side-rendering'],

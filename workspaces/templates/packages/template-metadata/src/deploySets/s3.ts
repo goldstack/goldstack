@@ -17,7 +17,7 @@ export const createS3BuildSetConfig = async (): Promise<DeploySetConfig> => {
     ],
   };
 
-  const hash = new Date().getTime();
+  const hash = Date.now();
   const setConfig: DeploySetConfig = {
     buildSetName: 's3',
     buildTemplates: ['yarn-pnp-monorepo', 's3'],
