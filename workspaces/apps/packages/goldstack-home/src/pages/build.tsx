@@ -27,7 +27,7 @@ interface CheckboxProps {
   title: string;
   className?: string;
   element: string;
-  icon: any;
+  icon: string;
   templateLink?: string;
   isAlpha?: boolean;
   disabled: boolean;

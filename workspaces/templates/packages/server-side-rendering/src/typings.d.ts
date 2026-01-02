@@ -4,26 +4,26 @@ declare module '*.css' {
 }
 
 declare module '*.svg' {
-  const content: any;
+  const content: any; // biome-ignore lint/suspicious/noExplicitAny: SVG module type is dynamic
   export default content;
 }
 
 declare module '*.png' {
-  const content: any;
+  const content: any; // biome-ignore lint/suspicious/noExplicitAny: PNG module type is dynamic
   export default content;
 }
 
 declare module '*.jpg' {
-  const content: any;
+  const content: any; // biome-ignore lint/suspicious/noExplicitAny: JPG module type is dynamic
   export default content;
 }
 
 declare module '*.jpeg' {
-  const content: any;
+  const content: any; // biome-ignore lint/suspicious/noExplicitAny: JPEG module type is dynamic
   export default content;
 }
 
 declare module '*.gif' {
-  const content: any;
+  const content: any; // biome-ignore lint/suspicious/noExplicitAny: GIF module type is dynamic
   export default content;
 }
