@@ -22,7 +22,7 @@ export const handler = async (
     console.log(`This is a scheduled event from ${time}`);
   }
 
-  const queue = await connectToSQSQueue();
+  const _queue = await connectToSQSQueue();
   console.log('QueueName: ' + (await getSQSQueueName()));
   console.log('Queue URL: ' + (await getSQSQueueUrl()));
 };

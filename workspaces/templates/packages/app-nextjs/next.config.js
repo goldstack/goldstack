@@ -42,7 +42,7 @@ const nextConfig = {
 
 const plugins = [];
 
-module.exports = (_phase, { defaultConfig }) => {
+module.exports = (_phase, { defaultConfig: _defaultConfig }) => {
   return plugins.reduce(
     (acc, plugin) => {
       if (Array.isArray(plugin)) {

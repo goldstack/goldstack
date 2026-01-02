@@ -18,7 +18,7 @@ export const assertDocker = (): void => {
 
   try {
     exec('docker version', { silent: true });
-  } catch (e) {
+  } catch (_e) {
     throw new Error('Docker must be running. Please start the docker service.');
   }
 };

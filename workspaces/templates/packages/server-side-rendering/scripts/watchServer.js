@@ -38,7 +38,7 @@ async function startServer() {
         restartScript();
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ status: 'restarting' }));
-      } catch (e) {
+      } catch (_e) {
         res.writeHead(400, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: 'Invalid JSON' }));
       }
@@ -63,7 +63,7 @@ async function killProcess(proc) {
   try {
     // Try graceful shutdown first
     await treeKillAsync(proc.pid);
-  } catch (err) {
+  } catch (_err) {
     console.log('Error during graceful shutdown, force killing...');
     try {
       // Force kill if graceful shutdown fails

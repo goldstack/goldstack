@@ -10,7 +10,7 @@ interface CreatePackageParams {
 }
 
 const copyFromLocal = async (params: CreatePackageParams, path: string): Promise<void> => {
-  const templateConfig = readTemplateConfigFromFile(path + '/template.json');
+  const _templateConfig = readTemplateConfigFromFile(path + '/template.json');
 
   const installFolder = params.installFolder;
 

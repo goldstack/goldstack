@@ -70,7 +70,7 @@ export async function operationWithRedirect(args: {
         accessToken: token.accessToken,
         idToken: token.idToken,
       };
-    } catch (e) {
+    } catch (_e) {
       // if there is an error, we better discard our refresh token, it could be expired
       setRefreshTokenStorage(undefined);
       // then we proceed with the redirect to login

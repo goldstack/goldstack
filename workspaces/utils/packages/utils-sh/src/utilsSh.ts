@@ -293,7 +293,7 @@ const tryRead = (path: string): string | undefined => {
   let buffer;
   try {
     buffer = fs.readFileSync(path, 'utf8');
-  } catch (ex) {}
+  } catch (_ex) {}
   return buffer?.toString();
 };
 

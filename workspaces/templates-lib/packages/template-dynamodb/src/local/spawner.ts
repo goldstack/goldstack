@@ -48,7 +48,7 @@ async function tryJavaSpawn(options: SpawnOptions): Promise<DynamoDBInstance | n
   if (javaViable) {
     try {
       await execAsync('java -version');
-    } catch (e) {
+    } catch (_e) {
       warn(
         "'java' command is available but it does not work. This is common on never versions of Mac OS X without Java installed.\n" +
           'To use Java, please install it.',

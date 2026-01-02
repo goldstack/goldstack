@@ -20,11 +20,6 @@ import VSCodeIcon from './../icons/vscode.svg';
 import YarnIcon from './../icons/yarn.svg';
 import { getPackageIds } from './../lib/stackParamUtils';
 
-interface HeadingProps {
-  caption: string;
-  learnMoreLink: string;
-}
-
 const BasicsTitle = styled.span`
   // margin-top: 0.28rem;
 `;

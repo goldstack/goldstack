@@ -107,6 +107,6 @@ export const register = (): void => {
     exts: ['.css'],
   });
 
-  const tsConfig = {};
+  const _tsConfig = {};
   // swcRegister({ ...tsConfig });
 };
