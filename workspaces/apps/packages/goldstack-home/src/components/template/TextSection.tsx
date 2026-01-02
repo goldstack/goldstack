@@ -1,5 +1,4 @@
 import type { TextSectionProps } from '@goldstack/template-metadata';
-import React from 'react';
 import DesktopComputerImg from 'src/img/desktop_computer.jpg';
 import MeetingImg from 'src/img/meeting.jpg';
 import TabletImg from 'src/img/tablet.jpg';

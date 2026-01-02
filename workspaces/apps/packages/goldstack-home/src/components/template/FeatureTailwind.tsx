@@ -1,5 +1,3 @@
-import React from 'react';
-
 const FeatureTailwind = (): JSX.Element => {
   return (
     <div className="card bg-navy mb-5 w-md-80 w-lg-50 mx-md-auto text-left">

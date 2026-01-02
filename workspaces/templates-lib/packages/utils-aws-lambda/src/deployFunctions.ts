@@ -5,7 +5,6 @@ import { mkdir } from '@goldstack/utils-sh';
 import path from 'path';
 import { getOutDirForLambda } from './buildFunctions';
 import { deployFunction } from './deployFunction';
-import { readLambdaConfig } from './generate/collectLambdasFromFiles';
 import { generateFunctionName } from './generate/generateFunctionName';
 import type { LambdaConfig } from './types/LambdaConfig';
 import type { LambdaApiDeploymentConfiguration } from './types/LambdaDeploymentConfiguration';

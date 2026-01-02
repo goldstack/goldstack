@@ -2,7 +2,6 @@ import { debug } from '@goldstack/utils-log';
 import type { PackageProjectConfiguration } from '@goldstack/utils-project';
 import { mkdir, rm } from '@goldstack/utils-sh';
 import extract from 'extract-zip';
-import { readdirSync } from 'fs';
 import path from 'path';
 import {
   assert,

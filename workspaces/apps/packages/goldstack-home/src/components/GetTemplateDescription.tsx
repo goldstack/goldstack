@@ -1,4 +1,3 @@
-import React from 'react';
 import { dataUriToSrc } from 'src/utils/utils';
 import styled from 'styled-components';
 import CheckCircle from './../icons/font-awesome/solid/check-circle.svg';

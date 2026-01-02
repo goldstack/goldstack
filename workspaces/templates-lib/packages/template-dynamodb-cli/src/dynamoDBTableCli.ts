@@ -1,6 +1,5 @@
 import type { DynamoDBContext } from '@goldstack/template-dynamodb';
 import { connect, deleteTable, migrateDownTo } from '@goldstack/template-dynamodb';
-import { info } from '@goldstack/utils-log';
 import { read } from '@goldstack/utils-sh';
 import type { InputMigrations } from 'umzug/lib/types';
 

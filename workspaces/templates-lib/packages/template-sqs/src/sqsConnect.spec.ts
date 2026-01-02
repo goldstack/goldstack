@@ -1,6 +1,5 @@
 import { SendMessageCommand, type SendMessageRequest } from '@aws-sdk/client-sqs';
 import {
-  connect,
   getMockedDLQSQS,
   getMockedSQS,
   getSentMessageRequests,
