@@ -52,7 +52,7 @@ jobs:
 
           # Determine branch name
           if [ -n "$BRANCH" ]; then
-            BRANCH_NAME="agent-$BRANCH-$ISSUE_NUMBER"
+            BRANCH_NAME="$BRANCH-issue-$ISSUE_NUMBER"
           else
             BRANCH_NAME="agent-issue-$ISSUE_NUMBER"
           fi
@@ -127,41 +127,6 @@ jobs:
             } >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Create PR
-        id: create_pr
-        env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
-          BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-          TASK: ${{ steps.issue.outputs.task }}
-          BASE_BRANCH: ${{ steps.issue.outputs.base_branch }}
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          if [ -n "$BASE_BRANCH" ]; then
-            BASE_ARG="--base $BASE_BRANCH"
-          else
-            BASE_ARG=""
-          fi
-
-          EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --json url --jq '.[0].url' || true)
-
-          if [ -n "$EXISTING_PR" ]; then
-            echo "PR already exists: $EXISTING_PR"
-            PR_URL="$EXISTING_PR"
-          else
-            PR_URL=$(gh pr create $BASE_ARG \
-              --title "Agent: $TASK" \
-              --body "Closes #$ISSUE_NUMBER" \
-              --head "$BRANCH_NAME" \
-              --draft)
-            echo "PR created: $PR_URL"
-          fi
-
-          echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
-
-
 
       - name: Capture current commit
         id: current_commit
@@ -199,15 +164,36 @@ jobs:
       - name: Push changes if any
         id: commit
         env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
           BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
-          PR_URL: ${{ steps.create_pr.outputs.pr_url }}
+          TASK: ${{ steps.issue.outputs.task }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          BASE_BRANCH: ${{ steps.issue.outputs.base_branch }}
         shell: bash
         run: |
           set -euo pipefail
 
+          # Check for existing PR
+          EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --json url --jq '.[0].url' || true)
+
+          if [ -n "$EXISTING_PR" ]; then
+            PR_URL="$EXISTING_PR"
+          fi
+
+          if [ -n "$BASE_BRANCH" ]; then
+            BASE_ARG="--base $BASE_BRANCH"
+          else
+            BASE_ARG=""
+          fi
+
           if [ "${{ steps.current_commit.outputs.current_commit }}" != "${{ steps.new_commit.outputs.new_commit }}" ]; then
             git push origin "$BRANCH_NAME"
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
+
+            if [ -z "$EXISTING_PR" ]; then
+              PR_URL=$(gh pr create $BASE_ARG --title "Agent: $TASK" --body "Closes #$ISSUE_NUMBER" --head "$BRANCH_NAME" --draft)
+              echo "PR created: $PR_URL"
+            fi
 
             # Get the last commit message
             LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
@@ -227,5 +213,7 @@ jobs:
             fi
           else
             echo "has_changes=false" >> "$GITHUB_OUTPUT"
-            gh pr comment "$PR_URL" --body "🤖 Agent ran but made no changes."
+            if [ -n "$PR_URL" ]; then
+              gh pr comment "$PR_URL" --body "🤖 Agent ran but made no changes."
+            fi
           fi
