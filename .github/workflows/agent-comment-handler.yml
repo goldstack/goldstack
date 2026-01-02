@@ -22,3 +22,4 @@ jobs:
         with:
           issue_number: ${{ github.event.issue.number }}
           token: ${{ secrets.PAT_TOKEN }}
+          openrouter_api_key: ${{ secrets.OPENROUTER_API_KEY }}

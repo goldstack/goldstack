@@ -8,6 +8,9 @@ inputs:
   token:
     description: 'GitHub token for operations'
     required: true
+  openrouter_api_key:
+    description: 'OpenRouter API key for Cline'
+    required: true
 
 runs:
   using: 'composite'
@@ -129,11 +132,13 @@ runs:
     - uses: ./.github/actions/goldstack-setup
 
     - name: Install Cline CLI
+      shell: bash
       run: npm install -g cline@1.0.8
 
     - name: Configure Cline
+      shell: bash
       run: |
-        cline auth --provider openrouter --apikey ${{ secrets.OPENROUTER_API_KEY }} --modelid deepseek/deepseek-v3.2
+        cline auth --provider openrouter --apikey ${{ inputs.openrouter_api_key }} --modelid deepseek/deepseek-v3.2
 
     - name: Run Cline agent
       env:
