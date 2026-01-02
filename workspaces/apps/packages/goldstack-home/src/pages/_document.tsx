@@ -6,17 +6,23 @@ import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
 class MyDocument extends Document {
+  // biome-ignore lint/suspicious/noExplicitAny: Next.js Document.getStaticProps returns complex type
   static async getStaticProps(ctx: DocumentContext): Promise<any> {
+    // biome-ignore lint/suspicious/noExplicitAny: ServerStyleSheet type assertion required for styled-components
     const sheet = new ServerStyleSheet() as any;
     const originalRenderPage = ctx.renderPage;
 
     try {
+      // biome-ignore lint/suspicious/noExplicitAny: renderPage returns complex type
       ctx.renderPage = (): any =>
         originalRenderPage({
           enhanceApp:
-            (App: any) =>
-            (props: any): JSX.Element =>
-              sheet.collectStyles(<App {...props} />) as any,
+            // biome-ignore lint/suspicious/noExplicitAny: App component type varies
+              (App: any) =>
+              // biome-ignore lint/suspicious/noExplicitAny: props type varies
+              (props: any): JSX.Element =>
+                // biome-ignore lint/suspicious/noExplicitAny: styled-components collectStyles returns any
+                sheet.collectStyles(<App {...props} />) as any,
         });
 
       const initialProps = await Document.getInitialProps(ctx);

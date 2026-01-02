@@ -1,8 +1,10 @@
 import Form from './Form';
 
 export const ConfigForm = (props: {
-  schema: any; // biome-ignore lint/suspicious/noExplicitAny: JSON schema type is complex and varies
-  uiSchema: any; // biome-ignore lint/suspicious/noExplicitAny: UI schema type is complex and varies
+  // biome-ignore lint/suspicious/noExplicitAny: JSON schema type is complex and varies
+  schema: any;
+  // biome-ignore lint/suspicious/noExplicitAny: UI schema type is complex and varies
+  uiSchema: any;
   data: unknown;
   idx: number;
   onChange: (data: unknown) => void;

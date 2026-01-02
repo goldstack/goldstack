@@ -42,8 +42,8 @@ const ProjectTemplateSidebar = (props: ProjectTemplateSidebarProps): JSX.Element
                 className="btn btn-sm btn-block btn-white transition-3d-hover"
                 href={props.boilerplateLink}
               >
-                <img src={GitHubIcon as any} style={{ width: '1rem' }}></img> View Boilerplate{' '}
                 {/* biome-ignore lint/suspicious/noExplicitAny: SVG import requires type assertion */}
+                <img src={GitHubIcon as any} style={{ width: '1rem' }}></img> View Boilerplate{' '}
               </a>
             )}
           </div>
@@ -90,7 +90,8 @@ const ProjectTemplateSidebar = (props: ProjectTemplateSidebarProps): JSX.Element
                   >
                     <img
                       className={`fas fa-home nav-icon ${styles['menulinks-link-nav-icon']}`}
-                      src={DocumentIcon as any} // biome-ignore lint/suspicious/noExplicitAny: SVG import requires type assertion
+                      // biome-ignore lint/suspicious/noExplicitAny: SVG import requires type assertion
+                      src={DocumentIcon as any}
                     ></img>
                     {packageData.title}
                   </a>
@@ -110,7 +111,8 @@ const ProjectTemplateSidebar = (props: ProjectTemplateSidebarProps): JSX.Element
                   >
                     <img
                       className={`fas fa-home nav-icon ${styles['menulinks-link-nav-icon']}`}
-                      src={GitHubIcon as any} // biome-ignore lint/suspicious/noExplicitAny: SVG import requires type assertion
+                      // biome-ignore lint/suspicious/noExplicitAny: SVG import requires type assertion
+                      src={GitHubIcon as any}
                     ></img>
                     {packageData.title}
                   </a>

@@ -26,6 +26,7 @@ const BootstrapApp = ({ Component, pageProps }): JSX.Element => {
 
   // see https://medium.com/frontend-digest/using-nextjs-with-google-analytics-and-typescript-620ba2359dea
   useEffect(() => {
+    // biome-ignore lint/suspicious/noExplicitAny: Function type varies based on environment
     let handleRouteChange: any;
     if (process.env.GOLDSTACK_DEPLOYMENT === 'prod') {
       handleRouteChange = (url): void => {
@@ -44,6 +45,7 @@ const BootstrapApp = ({ Component, pageProps }): JSX.Element => {
   }, [router.events]);
 
   // see https://github.com/styled-components/styled-components/issues/3731
+  // biome-ignore lint/suspicious/noExplicitAny: ThemeProvider type assertion required for Next.js compatibility
   const ThemeProviderPatched = ThemeProvider as any;
   return (
     <ThemeProviderPatched theme={theme}>
