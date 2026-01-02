@@ -13,7 +13,7 @@ const Posts = (props: { posts: string[] }): JSX.Element => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const handler: SSRHandler = async (event, context) => {
+export const handler: SSRHandler = async (event, _context) => {
   return renderPage({
     component: Posts,
     appendToHead: '<title>Posts</title>',

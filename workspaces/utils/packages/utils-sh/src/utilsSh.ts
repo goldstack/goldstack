@@ -154,7 +154,7 @@ export const rmSafe = async (...files: string[]): Promise<void> => {
   }
 };
 
-export const rm = (options: string, ...files: string[]): void => {
+export const rm = (_options: string, ...files: string[]): void => {
   for (const file of files) {
     rimraf.sync(file);
   }
@@ -293,7 +293,7 @@ const tryRead = (path: string): string | undefined => {
   let buffer;
   try {
     buffer = fs.readFileSync(path, 'utf8');
-  } catch (ex) {}
+  } catch (_ex) {}
   return buffer?.toString();
 };
 

@@ -3,7 +3,7 @@ import { connectToSQSQueue, getSQSQueueName, getSQSQueueUrl } from './lambda';
 
 export const handler = async (
   event: ScheduledEvent | SQSEvent,
-  context: Context,
+  _context: Context,
 ): Promise<void> => {
   // SQS message handling
   if ('Records' in event) {
@@ -22,7 +22,7 @@ export const handler = async (
     console.log(`This is a scheduled event from ${time}`);
   }
 
-  const queue = await connectToSQSQueue();
+  const _queue = await connectToSQSQueue();
   console.log('QueueName: ' + (await getSQSQueueName()));
   console.log('Queue URL: ' + (await getSQSQueueUrl()));
 };

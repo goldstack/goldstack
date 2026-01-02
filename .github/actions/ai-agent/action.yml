@@ -5,8 +5,11 @@ inputs:
   issue_number:
     description: 'Issue number to process'
     required: true
-  token:
+  github_token:
     description: 'GitHub token for operations'
+    required: true
+  openrouter_api_key:
+    description: 'OpenRouter API key for Cline'
     required: true
 
 runs:
@@ -15,6 +18,7 @@ runs:
     - name: Extract task from issue
       id: issue
       env:
+        GH_TOKEN: ${{ inputs.github_token }}
         ISSUE_NUMBER: ${{ inputs.issue_number }}
       shell: bash
       run: |
@@ -129,11 +133,13 @@ runs:
     - uses: ./.github/actions/goldstack-setup
 
     - name: Install Cline CLI
+      shell: bash
       run: npm install -g cline@1.0.8
 
     - name: Configure Cline
+      shell: bash
       run: |
-        cline auth --provider openrouter --apikey ${{ secrets.OPENROUTER_API_KEY }} --modelid deepseek/deepseek-v3.2
+        cline auth --provider openrouter --apikey ${{ inputs.openrouter_api_key }} --modelid deepseek/deepseek-v3.2
 
     - name: Run Cline agent
       env:
@@ -155,8 +161,8 @@ runs:
     - name: Push changes if any
       id: commit
       env:
-        GH_TOKEN: ${{ inputs.token }}
-        GITHUB_TOKEN: ${{ inputs.token }}
+        GH_TOKEN: ${{ inputs.github_token }}
+        GITHUB_TOKEN: ${{ inputs.github_token }}
         BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
         TASK: ${{ steps.issue.outputs.task }}
         ISSUE_NUMBER: ${{ inputs.issue_number }}

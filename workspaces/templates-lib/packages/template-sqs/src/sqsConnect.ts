@@ -114,7 +114,7 @@ const getPackageConfigAndDeployment = (
 export const connect = async (
   goldstackConfig: any,
   packageSchema: any,
-  deploymentsData: any,
+  _deploymentsData: any,
   deploymentName?: string,
 ): Promise<SQSClient> => {
   const { deployment } = getPackageConfigAndDeployment(
@@ -170,8 +170,8 @@ const getDeploymentData = (deploymentsData: any, deploymentName: string): any =>
  * @returns {Promise<string>} The name of the SQS queue.
  */
 export const getSQSQueueName = async (
-  goldstackConfig: any,
-  packageSchema: any,
+  _goldstackConfig: any,
+  _packageSchema: any,
   deploymentsData: any,
   deploymentName?: string,
 ): Promise<string> => {
@@ -195,7 +195,7 @@ export const getSQSQueueName = async (
  */
 export const getSQSQueueUrl = async (
   goldstackConfig: any,
-  packageSchema: any,
+  _packageSchema: any,
   deploymentsData: any,
   deploymentName?: string,
 ): Promise<string> => {
@@ -218,8 +218,8 @@ export const getSQSQueueUrl = async (
  * @returns {Promise<string>} The name of the SQS DLQ queue.
  */
 export const getSQSDLQQueueName = async (
-  goldstackConfig: any,
-  packageSchema: any,
+  _goldstackConfig: any,
+  _packageSchema: any,
   deploymentsData: any,
   deploymentName?: string,
 ): Promise<string> => {
@@ -243,7 +243,7 @@ export const getSQSDLQQueueName = async (
  */
 export const getSQSDLQQueueUrl = async (
   goldstackConfig: any,
-  packageSchema: any,
+  _packageSchema: any,
   deploymentsData: any,
   deploymentName?: string,
 ): Promise<string> => {

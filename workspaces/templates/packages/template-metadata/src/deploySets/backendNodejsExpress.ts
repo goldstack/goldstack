@@ -23,7 +23,7 @@ export const createBackendNodejsExpressBuildSetConfig = async (): Promise<Deploy
     ],
   };
 
-  const hash = new Date().getTime();
+  const hash = Date.now();
   const setConfig: DeploySetConfig = {
     buildSetName: 'backend-nodejs-express',
     buildTemplates: ['yarn-pnp-monorepo', 's3', 'lambda-express'],

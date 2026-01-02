@@ -22,4 +22,5 @@ jobs:
       - uses: ./.github/actions/ai-agent
         with:
           issue_number: ${{ github.event.issue.number }}
-          token: ${{ secrets.PAT_TOKEN }}
+          github_token: ${{ secrets.PAT_TOKEN }}
+          openrouter_api_key: ${{ secrets.OPENROUTER_API_KEY }}

@@ -2,7 +2,7 @@ require('source-map-support').install();
 
 import type { PreSignUpTriggerHandler } from 'aws-lambda';
 
-export const handler: PreSignUpTriggerHandler = async (event, context) => {
+export const handler: PreSignUpTriggerHandler = async (event, _context) => {
   const userData = {
     id: event.request.userAttributes.sub,
     email: event.request.userAttributes.email,

@@ -13,7 +13,7 @@ export interface DeployFunctionParams {
 }
 
 export const deployFunction = async (params: DeployFunctionParams): Promise<any> => {
-  const targetArchive = params.targetArchiveName || `lambda-${new Date().getTime()}.zip`;
+  const targetArchive = params.targetArchiveName || `lambda-${Date.now()}.zip`;
 
   await rmSafe(targetArchive);
   // debug(

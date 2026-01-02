@@ -7,7 +7,7 @@ const ABSOLUTE_URL = /^(https?:\/\/|\/\/)/i;
 // The headers will be updated to include a link to their hash
 const HEADINGS = ['h2', 'h3', 'h4', 'h5', 'h6'];
 
-export default function rehypeDocs({ filePath, tag, processor }) {
+export default function rehypeDocs({ filePath: _filePath, tag: _tag, processor: _processor }) {
   const slugger = new GithubSlugger();
   const anchorSlugger = new GithubSlugger();
 

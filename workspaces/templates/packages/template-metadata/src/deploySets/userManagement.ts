@@ -17,7 +17,7 @@ export const createUserManagementBuildSetConfig = async (): Promise<DeploySetCon
     ],
   };
 
-  const hash = new Date().getTime();
+  const hash = Date.now();
   const setConfig: DeploySetConfig = {
     buildSetName: 'user-management',
     buildTemplates: ['yarn-pnp-monorepo', 'user-management'],

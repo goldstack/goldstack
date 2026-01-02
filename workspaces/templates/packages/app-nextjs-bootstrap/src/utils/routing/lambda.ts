@@ -1,6 +1,6 @@
 import manifest from './routes-manifest.json';
 
-export const handler = (event: any, context: any, callback: any): void => {
+export const handler = (event: any, _context: any, callback: any): void => {
   const request = event.Records[0].cf.request;
 
   const dynamicRoutes: any = manifest.dynamicRoutes;

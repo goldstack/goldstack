@@ -16,7 +16,7 @@ githubSchema.attributes['*'].push('className');
 
 const handlers = {
   // Add a className to inlineCode so we can differentiate between it and code fragments
-  inlineCode(h, node) {
+  inlineCode(_h, node) {
     return {
       ...node,
       type: 'element',

@@ -109,7 +109,7 @@ async function waitForLambdaVersion(
           setTimeout(() => resolve(), retryDelayMs);
         });
       }
-    } catch (error) {
+    } catch (_error) {
       // Version might not exist yet, continue retrying
       counter++;
       if (counter < maxRetries) {
