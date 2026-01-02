@@ -8,7 +8,7 @@
 ## For every completed step
 1. Make the fix
 2. Run `yarn format && yarn lint && yarn compile` in project root
-3. Fix any remaining formatting, linting (error level only, biome option `--diagnostic-level=error`) or compilation issues
+3. Fix any remaining formatting, linting (error level only, biome option `--diagnostic-level=error`) or compilation issues introduced by your changes
 4. Create a commit with a clear message
 5. Push to remote immediately
 6. Run `date` and check elapsed time

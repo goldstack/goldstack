@@ -1,0 +1,211 @@
+name: 'AI Agent Action'
+description: 'Runs AI agent for issue tasks'
+
+inputs:
+  issue_number:
+    description: 'Issue number to process'
+    required: true
+  token:
+    description: 'GitHub token for operations'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Extract task from issue
+      id: issue
+      env:
+        ISSUE_NUMBER: ${{ inputs.issue_number }}
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        # Fetch issue data
+        ISSUE_DATA=$(gh issue view "$ISSUE_NUMBER" --json title,body)
+        TITLE=$(echo "$ISSUE_DATA" | jq -r '.title')
+        BODY=$(echo "$ISSUE_DATA" | jq -r '.body')
+
+        # Normalize body
+        BODY=$(printf '%s' "$BODY" | sed 's|\\|/|g; s/\r$//g' | tr -d '\000-\031' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+
+        SHORT_TASK="${TITLE#Agent: }"
+        # Ensure single line
+        SHORT_TASK=$(printf '%s' "$SHORT_TASK" | tr -d '\r\n' | tr -d '\000-\031' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+        # Extract branch name from title
+        branch_regex='\(([^)]+)\)$'
+        if [[ $SHORT_TASK =~ $branch_regex ]]; then
+          BRANCH="${BASH_REMATCH[1]}"
+          TASK="${SHORT_TASK% (*)}"
+        else
+          TASK="$SHORT_TASK"
+          BRANCH=""
+        fi
+
+        # Sanitize branch
+        BRANCH=$(echo "$BRANCH" | tr -d '[:space:]' | tr -c '[:alnum:]-_' '_')
+
+        # Determine branch name
+        if [ -n "$BRANCH" ]; then
+          BRANCH_NAME="$BRANCH-issue-$ISSUE_NUMBER"
+        else
+          BRANCH_NAME="agent-issue-$ISSUE_NUMBER"
+        fi
+
+        AGENTS_GHA_CONTENT=$(cat AGENTS_GHA.md)
+        AGENTS_MD_CONTENT=$(cat AGENTS.md)
+        INSTRUCTIONS=$'YOU MUST FOLLOW THESE INSTRUCTIONS:\n\nAGENTS_GHA.md:\n'"$AGENTS_GHA_CONTENT"$'\n\nAGENTS.md:\n'"$AGENTS_MD_CONTENT"
+
+        FULL_TASK="${TASK}"$'\n\n'"${BODY}"$'\n\n'"$INSTRUCTIONS"
+
+        printf 'task=%s\n' "$TASK" >> "$GITHUB_OUTPUT"
+        printf 'branch_name=%s\n' "$BRANCH_NAME" >> "$GITHUB_OUTPUT"
+        printf 'base_branch=%s\n' "$BRANCH" >> "$GITHUB_OUTPUT"
+
+        # Multiline full_task
+        {
+          echo 'full_task<<EOF'
+          printf '%s\n' "$FULL_TASK"
+          echo 'EOF'
+        } >> "$GITHUB_OUTPUT"
+
+    - name: Create or checkout branch
+      id: checkout_branch
+      env:
+        BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
+      shell: bash
+      run: |
+        set -euo pipefail
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+        if git ls-remote --exit-code --heads origin "$BRANCH_NAME" >/dev/null 2>&1; then
+          echo "new_branch=false" >> "$GITHUB_OUTPUT"
+          echo "Branch $BRANCH_NAME exists remotely, checking out..."
+          git fetch origin "$BRANCH_NAME"
+          git checkout "$BRANCH_NAME"
+        else
+          echo "new_branch=true" >> "$GITHUB_OUTPUT"
+          echo "Creating new branch $BRANCH_NAME..."
+          git checkout -b "$BRANCH_NAME"
+        fi
+
+    - name: Check existing commits on branch
+      id: existing
+      if: steps.checkout_branch.outputs.new_branch == 'false'
+      shell: bash
+      run: |
+        LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
+        echo "existing_commits=true" >> "$GITHUB_OUTPUT"
+        {
+          echo 'last_commit_msg<<EOF'
+          printf '%s\n' "$LAST_COMMIT_MSG"
+          echo 'EOF'
+        } >> "$GITHUB_OUTPUT"
+
+    - name: Prepare task with previous work
+      id: prepare_task
+      env:
+        FULL_TASK: ${{ steps.issue.outputs.full_task }}
+        LAST_COMMIT_MSG: ${{ steps.existing.outputs.last_commit_msg }}
+      shell: bash
+      run: |
+        set -euo pipefail
+        if [ -n "$LAST_COMMIT_MSG" ] && [[ "$LAST_COMMIT_MSG" == WIP:* ]]; then
+          UPDATED_TASK="$FULL_TASK"$'\n\nNote: This is a continuation of previous work. The last commit message was:\n'"$LAST_COMMIT_MSG"
+          {
+            echo 'updated_full_task<<EOF'
+            printf '%s\n' "$UPDATED_TASK"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Capture current commit
+      id: current_commit
+      shell: bash
+      run: |
+        CURRENT_COMMIT=$(git rev-parse HEAD)
+        echo "current_commit=$CURRENT_COMMIT" >> "$GITHUB_OUTPUT"
+
+    - uses: ./.github/actions/goldstack-setup
+
+    - name: Install Cline CLI
+      run: npm install -g cline@1.0.8
+
+    - name: Configure Cline
+      run: |
+        cline auth --provider openrouter --apikey ${{ secrets.OPENROUTER_API_KEY }} --modelid deepseek/deepseek-v3.2
+
+    - name: Run Cline agent
+      env:
+        FULL_TASK: ${{ steps.prepare_task.outputs.updated_full_task || steps.issue.outputs.full_task }}
+      shell: bash
+      run: |
+        set -euo pipefail
+        echo "Running Cline with task:"
+        printf '%s\n' "$FULL_TASK"
+        cline -y "$FULL_TASK"
+
+    - name: Capture new commit
+      id: new_commit
+      shell: bash
+      run: |
+        NEW_COMMIT=$(git rev-parse HEAD)
+        echo "new_commit=$NEW_COMMIT" >> "$GITHUB_OUTPUT"
+
+    - name: Push changes if any
+      id: commit
+      env:
+        GH_TOKEN: ${{ inputs.token }}
+        GITHUB_TOKEN: ${{ inputs.token }}
+        BRANCH_NAME: ${{ steps.issue.outputs.branch_name }}
+        TASK: ${{ steps.issue.outputs.task }}
+        ISSUE_NUMBER: ${{ inputs.issue_number }}
+        BASE_BRANCH: ${{ steps.issue.outputs.base_branch }}
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        # Check existing PR
+        EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --json url --jq '.[0].url' || true)
+
+        if [ -n "$EXISTING_PR" ]; then
+          PR_URL="$EXISTING_PR"
+        fi
+
+        if [ -n "$BASE_BRANCH" ]; then
+          BASE_ARG="--base $BASE_BRANCH"
+        else
+          BASE_ARG=""
+        fi
+
+        if [ "${{ steps.current_commit.outputs.current_commit }}" != "${{ steps.new_commit.outputs.new_commit }}" ]; then
+          git push origin "$BRANCH_NAME"
+          echo "has_changes=true" >> "$GITHUB_OUTPUT"
+
+          if [ -z "$EXISTING_PR" ]; then
+            PR_URL=$(gh pr create $BASE_ARG --title "Agent: $TASK" --body "Closes #$ISSUE_NUMBER" --head "$BRANCH_NAME" --draft)
+            echo "PR created: $PR_URL"
+          fi
+
+          # Last commit message
+          LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+          IS_WIP=false
+          if [[ "$LAST_COMMIT_MESSAGE" == WIP:* ]]; then
+            IS_WIP=true
+          fi
+
+          gh pr comment "$PR_URL" --body "🤖 Changes pushed"
+
+          if [ "$IS_WIP" = "true" ]; then
+            gh pr comment "$PR_URL" --body "🤖 Agent has determined that further work is required"
+          fi
+          if [ "$IS_WIP" = "false" ]; then
+            gh pr ready "$PR_URL"
+            gh pr comment "$PR_URL" --body "🤖 Determined PR ready for review."
+          fi
+        else
+          echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          if [ -n "$PR_URL" ]; then
+            gh pr comment "$PR_URL" --body "🤖 Agent ran but made no changes."
+          fi
+        fi
