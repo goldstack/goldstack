@@ -2,20 +2,26 @@
 
 import { initGtm, TagFragment } from '@goldstack/utils-track';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
+import type { DocumentContext, DocumentInitialProps } from 'next/document';
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
 class MyDocument extends Document {
-  static async getStaticProps(ctx: any): Promise<any> {
+  static async getStaticProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
+    // biome-ignore lint/suspicious/noExplicitAny: styled-components type issue
     const sheet = new ServerStyleSheet() as any;
     const originalRenderPage = ctx.renderPage;
     try {
+      // biome-ignore lint/suspicious/noExplicitAny: Next.js renderPage type complexity
       ctx.renderPage = (): any =>
         originalRenderPage({
           enhanceApp:
-            (App: any) =>
-            (props: any): JSX.Element =>
-              sheet.collectStyles(<App {...props} />) as any,
+            // biome-ignore lint/suspicious/noExplicitAny: styled-components enhancement type
+              (App: any) =>
+              // biome-ignore lint/suspicious/noExplicitAny: props type unknown
+              (props: any): JSX.Element =>
+                // biome-ignore lint/suspicious/noExplicitAny: styled-components type issue
+                sheet.collectStyles(<App {...props} />) as any,
         });
       const initialProps = await Document.getInitialProps(ctx);
       return {

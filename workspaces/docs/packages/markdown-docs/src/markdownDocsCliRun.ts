@@ -4,7 +4,7 @@ import yargs from 'yargs';
 import { generateDocs } from './generateDocs';
 
 export const run = async (): Promise<void> => {
-  await wrapCli(async (): Promise<any> => {
+  await wrapCli(async (): Promise<void> => {
     const argv = await yargs
       .demandCommand(1)
       .usage('Usage: $0 <command> [options]')
@@ -29,8 +29,8 @@ export const run = async (): Promise<void> => {
 
     if (argv._[0] === 'generate-docs') {
       await generateDocs({
-        source: argv.source as any,
-        destination: argv.destination as any,
+        source: argv.source as string,
+        destination: argv.destination as string,
       });
       return;
     }

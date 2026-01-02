@@ -5852,6 +5852,7 @@ const RAW_RUNTIME_STATE =
           ["@testing-library/dom", "npm:10.4.1"],\
           ["@testing-library/jest-dom", "npm:6.9.1"],\
           ["@testing-library/react", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:16.3.1"],\
+          ["@types/aws-lambda", "npm:8.10.159"],\
           ["@types/cheerio", "npm:0.22.35"],\
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
@@ -12357,6 +12358,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-aws-lambda-npm-8.10.147-4e6dba6123-c80df3be4e.zip/node_modules/@types/aws-lambda/",\
         "packageDependencies": [\
           ["@types/aws-lambda", "npm:8.10.147"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:8.10.159", {\
+        "packageLocation": "./.yarn/cache/@types-aws-lambda-npm-8.10.159-f62c888ff7-3fb4d2f561.zip/node_modules/@types/aws-lambda/",\
+        "packageDependencies": [\
+          ["@types/aws-lambda", "npm:8.10.159"]\
         ],\
         "linkType": "HARD"\
       }],\

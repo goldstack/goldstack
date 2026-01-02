@@ -1,13 +1,25 @@
+import type { CloudFrontRequestEvent, Context, CloudFrontRequestCallback } from 'aws-lambda';
 import manifest from './routes-manifest.json';
+
+interface DynamicRoute {
+  page: string;
+  regex: string;
+  routeKeys?: Record<string, string>;
+  namedRegex?: string;
+}
 
 // import nextConfig from './../../../next.config.js';
 
-export const handler = (event: any, context: any, callback: any): void => {
+export const handler = (
+  event: CloudFrontRequestEvent,
+  context: Context,
+  callback: CloudFrontRequestCallback,
+): void => {
   const request = event.Records[0].cf.request;
 
-  const dynamicRoutes: any = manifest.dynamicRoutes;
+  const dynamicRoutes: DynamicRoute[] = manifest.dynamicRoutes;
 
-  const extension = request.uri.indexOf('.') !== -1 ? request.uri.split('.').pop() : '.html';
+  const extension = request.uri.indexOf('.') !== -1 ? (request.uri.split('.').pop() as string) : '.html';
 
   for (const route of dynamicRoutes) {
     if (new RegExp(route.regex).test(request.uri)) {

@@ -5,7 +5,7 @@ import yargs from 'yargs';
 import { getDocsDir, resolveMarkdown, transpile } from './utilsDocsCli';
 
 export const run = async (): Promise<void> => {
-  await wrapCli(async (): Promise<any> => {
+  await wrapCli(async (): Promise<void> => {
     const argv = await yargs
       .demandCommand(1)
       .usage('Usage: $0 <command> [options]')
@@ -87,8 +87,8 @@ export const run = async (): Promise<void> => {
 
     if (argv._[0] === 'generate-markdown-doc') {
       // const docsDir = getDocsDir();
-      const result = await resolveMarkdown(argv.path as any);
-      write(result, argv.dest as any);
+      const result = await resolveMarkdown(argv.path as string);
+      write(result, argv.dest as string);
       return;
     }
 
