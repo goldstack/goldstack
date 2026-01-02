@@ -18,8 +18,10 @@ export const getSignedUrl = async <
   InputType extends InputTypesUnion,
   OutputType extends MetadataBearer = MetadataBearer,
 >(
-  client: Client<any, InputTypesUnion, MetadataBearer, any>, // biome-ignore lint/suspicious/noExplicitAny: AWS SDK client type parameters are complex
-  command: Command<InputType, OutputType, any, InputTypesUnion, MetadataBearer>, // biome-ignore lint/suspicious/noExplicitAny: AWS SDK command type parameters are complex
+  // biome-ignore lint/suspicious/noExplicitAny: AWS SDK client type parameters are complex
+  client: Client<any, InputTypesUnion, MetadataBearer, any>,
+  // biome-ignore lint/suspicious/noExplicitAny: AWS SDK command type parameters are complex
+  command: Command<InputType, OutputType, any, InputTypesUnion, MetadataBearer>,
   options: RequestPresigningArguments = {},
 ): Promise<string> => {
   return templateGetSignedUrl(client, command, options);
