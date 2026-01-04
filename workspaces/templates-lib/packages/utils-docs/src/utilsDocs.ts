@@ -9,7 +9,8 @@ export { resolveMarkdown } from './resolveMarkdown';
 
 export interface RenderPageResult {
   html: string;
-  data: any; // biome-ignore lint/suspicious/noExplicitAny: Gray matter data type is arbitrary
+  // biome-ignore lint/suspicious/noExplicitAny: Gray matter data type is arbitrary
+  data: any;
 }
 
 export const renderPage = async (filePath: string): Promise<RenderPageResult> => {
