@@ -7,9 +7,10 @@ import unified from 'unified';
 import visit from 'unist-util-visit';
 
 function fileToMarkdownTree(filePath: string): any {
+  // biome-ignore lint/suspicious/noExplicitAny: Complex unified node type
   const data = matter(read(filePath)).content;
   const tree = unified()
-    .use(markdown as any)
+    .use(markdown as any) // biome-ignore lint/suspicious/noExplicitAny: remark-parse type mismatch
     .parse(data);
 
   return rehypeDocs({ filePath })(tree);

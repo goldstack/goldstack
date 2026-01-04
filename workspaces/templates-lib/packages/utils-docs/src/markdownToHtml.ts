@@ -35,9 +35,9 @@ const handlers = {
 export async function markdownToHtml(filePath, tag, md): Promise<string> {
   try {
     // Init the processor with our custom plugin
-    let processor: any;
+    let processor: any; // biome-ignore lint/suspicious/noExplicitAny: Unified processor type complex
     processor = unified()
-      .use(markdown as any)
+      .use(markdown as any) // biome-ignore lint/suspicious/noExplicitAny: remark-parse type mismatch
       .use(rehypeMarkdown, { filePath, tag, processor: () => processor })
       .use(remarkToRehype, { handlers, allowDangerousHTML: true })
       // Add custom HTML found in the markdown file to the AST
@@ -52,7 +52,7 @@ export async function markdownToHtml(filePath, tag, md): Promise<string> {
     const file = await processor.process(md);
 
     // Replace non-breaking spaces (char code 160) with normal spaces to avoid style issues
-    return (file.contents as any).replace(/\xA0/g, ' ');
+    return (file.contents as string).replace(/\xA0/g, ' ');
   } catch (error) {
     console.error(`Markdown to HTML error: ${error}`);
     throw error;

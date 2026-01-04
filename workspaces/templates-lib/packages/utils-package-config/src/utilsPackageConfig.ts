@@ -6,13 +6,13 @@ import { read } from '@goldstack/utils-sh';
 import fs from 'fs';
 
 interface PackageConfigConstructorParams {
-  packageSchema?: any;
+  packageSchema?: any; // biome-ignore lint/suspicious/noExplicitAny: JSON schema type is dynamic
   goldstackJson?: Package;
   packagePath?: string;
 }
 
 export class PackageConfig<PackageType extends Package, DeploymentType extends Deployment> {
-  packageSchema: any;
+  packageSchema: any; // biome-ignore lint/suspicious/noExplicitAny: JSON schema type is dynamic
   goldstackJson: PackageType;
 
   constructor(params: PackageConfigConstructorParams) {
@@ -32,6 +32,7 @@ export class PackageConfig<PackageType extends Package, DeploymentType extends D
   }
 
   getPackageSchema(): any {
+    // biome-ignore lint/suspicious/noExplicitAny: JSON schema type is dynamic
     return this.packageSchema;
   }
   getConfig(): PackageType {

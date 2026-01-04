@@ -9,9 +9,9 @@ import rehypeMarkdown from './rehypeMarkdownToMarkdown';
 
 export async function resolveMarkdown(filePath: string): Promise<string> {
   try {
-    let tree: any;
+    let tree: any; // biome-ignore lint/suspicious/noExplicitAny: Unified node type complex
     tree = unified()
-      .use(markdown as any)
+      .use(markdown as any) // biome-ignore lint/suspicious/noExplicitAny: remark-parse type mismatch
       // .use(rehypeMarkdown, { filePath })
       .parse(matter(read(filePath)).content);
     tree = rehypeMarkdown({ filePath })(tree);
@@ -22,7 +22,7 @@ export async function resolveMarkdown(filePath: string): Promise<string> {
     });
 
     // Replace non-breaking spaces (char code 160) with normal spaces to avoid style issues
-    return (file as any).replace(/\xA0/g, ' ');
+    return (file as string).replace(/\xA0/g, ' ');
   } catch (error) {
     console.error(`Markdown to Markdown error: ${error}`);
     throw error;

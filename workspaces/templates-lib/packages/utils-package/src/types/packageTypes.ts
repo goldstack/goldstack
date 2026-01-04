@@ -28,7 +28,7 @@ export type Name = string;
  * @title Configuration
  */
 export interface PackageConfiguration {
-  [propName: string]: any;
+  [propName: string]: any; // biome-ignore lint/suspicious/noExplicitAny: Generic configuration interface
 }
 
 /**
