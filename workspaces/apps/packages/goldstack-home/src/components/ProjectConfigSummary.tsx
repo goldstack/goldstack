@@ -28,7 +28,14 @@ const ValidationResult = (props: { result: StepValidation }): JSX.Element => {
   );
 };
 
-const buildPackage = async (packageId: string, data: ProjectData): Promise<any> => {
+interface BuildPackageResponse {
+  packageId: string;
+}
+
+const buildPackage = async (
+  packageId: string,
+  data: ProjectData,
+): Promise<BuildPackageResponse> => {
   const packageRes = await fetch(
     `${getEndpoint()}/projects/${data.projectId}/packages/${packageId}`,
     {

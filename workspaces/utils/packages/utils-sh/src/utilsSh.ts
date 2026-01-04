@@ -290,7 +290,7 @@ const read = (path: string): string => {
 };
 
 const tryRead = (path: string): string | undefined => {
-  let buffer;
+  let buffer: string | undefined;
   try {
     buffer = fs.readFileSync(path, 'utf8');
   } catch (_ex) {}

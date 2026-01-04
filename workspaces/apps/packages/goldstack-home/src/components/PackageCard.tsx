@@ -9,8 +9,7 @@ import type { PackageFeatureData } from './PackageList';
 
 interface PackageCardProps {
   packageName: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  icons: any[];
+  icons: string[];
   selected: boolean;
   disabled?: boolean;
   onChange?(included: boolean): void;

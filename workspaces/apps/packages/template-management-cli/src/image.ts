@@ -21,7 +21,7 @@ interface RunParams {
   deploymentName: string;
   command: string[];
 
-  env: any;
+  env: Array<{ name: string; value: string }>;
 }
 
 export const run = async (params: RunParams): Promise<StartTaskResult> => {

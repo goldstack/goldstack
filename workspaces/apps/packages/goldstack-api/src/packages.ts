@@ -17,14 +17,14 @@ const router = Router({
   mergeParams: true,
 });
 
-function sortKeys(obj: any): any {
+function sortKeys(obj: Record<string, unknown>): Record<string, unknown> {
   return sortPackageJson(obj);
 }
 
 const writePackage = async (params: {
   projectId: string;
   packageId: string;
-  userToken: any;
+  userToken: string;
   projectData: ProjectData;
   res: Response;
 }): Promise<void> => {

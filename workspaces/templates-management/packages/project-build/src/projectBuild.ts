@@ -41,12 +41,14 @@ export const assertTemplateReferenceVersion = async (
 };
 
 export function assert(condition: any, msg?: string): asserts condition {
+  // biome-ignore lint/suspicious/noExplicitAny: Assertion function accepts any condition
   if (!condition) {
     throw new AssertionError({ message: msg });
   }
 }
 
 function sortKeys(obj: any): any {
+  // biome-ignore lint/suspicious/noExplicitAny: Generic utility function for sorting package.json
   return sortPackageJson(obj);
 }
 

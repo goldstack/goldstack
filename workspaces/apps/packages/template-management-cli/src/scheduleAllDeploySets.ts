@@ -1,7 +1,14 @@
 import { getAllBuildSets } from '@goldstack/template-metadata';
 import { start } from './image';
 
-export const scheduleAllDeploySets = async (argv: any): Promise<void> => {
+export interface ScheduleArgs {
+  deployment: string;
+  repo: string;
+  emailResultsTo?: string;
+  skipTests?: string;
+}
+
+export const scheduleAllDeploySets = async (argv: ScheduleArgs): Promise<void> => {
   const sets = await getAllBuildSets();
 
   for (const set of sets) {

@@ -10,7 +10,7 @@ export interface PackageListItem {
   packageId?: string;
   selected: boolean;
   packageDescription: string | JSX.Element;
-  icons: any[];
+  icons: string[];
   features: PackageFeatureData[];
 }
 

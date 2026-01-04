@@ -1,8 +1,9 @@
 import goldstackConfig from './../goldstack.json';
+import type { Server } from 'http';
 
 let testServerPort: null | number = null;
 
-let testServer: any = null;
+let testServer: Server | null = null;
 
 export const startTestServer = async (port: number): Promise<void> => {
   // The below is preventing webpack from bundling up the server - it is only required for local tests.
@@ -14,6 +15,10 @@ export const startTestServer = async (port: number): Promise<void> => {
 
 export const stopTestServer = async (): Promise<void> => {
   return new Promise<void>((resolve, reject) => {
+    if (!testServer) {
+      resolve();
+      return;
+    }
     testServer.close((err) => {
       if (err) reject(err);
       resolve();

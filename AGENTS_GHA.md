@@ -9,10 +9,10 @@
 1. Make the fix
 2. Run `yarn format && yarn lint && yarn compile` in project root
 3. Fix any remaining formatting, linting (error level only, biome option `--diagnostic-level=error`) or compilation issues introduced by your changes
-4. Create a commit with a clear message
+4. Create a commit with a clear message, start the message with "WIP:" if further work is required
 5. Push to remote immediately
 6. Run `date` and check elapsed time
-7. If >30 minutes have passed: commit with message "WIP: further work required", push, then STOP
+7. If >30 minutes have passed, stop work.
 
 ## References
 - Consult AGENTS.md and AGENTS_GHA.md for all actions

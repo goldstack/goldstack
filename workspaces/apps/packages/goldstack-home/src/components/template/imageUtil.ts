@@ -19,6 +19,7 @@ import TypeScriptIcon from './../../icons/typescript.svg';
 import VSCodeIcon from './../../icons/vscode.svg';
 import YarnIcon from './../../icons/yarn.svg';
 
+// biome-ignore lint/suspicious/noExplicitAny: SVG imports have type any due to module declaration
 export const resolveImage = (image: TemplateFeatureImage): any => {
   if (image.indexOf('http') === 0) {
     return image;

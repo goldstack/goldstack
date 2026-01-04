@@ -1,8 +1,16 @@
 import manifest from './routes-manifest.json';
 
-export const handler = (event: any, _context: any, callback: any): void => {
+export const handler = (
+  // biome-ignore lint/suspicious/noExplicitAny: AWS Lambda event type is complex
+  event: any,
+  // biome-ignore lint/suspicious/noExplicitAny: AWS Lambda context type is complex
+  _context: any,
+  // biome-ignore lint/suspicious/noExplicitAny: AWS Lambda callback type is complex
+  callback: any,
+): void => {
   const request = event.Records[0].cf.request;
 
+  // biome-ignore lint/suspicious/noExplicitAny: manifest structure is dynamic
   const dynamicRoutes: any = manifest.dynamicRoutes;
 
   const extension = request.uri.indexOf('.') !== -1 ? request.uri.split('.').pop() : '.html';

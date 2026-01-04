@@ -9,7 +9,12 @@ import GetTemplateDescription from 'src/components/GetTemplateDescription';
 import Header from 'src/components/Header';
 import useSWR from 'swr';
 
-const fetcher = (url: string): any =>
+interface SessionData {
+  paymentReceived?: boolean;
+  stripeId?: string;
+}
+
+const fetcher = (url: string): Promise<SessionData> =>
   fetch(url, {
     credentials: 'include',
   }).then((r) => r.json());

@@ -6,6 +6,14 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import Docs from './../../components/Docs';
 import paths from './../../data/docs/paths.json';
 
+interface PageData {
+  html: string;
+  data: {
+    title: string;
+    // other fields may exist but are not used here
+  };
+}
+
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [
@@ -81,13 +89,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   redirects.forEach((redirect) => {
     path = path.replace(redirect.source, redirect.destination);
   });
-  let pageData: any;
+  let pageData: PageData | null = null;
   let toc: Heading[];
 
   const filePath = pwd() + '/src/data/docs/' + path + '/index.json';
   console.debug(`Reading documentation file from ${filePath}`);
   if (fs.existsSync(filePath)) {
-    pageData = JSON.parse(read(filePath));
+    pageData = JSON.parse(read(filePath)) as PageData;
     const $ = cheerio.load(pageData.html);
     toc = generateToc($);
   } else {

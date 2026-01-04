@@ -27,7 +27,7 @@ const BasicsImg = styled.img`
   height: 28px;
 `;
 const Item = (props: {
-  icon: any;
+  icon: string;
   index: number;
   children?: ReactNode;
   title?: string;

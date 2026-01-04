@@ -8,9 +8,13 @@ import projectFormUiSchema from 'src/lib/schemas/projectFormUi';
 
 export interface ConfigureStepSection {
   title?: string;
+  // biome-ignore lint/suspicious/noExplicitAny: JSON schema type is complex and varies
   schema?: any;
+  // biome-ignore lint/suspicious/noExplicitAny: UI schema type is complex and varies
   uiSchema: any;
+  // biome-ignore lint/suspicious/noExplicitAny: Return type varies based on schema
   getData(projectData: ProjectData): any;
+  // biome-ignore lint/suspicious/noExplicitAny: Input type varies based on schema
   writeData(projectData: ProjectData, newData: any): ProjectData;
 }
 
@@ -52,6 +56,7 @@ export const getConfigureSteps = (params: ConfigureStepParams): ConfigureStep[] 
         {
           schema: projectFormSchema,
           uiSchema: projectFormUiSchema,
+          // biome-ignore lint/suspicious/noExplicitAny: Return type varies based on schema
           getData: (projectData: ProjectData): any => {
             const awsUser = projectData.awsUsers[0].config as AWSAPIKeyUser;
             return {
@@ -61,6 +66,7 @@ export const getConfigureSteps = (params: ConfigureStepParams): ConfigureStep[] 
               awsRegion: awsUser.awsDefaultRegion,
             };
           },
+          // biome-ignore lint/suspicious/noExplicitAny: Input type varies based on schema
           writeData: (projectData: ProjectData, newData: any): ProjectData => {
             const newProjectData: ProjectData = JSON.parse(JSON.stringify(projectData));
             newProjectData.project.projectName = newData.projectName;
@@ -90,10 +96,12 @@ export const getConfigureSteps = (params: ConfigureStepParams): ConfigureStep[] 
     const deploymentConfigSection = {
       schema: config.deploymentConfigSchema,
       uiSchema: {},
+      // biome-ignore lint/suspicious/noExplicitAny: Return type varies based on schema
       getData: (projectData: ProjectData): any => {
         const data = projectData.packageConfigs[idx].package.deployments[0].configuration;
         return data;
       },
+      // biome-ignore lint/suspicious/noExplicitAny: Input type varies based on schema
       writeData: (projectData: ProjectData, newData: any): ProjectData => {
         const newProjectData = JSON.parse(JSON.stringify(projectData));
         newProjectData.packageConfigs[idx].package.deployments[0].configuration = {
@@ -110,10 +118,12 @@ export const getConfigureSteps = (params: ConfigureStepParams): ConfigureStep[] 
       sections.push({
         schema: config.packageConfigSchema,
         uiSchema: {},
+        // biome-ignore lint/suspicious/noExplicitAny: Return type varies based on schema
         getData: (projectData): any => {
           const data = projectData.packageConfigs[idx].package.configuration;
           return data;
         },
+        // biome-ignore lint/suspicious/noExplicitAny: Input type varies based on schema
         writeData: (projectData: ProjectData, newData: any): ProjectData => {
           const newProjectData = JSON.parse(JSON.stringify(projectData));
           newProjectData.packageConfigs[idx].package.configuration = {
@@ -149,6 +159,7 @@ export const getConfigureSteps = (params: ConfigureStepParams): ConfigureStep[] 
               'ui:widget': 'password',
             },
           },
+          // biome-ignore lint/suspicious/noExplicitAny: Return type varies based on schema
           getData: (projectData: ProjectData): any => {
             const awsUserConfig = projectData.awsUsers[0].config as AWSAPIKeyUser;
             return {
@@ -156,6 +167,7 @@ export const getConfigureSteps = (params: ConfigureStepParams): ConfigureStep[] 
               awsSecretAccessKey: awsUserConfig.awsSecretAccessKey || '',
             };
           },
+          // biome-ignore lint/suspicious/noExplicitAny: Input type varies based on schema
           writeData: (projectData: ProjectData, newData: any): ProjectData => {
             const newProjectData: ProjectData = JSON.parse(JSON.stringify(projectData));
             const awsUserConfig = newProjectData.awsUsers[0].config as AWSAPIKeyUser;
