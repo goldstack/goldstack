@@ -50,6 +50,7 @@ export const getMockedSQS = (): SQSClient => {
           // Other required fields can be filled as needed
           messageId: 'mockMessageId',
           receiptHandle: 'mockReceiptHandle',
+          // biome-ignore lint/suspicious/noExplicitAny: Mock attributes object
           attributes: {} as any,
           messageAttributes: {},
           md5OfBody: 'mockMd5',
@@ -60,6 +61,7 @@ export const getMockedSQS = (): SQSClient => {
       ],
     };
 
+    // biome-ignore lint/suspicious/noExplicitAny: Mock context object
     await handler(sqsEvent, {} as any);
   };
 
