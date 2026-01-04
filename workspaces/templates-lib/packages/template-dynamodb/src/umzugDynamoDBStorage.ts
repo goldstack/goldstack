@@ -73,7 +73,7 @@ export class DynamoDBStorage implements UmzugStorage<DynamoDBContext> {
   }
 
   async executed(): Promise<string[]> {
-    const migrations: { [key: string]: any }[] = [];
+    const migrations: { [key: string]: unknown }[] = [];
     let lastEvaluatedKey: Record<string, AttributeValue> | undefined;
 
     do {

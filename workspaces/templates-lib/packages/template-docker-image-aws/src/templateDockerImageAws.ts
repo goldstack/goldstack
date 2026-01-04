@@ -35,18 +35,18 @@ export const getDeployment = (deploymentName: string): AWSDockerImageDeployment 
 };
 
 const imageCommands = () => {
-  const deploymentPositional = (yargs: Argv<any>): Argv<any> => {
+  const deploymentPositional = (yargs: Argv<unknown>): Argv<unknown> => {
     return yargs.positional('deployment', {
       type: 'string',
       describe: 'Name of the deployment this command should be applied to',
       demandOption: true,
     });
   };
-  return (yargs: Argv<any>): Argv<any> => {
+  return (yargs: Argv<unknown>): Argv<unknown> => {
     return yargs
       .command('run <deployment>', 'Runs the image', deploymentPositional)
       .command('start <deployment>', 'Starts the image', deploymentPositional)
-      .command('logs <taskId>', 'Prints the logs for an image', (yargs: Argv<any>): Argv<any> => {
+      .command('logs <taskId>', 'Prints the logs for an image', (yargs: Argv<unknown>): Argv<unknown> => {
         return yargs.positional('taskId', {
           type: 'string',
           describe: 'Id of the tasks for which logs should be obtained.',

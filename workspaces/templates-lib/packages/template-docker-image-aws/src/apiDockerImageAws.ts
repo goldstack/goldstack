@@ -262,9 +262,9 @@ export const runTask = async (params: RunParams): Promise<StartTaskResult> => {
 
   console.log(`Task status: ${task.lastStatus}`);
 
-  const waitForStateRunning: any = 'tasksRunning';
+  const waitForStateRunning = 'tasksRunning';
 
-  const waitForParams: any = {
+  const waitForParams = {
     tasks: [taskId],
     cluster: readTerraformStateVariable(deploymentState, 'cluster_name'),
   };
@@ -273,7 +273,7 @@ export const runTask = async (params: RunParams): Promise<StartTaskResult> => {
 
   console.log('Task started up successfully ...');
 
-  const waitForStateStopped: any = 'tasksStopped';
+  const waitForStateStopped = 'tasksStopped';
 
   await ecs.waitFor(waitForStateStopped, waitForParams).promise();
 

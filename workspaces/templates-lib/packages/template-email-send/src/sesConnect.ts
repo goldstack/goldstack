@@ -13,12 +13,12 @@ export const getMockedSES = (): SESClient => {
   if (!mockedSES) {
     mockedSES = createSESClient();
   }
-  return mockedSES as any;
+  return mockedSES as SESClient;
 };
 
 export const connect = async (
-  goldstackConfig: any,
-  packageSchema: any,
+  goldstackConfig: unknown,
+  packageSchema: unknown,
   deploymentName?: string,
 ): Promise<SESClient> => {
   const packageConfig = new EmbeddedPackageConfig<EmailSendPackage, EmailSendDeployment>({
@@ -38,7 +38,7 @@ export const connect = async (
       const createSESClient = require(excludeInBundle('./mockedSES')).createSESClient;
       mockedSES = createSESClient();
     }
-    return mockedSES as any;
+    return mockedSES as SESClient;
   }
 
   const deployment = packageConfig.getDeployment(deploymentName);
@@ -61,8 +61,8 @@ export const connect = async (
 };
 
 export const getFromDomain = async (
-  goldstackConfig: any,
-  packageSchema: any,
+  goldstackConfig: unknown,
+  packageSchema: unknown,
   deploymentName?: string,
 ): Promise<string> => {
   const packageConfig = new EmbeddedPackageConfig<EmailSendPackage, EmailSendDeployment>({

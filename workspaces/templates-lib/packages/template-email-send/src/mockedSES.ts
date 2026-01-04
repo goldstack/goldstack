@@ -14,8 +14,11 @@ export function createSESClient(sesClient?: SESClient): SESClient {
 
   const sendEmailRequests: SendEmailRequest[] = [];
 
+  // biome-ignore lint/suspicious/noExplicitAny: monkey patching sesClient
   (sesClient as any)._goldstackSentRequests = sendEmailRequests;
-  mockedClient.on(SendEmailCommand).callsFake(async (input): Promise<any> => {
+  mockedClient
+    .on(SendEmailCommand)
+    .callsFake(async (input): Promise<{ MessageId: string }> => {
     if (process.env.GOLDSTACK_LOG_EMAILS) {
       console.log('Mocked SES Send email');
       console.log(JSON.stringify(input, null, 2));

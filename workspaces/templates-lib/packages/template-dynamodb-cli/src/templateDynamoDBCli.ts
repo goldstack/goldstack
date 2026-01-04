@@ -24,7 +24,7 @@ export const run = async ({
   migrations: InputMigrations<DynamoDBContext>;
 }): Promise<void> => {
   await wrapCli(async () => {
-    const deploymentPositional = (yargs: Argv<any>): Argv<any> => {
+    const deploymentPositional = (yargs: Argv<unknown>): Argv<unknown> => {
       return yargs.positional('deployment', {
         type: 'string',
         describe: 'Name of the deployment of the table',
