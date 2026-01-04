@@ -70,7 +70,7 @@ export const deploy = async (
 export const getDeploymentState = (
   deploymentName: string,
 
-  deploymentsState: any,
+  deploymentsState: unknown,
 ): DeploymentState => {
   let state: DeploymentState;
   if (deploymentsState) {
@@ -84,7 +84,7 @@ export const getDeploymentState = (
 export const getRepo = (
   deploymentName: string,
 
-  deploymentsState?: any,
+  deploymentsState?: unknown,
 ): string => {
   const state = getDeploymentState(deploymentName, deploymentsState);
   return readTerraformStateVariable(state, 'repo_url');

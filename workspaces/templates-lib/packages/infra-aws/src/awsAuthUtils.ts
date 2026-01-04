@@ -5,17 +5,20 @@ export function injectCredentials(
   provider: AwsCredentialIdentityProvider,
   credentials: AwsCredentialIdentity,
 ): void {
+  // biome-ignore lint/suspicious/noExplicitAny: monkey patching provider
   (provider as any)._injectedCredentials = credentials;
 }
 
 export function hasInjectedCredentials(provider: AwsCredentialIdentityProvider): boolean {
-  return (provider as any)._injectedCredentials !== undefined;
+  return // biome-ignore lint/suspicious/noExplicitAny: monkey patching provider
+  (provider as any)._injectedCredentials !== undefined;
 }
 
 export function retrieveInjectedCredentials(
   provider: AwsCredentialIdentityProvider,
 ): AwsCredentialIdentity {
-  return (provider as any)._injectedCredentials as AwsCredentialIdentity;
+  return // biome-ignore lint/suspicious/noExplicitAny: monkey patching provider
+  (provider as any)._injectedCredentials as AwsCredentialIdentity;
 }
 
 export async function getAWSCredentials(

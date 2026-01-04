@@ -15,7 +15,7 @@ export type FeatureContentType =
 
 export interface FeatureContent {
   type: FeatureContentType;
-  data: any;
+  data: unknown;
 }
 
 export interface MoreDetails {

@@ -13,7 +13,7 @@ export type DeploymentName = string;
  */
 
 export interface DeploymentConfiguration {
-  [propName: string]: any;
+  [propName: string]: unknown;
 }
 
 /**
@@ -24,5 +24,5 @@ export interface DeploymentConfiguration {
 export interface Deployment {
   name: DeploymentName;
   configuration: DeploymentConfiguration;
-  [propName: string]: any;
+  [propName: string]: unknown;
 }

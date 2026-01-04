@@ -1,12 +1,12 @@
 export interface TerraformState {
-  [propName: string]: any;
+  [propName: string]: unknown;
 }
 
 export interface DeploymentState {
   name: string;
   terraform?: TerraformState;
 
-  [propName: string]: any;
+  [propName: string]: unknown;
 }
 
 export type DeploymentsState = DeploymentState[];
