@@ -11,15 +11,9 @@ import {
   Table,
 } from 'dynamodb-toolbox';
 
-import { createUserEntity, type InputUserValue, type ValidUser } from './entities';
+import { createUserEntity, type InputUserValue } from './entities';
 
-import {
-  connect,
-  connectTable,
-  getTableName,
-  startLocalDynamoDB,
-  stopLocalDynamoDB,
-} from './table';
+import { connect, connectTable, getTableName, startLocalDynamoDB } from './table';
 
 // needs to be long to download Docker image etc.
 jest.setTimeout(120000);

@@ -252,7 +252,7 @@ export class TerraformBuild {
       try {
         const tsConfig = JSON.parse(read('./infra/tfConfig.json'));
         return tsConfig.tfVersion;
-      } catch (e) {
+      } catch (_e) {
         throw new Error(
           'Invalid Terraform configuration in ' + path.resolve('./infra/tfConfig.json'),
         );

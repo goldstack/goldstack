@@ -150,6 +150,7 @@ const buildAndTestProject = async (params: BuildAndTestProjectParams): Promise<T
 
         info(`Running test ${packageTest} ...`);
 
+        // biome-ignore lint/suspicious/noExplicitAny: Error type can be any
         let errorFound: any;
         let isFail: boolean;
         try {
@@ -179,6 +180,7 @@ const buildAndTestProject = async (params: BuildAndTestProjectParams): Promise<T
       for (const packageCleanUp of packageConfig.packageCleanUp) {
         info(`Running cleanup job ${packageCleanUp}`);
 
+        // biome-ignore lint/suspicious/noExplicitAny: Error type can be any
         let errorFound: any;
         let isFail: boolean;
         try {

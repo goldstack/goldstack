@@ -45,7 +45,7 @@ export const postSessionHandler = async (req: Request, res: Response): Promise<v
         res.status(400).json({ errorMessage: 'Invalid token' });
         return;
       }
-      if (new Date(sessionData.validUntil).getTime() < new Date().getTime()) {
+      if (new Date(sessionData.validUntil).getTime() < Date.now()) {
         res.status(401).json({ errorMessage: 'Session expired' });
 
         return;
@@ -69,7 +69,7 @@ export const postSessionHandler = async (req: Request, res: Response): Promise<v
       const sessionData = await repo.readSession(userToken);
 
       // if token already defined, do not create new session
-      if (sessionData && new Date(sessionData?.validUntil).getTime() > new Date().getTime()) {
+      if (sessionData && new Date(sessionData?.validUntil).getTime() > Date.now()) {
         res.status(200).json({ result: 'success' });
         return;
       }
@@ -78,7 +78,7 @@ export const postSessionHandler = async (req: Request, res: Response): Promise<v
     const sessionId = randomString({ length: 42 });
     await repo.createSession(
       sessionId,
-      new Date(new Date().getTime() + sessionValidityInSeconds * 1000).toISOString(),
+      new Date(Date.now() + sessionValidityInSeconds * 1000).toISOString(),
     );
 
     res
@@ -246,7 +246,7 @@ export const putSessionHandler = async (req: Request, res: Response): Promise<vo
       res.status(401).json({ errorMessage: 'Unknown session' });
       return;
     }
-    if (new Date(sessionData.validUntil).getTime() < new Date().getTime()) {
+    if (new Date(sessionData.validUntil).getTime() < Date.now()) {
       res.status(401).json({ errorMessage: 'Session expired' });
       return;
     }
@@ -308,7 +308,7 @@ export const postPurchase = async (req: Request, res: Response): Promise<void> =
       res.status(401).json({ errorMessage: 'Unknown session' });
       return;
     }
-    if (new Date(sessionData.validUntil).getTime() < new Date().getTime()) {
+    if (new Date(sessionData.validUntil).getTime() < Date.now()) {
       res.status(401).json({ errorMessage: 'Session expired' });
       return;
     }

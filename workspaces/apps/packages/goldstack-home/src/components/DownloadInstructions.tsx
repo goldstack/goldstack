@@ -1,6 +1,5 @@
 import type { DocLink } from '@goldstack/goldstack-api/dist/src/utils/docLinks';
 
-import React from 'react';
 import { dataUriToSrc } from 'src/utils/utils';
 import AngleRight from './../icons/font-awesome/solid/angle-right.svg';
 import styles from './DownloadInstructions.module.css';
@@ -13,7 +12,7 @@ const AngleRightComponent = (): JSX.Element => {
   );
 };
 
-const DocLinkItem = (props: { link: DocLink }): JSX.Element => {
+const _DocLinkItem = (props: { link: DocLink }): JSX.Element => {
   return (
     <a className="card card-frame py-3 px-4 mb-3" href={props.link.link}>
       <div className="row align-items-sm-center">

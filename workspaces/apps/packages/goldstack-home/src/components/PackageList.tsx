@@ -1,5 +1,4 @@
 import React from 'react';
-import Row from 'react-bootstrap/Row';
 
 import PackageCard from './PackageCard';
 export interface PackageFeatureData {
@@ -11,7 +10,7 @@ export interface PackageListItem {
   packageId?: string;
   selected: boolean;
   packageDescription: string | JSX.Element;
-  icons: any[];
+  icons: string[];
   features: PackageFeatureData[];
 }
 
@@ -37,7 +36,7 @@ const PackageList = (props: PackageListProps): JSX.Element => {
               packageDescription={item.packageDescription}
               icons={item.icons}
               disabled={props.disabled}
-              selected={selectedIds && selectedIds.includes(item.packageId || 'undefined')}
+              selected={selectedIds?.includes(item.packageId || 'undefined')}
               alwaysIncluded={item.alwaysIncluded}
               onChange={(included): void => {
                 if (included) {

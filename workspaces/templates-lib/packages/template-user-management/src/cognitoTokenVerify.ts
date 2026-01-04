@@ -8,7 +8,7 @@ import type { CognitoAccessTokenPayload, CognitoIdTokenPayload } from 'aws-jwt-v
 
 import { getDeploymentName, getDeploymentsOutput } from './userManagementConfig';
 
-import { getLocalUserManager, LocalUserManagerImpl } from './userManagementServerMock';
+import { getLocalUserManager } from './userManagementServerMock';
 
 export interface CognitoManager {
   validate(accessToken: string): Promise<CognitoAccessTokenPayload>;
@@ -27,8 +27,8 @@ export interface CognitoManager {
 let sharedJwksCache: SimpleJwksCache | undefined;
 
 export async function connectWithCognito({
-  goldstackConfig,
-  packageSchema,
+  goldstackConfig: _goldstackConfig,
+  packageSchema: _packageSchema,
   deploymentsOutput,
   deploymentName,
 }: {

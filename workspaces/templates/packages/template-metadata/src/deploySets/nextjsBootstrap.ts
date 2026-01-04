@@ -17,7 +17,7 @@ export const createNextjsBootstrapBuildSetConfig = async (): Promise<DeploySetCo
     ],
   };
 
-  const hash = new Date().getTime();
+  const hash = Date.now();
   const websiteDomain = 'nextjsbootstrap-' + hash + '.tests.dev.goldstack.party';
 
   const setConfig: DeploySetConfig = {

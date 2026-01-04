@@ -17,7 +17,7 @@ export const createLambdaNodeTriggerBuildSetConfig = async (): Promise<DeploySet
     ],
   };
 
-  const hash = new Date().getTime();
+  const hash = Date.now();
   const setConfig: DeploySetConfig = {
     buildSetName: 'lambda-node-trigger',
     buildTemplates: ['yarn-pnp-monorepo', 'lambda-node-trigger'],

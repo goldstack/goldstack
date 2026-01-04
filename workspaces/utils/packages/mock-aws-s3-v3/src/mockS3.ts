@@ -20,7 +20,7 @@ import type { StreamingBlobPayloadOutputTypes } from '@smithy/types';
 import { mockClient } from 'aws-sdk-client-mock';
 import type { WriteStream } from 'fs';
 import * as s3Mock from 'mock-aws-s3';
-import { type AWSError, S3 } from 'mock-aws-s3';
+import { type AWSError } from 'mock-aws-s3';
 import { resolve } from 'path';
 
 /**
@@ -32,6 +32,7 @@ interface BucketContext {
   /** The mocked client instance */
   mockClient: ReturnType<typeof mockClient>;
   /** The mock S3 implementation */
+  // biome-ignore lint/suspicious/noExplicitAny: Mock S3 implementation type is complex and varies
   mockS3: any;
   /** The local directory for this bucket */
   localDirectory: string;
@@ -50,10 +51,13 @@ function mockNoSuchKey(error: { message: string }): NoSuchKey {
       httpStatusCode: 404,
     },
   });
+  // biome-ignore lint/suspicious/noExplicitAny: AWS SDK error extension properties
   (noSuchKey as any).$fault = 'client';
+  // biome-ignore lint/suspicious/noExplicitAny: AWS SDK error extension properties
   (noSuchKey as any).$response = {
     statusCode: 404,
   };
+  // biome-ignore lint/suspicious/noExplicitAny: AWS SDK error extension properties
   (noSuchKey as any).$retryable = {
     throttling: false,
   };
@@ -136,10 +140,12 @@ export function createS3Client({
   };
 
   bucketContexts.set(bucket, context);
+  // biome-ignore lint/suspicious/noExplicitAny: Adding custom property to client for debugging
   (client as any)._goldstackRequests = [];
 
   // Setup standard S3 operations
   type S3Operation = {
+    // biome-ignore lint/suspicious/noExplicitAny: AWS SDK command types vary
     command: any;
     method: (keyof typeof mockS3 & string) | undefined;
   };
@@ -166,6 +172,7 @@ export function createS3Client({
   //   );
   // });
   operations.forEach(({ command, method }) => {
+    // biome-ignore lint/suspicious/noExplicitAny: AWS SDK input and return types vary
     mockClientInstance.on(command).callsFake(async (input: any): Promise<any> => {
       const context = getBucketContext(input.Bucket);
       if (!context) {
@@ -180,6 +187,7 @@ export function createS3Client({
         throw new Error(`Method ${command.name} not implemented.`);
       }
       s3Mock.config.basePath = context.localDirectory;
+      // biome-ignore lint/suspicious/noExplicitAny: Adding custom property to client for debugging
       (context.client as any)._goldstackRequests.push({
         command: command.name,
         input,
@@ -193,9 +201,11 @@ export function createS3Client({
       const operation = context.mockS3[method](input);
 
       if (method === 'getObject') {
+        // biome-ignore lint/suspicious/noExplicitAny: Stream type varies based on mock implementation
         let stream: any;
         try {
           const res = await operation.promise();
+          // biome-ignore lint/suspicious/noExplicitAny: Mock response type varies
           const output: GetObjectOutput = { ...(res as any) };
 
           const body: StreamingBlobPayloadOutputTypes = {
@@ -212,6 +222,7 @@ export function createS3Client({
               stream = operation.createReadStream();
               return stream.pipe(destination, options);
             },
+            // biome-ignore lint/suspicious/noExplicitAny: Body implementation requires type assertion
           } as any;
 
           output.Body = body;

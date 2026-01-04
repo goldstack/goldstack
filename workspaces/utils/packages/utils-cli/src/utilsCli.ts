@@ -84,23 +84,21 @@ export function logger(): LoggerInstance {
   return loggerInstance || defaultLogger;
 }
 
-export const wrapCli = async (func: AsyncFunction<any>): Promise<void> => {
+export const wrapCli = async (func: AsyncFunction<unknown>): Promise<void> => {
   try {
     await func();
     process.exit(0);
   } catch (e) {
+    const error = e as Error;
     if (isDebug) {
-      logger().error(
-        {},
-        `Error while executing CLI command: ${e.error || e.errorMessage || e.message}`,
-      );
+      logger().error({}, `Error while executing CLI command: ${error.message}`);
       console.error(e);
       throw e;
     } else {
       logger().error(
         {},
         '❌ Error while executing CLI command:' +
-          e.message +
+          error.message +
           '\n  For more information about this error, run this command with the environment variable GOLDSTACK_DEBUG set to true',
       );
       process.exit(1);
@@ -108,10 +106,11 @@ export const wrapCli = async (func: AsyncFunction<any>): Promise<void> => {
   }
 };
 
-process.on('unhandledRejection', (e: any) => {
+process.on('unhandledRejection', (e: unknown) => {
+  const error = e as Error;
   if (isDebug) {
     console.log(e);
   }
-  console.log('❌ Unhandled error in asynchronous method:', e.message);
+  console.log('❌ Unhandled error in asynchronous method:', error.message);
   process.exit(1);
 });

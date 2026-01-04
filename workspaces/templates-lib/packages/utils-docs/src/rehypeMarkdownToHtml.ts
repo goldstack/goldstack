@@ -2,7 +2,7 @@ import fs from 'fs';
 import path, { dirname } from 'path';
 import visit from 'unist-util-visit';
 
-export default function rehypeDocs({ filePath, tag, processor }): any {
+export default function rehypeDocs({ filePath, tag: _tag, processor }): any {
   function visitInlineCode(node: any): void {
     const value = node.value;
     if (value.startsWith('markdown:')) {

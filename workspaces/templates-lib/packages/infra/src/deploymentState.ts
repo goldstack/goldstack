@@ -26,7 +26,7 @@ export const readDeploymentsState = (
   options?: ReadDeploymentsStateOptions,
 ): DeploymentsState => {
   if (!hasDeploymentsState(packageDir)) {
-    if (options && options.createIfNotExist) {
+    if (options?.createIfNotExist) {
       return [];
     }
 
@@ -50,7 +50,7 @@ export const getDeploymentState = (
     (deploymentState) => deploymentState.name === deploymentName,
   );
   if (!deploymentState) {
-    if (options && options.createIfNotExist) {
+    if (options?.createIfNotExist) {
       return {
         name: deploymentName,
       };

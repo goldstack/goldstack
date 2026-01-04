@@ -22,7 +22,7 @@ import { connect, stopAllLocalDynamoDB, stopLocalDynamoDB } from './../src/table
     },
   });
   let localAdminServer: undefined | any;
-  await new Promise<void>(async (resolve, reject) => {
+  await new Promise<void>(async (resolve, _reject) => {
     const localAdmin = await createServer(
       client as any, // otherwise strange type error occurs
       new DynamoDB.DocumentClient({ service: client }),
@@ -57,7 +57,7 @@ import { connect, stopAllLocalDynamoDB, stopLocalDynamoDB } from './../src/table
   });
   if (localAdminServer) {
     info('Shutting down local DynamoDB admin ...');
-    await new Promise<void>((resolve, reject) => {
+    await new Promise<void>((resolve, _reject) => {
       localAdminServer.close(() => resolve());
     });
     info('  Local admin server shut down successfully');

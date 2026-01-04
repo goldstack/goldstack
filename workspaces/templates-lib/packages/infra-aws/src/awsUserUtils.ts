@@ -58,7 +58,7 @@ async function validateCredentials(credentials: AwsCredentialIdentityProvider): 
     if (!response.Account) {
       return false;
     }
-  } catch (e) {
+  } catch (_e) {
     return false;
   }
   return true;

@@ -3,8 +3,6 @@ import { warn } from '@goldstack/utils-log';
 
 import { infraAwsDockerImageCli } from './infraAwsDockerImage';
 
-import configSchema from './schemas/configSchema.json';
-
 export { getDeploymentState, getRepo } from './infraAwsDockerImage';
 
 import { buildCli, buildDeployCommands } from '@goldstack/utils-package';

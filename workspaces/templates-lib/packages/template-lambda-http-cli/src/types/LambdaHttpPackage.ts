@@ -1,10 +1,8 @@
 import type { Deployment, DeploymentConfiguration } from '@goldstack/infra';
 import type { AWSDeployment } from '@goldstack/infra-aws';
 import {
-  LambdaConfiguration,
   type LambdaDeployment,
   type LambdaDeploymentConfiguration,
-  LambdaDeployments,
   type LambdaPackage,
 } from '@goldstack/template-lambda-cli';
 import type { Configuration, Package } from '@goldstack/utils-package';

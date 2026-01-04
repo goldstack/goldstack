@@ -19,5 +19,6 @@ export interface ProjectFormType {
    * @default "us-east-2"
    */
   awsRegion: AWSRegion;
+  // biome-ignore lint/suspicious/noExplicitAny: Index signature for additional properties
   [propName: string]: any;
 }

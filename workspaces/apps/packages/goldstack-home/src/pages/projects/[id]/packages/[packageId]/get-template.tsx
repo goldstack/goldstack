@@ -1,7 +1,6 @@
 import { getEndpoint } from '@goldstack/goldstack-api';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -10,7 +9,12 @@ import GetTemplateDescription from 'src/components/GetTemplateDescription';
 import Header from 'src/components/Header';
 import useSWR from 'swr';
 
-const fetcher = (url: string): any =>
+interface SessionData {
+  paymentReceived?: boolean;
+  stripeId?: string;
+}
+
+const fetcher = (url: string): Promise<SessionData> =>
   fetch(url, {
     credentials: 'include',
   }).then((r) => r.json());
@@ -31,7 +35,7 @@ const GetTemplatePage = (): JSX.Element => {
     router.push(`/projects/${id}/packages/${packageId}/download`);
   };
 
-  if (data && data.paymentReceived) {
+  if (data?.paymentReceived) {
     (async (): Promise<void> => {
       const sessionRes = await fetch(`${getEndpoint()}/sessions/purchase`, {
         method: 'POST',
@@ -70,7 +74,7 @@ const GetTemplatePage = (): JSX.Element => {
                 stripeId={data.stripeId as string}
               ></ConfigureSession>
             )}
-            {data && data.paymentReceived && <p>User session already confirmed. Thank you!</p>}
+            {data?.paymentReceived && <p>User session already confirmed. Thank you!</p>}
           </Col>
           <Col lg={5} className="mb-7 mb-lg-0 pt-5">
             <GetTemplateDescription></GetTemplateDescription>

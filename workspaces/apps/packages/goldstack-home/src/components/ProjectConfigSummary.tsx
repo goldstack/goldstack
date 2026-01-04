@@ -3,7 +3,7 @@ import { getEndpoint } from '@goldstack/goldstack-api';
 import type { ProjectData } from '@goldstack/project-repository';
 import assert from 'assert';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Spinner from 'react-bootstrap/Spinner';
@@ -28,7 +28,14 @@ const ValidationResult = (props: { result: StepValidation }): JSX.Element => {
   );
 };
 
-const buildPackage = async (packageId: string, data: ProjectData): Promise<any> => {
+interface BuildPackageResponse {
+  packageId: string;
+}
+
+const buildPackage = async (
+  packageId: string,
+  data: ProjectData,
+): Promise<BuildPackageResponse> => {
   const packageRes = await fetch(
     `${getEndpoint()}/projects/${data.projectId}/packages/${packageId}`,
     {

@@ -16,10 +16,10 @@ import { createS3Client, resetMocks } from 'mock-aws-s3-v3';
 import { join, resolve } from 'path';
 import tmp from 'tmp';
 import yargs from 'yargs';
-import { scheduleAllDeploySets } from './scheduleAllDeploySets';
+import { scheduleAllDeploySets, type ScheduleArgs } from './scheduleAllDeploySets';
 
 export const run = async (): Promise<void> => {
-  await wrapCli(async (): Promise<any> => {
+  await wrapCli(async (): Promise<void> => {
     const argv = await yargs
       .demandCommand(1)
       .usage('Usage: $0 <command> [options]')
@@ -88,7 +88,7 @@ export const run = async (): Promise<void> => {
       .parse();
 
     let workDir = argv.workDir as string;
-    let tmpInstance: any;
+    let tmpInstance: tmp.DirResult | undefined;
     if (workDir === 'tmp') {
       tmpInstance = tmp.dirSync();
       workDir = tmpInstance.name + '/';
@@ -235,7 +235,7 @@ export const run = async (): Promise<void> => {
 
     if (command === 'schedule-all-deploy-sets') {
       console.log('Schedule all deploy sets');
-      await scheduleAllDeploySets(argv);
+      await scheduleAllDeploySets(argv as unknown as ScheduleArgs);
       console.log('Schedule all deploy sets completed');
       if (tmpInstance) {
         rm('-rf', workDir.replace(/\\/g, '/') + '*');

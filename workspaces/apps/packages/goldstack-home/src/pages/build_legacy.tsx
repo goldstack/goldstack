@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React, { type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -10,7 +10,6 @@ import BuildProject from './../components/BuildProject';
 import Header from './../components/Header';
 import AWSIcon from './../icons/aws.svg';
 import DockerIcon from './../icons/docker.svg';
-import DocusaurusIcon from './../icons/docusaurus.svg';
 import ESLintIcon from './../icons/eslint.svg';
 import JestIcon from './../icons/jestjs.svg';
 import SecurityIcon from './../icons/security.svg';
@@ -20,11 +19,6 @@ import VSCodeIcon from './../icons/vscode.svg';
 import YarnIcon from './../icons/yarn.svg';
 import { getPackageIds } from './../lib/stackParamUtils';
 
-interface HeadingProps {
-  caption: string;
-  learnMoreLink: string;
-}
-
 const BasicsTitle = styled.span`
   // margin-top: 0.28rem;
 `;
@@ -33,7 +27,7 @@ const BasicsImg = styled.img`
   height: 28px;
 `;
 const Item = (props: {
-  icon: any;
+  icon: string;
   index: number;
   children?: ReactNode;
   title?: string;

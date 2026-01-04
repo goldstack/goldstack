@@ -17,7 +17,7 @@ export const createDynamoDBBuildSetConfig = async (): Promise<DeploySetConfig> =
     ],
   };
 
-  const hash = new Date().getTime();
+  const hash = Date.now();
   const setConfig: DeploySetConfig = {
     buildSetName: 'dynamodb',
     buildTemplates: ['yarn-pnp-monorepo', 'dynamodb'],

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ConfigureProject from '../../../../../../components/ConfigureProject';
 
 const Project = (): JSX.Element => {

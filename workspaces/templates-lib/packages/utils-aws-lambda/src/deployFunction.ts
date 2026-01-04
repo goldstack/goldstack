@@ -1,5 +1,4 @@
 import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
-import { getAWSCredentials } from '@goldstack/infra-aws';
 import { awsCli, hasAwsCli } from '@goldstack/utils-aws-cli';
 import { debug } from '@goldstack/utils-log';
 import { rmSafe, zip } from '@goldstack/utils-sh';
@@ -14,7 +13,7 @@ export interface DeployFunctionParams {
 }
 
 export const deployFunction = async (params: DeployFunctionParams): Promise<any> => {
-  const targetArchive = params.targetArchiveName || `lambda-${new Date().getTime()}.zip`;
+  const targetArchive = params.targetArchiveName || `lambda-${Date.now()}.zip`;
 
   await rmSafe(targetArchive);
   // debug(

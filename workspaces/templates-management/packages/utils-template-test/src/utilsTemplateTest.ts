@@ -26,7 +26,7 @@ import { PrintDirectoryContentTest } from './tests/PrintDirectoryContentTest';
 import { RootBuildTest } from './tests/RootBuildTest';
 import type { TemplateTest } from './types/TemplateTest';
 
-function assert(condition: any, msg?: string): asserts condition {
+function assert(condition: unknown, msg?: string): asserts condition {
   if (!condition) {
     throw new AssertionError({ message: msg });
   }

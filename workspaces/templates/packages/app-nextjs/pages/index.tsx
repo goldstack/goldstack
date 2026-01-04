@@ -5,6 +5,7 @@ import RocketLaunchImg from './../src/img/rocket-launch.jpg';
 import styles from './index.module.css';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: API response type is unknown
 const fetcher = (url: string): any => fetch(url).then((r) => r.json());
 
 const FetchedContent = (): JSX.Element => {

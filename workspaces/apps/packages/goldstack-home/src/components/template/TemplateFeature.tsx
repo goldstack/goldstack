@@ -37,9 +37,11 @@ const createGif = (gif: string): React.ReactNode => {
     return <img src={gif} className="img-fluid" />;
   }
   if (gif === 'nextjs-config') {
+    // biome-ignore lint/suspicious/noExplicitAny: SVG import requires type assertion
     return <img src={NextJsConfigGif as any}></img>;
   }
   if (gif === 'react-typescript') {
+    // biome-ignore lint/suspicious/noExplicitAny: SVG import requires type assertion
     return <img src={ReactTypeScriptGif as any}></img>;
   }
   throw new Error('Unknown gif ' + gif);
@@ -50,15 +52,19 @@ const createImage = (image: string): React.ReactNode => {
     return <img src={image} className="img-fluid"></img>;
   }
   if (image === 'vercel-deployed') {
+    // biome-ignore lint/suspicious/noExplicitAny: PNG import requires type assertion
     return <img src={VercelDeployedImg as any} className="img-fluid"></img>;
   }
   if (image === 'endpoint-typescript') {
+    // biome-ignore lint/suspicious/noExplicitAny: PNG import requires type assertion
     return <img src={EndpointTypeScript as any} className="img-fluid"></img>;
   }
   if (image === 'lambda-config') {
+    // biome-ignore lint/suspicious/noExplicitAny: PNG import requires type assertion
     return <img src={LambdaConfigImg as any} className="img-fluid"></img>;
   }
   if (image === 'email-send') {
+    // biome-ignore lint/suspicious/noExplicitAny: PNG import requires type assertion
     return <img src={EmailSendImg as any} className="img-fluid"></img>;
   }
   throw new Error('Unknown image for feature details ' + image);

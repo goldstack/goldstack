@@ -7,7 +7,6 @@ import {
   type QueryCommandOutput,
 } from '@aws-sdk/client-dynamodb';
 import { marshall, unmarshall } from '@aws-sdk/util-dynamodb';
-import { debug } from '@goldstack/utils-log';
 import type { UmzugStorage } from 'umzug';
 import type { MigrationParams } from 'umzug/lib/types';
 import type { DynamoDBContext } from './dynamoDBMigrations';

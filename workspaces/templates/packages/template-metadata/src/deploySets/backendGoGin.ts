@@ -17,7 +17,7 @@ export const createBackendGoGinBuildSetConfig = async (): Promise<DeploySetConfi
     ],
   };
 
-  const hash = new Date().getTime();
+  const hash = Date.now();
   const setConfig: DeploySetConfig = {
     buildSetName: 'backend-go-gin',
     buildTemplates: ['yarn-pnp-monorepo', 'lambda-go-gin'],

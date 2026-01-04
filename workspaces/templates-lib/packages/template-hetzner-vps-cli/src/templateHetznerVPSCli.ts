@@ -33,7 +33,7 @@ export const run = async (args: string[]): Promise<void> => {
     const packageConfig = new PackageConfig<HetznerVPSPackage, HetznerVPSDeployment>({
       packagePath: './',
     });
-    const config = packageConfig.getConfig();
+    const _config = packageConfig.getConfig();
     const command = argv._[0];
     const [, , , ...opArgs] = args;
 
