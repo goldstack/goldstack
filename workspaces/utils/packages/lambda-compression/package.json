@@ -35,7 +35,7 @@
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
   },
   "dependencies": {
-    "@types/aws-lambda": "^8.10.147"
+    "@types/aws-lambda": "^8.10.159"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.20",

@@ -54,7 +54,7 @@
     "@goldstack/utils-package-config-generate": "0.3.21",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
-    "@types/aws-lambda": "^8.10.147",
+    "@types/aws-lambda": "^8.10.159",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
     "@types/yargs": "^17.0.33",
