@@ -2,7 +2,6 @@
 
 import { initGtm, TagFragment } from '@goldstack/utils-track';
 import Document, { type DocumentContext, Head, Html, Main, NextScript } from 'next/document';
-import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
 class MyDocument extends Document {

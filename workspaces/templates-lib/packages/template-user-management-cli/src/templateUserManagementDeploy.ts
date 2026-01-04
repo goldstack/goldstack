@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { DeploymentState, readDeploymentState, readTerraformStateVariable } from '@goldstack/infra';
+import { readDeploymentState, readTerraformStateVariable } from '@goldstack/infra';
 import { getAWSUser } from '@goldstack/infra-aws';
 import type {
   UserManagementConfiguration,

@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import * as path from 'path';
 import type { Variables } from './terraformCli';
 
 const isJsonString = (str: string): boolean => {

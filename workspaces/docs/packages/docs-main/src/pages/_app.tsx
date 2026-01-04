@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+
 import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
 
 import './../styles/fonts.css';
 import './../styles/app.css';

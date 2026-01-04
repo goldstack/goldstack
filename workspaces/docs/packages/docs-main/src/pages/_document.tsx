@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { initGtm, TagFragment } from '@goldstack/utils-track';
-import Document, { Head, Html, Main, NextScript } from 'next/document';
 import type { DocumentContext, DocumentInitialProps } from 'next/document';
-import React from 'react';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 class MyDocument extends Document {
@@ -17,7 +16,7 @@ class MyDocument extends Document {
         originalRenderPage({
           enhanceApp:
             // biome-ignore lint/suspicious/noExplicitAny: styled-components enhancement type
-              (App: any) =>
+            (App: any) =>
               // biome-ignore lint/suspicious/noExplicitAny: props type unknown
               (props: any): JSX.Element =>
                 // biome-ignore lint/suspicious/noExplicitAny: styled-components type issue

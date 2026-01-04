@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import type { AppProps } from 'next/app';
-import React from 'react';
 
 import './../src/styles/app.css';
 

@@ -1,5 +1,4 @@
 import type { LandingAction } from '@goldstack/template-metadata';
-import React from 'react';
 
 const TemplateCallToAction = (props: { action: LandingAction }): JSX.Element => {
   return (

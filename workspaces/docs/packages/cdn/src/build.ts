@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { getDeploymentConfig } from '@goldstack/template-static-website-aws';
 import { copy, mkdir } from '@goldstack/utils-sh';
 
 const build = async (args: string[]): Promise<void> => {

@@ -1,6 +1,5 @@
 import { getEndpoint } from '@goldstack/goldstack-api';
 import { useRouter } from 'next/router';
-import React from 'react';
 import Download from 'src/components/Download';
 
 import Footer from 'src/components/Footer';

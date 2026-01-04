@@ -20,7 +20,7 @@ import type { StreamingBlobPayloadOutputTypes } from '@smithy/types';
 import { mockClient } from 'aws-sdk-client-mock';
 import type { WriteStream } from 'fs';
 import * as s3Mock from 'mock-aws-s3';
-import { type AWSError, S3 } from 'mock-aws-s3';
+import { type AWSError } from 'mock-aws-s3';
 import { resolve } from 'path';
 
 /**

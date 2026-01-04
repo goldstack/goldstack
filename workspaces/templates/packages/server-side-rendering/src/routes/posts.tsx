@@ -1,5 +1,4 @@
 import type { SSRHandler } from '@goldstack/template-ssr';
-import React from 'react';
 import { hydrate, renderPage } from './../render';
 
 const Posts = (props: { posts: string[] }): JSX.Element => {

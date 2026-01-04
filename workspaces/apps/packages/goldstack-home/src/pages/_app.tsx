@@ -5,7 +5,7 @@ import '../styles/app.css';
 
 import { init } from '@fullstory/browser';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { ThemeProvider } from 'styled-components';
 import * as gtag from './../lib/ga';

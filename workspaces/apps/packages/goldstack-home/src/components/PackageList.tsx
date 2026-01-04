@@ -1,5 +1,4 @@
 import React from 'react';
-import Row from 'react-bootstrap/Row';
 
 import PackageCard from './PackageCard';
 export interface PackageFeatureData {
