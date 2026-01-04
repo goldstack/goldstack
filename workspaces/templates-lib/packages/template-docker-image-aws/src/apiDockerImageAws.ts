@@ -183,7 +183,7 @@ export const startTask = async (params: RunParams): Promise<StartTaskResult> => 
           'ecs_task_execution_role_arn',
         ),
         requiresCompatibilities: ['FARGATE'],
-        family: `temp-${config.configuration.imageTag}-${new Date().getTime()}-${imageHash}`,
+        family: `temp-${config.configuration.imageTag}-${Date.now()}-${imageHash}`,
       })
       .promise()
   ).taskDefinition;

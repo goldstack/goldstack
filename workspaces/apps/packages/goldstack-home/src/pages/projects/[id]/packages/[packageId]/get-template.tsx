@@ -35,7 +35,7 @@ const GetTemplatePage = (): JSX.Element => {
     router.push(`/projects/${id}/packages/${packageId}/download`);
   };
 
-  if (data && data.paymentReceived) {
+  if (data?.paymentReceived) {
     (async (): Promise<void> => {
       const sessionRes = await fetch(`${getEndpoint()}/sessions/purchase`, {
         method: 'POST',
@@ -74,7 +74,7 @@ const GetTemplatePage = (): JSX.Element => {
                 stripeId={data.stripeId as string}
               ></ConfigureSession>
             )}
-            {data && data.paymentReceived && <p>User session already confirmed. Thank you!</p>}
+            {data?.paymentReceived && <p>User session already confirmed. Thank you!</p>}
           </Col>
           <Col lg={5} className="mb-7 mb-lg-0 pt-5">
             <GetTemplateDescription></GetTemplateDescription>

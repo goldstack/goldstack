@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
-export const handler: ProxyHandler = async (event, context) => {
+export const handler: ProxyHandler = async (_event, _context) => {
   return {
     statusCode: 201,
     body: JSON.stringify({

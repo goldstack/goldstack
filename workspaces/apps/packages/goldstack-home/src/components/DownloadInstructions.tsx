@@ -12,7 +12,7 @@ const AngleRightComponent = (): JSX.Element => {
   );
 };
 
-const DocLinkItem = (props: { link: DocLink }): JSX.Element => {
+const _DocLinkItem = (props: { link: DocLink }): JSX.Element => {
   return (
     <a className="card card-frame py-3 px-4 mb-3" href={props.link.link}>
       <div className="row align-items-sm-center">

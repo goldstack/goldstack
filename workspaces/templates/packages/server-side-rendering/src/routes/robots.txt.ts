@@ -5,7 +5,7 @@ import type { APIGatewayProxyEventV2, APIGatewayProxyResultV2, Handler } from 'a
 
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
-export const handler: ProxyHandler = async (event, context) => {
+export const handler: ProxyHandler = async (_event, _context) => {
   assert('Can use Node.js built in functions' !== undefined);
   return {
     body: `User-agent: *

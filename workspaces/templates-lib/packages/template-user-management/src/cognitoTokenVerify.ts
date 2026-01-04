@@ -27,8 +27,8 @@ export interface CognitoManager {
 let sharedJwksCache: SimpleJwksCache | undefined;
 
 export async function connectWithCognito({
-  goldstackConfig,
-  packageSchema,
+  goldstackConfig: _goldstackConfig,
+  packageSchema: _packageSchema,
   deploymentsOutput,
   deploymentName,
 }: {

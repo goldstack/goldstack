@@ -23,7 +23,7 @@ export interface CompileCssConfiguration {
   generateScopedName?: string;
 }
 
-function generateScopedName(name: string, filename: string, css: string) {
+function generateScopedName(name: string, _filename: string, css: string) {
   const i = css.indexOf(`.${name}`);
   const lineNumber = css.substr(0, i).split(/[\r\n]/).length;
   const hash = createHash('md5').update(css).digest('hex');
@@ -40,7 +40,7 @@ export async function compileCss(
   const plugins: AcceptedPlugin[] = [
     postcssModules({
       generateScopedName: generateScopedName,
-      getJSON: (cssFileName, json, outputFileName) => {
+      getJSON: (_cssFileName, json, _outputFileName) => {
         exportedTokens = json;
       },
     }),
@@ -107,6 +107,6 @@ export const register = (): void => {
     exts: ['.css'],
   });
 
-  const tsConfig = {};
+  const _tsConfig = {};
   // swcRegister({ ...tsConfig });
 };

@@ -20,7 +20,7 @@ app.use(express.json({ limit: '10mb' }));
 //   app.use(requestLogger());
 // }
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.send('Goldstack API');
 });
 

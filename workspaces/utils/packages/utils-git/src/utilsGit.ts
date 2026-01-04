@@ -38,13 +38,13 @@ export const filesChanged = (): boolean => {
   let fileChanged = false;
   try {
     exec('git diff "HEAD..HEAD^1" --quiet -- . ');
-  } catch (e) {
+  } catch (_e) {
     debug('Detected change against HEAD^1 in ' + path.resolve('.'));
     headChanged = true;
   }
   try {
     exec('git diff --quiet -- . ');
-  } catch (e) {
+  } catch (_e) {
     debug('Detected uncommited change in ' + path.resolve('.'));
     fileChanged = true;
   }
@@ -65,7 +65,7 @@ export const run = (args: string[]): void => {
       try {
         const res = exec(execCommand);
         console.log(res);
-      } catch (e) {
+      } catch (_e) {
         console.error('Error when running "' + execCommand + '"');
         process.exit(1);
       }

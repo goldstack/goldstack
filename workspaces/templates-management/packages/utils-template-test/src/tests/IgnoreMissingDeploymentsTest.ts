@@ -17,7 +17,7 @@ export class IgnoreMissingDeploymentsTest implements TemplateTest {
     let failedAsExpected = false;
     try {
       yarn(params.projectDir, `workspace ${packageJson.name} infra plan ${fakeDeploymentName}`);
-    } catch (e) {
+    } catch (_e) {
       failedAsExpected = true;
       console.log('Command failed as expected without --ignore-missing-deployments flag');
     }

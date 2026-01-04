@@ -46,7 +46,7 @@ export const startServer = async (options: LocalHttpAPIOptions): Promise<StartSe
   const lambdaConfig = readLambdaConfig(options.routesDir);
 
   if (options.versionTimestamp) {
-    app.get(options.versionTimestamp.path, (req, res) => {
+    app.get(options.versionTimestamp.path, (_req, res) => {
       assert(options.versionTimestamp);
       res.send(options.versionTimestamp.value);
     });

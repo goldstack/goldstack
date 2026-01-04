@@ -1,4 +1,4 @@
-import type { CloudFrontRequestEvent, Context, CloudFrontRequestCallback } from 'aws-lambda';
+import type { CloudFrontRequestCallback, CloudFrontRequestEvent, Context } from 'aws-lambda';
 import manifest from './routes-manifest.json';
 
 interface DynamicRoute {
@@ -12,7 +12,7 @@ interface DynamicRoute {
 
 export const handler = (
   event: CloudFrontRequestEvent,
-  context: Context,
+  _context: Context,
   callback: CloudFrontRequestCallback,
 ): void => {
   const request = event.Records[0].cf.request;

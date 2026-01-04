@@ -19,7 +19,7 @@ export const run = async (args: string[]): Promise<void> => {
     const packageConfig = new PackageConfig<EmailSendPackage, EmailSendDeployment>({
       packagePath: './',
     });
-    const config = packageConfig.getConfig();
+    const _config = packageConfig.getConfig();
     const [, , , ...opArgs] = args;
     const command = argv._[0];
 

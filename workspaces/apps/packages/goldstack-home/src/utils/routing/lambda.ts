@@ -4,7 +4,7 @@ export const handler = (
   // biome-ignore lint/suspicious/noExplicitAny: AWS Lambda event type is complex
   event: any,
   // biome-ignore lint/suspicious/noExplicitAny: AWS Lambda context type is complex
-  context: any,
+  _context: any,
   // biome-ignore lint/suspicious/noExplicitAny: AWS Lambda callback type is complex
   callback: any,
 ): void => {

@@ -17,7 +17,7 @@ export const createBackendLambdaApiBuildSetConfig = async (): Promise<DeploySetC
     ],
   };
 
-  const hash = new Date().getTime();
+  const hash = Date.now();
   const setConfig: DeploySetConfig = {
     buildSetName: 'backend-lambda-api',
     buildTemplates: ['yarn-pnp-monorepo', 'serverless-api'],

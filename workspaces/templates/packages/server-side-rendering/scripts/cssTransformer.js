@@ -3,7 +3,7 @@
 let compileCss;
 try {
   compileCss = require('node-css-require').compileCssSync;
-} catch (e) {
+} catch (_e) {
   // Fallback require for local development - Jest does not support loading transformers from .ts source files
   // so we load directly from the compiled JS.
   compileCss = require('node-css-require/dist/src/nodeCssRequire').compileCssSync;
@@ -11,7 +11,7 @@ try {
 
 module.exports = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  process(sourceText, sourcePath, options) {
+  process(sourceText, sourcePath, _options) {
     const js = compileCss(sourceText, sourcePath).js;
     return {
       // TODO: to actual implementation with postcss / css modules
