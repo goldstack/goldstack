@@ -15,6 +15,7 @@ export type FeatureContentType =
 
 export interface FeatureContent {
   type: FeatureContentType;
+  // biome-ignore lint/suspicious/noExplicitAny: Feature content data can be of any type
   data: any;
 }
 

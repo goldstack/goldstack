@@ -24,6 +24,7 @@ export const run = async ({
   migrations: InputMigrations<DynamoDBContext>;
 }): Promise<void> => {
   await wrapCli(async () => {
+    // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
     const deploymentPositional = (yargs: Argv<any>): Argv<any> => {
       return yargs.positional('deployment', {
         type: 'string',

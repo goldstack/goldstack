@@ -15,6 +15,7 @@ export { tf } from './terraformCli';
 
 import type { Argv } from 'yargs';
 
+// biome-ignore lint/suspicious/noExplicitAny: yargs command definition
 export const infraCommands = (): ((yargs: Argv<any>) => Argv<any>) => {
   // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
   const deploymentPositional = (yargs: Argv<any>): Argv<any> => {
@@ -26,6 +27,7 @@ export const infraCommands = (): ((yargs: Argv<any>) => Argv<any>) => {
     });
   };
 
+  // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
   const ignoreMissingDeploymentsOption = (yargs: Argv<any>): Argv<any> => {
     // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
     return yargs.option('ignore-missing-deployments', {
@@ -36,8 +38,8 @@ export const infraCommands = (): ((yargs: Argv<any>) => Argv<any>) => {
     });
   };
 
+  // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
   return (yargs: Argv<any>): Argv<any> => {
-    // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
     return yargs
       .command(
         'up <deployment>',

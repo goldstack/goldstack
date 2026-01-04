@@ -13,6 +13,7 @@ export type DeploymentName = string;
  */
 
 export interface DeploymentConfiguration {
+  // biome-ignore lint/suspicious/noExplicitAny: Deployment configuration supports dynamic properties
   [propName: string]: any;
 }
 
@@ -24,5 +25,6 @@ export interface DeploymentConfiguration {
 export interface Deployment {
   name: DeploymentName;
   configuration: DeploymentConfiguration;
+  // biome-ignore lint/suspicious/noExplicitAny: Deployment supports dynamic properties
   [propName: string]: any;
 }

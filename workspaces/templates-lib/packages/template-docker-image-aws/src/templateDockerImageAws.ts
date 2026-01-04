@@ -35,6 +35,7 @@ export const getDeployment = (deploymentName: string): AWSDockerImageDeployment 
 };
 
 const imageCommands = () => {
+  // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
   const deploymentPositional = (yargs: Argv<any>): Argv<any> => {
     return yargs.positional('deployment', {
       type: 'string',
@@ -42,6 +43,7 @@ const imageCommands = () => {
       demandOption: true,
     });
   };
+  // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
   return (yargs: Argv<any>): Argv<any> => {
     return yargs
       .command('run <deployment>', 'Runs the image', deploymentPositional)
