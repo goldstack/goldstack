@@ -262,8 +262,10 @@ export const runTask = async (params: RunParams): Promise<StartTaskResult> => {
 
   console.log(`Task status: ${task.lastStatus}`);
 
+  // biome-ignore lint/suspicious/noExplicitAny: AWS SDK waitFor expects specific string literal types
   const waitForStateRunning: any = 'tasksRunning';
 
+  // biome-ignore lint/suspicious/noExplicitAny: AWS SDK waitFor expects specific parameter shape
   const waitForParams: any = {
     tasks: [taskId],
     cluster: readTerraformStateVariable(deploymentState, 'cluster_name'),
@@ -273,6 +275,7 @@ export const runTask = async (params: RunParams): Promise<StartTaskResult> => {
 
   console.log('Task started up successfully ...');
 
+  // biome-ignore lint/suspicious/noExplicitAny: AWS SDK waitFor expects specific string literal types
   const waitForStateStopped: any = 'tasksStopped';
 
   await ecs.waitFor(waitForStateStopped, waitForParams).promise();

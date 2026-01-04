@@ -69,7 +69,7 @@ export const deploy = async (
 
 export const getDeploymentState = (
   deploymentName: string,
-
+  // biome-ignore lint/suspicious/noExplicitAny: Validation function accepts any input
   deploymentsState: any,
 ): DeploymentState => {
   let state: DeploymentState;
@@ -83,7 +83,7 @@ export const getDeploymentState = (
 
 export const getRepo = (
   deploymentName: string,
-
+  // biome-ignore lint/suspicious/noExplicitAny: Passed to validation function
   deploymentsState?: any,
 ): string => {
   const state = getDeploymentState(deploymentName, deploymentsState);
