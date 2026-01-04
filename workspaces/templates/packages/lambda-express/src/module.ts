@@ -3,6 +3,7 @@ import goldstackConfig from './../goldstack.json';
 
 let testServerPort: null | number = null;
 
+// biome-ignore lint/suspicious/noExplicitAny: Dynamic server instance from require()
 let testServer: any = null;
 
 if (process.env.TEST_SERVER_PORT) {
@@ -53,10 +54,12 @@ export const getEndpoint = (deploymentName?: string): string => {
     return `http://localhost:${port}`;
   }
   const deployment = goldstackConfig.deployments.find(
+    // biome-ignore lint/suspicious/noExplicitAny: Deployment configuration has dynamic properties
     (deployment) => (deployment as any).name === deploymentName,
   );
   if (!deployment) {
     throw new Error(`Cannot find deployment with name ${deploymentName}`);
   }
+  // biome-ignore lint/suspicious/noExplicitAny: Deployment configuration has dynamic properties
   return 'https://' + (deployment as any).configuration.apiDomain;
 };
