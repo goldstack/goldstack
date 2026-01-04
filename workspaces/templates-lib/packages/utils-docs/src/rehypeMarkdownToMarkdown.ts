@@ -76,6 +76,7 @@ export default function rehypeDocs({ filePath }): any {
   // biome-ignore lint/suspicious/noExplicitAny: Complex unified node type
   return function transformer(tree: any): any {
     visit(tree, 'inlineCode', visitInlineCode);
+    // biome-ignore lint/suspicious/noExplicitAny: Unified node type
     visit(tree, (node: any) => node.type === 'link', visitLink);
     return tree;
   };
