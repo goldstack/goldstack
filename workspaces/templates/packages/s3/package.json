@@ -24,12 +24,12 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.958.0",
-    "@goldstack/template-s3": "0.5.53",
+    "@goldstack/template-s3": "0.5.54",
     "@smithy/smithy-client": "^4.10.2",
     "@smithy/types": "^4.11.0"
   },
   "devDependencies": {
-    "@goldstack/template-s3-cli": "0.6.74",
+    "@goldstack/template-s3-cli": "0.6.75",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-aws-cli",
-  "version": "0.4.49",
+  "version": "0.4.50",
   "description": "Wrapper to help with running commands with the AWS cli",
   "keywords": [
     "goldstack",
@@ -41,13 +41,13 @@
   },
   "dependencies": {
     "@aws-sdk/types": "^3.957.0",
-    "@goldstack/infra-aws": "0.4.48",
-    "@goldstack/utils-docker": "0.4.32",
-    "@goldstack/utils-log": "0.3.27",
-    "@goldstack/utils-sh": "0.5.30"
+    "@goldstack/infra-aws": "0.4.49",
+    "@goldstack/utils-docker": "0.4.33",
+    "@goldstack/utils-log": "0.3.28",
+    "@goldstack/utils-sh": "0.5.31"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.20",
+    "@goldstack/utils-git": "0.2.21",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

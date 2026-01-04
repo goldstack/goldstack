@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-terraform-aws",
-  "version": "0.4.64",
+  "version": "0.4.65",
   "description": "Easily deploy Terraform IaC with npm package scripts",
   "keywords": [
     "goldstack",
@@ -39,16 +39,16 @@
     "@aws-sdk/client-dynamodb": "^3.958.0",
     "@aws-sdk/client-s3": "^3.958.0",
     "@aws-sdk/types": "^3.957.0",
-    "@goldstack/infra-aws": "0.4.48",
-    "@goldstack/utils-cli": "0.3.25",
-    "@goldstack/utils-config": "0.4.31",
-    "@goldstack/utils-log": "0.3.27",
-    "@goldstack/utils-package": "0.4.32",
-    "@goldstack/utils-sh": "0.5.30",
-    "@goldstack/utils-terraform": "0.4.61"
+    "@goldstack/infra-aws": "0.4.49",
+    "@goldstack/utils-cli": "0.3.26",
+    "@goldstack/utils-config": "0.4.32",
+    "@goldstack/utils-log": "0.3.28",
+    "@goldstack/utils-package": "0.4.33",
+    "@goldstack/utils-sh": "0.5.31",
+    "@goldstack/utils-terraform": "0.4.62"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.20",
+    "@goldstack/utils-git": "0.2.21",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

@@ -16,7 +16,7 @@ class MyDocument extends Document {
         originalRenderPage({
           enhanceApp:
             // biome-ignore lint/suspicious/noExplicitAny: styled-components enhancement type
-            (App: any) =>
+              (App: any) =>
               // biome-ignore lint/suspicious/noExplicitAny: props type unknown
               (props: any): JSX.Element =>
                 // biome-ignore lint/suspicious/noExplicitAny: styled-components type issue

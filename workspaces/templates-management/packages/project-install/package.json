@@ -21,12 +21,12 @@
     "test-watch": "jest --config=./jest.config.js --watch"
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.4.48",
-    "@goldstack/utils-config": "0.4.31",
-    "@goldstack/utils-log": "0.3.27",
-    "@goldstack/utils-project": "0.4.31",
-    "@goldstack/utils-sh": "0.5.30",
-    "@goldstack/utils-yarn": "0.4.33"
+    "@goldstack/infra-aws": "0.4.49",
+    "@goldstack/utils-config": "0.4.32",
+    "@goldstack/utils-log": "0.3.28",
+    "@goldstack/utils-project": "0.4.32",
+    "@goldstack/utils-sh": "0.5.31",
+    "@goldstack/utils-yarn": "0.4.34"
   },
   "devDependencies": {
     "@goldstack/project-build": "0.1.0",
