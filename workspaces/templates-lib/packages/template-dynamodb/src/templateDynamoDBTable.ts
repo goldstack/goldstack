@@ -28,7 +28,9 @@ import type { DynamoDBDeployment, DynamoDBPackage } from './types/DynamoDBPackag
 const coldStart: Map<string, boolean> = new Map();
 
 export const getTableName = async (
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig: DynamoDBPackage | any,
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   packageSchema: any,
   deploymentName?: string,
 ): Promise<string> => {
@@ -42,7 +44,9 @@ export const getTableName = async (
 };
 
 export const startLocalDynamoDB = async (
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig: DynamoDBPackage | any,
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   packageSchema: any,
   port?: number,
   deploymentName?: string,
@@ -64,7 +68,9 @@ export const startLocalDynamoDB = async (
 };
 
 export const stopAllLocalDynamoDB = async (
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig: DynamoDBPackage | any,
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   packageSchema: any,
   deploymentName?: string,
 ): Promise<void> => {
@@ -86,7 +92,9 @@ export const stopAllLocalDynamoDB = async (
 };
 
 export const stopLocalDynamoDB = async (
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig: DynamoDBPackage | any,
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   packageSchema: any,
   portOrDeploymentName?: number | string,
   deploymentName?: string,
@@ -156,12 +164,16 @@ const createClient = async (
 };
 
 export const connect = async ({
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig,
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   packageSchema,
   migrations,
   deploymentName,
 }: {
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig: DynamoDBPackage | any;
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   packageSchema: any;
   migrations: InputMigrations<DynamoDBContext>;
   deploymentName?: string;
@@ -190,11 +202,15 @@ export const connect = async ({
  * Deletes the DynamoDB table with all its data.
  */
 export const deleteTable = async ({
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig,
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   packageSchema,
   deploymentName,
 }: {
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig: DynamoDBPackage | any;
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   packageSchema: any;
   deploymentName?: string;
 }): Promise<DynamoDBClient> => {
@@ -212,13 +228,17 @@ export const deleteTable = async ({
 
 export const migrateDownTo = async ({
   migrationName,
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig,
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   packageSchema,
   migrations,
   deploymentName,
 }: {
   migrationName: string;
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig: DynamoDBPackage | any;
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   packageSchema: any;
   migrations: InputMigrations<DynamoDBContext>;
   deploymentName?: string;
