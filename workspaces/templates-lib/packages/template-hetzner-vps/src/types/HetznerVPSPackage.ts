@@ -140,7 +140,8 @@ export type HetznerVPSDeployments = HetznerVPSDeployment[];
  *
  */
 export interface HetznerVPSPackageConfiguration extends Configuration {
-  [propName: string]: any; // biome-ignore lint/suspicious/noExplicitAny: Generic configuration interface
+  // biome-ignore lint/suspicious/noExplicitAny: Generic configuration interface
+  [propName: string]: any;
 }
 
 /**
