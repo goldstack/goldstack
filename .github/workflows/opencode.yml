@@ -32,5 +32,8 @@ jobs:
         uses: anomalyco/opencode/github@latest
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         with:
           model: openrouter/deepseek/deepseek-v3.2
+          share: false
+          use_github_token: true
