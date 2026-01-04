@@ -1,4 +1,8 @@
-import { getHetznerUser, readDeploymentFromPackageConfig } from '@goldstack/infra-hetzner';
+import {
+  getHetznerUser,
+  readDeploymentFromPackageConfig,
+  type HetznerDeployment,
+} from '@goldstack/infra-hetzner';
 import {
   type CloudProvider,
   type TerraformDeployment,
@@ -50,7 +54,7 @@ export const terraformHetznerCli = async (
     confirm = args.includes('-y');
   }
 
-  let deployment: any;
+  let deployment: HetznerDeployment;
 
   try {
     deployment = readDeploymentFromPackageConfig({

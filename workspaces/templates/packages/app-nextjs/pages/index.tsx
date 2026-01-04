@@ -5,7 +5,7 @@ import RocketLaunchImg from './../src/img/rocket-launch.jpg';
 import styles from './index.module.css';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const fetcher = (url: string): any => fetch(url).then((r) => r.json());
+const fetcher = (url: string): any => fetch(url).then((r) => r.json()); // biome-ignore lint/suspicious/noExplicitAny: API response type is unknown
 
 const FetchedContent = (): JSX.Element => {
   const { data, error } = useSWR('https://jsonplaceholder.typicode.com/todos/1', fetcher);

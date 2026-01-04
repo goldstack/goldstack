@@ -1,11 +1,24 @@
+import type { CloudFrontRequestEvent, Context, CloudFrontRequestCallback } from 'aws-lambda';
 import manifest from './routes-manifest.json';
 
-export const handler = (event: any, context: any, callback: any): void => {
+interface DynamicRoute {
+  page: string;
+  regex: string;
+  routeKeys?: Record<string, string>;
+  namedRegex?: string;
+}
+
+export const handler = (
+  event: CloudFrontRequestEvent,
+  context: Context,
+  callback: CloudFrontRequestCallback,
+): void => {
   const request = event.Records[0].cf.request;
 
-  const dynamicRoutes: any = manifest.dynamicRoutes;
+  const dynamicRoutes: DynamicRoute[] = manifest.dynamicRoutes;
 
-  const extension = request.uri.indexOf('.') !== -1 ? request.uri.split('.').pop() : '.html';
+  const extension =
+    request.uri.indexOf('.') !== -1 ? (request.uri.split('.').pop() as string) : '.html';
 
   for (const route of dynamicRoutes) {
     if (new RegExp(route.regex).test(request.uri)) {

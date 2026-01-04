@@ -19,7 +19,8 @@ export const handler = (
 
   const dynamicRoutes: DynamicRoute[] = manifest.dynamicRoutes;
 
-  const extension = request.uri.indexOf('.') !== -1 ? (request.uri.split('.').pop() as string) : '.html';
+  const extension =
+    request.uri.indexOf('.') !== -1 ? (request.uri.split('.').pop() as string) : '.html';
 
   for (const route of dynamicRoutes) {
     if (new RegExp(route.regex).test(request.uri)) {
