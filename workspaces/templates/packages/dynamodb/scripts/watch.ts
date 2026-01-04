@@ -24,9 +24,8 @@ import type { Server } from 'http';
   });
   let localAdminServer: undefined | Server;
   await new Promise<void>(async (resolve, _reject) => {
-    // biome-ignore lint/suspicious/noExplicitAny: Type mismatch with dynamodb-admin library
     const localAdmin = await createServer(
-      client as any,
+      client as any, // biome-ignore lint/suspicious/noExplicitAny: Type mismatch with dynamodb-admin library
       new DynamoDB.DocumentClient({ service: client }),
     );
     const adminPort = process.env.DYNAMODB_ADMIN_PORT || '8001';
