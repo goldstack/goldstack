@@ -2,12 +2,12 @@ import type { Deployment } from '@goldstack/infra';
 import type { Package } from '@goldstack/utils-package';
 
 interface EmbeddedPackageConfigConstructorParams {
-  packageSchema?: any;
+  packageSchema?: any; // biome-ignore lint/suspicious/noExplicitAny: JSON schema type is dynamic
   goldstackJson?: Package;
 }
 
 export class EmbeddedPackageConfig<PackageType extends Package, DeploymentType extends Deployment> {
-  packageSchema: any;
+  packageSchema: any; // biome-ignore lint/suspicious/noExplicitAny: JSON schema type is dynamic
   goldstackJson: PackageType;
 
   constructor(params: EmbeddedPackageConfigConstructorParams) {
@@ -20,6 +20,7 @@ export class EmbeddedPackageConfig<PackageType extends Package, DeploymentType e
   }
 
   getPackageSchema(): any {
+    // biome-ignore lint/suspicious/noExplicitAny: JSON schema type is dynamic
     return this.packageSchema;
   }
   getConfig(): PackageType {
