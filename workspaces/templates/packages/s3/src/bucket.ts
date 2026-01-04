@@ -37,7 +37,9 @@ export const getSignedUrl = async <
   InputType extends InputTypesUnion,
   OutputType extends MetadataBearer = MetadataBearer,
 >(
+  // biome-ignore lint/suspicious/noExplicitAny: Client and Command types from smithy-client are not specific enough
   client: Client<any, InputTypesUnion, MetadataBearer, any>,
+  // biome-ignore lint/suspicious/noExplicitAny: Client and Command types from smithy-client are not specific enough
   command: Command<InputType, OutputType, any, InputTypesUnion, MetadataBearer>,
   options: RequestPresigningArguments = {},
 ): Promise<string> => {

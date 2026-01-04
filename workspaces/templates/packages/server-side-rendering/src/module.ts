@@ -1,3 +1,7 @@
+import {
+  type StartServerResult,
+  startServer as startServerUtil,
+} from '@goldstack/utils-aws-http-api-local';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { register } from 'node-css-require';
 import goldstackConfig from './../goldstack.json';
@@ -8,7 +12,7 @@ const cors = process.env.CORS;
 
 let testServerPort: null | number = null;
 
-let testServer: any = null;
+let testServer: StartServerResult | null = null;
 
 if (process.env.TEST_SERVER_PORT) {
   testServerPort = parseInt(process.env.TEST_SERVER_PORT);
@@ -20,10 +24,12 @@ if (process.env.TEST_SERVER_PORT) {
  * @param port - Optional port number to start the server on. Defaults to 3047.
  * @returns A promise that resolves with the test server instance.
  */
-export const startTestServer = async (port?: number): Promise<any> => {
+export const startTestServer = async (port?: number): Promise<StartServerResult> => {
   port = port || 3047;
 
-  const { startServer } = require(excludeInBundle('@goldstack/utils-aws-http-api-local'));
+  const { startServer } = require(excludeInBundle(
+    '@goldstack/utils-aws-http-api-local',
+  ));
   testServer = await startServer({
     port: port,
     routesDir: './src/routes',
@@ -44,8 +50,19 @@ export const startTestServer = async (port?: number): Promise<any> => {
  * @returns A promise that resolves when the server has been stopped.
  */
 export const stopTestServer = async (): Promise<void> => {
-  return testServer.shutdown();
+  if (testServer) {
+    return testServer.shutdown();
+  }
 };
+
+interface Deployment {
+  name: string;
+  configuration: {
+    apiDomain: string;
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+}
 
 /**
  * Gets the endpoint URL for the server-side rendering deployment.
@@ -65,10 +82,11 @@ export const getEndpoint = (deploymentName?: string): string => {
     return `http://localhost:${port}`;
   }
   const deployment = goldstackConfig.deployments.find(
-    (deployment) => (deployment as any).name === deploymentName,
+    (deployment) => (deployment as Deployment).name === deploymentName,
   );
   if (!deployment) {
     throw new Error(`Cannot find deployment with name ${deploymentName}`);
   }
-  return 'https://' + (deployment as any).configuration.apiDomain;
+  return 'https://' + (deployment as Deployment).configuration.apiDomain;
 };
+

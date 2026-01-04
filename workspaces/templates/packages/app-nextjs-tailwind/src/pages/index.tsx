@@ -4,11 +4,15 @@ import ReactIcon from '../icons/react.svg';
 import RocketLaunchImg from '../img/rocket-launch.jpg';
 import styles from './index.module.css';
 
+interface Todo {
+  title: string;
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const fetcher = (url: string): any => fetch(url).then((r) => r.json());
+const fetcher = (url: string): Promise<Todo> => fetch(url).then((r) => r.json());
 
 const FetchedContent = (): JSX.Element => {
-  const { data, error } = useSWR('https://jsonplaceholder.typicode.com/todos/1', fetcher);
+  const { data, error } = useSWR<Todo>('https://jsonplaceholder.typicode.com/todos/1', fetcher);
 
   if (error) {
     return <div>Cannot load data</div>;

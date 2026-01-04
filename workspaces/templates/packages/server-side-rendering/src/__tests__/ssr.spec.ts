@@ -9,7 +9,7 @@ describe('Should create page', () => {
 
   beforeAll(async () => {
     port = await new Promise<number>((resolve, reject) => {
-      getPort(process.env.TEST_SERVER_PORT || '50331', (err: any, p1: number) => {
+      getPort(process.env.TEST_SERVER_PORT || '50331', (err: Error | null, p1: number) => {
         if (err) {
           reject(err);
           return;

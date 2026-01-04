@@ -29,7 +29,7 @@ interface RunParams {
   /** The command to run in the container. */
   command: string[];
   /** Environment variables to set in the container. */
-  env: any;
+  env: { [key: string]: string };
 }
 
 /**

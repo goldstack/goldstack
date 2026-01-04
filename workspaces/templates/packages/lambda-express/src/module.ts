@@ -1,9 +1,10 @@
+import { Server } from 'http';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import goldstackConfig from './../goldstack.json';
 
 let testServerPort: null | number = null;
 
-let testServer: any = null;
+let testServer: Server | null = null;
 
 if (process.env.TEST_SERVER_PORT) {
   testServerPort = parseInt(process.env.TEST_SERVER_PORT);
@@ -28,12 +29,24 @@ export const startTestServer = async (port: number): Promise<void> => {
  */
 export const stopTestServer = async (): Promise<void> => {
   return new Promise<void>((resolve, reject) => {
+    if (!testServer) {
+      return resolve();
+    }
     testServer.close((err) => {
       if (err) reject(err);
       resolve();
     });
   });
 };
+
+interface Deployment {
+  name: string;
+  configuration: {
+    apiDomain: string;
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+}
 
 /**
  * Gets the endpoint URL for the Express.js Lambda deployment.
@@ -53,10 +66,10 @@ export const getEndpoint = (deploymentName?: string): string => {
     return `http://localhost:${port}`;
   }
   const deployment = goldstackConfig.deployments.find(
-    (deployment) => (deployment as any).name === deploymentName,
+    (deployment) => (deployment as Deployment).name === deploymentName,
   );
   if (!deployment) {
     throw new Error(`Cannot find deployment with name ${deploymentName}`);
   }
-  return 'https://' + (deployment as any).configuration.apiDomain;
+  return 'https://' + (deployment as Deployment).configuration.apiDomain;
 };

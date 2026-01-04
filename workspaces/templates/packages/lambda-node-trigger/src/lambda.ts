@@ -12,7 +12,12 @@ import {
   getMockedSQS as templateGetMockedSQS,
 } from '@goldstack/template-sqs';
 import { warn } from '@goldstack/utils-log';
-import type { Context, ScheduledEvent, SQSEvent } from 'aws-lambda';
+import type {
+  Context,
+  ScheduledEvent,
+  SQSMessageAttribute,
+  SQSEvent,
+} from 'aws-lambda';
 import goldstackConfig from './../goldstack.json';
 import goldstackSchema from './../schemas/package.schema.json';
 import { handler as lambdaHandler } from './handler';
@@ -50,7 +55,12 @@ export const getMockedSQS = (): SQSClient => {
           // Other required fields can be filled as needed
           messageId: 'mockMessageId',
           receiptHandle: 'mockReceiptHandle',
-          attributes: {} as any,
+          attributes: {
+            ApproximateReceiveCount: '1',
+            SentTimestamp: '1523232000000',
+            SenderId: '123456789012',
+            ApproximateFirstReceiveTimestamp: '1523232000001',
+          },
           messageAttributes: {},
           md5OfBody: 'mockMd5',
           eventSource: 'aws:sqs',
@@ -60,7 +70,20 @@ export const getMockedSQS = (): SQSClient => {
       ],
     };
 
-    await handler(sqsEvent, {} as any);
+    await handler(sqsEvent, {
+      callbackWaitsForEmptyEventLoop: false,
+      functionName: 'mock-function',
+      functionVersion: '$LATEST',
+      invokedFunctionArn: 'arn:aws:lambda:us-west-2:123456789012:function:mock-function',
+      memoryLimitInMB: '128',
+      awsRequestId: 'mock-request-id',
+      logGroupName: 'mock-log-group',
+      logStreamName: 'mock-log-stream',
+      getRemainingTimeInMillis: () => 30000,
+      done: () => {},
+      fail: () => {},
+      succeed: () => {},
+    });
   };
 
   return templateGetMockedSQS(goldstackConfig, messageSendHandler);

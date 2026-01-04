@@ -30,6 +30,8 @@ export async function renderPage<P extends ReactPropertiesType>(
   });
 }
 
-export function hydrate(c: React.FunctionComponent<any>): void {
+export function hydrate(
+  c: React.FunctionComponent<ReactPropertiesType>,
+): void {
   ssrHydrate(Wrapped({ Component: c }));
 }

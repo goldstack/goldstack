@@ -32,10 +32,10 @@ export const UserSchema = item({
   emailVerified: boolean().required(),
   gs1_pk: string()
     .optional()
-    .link(({ email }: any) => `EMAIL#${email}`),
+    .link(({ email }: { email: string }) => `EMAIL#${email}`),
   gs1_sk: string()
     .optional()
-    .link(({ userId }: any) => `${userId}`),
+    .link(({ userId }: { userId: string }) => `${userId}`),
 });
 
 export type InputUserValue = InputValue<typeof UserSchema>;

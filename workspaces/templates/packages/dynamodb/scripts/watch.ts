@@ -1,3 +1,4 @@
+import { Server } from 'http';
 import { info, warn } from '@goldstack/utils-log';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
 import { createServer } from 'dynamodb-admin';
@@ -21,10 +22,11 @@ import { connect, stopAllLocalDynamoDB, stopLocalDynamoDB } from './../src/table
       secretAccessKey: 'dummy',
     },
   });
-  let localAdminServer: undefined | any;
+  let localAdminServer: undefined | Server;
   await new Promise<void>(async (resolve, _reject) => {
     const localAdmin = await createServer(
-      client as any, // otherwise strange type error occurs
+      // biome-ignore lint/suspicious/noExplicitAny: otherwise strange type error occurs
+      client as any,
       new DynamoDB.DocumentClient({ service: client }),
     );
     const adminPort = process.env.DYNAMODB_ADMIN_PORT || '8001';
