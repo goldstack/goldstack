@@ -9,7 +9,8 @@ export type { Configuration };
  *
  */
 export interface ThisPackageConfiguration extends Configuration {
-  [propName: string]: any; // biome-ignore lint/suspicious/noExplicitAny: Generic configuration interface
+  // biome-ignore lint/suspicious/noExplicitAny: Generic configuration interface
+  [propName: string]: any;
 }
 
 export type { ThisPackageConfiguration as DynamoDBConfiguration };
