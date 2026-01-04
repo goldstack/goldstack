@@ -2,7 +2,9 @@ import fs from 'fs';
 import path, { dirname } from 'path';
 import visit from 'unist-util-visit';
 
+// biome-ignore lint/suspicious/noExplicitAny: Complex unified node type
 export default function rehypeDocs({ filePath, tag: _tag, processor }): any {
+  // biome-ignore lint/suspicious/noExplicitAny: Unified node type
   function visitInlineCode(node: any): void {
     const value = node.value;
     if (value.startsWith('markdown:')) {
@@ -26,6 +28,7 @@ export default function rehypeDocs({ filePath, tag: _tag, processor }): any {
       }
     }
   }
+  // biome-ignore lint/suspicious/noExplicitAny: Unified node type
   function visitLink(node: any): void {
     if (node.children.length > 0 && node.children[0].value === '!embed') {
       const file = node.url;
@@ -71,8 +74,10 @@ export default function rehypeDocs({ filePath, tag: _tag, processor }): any {
     }
   }
 
+  // biome-ignore lint/suspicious/noExplicitAny: Complex unified node type
   return function transformer(tree: any): any {
     visit(tree, 'inlineCode', visitInlineCode);
+    // biome-ignore lint/suspicious/noExplicitAny: Unified node type
     visit(tree, (node: any) => node.type === 'link', visitLink);
     return tree;
   };
