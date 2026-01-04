@@ -7,8 +7,10 @@ import type { DeploymentState, DeploymentsState } from './types/deploymentStates
 
 const deploymentsStatePath = 'src/state/deployments.json';
 
-export const validateDeploymentsState = (deploymentsState: any): DeploymentsState => {
+export const validateDeploymentsState = (
   // biome-ignore lint/suspicious/noExplicitAny: Generic validation function accepts any input
+  deploymentsState: any,
+): DeploymentsState => {
   return validateConfig(deploymentsState, deploymentsStateSchema, {
     errorMessage: 'Cannot validate deployments state.',
   }) as DeploymentsState;
