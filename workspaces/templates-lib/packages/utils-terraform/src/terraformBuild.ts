@@ -1,4 +1,4 @@
-import { readDeploymentState, writeDeploymentState } from '@goldstack/infra';
+import { readDeploymentState, writeDeploymentState, type DeploymentState } from '@goldstack/infra';
 import { debug, fatal, info, warn } from '@goldstack/utils-log';
 import { readPackageConfig, writePackageConfig } from '@goldstack/utils-package';
 import { cd, pwd, read } from '@goldstack/utils-sh';
@@ -598,7 +598,9 @@ export class TerraformBuild {
   isUp = (params: IsUpParams): void => {
     const deploymentsInfo = JSON.parse(read('src/state/deployments.json'));
     const deployment = getDeployment(params.deploymentName);
-    const deploymentState = deploymentsInfo.find((e: any) => e.name === deployment.name);
+    const deploymentState = deploymentsInfo.find(
+      (e: DeploymentState) => e.name === deployment.name,
+    );
     if (!deploymentState || !deploymentState.terraform) {
       info('is-up: false');
     } else {
