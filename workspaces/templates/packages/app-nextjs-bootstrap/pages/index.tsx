@@ -9,7 +9,8 @@ import useSWR from 'swr';
 import BootstrapIcon from './../src/icons/bootstrap.svg';
 import RocketLaunchImage from './../src/img/rocket-launch.jpg';
 
-const fetcher = (url: string): any => fetch(url).then((r) => r.json()); // biome-ignore lint/suspicious/noExplicitAny: API response type is unknown
+// biome-ignore lint/suspicious/noExplicitAny: API response type is unknown
+const fetcher = (url: string): any => fetch(url).then((r) => r.json());
 
 const FetchedContent = (): JSX.Element => {
   const { data, error } = useSWR('https://jsonplaceholder.typicode.com/todos/1', fetcher);

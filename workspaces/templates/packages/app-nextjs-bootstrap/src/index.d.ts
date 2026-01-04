@@ -1,24 +1,29 @@
 declare module '*.svg' {
-  const content: any; // biome-ignore lint/suspicious/noExplicitAny: Asset module declaration
+  // biome-ignore lint/suspicious/noExplicitAny: Asset module declaration
+  const content: any;
   export default content;
 }
 
 declare module '*.png' {
-  const content: any; // biome-ignore lint/suspicious/noExplicitAny: Asset module declaration
+  // biome-ignore lint/suspicious/noExplicitAny: Asset module declaration
+  const content: any;
   export default content;
 }
 
 declare module '*.jpg' {
-  const content: any; // biome-ignore lint/suspicious/noExplicitAny: Asset module declaration
+  // biome-ignore lint/suspicious/noExplicitAny: Asset module declaration
+  const content: any;
   export default content;
 }
 
 declare module '*.jpeg' {
-  const content: any; // biome-ignore lint/suspicious/noExplicitAny: Asset module declaration
+  // biome-ignore lint/suspicious/noExplicitAny: Asset module declaration
+  const content: any;
   export default content;
 }
 
 declare module '*.gif' {
-  const content: any; // biome-ignore lint/suspicious/noExplicitAny: Asset module declaration
+  // biome-ignore lint/suspicious/noExplicitAny: Asset module declaration
+  const content: any;
   export default content;
 }

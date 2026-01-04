@@ -9,7 +9,8 @@ export type Files = Glob[];
 export interface FieldOverwriteConfig {
   path: string;
 
-  value: any; // biome-ignore lint/suspicious/noExplicitAny: Generic configuration value that can be any JSON type
+  // biome-ignore lint/suspicious/noExplicitAny: Generic configuration value that can be any JSON type
+  value: any;
 }
 
 export interface FileOverwriteConfiguration {
