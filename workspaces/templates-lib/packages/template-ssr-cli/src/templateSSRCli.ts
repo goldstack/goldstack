@@ -40,7 +40,7 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
       .command(
         'build <deployment> [route]',
         'Build deployment packages',
-        (yargs: Argv<any>): Argv<any> => {
+        (yargs: Argv<unknown>): Argv<unknown> => {
           return yargs
             .positional('deployment', {
               description: 'Name of the deployment where the package should be deployed to.',
@@ -57,7 +57,7 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
       .command(
         'deploy <deployment> [route]',
         'Deploy to specified deployment',
-        (yargs: Argv<any>): Argv<any> => {
+        (yargs: Argv<unknown>): Argv<unknown> => {
           return yargs
             .positional('deployment', {
               description: 'Name of the deployment where the package should be deployed to.',

@@ -11,9 +11,9 @@ import { forceLogout, refreshTokenStorage, setRefreshTokenStorage } from './stat
  * Performs a redirect operation for authentication
  */
 export async function operationWithRedirect(args: {
-  goldstackConfig: any;
-  packageSchema: any;
-  deploymentsOutput: any;
+  goldstackConfig: unknown;
+  packageSchema: unknown;
+  deploymentsOutput: unknown;
   deploymentName?: string;
   operation: 'authorize' | 'signup';
 }): Promise<ClientAuthResult | undefined> {

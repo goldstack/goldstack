@@ -33,12 +33,15 @@ export function createSQSClient({
     const mockClient_ = mockClient(sqsClient);
     mockClientsByUrl.set(queueUrl, mockClient_);
 
+    // biome-ignore lint/suspicious/noExplicitAny: monkey patching sqsClient
     (sqsClient as any)._goldstackSentRequests = [];
+    // biome-ignore lint/suspicious/noExplicitAny: monkey patching sqsClient
     (sqsClient as any)._goldstackSentBatchRequests = [];
 
     mockClient_
       .on(SendMessageCommand)
-      .callsFake(async (input: SendMessageRequest): Promise<any> => {
+      .callsFake(async (input: SendMessageRequest): Promise<SendMessageCommandOutput> => {
+                // biome-ignore lint/suspicious/noExplicitAny: monkey patching sqsClient
         (sqsClient as any)._goldstackSentRequests.push(input);
         const handler = messageHandlers.get(input.QueueUrl || '');
         if (handler) {
@@ -56,7 +59,8 @@ export function createSQSClient({
 
     mockClient_
       .on(SendMessageBatchCommand)
-      .callsFake(async (input: SendMessageBatchRequest): Promise<any> => {
+      .callsFake(async (input: SendMessageBatchRequest): Promise<SendMessageBatchCommandOutput> => {
+                // biome-ignore lint/suspicious/noExplicitAny: monkey patching sqsClient
         (sqsClient as any)._goldstackSentBatchRequests.push(input);
         const handler = messageHandlers.get(input.QueueUrl || '');
         if (handler && input.Entries) {

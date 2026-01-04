@@ -12,9 +12,9 @@ export interface GetCookieSettingsResult {
  * Gets cookie settings for the current deployment
  */
 export function getCookieSettings(args: {
-  goldstackConfig: any;
-  packageSchema: any;
-  deploymentsOutput: any;
+  goldstackConfig: unknown;
+  packageSchema: unknown;
+  deploymentsOutput: unknown;
   deploymentName?: string | undefined;
 }): GetCookieSettingsResult {
   const deploymentName = getDeploymentName(args.deploymentName);

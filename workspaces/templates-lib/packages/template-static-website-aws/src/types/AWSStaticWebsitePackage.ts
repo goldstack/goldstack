@@ -60,7 +60,7 @@ export interface ThisDeployment extends Deployment, AWSDeployment, TerraformDepl
  *
  */
 export interface ThisPackageConfiguration extends Configuration {
-  [propName: string]: any;
+  [propName: string]: unknown;
 }
 
 /**

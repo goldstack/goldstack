@@ -11,9 +11,9 @@ function eraseCookie(name: string) {
  * Will clear all cached variables and redirect user to the sign in page
  */
 export async function performLogout(args: {
-  goldstackConfig: any;
-  packageSchema: any;
-  deploymentsOutput: any;
+  goldstackConfig: unknown;
+  packageSchema: unknown;
+  deploymentsOutput: unknown;
   deploymentName?: string;
 }) {
   if (typeof window === 'undefined') {

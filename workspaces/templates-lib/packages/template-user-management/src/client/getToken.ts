@@ -14,11 +14,11 @@ export interface GetTokenResults {
 }
 
 export async function getToken(args: {
-  goldstackConfig: any;
+  goldstackConfig: unknown;
   code?: string;
   refreshToken?: string;
-  packageSchema: any;
-  deploymentsOutput: any;
+  packageSchema: unknown;
+  deploymentsOutput: unknown;
   deploymentName?: string;
 }): Promise<GetTokenResults | undefined> {
   const deploymentName = getDeploymentName(args.deploymentName);

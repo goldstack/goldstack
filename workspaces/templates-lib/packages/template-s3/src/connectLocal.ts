@@ -20,8 +20,8 @@ export type CreateS3ClientSignature = (options: {
  * Gets the package configuration and deployment for S3 operations
  */
 const getPackageConfigAndDeployment = (
-  goldstackConfig: any,
-  packageSchema: any,
+  goldstackConfig: unknown,
+  packageSchema: unknown,
   deploymentName?: string,
 ): {
   packageConfig: EmbeddedPackageConfig<S3Package, S3Deployment>;
@@ -62,7 +62,7 @@ const getPackageConfigAndDeployment = (
 /**
  * Gets a mocked S3 client for local development
  */
-export const getMockedS3 = (goldstackConfig: any, bucket?: string): S3Client => {
+export const getMockedS3 = (goldstackConfig: unknown, bucket?: string): S3Client => {
   const createS3Client: CreateS3ClientSignature = require(
     excludeInBundle('mock-aws-s3-v3'),
   ).createS3Client;
@@ -72,7 +72,8 @@ export const getMockedS3 = (goldstackConfig: any, bucket?: string): S3Client => 
     bucket: bucket || getLocalBucketName(goldstackConfig),
   });
 
-  (client as any)._goldstackIsMocked = true;
+      // biome-ignore lint/suspicious/noExplicitAny: monkey patching client
+    (client as any)._goldstackIsMocked = true;
   s3MockUsed = true;
   return client;
 };
@@ -80,14 +81,14 @@ export const getMockedS3 = (goldstackConfig: any, bucket?: string): S3Client => 
 /**
  * Gets the local bucket name for a given configuration
  */
-export function getLocalBucketName(goldstackConfig: any): string {
+export function getLocalBucketName(goldstackConfig: unknown): string {
   return `local-${goldstackConfig.name}`;
 }
 
 /**
  * Gets the local bucket URL for a given configuration
  */
-export function getLocalBucketUrl(goldstackConfig: any): string {
+export function getLocalBucketUrl(goldstackConfig: unknown): string {
   return `http://localhost:4566/${getLocalBucketName(goldstackConfig)}`;
 }
 
@@ -95,8 +96,8 @@ export function getLocalBucketUrl(goldstackConfig: any): string {
  * Connects to S3, using a mocked client for local deployment or a real S3 client for other environments
  */
 export async function connect(
-  goldstackConfig: any,
-  packageSchema: any,
+  goldstackConfig: unknown,
+  packageSchema: unknown,
   bucket?: string,
 ): Promise<S3Client> {
   const { deployment } = getPackageConfigAndDeployment(goldstackConfig, packageSchema);
@@ -117,10 +118,11 @@ export async function connect(
 }
 
 export const isMocked = (client: S3Client): boolean => {
+  // biome-ignore lint/suspicious/noExplicitAny: monkey patching client
   return (client as any)._goldstackIsMocked === true;
 };
 
-export function resetMocksIfRequired(deploymentName: string | undefined, goldstackConfig: any) {
+export function resetMocksIfRequired(deploymentName: string | undefined, goldstackConfig: unknown) {
   if (s3MockUsed) {
     warn(
       'Initialising a real S3 bucket after a mocked one had been created. All mocks are reset.',

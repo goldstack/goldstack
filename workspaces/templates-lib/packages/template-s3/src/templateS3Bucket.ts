@@ -14,8 +14,8 @@ import { getLocalBucketName, getMockedS3, isMocked, resetMocksIfRequired } from 
 import type { S3Deployment, S3Package } from './types/S3Package';
 
 export const connect = async (
-  goldstackConfig: any,
-  packageSchema: any,
+  goldstackConfig: unknown,
+  packageSchema: unknown,
   deploymentName?: string,
 ): Promise<S3Client> => {
   const packageConfig = new EmbeddedPackageConfig<S3Package, S3Deployment>({
@@ -61,19 +61,21 @@ export const getSignedUrlS3 = async <
   InputType extends InputTypesUnion,
   OutputType extends MetadataBearer = MetadataBearer,
 >(
+    // biome-ignore lint/suspicious/noExplicitAny: Client and Command types from smithy-client are not specific enough
   client: Client<any, InputTypesUnion, MetadataBearer, any>,
+  // biome-ignore lint/suspicious/noExplicitAny: Client and Command types from smithy-client are not specific enough
   command: Command<InputType, OutputType, any, InputTypesUnion, MetadataBearer>,
   options: RequestPresigningArguments = {},
 ): Promise<string> => {
-  if (isMocked(client as any)) {
+  if (isMocked(client as S3Client)) {
     return 'http://localhost/mockedAWSS3';
   }
   return getSignedUrl(client, command, options);
 };
 
 export const getBucketName = async (
-  goldstackConfig: any,
-  packageSchema: any,
+  goldstackConfig: unknown,
+  packageSchema: unknown,
   deploymentName?: string,
 ): Promise<string> => {
   const packageConfig = new EmbeddedPackageConfig<S3Package, S3Deployment>({

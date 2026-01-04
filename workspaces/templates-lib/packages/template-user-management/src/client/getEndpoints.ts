@@ -8,10 +8,10 @@ import { getDeploymentName, getDeploymentsOutput } from '../userManagementConfig
 import { getCodeChallenge } from './getCodeVerifier';
 
 export async function getEndpoint(args: {
-  goldstackConfig: any;
+  goldstackConfig: unknown;
   endpoint: Endpoint;
-  packageSchema: any;
-  deploymentsOutput: any;
+  packageSchema: unknown;
+  deploymentsOutput: unknown;
   deploymentName?: string;
 }): Promise<string> {
   const deploymentName = getDeploymentName(args.deploymentName);

@@ -20,9 +20,9 @@ function setCookie(name: string, value: string, minutes: number, domain: string,
  * Gets and persists authentication tokens
  */
 export async function getAndPersistToken(args: {
-  goldstackConfig: any;
-  packageSchema: any;
-  deploymentsOutput: any;
+  goldstackConfig: unknown;
+  packageSchema: unknown;
+  deploymentsOutput: unknown;
   deploymentName?: string | undefined;
   code?: string;
   refreshToken?: string;

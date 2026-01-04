@@ -9,9 +9,9 @@ import type { ClientAuthResult } from './getLoggedInUser';
  * Handles the redirect callback from the authentication provider
  */
 export async function handleRedirectCallback(args: {
-  goldstackConfig: any;
-  packageSchema: any;
-  deploymentsOutput: any;
+  goldstackConfig: unknown;
+  packageSchema: unknown;
+  deploymentsOutput: unknown;
   deploymentName?: string;
 }): Promise<ClientAuthResult | undefined> {
   // if running on the server, such as for rendering a page for SSR, client auth

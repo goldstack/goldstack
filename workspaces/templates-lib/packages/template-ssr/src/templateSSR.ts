@@ -71,11 +71,12 @@ export const createLambdaAPIDeploymentConfiguration = (
   };
 };
 
-export const hydrate = (c: React.FunctionComponent<any>): void => {
+export const hydrate = (c: React.FunctionComponent<ReactPropertiesType>): void => {
   if (isServer()) return;
 
   const node = document.getElementById('root');
   if (node) {
+        // biome-ignore lint/suspicious/noExplicitAny: window.initialProperties is injected by server-side rendering
     ReactDOM.hydrateRoot(node, React.createElement(c, (window as any).initialProperties));
   }
 

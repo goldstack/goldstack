@@ -39,10 +39,9 @@ export type Endpoint =
   | 'logout'; // https://docs.aws.amazon.com/cognito/latest/developerguide/logout-endpoint.html
 
 export async function getEndpoint(args: {
-  goldstackConfig: any;
-  endpoint: Endpoint;
-  packageSchema: any;
-  deploymentsOutput: any;
+  goldstackConfig: unknown;
+packageSchema: unknown;
+  deploymentsOutput: unknown;
   deploymentName?: string;
 }): Promise<string> {
   return getEndpointLib(args);
@@ -53,7 +52,7 @@ export async function getToken(args: {
   code?: string;
   refreshToken?: string;
   packageSchema: any;
-  deploymentsOutput: any;
+  deploymentsOutput: unknown;
   deploymentName?: string;
 }): Promise<GetTokenResults | undefined> {
   return cognitoClientAuth.getToken(args);
@@ -68,7 +67,7 @@ export async function getToken(args: {
 export async function loginWithRedirect(args: {
   goldstackConfig: any;
   packageSchema: any;
-  deploymentsOutput: any;
+  deploymentsOutput: unknown;
   deploymentName?: string;
 }): Promise<ClientAuthResult | undefined> {
   return operationWithRedirect({ ...args, operation: 'authorize' });
@@ -83,7 +82,7 @@ export async function loginWithRedirect(args: {
 export async function signUpWithRedirect(args: {
   goldstackConfig: any;
   packageSchema: any;
-  deploymentsOutput: any;
+  deploymentsOutput: unknown;
   deploymentName?: string;
 }): Promise<ClientAuthResult | undefined> {
   return operationWithRedirect({ ...args, operation: 'signup' });

@@ -32,7 +32,9 @@ export function createSQSClient({
 // Helper function to retrieve sent message requests from the mocked SQS client
 export const getSentMessageRequests = (sqsClient: SQSClient): SendMessageRequest[] => {
   // Check if the _goldstackSentRequests property exists and return the array of sent requests
+    // biome-ignore lint/suspicious/noExplicitAny: monkey patching sqsClient
   if ((sqsClient as any)._goldstackSentRequests) {
+        // biome-ignore lint/suspicious/noExplicitAny: monkey patching sqsClient
     return (sqsClient as any)._goldstackSentRequests;
   }
 
@@ -43,7 +45,9 @@ export const getSentMessageRequests = (sqsClient: SQSClient): SendMessageRequest
 // Helper function to retrieve sent message requests from the mocked SQS client
 export const getSentMessageBatchRequests = (sqsClient: SQSClient): SendMessageRequest[] => {
   // Check if the _goldstackSentRequests property exists and return the array of sent requests
+    // biome-ignore lint/suspicious/noExplicitAny: monkey patching sqsClient
   if ((sqsClient as any)._goldstackSentBatchRequests) {
+        // biome-ignore lint/suspicious/noExplicitAny: monkey patching sqsClient
     return (sqsClient as any)._goldstackSentBatchRequests;
   }
 

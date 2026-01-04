@@ -140,7 +140,7 @@ export type HetznerVPSDeployments = HetznerVPSDeployment[];
  *
  */
 export interface HetznerVPSPackageConfiguration extends Configuration {
-  [propName: string]: any;
+  [propName: string]: unknown;
 }
 
 /**

@@ -53,7 +53,7 @@ export type EmailSendDeployments = EmailSendDeployment[];
  *
  */
 export interface EmailSendPackageConfiguration extends Configuration {
-  [propName: string]: any;
+  [propName: string]: unknown;
 }
 
 /**

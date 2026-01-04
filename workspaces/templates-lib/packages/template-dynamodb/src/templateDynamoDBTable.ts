@@ -28,8 +28,8 @@ import type { DynamoDBDeployment, DynamoDBPackage } from './types/DynamoDBPackag
 const coldStart: Map<string, boolean> = new Map();
 
 export const getTableName = async (
-  goldstackConfig: DynamoDBPackage | any,
-  packageSchema: any,
+  goldstackConfig: DynamoDBPackage | unknown,
+  packageSchema: unknown,
   deploymentName?: string,
 ): Promise<string> => {
   deploymentName = getDeploymentName(deploymentName);
@@ -42,8 +42,8 @@ export const getTableName = async (
 };
 
 export const startLocalDynamoDB = async (
-  goldstackConfig: DynamoDBPackage | any,
-  packageSchema: any,
+  goldstackConfig: DynamoDBPackage | unknown,
+  packageSchema: unknown,
   port?: number,
   deploymentName?: string,
 ): Promise<void> => {
@@ -64,8 +64,8 @@ export const startLocalDynamoDB = async (
 };
 
 export const stopAllLocalDynamoDB = async (
-  goldstackConfig: DynamoDBPackage | any,
-  packageSchema: any,
+  goldstackConfig: DynamoDBPackage | unknown,
+  packageSchema: unknown,
   deploymentName?: string,
 ): Promise<void> => {
   deploymentName = getDeploymentName(deploymentName);
@@ -86,8 +86,8 @@ export const stopAllLocalDynamoDB = async (
 };
 
 export const stopLocalDynamoDB = async (
-  goldstackConfig: DynamoDBPackage | any,
-  packageSchema: any,
+  goldstackConfig: DynamoDBPackage | unknown,
+  packageSchema: unknown,
   portOrDeploymentName?: number | string,
   deploymentName?: string,
 ): Promise<void> => {
@@ -161,8 +161,8 @@ export const connect = async ({
   migrations,
   deploymentName,
 }: {
-  goldstackConfig: DynamoDBPackage | any;
-  packageSchema: any;
+  goldstackConfig: DynamoDBPackage | unknown;
+  packageSchema: unknown,
   migrations: InputMigrations<DynamoDBContext>;
   deploymentName?: string;
 }): Promise<DynamoDBClient> => {
@@ -194,8 +194,8 @@ export const deleteTable = async ({
   packageSchema,
   deploymentName,
 }: {
-  goldstackConfig: DynamoDBPackage | any;
-  packageSchema: any;
+  goldstackConfig: DynamoDBPackage | unknown;
+  packageSchema: unknown,
   deploymentName?: string;
 }): Promise<DynamoDBClient> => {
   deploymentName = getDeploymentName(deploymentName);
@@ -218,8 +218,8 @@ export const migrateDownTo = async ({
   deploymentName,
 }: {
   migrationName: string;
-  goldstackConfig: DynamoDBPackage | any;
-  packageSchema: any;
+  goldstackConfig: DynamoDBPackage | unknown;
+  packageSchema: unknown,
   migrations: InputMigrations<DynamoDBContext>;
   deploymentName?: string;
 }): Promise<DynamoDBClient> => {

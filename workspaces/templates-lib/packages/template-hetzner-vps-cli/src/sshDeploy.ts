@@ -90,7 +90,10 @@ const scpUpload = (localPath: string, remotePath: string, host: string): string 
 export const sshDeploy = async (deployment: HetznerVPSDeployment) => {
   try {
     const deploymentsInfo = JSON.parse(read('src/state/deployments.json'));
-    const deploymentState = deploymentsInfo.find((e: any) => e.name === deployment.name);
+    const deploymentState = deploymentsInfo.find(
+      // biome-ignore lint/suspicious/noExplicitAny: e is assumed to have a name property
+      (e: { name: string; terraform: any }) => e.name === deployment.name,
+    );
     if (!deploymentState || !deploymentState.terraform) {
       error('Cannot build ' + deployment.name + ' since infrastructure is not provisioned.');
       throw new Error(`No deployment state found for ${deployment.name}`);

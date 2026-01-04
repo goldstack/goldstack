@@ -32,7 +32,7 @@ export async function connectWithCognito({
   deploymentsOutput,
   deploymentName,
 }: {
-  goldstackConfig: any;
+  goldstackConfig: unknown;
   packageSchema: any;
   deploymentsOutput: any;
   deploymentName?: string;

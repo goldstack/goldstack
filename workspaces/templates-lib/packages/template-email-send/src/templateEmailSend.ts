@@ -36,5 +36,6 @@ export const createSESClient: CreateSESClientType = (sesClient) => {
  * @returns {SendEmailRequest[]} An array of `SendEmailRequest` objects representing the sent emails.
  */
 export function getSentEmailRequests(sesClient: SESClient): SendEmailRequest[] {
+  // biome-ignore lint/suspicious/noExplicitAny: monkey patching sesClient
   return (sesClient as any)._goldstackSentRequests;
 }

@@ -28,7 +28,7 @@ export type MessageCallback = (input: SendMessageRequest) => Promise<void> | voi
  * @param {MessageCallback} [onMessageSend] - Optional callback to handle the message sent event.
  * @returns {SQSClient} The mocked SQS client.
  */
-export const getMockedSQS = (goldstackConfig: any, onMessageSend?: MessageCallback): SQSClient => {
+export const getMockedSQS = (goldstackConfig: unknown, onMessageSend?: MessageCallback): SQSClient => {
   const createSQSClient: CreateSQSClientSignature = require(
     excludeInBundle('./mockedSQS'),
   ).createSQSClient;
@@ -45,7 +45,7 @@ export const getMockedSQS = (goldstackConfig: any, onMessageSend?: MessageCallba
  * @returns {SQSClient} The mocked SQS client.
  */
 export const getMockedDLQSQS = (
-  goldstackConfig: any,
+  goldstackConfig: unknown,
   onMessageSend?: MessageCallback,
 ): SQSClient => {
   const createSQSClient: CreateSQSClientSignature = require(
@@ -66,8 +66,8 @@ export const getMockedDLQSQS = (
  * @returns {{ packageConfig: EmbeddedPackageConfig<SqsPackage, SqsDeployment>, deployment: SqsDeployment }} Package config and deployment
  */
 const getPackageConfigAndDeployment = (
-  goldstackConfig: any,
-  packageSchema: any,
+  goldstackConfig: unknown,
+  packageSchema: unknown,
   deploymentName?: string,
 ): {
   packageConfig: EmbeddedPackageConfig<SqsPackage, SqsDeployment>;
@@ -112,9 +112,9 @@ const getPackageConfigAndDeployment = (
  * @returns {Promise<SQSClient>} The SQS client.
  */
 export const connect = async (
-  goldstackConfig: any,
-  packageSchema: any,
-  _deploymentsData: any,
+  goldstackConfig: unknown,
+  packageSchema: unknown,
+  _deploymentsData: unknown,
   deploymentName?: string,
 ): Promise<SQSClient> => {
   const { deployment } = getPackageConfigAndDeployment(
@@ -153,8 +153,11 @@ const getAwsUser = async (awsUserName: string): Promise<AwsCredentialIdentityPro
  * @param {string} deploymentName - The deployment name
  * @returns {any} The deployment data
  */
-const getDeploymentData = (deploymentsData: any, deploymentName: string): any => {
-  const deployment = deploymentsData.find((d: any) => d.name === deploymentName);
+const getDeploymentData = (deploymentsData: unknown, deploymentName: string): DeploymentState => {
+  const deployment = deploymentsData.find(
+    // biome-ignore lint/suspicious/noExplicitAny: d is assumed to have a name property
+    (d: { name: string; terraform: any }) => d.name === deploymentName,
+  );
   if (!deployment) {
     throw new Error(`Cannot find deployment ${deploymentName} in deployments data`);
   }
@@ -170,9 +173,9 @@ const getDeploymentData = (deploymentsData: any, deploymentName: string): any =>
  * @returns {Promise<string>} The name of the SQS queue.
  */
 export const getSQSQueueName = async (
-  _goldstackConfig: any,
-  _packageSchema: any,
-  deploymentsData: any,
+  _goldstackConfig: unknown,
+  _packageSchema: unknown,
+  deploymentsData: unknown,
   deploymentName?: string,
 ): Promise<string> => {
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
@@ -194,9 +197,9 @@ export const getSQSQueueName = async (
  * @returns {Promise<string>} The URL of the SQS queue.
  */
 export const getSQSQueueUrl = async (
-  goldstackConfig: any,
-  _packageSchema: any,
-  deploymentsData: any,
+  goldstackConfig: unknown,
+  _packageSchema: unknown,
+  deploymentsData: unknown,
   deploymentName?: string,
 ): Promise<string> => {
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
@@ -218,9 +221,9 @@ export const getSQSQueueUrl = async (
  * @returns {Promise<string>} The name of the SQS DLQ queue.
  */
 export const getSQSDLQQueueName = async (
-  _goldstackConfig: any,
-  _packageSchema: any,
-  deploymentsData: any,
+  _goldstackConfig: unknown,
+  _packageSchema: unknown,
+  deploymentsData: unknown,
   deploymentName?: string,
 ): Promise<string> => {
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
@@ -242,9 +245,9 @@ export const getSQSDLQQueueName = async (
  * @returns {Promise<string>} The URL of the SQS DLQ queue.
  */
 export const getSQSDLQQueueUrl = async (
-  goldstackConfig: any,
-  _packageSchema: any,
-  deploymentsData: any,
+  goldstackConfig: unknown,
+  _packageSchema: unknown,
+  deploymentsData: unknown,
   deploymentName?: string,
 ): Promise<string> => {
   deploymentName = deploymentName || getEnvVar('GOLDSTACK_DEPLOYMENT');
@@ -257,10 +260,10 @@ export const getSQSDLQQueueUrl = async (
 
   return deployment.terraform.sqs_dlq_queue_url.value;
 };
-function getLocalSQSDLQUrl(goldstackConfig: any): string {
+function getLocalSQSDLQUrl(goldstackConfig: unknown): string {
   return `http://localhost:4566/000000000000/${goldstackConfig.name}-dlq`;
 }
 
-function getLocalSQSQueueUrl(goldstackConfig: any): string {
+function getLocalSQSQueueUrl(goldstackConfig: unknown): string {
   return 'http://localhost:4566/000000000000/' + goldstackConfig.name;
 }
