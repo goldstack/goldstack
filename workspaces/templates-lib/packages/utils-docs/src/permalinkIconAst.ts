@@ -1,4 +1,3 @@
-// @ts-ignore
 import raw from 'rehype-raw';
 import unified from 'unified';
 

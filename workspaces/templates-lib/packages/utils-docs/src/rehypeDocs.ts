@@ -1,6 +1,4 @@
-// @ts-ignore
 import GithubSlugger from 'github-slugger';
-// @ts-ignore
 import toStringMdCast from 'mdast-util-to-string';
 import visit from 'unist-util-visit';
 import permalinkIcon from './permalinkIconAst';
