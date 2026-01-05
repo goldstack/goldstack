@@ -28,7 +28,7 @@ export type Name = string;
  * @title Configuration
  */
 export interface PackageConfiguration {
-  [propName: string]: unknown;
+  [propName: string]: any;
 }
 
 /**

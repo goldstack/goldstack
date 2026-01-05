@@ -7,9 +7,7 @@ import type { DeploymentState, DeploymentsState } from './types/deploymentStates
 
 const deploymentsStatePath = 'src/state/deployments.json';
 
-export const validateDeploymentsState = (
-  deploymentsState: unknown,
-): DeploymentsState => {
+export const validateDeploymentsState = (deploymentsState: any): DeploymentsState => {
   return validateConfig(deploymentsState as object, deploymentsStateSchema, {
     errorMessage: 'Cannot validate deployments state.',
   }) as DeploymentsState;
@@ -103,13 +101,13 @@ export const writeDeploymentState = (
 export const readTerraformStateVariable = (
   deploymentState: DeploymentState,
   variableName: string,
-): unknown => {
+): any => {
   if (!deploymentState.terraform) {
     throw new Error(
       `Terraform configuration not defined in deployment state for ${deploymentState.name}. Make sure to stand up the infrastructure for this module using 'yarn infra up'.`,
     );
   }
-  const tfVar = deploymentState.terraform[variableName] as { value: unknown };
+  const tfVar = deploymentState.terraform[variableName];
   if (!tfVar) {
     throw new Error(`Terraform variable '${variableName}' not defined in deployment state.`);
   }

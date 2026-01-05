@@ -9,7 +9,7 @@ export { resolveMarkdown } from './resolveMarkdown';
 
 export interface RenderPageResult {
   html: string;
-  data: unknown;
+  data: any;
 }
 
 export const renderPage = async (filePath: string): Promise<RenderPageResult> => {
