@@ -10,8 +10,7 @@ const isJsonString = (str: string): boolean => {
   }
 };
 
-// biome-ignore lint/suspicious/noExplicitAny: Generic utility function for formatting Terraform values
-const formatTerraformValue = (value: any): string => {
+const formatTerraformValue = (value: unknown): string => {
   if (typeof value === 'string') {
     return `"${value.replace(/"/g, '\\"')}"`;
   }

@@ -8,10 +8,9 @@ import type { DeploymentState, DeploymentsState } from './types/deploymentStates
 const deploymentsStatePath = 'src/state/deployments.json';
 
 export const validateDeploymentsState = (
-  // biome-ignore lint/suspicious/noExplicitAny: Generic validation function accepts any input
-  deploymentsState: any,
+  deploymentsState: unknown,
 ): DeploymentsState => {
-  return validateConfig(deploymentsState, deploymentsStateSchema, {
+  return validateConfig(deploymentsState as object, deploymentsStateSchema, {
     errorMessage: 'Cannot validate deployments state.',
   }) as DeploymentsState;
 };
@@ -104,14 +103,13 @@ export const writeDeploymentState = (
 export const readTerraformStateVariable = (
   deploymentState: DeploymentState,
   variableName: string,
-  // biome-ignore lint/suspicious/noExplicitAny: Returns dynamic Terraform variable values
-): any => {
+): unknown => {
   if (!deploymentState.terraform) {
     throw new Error(
       `Terraform configuration not defined in deployment state for ${deploymentState.name}. Make sure to stand up the infrastructure for this module using 'yarn infra up'.`,
     );
   }
-  const tfVar = deploymentState.terraform[variableName];
+  const tfVar = deploymentState.terraform[variableName] as { value: unknown };
   if (!tfVar) {
     throw new Error(`Terraform variable '${variableName}' not defined in deployment state.`);
   }
