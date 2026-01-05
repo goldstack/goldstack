@@ -30605,6 +30605,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/utils-typescript-references", "workspace:workspaces/utils/packages/utils-typescript-references"],\
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
+          ["@types/rimraf", "npm:4.0.5"],\
           ["nodemon", "npm:2.0.20"],\
           ["react", "npm:19.2.3"],\
           ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.2"],\
