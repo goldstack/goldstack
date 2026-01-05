@@ -5,7 +5,7 @@ import {
   S3Client,
 } from '@aws-sdk/client-s3';
 
-const bucketsToDelete = [];
+const bucketsToDelete: string[] = [];
 
 (async () => {
   const deleteAllObjectsFromBucket = async (s3: S3Client, bucketName: string): Promise<void> => {

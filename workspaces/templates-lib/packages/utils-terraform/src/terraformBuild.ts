@@ -106,7 +106,7 @@ export const convertFromPythonVariable = (variableName: string): string => {
 };
 
 export const getVariablesFromProperties = (
-  properties: object,
+  properties: Record<string, any>,
   terraformVariables?: TerraformVariables,
 ): Variables => {
   const vars: Variables = [];
@@ -138,7 +138,7 @@ export const parseVariables = (hcl: string): string[] => {
   return variableNames;
 };
 
-export const getVariablesFromHCL = (properties: object): Variables => {
+export const getVariablesFromHCL = (properties: Record<string, any>): Variables => {
   if (!fs.existsSync('./variables.tf')) {
     warn(
       `No variables.tf file exists in ${pwd()}. Goldstack only supports declaring variables in a variables.tf file.`,

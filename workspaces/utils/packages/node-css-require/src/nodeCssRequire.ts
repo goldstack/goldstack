@@ -72,7 +72,7 @@ export function compileCssSync(
   const plugins = [
     postcssModulesSync({
       generateScopedName: generateScopedName,
-      getJSON: (tokens) => {
+      getJSON: (tokens: any) => {
         exportedTokens = tokens;
       },
     }),

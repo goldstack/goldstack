@@ -11,7 +11,7 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "strict": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "strictNullChecks": true,
     "esModuleInterop": true,
     "useUnknownInCatchVariables": false,

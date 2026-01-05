@@ -218,7 +218,7 @@ export function createS3Client({
               stream = operation.createReadStream();
               return stream;
             },
-            pipe: (destination: WriteStream, options?) => {
+            pipe: (destination: WriteStream, options?: { end?: boolean }) => {
               stream = operation.createReadStream();
               return stream.pipe(destination, options);
             },

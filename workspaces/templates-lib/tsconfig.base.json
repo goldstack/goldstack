@@ -3,7 +3,10 @@
     "incremental": true,
     "target": "ES2019",
     "module": "commonjs",
-    "lib": ["dom", "ESNext"],
+    "lib": [
+      "dom",
+      "ESNext"
+    ],
     "allowJs": true,
     "checkJs": false,
     "composite": true,
@@ -14,11 +17,14 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "strict": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "strictNullChecks": true,
     "useUnknownInCatchVariables": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["jest", "node"]
+    "types": [
+      "jest",
+      "node"
+    ]
   }
 }

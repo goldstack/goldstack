@@ -3,7 +3,15 @@ import path, { dirname } from 'path';
 import visit from 'unist-util-visit';
 
 // biome-ignore lint/suspicious/noExplicitAny: Complex unified node type
-export default function rehypeDocs({ filePath, tag: _tag, processor }): any {
+export default function rehypeDocs({
+  filePath,
+  tag: _tag,
+  processor,
+}: {
+  filePath: any;
+  tag: any;
+  processor: any;
+}): any {
   // biome-ignore lint/suspicious/noExplicitAny: Unified node type
   function visitInlineCode(node: any): void {
     const value = node.value;

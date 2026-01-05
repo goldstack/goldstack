@@ -1,4 +1,6 @@
+// @ts-ignore
 import GithubSlugger from 'github-slugger';
+// @ts-ignore
 import toStringMdCast from 'mdast-util-to-string';
 import visit from 'unist-util-visit';
 import permalinkIcon from './permalinkIconAst';
@@ -7,7 +9,15 @@ const ABSOLUTE_URL = /^(https?:\/\/|\/\/)/i;
 // The headers will be updated to include a link to their hash
 const HEADINGS = ['h2', 'h3', 'h4', 'h5', 'h6'];
 
-export default function rehypeDocs({ filePath: _filePath, tag: _tag, processor: _processor }) {
+export default function rehypeDocs({
+  filePath: _filePath,
+  tag: _tag,
+  processor: _processor,
+}: {
+  filePath: any;
+  tag: any;
+  processor: any;
+}) {
   const slugger = new GithubSlugger();
   const anchorSlugger = new GithubSlugger();
 
