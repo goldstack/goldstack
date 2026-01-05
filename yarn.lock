@@ -4836,7 +4836,7 @@ __metadata:
   resolution: "@goldstack/markdown-docs@workspace:workspaces/docs/packages/markdown-docs"
   dependencies:
     "@goldstack/utils-cli": "npm:0.3.26"
-    "@goldstack/utils-docs": "npm:0.4.31"
+    "@goldstack/utils-docs": "npm:0.4.32"
     "@goldstack/utils-sh": "npm:0.5.31"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
@@ -6508,7 +6508,7 @@ __metadata:
   resolution: "@goldstack/utils-docs-cli@workspace:workspaces/docs/packages/utils-docs-cli"
   dependencies:
     "@goldstack/utils-cli": "npm:0.3.26"
-    "@goldstack/utils-docs": "npm:0.4.31"
+    "@goldstack/utils-docs": "npm:0.4.32"
     "@goldstack/utils-git": "npm:0.2.21"
     "@goldstack/utils-sh": "npm:0.5.31"
     "@swc/core": "npm:^1.15.8"
@@ -6526,7 +6526,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-docs@npm:0.4.31, @goldstack/utils-docs@workspace:workspaces/templates-lib/packages/utils-docs":
+"@goldstack/utils-docs@npm:0.4.32, @goldstack/utils-docs@workspace:workspaces/templates-lib/packages/utils-docs":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-docs@workspace:workspaces/templates-lib/packages/utils-docs"
   dependencies:
