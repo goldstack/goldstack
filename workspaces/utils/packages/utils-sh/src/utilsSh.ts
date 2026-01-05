@@ -142,7 +142,7 @@ export const rmSafe = async (...files: string[]): Promise<void> => {
         {
           maxBusyTries: 10,
         },
-        (e) => {
+        (e: Error | null) => {
           if (e) {
             reject(e);
             return;

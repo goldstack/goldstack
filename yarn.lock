@@ -26508,6 +26508,7 @@ __metadata:
     "@goldstack/utils-typescript-references": "npm:0.3.23"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
+    "@types/rimraf": "npm:^4.0.5"
     nodemon: "npm:^2.0.20"
     react: "npm:^19"
     ts-node: "npm:^10.9.2"
