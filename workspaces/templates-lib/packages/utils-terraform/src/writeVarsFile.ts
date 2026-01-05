@@ -10,7 +10,7 @@ const isJsonString = (str: string): boolean => {
   }
 };
 
-const formatTerraformValue = (value: any): string => {
+const formatTerraformValue = (value: unknown): string => {
   if (typeof value === 'string') {
     return `"${value.replace(/"/g, '\\"')}"`;
   }

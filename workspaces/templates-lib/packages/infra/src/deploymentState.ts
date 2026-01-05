@@ -8,7 +8,7 @@ import type { DeploymentState, DeploymentsState } from './types/deploymentStates
 const deploymentsStatePath = 'src/state/deployments.json';
 
 export const validateDeploymentsState = (deploymentsState: any): DeploymentsState => {
-  return validateConfig(deploymentsState, deploymentsStateSchema, {
+  return validateConfig(deploymentsState as object, deploymentsStateSchema, {
     errorMessage: 'Cannot validate deployments state.',
   }) as DeploymentsState;
 };

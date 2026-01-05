@@ -40,6 +40,7 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
       .command(
         'build <deployment> [route]',
         'Build deployment packages',
+        // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
         (yargs: Argv<any>): Argv<any> => {
           return yargs
             .positional('deployment', {
@@ -57,6 +58,7 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
       .command(
         'deploy <deployment> [route]',
         'Deploy to specified deployment',
+        // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
         (yargs: Argv<any>): Argv<any> => {
           return yargs
             .positional('deployment', {

@@ -5,7 +5,8 @@ import RocketLaunchImg from '../img/rocket-launch.jpg';
 import styles from './index.module.css';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const fetcher = (url: string): any => fetch(url).then((r) => r.json());
+// biome-ignore lint/suspicious/noExplicitAny: Generic fetcher for SWR
+const fetcher = (url: string): Promise<any> => fetch(url).then((r) => r.json());
 
 const FetchedContent = (): JSX.Element => {
   const { data, error } = useSWR('https://jsonplaceholder.typicode.com/todos/1', fetcher);

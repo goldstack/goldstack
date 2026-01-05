@@ -37,7 +37,9 @@ export const getSignedUrl = async <
   InputType extends InputTypesUnion,
   OutputType extends MetadataBearer = MetadataBearer,
 >(
+  // biome-ignore lint/suspicious/noExplicitAny: AWS SDK generic type parameter
   client: Client<any, InputTypesUnion, MetadataBearer, any>,
+  // biome-ignore lint/suspicious/noExplicitAny: AWS SDK generic type parameter
   command: Command<InputType, OutputType, any, InputTypesUnion, MetadataBearer>,
   options: RequestPresigningArguments = {},
 ): Promise<string> => {

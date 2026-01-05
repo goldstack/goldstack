@@ -9,6 +9,7 @@ export type { Configuration };
  *
  */
 export interface ThisPackageConfiguration extends Configuration {
+  // biome-ignore lint/suspicious/noExplicitAny: Generic configuration interface
   [propName: string]: any;
 }
 

@@ -5,16 +5,19 @@ export function injectCredentials(
   provider: AwsCredentialIdentityProvider,
   credentials: AwsCredentialIdentity,
 ): void {
+  // biome-ignore lint/suspicious/noExplicitAny: Accessing private property for credential injection
   (provider as any)._injectedCredentials = credentials;
 }
 
 export function hasInjectedCredentials(provider: AwsCredentialIdentityProvider): boolean {
+  // biome-ignore lint/suspicious/noExplicitAny: Accessing private property for credential injection
   return (provider as any)._injectedCredentials !== undefined;
 }
 
 export function retrieveInjectedCredentials(
   provider: AwsCredentialIdentityProvider,
 ): AwsCredentialIdentity {
+  // biome-ignore lint/suspicious/noExplicitAny: Accessing private property for credential injection
   return (provider as any)._injectedCredentials as AwsCredentialIdentity;
 }
 

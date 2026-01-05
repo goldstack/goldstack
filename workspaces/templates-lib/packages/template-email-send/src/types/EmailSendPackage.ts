@@ -53,6 +53,7 @@ export type EmailSendDeployments = EmailSendDeployment[];
  *
  */
 export interface EmailSendPackageConfiguration extends Configuration {
+  // biome-ignore lint/suspicious/noExplicitAny: Generic configuration interface
   [propName: string]: any;
 }
 

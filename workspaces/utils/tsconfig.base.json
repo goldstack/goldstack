@@ -3,7 +3,10 @@
     "incremental": true,
     "target": "ES2019",
     "module": "node16",
-    "lib": ["dom", "ESNext"],
+    "lib": [
+      "dom",
+      "ESNext"
+    ],
     "allowJs": true,
     "checkJs": false,
     "composite": true,
@@ -20,6 +23,9 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node16",
-    "types": ["jest", "node"]
+    "types": [
+      "jest",
+      "node"
+    ]
   }
 }

@@ -38,11 +38,15 @@ export const readPackageConfigFromDir = (dir: string): Package => {
 };
 
 interface BuildCliParams {
+  // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
   yargs: Argv<any>;
+  // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
   infraCommands: (yargs: Argv<any>) => void;
+  // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
   deployCommands: (yargs: Argv<any>) => void;
 }
 
+// biome-ignore lint/suspicious/noExplicitAny: yargs command definition
 export const buildCli = (params: BuildCliParams): Argv<any> => {
   return params.yargs
     .scriptName('template')
@@ -56,6 +60,7 @@ export const buildCli = (params: BuildCliParams): Argv<any> => {
 };
 
 export const buildDeployCommands = () => {
+  // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
   return (yargs: Argv<any>): Argv<any> => {
     return yargs
       .positional('deployment', {

@@ -32,10 +32,16 @@ export const UserSchema = item({
   emailVerified: boolean().required(),
   gs1_pk: string()
     .optional()
-    .link(({ email }: any) => `EMAIL#${email}`),
+    .link((item: unknown) => {
+      const user = item as { email?: string };
+      return user.email ? `EMAIL#${user.email}` : undefined;
+    }),
   gs1_sk: string()
     .optional()
-    .link(({ userId }: any) => `${userId}`),
+    .link((item: unknown) => {
+      const user = item as { userId?: string };
+      return user.userId ? `${user.userId}` : undefined;
+    }),
 });
 
 export type InputUserValue = InputValue<typeof UserSchema>;

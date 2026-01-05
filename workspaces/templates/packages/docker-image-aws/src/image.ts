@@ -10,6 +10,11 @@ import {
 import goldstackConfig from './../goldstack.json';
 import deploymentsState from './state/deployments.json';
 
+interface EnvVarDefinition {
+  name: string;
+  value: string;
+}
+
 /**
  * Returns the URL for the repository where the image is deployed to.
  *
@@ -29,7 +34,7 @@ interface RunParams {
   /** The command to run in the container. */
   command: string[];
   /** Environment variables to set in the container. */
-  env: any;
+  env: EnvVarDefinition[];
 }
 
 /**

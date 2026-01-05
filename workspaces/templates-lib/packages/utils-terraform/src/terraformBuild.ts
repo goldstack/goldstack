@@ -1,4 +1,4 @@
-import { readDeploymentState, writeDeploymentState } from '@goldstack/infra';
+import { readDeploymentState, writeDeploymentState, type DeploymentState } from '@goldstack/infra';
 import { debug, fatal, info, warn } from '@goldstack/utils-log';
 import { readPackageConfig, writePackageConfig } from '@goldstack/utils-package';
 import { cd, pwd, read } from '@goldstack/utils-sh';
@@ -106,7 +106,7 @@ export const convertFromPythonVariable = (variableName: string): string => {
 };
 
 export const getVariablesFromProperties = (
-  properties: object,
+  properties: Record<string, any>,
   terraformVariables?: TerraformVariables,
 ): Variables => {
   const vars: Variables = [];
@@ -138,7 +138,7 @@ export const parseVariables = (hcl: string): string[] => {
   return variableNames;
 };
 
-export const getVariablesFromHCL = (properties: object): Variables => {
+export const getVariablesFromHCL = (properties: Record<string, any>): Variables => {
   if (!fs.existsSync('./variables.tf')) {
     warn(
       `No variables.tf file exists in ${pwd()}. Goldstack only supports declaring variables in a variables.tf file.`,
@@ -598,7 +598,9 @@ export class TerraformBuild {
   isUp = (params: IsUpParams): void => {
     const deploymentsInfo = JSON.parse(read('src/state/deployments.json'));
     const deployment = getDeployment(params.deploymentName);
-    const deploymentState = deploymentsInfo.find((e: any) => e.name === deployment.name);
+    const deploymentState = deploymentsInfo.find(
+      (e: DeploymentState) => e.name === deployment.name,
+    );
     if (!deploymentState || !deploymentState.terraform) {
       info('is-up: false');
     } else {

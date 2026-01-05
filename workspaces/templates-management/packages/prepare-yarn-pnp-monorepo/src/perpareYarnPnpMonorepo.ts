@@ -20,8 +20,8 @@ export const removeNpmRegistry = (params: { yarnRc: string }): string => {
   return withoutRegistries;
 };
 
+// biome-ignore lint/suspicious/noExplicitAny: Generic utility function for sorting package.json
 function sortKeys(obj: any): any {
-  // biome-ignore lint/suspicious/noExplicitAny: Generic utility function for sorting package.json
   return sortPackageJson(obj);
 }
 
