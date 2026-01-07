@@ -1,38 +1,69 @@
-# REQUIRED WORKFLOW FOR KILO CODE AGENT (follow exactly)
+# KILO CODE AGENT INSTRUCTIONS
 
-## Information Provided by Workflow
-The agent may receive the following information from the GitHub workflow:
-- **ISSUE_NUMBER**: The GitHub issue number (e.g., 123).
-- **ISSUE_TITLE**: Full title of the issue.
-- **ISSUE_BODY**: Full description of the issue.
-- **COMMENT_BODY**: The full text of the comment that triggered the workflow (including the /kilo command).
-- **EXTRACTED_TASK**: The task description extracted from the comment after the /kilo or /kilocode command.
-- **BRANCH_NAME**: Automatically set to `kilo-issue-{issue_number}`.
-- **PR_NUMBER**: The GitHub PR number if a PR already exists for the issue (e.g., 456).
-- **GITHUB_TOKEN**: Available for 'gh' CLI operations.
+## Your Context
+You are running in a GitHub Action with:
+- Full repo checked out
+- `gh` CLI authenticated (use `GH_TOKEN`)
+- Write access to push commits and manage PRs
+- Working branch already checked out
 
-Use this information to understand the context and scope of the task.
+## Task Format
+Your prompt contains:
+1. Issue or PR title and body
+2. `TASK:` — the specific instruction from the triggering comment
+3. Metadata: `ISSUE_NUMBER`, `BRANCH_NAME`, and optionally `PR_NUMBER`
 
-## Before Starting
-1. Run `date` and record the timestamp.
-2. Read and understand AGENTS_GHA.md.
-3. Break the task into small, incremental steps. Each step should represent a unit of work that can be committed without causing compilation issues or test failures.
+## Workflow
 
-## For Every Completed Step
-1. Implement the changes for the step.
-2. Run `yarn format && yarn lint && yarn compile` in the project root.
-3. Fix any formatting, linting (error level only, use `biome --diagnostic-level=error`), or compilation issues.
-4. Create a commit with a clear message. Prefix with "WIP:" if more work is needed.
-5. Push to the remote branch immediately.
-6. Run `date` and check elapsed time.
-7. If more than 30 minutes have passed since the start, stop work.
+### 1. Start
+- Run `date` and record timestamp
+- Plan work as small, committable steps
 
-## GitHub Workflow Integration
-When working on tasks requiring code changes:
-- Create or use branch `kilo-issue-{issue_number}`.
-- If PR_NUMBER is provided, update the existing PR; otherwise, if a draft PR doesn't exist, create a new draft PR; otherwise, update the existing PR.
-- Comment on the issue or PR (use PR if PR_NUMBER provided) with progress updates using the 'gh' CLI (GITHUB_TOKEN is available).
-- Change a draft PR to ready for review, only if work is completed
+### 2. For Each Step
 
-## References
-- Always consult AGENTS_GHA.md for all actions.
+Make changes, then:
+
+```
+yarn format && yarn lint --diagnostic-level=error && yarn compile
+
+git add . && git commit -m "[description]"
+
+git push -u origin $BRANCH_NAME
+```
+Fix any issues before committing.
+
+### 3. PR Management
+
+**A PR always exists (created in draft mode if needed).**
+
+Push commits. Comment progress:
+
+```
+gh pr comment $PR_NUMBER --body "Progress update: ..."
+```
+
+If ISSUE_NUMBER provided, comment on the issue:
+
+```
+gh issue comment $ISSUE_NUMBER --body "Work in progress. See PR #$PR_NUMBER."
+```
+
+**Work complete:**
+
+```
+gh pr comment $PR_NUMBER --body "Completed the requested changes. [details]"
+```
+
+```
+gh pr ready $PR_NUMBER
+```
+
+If ISSUE_NUMBER provided, comment on the issue:
+
+```
+gh issue comment $ISSUE_NUMBER --body "Work completed. See PR #$PR_NUMBER."
+```
+
+### 4. Time Limit
+
+Run `date` after each commit. Stop after 30 minutes elapsed.

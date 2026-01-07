@@ -10,9 +10,7 @@ jobs:
   kilocode:
     if: |
       (contains(github.event.comment.body, '/kilo') ||
-      startsWith(github.event.comment.body, '/kilo') ||
-      contains(github.event.comment.body, '/kilocode') ||
-      startsWith(github.event.comment.body, '/kilocode'))
+       contains(github.event.comment.body, '/kilocode'))
       && (github.event.issue.user.login == 'mxro' || github.event.issue.user.login == 'goldstack')
     runs-on: ubuntu-latest
     permissions:
@@ -34,36 +32,129 @@ jobs:
           mkdir -p ~/.kilocode/cli
           jq '.providers[0].kilocodeToken = "${{ secrets.KILO_API_KEY }}"' .github/workflows/kilocode-config.json > ~/.kilocode/cli/config.json
 
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Identify Issue and PR Numbers
+        id: identifiers
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          NUM=${{ github.event.issue.number }}
+          if gh pr view "$NUM" >/dev/null 2>&1; then
+            # It's a PR comment
+            PR_NUMBER=$NUM
+            # Check if PR closes an issue
+            PR_DATA=$(gh pr view "$NUM" --json body)
+            BODY=$(echo "$PR_DATA" | jq -r '.body')
+            ISSUE_NUMBER=$(echo "$BODY" | grep -oP 'closes #\K\d+' | head -1 || echo "")
+            if [ -z "$ISSUE_NUMBER" ]; then
+              ISSUE_NUMBER=$(echo "$BODY" | grep -oP 'fixes #\K\d+' | head -1 || echo "")
+            fi
+            if [ -z "$ISSUE_NUMBER" ]; then
+              ISSUE_NUMBER=$(echo "$BODY" | grep -oP 'resolves #\K\d+' | head -1 || echo "")
+            fi
+          else
+            # It's an issue comment
+            ISSUE_NUMBER=$NUM
+            # Check for existing PR with the expected branch
+            BRANCH="kilo-issue-$ISSUE_NUMBER"
+            EXISTING_PR=$(gh pr list --head "$BRANCH" --state open --json number -q '.[0].number // empty')
+            if [ -n "$EXISTING_PR" ]; then
+              PR_NUMBER=$EXISTING_PR
+            else
+              PR_NUMBER=""
+            fi
+          fi
+          echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
+          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+
+      - name: Identify Branch
+        id: branch
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
+          PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
+          if [ -n "$PR_NUMBER" ]; then
+            BRANCH_NAME=$(gh pr view "$PR_NUMBER" --json headRefName -q .headRefName)
+          elif [ -n "$ISSUE_NUMBER" ]; then
+            BRANCH_NAME="kilo-issue-$ISSUE_NUMBER"
+          else
+            echo "No valid number found"
+            exit 1
+          fi
+          echo "name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+
+      - name: Checkout working branch
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          BRANCH="${{ steps.branch.outputs.name }}"
+          PR_NUMBER="${{ steps.identifiers.outputs.pr_number }}"
+          git fetch origin
+          if [ -n "$PR_NUMBER" ]; then
+            git checkout "$BRANCH"
+            git pull origin "$BRANCH"
+          elif git ls-remote --exit-code --heads origin "$BRANCH"; then
+            git checkout "$BRANCH"
+            git pull origin "$BRANCH"
+          else
+            git checkout main
+            git pull origin main
+            git checkout -b "$BRANCH"
+          fi
+
+      - name: Create PR if needed
+        id: create_pr
+        if: steps.identifiers.outputs.pr_number == ''
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
+          BRANCH_NAME=${{ steps.branch.outputs.name }}
+          DATA=$(gh issue view "$ISSUE_NUMBER" --json title,body)
+          TITLE=$(echo "$DATA" | jq -r '.title')
+          BODY=$(echo "$DATA" | jq -r '.body')
+          PR_NUMBER=$(gh pr create --draft --title "Fix: $TITLE" --body "Closes #$ISSUE_NUMBER" --head "$BRANCH_NAME" | grep -oP 'https://github.com/[^/]+/[^/]+/pull/\K\d+')
+          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+
       - name: Extract prompt
         id: ctx
         env:
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
           COMMENT: ${{ github.event.comment.body }}
-          ISSUE: ${{ github.event.issue.number }}
-          EVENT_NAME: ${{ github.event_name }}
         run: |
           PROMPT=$(echo "$COMMENT" | sed -E 's/^.*\/kilo(code)?[[:space:]]*//')
-          ISSUE_DATA=$(gh issue view "$ISSUE" --json title,body)
-          TITLE=$(echo "$ISSUE_DATA" | jq -r '.title')
-          BODY=$(echo "$ISSUE_DATA" | jq -r '.body')
-          BRANCH="kilo-issue-$ISSUE"
-          if [ "$EVENT_NAME" = "pull_request_review_comment" ]; then
-            PR_NUMBER=$ISSUE
+          ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
+          PR_NUMBER=${{ steps.create_pr.outputs.pr_number || steps.identifiers.outputs.pr_number }}
+          if [ -n "$PR_NUMBER" ]; then
+            DATA=$(gh pr view "$PR_NUMBER" --json title,body)
+            PREFIX="PR #$PR_NUMBER"
+          elif [ -n "$ISSUE_NUMBER" ]; then
+            DATA=$(gh issue view "$ISSUE_NUMBER" --json title,body)
+            PREFIX="Issue #$ISSUE_NUMBER"
           else
-            PR_NUMBER=$(gh pr list --head $BRANCH --state open --json number -q '.[0].number // empty')
+            echo "No valid issue or PR number"
+            exit 1
           fi
-          
+          TITLE=$(echo "$DATA" | jq -r '.title')
+          BODY=$(echo "$DATA" | jq -r '.body')
+
           AGENTS=""
           [ -f AGENTS_GHA.md ] && AGENTS=$(cat AGENTS_GHA.md)
-          
-          TASK="Issue #$ISSUE: $TITLE"$'\n\n'"$BODY"$'\n\n'
-          TASK+="Task: $PROMPT"$'\n\n'
-          TASK+="ISSUE_NUMBER: $ISSUE"$'\n'
-          TASK+="BRANCH_NAME: $BRANCH"$'\n'
+
+          TASK="$PREFIX: $TITLE"$'\n\n'"$BODY"$'\n\n'
+          TASK+="TASK: $PROMPT"$'\n\n'
+          [ -n "$ISSUE_NUMBER" ] && TASK+="ISSUE_NUMBER: $ISSUE_NUMBER"$'\n'
+          TASK+="BRANCH_NAME: ${{ steps.branch.outputs.name }}"$'\n'
           [ -n "$PR_NUMBER" ] && TASK+="PR_NUMBER: $PR_NUMBER"$'\n\n'
           [ -n "$AGENTS" ] && TASK+="PROJECT INSTRUCTIONS:"$'\n'"$AGENTS"
-          
-          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
+          echo "branch=${{ steps.branch.outputs.name }}" >> "$GITHUB_OUTPUT"
           echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
           { echo 'task<<EOF'; printf '%s' "$TASK"; echo; echo 'EOF'; } >> "$GITHUB_OUTPUT"
 
