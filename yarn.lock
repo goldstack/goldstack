@@ -4246,9 +4246,9 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.32"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
-    "@testing-library/dom": "npm:^10.4.1"
+    "@testing-library/dom": "npm:^10"
     "@testing-library/jest-dom": "npm:^6.9.1"
-    "@testing-library/react": "npm:^16.3.1"
+    "@testing-library/react": "npm:^16"
     "@types/aws-lambda": "npm:^8.10.159"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
@@ -4284,9 +4284,9 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.32"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
-    "@testing-library/dom": "npm:^10.4.1"
+    "@testing-library/dom": "npm:^10"
     "@testing-library/jest-dom": "npm:^6.9.1"
-    "@testing-library/react": "npm:^16.3.1"
+    "@testing-library/react": "npm:^16"
     "@types/aws-lambda": "npm:^8.10.159"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
@@ -4322,9 +4322,9 @@ __metadata:
     "@goldstack/utils-sh": "npm:0.5.32"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
-    "@testing-library/dom": "npm:^10.4.1"
+    "@testing-library/dom": "npm:^10"
     "@testing-library/jest-dom": "npm:^6.9.1"
-    "@testing-library/react": "npm:16.3.1"
+    "@testing-library/react": "npm:^16"
     "@types/aws-lambda": "npm:^8.10.159"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
@@ -4427,9 +4427,9 @@ __metadata:
     "@goldstack/utils-track": "npm:0.2.28"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
-    "@testing-library/dom": "npm:^10.4.1"
+    "@testing-library/dom": "npm:^10"
     "@testing-library/jest-dom": "npm:^6.9.1"
-    "@testing-library/react": "npm:^16.3.1"
+    "@testing-library/react": "npm:^16"
     "@types/aws-lambda": "npm:^8.10.159"
     "@types/cheerio": "npm:^0.22.35"
     "@types/jest": "npm:^30.0.0"
@@ -4614,9 +4614,9 @@ __metadata:
     "@stripe/stripe-js": "npm:^1.10.0"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
-    "@testing-library/dom": "npm:^10.4.1"
+    "@testing-library/dom": "npm:^10"
     "@testing-library/jest-dom": "npm:^6.9.1"
-    "@testing-library/react": "npm:^16.3.1"
+    "@testing-library/react": "npm:^16"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     "@types/react": "npm:^18"
@@ -4898,7 +4898,7 @@ __metadata:
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
     "@testing-library/jest-dom": "npm:^6.9.1"
-    "@testing-library/react": "npm:^16.3.1"
+    "@testing-library/react": "npm:^16"
     "@types/jest": "npm:^30.0.0"
     "@types/minimist": "npm:^1"
     "@types/node": "npm:^25.0.3"
@@ -5205,9 +5205,9 @@ __metadata:
     "@swc-node/register": "npm:^1.10.9"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
-    "@testing-library/dom": "npm:^10.4.1"
+    "@testing-library/dom": "npm:^10"
     "@testing-library/jest-dom": "npm:^6.9.1"
-    "@testing-library/react": "npm:^16.3.1"
+    "@testing-library/react": "npm:^16"
     "@types/aws-lambda": "npm:^8.10.159"
     "@types/aws-serverless-express": "npm:^3.3.10"
     "@types/jest": "npm:^30.0.0"
@@ -10241,7 +10241,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^10.4.1":
+"@testing-library/dom@npm:^10":
   version: 10.4.1
   resolution: "@testing-library/dom@npm:10.4.1"
   dependencies:
@@ -10299,7 +10299,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:16.3.1, @testing-library/react@npm:^16.3.1":
+"@testing-library/react@npm:^16":
   version: 16.3.1
   resolution: "@testing-library/react@npm:16.3.1"
   dependencies:
