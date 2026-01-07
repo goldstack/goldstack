@@ -74,15 +74,13 @@ jobs:
 
       - name: Identify Branch
         id: branch
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
           PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
           if [ -n "$PR_NUMBER" ]; then
-            if [ -n "$ISSUE_NUMBER" ]; then
-              BRANCH_NAME="kilo-issue-$ISSUE_NUMBER"
-            else
-              BRANCH_NAME="kilo-pr-$PR_NUMBER"
-            fi
+            BRANCH_NAME=$(gh pr view "$PR_NUMBER" --json headRefName -q .headRefName)
           elif [ -n "$ISSUE_NUMBER" ]; then
             BRANCH_NAME="kilo-issue-$ISSUE_NUMBER"
           else
