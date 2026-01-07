@@ -12,6 +12,9 @@ Your prompt contains:
 1. Issue or PR title and body
 2. `TASK:` — the specific instruction from the triggering comment
 3. Metadata: `ISSUE_NUMBER`, `BRANCH_NAME`, and optionally `PR_NUMBER`
+4. `ISSUE COMMENTS:` — All comments on the issue (if applicable)
+5. `PR COMMENTS:` — All comments on the PR (if applicable)
+6. `CODE REVIEW COMMENTS (on current commit):` — Code review comments specifically on the current commit (if applicable)
 
 ## Workflow
 

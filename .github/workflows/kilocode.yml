@@ -128,35 +128,55 @@ jobs:
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
           COMMENT: ${{ github.event.comment.body }}
         run: |
-          PROMPT=$(echo "$COMMENT" | sed -E 's/^.*\/kilo(code)?[[:space:]]*//')
-          ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
-          PR_NUMBER=${{ steps.create_pr.outputs.pr_number || steps.identifiers.outputs.pr_number }}
-          if [ -n "$PR_NUMBER" ]; then
-            DATA=$(gh pr view "$PR_NUMBER" --json title,body)
-            PREFIX="PR #$PR_NUMBER"
-          elif [ -n "$ISSUE_NUMBER" ]; then
-            DATA=$(gh issue view "$ISSUE_NUMBER" --json title,body)
-            PREFIX="Issue #$ISSUE_NUMBER"
-          else
-            echo "No valid issue or PR number"
-            exit 1
-          fi
-          TITLE=$(echo "$DATA" | jq -r '.title')
-          BODY=$(echo "$DATA" | jq -r '.body')
+           PROMPT=$(echo "$COMMENT" | sed -E 's/^.*\/kilo(code)?[[:space:]]*//')
+           ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
+           PR_NUMBER=${{ steps.create_pr.outputs.pr_number || steps.identifiers.outputs.pr_number }}
+           if [ -n "$PR_NUMBER" ]; then
+             DATA=$(gh pr view "$PR_NUMBER" --json title,body)
+             PREFIX="PR #$PR_NUMBER"
+           elif [ -n "$ISSUE_NUMBER" ]; then
+             DATA=$(gh issue view "$ISSUE_NUMBER" --json title,body)
+             PREFIX="Issue #$ISSUE_NUMBER"
+           else
+             echo "No valid issue or PR number"
+             exit 1
+           fi
+           TITLE=$(echo "$DATA" | jq -r '.title')
+           BODY=$(echo "$DATA" | jq -r '.body')
 
-          AGENTS=""
-          [ -f AGENTS_GHA.md ] && AGENTS=$(cat AGENTS_GHA.md)
+           CURRENT_SHA=$(git rev-parse HEAD)
 
-          TASK="$PREFIX: $TITLE"$'\n\n'"$BODY"$'\n\n'
-          TASK+="TASK: $PROMPT"$'\n\n'
-          [ -n "$ISSUE_NUMBER" ] && TASK+="ISSUE_NUMBER: $ISSUE_NUMBER"$'\n'
-          TASK+="BRANCH_NAME: ${{ steps.branch.outputs.name }}"$'\n'
-          [ -n "$PR_NUMBER" ] && TASK+="PR_NUMBER: $PR_NUMBER"$'\n\n'
-          [ -n "$AGENTS" ] && TASK+="PROJECT INSTRUCTIONS:"$'\n'"$AGENTS"
+           ISSUE_COMMENTS=""
+           if [ -n "$ISSUE_NUMBER" ] && [ -z "$PR_NUMBER" ]; then
+             ISSUE_COMMENTS=$(gh issue comments "$ISSUE_NUMBER" --json body,author.login,createdAt | jq -r '.[] | "Comment by @\(.author.login) on \(.createdAt):\n\(.body)\n---"')
+           fi
 
-          echo "branch=${{ steps.branch.outputs.name }}" >> "$GITHUB_OUTPUT"
-          echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
-          { echo 'task<<EOF'; printf '%s' "$TASK"; echo; echo 'EOF'; } >> "$GITHUB_OUTPUT"
+           PR_COMMENTS=""
+           if [ -n "$PR_NUMBER" ]; then
+             PR_COMMENTS=$(gh pr comments "$PR_NUMBER" --json body,author.login,createdAt | jq -r '.[] | "Comment by @\(.author.login) on \(.createdAt):\n\(.body)\n---"')
+           fi
+
+           REVIEW_COMMENTS=""
+           if [ -n "$PR_NUMBER" ]; then
+             REVIEW_COMMENTS=$(gh pr review-comments "$PR_NUMBER" --json body,author.login,createdAt,commit_id | jq -r 'select(.commit_id == "'$CURRENT_SHA'") | "Review comment by @\(.author.login) on \(.createdAt):\n\(.body)\n---"')
+           fi
+
+           AGENTS=""
+           [ -f AGENTS_GHA.md ] && AGENTS=$(cat AGENTS_GHA.md)
+
+           TASK="$PREFIX: $TITLE"$'\n\n'"$BODY"$'\n\n'
+           [ -n "$ISSUE_COMMENTS" ] && TASK+="ISSUE COMMENTS:\n$ISSUE_COMMENTS\n\n"
+           [ -n "$PR_COMMENTS" ] && TASK+="PR COMMENTS:\n$PR_COMMENTS\n\n"
+           [ -n "$REVIEW_COMMENTS" ] && TASK+="CODE REVIEW COMMENTS (on current commit):\n$REVIEW_COMMENTS\n\n"
+           TASK+="TASK: $PROMPT"$'\n\n'
+           [ -n "$ISSUE_NUMBER" ] && TASK+="ISSUE_NUMBER: $ISSUE_NUMBER"$'\n'
+           TASK+="BRANCH_NAME: ${{ steps.branch.outputs.name }}"$'\n'
+           [ -n "$PR_NUMBER" ] && TASK+="PR_NUMBER: $PR_NUMBER"$'\n\n'
+           [ -n "$AGENTS" ] && TASK+="PROJECT INSTRUCTIONS:"$'\n'"$AGENTS"
+
+           echo "branch=${{ steps.branch.outputs.name }}" >> "$GITHUB_OUTPUT"
+           echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
+           { echo 'task<<EOF'; printf '%s' "$TASK"; echo; echo 'EOF'; } >> "$GITHUB_OUTPUT"
 
       - name: Run Kilo Code
         env:
