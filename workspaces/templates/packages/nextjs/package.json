@@ -76,7 +76,7 @@
     "semver": "^7.6.3",
     "simple-get": "^4.0.1",
     "svg-url-loader": "^8.0.0",
-    "tar-fs": "^3.0.6",
+    "tar-fs": "^3.1.1",
     "ts-node": "^10.9.2",
     "tunnel-agent": "^0.6.0",
     "typescript": "^5.9.3"
