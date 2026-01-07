@@ -5667,6 +5667,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["@types/react", "npm:19.2.7"],\
+          ["@types/testing-library__jest-dom", "npm:6.0.0"],\
           ["concurrently", "npm:7.3.0"],\
           ["file-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:6.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
