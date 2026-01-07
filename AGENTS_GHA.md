@@ -30,7 +30,6 @@ git add . && git commit -m "[description]"
 
 git push -u origin $BRANCH_NAME
 ```
-
 Fix any issues before committing.
 
 ### 3. PR Management
