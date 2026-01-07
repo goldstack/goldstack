@@ -1,0 +1,68 @@
+name: kilocode
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  kilocode:
+    if: |
+      (contains(github.event.comment.body, '/kilo') ||
+      startsWith(github.event.comment.body, '/kilo') ||
+      contains(github.event.comment.body, '/kilocode') ||
+      startsWith(github.event.comment.body, '/kilocode'))
+      && (github.event.issue.user.login == 'mxro' || github.event.issue.user.login == 'goldstack')
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/goldstack-setup
+
+      - run: npm install -g @kilocode/cli
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Extract prompt
+        id: ctx
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          COMMENT: ${{ github.event.comment.body }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          PROMPT=$(echo "$COMMENT" | sed -E 's/^.*\/kilo(code)?[[:space:]]*//')
+          ISSUE_DATA=$(gh issue view "$ISSUE" --json title,body)
+          TITLE=$(echo "$ISSUE_DATA" | jq -r '.title')
+          BODY=$(echo "$ISSUE_DATA" | jq -r '.body')
+          BRANCH="kilo-issue-$ISSUE"
+          
+          AGENTS=""
+          [ -f AGENTS_GHA.md ] && AGENTS=$(cat AGENTS_GHA.md)
+          
+          TASK="Issue #$ISSUE: $TITLE"$'\n\n'"$BODY"$'\n\n'
+          TASK+="Task: $PROMPT"$'\n\n'
+          [ -n "$AGENTS" ] && TASK+="PROJECT INSTRUCTIONS:"$'\n'"$AGENTS"
+          
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          { echo 'task<<EOF'; printf '%s' "$TASK"; echo; echo 'EOF'; } >> "$GITHUB_OUTPUT"
+
+      - name: Run Kilo Code
+        env:
+          KILO_PROVIDER: kilocode
+          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
+          KILOCODE_MODEL: x-ai/grok-code-fast-1
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          TASK: ${{ steps.ctx.outputs.task }}
+        run: kilocode --auto "$TASK" --timeout 1800
