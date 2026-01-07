@@ -32,6 +32,7 @@
     "test-watch": "nodemonx --watch . --exec 'yarn test'"
   },
   "resolutions": {
+    "ansi-regex": "6.0.0",
     "generic-names": "4.0.0",
     "trim": "0.0.3"
   },
