@@ -5,7 +5,7 @@ import AbstractShapes from '../styles/front-3.2.1/assets/svg/components/abstract
 
 const Hero = (): JSX.Element => {
   return (
-    <div className="bg-img-hero" style={{ backgroundImage: 'url(' + AbstractShapes + ')' }}>
+    <div className="bg-img-hero" style={{ backgroundImage: `url(${AbstractShapes})` }}>
       <div className="container space-top-3 space-top-lg-4 space-bottom-2 position-relative z-index-2">
         <div className="w-md-80 w-lg-60 text-center mx-md-auto">
           <h1>Goldstack Terms &amp; Conditions</h1>

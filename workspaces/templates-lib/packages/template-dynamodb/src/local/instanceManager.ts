@@ -169,7 +169,7 @@ export class InstanceManager {
 
       // Restore instances
       for (const [port, instance] of Object.entries(state.instances)) {
-        const portNum = parseInt(port);
+        const portNum = parseInt(port, 10);
         if (instance === 'stopped') {
           this.instances.set(portNum, 'stopped');
         } else {
@@ -190,7 +190,7 @@ export class InstanceManager {
 
       // Restore usage counts
       Object.entries(state.usageCounts).forEach(([port, count]) => {
-        this.usageCounts.set(parseInt(port), count);
+        this.usageCounts.set(parseInt(port, 10), count);
       });
     } catch (err) {
       if (err.code !== 'ENOENT') {

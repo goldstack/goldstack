@@ -1,7 +1,7 @@
 import {
   getHetznerUser,
-  readDeploymentFromPackageConfig,
   type HetznerDeployment,
+  readDeploymentFromPackageConfig,
 } from '@goldstack/infra-hetzner';
 import {
   type CloudProvider,
@@ -16,7 +16,7 @@ export class HetznerCloudProvider implements CloudProvider {
   awsProvider: AWSCloudProvider;
 
   generateEnvVariableString = (): string => {
-    return `-e TF_VAR_hcloud_token=${this.token} ` + this.awsProvider.generateEnvVariableString();
+    return `-e TF_VAR_hcloud_token=${this.token} ${this.awsProvider.generateEnvVariableString()}`;
   };
 
   setEnvVariables = (): void => {

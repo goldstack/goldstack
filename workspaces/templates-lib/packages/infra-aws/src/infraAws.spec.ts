@@ -95,13 +95,13 @@ credential_process=cat ~/processCredentials.json
 }`;
     const testDir = './goldstackLocal/tests/getAWSUser';
     mkdir('-p', testDir);
-    write(awsConfig, testDir + '/config-embedded.json');
-    const providerDev = await getAWSUser('goldstack-dev', testDir + '/config-embedded.json');
+    write(awsConfig, `${testDir}/config-embedded.json`);
+    const providerDev = await getAWSUser('goldstack-dev', `${testDir}/config-embedded.json`);
     const credentialsDev = await getAWSCredentials(providerDev);
     assert(credentialsDev.accessKeyId === 'dummy');
 
     resetAWSUser();
-    const providerProd = await getAWSUser('goldstack-prod', testDir + '/config-embedded.json');
+    const providerProd = await getAWSUser('goldstack-prod', `${testDir}/config-embedded.json`);
     const credentialsProd = await getAWSCredentials(providerProd);
     assert.equal(credentialsProd.accessKeyId, 'dummy-prod');
   });
@@ -124,9 +124,9 @@ credential_process=cat ~/processCredentials.json
 }`;
 
     mkdir('-p', testDir);
-    write(awsConfig, testDir + '/config.json');
+    write(awsConfig, `${testDir}/config.json`);
 
-    const providerDev = await getAWSUser('dev', testDir + '/config.json');
+    const providerDev = await getAWSUser('dev', `${testDir}/config.json`);
     assert(providerDev);
 
     // cannot validate in v3
@@ -154,9 +154,9 @@ credential_process=cat ~/processCredentials.json
 }`;
 
     mkdir('-p', testDir);
-    write(awsConfig, testDir + '/config.json');
+    write(awsConfig, `${testDir}/config.json`);
 
-    const providerProcess = await getAWSUser('process', testDir + '/config.json');
+    const providerProcess = await getAWSUser('process', `${testDir}/config.json`);
     assert(providerProcess);
 
     // cannot validate in v3
@@ -184,9 +184,9 @@ credential_process=cat ~/processCredentials.json
 }`;
 
     mkdir('-p', testDir);
-    write(awsConfig, testDir + '/config.json');
+    write(awsConfig, `${testDir}/config.json`);
 
-    const provider = await getAWSUser('process-from-config', testDir + '/config.json');
+    const provider = await getAWSUser('process-from-config', `${testDir}/config.json`);
     assert(provider);
 
     // cannot validate in v3

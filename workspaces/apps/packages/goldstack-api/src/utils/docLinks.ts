@@ -6,7 +6,7 @@ import { globSync } from '@goldstack/utils-sh';
 import path from 'path';
 
 const getGoldstackJsonPaths = (workspacePath: string): string[] => {
-  const res = globSync(workspacePath.replace(/\\/g, '/') + 'packages/*/goldstack.json');
+  const res = globSync(`${workspacePath.replace(/\\/g, '/')}packages/*/goldstack.json`);
   return res;
 };
 
@@ -27,7 +27,7 @@ export const getDocLinks = async (workspacePath: string): Promise<DocLink[]> => 
 
   return await Promise.all(
     goldstackJsonPaths.map(async (goldstackJsonPath): Promise<DocLink> => {
-      const goldstackConfig = readPackageConfig(path.dirname(goldstackJsonPath) + '/');
+      const goldstackConfig = readPackageConfig(`${path.dirname(goldstackJsonPath)}/`);
 
       const templateJson = await templateRepo.getLatestTemplateVersion(goldstackConfig.template);
 

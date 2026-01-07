@@ -11,10 +11,10 @@ export class DestroyStateTest implements TemplateTest {
   }
   async runTest(params: RunTestParams): Promise<void> {
     const packageConfig = readPackageConfigFromDir(params.packageDir);
-    const packageJson = JSON.parse(read(params.packageDir + 'package.json'));
+    const packageJson = JSON.parse(read(`${params.packageDir}package.json`));
 
     for (const deployment of packageConfig.deployments) {
-      info('Destroying remote state for ' + deployment.name);
+      info(`Destroying remote state for ${deployment.name}`);
       await retryOperation(
         async () => {
           process.env.GOLDSTACK_DEBUG = 'true';

@@ -11,7 +11,7 @@ export class EnsureBabelRcDoesNotExist implements TemplateTest {
 
     const babelRcThere = existsSync(join('.babelrc'));
     if (babelRcThere) {
-      throw new Error('.babelrc should not exist but found in directory: ' + packageDir);
+      throw new Error(`.babelrc should not exist but found in directory: ${packageDir}`);
     }
   }
 }

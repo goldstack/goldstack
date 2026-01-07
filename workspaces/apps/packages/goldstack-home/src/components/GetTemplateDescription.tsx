@@ -30,7 +30,7 @@ const GetTemplateDescription = (): JSX.Element => {
           Goldstack templates are open-source and constantly updated and improved. Check out ongoing
           development on{' '}
           <a href="https://github.com/goldstack/goldstack#readme">
-            <img style={{ height: '1rem' }} className="mr-1" src={GitHubIcon} />
+            <img style={{ height: '1rem' }} className="mr-1" src={GitHubIcon} alt="GitHub" />
             goldstack/goldstack
           </a>
           .
@@ -41,6 +41,7 @@ const GetTemplateDescription = (): JSX.Element => {
 
       <div className="media text-body mb-3">
         <FontIcon
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for SVG icon rendering
           dangerouslySetInnerHTML={{ __html: checkCircle }}
           className="mt-1 mr-2"
         ></FontIcon>
@@ -50,6 +51,7 @@ const GetTemplateDescription = (): JSX.Element => {
       </div>
       <div className="media text-body mb-3">
         <FontIcon
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for SVG icon rendering
           dangerouslySetInnerHTML={{ __html: checkCircle }}
           className="mt-1 mr-2"
         ></FontIcon>
@@ -60,6 +62,7 @@ const GetTemplateDescription = (): JSX.Element => {
       </div>
       <div className="media text-body mb-3">
         <FontIcon
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for SVG icon rendering
           dangerouslySetInnerHTML={{ __html: checkCircle }}
           className="mt-1 mr-2"
         ></FontIcon>

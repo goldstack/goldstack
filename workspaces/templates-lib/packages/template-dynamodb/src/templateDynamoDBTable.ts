@@ -63,7 +63,9 @@ export const startLocalDynamoDB = async (
     startLocalDynamoDB: StartLocalDynamoDBType;
   };
   const portToUse =
-    port || (process.env.DYNAMODB_LOCAL_PORT && parseInt(process.env.DYNAMODB_LOCAL_PORT)) || 8000;
+    port ||
+    (process.env.DYNAMODB_LOCAL_PORT && parseInt(process.env.DYNAMODB_LOCAL_PORT, 10)) ||
+    8000;
   await lib.startLocalDynamoDB(packageConfig, { port: portToUse }, deploymentName);
 };
 

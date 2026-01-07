@@ -19,7 +19,7 @@ export const handler: PostConfirmationTriggerHandler = async (event, _context) =
   // Only set the app_user_id if it doesn't already exist
   if (!event.request.userAttributes['custom:app_user_id']) {
     const userId = generateUserId();
-    info('Setting custom attribute for ' + userData.email);
+    info(`Setting custom attribute for ${userData.email}`);
 
     await cognitoClient.send(
       new AdminUpdateUserAttributesCommand({

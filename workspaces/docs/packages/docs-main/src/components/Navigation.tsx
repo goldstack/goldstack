@@ -109,11 +109,9 @@ interface NavigationProps {
 
 const Navigation = (props: NavigationProps): JSX.Element => {
   return (
-    <>
-      <div id="sidebarNav" className={`hs-sidebar-sticky pl-2 pl-md-0 pr-2 ${styles.sidebarmain}`}>
-        {buildNavLevel1({ items: props.items, currentPath: props.currentPath })}
-      </div>
-    </>
+    <div id="sidebarNav" className={`hs-sidebar-sticky pl-2 pl-md-0 pr-2 ${styles.sidebarmain}`}>
+      {buildNavLevel1({ items: props.items, currentPath: props.currentPath })}
+    </div>
   );
 };
 

@@ -35,6 +35,6 @@ export const run = async (): Promise<void> => {
       return;
     }
 
-    throw new Error('Unknown command: ' + argv._[0]);
+    throw new Error(`Unknown command: ${argv._[0]}`);
   });
 };

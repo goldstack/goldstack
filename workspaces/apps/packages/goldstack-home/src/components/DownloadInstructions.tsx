@@ -8,6 +8,7 @@ import { DownloadInstructionsStep } from './DownloadInstructionsStep';
 const AngleRightComponent = (): JSX.Element => {
   const angleRight = dataUriToSrc(AngleRight);
   return (
+    // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for SVG icon rendering
     <span className={styles['angle-right']} dangerouslySetInnerHTML={{ __html: angleRight }}></span>
   );
 };
@@ -43,7 +44,7 @@ const DocsLinks = (props: { data: DocLink[] }): JSX.Element => {
           </a>
         </div>
         {props.data.map((docLink, idx) => (
-          <div key={idx} className="mb-2">
+          <div key={docLink.link} className="mb-2">
             <a
               href={docLink.link}
               target="_blank"
@@ -113,6 +114,7 @@ export const DownloadInstructions = (props: {
         <img
           className="img-fluid"
           src="https://cdn.goldstack.party/img/202201/extract_project.gif"
+          alt="Extracting the project ZIP file"
         ></img>
       </DownloadInstructionsStep>
       <DownloadInstructionsStep stepNumber={4} title="Open extracted folder in VSCode">
@@ -122,6 +124,7 @@ export const DownloadInstructions = (props: {
         <img
           className="img-fluid mb-4"
           src="https://cdn.goldstack.party/img/202201/open_folder.png"
+          alt="Opening folder in VSCode"
         ></img>
         <p>
           VSCode may prompt you to ask if you trust the authors of the workspace. Respond with{' '}
@@ -131,6 +134,7 @@ export const DownloadInstructions = (props: {
           className="img-fluid mb-4"
           style={{ maxWidth: '500px' }}
           src="https://cdn.goldstack.party/img/202201/trust_authors.png"
+          alt="Trusting authors prompt in VSCode"
         ></img>
         <p>
           You may also be asked if you want to install recommended extensions for this workspace. We
@@ -140,6 +144,7 @@ export const DownloadInstructions = (props: {
         <img
           className="img-fluid mb-4"
           src="https://cdn.goldstack.party/img/202201/install_extensions.png"
+          alt="Installing extensions prompt in VSCode"
         ></img>
       </DownloadInstructionsStep>
       <DownloadInstructionsStep
@@ -178,6 +183,7 @@ export const DownloadInstructions = (props: {
         <img
           className="img-fluid"
           src="https://cdn.goldstack.party/img/202202/node_and_yarn.gif"
+          alt="Running yarn commands in terminal"
         ></img>
       </DownloadInstructionsStep>
 
@@ -189,6 +195,7 @@ export const DownloadInstructions = (props: {
         <img
           className="img-fluid"
           src="https://cdn.goldstack.party/img/202201/allow_typescript.gif"
+          alt="Allowing workspace TypeScript version"
         ></img>
       </DownloadInstructionsStep>
 
@@ -201,6 +208,7 @@ export const DownloadInstructions = (props: {
         <img
           className="img-fluid mb-4"
           src="https://cdn.goldstack.party/img/202201/yarn_watch.gif"
+          alt="Running yarn watch command"
         ></img>
         {props.docLinks && <DocsLinks data={props.docLinks}></DocsLinks>}
       </DownloadInstructionsStep>

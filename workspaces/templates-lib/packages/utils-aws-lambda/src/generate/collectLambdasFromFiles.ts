@@ -15,7 +15,7 @@ export function readLambdaConfig(dir: string): LambdaConfig[] {
   const result = readLambdaConfigImpl(dir, dir);
 
   if (!result.children) {
-    throw new Error('Invalid directory ' + dir);
+    throw new Error(`Invalid directory ${dir}`);
   }
 
   return flattenConfig(result.children).filter((e) => e.type === RouteType.FUNCTION);

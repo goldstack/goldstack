@@ -25,7 +25,7 @@ export const readDeploymentFromPackageConfig = (
 
   const deployment = packageConfig.deployments.find((d) => d.name === deploymentName);
   if (!deployment) {
-    throw new Error('Cannot find deployment with name: ' + deploymentName);
+    throw new Error(`Cannot find deployment with name: ${deploymentName}`);
   }
 
   validateConfig(deployment, deploymentConfigSchema, {
@@ -93,7 +93,7 @@ export const getHetznerUser = async (
   const config = readConfig(configPath);
   const user = config.users.find((u) => u.name === userName);
   if (!user) {
-    throw new Error('Cannot find Hetzner user ' + userName);
+    throw new Error(`Cannot find Hetzner user ${userName}`);
   }
   return user;
 };

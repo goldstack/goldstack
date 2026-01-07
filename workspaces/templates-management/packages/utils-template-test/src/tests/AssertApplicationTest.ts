@@ -25,7 +25,7 @@ export class AssertApplicationTest implements TemplateTest {
     const packageConfig = readPackageConfigFromDir(params.packageDir);
 
     for (const deployment of packageConfig.deployments) {
-      const applicationUrl = 'https://' + deployment.configuration.domain + '/';
+      const applicationUrl = `https://${deployment.configuration.domain}/`;
       console.log(
         'Asserting application deployed for',
         deployment.name,

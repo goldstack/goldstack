@@ -29,7 +29,7 @@ async function packageLambda() {
     fs.mkdirSync(distDir);
   }
 
-  const prevDistFiles = globSync(distDir.replace(/\\/g, '/') + '/*');
+  const prevDistFiles = globSync(`${distDir.replace(/\\/g, '/')}/*`);
   await rmSafe(...prevDistFiles);
 
   const activeVenv = getActiveVenv();
@@ -60,7 +60,7 @@ async function packageLambda() {
   // Clean out excluded packages
   const deployConfig = JSON.parse(read(path.join(lambdaDir, 'deploy.json')));
   for (const excludedPackage of deployConfig.excludePackages) {
-    const pattern = distDir.replace(/\\/g, '/') + '/site-packages/' + excludedPackage;
+    const pattern = `${distDir.replace(/\\/g, '/')}/site-packages/${excludedPackage}`;
     debug(`Searching for excluded package using pattern: ${pattern}`);
     const toDelete = globSync(pattern);
     if (toDelete.length > 0) {

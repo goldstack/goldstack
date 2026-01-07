@@ -18,7 +18,7 @@ export const createNextjsBootstrapBuildSetConfig = async (): Promise<DeploySetCo
   };
 
   const hash = Date.now();
-  const websiteDomain = 'nextjsbootstrap-' + hash + '.tests.dev.goldstack.party';
+  const websiteDomain = `nextjsbootstrap-${hash}.tests.dev.goldstack.party`;
 
   const setConfig: DeploySetConfig = {
     buildSetName: 'nextjs-bootstrap',

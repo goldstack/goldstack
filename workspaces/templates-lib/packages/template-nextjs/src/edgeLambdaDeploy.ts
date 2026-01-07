@@ -151,7 +151,7 @@ export const deployEdgeLambda = async (params: DeployLambdaParams): Promise<void
   });
 
   const staticRoutes = htmlPagePathsWithoutExtension.map((match) => ({
-    page: '/' + match,
+    page: `/${match}`,
     regex: `^\\/${match.replace(/\//g, '\\/')}$`,
   }));
 

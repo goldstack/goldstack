@@ -18,9 +18,9 @@ describe('Hetzner User config', () => {
 }`;
 
     mkdir('-p', testDir);
-    write(hetznerConfig, testDir + '/config.json');
+    write(hetznerConfig, `${testDir}/config.json`);
 
-    const providerProcess = await getHetznerUser('process', testDir + '/config.json');
+    const providerProcess = await getHetznerUser('process', `${testDir}/config.json`);
     assert(providerProcess);
   });
 });

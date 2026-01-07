@@ -80,7 +80,7 @@ class LocalInstancesManagerImpl implements LocalInstancesManager {
 
       // Restore instances
       for (const [port, instance] of Object.entries(state.instances)) {
-        const portNum = parseInt(port);
+        const portNum = parseInt(port, 10);
         if (instance === 'stopped') {
           this.startedInstances.set(portNum, 'stopped');
         } else {
@@ -102,7 +102,7 @@ class LocalInstancesManagerImpl implements LocalInstancesManager {
 
       // Restore usage counts
       Object.entries(state.usageCounts).forEach(([port, count]) => {
-        this.portUsageCounter.set(parseInt(port), count);
+        this.portUsageCounter.set(parseInt(port, 10), count);
       });
     } catch (err) {
       if (err.code !== 'ENOENT') {

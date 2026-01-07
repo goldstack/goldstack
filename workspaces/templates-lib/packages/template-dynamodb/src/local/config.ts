@@ -17,7 +17,7 @@ export interface DynamoDBConfig {
  * Default configuration for local DynamoDB instances
  */
 export const defaultConfig: DynamoDBConfig = {
-  port: parseInt(process.env.DYNAMODB_LOCAL_PORT || '8000'),
+  port: parseInt(process.env.DYNAMODB_LOCAL_PORT || '8000', 10),
   region: 'eu-central-1',
   credentials: {
     accessKeyId: 'dummy',

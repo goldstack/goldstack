@@ -42,7 +42,7 @@ export const buildTemplate = async (
   await extract(zipPath, { dir: path.resolve(packageFolder) });
 
   rm('-f', zipPath);
-  debug('Template archive extracted to ' + path.resolve(packageFolder), {
+  debug(`Template archive extracted to ${path.resolve(packageFolder)}`, {
     packageFolder: path.resolve(packageFolder),
   });
   setPackageName(packageFolder, packageConfig.packageName);

@@ -216,7 +216,7 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
       return;
     }
 
-    throw new Error('Unknown command: ' + command);
+    throw new Error(`Unknown command: ${command}`);
   });
 };
 

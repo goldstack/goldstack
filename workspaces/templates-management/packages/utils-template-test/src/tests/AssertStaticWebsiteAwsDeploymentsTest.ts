@@ -49,18 +49,18 @@ export class AssertStaticWebsiteAwsDeploymentsTest implements TemplateTest {
           deployment.configuration.websiteDomain,
       );
 
-      const staticWebsite1Url = 'https://' + deployment.configuration.websiteDomain + '/';
+      const staticWebsite1Url = `https://${deployment.configuration.websiteDomain}/`;
       await assertWebsiteAvailable(staticWebsite1Url);
       await assertWebsiteRedirect(
-        'http://' + deployment.configuration.websiteDomain,
+        `http://${deployment.configuration.websiteDomain}`,
         staticWebsite1Url,
       );
       await assertWebsiteRedirect(
-        'https://' + deployment.configuration.websiteDomainRedirect,
+        `https://${deployment.configuration.websiteDomainRedirect}`,
         staticWebsite1Url,
       );
       await assertWebsiteRedirect(
-        'http://' + deployment.configuration.websiteDomainRedirect,
+        `http://${deployment.configuration.websiteDomainRedirect}`,
         staticWebsite1Url,
       );
     }

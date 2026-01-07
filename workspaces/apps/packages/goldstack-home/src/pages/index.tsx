@@ -48,7 +48,7 @@ const Front = (): JSX.Element => {
         />
       </Head>
       <Header></Header>
-      <main id="content" role="main">
+      <main id="content">
         <Container className="space-top-1 space-top-md-2">
           <Row className="align-items-lg-center">
             <div className="col-lg-5 mb-7 mb-lg-0">

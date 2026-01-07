@@ -27,7 +27,7 @@ export class AssertWebsiteTest implements TemplateTest {
           deployment.configuration.websiteDomain,
       );
 
-      const website1Url = 'https://' + deployment.configuration.websiteDomain + '/';
+      const website1Url = `https://${deployment.configuration.websiteDomain}/`;
       await assertWebsiteAvailable(website1Url);
     }
   }

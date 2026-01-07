@@ -1,4 +1,4 @@
-import { readDeploymentState, writeDeploymentState, type DeploymentState } from '@goldstack/infra';
+import { type DeploymentState, readDeploymentState, writeDeploymentState } from '@goldstack/infra';
 import { debug, fatal, info, warn } from '@goldstack/utils-log';
 import { readPackageConfig, writePackageConfig } from '@goldstack/utils-package';
 import { cd, pwd, read } from '@goldstack/utils-sh';
@@ -85,7 +85,7 @@ export const convertToPythonVariable = (variableName: string): string => {
     if (char.toLowerCase() === char) {
       res += char;
     } else {
-      res += '_' + char.toLowerCase();
+      res += `_${char.toLowerCase()}`;
     }
   }
 
@@ -192,10 +192,10 @@ export const getVariablesFromHCL = (properties: Record<string, any>): Variables 
           `Checking environment variable to set terraform variable: ${environmentVariableName}`,
         );
         if (process.env[environmentVariableName] || process.env[environmentVariableName] === '') {
-          info('Setting terraform variable from environment variable ' + environmentVariableName);
+          info(`Setting terraform variable from environment variable ${environmentVariableName}`);
           vars.push([pythonVariableName, process.env[environmentVariableName] || '']);
         } else {
-          warn('Terraform variable will not be defined ' + pythonVariableName);
+          warn(`Terraform variable will not be defined ${pythonVariableName}`);
         }
       }
     }
@@ -254,7 +254,7 @@ export class TerraformBuild {
         return tsConfig.tfVersion;
       } catch (_e) {
         throw new Error(
-          'Invalid Terraform configuration in ' + path.resolve('./infra/tfConfig.json'),
+          `Invalid Terraform configuration in ${path.resolve('./infra/tfConfig.json')}`,
         );
       }
     }

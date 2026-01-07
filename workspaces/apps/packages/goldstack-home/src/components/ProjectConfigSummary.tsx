@@ -20,11 +20,9 @@ const BuildProjectButton = styled.button`
 
 const ValidationResult = (props: { result: StepValidation }): JSX.Element => {
   return (
-    <>
-      <p>
-        {props.result.valid ? '✔️' : '❌'} {props.result.stepName}
-      </p>
-    </>
+    <p>
+      {props.result.valid ? '✔️' : '❌'} {props.result.stepName}
+    </p>
   );
 };
 

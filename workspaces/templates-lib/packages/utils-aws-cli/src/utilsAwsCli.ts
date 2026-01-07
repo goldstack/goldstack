@@ -56,7 +56,7 @@ export const execWithDocker = async (params: AWSExecParams): Promise<string> => 
 
   assertDirectoryExists(
     mountDir,
-    'Cannot execute AWS cli command since working directory does not exist: aws ' + params.command,
+    `Cannot execute AWS cli command since working directory does not exist: aws ${params.command}`,
   );
   const command =
     'docker run --rm ' +
@@ -78,7 +78,7 @@ export const execWithCli = async (params: AWSExecParams): Promise<string> => {
 
   assertDirectoryExists(
     params.workDir || pwd(),
-    'Cannot execute command for AWS cli: aws ' + params.command,
+    `Cannot execute command for AWS cli: aws ${params.command}`,
   );
 
   const previousDir = pwd();

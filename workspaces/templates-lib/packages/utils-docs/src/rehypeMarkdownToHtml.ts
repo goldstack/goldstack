@@ -18,7 +18,7 @@ export default function rehypeDocs({
     if (value.startsWith('markdown:')) {
       const file = value.substr(9);
 
-      const combinedPath = path.normalize(dirname(filePath) + '/' + file);
+      const combinedPath = path.normalize(`${dirname(filePath)}/${file}`);
 
       if (!fs.existsSync(combinedPath)) {
         throw Error(`Invalid fragment specified; no such file "${combinedPath}"`);
@@ -41,7 +41,7 @@ export default function rehypeDocs({
     if (node.children.length > 0 && node.children[0].value === '!embed') {
       const file = node.url;
 
-      const combinedPath = path.normalize(dirname(filePath) + '/' + file);
+      const combinedPath = path.normalize(`${dirname(filePath)}/${file}`);
 
       if (!fs.existsSync(combinedPath)) {
         throw Error(`Invalid fragment specified; no such file "${combinedPath}"`);

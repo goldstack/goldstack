@@ -78,40 +78,40 @@ const run = async () => {
   // Step 3:
   //    Generate boilerplate docs
   await generateMarkdownDocs(
-    paths.buildSets + 'nextjsBootstrap.template.README.md',
-    paths.buildSets + 'nextjsBootstrap.README.md',
+    `${paths.buildSets}nextjsBootstrap.template.README.md`,
+    `${paths.buildSets}nextjsBootstrap.README.md`,
   );
   await generateMarkdownDocs(
-    paths.buildSets + 'emailSend.template.README.md',
-    paths.buildSets + 'emailSend.README.md',
+    `${paths.buildSets}emailSend.template.README.md`,
+    `${paths.buildSets}emailSend.README.md`,
   );
   await generateMarkdownDocs(
-    paths.buildSets + 'hetznerVPS.template.README.md',
-    paths.buildSets + 'hetznerVPS.README.md',
+    `${paths.buildSets}hetznerVPS.template.README.md`,
+    `${paths.buildSets}hetznerVPS.README.md`,
   );
   await generateMarkdownDocs(
-    paths.buildSets + 'lambdaPythonJob.template.README.md',
-    paths.buildSets + 'lambdaPythonJob.README.md',
+    `${paths.buildSets}lambdaPythonJob.template.README.md`,
+    `${paths.buildSets}lambdaPythonJob.README.md`,
   );
   await generateMarkdownDocs(
-    paths.buildSets + 's3.template.README.md',
-    paths.buildSets + 's3.README.md',
+    `${paths.buildSets}s3.template.README.md`,
+    `${paths.buildSets}s3.README.md`,
   );
   await generateMarkdownDocs(
-    paths.buildSets + 'dynamodb.template.README.md',
-    paths.buildSets + 'dynamodb.README.md',
+    `${paths.buildSets}dynamodb.template.README.md`,
+    `${paths.buildSets}dynamodb.README.md`,
   );
   await generateMarkdownDocs(
-    paths.buildSets + 'staticWebsite.template.README.md',
-    paths.buildSets + 'staticWebsite.README.md',
+    `${paths.buildSets}staticWebsite.template.README.md`,
+    `${paths.buildSets}staticWebsite.README.md`,
   );
   await generateMarkdownDocs(
-    paths.buildSets + 'serverSideRendering.template.README.md',
-    paths.buildSets + 'serverSideRendering.README.md',
+    `${paths.buildSets}serverSideRendering.template.README.md`,
+    `${paths.buildSets}serverSideRendering.README.md`,
   );
   await generateMarkdownDocs(
-    paths.buildSets + 'userManagement.template.README.md',
-    paths.buildSets + 'userManagement.README.md',
+    `${paths.buildSets}userManagement.template.README.md`,
+    `${paths.buildSets}userManagement.README.md`,
   );
 
   // Step 4:

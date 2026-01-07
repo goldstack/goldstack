@@ -74,7 +74,7 @@ export const renderTestResults = (results: TestResult[]): string => {
       } else {
         renderedResult = `❌ Failed: ${result.error}`;
       }
-      return result.testName.padEnd(20, ' ') + renderedResult + '\n';
+      return `${result.testName.padEnd(20, ' ') + renderedResult}\n`;
     })
     .join('');
 };
@@ -113,7 +113,7 @@ const buildAndTestProject = async (params: BuildAndTestProjectParams): Promise<T
   // setting local AWS config file
   if (params.user) {
     const awsConfigPath = getAwsConfigPath(params.projectDir);
-    info('Writing AWS config to ' + path.resolve(awsConfigPath));
+    info(`Writing AWS config to ${path.resolve(awsConfigPath)}`);
     mkdir('-p', path.dirname(awsConfigPath));
     write(
       JSON.stringify({
@@ -131,7 +131,7 @@ const buildAndTestProject = async (params: BuildAndTestProjectParams): Promise<T
   // run project level tests first to have everything initialised
   for (const projectTest of params.project.rootTests) {
     const test = getTemplateTest(projectTest);
-    info('Executing test ' + test.getName());
+    info(`Executing test ${test.getName()}`);
     await test.runTest({
       packageDir: params.projectDir,
       projectDir: params.projectDir,
@@ -156,7 +156,7 @@ const buildAndTestProject = async (params: BuildAndTestProjectParams): Promise<T
         try {
           const test = getTemplateTest(packageTest);
           await test.runTest({
-            packageDir: params.projectDir + `packages/${packageConfig.packageName}/`,
+            packageDir: `${params.projectDir}packages/${packageConfig.packageName}/`,
             projectDir: params.projectDir,
           });
           isFail = false;
@@ -186,7 +186,7 @@ const buildAndTestProject = async (params: BuildAndTestProjectParams): Promise<T
         try {
           const test = getTemplateTest(packageCleanUp);
           await test.runTest({
-            packageDir: params.projectDir + `packages/${packageConfig.packageName}/`,
+            packageDir: `${params.projectDir}packages/${packageConfig.packageName}/`,
             projectDir: params.projectDir,
           });
           isFail = false;
@@ -227,7 +227,7 @@ export const buildSet = async (params: BuildSetParams): Promise<BuildSetResult> 
 
   // script runs in dir workspaces/apps/packages/template-management-cli
   // thus monorepo root is four folders up
-  const monorepoRoot = path.resolve('./../../../../') + '/';
+  const monorepoRoot = `${path.resolve('./../../../../')}/`;
   info('Building templates. Working directory ', {
     templateWorkDir,
     monorepoRoot,
@@ -273,7 +273,7 @@ export const buildSet = async (params: BuildSetParams): Promise<BuildSetResult> 
     }
     res.testFailed = false;
   } else {
-    warn('Skipping tests for ' + params.config.buildSetName);
+    warn(`Skipping tests for ${params.config.buildSetName}`);
   }
 
   // IMPORTANT since otherwise nothing will be deployed
@@ -309,7 +309,7 @@ export async function buildProjects(params: {
   for (const project of params.buildSetParams.config.projects) {
     const projectDir = join(
       params.buildSetParams.workDir,
-      project.projectConfiguration.projectName + '/',
+      `${project.projectConfiguration.projectName}/`,
     );
     info('Building project in directory', { projectDir });
     mkdir('-p', projectDir);

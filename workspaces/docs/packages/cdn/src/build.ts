@@ -11,9 +11,9 @@ const build = async (_args: string[]): Promise<void> => {
 
   // Your logic for custom builds here
   mkdir('-p', destDir);
-  copy(sourceDir + '/404.html', destDir);
-  copy(sourceDir + '/index.html', destDir);
-  copy(sourceDir + '/img', destDir + 'img/');
+  copy(`${sourceDir}/404.html`, destDir);
+  copy(`${sourceDir}/index.html`, destDir);
+  copy(`${sourceDir}/img`, `${destDir}img/`);
 };
 
 build(process.argv);

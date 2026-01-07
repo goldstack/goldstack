@@ -28,7 +28,7 @@ export const validateProject = (projectData: ProjectData): StepValidation[] => {
       const valid = validate(packageConfig.package.deployments[0].configuration) as boolean;
       // if (!valid) console.log(validate.errors);
       return {
-        stepName: packageConfig.package.name + ' Module',
+        stepName: `${packageConfig.package.name} Module`,
         valid,
       };
     }),

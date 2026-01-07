@@ -84,8 +84,8 @@ export const renderPage = async <PropType extends ReactPropertiesType>({
       baseUrl: '/_goldstack/static/generated/',
     });
   }
-  if (event.queryStringParameters?.['resource']) {
-    if (event.queryStringParameters['resource'].indexOf('js') > -1) {
+  if (event.queryStringParameters?.resource) {
+    if (event.queryStringParameters.resource.indexOf('js') > -1) {
       if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
         // if running in Lambda load bundle from local file system
         let SourceMap = '';
@@ -119,7 +119,7 @@ export const renderPage = async <PropType extends ReactPropertiesType>({
       }
     }
 
-    if (event.queryStringParameters['resource'].indexOf('sourcemap') > -1) {
+    if (event.queryStringParameters.resource.indexOf('sourcemap') > -1) {
       if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
         throw new Error(
           'sourcemap resource not supported in Lambda. Please load sourcemap from static files.',

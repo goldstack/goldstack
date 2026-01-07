@@ -60,9 +60,9 @@ function generateToken(properties: unknown): string {
   let result = '';
   const alg = { alg: 'HS256', typ: 'JWT' };
   const header = encodeBase64(stringify(alg));
-  result += header + '.';
+  result += `${header}.`;
   const body = encodeBase64(stringify(properties));
-  result += body + '.';
+  result += `${body}.`;
   const checkSum = checkSumGen(header, body);
   result += checkSum;
   return result;

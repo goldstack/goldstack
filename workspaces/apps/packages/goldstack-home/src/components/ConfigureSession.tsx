@@ -1,7 +1,7 @@
 import * as Fullstory from '@fullstory/browser';
 import { getEndpoint } from '@goldstack/goldstack-api';
 
-import { useRef, useState, type MouseEvent } from 'react';
+import { type MouseEvent, useRef, useState } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 
 import { event } from '../lib/ga';

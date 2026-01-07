@@ -18,8 +18,8 @@ export const createStaticWebsiteBuildSetConfig = async (): Promise<DeploySetConf
   };
 
   const hash = Date.now();
-  const websiteDomain = 'staticwebsite1-' + hash + '.tests.dev.goldstack.party';
-  const websiteDomainRedirect = 'www.staticwebsite1-' + hash + '.tests.dev.goldstack.party';
+  const websiteDomain = `staticwebsite1-${hash}.tests.dev.goldstack.party`;
+  const websiteDomainRedirect = `www.staticwebsite1-${hash}.tests.dev.goldstack.party`;
 
   const setConfig: DeploySetConfig = {
     buildSetName: 'static-website',

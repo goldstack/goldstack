@@ -64,7 +64,7 @@ const PackageCard = (props: PackageCardProps): JSX.Element => {
           } ${props.disabled ? 'disabled' : ''}`}
           onClick={toggleIncluded}
         >
-          <span className={styles['icon']} dangerouslySetInnerHTML={{ __html: plusSvg }}></span>
+          <span className={styles.icon} dangerouslySetInnerHTML={{ __html: plusSvg }}></span>
           Add to Project
         </div>
       )}
@@ -73,13 +73,13 @@ const PackageCard = (props: PackageCardProps): JSX.Element => {
           className={`card-footer btn btn-success btn-sm ${styles['included-footer']}`}
           onClick={toggleIncluded}
         >
-          <span className={styles['icon']} dangerouslySetInnerHTML={{ __html: checkSvg }}></span>
+          <span className={styles.icon} dangerouslySetInnerHTML={{ __html: checkSvg }}></span>
           Included in Project
         </div>
       )}
       {props.alwaysIncluded && false && (
         <div className={`card-footer text-center btn-sm ${styles['always-included-footer']}`}>
-          <span className={styles['icon']} dangerouslySetInnerHTML={{ __html: checkSvg }}></span>
+          <span className={styles.icon} dangerouslySetInnerHTML={{ __html: checkSvg }}></span>
           Included in Project
         </div>
       )}

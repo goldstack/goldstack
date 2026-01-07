@@ -1,5 +1,5 @@
-import goldstackConfig from './../goldstack.json';
 import type { Server } from 'http';
+import goldstackConfig from './../goldstack.json';
 
 let testServerPort: null | number = null;
 
@@ -7,6 +7,7 @@ let testServer: Server | null = null;
 
 export const startTestServer = async (port: number): Promise<void> => {
   // The below is preventing webpack from bundling up the server - it is only required for local tests.
+  // biome-ignore lint/security/noGlobalEval: Required for test server isolation
   testServer = await eval(
     `var server = require('./server.ts'); var promise = server.start(${port}); promise;`,
   );
@@ -41,5 +42,5 @@ export const getEndpoint = (deploymentName?: string): string => {
   if (!deployment) {
     throw new Error(`Cannot find deployment with name ${deploymentName}`);
   }
-  return 'https://' + deployment.configuration.apiDomain;
+  return `https://${deployment.configuration.apiDomain}`;
 };
