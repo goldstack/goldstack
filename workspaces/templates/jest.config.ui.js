@@ -5,8 +5,5 @@ module.exports = {
   ...base,
   testEnvironment: 'jsdom',
   testRegex: '\\.(uispec|spec)\\.ts[x]?$',
-  moduleNameMapper: {
-    '^react$': require.resolve('react/cjs/react.development.js'),
-    '^react-dom$': require.resolve('react-dom/cjs/react-dom.development.js'),
-  },
+  // No moduleNameMapper for react to avoid issues with React 19
 };
