@@ -33,6 +33,7 @@
   },
   "resolutions": {
     "ansi-regex": "6.0.0",
+    "braces": "3.0.3",
     "generic-names": "4.0.0",
     "trim": "0.0.3"
   },
