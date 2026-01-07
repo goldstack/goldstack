@@ -62,7 +62,7 @@ const DownloadReady = (props: {
   );
 };
 
-const Download = (props: DownloadProps): React.ReactNode | null => {
+const Download = (props: DownloadProps): React.ReactNode => {
   const { data: packageData, error: packageDataError } = useSWR(
     `${getEndpoint()}/projects/${props.projectId}/packages/${props.packageId}`,
     fetcher,

@@ -1,4 +1,3 @@
-import React from 'react';
 import type { SitemapItem } from '@goldstack/markdown-docs';
 import { render, screen } from '@testing-library/react';
 import sitemap from './../data/docs/sitemap.json';
