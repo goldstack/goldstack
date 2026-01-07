@@ -31,8 +31,8 @@ jobs:
 
       - name: Configure Kilo Code
         run: |
-          mkdir -p ~/.kilocode
-          jq '.providers[0].kilocodeToken = "${{ secrets.KILO_API_KEY }}"' .github/workflows/kilocode-config.json > ~/.kilocode/config.json
+          mkdir -p ~/.kilocode/cli
+          jq '.providers[0].kilocodeToken = "${{ secrets.KILO_API_KEY }}"' .github/workflows/kilocode-config.json > ~/.kilocode/cli/config.json
 
       - name: Extract prompt
         id: ctx
