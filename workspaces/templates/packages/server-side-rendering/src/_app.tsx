@@ -7,11 +7,7 @@ function Wrapped<PropType extends ReactPropertiesType>({
   Component: React.FunctionComponent<PropType>;
 }): React.FunctionComponent<PropType> {
   return function Wrapper(props: PropType): JSX.Element {
-    return (
-      <>
-        <Component {...props}></Component>
-      </>
-    );
+    return <Component {...props}></Component>;
   };
 }
 

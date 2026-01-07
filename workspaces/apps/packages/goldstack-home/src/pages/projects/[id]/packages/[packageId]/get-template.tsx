@@ -23,11 +23,7 @@ const GetTemplatePage = (): JSX.Element => {
   const router = useRouter();
   const { id, packageId } = router.query;
   if (!id || !packageId) {
-    return (
-      <>
-        <Header></Header>
-      </>
-    );
+    return <Header></Header>;
   }
 
   const { data, error } = useSWR(`${getEndpoint()}/sessions`, fetcher);

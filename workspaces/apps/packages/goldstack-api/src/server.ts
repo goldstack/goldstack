@@ -2,10 +2,10 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
-import projects from './projects';
-import sessions from './sessions';
 // import requestLogger from 'express-requests-logger';
 import type { Server } from 'http';
+import projects from './projects';
+import sessions from './sessions';
 
 export const app: express.Application = express();
 

@@ -25,7 +25,7 @@ export const copy = async (source: string[] | string, dest: string): Promise<voi
   for (const sourceEl of sourceArr) {
     const files = globSync(sourceEl.replace(/\\/g, '/'));
     if (files.length === 0) {
-      warn('No files will be copied since no files matched glob ' + sourceEl);
+      warn(`No files will be copied since no files matched glob ${sourceEl}`);
       continue;
     }
     for (const file of files) {
@@ -52,7 +52,7 @@ export const copy = async (source: string[] | string, dest: string): Promise<voi
         });
         debug(`Copied ${file} to ${destCorrected}`);
       } catch (err) {
-        error(`Error copying ${file} to ${destCorrected}: ` + err);
+        error(`Error copying ${file} to ${destCorrected}: ${err}`);
         throw err;
       }
     }
@@ -114,7 +114,7 @@ const cpSingle = (singleSource: string, dest: string, copySyncOptions: CopyOptio
 
 export const cp = (options: string, source: string | string[], dest: string): void => {
   if (options !== '-f' && options !== '-rf' && options !== '') {
-    throw new Error('Unknown option for cp ' + options);
+    throw new Error(`Unknown option for cp ${options}`);
   }
 
   const copySyncOptions = {
@@ -231,12 +231,12 @@ const exec = (cmd: string, params?: ExecParams): string => {
     }
     return res.toString();
   } catch (e) {
-    error('Command line operation failed: ' + cmd);
+    error(`Command line operation failed: ${cmd}`);
     if (e.stderr) {
-      error('Error log:\n  ' + e.stderr.toString().replaceAll(/\n/g, '\n  '));
+      error(`Error log:\n  ${e.stderr.toString().replaceAll(/\n/g, '\n  ')}`);
     }
     if (e.stdout) {
-      info('Standard out:\n  ' + e.stdout.toString().replaceAll(/\n/g, '\n  '));
+      info(`Standard out:\n  ${e.stdout.toString().replaceAll(/\n/g, '\n  ')}`);
     }
     throw e;
   }

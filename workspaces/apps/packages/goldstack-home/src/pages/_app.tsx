@@ -42,7 +42,7 @@ const BootstrapApp = ({ Component, pageProps }): JSX.Element => {
         router.events.off('routeChangeComplete', handleRouteChange);
       }
     };
-  }, [router.events]);
+  }, [router.events, router.pathname]);
 
   // see https://github.com/styled-components/styled-components/issues/3731
   // biome-ignore lint/suspicious/noExplicitAny: ThemeProvider type assertion required for Next.js compatibility

@@ -81,5 +81,5 @@ export const resolveImage = (image: TemplateFeatureImage): any => {
   if (image === 'api-gateway') {
     return APIGateway;
   }
-  throw new Error('Unknown image for template icon: ' + image);
+  throw new Error(`Unknown image for template icon: ${image}`);
 };

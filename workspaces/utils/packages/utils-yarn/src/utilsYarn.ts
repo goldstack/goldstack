@@ -67,7 +67,7 @@ export interface YarnRunOptions {
 }
 
 export const yarn = (dir: string, args: string, options?: YarnRunOptions): void => {
-  debug('Performing yarn command: yarn ' + args);
+  debug(`Performing yarn command: yarn ${args}`);
   // always prefer to run with cli
   if (hasYarn() && !options?.preferDocker) {
     execWithCli(dir, args);

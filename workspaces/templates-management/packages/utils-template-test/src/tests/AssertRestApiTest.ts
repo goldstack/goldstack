@@ -25,7 +25,7 @@ export class AssertRestApiTest implements TemplateTest {
     const packageConfig = readPackageConfigFromDir(params.packageDir);
 
     for (const deployment of packageConfig.deployments) {
-      const apiUrl = 'https://' + deployment.configuration.apiDomain + '/';
+      const apiUrl = `https://${deployment.configuration.apiDomain}/`;
       console.log('Asserting API deployed for', deployment.name, 'deployed to', apiUrl);
       // in case there are delays with DNS resolution
       await retryOperation(

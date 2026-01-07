@@ -42,13 +42,13 @@ const processNode = async (params: {
   const { dir, name } = path.parse(filePath);
   mkdir('-p', params.destination + dir);
   const sourceFile = params.source + filePath;
-  const destinationFile = params.destination + dir + (dir ? '/' : '') + name + '.json';
+  const destinationFile = `${params.destination + dir + (dir ? '/' : '') + name}.json`;
   const data = await renderPage(sourceFile);
   write(JSON.stringify(data, null, 2), destinationFile);
 
   let pagePath =
     (dir
-      ? path.relative(params.rootDirectory, params.destination + dir).replace(/\\/g, '/') + '/'
+      ? `${path.relative(params.rootDirectory, params.destination + dir).replace(/\\/g, '/')}/`
       : '') + name;
   if (pagePath === 'index' && !dir) {
     pagePath = '/';
@@ -107,9 +107,9 @@ export const generateDocs = async (params: {
   source: string;
   destination: string;
 }): Promise<Results> => {
-  const navigation = JSON.parse(read(params.source + 'navigation.json'));
+  const navigation = JSON.parse(read(`${params.source}navigation.json`));
 
-  cp('-f', params.source + 'navigation.json', params.destination + 'navigation.json');
+  cp('-f', `${params.source}navigation.json`, `${params.destination}navigation.json`);
   const res = await processNode({
     node: navigation,
     source: params.source,
@@ -117,7 +117,7 @@ export const generateDocs = async (params: {
     rootDirectory: params.destination,
   });
 
-  write(JSON.stringify(res.paths, null, 2), params.destination + 'paths.json');
-  write(JSON.stringify(res.sitemap, null, 2), params.destination + 'sitemap.json');
+  write(JSON.stringify(res.paths, null, 2), `${params.destination}paths.json`);
+  write(JSON.stringify(res.sitemap, null, 2), `${params.destination}sitemap.json`);
   return res;
 };

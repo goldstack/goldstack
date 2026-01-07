@@ -186,7 +186,7 @@ export const getPackageHandler = async (req: Request, res: Response): Promise<vo
     const sessionData = await sessionRepo.readSession(userToken);
     if (!sessionData) {
       console.error('Cannot retrieve session data for', userToken);
-      res.status(500).json({ errorMessage: 'Cannot retrieve session data ' + userToken });
+      res.status(500).json({ errorMessage: `Cannot retrieve session data ${userToken}` });
       return;
     }
 

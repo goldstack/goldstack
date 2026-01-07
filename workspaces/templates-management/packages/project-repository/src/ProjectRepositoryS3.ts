@@ -78,7 +78,7 @@ class ProjectRepositoryS3 implements ProjectRepository {
   }
 
   async downloadProject(id: ProjectId, path: string): Promise<void> {
-    const targetDir = goldstackLocalDir() + 'work/project-download/' + uuid4() + '/';
+    const targetDir = `${goldstackLocalDir()}work/project-download/${uuid4()}/`;
     mkdir('-p', targetDir);
     const targetArchive = `${targetDir}${id}.zip`;
     if (
@@ -100,7 +100,7 @@ class ProjectRepositoryS3 implements ProjectRepository {
   }
 
   async uploadProject(id: ProjectId, path: string): Promise<void> {
-    const targetDir = goldstackLocalDir() + 'work/project-upload/' + uuid4() + '/';
+    const targetDir = `${goldstackLocalDir()}work/project-upload/${uuid4()}/`;
     mkdir('-p', targetDir);
     const targetArchive = `${targetDir}${id}.zip`;
     await rmSafe(targetArchive);

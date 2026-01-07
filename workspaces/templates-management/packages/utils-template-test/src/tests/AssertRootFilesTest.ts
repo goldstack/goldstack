@@ -10,9 +10,9 @@ export class AssertRootFilesTest implements TemplateTest {
     const projectDir = params.projectDir;
     const awsConfigPath = getAwsConfigPath(params.projectDir);
     assertFilesExist([
-      projectDir + 'biome.jsonc',
-      projectDir + 'config/infra/aws/.gitignore',
-      projectDir + 'config/goldstack/.gitignore',
+      `${projectDir}biome.jsonc`,
+      `${projectDir}config/infra/aws/.gitignore`,
+      `${projectDir}config/goldstack/.gitignore`,
       awsConfigPath,
     ]);
   }

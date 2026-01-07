@@ -54,7 +54,7 @@ const Front = (): JSX.Element => {
         <title>Goldstack Builder</title>
       </Head>
       <Header></Header>
-      <main id="content" role="main">
+      <main id="content">
         <Container fluid className="">
           <Row>
             <Col md={9}>

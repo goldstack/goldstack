@@ -262,5 +262,5 @@ function getLocalSQSDLQUrl(goldstackConfig: any): string {
 }
 
 function getLocalSQSQueueUrl(goldstackConfig: any): string {
-  return 'http://localhost:4566/000000000000/' + goldstackConfig.name;
+  return `http://localhost:4566/000000000000/${goldstackConfig.name}`;
 }

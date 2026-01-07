@@ -5,11 +5,7 @@ const ProjectTemplateFeatureDetail = (props: { feature: ShortTemplateFeature }):
   if (!props.feature.details) {
     return <></>;
   }
-  return (
-    <>
-      <TemplateFeature {...props.feature}></TemplateFeature>
-    </>
-  );
+  return <TemplateFeature {...props.feature}></TemplateFeature>;
 };
 
 const ProjectTemplateFeaturesDetails = (props: {

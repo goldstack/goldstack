@@ -18,7 +18,7 @@ describe('SES template', () => {
             },
           },
         },
-        Source: 'sender@' + fromDomain,
+        Source: `sender@${fromDomain}`,
       }),
     );
 

@@ -140,19 +140,19 @@ export const startTask = async (params: RunParams): Promise<StartTaskResult> => 
   let imageName: string;
   let imageHash = params.imageHash;
   if (!params.imageHash) {
-    if (!deploymentState['latest']) {
+    if (!deploymentState.latest) {
       throw new Error(
         `Cannot run image since image has not been deployed for deployment '${params.deployment.name}'.`,
       );
     }
 
-    imageName = deploymentState['latest'];
-    imageHash = deploymentState['latest'].split(':')[1];
+    imageName = deploymentState.latest;
+    imageHash = deploymentState.latest.split(':')[1];
   } else {
     imageName = `${repo}:${imageHash}`;
   }
 
-  const awsLogsGroup = '/ecs/' + repo + '/' + imageHash;
+  const awsLogsGroup = `/ecs/${repo}/${imageHash}`;
 
   const taskDefinition = (
     await ecs

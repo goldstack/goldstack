@@ -58,7 +58,7 @@ export class S3TemplateRepository implements TemplateRepository {
 
       const obj = await this.s3.send(cmd);
       if (!obj.Body) {
-        throw new Error('Invalid object body for: ' + templateName);
+        throw new Error(`Invalid object body for: ${templateName}`);
       }
       return readTemplateConfigFromString(await obj.Body.transformToString());
     } catch (e) {
@@ -99,7 +99,7 @@ export class S3TemplateRepository implements TemplateRepository {
   }
 
   async addTemplateVersion(pathToTemplate: string): Promise<GoldstackTemplateConfiguration> {
-    info('Adding template version from ' + pathToTemplate, {
+    info(`Adding template version from ${pathToTemplate}`, {
       bucket: this.bucket,
     });
     const config = readTemplateConfigFromFile(path.join(pathToTemplate, 'template.json'));
@@ -111,7 +111,7 @@ export class S3TemplateRepository implements TemplateRepository {
       });
       config.previousTemplateVersion = '0.0.0';
     } else {
-      info('Last version that was deployed: ' + latestDeployedToRepo.templateVersion, {
+      info(`Last version that was deployed: ${latestDeployedToRepo.templateVersion}`, {
         bucket: this.bucket,
       });
       if (latestDeployedToRepo.templateName !== config.templateName) {
@@ -126,7 +126,7 @@ export class S3TemplateRepository implements TemplateRepository {
         config.templateVersion === latestDeployedToRepo.templateVersion ||
         semverGt(latestDeployedToRepo.templateVersion, config.templateVersion)
       ) {
-        info('Deploying new version: ' + config.templateName, {
+        info(`Deploying new version: ${config.templateName}`, {
           bucket: this.bucket,
         });
         const newVersion = semverInc(latestDeployedToRepo.templateVersion, 'patch');
@@ -160,26 +160,22 @@ export class S3TemplateRepository implements TemplateRepository {
     write(configJson, targetConfigPath);
 
     // Upload config
-    info('Uploading template config to: ' + this.bucket + '/' + templateConfigPath, {
+    info(`Uploading template config to: ${this.bucket}/${templateConfigPath}`, {
       bucket: this.bucket,
       workDir,
     });
-    try {
-      const cmd = new PutObjectCommand({
-        Bucket: this.bucket,
-        Key: templateConfigPath,
-        Body: configJson,
-      });
-      await this.s3.send(cmd);
-    } catch (e) {
-      throw e;
-    }
+    const cmd = new PutObjectCommand({
+      Bucket: this.bucket,
+      Key: templateConfigPath,
+      Body: configJson,
+    });
+    await this.s3.send(cmd);
 
     // template.json does not need to be included in archive
     rm('-rf', targetConfigPath);
 
     const targetPackageConfigPath = join(workDir, 'goldstack.json');
-    const packageConfig = readPackageConfig(workDir + '/');
+    const packageConfig = readPackageConfig(`${workDir}/`);
     packageConfig.template = config.templateName;
     packageConfig.templateVersion = config.templateVersion;
     write(JSON.stringify(packageConfig, null, 2), targetPackageConfigPath);
@@ -196,40 +192,29 @@ export class S3TemplateRepository implements TemplateRepository {
       filesInSourceDir: fs.readdirSync(workDir).join(', '),
     });
     await zip({ directory: workDir, target: targetArchive });
-
-    // Upload archive
-    try {
-      info('Uploading template archive to: ' + this.bucket + '/' + templateArchivePath, {
-        bucket: this.bucket,
-      });
-      await this.s3.send(
-        new PutObjectCommand({
-          Bucket: this.bucket,
-          Key: templateArchivePath,
-          Body: fs.createReadStream(targetArchive),
-        }),
-      );
-    } catch (e) {
-      throw e;
-    }
+    info(`Uploading template archive to: ${this.bucket}/${templateArchivePath}`, {
+      bucket: this.bucket,
+    });
+    await this.s3.send(
+      new PutObjectCommand({
+        Bucket: this.bucket,
+        Key: templateArchivePath,
+        Body: fs.createReadStream(targetArchive),
+      }),
+    );
 
     rm('-rf', targetArchive);
-    // set latest version, only after archive upload successful
-    try {
-      info('Setting latest version to ' + config.templateVersion, {
-        bucket: this.bucket,
-        templatePath: templateConfigPath,
-      });
-      await this.s3.send(
-        new PutObjectCommand({
-          Bucket: this.bucket,
-          Key: `templates/${config.templateName}/latest.json`,
-          Body: configJson,
-        }),
-      );
-    } catch (e) {
-      throw e;
-    }
+    info(`Setting latest version to ${config.templateVersion}`, {
+      bucket: this.bucket,
+      templatePath: templateConfigPath,
+    });
+    await this.s3.send(
+      new PutObjectCommand({
+        Bucket: this.bucket,
+        Key: `templates/${config.templateName}/latest.json`,
+        Body: configJson,
+      }),
+    );
 
     return config;
   }

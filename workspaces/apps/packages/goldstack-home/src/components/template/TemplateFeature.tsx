@@ -20,15 +20,13 @@ import styles from './TemplateFeature.module.css';
 const IconList = (props: { icons: TemplateIcons[] }): JSX.Element => {
   const images = props.icons.map((icon) => resolveImage(icon));
   return (
-    <>
-      <div className="row justify-content-center">
-        {images.map((image, idx) => (
-          <div className={'col-4 col-sm-3 my-2 '} key={idx}>
-            <img src={image} className={styles['icon']} />
-          </div>
-        ))}
-      </div>
-    </>
+    <div className="row justify-content-center">
+      {images.map((image, idx) => (
+        <div className={'col-4 col-sm-3 my-2 '} key={idx}>
+          <img src={image} className={styles.icon} />
+        </div>
+      ))}
+    </div>
   );
 };
 
@@ -44,7 +42,7 @@ const createGif = (gif: string): React.ReactNode => {
     // biome-ignore lint/suspicious/noExplicitAny: SVG import requires type assertion
     return <img src={ReactTypeScriptGif as any}></img>;
   }
-  throw new Error('Unknown gif ' + gif);
+  throw new Error(`Unknown gif ${gif}`);
 };
 
 const createImage = (image: string): React.ReactNode => {
@@ -67,7 +65,7 @@ const createImage = (image: string): React.ReactNode => {
     // biome-ignore lint/suspicious/noExplicitAny: PNG import requires type assertion
     return <img src={EmailSendImg as any} className="img-fluid"></img>;
   }
-  throw new Error('Unknown image for feature details ' + image);
+  throw new Error(`Unknown image for feature details ${image}`);
 };
 
 const TemplateFeature = (props: ShortTemplateFeature): JSX.Element => {
@@ -89,7 +87,7 @@ const TemplateFeature = (props: ShortTemplateFeature): JSX.Element => {
     }
     case 'image': {
       if (!details.content.data.image) {
-        throw new Error('Invalid data for image ' + JSON.stringify(details.content));
+        throw new Error(`Invalid data for image ${JSON.stringify(details.content)}`);
       }
       content = createImage(details.content.data.image);
       break;
@@ -123,70 +121,68 @@ const TemplateFeature = (props: ShortTemplateFeature): JSX.Element => {
       break;
     }
     default: {
-      throw new Error('Unknown feature content type ' + details.content.type);
+      throw new Error(`Unknown feature content type ${details.content.type}`);
     }
   }
 
   return (
-    <>
-      <div className="position-relative gradient-y-gray">
-        <div className="container space-2 space-bottom-sm-3">
-          <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-5">
-            <div id={props.id || ''}>
-              <span
-                className="d-block small font-weight-bold text-cap mb-2"
-                style={{ cursor: 'pointer' }}
-                onClick={() => window.history.back()}
-              >
-                {props.title} ⤴
-              </span>
-            </div>
-            <h2>{details.title}</h2>
-            <p>{details.description}</p>
+    <div className="position-relative gradient-y-gray">
+      <div className="container space-2 space-bottom-sm-3">
+        <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-5">
+          <div id={props.id || ''}>
+            <span
+              className="d-block small font-weight-bold text-cap mb-2"
+              style={{ cursor: 'pointer' }}
+              onClick={() => window.history.back()}
+            >
+              {props.title} ⤴
+            </span>
           </div>
-
-          <div className=" text-center mx-md-auto mb-5 mb-md-5">
-            {content}
-            {details.moreDetails && (
-              <div className="w-md-80 w-lg-50 mx-md-auto text-center">
-                <LearnMore {...details.moreDetails}></LearnMore>
-              </div>
-            )}
-
-            {details.icons && <IconList icons={details.icons}></IconList>}
-          </div>
-
-          {details.callToAction && (
-            <div className="text-center">
-              <a
-                className="btn btn-primary transition-3d-hover px-lg-7"
-                href={details.callToAction.link}
-                // target="_blank"
-                // rel="noreferrer"
-              >
-                <span
-                  className={styles['plus-icon']}
-                  dangerouslySetInnerHTML={{ __html: plusSvg }}
-                ></span>{' '}
-                {details.callToAction.title}
-              </a>
-            </div>
-          )}
+          <h2>{details.title}</h2>
+          <p>{details.description}</p>
         </div>
 
-        <figure className="position-absolute bottom-0 right-0 left-0">
-          <svg
-            preserveAspectRatio="none"
-            xmlns="http://www.w3.org/2000/svg"
-            x="0px"
-            y="0px"
-            viewBox="0 0 1920 100.1"
-          >
-            <path fill="#fff" d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z" />
-          </svg>
-        </figure>
+        <div className=" text-center mx-md-auto mb-5 mb-md-5">
+          {content}
+          {details.moreDetails && (
+            <div className="w-md-80 w-lg-50 mx-md-auto text-center">
+              <LearnMore {...details.moreDetails}></LearnMore>
+            </div>
+          )}
+
+          {details.icons && <IconList icons={details.icons}></IconList>}
+        </div>
+
+        {details.callToAction && (
+          <div className="text-center">
+            <a
+              className="btn btn-primary transition-3d-hover px-lg-7"
+              href={details.callToAction.link}
+              // target="_blank"
+              // rel="noreferrer"
+            >
+              <span
+                className={styles['plus-icon']}
+                dangerouslySetInnerHTML={{ __html: plusSvg }}
+              ></span>{' '}
+              {details.callToAction.title}
+            </a>
+          </div>
+        )}
       </div>
-    </>
+
+      <figure className="position-absolute bottom-0 right-0 left-0">
+        <svg
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+          x="0px"
+          y="0px"
+          viewBox="0 0 1920 100.1"
+        >
+          <path fill="#fff" d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z" />
+        </svg>
+      </figure>
+    </div>
   );
 };
 

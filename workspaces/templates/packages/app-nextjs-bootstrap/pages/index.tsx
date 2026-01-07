@@ -23,7 +23,7 @@ const FetchedContent = (): JSX.Element => {
     return <p>Loading ...</p>;
   }
 
-  return <>{data && <p>Data: {'' + data.title}</p>}</>;
+  return <>{data && <p>Data: {`${data.title}`}</p>}</>;
 };
 
 const HomePage = (): JSX.Element => {

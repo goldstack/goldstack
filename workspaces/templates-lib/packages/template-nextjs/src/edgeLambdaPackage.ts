@@ -19,7 +19,7 @@ export const packageEdgeLambda = async (params: PackageEdgeLambdaParams): Promis
     bundle: true,
   });
   if (res.errors && res.errors.length > 0) {
-    throw new Error('Build errors for Edge lambda ' + res.errors.map((er) => er.text).join(','));
+    throw new Error(`Build errors for Edge lambda ${res.errors.map((er) => er.text).join(',')}`);
   }
 
   // await new Promise<void>((resolve, reject) => {

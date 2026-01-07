@@ -28,7 +28,7 @@ function stringify(obj: unknown) {
 }
 
 function checkSumGen(head: string, body: string): string {
-  const checkSumStr = head + '.' + body;
+  const checkSumStr = `${head}.${body}`;
   const hash = crypto.createHmac('sha256', 'dummy-key-for-local-testing');
   const checkSum = hash.update(checkSumStr).digest('base64');
   return checkSum;
@@ -38,9 +38,9 @@ function generateToken(properties: unknown): string {
   let result = '';
   const alg = { alg: 'HS256', typ: 'JWT' };
   const header = encodeBase64(stringify(alg));
-  result += header + '.';
+  result += `${header}.`;
   const body = encodeBase64(stringify(properties));
-  result += body + '.';
+  result += `${body}.`;
   const checkSum = checkSumGen(header, body);
   result += checkSum;
   return result;

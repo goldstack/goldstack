@@ -16,7 +16,7 @@ import { createS3Client, resetMocks } from 'mock-aws-s3-v3';
 import { join, resolve } from 'path';
 import tmp from 'tmp';
 import yargs from 'yargs';
-import { scheduleAllDeploySets, type ScheduleArgs } from './scheduleAllDeploySets';
+import { type ScheduleArgs, scheduleAllDeploySets } from './scheduleAllDeploySets';
 
 export const run = async (): Promise<void> => {
   await wrapCli(async (): Promise<void> => {
@@ -91,8 +91,8 @@ export const run = async (): Promise<void> => {
     let tmpInstance: tmp.DirResult | undefined;
     if (workDir === 'tmp') {
       tmpInstance = tmp.dirSync();
-      workDir = tmpInstance.name + '/';
-      info('Creating in temporary directory ' + workDir);
+      workDir = `${tmpInstance.name}/`;
+      info(`Creating in temporary directory ${workDir}`);
     } else {
       rm('-rf', workDir);
       mkdir('-p', workDir);
@@ -106,7 +106,7 @@ export const run = async (): Promise<void> => {
     if (argv.repo === 'goldstack-dev') {
       const s3 = await connect('dev');
       const bucketName = await getBucketName('dev');
-      info('Connected to S3 repository dev and bucket: ' + bucketName);
+      info(`Connected to S3 repository dev and bucket: ${bucketName}`);
       repo = new S3TemplateRepository({
         s3,
         bucket: bucketName,
@@ -177,7 +177,7 @@ export const run = async (): Promise<void> => {
 
       info('Deploy set completed.');
       if (tmpInstance) {
-        rm('-rf', workDir.replace(/\\/g, '/') + '*');
+        rm('-rf', `${workDir.replace(/\\/g, '/')}*`);
         tmpInstance.removeCallback();
       }
 
@@ -217,11 +217,11 @@ export const run = async (): Promise<void> => {
               Body: {
                 Text: {
                   Charset: 'UTF-8',
-                  Data: 'Test Results:\n' + res.testResultsText || 'No results available',
+                  Data: `Test Results:\n${res.testResultsText}` || 'No results available',
                 },
               },
             },
-            Source: '"Goldstack" <no-reply@' + (await getFromDomain()) + '>',
+            Source: `"Goldstack" <no-reply@${await getFromDomain()}>`,
           }),
         );
       }
@@ -238,7 +238,7 @@ export const run = async (): Promise<void> => {
       await scheduleAllDeploySets(argv as unknown as ScheduleArgs);
       console.log('Schedule all deploy sets completed');
       if (tmpInstance) {
-        rm('-rf', workDir.replace(/\\/g, '/') + '*');
+        rm('-rf', `${workDir.replace(/\\/g, '/')}*`);
         tmpInstance.removeCallback();
       }
 
@@ -246,7 +246,7 @@ export const run = async (): Promise<void> => {
     }
 
     if (tmpInstance) {
-      rm('-rf', workDir.replace(/\\/g, '/') + '*');
+      rm('-rf', `${workDir.replace(/\\/g, '/')}*`);
       tmpInstance.removeCallback();
     }
 

@@ -31,7 +31,7 @@ export const assertTemplateReferenceVersion = async (
   const config = await s3.getLatestTemplateVersion(templateReference.name);
 
   if (!config) {
-    throw new Error('Cannot load latest template version for ' + templateReference.name);
+    throw new Error(`Cannot load latest template version for ${templateReference.name}`);
   }
 
   return {

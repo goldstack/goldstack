@@ -4,7 +4,7 @@ import { getEndpoint } from './getEndpoints';
 import { setForceLogout, setRefreshTokenStorage } from './state';
 
 function eraseCookie(name: string) {
-  document.cookie = name + '=; Max-Age=0; SameSite=Strict';
+  document.cookie = `${name}=; Max-Age=0; SameSite=Strict`;
 }
 
 /**

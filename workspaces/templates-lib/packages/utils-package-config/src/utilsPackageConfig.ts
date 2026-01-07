@@ -22,7 +22,7 @@ export class PackageConfig<PackageType extends Package, DeploymentType extends D
       throw new Error('Package schema cannot be found in schemas/package.schema.json');
     }
     this.packageSchema =
-      params.packageSchema || JSON.parse(read(params.packagePath + 'schemas/package.schema.json'));
+      params.packageSchema || JSON.parse(read(`${params.packagePath}schemas/package.schema.json`));
 
     this.goldstackJson = validateConfig(
       params.goldstackJson || readPackageConfig(params.packagePath),

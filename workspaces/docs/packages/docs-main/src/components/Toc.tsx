@@ -60,11 +60,9 @@ const LeafItem = (props: { title: string; link: string; level: number }): JSX.El
   const padding = getItemPadding(props.level);
 
   return (
-    <>
-      <a className={`dropdown-item ${padding} ${styles.nowhitespace}`} href={props.link}>
-        {props.title}
-      </a>
-    </>
+    <a className={`dropdown-item ${padding} ${styles.nowhitespace}`} href={props.link}>
+      {props.title}
+    </a>
   );
 };
 

@@ -10,7 +10,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import ConfigureNavigate from 'src/components/ConfigureNavigate';
 import DynamicConfigForm from 'src/components/DynamicConfigForm';
 import Header from 'src/components/Header';
-import { getConfigureSteps, type DocsData } from 'src/lib/getConfigureSteps';
+import { type DocsData, getConfigureSteps } from 'src/lib/getConfigureSteps';
 import { wireProjectData } from 'src/lib/wireProjectData';
 import useSWR, { mutate } from 'swr';
 

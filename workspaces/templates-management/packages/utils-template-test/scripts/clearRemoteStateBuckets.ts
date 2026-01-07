@@ -39,15 +39,11 @@ const bucketsToDelete: string[] = [];
   };
 
   const deleteS3Bucket = async (params: { s3: S3Client; bucketName: string }): Promise<void> => {
-    try {
-      // First, delete all objects from the bucket
-      await deleteAllObjectsFromBucket(params.s3, params.bucketName);
+    // First, delete all objects from the bucket
+    await deleteAllObjectsFromBucket(params.s3, params.bucketName);
 
-      // Then, delete the empty bucket
-      await params.s3.send(new DeleteBucketCommand({ Bucket: params.bucketName }));
-    } catch (e) {
-      throw e; // Rethrow the error to handle it in the calling code if necessary
-    }
+    // Then, delete the empty bucket
+    await params.s3.send(new DeleteBucketCommand({ Bucket: params.bucketName }));
   };
 
   const s3 = new S3Client({

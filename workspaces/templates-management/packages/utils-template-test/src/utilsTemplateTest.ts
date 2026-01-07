@@ -110,7 +110,7 @@ export const buildTemplate = async (params: {
   const config = await params.repo.getLatestTemplateVersion(params.templateName);
 
   if (!config) {
-    throw new Error('Cannot read template configuration for ' + params.templateName);
+    throw new Error(`Cannot read template configuration for ${params.templateName}`);
   }
 
   assert(config.templateName === params.templateName);

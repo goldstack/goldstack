@@ -42,7 +42,7 @@ const cli = async (args: string[]): Promise<void> => {
     return await clean();
   }
 
-  throw new Error('Unknown operation: ' + operation);
+  throw new Error(`Unknown operation: ${operation}`);
 };
 
 cli(process.argv).catch((e) => {

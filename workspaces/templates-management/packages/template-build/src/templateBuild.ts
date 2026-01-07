@@ -20,14 +20,14 @@ export const build = async (
   let builder = templateBuilders.find((builder) => templateName === builder.templateName());
   const monorepoRoot = config.monorepoRoot.endsWith('/')
     ? config.monorepoRoot
-    : config.monorepoRoot + '/';
+    : `${config.monorepoRoot}/`;
   const destinationDirectory = config.destinationDirectory
-    ? join(config.destinationDirectory, templateName + '/')
+    ? join(config.destinationDirectory, `${templateName}/`)
     : `./templates/${templateName}/`;
   const sourceTemplateDirectory = join(
     monorepoRoot,
     'workspaces/templates/packages/',
-    templateName + '/',
+    `${templateName}/`,
   );
 
   if (!builder) {
@@ -38,7 +38,7 @@ export const build = async (
     throw new Error(`Cannot find builder for template ${templateName}`);
   }
 
-  info(`Building template '${builder.templateName()}' in directory ` + destinationDirectory, {
+  info(`Building template '${builder.templateName()}' in directory ${destinationDirectory}`, {
     templateName: builder.templateName(),
     destinationDirectory,
     sourceTemplateDirectory,

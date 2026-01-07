@@ -20,8 +20,8 @@ export const validateConfig = (
 
   const buildError = (e: any): Error => {
     return new Error(
-      `${options?.errorMessage || 'Cannot read configuration'}\n` + ajv.errorsText() ||
-        '' + e ||
+      `${options?.errorMessage || 'Cannot read configuration'}\n${ajv.errorsText()}` ||
+        `${e}` ||
         '',
     );
   };
@@ -43,18 +43,18 @@ export const parseConfig = (data: string, schema: object, options: ValidateOptio
 };
 
 export const getPackageConfigPaths = (workspacePath: string): string[] => {
-  const res = globSync(workspacePath.replace(/\\/g, '/') + 'packages/*/goldstack.json');
+  const res = globSync(`${workspacePath.replace(/\\/g, '/')}packages/*/goldstack.json`);
   return res;
 };
 
 export const getAwsConfigPath = (workspacePath: string): string => {
-  return workspacePath + 'config/infra/aws/config.json';
+  return `${workspacePath}config/infra/aws/config.json`;
 };
 
 export const getHetznerConfigPath = (workspacePath: string): string => {
-  return workspacePath + 'config/infra/hetzner/config.json';
+  return `${workspacePath}config/infra/hetzner/config.json`;
 };
 
 export const getAwsTerraformConfigPath = (workspacePath: string): string => {
-  return workspacePath + 'config/infra/aws/terraform.json';
+  return `${workspacePath}config/infra/aws/terraform.json`;
 };

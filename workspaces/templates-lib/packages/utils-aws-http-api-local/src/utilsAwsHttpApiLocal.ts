@@ -64,7 +64,7 @@ export const startServer = async (options: LocalHttpAPIOptions): Promise<StartSe
   }
 
   const result = await new Promise<Server>((resolve) => {
-    const server = app.listen(parseInt(options.port), () => {
+    const server = app.listen(parseInt(options.port, 10), () => {
       resolve(server);
     });
   });

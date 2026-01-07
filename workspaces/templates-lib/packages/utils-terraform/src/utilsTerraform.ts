@@ -204,5 +204,5 @@ export const terraformCli = (params: TerraformCliParams): void => {
     throw new Error('The destroy-state operation should be performed by the provider');
   }
 
-  throw new Error('Unknown infrastructure operation: ' + operation);
+  throw new Error(`Unknown infrastructure operation: ${operation}`);
 };

@@ -7,7 +7,7 @@ let testServerPort: null | number = null;
 let testServer: any = null;
 
 if (process.env.TEST_SERVER_PORT) {
-  testServerPort = parseInt(process.env.TEST_SERVER_PORT);
+  testServerPort = parseInt(process.env.TEST_SERVER_PORT, 10);
 }
 
 /**
@@ -61,5 +61,5 @@ export const getEndpoint = (deploymentName?: string): string => {
     throw new Error(`Cannot find deployment with name ${deploymentName}`);
   }
   // biome-ignore lint/suspicious/noExplicitAny: Deployment configuration has dynamic properties
-  return 'https://' + (deployment as any).configuration.apiDomain;
+  return `https://${(deployment as any).configuration.apiDomain}`;
 };

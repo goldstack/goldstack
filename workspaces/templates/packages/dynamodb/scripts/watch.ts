@@ -1,9 +1,9 @@
 import { info, warn } from '@goldstack/utils-log';
 import DynamoDB from 'aws-sdk/clients/dynamodb';
 import { createServer } from 'dynamodb-admin';
+import type { Server } from 'http';
 import * as readline from 'readline';
 import { connect, stopAllLocalDynamoDB, stopLocalDynamoDB } from './../src/table';
-import type { Server } from 'http';
 
 (async () => {
   const clientInner = await connect();
@@ -32,8 +32,8 @@ import type { Server } from 'http';
     localAdminServer = localAdmin.listen(adminPort, 'localhost');
     const server = localAdminServer;
     // localAdminServer is defined at this point
-    localAdminServer!.on('listening', () => {
-      const address = server!.address();
+    localAdminServer?.on('listening', () => {
+      const address = server?.address();
       if (!address) {
         throw new Error('Local admin server not started successfully.');
       }
@@ -45,7 +45,7 @@ import type { Server } from 'http';
       }
       resolve();
     });
-    localAdminServer!.on('error', () => {
+    localAdminServer?.on('error', () => {
       warn(
         `Cannot start admin server on port ${adminPort}. Possibly admin server already started.`,
       );

@@ -25,7 +25,7 @@ describe('Project Template Data', () => {
 
       if (props.metaTitle && (props.metaTitle.length < 40 || props.metaTitle.length > 60)) {
         throw new Error(
-          'Meta title must be between 40 and 60 characters. Invalid: ' + props.metaTitle,
+          `Meta title must be between 40 and 60 characters. Invalid: ${props.metaTitle}`,
         );
       }
     }

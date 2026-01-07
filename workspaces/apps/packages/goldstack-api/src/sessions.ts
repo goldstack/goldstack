@@ -136,9 +136,9 @@ export const getSessionHandler = async (req: Request, res: Response): Promise<vo
       stripeId: sessionData.stripeId,
     });
   } catch (e) {
-    console.log('Error while getting session details: ' + e.message);
+    console.log(`Error while getting session details: ${e.message}`);
     console.error(e);
-    res.status(500).json({ errorMessage: 'Cannot retrieve session. Error: ' + e.message });
+    res.status(500).json({ errorMessage: `Cannot retrieve session. Error: ${e.message}` });
   }
 };
 
@@ -203,7 +203,7 @@ const performPurchase = async (params: {
             },
           },
         },
-        Source: '"Goldstack" <hi@' + (await getFromDomain()) + '>',
+        Source: `"Goldstack" <hi@${await getFromDomain()}>`,
       }),
     );
   } else {
@@ -224,7 +224,7 @@ const performPurchase = async (params: {
             },
           },
         },
-        Source: '"Goldstack" <hi@' + (await getFromDomain()) + '>',
+        Source: `"Goldstack" <hi@${await getFromDomain()}>`,
       }),
     );
   }

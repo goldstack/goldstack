@@ -92,7 +92,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let pageData: PageData | null = null;
   let toc: Heading[];
 
-  const filePath = pwd() + '/src/data/docs/' + path + '/index.json';
+  const filePath = `${pwd()}/src/data/docs/${path}/index.json`;
   console.debug(`Reading documentation file from ${filePath}`);
   if (fs.existsSync(filePath)) {
     pageData = JSON.parse(read(filePath)) as PageData;

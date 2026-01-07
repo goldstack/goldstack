@@ -17,17 +17,17 @@ export const getPackageConfigSchema = (): object => {
 };
 
 export const writePackageConfig = (packageConfig: Package, packagePath = './'): void => {
-  const schemaPath = packagePath + 'schemas/package.schema.json';
+  const schemaPath = `${packagePath}schemas/package.schema.json`;
   validateConfig(packageConfig, JSON.parse(read(schemaPath)), {
     errorMessage: 'Cannot write package config since it is not valid.',
   });
-  write(JSON.stringify(packageConfig, null, 2), packagePath + 'goldstack.json');
+  write(JSON.stringify(packageConfig, null, 2), `${packagePath}goldstack.json`);
 };
 
 export const readPackageConfig = (packagePath = './'): Package => {
-  const schemaPath = packagePath + 'schemas/package.schema.json';
-  const config = parseConfig(read(packagePath + 'goldstack.json'), JSON.parse(read(schemaPath)), {
-    errorMessage: 'Cannot load package configuration from ' + pathLib.resolve(packagePath),
+  const schemaPath = `${packagePath}schemas/package.schema.json`;
+  const config = parseConfig(read(`${packagePath}goldstack.json`), JSON.parse(read(schemaPath)), {
+    errorMessage: `Cannot load package configuration from ${pathLib.resolve(packagePath)}`,
   }) as Package;
   return config;
 };

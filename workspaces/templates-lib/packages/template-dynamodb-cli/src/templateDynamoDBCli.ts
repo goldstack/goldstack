@@ -134,6 +134,6 @@ export const run = async ({
       return;
     }
 
-    throw new Error('Unknown command: ' + command);
+    throw new Error(`Unknown command: ${command}`);
   });
 };

@@ -8,12 +8,11 @@ function setCookie(name: string, value: string, minutes: number, domain: string,
   if (minutes) {
     const date = new Date();
     date.setTime(date.getTime() + minutes * 60 * 1000);
-    expires = '; expires=' + date.toUTCString();
+    expires = `; expires=${date.toUTCString()}`;
   } else {
     expires = '';
   }
-  document.cookie =
-    name + '=' + value + expires + `; path=/; domain=${domain}; SameSite=${sameSite}; Secure`;
+  document.cookie = `${name}=${value}${expires}; path=/; domain=${domain}; SameSite=${sameSite}; Secure`;
 }
 
 /**

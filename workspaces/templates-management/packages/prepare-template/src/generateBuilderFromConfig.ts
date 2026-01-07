@@ -82,29 +82,29 @@ export const generateBuilderFromConfig = async (
       );
       // just copy all files and then delete ignored files
       for (const glob of buildConfig.include) {
-        debug('Looking for files matching ' + glob);
+        debug(`Looking for files matching ${glob}`);
         const lastSlashIdx = glob.lastIndexOf('/');
         let dirComponent = '';
         if (lastSlashIdx !== -1) {
-          dirComponent = glob.slice(0, lastSlashIdx) + '/';
+          dirComponent = `${glob.slice(0, lastSlashIdx)}/`;
         }
         const dest = path.join(params.destinationDirectory, dirComponent);
         mkdir('-p', dest);
 
         const source = path.join(templateDirectory, glob);
 
-        debug('Perform copy ' + source + ' to ' + dest);
+        debug(`Perform copy ${source} to ${dest}`);
         await copy(source, dest);
       }
 
       // Delete files matching the exclude patterns
       for (const glob of buildConfig.exclude) {
-        debug('Looking for files to delete matching ' + glob);
+        debug(`Looking for files to delete matching ${glob}`);
         const filesToDelete = globSync(
           path.join(params.destinationDirectory, glob).replace(/\\/g, '/'),
         );
         if (filesToDelete.length === 0) {
-          warn('No files will be deleted since no files matched glob ' + glob);
+          warn(`No files will be deleted since no files matched glob ${glob}`);
           continue;
         }
         await rmSafe(...filesToDelete);
@@ -129,7 +129,7 @@ export const generateBuilderFromConfig = async (
       packageJson.name = '';
       packageJson.author = '';
       packageJson.license = '';
-      packageJson['private'] = undefined;
+      packageJson.private = undefined;
       write(
         JSON.stringify(packageJson, null, 2),
         join(params.destinationDirectory, 'package.json'),

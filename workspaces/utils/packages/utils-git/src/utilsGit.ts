@@ -39,13 +39,13 @@ export const filesChanged = (): boolean => {
   try {
     exec('git diff "HEAD..HEAD^1" --quiet -- . ');
   } catch (_e) {
-    debug('Detected change against HEAD^1 in ' + path.resolve('.'));
+    debug(`Detected change against HEAD^1 in ${path.resolve('.')}`);
     headChanged = true;
   }
   try {
     exec('git diff --quiet -- . ');
   } catch (_e) {
-    debug('Detected uncommited change in ' + path.resolve('.'));
+    debug(`Detected uncommited change in ${path.resolve('.')}`);
     fileChanged = true;
   }
 
@@ -66,11 +66,11 @@ export const run = (args: string[]): void => {
         const res = exec(execCommand);
         console.log(res);
       } catch (_e) {
-        console.error('Error when running "' + execCommand + '"');
+        console.error(`Error when running "${execCommand}"`);
         process.exit(1);
       }
     } else {
-      console.log('No file changes detected in ' + path.resolve('.'));
+      console.log(`No file changes detected in ${path.resolve('.')}`);
     }
   } else {
     console.log('Please provide argument changed.');

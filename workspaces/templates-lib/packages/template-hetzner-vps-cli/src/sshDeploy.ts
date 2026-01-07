@@ -92,11 +92,11 @@ export const sshDeploy = async (deployment: HetznerVPSDeployment) => {
     const deploymentsInfo = JSON.parse(read('src/state/deployments.json'));
     const deploymentState = deploymentsInfo.find((e: any) => e.name === deployment.name);
     if (!deploymentState || !deploymentState.terraform) {
-      error('Cannot build ' + deployment.name + ' since infrastructure is not provisioned.');
+      error(`Cannot build ${deployment.name} since infrastructure is not provisioned.`);
       throw new Error(`No deployment state found for ${deployment.name}`);
     }
 
-    const host = 'goldstack@' + deploymentState.terraform.ipv4_address.value;
+    const host = `goldstack@${deploymentState.terraform.ipv4_address.value}`;
     // Ensure build was completed separately and get the zip path and host
     const { zipPath } = await build(deployment);
 

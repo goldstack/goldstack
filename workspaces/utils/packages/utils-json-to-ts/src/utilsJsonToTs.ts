@@ -30,7 +30,7 @@ const processSchema = async (
 
   const newName = path.parse(path.basename(jsonSource)).name;
   mkdir('-p', dest);
-  write(res, dest + newName + '.ts');
+  write(res, `${dest + newName}.ts`);
 };
 
 export const run = async (args: string[]): Promise<void> => {
@@ -41,6 +41,6 @@ export const run = async (args: string[]): Promise<void> => {
     await processSchema(file, './src/generated/', {
       declareExternallyReferenced,
     });
-    console.log('Processed: ' + file);
+    console.log(`Processed: ${file}`);
   });
 };

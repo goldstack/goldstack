@@ -96,9 +96,9 @@ async function tryDockerSpawn(options: SpawnOptions): Promise<DynamoDBInstance |
   }
 
   info('Starting local DynamoDB with Docker');
-  const detached = global['CI'] ? true : false;
+  const detached = !!global.CI;
   const hash = Date.now();
-  const containerName = 'goldstack-local-dynamodb-' + hash;
+  const containerName = `goldstack-local-dynamodb-${hash}`;
 
   const pr = dynamoDBLocal.spawn({
     port: options.port,

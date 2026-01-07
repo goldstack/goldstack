@@ -18,11 +18,11 @@ export const handler = async (
 
   // Handle Scheduled Event
   if (event['detail-type'] && event['detail-type'] === 'Scheduled Event') {
-    const time = event['time'];
+    const time = event.time;
     console.log(`This is a scheduled event from ${time}`);
   }
 
   const _queue = await connectToSQSQueue();
-  console.log('QueueName: ' + (await getSQSQueueName()));
-  console.log('Queue URL: ' + (await getSQSQueueUrl()));
+  console.log(`QueueName: ${await getSQSQueueName()}`);
+  console.log(`Queue URL: ${await getSQSQueueUrl()}`);
 };

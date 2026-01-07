@@ -19,7 +19,7 @@ export const getPackageConfigs = (workspacePath: string): PackageConfig[] => {
     const packageConfig: Package = JSON.parse(read(path.join(pathEl, 'goldstack.json')));
 
     if (!packageConfig) {
-      throw new Error('Invalid config file at: ' + pathEl);
+      throw new Error(`Invalid config file at: ${pathEl}`);
     }
 
     const packageSchema = JSON.parse(read(path.join(pathEl, 'schemas', 'package.schema.json')));
@@ -55,7 +55,7 @@ export const writePackageConfigs = (workspacePath: string, configs: PackageConfi
     // console.log(JSON.stringify(config.package, null, 2));
     write(
       JSON.stringify(config.package, null, 2),
-      workspacePath + config.pathInWorkspace + '/goldstack.json',
+      `${workspacePath + config.pathInWorkspace}/goldstack.json`,
     );
   }
 };

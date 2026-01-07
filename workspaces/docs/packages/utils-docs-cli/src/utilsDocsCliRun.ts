@@ -78,7 +78,7 @@ export const run = async (): Promise<void> => {
       for (const docFile of templateDocFiles) {
         const sourcePath = docsDir + argv.path + docFile;
         const result = await transpile(sourcePath);
-        const targetFileName = argv.dest + path.parse(sourcePath).name + '.html';
+        const targetFileName = `${argv.dest + path.parse(sourcePath).name}.html`;
         await rmSafe(targetFileName);
         write(result, targetFileName);
       }
@@ -92,6 +92,6 @@ export const run = async (): Promise<void> => {
       return;
     }
 
-    throw new Error('Unknown command: ' + argv._[0]);
+    throw new Error(`Unknown command: ${argv._[0]}`);
   });
 };

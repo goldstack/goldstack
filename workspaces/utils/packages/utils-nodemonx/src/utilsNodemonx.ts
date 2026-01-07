@@ -7,16 +7,16 @@ import watch from 'node-watch';
 import path from 'path';
 
 export const getNearestPackageJson = (name: string): string => {
-  if (fs.existsSync(name + '/package.json')) {
-    return name + '/package.json';
+  if (fs.existsSync(`${name}/package.json`)) {
+    return `${name}/package.json`;
   }
   const baseName = path.basename(name);
   if (baseName === 'package.json') {
     return name;
   }
   const dir = path.dirname(name);
-  if (fs.existsSync(dir + '/package.json')) {
-    return dir + '/package.json';
+  if (fs.existsSync(`${dir}/package.json`)) {
+    return `${dir}/package.json`;
   }
   if (dir === path.parse(name).root) {
     throw new Error('Cannot find package json in parent directories.');
@@ -54,12 +54,12 @@ export const run = async (args: string[]): Promise<void> => {
   watch(watchDir, { recursive: true }, (_evt, name) => {
     // check if in file whitelist
     if (!config.include.find((glob: string) => match([name], glob))) {
-      debug('Ignoring changed file since it is not in whitelist: ' + name);
+      debug(`Ignoring changed file since it is not in whitelist: ${name}`);
       return;
     }
     // check if in file blacklist
     if (config.exclude.find((glob: string) => match([name], glob))) {
-      debug('Ignoring changed file since it is in blacklist: ' + name);
+      debug(`Ignoring changed file since it is in blacklist: ${name}`);
       return;
     }
 

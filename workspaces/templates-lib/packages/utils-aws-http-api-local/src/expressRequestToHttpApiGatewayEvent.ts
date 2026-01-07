@@ -35,16 +35,19 @@ export const convertToGatewayEvent = (
 ): APIGatewayProxyEventV2 => {
   const incomingHeaders = params.req.headers;
 
-  const normalisedHeaders = Object.entries(incomingHeaders).reduce((prev, curr) => {
-    if (typeof curr[1] === 'string') {
-      prev[curr[0]] = curr[1];
+  const normalisedHeaders = Object.entries(incomingHeaders).reduce(
+    (prev: { [key: string]: string }, curr) => {
+      if (typeof curr[1] === 'string') {
+        prev[curr[0]] = curr[1];
+        return prev;
+      } else if (curr[1]) {
+        prev[curr[0]] = curr[1].join(',');
+        return prev;
+      }
       return prev;
-    } else if (curr[1]) {
-      prev[curr[0]] = curr[1].join(',');
-      return prev;
-    }
-    return prev;
-  }, {});
+    },
+    {},
+  );
 
   const expressQuery = params.req.query;
   const lambdaQuery = Object.entries(expressQuery)
@@ -86,7 +89,7 @@ export const convertToGatewayEvent = (
     rawQueryString: lambdaQuery,
     queryStringParameters,
     pathParameters: pathParams,
-    cookies: params.req.cookies || normalisedHeaders['cookie']?.split(';'), // ['dummyid=730dd32a-4adf-464e-8097-6f03aac71c7ca14a4a'],
+    cookies: params.req.cookies || normalisedHeaders.cookie?.split(';'), // ['dummyid=730dd32a-4adf-464e-8097-6f03aac71c7ca14a4a'],
     headers: {
       accept:
         'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',

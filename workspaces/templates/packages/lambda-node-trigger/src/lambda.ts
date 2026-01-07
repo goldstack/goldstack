@@ -78,7 +78,7 @@ export const getMockedSQS = (): SQSClient => {
  */
 export const getMockedDLQSQS = (): SQSClient => {
   const messageSendHandler: MessageCallback = async (message: SendMessageRequest) => {
-    warn('DLQ Message received ' + message.MessageBody);
+    warn(`DLQ Message received ${message.MessageBody}`);
   };
 
   return templateGetMockedDLQSQS(goldstackConfig, messageSendHandler);
@@ -92,7 +92,7 @@ export const getMockedDLQSQS = (): SQSClient => {
  * @returns A promise that resolves with an SQSClient connected to the DLQ.
  */
 export const connectToSQSDLQQueue = async (deploymentName?: string): Promise<SQSClient> => {
-  deploymentName = deploymentName || process.env['GOLDSTACK_DEPLOYMENT'];
+  deploymentName = deploymentName || process.env.GOLDSTACK_DEPLOYMENT;
 
   if (deploymentName === 'local') {
     return getMockedDLQSQS();
@@ -109,7 +109,7 @@ export const connectToSQSDLQQueue = async (deploymentName?: string): Promise<SQS
  * @returns A promise that resolves with an SQSClient connected to the main queue.
  */
 export const connectToSQSQueue = async (deploymentName?: string): Promise<SQSClient> => {
-  deploymentName = deploymentName || process.env['GOLDSTACK_DEPLOYMENT'];
+  deploymentName = deploymentName || process.env.GOLDSTACK_DEPLOYMENT;
 
   if (deploymentName === 'local') {
     return getMockedSQS();

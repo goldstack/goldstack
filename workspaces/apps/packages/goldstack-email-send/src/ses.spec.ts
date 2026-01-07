@@ -23,7 +23,7 @@ describe('SES template', () => {
             },
           },
         },
-        Source: '"Goldstack" <no-reply@' + fromDomain + '>',
+        Source: `"Goldstack" <no-reply@${fromDomain}>`,
       }),
     );
     expect(res.MessageId).toBeDefined();
@@ -44,7 +44,7 @@ describe('SES template', () => {
             },
           },
         },
-        Source: 'sender@' + fromDomain,
+        Source: `sender@${fromDomain}`,
       }),
     );
 

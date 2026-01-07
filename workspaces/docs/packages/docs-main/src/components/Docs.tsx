@@ -24,7 +24,7 @@ const Docs = (props: DocsProps): JSX.Element => {
   const path = query.slug ? (query.slug as string[]).join('/') : '/';
   const content = props.contentHtml || '';
 
-  const githubPath = path + '/index.md';
+  const githubPath = `${path}/index.md`;
 
   return (
     <>

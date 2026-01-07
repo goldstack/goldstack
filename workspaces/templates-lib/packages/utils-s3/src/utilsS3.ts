@@ -22,7 +22,7 @@ export const download = async (params: {
 
       const res = await (params.s3 as NodeJsClient<S3Client>).send(cmd);
       if (!res.Body) {
-        throw new Error('Cannot download from S3 bucket "' + params.bucketName + '".');
+        throw new Error(`Cannot download from S3 bucket "${params.bucketName}".`);
       }
       res.Body?.pipe(file);
     } catch (e) {

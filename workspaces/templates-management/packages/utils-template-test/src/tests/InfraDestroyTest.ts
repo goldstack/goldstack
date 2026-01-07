@@ -21,7 +21,7 @@ export class InfraDestroyTest implements TemplateTest {
     }
 
     for (const deployment of packageConfig.deployments) {
-      info('Destroying infrastructure for ' + deployment.name);
+      info(`Destroying infrastructure for ${deployment.name}`);
       await retryOperation(
         async () => {
           process.env.GOLDSTACK_DEBUG = 'true';

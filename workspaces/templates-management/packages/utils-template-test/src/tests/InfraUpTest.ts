@@ -9,7 +9,7 @@ export class InfraUpTest implements TemplateTest {
   }
   async runTest(params: RunTestParams): Promise<void> {
     const packageConfig = readPackageConfigFromDir(params.packageDir);
-    const packageJson = JSON.parse(read(params.packageDir + 'package.json'));
+    const packageJson = JSON.parse(read(`${params.packageDir}package.json`));
 
     for (const deployment of packageConfig.deployments) {
       console.log('Building infrastructure for', deployment.name);

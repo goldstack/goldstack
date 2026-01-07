@@ -37,58 +37,54 @@ interface CheckboxProps {
 
 const Checkbox = (props: CheckboxProps): JSX.Element => {
   return (
-    <>
-      <div className={`form-group ${props.className || ''}`}>
-        <div className="custom-control custom-checkbox">
-          <input
-            type="checkbox"
-            id={props.element}
-            disabled={props.disabled}
-            className="custom-control-input"
-            checked={props.checked || false}
-            onChange={props.onChange}
-          ></input>
-          <label className="custom-control-label" htmlFor={props.element}>
-            <img style={{ width: '1.5em', marginRight: '0.5em' }} src={props.icon}></img>
-            {props.title}
+    <div className={`form-group ${props.className || ''}`}>
+      <div className="custom-control custom-checkbox">
+        <input
+          type="checkbox"
+          id={props.element}
+          disabled={props.disabled}
+          className="custom-control-input"
+          checked={props.checked || false}
+          onChange={props.onChange}
+        ></input>
+        <label className="custom-control-label" htmlFor={props.element}>
+          <img style={{ width: '1.5em', marginRight: '0.5em' }} src={props.icon}></img>
+          {props.title}
 
-            {props.isAlpha && (
-              <>
-                {' '}
-                <span className="badge badge-pill badge-secondary">Alpha</span>
-              </>
-            )}
+          {props.isAlpha && (
+            <>
+              {' '}
+              <span className="badge badge-pill badge-secondary">Alpha</span>
+            </>
+          )}
 
-            {props.templateLink && (
-              <a
-                href={props.templateLink}
-                className="font-size-1"
-                style={{ marginLeft: '0.5em' }}
-                target="_blank"
-                rel="noreferrer"
-              >
-                more information
-              </a>
-            )}
-          </label>
-        </div>
+          {props.templateLink && (
+            <a
+              href={props.templateLink}
+              className="font-size-1"
+              style={{ marginLeft: '0.5em' }}
+              target="_blank"
+              rel="noreferrer"
+            >
+              more information
+            </a>
+          )}
+        </label>
       </div>
-    </>
+    </div>
   );
 };
 
 const ProgressIndicator = (props: { message: string }): JSX.Element => {
   return (
-    <>
-      <div style={{ display: 'inline-block' }}>
-        <div className="spinner-border ml-4" role="status" style={{ display: 'inline-block' }}>
-          <span className="sr-only">Progress indicator</span>
-        </div>
-        <div className="ml-2" style={{ display: 'inline-block' }}>
-          {props.message}
-        </div>
+    <div style={{ display: 'inline-block' }}>
+      <div className="spinner-border ml-4" role="status" style={{ display: 'inline-block' }}>
+        <span className="sr-only">Progress indicator</span>
       </div>
-    </>
+      <div className="ml-2" style={{ display: 'inline-block' }}>
+        {props.message}
+      </div>
+    </div>
   );
 };
 
@@ -395,7 +391,7 @@ const Build = (): JSX.Element => {
       </Head>
 
       <Header></Header>
-      <main id="content" role="main">
+      <main id="content">
         <ModuleSelection elements={elementsStr.split(',')}></ModuleSelection>
       </main>
       <Footer></Footer>

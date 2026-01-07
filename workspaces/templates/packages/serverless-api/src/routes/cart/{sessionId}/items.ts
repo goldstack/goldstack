@@ -3,7 +3,7 @@ import type { APIGatewayProxyEventV2, APIGatewayProxyResultV2, Handler } from 'a
 type ProxyHandler = Handler<APIGatewayProxyEventV2, APIGatewayProxyResultV2>;
 
 export const handler: ProxyHandler = async (event, _context) => {
-  const sessionId = event.pathParameters?.['sessionId'] || 'not specified';
+  const sessionId = event.pathParameters?.sessionId || 'not specified';
 
   return {
     statusCode: 201,

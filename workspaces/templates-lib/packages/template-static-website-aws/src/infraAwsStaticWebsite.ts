@@ -42,7 +42,7 @@ export const deploy = async (config: AWSStaticWebsitePackage, args: string[]): P
   assertDirectoryExists(webDistDir, 'Cannot upload website artifacts.');
   await upload({
     userName: deployment.awsUser,
-    bucket: deployment.configuration.websiteDomain + '-root',
+    bucket: `${deployment.configuration.websiteDomain}-root`,
     region: deployment.awsRegion,
     bucketPath: '/',
     localPath: webDistDir,

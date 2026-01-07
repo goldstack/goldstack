@@ -53,7 +53,7 @@ export const deploy = async (
   if (!commitHash) {
     exec(`docker image tag ${config.configuration.imageTag} ${repoUrl}`);
     exec(`docker push ${repoUrl}`);
-    deploymentState['latest'] = `${repoUrl}:latest`;
+    deploymentState.latest = `${repoUrl}:latest`;
   } else {
     exec(
       `docker image tag ${config.configuration.imageTag}:${commitHash} ${repoUrl}:${commitHash}`,
@@ -61,7 +61,7 @@ export const deploy = async (
     exec(`docker image tag ${config.configuration.imageTag}:${commitHash} ${repoUrl}:latest`);
     exec(`docker push ${repoUrl}:${commitHash}`);
     exec(`docker push ${repoUrl}:latest`);
-    deploymentState['latest'] = `${repoUrl}:${commitHash}`;
+    deploymentState.latest = `${repoUrl}:${commitHash}`;
   }
 
   writeDeploymentState('./', deploymentState);
