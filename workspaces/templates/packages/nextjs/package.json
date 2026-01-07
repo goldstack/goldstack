@@ -51,7 +51,7 @@
     "@types/node": "^25.0.3",
     "@types/node-abi": "^3",
     "@types/rc": "^1",
-    "@types/react": "^18",
+    "@types/react": "^19",
     "@types/semver": "^7.5.8",
     "@types/simple-get": "^4",
     "@types/testing-library__jest-dom": "^6.0.0",

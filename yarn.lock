@@ -4252,7 +4252,7 @@ __metadata:
     "@types/aws-lambda": "npm:^8.10.159"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    "@types/react": "npm:^18"
+    "@types/react": "npm:^19"
     "@types/testing-library__jest-dom": "npm:^6.0.0"
     "@types/testing-library__react": "npm:^10.2.0"
     concurrently: "npm:^7.3.0"
@@ -4290,7 +4290,7 @@ __metadata:
     "@types/aws-lambda": "npm:^8.10.159"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    "@types/react": "npm:^18"
+    "@types/react": "npm:^19"
     "@types/testing-library__jest-dom": "npm:^6.0.0"
     "@types/testing-library__react": "npm:^10.2.0"
     autoprefixer: "npm:^10.4.20"
@@ -4329,8 +4329,6 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     "@types/react": "npm:^19"
-    "@types/testing-library__jest-dom": "npm:^6.0.0"
-    "@types/testing-library__react": "npm:^10.2.0"
     concurrently: "npm:^7.3.0"
     file-loader: "npm:^6.2.0"
     jest: "npm:^30.2.0"
@@ -4434,7 +4432,7 @@ __metadata:
     "@types/cheerio": "npm:^0.22.35"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    "@types/react": "npm:^18"
+    "@types/react": "npm:^19"
     "@types/styled-components": "npm:5.1.25"
     "@types/testing-library__jest-dom": "npm:^6.0.0"
     "@types/testing-library__react": "npm:^10.2.0"
@@ -4619,7 +4617,7 @@ __metadata:
     "@testing-library/react": "npm:^16"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    "@types/react": "npm:^18"
+    "@types/react": "npm:^19"
     "@types/react-dom": "npm:^19.0.2"
     "@types/styled-components": "npm:5.1.25"
     "@types/testing-library__jest-dom": "npm:^6.0.0"
@@ -4904,7 +4902,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     "@types/node-abi": "npm:^3"
     "@types/rc": "npm:^1"
-    "@types/react": "npm:^18"
+    "@types/react": "npm:^19"
     "@types/semver": "npm:^7.5.8"
     "@types/simple-get": "npm:^4"
     "@types/testing-library__jest-dom": "npm:^6.0.0"
@@ -5212,7 +5210,7 @@ __metadata:
     "@types/aws-serverless-express": "npm:^3.3.10"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    "@types/react": "npm:^18"
+    "@types/react": "npm:^19"
     "@types/testing-library__jest-dom": "npm:^6.0.0"
     "@types/testing-library__react": "npm:^10.2.0"
     "@yarnpkg/esbuild-plugin-pnp": "npm:^3.0.0-rc.15"
@@ -6130,7 +6128,7 @@ __metadata:
     "@types/aws-lambda": "npm:^8.10.159"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    "@types/react": "npm:^18"
+    "@types/react": "npm:^19"
     "@types/sha256": "npm:^0.2.2"
     "@types/yargs": "npm:^17.0.33"
     esbuild: "npm:^0.25.6"
@@ -6168,7 +6166,7 @@ __metadata:
     "@types/aws-lambda": "npm:^8.10.159"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    "@types/react": "npm:^18"
+    "@types/react": "npm:^19"
     "@types/sha256": "npm:^0.2.2"
     "@types/yargs": "npm:^17.0.33"
     jest: "npm:^30.2.0"
@@ -6204,7 +6202,7 @@ __metadata:
     "@types/aws-lambda": "npm:^8.10.159"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    "@types/react": "npm:^18"
+    "@types/react": "npm:^19"
     "@types/react-dom": "npm:^19.0.2"
     "@types/yargs": "npm:^17.0.33"
     jest: "npm:^30.2.0"
@@ -6941,7 +6939,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    "@types/react": "npm:^18"
+    "@types/react": "npm:^19"
     jest: "npm:^30.2.0"
     react: "npm:^19"
     rimraf: "npm:^3.0.2"
@@ -11004,16 +11002,6 @@ __metadata:
     "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
   checksum: 10/2bdcca92d5ea6dd0394b754787338c819e85e8e6cb600d7e49c54c6f746c0081ac7869df831dc88cc691e3bb200eb15cb99ef2ba19caafd37942551905040ad8
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^18":
-  version: 18.3.24
-  resolution: "@types/react@npm:18.3.24"
-  dependencies:
-    "@types/prop-types": "npm:*"
-    csstype: "npm:^3.0.2"
-  checksum: 10/3f8529961afa40696f4a677e0f4399cb5da1fca9828c00634f884db261fc29a68af0b0397611fff4dd81847ac85036a1b72e987eafd994cdf4ddb1a1bcce7d61
   languageName: node
   linkType: hard
 
@@ -19769,7 +19757,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.0.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -22576,19 +22564,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^17":
-  version: 17.0.2
-  resolution: "react-dom@npm:17.0.2"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-    object-assign: "npm:^4.1.1"
-    scheduler: "npm:^0.20.2"
-  peerDependencies:
-    react: 17.0.2
-  checksum: 10/0b3836131a64da8b1c2c852cc28b09c21a738c33c7a8d6021ac20d5619d753c8ee5fff8f97c95f2fc33053e44c2cbce9657453e21c55900164e6e0c3e955e826
-  languageName: node
-  linkType: hard
-
 "react-dom@npm:^19":
   version: 19.2.3
   resolution: "react-dom@npm:19.2.3"
@@ -22658,16 +22633,6 @@ __metadata:
     react: ">=16.6.0"
     react-dom: ">=16.6.0"
   checksum: 10/ca32d3fd2168c976c5d90a317f25d5f5cd723608b415fb3b9006f9d793c8965c619562d0884503a3e44e4b06efbca4fdd1520f30e58ca3e00a0890e637d55419
-  languageName: node
-  linkType: hard
-
-"react@npm:^17":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-    object-assign: "npm:^4.1.1"
-  checksum: 10/ece60c31c1d266d132783aaaffa185d2e4c9b4db144f853933ec690cee1e0600c8929a1dd0a9e79323eea8e2df636c9a06d40f6cfdc9f797f65225433e67f707
   languageName: node
   linkType: hard
 
@@ -23498,16 +23463,6 @@ __metadata:
   dependencies:
     xmlchars: "npm:^2.2.0"
   checksum: 10/97b50daf6ca3a153e89842efa18a862e446248296622b7473c169c84c823ee8a16e4a43bac2f73f11fc8cb9168c73fbb0d73340f26552bac17970e9052367aa9
-  languageName: node
-  linkType: hard
-
-"scheduler@npm:^0.20.2":
-  version: 0.20.2
-  resolution: "scheduler@npm:0.20.2"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-    object-assign: "npm:^4.1.1"
-  checksum: 10/898917fa475386953d998add9107c04bf2c335eee86172833995dee126d12a68bee3c29edbd61fa0bcbcb8ee511c422eaab23b86b02f95aab26ecfaed8df5e64
   languageName: node
   linkType: hard
 
@@ -25111,8 +25066,8 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     nodemon: "npm:^2.0.20"
-    react: "npm:^17"
-    react-dom: "npm:^17"
+    react: "npm:^19"
+    react-dom: "npm:^19"
     typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
