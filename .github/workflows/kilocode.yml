@@ -60,9 +60,12 @@ jobs:
       - name: Run Kilo Code
         env:
           KILO_PROVIDER: kilocode
+          KILO_PROVIDER_TYPE: kilocode
           KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
+          KILOCODE_TOKEN: ${{ secrets.KILO_API_KEY }} 
           KILOCODE_MODEL: x-ai/grok-code-fast-1
+          KILO_TELEMETRY_DEBUG: false
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
           TASK: ${{ steps.ctx.outputs.task }}
-        run: kilocode --auto "$TASK" --timeout 1800
+        run: kilocode --auto --prompt "$TASK" --timeout 1800 --ci --yolo --model x-ai/grok-code-fast-1 --provider kilocode
