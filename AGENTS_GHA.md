@@ -67,3 +67,43 @@ gh issue comment $ISSUE_NUMBER --body "Work completed. See PR #$PR_NUMBER."
 ### 4. Time Limit
 
 Run `date` after each commit. Stop after 30 minutes elapsed.
+
+## Repo Setup
+
+This repository uses:
+
+- Yarn PnP / Berry, with workspaces
+  - NEVER run commands via npx
+- Biome JS for format checking and linting
+- Jests for testing
+
+## Common Commands
+
+The following commands should usually be executed on the project root:
+
+- `yarn compile`
+- `yarn format-check`
+- `yarn format`
+- `yarn lint`
+- `yarn lint-fix`
+- For fixing the linting for a particular file: `yarn biome lint [filePath] --write --unsafe`
+
+## Coding
+
+- Always assume methods you want to use are exported in the main module (e.g. don't use `import { getNotionToken } from 'notion-data/src/user/getNotionToken';`, instead use `import { getNotionToken } from 'notion-data';`)
+- If a method has more than 2 arguments, always create a parameter interface type and object. Don't forget TSDoc style comments for every interface and property.
+- When a new method is imported into a module, always add the import and call of the method in one edit operation.
+- If multiple lines need to be changed in a file, do not use replace in file, instead write the whole file
+- Define new methods by using function() rather than a new constant.
+- If there are formatting issues, try to fix with `yarn format`
+
+### Comments
+
+- Do not delete comments, but update them if required.
+- Do not add comments into the code describing what you have done. Instead, add comments when required to clarify logic
+- provide TSDoc style message signatures. Do not forget to provide tsdoc style comments for interfaces, types and classes as well.
+
+## Unit Tests
+
+- Run tests via `yarn test` - run tests in the package directory and not the project root,
+- When creating a unit test, unless otherwise specified, assume to use real objects/implementations as opposed to Jest mocks
