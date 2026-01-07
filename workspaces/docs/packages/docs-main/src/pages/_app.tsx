@@ -19,7 +19,7 @@ const theme = {
   },
 };
 
-const BootstrapApp = ({ Component, pageProps }: AppProps): JSX.Element => {
+const BootstrapApp = ({ Component, pageProps }: AppProps): React.ReactNode => {
   process.env.GOLDSTACK_DEPLOYMENT = process.env.NEXT_PUBLIC_GOLDSTACK_DEPLOYMENT;
   initGtm('UA-180192522-1');
   const router = useRouter();

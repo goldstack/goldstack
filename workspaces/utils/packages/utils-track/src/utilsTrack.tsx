@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 
 declare global {
   interface Window {
@@ -57,7 +57,7 @@ export const event = ({
   }
 };
 
-export const TagFragment = (): JSX.Element => {
+export const TagFragment = (): React.ReactNode => {
   if (!GA_TRACKING_ID) {
     throw new Error('Please define tracking id with initGtm()');
   }

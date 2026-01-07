@@ -6,7 +6,7 @@ import ProjectTemplateFeatures from './ProjectTemplateFeatures';
 import ProjectTemplateFeaturesDetails from './ProjectTemplateFeaturesDetails';
 import TemplateCallToAction from './TemplateCallToAction';
 
-const ProjectTemplateBody = (props: ProjectTemplateProps): JSX.Element => {
+const ProjectTemplateBody = (props: ProjectTemplateProps): React.ReactNode => {
   return (
     <div className="col-md-8 col-lg-9 column-divider-md">
       <div className="ml-lg-2">

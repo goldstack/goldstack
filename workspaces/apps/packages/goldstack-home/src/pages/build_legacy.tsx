@@ -31,7 +31,7 @@ const Item = (props: {
   index: number;
   children?: ReactNode;
   title?: string;
-}): JSX.Element => {
+}): React.ReactNode => {
   return (
     <div className="media align-items-center mb-3" key={props.index}>
       <figure className="w-100 max-w-5rem mr-3">
@@ -44,7 +44,7 @@ const Item = (props: {
   );
 };
 
-const Front = (): JSX.Element => {
+const Front = (): React.ReactNode => {
   const router = useRouter();
   const elementsStr = (router.query.stack as string) || '';
   const elements = elementsStr.split(',');

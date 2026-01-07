@@ -5,7 +5,7 @@ export interface NoModulesAddedModalProps {
   handleProceed: () => void;
 }
 
-const NoModulesAddedModal = (props: NoModulesAddedModalProps): JSX.Element => {
+const NoModulesAddedModal = (props: NoModulesAddedModalProps): React.ReactNode => {
   return (
     <Modal
       id="noModulesModal"

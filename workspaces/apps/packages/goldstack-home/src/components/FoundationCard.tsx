@@ -4,7 +4,7 @@ interface FoundationCardProps {
   caption: string;
 }
 
-export const FoundationCard = (props: FoundationCardProps): JSX.Element => {
+export const FoundationCard = (props: FoundationCardProps): React.ReactNode => {
   return (
     <div className="card card-frame h-100">
       <a className="card-body" href="app-description.html">

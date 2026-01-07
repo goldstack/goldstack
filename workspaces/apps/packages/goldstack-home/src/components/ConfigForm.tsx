@@ -8,7 +8,7 @@ export const ConfigForm = (props: {
   data: unknown;
   idx: number;
   onChange: (data: unknown) => void;
-}): JSX.Element => {
+}): React.ReactNode => {
   const onChange = ({ formData }: { formData: unknown }): void => {
     // if (!errors || errors.length === 0) {
     props.onChange(formData);

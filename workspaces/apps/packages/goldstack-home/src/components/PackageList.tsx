@@ -9,7 +9,7 @@ export interface PackageListItem {
   packageName: string;
   packageId?: string;
   selected: boolean;
-  packageDescription: string | JSX.Element;
+  packageDescription: string | React.ReactNode;
   icons: string[];
   features: PackageFeatureData[];
 }
@@ -22,7 +22,7 @@ interface PackageListProps {
   onDeselect(packageId: string): void;
 }
 
-const PackageList = (props: PackageListProps): JSX.Element => {
+const PackageList = (props: PackageListProps): React.ReactNode => {
   const selectedIds = props.selectedPackages;
 
   return (

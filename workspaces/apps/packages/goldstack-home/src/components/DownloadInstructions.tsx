@@ -5,7 +5,7 @@ import AngleRight from './../icons/font-awesome/solid/angle-right.svg';
 import styles from './DownloadInstructions.module.css';
 import { DownloadInstructionsStep } from './DownloadInstructionsStep';
 
-const AngleRightComponent = (): JSX.Element => {
+const AngleRightComponent = (): React.ReactNode => {
   const angleRight = dataUriToSrc(AngleRight);
   return (
     // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for SVG icon rendering
@@ -13,7 +13,7 @@ const AngleRightComponent = (): JSX.Element => {
   );
 };
 
-const _DocLinkItem = (props: { link: DocLink }): JSX.Element => {
+const _DocLinkItem = (props: { link: DocLink }): React.ReactNode => {
   return (
     <a className="card card-frame py-3 px-4 mb-3" href={props.link.link}>
       <div className="row align-items-sm-center">
@@ -26,7 +26,7 @@ const _DocLinkItem = (props: { link: DocLink }): JSX.Element => {
   );
 };
 
-const DocsLinks = (props: { data: DocLink[] }): JSX.Element => {
+const DocsLinks = (props: { data: DocLink[] }): React.ReactNode => {
   return (
     <>
       <p>
@@ -63,7 +63,7 @@ export const DownloadInstructions = (props: {
   packageId: string;
   downloadUrl: string;
   docLinks: DocLink[] | undefined;
-}): JSX.Element => {
+}): React.ReactNode => {
   return (
     <>
       <div>

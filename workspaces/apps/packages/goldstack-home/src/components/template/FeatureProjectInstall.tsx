@@ -1,4 +1,4 @@
-const FeatureProjectInstall = (props: { projectName: string }): JSX.Element => {
+const FeatureProjectInstall = (props: { projectName: string }): React.ReactNode => {
   return (
     <div className="card bg-navy mb-5 w-md-80 w-lg-50 mx-md-auto text-left">
       <div className="card-body text-monospace font-size-1 p-6">

@@ -25,7 +25,7 @@ interface BuildProjectParams {
   selectedIds: string[];
 }
 
-export const BuildProject = (params: BuildProjectParams): JSX.Element => {
+export const BuildProject = (params: BuildProjectParams): React.ReactNode => {
   const packages = getTemplateData(params.selectedIds);
   const [selectedPackages, setSelectedPackages] = useState<string[]>([]);
   const [showWarningModal, setShowWarningModal] = useState<boolean>(false);

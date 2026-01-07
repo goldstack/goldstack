@@ -25,7 +25,7 @@ import VSCodeIcon from './../icons/vscode.svg';
 import YarnIcon from './../icons/yarn.svg';
 import RelaxedCoder from './../illustrations/relaxing-man.svg';
 
-const Front = (): JSX.Element => {
+const Front = (): React.ReactNode => {
   const router = useRouter();
   const elementsStr = (router.query.stack as string) || '';
   const elements = elementsStr.split(',');

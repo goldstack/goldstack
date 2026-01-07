@@ -2,7 +2,7 @@ import Icon2 from './../icons/front/icon-2.svg';
 import Icon3 from './../icons/front/icon-3.svg';
 import Icon23 from './../icons/front/icon-23.svg';
 
-const GoldstackBenefits = (): JSX.Element => {
+const GoldstackBenefits = (): React.ReactNode => {
   return (
     <div className="container space-2">
       <div className="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">

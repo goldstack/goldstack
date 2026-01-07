@@ -4,7 +4,7 @@ export const DownloadInstructionsStep = (props: {
   title: string;
   stepNumber: number;
   children: React.ReactNode;
-}): JSX.Element => {
+}): React.ReactNode => {
   return (
     <div className="space-1 card bg-light shadow-none p-3 mt-4 rounded">
       <div className="media">

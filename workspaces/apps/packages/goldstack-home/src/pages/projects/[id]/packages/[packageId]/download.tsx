@@ -1,3 +1,4 @@
+import React from 'react';
 import { getEndpoint } from '@goldstack/goldstack-api';
 import { useRouter } from 'next/router';
 import Download from 'src/components/Download';
@@ -5,7 +6,7 @@ import Download from 'src/components/Download';
 import Footer from 'src/components/Footer';
 import Header from 'src/components/Header';
 
-const DownloadPage = (): JSX.Element => {
+const DownloadPage = (): React.ReactNode => {
   const router = useRouter();
   const { id, packageId, token } = router.query;
 

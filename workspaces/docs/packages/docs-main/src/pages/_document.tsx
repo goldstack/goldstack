@@ -18,7 +18,7 @@ class MyDocument extends Document {
             // biome-ignore lint/suspicious/noExplicitAny: styled-components enhancement type
               (App: any) =>
               // biome-ignore lint/suspicious/noExplicitAny: props type unknown
-              (props: any): JSX.Element =>
+              (props: any): React.ReactNode =>
                 // biome-ignore lint/suspicious/noExplicitAny: styled-components type issue
                 sheet.collectStyles(<App {...props} />) as any,
         });
@@ -36,7 +36,7 @@ class MyDocument extends Document {
       sheet.seal();
     }
   }
-  render(): JSX.Element {
+  render(): React.ReactElement {
     process.env.GOLDSTACK_DEPLOYMENT = process.env.NEXT_PUBLIC_GOLDSTACK_DEPLOYMENT;
 
     initGtm('UA-180192522-1');

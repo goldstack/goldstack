@@ -17,7 +17,7 @@ import FeatureTailwind from './FeatureTailwind';
 import { resolveImage } from './imageUtil';
 import styles from './TemplateFeature.module.css';
 
-const IconList = (props: { icons: TemplateIcons[] }): JSX.Element => {
+const IconList = (props: { icons: TemplateIcons[] }): React.ReactNode => {
   const images = props.icons.map((icon) => resolveImage(icon));
   return (
     <div className="row justify-content-center">
@@ -68,7 +68,7 @@ const createImage = (image: string): React.ReactNode => {
   throw new Error(`Unknown image for feature details ${image}`);
 };
 
-const TemplateFeature = (props: ShortTemplateFeature): JSX.Element => {
+const TemplateFeature = (props: ShortTemplateFeature): React.ReactNode => {
   if (!props.details) {
     return <></>;
   }

@@ -2,7 +2,7 @@ import type { ShortTemplateFeature } from '@goldstack/template-metadata';
 import { resolveImage } from './imageUtil';
 import styles from './ProjectTemplateFeatures.module.css';
 
-const ProjectTemplateFeature = (props: { feature: ShortTemplateFeature }): JSX.Element => {
+const ProjectTemplateFeature = (props: { feature: ShortTemplateFeature }): React.ReactNode => {
   return (
     <a
       href={props.feature.details ? `#${props.feature.id || ''}` : '#'}
@@ -24,7 +24,7 @@ interface ProjectTemplateFeaturesProps {
   features: ShortTemplateFeature[];
 }
 
-const ProjectTemplateFeatures = (props: ProjectTemplateFeaturesProps): JSX.Element => {
+const ProjectTemplateFeatures = (props: ProjectTemplateFeaturesProps): React.ReactNode => {
   return (
     <>
       {props.features.map((feature, idx) => {

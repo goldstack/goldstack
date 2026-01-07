@@ -1,7 +1,7 @@
 import { getTemplateData } from 'src/lib/templateData';
 import PackageCard from '../PackageCard';
 
-const FeatureCombineTemplates = (props: { templates: string[] }): JSX.Element => {
+const FeatureCombineTemplates = (props: { templates: string[] }): React.ReactNode => {
   const data = getTemplateData([]).filter(
     (template) => template.packageId && props.templates.indexOf(template.packageId) !== -1,
   );

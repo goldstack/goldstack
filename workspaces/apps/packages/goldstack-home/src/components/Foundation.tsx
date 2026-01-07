@@ -12,7 +12,7 @@ interface FoundationProps {
   features: Feature[];
 }
 
-const Foundation = (props: FoundationProps): JSX.Element => {
+const Foundation = (props: FoundationProps): React.ReactNode => {
   return (
     <div className="card h-100 transition-3d-hover">
       <div className="card-body">

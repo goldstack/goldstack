@@ -1,4 +1,4 @@
-const GoldstackProcess = (): JSX.Element => {
+const GoldstackProcess = (): React.ReactNode => {
   return (
     <div className="container ">
       <div className="w-md-80 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">

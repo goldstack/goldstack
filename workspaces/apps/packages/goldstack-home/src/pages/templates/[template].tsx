@@ -1,3 +1,4 @@
+import React from 'react';
 import { allTemplates, type ProjectTemplateProps } from '@goldstack/template-metadata';
 
 import type { GetStaticPaths, GetStaticProps } from 'next';
@@ -6,7 +7,7 @@ import Header from 'src/components/Header';
 import Breadcrumb from '../../components/Breadcrumb';
 import ProjectTemplate from '../../components/template/ProjectTemplate';
 
-const Template = (props: ProjectTemplateProps): JSX.Element => {
+const Template = (props: ProjectTemplateProps): React.ReactNode => {
   const template = props;
   return (
     <>

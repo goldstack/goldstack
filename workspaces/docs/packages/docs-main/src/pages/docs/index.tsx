@@ -2,7 +2,7 @@ import Docs from './../../components/Docs';
 
 import docsHome from './../../data/docs/index.json';
 
-const DocsHome = (): JSX.Element => {
+const DocsHome = (): React.ReactNode => {
   return <Docs title={docsHome.data.title} contentHtml={docsHome.html} toc={[]}></Docs>;
 };
 

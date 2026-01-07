@@ -12,7 +12,7 @@ import * as gtag from './../lib/ga';
 
 const theme = {};
 
-const BootstrapApp = ({ Component, pageProps }): JSX.Element => {
+const BootstrapApp = ({ Component, pageProps }): React.ReactNode => {
   process.env.GOLDSTACK_DEPLOYMENT = process.env.NEXT_PUBLIC_GOLDSTACK_DEPLOYMENT;
 
   gtag.initGtm('UA-180192522-1');

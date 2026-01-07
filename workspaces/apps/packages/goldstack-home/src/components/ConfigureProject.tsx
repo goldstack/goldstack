@@ -34,7 +34,7 @@ const updateProject = async (projectData: ProjectData): Promise<ProjectData> => 
   return projectData;
 };
 
-const ConfigureProject = (): JSX.Element => {
+const ConfigureProject = (): React.ReactNode => {
   const router = useRouter();
   const { id, step, packageId } = router.query;
   // when page changes, trigger save to backend

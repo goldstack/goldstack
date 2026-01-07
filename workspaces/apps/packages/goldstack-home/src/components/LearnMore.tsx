@@ -3,7 +3,7 @@ import AngleRight from './../icons/font-awesome/solid/angle-right.svg';
 import { dataUriToSrc } from './../utils/utils';
 import styles from './LearnMore.module.css';
 
-export const LeftArrow = (): JSX.Element => {
+export const LeftArrow = (): React.ReactNode => {
   const angleRight = dataUriToSrc(AngleRight);
   return (
     <span
@@ -14,7 +14,7 @@ export const LeftArrow = (): JSX.Element => {
   );
 };
 
-const LearnMore = (props: MoreDetails): JSX.Element => {
+const LearnMore = (props: MoreDetails): React.ReactNode => {
   return (
     <div className="text-center mb-7 mt-5">
       <p>

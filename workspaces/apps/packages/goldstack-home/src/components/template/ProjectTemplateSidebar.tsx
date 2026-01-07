@@ -13,7 +13,7 @@ interface ProjectTemplateSidebarProps {
   boilerplateLink?: string;
 }
 
-const ProjectTemplateSidebar = (props: ProjectTemplateSidebarProps): JSX.Element => {
+const ProjectTemplateSidebar = (props: ProjectTemplateSidebarProps): React.ReactNode => {
   return (
     <div className="col-md-4 col-lg-3 mb-9 mb-md-0">
       <div className="mr-lg-2">

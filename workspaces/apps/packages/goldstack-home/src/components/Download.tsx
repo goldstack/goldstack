@@ -39,7 +39,7 @@ const DownloadReady = (props: {
   projectId: string;
   packageId: string;
   docLinks: DocLink[] | undefined;
-}): JSX.Element => {
+}): React.ReactNode => {
   return (
     <div className="container space-2">
       <div className="w-md-80 text-center mx-md-auto">
@@ -62,7 +62,7 @@ const DownloadReady = (props: {
   );
 };
 
-const Download = (props: DownloadProps): JSX.Element | null => {
+const Download = (props: DownloadProps): React.ReactNode | null => {
   const { data: packageData, error: packageDataError } = useSWR(
     `${getEndpoint()}/projects/${props.projectId}/packages/${props.packageId}`,
     fetcher,

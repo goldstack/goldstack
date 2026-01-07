@@ -8,7 +8,7 @@ export interface BreadcrumbProps {
   elements: BreadcrumbElement[];
 }
 
-const Breadcrumb = (props: BreadcrumbProps): JSX.Element => {
+const Breadcrumb = (props: BreadcrumbProps): React.ReactNode => {
   return (
     <div className="bg-light">
       <div className="container py-3">
