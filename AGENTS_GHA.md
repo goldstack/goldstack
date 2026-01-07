@@ -20,42 +20,51 @@ Your prompt contains:
 - Plan work as small, committable steps
 
 ### 2. For Each Step
+
+Make changes, then:
+
 ```
-
-# Make changes, then:
-
 yarn format && yarn lint --diagnostic-level=error && yarn compile
 
-git add . && git commit -m "WIP: description"
+git add . && git commit -m "[description]"
 
 git push -u origin $BRANCH_NAME
-
 ```
+
 Fix any issues before committing.
 
 ### 3. PR Management
 
-**No `PR_NUMBER` provided:**
+**A PR always exists (created in draft mode if needed).**
+
+Push commits. Comment progress:
+
 ```
-
-gh pr create --draft --title "Fix: $ISSUE_TITLE" --body "Closes #$ISSUE_NUMBER"
-
-```
-
-**`PR_NUMBER` provided:**
-Push commits. Optionally comment progress:
-```
-
 gh pr comment $PR_NUMBER --body "Progress update: ..."
+```
 
+If ISSUE_NUMBER provided, comment on the issue:
+
+```
+gh issue comment $ISSUE_NUMBER --body "Work in progress. See PR #$PR_NUMBER."
 ```
 
 **Work complete:**
+
+```
+gh pr comment $PR_NUMBER --body "Completed the requested changes. [details]"
 ```
 
+```
 gh pr ready $PR_NUMBER
+```
 
+If ISSUE_NUMBER provided, comment on the issue:
+
+```
+gh issue comment $ISSUE_NUMBER --body "Work completed. See PR #$PR_NUMBER."
 ```
 
 ### 4. Time Limit
+
 Run `date` after each commit. Stop after 30 minutes elapsed.

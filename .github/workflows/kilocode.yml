@@ -110,6 +110,20 @@ jobs:
             git checkout -b "$BRANCH"
           fi
 
+      - name: Create PR if needed
+        id: create_pr
+        if: steps.identifiers.outputs.pr_number == ''
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
+          BRANCH_NAME=${{ steps.branch.outputs.name }}
+          DATA=$(gh issue view "$ISSUE_NUMBER" --json title,body)
+          TITLE=$(echo "$DATA" | jq -r '.title')
+          BODY=$(echo "$DATA" | jq -r '.body')
+          PR_NUMBER=$(gh pr create --draft --title "Fix: $TITLE" --body "Closes #$ISSUE_NUMBER" --head "$BRANCH_NAME" | grep -oP 'https://github.com/[^/]+/[^/]+/pull/\K\d+')
+          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+
       - name: Extract prompt
         id: ctx
         env:
@@ -118,7 +132,7 @@ jobs:
         run: |
           PROMPT=$(echo "$COMMENT" | sed -E 's/^.*\/kilo(code)?[[:space:]]*//')
           ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
-          PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
+          PR_NUMBER=${{ steps.create_pr.outputs.pr_number || steps.identifiers.outputs.pr_number }}
           if [ -n "$PR_NUMBER" ]; then
             DATA=$(gh pr view "$PR_NUMBER" --json title,body)
             PREFIX="PR #$PR_NUMBER"
