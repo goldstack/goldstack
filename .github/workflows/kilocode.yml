@@ -35,8 +35,8 @@ jobs:
 
       - name: Configure git
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "goldstack"
+          git config user.email "goldstack@users.noreply.github.com"
 
       - name: Identify Issue and PR Numbers
         id: identifiers
