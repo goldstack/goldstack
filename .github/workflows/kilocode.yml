@@ -68,4 +68,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
           TASK: ${{ steps.ctx.outputs.task }}
-        run: kilocode --auto --prompt "$TASK" --timeout 1800 --ci --yolo --model x-ai/grok-code-fast-1 --provider kilocode
+        run: kilocode --auto --timeout 1800 --ci --yolo --model x-ai/grok-code-fast-1 --provider kilocode "$TASK" 
