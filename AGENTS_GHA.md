@@ -2,12 +2,14 @@
 
 ## Information Provided by Workflow
 The agent may receive the following information from the GitHub workflow:
-- **Issue Number**: The GitHub issue number (e.g., 123).
-- **Issue Title and Body**: Full title and description of the issue.
-- **Comment Body**: The full text of the comment that triggered the workflow (including the /kilo command).
-- **Extracted Task**: The task description extracted from the comment after the /kilo or /kilocode command.
-- **Branch Name**: Automatically set to `kilo-issue-{issue_number}`.
-- **GitHub Token**: Available for 'gh' CLI operations.
+- **ISSUE_NUMBER**: The GitHub issue number (e.g., 123).
+- **ISSUE_TITLE**: Full title of the issue.
+- **ISSUE_BODY**: Full description of the issue.
+- **COMMENT_BODY**: The full text of the comment that triggered the workflow (including the /kilo command).
+- **EXTRACTED_TASK**: The task description extracted from the comment after the /kilo or /kilocode command.
+- **BRANCH_NAME**: Automatically set to `kilo-issue-{issue_number}`.
+- **PR_NUMBER**: The GitHub PR number if a PR already exists for the issue (e.g., 456).
+- **GITHUB_TOKEN**: Available for 'gh' CLI operations.
 
 Use this information to understand the context and scope of the task.
 
@@ -28,9 +30,8 @@ Use this information to understand the context and scope of the task.
 ## GitHub Workflow Integration
 When working on tasks requiring code changes:
 - Create or use branch `kilo-issue-{issue_number}`.
-- Commit and push changes as per the steps above.
-- If a draft PR doesn't exist, create one; otherwise, update the existing PR.
-- Comment on the issue/PR with progress updates using the 'gh' CLI (GITHUB_TOKEN is available).
+- If PR_NUMBER is provided, update the existing PR; otherwise, if a draft PR doesn't exist, create a new draft PR; otherwise, update the existing PR.
+- Comment on the issue or PR (use PR if PR_NUMBER provided) with progress updates using the 'gh' CLI (GITHUB_TOKEN is available).
 - Change a draft PR to ready for review, only if work is completed
 
 ## References

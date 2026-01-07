@@ -40,21 +40,31 @@ jobs:
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
           COMMENT: ${{ github.event.comment.body }}
           ISSUE: ${{ github.event.issue.number }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
           PROMPT=$(echo "$COMMENT" | sed -E 's/^.*\/kilo(code)?[[:space:]]*//')
           ISSUE_DATA=$(gh issue view "$ISSUE" --json title,body)
           TITLE=$(echo "$ISSUE_DATA" | jq -r '.title')
           BODY=$(echo "$ISSUE_DATA" | jq -r '.body')
           BRANCH="kilo-issue-$ISSUE"
+          if [ "$EVENT_NAME" = "pull_request_review_comment" ]; then
+            PR_NUMBER=$ISSUE
+          else
+            PR_NUMBER=$(gh pr list --head $BRANCH --state open --json number -q '.[0].number // empty')
+          fi
           
           AGENTS=""
           [ -f AGENTS_GHA.md ] && AGENTS=$(cat AGENTS_GHA.md)
           
           TASK="Issue #$ISSUE: $TITLE"$'\n\n'"$BODY"$'\n\n'
           TASK+="Task: $PROMPT"$'\n\n'
+          TASK+="ISSUE_NUMBER: $ISSUE"$'\n'
+          TASK+="BRANCH_NAME: $BRANCH"$'\n'
+          [ -n "$PR_NUMBER" ] && TASK+="PR_NUMBER: $PR_NUMBER"$'\n\n'
           [ -n "$AGENTS" ] && TASK+="PROJECT INSTRUCTIONS:"$'\n'"$AGENTS"
           
           echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
           { echo 'task<<EOF'; printf '%s' "$TASK"; echo; echo 'EOF'; } >> "$GITHUB_OUTPUT"
 
       - name: Run Kilo Code
@@ -68,4 +78,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
           TASK: ${{ steps.ctx.outputs.task }}
-        run: kilocode --auto --timeout 1800 "$TASK" 
+        run: kilocode --auto --timeout 2000 "$TASK" 
