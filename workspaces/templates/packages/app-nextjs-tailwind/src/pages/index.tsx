@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import useSWR from 'swr';
 import ReactIcon from '../icons/react.svg';
 import RocketLaunchImg from '../img/rocket-launch.jpg';
@@ -8,7 +8,7 @@ import styles from './index.module.css';
 // biome-ignore lint/suspicious/noExplicitAny: Generic fetcher for SWR
 const fetcher = (url: string): Promise<any> => fetch(url).then((r) => r.json());
 
-const FetchedContent = (): JSX.Element => {
+const FetchedContent = (): React.ReactNode => {
   const { data, error } = useSWR('https://jsonplaceholder.typicode.com/todos/1', fetcher);
 
   if (error) {
@@ -22,7 +22,7 @@ const FetchedContent = (): JSX.Element => {
   return <div>{data && <div>Data: {`${data.title}`}</div>}</div>;
 };
 
-const HomePage = (): JSX.Element => {
+const HomePage = (): React.ReactNode => {
   const [displayData, setDisplayData] = useState(false);
 
   const toggleData = (): void => {

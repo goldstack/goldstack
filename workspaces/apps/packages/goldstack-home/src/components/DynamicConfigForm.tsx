@@ -12,7 +12,7 @@ const DynamicConfigForm = (props: {
   projectData: ProjectData;
   onChange: (data: ProjectData) => void;
   onStepSubmit: (data: ProjectData) => void;
-}): JSX.Element => {
+}): React.ReactNode => {
   const step = props.configureSteps[props.currentItem - 1];
   if (!step) {
     throw new Error(`Cannot find step configuration for ${props.currentItem}`);

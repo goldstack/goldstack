@@ -18,7 +18,7 @@ interface PackageCardProps {
   alwaysIncluded?: boolean;
 }
 
-const PackageCard = (props: PackageCardProps): JSX.Element => {
+const PackageCard = (props: PackageCardProps): React.ReactNode => {
   const included = props.selected;
   const toggleIncluded = (): void => {
     if (props.disabled) {

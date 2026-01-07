@@ -88,7 +88,7 @@ import {
   loginWithRedirect,
 } from 'user-management';
 
-const Index = (props: { message: string }): JSX.Element => {
+const Index = (props: { message: string }): React.ReactNode => {
   const user = getLoggedInUser();
   handleRedirectCallback();
   return (

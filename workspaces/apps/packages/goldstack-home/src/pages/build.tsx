@@ -35,7 +35,7 @@ interface CheckboxProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Checkbox = (props: CheckboxProps): JSX.Element => {
+const Checkbox = (props: CheckboxProps): React.ReactNode => {
   return (
     <div className={`form-group ${props.className || ''}`}>
       <div className="custom-control custom-checkbox">
@@ -75,7 +75,7 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
   );
 };
 
-const ProgressIndicator = (props: { message: string }): JSX.Element => {
+const ProgressIndicator = (props: { message: string }): React.ReactNode => {
   return (
     <div style={{ display: 'inline-block' }}>
       <div className="spinner-border ml-4" role="status" style={{ display: 'inline-block' }}>
@@ -367,7 +367,7 @@ const ModuleSelection = (props: { elements: string[] }) => {
   );
 };
 
-const Build = (): JSX.Element => {
+const Build = (): React.ReactNode => {
   const router = useRouter();
   const elementsStr = (router.query.stack as string) || '';
 

@@ -13,7 +13,7 @@ const ExpandableItem = (props: {
   id: string;
   children: React.ReactNode;
   className: string;
-}): JSX.Element => {
+}): React.ReactNode => {
   return (
     <>
       <a
@@ -56,7 +56,7 @@ const getItemPadding = (level: number): string => {
   return padding;
 };
 
-const LeafItem = (props: { title: string; link: string; level: number }): JSX.Element => {
+const LeafItem = (props: { title: string; link: string; level: number }): React.ReactNode => {
   const padding = getItemPadding(props.level);
 
   return (
@@ -66,7 +66,7 @@ const LeafItem = (props: { title: string; link: string; level: number }): JSX.El
   );
 };
 
-const Item = (props: { heading: Heading; level: number }): JSX.Element => {
+const Item = (props: { heading: Heading; level: number }): React.ReactNode => {
   if (props.heading.subheadings.length === 0) {
     return (
       <LeafItem
@@ -91,7 +91,7 @@ const Item = (props: { heading: Heading; level: number }): JSX.Element => {
   );
 };
 
-const Toc = (props: TocProps): JSX.Element => {
+const Toc = (props: TocProps): React.ReactNode => {
   return (
     <>
       {/* <div className="col-lg-3 mb-5 mb-lg-0"> */}

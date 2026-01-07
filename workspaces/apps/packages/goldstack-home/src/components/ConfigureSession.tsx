@@ -20,7 +20,7 @@ function validateEmail(email: string): boolean {
   return re.test(String(email).toLowerCase());
 }
 
-const ConfigureSession = (props: ConfigureSessionProps): JSX.Element => {
+const ConfigureSession = (props: ConfigureSessionProps): React.ReactNode => {
   const emailInput = useRef<HTMLInputElement>(null);
 
   const [progressMessage, setProgressMessage] = useState('');

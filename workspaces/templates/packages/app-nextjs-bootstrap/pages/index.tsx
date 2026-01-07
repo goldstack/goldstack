@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
@@ -12,7 +12,7 @@ import RocketLaunchImage from './../src/img/rocket-launch.jpg';
 // biome-ignore lint/suspicious/noExplicitAny: API response type is unknown
 const fetcher = (url: string): any => fetch(url).then((r) => r.json());
 
-const FetchedContent = (): JSX.Element => {
+const FetchedContent = (): React.ReactNode => {
   const { data, error } = useSWR('https://jsonplaceholder.typicode.com/todos/1', fetcher);
 
   if (error) {
@@ -26,7 +26,7 @@ const FetchedContent = (): JSX.Element => {
   return <>{data && <p>Data: {`${data.title}`}</p>}</>;
 };
 
-const HomePage = (): JSX.Element => {
+const HomePage = (): React.ReactNode => {
   const [displayData, setDisplayData] = useState(false);
 
   const toggleData = (): void => {

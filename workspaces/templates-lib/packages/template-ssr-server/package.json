@@ -63,7 +63,7 @@
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
-    "@types/react": "^18",
+    "@types/react": "^19",
     "@types/sha256": "^0.2.2",
     "@types/yargs": "^17.0.33",
     "jest": "^30.2.0",

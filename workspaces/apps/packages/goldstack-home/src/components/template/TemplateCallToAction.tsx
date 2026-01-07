@@ -1,6 +1,6 @@
 import type { LandingAction } from '@goldstack/template-metadata';
 
-const TemplateCallToAction = (props: { action: LandingAction }): JSX.Element => {
+const TemplateCallToAction = (props: { action: LandingAction }): React.ReactNode => {
   return (
     <div className="container space-2">
       <div

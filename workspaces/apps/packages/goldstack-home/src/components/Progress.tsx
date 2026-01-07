@@ -5,7 +5,7 @@ const ProgressWrapper = styled.div`
   display: inline;
 `;
 
-const Progress = (props: { progressMessage: string }): JSX.Element => {
+const Progress = (props: { progressMessage: string }): React.ReactNode => {
   return <ProgressWrapper>{props.progressMessage}</ProgressWrapper>;
 };
 

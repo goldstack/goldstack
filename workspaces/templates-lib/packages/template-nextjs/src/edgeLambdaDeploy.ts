@@ -4,12 +4,9 @@ import { getAWSUser } from '@goldstack/infra-aws';
 import { awsCli } from '@goldstack/utils-aws-cli';
 import { deployFunction } from '@goldstack/utils-aws-lambda';
 import { cp, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
-import globFunc from 'glob';
-import util from 'util';
+import { glob } from 'glob';
 import { packageEdgeLambda } from './edgeLambdaPackage';
 import type { NextjsDeployment } from './types/NextJsPackage';
-
-const glob = util.promisify(globFunc);
 
 interface DeployLambdaParams {
   deployment: NextjsDeployment;

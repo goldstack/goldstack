@@ -2,7 +2,7 @@
 import React from 'react';
 import './globals.css';
 
-const App = ({ Component, pageProps }): JSX.Element => {
+const App = ({ Component, pageProps }): React.ReactNode => {
   process.env.GOLDSTACK_DEPLOYMENT = process.env.NEXT_PUBLIC_GOLDSTACK_DEPLOYMENT;
   return <Component {...pageProps} />;
 };

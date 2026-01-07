@@ -62,7 +62,7 @@
     "@goldstack/utils-template": "0.4.33",
     "@goldstack/utils-terraform": "0.4.63",
     "esbuild": "^0.25.6",
-    "glob": "^8.0.3",
+    "glob": "11.1.0",
     "source-map-support": "^0.5.21",
     "yargs": "^17.5.1"
   },

@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 
 import Header from 'src/components/Header';
 
-const HomePage = (): JSX.Element => {
+const HomePage = (): React.ReactNode => {
   return (
     <>
       <Header></Header>

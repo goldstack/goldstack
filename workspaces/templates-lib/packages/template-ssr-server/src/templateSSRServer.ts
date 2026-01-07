@@ -8,7 +8,7 @@ import { renderToString } from 'react-dom/server';
 
 import { type MappingStore, StaticFileMapperRun } from 'static-file-mapper';
 
-export type ReactPropertiesType = unknown & JSX.IntrinsicAttributes & Record<string, any>;
+export type ReactPropertiesType = unknown & React.JSX.IntrinsicAttributes & Record<string, any>;
 
 import type {
   BuildConfiguration,

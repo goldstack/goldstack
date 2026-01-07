@@ -18,7 +18,7 @@ const BuildProjectButton = styled.button`
   }
 `;
 
-const ValidationResult = (props: { result: StepValidation }): JSX.Element => {
+const ValidationResult = (props: { result: StepValidation }): React.ReactNode => {
   return (
     <p>
       {props.result.valid ? '✔️' : '❌'} {props.result.stepName}
@@ -54,7 +54,7 @@ const buildPackage = async (
 const ProjectConfigSummary = (props: {
   projectData: ProjectData;
   packageId: string;
-}): JSX.Element => {
+}): React.ReactNode => {
   const [progressMessage, setProgressMessage] = useState<string | undefined>(undefined);
   const router = useRouter();
   const validationResult = validateProject(props.projectData);

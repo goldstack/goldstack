@@ -3,7 +3,7 @@ import DesktopComputerImg from 'src/img/desktop_computer.jpg';
 import MeetingImg from 'src/img/meeting.jpg';
 import TabletImg from 'src/img/tablet.jpg';
 
-const TextSection = (props: TextSectionProps): JSX.Element => {
+const TextSection = (props: TextSectionProps): React.ReactNode => {
   return (
     <div className="container space-2">
       <div className="row justify-content-lg-between align-items-lg-center">

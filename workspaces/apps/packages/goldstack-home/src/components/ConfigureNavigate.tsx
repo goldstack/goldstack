@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import type { ConfigureStep } from 'src/lib/getConfigureSteps';
 
-const SelectedItem = (props: { title: string }): JSX.Element => {
+const SelectedItem = (props: { title: string }): React.ReactNode => {
   return (
     <div className="media align-items-center mb-3">
       <span className="d-block font-size-1 mr-3">
@@ -12,7 +12,7 @@ const SelectedItem = (props: { title: string }): JSX.Element => {
   );
 };
 
-const LinkItem = (props: { title: string; id: string; idx: number }): JSX.Element => {
+const LinkItem = (props: { title: string; id: string; idx: number }): React.ReactNode => {
   const router = useRouter();
   const { id, packageId } = router.query;
   return (
@@ -36,7 +36,7 @@ const Item = (props: {
   id: string;
   idx: number;
   currentItem: number;
-}): JSX.Element => {
+}): React.ReactNode => {
   if (props.idx === props.currentItem - 1) {
     return <SelectedItem title={props.title}></SelectedItem>;
   }
@@ -46,7 +46,7 @@ const Item = (props: {
 const ConfigureNavigate = (props: {
   currentItem: number;
   configureSteps: ConfigureStep[];
-}): JSX.Element => {
+}): React.ReactNode => {
   const packageItems = props.configureSteps.map((configureStep) => {
     return (
       <Item

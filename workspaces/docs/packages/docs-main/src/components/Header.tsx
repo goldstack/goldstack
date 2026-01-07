@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import GitHub from './../icons/github-tile-gray.svg';
 import styles from './Header.module.css';
 
-const Toggle = (): JSX.Element => {
+const Toggle = (): React.ReactNode => {
   return (
     <>
       <span className="navbar-toggler-default">
@@ -28,7 +28,7 @@ const Toggle = (): JSX.Element => {
   );
 };
 
-const Header = (): JSX.Element => {
+const Header = (): React.ReactNode => {
   return (
     <header id="header" className="header">
       <div className="js-mega-menu header-section hs-menu-initialized hs-menu-horizontal">

@@ -1,6 +1,6 @@
 import styles from './Footer.module.css';
 
-const Footer = (): JSX.Element => {
+const Footer = (): React.ReactNode => {
   return (
     <footer className="bg-navy">
       <div className="container space-2">

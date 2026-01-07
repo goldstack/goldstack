@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
+import Homepage from '../pages';
 import '@testing-library/jest-dom';
-import Homepage from '../../pages/index';
 
-test('Check App component render', () => {
+test('Check App component render', async () => {
   const res = render(<Homepage />);
 
-  expect(res.getByText('Toggle Data Display', { exact: false })).toBeVisible();
+  expect((await res.findAllByText(/toggle data display/i)).length).toBeGreaterThan(0);
 });

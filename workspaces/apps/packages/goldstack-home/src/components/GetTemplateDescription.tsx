@@ -16,7 +16,7 @@ const FontIcon = styled.div`
   }
 `;
 
-const GetTemplateDescription = (): JSX.Element => {
+const GetTemplateDescription = (): React.ReactNode => {
   const checkCircle = dataUriToSrc(CheckCircle);
   return (
     <>

@@ -6,15 +6,19 @@ const navPath = '/docs/';
 
 import styles from './Navigation.module.css';
 
-const Level1Item = (props: { title: string }): JSX.Element => (
+const Level1Item = (props: { title: string }): React.ReactNode => (
   <span className="hs-sidebar-heading">{props.title}</span>
 );
 
-const Level2Wrapper = (props: { children: React.ReactNode }): JSX.Element => (
+const Level2Wrapper = (props: { children: React.ReactNode }): React.ReactNode => (
   <ul className="hs-sidebar-nav">{props.children}</ul>
 );
 
-const Level2Item = (props: { title: string; link: string; currentPath: string }): JSX.Element => (
+const Level2Item = (props: {
+  title: string;
+  link: string;
+  currentPath: string;
+}): React.ReactNode => (
   <li className="hs-sidebar-item">
     <a
       href={navPath + props.link}
@@ -25,14 +29,14 @@ const Level2Item = (props: { title: string; link: string; currentPath: string })
   </li>
 );
 
-const Level3Wrapper = (props: { title: string; children: React.ReactNode }): JSX.Element => (
+const Level3Wrapper = (props: { title: string; children: React.ReactNode }): React.ReactNode => (
   <li className="hs-sidebar-item">
     <span className="hs-sidebar-link">{props.title}</span>
     <ul className="hs-sidebar-nav ml-2">{props.children}</ul>
   </li>
 );
 
-const Level3Item = (props: { title: string; link: string }): JSX.Element => (
+const Level3Item = (props: { title: string; link: string }): React.ReactNode => (
   <li className="hs-sidebar-item">
     <Link href={navPath + props.link} className="hs-sidebar-link">
       {props.title}
@@ -44,7 +48,7 @@ const buildNavLevel3 = (params: {
   items: SitemapItem[];
   title: string;
   key: number;
-}): JSX.Element => {
+}): React.ReactNode => {
   return (
     <Level3Wrapper key={params.key} title={params.title}>
       {params.items.map((item, idx) => (
@@ -58,7 +62,7 @@ const buildNavLevel2 = (params: {
   items: SitemapItem[];
   sortKey: number;
   currentPath: string;
-}): JSX.Element => {
+}): React.ReactNode => {
   return (
     <Level2Wrapper key={params.sortKey}>
       {params.items.map((item, idx) => (
@@ -84,7 +88,7 @@ const buildNavLevel2 = (params: {
   );
 };
 
-const buildNavLevel1 = (params: { items: SitemapItem[]; currentPath: string }): JSX.Element => {
+const buildNavLevel1 = (params: { items: SitemapItem[]; currentPath: string }): React.ReactNode => {
   return (
     <>
       {params.items.map((item, idx) => (
@@ -107,7 +111,7 @@ interface NavigationProps {
   currentPath: string;
 }
 
-const Navigation = (props: NavigationProps): JSX.Element => {
+const Navigation = (props: NavigationProps): React.ReactNode => {
   return (
     <div id="sidebarNav" className={`hs-sidebar-sticky pl-2 pl-md-0 pr-2 ${styles.sidebarmain}`}>
       {buildNavLevel1({ items: props.items, currentPath: props.currentPath })}

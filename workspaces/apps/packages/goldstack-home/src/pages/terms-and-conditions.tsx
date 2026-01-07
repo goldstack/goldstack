@@ -3,7 +3,7 @@ import Footer from 'src/components/Footer';
 import Header from 'src/components/Header';
 import AbstractShapes from '../styles/front-3.2.1/assets/svg/components/abstract-shapes-12.svg';
 
-const Hero = (): JSX.Element => {
+const Hero = (): React.ReactNode => {
   return (
     <div className="bg-img-hero" style={{ backgroundImage: `url(${AbstractShapes})` }}>
       <div className="container space-top-3 space-top-lg-4 space-bottom-2 position-relative z-index-2">
@@ -16,7 +16,7 @@ const Hero = (): JSX.Element => {
   );
 };
 
-const TermsAndConditions = (): JSX.Element => {
+const TermsAndConditions = (): React.ReactNode => {
   return (
     <>
       <Head>

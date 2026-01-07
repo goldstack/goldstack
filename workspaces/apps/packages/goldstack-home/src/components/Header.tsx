@@ -1,9 +1,10 @@
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import styles from './Header.module.css';
 
-const Toggle = (): JSX.Element => {
+const Toggle = (): React.ReactNode => {
   return (
     <>
       <span className="navbar-toggler-default">
@@ -28,7 +29,7 @@ const Toggle = (): JSX.Element => {
   );
 };
 
-const Header = (): JSX.Element => {
+const Header = (): React.ReactNode => {
   return (
     <header id="header" className="header">
       <div className="js-mega-menu header-section hs-menu-initialized hs-menu-horizontal">

@@ -19,7 +19,7 @@ class MyDocument extends Document {
             // biome-ignore lint/suspicious/noExplicitAny: App component type varies
               (App: any) =>
               // biome-ignore lint/suspicious/noExplicitAny: props type varies
-              (props: any): JSX.Element =>
+              (props: any): React.ReactNode =>
                 // biome-ignore lint/suspicious/noExplicitAny: styled-components collectStyles returns any
                 sheet.collectStyles(<App {...props} />) as any,
         });
@@ -38,7 +38,7 @@ class MyDocument extends Document {
       sheet.seal();
     }
   }
-  render(): JSX.Element {
+  render(): React.ReactElement {
     process.env.GOLDSTACK_DEPLOYMENT = process.env.NEXT_PUBLIC_GOLDSTACK_DEPLOYMENT;
 
     initGtm('UA-180192522-1');

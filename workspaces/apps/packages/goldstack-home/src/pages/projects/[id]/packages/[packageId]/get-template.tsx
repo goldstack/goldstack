@@ -1,3 +1,4 @@
+import React from 'react';
 import { getEndpoint } from '@goldstack/goldstack-api';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -19,7 +20,7 @@ const fetcher = (url: string): Promise<SessionData> =>
     credentials: 'include',
   }).then((r) => r.json());
 
-const GetTemplatePage = (): JSX.Element => {
+const GetTemplatePage = (): React.ReactNode => {
   const router = useRouter();
   const { id, packageId } = router.query;
   if (!id || !packageId) {

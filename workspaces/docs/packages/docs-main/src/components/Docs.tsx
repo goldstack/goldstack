@@ -18,7 +18,7 @@ interface DocsProps {
   toc: Heading[];
 }
 
-const Docs = (props: DocsProps): JSX.Element => {
+const Docs = (props: DocsProps): React.ReactNode => {
   const { query } = useRouter();
 
   const path = query.slug ? (query.slug as string[]).join('/') : '/';

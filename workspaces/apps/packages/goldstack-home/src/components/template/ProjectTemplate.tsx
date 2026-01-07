@@ -3,7 +3,7 @@ import Head from 'next/head';
 import ProjectTemplateBody from './ProjectTemplateBody';
 import ProjectTemplateSidebar from './ProjectTemplateSidebar';
 
-const ProjectTemplate = (props: ProjectTemplateProps): JSX.Element => {
+const ProjectTemplate = (props: ProjectTemplateProps): React.ReactNode => {
   if (
     props.metaDescription &&
     (props.metaDescription.length < 120 || props.metaDescription.length > 156)

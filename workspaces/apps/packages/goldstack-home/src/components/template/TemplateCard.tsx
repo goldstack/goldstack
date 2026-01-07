@@ -7,7 +7,7 @@ export interface TemplateCardProps {
   template: ProjectTemplateProps;
 }
 
-const TemplateCard = (props: TemplateCardProps): JSX.Element => {
+const TemplateCard = (props: TemplateCardProps): React.ReactNode => {
   return (
     <div className={`card border shadow-none d-block ${styles['package-card']} `}>
       <div className="card-body d-flex align-items-center p-0">
