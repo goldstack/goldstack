@@ -25,7 +25,7 @@ import { SSRHandler } from '@goldstack/template-ssr';
 import { renderPage, hydrate } from './../render';
 import styles from './$index.module.css';
 
-const Index = (props: { message: string }): JSX.Element => {
+const Index = (props: { message: string }): React.ReactNode => {
   return (
     <>
       <div className="m-12">{props.message}</div>
