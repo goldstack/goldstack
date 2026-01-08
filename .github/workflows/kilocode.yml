@@ -192,7 +192,8 @@ jobs:
           KILO_PROVIDER_TYPE: kilocode
           KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
           KILOCODE_TOKEN: ${{ secrets.KILO_API_KEY }} 
-          KILOCODE_MODEL: x-ai/grok-code-fast-1
+          # KILOCODE_MODEL: x-ai/grok-code-fast-1
+          KILOCODE_MODEL: minimax/minimax-m2-1
           KILO_TELEMETRY_DEBUG: false
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
