@@ -25,22 +25,22 @@
     "watch": "PORT=5054 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local yarn node ./scripts/watchServer.js"
   },
   "dependencies": {
-    "@goldstack/template-ssr": "0.3.86",
+    "@goldstack/template-ssr": "0.3.87",
     "@goldstack/utils-esbuild": "0.5.22",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "date-fns": "^2.28.0",
     "esbuild": "^0.25.6",
     "esbuild-ignore-with-comments-plugin": "0.3.26",
     "esbuild-ssr-css-modules-plugin": "0.1.28",
-    "esbuild-tailwind-ssr-plugin": "0.1.19",
+    "esbuild-tailwind-ssr-plugin": "0.1.20",
     "jest-transform-stub": "^2.0.0",
     "source-map-support": "^0.5.21",
-    "static-file-mapper-build": "0.3.37",
+    "static-file-mapper-build": "0.3.38",
     "tailwindcss": "^3"
   },
   "devDependencies": {
-    "@goldstack/template-ssr-cli": "0.3.92",
-    "@goldstack/utils-aws-http-api-local": "0.3.71",
+    "@goldstack/template-ssr-cli": "0.3.93",
+    "@goldstack/utils-aws-http-api-local": "0.3.72",
     "@jest-mock/express": "^1.4.5",
     "@jest/transform": "^29.3.1",
     "@swc-node/register": "^1.10.9",

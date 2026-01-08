@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-sh",
-  "version": "0.5.32",
+  "version": "0.5.33",
   "description": "Utilities for working with files and folders in a bash like manner",
   "keywords": [
     "goldstack",
