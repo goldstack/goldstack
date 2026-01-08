@@ -200,6 +200,23 @@ jobs:
           TASK: ${{ steps.ctx.outputs.task }}
         run: kilocode --auto --timeout 2000 "$TASK" 
 
+      - name: Fix PR body newlines
+        if: steps.identifiers.outputs.pr_number != ''
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          PR_NUMBER: ${{ steps.identifiers.outputs.pr_number }}
+        run: |
+          # Get the current PR body
+          PR_BODY=$(gh pr view "$PR_NUMBER" --json body --jq '.body')
+          
+          # Check if the body contains literal \n (backslash-n) instead of actual newlines
+          if echo "$PR_BODY" | grep -q '\\n'; then
+            # Convert literal \n to actual newlines
+            FIXED_BODY=$(echo "$PR_BODY" | sed 's/\\n/\n/g')
+            # Update the PR body
+            gh pr edit "$PR_NUMBER" --body "$FIXED_BODY"
+          fi
+
       - name: Create PR if needed
         id: create_pr
         if: steps.identifiers.outputs.pr_number == ''
