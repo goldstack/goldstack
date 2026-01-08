@@ -48,8 +48,8 @@ jobs:
             # It's a PR comment
             PR_NUMBER=$NUM
             # Check if PR closes an issue
-            PR_DATA=$(gh pr view "$NUM" --json body)
-            BODY=$(echo "$PR_DATA" | jq -r '.body')
+            PR_DATA=$(gh pr view "$NUM")
+            BODY=$(echo "$PR_DATA" | sed -n '/^body:/,/^[a-zA-Z]/p' | sed '1d;$d' | tr -d '\r' || echo "")
             ISSUE_NUMBER=$(echo "$BODY" | grep -oP 'closes #\K\d+' | head -1 || echo "")
             if [ -z "$ISSUE_NUMBER" ]; then
               ISSUE_NUMBER=$(echo "$BODY" | grep -oP 'fixes #\K\d+' | head -1 || echo "")
@@ -62,7 +62,7 @@ jobs:
             ISSUE_NUMBER=$NUM
             # Check for existing PR with the expected branch
             BRANCH="kilo-issue-$ISSUE_NUMBER"
-            EXISTING_PR=$(gh pr list --head "$BRANCH" --state open --json number -q '.[0].number // empty')
+            EXISTING_PR=$(gh pr list --head "$BRANCH" --state open 2>/dev/null | grep -oP '^\s*\d+' | head -1 || echo "")
             if [ -n "$EXISTING_PR" ]; then
               PR_NUMBER=$EXISTING_PR
             else
@@ -80,7 +80,7 @@ jobs:
           ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
           PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
           if [ -n "$PR_NUMBER" ]; then
-            BRANCH_NAME=$(gh pr view "$PR_NUMBER" --json headRefName -q .headRefName)
+            BRANCH_NAME=$(gh pr view "$PR_NUMBER" 2>/dev/null | grep -oP '^headRefName:\s*\K.*' || echo "kilo-issue-$ISSUE_NUMBER")
           elif [ -n "$ISSUE_NUMBER" ]; then
             BRANCH_NAME="kilo-issue-$ISSUE_NUMBER"
           else
@@ -140,33 +140,33 @@ jobs:
            ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
            PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
            if [ -n "$PR_NUMBER" ]; then
-             DATA=$(gh pr view "$PR_NUMBER" --json title,body)
+             DATA=$(gh pr view "$PR_NUMBER" 2>/dev/null)
              PREFIX="PR #$PR_NUMBER"
            elif [ -n "$ISSUE_NUMBER" ]; then
-             DATA=$(gh issue view "$ISSUE_NUMBER" --json title,body)
+             DATA=$(gh issue view "$ISSUE_NUMBER" 2>/dev/null)
              PREFIX="Issue #$ISSUE_NUMBER"
            else
              echo "No valid issue or PR number"
              exit 1
            fi
-           TITLE=$(echo "$DATA" | jq -r '.title')
-           BODY=$(echo "$DATA" | jq -r '.body')
+           TITLE=$(echo "$DATA" | grep -oP '^title:\s*\K.*' || echo "")
+           BODY=$(echo "$DATA" | sed -n '/^body:/,/^[a-zA-Z]/p' | sed '1d;$d' | tr -d '\r' || echo "")
 
            CURRENT_SHA=$(git rev-parse HEAD)
 
            ISSUE_COMMENTS=""
            if [ -n "$ISSUE_NUMBER" ] && [ -z "$PR_NUMBER" ]; then
-             ISSUE_COMMENTS=$(gh issue comments "$ISSUE_NUMBER" --json body,author.login,createdAt | jq -r '.[] | "Comment by @\(.author.login) on \(.createdAt):\n\(.body)\n---"')
+             ISSUE_COMMENTS=$(gh issue comments "$ISSUE_NUMBER" 2>/dev/null || echo "")
            fi
 
            PR_COMMENTS=""
            if [ -n "$PR_NUMBER" ]; then
-             PR_COMMENTS=$(gh pr comments "$PR_NUMBER" --json body,author.login,createdAt | jq -r '.[] | "Comment by @\(.author.login) on \(.createdAt):\n\(.body)\n---"')
+             PR_COMMENTS=$(gh pr comments "$PR_NUMBER" 2>/dev/null || echo "")
            fi
 
            REVIEW_COMMENTS=""
            if [ -n "$PR_NUMBER" ]; then
-             REVIEW_COMMENTS=$(gh pr review-comments "$PR_NUMBER" --json body,author.login,createdAt,commit_id | jq -r 'select(.commit_id == "'$CURRENT_SHA'") | "Review comment by @\(.author.login) on \(.createdAt):\n\(.body)\n---"')
+             REVIEW_COMMENTS=$(gh pr review-comments "$PR_NUMBER" 2>/dev/null | grep -A 100 "$CURRENT_SHA" | head -50 || echo "")
            fi
 
            AGENTS=""
@@ -193,7 +193,7 @@ jobs:
           KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
           KILOCODE_TOKEN: ${{ secrets.KILO_API_KEY }} 
           # KILOCODE_MODEL: x-ai/grok-code-fast-1
-          KILOCODE_MODEL: minimax/minimax-m2-1
+          KILOCODE_MODEL: minimax/minimax-m2.1:free
           KILO_TELEMETRY_DEBUG: false
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
@@ -220,8 +220,7 @@ jobs:
             exit 0
           fi
           
-          DATA=$(gh issue view "$ISSUE_NUMBER" --json title,body)
-          TITLE=$(echo "$DATA" | jq -r '.title')
-          BODY=$(echo "$DATA" | jq -r '.body')
-          PR_NUMBER=$(gh pr create --draft --title "Fix: $TITLE" --body "Closes #$ISSUE_NUMBER" --head "$BRANCH_NAME" | grep -oP 'https://github.com/[^/]+/[^/]+/pull/\K\d+')
+          DATA=$(gh issue view "$ISSUE_NUMBER" 2>/dev/null)
+          TITLE=$(echo "$DATA" | grep -oP '^title:\s*\K.*' || echo "")
+          PR_NUMBER=$(gh pr create --draft --title "Fix: $TITLE" --body "Closes #$ISSUE_NUMBER" --head "$BRANCH_NAME" 2>/dev/null | grep -oP 'https://github.com/[^/]+/[^/]+/pull/\K\d+' || echo "")
           echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
