@@ -103,8 +103,8 @@ jobs:
             git checkout "$BRANCH"
             git pull origin "$BRANCH"
           else
-            git checkout main
-            git pull origin main
+            git checkout master
+            git pull origin master
             git checkout -b "$BRANCH"
           fi
 
@@ -177,6 +177,28 @@ jobs:
            echo "branch=${{ steps.branch.outputs.name }}" >> "$GITHUB_OUTPUT"
            echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
            { echo 'task<<EOF'; printf '%s' "$TASK"; echo; echo 'EOF'; } >> "$GITHUB_OUTPUT"
+
+      - name: Post start comment
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
+          PR_NUMBER=${{ steps.create_pr.outputs.pr_number || steps.identifiers.outputs.pr_number }}
+          BRANCH_NAME=${{ steps.branch.outputs.name }}
+          RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          
+          COMMENT="🚀 Kilo Code has started working on this task.\n\n"
+          COMMENT+="- **Branch**: \`$BRANCH_NAME\`\n"
+          COMMENT+="- **Issue**: #$ISSUE_NUMBER\n"
+          [ -n "$PR_NUMBER" ] && COMMENT+="- **PR**: #$PR_NUMBER\n"
+          COMMENT+="- **Run**: [View workflow]($RUN_URL)\n"
+          
+          if [ -n "$PR_NUMBER" ]; then
+            gh pr comment "$PR_NUMBER" --body "$COMMENT"
+          else
+            gh issue comment "$ISSUE_NUMBER" --body "$COMMENT"
+          fi
 
       - name: Run Kilo Code
         env:
