@@ -419,6 +419,10 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:workspaces/utils/packages/esbuild-tailwind-ssr-plugin"\
     },\
     {\
+      "name": "@goldstack/utils-gha-agent",\
+      "reference": "workspace:workspaces/utils/packages/github-actions-agent"\
+    },\
+    {\
       "name": "lambda-compression",\
       "reference": "workspace:workspaces/utils/packages/lambda-compression"\
     },\
@@ -568,6 +572,7 @@ const RAW_RUNTIME_STATE =
     ["@goldstack/utils-docs", ["workspace:workspaces/templates-lib/packages/utils-docs"]],\
     ["@goldstack/utils-docs-cli", ["workspace:workspaces/docs/packages/utils-docs-cli"]],\
     ["@goldstack/utils-esbuild", ["workspace:workspaces/utils/packages/utils-esbuild"]],\
+    ["@goldstack/utils-gha-agent", ["workspace:workspaces/utils/packages/github-actions-agent"]],\
     ["@goldstack/utils-git", ["workspace:workspaces/utils/packages/utils-git"]],\
     ["@goldstack/utils-json-to-ts", ["workspace:workspaces/utils/packages/utils-json-to-ts"]],\
     ["@goldstack/utils-log", ["workspace:workspaces/utils/packages/utils-log"]],\
@@ -8104,6 +8109,29 @@ const RAW_RUNTIME_STATE =
         "linkType": "SOFT"\
       }]\
     ]],\
+    ["@goldstack/utils-gha-agent", [\
+      ["workspace:workspaces/utils/packages/github-actions-agent", {\
+        "packageLocation": "./workspaces/utils/packages/github-actions-agent/",\
+        "packageDependencies": [\
+          ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
+          ["@goldstack/utils-gha-agent", "workspace:workspaces/utils/packages/github-actions-agent"],\
+          ["@goldstack/utils-git", "workspace:workspaces/utils/packages/utils-git"],\
+          ["@octokit/rest", "npm:21.1.1"],\
+          ["@swc/core", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:1.15.8"],\
+          ["@swc/jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:0.2.39"],\
+          ["@types/jest", "npm:30.0.0"],\
+          ["@types/node", "npm:25.0.3"],\
+          ["@types/yargs", "npm:17.0.33"],\
+          ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
+          ["rimraf", "npm:3.0.2"],\
+          ["source-map-support", "npm:0.5.21"],\
+          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
+          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
+          ["yargs", "npm:17.7.2"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
     ["@goldstack/utils-git", [\
       ["workspace:workspaces/utils/packages/utils-git", {\
         "packageLocation": "./workspaces/utils/packages/utils-git/",\
@@ -9672,6 +9700,193 @@ const RAW_RUNTIME_STATE =
           ["@npmcli/move-file", "npm:2.0.0"],\
           ["mkdirp", "npm:1.0.4"],\
           ["rimraf", "npm:3.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/auth-token", [\
+      ["npm:5.1.2", {\
+        "packageLocation": "./.yarn/cache/@octokit-auth-token-npm-5.1.2-60836e1538-53636ea9db.zip/node_modules/@octokit/auth-token/",\
+        "packageDependencies": [\
+          ["@octokit/auth-token", "npm:5.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/core", [\
+      ["npm:6.1.6", {\
+        "packageLocation": "./.yarn/cache/@octokit-core-npm-6.1.6-00fe7c7cdd-3a7f3e0409.zip/node_modules/@octokit/core/",\
+        "packageDependencies": [\
+          ["@octokit/auth-token", "npm:5.1.2"],\
+          ["@octokit/core", "npm:6.1.6"],\
+          ["@octokit/graphql", "npm:8.2.2"],\
+          ["@octokit/request", "npm:9.2.4"],\
+          ["@octokit/request-error", "npm:6.1.8"],\
+          ["@octokit/types", "npm:14.1.0"],\
+          ["before-after-hook", "npm:3.0.2"],\
+          ["universal-user-agent", "npm:7.0.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/endpoint", [\
+      ["npm:10.1.4", {\
+        "packageLocation": "./.yarn/cache/@octokit-endpoint-npm-10.1.4-788bb96243-b6f2305fca.zip/node_modules/@octokit/endpoint/",\
+        "packageDependencies": [\
+          ["@octokit/endpoint", "npm:10.1.4"],\
+          ["@octokit/types", "npm:14.1.0"],\
+          ["universal-user-agent", "npm:7.0.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/graphql", [\
+      ["npm:8.2.2", {\
+        "packageLocation": "./.yarn/cache/@octokit-graphql-npm-8.2.2-de6b40ca35-e97653b71e.zip/node_modules/@octokit/graphql/",\
+        "packageDependencies": [\
+          ["@octokit/graphql", "npm:8.2.2"],\
+          ["@octokit/request", "npm:9.2.4"],\
+          ["@octokit/types", "npm:14.1.0"],\
+          ["universal-user-agent", "npm:7.0.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/openapi-types", [\
+      ["npm:24.2.0", {\
+        "packageLocation": "./.yarn/cache/@octokit-openapi-types-npm-24.2.0-12708b95fa-000897ebc6.zip/node_modules/@octokit/openapi-types/",\
+        "packageDependencies": [\
+          ["@octokit/openapi-types", "npm:24.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:25.1.0", {\
+        "packageLocation": "./.yarn/cache/@octokit-openapi-types-npm-25.1.0-57da703bf5-91989a4cec.zip/node_modules/@octokit/openapi-types/",\
+        "packageDependencies": [\
+          ["@octokit/openapi-types", "npm:25.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/plugin-paginate-rest", [\
+      ["npm:11.6.0", {\
+        "packageLocation": "./.yarn/cache/@octokit-plugin-paginate-rest-npm-11.6.0-16ea2dcf3d-4b9e1ca479.zip/node_modules/@octokit/plugin-paginate-rest/",\
+        "packageDependencies": [\
+          ["@octokit/plugin-paginate-rest", "npm:11.6.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:73c967631d8639849435f62785b5f8fb232c9618919be8e8a5f2a4ab4f1a063551defc3f3feeaf4828e166b32bfc240bd5c8ef851080cd9db0310b96017483ce#npm:11.6.0", {\
+        "packageLocation": "./.yarn/__virtual__/@octokit-plugin-paginate-rest-virtual-a0a40c14e0/0/cache/@octokit-plugin-paginate-rest-npm-11.6.0-16ea2dcf3d-4b9e1ca479.zip/node_modules/@octokit/plugin-paginate-rest/",\
+        "packageDependencies": [\
+          ["@octokit/core", "npm:6.1.6"],\
+          ["@octokit/plugin-paginate-rest", "virtual:73c967631d8639849435f62785b5f8fb232c9618919be8e8a5f2a4ab4f1a063551defc3f3feeaf4828e166b32bfc240bd5c8ef851080cd9db0310b96017483ce#npm:11.6.0"],\
+          ["@octokit/types", "npm:13.10.0"],\
+          ["@types/octokit__core", null]\
+        ],\
+        "packagePeers": [\
+          "@octokit/core",\
+          "@types/octokit__core"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/plugin-request-log", [\
+      ["npm:5.3.1", {\
+        "packageLocation": "./.yarn/cache/@octokit-plugin-request-log-npm-5.3.1-86ca827f31-a27e163282.zip/node_modules/@octokit/plugin-request-log/",\
+        "packageDependencies": [\
+          ["@octokit/plugin-request-log", "npm:5.3.1"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:73c967631d8639849435f62785b5f8fb232c9618919be8e8a5f2a4ab4f1a063551defc3f3feeaf4828e166b32bfc240bd5c8ef851080cd9db0310b96017483ce#npm:5.3.1", {\
+        "packageLocation": "./.yarn/__virtual__/@octokit-plugin-request-log-virtual-c7a97479cc/0/cache/@octokit-plugin-request-log-npm-5.3.1-86ca827f31-a27e163282.zip/node_modules/@octokit/plugin-request-log/",\
+        "packageDependencies": [\
+          ["@octokit/core", "npm:6.1.6"],\
+          ["@octokit/plugin-request-log", "virtual:73c967631d8639849435f62785b5f8fb232c9618919be8e8a5f2a4ab4f1a063551defc3f3feeaf4828e166b32bfc240bd5c8ef851080cd9db0310b96017483ce#npm:5.3.1"],\
+          ["@types/octokit__core", null]\
+        ],\
+        "packagePeers": [\
+          "@octokit/core",\
+          "@types/octokit__core"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/plugin-rest-endpoint-methods", [\
+      ["npm:13.5.0", {\
+        "packageLocation": "./.yarn/cache/@octokit-plugin-rest-endpoint-methods-npm-13.5.0-ba028b6640-bfd4da842b.zip/node_modules/@octokit/plugin-rest-endpoint-methods/",\
+        "packageDependencies": [\
+          ["@octokit/plugin-rest-endpoint-methods", "npm:13.5.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:73c967631d8639849435f62785b5f8fb232c9618919be8e8a5f2a4ab4f1a063551defc3f3feeaf4828e166b32bfc240bd5c8ef851080cd9db0310b96017483ce#npm:13.5.0", {\
+        "packageLocation": "./.yarn/__virtual__/@octokit-plugin-rest-endpoint-methods-virtual-88fece54a0/0/cache/@octokit-plugin-rest-endpoint-methods-npm-13.5.0-ba028b6640-bfd4da842b.zip/node_modules/@octokit/plugin-rest-endpoint-methods/",\
+        "packageDependencies": [\
+          ["@octokit/core", "npm:6.1.6"],\
+          ["@octokit/plugin-rest-endpoint-methods", "virtual:73c967631d8639849435f62785b5f8fb232c9618919be8e8a5f2a4ab4f1a063551defc3f3feeaf4828e166b32bfc240bd5c8ef851080cd9db0310b96017483ce#npm:13.5.0"],\
+          ["@octokit/types", "npm:13.10.0"],\
+          ["@types/octokit__core", null]\
+        ],\
+        "packagePeers": [\
+          "@octokit/core",\
+          "@types/octokit__core"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/request", [\
+      ["npm:9.2.4", {\
+        "packageLocation": "./.yarn/cache/@octokit-request-npm-9.2.4-b2103af8d7-d640f45490.zip/node_modules/@octokit/request/",\
+        "packageDependencies": [\
+          ["@octokit/endpoint", "npm:10.1.4"],\
+          ["@octokit/request", "npm:9.2.4"],\
+          ["@octokit/request-error", "npm:6.1.8"],\
+          ["@octokit/types", "npm:14.1.0"],\
+          ["fast-content-type-parse", "npm:2.0.1"],\
+          ["universal-user-agent", "npm:7.0.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/request-error", [\
+      ["npm:6.1.8", {\
+        "packageLocation": "./.yarn/cache/@octokit-request-error-npm-6.1.8-3d9689b30b-9354d9f6d9.zip/node_modules/@octokit/request-error/",\
+        "packageDependencies": [\
+          ["@octokit/request-error", "npm:6.1.8"],\
+          ["@octokit/types", "npm:14.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/rest", [\
+      ["npm:21.1.1", {\
+        "packageLocation": "./.yarn/cache/@octokit-rest-npm-21.1.1-73c967631d-34a0088c19.zip/node_modules/@octokit/rest/",\
+        "packageDependencies": [\
+          ["@octokit/core", "npm:6.1.6"],\
+          ["@octokit/plugin-paginate-rest", "virtual:73c967631d8639849435f62785b5f8fb232c9618919be8e8a5f2a4ab4f1a063551defc3f3feeaf4828e166b32bfc240bd5c8ef851080cd9db0310b96017483ce#npm:11.6.0"],\
+          ["@octokit/plugin-request-log", "virtual:73c967631d8639849435f62785b5f8fb232c9618919be8e8a5f2a4ab4f1a063551defc3f3feeaf4828e166b32bfc240bd5c8ef851080cd9db0310b96017483ce#npm:5.3.1"],\
+          ["@octokit/plugin-rest-endpoint-methods", "virtual:73c967631d8639849435f62785b5f8fb232c9618919be8e8a5f2a4ab4f1a063551defc3f3feeaf4828e166b32bfc240bd5c8ef851080cd9db0310b96017483ce#npm:13.5.0"],\
+          ["@octokit/rest", "npm:21.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@octokit/types", [\
+      ["npm:13.10.0", {\
+        "packageLocation": "./.yarn/cache/@octokit-types-npm-13.10.0-aadb051232-32f8f5010d.zip/node_modules/@octokit/types/",\
+        "packageDependencies": [\
+          ["@octokit/openapi-types", "npm:24.2.0"],\
+          ["@octokit/types", "npm:13.10.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:14.1.0", {\
+        "packageLocation": "./.yarn/cache/@octokit-types-npm-14.1.0-22a8a2e4b5-ea5549ca61.zip/node_modules/@octokit/types/",\
+        "packageDependencies": [\
+          ["@octokit/openapi-types", "npm:25.1.0"],\
+          ["@octokit/types", "npm:14.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -15106,6 +15321,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["before-after-hook", [\
+      ["npm:3.0.2", {\
+        "packageLocation": "./.yarn/cache/before-after-hook-npm-3.0.2-d214257f27-57dfee7893.zip/node_modules/before-after-hook/",\
+        "packageDependencies": [\
+          ["before-after-hook", "npm:3.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["big.js", [\
       ["npm:5.2.2", {\
         "packageLocation": "./.yarn/cache/big.js-npm-5.2.2-e147c30820-c04416aeb0.zip/node_modules/big.js/",\
@@ -18674,6 +18898,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["fast-check", "npm:3.23.2"],\
           ["pure-rand", "npm:6.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["fast-content-type-parse", [\
+      ["npm:2.0.1", {\
+        "packageLocation": "./.yarn/cache/fast-content-type-parse-npm-2.0.1-edfde4c5bc-ec361f5b79.zip/node_modules/fast-content-type-parse/",\
+        "packageDependencies": [\
+          ["fast-content-type-parse", "npm:2.0.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -30173,6 +30406,15 @@ const RAW_RUNTIME_STATE =
           ["@types/unist", "npm:2.0.3"],\
           ["unist-util-is", "npm:4.0.2"],\
           ["unist-util-visit-parents", "npm:3.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["universal-user-agent", [\
+      ["npm:7.0.3", {\
+        "packageLocation": "./.yarn/cache/universal-user-agent-npm-7.0.3-8e08ccfc46-c497e85f8b.zip/node_modules/universal-user-agent/",\
+        "packageDependencies": [\
+          ["universal-user-agent", "npm:7.0.3"]\
         ],\
         "linkType": "HARD"\
       }]\

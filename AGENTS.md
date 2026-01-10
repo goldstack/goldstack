@@ -6,6 +6,7 @@ This repository uses:
   - NEVER run commands via npx
 - Biome JS for format checking and linting
 - Jests for testing
+- Windows PowerShell for running commands
 
 ## Common Commands
 
