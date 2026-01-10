@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-gha-agent",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "GitHub Actions Agent CLI for automating issue/PR workflows",
   "keywords": [
     "github",

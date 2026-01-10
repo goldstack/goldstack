@@ -314,7 +314,16 @@ export async function createComment(
   _isPr?: boolean,
 ): Promise<void> {
   const result = runGhCommand(
-    ['issue', 'comment', 'create', issueNumber.toString(), '--repo', `${owner}/${repo}`, '--body', body],
+    [
+      'issue',
+      'comment',
+      'create',
+      issueNumber.toString(),
+      '--repo',
+      `${owner}/${repo}`,
+      '--body',
+      body,
+    ],
     token.token,
   );
   if (!result.success) {
@@ -334,7 +343,19 @@ export async function createDraftPr(
   head: string,
 ): Promise<string> {
   const result = runGhCommand(
-    ['pr', 'create', '--repo', `${owner}/${repo}`, '--title', title, '--body', body, '--head', head, '--draft'],
+    [
+      'pr',
+      'create',
+      '--repo',
+      `${owner}/${repo}`,
+      '--title',
+      title,
+      '--body',
+      body,
+      '--head',
+      head,
+      '--draft',
+    ],
     token.token,
   );
   if (!result.success) {

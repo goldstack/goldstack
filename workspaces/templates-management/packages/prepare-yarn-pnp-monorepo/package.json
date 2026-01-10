@@ -22,16 +22,16 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.4.34",
-    "@goldstack/infra-aws": "0.4.51",
+    "@goldstack/infra-aws": "0.4.52",
     "@goldstack/prepare-template": "0.1.0",
     "@goldstack/utils-config": "0.4.34",
-    "@goldstack/utils-package": "0.4.35",
+    "@goldstack/utils-package": "0.4.36",
     "@goldstack/utils-sh": "0.5.33",
     "@goldstack/utils-template": "0.4.34",
     "sort-package-json": "^3.4.0"
   },
   "devDependencies": {
-    "@goldstack/utils-package-config-generate": "0.3.23",
+    "@goldstack/utils-package-config-generate": "0.3.24",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

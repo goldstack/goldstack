@@ -21,7 +21,7 @@
     "test-watch": "jest --config=./jest.config.js --watch"
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.4.51",
+    "@goldstack/infra-aws": "0.4.52",
     "@goldstack/utils-config": "0.4.34",
     "@goldstack/utils-log": "0.3.29",
     "@goldstack/utils-project": "0.4.34",
