@@ -1,5 +1,5 @@
-import { execSync } from 'child_process';
 import { logger } from '@goldstack/utils-cli';
+import { spawnSync, execSync } from 'child_process';
 
 /**
  * Result type for gh CLI command execution.
@@ -16,8 +16,8 @@ export interface GhCommandResult {
  */
 export function isGhAvailable(): boolean {
   try {
-    execSync('gh --version', { stdio: 'ignore' });
-    return true;
+    const result = spawnSync('gh', ['--version'], { stdio: 'ignore' });
+    return result.status === 0;
   } catch {
     return false;
   }
@@ -26,45 +26,41 @@ export function isGhAvailable(): boolean {
 /**
  * Execute a gh CLI command and return the result.
  */
-export function runGhCommand(args: string, token?: string): GhCommandResult {
+export function runGhCommand(args: string[], token?: string): GhCommandResult {
   const env = { ...process.env };
   if (token) {
     env.GITHUB_TOKEN = token;
   }
 
-  try {
-    const stdout = execSync(`gh ${args}`, {
-      encoding: 'utf-8',
-      env,
-      stdio: ['pipe', 'pipe', 'pipe'],
-    });
-    return {
-      success: true,
-      stdout,
-      stderr: '',
-      exitCode: 0,
-    };
-  } catch (error) {
-    const err = error as { status?: number; stdout?: string; stderr?: string };
+  const result = spawnSync('gh', args, {
+    encoding: 'utf-8',
+    env,
+    stdio: 'pipe',
+  });
+
+  if (result.error) {
     return {
       success: false,
-      stdout: err.stdout || '',
-      stderr: err.stderr || '',
-      exitCode: err.status || 1,
+      stdout: '',
+      stderr: result.error.message,
+      exitCode: 1,
     };
   }
+
+  return {
+    success: result.status === 0,
+    stdout: result.stdout,
+    stderr: result.stderr,
+    exitCode: result.status ?? 0,
+  };
 }
 
 /**
  * Execute a gh CLI command and return parsed JSON output.
  */
-export function runGhCommandJson<T>(
-  args: string,
-  token?: string,
-  jsonFields?: string,
-): T | null {
-  const fieldsArg = jsonFields ? ` --json ${jsonFields}` : '';
-  const result = runGhCommand(`${args}${fieldsArg}`, token);
+export function runGhCommandJson<T>(args: string[], token?: string, jsonFields?: string): T | null {
+  const fullArgs = jsonFields ? [...args, '--json', jsonFields] : args;
+  const result = runGhCommand(fullArgs, token);
   if (!result.success || !result.stdout) {
     return null;
   }
@@ -157,7 +153,7 @@ export async function isPr(
 ): Promise<boolean> {
   // Request at least one PR-specific field (headRefName) to ensure proper validation
   const data = runGhCommandJson<{ number: number; headRefName: string }>(
-    `pr view ${prNumber} --repo ${owner}/${repo}`,
+    ['pr', 'view', prNumber.toString(), '--repo', `${owner}/${repo}`],
     token.token,
     'number,headRefName',
   );
@@ -175,7 +171,7 @@ export async function getPrData(
   prNumber: number,
 ): Promise<{ title: string; body: string; headRefName: string }> {
   const data = runGhCommandJson<GhPrData>(
-    `pr view ${prNumber} --repo ${owner}/${repo}`,
+    ['pr', 'view', prNumber.toString(), '--repo', `${owner}/${repo}`],
     token.token,
     'title,body,headRefName',
   );
@@ -199,7 +195,7 @@ export async function getIssueData(
   issueNumber: number,
 ): Promise<{ title: string; body: string }> {
   const data = runGhCommandJson<GhIssueData>(
-    `issue view ${issueNumber} --repo ${owner}/${repo}`,
+    ['issue', 'view', issueNumber.toString(), '--repo', `${owner}/${repo}`],
     token.token,
     'title,body',
   );
@@ -222,7 +218,7 @@ export async function getIssueComments(
   issueNumber: number,
 ): Promise<string> {
   const data = runGhCommandJson<GhCommentData[]>(
-    `api repos/${owner}/${repo}/issues/${issueNumber}/comments`,
+    ['api', `repos/${owner}/${repo}/issues/${issueNumber}/comments`],
     token.token,
   );
   if (!data) {
@@ -245,7 +241,7 @@ export async function getPrComments(
   prNumber: number,
 ): Promise<string> {
   const data = runGhCommandJson<GhCommentData[]>(
-    `api repos/${owner}/${repo}/issues/${prNumber}/comments`,
+    ['api', `repos/${owner}/${repo}/issues/${prNumber}/comments`],
     token.token,
   );
   if (!data) {
@@ -270,7 +266,7 @@ export async function getPrReviewComments(
 ): Promise<string> {
   // Use GitHub API to get PR review comments
   const data = runGhCommandJson<GhCommentData[]>(
-    `api repos/${owner}/${repo}/pulls/${prNumber}/comments`,
+    ['api', `repos/${owner}/${repo}/pulls/${prNumber}/comments`],
     token.token,
   );
   if (!data) {
@@ -296,7 +292,7 @@ export async function findPrByBranch(
   branchName: string,
 ): Promise<string> {
   const data = runGhCommandJson<{ number: number }[]>(
-    `pr list --repo ${owner}/${repo} --head ${branchName} --state open`,
+    ['pr', 'list', '--repo', `${owner}/${repo}`, '--head', branchName, '--state', 'open'],
     token.token,
     'number',
   );
@@ -318,7 +314,7 @@ export async function createComment(
   _isPr?: boolean,
 ): Promise<void> {
   const result = runGhCommand(
-    `issue comment create ${issueNumber} --repo ${owner}/${repo} --body "${body.replace(/"/g, '\\"')}"`,
+    ['issue', 'comment', 'create', issueNumber.toString(), '--repo', `${owner}/${repo}`, '--body', body],
     token.token,
   );
   if (!result.success) {
@@ -338,7 +334,7 @@ export async function createDraftPr(
   head: string,
 ): Promise<string> {
   const result = runGhCommand(
-    `pr create --repo ${owner}/${repo} --title "${title.replace(/"/g, '\\"')}" --body "${body.replace(/"/g, '\\"')}" --head ${head} --draft`,
+    ['pr', 'create', '--repo', `${owner}/${repo}`, '--title', title, '--body', body, '--head', head, '--draft'],
     token.token,
   );
   if (!result.success) {
@@ -359,7 +355,7 @@ export async function getPrBody(
   prNumber: number,
 ): Promise<string> {
   const data = runGhCommandJson<{ body: string }>(
-    `pr view ${prNumber} --repo ${owner}/${repo}`,
+    ['pr', 'view', prNumber.toString(), '--repo', `${owner}/${repo}`],
     token.token,
     'body',
   );
@@ -377,7 +373,7 @@ export async function updatePrBody(
   body: string,
 ): Promise<void> {
   const result = runGhCommand(
-    `pr edit ${prNumber} --repo ${owner}/${repo} --body "${body.replace(/"/g, '\\"')}"`,
+    ['pr', 'edit', prNumber.toString(), '--repo', `${owner}/${repo}`, '--body', body],
     token.token,
   );
   if (!result.success) {
