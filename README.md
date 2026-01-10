@@ -5,6 +5,8 @@
   </a>
 </p>
 
+Just a dummy change
+
 ![Build status](https://img.shields.io/github/actions/workflow/status/goldstack/goldstack/branch.yml?branch=master) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6cc586e39fca47a5b7bd64c5d3e1b563)](https://www.codacy.com/gh/goldstack/goldstack/dashboard?utm_source=github.com\&utm_medium=referral\&utm_content=goldstack/goldstack\&utm_campaign=Badge_Grade)
 
 Getting started on a new project is fun ... until it isn't. Goldstack provides customizable starter templates that help you lift your project off the ground and immediately start working on the features that matter to you.
