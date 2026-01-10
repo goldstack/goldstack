@@ -1,43 +1,43 @@
 import * as fs from 'fs';
-import {
-  createOctokit,
-  isPr,
-  getPrData,
-  getIssueData,
-  getIssueComments,
-  getPrComments,
-  getPrReviewComments,
-  findPrByBranch,
-  createComment as ghCreateComment,
-  createDraftPr,
-  getPrBody,
-  updatePrBody,
-} from './utils/github';
-import {
-  gitFetch,
-  gitCheckout,
-  gitPull,
-  gitCreateBranch,
-  gitPush,
-  getCurrentSha,
-  branchExistsRemote,
-  getCommitCount,
-} from './utils/git';
 import type {
-  IdentifyCommentOptions,
-  IdentifyCommentResult,
-  IdentifyBranchOptions,
-  IdentifyBranchResult,
-  CheckoutBranchOptions,
   BuildContextOptions,
   BuildContextResult,
-  PostStartCommentOptions,
-  FixPrBodyOptions,
+  CheckoutBranchOptions,
   CreatePrOptions,
   CreatePrResult,
-  RunKilocodeOptions,
+  FixPrBodyOptions,
+  IdentifyBranchOptions,
+  IdentifyBranchResult,
+  IdentifyCommentOptions,
+  IdentifyCommentResult,
+  PostStartCommentOptions,
   RunAllOptions,
+  RunKilocodeOptions,
 } from './types';
+import {
+  branchExistsRemote,
+  getCommitCount,
+  getCurrentSha,
+  gitCheckout,
+  gitCreateBranch,
+  gitFetch,
+  gitPull,
+  gitPush,
+} from './utils/git';
+import {
+  createDraftPr,
+  createOctokit,
+  findPrByBranch,
+  getIssueComments,
+  getIssueData,
+  getPrBody,
+  getPrComments,
+  getPrData,
+  getPrReviewComments,
+  createComment as ghCreateComment,
+  isPr,
+  updatePrBody,
+} from './utils/github';
 
 /**
  * GitHub Actions Agent for automating issue/PR workflows.
@@ -53,7 +53,7 @@ export class GitHubActionsAgent {
     this.kiloApiKey = options.kiloApiKey;
     // Extract owner/repo from git remote or environment
     const remoteUrl = this.getGitRemoteUrl();
-    const match = remoteUrl.match(/github\.com[\/:]([^\/]+)\/([^\.]+)\.git/);
+    const match = remoteUrl.match(/github\.com[/:]([^/]+)\/([^.]+)\.git/);
     if (match) {
       this.owner = match[1];
       this.repo = match[2];
@@ -79,9 +79,7 @@ export class GitHubActionsAgent {
   /**
    * Identify issue and PR numbers from a comment event.
    */
-  async identifyComment(
-    options: IdentifyCommentOptions
-  ): Promise<IdentifyCommentResult> {
+  async identifyComment(options: IdentifyCommentOptions): Promise<IdentifyCommentResult> {
     const octokit = await createOctokit(this.token);
     const issueNumber = options.issueNumber;
     let prNumber = '';
@@ -93,12 +91,7 @@ export class GitHubActionsAgent {
       prNumber = String(issueNumber);
     } else {
       // It's an issue comment - check for linked issue in PR body
-      const prData = await getPrData(
-        octokit,
-        this.owner,
-        this.repo,
-        issueNumber
-      );
+      const prData = await getPrData(octokit, this.owner, this.repo, issueNumber);
 
       // Look for "closes #", "fixes #", "resolves #" patterns
       const closesMatch = prData.body.match(/closes\s+#(\d+)/i);
@@ -114,12 +107,7 @@ export class GitHubActionsAgent {
       } else {
         // Check for existing PR with expected branch
         const branchName = `kilo-issue-${issueNumber}`;
-        const existingPr = await findPrByBranch(
-          octokit,
-          this.owner,
-          this.repo,
-          branchName
-        );
+        const existingPr = await findPrByBranch(octokit, this.owner, this.repo, branchName);
         if (existingPr) {
           prNumber = existingPr;
         }
@@ -136,20 +124,13 @@ export class GitHubActionsAgent {
   /**
    * Identify the working branch based on issue/PR context.
    */
-  async identifyBranch(
-    options: IdentifyBranchOptions
-  ): Promise<IdentifyBranchResult> {
+  async identifyBranch(options: IdentifyBranchOptions): Promise<IdentifyBranchResult> {
     const octokit = await createOctokit(this.token);
     const { issueNumber, prNumber } = options;
 
     if (prNumber) {
       // Use PR's head branch name
-      const prData = await getPrData(
-        octokit,
-        this.owner,
-        this.repo,
-        prNumber
-      );
+      const prData = await getPrData(octokit, this.owner, this.repo, prNumber);
       return {
         branchName: prData.headRefName,
       };
@@ -188,8 +169,7 @@ export class GitHubActionsAgent {
    */
   async buildContext(options: BuildContextOptions): Promise<BuildContextResult> {
     const octokit = await createOctokit(this.token);
-    const { comment, issueNumber, prNumber, agentsFile = 'AGENTS_GHA.md' } =
-      options;
+    const { comment, issueNumber, prNumber, agentsFile = 'AGENTS_GHA.md' } = options;
 
     // Strip /kilo or /kilocode prefix
     const prompt = comment.replace(/^\/(kilo(code)?)\s*/i, '');
@@ -201,22 +181,12 @@ export class GitHubActionsAgent {
     let headRefName = `kilo-issue-${issueNumber}`; // default branch name
 
     if (prNumber) {
-      const prData = await getPrData(
-        octokit,
-        this.owner,
-        this.repo,
-        prNumber
-      );
+      const prData = await getPrData(octokit, this.owner, this.repo, prNumber);
       title = prData.title;
       body = prData.body;
       headRefName = prData.headRefName;
     } else {
-      const issueData = await getIssueData(
-        octokit,
-        this.owner,
-        this.repo,
-        issueNumber
-      );
+      const issueData = await getIssueData(octokit, this.owner, this.repo, issueNumber);
       title = issueData.title;
       body = issueData.body;
     }
@@ -226,22 +196,12 @@ export class GitHubActionsAgent {
     // Collect comments
     let issueComments = '';
     if (issueNumber && !prNumber) {
-      issueComments = await getIssueComments(
-        octokit,
-        this.owner,
-        this.repo,
-        issueNumber
-      );
+      issueComments = await getIssueComments(octokit, this.owner, this.repo, issueNumber);
     }
 
     let prComments = '';
     if (prNumber) {
-      prComments = await getPrComments(
-        octokit,
-        this.owner,
-        this.repo,
-        prNumber
-      );
+      prComments = await getPrComments(octokit, this.owner, this.repo, prNumber);
     }
 
     let reviewComments = '';
@@ -251,7 +211,7 @@ export class GitHubActionsAgent {
         this.owner,
         this.repo,
         prNumber,
-        currentSha
+        currentSha,
       );
     }
 
@@ -303,14 +263,7 @@ export class GitHubActionsAgent {
 ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
 - **Run**: [View workflow](${runUrl})`;
 
-    await ghCreateComment(
-      octokit,
-      this.owner,
-      this.repo,
-      issueNumber,
-      comment,
-      Boolean(prNumber)
-    );
+    await ghCreateComment(octokit, this.owner, this.repo, issueNumber, comment, Boolean(prNumber));
   }
 
   /**
@@ -348,12 +301,7 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
     }
 
     // Get issue title for PR title
-    const issueData = await getIssueData(
-      octokit,
-      this.owner,
-      this.repo,
-      issueNumber
-    );
+    const issueData = await getIssueData(octokit, this.owner, this.repo, issueNumber);
 
     const newPrNumber = await createDraftPr(
       octokit,
@@ -361,7 +309,7 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       this.repo,
       `Fix: ${issueData.title}`,
       `Closes #${issueNumber}`,
-      branchName
+      branchName,
     );
 
     return {

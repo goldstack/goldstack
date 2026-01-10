@@ -6583,6 +6583,7 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     "@types/yargs": "npm:^17.0.33"
+    dotenv: "npm:^16.4.7"
     jest: "npm:^30.2.0"
     rimraf: "npm:^3.0.2"
     source-map-support: "npm:^0.5.21"

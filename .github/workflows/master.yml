@@ -97,6 +97,9 @@ jobs:
           cd workspaces/utils
           yarn test
           cd ../..
+        env:
+          GITHUB_TOKEN: ${{secrets.PAT_TOKEN}}
+          KILOCODE_API_KEY: ${{secrets.KILO_API_KEY}}
 
       - name: Test libraries
         run: |

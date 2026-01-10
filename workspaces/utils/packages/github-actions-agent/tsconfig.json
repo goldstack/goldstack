@@ -1,11 +1,14 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
-    "module": "Preserve",
-    "moduleResolution": "bundler"
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
+    "esModuleInterop": true
   },
   "references": [
     {

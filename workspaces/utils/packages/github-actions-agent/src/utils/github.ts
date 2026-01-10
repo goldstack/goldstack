@@ -16,7 +16,7 @@ export async function isPr(
   octokit: Octokit,
   owner: string,
   repo: string,
-  prNumber: number
+  prNumber: number,
 ): Promise<boolean> {
   try {
     await octokit.pulls.get({
@@ -37,7 +37,7 @@ export async function getPrData(
   octokit: Octokit,
   owner: string,
   repo: string,
-  prNumber: number
+  prNumber: number,
 ): Promise<{ title: string; body: string; headRefName: string }> {
   const { data } = await octokit.pulls.get({
     owner,
@@ -58,7 +58,7 @@ export async function getIssueData(
   octokit: Octokit,
   owner: string,
   repo: string,
-  issueNumber: number
+  issueNumber: number,
 ): Promise<{ title: string; body: string }> {
   const { data } = await octokit.issues.get({
     owner,
@@ -78,7 +78,7 @@ export async function getIssueComments(
   octokit: Octokit,
   owner: string,
   repo: string,
-  issueNumber: number
+  issueNumber: number,
 ): Promise<string> {
   const { data } = await octokit.issues.listComments({
     owner,
@@ -99,7 +99,7 @@ export async function getPrComments(
   octokit: Octokit,
   owner: string,
   repo: string,
-  prNumber: number
+  prNumber: number,
 ): Promise<string> {
   const { data } = await octokit.issues.listComments({
     owner,
@@ -121,7 +121,7 @@ export async function getPrReviewComments(
   owner: string,
   repo: string,
   prNumber: number,
-  sinceSha?: string
+  sinceSha?: string,
 ): Promise<string> {
   const { data } = await octokit.pulls.listReviewComments({
     owner,
@@ -132,9 +132,7 @@ export async function getPrReviewComments(
   let comments = data;
 
   if (sinceSha) {
-    const sinceIndex = data.findIndex(
-      (comment) => comment.commit_id === sinceSha
-    );
+    const sinceIndex = data.findIndex((comment) => comment.commit_id === sinceSha);
     if (sinceIndex !== -1) {
       comments = data.slice(sinceIndex);
     }
@@ -155,7 +153,7 @@ export async function findPrByBranch(
   octokit: Octokit,
   owner: string,
   repo: string,
-  branchName: string
+  branchName: string,
 ): Promise<string> {
   const { data } = await octokit.pulls.list({
     owner,
@@ -175,7 +173,7 @@ export async function createComment(
   repo: string,
   issueNumber: number,
   body: string,
-  _isPr?: boolean
+  _isPr?: boolean,
 ): Promise<void> {
   await octokit.issues.createComment({
     owner,
@@ -194,7 +192,7 @@ export async function createDraftPr(
   repo: string,
   title: string,
   body: string,
-  head: string
+  head: string,
 ): Promise<string> {
   const { data } = await octokit.pulls.create({
     owner,
@@ -215,7 +213,7 @@ export async function getPrBody(
   octokit: Octokit,
   owner: string,
   repo: string,
-  prNumber: number
+  prNumber: number,
 ): Promise<string> {
   const { data } = await octokit.pulls.get({
     owner,
@@ -233,7 +231,7 @@ export async function updatePrBody(
   owner: string,
   repo: string,
   prNumber: number,
-  body: string
+  body: string,
 ): Promise<void> {
   await octokit.pulls.update({
     owner,
