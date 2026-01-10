@@ -58,8 +58,13 @@ export function runGhCommand(args: string, token?: string): GhCommandResult {
 /**
  * Execute a gh CLI command and return parsed JSON output.
  */
-export function runGhCommandJson<T>(args: string, token?: string): T | null {
-  const result = runGhCommand(`${args} --json`, token);
+export function runGhCommandJson<T>(
+  args: string,
+  token?: string,
+  jsonFields?: string,
+): T | null {
+  const fieldsArg = jsonFields ? ` --json ${jsonFields}` : '';
+  const result = runGhCommand(`${args}${fieldsArg}`, token);
   if (!result.success || !result.stdout) {
     return null;
   }
@@ -150,11 +155,14 @@ export async function isPr(
   repo: string,
   prNumber: number,
 ): Promise<boolean> {
-  const result = runGhCommand(
-    `pr view ${prNumber} --repo ${owner}/${repo} --json number --jq '.number'`,
+  // Request at least one PR-specific field (headRefName) to ensure proper validation
+  const data = runGhCommandJson<{ number: number; headRefName: string }>(
+    `pr view ${prNumber} --repo ${owner}/${repo}`,
     token.token,
+    'number,headRefName',
   );
-  return result.success && result.stdout.trim() === String(prNumber);
+  // PR exists only if we got data AND the number matches and headRefName is defined
+  return data !== null && data.number === prNumber && data.headRefName !== undefined;
 }
 
 /**
@@ -169,6 +177,7 @@ export async function getPrData(
   const data = runGhCommandJson<GhPrData>(
     `pr view ${prNumber} --repo ${owner}/${repo}`,
     token.token,
+    'title,body,headRefName',
   );
   if (!data) {
     throw new Error(`Failed to get PR data for #${prNumber}`);
@@ -192,6 +201,7 @@ export async function getIssueData(
   const data = runGhCommandJson<GhIssueData>(
     `issue view ${issueNumber} --repo ${owner}/${repo}`,
     token.token,
+    'title,body',
   );
   if (!data) {
     throw new Error(`Failed to get issue data for #${issueNumber}`);
@@ -203,7 +213,7 @@ export async function getIssueData(
 }
 
 /**
- * Get issue comments.
+ * Get issue comments using GitHub API.
  */
 export async function getIssueComments(
   token: GhToken,
@@ -212,7 +222,7 @@ export async function getIssueComments(
   issueNumber: number,
 ): Promise<string> {
   const data = runGhCommandJson<GhCommentData[]>(
-    `issue comment list ${issueNumber} --repo ${owner}/${repo}`,
+    `api repos/${owner}/${repo}/issues/${issueNumber}/comments`,
     token.token,
   );
   if (!data) {
@@ -226,7 +236,7 @@ export async function getIssueComments(
 }
 
 /**
- * Get PR comments.
+ * Get PR comments using GitHub API.
  */
 export async function getPrComments(
   token: GhToken,
@@ -235,7 +245,7 @@ export async function getPrComments(
   prNumber: number,
 ): Promise<string> {
   const data = runGhCommandJson<GhCommentData[]>(
-    `pr comment list ${prNumber} --repo ${owner}/${repo}`,
+    `api repos/${owner}/${repo}/issues/${prNumber}/comments`,
     token.token,
   );
   if (!data) {
@@ -249,7 +259,7 @@ export async function getPrComments(
 }
 
 /**
- * Get PR review comments on or after the given SHA.
+ * Get PR review comments on or after the given SHA using GitHub API.
  */
 export async function getPrReviewComments(
   token: GhToken,
@@ -258,10 +268,9 @@ export async function getPrReviewComments(
   prNumber: number,
   _sinceSha?: string,
 ): Promise<string> {
-  // gh pr review comment list doesn't support filtering by SHA directly
-  // We'll get all comments and filter if needed
+  // Use GitHub API to get PR review comments
   const data = runGhCommandJson<GhCommentData[]>(
-    `pr review comment list ${prNumber} --repo ${owner}/${repo}`,
+    `api repos/${owner}/${repo}/pulls/${prNumber}/comments`,
     token.token,
   );
   if (!data) {
@@ -287,8 +296,9 @@ export async function findPrByBranch(
   branchName: string,
 ): Promise<string> {
   const data = runGhCommandJson<{ number: number }[]>(
-    `pr list --repo ${owner}/${repo} --head ${owner}:${branchName} --state open --json number`,
+    `pr list --repo ${owner}/${repo} --head ${branchName} --state open`,
     token.token,
+    'number',
   );
   if (!data || data.length === 0) {
     return '';
@@ -349,8 +359,9 @@ export async function getPrBody(
   prNumber: number,
 ): Promise<string> {
   const data = runGhCommandJson<{ body: string }>(
-    `pr view ${prNumber} --repo ${owner}/${repo} --json body`,
+    `pr view ${prNumber} --repo ${owner}/${repo}`,
     token.token,
+    'body',
   );
   return data?.body || '';
 }

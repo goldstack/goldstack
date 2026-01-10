@@ -1,5 +1,5 @@
 /**
- * @jest-environment jsdom
+ * Test GitHub Utilities
  */
 
 import { config } from 'dotenv';

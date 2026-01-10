@@ -1,5 +1,5 @@
 /**
- * @jest-environment jsdom
+ * GitHub Actions Agent Tests
  */
 import { GitHubActionsAgent } from '../githubActionsAgent';
 
@@ -20,7 +20,13 @@ describe('GitHubActionsAgent', () => {
   beforeAll(() => {
     // Initialize agent with a real token if available
     const token = process.env.GITHUB_TOKEN || '';
+    if (!token) {
+      throw new Error('GITHUB_TOKEN is not set in environment variables');
+    }
     const kiloApiKey = process.env.KILOCODE_API_KEY || '';
+    if (!kiloApiKey) {
+      throw new Error('KILOCODE_API_KEY is not set in environment variables');
+    }
     agent = new GitHubActionsAgent({ token, kiloApiKey });
   });
 

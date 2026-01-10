@@ -1,8 +1,9 @@
 /**
- * @jest-environment jsdom
+ * Build Context Tests
  */
-import { GitHubActionsAgent } from '../githubActionsAgent';
+
 import * as fs from 'fs';
+import { GitHubActionsAgent } from '../githubActionsAgent';
 
 // Test configuration for real GitHub API tests
 const TEST_OWNER = 'goldstack';

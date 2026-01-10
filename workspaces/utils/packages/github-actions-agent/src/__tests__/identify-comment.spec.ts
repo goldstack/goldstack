@@ -1,5 +1,5 @@
 /**
- * @jest-environment jsdom
+ * Identify Comment Tests
  */
 import { GitHubActionsAgent } from '../githubActionsAgent';
 

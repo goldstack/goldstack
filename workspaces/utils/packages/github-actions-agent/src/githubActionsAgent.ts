@@ -90,27 +90,31 @@ export class GitHubActionsAgent {
       isPrComment = true;
       prNumber = String(issueNumber);
     } else {
-      // It's an issue comment - check for linked issue in PR body
-      const prData = await getPrData(gh, this.owner, this.repo, issueNumber);
+      // It's an issue comment - check the issue body for linked PR
+      try {
+        const issueData = await getIssueData(gh, this.owner, this.repo, issueNumber);
 
-      // Look for "closes #", "fixes #", "resolves #" patterns
-      const closesMatch = prData.body.match(/closes\s+#(\d+)/i);
-      const fixesMatch = prData.body.match(/fixes\s+#(\d+)/i);
-      const resolvesMatch = prData.body.match(/resolves\s+#(\d+)/i);
+        // Look for "closes #", "fixes #", "resolves #" patterns in issue body
+        const closesMatch = issueData.body.match(/closes\s+#(\d+)/i);
+        const fixesMatch = issueData.body.match(/fixes\s+#(\d+)/i);
+        const resolvesMatch = issueData.body.match(/resolves\s+#(\d+)/i);
 
-      if (closesMatch) {
-        prNumber = closesMatch[1];
-      } else if (fixesMatch) {
-        prNumber = fixesMatch[1];
-      } else if (resolvesMatch) {
-        prNumber = resolvesMatch[1];
-      } else {
-        // Check for existing PR with expected branch
-        const branchName = `kilo-issue-${issueNumber}`;
-        const existingPr = await findPrByBranch(gh, this.owner, this.repo, branchName);
-        if (existingPr) {
-          prNumber = existingPr;
+        if (closesMatch) {
+          prNumber = closesMatch[1];
+        } else if (fixesMatch) {
+          prNumber = fixesMatch[1];
+        } else if (resolvesMatch) {
+          prNumber = resolvesMatch[1];
+        } else {
+          // Check for existing PR with expected branch
+          const branchName = `kilo-issue-${issueNumber}`;
+          const existingPr = await findPrByBranch(gh, this.owner, this.repo, branchName);
+          if (existingPr) {
+            prNumber = existingPr;
+          }
         }
+      } catch {
+        // Issue might not exist or be accessible, continue with empty prNumber
       }
     }
 

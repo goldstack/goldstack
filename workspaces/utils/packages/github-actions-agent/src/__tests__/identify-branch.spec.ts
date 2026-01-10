@@ -1,5 +1,5 @@
 /**
- * @jest-environment jsdom
+ * Identify Branch Tests
  */
 import { GitHubActionsAgent } from '../githubActionsAgent';
 
