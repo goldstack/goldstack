@@ -322,16 +322,19 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
     const { task, auto = true, timeout = 2000, model } = options;
 
     // Set environment variables
-    process.env.KILO_PROVIDER = 'kilocode';
-    process.env.KILO_PROVIDER_TYPE = 'kilocode';
-    process.env.KILOCODE_API_KEY = this.kiloApiKey;
-    process.env.KILOCODE_TOKEN = this.kiloApiKey;
-    process.env.GITHUB_TOKEN = this.token;
-    process.env.KILO_TELEMETRY_DEBUG = 'false';
+    const kiloEnv = {
+      ...process.env,
+      KILO_PROVIDER: 'kilocode',
+      KILO_PROVIDER_TYPE: 'kilocode',
+      KILOCODE_API_KEY: this.kiloApiKey,
+      KILOCODE_TOKEN: this.kiloApiKey,
+      GITHUB_TOKEN: this.token,
+      KILO_TELEMETRY_DEBUG: 'false',
+      TASK: task,
+    };
     if (model) {
-      process.env.KILOCODE_MODEL = model;
+      kiloEnv.KILOCODE_MODEL = model;
     }
-    process.env.TASK = task;
 
     // Build the command
     const args = ['--auto'];
