@@ -1,6 +1,6 @@
 import { wrapCli } from '@goldstack/utils-cli';
 import yargs from 'yargs';
-import { GitHubActionsAgent } from './githubActionsAgent.js';
+import { GitHubActionsAgent } from './githubActionsAgent';
 
 // Cast yargs to any to avoid type issues with demandCommand
 const yargsAny = yargs as any;
