@@ -41,7 +41,8 @@ jobs:
       - name: Identify Issue and PR Numbers
         id: identifiers
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
         run: |
           NUM=${{ github.event.issue.number }}
           RESULT=$(gha_agent identify-comment --comment "${{ github.event.comment.body }}" --issue-number "$NUM")
@@ -51,7 +52,8 @@ jobs:
       - name: Identify Branch
         id: branch
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
         run: |
           ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
           PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
@@ -60,7 +62,8 @@ jobs:
 
       - name: Checkout working branch
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
         run: |
           BRANCH="${{ steps.branch.outputs.name }}"
           PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
@@ -91,7 +94,8 @@ jobs:
       - name: Extract prompt
         id: ctx
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
         run: |
           ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
           PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
@@ -109,12 +113,11 @@ jobs:
           KILO_PROVIDER: kilocode
           KILO_PROVIDER_TYPE: kilocode
           KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
-          KILOCODE_TOKEN: ${{ secrets.KILO_API_KEY }} 
+          KILOCODE_TOKEN: ${{ secrets.KILO_API_KEY }}
           # KILOCODE_MODEL: x-ai/grok-code-fast-1
           KILOCODE_MODEL: minimax/minimax-m2.1:free
           KILO_TELEMETRY_DEBUG: false
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           TASK=$(cat <<'EOF' | tr -d '\n'
           ${{ steps.ctx.outputs.task }}
@@ -125,7 +128,8 @@ jobs:
       - name: Fix PR body newlines
         if: steps.identifiers.outputs.pr_number != ''
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
           PR_NUMBER: ${{ steps.identifiers.outputs.pr_number }}
         run: gha_agent fix-pr-body --pr-number "$PR_NUMBER"
 
@@ -133,10 +137,11 @@ jobs:
         id: create_pr
         if: steps.identifiers.outputs.pr_number == ''
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
         run: |
           ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
           BRANCH_NAME=${{ steps.branch.outputs.name }}
-          
+
           RESULT=$(gha_agent create-pr --issue-number "$ISSUE_NUMBER" --branch-name "$BRANCH_NAME")
           echo "pr_number=$(echo "$RESULT" | jq -r '.prNumber // ""')" >> $GITHUB_OUTPUT
