@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@goldstack/utils-cli": "0.3.27",
-    "yargs": "^17.7.2"
+    "yargs": "^17"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.22",
