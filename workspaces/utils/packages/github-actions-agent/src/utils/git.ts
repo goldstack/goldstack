@@ -77,11 +77,7 @@ export function branchExistsRemote(branchName: string): boolean {
  */
 export function getCommitCount(branchName: string, baseBranch: string): number {
   try {
-    const count = gitExec([
-      'rev-list',
-      '--count',
-      `HEAD ^origin/${baseBranch}`,
-    ]).trim();
+    const count = gitExec(['rev-list', '--count', `HEAD ^origin/${baseBranch}`]).trim();
     return parseInt(count, 10);
   } catch {
     return 0;

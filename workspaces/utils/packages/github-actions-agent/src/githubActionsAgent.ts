@@ -26,7 +26,7 @@ import {
 } from './utils/git';
 import {
   createDraftPr,
-  createOctokit,
+  createGhToken,
   findPrByBranch,
   getIssueComments,
   getIssueData,
@@ -80,18 +80,18 @@ export class GitHubActionsAgent {
    * Identify issue and PR numbers from a comment event.
    */
   async identifyComment(options: IdentifyCommentOptions): Promise<IdentifyCommentResult> {
-    const octokit = await createOctokit(this.token);
+    const gh = createGhToken(this.token);
     const issueNumber = options.issueNumber;
     let prNumber = '';
     let isPrComment = false;
 
     // Check if it's a PR comment
-    if (await isPr(octokit, this.owner, this.repo, issueNumber)) {
+    if (await isPr(gh, this.owner, this.repo, issueNumber)) {
       isPrComment = true;
       prNumber = String(issueNumber);
     } else {
       // It's an issue comment - check for linked issue in PR body
-      const prData = await getPrData(octokit, this.owner, this.repo, issueNumber);
+      const prData = await getPrData(gh, this.owner, this.repo, issueNumber);
 
       // Look for "closes #", "fixes #", "resolves #" patterns
       const closesMatch = prData.body.match(/closes\s+#(\d+)/i);
@@ -107,7 +107,7 @@ export class GitHubActionsAgent {
       } else {
         // Check for existing PR with expected branch
         const branchName = `kilo-issue-${issueNumber}`;
-        const existingPr = await findPrByBranch(octokit, this.owner, this.repo, branchName);
+        const existingPr = await findPrByBranch(gh, this.owner, this.repo, branchName);
         if (existingPr) {
           prNumber = existingPr;
         }
@@ -125,12 +125,12 @@ export class GitHubActionsAgent {
    * Identify the working branch based on issue/PR context.
    */
   async identifyBranch(options: IdentifyBranchOptions): Promise<IdentifyBranchResult> {
-    const octokit = await createOctokit(this.token);
+    const gh = createGhToken(this.token);
     const { issueNumber, prNumber } = options;
 
     if (prNumber) {
       // Use PR's head branch name
-      const prData = await getPrData(octokit, this.owner, this.repo, prNumber);
+      const prData = await getPrData(gh, this.owner, this.repo, prNumber);
       return {
         branchName: prData.headRefName,
       };
@@ -168,7 +168,7 @@ export class GitHubActionsAgent {
    * Build comprehensive task context from issue/PR and comments.
    */
   async buildContext(options: BuildContextOptions): Promise<BuildContextResult> {
-    const octokit = await createOctokit(this.token);
+    const gh = createGhToken(this.token);
     const { comment, issueNumber, prNumber, agentsFile = 'AGENTS_GHA.md' } = options;
 
     // Strip /kilo or /kilocode prefix
@@ -181,12 +181,12 @@ export class GitHubActionsAgent {
     let headRefName = `kilo-issue-${issueNumber}`; // default branch name
 
     if (prNumber) {
-      const prData = await getPrData(octokit, this.owner, this.repo, prNumber);
+      const prData = await getPrData(gh, this.owner, this.repo, prNumber);
       title = prData.title;
       body = prData.body;
       headRefName = prData.headRefName;
     } else {
-      const issueData = await getIssueData(octokit, this.owner, this.repo, issueNumber);
+      const issueData = await getIssueData(gh, this.owner, this.repo, issueNumber);
       title = issueData.title;
       body = issueData.body;
     }
@@ -196,23 +196,17 @@ export class GitHubActionsAgent {
     // Collect comments
     let issueComments = '';
     if (issueNumber && !prNumber) {
-      issueComments = await getIssueComments(octokit, this.owner, this.repo, issueNumber);
+      issueComments = await getIssueComments(gh, this.owner, this.repo, issueNumber);
     }
 
     let prComments = '';
     if (prNumber) {
-      prComments = await getPrComments(octokit, this.owner, this.repo, prNumber);
+      prComments = await getPrComments(gh, this.owner, this.repo, prNumber);
     }
 
     let reviewComments = '';
     if (prNumber) {
-      reviewComments = await getPrReviewComments(
-        octokit,
-        this.owner,
-        this.repo,
-        prNumber,
-        currentSha,
-      );
+      reviewComments = await getPrReviewComments(gh, this.owner, this.repo, prNumber, currentSha);
     }
 
     // Read project instructions
@@ -253,7 +247,7 @@ export class GitHubActionsAgent {
    * Post a "started working" comment to issue or PR.
    */
   async postStartComment(options: PostStartCommentOptions): Promise<void> {
-    const octokit = await createOctokit(this.token);
+    const gh = createGhToken(this.token);
     const { issueNumber, prNumber, branchName, runUrl } = options;
 
     const comment = `🚀 Kilo Code has started working on this task.
@@ -263,22 +257,22 @@ export class GitHubActionsAgent {
 ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
 - **Run**: [View workflow](${runUrl})`;
 
-    await ghCreateComment(octokit, this.owner, this.repo, issueNumber, comment, Boolean(prNumber));
+    await ghCreateComment(gh, this.owner, this.repo, issueNumber, comment, Boolean(prNumber));
   }
 
   /**
    * Fix literal \\n strings in PR body to actual newlines.
    */
   async fixPrBody(options: FixPrBodyOptions): Promise<void> {
-    const octokit = await createOctokit(this.token);
+    const gh = createGhToken(this.token);
     const { prNumber } = options;
 
-    const prBody = await getPrBody(octokit, this.owner, this.repo, prNumber);
+    const prBody = await getPrBody(gh, this.owner, this.repo, prNumber);
 
     // Check if body contains literal \n
     if (prBody.includes('\\n')) {
       const fixedBody = prBody.replace(/\\n/g, '\n');
-      await updatePrBody(octokit, this.owner, this.repo, prNumber, fixedBody);
+      await updatePrBody(gh, this.owner, this.repo, prNumber, fixedBody);
     }
   }
 
@@ -286,7 +280,7 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
    * Create a draft PR from the current branch.
    */
   async createPr(options: CreatePrOptions): Promise<CreatePrResult> {
-    const octokit = await createOctokit(this.token);
+    const gh = createGhToken(this.token);
     const { issueNumber, branchName } = options;
 
     // Push the branch first
@@ -301,10 +295,10 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
     }
 
     // Get issue title for PR title
-    const issueData = await getIssueData(octokit, this.owner, this.repo, issueNumber);
+    const issueData = await getIssueData(gh, this.owner, this.repo, issueNumber);
 
     const newPrNumber = await createDraftPr(
-      octokit,
+      gh,
       this.owner,
       this.repo,
       `Fix: ${issueData.title}`,

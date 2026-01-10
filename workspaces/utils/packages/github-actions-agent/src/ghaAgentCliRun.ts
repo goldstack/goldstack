@@ -10,23 +10,19 @@ export const run = async (): Promise<void> => {
     const argv = await yargsAny
       .demandCommand(1)
       .usage('Usage: $0 <command> [options]')
-      .command(
-        'identify-comment',
-        'Identify issue and PR numbers from a comment',
-        (yargs) => {
-          return yargs
-            .option('comment', {
-              type: 'string',
-              describe: 'The full comment body',
-              demandOption: true,
-            })
-            .option('issue-number', {
-              type: 'number',
-              describe: 'The issue/PR number from the event',
-              demandOption: true,
-            });
-        },
-      )
+      .command('identify-comment', 'Identify issue and PR numbers from a comment', (yargs) => {
+        return yargs
+          .option('comment', {
+            type: 'string',
+            describe: 'The full comment body',
+            demandOption: true,
+          })
+          .option('issue-number', {
+            type: 'number',
+            describe: 'The issue/PR number from the event',
+            demandOption: true,
+          });
+      })
       .command(
         'identify-branch',
         'Identify the working branch based on issue/PR context',
@@ -44,23 +40,19 @@ export const run = async (): Promise<void> => {
             });
         },
       )
-      .command(
-        'checkout-branch',
-        'Checkout the appropriate working branch',
-        (yargs) => {
-          return yargs
-            .option('branch-name', {
-              type: 'string',
-              describe: 'Branch name to checkout',
-              demandOption: true,
-            })
-            .option('pr-number', {
-              type: 'number',
-              describe: 'PR number (optional)',
-              demandOption: false,
-            });
-        },
-      )
+      .command('checkout-branch', 'Checkout the appropriate working branch', (yargs) => {
+        return yargs
+          .option('branch-name', {
+            type: 'string',
+            describe: 'Branch name to checkout',
+            demandOption: true,
+          })
+          .option('pr-number', {
+            type: 'number',
+            describe: 'PR number (optional)',
+            demandOption: false,
+          });
+      })
       .command(
         'build-context',
         'Build comprehensive task context from issue/PR and comments',
@@ -89,33 +81,29 @@ export const run = async (): Promise<void> => {
             });
         },
       )
-      .command(
-        'post-start',
-        'Post a started working comment to issue or PR',
-        (yargs) => {
-          return yargs
-            .option('issue-number', {
-              type: 'number',
-              describe: 'Issue number',
-              demandOption: true,
-            })
-            .option('pr-number', {
-              type: 'number',
-              describe: 'PR number (optional)',
-              demandOption: false,
-            })
-            .option('branch-name', {
-              type: 'string',
-              describe: 'Branch name',
-              demandOption: true,
-            })
-            .option('run-url', {
-              type: 'string',
-              describe: 'Workflow run URL',
-              demandOption: true,
-            });
-        },
-      )
+      .command('post-start', 'Post a started working comment to issue or PR', (yargs) => {
+        return yargs
+          .option('issue-number', {
+            type: 'number',
+            describe: 'Issue number',
+            demandOption: true,
+          })
+          .option('pr-number', {
+            type: 'number',
+            describe: 'PR number (optional)',
+            demandOption: false,
+          })
+          .option('branch-name', {
+            type: 'string',
+            describe: 'Branch name',
+            demandOption: true,
+          })
+          .option('run-url', {
+            type: 'string',
+            describe: 'Workflow run URL',
+            demandOption: true,
+          });
+      })
       .command(
         'fix-pr-body',
         'Fix literal \\\\n strings in PR body to actual newlines',
@@ -127,81 +115,69 @@ export const run = async (): Promise<void> => {
           });
         },
       )
-      .command(
-        'create-pr',
-        'Create a draft PR from the current branch',
-        (yargs) => {
-          return yargs
-            .option('issue-number', {
-              type: 'number',
-              describe: 'Issue number',
-              demandOption: true,
-            })
-            .option('branch-name', {
-              type: 'string',
-              describe: 'Branch name',
-              demandOption: true,
-            });
-        },
-      )
-      .command(
-        'run-kilocode',
-        'Execute the Kilo Code agent with task context',
-        (yargs) => {
-          return yargs
-            .option('task', {
-              type: 'string',
-              describe: 'Task context',
-              demandOption: true,
-            })
-            .option('auto', {
-              type: 'boolean',
-              describe: 'Run in auto mode',
-              demandOption: false,
-              default: true,
-            })
-            .option('timeout', {
-              type: 'number',
-              describe: 'Timeout in seconds',
-              demandOption: false,
-              default: 2000,
-            })
-            .option('model', {
-              type: 'string',
-              describe: 'LLM model to use',
-              demandOption: false,
-            });
-        },
-      )
-      .command(
-        'run-all',
-        'Execute the complete workflow as a single command',
-        (yargs) => {
-          return yargs
-            .option('comment', {
-              type: 'string',
-              describe: 'The command comment',
-              demandOption: true,
-            })
-            .option('issue-number', {
-              type: 'number',
-              describe: 'Issue number from event',
-              demandOption: true,
-            })
-            .option('auto', {
-              type: 'boolean',
-              describe: 'Run in auto mode',
-              demandOption: false,
-              default: true,
-            })
-            .option('timeout', {
-              type: 'number',
-              describe: 'Timeout in seconds',
-              demandOption: false,
-              default: 2000,
-            });
-        },
-      )
+      .command('create-pr', 'Create a draft PR from the current branch', (yargs) => {
+        return yargs
+          .option('issue-number', {
+            type: 'number',
+            describe: 'Issue number',
+            demandOption: true,
+          })
+          .option('branch-name', {
+            type: 'string',
+            describe: 'Branch name',
+            demandOption: true,
+          });
+      })
+      .command('run-kilocode', 'Execute the Kilo Code agent with task context', (yargs) => {
+        return yargs
+          .option('task', {
+            type: 'string',
+            describe: 'Task context',
+            demandOption: true,
+          })
+          .option('auto', {
+            type: 'boolean',
+            describe: 'Run in auto mode',
+            demandOption: false,
+            default: true,
+          })
+          .option('timeout', {
+            type: 'number',
+            describe: 'Timeout in seconds',
+            demandOption: false,
+            default: 2000,
+          })
+          .option('model', {
+            type: 'string',
+            describe: 'LLM model to use',
+            demandOption: false,
+          });
+      })
+      .command('run-all', 'Execute the complete workflow as a single command', (yargs) => {
+        return yargs
+          .option('comment', {
+            type: 'string',
+            describe: 'The command comment',
+            demandOption: true,
+          })
+          .option('issue-number', {
+            type: 'number',
+            describe: 'Issue number from event',
+            demandOption: true,
+          })
+          .option('auto', {
+            type: 'boolean',
+            describe: 'Run in auto mode',
+            demandOption: false,
+            default: true,
+          })
+          .option('timeout', {
+            type: 'number',
+            describe: 'Timeout in seconds',
+            demandOption: false,
+            default: 2000,
+          });
+      })
       .parse();
 
     // Get environment variables
@@ -209,9 +185,7 @@ export const run = async (): Promise<void> => {
     const kiloApiKey = process.env.KILOCODE_API_KEY;
 
     if (!token || !kiloApiKey) {
-      throw new Error(
-        'GITHUB_TOKEN and KILOCODE_API_KEY environment variables are required'
-      );
+      throw new Error('GITHUB_TOKEN and KILOCODE_API_KEY environment variables are required');
     }
 
     const agent = new GitHubActionsAgent({ token, kiloApiKey });
