@@ -45,7 +45,7 @@
     "@goldstack/utils-package": "0.4.35",
     "@goldstack/utils-sh": "0.5.33",
     "json-stable-stringify": "^1.0.1",
-    "yargs": "^17.5.1"
+    "yargs": "^17"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.22",

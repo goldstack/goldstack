@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "./src/**/*"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
+    "esModuleInterop": true
+  },
+  "references": [
+    {
+      "path": "../utils-cli"
+    },
+    {
+      "path": "../utils-git"
+    }
+  ]
+}

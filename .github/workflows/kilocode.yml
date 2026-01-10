@@ -25,13 +25,13 @@ jobs:
 
       - uses: ./.github/actions/goldstack-setup
 
-      - run: npm install -g @kilocode/cli
-
-      - name: Configure Kilo Code
+      - name: Setup gha-agent alias
         run: |
-          mkdir -p ~/.kilocode/cli
-          jq '.providers[0].kilocodeToken = "${{ secrets.KILO_API_KEY }}"' .github/workflows/kilocode-config.json > ~/.kilocode/cli/config.json
-
+          mkdir -p ~/bin
+          echo '#!/bin/bash' > ~/bin/gha_agent
+          echo 'exec yarn workspace @goldstack/utils-gha-agent cli "$@"' >> ~/bin/gha_agent
+          chmod +x ~/bin/gha_agent
+          echo "$HOME/bin" >> $GITHUB_PATH
 
       - name: Configure git
         run: |
@@ -41,72 +41,33 @@ jobs:
       - name: Identify Issue and PR Numbers
         id: identifiers
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
         run: |
           NUM=${{ github.event.issue.number }}
-          if gh pr view "$NUM" >/dev/null 2>&1; then
-            # It's a PR comment
-            PR_NUMBER=$NUM
-            # Check if PR closes an issue
-            PR_DATA=$(gh pr view "$NUM")
-            BODY=$(echo "$PR_DATA" | sed -n '/^body:/,/^[a-zA-Z]/p' | sed '1d;$d' | tr -d '\r' || echo "")
-            ISSUE_NUMBER=$(echo "$BODY" | grep -oP 'closes #\K\d+' | head -1 || echo "")
-            if [ -z "$ISSUE_NUMBER" ]; then
-              ISSUE_NUMBER=$(echo "$BODY" | grep -oP 'fixes #\K\d+' | head -1 || echo "")
-            fi
-            if [ -z "$ISSUE_NUMBER" ]; then
-              ISSUE_NUMBER=$(echo "$BODY" | grep -oP 'resolves #\K\d+' | head -1 || echo "")
-            fi
-          else
-            # It's an issue comment
-            ISSUE_NUMBER=$NUM
-            # Check for existing PR with the expected branch
-            BRANCH="kilo-issue-$ISSUE_NUMBER"
-            EXISTING_PR=$(gh pr list --head "$BRANCH" --state open 2>/dev/null | grep -oP '^\s*\d+' | head -1 || echo "")
-            if [ -n "$EXISTING_PR" ]; then
-              PR_NUMBER=$EXISTING_PR
-            else
-              PR_NUMBER=""
-            fi
-          fi
-          echo "issue_number=$ISSUE_NUMBER" >> $GITHUB_OUTPUT
-          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+          RESULT=$(gha_agent identify-comment --comment "${{ github.event.comment.body }}" --issue-number "$NUM")
+          echo "issue_number=$(echo "$RESULT" | jq -r '.issueNumber // ""')" >> $GITHUB_OUTPUT
+          echo "pr_number=$(echo "$RESULT" | jq -r '.prNumber // ""')" >> $GITHUB_OUTPUT
 
       - name: Identify Branch
         id: branch
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
         run: |
           ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
           PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
-          if [ -n "$PR_NUMBER" ]; then
-            BRANCH_NAME=$(gh pr view "$PR_NUMBER" 2>/dev/null | grep -oP '^headRefName:\s*\K.*' || echo "kilo-issue-$ISSUE_NUMBER")
-          elif [ -n "$ISSUE_NUMBER" ]; then
-            BRANCH_NAME="kilo-issue-$ISSUE_NUMBER"
-          else
-            echo "No valid number found"
-            exit 1
-          fi
-          echo "name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          RESULT=$(gha_agent identify-branch --issue-number "$ISSUE_NUMBER" ${PR_NUMBER:+"--pr-number" "$PR_NUMBER"})
+          echo "name=$(echo "$RESULT" | jq -r '.branchName // ""')" >> $GITHUB_OUTPUT
 
       - name: Checkout working branch
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
         run: |
           BRANCH="${{ steps.branch.outputs.name }}"
-          PR_NUMBER="${{ steps.identifiers.outputs.pr_number }}"
-          git fetch origin
-          if [ -n "$PR_NUMBER" ]; then
-            git checkout "$BRANCH"
-            git pull origin "$BRANCH"
-          elif git ls-remote --exit-code --heads origin "$BRANCH"; then
-            git checkout "$BRANCH"
-            git pull origin "$BRANCH"
-          else
-            git checkout master
-            git pull origin master
-            git checkout -b "$BRANCH"
-          fi
+          PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
+          gha_agent checkout-branch --branch-name "$BRANCH" ${PR_NUMBER:+"--pr-number" "$PR_NUMBER"}
 
       - name: Post start comment
         if: always()
@@ -133,111 +94,54 @@ jobs:
       - name: Extract prompt
         id: ctx
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
-          COMMENT: ${{ github.event.comment.body }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
         run: |
-           PROMPT=$(echo "$COMMENT" | sed -E 's/^.*\/kilo(code)?[[:space:]]*//')
-           ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
-           PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
-           if [ -n "$PR_NUMBER" ]; then
-             DATA=$(gh pr view "$PR_NUMBER" 2>/dev/null)
-             PREFIX="PR #$PR_NUMBER"
-           elif [ -n "$ISSUE_NUMBER" ]; then
-             DATA=$(gh issue view "$ISSUE_NUMBER" 2>/dev/null)
-             PREFIX="Issue #$ISSUE_NUMBER"
-           else
-             echo "No valid issue or PR number"
-             exit 1
-           fi
-           TITLE=$(echo "$DATA" | grep -oP '^title:\s*\K.*' || echo "")
-           BODY=$(echo "$DATA" | sed -n '/^body:/,/^[a-zA-Z]/p' | sed '1d;$d' | tr -d '\r' || echo "")
+          ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
+          PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
+          RESULT=$(gha_agent build-context \
+            --comment "${{ github.event.comment.body }}" \
+            --issue-number "$ISSUE_NUMBER" \
+            ${PR_NUMBER:+"--pr-number" "$PR_NUMBER"})
 
-           CURRENT_SHA=$(git rev-parse HEAD)
-
-           ISSUE_COMMENTS=""
-           if [ -n "$ISSUE_NUMBER" ] && [ -z "$PR_NUMBER" ]; then
-             ISSUE_COMMENTS=$(gh issue comments "$ISSUE_NUMBER" 2>/dev/null || echo "")
-           fi
-
-           PR_COMMENTS=""
-           if [ -n "$PR_NUMBER" ]; then
-             PR_COMMENTS=$(gh pr comments "$PR_NUMBER" 2>/dev/null || echo "")
-           fi
-
-           REVIEW_COMMENTS=""
-           if [ -n "$PR_NUMBER" ]; then
-             REVIEW_COMMENTS=$(gh pr review-comments "$PR_NUMBER" 2>/dev/null | grep -A 100 "$CURRENT_SHA" | head -50 || echo "")
-           fi
-
-           AGENTS=""
-           [ -f AGENTS_GHA.md ] && AGENTS=$(cat AGENTS_GHA.md)
-
-           TASK="$PREFIX: $TITLE"$'\n\n'"$BODY"$'\n\n'
-           [ -n "$ISSUE_COMMENTS" ] && TASK+="ISSUE COMMENTS:\n$ISSUE_COMMENTS\n\n"
-           [ -n "$PR_COMMENTS" ] && TASK+="PR COMMENTS:\n$PR_COMMENTS\n\n"
-           [ -n "$REVIEW_COMMENTS" ] && TASK+="CODE REVIEW COMMENTS (on current commit):\n$REVIEW_COMMENTS\n\n"
-           TASK+="TASK: $PROMPT"$'\n\n'
-           [ -n "$ISSUE_NUMBER" ] && TASK+="ISSUE_NUMBER: $ISSUE_NUMBER"$'\n'
-           TASK+="BRANCH_NAME: ${{ steps.branch.outputs.name }}"$'\n'
-           [ -n "$PR_NUMBER" ] && TASK+="PR_NUMBER: $PR_NUMBER"$'\n\n'
-           [ -n "$AGENTS" ] && TASK+="PROJECT INSTRUCTIONS:"$'\n'"$AGENTS"
-
-           echo "branch=${{ steps.branch.outputs.name }}" >> "$GITHUB_OUTPUT"
-           echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
-           { echo 'task<<EOF'; printf '%s' "$TASK"; echo; echo 'EOF'; } >> "$GITHUB_OUTPUT"
+          echo "branch=$(echo "$RESULT" | jq -r '.branch // ""')" >> "$GITHUB_OUTPUT"
+          echo "pr_number=$(echo "$RESULT" | jq -r '.prNumber // ""')" >> "$GITHUB_OUTPUT"
+          { echo 'task<<EOF'; echo "$RESULT" | jq -r '.task // ""'; echo; echo 'EOF'; } >> "$GITHUB_OUTPUT"
 
       - name: Run Kilo Code
         env:
           KILO_PROVIDER: kilocode
           KILO_PROVIDER_TYPE: kilocode
           KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
-          KILOCODE_TOKEN: ${{ secrets.KILO_API_KEY }} 
-          # KILOCODE_MODEL: x-ai/grok-code-fast-1
-          KILOCODE_MODEL: minimax/minimax-m2.1:free
+          KILOCODE_TOKEN: ${{ secrets.KILO_API_KEY }}
+          KILOCODE_MODEL: x-ai/grok-code-fast-1
+          # KILOCODE_MODEL: minimax/minimax-m2.1:free
           KILO_TELEMETRY_DEBUG: false
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
-          TASK: ${{ steps.ctx.outputs.task }}
-        run: kilocode --auto --timeout 2000 "$TASK" 
+        run: |
+          TASK=$(cat <<'EOF' | tr -d '\n'
+          ${{ steps.ctx.outputs.task }}
+          EOF
+          )
+          gha_agent run-kilocode --auto --timeout 2000 --task "$TASK"
 
       - name: Fix PR body newlines
         if: steps.identifiers.outputs.pr_number != ''
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
           PR_NUMBER: ${{ steps.identifiers.outputs.pr_number }}
-        run: |
-          # Get the current PR body
-          PR_BODY=$(gh pr view "$PR_NUMBER" --json body --jq '.body')
-          
-          # Check if the body contains literal \n (backslash-n) instead of actual newlines
-          if echo "$PR_BODY" | grep -q '\\n'; then
-            # Convert literal \n to actual newlines
-            FIXED_BODY=$(echo "$PR_BODY" | sed 's/\\n/\n/g')
-            # Update the PR body
-            gh pr edit "$PR_NUMBER" --body "$FIXED_BODY"
-          fi
+        run: gha_agent fix-pr-body --pr-number "$PR_NUMBER"
 
       - name: Create PR if needed
         id: create_pr
         if: steps.identifiers.outputs.pr_number == ''
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
         run: |
           ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
           BRANCH_NAME=${{ steps.branch.outputs.name }}
-          
-          # Push the branch first if it has commits
-          git push origin "$BRANCH_NAME" || true
-          
-          # Check if there are any commits on the branch
-          COMMITS=$(git rev-list --count HEAD ^origin/master 2>/dev/null || echo "0")
-          if [ "$COMMITS" = "0" ]; then
-            echo "No commits on branch, skipping PR creation"
-            echo "pr_number=" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-          
-          DATA=$(gh issue view "$ISSUE_NUMBER" 2>/dev/null)
-          TITLE=$(echo "$DATA" | grep -oP '^title:\s*\K.*' || echo "")
-          PR_NUMBER=$(gh pr create --draft --title "Fix: $TITLE" --body "Closes #$ISSUE_NUMBER" --head "$BRANCH_NAME" 2>/dev/null | grep -oP 'https://github.com/[^/]+/[^/]+/pull/\K\d+' || echo "")
-          echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+
+          RESULT=$(gha_agent create-pr --issue-number "$ISSUE_NUMBER" --branch-name "$BRANCH_NAME")
+          echo "pr_number=$(echo "$RESULT" | jq -r '.prNumber // ""')" >> $GITHUB_OUTPUT

@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "ts-json-schema-generator": "^2.4.0",
-    "yargs": "^17.5.1"
+    "yargs": "^17"
   },
   "devDependencies": {
     "@goldstack/utils-git": "0.2.22",
