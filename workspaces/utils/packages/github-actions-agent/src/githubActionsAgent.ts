@@ -322,7 +322,7 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
     const { task, auto = true, timeout = 2000, model } = options;
 
     // Set environment variables
-    const kiloEnv = {
+    const kiloEnv: Record<string, string | undefined> = {
       ...process.env,
       KILO_PROVIDER: 'kilocode',
       KILO_PROVIDER_TYPE: 'kilocode',
