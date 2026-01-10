@@ -31,7 +31,7 @@
     "build": "yarn clean && yarn compile",
     "build:watch": "yarn clean && yarn compile-watch",
     "clean": "rimraf ./dist",
-    "cli": "ts-node --swc src/ghaAgentCliRun.ts",
+    "cli": "ts-node --project tsconfig.json src/ghaAgentCliRun.ts",
     "cli:bin": "node ./bin/gha-agent",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
