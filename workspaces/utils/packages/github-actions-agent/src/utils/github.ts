@@ -376,8 +376,9 @@ export async function updatePrBody(
   prNumber: number,
   body: string,
 ): Promise<void> {
+  const escapedBody = JSON.stringify(body).slice(1, -1);
   const result = runGhCommand(
-    `pr edit ${prNumber} --repo ${owner}/${repo} --body "${body.replace(/"/g, '\\"')}"`,
+    `pr edit ${prNumber} --repo ${owner}/${repo} --body "${escapedBody}"`,
     token.token,
   );
   if (!result.success) {
