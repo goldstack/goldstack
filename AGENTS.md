@@ -8,6 +8,11 @@ This repository uses:
 - Jests for testing
 - Windows PowerShell for running commands
 
+
+## DO NOT
+
+- Run @goldstack/template-management-cli cli without being prompted to do so
+
 ## Common Commands
 
 The following commands should usually be executed on the project root:
