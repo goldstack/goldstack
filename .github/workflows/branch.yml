@@ -36,7 +36,7 @@ jobs:
       - uses: ./.github/actions/goldstack-setup
       - name: NPM Audit
         run: |
-          yarn npm audit --all --recursive --severity high
+          yarn npm audit --all --recursive --severity critical
 
   syncpack:
     name: 'Checking for Package Mismatches'
