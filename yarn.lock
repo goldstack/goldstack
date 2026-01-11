@@ -4242,7 +4242,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs-bootstrap@workspace:workspaces/templates/packages/app-nextjs-bootstrap"
   dependencies:
-    "@goldstack/template-nextjs": "npm:0.5.83"
+    "@goldstack/template-nextjs": "npm:0.5.84"
     "@goldstack/utils-sh": "npm:0.5.33"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
@@ -4280,7 +4280,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs-tailwind@workspace:workspaces/templates/packages/app-nextjs-tailwind"
   dependencies:
-    "@goldstack/template-nextjs": "npm:0.5.83"
+    "@goldstack/template-nextjs": "npm:0.5.84"
     "@goldstack/utils-sh": "npm:0.5.33"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
@@ -4318,7 +4318,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs@workspace:workspaces/templates/packages/app-nextjs"
   dependencies:
-    "@goldstack/template-nextjs": "npm:0.5.83"
+    "@goldstack/template-nextjs": "npm:0.5.84"
     "@goldstack/utils-sh": "npm:0.5.33"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
@@ -4378,7 +4378,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/cdn@workspace:workspaces/docs/packages/cdn"
   dependencies:
-    "@goldstack/template-static-website-aws": "npm:0.5.71"
+    "@goldstack/template-static-website-aws": "npm:0.5.72"
     "@goldstack/utils-sh": "npm:0.5.33"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
@@ -4420,7 +4420,7 @@ __metadata:
   dependencies:
     "@fullstory/browser": "npm:^1.4.5"
     "@goldstack/markdown-docs": "npm:0.1.0"
-    "@goldstack/template-nextjs": "npm:0.5.83"
+    "@goldstack/template-nextjs": "npm:0.5.84"
     "@goldstack/toc-generator": "npm:0.1.0"
     "@goldstack/utils-sh": "npm:0.5.33"
     "@goldstack/utils-track": "npm:0.2.29"
@@ -4602,7 +4602,7 @@ __metadata:
     "@goldstack/project-config": "npm:0.1.0"
     "@goldstack/project-repository": "npm:0.1.0"
     "@goldstack/template-metadata": "npm:0.1.0"
-    "@goldstack/template-nextjs": "npm:0.5.83"
+    "@goldstack/template-nextjs": "npm:0.5.84"
     "@goldstack/utils-docs-cli": "npm:0.3.11"
     "@goldstack/utils-package": "npm:0.4.36"
     "@goldstack/utils-project": "npm:0.4.34"
@@ -4892,7 +4892,7 @@ __metadata:
   dependencies:
     "@aws-sdk/client-sso-oidc": "npm:^3.958.0"
     "@aws-sdk/client-sts": "npm:^3.958.0"
-    "@goldstack/template-nextjs": "npm:0.5.83"
+    "@goldstack/template-nextjs": "npm:0.5.84"
     "@goldstack/utils-sh": "npm:0.5.33"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
@@ -5195,8 +5195,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/server-side-rendering@workspace:workspaces/templates/packages/server-side-rendering"
   dependencies:
-    "@goldstack/template-ssr": "npm:0.3.88"
-    "@goldstack/template-ssr-cli": "npm:0.3.94"
+    "@goldstack/template-ssr": "npm:0.3.89"
+    "@goldstack/template-ssr-cli": "npm:0.3.95"
     "@goldstack/utils-aws-http-api-local": "npm:0.3.73"
     "@goldstack/utils-esbuild": "npm:0.5.22"
     "@jest-mock/express": "npm:^1.4.5"
@@ -5323,7 +5323,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/static-website-aws@workspace:workspaces/templates/packages/static-website-aws"
   dependencies:
-    "@goldstack/template-static-website-aws": "npm:0.5.71"
+    "@goldstack/template-static-website-aws": "npm:0.5.72"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
     "@types/gulp": "npm:^4.0.17"
@@ -5833,7 +5833,7 @@ __metadata:
     "@goldstack/template-repository": "npm:0.1.0"
     "@goldstack/template-repository-bucket": "npm:0.1.0"
     "@goldstack/template-s3": "npm:0.5.57"
-    "@goldstack/template-static-website-aws": "npm:0.5.71"
+    "@goldstack/template-static-website-aws": "npm:0.5.72"
     "@goldstack/utils-cli": "npm:0.3.27"
     "@goldstack/utils-config": "npm:0.4.34"
     "@goldstack/utils-git": "npm:0.2.22"
@@ -5876,14 +5876,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-nextjs@npm:0.5.83, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
+"@goldstack/template-nextjs@npm:0.5.84, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs"
   dependencies:
     "@aws-sdk/types": "npm:^3.957.0"
     "@goldstack/infra": "npm:0.4.34"
     "@goldstack/infra-aws": "npm:0.4.52"
-    "@goldstack/template-static-website-aws": "npm:0.5.71"
+    "@goldstack/template-static-website-aws": "npm:0.5.72"
     "@goldstack/utils-aws-cli": "npm:0.4.53"
     "@goldstack/utils-aws-lambda": "npm:0.3.64"
     "@goldstack/utils-cli": "npm:0.3.27"
@@ -6069,15 +6069,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr-cli@npm:0.3.94, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
+"@goldstack/template-ssr-cli@npm:0.3.95, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli"
   dependencies:
     "@goldstack/infra": "npm:0.4.34"
     "@goldstack/infra-aws": "npm:0.4.52"
-    "@goldstack/template-ssr": "npm:0.3.88"
-    "@goldstack/template-ssr-server": "npm:0.3.86"
-    "@goldstack/template-ssr-server-compile-bundle": "npm:0.3.83"
+    "@goldstack/template-ssr": "npm:0.3.89"
+    "@goldstack/template-ssr-server": "npm:0.3.87"
+    "@goldstack/template-ssr-server-compile-bundle": "npm:0.3.84"
     "@goldstack/utils-aws-lambda": "npm:0.3.64"
     "@goldstack/utils-cli": "npm:0.3.27"
     "@goldstack/utils-docker": "npm:0.4.35"
@@ -6107,7 +6107,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr-server-compile-bundle@npm:0.3.83, @goldstack/template-ssr-server-compile-bundle@workspace:workspaces/templates-lib/packages/template-ssr-server-compile-bundle":
+"@goldstack/template-ssr-server-compile-bundle@npm:0.3.84, @goldstack/template-ssr-server-compile-bundle@workspace:workspaces/templates-lib/packages/template-ssr-server-compile-bundle":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-server-compile-bundle@workspace:workspaces/templates-lib/packages/template-ssr-server-compile-bundle"
   dependencies:
@@ -6134,7 +6134,7 @@ __metadata:
     "@types/yargs": "npm:^17.0.33"
     esbuild: "npm:^0.25.6"
     jest: "npm:^30.2.0"
-    lambda-compression: "npm:0.2.26"
+    lambda-compression: "npm:0.2.27"
     react: "npm:^19"
     react-dom: "npm:^19"
     rimraf: "npm:^3.0.2"
@@ -6145,13 +6145,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr-server@npm:0.3.86, @goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server":
+"@goldstack/template-ssr-server@npm:0.3.87, @goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server"
   dependencies:
     "@goldstack/infra": "npm:0.4.34"
     "@goldstack/infra-aws": "npm:0.4.52"
-    "@goldstack/template-ssr-server-compile-bundle": "npm:0.3.83"
+    "@goldstack/template-ssr-server-compile-bundle": "npm:0.3.84"
     "@goldstack/utils-aws-lambda": "npm:0.3.64"
     "@goldstack/utils-docs-cli": "npm:0.3.11"
     "@goldstack/utils-esbuild": "npm:0.5.22"
@@ -6171,7 +6171,7 @@ __metadata:
     "@types/sha256": "npm:^0.2.2"
     "@types/yargs": "npm:^17.0.33"
     jest: "npm:^30.2.0"
-    lambda-compression: "npm:0.2.26"
+    lambda-compression: "npm:0.2.27"
     react: "npm:^19"
     react-dom: "npm:^19"
     rimraf: "npm:^3.0.2"
@@ -6182,13 +6182,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr@npm:0.3.88, @goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr":
+"@goldstack/template-ssr@npm:0.3.89, @goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr"
   dependencies:
     "@goldstack/infra": "npm:0.4.34"
     "@goldstack/infra-aws": "npm:0.4.52"
-    "@goldstack/template-ssr-server": "npm:0.3.86"
+    "@goldstack/template-ssr-server": "npm:0.3.87"
     "@goldstack/utils-aws-lambda": "npm:0.3.64"
     "@goldstack/utils-docs-cli": "npm:0.3.11"
     "@goldstack/utils-esbuild": "npm:0.5.22"
@@ -6216,7 +6216,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-static-website-aws@npm:0.5.71, @goldstack/template-static-website-aws@workspace:workspaces/templates-lib/packages/template-static-website-aws":
+"@goldstack/template-static-website-aws@npm:0.5.72, @goldstack/template-static-website-aws@workspace:workspaces/templates-lib/packages/template-static-website-aws":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-static-website-aws@workspace:workspaces/templates-lib/packages/template-static-website-aws"
   dependencies:
@@ -19488,7 +19488,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lambda-compression@npm:0.2.26, lambda-compression@workspace:workspaces/utils/packages/lambda-compression":
+"lambda-compression@npm:0.2.27, lambda-compression@workspace:workspaces/utils/packages/lambda-compression":
   version: 0.0.0-use.local
   resolution: "lambda-compression@workspace:workspaces/utils/packages/lambda-compression"
   dependencies:
