@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { init } from './gulp';
+import { init } from './gulpInit';
 
 const build = async (args: string[]): Promise<void> => {
   const gulp = await init(args);
