@@ -38,77 +38,7 @@ jobs:
           git config user.name "goldstack"
           git config user.email "goldstack@users.noreply.github.com"
 
-      - name: Identify Issue and PR Numbers
-        id: identifiers
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
-        run: |
-          NUM=${{ github.event.issue.number }}
-          RESULT=$(gha_agent identify-comment --comment "${{ github.event.comment.body }}" --issue-number "$NUM")
-          echo "issue_number=$(echo "$RESULT" | jq -r '.issueNumber // ""')" >> $GITHUB_OUTPUT
-          echo "pr_number=$(echo "$RESULT" | jq -r '.prNumber // ""')" >> $GITHUB_OUTPUT
-
-      - name: Identify Branch
-        id: branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
-        run: |
-          ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
-          PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
-          RESULT=$(gha_agent identify-branch --issue-number "$ISSUE_NUMBER" ${PR_NUMBER:+"--pr-number" "$PR_NUMBER"})
-          echo "name=$(echo "$RESULT" | jq -r '.branchName // ""')" >> $GITHUB_OUTPUT
-
-      - name: Checkout working branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
-        run: |
-          BRANCH="${{ steps.branch.outputs.name }}"
-          PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
-          gha_agent checkout-branch --branch-name "$BRANCH" ${PR_NUMBER:+"--pr-number" "$PR_NUMBER"}
-
-      - name: Post start comment
-        if: always()
-        env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
-        run: |
-          ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
-          PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
-          BRANCH_NAME=${{ steps.branch.outputs.name }}
-          RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          
-          COMMENT=$'🚀 Kilo Code has started working on this task.\n\n'
-          COMMENT+=$'- **Branch**: `'"$BRANCH_NAME"'`\n'
-          COMMENT+=$'- **Issue**: #'"$ISSUE_NUMBER"' \n'
-          [ -n "$PR_NUMBER" ] && COMMENT+=$'- **PR**: #'"$PR_NUMBER"' \n'
-          COMMENT+=$'- **Run**: [View workflow]('"$RUN_URL"')\n'
-          
-          if [ -n "$PR_NUMBER" ]; then
-            gh pr comment "$PR_NUMBER" --body "$COMMENT"
-          else
-            gh issue comment "$ISSUE_NUMBER" --body "$COMMENT"
-          fi
-
-      - name: Extract prompt
-        id: ctx
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
-        run: |
-          ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
-          PR_NUMBER=${{ steps.identifiers.outputs.pr_number }}
-          RESULT=$(gha_agent build-context \
-            --comment "${{ github.event.comment.body }}" \
-            --issue-number "$ISSUE_NUMBER" \
-            ${PR_NUMBER:+"--pr-number" "$PR_NUMBER"})
-
-          echo "branch=$(echo "$RESULT" | jq -r '.branch // ""')" >> "$GITHUB_OUTPUT"
-          echo "pr_number=$(echo "$RESULT" | jq -r '.prNumber // ""')" >> "$GITHUB_OUTPUT"
-          { echo 'task<<EOF'; echo "$RESULT" | jq -r '.task // ""'; echo; echo 'EOF'; } >> "$GITHUB_OUTPUT"
-
-      - name: Run Kilo Code
+      - name: Run Kilo Code Workflow
         env:
           KILO_PROVIDER: kilocode
           KILO_PROVIDER_TYPE: kilocode
@@ -119,29 +49,4 @@ jobs:
           KILO_TELEMETRY_DEBUG: false
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          TASK=$(cat <<'EOF' | tr -d '\n'
-          ${{ steps.ctx.outputs.task }}
-          EOF
-          )
-          gha_agent run-kilocode --auto --timeout 2000 --task "$TASK"
-
-      - name: Fix PR body newlines
-        if: steps.identifiers.outputs.pr_number != ''
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
-          PR_NUMBER: ${{ steps.identifiers.outputs.pr_number }}
-        run: gha_agent fix-pr-body --pr-number "$PR_NUMBER"
-
-      - name: Create PR if needed
-        id: create_pr
-        if: steps.identifiers.outputs.pr_number == ''
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
-        run: |
-          ISSUE_NUMBER=${{ steps.identifiers.outputs.issue_number }}
-          BRANCH_NAME=${{ steps.branch.outputs.name }}
-
-          RESULT=$(gha_agent create-pr --issue-number "$ISSUE_NUMBER" --branch-name "$BRANCH_NAME")
-          echo "pr_number=$(echo "$RESULT" | jq -r '.prNumber // ""')" >> $GITHUB_OUTPUT
+          gha_agent run-all --comment "${{ github.event.comment.body }}" --issue-number ${{ github.event.issue.number }}
