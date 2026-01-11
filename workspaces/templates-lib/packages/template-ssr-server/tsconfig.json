@@ -40,6 +40,9 @@
       "path": "../utils-terraform"
     },
     {
+      "path": "../../../utils/packages/lambda-compression"
+    },
+    {
       "path": "../../../utils/packages/static-file-mapper"
     },
     {

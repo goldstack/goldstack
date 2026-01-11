@@ -338,6 +338,9 @@
       "path": "workspaces/utils/packages/github-actions-agent"
     },
     {
+      "path": "workspaces/utils/packages/lambda-compression"
+    },
+    {
       "path": "workspaces/utils/packages/mock-aws-s3-v3"
     },
     {
