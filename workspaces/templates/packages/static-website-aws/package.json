@@ -25,9 +25,8 @@
     "watch-web": "ts-node --swc ./src/watch.ts \"$@\""
   },
   "dependencies": {
-    "change-file-extension": "^0.1.0",
     "gulp": "^5.0.1",
-    "gulp-changed": "^5.0.4",
+    "gulp-changed": "^4.0.2",
     "gulp-replace": "^1.1.4"
   },
   "devDependencies": {
