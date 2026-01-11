@@ -34,7 +34,7 @@ export const init = async (args: string[]): Promise<Gulp> => {
   const source = './web/**/*';
   function build(): NodeJS.ReadWriteStream {
     return gulp
-      .src(source, { since: gulp.lastRun(build) })
+      .src(source)
       .pipe(changed(destination))
       .pipe(replace('{{deployment}}', deploymentConfig.name))
       .pipe(gulp.dest(destination));
