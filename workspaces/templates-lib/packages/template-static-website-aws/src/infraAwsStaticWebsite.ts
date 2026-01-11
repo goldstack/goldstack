@@ -13,6 +13,7 @@ export interface InfraAwsStaticWebsiteCliParams {
   deploymentName: string;
   targetVersion?: string;
   confirm?: boolean;
+  skipConfirmations?: boolean;
   commandArgs?: string[];
 }
 
@@ -65,7 +66,7 @@ export const infraAwsStaticWebsiteCli = async (
     confirm: params.confirm,
     commandArguments: params.commandArgs,
     ignoreMissingDeployments: false,
-    skipConfirmations: false,
+    skipConfirmations: params.skipConfirmations ?? false,
     options: undefined,
   });
 };

@@ -56,6 +56,7 @@ export const run = async (args: string[]): Promise<void> => {
       const deploymentName = argv.deployment;
       let targetVersion: string | undefined;
       let confirm: boolean | undefined;
+      let skipConfirmations: boolean | undefined;
       let commandArgs: string[] | undefined;
 
       if (infraOperation === 'upgrade') {
@@ -64,6 +65,8 @@ export const run = async (args: string[]): Promise<void> => {
         commandArgs = opArgs.slice(2);
       } else if (infraOperation === 'destroy') {
         confirm = argv.yes;
+      } else if (infraOperation === 'destroy-state') {
+        skipConfirmations = argv.yes;
       }
 
       const params: InfraAwsStaticWebsiteCliParams = {
@@ -71,6 +74,7 @@ export const run = async (args: string[]): Promise<void> => {
         deploymentName,
         targetVersion,
         confirm,
+        skipConfirmations,
         commandArgs,
       };
       await infraAwsStaticWebsiteCli(config, params);
