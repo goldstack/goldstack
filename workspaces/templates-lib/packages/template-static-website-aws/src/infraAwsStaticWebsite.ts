@@ -8,15 +8,30 @@ import type {
   AWSStaticWebsitePackage,
 } from './types/AWSStaticWebsitePackage';
 
+/**
+ * @description Parameters for AWS Static Website CLI operations.
+ */
 export interface InfraAwsStaticWebsiteCliParams {
+  /** The operation to perform, such as 'deploy' or 'plan'. */
   operation: string;
+  /** The name of the deployment. */
   deploymentName: string;
+  /** Optional target version for upgrades. */
   targetVersion?: string;
+  /** Optional confirmation flag. */
   confirm?: boolean;
+  /** Optional flag to skip confirmations. */
   skipConfirmations?: boolean;
+  /** Optional additional command arguments. */
   commandArgs?: string[];
 }
 
+/**
+ * @description Retrieves the deployment configuration by name from the package config.
+ * @param config - The AWS Static Website package configuration.
+ * @param args - Command line arguments containing the deployment name.
+ * @returns The deployment configuration.
+ */
 const getDeployment = (
   config: AWSStaticWebsitePackage,
   args: string[],
@@ -36,6 +51,11 @@ const getDeployment = (
   return deployment;
 };
 
+/**
+ * @description Deploys the static website artifacts to AWS S3.
+ * @param config - The AWS Static Website package configuration.
+ * @param args - Command line arguments.
+ */
 export const deploy = async (config: AWSStaticWebsitePackage, args: string[]): Promise<void> => {
   const deployment = getDeployment(config, args);
 
@@ -50,6 +70,11 @@ export const deploy = async (config: AWSStaticWebsitePackage, args: string[]): P
   });
 };
 
+/**
+ * @description Main CLI handler for AWS Static Website infrastructure operations.
+ * @param config - The AWS Static Website package configuration.
+ * @param params - CLI parameters.
+ */
 export const infraAwsStaticWebsiteCli = async (
   config: AWSStaticWebsitePackage,
   params: InfraAwsStaticWebsiteCliParams,
