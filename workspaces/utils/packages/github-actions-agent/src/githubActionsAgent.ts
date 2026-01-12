@@ -331,25 +331,26 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       KILOCODE_TOKEN: this.kiloApiKey,
       GITHUB_TOKEN: this.token,
       KILO_TELEMETRY_DEBUG: 'false',
-      TASK: task,
     };
     if (model) {
       kiloEnv.KILOCODE_MODEL = model;
     }
 
     // Build the command
-    const args = ['--auto'];
+    const args = ['--task', task, '--auto'];
     if (timeout) {
       args.push('--timeout', String(timeout));
     }
-    args.push('"$TASK"');
+    if (model) {
+      args.push('--model', model);
+    }
 
     const { execSync } = require('child_process');
     execSync(`kilocode ${args.join(' ')}`, {
       encoding: 'utf-8',
       stdio: 'inherit',
       shell: true,
-      env: process.env,
+      env: kiloEnv,
     });
   }
 
@@ -411,6 +412,7 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       task,
       auto,
       timeout,
+      model: process.env.KILOCODE_MODEL,
     });
     info('Kilo Code execution completed');
 
