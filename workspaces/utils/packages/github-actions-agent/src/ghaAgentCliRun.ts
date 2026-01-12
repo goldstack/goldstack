@@ -182,6 +182,11 @@ export const run = async (): Promise<void> => {
             describe: 'Timeout in seconds',
             demandOption: false,
             default: 2000,
+          })
+          .option('workDir', {
+            type: 'string',
+            describe: 'Working directory for git operations',
+            demandOption: false,
           });
       })
       .parse();
@@ -281,6 +286,7 @@ export const run = async (): Promise<void> => {
         issueNumber: Number(argv.issueNumber),
         auto: argv.auto as boolean | undefined,
         timeout: argv.timeout as number | undefined,
+        workDir: argv.workDir ? String(argv.workDir) : undefined,
       });
       return;
     }

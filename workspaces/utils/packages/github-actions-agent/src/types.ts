@@ -107,6 +107,7 @@ export interface RunAllOptions {
   issueNumber: number;
   auto?: boolean;
   timeout?: number;
+  workDir?: string;
 }
 
 /**

@@ -367,7 +367,12 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
    * Run the complete workflow.
    */
   async runAll(options: RunAllOptions): Promise<void> {
-    const { comment, issueNumber, auto = true, timeout = 2000 } = options;
+    const { comment, issueNumber, auto = true, timeout = 2000, workDir } = options;
+
+    if (workDir) {
+      process.chdir(workDir);
+      info(`Changed working directory to: ${workDir}`);
+    }
 
     info('Starting Kilo Code workflow execution');
 
