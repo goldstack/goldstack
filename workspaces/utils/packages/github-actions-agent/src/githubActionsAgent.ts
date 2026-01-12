@@ -1,8 +1,8 @@
 import { info } from '@goldstack/utils-log';
-import * as fs from 'fs';
-import * as path from 'path';
-import * as os from 'os';
 import { execSync, spawn } from 'child_process';
+import * as fs from 'fs';
+import * as os from 'os';
+import * as path from 'path';
 
 import type {
   BuildContextOptions,
@@ -192,7 +192,7 @@ export class GitHubActionsAgent {
    */
   async buildContext(options: BuildContextOptions): Promise<BuildContextResult> {
     const gh = createGhToken(this.token);
-    const { comment, issueNumber, prNumber, agentsFile = 'AGENTS_GHA.md' } = options;
+    const { comment, issueNumber, prNumber, agentInstructionsPath = 'AGENTS_GHA.md' } = options;
 
     // Strip /kilo or /kilocode prefix
     const prompt = comment.replace(/^\/(kilo(code)?)\s*/i, '');
@@ -234,8 +234,10 @@ export class GitHubActionsAgent {
 
     // Read project instructions
     let agents = '';
-    if (fs.existsSync(agentsFile)) {
-      agents = fs.readFileSync(agentsFile, 'utf-8');
+    if (fs.existsSync(agentInstructionsPath)) {
+      agents = fs.readFileSync(agentInstructionsPath, 'utf-8');
+    } else {
+      throw new Error(`Agent instructions file not found at ${agentInstructionsPath}`);
     }
 
     // Build task string
@@ -249,14 +251,14 @@ export class GitHubActionsAgent {
     if (reviewComments) {
       task += `CODE REVIEW COMMENTS (on current commit):\n${reviewComments}\n\n`;
     }
+    if (agents) {
+      task += `PROJECT INSTRUCTIONS:\n${agents}\n\n`;
+    }
     task += `TASK: ${prompt}\n\n`;
     task += `ISSUE_NUMBER: ${issueNumber}\n`;
     task += `BRANCH_NAME: ${headRefName}\n`;
     if (prNumber) {
       task += `PR_NUMBER: ${prNumber}\n`;
-    }
-    if (agents) {
-      task += `PROJECT INSTRUCTIONS:\n${agents}`;
     }
 
     return {
@@ -434,6 +436,7 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       kiloModel,
       kiloProvider,
       kiloProviderType,
+      agentInstructionsPath,
     } = options;
 
     if (workDir) {
@@ -487,6 +490,7 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       comment,
       issueNumber,
       prNumber: prNumber ? parseInt(prNumber, 10) : undefined,
+      agentInstructionsPath,
     });
     info('Task context built successfully');
 

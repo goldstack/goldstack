@@ -62,4 +62,4 @@ jobs:
           KILO_TELEMETRY_DEBUG: false
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          gha_agent run-all --comment "${{ github.event.comment.body }}" --issue-number ${{ github.event.issue.number }} --timeout 2700
+          gha_agent run-all --comment "${{ github.event.comment.body }}" --issue-number ${{ github.event.issue.number }} --timeout 2700 --agentInstructions AGENTS_GHA.md

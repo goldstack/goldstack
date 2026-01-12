@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "mode": "code",
-  "telemetry": true,
+  "telemetry": false,
   "provider": "default",
   "providers": [
     {

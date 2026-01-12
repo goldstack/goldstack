@@ -79,9 +79,9 @@ export const run = async (): Promise<void> => {
               describe: 'PR number (optional)',
               demandOption: false,
             })
-            .option('agents-file', {
+            .option('agentInstructions', {
               type: 'string',
-              describe: 'Path to AGENTS file',
+              describe: 'Path to agent instructions file',
               demandOption: false,
               default: 'AGENTS_GHA.md',
             });
@@ -169,6 +169,11 @@ export const run = async (): Promise<void> => {
             describe: 'Kilo Code provider type',
             demandOption: false,
             default: 'kilocode',
+          })
+          .option('agentInstructions', {
+            type: 'string',
+            describe: 'Path to agent instructions file',
+            demandOption: false,
           });
       })
       .command('run-all', 'Execute the complete workflow as a single command', (yargs) => {
@@ -265,7 +270,7 @@ export const run = async (): Promise<void> => {
         comment: String(argv.comment),
         issueNumber: Number(argv.issueNumber),
         prNumber: argv.prNumber ? Number(argv.prNumber) : undefined,
-        agentsFile: argv.agentsFile ? String(argv.agentsFile) : undefined,
+        agentInstructionsPath: argv.agentInstructions ? String(argv.agentInstructions) : undefined,
       });
       console.log(JSON.stringify(result));
       return;
@@ -321,6 +326,7 @@ export const run = async (): Promise<void> => {
         kiloModel: argv.kiloModel ? String(argv.kiloModel) : undefined,
         kiloProvider: argv.kiloProvider ? String(argv.kiloProvider) : undefined,
         kiloProviderType: argv.kiloProviderType ? String(argv.kiloProviderType) : undefined,
+        agentInstructionsPath: argv.agentInstructions ? String(argv.agentInstructions) : undefined,
       });
       return;
     }
