@@ -14,12 +14,9 @@ To check and update SWC packages:
    npm info @swc/jest version
    ```
 
-2. Update SWC packages in all workspace `package.json` files:
-   ```json
-   "devDependencies": {
-     "@swc/core": "^1.15.8",   // Update to latest version
-     "@swc/jest": "^0.2.39"    // Update to latest version
-   }
+2. Update SWC packages to the latest versions:
+   ```
+   yarn up @swc/core @swc/jest
    ```
 
 3. Validate package consistency:

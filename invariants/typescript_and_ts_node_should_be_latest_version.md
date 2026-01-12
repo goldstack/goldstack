@@ -14,27 +14,22 @@ To check and update TypeScript and ts-node versions:
    npm info ts-node version
    ```
 
-2. Update TypeScript and ts-node in the project root `package.json`:
-   ```json
-   "devDependencies": {
-     "ts-node": "^10.9.2",  // Update to latest version
-     "typescript": "^5.9.3"   // Update to latest version
-   }
+2. Update TypeScript and ts-node to the latest versions:
+   ```
+   yarn up typescript ts-node
    ```
 
-3. Update TypeScript in all workspace `package.json` files that have it as a direct dependency.
-
-4. Validate package consistency:
+3. Validate package consistency:
    ```
    yarn ensure-no-package-mismatches
    ```
 
-5. Run the standard checks:
+4. Run the standard checks:
    ```
    yarn format && yarn lint && yarn compile
    ```
 
-6. Commit the changes.
+5. Commit the changes.
 
 ## Rationale
 

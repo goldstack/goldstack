@@ -13,36 +13,27 @@ To check and update Jest:
    npm info jest version
    ```
 
-2. Update Jest in the project root `package.json`:
-   ```json
-   "devDependencies": {
-     "@types/jest": "^30.0.0"  // Update to latest compatible version
-   }
+2. Update Jest and @types/jest to the latest versions:
+   ```
+   yarn up jest @types/jest
    ```
 
-3. Update Jest in all workspace `package.json` files:
-   ```json
-   "devDependencies": {
-     "jest": "^30.2.0"  // Update to latest version
-   }
-   ```
-
-4. Validate package consistency:
+3. Validate package consistency:
    ```
    yarn ensure-no-package-mismatches
    ```
 
-5. Run the standard checks:
+4. Run the standard checks:
    ```
    yarn format && yarn lint && yarn compile
    ```
 
-6. Run tests to ensure compatibility:
+5. Run tests to ensure compatibility:
    ```
    yarn test
    ```
 
-7. Commit the changes.
+6. Commit the changes.
 
 ## Rationale
 
