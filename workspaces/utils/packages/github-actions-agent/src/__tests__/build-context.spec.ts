@@ -162,7 +162,7 @@ describe('buildContext', () => {
       const result = await agent.buildContext({
         comment: '/kilo test',
         issueNumber: TEST_ISSUE_NUMBER,
-        agentsFile: fileExists ? customAgentsFile : undefined,
+        agentInstructionsPath: fileExists ? customAgentsFile : undefined,
       });
 
       expect(result.branchName).toBe('kilo-issue-518');

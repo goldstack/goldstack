@@ -1,9 +1,8 @@
 import { info } from '@goldstack/utils-log';
+import { execSync, spawn } from 'child_process';
 import * as fs from 'fs';
-import * as path from 'path';
 import * as os from 'os';
-
-const { execSync } = require('child_process');
+import * as path from 'path';
 
 import type {
   BuildContextOptions,
@@ -77,7 +76,6 @@ export class GitHubActionsAgent {
 
   private getGitRemoteUrl(): string {
     try {
-      const { execSync } = require('child_process');
       return execSync('git remote get-url origin', {
         encoding: 'utf-8',
       }).trim();
@@ -194,7 +192,7 @@ export class GitHubActionsAgent {
    */
   async buildContext(options: BuildContextOptions): Promise<BuildContextResult> {
     const gh = createGhToken(this.token);
-    const { comment, issueNumber, prNumber, agentsFile = 'AGENTS_GHA.md' } = options;
+    const { comment, issueNumber, prNumber, agentInstructionsPath = 'AGENTS_GHA.md' } = options;
 
     // Strip /kilo or /kilocode prefix
     const prompt = comment.replace(/^\/(kilo(code)?)\s*/i, '');
@@ -236,8 +234,10 @@ export class GitHubActionsAgent {
 
     // Read project instructions
     let agents = '';
-    if (fs.existsSync(agentsFile)) {
-      agents = fs.readFileSync(agentsFile, 'utf-8');
+    if (fs.existsSync(agentInstructionsPath)) {
+      agents = fs.readFileSync(agentInstructionsPath, 'utf-8');
+    } else {
+      throw new Error(`Agent instructions file not found at ${agentInstructionsPath}`);
     }
 
     // Build task string
@@ -251,15 +251,15 @@ export class GitHubActionsAgent {
     if (reviewComments) {
       task += `CODE REVIEW COMMENTS (on current commit):\n${reviewComments}\n\n`;
     }
-    task += `TASK: ${prompt}\n\n`;
     task += `ISSUE_NUMBER: ${issueNumber}\n`;
     task += `BRANCH_NAME: ${headRefName}\n`;
     if (prNumber) {
       task += `PR_NUMBER: ${prNumber}\n`;
     }
     if (agents) {
-      task += `PROJECT INSTRUCTIONS:\n${agents}`;
+      task += `PROJECT INSTRUCTIONS:\n${agents}\n\n`;
     }
+    task += `YOUR TASK: ${prompt}\n\n`;
 
     return {
       branchName: headRefName,
@@ -359,7 +359,7 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
     const {
       task,
       auto = true,
-      timeout = 1800,
+      timeout = 2700,
       model,
       kiloProvider = 'kilocode',
       kiloProviderType = 'kilocode',
@@ -392,18 +392,35 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       command += ` --model ${model}`;
     }
 
-    const { execSync } = require('child_process');
-    try {
-      execSync(command, {
-        encoding: 'utf-8',
+    return new Promise<void>((resolve, reject) => {
+      const child = spawn('sh', ['-c', command], {
         stdio: 'inherit',
-        shell: true,
         env: kiloEnv,
       });
-    } finally {
+
+      const timeoutMs = (timeout + 60) * 1000; // Add 60 second buffer
+      const timer = setTimeout(() => {
+        child.kill('SIGTERM');
+        reject(new Error(`KiloCode execution timed out after ${timeout + 60} seconds`));
+      }, timeoutMs);
+
+      child.on('exit', (code, signal) => {
+        clearTimeout(timer);
+        if (code !== 0) {
+          reject(new Error(`KiloCode exited with code ${code}`));
+        } else {
+          resolve();
+        }
+      });
+
+      child.on('error', (err) => {
+        clearTimeout(timer);
+        reject(err);
+      });
+    }).finally(() => {
       // Clean up temp file
       fs.unlinkSync(tempFile);
-    }
+    });
   }
 
   /**
@@ -414,11 +431,12 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       comment,
       issueNumber,
       auto = true,
-      timeout = 1800,
+      timeout = 2700,
       workDir,
       kiloModel,
       kiloProvider,
       kiloProviderType,
+      agentInstructionsPath,
     } = options;
 
     if (workDir) {
@@ -431,7 +449,7 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       // Check if it's a git repository
       if (!fs.existsSync('.git')) {
         info('Directory is not a git repository, cloning...');
-        const { execSync } = require('child_process');
+        const { execSync, spawn } = require('child_process');
         execSync(`git clone ${this.remoteUrl} .`, {
           encoding: 'utf-8',
           stdio: 'inherit',
@@ -472,6 +490,7 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       comment,
       issueNumber,
       prNumber: prNumber ? parseInt(prNumber, 10) : undefined,
+      agentInstructionsPath,
     });
     info('Task context built successfully');
 
@@ -515,18 +534,18 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
     // }
 
     // Step 8: Create PR if needed
-    if (!ctxPrNumber) {
-      info('Creating pull request...');
-      const { prNumber: newPrNumber } = await this.createPr({
-        issueNumber,
-        branchName,
-      });
-      if (newPrNumber) {
-        info(`Pull request created: #${newPrNumber}`);
-      } else {
-        info('No pull request created (no commits on branch)');
-      }
-    }
+    // if (!ctxPrNumber) {
+    //   info('Creating pull request...');
+    //   const { prNumber: newPrNumber } = await this.createPr({
+    //     issueNumber,
+    //     branchName,
+    //   });
+    //   if (newPrNumber) {
+    //     info(`Pull request created: #${newPrNumber}`);
+    //   } else {
+    //     info('No pull request created (no commits on branch)');
+    //   }
+    // }
 
     info('Kilo Code workflow execution completed successfully');
   }

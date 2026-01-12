@@ -49,6 +49,7 @@ jobs:
           git config user.name "goldstack"
           git config user.email "goldstack@users.noreply.github.com"
 
+
       - name: Run Kilo Code Workflow
         env:
           KILO_PROVIDER: kilocode
@@ -61,4 +62,4 @@ jobs:
           KILO_TELEMETRY_DEBUG: false
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          gha_agent run-all --comment "${{ github.event.comment.body }}" --issue-number ${{ github.event.issue.number }}
+          gha_agent run-all --comment "${{ github.event.comment.body }}" --issue-number ${{ github.event.issue.number }} --timeout 2700 --agentInstructions $(pwd)/AGENTS_GHA.md

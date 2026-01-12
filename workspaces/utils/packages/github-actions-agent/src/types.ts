@@ -45,7 +45,7 @@ export interface BuildContextOptions {
   comment: string;
   issueNumber: number;
   prNumber?: number;
-  agentsFile?: string;
+  agentInstructionsPath?: string;
 }
 
 /**
@@ -113,6 +113,7 @@ export interface RunAllOptions {
   kiloModel?: string;
   kiloProvider?: string;
   kiloProviderType?: string;
+  agentInstructionsPath?: string;
 }
 
 /**
