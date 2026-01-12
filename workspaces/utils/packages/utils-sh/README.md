@@ -16,3 +16,5 @@ npm install @goldstack/utils-sh
 import { sh } from '@goldstack/utils-sh';
 
 await sh('echo hello');
+
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

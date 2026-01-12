@@ -20,3 +20,5 @@ console.log(status);
 ```
 
 See [utilsGit.ts](https://github.com/goldstack/goldstack/blob/master/workspaces/utils/packages/utils-git/src/utilsGit.ts)
+
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

@@ -27,3 +27,5 @@ const schema = {
 import { convertJsonToTs } from '@goldstack/utils-json-to-ts';
 
 const tsCode = await convertJsonToTs(schema);
+
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

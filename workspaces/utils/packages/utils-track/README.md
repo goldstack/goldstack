@@ -16,3 +16,5 @@ npm install @goldstack/utils-track
 import { track } from '@goldstack/utils-track';
 
 track('event');
+
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

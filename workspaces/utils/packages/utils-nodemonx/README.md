@@ -16,3 +16,5 @@ npm install @goldstack/utils-nodemonx
 import { nodemonx } from '@goldstack/utils-nodemonx';
 
 nodemonx();
+
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

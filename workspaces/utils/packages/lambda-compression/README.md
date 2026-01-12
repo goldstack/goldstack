@@ -115,3 +115,5 @@ If the client sends `accept-encoding: identity` or no header, the response remai
 - [compression.js in lambda-api project](https://github.com/jeremydaly/lambda-api/blob/main/lib/compression.js)
 - [Serverless Content Encoding for Serverless](https://www.npmjs.com/package/serverless-content-encoding)
 - [serverless-content-encoding](https://github.com/dong-dohai/serverless-content-encoding) - no longer maintained
+
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

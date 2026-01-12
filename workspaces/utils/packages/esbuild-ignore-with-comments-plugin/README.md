@@ -66,3 +66,5 @@ Also note that if you want to add a file to multiple groups, you need to include
 ```typescript
 /* esbuild-ignore server */
 /* esbuild-ignore ui */
+
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

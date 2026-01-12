@@ -19,3 +19,5 @@ import { createStaticFileMapper } from 'static-file-mapper';
 
 // Example usage
 const mapper = createStaticFileMapper();
+
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

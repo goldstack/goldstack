@@ -16,3 +16,5 @@ npm install @goldstack/utils-yarn
 import { yarnInstall } from '@goldstack/utils-yarn';
 
 await yarnInstall();
+
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️
