@@ -2,7 +2,7 @@
 
 # Goldstack Yarn Utilities
 
-Utilities for Yarn.
+This library allows running [yarn](https://yarnpkg.com/) commands from Node.js applications.
 
 ## Installation
 
