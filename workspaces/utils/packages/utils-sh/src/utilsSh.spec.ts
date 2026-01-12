@@ -1,6 +1,6 @@
 import assert from 'assert';
 import fs from 'fs';
-import { commandExists, copy, mkdir, rmSafe, write } from './utilsSh';
+import { commandExists, copy, mkdir, rm, rmSafe, write } from './utilsSh';
 
 describe('Copy', () => {
   beforeAll(async () => {
@@ -41,5 +41,24 @@ describe('Command Exists', () => {
   it('Should determine if a command does not exist', () => {
     assert(commandExists('echo'));
     assert(!commandExists('thisCertainlyDoesNotExist'));
+  });
+});
+
+describe('rm', () => {
+  it('Should remove directory and all contents', () => {
+    const testDir = './goldstackLocal/work/rmTest/';
+    mkdir('-p', testDir);
+    write('dummy', `${testDir}file.txt`);
+    mkdir('-p', `${testDir}subdir/`);
+    write('dummy', `${testDir}subdir/file.txt`);
+
+    assert(fs.existsSync(testDir));
+    assert(fs.existsSync(`${testDir}file.txt`));
+    assert(fs.existsSync(`${testDir}subdir/file.txt`));
+
+    rm('-rf', testDir);
+
+    // Directory should be completely removed
+    assert(!fs.existsSync(testDir));
   });
 });
