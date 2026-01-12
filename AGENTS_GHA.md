@@ -37,18 +37,12 @@ Fix any issues before committing.
 
 ### 3. PR Management
 
-**A PR always exists (created in draft mode if needed).**
+Create PR if not exists
 
 Push commits. Comment progress:
 
 ```
 gh pr comment $PR_NUMBER --body "Progress update: ..."
-```
-
-If ISSUE_NUMBER provided, comment on the issue:
-
-```
-gh issue comment $ISSUE_NUMBER --body "Work in progress. See PR #$PR_NUMBER."
 ```
 
 **Work complete:**

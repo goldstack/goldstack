@@ -415,13 +415,13 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
     info('Kilo Code execution completed');
 
     // Step 7: Fix PR body if needed
-    if (ctxPrNumber) {
-      info('Fixing PR body formatting...');
-      await this.fixPrBody({
-        prNumber: parseInt(ctxPrNumber, 10),
-      });
-      info('PR body fixed successfully');
-    }
+    // if (ctxPrNumber) {
+    //   info('Fixing PR body formatting...');
+    //   await this.fixPrBody({
+    //     prNumber: parseInt(ctxPrNumber, 10),
+    //   });
+    //   info('PR body fixed successfully');
+    // }
 
     // Step 8: Create PR if needed
     if (!ctxPrNumber) {
