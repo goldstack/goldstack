@@ -17,15 +17,10 @@ const nextConfig = {
       },
     });
     config.module.rules.push({
-      test: /\.(png|jpe?g|gif)$/i,
-      use: {
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[hash].[ext]',
-          publicPath: '/_next/static',
-          outputPath: 'static',
-          emitFile: !options.isServer,
-        },
+      test: /\.(png|jpe?g|gif|webp|ico)$/i,
+      type: 'asset/resource',
+      generator: {
+        filename: 'static/images/[hash][ext]',
       },
     });
     return config;
