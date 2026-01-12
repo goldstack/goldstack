@@ -8372,7 +8372,6 @@ const RAW_RUNTIME_STATE =
           ["@types/glob", "npm:8.1.0"],\
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
-          ["@types/rimraf", "npm:4.0.5"],\
           ["@types/which", "npm:3.0.4"],\
           ["archiver", "npm:5.3.1"],\
           ["extract-zip", "npm:2.0.1"],\

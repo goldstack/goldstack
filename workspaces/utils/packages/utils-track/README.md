@@ -1,5 +1,18 @@
-# Goldstack JS Tracking Utilities
+[![npm version](https://badge.fury.io/js/%40goldstack%2Futils-track.svg)](https://badge.fury.io/js/%40goldstack%2Futils-track)
 
-This library allows linking [Google Analytics](https://analytics.google.com/analytics/web/) to React applications.
+# Goldstack Track Utilities
 
-It is used for the [Goldstack Homepage](https://goldstack.party) and [Goldstack Documentation](https://docs.goldstack.party/docs).
+Utilities for tracking.
+
+## Installation
+
+```bash
+npm install @goldstack/utils-track
+```
+
+## Usage
+
+```typescript
+import { track } from '@goldstack/utils-track';
+
+track('event');

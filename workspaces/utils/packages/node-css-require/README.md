@@ -20,6 +20,12 @@ SyntaxError: Unexpected token '.'
     at wrapSafe (node:internal/modules/cjs/loader:1033:15)
 ```
 
+## Installation
+
+```bash
+npm install node-css-require
+```
+
 This module provides a way to load CSS files when running Node or server-side code. Simply run the following code before any CSS file is loaded:
 
 ```typescript
@@ -53,4 +59,3 @@ declare module '*.css' {
   const classes: { [key: string]: string };
   export default classes;
 }
-```

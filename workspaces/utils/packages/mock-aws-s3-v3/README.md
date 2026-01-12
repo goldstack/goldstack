@@ -6,6 +6,12 @@ Local file-based mock for AWS S3 for unit and local testing for AWS JavaScript S
 
 Based on [mock-aws-s3](https://www.npmjs.com/package/mock-aws-s3) and [aws-sdk-mock](https://www.npmjs.com/package/aws-sdk-mock).
 
+## Installation
+
+```bash
+npm install mock-aws-s3-v3
+```
+
 ## Usage
 
 ```typescript

@@ -1,5 +1,18 @@
+[![npm version](https://badge.fury.io/js/%40goldstack%2Futils-yarn.svg)](https://badge.fury.io/js/%40goldstack%2Futils-yarn)
+
 # Goldstack Yarn Utilities
 
-This library allows running [yarn](https://yarnpkg.com/) commands from Node.js applications.
+Utilities for Yarn.
 
-See [utilsYarn.ts](https://github.com/goldstack/goldstack/blob/master/workspaces/templates-lib/packages/utils-yarn/src/utilsYarn.ts).
+## Installation
+
+```bash
+npm install @goldstack/utils-yarn
+```
+
+## Usage
+
+```typescript
+import { yarnInstall } from '@goldstack/utils-yarn';
+
+await yarnInstall();
