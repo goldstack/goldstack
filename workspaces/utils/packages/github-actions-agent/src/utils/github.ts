@@ -112,6 +112,21 @@ export interface GhCommentData {
   user: {
     login: string;
   };
+  created_at: string;
+}
+
+/**
+ * GitHub review comment data returned by gh CLI.
+ */
+export interface GhReviewCommentData {
+  id: number;
+  body: string;
+  user: {
+    login: string;
+  };
+  path: string;
+  position: number | null;
+  created_at: string;
 }
 
 /**
@@ -218,7 +233,7 @@ export async function getIssueComments(
   issueNumber: number,
 ): Promise<string> {
   const data = runGhCommandJson<GhCommentData[]>(
-    ['api', `repos/${owner}/${repo}/issues/${issueNumber}/comments`],
+    ['api', `repos/${owner}/${repo}/issues/${issueNumber}/comments?sort=created&direction=desc`],
     token.token,
   );
   if (!data) {
@@ -226,7 +241,7 @@ export async function getIssueComments(
   }
   return data
     .map((comment) => {
-      return `User: ${comment.user?.login || 'unknown'}\n${comment.body}`;
+      return `User: ${comment.user?.login || 'unknown'} at ${comment.created_at}\n${comment.body}`;
     })
     .join('\n\n---\n\n');
 }
@@ -241,7 +256,7 @@ export async function getPrComments(
   prNumber: number,
 ): Promise<string> {
   const data = runGhCommandJson<GhCommentData[]>(
-    ['api', `repos/${owner}/${repo}/issues/${prNumber}/comments`],
+    ['api', `repos/${owner}/${repo}/issues/${prNumber}/comments?sort=created&direction=desc`],
     token.token,
   );
   if (!data) {
@@ -249,7 +264,7 @@ export async function getPrComments(
   }
   return data
     .map((comment) => {
-      return `User: ${comment.user?.login || 'unknown'}\n${comment.body}`;
+      return `User: ${comment.user?.login || 'unknown'} at ${comment.created_at}\n${comment.body}`;
     })
     .join('\n\n---\n\n');
 }
@@ -265,8 +280,8 @@ export async function getPrReviewComments(
   _sinceSha?: string,
 ): Promise<string> {
   // Use GitHub API to get PR review comments
-  const data = runGhCommandJson<GhCommentData[]>(
-    ['api', `repos/${owner}/${repo}/pulls/${prNumber}/comments`],
+  const data = runGhCommandJson<GhReviewCommentData[]>(
+    ['api', `repos/${owner}/${repo}/pulls/${prNumber}/comments?sort=created&direction=desc`],
     token.token,
   );
   if (!data) {
@@ -277,7 +292,8 @@ export async function getPrReviewComments(
   return data
     .slice(0, 50)
     .map((comment) => {
-      return `User: ${comment.user?.login || 'unknown'}\n${comment.body}`;
+      const lineInfo = comment.position ? `\nLine: ${comment.position}` : '';
+      return `File: ${comment.path}${lineInfo}\nUser: ${comment.user?.login || 'unknown'} at ${comment.created_at}\n${comment.body}`;
     })
     .join('\n\n---\n\n');
 }
