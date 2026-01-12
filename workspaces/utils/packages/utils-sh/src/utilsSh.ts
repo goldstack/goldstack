@@ -6,7 +6,7 @@ import fs from 'fs';
 import fse, { copy as fsExtraCopy } from 'fs-extra';
 import { sync as globSync } from 'glob';
 import path from 'path';
-import rimraf from 'rimraf';
+import { rimraf } from 'rimraf';
 import which from 'which';
 
 export interface ExecParams {
@@ -136,21 +136,7 @@ export const cp = (options: string, source: string | string[], dest: string): vo
  */
 export const rmSafe = async (...files: string[]): Promise<void> => {
   for (const file of files) {
-    await new Promise<void>((resolve, reject) => {
-      rimraf(
-        file,
-        {
-          maxBusyTries: 10,
-        },
-        (e: Error | null) => {
-          if (e) {
-            reject(e);
-            return;
-          }
-          resolve();
-        },
-      );
-    });
+    await rimraf(file, { maxRetries: 10 });
   }
 };
 
