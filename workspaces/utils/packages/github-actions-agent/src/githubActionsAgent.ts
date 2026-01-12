@@ -1,5 +1,10 @@
 import { info } from '@goldstack/utils-log';
 import * as fs from 'fs';
+import * as path from 'path';
+import * as os from 'os';
+
+const { execSync } = require('child_process');
+
 import type {
   BuildContextOptions,
   BuildContextResult,
@@ -146,8 +151,13 @@ export class GitHubActionsAgent {
     }
 
     // Default to kilo-issue-<issueNumber>
+    const branchName = `kilo-issue-${issueNumber}`;
+    // Validate branch name follows best practices
+    if (!/^kilo-issue-\d+$/.test(branchName)) {
+      throw new Error(`Branch name '${branchName}' does not follow naming conventions`);
+    }
     return {
-      branchName: `kilo-issue-${issueNumber}`,
+      branchName,
     };
   }
 
@@ -276,6 +286,22 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
   }
 
   /**
+   * Post a progress update comment to issue or PR.
+   */
+  async postProgressComment(options: {
+    issueNumber: number;
+    prNumber?: number;
+    message: string;
+  }): Promise<void> {
+    const gh = createGhToken(this.token);
+    const { issueNumber, prNumber, message } = options;
+
+    const comment = `🔄 Kilo Code progress update: ${message}`;
+
+    await ghCreateComment(gh, this.owner, this.repo, issueNumber, comment, Boolean(prNumber));
+  }
+
+  /**
    * Fix literal \\n strings in PR body to actual newlines.
    */
   async fixPrBody(options: FixPrBodyOptions): Promise<void> {
@@ -330,7 +356,14 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
    * Run Kilo Code agent.
    */
   async runKilocode(options: RunKilocodeOptions): Promise<void> {
-    const { task, auto = true, timeout = 2000, model, kiloProvider = 'kilocode', kiloProviderType = 'kilocode' } = options;
+    const {
+      task,
+      auto = true,
+      timeout = 1800,
+      model,
+      kiloProvider = 'kilocode',
+      kiloProviderType = 'kilocode',
+    } = options;
 
     // Set environment variables
     const kiloEnv: Record<string, string | undefined> = {
@@ -346,29 +379,47 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       kiloEnv.KILOCODE_MODEL = model;
     }
 
-    // Build the command
-    const args = ['--task', task, '--auto'];
+    // Write task to temporary file
+    const tempFile = path.join(os.tmpdir(), `kilo-task-${Date.now()}.txt`);
+    fs.writeFileSync(tempFile, task);
+
+    // Build the command to pipe the file into kilocode
+    let command = `cat "${tempFile}" | kilocode --auto`;
     if (timeout) {
-      args.push('--timeout', String(timeout));
+      command += ` --timeout ${timeout}`;
     }
     if (model) {
-      args.push('--model', model);
+      command += ` --model ${model}`;
     }
 
     const { execSync } = require('child_process');
-    execSync(`kilocode ${args.join(' ')}`, {
-      encoding: 'utf-8',
-      stdio: 'inherit',
-      shell: true,
-      env: kiloEnv,
-    });
+    try {
+      execSync(command, {
+        encoding: 'utf-8',
+        stdio: 'inherit',
+        shell: true,
+        env: kiloEnv,
+      });
+    } finally {
+      // Clean up temp file
+      fs.unlinkSync(tempFile);
+    }
   }
 
   /**
    * Run the complete workflow.
    */
   async runAll(options: RunAllOptions): Promise<void> {
-    const { comment, issueNumber, auto = true, timeout = 2000, workDir, kiloModel, kiloProvider, kiloProviderType } = options;
+    const {
+      comment,
+      issueNumber,
+      auto = true,
+      timeout = 1800,
+      workDir,
+      kiloModel,
+      kiloProvider,
+      kiloProviderType,
+    } = options;
 
     if (workDir) {
       if (!fs.existsSync(workDir)) {
@@ -446,6 +497,13 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       kiloProviderType,
     });
     info('Kilo Code execution completed');
+
+    // Post progress update
+    await this.postProgressComment({
+      issueNumber,
+      prNumber: ctxPrNumber ? parseInt(ctxPrNumber, 10) : undefined,
+      message: 'Kilo Code task execution completed successfully.',
+    });
 
     // Step 7: Fix PR body if needed
     // if (ctxPrNumber) {

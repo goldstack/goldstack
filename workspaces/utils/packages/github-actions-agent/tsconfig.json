@@ -15,6 +15,9 @@
       "path": "../utils-cli"
     },
     {
+      "path": "../utils-log"
+    },
+    {
       "path": "../utils-git"
     }
   ]

@@ -1,5 +1,5 @@
 import { logger } from '@goldstack/utils-cli';
-import { spawnSync, } from 'child_process';
+import { spawnSync } from 'child_process';
 
 /**
  * Result type for gh CLI command execution.
