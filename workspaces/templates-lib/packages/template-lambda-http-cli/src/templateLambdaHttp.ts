@@ -11,6 +11,12 @@ export * from './types/LambdaHttpPackage';
 import yargs from 'yargs';
 import type { LambdaExpressDeployment, LambdaExpressPackage } from './types/LambdaHttpPackage';
 
+/**
+ * Runs the CLI for the Lambda HTTP template.
+ *
+ * @param args - Command line arguments.
+ * @returns {Promise<void>} A promise that resolves when the CLI execution is complete.
+ */
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
     const argv = await buildCli({

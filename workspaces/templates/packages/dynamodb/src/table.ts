@@ -25,7 +25,7 @@ export * from './entities';
  *
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
- * @returns A promise that resolves with a DynamoDBClient instance.
+ * @returns {Promise<DynamoDBClient>} A promise that resolves with a DynamoDBClient instance.
  */
 export const connect = async (deploymentName?: string): Promise<DynamoDBClient> => {
   return await templateConnect({
@@ -52,7 +52,7 @@ export interface ConnectTableParams {
  * Connects to the DynamoDB table and returns a Table instance for data operations.
  *
  * @param params - Optional parameters for connecting to the table.
- * @returns A promise that resolves with a Table instance.
+ * @returns {Promise<Table>} A promise that resolves with a Table instance.
  */
 export const connectTable = async (params?: ConnectTableParams): Promise<Table> => {
   const tableName = await getTableName(params?.deploymentName);
@@ -74,7 +74,7 @@ export const connectTable = async (params?: ConnectTableParams): Promise<Table> 
  * @param migrationName - The name of the migration to roll back to.
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
- * @returns A promise that resolves with a DynamoDBClient instance.
+ * @returns {Promise<DynamoDBClient>} A promise that resolves with a DynamoDBClient instance.
  */
 export const migrateDownTo = async (
   migrationName: string,
@@ -94,7 +94,7 @@ export const migrateDownTo = async (
  *
  * @param port - Optional port number to start the local DynamoDB on. Defaults to 8000.
  * @param deploymentName - Optional name of the deployment to use.
- * @returns A promise that resolves when the local DynamoDB has started.
+ * @returns {Promise<void>} A promise that resolves when the local DynamoDB has started.
  */
 export const startLocalDynamoDB = async (port?: number, deploymentName?: string): Promise<void> => {
   port = port || 8000;
@@ -106,7 +106,7 @@ export const startLocalDynamoDB = async (port?: number, deploymentName?: string)
  *
  * @param port - Optional port number of the local DynamoDB to stop.
  * @param deploymentName - Optional name of the deployment to use.
- * @returns A promise that resolves when the local DynamoDB has stopped.
+ * @returns {Promise<void>} A promise that resolves when the local DynamoDB has stopped.
  */
 export const stopLocalDynamoDB = async (port?: string, deploymentName?: string): Promise<void> => {
   return await templateStopLocalDynamoDB(goldstackConfig, goldstackSchema, port, deploymentName);
@@ -116,7 +116,7 @@ export const stopLocalDynamoDB = async (port?: string, deploymentName?: string):
  * Stops all local DynamoDB instances.
  *
  * @param deploymentName - Optional name of the deployment to use.
- * @returns A promise that resolves when all local DynamoDB instances have stopped.
+ * @returns {Promise<void>} A promise that resolves when all local DynamoDB instances have stopped.
  */
 export const stopAllLocalDynamoDB = async (deploymentName?: string): Promise<void> => {
   return await templateStopAllLocalDynamoDB(goldstackConfig, goldstackSchema, deploymentName);
@@ -127,7 +127,7 @@ export const stopAllLocalDynamoDB = async (deploymentName?: string): Promise<voi
  *
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
- * @returns A promise that resolves with the table name string.
+ * @returns {Promise<string>} A promise that resolves with the table name string.
  */
 export const getTableName = async (deploymentName?: string): Promise<string> => {
   return await templateGetTableName(goldstackConfig, goldstackSchema, deploymentName);
