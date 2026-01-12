@@ -19,7 +19,10 @@ import {
   branchExistsRemote,
   getCommitCount,
   getCurrentSha,
+  gitAddAll,
   gitCheckout,
+  gitClean,
+  gitCommit,
   gitCreateBranch,
   gitFetch,
   gitPull,
@@ -156,15 +159,21 @@ export class GitHubActionsAgent {
     gitFetch();
 
     if (prNumber) {
+      gitClean();
       gitCheckout(branchName);
       gitPull(branchName);
     } else if (branchExistsRemote(branchName)) {
+      gitClean();
       gitCheckout(branchName);
       gitPull(branchName);
     } else {
-      // Checkout master and create new branch
-      gitCheckout('master');
-      gitPull('master');
+      // already on master, commit untracked files before creating branch
+      try {
+        gitAddAll();
+        gitCommit('Auto-commit untracked files before creating branch');
+      } catch {
+        // ignore if no changes to commit
+      }
       gitCreateBranch(branchName);
     }
   }

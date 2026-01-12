@@ -73,9 +73,30 @@ export function branchExistsRemote(branchName: string): boolean {
 }
 
 /**
+ * Clean untracked files and directories.
+ */
+export function gitClean(): void {
+  gitExec(['clean', '-fd']);
+}
+
+/**
+ * Add all files to staging.
+ */
+export function gitAddAll(): void {
+  gitExec(['add', '.']);
+}
+
+/**
+ * Commit with a message.
+ */
+export function gitCommit(message: string): void {
+  gitExec(['commit', '-m', message]);
+}
+
+/**
  * Get the number of commits on the branch compared to master.
  */
-export function getCommitCount(branchName: string, baseBranch: string): number {
+export function getCommitCount(_branchName: string, baseBranch: string): number {
   try {
     const count = gitExec(['rev-list', '--count', `HEAD ^origin/${baseBranch}`]).trim();
     return parseInt(count, 10);
