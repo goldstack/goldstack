@@ -33,7 +33,7 @@ const coldStart: Map<string, boolean> = new Map();
  * @param goldstackConfig - The Goldstack configuration for the DynamoDB package.
  * @param packageSchema - The package schema.
  * @param deploymentName - Optional deployment name.
- * @returns Promise<string> - The table name.
+ * @returns {Promise<string>} The table name.
  */
 export const getTableName = async (
   // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
@@ -58,7 +58,7 @@ export const getTableName = async (
  * @param packageSchema - The package schema.
  * @param port - Optional port number to start the local DynamoDB on.
  * @param deploymentName - Optional deployment name.
- * @returns Promise<void>
+ * @returns {Promise<void>} A promise that resolves when the local DynamoDB instance is started.
  */
 export const startLocalDynamoDB = async (
   // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
@@ -92,7 +92,7 @@ export const startLocalDynamoDB = async (
  * @param goldstackConfig - The Goldstack configuration for the DynamoDB package.
  * @param packageSchema - The package schema.
  * @param deploymentName - Optional deployment name.
- * @returns Promise<void>
+ * @returns {Promise<void>} A promise that resolves when all local DynamoDB instances are stopped.
  */
 export const stopAllLocalDynamoDB = async (
   // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
@@ -125,7 +125,7 @@ export const stopAllLocalDynamoDB = async (
  * @param packageSchema - The package schema.
  * @param portOrDeploymentName - Optional port number or deployment name.
  * @param deploymentName - Optional deployment name.
- * @returns Promise<void>
+ * @returns {Promise<void>} A promise that resolves when the local DynamoDB instance is stopped.
  */
 export const stopLocalDynamoDB = async (
   // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
@@ -207,7 +207,7 @@ const createClient = async (
  * @param params.packageSchema - The package schema.
  * @param params.migrations - The migrations to perform.
  * @param params.deploymentName - Optional deployment name.
- * @returns Promise<DynamoDBClient> - The connected DynamoDB client.
+ * @returns {Promise<DynamoDBClient>} The connected DynamoDB client.
  */
 export const connect = async ({
   // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
@@ -281,7 +281,7 @@ export const deleteTable = async ({
  * @param params.packageSchema - The package schema.
  * @param params.migrations - The migrations.
  * @param params.deploymentName - Optional deployment name.
- * @returns Promise<DynamoDBClient> - The DynamoDB client.
+ * @returns {Promise<DynamoDBClient>} The DynamoDB client.
  */
 export const migrateDownTo = async ({
   migrationName,

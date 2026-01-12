@@ -9,7 +9,7 @@ export type { GoldstackTemplateConfiguration } from './generated/goldstackTempla
  * Reads and parses a template configuration from a string.
  *
  * @param data - The JSON string containing the template configuration.
- * @returns The parsed GoldstackTemplateConfiguration object.
+ * @returns {GoldstackTemplateConfiguration} The parsed GoldstackTemplateConfiguration object.
  */
 export const readTemplateConfigFromString = (data: string): GoldstackTemplateConfiguration => {
   const config = parseConfig(data, configSchema, {
@@ -22,7 +22,7 @@ export const readTemplateConfigFromString = (data: string): GoldstackTemplateCon
  * Reads and parses a template configuration from a file.
  *
  * @param path - The path to the template.json file. Defaults to 'template.json'.
- * @returns The parsed GoldstackTemplateConfiguration object.
+ * @returns {GoldstackTemplateConfiguration} The parsed GoldstackTemplateConfiguration object.
  */
 export const readTemplateConfigFromFile = (
   path = 'template.json',
