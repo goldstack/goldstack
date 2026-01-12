@@ -1,5 +1,5 @@
 import { logger } from '@goldstack/utils-cli';
-import { spawnSync, execSync } from 'child_process';
+import { spawnSync, } from 'child_process';
 
 /**
  * Result type for gh CLI command execution.
@@ -313,6 +313,8 @@ export async function createComment(
   body: string,
   _isPr?: boolean,
 ): Promise<void> {
+  // Escape the body to handle special characters like newlines and backticks
+  const escapedBody = JSON.stringify(body).slice(1, -1);
   const result = runGhCommand(
     [
       'issue',
@@ -322,7 +324,7 @@ export async function createComment(
       '--repo',
       `${owner}/${repo}`,
       '--body',
-      body,
+      escapedBody,
     ],
     token.token,
   );
@@ -395,7 +397,7 @@ export async function updatePrBody(
 ): Promise<void> {
   const escapedBody = JSON.stringify(body).slice(1, -1);
   const result = runGhCommand(
-    ['pr', 'edit', prNumber.toString(), '--repo', `${owner}/${repo}`, '--body', body],
+    ['pr', 'edit', prNumber.toString(), '--repo', `${owner}/${repo}`, '--body', escapedBody],
     token.token,
   );
   if (!result.success) {
