@@ -6577,6 +6577,7 @@ __metadata:
   dependencies:
     "@goldstack/utils-cli": "npm:0.3.27"
     "@goldstack/utils-git": "npm:0.2.22"
+    "@goldstack/utils-log": "npm:0.3.29"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"

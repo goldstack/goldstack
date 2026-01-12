@@ -1,3 +1,4 @@
+import { info } from '@goldstack/utils-log';
 import * as fs from 'fs';
 import type {
   BuildContextOptions,
@@ -358,32 +359,43 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
   async runAll(options: RunAllOptions): Promise<void> {
     const { comment, issueNumber, auto = true, timeout = 2000 } = options;
 
+    info('Starting Kilo Code workflow execution');
+
     // Step 1: Identify comment
+    info('Identifying comment and PR numbers...');
     const { prNumber } = await this.identifyComment({
       comment,
       issueNumber,
     });
+    info(`Identified issue #${issueNumber}${prNumber ? ` and PR #${prNumber}` : ''}`);
 
     // Step 2: Identify branch
+    info('Identifying working branch...');
     const { branchName } = await this.identifyBranch({
       issueNumber,
       prNumber: prNumber ? parseInt(prNumber, 10) : undefined,
     });
+    info(`Working branch identified: ${branchName}`);
 
     // Step 3: Checkout branch
+    info('Checking out working branch...');
     await this.checkoutBranch({
       branchName,
       prNumber: prNumber ? parseInt(prNumber, 10) : undefined,
     });
+    info('Branch checked out successfully');
 
     // Step 4: Build context
+    info('Building task context from issue/PR and comments...');
     const { task, prNumber: ctxPrNumber } = await this.buildContext({
       comment,
       issueNumber,
       prNumber: prNumber ? parseInt(prNumber, 10) : undefined,
     });
+    info('Task context built successfully');
 
     // Step 5: Post start comment
+    info('Posting start comment to issue/PR...');
     const runUrl = `https://github.com/${this.owner}/${this.repo}/actions/runs/${process.env.GITHUB_RUN_ID}`;
     await this.postStartComment({
       issueNumber,
@@ -391,30 +403,40 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       branchName,
       runUrl,
     });
+    info('Start comment posted successfully');
 
     // Step 6: Run Kilo Code
+    info('Running Kilo Code agent...');
     await this.runKilocode({
       task,
       auto,
       timeout,
     });
+    info('Kilo Code execution completed');
 
     // Step 7: Fix PR body if needed
-    if (ctxPrNumber) {
-      await this.fixPrBody({
-        prNumber: parseInt(ctxPrNumber, 10),
-      });
-    }
+    // if (ctxPrNumber) {
+    //   info('Fixing PR body formatting...');
+    //   await this.fixPrBody({
+    //     prNumber: parseInt(ctxPrNumber, 10),
+    //   });
+    //   info('PR body fixed successfully');
+    // }
 
     // Step 8: Create PR if needed
     if (!ctxPrNumber) {
+      info('Creating pull request...');
       const { prNumber: newPrNumber } = await this.createPr({
         issueNumber,
         branchName,
       });
       if (newPrNumber) {
-        console.log(`Created PR #${newPrNumber}`);
+        info(`Pull request created: #${newPrNumber}`);
+      } else {
+        info('No pull request created (no commits on branch)');
       }
     }
+
+    info('Kilo Code workflow execution completed successfully');
   }
 }
