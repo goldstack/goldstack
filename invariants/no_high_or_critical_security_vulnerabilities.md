@@ -20,7 +20,7 @@ To check for security vulnerabilities:
    - Fix them in that order following this priority:
      1. **First**: Update the direct or transitive dependency in `package.json`
      2. **Second**: Update yarn configuration in `.yarnrc.yml` (if available)
-     3. **Last resort**: Use `resolutions` in `package.json` (only if all other options fail)
+   - If vulnerabilities cannot be fixed with 1. or 2. from above, then investigate if the vulnerability can be fixed using `resolutions` in `package.json`. If so, inform the user with a PR comment BUT DO NOT APPLY THE RESOLUTION YOURSELF - this is a last resort and should be done by the user.
 
 4. To validate no package mismatches after updates:
    ```
