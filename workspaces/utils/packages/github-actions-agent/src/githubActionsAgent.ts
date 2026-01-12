@@ -51,13 +51,14 @@ export class GitHubActionsAgent {
   private kiloApiKey: string;
   private owner: string;
   private repo: string;
+  private remoteUrl: string;
 
   constructor(options: { token: string; kiloApiKey: string }) {
     this.token = options.token;
     this.kiloApiKey = options.kiloApiKey;
     // Extract owner/repo from git remote or environment
-    const remoteUrl = this.getGitRemoteUrl();
-    const match = remoteUrl.match(/github\.com[/:]([^/]+)\/([^.]+)\.git/);
+    this.remoteUrl = this.getGitRemoteUrl();
+    const match = this.remoteUrl.match(/github\.com[/:]([^/]+)\/([^.]+)\.git/);
     if (match) {
       this.owner = match[1];
       this.repo = match[2];
@@ -329,13 +330,13 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
    * Run Kilo Code agent.
    */
   async runKilocode(options: RunKilocodeOptions): Promise<void> {
-    const { task, auto = true, timeout = 2000, model } = options;
+    const { task, auto = true, timeout = 2000, model, kiloProvider = 'kilocode', kiloProviderType = 'kilocode' } = options;
 
     // Set environment variables
     const kiloEnv: Record<string, string | undefined> = {
       ...process.env,
-      KILO_PROVIDER: 'kilocode',
-      KILO_PROVIDER_TYPE: 'kilocode',
+      KILO_PROVIDER: kiloProvider,
+      KILO_PROVIDER_TYPE: kiloProviderType,
       KILOCODE_API_KEY: this.kiloApiKey,
       KILOCODE_TOKEN: this.kiloApiKey,
       GITHUB_TOKEN: this.token,
@@ -367,11 +368,25 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
    * Run the complete workflow.
    */
   async runAll(options: RunAllOptions): Promise<void> {
-    const { comment, issueNumber, auto = true, timeout = 2000, workDir } = options;
+    const { comment, issueNumber, auto = true, timeout = 2000, workDir, kiloModel, kiloProvider, kiloProviderType } = options;
 
     if (workDir) {
+      if (!fs.existsSync(workDir)) {
+        fs.mkdirSync(workDir, { recursive: true });
+      }
       process.chdir(workDir);
       info(`Changed working directory to: ${workDir}`);
+
+      // Check if it's a git repository
+      if (!fs.existsSync('.git')) {
+        info('Directory is not a git repository, cloning...');
+        const { execSync } = require('child_process');
+        execSync(`git clone ${this.remoteUrl} .`, {
+          encoding: 'utf-8',
+          stdio: 'inherit',
+        });
+        info('Repository cloned successfully');
+      }
     }
 
     info('Starting Kilo Code workflow execution');
@@ -426,7 +441,9 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       task,
       auto,
       timeout,
-      model: process.env.KILOCODE_MODEL,
+      model: kiloModel || process.env.KILOCODE_MODEL,
+      kiloProvider,
+      kiloProviderType,
     });
     info('Kilo Code execution completed');
 

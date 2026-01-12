@@ -157,6 +157,18 @@ export const run = async (): Promise<void> => {
             type: 'string',
             describe: 'LLM model to use',
             demandOption: false,
+          })
+          .option('kiloProvider', {
+            type: 'string',
+            describe: 'Kilo Code provider',
+            demandOption: false,
+            default: 'kilocode',
+          })
+          .option('kiloProviderType', {
+            type: 'string',
+            describe: 'Kilo Code provider type',
+            demandOption: false,
+            default: 'kilocode',
           });
       })
       .command('run-all', 'Execute the complete workflow as a single command', (yargs) => {
@@ -187,6 +199,23 @@ export const run = async (): Promise<void> => {
             type: 'string',
             describe: 'Working directory for git operations',
             demandOption: false,
+          })
+          .option('kiloModel', {
+            type: 'string',
+            describe: 'Kilo Code model to use',
+            demandOption: false,
+          })
+          .option('kiloProvider', {
+            type: 'string',
+            describe: 'Kilo Code provider',
+            demandOption: false,
+            default: 'kilocode',
+          })
+          .option('kiloProviderType', {
+            type: 'string',
+            describe: 'Kilo Code provider type',
+            demandOption: false,
+            default: 'kilocode',
           });
       })
       .parse();
@@ -276,6 +305,8 @@ export const run = async (): Promise<void> => {
         auto: argv.auto as boolean | undefined,
         timeout: argv.timeout as number | undefined,
         model: argv.model ? String(argv.model) : undefined,
+        kiloProvider: argv.kiloProvider ? String(argv.kiloProvider) : undefined,
+        kiloProviderType: argv.kiloProviderType ? String(argv.kiloProviderType) : undefined,
       });
       return;
     }
@@ -287,6 +318,9 @@ export const run = async (): Promise<void> => {
         auto: argv.auto as boolean | undefined,
         timeout: argv.timeout as number | undefined,
         workDir: argv.workDir ? String(argv.workDir) : undefined,
+        kiloModel: argv.kiloModel ? String(argv.kiloModel) : undefined,
+        kiloProvider: argv.kiloProvider ? String(argv.kiloProvider) : undefined,
+        kiloProviderType: argv.kiloProviderType ? String(argv.kiloProviderType) : undefined,
       });
       return;
     }

@@ -97,6 +97,8 @@ export interface RunKilocodeOptions {
   auto?: boolean;
   timeout?: number;
   model?: string;
+  kiloProvider?: string;
+  kiloProviderType?: string;
 }
 
 /**
@@ -108,6 +110,9 @@ export interface RunAllOptions {
   auto?: boolean;
   timeout?: number;
   workDir?: string;
+  kiloModel?: string;
+  kiloProvider?: string;
+  kiloProviderType?: string;
 }
 
 /**
