@@ -2,7 +2,7 @@
 
 # Goldstack Shell Utilities
 
-Utilities for shell commands.
+This library provides various convenience methods for working with files and folders as well as interacting with the shell.
 
 ## Installation
 
