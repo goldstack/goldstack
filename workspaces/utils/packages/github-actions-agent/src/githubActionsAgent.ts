@@ -534,18 +534,18 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
     // }
 
     // Step 8: Create PR if needed
-    if (!ctxPrNumber) {
-      info('Creating pull request...');
-      const { prNumber: newPrNumber } = await this.createPr({
-        issueNumber,
-        branchName,
-      });
-      if (newPrNumber) {
-        info(`Pull request created: #${newPrNumber}`);
-      } else {
-        info('No pull request created (no commits on branch)');
-      }
-    }
+    // if (!ctxPrNumber) {
+    //   info('Creating pull request...');
+    //   const { prNumber: newPrNumber } = await this.createPr({
+    //     issueNumber,
+    //     branchName,
+    //   });
+    //   if (newPrNumber) {
+    //     info(`Pull request created: #${newPrNumber}`);
+    //   } else {
+    //     info('No pull request created (no commits on branch)');
+    //   }
+    // }
 
     info('Kilo Code workflow execution completed successfully');
   }
