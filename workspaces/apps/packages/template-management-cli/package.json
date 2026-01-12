@@ -40,7 +40,7 @@
     "@goldstack/utils-project": "0.4.35",
     "mock-aws-s3-v3": "6.1.7",
     "source-map-support": "^0.5.21",
-    "tmp": "^0.2.1",
+    "tmp": "^0.2.5",
     "yargs": "^17"
   },
   "devDependencies": {

@@ -177,7 +177,6 @@ export const run = async (): Promise<void> => {
 
       info('Deploy set completed.');
       if (tmpInstance) {
-        rm('-rf', workDir.replace(/\\/g, '/'));
         tmpInstance.removeCallback();
       }
 
@@ -238,7 +237,6 @@ export const run = async (): Promise<void> => {
       await scheduleAllDeploySets(argv as unknown as ScheduleArgs);
       console.log('Schedule all deploy sets completed');
       if (tmpInstance) {
-        rm('-rf', workDir);
         tmpInstance.removeCallback();
       }
 
@@ -246,7 +244,6 @@ export const run = async (): Promise<void> => {
     }
 
     if (tmpInstance) {
-      rm('-rf', workDir);
       tmpInstance.removeCallback();
     }
 
