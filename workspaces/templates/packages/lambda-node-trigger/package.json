@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.960.0",
-    "@goldstack/template-lambda-trigger-cli": "0.1.52",
-    "@goldstack/template-sqs": "0.1.44",
+    "@goldstack/template-lambda-trigger-cli": "0.1.53",
+    "@goldstack/template-sqs": "0.1.45",
     "@goldstack/utils-git": "0.2.22",
     "@goldstack/utils-log": "0.3.29",
     "@goldstack/utils-sh": "0.5.33",

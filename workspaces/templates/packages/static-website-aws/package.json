@@ -25,12 +25,12 @@
     "watch-web": "ts-node --swc ./src/watch.ts \"$@\""
   },
   "dependencies": {
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.1",
     "gulp-changed": "^4.0.2",
-    "gulp-replace": "^1.0.0"
+    "gulp-replace": "^1.1.4"
   },
   "devDependencies": {
-    "@goldstack/template-static-website-aws": "0.5.70",
+    "@goldstack/template-static-website-aws": "0.5.72",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/gulp": "^4.0.17",

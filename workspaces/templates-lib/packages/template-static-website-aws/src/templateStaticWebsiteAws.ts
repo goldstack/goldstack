@@ -26,6 +26,11 @@ import yargs from 'yargs';
 export { infraAwsStaticWebsiteCli };
 export type { InfraAwsStaticWebsiteCliParams };
 
+/**
+ * @description Gets the deployment configuration for a given deployment name.
+ * @param deploymentName - The name of the deployment.
+ * @returns The deployment configuration.
+ */
 export const getDeploymentConfig = (deploymentName: string): AWSStaticWebsiteDeployment => {
   const packageConfig = new PackageConfig<AWSStaticWebsitePackage, AWSStaticWebsiteDeployment>({
     packagePath: './',
@@ -33,6 +38,10 @@ export const getDeploymentConfig = (deploymentName: string): AWSStaticWebsiteDep
   return packageConfig.getDeployment(deploymentName);
 };
 
+/**
+ * @description Runs the CLI command for the AWS Static Website template.
+ * @param args - Command line arguments.
+ */
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
     const argv = await buildCli({
@@ -56,6 +65,7 @@ export const run = async (args: string[]): Promise<void> => {
       const deploymentName = argv.deployment;
       let targetVersion: string | undefined;
       let confirm: boolean | undefined;
+      let skipConfirmations: boolean | undefined;
       let commandArgs: string[] | undefined;
 
       if (infraOperation === 'upgrade') {
@@ -64,6 +74,8 @@ export const run = async (args: string[]): Promise<void> => {
         commandArgs = opArgs.slice(2);
       } else if (infraOperation === 'destroy') {
         confirm = argv.yes;
+      } else if (infraOperation === 'destroy-state') {
+        skipConfirmations = argv.yes;
       }
 
       const params: InfraAwsStaticWebsiteCliParams = {
@@ -71,6 +83,7 @@ export const run = async (args: string[]): Promise<void> => {
         deploymentName,
         targetVersion,
         confirm,
+        skipConfirmations,
         commandArgs,
       };
       await infraAwsStaticWebsiteCli(config, params);
