@@ -5,6 +5,12 @@ import { GitHubActionsAgent } from './githubActionsAgent';
 // Cast yargs to any to avoid type issues with demandCommand
 const yargsAny = yargs as any;
 
+import { info } from '@goldstack/utils-log';
+import { config } from 'dotenv';
+
+const envFile = process.env.ENV_FILE || '.env';
+config({ path: envFile });
+
 export const run = async (): Promise<void> => {
   await wrapCli(async (): Promise<void> => {
     const argv = await yargsAny
@@ -189,6 +195,8 @@ export const run = async (): Promise<void> => {
     }
 
     const agent = new GitHubActionsAgent({ token, kiloApiKey });
+
+    info(`Starting GitHub Actions Agent with command: ${argv._[0]}`);
 
     // Handle commands
     if (argv._[0] === 'identify-comment') {

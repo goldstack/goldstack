@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import 'source-map-support/register.js';
 
-import('../dist/src/ghaAgentCliRun.js')
+import('../dist/src/ghaAgentCliRun')
   .then((module) => {
     return module.run();
   })
