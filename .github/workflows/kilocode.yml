@@ -26,6 +26,9 @@ jobs:
 
       - uses: ./.github/actions/goldstack-setup
 
+      - run: |
+          npm install -g @kilocode/cli
+
       - name: Setup gha-agent alias
         run: |
           mkdir -p ~/bin
