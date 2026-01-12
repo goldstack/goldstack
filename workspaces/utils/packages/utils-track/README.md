@@ -2,7 +2,7 @@
 
 # Goldstack Track Utilities
 
-Utilities for tracking.
+This library allows linking [Google Analytics](https://analytics.google.com/analytics/web/) to React applications.
 
 ## Installation
 
