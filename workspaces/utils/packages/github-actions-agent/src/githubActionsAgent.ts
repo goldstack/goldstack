@@ -192,7 +192,12 @@ export class GitHubActionsAgent {
    */
   async buildContext(options: BuildContextOptions): Promise<BuildContextResult> {
     const gh = createGhToken(this.token);
-    const { comment, issueNumber, prNumber, agentInstructionsPath = path.resolve(__dirname, '../../../../../AGENTS_GHA.md') } = options;
+    const {
+      comment,
+      issueNumber,
+      prNumber,
+      agentInstructionsPath = path.resolve(__dirname, '../../../../../AGENTS_GHA.md'),
+    } = options;
 
     // Strip /kilo or /kilocode prefix
     const prompt = comment.replace(/^\/(kilo(code)?)\s*/i, '');

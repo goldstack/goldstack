@@ -64,7 +64,7 @@
     "node-css-require": "0.4.26",
     "react": "^19",
     "react-dom": "^19",
-    "rimraf": "^3.0.2",
+    "rimraf": "^6.1.2",
     "supertest": "^7.1.4",
     "tree-kill": "^1.2.2",
     "ts-node": "^10.9.2",

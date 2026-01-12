@@ -41,7 +41,7 @@
     "@types/stripe": "^8.0.417",
     "@types/uuid": "^10.0.0",
     "jest": "^30.2.0",
-    "rimraf": "^3.0.2",
+    "rimraf": "^6.1.2",
     "typescript": "^5.9.3"
   }
 }

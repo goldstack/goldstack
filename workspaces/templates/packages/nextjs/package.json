@@ -71,7 +71,7 @@
     "pump": "^3.0.2",
     "rc": "^1.2.8",
     "reload": "^3.2.0",
-    "rimraf": "^3.0.2",
+    "rimraf": "^6.1.2",
     "semver": "^7.6.3",
     "simple-get": "^4.0.1",
     "svg-url-loader": "^8.0.0",

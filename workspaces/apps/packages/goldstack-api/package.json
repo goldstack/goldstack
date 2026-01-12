@@ -76,7 +76,7 @@
     "esbuild": "^0.25.6",
     "express": "4.20.0",
     "jest": "^30.2.0",
-    "rimraf": "^3.0.2",
+    "rimraf": "^6.1.2",
     "supertest": "^7.1.4",
     "supertest-session": "^5.0.1",
     "ts-node": "^10.9.2",
