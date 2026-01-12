@@ -2,7 +2,7 @@
 
 # Goldstack Nodemonx Utilities
 
-Utilities for nodemonx.
+This is an enhanced version of [nodemon](https://www.npmjs.com/package/nodemon) specifically designed to support watching for code changes in projects with multiple packages/workspaces.
 
 ## Installation
 
