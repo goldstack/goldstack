@@ -251,15 +251,15 @@ export class GitHubActionsAgent {
     if (reviewComments) {
       task += `CODE REVIEW COMMENTS (on current commit):\n${reviewComments}\n\n`;
     }
-    if (agents) {
-      task += `PROJECT INSTRUCTIONS:\n${agents}\n\n`;
-    }
-    task += `TASK: ${prompt}\n\n`;
     task += `ISSUE_NUMBER: ${issueNumber}\n`;
     task += `BRANCH_NAME: ${headRefName}\n`;
     if (prNumber) {
       task += `PR_NUMBER: ${prNumber}\n`;
     }
+    if (agents) {
+      task += `PROJECT INSTRUCTIONS:\n${agents}\n\n`;
+    }
+    task += `YOUR TASK: ${prompt}\n\n`;
 
     return {
       branchName: headRefName,
