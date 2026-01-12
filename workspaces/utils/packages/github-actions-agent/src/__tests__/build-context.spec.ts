@@ -3,6 +3,7 @@
  */
 
 import * as fs from 'fs';
+import * as path from 'path';
 import { GitHubActionsAgent } from '../githubActionsAgent';
 
 // Test configuration for real GitHub API tests
@@ -155,14 +156,13 @@ describe('buildContext', () => {
 
   describe('custom agents file', () => {
     it('should read custom agents file if provided', async () => {
-      // Check if a custom agents file exists
-      const customAgentsFile = 'AGENTS_GHA.md';
-      const fileExists = fs.existsSync(customAgentsFile);
+      // Use the correct path to AGENTS_GHA.md
+      const customAgentsFile = path.resolve(__dirname, '../../../../../../AGENTS_GHA.md');
 
       const result = await agent.buildContext({
         comment: '/kilo test',
         issueNumber: TEST_ISSUE_NUMBER,
-        agentInstructionsPath: fileExists ? customAgentsFile : undefined,
+        agentInstructionsPath: customAgentsFile,
       });
 
       expect(result.branchName).toBe('kilo-issue-518');
