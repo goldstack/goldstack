@@ -2,8 +2,7 @@ import { info } from '@goldstack/utils-log';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as os from 'os';
-
-const { execSync } = require('child_process');
+import { execSync, spawn } from 'child_process';
 
 import type {
   BuildContextOptions,
@@ -77,7 +76,6 @@ export class GitHubActionsAgent {
 
   private getGitRemoteUrl(): string {
     try {
-      const { execSync } = require('child_process');
       return execSync('git remote get-url origin', {
         encoding: 'utf-8',
       }).trim();
@@ -359,7 +357,7 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
     const {
       task,
       auto = true,
-      timeout = 1800,
+      timeout = 2700,
       model,
       kiloProvider = 'kilocode',
       kiloProviderType = 'kilocode',
@@ -392,18 +390,35 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       command += ` --model ${model}`;
     }
 
-    const { execSync } = require('child_process');
-    try {
-      execSync(command, {
-        encoding: 'utf-8',
+    return new Promise<void>((resolve, reject) => {
+      const child = spawn('sh', ['-c', command], {
         stdio: 'inherit',
-        shell: true,
         env: kiloEnv,
       });
-    } finally {
+
+      const timeoutMs = (timeout + 60) * 1000; // Add 60 second buffer
+      const timer = setTimeout(() => {
+        child.kill('SIGTERM');
+        reject(new Error(`KiloCode execution timed out after ${timeout + 60} seconds`));
+      }, timeoutMs);
+
+      child.on('exit', (code, signal) => {
+        clearTimeout(timer);
+        if (code !== 0) {
+          reject(new Error(`KiloCode exited with code ${code}`));
+        } else {
+          resolve();
+        }
+      });
+
+      child.on('error', (err) => {
+        clearTimeout(timer);
+        reject(err);
+      });
+    }).finally(() => {
       // Clean up temp file
       fs.unlinkSync(tempFile);
-    }
+    });
   }
 
   /**
@@ -414,7 +429,7 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       comment,
       issueNumber,
       auto = true,
-      timeout = 1800,
+      timeout = 2700,
       workDir,
       kiloModel,
       kiloProvider,
@@ -431,7 +446,7 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       // Check if it's a git repository
       if (!fs.existsSync('.git')) {
         info('Directory is not a git repository, cloning...');
-        const { execSync } = require('child_process');
+        const { execSync, spawn } = require('child_process');
         execSync(`git clone ${this.remoteUrl} .`, {
           encoding: 'utf-8',
           stdio: 'inherit',
