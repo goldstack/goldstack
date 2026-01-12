@@ -319,7 +319,6 @@ export async function createComment(
     [
       'issue',
       'comment',
-      'create',
       issueNumber.toString(),
       '--repo',
       `${owner}/${repo}`,
