@@ -20,7 +20,7 @@ const nextConfig = {
       test: /\.(png|jpe?g|gif|webp|ico)$/i,
       type: 'asset/resource',
       generator: {
-        filename: 'static/[hash][ext]',
+        filename: 'static/images/[hash][ext]',
       },
     });
     return config;
