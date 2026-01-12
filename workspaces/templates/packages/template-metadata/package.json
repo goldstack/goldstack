@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@goldstack/template-build-set": "0.1.0",
-    "@goldstack/utils-project": "0.4.34"
+    "@goldstack/utils-project": "0.4.35"
   },
   "devDependencies": {
     "@swc/core": "^1.15.8",
