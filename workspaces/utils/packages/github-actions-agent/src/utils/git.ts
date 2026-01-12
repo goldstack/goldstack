@@ -29,7 +29,7 @@ export function gitFetch(): void {
  * Checkout a branch.
  */
 export function gitCheckout(branchName: string): void {
-  gitExec(['checkout', branchName]);
+  gitExec(['checkout', '--force', branchName]);
 }
 
 /**
