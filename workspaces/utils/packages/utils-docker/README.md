@@ -21,4 +21,4 @@ await runDocker({
 });
 ```
 
-See [utilsDocker.ts](https://github.com/goldstack/goldstack/blob/master/workspaces/templates-lib/packages/utils-docker/src/utilsDocker.ts).
+See [utilsDocker.ts](https://github.com/goldstack/goldstack/blob/master/workspaces/utils/packages/utils-docker/src/utilsDocker.ts).

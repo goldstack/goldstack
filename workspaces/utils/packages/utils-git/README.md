@@ -19,4 +19,4 @@ const status = await gitStatus();
 console.log(status);
 ```
 
-See [utilsGit.ts](https://github.com/goldstack/goldstack/blob/master/workspaces/templates-lib/packages/utils-git/src/utilsGit.ts)
+See [utilsGit.ts](https://github.com/goldstack/goldstack/blob/master/workspaces/utils/packages/utils-git/src/utilsGit.ts)

@@ -14,6 +14,15 @@ npm install @goldstack/utils-json-to-ts
 
 ## Usage
 
+```json
+const schema = {
+  type: "object",
+  properties: {
+    name: { type: "string" }
+  }
+};
+```
+
 ```typescript
 import { convertJsonToTs } from '@goldstack/utils-json-to-ts';
 

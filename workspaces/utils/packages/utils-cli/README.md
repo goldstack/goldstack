@@ -20,4 +20,4 @@ runCli(async () => {
 });
 ```
 
-See [Source Code](https://github.com/goldstack/goldstack/blob/master/workspaces/templates-lib/packages/utils-cli/src/utilsCli.ts).
+See [Source Code](https://github.com/goldstack/goldstack/blob/master/workspaces/utils/packages/utils-cli/src/utilsCli.ts).
