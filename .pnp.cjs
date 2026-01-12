@@ -5674,7 +5674,6 @@ const RAW_RUNTIME_STATE =
           ["@types/react", "npm:19.2.7"],\
           ["@types/testing-library__jest-dom", "npm:6.0.0"],\
           ["concurrently", "npm:7.3.0"],\
-          ["file-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:6.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["jest-environment-jsdom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:30.2.0"],\
           ["jest-transform-stub", "npm:2.0.0"],\
@@ -5684,7 +5683,7 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:19.2.3"],\
           ["react-is", "npm:19.2.1"],\
           ["reload", "npm:3.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["svg-url-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:8.0.0"],\
           ["swr", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:0.4.0"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
@@ -5712,7 +5711,6 @@ const RAW_RUNTIME_STATE =
           ["@types/testing-library__jest-dom", "npm:6.0.0"],\
           ["@types/testing-library__react", "npm:10.2.0"],\
           ["concurrently", "npm:7.3.0"],\
-          ["file-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:6.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["jest-environment-jsdom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:30.2.0"],\
           ["jest-transform-stub", "npm:2.0.0"],\
@@ -5723,7 +5721,7 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:19.2.3"],\
           ["react-is", "npm:19.2.1"],\
           ["reload", "npm:3.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["sass", "npm:1.89.2"],\
           ["svg-url-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:8.0.0"],\
           ["swr", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:0.4.0"],\
@@ -5753,7 +5751,6 @@ const RAW_RUNTIME_STATE =
           ["@types/testing-library__react", "npm:10.2.0"],\
           ["autoprefixer", "virtual:6e6a19ccf8c83346d9f79f4676f574e62d32bf92e99e6749c22e13d87c7c6992254aa59106ce2f48cb8675403ba55b493da6bb46258c31710cda5fb0f1e8ecdc#npm:10.4.20"],\
           ["concurrently", "npm:7.3.0"],\
-          ["file-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:6.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["jest-environment-jsdom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:30.2.0"],\
           ["jest-transform-stub", "npm:2.0.0"],\
@@ -5763,7 +5760,7 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:19.2.3"],\
           ["react-is", "npm:19.2.1"],\
           ["reload", "npm:3.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["svg-url-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:8.0.0"],\
           ["swr", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:0.4.0"],\
           ["tailwindcss", "npm:3.4.17"],\
@@ -5792,7 +5789,7 @@ const RAW_RUNTIME_STATE =
           ["archiver", "npm:5.3.1"],\
           ["fs-extra", "npm:11.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["semver", "npm:7.7.3"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["uuid", "npm:11.0.5"]\
@@ -5815,7 +5812,7 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["nodemon", "npm:2.0.20"],\
           ["reload", "npm:3.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -5837,7 +5834,7 @@ const RAW_RUNTIME_STATE =
           ["concurrently", "npm:7.3.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["nodemon", "npm:2.0.20"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -5871,7 +5868,7 @@ const RAW_RUNTIME_STATE =
           ["babel-plugin-styled-components", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:2.0.7"],\
           ["cheerio", "npm:1.0.0-rc.10"],\
           ["concurrently", "npm:7.3.0"],\
-          ["file-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:6.2.0"],\
+          ["file-loader", "virtual:288ae96217e982e6720c4171b5761b1cd3ae4ca0c1a9775a38394f97a0dbe2e9ae1d691e2df9c2dd49177ff136b5a8258d2be25042b3b8862f3f9735c07a1954#npm:6.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["jest-environment-jsdom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:30.2.0"],\
           ["jest-transform-stub", "npm:2.0.0"],\
@@ -5882,7 +5879,7 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:19.2.3"],\
           ["react-is", "npm:19.2.1"],\
           ["reload", "npm:3.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["sass", "npm:1.89.2"],\
           ["styled-components", "virtual:cd295072a2b6c661ee06707d6470a313c9e528e6cc6a584fbe1beace0d006aa53113f0388633d8d909786d1f723ce8023ba37fbb2f0a7746999414b562703366#npm:5.3.5"],\
           ["svg-url-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:8.0.0"],\
@@ -5913,7 +5910,7 @@ const RAW_RUNTIME_STATE =
           ["dynamodb-toolbox", "virtual:e6f34f859070556a57f3e28b06868fee5b5297e04d5e68b2366d97af4549101da65ebaaccecfb342d1152c7ee50e1cbf8b22fe8bc8a7ff10d26165a7a93e6196#npm:2.7.2"],\
           ["ejs", "npm:3.1.10"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -5937,7 +5934,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -5994,7 +5991,7 @@ const RAW_RUNTIME_STATE =
           ["express", "npm:4.20.0"],\
           ["helmet", "npm:4.6.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["sanitize-html", "npm:2.12.1"],\
           ["sort-package-json", "npm:3.4.0"],\
           ["source-map-support", "npm:0.5.21"],\
@@ -6024,7 +6021,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6068,7 +6065,6 @@ const RAW_RUNTIME_STATE =
           ["babel-plugin-styled-components", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:2.0.7"],\
           ["concurrently", "npm:7.3.0"],\
           ["data-uri-to-buffer", "npm:3.0.1"],\
-          ["file-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:6.2.0"],\
           ["install", "npm:0.13.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["jest-environment-jsdom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:30.2.0"],\
@@ -6079,7 +6075,7 @@ const RAW_RUNTIME_STATE =
           ["react-bootstrap", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:2.10.10"],\
           ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:19.2.3"],\
           ["react-is", "npm:19.2.1"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["sass", "npm:1.89.2"],\
           ["styled-components", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:5.3.5"],\
           ["svg-url-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:8.0.0"],\
@@ -6105,7 +6101,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6127,7 +6123,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["renamer", "npm:0.7.3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6156,7 +6152,7 @@ const RAW_RUNTIME_STATE =
           ["handlebars", "npm:4.7.7"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["renamer", "npm:0.7.3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6182,7 +6178,7 @@ const RAW_RUNTIME_STATE =
           ["handlebars", "npm:4.7.7"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["renamer", "npm:0.7.3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6213,7 +6209,7 @@ const RAW_RUNTIME_STATE =
           ["express", "npm:4.20.0"],\
           ["helmet", "npm:4.6.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-loader", "virtual:cbfe6fe1cb0ddbea1168e8fa94fedda0c220db775f729039f88aff5b0c7782b6766d534b88de980cc6c8e8667a7d5cc1bff11c33ca75ed004ee3d73e952779d1#npm:1.1.0"],\
           ["source-map-support", "npm:0.5.21"],\
           ["supertest", "npm:7.1.4"],\
@@ -6244,7 +6240,7 @@ const RAW_RUNTIME_STATE =
           ["@yarnpkg/esbuild-plugin-pnp", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:3.0.0-rc.15"],\
           ["esbuild", "npm:0.25.6"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
@@ -6266,7 +6262,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6283,7 +6279,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -6303,7 +6299,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["yargs", "npm:17.7.2"]\
@@ -6324,7 +6320,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
@@ -6342,7 +6338,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -6375,7 +6371,6 @@ const RAW_RUNTIME_STATE =
           ["concurrently", "npm:7.3.0"],\
           ["detect-libc", "npm:2.0.3"],\
           ["expand-template", "npm:2.0.3"],\
-          ["file-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:6.2.0"],\
           ["github-from-package", "npm:0.0.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["jest-environment-jsdom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:30.2.0"],\
@@ -6392,7 +6387,7 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:19.2.3"],\
           ["react-is", "npm:19.2.1"],\
           ["reload", "npm:3.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["semver", "npm:7.7.3"],\
           ["simple-get", "npm:4.0.1"],\
           ["svg-url-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:8.0.0"],\
@@ -6422,7 +6417,7 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["minimatch", "npm:10.0.1"],\
           ["node-watch", "npm:0.6.4"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -6445,7 +6440,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["jsonpath", "npm:1.1.1"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6470,7 +6465,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["sort-package-json", "npm:3.4.0"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
@@ -6497,7 +6492,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["extract-zip", "npm:2.0.1"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["sort-package-json", "npm:3.4.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6519,7 +6514,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["temp-dir", "npm:2.0.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6548,7 +6543,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["axios", "npm:1.12.2"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["temp-dir", "npm:2.0.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6573,7 +6568,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["concurrently", "npm:7.3.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6604,7 +6599,7 @@ const RAW_RUNTIME_STATE =
           ["@types/uuid", "npm:10.0.0"],\
           ["fs-extra", "npm:11.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["semver", "npm:7.7.3"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["uuid", "npm:11.0.5"]\
@@ -6630,7 +6625,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["concurrently", "npm:7.3.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6652,7 +6647,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6669,7 +6664,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["nodemon", "npm:2.0.20"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:f9142006202e84442d97960bffe1f194e2429cf8062d0c28268d7fd2f85865329bb070ab3bec3c6b72a4d8b89dd542ffd3284cb82516c4681ee8c29cae609f04#npm:10.9.2"]\
         ],\
         "linkType": "SOFT"\
@@ -6714,7 +6709,7 @@ const RAW_RUNTIME_STATE =
           ["node-css-require", "workspace:workspaces/utils/packages/node-css-require"],\
           ["react", "npm:19.2.3"],\
           ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:19.2.3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["static-file-mapper-build", "workspace:workspaces/utils/packages/static-file-mapper-build"],\
           ["supertest", "npm:7.1.4"],\
@@ -6748,7 +6743,7 @@ const RAW_RUNTIME_STATE =
           ["esbuild", "npm:0.25.6"],\
           ["find-free-port", "npm:2.0.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["supertest", "npm:7.1.4"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
@@ -6778,7 +6773,7 @@ const RAW_RUNTIME_STATE =
           ["@types/uuid", "npm:10.0.0"],\
           ["fs-extra", "npm:11.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["stripe", "npm:8.114.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["uuid", "npm:11.0.5"]\
@@ -6804,7 +6799,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["concurrently", "npm:7.3.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6831,7 +6826,7 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["light-server", "npm:2.9.1"],\
           ["reload", "npm:3.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6855,7 +6850,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -6888,7 +6883,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -6924,7 +6919,7 @@ const RAW_RUNTIME_STATE =
           ["@types/yargs", "npm:17.0.33"],\
           ["aws-sdk", "npm:2.1525.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -6963,7 +6958,7 @@ const RAW_RUNTIME_STATE =
           ["find-free-port", "npm:2.0.0"],\
           ["find-free-ports", "npm:3.1.1"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["tcp-port-used", "npm:1.0.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -6996,7 +6991,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -7032,7 +7027,7 @@ const RAW_RUNTIME_STATE =
           ["@types/uuid", "npm:10.0.0"],\
           ["aws-sdk-client-mock", "npm:4.1.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["uuid", "npm:11.0.5"]\
@@ -7059,7 +7054,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -7092,7 +7087,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["@types/uuid", "npm:10.0.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["uuid", "npm:11.0.5"]\
@@ -7127,7 +7122,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -7157,7 +7152,7 @@ const RAW_RUNTIME_STATE =
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["jest-pnp-resolver", "virtual:4f49c740086f3e5913a2063d6aec31d46737f5e1a82924c7e63c0f9d979eb2e0aa85979bf8307ce3da23d4f95a21ef51800e1b385a327985884beb72ab340dcf#npm:1.2.3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
@@ -7198,7 +7193,7 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["jest-pnp-resolver", "virtual:4f49c740086f3e5913a2063d6aec31d46737f5e1a82924c7e63c0f9d979eb2e0aa85979bf8307ce3da23d4f95a21ef51800e1b385a327985884beb72ab340dcf#npm:1.2.3"],\
           ["outmatch", "npm:1.0.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
@@ -7233,7 +7228,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
@@ -7269,7 +7264,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
@@ -7306,7 +7301,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
@@ -7350,7 +7345,7 @@ const RAW_RUNTIME_STATE =
           ["concurrently", "npm:7.3.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["tmp", "npm:0.2.4"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
@@ -7372,7 +7367,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -7410,7 +7405,7 @@ const RAW_RUNTIME_STATE =
           ["esbuild", "npm:0.25.6"],\
           ["glob", "npm:11.1.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -7439,7 +7434,7 @@ const RAW_RUNTIME_STATE =
           ["@types/semver", "npm:7.5.8"],\
           ["fs-extra", "npm:11.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["semver", "npm:7.7.3"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -7464,7 +7459,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["concurrently", "npm:7.3.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -7500,7 +7495,7 @@ const RAW_RUNTIME_STATE =
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
@@ -7533,7 +7528,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -7569,7 +7564,7 @@ const RAW_RUNTIME_STATE =
           ["@types/uuid", "npm:10.0.0"],\
           ["aws-sdk-client-mock", "npm:4.1.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["uuid", "npm:11.0.5"]\
@@ -7605,7 +7600,7 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["react", "npm:19.2.3"],\
           ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:19.2.3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
@@ -7644,7 +7639,7 @@ const RAW_RUNTIME_STATE =
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["outmatch", "npm:1.0.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -7683,7 +7678,7 @@ const RAW_RUNTIME_STATE =
           ["lambda-compression", "workspace:workspaces/utils/packages/lambda-compression"],\
           ["react", "npm:19.2.3"],\
           ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:19.2.3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["static-file-mapper", "workspace:workspaces/utils/packages/static-file-mapper"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
@@ -7723,7 +7718,7 @@ const RAW_RUNTIME_STATE =
           ["lambda-compression", "workspace:workspaces/utils/packages/lambda-compression"],\
           ["react", "npm:19.2.3"],\
           ["react-dom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:19.2.3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["static-file-mapper-build", "workspace:workspaces/utils/packages/static-file-mapper-build"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
@@ -7758,7 +7753,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -7787,7 +7782,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -7815,7 +7810,7 @@ const RAW_RUNTIME_STATE =
           ["@types/yargs", "npm:17.0.33"],\
           ["aws-jwt-verify", "npm:3.2.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
@@ -7850,7 +7845,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -7871,7 +7866,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["cheerio", "npm:1.0.0-rc.10"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -7894,7 +7889,7 @@ const RAW_RUNTIME_STATE =
           ["@yarnpkg/esbuild-plugin-pnp", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:3.0.0-rc.15"],\
           ["esbuild", "npm:0.25.6"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -7919,7 +7914,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -7945,7 +7940,7 @@ const RAW_RUNTIME_STATE =
           ["find-free-ports", "npm:3.1.1"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["node-fetch", "npm:3.3.2"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -7972,7 +7967,7 @@ const RAW_RUNTIME_STATE =
           ["esbuild", "npm:0.25.6"],\
           ["esbuild-ssr-css-modules-plugin", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#workspace:workspaces/utils/packages/esbuild-ssr-css-modules-plugin"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -7991,7 +7986,7 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["pino", "npm:9.4.0"],\
           ["pino-pretty", "npm:11.2.2"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8012,7 +8007,7 @@ const RAW_RUNTIME_STATE =
           ["ajv", "npm:6.12.6"],\
           ["handlebars", "npm:4.7.7"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8031,7 +8026,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8061,7 +8056,7 @@ const RAW_RUNTIME_STATE =
           ["rehype-stringify", "npm:6.0.0"],\
           ["remark-parse", "npm:7.0.1"],\
           ["remark-rehype", "npm:5.0.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["unified", "npm:8.4.1"],\
           ["unist-util-visit", "npm:2.0.0"]\
@@ -8084,7 +8079,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["yargs", "npm:17.7.2"]\
@@ -8103,7 +8098,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8124,7 +8119,7 @@ const RAW_RUNTIME_STATE =
           ["@types/yargs", "npm:17.0.33"],\
           ["dotenv", "npm:16.4.7"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -8145,7 +8140,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["command-exists", "npm:1.2.9"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -8168,7 +8163,7 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["json-schema-to-typescript", "npm:9.1.1"],\
           ["replace-ext", "npm:2.0.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8186,7 +8181,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8208,7 +8203,7 @@ const RAW_RUNTIME_STATE =
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["renamer", "npm:0.7.3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["yargs", "npm:17.7.2"]\
@@ -8231,7 +8226,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8251,7 +8246,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8270,7 +8265,7 @@ const RAW_RUNTIME_STATE =
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["renamer", "npm:0.7.3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["yargs", "npm:17.7.2"]\
@@ -8292,7 +8287,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8313,7 +8308,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["renamer", "npm:0.7.3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -8334,7 +8329,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8356,7 +8351,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8384,7 +8379,7 @@ const RAW_RUNTIME_STATE =
           ["fs-extra", "npm:11.2.0"],\
           ["glob", "npm:11.1.0"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["which", "npm:2.0.2"]\
         ],\
@@ -8405,7 +8400,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8434,7 +8429,7 @@ const RAW_RUNTIME_STATE =
           ["extract-zip", "npm:2.0.1"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -8462,7 +8457,7 @@ const RAW_RUNTIME_STATE =
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["json-stable-stringify", "npm:1.0.1"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["ts-json-schema-generator", "npm:2.4.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["yargs", "npm:17.7.2"]\
@@ -8491,7 +8486,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8515,7 +8510,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8534,7 +8529,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react", "npm:19.2.7"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["react", "npm:19.2.3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -8554,7 +8549,7 @@ const RAW_RUNTIME_STATE =
           ["@types/source-map-support", "npm:0.5.10"],\
           ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["yargs", "npm:17.7.2"]\
@@ -8576,7 +8571,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -17879,7 +17874,7 @@ const RAW_RUNTIME_STATE =
           ["esbuild", "npm:0.25.6"],\
           ["esbuild-ignore-with-comments-plugin", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "packagePeers": [\
@@ -17899,7 +17894,7 @@ const RAW_RUNTIME_STATE =
           ["esbuild", "npm:0.25.6"],\
           ["esbuild-ignore-with-comments-plugin", "workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -17921,7 +17916,7 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["node-css-require", "workspace:workspaces/utils/packages/node-css-require"],\
           ["postcss-modules-sync", "npm:1.0.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["sha256", "npm:0.2.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -17945,7 +17940,7 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["node-css-require", "workspace:workspaces/utils/packages/node-css-require"],\
           ["postcss-modules-sync", "npm:1.0.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["sha256", "npm:0.2.0"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -17967,7 +17962,7 @@ const RAW_RUNTIME_STATE =
           ["esbuild-tailwind-ssr-plugin", "workspace:workspaces/utils/packages/esbuild-tailwind-ssr-plugin"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["postcss", "npm:8.5.6"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["static-file-mapper-build", "workspace:workspaces/utils/packages/static-file-mapper-build"],\
           ["tailwindcss", "npm:3.4.17"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
@@ -18571,11 +18566,11 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:6.2.0", {\
-        "packageLocation": "./.yarn/__virtual__/file-loader-virtual-1beff6b9b2/0/cache/file-loader-npm-6.2.0-4b02fd87d5-3a854be3a7.zip/node_modules/file-loader/",\
+      ["virtual:288ae96217e982e6720c4171b5761b1cd3ae4ca0c1a9775a38394f97a0dbe2e9ae1d691e2df9c2dd49177ff136b5a8258d2be25042b3b8862f3f9735c07a1954#npm:6.2.0", {\
+        "packageLocation": "./.yarn/__virtual__/file-loader-virtual-398e1fa5f6/0/cache/file-loader-npm-6.2.0-4b02fd87d5-3a854be3a7.zip/node_modules/file-loader/",\
         "packageDependencies": [\
           ["@types/webpack", null],\
-          ["file-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:6.2.0"],\
+          ["file-loader", "virtual:288ae96217e982e6720c4171b5761b1cd3ae4ca0c1a9775a38394f97a0dbe2e9ae1d691e2df9c2dd49177ff136b5a8258d2be25042b3b8862f3f9735c07a1954#npm:6.2.0"],\
           ["loader-utils", "npm:2.0.4"],\
           ["schema-utils", "npm:3.1.1"],\
           ["webpack", null]\
@@ -19194,6 +19189,16 @@ const RAW_RUNTIME_STATE =
           ["minimatch", "npm:10.1.1"],\
           ["minipass", "npm:7.1.2"],\
           ["package-json-from-dist", "npm:1.0.1"],\
+          ["path-scurry", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:13.0.0", {\
+        "packageLocation": "./.yarn/cache/glob-npm-13.0.0-8e50143ca8-de390721d2.zip/node_modules/glob/",\
+        "packageDependencies": [\
+          ["glob", "npm:13.0.0"],\
+          ["minimatch", "npm:10.1.1"],\
+          ["minipass", "npm:7.1.2"],\
           ["path-scurry", "npm:2.0.0"]\
         ],\
         "linkType": "HARD"\
@@ -22119,7 +22124,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["lambda-compression", "workspace:workspaces/utils/packages/lambda-compression"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -23079,7 +23084,7 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
           ["mock-aws-s3", "npm:4.0.2"],\
           ["mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -23471,7 +23476,7 @@ const RAW_RUNTIME_STATE =
           ["postcss", "npm:8.5.6"],\
           ["postcss-modules", "virtual:417eda6db05d3785224e5cb2e62d425e52a4465dd629155f0b5562c3a073e5b0f338d801c109e19e9735d858ee32b796666deadccd691cf16a78108dfb6946d1#npm:5.0.0"],\
           ["postcss-modules-sync", "npm:1.0.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\
@@ -26154,6 +26159,15 @@ const RAW_RUNTIME_STATE =
           ["rimraf", "npm:6.0.1"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:6.1.2", {\
+        "packageLocation": "./.yarn/cache/rimraf-npm-6.1.2-ff31ae67d7-add8e566fe.zip/node_modules/rimraf/",\
+        "packageDependencies": [\
+          ["glob", "npm:13.0.0"],\
+          ["package-json-from-dist", "npm:1.0.1"],\
+          ["rimraf", "npm:6.1.2"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["root", [\
@@ -27134,7 +27148,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["static-file-mapper", "workspace:workspaces/utils/packages/static-file-mapper"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -27153,7 +27167,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["jest", "virtual:c517f8da57a5da8bfc1d1e83302c273ecb1d60e68c396bdaba5666ad4b8c39fa57ce0871dbd8f41202827d40cc5eee8ec09cf366499028a5dc8b1c0ecb931dbb#npm:30.2.0"],\
-          ["rimraf", "npm:3.0.2"],\
+          ["rimraf", "npm:6.1.2"],\
           ["static-file-mapper", "workspace:workspaces/utils/packages/static-file-mapper"],\
           ["static-file-mapper-build", "workspace:workspaces/utils/packages/static-file-mapper-build"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
@@ -27788,7 +27802,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/__virtual__/svg-url-loader-virtual-288ae96217/0/cache/svg-url-loader-npm-8.0.0-4c28fd7afe-c4fa2da329.zip/node_modules/svg-url-loader/",\
         "packageDependencies": [\
           ["@types/webpack", null],\
-          ["file-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:6.2.0"],\
+          ["file-loader", "virtual:288ae96217e982e6720c4171b5761b1cd3ae4ca0c1a9775a38394f97a0dbe2e9ae1d691e2df9c2dd49177ff136b5a8258d2be25042b3b8862f3f9735c07a1954#npm:6.2.0"],\
           ["svg-url-loader", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:8.0.0"],\
           ["webpack", null]\
         ],\

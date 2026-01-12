@@ -67,7 +67,7 @@
     "jest-transform-stub": "^2.0.0",
     "next-compose-plugins": "^2.2.1",
     "reload": "^3.2.0",
-    "rimraf": "^3.0.2",
+    "rimraf": "^6.1.2",
     "sass": "^1.89.2",
     "svg-url-loader": "^8.0.0",
     "ts-node": "^10.9.2",
