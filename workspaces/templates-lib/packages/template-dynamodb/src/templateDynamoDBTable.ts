@@ -27,6 +27,14 @@ import type { DynamoDBDeployment, DynamoDBPackage } from './types/DynamoDBPackag
  */
 const coldStart: Map<string, boolean> = new Map();
 
+/**
+ * Gets the table name for the given configuration and deployment.
+ *
+ * @param goldstackConfig - The Goldstack configuration for the DynamoDB package.
+ * @param packageSchema - The package schema.
+ * @param deploymentName - Optional deployment name.
+ * @returns Promise<string> - The table name.
+ */
 export const getTableName = async (
   // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig: DynamoDBPackage | any,
@@ -43,6 +51,15 @@ export const getTableName = async (
   return getTableNameUtils(packageConfig, deploymentName);
 };
 
+/**
+ * Starts a local DynamoDB instance for development and testing.
+ *
+ * @param goldstackConfig - The Goldstack configuration for the DynamoDB package.
+ * @param packageSchema - The package schema.
+ * @param port - Optional port number to start the local DynamoDB on.
+ * @param deploymentName - Optional deployment name.
+ * @returns Promise<void>
+ */
 export const startLocalDynamoDB = async (
   // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig: DynamoDBPackage | any,
@@ -69,6 +86,14 @@ export const startLocalDynamoDB = async (
   await lib.startLocalDynamoDB(packageConfig, { port: portToUse }, deploymentName);
 };
 
+/**
+ * Stops all local DynamoDB instances.
+ *
+ * @param goldstackConfig - The Goldstack configuration for the DynamoDB package.
+ * @param packageSchema - The package schema.
+ * @param deploymentName - Optional deployment name.
+ * @returns Promise<void>
+ */
 export const stopAllLocalDynamoDB = async (
   // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig: DynamoDBPackage | any,
@@ -93,6 +118,15 @@ export const stopAllLocalDynamoDB = async (
   coldStart.delete(coldStartKey);
 };
 
+/**
+ * Stops a local DynamoDB instance.
+ *
+ * @param goldstackConfig - The Goldstack configuration for the DynamoDB package.
+ * @param packageSchema - The package schema.
+ * @param portOrDeploymentName - Optional port number or deployment name.
+ * @param deploymentName - Optional deployment name.
+ * @returns Promise<void>
+ */
 export const stopLocalDynamoDB = async (
   // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig: DynamoDBPackage | any,
@@ -165,6 +199,16 @@ const createClient = async (
   return dynamoDB;
 };
 
+/**
+ * Connects to DynamoDB and performs initial table setup and migrations if necessary.
+ *
+ * @param params - The connection parameters.
+ * @param params.goldstackConfig - The Goldstack configuration for the DynamoDB package.
+ * @param params.packageSchema - The package schema.
+ * @param params.migrations - The migrations to perform.
+ * @param params.deploymentName - Optional deployment name.
+ * @returns Promise<DynamoDBClient> - The connected DynamoDB client.
+ */
 export const connect = async ({
   // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   goldstackConfig,
@@ -228,6 +272,17 @@ export const deleteTable = async ({
   return client;
 };
 
+/**
+ * Migrates the DynamoDB table down to a specific migration.
+ *
+ * @param params - The migration parameters.
+ * @param params.migrationName - The name of the migration to roll back to.
+ * @param params.goldstackConfig - The Goldstack configuration for the DynamoDB package.
+ * @param params.packageSchema - The package schema.
+ * @param params.migrations - The migrations.
+ * @param params.deploymentName - Optional deployment name.
+ * @returns Promise<DynamoDBClient> - The DynamoDB client.
+ */
 export const migrateDownTo = async ({
   migrationName,
   // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
