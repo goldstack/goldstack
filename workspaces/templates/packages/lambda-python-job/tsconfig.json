@@ -16,9 +16,6 @@
       "path": "../../../templates-lib/packages/template-lambda-trigger-cli"
     },
     {
-      "path": "../../../utils/packages/utils-git"
-    },
-    {
       "path": "../../../utils/packages/utils-log"
     },
     {

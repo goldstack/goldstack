@@ -16,9 +16,6 @@
       "path": "../../../templates-lib/packages/template-hetzner-vps"
     },
     {
-      "path": "../../../utils/packages/utils-git"
-    },
-    {
       "path": "../../../utils/packages/utils-sh"
     },
     {

@@ -159,24 +159,29 @@ jobs:
       - name: Publish utilities and libraries
         if: ${{ (steps.changed-libs.outputs.changed == 'true' || steps.changed-utilities.outputs.changed == 'true') && github.ref == 'refs/heads/master' }}
         run: |
-          # Prepare utils
-          cd workspaces/utils
-          yarn version:apply --deferred patch
-          cd ../..
-          # Prepare template libraries
-          cd workspaces/templates-lib
-          yarn version:apply --deferred patch
-          cd ../.. 
-
-          # Perform publish
+          # Bump versions for changed packages in utils and templates-lib only
+          yarn workspaces foreach --since=HEAD~1 \
+            --include 'workspaces/utils/*' \
+            --include 'workspaces/templates-lib/*' \
+            version patch --deferred
+          
+          # Apply all version bumps
           yarn version apply --all
+          
+          # Publish only changed packages
+          yarn workspaces foreach --since=HEAD~1 \
+            --include 'workspaces/utils/*' \
+            --include 'workspaces/templates-lib/*' \
+            npm publish
+          
+          # Stage version changes
+          
           cd workspaces/utils
-          yarn publish
           git status
           git add .
           cd ../..
+
           cd workspaces/templates-lib
-          yarn publish
           git status
           git add .
           cd ../..

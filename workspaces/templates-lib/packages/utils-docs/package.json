@@ -57,7 +57,6 @@
     "unist-util-visit": "2.0.0"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.22",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

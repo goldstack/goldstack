@@ -49,9 +49,6 @@
       "path": "../../../docs/packages/utils-docs-cli"
     },
     {
-      "path": "../../../utils/packages/utils-git"
-    },
-    {
       "path": "../utils-package-config-generate"
     }
   ]

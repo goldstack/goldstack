@@ -45,7 +45,6 @@
     "which": "^2.0.2"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.22",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/archiver": "^6.0.3",

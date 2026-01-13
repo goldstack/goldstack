@@ -62,7 +62,6 @@
     "yargs": "^17"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.22",
     "@goldstack/utils-package-config-generate": "0.3.24",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",

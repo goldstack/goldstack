@@ -30,7 +30,7 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\""
+    "version:apply": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
     "pirates": "^4.0.5",
@@ -39,7 +39,6 @@
     "postcss-modules-sync": "^1.0.0"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.22",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

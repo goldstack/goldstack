@@ -1,6 +1,8 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
@@ -14,9 +16,6 @@
     },
     {
       "path": "../utils-package"
-    },
-    {
-      "path": "../../../utils/packages/utils-git"
     }
   ]
 }

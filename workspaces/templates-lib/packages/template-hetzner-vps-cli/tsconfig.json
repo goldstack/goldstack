@@ -1,6 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*", "./src/**/*.json"],
+  "include": [
+    "./src/**/*",
+    "./src/**/*.json"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
@@ -38,9 +41,6 @@
     },
     {
       "path": "../utils-terraform-hetzner"
-    },
-    {
-      "path": "../../../utils/packages/utils-git"
     },
     {
       "path": "../utils-package-config-generate"
