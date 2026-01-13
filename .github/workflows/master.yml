@@ -159,23 +159,14 @@ jobs:
       - name: Publish utilities and libraries
         if: ${{ (steps.changed-libs.outputs.changed == 'true' || steps.changed-utilities.outputs.changed == 'true') && github.ref == 'refs/heads/master' }}
         run: |
-          # Bump versions for changed packages in utils and templates-lib only
-          yarn workspaces foreach --since=HEAD~1 \
-            --include 'workspaces/utils/*' \
-            --include 'workspaces/templates-lib/*' \
-            version patch --deferred
-          
-          # Apply all version bumps
-          yarn version apply --all
-          
-          # Publish only changed packages
-          yarn workspaces foreach --since=HEAD~1 \
-            --include 'workspaces/utils/*' \
-            --include 'workspaces/templates-lib/*' \
-            npm publish
-          
-          # Stage version changes
-          
+
+          yarn workspaces foreach --topological --include "workspaces/utils/**/*" --since=HEAD~1 version --deferred patch
+          yarn workspaces foreach --topological --include "workspaces/templates-lib/**/*" --since=HEAD~1 version --deferred patch
+          yarn version apply --all --recursive
+
+          yarn workspaces foreach --topological --include "workspaces/utils/**/*" --since=HEAD~1 npm publish
+          yarn workspaces foreach --topological --include "workspaces/templates-lib/**/*" --since=HEAD~1 npm publish
+
           cd workspaces/utils
           git status
           git add .
@@ -185,6 +176,7 @@ jobs:
           git status
           git add .
           cd ../..
+
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           YARN_NPM_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
