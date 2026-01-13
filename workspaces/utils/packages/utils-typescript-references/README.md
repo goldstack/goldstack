@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/%40goldstack%2Futils-typescript-references.svg)](https://badge.fury.io/js/%40goldstack%2Futils-typescript-references)
+
 # TypeScript References Yarn Workspaces Sync Utility
 
 This library ensures that [project references](https://www.typescriptlang.org/docs/handbook/project-references.html) in TypeScript `tsconfig.js` files are automatically kept up to date in a project using **Yarn 2 workspaces**.
@@ -26,6 +28,13 @@ Running this script will:
 ```
 
 2. Update all the `"references"` in the `tsconfig.json` for all packages in the workspace so that it includes all the packages that it declares as a dependency in `package.json`.
+
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️
+## Installation
+
+```bash
+npm install @goldstack/utils-typescript-references
+```
 
 ## Usage
 
@@ -150,3 +159,4 @@ If these limitations or anything else are an issues, please [raise a ticket in G
 - [@monorepo-utils/workspaces-to-typescript-project-references](https://github.com/azu/monorepo-utils/tree/master/packages/@monorepo-utils/workspaces-to-typescript-project-references#readme)
 - [Optimizing multi-package apps with TypeScript Project References](https://ebaytech.berlin/optimizing-multi-package-apps-with-typescript-project-references-d5c57a3b4440)
 - [TypeScript Monorepos with Yarn](https://semaphoreci.com/blog/typescript-monorepos-with-yarn)
+

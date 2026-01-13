@@ -6,6 +6,7 @@ This library provides a wrapper that can be used to compress content in response
 
 The library supports compression with `br`, `gzip` and `deflate`. It will return responses with compressed data matching the supported `accept-encoding` header provided by the client.
 
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️
 ## Installation
 
 Simply add the `lambda-compression` package to your project:
@@ -115,3 +116,4 @@ If the client sends `accept-encoding: identity` or no header, the response remai
 - [compression.js in lambda-api project](https://github.com/jeremydaly/lambda-api/blob/main/lib/compression.js)
 - [Serverless Content Encoding for Serverless](https://www.npmjs.com/package/serverless-content-encoding)
 - [serverless-content-encoding](https://github.com/dong-dohai/serverless-content-encoding) - no longer maintained
+

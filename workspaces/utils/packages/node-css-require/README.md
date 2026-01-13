@@ -20,6 +20,13 @@ SyntaxError: Unexpected token '.'
     at wrapSafe (node:internal/modules/cjs/loader:1033:15)
 ```
 
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️
+## Installation
+
+```bash
+npm install node-css-require
+```
+
 This module provides a way to load CSS files when running Node or server-side code. Simply run the following code before any CSS file is loaded:
 
 ```typescript
@@ -54,3 +61,4 @@ declare module '*.css' {
   export default classes;
 }
 ```
+

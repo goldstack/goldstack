@@ -4,6 +4,7 @@
 
 GitHub Actions Agent CLI for automating issue/PR workflows. Extracts and exposes functions from the kilocode workflow for use via API or CLI.
 
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️
 ## Installation
 
 ```bash
@@ -141,3 +142,4 @@ yarn cli --help
 # Run tests
 yarn test
 ```
+
