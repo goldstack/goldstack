@@ -37,7 +37,7 @@
     "publish": "yarn npm publish --tolerate-republish",
     "test": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand ",
     "test-watch": "GOLDSTACK_DEPLOYMENT=local jest --watch --config=./jest.config.js --runInBand",
-    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
+    "version:apply": "yarn version $@ && yarn version apply",
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
