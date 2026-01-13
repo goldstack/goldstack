@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "@goldstack/template-lambda-trigger-cli": "0.1.55",
-    "@goldstack/utils-git": "0.2.22",
     "@goldstack/utils-log": "0.3.29",
     "@goldstack/utils-sh": "0.5.34"
   },

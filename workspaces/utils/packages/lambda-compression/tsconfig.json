@@ -6,10 +6,5 @@
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
-  },
-  "references": [
-    {
-      "path": "../utils-git"
-    }
-  ]
+  }
 }

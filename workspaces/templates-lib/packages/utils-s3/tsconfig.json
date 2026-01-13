@@ -1,14 +1,13 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
   },
   "references": [
-    {
-      "path": "../../../utils/packages/utils-git"
-    },
     {
       "path": "../../../utils/packages/mock-aws-s3-v3"
     }

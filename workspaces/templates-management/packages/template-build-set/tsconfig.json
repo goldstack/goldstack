@@ -1,6 +1,8 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
@@ -32,9 +34,6 @@
     },
     {
       "path": "../../../templates-lib/packages/utils-config"
-    },
-    {
-      "path": "../../../utils/packages/utils-git"
     },
     {
       "path": "../../../utils/packages/utils-log"

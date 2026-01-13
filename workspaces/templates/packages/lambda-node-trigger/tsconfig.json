@@ -19,9 +19,6 @@
       "path": "../../../templates-lib/packages/template-sqs"
     },
     {
-      "path": "../../../utils/packages/utils-git"
-    },
-    {
       "path": "../../../utils/packages/utils-log"
     },
     {

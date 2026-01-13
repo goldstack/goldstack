@@ -24,7 +24,6 @@
   "dependencies": {
     "@aws-sdk/client-ses": "^3.958.0",
     "@goldstack/template-email-send": "0.4.75",
-    "@goldstack/utils-git": "0.2.22",
     "@goldstack/utils-sh": "0.5.34"
   },
   "devDependencies": {

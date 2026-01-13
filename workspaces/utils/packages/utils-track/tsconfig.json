@@ -1,15 +1,12 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "jsx": "react-jsx",
     "module": "node16",
     "baseUrl": "."
-  },
-  "references": [
-    {
-      "path": "../utils-git"
-    }
-  ]
+  }
 }

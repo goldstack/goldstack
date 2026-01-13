@@ -34,10 +34,10 @@
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "generate-schema": "ts-node scripts/generateSchemas.ts EmailSend && cp schemas/* ../../../templates/packages/email-send/schemas",
     "prepublishOnly": "yarn run build",
-    "publish": "utils-git changed --exec \"yarn npm publish $@\"",
+    "publish": "yarn npm publish --tolerate-republish",
     "test": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand",
     "test-watch": "GOLDSTACK_DEPLOYMENT=local jest --watch --config=./jest.config.js --runInBand",
-    "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
+    "version:apply": "yarn version $@ && yarn version apply",
     "version:apply:force": "yarn version $@ && yarn version apply"
   },
   "dependencies": {
@@ -56,7 +56,6 @@
     "uuid": "^11.0.5"
   },
   "devDependencies": {
-    "@goldstack/utils-git": "0.2.22",
     "@goldstack/utils-package-config-generate": "0.3.24",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
