@@ -5,6 +5,12 @@ import configSchema from './schemas/goldstackTemplateConfigurationSchema.json';
 
 export type { GoldstackTemplateConfiguration } from './generated/goldstackTemplateConfigurationSchema';
 
+/**
+ * Reads and parses a template configuration from a string.
+ *
+ * @param data - The JSON string containing the template configuration.
+ * @returns {GoldstackTemplateConfiguration} The parsed GoldstackTemplateConfiguration object.
+ */
 export const readTemplateConfigFromString = (data: string): GoldstackTemplateConfiguration => {
   const config = parseConfig(data, configSchema, {
     errorMessage: 'Cannot load template config.',
@@ -12,6 +18,12 @@ export const readTemplateConfigFromString = (data: string): GoldstackTemplateCon
   return config;
 };
 
+/**
+ * Reads and parses a template configuration from a file.
+ *
+ * @param path - The path to the template.json file. Defaults to 'template.json'.
+ * @returns {GoldstackTemplateConfiguration} The parsed GoldstackTemplateConfiguration object.
+ */
 export const readTemplateConfigFromFile = (
   path = 'template.json',
 ): GoldstackTemplateConfiguration => {

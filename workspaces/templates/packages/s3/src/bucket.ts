@@ -15,7 +15,7 @@ import goldstackSchema from './../schemas/package.schema.json';
  *
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
- * @returns A promise that resolves with an S3Client instance.
+ * @returns {Promise<S3Client>} A promise that resolves with an S3Client instance.
  */
 export const connect = async (deploymentName?: string): Promise<S3Client> => {
   return await templateConnect(goldstackConfig, goldstackSchema, deploymentName);
@@ -30,7 +30,7 @@ export const connect = async (deploymentName?: string): Promise<S3Client> => {
  * @param client - The S3 client to use for generating the signed URL.
  * @param command - The S3 command to generate a signed URL for.
  * @param options - Optional presigning arguments.
- * @returns A promise that resolves with the pre-signed URL string.
+ * @returns {Promise<string>} A promise that resolves with the pre-signed URL string.
  */
 export const getSignedUrl = async <
   InputTypesUnion extends object,
@@ -51,7 +51,7 @@ export const getSignedUrl = async <
  *
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
- * @returns A promise that resolves with the bucket name string.
+ * @returns {Promise<string>} A promise that resolves with the bucket name string.
  */
 export const getBucketName = async (deploymentName?: string): Promise<string> => {
   return await templateGetBucketName(goldstackConfig, goldstackSchema, deploymentName);

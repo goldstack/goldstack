@@ -14,7 +14,7 @@ if (process.env.TEST_SERVER_PORT) {
  * Starts a test server for local development and testing of Express.js applications.
  *
  * @param port - The port number to start the server on.
- * @returns A promise that resolves when the server has started.
+ * @returns {Promise<void>} A promise that resolves when the server has started.
  */
 export const startTestServer = async (port: number): Promise<void> => {
   const server = require(excludeInBundle('./server.ts'));
@@ -25,7 +25,7 @@ export const startTestServer = async (port: number): Promise<void> => {
 /**
  * Stops the test server if it's running.
  *
- * @returns A promise that resolves when the server has been stopped.
+ * @returns {Promise<void>} A promise that resolves when the server has been stopped.
  */
 export const stopTestServer = async (): Promise<void> => {
   return new Promise<void>((resolve, reject) => {
@@ -42,6 +42,8 @@ export const stopTestServer = async (): Promise<void> => {
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
  * @returns The endpoint URL string.
+ * * @returns {string} The endpoint URL for the Express.js Lambda deployment.
+ *
  * @throws {Error} If the deployment cannot be found.
  */
 export const getEndpoint = (deploymentName?: string): string => {
