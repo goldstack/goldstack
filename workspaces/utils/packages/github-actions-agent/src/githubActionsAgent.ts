@@ -433,6 +433,10 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
           env: kiloEnv,
         });
 
+        // Pipe output to parent process to retain visibility
+        child.stdout.pipe(process.stdout);
+        child.stderr.pipe(process.stderr);
+
         let lastOutput = Date.now();
         let killedByNoOutput = false;
 
