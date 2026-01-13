@@ -61,5 +61,6 @@ jobs:
           # KILOCODE_MODEL: minimax/minimax-m2.1:free
           KILO_TELEMETRY_DEBUG: false
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          COMMENT_JSON: ${{ toJson(github.event.comment.body) }}
         run: |
-          gha_agent run-all --comment "${{ github.event.comment.body }}" --issue-number ${{ github.event.issue.number }} --timeout 2700 --agentInstructions $(pwd)/AGENTS_GHA.md
+          gha_agent run-all --comment "$COMMENT_JSON" --issue-number ${{ github.event.issue.number }} --timeout 2700 --agentInstructions $(pwd)/AGENTS_GHA.md

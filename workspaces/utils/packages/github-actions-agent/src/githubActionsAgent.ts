@@ -199,8 +199,16 @@ export class GitHubActionsAgent {
       agentInstructionsPath = path.resolve(__dirname, '../../../../../AGENTS_GHA.md'),
     } = options;
 
+    // Parse comment if it's JSON (from workflow)
+    let parsedComment = comment;
+    try {
+      parsedComment = JSON.parse(comment);
+    } catch {
+      // Use as is if not JSON
+    }
+
     // Strip /kilo or /kilocode prefix
-    const prompt = comment.replace(/^\/(kilo(code)?)\s*/i, '');
+    const prompt = parsedComment.replace(/^\/(kilo(code)?)\s*/i, '');
 
     const prefix = prNumber ? `PR #${prNumber}` : `Issue #${issueNumber}`;
 
