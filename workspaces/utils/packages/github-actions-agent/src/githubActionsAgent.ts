@@ -417,7 +417,8 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
         // Prepare task with timeout message if retry
         let taskToWrite = task;
         if (attempt > 1) {
-          taskToWrite += '\n\nA previous execution timed out. Please review any uncommitted changes first and commit and push them following Agent instructions.';
+          taskToWrite +=
+            '\n\nA previous execution timed out. Please review any uncommitted changes first and commit and push them following Agent instructions.';
         }
 
         // Write task to temporary file
@@ -444,7 +445,8 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
 
         // Check for no output every 10 seconds
         const noOutputTimer = setInterval(() => {
-          if (Date.now() - lastOutput > 120000) { // 2 minutes
+          if (Date.now() - lastOutput > 120000) {
+            // 2 minutes
             killedByNoOutput = true;
             child.kill('SIGTERM');
             clearInterval(noOutputTimer);
