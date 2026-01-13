@@ -90,7 +90,7 @@ export const run = async (): Promise<void> => {
     let workDir = argv.workDir as string;
     let tmpInstance: tmp.DirResult | undefined;
     if (workDir === 'tmp') {
-      tmpInstance = tmp.dirSync();
+      tmpInstance = tmp.dirSync({ unsafeCleanup: true });
       workDir = `${tmpInstance.name}/`;
       info(`Creating in temporary directory ${workDir}`);
     } else {
