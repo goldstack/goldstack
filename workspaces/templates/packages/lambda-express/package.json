@@ -23,8 +23,8 @@
     "watch": "PORT=3030 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev --respawn ./src/local.ts"
   },
   "dependencies": {
-    "@goldstack/template-lambda-http-cli": "0.5.82",
-    "@goldstack/utils-esbuild": "0.5.22",
+    "@goldstack/template-lambda-http-cli": "0.5.83",
+    "@goldstack/utils-esbuild": "0.5.23",
     "aws-serverless-express": "^3.3.8",
     "cors": "^2.8.5",
     "express": "4.20.0",

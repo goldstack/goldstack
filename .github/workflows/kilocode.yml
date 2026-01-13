@@ -27,10 +27,14 @@ jobs:
 
       - uses: ./.github/actions/goldstack-setup
 
+      - name: Configure git
+        run: |
+          git config user.name "goldstack"
+          git config user.email "goldstack@users.noreply.github.com"
+
       - name: Install Kilo Code CLI
         run: |
           npm install -g @kilocode/cli
-
 
       - name: Configure Kilo Code
         run: |
@@ -45,12 +49,6 @@ jobs:
           chmod +x ~/bin/gha_agent
           echo "$HOME/bin" >> $GITHUB_PATH
 
-      - name: Configure git
-        run: |
-          git config user.name "goldstack"
-          git config user.email "goldstack@users.noreply.github.com"
-
-
       - name: Run Kilo Code Workflow
         env:
           KILO_PROVIDER: kilocode
@@ -64,4 +62,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           COMMENT_JSON: ${{ toJson(github.event.comment.body) }}
         run: |
-          gha_agent run-all --comment "$COMMENT_JSON" --issue-number ${{ github.event.issue.number }} --timeout 2700 --agentInstructions $(pwd)/AGENTS_GHA.md
+          gha_agent run-all --comment "$COMMENT_JSON" \
+            --issue-number ${{ github.event.issue.number }} \
+            --timeout 2700 \
+            --kilo-provider kilocode \
+            --kilo-provider-type kilocode \
+            --model x-ai/grok-code-fast-1 \
+            --agent-instructions $(pwd)/AGENTS_GHA.md

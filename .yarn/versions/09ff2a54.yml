@@ -1,6 +1,0 @@
-undecided:
-  - root
-  - "@goldstack/template-management-cli"
-  - "@goldstack/cdn"
-  - "@goldstack/static-website-aws"
-  - "@goldstack/template-static-website-aws"

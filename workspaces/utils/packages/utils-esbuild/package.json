@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-esbuild",
-  "version": "0.5.22",
+  "version": "0.5.23",
   "description": "Utilities for esbuild.",
   "keywords": [
     "goldstack",

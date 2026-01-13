@@ -164,8 +164,8 @@ jobs:
           yarn workspaces foreach --topological --include "workspaces/templates-lib/**/*" --since=HEAD~1 version --deferred patch
           yarn version apply --all --recursive
 
-          yarn workspaces foreach --topological --include "workspaces/utils/**/*" --since=HEAD~1 npm publish
-          yarn workspaces foreach --topological --include "workspaces/templates-lib/**/*" --since=HEAD~1 npm publish
+          yarn workspaces foreach --topological --include "workspaces/utils/**/*" --since=HEAD~1 npm publish --tolerate-republish
+          yarn workspaces foreach --topological --include "workspaces/templates-lib/**/*" --since=HEAD~1 npm publish --tolerate-republish
 
           cd workspaces/utils
           git status

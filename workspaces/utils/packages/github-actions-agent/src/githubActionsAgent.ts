@@ -288,12 +288,7 @@ export class GitHubActionsAgent {
     const gh = createGhToken(this.token);
     const { issueNumber, prNumber, branchName, runUrl } = options;
 
-    const comment = `🚀 Kilo Code has started working on this task.
-
-- **Branch**: \`${branchName}\`
-- **Issue**: #${issueNumber}
-${prNumber ? `- **PR**: #${prNumber}\n` : ''}
-- **Run**: [View workflow](${runUrl})`;
+    const comment = `🚀 Kilo Code has started working on this task. **Branch**: \`${branchName}\` **Issue**: #${issueNumber} ${prNumber ? ` **PR**: #${prNumber}\n` : ''} **Run**: [View workflow](${runUrl})`;
 
     await ghCreateComment(gh, this.owner, this.repo, issueNumber, comment, Boolean(prNumber));
   }
@@ -603,29 +598,6 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       prNumber: ctxPrNumber ? parseInt(ctxPrNumber, 10) : undefined,
       message: 'Kilo Code task execution completed successfully.',
     });
-
-    // Step 7: Fix PR body if needed
-    // if (ctxPrNumber) {
-    //   info('Fixing PR body formatting...');
-    //   await this.fixPrBody({
-    //     prNumber: parseInt(ctxPrNumber, 10),
-    //   });
-    //   info('PR body fixed successfully');
-    // }
-
-    // Step 8: Create PR if needed
-    // if (!ctxPrNumber) {
-    //   info('Creating pull request...');
-    //   const { prNumber: newPrNumber } = await this.createPr({
-    //     issueNumber,
-    //     branchName,
-    //   });
-    //   if (newPrNumber) {
-    //     info(`Pull request created: #${newPrNumber}`);
-    //   } else {
-    //     info('No pull request created (no commits on branch)');
-    //   }
-    // }
 
     info('Kilo Code workflow execution completed successfully');
   }

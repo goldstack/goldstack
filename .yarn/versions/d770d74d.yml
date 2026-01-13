@@ -1,4 +1,0 @@
-undecided:
-  - root
-  - "@goldstack/serverless-api"
-  - "@goldstack/template-dynamodb-cli"

@@ -1,6 +1,6 @@
 {
   "name": "esbuild-ignore-with-comments-plugin",
-  "version": "0.3.26",
+  "version": "0.3.27",
   "description": "esbuild Plugin for ignoring files with specific comments in them",
   "keywords": [
     "node",
