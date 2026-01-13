@@ -18,3 +18,4 @@ import { sh } from '@goldstack/utils-sh';
 await sh('echo hello');
 
 ```
+```
