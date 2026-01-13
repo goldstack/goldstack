@@ -90,7 +90,7 @@ export const run = async (): Promise<void> => {
     let workDir = argv.workDir as string;
     let tmpInstance: tmp.DirResult | undefined;
     if (workDir === 'tmp') {
-      tmpInstance = tmp.dirSync();
+      tmpInstance = tmp.dirSync({ unsafeCleanup: true });
       workDir = `${tmpInstance.name}/`;
       info(`Creating in temporary directory ${workDir}`);
     } else {
@@ -177,7 +177,6 @@ export const run = async (): Promise<void> => {
 
       info('Deploy set completed.');
       if (tmpInstance) {
-        rm('-rf', `${workDir.replace(/\\/g, '/')}*`);
         tmpInstance.removeCallback();
       }
 
@@ -238,7 +237,6 @@ export const run = async (): Promise<void> => {
       await scheduleAllDeploySets(argv as unknown as ScheduleArgs);
       console.log('Schedule all deploy sets completed');
       if (tmpInstance) {
-        rm('-rf', `${workDir.replace(/\\/g, '/')}*`);
         tmpInstance.removeCallback();
       }
 
@@ -246,7 +244,6 @@ export const run = async (): Promise<void> => {
     }
 
     if (tmpInstance) {
-      rm('-rf', `${workDir.replace(/\\/g, '/')}*`);
       tmpInstance.removeCallback();
     }
 

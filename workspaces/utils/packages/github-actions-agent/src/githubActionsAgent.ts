@@ -199,8 +199,16 @@ export class GitHubActionsAgent {
       agentInstructionsPath = path.resolve(__dirname, '../../../../../AGENTS_GHA.md'),
     } = options;
 
+    // Parse comment if it's JSON (from workflow)
+    let parsedComment = comment;
+    try {
+      parsedComment = JSON.parse(comment);
+    } catch {
+      // Use as is if not JSON
+    }
+
     // Strip /kilo or /kilocode prefix
-    const prompt = comment.replace(/^\/(kilo(code)?)\s*/i, '');
+    const prompt = parsedComment.replace(/^\/(kilo(code)?)\s*/i, '');
 
     const prefix = prNumber ? `PR #${prNumber}` : `Issue #${issueNumber}`;
 
@@ -384,47 +392,114 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       kiloEnv.KILOCODE_MODEL = model;
     }
 
-    // Write task to temporary file
-    const tempFile = path.join(os.tmpdir(), `kilo-task-${Date.now()}.txt`);
-    fs.writeFileSync(tempFile, task);
-
-    // Build the command to pipe the file into kilocode
-    let command = `cat "${tempFile}" | kilocode --auto`;
+    // Build the base command
+    let baseCommand = `kilocode`;
+    if (auto) {
+      baseCommand += ` --auto`;
+    }
     if (timeout) {
-      command += ` --timeout ${timeout}`;
+      baseCommand += ` --timeout ${timeout}`;
     }
     if (model) {
-      command += ` --model ${model}`;
+      baseCommand += ` --model ${model}`;
     }
 
+    let attempt = 0;
+    const maxAttempts = 10; // Prevent infinite loops
+    const overallTimeoutMs = (timeout + 60) * 1000; // Overall timeout for the method
+    const _startTime = Date.now();
+
     return new Promise<void>((resolve, reject) => {
-      const child = spawn('sh', ['-c', command], {
-        stdio: 'inherit',
-        env: kiloEnv,
-      });
+      const overallTimer = setTimeout(() => {
+        reject(new Error(`KiloCode execution timed out after ${overallTimeoutMs / 1000} seconds`));
+      }, overallTimeoutMs);
 
-      const timeoutMs = (timeout + 60) * 1000; // Add 60 second buffer
-      const timer = setTimeout(() => {
-        child.kill('SIGTERM');
-        reject(new Error(`KiloCode execution timed out after ${timeout + 60} seconds`));
-      }, timeoutMs);
-
-      child.on('exit', (code, signal) => {
-        clearTimeout(timer);
-        if (code !== 0) {
-          reject(new Error(`KiloCode exited with code ${code}`));
-        } else {
-          resolve();
+      const runAttempt = () => {
+        attempt++;
+        if (attempt > maxAttempts) {
+          clearTimeout(overallTimer);
+          reject(new Error(`KiloCode failed after ${maxAttempts} attempts`));
+          return;
         }
-      });
 
-      child.on('error', (err) => {
-        clearTimeout(timer);
-        reject(err);
-      });
-    }).finally(() => {
-      // Clean up temp file
-      fs.unlinkSync(tempFile);
+        // Prepare task with timeout message if retry
+        let taskToWrite = task;
+        if (attempt > 1) {
+          taskToWrite +=
+            '\n\nA previous execution timed out. Please review any uncommitted changes first and commit and push them following Agent instructions.';
+        }
+
+        // Write task to temporary file
+        const tempFile = path.join(os.tmpdir(), `kilo-task-${Date.now()}.txt`);
+        fs.writeFileSync(tempFile, taskToWrite);
+
+        // Build the command to pipe the file into kilocode
+        const command = `cat "${tempFile}" | ${baseCommand}`;
+
+        const child = spawn('sh', ['-c', command], {
+          stdio: ['pipe', 'pipe', 'pipe'],
+          env: kiloEnv,
+        });
+
+        // Pipe output to parent process to retain visibility
+        child.stdout.pipe(process.stdout);
+        child.stderr.pipe(process.stderr);
+
+        let lastOutput = Date.now();
+        let killedByNoOutput = false;
+
+        const onData = () => {
+          lastOutput = Date.now();
+        };
+
+        child.stdout.on('data', onData);
+        child.stderr.on('data', onData);
+
+        // Check for no output every 10 seconds
+        const noOutputTimer = setInterval(() => {
+          if (Date.now() - lastOutput > 120000) {
+            // 2 minutes
+            killedByNoOutput = true;
+            child.kill('SIGTERM');
+            clearInterval(noOutputTimer);
+          }
+        }, 10000);
+
+        child.on('exit', (code, _signal) => {
+          clearInterval(noOutputTimer);
+          // Clean up temp file
+          try {
+            fs.unlinkSync(tempFile);
+          } catch {
+            // Ignore if file already deleted
+          }
+
+          if (killedByNoOutput) {
+            // Retry
+            runAttempt();
+          } else if (code === 0) {
+            clearTimeout(overallTimer);
+            resolve();
+          } else {
+            clearTimeout(overallTimer);
+            reject(new Error(`KiloCode exited with code ${code}`));
+          }
+        });
+
+        child.on('error', (err) => {
+          clearInterval(noOutputTimer);
+          // Clean up temp file
+          try {
+            fs.unlinkSync(tempFile);
+          } catch {
+            // Ignore if file already deleted
+          }
+          clearTimeout(overallTimer);
+          reject(err);
+        });
+      };
+
+      runAttempt();
     });
   }
 
@@ -454,7 +529,7 @@ ${prNumber ? `- **PR**: #${prNumber}\n` : ''}
       // Check if it's a git repository
       if (!fs.existsSync('.git')) {
         info('Directory is not a git repository, cloning...');
-        const { execSync, spawn } = require('child_process');
+        const { execSync } = require('child_process');
         execSync(`git clone ${this.remoteUrl} .`, {
           encoding: 'utf-8',
           stdio: 'inherit',
