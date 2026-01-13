@@ -12,7 +12,6 @@ npm install @goldstack/utils-esbuild
 ```
 
 ## Usage
-
 ```typescript
 import { buildWithEsbuild } from '@goldstack/utils-esbuild';
 
@@ -21,3 +20,4 @@ await buildWithEsbuild({
   outfile: 'dist/index.js',
 });
 
+```

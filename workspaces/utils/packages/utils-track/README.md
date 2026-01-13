@@ -12,9 +12,9 @@ npm install @goldstack/utils-track
 ```
 
 ## Usage
-
 ```typescript
 import { track } from '@goldstack/utils-track';
 
 track('event');
 
+```

@@ -67,4 +67,5 @@ Also note that if you want to add a file to multiple groups, you need to include
 ```typescript
 /* esbuild-ignore server */
 /* esbuild-ignore ui */
+```
 

@@ -12,9 +12,9 @@ npm install @goldstack/utils-sh
 ```
 
 ## Usage
-
 ```typescript
 import { sh } from '@goldstack/utils-sh';
 
 await sh('echo hello');
 
+```

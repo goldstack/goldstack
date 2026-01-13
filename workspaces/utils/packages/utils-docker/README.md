@@ -21,6 +21,7 @@ await runDocker({
   command: 'echo hello',
 });
 ```
+```
 
 See [utilsDocker.ts](https://github.com/goldstack/goldstack/blob/master/workspaces/utils/packages/utils-docker/src/utilsDocker.ts).
 

@@ -12,9 +12,9 @@ npm install @goldstack/utils-nodemonx
 ```
 
 ## Usage
-
 ```typescript
 import { nodemonx } from '@goldstack/utils-nodemonx';
 
 nodemonx();
 
+```

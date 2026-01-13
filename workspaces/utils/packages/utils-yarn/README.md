@@ -12,9 +12,9 @@ npm install @goldstack/utils-yarn
 ```
 
 ## Usage
-
 ```typescript
 import { yarnInstall } from '@goldstack/utils-yarn';
 
 await yarnInstall();
 
+```

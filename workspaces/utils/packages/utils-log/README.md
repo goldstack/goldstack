@@ -12,9 +12,9 @@ npm install @goldstack/utils-log
 ```
 
 ## Usage
-
 ```typescript
 import { log } from '@goldstack/utils-log';
 
 log('Hello World');
 
+```

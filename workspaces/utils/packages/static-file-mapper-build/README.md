@@ -14,10 +14,10 @@ npm install static-file-mapper-build
 ## Usage
 
 This library helps tracking paths to generated static files for deployment bundles during build time.
-
 ```typescript
 import { createStaticFileMapperBuild } from 'static-file-mapper-build';
 
 // Example usage
 const mapper = createStaticFileMapperBuild();
 
+```

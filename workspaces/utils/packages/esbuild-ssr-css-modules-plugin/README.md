@@ -77,6 +77,7 @@ const res = await build({
   ],
 });
 ```
+```
 
 ## How does it work?
 
