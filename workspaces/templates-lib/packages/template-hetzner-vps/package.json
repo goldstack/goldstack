@@ -34,7 +34,7 @@
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "generate-schema": "ts-node scripts/generateSchemas.ts HetznerVPS && cp schemas/* ../../../templates/packages/hetzner-vps/schemas",
     "prepublishOnly": "yarn run build",
-    "publish": "utils-git changed --exec \"yarn npm publish $@\"",
+    "publish": "yarn npm publish --tolerate-republish",
     "test": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand",
     "test-watch": "GOLDSTACK_DEPLOYMENT=local jest --watch --config=./jest.config.js --runInBand",
     "version:apply": "utils-git changed --exec \"yarn version $@ && yarn version apply\"",
