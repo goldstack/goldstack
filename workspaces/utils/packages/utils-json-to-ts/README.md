@@ -29,4 +29,3 @@ import { convertJsonToTs } from '@goldstack/utils-json-to-ts';
 const tsCode = await convertJsonToTs(schema);
 
 ```
-```

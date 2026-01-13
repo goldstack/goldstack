@@ -21,4 +21,3 @@ import { createStaticFileMapperBuild } from 'static-file-mapper-build';
 const mapper = createStaticFileMapperBuild();
 
 ```
-```

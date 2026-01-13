@@ -18,4 +18,3 @@ import { log } from '@goldstack/utils-log';
 log('Hello World');
 
 ```
-```

@@ -23,7 +23,6 @@ await build({
   plugins: [tailwindPlugin()],
 });
 ```
-```
 
 This plugin compiles Tailwind CSS classes into static CSS that can be used in SSR environments.
 

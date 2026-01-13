@@ -98,7 +98,6 @@ return compress(event, {
   body: JSON.stringify({ message: 'Hello World' }),
 });
 ```
-```
 
 ### HTML Response
 ```typescript
@@ -107,7 +106,6 @@ return compress(event, {
   headers: { 'Content-Type': 'text/html' },
   body: '<html><body><h1>Hello</h1></body></html>',
 });
-```
 ```
 
 ### No Compression (Client doesn't support)

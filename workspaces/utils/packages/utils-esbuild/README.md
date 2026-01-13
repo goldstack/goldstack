@@ -21,4 +21,3 @@ await buildWithEsbuild({
 });
 
 ```
-```

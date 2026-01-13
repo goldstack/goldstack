@@ -20,7 +20,6 @@ runCli(async () => {
   // Your CLI logic here
 });
 ```
-```
 
 See [Source Code](https://github.com/goldstack/goldstack/blob/master/workspaces/utils/packages/utils-cli/src/utilsCli.ts).
 

@@ -27,7 +27,6 @@ await client.send(new PutObjectCommand({
   Body: 'hello',
 }));
 ```
-```
 
 This will create:
 

@@ -18,4 +18,3 @@ import { track } from '@goldstack/utils-track';
 track('event');
 
 ```
-```
