@@ -30,7 +30,7 @@
     "@goldstack/utils-project": "0.4.35",
     "@goldstack/utils-s3": "0.4.30",
     "@goldstack/utils-sh": "0.5.34",
-    "@goldstack/utils-template": "0.4.35",
+    "@goldstack/utils-template": "0.4.36",
     "fs-extra": "^11.2.0",
     "semver": "^7.6.3",
     "uuid": "^11.0.5"

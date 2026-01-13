@@ -28,7 +28,7 @@
     "@goldstack/utils-log": "0.3.29",
     "@goldstack/utils-package": "0.4.37",
     "@goldstack/utils-sh": "0.5.34",
-    "@goldstack/utils-template": "0.4.35",
+    "@goldstack/utils-template": "0.4.36",
     "@goldstack/utils-yarn": "0.4.37",
     "axios": "^1.12.2",
     "extract-zip": "^2.0.1",

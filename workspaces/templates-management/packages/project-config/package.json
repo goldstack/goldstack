@@ -24,7 +24,7 @@
     "@goldstack/utils-package": "0.4.37",
     "@goldstack/utils-project": "0.4.35",
     "@goldstack/utils-sh": "0.5.34",
-    "@goldstack/utils-template": "0.4.35"
+    "@goldstack/utils-template": "0.4.36"
   },
   "devDependencies": {
     "@swc/core": "^1.15.8",

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-user-management-cli",
-  "version": "0.1.80",
+  "version": "0.1.81",
   "description": "Command line tools for User Management template",
   "keywords": [
     "goldstack",
@@ -44,7 +44,7 @@
   "dependencies": {
     "@goldstack/infra": "0.4.35",
     "@goldstack/infra-aws": "0.4.53",
-    "@goldstack/template-user-management": "0.1.74",
+    "@goldstack/template-user-management": "0.1.75",
     "@goldstack/utils-aws-lambda": "0.3.65",
     "@goldstack/utils-cli": "0.3.27",
     "@goldstack/utils-docker": "0.4.36",
@@ -52,7 +52,7 @@
     "@goldstack/utils-package": "0.4.37",
     "@goldstack/utils-package-config": "0.4.37",
     "@goldstack/utils-sh": "0.5.34",
-    "@goldstack/utils-template": "0.4.35",
+    "@goldstack/utils-template": "0.4.36",
     "@goldstack/utils-terraform": "0.4.66",
     "@goldstack/utils-terraform-aws": "0.4.69",
     "source-map-support": "^0.5.21",
