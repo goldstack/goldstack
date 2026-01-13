@@ -4,6 +4,7 @@
 
 This library contains a method to wrap the execution for a Node.js CLI application.
 
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️
 ## Installation
 
 ```bash
@@ -22,4 +23,3 @@ runCli(async () => {
 
 See [Source Code](https://github.com/goldstack/goldstack/blob/master/workspaces/utils/packages/utils-cli/src/utilsCli.ts).
 
-This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

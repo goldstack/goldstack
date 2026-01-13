@@ -4,6 +4,7 @@
 
 This is an enhanced version of [nodemon](https://www.npmjs.com/package/nodemon) specifically designed to support watching for code changes in projects with multiple packages/workspaces.
 
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️
 ## Installation
 
 ```bash
@@ -17,4 +18,3 @@ import { nodemonx } from '@goldstack/utils-nodemonx';
 
 nodemonx();
 
-This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

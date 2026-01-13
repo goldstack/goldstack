@@ -4,6 +4,7 @@
 
 ESBuild plugin for compiling Tailwind CSS for Server-Side Rendering (SSR) use cases.
 
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️
 ## Installation
 
 ```bash
@@ -25,4 +26,3 @@ await build({
 
 This plugin compiles Tailwind CSS classes into static CSS that can be used in SSR environments.
 
-This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

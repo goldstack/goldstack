@@ -20,6 +20,7 @@ SyntaxError: Unexpected token '.'
     at wrapSafe (node:internal/modules/cjs/loader:1033:15)
 ```
 
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️
 ## Installation
 
 ```bash
@@ -60,4 +61,3 @@ declare module '*.css' {
   export default classes;
 }
 
-This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

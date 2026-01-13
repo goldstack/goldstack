@@ -4,6 +4,7 @@
 
 This library allows running [yarn](https://yarnpkg.com/) commands from Node.js applications.
 
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️
 ## Installation
 
 ```bash
@@ -17,4 +18,3 @@ import { yarnInstall } from '@goldstack/utils-yarn';
 
 await yarnInstall();
 
-This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

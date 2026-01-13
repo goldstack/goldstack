@@ -4,6 +4,7 @@
 
 This library allows linking [Google Analytics](https://analytics.google.com/analytics/web/) to React applications.
 
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️
 ## Installation
 
 ```bash
@@ -17,4 +18,3 @@ import { track } from '@goldstack/utils-track';
 
 track('event');
 
-This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

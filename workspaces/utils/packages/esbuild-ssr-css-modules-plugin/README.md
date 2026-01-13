@@ -101,4 +101,3 @@ Thus, when the client-side bundle is loaded, all required CSS will be injected i
 
 - [`node-css-require`](https://www.npmjs.com/package/node-css-require): Library used for CSS module transformation
 
-This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

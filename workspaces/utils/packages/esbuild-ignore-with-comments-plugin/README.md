@@ -4,6 +4,7 @@
 
 Allows inserting comments into TypeScript source files. ESBuild will ignore these files during build.
 
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️
 ## Installation
 
 ```bash
@@ -67,4 +68,3 @@ Also note that if you want to add a file to multiple groups, you need to include
 /* esbuild-ignore server */
 /* esbuild-ignore ui */
 
-This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️

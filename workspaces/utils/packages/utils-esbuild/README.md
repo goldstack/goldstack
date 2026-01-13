@@ -4,6 +4,7 @@
 
 Simple utilities for working with [esbuild](https://esbuild.github.io/).
 
+This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️
 ## Installation
 
 ```bash
@@ -20,4 +21,3 @@ await buildWithEsbuild({
   outfile: 'dist/index.js',
 });
 
-This utility has been developed for the [Goldstack](https://goldstack.party) starter project builder. Check it out for starting your next project ❤️
