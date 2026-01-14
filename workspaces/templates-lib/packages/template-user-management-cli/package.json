@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-user-management-cli",
-  "version": "0.1.83",
+  "version": "0.1.84",
   "description": "Command line tools for User Management template",
   "keywords": [
     "goldstack",
@@ -44,7 +44,7 @@
   "dependencies": {
     "@goldstack/infra": "0.4.37",
     "@goldstack/infra-aws": "0.4.55",
-    "@goldstack/template-user-management": "0.1.77",
+    "@goldstack/template-user-management": "0.1.78",
     "@goldstack/utils-aws-lambda": "0.3.67",
     "@goldstack/utils-cli": "0.3.29",
     "@goldstack/utils-docker": "0.4.38",
