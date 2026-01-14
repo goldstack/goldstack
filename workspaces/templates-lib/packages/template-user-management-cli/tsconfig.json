@@ -49,9 +49,6 @@
       "path": "../utils-terraform-aws"
     },
     {
-      "path": "../../../docs/packages/utils-docs-cli"
-    },
-    {
       "path": "../utils-package-config-generate"
     }
   ]

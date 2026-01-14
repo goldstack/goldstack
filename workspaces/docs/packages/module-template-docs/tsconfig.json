@@ -1,6 +1,8 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
@@ -10,10 +12,10 @@
       "path": "../../../templates/packages/module-template-utils"
     },
     {
-      "path": "../utils-docs-cli"
+      "path": "../../../utils/packages/utils-sh"
     },
     {
-      "path": "../../../utils/packages/utils-sh"
+      "path": "../utils-docs-cli"
     }
   ]
 }

@@ -25,9 +25,6 @@
       "path": "../utils-terraform"
     },
     {
-      "path": "../../../docs/packages/utils-docs-cli"
-    },
-    {
       "path": "../utils-package-config-generate"
     }
   ]
