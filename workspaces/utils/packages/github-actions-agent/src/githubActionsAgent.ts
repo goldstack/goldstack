@@ -373,17 +373,16 @@ export class GitHubActionsAgent {
       kiloProviderType = 'kilocode',
     } = options;
 
-    // Set environment variables
+    // Set environment variables (only if not already set)
     const kiloEnv: Record<string, string | undefined> = {
       ...process.env,
-      KILO_PROVIDER: kiloProvider,
-      KILO_PROVIDER_TYPE: kiloProviderType,
-      KILOCODE_API_KEY: this.kiloApiKey,
-      KILOCODE_TOKEN: this.kiloApiKey,
-      GITHUB_TOKEN: this.token,
-      KILO_TELEMETRY_DEBUG: 'false',
     };
-    if (model) {
+    if (!process.env.KILO_PROVIDER) kiloEnv.KILO_PROVIDER = kiloProvider;
+    if (!process.env.KILO_PROVIDER_TYPE) kiloEnv.KILO_PROVIDER_TYPE = kiloProviderType;
+    if (!process.env.KILOCODE_TOKEN) kiloEnv.KILOCODE_TOKEN = this.kiloApiKey;
+    if (!process.env.GITHUB_TOKEN) kiloEnv.GITHUB_TOKEN = this.token;
+    if (!process.env.KILO_TELEMETRY_DEBUG) kiloEnv.KILO_TELEMETRY_DEBUG = 'false';
+    if (model && !process.env.KILOCODE_MODEL) {
       kiloEnv.KILOCODE_MODEL = model;
     }
 

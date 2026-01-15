@@ -227,7 +227,7 @@ export const run = async (): Promise<void> => {
 
     // Get environment variables
     const token = process.env.GITHUB_TOKEN;
-    const kiloApiKey = process.env.KILOCODE_API_KEY;
+    const kiloApiKey = process.env.KILOCODE_TOKEN;
 
     if (!token || !kiloApiKey) {
       throw new Error('GITHUB_TOKEN and KILOCODE_API_KEY environment variables are required');

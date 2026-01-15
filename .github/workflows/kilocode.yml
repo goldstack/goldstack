@@ -51,14 +51,19 @@ jobs:
 
       - name: Run Kilo Code Workflow
         env:
-          KILO_PROVIDER: kilocode
+          # Core configuration
+          KILO_TELEMETRY: false
+          KILO_THEME: dark
+
+          # Provider configuration
           KILO_PROVIDER_TYPE: kilocode
-          KILOCODE_API_KEY: ${{ secrets.KILO_API_KEY }}
           KILOCODE_TOKEN: ${{ secrets.KILO_API_KEY }}
-          KILOCODE_BASE_URL: https://api.kilocode.com
           KILOCODE_MODEL: x-ai/grok-code-fast-1
-          # KILOCODE_MODEL: minimax/minimax-m2.1:free
-          KILO_TELEMETRY_DEBUG: false
+
+          # Auto-approval configuration (non-default values)
+          KILO_AUTO_APPROVAL_READ_OUTSIDE: false
+
+          # GitHub integration
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           COMMENT_JSON: ${{ toJson(github.event.comment.body) }}
         run: |
