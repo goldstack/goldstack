@@ -5,19 +5,25 @@ resource "aws_s3_bucket" "website_root" {
   # Remove this line if you want to prevent accidential deletion of bucket
   force_destroy = true
 
-  website {
-    index_document = "index.html"
-    error_document = "404.html"
-  }
-
   tags = {
     ManagedBy = "terraform"
     Changed   = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   }
 
-
   lifecycle {
     ignore_changes = [tags]
+  }
+}
+
+resource "aws_s3_bucket_website_configuration" "website_root" {
+  bucket = aws_s3_bucket.website_root.id
+
+  index_document {
+    suffix = "index.html"
+  }
+
+  error_document {
+    key = "404.html"
   }
 }
 
@@ -70,13 +76,63 @@ data "aws_iam_policy_document" "website_root" {
       "s3:GetObject",
     ]
 
-    resources = [ 
+    resources = [
       "arn:aws:s3:::${var.website_domain}-root/*"
     ]
   }
 }
 
+resource "aws_cloudfront_cache_policy" "static_immutable" {
+  name        = "${replace(var.website_domain, ".", "-")}-static-immutable"
+  min_ttl     = 0
+  default_ttl = 86400
+  max_ttl     = 31536000
 
+  parameters_in_cache_key_and_forwarded_to_origin {
+    cookies_config { cookie_behavior = "none" }
+    headers_config { header_behavior = "none" }
+    query_strings_config { query_string_behavior = "none" }
+    enable_accept_encoding_gzip   = true
+    enable_accept_encoding_brotli = true
+  }
+}
+
+resource "aws_cloudfront_cache_policy" "default_short" {
+  name        = "${replace(var.website_domain, ".", "-")}-default-short"
+  min_ttl     = 0
+  default_ttl = var.default_cache_duration
+  max_ttl     = 1200
+
+  parameters_in_cache_key_and_forwarded_to_origin {
+    cookies_config { cookie_behavior = "none" }
+    headers_config { header_behavior = "none" }
+    query_strings_config { query_string_behavior = "none" }
+    enable_accept_encoding_gzip   = true
+    enable_accept_encoding_brotli = true
+  }
+}
+
+resource "aws_cloudfront_origin_request_policy" "cors" {
+  name = "${replace(var.website_domain, ".", "-")}-cors"
+
+  cookies_config { cookie_behavior = "none" }
+  headers_config {
+    header_behavior = "whitelist"
+    headers { items = ["Origin"] }
+  }
+  query_strings_config { query_string_behavior = "none" }
+}
+
+resource "aws_cloudfront_function" "routing" {
+  name    = "${replace(var.website_domain, ".", "-")}-routing"
+  runtime = "cloudfront-js-2.0"
+  code    = var.routing_function_code
+  comment = "Next.js routing function"
+
+  lifecycle {
+    ignore_changes = [code]
+  }
+}
 
 # Creates the CloudFront distribution to serve the static website
 resource "aws_cloudfront_distribution" "website_cdn_root" {
@@ -89,10 +145,10 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
   ]
 
   origin {
-    domain_name = aws_s3_bucket.website_root.website_endpoint
+    domain_name = aws_s3_bucket_website_configuration.website_root.website_endpoint
 
     origin_id   = "origin-bucket-${aws_s3_bucket.website_root.id}"
-    
+
     custom_origin_config {
       http_port = 80
       https_port = 443
@@ -112,18 +168,8 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
 
     response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
-    forwarded_values {
-      query_string = false
-      headers      = ["Origin"]
-
-      cookies {
-        forward = "none"
-      }
-    }
-
-    min_ttl                = 0
-    default_ttl            = 86400
-    max_ttl                = 31536000
+    cache_policy_id          = aws_cloudfront_cache_policy.static_immutable.id
+    origin_request_policy_id = aws_cloudfront_origin_request_policy.cors.id
     compress               = true
     viewer_protocol_policy = "redirect-to-https"
   }
@@ -139,46 +185,27 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
 
     response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
-    forwarded_values {
-      query_string = false
-      headers      = ["Origin"]
-
-      cookies {
-        forward = "none"
-      }
-    }
-
-    min_ttl                = 0
-    default_ttl            = tostring(var.default_cache_duration)
-    max_ttl                = 1200
+    cache_policy_id          = aws_cloudfront_cache_policy.default_short.id
+    origin_request_policy_id = aws_cloudfront_origin_request_policy.cors.id
     compress               = true
     viewer_protocol_policy = "redirect-to-https"
   }
 
   # Priority 2
-  # Using edge lambda to handle dynamic paths
+  # Using CloudFront function to handle dynamic paths
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
-    min_ttl          = "0"
-    default_ttl      = tostring(var.default_cache_duration)
-    max_ttl          = "1200"
 
-    viewer_protocol_policy = "redirect-to-https" 
+    viewer_protocol_policy = "redirect-to-https"
     response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
     compress               = true
+    cache_policy_id          = aws_cloudfront_cache_policy.default_short.id
 
-    forwarded_values {
-      query_string = false
-      cookies {
-        forward = "none"
-      }
-    }
-
-    lambda_function_association {
-      event_type = "origin-request"
-      lambda_arn = aws_lambda_function.edge.qualified_arn
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.routing.arn
     }
   }
 

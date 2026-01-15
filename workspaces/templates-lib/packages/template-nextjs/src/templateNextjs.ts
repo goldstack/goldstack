@@ -14,6 +14,7 @@ import { PackageConfig } from '@goldstack/utils-package-config';
 import { infraCommands } from '@goldstack/utils-terraform';
 import yargs from 'yargs';
 import { deployEdgeLambda } from './edgeLambdaDeploy';
+import { deployCloudFrontFunction } from './cloudFrontFunctionDeploy';
 import { setNextjsEnvironmentVariables } from './nextjsEnvironment';
 
 export const run = async (args: string[]): Promise<void> => {
@@ -29,6 +30,11 @@ export const run = async (args: string[]): Promise<void> => {
           describe: 'Name of the deployment this command should be applied to',
           demandOption: true,
         });
+      })
+      .option('cf-function', {
+        type: 'boolean',
+        describe: 'Use CloudFront Functions instead of Lambda@Edge for routing',
+        default: false,
       })
       .help()
       .parse();
@@ -88,10 +94,18 @@ export const run = async (args: string[]): Promise<void> => {
       await infraAwsStaticWebsiteCli(config, params);
       const deployment = packageConfig.getDeployment(deploymentName);
       const deploymentState = readDeploymentState('./', deployment.name);
-      await deployEdgeLambda({
-        deployment,
-        deploymentState: deploymentState,
-      });
+
+      if (argv['cf-function']) {
+        await deployCloudFrontFunction({
+          deployment,
+          deploymentState: deploymentState,
+        });
+      } else {
+        await deployEdgeLambda({
+          deployment,
+          deploymentState: deploymentState,
+        });
+      }
       return;
     }
 

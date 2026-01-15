@@ -1,16 +1,12 @@
 
 # Creates bucket for forward domain
 resource "aws_s3_bucket" "website_redirect" {
-  count  = var.website_domain_redirect != null ? 1 : 0
+  count = var.website_domain_redirect != null ? 1 : 0
 
   bucket = "${var.website_domain}-redirect"
 
   # Remove this line if you want to prevent accidential deletion of bucket
   force_destroy = true
-
-  website {
-    redirect_all_requests_to = "https://${var.website_domain}"
-  }
 
   tags = {
     ManagedBy = "terraform"
@@ -22,8 +18,19 @@ resource "aws_s3_bucket" "website_redirect" {
   }
 }
 
+resource "aws_s3_bucket_website_configuration" "website_redirect" {
+  count = var.website_domain_redirect != null ? 1 : 0
+
+  bucket = aws_s3_bucket.website_redirect[0].id
+
+  redirect_all_requests_to {
+    host_name = var.website_domain
+    protocol  = "https"
+  }
+}
+
 resource "aws_s3_bucket_public_access_block" "website_redirect" {
-  count  = var.website_domain_redirect != null ? 1 : 0
+  count = var.website_domain_redirect != null ? 1 : 0
 
   bucket = aws_s3_bucket.website_redirect[0].id
 
@@ -34,7 +41,7 @@ resource "aws_s3_bucket_public_access_block" "website_redirect" {
 }
 
 resource "aws_s3_bucket_ownership_controls" "website_redirect" {
-  count  = var.website_domain_redirect != null ? 1 : 0
+  count = var.website_domain_redirect != null ? 1 : 0
 
   bucket = aws_s3_bucket.website_redirect[0].id
   rule {
@@ -43,11 +50,11 @@ resource "aws_s3_bucket_ownership_controls" "website_redirect" {
 }
 
 resource "aws_s3_bucket_acl" "website_redirect" {
-  count  = var.website_domain_redirect != null ? 1 : 0
+  count = var.website_domain_redirect != null ? 1 : 0
 
   depends_on = [
-	  aws_s3_bucket_public_access_block.website_redirect,
-	  aws_s3_bucket_ownership_controls.website_redirect,
+    aws_s3_bucket_public_access_block.website_redirect,
+    aws_s3_bucket_ownership_controls.website_redirect,
   ]
 
   bucket = aws_s3_bucket.website_redirect[0].id
@@ -56,11 +63,11 @@ resource "aws_s3_bucket_acl" "website_redirect" {
 }
 
 resource "aws_s3_bucket_policy" "website_redirect" {
-  count  = var.website_domain_redirect != null ? 1 : 0
+  count = var.website_domain_redirect != null ? 1 : 0
 
   depends_on = [
-	  aws_s3_bucket_public_access_block.website_redirect,
-	  aws_s3_bucket_ownership_controls.website_redirect,
+    aws_s3_bucket_public_access_block.website_redirect,
+    aws_s3_bucket_ownership_controls.website_redirect,
   ]
 
   bucket = aws_s3_bucket.website_redirect[0].id
@@ -78,21 +85,21 @@ data "aws_iam_policy_document" "website_redirect" {
       "s3:GetObject",
     ]
 
-    resources = [ 
+    resources = [
       "arn:aws:s3:::${var.website_domain}-redirect/*"
     ]
   }
 }
 
 
-resource "aws_s3_bucket_object" "redirect_file" {
-  count  = var.website_domain_redirect != null ? 1 : 0
+resource "aws_s3_object" "redirect_file" {
+  count = var.website_domain_redirect != null ? 1 : 0
 
   key     = "index.html"
   bucket  = aws_s3_bucket.website_redirect[0].bucket
   content = "Redirect placeholder."
 
-  content_type = "text/html"
+  content_type     = "text/html"
   website_redirect = "https://${var.website_domain}/"
 
   force_destroy = true
@@ -100,7 +107,7 @@ resource "aws_s3_bucket_object" "redirect_file" {
 
 # CloudFront for redirect (to support https://)
 resource "aws_cloudfront_distribution" "website_cdn_redirect" {
-  count  = var.website_domain_redirect != null ? 1 : 0
+  count = var.website_domain_redirect != null ? 1 : 0
 
   depends_on = [
   ]
@@ -111,13 +118,13 @@ resource "aws_cloudfront_distribution" "website_cdn_redirect" {
 
   origin {
     origin_id   = "origin-bucket-${aws_s3_bucket.website_redirect[0].id}"
-    domain_name = aws_s3_bucket.website_redirect[0].website_endpoint
+    domain_name = aws_s3_bucket_website_configuration.website_redirect[0].website_endpoint
 
     custom_origin_config {
-      http_port = 80
-      https_port = 443
+      http_port              = 80
+      https_port             = 443
       origin_protocol_policy = "http-only"
-      origin_ssl_protocols = ["TLSv1.2"]
+      origin_ssl_protocols   = ["TLSv1.2"]
     }
   }
 
@@ -125,19 +132,11 @@ resource "aws_cloudfront_distribution" "website_cdn_redirect" {
     allowed_methods  = ["GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT", "DELETE"]
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_redirect[0].id}"
-    min_ttl          = "0"
-    default_ttl      = tostring(var.default_cache_duration)
-    max_ttl          = "1200"
 
     viewer_protocol_policy = "redirect-to-https" # Redirects any HTTP request to HTTPS
     compress               = true
-
-    forwarded_values {
-      query_string = false
-      cookies {
-        forward = "none"
-      }
-    }
+    cache_policy_id          = aws_cloudfront_cache_policy.default_short.id
+    origin_request_policy_id = aws_cloudfront_origin_request_policy.cors.id
 
   }
 
@@ -167,7 +166,7 @@ resource "aws_cloudfront_distribution" "website_cdn_redirect" {
 
 # Creates record to point to redirect CloudFront distribution
 resource "aws_route53_record" "website_cdn_redirect_record" {
-  count  = var.website_domain_redirect != null ? 1 : 0
+  count = var.website_domain_redirect != null ? 1 : 0
 
   zone_id = data.aws_route53_zone.main.zone_id
   name    = var.website_domain_redirect
