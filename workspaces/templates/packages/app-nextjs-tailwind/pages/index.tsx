@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useSWR from 'swr';
-import ReactIcon from '../icons/react.svg';
-import RocketLaunchImg from '../img/rocket-launch.jpg';
+import ReactIcon from './../src/icons/react.svg';
+import RocketLaunchImg from './../src/img/rocket-launch.jpg';
 import styles from './index.module.css';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
