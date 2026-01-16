@@ -63,12 +63,15 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
   const functionName = `${params.deployment.name.replace(/[^a-zA-Z0-9-_]/g, '-')}-routing`;
   const credentials = await getAWSUser(params.deployment.awsUser);
 
+  // Base64 encode the function code as required by AWS CLI
+  const encodedFunctionCode = Buffer.from(functionCode, 'utf8').toString('base64');
+
   try {
     // Try to update the existing function
     await awsCli({
       credentials,
       region: 'us-east-1',
-      command: `cloudfront update-function --name ${functionName} --function-config Comment="Next.js routing function",Runtime="cloudfront-js-2.0" --function-code "${functionCode.replace(/"/g, '\\"')}" --if-match "*"`,
+      command: `cloudfront update-function --name ${functionName} --function-config Comment="Next.js routing function",Runtime="cloudfront-js-2.0" --function-code "${encodedFunctionCode}" --if-match "*"`,
       options: { silent: true },
     });
   } catch (error) {
@@ -76,7 +79,7 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
     await awsCli({
       credentials,
       region: 'us-east-1',
-      command: `cloudfront create-function --name ${functionName} --function-config Comment="Next.js routing function",Runtime="cloudfront-js-2.0" --function-code "${functionCode.replace(/"/g, '\\"')}"`,
+      command: `cloudfront create-function --name ${functionName} --function-config Comment="Next.js routing function",Runtime="cloudfront-js-2.0" --function-code "${encodedFunctionCode}"`,
       options: { silent: true },
     });
   }
