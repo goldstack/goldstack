@@ -1,4 +1,4 @@
-import getPort from 'find-free-port';
+import getPort from 'get-port';
 
 import { getEndpoint, startTestServer, stopTestServer } from './module';
 
@@ -12,15 +12,7 @@ describe('Should create API', () => {
   let port: undefined | number;
 
   beforeAll(async () => {
-    port = await new Promise<number>((resolve, reject) => {
-      getPort(process.env.TEST_SERVER_PORT || '50321', (err: any, p1: number) => {
-        if (err) {
-          reject(err);
-          return;
-        }
-        resolve(p1);
-      });
-    });
+    port = await getPort({ port: parseInt(process.env.TEST_SERVER_PORT || '50321') });
     await startTestServer(port);
   });
 

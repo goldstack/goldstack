@@ -1,4 +1,4 @@
-import getPort from 'find-free-port';
+import getPort from 'get-port';
 
 import { getEndpoint, startTestServer, stopTestServer } from './../module';
 
@@ -8,16 +8,7 @@ describe('Should create page', () => {
   let port: undefined | number;
 
   beforeAll(async () => {
-    port = await new Promise<number>((resolve, reject) => {
-      // biome-ignore lint/suspicious/noExplicitAny: getPort callback error type is any
-      getPort(process.env.TEST_SERVER_PORT || '50331', (err: any, p1: number) => {
-        if (err) {
-          reject(err);
-          return;
-        }
-        resolve(p1);
-      });
-    });
+    port = await getPort({ port: parseInt(process.env.TEST_SERVER_PORT || '50331') });
     await startTestServer(port);
   });
 

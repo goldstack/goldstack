@@ -13,8 +13,8 @@
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
-    "jsx": "react-jsx",
-    "module": "ES2015",
+    "jsx": "preserve",
+    "module": "esnext",
     "incremental": true,
     "noEmit": false,
     "moduleResolution": "node",
