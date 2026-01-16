@@ -22,9 +22,49 @@
     {
       "page": "/",
       "regex": "^/$"
+    },
+    {
+      "page": "/",
+      "regex": "^/$"
+    },
+    {
+      "page": "/",
+      "regex": "^/$"
+    },
+    {
+      "page": "/",
+      "regex": "^/$"
+    },
+    {
+      "page": "/tests/[id]",
+      "regex": "^/tests/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/tests/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/[message]/sayIt",
+      "regex": "^/([^/]+?)/sayIt(?:/)?$",
+      "routeKeys": {
+        "nxtPmessage": "nxtPmessage"
+      },
+      "namedRegex": "^/(?<nxtPmessage>[^/]+?)/sayIt(?:/)?$"
     }
   ],
   "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/$"
+    },
+    {
+      "page": "/",
+      "regex": "^/$"
+    },
+    {
+      "page": "/",
+      "regex": "^/$"
+    },
     {
       "page": "/",
       "regex": "^/$"

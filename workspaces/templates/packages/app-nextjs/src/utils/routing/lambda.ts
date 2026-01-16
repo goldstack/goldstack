@@ -33,14 +33,18 @@ interface CloudFrontRequestEvent {
 export const handler = (event: CloudFrontRequestEvent) => {
   const request = event.request;
 
-  const dynamicRoutes: DynamicRoute[] = manifest.dynamicRoutes;
+  const dynamicRoutes: DynamicRoute[] = manifest.dynamicRoutes as any;
 
   const extension =
     request.uri.indexOf('.') !== -1 ? (request.uri.split('.').pop() as string) : '.html';
 
   for (const route of dynamicRoutes) {
     if (new RegExp(route.regex).test(request.uri)) {
-      request.uri = route.page + extension;
+      if (route.page === '/') {
+        request.uri = '/index.html';
+      } else {
+        request.uri = route.page + extension;
+      }
       break;
     }
   }

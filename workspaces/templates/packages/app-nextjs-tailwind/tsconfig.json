@@ -6,7 +6,8 @@
     "./schemas/**/*.json",
     "./scripts/**/*",
     "./goldstack.json",
-    "./next-env.d.ts"
+    "./next-env.d.ts",
+    "pages"
   ],
   "compilerOptions": {
     "outDir": "dist",
