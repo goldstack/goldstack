@@ -63,22 +63,33 @@ export const gatewayRouteToExpressPath = (route: string): string => {
 export const injectRoutes = (params: InjectRoutesParam): void => {
   const sortedConfigs = sortRoutesBySpecificity(params.lambdaConfigs);
   for (const lambdaConfig of sortedConfigs) {
-    const script = require(lambdaConfig.absoluteFilePath);
+    let script: any;
+    try {
+      script = require(lambdaConfig.absoluteFilePath);
+    } catch (error) {
+      console.error(`Failed to require lambda config at ${lambdaConfig.absoluteFilePath}:`, error);
+      continue;
+    }
     const handler = script.handler;
 
     const expressPath = gatewayRouteToExpressPath(lambdaConfig.path);
 
     params.app.all(expressPath, async (req: Request, resp: Response): Promise<void> => {
-      const functionName = generateFunctionName('local', lambdaConfig);
-      process.env.GOLDSTACK_FUNCTION_NAME = functionName;
-      process.env.GOLDSTACK_DEPLOYMENT = 'local';
-      const result = await handler(
-        convertToGatewayEvent({ req: req, lambdaConfig: lambdaConfig }),
-        createContext({
-          functionName,
-        }),
-      );
-      injectGatewayResultIntoResponse(result, resp);
+      try {
+        const functionName = generateFunctionName('local', lambdaConfig);
+        process.env.GOLDSTACK_FUNCTION_NAME = functionName;
+        process.env.GOLDSTACK_DEPLOYMENT = 'local';
+        const result = await handler(
+          convertToGatewayEvent({ req: req, lambdaConfig: lambdaConfig }),
+          createContext({
+            functionName,
+          }),
+        );
+        injectGatewayResultIntoResponse(result, resp);
+      } catch (error) {
+        console.error('Error in lambda handler:', error);
+        resp.status(500).json({ error: 'Internal Server Error' });
+      }
     });
   }
 };
