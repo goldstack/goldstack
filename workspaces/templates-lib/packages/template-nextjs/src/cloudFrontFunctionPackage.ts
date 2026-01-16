@@ -8,7 +8,9 @@ export interface PackageCloudFrontFunctionParams {
   destFile: string;
 }
 
-export const packageCloudFrontFunction = async (params: PackageCloudFrontFunctionParams): Promise<string> => {
+export const packageCloudFrontFunction = async (
+  params: PackageCloudFrontFunctionParams,
+): Promise<string> => {
   assertFileExists(params.sourceFile);
 
   const res = await build({
@@ -22,7 +24,9 @@ export const packageCloudFrontFunction = async (params: PackageCloudFrontFunctio
   });
 
   if (res.errors && res.errors.length > 0) {
-    throw new Error(`Build errors for CloudFront function ${res.errors.map((er) => er.text).join(',')}`);
+    throw new Error(
+      `Build errors for CloudFront function ${res.errors.map((er) => er.text).join(',')}`,
+    );
   }
 
   assertFileExists(path.resolve(params.destFile));

@@ -64,7 +64,12 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
 
   // Deploy the function code via CloudFront API
   // Since Terraform ignores changes to the function code, we can update it here
-  const functionName = `${params.deployment.name.replace(/[^a-zA-Z0-9-_]/g, '-')}-routing`;
+  const functionName = params.deploymentState.terraform?.routing_function_name?.value;
+  if (!functionName) {
+    throw new Error(
+      'CloudFront routing function name not found in deployment state. Ensure Terraform outputs are properly loaded.',
+    );
+  }
   const credentials = await getAWSUser(params.deployment.awsUser);
 
   // Base64 encode the function code as required by AWS CLI
@@ -88,10 +93,20 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
   }
 
   // Update the existing function
-  await awsCli({
+  const updateResult = await awsCli({
     credentials,
     region: 'us-east-1',
     command: `cloudfront update-function --name ${functionName} --function-config Comment="Next.js routing function",Runtime="cloudfront-js-2.0" --function-code "${encodedFunctionCode}" --if-match "${eTag}"`,
+    options: { silent: true },
+  });
+  const updateData = JSON.parse(updateResult);
+  const updatedETag = updateData.ETag;
+
+  // Publish the updated function
+  await awsCli({
+    credentials,
+    region: 'us-east-1',
+    command: `cloudfront publish-function --name ${functionName} --if-match "${updatedETag}"`,
     options: { silent: true },
   });
 };
