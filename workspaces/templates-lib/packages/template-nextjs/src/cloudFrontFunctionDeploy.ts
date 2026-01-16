@@ -47,7 +47,11 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
   await rmSafe(`${functionSourceDir}routes-manifest.json`);
   write(JSON.stringify(routesManifest, null, 2), `${functionSourceDir}routes-manifest.json`);
   await rmSafe(`${functionCompiledDir}routes-manifest.json`);
-  cp('-f', `${functionSourceDir}routes-manifest.json`, `${functionCompiledDir}routes-manifest.json`);
+  cp(
+    '-f',
+    `${functionSourceDir}routes-manifest.json`,
+    `${functionCompiledDir}routes-manifest.json`,
+  );
 
   // Package source for CloudFront Functions runtime
   await rmSafe(functionPackageDir);
@@ -66,21 +70,28 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
   // Base64 encode the function code as required by AWS CLI
   const encodedFunctionCode = Buffer.from(functionCode, 'utf8').toString('base64');
 
+  // Get ETag for update - function must exist (created by Terraform)
+  let eTag = '';
   try {
-    // Try to update the existing function
-    await awsCli({
+    const describeResult = await awsCli({
       credentials,
       region: 'us-east-1',
-      command: `cloudfront update-function --name ${functionName} --function-config Comment="Next.js routing function",Runtime="cloudfront-js-2.0" --function-code "${encodedFunctionCode}" --if-match "*"`,
+      command: `cloudfront describe-function --name ${functionName}`,
       options: { silent: true },
     });
+    const describeData = JSON.parse(describeResult);
+    eTag = describeData.ETag;
   } catch (error) {
-    // If function doesn't exist, create it
-    await awsCli({
-      credentials,
-      region: 'us-east-1',
-      command: `cloudfront create-function --name ${functionName} --function-config Comment="Next.js routing function",Runtime="cloudfront-js-2.0" --function-code "${encodedFunctionCode}"`,
-      options: { silent: true },
-    });
+    throw new Error(
+      `CloudFront function '${functionName}' does not exist. Please ensure Terraform infrastructure is set up first.`,
+    );
   }
+
+  // Update the existing function
+  await awsCli({
+    credentials,
+    region: 'us-east-1',
+    command: `cloudfront update-function --name ${functionName} --function-config Comment="Next.js routing function",Runtime="cloudfront-js-2.0" --function-code "${encodedFunctionCode}" --if-match "${eTag}"`,
+    options: { silent: true },
+  });
 };
