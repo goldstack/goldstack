@@ -6690,7 +6690,7 @@ const RAW_RUNTIME_STATE =
           ["esbuild-ignore-with-comments-plugin", "virtual:df9a5f65833bf8344380f154e8a7e4c6bb571be66878301b0c7fb61f7b9d1e824bc327618874d29de8ee4393dfed1d6978c7f4fecca4b70ab2de0a3f7e53e9fb#workspace:workspaces/utils/packages/esbuild-ignore-with-comments-plugin"],\
           ["esbuild-ssr-css-modules-plugin", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#workspace:workspaces/utils/packages/esbuild-ssr-css-modules-plugin"],\
           ["esbuild-tailwind-ssr-plugin", "workspace:workspaces/utils/packages/esbuild-tailwind-ssr-plugin"],\
-          ["find-free-port", "npm:2.0.0"],\
+          ["get-port", "npm:5.1.1"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
           ["jest-environment-jsdom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:30.2.0"],\
           ["jest-transform-stub", "npm:2.0.0"],\
@@ -6723,13 +6723,14 @@ const RAW_RUNTIME_STATE =
           ["@swc/jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:0.2.39"],\
           ["@types/aws-lambda", "npm:8.10.159"],\
           ["@types/aws-serverless-express", "npm:3.3.10"],\
+          ["@types/get-port", "npm:4.2.0"],\
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["@yarnpkg/esbuild-plugin-pnp", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:3.0.0-rc.15"],\
           ["date-fns", "npm:2.28.0"],\
           ["dotenv", "npm:16.4.7"],\
           ["esbuild", "npm:0.25.6"],\
-          ["find-free-port", "npm:2.0.0"],\
+          ["get-port", "npm:5.1.1"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
           ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
@@ -6939,8 +6940,7 @@ const RAW_RUNTIME_STATE =
           ["@types/tcp-port-used", "npm:1.0.4"],\
           ["@types/yargs", "npm:17.0.33"],\
           ["dynamo-db-local", "npm:8.0.0"],\
-          ["find-free-port", "npm:2.0.0"],\
-          ["find-free-ports", "npm:3.1.1"],\
+          ["get-port", "npm:5.1.1"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
           ["rimraf", "npm:6.1.2"],\
           ["tcp-port-used", "npm:1.0.2"],\
@@ -7880,7 +7880,7 @@ const RAW_RUNTIME_STATE =
           ["cookie", "npm:1.0.2"],\
           ["cors", "npm:2.8.5"],\
           ["express", "npm:4.20.0"],\
-          ["find-free-ports", "npm:3.1.1"],\
+          ["get-port", "npm:7.1.0"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
           ["node-fetch", "npm:3.3.2"],\
           ["rimraf", "npm:6.1.2"],\
@@ -12559,6 +12559,16 @@ const RAW_RUNTIME_STATE =
           ["@types/fs-extra", "npm:11.0.4"],\
           ["@types/jsonfile", "npm:6.1.4"],\
           ["@types/node", "npm:14.0.13"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/get-port", [\
+      ["npm:4.2.0", {\
+        "packageLocation": "./.yarn/cache/@types-get-port-npm-4.2.0-c594c92c19-0c084e9460.zip/node_modules/@types/get-port/",\
+        "packageDependencies": [\
+          ["@types/get-port", "npm:4.2.0"],\
+          ["get-port", "npm:7.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -18545,24 +18555,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["find-free-port", [\
-      ["npm:2.0.0", {\
-        "packageLocation": "./.yarn/cache/find-free-port-npm-2.0.0-a6f135602d-81c920e57f.zip/node_modules/find-free-port/",\
-        "packageDependencies": [\
-          ["find-free-port", "npm:2.0.0"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["find-free-ports", [\
-      ["npm:3.1.1", {\
-        "packageLocation": "./.yarn/cache/find-free-ports-npm-3.1.1-9468a40788-c2e09a92c5.zip/node_modules/find-free-ports/",\
-        "packageDependencies": [\
-          ["find-free-ports", "npm:3.1.1"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["find-replace", [\
       ["npm:3.0.0", {\
         "packageLocation": "./.yarn/cache/find-replace-npm-3.0.0-686bd07d28-6b04bcfd79.zip/node_modules/find-replace/",\
@@ -19008,6 +19000,22 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/get-package-type-npm-0.1.0-6c70cdc8ab-bba0811116.zip/node_modules/get-package-type/",\
         "packageDependencies": [\
           ["get-package-type", "npm:0.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["get-port", [\
+      ["npm:5.1.1", {\
+        "packageLocation": "./.yarn/cache/get-port-npm-5.1.1-2f6074007a-0162663ffe.zip/node_modules/get-port/",\
+        "packageDependencies": [\
+          ["get-port", "npm:5.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:7.1.0", {\
+        "packageLocation": "./.yarn/cache/get-port-npm-7.1.0-4ef4f09d7c-f4d23b4302.zip/node_modules/get-port/",\
+        "packageDependencies": [\
+          ["get-port", "npm:7.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\
