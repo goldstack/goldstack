@@ -7,44 +7,47 @@ interface DynamicRoute {
   namedRegex?: string;
 }
 
-interface CloudFrontRequestEvent {
-  request: {
-    uri: string;
-    [key: string]: any;
-  };
+interface CloudFrontRequest {
+  method: string;
+  uri: string;
+  querystring: Record<string, unknown>;
+  headers: Record<string, unknown>;
+  cookies: Record<string, unknown>;
 }
 
-function handler(event: CloudFrontRequestEvent) {
+interface CloudFrontRequestEvent {
+  version: string;
+  context: {
+    distributionDomainName?: string;
+    endpoint?: string;
+    distributionId: string;
+    eventType: string;
+    requestId: string;
+  };
+  viewer: {
+    ip: string;
+  };
+  request: CloudFrontRequest;
+}
+
+export const handler = (event: CloudFrontRequestEvent) => {
   const request = event.request;
 
   const dynamicRoutes: DynamicRoute[] = manifest.dynamicRoutes;
 
-  // Determine file extension - default to .html for routes without extension
-  const extension = request.uri.indexOf('.') !== -1 ? request.uri.split('.').pop() : 'html';
+  const extension =
+    request.uri.indexOf('.') !== -1 ? (request.uri.split('.').pop() as string) : '.html';
 
-  // Check dynamic routes
   for (const route of dynamicRoutes) {
     if (new RegExp(route.regex).test(request.uri)) {
-      if (route.page === '/') {
-        request.uri = 'index.html';
-      } else {
-        request.uri = `${route.page}.${extension}`;
-      }
+      request.uri = route.page + extension;
       break;
     }
   }
 
-  // If URI doesn't have an extension and is not already index.html, add .html
-  if (request.uri.indexOf('.') === -1 && request.uri !== 'index.html') {
-    request.uri = `${request.uri}.html`;
-  }
-
-  // Handle trailing slash redirects
-  if (request.uri.endsWith('/') && request.uri !== '/') {
-    request.uri = `${request.uri.slice(0, -1)}.html`;
+  if (request.uri.indexOf(extension) === -1) {
+    request.uri = request.uri + extension;
   }
 
   return request;
-}
-
-export { handler };
+};
