@@ -1,4 +1,4 @@
-import { findFreePorts } from 'find-free-ports';
+import getPort from 'get-port';
 import { type StartServerResult, startServer } from './utilsAwsHttpApiLocal';
 
 describe('Should create API', () => {
@@ -6,7 +6,7 @@ describe('Should create API', () => {
   let server: undefined | StartServerResult;
 
   beforeAll(async () => {
-    [port] = await findFreePorts(1);
+    port = await getPort();
     server = await startServer({
       port: `${port}`,
       routesDir: './testData/routes',

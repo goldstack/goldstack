@@ -6356,7 +6356,7 @@ __metadata:
     cookie: "npm:^1.0.2"
     cors: "npm:^2.8.5"
     express: "npm:4.20.0"
-    find-free-ports: "npm:^3.1.1"
+    get-port: "npm:^7.0.0"
     jest: "npm:^30.2.0"
     node-fetch: "npm:^3.3.2"
     rimraf: "npm:^6.1.2"
@@ -15775,13 +15775,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"find-free-ports@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "find-free-ports@npm:3.1.1"
-  checksum: 10/c2e09a92c5c3046fa850317e96cfbacc608cd89e2e1beacdaee84370fec5dad3d97c9f76736208aeffe9ff19498dd673497c7c4ab0af8d193ad74cb2057447d1
-  languageName: node
-  linkType: hard
-
 "find-replace@npm:^3.0.0":
   version: 3.0.0
   resolution: "find-replace@npm:3.0.0"
@@ -16200,7 +16193,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"get-port@npm:*":
+"get-port@npm:*, get-port@npm:^7.0.0":
   version: 7.1.0
   resolution: "get-port@npm:7.1.0"
   checksum: 10/f4d23b43026124007663a899578cc87ff37bfcf645c5c72651e9810ebafc759857784e409fb8e0ada9b90e5c5db089b0ae2f5f6b49fba1ce2e0aff86094ab17d
