@@ -1,7 +1,7 @@
-import { assertFileExists } from '@goldstack/utils-sh';
+import { assertFileExists, read } from '@goldstack/utils-sh';
 import { build } from 'esbuild';
+// import { CloudFrontFunctionsPlugin } from 'esbuild-cf-functions-plugin';
 import path from 'path';
-import { read } from '@goldstack/utils-sh';
 
 export interface PackageCloudFrontFunctionParams {
   sourceFile: string;
@@ -13,14 +13,18 @@ export const packageCloudFrontFunction = async (
 ): Promise<string> => {
   assertFileExists(params.sourceFile);
 
+  // config from https://github.com/BeeeQueue/esbuild-cf-functions-plugin?tab=readme-ov-file#usage
   const res = await build({
     outfile: params.destFile,
     entryPoints: [params.sourceFile],
-    format: 'iife', // Immediately Invoked Function Expression for CloudFront Functions
-    platform: 'browser', // CloudFront Functions run in a browser-like environment
-    target: 'es2020', // Modern JavaScript
+    // minify: true,
+    format: 'cjs',
+    legalComments: 'none',
     bundle: true,
-    globalName: 'handler', // Export handler globally
+    target: 'es5',
+    logLevel: 'info',
+    // plugins: [CloudFrontFunctionsPlugin({ runtimeVersion: 2 })],
+    // loader: { '.json': 'text' },
   });
 
   if (res.errors && res.errors.length > 0) {

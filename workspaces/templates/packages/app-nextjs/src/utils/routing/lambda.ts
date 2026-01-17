@@ -1,4 +1,6 @@
-import manifest from './routes-manifest.json';
+import manifestText from './routes-manifest.json';
+
+const manifest = manifestText; // JSON.parse(manifestText as any);
 
 interface DynamicRoute {
   page: string;
@@ -38,7 +40,8 @@ export const handler = (event: CloudFrontRequestEvent) => {
   const extension =
     request.uri.indexOf('.') !== -1 ? (request.uri.split('.').pop() as string) : '.html';
 
-  for (const route of dynamicRoutes) {
+  for (let i = 0; i < dynamicRoutes.length; i++) {
+    const route = dynamicRoutes[i];
     if (new RegExp(route.regex).test(request.uri)) {
       if (route.page === '/') {
         request.uri = '/index.html';
