@@ -3,7 +3,7 @@ import React from 'react';
 
 const TestIdPage = (): React.ReactNode => {
   const router = useRouter();
-  const { message: id } = router.query;
+  const { id } = router.query;
 
   return (
     <div>

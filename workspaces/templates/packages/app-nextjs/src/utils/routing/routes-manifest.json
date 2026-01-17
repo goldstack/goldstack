@@ -20,20 +20,20 @@
   },
   "dynamicRoutes": [
     {
-      "page": "/",
-      "regex": "^/$"
+      "page": "/index",
+      "regex": "^/index$"
     },
     {
-      "page": "/",
-      "regex": "^/$"
+      "page": "/404",
+      "regex": "^/404$"
     },
     {
-      "page": "/",
-      "regex": "^/$"
+      "page": "/[message]\\sayIt",
+      "regex": "^/[message]\\\\sayIt$"
     },
     {
-      "page": "/",
-      "regex": "^/$"
+      "page": "/tests\\[id]",
+      "regex": "^/tests\\\\[id]$"
     },
     {
       "page": "/tests/[id]",
@@ -54,20 +54,20 @@
   ],
   "staticRoutes": [
     {
-      "page": "/",
-      "regex": "^/$"
+      "page": "/index",
+      "regex": "^/index$"
     },
     {
-      "page": "/",
-      "regex": "^/$"
+      "page": "/404",
+      "regex": "^/404$"
     },
     {
-      "page": "/",
-      "regex": "^/$"
+      "page": "/[message]\\sayIt",
+      "regex": "^/[message]\\\\sayIt$"
     },
     {
-      "page": "/",
-      "regex": "^/$"
+      "page": "/tests\\[id]",
+      "regex": "^/tests\\\\[id]$"
     }
   ],
   "dataRoutes": [],

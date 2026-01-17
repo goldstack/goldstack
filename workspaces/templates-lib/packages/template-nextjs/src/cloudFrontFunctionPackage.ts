@@ -9,10 +9,10 @@ export interface PackageCloudFrontFunctionParams {
 
 export const packageCloudFrontFunction = async (
   params: PackageCloudFrontFunctionParams,
-): Promise<string> => {
+): Promise<void> => {
   assertFileExists(params.sourceFile);
 
-  // config from https://github.com/BeeeQueue/esbuild-cf-functions-plugin?tab=readme-ov-file#usage
+  // config via https://github.com/evanw/esbuild/issues/1832#issuecomment-1404910577
   const res = await build({
     outfile: params.destFile,
     entryPoints: [params.sourceFile],
@@ -28,12 +28,14 @@ export const packageCloudFrontFunction = async (
     target: 'es5',
     logLevel: 'info',
     supported: {
-      'const-and-let': false,
+      'const-and-let': true,
       'exponent-operator': true,
       'template-literal': true,
       arrow: true,
       'rest-argument': true,
       'regexp-named-capture-groups': true,
+      'async-await': true,
+      'unicode-escapes': true,
     },
     // plugins: [CloudFrontFunctionsPlugin({ runtimeVersion: 2 })],
     // loader: { '.json': 'text' },
@@ -46,7 +48,4 @@ export const packageCloudFrontFunction = async (
   }
 
   assertFileExists(path.resolve(params.destFile));
-
-  // Return the bundled code as a string
-  return read(params.destFile);
 };

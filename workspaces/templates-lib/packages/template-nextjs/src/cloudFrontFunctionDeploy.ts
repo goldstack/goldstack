@@ -3,6 +3,7 @@ import { getAWSUser } from '@goldstack/infra-aws';
 import { awsCli } from '@goldstack/utils-aws-cli';
 import { cp, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
 import { glob } from 'glob';
+import path from 'path';
 import { packageCloudFrontFunction } from './cloudFrontFunctionPackage';
 import type { NextjsDeployment } from './types/NextJsPackage';
 
@@ -22,23 +23,14 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
   // Adding in statically rendered pages
   const dynamicRoutes = routesManifest.dynamicRoutes;
   const htmlPagePaths: string[] = await glob('webDist/**/*.html');
-  const htmlPagePathsWithoutRootDir = htmlPagePaths.map((match) => {
-    const els = match.split('/');
-    els.shift();
-    const withoutRootDir = els.join('/');
-    return withoutRootDir;
-  });
-  const htmlPagePathsWithoutExtension = htmlPagePathsWithoutRootDir.map((match) => {
-    const comps = match.split('.');
-    comps.pop();
-    const withoutExtension = comps.join('.');
-    return withoutExtension;
-  });
 
-  const staticRoutes = htmlPagePathsWithoutExtension.map((match) => ({
-    page: `/${match}`,
-    regex: `^/${match.replace(/\//g, '\\/')}$`,
-  }));
+  const staticRoutes = htmlPagePaths.map((match) => {
+    const pagePath = path.relative('webDist', match).replace(/\.html$/, '');
+    return {
+      page: `/${pagePath}`,
+      regex: `^/${pagePath.replace(/\\/g, '\\\\').replace(/\//g, '\\/')}$`,
+    };
+  });
 
   routesManifest.dynamicRoutes = [...staticRoutes, ...dynamicRoutes];
   routesManifest.staticRoutes = staticRoutes;
@@ -57,7 +49,7 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
   await rmSafe(functionPackageDir);
   mkdir('-p', functionPackageDir);
 
-  const functionCode = await packageCloudFrontFunction({
+  await packageCloudFrontFunction({
     sourceFile: `${functionCompiledDir}lambda.js`,
     destFile: `${functionPackageDir}function.js`,
   });
@@ -71,9 +63,6 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
     );
   }
   const credentials = await getAWSUser(params.deployment.awsUser);
-
-  // Base64 encode the function code as required by AWS CLI
-  const encodedFunctionCode = Buffer.from(functionCode, 'utf8').toString('base64');
 
   // Get ETag for update - function must exist (created by Terraform)
   let eTag = '';
@@ -92,21 +81,28 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
     );
   }
 
-  // Update the existing function
-  const updateResult = await awsCli({
-    credentials,
-    region: 'us-east-1',
-    command: `cloudfront update-function --name ${functionName} --function-config Comment="Next.js routing function",Runtime="cloudfront-js-2.0" --function-code "${encodedFunctionCode}" --if-match "${eTag}"`,
-    options: { silent: true },
-  });
-  const updateData = JSON.parse(updateResult);
-  const updatedETag = updateData.ETag;
+  try {
+    // Update the existing function
+    const updateResult = await awsCli({
+      credentials,
+      region: 'us-east-1',
+      command: `cloudfront update-function --name ${functionName} --function-config Comment="Next.js routing function",Runtime="cloudfront-js-2.0" --function-code fileb://${functionPackageDir}function.js --if-match "${eTag}"`,
+      options: { silent: true },
+    });
+    const updateData = JSON.parse(updateResult);
+    const updatedETag = updateData.ETag;
 
-  // Publish the updated function
-  await awsCli({
-    credentials,
-    region: 'us-east-1',
-    command: `cloudfront publish-function --name ${functionName} --if-match "${updatedETag}"`,
-    options: { silent: true },
-  });
+    // Publish the updated function
+    await awsCli({
+      credentials,
+      region: 'us-east-1',
+      command: `cloudfront publish-function --name ${functionName} --if-match "${updatedETag}"`,
+      options: { silent: true },
+    });
+  } catch (error) {
+    console.error(`Failed to update or publish CloudFront function '${functionName}':`, error);
+    throw new Error(
+      `Failed to update or publish CloudFront function '${functionName}'. Please check AWS permissions and function status.`,
+    );
+  }
 };
