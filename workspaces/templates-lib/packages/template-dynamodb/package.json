@@ -64,7 +64,7 @@
     "@types/node": "^25.0.3",
     "@types/tcp-port-used": "^1.0.4",
     "@types/yargs": "^17.0.33",
-    "get-port": "^7.0.0",
+    "get-port": "^5.1.1",
     "jest": "^30.2.0",
     "rimraf": "^6.1.2",
     "ts-node": "^10.9.2",

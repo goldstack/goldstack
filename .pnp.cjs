@@ -7880,7 +7880,7 @@ const RAW_RUNTIME_STATE =
           ["cookie", "npm:1.0.2"],\
           ["cors", "npm:2.8.5"],\
           ["express", "npm:4.20.0"],\
-          ["get-port", "npm:7.1.0"],\
+          ["get-port", "npm:5.1.1"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
           ["node-fetch", "npm:3.3.2"],\
           ["rimraf", "npm:6.1.2"],\
