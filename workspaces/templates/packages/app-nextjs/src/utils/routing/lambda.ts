@@ -1,47 +1,19 @@
-import manifestText from './routes-manifest.json';
+var manifestText = require('./routes-manifest.json');
 
-const manifest = manifestText; // JSON.parse(manifestText as any);
+var manifest = manifestText; // JSON.parse(manifestText);
 
-interface DynamicRoute {
-  page: string;
-  regex: string;
-  routeKeys?: Record<string, string>;
-  namedRegex?: string;
-}
+function handler(event) {
+  var request = event.request;
 
-interface CloudFrontRequest {
-  method: string;
-  uri: string;
-  querystring: Record<string, unknown>;
-  headers: Record<string, unknown>;
-  cookies: Record<string, unknown>;
-}
+  var dynamicRoutes = manifest.dynamicRoutes;
 
-interface CloudFrontRequestEvent {
-  version: string;
-  context: {
-    distributionDomainName?: string;
-    endpoint?: string;
-    distributionId: string;
-    eventType: string;
-    requestId: string;
-  };
-  viewer: {
-    ip: string;
-  };
-  request: CloudFrontRequest;
-}
+  var extension = request.uri.indexOf('.') !== -1 ? request.uri.split('.').pop() : '.html';
 
-export const handler = (event: CloudFrontRequestEvent) => {
-  const request = event.request;
+  var i;
+  var route;
 
-  const dynamicRoutes: DynamicRoute[] = manifest.dynamicRoutes as any;
-
-  const extension =
-    request.uri.indexOf('.') !== -1 ? (request.uri.split('.').pop() as string) : '.html';
-
-  for (let i = 0; i < dynamicRoutes.length; i++) {
-    const route = dynamicRoutes[i];
+  for (i = 0; i < dynamicRoutes.length; i++) {
+    route = dynamicRoutes[i];
     if (new RegExp(route.regex).test(request.uri)) {
       if (route.page === '/') {
         request.uri = '/index.html';
@@ -57,4 +29,5 @@ export const handler = (event: CloudFrontRequestEvent) => {
   }
 
   return request;
-};
+}
+

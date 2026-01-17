@@ -1,6 +1,5 @@
 import { assertFileExists, read } from '@goldstack/utils-sh';
 import { build } from 'esbuild';
-// import { CloudFrontFunctionsPlugin } from 'esbuild-cf-functions-plugin';
 import path from 'path';
 
 export interface PackageCloudFrontFunctionParams {
@@ -17,12 +16,25 @@ export const packageCloudFrontFunction = async (
   const res = await build({
     outfile: params.destFile,
     entryPoints: [params.sourceFile],
-    // minify: true,
+    minify: false,
+    minifyIdentifiers: false,
     format: 'cjs',
-    legalComments: 'none',
+    banner: {
+      js: 'var module = {}; var exports = {};',
+    },
+    treeShaking: false,
+    // legalComments: 'none',
     bundle: true,
     target: 'es5',
     logLevel: 'info',
+    supported: {
+      'const-and-let': false,
+      'exponent-operator': true,
+      'template-literal': true,
+      arrow: true,
+      'rest-argument': true,
+      'regexp-named-capture-groups': true,
+    },
     // plugins: [CloudFrontFunctionsPlugin({ runtimeVersion: 2 })],
     // loader: { '.json': 'text' },
   });

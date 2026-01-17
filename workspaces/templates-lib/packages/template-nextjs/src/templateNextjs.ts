@@ -4,6 +4,7 @@ import {
 } from '@goldstack/template-static-website-aws';
 import { wrapCli } from '@goldstack/utils-cli';
 import { fatal, warn } from '@goldstack/utils-log';
+import { cp, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
 import type { NextjsDeployment, NextjsPackage } from './types/NextJsPackage';
 
 export type { NextjsPackage };
@@ -13,13 +14,14 @@ import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
 import { PackageConfig } from '@goldstack/utils-package-config';
 import { infraCommands } from '@goldstack/utils-terraform';
 import yargs from 'yargs';
-import { deployEdgeLambda } from './edgeLambdaDeploy';
 import { deployCloudFrontFunction } from './cloudFrontFunctionDeploy';
+import { packageCloudFrontFunction } from './cloudFrontFunctionPackage';
+import { deployEdgeLambda } from './edgeLambdaDeploy';
 import { setNextjsEnvironmentVariables } from './nextjsEnvironment';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
-    const argv = await buildCli({
+    const cliConfig = buildCli({
       yargs,
       deployCommands: buildDeployCommands(),
       infraCommands: infraCommands(),
@@ -31,13 +33,29 @@ export const run = async (args: string[]): Promise<void> => {
           demandOption: true,
         });
       })
+      .command('package-cf-function <deployment>', 'Package the CloudFront function', () => {
+        return yargs.positional('deployment', {
+          type: 'string',
+          describe: 'Name of the deployment this command should be applied to',
+          demandOption: true,
+        });
+      })
+      .command('deploy-cf-function <deployment>', 'Deploy the CloudFront function', () => {
+        return yargs.positional('deployment', {
+          type: 'string',
+          describe: 'Name of the deployment this command should be applied to',
+          demandOption: true,
+        });
+      })
       .option('cf-function', {
         type: 'boolean',
         describe: 'Use CloudFront Functions instead of Lambda@Edge for routing',
         default: false,
       })
-      .help()
-      .parse();
+      .help();
+
+    const argv = await cliConfig.parse();
+
     const packageConfig = new PackageConfig<NextjsPackage, NextjsDeployment>({
       packagePath: './',
     });
@@ -47,6 +65,29 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'set-nextjs-env') {
       await setNextjsEnvironmentVariables(packageConfig.getDeployment(opArgs[0]));
+      return;
+    }
+
+    if (command === 'package-cf-function') {
+      const deployment = packageConfig.getDeployment(opArgs[0]);
+      const functionCompiledDir = './dist/src/utils/routing/';
+      const functionPackageDir = './dist/cloudFrontFunction/';
+      await rmSafe(functionPackageDir);
+      mkdir('-p', functionPackageDir);
+      await packageCloudFrontFunction({
+        sourceFile: `${functionCompiledDir}lambda.js`,
+        destFile: `${functionPackageDir}function.js`,
+      });
+      return;
+    }
+
+    if (command === 'deploy-cf-function') {
+      const deployment = packageConfig.getDeployment(opArgs[0]);
+      const deploymentState = readDeploymentState('./', deployment.name);
+      await deployCloudFrontFunction({
+        deployment,
+        deploymentState,
+      });
       return;
     }
 
