@@ -161,7 +161,7 @@ export const getVariablesFromHCL = (properties: Record<string, any>): Variables 
     }
   });
 
-  const vars: Variables = [];
+  const environmentVariables: Variables = [];
   for (const key in properties) {
     if (key.indexOf('_') !== -1) {
       warn(
@@ -176,11 +176,11 @@ export const getVariablesFromHCL = (properties: Record<string, any>): Variables 
       const variableValue = properties[key];
       if (variableValue !== '') {
         if (typeof variableValue === 'string') {
-          vars.push([pythonVariableName, variableValue]);
+          environmentVariables.push([pythonVariableName, variableValue]);
         } else if (typeof variableValue === 'number') {
-          vars.push([pythonVariableName, `${variableValue}`]);
+          environmentVariables.push([pythonVariableName, `${variableValue}`]);
         } else if (typeof variableValue === 'object') {
-          vars.push([pythonVariableName, `${JSONStableStringy(variableValue)}`]);
+          environmentVariables.push([pythonVariableName, `${JSONStableStringy(variableValue)}`]);
         } else {
           throw new Error(
             `Not supported type for variable ${pythonVariableName}: ${typeof variableValue}`,
@@ -193,14 +193,19 @@ export const getVariablesFromHCL = (properties: Record<string, any>): Variables 
         );
         if (process.env[environmentVariableName] || process.env[environmentVariableName] === '') {
           info(`Setting terraform variable from environment variable ${environmentVariableName}`);
-          vars.push([pythonVariableName, process.env[environmentVariableName] || '']);
+          environmentVariables.push([
+            pythonVariableName,
+            process.env[environmentVariableName] || '',
+          ]);
         } else {
-          warn(`Terraform variable will not be defined ${pythonVariableName}`);
+          warn(
+            `Terraform variable will not be defined ${pythonVariableName}. Checked environment variable ${environmentVariableName}`,
+          );
         }
       }
     }
   }
-  return vars;
+  return environmentVariables;
 };
 
 const getDeployment = (deploymentName: string): TerraformDeployment => {
