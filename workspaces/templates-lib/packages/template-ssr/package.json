@@ -47,7 +47,7 @@
     "@goldstack/utils-package": "0.4.39",
     "@goldstack/utils-package-config-embedded": "0.5.40",
     "@goldstack/utils-template": "0.4.38",
-    "@goldstack/utils-terraform": "0.4.68",
+    "@goldstack/utils-terraform": "0.4.69",
     "@types/aws-lambda": "^8.10.159",
     "react": "^19",
     "react-dom": "^19",

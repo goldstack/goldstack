@@ -50,7 +50,7 @@
     "@goldstack/utils-package": "0.4.39",
     "@goldstack/utils-package-config-embedded": "0.5.40",
     "@goldstack/utils-sh": "0.5.36",
-    "@goldstack/utils-terraform": "0.4.68",
+    "@goldstack/utils-terraform": "0.4.69",
     "dynamo-db-local": "8.0.0",
     "tcp-port-used": "^1.0.2",
     "umzug": "^3.8.2",

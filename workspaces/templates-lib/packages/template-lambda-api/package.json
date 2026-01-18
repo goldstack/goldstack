@@ -45,7 +45,7 @@
     "@goldstack/infra-aws": "0.4.55",
     "@goldstack/utils-aws-lambda": "0.3.67",
     "@goldstack/utils-package": "0.4.39",
-    "@goldstack/utils-terraform": "0.4.68",
+    "@goldstack/utils-terraform": "0.4.69",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {

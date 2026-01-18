@@ -49,7 +49,7 @@
     "@goldstack/utils-package": "0.4.39",
     "@goldstack/utils-package-config": "0.4.39",
     "@goldstack/utils-sh": "0.5.36",
-    "@goldstack/utils-terraform": "0.4.68",
+    "@goldstack/utils-terraform": "0.4.69",
     "@goldstack/utils-terraform-aws": "0.4.71",
     "source-map-support": "^0.5.21",
     "umzug": "^3.8.2",
