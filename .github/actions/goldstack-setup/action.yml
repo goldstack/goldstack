@@ -3,6 +3,13 @@ description: 'Gets things ready for running scripts'
 runs:
   using: 'composite'
   steps:
+    - name: Cache Yarn Cache
+      uses: actions/cache@v3
+      with:
+        path: ./.yarn/cache
+        key: yarn-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+        restore-keys: |
+          yarn-${{ runner.os }}-
     - uses: actions/setup-node@v3
       with:
         node-version: 20
