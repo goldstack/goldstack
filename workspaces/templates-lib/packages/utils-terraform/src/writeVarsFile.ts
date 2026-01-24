@@ -10,9 +10,31 @@ const isJsonString = (str: string): boolean => {
   }
 };
 
-const formatTerraformValue = (value: unknown): string => {
+/**
+ * Escapes a string for use in Terraform HCL.
+ * Handles backslashes, quotes, and interpolation/directive sequences (${ and %{).
+ */
+export const terraformEscape = (value: string): string => {
+  return value
+    .replace(/\\/g, '\\\\') // Escape backslashes first
+    .replace(/"/g, '\\"') // Escape quotes
+    .replace(/\$\{/g, () => '$${') // Escape ${ as $${
+    .replace(/%\{/g, () => '%%{'); // Escape %{ as %%{
+};
+
+/**
+ * Escapes a string for use in Terraform HCL heredoc.
+ * Only handles interpolation/directive sequences (${ and %{).
+ */
+export const terraformEscapeHeredoc = (value: string): string => {
+  return value
+    .replace(/\$\{/g, () => '$${') // Escape ${ as $${
+    .replace(/%\{/g, () => '%%{'); // Escape %{ as %%{
+};
+
+export const formatTerraformValue = (value: unknown): string => {
   if (typeof value === 'string') {
-    return `"${value.replace(/"/g, '\\"')}"`;
+    return `"${terraformEscape(value)}"`;
   }
   if (typeof value === 'number' || typeof value === 'boolean') {
     return value.toString();
@@ -22,7 +44,7 @@ const formatTerraformValue = (value: unknown): string => {
   }
   if (typeof value === 'object' && value !== null) {
     return `{${Object.entries(value)
-      .map(([k, v]) => `"${k}" = ${formatTerraformValue(v)}`)
+      .map(([k, v]) => `"${terraformEscape(k)}" = ${formatTerraformValue(v)}`)
       .join(', ')}}`;
   }
   return 'null';
@@ -37,7 +59,7 @@ export function writeVarsFile(variables: Variables, filePath: string): void {
     .map(([key, value]) => {
       // Handle multiline strings by using heredoc syntax
       if (value.includes('\n')) {
-        return `${key} = <<-EOT\n${value}\nEOT`;
+        return `${key} = <<-EOT\n${terraformEscapeHeredoc(value)}\nEOT`;
       }
 
       // Handle JSON strings by parsing and formatting as Terraform map
@@ -47,11 +69,7 @@ export function writeVarsFile(variables: Variables, filePath: string): void {
       }
 
       // Handle regular strings with proper escaping
-      const escapedValue = value
-        .replace(/\\/g, '\\\\') // Escape backslashes first
-        .replace(/"/g, '\\"'); // Escape quotes
-
-      return `${key} = "${escapedValue}"`;
+      return `${key} = "${terraformEscape(value)}"`;
     })
     .join('\n');
 
