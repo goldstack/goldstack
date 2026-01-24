@@ -26,6 +26,7 @@
     "build:watch": "yarn clean && yarn compile-watch",
     "clean": "rimraf ./dist",
     "compile": "tsc --build",
+    "hello": "git diff --quiet HEAD^...HEAD -- . echo 'Hello World'",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
