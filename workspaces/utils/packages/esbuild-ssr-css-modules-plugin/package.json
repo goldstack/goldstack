@@ -1,6 +1,6 @@
 {
   "name": "esbuild-ssr-css-modules-plugin",
-  "version": "0.1.30",
+  "version": "0.1.31",
   "description": "esbuild plugin for bundling CSS module files for client-side and server-side logic",
   "keywords": [
     "node",
@@ -36,7 +36,7 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "node-css-require": "0.4.28",
+    "node-css-require": "0.4.29",
     "postcss-modules-sync": "^1.0.0",
     "sha256": "^0.2.0"
   },

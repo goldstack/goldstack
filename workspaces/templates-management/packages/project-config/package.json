@@ -20,11 +20,11 @@
     "test-watch": "jest --config=./jest.config.js --watch"
   },
   "dependencies": {
-    "@goldstack/utils-config": "0.4.38",
-    "@goldstack/utils-package": "0.4.40",
-    "@goldstack/utils-project": "0.4.39",
-    "@goldstack/utils-sh": "0.5.37",
-    "@goldstack/utils-template": "0.4.39"
+    "@goldstack/utils-config": "0.4.39",
+    "@goldstack/utils-package": "0.4.41",
+    "@goldstack/utils-project": "0.4.40",
+    "@goldstack/utils-sh": "0.5.38",
+    "@goldstack/utils-template": "0.4.40"
   },
   "devDependencies": {
     "@swc/core": "^1.15.8",

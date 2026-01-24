@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-gha-agent",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "GitHub Actions Agent CLI for automating issue/PR workflows",
   "keywords": [
     "github",
@@ -43,8 +43,8 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-cli": "0.3.30",
-    "@goldstack/utils-log": "0.3.32",
+    "@goldstack/utils-cli": "0.3.31",
+    "@goldstack/utils-log": "0.3.33",
     "yargs": "^17"
   },
   "devDependencies": {

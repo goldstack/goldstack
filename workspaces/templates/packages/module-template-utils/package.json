@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/module-template-utils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Definitions and utilities for module templates",
   "license": "MIT",
   "author": "Max Rohde",

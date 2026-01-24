@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-log",
-  "version": "0.3.32",
+  "version": "0.3.33",
   "description": "Utilities for emitting logs.",
   "keywords": [
     "goldstack",
@@ -33,7 +33,7 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-cli": "0.3.30"
+    "@goldstack/utils-cli": "0.3.31"
   },
   "devDependencies": {
     "@swc/core": "^1.15.8",

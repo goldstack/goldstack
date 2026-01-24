@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-template",
-  "version": "0.4.39",
+  "version": "0.4.40",
   "description": "Utilities to work with Goldstack templates",
   "keywords": [
     "goldstack",
@@ -34,11 +34,11 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-config": "0.4.38",
-    "@goldstack/utils-sh": "0.5.37"
+    "@goldstack/utils-config": "0.4.39",
+    "@goldstack/utils-sh": "0.5.38"
   },
   "devDependencies": {
-    "@goldstack/utils-json-to-ts": "0.4.37",
+    "@goldstack/utils-json-to-ts": "0.4.38",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

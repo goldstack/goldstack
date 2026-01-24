@@ -22,13 +22,13 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.958.0",
-    "@goldstack/template-s3": "0.5.63",
-    "@goldstack/utils-sh": "0.5.37",
+    "@goldstack/template-s3": "0.5.64",
+    "@goldstack/utils-sh": "0.5.38",
     "@smithy/smithy-client": "^4.10.2",
     "@smithy/types": "^4.11.0"
   },
   "devDependencies": {
-    "@goldstack/template-s3-cli": "0.6.84",
+    "@goldstack/template-s3-cli": "0.6.85",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

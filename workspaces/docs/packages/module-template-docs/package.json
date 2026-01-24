@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/module-template-docs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Definitions and utilities for module template documentation",
   "license": "MIT",
   "author": "Max Rohde",
@@ -21,12 +21,12 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/module-template-utils": "0.1.0",
-    "@goldstack/utils-sh": "0.5.37",
+    "@goldstack/module-template-utils": "0.1.1",
+    "@goldstack/utils-sh": "0.5.38",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@goldstack/utils-docs-cli": "0.3.13",
+    "@goldstack/utils-docs-cli": "0.3.14",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
