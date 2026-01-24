@@ -70,10 +70,26 @@ const assertS3Bucket = async (params: { s3: S3Client; bucketName: string }): Pro
       const code = err.name;
       if (status === 404 || code === 'NotFound') {
         // Bucket does not exist, create it
-        await params.s3.send(new CreateBucketCommand({ Bucket: params.bucketName }));
-        info('S3 bucket created for storing terraform state', {
-          bucketName: params.bucketName,
-        });
+        try {
+          await params.s3.send(new CreateBucketCommand({ Bucket: params.bucketName }));
+          info('S3 bucket created for storing terraform state', {
+            bucketName: params.bucketName,
+          });
+        } catch (createErr) {
+          if (
+            createErr instanceof S3ServiceException &&
+            (createErr.name === 'BucketAlreadyExists' ||
+              createErr.name === 'BucketAlreadyOwnedByYou')
+          ) {
+            // This is fine, bucket was created by a parallel operation.
+            info('S3 bucket for terraform state created by a parallel operation.', {
+              bucketName: params.bucketName,
+            });
+          } else {
+            // For any other error, we should rethrow.
+            throw createErr;
+          }
+        }
       } else if (status === 403 || code === 'Forbidden') {
         // Bucket exists but not accessible, assume it exists
       } else {
