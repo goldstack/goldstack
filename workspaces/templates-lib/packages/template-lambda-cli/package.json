@@ -52,7 +52,7 @@
     "@goldstack/utils-package-config": "0.4.39",
     "@goldstack/utils-template": "0.4.38",
     "@goldstack/utils-terraform": "0.4.69",
-    "@goldstack/utils-terraform-aws": "0.4.71",
+    "@goldstack/utils-terraform-aws": "0.4.72",
     "source-map-support": "^0.5.21",
     "yargs": "^17"
   },
