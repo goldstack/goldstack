@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-terraform-aws",
-  "version": "0.4.71",
+  "version": "0.4.74",
   "description": "Easily deploy Terraform IaC with npm package scripts",
   "keywords": [
     "goldstack",
@@ -32,20 +32,19 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.958.0",
     "@aws-sdk/client-s3": "^3.958.0",
     "@aws-sdk/types": "^3.957.0",
-    "@goldstack/infra-aws": "0.4.55",
-    "@goldstack/utils-cli": "0.3.29",
-    "@goldstack/utils-config": "0.4.37",
-    "@goldstack/utils-log": "0.3.31",
-    "@goldstack/utils-package": "0.4.39",
-    "@goldstack/utils-sh": "0.5.36",
-    "@goldstack/utils-terraform": "0.4.68"
+    "@goldstack/infra-aws": "0.4.57",
+    "@goldstack/utils-cli": "0.3.31",
+    "@goldstack/utils-config": "0.4.39",
+    "@goldstack/utils-log": "0.3.33",
+    "@goldstack/utils-package": "0.4.41",
+    "@goldstack/utils-sh": "0.5.38",
+    "@goldstack/utils-terraform": "0.4.71"
   },
   "devDependencies": {
     "@swc/core": "^1.15.8",

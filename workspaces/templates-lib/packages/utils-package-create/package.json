@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package-create",
-  "version": "0.4.38",
+  "version": "0.4.40",
   "description": "Utilities for creating new Goldstack packages.",
   "keywords": [
     "goldstack",
@@ -30,13 +30,12 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-log": "0.3.31",
-    "@goldstack/utils-sh": "0.5.36",
-    "@goldstack/utils-template": "0.4.38"
+    "@goldstack/utils-log": "0.3.33",
+    "@goldstack/utils-sh": "0.5.38",
+    "@goldstack/utils-template": "0.4.40"
   },
   "devDependencies": {
     "@swc/core": "^1.15.8",

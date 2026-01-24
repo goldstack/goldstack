@@ -1,6 +1,6 @@
 {
   "name": "esbuild-tailwind-ssr-plugin",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "description": "esbuild plugin for compiling Tailwind CSS",
   "keywords": [
     "node",
@@ -33,13 +33,13 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
     "autoprefixer": "^10.4.20",
     "esbuild": "^0.25.6",
     "postcss": "^8.5.6",
-    "static-file-mapper-build": "0.3.41",
+    "static-file-mapper-build": "0.3.42",
     "tailwindcss": "^3"
   },
   "devDependencies": {

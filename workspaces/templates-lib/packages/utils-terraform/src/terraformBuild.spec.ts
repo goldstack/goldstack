@@ -48,4 +48,48 @@ variable "bucket_name" {
     expect(vars[0][1]).toEqual('us-east-1');
     cd(oldDir);
   });
+
+  it('Should read variables from environment variables with $', () => {
+    const testDir = './goldstackLocal/test-env-vars/';
+    mkdir('-p', testDir);
+    const oldDir = pwd();
+    cd(testDir);
+    write(
+      `
+variable "my_var" {
+  type = string
+}`,
+      './variables.tf',
+    );
+    process.env.MY_VAR = 'value$with$dollar';
+    const vars = getVariablesFromHCL({
+      myVar: '',
+    });
+    expect(vars).toHaveLength(1);
+    expect(vars[0][0]).toEqual('my_var');
+    expect(vars[0][1]).toEqual('value$with$dollar');
+    delete process.env.MY_VAR;
+    cd(oldDir);
+  });
+
+  it('Should handle variables with $ in properties', () => {
+    const testDir = './goldstackLocal/test-props-vars/';
+    mkdir('-p', testDir);
+    const oldDir = pwd();
+    cd(testDir);
+    write(
+      `
+variable "my_var" {
+  type = string
+}`,
+      './variables.tf',
+    );
+    const vars = getVariablesFromHCL({
+      myVar: 'value$with$dollar',
+    });
+    expect(vars).toHaveLength(1);
+    expect(vars[0][0]).toEqual('my_var');
+    expect(vars[0][1]).toEqual('value$with$dollar');
+    cd(oldDir);
+  });
 });

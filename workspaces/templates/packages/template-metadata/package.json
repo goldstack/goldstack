@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-metadata",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "license": "MIT",
   "author": "Max Rohde",
@@ -18,11 +18,11 @@
     "publish": "yarn npm publish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
     "test-watch": "jest --config=./jest.config.js --watch",
-    "version:apply": "yarn version \"$@\" && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
     "@goldstack/template-build-set": "0.1.0",
-    "@goldstack/utils-project": "0.4.37"
+    "@goldstack/utils-project": "0.4.40"
   },
   "devDependencies": {
     "@swc/core": "^1.15.8",

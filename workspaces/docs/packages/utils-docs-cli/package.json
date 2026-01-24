@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-docs-cli",
-  "version": "0.3.12",
+  "version": "0.3.14",
   "description": "Utilities for generating documentation for Goldstack templates",
   "keywords": [
     "goldstack",
@@ -34,13 +34,12 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-cli": "0.3.29",
-    "@goldstack/utils-docs": "0.4.37",
-    "@goldstack/utils-sh": "0.5.36",
+    "@goldstack/utils-cli": "0.3.31",
+    "@goldstack/utils-docs": "0.4.39",
+    "@goldstack/utils-sh": "0.5.38",
     "@types/yargs": "^17.0.33",
     "source-map-support": "^0.5.21",
     "yargs": "^17"

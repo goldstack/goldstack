@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-cli",
-  "version": "0.1.55",
+  "version": "0.1.57",
   "description": "Utilities for templates that deploy an AWS Lambda function",
   "keywords": [
     "goldstack",
@@ -38,26 +38,25 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.37",
-    "@goldstack/infra-aws": "0.4.55",
-    "@goldstack/utils-aws-lambda": "0.3.67",
-    "@goldstack/utils-cli": "0.3.29",
-    "@goldstack/utils-config": "0.4.37",
-    "@goldstack/utils-log": "0.3.31",
-    "@goldstack/utils-package": "0.4.39",
-    "@goldstack/utils-package-config": "0.4.39",
-    "@goldstack/utils-template": "0.4.38",
-    "@goldstack/utils-terraform": "0.4.68",
-    "@goldstack/utils-terraform-aws": "0.4.71",
+    "@goldstack/infra": "0.4.39",
+    "@goldstack/infra-aws": "0.4.57",
+    "@goldstack/utils-aws-lambda": "0.3.69",
+    "@goldstack/utils-cli": "0.3.31",
+    "@goldstack/utils-config": "0.4.39",
+    "@goldstack/utils-log": "0.3.33",
+    "@goldstack/utils-package": "0.4.41",
+    "@goldstack/utils-package-config": "0.4.41",
+    "@goldstack/utils-template": "0.4.40",
+    "@goldstack/utils-terraform": "0.4.71",
+    "@goldstack/utils-terraform-aws": "0.4.74",
     "source-map-support": "^0.5.21",
     "yargs": "^17"
   },
   "devDependencies": {
-    "@goldstack/utils-package-config-generate": "0.3.26",
+    "@goldstack/utils-package-config-generate": "0.3.28",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

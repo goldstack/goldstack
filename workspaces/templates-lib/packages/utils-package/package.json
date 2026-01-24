@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package",
-  "version": "0.4.39",
+  "version": "0.4.41",
   "description": "Utilities to work with Goldstack package configurations.",
   "keywords": [
     "goldstack",
@@ -33,13 +33,12 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.37",
-    "@goldstack/utils-config": "0.4.37",
-    "@goldstack/utils-sh": "0.5.36",
+    "@goldstack/infra": "0.4.39",
+    "@goldstack/utils-config": "0.4.39",
+    "@goldstack/utils-sh": "0.5.38",
     "yargs": "^17"
   },
   "devDependencies": {

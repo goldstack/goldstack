@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-user-management",
-  "version": "0.1.78",
+  "version": "0.1.80",
   "description": "Template utilities for user management",
   "keywords": [
     "goldstack",
@@ -34,22 +34,21 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.37",
-    "@goldstack/infra-aws": "0.4.55",
-    "@goldstack/utils-esbuild": "0.5.24",
-    "@goldstack/utils-package": "0.4.39",
-    "@goldstack/utils-package-config-embedded": "0.5.40",
-    "@goldstack/utils-template": "0.4.38",
-    "@goldstack/utils-terraform": "0.4.68",
+    "@goldstack/infra": "0.4.39",
+    "@goldstack/infra-aws": "0.4.57",
+    "@goldstack/utils-esbuild": "0.5.26",
+    "@goldstack/utils-package": "0.4.41",
+    "@goldstack/utils-package-config-embedded": "0.5.42",
+    "@goldstack/utils-template": "0.4.40",
+    "@goldstack/utils-terraform": "0.4.71",
     "aws-jwt-verify": "^3.2.0",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@goldstack/utils-package-config-generate": "0.3.26",
+    "@goldstack/utils-package-config-generate": "0.3.28",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

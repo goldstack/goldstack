@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-aws-lambda",
-  "version": "0.3.67",
+  "version": "0.3.69",
   "description": "Utilities for deploying AWS Lambda functions",
   "keywords": [
     "goldstack",
@@ -38,19 +38,18 @@
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
     "test-watch": "jest --watch --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
     "@aws-sdk/types": "^3.957.0",
-    "@goldstack/infra-aws": "0.4.55",
-    "@goldstack/utils-aws-cli": "0.4.56",
-    "@goldstack/utils-log": "0.3.31",
-    "@goldstack/utils-sh": "0.5.36",
+    "@goldstack/infra-aws": "0.4.57",
+    "@goldstack/utils-aws-cli": "0.4.58",
+    "@goldstack/utils-log": "0.3.33",
+    "@goldstack/utils-sh": "0.5.38",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "archiver": "^5.3.1",
     "esbuild": "^0.25.6",
-    "esbuild-ssr-css-modules-plugin": "0.1.30"
+    "esbuild-ssr-css-modules-plugin": "0.1.31"
   },
   "devDependencies": {
     "@swc/core": "^1.15.8",

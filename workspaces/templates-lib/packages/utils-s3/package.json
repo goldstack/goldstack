@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-s3",
-  "version": "0.4.32",
+  "version": "0.4.34",
   "description": "Utilities for downloading files from S3",
   "keywords": [
     "goldstack",
@@ -32,8 +32,7 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.958.0",
@@ -45,7 +44,7 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
     "jest": "^30.2.0",
-    "mock-aws-s3-v3": "6.1.9",
+    "mock-aws-s3-v3": "6.1.10",
     "rimraf": "^6.1.2",
     "typescript": "^5.9.3"
   },

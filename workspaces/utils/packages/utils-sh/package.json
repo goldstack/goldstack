@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-sh",
-  "version": "0.5.36",
+  "version": "0.5.38",
   "description": "Utilities for working with files and folders in a bash like manner",
   "keywords": [
     "goldstack",
@@ -32,11 +32,10 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-log": "0.3.31",
+    "@goldstack/utils-log": "0.3.33",
     "archiver": "^5.3.1",
     "extract-zip": "^2.0.1",
     "fs-extra": "^11.2.0",
