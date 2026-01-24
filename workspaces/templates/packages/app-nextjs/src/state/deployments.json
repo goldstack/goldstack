@@ -1,17 +1,5 @@
 [
   {
-    "name": "prod",
-    "terraform": {
-      "routing_function_name": {
-        "sensitive": false,
-        "type": "string",
-        "value": "app-nextjs-v2-templates-dev-goldstack-party-routing"
-      },
-      "website_cdn_root_id": {
-        "sensitive": false,
-        "type": "string",
-        "value": "EOZ0H7P21V751"
-      }
-    }
+    "name": "prod"
   }
 ]

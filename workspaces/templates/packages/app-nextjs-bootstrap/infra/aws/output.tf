@@ -3,7 +3,7 @@ output "website_cdn_root_id" {
   value       = aws_cloudfront_distribution.website_cdn_root.id
 }
 
-output "edge_function_name" {
-  description = "Lambda@Edge name for routing"
-  value       = aws_lambda_function.edge.function_name 
+output "routing_function_name" {
+  description = "CloudFront Function name for routing"
+  value       = aws_cloudfront_function.routing.name
 }

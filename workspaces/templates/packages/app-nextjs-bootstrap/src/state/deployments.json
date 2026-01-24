@@ -2,15 +2,15 @@
   {
     "name": "prod",
     "terraform": {
-      "edge_function_name": {
+      "routing_function_name": {
         "sensitive": false,
         "type": "string",
-        "value": "app-nextjs-bootstrap-v2-templates-dev-goldstack-party-edge"
+        "value": "app-nextjs-bootstrap-v3-templates-dev-goldstack-party-routing"
       },
       "website_cdn_root_id": {
         "sensitive": false,
         "type": "string",
-        "value": "E2VVEWL5409R72"
+        "value": "E2G2YY3WBS2TWD"
       }
     }
   }
