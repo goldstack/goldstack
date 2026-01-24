@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/infra-aws",
-  "version": "0.4.55",
+  "version": "0.4.56",
   "description": "Utilities to work with AWS infrastructure via the cli.",
   "keywords": [
     "goldstack",
@@ -30,23 +30,23 @@
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
+    "hello": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || echo 'Hello World'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "generate-schema": "ts-json-schema-generator --tsconfig tsconfig.generate.json --no-type-check --path './src/types/**/*' --type 'AWSConfiguration' -o src/schemas/accountConfigSchema.json && ts-json-schema-generator --tsconfig tsconfig.generate.json --no-type-check --path './src/types/**/*' --type 'AWSDeployment' -o src/schemas/deploymentConfigSchema.json && ts-json-schema-generator --tsconfig tsconfig.generate.json --no-type-check --path './src/types/**/*' --type 'AWSTerraformState' -o src/schemas/awsTerraformStateSchema.json",
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
     "@aws-sdk/client-sts": "^3.958.0",
     "@aws-sdk/credential-providers": "^3.958.0",
     "@aws-sdk/types": "^3.957.0",
-    "@goldstack/infra": "0.4.37",
-    "@goldstack/utils-config": "0.4.37",
-    "@goldstack/utils-log": "0.3.31",
-    "@goldstack/utils-package": "0.4.39",
-    "@goldstack/utils-sh": "0.5.36",
+    "@goldstack/infra": "0.4.38",
+    "@goldstack/utils-config": "0.4.38",
+    "@goldstack/utils-log": "0.3.32",
+    "@goldstack/utils-package": "0.4.40",
+    "@goldstack/utils-sh": "0.5.37",
     "axios": "^1.12.2",
     "handlebars": "4.7.7"
   },

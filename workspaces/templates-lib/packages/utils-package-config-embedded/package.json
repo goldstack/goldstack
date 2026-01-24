@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package-config-embedded",
-  "version": "0.5.40",
+  "version": "0.5.41",
   "description": "Utilities for working with Goldstack package schemas to be used for embedded configuration.",
   "keywords": [
     "goldstack",
@@ -33,13 +33,12 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.37",
-    "@goldstack/utils-config": "0.4.37",
-    "@goldstack/utils-package": "0.4.39"
+    "@goldstack/infra": "0.4.38",
+    "@goldstack/utils-config": "0.4.38",
+    "@goldstack/utils-package": "0.4.40"
   },
   "devDependencies": {
     "@swc/core": "^1.15.8",

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-log",
-  "version": "0.3.31",
+  "version": "0.3.32",
   "description": "Utilities for emitting logs.",
   "keywords": [
     "goldstack",
@@ -30,11 +30,10 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-cli": "0.3.29"
+    "@goldstack/utils-cli": "0.3.30"
   },
   "devDependencies": {
     "@swc/core": "^1.15.8",

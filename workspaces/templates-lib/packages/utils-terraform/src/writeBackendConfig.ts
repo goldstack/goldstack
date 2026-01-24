@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import type { Variables } from './terraformCli';
+import { terraformEscape } from './writeVarsFile';
 
 export function writeBackendConfig(backendConfig: Variables, dir: string): void {
   if (!backendConfig || backendConfig.length === 0) {
@@ -16,10 +17,10 @@ export function writeBackendConfig(backendConfig: Variables, dir: string): void 
   
 terraform {
   backend "s3" {
-    bucket = "${bucket}"
-    key    = "${key}"
-    region = "${region}"
-    dynamodb_table = "${dynamodbTable}"
+    bucket = "${terraformEscape(bucket || '')}"
+    key    = "${terraformEscape(key || '')}"
+    region = "${terraformEscape(region || '')}"
+    dynamodb_table = "${terraformEscape(dynamodbTable || '')}"
 
     # Skipping various checks to speed up backend initialisation
     skip_credentials_validation = true

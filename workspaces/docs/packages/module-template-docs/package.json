@@ -18,15 +18,15 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version \"$@\" && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
     "@goldstack/module-template-utils": "0.1.0",
-    "@goldstack/utils-sh": "0.5.36",
+    "@goldstack/utils-sh": "0.5.37",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@goldstack/utils-docs-cli": "0.3.12",
+    "@goldstack/utils-docs-cli": "0.3.13",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
