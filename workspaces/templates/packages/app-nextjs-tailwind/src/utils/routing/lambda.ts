@@ -1,28 +1,30 @@
-import type { CloudFrontRequestCallback, CloudFrontRequestEvent, Context } from 'aws-lambda';
-import manifest from './routes-manifest.json';
+var manifest = require('./routes-manifest.json');
 
-interface DynamicRoute {
-  page: string;
-  regex: string;
-  routeKeys?: Record<string, string>;
-  namedRegex?: string;
-}
+/**
+ * We are using a outdated syntax here, since we are bundling with esbuild and that cannot translate into es5. So
+ * we want to make its job as easy as possible.
+ *
+ * Cloudfront functions likes these strange non-exported handler functions, so that's what we are supplying. Note
+ * you can also make this async by adding 'async' before the function declaration.
+ */
+function handler(event) {
+  var request = event.request;
 
-export const handler = (
-  event: CloudFrontRequestEvent,
-  _context: Context,
-  callback: CloudFrontRequestCallback,
-): void => {
-  const request = event.Records[0].cf.request;
+  var dynamicRoutes = manifest.dynamicRoutes;
 
-  const dynamicRoutes: DynamicRoute[] = manifest.dynamicRoutes;
+  var extension = request.uri.indexOf('.') !== -1 ? request.uri.split('.').pop() : '.html';
 
-  const extension =
-    request.uri.indexOf('.') !== -1 ? (request.uri.split('.').pop() as string) : '.html';
+  var i;
+  var route;
 
-  for (const route of dynamicRoutes) {
+  for (i = 0; i < dynamicRoutes.length; i++) {
+    route = dynamicRoutes[i];
     if (new RegExp(route.regex).test(request.uri)) {
-      request.uri = route.page + extension;
+      if (route.page === '/') {
+        request.uri = '/index.html';
+      } else {
+        request.uri = route.page + extension;
+      }
       break;
     }
   }
@@ -31,5 +33,5 @@ export const handler = (
     request.uri = request.uri + extension;
   }
 
-  callback(null, request);
-};
+  return request;
+}

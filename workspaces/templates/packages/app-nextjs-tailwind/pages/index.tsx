@@ -1,21 +1,34 @@
-import React, { useState } from 'react';
-import useSWR from 'swr';
+import React, { useState, useEffect } from 'react';
 import ReactIcon from './../src/icons/react.svg';
 import RocketLaunchImg from './../src/img/rocket-launch.jpg';
 import styles from './index.module.css';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-// biome-ignore lint/suspicious/noExplicitAny: Generic fetcher for SWR
-const fetcher = (url: string): Promise<any> => fetch(url).then((r) => r.json());
-
 const FetchedContent = (): React.ReactNode => {
-  const { data, error } = useSWR('https://jsonplaceholder.typicode.com/todos/1', fetcher);
+  const [data, setData] = React.useState<any>(null);
+  const [error, setError] = React.useState<any>(null);
+  const [loading, setLoading] = React.useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   if (error) {
     return <div>Cannot load data</div>;
   }
 
-  if (!data) {
+  if (loading) {
     return <div>Loading ...</div>;
   }
 

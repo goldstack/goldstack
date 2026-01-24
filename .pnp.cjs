@@ -5223,6 +5223,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@epic-web/invariant", [\
+      ["npm:1.0.0", {\
+        "packageLocation": "./.yarn/cache/@epic-web-invariant-npm-1.0.0-a4ac7c9c5e-28b36a7447.zip/node_modules/@epic-web/invariant/",\
+        "packageDependencies": [\
+          ["@epic-web/invariant", "npm:1.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@esbuild-plugins/node-resolve", [\
       ["npm:0.2.2", {\
         "packageLocation": "./.yarn/cache/@esbuild-plugins-node-resolve-npm-0.2.2-e46ccf8c9d-de8353ece9.zip/node_modules/@esbuild-plugins/node-resolve/",\
@@ -5750,6 +5759,7 @@ const RAW_RUNTIME_STATE =
           ["@types/testing-library__react", "npm:10.2.0"],\
           ["autoprefixer", "virtual:6e6a19ccf8c83346d9f79f4676f574e62d32bf92e99e6749c22e13d87c7c6992254aa59106ce2f48cb8675403ba55b493da6bb46258c31710cda5fb0f1e8ecdc#npm:10.4.20"],\
           ["concurrently", "npm:7.3.0"],\
+          ["cross-env", "npm:10.1.0"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
           ["jest-environment-jsdom", "virtual:a831689f0e2c98979300ed8d8bcea2ee029e4083cdca459cee4397964467418e6a4aa3862bb866e9cae0b75b936947401d1c63f81f2eb27e787abdefdb453c2f#npm:30.2.0"],\
           ["jest-transform-stub", "npm:2.0.0"],\
@@ -16328,6 +16338,17 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/create-require-npm-1.1.1-839884ca2e-a9a1503d43.zip/node_modules/create-require/",\
         "packageDependencies": [\
           ["create-require", "npm:1.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["cross-env", [\
+      ["npm:10.1.0", {\
+        "packageLocation": "./.yarn/cache/cross-env-npm-10.1.0-d2d02f62e5-0e5d8bdefb.zip/node_modules/cross-env/",\
+        "packageDependencies": [\
+          ["@epic-web/invariant", "npm:1.0.0"],\
+          ["cross-env", "npm:10.1.0"],\
+          ["cross-spawn", "npm:7.0.6"]\
         ],\
         "linkType": "HARD"\
       }]\
