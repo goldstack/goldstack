@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-dynamodb",
-  "version": "0.3.67",
+  "version": "0.3.68",
   "description": "Utilities for building modules for DynamoDB access.",
   "keywords": [
     "goldstack",
@@ -35,29 +35,28 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.958.0",
     "@aws-sdk/credential-providers": "^3.958.0",
     "@aws-sdk/types": "^3.957.0",
     "@aws-sdk/util-dynamodb": "^3.958.0",
-    "@goldstack/infra": "0.4.37",
-    "@goldstack/infra-aws": "0.4.55",
-    "@goldstack/utils-esbuild": "0.5.24",
-    "@goldstack/utils-log": "0.3.31",
-    "@goldstack/utils-package": "0.4.39",
-    "@goldstack/utils-package-config-embedded": "0.5.40",
-    "@goldstack/utils-sh": "0.5.36",
-    "@goldstack/utils-terraform": "0.4.69",
+    "@goldstack/infra": "0.4.38",
+    "@goldstack/infra-aws": "0.4.56",
+    "@goldstack/utils-esbuild": "0.5.25",
+    "@goldstack/utils-log": "0.3.32",
+    "@goldstack/utils-package": "0.4.40",
+    "@goldstack/utils-package-config-embedded": "0.5.41",
+    "@goldstack/utils-sh": "0.5.37",
+    "@goldstack/utils-terraform": "0.4.70",
     "dynamo-db-local": "8.0.0",
     "tcp-port-used": "^1.0.2",
     "umzug": "^3.8.2",
     "wait-port": "^1.1.0"
   },
   "devDependencies": {
-    "@goldstack/utils-package-config-generate": "0.3.26",
+    "@goldstack/utils-package-config-generate": "0.3.27",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

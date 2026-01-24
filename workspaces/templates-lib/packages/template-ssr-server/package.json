@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-ssr-server",
-  "version": "0.3.92",
+  "version": "0.3.93",
   "description": "Building blocks for implementing server-side rendered pages.",
   "keywords": [
     "goldstack",
@@ -34,20 +34,19 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.37",
-    "@goldstack/infra-aws": "0.4.55",
-    "@goldstack/template-ssr-server-compile-bundle": "0.3.89",
-    "@goldstack/utils-aws-lambda": "0.3.67",
-    "@goldstack/utils-esbuild": "0.5.24",
-    "@goldstack/utils-package": "0.4.39",
-    "@goldstack/utils-package-config-embedded": "0.5.40",
-    "@goldstack/utils-sh": "0.5.36",
-    "@goldstack/utils-template": "0.4.38",
-    "@goldstack/utils-terraform": "0.4.69",
+    "@goldstack/infra": "0.4.38",
+    "@goldstack/infra-aws": "0.4.56",
+    "@goldstack/template-ssr-server-compile-bundle": "0.3.90",
+    "@goldstack/utils-aws-lambda": "0.3.68",
+    "@goldstack/utils-esbuild": "0.5.25",
+    "@goldstack/utils-package": "0.4.40",
+    "@goldstack/utils-package-config-embedded": "0.5.41",
+    "@goldstack/utils-sh": "0.5.37",
+    "@goldstack/utils-template": "0.4.39",
+    "@goldstack/utils-terraform": "0.4.70",
     "@types/aws-lambda": "^8.10.159",
     "lambda-compression": "0.2.29",
     "react": "^19",
@@ -56,7 +55,7 @@
     "static-file-mapper": "0.3.29"
   },
   "devDependencies": {
-    "@goldstack/utils-package-config-generate": "0.3.26",
+    "@goldstack/utils-package-config-generate": "0.3.27",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

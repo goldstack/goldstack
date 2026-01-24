@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-esbuild",
-  "version": "0.5.24",
+  "version": "0.5.25",
   "description": "Utilities for esbuild.",
   "keywords": [
     "goldstack",
@@ -30,8 +30,7 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "devDependencies": {
     "@swc/core": "^1.15.8",

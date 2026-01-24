@@ -23,11 +23,11 @@
     "test": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/template-hetzner-vps": "0.1.53",
-    "@goldstack/utils-sh": "0.5.36"
+    "@goldstack/template-hetzner-vps": "0.1.54",
+    "@goldstack/utils-sh": "0.5.37"
   },
   "devDependencies": {
-    "@goldstack/template-hetzner-vps-cli": "0.1.60",
+    "@goldstack/template-hetzner-vps-cli": "0.1.61",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

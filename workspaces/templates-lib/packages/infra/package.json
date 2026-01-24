@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/infra",
-  "version": "0.4.37",
+  "version": "0.4.38",
   "description": "Utilities for defining infrastructure for npm packages.",
   "keywords": [
     "goldstack",
@@ -26,7 +26,7 @@
     "build:watch": "yarn clean && yarn compile-watch",
     "clean": "rimraf ./dist",
     "compile": "tsc --build",
-    "hello": "git diff --quiet HEAD^...HEAD -- . echo 'Hello World'",
+    "hello": "git diff --quiet HEAD^...HEAD -- . || echo 'Hello World'",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "compile-watch:light": "nodemon --watch ./src/ -e '*' --exec 'yarn compile'",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
@@ -34,13 +34,12 @@
     "prepublishOnly": "yarn run build",
     "publish": "yarn npm publish --tolerate-republish",
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
-    "version:apply": "yarn version $@ && yarn version apply",
-    "version:apply:force": "yarn version $@ && yarn version apply"
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-config": "0.4.37",
-    "@goldstack/utils-log": "0.3.31",
-    "@goldstack/utils-sh": "0.5.36"
+    "@goldstack/utils-config": "0.4.38",
+    "@goldstack/utils-log": "0.3.32",
+    "@goldstack/utils-sh": "0.5.37"
   },
   "devDependencies": {
     "@swc/core": "^1.15.8",
