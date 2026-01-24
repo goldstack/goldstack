@@ -6,16 +6,17 @@ import {
 } from '@aws-sdk/client-dynamodb';
 
 import {
-  BucketAlreadyOwnedByYou,
   CreateBucketCommand,
   DeleteBucketCommand,
   DeleteObjectsCommand,
+  HeadBucketCommand,
   ListObjectsV2Command,
   S3Client,
+  S3ServiceException,
 } from '@aws-sdk/client-s3';
 import type { AwsCredentialIdentity } from '@aws-sdk/types';
 
-import { error, info } from '@goldstack/utils-log';
+import { info } from '@goldstack/utils-log';
 
 const assertDynamoDBTable = async (params: { dynamoDB: DynamoDBClient; tableName: string }) => {
   // defining a table as required by Terraform https://www.terraform.io/docs/language/settings/backends/s3.html#dynamodb_table
@@ -60,19 +61,26 @@ const deleteDynamoDBTable = async (params: {
 };
 
 const assertS3Bucket = async (params: { s3: S3Client; bucketName: string }): Promise<void> => {
-  const bucketParams = {
-    Bucket: params.bucketName,
-  };
   try {
-    await params.s3.send(new CreateBucketCommand(bucketParams));
-    info('S3 bucket created for storing terraform state', {
-      bucketName: bucketParams.Bucket,
-    });
-  } catch (e) {
-    // if bucket already exists, ignore error
-    if (!(e instanceof BucketAlreadyOwnedByYou)) {
-      error(`Cannot create bucket ${params.bucketName} error code${e.code}`);
-      throw new Error(`Cannot create S3 state bucket: ${e.message}`);
+    await params.s3.send(new HeadBucketCommand({ Bucket: params.bucketName }));
+    // Bucket exists
+  } catch (err) {
+    if (err instanceof S3ServiceException) {
+      const status = err.$metadata?.httpStatusCode;
+      const code = err.name;
+      if (status === 404 || code === 'NotFound') {
+        // Bucket does not exist, create it
+        await params.s3.send(new CreateBucketCommand({ Bucket: params.bucketName }));
+        info('S3 bucket created for storing terraform state', {
+          bucketName: params.bucketName,
+        });
+      } else if (status === 403 || code === 'Forbidden') {
+        // Bucket exists but not accessible, assume it exists
+      } else {
+        throw err;
+      }
+    } else {
+      throw err; // non-AWS error
     }
   }
 };
