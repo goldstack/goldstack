@@ -57,7 +57,7 @@ resource "aws_cloudfront_distribution" "cdn" {
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.static_files.id}"
 
-    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6" # CachingOptimized
     origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
     response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
 
@@ -71,7 +71,7 @@ resource "aws_cloudfront_distribution" "cdn" {
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.public_files.id}"
 
-    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6" # CachingOptimized
     origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
     response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
 
@@ -85,7 +85,7 @@ resource "aws_cloudfront_distribution" "cdn" {
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.public_files.id}"
 
-    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6" # CachingOptimized
     origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
     response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
 
@@ -98,7 +98,7 @@ resource "aws_cloudfront_distribution" "cdn" {
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.public_files.id}"
 
-    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6" # CachingOptimized
     origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
     response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
 
@@ -111,7 +111,7 @@ resource "aws_cloudfront_distribution" "cdn" {
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.public_files.id}"
 
-    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6" # CachingOptimized
     origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
     response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
 
@@ -124,8 +124,8 @@ resource "aws_cloudfront_distribution" "cdn" {
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = "origin-api-gateway-${aws_apigatewayv2_api.api.id}"
 
-    # CachingOptimized - respects cache headers from API Gateway responses
-    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    # CachingOptimized - for SSR, API responses should respect cache headers from Lambda
+    cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6" # CachingOptimized
     origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
     response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
 
