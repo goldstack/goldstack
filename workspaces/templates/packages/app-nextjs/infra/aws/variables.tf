@@ -23,3 +23,9 @@ variable "default_cache_duration" {
   description = "Default duration for which resources will be cached"
   type = number
 }
+
+variable "routing_function_code" {
+  description = "CloudFront Function code for routing Next.js pages"
+  type = string
+  default = "function handler(event) { return event.request; }"
+}

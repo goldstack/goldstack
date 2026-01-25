@@ -1,17 +1,5 @@
 [
   {
-    "name": "prod",
-    "terraform": {
-      "edge_function_name": {
-        "sensitive": false,
-        "type": "string",
-        "value": "app-nextjs-v2-templates-dev-goldstack-party-edge"
-      },
-      "website_cdn_root_id": {
-        "sensitive": false,
-        "type": "string",
-        "value": "E2UN8J7IQ6NKOJ"
-      }
-    }
+    "name": "prod"
   }
 ]

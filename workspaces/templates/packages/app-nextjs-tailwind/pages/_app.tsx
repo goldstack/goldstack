@@ -1,6 +1,6 @@
 // biome-ignore lint/correctness/noUnusedImports: React
 import React from 'react';
-import './globals.css';
+import '../src/styles/globals.css';
 
 const App = ({ Component, pageProps }): React.ReactNode => {
   process.env.GOLDSTACK_DEPLOYMENT = process.env.NEXT_PUBLIC_GOLDSTACK_DEPLOYMENT;

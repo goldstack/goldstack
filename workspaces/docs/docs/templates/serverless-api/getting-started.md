@@ -81,7 +81,7 @@ The Goldstack template for this module contains an example of an integration tes
 Here an example for a local test:
 
 ```typescript
-import getPort from 'find-free-port';
+import getPort from 'get-port';
 import fetch from 'node-fetch';
 import {
   startServer,
@@ -93,18 +93,7 @@ describe('Should create API', () => {
   let server: undefined | StartServerResult = undefined;
 
   beforeAll(async () => {
-    port = await new Promise<number>((resolve, reject) => {
-      getPort(
-        process.env.TEST_SERVER_PORT || '50321',
-        (err: any, p1: number) => {
-          if (err) {
-            reject(err);
-            return;
-          }
-          resolve(p1);
-        }
-      );
-    });
+    port = await getPort({ port: parseInt(process.env.TEST_SERVER_PORT || '50321') });
     server = await startServer({
       port: `${port}`,
       routesDir: './src/routes',

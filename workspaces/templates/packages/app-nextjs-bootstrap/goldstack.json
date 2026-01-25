@@ -11,11 +11,11 @@
       "awsUser": "goldstack-dev",
       "configuration": {
         "hostedZoneDomain": "dev.goldstack.party",
-        "websiteDomain": "app-nextjs-bootstrap-v2.templates.dev.goldstack.party",
+        "websiteDomain": "app-nextjs-bootstrap-v3.templates.dev.goldstack.party",
         "defaultCacheDuration": 10
       },
-      "tfStateKey": "app-nextjs-bootstrap-prod-48a5b466356262fc97d0.tfstate",
-      "tfVersion": "1.10"
+      "tfVersion": "1.10",
+      "tfStateKey": "app-nextjs-bootstrap-prod-29681a140678b488eb62.tfstate"
     }
   ]
 }

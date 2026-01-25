@@ -11,7 +11,14 @@
     "**/.yarn": true,
     "**/.pnp.*": true
   },
-  "cSpell.words": ["GOLDSTACK", "hetzner", "Jwks", "pino", "runcmd", "testcontainers"],
+  "cSpell.words": [
+    "GOLDSTACK",
+    "hetzner",
+    "Jwks",
+    "pino",
+    "runcmd",
+    "testcontainers"
+  ],
   "github-actions.workflows.pinned.workflows": [
     ".github/workflows/branch.yml",
     ".github/workflows/template_deploy_dev.yml",
@@ -37,5 +44,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit",
     "source.organizeImports.biome": "explicit"
-  }
+  },
+  "open-in-external-terminal.additionalArgs": [
+    "-w goldstack"
+  ]
 }

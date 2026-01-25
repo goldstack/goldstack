@@ -1,6 +1,6 @@
 import { GetItemCommand, PutItemCommand } from '@aws-sdk/client-dynamodb';
 import { debug } from '@goldstack/utils-log';
-import { findFreePorts } from 'find-free-ports';
+import getPort from 'get-port';
 import { check } from 'tcp-port-used';
 import {
   connect,
@@ -62,7 +62,7 @@ describe('DynamoDB Template', () => {
 
   it('should handle reference counting and port-specific stopping correctly', async () => {
     // Get two free ports for our DynamoDB instances
-    const [port1, port2] = await findFreePorts(2);
+    const [port1, port2] = await Promise.all([getPort(), getPort()]);
 
     // Start first instance on first free port
     await startLocalDynamoDB(mockConfig1, mockSchema, port1, 'local');
@@ -151,7 +151,7 @@ describe('DynamoDB Template', () => {
   });
 
   it('should handle default port when no port specified', async () => {
-    const [customPort] = await findFreePorts(1);
+    const customPort = await getPort();
 
     const defaultPort = 8000;
     // Start an instance on the default port with multiple references

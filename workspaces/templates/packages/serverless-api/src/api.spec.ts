@@ -1,4 +1,4 @@
-import getPort from 'find-free-port';
+import getPort from 'get-port';
 
 import { getEndpoint, startTestServer, stopTestServer } from './module';
 
@@ -12,16 +12,16 @@ describe('Should create API', () => {
   let port: undefined | number;
 
   beforeAll(async () => {
-    port = await new Promise<number>((resolve, reject) => {
-      getPort(process.env.TEST_SERVER_PORT || '50321', (err: any, p1: number) => {
-        if (err) {
-          reject(err);
-          return;
-        }
-        resolve(p1);
-      });
-    });
+    port = await getPort({ port: parseInt(process.env.TEST_SERVER_PORT || '50321', 10) });
     await startTestServer(port);
+  });
+
+  test('Should receive response when accessing unknown path', async () => {
+    const res = await fetch(`${getEndpoint()}/`, {
+      method: 'GET',
+    });
+    const response = await res.json();
+    expect(response.message).toContain('Unknown endpoint accessed');
   });
 
   test('Should receive response and support parameters', async () => {

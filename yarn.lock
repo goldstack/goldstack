@@ -3874,6 +3874,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@epic-web/invariant@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@epic-web/invariant@npm:1.0.0"
+  checksum: 10/28b36a7447f60b84f9d6a23571480042170ef4239a577577ad8447f64a2e4f1a4e57e6fe1b592e61534c5ab53ff67776130e6c88a68cbd997eb6e9c9759a5934
+  languageName: node
+  linkType: hard
+
 "@esbuild-plugins/node-resolve@npm:0.2.2":
   version: 0.2.2
   resolution: "@esbuild-plugins/node-resolve@npm:0.2.2"
@@ -4294,6 +4301,7 @@ __metadata:
     "@types/testing-library__react": "npm:^10.2.0"
     autoprefixer: "npm:^10.4.20"
     concurrently: "npm:^7.3.0"
+    cross-env: "npm:^10.1.0"
     jest: "npm:^30.2.0"
     jest-environment-jsdom: "npm:^30.2.0"
     jest-transform-stub: "npm:^2.0.0"
@@ -5206,7 +5214,7 @@ __metadata:
     esbuild-ignore-with-comments-plugin: "npm:0.3.29"
     esbuild-ssr-css-modules-plugin: "npm:0.1.31"
     esbuild-tailwind-ssr-plugin: "npm:0.1.24"
-    find-free-port: "npm:^2.0.0"
+    get-port: "npm:^5.1.1"
     jest: "npm:^30.2.0"
     jest-environment-jsdom: "npm:^30.2.0"
     jest-transform-stub: "npm:^2.0.0"
@@ -5237,13 +5245,14 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/aws-lambda": "npm:^8.10.159"
     "@types/aws-serverless-express": "npm:^3.3.10"
+    "@types/get-port": "npm:^4.2.0"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     "@yarnpkg/esbuild-plugin-pnp": "npm:^3.0.0-rc.15"
     date-fns: "npm:^2.28.0"
     dotenv: "npm:^16.4.7"
     esbuild: "npm:^0.25.6"
-    find-free-port: "npm:^2.0.0"
+    get-port: "npm:^5.1.1"
     jest: "npm:^30.2.0"
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
@@ -5474,8 +5483,7 @@ __metadata:
     "@types/tcp-port-used": "npm:^1.0.4"
     "@types/yargs": "npm:^17.0.33"
     dynamo-db-local: "npm:8.0.0"
-    find-free-port: "npm:^2.0.0"
-    find-free-ports: "npm:^3.1.1"
+    get-port: "npm:^5.1.1"
     jest: "npm:^30.2.0"
     rimraf: "npm:^6.1.2"
     tcp-port-used: "npm:^1.0.2"
@@ -6356,7 +6364,7 @@ __metadata:
     cookie: "npm:^1.0.2"
     cors: "npm:^2.8.5"
     express: "npm:4.20.0"
-    find-free-ports: "npm:^3.1.1"
+    get-port: "npm:^5.1.1"
     jest: "npm:^30.2.0"
     node-fetch: "npm:^3.3.2"
     rimraf: "npm:^6.1.2"
@@ -10580,6 +10588,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/get-port@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "@types/get-port@npm:4.2.0"
+  dependencies:
+    get-port: "npm:*"
+  checksum: 10/0c084e946089d310b2cfe130b0e4b8c25124800dfba069b756a4477a2e9cb9fabf4f5f59747d987492cbf25b72a24692f6bf1aee1fbfdc47411916221075eba3
+  languageName: node
+  linkType: hard
+
 "@types/glob-stream@npm:*":
   version: 6.1.0
   resolution: "@types/glob-stream@npm:6.1.0"
@@ -13753,6 +13770,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cross-env@npm:^10.1.0":
+  version: 10.1.0
+  resolution: "cross-env@npm:10.1.0"
+  dependencies:
+    "@epic-web/invariant": "npm:^1.0.0"
+    cross-spawn: "npm:^7.0.6"
+  bin:
+    cross-env: dist/bin/cross-env.js
+    cross-env-shell: dist/bin/cross-env-shell.js
+  checksum: 10/0e5d8bdefbbcd000460b69755e0eeb22953510abac8375e4f8b638ff7c45406141acfd57b8a4c1d1cf0b5ea42f33451b302062fb9b34408753b4d465e901b845
+  languageName: node
+  linkType: hard
+
 "cross-spawn@npm:^7.0.3, cross-spawn@npm:^7.0.6":
   version: 7.0.6
   resolution: "cross-spawn@npm:7.0.6"
@@ -15766,20 +15796,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"find-free-port@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "find-free-port@npm:2.0.0"
-  checksum: 10/81c920e57f92cb7123d3d22e8f2631c96d1cfd3a319d5db3b38c6ad82a78a08c4150680062980f9967afb67175e9f1718033e77b794b075197a072a5bfc3bc60
-  languageName: node
-  linkType: hard
-
-"find-free-ports@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "find-free-ports@npm:3.1.1"
-  checksum: 10/c2e09a92c5c3046fa850317e96cfbacc608cd89e2e1beacdaee84370fec5dad3d97c9f76736208aeffe9ff19498dd673497c7c4ab0af8d193ad74cb2057447d1
-  languageName: node
-  linkType: hard
-
 "find-replace@npm:^3.0.0":
   version: 3.0.0
   resolution: "find-replace@npm:3.0.0"
@@ -16195,6 +16211,20 @@ __metadata:
   version: 0.1.0
   resolution: "get-package-type@npm:0.1.0"
   checksum: 10/bba0811116d11e56d702682ddef7c73ba3481f114590e705fc549f4d868972263896af313c57a25c076e3c0d567e11d919a64ba1b30c879be985fc9d44f96148
+  languageName: node
+  linkType: hard
+
+"get-port@npm:*":
+  version: 7.1.0
+  resolution: "get-port@npm:7.1.0"
+  checksum: 10/f4d23b43026124007663a899578cc87ff37bfcf645c5c72651e9810ebafc759857784e409fb8e0ada9b90e5c5db089b0ae2f5f6b49fba1ce2e0aff86094ab17d
+  languageName: node
+  linkType: hard
+
+"get-port@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "get-port@npm:5.1.1"
+  checksum: 10/0162663ffe5c09e748cd79d97b74cd70e5a5c84b760a475ce5767b357fb2a57cb821cee412d646aa8a156ed39b78aab88974eddaa9e5ee926173c036c0713787
   languageName: node
   linkType: hard
 

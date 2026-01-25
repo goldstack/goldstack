@@ -13,33 +13,78 @@
     }
   ],
   "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
   "dynamicRoutes": [
     {
-      "page": "/404",
-      "regex": "^\\/404$"
+      "page": "/index",
+      "regex": "^/index$"
     },
     {
-      "page": "/index",
-      "regex": "^\\/index$"
+      "page": "/404",
+      "regex": "^/404$"
+    },
+    {
+      "page": "/[message]\\sayIt",
+      "regex": "^/[message]\\\\sayIt$"
+    },
+    {
+      "page": "/tests\\[id]",
+      "regex": "^/tests\\\\[id]$"
+    },
+    {
+      "page": "/tests/[id]",
+      "regex": "^/tests/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/tests/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/[message]/sayIt",
+      "regex": "^/([^/]+?)/sayIt(?:/)?$",
+      "routeKeys": {
+        "nxtPmessage": "nxtPmessage"
+      },
+      "namedRegex": "^/(?<nxtPmessage>[^/]+?)/sayIt(?:/)?$"
     }
   ],
   "staticRoutes": [
     {
-      "page": "/",
-      "regex": "^/(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/(?:/)?$"
+      "page": "/index",
+      "regex": "^/index$"
+    },
+    {
+      "page": "/404",
+      "regex": "^/404$"
+    },
+    {
+      "page": "/[message]\\sayIt",
+      "regex": "^/[message]\\\\sayIt$"
+    },
+    {
+      "page": "/tests\\[id]",
+      "regex": "^/tests\\\\[id]$"
     }
   ],
   "dataRoutes": [],
   "rsc": {
-    "header": "RSC",
-    "varyHeader": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch",
-    "prefetchHeader": "Next-Router-Prefetch",
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
     "didPostponeHeader": "x-nextjs-postponed",
     "contentTypeHeader": "text/x-component",
     "suffix": ".rsc",
-    "prefetchSuffix": ".prefetch.rsc"
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
   },
-  "rewrites": []
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
 }

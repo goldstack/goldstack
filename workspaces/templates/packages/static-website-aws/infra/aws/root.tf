@@ -5,19 +5,25 @@ resource "aws_s3_bucket" "website_root" {
   # Remove this line if you want to prevent accidential deletion of bucket
   force_destroy = true
 
-  website {
-    index_document = "index.html"
-    error_document = "404.html"
-  }
-
   tags = {
     ManagedBy = "terraform"
     Changed   = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   }
 
-
   lifecycle {
     ignore_changes = [tags]
+  }
+}
+
+resource "aws_s3_bucket_website_configuration" "website_root" {
+  bucket = aws_s3_bucket.website_root.id
+
+  index_document {
+    suffix = "index.html"
+  }
+
+  error_document {
+    key = "404.html"
   }
 }
 
@@ -39,8 +45,8 @@ resource "aws_s3_bucket_ownership_controls" "website_root" {
 
 resource "aws_s3_bucket_acl" "website_root" {
   depends_on = [
-	  aws_s3_bucket_public_access_block.website_root,
-	  aws_s3_bucket_ownership_controls.website_root,
+    aws_s3_bucket_public_access_block.website_root,
+    aws_s3_bucket_ownership_controls.website_root,
   ]
 
   bucket = aws_s3_bucket.website_root.id
@@ -51,8 +57,8 @@ resource "aws_s3_bucket_policy" "website_root" {
   bucket = aws_s3_bucket.website_root.id
 
   depends_on = [
-	  aws_s3_bucket_public_access_block.website_root,
-	  aws_s3_bucket_ownership_controls.website_root,
+    aws_s3_bucket_public_access_block.website_root,
+    aws_s3_bucket_ownership_controls.website_root,
   ]
 
   policy = data.aws_iam_policy_document.website_root.json
@@ -69,7 +75,7 @@ data "aws_iam_policy_document" "website_root" {
       "s3:GetObject",
     ]
 
-    resources = [ 
+    resources = [
       "arn:aws:s3:::${var.website_domain}-root/*"
     ]
   }
@@ -88,38 +94,31 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
   ]
 
   origin {
-    domain_name = aws_s3_bucket.website_root.website_endpoint
+    domain_name = aws_s3_bucket_website_configuration.website_root.website_endpoint
 
-    origin_id   = "origin-bucket-${aws_s3_bucket.website_root.id}"
-    
+    origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
+
     custom_origin_config {
-      http_port = 80
-      https_port = 443
+      http_port              = 80
+      https_port             = 443
       origin_protocol_policy = "http-only"
-      origin_ssl_protocols = ["TLSv1.2"]
+      origin_ssl_protocols   = ["TLSv1.2"]
     }
   }
 
   default_root_object = "index.html"
 
   default_cache_behavior {
-    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
-    min_ttl          = "0"
-    default_ttl      = tostring(var.default_cache_duration)
-    max_ttl          = "1200"
-
+    allowed_methods        = ["GET", "HEAD", "OPTIONS"]
+    cached_methods         = ["GET", "HEAD"]
+    target_origin_id       = "origin-bucket-${aws_s3_bucket.website_root.id}"
     viewer_protocol_policy = "redirect-to-https" # Redirects any HTTP request to HTTPS
     compress               = true
 
-    forwarded_values {
-      query_string = false
-      cookies {
-        forward = "none"
-      }
-    }
-
+    # Use AWS Managed Cache Policies for better performance and maintenance
+    cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6" # CachingOptimized
+    origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf" # CORS-S3Origin
+    response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63" # CORSAndSecurityHeadersPolicy
   }
 
   restrictions {

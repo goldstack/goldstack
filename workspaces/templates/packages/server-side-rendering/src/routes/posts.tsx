@@ -1,6 +1,7 @@
-import React from 'react';
 import type { SSRHandler } from '@goldstack/template-ssr';
+import React from 'react';
 import { hydrate, renderPage } from './../render';
+import { addCacheHeaders } from '../utils/cacheHeaders';
 
 const Posts = (props: { posts: string[] }): React.ReactNode => {
   return (
@@ -15,7 +16,7 @@ const Posts = (props: { posts: string[] }): React.ReactNode => {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const handler: SSRHandler = async (event, _context) => {
-  return renderPage({
+  const response = await renderPage({
     component: Posts,
     appendToHead: '<title>Posts</title>',
     properties: {
@@ -25,6 +26,9 @@ export const handler: SSRHandler = async (event, _context) => {
     entryPoint: __filename,
     event: event,
   });
+
+  // Add cache headers based on route path
+  return addCacheHeaders(response, event.rawPath || '/posts');
 };
 
 hydrate(Posts);

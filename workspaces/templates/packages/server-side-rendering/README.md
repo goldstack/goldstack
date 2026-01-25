@@ -174,7 +174,7 @@ The Goldstack template for this module contains an example of an integration tes
 Here an example for a local test ([`ssr.spec.ts`](https://github.com/goldstack/goldstack/blob/master/workspaces/templates/packages/server-side-rendering/src/\__tests\_\_/ssr.spec.ts)):
 
 ```typescript
-import getPort from 'find-free-port';
+import getPort from 'get-port';
 import fetch from 'node-fetch';
 
 import { startTestServer, stopTestServer, getEndpoint } from './../module';
@@ -185,18 +185,7 @@ describe('Should create page', () => {
   let port: undefined | number = undefined;
 
   beforeAll(async () => {
-    port = await new Promise<number>((resolve, reject) => {
-      getPort(
-        process.env.TEST_SERVER_PORT || '50331',
-        (err: any, p1: number) => {
-          if (err) {
-            reject(err);
-            return;
-          }
-          resolve(p1);
-        }
-      );
-    });
+    port = await getPort({ port: parseInt(process.env.TEST_SERVER_PORT || '50331') });
     await startTestServer(port);
   });
 
