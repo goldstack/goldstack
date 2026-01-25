@@ -26,6 +26,10 @@
           "ANY /robots.txt": {
             "function_name": "goldstack-test-ssr-v2-robots_txt",
             "route": "ANY /robots.txt"
+          },
+          "ANY /utils/cacheHeaders": {
+            "function_name": "goldstack-test-ssr-v2-utils-cacheHeaders",
+            "route": "ANY /utils/cacheHeaders"
           }
         }
       },

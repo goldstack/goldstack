@@ -1,7 +1,7 @@
-# Creates the CloudFront distribution to serve the static website
+# Creates CloudFront distribution to serve static website
 resource "aws_cloudfront_distribution" "cdn" {
   enabled     = true
-  price_class = "PriceClass_All" 
+  price_class = "PriceClass_All"
   aliases     = [var.domain]
   provider    = aws.us-east-1
 
@@ -12,13 +12,13 @@ resource "aws_cloudfront_distribution" "cdn" {
   origin {
     domain_name = aws_s3_bucket_website_configuration.static_files_web.website_endpoint
 
-    origin_id   = "origin-bucket-${aws_s3_bucket.static_files.id}"
-    
+    origin_id = "origin-bucket-${aws_s3_bucket.static_files.id}"
+
     custom_origin_config {
-      http_port = 80
-      https_port = 443
+      http_port              = 80
+      https_port             = 443
       origin_protocol_policy = "http-only"
-      origin_ssl_protocols = ["TLSv1.2"]
+      origin_ssl_protocols   = ["TLSv1.2"]
     }
   }
 
@@ -26,13 +26,13 @@ resource "aws_cloudfront_distribution" "cdn" {
   origin {
     domain_name = aws_s3_bucket_website_configuration.public_files_web.website_endpoint
 
-    origin_id   = "origin-bucket-${aws_s3_bucket.public_files.id}"
-    
+    origin_id = "origin-bucket-${aws_s3_bucket.public_files.id}"
+
     custom_origin_config {
-      http_port = 80
-      https_port = 443
+      http_port              = 80
+      https_port             = 443
       origin_protocol_policy = "http-only"
-      origin_ssl_protocols = ["TLSv1.2"]
+      origin_ssl_protocols   = ["TLSv1.2"]
     }
   }
 
@@ -40,7 +40,7 @@ resource "aws_cloudfront_distribution" "cdn" {
   origin {
     domain_name = replace(aws_apigatewayv2_stage.default.invoke_url, "/^https?://([^/]*).*/", "$1")
 
-    origin_id   = "origin-api-gateway-${aws_apigatewayv2_api.api.id}"
+    origin_id = "origin-api-gateway-${aws_apigatewayv2_api.api.id}"
 
     custom_origin_config {
       http_port              = 80
@@ -57,21 +57,11 @@ resource "aws_cloudfront_distribution" "cdn" {
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.static_files.id}"
 
-    forwarded_values {
-      query_string = false
-      headers      = ["Origin"]
+    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
+    response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
 
-      cookies {
-        forward = "none"
-      }
-    }
-
-    min_ttl                = 0
-    default_ttl            = 86400
-    max_ttl                = 31536000
-    compress               = true
     viewer_protocol_policy = "redirect-to-https"
-    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
   }
 
   # Priority 2 - Public files - these are not cached by default
@@ -81,21 +71,11 @@ resource "aws_cloudfront_distribution" "cdn" {
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.public_files.id}"
 
-    forwarded_values {
-      query_string = false
-      headers      = ["Origin"]
+    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
+    response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
 
-      cookies {
-        forward = "none"
-      }
-    }
-
-    min_ttl                = 0
-    default_ttl            = 0
-    max_ttl                = 31536000
-    compress               = true
     viewer_protocol_policy = "redirect-to-https"
-    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
   }
 
   # Config for favicon resources
@@ -105,21 +85,11 @@ resource "aws_cloudfront_distribution" "cdn" {
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.public_files.id}"
 
-    forwarded_values {
-      query_string = false
-      headers      = ["Origin"]
+    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
+    response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
 
-      cookies {
-        forward = "none"
-      }
-    }
-
-    min_ttl                = 0
-    default_ttl            = 120
-    max_ttl                = 31536000
-    compress               = true
     viewer_protocol_policy = "redirect-to-https"
-    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
   }
 
   ordered_cache_behavior {
@@ -128,21 +98,11 @@ resource "aws_cloudfront_distribution" "cdn" {
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.public_files.id}"
 
-    forwarded_values {
-      query_string = false
-      headers      = ["Origin"]
+    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
+    response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
 
-      cookies {
-        forward = "none"
-      }
-    }
-
-    min_ttl                = 0
-    default_ttl            = 120
-    max_ttl                = 31536000
-    compress               = true
     viewer_protocol_policy = "redirect-to-https"
-    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
   }
 
   ordered_cache_behavior {
@@ -151,21 +111,11 @@ resource "aws_cloudfront_distribution" "cdn" {
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.public_files.id}"
 
-    forwarded_values {
-      query_string = false
-      headers      = ["Origin"]
+    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
+    response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
 
-      cookies {
-        forward = "none"
-      }
-    }
-
-    min_ttl                = 0
-    default_ttl            = 120
-    max_ttl                = 31536000
-    compress               = true
     viewer_protocol_policy = "redirect-to-https"
-    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
   }
 
   # Priority 3 - Dynamic resources from API gateway
@@ -174,20 +124,12 @@ resource "aws_cloudfront_distribution" "cdn" {
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = "origin-api-gateway-${aws_apigatewayv2_api.api.id}"
 
-    default_ttl = 0
-    min_ttl     = 0
-    max_ttl     = 31536000
-
-    forwarded_values {
-      query_string = true
-      cookies {
-        forward = "all"
-      }
-    }
+    # CachingOptimized - respects cache headers from API Gateway responses
+    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
+    response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
 
     viewer_protocol_policy = "redirect-to-https"
-
-    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
   }
 
   restrictions {
@@ -218,43 +160,5 @@ resource "aws_cloudfront_distribution" "cdn" {
       tags,
       viewer_certificate,
     ]
-  }
-}
-
-resource "aws_cloudfront_response_headers_policy" "security_headers_policy" {
-  name = "policy-${random_id.id.hex}"
-  security_headers_config {
-
-    content_type_options {
-      override = true
-    }
-
-    frame_options {
-      frame_option = "DENY"
-      override = true
-    }
-
-    referrer_policy {
-      referrer_policy = "same-origin"
-      override = true
-    }
-
-    xss_protection {
-      mode_block = true
-      protection = true
-      override = true
-    }
-
-    strict_transport_security {
-      access_control_max_age_sec = "63072000"
-      include_subdomains = true
-      preload = true
-      override = true
-    }
-
-    content_security_policy {
-      content_security_policy = "frame-ancestors 'none'; default-src https: data: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
-      override = true
-    }
   }
 }

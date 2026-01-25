@@ -21,6 +21,7 @@ export interface CompileCssResult {
 export interface CompileCssConfiguration {
   plugins?: AcceptedPlugin[];
   generateScopedName?: string;
+  resolve?: (filePath: string, importer: string) => string;
 }
 
 function generateScopedName(name: string, _filename: string, css: string) {
@@ -37,13 +38,20 @@ export async function compileCss(
   config?: CompileCssConfiguration,
 ): Promise<CompileCssResult> {
   let exportedTokens = {};
+  const postcssModulesOptions: any = {
+    generateScopedName: generateScopedName,
+    getJSON: (_cssFileName, json, _outputFileName) => {
+      exportedTokens = json;
+    },
+  };
+
+  // Add custom resolve function if provided (fixes Windows drive letter case sensitivity)
+  if (config?.resolve) {
+    postcssModulesOptions.resolve = config.resolve;
+  }
+
   const plugins: AcceptedPlugin[] = [
-    postcssModules({
-      generateScopedName: generateScopedName,
-      getJSON: (_cssFileName, json, _outputFileName) => {
-        exportedTokens = json;
-      },
-    }),
+    postcssModules(postcssModulesOptions),
   ];
   let res = postcss(plugins).process(code, { from: filename });
 
@@ -69,13 +77,21 @@ export function compileCssSync(
   config?: CompileCssConfiguration,
 ): CompileCssResult {
   let exportedTokens = {};
+  
+  const postcssModulesOptions: any = {
+    generateScopedName: generateScopedName,
+    getJSON: (tokens: any) => {
+      exportedTokens = tokens;
+    },
+  };
+
+  // Add custom resolve function if provided (fixes Windows drive letter case sensitivity)
+  if (config?.resolve) {
+    postcssModulesOptions.resolve = config.resolve;
+  }
+
   const plugins = [
-    postcssModulesSync({
-      generateScopedName: generateScopedName,
-      getJSON: (tokens: any) => {
-        exportedTokens = tokens;
-      },
-    }),
+    postcssModulesSync(postcssModulesOptions),
   ];
   if (config?.plugins) {
     plugins.push(...config.plugins);
