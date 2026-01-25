@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-cli",
-  "version": "0.1.57",
+  "version": "0.1.58",
   "description": "Utilities for templates that deploy an AWS Lambda function",
   "keywords": [
     "goldstack",
@@ -43,7 +43,7 @@
   "dependencies": {
     "@goldstack/infra": "0.4.39",
     "@goldstack/infra-aws": "0.4.57",
-    "@goldstack/utils-aws-lambda": "0.3.69",
+    "@goldstack/utils-aws-lambda": "0.3.70",
     "@goldstack/utils-cli": "0.3.31",
     "@goldstack/utils-config": "0.4.39",
     "@goldstack/utils-log": "0.3.33",
