@@ -1,12 +1,5 @@
 [
   {
-    "name": "prod",
-    "terraform": {
-      "website_cdn_root_id": {
-        "sensitive": false,
-        "type": "string",
-        "value": "E1HY3RV1TWMJ00"
-      }
-    }
+    "name": "prod"
   }
 ]
