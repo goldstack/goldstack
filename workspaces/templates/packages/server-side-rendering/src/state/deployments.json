@@ -1,22 +1,5 @@
 [
   {
-    "name": "prod",
-    "terraform": {
-      "gateway_url": {
-        "sensitive": false,
-        "type": "string",
-        "value": "https://7zlqffn1le.execute-api.us-west-2.amazonaws.com"
-      },
-      "public_files_bucket": {
-        "sensitive": false,
-        "type": "string",
-        "value": "ssr-v2.examples.templates.dev.goldstac-public-files-db70e62f"
-      },
-      "static_files_bucket": {
-        "sensitive": false,
-        "type": "string",
-        "value": "ssr-v2.examples.templates.dev.goldstac-static-files-db70e62f"
-      }
-    }
+    "name": "prod"
   }
 ]

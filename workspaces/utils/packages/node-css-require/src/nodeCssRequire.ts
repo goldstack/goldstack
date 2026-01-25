@@ -50,9 +50,7 @@ export async function compileCss(
     postcssModulesOptions.resolve = config.resolve;
   }
 
-  const plugins: AcceptedPlugin[] = [
-    postcssModules(postcssModulesOptions),
-  ];
+  const plugins: AcceptedPlugin[] = [postcssModules(postcssModulesOptions)];
   let res = postcss(plugins).process(code, { from: filename });
 
   await res;
@@ -77,7 +75,7 @@ export function compileCssSync(
   config?: CompileCssConfiguration,
 ): CompileCssResult {
   let exportedTokens = {};
-  
+
   const postcssModulesOptions: any = {
     generateScopedName: generateScopedName,
     getJSON: (tokens: any) => {
@@ -90,9 +88,7 @@ export function compileCssSync(
     postcssModulesOptions.resolve = config.resolve;
   }
 
-  const plugins = [
-    postcssModulesSync(postcssModulesOptions),
-  ];
+  const plugins = [postcssModulesSync(postcssModulesOptions)];
   if (config?.plugins) {
     plugins.push(...config.plugins);
   }

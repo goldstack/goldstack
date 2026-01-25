@@ -25,7 +25,7 @@ function createResolveFunction() {
       const normalizedCwd = cwd.replace(/^([a-z]):/, (_, letter) => letter.toUpperCase() + ':');
       return path.resolve(normalizedCwd, filePath.substring(1));
     }
-    
+
     // Handle relative imports
     return path.resolve(path.dirname(importer), filePath);
   };
@@ -54,13 +54,13 @@ const cssPlugin = (opts?: CSSClientPluginOptions): Plugin => {
         },
         async (args: OnLoadArgs): Promise<OnLoadResult> => {
           const text = await fs.promises.readFile(args.path, 'utf8');
-          
+
           // Create enhanced CSS config with custom resolve function to fix Windows drive letter issue
           const enhancedCssConfig: CompileCssConfiguration = {
             ...opts?.cssConfig,
             resolve: createResolveFunction(),
           };
-          
+
           const res = await compileCss(text, args.path, enhancedCssConfig);
 
           let js: string;

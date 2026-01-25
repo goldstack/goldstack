@@ -127,7 +127,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
 
     response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
-    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6" # CachingOptimized
     origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
     compress                   = true
     viewer_protocol_policy     = "redirect-to-https"
