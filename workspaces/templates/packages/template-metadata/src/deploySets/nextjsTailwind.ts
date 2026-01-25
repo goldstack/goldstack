@@ -25,6 +25,9 @@ export const createNextjsTailwindBuildSetConfig = async (): Promise<DeploySetCon
       {
         projectConfiguration,
         rootTests: ['assert-package-files', 'assert-root-files', 'root-build'],
+        targetRepo: 'goldstack/nextjs-tailwind',
+        repoReadme:
+          'workspaces/templates/packages/template-metadata/src/deploySets/nextjsTailwind.README.md',
         packageConfigurations: [
           {
             packageName: 'app-nextjs-tailwind-1',

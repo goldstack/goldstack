@@ -82,6 +82,10 @@ const run = async () => {
     `${paths.buildSets}nextjsBootstrap.README.md`,
   );
   await generateMarkdownDocs(
+    `${paths.buildSets}nextjsTailwind.template.README.md`,
+    `${paths.buildSets}nextjsTailwind.README.md`,
+  );
+  await generateMarkdownDocs(
     `${paths.buildSets}emailSend.template.README.md`,
     `${paths.buildSets}emailSend.README.md`,
   );
