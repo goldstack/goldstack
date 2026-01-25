@@ -1,10 +1,16 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*", "./next-env.d.ts"],
+  "include": [
+    "./src/**/*",
+    "./next-env.d.ts",
+    "pages"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
     "jsx": "preserve"
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
