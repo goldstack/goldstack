@@ -17,6 +17,7 @@ import { connect, startLocalDynamoDB } from './../src/table';
     console.log('Logs will be written to: dynamodb-local.log');
 
     await startLocalDynamoDB({ detached: true });
+    // need to do connect to run initial migrations
     await connect();
 
     // Log success
