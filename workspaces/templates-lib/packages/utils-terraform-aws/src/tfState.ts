@@ -1,6 +1,7 @@
 import {
   CreateTableCommand,
   DeleteTableCommand,
+  DescribeTableCommand,
   DynamoDBClient,
   ResourceInUseException,
 } from '@aws-sdk/client-dynamodb';
@@ -20,6 +21,7 @@ import { info } from '@goldstack/utils-log';
 
 const assertDynamoDBTable = async (params: { dynamoDB: DynamoDBClient; tableName: string }) => {
   // defining a table as required by Terraform https://www.terraform.io/docs/language/settings/backends/s3.html#dynamodb_table
+  let tableCreated = false;
   try {
     await params.dynamoDB.send(
       new CreateTableCommand({
@@ -39,6 +41,7 @@ const assertDynamoDBTable = async (params: { dynamoDB: DynamoDBClient; tableName
         BillingMode: 'PAY_PER_REQUEST',
       }),
     );
+    tableCreated = true;
     info('DynamoDB table created for terraform state', {
       tableName: params.tableName,
     });
@@ -46,6 +49,33 @@ const assertDynamoDBTable = async (params: { dynamoDB: DynamoDBClient; tableName
     if (!(e instanceof ResourceInUseException)) {
       throw new Error(e.message);
     }
+  }
+
+  if (tableCreated) {
+    // Wait for table to become ACTIVE
+    const startTime = Date.now();
+    const timeoutMs = 60 * 1000; // 1 minute
+    const pollIntervalMs = 5000; // 5 seconds
+
+    while (Date.now() - startTime < timeoutMs) {
+      try {
+        const describeResponse = await params.dynamoDB.send(
+          new DescribeTableCommand({
+            TableName: params.tableName,
+          }),
+        );
+        if (describeResponse.Table?.TableStatus === 'ACTIVE') {
+          info('DynamoDB table is now active', {
+            tableName: params.tableName,
+          });
+          return;
+        }
+      } catch (describeError) {
+        // If describe fails, continue polling (might be temporary)
+      }
+      await new Promise((resolve) => setTimeout(resolve, pollIntervalMs));
+    }
+    throw new Error(`Timeout waiting for DynamoDB table ${params.tableName} to become ACTIVE`);
   }
 };
 
