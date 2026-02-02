@@ -27,7 +27,7 @@
     "@smithy/types": "^4.11.0"
   },
   "devDependencies": {
-    "@goldstack/template-s3-cli": "0.6.85",
+    "@goldstack/template-s3-cli": "0.6.86",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

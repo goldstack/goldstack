@@ -347,7 +347,22 @@ const documentClient = new DynamoDB.DocumentClient({
 
 #### Testing
 
-To run test, you can use the methods `startLocalDynamoDB` and `stopLocalDynamoDB`:
+For local development and testing, you can use the `watch` script to start a DynamoDB Admin interface for monitoring your local database:
+
+```bash
+yarn watch
+```
+
+This starts the DynamoDB Admin web interface on port 8001 (configurable via `DYNAMODB_ADMIN_PORT`), connects to your local DynamoDB instance, and waits for you to press Enter to shut it down.
+
+To manually start and stop local DynamoDB instances, use:
+
+```bash
+yarn start-local  # Starts on port 8000, logs to dynamodb-local.log
+yarn stop-local   # Stops all local instances
+```
+
+For automated testing with Jest, you can use the methods `startLocalDynamoDB` and `stopLocalDynamoDB`:
 
 ```
 it('Should connect to DynamoDB table', async () => {

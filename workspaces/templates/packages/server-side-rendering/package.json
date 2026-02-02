@@ -39,7 +39,7 @@
     "tailwindcss": "^3"
   },
   "devDependencies": {
-    "@goldstack/template-ssr-cli": "0.3.103",
+    "@goldstack/template-ssr-cli": "0.3.104",
     "@goldstack/utils-aws-http-api-local": "0.3.79",
     "@jest-mock/express": "^1.4.5",
     "@jest/transform": "^29.3.1",

@@ -394,7 +394,15 @@ Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.3+12-LTS, mixed mode)
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
   </g>
 </svg></span></h4>
-<p>To run test, you can use the methods <code class="inline">startLocalDynamoDB</code> and <code class="inline">stopLocalDynamoDB</code>:</p>
+<p>For local development and testing, you can use the <code class="inline">watch</code> script to start a DynamoDB Admin interface for monitoring your local database:</p>
+<pre class="language-bash language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> <span class="token function">watch</span>
+</code></pre>
+<p>This starts the DynamoDB Admin web interface on port 8001 (configurable via <code class="inline">DYNAMODB_ADMIN_PORT</code>), connects to your local DynamoDB instance, and waits for you to press Enter to shut it down.</p>
+<p>To manually start and stop local DynamoDB instances, use:</p>
+<pre class="language-bash language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> start-local  <span class="token comment"># Starts on port 8000, logs to dynamodb-local.log</span>
+<span class="token function">yarn</span> stop-local   <span class="token comment"># Stops all local instances</span>
+</code></pre>
+<p>For automated testing with Jest, you can use the methods <code class="inline">startLocalDynamoDB</code> and <code class="inline">stopLocalDynamoDB</code>:</p>
 <pre><code>it('Should connect to DynamoDB table', async () => {
   await startLocalDynamoDB();
 
