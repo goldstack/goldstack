@@ -1,4 +1,4 @@
-import { debug, error } from '@goldstack/utils-log';
+import { debug, error, info, warn } from '@goldstack/utils-log';
 import fs from 'fs';
 import { check } from 'tcp-port-used';
 import type { DynamoDBInstance } from './localDynamoDB';
@@ -151,10 +151,27 @@ export class InstanceManager {
    * Stops an instance
    */
   async stopInstance(instance: DynamoDBInstance): Promise<void> {
-    if (instance.processId) {
-      await terminateProcess(instance.processId);
-    } else if (instance.dockerContainerId) {
-      await stopContainer(instance.dockerContainerId);
+    try {
+      if (instance.processId) {
+        await terminateProcess(instance.processId);
+      } else if (instance.dockerContainerId) {
+        await stopContainer(instance.dockerContainerId);
+      }
+    } catch (e) {
+      if (e.code === 'ESRCH' || e.code === 'esrch') {
+        info(
+          `Process ${instance.processId} already terminated. Cannot stop this DynamoDB instance since it is already stopped.`,
+        );
+        return;
+      }
+      warn(
+        `Failed to stop local DynamoDB instance: ${e.message}. It may already have been stopped.`,
+        {
+          message: e.message,
+          stack: e.stack,
+          code: e.code,
+        },
+      );
     }
   }
 
