@@ -120,22 +120,10 @@ export const startLocalDynamoDB = async (
   portOrOptions?: number | StartLocalDynamoDBParams,
   deploymentName?: string,
 ): Promise<void> => {
-  let port: number | undefined;
-  let detached: boolean | undefined;
-
-  if (typeof portOrOptions === 'number') {
-    port = portOrOptions;
-  } else if (portOrOptions) {
-    port = portOrOptions.port;
-    detached = portOrOptions.detached;
-    deploymentName = portOrOptions.deploymentName ?? deploymentName;
-  }
-
-  port = port || 8000;
   return await templateStartLocalDynamoDB(
     goldstackConfig,
     goldstackSchema,
-    { port, detached },
+    portOrOptions,
     deploymentName,
   );
 };
