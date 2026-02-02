@@ -90,15 +90,54 @@ export const migrateDownTo = async (
 };
 
 /**
+ * Parameters for starting a local DynamoDB instance.
+ */
+export interface StartLocalDynamoDBParams {
+  /** Optional port number to start the local DynamoDB on. Defaults to 8000. */
+  port?: number;
+  /** Whether to run the DynamoDB instance in detached mode. */
+  detached?: boolean;
+  /** Optional name of the deployment to use. */
+  deploymentName?: string;
+}
+
+/**
  * Starts a local DynamoDB instance for development and testing.
  *
- * @param port - Optional port number to start the local DynamoDB on. Defaults to 8000.
- * @param deploymentName - Optional name of the deployment to use.
+ * @param portOrOptions - Optional port number or options object containing port, detached, and deploymentName.
+ * @param deploymentName - Optional deployment name (only used if portOrOptions is a number).
  * @returns {Promise<void>} A promise that resolves when the local DynamoDB has started.
+ *
+ * @example
+ * // Using new object parameter style
+ * await startLocalDynamoDB({ port: 8000, detached: false });
+ *
+ * @example
+ * // Using legacy positional parameter style
+ * await startLocalDynamoDB(8000, 'local');
  */
-export const startLocalDynamoDB = async (port?: number, deploymentName?: string): Promise<void> => {
+export const startLocalDynamoDB = async (
+  portOrOptions?: number | StartLocalDynamoDBParams,
+  deploymentName?: string,
+): Promise<void> => {
+  let port: number | undefined;
+  let detached: boolean | undefined;
+
+  if (typeof portOrOptions === 'number') {
+    port = portOrOptions;
+  } else if (portOrOptions) {
+    port = portOrOptions.port;
+    detached = portOrOptions.detached;
+    deploymentName = portOrOptions.deploymentName ?? deploymentName;
+  }
+
   port = port || 8000;
-  return await templateStartLocalDynamoDB(goldstackConfig, goldstackSchema, port, deploymentName);
+  return await templateStartLocalDynamoDB(
+    goldstackConfig,
+    goldstackSchema,
+    { port, detached },
+    deploymentName,
+  );
 };
 
 /**

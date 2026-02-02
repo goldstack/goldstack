@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.958.0",
-    "@goldstack/template-dynamodb": "0.3.70",
+    "@goldstack/template-dynamodb": "0.4.0",
     "@goldstack/utils-cli": "0.3.31",
     "@goldstack/utils-log": "0.3.33",
     "@goldstack/utils-package": "0.4.41",
