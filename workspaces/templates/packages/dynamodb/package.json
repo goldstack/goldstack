@@ -22,6 +22,8 @@
     "template-ts": "ts-node --swc src/template.ts",
     "test": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand",
     "test-watch": "STOP_SERVER=false GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand --watch",
+    "start-local": "GOLDSTACK_DEPLOYMENT=local ts-node --swc scripts/start-local.ts",
+    "stop-local": "GOLDSTACK_DEPLOYMENT=local ts-node --swc scripts/stop-local.ts",
     "watch": "DYNAMODB_ADMIN_PORT=8001 GOLDSTACK_DEPLOYMENT=local ts-node scripts/watch.ts"
   },
   "dependencies": {
