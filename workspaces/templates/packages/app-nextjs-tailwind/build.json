@@ -6,6 +6,7 @@
     "schemas/",
     "scripts/",
     "docs/",
+    "pages/",
     ".env",
     ".swcrc",
     ".gitignore",
