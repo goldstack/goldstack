@@ -18,13 +18,21 @@ export type LocalConnectType = (
   deploymentName?: string,
 ) => Promise<DynamoDBClient>;
 
+export interface StartLocalDynamoDBOptions {
+  /** Optional port number for the local DynamoDB instance. */
+  port?: number;
+  /** Whether to run the DynamoDB instance in detached mode. */
+  detached?: boolean;
+}
+
 export type StartLocalDynamoDBType = (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
-  options: { port: number },
+  options?: StartLocalDynamoDBOptions,
   deploymentName?: string,
 ) => Promise<DynamoDBInstance>;
 
 export interface StopLocalDynamoDBOptions {
+  /** Optional port number of the local DynamoDB instance to stop. */
   port?: number;
 }
 
@@ -87,9 +95,10 @@ export const localConnect: LocalConnectType = async (packageConfig, deploymentNa
  */
 export const startLocalDynamoDB: StartLocalDynamoDBType = async (
   _packageConfig,
-  { port },
+  options,
   _deploymentName,
 ) => {
+  const port = options?.port || defaultConfig.port;
   const manager = await getInstanceManager();
 
   // Check if instance already exists on requested port
@@ -110,7 +119,7 @@ export const startLocalDynamoDB: StartLocalDynamoDBType = async (
   }
 
   debug(`Starting new DynamoDB local instance on port ${port}`);
-  const newInstance = await spawnInstance({ port });
+  const newInstance = await spawnInstance({ port, detached: options?.detached });
   manager.setInstance(port, newInstance);
   manager.incrementUsageCounter(port);
   return newInstance;

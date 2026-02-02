@@ -52,12 +52,24 @@ export const getTableName = async (
 };
 
 /**
+ * Parameters for starting a local DynamoDB instance.
+ */
+export interface StartLocalDynamoDBParams {
+  /** Optional port number to start the local DynamoDB on. */
+  port?: number;
+  /** Whether to run the DynamoDB instance in detached mode. */
+  detached?: boolean;
+  /** Optional deployment name. */
+  deploymentName?: string;
+}
+
+/**
  * Starts a local DynamoDB instance for development and testing.
  *
  * @param goldstackConfig - The Goldstack configuration for the DynamoDB package.
  * @param packageSchema - The package schema.
- * @param port - Optional port number to start the local DynamoDB on.
- * @param deploymentName - Optional deployment name.
+ * @param portOrOptions - Optional port number or options object containing port, detached, and deploymentName.
+ * @param deploymentName - Optional deployment name (only used if portOrOptions is a number).
  * @returns {Promise<void>} A promise that resolves when the local DynamoDB instance is started.
  */
 export const startLocalDynamoDB = async (
@@ -65,7 +77,7 @@ export const startLocalDynamoDB = async (
   goldstackConfig: DynamoDBPackage | any,
   // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
   packageSchema: any,
-  port?: number,
+  portOrOptions?: number | StartLocalDynamoDBParams,
   deploymentName?: string,
 ): Promise<void> => {
   deploymentName = getDeploymentName(deploymentName);
@@ -79,11 +91,24 @@ export const startLocalDynamoDB = async (
   const lib = require(excludeInBundle('./local/localDynamoDB')) as {
     startLocalDynamoDB: StartLocalDynamoDBType;
   };
+
+  let port: number | undefined;
+  let detached: boolean | undefined;
+
+  if (typeof portOrOptions === 'number') {
+    port = portOrOptions;
+  } else if (portOrOptions) {
+    port = portOrOptions.port;
+    detached = portOrOptions.detached;
+    deploymentName = portOrOptions.deploymentName ?? deploymentName;
+  }
+
   const portToUse =
     port ||
     (process.env.DYNAMODB_LOCAL_PORT && parseInt(process.env.DYNAMODB_LOCAL_PORT, 10)) ||
     8000;
-  await lib.startLocalDynamoDB(packageConfig, { port: portToUse }, deploymentName);
+
+  await lib.startLocalDynamoDB(packageConfig, { port: portToUse, detached }, deploymentName);
 };
 
 /**
