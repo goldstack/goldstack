@@ -39,11 +39,13 @@ async function terminateWindowsProcess(processId: number): Promise<void> {
 }
 
 async function terminateUnixProcess(processId: number): Promise<void> {
+  const isESRCH = (e: unknown): boolean => (e as NodeJS.ErrnoException).code === 'ESRCH';
+
   // Try graceful termination first
   try {
     process.kill(processId, 'SIGTERM');
   } catch (e) {
-    if ((e as NodeJS.ErrnoException).code === 'ESRCH') {
+    if (isESRCH(e)) {
       debug(`Process ${processId} does not exist, skipping termination`);
       return; // Already stopped
     }
@@ -57,7 +59,7 @@ async function terminateUnixProcess(processId: number): Promise<void> {
   try {
     process.kill(processId, 0); // Throws ESRCH if not running
   } catch (e) {
-    if ((e as NodeJS.ErrnoException).code === 'ESRCH') {
+    if (isESRCH(e)) {
       debug(`Process ${processId} terminated gracefully`);
       return; // Stopped gracefully
     }
