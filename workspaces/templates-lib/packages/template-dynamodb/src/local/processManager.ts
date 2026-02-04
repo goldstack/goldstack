@@ -45,37 +45,52 @@ async function terminateUnixProcess(processId: number): Promise<void> {
   } catch (e) {
     if ((e as NodeJS.ErrnoException).code === 'ESRCH') {
       debug(`Process ${processId} does not exist, skipping termination`);
-      return;
+      return; // Already stopped
     }
-    throw e;
+    throw e; // Other error
   }
+
+  // Wait for graceful termination
   await new Promise<void>((resolve) => setTimeout(resolve, 5000));
 
-  // Check if process still exists
+  // Check if process is still running
   try {
-    process.kill(processId, 0); // Signal 0 is used to check existence
-    // Process still exists, try force kill
-    process.kill(processId, 'SIGKILL');
-
-    // Wait and verify process is gone
-    await new Promise<void>((resolve) => setTimeout(resolve, 1000));
-    try {
-      process.kill(processId, 0);
-      error(`Failed to terminate process ${processId} after SIGKILL`);
-      throw new Error(`Process ${processId} could not be terminated`);
-    } catch (e) {
-      if ((e as NodeJS.ErrnoException).code === 'ESRCH') {
-        debug(`Process ${processId} successfully terminated`);
-      } else {
-        throw e;
-      }
-    }
+    process.kill(processId, 0); // Throws ESRCH if not running
   } catch (e) {
     if ((e as NodeJS.ErrnoException).code === 'ESRCH') {
       debug(`Process ${processId} terminated gracefully`);
-    } else {
-      throw e;
+      return; // Stopped gracefully
     }
+    throw e; // Other error
+  }
+
+  // Process still exists, try force kill
+  debug(`Process ${processId} did not terminate gracefully, attempting SIGKILL.`);
+  try {
+    process.kill(processId, 'SIGKILL');
+  } catch (e) {
+    if ((e as NodeJS.ErrnoException).code === 'ESRCH') {
+      debug(`Process ${processId} terminated before SIGKILL could be sent.`);
+      return; // Stopped before force kill
+    }
+    throw e; // Other error
+  }
+
+  // Wait for force kill to take effect
+  await new Promise<void>((resolve) => setTimeout(resolve, 1000));
+
+  // Verify process is gone
+  try {
+    process.kill(processId, 0);
+    // If we get here, process is still alive
+    error(`Failed to terminate process ${processId} after SIGKILL`);
+    throw new Error(`Process ${processId} could not be terminated`);
+  } catch (e) {
+    if ((e as NodeJS.ErrnoException).code === 'ESRCH') {
+      debug(`Process ${processId} successfully terminated by SIGKILL`);
+      return; // Stopped by force kill
+    }
+    throw e; // Other error
   }
 }
 

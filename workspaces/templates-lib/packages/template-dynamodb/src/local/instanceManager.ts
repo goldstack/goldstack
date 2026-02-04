@@ -160,7 +160,10 @@ export class InstanceManager {
     } catch (e) {
       const err = e as Error & { code?: string };
       const errMessage = err.message || '';
-      if ((err.code || '').toLowerCase() === 'esrch' || errMessage.toLowerCase().includes('esrch')) {
+      if (
+        (err.code || '').toLowerCase() === 'esrch' ||
+        errMessage.toLowerCase().includes('esrch')
+      ) {
         info(
           `Process ${instance.processId} already terminated. Cannot stop this DynamoDB instance since it is already stopped.`,
         );
