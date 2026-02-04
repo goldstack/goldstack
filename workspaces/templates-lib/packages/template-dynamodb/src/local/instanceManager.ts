@@ -158,18 +158,26 @@ export class InstanceManager {
         await stopContainer(instance.dockerContainerId);
       }
     } catch (e) {
-      if (e.code === 'ESRCH' || e.code === 'esrch') {
+      const err = e as Error & { code?: string };
+
+      const isAlreadyStoppedError = (error: typeof err): boolean => {
+        const code = (error.code || '').toLowerCase();
+        const message = (error.message || '').toLowerCase();
+        return code === 'esrch' || message.includes('esrch');
+      };
+
+      if (isAlreadyStoppedError(err)) {
         info(
           `Process ${instance.processId} already terminated. Cannot stop this DynamoDB instance since it is already stopped.`,
         );
         return;
       }
       warn(
-        `Failed to stop local DynamoDB instance: ${e.message}. It may already have been stopped.`,
+        `Failed to stop local DynamoDB instance: ${err.message}. It may already have been stopped.`,
         {
-          message: e.message,
-          stack: e.stack,
-          code: e.code,
+          message: err.message,
+          stack: err.stack,
+          code: err.code,
         },
       );
     }
