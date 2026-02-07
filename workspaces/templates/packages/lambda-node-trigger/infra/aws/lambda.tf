@@ -1,39 +1,39 @@
 data "archive_file" "empty_lambda" {
-  type = "zip"
+  type        = "zip"
   output_path = "${path.module}/empty_lambda.zip"
 
   source {
-    content = "exports.handler = function() { };"
+    content  = "exports.handler = function() { };"
     filename = "lambda.js"
   }
 }
 
 resource "aws_lambda_function" "main" {
- 
+
   function_name = var.lambda_name
 
   filename = data.archive_file.empty_lambda.output_path
 
   reserved_concurrent_executions = 10 # this is a failsafe in case things go very wrong and prevent us from creating high AWS costs.
-                                      # if you need higher concurrency, please alter
+  # if you need higher concurrency, please alter
 
   handler = "lambda.handler"
-  runtime = "nodejs20.x"
+  runtime = "nodejs22.x"
 
   memory_size = 512
-  timeout = 900
+  timeout     = 900
 
   role = aws_iam_role.lambda_exec.arn
 
   logging_config {
     log_format = "Text"
-    log_group = aws_cloudwatch_log_group.lambda_log_group.name
+    log_group  = aws_cloudwatch_log_group.lambda_log_group.name
   }
 
   lifecycle {
     create_before_destroy = true
     ignore_changes = [
-       filename,
+      filename,
     ]
   }
 
@@ -76,7 +76,7 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach" {
-  role       = aws_iam_role.lambda_exec.name
+  role = aws_iam_role.lambda_exec.name
   # Gives this lambda full access to everything. Consider restricting rules to only the resources this lambda will require.
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }

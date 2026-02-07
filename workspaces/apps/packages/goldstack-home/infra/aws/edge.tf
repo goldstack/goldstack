@@ -30,29 +30,29 @@ resource "aws_iam_role" "lambda_exec" {
 }
 
 data "archive_file" "empty_lambda" {
-  type = "zip"
+  type        = "zip"
   output_path = "${path.module}/empty_lambda.zip"
 
   source {
-    content = "exports.handler = function() { };"
+    content  = "exports.handler = function() { };"
     filename = "lambda.js"
   }
 }
 
 resource "aws_lambda_function" "edge" {
-  provider         = aws.us-east-1
-  function_name    =  "${replace(var.website_domain, ".", "-")}-edge"
-  description      = "Edge Lambda for CloudFront Routing"
-  filename         = data.archive_file.empty_lambda.output_path
-  handler          = "lambda.handler"
-  runtime          = "nodejs20.x"
-  role             = aws_iam_role.lambda_exec.arn
-  timeout          = 30
-  memory_size      = 512
-  publish          = true
+  provider      = aws.us-east-1
+  function_name = "${replace(var.website_domain, ".", "-")}-edge"
+  description   = "Edge Lambda for CloudFront Routing"
+  filename      = data.archive_file.empty_lambda.output_path
+  handler       = "lambda.handler"
+  runtime       = "nodejs22.x"
+  role          = aws_iam_role.lambda_exec.arn
+  timeout       = 30
+  memory_size   = 512
+  publish       = true
   lifecycle {
     ignore_changes = [
-       filename,
+      filename,
     ]
   }
 }

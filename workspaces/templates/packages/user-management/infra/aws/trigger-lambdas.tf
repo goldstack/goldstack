@@ -1,41 +1,41 @@
 data "archive_file" "no_op_lambda" {
-  type = "zip"
+  type        = "zip"
   output_path = "${path.module}/no_op_lambda.zip"
 
   source {
-    content = "exports.handler = async function(event) { return event; };"
+    content  = "exports.handler = async function(event) { return event; };"
     filename = "lambda.js"
   }
 }
 
 resource "aws_lambda_function" "pre_sign_up" {
- 
+
   function_name = "${var.user_pool_name}-pre-sign-up"
 
   filename = data.archive_file.no_op_lambda.output_path
 
   handler = "lambda.handler"
-  runtime = "nodejs20.x"
+  runtime = "nodejs22.x"
 
   memory_size = 512
-  timeout = 30
+  timeout     = 30
 
   role = aws_iam_role.lambda_exec.arn
 
   tags = {
-    Name = "${var.user_pool_name}-pre-sign-up"
+    Name        = "${var.user_pool_name}-pre-sign-up"
     Environment = var.name
   }
 
   logging_config {
     log_format = "Text"
-    log_group = aws_cloudwatch_log_group.pre_sign_up.name
+    log_group  = aws_cloudwatch_log_group.pre_sign_up.name
   }
 
   lifecycle {
     create_before_destroy = true
     ignore_changes = [
-       filename,
+      filename,
     ]
   }
 
@@ -45,7 +45,7 @@ resource "aws_lambda_function" "pre_sign_up" {
     }
   }
 
-  
+
 }
 
 resource "aws_cloudwatch_log_group" "pre_sign_up" {
@@ -54,33 +54,33 @@ resource "aws_cloudwatch_log_group" "pre_sign_up" {
 }
 
 resource "aws_lambda_function" "post_confirmation" {
- 
+
   function_name = "${var.user_pool_name}-post-confirmation"
 
   filename = data.archive_file.no_op_lambda.output_path
 
   handler = "lambda.handler"
-  runtime = "nodejs20.x"
+  runtime = "nodejs22.x"
 
   memory_size = 512
-  timeout = 30
+  timeout     = 30
 
   role = aws_iam_role.lambda_exec.arn
 
   tags = {
-    Name = "${var.user_pool_name}-post-confirmation"
+    Name        = "${var.user_pool_name}-post-confirmation"
     Environment = var.name
   }
 
   logging_config {
     log_format = "Text"
-    log_group = aws_cloudwatch_log_group.post_confirmation.name
+    log_group  = aws_cloudwatch_log_group.post_confirmation.name
   }
 
   lifecycle {
     create_before_destroy = true
     ignore_changes = [
-       filename,
+      filename,
     ]
   }
 
@@ -90,7 +90,7 @@ resource "aws_lambda_function" "post_confirmation" {
     }
   }
 
-  
+
 }
 
 resource "aws_cloudwatch_log_group" "post_confirmation" {
@@ -128,9 +128,9 @@ EOF
 
 
 locals {
-  metric_transformation_name_post_confirmation      = "${var.user_pool_name}-error-count-post-confirmation"
-  metric_transformation_name_pre_sign_up      = "${var.user_pool_name}-error-count-pre-sign-up"
-  metric_transformation_namespace = "LambdaErrors"
+  metric_transformation_name_post_confirmation = "${var.user_pool_name}-error-count-post-confirmation"
+  metric_transformation_name_pre_sign_up       = "${var.user_pool_name}-error-count-pre-sign-up"
+  metric_transformation_namespace              = "LambdaErrors"
 }
 
 
@@ -141,8 +141,8 @@ resource "aws_cloudwatch_log_metric_filter" "error_logs_post_confirmation" {
   log_group_name = aws_cloudwatch_log_group.post_confirmation.name
 
   metric_transformation {
-    name          = local.metric_transformation_name_post_confirmation 
-    namespace     = local.metric_transformation_namespace 
+    name          = local.metric_transformation_name_post_confirmation
+    namespace     = local.metric_transformation_namespace
     value         = "1" # Emitted when metric matches
     default_value = "0" # Emitted when metric does not match
     unit          = "Count"
@@ -158,12 +158,12 @@ resource "aws_cloudwatch_metric_alarm" "lambda_errors_post_confirmation" {
   metric_name         = local.metric_transformation_name_post_confirmation
   namespace           = local.metric_transformation_namespace
   unit                = "Count"
-  period             = 60
-  statistic          = "Sum"
-  threshold          = 0
-  treat_missing_data = "notBreaching"
-  alarm_description  = "This metric monitors error logs in the Cognito Post Confirmation Lambda trigger function"
-  alarm_actions      = [aws_sns_topic.alerts.arn]
+  period              = 60
+  statistic           = "Sum"
+  threshold           = 0
+  treat_missing_data  = "notBreaching"
+  alarm_description   = "This metric monitors error logs in the Cognito Post Confirmation Lambda trigger function"
+  alarm_actions       = [aws_sns_topic.alerts.arn]
 }
 
 # Create metric filter for ERROR logs
@@ -173,8 +173,8 @@ resource "aws_cloudwatch_log_metric_filter" "error_logs_pre_sign_up" {
   log_group_name = aws_cloudwatch_log_group.pre_sign_up.name
 
   metric_transformation {
-    name          = local.metric_transformation_name_pre_sign_up 
-    namespace     = local.metric_transformation_namespace 
+    name          = local.metric_transformation_name_pre_sign_up
+    namespace     = local.metric_transformation_namespace
     value         = "1" # Emitted when metric matches
     default_value = "0" # Emitted when metric does not match
     unit          = "Count"
@@ -195,12 +195,12 @@ resource "aws_cloudwatch_metric_alarm" "lambda_errors_pre_sign_up" {
   metric_name         = local.metric_transformation_name_pre_sign_up
   namespace           = local.metric_transformation_namespace
   unit                = "Count"
-  period             = 60
-  statistic          = "Sum"
-  threshold          = 0
-  treat_missing_data = "notBreaching"
-  alarm_description  = "This metric monitors error logs in the Cognito Pre Sign Up Lambda trigger function"
-  alarm_actions      = [aws_sns_topic.alerts.arn]
+  period              = 60
+  statistic           = "Sum"
+  threshold           = 0
+  treat_missing_data  = "notBreaching"
+  alarm_description   = "This metric monitors error logs in the Cognito Pre Sign Up Lambda trigger function"
+  alarm_actions       = [aws_sns_topic.alerts.arn]
 }
 
 resource "aws_iam_role" "lambda_exec" {
