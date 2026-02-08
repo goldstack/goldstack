@@ -32,7 +32,7 @@ resource "aws_route53_record" "wildcard_validation" {
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
     }
-   # Skips the domain if it doesn't contain a wildcard
+    # Skips the domain if it doesn't contain a wildcard
     if length(regexall("\\*\\..+", dvo.domain_name)) > 0
   }
 
@@ -46,7 +46,7 @@ resource "aws_route53_record" "wildcard_validation" {
 
 # Required to force ACM wildcard certificate validation
 resource "aws_acm_certificate_validation" "wildcard_cert" {
-  provider = aws.us-east-1
+  provider        = aws.us-east-1
   certificate_arn = aws_acm_certificate.wildcard.arn
 
   validation_record_fqdns = concat(
@@ -74,22 +74,22 @@ data "aws_acm_certificate" "wildcard" {
   most_recent = true
 }
 
-resource aws_api_gateway_domain_name domain {
+resource "aws_api_gateway_domain_name" "domain" {
   domain_name     = var.api_domain
   certificate_arn = data.aws_acm_certificate.wildcard.arn
 
 }
 
-resource aws_api_gateway_base_path_mapping base_path {
+resource "aws_api_gateway_base_path_mapping" "base_path" {
   api_id      = aws_api_gateway_rest_api.main.id
   domain_name = aws_api_gateway_domain_name.domain.domain_name
-  stage_name  = aws_api_gateway_deployment.main.stage_name 
+  stage_name  = aws_api_gateway_stage.main.stage_name
 }
 
-resource aws_route53_record a {
-  type     = "A"
-  name     = aws_api_gateway_domain_name.domain.domain_name
-  zone_id  = data.aws_route53_zone.main.zone_id
+resource "aws_route53_record" "a" {
+  type    = "A"
+  name    = aws_api_gateway_domain_name.domain.domain_name
+  zone_id = data.aws_route53_zone.main.zone_id
 
   alias {
     evaluate_target_health = false
