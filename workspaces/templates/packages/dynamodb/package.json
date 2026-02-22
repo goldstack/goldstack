@@ -41,7 +41,7 @@
     "@types/ejs": "^3.1.5",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
-    "aws-sdk": "2.1525.0",
+    "aws-sdk": "2.1693.0",
     "dynamodb-admin": "^4.6.1",
     "ejs": "^3.1.8",
     "jest": "^30.2.0",
