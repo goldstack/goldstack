@@ -24,7 +24,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.997.0",
     "@goldstack/session-repository-bucket": "0.1.0",
-    "@goldstack/utils-s3": "0.4.34",
+    "@goldstack/utils-s3": "0.4.35",
     "@goldstack/utils-sh": "0.5.38",
     "fs-extra": "^11.2.0",
     "stripe": "^8.114.0",
