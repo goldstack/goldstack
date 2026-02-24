@@ -40,8 +40,8 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@aws-sdk/credential-providers": "^3.996.0",
-    "@aws-sdk/types": "^3.973.1",
+    "@aws-sdk/credential-providers": "^3.997.0",
+    "@aws-sdk/types": "^3.973.2",
     "@goldstack/infra": "0.4.39",
     "@goldstack/infra-aws": "0.4.57",
     "@goldstack/infra-hetzner": "0.1.36",

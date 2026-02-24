@@ -41,7 +41,7 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.996.0",
+    "@aws-sdk/client-dynamodb": "^3.997.0",
     "@goldstack/template-dynamodb": "0.4.3",
     "@goldstack/utils-cli": "0.3.31",
     "@goldstack/utils-log": "0.3.33",
