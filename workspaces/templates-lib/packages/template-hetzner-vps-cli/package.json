@@ -40,9 +40,9 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@aws-sdk/client-iam": "^3.958.0",
-    "@aws-sdk/client-s3": "^3.958.0",
-    "@aws-sdk/s3-request-presigner": "^3.958.0",
+    "@aws-sdk/client-iam": "^3.997.0",
+    "@aws-sdk/client-s3": "^3.997.0",
+    "@aws-sdk/s3-request-presigner": "^3.997.0",
     "@goldstack/infra-aws": "0.4.57",
     "@goldstack/template-hetzner-vps": "0.1.56",
     "@goldstack/utils-cli": "0.3.31",

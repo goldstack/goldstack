@@ -22,7 +22,7 @@
     "test-watch": "jest --config=./jest.config.js --watch"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.958.0",
+    "@aws-sdk/client-s3": "^3.997.0",
     "@goldstack/session-repository-bucket": "0.1.0",
     "@goldstack/utils-s3": "0.4.34",
     "@goldstack/utils-sh": "0.5.38",

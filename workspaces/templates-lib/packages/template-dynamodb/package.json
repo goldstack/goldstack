@@ -38,10 +38,10 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.958.0",
-    "@aws-sdk/credential-providers": "^3.958.0",
-    "@aws-sdk/types": "^3.957.0",
-    "@aws-sdk/util-dynamodb": "^3.958.0",
+    "@aws-sdk/client-dynamodb": "^3.997.0",
+    "@aws-sdk/credential-providers": "^3.997.0",
+    "@aws-sdk/types": "^3.973.2",
+    "@aws-sdk/util-dynamodb": "^3.996.1",
     "@goldstack/infra": "0.4.39",
     "@goldstack/infra-aws": "0.4.57",
     "@goldstack/utils-esbuild": "0.5.26",
