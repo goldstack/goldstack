@@ -23,7 +23,7 @@
     "test": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.958.0",
+    "@aws-sdk/client-s3": "^3.996.0",
     "@goldstack/template-s3": "0.5.64",
     "@smithy/smithy-client": "^4.10.2",
     "@smithy/types": "^4.11.0"
