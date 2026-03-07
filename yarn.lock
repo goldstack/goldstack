@@ -15762,7 +15762,7 @@ __metadata:
   linkType: hard
 
 "fast-xml-parser@npm:4.5.4":
-  version: 5.3.6
+  version: 4.5.4
   resolution: "fast-xml-parser@npm:4.5.4"
   dependencies:
     strnum: "npm:^2.1.2"
