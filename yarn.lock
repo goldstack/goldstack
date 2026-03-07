@@ -1119,7 +1119,7 @@ __metadata:
     "@smithy/smithy-client": "npm:^3.2.0"
     "@smithy/types": "npm:^3.3.0"
     "@smithy/util-middleware": "npm:^3.0.3"
-    fast-xml-parser: "npm:5.3.6"
+    fast-xml-parser: "npm:4.5.4"
     tslib: "npm:^2.6.2"
   checksum: 10/74e45f18b2ada6e973e67fa9d99df27803119148f232322718b521da0229756a1e7584cc82001f5fe70ce413408fd5b1e890c37197395ace9ed057d69f6d3275
   languageName: node
@@ -1138,7 +1138,7 @@ __metadata:
     "@smithy/smithy-client": "npm:^3.5.1"
     "@smithy/types": "npm:^3.7.2"
     "@smithy/util-middleware": "npm:^3.0.11"
-    fast-xml-parser: "npm:5.3.6"
+    fast-xml-parser: "npm:4.5.4"
     tslib: "npm:^2.6.2"
   checksum: 10/13b7905f3a9c997137cc9cf1d8ad900d49f531437c9176394a1ca76ccd2220c058e303e361d43fd928bbd2281e911046436ec81175ee577f6cb752a261a3068a
   languageName: node
@@ -2438,7 +2438,7 @@ __metadata:
   resolution: "@aws-sdk/xml-builder@npm:3.972.6"
   dependencies:
     "@smithy/types": "npm:^4.12.1"
-    fast-xml-parser: "npm:5.3.6"
+    fast-xml-parser: "npm:4.5.4"
     tslib: "npm:^2.6.2"
   checksum: 10/cc16d22a2f341af2d2723b5008669cef1ea095a0d948c620bbd5bf907d210372efd511237257d1015cc9352763b4391e9adb91cee9b50212508177bcbe1c22ce
   languageName: node
@@ -15761,14 +15761,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-xml-parser@npm:5.3.6":
+"fast-xml-parser@npm:4.5.4":
   version: 5.3.6
-  resolution: "fast-xml-parser@npm:5.3.6"
+  resolution: "fast-xml-parser@npm:4.5.4"
   dependencies:
     strnum: "npm:^2.1.2"
   bin:
     fxparser: src/cli/cli.js
-  checksum: 10/03527ab0bdf49d960fdc8f6088cd0715c052e06b68b39459da87b1a1fbb3439a855b2d83cbf3c400e983b8e668b396296b072a4dd5c63403cf1e618c9326b6df
+  checksum: 10/991f11a15d82be778c3452e5f1109975d66276bb951ba4db87417507da15d0b1c09d15a4e4db15a216cf3315b4325f66ff3b7f9b7557d6a2055103755fb39cce
   languageName: node
   linkType: hard
 
