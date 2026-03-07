@@ -28,7 +28,7 @@ describe('Testing lambda build', () => {
         },
       ],
     });
-    const generated = read('./distLambda/index/lambda.js');
+    const generated = read('./distLambda/index-lambda/lambda.js');
     expect(generated.length).toBeGreaterThan(100);
   });
 
@@ -50,7 +50,7 @@ describe('Testing lambda build', () => {
         },
       ],
     });
-    const generated = read('./distLambda/customBuild/lambda.js');
+    const generated = read('./distLambda/customBuild-lambda/lambda.js');
     expect(generated).toContain('Custom config in operation');
   });
 });
