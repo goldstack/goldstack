@@ -1,7 +1,0 @@
-.terraform
-tfplan
-.terraform.tfstate.lock.info
-*.zip
-terraform.tfvars
-aws_credentials
-backend.tf
