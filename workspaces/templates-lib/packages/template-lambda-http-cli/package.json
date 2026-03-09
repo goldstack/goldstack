@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-http-cli",
-  "version": "0.5.90",
+  "version": "0.5.91",
   "description": "Utilities for templates that allow a Lambda to function as a web server.",
   "keywords": [
     "goldstack",
@@ -47,17 +47,17 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.4.39",
-    "@goldstack/infra-aws": "0.4.58",
-    "@goldstack/template-lambda-cli": "0.1.60",
-    "@goldstack/utils-aws-lambda": "0.3.71",
+    "@goldstack/infra-aws": "0.4.59",
+    "@goldstack/template-lambda-cli": "0.1.61",
+    "@goldstack/utils-aws-lambda": "0.3.72",
     "@goldstack/utils-cli": "0.3.31",
     "@goldstack/utils-config": "0.4.39",
     "@goldstack/utils-log": "0.3.33",
     "@goldstack/utils-package": "0.4.41",
     "@goldstack/utils-package-config": "0.4.41",
     "@goldstack/utils-template": "0.4.40",
-    "@goldstack/utils-terraform": "0.4.72",
-    "@goldstack/utils-terraform-aws": "0.4.76",
+    "@goldstack/utils-terraform": "0.4.73",
+    "@goldstack/utils-terraform-aws": "0.4.77",
     "source-map-support": "^0.5.21",
     "yargs": "^17"
   },
