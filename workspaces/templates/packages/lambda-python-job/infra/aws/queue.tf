@@ -42,4 +42,9 @@ resource "aws_lambda_event_source_mapping" "sqs_event" {
   function_name    = aws_lambda_function.main.arn
   enabled          = true
   batch_size       = 10  # Customize this based on your needs
+
+  # Conservative limits for concurrency, adjust for your usecase as required
+  scaling_config {
+    maximum_concurrency = 20
+  }
 }

@@ -75,4 +75,11 @@ resource "aws_api_gateway_stage" "main" {
   deployment_id = aws_api_gateway_deployment.main.id
   rest_api_id   = aws_api_gateway_rest_api.main.id
   stage_name    = "prod"
+
+
+  # Conservative default limits for requests, adjust for your usecase as required
+  default_route_settings {
+    throttling_rate_limit  = 30 
+    throttling_burst_limit = 60
+  }
 }
