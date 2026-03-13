@@ -1,5 +1,6 @@
 resource "aws_cognito_user_pool" "pool" {
-  name = var.user_pool_name
+  name                = var.user_pool_name
+  deletion_protection = var.deletion_protection ? "ACTIVE" : "INACTIVE"
 
   # Add your app name to the below
   email_verification_subject = "Your verification code"
@@ -18,10 +19,10 @@ resource "aws_cognito_user_pool" "pool" {
   }
 
   schema {
-    attribute_data_type      = "String"
-    name                     = "app_user_id"
-    required                 = false
-    mutable                  = true
+    attribute_data_type = "String"
+    name                = "app_user_id"
+    required            = false
+    mutable             = true
 
     string_attribute_constraints {
       max_length = 36
@@ -46,7 +47,7 @@ resource "aws_cognito_user_pool" "pool" {
   }
 
   lambda_config {
-    pre_sign_up = aws_lambda_function.pre_sign_up.arn
+    pre_sign_up       = aws_lambda_function.pre_sign_up.arn
     post_confirmation = aws_lambda_function.post_confirmation.arn
   }
 

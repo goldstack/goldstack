@@ -124,6 +124,9 @@
         },
         "callbackUrl": {
           "$ref": "#/definitions/CallbackUrl"
+        },
+        "deletionProtection": {
+          "$ref": "#/definitions/DeletionProtection"
         }
       },
       "required": [
@@ -170,6 +173,11 @@
       "description": "URL that users should be redirected to after a successful login.",
       "title": "Callback URL",
       "pattern": "^[^\\s]*"
+    },
+    "DeletionProtection": {
+      "type": "boolean",
+      "description": "When active, prevents accidental deletion of the user pool. Before you can delete a user pool that you have protected against deletion, you must deactivate this feature.",
+      "title": "Deletion Protection"
     },
     "TerraformVariables": {
       "type": "array",
