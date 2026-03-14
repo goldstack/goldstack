@@ -24,6 +24,7 @@
 <li><strong>User Pool Name</strong>: The name for the Cognito User Pool that should be created by this template. Note no User Pool of the same name should exist in your account.</li>
 <li><strong>Callback URL</strong>: A URL pointing to a page in your applications that users should be redirected after signing in successfully through the Cognito UI.</li>
 <li><strong>Hosted Zone Domain</strong>: A Route 53 hosted zone to which the <em>Cognito Domain</em> an be added as record. For instance, the hosted zone domain <code class="inline">mysite.com</code> would allow adding the cognito domain <code class="inline">auth.mysite.com</code>. For more details, please check <a href="https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration" class="absolute" target="_blank" rel="noopener noreferrer">Hosted Zone Configuration</a> in the Goldstack documentation.</li>
+<li><strong>Deletion Protection</strong>: Recommended to set to <code class="inline">true</code> to prevent accidental deletion of the user pool. Note that this must be disabled before the user pool can be deleted.</li>
 </ul></div><p></p>
 <h2 class="heading"><span id="getting-started"></span><a href="#getting-started">Getting Started</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
@@ -296,6 +297,18 @@ and to explicitly destroy and create the pool if required.</p>
   </g>
 </svg></span></h2>
 <p></p><div class="markdown-fragment"><p>Secure user authentication is not easy to achieve. This template contains a few trade-offs that make it easier to get started with developing your application but introduce potential security issues. Key trade-offs are:</p>
+<h3 class="heading"><span id="deletion-protection-1"></span><a href="#deletion-protection-1"><span id="deletion-protection"></span><a href="#deletion-protection" class="relative">Deletion Protection</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>It is strongly recommended to enable deletion protection for your Cognito User Pool to prevent accidental deletion. This can be configured by setting <code class="inline">deletionProtection: true</code> in your deployment configuration in <code class="inline">goldstack.json</code>. Note that you must disable this protection before you can delete the user pool.</p>
 <h3 class="heading"><span id="cookies-for-access-and-id-token-1"></span><a href="#cookies-for-access-and-id-token-1"><span id="cookies-for-access-and-id-token"></span><a href="#cookies-for-access-and-id-token" class="relative">Cookies for Access and Id Token</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
