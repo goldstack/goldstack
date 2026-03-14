@@ -4,3 +4,4 @@ The following key properties need to be configured for this template:
 - **User Pool Name**: The name for the Cognito User Pool that should be created by this template. Note no User Pool of the same name should exist in your account.
 - **Callback URL**: A URL pointing to a page in your applications that users should be redirected after signing in successfully through the Cognito UI.
 - **Hosted Zone Domain**: A Route 53 hosted zone to which the _Cognito Domain_ an be added as record. For instance, the hosted zone domain `mysite.com` would allow adding the cognito domain `auth.mysite.com`. For more details, please check [Hosted Zone Configuration](https://docs.goldstack.party/docs/goldstack/configuration#hosted-zone-configuration) in the Goldstack documentation.
+- **Deletion Protection**: Recommended to set to `true` to prevent accidental deletion of the user pool. Note that this must be disabled before the user pool can be deleted.
