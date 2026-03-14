@@ -8,7 +8,7 @@ resource "aws_sqs_queue" "queue" {
   # Redrive policy to send failed messages to the DLQ if DLQ is created
   redrive_policy = count.index == 0 && length(aws_sqs_queue.dlq) > 0 ? jsonencode({
     deadLetterTargetArn = aws_sqs_queue.dlq[0].arn
-    maxReceiveCount     = 5  
+    maxReceiveCount     = 5
   }) : null
 }
 
@@ -16,6 +16,17 @@ resource "aws_sqs_queue" "queue" {
 resource "aws_sqs_queue" "dlq" {
   count = length(var.sqs_queue_name) > 0 ? 1 : 0
   name  = "${var.lambda_name}-dlq"
+}
+
+# To ensure redrive doesn't go to the wrong queue
+resource "aws_sqs_queue_redrive_allow_policy" "dlq" {
+  count     = length(var.sqs_queue_name) > 0 ? 1 : 0
+  queue_url = aws_sqs_queue.dlq[0].url
+
+  redrive_allow_policy = jsonencode({
+    redrivePermission = "byQueue",
+    sourceQueueArns   = [aws_sqs_queue.queue[0].arn]
+  })
 }
 
 # Only attach the DLQ access policy if both SQS queue and DLQ are created
@@ -27,12 +38,12 @@ resource "aws_iam_role_policy_attachment" "lambda_dlq_access" {
 
 # Add permission for SQS to trigger Lambda
 resource "aws_lambda_permission" "sqs_trigger" {
-  count        = length(var.sqs_queue_name) > 0 ? 1 : 0
-  statement_id = "AllowSQSInvokeLambda"
-  action       = "lambda:InvokeFunction"
+  count         = length(var.sqs_queue_name) > 0 ? 1 : 0
+  statement_id  = "AllowSQSInvokeLambda"
+  action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.main.function_name
-  principal    = "sqs.amazonaws.com"
-  source_arn   = aws_sqs_queue.queue[0].arn
+  principal     = "sqs.amazonaws.com"
+  source_arn    = aws_sqs_queue.queue[0].arn
 }
 
 # Create Event Source Mapping (Link SQS to Lambda)
@@ -41,7 +52,7 @@ resource "aws_lambda_event_source_mapping" "sqs_event" {
   event_source_arn = aws_sqs_queue.queue[0].arn
   function_name    = aws_lambda_function.main.arn
   enabled          = true
-  batch_size       = 10  # Customize this based on your needs
+  batch_size       = 10 # Customize this based on your needs
 
   # Conservative limits for concurrency, adjust for your usecase as required
   scaling_config {
