@@ -50,6 +50,16 @@ export type CookieSameSite = string;
  */
 export type CallbackUrl = string;
 
+/**
+ * When active, prevents accidental deletion of the user pool.
+ * Before you can delete a user pool that you have protected against deletion,
+ * you must deactivate this feature.
+ *
+ * @title Deletion Protection
+ * @default false
+ */
+export type DeletionProtection = boolean;
+
 export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
   userPoolName: UserPoolName;
   hostedZoneDomain: HostedZoneDomain;
@@ -57,6 +67,7 @@ export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
   cookieDomain: CookieDomain;
   cookieSameSite: CookieSameSite;
   callbackUrl: CallbackUrl;
+  deletionProtection?: DeletionProtection;
 }
 
 export type { ThisDeploymentConfiguration as UserManagementDeploymentConfiguration };
