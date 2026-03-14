@@ -177,7 +177,8 @@
     "DeletionProtection": {
       "type": "boolean",
       "description": "When active, prevents accidental deletion of the user pool. Before you can delete a user pool that you have protected against deletion, you must deactivate this feature.",
-      "title": "Deletion Protection"
+      "title": "Deletion Protection",
+      "default": false
     },
     "TerraformVariables": {
       "type": "array",

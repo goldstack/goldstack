@@ -56,6 +56,7 @@ export type CallbackUrl = string;
  * you must deactivate this feature.
  *
  * @title Deletion Protection
+ * @default false
  */
 export type DeletionProtection = boolean;
 

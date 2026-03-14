@@ -20,7 +20,7 @@ variable "hosted_zone_domain" {
 }
 
 variable "callback_url" {
-  description = "URL of page that users should be redirected too after a successful login"
+  description = "URL of page that users should be redirected to after a successful login"
   type        = string
 }
 
