@@ -8,7 +8,7 @@ resource "aws_sqs_queue" "queue" {
   # Redrive policy to send failed messages to the DLQ if DLQ is created
   redrive_policy = count.index == 0 && length(aws_sqs_queue.dlq) > 0 ? jsonencode({
     deadLetterTargetArn = aws_sqs_queue.dlq[0].arn
-    maxReceiveCount     = 5
+    maxReceiveCount     = 1 # keep this at 1 to get errors early. increase if dependencies of lambda unreliable
   }) : null
 }
 
