@@ -168,6 +168,29 @@ This works very well in combination with secrets for GitHub actions.
     AWS_DEFAULT_REGION: us-west-2
 ```
 
+### Providing Terraform Variables via .env Files
+
+Alternatively, you can provide Terraform variable values through `.env` files. Goldstack will load `.env` files from both the monorepo root and the package directory in the following order (later files override earlier ones):
+
+1.  `root/.env` - Shared across all deployments
+2.  `root/.env.[deployment]` - Deployment-specific (e.g., `.env.prod`)
+3.  `package/.env` - Package-specific shared values
+4.  `package/.env.[deployment]` - Package and deployment-specific (highest priority)
+
+For example, to set the `my_env` variable for the `prod` deployment, create a `.env.prod` file in your package directory:
+
+    MY_ENV=my-value-for-production
+
+Note that environment variable names should be uppercase versions of the Terraform variable names (e.g., `my_env` → `MY_ENV`).
+
+#### Variable Resolution Priority
+
+When resolving Terraform variable values, Goldstack uses the following priority (from highest to lowest):
+
+1.  Values defined in `goldstack.json` configurations
+2.  Environment variables (`process.env`)
+3.  Values from `.env` files
+
 ## Infrastructure
 
 All infrastructure for this module is defined in Terraform. You can find the Terraform files for this template in the directory `[moduleDir]/infra/aws`. You can define multiple deployments for this template, for instance for development, staging and production environments.
@@ -258,6 +281,33 @@ The `infra/aws` folder contains a file `variables.tf` that contains the variable
 Note that due to JavaScript and Terraform using different conventions for naming variables, Goldstack applies a basic transformation to variable names. Camel-case variables names are converted to valid variables names for Terraform by replacing every instance of a capital letter `C` with `_c` in the variable name. For instance:
 
 `myVariableName` in the Goldstack configuration will translate to the Terraform variable `my_variable_name` as defined in `variables.tf`.
+
+### Providing Terraform Variables via .env Files
+
+In addition to defining variables in `goldstack.json`, you can also provide Terraform variable values through `.env` files. This is particularly useful for sensitive values that should not be committed to source control.
+
+Goldstack will load `.env` files from both the monorepo root and the package directory in the following order (later files override earlier ones):
+
+1.  `root/.env` - Shared across all deployments
+2.  `root/.env.[deployment]` - Deployment-specific (e.g., `.env.prod`)
+3.  `package/.env` - Package-specific shared values
+4.  `package/.env.[deployment]` - Package and deployment-specific (highest priority)
+
+For example, if you have a Terraform variable `my_var` defined in `variables.tf`, you can provide its value by adding to your `.env` file:
+
+    MY_VAR=my-value
+
+Note that environment variable names should be uppercase versions of the Terraform variable names (e.g., `my_var` → `MY_VAR`).
+
+#### Variable Resolution Priority
+
+When resolving Terraform variable values, Goldstack uses the following priority (from highest to lowest):
+
+1.  Values defined in `goldstack.json` configurations
+2.  Environment variables (`process.env`)
+3.  Values from `.env` files
+
+This means `.env` files provide a convenient way to supply default values that can be overridden by environment variables or explicit configuration.
 
 ### Terraform State
 

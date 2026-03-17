@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-hetzner-vps",
-  "version": "0.1.59",
+  "version": "0.1.60",
   "description": "Utilities for packages that help provision Hetzner Servers",
   "keywords": [
     "goldstack",
@@ -49,8 +49,8 @@
     "@goldstack/utils-esbuild": "0.5.26",
     "@goldstack/utils-package": "0.4.41",
     "@goldstack/utils-package-config-embedded": "0.5.42",
-    "@goldstack/utils-terraform": "0.4.74",
-    "@goldstack/utils-terraform-aws": "0.4.78",
+    "@goldstack/utils-terraform": "0.4.75",
+    "@goldstack/utils-terraform-aws": "0.4.79",
     "uuid": "^11.0.5"
   },
   "devDependencies": {

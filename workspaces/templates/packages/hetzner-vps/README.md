@@ -155,6 +155,33 @@ Note that due to JavaScript and Terraform using different conventions for naming
 
 `myVariableName` in the Goldstack configuration will translate to the Terraform variable `my_variable_name` as defined in `variables.tf`.
 
+### Providing Terraform Variables via .env Files
+
+In addition to defining variables in `goldstack.json`, you can also provide Terraform variable values through `.env` files. This is particularly useful for sensitive values that should not be committed to source control.
+
+Goldstack will load `.env` files from both the monorepo root and the package directory in the following order (later files override earlier ones):
+
+1.  `root/.env` - Shared across all deployments
+2.  `root/.env.[deployment]` - Deployment-specific (e.g., `.env.prod`)
+3.  `package/.env` - Package-specific shared values
+4.  `package/.env.[deployment]` - Package and deployment-specific (highest priority)
+
+For example, if you have a Terraform variable `my_var` defined in `variables.tf`, you can provide its value by adding to your `.env` file:
+
+    MY_VAR=my-value
+
+Note that environment variable names should be uppercase versions of the Terraform variable names (e.g., `my_var` → `MY_VAR`).
+
+#### Variable Resolution Priority
+
+When resolving Terraform variable values, Goldstack uses the following priority (from highest to lowest):
+
+1.  Values defined in `goldstack.json` configurations
+2.  Environment variables (`process.env`)
+3.  Values from `.env` files
+
+This means `.env` files provide a convenient way to supply default values that can be overridden by environment variables or explicit configuration.
+
 ### Terraform State
 
 In order to manage your infrastructure, Terraform maintains a state for each deployment; to calculate required changes when the infrastructure is updated and also for destroying the infrastructure if it is no longer required. Goldstack by default will store the terraform state in the `infra/aws` folder as simple files.
