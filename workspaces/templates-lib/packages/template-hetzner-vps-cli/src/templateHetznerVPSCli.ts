@@ -89,7 +89,7 @@ export const run = async (args: string[]): Promise<void> => {
           infraOperation: infrastructureOp,
           deploymentName,
           ignoreMissingDeployments,
-          skipConfirmations: false,
+          skipConfirmations: argv.yes || false,
           options: undefined,
         });
         return;
