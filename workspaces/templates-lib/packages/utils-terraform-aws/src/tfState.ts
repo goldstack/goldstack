@@ -230,6 +230,7 @@ export const deleteDeploymentState = async (params: {
         lockId,
         error: e.message,
       });
+      throw e;
     }
   }
 };
