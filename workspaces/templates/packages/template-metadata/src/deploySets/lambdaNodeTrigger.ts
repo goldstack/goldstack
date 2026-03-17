@@ -46,7 +46,7 @@ export const createLambdaNodeTriggerBuildSetConfig = async (): Promise<DeploySet
               },
             ],
             packageTests: ['assert-package-files', 'infra-up'],
-            packageCleanUp: ['infra-destroy', 'destroy-state'],
+            packageCleanUp: ['infra-destroy', 'destroy-state-bucket'],
           },
         ],
       },

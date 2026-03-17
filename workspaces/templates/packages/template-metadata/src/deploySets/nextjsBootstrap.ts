@@ -59,7 +59,7 @@ export const createNextjsBootstrapBuildSetConfig = async (): Promise<DeploySetCo
               // 'print-directory-content',
               'assert-website',
             ],
-            packageCleanUp: ['infra-destroy', 'destroy-state'],
+            packageCleanUp: ['infra-destroy', 'destroy-state-bucket'],
           },
         ],
       },

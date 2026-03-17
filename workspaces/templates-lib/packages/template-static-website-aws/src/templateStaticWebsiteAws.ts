@@ -12,10 +12,10 @@ import type {
 } from './types/AWSStaticWebsitePackage';
 
 export type {
-  AWSStaticWebsitePackage,
   AWSStaticWebsiteConfiguration,
   AWSStaticWebsiteDeployment,
   AWSStaticWebsiteDeploymentConfiguration,
+  AWSStaticWebsitePackage,
 };
 
 import { buildCli, buildDeployCommands } from '@goldstack/utils-package';
@@ -23,8 +23,8 @@ import { PackageConfig } from '@goldstack/utils-package-config';
 import { infraCommands } from '@goldstack/utils-terraform';
 import yargs from 'yargs';
 
-export { infraAwsStaticWebsiteCli };
 export type { InfraAwsStaticWebsiteCliParams };
+export { infraAwsStaticWebsiteCli };
 
 /**
  * @description Gets the deployment configuration for a given deployment name.
@@ -74,7 +74,7 @@ export const run = async (args: string[]): Promise<void> => {
         commandArgs = opArgs.slice(2);
       } else if (infraOperation === 'destroy') {
         confirm = argv.yes;
-      } else if (infraOperation === 'destroy-state') {
+      } else if (infraOperation === 'destroy-state' || infraOperation === 'destroy-state-bucket') {
         skipConfirmations = argv.yes;
       }
 

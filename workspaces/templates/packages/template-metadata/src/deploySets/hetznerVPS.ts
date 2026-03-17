@@ -61,7 +61,7 @@ export const createHetznerVPSBuildSetConfig = async (): Promise<DeploySetConfig>
               },
             ],
             packageTests: ['assert-package-files', 'infra-up'],
-            packageCleanUp: ['infra-destroy', 'destroy-state'],
+            packageCleanUp: ['infra-destroy', 'destroy-state-bucket'],
           },
         ],
       },

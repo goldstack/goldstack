@@ -44,7 +44,7 @@ export const createBackendGoGinBuildSetConfig = async (): Promise<DeploySetConfi
               },
             ],
             packageTests: ['assert-package-files', 'infra-up'],
-            packageCleanUp: ['infra-destroy', 'destroy-state'],
+            packageCleanUp: ['infra-destroy', 'destroy-state-bucket'],
           },
         ],
       },

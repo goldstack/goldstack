@@ -44,7 +44,7 @@ export const createLambdaPythonJobBuildSetConfig = async (): Promise<DeploySetCo
               },
             ],
             packageTests: ['assert-package-files', 'infra-up'],
-            packageCleanUp: ['infra-destroy', 'destroy-state'],
+            packageCleanUp: ['infra-destroy', 'destroy-state-bucket'],
           },
         ],
       },

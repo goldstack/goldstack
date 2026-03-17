@@ -55,7 +55,7 @@ export const createStaticWebsiteBuildSetConfig = async (): Promise<DeploySetConf
               'deploy',
               'assert-static-website-aws-deployments',
             ],
-            packageCleanUp: ['infra-destroy', 'destroy-state'],
+            packageCleanUp: ['infra-destroy', 'destroy-state-bucket'],
           },
         ],
       },
