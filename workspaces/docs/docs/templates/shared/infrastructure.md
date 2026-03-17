@@ -93,7 +93,7 @@ In addition to defining variables in `goldstack.json`, you can also provide Terr
 
 Goldstack will load `.env` files from both the monorepo root and the package directory in the following order (later files override earlier ones):
 
-1. `root/.env` -Shared across all deployments
+1. `root/.env` - Shared across all deployments
 2. `root/.env.[deployment]` - Deployment-specific (e.g., `.env.prod`)
 3. `package/.env` - Package-specific shared values
 4. `package/.env.[deployment]` - Package and deployment-specific (highest priority)

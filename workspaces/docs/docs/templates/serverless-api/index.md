@@ -131,7 +131,9 @@ MY_ENV=my-value-for-production
 
 Note that environment variable names should be uppercase versions of the Terraform variable names (e.g., `my_env` → `MY_ENV`).
 
-**Variable Resolution Priority** (from highest to lowest):
+#### Variable Resolution Priority
+
+From highest to lowest:
 
 1. Values defined in `goldstack.json` configurations
 2. Environment variables (`process.env`)

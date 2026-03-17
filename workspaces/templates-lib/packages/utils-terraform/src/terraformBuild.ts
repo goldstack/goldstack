@@ -297,9 +297,9 @@ export const getVariablesFromHCL = (
           );
         }
       } else {
-        if (process.env[envVarName] || process.env[envVarName] === '') {
+        if (process.env[envVarName] !== undefined) {
           info(`Setting terraform variable from environment variable ${envVarName}`);
-          environmentVariables.push([pythonVariableName, process.env[envVarName] || '']);
+          environmentVariables.push([pythonVariableName, process.env[envVarName]]);
         } else if (envFileValues[envVarName] !== undefined) {
           info(`Setting terraform variable from .env file: ${envVarName}`);
           environmentVariables.push([pythonVariableName, envFileValues[envVarName]]);
@@ -385,6 +385,7 @@ export class TerraformBuild {
     const deployment = getDeployment(params.deploymentName);
     const version = this.getTfVersion(params.deploymentName);
     const backendConfig = this.getTfStateVariables(deployment);
+    const packagePath = pwd();
     cd('./infra/aws');
     try {
       const provider = this.provider;
@@ -402,6 +403,7 @@ export class TerraformBuild {
         ...getVariablesFromHCL(
           { ...deployment, ...deployment.configuration },
           params.deploymentName,
+          packagePath,
         ),
       ];
 
@@ -483,6 +485,7 @@ export class TerraformBuild {
     const deployment = getDeployment(params.deploymentName);
     const version = this.getTfVersion(params.deploymentName);
     const backendConfig = this.getTfStateVariables(deployment);
+    const packagePath = pwd();
     cd('./infra/aws');
     try {
       const provider = this.provider;
@@ -498,6 +501,7 @@ export class TerraformBuild {
         ...getVariablesFromHCL(
           { ...deployment, ...deployment.configuration },
           params.deploymentName,
+          packagePath,
         ),
       ];
 
@@ -580,6 +584,7 @@ export class TerraformBuild {
     const deployment = getDeployment(params.deploymentName);
     const version = this.getTfVersion(params.deploymentName);
     const backendConfig = this.getTfStateVariables(deployment);
+    const packagePath = pwd();
     cd('./infra/aws');
     try {
       const ciConfirmed = params.confirm;
@@ -597,6 +602,7 @@ export class TerraformBuild {
         ...getVariablesFromHCL(
           { ...deployment, ...deployment.configuration },
           params.deploymentName,
+          packagePath,
         ),
       ];
 
@@ -747,6 +753,7 @@ export class TerraformBuild {
 
     let variables: [string, string][] | undefined;
 
+    const packagePath = pwd();
     cd('./infra/aws');
     try {
       if (params.injectVariables) {
@@ -757,6 +764,7 @@ export class TerraformBuild {
               ...deployment.configuration,
             },
             params.deploymentName,
+            packagePath,
           ),
         ];
       }
