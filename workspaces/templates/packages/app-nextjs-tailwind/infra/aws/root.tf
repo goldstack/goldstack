@@ -1,3 +1,7 @@
+resource "random_id" "oac_suffix" {
+  byte_length = 4
+}
+
 # Creates bucket to store the static website
 resource "aws_s3_bucket" "website_root" {
   bucket = "${var.website_domain}-root"
@@ -66,7 +70,7 @@ data "aws_iam_policy_document" "website_root" {
 }
 
 resource "aws_cloudfront_origin_access_control" "website_root" {
-  name                              = "oac-${var.website_domain}-root"
+  name                              = "oac-${length(var.website_domain) > 38 ? substr(var.website_domain, 0, 38) : var.website_domain}-root-${random_id.oac_suffix.hex}"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"

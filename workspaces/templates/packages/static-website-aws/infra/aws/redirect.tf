@@ -4,7 +4,7 @@ resource "aws_s3_bucket" "website_redirect" {
 
   bucket = "${var.website_domain}-redirect"
 
-  # Remove this line if you want to prevent accidential deletion of bucket
+  # Remove this line if you want to prevent accidental deletion of bucket
   force_destroy = true
 
   tags = {
@@ -77,7 +77,7 @@ data "aws_iam_policy_document" "website_redirect" {
 resource "aws_cloudfront_origin_access_control" "website_redirect" {
   count = var.website_domain_redirect != null ? 1 : 0
 
-  name                              = "oac-${var.website_domain}-redirect"
+  name                              = "oac-${length(var.website_domain) > 51 ? substr(var.website_domain, 0, 51) : var.website_domain}-redirect-${random_id.oac_suffix.hex}"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
