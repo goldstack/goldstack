@@ -119,3 +119,48 @@ To resolve this error, take note of the `ID` above and the `deployment` for whic
 ```
 yarn infra terraform [deployment] force-unlock -force [ID]
 ```
+
+### Destroying State
+
+Goldstack provides commands to clean up Terraform state. These commands are useful when you want to completely remove a deployment or reset your infrastructure configuration.
+
+⚠️ **Important**: All packages in a project share the same S3 bucket and DynamoDB table for storing state. The state for each deployment is stored in a separate file identified by the `tfStateKey` in `goldstack.json`.
+
+#### Destroy Deployment State
+
+To delete only the state file for a specific deployment:
+
+```
+yarn infra destroy-state [deployment]
+```
+
+This command:
+- Deletes the `.tfstate` file for the specific deployment from S3
+- Removes the lock entry for that deployment from DynamoDB
+- **Does not affect other deployments** or the shared infrastructure
+
+This is the **recommended** way to clean up state for a single deployment.
+
+#### Destroy State Bucket
+
+⚠️ **DANGER**: This command affects **ALL deployments** in your project.
+
+To delete the entire S3 bucket and DynamoDB table used for Terraform state:
+
+```
+yarn infra destroy-state-bucket [deployment]
+```
+
+This command:
+- Deletes **ALL** state files from the S3 bucket
+- Deletes the DynamoDB table used for state locking
+- Affects **every deployment** that uses the same AWS account
+
+**When to use this command:**
+- When you want to completely remove all Terraform state infrastructure
+- During project cleanup when you're sure no deployments need their state
+- When migrating to a different state management solution
+
+**Confirmation required**: You must type `destroy-bucket` when prompted to confirm this destructive operation.
+
+**Note**: After running `destroy-state-bucket`, you will need to run `yarn infra up [deployment]` again for any deployment, which will recreate the bucket and table.
