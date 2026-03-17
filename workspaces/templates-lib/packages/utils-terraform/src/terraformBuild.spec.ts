@@ -299,4 +299,112 @@ variable "aws_region" {
     delete process.env.AWS_REGION;
     cd(oldDir);
   });
+
+  it('Should resolve variable from env var when not in goldstack.json', () => {
+    const testDir = './goldstackLocal/test-env-var-not-in-config/';
+    mkdir('-p', testDir);
+    const oldDir = pwd();
+    cd(testDir);
+
+    write(
+      `
+variable "aws_region" {
+  type = string
+}
+
+variable "bucket_name" {
+  type = string
+}`,
+      './variables.tf',
+    );
+
+    write(
+      JSON.stringify({
+        name: 'test-root',
+        workspaces: ['packages/*'],
+      }),
+      '../package.json',
+    );
+
+    process.env.AWS_REGION = 'ap-southeast-1';
+    process.env.BUCKET_NAME = 'my-test-bucket';
+
+    const vars = getVariablesFromHCL(
+      {
+        awsRegion: 'us-east-1',
+      },
+      'test',
+      testDir,
+    );
+
+    expect(vars).toHaveLength(2);
+    expect(vars.find((v) => v[0] === 'aws_region')?.[1]).toEqual('us-east-1');
+    expect(vars.find((v) => v[0] === 'bucket_name')?.[1]).toEqual('my-test-bucket');
+
+    delete process.env.AWS_REGION;
+    delete process.env.BUCKET_NAME;
+    cd(oldDir);
+  });
+
+  it('Should resolve variable from .env file when not in goldstack.json', () => {
+    const testDir = './goldstackLocal/test-env-file-not-in-config/';
+    mkdir('-p', testDir);
+    const oldDir = pwd();
+    cd(testDir);
+
+    write(
+      `
+variable "aws_region" {
+  type = string
+}`,
+      './variables.tf',
+    );
+
+    write(
+      JSON.stringify({
+        name: 'test-root',
+        workspaces: ['packages/*'],
+      }),
+      '../package.json',
+    );
+
+    write('AWS_REGION=from-dotenv\n', '../.env');
+
+    const vars = getVariablesFromHCL({}, 'test', testDir);
+
+    expect(vars).toHaveLength(1);
+    expect(vars[0][0]).toEqual('aws_region');
+    expect(vars[0][1]).toEqual('from-dotenv');
+
+    cd(oldDir);
+  });
+
+  it('Should warn when variable not found anywhere', () => {
+    const testDir = './goldstackLocal/test-var-not-found/';
+    mkdir('-p', testDir);
+    const oldDir = pwd();
+    cd(testDir);
+
+    write(
+      `
+variable "undefined_var" {
+  type = string
+}`,
+      './variables.tf',
+    );
+
+    write(
+      JSON.stringify({
+        name: 'test-root',
+        workspaces: ['packages/*'],
+      }),
+      '../package.json',
+    );
+
+    const vars = getVariablesFromHCL({}, 'test', testDir);
+
+    expect(vars).toHaveLength(0);
+
+    cd(oldDir);
+  });
 });
