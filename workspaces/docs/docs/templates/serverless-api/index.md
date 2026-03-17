@@ -114,6 +114,31 @@ This works very well in combination with secrets for GitHub actions.
     AWS_DEFAULT_REGION: us-west-2
 ```
 
+#### Providing Terraform Variables via .env Files
+
+Alternatively, you can provide Terraform variable values through `.env` files. Goldstack will load `.env` files from both the monorepo root and the package directory in the following order (later files override earlier ones):
+
+1. `root/.env` - Shared across all deployments
+2. `root/.env.[deployment]` - Deployment-specific (e.g., `.env.prod`)
+3. `package/.env` - Package-specific shared values
+4. `package/.env.[deployment]` - Package and deployment-specific (highest priority)
+
+For example, to set the `my_env` variable for the `prod` deployment, create a `.env.prod` file:
+
+```
+MY_ENV=my-value-for-production
+```
+
+Note that environment variable names should be uppercase versions of the Terraform variable names (e.g., `my_env` → `MY_ENV`).
+
+#### Variable Resolution Priority
+
+From highest to lowest:
+
+1. Values defined in `goldstack.json` configurations
+2. Environment variables (`process.env`)
+3. Values from `.env` files
+
 ### Changing Esbuild behaviour
 
 Github [issue](https://github.com/goldstack/goldstack/issues/125)

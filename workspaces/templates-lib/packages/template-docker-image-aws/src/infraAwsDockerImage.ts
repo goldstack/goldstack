@@ -127,7 +127,7 @@ export const infraAwsDockerImageCli = async (
     confirm,
     commandArguments: commandArgs,
     ignoreMissingDeployments: false,
-    skipConfirmations: false,
+    skipConfirmations: args.includes('-y'),
     options: undefined,
   });
 };

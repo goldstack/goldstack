@@ -5,6 +5,7 @@ import { cd, pwd, read } from '@goldstack/utils-sh';
 import assert from 'assert';
 import child_process, { type SpawnSyncOptionsWithStringEncoding } from 'child_process';
 import crypto from 'crypto';
+import dotenv from 'dotenv';
 import fs from 'fs';
 import JSONStableStringy from 'json-stable-stringify';
 import os from 'os';
@@ -18,6 +19,101 @@ import type {
   TerraformVersion,
 } from './types/utilsTerraformConfig';
 import type { TerraformOptions } from './utilsTerraform';
+
+/**
+ * Finds the monorepo root by traversing up from startPath.
+ * Root is identified by package.json containing 'workspaces' or 'packageManager' keys,
+ * or by the presence of pnpm-workspace.yaml file.
+ */
+export const findMonorepoRoot = (startPath: string): string | undefined => {
+  let currentPath = path.resolve(startPath);
+
+  while (currentPath !== path.dirname(currentPath)) {
+    const packageJsonPath = path.join(currentPath, 'package.json');
+    if (fs.existsSync(packageJsonPath)) {
+      try {
+        const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+        if (packageJson.workspaces !== undefined || packageJson.packageManager !== undefined) {
+          return currentPath;
+        }
+      } catch {
+        // Invalid JSON, continue searching
+      }
+    }
+
+    const pnpmWorkspacePath = path.join(currentPath, 'pnpm-workspace.yaml');
+    if (fs.existsSync(pnpmWorkspacePath)) {
+      return currentPath;
+    }
+
+    currentPath = path.dirname(currentPath);
+  }
+
+  return undefined;
+};
+
+/**
+ * Converts an environment variable name to Python/Terraform snake_case.
+ * E.g., 'AWS_REGION' -> 'aws_region'
+ */
+export const envVarToTerraformName = (envVarName: string): string => {
+  return envVarName.toLowerCase();
+};
+
+/**
+ * Converts a Python/Terraform snake_case name to environment variable format.
+ * E.g., 'aws_region' -> 'AWS_REGION'
+ */
+export const terraformNameToEnvVar = (terraformName: string): string => {
+  return terraformName.toUpperCase();
+};
+
+/**
+ * Configuration for loading .env files.
+ */
+export interface LoadEnvFilesParams {
+  deploymentName: string;
+  packagePath?: string;
+}
+
+/**
+ * Loads variables from .env files in priority order.
+ * Order (earlier values are overridden by later):
+ * 1. root/.env
+ * 2. root/.env.[deployment]
+ * 3. package/.env
+ * 4. package/.env.[deployment]
+ */
+export const loadEnvFiles = (params: LoadEnvFilesParams): Record<string, string> => {
+  const result: Record<string, string> = {};
+
+  const packagePath = params.packagePath ? path.resolve(params.packagePath) : pwd();
+  const rootPath = findMonorepoRoot(packagePath);
+
+  if (!rootPath) {
+    debug('Could not find monorepo root, skipping .env file loading');
+    return result;
+  }
+
+  const envFiles: string[] = [
+    path.join(rootPath, '.env'),
+    path.join(rootPath, `.env.${params.deploymentName}`),
+    path.join(packagePath, '.env'),
+    path.join(packagePath, `.env.${params.deploymentName}`),
+  ];
+
+  for (const envFile of envFiles) {
+    if (fs.existsSync(envFile)) {
+      debug(`Loading .env file: ${envFile}`);
+      const parsed = dotenv.config({ path: envFile, processEnv: {} });
+      if (parsed.parsed) {
+        Object.assign(result, parsed.parsed);
+      }
+    }
+  }
+
+  return result;
+};
 
 /**
  * Base parameters for Terraform operations that require a deployment name.
@@ -138,7 +234,11 @@ export const parseVariables = (hcl: string): string[] => {
   return variableNames;
 };
 
-export const getVariablesFromHCL = (properties: Record<string, any>): Variables => {
+export const getVariablesFromHCL = (
+  properties: Record<string, any>,
+  deploymentName?: string,
+  packagePath?: string,
+): Variables => {
   if (!fs.existsSync('./variables.tf')) {
     warn(
       `No variables.tf file exists in ${pwd()}. Goldstack only supports declaring variables in a variables.tf file.`,
@@ -161,6 +261,14 @@ export const getVariablesFromHCL = (properties: Record<string, any>): Variables 
     }
   });
 
+  let envFileValues: Record<string, string> = {};
+  if (deploymentName) {
+    envFileValues = loadEnvFiles({
+      deploymentName,
+      packagePath: packagePath || pwd(),
+    });
+  }
+
   const environmentVariables: Variables = [];
   for (const key in properties) {
     if (key.indexOf('_') !== -1) {
@@ -173,7 +281,9 @@ export const getVariablesFromHCL = (properties: Record<string, any>): Variables 
     }
     if (jsVariableNames.find((varName) => varName === key)) {
       const pythonVariableName = convertToPythonVariable(key);
+      const envVarName = terraformNameToEnvVar(pythonVariableName);
       const variableValue = properties[key];
+
       if (variableValue !== '') {
         if (typeof variableValue === 'string') {
           environmentVariables.push([pythonVariableName, variableValue]);
@@ -187,19 +297,15 @@ export const getVariablesFromHCL = (properties: Record<string, any>): Variables 
           );
         }
       } else {
-        const environmentVariableName = pythonVariableName.toLocaleUpperCase();
-        debug(
-          `Checking environment variable to set terraform variable: ${environmentVariableName}`,
-        );
-        if (process.env[environmentVariableName] || process.env[environmentVariableName] === '') {
-          info(`Setting terraform variable from environment variable ${environmentVariableName}`);
-          environmentVariables.push([
-            pythonVariableName,
-            process.env[environmentVariableName] || '',
-          ]);
+        if (process.env[envVarName] !== undefined) {
+          info(`Setting terraform variable from environment variable ${envVarName}`);
+          environmentVariables.push([pythonVariableName, process.env[envVarName]]);
+        } else if (envFileValues[envVarName] !== undefined) {
+          info(`Setting terraform variable from .env file: ${envVarName}`);
+          environmentVariables.push([pythonVariableName, envFileValues[envVarName]]);
         } else {
           warn(
-            `Terraform variable will not be defined ${pythonVariableName}. Checked environment variable ${environmentVariableName}`,
+            `Terraform variable will not be defined ${pythonVariableName}. Checked environment variable ${envVarName}`,
           );
         }
       }
@@ -279,6 +385,7 @@ export class TerraformBuild {
     const deployment = getDeployment(params.deploymentName);
     const version = this.getTfVersion(params.deploymentName);
     const backendConfig = this.getTfStateVariables(deployment);
+    const packagePath = pwd();
     cd('./infra/aws');
     try {
       const provider = this.provider;
@@ -292,7 +399,13 @@ export class TerraformBuild {
         workspace = deployment.name;
       }
 
-      const variables = [...getVariablesFromHCL({ ...deployment, ...deployment.configuration })];
+      const variables = [
+        ...getVariablesFromHCL(
+          { ...deployment, ...deployment.configuration },
+          params.deploymentName,
+          packagePath,
+        ),
+      ];
 
       tf('init', {
         provider,
@@ -372,6 +485,7 @@ export class TerraformBuild {
     const deployment = getDeployment(params.deploymentName);
     const version = this.getTfVersion(params.deploymentName);
     const backendConfig = this.getTfStateVariables(deployment);
+    const packagePath = pwd();
     cd('./infra/aws');
     try {
       const provider = this.provider;
@@ -383,7 +497,13 @@ export class TerraformBuild {
         backendConfig,
       });
 
-      const variables = [...getVariablesFromHCL({ ...deployment, ...deployment.configuration })];
+      const variables = [
+        ...getVariablesFromHCL(
+          { ...deployment, ...deployment.configuration },
+          params.deploymentName,
+          packagePath,
+        ),
+      ];
 
       tf('plan', {
         provider,
@@ -464,6 +584,7 @@ export class TerraformBuild {
     const deployment = getDeployment(params.deploymentName);
     const version = this.getTfVersion(params.deploymentName);
     const backendConfig = this.getTfStateVariables(deployment);
+    const packagePath = pwd();
     cd('./infra/aws');
     try {
       const ciConfirmed = params.confirm;
@@ -477,7 +598,13 @@ export class TerraformBuild {
         }
       }
       const provider = this.provider;
-      const variables = [...getVariablesFromHCL({ ...deployment, ...deployment.configuration })];
+      const variables = [
+        ...getVariablesFromHCL(
+          { ...deployment, ...deployment.configuration },
+          params.deploymentName,
+          packagePath,
+        ),
+      ];
 
       tf(`workspace select ${params.deploymentName}`, { provider, version, silent: true });
       tf('init', {
@@ -626,14 +753,19 @@ export class TerraformBuild {
 
     let variables: [string, string][] | undefined;
 
+    const packagePath = pwd();
     cd('./infra/aws');
     try {
       if (params.injectVariables) {
         variables = [
-          ...getVariablesFromHCL({
-            ...deployment,
-            ...deployment.configuration,
-          }),
+          ...getVariablesFromHCL(
+            {
+              ...deployment,
+              ...deployment.configuration,
+            },
+            params.deploymentName,
+            packagePath,
+          ),
         ];
       }
       tf(`workspace select ${params.deploymentName}`, { provider, version, silent: true });

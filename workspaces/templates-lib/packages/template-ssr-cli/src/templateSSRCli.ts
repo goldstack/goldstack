@@ -136,7 +136,7 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
         confirm,
         commandArguments: commandArgs,
         ignoreMissingDeployments: argv['ignore-missing-deployments'] || false,
-        skipConfirmations: false,
+        skipConfirmations: (argv.yes as boolean) || false,
         options: {
           // temporary workaround for https://github.com/goldstack/goldstack/issues/40
           parallelism: 1,

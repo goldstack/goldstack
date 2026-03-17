@@ -43,6 +43,7 @@
     "@goldstack/utils-log": "0.3.33",
     "@goldstack/utils-package": "0.4.41",
     "@goldstack/utils-sh": "0.5.38",
+    "dotenv": "^17.3.1",
     "json-stable-stringify": "^1.0.1",
     "yargs": "^17"
   },

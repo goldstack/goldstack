@@ -5093,7 +5093,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:25.0.3"],\
           ["@yarnpkg/esbuild-plugin-pnp", "virtual:513fa9bf8fd99628bce0825e4db4c92367fd2a211840a12f001653f8353bb24582a65fc5f1634991bde367f9642415112f75812ec60b1a68670bd8b298fe2442#npm:3.0.0-rc.15"],\
           ["date-fns", "npm:2.28.0"],\
-          ["dotenv", "npm:16.4.7"],\
+          ["dotenv", "npm:17.3.1"],\
           ["esbuild", "npm:0.25.6"],\
           ["get-port", "npm:5.1.1"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
@@ -6417,7 +6417,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["@types/yargs", "npm:17.0.33"],\
-          ["dotenv", "npm:16.4.7"],\
+          ["dotenv", "npm:17.3.1"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
           ["rimraf", "npm:6.1.2"],\
           ["source-map-support", "npm:0.5.21"],\
@@ -6741,6 +6741,7 @@ const RAW_RUNTIME_STATE =
           ["@types/json-stable-stringify", "npm:1.1.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["@types/yargs", "npm:17.0.33"],\
+          ["dotenv", "npm:17.3.1"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
           ["json-stable-stringify", "npm:1.0.1"],\
           ["rimraf", "npm:6.1.2"],\
@@ -14463,6 +14464,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/dotenv-npm-16.4.7-29680c94f8-f13bfe97db.zip/node_modules/dotenv/",\
         "packageDependencies": [\
           ["dotenv", "npm:16.4.7"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:17.3.1", {\
+        "packageLocation": "./.yarn/cache/dotenv-npm-17.3.1-6ae845833c-4dde6571df.zip/node_modules/dotenv/",\
+        "packageDependencies": [\
+          ["dotenv", "npm:17.3.1"]\
         ],\
         "linkType": "HARD"\
       }]\
