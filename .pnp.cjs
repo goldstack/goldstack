@@ -6741,6 +6741,7 @@ const RAW_RUNTIME_STATE =
           ["@types/json-stable-stringify", "npm:1.1.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["@types/yargs", "npm:17.0.33"],\
+          ["dotenv", "npm:17.3.1"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
           ["json-stable-stringify", "npm:1.0.1"],\
           ["rimraf", "npm:6.1.2"],\
@@ -14463,6 +14464,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/dotenv-npm-16.4.7-29680c94f8-f13bfe97db.zip/node_modules/dotenv/",\
         "packageDependencies": [\
           ["dotenv", "npm:16.4.7"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:17.3.1", {\
+        "packageLocation": "./.yarn/cache/dotenv-npm-17.3.1-6ae845833c-4dde6571df.zip/node_modules/dotenv/",\
+        "packageDependencies": [\
+          ["dotenv", "npm:17.3.1"]\
         ],\
         "linkType": "HARD"\
       }]\

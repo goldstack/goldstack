@@ -5353,6 +5353,7 @@ __metadata:
     "@types/json-stable-stringify": "npm:^1.1.0"
     "@types/node": "npm:^25.0.3"
     "@types/yargs": "npm:^17.0.33"
+    dotenv: "npm:^17.3.1"
     jest: "npm:^30.2.0"
     json-stable-stringify: "npm:^1.0.1"
     rimraf: "npm:^6.1.2"
@@ -11865,6 +11866,13 @@ __metadata:
   version: 16.4.7
   resolution: "dotenv@npm:16.4.7"
   checksum: 10/f13bfe97db88f0df4ec505eeffb8925ec51f2d56a3d0b6d916964d8b4af494e6fb1633ba5d09089b552e77ab2a25de58d70259b2c5ed45ec148221835fc99a0c
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^17.3.1":
+  version: 17.3.1
+  resolution: "dotenv@npm:17.3.1"
+  checksum: 10/4dde6571dff22c2323a3e33ac25e1e7d51c4b6d60dc884f59e3efe85c8fd3cc8800d6b3925d05c46b19dca08cba821a0a24e22f75a1b9b768c859b98bb927b04
   languageName: node
   linkType: hard
 
