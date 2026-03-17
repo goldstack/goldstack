@@ -18,7 +18,7 @@ import {
 import { type SpawnSyncOptionsWithStringEncoding, spawnSync } from 'child_process';
 import crypto from 'crypto';
 import os from 'os';
-import { assertState, deleteState } from './tfState';
+import { assertState, deleteDeploymentState, deleteState } from './tfState';
 
 const getRemoteStateConfig = (config: AWSTerraformState, userName: string): RemoteState => {
   const userConfig = config.remoteState.filter((u) => u.user === userName);
@@ -160,6 +160,11 @@ export const terraformAwsCli = async (params: TerraformAWSCliParams): Promise<vo
 
   const operation = params.infraOperation;
   if (operation === 'destroy-state') {
+    const tfStateKey = deployment.tfStateKey;
+    if (!tfStateKey) {
+      throw new Error('Terraform state key not defined for deployment');
+    }
+
     const ciConfirmed = params.skipConfirmations;
     if (!ciConfirmed) {
       const value = prompt(
@@ -167,7 +172,30 @@ export const terraformAwsCli = async (params: TerraformAWSCliParams): Promise<vo
           'Otherwise, press enter.\nYour Input: ',
       );
       if (value !== 'y') {
-        new Error('Prompt not confirmed with `y`');
+        throw new Error('Prompt not confirmed with `y`');
+      }
+    }
+    await deleteDeploymentState({
+      bucketName: remoteStateConfig.terraformStateBucket,
+      dynamoDBTableName: remoteStateConfig.terraformStateDynamoDBTable,
+      credentials,
+      awsRegion: deployment.awsRegion,
+      tfStateKey,
+    });
+    return;
+  }
+
+  if (operation === 'destroy-state-bucket') {
+    const ciConfirmed = params.skipConfirmations;
+    if (!ciConfirmed) {
+      const value = prompt(
+        'DANGER: This will delete the ENTIRE S3 bucket and DynamoDB table used for Terraform state.\n' +
+          'This will affect ALL deployments using this state infrastructure.\n' +
+          'Are you sure? If yes, please type `destroy-bucket` and enter.\n' +
+          'Otherwise, press enter.\nYour Input: ',
+      );
+      if (value !== 'destroy-bucket') {
+        throw new Error('Prompt not confirmed with `destroy-bucket`');
       }
     }
     await deleteState({

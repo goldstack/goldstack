@@ -91,6 +91,20 @@ export const infraCommands = (): ((yargs: Argv<any>) => Argv<any>) => {
         },
       )
       .command(
+        'destroy-state-bucket <deployment>',
+        'DANGER: Destroys the entire S3 bucket and DynamoDB table used for Terraform state. Affects ALL deployments.',
+        (yargs) => {
+          return deploymentPositional(ignoreMissingDeploymentsOption(yargs)).option('yes', {
+            alias: 'y',
+            description:
+              'DANGER: If provided, confirmation for deleting the state bucket will be skipped.',
+            default: false,
+            demandOption: false,
+            type: 'boolean',
+          });
+        },
+      )
+      .command(
         'create-state <deployment>',
         'Creates a remote state for this deployment if it does not already exist.',
         (yargs) => deploymentPositional(ignoreMissingDeploymentsOption(yargs)),
@@ -198,8 +212,8 @@ export const terraformCli = (params: TerraformCliParams): void => {
     });
     return;
   }
-  if (operation === 'destroy-state') {
-    throw new Error('The destroy-state operation should be performed by the provider');
+  if (operation === 'destroy-state' || operation === 'destroy-state-bucket') {
+    throw new Error(`The ${operation} operation should be performed by the provider`);
   }
 
   throw new Error(`Unknown infrastructure operation: ${operation}`);

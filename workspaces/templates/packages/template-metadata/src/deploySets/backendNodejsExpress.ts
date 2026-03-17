@@ -66,7 +66,7 @@ export const createBackendNodejsExpressBuildSetConfig = async (): Promise<Deploy
               },
             ],
             packageTests: ['assert-package-files', 'infra-up', 'deploy', 'assert-rest-api'],
-            packageCleanUp: ['infra-destroy', 'destroy-state'],
+            packageCleanUp: ['infra-destroy', 'destroy-state-bucket'],
           },
         ],
       },

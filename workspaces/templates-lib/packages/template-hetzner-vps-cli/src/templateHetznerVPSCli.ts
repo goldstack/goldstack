@@ -84,9 +84,9 @@ export const run = async (args: string[]): Promise<void> => {
         options: undefined,
       });
 
-      if (infrastructureOp === 'destroy-state') {
+      if (infrastructureOp === 'destroy-state' || infrastructureOp === 'destroy-state-bucket') {
         await terraformAwsCli({
-          infraOperation: 'destroy-state',
+          infraOperation: infrastructureOp,
           deploymentName,
           ignoreMissingDeployments,
           skipConfirmations: false,

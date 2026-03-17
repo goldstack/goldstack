@@ -61,7 +61,7 @@ export const createServerSideRenderingBuildSetConfig = async (): Promise<DeployS
               'deploy',
               'assert-application',
             ],
-            packageCleanUp: ['infra-destroy', 'destroy-state'],
+            packageCleanUp: ['infra-destroy', 'destroy-state-bucket'],
           },
         ],
       },

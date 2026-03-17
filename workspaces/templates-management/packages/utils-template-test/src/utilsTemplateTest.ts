@@ -13,7 +13,7 @@ import { AssertRootFilesTest } from './tests/AssertRootFilesTest';
 import { AssertStaticWebsiteAwsDeploymentsTest } from './tests/AssertStaticWebsiteAwsDeploymentsTest';
 import { AssertWebsiteTest } from './tests/AssertWebsiteTest';
 import { DeployTest } from './tests/DeployTest';
-import { DestroyStateTest } from './tests/DestroyStateTest';
+import { DestroyStateBucketTest } from './tests/DestroyStateBucketTest';
 import { EnsureBabelRcDoesNotExist } from './tests/EnsureBabelRcDoesNotExist';
 import { IgnoreMissingDeploymentsTest } from './tests/IgnoreMissingDeploymentsTest';
 import { InfraDestroyTest } from './tests/InfraDestroyTest';
@@ -70,7 +70,7 @@ export const getTemplateTests = (): TemplateTest[] => {
     new AssertRootFilesTest(),
     new InfraUpTest(),
     new InfraPlanTest(),
-    new DestroyStateTest(),
+    new DestroyStateBucketTest(),
     new InfraDestroyTest(),
     new DeployTest(),
     new AssertStaticWebsiteAwsDeploymentsTest(),

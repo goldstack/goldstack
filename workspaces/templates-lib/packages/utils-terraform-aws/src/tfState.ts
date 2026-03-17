@@ -1,5 +1,6 @@
 import {
   CreateTableCommand,
+  DeleteItemCommand,
   DeleteTableCommand,
   DescribeTableCommand,
   DynamoDBClient,
@@ -9,6 +10,7 @@ import {
 import {
   CreateBucketCommand,
   DeleteBucketCommand,
+  DeleteObjectCommand,
   DeleteObjectsCommand,
   HeadBucketCommand,
   ListObjectsV2Command,
@@ -165,6 +167,60 @@ const deleteS3Bucket = async (params: { s3: S3Client; bucketName: string }): Pro
 
   // Then, delete the empty bucket
   await params.s3.send(new DeleteBucketCommand({ Bucket: params.bucketName }));
+};
+
+/**
+ * @description Deletes a specific deployment's state file from S3 and its lock entry from DynamoDB.
+ * @param params - The parameters for deleting the deployment state.
+ */
+export const deleteDeploymentState = async (params: {
+  credentials: AwsCredentialIdentity;
+  dynamoDBTableName: string;
+  bucketName: string;
+  awsRegion: string;
+  tfStateKey: string;
+}): Promise<void> => {
+  const s3 = new S3Client({
+    region: params.awsRegion,
+    credentials: params.credentials,
+  });
+
+  // Delete the state file from S3
+  await s3.send(
+    new DeleteObjectCommand({
+      Bucket: params.bucketName,
+      Key: params.tfStateKey,
+    }),
+  );
+  info('Deleted state file from S3', {
+    bucketName: params.bucketName,
+    key: params.tfStateKey,
+  });
+
+  // Delete the lock entry from DynamoDB if it exists
+  const dynamoDB = new DynamoDBClient({
+    region: params.awsRegion,
+    credentials: params.credentials,
+  });
+
+  // LockID format for Terraform S3 backend: <bucket>/<key>
+  const lockId = `${params.bucketName}/${params.tfStateKey}`;
+  try {
+    await dynamoDB.send(
+      new DeleteItemCommand({
+        TableName: params.dynamoDBTableName,
+        Key: {
+          LockID: { S: lockId },
+        },
+      }),
+    );
+    info('Deleted lock entry from DynamoDB', {
+      tableName: params.dynamoDBTableName,
+      lockId,
+    });
+  } catch {
+    // Lock entry may not exist, that's okay
+  }
 };
 
 export const deleteState = async (params: {
