@@ -581,6 +581,40 @@ This command:
 
 **Note**: After running `destroy-state-bucket`, you will need to run `yarn infra up [deployment]` again for any deployment, which will recreate the bucket and table.
 
+### Providing Terraform Variables via .env Files
+
+In addition to defining variables in `goldstack.json` configuration files, you can provide Terraform variable values through `.env` files. This is useful for:
+
+*   Sensitive values that should not be committed to source control
+*   Development environment configurations
+*   Deployment-specific values that vary per environment
+
+Goldstack loads `.env` files from both the monorepo root and the package directory in the following order (later files override earlier ones):
+
+1.  `root/.env` - Shared across all deployments
+2.  `root/.env.[deployment]` - Deployment-specific (e.g., `.env.prod`, `.env.dev`)
+3.  `package/.env` - Package-specific shared values
+4.  `package/.env.[deployment]` - Package and deployment-specific (highest priority)
+
+#### Example Usage
+
+If you have a Terraform variable `my_var` defined in `variables.tf`, you can provide its value via a `.env` file:
+
+    # .env.prod
+    MY_VAR=my-value
+
+The environment variable name should be uppercase with underscores matching the Terraform variable name (e.g., `my_var` → `MY_VAR`).
+
+#### Variable Resolution Priority
+
+When resolving Terraform variable values, Goldstack uses the following priority (from highest to lowest):
+
+1.  Values defined in `goldstack.json` configurations
+2.  Environment variables (`process.env`)
+3.  Values from `.env` files
+
+This allows `.env` files to provide sensible defaults while enabling overrides through environment variables or explicit configuration.
+
 # First Steps
 
 This page describes what you can do once you have downloaded your starter project. You will be able to download your project after selecting modules and having configured them on the Goldstack website. Please see [How Does It Work](./how-does-it-work) for more details.
