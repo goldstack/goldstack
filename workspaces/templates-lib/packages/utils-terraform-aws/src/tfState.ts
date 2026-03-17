@@ -19,7 +19,7 @@ import {
 } from '@aws-sdk/client-s3';
 import type { AwsCredentialIdentity } from '@aws-sdk/types';
 
-import { info } from '@goldstack/utils-log';
+import { debug, error, info } from '@goldstack/utils-log';
 
 const assertDynamoDBTable = async (params: { dynamoDB: DynamoDBClient; tableName: string }) => {
   // defining a table as required by Terraform https://www.terraform.io/docs/language/settings/backends/s3.html#dynamodb_table
@@ -218,8 +218,19 @@ export const deleteDeploymentState = async (params: {
       tableName: params.dynamoDBTableName,
       lockId,
     });
-  } catch {
-    // Lock entry may not exist, that's okay
+  } catch (e) {
+    if (e.name === 'ResourceNotFoundException') {
+      debug('Lock entry does not exist in DynamoDB', {
+        tableName: params.dynamoDBTableName,
+        lockId,
+      });
+    } else {
+      error('Error deleting lock entry from DynamoDB', {
+        tableName: params.dynamoDBTableName,
+        lockId,
+        error: e.message,
+      });
+    }
   }
 };
 
