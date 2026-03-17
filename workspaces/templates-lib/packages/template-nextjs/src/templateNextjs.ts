@@ -95,14 +95,17 @@ export const run = async (args: string[]): Promise<void> => {
       const infraOperation = argv._[1] as string;
       let targetVersion: string | undefined;
       let confirm: boolean | undefined;
+      let skipConfirmations: boolean | undefined;
       let commandArgs: string[] | undefined;
 
       if (infraOperation === 'upgrade') {
         targetVersion = argv.targetVersion;
-      } else if (infraOperation === 'destroy') {
-        confirm = argv.yes;
       } else if (infraOperation === 'terraform') {
         commandArgs = opArgs.slice(2);
+      } else if (infraOperation === 'destroy') {
+        confirm = argv.yes;
+      } else if (infraOperation === 'destroy-state' || infraOperation === 'destroy-state-bucket') {
+        skipConfirmations = argv.yes;
       }
 
       const params: InfraAwsStaticWebsiteCliParams = {
@@ -110,6 +113,7 @@ export const run = async (args: string[]): Promise<void> => {
         deploymentName: argv.deployment,
         targetVersion,
         confirm,
+        skipConfirmations,
         commandArgs,
       };
       await infraAwsStaticWebsiteCli(config, params);
