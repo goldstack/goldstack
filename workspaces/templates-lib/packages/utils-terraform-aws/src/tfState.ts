@@ -219,19 +219,15 @@ export const deleteDeploymentState = async (params: {
       lockId,
     });
   } catch (e) {
-    if (e.name === 'ResourceNotFoundException') {
-      debug('Lock entry does not exist in DynamoDB', {
-        tableName: params.dynamoDBTableName,
-        lockId,
-      });
-    } else {
-      error('Error deleting lock entry from DynamoDB', {
-        tableName: params.dynamoDBTableName,
-        lockId,
-        error: e.message,
-      });
-      throw e;
-    }
+    // DeleteItem is idempotent and does not error for a non-existent item.
+    error('Error deleting lock entry from DynamoDB', {
+      tableName: params.dynamoDBTableName,
+      lockId,
+      error: e.message,
+      stack: e.stack,
+      code: e.code,
+    });
+    throw e;
   }
 };
 
