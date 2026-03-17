@@ -15,25 +15,13 @@ resource "aws_s3_bucket" "website_root" {
   }
 }
 
-resource "aws_s3_bucket_website_configuration" "website_root" {
-  bucket = aws_s3_bucket.website_root.id
-
-  index_document {
-    suffix = "index.html"
-  }
-
-  error_document {
-    key = "404.html"
-  }
-}
-
 resource "aws_s3_bucket_public_access_block" "website_root" {
   bucket = aws_s3_bucket.website_root.id
 
-  block_public_acls       = false
-  block_public_policy     = false
-  ignore_public_acls      = false
-  restrict_public_buckets = false
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
 resource "aws_s3_bucket_ownership_controls" "website_root" {
@@ -41,16 +29,6 @@ resource "aws_s3_bucket_ownership_controls" "website_root" {
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
-}
-
-resource "aws_s3_bucket_acl" "website_root" {
-  depends_on = [
-    aws_s3_bucket_public_access_block.website_root,
-    aws_s3_bucket_ownership_controls.website_root,
-  ]
-
-  bucket = aws_s3_bucket.website_root.id
-  acl    = "public-read"
 }
 
 resource "aws_s3_bucket_policy" "website_root" {
@@ -67,8 +45,8 @@ resource "aws_s3_bucket_policy" "website_root" {
 data "aws_iam_policy_document" "website_root" {
   statement {
     principals {
-      type        = "AWS"
-      identifiers = ["*"]
+      type        = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
     }
 
     actions = [
@@ -76,12 +54,23 @@ data "aws_iam_policy_document" "website_root" {
     ]
 
     resources = [
-      "arn:aws:s3:::${var.website_domain}-root/*"
+      "${aws_s3_bucket.website_root.arn}/*",
     ]
+
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceArn"
+      values   = [aws_cloudfront_distribution.website_cdn_root.arn]
+    }
   }
 }
 
-
+resource "aws_cloudfront_origin_access_control" "website_root" {
+  name                              = "oac-${var.website_domain}-root"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
 
 # Creates the CloudFront distribution to serve the static website
 resource "aws_cloudfront_distribution" "website_cdn_root" {
@@ -94,16 +83,9 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
   ]
 
   origin {
-    domain_name = aws_s3_bucket_website_configuration.website_root.website_endpoint
-
-    origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
-
-    custom_origin_config {
-      http_port              = 80
-      https_port             = 443
-      origin_protocol_policy = "http-only"
-      origin_ssl_protocols   = ["TLSv1.2"]
-    }
+    domain_name              = aws_s3_bucket.website_root.bucket_regional_domain_name
+    origin_id                = "origin-bucket-${aws_s3_bucket.website_root.id}"
+    origin_access_control_id = aws_cloudfront_origin_access_control.website_root.id
   }
 
   default_root_object = "index.html"
@@ -164,4 +146,3 @@ resource "aws_route53_record" "website_cdn_root_record" {
     evaluate_target_health = false
   }
 }
-
