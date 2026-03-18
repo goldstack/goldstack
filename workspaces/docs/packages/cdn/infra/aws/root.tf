@@ -1,45 +1,80 @@
+resource "random_id" "oac_suffix" {
+  byte_length = 4
+}
+
 # Creates bucket to store the static website
 resource "aws_s3_bucket" "website_root" {
   bucket = "${var.website_domain}-root"
 
-  acl = "public-read"
-
-  # Remove this line if you want to prevent accidential deletion of bucket
+  # Remove this line if you want to prevent accidental deletion of bucket
   force_destroy = true
-
-  website {
-    index_document = "index.html"
-    error_document = "404.html"
-  }
 
   tags = {
     ManagedBy = "terraform"
     Changed   = formatdate("YYYY-MM-DD hh:mm ZZZ", timestamp())
   }
 
-  policy = <<EOF
-{
-  "Version": "2008-10-17",
-  "Statement": [
-    {
-      "Sid": "PublicReadForGetBucketObjects",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "*"
-      },
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::${var.website_domain}-root/*"
-    }
-  ]
-}
-EOF
-
   lifecycle {
     ignore_changes = [tags]
   }
 }
 
+resource "aws_s3_bucket_public_access_block" "website_root" {
+  bucket = aws_s3_bucket.website_root.id
 
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+resource "aws_s3_bucket_ownership_controls" "website_root" {
+  bucket = aws_s3_bucket.website_root.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+resource "aws_s3_bucket_policy" "website_root" {
+  bucket = aws_s3_bucket.website_root.id
+
+  depends_on = [
+    aws_s3_bucket_public_access_block.website_root,
+    aws_s3_bucket_ownership_controls.website_root,
+  ]
+
+  policy = data.aws_iam_policy_document.website_root.json
+}
+
+data "aws_iam_policy_document" "website_root" {
+  statement {
+    principals {
+      type        = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
+    }
+
+    actions = [
+      "s3:GetObject",
+    ]
+
+    resources = [
+      "${aws_s3_bucket.website_root.arn}/*",
+    ]
+
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceArn"
+      values   = [aws_cloudfront_distribution.website_cdn_root.arn]
+    }
+  }
+}
+
+resource "aws_cloudfront_origin_access_control" "website_root" {
+  name                              = "oac-${length(var.website_domain) > 38 ? substr(var.website_domain, 0, 38) : var.website_domain}-root-${random_id.oac_suffix.hex}"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
 
 # Creates the CloudFront distribution to serve the static website
 resource "aws_cloudfront_distribution" "website_cdn_root" {
@@ -52,16 +87,9 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
   ]
 
   origin {
-    domain_name = aws_s3_bucket.website_root.website_endpoint
-
-    origin_id   = "origin-bucket-${aws_s3_bucket.website_root.id}"
-    
-    custom_origin_config {
-      http_port = 80
-      https_port = 443
-      origin_protocol_policy = "http-only"
-      origin_ssl_protocols = ["TLSv1.2"]
-    }
+    domain_name              = aws_s3_bucket.website_root.bucket_regional_domain_name
+    origin_id                = "origin-bucket-${aws_s3_bucket.website_root.id}"
+    origin_access_control_id = aws_cloudfront_origin_access_control.website_root.id
   }
 
   default_root_object = "index.html"
@@ -70,20 +98,11 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
-    min_ttl          = "0"
-    default_ttl      = tostring(var.default_cache_duration)
-    max_ttl          = "1200"
 
     viewer_protocol_policy = "redirect-to-https" # Redirects any HTTP request to HTTPS
     compress               = true
 
-    forwarded_values {
-      query_string = false
-      cookies {
-        forward = "none"
-      }
-    }
-
+    cache_policy_id = "658327ea-f89d-4fab-a63d-7e88639e58f6" # CachingOptimized
   }
 
   restrictions {
@@ -129,4 +148,3 @@ resource "aws_route53_record" "website_cdn_root_record" {
     evaluate_target_health = false
   }
 }
-
