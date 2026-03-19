@@ -175,10 +175,16 @@
   </g>
 </svg></span></h3>
 <p>Goldstack templates make it very easy to customize infrastructure to your specific needs. The easiest way to do this is to simply edit the <code class="inline">*.tf</code> files in the <code class="inline">infra/aws</code> folder. You can make the changes you need and then run <code class="inline">yarn infra up [deploymentName]</code> to apply the changes.</p>
-<p>The <code class="inline">infra/aws</code> folder contains a file <code class="inline">variables.tf</code> that contains the variables required for your deployment; for instance the domain name for a website. The values for these variables are defined in the module's <code class="inline">goldstack.json</code> file in the <code class="inline">"configuration"</code> property. There is one global <code class="inline">configuration</code> property that applies for all deployments and each deployment also has its own <code class="inline">configuration</code> property. In order to add a new variable, add the variable to <code class="inline">variables.tf</code> and then add it to the configuration for your template or to the configurations for the deployments.</p>
+<p>The <code class="inline">infra/aws</code> folder contains a file <code class="inline">variables.tf</code> that contains the variables required for your deployment; for instance the domain name for a website. </p>
+<p><strong>Note</strong>: Variables defined in <code class="inline">variables.tf</code> do not need to be present in <code class="inline">goldstack.json</code>. If a variable is not defined in <code class="inline">goldstack.json</code>, Goldstack will automatically attempt to resolve its value from environment variables or <code class="inline">.env</code> files. This is useful for sensitive values that should not be committed to source control.</p>
+<p>To add a new variable:</p>
+<ol>
+<li>Add the variable to <code class="inline">variables.tf</code></li>
+<li>Optionally add it to the <code class="inline">configuration</code> in <code class="inline">goldstack.json</code> (or provide via environment variables/<code class="inline">.env</code> files)</li>
+</ol>
 <p>Note that due to JavaScript and Terraform using different conventions for naming variables, Goldstack applies a basic transformation to variable names. Camel-case variables names are converted to valid variables names for Terraform by replacing every instance of a capital letter <code class="inline">C</code> with <code class="inline">_c</code> in the variable name. For instance:</p>
 <p><code class="inline">myVariableName</code> in the Goldstack configuration will translate to the Terraform variable <code class="inline">my_variable_name</code> as defined in <code class="inline">variables.tf</code>.</p>
-<h3 class="heading"><span id="providing-terraform-variables-via-env-files-1"></span><a href="#providing-terraform-variables-via-env-files-1"><span id="providing-terraform-variables-via-env-files"></span><a href="#providing-terraform-variables-via-env-files" class="relative">Providing Terraform Variables via .env Files</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+<h3 class="heading"><span id="providing-terraform-variables-1"></span><a href="#providing-terraform-variables-1"><span id="providing-terraform-variables"></span><a href="#providing-terraform-variables" class="relative">Providing Terraform Variables</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
@@ -189,8 +195,50 @@
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
   </g>
 </svg></span></h3>
-<p>In addition to defining variables in <code class="inline">goldstack.json</code>, you can also provide Terraform variable values through <code class="inline">.env</code> files. This is particularly useful for sensitive values that should not be committed to source control.</p>
-<p>Goldstack will load <code class="inline">.env</code> files from both the monorepo root and the package directory in the following order (later files override earlier ones):</p>
+<p>Terraform variables can be provided through multiple sources:</p>
+<ol>
+<li><code class="inline">goldstack.json</code> configuration files (recommended for most values)</li>
+<li>Environment variables (<code class="inline">process.env</code>)</li>
+<li><code class="inline">.env</code> files (useful for sensitive values)</li>
+</ol>
+<h4 class="heading"><span id="using-goldstackjson-1"></span><a href="#using-goldstackjson-1"><span id="using-goldstackjson"></span><a href="#using-goldstackjson" class="relative">Using goldstack.json</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<p>Define variables in the <code class="inline">configuration</code> property of your <code class="inline">goldstack.json</code>. There is one global <code class="inline">configuration</code> property that applies for all deployments, and each deployment can have its own <code class="inline">configuration</code> property.</p>
+<h4 class="heading"><span id="using-environment-variables-1"></span><a href="#using-environment-variables-1"><span id="using-environment-variables"></span><a href="#using-environment-variables" class="relative">Using Environment Variables</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<p>For a variable named <code class="inline">my_var</code> in <code class="inline">variables.tf</code>, set the environment variable <code class="inline">MY_VAR</code>:</p>
+<pre class="language-bash language-bash"><code class="language-bash"><span class="token assign-left variable">MY_VAR</span><span class="token operator">=</span>value <span class="token function">yarn</span> infra up prod
+</code></pre>
+<h4 class="heading"><span id="using-env-files-1"></span><a href="#using-env-files-1"><span id="using-env-files"></span><a href="#using-env-files" class="relative">Using .env Files</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<p>You can also provide Terraform variable values through <code class="inline">.env</code> files. Goldstack will load <code class="inline">.env</code> files from both the monorepo root and the package directory in the following order (later files override earlier ones):</p>
 <ol>
 <li><code class="inline">root/.env</code> - Shared across all deployments</li>
 <li><code class="inline">root/.env.[deployment]</code> - Deployment-specific (e.g., <code class="inline">.env.prod</code>)</li>
@@ -218,7 +266,7 @@
 <li>Environment variables (<code class="inline">process.env</code>)</li>
 <li>Values from <code class="inline">.env</code> files</li>
 </ol>
-<p>This means <code class="inline">.env</code> files provide a convenient way to supply default values that can be overridden by environment variables or explicit configuration.</p>
+<p>If a variable defined in <code class="inline">variables.tf</code> is not found in any of these sources, a warning will be logged.</p>
 <h3 class="heading"><span id="terraform-state-1"></span><a href="#terraform-state-1"><span id="terraform-state"></span><a href="#terraform-state" class="relative">Terraform State</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>

@@ -149,17 +149,42 @@ Now the CLI will output a warning if the deployment does not exist but not an er
 
 Goldstack templates make it very easy to customize infrastructure to your specific needs. The easiest way to do this is to simply edit the `*.tf` files in the `infra/aws` folder. You can make the changes you need and then run `yarn infra up [deploymentName]` to apply the changes.
 
-The `infra/aws` folder contains a file `variables.tf` that contains the variables required for your deployment; for instance the domain name for a website. The values for these variables are defined in the module's `goldstack.json` file in the `"configuration"` property. There is one global `configuration` property that applies for all deployments and each deployment also has its own `configuration` property. In order to add a new variable, add the variable to `variables.tf` and then add it to the configuration for your template or to the configurations for the deployments.
+The `infra/aws` folder contains a file `variables.tf` that contains the variables required for your deployment; for instance the domain name for a website. 
+
+**Note**: Variables defined in `variables.tf` do not need to be present in `goldstack.json`. If a variable is not defined in `goldstack.json`, Goldstack will automatically attempt to resolve its value from environment variables or `.env` files. This is useful for sensitive values that should not be committed to source control.
+
+To add a new variable:
+
+1.  Add the variable to `variables.tf`
+2.  Optionally add it to the `configuration` in `goldstack.json` (or provide via environment variables/`.env` files)
 
 Note that due to JavaScript and Terraform using different conventions for naming variables, Goldstack applies a basic transformation to variable names. Camel-case variables names are converted to valid variables names for Terraform by replacing every instance of a capital letter `C` with `_c` in the variable name. For instance:
 
 `myVariableName` in the Goldstack configuration will translate to the Terraform variable `my_variable_name` as defined in `variables.tf`.
 
-### Providing Terraform Variables via .env Files
+### Providing Terraform Variables
 
-In addition to defining variables in `goldstack.json`, you can also provide Terraform variable values through `.env` files. This is particularly useful for sensitive values that should not be committed to source control.
+Terraform variables can be provided through multiple sources:
 
-Goldstack will load `.env` files from both the monorepo root and the package directory in the following order (later files override earlier ones):
+1.  `goldstack.json` configuration files (recommended for most values)
+2.  Environment variables (`process.env`)
+3.  `.env` files (useful for sensitive values)
+
+#### Using goldstack.json
+
+Define variables in the `configuration` property of your `goldstack.json`. There is one global `configuration` property that applies for all deployments, and each deployment can have its own `configuration` property.
+
+#### Using Environment Variables
+
+For a variable named `my_var` in `variables.tf`, set the environment variable `MY_VAR`:
+
+```bash
+MY_VAR=value yarn infra up prod
+```
+
+#### Using .env Files
+
+You can also provide Terraform variable values through `.env` files. Goldstack will load `.env` files from both the monorepo root and the package directory in the following order (later files override earlier ones):
 
 1.  `root/.env` - Shared across all deployments
 2.  `root/.env.[deployment]` - Deployment-specific (e.g., `.env.prod`)
@@ -180,7 +205,7 @@ When resolving Terraform variable values, Goldstack uses the following priority 
 2.  Environment variables (`process.env`)
 3.  Values from `.env` files
 
-This means `.env` files provide a convenient way to supply default values that can be overridden by environment variables or explicit configuration.
+If a variable defined in `variables.tf` is not found in any of these sources, a warning will be logged.
 
 ### Terraform State
 

@@ -581,13 +581,54 @@ This command:
 
 **Note**: After running `destroy-state-bucket`, you will need to run `yarn infra up [deployment]` again for any deployment, which will recreate the bucket and table.
 
-### Providing Terraform Variables via .env Files
+### Providing Terraform Variables
 
-In addition to defining variables in `goldstack.json` configuration files, you can provide Terraform variable values through `.env` files. This is useful for:
+Terraform variables can be defined in multiple ways. Variables are discovered from the `variables.tf` file in your `infra/aws` folder, and their values can be provided through:
 
-*   Sensitive values that should not be committed to source control
-*   Development environment configurations
-*   Deployment-specific values that vary per environment
+1.  `goldstack.json` configuration files (recommended for most values)
+2.  Environment variables (`process.env`)
+3.  `.env` files (useful for sensitive values)
+
+**Important**: Variables defined in `variables.tf` do not need to be present in `goldstack.json`. If a variable is not defined in `goldstack.json`, Goldstack will automatically attempt to resolve its value from environment variables or `.env` files. This is particularly useful for sensitive values that should not be committed to source control.
+
+#### Using goldstack.json
+
+Define variables in the `configuration` property of your `goldstack.json`. There is one global `configuration` property that applies for all deployments, and each deployment can have its own `configuration` property:
+
+```json
+{
+  "configuration": {
+    "myVar": "global-value"
+  },
+  "deployments": [
+    {
+      "name": "prod",
+      "configuration": {
+        "myVar": "prod-specific-value"
+      }
+    }
+  ]
+}
+```
+
+#### Using Environment Variables
+
+You can provide Terraform variable values directly through environment variables. For a variable named `my_var` in `variables.tf`, set the environment variable `MY_VAR`:
+
+```bash
+MY_VAR=value yarn infra up prod
+```
+
+This works well in CI/CD pipelines with secrets:
+
+```yaml
+- name: Deploy
+  run: yarn workspace my-package infra up prod
+  env:
+    MY_VAR: ${{ secrets.MY_SECRET }}
+```
+
+#### Using .env Files
 
 Goldstack loads `.env` files from both the monorepo root and the package directory in the following order (later files override earlier ones):
 
@@ -596,9 +637,7 @@ Goldstack loads `.env` files from both the monorepo root and the package directo
 3.  `package/.env` - Package-specific shared values
 4.  `package/.env.[deployment]` - Package and deployment-specific (highest priority)
 
-#### Example Usage
-
-If you have a Terraform variable `my_var` defined in `variables.tf`, you can provide its value via a `.env` file:
+For example, if you have a Terraform variable `my_var` defined in `variables.tf`, you can provide its value via a `.env` file:
 
     # .env.prod
     MY_VAR=my-value
@@ -613,7 +652,7 @@ When resolving Terraform variable values, Goldstack uses the following priority 
 2.  Environment variables (`process.env`)
 3.  Values from `.env` files
 
-This allows `.env` files to provide sensible defaults while enabling overrides through environment variables or explicit configuration.
+If a variable defined in `variables.tf` is not found in any of these sources, a warning will be logged and the variable will not be passed to Terraform.
 
 # First Steps
 
