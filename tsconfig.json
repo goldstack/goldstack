@@ -332,9 +332,6 @@
       "path": "workspaces/utils/packages/esbuild-tailwind-ssr-plugin"
     },
     {
-      "path": "workspaces/utils/packages/github-actions-agent"
-    },
-    {
       "path": "workspaces/utils/packages/lambda-compression"
     },
     {

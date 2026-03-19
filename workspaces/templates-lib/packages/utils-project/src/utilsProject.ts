@@ -1,6 +1,8 @@
 import { parseConfig } from '@goldstack/utils-config';
 import { read } from '@goldstack/utils-sh';
-import configSchema from './schemas/configSchema.json';
+
+const configSchema = require('./schemas/configSchema.json');
+
 import type { ProjectConfiguration } from './types/projectConfigurationSchema';
 
 export * from './types/projectConfigurationSchema';

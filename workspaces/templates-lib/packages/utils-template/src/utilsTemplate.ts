@@ -1,7 +1,8 @@
 import { parseConfig } from '@goldstack/utils-config';
 import { read } from '@goldstack/utils-sh';
 import type { GoldstackTemplateConfiguration } from './generated/goldstackTemplateConfigurationSchema';
-import configSchema from './schemas/goldstackTemplateConfigurationSchema.json';
+
+const configSchema = require('./schemas/goldstackTemplateConfigurationSchema.json');
 
 export type { GoldstackTemplateConfiguration } from './generated/goldstackTemplateConfigurationSchema';
 

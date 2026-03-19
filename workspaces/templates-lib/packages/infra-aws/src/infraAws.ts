@@ -8,9 +8,11 @@ import {
 import { readPackageConfig } from '@goldstack/utils-package';
 import { read, write } from '@goldstack/utils-sh';
 import fs from 'fs';
-import configSchema from './schemas/accountConfigSchema.json';
-import awsStateConfigSchema from './schemas/awsTerraformStateSchema.json';
-import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
+
+const configSchema = require('./schemas/accountConfigSchema.json');
+const awsStateConfigSchema = require('./schemas/awsTerraformStateSchema.json');
+const deploymentConfigSchema = require('./schemas/deploymentConfigSchema.json');
+
 import type {
   AWSAccessKeyId,
   AWSAPIKeyUserConfig,
@@ -25,15 +27,15 @@ import type {
 import type { AWSTerraformState, RemoteState } from './types/awsTerraformState';
 
 export type {
-  AWSConfiguration,
-  AWSUser,
-  AWSRegion,
   AWSAccessKeyId,
-  AWSSecretAccessKey,
-  AWSProfileConfig as AWSLocalUserConfig,
   AWSAPIKeyUserConfig as AWSAPIKeyUser,
+  AWSConfiguration,
   AWSEnvironmentVariableUserConfig,
+  AWSProfileConfig as AWSLocalUserConfig,
+  AWSRegion,
+  AWSSecretAccessKey,
   AWSTerraformState,
+  AWSUser,
   RemoteState,
 };
 

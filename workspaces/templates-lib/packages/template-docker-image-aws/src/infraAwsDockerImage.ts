@@ -12,7 +12,9 @@ import { assertDocker } from '@goldstack/utils-docker';
 import { hash } from '@goldstack/utils-git';
 import { exec } from '@goldstack/utils-sh';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
-import configSchema from './schemas/configSchema.json';
+
+const configSchema = require('./schemas/configSchema.json');
+
 import type {
   AWSDockerImageDeployment,
   AWSDockerImagePackage,

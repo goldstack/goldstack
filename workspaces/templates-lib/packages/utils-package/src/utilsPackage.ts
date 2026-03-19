@@ -3,7 +3,9 @@ import { read, write } from '@goldstack/utils-sh';
 import { assert } from 'console';
 import pathLib from 'path';
 import type { Argv } from 'yargs';
-import configSchema from './schemas/configSchema.json';
+
+const configSchema = require('./schemas/configSchema.json');
+
 import type { Package } from './types/packageTypes';
 
 export type {

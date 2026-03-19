@@ -4,13 +4,14 @@ import { readPackageConfig } from '@goldstack/utils-package';
 import { read, write } from '@goldstack/utils-sh';
 import fs from 'fs';
 
-import configSchema from './schemas/accountConfigSchema.json';
+const configSchema = require('./schemas/accountConfigSchema.json');
 
-import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
+const deploymentConfigSchema = require('./schemas/deploymentConfigSchema.json');
+
 import type { HetznerConfiguration, HetznerUser } from './types/HetznerConfiguration';
 import type { HetznerDeployment } from './types/HetznerDeployment';
 
-export type { HetznerUser, HetznerDeployment };
+export type { HetznerDeployment, HetznerUser };
 
 export interface ReadDeploymentFromPackageConfigOptions {
   deploymentName: string;
