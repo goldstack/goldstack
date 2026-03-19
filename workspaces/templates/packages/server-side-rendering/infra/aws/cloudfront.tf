@@ -1,3 +1,18 @@
+# Origin Access Controls for S3 buckets
+resource "aws_cloudfront_origin_access_control" "static_files" {
+  name                              = "oac-${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-static-files-${random_id.bucket_name.hex}"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
+
+resource "aws_cloudfront_origin_access_control" "public_files" {
+  name                              = "oac-${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-public-files-${random_id.bucket_name.hex}"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
+
 # Creates CloudFront distribution to serve static website
 resource "aws_cloudfront_distribution" "cdn" {
   enabled     = true
@@ -10,30 +25,16 @@ resource "aws_cloudfront_distribution" "cdn" {
 
   # Static files from S3
   origin {
-    domain_name = aws_s3_bucket_website_configuration.static_files_web.website_endpoint
-
-    origin_id = "origin-bucket-${aws_s3_bucket.static_files.id}"
-
-    custom_origin_config {
-      http_port              = 80
-      https_port             = 443
-      origin_protocol_policy = "http-only"
-      origin_ssl_protocols   = ["TLSv1.2"]
-    }
+    domain_name              = aws_s3_bucket.static_files.bucket_regional_domain_name
+    origin_id                = "origin-bucket-${aws_s3_bucket.static_files.id}"
+    origin_access_control_id = aws_cloudfront_origin_access_control.static_files.id
   }
 
   # Public files from S3
   origin {
-    domain_name = aws_s3_bucket_website_configuration.public_files_web.website_endpoint
-
-    origin_id = "origin-bucket-${aws_s3_bucket.public_files.id}"
-
-    custom_origin_config {
-      http_port              = 80
-      https_port             = 443
-      origin_protocol_policy = "http-only"
-      origin_ssl_protocols   = ["TLSv1.2"]
-    }
+    domain_name              = aws_s3_bucket.public_files.bucket_regional_domain_name
+    origin_id                = "origin-bucket-${aws_s3_bucket.public_files.id}"
+    origin_access_control_id = aws_cloudfront_origin_access_control.public_files.id
   }
 
   # Dynamic files from API Gateway

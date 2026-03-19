@@ -12,7 +12,7 @@ runs:
           yarn-${{ runner.os }}-
     - uses: actions/setup-node@v3
       with:
-        node-version: 20
+        node-version: 24
     - id: install-aws-cli
       uses: unfor19/install-aws-cli-action@v1
       with:

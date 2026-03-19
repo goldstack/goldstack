@@ -251,16 +251,6 @@ export const getVariablesFromHCL = (
     convertFromPythonVariable(hclVarName),
   );
 
-  jsVariableNames.forEach((key) => {
-    if (!Object.hasOwn(properties, key)) {
-      warn(
-        `Cannot find property "${key}" in Goldstack configuration. Therefore terraform variable ${convertToPythonVariable(
-          key,
-        )} will not be read from goldstack.json.`,
-      );
-    }
-  });
-
   let envFileValues: Record<string, string> = {};
   if (deploymentName) {
     envFileValues = loadEnvFiles({
@@ -270,6 +260,8 @@ export const getVariablesFromHCL = (
   }
 
   const environmentVariables: Variables = [];
+  const processedKeys = new Set<string>();
+
   for (const key in properties) {
     if (key.indexOf('_') !== -1) {
       warn(
@@ -280,6 +272,7 @@ export const getVariablesFromHCL = (
       );
     }
     if (jsVariableNames.find((varName) => varName === key)) {
+      processedKeys.add(key);
       const pythonVariableName = convertToPythonVariable(key);
       const envVarName = terraformNameToEnvVar(pythonVariableName);
       const variableValue = properties[key];
@@ -311,6 +304,30 @@ export const getVariablesFromHCL = (
       }
     }
   }
+
+  for (const jsVarName of jsVariableNames) {
+    if (!processedKeys.has(jsVarName)) {
+      const pythonVariableName = convertToPythonVariable(jsVarName);
+      const envVarName = terraformNameToEnvVar(pythonVariableName);
+
+      if (process.env[envVarName] !== undefined) {
+        info(
+          `Setting terraform variable from environment variable ${envVarName} (not defined in goldstack.json)`,
+        );
+        environmentVariables.push([pythonVariableName, process.env[envVarName]]);
+      } else if (envFileValues[envVarName] !== undefined) {
+        info(
+          `Setting terraform variable from .env file: ${envVarName} (not defined in goldstack.json)`,
+        );
+        environmentVariables.push([pythonVariableName, envFileValues[envVarName]]);
+      } else {
+        warn(
+          `Cannot find property "${jsVarName}" in Goldstack configuration and no value found in environment variable ${envVarName} or .env files. Terraform variable ${pythonVariableName} will not be defined.`,
+        );
+      }
+    }
+  }
+
   return environmentVariables;
 };
 

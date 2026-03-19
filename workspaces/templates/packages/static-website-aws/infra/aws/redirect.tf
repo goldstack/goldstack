@@ -1,11 +1,10 @@
-
 # Creates bucket for forward domain
 resource "aws_s3_bucket" "website_redirect" {
   count = var.website_domain_redirect != null ? 1 : 0
 
   bucket = "${var.website_domain}-redirect"
 
-  # Remove this line if you want to prevent accidential deletion of bucket
+  # Remove this line if you want to prevent accidental deletion of bucket
   force_destroy = true
 
   tags = {
@@ -18,26 +17,15 @@ resource "aws_s3_bucket" "website_redirect" {
   }
 }
 
-resource "aws_s3_bucket_website_configuration" "website_redirect" {
-  count = var.website_domain_redirect != null ? 1 : 0
-
-  bucket = aws_s3_bucket.website_redirect[0].id
-
-  redirect_all_requests_to {
-    host_name = var.website_domain
-    protocol  = "https"
-  }
-}
-
 resource "aws_s3_bucket_public_access_block" "website_redirect" {
   count = var.website_domain_redirect != null ? 1 : 0
 
   bucket = aws_s3_bucket.website_redirect[0].id
 
-  block_public_acls       = false
-  block_public_policy     = false
-  ignore_public_acls      = false
-  restrict_public_buckets = false
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
 resource "aws_s3_bucket_ownership_controls" "website_redirect" {
@@ -49,19 +37,6 @@ resource "aws_s3_bucket_ownership_controls" "website_redirect" {
   }
 }
 
-resource "aws_s3_bucket_acl" "website_redirect" {
-  count = var.website_domain_redirect != null ? 1 : 0
-
-  depends_on = [
-    aws_s3_bucket_public_access_block.website_redirect,
-    aws_s3_bucket_ownership_controls.website_redirect,
-  ]
-
-  bucket = aws_s3_bucket.website_redirect[0].id
-  acl    = "public-read"
-
-}
-
 resource "aws_s3_bucket_policy" "website_redirect" {
   count = var.website_domain_redirect != null ? 1 : 0
 
@@ -71,14 +46,16 @@ resource "aws_s3_bucket_policy" "website_redirect" {
   ]
 
   bucket = aws_s3_bucket.website_redirect[0].id
-  policy = data.aws_iam_policy_document.website_redirect.json
+  policy = data.aws_iam_policy_document.website_redirect[0].json
 }
 
 data "aws_iam_policy_document" "website_redirect" {
+  count = var.website_domain_redirect != null ? 1 : 0
+
   statement {
     principals {
-      type        = "AWS"
-      identifiers = ["*"]
+      type        = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
     }
 
     actions = [
@@ -86,22 +63,42 @@ data "aws_iam_policy_document" "website_redirect" {
     ]
 
     resources = [
-      "arn:aws:s3:::${var.website_domain}-redirect/*"
+      "${aws_s3_bucket.website_redirect[0].arn}/*",
     ]
+
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceArn"
+      values   = [aws_cloudfront_distribution.website_cdn_redirect[0].arn]
+    }
   }
 }
 
-resource "aws_s3_object" "redirect_file" {
+resource "aws_cloudfront_origin_access_control" "website_redirect" {
   count = var.website_domain_redirect != null ? 1 : 0
 
-  key     = "index.html"
-  bucket  = aws_s3_bucket.website_redirect[0].bucket
-  content = "Redirect placeholder."
+  name                              = "oac-${length(var.website_domain) > 51 ? substr(var.website_domain, 0, 51) : var.website_domain}-redirect-${random_id.oac_suffix.hex}"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
 
-  content_type     = "text/html"
-  website_redirect = "https://${var.website_domain}/"
+resource "aws_cloudfront_function" "redirect" {
+  count = var.website_domain_redirect != null ? 1 : 0
 
-  force_destroy = true
+  name    = "redirect-to-${replace(var.website_domain, ".", "-")}"
+  runtime = "cloudfront-js-1.0"
+  publish = true
+  code    = <<-EOF
+    function handler(event) {
+      var response = {
+        statusCode: 301,
+        statusDescription: 'Moved Permanently',
+        headers: { location: { value: 'https://${var.website_domain}' + event.request.uri } }
+      };
+      return response;
+    }
+  EOF
 }
 
 # CloudFront for redirect (to support https://)
@@ -116,15 +113,9 @@ resource "aws_cloudfront_distribution" "website_cdn_redirect" {
   provider    = aws.us-east-1
 
   origin {
-    origin_id   = "origin-bucket-${aws_s3_bucket.website_redirect[0].id}"
-    domain_name = aws_s3_bucket_website_configuration.website_redirect[0].website_endpoint
-
-    custom_origin_config {
-      http_port              = 80
-      https_port             = 443
-      origin_protocol_policy = "http-only"
-      origin_ssl_protocols   = ["TLSv1.2"]
-    }
+    origin_id                = "origin-bucket-${aws_s3_bucket.website_redirect[0].id}"
+    domain_name              = aws_s3_bucket.website_redirect[0].bucket_regional_domain_name
+    origin_access_control_id = aws_cloudfront_origin_access_control.website_redirect[0].id
   }
 
   default_cache_behavior {
@@ -138,6 +129,11 @@ resource "aws_cloudfront_distribution" "website_cdn_redirect" {
     cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad" # CachingDisabled
     origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf" # CORS-S3Origin
     response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63" # CORSAndSecurityHeadersPolicy
+
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.redirect[0].arn
+    }
   }
 
   restrictions {
@@ -178,4 +174,3 @@ resource "aws_route53_record" "website_cdn_redirect_record" {
     evaluate_target_health = false
   }
 }
-

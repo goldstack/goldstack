@@ -415,10 +415,6 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:workspaces/utils/packages/esbuild-tailwind-ssr-plugin"\
     },\
     {\
-      "name": "@goldstack/utils-gha-agent",\
-      "reference": "workspace:workspaces/utils/packages/github-actions-agent"\
-    },\
-    {\
       "name": "lambda-compression",\
       "reference": "workspace:workspaces/utils/packages/lambda-compression"\
     },\
@@ -567,7 +563,6 @@ const RAW_RUNTIME_STATE =
     ["@goldstack/utils-docs", ["workspace:workspaces/templates-lib/packages/utils-docs"]],\
     ["@goldstack/utils-docs-cli", ["workspace:workspaces/docs/packages/utils-docs-cli"]],\
     ["@goldstack/utils-esbuild", ["workspace:workspaces/utils/packages/utils-esbuild"]],\
-    ["@goldstack/utils-gha-agent", ["workspace:workspaces/utils/packages/github-actions-agent"]],\
     ["@goldstack/utils-git", ["workspace:workspaces/utils/packages/utils-git"]],\
     ["@goldstack/utils-json-to-ts", ["workspace:workspaces/utils/packages/utils-json-to-ts"]],\
     ["@goldstack/utils-log", ["workspace:workspaces/utils/packages/utils-log"]],\
@@ -6401,29 +6396,6 @@ const RAW_RUNTIME_STATE =
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
           ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
-        ],\
-        "linkType": "SOFT"\
-      }]\
-    ]],\
-    ["@goldstack/utils-gha-agent", [\
-      ["workspace:workspaces/utils/packages/github-actions-agent", {\
-        "packageLocation": "./workspaces/utils/packages/github-actions-agent/",\
-        "packageDependencies": [\
-          ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
-          ["@goldstack/utils-gha-agent", "workspace:workspaces/utils/packages/github-actions-agent"],\
-          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
-          ["@swc/core", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:1.15.8"],\
-          ["@swc/jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:0.2.39"],\
-          ["@types/jest", "npm:30.0.0"],\
-          ["@types/node", "npm:25.0.3"],\
-          ["@types/yargs", "npm:17.0.33"],\
-          ["dotenv", "npm:17.3.1"],\
-          ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
-          ["rimraf", "npm:6.1.2"],\
-          ["source-map-support", "npm:0.5.21"],\
-          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
-          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
-          ["yargs", "npm:17.7.2"]\
         ],\
         "linkType": "SOFT"\
       }]\

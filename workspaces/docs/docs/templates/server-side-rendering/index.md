@@ -83,7 +83,7 @@ variable "my_env" {
 }
 ```
 
-And finally add this variable to all deployment configurations in `goldstack.json`:
+You can optionally define this variable in `goldstack.json`:
 
 ```json
       "configuration": {
@@ -94,6 +94,8 @@ And finally add this variable to all deployment configurations in `goldstack.jso
         "myEnv": "Value for deployment"
       }
 ```
+
+Alternatively, you can provide the value through environment variables or `.env` files (see below for details). This is useful for sensitive values that should not be committed to source control.
 
 Note that the Terraform variable `my_env` translates to `myEnv` in the JSON definition (Just remove all `_` and make the first character after `_` uppercase for your variable definitions).
 
@@ -128,7 +130,9 @@ This works very well in combination with secrets for GitHub actions.
 
 #### Providing Terraform Variables via .env Files
 
-Alternatively, you can provide Terraform variable values through `.env` files. Goldstack will load `.env` files from both the monorepo root and the package directory in the following order (later files override earlier ones):
+You can provide Terraform variable values through `.env` files. This is particularly useful for sensitive values that should not be committed to source control. Variables defined in `variables.tf` can be resolved from `.env` files even if they are not defined in `goldstack.json`.
+
+Goldstack will load `.env` files from both the monorepo root and the package directory in the following order (later files override earlier ones):
 
 1. `root/.env` - Shared across all deployments
 2. `root/.env.[deployment]` - Deployment-specific (e.g., `.env.prod`)
@@ -145,11 +149,13 @@ Note that environment variable names should be uppercase versions of the Terrafo
 
 #### Variable Resolution Priority
 
-From highest to lowest:
+When resolving Terraform variable values, Goldstack uses the following priority (from highest to lowest):
 
 1. Values defined in `goldstack.json` configurations
 2. Environment variables (`process.env`)
 3. Values from `.env` files
+
+If a variable defined in `variables.tf` is not found in any of these sources, a warning will be logged.
 
 ### Changing Esbuild behaviour
 

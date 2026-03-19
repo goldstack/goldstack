@@ -25,15 +25,15 @@ import type {
 import type { AWSTerraformState, RemoteState } from './types/awsTerraformState';
 
 export type {
-  AWSConfiguration,
-  AWSUser,
-  AWSRegion,
   AWSAccessKeyId,
-  AWSSecretAccessKey,
-  AWSProfileConfig as AWSLocalUserConfig,
   AWSAPIKeyUserConfig as AWSAPIKeyUser,
+  AWSConfiguration,
   AWSEnvironmentVariableUserConfig,
+  AWSProfileConfig as AWSLocalUserConfig,
+  AWSRegion,
+  AWSSecretAccessKey,
   AWSTerraformState,
+  AWSUser,
   RemoteState,
 };
 
