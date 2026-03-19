@@ -20,8 +20,12 @@
   },
   "dynamicRoutes": [
     {
-      "page": "/404",
-      "regex": "^\\/404$"
+      "page": "/terms-and-conditions",
+      "regex": "^\\/terms-and-conditions$"
+    },
+    {
+      "page": "/index",
+      "regex": "^\\/index$"
     },
     {
       "page": "/build_legacy",
@@ -32,92 +36,88 @@
       "regex": "^\\/build$"
     },
     {
-      "page": "/index",
-      "regex": "^\\/index$"
-    },
-    {
-      "page": "/projects/[id]/packages/[packageId]/configure/[step]",
-      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/configure\\/[step]$"
-    },
-    {
-      "page": "/projects/[id]/packages/[packageId]/download",
-      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/download$"
-    },
-    {
-      "page": "/projects/[id]/packages/[packageId]/get-template",
-      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/get-template$"
-    },
-    {
-      "page": "/templates/dynamodb",
-      "regex": "^\\/templates\\/dynamodb$"
-    },
-    {
-      "page": "/templates/express-lambda",
-      "regex": "^\\/templates\\/express-lambda$"
-    },
-    {
-      "page": "/templates/express-ses",
-      "regex": "^\\/templates\\/express-ses$"
-    },
-    {
-      "page": "/templates/go-gin",
-      "regex": "^\\/templates\\/go-gin$"
-    },
-    {
-      "page": "/templates/hetzner-vps",
-      "regex": "^\\/templates\\/hetzner-vps$"
-    },
-    {
-      "page": "/templates/lambda-api",
-      "regex": "^\\/templates\\/lambda-api$"
-    },
-    {
-      "page": "/templates/lambda-node-trigger",
-      "regex": "^\\/templates\\/lambda-node-trigger$"
-    },
-    {
-      "page": "/templates/lambda-python-job",
-      "regex": "^\\/templates\\/lambda-python-job$"
-    },
-    {
-      "page": "/templates/nextjs-bootstrap",
-      "regex": "^\\/templates\\/nextjs-bootstrap$"
-    },
-    {
-      "page": "/templates/nextjs-tailwind",
-      "regex": "^\\/templates\\/nextjs-tailwind$"
-    },
-    {
-      "page": "/templates/nextjs",
-      "regex": "^\\/templates\\/nextjs$"
-    },
-    {
-      "page": "/templates/s3",
-      "regex": "^\\/templates\\/s3$"
-    },
-    {
-      "page": "/templates/server-side-rendering",
-      "regex": "^\\/templates\\/server-side-rendering$"
-    },
-    {
-      "page": "/templates/serverless-api",
-      "regex": "^\\/templates\\/serverless-api$"
-    },
-    {
-      "page": "/templates/ses",
-      "regex": "^\\/templates\\/ses$"
-    },
-    {
-      "page": "/templates/static-website",
-      "regex": "^\\/templates\\/static-website$"
+      "page": "/404",
+      "regex": "^\\/404$"
     },
     {
       "page": "/templates/user-management",
       "regex": "^\\/templates\\/user-management$"
     },
     {
-      "page": "/terms-and-conditions",
-      "regex": "^\\/terms-and-conditions$"
+      "page": "/templates/static-website",
+      "regex": "^\\/templates\\/static-website$"
+    },
+    {
+      "page": "/templates/ses",
+      "regex": "^\\/templates\\/ses$"
+    },
+    {
+      "page": "/templates/serverless-api",
+      "regex": "^\\/templates\\/serverless-api$"
+    },
+    {
+      "page": "/templates/server-side-rendering",
+      "regex": "^\\/templates\\/server-side-rendering$"
+    },
+    {
+      "page": "/templates/s3",
+      "regex": "^\\/templates\\/s3$"
+    },
+    {
+      "page": "/templates/nextjs",
+      "regex": "^\\/templates\\/nextjs$"
+    },
+    {
+      "page": "/templates/nextjs-tailwind",
+      "regex": "^\\/templates\\/nextjs-tailwind$"
+    },
+    {
+      "page": "/templates/nextjs-bootstrap",
+      "regex": "^\\/templates\\/nextjs-bootstrap$"
+    },
+    {
+      "page": "/templates/lambda-python-job",
+      "regex": "^\\/templates\\/lambda-python-job$"
+    },
+    {
+      "page": "/templates/lambda-node-trigger",
+      "regex": "^\\/templates\\/lambda-node-trigger$"
+    },
+    {
+      "page": "/templates/lambda-api",
+      "regex": "^\\/templates\\/lambda-api$"
+    },
+    {
+      "page": "/templates/hetzner-vps",
+      "regex": "^\\/templates\\/hetzner-vps$"
+    },
+    {
+      "page": "/templates/go-gin",
+      "regex": "^\\/templates\\/go-gin$"
+    },
+    {
+      "page": "/templates/express-ses",
+      "regex": "^\\/templates\\/express-ses$"
+    },
+    {
+      "page": "/templates/express-lambda",
+      "regex": "^\\/templates\\/express-lambda$"
+    },
+    {
+      "page": "/templates/dynamodb",
+      "regex": "^\\/templates\\/dynamodb$"
+    },
+    {
+      "page": "/projects/[id]/packages/[packageId]/get-template",
+      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/get-template$"
+    },
+    {
+      "page": "/projects/[id]/packages/[packageId]/download",
+      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/download$"
+    },
+    {
+      "page": "/projects/[id]/packages/[packageId]/configure/[step]",
+      "regex": "^\\/projects\\/[id]\\/packages\\/[packageId]\\/configure\\/[step]$"
     },
     {
       "page": "/projects/[id]/packages/[packageId]/configure/[step]",
@@ -188,8 +188,8 @@
       "routeKeys": {
         "nxtPtemplate": "nxtPtemplate"
       },
-      "dataRouteRegex": "^/_next/data/OzkndIouJtWf39Bd3tSES/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/OzkndIouJtWf39Bd3tSES/templates/(?<nxtPtemplate>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/bsPISFKwALu\\-SKB1m6aRe/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/bsPISFKwALu\\-SKB1m6aRe/templates/(?<nxtPtemplate>[^/]+?)\\.json$"
     }
   ],
   "rsc": {
