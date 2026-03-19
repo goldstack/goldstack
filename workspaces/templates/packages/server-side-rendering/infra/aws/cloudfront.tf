@@ -1,13 +1,13 @@
 # Origin Access Controls for S3 buckets
 resource "aws_cloudfront_origin_access_control" "static_files" {
-  name                              = "oac-${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-static-files-${random_id.bucket_name.hex}"
+  name                              = "oac-${length(var.domain) <= 37 ? var.domain : substr(var.domain, 0, 37)}-static-files-${random_id.bucket_name.hex}"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
 }
 
 resource "aws_cloudfront_origin_access_control" "public_files" {
-  name                              = "oac-${length(var.domain) < 38 ? var.domain : substr(var.domain, 0, 38)}-public-files-${random_id.bucket_name.hex}"
+  name                              = "oac-${length(var.domain) <= 37 ? var.domain : substr(var.domain, 0, 37)}-public-files-${random_id.bucket_name.hex}"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"

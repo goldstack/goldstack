@@ -70,7 +70,7 @@ data "aws_iam_policy_document" "website_root" {
 }
 
 resource "aws_cloudfront_origin_access_control" "website_root" {
-  name                              = "oac-${length(var.website_domain) > 55 ? substr(var.website_domain, 0, 55) : var.website_domain}-root-${random_id.oac_suffix.hex}"
+  name                              = "oac-${length(var.website_domain) > 46 ? substr(var.website_domain, 0, 46) : var.website_domain}-root-${random_id.oac_suffix.hex}"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
