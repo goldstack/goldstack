@@ -72,7 +72,7 @@ resource "aws_cloudfront_origin_access_control" "website_redirect" {
 }
 
 resource "aws_cloudfront_function" "redirect" {
-  name    = "redirect-to-${replace(var.website_domain, ".", "-")}"
+  name    = "redirect-to-${replace(length(var.website_domain) > 48 ? substr(var.website_domain, 0, 48) : var.website_domain, ".", "-")}"
   runtime = "cloudfront-js-1.0"
   publish = true
   code    = <<-EOF
