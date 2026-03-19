@@ -8,11 +8,9 @@ import {
 import { readPackageConfig } from '@goldstack/utils-package';
 import { read, write } from '@goldstack/utils-sh';
 import fs from 'fs';
-
-const configSchema = require('./schemas/accountConfigSchema.json');
-const awsStateConfigSchema = require('./schemas/awsTerraformStateSchema.json');
-const deploymentConfigSchema = require('./schemas/deploymentConfigSchema.json');
-
+import configSchema from './schemas/accountConfigSchema.json';
+import awsStateConfigSchema from './schemas/awsTerraformStateSchema.json';
+import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
 import type {
   AWSAccessKeyId,
   AWSAPIKeyUserConfig,

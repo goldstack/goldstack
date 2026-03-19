@@ -2,9 +2,7 @@ import { validateConfig } from '@goldstack/utils-config';
 import { read, write } from '@goldstack/utils-sh';
 import fs from 'fs';
 import path from 'path';
-
-const deploymentsStateSchema = require('./schemas/deploymentsStateSchema.json');
-
+import deploymentsStateSchema from './schemas/deploymentsStateSchema.json';
 import type { DeploymentState, DeploymentsState } from './types/deploymentStatesTypes';
 
 const deploymentsStatePath = 'src/state/deployments.json';
