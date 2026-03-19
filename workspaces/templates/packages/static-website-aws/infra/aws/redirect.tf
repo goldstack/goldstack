@@ -77,7 +77,7 @@ data "aws_iam_policy_document" "website_redirect" {
 resource "aws_cloudfront_origin_access_control" "website_redirect" {
   count = var.website_domain_redirect != null ? 1 : 0
 
-  name                              = "oac-${length(var.website_domain) > 43 ? substr(var.website_domain, 0, 43) : var.website_domain}-redirect-${random_id.oac_suffix.hex}"
+  name                              = "oac-${length(var.website_domain) > 40 ? substr(var.website_domain, 0, 40) : var.website_domain}-redirect-${random_id.oac_suffix.hex}"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
