@@ -36,7 +36,15 @@ export async function handleRedirectCallback(args: {
   if (deploymentName === 'local') {
     let redirectUrl = window.location.href.replace('?code=dummy-local-client-code', '');
     if (state) {
-      redirectUrl = state;
+      if (isValidState(state)) {
+        redirectUrl = state;
+      } else {
+        console.warn(
+          `Invalid state parameter received: "${state}". ` +
+            `State must be a relative path starting with '/'. ` +
+            `Redirecting to original URL instead.`,
+        );
+      }
     }
     window.location.href = redirectUrl;
   } else {
