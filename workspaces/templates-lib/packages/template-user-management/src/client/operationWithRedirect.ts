@@ -57,7 +57,7 @@ export async function operationWithRedirect(args: {
     }
     let redirectUrl = '?code=dummy-local-client-code';
     if (args.state) {
-      redirectUrl = args.state;
+      redirectUrl += `&state=${encodeURIComponent(args.state)}`;
     }
     window.location.href = redirectUrl;
     return;
