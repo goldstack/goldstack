@@ -16,6 +16,7 @@ export async function operationWithRedirect(args: {
   deploymentsOutput: any;
   deploymentName?: string;
   operation: 'authorize' | 'signup';
+  state?: string;
 }): Promise<ClientAuthResult | undefined> {
   if (forceLogout) {
     return;
@@ -54,7 +55,11 @@ export async function operationWithRedirect(args: {
     if (getMockedUserAccessToken() === undefined) {
       return;
     }
-    window.location.href = '?code=dummy-local-client-code';
+    let redirectUrl = '?code=dummy-local-client-code';
+    if (args.state) {
+      redirectUrl = args.state;
+    }
+    window.location.href = redirectUrl;
     return;
   }
 

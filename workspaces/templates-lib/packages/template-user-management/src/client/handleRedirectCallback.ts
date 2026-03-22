@@ -4,6 +4,7 @@ import type { UserManagementDeployment } from '../types/UserManagementPackage';
 import { getDeploymentName } from '../userManagementConfig';
 import { getAndPersistToken } from './getAndPersistToken';
 import type { ClientAuthResult } from './getLoggedInUser';
+import { isValidState } from './state';
 
 /**
  * Handles the redirect callback from the authentication provider
@@ -14,8 +15,6 @@ export async function handleRedirectCallback(args: {
   deploymentsOutput: any;
   deploymentName?: string;
 }): Promise<ClientAuthResult | undefined> {
-  // if running on the server, such as for rendering a page for SSR, client auth
-  // cannot be performed
   if (typeof window === 'undefined') {
     return;
   }
@@ -25,6 +24,7 @@ export async function handleRedirectCallback(args: {
   if (!code) {
     return;
   }
+  const state = params.get('state');
   const deploymentName = getDeploymentName(args.deploymentName);
 
   const token = await getAndPersistToken({ ...args, code });
@@ -34,10 +34,27 @@ export async function handleRedirectCallback(args: {
   });
 
   if (deploymentName === 'local') {
-    window.location.href = window.location.href.replace('?code=dummy-local-client-code', '');
+    let redirectUrl = window.location.href.replace('?code=dummy-local-client-code', '');
+    if (state) {
+      redirectUrl = state;
+    }
+    window.location.href = redirectUrl;
   } else {
     const deployment = packageConfig.getDeployment(deploymentName);
-    window.location.href = deployment.configuration.callbackUrl;
+    if (state) {
+      if (isValidState(state)) {
+        window.location.href = state;
+      } else {
+        console.warn(
+          `Invalid state parameter received: "${state}". ` +
+            `State must be a relative path starting with '/'. ` +
+            `Redirecting to callback URL instead.`,
+        );
+        window.location.href = deployment.configuration.callbackUrl;
+      }
+    } else {
+      window.location.href = deployment.configuration.callbackUrl;
+    }
   }
   if (!token) {
     return;
@@ -45,5 +62,6 @@ export async function handleRedirectCallback(args: {
   return {
     accessToken: token.accessToken,
     idToken: token.idToken,
+    state: state || undefined,
   };
 }

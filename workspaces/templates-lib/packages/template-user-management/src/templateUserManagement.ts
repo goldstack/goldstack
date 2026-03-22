@@ -6,6 +6,7 @@ import * as cognitoClientAuth from './client/getToken';
 export type { CognitoManager } from './cognitoTokenVerify';
 
 import type { GetTokenResults } from './client/getToken';
+
 export type { GetTokenResults };
 
 import type { ClientAuthResult } from './client/getLoggedInUser';
@@ -18,6 +19,7 @@ export { getLoggedInUser, isAuthenticated } from './client/getLoggedInUser';
 export { handleRedirectCallback } from './client/handleRedirectCallback';
 export { operationWithRedirect } from './client/operationWithRedirect';
 export { performLogout } from './client/performLogout';
+export { isValidState } from './client/state';
 export { connectWithCognito } from './cognitoTokenVerify';
 export {
   getMockedUserAccessToken,
@@ -44,6 +46,7 @@ export async function getEndpoint(args: {
   packageSchema: any;
   deploymentsOutput: any;
   deploymentName?: string;
+  state?: string;
 }): Promise<string> {
   return getEndpointLib(args);
 }
@@ -64,12 +67,18 @@ export async function getToken(args: {
  * <p>Will redirect to Cognito hosted UI for sign in if required.
  * <p>Sets client-side cookies and session variables.
  * <p>For more control on what gets persisted on the client-side, use the method <code>getToken</code>.
+ *
+ * @param args.state - Optional state parameter to preserve through the authentication flow.
+ *                     Must be a relative path starting with '/' (e.g., '/app/automation/xxx').
+ *                     After authentication, the user will be redirected to this path instead of the callback URL.
+ *                     Used for preserving deep links when users need to authenticate before accessing protected routes.
  */
 export async function loginWithRedirect(args: {
   goldstackConfig: any;
   packageSchema: any;
   deploymentsOutput: any;
   deploymentName?: string;
+  state?: string;
 }): Promise<ClientAuthResult | undefined> {
   return operationWithRedirect({ ...args, operation: 'authorize' });
 }
@@ -79,12 +88,18 @@ export async function loginWithRedirect(args: {
  * <p>Will redirect to Cognito hosted UI for signing up if required.
  * <p>Sets client-side cookies and session variables.
  * <p>For more control on what gets persisted on the client-side, use the method <code>getToken</code>.
+ *
+ * @param args.state - Optional state parameter to preserve through the authentication flow.
+ *                     Must be a relative path starting with '/' (e.g., '/app/automation/xxx').
+ *                     After authentication, the user will be redirected to this path instead of the callback URL.
+ *                     Used for preserving deep links when users need to authenticate before accessing protected routes.
  */
 export async function signUpWithRedirect(args: {
   goldstackConfig: any;
   packageSchema: any;
   deploymentsOutput: any;
   deploymentName?: string;
+  state?: string;
 }): Promise<ClientAuthResult | undefined> {
   return operationWithRedirect({ ...args, operation: 'signup' });
 }

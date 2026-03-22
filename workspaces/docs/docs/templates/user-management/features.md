@@ -3,3 +3,4 @@
 - Library with convenient methods to authenticate user on the client.
 - Library to validate tokens on the server.
 - Automatically verifies users email addresses.
+- Supports OAuth `state` parameter for preserving deep links during authentication flows.

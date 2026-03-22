@@ -5,6 +5,7 @@
 export interface ClientAuthResult {
   accessToken: string;
   idToken: string;
+  state?: string;
 }
 
 import { forceLogout } from './state';

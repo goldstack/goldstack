@@ -79,6 +79,41 @@ Authentication also involves requesting a refresh token. The refresh token will 
 
 Note during the sign in process, the user will always be redirected to the callback URL you specified during configuration after a successful sign in.
 
+#### Preserving Deep Links During Authentication
+
+When users access a deep link while unauthenticated (e.g., `/app/automation/xxx/skill/yyy`), you can preserve the destination using the `state` parameter:
+
+```typescript
+import { loginWithRedirect, handleRedirectCallback, getLoggedInUser } from 'user-management';
+
+// Before redirecting to Cognito
+const currentPath = window.location.pathname + window.location.search;
+await loginWithRedirect(undefined, currentPath);
+
+// After Cognito callback: /app?code=abc&state=/app/automation/xxx/skill/yyy
+// handleRedirectCallback extracts state and redirects to the deep link
+const result = await handleRedirectCallback();
+// result.state contains the preserved path
+```
+
+The `state` parameter must be a relative path starting with `/` (e.g., `/app/automation/xxx`). This prevents open redirect vulnerabilities. If an invalid state is provided, a warning will be logged and the user will be redirected to the callback URL instead.
+
+You can also validate state values using the exported `isValidState` function:
+
+```typescript
+import { isValidState } from 'user-management';
+
+if (isValidState(path)) {
+  await loginWithRedirect(undefined, path);
+}
+```
+
+The `state` parameter is also available for `signUpWithRedirect`:
+
+```typescript
+await signUpWithRedirect(undefined, currentPath);
+```
+
 The library also supports logging out users. For this, simply call the method `performLogout`. The user will be redirected to the Cognito hosted UI sign in screen.
 
 ```typescript

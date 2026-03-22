@@ -2,6 +2,7 @@ import {
   type CognitoManager,
   type Endpoint,
   type GetCookieSettingsResult,
+  isValidState,
   connectWithCognito as templateConnect,
   getCookieSettings as templateGetCookieSettings,
   getEndpoint as templateGetEndpoint,
@@ -24,6 +25,7 @@ export {
   getMockedUserAccessToken,
   getMockedUserIdToken,
   isAuthenticated,
+  isValidState,
   setLocalUserManager,
   setMockedUserAccessToken,
   setMockedUserIdToken,
@@ -34,14 +36,19 @@ export {
  *
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
+ * @param state - Optional state parameter to preserve through the authentication flow.
+ *                Must be a relative path starting with '/' (e.g., '/app/automation/xxx').
+ *                After authentication, the user will be redirected to this path instead of the callback URL.
+ *                Used for preserving deep links when users need to authenticate before accessing protected routes.
  * @returns A promise that resolves when the redirect is initiated.
  */
-export async function loginWithRedirect(deploymentName?: string) {
+export async function loginWithRedirect(deploymentName?: string, state?: string) {
   return templateLoginWithRedirect({
     goldstackConfig,
     packageSchema,
     deploymentsOutput,
     deploymentName,
+    state,
   });
 }
 
@@ -50,14 +57,19 @@ export async function loginWithRedirect(deploymentName?: string) {
  *
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
+ * @param state - Optional state parameter to preserve through the authentication flow.
+ *                Must be a relative path starting with '/' (e.g., '/app/automation/xxx').
+ *                After authentication, the user will be redirected to this path instead of the callback URL.
+ *                Used for preserving deep links when users need to authenticate before accessing protected routes.
  * @returns A promise that resolves when the redirect is initiated.
  */
-export async function signUpWithRedirect(deploymentName?: string) {
+export async function signUpWithRedirect(deploymentName?: string, state?: string) {
   return templateSignUpWithRedirect({
     goldstackConfig,
     packageSchema,
     deploymentsOutput,
     deploymentName,
+    state,
   });
 }
 
@@ -67,7 +79,7 @@ export async function signUpWithRedirect(deploymentName?: string) {
  *
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
- * @returns A promise that resolves with the authentication result.
+ * @returns A promise that resolves with the authentication result, including the state parameter if present.
  */
 export async function handleRedirectCallback(deploymentName?: string) {
   return templateHandleRedirectCallback({
@@ -116,15 +128,22 @@ export async function connectWithCognito(deploymentName?: string): Promise<Cogni
  * @param endpoint - The type of endpoint to retrieve (e.g., 'authorize', 'token', 'logout').
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
+ * @param state - Optional state parameter to include in the authorization URL.
+ *                Must be a relative path starting with '/' (e.g., '/app/automation/xxx').
  * @returns A promise that resolves with the endpoint URL string.
  */
-export async function getEndpoint(endpoint: Endpoint, deploymentName?: string): Promise<string> {
+export async function getEndpoint(
+  endpoint: Endpoint,
+  deploymentName?: string,
+  state?: string,
+): Promise<string> {
   return templateGetEndpoint({
     endpoint,
     goldstackConfig,
     packageSchema,
     deploymentsOutput,
     deploymentName,
+    state,
   });
 }
 
