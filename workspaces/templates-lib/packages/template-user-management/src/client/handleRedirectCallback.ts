@@ -42,6 +42,14 @@ export async function handleRedirectCallback(args: {
         console.warn(
           `Invalid state parameter received: "${state}". ` +
             `State must be a relative path starting with '/'. ` +
+            `Redirecting to local callback URL instead.`,
+        );
+      }
+        redirectUrl = state;
+      } else {
+        console.warn(
+          `Invalid state parameter received: "${state}". ` +
+            `State must be a relative path starting with '/'. ` +
             `Redirecting to original URL instead.`,
         );
       }
