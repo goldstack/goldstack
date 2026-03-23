@@ -12,3 +12,15 @@ export function setForceLogout(value: boolean) {
 export function setRefreshTokenStorage(token: string | undefined) {
   refreshTokenStorage = token;
 }
+
+/**
+ * Validates that a state parameter is a safe relative path.
+ * Prevents open redirect vulnerabilities by rejecting absolute URLs
+ * and protocol-relative URLs.
+ *
+ * @param state - The state value to validate
+ * @returns true if the state is a valid relative path
+ */
+export function isValidState(state: string): boolean {
+  return state.startsWith('/') && !state.startsWith('//') && !state.includes('://');
+}

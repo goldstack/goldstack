@@ -1,7 +1,10 @@
 import {
+  type ClientAuthResult,
   type CognitoManager,
   type Endpoint,
   type GetCookieSettingsResult,
+  isValidState,
+  type LoginOptions,
   connectWithCognito as templateConnect,
   getCookieSettings as templateGetCookieSettings,
   getEndpoint as templateGetEndpoint,
@@ -15,7 +18,17 @@ import goldstackConfig from './../goldstack.json';
 import packageSchema from './../schemas/package.schema.json';
 import deploymentsOutput from './state/deployments.json';
 
-export type { ClientAuthResult } from '@goldstack/template-user-management';
+function parseRedirectArgs(
+  deploymentNameOrOptions?: string | LoginOptions,
+  options?: LoginOptions,
+): { deploymentName?: string; options?: LoginOptions } {
+  if (typeof deploymentNameOrOptions === 'string') {
+    return { deploymentName: deploymentNameOrOptions, options };
+  }
+  return { options: deploymentNameOrOptions };
+}
+
+export type { ClientAuthResult, LoginOptions } from '@goldstack/template-user-management';
 export {
   generateTestAccessToken,
   generateTestIdToken,
@@ -24,6 +37,7 @@ export {
   getMockedUserAccessToken,
   getMockedUserIdToken,
   isAuthenticated,
+  isValidState,
   setLocalUserManager,
   setMockedUserAccessToken,
   setMockedUserIdToken,
@@ -32,32 +46,84 @@ export {
 /**
  * Initiates the login process by redirecting the user to the Cognito hosted UI.
  *
- * @param deploymentName - Optional name of the deployment to use. If not provided,
- *                         uses the deployment specified in environment variables.
- * @returns A promise that resolves when the redirect is initiated.
+ * By default, the current URL (pathname + search + hash) is automatically preserved
+ * and the user will be redirected back after authentication.
+ *
+ * @param deploymentNameOrOptions - Either:
+ *   - A string specifying the deployment name
+ *   - A LoginOptions object with targetUrl or doNotPreservePath
+ * @param options - Options if first parameter is deployment name string
+ *
+ * @example
+ * // Auto-preserve current URL
+ * await loginWithRedirect();
+ *
+ * // Specify deployment
+ * await loginWithRedirect('prod');
+ *
+ * // Redirect to specific URL after auth
+ * await loginWithRedirect({ targetUrl: '/dashboard' });
+ *
+ * // Skip path preservation, use callback URL
+ * await loginWithRedirect({ doNotPreservePath: true });
+ *
+ * // Specify deployment and options
+ * await loginWithRedirect('prod', { targetUrl: '/dashboard' });
  */
-export async function loginWithRedirect(deploymentName?: string) {
+export async function loginWithRedirect(
+  deploymentNameOrOptions?: string | LoginOptions,
+  options?: LoginOptions,
+): Promise<ClientAuthResult | undefined> {
+  const { deploymentName, options: opts } = parseRedirectArgs(deploymentNameOrOptions, options);
+
   return templateLoginWithRedirect({
     goldstackConfig,
     packageSchema,
     deploymentsOutput,
     deploymentName,
+    options: opts,
   });
 }
 
 /**
  * Initiates the sign-up process by redirecting the user to the Cognito hosted UI.
  *
- * @param deploymentName - Optional name of the deployment to use. If not provided,
- *                         uses the deployment specified in environment variables.
- * @returns A promise that resolves when the redirect is initiated.
+ * By default, the current URL (pathname + search + hash) is automatically preserved
+ * and the user will be redirected back after authentication.
+ *
+ * @param deploymentNameOrOptions - Either:
+ *   - A string specifying the deployment name
+ *   - A LoginOptions object with targetUrl or doNotPreservePath
+ * @param options - Options if first parameter is deployment name string
+ *
+ * @example
+ * // Auto-preserve current URL
+ * await signUpWithRedirect();
+ *
+ * // Specify deployment
+ * await signUpWithRedirect('prod');
+ *
+ * // Redirect to specific URL after auth
+ * await signUpWithRedirect({ targetUrl: '/dashboard' });
+ *
+ * // Skip path preservation, use callback URL
+ * await signUpWithRedirect({ doNotPreservePath: true });
+ *
+ * // Specify deployment and options
+ * await signUpWithRedirect('prod', { targetUrl: '/dashboard' });
  */
-export async function signUpWithRedirect(deploymentName?: string) {
+export async function signUpWithRedirect(
+  deploymentNameOrOptions?: string | LoginOptions,
+  options?: LoginOptions,
+): Promise<ClientAuthResult | undefined> {
+  const { deploymentName, options: opts } = parseRedirectArgs(deploymentNameOrOptions, options);
+
   return templateSignUpWithRedirect({
     goldstackConfig,
     packageSchema,
     deploymentsOutput,
     deploymentName,
+    options: opts,
   });
 }
 
@@ -65,9 +131,13 @@ export async function signUpWithRedirect(deploymentName?: string) {
  * Handles the redirect callback from Cognito after authentication.
  * This function should be called on the page that Cognito redirects to after login/signup.
  *
+ * Note: In browser environments, this function performs a page redirect and never returns
+ * to the caller. The user will be navigated to the original URL (auto-preserved) or
+ * the callback URL if doNotPreservePath was specified.
+ * The return value is only relevant for Jest test environments.
+ *
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
- * @returns A promise that resolves with the authentication result.
  */
 export async function handleRedirectCallback(deploymentName?: string) {
   return templateHandleRedirectCallback({

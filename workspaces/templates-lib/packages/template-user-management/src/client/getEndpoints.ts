@@ -13,6 +13,7 @@ export async function getEndpoint(args: {
   packageSchema: any;
   deploymentsOutput: any;
   deploymentName?: string;
+  state?: string;
 }): Promise<string> {
   const deploymentName = getDeploymentName(args.deploymentName);
 
@@ -38,7 +39,8 @@ export async function getEndpoint(args: {
         `&client_id=${deploymentOutput.terraform.user_pool_client_id.value}` +
         `&redirect_uri=${deployment.configuration.callbackUrl}` +
         '&code_challenge_method=S256' +
-        `&code_challenge=${await getCodeChallenge()}`
+        `&code_challenge=${await getCodeChallenge()}` +
+        (args.state ? `&state=${encodeURIComponent(args.state)}` : '')
       );
     case 'signup':
       return (
@@ -46,7 +48,8 @@ export async function getEndpoint(args: {
         `&client_id=${deploymentOutput.terraform.user_pool_client_id.value}` +
         `&redirect_uri=${deployment.configuration.callbackUrl}` +
         '&code_challenge_method=S256' +
-        `&code_challenge=${await getCodeChallenge()}`
+        `&code_challenge=${await getCodeChallenge()}` +
+        (args.state ? `&state=${encodeURIComponent(args.state)}` : '')
       );
     case 'token':
       return `${baseUrl}/oauth2/token`;
