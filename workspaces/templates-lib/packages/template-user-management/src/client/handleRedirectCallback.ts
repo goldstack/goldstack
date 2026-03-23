@@ -34,33 +34,15 @@ export async function handleRedirectCallback(args: {
   });
 
   if (deploymentName === 'local') {
-    const redirectUrl = window.location.href.replace('?code=dummy-local-client-code', '');
+    let redirectUrl = window.location.href.replace('?code=dummy-local-client-code', '');
     if (state) {
       if (isValidState(state)) {
-        window.location.href = state;
-      } else {
-        console.warn(
-          `Invalid state parameter received: "${state}". ` +
-            `State must be a relative path starting with '/'. ` +
-            `Redirecting to callback URL instead.`,
-        );
-        window.location.href = redirectUrl;
-      }
-    } else {
-      window.location.href = redirectUrl;
         redirectUrl = state;
+      } else {
         console.warn(
           `Invalid state parameter received: "${state}". ` +
             `State must be a relative path starting with '/'. ` +
             `Redirecting to local callback URL instead.`,
-        );
-      }
-        redirectUrl = state;
-      } else {
-        console.warn(
-          `Invalid state parameter received: "${state}". ` +
-            `State must be a relative path starting with '/'. ` +
-            `Redirecting to original URL instead.`,
         );
       }
     }
