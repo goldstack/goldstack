@@ -3,6 +3,7 @@ import {
   type Endpoint,
   type GetCookieSettingsResult,
   isValidState,
+  type LoginOptions,
   connectWithCognito as templateConnect,
   getCookieSettings as templateGetCookieSettings,
   getEndpoint as templateGetEndpoint,
@@ -16,7 +17,7 @@ import goldstackConfig from './../goldstack.json';
 import packageSchema from './../schemas/package.schema.json';
 import deploymentsOutput from './state/deployments.json';
 
-export type { ClientAuthResult } from '@goldstack/template-user-management';
+export type { ClientAuthResult, LoginOptions } from '@goldstack/template-user-management';
 export {
   generateTestAccessToken,
   generateTestIdToken,
@@ -34,42 +35,102 @@ export {
 /**
  * Initiates the login process by redirecting the user to the Cognito hosted UI.
  *
- * @param deploymentName - Optional name of the deployment to use. If not provided,
- *                         uses the deployment specified in environment variables.
- * @param state - Optional state parameter to preserve through the authentication flow.
- *                Must be a relative path starting with '/' (e.g., '/app/automation/xxx').
- *                After authentication, the user will be redirected to this path instead of the callback URL.
- *                Used for preserving deep links when users need to authenticate before accessing protected routes.
- * @returns A promise that resolves when the redirect is initiated.
+ * By default, the current URL (pathname + search + hash) is automatically preserved
+ * and the user will be redirected back after authentication.
+ *
+ * @param deploymentNameOrOptions - Either:
+ *   - A string specifying the deployment name
+ *   - A LoginOptions object with targetUrl or doNotPreservePath
+ * @param options - Options if first parameter is deployment name string
+ *
+ * @example
+ * // Auto-preserve current URL
+ * await loginWithRedirect();
+ *
+ * // Specify deployment
+ * await loginWithRedirect('prod');
+ *
+ * // Redirect to specific URL after auth
+ * await loginWithRedirect({ targetUrl: '/dashboard' });
+ *
+ * // Skip path preservation, use callback URL
+ * await loginWithRedirect({ doNotPreservePath: true });
+ *
+ * // Specify deployment and options
+ * await loginWithRedirect('prod', { targetUrl: '/dashboard' });
  */
-export async function loginWithRedirect(deploymentName?: string, state?: string) {
+export async function loginWithRedirect(
+  deploymentNameOrOptions?: string | LoginOptions,
+  options?: LoginOptions,
+) {
+  let deploymentName: string | undefined;
+  let opts: LoginOptions | undefined;
+
+  if (typeof deploymentNameOrOptions === 'string') {
+    deploymentName = deploymentNameOrOptions;
+    opts = options;
+  } else {
+    opts = deploymentNameOrOptions;
+  }
+
   return templateLoginWithRedirect({
     goldstackConfig,
     packageSchema,
     deploymentsOutput,
     deploymentName,
-    state,
+    options: opts,
+    operation: 'authorize',
   });
 }
 
 /**
  * Initiates the sign-up process by redirecting the user to the Cognito hosted UI.
  *
- * @param deploymentName - Optional name of the deployment to use. If not provided,
- *                         uses the deployment specified in environment variables.
- * @param state - Optional state parameter to preserve through the authentication flow.
- *                Must be a relative path starting with '/' (e.g., '/app/automation/xxx').
- *                After authentication, the user will be redirected to this path instead of the callback URL.
- *                Used for preserving deep links when users need to authenticate before accessing protected routes.
- * @returns A promise that resolves when the redirect is initiated.
+ * By default, the current URL (pathname + search + hash) is automatically preserved
+ * and the user will be redirected back after authentication.
+ *
+ * @param deploymentNameOrOptions - Either:
+ *   - A string specifying the deployment name
+ *   - A LoginOptions object with targetUrl or doNotPreservePath
+ * @param options - Options if first parameter is deployment name string
+ *
+ * @example
+ * // Auto-preserve current URL
+ * await signUpWithRedirect();
+ *
+ * // Specify deployment
+ * await signUpWithRedirect('prod');
+ *
+ * // Redirect to specific URL after auth
+ * await signUpWithRedirect({ targetUrl: '/dashboard' });
+ *
+ * // Skip path preservation, use callback URL
+ * await signUpWithRedirect({ doNotPreservePath: true });
+ *
+ * // Specify deployment and options
+ * await signUpWithRedirect('prod', { targetUrl: '/dashboard' });
  */
-export async function signUpWithRedirect(deploymentName?: string, state?: string) {
+export async function signUpWithRedirect(
+  deploymentNameOrOptions?: string | LoginOptions,
+  options?: LoginOptions,
+) {
+  let deploymentName: string | undefined;
+  let opts: LoginOptions | undefined;
+
+  if (typeof deploymentNameOrOptions === 'string') {
+    deploymentName = deploymentNameOrOptions;
+    opts = options;
+  } else {
+    opts = deploymentNameOrOptions;
+  }
+
   return templateSignUpWithRedirect({
     goldstackConfig,
     packageSchema,
     deploymentsOutput,
     deploymentName,
-    state,
+    options: opts,
+    operation: 'signup',
   });
 }
 
@@ -78,7 +139,8 @@ export async function signUpWithRedirect(deploymentName?: string, state?: string
  * This function should be called on the page that Cognito redirects to after login/signup.
  *
  * Note: In browser environments, this function performs a page redirect and never returns
- * to the caller. The user will be navigated to the state path (if valid) or the callback URL.
+ * to the caller. The user will be navigated to the original URL (auto-preserved) or
+ * the callback URL if doNotPreservePath was specified.
  * The return value is only relevant for Jest test environments.
  *
  * @param deploymentName - Optional name of the deployment to use. If not provided,
@@ -131,22 +193,15 @@ export async function connectWithCognito(deploymentName?: string): Promise<Cogni
  * @param endpoint - The type of endpoint to retrieve (e.g., 'authorize', 'token', 'logout').
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
- * @param state - Optional state parameter to include in the authorization URL.
- *                Must be a relative path starting with '/' (e.g., '/app/automation/xxx').
  * @returns A promise that resolves with the endpoint URL string.
  */
-export async function getEndpoint(
-  endpoint: Endpoint,
-  deploymentName?: string,
-  state?: string,
-): Promise<string> {
+export async function getEndpoint(endpoint: Endpoint, deploymentName?: string): Promise<string> {
   return templateGetEndpoint({
     endpoint,
     goldstackConfig,
     packageSchema,
     deploymentsOutput,
     deploymentName,
-    state,
   });
 }
 

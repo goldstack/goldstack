@@ -1,5 +1,6 @@
 export * from './types/UserManagementPackage';
 
+import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import { getEndpoint as getEndpointLib } from './client/getEndpoints';
 import * as cognitoClientAuth from './client/getToken';
 
@@ -34,11 +35,98 @@ export {
   setLocalUserManager,
 } from './userManagementServerMock';
 
+import type UserManagementPackage from './types/UserManagementPackage';
+import type { UserManagementDeployment } from './types/UserManagementPackage';
+import { getDeploymentName } from './userManagementConfig';
+
 export type Endpoint =
   | 'authorize' // https://docs.aws.amazon.com/cognito/latest/developerguide/authorization-endpoint.html
   | 'signup'
   | 'token' // https://docs.aws.amazon.com/cognito/latest/developerguide/token-endpoint.html
   | 'logout'; // https://docs.aws.amazon.com/cognito/latest/developerguide/logout-endpoint.html
+
+/**
+ * Options for login and signup redirect operations.
+ */
+export interface LoginOptions {
+  /**
+   * Override the URL to redirect to after authentication.
+   * By default, the current URL (pathname + search + hash) is preserved.
+   * Must be a relative path starting with '/' (e.g., '/app/dashboard').
+   */
+  targetUrl?: string;
+  /**
+   * If true, redirect to the callback URL instead of preserving the current path.
+   * Useful when you want to always redirect to a default page after authentication.
+   */
+  doNotPreservePath?: boolean;
+}
+
+/**
+ * Internal arguments for redirect operations.
+ */
+export interface RedirectArgs {
+  goldstackConfig: any;
+  packageSchema: any;
+  deploymentsOutput: any;
+  deploymentName?: string;
+  options?: LoginOptions;
+  operation: 'authorize' | 'signup';
+}
+
+/**
+ * Parses the flexible first argument to extract deployment name and options.
+ */
+function parseRedirectArgs(
+  deploymentNameOrOptions?: string | LoginOptions,
+  options?: LoginOptions,
+): { deploymentName?: string; options?: LoginOptions } {
+  if (typeof deploymentNameOrOptions === 'string') {
+    return { deploymentName: deploymentNameOrOptions, options };
+  }
+  return { deploymentName: undefined, options: deploymentNameOrOptions };
+}
+
+/**
+ * Determines the target URL after authentication.
+ * Auto-captures current URL unless doNotPreservePath is set.
+ * Excludes callback URL from auto-capture.
+ */
+function determineTargetUrl(
+  options: LoginOptions | undefined,
+  deploymentName: string | undefined,
+  packageConfig: EmbeddedPackageConfig<UserManagementPackage, UserManagementDeployment>,
+): string | undefined {
+  if (options?.doNotPreservePath) {
+    return undefined;
+  }
+
+  if (options?.targetUrl) {
+    return options.targetUrl;
+  }
+
+  // Auto-capture current URL
+  if (typeof window === 'undefined') {
+    return undefined;
+  }
+
+  const currentUrl = window.location.pathname + window.location.search + window.location.hash;
+
+  // Exclude callback URL from auto-capture
+  try {
+    const deployment = packageConfig.getDeployment(deploymentName || 'default');
+    const callbackUrl = deployment.configuration.callbackUrl;
+    const callbackPath = new URL(callbackUrl).pathname;
+
+    if (currentUrl === callbackPath || currentUrl.startsWith(callbackUrl)) {
+      return undefined;
+    }
+  } catch {
+    // If we can't parse callback URL, proceed with auto-capture
+  }
+
+  return currentUrl || undefined;
+}
 
 export async function getEndpoint(args: {
   goldstackConfig: any;
@@ -63,43 +151,91 @@ export async function getToken(args: {
 }
 
 /**
- * <p>Performs client-side authentication.
- * <p>Will redirect to Cognito hosted UI for sign in if required.
- * <p>Sets client-side cookies and session variables.
- * <p>For more control on what gets persisted on the client-side, use the method <code>getToken</code>.
+ * Performs client-side authentication.
+ * Will redirect to Cognito hosted UI for sign in if required.
+ * Sets client-side cookies and session variables.
  *
- * @param args.state - Optional state parameter to preserve through the authentication flow.
- *                     Must be a relative path starting with '/' (e.g., '/app/automation/xxx').
- *                     After authentication, the user will be redirected to this path instead of the callback URL.
- *                     Used for preserving deep links when users need to authenticate before accessing protected routes.
+ * By default, the current URL (pathname + search + hash) is automatically preserved
+ * and the user will be redirected back after authentication.
+ *
+ * @example
+ * // Auto-preserve current URL
+ * await loginWithRedirect(args);
+ *
+ * // Specify deployment
+ * await loginWithRedirect({ ...args, deploymentName: 'prod' });
+ *
+ * // Redirect to specific URL after auth
+ * await loginWithRedirect({ ...args, options: { targetUrl: '/dashboard' } });
+ *
+ * // Skip path preservation
+ * await loginWithRedirect({ ...args, options: { doNotPreservePath: true } });
  */
-export async function loginWithRedirect(args: {
-  goldstackConfig: any;
-  packageSchema: any;
-  deploymentsOutput: any;
-  deploymentName?: string;
-  state?: string;
-}): Promise<ClientAuthResult | undefined> {
-  return operationWithRedirect({ ...args, operation: 'authorize' });
+export async function loginWithRedirect(args: RedirectArgs): Promise<ClientAuthResult | undefined> {
+  const { deploymentName, options } = {
+    deploymentName: args.deploymentName,
+    options: args.options,
+  };
+
+  const packageConfig = new EmbeddedPackageConfig<UserManagementPackage, UserManagementDeployment>({
+    goldstackJson: args.goldstackConfig,
+    packageSchema: args.packageSchema,
+  });
+
+  const state = determineTargetUrl(options, deploymentName, packageConfig);
+
+  return operationWithRedirect({
+    goldstackConfig: args.goldstackConfig,
+    packageSchema: args.packageSchema,
+    deploymentsOutput: args.deploymentsOutput,
+    deploymentName: args.deploymentName,
+    operation: args.operation,
+    state,
+  });
 }
 
 /**
- * <p>Performs client-side authentication.
- * <p>Will redirect to Cognito hosted UI for signing up if required.
- * <p>Sets client-side cookies and session variables.
- * <p>For more control on what gets persisted on the client-side, use the method <code>getToken</code>.
+ * Performs client-side sign up.
+ * Will redirect to Cognito hosted UI for signing up if required.
+ * Sets client-side cookies and session variables.
  *
- * @param args.state - Optional state parameter to preserve through the authentication flow.
- *                     Must be a relative path starting with '/' (e.g., '/app/automation/xxx').
- *                     After authentication, the user will be redirected to this path instead of the callback URL.
- *                     Used for preserving deep links when users need to authenticate before accessing protected routes.
+ * By default, the current URL (pathname + search + hash) is automatically preserved
+ * and the user will be redirected back after authentication.
+ *
+ * @example
+ * // Auto-preserve current URL
+ * await signUpWithRedirect(args);
+ *
+ * // Specify deployment
+ * await signUpWithRedirect({ ...args, deploymentName: 'prod' });
+ *
+ * // Redirect to specific URL after auth
+ * await signUpWithRedirect({ ...args, options: { targetUrl: '/dashboard' } });
+ *
+ * // Skip path preservation
+ * await signUpWithRedirect({ ...args, options: { doNotPreservePath: true } });
  */
-export async function signUpWithRedirect(args: {
-  goldstackConfig: any;
-  packageSchema: any;
-  deploymentsOutput: any;
-  deploymentName?: string;
-  state?: string;
-}): Promise<ClientAuthResult | undefined> {
-  return operationWithRedirect({ ...args, operation: 'signup' });
+export async function signUpWithRedirect(
+  args: RedirectArgs,
+): Promise<ClientAuthResult | undefined> {
+  const { deploymentName, options } = {
+    deploymentName: args.deploymentName,
+    options: args.options,
+  };
+
+  const packageConfig = new EmbeddedPackageConfig<UserManagementPackage, UserManagementDeployment>({
+    goldstackJson: args.goldstackConfig,
+    packageSchema: args.packageSchema,
+  });
+
+  const state = determineTargetUrl(options, deploymentName, packageConfig);
+
+  return operationWithRedirect({
+    goldstackConfig: args.goldstackConfig,
+    packageSchema: args.packageSchema,
+    deploymentsOutput: args.deploymentsOutput,
+    deploymentName: args.deploymentName,
+    operation: args.operation,
+    state,
+  });
 }
