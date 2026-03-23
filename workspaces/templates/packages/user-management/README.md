@@ -11,6 +11,7 @@ The user management template provides the infrastructure and utility libraries f
 *   Library with convenient methods to authenticate user on the client.
 *   Library to validate tokens on the server.
 *   Automatically verifies users email addresses.
+*   Supports OAuth `state` parameter for preserving deep links during authentication flows.
 
 ## Configure
 
@@ -113,6 +114,52 @@ const Index = (props: { message: string }): React.ReactNode => {
 Authentication also involves requesting a refresh token. The refresh token will be kept in an in-memory variable and will be used to require a new access and id token if the existing ones are expired.
 
 Note during the sign in process, the user will always be redirected to the callback URL you specified during configuration after a successful sign in.
+
+#### Automatic Deep Link Preservation
+
+By default, the current URL (pathname, search, and hash) is automatically preserved when calling `loginWithRedirect`. After authentication, the user is redirected back to their original location.
+
+```typescript
+import { loginWithRedirect, handleRedirectCallback } from 'user-management';
+
+// User is on /app/automation/xxx/skill/yyy
+// Current URL is automatically preserved
+await loginWithRedirect();
+
+// After Cognito redirects back to callback URL
+// call handleRedirectCallback on that page:
+await handleRedirectCallback();
+// User is automatically redirected back to /app/automation/xxx/skill/yyy
+```
+
+Note: In browser environments, `handleRedirectCallback` performs a redirect and never returns to the caller.
+
+#### Overriding Redirect Behavior
+
+To redirect to a specific URL after authentication instead of the current URL:
+
+```typescript
+await loginWithRedirect({ targetUrl: '/dashboard' });
+```
+
+To skip deep link preservation and always use the callback URL:
+
+```typescript
+await loginWithRedirect({ doNotPreservePath: true });
+```
+
+To specify a deployment along with options:
+
+```typescript
+await loginWithRedirect('prod', { targetUrl: '/dashboard' });
+```
+
+The same options work for `signUpWithRedirect`:
+
+```typescript
+await signUpWithRedirect(); // Auto-preserve current URL
+await signUpWithRedirect({ targetUrl: '/welcome' }); // Redirect to specific URL
+```
 
 The library also supports logging out users. For this, simply call the method `performLogout`. The user will be redirected to the Cognito hosted UI sign in screen.
 

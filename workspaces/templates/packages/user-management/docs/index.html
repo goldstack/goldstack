@@ -11,6 +11,7 @@
 <li>Library with convenient methods to authenticate user on the client.</li>
 <li>Library to validate tokens on the server.</li>
 <li>Automatically verifies users email addresses.</li>
+<li>Supports OAuth <code class="inline">state</code> parameter for preserving deep links during authentication flows.</li>
 </ul></div><p></p>
 <h2 class="heading"><span id="configure"></span><a href="#configure">Configure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
@@ -147,6 +148,54 @@
 <p><code class="inline">loginWithRedirect</code> will redirect the user to the sign in page if required. The method <code class="inline">handleRedirectCallback</code> will automatically obtain the access and id token and set the cookies <code class="inline">goldstack_access_token</code> and <code class="inline">goldstack_id_token</code> that will be included in all server requests.</p>
 <p>Authentication also involves requesting a refresh token. The refresh token will be kept in an in-memory variable and will be used to require a new access and id token if the existing ones are expired.</p>
 <p>Note during the sign in process, the user will always be redirected to the callback URL you specified during configuration after a successful sign in.</p>
+<h4 class="heading"><span id="automatic-deep-link-preservation-1"></span><a href="#automatic-deep-link-preservation-1"><span id="automatic-deep-link-preservation"></span><a href="#automatic-deep-link-preservation" class="relative">Automatic Deep Link Preservation</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<p>By default, the current URL (pathname, search, and hash) is automatically preserved when calling <code class="inline">loginWithRedirect</code>. After authentication, the user is redirected back to their original location.</p>
+<pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> loginWithRedirect<span class="token punctuation">,</span> handleRedirectCallback <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'user-management'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// User is on /app/automation/xxx/skill/yyy</span>
+<span class="token comment">// Current URL is automatically preserved</span>
+<span class="token keyword">await</span> <span class="token function">loginWithRedirect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// After Cognito redirects back to callback URL</span>
+<span class="token comment">// call handleRedirectCallback on that page:</span>
+<span class="token keyword">await</span> <span class="token function">handleRedirectCallback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// User is automatically redirected back to /app/automation/xxx/skill/yyy</span>
+</code></pre>
+<p>Note: In browser environments, <code class="inline">handleRedirectCallback</code> performs a redirect and never returns to the caller.</p>
+<h4 class="heading"><span id="overriding-redirect-behavior-1"></span><a href="#overriding-redirect-behavior-1"><span id="overriding-redirect-behavior"></span><a href="#overriding-redirect-behavior" class="relative">Overriding Redirect Behavior</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<p>To redirect to a specific URL after authentication instead of the current URL:</p>
+<pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">await</span> <span class="token function">loginWithRedirect</span><span class="token punctuation">(</span><span class="token punctuation">{</span> targetUrl<span class="token punctuation">:</span> <span class="token string">'/dashboard'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>To skip deep link preservation and always use the callback URL:</p>
+<pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">await</span> <span class="token function">loginWithRedirect</span><span class="token punctuation">(</span><span class="token punctuation">{</span> doNotPreservePath<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>To specify a deployment along with options:</p>
+<pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">await</span> <span class="token function">loginWithRedirect</span><span class="token punctuation">(</span><span class="token string">'prod'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> targetUrl<span class="token punctuation">:</span> <span class="token string">'/dashboard'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>The same options work for <code class="inline">signUpWithRedirect</code>:</p>
+<pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">await</span> <span class="token function">signUpWithRedirect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Auto-preserve current URL</span>
+<span class="token keyword">await</span> <span class="token function">signUpWithRedirect</span><span class="token punctuation">(</span><span class="token punctuation">{</span> targetUrl<span class="token punctuation">:</span> <span class="token string">'/welcome'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Redirect to specific URL</span>
+</code></pre>
 <p>The library also supports logging out users. For this, simply call the method <code class="inline">performLogout</code>. The user will be redirected to the Cognito hosted UI sign in screen.</p>
 <pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> performLogout <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@goldstack/user-management'</span><span class="token punctuation">;</span>
 

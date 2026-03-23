@@ -110,7 +110,10 @@ function determineTargetUrl(
     }
   } catch (e) {
     // If we can't parse callback URL, proceed with auto-capture
-    console.warn('Could not parse callback URL from configuration. Proceeding with auto-capture.', e);
+    console.warn(
+      'Could not parse callback URL from configuration. Proceeding with auto-capture.',
+      e,
+    );
   }
 
   return currentUrl || undefined;
