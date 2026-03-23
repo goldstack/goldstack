@@ -177,7 +177,9 @@ async function performRedirect(args: RedirectArgs): Promise<ClientAuthResult | u
   });
 }
 
-export async function loginWithRedirect(args: RedirectArgs): Promise<ClientAuthResult | undefined> {
+export async function loginWithRedirect(
+  args: Omit<RedirectArgs, 'operation'>,
+): Promise<ClientAuthResult | undefined> {
   return performRedirect({ ...args, operation: 'authorize' });
 }
 
@@ -203,7 +205,7 @@ export async function loginWithRedirect(args: RedirectArgs): Promise<ClientAuthR
  * await signUpWithRedirect({ ...args, options: { doNotPreservePath: true } });
  */
 export async function signUpWithRedirect(
-  args: RedirectArgs,
+  args: Omit<RedirectArgs, 'operation'>,
 ): Promise<ClientAuthResult | undefined> {
   return performRedirect({ ...args, operation: 'signup' });
 }

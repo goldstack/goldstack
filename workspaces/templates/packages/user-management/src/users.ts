@@ -82,7 +82,6 @@ export async function loginWithRedirect(
     deploymentsOutput,
     deploymentName,
     options: opts,
-    operation: 'authorize',
   });
 }
 
@@ -125,7 +124,6 @@ export async function signUpWithRedirect(
     deploymentsOutput,
     deploymentName,
     options: opts,
-    operation: 'signup',
   });
 }
 
