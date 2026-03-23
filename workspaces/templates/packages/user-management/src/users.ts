@@ -1,4 +1,5 @@
 import {
+  type ClientAuthResult,
   type CognitoManager,
   type Endpoint,
   type GetCookieSettingsResult,
@@ -72,7 +73,7 @@ export {
 export async function loginWithRedirect(
   deploymentNameOrOptions?: string | LoginOptions,
   options?: LoginOptions,
-) {
+): Promise<ClientAuthResult | undefined> {
   const { deploymentName, options: opts } = parseRedirectArgs(deploymentNameOrOptions, options);
 
   return templateLoginWithRedirect({
@@ -115,7 +116,7 @@ export async function loginWithRedirect(
 export async function signUpWithRedirect(
   deploymentNameOrOptions?: string | LoginOptions,
   options?: LoginOptions,
-) {
+): Promise<ClientAuthResult | undefined> {
   const { deploymentName, options: opts } = parseRedirectArgs(deploymentNameOrOptions, options);
 
   return templateSignUpWithRedirect({

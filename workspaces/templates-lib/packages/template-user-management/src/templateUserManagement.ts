@@ -105,7 +105,7 @@ function determineTargetUrl(
     const callbackUrl = deployment.configuration.callbackUrl;
     const callbackPath = new URL(callbackUrl).pathname;
 
-    if (currentUrl === callbackPath || currentUrl.startsWith(callbackUrl)) {
+    if (window.location.pathname === callbackPath) {
       return undefined;
     }
   } catch {
