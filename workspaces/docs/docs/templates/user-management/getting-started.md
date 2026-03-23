@@ -84,16 +84,21 @@ Note during the sign in process, the user will always be redirected to the callb
 When users access a deep link while unauthenticated (e.g., `/app/automation/xxx/skill/yyy`), you can preserve the destination using the `state` parameter:
 
 ```typescript
-import { loginWithRedirect, handleRedirectCallback, getLoggedInUser } from 'user-management';
+import { loginWithRedirect, handleRedirectCallback } from 'user-management';
 
 // Before redirecting to Cognito
 const currentPath = window.location.pathname + window.location.search;
 await loginWithRedirect(undefined, currentPath);
+```
 
-// After Cognito callback: /app?code=abc&state=/app/automation/xxx/skill/yyy
-// handleRedirectCallback extracts state and redirects to the deep link
-const result = await handleRedirectCallback();
-// result.state contains the preserved path
+After Cognito redirects back to your callback URL (e.g., `/app?code=abc&state=/app/automation/xxx`), call `handleRedirectCallback` on that page:
+
+```typescript
+// On your callback page (e.g., /app)
+// This will extract the state and redirect to the deep link
+await handleRedirectCallback();
+// Note: In browser environments, this function performs a redirect and never returns.
+// The user will be navigated to the state path or callback URL.
 ```
 
 The `state` parameter must be a relative path starting with `/` (e.g., `/app/automation/xxx`). This prevents open redirect vulnerabilities. If an invalid state is provided, a warning will be logged and the user will be redirected to the callback URL instead.

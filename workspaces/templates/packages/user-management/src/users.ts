@@ -77,9 +77,12 @@ export async function signUpWithRedirect(deploymentName?: string, state?: string
  * Handles the redirect callback from Cognito after authentication.
  * This function should be called on the page that Cognito redirects to after login/signup.
  *
+ * Note: In browser environments, this function performs a page redirect and never returns
+ * to the caller. The user will be navigated to the state path (if valid) or the callback URL.
+ * The return value is only relevant for Jest test environments.
+ *
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
- * @returns A promise that resolves with the authentication result, including the state parameter if present.
  */
 export async function handleRedirectCallback(deploymentName?: string) {
   return templateHandleRedirectCallback({
