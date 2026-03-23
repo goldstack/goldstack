@@ -40,7 +40,7 @@ export async function handleRedirectCallback(args: {
   // Determine the redirect URL based on deployment type and state
   let redirectUrl: string;
   if (deploymentName === 'local') {
-    redirectUrl = window.location.href.replace('?code=dummy-local-client-code', '');
+    redirectUrl = window.location.href.split('?')[0];
   } else {
     const deployment = packageConfig.getDeployment(deploymentName);
     redirectUrl = deployment.configuration.callbackUrl;

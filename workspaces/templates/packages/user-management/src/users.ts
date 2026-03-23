@@ -17,6 +17,16 @@ import goldstackConfig from './../goldstack.json';
 import packageSchema from './../schemas/package.schema.json';
 import deploymentsOutput from './state/deployments.json';
 
+function parseRedirectArgs(
+  deploymentNameOrOptions?: string | LoginOptions,
+  options?: LoginOptions,
+): { deploymentName?: string; options?: LoginOptions } {
+  if (typeof deploymentNameOrOptions === 'string') {
+    return { deploymentName: deploymentNameOrOptions, options };
+  }
+  return { options: deploymentNameOrOptions };
+}
+
 export type { ClientAuthResult, LoginOptions } from '@goldstack/template-user-management';
 export {
   generateTestAccessToken,
@@ -63,15 +73,7 @@ export async function loginWithRedirect(
   deploymentNameOrOptions?: string | LoginOptions,
   options?: LoginOptions,
 ) {
-  let deploymentName: string | undefined;
-  let opts: LoginOptions | undefined;
-
-  if (typeof deploymentNameOrOptions === 'string') {
-    deploymentName = deploymentNameOrOptions;
-    opts = options;
-  } else {
-    opts = deploymentNameOrOptions;
-  }
+  const { deploymentName, options: opts } = parseRedirectArgs(deploymentNameOrOptions, options);
 
   return templateLoginWithRedirect({
     goldstackConfig,
@@ -114,15 +116,7 @@ export async function signUpWithRedirect(
   deploymentNameOrOptions?: string | LoginOptions,
   options?: LoginOptions,
 ) {
-  let deploymentName: string | undefined;
-  let opts: LoginOptions | undefined;
-
-  if (typeof deploymentNameOrOptions === 'string') {
-    deploymentName = deploymentNameOrOptions;
-    opts = options;
-  } else {
-    opts = deploymentNameOrOptions;
-  }
+  const { deploymentName, options: opts } = parseRedirectArgs(deploymentNameOrOptions, options);
 
   return templateSignUpWithRedirect({
     goldstackConfig,

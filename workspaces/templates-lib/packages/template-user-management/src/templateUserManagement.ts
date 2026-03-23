@@ -75,19 +75,6 @@ export interface RedirectArgs {
 }
 
 /**
- * Parses the flexible first argument to extract deployment name and options.
- */
-function parseRedirectArgs(
-  deploymentNameOrOptions?: string | LoginOptions,
-  options?: LoginOptions,
-): { deploymentName?: string; options?: LoginOptions } {
-  if (typeof deploymentNameOrOptions === 'string') {
-    return { deploymentName: deploymentNameOrOptions, options };
-  }
-  return { deploymentName: undefined, options: deploymentNameOrOptions };
-}
-
-/**
  * Determines the target URL after authentication.
  * Auto-captures current URL unless doNotPreservePath is set.
  * Excludes callback URL from auto-capture.
@@ -171,18 +158,13 @@ export async function getToken(args: {
  * // Skip path preservation
  * await loginWithRedirect({ ...args, options: { doNotPreservePath: true } });
  */
-export async function loginWithRedirect(args: RedirectArgs): Promise<ClientAuthResult | undefined> {
-  const { deploymentName, options } = {
-    deploymentName: args.deploymentName,
-    options: args.options,
-  };
-
+async function performRedirect(args: RedirectArgs): Promise<ClientAuthResult | undefined> {
   const packageConfig = new EmbeddedPackageConfig<UserManagementPackage, UserManagementDeployment>({
     goldstackJson: args.goldstackConfig,
     packageSchema: args.packageSchema,
   });
 
-  const state = determineTargetUrl(options, deploymentName, packageConfig);
+  const state = determineTargetUrl(args.options, args.deploymentName, packageConfig);
 
   return operationWithRedirect({
     goldstackConfig: args.goldstackConfig,
@@ -192,6 +174,10 @@ export async function loginWithRedirect(args: RedirectArgs): Promise<ClientAuthR
     operation: args.operation,
     state,
   });
+}
+
+export async function loginWithRedirect(args: RedirectArgs): Promise<ClientAuthResult | undefined> {
+  return performRedirect({ ...args, operation: 'authorize' });
 }
 
 /**
@@ -218,24 +204,5 @@ export async function loginWithRedirect(args: RedirectArgs): Promise<ClientAuthR
 export async function signUpWithRedirect(
   args: RedirectArgs,
 ): Promise<ClientAuthResult | undefined> {
-  const { deploymentName, options } = {
-    deploymentName: args.deploymentName,
-    options: args.options,
-  };
-
-  const packageConfig = new EmbeddedPackageConfig<UserManagementPackage, UserManagementDeployment>({
-    goldstackJson: args.goldstackConfig,
-    packageSchema: args.packageSchema,
-  });
-
-  const state = determineTargetUrl(options, deploymentName, packageConfig);
-
-  return operationWithRedirect({
-    goldstackConfig: args.goldstackConfig,
-    packageSchema: args.packageSchema,
-    deploymentsOutput: args.deploymentsOutput,
-    deploymentName: args.deploymentName,
-    operation: args.operation,
-    state,
-  });
+  return performRedirect({ ...args, operation: 'signup' });
 }
