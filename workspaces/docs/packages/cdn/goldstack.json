@@ -27,7 +27,7 @@
         "websiteDomainRedirect": "www.cdn.goldstack.party"
       },
       "tfStateKey": "goldstack-cdn-prod-b6da321a3ee1ead5055c.tfstate",
-      "tfVersion": "1.10"
+      "tfVersion": "1.14.7"
     }
   ]
 }

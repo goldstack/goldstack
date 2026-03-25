@@ -30,7 +30,7 @@
         }
       },
       "tfStateKey": "server-side-rendering-prod-cef430073a2474be1434.tfstate",
-      "tfVersion": "1.10"
+      "tfVersion": "1.14.7"
     }
   ]
 }

@@ -14,7 +14,7 @@
         "websiteDomain": "app-nextjs-tailwind.templates.dev.goldstack.party",
         "defaultCacheDuration": 10
       },
-      "tfVersion": "1.10",
+      "tfVersion": "1.14.7",
       "tfStateKey": "app-nextjs-tailwind-prod-8e04598176c0b2dedc30.tfstate"
     }
   ]

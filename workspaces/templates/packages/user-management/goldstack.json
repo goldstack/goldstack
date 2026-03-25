@@ -19,7 +19,7 @@
         "deletionProtection": false
       },
       "tfStateKey": "user-management-prod-c24c67342f629ac2217b.tfstate",
-      "tfVersion": "1.10"
+      "tfVersion": "1.14.7"
     }
   ]
 }
