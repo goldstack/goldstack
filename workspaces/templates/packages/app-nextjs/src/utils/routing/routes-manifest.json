@@ -28,12 +28,12 @@
       "regex": "^/404$"
     },
     {
-      "page": "/[message]\\sayIt",
-      "regex": "^/[message]\\\\sayIt$"
+      "page": "/[message]/sayIt",
+      "regex": "^/[message]\\/sayIt$"
     },
     {
-      "page": "/tests\\[id]",
-      "regex": "^/tests\\\\[id]$"
+      "page": "/tests/[id]",
+      "regex": "^/tests\\/[id]$"
     },
     {
       "page": "/tests/[id]",
@@ -62,12 +62,12 @@
       "regex": "^/404$"
     },
     {
-      "page": "/[message]\\sayIt",
-      "regex": "^/[message]\\\\sayIt$"
+      "page": "/[message]/sayIt",
+      "regex": "^/[message]\\/sayIt$"
     },
     {
-      "page": "/tests\\[id]",
-      "regex": "^/tests\\\\[id]$"
+      "page": "/tests/[id]",
+      "regex": "^/tests\\/[id]$"
     }
   ],
   "dataRoutes": [],
