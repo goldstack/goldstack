@@ -6,6 +6,7 @@ import Head from 'next/head';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Footer from 'src/components/Footer';
+import { dataUriToSrc } from 'src/utils/utils';
 import useSWR from 'swr';
 import CheckCircle from './../icons/font-awesome/solid/check-circle.svg';
 import styles from './Download.module.css';
@@ -40,12 +41,12 @@ const DownloadReady = (props: {
   packageId: string;
   docLinks: DocLink[] | undefined;
 }): React.ReactNode => {
+  const checkCircle = dataUriToSrc(CheckCircle);
   return (
     <div className="container space-2">
       <div className="w-md-80 text-center mx-md-auto">
-        <div className={styles.check}>
-          <img src={CheckCircle} alt="Check mark" />
-        </div>
+        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Required for SVG icon rendering */}
+        <div className={styles.check} dangerouslySetInnerHTML={{ __html: checkCircle }}></div>
         <div className="mb-5">
           <h1 className="h2">Project successfully generated</h1>
           <p>Follow the steps below to setup your project.</p>
