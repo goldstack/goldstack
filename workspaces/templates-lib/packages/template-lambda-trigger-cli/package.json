@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-trigger-cli",
-  "version": "0.1.67",
+  "version": "0.1.68",
   "description": "Utilities for templates that allow a Lambda to be triggered.",
   "keywords": [
     "goldstack",
@@ -45,19 +45,19 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.39",
-    "@goldstack/infra-aws": "0.4.60",
-    "@goldstack/template-lambda-cli": "0.1.64",
-    "@goldstack/template-sqs": "0.1.56",
-    "@goldstack/utils-aws-lambda": "0.3.73",
+    "@goldstack/infra": "0.4.40",
+    "@goldstack/infra-aws": "0.4.61",
+    "@goldstack/template-lambda-cli": "0.1.65",
+    "@goldstack/template-sqs": "0.1.57",
+    "@goldstack/utils-aws-lambda": "0.3.74",
     "@goldstack/utils-cli": "0.3.31",
-    "@goldstack/utils-config": "0.4.39",
+    "@goldstack/utils-config": "0.4.40",
     "@goldstack/utils-log": "0.3.33",
-    "@goldstack/utils-package": "0.4.41",
-    "@goldstack/utils-package-config": "0.4.41",
-    "@goldstack/utils-template": "0.4.40",
-    "@goldstack/utils-terraform": "0.4.76",
-    "@goldstack/utils-terraform-aws": "0.4.80",
+    "@goldstack/utils-package": "0.4.42",
+    "@goldstack/utils-package-config": "0.4.42",
+    "@goldstack/utils-template": "0.4.41",
+    "@goldstack/utils-terraform": "0.4.77",
+    "@goldstack/utils-terraform-aws": "0.4.81",
     "source-map-support": "^0.5.21",
     "yargs": "^17"
   },

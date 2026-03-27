@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-config",
-  "version": "0.4.39",
+  "version": "0.4.40",
   "description": "Utilities to work with JSON configuration files.",
   "keywords": [
     "goldstack",
