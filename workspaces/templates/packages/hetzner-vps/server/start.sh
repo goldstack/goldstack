@@ -14,7 +14,7 @@ source "$APP_DIR/load-secrets.sh"
 echo "Starting server in ${ENVIRONMENT:-development} mode"
 
 
-cd "$APP_DIR" && COMPOSE_PROJECT_NAME=server docker-compose up -d
+cd "$APP_DIR" && COMPOSE_PROJECT_NAME=server docker compose up -d
 
 
 # Clean up images

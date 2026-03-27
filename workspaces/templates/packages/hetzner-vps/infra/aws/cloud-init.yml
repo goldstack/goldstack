@@ -14,7 +14,6 @@ packages:
   - jq
   - unzip
   - docker.io
-  - docker-compose
 
 write_files:
   - path: /home/goldstack/deploy.sh
