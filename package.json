@@ -11,7 +11,7 @@
     "workspaces/*"
   ],
   "scripts": {
-    "build": "yarn compile",
+    "build": "tsc -b --force",
     "clean-terraform": "yarn workspaces foreach -W run clean-terraform",
     "commit": "yarn git:commit \"$0\"",
     "compile": "yarn fix-project-references && tsc --build",

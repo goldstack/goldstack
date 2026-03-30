@@ -37,6 +37,7 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
+    "@aws-sdk/client-cognito-identity-provider": "^3.1004.0",
     "@goldstack/infra": "0.4.40",
     "@goldstack/infra-aws": "0.4.61",
     "@goldstack/utils-esbuild": "0.5.26",

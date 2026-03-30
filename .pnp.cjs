@@ -6101,6 +6101,7 @@ const RAW_RUNTIME_STATE =
       ["workspace:workspaces/templates-lib/packages/template-user-management", {\
         "packageLocation": "./workspaces/templates-lib/packages/template-user-management/",\
         "packageDependencies": [\
+          ["@aws-sdk/client-cognito-identity-provider", "npm:3.1004.0"],\
           ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
           ["@goldstack/template-user-management", "workspace:workspaces/templates-lib/packages/template-user-management"],\
