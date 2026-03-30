@@ -7,6 +7,8 @@ import { CognitoManager, CognitoManagerImpl } from './CognitoManager';
 import { getDeploymentName, getDeploymentsOutput } from './userManagementConfig';
 import { getLocalUserManager } from './userManagementServerMock';
 
+export { CognitoManager } from './CognitoManager';
+
 /**
  * We want to keep only one JWKS cache globally for our application.
  */
