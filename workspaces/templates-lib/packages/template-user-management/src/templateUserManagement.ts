@@ -4,7 +4,7 @@ import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded'
 import { getEndpoint as getEndpointLib } from './client/getEndpoints';
 import * as cognitoClientAuth from './client/getToken';
 
-export type { CognitoManager } from './cognitoTokenVerify';
+export type { CognitoManager } from './connectWithCognito';
 
 import type { GetTokenResults } from './client/getToken';
 
@@ -21,7 +21,7 @@ export { handleRedirectCallback } from './client/handleRedirectCallback';
 export { operationWithRedirect } from './client/operationWithRedirect';
 export { performLogout } from './client/performLogout';
 export { isValidState } from './client/state';
-export { connectWithCognito } from './cognitoTokenVerify';
+export { connectWithCognito } from './connectWithCognito';
 export {
   getMockedUserAccessToken,
   getMockedUserIdToken,

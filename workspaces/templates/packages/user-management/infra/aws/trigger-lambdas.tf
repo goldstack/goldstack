@@ -126,6 +126,35 @@ resource "aws_iam_policy" "lambda_logging" {
 EOF
 }
 
+resource "aws_iam_policy" "lambda_cognito_admin" {
+  name        = "${var.user_pool_name}-lambda-cognito-admin-role"
+  path        = "/"
+  description = "IAM policy for admin Cognito operations"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "cognito-idp:AdminDisableUser",
+        "cognito-idp:AdminDeleteUser"
+      ],
+      "Resource": [
+        "arn:aws:cognito-idp:*:*:userpool/${aws_cognito_user_pool.pool.id}"
+      ],
+      "Effect": "Allow"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "lambda_cognito_admin_policy" {
+  role       = aws_iam_role.lambda_exec.name
+  policy_arn = aws_iam_policy.lambda_cognito_admin.arn
+}
+
 
 locals {
   metric_transformation_name_post_confirmation = "${var.user_pool_name}-error-count-post-confirmation"

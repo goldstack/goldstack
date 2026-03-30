@@ -2,7 +2,7 @@
 
 import type { CognitoAccessTokenPayload, CognitoIdTokenPayload } from 'aws-jwt-verify/jwt-model';
 import crypto from 'crypto';
-import type { CognitoManager } from './cognitoTokenVerify';
+import type { CognitoManager } from './CognitoManager';
 import { getMockedAccessTokenProperties, getMockedIdTokenProperties } from './userManagementMock';
 
 let localCognitoManager: CognitoManager | undefined;
@@ -82,5 +82,9 @@ export class LocalUserManagerImpl implements CognitoManager {
   async validate(jwtToken: string): Promise<CognitoAccessTokenPayload> {
     assertNotInProd();
     return JSON.parse(Buffer.from(jwtToken.split('.')[1], 'base64').toString());
+  }
+
+  async deleteUser(_username: string): Promise<void> {
+    assertNotInProd();
   }
 }

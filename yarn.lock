@@ -4752,6 +4752,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-user-management@workspace:workspaces/templates-lib/packages/template-user-management"
   dependencies:
+    "@aws-sdk/client-cognito-identity-provider": "npm:^3.1004.0"
     "@goldstack/infra": "npm:0.4.40"
     "@goldstack/infra-aws": "npm:0.4.61"
     "@goldstack/utils-esbuild": "npm:0.5.26"
