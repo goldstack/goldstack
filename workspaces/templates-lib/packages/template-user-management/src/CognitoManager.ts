@@ -55,8 +55,8 @@ export class CognitoManagerImpl implements CognitoManager {
     try {
       const payload = await this.idTokenVerifier.verify(jwtToken);
       return payload as any;
-    } catch {
-      throw new Error('Invalid token');
+    } catch (e) {
+      throw new Error(`Invalid token: ${e instanceof Error ? e.message : 'Unknown error'}`);
     }
   }
 
