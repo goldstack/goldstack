@@ -12,6 +12,7 @@ The user management template provides the infrastructure and utility libraries f
 *   Library to validate tokens on the server.
 *   Automatically verifies users email addresses.
 *   Supports OAuth `state` parameter for preserving deep links during authentication flows.
+*   Provides `deleteUser` function for deleting users from the Cognito user pool.
 
 ## Configure
 
