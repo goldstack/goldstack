@@ -176,9 +176,10 @@ export const handler: SSRHandler = async (event, context) => {
     await cognito.validate(cookies.goldstack_access_token);
 
     // Delete a user
+    // IMPORTANT: Ensure the authenticated user has permission to perform this action
     await deleteCognitoUser({
       cognitoManager: cognito,
-      username: 'user-to-delete@example.com',
+      username: 'user-to-delete@example.com', // Replace with dynamic username
     });
   }
 };
