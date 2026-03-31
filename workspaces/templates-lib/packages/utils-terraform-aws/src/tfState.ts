@@ -5,6 +5,7 @@ import {
   DescribeTableCommand,
   DynamoDBClient,
   ResourceInUseException,
+  UpdateContinuousBackupsCommand,
 } from '@aws-sdk/client-dynamodb';
 
 import {
@@ -14,6 +15,7 @@ import {
   DeleteObjectsCommand,
   HeadBucketCommand,
   ListObjectsV2Command,
+  PutBucketVersioningCommand,
   S3Client,
   S3ServiceException,
 } from '@aws-sdk/client-s3';
@@ -70,6 +72,17 @@ const assertDynamoDBTable = async (params: { dynamoDB: DynamoDBClient; tableName
           info('DynamoDB table is now active', {
             tableName: params.tableName,
           });
+          await params.dynamoDB.send(
+            new UpdateContinuousBackupsCommand({
+              TableName: params.tableName,
+              PointInTimeRecoverySpecification: {
+                PointInTimeRecoveryEnabled: true,
+              },
+            }),
+          );
+          info('DynamoDB point-in-time recovery enabled', {
+            tableName: params.tableName,
+          });
           return;
         }
       } catch (describeError) {
@@ -105,6 +118,17 @@ const assertS3Bucket = async (params: { s3: S3Client; bucketName: string }): Pro
         try {
           await params.s3.send(new CreateBucketCommand({ Bucket: params.bucketName }));
           info('S3 bucket created for storing terraform state', {
+            bucketName: params.bucketName,
+          });
+          await params.s3.send(
+            new PutBucketVersioningCommand({
+              Bucket: params.bucketName,
+              VersioningConfiguration: {
+                Status: 'Enabled',
+              },
+            }),
+          );
+          info('S3 bucket versioning enabled', {
             bucketName: params.bucketName,
           });
         } catch (createErr) {
