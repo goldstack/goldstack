@@ -233,6 +233,35 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
+<h4 class="heading"><span id="deleting-users-1"></span><a href="#deleting-users-1"><span id="deleting-users"></span><a href="#deleting-users" class="relative">Deleting Users</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<p>To delete a user from the Cognito user pool, use the <code class="inline">deleteCognitoUser</code> function:</p>
+<pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> connectWithCognito<span class="token punctuation">,</span> deleteCognitoUser<span class="token punctuation">,</span> <span class="token maybe-class-name">CognitoManager</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'user-management'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> handler<span class="token punctuation">:</span> <span class="token function-variable function"><span class="token maybe-class-name">SSRHandler</span></span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> cookies <span class="token operator">=</span> <span class="token function">getCookies</span><span class="token punctuation">(</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token property-access">cookies</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">join</span><span class="token punctuation">(</span><span class="token string">';'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>cookies<span class="token punctuation">.</span><span class="token property-access">goldstack_access_token</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> cognito<span class="token punctuation">:</span> <span class="token maybe-class-name">CognitoManager</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">connectWithCognito</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> cognito<span class="token punctuation">.</span><span class="token method function property-access">validate</span><span class="token punctuation">(</span>cookies<span class="token punctuation">.</span><span class="token property-access">goldstack_access_token</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Delete a user</span>
+    <span class="token comment">// IMPORTANT: Ensure the authenticated user has permission to perform this action</span>
+    <span class="token keyword">await</span> <span class="token function">deleteCognitoUser</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      cognitoManager<span class="token punctuation">:</span> cognito<span class="token punctuation">,</span>
+      username<span class="token punctuation">:</span> <span class="token string">'user-to-delete@example.com'</span><span class="token punctuation">,</span> <span class="token comment">// Replace with dynamic username</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
 <p>Note that it is recommended we <a href="https://auth0.com/blog/id-token-access-token-what-is-the-difference/" class="absolute" target="_blank" rel="noopener noreferrer">always</a> validate the <em>access token</em>. We validate the <em>id token</em> in the above as well to determine the user's email address, since the access token only contains the <em>username</em>, which in our case is a cognito generated id.</p>
 <p>This template is not designed to support authorization. If you have authorization needs, consider implementing this with <a href="https://build.diligent.com/fast-authorization-with-dynamodb-cd1f133437e3" class="absolute" target="_blank" rel="noopener noreferrer">DynamoDB</a> using the <a href="https://goldstack.party/templates/dynamodb" class="absolute" target="_blank" rel="noopener noreferrer">DynamoDB template</a>.</p>
 <p>Note that while Cognito creates a unique ID for every user (attribute <code class="inline">sub</code>) it is not recommended to use this ID in your own data. Since, if you accidentally delete the Cognito user pool (Pro tip: Don't do this!!!), you cannot restore this ID. Instead, use the custom attribute created by the template:</p>
