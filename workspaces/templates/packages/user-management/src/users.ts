@@ -1,11 +1,13 @@
 import {
   type ClientAuthResult,
   type CognitoManager,
+  type DeleteCognitoUserParams,
   type Endpoint,
   type GetCookieSettingsResult,
   isValidState,
   type LoginOptions,
   connectWithCognito as templateConnect,
+  deleteCognitoUser as templateDeleteCognitoUser,
   getCookieSettings as templateGetCookieSettings,
   getEndpoint as templateGetEndpoint,
   handleRedirectCallback as templateHandleRedirectCallback,
@@ -28,7 +30,11 @@ function parseRedirectArgs(
   return { options: deploymentNameOrOptions };
 }
 
-export type { ClientAuthResult, LoginOptions } from '@goldstack/template-user-management';
+export type {
+  ClientAuthResult,
+  DeleteCognitoUserParams,
+  LoginOptions,
+} from '@goldstack/template-user-management';
 export {
   generateTestAccessToken,
   generateTestIdToken,
@@ -178,6 +184,15 @@ export async function connectWithCognito(deploymentName?: string): Promise<Cogni
     deploymentsOutput,
     deploymentName,
   });
+}
+
+/**
+ * Deletes a user from the Cognito user pool. First disables the user, then deletes them.
+ *
+ * @param params - Object containing the CognitoManager and username
+ */
+export async function deleteCognitoUser(params: DeleteCognitoUserParams): Promise<void> {
+  return templateDeleteCognitoUser(params);
 }
 
 /**

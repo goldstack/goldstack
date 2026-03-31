@@ -162,6 +162,28 @@ export const handler: SSRHandler = async (event, context) => {
 };
 ```
 
+#### Deleting Users
+
+To delete a user from the Cognito user pool, use the `deleteCognitoUser` function:
+
+```typescript
+import { connectWithCognito, deleteCognitoUser, CognitoManager } from 'user-management';
+
+export const handler: SSRHandler = async (event, context) => {
+  const cookies = getCookies((event.cookies || []).join(';'));
+  if (cookies.goldstack_access_token) {
+    const cognito: CognitoManager = await connectWithCognito();
+    await cognito.validate(cookies.goldstack_access_token);
+
+    // Delete a user
+    await deleteCognitoUser({
+      cognitoManager: cognito,
+      username: 'user-to-delete@example.com',
+    });
+  }
+};
+```
+
 Note that it is recommended we [always](https://auth0.com/blog/id-token-access-token-what-is-the-difference/) validate the _access token_. We validate the _id token_ in the above as well to determine the user's email address, since the access token only contains the _username_, which in our case is a cognito generated id.
 
 This template is not designed to support authorization. If you have authorization needs, consider implementing this with [DynamoDB](https://build.diligent.com/fast-authorization-with-dynamodb-cd1f133437e3) using the [DynamoDB template](https://goldstack.party/templates/dynamodb).

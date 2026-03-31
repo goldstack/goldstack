@@ -22,6 +22,8 @@ export { operationWithRedirect } from './client/operationWithRedirect';
 export { performLogout } from './client/performLogout';
 export { isValidState } from './client/state';
 export { connectWithCognito } from './connectWithCognito';
+export type { DeleteCognitoUserParams } from './deleteCognitoUser';
+export { deleteCognitoUser } from './deleteCognitoUser';
 export {
   getMockedUserAccessToken,
   getMockedUserIdToken,
@@ -37,7 +39,6 @@ export {
 
 import type UserManagementPackage from './types/UserManagementPackage';
 import type { UserManagementDeployment } from './types/UserManagementPackage';
-import { getDeploymentName } from './userManagementConfig';
 
 export type Endpoint =
   | 'authorize' // https://docs.aws.amazon.com/cognito/latest/developerguide/authorization-endpoint.html
