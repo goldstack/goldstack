@@ -68,6 +68,10 @@ Note that it is also possible to place the credentials file in a different locat
 
 [!embed](./aws-user-config-file.md)
 
+### Using AWS Organizations and Control Tower
+
+[!embed](./aws-organizations.md)
+
 ### Credentials in Environment Variables
 
 [!embed](./aws-user-env-variables.md)
