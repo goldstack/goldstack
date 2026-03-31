@@ -5,3 +5,4 @@
 - Easy local testing (recommended to install Java)
 - Supports multiple environments (development, production)
 - Provides way to extend infrastructure using Terraform
+- Point-in-time recovery (PITR) enabled by default for automatic backups
