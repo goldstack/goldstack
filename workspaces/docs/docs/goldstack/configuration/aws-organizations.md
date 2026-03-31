@@ -61,3 +61,7 @@ After setting up your multi-account environment, configure Goldstack users for e
 ```
 
 Configure the corresponding profiles in your `~/.aws/config` file using IAM Identity Center credentials. For tools that help manage SSO credentials, see [Using process credentials](./aws-configuration.md#using-process-credentials).
+
+### See Also
+
+For automated backup of S3 buckets and DynamoDB tables across your organization, see [Backups](../backups.md).
