@@ -87,6 +87,14 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:workspaces/templates/packages/app-nextjs-tailwind"\
     },\
     {\
+      "name": "@goldstack/template-backup",\
+      "reference": "workspace:workspaces/templates/packages/backup"\
+    },\
+    {\
+      "name": "@goldstack/template-backup-central",\
+      "reference": "workspace:workspaces/templates/packages/backup-central"\
+    },\
+    {\
       "name": "@goldstack/docker-image-aws",\
       "reference": "workspace:workspaces/templates/packages/docker-image-aws"\
     },\
@@ -522,6 +530,8 @@ const RAW_RUNTIME_STATE =
     ["@goldstack/session-repository", ["workspace:workspaces/templates-management/packages/session-repository"]],\
     ["@goldstack/session-repository-bucket", ["workspace:workspaces/templates-management/packages/session-repository-bucket"]],\
     ["@goldstack/static-website-aws", ["workspace:workspaces/templates/packages/static-website-aws"]],\
+    ["@goldstack/template-backup", ["workspace:workspaces/templates/packages/backup"]],\
+    ["@goldstack/template-backup-central", ["workspace:workspaces/templates/packages/backup-central"]],\
     ["@goldstack/template-build", ["workspace:workspaces/templates-management/packages/template-build"]],\
     ["@goldstack/template-build-set", ["workspace:workspaces/templates-management/packages/template-build-set"]],\
     ["@goldstack/template-docker-image-aws", ["workspace:workspaces/templates-lib/packages/template-docker-image-aws"]],\
@@ -5177,6 +5187,26 @@ const RAW_RUNTIME_STATE =
           ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@goldstack/template-backup", [\
+      ["workspace:workspaces/templates/packages/backup", {\
+        "packageLocation": "./workspaces/templates/packages/backup/",\
+        "packageDependencies": [\
+          ["@goldstack/template-backup", "workspace:workspaces/templates/packages/backup"],\
+          ["@goldstack/template-management-cli", "workspace:workspaces/apps/packages/template-management-cli"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@goldstack/template-backup-central", [\
+      ["workspace:workspaces/templates/packages/backup-central", {\
+        "packageLocation": "./workspaces/templates/packages/backup-central/",\
+        "packageDependencies": [\
+          ["@goldstack/template-backup-central", "workspace:workspaces/templates/packages/backup-central"],\
+          ["@goldstack/template-management-cli", "workspace:workspaces/apps/packages/template-management-cli"]\
         ],\
         "linkType": "SOFT"\
       }]\

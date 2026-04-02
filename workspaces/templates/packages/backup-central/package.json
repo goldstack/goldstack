@@ -10,8 +10,7 @@
     "test": "jest",
     "watch": "goldstack-template-management-cli watch"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@goldstack/template-management-cli": "workspace:*"
+    "@goldstack/template-management-cli": "0.1.0"
   }
 }

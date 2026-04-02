@@ -3820,6 +3820,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@goldstack/template-backup-central@workspace:workspaces/templates/packages/backup-central":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/template-backup-central@workspace:workspaces/templates/packages/backup-central"
+  dependencies:
+    "@goldstack/template-management-cli": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
+"@goldstack/template-backup@workspace:workspaces/templates/packages/backup":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/template-backup@workspace:workspaces/templates/packages/backup"
+  dependencies:
+    "@goldstack/template-management-cli": "workspace:*"
+  languageName: unknown
+  linkType: soft
+
 "@goldstack/template-build-set@npm:0.1.0, @goldstack/template-build-set@workspace:workspaces/templates-management/packages/template-build-set":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-build-set@workspace:workspaces/templates-management/packages/template-build-set"
@@ -4274,7 +4290,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-management-cli@workspace:workspaces/apps/packages/template-management-cli":
+"@goldstack/template-management-cli@workspace:*, @goldstack/template-management-cli@workspace:workspaces/apps/packages/template-management-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-management-cli@workspace:workspaces/apps/packages/template-management-cli"
   dependencies:
