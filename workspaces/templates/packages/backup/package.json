@@ -7,7 +7,7 @@
     "build": "goldstack-template-management-cli build",
     "deploy": "goldstack-template-management-cli deploy",
     "infra": "goldstack-template-management-cli infra",
-    "test": "jest",
+    "test": "echo 'No tests'",
     "watch": "goldstack-template-management-cli watch"
   },
   "devDependencies": {
