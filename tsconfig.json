@@ -86,6 +86,12 @@
       "path": "workspaces/templates/packages/app-nextjs-tailwind"
     },
     {
+      "path": "workspaces/templates/packages/backup"
+    },
+    {
+      "path": "workspaces/templates/packages/backup-central"
+    },
+    {
       "path": "workspaces/templates/packages/docker-image-aws"
     },
     {

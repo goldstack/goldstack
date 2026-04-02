@@ -1,13 +1,10 @@
 {
   "include": [
     "infra/",
-    "docs/",
-    "scripts/",
     "src/",
     "schemas/",
     ".gitignore",
     "goldstack.json",
-    "jest.config.js",
     "package.json",
     "README.md",
     "template.json",
