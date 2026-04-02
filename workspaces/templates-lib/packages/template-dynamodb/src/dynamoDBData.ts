@@ -5,6 +5,7 @@ import {
   type DynamoDBClient,
   ResourceInUseException,
   ResourceNotFoundException,
+  UpdateContinuousBackupsCommand,
 } from '@aws-sdk/client-dynamodb';
 import { debug, info, warn } from '@goldstack/utils-log';
 import type { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
@@ -54,6 +55,7 @@ export const assertTable = async (
   client: DynamoDBClient,
 ): Promise<void> => {
   const tableName = await getTableName(packageConfig, deploymentName);
+  let tableCreated = false;
   const res = client.send(
     new CreateTableCommand({
       TableName: tableName,
@@ -84,19 +86,39 @@ export const assertTable = async (
   await new Promise<void>((resolve, reject) => {
     res
       .then(async () => {
+        tableCreated = true;
         info(`DynamoDB table '${tableName}' created.`);
         resolve();
       })
       .catch((e) => {
         if (e instanceof ResourceInUseException) {
-          // all good if table exists already
           resolve();
           return;
         }
         reject(e);
       });
   });
+
+  if (tableCreated) {
+    await enablePITR(client, tableName);
+  }
 };
+
+async function enablePITR(client: DynamoDBClient, tableName: string): Promise<void> {
+  try {
+    await client.send(
+      new UpdateContinuousBackupsCommand({
+        TableName: tableName,
+        PointInTimeRecoverySpecification: {
+          PointInTimeRecoveryEnabled: true,
+        },
+      }),
+    );
+    info(`Enabled point-in-time recovery for DynamoDB table '${tableName}'.`);
+  } catch (e) {
+    warn(`Failed to enable point-in-time recovery for table '${tableName}': ${e}`);
+  }
+}
 
 export const deleteTable = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
