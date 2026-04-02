@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/Package",
+  "definitions": {
+    "Package": {
+      "type": "object",
+      "properties": {
+        "$schema": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "template": {
+          "type": "string"
+        },
+        "templateVersion": {
+          "type": "string"
+        },
+        "configuration": {
+          "$ref": "package-configuration.schema.json#/definitions/PackageConfiguration"
+        },
+        "deployments": {
+          "type": "array",
+          "items": {
+            "$ref": "deployment.schema.json#/definitions/Deployment"
+          }
+        }
+      },
+      "required": ["$schema", "name", "template", "templateVersion", "configuration", "deployments"]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "backup-central",
+  "template": "backup-central",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "central",
+      "awsRegion": "us-east-1",
+      "awsUser": "goldstack-backup",
+      "configuration": {
+        "allowedAccountIds": []
+      },
+      "tfStateKey": "backup-central.tfstate",
+      "tfVersion": "1.14.7"
+    }
+  ]
+}

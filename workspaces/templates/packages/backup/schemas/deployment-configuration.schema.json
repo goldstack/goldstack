@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/DeploymentConfiguration",
+  "definitions": {
+    "DeploymentConfiguration": {
+      "type": "object",
+      "properties": {
+        "schedule": {
+          "type": "string",
+          "description": "Cron expression for backup schedule (e.g., cron(0 5 * * ? *) for daily at 5 AM UTC).",
+          "title": "Backup Schedule"
+        },
+        "retentionDays": {
+          "type": "number",
+          "description": "Number of days to retain backups.",
+          "title": "Retention Days"
+        },
+        "centralBackupVaultArn": {
+          "type": "string",
+          "description": "Optional ARN of central backup vault for cross-account copy.",
+          "title": "Central Backup Vault ARN"
+        }
+      },
+      "required": ["schedule", "retentionDays"]
+    }
+  }
+}

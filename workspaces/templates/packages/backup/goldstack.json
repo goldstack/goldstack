@@ -1,0 +1,21 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "backup",
+  "template": "backup",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "schedule": "cron(0 5 * * ? *)",
+        "retentionDays": 30,
+        "centralBackupVaultArn": ""
+      },
+      "tfStateKey": "backup-prod.tfstate",
+      "tfVersion": "1.14.7"
+    }
+  ]
+}

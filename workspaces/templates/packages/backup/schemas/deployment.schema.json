@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/Deployment",
+  "definitions": {
+    "Deployment": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the deployment.",
+          "title": "Deployment Name"
+        },
+        "awsRegion": {
+          "type": "string",
+          "description": "The AWS region for the deployment.",
+          "title": "AWS Region"
+        },
+        "awsUser": {
+          "type": "string",
+          "description": "The AWS user for the deployment.",
+          "title": "AWS User"
+        },
+        "configuration": {
+          "$ref": "deployment-configuration.schema.json#/definitions/DeploymentConfiguration"
+        },
+        "tfStateKey": {
+          "type": "string",
+          "description": "The Terraform state key.",
+          "title": "Terraform State Key"
+        },
+        "tfVersion": {
+          "type": "string",
+          "description": "The Terraform version.",
+          "title": "Terraform Version"
+        }
+      },
+      "required": ["name", "awsRegion", "configuration"]
+    }
+  }
+}
