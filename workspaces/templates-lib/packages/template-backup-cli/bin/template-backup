@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+require('source-map-support').install();
+require('./../dist/src/templateBackupCli').run(process.argv).catch((e) => {
+  console.log(e);
+  process.exit(1);
+});

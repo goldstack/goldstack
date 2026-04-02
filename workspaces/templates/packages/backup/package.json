@@ -4,13 +4,9 @@
   "description": "Goldstack template for AWS Backup configuration",
   "license": "MIT",
   "scripts": {
-    "build": "goldstack-template-management-cli build",
-    "deploy": "goldstack-template-management-cli deploy",
-    "infra": "goldstack-template-management-cli infra",
-    "test": "echo 'No tests'",
-    "watch": "goldstack-template-management-cli watch"
+    "infra": "template-backup-cli infra"
   },
   "devDependencies": {
-    "@goldstack/template-management-cli": "0.1.0"
+    "@goldstack/template-backup-cli": "0.1.0"
   }
 }
