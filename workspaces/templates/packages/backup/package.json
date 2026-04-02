@@ -1,5 +1,5 @@
 {
-  "name": "@goldstack/template-backup",
+  "name": "@goldstack/backup",
   "version": "0.1.0",
   "description": "Goldstack template for AWS Backup configuration",
   "license": "MIT",

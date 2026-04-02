@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "composite": true,
+    "incremental": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@goldstack/infra": ["../infra/src"],
+      "@goldstack/infra-aws": ["../infra-aws/src"],
+      "@goldstack/utils-terraform": ["../utils-terraform/src"],
+      "@goldstack/utils-package": ["../utils-package/src"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["dist", "testData"]
+}
