@@ -9,3 +9,6 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 .d Terraform.tfstate.lock.info
+aws_credentials
+backend.tf
+tfplan

@@ -2,6 +2,9 @@
 .terraform
 *.tfstate
 *.tfstate.*
+backend.tf
+aws_credentials
+tfplan
 crash.log
 *.tfvars
 override.tf

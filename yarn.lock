@@ -2922,7 +2922,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/backup-central@workspace:workspaces/templates/packages/backup-central"
   dependencies:
-    "@goldstack/template-management-cli": "npm:0.1.0"
+    "@goldstack/template-backup-central": "npm:0.1.0"
+    "@goldstack/template-backup-central-cli": "npm:0.1.0"
+    "@swc/core": "npm:^1.15.8"
+    "@swc/jest": "npm:^0.2.39"
+    "@types/jest": "npm:^30.0.0"
+    "@types/node": "npm:^25.0.3"
+    jest: "npm:^30.2.0"
+    rimraf: "npm:^6.1.2"
+    ts-node: "npm:^10.9.2"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -2930,7 +2939,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/backup@workspace:workspaces/templates/packages/backup"
   dependencies:
-    "@goldstack/template-management-cli": "npm:0.1.0"
+    "@goldstack/template-backup": "npm:0.1.0"
+    "@goldstack/template-backup-cli": "npm:0.1.0"
+    "@swc/core": "npm:^1.15.8"
+    "@swc/jest": "npm:^0.2.39"
+    "@types/jest": "npm:^30.0.0"
+    "@types/node": "npm:^25.0.3"
+    jest: "npm:^30.2.0"
+    rimraf: "npm:^6.1.2"
+    ts-node: "npm:^10.9.2"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -3836,7 +3854,33 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-backup-central@workspace:workspaces/templates-lib/packages/template-backup-central":
+"@goldstack/template-backup-central-cli@npm:0.1.0, @goldstack/template-backup-central-cli@workspace:workspaces/templates-lib/packages/template-backup-central-cli":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/template-backup-central-cli@workspace:workspaces/templates-lib/packages/template-backup-central-cli"
+  dependencies:
+    "@goldstack/template-backup-central": "npm:0.1.0"
+    "@goldstack/utils-cli": "npm:0.3.31"
+    "@goldstack/utils-package": "npm:0.4.42"
+    "@goldstack/utils-package-config-generate": "npm:0.3.28"
+    "@goldstack/utils-terraform": "npm:0.4.77"
+    "@goldstack/utils-terraform-aws": "npm:0.4.82"
+    "@swc/core": "npm:^1.15.8"
+    "@swc/jest": "npm:^0.2.39"
+    "@types/jest": "npm:^30.0.0"
+    "@types/node": "npm:^25.0.3"
+    "@types/yargs": "npm:^17.0.33"
+    jest: "npm:^30.2.0"
+    rimraf: "npm:^6.1.2"
+    source-map-support: "npm:^0.5.21"
+    ts-node: "npm:^10.9.2"
+    typescript: "npm:^5.9.3"
+    yargs: "npm:^17"
+  bin:
+    template-backup-central: ./bin/template-backup-central
+  languageName: unknown
+  linkType: soft
+
+"@goldstack/template-backup-central@npm:0.1.0, @goldstack/template-backup-central@workspace:workspaces/templates-lib/packages/template-backup-central":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-backup-central@workspace:workspaces/templates-lib/packages/template-backup-central"
   dependencies:
@@ -3856,7 +3900,33 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-backup@workspace:workspaces/templates-lib/packages/template-backup":
+"@goldstack/template-backup-cli@npm:0.1.0, @goldstack/template-backup-cli@workspace:workspaces/templates-lib/packages/template-backup-cli":
+  version: 0.0.0-use.local
+  resolution: "@goldstack/template-backup-cli@workspace:workspaces/templates-lib/packages/template-backup-cli"
+  dependencies:
+    "@goldstack/template-backup": "npm:0.1.0"
+    "@goldstack/utils-cli": "npm:0.3.31"
+    "@goldstack/utils-package": "npm:0.4.42"
+    "@goldstack/utils-package-config-generate": "npm:0.3.28"
+    "@goldstack/utils-terraform": "npm:0.4.77"
+    "@goldstack/utils-terraform-aws": "npm:0.4.82"
+    "@swc/core": "npm:^1.15.8"
+    "@swc/jest": "npm:^0.2.39"
+    "@types/jest": "npm:^30.0.0"
+    "@types/node": "npm:^25.0.3"
+    "@types/yargs": "npm:^17.0.33"
+    jest: "npm:^30.2.0"
+    rimraf: "npm:^6.1.2"
+    source-map-support: "npm:^0.5.21"
+    ts-node: "npm:^10.9.2"
+    typescript: "npm:^5.9.3"
+    yargs: "npm:^17"
+  bin:
+    template-backup: ./bin/template-backup
+  languageName: unknown
+  linkType: soft
+
+"@goldstack/template-backup@npm:0.1.0, @goldstack/template-backup@workspace:workspaces/templates-lib/packages/template-backup":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-backup@workspace:workspaces/templates-lib/packages/template-backup"
   dependencies:
@@ -4330,7 +4400,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-management-cli@npm:0.1.0, @goldstack/template-management-cli@workspace:workspaces/apps/packages/template-management-cli":
+"@goldstack/template-management-cli@workspace:workspaces/apps/packages/template-management-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-management-cli@workspace:workspaces/apps/packages/template-management-cli"
   dependencies:

@@ -2,7 +2,9 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "commonjs",
-    "lib": ["ES2020"],
+    "lib": [
+      "ES2020"
+    ],
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
@@ -17,12 +19,42 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@goldstack/infra": ["../infra/src"],
-      "@goldstack/infra-aws": ["../infra-aws/src"],
-      "@goldstack/utils-terraform": ["../utils-terraform/src"],
-      "@goldstack/utils-package": ["../utils-package/src"]
+      "@goldstack/infra": [
+        "../infra/src"
+      ],
+      "@goldstack/infra-aws": [
+        "../infra-aws/src"
+      ],
+      "@goldstack/utils-terraform": [
+        "../utils-terraform/src"
+      ],
+      "@goldstack/utils-package": [
+        "../utils-package/src"
+      ]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["dist", "testData"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "testData"
+  ],
+  "references": [
+    {
+      "path": "../infra"
+    },
+    {
+      "path": "../infra-aws"
+    },
+    {
+      "path": "../utils-package"
+    },
+    {
+      "path": "../utils-terraform"
+    },
+    {
+      "path": "../utils-package-config-generate"
+    }
+  ]
 }
