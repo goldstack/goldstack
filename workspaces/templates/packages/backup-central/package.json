@@ -1,12 +1,34 @@
 {
   "name": "@goldstack/backup-central",
   "version": "0.1.0",
-  "description": "Goldstack template for centralized AWS Backup vault",
+  "private": true,
   "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
   "scripts": {
-    "infra": "template-backup-central-cli infra"
+    "build": "yarn clean && yarn compile",
+    "clean": "rimraf ./dist",
+    "clean-terraform": "rimraf ./infra/aws/.terraform",
+    "compile": "tsc -p tsconfig.json",
+    "compile-watch": "tsc -p tsconfig.json --watch",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
+    "infra": "yarn template infra",
+    "template": "yarn template-ts",
+    "template-ts": "ts-node --swc scripts/template.ts",
+    "test": "echo 'No tests'"
+  },
+  "dependencies": {
+    "@goldstack/template-backup-central": "0.1.0"
   },
   "devDependencies": {
-    "@goldstack/template-backup-central-cli": "0.1.0"
+    "@goldstack/template-backup-central-cli": "0.1.0",
+    "@swc/core": "^1.15.8",
+    "@swc/jest": "^0.2.39",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.3",
+    "jest": "^30.2.0",
+    "rimraf": "^6.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }
