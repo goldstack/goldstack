@@ -138,7 +138,7 @@ resource "aws_backup_selection" "main" {
   condition {
     string_not_equals {
       key   = "aws:ResourceTag/goldstack:no_backup"
-      value = ["true"]
+      value = "true"
     }
   }
 }
