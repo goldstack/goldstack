@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-user-management-cli",
-  "version": "0.1.98",
+  "version": "0.1.99",
   "description": "Command line tools for User Management template",
   "keywords": [
     "goldstack",
@@ -53,7 +53,7 @@
     "@goldstack/utils-sh": "0.5.38",
     "@goldstack/utils-template": "0.4.41",
     "@goldstack/utils-terraform": "0.4.77",
-    "@goldstack/utils-terraform-aws": "0.4.81",
+    "@goldstack/utils-terraform-aws": "0.4.82",
     "source-map-support": "^0.5.21",
     "yargs": "^17"
   },

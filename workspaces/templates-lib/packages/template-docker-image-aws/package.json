@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-docker-image-aws",
-  "version": "0.5.84",
+  "version": "0.5.85",
   "description": "Utilities for packages that are deployed as Docker Images using AWS Fargate",
   "keywords": [
     "goldstack",
@@ -58,7 +58,7 @@
     "@goldstack/utils-sh": "0.5.38",
     "@goldstack/utils-template": "0.4.41",
     "@goldstack/utils-terraform": "0.4.77",
-    "@goldstack/utils-terraform-aws": "0.4.81",
+    "@goldstack/utils-terraform-aws": "0.4.82",
     "aws-sdk": "2.1693.0",
     "source-map-support": "^0.5.21",
     "yargs": "^17"
