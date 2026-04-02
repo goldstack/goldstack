@@ -15,6 +15,7 @@ import {
   DeleteObjectsCommand,
   HeadBucketCommand,
   ListObjectsV2Command,
+  ListObjectVersionsCommand,
   PutBucketVersioningCommand,
   S3Client,
   S3ServiceException,
@@ -158,31 +159,76 @@ const assertS3Bucket = async (params: { s3: S3Client; bucketName: string }): Pro
 };
 
 const deleteAllObjectsFromBucket = async (s3: S3Client, bucketName: string): Promise<void> => {
-  let continuationToken: string | undefined;
+  let nextKeyMarker: string | undefined;
+  let nextVersionIdMarker: string | undefined;
   do {
-    // List objects in the bucket
-    const listResponse = await s3.send(
-      new ListObjectsV2Command({
+    const listVersionsResponse = await s3.send(
+      new ListObjectVersionsCommand({
         Bucket: bucketName,
-        ContinuationToken: continuationToken,
+        KeyMarker: nextKeyMarker,
+        VersionIdMarker: nextVersionIdMarker,
       }),
     );
 
-    // Check if there are any objects to delete
-    if (listResponse.Contents && listResponse.Contents.length > 0) {
-      // Delete listed objects
-      const deleteParams = {
-        Bucket: bucketName,
-        Delete: {
-          Objects: listResponse.Contents.map((object) => ({ Key: object.Key })),
-        },
-      };
-      await s3.send(new DeleteObjectsCommand(deleteParams));
+    const objectsToDelete: { Key: string; VersionId?: string }[] = [];
+
+    if (listVersionsResponse.Versions && listVersionsResponse.Versions.length > 0) {
+      objectsToDelete.push(
+        ...listVersionsResponse.Versions.map((version) => ({
+          Key: version.Key!,
+          VersionId: version.VersionId,
+        })),
+      );
     }
 
-    // Check if more objects are to be listed (pagination)
-    continuationToken = listResponse.NextContinuationToken;
-  } while (continuationToken);
+    if (listVersionsResponse.DeleteMarkers && listVersionsResponse.DeleteMarkers.length > 0) {
+      objectsToDelete.push(
+        ...listVersionsResponse.DeleteMarkers.map((marker) => ({
+          Key: marker.Key!,
+          VersionId: marker.VersionId,
+        })),
+      );
+    }
+
+    if (objectsToDelete.length > 0) {
+      await s3.send(
+        new DeleteObjectsCommand({
+          Bucket: bucketName,
+          Delete: {
+            Objects: objectsToDelete,
+          },
+        }),
+      );
+    }
+
+    nextKeyMarker = listVersionsResponse.NextKeyMarker;
+    nextVersionIdMarker = listVersionsResponse.NextVersionIdMarker;
+  } while (nextKeyMarker);
+
+  if (nextKeyMarker === undefined && nextVersionIdMarker === undefined) {
+    let continuationToken: string | undefined;
+    do {
+      const listResponse = await s3.send(
+        new ListObjectsV2Command({
+          Bucket: bucketName,
+          ContinuationToken: continuationToken,
+        }),
+      );
+
+      if (listResponse.Contents && listResponse.Contents.length > 0) {
+        await s3.send(
+          new DeleteObjectsCommand({
+            Bucket: bucketName,
+            Delete: {
+              Objects: listResponse.Contents.map((object) => ({ Key: object.Key })),
+            },
+          }),
+        );
+      }
+
+      continuationToken = listResponse.NextContinuationToken;
+    } while (continuationToken);
+  }
 };
 
 const deleteS3Bucket = async (params: { s3: S3Client; bucketName: string }): Promise<void> => {
