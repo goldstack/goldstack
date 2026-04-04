@@ -24,11 +24,14 @@ export function writeCredentials(envVarString: string, dir: string): void {
     );
 
   if (envVars.AWS_ACCESS_KEY_ID) {
+    const sessionTokenLine = envVars.AWS_SESSION_TOKEN
+      ? `\naws_session_token = ${envVars.AWS_SESSION_TOKEN}`
+      : '';
     const credContent = `# This file is generated. Do not change it
   
 [default]
 aws_access_key_id = ${envVars.AWS_ACCESS_KEY_ID || ''}
-aws_secret_access_key = ${envVars.AWS_SECRET_ACCESS_KEY || ''}
+aws_secret_access_key = ${envVars.AWS_SECRET_ACCESS_KEY || ''}${sessionTokenLine}
 aws_region = ${envVars.AWS_REGION || envVars.AWS_DEFAULT_REGION || ''}`;
 
     const credentialsPath = path.join(dir, 'aws_credentials');
