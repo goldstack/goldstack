@@ -21,6 +21,7 @@ export interface RemoteState {
   user: Name;
   terraformStateBucket?: TerraformStateBucket;
   terraformStateDynamoDBTable?: TerraformDynamoDBTable;
+  accountId?: string;
 }
 
 export interface AWSTerraformState {

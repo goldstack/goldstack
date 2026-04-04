@@ -39,6 +39,7 @@ export type {
 import type { AWSDeployment } from './types/awsDeployment';
 
 export { getAWSCredentials } from './awsAuthUtils';
+export { getCurrentAWSAccountId } from './awsUserUtils';
 export { getAWSUser } from './getAWSUser';
 export type {
   AWSDeployment,

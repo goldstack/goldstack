@@ -5,7 +5,7 @@ import {
   fromIni,
   fromProcess,
 } from '@aws-sdk/credential-providers';
-import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
+import type { AwsCredentialIdentity, AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { warn } from '@goldstack/utils-log';
 import assert from 'assert';
 import { hasInjectedCredentials, injectCredentials } from './awsAuthUtils';
@@ -62,6 +62,18 @@ async function validateCredentials(credentials: AwsCredentialIdentityProvider): 
     return false;
   }
   return true;
+}
+
+export async function getCurrentAWSAccountId(
+  credentials: AwsCredentialIdentity | AwsCredentialIdentityProvider,
+): Promise<string> {
+  const client = new STSClient({ credentials });
+  const command = new GetCallerIdentityCommand({});
+  const response = await client.send(command);
+  if (!response.Account) {
+    throw new Error('Unable to determine AWS account ID from credentials');
+  }
+  return response.Account;
 }
 
 export async function getAWSUserFromDefaultLocalProfile(): Promise<AwsCredentialIdentityProvider> {

@@ -21,6 +21,11 @@ import {
   S3ServiceException,
 } from '@aws-sdk/client-s3';
 import type { AwsCredentialIdentity } from '@aws-sdk/types';
+import {
+  type AWSTerraformState,
+  getCurrentAWSAccountId,
+  type RemoteState,
+} from '@goldstack/infra-aws';
 
 import { debug, error, info } from '@goldstack/utils-log';
 
@@ -330,11 +335,39 @@ export const assertState = async (params: {
   dynamoDBTableName: string;
   bucketName: string;
   awsRegion: string;
+  expectedAccountId?: string;
+  remoteStateConfig?: RemoteState;
+  awsTerraformConfig?: AWSTerraformState;
+  writeTerraformConfig?: (config: AWSTerraformState, path?: string) => void;
 }): Promise<void> => {
   info('Connecting to Terraform State stored on AWS', {
     bucketName: params.bucketName,
     tableName: params.dynamoDBTableName,
   });
+
+  const currentAccountId = await getCurrentAWSAccountId(params.credentials);
+
+  if (params.expectedAccountId) {
+    if (currentAccountId !== params.expectedAccountId) {
+      throw new Error(
+        `AWS account ID mismatch: expected '${params.expectedAccountId}' but current credentials are for account '${currentAccountId}'. ` +
+          `Are you logged into the wrong AWS account? ` +
+          `Please ensure you are using credentials for the correct AWS account before creating state resources.`,
+      );
+    }
+    info('AWS account ID verified', {
+      accountId: currentAccountId,
+    });
+  } else if (params.remoteStateConfig && params.awsTerraformConfig && params.writeTerraformConfig) {
+    if (!params.remoteStateConfig.accountId) {
+      params.remoteStateConfig.accountId = currentAccountId;
+      params.writeTerraformConfig(params.awsTerraformConfig);
+      info('AWS account ID auto-configured and saved', {
+        accountId: currentAccountId,
+      });
+    }
+  }
+
   const dynamoDB = new DynamoDBClient({
     region: params.awsRegion,
     credentials: params.credentials,

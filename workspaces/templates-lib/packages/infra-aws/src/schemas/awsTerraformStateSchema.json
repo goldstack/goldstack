@@ -12,9 +12,7 @@
           "type": "array"
         }
       },
-      "required": [
-        "remoteState"
-      ],
+      "required": ["remoteState"],
       "type": "object"
     },
     "Name": {
@@ -26,6 +24,12 @@
     "RemoteState": {
       "additionalProperties": false,
       "properties": {
+        "accountId": {
+          "description": "The AWS account ID where Terraform state resources will be created. If specified, the system will verify that the current AWS credentials match this account before creating S3 buckets or DynamoDB tables, preventing accidental resource creation in the wrong account.",
+          "pattern": "^[0-9]{12}$",
+          "title": "AWS Account ID",
+          "type": "string"
+        },
         "terraformStateBucket": {
           "$ref": "#/definitions/TerraformStateBucket"
         },
@@ -36,9 +40,7 @@
           "$ref": "#/definitions/Name"
         }
       },
-      "required": [
-        "user"
-      ],
+      "required": ["user"],
       "type": "object"
     },
     "TerraformDynamoDBTable": {
