@@ -53,28 +53,7 @@ resource "aws_iam_role_policy" "backup" {
           ]
           Resource = "*"
         },
-        {
-          Sid    = "S3Permissions"
-          Effect = "Allow"
-          Action = [
-            "s3:GetBucketTagging",
-            "s3:GetBucketVersioning",
-            "s3:PutBucketVersioning",
-            "s3:GetBucketLocation",
-            "s3:GetBucketAcl",
-            "s3:ListBucket",
-            "s3:ListBucketVersions",
-            "s3:GetObject",
-            "s3:GetObjectVersion",
-            "s3:GetObjectTagging",
-            "s3:GetObjectVersionTagging",
-            "s3:ListAllMyBuckets"
-          ]
-          Resource = [
-            "arn:aws:s3:::*",
-            "arn:aws:s3:::*/*"
-          ]
-        },
+
         {
           Sid    = "DynamoDBPermissions"
           Effect = "Allow"
@@ -140,6 +119,26 @@ resource "aws_iam_role_policy" "backup" {
       ] : []
     )
   })
+}
+
+resource "aws_iam_role_policy_attachment" "backup_s3_backup" {
+  role       = aws_iam_role.backup.name
+  policy_arn = "arn:aws:iam::aws:policy/AWSBackupServiceRolePolicyForS3Backup"
+}
+
+resource "aws_iam_role_policy_attachment" "backup_s3_restore" {
+  role       = aws_iam_role.backup.name
+  policy_arn = "arn:aws:iam::aws:policy/AWSBackupServiceRolePolicyForS3Restore"
+}
+
+resource "aws_iam_role_policy_attachment" "backup_core" {
+  role       = aws_iam_role.backup.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup"
+}
+
+resource "aws_iam_role_policy_attachment" "backup_restore" {
+  role       = aws_iam_role.backup.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForRestores"
 }
 
 resource "aws_backup_plan" "main" {
