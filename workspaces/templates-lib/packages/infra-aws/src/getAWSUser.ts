@@ -16,6 +16,12 @@ export const getAWSUser = async (
   userName: string,
   configPath?: string,
 ): Promise<AwsCredentialIdentityProvider> => {
+  if (configPath) {
+    info(`Obtaining credentials from goldstack config file in ${configPath}`);
+    const config = readConfig(configPath);
+    return await getAWSUserFromGoldstackConfig(config, userName);
+  }
+
   // Load from ECS environment if running in ECS
   if (process.env.AWS_CONTAINER_CREDENTIALS_RELATIVE_URI) {
     return await getAWSUserFromContainerEnvironment();
@@ -37,9 +43,12 @@ export const getAWSUser = async (
 
   // Load users as configured in Goldstack configuration
   if (!hasConfig(configPath)) {
-    throw new Error("No AWS credentials found. Please run 'aws login' or configure Goldstack.");
+    throw new Error(
+      `No AWS credentials found in config. Please run 'aws login' or configure Goldstack.`,
+    );
   }
 
+  info(`Obtaining credentials from goldstack config file.`);
   const config = readConfig(configPath);
   return await getAWSUserFromGoldstackConfig(config, userName);
 };
