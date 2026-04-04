@@ -7,11 +7,15 @@
       "properties": {
         "allowedAccountIds": {
           "$ref": "#/definitions/AllowedAccountIds"
+        },
+        "sourceAccountIds": {
+          "$ref": "#/definitions/SourceAccountIds"
+        },
+        "sourceRoleArns": {
+          "$ref": "#/definitions/SourceRoleArns"
         }
       },
-      "required": [
-        "allowedAccountIds"
-      ]
+      "required": ["allowedAccountIds"]
     },
     "AllowedAccountIds": {
       "type": "array",
@@ -20,6 +24,22 @@
       },
       "description": "List of AWS account IDs allowed to copy backups to this central vault.",
       "title": "Allowed Account IDs"
+    },
+    "SourceAccountIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of AWS account IDs that are sources for cross-account backup copies.",
+      "title": "Source Account IDs"
+    },
+    "SourceRoleArns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of IAM role ARNs from source accounts allowed to copy backups to this vault.",
+      "title": "Source Role ARNs"
     }
   }
 }

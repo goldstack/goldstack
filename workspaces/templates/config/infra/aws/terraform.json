@@ -14,7 +14,8 @@
     {
       "user": "goldstack-backup",
       "terraformStateBucket": "goldstack-tfstate-e98492c82eea3835cb020259d071601b0dcc622c",
-      "terraformStateDynamoDBTable": "goldstack-tfstate-e98492c82eea3835cb020259d071601b0dcc622c-lock"
+      "terraformStateDynamoDBTable": "goldstack-tfstate-e98492c82eea3835cb020259d071601b0dcc622c-lock",
+      "accountId": "238391222420"
     }
   ]
 }

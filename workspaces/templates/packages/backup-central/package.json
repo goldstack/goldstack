@@ -11,6 +11,7 @@
     "clean-terraform": "rimraf ./infra/aws/.terraform",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
+    "configure-cross-account": "ts-node --swc scripts/configure-cross-account.ts",
     "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
     "infra": "yarn template infra",
     "template": "yarn template-ts",

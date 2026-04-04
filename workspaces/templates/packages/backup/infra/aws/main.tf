@@ -7,6 +7,29 @@ resource "aws_backup_vault" "main" {
   }
 }
 
+resource "aws_backup_vault_policy" "main" {
+  count = var.destination_account_id != "" ? 1 : 0
+
+  backup_vault_name = aws_backup_vault.main.name
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid    = "AllowDestinationAccountCopy"
+        Effect = "Allow"
+        Principal = {
+          AWS = "arn:aws:iam::${var.destination_account_id}:root"
+        }
+        Action = [
+          "backup:CopyFromBackupVault"
+        ]
+        Resource = aws_backup_vault.main.arn
+      }
+    ]
+  })
+}
+
 resource "aws_iam_role" "backup" {
   name = "GoldstackBackupRole"
 
@@ -34,82 +57,110 @@ resource "aws_iam_role_policy" "backup" {
 
   policy = jsonencode({
     Version = "2012-10-17"
-    Statement = [
-      {
-        Sid    = "BackupPermissions"
-        Effect = "Allow"
-        Action = [
-          "backup:StartBackupJob",
-          "backup:StopBackupJob",
-          "backup:DescribeBackupJob",
-          "backup:ListBackupJobs",
-          "backup:ListRecoveryPoints",
-          "backup:DeleteRecoveryPoint",
-          "backup:GetBackupVaultNotifications",
-          "backup:ListTags",
-          "backup:CopyFromBackupVault"
-        ]
-        Resource = "*"
-      },
-      {
-        Sid    = "S3Permissions"
-        Effect = "Allow"
-        Action = [
-          "s3:GetBucketTagging",
-          "s3:GetBucketVersioning",
-          "s3:PutBucketVersioning",
-          "s3:GetBucketLocation",
-          "s3:GetBucketAcl",
-          "s3:ListBucket",
-          "s3:ListBucketVersions",
-          "s3:GetObject",
-          "s3:GetObjectTagging",
-          "s3:GetObjectVersionTagging",
-          "s3:ListAllMyBuckets"
-        ]
-        Resource = [
-          "arn:aws:s3:::*",
-          "arn:aws:s3:::*/*"
-        ]
-      },
-      {
-        Sid    = "DynamoDBPermissions"
-        Effect = "Allow"
-        Action = [
-          "dynamodb:DescribeTable",
-          "dynamodb:CreateBackup",
-          "dynamodb:StartAwsBackupJob",
-          "dynamodb:ListTagsOfResource",
-          "dynamodb:ListTables",
-          "dynamodb:RestoreTableFromBackup"
-        ]
-        Resource = "arn:aws:dynamodb:*:*:table/*"
-      },
-      {
-        Sid    = "KMSPermissions"
-        Effect = "Allow"
-        Action = [
-          "kms:Decrypt",
-          "kms:DescribeKey",
-          "kms:Encrypt",
-          "kms:GenerateDataKey"
-        ]
-        Resource = "*"
-      },
-      {
-        Sid    = "KMSCreateGrant"
-        Effect = "Allow"
-        Action = [
-          "kms:CreateGrant"
-        ]
-        Resource = "*"
-        Condition = {
-          StringEquals = {
-            "kms:ViaService" = "backup.${var.aws_region}.amazonaws.com"
+    Statement = concat(
+      [
+        {
+          Sid    = "BackupPermissions"
+          Effect = "Allow"
+          Action = [
+            "backup:StartBackupJob",
+            "backup:StopBackupJob",
+            "backup:DescribeBackupJob",
+            "backup:ListBackupJobs",
+            "backup:ListRecoveryPoints",
+            "backup:DeleteRecoveryPoint",
+            "backup:GetBackupVaultNotifications",
+            "backup:ListTags",
+            "backup:CopyFromBackupVault",
+            "backup:CopyIntoBackupVault"
+          ]
+          Resource = "*"
+        },
+        {
+          Sid    = "S3Permissions"
+          Effect = "Allow"
+          Action = [
+            "s3:GetBucketTagging",
+            "s3:GetBucketVersioning",
+            "s3:PutBucketVersioning",
+            "s3:GetBucketLocation",
+            "s3:GetBucketAcl",
+            "s3:ListBucket",
+            "s3:ListBucketVersions",
+            "s3:GetObject",
+            "s3:GetObjectTagging",
+            "s3:GetObjectVersionTagging",
+            "s3:ListAllMyBuckets"
+          ]
+          Resource = [
+            "arn:aws:s3:::*",
+            "arn:aws:s3:::*/*"
+          ]
+        },
+        {
+          Sid    = "DynamoDBPermissions"
+          Effect = "Allow"
+          Action = [
+            "dynamodb:DescribeTable",
+            "dynamodb:CreateBackup",
+            "dynamodb:StartAwsBackupJob",
+            "dynamodb:ListTagsOfResource",
+            "dynamodb:ListTables",
+            "dynamodb:RestoreTableFromBackup"
+          ]
+          Resource = "arn:aws:dynamodb:*:*:table/*"
+        },
+        {
+          Sid    = "KMSPermissions"
+          Effect = "Allow"
+          Action = [
+            "kms:Decrypt",
+            "kms:DescribeKey",
+            "kms:Encrypt",
+            "kms:GenerateDataKey"
+          ]
+          Resource = "*"
+        },
+        {
+          Sid    = "KMSCreateGrant"
+          Effect = "Allow"
+          Action = [
+            "kms:CreateGrant"
+          ]
+          Resource = "*"
+          Condition = {
+            StringEquals = {
+              "kms:ViaService" = "backup.${var.aws_region}.amazonaws.com"
+            }
           }
         }
-      }
-    ]
+      ],
+      var.destination_kms_key_arn != "" ? [
+        {
+          Sid    = "DestinationKMSPermissions"
+          Effect = "Allow"
+          Action = [
+            "kms:Decrypt",
+            "kms:Encrypt",
+            "kms:GenerateDataKey",
+            "kms:GenerateDataKeyWithoutPlaintext",
+            "kms:DescribeKey"
+          ]
+          Resource = var.destination_kms_key_arn
+        }
+      ] : [],
+      var.destination_account_id != "" ? [
+        {
+          Sid    = "DestinationVaultPermissions"
+          Effect = "Allow"
+          Action = [
+            "backup:CopyIntoBackupVault",
+            "backup:DescribeBackupVault"
+          ]
+          Resource = "*"
+        }
+      ] : []
+    )
   })
 }
 

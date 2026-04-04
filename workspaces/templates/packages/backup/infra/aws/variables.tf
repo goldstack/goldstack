@@ -21,3 +21,15 @@ variable "central_backup_vault_arn" {
   type        = string
   default     = ""
 }
+
+variable "destination_account_id" {
+  description = "AWS account ID of the destination backup vault for cross-account copy"
+  type        = string
+  default     = ""
+}
+
+variable "destination_kms_key_arn" {
+  description = "ARN of the KMS key in the destination account for encrypting copied backups"
+  type        = string
+  default     = ""
+}

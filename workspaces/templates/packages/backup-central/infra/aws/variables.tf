@@ -9,3 +9,15 @@ variable "allowed_account_ids" {
   type        = list(string)
   default     = []
 }
+
+variable "source_account_ids" {
+  description = "List of AWS account IDs that are sources for cross-account backup copies."
+  type        = list(string)
+  default     = []
+}
+
+variable "source_role_arns" {
+  description = "List of IAM role ARNs from source accounts allowed to copy backups to this vault."
+  type        = list(string)
+  default     = []
+}

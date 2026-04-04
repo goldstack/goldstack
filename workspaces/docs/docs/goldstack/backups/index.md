@@ -29,6 +29,30 @@ Before using cross-account backup features, you must enable cross-account backup
 
 For detailed instructions, see [Creating backup copies across AWS accounts](https://docs.aws.amazon.com/aws-backup/latest/devguide/create-cross-account-backup.html).
 
+### Backup Policies in AWS Organizations
+
+If your AWS Organization has **Backup Policies** enabled, cross-account backup vault policies may be restricted. This can cause errors like:
+
+> The specified policy cannot be added to the vault due to cross-account sharing restrictions.
+
+**Option 1: Disable Backup Policies (Recommended for simpler setups)**
+
+1. Log in to the AWS Organizations **management account**
+2. Navigate to **AWS Organizations** → **Policies** → **Backup policies**
+3. Disable backup policies for the organization
+
+This allows individual backup vault policies to manage cross-account access.
+
+**Option 2: Configure Backup Policies Correctly**
+
+If you need to keep Backup Policies enabled, create a backup policy that explicitly allows cross-account copy between your source and central backup accounts:
+
+1. In the management account, create a backup policy
+2. Add the source account IDs and the central backup vault ARN to the policy
+3. Attach the policy to the organizational units (OUs) containing your backup accounts
+
+For more information, see [AWS Backup policies in AWS Organizations](https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-policy.html).
+
 ### Enable Advanced DynamoDB Backup
 
 **Note:** Customers who started using AWS Backup after November 2021 have Advanced DynamoDB backup enabled by default. If you created backup vaults before that date, you need to manually enable this feature.
