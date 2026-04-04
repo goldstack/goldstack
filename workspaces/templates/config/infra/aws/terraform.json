@@ -9,6 +9,11 @@
       "user": "goldstack-prod",
       "terraformStateBucket": "goldstack-tfstate-0cb1a35a83c9c952272ee4addbe76d096b031d47",
       "terraformStateDynamoDBTable": "goldstack-tfstate-0cb1a35a83c9c952272ee4addbe76d096b031d47-lock"
+    },
+    {
+      "user": "goldstack-backup",
+      "terraformStateBucket": "goldstack-tfstate-e98492c82eea3835cb020259d071601b0dcc622c",
+      "terraformStateDynamoDBTable": "goldstack-tfstate-e98492c82eea3835cb020259d071601b0dcc622c-lock"
     }
   ]
 }

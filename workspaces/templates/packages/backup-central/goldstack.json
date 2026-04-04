@@ -6,14 +6,16 @@
   "configuration": {},
   "deployments": [
     {
-      "name": "central",
+      "name": "prod",
       "awsRegion": "us-east-1",
       "awsUser": "goldstack-backup",
       "configuration": {
-        "allowedAccountIds": []
+        "allowedAccountIds": [
+          "475629728374"
+        ]
       },
-      "tfStateKey": "backup-central.tfstate",
-      "tfVersion": "1.14.7"
+      "tfVersion": "1.14.7",
+      "tfStateKey": "backup-central-prod-1461e0ceb8269ee68939.tfstate"
     }
   ]
 }

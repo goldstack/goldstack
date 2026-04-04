@@ -13,6 +13,9 @@
   },
   "references": [
     {
+      "path": "../../../templates-lib/packages/template-backup"
+    },
+    {
       "path": "../../../templates-lib/packages/template-backup-cli"
     }
   ]

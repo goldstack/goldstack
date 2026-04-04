@@ -54,11 +54,17 @@ resource "aws_iam_role_policy" "backup" {
         Sid    = "S3Permissions"
         Effect = "Allow"
         Action = [
+          "s3:GetBucketTagging",
           "s3:GetBucketVersioning",
           "s3:PutBucketVersioning",
+          "s3:GetBucketLocation",
+          "s3:GetBucketAcl",
+          "s3:ListBucket",
+          "s3:ListBucketVersions",
           "s3:GetObject",
-          "s3:PutObject",
-          "s3:ListBucket"
+          "s3:GetObjectTagging",
+          "s3:GetObjectVersionTagging",
+          "s3:ListAllMyBuckets"
         ]
         Resource = [
           "arn:aws:s3:::*",
@@ -69,9 +75,11 @@ resource "aws_iam_role_policy" "backup" {
         Sid    = "DynamoDBPermissions"
         Effect = "Allow"
         Action = [
-          "dynamodb:ListTables",
           "dynamodb:DescribeTable",
-          "dynamodb:BackupTable",
+          "dynamodb:CreateBackup",
+          "dynamodb:StartAwsBackupJob",
+          "dynamodb:ListTagsOfResource",
+          "dynamodb:ListTables",
           "dynamodb:RestoreTableFromBackup"
         ]
         Resource = "arn:aws:dynamodb:*:*:table/*"

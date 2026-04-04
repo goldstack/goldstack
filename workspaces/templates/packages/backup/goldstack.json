@@ -12,7 +12,7 @@
       "configuration": {
         "schedule": "cron(0 5 * * ? *)",
         "retentionDays": 30,
-        "centralBackupVaultArn": ""
+        "centralBackupVaultArn": "arn:aws:backup:us-east-1:238391222420:backup-vault:GoldstackCentral"
       },
       "tfStateKey": "backup-prod.tfstate",
       "tfVersion": "1.14.7"
