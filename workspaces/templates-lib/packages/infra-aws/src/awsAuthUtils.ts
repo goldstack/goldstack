@@ -33,7 +33,7 @@ export async function getAWSCredentials(
     return credentials;
   }
 
-  const client = new STSClient({ credentials: provider });
+  const client = new STSClient({ credentials: () => Promise.resolve(credentials) });
   const input = {
     DurationSeconds: 900,
   };

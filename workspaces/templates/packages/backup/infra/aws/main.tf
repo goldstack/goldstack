@@ -89,13 +89,25 @@ resource "aws_iam_role_policy" "backup" {
         Sid    = "KMSPermissions"
         Effect = "Allow"
         Action = [
-          "kms:CreateGrant",
           "kms:Decrypt",
           "kms:DescribeKey",
           "kms:Encrypt",
           "kms:GenerateDataKey"
         ]
         Resource = "*"
+      },
+      {
+        Sid    = "KMSCreateGrant"
+        Effect = "Allow"
+        Action = [
+          "kms:CreateGrant"
+        ]
+        Resource = "*"
+        Condition = {
+          StringEquals = {
+            "kms:ViaService" = "backup.${var.aws_region}.amazonaws.com"
+          }
+        }
       }
     ]
   })

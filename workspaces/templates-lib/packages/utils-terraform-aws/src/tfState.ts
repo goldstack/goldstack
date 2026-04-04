@@ -14,7 +14,6 @@ import {
   DeleteObjectCommand,
   DeleteObjectsCommand,
   HeadBucketCommand,
-  ListObjectsV2Command,
   ListObjectVersionsCommand,
   PutBucketVersioningCommand,
   S3Client,
@@ -209,31 +208,6 @@ const deleteAllObjectsFromBucket = async (s3: S3Client, bucketName: string): Pro
     nextKeyMarker = listVersionsResponse.NextKeyMarker;
     nextVersionIdMarker = listVersionsResponse.NextVersionIdMarker;
   } while (nextKeyMarker);
-
-  if (nextKeyMarker === undefined && nextVersionIdMarker === undefined) {
-    let continuationToken: string | undefined;
-    do {
-      const listResponse = await s3.send(
-        new ListObjectsV2Command({
-          Bucket: bucketName,
-          ContinuationToken: continuationToken,
-        }),
-      );
-
-      if (listResponse.Contents && listResponse.Contents.length > 0) {
-        await s3.send(
-          new DeleteObjectsCommand({
-            Bucket: bucketName,
-            Delete: {
-              Objects: listResponse.Contents.map((object) => ({ Key: object.Key })),
-            },
-          }),
-        );
-      }
-
-      continuationToken = listResponse.NextContinuationToken;
-    } while (continuationToken);
-  }
 };
 
 const deleteS3Bucket = async (params: { s3: S3Client; bucketName: string }): Promise<void> => {
