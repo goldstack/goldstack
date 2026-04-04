@@ -29,6 +29,21 @@ Before using cross-account backup features, you must enable cross-account backup
 
 For detailed instructions, see [Creating backup copies across AWS accounts](https://docs.aws.amazon.com/aws-backup/latest/devguide/create-cross-account-backup.html).
 
+### Enable Advanced DynamoDB Backup
+
+**Note:** Customers who started using AWS Backup after November 2021 have Advanced DynamoDB backup enabled by default. If you created backup vaults before that date, you need to manually enable this feature.
+
+For cross-account copy of DynamoDB backups to work, you must enable Advanced DynamoDB backup features in each source account and region where you want to back up DynamoDB tables:
+
+1. Open the AWS Backup console at [https://console.aws.amazon.com/backup](https://console.aws.amazon.com/backup)
+2. In the left navigation menu, choose **Settings**
+3. Under **Advanced features for DynamoDB backups**, choose **Enable**
+
+This setting must be enabled **per region** in **each source account**. If you have DynamoDB tables in multiple regions, repeat this step for each region.
+
+For more information, see [Advanced DynamoDB backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/advanced-ddb-backup.html).
+
+
 ## Architecture
 
 The typical backup architecture includes:

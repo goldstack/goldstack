@@ -3,7 +3,8 @@
     {
       "user": "goldstack-dev",
       "terraformStateBucket": "goldstack-tfstate-67a73e60720c25855a39baeb8198b55229578671",
-      "terraformStateDynamoDBTable": "goldstack-tfstate-a82076168995c7254fbcae1f9e8013fee75833f2-lock"
+      "terraformStateDynamoDBTable": "goldstack-tfstate-a82076168995c7254fbcae1f9e8013fee75833f2-lock",
+      "accountId": "475629728374"
     },
     {
       "user": "goldstack-prod",
