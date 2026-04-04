@@ -28,6 +28,11 @@ export async function getAWSCredentials(
     return retrieveInjectedCredentials(provider);
   }
 
+  const credentials = await provider();
+  if (credentials.sessionToken) {
+    return credentials;
+  }
+
   const client = new STSClient({ credentials: provider });
   const input = {
     DurationSeconds: 900,
