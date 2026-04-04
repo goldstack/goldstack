@@ -1,5 +1,6 @@
 import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { info } from '@goldstack/utils-log';
+import fs from 'fs';
 import {
   getAWSUserFromContainerEnvironment,
   getAWSUserFromDefaultLocalProfile,
@@ -16,7 +17,7 @@ export const getAWSUser = async (
   userName: string,
   configPath?: string,
 ): Promise<AwsCredentialIdentityProvider> => {
-  if (configPath) {
+  if (configPath && fs.existsSync(configPath)) {
     info(`Obtaining credentials from goldstack config file in ${configPath}`);
     const config = readConfig(configPath);
     return await getAWSUserFromGoldstackConfig(config, userName);
