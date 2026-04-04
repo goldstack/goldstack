@@ -46,7 +46,8 @@ resource "aws_iam_role_policy" "backup" {
           "backup:ListRecoveryPoints",
           "backup:DeleteRecoveryPoint",
           "backup:GetBackupVaultNotifications",
-          "backup:ListTags"
+          "backup:ListTags",
+          "backup:CopyFromBackupVault"
         ]
         Resource = "*"
       },
@@ -95,11 +96,6 @@ resource "aws_iam_role_policy" "backup" {
           "kms:GenerateDataKey"
         ]
         Resource = "*"
-        Condition = {
-          StringLike = {
-            "kms:ResourceAliases" : "alias/aws/backup*"
-          }
-        }
       }
     ]
   })
