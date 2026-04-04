@@ -1,0 +1,1 @@
+The backup-central template sets up a centralized AWS Backup vault in a dedicated account for storing backups from multiple source accounts. This enables cross-account and cross-region backup consolidation for organizational backup strategies.

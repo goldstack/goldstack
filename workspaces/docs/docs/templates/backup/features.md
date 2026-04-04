@@ -1,0 +1,4 @@
+- Automated backup of S3 buckets and DynamoDB tables on a configurable schedule
+- Configurable retention period for backups
+- Optional cross-account copy to a central backup vault
+- Resources tagged with `goldstack:no_backup=true` are automatically excluded
