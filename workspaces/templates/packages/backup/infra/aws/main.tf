@@ -1,6 +1,6 @@
 
 resource "aws_backup_vault" "main" {
-  name = "GoldstackLocal"
+  name = var.backup_vault_name
 
   tags = {
     ManagedBy = "terraform"
@@ -31,7 +31,7 @@ resource "aws_backup_vault_policy" "main" {
 }
 
 resource "aws_iam_role" "backup" {
-  name = "GoldstackBackupRole"
+  name = "${var.resource_prefix}BackupRole"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -52,7 +52,7 @@ resource "aws_iam_role" "backup" {
 }
 
 resource "aws_iam_role_policy" "backup" {
-  name = "GoldstackBackupPolicy"
+  name = "${var.resource_prefix}BackupPolicy"
   role = aws_iam_role.backup.id
 
   policy = jsonencode({
@@ -165,7 +165,7 @@ resource "aws_iam_role_policy" "backup" {
 }
 
 resource "aws_backup_plan" "main" {
-  name = "GoldstackBackupPlan"
+  name = "${var.resource_prefix}BackupPlan"
 
   rule {
     rule_name         = "DailyBackup"
@@ -194,7 +194,7 @@ resource "aws_backup_plan" "main" {
 
 resource "aws_backup_selection" "main" {
   plan_id      = aws_backup_plan.main.id
-  name         = "GoldstackResources"
+  name         = "${var.resource_prefix}Resources"
   iam_role_arn = aws_iam_role.backup.arn
 
   resources = [

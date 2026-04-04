@@ -33,3 +33,15 @@ variable "destination_kms_key_arn" {
   type        = string
   default     = ""
 }
+
+variable "backup_vault_name" {
+  description = "Name of the backup vault. Must be unique within the region."
+  type        = string
+  default     = "GoldstackLocal"
+}
+
+variable "resource_prefix" {
+  description = "Prefix for backup resources to avoid naming collisions"
+  type        = string
+  default     = "Goldstack"
+}

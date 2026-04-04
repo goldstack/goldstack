@@ -165,6 +165,7 @@ const assertS3Bucket = async (params: { s3: S3Client; bucketName: string }): Pro
 const deleteAllObjectsFromBucket = async (s3: S3Client, bucketName: string): Promise<void> => {
   let nextKeyMarker: string | undefined;
   let nextVersionIdMarker: string | undefined;
+  let isTruncated = false;
   do {
     const listVersionsResponse = await s3.send(
       new ListObjectVersionsCommand({
@@ -205,9 +206,10 @@ const deleteAllObjectsFromBucket = async (s3: S3Client, bucketName: string): Pro
       );
     }
 
+    isTruncated = listVersionsResponse.IsTruncated || false;
     nextKeyMarker = listVersionsResponse.NextKeyMarker;
     nextVersionIdMarker = listVersionsResponse.NextVersionIdMarker;
-  } while (nextKeyMarker);
+  } while (isTruncated);
 };
 
 const deleteS3Bucket = async (params: { s3: S3Client; bucketName: string }): Promise<void> => {

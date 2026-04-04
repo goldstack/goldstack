@@ -102,7 +102,7 @@ resource "aws_kms_key_policy" "main" {
 data "aws_caller_identity" "current" {}
 
 resource "aws_backup_vault" "main" {
-  name        = "GoldstackCentral"
+  name        = var.backup_vault_name
   kms_key_arn = aws_kms_key.main.arn
 
   tags = {

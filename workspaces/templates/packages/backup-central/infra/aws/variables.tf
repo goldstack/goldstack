@@ -21,3 +21,9 @@ variable "source_role_arns" {
   type        = list(string)
   default     = []
 }
+
+variable "backup_vault_name" {
+  description = "Name of the backup vault. Must be unique within the region."
+  type        = string
+  default     = "GoldstackCentral"
+}

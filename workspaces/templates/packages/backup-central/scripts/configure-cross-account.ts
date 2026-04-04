@@ -9,6 +9,9 @@ interface BackupDeploymentState {
     backup_role_arn?: {
       value: string;
     };
+    backup_vault_arn?: {
+      value: string;
+    };
   };
 }
 
@@ -80,17 +83,18 @@ const configureCrossAccount = async (): Promise<void> => {
       continue;
     }
 
-    const accountIdMatch = (backupDeployment as { awsUser?: string }).awsUser?.match(
-      /goldstack-(?:dev-)?(\d+)/,
-    );
-    if (accountIdMatch) {
-      sourceAccountIds.push(accountIdMatch[1]);
-    }
-
     try {
       const deploymentState = readDeploymentState(packagePath, deploymentName, {
         createIfNotExist: false,
       });
+
+      if (deploymentState.terraform?.backup_vault_arn?.value) {
+        const arn = deploymentState.terraform.backup_vault_arn.value;
+        const accountIdMatch = arn.match(/arn:aws:backup:[^:]+:(\d+):/);
+        if (accountIdMatch) {
+          sourceAccountIds.push(accountIdMatch[1]);
+        }
+      }
 
       if (deploymentState.terraform?.backup_role_arn?.value) {
         sourceRoleArns.push(deploymentState.terraform.backup_role_arn.value);
