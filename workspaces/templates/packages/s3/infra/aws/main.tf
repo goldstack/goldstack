@@ -2,6 +2,7 @@
 resource "aws_s3_bucket" "main" {
   bucket = var.bucket_name
 
+  # Remove this line if you want to prevent accidental deletion of bucket 
   force_destroy = true
 
   tags = {
