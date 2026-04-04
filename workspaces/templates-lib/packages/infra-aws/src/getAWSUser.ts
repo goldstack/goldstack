@@ -34,12 +34,15 @@ export const getAWSUser = async (
   }
 
   // Try loading default local user first (supports 'aws login')
-  try {
-    const defaultProfile = await getAWSUserFromDefaultLocalProfile();
-    info('Using default AWS profile obtained from aws login.');
-    return defaultProfile;
-  } catch {
-    // Fall through to Goldstack config
+  // Only use default profile if no specific user was requested
+  if (!userName) {
+    try {
+      const defaultProfile = await getAWSUserFromDefaultLocalProfile();
+      info('Using default AWS profile obtained from aws login.');
+      return defaultProfile;
+    } catch {
+      // Fall through to Goldstack config
+    }
   }
 
   // Load users as configured in Goldstack configuration

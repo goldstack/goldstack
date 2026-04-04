@@ -27,3 +27,9 @@ variable "backup_vault_name" {
   type        = string
   default     = "GoldstackCentral"
 }
+
+variable "manage_region_settings" {
+  description = "Whether to manage backup region settings. Set to false if another configuration manages these settings to avoid conflicts."
+  type        = bool
+  default     = true
+}

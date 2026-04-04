@@ -196,14 +196,18 @@ const deleteAllObjectsFromBucket = async (s3: S3Client, bucketName: string): Pro
     }
 
     if (objectsToDelete.length > 0) {
-      await s3.send(
-        new DeleteObjectsCommand({
-          Bucket: bucketName,
-          Delete: {
-            Objects: objectsToDelete,
-          },
-        }),
-      );
+      const chunkSize = 1000;
+      for (let i = 0; i < objectsToDelete.length; i += chunkSize) {
+        const chunk = objectsToDelete.slice(i, i + chunkSize);
+        await s3.send(
+          new DeleteObjectsCommand({
+            Bucket: bucketName,
+            Delete: {
+              Objects: chunk,
+            },
+          }),
+        );
+      }
     }
 
     isTruncated = listVersionsResponse.IsTruncated || false;
@@ -336,6 +340,7 @@ export const assertState = async (params: {
     });
   } else if (params.remoteStateConfig && params.awsTerraformConfig && params.writeTerraformConfig) {
     if (!params.remoteStateConfig.accountId) {
+      // Intentional side effect: auto-configure and persist missing account ID
       params.remoteStateConfig.accountId = currentAccountId;
       params.writeTerraformConfig(params.awsTerraformConfig);
       info('AWS account ID auto-configured and saved', {

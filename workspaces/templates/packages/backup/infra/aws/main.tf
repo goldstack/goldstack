@@ -88,6 +88,7 @@ resource "aws_iam_role_policy" "backup" {
             "s3:ListBucket",
             "s3:ListBucketVersions",
             "s3:GetObject",
+            "s3:GetObjectVersion",
             "s3:GetObjectTagging",
             "s3:GetObjectVersionTagging",
             "s3:ListAllMyBuckets"
@@ -157,7 +158,7 @@ resource "aws_iam_role_policy" "backup" {
             "backup:CopyIntoBackupVault",
             "backup:DescribeBackupVault"
           ]
-          Resource = "*"
+          Resource = var.central_backup_vault_arn != "" ? var.central_backup_vault_arn : "*"
         }
       ] : []
     )

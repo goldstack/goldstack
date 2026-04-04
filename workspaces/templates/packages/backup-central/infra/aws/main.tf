@@ -1,5 +1,7 @@
 
 resource "aws_backup_region_settings" "main" {
+  count = var.manage_region_settings ? 1 : 0
+
   resource_type_opt_in_preference = {
     DynamoDB          = true
     EBS               = true
@@ -116,7 +118,7 @@ resource "aws_backup_vault_policy" "main" {
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = concat(
-      [
+      length(var.allowed_account_ids) > 0 ? [
         {
           Sid    = "AllowCopyIntoVault"
           Effect = "Allow"
@@ -128,7 +130,7 @@ resource "aws_backup_vault_policy" "main" {
           ]
           Resource = aws_backup_vault.main.arn
         }
-      ],
+      ] : [],
       length(var.source_role_arns) > 0 ? [
         {
           Sid    = "AllowSourceRolesCopy"

@@ -22,6 +22,26 @@ interface BackupCentralDeploymentConfiguration {
 }
 
 /**
+ * Finds the project root by searching upward for goldstack.json
+ */
+const findProjectRoot = (startDir: string): string | null => {
+  let currentDir = startDir;
+  const maxIterations = 10;
+  for (let i = 0; i < maxIterations; i++) {
+    const configPath = path.join(currentDir, 'goldstack.json');
+    if (require('fs').existsSync(configPath)) {
+      return currentDir;
+    }
+    const parentDir = path.dirname(currentDir);
+    if (parentDir === currentDir) {
+      break;
+    }
+    currentDir = parentDir;
+  }
+  return null;
+};
+
+/**
  * Configures backup-central package with source account information from deployed backup packages.
  *
  * This script should be run AFTER:
@@ -46,7 +66,12 @@ const configureCrossAccount = async (): Promise<void> => {
     throw new Error(`Deployment '${deploymentName}' not found in backup-central goldstack.json`);
   }
 
-  const projectRoot = path.resolve(path.dirname(process.cwd()), '..', '..');
+  const projectRoot = findProjectRoot(process.cwd());
+  if (!projectRoot) {
+    throw new Error(
+      'Could not find project root. Ensure you are running this script from within a Goldstack project.',
+    );
+  }
   const projectConfigPath = path.join(projectRoot, 'goldstack.json');
 
   let projectPackages: string[];
