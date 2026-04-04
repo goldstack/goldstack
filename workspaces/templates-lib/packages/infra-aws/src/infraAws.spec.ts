@@ -22,8 +22,8 @@ aws_secret_access_key=fromProfileSecret
     `;
 
     mkdir('-p', `${os.homedir()}/.aws`);
-    await rmSafe(`${os.homedir}/.aws/config`);
-    write(awsCredentials, `${os.homedir}/.aws/credentials`);
+    await rmSafe(`${os.homedir()}/.aws/config`);
+    write(awsCredentials, `${os.homedir()}/.aws/credentials`);
 
     const provider = await getAWSUser('default', './invalid');
     assert(provider);
@@ -48,8 +48,8 @@ credential_process=cat ~/processCredentials.json
     `;
 
     mkdir('-p', `${os.homedir()}/.aws`);
-    await rmSafe(`${os.homedir}/.aws/credentials`);
-    write(awsConfig, `${os.homedir}/.aws/config`);
+    await rmSafe(`${os.homedir()}/.aws/credentials`);
+    write(awsConfig, `${os.homedir()}/.aws/config`);
 
     const processCredentials = `
 {
@@ -60,7 +60,7 @@ credential_process=cat ~/processCredentials.json
   "Expiration": "ISO8601 timestamp when the credentials expire"
 }`;
 
-    write(processCredentials, `${os.homedir}/processCredentials.json`);
+    write(processCredentials, `${os.homedir()}/processCredentials.json`);
 
     const provider = await getAWSUser('default', './invalid');
     assert(provider);
