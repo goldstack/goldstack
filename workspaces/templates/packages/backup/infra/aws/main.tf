@@ -7,29 +7,6 @@ resource "aws_backup_vault" "main" {
   }
 }
 
-resource "aws_backup_vault_policy" "main" {
-  count = var.destination_account_id != "" ? 1 : 0
-
-  backup_vault_name = aws_backup_vault.main.name
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Sid    = "AllowDestinationAccountCopy"
-        Effect = "Allow"
-        Principal = {
-          AWS = "arn:aws:iam::${var.destination_account_id}:root"
-        }
-        Action = [
-          "backup:CopyFromBackupVault"
-        ]
-        Resource = aws_backup_vault.main.arn
-      }
-    ]
-  })
-}
-
 resource "aws_iam_role" "backup" {
   name = "${var.resource_prefix}BackupRole"
 

@@ -179,7 +179,7 @@ const deleteAllObjectsFromBucket = async (s3: S3Client, bucketName: string): Pro
 
     if (listVersionsResponse.Versions && listVersionsResponse.Versions.length > 0) {
       objectsToDelete.push(
-        ...listVersionsResponse.Versions.map((version) => ({
+        ...listVersionsResponse.Versions.filter((v) => v.Key).map((version) => ({
           Key: version.Key!,
           VersionId: version.VersionId,
         })),
@@ -188,7 +188,7 @@ const deleteAllObjectsFromBucket = async (s3: S3Client, bucketName: string): Pro
 
     if (listVersionsResponse.DeleteMarkers && listVersionsResponse.DeleteMarkers.length > 0) {
       objectsToDelete.push(
-        ...listVersionsResponse.DeleteMarkers.map((marker) => ({
+        ...listVersionsResponse.DeleteMarkers.filter((m) => m.Key).map((marker) => ({
           Key: marker.Key!,
           VersionId: marker.VersionId,
         })),
