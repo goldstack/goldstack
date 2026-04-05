@@ -1,16 +1,31 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*", "./src/**/*.json"],
+  "include": [
+    "./src/**/*",
+    "./src/**/*.json"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
   },
   "references": [
     {
+      "path": "../infra"
+    },
+    {
+      "path": "../infra-aws"
+    },
+    {
       "path": "../template-backup"
     },
     {
+      "path": "../utils-aws-cli"
+    },
+    {
       "path": "../../../utils/packages/utils-cli"
+    },
+    {
+      "path": "../../../utils/packages/utils-log"
     },
     {
       "path": "../utils-package"

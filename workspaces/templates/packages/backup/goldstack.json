@@ -10,7 +10,7 @@
       "awsRegion": "us-west-2",
       "awsUser": "goldstack-dev",
       "configuration": {
-        "schedule": "cron(10 * * * ? *)",
+        "schedule": "cron(0 0 ? * FRI *)",
         "retentionDays": 30,
         "centralBackupVaultArn": "arn:aws:backup:us-east-1:238391222420:backup-vault:GoldstackCentral",
         "destinationAccountId": "238391222420",
