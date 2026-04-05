@@ -20,7 +20,17 @@ export const getAWSUser = async (
   if (configPath && fs.existsSync(configPath)) {
     info(`Obtaining credentials from goldstack config file in ${configPath}`);
     const config = readConfig(configPath);
-    return await getAWSUserFromGoldstackConfig(config, userName);
+    try {
+      return await getAWSUserFromGoldstackConfig(config, userName);
+    } catch (error) {
+      if (error instanceof Error && error.message.includes('does not exist in AWS configuration')) {
+        info(
+          `User '${userName}' not found in goldstack config. Falling back to default profile from aws login.`,
+        );
+        return await getAWSUserFromDefaultLocalProfile();
+      }
+      throw error;
+    }
   }
 
   // Load from ECS environment if running in ECS
@@ -54,5 +64,15 @@ export const getAWSUser = async (
 
   info(`Obtaining credentials from goldstack config file.`);
   const config = readConfig(configPath);
-  return await getAWSUserFromGoldstackConfig(config, userName);
+  try {
+    return await getAWSUserFromGoldstackConfig(config, userName);
+  } catch (error) {
+    if (error instanceof Error && error.message.includes('does not exist in AWS configuration')) {
+      info(
+        `User '${userName}' not found in goldstack config. Falling back to default profile from aws login.`,
+      );
+      return await getAWSUserFromDefaultLocalProfile();
+    }
+    throw error;
+  }
 };

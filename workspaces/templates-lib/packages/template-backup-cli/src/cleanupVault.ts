@@ -144,6 +144,7 @@ export const cleanupVault = async (params: CleanupVaultParams): Promise<void> =>
 
   if (recoveryPoints.length > 0) {
     info(`Found ${recoveryPoints.length} recovery points, deleting them...`);
+    let deletedCount = 0;
     for (const rp of recoveryPoints) {
       try {
         await client.send(
@@ -152,7 +153,11 @@ export const cleanupVault = async (params: CleanupVaultParams): Promise<void> =>
             BackupVaultName: backupVaultName,
           }),
         );
-        info(`Deleted recovery point: ${rp.RecoveryPointArn}`);
+        deletedCount++;
+        const percentDone = Math.round((deletedCount / recoveryPoints.length) * 100);
+        info(
+          `Deleted recovery point ${deletedCount}/${recoveryPoints.length} (${percentDone}%): ${rp.RecoveryPointArn}`,
+        );
       } catch (err) {
         warn(`Failed to delete recovery point ${rp.RecoveryPointArn}: ${err}`);
       }
