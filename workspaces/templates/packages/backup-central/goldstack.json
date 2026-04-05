@@ -1,0 +1,21 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "backup-central",
+  "template": "backup-central",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-east-1",
+      "awsUser": "goldstack-backup",
+      "configuration": {
+        "allowedAccountIds": ["475629728374"],
+        "sourceAccountIds": ["475629728374"],
+        "sourceRoleArns": ["arn:aws:iam::475629728374:role/GoldstackBackupRole"]
+      },
+      "tfVersion": "1.14.7",
+      "tfStateKey": "backup-central-prod-1461e0ceb8269ee68939.tfstate"
+    }
+  ]
+}

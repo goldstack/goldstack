@@ -1,4 +1,3 @@
-import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import {
   getAwsConfigPath,
   getAwsTerraformConfigPath,
@@ -37,15 +36,11 @@ export type {
   RemoteState,
 };
 
-import {
-  getAWSUserFromContainerEnvironment,
-  getAWSUserFromDefaultLocalProfile,
-  getAWSUserFromEnvironmentVariables,
-  getAWSUserFromGoldstackConfig,
-} from './awsUserUtils';
 import type { AWSDeployment } from './types/awsDeployment';
 
 export { getAWSCredentials } from './awsAuthUtils';
+export { getCurrentAWSAccountId } from './awsUserUtils';
+export { getAWSUser } from './getAWSUser';
 export type {
   AWSDeployment,
   AWSDeploymentRegion,
@@ -152,31 +147,4 @@ export const createDefaultConfig = (): AWSConfiguration => {
 export const resetAWSUser = (): void => {
   delete process.env.AWS_ACCESS_KEY_ID;
   delete process.env.AWS_SECRET_ACCESS_KEY;
-};
-
-/**
- * Obtains AWS user credentials from config file or environment variables.
- */
-export const getAWSUser = async (
-  userName: string,
-  configPath?: string,
-): Promise<AwsCredentialIdentityProvider> => {
-  // Load from ECS environment if running in ECS
-  if (process.env.AWS_CONTAINER_CREDENTIALS_RELATIVE_URI) {
-    return await getAWSUserFromContainerEnvironment();
-  }
-
-  // Load credentials from environment variables if available
-  if (process.env.AWS_ACCESS_KEY_ID) {
-    return await getAWSUserFromEnvironmentVariables();
-  }
-
-  // Try loading default local user if no config file provided
-  if (!hasConfig(configPath)) {
-    return await getAWSUserFromDefaultLocalProfile();
-  }
-
-  // Load users as configured in Goldstack configuration
-  const config = readConfig(configPath);
-  return await getAWSUserFromGoldstackConfig(config, userName);
 };

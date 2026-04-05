@@ -86,6 +86,12 @@
       "path": "workspaces/templates/packages/app-nextjs-tailwind"
     },
     {
+      "path": "workspaces/templates/packages/backup"
+    },
+    {
+      "path": "workspaces/templates/packages/backup-central"
+    },
+    {
       "path": "workspaces/templates/packages/docker-image-aws"
     },
     {
@@ -147,6 +153,18 @@
     },
     {
       "path": "workspaces/templates-lib/packages/infra-hetzner"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-backup"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-backup-central"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-backup-central-cli"
+    },
+    {
+      "path": "workspaces/templates-lib/packages/template-backup-cli"
     },
     {
       "path": "workspaces/templates-lib/packages/template-docker-image-aws"

@@ -3,12 +3,19 @@
     {
       "user": "goldstack-dev",
       "terraformStateBucket": "goldstack-tfstate-67a73e60720c25855a39baeb8198b55229578671",
-      "terraformStateDynamoDBTable": "goldstack-tfstate-a82076168995c7254fbcae1f9e8013fee75833f2-lock"
+      "terraformStateDynamoDBTable": "goldstack-tfstate-a82076168995c7254fbcae1f9e8013fee75833f2-lock",
+      "accountId": "475629728374"
     },
     {
       "user": "goldstack-prod",
       "terraformStateBucket": "goldstack-tfstate-0cb1a35a83c9c952272ee4addbe76d096b031d47",
       "terraformStateDynamoDBTable": "goldstack-tfstate-0cb1a35a83c9c952272ee4addbe76d096b031d47-lock"
+    },
+    {
+      "user": "goldstack-backup",
+      "terraformStateBucket": "goldstack-tfstate-e98492c82eea3835cb020259d071601b0dcc622c",
+      "terraformStateDynamoDBTable": "goldstack-tfstate-e98492c82eea3835cb020259d071601b0dcc622c-lock",
+      "accountId": "238391222420"
     }
   ]
 }

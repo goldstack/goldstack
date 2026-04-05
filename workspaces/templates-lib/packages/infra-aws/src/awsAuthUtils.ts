@@ -28,7 +28,12 @@ export async function getAWSCredentials(
     return retrieveInjectedCredentials(provider);
   }
 
-  const client = new STSClient({ credentials: provider });
+  const credentials = await provider();
+  if (credentials.sessionToken) {
+    return credentials;
+  }
+
+  const client = new STSClient({ credentials: () => Promise.resolve(credentials) });
   const input = {
     DurationSeconds: 900,
   };

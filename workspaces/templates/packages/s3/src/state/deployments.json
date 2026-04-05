@@ -1,17 +1,5 @@
 [
   {
-    "name": "prod",
-    "terraform": {
-      "bucket_arn": {
-        "sensitive": false,
-        "type": "string",
-        "value": "arn:aws:s3:::goldstack-test-s3-bucket"
-      },
-      "bucket_name": {
-        "sensitive": false,
-        "type": "string",
-        "value": "goldstack-test-s3-bucket"
-      }
-    }
+    "name": "prod"
   }
 ]

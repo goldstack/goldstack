@@ -1,0 +1,28 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["./src/**/*", "./src/**/*.json"],
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "."
+  },
+  "references": [
+    {
+      "path": "../template-backup-central"
+    },
+    {
+      "path": "../../../utils/packages/utils-cli"
+    },
+    {
+      "path": "../utils-package"
+    },
+    {
+      "path": "../utils-terraform"
+    },
+    {
+      "path": "../utils-terraform-aws"
+    },
+    {
+      "path": "../utils-package-config-generate"
+    }
+  ]
+}

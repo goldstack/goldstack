@@ -1,0 +1,1 @@
+The backup template configures AWS Backup for S3 buckets and DynamoDB tables in an AWS account. It supports automatic backups on a configurable schedule and optional cross-account copy to a central backup vault.

@@ -1,0 +1,59 @@
+{
+  "name": "@goldstack/template-backup",
+  "version": "0.1.0",
+  "description": "Template utilities for backup",
+  "keywords": [
+    "goldstack",
+    "utility",
+    "infrastructure",
+    "aws",
+    "backup",
+    "IaC",
+    "configuration"
+  ],
+  "homepage": "https://goldstack.party",
+  "bugs": {
+    "url": "https://github.com/goldstack/goldstack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goldstack/goldstack.git"
+  },
+  "license": "MIT",
+  "author": "Max Rohde",
+  "sideEffects": false,
+  "main": "src/templateBackup.ts",
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+    "build:watch": "yarn clean && yarn compile-watch",
+    "clean": "rimraf ./dist",
+    "compile": "tsc -p tsconfig.json",
+    "compile-watch": "tsc -p tsconfig.json --watch",
+    "coverage": "jest --collect-coverage --passWithNoTests --config=./jest.config.js --runInBand",
+    "generate-schema": "ts-node scripts/generateSchemas.ts && cp schemas/* ../../../templates/packages/backup/schemas",
+    "prepublishOnly": "yarn run build",
+    "publish": "yarn npm publish --tolerate-republish",
+    "test": "jest --passWithNoTests --config=./jest.config.js --runInBand",
+    "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
+  },
+  "dependencies": {
+    "@goldstack/infra": "0.4.40",
+    "@goldstack/infra-aws": "0.4.61",
+    "@goldstack/utils-package": "0.4.42",
+    "@goldstack/utils-terraform": "0.4.77"
+  },
+  "devDependencies": {
+    "@goldstack/utils-package-config-generate": "0.3.28",
+    "@swc/core": "^1.15.8",
+    "@swc/jest": "^0.2.39",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.3",
+    "jest": "^30.2.0",
+    "rimraf": "^6.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "main": "dist/src/templateBackup.js"
+  }
+}

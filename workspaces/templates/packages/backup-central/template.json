@@ -1,0 +1,8 @@
+{
+  "templateName": "backup-central",
+  "templateVersion": "0.1.0",
+  "previousTemplateVersion": "0.0.0",
+  "templateDescription": "Sets up a centralized AWS Backup vault for cross-account backup consolidation.",
+  "templateDocumentation": "https://docs.goldstack.party/docs/templates/backup-central",
+  "templateArchive": ""
+}

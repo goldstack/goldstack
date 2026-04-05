@@ -212,6 +212,10 @@ export const terraformAwsCli = async (params: TerraformAWSCliParams): Promise<vo
     dynamoDBTableName: remoteStateConfig.terraformStateDynamoDBTable,
     credentials,
     awsRegion: deployment.awsRegion,
+    expectedAccountId: remoteStateConfig.accountId,
+    remoteStateConfig,
+    awsTerraformConfig,
+    writeTerraformConfig,
   });
 
   if (operation === 'create-state') {

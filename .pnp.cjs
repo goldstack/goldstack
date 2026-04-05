@@ -87,6 +87,14 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:workspaces/templates/packages/app-nextjs-tailwind"\
     },\
     {\
+      "name": "@goldstack/backup",\
+      "reference": "workspace:workspaces/templates/packages/backup"\
+    },\
+    {\
+      "name": "@goldstack/backup-central",\
+      "reference": "workspace:workspaces/templates/packages/backup-central"\
+    },\
+    {\
       "name": "@goldstack/docker-image-aws",\
       "reference": "workspace:workspaces/templates/packages/docker-image-aws"\
     },\
@@ -169,6 +177,22 @@ const RAW_RUNTIME_STATE =
     {\
       "name": "@goldstack/infra-hetzner",\
       "reference": "workspace:workspaces/templates-lib/packages/infra-hetzner"\
+    },\
+    {\
+      "name": "@goldstack/template-backup",\
+      "reference": "workspace:workspaces/templates-lib/packages/template-backup"\
+    },\
+    {\
+      "name": "@goldstack/template-backup-central",\
+      "reference": "workspace:workspaces/templates-lib/packages/template-backup-central"\
+    },\
+    {\
+      "name": "@goldstack/template-backup-central-cli",\
+      "reference": "workspace:workspaces/templates-lib/packages/template-backup-central-cli"\
+    },\
+    {\
+      "name": "@goldstack/template-backup-cli",\
+      "reference": "workspace:workspaces/templates-lib/packages/template-backup-cli"\
     },\
     {\
       "name": "@goldstack/template-docker-image-aws",\
@@ -487,6 +511,8 @@ const RAW_RUNTIME_STATE =
     ["@goldstack/app-nextjs-bootstrap", ["workspace:workspaces/templates/packages/app-nextjs-bootstrap"]],\
     ["@goldstack/app-nextjs-tailwind", ["workspace:workspaces/templates/packages/app-nextjs-tailwind"]],\
     ["@goldstack/auth", ["workspace:workspaces/templates-management/packages/auth"]],\
+    ["@goldstack/backup", ["workspace:workspaces/templates/packages/backup"]],\
+    ["@goldstack/backup-central", ["workspace:workspaces/templates/packages/backup-central"]],\
     ["@goldstack/cdn", ["workspace:workspaces/docs/packages/cdn"]],\
     ["@goldstack/docker-image-aws", ["workspace:workspaces/templates/packages/docker-image-aws"]],\
     ["@goldstack/docs-main", ["workspace:workspaces/docs/packages/docs-main"]],\
@@ -522,6 +548,10 @@ const RAW_RUNTIME_STATE =
     ["@goldstack/session-repository", ["workspace:workspaces/templates-management/packages/session-repository"]],\
     ["@goldstack/session-repository-bucket", ["workspace:workspaces/templates-management/packages/session-repository-bucket"]],\
     ["@goldstack/static-website-aws", ["workspace:workspaces/templates/packages/static-website-aws"]],\
+    ["@goldstack/template-backup", ["workspace:workspaces/templates-lib/packages/template-backup"]],\
+    ["@goldstack/template-backup-central", ["workspace:workspaces/templates-lib/packages/template-backup-central"]],\
+    ["@goldstack/template-backup-central-cli", ["workspace:workspaces/templates-lib/packages/template-backup-central-cli"]],\
+    ["@goldstack/template-backup-cli", ["workspace:workspaces/templates-lib/packages/template-backup-cli"]],\
     ["@goldstack/template-build", ["workspace:workspaces/templates-management/packages/template-build"]],\
     ["@goldstack/template-build-set", ["workspace:workspaces/templates-management/packages/template-build-set"]],\
     ["@goldstack/template-docker-image-aws", ["workspace:workspaces/templates-lib/packages/template-docker-image-aws"]],\
@@ -4213,6 +4243,44 @@ const RAW_RUNTIME_STATE =
         "linkType": "SOFT"\
       }]\
     ]],\
+    ["@goldstack/backup", [\
+      ["workspace:workspaces/templates/packages/backup", {\
+        "packageLocation": "./workspaces/templates/packages/backup/",\
+        "packageDependencies": [\
+          ["@goldstack/backup", "workspace:workspaces/templates/packages/backup"],\
+          ["@goldstack/template-backup", "workspace:workspaces/templates-lib/packages/template-backup"],\
+          ["@goldstack/template-backup-cli", "workspace:workspaces/templates-lib/packages/template-backup-cli"],\
+          ["@swc/core", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:1.15.8"],\
+          ["@swc/jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:0.2.39"],\
+          ["@types/jest", "npm:30.0.0"],\
+          ["@types/node", "npm:25.0.3"],\
+          ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
+          ["rimraf", "npm:6.1.2"],\
+          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
+          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@goldstack/backup-central", [\
+      ["workspace:workspaces/templates/packages/backup-central", {\
+        "packageLocation": "./workspaces/templates/packages/backup-central/",\
+        "packageDependencies": [\
+          ["@goldstack/backup-central", "workspace:workspaces/templates/packages/backup-central"],\
+          ["@goldstack/template-backup-central", "workspace:workspaces/templates-lib/packages/template-backup-central"],\
+          ["@goldstack/template-backup-central-cli", "workspace:workspaces/templates-lib/packages/template-backup-central-cli"],\
+          ["@swc/core", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:1.15.8"],\
+          ["@swc/jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:0.2.39"],\
+          ["@types/jest", "npm:30.0.0"],\
+          ["@types/node", "npm:25.0.3"],\
+          ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
+          ["rimraf", "npm:6.1.2"],\
+          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
+          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
     ["@goldstack/cdn", [\
       ["workspace:workspaces/docs/packages/cdn", {\
         "packageLocation": "./workspaces/docs/packages/cdn/",\
@@ -5177,6 +5245,102 @@ const RAW_RUNTIME_STATE =
           ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@goldstack/template-backup", [\
+      ["workspace:workspaces/templates-lib/packages/template-backup", {\
+        "packageLocation": "./workspaces/templates-lib/packages/template-backup/",\
+        "packageDependencies": [\
+          ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+          ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+          ["@goldstack/template-backup", "workspace:workspaces/templates-lib/packages/template-backup"],\
+          ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+          ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+          ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+          ["@swc/core", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:1.15.8"],\
+          ["@swc/jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:0.2.39"],\
+          ["@types/jest", "npm:30.0.0"],\
+          ["@types/node", "npm:25.0.3"],\
+          ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
+          ["rimraf", "npm:6.1.2"],\
+          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
+          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@goldstack/template-backup-central", [\
+      ["workspace:workspaces/templates-lib/packages/template-backup-central", {\
+        "packageLocation": "./workspaces/templates-lib/packages/template-backup-central/",\
+        "packageDependencies": [\
+          ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+          ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+          ["@goldstack/template-backup-central", "workspace:workspaces/templates-lib/packages/template-backup-central"],\
+          ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+          ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+          ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+          ["@swc/core", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:1.15.8"],\
+          ["@swc/jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:0.2.39"],\
+          ["@types/jest", "npm:30.0.0"],\
+          ["@types/node", "npm:25.0.3"],\
+          ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
+          ["rimraf", "npm:6.1.2"],\
+          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
+          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@goldstack/template-backup-central-cli", [\
+      ["workspace:workspaces/templates-lib/packages/template-backup-central-cli", {\
+        "packageLocation": "./workspaces/templates-lib/packages/template-backup-central-cli/",\
+        "packageDependencies": [\
+          ["@goldstack/template-backup-central", "workspace:workspaces/templates-lib/packages/template-backup-central"],\
+          ["@goldstack/template-backup-central-cli", "workspace:workspaces/templates-lib/packages/template-backup-central-cli"],\
+          ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
+          ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+          ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+          ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+          ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
+          ["@swc/core", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:1.15.8"],\
+          ["@swc/jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:0.2.39"],\
+          ["@types/jest", "npm:30.0.0"],\
+          ["@types/node", "npm:25.0.3"],\
+          ["@types/yargs", "npm:17.0.33"],\
+          ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
+          ["rimraf", "npm:6.1.2"],\
+          ["source-map-support", "npm:0.5.21"],\
+          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
+          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
+          ["yargs", "npm:17.7.2"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@goldstack/template-backup-cli", [\
+      ["workspace:workspaces/templates-lib/packages/template-backup-cli", {\
+        "packageLocation": "./workspaces/templates-lib/packages/template-backup-cli/",\
+        "packageDependencies": [\
+          ["@goldstack/template-backup", "workspace:workspaces/templates-lib/packages/template-backup"],\
+          ["@goldstack/template-backup-cli", "workspace:workspaces/templates-lib/packages/template-backup-cli"],\
+          ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
+          ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+          ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+          ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
+          ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
+          ["@swc/core", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:1.15.8"],\
+          ["@swc/jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:0.2.39"],\
+          ["@types/jest", "npm:30.0.0"],\
+          ["@types/node", "npm:25.0.3"],\
+          ["@types/yargs", "npm:17.0.33"],\
+          ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
+          ["rimraf", "npm:6.1.2"],\
+          ["source-map-support", "npm:0.5.21"],\
+          ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
+          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
+          ["yargs", "npm:17.7.2"]\
         ],\
         "linkType": "SOFT"\
       }]\

@@ -1,0 +1,12 @@
+# terraform
+infra/aws/.terraform
+infra/aws/tfplan
+infra/aws/terraform.tfstate.d/
+infra/aws/terraform.tfstate
+
+# node
+dist
+node_modules
+
+# aws credentials
+aws_credentials

@@ -1,17 +1,5 @@
 [
   {
-    "name": "prod",
-    "terraform": {
-      "table_arn": {
-        "sensitive": false,
-        "type": "string",
-        "value": "arn:aws:dynamodb:us-west-2:475629728374:table/goldstack-test-dynamodb-table"
-      },
-      "table_name": {
-        "sensitive": false,
-        "type": "string",
-        "value": "goldstack-test-dynamodb-table"
-      }
-    }
+    "name": "prod"
   }
 ]

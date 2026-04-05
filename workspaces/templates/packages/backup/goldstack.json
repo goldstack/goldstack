@@ -1,0 +1,23 @@
+{
+  "$schema": "./schemas/package.schema.json",
+  "name": "backup",
+  "template": "backup",
+  "templateVersion": "0.1.0",
+  "configuration": {},
+  "deployments": [
+    {
+      "name": "prod",
+      "awsRegion": "us-west-2",
+      "awsUser": "goldstack-dev",
+      "configuration": {
+        "schedule": "cron(10 * * * ? *)",
+        "retentionDays": 30,
+        "centralBackupVaultArn": "arn:aws:backup:us-east-1:238391222420:backup-vault:GoldstackCentral",
+        "destinationAccountId": "238391222420",
+        "destinationKmsKeyArn": "arn:aws:kms:us-east-1:238391222420:key/5ab60731-c56e-4e83-b38a-ebd57cf34f1d"
+      },
+      "tfStateKey": "backup-prod.tfstate",
+      "tfVersion": "1.14.7"
+    }
+  ]
+}

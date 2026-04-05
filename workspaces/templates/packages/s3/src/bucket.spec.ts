@@ -6,7 +6,7 @@ jest.setTimeout(60000);
 describe('S3 Bucket', () => {
   it('Should get bucket name', async () => {
     const bucketName = await getBucketName('prod');
-    expect(bucketName).toEqual('goldstack-test-s3-bucket');
+    expect(bucketName).toEqual('goldstack-test-s3-bucket-new');
   });
 
   it('Should be able to upload file', async () => {

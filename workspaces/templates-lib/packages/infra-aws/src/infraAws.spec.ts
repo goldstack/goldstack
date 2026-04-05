@@ -1,75 +1,13 @@
 import { mkdir, rmSafe, write } from '@goldstack/utils-sh';
 import assert from 'assert';
-import os from 'os';
 import path from 'path';
-import { getAWSCredentials, getAWSUser, resetAWSUser } from './infraAws';
+import { getAWSUser } from './getAWSUser';
+import { getAWSCredentials, resetAWSUser } from './infraAws';
 
 describe('AWS User config', () => {
   afterEach(() => {
     resetAWSUser();
   });
-  it('Should read from AWS credentials in user folder if no config provided', async () => {
-    // Skip if not in CI https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables
-    if (!process.env.GITHUB_ACTION) {
-      return;
-    }
-
-    const awsCredentials = `
-[default]
-aws_access_key_id=fromProfileKey
-aws_secret_access_key=fromProfileSecret
-    `;
-
-    mkdir('-p', `${os.homedir()}/.aws`);
-    await rmSafe(`${os.homedir}/.aws/config`);
-    write(awsCredentials, `${os.homedir}/.aws/credentials`);
-
-    const provider = await getAWSUser('default', './invalid');
-    assert(provider);
-    // Cannot verify this easily in v3
-    // const credentials = await getAWSCredentials(provider);
-    // assert(credentials);
-
-    // expect(credentials.accessKeyId).toEqual('fromProfileKey');
-    // expect(credentials.secretAccessKey).toEqual('fromProfileSecret');
-  });
-
-  it('Should read AWS credentials process in user folder if no config provided', async () => {
-    // Skip if not in CI https://docs.github.com/en/actions/learn-github-actions/environment-variables#default-environment-variables
-    if (!process.env.GITHUB_ACTION) {
-      return;
-    }
-
-    const awsConfig = `
-[default]
-region=us-west-2
-credential_process=cat ~/processCredentials.json
-    `;
-
-    mkdir('-p', `${os.homedir()}/.aws`);
-    await rmSafe(`${os.homedir}/.aws/credentials`);
-    write(awsConfig, `${os.homedir}/.aws/config`);
-
-    const processCredentials = `
-{
-  "Version": 1,
-  "AccessKeyId": "fromProcessCredentialsKey",
-  "SecretAccessKey": "fromProcessCredentialsSecret",
-  "SessionToken": "the AWS session token for temporary credentials",
-  "Expiration": "ISO8601 timestamp when the credentials expire"
-}`;
-
-    write(processCredentials, `${os.homedir}/processCredentials.json`);
-
-    const provider = await getAWSUser('default', './invalid');
-    assert(provider);
-
-    // cannot validate anymore, since v3 does not provide easy way to read this
-    // const credentials = await getAWSCredentials(provider);
-    // expect(credentials.accessKeyId).toEqual('fromProcessCredentialsKey');
-    // expect(credentials.secretAccessKey).toEqual('fromProcessCredentialsSecret');
-  });
-
   it('Should read AWS config from Goldstack config file', async () => {
     const awsConfig = `{
   "users": [

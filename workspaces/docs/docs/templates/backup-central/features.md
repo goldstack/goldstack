@@ -1,0 +1,4 @@
+- Centralized backup vault for cross-account backup consolidation
+- Customer managed KMS key for encryption of backups at rest
+- Configurable access policy to allow specific accounts to copy backups
+- Backups can be copied from multiple source accounts across different regions

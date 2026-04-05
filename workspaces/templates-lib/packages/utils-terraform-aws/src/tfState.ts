@@ -14,12 +14,17 @@ import {
   DeleteObjectCommand,
   DeleteObjectsCommand,
   HeadBucketCommand,
-  ListObjectsV2Command,
+  ListObjectVersionsCommand,
   PutBucketVersioningCommand,
   S3Client,
   S3ServiceException,
 } from '@aws-sdk/client-s3';
 import type { AwsCredentialIdentity } from '@aws-sdk/types';
+import {
+  type AWSTerraformState,
+  getCurrentAWSAccountId,
+  type RemoteState,
+} from '@goldstack/infra-aws';
 
 import { debug, error, info } from '@goldstack/utils-log';
 
@@ -158,31 +163,57 @@ const assertS3Bucket = async (params: { s3: S3Client; bucketName: string }): Pro
 };
 
 const deleteAllObjectsFromBucket = async (s3: S3Client, bucketName: string): Promise<void> => {
-  let continuationToken: string | undefined;
+  let nextKeyMarker: string | undefined;
+  let nextVersionIdMarker: string | undefined;
+  let isTruncated = false;
   do {
-    // List objects in the bucket
-    const listResponse = await s3.send(
-      new ListObjectsV2Command({
+    const listVersionsResponse = await s3.send(
+      new ListObjectVersionsCommand({
         Bucket: bucketName,
-        ContinuationToken: continuationToken,
+        KeyMarker: nextKeyMarker,
+        VersionIdMarker: nextVersionIdMarker,
       }),
     );
 
-    // Check if there are any objects to delete
-    if (listResponse.Contents && listResponse.Contents.length > 0) {
-      // Delete listed objects
-      const deleteParams = {
-        Bucket: bucketName,
-        Delete: {
-          Objects: listResponse.Contents.map((object) => ({ Key: object.Key })),
-        },
-      };
-      await s3.send(new DeleteObjectsCommand(deleteParams));
+    const objectsToDelete: { Key: string; VersionId?: string }[] = [];
+
+    if (listVersionsResponse.Versions && listVersionsResponse.Versions.length > 0) {
+      objectsToDelete.push(
+        ...listVersionsResponse.Versions.filter((v) => v.Key).map((version) => ({
+          Key: version.Key!,
+          VersionId: version.VersionId,
+        })),
+      );
     }
 
-    // Check if more objects are to be listed (pagination)
-    continuationToken = listResponse.NextContinuationToken;
-  } while (continuationToken);
+    if (listVersionsResponse.DeleteMarkers && listVersionsResponse.DeleteMarkers.length > 0) {
+      objectsToDelete.push(
+        ...listVersionsResponse.DeleteMarkers.filter((m) => m.Key).map((marker) => ({
+          Key: marker.Key!,
+          VersionId: marker.VersionId,
+        })),
+      );
+    }
+
+    if (objectsToDelete.length > 0) {
+      const chunkSize = 1000;
+      for (let i = 0; i < objectsToDelete.length; i += chunkSize) {
+        const chunk = objectsToDelete.slice(i, i + chunkSize);
+        await s3.send(
+          new DeleteObjectsCommand({
+            Bucket: bucketName,
+            Delete: {
+              Objects: chunk,
+            },
+          }),
+        );
+      }
+    }
+
+    isTruncated = listVersionsResponse.IsTruncated || false;
+    nextKeyMarker = listVersionsResponse.NextKeyMarker;
+    nextVersionIdMarker = listVersionsResponse.NextVersionIdMarker;
+  } while (isTruncated);
 };
 
 const deleteS3Bucket = async (params: { s3: S3Client; bucketName: string }): Promise<void> => {
@@ -284,11 +315,40 @@ export const assertState = async (params: {
   dynamoDBTableName: string;
   bucketName: string;
   awsRegion: string;
+  expectedAccountId?: string;
+  remoteStateConfig?: RemoteState;
+  awsTerraformConfig?: AWSTerraformState;
+  writeTerraformConfig?: (config: AWSTerraformState, path?: string) => void;
 }): Promise<void> => {
   info('Connecting to Terraform State stored on AWS', {
     bucketName: params.bucketName,
     tableName: params.dynamoDBTableName,
   });
+
+  const currentAccountId = await getCurrentAWSAccountId(params.credentials);
+
+  if (params.expectedAccountId) {
+    if (currentAccountId !== params.expectedAccountId) {
+      throw new Error(
+        `AWS account ID mismatch: expected '${params.expectedAccountId}' but current credentials are for account '${currentAccountId}'. ` +
+          `Are you logged into the wrong AWS account? ` +
+          `Please ensure you are using credentials for the correct AWS account before creating state resources.`,
+      );
+    }
+    info('AWS account ID verified', {
+      accountId: currentAccountId,
+    });
+  } else if (params.remoteStateConfig && params.awsTerraformConfig && params.writeTerraformConfig) {
+    if (!params.remoteStateConfig.accountId) {
+      // Intentional side effect: auto-configure and persist missing account ID
+      params.remoteStateConfig.accountId = currentAccountId;
+      params.writeTerraformConfig(params.awsTerraformConfig);
+      info('AWS account ID auto-configured and saved', {
+        accountId: currentAccountId,
+      });
+    }
+  }
+
   const dynamoDB = new DynamoDBClient({
     region: params.awsRegion,
     credentials: params.credentials,
