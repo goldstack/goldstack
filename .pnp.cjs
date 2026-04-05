@@ -5680,6 +5680,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@goldstack/template-backup-central", "workspace:workspaces/templates-lib/packages/template-backup-central"],\
           ["@goldstack/template-backup-central-cli", "workspace:workspaces/templates-lib/packages/template-backup-central-cli"],\
+          ["@goldstack/template-backup-cli", "workspace:workspaces/templates-lib/packages/template-backup-cli"],\
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\

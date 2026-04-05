@@ -9,6 +9,7 @@
     "build": "yarn clean && yarn compile",
     "clean": "rimraf ./dist",
     "clean-terraform": "rimraf ./infra/aws/.terraform",
+    "cleanup-vault": "yarn template cleanup-vault",
     "compile": "tsc -p tsconfig.json",
     "compile-watch": "tsc -p tsconfig.json --watch",
     "configure-cross-account": "ts-node --swc scripts/configure-cross-account.ts",

@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "@goldstack/template-backup-central": "0.1.0",
+    "@goldstack/template-backup-cli": "0.1.0",
     "@goldstack/utils-cli": "0.3.31",
     "@goldstack/utils-package": "0.4.42",
     "@goldstack/utils-terraform": "0.4.77",

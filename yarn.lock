@@ -4252,6 +4252,7 @@ __metadata:
   resolution: "@goldstack/template-backup-central-cli@workspace:workspaces/templates-lib/packages/template-backup-central-cli"
   dependencies:
     "@goldstack/template-backup-central": "npm:0.1.0"
+    "@goldstack/template-backup-cli": "npm:0.1.0"
     "@goldstack/utils-cli": "npm:0.3.31"
     "@goldstack/utils-package": "npm:0.4.42"
     "@goldstack/utils-package-config-generate": "npm:0.3.28"

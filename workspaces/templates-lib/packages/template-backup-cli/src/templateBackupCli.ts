@@ -4,6 +4,8 @@ import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import yargs from 'yargs';
 import { cleanupVault } from './cleanupVault';
 
+export { cleanupVault } from './cleanupVault';
+
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
     const argv = await yargs
