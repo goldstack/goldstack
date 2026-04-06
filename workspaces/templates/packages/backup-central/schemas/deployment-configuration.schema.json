@@ -15,7 +15,9 @@
           "$ref": "#/definitions/SourceRoleArns"
         }
       },
-      "required": ["allowedAccountIds"]
+      "required": [
+        "allowedAccountIds"
+      ]
     },
     "AllowedAccountIds": {
       "type": "array",

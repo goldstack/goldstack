@@ -21,7 +21,10 @@
           "$ref": "#/definitions/DestinationKmsKeyArn"
         }
       },
-      "required": ["schedule", "retentionDays"]
+      "required": [
+        "schedule",
+        "retentionDays"
+      ]
     },
     "BackupSchedule": {
       "type": "string",

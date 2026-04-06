@@ -51,6 +51,12 @@
         },
         "centralBackupVaultArn": {
           "$ref": "#/definitions/CentralBackupVaultArn"
+        },
+        "destinationAccountId": {
+          "$ref": "#/definitions/DestinationAccountId"
+        },
+        "destinationKmsKeyArn": {
+          "$ref": "#/definitions/DestinationKmsKeyArn"
         }
       },
       "required": [
@@ -72,6 +78,16 @@
       "type": "string",
       "description": "Optional ARN of central backup vault for cross-account copy.",
       "title": "Central Backup Vault ARN"
+    },
+    "DestinationAccountId": {
+      "type": "string",
+      "description": "AWS account ID of the destination backup vault for cross-account copy.",
+      "title": "Destination Account ID"
+    },
+    "DestinationKmsKeyArn": {
+      "type": "string",
+      "description": "ARN of the KMS key in the destination account for encrypting copied backups.",
+      "title": "Destination KMS Key ARN"
     },
     "TerraformVariables": {
       "type": "array",
