@@ -4,8 +4,10 @@ Goldstack can read AWS _Access Key ID_ and _Secret Access Key_ from environment 
 AWS_USER_NAME: [Your user name]
 AWS_ACCESS_KEY_ID: [Your access key id]
 AWS_SECRET_ACCESS_KEY: [Your secret access key]
-AWS_DEFAULT_REGION: [User region]
+AWS_REGION: [AWS region for deployments, e.g. us-west-2]
 ```
+
+**Note:** `AWS_REGION` (or alternatively `AWS_DEFAULT_REGION`) is required when using environment variables for credentials. Without it, Goldstack will fail with an error saying "Region is missing".
 
 The `AWS_USER_NAME` variable is optional but can be useful for explicitly referencing the correct Goldstack user in deployments. The above setup is particularly useful for CI/CD environments. For instance, when using [GitHub Actions](https://github.com/actions), environment variables could be configured as follows:
 
@@ -17,7 +19,7 @@ The `AWS_USER_NAME` variable is optional but can be useful for explicitly refere
     AWS_USER_NAME: dev-user
     AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
     AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-    AWS_DEFAULT_REGION: us-west-2
+    AWS_REGION: us-west-2
 ```
 
 The values of the environment variables are defined in [GitHub Secrets](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets).

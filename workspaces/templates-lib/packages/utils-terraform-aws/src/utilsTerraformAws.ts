@@ -238,7 +238,7 @@ export async function initTerraformEnvironment(deploymentName: string) {
   });
 
   const awsUser = await getAWSUser(deployment.awsUser);
-  const credentials = await getAWSCredentials(awsUser);
+  const credentials = await getAWSCredentials(awsUser, deployment.awsRegion);
 
   const awsTerraformConfig = assertTerraformConfig(deployment.awsUser);
 
