@@ -3598,8 +3598,8 @@ __metadata:
   resolution: "@goldstack/project-package-bucket@workspace:workspaces/templates-management/packages/project-package-bucket"
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.1004.0"
-    "@goldstack/template-s3": "npm:0.5.72"
-    "@goldstack/template-s3-cli": "npm:0.6.95"
+    "@goldstack/template-s3": "npm:0.5.73"
+    "@goldstack/template-s3-cli": "npm:0.6.96"
     "@goldstack/utils-sh": "npm:0.5.39"
     "@smithy/smithy-client": "npm:^4.12.3"
     "@smithy/types": "npm:^4.13.0"
@@ -3620,8 +3620,8 @@ __metadata:
   resolution: "@goldstack/project-repository-bucket@workspace:workspaces/templates-management/packages/project-repository-bucket"
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.1004.0"
-    "@goldstack/template-s3": "npm:0.5.72"
-    "@goldstack/template-s3-cli": "npm:0.6.95"
+    "@goldstack/template-s3": "npm:0.5.73"
+    "@goldstack/template-s3-cli": "npm:0.6.96"
     "@goldstack/utils-sh": "npm:0.5.39"
     "@smithy/smithy-client": "npm:^4.12.3"
     "@smithy/types": "npm:^4.13.0"
@@ -3672,8 +3672,8 @@ __metadata:
   resolution: "@goldstack/s3@workspace:workspaces/templates/packages/s3"
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.1004.0"
-    "@goldstack/template-s3": "npm:0.5.72"
-    "@goldstack/template-s3-cli": "npm:0.6.95"
+    "@goldstack/template-s3": "npm:0.5.73"
+    "@goldstack/template-s3-cli": "npm:0.6.96"
     "@smithy/smithy-client": "npm:^4.12.3"
     "@smithy/types": "npm:^4.13.0"
     "@swc/core": "npm:^1.15.8"
@@ -3786,8 +3786,8 @@ __metadata:
   resolution: "@goldstack/session-repository-bucket@workspace:workspaces/templates-management/packages/session-repository-bucket"
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.1004.0"
-    "@goldstack/template-s3": "npm:0.5.72"
-    "@goldstack/template-s3-cli": "npm:0.6.95"
+    "@goldstack/template-s3": "npm:0.5.73"
+    "@goldstack/template-s3-cli": "npm:0.6.96"
     "@goldstack/utils-sh": "npm:0.5.39"
     "@smithy/smithy-client": "npm:^4.12.3"
     "@smithy/types": "npm:^4.13.0"
@@ -3970,7 +3970,7 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.2.0"
-    mock-aws-s3-v3: "npm:6.1.12"
+    mock-aws-s3-v3: "npm:6.1.13"
     rimraf: "npm:^6.1.2"
     ts-json-schema-generator: "npm:^2.4.0"
     typescript: "npm:^5.9.3"
@@ -4414,7 +4414,7 @@ __metadata:
     "@goldstack/template-metadata": "npm:0.1.6"
     "@goldstack/template-repository": "npm:0.1.0"
     "@goldstack/template-repository-bucket": "npm:0.1.0"
-    "@goldstack/template-s3": "npm:0.5.72"
+    "@goldstack/template-s3": "npm:0.5.73"
     "@goldstack/template-static-website-aws": "npm:0.5.89"
     "@goldstack/utils-cli": "npm:0.3.32"
     "@goldstack/utils-config": "npm:0.4.41"
@@ -4431,7 +4431,7 @@ __metadata:
     "@types/yargs": "npm:^17.0.33"
     concurrently: "npm:^7.3.0"
     jest: "npm:^30.2.0"
-    mock-aws-s3-v3: "npm:6.1.12"
+    mock-aws-s3-v3: "npm:6.1.13"
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     tmp: "npm:^0.2.5"
@@ -4502,8 +4502,8 @@ __metadata:
   resolution: "@goldstack/template-repository-bucket@workspace:workspaces/templates-management/packages/template-repository-bucket"
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.1004.0"
-    "@goldstack/template-s3": "npm:0.5.72"
-    "@goldstack/template-s3-cli": "npm:0.6.95"
+    "@goldstack/template-s3": "npm:0.5.73"
+    "@goldstack/template-s3-cli": "npm:0.6.96"
     "@goldstack/utils-sh": "npm:0.5.39"
     "@smithy/smithy-client": "npm:^4.12.3"
     "@smithy/types": "npm:^4.13.0"
@@ -4544,11 +4544,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-s3-cli@npm:0.6.95, @goldstack/template-s3-cli@workspace:workspaces/templates-lib/packages/template-s3-cli":
+"@goldstack/template-s3-cli@npm:0.6.96, @goldstack/template-s3-cli@workspace:workspaces/templates-lib/packages/template-s3-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-s3-cli@workspace:workspaces/templates-lib/packages/template-s3-cli"
   dependencies:
-    "@goldstack/template-s3": "npm:0.5.72"
+    "@goldstack/template-s3": "npm:0.5.73"
     "@goldstack/utils-cli": "npm:0.3.32"
     "@goldstack/utils-docker": "npm:0.4.41"
     "@goldstack/utils-log": "npm:0.3.34"
@@ -4577,7 +4577,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-s3@npm:0.5.72, @goldstack/template-s3@workspace:workspaces/templates-lib/packages/template-s3":
+"@goldstack/template-s3@npm:0.5.73, @goldstack/template-s3@workspace:workspaces/templates-lib/packages/template-s3":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-s3@workspace:workspaces/templates-lib/packages/template-s3"
   dependencies:
@@ -4602,7 +4602,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     "@types/yargs": "npm:^17.0.33"
     jest: "npm:^30.2.0"
-    mock-aws-s3-v3: "npm:6.1.12"
+    mock-aws-s3-v3: "npm:6.1.13"
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
@@ -5319,7 +5319,7 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.2.0"
-    mock-aws-s3-v3: "npm:6.1.12"
+    mock-aws-s3-v3: "npm:6.1.13"
     rimraf: "npm:^6.1.2"
     typescript: "npm:^5.9.3"
   languageName: unknown
@@ -5371,7 +5371,7 @@ __metadata:
     axios: "npm:^1.12.2"
     extract-zip: "npm:^2.0.1"
     jest: "npm:^30.2.0"
-    mock-aws-s3-v3: "npm:6.1.12"
+    mock-aws-s3-v3: "npm:6.1.13"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.9.3"
@@ -17021,7 +17021,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mock-aws-s3-v3@npm:6.1.12, mock-aws-s3-v3@workspace:workspaces/utils/packages/mock-aws-s3-v3":
+"mock-aws-s3-v3@npm:6.1.13, mock-aws-s3-v3@workspace:workspaces/utils/packages/mock-aws-s3-v3":
   version: 0.0.0-use.local
   resolution: "mock-aws-s3-v3@workspace:workspaces/utils/packages/mock-aws-s3-v3"
   dependencies:
