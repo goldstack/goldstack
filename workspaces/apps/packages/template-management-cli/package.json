@@ -23,15 +23,15 @@
   "dependencies": {
     "@aws-sdk/client-ses": "^3.1004.0",
     "@goldstack/goldstack-email-send": "0.1.0",
-    "@goldstack/infra-aws": "0.4.62",
+    "@goldstack/infra-aws": "0.4.63",
     "@goldstack/project-build": "0.1.0",
     "@goldstack/project-install": "0.1.0",
     "@goldstack/template-build-set": "0.1.0",
     "@goldstack/template-metadata": "0.1.6",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/template-repository-bucket": "0.1.0",
-    "@goldstack/template-s3": "0.5.71",
-    "@goldstack/template-static-website-aws": "0.5.88",
+    "@goldstack/template-s3": "0.5.72",
+    "@goldstack/template-static-website-aws": "0.5.89",
     "@goldstack/utils-cli": "0.3.32",
     "@goldstack/utils-config": "0.4.41",
     "@goldstack/utils-git": "0.2.25",
@@ -44,7 +44,7 @@
     "yargs": "^17"
   },
   "devDependencies": {
-    "@goldstack/template-docker-image-aws": "0.5.86",
+    "@goldstack/template-docker-image-aws": "0.5.87",
     "@goldstack/utils-sh": "0.5.39",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",

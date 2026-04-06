@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-backup",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Template utilities for backup",
   "keywords": [
     "goldstack",
@@ -38,9 +38,9 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.4.41",
-    "@goldstack/infra-aws": "0.4.62",
+    "@goldstack/infra-aws": "0.4.63",
     "@goldstack/utils-package": "0.4.43",
-    "@goldstack/utils-terraform": "0.4.78"
+    "@goldstack/utils-terraform": "0.4.79"
   },
   "devDependencies": {
     "@goldstack/utils-package-config-generate": "0.3.28",
