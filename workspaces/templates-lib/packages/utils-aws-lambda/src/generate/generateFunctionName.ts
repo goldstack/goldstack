@@ -32,8 +32,7 @@ export const generateFunctionName = (prefix: string | undefined, config: LambdaC
 
   let pathPrefix = '';
   if (segments.length > 1) {
-    // e.g. /foo/bar/$index.ts → ['foo', 'bar']
-    pathPrefix = sanitiseFunctionName(segments.slice(0, -1).join('-'));
+    pathPrefix = sanitiseFunctionName(segments.join('-'));
   } else if (segments.length === 1 && name === INDEX_MARKER) {
     // e.g. /health/$index.ts → ['health']
     pathPrefix = sanitiseFunctionName(segments[0]);
