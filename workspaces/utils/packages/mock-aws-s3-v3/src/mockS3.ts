@@ -211,8 +211,10 @@ export function createS3Client({
           const body: StreamingBlobPayloadOutputTypes = {
             transformToString: async (encoding?: string) => res.Body?.toString(encoding) || '',
             transformToByteArray: async () => {
-              const content = res.Body?.toString() || '';
-              return new Uint8Array(Buffer.from(content));
+              if (!res.Body) return new Uint8Array();
+              if (Buffer.isBuffer(res.Body)) return new Uint8Array(res.Body);
+              if (res.Body instanceof Uint8Array) return res.Body;
+              return new Uint8Array(Buffer.from(res.Body));
             },
             transformToWebStream: () => {
               stream = operation.createReadStream();
