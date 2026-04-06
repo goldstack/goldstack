@@ -150,7 +150,7 @@ Specifically, the [goldstack.json](https://github.com/goldstack/s3-terraform-typ
         "bucketName": "goldstack-test-s3-bucket"
       },
       "tfStateKey": "s3-prod-40dd578eab44b83dc601.tfstate",
-      "tfVersion": "1.10"
+      "tfVersion": "1.14.7"
     }
   ]
 }
