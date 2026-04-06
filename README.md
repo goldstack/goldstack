@@ -334,6 +334,20 @@ To get started:
 
 For detailed instructions, see [AWS Control Tower documentation](https://docs.aws.amazon.com/controltower/latest/userguide/how-control-tower-works.html) and [Setting up IAM Identity Center](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html).
 
+### Enabling Cross-Account Backup
+
+If you are using AWS Backup with cross-account backup features, you must enable cross-account backup in your AWS Organizations management account before backup copies can be created.
+
+To enable cross-account backup:
+
+1.  Log in to the AWS Organizations **management account** (cross-account backup can only be enabled or disabled using management account credentials)
+2.  Open the AWS Backup console at <https://console.aws.amazon.com/backup>
+3.  In **My account**, choose **Settings**
+4.  For **Cross-account backup**, choose **Turn On**
+5.  The status will change to **On**
+
+For more details, see [Creating backup copies across AWS accounts](https://docs.aws.amazon.com/aws-backup/latest/devguide/create-cross-account-backup.html).
+
 ### Connecting to Goldstack
 
 After setting up your multi-account environment, configure Goldstack users for each account. For each environment account, create a user in your Goldstack configuration:
