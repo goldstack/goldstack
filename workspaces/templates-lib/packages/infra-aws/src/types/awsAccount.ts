@@ -142,7 +142,7 @@ export interface AWSUser {
  * @title AWS Account Info
  */
 export interface AWSAccountInfo {
-  accountId: string;
+  accountId?: string;
 }
 
 /**

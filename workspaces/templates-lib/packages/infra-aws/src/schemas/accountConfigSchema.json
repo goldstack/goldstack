@@ -43,7 +43,6 @@
           "type": "string"
         }
       },
-      "required": ["accountId"],
       "title": "AWS Account Info",
       "type": "object"
     },

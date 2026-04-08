@@ -143,13 +143,16 @@ export const assertAccountsConfig = (user: Name, path?: string): AWSAccounts => 
     config.accounts = {};
   }
   if (!config.accounts[user]) {
-    config.accounts[user] = { accountId: '' };
+    config.accounts[user] = {};
     writeConfig(config, path);
   }
   return config.accounts;
 };
 
 export const readAccountsConfig = (path?: string): AWSAccounts | undefined => {
+  if (!hasConfig(path)) {
+    return undefined;
+  }
   const config = readConfig(path);
   return config.accounts;
 };
