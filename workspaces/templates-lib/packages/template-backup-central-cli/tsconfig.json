@@ -1,11 +1,17 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*", "./src/**/*.json"],
+  "include": [
+    "./src/**/*",
+    "./src/**/*.json"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
   },
   "references": [
+    {
+      "path": "../infra"
+    },
     {
       "path": "../template-backup-central"
     },
@@ -14,6 +20,9 @@
     },
     {
       "path": "../utils-package"
+    },
+    {
+      "path": "../../../utils/packages/utils-sh"
     },
     {
       "path": "../utils-terraform"

@@ -3,6 +3,8 @@ import { infraCommands } from '@goldstack/utils-terraform';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import yargs from 'yargs';
 
+export { configureCrossAccount } from './configureCrossAccount';
+
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
     const argv = await yargs
