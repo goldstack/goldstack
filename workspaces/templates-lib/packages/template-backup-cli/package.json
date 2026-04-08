@@ -46,6 +46,7 @@
     "@goldstack/utils-cli": "0.3.32",
     "@goldstack/utils-log": "0.3.34",
     "@goldstack/utils-package": "0.4.43",
+    "@goldstack/utils-sh": "0.5.39",
     "@goldstack/utils-terraform": "0.4.81",
     "@goldstack/utils-terraform-aws": "0.4.86",
     "source-map-support": "^0.5.21",
