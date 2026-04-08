@@ -27,7 +27,7 @@ const findProjectRoot = (startDir: string): string | null => {
   const maxIterations = 10;
   for (let i = 0; i < maxIterations; i++) {
     const configPath = path.join(currentDir, 'goldstack.json');
-    if (require('fs').existsSync(configPath)) {
+    if (fs.existsSync(configPath)) {
       return currentDir;
     }
     const parentDir = path.dirname(currentDir);
