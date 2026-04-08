@@ -138,7 +138,7 @@ export const createDefaultConfig = (): AWSConfiguration => {
 };
 
 export const assertAccountsConfig = (user: Name, path?: string): AWSAccounts => {
-  const config = readConfig(path);
+  const config = hasConfig(path) ? readConfig(path) : createDefaultConfig();
   if (!config.accounts) {
     config.accounts = {};
   }
