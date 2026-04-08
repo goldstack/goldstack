@@ -16,7 +16,9 @@
           "$ref": "#/definitions/AWSSecretAccessKey"
         }
       },
-      "required": ["awsDefaultRegion"],
+      "required": [
+        "awsDefaultRegion"
+      ],
       "title": "AWS API Key User Configuration",
       "type": "object"
     },
@@ -37,9 +39,6 @@
       "description": "AWS account information including account ID.",
       "properties": {
         "accountId": {
-          "description": "AWS account ID associated with this user.",
-          "pattern": "^\\d{12}$",
-          "title": "AWS Account ID",
           "type": "string"
         }
       },
@@ -51,6 +50,11 @@
         "$ref": "#/definitions/AWSAccountInfo"
       },
       "description": "Map of user names to their AWS account information.",
+      "propertyNames": {
+        "description": "Identifier for this user. No spaces allowed.",
+        "pattern": "^[^\\s]*$",
+        "title": "Name"
+      },
       "title": "AWS Accounts",
       "type": "object"
     },
@@ -65,7 +69,9 @@
           "$ref": "#/definitions/AWSUsers"
         }
       },
-      "required": ["users"],
+      "required": [
+        "users"
+      ],
       "title": "AWS Configuration",
       "type": "object"
     },
@@ -148,7 +154,10 @@
           "$ref": "#/definitions/Profile"
         }
       },
-      "required": ["profile", "awsDefaultRegion"],
+      "required": [
+        "profile",
+        "awsDefaultRegion"
+      ],
       "title": "AWS Local User Configuration",
       "type": "object"
     },
@@ -184,7 +193,11 @@
           "$ref": "#/definitions/Type"
         }
       },
-      "required": ["name", "type", "config"],
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
       "title": "AWS User",
       "type": "object"
     },
@@ -225,7 +238,11 @@
     },
     "Type": {
       "description": "Type of this user.",
-      "enum": ["apiKey", "profile", "environmentVariables"],
+      "enum": [
+        "apiKey",
+        "profile",
+        "environmentVariables"
+      ],
       "title": "Type",
       "type": "string"
     }

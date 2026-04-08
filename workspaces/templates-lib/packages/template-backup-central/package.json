@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-backup-central",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Template utilities for backup central",
   "keywords": [
     "goldstack",
@@ -39,9 +39,9 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.4.41",
-    "@goldstack/infra-aws": "0.4.64",
+    "@goldstack/infra-aws": "0.4.65",
     "@goldstack/utils-package": "0.4.43",
-    "@goldstack/utils-terraform": "0.4.81"
+    "@goldstack/utils-terraform": "0.4.82"
   },
   "devDependencies": {
     "@goldstack/utils-package-config-generate": "0.3.28",
