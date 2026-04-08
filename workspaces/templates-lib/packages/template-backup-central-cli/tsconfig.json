@@ -16,6 +16,9 @@
       "path": "../template-backup-central"
     },
     {
+      "path": "../template-backup-cli"
+    },
+    {
       "path": "../../../utils/packages/utils-cli"
     },
     {

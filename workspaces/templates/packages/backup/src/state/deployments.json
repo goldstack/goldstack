@@ -1,27 +1,5 @@
 [
   {
-    "name": "prod",
-    "terraform": {
-      "backup_plan_id": {
-        "sensitive": false,
-        "type": "string",
-        "value": "2fec9fc6-30d7-4532-8315-f1db4bf2060c"
-      },
-      "backup_role_arn": {
-        "sensitive": false,
-        "type": "string",
-        "value": "arn:aws:iam::475629728374:role/GoldstackBackupRole"
-      },
-      "backup_vault_arn": {
-        "sensitive": false,
-        "type": "string",
-        "value": "arn:aws:backup:us-west-2:475629728374:backup-vault:GoldstackLocal"
-      },
-      "backup_vault_name": {
-        "sensitive": false,
-        "type": "string",
-        "value": "GoldstackLocal"
-      }
-    }
+    "name": "prod"
   }
 ]
