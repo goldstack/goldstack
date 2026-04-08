@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-static-website-aws",
-  "version": "0.5.90",
+  "version": "0.5.91",
   "description": "Utilities for deploying a website to CloudFront and S3",
   "keywords": [
     "goldstack",
@@ -45,17 +45,17 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.4.41",
-    "@goldstack/infra-aws": "0.4.63",
+    "@goldstack/infra-aws": "0.4.64",
     "@goldstack/utils-cli": "0.3.32",
     "@goldstack/utils-config": "0.4.41",
     "@goldstack/utils-log": "0.3.34",
     "@goldstack/utils-package": "0.4.43",
     "@goldstack/utils-package-config": "0.4.43",
-    "@goldstack/utils-s3-deployment": "0.5.67",
+    "@goldstack/utils-s3-deployment": "0.5.68",
     "@goldstack/utils-sh": "0.5.39",
     "@goldstack/utils-template": "0.4.42",
-    "@goldstack/utils-terraform": "0.4.80",
-    "@goldstack/utils-terraform-aws": "0.4.85",
+    "@goldstack/utils-terraform": "0.4.81",
+    "@goldstack/utils-terraform-aws": "0.4.86",
     "source-map-support": "^0.5.21",
     "yargs": "^17"
   },
