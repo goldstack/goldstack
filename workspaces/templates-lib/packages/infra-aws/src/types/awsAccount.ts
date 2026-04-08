@@ -137,10 +137,27 @@ export interface AWSUser {
 }
 
 /**
+ * AWS account information including account ID.
+ *
+ * @title AWS Account Info
+ */
+export interface AWSAccountInfo {
+  accountId?: string;
+}
+
+/**
+ * Map of user names to their AWS account information.
+ *
+ * @title AWS Accounts
+ */
+export type AWSAccounts = Record<Name, AWSAccountInfo>;
+
+/**
  * Global configuration for deploying to AWS.
  *
  * @title AWS Configuration
  */
 export interface AWSConfiguration {
   users: AWSUsers;
+  accounts?: AWSAccounts;
 }

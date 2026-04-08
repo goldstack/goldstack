@@ -4251,11 +4251,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/template-backup-central-cli@workspace:workspaces/templates-lib/packages/template-backup-central-cli"
   dependencies:
+    "@goldstack/infra": "npm:0.4.41"
     "@goldstack/template-backup-central": "npm:0.1.4"
     "@goldstack/template-backup-cli": "npm:0.1.4"
     "@goldstack/utils-cli": "npm:0.3.32"
     "@goldstack/utils-package": "npm:0.4.43"
     "@goldstack/utils-package-config-generate": "npm:0.3.28"
+    "@goldstack/utils-sh": "npm:0.5.39"
     "@goldstack/utils-terraform": "npm:0.4.81"
     "@goldstack/utils-terraform-aws": "npm:0.4.86"
     "@swc/core": "npm:^1.15.8"
@@ -4306,6 +4308,7 @@ __metadata:
     "@goldstack/utils-log": "npm:0.3.34"
     "@goldstack/utils-package": "npm:0.4.43"
     "@goldstack/utils-package-config-generate": "npm:0.3.28"
+    "@goldstack/utils-sh": "npm:0.5.39"
     "@goldstack/utils-terraform": "npm:0.4.81"
     "@goldstack/utils-terraform-aws": "npm:0.4.86"
     "@swc/core": "npm:^1.15.8"

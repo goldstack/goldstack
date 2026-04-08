@@ -21,11 +21,7 @@ import {
   S3ServiceException,
 } from '@aws-sdk/client-s3';
 import type { AwsCredentialIdentity } from '@aws-sdk/types';
-import {
-  type AWSTerraformState,
-  getCurrentAWSAccountId,
-  type RemoteState,
-} from '@goldstack/infra-aws';
+import { getCurrentAWSAccountId } from '@goldstack/infra-aws';
 
 import { debug, error, info } from '@goldstack/utils-log';
 
@@ -326,10 +322,7 @@ export const assertState = async (params: {
   bucketName: string;
   awsRegion: string;
   expectedAccountId?: string;
-  remoteStateConfig?: RemoteState;
-  awsTerraformConfig?: AWSTerraformState;
-  writeTerraformConfig?: (config: AWSTerraformState, path?: string) => void;
-}): Promise<void> => {
+}): Promise<string> => {
   info('Connecting to Terraform State stored on AWS', {
     bucketName: params.bucketName,
     tableName: params.dynamoDBTableName,
@@ -348,15 +341,6 @@ export const assertState = async (params: {
     info('AWS account ID verified', {
       accountId: currentAccountId,
     });
-  } else if (params.remoteStateConfig && params.awsTerraformConfig && params.writeTerraformConfig) {
-    if (!params.remoteStateConfig.accountId) {
-      // Intentional side effect: auto-configure and persist missing account ID
-      params.remoteStateConfig.accountId = currentAccountId;
-      params.writeTerraformConfig(params.awsTerraformConfig);
-      info('AWS account ID auto-configured and saved', {
-        accountId: currentAccountId,
-      });
-    }
   }
 
   const dynamoDB = new DynamoDBClient({
@@ -370,4 +354,6 @@ export const assertState = async (params: {
   });
   await assertS3Bucket({ s3, bucketName: params.bucketName });
   info('Connected successfully to Terraform State stored on AWS');
+
+  return currentAccountId;
 };

@@ -4,6 +4,8 @@ import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import { cleanupVault } from '@goldstack/template-backup-cli';
 import yargs from 'yargs';
 
+export { configureCrossAccount } from './configureCrossAccount';
+
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
     const argv = await yargs

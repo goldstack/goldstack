@@ -5678,12 +5678,14 @@ const RAW_RUNTIME_STATE =
       ["workspace:workspaces/templates-lib/packages/template-backup-central-cli", {\
         "packageLocation": "./workspaces/templates-lib/packages/template-backup-central-cli/",\
         "packageDependencies": [\
+          ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
           ["@goldstack/template-backup-central", "workspace:workspaces/templates-lib/packages/template-backup-central"],\
           ["@goldstack/template-backup-central-cli", "workspace:workspaces/templates-lib/packages/template-backup-central-cli"],\
           ["@goldstack/template-backup-cli", "workspace:workspaces/templates-lib/packages/template-backup-cli"],\
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+          ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
           ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
           ["@swc/core", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:1.15.8"],\
@@ -5714,6 +5716,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
+          ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
           ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
           ["@goldstack/utils-terraform-aws", "workspace:workspaces/templates-lib/packages/utils-terraform-aws"],\
           ["@swc/core", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:1.15.8"],\

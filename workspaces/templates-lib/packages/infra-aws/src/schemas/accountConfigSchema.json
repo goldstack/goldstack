@@ -16,9 +16,7 @@
           "$ref": "#/definitions/AWSSecretAccessKey"
         }
       },
-      "required": [
-        "awsDefaultRegion"
-      ],
+      "required": ["awsDefaultRegion"],
       "title": "AWS API Key User Configuration",
       "type": "object"
     },
@@ -34,17 +32,40 @@
       "title": "AWS Access Key Id Variable Name",
       "type": "string"
     },
+    "AWSAccountInfo": {
+      "additionalProperties": false,
+      "description": "AWS account information including account ID.",
+      "properties": {
+        "accountId": {
+          "description": "AWS account ID associated with this user.",
+          "pattern": "^\\d{12}$",
+          "title": "AWS Account ID",
+          "type": "string"
+        }
+      },
+      "title": "AWS Account Info",
+      "type": "object"
+    },
+    "AWSAccounts": {
+      "additionalProperties": {
+        "$ref": "#/definitions/AWSAccountInfo"
+      },
+      "description": "Map of user names to their AWS account information.",
+      "title": "AWS Accounts",
+      "type": "object"
+    },
     "AWSConfiguration": {
       "additionalProperties": false,
       "description": "Global configuration for deploying to AWS.",
       "properties": {
+        "accounts": {
+          "$ref": "#/definitions/AWSAccounts"
+        },
         "users": {
           "$ref": "#/definitions/AWSUsers"
         }
       },
-      "required": [
-        "users"
-      ],
+      "required": ["users"],
       "title": "AWS Configuration",
       "type": "object"
     },
@@ -127,10 +148,7 @@
           "$ref": "#/definitions/Profile"
         }
       },
-      "required": [
-        "profile",
-        "awsDefaultRegion"
-      ],
+      "required": ["profile", "awsDefaultRegion"],
       "title": "AWS Local User Configuration",
       "type": "object"
     },
@@ -166,11 +184,7 @@
           "$ref": "#/definitions/Type"
         }
       },
-      "required": [
-        "name",
-        "type",
-        "config"
-      ],
+      "required": ["name", "type", "config"],
       "title": "AWS User",
       "type": "object"
     },
@@ -211,11 +225,7 @@
     },
     "Type": {
       "description": "Type of this user.",
-      "enum": [
-        "apiKey",
-        "profile",
-        "environmentVariables"
-      ],
+      "enum": ["apiKey", "profile", "environmentVariables"],
       "title": "Type",
       "type": "string"
     }

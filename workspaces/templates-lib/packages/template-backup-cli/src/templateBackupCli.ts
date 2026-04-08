@@ -6,6 +6,8 @@ import { cleanupVault } from './cleanupVault';
 
 export { cleanupVault } from './cleanupVault';
 
+export { configureFromCentral } from './configureFromCentral';
+
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
     const argv = await yargs

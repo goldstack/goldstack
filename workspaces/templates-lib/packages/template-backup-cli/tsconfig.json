@@ -28,6 +28,9 @@
       "path": "../utils-package"
     },
     {
+      "path": "../../../utils/packages/utils-sh"
+    },
+    {
       "path": "../utils-terraform"
     },
     {
