@@ -19,9 +19,6 @@
       "path": "../template-backup"
     },
     {
-      "path": "../utils-aws-cli"
-    },
-    {
       "path": "../../../utils/packages/utils-cli"
     },
     {
