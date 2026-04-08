@@ -2,6 +2,7 @@ import { readDeploymentState } from '@goldstack/infra';
 import { readPackageConfig, writePackageConfig } from '@goldstack/utils-package';
 import { read } from '@goldstack/utils-sh';
 import path from 'path';
+import fs from 'fs';
 
 interface BackupCentralDeploymentState {
   name: string;
