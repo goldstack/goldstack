@@ -12,6 +12,7 @@ import awsStateConfigSchema from './schemas/awsTerraformStateSchema.json';
 import deploymentConfigSchema from './schemas/deploymentConfigSchema.json';
 import type {
   AWSAccessKeyId,
+  AWSAccounts,
   AWSAPIKeyUserConfig,
   AWSConfiguration,
   AWSEnvironmentVariableUserConfig,
@@ -21,9 +22,8 @@ import type {
   AWSUser,
   Name,
 } from './types/awsAccount';
-import type { AWSAccounts } from './types/awsAccount';
-import type { AWSTerraformState, RemoteState } from './types/awsTerraformState';
 import type { AWSDeployment, AWSDeploymentRegion, AWSUserName } from './types/awsDeployment';
+import type { AWSTerraformState, RemoteState } from './types/awsTerraformState';
 
 export type {
   AWSAccessKeyId,
@@ -158,7 +158,7 @@ export const readAccountsConfig = (path?: string): AWSAccounts | undefined => {
 };
 
 export const writeAccountsConfig = (accounts: AWSAccounts, path?: string): void => {
-  const config = readConfig(path);
+  const config = hasConfig(path) ? readConfig(path) : createDefaultConfig();
   config.accounts = accounts;
   writeConfig(config, path);
 };
@@ -169,7 +169,7 @@ export const getAWSAccountId = (user: Name, path?: string): string | undefined =
 };
 
 export const setAWSAccountId = (user: Name, accountId: string, path?: string): void => {
-  const config = readConfig(path);
+  const config = hasConfig(path) ? readConfig(path) : createDefaultConfig();
   if (!config.accounts) {
     config.accounts = {};
   }
