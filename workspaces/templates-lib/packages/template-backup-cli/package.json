@@ -39,8 +39,12 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
+    "@aws-sdk/client-backup": "^3.1004.0",
+    "@goldstack/infra": "0.4.41",
+    "@goldstack/infra-aws": "0.4.63",
     "@goldstack/template-backup": "0.1.3",
     "@goldstack/utils-cli": "0.3.32",
+    "@goldstack/utils-log": "0.3.34",
     "@goldstack/utils-package": "0.4.43",
     "@goldstack/utils-terraform": "0.4.80",
     "@goldstack/utils-terraform-aws": "0.4.85",

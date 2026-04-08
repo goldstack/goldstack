@@ -19,5 +19,7 @@ export const getModuleTemplatesNames = (): string[] => {
     'user-management',
     'server-side-rendering',
     'hetzner-vps',
+    'backup',
+    'backup-central',
   ];
 };

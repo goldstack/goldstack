@@ -1,6 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*", "./src/**/*.json"],
+  "include": [
+    "./src/**/*",
+    "./src/**/*.json"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
@@ -8,6 +11,9 @@
   "references": [
     {
       "path": "../template-backup-central"
+    },
+    {
+      "path": "../template-backup-cli"
     },
     {
       "path": "../../../utils/packages/utils-cli"
