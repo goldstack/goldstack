@@ -173,7 +173,7 @@ export const setAWSAccountId = (user: Name, accountId: string, path?: string): v
   if (!config.accounts) {
     config.accounts = {};
   }
-  config.accounts[user] = { accountId };
+  config.accounts[user] = { ...config.accounts[user], accountId };
   writeConfig(config, path);
 };
 
