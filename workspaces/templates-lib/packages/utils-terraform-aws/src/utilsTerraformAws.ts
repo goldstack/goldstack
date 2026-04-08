@@ -3,10 +3,13 @@ import {
   type AWSDeployment,
   type AWSTerraformState,
   assertTerraformConfig,
+  getAWSAccountId,
   getAWSCredentials,
   getAWSUser,
+  getCurrentAWSAccountId,
   type RemoteState,
   readDeploymentFromPackageConfig,
+  setAWSAccountId,
   writeTerraformConfig,
 } from '@goldstack/infra-aws';
 import {
@@ -207,16 +210,21 @@ export const terraformAwsCli = async (params: TerraformAWSCliParams): Promise<vo
     return;
   }
 
+  const expectedAccountId = getAWSAccountId(deployment.awsUser) || remoteStateConfig.accountId;
+
   await assertState({
     bucketName: remoteStateConfig.terraformStateBucket,
     dynamoDBTableName: remoteStateConfig.terraformStateDynamoDBTable,
     credentials,
     awsRegion: deployment.awsRegion,
-    expectedAccountId: remoteStateConfig.accountId,
+    expectedAccountId,
     remoteStateConfig,
-    awsTerraformConfig,
-    writeTerraformConfig,
   });
+
+  if (!expectedAccountId) {
+    const currentAccountId = await getCurrentAWSAccountId(credentials, deployment.awsRegion);
+    setAWSAccountId(deployment.awsUser, currentAccountId);
+  }
 
   if (operation === 'create-state') {
     // using this operation, we only create the state and do nothing else.

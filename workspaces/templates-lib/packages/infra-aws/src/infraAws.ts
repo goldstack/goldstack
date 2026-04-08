@@ -21,31 +21,29 @@ import type {
   AWSUser,
   Name,
 } from './types/awsAccount';
+import type { AWSAccounts } from './types/awsAccount';
 import type { AWSTerraformState, RemoteState } from './types/awsTerraformState';
+import type { AWSDeployment, AWSDeploymentRegion, AWSUserName } from './types/awsDeployment';
 
 export type {
   AWSAccessKeyId,
   AWSAPIKeyUserConfig as AWSAPIKeyUser,
   AWSConfiguration,
+  AWSDeployment,
+  AWSDeploymentRegion,
   AWSEnvironmentVariableUserConfig,
   AWSProfileConfig as AWSLocalUserConfig,
   AWSRegion,
   AWSSecretAccessKey,
   AWSTerraformState,
   AWSUser,
+  AWSUserName,
   RemoteState,
 };
-
-import type { AWSDeployment } from './types/awsDeployment';
 
 export { getAWSCredentials } from './awsAuthUtils';
 export { getCurrentAWSAccountId } from './awsUserUtils';
 export { getAWSUser } from './getAWSUser';
-export type {
-  AWSDeployment,
-  AWSDeploymentRegion,
-  AWSUserName,
-} from './types/awsDeployment';
 
 // deactivate warning message while v3 upgrade in process
 process.env.AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = '1';
@@ -109,7 +107,6 @@ export const hasConfig = (path?: string): boolean => {
     path = getAwsConfigPath('./../../');
   }
 
-  // otherwise check default config file location
   return fs.existsSync(path);
 };
 
@@ -118,7 +115,6 @@ export const readConfig = (path?: string): AWSConfiguration => {
     path = getAwsConfigPath('./../../');
   }
 
-  // otherwise check default config file location
   if (!fs.existsSync(path)) {
     throw new Error(`AWS configuration file does not exist: ${path}.`);
   }
@@ -141,9 +137,39 @@ export const createDefaultConfig = (): AWSConfiguration => {
   };
 };
 
-/**
- * Resets the environment variables set after obtaining AWS user.
- */
+export const assertAccountsConfig = (user: Name, path?: string): AWSAccounts => {
+  const config = readConfig(path);
+  if (!config.accounts) {
+    config.accounts = {};
+  }
+  if (!config.accounts[user]) {
+    config.accounts[user] = { accountId: '' };
+  }
+  return config.accounts;
+};
+
+export const readAccountsConfig = (path?: string): AWSAccounts | undefined => {
+  const config = readConfig(path);
+  return config.accounts;
+};
+
+export const writeAccountsConfig = (accounts: AWSAccounts, path?: string): void => {
+  const config = readConfig(path);
+  config.accounts = accounts;
+  writeConfig(config, path);
+};
+
+export const getAWSAccountId = (user: Name, path?: string): string | undefined => {
+  const accounts = readAccountsConfig(path);
+  return accounts?.[user]?.accountId;
+};
+
+export const setAWSAccountId = (user: Name, accountId: string, path?: string): void => {
+  const accounts = readAccountsConfig(path) || {};
+  accounts[user] = { accountId };
+  writeAccountsConfig(accounts, path);
+};
+
 export const resetAWSUser = (): void => {
   delete process.env.AWS_ACCESS_KEY_ID;
   delete process.env.AWS_SECRET_ACCESS_KEY;
