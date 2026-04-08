@@ -144,6 +144,7 @@ export const assertAccountsConfig = (user: Name, path?: string): AWSAccounts => 
   }
   if (!config.accounts[user]) {
     config.accounts[user] = { accountId: '' };
+    writeConfig(config, path);
   }
   return config.accounts;
 };
@@ -165,9 +166,12 @@ export const getAWSAccountId = (user: Name, path?: string): string | undefined =
 };
 
 export const setAWSAccountId = (user: Name, accountId: string, path?: string): void => {
-  const accounts = readAccountsConfig(path) || {};
-  accounts[user] = { accountId };
-  writeAccountsConfig(accounts, path);
+  const config = readConfig(path);
+  if (!config.accounts) {
+    config.accounts = {};
+  }
+  config.accounts[user] = { accountId };
+  writeConfig(config, path);
 };
 
 export const resetAWSUser = (): void => {

@@ -6,7 +6,6 @@ import {
   getAWSAccountId,
   getAWSCredentials,
   getAWSUser,
-  getCurrentAWSAccountId,
   type RemoteState,
   readDeploymentFromPackageConfig,
   setAWSAccountId,
@@ -212,17 +211,15 @@ export const terraformAwsCli = async (params: TerraformAWSCliParams): Promise<vo
 
   const expectedAccountId = getAWSAccountId(deployment.awsUser) || remoteStateConfig.accountId;
 
-  await assertState({
+  const currentAccountId = await assertState({
     bucketName: remoteStateConfig.terraformStateBucket,
     dynamoDBTableName: remoteStateConfig.terraformStateDynamoDBTable,
     credentials,
     awsRegion: deployment.awsRegion,
     expectedAccountId,
-    remoteStateConfig,
   });
 
   if (!expectedAccountId) {
-    const currentAccountId = await getCurrentAWSAccountId(credentials, deployment.awsRegion);
     setAWSAccountId(deployment.awsUser, currentAccountId);
   }
 

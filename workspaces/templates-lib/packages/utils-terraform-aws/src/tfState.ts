@@ -21,7 +21,7 @@ import {
   S3ServiceException,
 } from '@aws-sdk/client-s3';
 import type { AwsCredentialIdentity } from '@aws-sdk/types';
-import { getCurrentAWSAccountId, type RemoteState } from '@goldstack/infra-aws';
+import { getCurrentAWSAccountId } from '@goldstack/infra-aws';
 
 import { debug, error, info } from '@goldstack/utils-log';
 
@@ -322,8 +322,7 @@ export const assertState = async (params: {
   bucketName: string;
   awsRegion: string;
   expectedAccountId?: string;
-  remoteStateConfig?: RemoteState;
-}): Promise<void> => {
+}): Promise<string> => {
   info('Connecting to Terraform State stored on AWS', {
     bucketName: params.bucketName,
     tableName: params.dynamoDBTableName,
@@ -355,4 +354,6 @@ export const assertState = async (params: {
   });
   await assertS3Bucket({ s3, bucketName: params.bucketName });
   info('Connected successfully to Terraform State stored on AWS');
+
+  return currentAccountId;
 };
