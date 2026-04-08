@@ -80,8 +80,8 @@ export interface LoadEnvFilesParams {
  * Loads variables from .env files in priority order.
  * Order (earlier values are overridden by later):
  * 1. root/.env
- * 2. root/.env.[deployment]
- * 3. package/.env
+ * 2. package/.env
+ * 3. root/.env.[deployment]
  * 4. package/.env.[deployment]
  */
 export const loadEnvFiles = (params: LoadEnvFilesParams): Record<string, string> => {
@@ -97,8 +97,8 @@ export const loadEnvFiles = (params: LoadEnvFilesParams): Record<string, string>
 
   const envFiles: string[] = [
     path.join(rootPath, '.env'),
-    path.join(rootPath, `.env.${params.deploymentName}`),
     path.join(packagePath, '.env'),
+    path.join(rootPath, `.env.${params.deploymentName}`),
     path.join(packagePath, `.env.${params.deploymentName}`),
   ];
 
