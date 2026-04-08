@@ -127,9 +127,9 @@ export const configureCrossAccount = async (): Promise<void> => {
   writePackageConfig(backupCentralConfig);
 
   console.log('Updated backup-central goldstack.json:');
-  console.log(
-    "  allowedAccountIds: " + JSON.stringify([...new Set([...(existingConfig.allowedAccountIds || []), ...sourceAccountIds])]) + ","
-  );
-  console.log(`  sourceAccountIds: ${JSON.stringify(sourceAccountIds)}`);
-  console.log(`  sourceRoleArns: ${JSON.stringify(sourceRoleArns)}`);
+  console.log('Updated backup-central goldstack.json:');
+  console.log('  allowedAccountIds: ' + JSON.stringify(deployment.configuration.allowedAccountIds) + ',');
+  console.log('  sourceAccountIds: ' + JSON.stringify(deployment.configuration.sourceAccountIds));
+  console.log('  sourceRoleArns: ' + JSON.stringify(deployment.configuration.sourceRoleArns));
+  
 };
