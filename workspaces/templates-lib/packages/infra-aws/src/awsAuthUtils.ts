@@ -23,6 +23,7 @@ export function retrieveInjectedCredentials(
 
 export async function getAWSCredentials(
   provider: AwsCredentialIdentityProvider,
+  region?: string,
 ): Promise<AwsCredentialIdentity> {
   if (hasInjectedCredentials(provider)) {
     return retrieveInjectedCredentials(provider);
@@ -33,7 +34,10 @@ export async function getAWSCredentials(
     return credentials;
   }
 
-  const client = new STSClient({ credentials: () => Promise.resolve(credentials) });
+  const client = new STSClient({
+    credentials: () => Promise.resolve(credentials),
+    region,
+  });
   const input = {
     DurationSeconds: 900,
   };

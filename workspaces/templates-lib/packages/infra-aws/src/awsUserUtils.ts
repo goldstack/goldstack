@@ -20,6 +20,11 @@ import type {
 export async function getAWSUserFromEnvironmentVariables(): Promise<AwsCredentialIdentityProvider> {
   assert(process.env.AWS_ACCESS_KEY_ID, 'AWS_ACCESS_KEY_ID not defined.');
   assert(process.env.AWS_SECRET_ACCESS_KEY, 'AWS_SECRET_ACCESS_KEY not defined');
+  const region = process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION;
+  assert(
+    region,
+    'Neither AWS_REGION nor AWS_DEFAULT_REGION are defined. One of these environment variables is required when using AWS_ACCESS_KEY_ID/AWS_SECRET_ACCESS_KEY environment variables.',
+  );
   const credentials: AwsCredentialIdentityProvider = fromEnv();
 
   injectCredentials(credentials, {
@@ -66,8 +71,9 @@ async function validateCredentials(credentials: AwsCredentialIdentityProvider): 
 
 export async function getCurrentAWSAccountId(
   credentials: AwsCredentialIdentity | AwsCredentialIdentityProvider,
+  region?: string,
 ): Promise<string> {
-  const client = new STSClient({ credentials });
+  const client = new STSClient({ credentials, region });
   const command = new GetCallerIdentityCommand({});
   const response = await client.send(command);
   if (!response.Account) {

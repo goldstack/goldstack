@@ -5,6 +5,7 @@ import {
   DescribeTableCommand,
   DynamoDBClient,
   ResourceInUseException,
+  ResourceNotFoundException,
   UpdateContinuousBackupsCommand,
 } from '@aws-sdk/client-dynamodb';
 
@@ -103,11 +104,20 @@ const deleteDynamoDBTable = async (params: {
   dynamoDB: DynamoDBClient;
   tableName: string;
 }): Promise<void> => {
-  await params.dynamoDB.send(
-    new DeleteTableCommand({
-      TableName: params.tableName,
-    }),
-  );
+  try {
+    await params.dynamoDB.send(
+      new DeleteTableCommand({
+        TableName: params.tableName,
+      }),
+    );
+    info('Deleted DynamoDB table', { tableName: params.tableName });
+  } catch (e) {
+    if (e instanceof ResourceNotFoundException) {
+      info('DynamoDB table already deleted', { tableName: params.tableName });
+      return;
+    }
+    throw e;
+  }
 };
 
 const assertS3Bucket = async (params: { s3: S3Client; bucketName: string }): Promise<void> => {
@@ -325,7 +335,7 @@ export const assertState = async (params: {
     tableName: params.dynamoDBTableName,
   });
 
-  const currentAccountId = await getCurrentAWSAccountId(params.credentials);
+  const currentAccountId = await getCurrentAWSAccountId(params.credentials, params.awsRegion);
 
   if (params.expectedAccountId) {
     if (currentAccountId !== params.expectedAccountId) {

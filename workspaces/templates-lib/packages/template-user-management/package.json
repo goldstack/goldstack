@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-user-management",
-  "version": "0.1.90",
+  "version": "0.1.93",
   "description": "Template utilities for user management",
   "keywords": [
     "goldstack",
@@ -38,13 +38,13 @@
   },
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.1004.0",
-    "@goldstack/infra": "0.4.40",
-    "@goldstack/infra-aws": "0.4.61",
+    "@goldstack/infra": "0.4.41",
+    "@goldstack/infra-aws": "0.4.63",
     "@goldstack/utils-esbuild": "0.5.26",
-    "@goldstack/utils-package": "0.4.42",
-    "@goldstack/utils-package-config-embedded": "0.5.43",
-    "@goldstack/utils-template": "0.4.41",
-    "@goldstack/utils-terraform": "0.4.77",
+    "@goldstack/utils-package": "0.4.43",
+    "@goldstack/utils-package-config-embedded": "0.5.44",
+    "@goldstack/utils-template": "0.4.42",
+    "@goldstack/utils-terraform": "0.4.80",
     "aws-jwt-verify": "^3.2.0",
     "source-map-support": "^0.5.21"
   },
