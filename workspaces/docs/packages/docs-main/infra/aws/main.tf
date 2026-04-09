@@ -41,7 +41,7 @@ resource "aws_route53_record" "wildcard_validation" {
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
     }
-   # Skips the domain if it doesn't contain a wildcard
+    # Skips the domain if it doesn't contain a wildcard
     if length(regexall("\\*\\..+", dvo.domain_name)) > 0
   }
 
@@ -57,7 +57,7 @@ resource "aws_route53_record" "wildcard_validation" {
 # Required to force ACM wildcard certificate validation
 # see https://kopi.cloud/blog/2021/terraform-aws_acm_certificate-wildcards/
 resource "aws_acm_certificate_validation" "wildcard_cert" {
-  provider = aws.us-east-1
+  provider        = aws.us-east-1
   certificate_arn = aws_acm_certificate.wildcard_website.arn
 
   validation_record_fqdns = concat(

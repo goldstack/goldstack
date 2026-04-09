@@ -157,3 +157,23 @@ resource "aws_route53_record" "website_cdn_root_record" {
     evaluate_target_health = false
   }
 }
+resource "aws_s3_bucket_versioning" "website_root" {
+  bucket = aws_s3_bucket.website_root.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "website_root" {
+  bucket = aws_s3_bucket.website_root.id
+
+  rule {
+    id     = "delete-noncurrent-versions"
+    status = "Enabled"
+
+    noncurrent_version_expiration {
+      noncurrent_days = 30
+    }
+  }
+}
+

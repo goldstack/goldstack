@@ -139,3 +139,43 @@ data "aws_iam_policy_document" "public_files" {
     }
   }
 }
+resource "aws_s3_bucket_versioning" "static_files" {
+  bucket = aws_s3_bucket.static_files.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "static_files" {
+  bucket = aws_s3_bucket.static_files.id
+
+  rule {
+    id     = "delete-noncurrent-versions"
+    status = "Enabled"
+
+    noncurrent_version_expiration {
+      noncurrent_days = 30
+    }
+  }
+}
+
+resource "aws_s3_bucket_versioning" "public_files" {
+  bucket = aws_s3_bucket.public_files.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "public_files" {
+  bucket = aws_s3_bucket.public_files.id
+
+  rule {
+    id     = "delete-noncurrent-versions"
+    status = "Enabled"
+
+    noncurrent_version_expiration {
+      noncurrent_days = 30
+    }
+  }
+}
+
