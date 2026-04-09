@@ -3321,10 +3321,12 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
+    "@types/yargs": "npm:^17.0.33"
     jest: "npm:^30.2.0"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.9.3"
+    yargs: "npm:^17"
   languageName: unknown
   linkType: soft
 
@@ -4255,6 +4257,7 @@ __metadata:
     "@goldstack/template-backup-central": "npm:0.1.5"
     "@goldstack/template-backup-cli": "npm:0.1.5"
     "@goldstack/utils-cli": "npm:0.3.32"
+    "@goldstack/utils-log": "npm:0.3.34"
     "@goldstack/utils-package": "npm:0.4.43"
     "@goldstack/utils-package-config-generate": "npm:0.3.28"
     "@goldstack/utils-sh": "npm:0.5.39"

@@ -4654,10 +4654,12 @@ const RAW_RUNTIME_STATE =
           ["@swc/jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:0.2.39"],\
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
+          ["@types/yargs", "npm:17.0.33"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
           ["rimraf", "npm:6.1.2"],\
           ["ts-node", "virtual:a34d84b0830629706aa9f76341297032dfb316ac3c299bd43f58151c418314121b45f20e804b8bb0cc0046b94a8edd894244aa7537ab33ff98a1f1df12148e98#npm:10.9.2"],\
-          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
+          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
+          ["yargs", "npm:17.7.2"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -5683,6 +5685,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/template-backup-central-cli", "workspace:workspaces/templates-lib/packages/template-backup-central-cli"],\
           ["@goldstack/template-backup-cli", "workspace:workspaces/templates-lib/packages/template-backup-cli"],\
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-package-config-generate", "workspace:workspaces/templates-lib/packages/utils-package-config-generate"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\

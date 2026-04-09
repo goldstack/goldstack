@@ -1,7 +1,7 @@
+import { cleanupVault } from '@goldstack/template-backup-cli';
 import { wrapCli } from '@goldstack/utils-cli';
 import { infraCommands } from '@goldstack/utils-terraform';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
-import { cleanupVault } from '@goldstack/template-backup-cli';
 import yargs from 'yargs';
 
 export { configureCrossAccount } from './configureCrossAccount';
@@ -34,6 +34,22 @@ export const run = async (args: string[]): Promise<void> => {
             });
         },
       )
+      .command(
+        'configure-cross-account <deployment>',
+        'Configure cross-account settings by discovering backup packages and updating configuration',
+        (yargs) => {
+          return yargs
+            .positional('deployment', {
+              type: 'string',
+              describe: 'Name of the deployment',
+              demandOption: true,
+            })
+            .option('target-package', {
+              type: 'string',
+              describe: 'Target backup package pattern to match (replaces auto-discovery)',
+            });
+        },
+      )
       .help()
       .parse();
 
@@ -43,6 +59,15 @@ export const run = async (args: string[]): Promise<void> => {
       await cleanupVault({
         deploymentName: argv.deployment as string,
         confirm: argv.yes as boolean | undefined,
+      });
+      return;
+    }
+
+    if (command === 'configure-cross-account') {
+      const { configureCrossAccount } = await import('./configureCrossAccount');
+      await configureCrossAccount({
+        deploymentName: argv.deployment as string,
+        targetPackage: argv['target-package'] as string | undefined,
       });
       return;
     }

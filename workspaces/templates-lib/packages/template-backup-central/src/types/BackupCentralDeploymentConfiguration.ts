@@ -24,6 +24,7 @@ export type SourceAccountIds = string[];
 export type SourceRoleArns = string[];
 
 export interface ThisDeploymentConfiguration extends DeploymentConfiguration {
+  backupVaultName: string;
   allowedAccountIds: AllowedAccountIds;
   sourceAccountIds?: SourceAccountIds;
   sourceRoleArns?: SourceRoleArns;
