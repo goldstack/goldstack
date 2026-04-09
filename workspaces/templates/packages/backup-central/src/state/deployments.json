@@ -1,22 +1,5 @@
 [
   {
-    "name": "prod",
-    "terraform": {
-      "backup_vault_arn": {
-        "sensitive": false,
-        "type": "string",
-        "value": "arn:aws:backup:us-east-1:238391222420:backup-vault:GoldstackCentral"
-      },
-      "backup_vault_name": {
-        "sensitive": false,
-        "type": "string",
-        "value": "GoldstackCentral"
-      },
-      "kms_key_arn": {
-        "sensitive": false,
-        "type": "string",
-        "value": "arn:aws:kms:us-east-1:238391222420:key/5ab60731-c56e-4e83-b38a-ebd57cf34f1d"
-      }
-    }
+    "name": "prod"
   }
 ]
