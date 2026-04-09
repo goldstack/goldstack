@@ -10,6 +10,7 @@
       "awsRegion": "us-east-1",
       "awsUser": "goldstack-backup",
       "configuration": {
+        "backupVaultName": "goldstack-central-vault",
         "allowedAccountIds": ["475629728374"],
         "sourceAccountIds": ["475629728374"],
         "sourceRoleArns": ["arn:aws:iam::475629728374:role/GoldstackBackupRole"]

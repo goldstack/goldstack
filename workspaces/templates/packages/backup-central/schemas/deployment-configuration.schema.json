@@ -5,6 +5,9 @@
     "ThisDeploymentConfiguration": {
       "type": "object",
       "properties": {
+        "backupVaultName": {
+          "type": "string"
+        },
         "allowedAccountIds": {
           "$ref": "#/definitions/AllowedAccountIds"
         },
@@ -16,6 +19,7 @@
         }
       },
       "required": [
+        "backupVaultName",
         "allowedAccountIds"
       ]
     },

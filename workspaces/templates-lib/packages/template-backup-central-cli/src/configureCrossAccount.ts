@@ -1,20 +1,10 @@
 import { readDeploymentState } from '@goldstack/infra';
+import { info, warn } from '@goldstack/utils-log';
 import { readPackageConfig, writePackageConfig } from '@goldstack/utils-package';
 import { read } from '@goldstack/utils-sh';
-import path from 'path';
 import fs from 'fs';
-
-interface BackupDeploymentState {
-  name: string;
-  terraform?: {
-    backup_role_arn?: {
-      value: string;
-    };
-    backup_vault_arn?: {
-      value: string;
-    };
-  };
-}
+import path from 'path';
+import yargs from 'yargs';
 
 interface BackupCentralDeploymentConfiguration {
   allowedAccountIds: string[];
@@ -39,9 +29,46 @@ const findProjectRoot = (startDir: string): string | null => {
   return null;
 };
 
-export const configureCrossAccount = async (): Promise<void> => {
-  const args = process.argv.slice(2);
-  const deploymentName = args[0] || 'prod';
+export interface ConfigureCrossAccountParams {
+  deploymentName?: string;
+  targetPackage?: string;
+}
+
+const matchesTarget = (packagePath: string, targetPattern: string): boolean => {
+  const searchTarget = targetPattern.toLowerCase();
+  const parts = packagePath.toLowerCase().split(path.sep);
+  for (const part of parts) {
+    if (part.includes(searchTarget)) {
+      return true;
+    }
+    if (part === searchTarget) {
+      return true;
+    }
+  }
+  return false;
+};
+
+export const configureCrossAccount = async (
+  params?: ConfigureCrossAccountParams,
+): Promise<void> => {
+  let deploymentName = params?.deploymentName;
+  let targetPackage = params?.targetPackage;
+
+  if (!deploymentName) {
+    const argv = await yargs
+      .option('target-package', {
+        type: 'string',
+        describe: 'Target backup package pattern to match (replaces auto-discovery)',
+      })
+      .positional('deployment', {
+        type: 'string',
+        describe: 'Name of the deployment',
+      })
+      .parse();
+
+    deploymentName = (argv.deployment as string) || (argv._[0] as string) || 'prod';
+    targetPackage = targetPackage || (argv['target-package'] as string | undefined);
+  }
 
   const backupCentralConfig = readPackageConfig();
   const deployment = backupCentralConfig.deployments.find((d) => d.name === deploymentName);
@@ -62,24 +89,73 @@ export const configureCrossAccount = async (): Promise<void> => {
   try {
     const projectConfig = JSON.parse(read(projectConfigPath));
     projectPackages = projectConfig.packages || [];
-  } catch (e) {
+  } catch (_e) {
     throw new Error(`Failed to read project config at ${projectConfigPath}`);
   }
 
-  const backupPackages = projectPackages.filter(
-    (pkg) => pkg.includes('/packages/backup') && !pkg.includes('backup-central'),
-  );
+  const backupPackages: string[] = [];
+
+  for (const pkg of projectPackages) {
+    if (targetPackage && !matchesTarget(pkg, targetPackage)) {
+      continue;
+    }
+
+    const packagePath = path.join(projectRoot, pkg);
+    let packageGoldstackJson: string | undefined;
+
+    try {
+      const files = fs.readdirSync(packagePath);
+      const goldstackFile = files.find((f) => f === 'goldstack.json');
+      if (goldstackFile) {
+        packageGoldstackJson = read(path.join(packagePath, goldstackFile));
+      }
+    } catch (_e) {
+      warn(`Could not read package directory for ${pkg}`);
+      continue;
+    }
+
+    if (!packageGoldstackJson) {
+      continue;
+    }
+
+    try {
+      const packageConfig = JSON.parse(packageGoldstackJson);
+      if (packageConfig.template === 'backup') {
+        if (!targetPackage && pkg.includes('backup-central')) {
+          continue;
+        }
+        backupPackages.push(pkg);
+      }
+    } catch (_e) {
+      warn(`Could not parse goldstack.json for ${pkg}`);
+    }
+  }
+
+  if (backupPackages.length === 0) {
+    if (targetPackage) {
+      warn(`No packages found matching target pattern '${targetPackage}'`);
+    } else {
+      warn('No backup packages found in project');
+    }
+    return;
+  }
+
+  info(`Found ${backupPackages.length} backup package(s) to configure`);
 
   const sourceAccountIds: string[] = [];
   const sourceRoleArns: string[] = [];
 
   for (const backupPackage of backupPackages) {
     const packagePath = path.join(projectRoot, backupPackage);
-    let backupConfig;
+    let backupConfig: ReturnType<typeof readPackageConfig> | undefined;
     try {
       backupConfig = readPackageConfig(packagePath);
-    } catch (e) {
-      console.log(`Warning: Could not read package config for ${backupPackage}`);
+    } catch (_e) {
+      warn(`Could not read package config for ${backupPackage}`);
+      continue;
+    }
+
+    if (!backupConfig) {
       continue;
     }
 
@@ -88,7 +164,7 @@ export const configureCrossAccount = async (): Promise<void> => {
     );
 
     if (!backupDeployment) {
-      console.log(`Warning: Deployment '${deploymentName}' not found in ${backupPackage}`);
+      warn(`Deployment '${deploymentName}' not found in ${backupPackage}`);
       continue;
     }
 
@@ -108,8 +184,8 @@ export const configureCrossAccount = async (): Promise<void> => {
       if (deploymentState.terraform?.backup_role_arn?.value) {
         sourceRoleArns.push(deploymentState.terraform.backup_role_arn.value);
       }
-    } catch (e) {
-      console.log(`Warning: Could not read deployment state for ${backupPackage}`);
+    } catch (_e) {
+      warn(`Could not read deployment state for ${backupPackage}`);
     }
   }
 
@@ -126,11 +202,8 @@ export const configureCrossAccount = async (): Promise<void> => {
 
   writePackageConfig(backupCentralConfig);
 
-  console.log('Updated backup-central goldstack.json:');
-  console.log('Updated backup-central goldstack.json:');
-  console.log(
-    '  allowedAccountIds: ' + JSON.stringify(deployment.configuration.allowedAccountIds) + ',',
-  );
-  console.log('  sourceAccountIds: ' + JSON.stringify(deployment.configuration.sourceAccountIds));
-  console.log('  sourceRoleArns: ' + JSON.stringify(deployment.configuration.sourceRoleArns));
+  info(`Updated backup-central goldstack.json for deployment '${deploymentName}':`);
+  info(`  allowedAccountIds: ${JSON.stringify(deployment.configuration.allowedAccountIds)}`);
+  info(`  sourceAccountIds: ${JSON.stringify(deployment.configuration.sourceAccountIds)}`);
+  info(`  sourceRoleArns: ${JSON.stringify(deployment.configuration.sourceRoleArns)}`);
 };
