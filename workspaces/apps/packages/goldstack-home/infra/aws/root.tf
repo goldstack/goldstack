@@ -116,7 +116,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
 
     response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
-    cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6"
+    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
     compress                   = true
     viewer_protocol_policy     = "redirect-to-https"
   }
@@ -129,7 +129,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
 
     response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
-    cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6"
+    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
     compress                   = true
     viewer_protocol_policy     = "redirect-to-https"
   }
@@ -141,7 +141,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
 
     response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
-    cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6"
+    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
     compress                   = true
     viewer_protocol_policy     = "redirect-to-https"
   }
@@ -153,7 +153,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
 
     response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy.id
-    cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6"
+    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
     compress                   = true
     viewer_protocol_policy     = "redirect-to-https"
   }
