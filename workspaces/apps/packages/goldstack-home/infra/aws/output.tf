@@ -5,5 +5,5 @@ output "website_cdn_root_id" {
 
 output "edge_function_name" {
   description = "Lambda@Edge name for routing"
-  value       = aws_lambda_function.edge.function_name 
+  value       = aws_lambda_function.edge.function_name
 }

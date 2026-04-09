@@ -17,6 +17,30 @@ resource "aws_s3_bucket" "website_redirect" {
   }
 }
 
+resource "aws_s3_bucket_versioning" "website_redirect" {
+  count = var.website_domain_redirect != null ? 1 : 0
+
+  bucket = aws_s3_bucket.website_redirect[0].id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "website_redirect" {
+  count = var.website_domain_redirect != null ? 1 : 0
+
+  bucket = aws_s3_bucket.website_redirect[0].id
+
+  rule {
+    id     = "delete-noncurrent-versions"
+    status = "Enabled"
+
+    noncurrent_version_expiration {
+      noncurrent_days = 30
+    }
+  }
+}
+
 resource "aws_s3_bucket_public_access_block" "website_redirect" {
   count = var.website_domain_redirect != null ? 1 : 0
 

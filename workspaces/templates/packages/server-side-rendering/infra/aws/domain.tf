@@ -20,7 +20,7 @@ resource "aws_acm_certificate" "wildcard" {
   }
 
   lifecycle {
-    ignore_changes = [tags]
+    ignore_changes        = [tags]
     create_before_destroy = true
   }
 }
@@ -34,7 +34,7 @@ resource "aws_route53_record" "wildcard_validation" {
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
     }
-   # Skips the domain if it doesn't contain a wildcard
+    # Skips the domain if it doesn't contain a wildcard
     if length(regexall("\\*\\..+", dvo.domain_name)) > 0
   }
 

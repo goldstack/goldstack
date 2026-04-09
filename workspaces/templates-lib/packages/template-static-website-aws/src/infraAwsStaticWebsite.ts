@@ -1,4 +1,7 @@
-import { fatal } from '@goldstack/utils-log';
+import { readDeploymentState, readTerraformStateVariable } from '@goldstack/infra';
+import { getAWSUser } from '@goldstack/infra-aws';
+import { awsCli } from '@goldstack/utils-aws-cli';
+import { fatal, info, warn } from '@goldstack/utils-log';
 import { upload } from '@goldstack/utils-s3-deployment';
 import { assertDirectoryExists } from '@goldstack/utils-sh';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
@@ -68,6 +71,25 @@ export const deploy = async (config: AWSStaticWebsitePackage, args: string[]): P
     bucketPath: '/',
     localPath: webDistDir,
   });
+
+  const deploymentState = readDeploymentState('./', deployment.name);
+  const distributionId = readTerraformStateVariable(deploymentState, 'website_cdn_root_id');
+
+  if (distributionId) {
+    const user = await getAWSUser(deployment.awsUser);
+    info(`Invalidating CloudFront cache for distribution ${distributionId}`);
+
+    await awsCli({
+      command: `cloudfront create-invalidation --distribution-id ${distributionId} --paths "/*"`,
+      credentials: user,
+      region: deployment.awsRegion,
+      options: { silent: false },
+    });
+  } else {
+    warn(
+      'Could not find website_cdn_root_id in Terraform state. Skipping CloudFront invalidation.',
+    );
+  }
 };
 
 /**
