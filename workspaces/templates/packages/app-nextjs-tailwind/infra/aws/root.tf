@@ -71,6 +71,7 @@ data "aws_iam_policy_document" "website_root" {
 
 resource "aws_cloudfront_origin_access_control" "website_root" {
   name                              = "oac-${length(var.website_domain) > 38 ? substr(var.website_domain, 0, 38) : var.website_domain}-root-${random_id.oac_suffix.hex}"
+  description                       = "OAC for ${var.website_domain}-root S3 bucket"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
@@ -101,6 +102,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     domain_name              = aws_s3_bucket.website_root.bucket_regional_domain_name
     origin_id                = "origin-bucket-${aws_s3_bucket.website_root.id}"
     origin_access_control_id = aws_cloudfront_origin_access_control.website_root.id
+
   }
 
   default_root_object = "index.html"
@@ -115,7 +117,7 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
 
     response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
     cache_policy_id            = "658327ea-f89d-4fab-a63d-7e88639e58f6" # CachingOptimized
-    origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
+    origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf" # CORS-S3Origin
     compress                   = true
     viewer_protocol_policy     = "redirect-to-https"
   }
@@ -131,8 +133,8 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_root.id}"
 
     response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
-    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
-    origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf"
+    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad" # CachingDisabled
+    origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf" # CORS-S3Origin
     compress                   = true
     viewer_protocol_policy     = "redirect-to-https"
   }
@@ -147,7 +149,8 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     viewer_protocol_policy     = "redirect-to-https"
     response_headers_policy_id = "eaab4381-ed33-4a86-88ca-d9558dc6cd63"
     compress                   = true
-    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
+    cache_policy_id            = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad" # CachingDisabled
+    origin_request_policy_id   = "88a5eaf4-2fd4-4709-b370-b4c650ea3fcf" # CORS-S3Origin
 
     function_association {
       event_type   = "viewer-request"
