@@ -123,9 +123,6 @@ resource "aws_cloudfront_distribution" "website_cdn_root" {
     origin_id                = "origin-bucket-${aws_s3_bucket.website_root.id}"
     origin_access_control_id = aws_cloudfront_origin_access_control.website_root.id
 
-    s3_origin_config {
-      origin_access_identity = ""
-    }
   }
 
   default_root_object = "index.html"
