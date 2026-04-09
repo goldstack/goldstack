@@ -16,6 +16,9 @@
       "path": "../infra-aws"
     },
     {
+      "path": "../utils-aws-cli"
+    },
+    {
       "path": "../../../utils/packages/utils-cli"
     },
     {
