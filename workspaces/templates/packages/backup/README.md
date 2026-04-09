@@ -15,7 +15,9 @@ To configure the backup template, specify the following settings in your `goldst
 
 *   **schedule**: Cron expression for backup frequency (e.g., `cron(0 5 * * ? *)` for daily at 5 AM UTC)
 *   **retentionDays**: Number of days to retain backups (default: 30)
-*   **centralBackupVaultArn**: Optional ARN of a central backup vault for cross-account copy (e.g., `arn:aws:backup:us-east-1:123456789012:backup-vault:GoldstackCentral`)
+*   **centralBackupVaultArn**: Optional ARN of a central backup vault for cross-account copy (e.g., `arn:aws:backup:us-east-1:222222222222:backup-vault:vault-prod`)
+*   **destinationAccountId**: Optional AWS account ID of the destination backup vault for cross-account copy
+*   **destinationKmsKeyArn**: Optional ARN of the KMS key in the destination account for encrypting copied backups
 
 Example configuration:
 
@@ -24,7 +26,9 @@ Example configuration:
   "configuration": {
     "schedule": "cron(0 5 * * ? *)",
     "retentionDays": 30,
-    "centralBackupVaultArn": "arn:aws:backup:us-east-1:123456789012:backup-vault:GoldstackCentral"
+    "centralBackupVaultArn": "arn:aws:backup:us-east-1:222222222222:backup-vault:vault-prod",
+    "destinationAccountId": "222222222222",
+    "destinationKmsKeyArn": "arn:aws:kms:us-east-1:222222222222:key/d3a49659-80ee-4e72-8cbd-11e9b82c07ad"
   }
 }
 ```
@@ -53,12 +57,13 @@ This will be either `yarn infra up dev` or `yarn infra up prod` depending on you
 
 ### Cross-Account Backup
 
-To enable cross-account backup, ensure:
+This template supports copying backups to a central AWS account. This requires deploying the `backup-central` template in the destination account.
 
-1.  Cross-account backup is enabled in your AWS Organizations management account (see [Backups](../../goldstack/backups/index.md))
-2.  Advanced DynamoDB backup is enabled in each region where you want to back up DynamoDB tables (Note if you created your account after Nov 2021, this is enabled by default).
-3.  The `centralBackupVaultArn` is configured with the ARN of your central backup vault
-4.  The central backup vault's access policy allows copying from your account (configured in the backup-central template)
+For a complete step-by-step guide on establishing cross-account backups (including deploying the source vault, fetching the IAM role, configuring the central vault, and connecting them), please see the [Configuring Cross-Account Backups](../backup-central/getting-started.md#configuring-cross-account-backups) guide in the Backup Central template documentation.
+
+Ensure that:
+1\. Cross-account backup is enabled in your AWS Organizations management account (see [Backups](../../goldstack/backups/index.md))
+2\. Advanced DynamoDB backup is enabled in each region where you want to back up DynamoDB tables (Note if you created your account after Nov 2021, this is enabled by default).
 
 ### Cleanup Vault
 

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-backup-central",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Template utilities for backup central",
   "keywords": [
     "goldstack",

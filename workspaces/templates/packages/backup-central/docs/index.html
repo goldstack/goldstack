@@ -17,14 +17,23 @@
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
   </g>
 </svg></span></h2>
-<p></p><div class="markdown-fragment"><p>To configure the backup-central template, specify the AWS account IDs that are allowed to copy backups to this vault:</p>
+<p></p><div class="markdown-fragment"><p>To configure the backup-central template, specify the AWS account IDs and source role ARNs that are allowed to copy backups to this vault:</p>
 <pre class="language-json language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"configuration"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"allowedAccountIds"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"123456789012"</span><span class="token punctuation">,</span> <span class="token string">"987654321098"</span><span class="token punctuation">]</span>
+    <span class="token property">"backupVaultName"</span><span class="token operator">:</span> <span class="token string">"vault-prod"</span><span class="token punctuation">,</span>
+    <span class="token property">"allowedAccountIds"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"111111111111"</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"sourceAccountIds"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"111111111111"</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"sourceRoleArns"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"arn:aws:iam::111111111111:role/GoldstackBackupRole"</span>
+    <span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>Each source account that should be able to copy backups to this vault must be listed in <code class="inline">allowedAccountIds</code>.</p></div><p></p>
+<p>Each source account that should be able to copy backups to this vault must be listed in <code class="inline">allowedAccountIds</code> and <code class="inline">sourceAccountIds</code>. The specific IAM roles executing the backup copy must be listed in <code class="inline">sourceRoleArns</code>.</p></div><p></p>
 <h2 class="heading"><span id="getting-started"></span><a href="#getting-started">Getting Started</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
@@ -69,7 +78,7 @@
 <pre class="language-bash language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra up <span class="token punctuation">[</span>deploymentName<span class="token punctuation">]</span>
 </code></pre>
 <p>This will be either <code class="inline">yarn infra up dev</code> or <code class="inline">yarn infra up prod</code> depending on your choice of deployment. Note that running this command can take a while.</p></div><p></p>
-<h3 class="heading"><span id="configuring-source-accounts-1"></span><a href="#configuring-source-accounts-1"><span id="configuring-source-accounts"></span><a href="#configuring-source-accounts" class="relative">Configuring Source Accounts</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+<h3 class="heading"><span id="configuring-cross-account-backups-1"></span><a href="#configuring-cross-account-backups-1"><span id="configuring-cross-account-backups"></span><a href="#configuring-cross-account-backups" class="relative">Configuring Cross-Account Backups</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
@@ -80,8 +89,78 @@
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
   </g>
 </svg></span></h3>
-<p>After deploying the backup-central template, update the <code class="inline">allowedAccountIds</code> with all AWS account IDs that should be allowed to copy backups to this vault. Then, redeploy the template.</p>
-<p>Source accounts should configure their backup template with the <code class="inline">centralBackupVaultArn</code> pointing to this vault's ARN (available in the deployment outputs).</p></div><p></p>
+<p>Setting up cross-account backups requires coordinating the deployments between the source (<code class="inline">backup</code>) and destination (<code class="inline">backup-central</code>) templates. Follow these steps to establish the connection:</p>
+<h4 class="heading"><span id="phase-1-deploy-source-backup-without-central-config-1"></span><a href="#phase-1-deploy-source-backup-without-central-config-1"><span id="phase-1-deploy-source-backup-without-central-config"></span><a href="#phase-1-deploy-source-backup-without-central-config" class="relative">Phase 1: Deploy Source Backup (Without Central Config)</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<ol>
+<li>First, navigate to your source backup package (e.g., <code class="inline">packages/backup/</code>).</li>
+<li>Ensure you have not yet configured <code class="inline">centralBackupVaultArn</code>, <code class="inline">destinationAccountId</code>, or <code class="inline">destinationKmsKeyArn</code> in your <code class="inline">goldstack.json</code>.</li>
+<li>Deploy the source infrastructure using <code class="inline">yarn infra up &#x3C;deployment-name></code>.</li>
+<li>Once deployed, retrieve the backup IAM role ARN by running:<pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra terraform <span class="token operator">&#x3C;</span>deployment-name<span class="token operator">></span> output backup_role_arn
+</code></pre><em>Note: This will return a value like <code class="inline">arn:aws:iam::111111111111:role/GoldstackBackupRole</code>.</em></li>
+</ol>
+<h4 class="heading"><span id="phase-2-deploy-central-backup-vault-1"></span><a href="#phase-2-deploy-central-backup-vault-1"><span id="phase-2-deploy-central-backup-vault"></span><a href="#phase-2-deploy-central-backup-vault" class="relative">Phase 2: Deploy Central Backup Vault</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<ol>
+<li>Navigate to your central backup package (e.g., <code class="inline">packages/backup-central/</code>).</li>
+<li>Configure <code class="inline">goldstack.json</code> to allow the source account and its role to copy to this vault. Update the <code class="inline">configuration</code> object:<pre class="language-json language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"configuration"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"backupVaultName"</span><span class="token operator">:</span> <span class="token string">"vault-prod"</span><span class="token punctuation">,</span>
+    <span class="token property">"allowedAccountIds"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"111111111111"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"sourceAccountIds"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"111111111111"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"sourceRoleArns"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"arn:aws:iam::111111111111:role/GoldstackBackupRole"</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li>Deploy the central vault infrastructure using <code class="inline">yarn infra up &#x3C;deployment-name></code>.</li>
+<li>Once deployed, retrieve the vault ARN and KMS key ARN by running:<pre class="language-bash language-bash"><code class="language-bash"><span class="token function">yarn</span> infra terraform <span class="token operator">&#x3C;</span>deployment-name<span class="token operator">></span> output backup_vault_arn
+<span class="token function">yarn</span> infra terraform <span class="token operator">&#x3C;</span>deployment-name<span class="token operator">></span> output kms_key_arn
+</code></pre></li>
+</ol>
+<h4 class="heading"><span id="phase-3-connect-source-to-central-vault-1"></span><a href="#phase-3-connect-source-to-central-vault-1"><span id="phase-3-connect-source-to-central-vault"></span><a href="#phase-3-connect-source-to-central-vault" class="relative">Phase 3: Connect Source to Central Vault</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h4>
+<ol>
+<li>Return to your source backup package (<code class="inline">packages/backup/</code>).</li>
+<li>Update the <code class="inline">configuration</code> object in <code class="inline">goldstack.json</code> with the details from the central vault (assuming your central account ID is <code class="inline">222222222222</code>):<pre class="language-json language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"configuration"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"schedule"</span><span class="token operator">:</span> <span class="token string">"cron(30 11 * * ? *)"</span><span class="token punctuation">,</span>
+    <span class="token property">"retentionDays"</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+    <span class="token property">"centralBackupVaultArn"</span><span class="token operator">:</span> <span class="token string">"arn:aws:backup:us-east-1:222222222222:backup-vault:vault-prod"</span><span class="token punctuation">,</span>
+    <span class="token property">"destinationAccountId"</span><span class="token operator">:</span> <span class="token string">"222222222222"</span><span class="token punctuation">,</span>
+    <span class="token property">"destinationKmsKeyArn"</span><span class="token operator">:</span> <span class="token string">"arn:aws:kms:us-east-1:222222222222:key/d3a49659-80ee-4e72-8cbd-11e9b82c07ad"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></li>
+<li>Run <code class="inline">yarn infra up &#x3C;deployment-name></code> one final time to update the backup plan with the copy action.</li>
+</ol>
+<p>Your cross-account backup is now fully configured!</p></div><p></p>
 <h2 class="heading"><span id="infrastructure"></span><a href="#infrastructure">Infrastructure</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>

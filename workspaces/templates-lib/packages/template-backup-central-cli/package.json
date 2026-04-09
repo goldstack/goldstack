@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-backup-central-cli",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "CLI for managing backup central template infrastructure.",
   "keywords": [
     "goldstack",
@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.4.41",
-    "@goldstack/template-backup-central": "0.1.5",
+    "@goldstack/template-backup-central": "0.1.6",
     "@goldstack/template-backup-cli": "0.1.5",
     "@goldstack/utils-cli": "0.3.32",
     "@goldstack/utils-log": "0.3.34",

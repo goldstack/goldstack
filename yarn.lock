@@ -3315,8 +3315,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/backup-central@workspace:workspaces/templates/packages/backup-central"
   dependencies:
-    "@goldstack/template-backup-central": "npm:0.1.5"
-    "@goldstack/template-backup-central-cli": "npm:0.1.5"
+    "@goldstack/template-backup-central": "npm:0.1.6"
+    "@goldstack/template-backup-central-cli": "npm:0.1.6"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"
@@ -4249,12 +4249,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-backup-central-cli@npm:0.1.5, @goldstack/template-backup-central-cli@workspace:workspaces/templates-lib/packages/template-backup-central-cli":
+"@goldstack/template-backup-central-cli@npm:0.1.6, @goldstack/template-backup-central-cli@workspace:workspaces/templates-lib/packages/template-backup-central-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-backup-central-cli@workspace:workspaces/templates-lib/packages/template-backup-central-cli"
   dependencies:
     "@goldstack/infra": "npm:0.4.41"
-    "@goldstack/template-backup-central": "npm:0.1.5"
+    "@goldstack/template-backup-central": "npm:0.1.6"
     "@goldstack/template-backup-cli": "npm:0.1.5"
     "@goldstack/utils-cli": "npm:0.3.32"
     "@goldstack/utils-log": "npm:0.3.34"
@@ -4279,7 +4279,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-backup-central@npm:0.1.5, @goldstack/template-backup-central@workspace:workspaces/templates-lib/packages/template-backup-central":
+"@goldstack/template-backup-central@npm:0.1.6, @goldstack/template-backup-central@workspace:workspaces/templates-lib/packages/template-backup-central":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-backup-central@workspace:workspaces/templates-lib/packages/template-backup-central"
   dependencies:

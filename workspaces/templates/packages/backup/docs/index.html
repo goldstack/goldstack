@@ -21,14 +21,18 @@
 <ul>
 <li><strong>schedule</strong>: Cron expression for backup frequency (e.g., <code class="inline">cron(0 5 * * ? *)</code> for daily at 5 AM UTC)</li>
 <li><strong>retentionDays</strong>: Number of days to retain backups (default: 30)</li>
-<li><strong>centralBackupVaultArn</strong>: Optional ARN of a central backup vault for cross-account copy (e.g., <code class="inline">arn:aws:backup:us-east-1:123456789012:backup-vault:GoldstackCentral</code>)</li>
+<li><strong>centralBackupVaultArn</strong>: Optional ARN of a central backup vault for cross-account copy (e.g., <code class="inline">arn:aws:backup:us-east-1:222222222222:backup-vault:vault-prod</code>)</li>
+<li><strong>destinationAccountId</strong>: Optional AWS account ID of the destination backup vault for cross-account copy</li>
+<li><strong>destinationKmsKeyArn</strong>: Optional ARN of the KMS key in the destination account for encrypting copied backups</li>
 </ul>
 <p>Example configuration:</p>
 <pre class="language-json language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"configuration"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"schedule"</span><span class="token operator">:</span> <span class="token string">"cron(0 5 * * ? *)"</span><span class="token punctuation">,</span>
     <span class="token property">"retentionDays"</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
-    <span class="token property">"centralBackupVaultArn"</span><span class="token operator">:</span> <span class="token string">"arn:aws:backup:us-east-1:123456789012:backup-vault:GoldstackCentral"</span>
+    <span class="token property">"centralBackupVaultArn"</span><span class="token operator">:</span> <span class="token string">"arn:aws:backup:us-east-1:222222222222:backup-vault:vault-prod"</span><span class="token punctuation">,</span>
+    <span class="token property">"destinationAccountId"</span><span class="token operator">:</span> <span class="token string">"222222222222"</span><span class="token punctuation">,</span>
+    <span class="token property">"destinationKmsKeyArn"</span><span class="token operator">:</span> <span class="token string">"arn:aws:kms:us-east-1:222222222222:key/d3a49659-80ee-4e72-8cbd-11e9b82c07ad"</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -99,13 +103,11 @@
     <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
   </g>
 </svg></span></h3>
-<p>To enable cross-account backup, ensure:</p>
-<ol>
-<li>Cross-account backup is enabled in your AWS Organizations management account (see <a href="../../goldstack/backups/index.md" class="relative">Backups</a>)</li>
-<li>Advanced DynamoDB backup is enabled in each region where you want to back up DynamoDB tables (Note if you created your account after Nov 2021, this is enabled by default).</li>
-<li>The <code class="inline">centralBackupVaultArn</code> is configured with the ARN of your central backup vault</li>
-<li>The central backup vault's access policy allows copying from your account (configured in the backup-central template)</li>
-</ol>
+<p>This template supports copying backups to a central AWS account. This requires deploying the <code class="inline">backup-central</code> template in the destination account.</p>
+<p>For a complete step-by-step guide on establishing cross-account backups (including deploying the source vault, fetching the IAM role, configuring the central vault, and connecting them), please see the <a href="../backup-central/getting-started.md#configuring-cross-account-backups" class="relative">Configuring Cross-Account Backups</a> guide in the Backup Central template documentation.</p>
+<p>Ensure that:
+1. Cross-account backup is enabled in your AWS Organizations management account (see <a href="../../goldstack/backups/index.md" class="relative">Backups</a>)
+2. Advanced DynamoDB backup is enabled in each region where you want to back up DynamoDB tables (Note if you created your account after Nov 2021, this is enabled by default).</p>
 <h3 class="heading"><span id="cleanup-vault-1"></span><a href="#cleanup-vault-1"><span id="cleanup-vault"></span><a href="#cleanup-vault" class="relative">Cleanup Vault</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
