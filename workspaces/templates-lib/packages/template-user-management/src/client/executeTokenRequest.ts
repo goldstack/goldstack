@@ -33,7 +33,15 @@ export async function executeTokenRequest(args: {
     body: body.toString(),
   });
 
-  const data = await response.json();
+  let data;
+  try {
+    data = await response.json();
+  } catch (e) {
+    return {
+      error: `HTTP ${response.status}`,
+      errorDescription: 'Received non-JSON response from server',
+    };
+  }
 
   if (response.ok) {
     return {
