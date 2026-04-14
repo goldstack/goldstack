@@ -35,13 +35,6 @@ export interface CognitoManager {
    */
   getUsersByEmail(email: string): Promise<CognitoUser[]>;
   /**
-   * Retrieves a list of users from the Cognito user pool matching the given email address.
-   *
-   * @param email - The email address to search for
-   * @returns An array of CognitoUser objects
-   */
-  getUsersByEmail(email: string): Promise<CognitoUser[]>;
-  /**
    * Deletes a user from the Cognito user pool. First disables the user, then deletes them.
    *
    * @param username - The username of the user to delete
@@ -87,40 +80,55 @@ export class CognitoManagerImpl implements CognitoManager {
   }
 
   async getUsersByEmail(email: string): Promise<CognitoUser[]> {
-    const listUsersResponse = await this.cognitoClient.send(
-      new ListUsersCommand({
-        UserPoolId: this.userPoolId,
-        Filter: `email = "${email}"`,
-      }),
-    );
+    const allUsers: CognitoUser[] = [];
+    let paginationToken: string | undefined = undefined;
 
-    const awsUsers = listUsersResponse.Users || [];
+    do {
+      const listUsersResponse = await this.cognitoClient.send(
+        new ListUsersCommand({
+          UserPoolId: this.userPoolId,
+          Filter: `email = "${email.replace(/"/g, '\\"')}"`,
+          PaginationToken: paginationToken,
+        }),
+      );
 
-    return awsUsers.map((awsUser) => {
-      const attributes: Record<string, string> = {};
-      let id = '';
-      let userEmail = '';
+      const awsUsers = listUsersResponse.Users || [];
 
-      if (awsUser.Attributes) {
-        awsUser.Attributes.forEach((attr: AttributeType) => {
-          if (attr.Name && attr.Value) {
-            attributes[attr.Name] = attr.Value;
-            if (attr.Name === 'sub') {
-              id = attr.Value;
-            } else if (attr.Name === 'email') {
-              userEmail = attr.Value;
-            }
+      const mappedUsers = awsUsers
+        .filter((awsUser) => !!awsUser.Username)
+        .map((awsUser) => {
+          const attributes: Record<string, string> = {};
+          let id = '';
+          let userEmail = '';
+
+          if (awsUser.Attributes) {
+            awsUser.Attributes.forEach((attr: AttributeType) => {
+              if (attr.Name && attr.Value) {
+                attributes[attr.Name] = attr.Value;
+                if (attr.Name === 'sub') {
+                  id = attr.Value;
+                } else if (attr.Name === 'email') {
+                  userEmail = attr.Value;
+                }
+              }
+            });
           }
-        });
-      }
 
-      return {
-        id,
-        username: awsUser.Username || '',
-        email: userEmail,
-        attributes,
-      };
-    });
+          return {
+            id,
+            username: awsUser.Username || '',
+            email: userEmail,
+            attributes,
+          };
+        });
+
+      allUsers.push(...mappedUsers);
+
+      // AWS SDK uses PaginationToken directly
+      paginationToken = listUsersResponse.PaginationToken;
+    } while (paginationToken);
+
+    return allUsers;
   }
 
   async deleteUser(username: string): Promise<void> {
