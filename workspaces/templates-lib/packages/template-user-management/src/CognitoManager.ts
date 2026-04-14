@@ -90,11 +90,21 @@ export class CognitoManagerImpl implements CognitoManager {
         }),
       );
 
-      if (!listUsersResponse.Users || listUsersResponse.Users.length === 0) {
+      const usersWithUsername = (listUsersResponse.Users || []).filter(
+        (u) => typeof u.Username === 'string',
+      );
+
+      if (usersWithUsername.length === 0) {
         throw new Error(`No user found with email: ${params.email}`);
       }
 
-      resolvedUsername = listUsersResponse.Users[0].Username;
+      if (usersWithUsername.length > 1) {
+        throw new Error(
+          `Multiple users found with email: ${params.email}. Please provide a specific username.`,
+        );
+      }
+
+      resolvedUsername = usersWithUsername[0].Username;
     }
 
     if (!resolvedUsername) {
