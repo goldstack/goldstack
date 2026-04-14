@@ -179,8 +179,36 @@ export const handler: SSRHandler = async (event, context) => {
     // IMPORTANT: Ensure the authenticated user has permission to perform this action
     await deleteCognitoUser({
       cognitoManager: cognito,
-      username: 'user-to-delete@example.com', // Replace with dynamic username
+      username: 'USER_ID_HERE', // Use the user's username (not email alias)
     });
+  }
+};
+```
+
+Note that `deleteCognitoUser` specifically requires the user's `username`.
+
+If you only have a user's email address and need to look up their username before deleting or to retrieve other user information, you can use the `getCognitoUsersByEmail` method:
+
+```typescript
+import { connectWithCognito, getCognitoUsersByEmail, CognitoManager } from 'user-management';
+
+export const handler: SSRHandler = async (event, context) => {
+  const cognito: CognitoManager = await connectWithCognito();
+
+  const users = await getCognitoUsersByEmail({
+    cognitoManager: cognito,
+    email: 'user-to-find@example.com',
+  });
+
+  if (users.length === 1) {
+    const user = users[0];
+    console.log(`Found user! Username: ${user.username}, ID: ${user.id}`);
+    
+    // Now you could pass user.username to deleteCognitoUser
+  } else if (users.length === 0) {
+    console.log('No user found with that email');
+  } else {
+    console.log('Multiple users found with that email alias');
   }
 };
 ```

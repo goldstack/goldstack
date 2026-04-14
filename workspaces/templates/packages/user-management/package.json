@@ -24,7 +24,7 @@
     "test": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/template-user-management": "0.1.95",
+    "@goldstack/template-user-management": "0.2.0",
     "source-map-support": "^0.5.21",
     "uuid": "^11.0.5"
   },

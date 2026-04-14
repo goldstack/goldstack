@@ -8,7 +8,7 @@ export interface DeleteCognitoUserParams {
    */
   cognitoManager: CognitoManager;
   /**
-   * The username (or email) of the user to delete
+   * The username of the user to delete
    */
   username: string;
 }
