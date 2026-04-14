@@ -81,7 +81,7 @@ export class CognitoManagerImpl implements CognitoManager {
 
   async getUsersByEmail(email: string): Promise<CognitoUser[]> {
     const allUsers: CognitoUser[] = [];
-    let paginationToken: string | undefined = undefined;
+    let paginationToken: string | undefined ;
 
     do {
       const listUsersResponse = await this.cognitoClient.send(
