@@ -2,9 +2,24 @@ import {
   AdminDeleteUserCommand,
   AdminDisableUserCommand,
   CognitoIdentityProviderClient,
+  ListUsersCommand,
 } from '@aws-sdk/client-cognito-identity-provider';
 import { CognitoJwtVerifier } from 'aws-jwt-verify';
 import type { CognitoAccessTokenPayload, CognitoIdTokenPayload } from 'aws-jwt-verify/jwt-model';
+
+/**
+ * Parameters for deleting a user from the Cognito user pool.
+ */
+export interface CognitoDeleteUserParams {
+  /**
+   * The username of the user to delete.
+   */
+  username?: string;
+  /**
+   * The email address of the user to delete. Will be used to look up the username if not provided directly.
+   */
+  email?: string;
+}
 
 export interface CognitoManager {
   validate(accessToken: string): Promise<CognitoAccessTokenPayload>;
@@ -18,9 +33,9 @@ export interface CognitoManager {
   /**
    * Deletes a user from the Cognito user pool. First disables the user, then deletes them.
    *
-   * @param username - The username (or email) of the user to delete
+   * @param params - Object containing the username or email of the user to delete
    */
-  deleteUser(username: string): Promise<void>;
+  deleteUser(params: CognitoDeleteUserParams): Promise<void>;
 }
 
 export class CognitoManagerImpl implements CognitoManager {
@@ -60,17 +75,42 @@ export class CognitoManagerImpl implements CognitoManager {
     }
   }
 
-  async deleteUser(username: string): Promise<void> {
+  async deleteUser(params: CognitoDeleteUserParams): Promise<void> {
+    let resolvedUsername = params.username;
+
+    if (!resolvedUsername) {
+      if (!params.email) {
+        throw new Error('Either username or email must be provided to delete a user.');
+      }
+
+      const listUsersResponse = await this.cognitoClient.send(
+        new ListUsersCommand({
+          UserPoolId: this.userPoolId,
+          Filter: `email = "${params.email}"`,
+        }),
+      );
+
+      if (!listUsersResponse.Users || listUsersResponse.Users.length === 0) {
+        throw new Error(`No user found with email: ${params.email}`);
+      }
+
+      resolvedUsername = listUsersResponse.Users[0].Username;
+    }
+
+    if (!resolvedUsername) {
+      throw new Error('Unable to resolve username for deletion.');
+    }
+
     await this.cognitoClient.send(
       new AdminDisableUserCommand({
         UserPoolId: this.userPoolId,
-        Username: username,
+        Username: resolvedUsername,
       }),
     );
     await this.cognitoClient.send(
       new AdminDeleteUserCommand({
         UserPoolId: this.userPoolId,
-        Username: username,
+        Username: resolvedUsername,
       }),
     );
   }

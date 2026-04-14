@@ -5279,7 +5279,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-user-management@npm:0.1.95, @goldstack/template-user-management@workspace:workspaces/templates-lib/packages/template-user-management":
+"@goldstack/template-user-management@npm:0.1.95":
+  version: 0.1.95
+  resolution: "@goldstack/template-user-management@npm:0.1.95"
+  dependencies:
+    "@aws-sdk/client-cognito-identity-provider": "npm:^3.1004.0"
+    "@goldstack/infra": "npm:0.4.41"
+    "@goldstack/infra-aws": "npm:0.4.65"
+    "@goldstack/utils-esbuild": "npm:0.5.26"
+    "@goldstack/utils-package": "npm:0.4.43"
+    "@goldstack/utils-package-config-embedded": "npm:0.5.44"
+    "@goldstack/utils-template": "npm:0.4.42"
+    "@goldstack/utils-terraform": "npm:0.4.82"
+    aws-jwt-verify: "npm:^3.2.0"
+    source-map-support: "npm:^0.5.21"
+  checksum: 10/8cc8bce5cd405a03237bd9c2b895924935ecdf4e80746a269bf4be353d45f975da0149e5e27506d2e5482e28b05137397678a2558e6316ee11a4771ba8cd7f33
+  languageName: node
+  linkType: hard
+
+"@goldstack/template-user-management@workspace:workspaces/templates-lib/packages/template-user-management":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-user-management@workspace:workspaces/templates-lib/packages/template-user-management"
   dependencies:
