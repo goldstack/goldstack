@@ -10,21 +10,14 @@ export interface DeleteCognitoUserParams {
   /**
    * The username of the user to delete
    */
-  username?: string;
-  /**
-   * The email address of the user to delete (used if username is not provided)
-   */
-  email?: string;
+  username: string;
 }
 
 /**
  * Deletes a user from the Cognito user pool. First disables the user, then deletes them.
  *
- * @param params - Object containing the CognitoManager and username or email
+ * @param params - Object containing the CognitoManager and username
  */
 export async function deleteCognitoUser(params: DeleteCognitoUserParams): Promise<void> {
-  await params.cognitoManager.deleteUser({
-    username: params.username,
-    email: params.email,
-  });
+  await params.cognitoManager.deleteUser(params.username);
 }

@@ -257,8 +257,32 @@
     <span class="token comment">// IMPORTANT: Ensure the authenticated user has permission to perform this action</span>
     <span class="token keyword">await</span> <span class="token function">deleteCognitoUser</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
       cognitoManager<span class="token punctuation">:</span> cognito<span class="token punctuation">,</span>
-      username<span class="token punctuation">:</span> <span class="token string">'user-to-delete@example.com'</span><span class="token punctuation">,</span> <span class="token comment">// Replace with dynamic username</span>
+      username<span class="token punctuation">:</span> <span class="token string">'USER_ID_HERE'</span><span class="token punctuation">,</span> <span class="token comment">// Use the user's username (not email alias)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>Note that <code class="inline">deleteCognitoUser</code> specifically requires the user's <code class="inline">username</code>.</p>
+<p>If you only have a user's email address and need to look up their username before deleting or to retrieve other user information, you can use the <code class="inline">getCognitoUsersByEmail</code> method:</p>
+<pre class="language-typescript language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> connectWithCognito<span class="token punctuation">,</span> getCognitoUsersByEmail<span class="token punctuation">,</span> <span class="token maybe-class-name">CognitoManager</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'user-management'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> handler<span class="token punctuation">:</span> <span class="token function-variable function"><span class="token maybe-class-name">SSRHandler</span></span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> cognito<span class="token punctuation">:</span> <span class="token maybe-class-name">CognitoManager</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">connectWithCognito</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getCognitoUsersByEmail</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    cognitoManager<span class="token punctuation">:</span> cognito<span class="token punctuation">,</span>
+    email<span class="token punctuation">:</span> <span class="token string">'user-to-find@example.com'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>users<span class="token punctuation">.</span><span class="token property-access">length</span> <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> user <span class="token operator">=</span> users<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Found user! Username: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user<span class="token punctuation">.</span><span class="token property-access">username</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, ID: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user<span class="token punctuation">.</span><span class="token property-access">id</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// Now you could pass user.username to deleteCognitoUser</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>users<span class="token punctuation">.</span><span class="token property-access">length</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'No user found with that email'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'Multiple users found with that email alias'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>

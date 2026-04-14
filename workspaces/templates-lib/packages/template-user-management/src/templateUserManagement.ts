@@ -13,6 +13,7 @@ export type { GetTokenResults };
 import type { ClientAuthResult } from './client/getLoggedInUser';
 import { operationWithRedirect } from './client/operationWithRedirect';
 
+export type { CognitoUser } from './CognitoManager';
 export type { GetCookieSettingsResult } from './client/getCookieSettings';
 export { getCookieSettings } from './client/getCookieSettings';
 export type { ClientAuthResult } from './client/getLoggedInUser';
@@ -24,6 +25,8 @@ export { isValidState } from './client/state';
 export { connectWithCognito } from './connectWithCognito';
 export type { DeleteCognitoUserParams } from './deleteCognitoUser';
 export { deleteCognitoUser } from './deleteCognitoUser';
+export type { GetCognitoUsersByEmailParams } from './getCognitoUsersByEmail';
+export { getCognitoUsersByEmail } from './getCognitoUsersByEmail';
 export {
   getMockedUserAccessToken,
   getMockedUserIdToken,

@@ -6655,23 +6655,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@goldstack/template-user-management", [\
-      ["npm:0.1.95", {\
-        "packageLocation": "./.yarn/cache/@goldstack-template-user-management-npm-0.1.95-028a7342a7-8cc8bce5cd.zip/node_modules/@goldstack/template-user-management/",\
-        "packageDependencies": [\
-          ["@aws-sdk/client-cognito-identity-provider", "npm:3.1004.0"],\
-          ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
-          ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
-          ["@goldstack/template-user-management", "npm:0.1.95"],\
-          ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
-          ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
-          ["@goldstack/utils-package-config-embedded", "workspace:workspaces/templates-lib/packages/utils-package-config-embedded"],\
-          ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
-          ["@goldstack/utils-terraform", "workspace:workspaces/templates-lib/packages/utils-terraform"],\
-          ["aws-jwt-verify", "npm:3.2.0"],\
-          ["source-map-support", "npm:0.5.21"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["workspace:workspaces/templates-lib/packages/template-user-management", {\
         "packageLocation": "./workspaces/templates-lib/packages/template-user-management/",\
         "packageDependencies": [\
@@ -6706,7 +6689,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
-          ["@goldstack/template-user-management", "npm:0.1.95"],\
+          ["@goldstack/template-user-management", "workspace:workspaces/templates-lib/packages/template-user-management"],\
           ["@goldstack/template-user-management-cli", "workspace:workspaces/templates-lib/packages/template-user-management-cli"],\
           ["@goldstack/utils-aws-lambda", "workspace:workspaces/templates-lib/packages/utils-aws-lambda"],\
           ["@goldstack/utils-cli", "workspace:workspaces/utils/packages/utils-cli"],\
@@ -6757,7 +6740,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./workspaces/templates/packages/user-management/",\
         "packageDependencies": [\
           ["@aws-sdk/client-cognito-identity-provider", "npm:3.1004.0"],\
-          ["@goldstack/template-user-management", "npm:0.1.95"],\
+          ["@goldstack/template-user-management", "workspace:workspaces/templates-lib/packages/template-user-management"],\
           ["@goldstack/template-user-management-cli", "workspace:workspaces/templates-lib/packages/template-user-management-cli"],\
           ["@goldstack/user-management", "workspace:workspaces/templates/packages/user-management"],\
           ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\

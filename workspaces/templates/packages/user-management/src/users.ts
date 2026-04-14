@@ -1,13 +1,15 @@
 import {
   type ClientAuthResult,
   type CognitoManager,
+  type CognitoUser,
   type DeleteCognitoUserParams,
   type Endpoint,
+  type GetCognitoUsersByEmailParams,
   type GetCookieSettingsResult,
-  isValidState,
   type LoginOptions,
   connectWithCognito as templateConnect,
   deleteCognitoUser as templateDeleteCognitoUser,
+  getCognitoUsersByEmail as templateGetCognitoUsersByEmail,
   getCookieSettings as templateGetCookieSettings,
   getEndpoint as templateGetEndpoint,
   handleRedirectCallback as templateHandleRedirectCallback,
@@ -32,7 +34,9 @@ function parseRedirectArgs(
 
 export type {
   ClientAuthResult,
+  CognitoUser,
   DeleteCognitoUserParams,
+  GetCognitoUsersByEmailParams,
   LoginOptions,
 } from '@goldstack/template-user-management';
 export {
@@ -193,6 +197,17 @@ export async function connectWithCognito(deploymentName?: string): Promise<Cogni
  */
 export async function deleteCognitoUser(params: DeleteCognitoUserParams): Promise<void> {
   return templateDeleteCognitoUser(params);
+}
+
+/**
+ * Gets a list of Cognito users matching an email address
+ *
+ * @param params Object containing the CognitoManager and email
+ */
+export async function getCognitoUsersByEmail(
+  params: GetCognitoUsersByEmailParams,
+): Promise<CognitoUser[]> {
+  return templateGetCognitoUsersByEmail(params);
 }
 
 /**
