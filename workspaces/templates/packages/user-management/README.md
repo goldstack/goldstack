@@ -457,3 +457,11 @@ You can change the lifecycle configuration in `main.tf` to ignore schema changes
 
 Otherwise you will have to delete and recreate the user pool but DO SO WITH CAUTION since all
 your existing user data will be irrecoverably lost, including the passwords your users have set.
+
+### Error 'CannotObtainTokenError: Cannot obtain token ...'
+
+If you are using monitoring tools like Sentry, Datadog, or similar error tracking services, you might notice an exception named `CannotObtainTokenError` being frequently logged.
+
+This exception is expected during normal application behavior. It occurs when a user's session has expired and the application attempts to refresh their access token using an expired or invalid refresh token. The user management library will gracefully catch this error internally and redirect the user back to the login screen.
+
+Since this does not represent a bug or an application failure, it is recommended to configure your monitoring tool to filter out or ignore any errors where the name or type is `CannotObtainTokenError`.

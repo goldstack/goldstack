@@ -568,4 +568,18 @@ on main.tf line 1, in resource "aws_cognito_user_pool" "pool":
 </code></pre>
 <p>You can change the lifecycle configuration in <code class="inline">main.tf</code> to ignore schema changes as well.</p>
 <p>Otherwise you will have to delete and recreate the user pool but DO SO WITH CAUTION since all
-your existing user data will be irrecoverably lost, including the passwords your users have set.</p></div><p></p>
+your existing user data will be irrecoverably lost, including the passwords your users have set.</p>
+<h3 class="heading"><span id="error-cannotobtaintokenerror-cannot-obtain-token--1"></span><a href="#error-cannotobtaintokenerror-cannot-obtain-token--1"><span id="error-cannotobtaintokenerror-cannot-obtain-token-"></span><a href="#error-cannotobtaintokenerror-cannot-obtain-token-" class="relative">Error 'CannotObtainTokenError: Cannot obtain token ...'</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
+  <g stroke-width="1" fill="#000000" stroke="#000000">
+    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>
+    <path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M7.005,8.995 L7.005,8.995c-1.374-1.374-1.374-3.601,0-4.975l1.99-1.99c1.374-1.374,3.601-1.374,4.975,0l0,0c1.374,1.374,1.374,3.601,0,4.975 l-1.748,1.698"></path>
+  </g>
+</svg></span></h3>
+<p>If you are using monitoring tools like Sentry, Datadog, or similar error tracking services, you might notice an exception named <code class="inline">CannotObtainTokenError</code> being frequently logged.</p>
+<p>This exception is expected during normal application behavior. It occurs when a user's session has expired and the application attempts to refresh their access token using an expired or invalid refresh token. The user management library will gracefully catch this error internally and redirect the user back to the login screen.</p>
+<p>Since this does not represent a bug or an application failure, it is recommended to configure your monitoring tool to filter out or ignore any errors where the name or type is <code class="inline">CannotObtainTokenError</code>.</p></div><p></p>
