@@ -40,6 +40,7 @@ export type {
   LoginOptions,
 } from '@goldstack/template-user-management';
 export {
+  CannotObtainTokenError,
   generateTestAccessToken,
   generateTestIdToken,
   getLocalUserManager,

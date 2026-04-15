@@ -6,6 +6,7 @@ import { getMockedUserAccessToken, getMockedUserIdToken } from '../userManagemen
 import { getDeploymentName, getDeploymentsOutput } from '../userManagementConfig';
 import { executeTokenRequest } from './executeTokenRequest';
 import { getEndpoint } from './getEndpoints';
+import { CannotObtainTokenError } from './CannotObtainTokenError';
 
 export interface GetTokenResults {
   accessToken: string;
@@ -50,11 +51,19 @@ export async function getToken(args: {
 
   const deployment = packageConfig.getDeployment(deploymentName);
 
-  return await executeTokenRequest({
+  const result = await executeTokenRequest({
     tokenEndpoint: await getEndpoint({ ...args, endpoint: 'token' }),
     clientId: deploymentOutput.terraform.user_pool_client_id.value,
     code: args.code,
     refreshToken: args.refreshToken,
     redirectUri: deployment.configuration.callbackUrl,
   });
+
+  if ('error' in result) {
+    throw new CannotObtainTokenError(
+      `Cannot obtain token ${result.errorDescription} (${result.error})`,
+    );
+  }
+
+  return result;
 }

@@ -33,6 +33,7 @@ export {
   setMockedUserAccessToken,
   setMockedUserIdToken,
 } from './userManagementClientMock';
+export { CannotObtainTokenError } from './client/CannotObtainTokenError';
 export {
   generateTestAccessToken,
   generateTestIdToken,
