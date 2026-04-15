@@ -134,6 +134,11 @@ export async function getAWSUserFromGoldstackConfig(
       process.env.AWS_CONFIG_FILE = userConfig.awsConfigFileName;
     }
 
+    if (userConfig.awsDefaultRegion) {
+      process.env.AWS_REGION = userConfig.awsDefaultRegion;
+      process.env.AWS_DEFAULT_REGION = userConfig.awsDefaultRegion;
+    }
+
     let credentials: AwsCredentialIdentityProvider;
     let filename: string | undefined;
     if (!process.env.SHARE_CREDENTIALS_FILE) {
@@ -185,6 +190,8 @@ export async function getAWSUserFromGoldstackConfig(
 
     process.env.AWS_ACCESS_KEY_ID = config.awsAccessKeyId;
     process.env.AWS_SECRET_ACCESS_KEY = config.awsSecretAccessKey;
+    process.env.AWS_REGION = config.awsDefaultRegion;
+    process.env.AWS_DEFAULT_REGION = config.awsDefaultRegion;
 
     const credentials = fromEnv();
     injectCredentials(credentials, {
@@ -220,6 +227,8 @@ export async function getAWSUserFromGoldstackConfig(
 
     process.env.AWS_ACCESS_KEY_ID = awsAccessKeyId;
     process.env.AWS_SECRET_ACCESS_KEY = awsSecretAccessKey;
+    process.env.AWS_REGION = awsDefaultRegion;
+    process.env.AWS_DEFAULT_REGION = awsDefaultRegion;
     const credentials = fromEnv();
 
     injectCredentials(credentials, {
