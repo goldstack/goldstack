@@ -43,7 +43,7 @@
     "@goldstack/utils-log": "0.3.34",
     "@goldstack/utils-package": "0.4.43",
     "@goldstack/utils-sh": "0.5.39",
-    "axios": "^1.12.2",
+    "axios": "^1.15.0",
     "handlebars": "4.7.9"
   },
   "devDependencies": {

@@ -3653,7 +3653,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    axios: "npm:^1.12.2"
+    axios: "npm:^1.15.0"
     handlebars: "npm:4.7.9"
     jest: "npm:^30.2.0"
     renamer: "npm:^0.7.0"
@@ -3676,7 +3676,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    axios: "npm:^1.12.2"
+    axios: "npm:^1.15.0"
     handlebars: "npm:4.7.9"
     jest: "npm:^30.2.0"
     renamer: "npm:^0.7.0"
@@ -3980,7 +3980,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    axios: "npm:^1.12.2"
+    axios: "npm:^1.15.0"
     jest: "npm:^30.2.0"
     rimraf: "npm:^6.1.2"
     temp-dir: "npm:^2.0.0"
@@ -5773,7 +5773,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    axios: "npm:^1.12.2"
+    axios: "npm:^1.15.0"
     extract-zip: "npm:^2.0.1"
     jest: "npm:^30.2.0"
     mock-aws-s3-v3: "npm:6.1.13"
@@ -10575,7 +10575,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.12.2":
+"axios@npm:^1.15.0":
   version: 1.15.0
   resolution: "axios@npm:1.15.0"
   dependencies:
