@@ -71,7 +71,8 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
   }
 
   for (const [key, value] of Object.entries(terraformEnvVars)) {
-    dockerEnvArgs.push('-e', `${key}=${value}`);
+    if (key === 'TF_WORKSPACE' && options.workspace) continue;
+    dockerEnvArgs.push('-e', key + '=' + String(value));
   }
 
   const [command, ...rest] = cmd.split(' ');
