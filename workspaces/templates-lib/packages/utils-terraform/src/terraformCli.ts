@@ -1,6 +1,7 @@
 import { assertDocker, hasDocker, imageTerraform } from '@goldstack/utils-docker';
 import { fatal, warn } from '@goldstack/utils-log';
 import { commandExists, exec, pwd } from '@goldstack/utils-sh';
+import child_process from 'child_process';
 import path from 'path';
 import type { CloudProvider } from './cloudProvider';
 import type { TerraformVersion } from './types/utilsTerraformConfig';
@@ -57,49 +58,47 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
 
   const terraformEnvVars = getTerraformEnvVars();
 
-  let workspaceEnvVariable = '';
+  const dockerEnvArgs: string[] = [];
   if (options.workspace) {
     if (terraformEnvVars.TF_WORKSPACE) {
       warn(
         `TF_WORKSPACE environment variable is set to '${terraformEnvVars.TF_WORKSPACE}' but will be overridden by workspace option '${options.workspace}'. Please unset TF_WORKSPACE or remove the workspace option to avoid confusion.`,
       );
     }
-    workspaceEnvVariable =
-      typeof options.workspace === 'string'
-        ? '-e TF_WORKSPACE="' +
-          options.workspace.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\$/g, '\\\$') +
-          '"'
-        : '';
+    if (typeof options.workspace === 'string') {
+      dockerEnvArgs.push('-e', `TF_WORKSPACE=${options.workspace}`);
+    }
   }
 
-  const terraformEnvFlags = Object.entries(terraformEnvVars)
-    .map(
-      ([key, value]) =>
-        '-e ' +
-        key +
-        '="' +
-        value
-          .replace(/\\/g, '\\\\')
-          .replace(/"/g, '\\"')
-          .replace(/\$/g, '\\$')
-          .replace(/`/g, '\\`') +
-        '"',
-    )
-    .join(' ');
+  for (const [key, value] of Object.entries(terraformEnvVars)) {
+    dockerEnvArgs.push('-e', `${key}=${value}`);
+  }
 
   const [command, ...rest] = cmd.split(' ');
+  const dockerArgs: string[] = [
+    'run',
+    '--rm',
+    '-v',
+    `${options.dir}:/app`,
+    ...dockerEnvArgs,
+    '-w',
+    '/app',
+    imageTerraform(options.version),
+    command,
+    ...(options.options || []),
+    ...rest,
+  ];
 
-  const cmd3 =
-    `docker run --rm -v "${options.dir}":/app ` +
-    ` ${terraformEnvFlags} ` +
-    ` ${workspaceEnvVariable} ` +
-    '-w /app ' +
-    `${imageTerraform(options.version)} ` +
-    ` ${command} ` +
-    ` ${options.options?.join(' ') || ''} ` +
-    ` ${rest.join(' ')} `;
+  const result = child_process.spawnSync('docker', dockerArgs, {
+    shell: false,
+    encoding: 'utf-8',
+  });
 
-  return exec(cmd3, { silent: options.silent });
+  if (result.status !== 0) {
+    throw new Error(result.stderr || `Docker terraform command failed with exit code ${result.status}`);
+  }
+
+  return result.stdout || '';
 };
 
 export const assertTerraform = (): void => {
