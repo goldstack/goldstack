@@ -15,7 +15,7 @@ export const getTerraformEnvVars = (): Record<string, string> => {
   for (const [key, value] of Object.entries(process.env)) {
     if (value === undefined) continue;
 
-    if (key.startsWith('TF_') || key.startsWith('TF_') || key === 'TERRAFORM_CONFIG') {
+    if (key.startsWith('TF_') || key === 'TERRAFORM_CONFIG') {
       terraformEnvVars[key] = value;
     }
   }
@@ -70,7 +70,15 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
   const terraformEnvFlags = Object.entries(terraformEnvVars)
     .map(
       ([key, value]) =>
-        '-e ' + key + '="' + value.replace(/\\/g, '\\\\').replace(/\"/g, '\\\"').replace(/\$/g, '\\\$') + '"',
+        '-e ' +
+        key +
+        '="' +
+        value
+          .replace(/\\/g, '\\\\')
+          .replace(/"/g, '\\"')
+          .replace(/\$/g, '\\$')
+          .replace(/`/g, '\\`') +
+        '"',
     )
     .join(' ');
 
