@@ -15,11 +15,7 @@ export const getTerraformEnvVars = (): Record<string, string> => {
   for (const [key, value] of Object.entries(process.env)) {
     if (value === undefined) continue;
 
-    if (
-      key.startsWith('TF_') ||
-      key.startsWith('TF_') ||
-      key === 'TERRAFORM_CONFIG'
-    ) {
+    if (key.startsWith('TF_') || key.startsWith('TF_') || key === 'TERRAFORM_CONFIG') {
       terraformEnvVars[key] = value;
     }
   }
@@ -68,11 +64,14 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
         `TF_WORKSPACE environment variable is set to '${terraformEnvVars.TF_WORKSPACE}' but will be overridden by workspace option '${options.workspace}'. Please unset TF_WORKSPACE or remove the workspace option to avoid confusion.`,
       );
     }
-    workspaceEnvVariable = "-e TF_WORKSPACE=\"" + options.workspace + "\"";
+    workspaceEnvVariable = '-e TF_WORKSPACE="' + options.workspace + '"';
   }
 
   const terraformEnvFlags = Object.entries(terraformEnvVars)
-    .map(([key, value]) => "-e " + key + "=\"" + value.replace(/\"/g, '\\\"').replace(/\$/g, '\\$') + "\"")
+    .map(
+      ([key, value]) =>
+        '-e ' + key + '="' + value.replace(/\"/g, '\\\"').replace(/\$/g, '\\$') + '"',
+    )
     .join(' ');
 
   const [command, ...rest] = cmd.split(' ');
@@ -141,11 +140,18 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     .map((v) => v.trim());
 
   for (const envVar of envVars) {
-    const [key, value] = envVar.split('=');
+    const [key, ...valueParts] = envVar.split('=');
+    const value = valueParts.join('=');
     if (key && value) {
       if (key in process.env) {
         warn(
-          "Environment variable '" + key + "' is already set, overwriting with value from provider config: '" + process.env[key] + "' -> '" + value.replace(/["']/g, '') + "'",
+          "Environment variable '" +
+            key +
+            "' is already set, overwriting with value from provider config: '" +
+            process.env[key] +
+            "' -> '" +
+            value.replace(/["']/g, '') +
+            "'",
         );
       }
       process.env[key] = value.replace(/["']/g, '');
