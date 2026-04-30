@@ -164,7 +164,7 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
             "'",
         );
       }
-      process.env[key] = value.replace(/["']/g, '');
+      process.env[key] = typeof value === 'string' ? value.replace(/^[\"']|[\"']$/g, '') : value;
       providerSetKeys.add(key);
     }
   }
