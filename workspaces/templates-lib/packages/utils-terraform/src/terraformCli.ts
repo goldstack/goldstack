@@ -64,7 +64,12 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
         `TF_WORKSPACE environment variable is set to '${terraformEnvVars.TF_WORKSPACE}' but will be overridden by workspace option '${options.workspace}'. Please unset TF_WORKSPACE or remove the workspace option to avoid confusion.`,
       );
     }
-    workspaceEnvVariable = typeof options.workspace === 'string' ? '-e TF_WORKSPACE="' + options.workspace.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\$/g, '\\\$') + '"' : '';
+    workspaceEnvVariable =
+      typeof options.workspace === 'string'
+        ? '-e TF_WORKSPACE="' +
+          options.workspace.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\$/g, '\\\$') +
+          '"'
+        : '';
   }
 
   const terraformEnvFlags = Object.entries(terraformEnvVars)
@@ -147,12 +152,16 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     .filter((v) => v)
     .map((v) => v.trim());
 
-  const providerSetKeys = new Set<string>();
-
   for (const envVar of envVars) {
     const [key, ...valueParts] = envVar.split('=');
     const value = valueParts.join('=');
     if (key && value) {
+      if (key in terraformEnvVars) {
+        warn(
+          `Environment variable '${key}' is a Terraform environment variable, taking precedence over provider config: '${process.env[key]}' -> '${value.replace(/["']/g, '')}'`,
+        );
+        continue;
+      }
       if (key in process.env) {
         warn(
           "Environment variable '" +
@@ -164,19 +173,8 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
             "'",
         );
       }
-      process.env[key] = typeof value === 'string' ? value.replace(/^[\"']|[\"']$/g, '') : value;
-      providerSetKeys.add(key);
+      process.env[key] = value.replace(/["']/g, '');
     }
-  }
-
-  // TF env vars take precedence over provider config, with warning
-  for (const [key, value] of Object.entries(terraformEnvVars)) {
-    if (key !== 'TF_WORKSPACE' && providerSetKeys.has(key)) {
-      warn(
-        `Terraform environment variable '${key}' is already set from provider config, overwriting with value from environment: '${process.env[key]}' -> '${value}'`,
-      );
-    }
-    process.env[key] = value;
   }
 
   if (options.workspace) {
