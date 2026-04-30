@@ -69,7 +69,7 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
         `TF_WORKSPACE environment variable is set to '${terraformEnvVars.TF_WORKSPACE}' but will be overridden by workspace option '${options.workspace}'. Please unset TF_WORKSPACE or remove the workspace option to avoid confusion.`,
       );
     }
-    workspaceEnvVariable = `-e TF_WORKSPACE=${options.workspace}`;
+    workspaceEnvVariable = "-e TF_WORKSPACE=\"" + options.workspace + "\"";
   }
 
   const terraformEnvFlags = Object.entries(terraformEnvVars)
