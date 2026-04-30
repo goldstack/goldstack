@@ -736,6 +736,59 @@ When resolving Terraform variable values, Goldstack uses the following priority 
 
 If a variable defined in `variables.tf` is not found in any of these sources, a warning will be logged and the variable will not be passed to Terraform.
 
+#### Terraform Environment Variables
+
+Goldstack supports passing through Terraform environment variables to enable advanced configuration and CI/CD integration. The following environment variables are automatically passed through when defined:
+
+**Logging & Debugging:**
+
+*   `TF_LOG` - Enable detailed logs (trace, debug, info, warn, error)
+*   `TF_LOG_PATH` - Specify log output location
+*   `TF_INPUT` - Disable prompts for unset variables
+
+**Variable Input:**
+
+*   `TF_VAR_name` - Set Terraform variable values (e.g., `TF_VAR_region=us-west-1`)
+
+**CLI Configuration:**
+
+*   `TF_CLI_ARGS` - Additional arguments for all commands
+*   `TF_CLI_ARGS_name` - Additional arguments for specific commands (e.g., `TF_CLI_ARGS_plan="-refresh=false"`)
+*   `TF_CLI_CONFIG_FILE` - Custom CLI configuration file location
+*   `TF_DATA_DIR` - Override Terraform data directory
+*   `TERRAFORM_CONFIG` - Deprecated alias for `TF_CLI_CONFIG_FILE`
+
+**Provider Plugin Cache:**
+
+*   `TF_PLUGIN_CACHE_DIR` - Enable provider plugin cache directory
+*   `TF_PLUGIN_CACHE_MAY_BREAK_DEPENDENCY_LOCK_FILE` - Allow cache to break dependency lock file
+
+**Registry:**
+
+*   `TF_REGISTRY_DISCOVERY_RETRY` - Max retries for registry requests
+*   `TF_REGISTRY_CLIENT_TIMEOUT` - Registry client timeout
+
+**Automation & State:**
+
+*   `TF_IN_AUTOMATION` - Adjust output for automation workflows
+*   `TF_STATE_PERSIST_INTERVAL` - State persist interval for remote backends
+*   `TF_WORKSPACE` - Select workspace (warning shown if also using workspace option)
+
+**HCP Terraform:**
+
+*   `TF_CLOUD_ORGANIZATION`, `TF_CLOUD_HOSTNAME`, `TF_TOKEN`, `TF_TOKEN_FILE`
+*   `TF_CLOUD_WORKSPACE`, `TF_CLOUD_BACKUP`, `TF_CLOUD_DESCRIPTION`
+
+Example in GitHub workflow:
+
+```yaml
+env:
+  TF_PLUGIN_CACHE_DIR: /root/.tfcache
+  TF_PLUGIN_CACHE_MAY_BREAK_DEPENDENCY_LOCK_FILE: true
+```
+
+**Priority**: When the same key exists in both provider config and Terraform environment variables, a warning is logged and the environment variable value takes precedence over the provider configuration.
+
 # First Steps
 
 This page describes what you can do once you have downloaded your starter project. You will be able to download your project after selecting modules and having configured them on the Goldstack website. Please see [How Does It Work](./how-does-it-work) for more details.

@@ -20,10 +20,10 @@
     "test": "echo 'No tests'"
   },
   "dependencies": {
-    "@goldstack/template-backup": "0.1.7"
+    "@goldstack/template-backup": "0.1.8"
   },
   "devDependencies": {
-    "@goldstack/template-backup-cli": "0.1.7",
+    "@goldstack/template-backup-cli": "0.1.8",
     "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
