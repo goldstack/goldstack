@@ -16,8 +16,7 @@ export const getTerraformEnvVars = (): Record<string, string> => {
     if (value === undefined) continue;
 
     if (
-      key.startsWith('TF_VAR_') ||
-      key.startsWith('TF_CLI_ARGS_') ||
+      key.startsWith('TF_') ||
       key.startsWith('TF_') ||
       key === 'TERRAFORM_CONFIG'
     ) {
