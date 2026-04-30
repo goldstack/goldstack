@@ -95,7 +95,9 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
   });
 
   if (result.status !== 0) {
-    throw new Error(result.stderr || `Docker terraform command failed with exit code ${result.status}`);
+    throw new Error(
+      result.stderr || `Docker terraform command failed with exit code ${result.status}`,
+    );
   }
 
   return result.stdout || '';
@@ -154,10 +156,10 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
   for (const envVar of envVars) {
     const [key, ...valueParts] = envVar.split('=');
     const value = valueParts.join('=');
-    if (key && value) {
+    if (key) {
       if (key in terraformEnvVars) {
         warn(
-          `Environment variable '${key}' is a Terraform environment variable, taking precedence over provider config: '${process.env[key]}' -> '${value.replace(/["']/g, '')}'`,
+          `Environment variable '${key}' is a Terraform environment variable, taking precedence over provider config: '${process.env[key]}' -> '${value.replace(/^["']|["']$/g, '')}'`,
         );
         continue;
       }
@@ -168,11 +170,11 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
             "' is already set, overwriting with value from provider config: '" +
             process.env[key] +
             "' -> '" +
-            value.replace(/["']/g, '') +
+            value.replace(/^["']|["']$/g, '') +
             "'",
         );
       }
-      process.env[key] = value.replace(/["']/g, '');
+      process.env[key] = value.replace(/^["']|["']$/g, '');
     }
   }
 
