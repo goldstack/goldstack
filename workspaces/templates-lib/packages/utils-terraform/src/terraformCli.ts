@@ -139,6 +139,8 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     .filter((v) => v)
     .map((v) => v.trim());
 
+  const providerSetKeys = new Set<string>();
+
   for (const envVar of envVars) {
     const [key, ...valueParts] = envVar.split('=');
     const value = valueParts.join('=');
@@ -155,12 +157,13 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
         );
       }
       process.env[key] = value.replace(/["']/g, '');
+      providerSetKeys.add(key);
     }
   }
 
   // TF env vars take precedence over provider config, with warning
   for (const [key, value] of Object.entries(terraformEnvVars)) {
-    if (key !== 'TF_WORKSPACE' && key in process.env) {
+    if (key !== 'TF_WORKSPACE' && providerSetKeys.has(key)) {
       warn(
         `Terraform environment variable '${key}' is already set from provider config, overwriting with value from environment: '${process.env[key]}' -> '${value}'`,
       );
