@@ -145,7 +145,7 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     if (key && value) {
       if (key in process.env) {
         warn(
-          `Terraform environment variable '${key}' is already set from provider config, overwriting with value from environment: '${process.env[key]}' -> '${value.replace(/["']/g, '')}'`,
+          "Environment variable '" + key + "' is already set, overwriting with value from provider config: '" + process.env[key] + "' -> '" + value.replace(/["']/g, '') + "'",
         );
       }
       process.env[key] = value.replace(/["']/g, '');
