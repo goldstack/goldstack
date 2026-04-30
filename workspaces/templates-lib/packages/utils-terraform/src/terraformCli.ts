@@ -10,6 +10,20 @@ import { writeVarsFile } from './writeVarsFile';
 
 export type Variables = [string, string][];
 
+export const getTerraformEnvVars = (): Record<string, string> => {
+  const terraformEnvVars: Record<string, string> = {};
+  for (const [key, value] of Object.entries(process.env)) {
+    if (value === undefined) continue;
+
+    if (key.startsWith('TF_') || key === 'TERRAFORM_CONFIG') {
+      terraformEnvVars[key] = value;
+    }
+  }
+  return terraformEnvVars;
+};
+
+export type { TerraformOptions };
+
 interface TerraformOptions {
   dir?: string;
   provider: CloudProvider;
@@ -41,22 +55,48 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
   // Write AWS credentials file
   writeCredentials(options.provider.generateEnvVariableString(), options.dir);
 
+  const terraformEnvVars = getTerraformEnvVars();
+
   let workspaceEnvVariable = '';
   if (options.workspace) {
-    workspaceEnvVariable = `-e TF_WORKSPACE=${options.workspace}`;
+    if (terraformEnvVars.TF_WORKSPACE) {
+      warn(
+        `TF_WORKSPACE environment variable is set to '${terraformEnvVars.TF_WORKSPACE}' but will be overridden by workspace option '${options.workspace}'. Please unset TF_WORKSPACE or remove the workspace option to avoid confusion.`,
+      );
+    }
+    workspaceEnvVariable =
+      '-e ' +
+      'TF_WORKSPACE="' +
+      options.workspace
+        .replace(/\\/g, '\\\\')
+        .replace(/"/g, '\\"')
+        .replace(/\$/g, '\\$')
+        .replace(/`/g, '\\`') +
+      '"';
   }
+
+  const terraformEnvFlags = Object.entries(terraformEnvVars)
+    .map(
+      ([key, value]) =>
+        '-e ' +
+        key +
+        '="' +
+        value
+          .replace(/\\/g, '\\\\')
+          .replace(/"/g, '\\"')
+          .replace(/\$/g, '\\$')
+          .replace(/`/g, '\\`') +
+        '"',
+    )
+    .join(' ');
 
   const [command, ...rest] = cmd.split(' ');
 
   const cmd3 =
     `docker run --rm -v "${options.dir}":/app ` +
-    // ` ${options.provider.generateEnvVariableString()} ` +
+    ` ${terraformEnvFlags} ` +
     ` ${workspaceEnvVariable} ` +
-    '-w /app ' +
-    `${imageTerraform(options.version)} ` +
-    ` ${command} ` +
-    ` ${options.options?.join(' ') || ''} ` +
-    ` ${rest.join(' ')} `;
+    ` -w /app ${imageTerraform(options.version)} ${command} ${rest.join(' ')}`;
 
   return exec(cmd3, { silent: options.silent });
 };
@@ -102,6 +142,8 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
   // Write AWS credentials file
   writeCredentials(options.provider.generateEnvVariableString(), options.dir);
 
+  const terraformEnvVars = getTerraformEnvVars();
+
   // Set environment variables from provider
   const envVars = options.provider
     .generateEnvVariableString()
@@ -110,13 +152,36 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     .map((v) => v.trim());
 
   for (const envVar of envVars) {
-    const [key, value] = envVar.split('=');
-    if (key && value) {
-      process.env[key] = value.replace(/["']/g, '');
+    const [key, ...valueParts] = envVar.split('=');
+    const value = valueParts.join('=');
+    if (key) {
+      if (key in terraformEnvVars) {
+        warn(
+          `Environment variable '${key}' is a Terraform environment variable, taking precedence over provider config: '${process.env[key]}' -> '${value.replace(/^["']|["']$/g, '')}'`,
+        );
+        continue;
+      }
+      if (key in process.env) {
+        warn(
+          "Environment variable '" +
+            key +
+            "' is already set, overwriting with value from provider config: '" +
+            process.env[key] +
+            "' -> '" +
+            value.replace(/^["']|["']$/g, '') +
+            "'",
+        );
+      }
+      process.env[key] = value.replace(/^["']|["']$/g, '');
     }
   }
 
   if (options.workspace) {
+    if (terraformEnvVars.TF_WORKSPACE) {
+      warn(
+        `TF_WORKSPACE environment variable is set to '${terraformEnvVars.TF_WORKSPACE}' but will be overridden by workspace option '${options.workspace}'. Please unset TF_WORKSPACE or remove the workspace option to avoid confusion.`,
+      );
+    }
     process.env.TF_WORKSPACE = options.workspace;
   } else {
     delete process.env.TF_WORKSPACE;
