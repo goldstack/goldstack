@@ -70,7 +70,7 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
   const terraformEnvFlags = Object.entries(terraformEnvVars)
     .map(
       ([key, value]) =>
-        '-e ' + key + '="' + value.replace(/\"/g, '\\\"').replace(/\$/g, '\\$') + '"',
+        '-e ' + key + '="' + value.replace(/\\/g, '\\\\').replace(/\"/g, '\\\"').replace(/\$/g, '\\\$') + '"',
     )
     .join(' ');
 
