@@ -28,7 +28,7 @@
     "@goldstack/utils-sh": "0.5.39",
     "fs-extra": "^11.2.0",
     "stripe": "^8.114.0",
-    "uuid": "^11.0.5"
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@goldstack/auth": "0.1.0",
