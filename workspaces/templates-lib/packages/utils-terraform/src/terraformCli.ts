@@ -144,6 +144,15 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
 
   const terraformEnvVars = getTerraformEnvVars();
 
+  const GOLDSTACK_AWS_VARS = [
+    'AWS_ACCESS_KEY_ID',
+    'AWS_SECRET_ACCESS_KEY',
+    'AWS_SESSION_TOKEN',
+    'AWS_SECURITY_TOKEN',
+    'AWS_REGION',
+    'AWS_DEFAULT_REGION',
+  ];
+
   // Set environment variables from provider
   const envVars = options.provider
     .generateEnvVariableString()
@@ -155,24 +164,27 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     const [key, ...valueParts] = envVar.split('=');
     const value = valueParts.join('=');
     if (key) {
+      const isGoldstackVar = GOLDSTACK_AWS_VARS.includes(key);
+      const newValueTrimmed = value.replace(/^["']|["']$/g, '');
+      const isSameValue = process.env[key] === newValueTrimmed;
+
       if (key in terraformEnvVars) {
+        const changeNote = isSameValue ? '' : ' (provider config value is different)';
         warn(
-          `Environment variable '${key}' is a Terraform environment variable, taking precedence over provider config: '${process.env[key]}' -> '${value.replace(/^["']|["']$/g, '')}'`,
+          `Environment variable '${key}' is a Terraform environment variable, taking precedence over provider config${changeNote}.`,
         );
         continue;
       }
       if (key in process.env) {
+        if (isGoldstackVar && isSameValue) {
+          continue;
+        }
+        const changeNote = isSameValue ? '' : ' (old value was different)';
         warn(
-          "Environment variable '" +
-            key +
-            "' is already set, overwriting with value from provider config: '" +
-            process.env[key] +
-            "' -> '" +
-            value.replace(/^["']|["']$/g, '') +
-            "'",
+          `Environment variable '${key}' is already set, overwriting with value from provider config${changeNote}.`,
         );
       }
-      process.env[key] = value.replace(/^["']|["']$/g, '');
+      process.env[key] = newValueTrimmed;
     }
   }
 
