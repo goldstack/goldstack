@@ -158,7 +158,8 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     .generateEnvVariableString()
     .split(' -e ')
     .filter((v) => v)
-    .map((v) => v.trim());
+    .map((v) => v.trim())
+    .map((v) => (v.startsWith('-e ') ? v.slice(3) : v));
 
   for (const envVar of envVars) {
     const [key, ...valueParts] = envVar.split('=');
