@@ -26,7 +26,7 @@
   "dependencies": {
     "@goldstack/template-user-management": "0.2.7",
     "source-map-support": "^0.5.21",
-    "uuid": "^11.0.5"
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.1004.0",
