@@ -11,7 +11,11 @@ import {
 import type { NodeJsClient } from '@smithy/types';
 import assert from 'assert';
 import { createReadStream, createWriteStream, readFileSync, writeFileSync } from 'fs';
-import { createS3Client } from '../mockS3';
+import { createS3Client, resetMocks } from '../mockS3';
+
+afterAll(() => {
+  resetMocks();
+});
 
 test('Returns objects that do not exist as undefined', async () => {
   const mockClient = createS3Client({

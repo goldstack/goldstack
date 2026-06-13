@@ -1,6 +1,10 @@
 import { ListObjectsCommand, ListObjectsV2Command, PutObjectCommand } from '@aws-sdk/client-s3';
 import assert from 'assert';
-import { createS3Client } from '../mockS3';
+import { createS3Client, resetMocks } from '../mockS3';
+
+afterAll(() => {
+  resetMocks();
+});
 
 test('List objects', async () => {
   const mockClient = createS3Client({

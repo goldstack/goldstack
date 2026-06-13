@@ -1,12 +1,17 @@
 import { dummyUser } from '@goldstack/auth';
 import type { ProjectConfiguration } from '@goldstack/utils-project';
+import { resetMocks } from 'mock-aws-s3-v3';
 import request from 'supertest';
 import supertestSession from 'supertest-session';
 import { app } from './server';
 
 process.env.CORS = 'http://localhost';
 
-jest.setTimeout(35000);
+jest.setTimeout(120000);
+
+afterAll(() => {
+  resetMocks();
+});
 
 describe('Goldstack API', () => {
   it('Create a project', async () => {

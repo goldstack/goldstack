@@ -1,7 +1,12 @@
 import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+import { resetMocks } from 'mock-aws-s3-v3';
 import { connect, getBucketName, getSignedUrl } from './bucket';
 
 jest.setTimeout(60000);
+
+afterAll(() => {
+  resetMocks();
+});
 
 describe('S3 Bucket', () => {
   it('Should get bucket name', async () => {

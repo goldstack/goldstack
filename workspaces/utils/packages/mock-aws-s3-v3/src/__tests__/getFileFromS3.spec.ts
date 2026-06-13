@@ -1,5 +1,9 @@
 import { GetObjectCommand, NoSuchKey, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
-import { createS3Client } from 'mock-aws-s3-v3';
+import { createS3Client, resetMocks } from 'mock-aws-s3-v3';
+
+afterAll(() => {
+  resetMocks();
+});
 
 test('Can retrieve file using getFileFromS3 function if it exists', async () => {
   const client = createS3Client({

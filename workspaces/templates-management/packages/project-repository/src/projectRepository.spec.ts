@@ -1,7 +1,12 @@
 import { dummyUser } from '@goldstack/auth';
 import type { ProjectConfiguration } from '@goldstack/utils-project';
 import assert from 'assert';
+import { resetMocks } from 'mock-aws-s3-v3';
 import { connectProjectRepository } from './projectRepository';
+
+afterAll(() => {
+  resetMocks();
+});
 
 describe('Project Repository', () => {
   it('Should be able to create, read and update projects', async () => {

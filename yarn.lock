@@ -3529,6 +3529,7 @@ __metadata:
     express: "npm:4.20.0"
     helmet: "npm:^4.6.0"
     jest: "npm:^30.2.0"
+    mock-aws-s3-v3: "npm:^6.1.13"
     rimraf: "npm:^6.1.2"
     sanitize-html: "npm:^2.4.0"
     sort-package-json: "npm:^3.4.0"
@@ -4055,6 +4056,7 @@ __metadata:
     "@types/uuid": "npm:^10.0.0"
     fs-extra: "npm:^11.2.0"
     jest: "npm:^30.2.0"
+    mock-aws-s3-v3: "npm:^6.1.13"
     rimraf: "npm:^6.1.2"
     semver: "npm:^7.6.3"
     typescript: "npm:^5.9.3"
@@ -4076,6 +4078,7 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.2.0"
+    mock-aws-s3-v3: "npm:^6.1.13"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.9.3"
@@ -17804,7 +17807,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mock-aws-s3-v3@npm:6.1.13, mock-aws-s3-v3@workspace:workspaces/utils/packages/mock-aws-s3-v3":
+"mock-aws-s3-v3@npm:6.1.13, mock-aws-s3-v3@npm:^6.1.13, mock-aws-s3-v3@workspace:workspaces/utils/packages/mock-aws-s3-v3":
   version: 0.0.0-use.local
   resolution: "mock-aws-s3-v3@workspace:workspaces/utils/packages/mock-aws-s3-v3"
   dependencies:
