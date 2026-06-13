@@ -4,4 +4,5 @@ const base = require('./../../jest.config');
 module.exports = {
   ...base,
   testPathIgnorePatterns: ['<rootDir>/goldstackLocal/'],
+  forceExit: true,
 };
