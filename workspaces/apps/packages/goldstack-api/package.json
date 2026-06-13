@@ -19,7 +19,7 @@
     "start": "yarn node dist/src/local.js",
     "template": "yarn template-ts",
     "template-ts": "ts-node --swc scripts/template.ts",
-    "test": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --config=jest.config.js --detectOpenHandles --runInBand",
+    "test": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --config=jest.config.js --runInBand",
     "test-watch": "GOLDSTACK_DEPLOYMENT=local CORS=http://localhost jest --passWithNoTests --watch --config=jest.config.js",
     "watch": "PORT=8731 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local GOLDSTACK_LOG_EMAILS=true ts-node-dev --respawn ./src/local.ts"
   },
@@ -76,7 +76,7 @@
     "esbuild": "^0.25.6",
     "express": "4.20.0",
     "jest": "^30.2.0",
-    "mock-aws-s3-v3": "^6.1.13",
+    "mock-aws-s3-v3": "6.1.13",
     "rimraf": "^6.1.2",
     "supertest": "^7.1.4",
     "supertest-session": "^5.0.1",
