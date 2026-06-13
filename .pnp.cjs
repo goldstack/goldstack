@@ -14128,7 +14128,7 @@ const RAW_RUNTIME_STATE =
           ["date-fns", "npm:2.29.1"],\
           ["lodash", "npm:4.17.23"],\
           ["rxjs", "npm:7.5.6"],\
-          ["shell-quote", "npm:1.7.3"],\
+          ["shell-quote", "npm:1.8.4"],\
           ["spawn-command", "npm:0.0.2"],\
           ["supports-color", "npm:8.1.1"],\
           ["tree-kill", "npm:1.2.2"],\
@@ -24460,10 +24460,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["shell-quote", [\
-      ["npm:1.7.3", {\
-        "packageLocation": "./.yarn/cache/shell-quote-npm-1.7.3-76a78a6d77-0ab00c37c8.zip/node_modules/shell-quote/",\
+      ["npm:1.8.4", {\
+        "packageLocation": "./.yarn/cache/shell-quote-npm-1.8.4-13eacaabff-a3e3796385.zip/node_modules/shell-quote/",\
         "packageDependencies": [\
-          ["shell-quote", "npm:1.7.3"]\
+          ["shell-quote", "npm:1.8.4"]\
         ],\
         "linkType": "HARD"\
       }]\
