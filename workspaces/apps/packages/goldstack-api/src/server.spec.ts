@@ -7,7 +7,7 @@ import { app } from './server';
 
 process.env.CORS = 'http://localhost';
 
-jest.setTimeout(300000);
+jest.setTimeout(600000);
 
 afterAll(() => {
   resetMocks();

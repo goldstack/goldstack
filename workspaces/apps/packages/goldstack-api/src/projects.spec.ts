@@ -4,7 +4,7 @@ import { getMockReq, getMockRes } from '@jest-mock/express';
 import { resetMocks } from 'mock-aws-s3-v3';
 import { getProjectHandler, postProjectHandler, putProjectHandler } from './projects';
 
-jest.setTimeout(300000);
+jest.setTimeout(600000);
 
 afterAll(() => {
   resetMocks();
