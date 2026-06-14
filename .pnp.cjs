@@ -4828,6 +4828,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],\
           ["@goldstack/template-repository-bucket", "workspace:workspaces/templates-management/packages/template-repository-bucket"],\
           ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\

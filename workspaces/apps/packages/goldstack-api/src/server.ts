@@ -4,14 +4,15 @@ import express from 'express';
 import helmet from 'helmet';
 // import requestLogger from 'express-requests-logger';
 import type { Server } from 'http';
+import { debug } from '@goldstack/utils-log';
 import projects from './projects';
 import sessions from './sessions';
 
 export const app: express.Application = express();
 
-console.log('Server cold start');
+debug('Server cold start');
 app.use(helmet());
-console.log('CORS config:', process.env.CORS);
+debug(`CORS config: ${process.env.CORS}`);
 app.use(cors({ origin: process.env.CORS, credentials: true }));
 app.use(cookieParser() as express.RequestHandler);
 app.use(express.json({ limit: '10mb' }));
@@ -29,9 +30,16 @@ app.use('/projects', projects);
 app.use('/sessions', sessions);
 
 export const start = async (port: number): Promise<Server> => {
-  return new Promise<Server>((resolve) => {
+  return new Promise<Server>((resolve, reject) => {
     const server = app.listen(port, () => {
+      const addr = server.address();
+      const actualPort = typeof addr === 'object' && addr ? addr.port : port;
+      debug(`Server started on port ${actualPort}`);
       resolve(server);
+    });
+    server.on('error', (err: Error) => {
+      debug(`Server failed to start on port ${port}: ${err.message}`);
+      reject(err);
     });
   });
 };

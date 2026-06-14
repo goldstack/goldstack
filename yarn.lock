@@ -3499,7 +3499,8 @@ __metadata:
     "@goldstack/template-lambda-http-cli": "npm:0.5.105"
     "@goldstack/template-repository": "npm:0.1.0"
     "@goldstack/template-repository-bucket": "npm:0.1.0"
-    "@goldstack/template-s3": "workspace:*"
+    "@goldstack/template-s3": "npm:0.5.80"
+    "@goldstack/utils-log": "npm:0.3.34"
     "@goldstack/utils-package": "npm:0.4.43"
     "@goldstack/utils-project": "npm:0.4.42"
     "@goldstack/utils-sh": "npm:0.5.39"
@@ -4982,7 +4983,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-s3@npm:0.5.80, @goldstack/template-s3@workspace:*, @goldstack/template-s3@workspace:workspaces/templates-lib/packages/template-s3":
+"@goldstack/template-s3@npm:0.5.80, @goldstack/template-s3@workspace:workspaces/templates-lib/packages/template-s3":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-s3@workspace:workspaces/templates-lib/packages/template-s3"
   dependencies:
