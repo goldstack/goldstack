@@ -3,7 +3,7 @@ import { type AWSDeploymentRegion, getAWSUser } from '@goldstack/infra-aws';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { debug, warn } from '@goldstack/utils-log';
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
-import type { S3Deployment, S3Package } from './templateS3';
+import type { S3Deployment, S3Package } from './types/S3Package';
 
 let s3MockUsed = false;
 

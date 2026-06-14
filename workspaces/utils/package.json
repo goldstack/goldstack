@@ -20,7 +20,7 @@
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
     "publish": "yarn workspaces foreach --topological-dev --worktree run publish",
     "set-npm-ignore": "ts-node scripts/setNpmIgnore.ts",
-    "test": "yarn workspaces foreach -Wv run test"
+    "test": "NODE_OPTIONS=--experimental-vm-modules yarn workspaces foreach -Wv run test"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.5",
