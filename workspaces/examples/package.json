@@ -19,7 +19,7 @@
     "lint": "biome lint",
     "lint-fix": "biome lint --write",
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
-    "test": "yarn workspaces foreach -Wv run test",
+    "test": "NODE_OPTIONS=--experimental-vm-modules yarn workspaces foreach -Wv run test",
     "test-watch": "nodemonx --watch . --exec 'yarn test'"
   },
   "devDependencies": {
