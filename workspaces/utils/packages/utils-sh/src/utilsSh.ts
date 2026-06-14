@@ -1,13 +1,14 @@
 import { debug, error, info, warn } from '@goldstack/utils-log';
 import archiver from 'archiver';
 import { execFileSync, execSync, exec as processAsync } from 'child_process';
-import extract from 'extract-zip';
-import fs from 'fs';
-import fse, { copy as fsExtraCopy } from 'fs-extra';
-import { sync as globSync } from 'glob';
+import { createWriteStream, promises as fsPromises } from 'fs';
 import path from 'path';
 import { rimraf } from 'rimraf';
 import which from 'which';
+import yauzl from 'yauzl';
+import fs from 'fs';
+import fse, { copy as fsExtraCopy } from 'fs-extra';
+import { sync as globSync } from 'glob';
 
 export interface ExecParams {
   silent?: boolean;
@@ -186,11 +187,82 @@ export const zip = async (params: {
 };
 
 /**
- * Unzips a zip file into directly into a directory.
+ * Unzips a zip file into directly into a directory using yauzl.fromBuffer
+ * to avoid fd-slicer ref-count leak issues.
  */
 export const unzip = async (params: { file: string; targetDirectory: string }): Promise<void> => {
-  await extract(params.file, {
-    dir: path.resolve(params.targetDirectory),
+  const dir = path.resolve(params.targetDirectory);
+
+  return new Promise((resolve, reject) => {
+    void (async () => {
+      let canceled = false;
+      try {
+        const buffer = await fsPromises.readFile(params.file);
+        const zipfile = await new Promise<yauzl.ZipFile>((res, rej) => {
+          yauzl.fromBuffer(buffer, { lazyEntries: true }, (err, zf) => {
+            if (err) return rej(err);
+            // biome-ignore lint/style/noNonNullAssertion: zf is never null when err is falsy
+            res(zf!);
+          });
+        });
+
+        zipfile.on('error', (e: Error) => {
+          canceled = true;
+          reject(e);
+        });
+
+        zipfile.on('end', () => {
+          if (!canceled) resolve();
+        });
+
+        zipfile.on('entry', (entry: yauzl.Entry) => {
+          if (canceled) return;
+
+          void (async () => {
+            try {
+              if (entry.fileName.startsWith('__MACOSX/')) {
+                zipfile.readEntry();
+                return;
+              }
+
+              const dest = path.join(dir, entry.fileName);
+
+              if (/\/$/.test(entry.fileName)) {
+                await fsPromises.mkdir(dest, { recursive: true });
+                zipfile.readEntry();
+                return;
+              }
+
+              await fsPromises.mkdir(path.dirname(dest), { recursive: true });
+
+              const readStream = await new Promise<NodeJS.ReadableStream>((res, rej) => {
+                zipfile.openReadStream(entry, (err, rs) => {
+                  if (err) return rej(err);
+                  // biome-ignore lint/style/noNonNullAssertion: rs is never undefined when err is null
+                  res(rs!);
+                });
+              });
+
+              const writeStream = createWriteStream(dest);
+              await new Promise<void>((res, rej) => {
+                readStream.on('error', rej);
+                writeStream.on('error', rej);
+                writeStream.on('finish', res);
+                readStream.pipe(writeStream);
+              });
+              zipfile.readEntry();
+            } catch (e) {
+              canceled = true;
+              reject(e);
+            }
+          })();
+        });
+
+        zipfile.readEntry();
+      } catch (e) {
+        reject(e);
+      }
+    })();
   });
 };
 
