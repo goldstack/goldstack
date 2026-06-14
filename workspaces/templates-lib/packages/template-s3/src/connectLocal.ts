@@ -120,6 +120,16 @@ export const isMocked = (client: S3Client): boolean => {
   return (client as any)._goldstackIsMocked === true;
 };
 
+/**
+ * Resets all mocked S3 state. Should be called in afterAll to prevent
+ * state leakage between test suites and to allow Jest to exit cleanly.
+ */
+export function resetMockS3(): void {
+  const MockS3 = require(excludeInBundle('mock-aws-s3-v3'));
+  MockS3.resetMocks();
+  s3MockUsed = false;
+}
+
 export function resetMocksIfRequired(deploymentName: string | undefined, goldstackConfig: any) {
   if (s3MockUsed) {
     warn(

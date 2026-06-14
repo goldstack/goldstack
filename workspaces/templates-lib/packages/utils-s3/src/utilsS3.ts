@@ -2,8 +2,6 @@ import { GetObjectCommand, NoSuchKey, type S3Client } from '@aws-sdk/client-s3';
 import type { NodeJsClient } from '@smithy/types';
 import fs from 'fs';
 
-const DOWNLOAD_TIMEOUT_MS = 30000;
-
 /**
  * Downloads a file from S3 to a local file.
  */
@@ -16,16 +14,6 @@ export const download = async (params: {
   const filePath = params.filePath;
   return new Promise<boolean>((resolve, reject) => {
     let settled = false;
-
-    const cleanup = (): void => {
-      if (settled) return;
-      settled = true;
-      try {
-        fs.unlinkSync(filePath);
-      } catch {
-        // file may not exist
-      }
-    };
 
     const onSuccess = (): void => {
       settled = true;
@@ -49,14 +37,6 @@ export const download = async (params: {
       resolve(false);
     };
 
-    const timeout = setTimeout(() => {
-      onFailure(
-        new Error(
-          `Download timed out after ${DOWNLOAD_TIMEOUT_MS}ms for key "${params.key}" in bucket "${params.bucketName}"`,
-        ),
-      );
-    }, DOWNLOAD_TIMEOUT_MS);
-
     void (async () => {
       const file = fs.createWriteStream(filePath);
       try {
@@ -78,18 +58,15 @@ export const download = async (params: {
         }
 
         file.on('finish', () => {
-          clearTimeout(timeout);
           onSuccess();
         });
         file.on('error', (e: Error) => {
-          clearTimeout(timeout);
           file.destroy();
           onFailure(new Error(`Error writing download file "${filePath}": ${e.message}`));
         });
 
         (res.Body as NodeJS.ReadableStream).pipe(file);
       } catch (e) {
-        clearTimeout(timeout);
         file.destroy();
         if (e instanceof NoSuchKey) {
           onNotFound();

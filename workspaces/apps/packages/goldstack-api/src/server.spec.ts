@@ -1,5 +1,3 @@
-import { resetMocks } from 'mock-aws-s3-v3';
-
 import { dummyUser } from '@goldstack/auth';
 import type { ProjectConfiguration } from '@goldstack/utils-project';
 import request from 'supertest';
@@ -9,10 +7,6 @@ import { app } from './server';
 process.env.CORS = 'http://localhost';
 
 jest.setTimeout(600000);
-
-afterAll(() => {
-  resetMocks();
-});
 
 describe('Goldstack API', () => {
   it('Create a project', async () => {
