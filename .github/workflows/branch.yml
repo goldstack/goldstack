@@ -120,7 +120,7 @@ jobs:
         run: |
           cd workspaces/apps
           yarn workspace @goldstack/goldstack-api seed-templates
-          yarn test
+          GOLDSTACK_DEBUG=true yarn test
           cd ../..
 
   test-docs:
