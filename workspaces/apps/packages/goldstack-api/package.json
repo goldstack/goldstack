@@ -51,7 +51,7 @@
     "sort-package-json": "^3.4.0",
     "source-map-support": "^0.5.21",
     "stripe": "^8.114.0",
-    "uuid": "^11.0.5"
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@goldstack/goldstack-email-send": "0.1.0",
@@ -75,7 +75,7 @@
     "@types/tsc-watch": "^4.2.3",
     "@types/uuid": "^10.0.0",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
-    "esbuild": "^0.25.6",
+    "esbuild": "^0.28.1",
     "express": "4.20.0",
     "jest": "^30.2.0",
     "rimraf": "^6.1.2",

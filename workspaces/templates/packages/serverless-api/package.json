@@ -42,7 +42,7 @@
     "@types/node": "^25.0.3",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "dotenv": "^17.3.1",
-    "esbuild": "^0.25.6",
+    "esbuild": "^0.28.1",
     "get-port": "^5.1.1",
     "jest": "^30.2.0",
     "rimraf": "^6.1.2",
