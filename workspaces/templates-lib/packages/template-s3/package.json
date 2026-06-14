@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-s3",
-  "version": "0.5.81",
+  "version": "0.5.82",
   "description": "Building blocks for linking a package to an AWS S3 bucket.",
   "keywords": [
     "goldstack",

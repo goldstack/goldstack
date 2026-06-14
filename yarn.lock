@@ -3499,7 +3499,7 @@ __metadata:
     "@goldstack/template-lambda-http-cli": "npm:0.5.106"
     "@goldstack/template-repository": "npm:0.1.0"
     "@goldstack/template-repository-bucket": "npm:0.1.0"
-    "@goldstack/template-s3": "npm:0.5.80"
+    "@goldstack/template-s3": "npm:0.5.82"
     "@goldstack/utils-log": "npm:0.3.34"
     "@goldstack/utils-package": "npm:0.4.43"
     "@goldstack/utils-project": "npm:0.4.42"
@@ -3994,8 +3994,8 @@ __metadata:
   resolution: "@goldstack/project-package-bucket@workspace:workspaces/templates-management/packages/project-package-bucket"
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.1004.0"
-    "@goldstack/template-s3": "npm:0.5.81"
-    "@goldstack/template-s3-cli": "npm:0.6.104"
+    "@goldstack/template-s3": "npm:0.5.82"
+    "@goldstack/template-s3-cli": "npm:0.6.105"
     "@goldstack/utils-sh": "npm:0.5.39"
     "@smithy/smithy-client": "npm:^4.12.3"
     "@smithy/types": "npm:^4.13.0"
@@ -4016,8 +4016,8 @@ __metadata:
   resolution: "@goldstack/project-repository-bucket@workspace:workspaces/templates-management/packages/project-repository-bucket"
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.1004.0"
-    "@goldstack/template-s3": "npm:0.5.81"
-    "@goldstack/template-s3-cli": "npm:0.6.104"
+    "@goldstack/template-s3": "npm:0.5.82"
+    "@goldstack/template-s3-cli": "npm:0.6.105"
     "@goldstack/utils-sh": "npm:0.5.39"
     "@smithy/smithy-client": "npm:^4.12.3"
     "@smithy/types": "npm:^4.13.0"
@@ -4068,8 +4068,8 @@ __metadata:
   resolution: "@goldstack/s3@workspace:workspaces/templates/packages/s3"
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.1004.0"
-    "@goldstack/template-s3": "npm:0.5.81"
-    "@goldstack/template-s3-cli": "npm:0.6.104"
+    "@goldstack/template-s3": "npm:0.5.82"
+    "@goldstack/template-s3-cli": "npm:0.6.105"
     "@smithy/smithy-client": "npm:^4.12.3"
     "@smithy/types": "npm:^4.13.0"
     "@swc/core": "npm:^1.15.8"
@@ -4182,8 +4182,8 @@ __metadata:
   resolution: "@goldstack/session-repository-bucket@workspace:workspaces/templates-management/packages/session-repository-bucket"
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.1004.0"
-    "@goldstack/template-s3": "npm:0.5.81"
-    "@goldstack/template-s3-cli": "npm:0.6.104"
+    "@goldstack/template-s3": "npm:0.5.82"
+    "@goldstack/template-s3-cli": "npm:0.6.105"
     "@goldstack/utils-sh": "npm:0.5.39"
     "@smithy/smithy-client": "npm:^4.12.3"
     "@smithy/types": "npm:^4.13.0"
@@ -4819,7 +4819,7 @@ __metadata:
     "@goldstack/template-metadata": "npm:0.1.6"
     "@goldstack/template-repository": "npm:0.1.0"
     "@goldstack/template-repository-bucket": "npm:0.1.0"
-    "@goldstack/template-s3": "npm:0.5.81"
+    "@goldstack/template-s3": "npm:0.5.82"
     "@goldstack/template-static-website-aws": "npm:0.5.98"
     "@goldstack/utils-cli": "npm:0.3.32"
     "@goldstack/utils-config": "npm:0.4.41"
@@ -4907,8 +4907,8 @@ __metadata:
   resolution: "@goldstack/template-repository-bucket@workspace:workspaces/templates-management/packages/template-repository-bucket"
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.1004.0"
-    "@goldstack/template-s3": "npm:0.5.81"
-    "@goldstack/template-s3-cli": "npm:0.6.104"
+    "@goldstack/template-s3": "npm:0.5.82"
+    "@goldstack/template-s3-cli": "npm:0.6.105"
     "@goldstack/utils-sh": "npm:0.5.39"
     "@smithy/smithy-client": "npm:^4.12.3"
     "@smithy/types": "npm:^4.13.0"
@@ -4949,11 +4949,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-s3-cli@npm:0.6.104, @goldstack/template-s3-cli@workspace:workspaces/templates-lib/packages/template-s3-cli":
+"@goldstack/template-s3-cli@npm:0.6.105, @goldstack/template-s3-cli@workspace:workspaces/templates-lib/packages/template-s3-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-s3-cli@workspace:workspaces/templates-lib/packages/template-s3-cli"
   dependencies:
-    "@goldstack/template-s3": "npm:0.5.81"
+    "@goldstack/template-s3": "npm:0.5.82"
     "@goldstack/utils-cli": "npm:0.3.32"
     "@goldstack/utils-docker": "npm:0.4.41"
     "@goldstack/utils-log": "npm:0.3.34"
@@ -4982,7 +4982,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-s3@npm:0.5.81, @goldstack/template-s3@workspace:workspaces/templates-lib/packages/template-s3":
+"@goldstack/template-s3@npm:0.5.82, @goldstack/template-s3@workspace:workspaces/templates-lib/packages/template-s3":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-s3@workspace:workspaces/templates-lib/packages/template-s3"
   dependencies:
