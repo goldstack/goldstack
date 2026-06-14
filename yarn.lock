@@ -5720,6 +5720,7 @@ __metadata:
   resolution: "@goldstack/utils-s3@workspace:workspaces/templates-lib/packages/utils-s3"
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.1004.0"
+    "@goldstack/utils-log": "npm:0.3.34"
     "@smithy/types": "npm:^4.13.0"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"

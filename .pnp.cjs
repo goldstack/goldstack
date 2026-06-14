@@ -7144,6 +7144,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./workspaces/templates-lib/packages/utils-s3/",\
         "packageDependencies": [\
           ["@aws-sdk/client-s3", "npm:3.1004.0"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-s3", "workspace:workspaces/templates-lib/packages/utils-s3"],\
           ["@smithy/types", "npm:4.13.0"],\
           ["@swc/core", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:1.15.8"],\
