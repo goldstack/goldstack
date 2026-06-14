@@ -183,6 +183,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/goldstack-setup
+      - name: Compile dependencies
+        run: |
+          yarn workspace @goldstack/goldstack-api compile
       - name: Build Next.js app
         run: |
           yarn workspace @goldstack/goldstack-home web:build
