@@ -37,6 +37,7 @@
     "@goldstack/template-lambda-http-cli": "0.5.106",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/template-repository-bucket": "0.1.0",
+    "@goldstack/utils-log": "0.3.34",
     "@goldstack/utils-package": "0.4.43",
     "@goldstack/utils-project": "0.4.42",
     "@goldstack/utils-sh": "0.5.39",
@@ -55,6 +56,7 @@
   "devDependencies": {
     "@goldstack/goldstack-email-send": "0.1.0",
     "@goldstack/module-template-utils": "0.1.2",
+    "@goldstack/template-s3": "0.5.80",
     "@goldstack/utils-template-test": "0.1.0",
     "@jest-mock/express": "^1.4.5",
     "@swc/core": "^1.15.8",

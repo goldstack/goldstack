@@ -3499,6 +3499,8 @@ __metadata:
     "@goldstack/template-lambda-http-cli": "npm:0.5.106"
     "@goldstack/template-repository": "npm:0.1.0"
     "@goldstack/template-repository-bucket": "npm:0.1.0"
+    "@goldstack/template-s3": "npm:0.5.80"
+    "@goldstack/utils-log": "npm:0.3.34"
     "@goldstack/utils-package": "npm:0.4.43"
     "@goldstack/utils-project": "npm:0.4.42"
     "@goldstack/utils-sh": "npm:0.5.39"
@@ -3933,7 +3935,6 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    extract-zip: "npm:^2.0.1"
     jest: "npm:^30.2.0"
     rimraf: "npm:^6.1.2"
     sort-package-json: "npm:^3.4.0"
@@ -5718,6 +5719,7 @@ __metadata:
   resolution: "@goldstack/utils-s3@workspace:workspaces/templates-lib/packages/utils-s3"
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.1004.0"
+    "@goldstack/utils-log": "npm:0.3.34"
     "@smithy/types": "npm:^4.13.0"
     "@swc/core": "npm:^1.15.8"
     "@swc/jest": "npm:^0.2.39"
@@ -5744,14 +5746,15 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     "@types/which": "npm:^3.0.4"
+    "@types/yauzl": "npm:^2.9.1"
     archiver: "npm:^5.3.1"
-    extract-zip: "npm:^2.0.1"
     fs-extra: "npm:^11.2.0"
     glob: "npm:11.1.0"
     jest: "npm:^30.2.0"
     rimraf: "npm:^6.1.2"
     typescript: "npm:^5.9.3"
     which: "npm:^2.0.2"
+    yauzl: "npm:^2.10.0"
   languageName: unknown
   linkType: soft
 
@@ -20878,9 +20881,9 @@ __metadata:
   linkType: hard
 
 "shell-quote@npm:^1.7.3":
-  version: 1.7.3
-  resolution: "shell-quote@npm:1.7.3"
-  checksum: 10/0ab00c37c84ea3ac13d5f0d45c6850701254fd1d6653d0604a48973ba3911ad0dd9f414672253a01f68fe48bb651a7138317ed4543b75ce4192c1d610e453d4c
+  version: 1.8.4
+  resolution: "shell-quote@npm:1.8.4"
+  checksum: 10/a3e3796385f2cd5cf0b78207a4439f0c7395c0833fc75b2473084b5d298c109c5c0fa687fcd1c04e4b4484866e5bb8eaae7efae443b80fff71ea7e29baf11f0c
   languageName: node
   linkType: hard
 

@@ -5,12 +5,19 @@ import { fromEnv } from '@aws-sdk/credential-providers';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { excludeInBundle } from '@goldstack/utils-esbuild';
+import { debug } from '@goldstack/utils-log';
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import type { Client, Command } from '@smithy/smithy-client';
 
 import type { MetadataBearer, RequestPresigningArguments } from '@smithy/types';
 import assert from 'assert';
-import { getLocalBucketName, getMockedS3, isMocked, resetMocksIfRequired } from './connectLocal';
+import {
+  getLocalBucketName,
+  getMockedS3,
+  isMocked,
+  resetMocksIfRequired,
+  resetMockS3,
+} from './connectLocal';
 import type { S3Deployment, S3Package } from './types/S3Package';
 
 export const connect = async (
@@ -31,9 +38,14 @@ export const connect = async (
   }
   if (deploymentName === 'local') {
     // only require this for local testing
-
+    debug(
+      `connect() using mock S3 for package: ${goldstackConfig.name}, deployment: ${deploymentName}`,
+    );
     return getMockedS3(goldstackConfig);
   } else {
+    debug(
+      `connect() using real S3 for package: ${goldstackConfig.name}, deployment: ${deploymentName}`,
+    );
     resetMocksIfRequired(deploymentName, goldstackConfig);
   }
   const deployment = packageConfig.getDeployment(deploymentName);
@@ -93,3 +105,5 @@ export const getBucketName = async (
   const deployment = packageConfig.getDeployment(deploymentName);
   return deployment.configuration.bucketName;
 };
+
+export { resetMockS3 };

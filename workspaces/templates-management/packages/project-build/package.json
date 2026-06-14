@@ -28,7 +28,6 @@
     "@goldstack/utils-package": "0.4.43",
     "@goldstack/utils-project": "0.4.42",
     "@goldstack/utils-sh": "0.5.39",
-    "extract-zip": "^2.0.1",
     "sort-package-json": "^3.4.0"
   },
   "devDependencies": {

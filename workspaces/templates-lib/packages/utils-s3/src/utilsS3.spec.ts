@@ -1,7 +1,12 @@
+import { createS3Client, resetMocks } from 'mock-aws-s3-v3';
+
 import { PutObjectCommand } from '@aws-sdk/client-s3';
 import { readFileSync } from 'fs';
-import { createS3Client } from 'mock-aws-s3-v3';
 import { download } from './utilsS3';
+
+afterAll(() => {
+  resetMocks();
+});
 
 test('Should download file', async () => {
   const client = createS3Client({

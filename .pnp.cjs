@@ -4827,6 +4827,8 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/template-lambda-http-cli", "workspace:workspaces/templates-lib/packages/template-lambda-http-cli"],\
           ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],\
           ["@goldstack/template-repository-bucket", "workspace:workspaces/templates-management/packages/template-repository-bucket"],\
+          ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],\
           ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
@@ -5291,7 +5293,6 @@ const RAW_RUNTIME_STATE =
           ["@swc/jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:0.2.39"],\
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
-          ["extract-zip", "npm:2.0.1"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
           ["rimraf", "npm:6.1.2"],\
           ["sort-package-json", "npm:3.4.0"],\
@@ -7142,6 +7143,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./workspaces/templates-lib/packages/utils-s3/",\
         "packageDependencies": [\
           ["@aws-sdk/client-s3", "npm:3.1004.0"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-s3", "workspace:workspaces/templates-lib/packages/utils-s3"],\
           ["@smithy/types", "npm:4.13.0"],\
           ["@swc/core", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:1.15.8"],\
@@ -7192,14 +7194,15 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
           ["@types/which", "npm:3.0.4"],\
+          ["@types/yauzl", "npm:2.9.1"],\
           ["archiver", "npm:5.3.1"],\
-          ["extract-zip", "npm:2.0.1"],\
           ["fs-extra", "npm:11.2.0"],\
           ["glob", "npm:11.1.0"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
           ["rimraf", "npm:6.1.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
-          ["which", "npm:2.0.2"]\
+          ["which", "npm:2.0.2"],\
+          ["yauzl", "npm:2.10.0"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -14128,7 +14131,7 @@ const RAW_RUNTIME_STATE =
           ["date-fns", "npm:2.29.1"],\
           ["lodash", "npm:4.17.23"],\
           ["rxjs", "npm:7.5.6"],\
-          ["shell-quote", "npm:1.7.3"],\
+          ["shell-quote", "npm:1.8.4"],\
           ["spawn-command", "npm:0.0.2"],\
           ["supports-color", "npm:8.1.1"],\
           ["tree-kill", "npm:1.2.2"],\
@@ -24441,10 +24444,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["shell-quote", [\
-      ["npm:1.7.3", {\
-        "packageLocation": "./.yarn/cache/shell-quote-npm-1.7.3-76a78a6d77-0ab00c37c8.zip/node_modules/shell-quote/",\
+      ["npm:1.8.4", {\
+        "packageLocation": "./.yarn/cache/shell-quote-npm-1.8.4-13eacaabff-a3e3796385.zip/node_modules/shell-quote/",\
         "packageDependencies": [\
-          ["shell-quote", "npm:1.7.3"]\
+          ["shell-quote", "npm:1.8.4"]\
         ],\
         "linkType": "HARD"\
       }]\

@@ -2,12 +2,38 @@ import type { S3TemplateRepository } from '@goldstack/template-repository';
 import { debug } from '@goldstack/utils-log';
 import { readPackageConfig } from '@goldstack/utils-package';
 import type { ProjectConfiguration } from '@goldstack/utils-project';
-import { read, rm, write } from '@goldstack/utils-sh';
+import { read, rm, unzip, write } from '@goldstack/utils-sh';
 import { AssertionError } from 'assert';
-import extract from 'extract-zip';
+import { statSync } from 'fs';
 import path, { resolve } from 'path';
 import sortPackageJson from 'sort-package-json';
 import { buildTemplate } from './buildTemplate';
+
+const EXTRACT_TIMEOUT_MS = 120000;
+
+interface ExtractResult {
+  success: boolean;
+  error?: Error;
+}
+
+export function extractWithTimeout(zipPath: string, dir: string): Promise<ExtractResult> {
+  const stats = statSync(zipPath);
+  debug(`Pre-extract file stats: exists=true, size=${stats.size} bytes, zipPath=${zipPath}`);
+
+  return Promise.race<ExtractResult>([
+    unzip({ file: zipPath, targetDirectory: dir }).then(() => ({ success: true })),
+    new Promise<ExtractResult>((resolve) => {
+      setTimeout(() => {
+        resolve({
+          success: false,
+          error: new Error(
+            `Extraction timed out after ${EXTRACT_TIMEOUT_MS / 1000}s for ${zipPath} (${stats.size} bytes)`,
+          ),
+        });
+      }, EXTRACT_TIMEOUT_MS);
+    }),
+  ]);
+}
 
 export interface TemplateReference {
   name: string;
@@ -88,7 +114,10 @@ export const buildProject = async (params: ProjectBuildParams): Promise<void> =>
     zipPath,
     destinationDirectory: resolve(params.projectDirectory),
   });
-  await extract(zipPath, { dir: path.resolve(params.projectDirectory) });
+  const extractResult = await extractWithTimeout(zipPath, path.resolve(params.projectDirectory));
+  if (!extractResult.success) {
+    throw extractResult.error || new Error('Extraction failed for unknown reason');
+  }
   debug(`Zip file extracted ${zipPath}.`, {
     zipPath,
     destinationDirectory: resolve(params.projectDirectory),

@@ -1,6 +1,10 @@
 import { GetObjectCommand, NoSuchKey, PutObjectCommand } from '@aws-sdk/client-s3';
 import assert from 'assert';
-import { createS3Client } from '../mockS3';
+import { createS3Client, resetMocks } from '../mockS3';
+
+afterAll(() => {
+  resetMocks();
+});
 
 test('Clients with different local directories cannot access each others objects', async () => {
   const client1 = createS3Client({
