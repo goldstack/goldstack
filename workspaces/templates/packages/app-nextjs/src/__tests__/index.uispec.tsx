@@ -10,6 +10,7 @@ jest.mock('swr', () => ({
     isValidating: false,
     mutate: jest.fn(),
   })),
+  mutate: jest.fn(),
 }));
 
 test('Check App component render', async () => {
