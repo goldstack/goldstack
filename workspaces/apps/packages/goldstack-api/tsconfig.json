@@ -1,7 +1,13 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src/**/*", "./scripts/**/*", "./goldstack.json"],
-  "exclude": ["./goldstackLocal/**/*"],
+  "include": [
+    "./src/**/*",
+    "./scripts/**/*",
+    "./goldstack.json"
+  ],
+  "exclude": [
+    "./goldstackLocal/**/*"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": "."
@@ -41,6 +47,9 @@
       "path": "../../../templates-management/packages/template-repository-bucket"
     },
     {
+      "path": "../../../utils/packages/utils-log"
+    },
+    {
       "path": "../../../templates-lib/packages/utils-package"
     },
     {
@@ -57,6 +66,9 @@
     },
     {
       "path": "../../../templates/packages/module-template-utils"
+    },
+    {
+      "path": "../../../templates-lib/packages/template-s3"
     },
     {
       "path": "../../../templates-management/packages/utils-template-test"

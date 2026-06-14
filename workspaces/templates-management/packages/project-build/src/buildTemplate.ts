@@ -1,11 +1,11 @@
 import { debug } from '@goldstack/utils-log';
 import type { PackageProjectConfiguration } from '@goldstack/utils-project';
 import { mkdir, rm } from '@goldstack/utils-sh';
-import extract from 'extract-zip';
 import path from 'path';
 import {
   assert,
   assertTemplateReferenceVersion,
+  extractWithTimeout,
   type ProjectBuildParams,
   setPackageName,
   type TemplateReference,
@@ -39,7 +39,10 @@ export const buildTemplate = async (
   );
 
   assert(zipPath);
-  await extract(zipPath, { dir: path.resolve(packageFolder) });
+  const extractResult = await extractWithTimeout(zipPath, path.resolve(packageFolder));
+  if (!extractResult.success) {
+    throw extractResult.error || new Error('Extraction failed for unknown reason');
+  }
 
   rm('-f', zipPath);
   debug(`Template archive extracted to ${path.resolve(packageFolder)}`, {
