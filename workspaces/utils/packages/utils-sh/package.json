@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-sh",
-  "version": "0.5.39",
+  "version": "0.5.40",
   "description": "Utilities for working with files and folders in a bash like manner",
   "keywords": [
     "goldstack",
@@ -35,7 +35,7 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-log": "0.3.34",
+    "@goldstack/utils-log": "0.3.35",
     "archiver": "^5.3.1",
     "fs-extra": "^11.2.0",
     "glob": "11.1.0",

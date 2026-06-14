@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package-create",
-  "version": "0.4.42",
+  "version": "0.4.43",
   "description": "Utilities for creating new Goldstack packages.",
   "keywords": [
     "goldstack",
@@ -33,9 +33,9 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-log": "0.3.34",
-    "@goldstack/utils-sh": "0.5.39",
-    "@goldstack/utils-template": "0.4.42"
+    "@goldstack/utils-log": "0.3.35",
+    "@goldstack/utils-sh": "0.5.40",
+    "@goldstack/utils-template": "0.4.43"
   },
   "devDependencies": {
     "@swc/core": "^1.15.8",

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-package",
-  "version": "0.4.43",
+  "version": "0.4.44",
   "description": "Utilities to work with Goldstack package configurations.",
   "keywords": [
     "goldstack",
@@ -36,9 +36,9 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.41",
-    "@goldstack/utils-config": "0.4.41",
-    "@goldstack/utils-sh": "0.5.39",
+    "@goldstack/infra": "0.4.42",
+    "@goldstack/utils-config": "0.4.42",
+    "@goldstack/utils-sh": "0.5.40",
     "yargs": "^17"
   },
   "devDependencies": {

@@ -21,15 +21,15 @@
     "test-watch": "jest --config=./jest.config.js --watch"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.41",
+    "@goldstack/infra": "0.4.42",
     "@goldstack/template-build": "0.1.0",
     "@goldstack/template-repository": "0.1.0",
-    "@goldstack/utils-config": "0.4.41",
-    "@goldstack/utils-log": "0.3.34",
-    "@goldstack/utils-package": "0.4.43",
-    "@goldstack/utils-sh": "0.5.39",
-    "@goldstack/utils-template": "0.4.42",
-    "@goldstack/utils-yarn": "0.4.42",
+    "@goldstack/utils-config": "0.4.42",
+    "@goldstack/utils-log": "0.3.35",
+    "@goldstack/utils-package": "0.4.44",
+    "@goldstack/utils-sh": "0.5.40",
+    "@goldstack/utils-template": "0.4.43",
+    "@goldstack/utils-yarn": "0.4.43",
     "axios": "^1.15.0",
     "extract-zip": "^2.0.1",
     "mock-aws-s3-v3": "6.1.13"

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-config",
-  "version": "0.4.41",
+  "version": "0.4.42",
   "description": "Utilities to work with JSON configuration files.",
   "keywords": [
     "goldstack",
@@ -35,8 +35,8 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-log": "0.3.34",
-    "@goldstack/utils-sh": "0.5.39",
+    "@goldstack/utils-log": "0.3.35",
+    "@goldstack/utils-sh": "0.5.40",
     "ajv": "^6.12.2",
     "handlebars": "4.7.9"
   },
