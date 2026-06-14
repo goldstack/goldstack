@@ -1,3 +1,5 @@
+import { resetMocks } from 'mock-aws-s3-v3';
+
 import { dummyUser } from '@goldstack/auth';
 import type { ProjectConfiguration } from '@goldstack/utils-project';
 import request from 'supertest';
@@ -9,7 +11,7 @@ process.env.CORS = 'http://localhost';
 jest.setTimeout(600000);
 
 afterAll(() => {
-  require('mock-aws-s3-v3').resetMocks();
+  resetMocks();
 });
 
 describe('Goldstack API', () => {

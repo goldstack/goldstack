@@ -1,3 +1,5 @@
+import { resetMocks } from 'mock-aws-s3-v3';
+
 import { dummyUser } from '@goldstack/auth';
 import type { ProjectConfiguration } from '@goldstack/utils-project';
 import { getMockReq, getMockRes } from '@jest-mock/express';
@@ -6,7 +8,7 @@ import { getProjectHandler, postProjectHandler, putProjectHandler } from './proj
 jest.setTimeout(600000);
 
 afterAll(() => {
-  require('mock-aws-s3-v3').resetMocks();
+  resetMocks();
 });
 
 describe('Project Endpoint', () => {
