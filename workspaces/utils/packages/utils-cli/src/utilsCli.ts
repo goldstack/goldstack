@@ -29,9 +29,15 @@ let defaultLogger: LoggerInstance | undefined;
 
 function getDefaultLogger(): LoggerInstance {
   if (!defaultLogger) {
-    // biome-ignore lint/security/noGlobalEval: Prevent webpack from bundling pino-pretty in client builds
-    const pinoPretty = eval('require')('pino-pretty');
-    const prettyModule = pinoPretty.default || pinoPretty;
+    // biome-ignore lint/suspicious/noExplicitAny: pino-pretty module is dynamically loaded
+    let prettyModule: any;
+    try {
+      // biome-ignore lint/security/noGlobalEval: Prevent webpack from bundling pino-pretty in client builds
+      const pinoPretty = eval('require')('pino-pretty');
+      prettyModule = pinoPretty.default || pinoPretty;
+    } catch (_e) {
+      // Fallback if pino-pretty is not available or require is not defined (e.g. browser)
+    }
 
     defaultLogger = pino(
       {
@@ -62,8 +68,8 @@ function getDefaultLogger(): LoggerInstance {
           },
         }),
       },
-      isLambda
-        ? undefined // Use default JSON transport for Lambda
+      isLambda || !prettyModule
+        ? undefined // Use default JSON transport for Lambda or if prettyModule is not available
         : prettyModule({
             colorize: true,
             hideObject: false,
