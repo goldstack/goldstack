@@ -1,4 +1,5 @@
 import { dummyUser } from '@goldstack/auth';
+import { resetMockS3 } from '@goldstack/template-s3';
 import type { ProjectConfiguration } from '@goldstack/utils-project';
 import request from 'supertest';
 import supertestSession from 'supertest-session';
@@ -7,6 +8,10 @@ import { app } from './server';
 process.env.CORS = 'http://localhost';
 
 jest.setTimeout(600000);
+
+afterAll(() => {
+  resetMockS3();
+});
 
 describe('Goldstack API', () => {
   it('Create a project', async () => {

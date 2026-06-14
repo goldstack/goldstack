@@ -63,17 +63,21 @@ const getPackageConfigAndDeployment = (
  * Gets a mocked S3 client for local development
  */
 export const getMockedS3 = (goldstackConfig: any, bucket?: string): S3Client => {
+  const bucketName = bucket || getLocalBucketName(goldstackConfig);
+  console.log(`[S3 DEBUG] Creating mock S3 client for bucket: ${bucketName}`);
+
   const createS3Client: CreateS3ClientSignature = require(
     excludeInBundle('mock-aws-s3-v3'),
   ).createS3Client;
 
   const client = createS3Client({
     localDirectory: 'goldstackLocal/s3',
-    bucket: bucket || getLocalBucketName(goldstackConfig),
+    bucket: bucketName,
   });
 
   (client as any)._goldstackIsMocked = true;
   s3MockUsed = true;
+  console.log(`[S3 DEBUG] Mock S3 client created for bucket: ${bucketName}`);
   return client;
 };
 
@@ -125,9 +129,11 @@ export const isMocked = (client: S3Client): boolean => {
  * state leakage between test suites and to allow Jest to exit cleanly.
  */
 export function resetMockS3(): void {
+  console.log('[S3 DEBUG] resetMockS3 called - resetting all mock S3 state');
   const MockS3 = require(excludeInBundle('mock-aws-s3-v3'));
   MockS3.resetMocks();
   s3MockUsed = false;
+  console.log('[S3 DEBUG] resetMockS3 complete');
 }
 
 export function resetMocksIfRequired(deploymentName: string | undefined, goldstackConfig: any) {

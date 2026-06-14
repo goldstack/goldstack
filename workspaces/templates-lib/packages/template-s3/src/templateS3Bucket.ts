@@ -37,9 +37,14 @@ export const connect = async (
   }
   if (deploymentName === 'local') {
     // only require this for local testing
-
+    console.log(
+      `[S3 DEBUG] connect() using mock S3 for package: ${goldstackConfig.name}, deployment: ${deploymentName}`,
+    );
     return getMockedS3(goldstackConfig);
   } else {
+    console.log(
+      `[S3 DEBUG] connect() using real S3 for package: ${goldstackConfig.name}, deployment: ${deploymentName}`,
+    );
     resetMocksIfRequired(deploymentName, goldstackConfig);
   }
   const deployment = packageConfig.getDeployment(deploymentName);
