@@ -28,8 +28,8 @@
     "@goldstack/utils-package": "0.4.43",
     "@goldstack/utils-project": "0.4.42",
     "@goldstack/utils-sh": "0.5.39",
-    "extract-zip": "^2.0.1",
-    "sort-package-json": "^3.4.0"
+    "sort-package-json": "^3.4.0",
+    "yauzl": "^2.10.0"
   },
   "devDependencies": {
     "@goldstack/utils-template-test": "0.1.0",
@@ -37,6 +37,7 @@
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
+    "@types/yauzl": "^2.9.1",
     "jest": "^30.2.0",
     "rimraf": "^6.1.2",
     "typescript": "^5.9.3"

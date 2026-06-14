@@ -4,25 +4,102 @@ import { readPackageConfig } from '@goldstack/utils-package';
 import type { ProjectConfiguration } from '@goldstack/utils-project';
 import { read, rm, write } from '@goldstack/utils-sh';
 import { AssertionError } from 'assert';
-import extract from 'extract-zip';
-import fs from 'fs';
+import { createWriteStream, promises as fsPromises, statSync } from 'fs';
 import path, { resolve } from 'path';
 import sortPackageJson from 'sort-package-json';
+import yauzl from 'yauzl';
 import { buildTemplate } from './buildTemplate';
 
-const EXTRACT_TIMEOUT_MS = 50000;
+const EXTRACT_TIMEOUT_MS = 120000;
 
 interface ExtractResult {
   success: boolean;
   error?: Error;
 }
 
+/**
+ * Extracts a zip archive from a file path into a target directory using yauzl.fromBuffer
+ * to avoid fd-slicer ref-count leak issues with yauzl.open().
+ */
+function extractZipFromPath(zipPath: string, dir: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    void (async () => {
+      let canceled = false;
+      try {
+        const buffer = await fsPromises.readFile(zipPath);
+        const zipfile = await new Promise<yauzl.ZipFile>((res, rej) => {
+          yauzl.fromBuffer(buffer, { lazyEntries: true }, (err, zf) => {
+            if (err) return rej(err);
+            res(zf!);
+          });
+        });
+
+        zipfile.on('error', (e: Error) => {
+          canceled = true;
+          reject(e);
+        });
+
+        zipfile.on('close', () => {
+          if (!canceled) resolve();
+        });
+
+        zipfile.on('entry', (entry: yauzl.Entry) => {
+          if (canceled) return;
+
+          void (async () => {
+            try {
+              if (entry.fileName.startsWith('__MACOSX/')) {
+                zipfile.readEntry();
+                return;
+              }
+
+              const dest = path.join(dir, entry.fileName);
+
+              if (/\/$/.test(entry.fileName)) {
+                await fsPromises.mkdir(dest, { recursive: true });
+                zipfile.readEntry();
+                return;
+              }
+
+              await fsPromises.mkdir(path.dirname(dest), { recursive: true });
+
+              const readStream = await new Promise<NodeJS.ReadableStream>((res, rej) => {
+                zipfile.openReadStream(entry, (err, rs) => {
+                  if (err) return rej(err);
+                  // biome-ignore lint/style/noNonNullAssertion: rs is never undefined when err is null
+                  res(rs!);
+                });
+              });
+
+              const writeStream = createWriteStream(dest);
+              await new Promise<void>((res, rej) => {
+                readStream.on('error', rej);
+                writeStream.on('error', rej);
+                writeStream.on('finish', res);
+                readStream.pipe(writeStream);
+              });
+              zipfile.readEntry();
+            } catch (e) {
+              canceled = true;
+              reject(e);
+            }
+          })();
+        });
+
+        zipfile.readEntry();
+      } catch (e) {
+        reject(e);
+      }
+    })();
+  });
+}
+
 export function extractWithTimeout(zipPath: string, dir: string): Promise<ExtractResult> {
-  const stats = fs.statSync(zipPath);
+  const stats = statSync(zipPath);
   debug(`Pre-extract file stats: exists=true, size=${stats.size} bytes, zipPath=${zipPath}`);
 
   return Promise.race<ExtractResult>([
-    extract(zipPath, { dir }).then(() => ({ success: true })),
+    extractZipFromPath(zipPath, dir).then(() => ({ success: true })),
     new Promise<ExtractResult>((resolve) => {
       setTimeout(() => {
         resolve({

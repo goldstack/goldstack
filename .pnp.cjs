@@ -4827,7 +4827,7 @@ const RAW_RUNTIME_STATE =
           ["@goldstack/template-lambda-http-cli", "workspace:workspaces/templates-lib/packages/template-lambda-http-cli"],\
           ["@goldstack/template-repository", "workspace:workspaces/templates-management/packages/template-repository"],\
           ["@goldstack/template-repository-bucket", "workspace:workspaces/templates-management/packages/template-repository-bucket"],\
-          ["@goldstack/template-s3", "workspace:workspaces/templates-lib/packages/template-s3"],\
+          ["@goldstack/template-s3", "npm:0.5.81"],\
           ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
           ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
           ["@goldstack/utils-project", "workspace:workspaces/templates-lib/packages/utils-project"],\
@@ -5293,11 +5293,12 @@ const RAW_RUNTIME_STATE =
           ["@swc/jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:0.2.39"],\
           ["@types/jest", "npm:30.0.0"],\
           ["@types/node", "npm:25.0.3"],\
-          ["extract-zip", "npm:2.0.1"],\
+          ["@types/yauzl", "npm:2.9.1"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.2.0"],\
           ["rimraf", "npm:6.1.2"],\
           ["sort-package-json", "npm:3.4.0"],\
-          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
+          ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
+          ["yauzl", "npm:2.10.0"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -6349,6 +6350,29 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@goldstack/template-s3", [\
+      ["npm:0.5.81", {\
+        "packageLocation": "./.yarn/cache/@goldstack-template-s3-npm-0.5.81-16d97bfaf4-85a6203e91.zip/node_modules/@goldstack/template-s3/",\
+        "packageDependencies": [\
+          ["@aws-sdk/client-s3", "npm:3.1004.0"],\
+          ["@aws-sdk/credential-providers", "npm:3.1004.0"],\
+          ["@aws-sdk/s3-request-presigner", "npm:3.1004.0"],\
+          ["@aws-sdk/types", "npm:3.973.5"],\
+          ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+          ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+          ["@goldstack/template-s3", "npm:0.5.81"],\
+          ["@goldstack/utils-esbuild", "workspace:workspaces/utils/packages/utils-esbuild"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
+          ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+          ["@goldstack/utils-package-config-embedded", "workspace:workspaces/templates-lib/packages/utils-package-config-embedded"],\
+          ["@goldstack/utils-template", "workspace:workspaces/templates-lib/packages/utils-template"],\
+          ["@goldstack/utils-terraform", "npm:0.4.87"],\
+          ["@smithy/smithy-client", "npm:4.12.3"],\
+          ["@smithy/types", "npm:4.13.0"],\
+          ["mock-aws-s3-v3", "workspace:workspaces/utils/packages/mock-aws-s3-v3"],\
+          ["source-map-support", "npm:0.5.21"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["workspace:workspaces/templates-lib/packages/template-s3", {\
         "packageLocation": "./workspaces/templates-lib/packages/template-s3/",\
         "packageDependencies": [\
@@ -7257,6 +7281,23 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@goldstack/utils-terraform", [\
+      ["npm:0.4.87", {\
+        "packageLocation": "./.yarn/cache/@goldstack-utils-terraform-npm-0.4.87-2f6877049d-0f64573218.zip/node_modules/@goldstack/utils-terraform/",\
+        "packageDependencies": [\
+          ["@goldstack/infra", "workspace:workspaces/templates-lib/packages/infra"],\
+          ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
+          ["@goldstack/utils-config", "workspace:workspaces/templates-lib/packages/utils-config"],\
+          ["@goldstack/utils-docker", "workspace:workspaces/utils/packages/utils-docker"],\
+          ["@goldstack/utils-log", "workspace:workspaces/utils/packages/utils-log"],\
+          ["@goldstack/utils-package", "workspace:workspaces/templates-lib/packages/utils-package"],\
+          ["@goldstack/utils-sh", "workspace:workspaces/utils/packages/utils-sh"],\
+          ["@goldstack/utils-terraform", "npm:0.4.87"],\
+          ["dotenv", "npm:17.3.1"],\
+          ["json-stable-stringify", "npm:1.0.1"],\
+          ["yargs", "npm:17.7.2"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["workspace:workspaces/templates-lib/packages/utils-terraform", {\
         "packageLocation": "./workspaces/templates-lib/packages/utils-terraform/",\
         "packageDependencies": [\
