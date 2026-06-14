@@ -39,7 +39,7 @@ function extractZipFromPath(zipPath: string, dir: string): Promise<void> {
           reject(e);
         });
 
-        zipfile.on('close', () => {
+        zipfile.on('end', () => {
           if (!canceled) resolve();
         });
 
