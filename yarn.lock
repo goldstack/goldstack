@@ -3059,7 +3059,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     concurrently: "npm:^7.3.0"
     jest: "npm:^30.2.0"
-    nodemon: "npm:^3.0.0"
+    nodemon: "npm:^3.1.14"
     reload: "npm:^3.4.3"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
@@ -3080,7 +3080,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     concurrently: "npm:^7.3.0"
     jest: "npm:^30.2.0"
-    nodemon: "npm:^3.0.0"
+    nodemon: "npm:^3.1.14"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.9.3"
@@ -3791,7 +3791,7 @@ __metadata:
     "@swc/core": "npm:^1.15.8"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    nodemon: "npm:^3.0.0"
+    nodemon: "npm:^3.1.14"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
   languageName: unknown
@@ -9895,7 +9895,7 @@ __metadata:
     "@goldstack/utils-typescript-references": "npm:0.3.31"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    nodemon: "npm:^3.0.0"
+    nodemon: "npm:^3.1.14"
     react: "npm:^19"
     typescript: "npm:^5.9.3"
   languageName: unknown
@@ -12254,7 +12254,7 @@ __metadata:
     "@goldstack/utils-typescript-references": "npm:0.3.31"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    nodemon: "npm:^3.0.0"
+    nodemon: "npm:^3.1.14"
     react: "npm:^19"
     typescript: "npm:^5.9.3"
   languageName: unknown
@@ -13170,7 +13170,7 @@ __metadata:
     "@goldstack/utils-typescript-references": "npm:0.3.31"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    nodemon: "npm:^3.0.0"
+    nodemon: "npm:^3.1.14"
     react: "npm:^19"
     typescript: "npm:^5.9.3"
   languageName: unknown
@@ -17894,7 +17894,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemon@npm:^3.0.0, nodemon@npm:~3.1.4":
+"nodemon@npm:^3.1.14, nodemon@npm:~3.1.4":
   version: 3.1.14
   resolution: "nodemon@npm:3.1.14"
   dependencies:
@@ -20106,7 +20106,7 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     concurrently: "npm:^7.3.0"
-    nodemon: "npm:^3.0.0"
+    nodemon: "npm:^3.1.14"
     syncpack: "npm:^13.0.0"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.9.3"
@@ -21758,7 +21758,7 @@ __metadata:
     "@goldstack/utils-typescript-references": "npm:0.3.31"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    nodemon: "npm:^3.0.0"
+    nodemon: "npm:^3.1.14"
     react: "npm:^19"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.9.3"
@@ -21773,7 +21773,7 @@ __metadata:
     "@goldstack/utils-typescript-references": "npm:0.3.31"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    nodemon: "npm:^3.0.0"
+    nodemon: "npm:^3.1.14"
     react: "npm:^19"
     typescript: "npm:^5.9.3"
   languageName: unknown
@@ -21788,7 +21788,7 @@ __metadata:
     "@goldstack/utils-typescript-references": "npm:0.3.31"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    nodemon: "npm:^3.0.0"
+    nodemon: "npm:^3.1.14"
     react: "npm:^19"
     react-dom: "npm:^19"
     typescript: "npm:^5.9.3"
@@ -22817,7 +22817,7 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     "@types/rimraf": "npm:^4.0.5"
-    nodemon: "npm:^3.0.0"
+    nodemon: "npm:^3.1.14"
     react: "npm:^19"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.9.3"
