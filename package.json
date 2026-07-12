@@ -41,7 +41,7 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
     "concurrently": "^7.3.0",
-    "nodemon": "^2.0.20",
+    "nodemon": "^3.0.0",
     "syncpack": "^13.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
