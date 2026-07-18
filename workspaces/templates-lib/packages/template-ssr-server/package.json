@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-ssr-server",
-  "version": "0.3.112",
+  "version": "0.3.113",
   "description": "Building blocks for implementing server-side rendered pages.",
   "keywords": [
     "goldstack",
@@ -39,8 +39,8 @@
   "dependencies": {
     "@goldstack/infra": "0.4.42",
     "@goldstack/infra-aws": "0.4.68",
-    "@goldstack/template-ssr-server-compile-bundle": "0.3.109",
-    "@goldstack/utils-aws-lambda": "0.3.81",
+    "@goldstack/template-ssr-server-compile-bundle": "0.3.110",
+    "@goldstack/utils-aws-lambda": "0.3.82",
     "@goldstack/utils-esbuild": "0.5.26",
     "@goldstack/utils-package": "0.4.44",
     "@goldstack/utils-package-config-embedded": "0.5.45",
