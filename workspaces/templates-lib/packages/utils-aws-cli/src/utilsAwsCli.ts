@@ -51,6 +51,7 @@ export const execWithDocker = async (params: AWSExecParams): Promise<string> => 
     `-e AWS_ACCESS_KEY_ID=${credentials.accessKeyId} ` +
     `-e AWS_SECRET_ACCESS_KEY=${credentials.secretAccessKey} ` +
     `-e AWS_SESSION_TOKEN=${credentials.sessionToken || ''} ` +
+    `-e AWS_REGION=${params.region} ` +
     `-e AWS_DEFAULT_REGION=${params.region} `;
   const mountDir = params.workDir || pwd();
 
@@ -74,6 +75,7 @@ export const execWithCli = async (params: AWSExecParams): Promise<string> => {
   process.env.AWS_ACCESS_KEY_ID = credentials.accessKeyId;
   process.env.AWS_SECRET_ACCESS_KEY = credentials.secretAccessKey;
   process.env.AWS_SESSION_TOKEN = credentials.sessionToken || '';
+  process.env.AWS_REGION = params.region;
   process.env.AWS_DEFAULT_REGION = params.region;
 
   assertDirectoryExists(
