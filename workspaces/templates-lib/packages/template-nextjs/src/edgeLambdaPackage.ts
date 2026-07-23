@@ -15,7 +15,7 @@ export const packageEdgeLambda = async (params: PackageEdgeLambdaParams): Promis
     entryPoints: [params.sourceFile],
     format: 'cjs',
     platform: 'node',
-    target: 'node18',
+    target: 'node22',
     bundle: true,
   });
   if (res.errors && res.errors.length > 0) {

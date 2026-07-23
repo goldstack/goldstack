@@ -11,7 +11,7 @@ build({
   format: 'cjs',
   platform: 'node',
   treeShaking: true,
-  target: 'node18.0',
+  target: 'node22.0',
   sourcemap: true,
   metafile: true,
   outfile: 'distLambda/lambda.js',
