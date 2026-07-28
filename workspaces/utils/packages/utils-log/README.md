@@ -18,5 +18,4 @@ npm install @goldstack/utils-log
 import { log } from '@goldstack/utils-log';
 
 log('Hello World');
-
 ```
