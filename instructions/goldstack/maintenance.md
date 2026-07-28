@@ -44,10 +44,32 @@ git push -u origin $BRANCH_NAME
 ```
 Fix any issues before committing.
 
+### No-Op Check
+Before any commit, after the task-specific commands have run, check whether the task actually produced any changes. If there is no diff against `origin/master` and nothing uncommitted in the working tree, the task is a no-op and must NOT produce a PR or commit:
+
+```
+if git diff --quiet origin/master...HEAD && [ -z "$(git status --porcelain)" ]; then
+  echo "No changes detected. Treating as no-op."
+
+  PR_NUMBER=$(gh pr list --head "$BRANCH_NAME" --json number --jq '.[0].number // empty')
+  if [ -n "$PR_NUMBER" ]; then
+    gh pr comment "$PR_NUMBER" --body "Re-running this maintenance task detected no changes since the last run. Closing PR and removing branch."
+    gh pr close "$PR_NUMBER" --delete-branch
+    echo "Closed PR #$PR_NUMBER and deleted branch $BRANCH_NAME"
+  fi
+
+  git checkout master
+  git branch -D "$BRANCH_NAME" 2>/dev/null || true
+  exit 0
+fi
+```
+
+Re-evaluate this check before every commit, so an empty commit is never produced.
+
 ## 3. PR Management
-- If no PR exists yet, create one:
+- If no PR exists yet, create one in **draft** mode so it stays out of the review queue until CI is green:
   ```
-  gh pr create --title "[Maintenance] $TASK_TITLE" --body "Automated maintenance task: $TASK_TITLE"
+  gh pr create --draft --title "[Maintenance] $TASK_TITLE" --body "Automated maintenance task: $TASK_TITLE"
   ```
 - Push commits to the branch
 - Comment progress updates:
@@ -64,6 +86,11 @@ After pushing changes to the PR branch:
   ```
 - If any checks fail, fix the issues, commit, and push again
 - Repeat until all checks pass or the time limit is reached
+- **Once all checks pass**, mark the PR ready for review:
+  ```
+  gh pr ready $PR_NUMBER
+  gh pr comment $PR_NUMBER --body "All CI checks passed. Marking PR ready for review."
+  ```
 
 ## 5. Time Limit
 - Run `date` after each commit
