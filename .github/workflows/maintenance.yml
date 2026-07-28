@@ -6,49 +6,76 @@ on:
   workflow_dispatch:
     inputs:
       task:
-        description: 'Which maintenance task to run'
-        type: choice
-        default: 'all'
-        options:
-          - all
-          - aws-sdk
-          - jest
-          - swc
-          - typescript-ts-node
-          - yarn-binary
-          - no-critical-vulnerabilities
-          - easy-non-critical-vulnerabilities
+        description: 'Task filename stem to run (e.g. "aws_sdk_should_be_latest_version"). Leave empty or use "all" to run every task. When a custom file with the same name exists, it overrides the goldstack one.'
+        required: false
+        type: string
+        default: ''
 
 jobs:
-  maintenance:
+  discover-tasks:
+    runs-on: ubuntu-latest
+    outputs:
+      goldstack-matrix: ${{ steps.discover.outputs.goldstack-matrix }}
+      custom-matrix: ${{ steps.discover.outputs.custom-matrix }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Override goldstack tasks with custom equivalents
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for custom_file in instructions/custom/maintenance/*.md; do
+            base=$(basename "$custom_file")
+            goldstack_file="instructions/goldstack/maintenance/$base"
+            if [[ -f "$goldstack_file" ]]; then
+              echo "Custom overrides goldstack: $base"
+              rm "$goldstack_file"
+            fi
+          done
+
+      - name: Build task matrices
+        id: discover
+        env:
+          TASK_FILTER: ${{ github.event.inputs.task }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          build_matrix() {
+            local dir="$1" filter="$2"
+            if [[ ! -d "$dir" ]]; then
+              echo '{"include":[]}'
+              return
+            fi
+            local entries="[]"
+            for f in "$dir"/*.md; do
+              local name="${f##*/}"
+              name="${name%.md}"
+              if [[ -n "$filter" && "$filter" != "all" && "$name" != "$filter" ]]; then
+                continue
+              fi
+              entries=$(jq --arg n "$name" '. + [{name: $n}]' <<<"$entries")
+            done
+            jq -c -n --argjson e "$entries" '{include: $e}'
+          }
+          goldstack_matrix=$(build_matrix instructions/goldstack/maintenance "$TASK_FILTER")
+          custom_matrix=$(build_matrix instructions/custom/maintenance "$TASK_FILTER")
+          {
+            echo "goldstack-matrix<<EOF"; echo "$goldstack_matrix"; echo "EOF"
+            echo "custom-matrix<<EOF";   echo "$custom_matrix";   echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+          echo "Goldstack matrix: $goldstack_matrix"
+          echo "Custom matrix: $custom_matrix"
+
+  maintenance-goldstack:
+    needs: discover-tasks
     env:
       GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+      TASK_CONTEXT: goldstack
     strategy:
       max-parallel: 1
       fail-fast: false
-      matrix:
-        include:
-          - task: aws-sdk
-            title: "AWS SDK Should Be Latest Version"
-            instructions: "instructions/goldstack/maintenance/aws_sdk_should_be_latest_version.md"
-          - task: jest
-            title: "Jest Should Be Latest Version"
-            instructions: "instructions/goldstack/maintenance/jest_should_be_latest_version.md"
-          - task: swc
-            title: "@swc/* Should Be Latest Version"
-            instructions: "instructions/goldstack/maintenance/swc_should_be_latest_version.md"
-          - task: typescript-ts-node
-            title: "TypeScript and ts-node Should Be Latest Version"
-            instructions: "instructions/goldstack/maintenance/typescript_and_ts_node_should_be_latest_version.md"
-          - task: yarn-binary
-            title: "Yarn Binary, SDKs, and Plugins Should Be Latest Version"
-            instructions: "instructions/goldstack/maintenance/yarn_binary_should_be_latest_version.md"
-          - task: no-critical-vulnerabilities
-            title: "No Critical Security Vulnerabilities"
-            instructions: "instructions/goldstack/maintenance/no_critical_security_vulnerabilities.md"
-          - task: easy-non-critical-vulnerabilities
-            title: "Resolve Easy Non-Critical Security Vulnerabilities"
-            instructions: "instructions/goldstack/maintenance/easy_non_critical_security_vulnerabilities.md"
+      matrix: ${{ fromJson(needs.discover-tasks.outputs.goldstack-matrix) }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -60,39 +87,72 @@ jobs:
       statuses: read
     steps:
       - name: Checkout repository
-        if: |
-          github.event_name == 'schedule' ||
-          github.event.inputs.task == 'all' ||
-          github.event.inputs.task == matrix.task
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: false
 
       - name: Setup OpenCode auth
-        if: |
-          github.event_name == 'schedule' ||
-          github.event.inputs.task == 'all' ||
-          github.event.inputs.task == matrix.task
         run: |
           mkdir -p ~/.local/share/opencode
           echo '{"opencode-go":{"type":"api","key":"${{ secrets.OPENCODE_GO_API_KEY }}"}}' > ~/.local/share/opencode/auth.json
 
       - name: Run OpenCode
-        if: |
-          github.event_name == 'schedule' ||
-          github.event.inputs.task == 'all' ||
-          github.event.inputs.task == matrix.task
         uses: anomalyco/opencode/github@latest
         env:
           OPENCODE_GO_API_KEY: ${{ secrets.OPENCODE_GO_API_KEY }}
         with:
           model: opencode-go/deepseek-v4-pro
           prompt: |
-            You are performing the maintenance task: ${{ matrix.title }}
+            You are performing the maintenance task in ${{ env.TASK_CONTEXT }}: ${{ matrix.name }}
 
-            1. Read ${{ matrix.instructions }} for specific task instructions.
+            1. Read instructions/${{ env.TASK_CONTEXT }}/maintenance/${{ matrix.name }}.md for specific task instructions.
             2. Follow instructions/patching.md for how to update dependencies and validate.
             3. Follow instructions/maintenance.md for workflow (commits, PR management, time limits).
 
-            Branch name: maintenance/${{ matrix.task }}
+            Branch name: maintenance/${{ env.TASK_CONTEXT }}/${{ matrix.name }}
+
+  maintenance-custom:
+    needs: discover-tasks
+    env:
+      GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+      TASK_CONTEXT: custom
+    strategy:
+      max-parallel: 1
+      fail-fast: false
+      matrix: ${{ fromJson(needs.discover-tasks.outputs.custom-matrix) }}
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+      issues: write
+      actions: read
+      checks: read
+      statuses: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup OpenCode auth
+        run: |
+          mkdir -p ~/.local/share/opencode
+          echo '{"opencode-go":{"type":"api","key":"${{ secrets.OPENCODE_GO_API_KEY }}"}}' > ~/.local/share/opencode/auth.json
+
+      - name: Run OpenCode
+        uses: anomalyco/opencode/github@latest
+        env:
+          OPENCODE_GO_API_KEY: ${{ secrets.OPENCODE_GO_API_KEY }}
+        with:
+          model: opencode-go/deepseek-v4-pro
+          prompt: |
+            You are performing the maintenance task in ${{ env.TASK_CONTEXT }}: ${{ matrix.name }}
+
+            1. Read instructions/${{ env.TASK_CONTEXT }}/maintenance/${{ matrix.name }}.md for specific task instructions.
+            2. Follow instructions/patching.md for how to update dependencies and validate.
+            3. Follow instructions/maintenance.md for workflow (commits, PR management, time limits).
+
+            Branch name: maintenance/${{ env.TASK_CONTEXT }}/${{ matrix.name }}
