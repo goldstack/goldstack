@@ -33,14 +33,14 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "react": "^19"
+    "react": "^19.2.8"
   },
   "devDependencies": {
     "@swc/core": "^1.15.46",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
-    "@types/react": "^19",
+    "@types/react": "^19.2.17",
     "jest": "^30.4.2",
     "rimraf": "^6.1.2",
     "typescript": "^5.9.3"

@@ -48,8 +48,8 @@
     "@goldstack/utils-template": "0.4.45",
     "@goldstack/utils-terraform": "0.4.91",
     "@types/aws-lambda": "^8.10.159",
-    "react": "^19",
-    "react-dom": "^19",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
@@ -58,8 +58,8 @@
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
-    "@types/react": "^19",
-    "@types/react-dom": "^19.0.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
     "@types/yargs": "^17.0.33",
     "jest": "^30.4.2",
     "rimraf": "^6.1.2",
