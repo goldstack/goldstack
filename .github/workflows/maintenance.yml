@@ -21,7 +21,7 @@ on:
 jobs:
   maintenance:
     env:
-      GH_TOKEN: ${{ github.token }}
+      GH_TOKEN: ${{ secrets.PAT_TOKEN }}
     strategy:
       max-parallel: 1
       fail-fast: false
