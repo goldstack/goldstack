@@ -44,7 +44,7 @@
     "aws-sdk": "2.1693.0",
     "dynamodb-admin": "^4.6.1",
     "ejs": "^3.1.8",
-    "jest": "^30.2.0",
+    "jest": "^30.4.2",
     "rimraf": "^6.1.2",
     "source-map-support": "^0.5.21",
     "ts-node": "^10.9.2",

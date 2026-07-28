@@ -39,7 +39,7 @@
     "@types/node": "^25.0.3",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "esbuild": "^0.25.6",
-    "jest": "^30.2.0",
+    "jest": "^30.4.2",
     "rimraf": "^6.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
