@@ -38,7 +38,7 @@
     "@types/gulp-replace": "^1.1.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
-    "concurrently": "^7.3.0",
+    "concurrently": "^10.0.4",
     "jest": "^30.4.2",
     "light-server": "^2.9.1",
     "reload": "^3.4.3",

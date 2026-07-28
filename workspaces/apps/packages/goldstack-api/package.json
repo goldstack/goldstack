@@ -50,7 +50,7 @@
     "sanitize-html": "^2.4.0",
     "sort-package-json": "^3.4.0",
     "source-map-support": "^0.5.21",
-    "stripe": "^8.114.0",
+    "stripe": "^22.3.2",
     "uuid": "11"
   },
   "devDependencies": {
@@ -76,7 +76,7 @@
     "@types/uuid": "^10.0.0",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "esbuild": "^0.25.6",
-    "express": "4.20.0",
+    "express": "^5.2.1",
     "jest": "^30.4.2",
     "rimraf": "^6.1.2",
     "supertest": "^7.1.4",

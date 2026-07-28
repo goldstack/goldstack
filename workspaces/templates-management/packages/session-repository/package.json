@@ -27,7 +27,7 @@
     "@goldstack/utils-s3": "0.4.39",
     "@goldstack/utils-sh": "0.5.42",
     "fs-extra": "^11.2.0",
-    "stripe": "^8.114.0",
+    "stripe": "^22.3.2",
     "uuid": "11"
   },
   "devDependencies": {

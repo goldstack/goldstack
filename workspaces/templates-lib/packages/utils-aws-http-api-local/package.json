@@ -48,7 +48,7 @@
     "@types/aws-lambda": "^8.10.159",
     "cookie": "^1.0.2",
     "cors": "^2.8.5",
-    "express": "4.20.0"
+    "express": "^5.2.1"
   },
   "devDependencies": {
     "@swc/core": "^1.15.46",

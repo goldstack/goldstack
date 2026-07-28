@@ -5,7 +5,7 @@ const initStripe = (): Stripe => {
   assert(process.env.STRIPE_API_KEY, 'Environment variable STRIPE_API_KEY not defined');
 
   const stripe = new Stripe(process.env.STRIPE_API_KEY, {
-    apiVersion: '2020-08-27',
+    apiVersion: '2026-06-24.dahlia',
   });
 
   return stripe;

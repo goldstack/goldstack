@@ -51,7 +51,7 @@
     "@types/testing-library__jest-dom": "^6.0.0",
     "@types/testing-library__react": "^10.2.0",
     "autoprefixer": "^10.4.20",
-    "concurrently": "^7.3.0",
+    "concurrently": "^10.0.4",
     "cross-env": "^10.1.0",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
