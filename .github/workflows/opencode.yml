@@ -30,6 +30,29 @@ jobs:
           mkdir -p ~/.local/share/opencode
           echo '{"opencode-go":{"type":"api","key":"${{ secrets.OPENCODE_GO_API_KEY }}"}}' > ~/.local/share/opencode/auth.json
 
+      - name: Debug auth
+        env:
+          OPENCODE_GO_API_KEY: ${{ secrets.OPENCODE_GO_API_KEY }}
+        run: |
+          if [ -n "$OPENCODE_GO_API_KEY" ]; then
+            echo "OPENCODE_GO_API_KEY env var is SET, length: ${#OPENCODE_GO_API_KEY} chars"
+          else
+            echo "OPENCODE_GO_API_KEY env var is EMPTY/UNSET"
+          fi
+          echo ""
+          AUTH_FILE="$HOME/.local/share/opencode/auth.json"
+          if [ -f "$AUTH_FILE" ]; then
+            echo "auth.json EXISTS at $AUTH_FILE"
+            echo "auth.json size: $(wc -c < "$AUTH_FILE") bytes"
+            echo "auth.json raw content (key redacted to first 5 chars):"
+            cat "$AUTH_FILE" | sed -E 's/"key":"([^"]{5})[^"]*"/"key":"\1****"/g'
+            echo ""
+            echo "Validating JSON parse:"
+            python3 -c "import json; json.load(open('$AUTH_FILE')); print('  JSON is valid')"
+          else
+            echo "auth.json NOT FOUND at $AUTH_FILE"
+          fi
+
       - name: Run OpenCode
         uses: anomalyco/opencode/github@latest
         env:
