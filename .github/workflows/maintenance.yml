@@ -1,0 +1,63 @@
+name: maintenance
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+
+jobs:
+  maintenance:
+    strategy:
+      matrix:
+        include:
+          - task: aws-sdk
+            title: "AWS SDK Should Be Latest Version"
+            instructions: "instructions/maintenance/aws_sdk_should_be_latest_version.md"
+          - task: jest
+            title: "Jest Should Be Latest Version"
+            instructions: "instructions/maintenance/jest_should_be_latest_version.md"
+          - task: swc
+            title: "@swc/* Should Be Latest Version"
+            instructions: "instructions/maintenance/swc_should_be_latest_version.md"
+          - task: typescript-ts-node
+            title: "TypeScript and ts-node Should Be Latest Version"
+            instructions: "instructions/maintenance/typescript_and_ts_node_should_be_latest_version.md"
+          - task: yarn-binary
+            title: "Yarn Binary Should Be Latest Version"
+            instructions: "instructions/maintenance/yarn_binary_should_be_latest_version.md"
+          - task: no-critical-vulnerabilities
+            title: "No Critical Security Vulnerabilities"
+            instructions: "instructions/maintenance/no_critical_security_vulnerabilities.md"
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+      issues: write
+      actions: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup OpenCode auth
+        run: |
+          mkdir -p ~/.local/share/opencode
+          echo '{"opencode-go":{"type":"api","key":"${{ secrets.OPENCODE_GO_API_KEY }}"}}' > ~/.local/share/opencode/auth.json
+
+      - name: Run OpenCode
+        uses: anomalyco/opencode/github@latest
+        env:
+          OPENCODE_GO_API_KEY: ${{ secrets.OPENCODE_GO_API_KEY }}
+        with:
+          model: opencode-go/deepseek-v4-pro
+          prompt: |
+            You are performing the maintenance task: ${{ matrix.title }}
+
+            1. Read ${{ matrix.instructions }} for specific task instructions.
+            2. Follow instructions/patching.md for how to update dependencies and validate.
+            3. Follow instructions/maintenance.md for workflow (commits, PR management, time limits).
+
+            Branch name: maintenance/${{ matrix.task }}
