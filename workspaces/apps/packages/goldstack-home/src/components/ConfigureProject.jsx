@@ -1,0 +1,128 @@
+import { getEndpoint } from '@goldstack/goldstack-api';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Spinner from 'react-bootstrap/Spinner';
+import ConfigureNavigate from 'src/components/ConfigureNavigate';
+import DynamicConfigForm from 'src/components/DynamicConfigForm';
+import Header from 'src/components/Header';
+import { getConfigureSteps } from 'src/lib/getConfigureSteps';
+import { wireProjectData } from 'src/lib/wireProjectData';
+import useSWR, { mutate } from 'swr';
+const fetcher = (url) => fetch(url, {
+    credentials: 'include',
+}).then((r) => r.json());
+const updateProject = async (projectData) => {
+    const projectRes = await fetch(`${getEndpoint()}/projects/${projectData.projectId}`, {
+        method: 'PUT',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(projectData),
+    });
+    if (projectRes.status !== 200) {
+        throw new Error('Cannot update project');
+    }
+    return projectData;
+};
+const ConfigureProject = () => {
+    const router = useRouter();
+    const { id, step, packageId } = router.query;
+    // when page changes, trigger save to backend
+    // Hooks must be called unconditionally at the top level
+    const { data, error } = useSWR(id ? `${getEndpoint()}/projects/${id}` : null, fetcher, {
+        focusThrottleInterval: 5000,
+        // we more or less never want the ui to fetch new versions
+        dedupingInterval: 100000,
+    });
+    const { data: docsData, error: docsError } = useSWR(id ? `${getEndpoint()}/projects/${id}/docs?doc=template-configure` : null, fetcher, {
+        dedupingInterval: 100000,
+    });
+    useEffect(() => {
+        if (data) {
+            // trigger async remote save
+            mutate(`${getEndpoint()}/projects/${id}`, data, false);
+            mutate(`${getEndpoint()}/projects/${id}`, updateProject(data));
+        }
+    }, [data, id]);
+    if (!id || !step || !packageId) {
+        return <Header></Header>;
+    }
+    if (error) {
+        console.error('Cannot load project data');
+        console.error(error);
+        return (<>
+        <Header></Header>
+        <p>Unexpected error when loading project data.</p>
+      </>);
+    }
+    if (docsError) {
+        console.error('Cannot load template documentation');
+        console.error(docsError);
+    }
+    if (!data) {
+        return (<>
+        <Header></Header>
+        <div className="container space-4">
+          <div className="w-md-80 w-lg-50 text-center mx-md-auto">
+            <Spinner animation="border" role="status">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
+            <p className="pt-3">Loading project configuration ...</p>
+          </div>
+        </div>
+      </>);
+    }
+    const projectData = wireProjectData(data);
+    const configureSteps = getConfigureSteps({
+        ...data,
+        docs: docsData,
+    });
+    const onChange = (newData) => {
+        // local save
+        mutate(`${getEndpoint()}/projects/${id}`, newData, false);
+    };
+    const onStepSubmit = async (_data) => {
+        // await updateProject(data);
+        // mutate(`${process.env.API_URL}projects/${id}`);
+    };
+    return (<>
+      <Header></Header>
+      <main id="content">
+        <Container className="space-1 space-md-2">
+          <Row>
+            <Col xs={8}>
+              <div className="js-validate">
+                <div className="border-bottom pb-7 mb-7">
+                  <div className="row">
+                    <div className="col">
+                      <DynamicConfigForm currentItem={Array.isArray(step) ? parseInt(step[0], 10) : parseInt(step, 10)} projectData={projectData} packageId={packageId.toString()} configureSteps={configureSteps} onChange={onChange} onStepSubmit={onStepSubmit}></DynamicConfigForm>
+                    </div>
+
+                    <div className="w-100"></div>
+                  </div>
+                </div>
+              </div>
+            </Col>
+            <Col xs={4}>
+              <div className="pl-lg-4">
+                <div className="card shadow-soft p-4 mb-4">
+                  <div className="border-bottom pb-4 mb-4">
+                    <h2 className="h3 mb-0">Configure Project</h2>
+                  </div>
+                  <div className="border-bottom pb-4 mb-4">
+                    <ConfigureNavigate configureSteps={configureSteps} currentItem={Array.isArray(step) ? parseInt(step[0], 10) : parseInt(step, 10)}></ConfigureNavigate>
+                  </div>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </main>
+    </>);
+};
+export default ConfigureProject;
+//# sourceMappingURL=ConfigureProject.jsx.map

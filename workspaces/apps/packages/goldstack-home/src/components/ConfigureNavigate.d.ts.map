@@ -1,0 +1,1 @@
+{"version":3,"file":"ConfigureNavigate.d.ts","sourceRoot":"","sources":["ConfigureNavigate.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,aAAa,EAAE,MAAM,2BAA2B,CAAC;AA2C/D,QAAA,MAAM,iBAAiB,UAAW;IAChC,WAAW,EAAE,MAAM,CAAC;IACpB,cAAc,EAAE,aAAa,EAAE,CAAC;CACjC,KAAG,eAcH,CAAC;eAEa,iBAAiB"}

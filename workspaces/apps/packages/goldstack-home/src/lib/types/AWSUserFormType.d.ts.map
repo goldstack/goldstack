@@ -1,0 +1,1 @@
+{"version":3,"file":"AWSUserFormType.d.ts","sourceRoot":"","sources":["AWSUserFormType.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,cAAc,EAAE,kBAAkB,EAAE,MAAM,sBAAsB,CAAC;AAE/E,MAAM,WAAW,eAAe;IAC9B,cAAc,CAAC,EAAE,cAAc,CAAC;IAChC,kBAAkB,CAAC,EAAE,kBAAkB,CAAC;CACzC"}

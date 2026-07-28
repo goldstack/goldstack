@@ -1,0 +1,22 @@
+import AngleRight from './../icons/font-awesome/solid/angle-right.svg';
+import { dataUriToSrc } from './../utils/utils';
+import styles from './LearnMore.module.css';
+export const LeftArrow = () => {
+    const angleRight = dataUriToSrc(AngleRight);
+    return (<span className={styles['angle-right']} 
+    // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted SVG
+    dangerouslySetInnerHTML={{ __html: angleRight }}></span>);
+};
+const LearnMore = (props) => {
+    return (<div className="text-center mb-7 mt-5">
+      <p>
+        {props.description} <span></span>
+        {props.link && (<a className="font-weight-bold" href={props.link}>
+            Learn more
+            <LeftArrow />
+          </a>)}
+      </p>
+    </div>);
+};
+export default LearnMore;
+//# sourceMappingURL=LearnMore.jsx.map

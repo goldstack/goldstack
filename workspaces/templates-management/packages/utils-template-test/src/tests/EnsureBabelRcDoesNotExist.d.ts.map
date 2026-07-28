@@ -1,0 +1,1 @@
+{"version":3,"file":"EnsureBabelRcDoesNotExist.d.ts","sourceRoot":"","sources":["EnsureBabelRcDoesNotExist.ts"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,aAAa,EAAE,YAAY,EAAE,MAAM,uBAAuB,CAAC;AAEzE,qBAAa,yBAA0B,YAAW,YAAY;IAC5D,OAAO,IAAI,MAAM,CAEhB;IACK,OAAO,CAAC,MAAM,EAAE,aAAa,GAAG,OAAO,CAAC,IAAI,CAAC,CAOlD;CACF"}

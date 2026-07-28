@@ -1,0 +1,1 @@
+{"version":3,"file":"validateProject.d.ts","sourceRoot":"","sources":["validateProject.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,WAAW,EAAE,MAAM,+BAA+B,CAAC;AAGjE,MAAM,WAAW,cAAc;IAC7B,QAAQ,EAAE,MAAM,CAAC;IACjB,KAAK,EAAE,OAAO,CAAC;CAChB;AAED,eAAO,MAAM,eAAe,gBAAiB,WAAW,KAAG,cAAc,EA2BxE,CAAC"}
