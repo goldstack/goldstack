@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-metadata",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "",
   "license": "MIT",
   "author": "Max Rohde",
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@goldstack/template-build-set": "0.1.0",
-    "@goldstack/utils-project": "0.4.44"
+    "@goldstack/utils-project": "0.4.45"
   },
   "devDependencies": {
     "@swc/core": "^1.15.46",

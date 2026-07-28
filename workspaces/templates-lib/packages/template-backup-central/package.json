@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-backup-central",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Template utilities for backup central",
   "keywords": [
     "goldstack",
@@ -38,13 +38,13 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.43",
-    "@goldstack/infra-aws": "0.4.69",
-    "@goldstack/utils-package": "0.4.45",
-    "@goldstack/utils-terraform": "0.4.89"
+    "@goldstack/infra": "0.4.44",
+    "@goldstack/infra-aws": "0.4.70",
+    "@goldstack/utils-package": "0.4.46",
+    "@goldstack/utils-terraform": "0.4.90"
   },
   "devDependencies": {
-    "@goldstack/utils-package-config-generate": "0.3.29",
+    "@goldstack/utils-package-config-generate": "0.3.30",
     "@swc/core": "^1.15.46",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
