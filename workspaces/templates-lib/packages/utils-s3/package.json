@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-s3",
-  "version": "0.4.39",
+  "version": "0.4.40",
   "description": "Utilities for downloading files from S3",
   "keywords": [
     "goldstack",
@@ -45,7 +45,7 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
     "jest": "^30.4.2",
-    "mock-aws-s3-v3": "6.1.15",
+    "mock-aws-s3-v3": "6.1.16",
     "rimraf": "^6.1.2",
     "typescript": "^5.9.3"
   },

@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.4.44",
-    "@goldstack/infra-aws": "0.4.70",
+    "@goldstack/infra-aws": "0.4.71",
     "@goldstack/project-build": "0.1.0",
     "@goldstack/project-config": "0.1.0",
     "@goldstack/project-install": "0.1.0",
@@ -34,7 +34,7 @@
     "@goldstack/utils-sh": "0.5.42",
     "@goldstack/utils-template": "0.4.45",
     "@goldstack/utils-template-test": "0.1.0",
-    "mock-aws-s3-v3": "6.1.15"
+    "mock-aws-s3-v3": "6.1.16"
   },
   "devDependencies": {
     "@swc/core": "^1.15.46",
