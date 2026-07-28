@@ -2090,7 +2090,7 @@ __metadata:
     "@goldstack/template-nextjs": "npm:0.5.116"
     "@goldstack/toc-generator": "npm:0.1.0"
     "@goldstack/utils-sh": "npm:0.5.42"
-    "@goldstack/utils-track": "npm:0.2.35"
+    "@goldstack/utils-track": "npm:0.2.36"
     "@swc/core": "npm:^1.15.46"
     "@swc/jest": "npm:^0.2.39"
     "@testing-library/dom": "npm:^10"
@@ -2274,7 +2274,7 @@ __metadata:
     "@goldstack/utils-package": "npm:0.4.46"
     "@goldstack/utils-project": "npm:0.4.45"
     "@goldstack/utils-sh": "npm:0.5.42"
-    "@goldstack/utils-track": "npm:0.2.35"
+    "@goldstack/utils-track": "npm:0.2.36"
     "@rjsf/bootstrap-4": "npm:^2.4.0"
     "@rjsf/core": "npm:2.4.2"
     "@stripe/stripe-js": "npm:^1.10.0"
@@ -2795,8 +2795,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/server-side-rendering@workspace:workspaces/templates/packages/server-side-rendering"
   dependencies:
-    "@goldstack/template-ssr": "npm:0.3.118"
-    "@goldstack/template-ssr-cli": "npm:0.3.126"
+    "@goldstack/template-ssr": "npm:0.3.119"
+    "@goldstack/template-ssr-cli": "npm:0.3.127"
     "@goldstack/utils-aws-http-api-local": "npm:0.3.94"
     "@goldstack/utils-esbuild": "npm:0.5.28"
     "@jest-mock/express": "npm:^1.4.5"
@@ -3741,15 +3741,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr-cli@npm:0.3.126, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
+"@goldstack/template-ssr-cli@npm:0.3.127, @goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-cli@workspace:workspaces/templates-lib/packages/template-ssr-cli"
   dependencies:
     "@goldstack/infra": "npm:0.4.44"
     "@goldstack/infra-aws": "npm:0.4.71"
-    "@goldstack/template-ssr": "npm:0.3.118"
-    "@goldstack/template-ssr-server": "npm:0.3.116"
-    "@goldstack/template-ssr-server-compile-bundle": "npm:0.3.113"
+    "@goldstack/template-ssr": "npm:0.3.119"
+    "@goldstack/template-ssr-server": "npm:0.3.117"
+    "@goldstack/template-ssr-server-compile-bundle": "npm:0.3.114"
     "@goldstack/utils-aws-lambda": "npm:0.3.85"
     "@goldstack/utils-cli": "npm:0.3.35"
     "@goldstack/utils-docker": "npm:0.4.44"
@@ -3777,7 +3777,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr-server-compile-bundle@npm:0.3.113, @goldstack/template-ssr-server-compile-bundle@workspace:workspaces/templates-lib/packages/template-ssr-server-compile-bundle":
+"@goldstack/template-ssr-server-compile-bundle@npm:0.3.114, @goldstack/template-ssr-server-compile-bundle@workspace:workspaces/templates-lib/packages/template-ssr-server-compile-bundle":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-server-compile-bundle@workspace:workspaces/templates-lib/packages/template-ssr-server-compile-bundle"
   dependencies:
@@ -3813,13 +3813,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr-server@npm:0.3.116, @goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server":
+"@goldstack/template-ssr-server@npm:0.3.117, @goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr-server@workspace:workspaces/templates-lib/packages/template-ssr-server"
   dependencies:
     "@goldstack/infra": "npm:0.4.44"
     "@goldstack/infra-aws": "npm:0.4.71"
-    "@goldstack/template-ssr-server-compile-bundle": "npm:0.3.113"
+    "@goldstack/template-ssr-server-compile-bundle": "npm:0.3.114"
     "@goldstack/utils-aws-lambda": "npm:0.3.85"
     "@goldstack/utils-esbuild": "npm:0.5.28"
     "@goldstack/utils-package": "npm:0.4.46"
@@ -3848,13 +3848,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-ssr@npm:0.3.118, @goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr":
+"@goldstack/template-ssr@npm:0.3.119, @goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-ssr@workspace:workspaces/templates-lib/packages/template-ssr"
   dependencies:
     "@goldstack/infra": "npm:0.4.44"
     "@goldstack/infra-aws": "npm:0.4.71"
-    "@goldstack/template-ssr-server": "npm:0.3.116"
+    "@goldstack/template-ssr-server": "npm:0.3.117"
     "@goldstack/utils-aws-lambda": "npm:0.3.85"
     "@goldstack/utils-esbuild": "npm:0.5.28"
     "@goldstack/utils-package": "npm:0.4.46"
@@ -4569,7 +4569,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/utils-track@npm:0.2.35, @goldstack/utils-track@workspace:workspaces/utils/packages/utils-track":
+"@goldstack/utils-track@npm:0.2.36, @goldstack/utils-track@workspace:workspaces/utils/packages/utils-track":
   version: 0.0.0-use.local
   resolution: "@goldstack/utils-track@workspace:workspaces/utils/packages/utils-track"
   dependencies:
