@@ -4,10 +4,29 @@ on:
   schedule:
     - cron: '0 3 * * 1'
   workflow_dispatch:
+    inputs:
+      task:
+        description: 'Which maintenance task to run'
+        type: choice
+        default: 'all'
+        options:
+          - all
+          - aws-sdk
+          - jest
+          - swc
+          - typescript-ts-node
+          - yarn-binary
+          - no-critical-vulnerabilities
 
 jobs:
   maintenance:
+    if: |
+      github.event_name == 'schedule' ||
+      github.event.inputs.task == 'all' ||
+      github.event.inputs.task == matrix.task
     strategy:
+      max-parallel: 1
+      fail-fast: false
       matrix:
         include:
           - task: aws-sdk
