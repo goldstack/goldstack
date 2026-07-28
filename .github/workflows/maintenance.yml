@@ -17,6 +17,7 @@ on:
           - typescript-ts-node
           - yarn-binary
           - no-critical-vulnerabilities
+          - easy-non-critical-vulnerabilities
 
 jobs:
   maintenance:
@@ -45,6 +46,9 @@ jobs:
           - task: no-critical-vulnerabilities
             title: "No Critical Security Vulnerabilities"
             instructions: "instructions/maintenance/no_critical_security_vulnerabilities.md"
+          - task: easy-non-critical-vulnerabilities
+            title: "Resolve Easy Non-Critical Security Vulnerabilities"
+            instructions: "instructions/maintenance/easy_non_critical_security_vulnerabilities.md"
     runs-on: ubuntu-latest
     permissions:
       id-token: write
