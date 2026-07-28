@@ -14,6 +14,7 @@ on:
 jobs:
   discover-tasks:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     outputs:
       matrix: ${{ steps.filter.outputs.matrix }}
     steps:
@@ -78,6 +79,7 @@ jobs:
       fail-fast: false
       matrix: ${{ fromJson(needs.discover-tasks.outputs.matrix) }}
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     permissions:
       id-token: write
       contents: write
