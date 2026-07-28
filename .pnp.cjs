@@ -25376,6 +25376,7 @@ const RAW_RUNTIME_STATE =
           ["react", "npm:19.2.3"],\
           ["react-dom", "virtual:ed760a7c34979744c62e060773792c390ba8edd578a7ed312bba63b32e173f52532466f44fc6a74d8bdc7491e8b60ebb2aca10f5c122f0482340b1612cd02e70#npm:19.2.3"],\
           ["templates", "workspace:workspaces/templates"],\
+          ["ts-node", "virtual:36a01d8083315b8a6e8362097258ea8bc0f9dfb672cb210742e054760850c673a1038f542a6b7156397b5275ace8ee0482231cac5e8898044fa1a1c29f78ee5b#npm:10.9.2"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
         "linkType": "SOFT"\

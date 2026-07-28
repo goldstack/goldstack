@@ -22,7 +22,7 @@
     "check": "biome check",
     "check-fix": "biome check --write",
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
-    "sync-instructions": "md-magic --file AGENTS.md",
+    "sync-instructions": "ts-node scripts/syncInstructions.ts",
     "test": "NODE_OPTIONS=--experimental-vm-modules yarn workspaces foreach -Wv run test",
     "test-watch": "nodemonx --watch . --exec 'yarn test'"
   },
@@ -36,6 +36,7 @@
     "nodemon": "^3.1.14",
     "react": "^19",
     "react-dom": "^19",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }
 }
