@@ -14,5 +14,4 @@
 
 3. Re-run the audit to confirm vulnerabilities are resolved.
 
-Follow the [patching workflow](../patching.md) to validate and commit.
-Follow the [maintenance workflow](../maintenance.md) for PR management and time limits.
+
