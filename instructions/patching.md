@@ -26,5 +26,4 @@ yarn ensure-no-package-mismatches
 yarn format && yarn lint && yarn compile
 ```
 
-### 5. Commit Changes
-Commit all changes with a descriptive message.
+Do NOT commit here — commit and push happen in the [maintenance workflow](../maintenance.md).
