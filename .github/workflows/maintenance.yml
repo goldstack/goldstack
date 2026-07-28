@@ -38,7 +38,7 @@ jobs:
             title: "TypeScript and ts-node Should Be Latest Version"
             instructions: "instructions/maintenance/typescript_and_ts_node_should_be_latest_version.md"
           - task: yarn-binary
-            title: "Yarn Binary Should Be Latest Version"
+            title: "Yarn Binary, SDKs, and Plugins Should Be Latest Version"
             instructions: "instructions/maintenance/yarn_binary_should_be_latest_version.md"
           - task: no-critical-vulnerabilities
             title: "No Critical Security Vulnerabilities"
