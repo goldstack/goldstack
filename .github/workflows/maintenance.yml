@@ -20,10 +20,6 @@ on:
 
 jobs:
   maintenance:
-    if: |
-      github.event_name == 'schedule' ||
-      github.event.inputs.task == 'all' ||
-      github.event.inputs.task == matrix.task
     strategy:
       max-parallel: 1
       fail-fast: false
@@ -56,17 +52,29 @@ jobs:
       actions: read
     steps:
       - name: Checkout repository
+        if: |
+          github.event_name == 'schedule' ||
+          github.event.inputs.task == 'all' ||
+          github.event.inputs.task == matrix.task
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
           persist-credentials: false
 
       - name: Setup OpenCode auth
+        if: |
+          github.event_name == 'schedule' ||
+          github.event.inputs.task == 'all' ||
+          github.event.inputs.task == matrix.task
         run: |
           mkdir -p ~/.local/share/opencode
           echo '{"opencode-go":{"type":"api","key":"${{ secrets.OPENCODE_GO_API_KEY }}"}}' > ~/.local/share/opencode/auth.json
 
       - name: Run OpenCode
+        if: |
+          github.event_name == 'schedule' ||
+          github.event.inputs.task == 'all' ||
+          github.event.inputs.task == matrix.task
         uses: anomalyco/opencode/github@latest
         env:
           OPENCODE_GO_API_KEY: ${{ secrets.OPENCODE_GO_API_KEY }}
