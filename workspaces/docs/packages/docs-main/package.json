@@ -63,7 +63,7 @@
     "concurrently": "^7.3.0",
     "file-loader": "^6.2.0",
     "jest": "^30.4.2",
-    "jest-environment-jsdom": "^30.2.0",
+    "jest-environment-jsdom": "^30.4.1",
     "jest-transform-stub": "^2.0.0",
     "next-compose-plugins": "^2.2.1",
     "reload": "^3.4.3",

@@ -60,7 +60,7 @@
     "concurrently": "^7.3.0",
     "get-port": "^5.1.1",
     "jest": "^30.4.2",
-    "jest-environment-jsdom": "^30.2.0",
+    "jest-environment-jsdom": "^30.4.1",
     "node-css-require": "0.4.31",
     "react": "^19",
     "react-dom": "^19",

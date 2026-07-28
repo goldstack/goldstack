@@ -2889,7 +2889,7 @@ __metadata:
     "@types/testing-library__react": "npm:^10.2.0"
     concurrently: "npm:^7.3.0"
     jest: "npm:^30.4.2"
-    jest-environment-jsdom: "npm:^30.2.0"
+    jest-environment-jsdom: "npm:^30.4.1"
     jest-transform-stub: "npm:^2.0.0"
     next: "npm:^15"
     next-compose-plugins: "npm:^2.2.1"
@@ -2928,7 +2928,7 @@ __metadata:
     concurrently: "npm:^7.3.0"
     cross-env: "npm:^10.1.0"
     jest: "npm:^30.4.2"
-    jest-environment-jsdom: "npm:^30.2.0"
+    jest-environment-jsdom: "npm:^30.4.1"
     jest-transform-stub: "npm:^2.0.0"
     next: "npm:^15"
     postcss: "npm:^8.5.6"
@@ -2963,7 +2963,7 @@ __metadata:
     "@types/testing-library__jest-dom": "npm:^6.0.0"
     concurrently: "npm:^7.3.0"
     jest: "npm:^30.4.2"
-    jest-environment-jsdom: "npm:^30.2.0"
+    jest-environment-jsdom: "npm:^30.4.1"
     jest-transform-stub: "npm:^2.0.0"
     jsdom: "npm:^21.0.0"
     next: "npm:^15"
@@ -3108,7 +3108,7 @@ __metadata:
     concurrently: "npm:^7.3.0"
     file-loader: "npm:^6.2.0"
     jest: "npm:^30.4.2"
-    jest-environment-jsdom: "npm:^30.2.0"
+    jest-environment-jsdom: "npm:^30.4.1"
     jest-transform-stub: "npm:^2.0.0"
     next: "npm:^15"
     next-compose-plugins: "npm:^2.2.1"
@@ -3295,7 +3295,7 @@ __metadata:
     data-uri-to-buffer: "npm:^3.0.1"
     install: "npm:^0.13.0"
     jest: "npm:^30.4.2"
-    jest-environment-jsdom: "npm:^30.2.0"
+    jest-environment-jsdom: "npm:^30.4.1"
     jest-transform-stub: "npm:^2.0.0"
     next: "npm:^15"
     next-compose-plugins: "npm:^2.2.1"
@@ -3823,7 +3823,7 @@ __metadata:
     esbuild-tailwind-ssr-plugin: "npm:0.1.27"
     get-port: "npm:^5.1.1"
     jest: "npm:^30.4.2"
-    jest-environment-jsdom: "npm:^30.2.0"
+    jest-environment-jsdom: "npm:^30.4.1"
     jest-transform-stub: "npm:^2.0.0"
     node-css-require: "npm:0.4.31"
     react: "npm:^19"
@@ -5974,36 +5974,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/environment-jsdom-abstract@npm:30.2.0":
-  version: 30.2.0
-  resolution: "@jest/environment-jsdom-abstract@npm:30.2.0"
+"@jest/environment-jsdom-abstract@npm:30.4.1":
+  version: 30.4.1
+  resolution: "@jest/environment-jsdom-abstract@npm:30.4.1"
   dependencies:
-    "@jest/environment": "npm:30.2.0"
-    "@jest/fake-timers": "npm:30.2.0"
-    "@jest/types": "npm:30.2.0"
+    "@jest/environment": "npm:30.4.1"
+    "@jest/fake-timers": "npm:30.4.1"
+    "@jest/types": "npm:30.4.1"
     "@types/jsdom": "npm:^21.1.7"
     "@types/node": "npm:*"
-    jest-mock: "npm:30.2.0"
-    jest-util: "npm:30.2.0"
+    jest-mock: "npm:30.4.1"
+    jest-util: "npm:30.4.1"
   peerDependencies:
     canvas: ^3.0.0
     jsdom: "*"
   peerDependenciesMeta:
     canvas:
       optional: true
-  checksum: 10/65a9c8504f213f4d125956383ffe6c4e566cfb0ff2fe67783adf9ebde33f772339e61fdd98ddc2bbae3029e3356d2386abedb9d101aa95d6fd51fabac38bebe0
-  languageName: node
-  linkType: hard
-
-"@jest/environment@npm:30.2.0":
-  version: 30.2.0
-  resolution: "@jest/environment@npm:30.2.0"
-  dependencies:
-    "@jest/fake-timers": "npm:30.2.0"
-    "@jest/types": "npm:30.2.0"
-    "@types/node": "npm:*"
-    jest-mock: "npm:30.2.0"
-  checksum: 10/e168a4ff328980eb9fde5e43aea80807fd0b2dbd4579ae8f68a03415a1e58adf5661db298054fa2351c7cb2b5a74bf67b8ab996656cf5927d0b0d0b6e2c2966b
+  checksum: 10/e51537587162d0972df0abd6f0ce0b2cf5245029035e6b61b62da075547a37cd174254c315b456447a6419b22938623036b355c063498b7876f7ea0352404fa6
   languageName: node
   linkType: hard
 
@@ -6044,20 +6032,6 @@ __metadata:
     expect: "npm:30.4.1"
     jest-snapshot: "npm:30.4.1"
   checksum: 10/40ae0317a3590ced7a7fd21c49e6b1af6b122e6a83822e643af83f02034dfed6485248cae08d6bcf9380039ba3824ac56db18478712c64ddf5f709ee23cf30cd
-  languageName: node
-  linkType: hard
-
-"@jest/fake-timers@npm:30.2.0":
-  version: 30.2.0
-  resolution: "@jest/fake-timers@npm:30.2.0"
-  dependencies:
-    "@jest/types": "npm:30.2.0"
-    "@sinonjs/fake-timers": "npm:^13.0.0"
-    "@types/node": "npm:*"
-    jest-message-util: "npm:30.2.0"
-    jest-mock: "npm:30.2.0"
-    jest-util: "npm:30.2.0"
-  checksum: 10/c2df66576ba8049b07d5f239777243e21fcdaa09a446be1e55fac709d6273e2a926c1562e0372c3013142557ed9d386381624023549267a667b6e1b656e37fe6
   languageName: node
   linkType: hard
 
@@ -7087,7 +7061,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sinonjs/fake-timers@npm:^13.0.0, @sinonjs/fake-timers@npm:^13.0.1":
+"@sinonjs/fake-timers@npm:^13.0.1":
   version: 13.0.5
   resolution: "@sinonjs/fake-timers@npm:13.0.5"
   dependencies:
@@ -15936,21 +15910,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-environment-jsdom@npm:^30.2.0":
-  version: 30.2.0
-  resolution: "jest-environment-jsdom@npm:30.2.0"
+"jest-environment-jsdom@npm:^30.4.1":
+  version: 30.4.1
+  resolution: "jest-environment-jsdom@npm:30.4.1"
   dependencies:
-    "@jest/environment": "npm:30.2.0"
-    "@jest/environment-jsdom-abstract": "npm:30.2.0"
-    "@types/jsdom": "npm:^21.1.7"
-    "@types/node": "npm:*"
+    "@jest/environment": "npm:30.4.1"
+    "@jest/environment-jsdom-abstract": "npm:30.4.1"
     jsdom: "npm:^26.1.0"
   peerDependencies:
     canvas: ^3.0.0
   peerDependenciesMeta:
     canvas:
       optional: true
-  checksum: 10/bb3768b7efc2eefb81b9deb1e23898cc74e4813d6d54872ed40d830eefc08c619eb0b2817f0af5d52061e0beb16681e8384d660a2aee4919e91349195ecb2904
+  checksum: 10/2ed0860e257d404622306823f18c15f0fe881fc1d16e1245434b54eb690fa0784cf54cd7eef74b2e9373e1699b1726a0fb69d60ae388cc78eb36968fe3fd0bf6
   languageName: node
   linkType: hard
 
