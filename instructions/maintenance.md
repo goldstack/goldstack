@@ -19,6 +19,10 @@
     ```
     git checkout $BRANCH_NAME && git pull origin $BRANCH_NAME
     ```
+  - Merge `master` into the branch and resolve any conflicts:
+    ```
+    git merge origin/master
+    ```
   - Read PR comments to understand what was already done and what remains:
     ```
     gh pr view $PR_NUMBER --comments
