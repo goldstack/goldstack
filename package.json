@@ -29,6 +29,7 @@
     "check-fix": "biome check --write --json-formatter-enabled=false",
     "lint-fix": "biome lint --write",
     "test": "yarn workspaces foreach -A run test",
+    "sync-instructions": "md-magic --file AGENTS.md",
     "test-watch": "nodemonx --watch . --exec 'yarn test'"
   },
   "resolutions": {
@@ -42,6 +43,7 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
     "concurrently": "^7.3.0",
+    "markdown-magic": "^4.11.0",
     "nodemon": "^3.1.14",
     "syncpack": "^13.0.0",
     "ts-node": "^10.9.2",
