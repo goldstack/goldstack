@@ -6,7 +6,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "yarn clean && yarn compile",
-    "build:next": "yarn tailwindcss -i src/styles/app.css -o src/styles/output.css && next build",
+    "build:next": "yarn tailwindcss -i src/styles/app.css -o src/styles/output.css && next build --webpack",
     "clean": "rimraf ./dist ./webDist",
     "clean-terraform": "rimraf ./infra/aws/.terraform",
     "compile": "tsc --build",

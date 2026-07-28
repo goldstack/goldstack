@@ -6,7 +6,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "yarn clean && yarn compile",
-    "build:next": "NEXT_TELEMETRY_DISABLED=1 next build",
+    "build:next": "NEXT_TELEMETRY_DISABLED=1 next build --webpack",
     "clean": "rimraf ./dist ./webDist",
     "clean-terraform": "rimraf ./infra/aws/.terraform",
     "compile": "tsc -p tsconfig.json",
