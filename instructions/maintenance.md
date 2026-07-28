@@ -2,22 +2,35 @@
 
 ## 1. Start
 - Run `date` and record the timestamp
-- Check if a PR already exists for the branch:
+- Check if a PR exists for the branch and its state:
   ```
-  gh pr list --head $BRANCH_NAME
+  gh pr list --head $BRANCH_NAME --json state --jq '.[0].state // "none"'
   ```
-- **If a PR exists:**
+- **If PR state is `merged` or `closed`:**
+  - Delete the old branch and start fresh from `master`:
+    ```
+    git checkout master && git pull origin master
+    git branch -D $BRANCH_NAME 2>/dev/null || true
+    git push origin --delete $BRANCH_NAME 2>/dev/null || true
+    git checkout -b $BRANCH_NAME
+    ```
+- **If PR state is `open`:**
   - Checkout and pull the latest:
     ```
     git checkout $BRANCH_NAME && git pull origin $BRANCH_NAME
+    ```
+  - Merge `master` into the branch and resolve any conflicts:
+    ```
+    git merge origin/master
     ```
   - Read PR comments to understand what was already done and what remains:
     ```
     gh pr view $PR_NUMBER --comments
     ```
-- **If no PR exists:**
-  - Create the branch:
+- **If PR state is `none`:**
+  - Create a fresh branch from `master`:
     ```
+    git checkout master && git pull origin master
     git checkout -b $BRANCH_NAME
     ```
 - Plan remaining work as small, committable steps

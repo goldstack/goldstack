@@ -1,16 +1,9 @@
 # @swc/* Packages Should Be Latest Version
 
-1. Check current versions:
-   ```
-   npm info @swc/core version
-   npm info @swc/jest version
-   ```
-
-2. Update SWC packages:
+1. Update SWC packages:
    ```
    yarn up @swc/core @swc/jest
    ```
 
-
-Follow the [patching workflow](../patching.md) to validate and commit.
-Follow the [maintenance workflow](../maintenance.md) for PR management and time limits.
+Follow the [patching workflow](../patching.md) to validate.
+Follow the [maintenance workflow](../maintenance.md) for commit, push, PR management, CI monitoring, and time limits.
