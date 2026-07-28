@@ -30,25 +30,25 @@ jobs:
         include:
           - task: aws-sdk
             title: "AWS SDK Should Be Latest Version"
-            instructions: "instructions/maintenance/aws_sdk_should_be_latest_version.md"
+            instructions: "instructions/goldstack/maintenance/aws_sdk_should_be_latest_version.md"
           - task: jest
             title: "Jest Should Be Latest Version"
-            instructions: "instructions/maintenance/jest_should_be_latest_version.md"
+            instructions: "instructions/goldstack/maintenance/jest_should_be_latest_version.md"
           - task: swc
             title: "@swc/* Should Be Latest Version"
-            instructions: "instructions/maintenance/swc_should_be_latest_version.md"
+            instructions: "instructions/goldstack/maintenance/swc_should_be_latest_version.md"
           - task: typescript-ts-node
             title: "TypeScript and ts-node Should Be Latest Version"
-            instructions: "instructions/maintenance/typescript_and_ts_node_should_be_latest_version.md"
+            instructions: "instructions/goldstack/maintenance/typescript_and_ts_node_should_be_latest_version.md"
           - task: yarn-binary
             title: "Yarn Binary, SDKs, and Plugins Should Be Latest Version"
-            instructions: "instructions/maintenance/yarn_binary_should_be_latest_version.md"
+            instructions: "instructions/goldstack/maintenance/yarn_binary_should_be_latest_version.md"
           - task: no-critical-vulnerabilities
             title: "No Critical Security Vulnerabilities"
-            instructions: "instructions/maintenance/no_critical_security_vulnerabilities.md"
+            instructions: "instructions/goldstack/maintenance/no_critical_security_vulnerabilities.md"
           - task: easy-non-critical-vulnerabilities
             title: "Resolve Easy Non-Critical Security Vulnerabilities"
-            instructions: "instructions/maintenance/easy_non_critical_security_vulnerabilities.md"
+            instructions: "instructions/goldstack/maintenance/easy_non_critical_security_vulnerabilities.md"
     runs-on: ubuntu-latest
     permissions:
       id-token: write
