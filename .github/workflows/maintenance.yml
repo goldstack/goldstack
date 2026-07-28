@@ -20,6 +20,8 @@ on:
 
 jobs:
   maintenance:
+    env:
+      GH_TOKEN: ${{ github.token }}
     strategy:
       max-parallel: 1
       fail-fast: false
@@ -50,6 +52,8 @@ jobs:
       pull-requests: write
       issues: write
       actions: read
+      checks: read
+      statuses: read
     steps:
       - name: Checkout repository
         if: |
