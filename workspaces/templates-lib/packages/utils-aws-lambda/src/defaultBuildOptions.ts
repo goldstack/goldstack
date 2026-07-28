@@ -22,7 +22,7 @@ export function defaultBuildOptions(): (args: ServerBuildOptionsArgs) => BuildOp
     minify: true,
     platform: 'node',
     format: 'cjs',
-    target: 'node18.0',
+    target: 'node22.0',
     treeShaking: true,
     define: {
       'process.env.NODE_ENV': '"production"',

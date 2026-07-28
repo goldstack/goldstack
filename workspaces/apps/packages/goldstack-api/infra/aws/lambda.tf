@@ -15,7 +15,7 @@ resource "aws_lambda_function" "main" {
   filename = data.archive_file.empty_lambda.output_path
 
   handler = "lambda.handler"
-  runtime = "nodejs18.x"
+  runtime = "nodejs22.x"
 
   memory_size = 2048
   timeout = 900

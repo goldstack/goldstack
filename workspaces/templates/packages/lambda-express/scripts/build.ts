@@ -9,7 +9,7 @@ build({
   minify: true,
   format: 'cjs',
   platform: 'node',
-  target: 'node18.0',
+  target: 'node22.0',
   sourcemap: true,
   outfile: 'distLambda/lambda.js',
 }).catch((e) => {

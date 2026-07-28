@@ -79,7 +79,7 @@
     "jest-transform-stub": "^2.0.0",
     "next-compose-plugins": "^2.2.1",
     "rimraf": "^6.1.2",
-    "sass": "^1.89.2",
+    "sass": "^1.101.6",
     "svg-url-loader": "^8.0.0",
     "ts-json-schema-generator": "^2.4.0",
     "ts-node": "^10.9.2",
