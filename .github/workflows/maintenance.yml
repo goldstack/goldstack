@@ -79,7 +79,7 @@ jobs:
             You are performing the maintenance task in ${{ matrix.context }}: ${{ matrix.name }}
 
             1. Read instructions/${{ matrix.context }}/maintenance/${{ matrix.name }}.md for specific task instructions.
-            2. Follow instructions/patching.md for how to update dependencies and validate.
-            3. Follow instructions/maintenance.md for workflow (commits, PR management, time limits).
+            2. Follow instructions/patching.md to update dependencies and validate.
+            3. Follow instructions/maintenance.md for committing, pushing, PR management, CI monitoring, and time limits.
 
             Branch name: maintenance/${{ matrix.context }}/${{ matrix.name }}
