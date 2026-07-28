@@ -29,10 +29,10 @@
     "web:watch": "yarn web:build && concurrently \"reload --dir ./webDist --watch-dir ./webDist --port 8071 --browser\" "
   },
   "dependencies": {
-    "next": "^15",
-    "react": "^19",
+    "next": "^16.2.12",
+    "react": "^19.2.8",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "^19",
+    "react-dom": "^19.2.8",
     "react-is": "^19",
     "swr": "^0.4.0"
   },
@@ -47,7 +47,7 @@
     "@types/aws-lambda": "^8.10.159",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
-    "@types/react": "^19",
+    "@types/react": "^19.2.17",
     "@types/testing-library__jest-dom": "^6.0.0",
     "@types/testing-library__react": "^10.2.0",
     "concurrently": "^7.3.0",
