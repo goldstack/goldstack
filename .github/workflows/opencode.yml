@@ -8,6 +8,8 @@ on:
 
 jobs:
   opencode:
+    env:
+      GH_TOKEN: ${{ secrets.PAT_TOKEN }}
     if: |
       contains(github.event.comment.body, '/oc') ||
       contains(github.event.comment.body, '/opencode')
@@ -18,6 +20,8 @@ jobs:
       pull-requests: write
       issues: write
       actions: read
+      checks: read
+      statuses: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6

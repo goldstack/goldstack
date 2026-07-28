@@ -1,4 +1,3 @@
-<!-- docs FILE src=./instructions/goldstack/agents.md -->
 ## Repo Setup
 
 This repository uses:
@@ -38,16 +37,3 @@ The following commands should usually be executed on the project root:
 
 - ONLY run test when I ask you OR when fixing a unit test or before pushing changes. Run tests via `yarn test` - run tests in the package directory and not the project root, unless I ask to run them in the project root.
 - When creating a unit test, unless otherwise specified, assume to use real objects/implementations as opposed to Jest mocks
-<!-- /docs -->
-
-<!-- docs FILE src=./instructions/custom/agents.md -->
-## DO NOT
-
-- Run @goldstack/template-management-cli cli without being prompted to do so
-
-## Terraform
-
-- To check Terraform plan, use `yarn infra plan [deploymentName]`
-- To use arbitrary Terraform command, use `yarn infra terraform [deploymentName] [command]`. e.g `yarn infra terraform prod force-unlock -force [id]`
-- Note we need to avoid user confirmations, so use `-force` when possible, otherwise warn the user
-<!-- /docs -->

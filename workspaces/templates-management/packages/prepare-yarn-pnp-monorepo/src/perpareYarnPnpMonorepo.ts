@@ -31,16 +31,26 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
   }
   run(params: PrepareTemplateParams): Promise<void> {
     const copyFilesFromRoot = [
+      'AGENTS.md',
       'biome.jsonc',
       '.gitattributes',
       '.gitconfig',
       '.yarnrc.yml',
       '.nvmrc',
+      'vendir.yml',
       '.vscode/',
+      'instructions/',
       'yarn.lock',
     ].map((name) => join(params.monorepoRoot, name));
     mkdir('-p', params.destinationDirectory);
     cp('-rf', copyFilesFromRoot, params.destinationDirectory);
+
+    mkdir('-p', join(params.destinationDirectory, 'scripts/'));
+    cp(
+      '-rf',
+      join(params.monorepoRoot, 'scripts/syncInstructions.ts'),
+      join(params.destinationDirectory, 'scripts/'),
+    );
 
     const copyFilesFromRootYarn = ['.yarn/pnpify', '.yarn/releases', '.yarn/sdks'].map((name) =>
       join(params.monorepoRoot, name),
@@ -100,6 +110,10 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
     const yarnRc = read(join(params.destinationDirectory, '.yarnrc.yml'));
 
     write(removeNpmRegistry({ yarnRc }), join(params.destinationDirectory, '.yarnrc.yml'));
+
+    // Clear custom instructions for generated projects
+    const customAgentsPath = join(params.destinationDirectory, 'instructions/custom/agents.md');
+    write('', customAgentsPath);
 
     // fix package.json
     const packageJson = JSON.parse(read(join(params.destinationDirectory, 'package.json')));
