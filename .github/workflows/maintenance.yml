@@ -4,17 +4,23 @@ on:
   schedule:
     - cron: '41 19 * * 6'
   workflow_dispatch:
+    inputs:
+      task:
+        description: 'Substring filter; only maintenance tasks whose name contains this text will run. Leave empty or set to "all" to run all tasks.'
+        required: false
+        default: ''
+        type: string
 
 jobs:
   discover-tasks:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.discover.outputs.matrix }}
+      matrix: ${{ steps.filter.outputs.matrix }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Build task matrix
+      - name: Build task entries
         id: discover
         run: |
           set -euo pipefail
@@ -32,7 +38,30 @@ jobs:
               entries=$(jq --arg c "$ctx" --arg n "$name" '. + [{context: $c, name: $n}]' <<<"$entries")
             done
           done
-          matrix=$(jq -c -n --argjson e "$entries" '{include: $e}')
+          {
+            echo "entries<<EOF"
+            echo "$entries"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+          echo "Entries: $entries"
+
+      - name: Filter tasks
+        id: filter
+        env:
+          ENTRIES: ${{ steps.discover.outputs.entries }}
+          TASK: ${{ inputs.task }}
+        run: |
+          set -euo pipefail
+          if [[ -z "$TASK" || "$TASK" == "all" ]]; then
+            filtered="$ENTRIES"
+          else
+            filtered=$(jq --arg t "$TASK" '[.[] | select(.name | contains($t))]' <<<"$ENTRIES")
+            if [[ "$(jq 'length' <<<"$filtered")" -eq 0 ]]; then
+              echo "::error::No maintenance tasks match filter: $TASK"
+              exit 1
+            fi
+          fi
+          matrix=$(jq -c -n --argjson e "$filtered" '{include: $e}')
           {
             echo "matrix<<EOF"
             echo "$matrix"
