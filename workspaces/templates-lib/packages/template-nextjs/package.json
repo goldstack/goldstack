@@ -66,7 +66,7 @@
     "yargs": "^17"
   },
   "devDependencies": {
-    "@aws-sdk/types": "^3.973.5",
+    "@aws-sdk/types": "^3.974.2",
     "@goldstack/utils-package-config-generate": "0.3.29",
     "@swc/core": "^1.15.46",
     "@swc/jest": "^0.2.39",
