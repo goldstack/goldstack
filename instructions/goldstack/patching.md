@@ -14,7 +14,7 @@ yarn up <package>
 ```
 This pulls the latest version that satisfies the current semver range.
 
-If `yarn up` does not resolve the vulnerability (version constraint is too narrow), manually bump the version in `package.json` to a range that includes the fix.
+If `yarn up` does not resolve the vulnerability (version constraint is too narrow), manually bump the version in `package.json` to a range that includes the fix - ONLY bump patch and minor version unless if explicitly asked to upgrade major version as well.
 
 ### 3. Validate Package Consistency
 ```
