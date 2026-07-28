@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+concurrency:
+  group: master-publish
+  cancel-in-progress: false
+
 jobs:
   build:
     name: 'Build and Test'
@@ -16,9 +20,9 @@ jobs:
         with:
           fetch-depth: 20
           token: ${{secrets.BUILD_TOKEN}}
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
       - uses: actions/setup-java@v4 # used for local DynamoDB
         with:
           distribution: 'temurin'
@@ -190,9 +194,22 @@ jobs:
 
       - name: Push changes
         if: ${{ (steps.changed-libs.outputs.changed == 'true' || steps.changed-utilities.outputs.changed == 'true') && github.ref == 'refs/heads/master' }}
-        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
-        with:
-          github_token: ${{secrets.BUILD_TOKEN}}
+        run: |
+          for i in 1 2 3; do
+            echo "Push attempt $i"
+            git fetch origin master
+            if git pull --rebase origin master; then
+              if git push origin master; then
+                break
+              fi
+            fi
+            echo "Push attempt $i failed, retrying after re-running version bump and publish"
+            yarn workspaces foreach --all --no-private --topological run patch-when-changed
+            yarn workspaces foreach --topological --include "workspaces/utils/**/*" --since=HEAD~1 npm publish --tolerate-republish
+            yarn workspaces foreach --topological --include "workspaces/templates-lib/**/*" --since=HEAD~1 npm publish --tolerate-republish
+            git add .
+            git diff-index --quiet HEAD || git commit -m "Updates from build pipeline (ci_skip)" || true
+          done
 
       - name: Write current git commit to output
         if: github.ref == 'refs/heads/master'
@@ -231,9 +248,20 @@ jobs:
 
       - name: Push changes
         if: github.ref == 'refs/heads/master'
-        uses: ad-m/github-push-action@65392840bda2e774394d5cd38ca33e5918aec2d3
-        with:
-          github_token: ${{secrets.BUILD_TOKEN}}
+        run: |
+          for i in 1 2 3; do
+            echo "Push attempt $i"
+            git fetch origin master
+            if git pull --rebase origin master; then
+              if git push origin master; then
+                break
+              fi
+            fi
+            echo "Push attempt $i failed, retrying after re-applying local changes"
+            git status
+            git add .
+            git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy_dev)" || true
+          done
 
       - name: Write current git commit to output
         if: github.ref == 'refs/heads/master'
