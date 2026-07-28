@@ -10,5 +10,4 @@
    yarn up @aws-sdk/* @smithy/*
    ```
 
-Follow the [patching workflow](../patching.md) to validate and commit.
-Follow the [maintenance workflow](../maintenance.md) for PR management and time limits.
+
