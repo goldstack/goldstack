@@ -74,6 +74,7 @@
       "!**/coverage",
       "!**/node_modules",
       "!**/.next",
+      "!**/next-env.d.ts",
       "!**/.open-next",
       "!**/server-side-rendering/static/generated",
       "!**/lambda-python-job/lambda/lambda_env",
