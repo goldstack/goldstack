@@ -18,7 +18,7 @@
     "generate-docs": "ts-node --project tsconfig.local.json ./scripts/generateDocs.ts",
     "infra": "yarn template infra",
     "next:tracking:disable": "next telemetry disable",
-    "next:watch": "next -p 3001",
+    "next:watch": "next -p 3001 --webpack",
     "prepublishOnly": "yarn run build",
     "start:next": "next start",
     "template": "yarn template-ts",
