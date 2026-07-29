@@ -21,7 +21,7 @@
     "generate-schema": "ts-node --project tsconfig.local.json src/lib/types/generateSchemas.ts",
     "infra": "yarn template-ts infra",
     "next:tracking:disable": "next telemetry disable",
-    "next:watch": "next",
+    "next:watch": "next --webpack",
     "prepublishOnly": "yarn run build",
     "start:next": "next start",
     "template": "yarn template-ts",
