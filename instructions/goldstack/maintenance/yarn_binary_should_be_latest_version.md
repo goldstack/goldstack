@@ -18,3 +18,4 @@
      ```
 
 
+4. Ensure there are no stale yarn binaries left in `.yarn/releases/`. There should only be one *.mjs script, eg yarn-x.x.x.cjs`
