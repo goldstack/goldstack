@@ -50,7 +50,7 @@
     "@types/react": "^19.2.17",
     "@types/testing-library__jest-dom": "^6.0.0",
     "@types/testing-library__react": "^10.2.0",
-    "concurrently": "^7.3.0",
+    "concurrently": "^10.0.4",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
     "jest-transform-stub": "^2.0.0",

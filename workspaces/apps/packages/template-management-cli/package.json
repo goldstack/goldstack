@@ -52,7 +52,7 @@
     "@types/node": "^25.0.3",
     "@types/source-map-support": "^0.5.10",
     "@types/yargs": "^17.0.33",
-    "concurrently": "^7.3.0",
+    "concurrently": "^10.0.4",
     "jest": "^30.4.2",
     "rimraf": "^6.1.2",
     "ts-node": "^10.9.2",
