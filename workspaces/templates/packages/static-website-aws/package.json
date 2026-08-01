@@ -43,7 +43,7 @@
     "light-server": "^2.9.1",
     "reload": "^3.4.3",
     "rimraf": "^6.1.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "ts-node": "~10",
+    "typescript": "~5"
   }
 }

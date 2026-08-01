@@ -61,7 +61,7 @@
     "jest": "^30.4.2",
     "node-fetch": "^3.3.2",
     "rimraf": "^6.1.2",
-    "typescript": "^5.9.3"
+    "typescript": "~5"
   },
   "publishConfig": {
     "main": "dist/src/utilsAwsHttpApiLocal.js"

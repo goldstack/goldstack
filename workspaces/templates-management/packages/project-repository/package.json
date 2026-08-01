@@ -46,6 +46,6 @@
     "@types/uuid": "^10.0.0",
     "jest": "^30.4.2",
     "rimraf": "^6.1.2",
-    "typescript": "^5.9.3"
+    "typescript": "~5"
   }
 }

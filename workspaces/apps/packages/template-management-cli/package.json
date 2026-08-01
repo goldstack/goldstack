@@ -55,7 +55,7 @@
     "concurrently": "^7.3.0",
     "jest": "^30.4.2",
     "rimraf": "^6.1.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "ts-node": "~10",
+    "typescript": "~5"
   }
 }

@@ -67,8 +67,8 @@
     "rimraf": "^6.1.2",
     "supertest": "^7.1.4",
     "tree-kill": "^1.2.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3",
+    "ts-node": "~10",
+    "typescript": "~5",
     "typescript-plugin-css-modules": "^5.1.0"
   }
 }
