@@ -48,7 +48,7 @@
     "yargs": "^17"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.15.47",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/json-stable-stringify": "^1.1.0",

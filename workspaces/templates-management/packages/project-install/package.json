@@ -34,7 +34,7 @@
     "@goldstack/template-build": "0.1.0",
     "@goldstack/template-repository": "0.1.0",
     "@goldstack/utils-template-test": "0.1.0",
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.15.47",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",

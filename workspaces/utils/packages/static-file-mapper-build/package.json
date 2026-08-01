@@ -35,7 +35,7 @@
     "static-file-mapper": "0.3.32"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.15.47",
     "@swc/jest": "^0.2.39",
     "@types/aws-lambda": "^8.10.159",
     "@types/jest": "^30.0.0",

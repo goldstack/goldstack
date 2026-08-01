@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "@goldstack/utils-package-config-generate": "0.3.30",
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.15.47",
     "@swc/jest": "^0.2.39",
     "@types/aws-lambda": "^8.10.159",
     "@types/jest": "^30.0.0",

@@ -44,7 +44,7 @@
     "node-watch": "^0.6.4"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.15.47",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/minimatch": "^5.1.2",

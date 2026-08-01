@@ -33,7 +33,7 @@
     "@goldstack/template-lambda-api-cli": "0.6.114",
     "@goldstack/utils-aws-http-api-local": "0.3.95",
     "@jest-mock/express": "^1.4.5",
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.15.47",
     "@swc/jest": "^0.2.39",
     "@types/aws-lambda": "^8.10.159",
     "@types/aws-serverless-express": "^3.3.10",

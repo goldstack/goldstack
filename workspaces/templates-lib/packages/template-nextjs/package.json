@@ -68,7 +68,7 @@
   "devDependencies": {
     "@aws-sdk/types": "^3.974.2",
     "@goldstack/utils-package-config-generate": "0.3.30",
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.15.47",
     "@swc/jest": "^0.2.39",
     "@types/glob": "^8.1.0",
     "@types/jest": "^30.0.0",
