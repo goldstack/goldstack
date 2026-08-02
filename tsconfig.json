@@ -25,7 +25,8 @@
       "jest",
       "node"
     ],
-    "outDir": "dist"
+    "outDir": "dist",
+    "rootDir": "scripts"
   },
   "include": [
     "scripts/*"
