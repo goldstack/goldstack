@@ -106,6 +106,7 @@ jobs:
           OPENCODE_GO_API_KEY: ${{ secrets.OPENCODE_GO_API_KEY }}
         with:
           model: opencode-go/deepseek-v4-pro
+          use_github_token: true
           prompt: |
             You are performing the maintenance task in ${{ matrix.context }}: ${{ matrix.name }}
 
