@@ -15,7 +15,7 @@
     "incremental": true,
     "module": "esnext",
     "noEmit": false,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "isolatedModules": true
   },
   "exclude": ["node_modules"],
