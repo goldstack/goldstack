@@ -95,6 +95,11 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - name: Configure git
+        run: |
+          git config --global user.email "66645074+goldstack@users.noreply.github.com"
+          git config --global user.name "Goldstack Project Builder"
+
       - name: Setup OpenCode auth
         run: |
           mkdir -p ~/.local/share/opencode
