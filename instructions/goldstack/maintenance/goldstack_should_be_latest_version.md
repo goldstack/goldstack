@@ -1,5 +1,7 @@
 # Goldstack Should Be Latest Version
 
+Before proceeding, check the version gating (see `instructions/goldstack/version-gating.md`). If the installed Goldstack packages were last bumped less than 60 days ago, treat this task as a no-op and do not produce any changes.
+
 1. Check workflow applicability
 
 DO NOT RUN this task when you are on the github.com/goldstack/goldstack repo.

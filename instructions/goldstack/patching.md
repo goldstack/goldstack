@@ -2,6 +2,10 @@
 
 This workflow applies every time a dependency is changed in the project.
 
+## Semver Ranges
+
+Always use `^` (caret) semver ranges in `package.json`. Never use `~` (tilde). The caret range allows minor and patch updates to flow naturally between version-bump maintenance runs, without locking to an overly narrow range.
+
 ## Steps
 
 ### 1. Run the Audit
