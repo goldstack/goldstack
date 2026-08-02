@@ -1,8 +1,8 @@
 name: maintenance
 
 on:
-  schedule:
-    - cron: '41 19 * * 6'
+  # schedule:
+  #   - cron: '41 19 * * 0' 
   workflow_dispatch:
     inputs:
       task:
