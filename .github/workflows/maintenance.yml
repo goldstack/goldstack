@@ -93,13 +93,12 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          persist-credentials: false
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Configure git
         run: |
           git config --global user.email "66645074+goldstack@users.noreply.github.com"
           git config --global user.name "Goldstack Project Builder"
-          git remote set-url origin "https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}"
 
       - name: Setup OpenCode auth
         run: |
