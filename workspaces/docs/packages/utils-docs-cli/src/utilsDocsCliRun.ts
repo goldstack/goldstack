@@ -6,7 +6,7 @@ import { getDocsDir, resolveMarkdown, transpile } from './utilsDocsCli';
 
 export const run = async (): Promise<void> => {
   await wrapCli(async (): Promise<void> => {
-    const argv = await yargs
+    const argv = await (yargs() as any)
       .demandCommand(1)
       .usage('Usage: $0 <command> [options]')
       .command('generate-doc <path>', 'Converts a documentation page to HTML', (yargs) => {
