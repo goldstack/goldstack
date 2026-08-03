@@ -28,6 +28,7 @@ export const run = async (args: string[]): Promise<void> => {
       infraCommands: infraCommands(),
     })
       .command('set-nextjs-env <deployment>', 'Set NextJs environment variables', () => {
+        // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
         return yargs.positional('deployment', {
           type: 'string',
           describe: 'Name of the deployment this command should be applied to',
@@ -35,6 +36,7 @@ export const run = async (args: string[]): Promise<void> => {
         });
       })
       .command('package-cf-function <deployment>', 'Package the CloudFront function', () => {
+        // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
         return yargs.positional('deployment', {
           type: 'string',
           describe: 'Name of the deployment this command should be applied to',
@@ -42,6 +44,7 @@ export const run = async (args: string[]): Promise<void> => {
         });
       })
       .command('deploy-cf-function <deployment>', 'Deploy the CloudFront function', () => {
+        // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
         return yargs.positional('deployment', {
           type: 'string',
           describe: 'Name of the deployment this command should be applied to',

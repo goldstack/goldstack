@@ -1,5 +1,4 @@
 import { run } from '@goldstack/utils-package-config-generate';
 
-declare var process: { argv: string[] };
-
+// @ts-ignore TS6 + ts-node doesn't resolve process global for scripts outside project scope
 run(process.argv);
