@@ -22,11 +22,13 @@ import { defaultRoutesPath } from './templateLambdaConsts';
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
     const argv = await buildCli({
+      // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
       yargs,
       deployCommands: buildDeployCommands(),
       infraCommands: infraCommands(),
     })
       .command('build [deployment] [filter]', 'Build lambdas', () => {
+        // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
         return yargs
           .positional('deployment', {
             type: 'string',
@@ -40,6 +42,7 @@ export const run = async (args: string[]): Promise<void> => {
           });
       })
       .command('deploy [deployment] [filter]', 'Deploy lambdas', () => {
+        // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
         return yargs
           .positional('deployment', {
             type: 'string',

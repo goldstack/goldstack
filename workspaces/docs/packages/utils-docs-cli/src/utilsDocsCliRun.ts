@@ -6,7 +6,8 @@ import { getDocsDir, resolveMarkdown, transpile } from './utilsDocsCli';
 
 export const run = async (): Promise<void> => {
   await wrapCli(async (): Promise<void> => {
-    const argv = await (yargs() as any)
+    const argv = await yargs
+      // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
       .demandCommand(1)
       .usage('Usage: $0 <command> [options]')
       .command('generate-doc <path>', 'Converts a documentation page to HTML', (yargs) => {
