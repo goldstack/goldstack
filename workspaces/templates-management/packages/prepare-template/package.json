@@ -21,11 +21,11 @@
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/utils-config": "0.4.46",
-    "@goldstack/utils-log": "0.3.39",
-    "@goldstack/utils-package": "0.4.48",
-    "@goldstack/utils-sh": "0.5.44",
-    "@goldstack/utils-template": "0.4.47",
+    "@goldstack/utils-config": "0.4.47",
+    "@goldstack/utils-log": "0.3.40",
+    "@goldstack/utils-package": "0.4.49",
+    "@goldstack/utils-sh": "0.5.45",
+    "@goldstack/utils-template": "0.4.48",
     "jsonpath": "^1.1.1"
   },
   "devDependencies": {

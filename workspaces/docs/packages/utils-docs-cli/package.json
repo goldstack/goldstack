@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-docs-cli",
-  "version": "0.3.20",
+  "version": "0.3.21",
   "description": "Utilities for generating documentation for Goldstack templates",
   "keywords": [
     "goldstack",
@@ -37,9 +37,9 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-cli": "0.3.36",
-    "@goldstack/utils-docs": "0.4.45",
-    "@goldstack/utils-sh": "0.5.44",
+    "@goldstack/utils-cli": "0.3.37",
+    "@goldstack/utils-docs": "0.4.46",
+    "@goldstack/utils-sh": "0.5.45",
     "@types/yargs": "^17.0.33",
     "source-map-support": "^0.5.21",
     "yargs": "^17"

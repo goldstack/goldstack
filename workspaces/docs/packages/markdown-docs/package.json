@@ -21,9 +21,9 @@
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/utils-cli": "0.3.36",
-    "@goldstack/utils-docs": "0.4.45",
-    "@goldstack/utils-sh": "0.5.44",
+    "@goldstack/utils-cli": "0.3.37",
+    "@goldstack/utils-docs": "0.4.46",
+    "@goldstack/utils-sh": "0.5.45",
     "@types/yargs": "^17.0.33",
     "source-map-support": "^0.5.21",
     "yargs": "^17"
