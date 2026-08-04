@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/serverless-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "API build from multiple Lambdas behind an API gateway",
   "license": "MIT",
   "author": "Max Rohde",
@@ -25,13 +25,13 @@
     "watch": "PORT=5054 CORS=http://localhost:3000 GOLDSTACK_DEPLOYMENT=local ts-node-dev --respawn ./scripts/start.ts"
   },
   "dependencies": {
-    "@goldstack/utils-esbuild": "0.5.28",
+    "@goldstack/utils-esbuild": "0.5.29",
     "date-fns": "^2.28.0",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@goldstack/template-lambda-api-cli": "0.6.114",
-    "@goldstack/utils-aws-http-api-local": "0.3.95",
+    "@goldstack/template-lambda-api-cli": "0.6.115",
+    "@goldstack/utils-aws-http-api-local": "0.3.96",
     "@jest-mock/express": "^1.4.5",
     "@swc/core": "^1.15.46",
     "@swc/jest": "^0.2.39",

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-template-test",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Max Rohde",
   "sideEffects": false,
   "main": "src/utilsTemplateTest.ts",
@@ -21,15 +21,15 @@
     "test-watch": "jest --config=./jest.config.js --watch"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.45",
-    "@goldstack/template-build": "0.1.0",
-    "@goldstack/template-repository": "0.1.0",
-    "@goldstack/utils-config": "0.4.45",
-    "@goldstack/utils-log": "0.3.38",
-    "@goldstack/utils-package": "0.4.47",
-    "@goldstack/utils-sh": "0.5.43",
-    "@goldstack/utils-template": "0.4.46",
-    "@goldstack/utils-yarn": "0.4.46",
+    "@goldstack/infra": "0.4.46",
+    "@goldstack/template-build": "0.1.1",
+    "@goldstack/template-repository": "0.1.1",
+    "@goldstack/utils-config": "0.4.46",
+    "@goldstack/utils-log": "0.3.39",
+    "@goldstack/utils-package": "0.4.48",
+    "@goldstack/utils-sh": "0.5.44",
+    "@goldstack/utils-template": "0.4.47",
+    "@goldstack/utils-yarn": "0.4.47",
     "axios": "^1.15.0",
     "extract-zip": "^2.0.1",
     "mock-aws-s3-v3": "6.1.16"

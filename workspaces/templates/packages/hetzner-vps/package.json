@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/hetzner-vps",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "license": "MIT",
   "author": "Max Rohde",
@@ -23,11 +23,11 @@
     "test": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/template-hetzner-vps": "0.1.79",
-    "@goldstack/utils-sh": "0.5.43"
+    "@goldstack/template-hetzner-vps": "0.1.80",
+    "@goldstack/utils-sh": "0.5.44"
   },
   "devDependencies": {
-    "@goldstack/template-hetzner-vps-cli": "0.1.87",
+    "@goldstack/template-hetzner-vps-cli": "0.1.88",
     "@swc/core": "^1.15.46",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

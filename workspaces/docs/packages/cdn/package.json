@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/cdn",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Content for Goldstack documentation and websites",
   "license": "MIT",
@@ -29,8 +29,8 @@
     "web:watch": "yarn build-web $@ && nodemon --watch ./../../ --ignore ./webDist -e '*' --exec \"yarn build-web $@\""
   },
   "devDependencies": {
-    "@goldstack/template-static-website-aws": "0.5.104",
-    "@goldstack/utils-sh": "0.5.43",
+    "@goldstack/template-static-website-aws": "0.5.105",
+    "@goldstack/utils-sh": "0.5.44",
     "@swc/core": "^1.15.46",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",

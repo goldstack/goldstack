@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/lambda-node-trigger",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Provides a Node.js based lambda that is triggered by an event or a message",
   "license": "MIT",
@@ -23,10 +23,10 @@
   },
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.1101.0",
-    "@goldstack/template-lambda-trigger-cli": "0.1.86",
-    "@goldstack/template-sqs": "0.1.74",
-    "@goldstack/utils-log": "0.3.38",
-    "@goldstack/utils-sh": "0.5.43",
+    "@goldstack/template-lambda-trigger-cli": "0.1.87",
+    "@goldstack/template-sqs": "0.1.75",
+    "@goldstack/utils-log": "0.3.39",
+    "@goldstack/utils-sh": "0.5.44",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {

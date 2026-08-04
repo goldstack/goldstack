@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/project-build",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -21,17 +21,17 @@
     "test-watch": "jest --config=./jest.config.js --watch"
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.4.72",
-    "@goldstack/template-repository": "0.1.0",
-    "@goldstack/utils-config": "0.4.45",
-    "@goldstack/utils-log": "0.3.38",
-    "@goldstack/utils-package": "0.4.47",
-    "@goldstack/utils-project": "0.4.46",
-    "@goldstack/utils-sh": "0.5.43",
+    "@goldstack/infra-aws": "0.4.73",
+    "@goldstack/template-repository": "0.1.1",
+    "@goldstack/utils-config": "0.4.46",
+    "@goldstack/utils-log": "0.3.39",
+    "@goldstack/utils-package": "0.4.48",
+    "@goldstack/utils-project": "0.4.47",
+    "@goldstack/utils-sh": "0.5.44",
     "sort-package-json": "^3.4.0"
   },
   "devDependencies": {
-    "@goldstack/utils-template-test": "0.1.0",
+    "@goldstack/utils-template-test": "0.1.1",
     "@swc/core": "^1.15.46",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
