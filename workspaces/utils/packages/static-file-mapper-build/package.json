@@ -31,7 +31,7 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-sh": "0.5.43",
+    "@goldstack/utils-sh": "0.5.44",
     "static-file-mapper": "0.3.32"
   },
   "devDependencies": {

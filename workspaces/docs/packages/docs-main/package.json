@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/docs-main",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "",
   "author": "",
   "sideEffects": false,
@@ -31,8 +31,8 @@
   },
   "dependencies": {
     "@fullstory/browser": "^1.4.5",
-    "@goldstack/toc-generator": "0.1.0",
-    "@goldstack/utils-track": "0.2.36",
+    "@goldstack/toc-generator": "0.1.1",
+    "@goldstack/utils-track": "0.2.37",
     "cheerio": "1.0.0-rc.10",
     "next": "^16.2.12",
     "react": "^19.2.8",
@@ -43,9 +43,9 @@
     "swr": "^0.4.0"
   },
   "devDependencies": {
-    "@goldstack/markdown-docs": "0.1.0",
-    "@goldstack/template-nextjs": "0.5.117",
-    "@goldstack/utils-sh": "0.5.43",
+    "@goldstack/markdown-docs": "0.1.1",
+    "@goldstack/template-nextjs": "0.5.118",
+    "@goldstack/utils-sh": "0.5.44",
     "@swc/core": "^1.15.46",
     "@swc/jest": "^0.2.39",
     "@testing-library/dom": "^10",

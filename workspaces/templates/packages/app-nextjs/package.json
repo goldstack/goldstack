@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/app-nextjs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "author": "",
   "sideEffects": false,
@@ -35,8 +35,8 @@
     "swr": "^0.4.0"
   },
   "devDependencies": {
-    "@goldstack/template-nextjs": "0.5.117",
-    "@goldstack/utils-sh": "0.5.43",
+    "@goldstack/template-nextjs": "0.5.118",
+    "@goldstack/utils-sh": "0.5.44",
     "@swc/core": "^1.15.46",
     "@swc/jest": "^0.2.39",
     "@testing-library/dom": "^10",

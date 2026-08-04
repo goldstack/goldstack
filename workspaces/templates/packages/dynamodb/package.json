@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/dynamodb",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "license": "MIT",
   "author": "Max Rohde",
@@ -29,13 +29,13 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.1101.0",
     "@aws-sdk/lib-dynamodb": "^3.1101.0",
-    "@goldstack/template-dynamodb": "0.4.25",
-    "@goldstack/utils-log": "0.3.38",
+    "@goldstack/template-dynamodb": "0.4.26",
+    "@goldstack/utils-log": "0.3.39",
     "dynamodb-toolbox": "^2.7.2",
     "umzug": "^3.8.2"
   },
   "devDependencies": {
-    "@goldstack/template-dynamodb-cli": "0.6.99",
+    "@goldstack/template-dynamodb-cli": "0.6.100",
     "@swc/core": "^1.15.46",
     "@swc/jest": "^0.2.39",
     "@types/ejs": "^3.1.5",

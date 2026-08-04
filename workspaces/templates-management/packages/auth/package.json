@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/auth",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Utilities for authentication and authorization",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -21,11 +21,11 @@
     "test-watch": "jest --config=./jest.config.js --watch"
   },
   "dependencies": {
-    "@goldstack/project-repository-bucket": "0.1.0",
-    "@goldstack/utils-package": "0.4.47",
-    "@goldstack/utils-project": "0.4.46",
-    "@goldstack/utils-sh": "0.5.43",
-    "@goldstack/utils-template": "0.4.46",
+    "@goldstack/project-repository-bucket": "0.1.1",
+    "@goldstack/utils-package": "0.4.48",
+    "@goldstack/utils-project": "0.4.47",
+    "@goldstack/utils-sh": "0.5.44",
+    "@goldstack/utils-template": "0.4.47",
     "archiver": "^5.3.1",
     "fs-extra": "^11.2.0",
     "semver": "^7.6.3",

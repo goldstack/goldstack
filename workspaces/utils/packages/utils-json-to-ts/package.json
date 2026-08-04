@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-json-to-ts",
-  "version": "0.4.43",
+  "version": "0.4.44",
   "description": "Utility to convert JSON schema into TypeScript interfaces.",
   "keywords": [
     "goldstack",
@@ -37,8 +37,8 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-log": "0.3.38",
-    "@goldstack/utils-sh": "0.5.43",
+    "@goldstack/utils-log": "0.3.39",
+    "@goldstack/utils-sh": "0.5.44",
     "json-schema-to-typescript": "^9.1.1",
     "replace-ext": "^2.0.0"
   },

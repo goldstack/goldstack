@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/email-send",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "license": "MIT",
   "author": "Max Rohde",
@@ -23,11 +23,11 @@
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.1101.0",
-    "@goldstack/template-email-send": "0.4.103",
-    "@goldstack/utils-sh": "0.5.43"
+    "@goldstack/template-email-send": "0.4.104",
+    "@goldstack/utils-sh": "0.5.44"
   },
   "devDependencies": {
-    "@goldstack/template-email-send-cli": "0.5.103",
+    "@goldstack/template-email-send-cli": "0.5.104",
     "@swc/core": "^1.15.46",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
