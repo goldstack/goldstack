@@ -1893,7 +1893,7 @@ __metadata:
     svg-url-loader: "npm:^8.0.0"
     swr: "npm:^0.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -1931,7 +1931,7 @@ __metadata:
     swr: "npm:^0.4.0"
     tailwindcss: "npm:^3"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -1965,7 +1965,7 @@ __metadata:
     svg-url-loader: "npm:^8.0.0"
     swr: "npm:^0.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -1989,7 +1989,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     semver: "npm:^7.6.3"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     uuid: "npm:11"
   languageName: unknown
   linkType: soft
@@ -2008,7 +2008,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   languageName: unknown
   linkType: soft
@@ -2026,7 +2026,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2046,7 +2046,7 @@ __metadata:
     reload: "npm:^3.4.3"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2066,7 +2066,7 @@ __metadata:
     nodemon: "npm:^3.1.14"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2113,7 +2113,7 @@ __metadata:
     svg-url-loader: "npm:^8.0.0"
     swr: "npm:^0.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2139,7 +2139,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     umzug: "npm:^3.8.2"
   languageName: unknown
   linkType: soft
@@ -2159,7 +2159,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2223,7 +2223,7 @@ __metadata:
     supertest-session: "npm:^5.0.1"
     ts-node: "npm:^10.9.2"
     ts-node-dev: "npm:^2.0.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     uuid: "npm:11"
   languageName: unknown
   linkType: soft
@@ -2243,7 +2243,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2300,7 +2300,7 @@ __metadata:
     swr: "npm:^0.4.0"
     ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2318,7 +2318,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2344,7 +2344,7 @@ __metadata:
     renamer: "npm:^0.7.0"
     rimraf: "npm:^6.1.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2367,7 +2367,7 @@ __metadata:
     renamer: "npm:^0.7.0"
     rimraf: "npm:^6.1.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2386,7 +2386,7 @@ __metadata:
     renamer: "npm:^0.7.0"
     rimraf: "npm:^6.1.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2419,7 +2419,7 @@ __metadata:
     supertest: "npm:^7.1.4"
     ts-node: "npm:^10.9.2"
     ts-node-dev: "npm:^2.0.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2444,7 +2444,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2462,7 +2462,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2476,7 +2476,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2495,7 +2495,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     markdown-docs: ./bin/markdown-docs
@@ -2517,7 +2517,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2531,7 +2531,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2550,7 +2550,7 @@ __metadata:
     minimatch: "npm:^10.0.1"
     node-watch: "npm:^0.6.4"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   bin:
     nodemonx: ./bin/utils-nodemonx
   languageName: unknown
@@ -2574,7 +2574,7 @@ __metadata:
     jsonpath: "npm:^1.1.1"
     rimraf: "npm:^6.1.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2598,7 +2598,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     sort-package-json: "npm:^3.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2621,7 +2621,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     sort-package-json: "npm:^3.4.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2641,7 +2641,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     temp-dir: "npm:^2.0.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2668,7 +2668,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     temp-dir: "npm:^2.0.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2690,7 +2690,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2712,7 +2712,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2741,7 +2741,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     semver: "npm:^7.6.3"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     uuid: "npm:11"
   languageName: unknown
   linkType: soft
@@ -2762,7 +2762,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2825,7 +2825,7 @@ __metadata:
     tailwindcss: "npm:^3"
     tree-kill: "npm:^1.2.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     typescript-plugin-css-modules: "npm:^5.1.0"
   languageName: unknown
   linkType: soft
@@ -2856,7 +2856,7 @@ __metadata:
     supertest: "npm:^7.1.4"
     ts-node: "npm:^10.9.2"
     ts-node-dev: "npm:^2.0.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2878,7 +2878,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2903,7 +2903,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     stripe: "npm:^8.114.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     uuid: "npm:11"
   languageName: unknown
   linkType: soft
@@ -2929,7 +2929,7 @@ __metadata:
     reload: "npm:^3.4.3"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2956,7 +2956,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     template-backup-central: ./bin/template-backup-central
@@ -2979,7 +2979,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -3007,7 +3007,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     template-backup: ./bin/template-backup
@@ -3030,7 +3030,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -3061,7 +3061,7 @@ __metadata:
     mock-aws-s3-v3: "npm:6.1.16"
     rimraf: "npm:^6.1.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -3082,7 +3082,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -3117,7 +3117,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     template: ./bin/template
@@ -3148,7 +3148,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     umzug: "npm:^3.8.2"
     yargs: "npm:^17"
   bin:
@@ -3186,7 +3186,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     tcp-port-used: "npm:^1.0.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     umzug: "npm:^3.8.2"
     wait-port: "npm:^1.1.0"
   languageName: unknown
@@ -3212,7 +3212,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     template: ./bin/template
@@ -3246,7 +3246,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     uuid: "npm:11"
   languageName: unknown
   linkType: soft
@@ -3279,7 +3279,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     template: ./bin/template
@@ -3311,7 +3311,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     uuid: "npm:11"
   languageName: unknown
   linkType: soft
@@ -3349,7 +3349,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     template: ./bin/template
@@ -3379,7 +3379,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -3409,7 +3409,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     template: ./bin/template
@@ -3444,7 +3444,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     template: ./bin/template
@@ -3480,7 +3480,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     ts-json-schema-generator: "npm:^2.4.0"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     template: ./bin/template
@@ -3524,7 +3524,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     tmp: "npm:^0.2.5"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   languageName: unknown
   linkType: soft
@@ -3541,7 +3541,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -3577,7 +3577,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     template: ./bin/template
@@ -3603,7 +3603,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -3628,7 +3628,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     semver: "npm:^7.6.3"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -3657,7 +3657,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     template: ./bin/template
@@ -3694,7 +3694,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -3725,7 +3725,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     uuid: "npm:11"
   languageName: unknown
   linkType: soft
@@ -3761,7 +3761,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   languageName: unknown
   linkType: soft
@@ -3798,7 +3798,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     static-file-mapper-build: "npm:0.3.48"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -3833,7 +3833,7 @@ __metadata:
     source-map-support: "npm:^0.5.21"
     static-file-mapper: "npm:0.3.32"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -3865,7 +3865,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -3896,7 +3896,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     template: ./bin/template
@@ -3924,7 +3924,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -3955,7 +3955,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     template: ./bin/template
@@ -3986,7 +3986,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4002,7 +4002,7 @@ __metadata:
     cheerio: "npm:1.0.0-rc.10"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4025,7 +4025,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     uuid: "npm:11"
   languageName: unknown
   linkType: soft
@@ -4045,7 +4045,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4068,7 +4068,7 @@ __metadata:
     jest: "npm:^30.4.2"
     node-fetch: "npm:^3.3.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4092,7 +4092,7 @@ __metadata:
     esbuild-ssr-css-modules-plugin: "npm:0.1.34"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4108,7 +4108,7 @@ __metadata:
     pino: "npm:^9.4.0"
     pino-pretty: "npm:^11.2.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4126,7 +4126,7 @@ __metadata:
     handlebars: "npm:4.7.9"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4142,7 +4142,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4161,7 +4161,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     utils-docs-cli: ./bin/utils-docs-cli
@@ -4191,7 +4191,7 @@ __metadata:
     remark-parse: "npm:7.0.1"
     remark-rehype: "npm:5.0.0"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     unified: "npm:8.4.1"
     unist-util-visit: "npm:2.0.0"
   languageName: unknown
@@ -4207,7 +4207,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4224,7 +4224,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   bin:
     utils-git: ./bin/utils-git
   languageName: unknown
@@ -4245,7 +4245,7 @@ __metadata:
     json-schema-to-typescript: "npm:^9.1.1"
     replace-ext: "npm:^2.0.0"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   bin:
     utils-json-to-ts: ./bin/jsontots
   languageName: unknown
@@ -4262,7 +4262,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4279,7 +4279,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4296,7 +4296,7 @@ __metadata:
     renamer: "npm:^0.7.0"
     rimraf: "npm:^6.1.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     utils-package-config-generate: ./bin/utils-package-config-generate
@@ -4317,7 +4317,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4334,7 +4334,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4354,7 +4354,7 @@ __metadata:
     renamer: "npm:^0.7.0"
     rimraf: "npm:^6.1.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   languageName: unknown
   linkType: soft
@@ -4374,7 +4374,7 @@ __metadata:
     renamer: "npm:^0.7.0"
     rimraf: "npm:^6.1.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4393,7 +4393,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4411,7 +4411,7 @@ __metadata:
     jest: "npm:^30.4.2"
     mock-aws-s3-v3: "npm:6.1.16"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4435,7 +4435,7 @@ __metadata:
     glob: "npm:11.1.0"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     which: "npm:^2.0.2"
     yauzl: "npm:^2.10.0"
   languageName: unknown
@@ -4465,7 +4465,7 @@ __metadata:
     mock-aws-s3-v3: "npm:6.1.16"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4482,7 +4482,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4506,7 +4506,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4527,7 +4527,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4553,7 +4553,7 @@ __metadata:
     json-stable-stringify: "npm:^1.0.1"
     rimraf: "npm:^6.1.2"
     ts-json-schema-generator: "npm:^2.4.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   languageName: unknown
   linkType: soft
@@ -4570,7 +4570,7 @@ __metadata:
     jest: "npm:^30.4.2"
     react: "npm:^19.2.8"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4588,7 +4588,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     source-map-support: "npm:^0.5.21"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
     yargs: "npm:^17"
   bin:
     utils-typescript-references: ./bin/utils-typescript-references
@@ -4608,7 +4608,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -8053,7 +8053,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     nodemon: "npm:^3.1.14"
     react: "npm:^19.2.8"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -10314,7 +10314,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     nodemon: "npm:^3.1.14"
     react: "npm:^19.2.8"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -10583,7 +10583,7 @@ __metadata:
     "@types/yargs": "npm:^17.0.33"
     jest: "npm:^30.4.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -10921,7 +10921,7 @@ __metadata:
     esbuild: "npm:^0.25.6"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   peerDependencies:
     esbuild: ^0.25.6
   languageName: unknown
@@ -10942,7 +10942,7 @@ __metadata:
     postcss-modules-sync: "npm:^1.0.0"
     rimraf: "npm:^6.1.2"
     sha256: "npm:^0.2.0"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   peerDependencies:
     esbuild: ^0.25.6
   languageName: unknown
@@ -10964,7 +10964,7 @@ __metadata:
     rimraf: "npm:^6.1.2"
     static-file-mapper-build: "npm:0.3.48"
     tailwindcss: "npm:^3"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -11235,7 +11235,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     nodemon: "npm:^3.1.14"
     react: "npm:^19.2.8"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -14745,7 +14745,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -15523,7 +15523,7 @@ __metadata:
     jest: "npm:^30.4.2"
     mock-aws-s3: "npm:^4.0.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -15811,7 +15811,7 @@ __metadata:
     postcss-modules: "npm:^5.0.0"
     postcss-modules-sync: "npm:^1.0.0"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -18003,7 +18003,7 @@ __metadata:
     nodemon: "npm:^3.1.14"
     syncpack: "npm:^15.3.2"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -18891,7 +18891,7 @@ __metadata:
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
     static-file-mapper: "npm:0.3.32"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -18906,7 +18906,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     jest: "npm:^30.4.2"
     rimraf: "npm:^6.1.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -19636,7 +19636,7 @@ __metadata:
     nodemon: "npm:^3.1.14"
     react: "npm:^19.2.8"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -19650,7 +19650,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     nodemon: "npm:^3.1.14"
     react: "npm:^19.2.8"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -19668,7 +19668,7 @@ __metadata:
     react: "npm:^19.2.8"
     react-dom: "npm:^19.2.8"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 
@@ -20202,7 +20202,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.8.2, typescript@npm:^5.9.3":
+"typescript@npm:^5.8.2":
   version: 5.9.3
   resolution: "typescript@npm:5.9.3"
   bin:
@@ -20212,13 +20212,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^5.8.2#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.9.3#optional!builtin<compat/typescript>":
+"typescript@npm:^6.0.2":
+  version: 6.0.3
+  resolution: "typescript@npm:6.0.3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10/0ef2357a4cffd916b52b683a021cdab0f81eea4e9aa35f2d254581c9a5106da02224e3392e1b0ed42b7a48f80c966e5f52b8e1a27941fa0523c1705a9c2e0330
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^5.8.2#optional!builtin<compat/typescript>":
   version: 5.9.3
   resolution: "typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10/696e1b017bc2635f4e0c94eb4435357701008e2f272f553d06e35b494b8ddc60aa221145e286c28ace0c89ee32827a28c2040e3a69bdc108b1a5dc8fb40b72e3
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^6.0.2#optional!builtin<compat/typescript>":
+  version: 6.0.3
+  resolution: "typescript@patch:typescript@npm%3A6.0.3#optional!builtin<compat/typescript>::version=6.0.3&hash=5786d5"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10/22b67a18dafedf9b1468b64ca20d9aa02ea61d449b65413d8aa6552aeb63f52ef369e86beb25b6b4c91a803d9726ee5c196f391a9b64201263263410a4223ee6
   languageName: node
   linkType: hard
 
@@ -20672,7 +20692,7 @@ __metadata:
     nodemon: "npm:^3.1.14"
     react: "npm:^19.2.8"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:^5.9.3"
+    typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
 

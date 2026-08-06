@@ -16,6 +16,7 @@ export { deployCli as deployLambda } from './templateLambdaCliDeploy';
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
     const argv = await buildCli({
+      // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
       yargs,
       deployCommands: buildDeployCommands(),
       infraCommands: infraCommands(),

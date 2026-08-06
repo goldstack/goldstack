@@ -37,6 +37,6 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   }
 }

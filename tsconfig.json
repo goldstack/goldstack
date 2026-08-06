@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "incremental": true,
-    "target": "es5",
+    "target": "ES2015",
     "module": "commonjs",
+    "ignoreDeprecations": "6.0",
     "lib": [
       "dom",
       "ESNext"
@@ -25,7 +26,7 @@
       "node"
     ],
     "outDir": "dist",
-    "baseUrl": "."
+    "rootDir": "scripts"
   },
   "include": [
     "scripts/*"
