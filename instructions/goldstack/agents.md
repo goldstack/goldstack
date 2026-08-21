@@ -23,7 +23,6 @@ The following commands should usually be executed on the project root:
 - Always assume methods you want to use are exported in the main module (e.g. don't use `import { getNotionToken } from 'notion-data/src/user/getNotionToken';`, instead use `import { getNotionToken } from 'notion-data';`)
 - If a method has more than 2 arguments, always create a parameter interface type and object. Don't forget TSDoc style comments for every interface and property.
 - When a new method is imported into a module, always add the import and call of the method in one edit operation.
-- If multiple lines need to be changed in a file, do not use replace in file, instead write the whole file
 - Define new methods by using function() rather than a new constant.
 - If there are formatting issues, try to fix with `yarn format`
 
