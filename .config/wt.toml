@@ -7,10 +7,12 @@
 #
 # Docs: https://worktrunk.dev/hook/
 
-# Copy .env* files from the base worktree (usually the primary checkout)
-# into the new worktree without overwriting files that already exist.
+# Copy .env* files from the primary checkout into the new worktree without
+# overwriting files that already exist. ({{ primary_worktree_path }} is the
+# primary checkout; the base is not a checked-out worktree when a session is
+# created off origin/<base>, so {{ base_worktree_path }} is unset there.)
 [[pre-start]]
-env = "for f in {{ base_worktree_path }}/.env*; do [ -f \"$f\" ] && cp -n \"$f\" \"{{ worktree_path }}/\"; done; true"
+env = "for f in {{ primary_worktree_path }}/.env*; do [ -f \"$f\" ] && cp -n \"$f\" \"{{ worktree_path }}/\"; done; true"
 
 # Install dependencies using the package manager matching the lockfile.
 [[pre-start]]
