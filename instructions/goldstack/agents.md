@@ -36,3 +36,22 @@ The following commands should usually be executed on the project root:
 
 - ONLY run test when I ask you OR when fixing a unit test or before pushing changes. Run tests via `yarn test` - run tests in the package directory and not the project root, unless I ask to run them in the project root.
 - When creating a unit test, unless otherwise specified, assume to use real objects/implementations as opposed to Jest mocks
+
+## Dev Sessions & Worktrees
+
+- You may or may not be running inside a git worktree. Detect this with:
+  `git rev-parse --git-dir` and `git rev-parse --git-common-dir` - if the
+  two differ, you are in a linked worktree.
+- When in a worktree: all edits and commits happen **here in the worktree**
+  on its checked-out branch. Never switch branches, never modify the primary
+  checkout or the base branch.
+- Commit early and often with clear conventional commit messages.
+- Pushing, renaming branches, and opening pull requests require my explicit
+  approval. When approved:
+  - Rename the branch to something descriptive derived from the actual
+    changes (e.g. `fix/login-timeout`), unless it already has a good name.
+  - Push with `git push -u origin HEAD`.
+  - Open a pull request against the default branch:
+    - if `origin` points at github.com, use `gh pr create`
+    - if `origin` points at our Gitea server (cooler), use
+      `tea pr create` (see instructions/custom for server specifics)
