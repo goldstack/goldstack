@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "incremental": true,
-    "target": "es5",
+    "target": "ES2015",
+    "ignoreDeprecations": "6.0",
     "module": "commonjs",
     "lib": [
       "dom",
