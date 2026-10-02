@@ -6,6 +6,12 @@ This repository uses:
   - NEVER run commands via npx
 - Biome JS for format checking and linting
 - Jests for testing
+- Agent sessions are never shared. `opencode.json` sets `share: "disabled"`, which
+  makes OpenCode refuse to publish a session at all. The
+  `anomalyco/opencode/github` action must keep its `share: false` input alongside
+  that: the action checks its own input first, and without it the action tries to
+  share, fails with `Sharing is disabled in configuration`, and dies before doing any
+  work.
 
 ## Common Commands
 
