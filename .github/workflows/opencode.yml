@@ -10,13 +10,19 @@ jobs:
   opencode:
     env:
       GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+    # The mention must be at the start of the comment. A substring match would also
+    # match the agent's own share footer (`https://opencode.ai/s/...` contains
+    # `/opencode`), letting each reply re-trigger this workflow in a loop.
     if: |
-      (contains(github.event.comment.body, '/oc') ||
-       contains(github.event.comment.body, '/opencode')) &&
+      (startsWith(github.event.comment.body, '/oc') ||
+       startsWith(github.event.comment.body, '/opencode')) &&
       (github.event.comment.user.login == 'mxro' ||
        github.event.comment.user.login == 'goldstack')
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    concurrency:
+      group: opencode-${{ github.event.issue.number || github.event.pull_request.number }}
+      cancel-in-progress: true
     permissions:
       id-token: write
       contents: write
