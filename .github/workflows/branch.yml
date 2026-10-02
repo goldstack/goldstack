@@ -185,7 +185,7 @@ jobs:
       - uses: ./.github/actions/goldstack-setup
       - name: Compile dependencies
         run: |
-          yarn workspace @goldstack/goldstack-api compile
+          yarn workspace @goldstack/goldstack-home compile
       - name: Build Next.js app
         run: |
           yarn workspace @goldstack/goldstack-home web:build
