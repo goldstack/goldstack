@@ -21,8 +21,12 @@
     ```
   - Merge `master` into the branch and resolve any conflicts:
     ```
-    git merge origin/master
+    git fetch origin master && git merge origin/master
     ```
+    **Merge, never rebase.** This branch's commits are already pushed, and the
+    run pushes with a plain `git push` at the end. Rebasing rewrites their SHAs,
+    the push is then rejected as `non-fast-forward`, and the run fails with all
+    of the work unlanded.
   - Read PR comments to understand what was already done and what remains:
     ```
     gh pr view $PR_NUMBER --comments
@@ -88,11 +92,25 @@ After pushing changes to the PR branch:
 - Repeat until all checks pass or the time limit is reached
 - **Before marking the PR ready**, re-merge `origin/master` into the branch to ensure no conflicts exist since work began:
   ```
-  git merge origin/master
+  git fetch origin master && git merge origin/master
   ```
   - If there are conflicts, resolve them, commit, and push — then wait for CI checks to pass again
   - If the merge produces new commits, push them and wait for CI checks to pass again
   - Only proceed once the merge is clean (no conflicts and no new changes)
+- **Preflight: confirm the branch is still pushable.** Both commands must exit `0`:
+  ```
+  git merge-base --is-ancestor origin/$BRANCH_NAME HEAD
+  git merge-base --is-ancestor origin/master HEAD
+  ```
+  - The first check fails if the history was rewritten (`git rebase`,
+    `git commit --amend` of a pushed commit, `git reset --hard` over pushed
+    commits). Fix it without starting over by merging the remote tip back in,
+    which turns the pending push into a fast-forward:
+    ```
+    git fetch origin $BRANCH_NAME && git merge origin/$BRANCH_NAME
+    ```
+    Resolve any conflicts, commit, push, and wait for CI again.
+  - Never use `git push --force` or `--force-with-lease` to get out of this.
 - **Once all checks pass and the branch is cleanly up to date with master**, mark the PR ready for review:
   ```
   gh pr ready $PR_NUMBER
