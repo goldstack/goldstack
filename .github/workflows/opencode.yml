@@ -51,7 +51,11 @@ jobs:
           mkdir -p ~/.local/share/opencode
           echo '{"opencode-go":{"type":"api","key":"${{ secrets.OPENCODE_GO_API_KEY }}"}}' > ~/.local/share/opencode/auth.json
 
+      # `continue-on-error` lets the publish step below run even when the agent
+      # failed, so a rejected push cannot discard the run's verified work.
       - name: Run OpenCode
+        id: opencode
+        continue-on-error: true
         uses: anomalyco/opencode/github@latest
         env:
           OPENCODE_GO_API_KEY: ${{ secrets.OPENCODE_GO_API_KEY }}
@@ -62,3 +66,41 @@ jobs:
           # and the session is never published to opencode.ai.
           share: false
           use_github_token: true
+
+      # Deterministic recovery: the agent's own `git push` (and the action's) can
+      # be rejected after a rewrite. This republishes the branch under a lease
+      # pinned to the tip captured at checkout, so a concurrent push is refused
+      # rather than clobbered.
+      - name: Publish agent commits
+        id: publish
+        if: ${{ always() }}
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: bash scripts/publish-agent-commits.sh
+
+      # Never start this body with `/oc` or `/opencode`: any comment merely
+      # containing the mention would re-trigger this workflow in a loop.
+      - name: Explain republished commits
+        if: ${{ steps.publish.outputs.published == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          NUMBER: ${{ github.event.issue.number || github.event.pull_request.number }}
+          BRANCH: ${{ steps.publish.outputs.branch }}
+          MODE: ${{ steps.publish.outputs.mode }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          if [ -z "${NUMBER:-}" ]; then
+            NUMBER="$(gh pr list --head "$BRANCH" --json number --jq '.[0].number // empty' || true)"
+          fi
+          if [ -z "$NUMBER" ]; then
+            echo "::notice::No issue or pull request to explain the republished commits on."
+            exit 0
+          fi
+          gh issue comment "$NUMBER" --body "The agent run reported a rejected push (\`non-fast-forward\`). Its commits were published to \`$BRANCH\` afterwards using \`$MODE\`, so the branch now holds the agent's final state. Run log: $RUN_URL"
+
+      - name: Fail the run if the agent failed
+        if: ${{ steps.opencode.outcome == 'failure' }}
+        run: |
+          echo "::error::The opencode agent run failed. See the comment on this thread for details."
+          exit 1

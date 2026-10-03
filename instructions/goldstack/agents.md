@@ -72,19 +72,6 @@ This is not a style preference. Automated agent runs push with a plain
 tip is no longer an ancestor of `HEAD`, the push is rejected with
 `non-fast-forward`, and the whole run fails after all the work is done.
 
-### The one exception: resetting your own maintenance branch
-
-An automated maintenance run works on a `maintenance/*` branch that only that
-run owns. When the branch has drifted far enough from `master` that merging is
-worse than starting over — typically when a previous attempt's partial changes
-conflict with the files this task must edit — reset it to `master` and rebuild.
-`instructions/goldstack/maintenance.md` defines exactly when this applies and
-gives the commands. Use them as written; the lease is what keeps the reset from
-clobbering a concurrent push.
-
-This exception does not extend to a branch a human owns. Never reset, force-push,
-or rebase a branch you did not create.
-
 ### Recover if you already rewrote history
 
 Do not start the task over. A merge commit puts the remote tip back into the
@@ -107,7 +94,10 @@ git add -A && git commit -m "[description]"
 git push -u origin HEAD
 ```
 
-Skip this in a local session, where pushing still needs explicit approval.
+Skip this in a local session, where pushing still needs explicit approval. If the
+push is rejected, do not force it: the workflow republishes the branch after the
+run, so a fast-forward merge of the remote tip is enough to leave things clean.
+The agent never runs `git push --force` or `--force-with-lease`.
 
 ### Preflight before you finish
 
