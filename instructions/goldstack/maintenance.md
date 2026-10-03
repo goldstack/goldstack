@@ -2,37 +2,29 @@
 
 ## 1. Start
 - Run `date` and record the timestamp
-- Check if a PR exists for the branch and its state:
+- `git fetch origin master "$BRANCH_NAME" 2>/dev/null || git fetch origin master`
+- **If `origin/$BRANCH_NAME` does not exist:** create a fresh branch from
+  `master`. The workflow removes the branch when the previous pull request was
+  merged or closed, so this is the normal path after an attempt landed.
   ```
-  gh pr list --head $BRANCH_NAME --json state --jq '.[0].state // "none"'
+  git checkout -b $BRANCH_NAME origin/master
   ```
-- **If PR state is `merged` or `closed`:**
-  - Delete the old branch and start fresh from `master`:
-    ```
-    git checkout master && git pull origin master
-    git branch -D $BRANCH_NAME 2>/dev/null || true
-    git push origin --delete $BRANCH_NAME 2>/dev/null || true
-    git checkout -b $BRANCH_NAME
-    ```
-- **If PR state is `open`:**
-  - Checkout and pull the latest:
-    ```
-    git checkout $BRANCH_NAME && git pull origin $BRANCH_NAME
-    ```
-  - Merge `master` into the branch and resolve any conflicts:
-    ```
-    git merge origin/master
-    ```
-  - Read PR comments to understand what was already done and what remains:
-    ```
-    gh pr view $PR_NUMBER --comments
-    ```
-- **If PR state is `none`:**
-  - Create a fresh branch from `master`:
-    ```
-    git checkout master && git pull origin master
-    git checkout -b $BRANCH_NAME
-    ```
+  Then plan the remaining work as small, committable steps.
+- **If `origin/$BRANCH_NAME` exists:** check it out and bring `master` in.
+  ```
+  git checkout $BRANCH_NAME
+  git merge origin/master
+  ```
+  **Merge, never rebase.** The branch's commits are already pushed and the run
+  pushes with a plain `git push`. Rebasing rewrites their SHAs, the push is
+  rejected as `non-fast-forward`, and the work is lost. Resolve any conflicts,
+  commit the merge, and carry on.
+- Find the pull request, if there is one, and read its comments to understand
+  what was already done and what remains:
+  ```
+  PR_NUMBER=$(gh pr list --head "$BRANCH_NAME" --json number --jq '.[0].number // empty')
+  if [ -n "$PR_NUMBER" ]; then gh pr view "$PR_NUMBER" --comments; fi
+  ```
 - Plan remaining work as small, committable steps
 
 ## 2. For Each Step
@@ -88,11 +80,22 @@ After pushing changes to the PR branch:
 - Repeat until all checks pass or the time limit is reached
 - **Before marking the PR ready**, re-merge `origin/master` into the branch to ensure no conflicts exist since work began:
   ```
-  git merge origin/master
+  git fetch origin master && git merge origin/master
   ```
   - If there are conflicts, resolve them, commit, and push — then wait for CI checks to pass again
   - If the merge produces new commits, push them and wait for CI checks to pass again
   - Only proceed once the merge is clean (no conflicts and no new changes)
+- **Preflight: confirm `master` is still integrated.** This must exit `0`:
+  ```
+  git merge-base --is-ancestor origin/master HEAD
+  ```
+  - It fails if `master` was never merged in, or if the history was rewritten
+    (`git rebase`, `git commit --amend` of a pushed commit, `git reset --hard`
+    over pushed commits). Re-merge `master` to fix it.
+  - Never `git push --force` to rescue a rewrite: put the remote tip back into
+    the history with
+    `git fetch origin $BRANCH_NAME && git merge origin/$BRANCH_NAME` instead.
+    The workflow republishes the branch after the run if a push was rejected.
 - **Once all checks pass and the branch is cleanly up to date with master**, mark the PR ready for review:
   ```
   gh pr ready $PR_NUMBER
