@@ -54,7 +54,7 @@
     "@types/node": "^25.0.3",
     "@types/which": "^3.0.4",
     "@types/yauzl": "^2.9.1",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "rimraf": "^6.1.2",
     "typescript": "^5.9.3"
   },
