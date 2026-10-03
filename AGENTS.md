@@ -46,6 +46,20 @@ The following commands should usually be executed on the project root:
 
 ## Git
 
+### Bring master in with a merge, not a rebase
+
+```
+git fetch origin master && git merge origin/master
+```
+
+Resolve each conflict, `git add` the resolved files, then `git commit`. If
+`git merge` stops to ask about an unresolved path, `git add` it and commit
+rather than aborting the merge and starting over.
+
+This is the default for every branch, including a maintenance agent's own. A
+merge keeps the remote tip an ancestor of `HEAD`, so the run's final push is a
+fast-forward and nothing is rejected.
+
 ### Never rewrite history on a pushed branch
 
 Once a commit is on the remote, treat its SHA as permanent. This means no
@@ -59,15 +73,18 @@ This is not a style preference. Automated agent runs push with a plain
 tip is no longer an ancestor of `HEAD`, the push is rejected with
 `non-fast-forward`, and the whole run fails after all the work is done.
 
-### Bring master in with a merge, not a rebase
+### The one exception: resetting your own maintenance branch
 
-```
-git fetch origin master && git merge origin/master
-```
+An automated maintenance run works on a `maintenance/*` branch that only that
+run owns. When the branch has drifted far enough from `master` that merging is
+worse than starting over — typically when a previous attempt's partial changes
+conflict with the files this task must edit — reset it to `master` and rebuild.
+`instructions/goldstack/maintenance.md` defines exactly when this applies and
+gives the commands. Use them as written; the lease is what keeps the reset from
+clobbering a concurrent push.
 
-Resolve each conflict, `git add` the resolved files, then `git commit`. If
-`git merge` stops to ask about an unresolved path, `git add` it and commit
-rather than aborting the merge and starting over.
+This exception does not extend to a branch a human owns. Never reset, force-push,
+or rebase a branch you did not create.
 
 ### Recover if you already rewrote history
 
@@ -80,18 +97,30 @@ git fetch origin $BRANCH_NAME && git merge origin/$BRANCH_NAME
 
 If that reports conflicts, resolve them and commit as described above.
 
-### Preflight before you finish
+### Push your own work before finishing an automated run
 
-Both commands must exit `0` before you write your final response. If either
-fails, the branch is not pushable and your work will be lost:
+In a GitHub Actions run there is nobody to approve a push, and an unpushed
+branch means the work is lost when the runner is torn down. When `GITHUB_ACTIONS`
+is `true`, commit and push before you write your final response:
 
 ```
-git merge-base --is-ancestor origin/$BRANCH_NAME HEAD
+git add -A && git commit -m "[description]"
+git push -u origin HEAD
+```
+
+Skip this in a local session, where pushing still needs explicit approval.
+
+### Preflight before you finish
+
+This must exit `0` before you write your final response, or `master` is not
+integrated and the branch is not pushable:
+
+```
 git merge-base --is-ancestor origin/master HEAD
 ```
 
-The first is the one that gets violated by a rebase. If `origin/$BRANCH_NAME`
-does not exist yet (a brand-new branch), the first check is not applicable.
+If it fails, re-merge `master`. It also fails after a rebase, which is the case
+the rule above exists to prevent.
 
 ## Dev Sessions & Worktrees
 

@@ -51,11 +51,7 @@ jobs:
           mkdir -p ~/.local/share/opencode
           echo '{"opencode-go":{"type":"api","key":"${{ secrets.OPENCODE_GO_API_KEY }}"}}' > ~/.local/share/opencode/auth.json
 
-      # `continue-on-error` lets the recovery steps below run before the job is
-      # failed. Without them a rejected push loses the whole run.
       - name: Run OpenCode
-        id: opencode
-        continue-on-error: true
         uses: anomalyco/opencode/github@latest
         env:
           OPENCODE_GO_API_KEY: ${{ secrets.OPENCODE_GO_API_KEY }}
@@ -66,75 +62,3 @@ jobs:
           # and the session is never published to opencode.ai.
           share: false
           use_github_token: true
-
-      - name: Publish agent commits
-        id: publish
-        if: ${{ always() }}
-        env:
-          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
-        # Deliberately no `git fetch` here. `origin/<branch>` is the remote tip as
-        # captured when this run checked out, so pinning the lease to it means a
-        # branch someone else moved during the run is left alone rather than
-        # clobbered.
-        run: |
-          set -euo pipefail
-          branch="$(git branch --show-current)"
-          if [ -z "$branch" ] || [ "$branch" = "HEAD" ] || [ "$branch" = "$DEFAULT_BRANCH" ]; then
-            echo "::notice::Checked out '$branch' is not an agent branch; nothing to publish."
-            echo "published=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          remote_ref="refs/remotes/origin/$branch"
-          if ! git rev-parse --verify --quiet "$remote_ref" > /dev/null; then
-            echo "::notice::origin/$branch is unknown; there is no push to recover."
-            echo "published=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          remote_tip="$(git rev-parse "$remote_ref")"
-          ahead="$(git rev-list --count "$remote_ref..HEAD" 2>/dev/null || echo 0)"
-          if [ "$ahead" = "0" ]; then
-            echo "::notice::$remote_ref already contains HEAD; nothing to publish."
-            echo "published=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          if git merge-base --is-ancestor "$remote_tip" HEAD; then
-            echo "Fast-forwarding $branch by $ahead commit(s)..."
-            mode="fast-forward"
-            git push origin "HEAD:refs/heads/$branch"
-          else
-            echo "History was rewritten; republishing $branch with --force-with-lease..."
-            mode="force-with-lease"
-            git push --force-with-lease="refs/heads/$branch:$remote_tip" origin "HEAD:refs/heads/$branch"
-          fi
-          {
-            echo "branch=$branch"
-            echo "mode=$mode"
-            echo "published=true"
-          } >> "$GITHUB_OUTPUT"
-
-      # Never start this body with `/oc` or `/opencode`: that would re-trigger
-      # the workflow. Keep the text first, the run link last.
-      - name: Explain republished commits
-        if: ${{ steps.publish.outputs.published == 'true' }}
-        env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
-          NUMBER: ${{ github.event.issue.number || github.event.pull_request.number }}
-          BRANCH: ${{ steps.publish.outputs.branch }}
-          MODE: ${{ steps.publish.outputs.mode }}
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          set -euo pipefail
-          if [ -z "${NUMBER:-}" ]; then
-            NUMBER="$(gh pr list --head "$BRANCH" --json number --jq '.[0].number // empty' || true)"
-          fi
-          if [ -z "$NUMBER" ]; then
-            echo "::notice::No issue or pull request to explain the republished commits on."
-            exit 0
-          fi
-          gh issue comment "$NUMBER" --body "The agent run reported a rejected push (\`non-fast-forward\`). Its commits were published to \`$BRANCH\` afterwards using \`$MODE\`, so the branch now holds the agent's final state. Run log: $RUN_URL"
-
-      - name: Fail the run if the agent failed
-        if: ${{ steps.opencode.outcome == 'failure' }}
-        run: |
-          echo "::error::The opencode agent run failed. See the comment on this thread for details."
-          exit 1
