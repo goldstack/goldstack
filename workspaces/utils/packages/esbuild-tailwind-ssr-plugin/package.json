@@ -38,7 +38,7 @@
   "dependencies": {
     "autoprefixer": "^10.4.20",
     "esbuild": "^0.25.6",
-    "postcss": "^8.5.6",
+    "postcss": "^8.5.28",
     "static-file-mapper-build": "0.3.48",
     "tailwindcss": "^3"
   },
