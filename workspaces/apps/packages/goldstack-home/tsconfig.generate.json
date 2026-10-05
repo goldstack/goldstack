@@ -6,8 +6,8 @@
     "noEmit": false,
     "declarationMap": false,
     "isolatedModules": false,
-    "module": "CommonJS",
     "types": [],
+    "ignoreDeprecations": "5.0",
     "lib": ["ESNext"],
     "outDir": "dist",
     "baseUrl": "."

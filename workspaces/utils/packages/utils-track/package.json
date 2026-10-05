@@ -43,7 +43,7 @@
     "@types/react": "^19.2.17",
     "jest": "^30.5.2",
     "rimraf": "^6.1.2",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "publishConfig": {
     "main": "dist/src/utilsTrack.js"
