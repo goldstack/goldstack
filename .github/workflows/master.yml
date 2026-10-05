@@ -40,9 +40,18 @@ jobs:
       - name: Install root repo and lint
         run: |
           yarn install
+          { git status --porcelain; git diff; } > /tmp/dirty-before.txt
           yarn format
           yarn format-check
           yarn lint-fix
+          { git status --porcelain; git diff; } > /tmp/dirty-after.txt
+      - name: Ensure lint and format did not modify sources
+        run: |
+          if ! diff -u /tmp/dirty-before.txt /tmp/dirty-after.txt; then
+            echo "::error::yarn format or yarn lint-fix modified sources. Run them locally and commit the result."
+            git --no-pager diff
+            exit 1
+          fi
       - name: NPM Audit
         run: |
           yarn npm audit --all --recursive --severity critical
