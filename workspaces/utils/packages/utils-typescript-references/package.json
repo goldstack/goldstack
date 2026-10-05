@@ -47,7 +47,7 @@
     "@types/yargs": "^17.0.33",
     "jest": "^30.4.2",
     "rimraf": "^6.1.2",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.3"
   },
   "publishConfig": {
     "main": "dist/src/utilsTypeScriptReferences.js"
