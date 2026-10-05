@@ -1,6 +1,6 @@
 {
   "name": "static-file-mapper",
-  "version": "0.3.32",
+  "version": "0.3.33",
   "description": "Helps tracking path to generated static files for deployment bundles",
   "keywords": [
     "javascript"
@@ -31,12 +31,12 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",
     "@types/aws-lambda": "^8.10.159",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "rimraf": "^6.1.2",
     "typescript": "^6.0.3"
   },

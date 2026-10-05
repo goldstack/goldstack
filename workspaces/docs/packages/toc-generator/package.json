@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/toc-generator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Max Rohde",
   "sideEffects": false,
   "main": "src/tocGenerator.ts",
@@ -23,12 +23,12 @@
     "cheerio": "1.0.0-rc.10"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",
     "@types/cheerio": "^0.22.35",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "rimraf": "^6.1.2",
     "typescript": "^6.0.3"
   }

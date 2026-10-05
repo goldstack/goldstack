@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-aws-http-api-local",
-  "version": "0.3.95",
+  "version": "0.3.98",
   "description": "Starts a local AWS HTTP API for testing",
   "keywords": [
     "goldstack",
@@ -44,21 +44,21 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/utils-aws-lambda": "0.3.86",
+    "@goldstack/utils-aws-lambda": "0.3.89",
     "@types/aws-lambda": "^8.10.159",
     "cookie": "^1.0.2",
     "cors": "^2.8.5",
     "express": "4.20.0"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",
     "@types/cookie": "^1.0.0",
     "@types/express": "^5.0.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
     "get-port": "^5.1.1",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "node-fetch": "^3.3.2",
     "rimraf": "^6.1.2",
     "typescript": "^6.0.3"

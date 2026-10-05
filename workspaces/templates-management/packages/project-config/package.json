@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/project-config",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Max Rohde",
   "sideEffects": false,
   "main": "src/projectConfig.ts",
@@ -20,18 +20,18 @@
     "test-watch": "jest --config=./jest.config.js --watch"
   },
   "dependencies": {
-    "@goldstack/utils-config": "0.4.45",
-    "@goldstack/utils-package": "0.4.47",
-    "@goldstack/utils-project": "0.4.46",
-    "@goldstack/utils-sh": "0.5.43",
-    "@goldstack/utils-template": "0.4.46"
+    "@goldstack/utils-config": "0.4.48",
+    "@goldstack/utils-package": "0.4.50",
+    "@goldstack/utils-project": "0.4.49",
+    "@goldstack/utils-sh": "0.5.46",
+    "@goldstack/utils-template": "0.4.49"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "rimraf": "^6.1.2",
     "temp-dir": "^2.0.0",
     "typescript": "^6.0.3"

@@ -1,6 +1,6 @@
 {
   "name": "esbuild-tailwind-ssr-plugin",
-  "version": "0.1.29",
+  "version": "0.1.31",
   "description": "esbuild plugin for compiling Tailwind CSS",
   "keywords": [
     "node",
@@ -38,17 +38,17 @@
   "dependencies": {
     "autoprefixer": "^10.4.20",
     "esbuild": "^0.25.6",
-    "postcss": "^8.5.6",
-    "static-file-mapper-build": "0.3.47",
+    "postcss": "^8.5.28",
+    "static-file-mapper-build": "0.3.49",
     "tailwindcss": "^3"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
     "depcheck": "^1.4.3",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "rimraf": "^6.1.2",
     "typescript": "^6.0.3"
   },

@@ -1,37 +1,38 @@
 {
-  "home": "index.md",
-  "children": [
-    {
-      "home": "index.md",
-      "directory": "goldstack/",
-      "children": [
-        "about/index.md",
-        "how-does-it-work/index.md",
-        "configuration/index.md",
-        "getting-started/index.md",
-        "security-hardening/index.md"
-      ]
-    },
-    {
-      "home": "index.md",
-      "directory": "templates/",
-      "children": [
-        "app-nextjs-bootstrap/index.md",
-        "serverless-api/index.md",
-        "server-side-rendering/index.md",
-        "user-management/index.md",
-        "app-nextjs/index.md",
-        "app-nextjs-tailwind/index.md",
-        "lambda-express/index.md",
-        "dynamodb/index.md",
-        "email-send/index.md",
-        "hetzner-vps/index.md",
-        "static-website-aws/index.md",
-        "s3/index.md",
-        "lambda-go-gin/index.md",
-        "lambda-python-job/index.md",
-        "lambda-node-trigger/index.md"
-      ]
-    }
-  ]
+	"home": "index.md",
+	"children": [
+		{
+			"home": "index.md",
+			"directory": "goldstack/",
+			"children": [
+				"about/index.md",
+				"how-does-it-work/index.md",
+				"configuration/index.md",
+				"getting-started/index.md",
+				"security-hardening/index.md",
+				"agentic-engineering/index.md"
+			]
+		},
+		{
+			"home": "index.md",
+			"directory": "templates/",
+			"children": [
+				"app-nextjs-bootstrap/index.md",
+				"serverless-api/index.md",
+				"server-side-rendering/index.md",
+				"user-management/index.md",
+				"app-nextjs/index.md",
+				"app-nextjs-tailwind/index.md",
+				"lambda-express/index.md",
+				"dynamodb/index.md",
+				"email-send/index.md",
+				"hetzner-vps/index.md",
+				"static-website-aws/index.md",
+				"s3/index.md",
+				"lambda-go-gin/index.md",
+				"lambda-python-job/index.md",
+				"lambda-node-trigger/index.md"
+			]
+		}
+	]
 }

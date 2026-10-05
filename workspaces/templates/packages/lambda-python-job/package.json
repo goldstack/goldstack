@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/lambda-python-job",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Provides a Python Lambda that can run on a schedule or in response to events",
   "license": "MIT",
@@ -22,16 +22,16 @@
     "test": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/template-lambda-trigger-cli": "0.1.86",
-    "@goldstack/utils-log": "0.3.38",
-    "@goldstack/utils-sh": "0.5.43"
+    "@goldstack/template-lambda-trigger-cli": "0.1.89",
+    "@goldstack/utils-log": "0.3.41",
+    "@goldstack/utils-sh": "0.5.46"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "rimraf": "^6.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3"

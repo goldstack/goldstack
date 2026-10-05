@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/docker-image-aws",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "license": "MIT",
   "author": "Max Rohde",
@@ -26,17 +26,17 @@
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/template-docker-image-aws": "0.5.101",
-    "@goldstack/utils-git": "0.2.27",
-    "@goldstack/utils-sh": "0.5.43"
+    "@goldstack/template-docker-image-aws": "0.5.104",
+    "@goldstack/utils-git": "0.2.30",
+    "@goldstack/utils-sh": "0.5.46"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
     "concurrently": "^10.0.4",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "nodemon": "^3.1.14",
     "rimraf": "^6.1.2",
     "ts-node": "^10.9.2",

@@ -1,0 +1,23 @@
+# Worktrunk project hooks for this repository.
+#
+# These hooks run automatically when a new worktree is created
+# (`wt switch --create <branch>`). This file is also the canonical template
+# for derived projects: it is distributed via the instruction sync scripts
+# (see `yarn sync-instructions-local` in derived projects).
+#
+# Docs: https://worktrunk.dev/hook/
+
+# Copy .env* files from the primary checkout into the new worktree without
+# overwriting files that already exist. ({{ primary_worktree_path }} is the
+# primary checkout; the base is not a checked-out worktree when a session is
+# created off origin/<base>, so {{ base_worktree_path }} is unset there.)
+[[pre-start]]
+env = "for f in {{ primary_worktree_path }}/.env*; do [ -f \"$f\" ] && cp -n \"$f\" \"{{ worktree_path }}/\"; done; true"
+
+# Configure the commit identity, so commits in new worktrees are not rejected.
+[[pre-start]]
+env = "git config user.email \"1448524+mxro@users.noreply.github.com\" && git config user.name \"Max Rohde\""
+
+# Install dependencies using the package manager matching the lockfile.
+[[pre-start]]
+install = "if [ -f pnpm-lock.yaml ]; then pnpm install; elif [ -f yarn.lock ] || [ -f .yarnrc.yml ]; then yarn install; elif [ -f package.json ]; then npm install; fi"

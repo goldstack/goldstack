@@ -1,6 +1,7 @@
 {
   "version": 3,
   "pages404": true,
+  "appType": "pages",
   "caseSensitive": false,
   "basePath": "",
   "redirects": [
@@ -8,11 +9,13 @@
       "source": "/:path+/",
       "destination": "/:path+",
       "internal": true,
+      "priority": true,
       "statusCode": 308,
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
     }
   ],
   "headers": [],
+  "onMatchHeaders": [],
   "rewrites": {
     "beforeFiles": [],
     "afterFiles": [],
@@ -188,8 +191,8 @@
       "routeKeys": {
         "nxtPtemplate": "nxtPtemplate"
       },
-      "dataRouteRegex": "^/_next/data/wz6I6zrcRVEbvwdI7e6WD/templates/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/wz6I6zrcRVEbvwdI7e6WD/templates/(?<nxtPtemplate>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/lnlwnQq1wxOcy98OXVr5t/templates/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/lnlwnQq1wxOcy98OXVr5t/templates/(?<nxtPtemplate>[^/]+?)\\.json$"
     }
   ],
   "rsc": {
@@ -199,10 +202,11 @@
     "didPostponeHeader": "x-nextjs-postponed",
     "contentTypeHeader": "text/x-component",
     "suffix": ".rsc",
-    "prefetchSuffix": ".prefetch.rsc",
     "prefetchSegmentHeader": "next-router-segment-prefetch",
     "prefetchSegmentSuffix": ".segment.rsc",
-    "prefetchSegmentDirSuffix": ".segments"
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
   },
   "rewriteHeaders": {
     "pathHeader": "x-nextjs-rewritten-path",

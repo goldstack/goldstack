@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-metadata",
-  "version": "0.1.10",
+  "version": "0.1.13",
   "description": "",
   "license": "MIT",
   "author": "Max Rohde",
@@ -21,15 +21,15 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/template-build-set": "0.1.0",
-    "@goldstack/utils-project": "0.4.46"
+    "@goldstack/template-build-set": "0.1.1",
+    "@goldstack/utils-project": "0.4.49"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "rimraf": "^6.1.2",
     "typescript": "^6.0.3"
   }

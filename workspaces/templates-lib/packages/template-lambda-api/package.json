@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-api",
-  "version": "0.6.104",
+  "version": "0.6.107",
   "description": "Companion for project templates for deploying Lambdas as a REST API",
   "keywords": [
     "goldstack",
@@ -40,22 +40,22 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.45",
-    "@goldstack/infra-aws": "0.4.72",
-    "@goldstack/utils-aws-lambda": "0.3.86",
-    "@goldstack/utils-package": "0.4.47",
-    "@goldstack/utils-terraform": "0.4.92",
+    "@goldstack/infra": "0.4.48",
+    "@goldstack/infra-aws": "0.4.75",
+    "@goldstack/utils-aws-lambda": "0.3.89",
+    "@goldstack/utils-package": "0.4.50",
+    "@goldstack/utils-terraform": "0.4.95",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@goldstack/utils-package-config-generate": "0.3.30",
-    "@swc/core": "^1.15.46",
+    "@goldstack/utils-package-config-generate": "0.3.33",
+    "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",
     "@types/aws-lambda": "^8.10.159",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
     "@types/yargs": "^17.0.33",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "jest-pnp-resolver": "^1.2.3",
     "rimraf": "^6.1.2",
     "ts-json-schema-generator": "^2.4.0",

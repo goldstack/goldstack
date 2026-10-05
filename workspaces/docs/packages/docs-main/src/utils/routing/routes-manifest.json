@@ -1,6 +1,7 @@
 {
   "version": 3,
   "pages404": true,
+  "appType": "pages",
   "caseSensitive": false,
   "basePath": "",
   "redirects": [
@@ -8,6 +9,7 @@
       "source": "/:path+/",
       "destination": "/:path+",
       "internal": true,
+      "priority": true,
       "statusCode": 308,
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
     },
@@ -61,6 +63,7 @@
     }
   ],
   "headers": [],
+  "onMatchHeaders": [],
   "rewrites": {
     "beforeFiles": [],
     "afterFiles": [],
@@ -118,26 +121,6 @@
     {
       "page": "/docs/modules/app-nextjs-bootstrap",
       "regex": "^\\/docs\\/modules\\/app-nextjs-bootstrap$"
-    },
-    {
-      "page": "/docs/goldstack/security-hardening",
-      "regex": "^\\/docs\\/goldstack\\/security-hardening$"
-    },
-    {
-      "page": "/docs/goldstack/how-does-it-work",
-      "regex": "^\\/docs\\/goldstack\\/how-does-it-work$"
-    },
-    {
-      "page": "/docs/goldstack/getting-started",
-      "regex": "^\\/docs\\/goldstack\\/getting-started$"
-    },
-    {
-      "page": "/docs/goldstack/configuration",
-      "regex": "^\\/docs\\/goldstack\\/configuration$"
-    },
-    {
-      "page": "/docs/goldstack/about",
-      "regex": "^\\/docs\\/goldstack\\/about$"
     },
     {
       "page": "/docs/templates/user-management",
@@ -200,6 +183,30 @@
       "regex": "^\\/docs\\/templates\\/app-nextjs-bootstrap$"
     },
     {
+      "page": "/docs/goldstack/security-hardening",
+      "regex": "^\\/docs\\/goldstack\\/security-hardening$"
+    },
+    {
+      "page": "/docs/goldstack/how-does-it-work",
+      "regex": "^\\/docs\\/goldstack\\/how-does-it-work$"
+    },
+    {
+      "page": "/docs/goldstack/getting-started",
+      "regex": "^\\/docs\\/goldstack\\/getting-started$"
+    },
+    {
+      "page": "/docs/goldstack/configuration",
+      "regex": "^\\/docs\\/goldstack\\/configuration$"
+    },
+    {
+      "page": "/docs/goldstack/agentic-engineering",
+      "regex": "^\\/docs\\/goldstack\\/agentic-engineering$"
+    },
+    {
+      "page": "/docs/goldstack/about",
+      "regex": "^\\/docs\\/goldstack\\/about$"
+    },
+    {
       "page": "/docs/[...slug]",
       "regex": "^/docs/(.+?)(?:/)?$",
       "routeKeys": {
@@ -228,8 +235,8 @@
       "routeKeys": {
         "nxtPslug": "nxtPslug"
       },
-      "dataRouteRegex": "^/_next/data/MttMIRILDb0LPby9ObX5E/docs/(.+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/MttMIRILDb0LPby9ObX5E/docs/(?<nxtPslug>.+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/t\\-4qRGX6zNk_pip\\-8ZVby/docs/(.+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/t\\-4qRGX6zNk_pip\\-8ZVby/docs/(?<nxtPslug>.+?)\\.json$"
     }
   ],
   "rsc": {
@@ -239,10 +246,11 @@
     "didPostponeHeader": "x-nextjs-postponed",
     "contentTypeHeader": "text/x-component",
     "suffix": ".rsc",
-    "prefetchSuffix": ".prefetch.rsc",
     "prefetchSegmentHeader": "next-router-segment-prefetch",
     "prefetchSegmentSuffix": ".segment.rsc",
-    "prefetchSegmentDirSuffix": ".segments"
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
   },
   "rewriteHeaders": {
     "pathHeader": "x-nextjs-rewritten-path",

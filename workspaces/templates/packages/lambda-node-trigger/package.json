@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/lambda-node-trigger",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Provides a Node.js based lambda that is triggered by an event or a message",
   "license": "MIT",
@@ -23,14 +23,14 @@
   },
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.1101.0",
-    "@goldstack/template-lambda-trigger-cli": "0.1.86",
-    "@goldstack/template-sqs": "0.1.74",
-    "@goldstack/utils-log": "0.3.38",
-    "@goldstack/utils-sh": "0.5.43",
+    "@goldstack/template-lambda-trigger-cli": "0.1.89",
+    "@goldstack/template-sqs": "0.1.77",
+    "@goldstack/utils-log": "0.3.41",
+    "@goldstack/utils-sh": "0.5.46",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.46",
+    "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",
     "@types/aws-lambda": "^8.10.159",
     "@types/jest": "^30.0.0",
@@ -38,7 +38,7 @@
     "@types/source-map-support": "^0.5.10",
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "esbuild": "^0.25.6",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "rimraf": "^6.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3"

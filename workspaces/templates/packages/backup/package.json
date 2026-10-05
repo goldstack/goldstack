@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/backup",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "license": "MIT",
   "author": "Max Rohde",
@@ -20,15 +20,15 @@
     "test": "echo 'No tests'"
   },
   "dependencies": {
-    "@goldstack/template-backup": "0.1.15"
+    "@goldstack/template-backup": "0.1.18"
   },
   "devDependencies": {
-    "@goldstack/template-backup-cli": "0.1.15",
-    "@swc/core": "^1.15.46",
+    "@goldstack/template-backup-cli": "0.1.18",
+    "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
-    "jest": "^30.4.2",
+    "jest": "^30.5.2",
     "rimraf": "^6.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3"

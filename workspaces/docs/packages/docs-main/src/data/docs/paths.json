@@ -6,6 +6,7 @@
   "goldstack/configuration",
   "goldstack/getting-started",
   "goldstack/security-hardening",
+  "goldstack/agentic-engineering",
   "templates",
   "templates/app-nextjs-bootstrap",
   "templates/serverless-api",
