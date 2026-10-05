@@ -22,12 +22,14 @@ import { setNextjsEnvironmentVariables } from './nextjsEnvironment';
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
     const cliConfig = buildCli({
+      // biome-ignore lint/suspicious/noTsIgnore: the tsc build does not need this suppression, but type-checked ts-node does
       // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
       yargs,
       deployCommands: buildDeployCommands(),
       infraCommands: infraCommands(),
     })
       .command('set-nextjs-env <deployment>', 'Set NextJs environment variables', () => {
+        // biome-ignore lint/suspicious/noTsIgnore: the tsc build does not need this suppression, but type-checked ts-node does
         // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
         return yargs.positional('deployment', {
           type: 'string',
@@ -36,6 +38,7 @@ export const run = async (args: string[]): Promise<void> => {
         });
       })
       .command('package-cf-function <deployment>', 'Package the CloudFront function', () => {
+        // biome-ignore lint/suspicious/noTsIgnore: the tsc build does not need this suppression, but type-checked ts-node does
         // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
         return yargs.positional('deployment', {
           type: 'string',
@@ -44,6 +47,7 @@ export const run = async (args: string[]): Promise<void> => {
         });
       })
       .command('deploy-cf-function <deployment>', 'Deploy the CloudFront function', () => {
+        // biome-ignore lint/suspicious/noTsIgnore: the tsc build does not need this suppression, but type-checked ts-node does
         // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
         return yargs.positional('deployment', {
           type: 'string',

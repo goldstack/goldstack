@@ -25,6 +25,15 @@ The following commands should usually be executed on the project root:
 - `yarn lint-fix`
 - For fixing the linting for a particular file: `yarn biome lint [filePath] --write --unsafe`
 
+## Temporary Files
+
+- Always write temporary files (logs, scratch scripts, extracted archives,
+  comparison copies) to `.agent-tmp/` in the current project directory. Use no
+  other location.
+- Create `.agent-tmp/` if it does not exist yet. It is gitignored, so nothing in
+  it can be committed by accident.
+- Delete temporary files once they have served their purpose.
+
 ## Coding
 
 - Always assume methods you want to use are exported in the main module (e.g. don't use `import { getNotionToken } from 'notion-data/src/user/getNotionToken';`, instead use `import { getNotionToken } from 'notion-data';`)
@@ -120,6 +129,15 @@ the rule above exists to prevent.
 - When in a worktree: all edits and commits happen **here in the worktree**
   on its checked-out branch. Never switch branches, never modify the primary
   checkout or the base branch.
+- Never touch the source repository the worktree was created from, unless I
+  explicitly ask you to. This includes read-only commands: no `rg`, `cat`, `git
+  status`, `tsc` or any other tooling against the primary checkout path, and no
+  `cd` into it. The two checkouts are usually on different branches, so results
+  read from the source repo describe code you are not editing. Resolve the
+  worktree root with `git rev-parse --show-toplevel` and run every command from
+  there (use the shell tool's working-directory argument rather than `cd`).
+- The same applies to temporary files: they belong in `.agent-tmp/` in this
+  worktree, never in the primary checkout.
 - Commit early and often with clear conventional commit messages.
 - Pushing, renaming branches, and opening pull requests require my explicit
   approval. When approved:

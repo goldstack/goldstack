@@ -22,12 +22,14 @@ import { defaultRoutesPath } from './templateLambdaConsts';
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
     const argv = await buildCli({
+      // biome-ignore lint/suspicious/noTsIgnore: the tsc build does not need this suppression, but type-checked ts-node does
       // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
       yargs,
       deployCommands: buildDeployCommands(),
       infraCommands: infraCommands(),
     })
       .command('build [deployment] [filter]', 'Build lambdas', () => {
+        // biome-ignore lint/suspicious/noTsIgnore: the tsc build does not need this suppression, but type-checked ts-node does
         // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
         return yargs
           .positional('deployment', {
@@ -42,6 +44,7 @@ export const run = async (args: string[]): Promise<void> => {
           });
       })
       .command('deploy [deployment] [filter]', 'Deploy lambdas', () => {
+        // biome-ignore lint/suspicious/noTsIgnore: the tsc build does not need this suppression, but type-checked ts-node does
         // @ts-ignore TS6 resolves yargs default export as function signature only in ts-node/Next.js
         return yargs
           .positional('deployment', {
