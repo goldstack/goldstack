@@ -24,6 +24,20 @@ The following commands should usually be executed on the project root:
 - `yarn lint-fix`
 - For fixing the linting for a particular file: `yarn biome lint [filePath] --write --unsafe`
 
+## Temporary Files
+
+- Write temporary files (logs, scratch scripts, extracted archives, comparison
+  copies) either inside the current project directory or under `/tmp`. Those are
+  the only two permitted locations.
+- Any temporary path inside the project directory must be gitignored. Verify with
+  `git check-ignore -q <path>` before writing there, and add an entry to
+  `.gitignore` if the path is not covered yet (`.agent-tmp/` is gitignored for
+  this purpose). Never leave scratch files in a tracked source directory where a
+  later `git add .` can sweep them into a commit.
+- Never place temporary files in a sibling checkout, the primary repository, or
+  any other location, even when working in a worktree (see below).
+- Delete temporary files once they have served their purpose.
+
 ## Coding
 
 - Always assume methods you want to use are exported in the main module (e.g. don't use `import { getNotionToken } from 'notion-data/src/user/getNotionToken';`, instead use `import { getNotionToken } from 'notion-data';`)
@@ -119,6 +133,15 @@ the rule above exists to prevent.
 - When in a worktree: all edits and commits happen **here in the worktree**
   on its checked-out branch. Never switch branches, never modify the primary
   checkout or the base branch.
+- Never touch the source repository the worktree was created from, unless I
+  explicitly ask you to. This includes read-only commands: no `rg`, `cat`, `git
+  status`, `tsc` or any other tooling against the primary checkout path, and no
+  `cd` into it. The two checkouts are usually on different branches, so results
+  read from the source repo describe code you are not editing. Resolve the
+  worktree root with `git rev-parse --show-toplevel` and run every command from
+  there (use the shell tool's working-directory argument rather than `cd`).
+- The same applies to temporary files: they belong in this worktree or in `/tmp`,
+  never in the primary checkout.
 - Commit early and often with clear conventional commit messages.
 - Pushing, renaming branches, and opening pull requests require my explicit
   approval. When approved:
