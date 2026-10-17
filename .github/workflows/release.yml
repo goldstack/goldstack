@@ -25,7 +25,6 @@ jobs:
       - name: Prepare yarn
         run: |
           npm install -g yarn@1.22.11
-      - run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''"${{secrets.NPM_TOKEN}}"''" } }'''
       - name: Install and build
         run: |
           yarn install
@@ -63,9 +62,6 @@ jobs:
       - name: Write build date
         run: echo "$(date +'%Y-%m-%dT%H:%M:%S')" >> build_prod_timestamp
 
-      - name: Remove yarn secret
-        run: 'yarn config set --json npmRegistries ''{ "//registry.npmjs.org": { "npmAuthToken": "''""''" } }'''
-
       - name: Configure git
         run: |
           git config --global user.email "goldstack@pureleap.com"
@@ -74,8 +70,8 @@ jobs:
 
       - name: Commit build date change
         run: |
-          git add .
-          git diff-index --quiet HEAD || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy_prod)"
+          git add build_prod_timestamp
+          git diff --cached --quiet || git commit -m "GitHub actions build (ci_skip) (trigger_template_deploy_prod)"
           git status
 
       - name: Push changes
