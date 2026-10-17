@@ -43,7 +43,7 @@
     "@goldstack/utils-typescript-references": "0.3.37",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
-    "concurrently": "^10.0.4",
+    "concurrently": "^10.0.6",
     "markdown-magic": "^4.11.0",
     "nodemon": "^3.1.14",
     "syncpack": "^15.3.2",

@@ -1866,7 +1866,7 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     "@types/react": "npm:^19.2.17"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     jest: "npm:^30.5.2"
     jest-environment-jsdom: "npm:^30.5.2"
     jest-transform-stub: "npm:^2.0.0"
@@ -1902,7 +1902,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     "@types/react": "npm:^19.2.17"
     autoprefixer: "npm:^10.4.20"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     cross-env: "npm:^10.1.0"
     jest: "npm:^30.5.2"
     jest-environment-jsdom: "npm:^30.5.2"
@@ -1937,7 +1937,7 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     "@types/react": "npm:^19.2.17"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     jest: "npm:^30.5.2"
     jest-environment-jsdom: "npm:^30.5.2"
     jest-transform-stub: "npm:^2.0.0"
@@ -2026,7 +2026,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     jest: "npm:^30.5.2"
     nodemon: "npm:^3.1.14"
     reload: "npm:^3.4.3"
@@ -2047,7 +2047,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     jest: "npm:^30.5.2"
     nodemon: "npm:^3.1.14"
     rimraf: "npm:^6.1.2"
@@ -2079,7 +2079,7 @@ __metadata:
     "@types/styled-components": "npm:5.1.25"
     babel-plugin-styled-components: "npm:^2.0.7"
     cheerio: "npm:1.0.0-rc.10"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     file-loader: "npm:^6.2.0"
     jest: "npm:^30.5.2"
     jest-environment-jsdom: "npm:^30.5.2"
@@ -2263,7 +2263,7 @@ __metadata:
     "@types/styled-components": "npm:5.1.25"
     ajv: "npm:^6.12.2"
     babel-plugin-styled-components: "npm:^2.0.7"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     data-uri-to-buffer: "npm:^3.0.1"
     install: "npm:^0.13.0"
     jest: "npm:^30.5.2"
@@ -2321,7 +2321,7 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     axios: "npm:^1.20.0"
-    handlebars: "npm:4.7.9"
+    handlebars: "npm:4.7.10"
     jest: "npm:^30.5.2"
     renamer: "npm:^0.7.0"
     rimraf: "npm:^6.1.2"
@@ -2344,7 +2344,7 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     axios: "npm:^1.20.0"
-    handlebars: "npm:4.7.9"
+    handlebars: "npm:4.7.10"
     jest: "npm:^30.5.2"
     renamer: "npm:^0.7.0"
     rimraf: "npm:^6.1.2"
@@ -2668,7 +2668,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     jest: "npm:^30.5.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
@@ -2690,7 +2690,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     jest: "npm:^30.5.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
@@ -2785,7 +2785,7 @@ __metadata:
     "@types/react": "npm:^19.2.17"
     "@yarnpkg/esbuild-plugin-pnp": "npm:^3.0.0-rc.15"
     chokidar: "npm:^4.0.3"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     date-fns: "npm:^2.28.0"
     esbuild: "npm:^0.25.6"
     esbuild-ignore-with-comments-plugin: "npm:0.3.32"
@@ -2854,7 +2854,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     jest: "npm:^30.5.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
@@ -2900,7 +2900,7 @@ __metadata:
     "@types/gulp-replace": "npm:^1.1.0"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     gulp: "npm:^5.0.1"
     gulp-changed: "npm:^4.0.2"
     gulp-replace: "npm:^1.1.4"
@@ -3497,7 +3497,7 @@ __metadata:
     "@types/node": "npm:^25.0.3"
     "@types/source-map-support": "npm:^0.5.10"
     "@types/yargs": "npm:^17.0.33"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     jest: "npm:^30.5.2"
     mock-aws-s3-v3: "npm:6.1.17"
     rimraf: "npm:^6.1.2"
@@ -3579,7 +3579,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     jest: "npm:^30.5.2"
     rimraf: "npm:^6.1.2"
     ts-node: "npm:^10.9.2"
@@ -4103,7 +4103,7 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
     ajv: "npm:^6.12.2"
-    handlebars: "npm:4.7.9"
+    handlebars: "npm:4.7.10"
     jest: "npm:^30.5.2"
     rimraf: "npm:^6.1.2"
     typescript: "npm:^6.0.3"
@@ -9581,20 +9581,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concurrently@npm:^10.0.4":
-  version: 10.0.4
-  resolution: "concurrently@npm:10.0.4"
+"concurrently@npm:^10.0.6":
+  version: 10.0.6
+  resolution: "concurrently@npm:10.0.6"
   dependencies:
     chalk: "npm:5.6.2"
     rxjs: "npm:7.8.2"
-    shell-quote: "npm:1.9.0"
+    shell-quote: "npm:1.12.0"
     supports-color: "npm:10.2.2"
     tree-kill: "npm:1.2.2"
     yargs: "npm:18.0.0"
   bin:
     conc: dist/bin/index.js
     concurrently: dist/bin/index.js
-  checksum: 10/609696fc32213917aa395d79cae085e83fb0a49ddd47fd635d9cfe7411f27d17b362cf81b4d6e3c0c18566d1974d9a1661ccb81ec213b2fa739cca73876eb6af
+  checksum: 10/52b7817ff389036e963a2f1a2b0e1180e76a85a169e067c497c7cc3c6e3da93617c69ae44440c9e62ace07d87326e5b9edd304eba564f41fa8fa3843df0c4b74
   languageName: node
   linkType: hard
 
@@ -12481,11 +12481,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"handlebars@npm:4.7.9":
-  version: 4.7.9
-  resolution: "handlebars@npm:4.7.9"
+"handlebars@npm:4.7.10":
+  version: 4.7.10
+  resolution: "handlebars@npm:4.7.10"
   dependencies:
-    minimist: "npm:^1.2.5"
+    minimist: "npm:^1.2.8"
     neo-async: "npm:^2.6.2"
     source-map: "npm:^0.6.1"
     uglify-js: "npm:^3.1.4"
@@ -12495,7 +12495,7 @@ __metadata:
       optional: true
   bin:
     handlebars: bin/handlebars
-  checksum: 10/e755433d652e8a15fc02f83d7478e652359e7a4d354c4328818853ed4f8a39d4a09e1d22dad3c7213c5240864a65b3c840970b8b181745575dd957dd258f2b8d
+  checksum: 10/e7df9b9986594384de11ea27d2f9c694f90dca9ff768ac28851b4cf89f6268a3177ec50c9bb1601c8841f67bee25598b37bdcd53d1f7acd3744619f938ad1f53
   languageName: node
   linkType: hard
 
@@ -15538,10 +15538,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimist@npm:^1.2.5, minimist@npm:^1.2.6, minimist@npm:~1.2.0":
-  version: 1.2.6
-  resolution: "minimist@npm:1.2.6"
-  checksum: 10/b956a7d48669c5007f0afce100a92d3af18e77939a25b5b4f62e9ea07c2777033608327e14c2af85684d5cd504f623f2a04d30a4a43379d21dd3c6dcf12b8ab8
+"minimist@npm:^1.2.5, minimist@npm:^1.2.6, minimist@npm:^1.2.8, minimist@npm:~1.2.0":
+  version: 1.2.8
+  resolution: "minimist@npm:1.2.8"
+  checksum: 10/908491b6cc15a6c440ba5b22780a0ba89b9810e1aea684e253e43c4e3b8d56ec1dcdd7ea96dde119c29df59c936cde16062159eae4225c691e19c70b432b6e6f
   languageName: node
   linkType: hard
 
@@ -17157,12 +17157,12 @@ __metadata:
   linkType: hard
 
 "proxy-addr@npm:~2.0.7":
-  version: 2.0.7
-  resolution: "proxy-addr@npm:2.0.7"
+  version: 2.0.8
+  resolution: "proxy-addr@npm:2.0.8"
   dependencies:
     forwarded: "npm:0.2.0"
     ipaddr.js: "npm:1.9.1"
-  checksum: 10/f24a0c80af0e75d31e3451398670d73406ec642914da11a2965b80b1898ca6f66a0e3e091a11a4327079b2b268795f6fa06691923fef91887215c3d0e8ea3f68
+  checksum: 10/6922b732c5625a9ba174c053bf3a750a80c87f19b7c62919f88ff01834eb80e2467834cfa72fc48b3a7ed6b3d18daadf773f6efb21db1c5fcc76d784509fcf1f
   languageName: node
   linkType: hard
 
@@ -18018,7 +18018,7 @@ __metadata:
     "@goldstack/utils-typescript-references": "npm:0.3.37"
     "@types/jest": "npm:^30.0.0"
     "@types/node": "npm:^25.0.3"
-    concurrently: "npm:^10.0.4"
+    concurrently: "npm:^10.0.6"
     markdown-magic: "npm:^4.11.0"
     nodemon: "npm:^3.1.14"
     syncpack: "npm:^15.3.2"
@@ -18573,10 +18573,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shell-quote@npm:1.9.0":
-  version: 1.9.0
-  resolution: "shell-quote@npm:1.9.0"
-  checksum: 10/c3bc91e74a469c4f96b6fd13b0c777fff16bcbda202692a4e5402d3d6b78fc6e02fe92fdf8dc0bddf992a9c6758e43207bfc5bdbefbf8a58190b1c885cbcc171
+"shell-quote@npm:1.12.0":
+  version: 1.12.0
+  resolution: "shell-quote@npm:1.12.0"
+  checksum: 10/18b3e382272804e79fd3187c18877cfd4e736b5afb576bf1ab66a561b0a0e26eada4b7c8eb45473d1f17268ffcf12d0aaa90b9235132123eb673df5d0a5df943
   languageName: node
   linkType: hard
 
