@@ -46,7 +46,7 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.17",
-    "concurrently": "^10.0.4",
+    "concurrently": "^10.0.6",
     "jest": "^30.5.2",
     "jest-environment-jsdom": "^30.5.2",
     "jest-transform-stub": "^2.0.0",
