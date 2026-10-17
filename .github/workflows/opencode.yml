@@ -61,7 +61,7 @@ jobs:
           OPENCODE_GO_API_KEY: ${{ secrets.OPENCODE_GO_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         with:
-          model: opencode/space-bunny-free
+          model: opencode-go/deepseek-v4.1-flash
           # Keep the session private: the footer then only links this run,
           # and the session is never published to opencode.ai.
           share: false
