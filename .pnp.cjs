@@ -9505,10 +9505,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@ungap/structured-clone", [\
-      ["npm:1.3.0", {\
-        "packageLocation": "./.yarn/cache/@ungap-structured-clone-npm-1.3.0-aea1bdf957-80d6910946.zip/node_modules/@ungap/structured-clone/",\
+      ["npm:1.4.0", {\
+        "packageLocation": "./.yarn/cache/@ungap-structured-clone-npm-1.4.0-cd13fbf4b1-dee21ff372.zip/node_modules/@ungap/structured-clone/",\
         "packageDependencies": [\
-          ["@ungap/structured-clone", "npm:1.3.0"]\
+          ["@ungap/structured-clone", "npm:1.4.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -17344,7 +17344,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/jest-worker-npm-30.5.1-1d545cb3d5-cff8638859.zip/node_modules/jest-worker/",\
         "packageDependencies": [\
           ["@types/node", "npm:14.0.13"],\
-          ["@ungap/structured-clone", "npm:1.3.0"],\
+          ["@ungap/structured-clone", "npm:1.4.0"],\
           ["jest-util", "npm:30.5.1"],\
           ["jest-worker", "npm:30.5.1"],\
           ["merge-stream", "npm:2.0.0"],\
