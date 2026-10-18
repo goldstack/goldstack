@@ -1,6 +1,6 @@
 {
   "name": "static-file-mapper",
-  "version": "0.3.33",
+  "version": "0.3.34",
   "description": "Helps tracking path to generated static files for deployment bundles",
   "keywords": [
     "javascript"

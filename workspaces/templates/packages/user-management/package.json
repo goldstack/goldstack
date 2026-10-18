@@ -24,14 +24,14 @@
     "test": "GOLDSTACK_DEPLOYMENT=local jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/template-user-management": "0.2.15",
+    "@goldstack/template-user-management": "0.2.16",
     "source-map-support": "^0.5.21",
     "uuid": "11"
   },
   "devDependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.1101.0",
-    "@goldstack/template-user-management-cli": "0.1.120",
-    "@goldstack/utils-log": "0.3.41",
+    "@goldstack/template-user-management-cli": "0.1.121",
+    "@goldstack/utils-log": "0.3.42",
     "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",
     "@types/aws-lambda": "^8.10.159",

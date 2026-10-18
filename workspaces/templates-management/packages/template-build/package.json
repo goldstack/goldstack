@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-build",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Max Rohde",
   "sideEffects": false,
   "main": "src/templateBuild.ts",
@@ -20,12 +20,12 @@
     "test-watch": "jest --config=./jest.config.js --watch"
   },
   "dependencies": {
-    "@goldstack/prepare-template": "0.1.1",
-    "@goldstack/prepare-yarn-pnp-monorepo": "0.1.2",
-    "@goldstack/template-repository": "0.1.1",
-    "@goldstack/utils-log": "0.3.41",
-    "@goldstack/utils-sh": "0.5.46",
-    "@goldstack/utils-template": "0.4.49"
+    "@goldstack/prepare-template": "0.1.2",
+    "@goldstack/prepare-yarn-pnp-monorepo": "0.1.3",
+    "@goldstack/template-repository": "0.1.2",
+    "@goldstack/utils-log": "0.3.42",
+    "@goldstack/utils-sh": "0.5.47",
+    "@goldstack/utils-template": "0.4.50"
   },
   "devDependencies": {
     "@swc/core": "^1.16.13",
