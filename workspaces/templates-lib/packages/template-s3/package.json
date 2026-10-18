@@ -37,10 +37,10 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.1101.0",
-    "@aws-sdk/credential-providers": "^3.1101.0",
-    "@aws-sdk/s3-request-presigner": "^3.1101.0",
-    "@aws-sdk/types": "^3.974.2",
+    "@aws-sdk/client-s3": "^3.1152.0",
+    "@aws-sdk/credential-providers": "^3.1152.0",
+    "@aws-sdk/s3-request-presigner": "^3.1152.0",
+    "@aws-sdk/types": "^3.974.6",
     "@goldstack/infra": "0.4.50",
     "@goldstack/infra-aws": "0.4.77",
     "@goldstack/utils-esbuild": "0.5.33",
@@ -49,8 +49,8 @@
     "@goldstack/utils-package-config-embedded": "0.5.53",
     "@goldstack/utils-template": "0.4.51",
     "@goldstack/utils-terraform": "0.4.97",
-    "@smithy/smithy-client": "^4.14.16",
-    "@smithy/types": "^4.16.1",
+    "@smithy/smithy-client": "^4.15.2",
+    "@smithy/types": "^4.19.0",
     "mock-aws-s3-v3": "6.1.19",
     "source-map-support": "^0.5.21"
   },
