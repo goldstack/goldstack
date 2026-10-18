@@ -29,7 +29,7 @@
     "web:watch": "yarn build-web $@ && nodemon --watch ./../../ --ignore ./webDist -e '*' --exec \"yarn build-web $@\""
   },
   "devDependencies": {
-    "@goldstack/template-static-website-aws": "0.5.109",
+    "@goldstack/template-static-website-aws": "0.5.110",
     "@goldstack/utils-sh": "0.5.48",
     "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",

@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-test",
-  "version": "0.1.24",
+  "version": "0.1.25",
   "description": "",
   "license": "MIT",
   "author": "Max Rohde",
@@ -21,7 +21,7 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.4.77",
+    "@goldstack/infra-aws": "0.4.78",
     "@goldstack/module-template-utils": "0.1.9",
     "@goldstack/project-build": "0.1.2",
     "@goldstack/template-build-set": "0.1.2",
