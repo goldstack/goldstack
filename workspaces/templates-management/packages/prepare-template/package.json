@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/prepare-template",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "author": "Max Rohde",
   "sideEffects": false,
@@ -21,11 +21,11 @@
     "test": "jest --passWithNoTests --config=./jest.config.js --runInBand"
   },
   "dependencies": {
-    "@goldstack/utils-config": "0.4.48",
-    "@goldstack/utils-log": "0.3.41",
-    "@goldstack/utils-package": "0.4.50",
-    "@goldstack/utils-sh": "0.5.46",
-    "@goldstack/utils-template": "0.4.49",
+    "@goldstack/utils-config": "0.4.49",
+    "@goldstack/utils-log": "0.3.42",
+    "@goldstack/utils-package": "0.4.51",
+    "@goldstack/utils-sh": "0.5.47",
+    "@goldstack/utils-template": "0.4.50",
     "jsonpath": "^1.1.1"
   },
   "devDependencies": {

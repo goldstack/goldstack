@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-lambda-api",
-  "version": "0.6.107",
+  "version": "0.6.108",
   "description": "Companion for project templates for deploying Lambdas as a REST API",
   "keywords": [
     "goldstack",
@@ -40,15 +40,15 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.48",
-    "@goldstack/infra-aws": "0.4.75",
-    "@goldstack/utils-aws-lambda": "0.3.89",
-    "@goldstack/utils-package": "0.4.50",
-    "@goldstack/utils-terraform": "0.4.95",
+    "@goldstack/infra": "0.4.49",
+    "@goldstack/infra-aws": "0.4.76",
+    "@goldstack/utils-aws-lambda": "0.3.90",
+    "@goldstack/utils-package": "0.4.51",
+    "@goldstack/utils-terraform": "0.4.96",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@goldstack/utils-package-config-generate": "0.3.33",
+    "@goldstack/utils-package-config-generate": "0.3.34",
     "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",
     "@types/aws-lambda": "^8.10.159",
