@@ -17,15 +17,21 @@ export { MessageCallback } from './sqsConnect';
 export * from './types/SqsPackage';
 
 export function createSQSClient({
+  queueUrl,
   sqsClient,
   onMessageSend,
+  enableSequential,
 }: {
+  queueUrl?: string;
   sqsClient?: SQSClient;
   onMessageSend?: MessageCallback;
+  enableSequential?: boolean;
 }): SQSClient {
   return require(excludeInBundle('./mockedSQS')).createSQSClient({
+    queueUrl,
     sqsClient,
     onMessageSend,
+    enableSequential,
   });
 }
 
