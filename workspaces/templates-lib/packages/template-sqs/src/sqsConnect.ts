@@ -26,9 +26,14 @@ export type MessageCallback = (input: SendMessageRequest) => Promise<void> | voi
 /**
  * Retrieves a mocked SQS client for local development. Initializes the client if not already created.
  * @param {MessageCallback} [onMessageSend] - Optional callback to handle the message sent event.
+ * @param {boolean} [enableSequential] - If `true`, messages are processed one at a time in send order.
  * @returns {SQSClient} The mocked SQS client.
  */
-export const getMockedSQS = (goldstackConfig: any, onMessageSend?: MessageCallback): SQSClient => {
+export const getMockedSQS = (
+  goldstackConfig: any,
+  onMessageSend?: MessageCallback,
+  enableSequential?: boolean,
+): SQSClient => {
   const createSQSClient: CreateSQSClientSignature = require(
     excludeInBundle('./mockedSQS'),
   ).createSQSClient;
@@ -36,17 +41,20 @@ export const getMockedSQS = (goldstackConfig: any, onMessageSend?: MessageCallba
     queueUrl: getLocalSQSQueueUrl(goldstackConfig),
     sqsClient: undefined,
     onMessageSend,
+    enableSequential,
   });
 };
 
 /**
  * Retrieves a mocked SQS client for local development for the DLQ queue. Initializes the client if not already created.
  * @param {MessageCallback} [onMessageSend] - Optional callback to handle the message sent event.
+ * @param {boolean} [enableSequential] - If `true`, messages are processed one at a time in send order.
  * @returns {SQSClient} The mocked SQS client.
  */
 export const getMockedDLQSQS = (
   goldstackConfig: any,
   onMessageSend?: MessageCallback,
+  enableSequential?: boolean,
 ): SQSClient => {
   const createSQSClient: CreateSQSClientSignature = require(
     excludeInBundle('./mockedSQS'),
@@ -55,6 +63,7 @@ export const getMockedDLQSQS = (
     queueUrl: getLocalSQSDLQUrl(goldstackConfig),
     sqsClient: undefined,
     onMessageSend,
+    enableSequential,
   });
 };
 

@@ -94,6 +94,28 @@ This will copy the files that need to be deployed into the folder `distLambda/`.
 
 ## Guides and How Tos
 
+### Testing sequential SQS processing locally
+
+When the `GOLDSTACK_DEPLOYMENT` environment variable is set to `local`, `connectToSQSQueue()` returns a mocked SQS client instead of connecting to AWS. Sending a message to this client invokes the Lambda handler directly, and `getSentMessageRequests()` can be used to inspect the messages that were sent.
+
+By default, messages are processed as soon as they are sent, and messages sent concurrently may be processed concurrently. If a test relies on messages being processed one at a time in the order in which they were sent, pass `true` for the `enableSequential` parameter:
+
+```typescript
+import { SendMessageCommand } from '@aws-sdk/client-sqs';
+import { getMockedSQS, getSQSQueueUrl } from './lambda';
+
+const client = getMockedSQS(true);
+
+await client.send(
+  new SendMessageCommand({
+    QueueUrl: await getSQSQueueUrl(),
+    MessageBody: 'first',
+  }),
+);
+```
+
+Sequential processing applies per queue to both `SendMessageCommand` and `SendMessageBatchCommand`. If a handler throws, the error is returned to the caller, but subsequent messages continue to be processed.
+
 ### Performing a DLQ redrive
 
 The main queue is configured to send all failed messages to a DLQ. You can send these messages back to the main queue through a DLQ redrive. For this, simply go to the queue
