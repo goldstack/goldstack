@@ -38,9 +38,10 @@ export const handler = async (
  * Sending a message to a client created in this way will trigger the handler function
  * with the provided message payload.
  *
+ * @param {boolean} [enableSequential] - If `true`, messages are processed one at a time in send order.
  * @returns {SQSClient} The mocked SQS client.
  */
-export const getMockedSQS = (): SQSClient => {
+export const getMockedSQS = (enableSequential?: boolean): SQSClient => {
   const messageSendHandler: MessageCallback = async (message: SendMessageRequest) => {
     // Constructing a mock event to pass to the handler
     const sqsEvent: SQSEvent = {
@@ -65,7 +66,7 @@ export const getMockedSQS = (): SQSClient => {
     await handler(sqsEvent, {} as any);
   };
 
-  return templateGetMockedSQS(goldstackConfig, messageSendHandler);
+  return templateGetMockedSQS(goldstackConfig, messageSendHandler, enableSequential);
 };
 
 /**
@@ -74,14 +75,15 @@ export const getMockedSQS = (): SQSClient => {
  * Sending a message to a client created in this way will trigger the handler function
  * with the provided message payload.
  *
+ * @param {boolean} [enableSequential] - If `true`, messages are processed one at a time in send order.
  * @returns {SQSClient} The mocked SQS client.
  */
-export const getMockedDLQSQS = (): SQSClient => {
+export const getMockedDLQSQS = (enableSequential?: boolean): SQSClient => {
   const messageSendHandler: MessageCallback = async (message: SendMessageRequest) => {
     warn(`DLQ Message received ${message.MessageBody}`);
   };
 
-  return templateGetMockedDLQSQS(goldstackConfig, messageSendHandler);
+  return templateGetMockedDLQSQS(goldstackConfig, messageSendHandler, enableSequential);
 };
 
 /**
@@ -89,13 +91,17 @@ export const getMockedDLQSQS = (): SQSClient => {
  *
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
+ * @param enableSequential - Optional flag to process mocked messages one at a time.
  * @returns A promise that resolves with an SQSClient connected to the DLQ.
  */
-export const connectToSQSDLQQueue = async (deploymentName?: string): Promise<SQSClient> => {
+export const connectToSQSDLQQueue = async (
+  deploymentName?: string,
+  enableSequential?: boolean,
+): Promise<SQSClient> => {
   deploymentName = deploymentName || process.env.GOLDSTACK_DEPLOYMENT;
 
   if (deploymentName === 'local') {
-    return getMockedDLQSQS();
+    return getMockedDLQSQS(enableSequential);
   }
 
   return await templateConnect(goldstackConfig, goldstackSchema, deployments, deploymentName);
@@ -106,13 +112,17 @@ export const connectToSQSDLQQueue = async (deploymentName?: string): Promise<SQS
  *
  * @param deploymentName - Optional name of the deployment to use. If not provided,
  *                         uses the deployment specified in environment variables.
+ * @param enableSequential - Optional flag to process mocked messages one at a time.
  * @returns A promise that resolves with an SQSClient connected to the main queue.
  */
-export const connectToSQSQueue = async (deploymentName?: string): Promise<SQSClient> => {
+export const connectToSQSQueue = async (
+  deploymentName?: string,
+  enableSequential?: boolean,
+): Promise<SQSClient> => {
   deploymentName = deploymentName || process.env.GOLDSTACK_DEPLOYMENT;
 
   if (deploymentName === 'local') {
-    return getMockedSQS();
+    return getMockedSQS(enableSequential);
   }
 
   return await templateConnect(goldstackConfig, goldstackSchema, deployments, deploymentName);
