@@ -2,13 +2,20 @@ name: maintenance
 
 on:
   schedule:
-    - cron: '41 19 * * 0'
+    # Run daily; each run executes a rotating slice of the maintenance tasks so
+    # the full set is covered over time instead of in one long weekly run.
+    - cron: '41 19 * * *'
   workflow_dispatch:
     inputs:
       task:
         description: 'Substring filter; only maintenance tasks whose name contains this text will run. Leave empty or set to "all" to run all tasks.'
         required: false
         default: ''
+        type: string
+      batch_size:
+        description: 'How many tasks to run. 0 runs all matching tasks. Scheduled runs ignore this and always run 1.'
+        required: false
+        default: '0'
         type: string
 
 jobs:
@@ -46,13 +53,21 @@ jobs:
           } >> "$GITHUB_OUTPUT"
           echo "Entries: $entries"
 
-      - name: Filter tasks
+      - name: Filter and rotate tasks
         id: filter
         env:
           ENTRIES: ${{ steps.discover.outputs.entries }}
           TASK: ${{ inputs.task }}
+          INPUT_BATCH_SIZE: ${{ inputs.batch_size }}
         run: |
           set -euo pipefail
+          # Scheduled runs always process exactly one task. Manual runs use the
+          # batch_size input, where the default of 0 means all matching tasks.
+          if [[ "$GITHUB_EVENT_NAME" == "schedule" ]]; then
+            BATCH_SIZE=1
+          else
+            BATCH_SIZE="${INPUT_BATCH_SIZE:-0}"
+          fi
           if [[ -z "$TASK" || "$TASK" == "all" ]]; then
             filtered="$ENTRIES"
           else
@@ -61,6 +76,19 @@ jobs:
               echo "::error::No maintenance tasks match filter: $TASK"
               exit 1
             fi
+          fi
+          if ! [[ "$BATCH_SIZE" =~ ^[0-9]+$ ]]; then
+            echo "::error::batch_size must be a non-negative integer, got: $BATCH_SIZE"
+            exit 1
+          fi
+          count=$(jq 'length' <<<"$filtered")
+          if (( BATCH_SIZE > 0 && BATCH_SIZE < count )); then
+            # Rotate by UTC day so consecutive scheduled runs pick up where the
+            # previous one left off without storing state outside the workflow.
+            start=$(( $(date -u +%s) / 86400 % count ))
+            filtered=$(jq -c --argjson start "$start" --argjson n "$BATCH_SIZE" \
+              '[range(0; $n) as $i | .[($start + $i) % length]]' <<<"$filtered")
+            echo "Selected $BATCH_SIZE of $count tasks, starting at index $start."
           fi
           matrix=$(jq -c -n --argjson e "$filtered" '{include: $e}')
           {
