@@ -14547,7 +14547,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/gaze-npm-1.1.3-cd09a2e834-9ff1110aae.zip/node_modules/gaze/",\
         "packageDependencies": [\
           ["gaze", "npm:1.1.3"],\
-          ["globule", "npm:1.3.2"]\
+          ["globule", "npm:1.3.4"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -14884,12 +14884,12 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["globule", [\
-      ["npm:1.3.2", {\
-        "packageLocation": "./.yarn/cache/globule-npm-1.3.2-fe17bba40c-0d5d1a2ecc.zip/node_modules/globule/",\
+      ["npm:1.3.4", {\
+        "packageLocation": "./.yarn/cache/globule-npm-1.3.4-b973c73701-04ac30656f.zip/node_modules/globule/",\
         "packageDependencies": [\
           ["glob", "npm:7.1.7"],\
-          ["globule", "npm:1.3.2"],\
-          ["lodash", "npm:4.17.23"],\
+          ["globule", "npm:1.3.4"],\
+          ["lodash", "npm:4.18.1"],\
           ["minimatch", "npm:3.0.8"]\
         ],\
         "linkType": "HARD"\
@@ -17852,13 +17852,6 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["lodash", [\
-      ["npm:4.17.23", {\
-        "packageLocation": "./.yarn/cache/lodash-npm-4.17.23-50bdb1c01a-82504c8825.zip/node_modules/lodash/",\
-        "packageDependencies": [\
-          ["lodash", "npm:4.17.23"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:4.18.1", {\
         "packageLocation": "./.yarn/cache/lodash-npm-4.18.1-a64c3070ac-306fea53df.zip/node_modules/lodash/",\
         "packageDependencies": [\
