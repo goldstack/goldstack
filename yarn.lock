@@ -12267,13 +12267,13 @@ __metadata:
   linkType: hard
 
 "globule@npm:^1.0.0":
-  version: 1.3.2
-  resolution: "globule@npm:1.3.2"
+  version: 1.3.4
+  resolution: "globule@npm:1.3.4"
   dependencies:
     glob: "npm:~7.1.1"
-    lodash: "npm:~4.17.10"
+    lodash: "npm:^4.17.21"
     minimatch: "npm:~3.0.2"
-  checksum: 10/0d5d1a2ecc31f38ccf55c423aed6b6986249ecc985a2594377c0681a43c6fee3304ded4526362efb58a79d9bd1a5cec33fdc0d03f09a636b1b94342b10b759c6
+  checksum: 10/04ac30656f9fc34e7e30a700ef39bfc357629a9214e2e228ee714bc0f1be60c5e4e2a78facafa5588889b02d25f02012d9e8c057704040e19e86b920effe54d5
   languageName: node
   linkType: hard
 
@@ -14997,13 +14997,6 @@ __metadata:
   version: 4.18.1
   resolution: "lodash@npm:4.18.1"
   checksum: 10/306fea53dfd39dad1f03d45ba654a2405aebd35797b673077f401edb7df2543623dc44b9effbb98f69b32152295fff725a4cec99c684098947430600c6af0c3f
-  languageName: node
-  linkType: hard
-
-"lodash@npm:~4.17.10":
-  version: 4.17.23
-  resolution: "lodash@npm:4.17.23"
-  checksum: 10/82504c88250f58da7a5a4289f57a4f759c44946c005dd232821c7688b5fcfbf4a6268f6a6cdde4b792c91edd2f3b5398c1d2a0998274432cff76def48735e233
   languageName: node
   linkType: hard
 
