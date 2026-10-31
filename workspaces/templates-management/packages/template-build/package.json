@@ -24,8 +24,8 @@
     "@goldstack/prepare-yarn-pnp-monorepo": "0.1.3",
     "@goldstack/template-repository": "0.1.2",
     "@goldstack/utils-log": "0.3.43",
-    "@goldstack/utils-sh": "0.5.48",
-    "@goldstack/utils-template": "0.4.51"
+    "@goldstack/utils-sh": "0.5.49",
+    "@goldstack/utils-template": "0.4.52"
   },
   "devDependencies": {
     "@swc/core": "^1.16.13",

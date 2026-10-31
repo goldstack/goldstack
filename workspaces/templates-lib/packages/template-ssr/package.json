@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-ssr",
-  "version": "0.3.126",
+  "version": "0.3.127",
   "description": "Building blocks for implementing server-side rendered pages.",
   "keywords": [
     "goldstack",
@@ -38,15 +38,15 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.50",
-    "@goldstack/infra-aws": "0.4.78",
-    "@goldstack/template-ssr-server": "0.3.124",
-    "@goldstack/utils-aws-lambda": "0.3.92",
+    "@goldstack/infra": "0.4.51",
+    "@goldstack/infra-aws": "0.4.79",
+    "@goldstack/template-ssr-server": "0.3.125",
+    "@goldstack/utils-aws-lambda": "0.3.93",
     "@goldstack/utils-esbuild": "0.5.33",
-    "@goldstack/utils-package": "0.4.52",
-    "@goldstack/utils-package-config-embedded": "0.5.53",
-    "@goldstack/utils-template": "0.4.51",
-    "@goldstack/utils-terraform": "0.4.98",
+    "@goldstack/utils-package": "0.4.53",
+    "@goldstack/utils-package-config-embedded": "0.5.54",
+    "@goldstack/utils-template": "0.4.52",
+    "@goldstack/utils-terraform": "0.4.99",
     "@types/aws-lambda": "^8.10.159",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",

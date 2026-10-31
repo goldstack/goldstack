@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/module-template-docs",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Definitions and utilities for module template documentation",
   "license": "MIT",
   "author": "Max Rohde",
@@ -22,11 +22,11 @@
   },
   "dependencies": {
     "@goldstack/module-template-utils": "0.1.9",
-    "@goldstack/utils-sh": "0.5.48",
+    "@goldstack/utils-sh": "0.5.49",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@goldstack/utils-docs-cli": "0.3.24",
+    "@goldstack/utils-docs-cli": "0.3.25",
     "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
