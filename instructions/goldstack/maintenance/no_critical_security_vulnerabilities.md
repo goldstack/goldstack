@@ -9,6 +9,7 @@ Security tasks are exempt from version gating and always run.
 
 2. If vulnerabilities are found:
    - Sort by easiest to fix first
+   - For `@aws-sdk/*` or `@smithy/*` packages, do not bump a single package in isolation. Follow the AWS SDK should be latest version task (`aws_sdk_should_be_latest_version.md`, using the variant for the current repository context) so the whole SDK moves in lockstep. Security work remains exempt from that task's version gating.
    - Fix in this priority order:
      1. Update the direct or transitive dependency in `package.json`
      2. Update yarn configuration in `.yarnrc.yml` (if available)

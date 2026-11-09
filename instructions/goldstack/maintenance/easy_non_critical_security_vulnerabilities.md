@@ -8,7 +8,8 @@ Security tasks are exempt from version gating and always run.
    ```
 
 2. For each non-critical vulnerability (high, moderate, low):
-   - Try `yarn up <package>` to update within the current semver range
+   - For `@aws-sdk/*` or `@smithy/*` packages, do not bump a single package in isolation. Follow the AWS SDK should be latest version task (`aws_sdk_should_be_latest_version.md`, using the variant for the current repository context) so the whole SDK moves in lockstep. Security work remains exempt from that task's version gating.
+   - Otherwise, try `yarn up <package>` to update within the current semver range
    - If resolved, move to the next vulnerability
    - If `yarn up` does not resolve it (major version jump required, or no fix available), skip — only easy fixes
 
