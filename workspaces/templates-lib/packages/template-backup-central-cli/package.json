@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-backup-central-cli",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "description": "CLI for managing backup central template infrastructure.",
   "keywords": [
     "goldstack",
@@ -41,14 +41,14 @@
   },
   "dependencies": {
     "@goldstack/infra": "0.4.51",
-    "@goldstack/template-backup-central": "0.1.23",
-    "@goldstack/template-backup-cli": "0.1.22",
+    "@goldstack/template-backup-central": "0.1.24",
+    "@goldstack/template-backup-cli": "0.1.23",
     "@goldstack/utils-cli": "0.3.40",
     "@goldstack/utils-log": "0.3.43",
     "@goldstack/utils-package": "0.4.53",
     "@goldstack/utils-sh": "0.5.49",
-    "@goldstack/utils-terraform": "0.4.99",
-    "@goldstack/utils-terraform-aws": "0.4.104",
+    "@goldstack/utils-terraform": "0.4.100",
+    "@goldstack/utils-terraform-aws": "0.4.105",
     "source-map-support": "^0.5.21",
     "yargs": "^17"
   },

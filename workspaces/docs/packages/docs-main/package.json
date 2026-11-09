@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@goldstack/markdown-docs": "0.1.2",
-    "@goldstack/template-nextjs": "0.5.124",
+    "@goldstack/template-nextjs": "0.5.125",
     "@goldstack/utils-sh": "0.5.49",
     "@swc/core": "^1.16.13",
     "@swc/jest": "^0.2.39",

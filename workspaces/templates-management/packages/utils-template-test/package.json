@@ -32,7 +32,7 @@
     "@goldstack/utils-yarn": "0.4.52",
     "axios": "^1.20.0",
     "extract-zip": "^2.0.1",
-    "mock-aws-s3-v3": "6.1.20"
+    "mock-aws-s3-v3": "6.1.21"
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.1164.0",

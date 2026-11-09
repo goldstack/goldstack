@@ -35,7 +35,7 @@
     "@fullstory/browser": "^1.4.5",
     "@goldstack/goldstack-api": "0.1.2",
     "@goldstack/infra": "0.4.51",
-    "@goldstack/infra-aws": "0.4.79",
+    "@goldstack/infra-aws": "0.4.80",
     "@goldstack/project-config": "0.1.2",
     "@goldstack/project-repository": "0.1.2",
     "@goldstack/template-metadata": "0.1.16",
@@ -57,7 +57,7 @@
     "swr": "^0.4.0"
   },
   "devDependencies": {
-    "@goldstack/template-nextjs": "0.5.124",
+    "@goldstack/template-nextjs": "0.5.125",
     "@goldstack/utils-docs-cli": "0.3.25",
     "@goldstack/utils-sh": "0.5.49",
     "@swc/core": "^1.16.13",

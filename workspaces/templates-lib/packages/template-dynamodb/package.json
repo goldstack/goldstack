@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-dynamodb",
-  "version": "0.4.32",
+  "version": "0.4.33",
   "description": "Utilities for building modules for DynamoDB access.",
   "keywords": [
     "goldstack",
@@ -43,13 +43,13 @@
     "@aws-sdk/types": "^3.975.0",
     "@aws-sdk/util-dynamodb": "^3.996.9",
     "@goldstack/infra": "0.4.51",
-    "@goldstack/infra-aws": "0.4.79",
+    "@goldstack/infra-aws": "0.4.80",
     "@goldstack/utils-esbuild": "0.5.33",
     "@goldstack/utils-log": "0.3.43",
     "@goldstack/utils-package": "0.4.53",
     "@goldstack/utils-package-config-embedded": "0.5.54",
     "@goldstack/utils-sh": "0.5.49",
-    "@goldstack/utils-terraform": "0.4.99",
+    "@goldstack/utils-terraform": "0.4.100",
     "dynamo-db-local": "8.0.0",
     "tcp-port-used": "^1.0.2",
     "umzug": "^3.8.2",
