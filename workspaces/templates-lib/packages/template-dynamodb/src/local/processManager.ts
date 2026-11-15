@@ -1,15 +1,27 @@
-import { debug, error, warn } from '@goldstack/utils-log';
+import { debug, warn } from '@goldstack/utils-log';
 import { execAsync } from '@goldstack/utils-sh';
 import { spawnSync } from 'child_process';
 
 /**
- * Handles process termination for both Windows and Unix systems
+ * Handles process termination for both Windows and Unix systems.
+ *
+ * Process termination is best-effort: this function logs a warning instead of
+ * throwing, so that a process that has already exited (or cannot be terminated)
+ * does not fail an otherwise successful run.
  */
 export async function terminateProcess(processId: number): Promise<void> {
-  if (process.platform === 'win32') {
-    await terminateWindowsProcess(processId);
-  } else {
-    await terminateUnixProcess(processId);
+  try {
+    if (process.platform === 'win32') {
+      await terminateWindowsProcess(processId);
+    } else {
+      await terminateUnixProcess(processId);
+    }
+  } catch (e) {
+    warn(`Unexpected error while terminating process ${processId}`, {
+      processId,
+      error: e,
+      message: (e as Error).message,
+    });
   }
 }
 
@@ -33,8 +45,11 @@ async function terminateWindowsProcess(processId: number): Promise<void> {
       debug(`Process ${processId} does not exist, skipping termination`);
       return;
     }
-    error(`Failed to force kill process ${processId}: ${forceResult.stderr}`);
-    throw new Error(`Failed to terminate process ${processId}`);
+    warn(`Failed to force kill process ${processId}: ${forceResult.stderr}`, {
+      processId,
+      stderr: forceResult.stderr?.toString(),
+    });
+    return;
   }
 }
 
@@ -49,7 +64,12 @@ async function terminateUnixProcess(processId: number): Promise<void> {
       debug(`Process ${processId} does not exist, skipping termination`);
       return; // Already stopped
     }
-    throw e; // Other error
+    warn(`Failed to send SIGTERM to process ${processId}`, {
+      processId,
+      message: (e as Error).message,
+      code: (e as NodeJS.ErrnoException).code,
+    });
+    return;
   }
 
   // Wait for graceful termination
@@ -63,7 +83,12 @@ async function terminateUnixProcess(processId: number): Promise<void> {
       debug(`Process ${processId} terminated gracefully`);
       return; // Stopped gracefully
     }
-    throw e; // Other error
+    warn(`Failed to check whether process ${processId} is still running`, {
+      processId,
+      message: (e as Error).message,
+      code: (e as NodeJS.ErrnoException).code,
+    });
+    return;
   }
 
   // Process still exists, try force kill
@@ -75,7 +100,12 @@ async function terminateUnixProcess(processId: number): Promise<void> {
       debug(`Process ${processId} terminated before SIGKILL could be sent.`);
       return; // Stopped before force kill
     }
-    throw e; // Other error
+    warn(`Failed to send SIGKILL to process ${processId}`, {
+      processId,
+      message: (e as Error).message,
+      code: (e as NodeJS.ErrnoException).code,
+    });
+    return;
   }
 
   // Wait for force kill to take effect
@@ -85,14 +115,19 @@ async function terminateUnixProcess(processId: number): Promise<void> {
   try {
     process.kill(processId, 0);
     // If we get here, process is still alive
-    error(`Failed to terminate process ${processId} after SIGKILL`);
-    throw new Error(`Process ${processId} could not be terminated`);
+    warn(`Process ${processId} is still running after SIGKILL`, { processId });
+    return;
   } catch (e) {
     if ((e as NodeJS.ErrnoException).code === 'ESRCH') {
       debug(`Process ${processId} successfully terminated by SIGKILL`);
       return; // Stopped by force kill
     }
-    throw e; // Other error
+    warn(`Failed to verify termination of process ${processId}`, {
+      processId,
+      message: (e as Error).message,
+      code: (e as NodeJS.ErrnoException).code,
+    });
+    return;
   }
 }
 
