@@ -173,8 +173,16 @@ export class InstanceManager {
         return;
       }
       warn(
-        `Failed to stop local DynamoDB instance: ${err.message}. It may already have been stopped.`,
+        `Failed to stop local DynamoDB instance${
+          instance.processId ? ` with process id ${instance.processId}` : ''
+        }${
+          instance.dockerContainerId
+            ? ` with Docker container id ${instance.dockerContainerId}`
+            : ''
+        }: ${err.message}. It may already have been stopped.`,
         {
+          processId: instance.processId,
+          dockerContainerId: instance.dockerContainerId,
           message: err.message,
           stack: err.stack,
           code: err.code,
