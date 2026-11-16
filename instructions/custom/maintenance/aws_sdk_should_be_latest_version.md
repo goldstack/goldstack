@@ -1,8 +1,10 @@
 # AWS SDK Should Be Latest Version
 
-Before proceeding, check the version gating (see `instructions/goldstack/version-gating.md`). If the installed AWS SDK version was last bumped less than 60 days ago, treat this task as a no-op and do not produce any changes.
+This task applies only to the home Goldstack repository. Client repositories have no separate AWS SDK task; they align AWS to the installed Goldstack packages through the shared Goldstack latest version task (`instructions/goldstack/maintenance/goldstack_should_be_latest_version.md`).
 
-This override applies to the home Goldstack repository. There is no Goldstack boundary to reconcile here: every `@aws-sdk/*` range lives in a workspace manifest, so the task simply moves the SDK to the latest version. Client repositories use the shared `instructions/goldstack/maintenance/aws_sdk_should_be_latest_version.md` instead, which aligns the tree to the version the installed Goldstack packages use.
+Version gating for the AWS SDK lives only in this file, not in the shared `instructions/goldstack/version-gating.md`. Gate this task on a representative AWS SDK package such as `@aws-sdk/client-s3`, using the procedure in `instructions/goldstack/version-gating.md`. If that package's range was last bumped less than 60 days ago, treat this task as a no-op and do not produce any changes.
+
+There is no Goldstack boundary to reconcile here: every `@aws-sdk/*` range lives in a workspace manifest, so the task simply moves the SDK to the latest version.
 
 1. Identify current versions. Search the workspace manifests, which live in `workspaces/*/packages/*/package.json` (plus the repository root `package.json`):
    ```bash

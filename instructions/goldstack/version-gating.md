@@ -1,6 +1,6 @@
 # Version Gating
 
-Some maintenance tasks bump dependencies to their latest versions (TypeScript, Jest, Yarn, Next.js, SWC, AWS SDK, Goldstack). These updates should only run when the currently installed version is **older than 60 days**.
+Some maintenance tasks bump dependencies to their latest versions (TypeScript, Jest, Yarn, Next.js, SWC, Goldstack). These updates should only run when the currently installed version is **older than 60 days**.
 
 Security vulnerability tasks are exempt from gating and always run.
 

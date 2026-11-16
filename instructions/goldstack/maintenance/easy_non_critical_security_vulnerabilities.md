@@ -8,7 +8,7 @@ Security tasks are exempt from version gating and always run.
    ```
 
 2. For each non-critical vulnerability (high, moderate, low):
-   - For `@aws-sdk/*` or `@smithy/*` packages, do not bump a single package in isolation. Follow the AWS SDK should be latest version task (`aws_sdk_should_be_latest_version.md`, using the variant for the current repository context) so the whole SDK moves in lockstep. Security work remains exempt from that task's version gating.
+   - For `@aws-sdk/*` or `@smithy/*` packages, do not bump a single package in isolation. Resolve it through the Goldstack latest version task (`goldstack_should_be_latest_version.md`), which moves AWS in lockstep with Goldstack. In the home Goldstack repository, where that task is a no-op, use the custom AWS SDK task (`instructions/custom/maintenance/aws_sdk_should_be_latest_version.md`) instead. Security work remains exempt from version gating.
    - Otherwise, try `yarn up <package>` to update within the current semver range
    - If resolved, move to the next vulnerability
    - If `yarn up` does not resolve it (major version jump required, or no fix available), skip — only easy fixes
