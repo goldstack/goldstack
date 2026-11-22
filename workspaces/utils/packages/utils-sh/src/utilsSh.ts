@@ -21,33 +21,6 @@ export interface ExecParams {
   cwd?: string;
 }
 
-/**
- * Escapes a value so that the shell passes it to a command as a single literal argument.
- *
- * This prevents shell expansion (for example of `$`, backticks or glob characters) and
- * makes arguments containing spaces safe to use in command strings.
- *
- * @param value - The raw argument value.
- * @returns The escaped argument, quoted for the shell of the current platform.
- */
-function escapeShellArg(value: string): string {
-  if (process.platform === 'win32') {
-    return `"${value.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
-  }
-  return `'${value.replace(/'/g, `'\\''`)}'`;
-}
-
-/**
- * Escapes and joins multiple values so that each is passed to a command as a separate
- * literal argument.
- *
- * @param args - The raw argument values.
- * @returns The escaped arguments joined by spaces.
- */
-function escapeShellArgs(args: string[]): string {
-  return args.map((arg) => escapeShellArg(arg)).join(' ');
-}
-
 export const copy = async (source: string[] | string, dest: string): Promise<void> => {
   let sourceArr: string[];
 
@@ -455,8 +428,6 @@ export {
   exec,
   execSafe,
   execSafeAsync,
-  escapeShellArg,
-  escapeShellArgs,
   pwd,
   read,
   write,

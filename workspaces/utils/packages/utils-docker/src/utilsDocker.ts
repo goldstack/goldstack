@@ -1,5 +1,5 @@
 import { warn } from '@goldstack/utils-log';
-import { commandExists, escapeShellArg, exec } from '@goldstack/utils-sh';
+import { commandExists, exec } from '@goldstack/utils-sh';
 
 export const hasDocker = (): boolean => {
   if (!commandExists('docker')) {
@@ -147,12 +147,6 @@ export const renderHostEnvironmentVariablesArray = (): string[] => {
     args.push('-e', `${key}=${cleanedValue}`);
   }
   return args;
-};
-
-export const renderHostEnvironmentVariables = (): string => {
-  return renderHostEnvironmentVariablesArray()
-    .map((arg) => escapeShellArg(arg))
-    .join(' ');
 };
 
 export const imageNodeYarn = (): string => 'node:12.22-alpine';

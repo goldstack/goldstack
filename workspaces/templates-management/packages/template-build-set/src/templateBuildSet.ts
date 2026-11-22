@@ -324,6 +324,7 @@ export async function buildProjects(params: {
     if (project.targetRepo && gitHubToken) {
       await execSafeAsync('git', [
         'clone',
+        '--',
         `https://${gitHubToken}@github.com/${project.targetRepo}.git`,
         projectDir,
       ]);

@@ -1,16 +1,6 @@
 import assert from 'assert';
-import { execSync } from 'child_process';
 import fs from 'fs';
-import {
-  commandExists,
-  copy,
-  escapeShellArg,
-  escapeShellArgs,
-  mkdir,
-  rm,
-  rmSafe,
-  write,
-} from './utilsSh';
+import { commandExists, copy, mkdir, rm, rmSafe, write } from './utilsSh';
 
 describe('Copy', () => {
   beforeAll(async () => {
@@ -52,33 +42,6 @@ describe('Command Exists', () => {
     assert(commandExists('echo'));
     assert(!commandExists('thisCertainlyDoesNotExist'));
   });
-});
-
-describe('Shell Arguments', () => {
-  it('Should quote plain arguments', () => {
-    assert.equal(escapeShellArg('plain'), process.platform === 'win32' ? '"plain"' : `'plain'`);
-  });
-
-  if (process.platform !== 'win32') {
-    it('Should pass spaces and shell metacharacters as a single argument', () => {
-      const value = `my folder/$default's file`;
-      const result = execSync(`printf '%s' ${escapeShellArg(value)}`).toString();
-      assert.equal(result, value);
-    });
-
-    it('Should preserve backslashes as literal characters', () => {
-      const value = `C:\\temp\\my file\\`;
-      const result = execSync(`printf '%s' ${escapeShellArg(value)}`).toString();
-      assert.equal(result, value);
-    });
-
-    it('Should escape multiple arguments', () => {
-      const result = execSync(
-        `printf '%s|' ${escapeShellArgs(['a b', '$default', "it's"])}`,
-      ).toString();
-      assert.equal(result, `a b|$default|it's|`);
-    });
-  }
 });
 
 describe('rm', () => {
