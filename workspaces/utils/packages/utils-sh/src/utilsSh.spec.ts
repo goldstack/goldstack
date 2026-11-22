@@ -132,4 +132,37 @@ describe('execSafe', () => {
       rm('-rf', testDir);
     }
   });
+
+  it('Should not log failed commands when silent', () => {
+    const failScript = 'process.stderr.write("failure"); process.exit(3)';
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const consoleLog = jest.spyOn(console, 'log').mockImplementation(() => {});
+
+    try {
+      assert.throws(
+        () => execSafe(process.execPath, ['-e', failScript], { silent: true }),
+        (err: { status?: number }) => err.status === 3,
+      );
+      assert.strictEqual(consoleError.mock.calls.length, 0);
+      assert.strictEqual(consoleLog.mock.calls.length, 0);
+    } finally {
+      consoleError.mockRestore();
+      consoleLog.mockRestore();
+    }
+  });
+
+  it('Should not log failed asynchronous commands when silent', async () => {
+    const failScript = 'process.stderr.write("failure"); process.exit(3)';
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+    try {
+      await assert.rejects(
+        execSafeAsync(process.execPath, ['-e', failScript], { silent: true }),
+        (err: { status?: number }) => err.status === 3,
+      );
+      assert.strictEqual(consoleError.mock.calls.length, 0);
+    } finally {
+      consoleError.mockRestore();
+    }
+  });
 });

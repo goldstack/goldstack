@@ -15,7 +15,7 @@ import type { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet'
 export * from './types/DeploySet';
 
 import { error, info, warn } from '@goldstack/utils-log';
-import { readdirSync } from 'fs';
+import { readdirSync, renameSync } from 'fs';
 import { resetMocks } from 'mock-aws-s3-v3';
 
 export interface BuildSetParams {
@@ -332,13 +332,13 @@ export async function buildProjects(params: {
       const gitDir = path.join(projectDir, '.git');
       // First move .git directory to temp location
       const tempGitDir = path.join(projectDir, '../.git-temp');
-      await execSafeAsync('mv', [gitDir, tempGitDir]);
+      renameSync(gitDir, tempGitDir);
       // Delete all files
       await rmSafe(projectDir);
       // Recreate project directory
       mkdir('-p', projectDir);
       // Move .git directory back
-      await execSafeAsync('mv', [tempGitDir, gitDir]);
+      renameSync(tempGitDir, gitDir);
     }
     testResults.push(
       ...(await buildAndTestProject({

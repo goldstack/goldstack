@@ -38,7 +38,11 @@ export const configureForTemplateBuild = (projectDir: string, globalDir: string)
   // yarn(projectDir, 'config');
 };
 
-const execWithDocker = (dir: string, args: string): void => {
+const normalizeArgs = (args: string | string[]): string[] => {
+  return Array.isArray(args) ? args : args.split(/\s+/).filter((arg) => arg !== '');
+};
+
+const execWithDocker = (dir: string, args: string | string[]): void => {
   assertDocker();
   execSafe('docker', [
     'run',
@@ -50,21 +54,21 @@ const execWithDocker = (dir: string, args: string): void => {
     ...renderHostEnvironmentVariablesArray(),
     imageNodeYarn(),
     'yarn',
-    ...args.split(' '),
+    ...normalizeArgs(args),
   ]);
 };
 
-const execWithCli = (dir: string, args: string): void => {
+const execWithCli = (dir: string, args: string | string[]): void => {
   assertYarn();
-  execSafe('yarn', args.split(' '), { cwd: path.resolve(dir) });
+  execSafe('yarn', normalizeArgs(args), { cwd: path.resolve(dir) });
 };
 
 export interface YarnRunOptions {
   preferDocker?: boolean;
 }
 
-export const yarn = (dir: string, args: string, options?: YarnRunOptions): void => {
-  debug(`Performing yarn command: yarn ${args}`);
+export const yarn = (dir: string, args: string | string[], options?: YarnRunOptions): void => {
+  debug(`Performing yarn command: yarn ${normalizeArgs(args).join(' ')}`);
   // always prefer to run with cli
   if (hasYarn() && !options?.preferDocker) {
     execWithCli(dir, args);

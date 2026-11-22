@@ -149,6 +149,17 @@ export const renderHostEnvironmentVariablesArray = (): string[] => {
   return args;
 };
 
+/**
+ * Renders host environment variables as a single string for backwards compatibility.
+ *
+ * @deprecated Pass {@link renderHostEnvironmentVariablesArray} directly to the process arguments
+ * instead. The returned string must not be passed to a shell.
+ * @returns the Docker `-e` arguments joined into a single string
+ */
+export const renderHostEnvironmentVariables = (): string => {
+  return renderHostEnvironmentVariablesArray().join(' ');
+};
+
 export const imageNodeYarn = (): string => 'node:12.22-alpine';
 
 export const imageTerraform = (version: string): string => {

@@ -18,10 +18,14 @@ export class DestroyStateBucketTest implements TemplateTest {
       await retryOperation(
         async () => {
           process.env.GOLDSTACK_DEBUG = 'true';
-          yarn(
-            params.projectDir,
-            `workspace ${packageJson.name} infra destroy-state-bucket ${deployment.name} -y`,
-          );
+          yarn(params.projectDir, [
+            'workspace',
+            packageJson.name,
+            'infra',
+            'destroy-state-bucket',
+            deployment.name,
+            '-y',
+          ]);
         },
         120000,
         20,

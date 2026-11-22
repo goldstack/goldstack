@@ -35,7 +35,11 @@ interface TerraformOptions {
   workspace?: string;
 }
 
-const execWithDocker = (cmd: string, options: TerraformOptions): string => {
+const normalizeArgs = (cmd: string | string[]): string[] => {
+  return Array.isArray(cmd) ? cmd : cmd.split(/\s+/).filter((arg) => arg !== '');
+};
+
+const execWithDocker = (cmd: string | string[], options: TerraformOptions): string => {
   if (!options.dir) {
     options.dir = pwd();
   }
@@ -69,7 +73,7 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
     }
     dockerArgs.push('-e', `TF_WORKSPACE=${options.workspace}`);
   }
-  dockerArgs.push('-w', '/app', imageTerraform(options.version), ...cmd.split(' '));
+  dockerArgs.push('-w', '/app', imageTerraform(options.version), ...normalizeArgs(cmd));
 
   return execSafe('docker', dockerArgs, { silent: options.silent });
 };
@@ -85,7 +89,7 @@ export const hasLocalTerraform = (): boolean => {
   return commandExists('terraform');
 };
 
-const execWithCli = (cmd: string, options: TerraformOptions): string => {
+const execWithCli = (cmd: string | string[], options: TerraformOptions): string => {
   if (!options.dir) {
     options.dir = pwd();
   }
@@ -172,7 +176,7 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     delete process.env.TF_WORKSPACE;
   }
 
-  const [command, ...rest] = cmd.split(' ');
+  const [command, ...rest] = normalizeArgs(cmd);
 
   return execSafe('terraform', [command, ...(options.options ?? []), ...rest], {
     silent: options.silent,
@@ -180,7 +184,7 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
   });
 };
 
-export const tf = (cmd: string, options: TerraformOptions): string => {
+export const tf = (cmd: string | string[], options: TerraformOptions): string => {
   if (hasLocalTerraform()) {
     return execWithCli(cmd, options);
   }

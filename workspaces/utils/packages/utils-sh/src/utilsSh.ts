@@ -1,6 +1,7 @@
 import { debug, error, info, warn } from '@goldstack/utils-log';
 import archiver from 'archiver';
-import { execFile, execFileSync, execSync, exec as processAsync } from 'child_process';
+import { execSync, exec as processAsync } from 'child_process';
+import crossSpawn from 'cross-spawn';
 import { createWriteStream, promises as fsPromises } from 'fs';
 import path from 'path';
 import { rimraf } from 'rimraf';
@@ -307,43 +308,145 @@ const exec = (cmd: string, params?: ExecParams): string => {
   }
 };
 
-const execSafe = (file: string, args: string[], params?: ExecParams): string => {
-  try {
-    const res = execFileSync(file, args, { cwd: params?.cwd });
-    if (!params?.silent) {
-      console.log(res.toString());
-    }
-    return res.toString();
-  } catch (e) {
-    console.error('Command failed:', file, args);
-    if (e.stderr) {
-      console.error(e.stderr.toString());
-    }
-    if (e.stdout) {
-      console.log(e.stdout.toString());
-    }
-    throw e;
+interface ExecError extends Error {
+  /**
+   * The standard output produced by the command, if any.
+   */
+  stdout?: string;
+  /**
+   * The standard error produced by the command, if any.
+   */
+  stderr?: string;
+  /**
+   * The exit code of the command, if it exited normally.
+   */
+  status?: number | null;
+}
+
+const createExecError = (params: {
+  file: string;
+  args: string[];
+  stdout: string;
+  stderr: string;
+  status: number | null;
+  cause?: Error;
+}): ExecError => {
+  const message =
+    params.cause?.message ||
+    `Command failed: ${params.file} ${params.args.join(' ')}${
+      params.status === null ? '' : ` (exit code ${params.status})`
+    }`;
+  const execError: ExecError = new Error(message);
+  execError.stdout = params.stdout;
+  execError.stderr = params.stderr;
+  execError.status = params.status;
+  if (params.cause) {
+    execError.cause = params.cause;
   }
+  return execError;
+};
+
+const logExecFailure = (file: string, args: string[], stdout: string, stderr: string): void => {
+  console.error('Command failed:', file, args);
+  if (stderr) {
+    console.error(stderr);
+  }
+  if (stdout) {
+    console.log(stdout);
+  }
+};
+
+const execSafe = (file: string, args: string[], params?: ExecParams): string => {
+  const res = crossSpawn.sync(file, args, {
+    cwd: params?.cwd,
+    encoding: 'utf8',
+  });
+  const stdout = res.stdout?.toString() ?? '';
+  const stderr = res.stderr?.toString() ?? '';
+
+  if (res.error || res.status !== 0) {
+    const execError = createExecError({
+      file,
+      args,
+      stdout,
+      stderr,
+      status: res.status,
+      cause: res.error,
+    });
+    if (!params?.silent) {
+      logExecFailure(file, args, stdout, stderr);
+    }
+    throw execError;
+  }
+
+  if (!params?.silent) {
+    console.log(stdout);
+  }
+  return stdout;
 };
 
 const execSafeAsync = (file: string, args: string[], params?: ExecParams): Promise<string> => {
   return new Promise((resolve, reject) => {
-    execFile(file, args, { cwd: params?.cwd }, (err, stdout, stderr) => {
-      if (!params?.silent) {
-        const output = stdout.toString();
-        if (output.trim()) {
-          console.log(output);
-        }
-      }
-      if (err) {
-        console.error('Command failed:', file, args);
-        if (stderr) {
-          console.error(stderr.toString());
-        }
-        reject(err);
+    const child = crossSpawn(file, args, { cwd: params?.cwd });
+    let stdout = '';
+    let stderr = '';
+    let settled = false;
+
+    const settle = (callback: () => void): void => {
+      if (settled) {
         return;
       }
-      resolve(stdout.toString());
+      settled = true;
+      callback();
+    };
+
+    child.stdout?.on('data', (data) => {
+      stdout += data.toString();
+    });
+    child.stderr?.on('data', (data) => {
+      stderr += data.toString();
+    });
+
+    child.on('error', (err) => {
+      settle(() => {
+        if (!params?.silent) {
+          logExecFailure(file, args, stdout, stderr);
+        }
+        reject(
+          createExecError({
+            file,
+            args,
+            stdout,
+            stderr,
+            status: null,
+            cause: err,
+          }),
+        );
+      });
+    });
+
+    child.on('close', (code) => {
+      settle(() => {
+        if (code !== 0) {
+          if (!params?.silent) {
+            logExecFailure(file, args, stdout, stderr);
+          }
+          reject(
+            createExecError({
+              file,
+              args,
+              stdout,
+              stderr,
+              status: code,
+            }),
+          );
+          return;
+        }
+        if (!params?.silent && stdout.trim()) {
+          console.log(stdout);
+        }
+        resolve(stdout);
+      });
     });
   });
 };

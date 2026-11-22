@@ -447,18 +447,18 @@ export class TerraformBuild {
           return line.indexOf(deploymentName) >= 0;
         });
         if (!workspaceExists) {
-          tf(`workspace new ${deploymentName}`, {
+          tf(['workspace', 'new', deploymentName], {
             provider,
             version,
           });
         }
-        tf(`workspace select ${deploymentName}`, {
+        tf(['workspace', 'select', deploymentName], {
           provider,
           version,
           silent: true,
         });
       } else {
-        tf(`workspace select ${deploymentName}`, {
+        tf(['workspace', 'select', deploymentName], {
           provider,
           version,
           silent: true,
@@ -481,7 +481,7 @@ export class TerraformBuild {
       silent: true,
     }).trim();
     if (currentWorkspace !== params.deploymentName) {
-      tf(`workspace select ${params.deploymentName}`, {
+      tf(['workspace', 'select', params.deploymentName], {
         provider: params.provider,
         version: params.version,
         silent: true,
@@ -623,7 +623,7 @@ export class TerraformBuild {
         ),
       ];
 
-      tf(`workspace select ${params.deploymentName}`, { provider, version, silent: true });
+      tf(['workspace', 'select', params.deploymentName], { provider, version, silent: true });
       tf('init', {
         provider,
         backendConfig,
@@ -673,7 +673,7 @@ export class TerraformBuild {
         return line.indexOf(deploymentName) >= 0;
       });
       if (workspaceExists) {
-        tf(`workspace select ${deploymentName}`, {
+        tf(['workspace', 'select', deploymentName], {
           provider,
           version,
           silent: true,
@@ -785,11 +785,11 @@ export class TerraformBuild {
           ),
         ];
       }
-      tf(`workspace select ${params.deploymentName}`, { provider, version, silent: true });
+      tf(['workspace', 'select', params.deploymentName], { provider, version, silent: true });
       const remainingArgs = params.command.filter(
         (arg) => arg !== '--inject-backend-config' && arg !== '--inject-variables',
       );
-      tf(remainingArgs.join(' '), {
+      tf(remainingArgs, {
         provider,
         backendConfig,
         version,

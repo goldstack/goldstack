@@ -16,7 +16,7 @@ export class IgnoreMissingDeploymentsTest implements TemplateTest {
     // Test without flag - should fail
     let failedAsExpected = false;
     try {
-      yarn(params.projectDir, `workspace ${packageJson.name} infra plan ${fakeDeploymentName}`);
+      yarn(params.projectDir, ['workspace', packageJson.name, 'infra', 'plan', fakeDeploymentName]);
     } catch (_e) {
       failedAsExpected = true;
       console.log('Command failed as expected without --ignore-missing-deployments flag');
@@ -29,10 +29,14 @@ export class IgnoreMissingDeploymentsTest implements TemplateTest {
     }
 
     // Test with flag - should succeed with warning
-    yarn(
-      params.projectDir,
-      `workspace ${packageJson.name} infra plan ${fakeDeploymentName} --ignore-missing-deployments`,
-    );
+    yarn(params.projectDir, [
+      'workspace',
+      packageJson.name,
+      'infra',
+      'plan',
+      fakeDeploymentName,
+      '--ignore-missing-deployments',
+    ]);
     console.log('Command succeeded with --ignore-missing-deployments flag');
   }
 }
