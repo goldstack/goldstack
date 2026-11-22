@@ -1,40 +1,45 @@
 variable "aws_region" {
   description = "Region where the Lambda is deployed."
-  type = string
+  type        = string
 }
 
 variable "lambda_name" {
   description = "Name of the Lambda."
-  type = string
+  type        = string
 }
 
 variable "api_domain" {
   description = "Domain under which the API should be deployed."
-  type = string
+  type        = string
 }
-
 
 variable "hosted_zone_domain" {
   description = "Domain for a hosted zone in AWS Route 53 that api_domain will be configured in."
-  type = string
+  type        = string
 }
 
 variable "name" {
   description = "Goldstack deployment name"
-  type = string
+  type        = string
 }
 
 variable "goldstack_workdir" {
   description = "Workdir for goldstack"
-  type = string
+  type        = string
 }
 
 variable "cors" {
-  description = "CORS domain"
-  type = string
+  description = "Domain for an UI that should be allowed to access this server. Must be either '*' or an http:// or https:// URL."
+  type        = string
+  default     = ""
+
+  validation {
+    condition     = var.cors == "" || var.cors == "*" || can(regex("^https?://[^\\s]+$", var.cors))
+    error_message = "The CORS header must be empty, '*', or a URL starting with http:// or https://."
+  }
 }
 
 variable "stripe_api_key" {
   description = "Private Stripe API key"
-  type = string
+  type        = string
 }

@@ -1,9 +1,9 @@
 data "archive_file" "empty_lambda" {
-  type = "zip"
+  type        = "zip"
   output_path = "${path.module}/empty_lambda.zip"
 
   source {
-    content = "exports.handler = function() { };"
+    content  = "exports.handler = function() { };"
     filename = "lambda.js"
   }
 }
@@ -22,27 +22,27 @@ resource "aws_lambda_function" "main" {
   runtime = "nodejs22.x"
 
   memory_size = 2048
-  timeout = 900
+  timeout     = 900
 
   role = aws_iam_role.lambda_exec.arn
 
   lifecycle {
     create_before_destroy = true
     ignore_changes = [
-       filename,
+      filename,
     ]
   }
 
   environment {
     variables = {
       GOLDSTACK_DEPLOYMENT = var.name
-      CORS = var.cors
+      CORS                 = var.cors
     }
   }
 
   logging_config {
     log_format = "Text"
-    log_group = aws_cloudwatch_log_group.main.name
+    log_group  = aws_cloudwatch_log_group.main.name
   }
 }
 
@@ -75,7 +75,7 @@ resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach" {
 
 # Explicit roles to allow logging for Lambda. Not strictly required here due to the full admin access
 # granted in the lambda_admin_role_attach above. But added here to make it easier to fine-tune permissions
-# in the above at a later point. 
+# in the above at a later point.
 resource "aws_iam_policy" "lambda_logging" {
   name        = "${var.lambda_name}-lambda-logging-role"
   path        = "/"

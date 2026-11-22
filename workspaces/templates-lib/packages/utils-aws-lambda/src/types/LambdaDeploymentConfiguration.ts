@@ -10,7 +10,7 @@ type LambdaNamePrefix = string;
  * The domain name that the API should be deployed to (e.g. api.mysite.com)
  *
  * @title API Domain
- * @pattern ^[^\s]*
+ * @pattern ^[^\s]*$
  */
 export type APIDomain = string;
 
@@ -18,15 +18,15 @@ export type APIDomain = string;
  * The domain name of the Route 53 hosted zone that the domain for this API should be added to.
  *
  * @title Hosted Zone Domain
- * @pattern ^[^\s]*
+ * @pattern ^[^\s]*$
  */
 export type HostedZoneDomain = string;
 
 /**
- * Optional URL for an UI that should be allowed to access this server.
+ * Optional URL for an UI that should be allowed to access this server. Must be either `*` or an `http://` or `https://` URL.
  *
  * @title CORS Header
- * @pattern ^[^\s]*
+ * @pattern ^(\*|https?://[^\s]+)?$
  */
 export type CorsHeader = string;
 
