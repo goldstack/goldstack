@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-backup-cli",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "description": "CLI for managing backup template infrastructure.",
   "keywords": [
     "goldstack",
@@ -40,15 +40,15 @@
   },
   "dependencies": {
     "@aws-sdk/client-backup": "^3.1164.0",
-    "@goldstack/infra": "0.4.51",
-    "@goldstack/infra-aws": "0.4.80",
-    "@goldstack/template-backup": "0.1.23",
+    "@goldstack/infra": "0.4.52",
+    "@goldstack/infra-aws": "0.4.81",
+    "@goldstack/template-backup": "0.1.24",
     "@goldstack/utils-cli": "0.3.40",
     "@goldstack/utils-log": "0.3.43",
-    "@goldstack/utils-package": "0.4.53",
-    "@goldstack/utils-sh": "0.5.49",
-    "@goldstack/utils-terraform": "0.4.100",
-    "@goldstack/utils-terraform-aws": "0.4.105",
+    "@goldstack/utils-package": "0.4.54",
+    "@goldstack/utils-sh": "0.5.50",
+    "@goldstack/utils-terraform": "0.4.101",
+    "@goldstack/utils-terraform-aws": "0.4.106",
     "source-map-support": "^0.5.21",
     "yargs": "^17"
   },
