@@ -12,8 +12,10 @@ export const app: express.Application = express();
 
 debug('Server cold start');
 app.use(helmet());
-debug(`CORS config: ${process.env.CORS}`);
-app.use(cors({ origin: process.env.CORS, credentials: true }));
+if (process.env.CORS) {
+  debug(`CORS config: ${process.env.CORS}`);
+  app.use(cors({ origin: process.env.CORS, credentials: true }));
+}
 app.use(cookieParser() as express.RequestHandler);
 app.use(express.json({ limit: '10mb' }));
 

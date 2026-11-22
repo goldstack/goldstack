@@ -3,7 +3,6 @@ variable "aws_region" {
   type        = string
 }
 
-
 variable "domain" {
   description = "Domain under which the application should be deployed."
   type        = string
@@ -20,9 +19,14 @@ variable "name" {
 }
 
 variable "cors" {
-  description = "Domain for an UI that should be allowed to access this server."
+  description = "Domain for an UI that should be allowed to access this server. Must be either '*' or an http:// or https:// URL."
   type        = string
   default     = ""
+
+  validation {
+    condition     = var.cors == "" || var.cors == "*" || can(regex("^https?://[^\\s]+$", var.cors))
+    error_message = "The CORS header must be empty, '*', or a URL starting with http:// or https://."
+  }
 }
 
 # Add routes https://github.com/terraform-aws-modules/terraform-aws-apigateway-v2/blob/master/variables.tf#L191

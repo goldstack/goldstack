@@ -7,7 +7,7 @@ resource "aws_apigatewayv2_api" "api" {
   protocol_type = "HTTP"
 
   dynamic "cors_configuration" {
-    for_each = var.cors != null ? [1] : []
+    for_each = var.cors != null && var.cors != "" ? [1] : []
     content {
       allow_credentials = true
       allow_headers     = ["Content-Type", "Accept", "x-csrf-token"]
