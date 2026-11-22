@@ -789,6 +789,23 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@aws-sdk/client-lambda", [\
+      ["npm:3.1175.0", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-client-lambda-npm-3.1175.0-ba72ab41b4-ffe10623b2.zip/node_modules/@aws-sdk/client-lambda/",\
+        "packageDependencies": [\
+          ["@aws-sdk/client-lambda", "npm:3.1175.0"],\
+          ["@aws-sdk/core", "npm:3.981.1"],\
+          ["@aws-sdk/credential-provider-node", "npm:3.972.98"],\
+          ["@aws-sdk/types", "npm:3.975.1"],\
+          ["@smithy/core", "npm:3.41.0"],\
+          ["@smithy/fetch-http-handler", "npm:5.8.1"],\
+          ["@smithy/node-http-handler", "npm:4.14.2"],\
+          ["@smithy/types", "npm:4.20.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@aws-sdk/client-s3", [\
       ["npm:3.1164.0", {\
         "packageLocation": "./.yarn/cache/@aws-sdk-client-s3-npm-3.1164.0-c453dae043-d38b20bda6.zip/node_modules/@aws-sdk/client-s3/",\
@@ -877,6 +894,21 @@ const RAW_RUNTIME_STATE =
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.981.1", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-core-npm-3.981.1-1d47b51588-89d5b8fe05.zip/node_modules/@aws-sdk/core/",\
+        "packageDependencies": [\
+          ["@aws-sdk/core", "npm:3.981.1"],\
+          ["@aws-sdk/types", "npm:3.975.1"],\
+          ["@aws-sdk/xml-builder", "npm:3.972.43"],\
+          ["@aws/lambda-invoke-store", "npm:0.3.0"],\
+          ["@smithy/core", "npm:3.41.0"],\
+          ["@smithy/signature-v4", "npm:5.7.5"],\
+          ["@smithy/types", "npm:4.20.0"],\
+          ["bowser", "npm:2.11.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@aws-sdk/credential-provider-cognito-identity", [\
@@ -905,6 +937,18 @@ const RAW_RUNTIME_STATE =
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.972.85", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-credential-provider-env-npm-3.972.85-a37fbd7f1d-6f115388a8.zip/node_modules/@aws-sdk/credential-provider-env/",\
+        "packageDependencies": [\
+          ["@aws-sdk/core", "npm:3.981.1"],\
+          ["@aws-sdk/credential-provider-env", "npm:3.972.85"],\
+          ["@aws-sdk/types", "npm:3.975.1"],\
+          ["@smithy/core", "npm:3.41.0"],\
+          ["@smithy/types", "npm:4.20.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@aws-sdk/credential-provider-http", [\
@@ -918,6 +962,20 @@ const RAW_RUNTIME_STATE =
           ["@smithy/fetch-http-handler", "npm:5.8.0"],\
           ["@smithy/node-http-handler", "npm:4.14.2"],\
           ["@smithy/types", "npm:4.19.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:3.972.87", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-credential-provider-http-npm-3.972.87-cd59804182-1c1634ec6c.zip/node_modules/@aws-sdk/credential-provider-http/",\
+        "packageDependencies": [\
+          ["@aws-sdk/core", "npm:3.981.1"],\
+          ["@aws-sdk/credential-provider-http", "npm:3.972.87"],\
+          ["@aws-sdk/types", "npm:3.975.1"],\
+          ["@smithy/core", "npm:3.41.0"],\
+          ["@smithy/fetch-http-handler", "npm:5.8.1"],\
+          ["@smithy/node-http-handler", "npm:4.14.2"],\
+          ["@smithy/types", "npm:4.20.0"],\
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
@@ -943,6 +1001,26 @@ const RAW_RUNTIME_STATE =
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.973.31", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-credential-provider-ini-npm-3.973.31-973fa36bbe-b821b65761.zip/node_modules/@aws-sdk/credential-provider-ini/",\
+        "packageDependencies": [\
+          ["@aws-sdk/core", "npm:3.981.1"],\
+          ["@aws-sdk/credential-provider-env", "npm:3.972.85"],\
+          ["@aws-sdk/credential-provider-http", "npm:3.972.87"],\
+          ["@aws-sdk/credential-provider-ini", "npm:3.973.31"],\
+          ["@aws-sdk/credential-provider-login", "npm:3.972.93"],\
+          ["@aws-sdk/credential-provider-process", "npm:3.972.85"],\
+          ["@aws-sdk/credential-provider-sso", "npm:3.973.29"],\
+          ["@aws-sdk/credential-provider-web-identity", "npm:3.972.91"],\
+          ["@aws-sdk/nested-clients", "npm:3.998.4"],\
+          ["@aws-sdk/types", "npm:3.975.1"],\
+          ["@smithy/core", "npm:3.41.0"],\
+          ["@smithy/credential-provider-imds", "npm:4.5.2"],\
+          ["@smithy/types", "npm:4.20.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@aws-sdk/credential-provider-login", [\
@@ -955,6 +1033,19 @@ const RAW_RUNTIME_STATE =
           ["@aws-sdk/types", "npm:3.975.0"],\
           ["@smithy/core", "npm:3.39.0"],\
           ["@smithy/types", "npm:4.19.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:3.972.93", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-credential-provider-login-npm-3.972.93-3b46671427-ad6c193fbc.zip/node_modules/@aws-sdk/credential-provider-login/",\
+        "packageDependencies": [\
+          ["@aws-sdk/core", "npm:3.981.1"],\
+          ["@aws-sdk/credential-provider-login", "npm:3.972.93"],\
+          ["@aws-sdk/nested-clients", "npm:3.998.4"],\
+          ["@aws-sdk/types", "npm:3.975.1"],\
+          ["@smithy/core", "npm:3.41.0"],\
+          ["@smithy/types", "npm:4.20.0"],\
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
@@ -978,6 +1069,24 @@ const RAW_RUNTIME_STATE =
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.972.98", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-credential-provider-node-npm-3.972.98-19cbc507ee-88fe701321.zip/node_modules/@aws-sdk/credential-provider-node/",\
+        "packageDependencies": [\
+          ["@aws-sdk/credential-provider-env", "npm:3.972.85"],\
+          ["@aws-sdk/credential-provider-http", "npm:3.972.87"],\
+          ["@aws-sdk/credential-provider-ini", "npm:3.973.31"],\
+          ["@aws-sdk/credential-provider-node", "npm:3.972.98"],\
+          ["@aws-sdk/credential-provider-process", "npm:3.972.85"],\
+          ["@aws-sdk/credential-provider-sso", "npm:3.973.29"],\
+          ["@aws-sdk/credential-provider-web-identity", "npm:3.972.91"],\
+          ["@aws-sdk/types", "npm:3.975.1"],\
+          ["@smithy/core", "npm:3.41.0"],\
+          ["@smithy/credential-provider-imds", "npm:4.5.2"],\
+          ["@smithy/types", "npm:4.20.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@aws-sdk/credential-provider-process", [\
@@ -989,6 +1098,18 @@ const RAW_RUNTIME_STATE =
           ["@aws-sdk/types", "npm:3.975.0"],\
           ["@smithy/core", "npm:3.39.0"],\
           ["@smithy/types", "npm:4.19.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:3.972.85", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-credential-provider-process-npm-3.972.85-4c1bf9daa5-6355f3ff90.zip/node_modules/@aws-sdk/credential-provider-process/",\
+        "packageDependencies": [\
+          ["@aws-sdk/core", "npm:3.981.1"],\
+          ["@aws-sdk/credential-provider-process", "npm:3.972.85"],\
+          ["@aws-sdk/types", "npm:3.975.1"],\
+          ["@smithy/core", "npm:3.41.0"],\
+          ["@smithy/types", "npm:4.20.0"],\
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
@@ -1008,6 +1129,20 @@ const RAW_RUNTIME_STATE =
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.973.29", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-credential-provider-sso-npm-3.973.29-74643a606a-3140f50981.zip/node_modules/@aws-sdk/credential-provider-sso/",\
+        "packageDependencies": [\
+          ["@aws-sdk/core", "npm:3.981.1"],\
+          ["@aws-sdk/credential-provider-sso", "npm:3.973.29"],\
+          ["@aws-sdk/nested-clients", "npm:3.998.4"],\
+          ["@aws-sdk/token-providers", "npm:3.1175.0"],\
+          ["@aws-sdk/types", "npm:3.975.1"],\
+          ["@smithy/core", "npm:3.41.0"],\
+          ["@smithy/types", "npm:4.20.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@aws-sdk/credential-provider-web-identity", [\
@@ -1020,6 +1155,19 @@ const RAW_RUNTIME_STATE =
           ["@aws-sdk/types", "npm:3.975.0"],\
           ["@smithy/core", "npm:3.39.0"],\
           ["@smithy/types", "npm:4.19.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:3.972.91", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-credential-provider-web-identity-npm-3.972.91-60a829f5a2-cf83226895.zip/node_modules/@aws-sdk/credential-provider-web-identity/",\
+        "packageDependencies": [\
+          ["@aws-sdk/core", "npm:3.981.1"],\
+          ["@aws-sdk/credential-provider-web-identity", "npm:3.972.91"],\
+          ["@aws-sdk/nested-clients", "npm:3.998.4"],\
+          ["@aws-sdk/types", "npm:3.975.1"],\
+          ["@smithy/core", "npm:3.41.0"],\
+          ["@smithy/types", "npm:4.20.0"],\
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
@@ -1158,6 +1306,21 @@ const RAW_RUNTIME_STATE =
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.998.4", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-nested-clients-npm-3.998.4-d5a7b93e63-73dece1366.zip/node_modules/@aws-sdk/nested-clients/",\
+        "packageDependencies": [\
+          ["@aws-sdk/core", "npm:3.981.1"],\
+          ["@aws-sdk/nested-clients", "npm:3.998.4"],\
+          ["@aws-sdk/signature-v4-multi-region", "npm:3.996.52"],\
+          ["@aws-sdk/types", "npm:3.975.1"],\
+          ["@smithy/core", "npm:3.41.0"],\
+          ["@smithy/fetch-http-handler", "npm:5.8.1"],\
+          ["@smithy/node-http-handler", "npm:4.14.2"],\
+          ["@smithy/types", "npm:4.20.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@aws-sdk/s3-request-presigner", [\
@@ -1186,6 +1349,17 @@ const RAW_RUNTIME_STATE =
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.996.52", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-signature-v4-multi-region-npm-3.996.52-17f7a02e33-a84f8eb504.zip/node_modules/@aws-sdk/signature-v4-multi-region/",\
+        "packageDependencies": [\
+          ["@aws-sdk/signature-v4-multi-region", "npm:3.996.52"],\
+          ["@aws-sdk/types", "npm:3.975.1"],\
+          ["@smithy/signature-v4", "npm:5.7.5"],\
+          ["@smithy/types", "npm:4.20.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@aws-sdk/token-providers", [\
@@ -1201,6 +1375,19 @@ const RAW_RUNTIME_STATE =
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.1175.0", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-token-providers-npm-3.1175.0-aeb1e39edd-4df2b0df08.zip/node_modules/@aws-sdk/token-providers/",\
+        "packageDependencies": [\
+          ["@aws-sdk/core", "npm:3.981.1"],\
+          ["@aws-sdk/nested-clients", "npm:3.998.4"],\
+          ["@aws-sdk/token-providers", "npm:3.1175.0"],\
+          ["@aws-sdk/types", "npm:3.975.1"],\
+          ["@smithy/core", "npm:3.41.0"],\
+          ["@smithy/types", "npm:4.20.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@aws-sdk/types", [\
@@ -1209,6 +1396,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@aws-sdk/types", "npm:3.975.0"],\
           ["@smithy/types", "npm:4.19.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:3.975.1", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-types-npm-3.975.1-117ee94886-1c7fda9f5f.zip/node_modules/@aws-sdk/types/",\
+        "packageDependencies": [\
+          ["@aws-sdk/types", "npm:3.975.1"],\
+          ["@smithy/types", "npm:4.20.0"],\
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
@@ -1264,6 +1460,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@aws-sdk/xml-builder", "npm:3.972.42"],\
           ["@smithy/types", "npm:4.19.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:3.972.43", {\
+        "packageLocation": "./.yarn/cache/@aws-sdk-xml-builder-npm-3.972.43-fc4ee859b7-daf9d033e8.zip/node_modules/@aws-sdk/xml-builder/",\
+        "packageDependencies": [\
+          ["@aws-sdk/xml-builder", "npm:3.972.43"],\
+          ["@smithy/types", "npm:4.20.0"],\
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
@@ -5428,6 +5633,7 @@ const RAW_RUNTIME_STATE =
       ["workspace:workspaces/templates-lib/packages/utils-aws-lambda", {\
         "packageLocation": "./workspaces/templates-lib/packages/utils-aws-lambda/",\
         "packageDependencies": [\
+          ["@aws-sdk/client-lambda", "npm:3.1175.0"],\
           ["@aws-sdk/types", "npm:3.975.0"],\
           ["@goldstack/infra-aws", "workspace:workspaces/templates-lib/packages/infra-aws"],\
           ["@goldstack/utils-aws-cli", "workspace:workspaces/templates-lib/packages/utils-aws-cli"],\
@@ -7906,6 +8112,15 @@ const RAW_RUNTIME_STATE =
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:3.41.0", {\
+        "packageLocation": "./.yarn/cache/@smithy-core-npm-3.41.0-28c7315eb4-c42deba458.zip/node_modules/@smithy/core/",\
+        "packageDependencies": [\
+          ["@smithy/core", "npm:3.41.0"],\
+          ["@smithy/types", "npm:4.20.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@smithy/credential-provider-imds", [\
@@ -7927,6 +8142,16 @@ const RAW_RUNTIME_STATE =
           ["@smithy/core", "npm:3.39.0"],\
           ["@smithy/fetch-http-handler", "npm:5.8.0"],\
           ["@smithy/types", "npm:4.19.0"],\
+          ["tslib", "npm:2.7.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:5.8.1", {\
+        "packageLocation": "./.yarn/cache/@smithy-fetch-http-handler-npm-5.8.1-e0e73597ac-58de2dd217.zip/node_modules/@smithy/fetch-http-handler/",\
+        "packageDependencies": [\
+          ["@smithy/core", "npm:3.39.0"],\
+          ["@smithy/fetch-http-handler", "npm:5.8.1"],\
+          ["@smithy/types", "npm:4.20.0"],\
           ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\

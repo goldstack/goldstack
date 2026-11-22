@@ -41,6 +41,7 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
+    "@aws-sdk/client-lambda": "^3.1164.0",
     "@aws-sdk/types": "^3.975.0",
     "@goldstack/infra-aws": "0.4.80",
     "@goldstack/utils-aws-cli": "0.4.82",
