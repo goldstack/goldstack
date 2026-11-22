@@ -1,6 +1,6 @@
 import { assertDocker, hasDocker, imageTerraform } from '@goldstack/utils-docker';
 import { fatal, warn } from '@goldstack/utils-log';
-import { commandExists, exec, pwd } from '@goldstack/utils-sh';
+import { commandExists, exec, execSafe, pwd } from '@goldstack/utils-sh';
 import path from 'path';
 import type { CloudProvider } from './cloudProvider';
 import type { TerraformVersion } from './types/utilsTerraformConfig';
@@ -35,7 +35,11 @@ interface TerraformOptions {
   workspace?: string;
 }
 
-const execWithDocker = (cmd: string, options: TerraformOptions): string => {
+const normalizeArgs = (cmd: string | string[]): string[] => {
+  return Array.isArray(cmd) ? cmd : cmd.split(/\s+/).filter((arg) => arg !== '');
+};
+
+const execWithDocker = (cmd: string | string[], options: TerraformOptions): string => {
   if (!options.dir) {
     options.dir = pwd();
   }
@@ -57,48 +61,21 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
 
   const terraformEnvVars = getTerraformEnvVars();
 
-  let workspaceEnvVariable = '';
+  const dockerArgs = ['run', '--rm', '-v', `${options.dir}:/app`];
+  for (const [key, value] of Object.entries(terraformEnvVars)) {
+    dockerArgs.push('-e', `${key}=${value}`);
+  }
   if (options.workspace) {
     if (terraformEnvVars.TF_WORKSPACE) {
       warn(
         `TF_WORKSPACE environment variable is set to '${terraformEnvVars.TF_WORKSPACE}' but will be overridden by workspace option '${options.workspace}'. Please unset TF_WORKSPACE or remove the workspace option to avoid confusion.`,
       );
     }
-    workspaceEnvVariable =
-      '-e ' +
-      'TF_WORKSPACE="' +
-      options.workspace
-        .replace(/\\/g, '\\\\')
-        .replace(/"/g, '\\"')
-        .replace(/\$/g, '\\$')
-        .replace(/`/g, '\\`') +
-      '"';
+    dockerArgs.push('-e', `TF_WORKSPACE=${options.workspace}`);
   }
+  dockerArgs.push('-w', '/app', imageTerraform(options.version), ...normalizeArgs(cmd));
 
-  const terraformEnvFlags = Object.entries(terraformEnvVars)
-    .map(
-      ([key, value]) =>
-        '-e ' +
-        key +
-        '="' +
-        value
-          .replace(/\\/g, '\\\\')
-          .replace(/"/g, '\\"')
-          .replace(/\$/g, '\\$')
-          .replace(/`/g, '\\`') +
-        '"',
-    )
-    .join(' ');
-
-  const [command, ...rest] = cmd.split(' ');
-
-  const cmd3 =
-    `docker run --rm -v "${options.dir}":/app ` +
-    ` ${terraformEnvFlags} ` +
-    ` ${workspaceEnvVariable} ` +
-    ` -w /app ${imageTerraform(options.version)} ${command} ${rest.join(' ')}`;
-
-  return exec(cmd3, { silent: options.silent });
+  return execSafe('docker', dockerArgs, { silent: options.silent });
 };
 
 export const assertTerraform = (): void => {
@@ -112,7 +89,7 @@ export const hasLocalTerraform = (): boolean => {
   return commandExists('terraform');
 };
 
-const execWithCli = (cmd: string, options: TerraformOptions): string => {
+const execWithCli = (cmd: string | string[], options: TerraformOptions): string => {
   if (!options.dir) {
     options.dir = pwd();
   }
@@ -199,21 +176,15 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
     delete process.env.TF_WORKSPACE;
   }
 
-  const [command, ...rest] = cmd.split(' ');
+  const [command, ...rest] = normalizeArgs(cmd);
 
-  // Change to specified directory, execute command, then change back
-  const currentDir = pwd();
-  const execCmd =
-    `cd "${options.dir}" && terraform ` +
-    ` ${command} ` +
-    ` ${options.options?.join(' ') || ''} ` +
-    ` ${rest.join(' ')} ` +
-    ` && cd "${currentDir}"`;
-
-  return exec(execCmd, { silent: options.silent });
+  return execSafe('terraform', [command, ...(options.options ?? []), ...rest], {
+    silent: options.silent,
+    cwd: options.dir,
+  });
 };
 
-export const tf = (cmd: string, options: TerraformOptions): string => {
+export const tf = (cmd: string | string[], options: TerraformOptions): string => {
   if (hasLocalTerraform()) {
     return execWithCli(cmd, options);
   }

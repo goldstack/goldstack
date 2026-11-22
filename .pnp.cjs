@@ -5805,6 +5805,7 @@ const RAW_RUNTIME_STATE =
           ["@swc/jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:0.2.39"],\
           ["@types/archiver", "npm:6.0.3"],\
           ["@types/command-exists", "npm:1.2.3"],\
+          ["@types/cross-spawn", "npm:6.0.6"],\
           ["@types/fs-extra", "npm:11.0.4"],\
           ["@types/glob", "npm:8.1.0"],\
           ["@types/jest", "npm:30.0.0"],\
@@ -5812,6 +5813,7 @@ const RAW_RUNTIME_STATE =
           ["@types/which", "npm:3.0.4"],\
           ["@types/yauzl", "npm:2.9.1"],\
           ["archiver", "npm:5.3.1"],\
+          ["cross-spawn", "npm:7.0.6"],\
           ["fs-extra", "npm:11.2.0"],\
           ["glob", "npm:14.0.2"],\
           ["jest", "virtual:0a32958ded74dc6ab398a3279f865064052fe18d5a8638b6db416e0db715fd0de1f2a3db782b38897bb15560cc038848c1a70fd021c9627c4a6d64591e4c4808#npm:30.5.2"],\
@@ -8648,6 +8650,16 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-cors-npm-2.8.17-2556d16051-469bd85e29.zip/node_modules/@types/cors/",\
         "packageDependencies": [\
           ["@types/cors", "npm:2.8.17"],\
+          ["@types/node", "npm:14.0.13"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/cross-spawn", [\
+      ["npm:6.0.6", {\
+        "packageLocation": "./.yarn/cache/@types-cross-spawn-npm-6.0.6-fbe5fe9243-b4172927cd.zip/node_modules/@types/cross-spawn/",\
+        "packageDependencies": [\
+          ["@types/cross-spawn", "npm:6.0.6"],\
           ["@types/node", "npm:14.0.13"]\
         ],\
         "linkType": "HARD"\

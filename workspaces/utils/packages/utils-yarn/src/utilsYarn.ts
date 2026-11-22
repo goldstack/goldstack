@@ -2,10 +2,10 @@ import {
   assertDocker,
   hasDocker,
   imageNodeYarn,
-  renderHostEnvironmentVariables,
+  renderHostEnvironmentVariablesArray,
 } from '@goldstack/utils-docker';
 import { debug, info } from '@goldstack/utils-log';
-import { cd, commandExists, exec, pwd } from '@goldstack/utils-sh';
+import { commandExists, execSafe } from '@goldstack/utils-sh';
 import path from 'path';
 
 export const hasYarn = (): boolean => {
@@ -38,36 +38,37 @@ export const configureForTemplateBuild = (projectDir: string, globalDir: string)
   // yarn(projectDir, 'config');
 };
 
-const execWithDocker = (dir: string, args: string): void => {
-  assertDocker();
-  exec(
-    'docker run --rm ' +
-      `-v "${path.resolve(dir)}":/app ` +
-      '--workdir /app ' +
-      renderHostEnvironmentVariables() +
-      ' ' +
-      `${imageNodeYarn()} ` +
-      `yarn ${args}`,
-  );
+const normalizeArgs = (args: string | string[]): string[] => {
+  return Array.isArray(args) ? args : args.split(/\s+/).filter((arg) => arg !== '');
 };
 
-const execWithCli = (dir: string, args: string): void => {
+const execWithDocker = (dir: string, args: string | string[]): void => {
+  assertDocker();
+  execSafe('docker', [
+    'run',
+    '--rm',
+    '-v',
+    `${path.resolve(dir)}:/app`,
+    '--workdir',
+    '/app',
+    ...renderHostEnvironmentVariablesArray(),
+    imageNodeYarn(),
+    'yarn',
+    ...normalizeArgs(args),
+  ]);
+};
+
+const execWithCli = (dir: string, args: string | string[]): void => {
   assertYarn();
-  const currentWorkDir = pwd();
-  cd(path.resolve(dir));
-  try {
-    exec(`yarn ${args}`);
-  } finally {
-    cd(currentWorkDir);
-  }
+  execSafe('yarn', normalizeArgs(args), { cwd: path.resolve(dir) });
 };
 
 export interface YarnRunOptions {
   preferDocker?: boolean;
 }
 
-export const yarn = (dir: string, args: string, options?: YarnRunOptions): void => {
-  debug(`Performing yarn command: yarn ${args}`);
+export const yarn = (dir: string, args: string | string[], options?: YarnRunOptions): void => {
+  debug(`Performing yarn command: yarn ${normalizeArgs(args).join(' ')}`);
   // always prefer to run with cli
   if (hasYarn() && !options?.preferDocker) {
     execWithCli(dir, args);

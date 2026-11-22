@@ -4404,6 +4404,7 @@ __metadata:
     "@swc/jest": "npm:^0.2.39"
     "@types/archiver": "npm:^6.0.3"
     "@types/command-exists": "npm:^1.2.3"
+    "@types/cross-spawn": "npm:^6.0.6"
     "@types/fs-extra": "npm:^11.0.4"
     "@types/glob": "npm:^8.1.0"
     "@types/jest": "npm:^30.0.0"
@@ -4411,6 +4412,7 @@ __metadata:
     "@types/which": "npm:^3.0.4"
     "@types/yauzl": "npm:^2.9.1"
     archiver: "npm:^5.3.1"
+    cross-spawn: "npm:^7.0.6"
     fs-extra: "npm:^11.2.0"
     glob: "npm:14.0.2"
     jest: "npm:^30.5.2"
@@ -6842,6 +6844,15 @@ __metadata:
   dependencies:
     "@types/node": "npm:*"
   checksum: 10/469bd85e29a35977099a3745c78e489916011169a664e97c4c3d6538143b0a16e4cc72b05b407dc008df3892ed7bf595f9b7c0f1f4680e169565ee9d64966bde
+  languageName: node
+  linkType: hard
+
+"@types/cross-spawn@npm:^6.0.6":
+  version: 6.0.6
+  resolution: "@types/cross-spawn@npm:6.0.6"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 10/b4172927cd1387cf037c3ade785ef46c87537b7bc2803d7f6663b4904d0c5d6f726415d1adb2fee4fecb21746738f11336076449265d46be4ce110cc3a8c8436
   languageName: node
   linkType: hard
 

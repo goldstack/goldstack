@@ -5,7 +5,7 @@ import { installProject } from '@goldstack/project-install';
 import { build } from '@goldstack/template-build';
 import type { S3TemplateRepository } from '@goldstack/template-repository';
 import { getAwsConfigPath } from '@goldstack/utils-config';
-import { cd, execAsync, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
+import { execSafeAsync, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
 import type { GoldstackTemplateConfiguration } from '@goldstack/utils-template';
 import { getTemplateTest, prepareLocalS3Repo } from '@goldstack/utils-template-test';
 import assert from 'assert';
@@ -15,7 +15,7 @@ import type { DeploySetConfig, DeploySetProjectConfig } from './types/DeploySet'
 export * from './types/DeploySet';
 
 import { error, info, warn } from '@goldstack/utils-log';
-import { readdirSync } from 'fs';
+import { readdirSync, renameSync } from 'fs';
 import { resetMocks } from 'mock-aws-s3-v3';
 
 export interface BuildSetParams {
@@ -322,20 +322,23 @@ export async function buildProjects(params: {
 
     const gitHubToken = process.env.GITHUB_TOKEN;
     if (project.targetRepo && gitHubToken) {
-      await execAsync(
-        `git clone https://${gitHubToken}@github.com/${project.targetRepo}.git ${projectDir}`,
-      );
+      await execSafeAsync('git', [
+        'clone',
+        '--',
+        `https://${gitHubToken}@github.com/${project.targetRepo}.git`,
+        projectDir,
+      ]);
       // Preserve .git directory while removing all other files
       const gitDir = path.join(projectDir, '.git');
       // First move .git directory to temp location
       const tempGitDir = path.join(projectDir, '../.git-temp');
-      await execAsync(`mv "${gitDir}" "${tempGitDir}"`);
+      renameSync(gitDir, tempGitDir);
       // Delete all files
       await rmSafe(projectDir);
       // Recreate project directory
       mkdir('-p', projectDir);
       // Move .git directory back
-      await execAsync(`mv "${tempGitDir}" "${gitDir}"`);
+      renameSync(tempGitDir, gitDir);
     }
     testResults.push(
       ...(await buildAndTestProject({
@@ -348,19 +351,30 @@ export async function buildProjects(params: {
     );
 
     if (project.targetRepo && gitHubToken) {
-      const currentDir = process.cwd();
-      cd(`${projectDir}`);
       if (project.repoReadme) {
-        write(read(join(params.monorepoRoot, project.repoReadme)), 'README.md');
+        write(read(join(params.monorepoRoot, project.repoReadme)), join(projectDir, 'README.md'));
       }
-      await execAsync('git config --global user.email "1448524+mxro@users.noreply.github.com"');
-      await execAsync('git config --global user.name "Goldstack Project Builder"');
-      await execAsync('git add .');
-      await execAsync(
-        'git diff-index --quiet HEAD || git commit -m "Automated update of generated boilerplate by goldstack.party"',
-      );
-      await execAsync('git push origin master --force');
-      cd(`${currentDir}`);
+      await execSafeAsync('git', [
+        'config',
+        '--global',
+        'user.email',
+        '1448524+mxro@users.noreply.github.com',
+      ]);
+      await execSafeAsync('git', ['config', '--global', 'user.name', 'Goldstack Project Builder']);
+      await execSafeAsync('git', ['add', '.'], { cwd: projectDir });
+      try {
+        await execSafeAsync('git', ['diff-index', '--quiet', 'HEAD'], {
+          cwd: projectDir,
+          silent: true,
+        });
+      } catch {
+        await execSafeAsync(
+          'git',
+          ['commit', '-m', 'Automated update of generated boilerplate by goldstack.party'],
+          { cwd: projectDir },
+        );
+      }
+      await execSafeAsync('git', ['push', 'origin', 'master', '--force'], { cwd: projectDir });
     }
   }
   params.res.testResults = testResults;

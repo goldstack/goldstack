@@ -70,7 +70,7 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
     const describeResult = await awsCli({
       credentials,
       region: 'us-east-1',
-      command: `cloudfront describe-function --name ${functionName}`,
+      args: ['cloudfront', 'describe-function', '--name', functionName],
       options: { silent: true },
     });
     const describeData = JSON.parse(describeResult);
@@ -86,7 +86,18 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
     const updateResult = await awsCli({
       credentials,
       region: 'us-east-1',
-      command: `cloudfront update-function --name ${functionName} --function-config Comment="Next.js routing function",Runtime="cloudfront-js-2.0" --function-code fileb://${functionPackageDir}function.js --if-match "${eTag}"`,
+      args: [
+        'cloudfront',
+        'update-function',
+        '--name',
+        functionName,
+        '--function-config',
+        'Comment=Next.js routing function,Runtime=cloudfront-js-2.0',
+        '--function-code',
+        `fileb://${functionPackageDir}function.js`,
+        '--if-match',
+        eTag,
+      ],
       options: { silent: true },
     });
     const updateData = JSON.parse(updateResult);
@@ -96,7 +107,7 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
     await awsCli({
       credentials,
       region: 'us-east-1',
-      command: `cloudfront publish-function --name ${functionName} --if-match "${updatedETag}"`,
+      args: ['cloudfront', 'publish-function', '--name', functionName, '--if-match', updatedETag],
       options: { silent: true },
     });
   } catch (error) {

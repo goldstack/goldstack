@@ -1,6 +1,6 @@
 import assert from 'assert';
 import fs from 'fs';
-import { commandExists, copy, mkdir, rm, rmSafe, write } from './utilsSh';
+import { commandExists, copy, execSafe, execSafeAsync, mkdir, rm, rmSafe, write } from './utilsSh';
 
 describe('Copy', () => {
   beforeAll(async () => {
@@ -60,5 +60,109 @@ describe('rm', () => {
 
     // Directory should be completely removed
     assert(!fs.existsSync(testDir));
+  });
+});
+
+describe('execSafe', () => {
+  const printArgsScript = 'process.stdout.write(JSON.stringify(process.argv.slice(1)))';
+  const printCwdScript = 'process.stdout.write(process.cwd())';
+  const shellSensitiveArgs = [
+    'argument with spaces',
+    '$HOME',
+    '$(touch should-not-exist)',
+    '`touch should-not-exist`',
+    '; touch should-not-exist',
+    '&& touch should-not-exist',
+    'value"with"quotes',
+    "value'with'apostrophes",
+    'back\\slash',
+    '*',
+  ];
+
+  it('Should pass arguments literally without shell interpretation', () => {
+    const output = execSafe(
+      process.execPath,
+      ['-e', printArgsScript, '--', ...shellSensitiveArgs],
+      {
+        silent: true,
+      },
+    );
+
+    assert.deepStrictEqual(JSON.parse(output), shellSensitiveArgs);
+  });
+
+  it('Should pass arguments literally when executed asynchronously', async () => {
+    const output = await execSafeAsync(
+      process.execPath,
+      ['-e', printArgsScript, '--', ...shellSensitiveArgs],
+      { silent: true },
+    );
+
+    assert.deepStrictEqual(JSON.parse(output), shellSensitiveArgs);
+  });
+
+  it('Should execute synchronously in the provided working directory', () => {
+    const testDir = './goldstackLocal/work/execSafeCwd/';
+    mkdir('-p', testDir);
+
+    try {
+      const output = execSafe(process.execPath, ['-e', printCwdScript], {
+        cwd: testDir,
+        silent: true,
+      });
+
+      assert.strictEqual(fs.realpathSync(output), fs.realpathSync(testDir));
+    } finally {
+      rm('-rf', testDir);
+    }
+  });
+
+  it('Should execute asynchronously in the provided working directory', async () => {
+    const testDir = './goldstackLocal/work/execSafeAsyncCwd/';
+    mkdir('-p', testDir);
+
+    try {
+      const output = await execSafeAsync(process.execPath, ['-e', printCwdScript], {
+        cwd: testDir,
+        silent: true,
+      });
+
+      assert.strictEqual(fs.realpathSync(output), fs.realpathSync(testDir));
+    } finally {
+      rm('-rf', testDir);
+    }
+  });
+
+  it('Should not log failed commands when silent', () => {
+    const failScript = 'process.stderr.write("failure"); process.exit(3)';
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const consoleLog = jest.spyOn(console, 'log').mockImplementation(() => {});
+
+    try {
+      assert.throws(
+        () => execSafe(process.execPath, ['-e', failScript], { silent: true }),
+        (err: { status?: number }) => err.status === 3,
+      );
+      assert.strictEqual(consoleError.mock.calls.length, 0);
+      assert.strictEqual(consoleLog.mock.calls.length, 0);
+    } finally {
+      consoleError.mockRestore();
+      consoleLog.mockRestore();
+    }
+  });
+
+  it('Should not log failed asynchronous commands when silent', async () => {
+    const failScript = 'process.stderr.write("failure"); process.exit(3)';
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+    try {
+      await assert.rejects(
+        execSafeAsync(process.execPath, ['-e', failScript], { silent: true }),
+        (err: { status?: number }) => err.status === 3,
+      );
+      assert.strictEqual(consoleError.mock.calls.length, 0);
+    } finally {
+      consoleError.mockRestore();
+    }
   });
 });

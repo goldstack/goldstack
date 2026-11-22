@@ -25,10 +25,14 @@ export class InfraDestroyTest implements TemplateTest {
       await retryOperation(
         async () => {
           process.env.GOLDSTACK_DEBUG = 'true';
-          yarn(
-            params.projectDir,
-            `workspace ${packageJson.name} infra destroy ${deployment.name} -y`,
-          );
+          yarn(params.projectDir, [
+            'workspace',
+            packageJson.name,
+            'infra',
+            'destroy',
+            deployment.name,
+            '-y',
+          ]);
         },
         120000,
         20,

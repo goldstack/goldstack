@@ -87,7 +87,7 @@ export class CognitoManagerImpl implements CognitoManager {
       const listUsersResponse = await this.cognitoClient.send(
         new ListUsersCommand({
           UserPoolId: this.userPoolId,
-          Filter: `email = "${email.replace(/"/g, '\\"')}"`,
+          Filter: `email = "${email.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`,
           PaginationToken: paginationToken,
         }),
       );

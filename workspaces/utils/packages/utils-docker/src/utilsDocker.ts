@@ -111,38 +111,53 @@ const GITHUB_ACTIONS_ENV_VARIABLES = [
   'JEST_WORKER_ID',
 ];
 
-export const renderHostEnvironmentVariables = (): string => {
-  return Object.keys(process.env)
-    .map((key) => {
-      const normKey = key.toLocaleUpperCase();
-      if (
-        normKey === 'PATH' ||
-        normKey === 'PATHEXT' ||
-        normKey === 'OS' ||
-        normKey === 'NVM_HOME' ||
-        normKey === 'NPM_EXECPATH' ||
-        normKey === 'NVM_SYMLINK' ||
-        normKey === 'HOME' ||
-        normKey === 'npm_config_user_agent'.toLocaleUpperCase() ||
-        normKey === 'JAVA_HOME_7_X64' ||
-        normKey === 'npm_node_execpath'.toLocaleUpperCase() ||
-        normKey === 'NODE_OPTIONS' ||
-        normKey === 'GOROOT' ||
-        GITHUB_ACTIONS_ENV_VARIABLES.indexOf(normKey) > -1
-      ) {
-        return '';
-      }
-      const value = process.env[key];
+const shouldSkipHostEnvironmentVariable = (key: string): boolean => {
+  const normKey = key.toLocaleUpperCase();
+  return (
+    normKey === 'PATH' ||
+    normKey === 'PATHEXT' ||
+    normKey === 'OS' ||
+    normKey === 'NVM_HOME' ||
+    normKey === 'NPM_EXECPATH' ||
+    normKey === 'NVM_SYMLINK' ||
+    normKey === 'HOME' ||
+    normKey === 'npm_config_user_agent'.toLocaleUpperCase() ||
+    normKey === 'JAVA_HOME_7_X64' ||
+    normKey === 'npm_node_execpath'.toLocaleUpperCase() ||
+    normKey === 'NODE_OPTIONS' ||
+    normKey === 'GOROOT' ||
+    GITHUB_ACTIONS_ENV_VARIABLES.indexOf(normKey) > -1
+  );
+};
 
-      if (value) {
-        const cleanedValue = cleanEnvVariableValue(value);
-        if (cleanedValue) {
-          return `-e "${key}"="${cleanedValue}" `;
-        }
-      }
-      return '';
-    })
-    .join('');
+export const renderHostEnvironmentVariablesArray = (): string[] => {
+  const args: string[] = [];
+  for (const key of Object.keys(process.env)) {
+    if (shouldSkipHostEnvironmentVariable(key)) {
+      continue;
+    }
+    const value = process.env[key];
+    if (!value) {
+      continue;
+    }
+    const cleanedValue = cleanEnvVariableValue(value);
+    if (!cleanedValue) {
+      continue;
+    }
+    args.push('-e', `${key}=${cleanedValue}`);
+  }
+  return args;
+};
+
+/**
+ * Renders host environment variables as a single string for backwards compatibility.
+ *
+ * @deprecated Pass {@link renderHostEnvironmentVariablesArray} directly to the process arguments
+ * instead. The returned string must not be passed to a shell.
+ * @returns the Docker `-e` arguments joined into a single string
+ */
+export const renderHostEnvironmentVariables = (): string => {
+  return renderHostEnvironmentVariablesArray().join(' ');
 };
 
 export const imageNodeYarn = (): string => 'node:12.22-alpine';
