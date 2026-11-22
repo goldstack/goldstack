@@ -3,7 +3,7 @@ import { getAWSUser } from '@goldstack/infra-aws';
 import { awsCli } from '@goldstack/utils-aws-cli';
 import { fatal, info, warn } from '@goldstack/utils-log';
 import { upload } from '@goldstack/utils-s3-deployment';
-import { assertDirectoryExists, escapeShellArg } from '@goldstack/utils-sh';
+import { assertDirectoryExists } from '@goldstack/utils-sh';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import path from 'path';
 import type {
@@ -80,9 +80,14 @@ export const deploy = async (config: AWSStaticWebsitePackage, args: string[]): P
     info(`Invalidating CloudFront cache for distribution ${distributionId}`);
 
     await awsCli({
-      command: `cloudfront create-invalidation --distribution-id ${escapeShellArg(
+      args: [
+        'cloudfront',
+        'create-invalidation',
+        '--distribution-id',
         distributionId,
-      )} --paths "/*"`,
+        '--paths',
+        '/*',
+      ],
       credentials: user,
       region: deployment.awsRegion,
       options: { silent: false },

@@ -2,10 +2,10 @@ import {
   assertDocker,
   hasDocker,
   imageNodeYarn,
-  renderHostEnvironmentVariables,
+  renderHostEnvironmentVariablesArray,
 } from '@goldstack/utils-docker';
 import { debug, info } from '@goldstack/utils-log';
-import { cd, commandExists, escapeShellArg, exec, pwd } from '@goldstack/utils-sh';
+import { commandExists, execSafe } from '@goldstack/utils-sh';
 import path from 'path';
 
 export const hasYarn = (): boolean => {
@@ -40,26 +40,23 @@ export const configureForTemplateBuild = (projectDir: string, globalDir: string)
 
 const execWithDocker = (dir: string, args: string): void => {
   assertDocker();
-  exec(
-    'docker run --rm ' +
-      `-v ${escapeShellArg(`${path.resolve(dir)}:/app`)} ` +
-      '--workdir /app ' +
-      renderHostEnvironmentVariables() +
-      ' ' +
-      `${imageNodeYarn()} ` +
-      `yarn ${args}`,
-  );
+  execSafe('docker', [
+    'run',
+    '--rm',
+    '-v',
+    `${path.resolve(dir)}:/app`,
+    '--workdir',
+    '/app',
+    ...renderHostEnvironmentVariablesArray(),
+    imageNodeYarn(),
+    'yarn',
+    ...args.split(' '),
+  ]);
 };
 
 const execWithCli = (dir: string, args: string): void => {
   assertYarn();
-  const currentWorkDir = pwd();
-  cd(path.resolve(dir));
-  try {
-    exec(`yarn ${args}`);
-  } finally {
-    cd(currentWorkDir);
-  }
+  execSafe('yarn', args.split(' '), { cwd: path.resolve(dir) });
 };
 
 export interface YarnRunOptions {

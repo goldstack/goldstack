@@ -66,6 +66,12 @@ describe('Shell Arguments', () => {
       assert.equal(result, value);
     });
 
+    it('Should preserve backslashes as literal characters', () => {
+      const value = `C:\\temp\\my file\\`;
+      const result = execSync(`printf '%s' ${escapeShellArg(value)}`).toString();
+      assert.equal(result, value);
+    });
+
     it('Should escape multiple arguments', () => {
       const result = execSync(
         `printf '%s|' ${escapeShellArgs(['a b', '$default', "it's"])}`,

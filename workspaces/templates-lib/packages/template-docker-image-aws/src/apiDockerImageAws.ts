@@ -226,10 +226,10 @@ export const startTask = async (params: RunParams): Promise<StartTaskResult> => 
     /\//g,
     '$252F',
   )}/log-events/${`ecs/main/${taskExecution.taskArn.split('/')[2]}`
-    .replace('$', '$2524')
-    .replace('[', '$255B')
-    .replace(']', '$255D')
-    .replace(/\//g, '$252F')}`;
+    .replaceAll('$', '$2524')
+    .replaceAll('[', '$255B')
+    .replaceAll(']', '$255D')
+    .replaceAll('/', '$252F')}`;
   const ecsConsoleLink = `https://${deployment.awsRegion}.console.aws.amazon.com/ecs/home?region=${
     deployment.awsRegion
   }#/clusters/${clusterName}/tasks/${taskExecution.taskArn.split('/')[2]}/details`;

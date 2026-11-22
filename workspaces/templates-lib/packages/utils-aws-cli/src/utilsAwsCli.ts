@@ -4,12 +4,10 @@ import { assertDocker, hasDocker, imageAWSCli } from '@goldstack/utils-docker';
 import { debug, fatal } from '@goldstack/utils-log';
 import {
   assertDirectoryExists,
-  cd,
   commandExists,
-  escapeShellArg,
   type ExecParams,
   exec,
-  execAsync,
+  execSafeAsync,
   pwd,
 } from '@goldstack/utils-sh';
 
@@ -38,7 +36,11 @@ export const assertAwsCli = (): void => {
 
 interface AWSExecParams {
   credentials: AwsCredentialIdentityProvider;
-  command: string;
+  /**
+   * The AWS CLI arguments, for example `['s3', 'sync', '.', 's3://bucket/path']`.
+   * Passing arguments separately avoids shell parsing and quoting issues.
+   */
+  args: string[];
   region: string;
   workDir?: string;
   options?: ExecParams;
@@ -48,25 +50,36 @@ export const execWithDocker = async (params: AWSExecParams): Promise<string> => 
   assertDocker();
 
   const credentials = await getAWSCredentials(params.credentials);
-  const awsUserConfig =
-    `-e ${escapeShellArg(`AWS_ACCESS_KEY_ID=${credentials.accessKeyId}`)} ` +
-    `-e ${escapeShellArg(`AWS_SECRET_ACCESS_KEY=${credentials.secretAccessKey}`)} ` +
-    `-e ${escapeShellArg(`AWS_SESSION_TOKEN=${credentials.sessionToken || ''}`)} ` +
-    `-e ${escapeShellArg(`AWS_REGION=${params.region}`)} ` +
-    `-e ${escapeShellArg(`AWS_DEFAULT_REGION=${params.region}`)} `;
   const mountDir = params.workDir || pwd();
 
   assertDirectoryExists(
     mountDir,
-    `Cannot execute AWS cli command since working directory does not exist: aws ${params.command}`,
+    `Cannot execute AWS cli command since working directory does not exist: aws ${params.args.join(
+      ' ',
+    )}`,
   );
-  const command =
-    'docker run --rm ' +
-    awsUserConfig +
-    `-v ${escapeShellArg(`${mountDir}:/app`)} ` +
-    '-w /app ' +
-    ` ${imageAWSCli()} ${params.command}`;
-  return execAsync(command, params.options);
+
+  const dockerArgs = [
+    'run',
+    '--rm',
+    '-e',
+    `AWS_ACCESS_KEY_ID=${credentials.accessKeyId}`,
+    '-e',
+    `AWS_SECRET_ACCESS_KEY=${credentials.secretAccessKey}`,
+    '-e',
+    `AWS_SESSION_TOKEN=${credentials.sessionToken || ''}`,
+    '-e',
+    `AWS_REGION=${params.region}`,
+    '-e',
+    `AWS_DEFAULT_REGION=${params.region}`,
+    '-v',
+    `${mountDir}:/app`,
+    '-w',
+    '/app',
+    imageAWSCli(),
+    ...params.args,
+  ];
+  return execSafeAsync('docker', dockerArgs, params.options);
 };
 
 export const execWithCli = async (params: AWSExecParams): Promise<string> => {
@@ -79,20 +92,14 @@ export const execWithCli = async (params: AWSExecParams): Promise<string> => {
   process.env.AWS_REGION = params.region;
   process.env.AWS_DEFAULT_REGION = params.region;
 
+  const workDir = params.workDir || pwd();
   assertDirectoryExists(
-    params.workDir || pwd(),
-    `Cannot execute command for AWS cli: aws ${params.command}`,
+    workDir,
+    `Cannot execute command for AWS cli: aws ${params.args.join(' ')}`,
   );
 
-  const previousDir = pwd();
-  cd(params.workDir || pwd());
-  try {
-    const command = `aws ${params.command}`;
-    debug(`AWS command to be executed:\n  aws ${params.command}`);
-    return await execAsync(command, params.options);
-  } finally {
-    cd(previousDir);
-  }
+  debug(`AWS command to be executed:\n  aws ${params.args.join(' ')}`);
+  return await execSafeAsync('aws', params.args, { ...params.options, cwd: workDir });
 };
 
 export const awsCli = async (params: AWSExecParams): Promise<string> => {

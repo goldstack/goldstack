@@ -1,6 +1,6 @@
 import { getConfig } from '@goldstack/template-docker-image-aws';
 import { hash } from '@goldstack/utils-git';
-import { escapeShellArg, exec } from '@goldstack/utils-sh';
+import { execSafe } from '@goldstack/utils-sh';
 
 const build = async (): Promise<void> => {
   const config = getConfig();
@@ -15,26 +15,23 @@ const build = async (): Promise<void> => {
 
   const imageTag = config.configuration.imageTag;
   if (!commitHash) {
-    exec(
-      `docker build -f ./docker/Dockerfile -t ${escapeShellArg(`${imageTag}:latest`)} ${rootDir}`,
-    );
+    execSafe('docker', ['build', '-f', './docker/Dockerfile', '-t', `${imageTag}:latest`, rootDir]);
   } else {
-    exec(
-      `docker build -f ./docker/Dockerfile -t ${escapeShellArg(
-        `${imageTag}:${commitHash}`,
-      )} ${rootDir}`,
-    );
-    exec(
-      `docker image tag ${escapeShellArg(`${imageTag}:${commitHash}`)} ${escapeShellArg(
-        `${imageTag}:latest`,
-      )}`,
-    );
+    execSafe('docker', [
+      'build',
+      '-f',
+      './docker/Dockerfile',
+      '-t',
+      `${imageTag}:${commitHash}`,
+      rootDir,
+    ]);
+    execSafe('docker', ['image', 'tag', `${imageTag}:${commitHash}`, `${imageTag}:latest`]);
   }
 };
 
 const clean = async (): Promise<void> => {
   const config = getConfig();
-  exec(`docker image rm -f ${escapeShellArg(config.configuration.imageTag)}`);
+  execSafe('docker', ['image', 'rm', '-f', config.configuration.imageTag]);
 };
 
 const cli = async (args: string[]): Promise<void> => {

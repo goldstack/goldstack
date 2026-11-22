@@ -1,7 +1,7 @@
 import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { awsCli, hasAwsCli } from '@goldstack/utils-aws-cli';
 import { debug } from '@goldstack/utils-log';
-import { escapeShellArg, rmSafe, zip } from '@goldstack/utils-sh';
+import { rmSafe, zip } from '@goldstack/utils-sh';
 import { isAbsolute, relative, sep } from 'path';
 
 export interface DeployFunctionParams {
@@ -48,9 +48,14 @@ export const deployFunction = async (params: DeployFunctionParams): Promise<any>
     options: {
       silent: true,
     },
-    command: `lambda update-function-code --function-name ${escapeShellArg(
+    args: [
+      'lambda',
+      'update-function-code',
+      '--function-name',
       params.functionName,
-    )} --zip-file ${escapeShellArg(`fileb://${fixedTargetArchive}`)}`,
+      '--zip-file',
+      `fileb://${fixedTargetArchive}`,
+    ],
   });
   if (!params.targetArchiveName) {
     await rmSafe(targetArchive);
@@ -66,7 +71,7 @@ export const deployFunction = async (params: DeployFunctionParams): Promise<any>
       options: {
         silent: true,
       },
-      command: `lambda get-function --function-name ${escapeShellArg(params.functionName)}`,
+      args: ['lambda', 'get-function', '--function-name', params.functionName],
     });
     const data = JSON.parse(res);
     state = data.Configuration.State;

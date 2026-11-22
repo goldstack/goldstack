@@ -1,6 +1,6 @@
 import { debug, error, info, warn } from '@goldstack/utils-log';
 import archiver from 'archiver';
-import { execFileSync, execSync, exec as processAsync } from 'child_process';
+import { execFile, execFileSync, execSync, exec as processAsync } from 'child_process';
 import { createWriteStream, promises as fsPromises } from 'fs';
 import path from 'path';
 import { rimraf } from 'rimraf';
@@ -11,7 +11,14 @@ import fse, { copy as fsExtraCopy } from 'fs-extra';
 import { sync as globSync } from 'glob';
 
 export interface ExecParams {
+  /**
+   * When true, suppress logging of the command output.
+   */
   silent?: boolean;
+  /**
+   * Working directory for the command to be executed in.
+   */
+  cwd?: string;
 }
 
 /**
@@ -25,7 +32,7 @@ export interface ExecParams {
  */
 function escapeShellArg(value: string): string {
   if (process.platform === 'win32') {
-    return `"${value.replace(/"/g, '\\"')}"`;
+    return `"${value.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
   }
   return `'${value.replace(/'/g, `'\\''`)}'`;
 }
@@ -327,9 +334,9 @@ const exec = (cmd: string, params?: ExecParams): string => {
   }
 };
 
-export const execSafe = (file: string, args: string[], params?: ExecParams): string => {
+const execSafe = (file: string, args: string[], params?: ExecParams): string => {
   try {
-    const res = execFileSync(file, args);
+    const res = execFileSync(file, args, { cwd: params?.cwd });
     if (!params?.silent) {
       console.log(res.toString());
     }
@@ -344,6 +351,28 @@ export const execSafe = (file: string, args: string[], params?: ExecParams): str
     }
     throw e;
   }
+};
+
+const execSafeAsync = (file: string, args: string[], params?: ExecParams): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    execFile(file, args, { cwd: params?.cwd }, (err, stdout, stderr) => {
+      if (!params?.silent) {
+        const output = stdout.toString();
+        if (output.trim()) {
+          console.log(output);
+        }
+      }
+      if (err) {
+        console.error('Command failed:', file, args);
+        if (stderr) {
+          console.error(stderr.toString());
+        }
+        reject(err);
+        return;
+      }
+      resolve(stdout.toString());
+    });
+  });
 };
 
 export const execAsync = async (cmd: string, params?: ExecParams): Promise<string> => {
@@ -424,6 +453,8 @@ const changeExtension = (file: string, extension: string): string => {
 
 export {
   exec,
+  execSafe,
+  execSafeAsync,
   escapeShellArg,
   escapeShellArgs,
   pwd,

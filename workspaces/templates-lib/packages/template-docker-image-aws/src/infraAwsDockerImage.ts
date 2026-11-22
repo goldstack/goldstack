@@ -10,7 +10,7 @@ import { getAWSUser } from '@goldstack/infra-aws';
 import { awsCli } from '@goldstack/utils-aws-cli';
 import { assertDocker } from '@goldstack/utils-docker';
 import { hash } from '@goldstack/utils-git';
-import { escapeShellArg, exec } from '@goldstack/utils-sh';
+import { execSafe } from '@goldstack/utils-sh';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import configSchema from './schemas/configSchema.json';
 import type {
@@ -34,18 +34,14 @@ export const deploy = async (
     await awsCli({
       credentials: await getAWSUser(deployment.awsUser),
       region: deployment.awsRegion,
-      command: `ecr get-login-password --region ${escapeShellArg(deployment.awsRegion)}`,
+      args: ['ecr', 'get-login-password', '--region', deployment.awsRegion],
       options: {
         silent: true,
       },
     })
   ).trim();
 
-  exec(
-    `docker login --username AWS --password ${escapeShellArg(
-      ecrLoginPassword,
-    )} ${escapeShellArg(repoUrl)}`,
-  );
+  execSafe('docker', ['login', '--username', 'AWS', '--password', ecrLoginPassword, repoUrl]);
 
   let commitHash: string | undefined;
   try {
@@ -56,22 +52,14 @@ export const deploy = async (
 
   const imageTag = config.configuration.imageTag;
   if (!commitHash) {
-    exec(`docker image tag ${escapeShellArg(imageTag)} ${escapeShellArg(repoUrl)}`);
-    exec(`docker push ${escapeShellArg(repoUrl)}`);
+    execSafe('docker', ['image', 'tag', imageTag, repoUrl]);
+    execSafe('docker', ['push', repoUrl]);
     deploymentState.latest = `${repoUrl}:latest`;
   } else {
-    exec(
-      `docker image tag ${escapeShellArg(`${imageTag}:${commitHash}`)} ${escapeShellArg(
-        `${repoUrl}:${commitHash}`,
-      )}`,
-    );
-    exec(
-      `docker image tag ${escapeShellArg(`${imageTag}:${commitHash}`)} ${escapeShellArg(
-        `${repoUrl}:latest`,
-      )}`,
-    );
-    exec(`docker push ${escapeShellArg(`${repoUrl}:${commitHash}`)}`);
-    exec(`docker push ${escapeShellArg(`${repoUrl}:latest`)}`);
+    execSafe('docker', ['image', 'tag', `${imageTag}:${commitHash}`, `${repoUrl}:${commitHash}`]);
+    execSafe('docker', ['image', 'tag', `${imageTag}:${commitHash}`, `${repoUrl}:latest`]);
+    execSafe('docker', ['push', `${repoUrl}:${commitHash}`]);
+    execSafe('docker', ['push', `${repoUrl}:latest`]);
     deploymentState.latest = `${repoUrl}:${commitHash}`;
   }
 
