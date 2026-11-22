@@ -1,27 +1,32 @@
 variable "aws_region" {
   description = "Region where the Lambda is deployed."
-  type = string
+  type        = string
 }
 
 variable "api_domain" {
   description = "Domain under which the API should be deployed."
-  type = string
+  type        = string
 }
 
 variable "hosted_zone_domain" {
   description = "Domain for a hosted zone in AWS Route 53 that api_domain will be configured in."
-  type = string
+  type        = string
 }
 
 variable "name" {
   description = "Goldstack deployment name."
-  type = string
+  type        = string
 }
 
 variable "cors" {
-  description = "Domain for an UI that should be allowed to access this server."
-  type = string
-  default = ""
+  description = "Domain for an UI that should be allowed to access this server. Must be either '*' or an http:// or https:// URL."
+  type        = string
+  default     = ""
+
+  validation {
+    condition     = var.cors == "" || var.cors == "*" || can(regex("^https?://[^\\s]+$", var.cors))
+    error_message = "The CORS header must be empty, '*', or a URL starting with http:// or https://."
+  }
 }
 
 # Add routes https://github.com/terraform-aws-modules/terraform-aws-apigateway-v2/blob/master/variables.tf#L191
