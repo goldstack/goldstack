@@ -1,7 +1,7 @@
 import type { AwsCredentialIdentityProvider } from '@aws-sdk/types';
 import { awsCli, hasAwsCli } from '@goldstack/utils-aws-cli';
 import { debug } from '@goldstack/utils-log';
-import { rmSafe, zip } from '@goldstack/utils-sh';
+import { escapeShellArg, rmSafe, zip } from '@goldstack/utils-sh';
 import { isAbsolute, relative, sep } from 'path';
 
 export interface DeployFunctionParams {
@@ -36,20 +36,10 @@ export const deployFunction = async (params: DeployFunctionParams): Promise<any>
       fixedTargetArchive = relative(process.cwd(), fixedTargetArchive);
     }
 
-    // Normalize to forward slashes and escape special characters
+    // Normalize to forward slashes
     fixedTargetArchive = fixedTargetArchive.split(sep).join('/');
-    fixedTargetArchive = fixedTargetArchive.replace(/\$/g, '\\$');
 
     debug(`Fixed target archive path: ${fixedTargetArchive}`);
-  } else {
-    // When running without Docker, we need to ensure correct paths for Windows
-    const isWin = process.platform === 'win32';
-
-    if (!isWin) {
-      fixedTargetArchive = fixedTargetArchive.replace(/\$/g, '\\$');
-    } else {
-      fixedTargetArchive = fixedTargetArchive.replaceAll('\\', '\\\\');
-    }
   }
 
   const deployResult = await awsCli({
@@ -58,7 +48,9 @@ export const deployFunction = async (params: DeployFunctionParams): Promise<any>
     options: {
       silent: true,
     },
-    command: `lambda update-function-code --function-name ${params.functionName} --zip-file fileb://${fixedTargetArchive}`,
+    command: `lambda update-function-code --function-name ${escapeShellArg(
+      params.functionName,
+    )} --zip-file ${escapeShellArg(`fileb://${fixedTargetArchive}`)}`,
   });
   if (!params.targetArchiveName) {
     await rmSafe(targetArchive);
@@ -74,7 +66,7 @@ export const deployFunction = async (params: DeployFunctionParams): Promise<any>
       options: {
         silent: true,
       },
-      command: `lambda get-function --function-name ${params.functionName}`,
+      command: `lambda get-function --function-name ${escapeShellArg(params.functionName)}`,
     });
     const data = JSON.parse(res);
     state = data.Configuration.State;

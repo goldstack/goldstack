@@ -6,6 +6,7 @@ import {
   assertDirectoryExists,
   cd,
   commandExists,
+  escapeShellArg,
   type ExecParams,
   exec,
   execAsync,
@@ -48,11 +49,11 @@ export const execWithDocker = async (params: AWSExecParams): Promise<string> => 
 
   const credentials = await getAWSCredentials(params.credentials);
   const awsUserConfig =
-    `-e AWS_ACCESS_KEY_ID=${credentials.accessKeyId} ` +
-    `-e AWS_SECRET_ACCESS_KEY=${credentials.secretAccessKey} ` +
-    `-e AWS_SESSION_TOKEN=${credentials.sessionToken || ''} ` +
-    `-e AWS_REGION=${params.region} ` +
-    `-e AWS_DEFAULT_REGION=${params.region} `;
+    `-e ${escapeShellArg(`AWS_ACCESS_KEY_ID=${credentials.accessKeyId}`)} ` +
+    `-e ${escapeShellArg(`AWS_SECRET_ACCESS_KEY=${credentials.secretAccessKey}`)} ` +
+    `-e ${escapeShellArg(`AWS_SESSION_TOKEN=${credentials.sessionToken || ''}`)} ` +
+    `-e ${escapeShellArg(`AWS_REGION=${params.region}`)} ` +
+    `-e ${escapeShellArg(`AWS_DEFAULT_REGION=${params.region}`)} `;
   const mountDir = params.workDir || pwd();
 
   assertDirectoryExists(
@@ -62,7 +63,7 @@ export const execWithDocker = async (params: AWSExecParams): Promise<string> => 
   const command =
     'docker run --rm ' +
     awsUserConfig +
-    `-v "${mountDir}":/app ` +
+    `-v ${escapeShellArg(`${mountDir}:/app`)} ` +
     '-w /app ' +
     ` ${imageAWSCli()} ${params.command}`;
   return execAsync(command, params.options);

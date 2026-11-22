@@ -1,7 +1,7 @@
 import type { DeploymentState } from '@goldstack/infra';
 import { getAWSUser } from '@goldstack/infra-aws';
 import { awsCli } from '@goldstack/utils-aws-cli';
-import { cp, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
+import { cp, escapeShellArg, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
 import { glob } from 'glob';
 import path from 'path';
 import { packageCloudFrontFunction } from './cloudFrontFunctionPackage';
@@ -70,7 +70,7 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
     const describeResult = await awsCli({
       credentials,
       region: 'us-east-1',
-      command: `cloudfront describe-function --name ${functionName}`,
+      command: `cloudfront describe-function --name ${escapeShellArg(functionName)}`,
       options: { silent: true },
     });
     const describeData = JSON.parse(describeResult);
@@ -86,7 +86,13 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
     const updateResult = await awsCli({
       credentials,
       region: 'us-east-1',
-      command: `cloudfront update-function --name ${functionName} --function-config Comment="Next.js routing function",Runtime="cloudfront-js-2.0" --function-code fileb://${functionPackageDir}function.js --if-match "${eTag}"`,
+      command: `cloudfront update-function --name ${escapeShellArg(
+        functionName,
+      )} --function-config ${escapeShellArg(
+        'Comment=Next.js routing function,Runtime=cloudfront-js-2.0',
+      )} --function-code ${escapeShellArg(
+        `fileb://${functionPackageDir}function.js`,
+      )} --if-match ${escapeShellArg(eTag)}`,
       options: { silent: true },
     });
     const updateData = JSON.parse(updateResult);
@@ -96,7 +102,9 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
     await awsCli({
       credentials,
       region: 'us-east-1',
-      command: `cloudfront publish-function --name ${functionName} --if-match "${updatedETag}"`,
+      command: `cloudfront publish-function --name ${escapeShellArg(
+        functionName,
+      )} --if-match ${escapeShellArg(updatedETag)}`,
       options: { silent: true },
     });
   } catch (error) {

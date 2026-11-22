@@ -5,7 +5,7 @@ import {
   renderHostEnvironmentVariables,
 } from '@goldstack/utils-docker';
 import { debug, info } from '@goldstack/utils-log';
-import { cd, commandExists, exec, pwd } from '@goldstack/utils-sh';
+import { cd, commandExists, escapeShellArg, exec, pwd } from '@goldstack/utils-sh';
 import path from 'path';
 
 export const hasYarn = (): boolean => {
@@ -42,7 +42,7 @@ const execWithDocker = (dir: string, args: string): void => {
   assertDocker();
   exec(
     'docker run --rm ' +
-      `-v "${path.resolve(dir)}":/app ` +
+      `-v ${escapeShellArg(`${path.resolve(dir)}:/app`)} ` +
       '--workdir /app ' +
       renderHostEnvironmentVariables() +
       ' ' +

@@ -1,6 +1,6 @@
 import { assertDocker, hasDocker, imageTerraform } from '@goldstack/utils-docker';
 import { fatal, warn } from '@goldstack/utils-log';
-import { commandExists, exec, pwd } from '@goldstack/utils-sh';
+import { commandExists, escapeShellArg, exec, pwd } from '@goldstack/utils-sh';
 import path from 'path';
 import type { CloudProvider } from './cloudProvider';
 import type { TerraformVersion } from './types/utilsTerraformConfig';
@@ -64,36 +64,17 @@ const execWithDocker = (cmd: string, options: TerraformOptions): string => {
         `TF_WORKSPACE environment variable is set to '${terraformEnvVars.TF_WORKSPACE}' but will be overridden by workspace option '${options.workspace}'. Please unset TF_WORKSPACE or remove the workspace option to avoid confusion.`,
       );
     }
-    workspaceEnvVariable =
-      '-e ' +
-      'TF_WORKSPACE="' +
-      options.workspace
-        .replace(/\\/g, '\\\\')
-        .replace(/"/g, '\\"')
-        .replace(/\$/g, '\\$')
-        .replace(/`/g, '\\`') +
-      '"';
+    workspaceEnvVariable = `-e ${escapeShellArg(`TF_WORKSPACE=${options.workspace}`)}`;
   }
 
   const terraformEnvFlags = Object.entries(terraformEnvVars)
-    .map(
-      ([key, value]) =>
-        '-e ' +
-        key +
-        '="' +
-        value
-          .replace(/\\/g, '\\\\')
-          .replace(/"/g, '\\"')
-          .replace(/\$/g, '\\$')
-          .replace(/`/g, '\\`') +
-        '"',
-    )
+    .map(([key, value]) => `-e ${escapeShellArg(`${key}=${value}`)}`)
     .join(' ');
 
   const [command, ...rest] = cmd.split(' ');
 
   const cmd3 =
-    `docker run --rm -v "${options.dir}":/app ` +
+    `docker run --rm -v ${escapeShellArg(`${options.dir}:/app`)} ` +
     ` ${terraformEnvFlags} ` +
     ` ${workspaceEnvVariable} ` +
     ` -w /app ${imageTerraform(options.version)} ${command} ${rest.join(' ')}`;
@@ -204,11 +185,11 @@ const execWithCli = (cmd: string, options: TerraformOptions): string => {
   // Change to specified directory, execute command, then change back
   const currentDir = pwd();
   const execCmd =
-    `cd "${options.dir}" && terraform ` +
+    `cd ${escapeShellArg(options.dir)} && terraform ` +
     ` ${command} ` +
     ` ${options.options?.join(' ') || ''} ` +
     ` ${rest.join(' ')} ` +
-    ` && cd "${currentDir}"`;
+    ` && cd ${escapeShellArg(currentDir)}`;
 
   return exec(execCmd, { silent: options.silent });
 };

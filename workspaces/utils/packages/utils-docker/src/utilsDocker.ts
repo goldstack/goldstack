@@ -1,5 +1,5 @@
 import { warn } from '@goldstack/utils-log';
-import { commandExists, exec } from '@goldstack/utils-sh';
+import { commandExists, escapeShellArg, exec } from '@goldstack/utils-sh';
 
 export const hasDocker = (): boolean => {
   if (!commandExists('docker')) {
@@ -137,7 +137,7 @@ export const renderHostEnvironmentVariables = (): string => {
       if (value) {
         const cleanedValue = cleanEnvVariableValue(value);
         if (cleanedValue) {
-          return `-e "${key}"="${cleanedValue}" `;
+          return `-e ${escapeShellArg(`${key}=${cleanedValue}`)} `;
         }
       }
       return '';

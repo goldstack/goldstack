@@ -1,6 +1,7 @@
 import { getAWSUser } from '@goldstack/infra-aws';
 import { awsCli } from '@goldstack/utils-aws-cli';
 import { logger } from '@goldstack/utils-cli';
+import { escapeShellArg } from '@goldstack/utils-sh';
 import { resolve } from 'path';
 
 export interface S3UploadParams {
@@ -31,9 +32,11 @@ export const upload = async (params: S3UploadParams): Promise<void> => {
   // users will not try to request files that no longer exist
   // during the upload process
   // see https://github.com/aws/aws-cli/issues/1417
-  const addHeader = params.cacheControl ? `--cache-control="${params.cacheControl}"` : '';
+  const addHeader = params.cacheControl
+    ? `--cache-control ${escapeShellArg(params.cacheControl)}`
+    : '';
   await awsCli({
-    command: `s3 sync ${addHeader} . ${dest}`,
+    command: `s3 sync ${addHeader} . ${escapeShellArg(dest)}`,
     workDir: source,
     credentials: user,
     region: params.region,
@@ -41,7 +44,7 @@ export const upload = async (params: S3UploadParams): Promise<void> => {
   });
   if (!params.skipDelete) {
     await awsCli({
-      command: `s3 sync . ${dest} --delete`,
+      command: `s3 sync . ${escapeShellArg(dest)} --delete`,
       workDir: source,
       credentials: user,
       region: params.region,

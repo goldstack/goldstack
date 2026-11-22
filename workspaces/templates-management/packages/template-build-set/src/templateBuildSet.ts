@@ -5,7 +5,7 @@ import { installProject } from '@goldstack/project-install';
 import { build } from '@goldstack/template-build';
 import type { S3TemplateRepository } from '@goldstack/template-repository';
 import { getAwsConfigPath } from '@goldstack/utils-config';
-import { cd, execAsync, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
+import { cd, escapeShellArg, execAsync, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
 import type { GoldstackTemplateConfiguration } from '@goldstack/utils-template';
 import { getTemplateTest, prepareLocalS3Repo } from '@goldstack/utils-template-test';
 import assert from 'assert';
@@ -323,19 +323,21 @@ export async function buildProjects(params: {
     const gitHubToken = process.env.GITHUB_TOKEN;
     if (project.targetRepo && gitHubToken) {
       await execAsync(
-        `git clone https://${gitHubToken}@github.com/${project.targetRepo}.git ${projectDir}`,
+        `git clone ${escapeShellArg(
+          `https://${gitHubToken}@github.com/${project.targetRepo}.git`,
+        )} ${escapeShellArg(projectDir)}`,
       );
       // Preserve .git directory while removing all other files
       const gitDir = path.join(projectDir, '.git');
       // First move .git directory to temp location
       const tempGitDir = path.join(projectDir, '../.git-temp');
-      await execAsync(`mv "${gitDir}" "${tempGitDir}"`);
+      await execAsync(`mv ${escapeShellArg(gitDir)} ${escapeShellArg(tempGitDir)}`);
       // Delete all files
       await rmSafe(projectDir);
       // Recreate project directory
       mkdir('-p', projectDir);
       // Move .git directory back
-      await execAsync(`mv "${tempGitDir}" "${gitDir}"`);
+      await execAsync(`mv ${escapeShellArg(tempGitDir)} ${escapeShellArg(gitDir)}`);
     }
     testResults.push(
       ...(await buildAndTestProject({

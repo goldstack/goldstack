@@ -3,7 +3,7 @@ import { type DeploymentState, readTerraformStateVariable } from '@goldstack/inf
 import { getAWSUser } from '@goldstack/infra-aws';
 import { awsCli } from '@goldstack/utils-aws-cli';
 import { deployFunction } from '@goldstack/utils-aws-lambda';
-import { cp, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
+import { cp, escapeShellArg, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
 import { glob } from 'glob';
 import { packageEdgeLambda } from './edgeLambdaPackage';
 import type { NextjsDeployment } from './types/NextJsPackage';
@@ -37,7 +37,7 @@ async function waitForLambdaActive(
       credentials,
       region,
       options: { silent: true },
-      command: `lambda get-function --function-name ${functionName}`,
+      command: `lambda get-function --function-name ${escapeShellArg(functionName)}`,
     });
 
     const data = JSON.parse(res);
@@ -88,7 +88,9 @@ async function waitForLambdaVersion(
         credentials,
         region,
         options: { silent: true },
-        command: `lambda get-function --function-name ${functionName} --qualifier ${version}`,
+        command: `lambda get-function --function-name ${escapeShellArg(
+          functionName,
+        )} --qualifier ${escapeShellArg(version)}`,
       });
 
       const data = JSON.parse(res);
@@ -189,7 +191,7 @@ export const deployEdgeLambda = async (params: DeployLambdaParams): Promise<void
   const publishResults = await awsCli({
     credentials,
     region: 'us-east-1',
-    command: `lambda publish-version --function-name ${functionName}`,
+    command: `lambda publish-version --function-name ${escapeShellArg(functionName)}`,
   });
 
   const { Version } = JSON.parse(publishResults);
@@ -200,13 +202,11 @@ export const deployEdgeLambda = async (params: DeployLambdaParams): Promise<void
   // This ensures the version is active and available before updating CloudFront
   await waitForLambdaVersion(functionName, Version, credentials, 'us-east-1');
 
+  const distributionId = readTerraformStateVariable(params.deploymentState, 'website_cdn_root_id');
   const cfDistributionResult = await awsCli({
     credentials,
     region: 'us-east-1',
-    command: `cloudfront get-distribution-config --id ${readTerraformStateVariable(
-      params.deploymentState,
-      'website_cdn_root_id',
-    )}`,
+    command: `cloudfront get-distribution-config --id ${escapeShellArg(distributionId)}`,
     options: { silent: true },
   });
 
@@ -222,10 +222,9 @@ export const deployEdgeLambda = async (params: DeployLambdaParams): Promise<void
   await awsCli({
     credentials: credentials,
     region: 'us-east-1',
-    command: `cloudfront update-distribution --id ${readTerraformStateVariable(
-      params.deploymentState,
-      'website_cdn_root_id',
-    )} --distribution-config file://dist/cf.json --if-match ${eTag}`,
+    command: `cloudfront update-distribution --id ${escapeShellArg(
+      distributionId,
+    )} --distribution-config file://dist/cf.json --if-match ${escapeShellArg(eTag)}`,
     options: { silent: true },
   });
   await rmSafe('./dist/cf.json');

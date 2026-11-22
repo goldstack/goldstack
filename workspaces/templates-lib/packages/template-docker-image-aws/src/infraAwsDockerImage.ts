@@ -10,7 +10,7 @@ import { getAWSUser } from '@goldstack/infra-aws';
 import { awsCli } from '@goldstack/utils-aws-cli';
 import { assertDocker } from '@goldstack/utils-docker';
 import { hash } from '@goldstack/utils-git';
-import { exec } from '@goldstack/utils-sh';
+import { escapeShellArg, exec } from '@goldstack/utils-sh';
 import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import configSchema from './schemas/configSchema.json';
 import type {
@@ -34,14 +34,18 @@ export const deploy = async (
     await awsCli({
       credentials: await getAWSUser(deployment.awsUser),
       region: deployment.awsRegion,
-      command: `ecr get-login-password --region ${deployment.awsRegion}`,
+      command: `ecr get-login-password --region ${escapeShellArg(deployment.awsRegion)}`,
       options: {
         silent: true,
       },
     })
   ).trim();
 
-  exec(`docker login --username AWS --password ${ecrLoginPassword} ${repoUrl}`);
+  exec(
+    `docker login --username AWS --password ${escapeShellArg(
+      ecrLoginPassword,
+    )} ${escapeShellArg(repoUrl)}`,
+  );
 
   let commitHash: string | undefined;
   try {
@@ -50,17 +54,24 @@ export const deploy = async (
     console.warn(`Cannot determine commit hash for tagging docker image: ${e}`);
   }
 
+  const imageTag = config.configuration.imageTag;
   if (!commitHash) {
-    exec(`docker image tag ${config.configuration.imageTag} ${repoUrl}`);
-    exec(`docker push ${repoUrl}`);
+    exec(`docker image tag ${escapeShellArg(imageTag)} ${escapeShellArg(repoUrl)}`);
+    exec(`docker push ${escapeShellArg(repoUrl)}`);
     deploymentState.latest = `${repoUrl}:latest`;
   } else {
     exec(
-      `docker image tag ${config.configuration.imageTag}:${commitHash} ${repoUrl}:${commitHash}`,
+      `docker image tag ${escapeShellArg(`${imageTag}:${commitHash}`)} ${escapeShellArg(
+        `${repoUrl}:${commitHash}`,
+      )}`,
     );
-    exec(`docker image tag ${config.configuration.imageTag}:${commitHash} ${repoUrl}:latest`);
-    exec(`docker push ${repoUrl}:${commitHash}`);
-    exec(`docker push ${repoUrl}:latest`);
+    exec(
+      `docker image tag ${escapeShellArg(`${imageTag}:${commitHash}`)} ${escapeShellArg(
+        `${repoUrl}:latest`,
+      )}`,
+    );
+    exec(`docker push ${escapeShellArg(`${repoUrl}:${commitHash}`)}`);
+    exec(`docker push ${escapeShellArg(`${repoUrl}:latest`)}`);
     deploymentState.latest = `${repoUrl}:${commitHash}`;
   }
 

@@ -1,6 +1,6 @@
 import type { HetznerVPSDeployment } from '@goldstack/template-hetzner-vps';
 import { error, info } from '@goldstack/utils-log';
-import { cp, exec, read, rmSafe, write, zip } from '@goldstack/utils-sh';
+import { cp, escapeShellArg, exec, read, rmSafe, write, zip } from '@goldstack/utils-sh';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import { stat } from 'fs/promises';
 import { join } from 'path';
@@ -76,13 +76,15 @@ export const build = async (deployment: HetznerVPSDeployment) => {
 
 // Helper function to execute commands remotely via SSH
 const sshExec = (host: string, command: string): string => {
-  const sshCmd = `ssh  -o StrictHostKeyChecking=no ${host} "${command}"`;
+  const sshCmd = `ssh  -o StrictHostKeyChecking=no ${escapeShellArg(host)} ${escapeShellArg(command)}`;
   return exec(sshCmd);
 };
 
 // Helper function to upload files via SCP
 const scpUpload = (localPath: string, remotePath: string, host: string): string => {
-  const scpCmd = `scp  -o StrictHostKeyChecking=no ${localPath} ${host}:${remotePath}`;
+  const scpCmd = `scp  -o StrictHostKeyChecking=no ${escapeShellArg(
+    localPath,
+  )} ${escapeShellArg(`${host}:${remotePath}`)}`;
   return exec(scpCmd);
 };
 
