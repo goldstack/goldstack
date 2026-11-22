@@ -11,6 +11,7 @@ import {
   ListBucketsCommand,
   ListObjectsCommand,
   ListObjectsV2Command,
+  type ListObjectsV2Output,
   NoSuchKey,
   PutObjectCommand,
   PutObjectTaggingCommand,
@@ -62,6 +63,29 @@ function mockNoSuchKey(error: { message: string }): NoSuchKey {
     throttling: false,
   };
   return noSuchKey;
+}
+
+/**
+ * Adds a continuation token to truncated ListObjectsV2 responses.
+ *
+ * The underlying mock-aws-s3 implementation only sets a NextMarker when a Delimiter is
+ * provided. Real S3 returns a NextContinuationToken whenever the listing is truncated,
+ * so the last returned key is used as the token instead. This key is a valid Marker for
+ * the underlying implementation on subsequent requests.
+ * @param result - The result returned by the underlying mock
+ * @returns The result with NextContinuationToken populated when applicable
+ */
+function applyListObjectsV2Pagination(
+  result: ListObjectsV2Output | undefined,
+): ListObjectsV2Output | undefined {
+  if (!result?.IsTruncated || result.NextContinuationToken) {
+    return result;
+  }
+  const lastKey = result.Contents?.[result.Contents.length - 1]?.Key;
+  if (lastKey) {
+    result.NextContinuationToken = lastKey;
+  }
+  return result;
 }
 
 const bucketContexts = new Map<string, BucketContext>();
@@ -258,7 +282,13 @@ export function createS3Client({
         }
       }
 
-      return await operation.promise();
+      const result = await operation.promise();
+
+      if (method === 'listObjectsV2') {
+        return applyListObjectsV2Pagination(result);
+      }
+
+      return result;
     });
   });
 

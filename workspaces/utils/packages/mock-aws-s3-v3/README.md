@@ -40,7 +40,7 @@ The following operations are currently supported in this mock:
 - CreateBucketCommand
 - DeleteBucketCommand
 - ListObjectsCommand
-- ListObjectsV2Command (see issue [#454](https://github.com/goldstack/goldstack/issues/454))
+- ListObjectsV2Command (supports pagination via `MaxKeys` and `ContinuationToken`)
 - DeleteObjectsCommand
 - DeleteObjectCommand
 - GetObjectCommand
