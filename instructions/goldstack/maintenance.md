@@ -1,5 +1,13 @@
 # Maintenance Workflow
 
+> The commands below use the GitHub CLI (`gh`) because the scheduled maintenance
+> workflow runs on GitHub Actions. When the same task runs in a project hosted on
+> Gitea, use the equivalent `tea` commands (see the mapping in
+> `instructions/goldstack/work/issue_pr_wrangler.md`) or the server details in
+> `instructions/custom`. Never assume GitHub in task-specific instruction files;
+> say "create an issue" or "open a pull request" and use the forge CLI configured
+> for the project.
+
 ## 1. Start
 - Run `date` and record the timestamp
 - `git fetch origin master "$BRANCH_NAME" 2>/dev/null || git fetch origin master`

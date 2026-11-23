@@ -148,6 +148,9 @@ the rule above exists to prevent.
     - if `origin` points at github.com, use `gh pr create`
     - if `origin` points at our Gitea server (cooler), use
       `tea pr create` (see instructions/custom for server specifics)
+  - Create issues the same way: `gh issue create` on GitHub and
+    `tea issues create` on Gitea. Do not hard-code `gh` in task instructions that
+    are shared with projects hosted on another forge.
 <!-- /docs -->
 
 <!-- docs FILE src=./instructions/custom/agents.md -->

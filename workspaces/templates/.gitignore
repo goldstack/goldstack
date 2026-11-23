@@ -1,4 +1,5 @@
 node_modules
+.agent-tmp/
 yarn-error.log
 tsconfig.tsbuildinfo
 dist/

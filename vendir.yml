@@ -1,3 +1,5 @@
+# Kept for manual `vendir sync` use. `yarn sync-instructions` and
+# `yarn sync-goldstack` use a sparse Git checkout so they do not require vendir.
 apiVersion: vendir.k14s.io/v1alpha1
 kind: Config
 minimumRequiredVersion: 0.8.0

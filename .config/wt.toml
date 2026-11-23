@@ -2,8 +2,8 @@
 #
 # These hooks run automatically when a new worktree is created
 # (`wt switch --create <branch>`). This file is also the canonical template
-# for derived projects: it is distributed via the instruction sync scripts
-# (see `yarn sync-instructions-local` in derived projects).
+# for derived projects: it is distributed alongside the instruction sync scripts
+# (see `yarn sync-instructions` and `yarn sync-goldstack` in derived projects).
 #
 # Docs: https://worktrunk.dev/hook/
 

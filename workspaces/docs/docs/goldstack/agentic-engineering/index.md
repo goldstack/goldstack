@@ -31,11 +31,11 @@ Instructions live in two locations:
 Projects generated from (or maintained alongside) Goldstack pull the shared instructions into their own `instructions/goldstack/` directory and re-inline them into their own `AGENTS.md`:
 
 ```bash
-yarn sync-instructions         # via vendir from the remote source
-yarn sync-instructions-local   # from a local sibling checkout of goldstack
+yarn sync-instructions   # update instructions/goldstack and AGENTS.md
+yarn sync-goldstack      # the above, plus a report comparing Terraform and template files
 ```
 
-The local variant also installs worktrunk configuration (`.config/wt.toml`, see below) from the goldstack checkout.
+Both commands use a sparse Git checkout of the Goldstack repository, cached in `.agent-tmp/goldstack-source`. Set `GOLDSTACK_SOURCE_DIR` to use an existing checkout instead, for example when working offline.
 
 ## Git Worktrees
 
