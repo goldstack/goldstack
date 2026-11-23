@@ -1,7 +1,32 @@
 import { mkdir } from '@goldstack/utils-sh';
 import path from 'path';
 import MockCloudProvider from './MockCloudProvider';
-import { getTerraformEnvVars, tf } from './terraformCli';
+import { buildTerraformArgs, getTerraformEnvVars, tf } from './terraformCli';
+
+describe('buildTerraformArgs', () => {
+  it('should keep options and their values as separate arguments', () => {
+    expect(buildTerraformArgs('plan', ['-input=false', '-out', 'tfplan'])).toEqual([
+      'plan',
+      '-input=false',
+      '-out',
+      'tfplan',
+    ]);
+  });
+
+  it('should support a sub-command provided as individual arguments', () => {
+    expect(buildTerraformArgs(['workspace', 'select', 'my deployment'])).toEqual([
+      'workspace',
+      'select',
+      'my deployment',
+    ]);
+  });
+
+  it('should reject options with a value joined into the same argument', () => {
+    expect(() => buildTerraformArgs('plan', ['-input=false', '-out tfplan'])).toThrow(
+      "Terraform options must be passed as separate arguments; received the combined option '-out tfplan'.",
+    );
+  });
+});
 
 describe('Terraform CLI', () => {
   it('Should accept folder with spaces (v0.12)', async () => {

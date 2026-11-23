@@ -126,7 +126,14 @@ export interface BaseTerraformParams {
 /**
  * Parameters for initializing a Terraform deployment.
  */
-export interface InitParams extends BaseTerraformParams {}
+export interface InitParams extends BaseTerraformParams {
+  /**
+   * Whether to run `terraform init -upgrade`, updating provider versions to the latest allowed by the
+   * configured version constraints. By default `-upgrade` is only applied when the Terraform working
+   * directory or dependency lock file does not exist yet.
+   */
+  upgrade?: boolean;
+}
 
 /**
  * Parameters for planning a Terraform deployment.
@@ -424,13 +431,22 @@ export class TerraformBuild {
         ),
       ];
 
+      const initOptions = ['-force-copy', '-reconfigure'];
+      if (
+        params.upgrade ||
+        !fs.existsSync('./.terraform') ||
+        !fs.existsSync('./.terraform.lock.hcl')
+      ) {
+        initOptions.push('-upgrade');
+      }
+
       tf('init', {
         provider,
         version,
         backendConfig,
         variables,
         workspace: workspace,
-        options: ['-force-copy', '-reconfigure', '-upgrade'],
+        options: initOptions,
       });
       const workspaces = tf('workspace list', {
         provider,
@@ -526,7 +542,7 @@ export class TerraformBuild {
         provider,
         variables,
         version,
-        options: ['-input=false', '-out tfplan'],
+        options: ['-input=false', '-out', 'tfplan'],
       });
     } finally {
       cd('../..');
@@ -635,7 +651,7 @@ export class TerraformBuild {
         variables,
         version,
         workspace: params.deploymentName,
-        options: ['-input=false', '-out tfplan'],
+        options: ['-input=false', '-out', 'tfplan'],
       });
       tf('destroy', {
         provider,
@@ -702,7 +718,7 @@ export class TerraformBuild {
     assert(deploymentInConfig);
     deploymentInConfig.tfVersion = targetVersion;
     writePackageConfig(packageConfig);
-    this.init({ deploymentName });
+    this.init({ deploymentName, upgrade: true });
     console.log(
       `Version upgraded to ${targetVersion}. Please run deployment to upgrade remote state before further upgrades.`,
     );

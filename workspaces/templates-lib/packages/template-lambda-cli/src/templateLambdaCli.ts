@@ -55,6 +55,7 @@ export const run = async (args: string[]): Promise<void> => {
         targetVersion,
         confirm,
         commandArguments: commandArgs,
+        upgrade: argv.upgrade || false,
         ignoreMissingDeployments: argv['ignore-missing-deployments'] || false,
         skipConfirmations: argv.yes || false,
         options: undefined,
