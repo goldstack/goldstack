@@ -71,10 +71,10 @@ Re-evaluate this check before every commit, so an empty commit is never produced
   ```
   gh pr create --draft --title "[Maintenance] $TASK_TITLE" --body "Automated maintenance task: $TASK_TITLE"
   ```
-- On Gitea draft mode is not reliable. Create the pull request normally and
-  prefix its title with `[WIP] `; Gitea blocks merging titles beginning with
-  `WIP:` or `[WIP]`. Replace the prefix with `[Ready for Review] ` only when the
-  readiness conditions in section 4 hold.
+- On Gitea draft mode is not reliable. Create the pull request normally with a
+  `[WIP] ` title prefix; Gitea blocks merging titles beginning with `WIP:` or
+  `[WIP]`. Keep the `[WIP] ` prefix until the readiness conditions in section 4
+  hold; do not remove it at creation time.
 - Push commits to the branch
 - Comment progress updates:
   ```
@@ -113,11 +113,14 @@ After pushing changes to the PR branch:
   gh pr ready $PR_NUMBER
   gh pr comment $PR_NUMBER --body "All CI checks passed. Marking PR ready for review."
   ```
-  On Gitea, replace the `[WIP] ` title prefix with `[Ready for Review] ` instead
-  of running `gh pr ready`.
+  On Gitea, remove the `[WIP] ` title prefix with
+  `tea pulls edit $PR_NUMBER --ready` instead of running `gh pr ready`. Only do
+  this once all checks pass on the current head and the default branch is merged
+  in with no conflicts; if checks are pending, queued, missing or failing, keep
+  `[WIP] `. `--ready` strips a leading `WIP:` or `[WIP]` prefix.
 - **If further commits are pushed after the PR is ready**, return it to draft
-  (or restore the `[WIP] ` prefix on Gitea) and repeat this section until the
-  new head is green.
+  (or run `tea pulls edit $PR_NUMBER --draft` on Gitea, which adds a `WIP: `
+  prefix) and repeat this section until the new head is green.
 
 ## 5. Time Limit
 - Run `date` after each commit

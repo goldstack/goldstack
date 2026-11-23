@@ -41,10 +41,12 @@ Follow the pull request and issue status rules in
 - GitHub pull requests stay draft until the work is complete, all required
   checks pass and the default branch is merged in; only then run
   `gh pr ready <number>`. Convert back to draft if more commits are pushed.
-- Gitea has no reliable draft pull request. Prefix the title with `[WIP] `
-  while working; Gitea blocks merging titles beginning with `WIP:` or `[WIP]`.
-  Replace the prefix with `[Ready for Review] ` once the same readiness
-  conditions hold.
+- Gitea has no reliable draft pull request. Create the pull request with a
+  `[WIP] ` title prefix while working; Gitea blocks merging titles beginning
+  with `WIP:` or `[WIP]`. Remove the `[WIP] ` prefix once the same readiness
+  conditions hold: all required checks pass on the current head (keep `[WIP] `
+  if checks are pending, queued, missing or failing), the default branch is
+  merged in, and there are no conflicts.
 - Prefix an issue title with `[Needs Attention] ` when it needs a human - a
   decision, missing information, external access, or a request that only asked
   for a plan. Leave a comment saying what is needed, and remove the prefix once
@@ -57,11 +59,14 @@ Use the forge CLI to change titles, for example:
 ```
 gh issue edit <number> --title "[Needs Attention] <title>"
 tea issues edit <number> --title "[Needs Attention] <title>"
-tea pulls edit <number> --title "[Ready for Review] <title>"
+tea pulls edit <number> --ready
+tea pulls edit <number> --draft
 ```
 
-If the installed `tea` version has no `pulls edit` command, change the pull
-request title through the web UI or the Gitea API instead.
+`tea pulls edit <number> --ready` strips a leading `WIP:` or `[WIP]` prefix
+from the pull request title, while `--draft` adds a `WIP: ` prefix. If the
+installed `tea` version has no `pulls edit` command, change the pull request
+title through the web UI or the Gitea API instead.
 
 ## 1. Comment protocol
 
@@ -93,8 +98,9 @@ and low risk:
 - CI fails for a trivial reason such as formatting, linting, a lockfile or a
   snapshot: fix it and push;
 - a draft PR is actually complete and green: mark it ready for review. On
-  GitHub run `gh pr ready <number>`; on Gitea replace the `[WIP] ` title prefix
-  with `[Ready for Review] `.
+  GitHub run `gh pr ready <number>`; on Gitea remove the `[WIP] ` title prefix
+  with `tea pulls edit <number> --ready`, but only once all required checks pass
+  on the current head and the default branch is merged in with no conflicts.
 
 Only action PRs whose head branch lives in **this** repository. For fork PRs you
 cannot push to, leave a `Wrangler:` comment describing the required fix instead.
@@ -213,6 +219,6 @@ and commenting rules as above. Action at most one PR, then stop.
 - Make sure your final `Wrangler:` comments reflect the actual state, including
   anything left for the next run.
 - Make sure the pull request and issue titles reflect the real state
-  (`[WIP] `, `[Ready for Review] `, `[Needs Attention] `) before you stop.
+  (`[WIP] `, `[Needs Attention] `) before you stop.
 - Stop after one unit of work. Do not start a second issue or PR in the same
   run.
