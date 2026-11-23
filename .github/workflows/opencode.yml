@@ -60,6 +60,11 @@ jobs:
         env:
           OPENCODE_GO_API_KEY: ${{ secrets.OPENCODE_GO_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          # The runner is ephemeral, so allow tools to reach paths outside the
+          # checkout without an interactive prompt nobody can answer. This is
+          # set here rather than in opencode.json so local sessions keep the
+          # default "ask" behaviour.
+          OPENCODE_CONFIG_CONTENT: '{"permission":{"external_directory":"allow"}}'
         with:
           model: opencode-go/deepseek-v4.1-flash
           # Keep the session private: the footer then only links this run,
