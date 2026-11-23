@@ -5,7 +5,12 @@ import { excludeInBundle } from '@goldstack/utils-esbuild';
 import { debug } from '@goldstack/utils-log';
 import { EmbeddedPackageConfig } from '@goldstack/utils-package-config-embedded';
 import type { InputMigrations } from 'umzug/lib/types';
-import { assertTable, assertTableActive, deleteTable as deleteTableModule } from './dynamoDBData';
+import {
+  assertTable,
+  assertTableActive,
+  deleteTable as deleteTableModule,
+  tableExists as tableExistsModule,
+} from './dynamoDBData';
 import {
   type DynamoDBContext,
   migrateDownTo as migrateDownToDynamoDB,
@@ -267,6 +272,38 @@ export const connect = async ({
     coldStart.set(coldStartKey, true);
   }
   return client;
+};
+
+/**
+ * Checks whether the DynamoDB table for a deployment has been created.
+ *
+ * @param params - The parameters for checking the table.
+ * @param params.goldstackConfig - The Goldstack configuration for the DynamoDB package.
+ * @param params.packageSchema - The package schema.
+ * @param params.deploymentName - Optional deployment name.
+ * @returns {Promise<boolean>} `true` if the table exists, `false` if it has not been created yet.
+ */
+export const tableExists = async ({
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
+  goldstackConfig,
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
+  packageSchema,
+  deploymentName,
+}: {
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
+  goldstackConfig: DynamoDBPackage | any;
+  // biome-ignore lint/suspicious/noExplicitAny: Accepts flexible input
+  packageSchema: any;
+  deploymentName?: string;
+}): Promise<boolean> => {
+  deploymentName = getDeploymentName(deploymentName);
+  const packageConfig = new EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>({
+    goldstackJson: goldstackConfig,
+    packageSchema,
+  });
+  const client = await createClient(packageConfig, deploymentName);
+
+  return tableExistsModule(packageConfig, deploymentName, client);
 };
 
 /**
