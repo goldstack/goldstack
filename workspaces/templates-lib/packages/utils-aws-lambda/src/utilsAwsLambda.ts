@@ -8,8 +8,16 @@ export {
   getOutFileForLambda,
 } from './buildFunctions';
 export { defaultBuildOptions } from './defaultBuildOptions';
-export type { DeployFunctionParams } from './deployFunction';
-export { deployFunction } from './deployFunction';
+export type {
+  DeployFunctionMode,
+  DeployFunctionParams,
+  SelectDeploymentMethodParams,
+} from './deployFunction';
+export {
+  defaultSdkMaxSizeBytes,
+  deployFunction,
+  selectDeploymentMethod,
+} from './deployFunction';
 export type { DeployFunctionsParams } from './deployFunctions';
 export { deployFunctions } from './deployFunctions';
 export { readLambdaConfig } from './generate/collectLambdasFromFiles';
