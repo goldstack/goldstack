@@ -143,10 +143,15 @@ head is green again.
 
 Gitea: use the title instead, because draft pull requests are not reliable.
 Gitea blocks merging a pull request whose title starts with `WIP:` or `[WIP]`
-(case insensitive). Therefore:
+(case insensitive). Create the pull request with a `[WIP] ` title prefix and
+keep it while the pull request is in progress. Remove the `[WIP] ` prefix only
+when all the conditions above hold for the current head commit: all required
+checks pass (if checks are pending, queued, missing or failing, keep `[WIP] `),
+the default branch is merged in, and there are no conflicts. Do not use a
+separate ready marker in the title.
 
-- while working: prefix the title with `[WIP] `;
-- when ready: replace the `[WIP] ` prefix with `[Ready for Review] `.
+`tea pulls edit <number> --ready` strips a leading `WIP:` or `[WIP]` prefix
+from the title. `tea pulls edit <number> --draft` adds a `WIP: ` prefix.
 
 Change the prefix only on an actual transition, never on every run.
 
