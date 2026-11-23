@@ -526,7 +526,7 @@ export class TerraformBuild {
         provider,
         variables,
         version,
-        options: ['-input=false', '-out tfplan'],
+        options: ['-input=false', '-out', 'tfplan'],
       });
     } finally {
       cd('../..');
@@ -635,7 +635,7 @@ export class TerraformBuild {
         variables,
         version,
         workspace: params.deploymentName,
-        options: ['-input=false', '-out tfplan'],
+        options: ['-input=false', '-out', 'tfplan'],
       });
       tf('destroy', {
         provider,
