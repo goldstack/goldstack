@@ -575,6 +575,77 @@ function reportProjectFiles(source: SourceLocation): void {
 }
 
 /**
+ * Comparison of the project's Goldstack instructions with the upstream source.
+ */
+interface InstructionsComparison {
+  /** False when the project does not contain an instructions/goldstack directory. */
+  targetExists: boolean;
+  /** Differences in instruction files. */
+  differences: FileDifference[];
+}
+
+/**
+ * Compare the project's shared instructions with the Goldstack source.
+ *
+ * @param source resolved Goldstack source
+ * @returns comparison result, or undefined when the source has no instructions
+ */
+function compareInstructions(source: SourceLocation): InstructionsComparison | undefined {
+  const sourceDirectory = path.join(source.directory, 'instructions', 'goldstack');
+  const targetDirectory = path.resolve('instructions', 'goldstack');
+
+  if (!fs.existsSync(sourceDirectory)) {
+    warn(`Cannot find shared instructions in ${sourceDirectory}.`);
+    return undefined;
+  }
+  if (!fs.existsSync(targetDirectory)) {
+    return { targetExists: false, differences: [] };
+  }
+  return {
+    targetExists: true,
+    differences: compareManagedFiles(targetDirectory, sourceDirectory, { include: ['*'] }),
+  };
+}
+
+/**
+ * Print whether the project's shared instructions match the Goldstack source.
+ *
+ * This is read-only: it never writes instructions or the report file.
+ *
+ * @param source resolved Goldstack source
+ */
+function checkInstructions(source: SourceLocation): void {
+  const comparison = compareInstructions(source);
+  if (!comparison) {
+    process.exitCode = 1;
+    return;
+  }
+
+  if (!comparison.targetExists) {
+    info('instructions/goldstack does not exist in this project.');
+    process.exitCode = 1;
+    return;
+  }
+
+  if (comparison.differences.length === 0) {
+    info('instructions/goldstack is up to date with the Goldstack source.');
+    return;
+  }
+
+  info(
+    `instructions/goldstack differs from ${path.join(source.directory, 'instructions', 'goldstack')}:`,
+  );
+  for (const difference of comparison.differences.slice(0, REPORT_FILE_LIMIT)) {
+    info(`  - ${difference.status.padEnd(14)} ${difference.filePath}`);
+  }
+  if (comparison.differences.length > REPORT_FILE_LIMIT) {
+    info(`  - ... and ${comparison.differences.length - REPORT_FILE_LIMIT} more.`);
+  }
+  info('Run `yarn sync-goldstack` to update the instructions.');
+  process.exitCode = 1;
+}
+
+/**
  * Make sure `.agent-tmp` is ignored in older derived projects whose .gitignore
  * predates the directory. The entry is written to the local exclude file, so it
  * is never committed itself and cannot conflict with the project's .gitignore.
@@ -606,10 +677,36 @@ function ensureAgentTmpIgnored(): void {
 
 /**
  * Run the instruction sync and, optionally, the template/infra comparison.
+ *
+ * Pass `--check` (or `--status`) to only print whether the project is in sync.
+ * Check mode never writes instructions, the report or markdown-magic output.
  */
 function main(): void {
+  const check = process.argv.includes('--check') || process.argv.includes('--status');
   const report = process.argv.includes('--report');
   const useLocal = process.argv.includes('--local');
+
+  if (check) {
+    const source = resolveSource(useLocal);
+    if (!source) {
+      process.exitCode = 1;
+      return;
+    }
+
+    if (source.isCurrentRepository) {
+      info(
+        'Running inside the Goldstack source repository; instructions are already the source of truth.',
+      );
+      return;
+    }
+
+    checkInstructions(source);
+
+    if (report) {
+      console.log(`${buildReport(source).join('\n')}\n`);
+    }
+    return;
+  }
 
   ensureAgentTmpIgnored();
 

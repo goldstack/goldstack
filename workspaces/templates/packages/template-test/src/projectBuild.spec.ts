@@ -15,8 +15,56 @@ import {
 } from '@goldstack/utils-template-test';
 
 import assert from 'assert';
+import { spawnSync } from 'child_process';
+import { resolve } from 'path';
 
 jest.setTimeout(600000);
+
+/**
+ * Assert that a generated project's shared instructions match the Goldstack
+ * source, using the same status-only check the generated project workflow runs.
+ *
+ * @param projectDir directory of the generated project
+ */
+function assertInstructionsInSync(projectDir: string): void {
+  const topLevel = spawnSync('git', ['rev-parse', '--show-toplevel'], { encoding: 'utf8' });
+  assert(topLevel.status === 0, 'Could not determine the Goldstack repository root.');
+  const goldstackRoot = topLevel.stdout.trim();
+
+  const tsNodeBin = spawnSync('yarn', ['bin', 'ts-node'], {
+    cwd: goldstackRoot,
+    encoding: 'utf8',
+  });
+  assert(tsNodeBin.status === 0, 'Could not locate the ts-node binary.');
+
+  const result = spawnSync(
+    process.execPath,
+    [
+      '--require',
+      resolve(goldstackRoot, '.pnp.cjs'),
+      tsNodeBin.stdout.trim(),
+      resolve(goldstackRoot, 'scripts/syncInstructions.ts'),
+      '--check',
+      '--report',
+    ],
+    {
+      cwd: projectDir,
+      encoding: 'utf8',
+      env: {
+        ...process.env,
+        GOLDSTACK_SOURCE_DIR: goldstackRoot,
+        TS_NODE_PROJECT: resolve(goldstackRoot, 'tsconfig.json'),
+        TS_NODE_TRANSPILE_ONLY: 'true',
+      },
+    },
+  );
+
+  if (result.status !== 0) {
+    throw new Error(
+      `Generated project instructions are not in sync with Goldstack.\n${result.stdout}\n${result.stderr}`,
+    );
+  }
+}
 
 describe('Template Building', () => {
   const goldstackTestsDir = './goldstackLocal/tests/build/';
@@ -85,9 +133,15 @@ describe('Template Building', () => {
       `${projectDir}.yarnrc.yml`,
       `${projectDir}goldstack.json`,
       `${projectDir}config/infra/aws/.gitignore`,
+      `${projectDir}scripts/syncInstructions.ts`,
+      `${projectDir}instructions/goldstack/agents.md`,
       awsConfigPath,
     ]);
     assertFilesDoNotExist([`${projectDir}template.json`]);
+
+    const projectPackageJson = JSON.parse(read(`${projectDir}package.json`));
+    expect(projectPackageJson.scripts['sync-goldstack-check']).toBeDefined();
+    assertInstructionsInSync(projectDir);
 
     // ensure no user credentials included in package
     const awsConfig = readConfig(awsConfigPath);

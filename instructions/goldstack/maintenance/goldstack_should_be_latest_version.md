@@ -97,6 +97,8 @@ Run:
    - Re-inlines the instruction files into `AGENTS.md`.
    - Writes `.agent-tmp/goldstack-sync-report.md`, which lists differences in the project root Terraform configuration and in every package that was generated from a Goldstack template.
 
+   To inspect the same differences without changing any files, run `yarn sync-goldstack-check`. It prints the report and the instruction status, and exits with a non-zero status only when `instructions/goldstack` is out of date. Newly generated projects also run this check in their default branch workflow.
+
    If the command cannot reach the Goldstack repository, note that in the final pull request comment, skip steps 6–10, and continue with the dependency changes and the verification in step 11. Do not hand-edit the generated instruction files.
 
 6. Apply instruction improvements

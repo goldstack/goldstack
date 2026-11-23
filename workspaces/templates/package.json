@@ -23,7 +23,9 @@
     "check-fix": "biome check --write",
     "package:doctor": "yarn dlx @yarnpkg/doctor .",
     "sync-instructions": "ts-node scripts/syncInstructions.ts",
+    "sync-instructions-check": "ts-node scripts/syncInstructions.ts --check",
     "sync-goldstack": "ts-node scripts/syncInstructions.ts --report",
+    "sync-goldstack-check": "ts-node scripts/syncInstructions.ts --check --report",
     "test": "NODE_OPTIONS=--experimental-vm-modules yarn workspaces foreach -Wv run test",
     "test-watch": "nodemonx --watch . --exec 'yarn test'"
   },

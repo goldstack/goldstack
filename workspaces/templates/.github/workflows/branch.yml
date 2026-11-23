@@ -57,6 +57,19 @@ jobs:
           cd packages/${{ matrix.package }}
           yarn test
 
+  instructions-sync:
+    name: '📚 Instructions Sync Status'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
+      - name: Check Goldstack instructions
+        run: |
+          yarn sync-goldstack-check
+        # Status only: report drift without blocking the build.
+        continue-on-error: true
+
   audit:
     name: '🔒 NPM Audit'
     runs-on: ubuntu-latest

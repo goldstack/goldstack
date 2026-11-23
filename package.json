@@ -31,7 +31,9 @@
     "test": "yarn workspaces foreach -A run test",
     "test:agent-scripts": "bash scripts/publish-agent-commits.test.sh",
     "sync-instructions": "ts-node scripts/syncInstructions.ts",
+    "sync-instructions-check": "ts-node scripts/syncInstructions.ts --check",
     "sync-goldstack": "ts-node scripts/syncInstructions.ts --report",
+    "sync-goldstack-check": "ts-node scripts/syncInstructions.ts --check --report",
     "test-watch": "nodemonx --watch . --exec 'yarn test'"
   },
   "resolutions": {
