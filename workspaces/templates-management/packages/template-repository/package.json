@@ -24,7 +24,7 @@
     "@aws-sdk/client-s3": "^3.1175.0",
     "@goldstack/utils-log": "0.3.43",
     "@goldstack/utils-package": "0.4.54",
-    "@goldstack/utils-s3": "0.4.48",
+    "@goldstack/utils-s3": "0.4.49",
     "@goldstack/utils-sh": "0.5.50",
     "@goldstack/utils-template": "0.4.53",
     "fs-extra": "^11.2.0",
