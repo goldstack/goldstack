@@ -1,0 +1,139 @@
+name: issue-pr-wrangler
+
+on:
+  schedule:
+    # Every 6 hours, offset from the top of the hour to avoid contention with
+    # the other scheduled workflows.
+    - cron: '23 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  wrangler:
+    env:
+      GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    # Only one wrangler may run at a time. Queue rather than cancel so a long
+    # run that is making progress is never cut off mid-push.
+    concurrency:
+      group: issue-pr-wrangler
+      cancel-in-progress: false
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+      issues: write
+      actions: read
+      checks: read
+      statuses: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PAT_TOKEN }}
+
+      # A repository-specific file may replace the shared instructions. This
+      # repository ships a stub containing the marker below, which disables the
+      # wrangler completely without relying on the agent to honour prose.
+      - name: Select wrangler instructions
+        id: instructions
+        run: |
+          set -euo pipefail
+          custom="instructions/custom/issue_pr_wrangler.md"
+          shared="instructions/goldstack/issue_pr_wrangler.md"
+          if [ -f "$custom" ] && grep -Fqi 'issue-pr-wrangler: disabled' "$custom"; then
+            echo "disabled=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::$custom disables the wrangler for this repository; skipping."
+          elif [ -f "$custom" ]; then
+            echo "disabled=false" >> "$GITHUB_OUTPUT"
+            echo "file=$custom" >> "$GITHUB_OUTPUT"
+            echo "::notice::Using repository-specific wrangler instructions from $custom."
+          else
+            echo "disabled=false" >> "$GITHUB_OUTPUT"
+            echo "file=$shared" >> "$GITHUB_OUTPUT"
+            echo "::notice::Using shared wrangler instructions from $shared."
+          fi
+
+      - name: Configure git
+        if: ${{ steps.instructions.outputs.disabled != 'true' }}
+        run: |
+          git config --global user.email "66645074+goldstack@users.noreply.github.com"
+          git config --global user.name "Goldstack Project Builder"
+          # The agent's instructions require merging master into a branch rather
+          # than rebasing it. Make an accidental `git pull` do the same.
+          git config --global pull.rebase false
+
+      - name: Setup OpenCode auth
+        if: ${{ steps.instructions.outputs.disabled != 'true' }}
+        run: |
+          mkdir -p ~/.local/share/opencode
+          echo '{"opencode-go":{"type":"api","key":"${{ secrets.OPENCODE_GO_API_KEY }}"}}' > ~/.local/share/opencode/auth.json
+
+      # `continue-on-error` lets the publish step below run even when the agent
+      # failed, so a rejected push cannot discard the run's verified work.
+      - name: Run OpenCode
+        id: opencode
+        if: ${{ steps.instructions.outputs.disabled != 'true' }}
+        continue-on-error: true
+        uses: anomalyco/opencode/github@latest
+        env:
+          OPENCODE_GO_API_KEY: ${{ secrets.OPENCODE_GO_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+        with:
+          model: opencode-go/deepseek-v4.1-flash
+          # Keep the session private: the footer then only links this run,
+          # and the session is never published to opencode.ai.
+          share: false
+          use_github_token: true
+          prompt: |
+            You are the Issue and PR Wrangler.
+
+            Read and follow ${{ steps.instructions.outputs.file }} as your
+            authoritative wrangler instructions.
+
+            Also follow the repository-wide git, verification and pull request
+            rules in instructions/goldstack/agents.md. In particular: merge the
+            default branch instead of rebasing, never force-push, and run the
+            project's format, lint and compile checks before committing.
+
+            Do at most one unit of code work this run, then stop. For every
+            issue or pull request you examine whose latest comment does not
+            start with `Wrangler:`, post a comment that starts with
+            `Wrangler: ` describing what you did or why you could not work on
+            it.
+
+      # Deterministic recovery: the agent's own `git push` (and the action's) can
+      # be rejected after a rewrite. This republishes the branch under a lease
+      # pinned to the tip captured at checkout, so a concurrent push is refused
+      # rather than clobbered.
+      - name: Publish agent commits
+        id: publish
+        if: ${{ always() && steps.instructions.outputs.disabled != 'true' }}
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: bash scripts/publish-agent-commits.sh
+
+      # Never start this body with `/oc` or `/opencode`: any comment merely
+      # containing the mention would re-trigger the opencode workflow.
+      - name: Explain republished commits
+        if: ${{ steps.instructions.outputs.disabled != 'true' && steps.publish.outputs.published == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          BRANCH: ${{ steps.publish.outputs.branch }}
+          MODE: ${{ steps.publish.outputs.mode }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          NUMBER="$(gh pr list --head "$BRANCH" --json number --jq '.[0].number // empty' || true)"
+          if [ -z "$NUMBER" ]; then
+            echo "::notice::No pull request to explain the republished commits on."
+            exit 0
+          fi
+          gh issue comment "$NUMBER" --body "Wrangler: republished the agent commits to \`$BRANCH\` using \`$MODE\` after a rejected push. Run log: $RUN_URL"
+
+      - name: Fail the run if the agent failed
+        if: ${{ steps.instructions.outputs.disabled != 'true' && steps.opencode.outcome == 'failure' }}
+        run: |
+          echo "::error::The issue and PR wrangler agent run failed. See the issue or pull request comments for details."
+          exit 1
