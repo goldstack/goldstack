@@ -29,13 +29,6 @@ resource "aws_sqs_queue_redrive_allow_policy" "dlq" {
   })
 }
 
-# Only attach the DLQ access policy if both SQS queue and DLQ are created
-resource "aws_iam_role_policy_attachment" "lambda_dlq_access" {
-  count      = length(var.sqs_queue_name) > 0 ? 1 : 0
-  role       = aws_iam_role.lambda_exec.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole"
-}
-
 # Add permission for SQS to trigger Lambda
 resource "aws_lambda_permission" "sqs_trigger" {
   count         = length(var.sqs_queue_name) > 0 ? 1 : 0

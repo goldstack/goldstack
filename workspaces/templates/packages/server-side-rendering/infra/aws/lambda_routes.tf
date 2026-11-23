@@ -23,7 +23,7 @@ resource "aws_lambda_function" "this" {
   memory_size = 2048
   timeout     = 27 # default Gateway timeout is 29 s
 
-  role = aws_iam_role.lambda_exec.arn
+  role = module.lambda_execution_role.role_arn
 
   lifecycle {
     ignore_changes = [

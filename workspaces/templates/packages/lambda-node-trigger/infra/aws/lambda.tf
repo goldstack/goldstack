@@ -20,7 +20,7 @@ resource "aws_lambda_function" "main" {
   memory_size = 512
   timeout     = 900
 
-  role = aws_iam_role.lambda_exec.arn
+  role = module.lambda_execution_role.role_arn
 
   logging_config {
     log_format = "Text"
@@ -51,30 +51,13 @@ resource "aws_lambda_function" "main" {
 }
 
 
-resource "aws_iam_role" "lambda_exec" {
-  name = "${var.lambda_name}-role"
+module "lambda_execution_role" {
+  source = "../../../../infra/aws/shared/lambda-execution-role"
 
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
-}
-EOF
-
+  role_name = "${var.lambda_name}-role"
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach" {
-  role = aws_iam_role.lambda_exec.name
-  # Gives this lambda full access to everything. Consider restricting rules to only the resources this lambda will require.
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+moved {
+  from = aws_iam_role.lambda_exec
+  to   = module.lambda_execution_role.aws_iam_role.this
 }
-

@@ -20,7 +20,7 @@ resource "aws_lambda_function" "pre_sign_up" {
   memory_size = 512
   timeout     = 30
 
-  role = aws_iam_role.lambda_exec.arn
+  role = module.lambda_execution_role.role_arn
 
   tags = {
     Name        = "${var.user_pool_name}-pre-sign-up"
@@ -65,7 +65,7 @@ resource "aws_lambda_function" "post_confirmation" {
   memory_size = 512
   timeout     = 30
 
-  role = aws_iam_role.lambda_exec.arn
+  role = module.lambda_execution_role.role_arn
 
   tags = {
     Name        = "${var.user_pool_name}-post-confirmation"
@@ -98,34 +98,6 @@ resource "aws_cloudwatch_log_group" "post_confirmation" {
   retention_in_days = 14
 }
 
-resource "aws_iam_policy" "lambda_logging" {
-  name        = "${var.user_pool_name}-lambda-logging-role"
-  path        = "/"
-  description = "IAM policy for logging from a lambda"
-
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "logs:CreateLogGroup",
-        "logs:CreateLogStream",
-        "logs:PutLogEvents"
-      ],
-      "Resource": [
-        "arn:aws:logs:*:*:/aws/lambda/${var.user_pool_name}-post-confirmation",
-        "arn:aws:logs:*:*:/aws/lambda/${var.user_pool_name}-post-confirmation:*",
-        "arn:aws:logs:*:*:/aws/lambda/${var.user_pool_name}-pre-sign-up",
-        "arn:aws:logs:*:*:/aws/lambda/${var.user_pool_name}-pre-sign-up:*"
-      ],
-      "Effect": "Allow"
-    }
-  ]
-}
-EOF
-}
-
 resource "aws_iam_policy" "lambda_cognito_admin" {
   name        = "${var.user_pool_name}-lambda-cognito-admin-role"
   path        = "/"
@@ -151,7 +123,7 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_cognito_admin_policy" {
-  role       = aws_iam_role.lambda_exec.name
+  role       = module.lambda_execution_role.role_name
   policy_arn = aws_iam_policy.lambda_cognito_admin.arn
 }
 
@@ -232,30 +204,15 @@ resource "aws_cloudwatch_metric_alarm" "lambda_errors_pre_sign_up" {
   alarm_actions       = [aws_sns_topic.alerts.arn]
 }
 
-resource "aws_iam_role" "lambda_exec" {
-  name = "${var.user_pool_name}-lambda-role"
+module "lambda_execution_role" {
+  source = "../../../../infra/aws/shared/lambda-execution-role"
 
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
-}
-EOF
-
+  role_name = "${var.user_pool_name}-lambda-role"
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_logging_policy" {
-  role       = aws_iam_role.lambda_exec.name
-  policy_arn = aws_iam_policy.lambda_logging.arn
+moved {
+  from = aws_iam_role.lambda_exec
+  to   = module.lambda_execution_role.aws_iam_role.this
 }
 
 locals {

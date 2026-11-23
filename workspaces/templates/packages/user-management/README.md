@@ -417,6 +417,10 @@ This works well for deploying infrastructure from your local development environ
 
 Secure user authentication is not easy to achieve. This template contains a few trade-offs that make it easier to get started with developing your application but introduce potential security issues. Key trade-offs are:
 
+### Lambda Execution Role
+
+The Cognito trigger lambdas use the shared execution role module in `infra/aws/shared/lambda-execution-role` at the project root. This role grants broad access to AWS resources commonly used by Goldstack applications. For production applications, restrict the policy in `infra/aws/shared/lambda-execution-role/main.tf` to only the resources these lambdas need, or attach a permissions boundary via the module's `permissions_boundary` input.
+
 ### Deletion Protection
 
 It is strongly recommended to enable deletion protection for your Cognito User Pool to prevent accidental deletion. This can be configured by setting `deletionProtection: true` in your deployment configuration in `goldstack.json`. Note that you must disable this protection before you can delete the user pool.
