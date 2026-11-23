@@ -27,6 +27,8 @@ export interface InfraAwsStaticWebsiteCliParams {
   skipConfirmations?: boolean;
   /** Optional additional command arguments. */
   commandArgs?: string[];
+  /** Whether `terraform init` should upgrade providers to the latest allowed versions. */
+  upgrade?: boolean;
 }
 
 /**
@@ -119,6 +121,7 @@ export const infraAwsStaticWebsiteCli = async (
     targetVersion: params.targetVersion,
     confirm: params.confirm,
     commandArguments: params.commandArgs,
+    upgrade: params.upgrade,
     ignoreMissingDeployments: false,
     skipConfirmations: params.skipConfirmations ?? false,
     options: undefined,

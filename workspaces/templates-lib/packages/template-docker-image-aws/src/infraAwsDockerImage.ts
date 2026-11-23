@@ -125,6 +125,7 @@ export const infraAwsDockerImageCli = async (
     targetVersion,
     confirm,
     commandArguments: commandArgs,
+    upgrade: args.includes('--upgrade'),
     ignoreMissingDeployments: false,
     skipConfirmations: args.includes('-y'),
     options: undefined,
