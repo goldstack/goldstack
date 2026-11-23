@@ -40,8 +40,8 @@ jobs:
         id: instructions
         run: |
           set -euo pipefail
-          custom="instructions/custom/issue_pr_wrangler.md"
-          shared="instructions/goldstack/issue_pr_wrangler.md"
+          custom="instructions/custom/work/issue_pr_wrangler.md"
+          shared="instructions/goldstack/work/issue_pr_wrangler.md"
           if [ -f "$custom" ] && grep -Fqi 'issue-pr-wrangler: disabled' "$custom"; then
             echo "disabled=true" >> "$GITHUB_OUTPUT"
             echo "::notice::$custom disables the wrangler for this repository; skipping."
