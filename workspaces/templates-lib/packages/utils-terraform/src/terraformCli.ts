@@ -39,6 +39,28 @@ const normalizeArgs = (cmd: string | string[]): string[] => {
   return Array.isArray(cmd) ? cmd : cmd.split(/\s+/).filter((arg) => arg !== '');
 };
 
+/**
+ * Combines the Terraform sub-command and options into the argument list passed to the
+ * Terraform executable. Options are kept as separate arguments so that options with values
+ * (e.g. `-out tfplan`) are not interpreted as a single invalid flag.
+ *
+ * @param cmd the Terraform sub-command, either as a string or as individual arguments
+ * @param options additional Terraform options
+ * @returns the full list of arguments passed to Terraform
+ * @throws if an option and its value are combined into a single argument, for example
+ * `-out tfplan`, since Terraform would then interpret the whole string as one flag
+ */
+export const buildTerraformArgs = (cmd: string | string[], options?: string[]): string[] => {
+  const [command, ...rest] = normalizeArgs(cmd);
+  const combinedOption = options?.find((option) => /^--?[^\s=]+\s/.test(option));
+  if (combinedOption) {
+    throw new Error(
+      `Terraform options must be passed as separate arguments; received the combined option '${combinedOption}'.`,
+    );
+  }
+  return [command, ...(options ?? []), ...rest];
+};
+
 const execWithDocker = (cmd: string | string[], options: TerraformOptions): string => {
   if (!options.dir) {
     options.dir = pwd();
@@ -73,7 +95,12 @@ const execWithDocker = (cmd: string | string[], options: TerraformOptions): stri
     }
     dockerArgs.push('-e', `TF_WORKSPACE=${options.workspace}`);
   }
-  dockerArgs.push('-w', '/app', imageTerraform(options.version), ...normalizeArgs(cmd));
+  dockerArgs.push(
+    '-w',
+    '/app',
+    imageTerraform(options.version),
+    ...buildTerraformArgs(cmd, options.options),
+  );
 
   return execSafe('docker', dockerArgs, { silent: options.silent });
 };
@@ -176,9 +203,7 @@ const execWithCli = (cmd: string | string[], options: TerraformOptions): string 
     delete process.env.TF_WORKSPACE;
   }
 
-  const [command, ...rest] = normalizeArgs(cmd);
-
-  return execSafe('terraform', [command, ...(options.options ?? []), ...rest], {
+  return execSafe('terraform', buildTerraformArgs(cmd, options.options), {
     silent: options.silent,
     cwd: options.dir,
   });
