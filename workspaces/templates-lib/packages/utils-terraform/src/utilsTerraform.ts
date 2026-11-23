@@ -37,17 +37,28 @@ export const infraCommands = (): ((yargs: Argv<any>) => Argv<any>) => {
   };
 
   // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
+  const upgradeOption = (yargs: Argv<any>): Argv<any> => {
+    return yargs.option('upgrade', {
+      description:
+        'Run `terraform init -upgrade` to update providers to the latest versions allowed by the configured constraints.',
+      default: false,
+      demandOption: false,
+      type: 'boolean',
+    });
+  };
+
+  // biome-ignore lint/suspicious/noExplicitAny: yargs command definition
   return (yargs: Argv<any>): Argv<any> => {
     return yargs
       .command(
         'up <deployment>',
         'Stands up infrastructure for the specified deployment',
-        (yargs) => deploymentPositional(ignoreMissingDeploymentsOption(yargs)),
+        (yargs) => upgradeOption(deploymentPositional(ignoreMissingDeploymentsOption(yargs))),
       )
       .command(
         'init <deployment>',
         'Initialises Terraform working directory for deployment',
-        (yargs) => deploymentPositional(ignoreMissingDeploymentsOption(yargs)),
+        (yargs) => upgradeOption(deploymentPositional(ignoreMissingDeploymentsOption(yargs))),
       )
       .command('plan <deployment>', 'Creates a Terraform execution plan for deployment', (yargs) =>
         deploymentPositional(ignoreMissingDeploymentsOption(yargs)),
@@ -159,6 +170,7 @@ export type TerraformCliParams = {
   commandArguments?: string[];
   injectVariables?: boolean;
   injectBackendConfig?: boolean;
+  upgrade?: boolean;
 };
 
 export const terraformCli = (params: TerraformCliParams): void => {
@@ -170,14 +182,14 @@ export const terraformCli = (params: TerraformCliParams): void => {
   const build = new TerraformBuild(params.options.provider);
 
   if (operation === 'up') {
-    build.init({ deploymentName: params.deploymentName });
+    build.init({ deploymentName: params.deploymentName, upgrade: params.upgrade });
     build.plan({ deploymentName: params.deploymentName });
     build.apply({ deploymentName: params.deploymentName, options: params.options });
     return;
   }
 
   if (operation === 'init') {
-    build.init({ deploymentName: params.deploymentName });
+    build.init({ deploymentName: params.deploymentName, upgrade: params.upgrade });
     return;
   }
   if (operation === 'plan') {

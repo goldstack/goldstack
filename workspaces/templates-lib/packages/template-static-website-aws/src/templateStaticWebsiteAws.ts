@@ -87,6 +87,7 @@ export const run = async (args: string[]): Promise<void> => {
         confirm,
         skipConfirmations,
         commandArgs,
+        upgrade: argv.upgrade || false,
       };
       await infraAwsStaticWebsiteCli(config, params);
       return;

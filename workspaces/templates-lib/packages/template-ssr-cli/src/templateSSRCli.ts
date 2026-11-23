@@ -135,6 +135,7 @@ export const run = async (args: string[], buildConfig: BuildConfiguration): Prom
         targetVersion,
         confirm,
         commandArguments: commandArgs,
+        upgrade: (argv.upgrade as boolean) || false,
         ignoreMissingDeployments: argv['ignore-missing-deployments'] || false,
         skipConfirmations: (argv.yes as boolean) || false,
         options: {

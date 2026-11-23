@@ -122,6 +122,8 @@ export interface TerraformAWSCliParams {
   targetVersion?: string;
   confirm?: boolean;
   commandArguments?: string[];
+  /** Whether `terraform init` should upgrade providers to the latest allowed versions. */
+  upgrade?: boolean;
 }
 
 export const terraformAwsCli = async (params: TerraformAWSCliParams): Promise<void> => {

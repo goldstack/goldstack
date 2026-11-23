@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/utils-terraform",
-  "version": "0.4.101",
+  "version": "0.4.103",
   "description": "Run Terraform commands easily as npm package scripts",
   "keywords": [
     "goldstack",
