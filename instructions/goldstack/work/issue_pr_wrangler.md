@@ -33,6 +33,36 @@ forge-specific; use the corresponding CLI.
   do not plan to use it: commit and push early, and leave a comment describing
   what remains rather than risking a truncated run.
 
+## Status conventions
+
+Follow the pull request and issue status rules in
+`instructions/goldstack/agents.md`. In particular:
+
+- GitHub pull requests stay draft until the work is complete, all required
+  checks pass and the default branch is merged in; only then run
+  `gh pr ready <number>`. Convert back to draft if more commits are pushed.
+- Gitea has no reliable draft pull request. Prefix the title with `[WIP] `
+  while working; Gitea blocks merging titles beginning with `WIP:` or `[WIP]`.
+  Replace the prefix with `[Ready for Review] ` once the same readiness
+  conditions hold.
+- Prefix an issue title with `[Needs Attention] ` when it needs a human - a
+  decision, missing information, external access, or a request that only asked
+  for a plan. Leave a comment saying what is needed, and remove the prefix once
+  an agent can continue.
+- When asked to plan, do not commit a plan file. Post the plan as a comment or
+  chat message instead.
+
+Use the forge CLI to change titles, for example:
+
+```
+gh issue edit <number> --title "[Needs Attention] <title>"
+tea issues edit <number> --title "[Needs Attention] <title>"
+tea pulls edit <number> --title "[Ready for Review] <title>"
+```
+
+If the installed `tea` version has no `pulls edit` command, change the pull
+request title through the web UI or the Gitea API instead.
+
 ## 1. Comment protocol
 
 Every comment you write must begin with the literal characters `Wrangler:`
@@ -62,7 +92,9 @@ and low risk:
   push the merge commit;
 - CI fails for a trivial reason such as formatting, linting, a lockfile or a
   snapshot: fix it and push;
-- a draft PR is actually complete and green: mark it ready for review.
+- a draft PR is actually complete and green: mark it ready for review. On
+  GitHub run `gh pr ready <number>`; on Gitea replace the `[WIP] ` title prefix
+  with `[Ready for Review] `.
 
 Only action PRs whose head branch lives in **this** repository. For fork PRs you
 cannot push to, leave a `Wrangler:` comment describing the required fix instead.
@@ -116,10 +148,12 @@ Work on the issue when all of the following hold:
 - there are no open questions that only the reporter can answer;
 - the work can be split into a small, committable step.
 
-Do **not** work on the issue (comment and move on) when it is a question or
-discussion, a duplicate, already fixed, blocked on a decision or external
-access, too vague to start, or labelled as blocked, needs-info, wontfix or
-similar.
+Do **not** work on the issue when it is a duplicate, already fixed, or labelled
+wontfix; comment and move on. When it is blocked on a decision, missing
+information or external access, or too vague to start, also prefix the issue
+title with `[Needs Attention] ` and state what is needed. If the issue only
+asked for a plan, post the plan as a comment, do not commit a file, and prefix
+the title with `[Needs Attention] `.
 
 If you decide to work on an issue:
 
@@ -138,7 +172,8 @@ git push -u origin HEAD
 
 Then open a **draft** PR that references the issue, and leave a `Wrangler:`
 comment on both the issue and the PR. If the default branch has moved, merge it
-in before opening or updating the PR.
+in before opening or updating the PR. On Gitea, do not pass `--draft`; prefix
+the pull request title with `[WIP] ` instead.
 
 GitHub:
 
@@ -155,14 +190,14 @@ Gitea:
 ```
 tea issues --state open --limit 50 --output json --fields index,title,created
 tea issues <number> --comments
-tea pulls create --draft --title "<title>" --description "Closes #<number>" --head wrangler/issue-<number>-<short-slug>
+tea pulls create --title "[WIP] <title>" --description "Closes #<number>" --head wrangler/issue-<number>-<short-slug>
 tea comments add <number> "Wrangler: ..."
 ```
 
 If you cannot finish the issue in this run, that is normal and acceptable.
-Commit and push the progress, keep the PR in draft, and leave a `Wrangler:`
-comment listing exactly what is done and what remains. The next run will
-continue from there.
+Commit and push the progress, keep the PR in draft (or keep the `[WIP] ` title
+prefix on Gitea), and leave a `Wrangler:` comment listing exactly what is done
+and what remains. The next run will continue from there.
 
 ## 4. Priority 3: pull requests without a linked issue
 
@@ -177,5 +212,7 @@ and commenting rules as above. Action at most one PR, then stop.
   `git merge-base --is-ancestor origin/master HEAD` must exit `0`.
 - Make sure your final `Wrangler:` comments reflect the actual state, including
   anything left for the next run.
+- Make sure the pull request and issue titles reflect the real state
+  (`[WIP] `, `[Ready for Review] `, `[Needs Attention] `) before you stop.
 - Stop after one unit of work. Do not start a second issue or PR in the same
   run.

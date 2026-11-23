@@ -121,6 +121,48 @@ git merge-base --is-ancestor origin/master HEAD
 If it fails, re-merge `master`. It also fails after a rebase, which is the case
 the rule above exists to prevent.
 
+## Pull Request and Issue Status
+
+Make it obvious whether an agent has finished. Use the forge's native signal
+where it exists and a title prefix where it does not.
+
+An agent pull request is **ready for review** only when all of these hold for
+the current head commit:
+
+- the work is complete, or the remaining work is explicitly listed as a
+  follow-up;
+- all required checks pass;
+- the default branch is merged in
+  (`git merge-base --is-ancestor origin/master HEAD` exits `0`, with no
+  conflicts);
+- no open `[Needs Attention]` item remains.
+
+GitHub: create agent pull requests as drafts (`gh pr create --draft`). Run
+`gh pr ready <number>` only when the conditions above hold. If new commits are
+pushed to a ready agent pull request, convert it back to draft until the new
+head is green again.
+
+Gitea: use the title instead, because draft pull requests are not reliable.
+Gitea blocks merging a pull request whose title starts with `WIP:` or `[WIP]`
+(case insensitive). Therefore:
+
+- while working: prefix the title with `[WIP] `;
+- when ready: replace the `[WIP] ` prefix with `[Ready for Review] `.
+
+Change the prefix only on an actual transition, never on every run.
+
+When the agent needs a human to make progress - a decision, missing
+information, external access, or repeatedly failing checks - prefix the issue
+title with `[Needs Attention] ` and leave a comment describing exactly what is
+needed. This also applies when the issue asked only for a plan: the plan is
+the deliverable and a human must act on it. Remove the prefix when the missing
+input arrives and an agent can continue, or when the issue is closed.
+
+When asked to plan, do not write a markdown file (or any other file) into the
+repository. Give the plan as a message instead: a comment on the issue or pull
+request, or a chat message when running interactively. Mark the issue
+`[Needs Attention] ` as described above.
+
 ## Dev Sessions & Worktrees
 
 - You may or may not be running inside a git worktree. Detect this with:
