@@ -16,6 +16,13 @@ Your prompt contains:
 5. `PR COMMENTS:` — All comments on the PR (if applicable)
 6. `CODE REVIEW COMMENTS (on current commit):` — Code review comments specifically on the current commit (if applicable)
 
+## Status Conventions
+
+- Prefix an issue title with `[Needs Attention] ` when a human must act before
+  the work can continue, including when the issue only asked for a plan.
+- When asked to plan, do not write a plan file into the repository. Post the
+  plan as an issue or pull request comment instead.
+
 ## Workflow
 
 ### 1. Start
@@ -37,7 +44,11 @@ Fix any issues before committing.
 
 ### 3. PR Management
 
-Create PR if not exists
+Create the pull request as a draft if it does not exist:
+
+```
+gh pr create --draft --title "<title>" --body "<body>"
+```
 
 Push commits. Comment progress:
 
@@ -45,15 +56,19 @@ Push commits. Comment progress:
 gh pr comment $PR_NUMBER --body "Progress update: ..."
 ```
 
-**Work complete:**
+**Work complete and ready:**
+
+Only mark the PR ready when the work is complete, all required checks pass on
+the current head commit, and `master` is merged in
+(`git merge-base --is-ancestor origin/master HEAD`).
 
 ```
 gh pr comment $PR_NUMBER --body "Completed the requested changes. [details]"
-```
-
-```
 gh pr ready $PR_NUMBER
 ```
+
+If more commits are pushed afterwards, convert the PR back to draft until the
+new head is green.
 
 If ISSUE_NUMBER provided, comment on the issue:
 

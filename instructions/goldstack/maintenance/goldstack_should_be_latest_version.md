@@ -157,18 +157,18 @@ Run:
 
 10. Create an issue for larger improvements
 
-   Some improvements are too large or too risky to apply in this task. Create an issue in this project for each one, then continue with the safe improvements. This instruction is forge agnostic: detect the forge from `git remote get-url origin`, and read `instructions/custom` for any project-specific server details.
+   Some improvements are too large or too risky to apply in this task. Create an issue in this project for each one, with a title that starts with `[Needs Attention] ` because a human must decide or perform the migration, then continue with the safe improvements. This instruction is forge agnostic: detect the forge from `git remote get-url origin`, and read `instructions/custom` for any project-specific server details.
 
    GitHub:
 
    ```
-   gh issue create --title "<title>" --body "<body>"
+   gh issue create --title "[Needs Attention] <title>" --body "<body>"
    ```
 
    Gitea:
 
    ```
-   tea issues create --title "<title>" --body "<body>"
+   tea issues create --title "[Needs Attention] <title>" --body "<body>"
    ```
 
    If neither CLI is available, use the forge's web interface or API, or add the same information to the maintenance pull request body and say so.
