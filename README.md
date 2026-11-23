@@ -561,7 +561,7 @@ First note that Goldstack allows defining the version of Terraform that is to be
 }
 ```
 
-2.  If a project has multiple different deployments that require different Terraform versions, or for first upgrading Terraform for test environments, it is also possible to specify the Terraform version per deployment. For this, add the `"tfVersion"` property to a `"configuration"` for a deployment in `goldstack.json`, for instance:
+2.  If a project has multiple different deployments that require different Terraform versions, or for first upgrading Terraform for test environments, it is also possible to specify the Terraform version per deployment. For this, add the `"tfVersion"` property to a deployment in `goldstack.json` (alongside `"name"`, not inside `"configuration"`), for instance:
 
 ```json
 {
@@ -575,15 +575,16 @@ First note that Goldstack allows defining the version of Terraform that is to be
       "name": "prod",
       "awsRegion": "us-west-2",
       "awsUser": "goldstack-dev",
-      "configuration": {
-        "tfVersion": "1.14.7"
-      }
+      "tfVersion": "1.14.7",
+      "configuration": {}
     }
   ]
 }
 ```
 
 Changing the Terraform version will result in Goldstack using the specified version of the Docker image `hashicorp/terraform:[version]`. Please avoid specifying minor versions: use `0.12` not `0.12.1`.
+
+To also upgrade Terraform providers to the latest versions allowed by the configured constraints, run `yarn infra up [deployment] --upgrade` or `yarn infra init [deployment] --upgrade`. Without the `--upgrade` flag Goldstack reuses the providers already recorded in `.terraform.lock.hcl` (unless the working directory or lock file does not exist yet), which makes subsequent `init` and `up` operations faster.
 
 Note that Terraform often provides upgrade scripts for Terraform. These can either be applied by installing the matching Terraform version locally or using the following Goldstack command:
 
@@ -760,7 +761,7 @@ Goldstack supports passing through Terraform environment variables to enable adv
 
 **Provider Plugin Cache:**
 
-*   `TF_PLUGIN_CACHE_DIR` - Enable provider plugin cache directory
+*   `TF_PLUGIN_CACHE_DIR` - Enable provider plugin cache directory. If not set, Goldstack uses `~/.terraform.d/plugin-cache`, creating it if required, so providers are shared across modules and runs instead of being downloaded again.
 *   `TF_PLUGIN_CACHE_MAY_BREAK_DEPENDENCY_LOCK_FILE` - Allow cache to break dependency lock file
 
 **Registry:**

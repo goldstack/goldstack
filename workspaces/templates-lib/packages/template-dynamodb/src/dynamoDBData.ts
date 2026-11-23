@@ -120,6 +120,35 @@ async function enablePITR(client: DynamoDBClient, tableName: string): Promise<vo
   }
 }
 
+/**
+ * Checks whether the DynamoDB table for a deployment exists.
+ *
+ * @param packageConfig - The embedded package configuration.
+ * @param deploymentName - The name of the deployment.
+ * @param client - The DynamoDB client to use.
+ * @returns {Promise<boolean>} `true` if the table exists, `false` if it has not been created yet.
+ */
+export const tableExists = async (
+  packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
+  deploymentName: string,
+  client: DynamoDBClient,
+): Promise<boolean> => {
+  const tableName = await getTableName(packageConfig, deploymentName);
+  try {
+    await client.send(
+      new DescribeTableCommand({
+        TableName: tableName,
+      }),
+    );
+    return true;
+  } catch (e) {
+    if (e instanceof ResourceNotFoundException) {
+      return false;
+    }
+    throw e;
+  }
+};
+
 export const deleteTable = async (
   packageConfig: EmbeddedPackageConfig<DynamoDBPackage, DynamoDBDeployment>,
   deploymentName: string,

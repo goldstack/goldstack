@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-hetzner-vps-cli",
-  "version": "0.1.97",
+  "version": "0.1.98",
   "description": "Utilities for packages that allows provisioning a Hetzner server with Docker",
   "keywords": [
     "goldstack",
@@ -44,16 +44,16 @@
     "@aws-sdk/client-s3": "^3.1175.0",
     "@aws-sdk/s3-request-presigner": "^3.1175.0",
     "@goldstack/infra-aws": "0.4.81",
-    "@goldstack/template-hetzner-vps": "0.1.89",
+    "@goldstack/template-hetzner-vps": "0.1.90",
     "@goldstack/utils-cli": "0.3.40",
     "@goldstack/utils-log": "0.3.43",
     "@goldstack/utils-package": "0.4.54",
     "@goldstack/utils-package-config": "0.4.54",
     "@goldstack/utils-s3-deployment": "0.5.86",
     "@goldstack/utils-sh": "0.5.50",
-    "@goldstack/utils-terraform": "0.4.102",
-    "@goldstack/utils-terraform-aws": "0.4.107",
-    "@goldstack/utils-terraform-hetzner": "0.1.86",
+    "@goldstack/utils-terraform": "0.4.103",
+    "@goldstack/utils-terraform-aws": "0.4.108",
+    "@goldstack/utils-terraform-hetzner": "0.1.87",
     "source-map-support": "^0.5.21",
     "yargs": "^17"
   },
