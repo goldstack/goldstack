@@ -31,10 +31,10 @@ export const assertYarn = (): void => {
  */
 export const configureForTemplateBuild = (projectDir: string, globalDir: string): void => {
   info('Perform Yarn config overwrite for template building:');
-  yarn(projectDir, `config set globalFolder ${globalDir}`);
-  yarn(projectDir, 'config set checksumBehavior update');
-  yarn(projectDir, 'config set enableImmutableInstalls false');
-  yarn(projectDir, 'config set enableImmutableCache false');
+  yarn(projectDir, ['config', 'set', 'globalFolder', globalDir]);
+  yarn(projectDir, ['config', 'set', 'checksumBehavior', 'update']);
+  yarn(projectDir, ['config', 'set', 'enableImmutableInstalls', 'false']);
+  yarn(projectDir, ['config', 'set', 'enableImmutableCache', 'false']);
   // yarn(projectDir, 'config');
 };
 
