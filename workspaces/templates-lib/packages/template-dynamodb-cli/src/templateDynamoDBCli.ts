@@ -12,7 +12,7 @@ import { terraformAwsCli } from '@goldstack/utils-terraform-aws';
 import assert from 'assert';
 import type { InputMigrations } from 'umzug/lib/types';
 import yargs, { type Argv } from 'yargs';
-import { dynamoDBCli } from './dynamoDBTableCli';
+import { dynamoDBCli, dynamoDBTableExists } from './dynamoDBTableCli';
 
 export * from './gsiMigrationUtils';
 
@@ -95,6 +95,14 @@ export const run = async ({
         commandArgs = opArgs.slice(2);
       } else if (infraOperation === 'destroy') {
         confirm = argv.yes;
+
+        const exists = await dynamoDBTableExists(deploymentName);
+        if (!exists) {
+          warn(
+            `DynamoDB table for deployment '${deploymentName}' does not exist. Skipping infrastructure destroy since the table was never created.`,
+          );
+          return;
+        }
       }
 
       await terraformAwsCli({

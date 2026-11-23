@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-user-management",
-  "version": "0.2.23",
+  "version": "0.2.24",
   "description": "Template utilities for user management",
   "keywords": [
     "goldstack",
@@ -37,14 +37,14 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@aws-sdk/client-cognito-identity-provider": "^3.1164.0",
+    "@aws-sdk/client-cognito-identity-provider": "^3.1175.0",
     "@goldstack/infra": "0.4.52",
-    "@goldstack/infra-aws": "0.4.81",
+    "@goldstack/infra-aws": "0.4.82",
     "@goldstack/utils-esbuild": "0.5.33",
     "@goldstack/utils-package": "0.4.54",
     "@goldstack/utils-package-config-embedded": "0.5.55",
     "@goldstack/utils-template": "0.4.53",
-    "@goldstack/utils-terraform": "0.4.103",
+    "@goldstack/utils-terraform": "0.4.104",
     "aws-jwt-verify": "^3.2.0",
     "source-map-support": "^0.5.21"
   },

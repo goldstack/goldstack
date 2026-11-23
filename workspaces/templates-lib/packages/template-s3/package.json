@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-s3",
-  "version": "0.5.99",
+  "version": "0.5.100",
   "description": "Building blocks for linking a package to an AWS S3 bucket.",
   "keywords": [
     "goldstack",
@@ -37,21 +37,21 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.1164.0",
-    "@aws-sdk/credential-providers": "^3.1164.0",
-    "@aws-sdk/s3-request-presigner": "^3.1164.0",
-    "@aws-sdk/types": "^3.975.0",
+    "@aws-sdk/client-s3": "^3.1175.0",
+    "@aws-sdk/credential-providers": "^3.1175.0",
+    "@aws-sdk/s3-request-presigner": "^3.1175.0",
+    "@aws-sdk/types": "^3.975.1",
     "@goldstack/infra": "0.4.52",
-    "@goldstack/infra-aws": "0.4.81",
+    "@goldstack/infra-aws": "0.4.82",
     "@goldstack/utils-esbuild": "0.5.33",
     "@goldstack/utils-log": "0.3.43",
     "@goldstack/utils-package": "0.4.54",
     "@goldstack/utils-package-config-embedded": "0.5.55",
     "@goldstack/utils-template": "0.4.53",
-    "@goldstack/utils-terraform": "0.4.103",
+    "@goldstack/utils-terraform": "0.4.104",
     "@smithy/smithy-client": "^4.15.2",
-    "@smithy/types": "^4.19.0",
-    "mock-aws-s3-v3": "6.1.22",
+    "@smithy/types": "^4.20.0",
+    "mock-aws-s3-v3": "6.1.23",
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
