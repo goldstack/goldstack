@@ -1,6 +1,6 @@
 # Goldstack Should Be Latest Version
 
-Before proceeding, check the version gating (see `instructions/goldstack/version-gating.md`). If the installed Goldstack packages were last bumped less than 60 days ago, treat this task as a no-op and do not produce any changes.
+Before proceeding, check the version gating (see `instructions/goldstack/version-gating.md`). The gate applies **only** to the dependency update steps below. The synchronisation steps are driven by differences in the upstream Goldstack repository and must run even when the version gate is not due. If the gate is not due and there are no upstream differences, the task is a no-op and must not produce a commit or pull request.
 
 In client repositories this task also updates the AWS SDK. AWS is not gated separately there: it moves in lockstep with Goldstack and uses the same 60-day gate above.
 
@@ -9,6 +9,9 @@ In client repositories this task also updates the AWS SDK. AWS is not gated sepa
 DO NOT RUN this task when you are on the github.com/goldstack/goldstack repo.
 
 2. Update Goldstack
+
+This step is gated: skip it when the Goldstack packages were last bumped less than 60 days ago, but still run the synchronisation steps below.
+
    ```
    yarn up jest @goldstack/*
    ```
@@ -16,6 +19,8 @@ DO NOT RUN this task when you are on the github.com/goldstack/goldstack repo.
    The Goldstack packages provide the build, bundling and template tooling used across the monorepo, so a bump here has a wide blast radius.
 
 3. Check for additional monorepo dependencies
+
+This step is gated with the Goldstack package update in step 2.
 
 Some packages that ship as part of Goldstack are published under their own unscoped names rather than under the `@goldstack/*` scope (for example `esbuild-ssr-css-modules-plugin` or `node-css-require`). `yarn up @goldstack/*` will not pick these up, so they need to be upgraded explicitly. Known packages to watch for:
 
@@ -41,6 +46,8 @@ Use `yarn why` to discover which of these are present in the project, then `yarn
    `yarn why` prints nothing for a package that is not installed, so the guard above only fires for packages that are genuinely present. Do not add any of these packages to a manifest in order to upgrade them; if none are installed, skip the step and say so.
 
 4. Align the AWS SDK to the Goldstack version
+
+This step is gated with the Goldstack package update in step 2.
 
    Do **not** run `yarn up @aws-sdk/*` here. The installed `@goldstack/template-*` packages ship their own `@aws-sdk/*` ranges, so bumping this repository's manifests independently leaves two copies of the SDK across the Goldstack boundary. Two copies of a client library are two distinct types. Instead, make the whole dependency tree use the single AWS SDK version that the updated Goldstack packages resolve to.
 
@@ -75,7 +82,114 @@ Use `yarn why` to discover which of these are present in the project, then `yarn
    ```
    Re-run the duplicate-resolution check from step 4a for the packages you pinned. There must be exactly one resolution for each.
 
-5. Run the verification gate (see `instructions/goldstack/patching.md`):
+5. Synchronise shared instructions and Goldstack-owned files
+
+Run:
+
+   ```
+   yarn sync-goldstack
+   ```
+
+   This command does the following:
+
+   - Fetches a sparse checkout of the Goldstack repository into `.agent-tmp/goldstack-source`, unless `GOLDSTACK_SOURCE_DIR` points at an existing checkout.
+   - Replaces `instructions/goldstack/` with the upstream version. That directory is generated content; never edit it by hand. `instructions/custom/` belongs to the project and is never overwritten.
+   - Re-inlines the instruction files into `AGENTS.md`.
+   - Writes `.agent-tmp/goldstack-sync-report.md`, which lists differences in the project root Terraform configuration and in every package that was generated from a Goldstack template.
+
+   To inspect the same differences without changing any files, run `yarn sync-goldstack-check`. It prints the report and the instruction status, and exits with a non-zero status only when `instructions/goldstack` is out of date. Newly generated projects also run this check in their default branch workflow.
+
+   If the command cannot reach the Goldstack repository, note that in the final pull request comment, skip steps 6–10, and continue with the dependency changes and the verification in step 11. Do not hand-edit the generated instruction files.
+
+6. Apply instruction improvements
+
+   Review the change with:
+
+   ```
+   git diff -- instructions/goldstack AGENTS.md
+   ```
+
+   Pull in the upstream improvements. If an upstream instruction contradicts something in `instructions/custom`, the custom instruction wins; leave it and note the conflict.
+
+7. Review the project root Terraform configuration
+
+   Compare `config/infra/aws/` with `workspaces/templates/config/infra/aws/` in `.agent-tmp/goldstack-source`. The sync report includes this comparison.
+
+   Safe to pull in:
+
+   - `.gitignore` entries and other tooling files.
+   - Provider and `required_version` updates, if the package-level Terraform files changed accordingly.
+   - Formatting, comments and shared variable/output definitions that do not change which resources exist.
+
+   Keep project-specific values:
+
+   - `terraform.json`, especially `remoteState`, state bucket and lock table names.
+   - Backend configuration, AWS account, region and deployment names.
+
+   A change that would replace or delete resources, migrate remote state, or change the backend is larger work. Create an issue as described in step 10 instead of applying it.
+
+8. Review template-managed package files
+
+   For every package in `packages/`:
+
+   a. Read `packages/<name>/goldstack.json` to find the `template` (and `templateVersion`) it was generated from.
+
+   b. Find the matching template at
+      `.agent-tmp/goldstack-source/workspaces/templates/packages/<template>/`.
+
+   c. Read that template's `build.json`. Only the paths in `include` (minus `exclude`) were copied into the project and are template-managed. The sync report uses the same list.
+
+   d. Compare the template-managed files, especially `infra/`, `scripts/`, `src/`, `docs/`, shared config and test setup, and pull in improvements.
+
+   Do not overwrite project ownership:
+
+   - `goldstack.json` deployments, deployment configuration, `tfStateKey`, `awsUser` and `awsRegion`.
+   - Fields listed in the template's `build.json` `overwriteFiles`; those are intentionally project-owned.
+   - `package.json` name, license and any dependency, script or version the project has changed. Merge upstream changes into the existing manifest instead of replacing the file.
+   - Files the report lists as `project-only`; they may be project customisations and must not be deleted merely because upstream does not have them.
+   - `build.json` itself and generated or deployment artifacts such as `.terraform/`, `tfplan` and state files.
+
+   If the project has customised a template-managed file and the upstream change conflicts with that customisation, adapt the upstream change instead of discarding the customisation.
+
+9. Template version
+
+   Do not bump the package's `templateVersion` merely because files were synced. Only set it to the upstream template version when every template-managed file for that package matches the upstream version and the project has no conflicting customisations. If the version jump is large or needs manual migration, treat it as larger work in step 10.
+
+10. Create an issue for larger improvements
+
+   Some improvements are too large or too risky to apply in this task. Create an issue in this project for each one, then continue with the safe improvements. This instruction is forge agnostic: detect the forge from `git remote get-url origin`, and read `instructions/custom` for any project-specific server details.
+
+   GitHub:
+
+   ```
+   gh issue create --title "<title>" --body "<body>"
+   ```
+
+   Gitea:
+
+   ```
+   tea issues create --title "<title>" --body "<body>"
+   ```
+
+   If neither CLI is available, use the forge's web interface or API, or add the same information to the maintenance pull request body and say so.
+
+   Do not assume GitHub, and do not write "create a gh issue" in the issue text.
+
+   The issue body must include:
+
+   - the upstream Goldstack change that should be adopted and why;
+   - the affected project paths and the corresponding upstream paths;
+   - why it is not safe to apply automatically, for example a resource replacement, a state migration, a breaking API change, a missing decision, or a conflict with a project customisation;
+   - a reference to the upstream commit, pull request or template version.
+
+   Typical larger-work items:
+
+   - Terraform changes that replace or delete resources, change remote state or the backend, or need a state migration.
+   - Large template version jumps or changes that need manual migration.
+   - Changes that need new dependencies, secrets, DNS or third-party accounts.
+   - Changes to a file the project has heavily customised.
+
+11. Run the verification gate (see `instructions/goldstack/patching.md`):
    ```
    yarn ensure-no-package-mismatches && yarn clean && yarn format && yarn lint && yarn compile
    ```
