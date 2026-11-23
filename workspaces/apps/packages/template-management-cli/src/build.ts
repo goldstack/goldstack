@@ -1,6 +1,6 @@
 import { getConfig } from '@goldstack/template-docker-image-aws';
 import { hash } from '@goldstack/utils-git';
-import { exec } from '@goldstack/utils-sh';
+import { execSafe } from '@goldstack/utils-sh';
 
 const build = async (): Promise<void> => {
   const config = getConfig();
@@ -13,23 +13,25 @@ const build = async (): Promise<void> => {
     console.warn(`Cannot determine commit hash for tagging docker image: ${e}`);
   }
 
+  const imageTag = config.configuration.imageTag;
   if (!commitHash) {
-    exec(
-      `docker build -f ./docker/Dockerfile -t ${config.configuration.imageTag}:latest ${rootDir}`,
-    );
+    execSafe('docker', ['build', '-f', './docker/Dockerfile', '-t', `${imageTag}:latest`, rootDir]);
   } else {
-    exec(
-      `docker build -f ./docker/Dockerfile -t ${config.configuration.imageTag}:${commitHash} ${rootDir}`,
-    );
-    exec(
-      `docker image tag ${config.configuration.imageTag}:${commitHash} ${config.configuration.imageTag}:latest`,
-    );
+    execSafe('docker', [
+      'build',
+      '-f',
+      './docker/Dockerfile',
+      '-t',
+      `${imageTag}:${commitHash}`,
+      rootDir,
+    ]);
+    execSafe('docker', ['image', 'tag', `${imageTag}:${commitHash}`, `${imageTag}:latest`]);
   }
 };
 
 const clean = async (): Promise<void> => {
   const config = getConfig();
-  exec(`docker image rm -f ${config.configuration.imageTag}`);
+  execSafe('docker', ['image', 'rm', '-f', config.configuration.imageTag]);
 };
 
 const cli = async (args: string[]): Promise<void> => {

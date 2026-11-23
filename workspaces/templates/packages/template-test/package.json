@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-test",
-  "version": "0.1.27",
+  "version": "0.1.28",
   "description": "",
   "license": "MIT",
   "author": "Max Rohde",
@@ -21,15 +21,15 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/infra-aws": "0.4.80",
+    "@goldstack/infra-aws": "0.4.81",
     "@goldstack/module-template-utils": "0.1.9",
     "@goldstack/project-build": "0.1.2",
     "@goldstack/template-build-set": "0.1.2",
-    "@goldstack/template-metadata": "0.1.16",
+    "@goldstack/template-metadata": "0.1.17",
     "@goldstack/template-repository": "0.1.2",
-    "@goldstack/utils-config": "0.4.51",
-    "@goldstack/utils-project": "0.4.52",
-    "@goldstack/utils-sh": "0.5.49",
+    "@goldstack/utils-config": "0.4.52",
+    "@goldstack/utils-project": "0.4.53",
+    "@goldstack/utils-sh": "0.5.50",
     "@goldstack/utils-template-test": "0.1.2"
   },
   "devDependencies": {

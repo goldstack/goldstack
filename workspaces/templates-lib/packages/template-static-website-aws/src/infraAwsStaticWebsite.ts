@@ -80,7 +80,14 @@ export const deploy = async (config: AWSStaticWebsitePackage, args: string[]): P
     info(`Invalidating CloudFront cache for distribution ${distributionId}`);
 
     await awsCli({
-      command: `cloudfront create-invalidation --distribution-id ${distributionId} --paths "/*"`,
+      args: [
+        'cloudfront',
+        'create-invalidation',
+        '--distribution-id',
+        distributionId,
+        '--paths',
+        '/*',
+      ],
       credentials: user,
       region: deployment.awsRegion,
       options: { silent: false },

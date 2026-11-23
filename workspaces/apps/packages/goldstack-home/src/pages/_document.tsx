@@ -45,6 +45,8 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          {/* Ask the Dark Reader browser extension to leave the site's styling untouched */}
+          <meta name="darkreader-lock" />
           {process.env.GOLDSTACK_DEPLOYMENT === 'prod' && <TagFragment />}
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

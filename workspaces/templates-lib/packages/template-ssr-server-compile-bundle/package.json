@@ -1,6 +1,6 @@
 {
   "name": "@goldstack/template-ssr-server-compile-bundle",
-  "version": "0.3.124",
+  "version": "0.3.125",
   "description": "Utility for compiling client side bundles for SSR application",
   "keywords": [
     "goldstack",
@@ -35,23 +35,23 @@
     "patch-when-changed": "git diff --quiet HEAD^...HEAD -- . && git diff --quiet -- . && git diff --quiet --staged -- .  || yarn version patch"
   },
   "dependencies": {
-    "@goldstack/infra": "0.4.51",
-    "@goldstack/infra-aws": "0.4.80",
-    "@goldstack/utils-aws-lambda": "0.3.95",
+    "@goldstack/infra": "0.4.52",
+    "@goldstack/infra-aws": "0.4.81",
+    "@goldstack/utils-aws-lambda": "0.3.96",
     "@goldstack/utils-esbuild": "0.5.33",
     "@goldstack/utils-log": "0.3.43",
-    "@goldstack/utils-package": "0.4.53",
-    "@goldstack/utils-package-config-embedded": "0.5.54",
-    "@goldstack/utils-sh": "0.5.49",
-    "@goldstack/utils-template": "0.4.52",
-    "@goldstack/utils-terraform": "0.4.100",
+    "@goldstack/utils-package": "0.4.54",
+    "@goldstack/utils-package-config-embedded": "0.5.55",
+    "@goldstack/utils-sh": "0.5.50",
+    "@goldstack/utils-template": "0.4.53",
+    "@goldstack/utils-terraform": "0.4.101",
     "@types/aws-lambda": "^8.10.159",
     "esbuild": "^0.25.6",
     "lambda-compression": "0.2.35",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "source-map-support": "^0.5.21",
-    "static-file-mapper-build": "0.3.52"
+    "static-file-mapper-build": "0.3.53"
   },
   "devDependencies": {
     "@goldstack/utils-package-config-generate": "0.3.35",

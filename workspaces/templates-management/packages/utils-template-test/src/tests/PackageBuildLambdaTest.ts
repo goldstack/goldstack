@@ -12,7 +12,7 @@ export class PackageBuildLambdaTest implements TemplateTest {
     const packageConfig = readPackageConfigFromDir(params.packageDir);
 
     for (const deployment of packageConfig.deployments) {
-      yarn(packageDir, `build-lambda ${deployment.name}`);
+      yarn(packageDir, ['build-lambda', deployment.name]);
     }
   }
 }

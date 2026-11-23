@@ -1,0 +1,41 @@
+name: Windows Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, reopened, synchronize]
+  workflow_dispatch:
+
+jobs:
+  command-execution:
+    name: 'Command Execution (Windows)'
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Enable Yarn
+        run: |
+          corepack enable
+          yarn --version
+        shell: bash
+      - name: Install dependencies
+        run: yarn install
+        shell: bash
+      - name: Test argument passing without shell interpretation
+        run: yarn workspace @goldstack/utils-sh test -t "execSafe"
+        shell: bash
+      - name: Test Docker argument rendering
+        run: yarn workspace @goldstack/utils-docker test
+        shell: bash
+      - name: Test spawning yarn (yarn.cmd on Windows)
+        run: yarn workspace @goldstack/utils-yarn test
+        shell: bash
+      - name: Test AWS CLI command parsing
+        run: yarn workspace @goldstack/utils-aws-cli test
+        shell: bash
