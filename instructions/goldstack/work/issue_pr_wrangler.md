@@ -102,7 +102,8 @@ commit:
 - the PR is open and not a draft, and its title does not start with `WIP:` or
   `[WIP] `;
 - the head branch is in **this** repository, not a fork;
-- there is at least one approving review and no review is requesting changes;
+- there is at least one approving review from a human reviewer and no review is
+  requesting changes;
 - the approval is still valid for the current head commit;
 - every check for the exact current head SHA has completed successfully;
 - the PR is mergeable, or you have just made it mergeable as described below;
@@ -132,12 +133,23 @@ gh api "repos/{owner}/{repo}/pulls/<number>/reviews" \
   --jq '[.[] | {login: .user.login, type: .user.type, state: .state, commit: .commit_id}]'
 ```
 
-The approval must still be valid for the current head. Treat `reviewDecision`
-as authoritative: when it is `APPROVED`, GitHub has not invalidated the approval
-after the latest push, even if the approving review's `commit_id` predates
-`headRefOid` because the repository does not dismiss stale approvals. If
-`reviewDecision` no longer reports `APPROVED` after a push, treat the approval as
-gone and do not merge.
+Decide the approval from the reviews themselves, because `reviewDecision` alone
+can be satisfied by an approval from the wrangler account or a bot:
+
+1. Find the wrangler account with `gh api user --jq .login` (or the equivalent
+   for the configured token). Drop every review from that account and from
+   bots; an approval from the wrangler must never count, even when it is the
+   reason `reviewDecision` reports `APPROVED`.
+2. For each remaining reviewer keep only their latest review state. There must
+   be at least one `APPROVED` and no `CHANGES_REQUESTED`.
+3. The approval must still be valid for the current head. If a commit was
+   pushed after the approving review, `reviewDecision` must still report
+   `APPROVED`. When the repository dismisses stale approvals, that push turns
+   `reviewDecision` away from `APPROVED`; treat the approval as gone and do not
+   merge. When the repository does not dismiss stale approvals,
+   `reviewDecision: APPROVED` means GitHub still honours the older approval.
+4. If the only approvals are from the wrangler or bots, block the merge and
+   leave a `Wrangler:` comment asking for a human approval.
 
 #### Check semantics
 
@@ -403,7 +415,7 @@ run the section 2.1 evaluation, and confirm the outcome before the merge call:
 | Draft / WIP | Leave the PR as a draft, or prefix the title with `WIP:` | Blocked; `Wrangler:` comment explains the status |
 | Fork | Open the PR from a fork | Blocked; `Wrangler:` comment explains the branch is not writable |
 | Changes requested | Submit a `CHANGES_REQUESTED` review | Blocked; `Wrangler:` comment names the review |
-| Unapproved | PR with no approval | Blocked; `Wrangler:` comment asks for an approval |
+| Unapproved | PR with no human approval, or only the wrangler's own or a bot approval | Blocked; `Wrangler:` comment asks for a human approval |
 | `[Needs Attention]` | Link an issue whose title starts with `[Needs Attention] ` | Blocked; `Wrangler:` comment names the issue |
 | Approval dismissed | Push a commit after approval | Re-read `reviewDecision`; if it is not `APPROVED`, block and comment |
 | Head moved | Push to the branch between evaluation and merge | Merge API rejects the stale `sha`; re-evaluate instead of retrying blindly |

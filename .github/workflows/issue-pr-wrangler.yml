@@ -103,14 +103,15 @@ jobs:
             project's format, lint and compile checks before committing.
 
             Do at most one unit of work this run, then stop. A merge counts as
-            that unit. Merge an open, approved, non-draft PR whose head is in
-            this repository only when every check for its exact current head
-            SHA is green and no review requests changes, and use the merge API
-            with that expected head SHA so a moved branch is rejected. If the
-            PR is behind or conflicted, merge origin/master in, resolve it,
-            run the format, lint and compile checks, push, and wait for the
-            full check suite on the new head SHA before merging. Never rebase
-            or force-push.
+            that unit. Merge an open, non-draft PR whose head is in this
+            repository only when a human reviewer has approved it (never count
+            the wrangler account's own approval), no review requests changes,
+            and every check for its exact current head SHA is green; use the
+            merge API with that expected head SHA so a moved branch is
+            rejected. If the PR is behind or conflicted, merge origin/master
+            in, resolve it, run the format, lint and compile checks, push, and
+            wait for the full check suite on the new head SHA before merging.
+            Never rebase or force-push.
 
             For every issue or pull request you examine whose latest comment
             does not start with `Wrangler:`, post a comment that starts with
