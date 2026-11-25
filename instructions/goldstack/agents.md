@@ -125,30 +125,45 @@ the rule above exists to prevent.
 Make it obvious whether an agent has finished. Use the forge's native signal
 where it exists and a title prefix where it does not.
 
+Draft / `[WIP] ` status applies **per pull request**, not per issue. A pull
+request can be complete in its own right while the issue it relates to stays
+open. When one issue is split across several pull requests, mark an individual
+pull request ready (or remove its `[WIP] ` prefix) once that pull request's own
+work is complete and the conditions below hold, even if the issue remains open.
+Keep a pull request in draft / `[WIP] ` only while work on that pull request is
+unfinished, a required check is not green, the default branch is not merged in,
+or another readiness condition fails.
+
 An agent pull request is **ready for review** only when all of these hold for
 the current head commit:
 
-- the work is complete, or the remaining work is explicitly listed as a
-  follow-up;
+- the work on that pull request is complete, or the remaining work is explicitly
+  listed as a follow-up;
 - all required checks pass;
 - the default branch is merged in
   (`git merge-base --is-ancestor origin/master HEAD` exits `0`, with no
   conflicts);
-- no open `[Needs Attention]` item remains.
+- no open `[Needs Attention] ` item blocks that pull request.
+
+Reference the issue without closing it unless the pull request is intended to
+close the whole issue. Use a closing keyword such as `Closes #<number>` or
+`Fixes #<number>` only for a pull request that completes the entire issue. For a
+partial pull request use `Part of #<number>` or `Related to #<number>` instead,
+so merging it does not close the issue prematurely.
 
 GitHub: create agent pull requests as drafts (`gh pr create --draft`). Run
-`gh pr ready <number>` only when the conditions above hold. If new commits are
-pushed to a ready agent pull request, convert it back to draft until the new
-head is green again.
+`gh pr ready <number>` only when the conditions above hold for that pull
+request. If new commits are pushed to a ready agent pull request, convert it
+back to draft until the new head is green again.
 
 Gitea: use the title instead, because draft pull requests are not reliable.
 Gitea blocks merging a pull request whose title starts with `WIP:` or `[WIP]`
 (case insensitive). Create the pull request with a `[WIP] ` title prefix and
-keep it while the pull request is in progress. Remove the `[WIP] ` prefix only
-when all the conditions above hold for the current head commit: all required
-checks pass (if checks are pending, queued, missing or failing, keep `[WIP] `),
-the default branch is merged in, and there are no conflicts. Do not use a
-separate ready marker in the title.
+keep it while work on that pull request is in progress. Remove the `[WIP] `
+prefix only when all the conditions above hold for the current head commit: all
+required checks pass (if checks are pending, queued, missing or failing, keep
+`[WIP] `), the default branch is merged in, and there are no conflicts. Do not
+use a separate ready marker in the title.
 
 `tea pulls edit <number> --ready` strips a leading `WIP:` or `[WIP]` prefix
 from the title. `tea pulls edit <number> --draft` adds a `WIP: ` prefix.

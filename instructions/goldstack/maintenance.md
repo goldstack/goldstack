@@ -67,6 +67,14 @@ fi
 Re-evaluate this check before every commit, so an empty commit is never produced.
 
 ## 3. PR Management
+- Draft / `[WIP] ` status applies to this maintenance pull request itself, not
+  to any issue it may reference. Keep it in draft / `[WIP] ` only while work on
+  this pull request is unfinished or another readiness condition in section 4
+  fails.
+- Reference an issue without closing it unless the pull request is intended to
+  close the whole issue. Use `Closes #<number>` only for a pull request that
+  completes the entire issue; for a partial pull request use `Part of #<number>`
+  or `Related to #<number>`.
 - If no PR exists yet, create one in **draft** mode so it stays out of the review queue until CI is green:
   ```
   gh pr create --draft --title "[Maintenance] $TASK_TITLE" --body "Automated maintenance task: $TASK_TITLE"

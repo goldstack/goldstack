@@ -38,15 +38,23 @@ forge-specific; use the corresponding CLI.
 Follow the pull request and issue status rules in
 `instructions/goldstack/agents.md`. In particular:
 
-- GitHub pull requests stay draft until the work is complete, all required
-  checks pass and the default branch is merged in; only then run
+- Draft / `[WIP] ` status applies **per pull request**, not per issue. A pull
+  request can be complete in its own right while the issue it relates to stays
+  open. Decide the status from that pull request's own work and readiness, not
+  from whether the linked issue is closed.
+- GitHub pull requests stay draft until that pull request's work is complete,
+  all required checks pass and the default branch is merged in; only then run
   `gh pr ready <number>`. Convert back to draft if more commits are pushed.
 - Gitea has no reliable draft pull request. Create the pull request with a
   `[WIP] ` title prefix while working; Gitea blocks merging titles beginning
   with `WIP:` or `[WIP]`. Remove the `[WIP] ` prefix once the same readiness
-  conditions hold: all required checks pass on the current head (keep `[WIP] `
-  if checks are pending, queued, missing or failing), the default branch is
-  merged in, and there are no conflicts.
+  conditions hold for that pull request: all required checks pass on the
+  current head (keep `[WIP] ` if checks are pending, queued, missing or
+  failing), the default branch is merged in, and there are no conflicts.
+- Reference an issue without closing it unless the pull request is intended to
+  close the whole issue. Use `Closes #<number>` or `Fixes #<number>` only for a
+  pull request that completes the entire issue; for a partial pull request use
+  `Part of #<number>` or `Related to #<number>`.
 - Prefix an issue title with `[Needs Attention] ` when it needs a human - a
   decision, missing information, external access, or a request that only asked
   for a plan. Leave a comment saying what is needed, and remove the prefix once
@@ -266,10 +274,11 @@ When no PR is ready to merge, look for work that is quick and low risk:
   push the merge commit;
 - CI fails for a trivial reason such as formatting, linting, a lockfile or a
   snapshot: fix it and push;
-- a draft PR is actually complete and green: mark it ready for review. On
-  GitHub run `gh pr ready <number>`; on Gitea remove the `[WIP] ` title prefix
-  with `tea pulls edit <number> --ready`, but only once all required checks pass
-  on the current head and the default branch is merged in with no conflicts.
+- a draft PR is actually complete and green: mark it ready for review, even if
+  its linked issue remains open. On GitHub run `gh pr ready <number>`; on Gitea
+  remove the `[WIP] ` title prefix with `tea pulls edit <number> --ready`, but
+  only once all required checks pass on the current head and the default branch
+  is merged in with no conflicts.
 
 Only action PRs whose head branch lives in **this** repository. For fork PRs you
 cannot push to, leave a `Wrangler:` comment describing the required fix instead.
@@ -346,16 +355,19 @@ git push -u origin HEAD
 ```
 
 Then open a **draft** PR that references the issue, and leave a `Wrangler:`
-comment on both the issue and the PR. If the default branch has moved, merge it
-in before opening or updating the PR. On Gitea, do not pass `--draft`; prefix
-the pull request title with `[WIP] ` instead.
+comment on both the issue and the PR. Reference the issue with
+`Part of #<number>` (or `Related to #<number>`) unless this pull request is
+intended to close the whole issue, in which case use `Closes #<number>`. If the
+default branch has moved, merge it in before opening or updating the PR. On
+Gitea, do not pass `--draft`; prefix the pull request title with `[WIP] `
+instead.
 
 GitHub:
 
 ```
 gh issue list --state open --limit 50 --json number,title,createdAt --jq 'sort_by(.createdAt) | reverse'
 gh issue view <number> --comments
-gh pr create --draft --title "<title>" --body "Closes #<number>"
+gh pr create --draft --title "<title>" --body "Part of #<number>"
 gh pr comment <number> --body "Wrangler: ..."
 gh issue comment <number> --body "Wrangler: opened #<pr> ..."
 ```
@@ -365,14 +377,19 @@ Gitea:
 ```
 tea issues --state open --limit 50 --output json --fields index,title,created
 tea issues <number> --comments
-tea pulls create --title "[WIP] <title>" --description "Closes #<number>" --head wrangler/issue-<number>-<short-slug>
+tea pulls create --title "[WIP] <title>" --description "Part of #<number>" --head wrangler/issue-<number>-<short-slug>
 tea comments add <number> "Wrangler: ..."
 ```
 
 If you cannot finish the issue in this run, that is normal and acceptable.
-Commit and push the progress, keep the PR in draft (or keep the `[WIP] ` title
-prefix on Gitea), and leave a `Wrangler:` comment listing exactly what is done
-and what remains. The next run will continue from there.
+Commit and push the progress, and leave a `Wrangler:` comment listing exactly
+what is done and what remains. Then decide the pull request status from that
+pull request, not from the issue: keep it in draft (or keep the `[WIP] ` title
+prefix on Gitea) only while its own work is unfinished, required checks are not
+green on the current head, the default branch is not merged in, or another
+readiness condition fails. If the pull request's own work is complete and green
+while the issue remains open, mark it ready (or remove `[WIP] `). The next run
+will continue the issue from there.
 
 ## 4. Priority 3: pull requests without a linked issue
 
