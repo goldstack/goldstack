@@ -19,5 +19,11 @@ env = "for f in {{ primary_worktree_path }}/.env*; do [ -f \"$f\" ] && cp -n \"$
 env = "git config user.email \"1448524+mxro@users.noreply.github.com\" && git config user.name \"Max Rohde\""
 
 # Install dependencies using the package manager matching the lockfile.
+#
+# ONNXRUNTIME_NODE_INSTALL_CUDA=skip stops onnxruntime-node's postinstall from
+# downloading the CUDA binary tarball from GitHub releases (that URL 404s for
+# some releases, e.g. 1.21.0, failing the whole install). The CUDA EP is not
+# needed for local/WSL dev, and CI sets the same for the same reason. Harmless
+# for projects that do not depend on onnxruntime-node.
 [[pre-start]]
-install = "if [ -f pnpm-lock.yaml ]; then pnpm install; elif [ -f yarn.lock ] || [ -f .yarnrc.yml ]; then yarn install; elif [ -f package.json ]; then npm install; fi"
+install = "export ONNXRUNTIME_NODE_INSTALL_CUDA=skip; if [ -f pnpm-lock.yaml ]; then pnpm install; elif [ -f yarn.lock ] || [ -f .yarnrc.yml ]; then yarn install; elif [ -f package.json ]; then npm install; fi"
