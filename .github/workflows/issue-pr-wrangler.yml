@@ -102,11 +102,21 @@ jobs:
             default branch instead of rebasing, never force-push, and run the
             project's format, lint and compile checks before committing.
 
-            Do at most one unit of code work this run, then stop. For every
-            issue or pull request you examine whose latest comment does not
-            start with `Wrangler:`, post a comment that starts with
+            Do at most one unit of work this run, then stop. A merge counts as
+            that unit. Merge an open, approved, non-draft PR whose head is in
+            this repository only when every check for its exact current head
+            SHA is green and no review requests changes, and use the merge API
+            with that expected head SHA so a moved branch is rejected. If the
+            PR is behind or conflicted, merge origin/master in, resolve it,
+            run the format, lint and compile checks, push, and wait for the
+            full check suite on the new head SHA before merging. Never rebase
+            or force-push.
+
+            For every issue or pull request you examine whose latest comment
+            does not start with `Wrangler:`, post a comment that starts with
             `Wrangler: ` describing what you did or why you could not work on
-            it.
+            it. After a merge, include the merge commit SHA and run URL; when
+            blocked, name the exact condition that failed.
 
       # Deterministic recovery: the agent's own `git push` (and the action's) can
       # be rejected after a rewrite. This republishes the branch under a lease
