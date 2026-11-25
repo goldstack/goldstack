@@ -9,7 +9,7 @@ Security tasks are exempt from version gating and always run.
 
 2. If vulnerabilities are found:
    - Sort by easiest to fix first
-   - For `@aws-sdk/*` or `@smithy/*` packages, do not bump a single package in isolation. Resolve it through the Goldstack latest version task (`goldstack_should_be_latest_version.md`), which moves AWS in lockstep with Goldstack. In the home Goldstack repository, where that task is a no-op, use the custom AWS SDK task (`instructions/custom/maintenance/aws_sdk_should_be_latest_version.md`) instead. Security work remains exempt from version gating.
+   - For `@aws-sdk/*`, `@smithy/*`, or any other finding that can only be fixed by updating `@goldstack/*` or its transitive dependencies, do not bump a single package in isolation. Resolve it through the Goldstack latest version task (`goldstack_should_be_latest_version.md`), which moves Goldstack and AWS in lockstep. In the home Goldstack repository, where that task is a no-op, use the custom AWS SDK task (`instructions/custom/maintenance/aws_sdk_should_be_latest_version.md`) instead. Security work remains exempt from version gating.
    - Fix in this priority order:
      1. Update the direct or transitive dependency in `package.json`
      2. Update yarn configuration in `.yarnrc.yml` (if available)

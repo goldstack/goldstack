@@ -38,15 +38,23 @@ forge-specific; use the corresponding CLI.
 Follow the pull request and issue status rules in
 `instructions/goldstack/agents.md`. In particular:
 
-- GitHub pull requests stay draft until the work is complete, all required
-  checks pass and the default branch is merged in; only then run
+- Draft / `[WIP] ` status applies **per pull request**, not per issue. A pull
+  request can be complete in its own right while the issue it relates to stays
+  open. Decide the status from that pull request's own work and readiness, not
+  from whether the linked issue is closed.
+- GitHub pull requests stay draft until that pull request's work is complete,
+  all required checks pass and the default branch is merged in; only then run
   `gh pr ready <number>`. Convert back to draft if more commits are pushed.
 - Gitea has no reliable draft pull request. Create the pull request with a
   `[WIP] ` title prefix while working; Gitea blocks merging titles beginning
   with `WIP:` or `[WIP]`. Remove the `[WIP] ` prefix once the same readiness
-  conditions hold: all required checks pass on the current head (keep `[WIP] `
-  if checks are pending, queued, missing or failing), the default branch is
-  merged in, and there are no conflicts.
+  conditions hold for that pull request: all required checks pass on the
+  current head (keep `[WIP] ` if checks are pending, queued, missing or
+  failing), the default branch is merged in, and there are no conflicts.
+- Reference an issue without closing it unless the pull request is intended to
+  close the whole issue. Use `Closes #<number>` or `Fixes #<number>` only for a
+  pull request that completes the entire issue; for a partial pull request use
+  `Part of #<number>` or `Related to #<number>`.
 - Prefix an issue title with `[Needs Attention] ` when it needs a human - a
   decision, missing information, external access, or a request that only asked
   for a plan. Leave a comment saying what is needed, and remove the prefix once
@@ -102,7 +110,8 @@ commit:
 - the PR is open and not a draft, and its title does not start with `WIP:` or
   `[WIP] `;
 - the head branch is in **this** repository, not a fork;
-- there is at least one approving review and no review is requesting changes;
+- there is at least one approving review from a human reviewer and no review is
+  requesting changes;
 - the approval is still valid for the current head commit;
 - every check for the exact current head SHA has completed successfully;
 - the PR is mergeable, or you have just made it mergeable as described below;
@@ -132,12 +141,23 @@ gh api "repos/{owner}/{repo}/pulls/<number>/reviews" \
   --jq '[.[] | {login: .user.login, type: .user.type, state: .state, commit: .commit_id}]'
 ```
 
-The approval must still be valid for the current head. Treat `reviewDecision`
-as authoritative: when it is `APPROVED`, GitHub has not invalidated the approval
-after the latest push, even if the approving review's `commit_id` predates
-`headRefOid` because the repository does not dismiss stale approvals. If
-`reviewDecision` no longer reports `APPROVED` after a push, treat the approval as
-gone and do not merge.
+Decide the approval from the reviews themselves, because `reviewDecision` alone
+can be satisfied by an approval from the wrangler account or a bot:
+
+1. Find the wrangler account with `gh api user --jq .login` (or the equivalent
+   for the configured token). Drop every review from that account and from
+   bots; an approval from the wrangler must never count, even when it is the
+   reason `reviewDecision` reports `APPROVED`.
+2. For each remaining reviewer keep only their latest review state. There must
+   be at least one `APPROVED` and no `CHANGES_REQUESTED`.
+3. The approval must still be valid for the current head. If a commit was
+   pushed after the approving review, `reviewDecision` must still report
+   `APPROVED`. When the repository dismisses stale approvals, that push turns
+   `reviewDecision` away from `APPROVED`; treat the approval as gone and do not
+   merge. When the repository does not dismiss stale approvals,
+   `reviewDecision: APPROVED` means GitHub still honours the older approval.
+4. If the only approvals are from the wrangler or bots, block the merge and
+   leave a `Wrangler:` comment asking for a human approval.
 
 #### Check semantics
 
@@ -266,10 +286,11 @@ When no PR is ready to merge, look for work that is quick and low risk:
   push the merge commit;
 - CI fails for a trivial reason such as formatting, linting, a lockfile or a
   snapshot: fix it and push;
-- a draft PR is actually complete and green: mark it ready for review. On
-  GitHub run `gh pr ready <number>`; on Gitea remove the `[WIP] ` title prefix
-  with `tea pulls edit <number> --ready`, but only once all required checks pass
-  on the current head and the default branch is merged in with no conflicts.
+- a draft PR is actually complete and green: mark it ready for review, even if
+  its linked issue remains open. On GitHub run `gh pr ready <number>`; on Gitea
+  remove the `[WIP] ` title prefix with `tea pulls edit <number> --ready`, but
+  only once all required checks pass on the current head and the default branch
+  is merged in with no conflicts.
 
 Only action PRs whose head branch lives in **this** repository. For fork PRs you
 cannot push to, leave a `Wrangler:` comment describing the required fix instead.
@@ -346,16 +367,19 @@ git push -u origin HEAD
 ```
 
 Then open a **draft** PR that references the issue, and leave a `Wrangler:`
-comment on both the issue and the PR. If the default branch has moved, merge it
-in before opening or updating the PR. On Gitea, do not pass `--draft`; prefix
-the pull request title with `[WIP] ` instead.
+comment on both the issue and the PR. Reference the issue with
+`Part of #<number>` (or `Related to #<number>`) unless this pull request is
+intended to close the whole issue, in which case use `Closes #<number>`. If the
+default branch has moved, merge it in before opening or updating the PR. On
+Gitea, do not pass `--draft`; prefix the pull request title with `[WIP] `
+instead.
 
 GitHub:
 
 ```
 gh issue list --state open --limit 50 --json number,title,createdAt --jq 'sort_by(.createdAt) | reverse'
 gh issue view <number> --comments
-gh pr create --draft --title "<title>" --body "Closes #<number>"
+gh pr create --draft --title "<title>" --body "Part of #<number>"
 gh pr comment <number> --body "Wrangler: ..."
 gh issue comment <number> --body "Wrangler: opened #<pr> ..."
 ```
@@ -365,14 +389,19 @@ Gitea:
 ```
 tea issues --state open --limit 50 --output json --fields index,title,created
 tea issues <number> --comments
-tea pulls create --title "[WIP] <title>" --description "Closes #<number>" --head wrangler/issue-<number>-<short-slug>
+tea pulls create --title "[WIP] <title>" --description "Part of #<number>" --head wrangler/issue-<number>-<short-slug>
 tea comments add <number> "Wrangler: ..."
 ```
 
 If you cannot finish the issue in this run, that is normal and acceptable.
-Commit and push the progress, keep the PR in draft (or keep the `[WIP] ` title
-prefix on Gitea), and leave a `Wrangler:` comment listing exactly what is done
-and what remains. The next run will continue from there.
+Commit and push the progress, and leave a `Wrangler:` comment listing exactly
+what is done and what remains. Then decide the pull request status from that
+pull request, not from the issue: keep it in draft (or keep the `[WIP] ` title
+prefix on Gitea) only while its own work is unfinished, required checks are not
+green on the current head, the default branch is not merged in, or another
+readiness condition fails. If the pull request's own work is complete and green
+while the issue remains open, mark it ready (or remove `[WIP] `). The next run
+will continue the issue from there.
 
 ## 4. Priority 3: pull requests without a linked issue
 
@@ -403,7 +432,7 @@ run the section 2.1 evaluation, and confirm the outcome before the merge call:
 | Draft / WIP | Leave the PR as a draft, or prefix the title with `WIP:` | Blocked; `Wrangler:` comment explains the status |
 | Fork | Open the PR from a fork | Blocked; `Wrangler:` comment explains the branch is not writable |
 | Changes requested | Submit a `CHANGES_REQUESTED` review | Blocked; `Wrangler:` comment names the review |
-| Unapproved | PR with no approval | Blocked; `Wrangler:` comment asks for an approval |
+| Unapproved | PR with no human approval, or only the wrangler's own or a bot approval | Blocked; `Wrangler:` comment asks for a human approval |
 | `[Needs Attention]` | Link an issue whose title starts with `[Needs Attention] ` | Blocked; `Wrangler:` comment names the issue |
 | Approval dismissed | Push a commit after approval | Re-read `reviewDecision`; if it is not `APPROVED`, block and comment |
 | Head moved | Push to the branch between evaluation and merge | Merge API rejects the stale `sha`; re-evaluate instead of retrying blindly |
