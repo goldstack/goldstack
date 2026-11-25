@@ -18,6 +18,15 @@ Your prompt contains:
 
 ## Status Conventions
 
+- Draft / `[WIP] ` status applies **per pull request**, not per issue. A pull
+  request can be complete in its own right while the issue it relates to stays
+  open. When an issue is split across several pull requests, mark an individual
+  pull request ready once its own work is complete and the readiness conditions
+  hold, even if the issue remains open.
+- Reference an issue without closing it unless the pull request is intended to
+  close the whole issue. Use `Closes #<number>` or `Fixes #<number>` only for a
+  pull request that completes the entire issue; for a partial pull request use
+  `Part of #<number>` or `Related to #<number>`.
 - Prefix an issue title with `[Needs Attention] ` when a human must act before
   the work can continue, including when the issue only asked for a plan.
 - When asked to plan, do not write a plan file into the repository. Post the
@@ -44,10 +53,12 @@ Fix any issues before committing.
 
 ### 3. PR Management
 
-Create the pull request as a draft if it does not exist:
+Create the pull request as a draft if it does not exist. Reference the issue
+with `Part of #<number>` for a partial pull request, and use `Closes #<number>`
+only when the pull request completes the whole issue:
 
 ```
-gh pr create --draft --title "<title>" --body "<body>"
+gh pr create --draft --title "<title>" --body "Part of #<number>"
 ```
 
 Push commits. Comment progress:
@@ -58,9 +69,12 @@ gh pr comment $PR_NUMBER --body "Progress update: ..."
 
 **Work complete and ready:**
 
-Only mark the PR ready when the work is complete, all required checks pass on
+Draft status applies to this pull request, not to its linked issue. Only mark
+the PR ready when that PR's own work is complete, all required checks pass on
 the current head commit, and `master` is merged in
-(`git merge-base --is-ancestor origin/master HEAD`).
+(`git merge-base --is-ancestor origin/master HEAD`). When an issue is split
+across several PRs, mark an individual PR ready once its own work is complete,
+even if the issue stays open.
 
 ```
 gh pr comment $PR_NUMBER --body "Completed the requested changes. [details]"
