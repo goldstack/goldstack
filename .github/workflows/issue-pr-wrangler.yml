@@ -113,11 +113,27 @@ jobs:
             wait for the full check suite on the new head SHA before merging.
             Never rebase or force-push.
 
-            For every issue or pull request you examine whose latest comment
-            does not start with `Wrangler:`, post a comment that starts with
-            `Wrangler: ` describing what you did or why you could not work on
-            it. After a merge, include the merge commit SHA and run URL; when
-            blocked, name the exact condition that failed.
+            For any issue or pull request you decide to work on, the first
+            action must be a comment that starts with `Wrangler: work started
+            on <item> ...`, name the item, and link this workflow run. Post it
+            before you edit, push to, label or otherwise change the item. Do
+            not post it again if a `Wrangler: work started` comment for the
+            same run URL already exists; a start comment from an earlier run
+            must not stop this run from posting its own when it starts new
+            work. Then, as part of starting work, put a pull request you will
+            change into WIP as the readiness rules require (GitHub: `gh pr
+            ready <number> --undo`; Gitea: `WIP: ` / `[WIP] ` title prefix).
+            Leave an already eligible pull request that you are only about to
+            merge ready. Keep the start comment in place, and still post the
+            existing completion or blocked `Wrangler: ` comment when you finish
+            or stop; that final comment must not say `work started`.
+
+            For every issue or pull request you examine and decide not to work
+            on, post a completion or blocked `Wrangler: ` comment describing
+            why it could not be worked on, unless its latest comment is already
+            a wrangler completion or blocked comment and nothing has changed
+            since. After a merge, include the merge commit SHA and run URL;
+            when blocked, name the exact condition that failed.
 
       # Deterministic recovery: the agent's own `git push` (and the action's) can
       # be rejected after a rewrite. This republishes the branch under a lease
