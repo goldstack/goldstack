@@ -431,7 +431,18 @@ function formatDifferences(label: string, differences: FileDifference[]): string
     lines.push(`- ${label}: no differences in template-managed files.`);
     return lines;
   }
-  lines.push(`- ${label}: ${differences.length} difference(s).`);
+  const counts = {
+    'upstream-only': 0,
+    changed: 0,
+    'project-only': 0,
+  };
+  for (const difference of differences) {
+    counts[difference.status] += 1;
+  }
+  lines.push(
+    `- ${label}: ${differences.length} difference(s) ` +
+      `(${counts['upstream-only']} upstream-only, ${counts.changed} changed, ${counts['project-only']} project-only).`,
+  );
   for (const difference of differences.slice(0, REPORT_FILE_LIMIT)) {
     lines.push(`  - ${difference.status.padEnd(14)} ${difference.filePath}`);
   }
@@ -547,7 +558,10 @@ function buildReport(source: SourceLocation): string[] {
   lines.push('');
   lines.push('Use `diff -u <project file> <upstream file>` for details.');
   lines.push(
-    'Files listed as `project-only` may be project customisations; do not delete them just because upstream does not have them.',
+    'This report is a comparison, not a copy list. In a mature project most differences are deliberate project customisations, so a no-op is a valid outcome.',
+  );
+  lines.push(
+    '`upstream-only` is a candidate addition, `changed` needs a diff review before applying anything, and `project-only` is a likely customisation that must never be deleted.',
   );
 
   return lines;
