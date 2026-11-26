@@ -51,6 +51,26 @@ jobs:
           mkdir -p ~/.local/share/opencode
           echo '{"opencode-go":{"type":"api","key":"${{ secrets.OPENCODE_GO_API_KEY }}"}}' > ~/.local/share/opencode/auth.json
 
+      # The start comment must not begin with `/oc` or `/opencode`: any comment
+      # merely containing the mention would re-trigger this workflow in a loop.
+      - name: Start agent state
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number || github.event.pull_request.number }}
+          KIND: ${{ github.event_name == 'pull_request_review_comment' && 'pr' || (github.event.issue.pull_request && 'pr' || 'issue') }}
+          TITLE: ${{ github.event.issue.title || github.event.pull_request.title }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          if [ -z "${NUMBER:-}" ]; then
+            echo "::notice::No issue or pull request number found; skipping agent state start."
+            exit 0
+          fi
+          bash scripts/agent-state.sh start \
+            --forge gh --repo "$REPO" --kind "$KIND" --number "$NUMBER" \
+            --mode ci --actor agent --title "${TITLE:-}" --run-url "$RUN_URL"
+
       # `continue-on-error` lets the publish step below run even when the agent
       # failed, so a rejected push cannot discard the run's verified work.
       - name: Run OpenCode
@@ -103,6 +123,49 @@ jobs:
             exit 0
           fi
           gh issue comment "$NUMBER" --body "The agent run reported a rejected push (\`non-fast-forward\`). Its commits were published to \`$BRANCH\` afterwards using \`$MODE\`, so the branch now holds the agent's final state. Run log: $RUN_URL"
+
+      # Always clear the working label and post a result, even when the agent
+      # failed or was cancelled. Known limitation: if the job is cancelled before
+      # this always() step runs, agent:working can stick. A later reconciliation
+      # step can clear stale labels.
+      - name: Finish agent state
+        if: ${{ always() }}
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number || github.event.pull_request.number }}
+          KIND: ${{ github.event_name == 'pull_request_review_comment' && 'pr' || (github.event.issue.pull_request && 'pr' || 'issue') }}
+          TITLE: ${{ github.event.issue.title || github.event.pull_request.title }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          OUTCOME: ${{ steps.opencode.outcome }}
+        run: |
+          set -euo pipefail
+          if [ -z "${NUMBER:-}" ]; then
+            echo "::notice::No issue or pull request number found; skipping agent state finish."
+            exit 0
+          fi
+          case "${OUTCOME:-}" in
+            success)
+              result="success"
+              detail=""
+              ;;
+            cancelled)
+              result="cancelled"
+              detail=""
+              ;;
+            *)
+              result="failed"
+              detail="opencode outcome: ${OUTCOME:-unknown}"
+              ;;
+          esac
+          args=(
+            finish --forge gh --repo "$REPO" --kind "$KIND" --number "$NUMBER"
+            --result "$result" --actor agent --title "${TITLE:-}" --run-url "$RUN_URL"
+          )
+          if [ -n "$detail" ]; then
+            args+=(--detail "$detail")
+          fi
+          bash scripts/agent-state.sh "${args[@]}"
 
       - name: Fail the run if the agent failed
         if: ${{ steps.opencode.outcome == 'failure' }}

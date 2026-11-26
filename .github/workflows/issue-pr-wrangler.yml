@@ -113,27 +113,36 @@ jobs:
             wait for the full check suite on the new head SHA before merging.
             Never rebase or force-push.
 
-            For any issue or pull request you decide to work on, the first
-            action must be a comment that starts with `Wrangler: work started
-            on <item> ...`, name the item, and link this workflow run. Post it
-            before you edit, push to, label or otherwise change the item. Do
-            not post it again if a `Wrangler: work started` comment for the
-            same run URL already exists; a start comment from an earlier run
-            must not stop this run from posting its own when it starts new
-            work. Then, as part of starting work, put a pull request you will
+            For every issue or pull request you decide to work on, the first
+            action must be to start agent state; call
+            `scripts/agent-state.sh start` with `--actor wrangler`, `--forge`
+            matching the repository remote, `--repo`, `--kind`, `--number`,
+            `--mode ci`, `--title` and `--run-url` pointing at this run. Do not
+            hand-format the `Wrangler:` comment or edit the `agent:*` labels
+            yourself. The script owns the comment grammar, creates the labels,
+            adds `agent:working`, and deduplicates start comments by run URL.
+            Run it before you edit, push to, label or otherwise change the
+            item. Then, as part of starting work, put a pull request you will
             change into WIP as the readiness rules require (GitHub: `gh pr
             ready <number> --undo`; Gitea: `WIP: ` / `[WIP] ` title prefix).
             Leave an already eligible pull request that you are only about to
-            merge ready. Keep the start comment in place, and still post the
-            existing completion or blocked `Wrangler: ` comment when you finish
-            or stop; that final comment must not say `work started`.
+            merge ready.
+
+            When you finish or stop, call `scripts/agent-state.sh finish` for
+            every item you started on, with `--actor wrangler`, the same run
+            URL, and `--result success|failed|timeout|cancelled|blocked|merged`.
+            Use `--result merged --merge-sha <sha>` after a merge and
+            `--result blocked --detail "<reason>"` when blocked. The script
+            removes `agent:working`, adds `agent:needs-human` on failure,
+            timeout or blocked, and posts the result comment. Never write a
+            completion comment that contains `work started`.
 
             For every issue or pull request you examine and decide not to work
-            on, post a completion or blocked `Wrangler: ` comment describing
-            why it could not be worked on, unless its latest comment is already
-            a wrangler completion or blocked comment and nothing has changed
-            since. After a merge, include the merge commit SHA and run URL;
-            when blocked, name the exact condition that failed.
+            on, finish it with `--result blocked` and a `--detail` describing
+            why, unless its latest comment is already a wrangler completion or
+            blocked comment and nothing has changed since. After a merge,
+            include the merge commit SHA via `--merge-sha`; when blocked, name
+            the exact condition in `--detail`.
 
       # Deterministic recovery: the agent's own `git push` (and the action's) can
       # be rejected after a rewrite. This republishes the branch under a lease

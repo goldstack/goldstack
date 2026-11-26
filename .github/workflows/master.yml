@@ -105,6 +105,10 @@ jobs:
         run: |
           yarn compile
 
+      - name: Test agent scripts
+        run: |
+          yarn test:agent-scripts
+
       - name: Test utilities
         run: |
           cd workspaces/utils
