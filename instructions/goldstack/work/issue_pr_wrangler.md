@@ -12,10 +12,12 @@ forge-specific; use the corresponding CLI.
 ## 0. Start
 
 - Run `date -u` and record the start time.
-- Record the URL of this workflow run; every start comment must link to it. On
-  GitHub Actions use
+- Record the URL of this workflow run; every start and finish comment must link
+  to it. On GitHub Actions use
   `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}`, or
   `$RUN_URL` when that is set. On Gitea use the URL of the running task.
+- All start/finish comments and `agent:*` labels are written by
+  `scripts/agent-state.sh`; never hand-format them. See section 1.
 - Follow the repository-wide rules in `instructions/goldstack/agents.md`,
   especially: merge the default branch instead of rebasing, never rewrite or
   force-push a pushed branch, and run the project's format, lint and compile
@@ -80,41 +82,60 @@ from the pull request title, while `--draft` adds a `WIP: ` prefix. If the
 installed `tea` version has no `pulls edit` command, change the pull request
 title through the web UI or the Gitea API instead.
 
-## 1. Comment protocol
+## 1. Comment and label protocol
 
-Every comment you write must begin with the literal characters `Wrangler:`
-(no leading quote, heading or emoji), for example `Wrangler: opened #123 ...`.
-Keep comments short and factual: what you did, what changed, what remains.
+Every start and finish comment, and every `agent:*` label, is written by
+`scripts/agent-state.sh`. Do not hand-format these comments and do not edit the
+labels with the forge CLI. The script creates the labels when missing, keeps
+`agent:working` in sync, adds `agent:needs-human` for a failed, timed-out or
+blocked run, and deduplicates start comments by run URL.
+
+Run the script from the repository root. On GitHub pass `--forge gh`; on Gitea
+pass `--forge tea`. Always pass `--repo <owner/repo>`, `--kind pr|issue`,
+`--number <n>`, `--actor wrangler`, `--title "<short title>"` and the run URL
+that points at this workflow run.
+
+```
+scripts/agent-state.sh start \
+  --forge gh --repo "$GITHUB_REPOSITORY" --kind pr --number <number> \
+  --mode ci --actor wrangler --title "<short title>" --run-url "$RUN_URL"
+
+scripts/agent-state.sh finish \
+  --forge gh --repo "$GITHUB_REPOSITORY" --kind pr --number <number> \
+  --result success --actor wrangler --title "<short title>" --run-url "$RUN_URL"
+```
+
+Use the forge you detected in section 0; the examples below use `gh`, but
+`tea` works the same way through `--forge tea`.
 
 ### 1.1 Start of work
 
 When you decide to work on an issue or pull request, the **first** action on
 that item must be a start comment, before you edit, relabel, push to, merge or
-otherwise change it:
+otherwise change it. Call `scripts/agent-state.sh start` as that first action.
+It posts the start comment and adds `agent:working`.
 
-```
-Wrangler: work started on <issue|pull request> #<number>: <short title>. Run: <run URL>
-```
-
-- Name the item (issue or pull request number and title) and include the URL of
-  the workflow run doing the work. On GitHub Actions that is
+- Name the item through the script's `--kind`, `--number` and `--title`
+  arguments; the script formats the `Wrangler:` comment.
+- Include the URL of the workflow run doing the work in `--run-url`. On GitHub
+  Actions that is
   `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}`, or
   `$RUN_URL` when that is set. On Gitea use the URL of the running task.
-- Include the literal words `work started` so a start comment is always easy to
-  distinguish from a completion or blocked comment.
-- Post the start comment before any change, including before marking the item
+- The script writes the literal words `work started` so a start comment is
+  always easy to distinguish from a completion or blocked comment.
+- Run the start script before any change, including before marking the item
   WIP / draft.
 - When you start work on an issue by creating a branch, post the start comment
   on the issue first. Post another start comment on the pull request once it
   exists. A branch without its own pull request uses the issue comment.
 - Keep the start comment in place for the rest of the run.
 
-Before posting, read the item's comments. If a comment already contains both
-`Wrangler: work started` and the URL of the **current** run, that start comment
-already exists: do not post it again. A start comment from an earlier run has a
-different run URL and must not stop the current run from posting its own start
-comment when it begins new work. Treat an earlier start comment as evidence that
-the earlier run did not finish, not as a completed triage.
+Before starting, read the item's comments. The script checks whether a start
+comment for the **current** run URL already exists and skips posting a duplicate
+in that case. A start comment from an earlier run has a different run URL and
+does not stop the current run from posting its own start comment when it begins
+new work. Treat an earlier start comment as evidence that the earlier run did
+not finish, not as a completed triage.
 
 Then, as part of starting work, put the item into WIP where the readiness rules
 below require it:
@@ -129,45 +150,57 @@ below require it:
 
 ### 1.2 Completion and blocked comments
 
-When the work finishes or you have to stop, post a separate comment that starts
-with `Wrangler: ` but does **not** say `work started`. Make the outcome
-obvious, for example:
+When the work finishes or you have to stop, call `scripts/agent-state.sh finish`
+for **every** issue and pull request you started on. The script posts a separate
+comment that starts with `Wrangler: ` but does not say `work started`, removes
+`agent:working`, and posts the result line.
 
-- `Wrangler: done ...` or `Wrangler: merged ...`
-- `Wrangler: blocked ...` or `Wrangler: not merging ...`
+Choose the result argument that matches the outcome:
 
-The completion or blocked comment is required even when a start comment exists
-for the same run, and it must not be mistaken for the start comment. Clear the
-WIP marker only when the normal readiness conditions hold for the current head
-commit; otherwise leave it in place and say why in the completion comment.
+- `--result success` for normal completion. The comment starts
+  `Wrangler: done ...`.
+- `--result merged --merge-sha <sha>` after a merge. The comment starts
+  `Wrangler: merged as <sha> ...`.
+- `--result blocked --detail "<reason>"` when the item is blocked. The comment
+  starts `Wrangler: blocked ...` and the script adds `agent:needs-human`.
+- `--result failed`, `--result timeout` or `--result cancelled` for other stops.
+  Failed and timed-out runs also get `agent:needs-human`; a cancelled run does
+  not, because cancellation can be intentional.
+
+Pass the same `--title` and `--run-url` as the start call so the item is named
+consistently. The completion or blocked comment is required even when a start
+comment exists for the same run, and it must not be mistaken for the start
+comment. Clear the WIP marker only when the normal readiness conditions hold for
+the current head commit; otherwise leave it in place and explain why in
+`--detail` or the completion text.
 
 ### 1.3 Triage and duplicates
 
 - Before acting on an issue or PR, read its body and all comments.
 - A latest `Wrangler: work started` comment means a run may still be working on
   the item; it is not a final outcome. If the current run works on the item,
-  post this run's own start comment (unless it is already present) and continue.
-  If the current run examines the item but does not continue the work, post a
-  completion or blocked comment saying so.
+  start it normally (the script deduplicates by run URL) and continue. If the
+  current run examines the item but does not continue the work, post a
+  completion or blocked result for the current run saying so.
 - If the latest comment is a wrangler completion or blocked comment, treat the
   item as already triaged since that comment. Do not post another status
   comment unless you perform new work or a human commented after it.
 - For an item you examine but do **not** work on, if the latest comment does not
-  start with `Wrangler:`, leave exactly one completion or blocked `Wrangler:`
-  comment describing the outcome, for example
-  `Wrangler: I cannot work on this because it needs a decision from the reporter.`
-- After you change code, push a commit, or open a PR, always leave a fresh
-  completion `Wrangler:` comment on the affected issue and PR, even if the
-  previous comment was also written by you.
+  start with `Wrangler:`, call the finish script with an appropriate `--result`
+  and `--detail`, for example
+  `--result blocked --detail "needs a decision from the reporter"`.
+- After you change code, push a commit, or open a PR, always finish the affected
+  issue and PR with a fresh result comment, even if the previous comment was
+  also written by you.
 
 ## 2. Priority 1: open pull requests
 
 Start here, always. List open PRs, newest first. For each PR, first decide
 whether it is eligible to merge (section 2.1). If it is not, make the small,
 low-risk changes that let it become eligible (section 2.2). Action at most one
-PR, leave a completion `Wrangler:` comment, and **stop**. Do not also start an
+PR, finish it with `scripts/agent-state.sh`, and **stop**. Do not also start an
 issue in the same run. Before changing the PR in any way, follow section 1.1:
-post the start comment first, then mark a PR you will change as a draft /
+start it with the script first, then mark a PR you will change as a draft /
 `WIP: `.
 
 ### 2.1 Merge an approved PR once every check is green
@@ -225,7 +258,7 @@ can be satisfied by an approval from the wrangler account or a bot:
    merge. When the repository does not dismiss stale approvals,
    `reviewDecision: APPROVED` means GitHub still honours the older approval.
 4. If the only approvals are from the wrangler or bots, block the merge and
-   leave a `Wrangler:` comment asking for a human approval.
+   finish the PR with `--result blocked --detail "needs a human approval"`.
 
 #### Check semantics
 
@@ -255,9 +288,9 @@ timeout 20m gh pr checks <number> --watch --interval 30
 
 After waiting, re-read the PR: the head SHA must be unchanged and the checks
 must be green for that exact SHA. If checks are still pending near the
-45-minute budget (for example with less than 10 minutes left), leave a
-`Wrangler:` comment naming the pending checks and stop without merging. The
-next scheduled run will re-evaluate.
+45-minute budget (for example with less than 10 minutes left), finish the PR
+with `--result blocked --detail "checks are pending: <names>"` and stop without
+merging. The next scheduled run will re-evaluate.
 
 #### Keep the branch mergeable
 
@@ -307,20 +340,24 @@ already eligible PR ready; do not turn it into a draft just to merge it. Use a
 merge commit. Do not squash or rebase unless the repository explicitly adopts
 that as its merge policy. If the API rejects the merge because the head changed,
 a new push arrived, or checks are no longer green, do not retry blindly:
-re-evaluate from the start and leave a completion or blocked `Wrangler:` comment
-if you have to stop.
+re-evaluate from the start and finish the PR with a blocked result if you have
+to stop.
 
-After a successful merge, leave a completion `Wrangler:` comment on the PR with
-the merge commit SHA and the CI run URL when available:
+After a successful merge, finish the PR with the merge commit SHA and the run
+URL. The script formats the `Wrangler: merged ...` comment:
 
 ```
 sha="$(gh api "repos/{owner}/{repo}/pulls/<number>" --jq .merge_commit_sha)"
-gh pr comment <number> --body "Wrangler: merged as $sha. Run: ${GITHUB_SERVER_URL:-https://github.com}/${GITHUB_REPOSITORY:-owner/repo}/actions/runs/${GITHUB_RUN_ID:-}"
+scripts/agent-state.sh finish \
+  --forge gh --repo "${GITHUB_REPOSITORY:-owner/repo}" --kind pr --number <number> \
+  --result merged --merge-sha "$sha" --actor wrangler --title "<short title>" \
+  --run-url "${GITHUB_SERVER_URL:-https://github.com}/${GITHUB_REPOSITORY:-owner/repo}/actions/runs/${GITHUB_RUN_ID:-}"
 ```
 
-If the PR is blocked, leave one `Wrangler:` comment naming the exact condition
-that failed, for example `Wrangler: not merging; checks are pending: build,
-test.` or `Wrangler: not merging; the latest commit dismissed the approval.`
+If the PR is blocked, finish it with
+`--result blocked --detail "<exact condition>"`, for example
+`--detail "checks are pending: build, test"` or
+`--detail "the latest commit dismissed the approval"`.
 
 #### Gitea
 
@@ -363,15 +400,14 @@ When no PR is ready to merge, look for work that is quick and low risk:
   is merged in with no conflicts.
 
 Only action PRs whose head branch lives in **this** repository. For fork PRs you
-cannot push to, leave a completion or blocked `Wrangler:` comment describing the
-required fix instead.
+cannot push to, finish the PR with `--result blocked` and a `--detail`
+describing the required fix instead.
 
-Before making any change to a PR you decide to action, post its start comment
+Before making any change to a PR you decide to action, start it with the script
 (section 1.1) and, if you will push to it, mark it a draft / `WIP: ` first. When
-the work is done, post a completion `Wrangler:` comment and only then clear the
-WIP marker if the readiness conditions hold for the current head. If you action
-one PR, leave these comments and **stop**. Do not also start an issue in the same
-run.
+the work is done, finish it with the script and only then clear the WIP marker
+if the readiness conditions hold for the current head. If you action one PR,
+finish it and **stop**. Do not also start an issue in the same run.
 
 GitHub:
 
@@ -379,10 +415,10 @@ GitHub:
 gh pr list --state open --limit 50 --json number,title,headRefName,isDraft,mergeable,updatedAt
 gh pr view <number> --comments
 gh pr checks <number>
-gh pr comment <number> --body "Wrangler: work started on pull request #<number>: <title>. Run: <run URL>"
+scripts/agent-state.sh start --forge gh --repo <owner/repo> --kind pr --number <number> --mode ci --actor wrangler --title "<title>" --run-url "<run URL>"
 gh pr ready <number> --undo
 gh pr checkout <number>
-gh pr comment <number> --body "Wrangler: ..."
+scripts/agent-state.sh finish --forge gh --repo <owner/repo> --kind pr --number <number> --result success --actor wrangler --title "<title>" --run-url "<run URL>"
 gh pr ready <number>
 ```
 
@@ -391,10 +427,10 @@ Gitea:
 ```
 tea pulls --state open --limit 50
 tea pulls <number> --comments
-tea comments add <number> "Wrangler: work started on pull request #<number>: <title>. Run: <run URL>"
+scripts/agent-state.sh start --forge tea --repo <owner/repo> --kind pr --number <number> --mode ci --actor wrangler --title "<title>" --run-url "<run URL>"
 tea pulls edit <number> --draft
 tea pulls checkout <number>
-tea comments add <number> "Wrangler: ..."
+scripts/agent-state.sh finish --forge tea --repo <owner/repo> --kind pr --number <number> --result success --actor wrangler --title "<title>" --run-url "<run URL>"
 ```
 
 For CI status use the `ci` field of `tea pulls --fields ...` or the forge's
@@ -432,7 +468,7 @@ title with `[Needs Attention] ` and state what is needed. If the issue only
 asked for a plan, post the plan as a comment, do not commit a file, and prefix
 the title with `[Needs Attention] `.
 
-If you decide to work on an issue, post the issue's start comment first
+If you decide to work on an issue, start it with the script first
 (section 1.1), before creating the branch or changing anything else:
 
 ```
@@ -449,22 +485,23 @@ git push -u origin HEAD
 ```
 
 Then open a **draft** PR that references the issue. As soon as the PR exists,
-post its own start comment (section 1.1); the earlier comment on the issue does
-not cover the pull request. Reference the issue with `Part of #<number>` (or
-`Related to #<number>`) unless this pull request is intended to close the whole
-issue, in which case use `Closes #<number>`. If the default branch has moved,
-merge it in before opening or updating the PR. On Gitea, do not pass `--draft`;
-prefix the pull request title with `[WIP] ` instead.
+start it with the script as well (section 1.1); the earlier comment on the issue
+does not cover the pull request. Reference the issue with `Part of #<number>`
+(or `Related to #<number>`) unless this pull request is intended to close the
+whole issue, in which case use `Closes #<number>`. If the default branch has
+moved, merge it in before opening or updating the PR. On Gitea, do not pass
+`--draft`; prefix the pull request title with `[WIP] ` instead.
 
 GitHub:
 
 ```
 gh issue list --state open --limit 50 --json number,title,createdAt --jq 'sort_by(.createdAt) | reverse'
 gh issue view <number> --comments
-gh issue comment <number> --body "Wrangler: work started on issue #<number>: <title>. Run: <run URL>"
+scripts/agent-state.sh start --forge gh --repo <owner/repo> --kind issue --number <number> --mode ci --actor wrangler --title "<title>" --run-url "<run URL>"
 gh pr create --draft --title "<title>" --body "Part of #<number>"
-gh pr comment <pr> --body "Wrangler: work started on pull request #<pr>: <title>. Run: <run URL>"
-gh issue comment <number> --body "Wrangler: opened #<pr> ..."
+scripts/agent-state.sh start --forge gh --repo <owner/repo> --kind pr --number <pr> --mode ci --actor wrangler --title "<title>" --run-url "<run URL>"
+scripts/agent-state.sh finish --forge gh --repo <owner/repo> --kind pr --number <pr> --result success --detail "opened from issue #<number>" --actor wrangler --title "<title>" --run-url "<run URL>"
+scripts/agent-state.sh finish --forge gh --repo <owner/repo> --kind issue --number <number> --result success --detail "opened #<pr>" --actor wrangler --title "<title>" --run-url "<run URL>"
 ```
 
 Gitea:
@@ -472,28 +509,29 @@ Gitea:
 ```
 tea issues --state open --limit 50 --output json --fields index,title,created
 tea issues <number> --comments
-tea comments add <number> "Wrangler: work started on issue #<number>: <title>. Run: <run URL>"
+scripts/agent-state.sh start --forge tea --repo <owner/repo> --kind issue --number <number> --mode ci --actor wrangler --title "<title>" --run-url "<run URL>"
 tea pulls create --title "[WIP] <title>" --description "Part of #<number>" --head wrangler/issue-<number>-<short-slug>
-tea comments add <pr> "Wrangler: work started on pull request #<pr>: <title>. Run: <run URL>"
-tea comments add <number> "Wrangler: opened #<pr> ..."
+scripts/agent-state.sh start --forge tea --repo <owner/repo> --kind pr --number <pr> --mode ci --actor wrangler --title "<title>" --run-url "<run URL>"
+scripts/agent-state.sh finish --forge tea --repo <owner/repo> --kind pr --number <pr> --result success --detail "opened from issue #<number>" --actor wrangler --title "<title>" --run-url "<run URL>"
+scripts/agent-state.sh finish --forge tea --repo <owner/repo> --kind issue --number <number> --result success --detail "opened #<pr>" --actor wrangler --title "<title>" --run-url "<run URL>"
 ```
 
 If you cannot finish the issue in this run, that is normal and acceptable.
-Commit and push the progress, and leave a completion `Wrangler:` comment
-listing exactly what is done and what remains. Then decide the pull request
-status from that pull request, not from the issue: keep it in draft (or keep the
-`[WIP] ` title prefix on Gitea) only while its own work is unfinished, required
-checks are not green on the current head, the default branch is not merged in,
-or another readiness condition fails. If the pull request's own work is complete
-and green while the issue remains open, mark it ready (or remove `[WIP] `). The
-next run will continue the issue from there.
+Commit and push the progress, and finish the issue and PR with the script,
+listing in `--detail` exactly what is done and what remains. Then decide the
+pull request status from that pull request, not from the issue: keep it in draft
+(or keep the `[WIP] ` title prefix on Gitea) only while its own work is
+unfinished, required checks are not green on the current head, the default
+branch is not merged in, or another readiness condition fails. If the pull
+request's own work is complete and green while the issue remains open, mark it
+ready (or remove `[WIP] `). The next run will continue the issue from there.
 
 ## 4. Priority 3: pull requests without a linked issue
 
 Only if priorities 1 and 2 produced no action, review open PRs that have no
 linked issue and that clearly need larger work, such as failing CI, unresolved
 review comments or unfinished TODOs. Apply the same branch, verification, CI
-and commenting rules as above. Action at most one PR, then stop.
+and agent-state rules as above. Action at most one PR, then stop.
 
 ## 5. Dry run and manual test
 
@@ -511,15 +549,15 @@ run the section 2.1 evaluation, and confirm the outcome before the merge call:
 | --- | --- | --- |
 | Eligible | Open PR, human approval on head, all checks pass, mergeable | Gate passes; merge API accepts `sha=<head>` and merge commit is created |
 | Behind or conflicted | Push `master` past the branch, or add a conflicting change | Merge `origin/master`, resolve, run format/lint/compile, push, then wait for checks on the new head |
-| Pending checks | Leave a required check running | Wait with a bounded timeout; never merge early; comment and stop near the budget |
-| Failed or cancelled | Make a required check fail or cancel it | Blocked; `Wrangler:` comment names the failing check |
-| Skipped, neutral or no checks | Configure a check to skip, or a PR with no checks | Blocked; `Wrangler:` comment names the condition |
-| Draft / WIP | Leave the PR as a draft, or prefix the title with `WIP:` | Blocked; `Wrangler:` comment explains the status |
-| Fork | Open the PR from a fork | Blocked; `Wrangler:` comment explains the branch is not writable |
-| Changes requested | Submit a `CHANGES_REQUESTED` review | Blocked; `Wrangler:` comment names the review |
-| Unapproved | PR with no human approval, or only the wrangler's own or a bot approval | Blocked; `Wrangler:` comment asks for a human approval |
-| `[Needs Attention]` | Link an issue whose title starts with `[Needs Attention] ` | Blocked; `Wrangler:` comment names the issue |
-| Approval dismissed | Push a commit after approval | Re-read `reviewDecision`; if it is not `APPROVED`, block and comment |
+| Pending checks | Leave a required check running | Wait with a bounded timeout; never merge early; finish blocked and stop near the budget |
+| Failed or cancelled | Make a required check fail or cancel it | Blocked; finish with `--result blocked` and name the failing check in `--detail` |
+| Skipped, neutral or no checks | Configure a check to skip, or a PR with no checks | Blocked; finish with `--result blocked` and name the condition in `--detail` |
+| Draft / WIP | Leave the PR as a draft, or prefix the title with `WIP:` | Blocked; finish with `--result blocked` and explain the status in `--detail` |
+| Fork | Open the PR from a fork | Blocked; finish with `--result blocked` and explain the branch is not writable |
+| Changes requested | Submit a `CHANGES_REQUESTED` review | Blocked; finish with `--result blocked` and name the review in `--detail` |
+| Unapproved | PR with no human approval, or only the wrangler's own or a bot approval | Blocked; finish with `--result blocked` and ask for a human approval in `--detail` |
+| `[Needs Attention]` | Link an issue whose title starts with `[Needs Attention] ` | Blocked; finish with `--result blocked` and name the issue in `--detail` |
+| Approval dismissed | Push a commit after approval | Re-read `reviewDecision`; if it is not `APPROVED`, finish blocked |
 | Head moved | Push to the branch between evaluation and merge | Merge API rejects the stale `sha`; re-evaluate instead of retrying blindly |
 
 For Gitea, use the same workflow with the API endpoints in section 2.1; the
@@ -529,9 +567,10 @@ For Gitea, use the same workflow with the API endpoints in section 2.1; the
 
 - Confirm the default branch is integrated into the branch you changed:
   `git merge-base --is-ancestor origin/master HEAD` must exit `0`.
-- Make sure every item you worked on has its start comment from this run and a
-  separate completion or blocked `Wrangler:` comment reflecting the actual
-  state, including anything left for the next run.
+- Make sure every item you worked on was started and finished with
+  `scripts/agent-state.sh` for this run. The finish call clears `agent:working`
+  and leaves a result comment reflecting the actual state, including anything
+  left for the next run.
 - Make sure the pull request and issue titles reflect the real state
   (`[WIP] `, `[Needs Attention] `) before you stop. Clear WIP only when the
   readiness conditions hold for the current head.
