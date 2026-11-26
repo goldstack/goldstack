@@ -63,6 +63,17 @@ jobs:
         run: |
           yarn compile
 
+  test-agent-scripts:
+    name: 'Agent Scripts Test'
+    if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/goldstack-setup
+      - name: Test agent shell scripts
+        run: |
+          yarn test:agent-scripts
+
   test-utilities:
     name: 'Utilities Test'
     if: ${{ ! contains(github.event.head_commit.message, 'ci_skip') }}
