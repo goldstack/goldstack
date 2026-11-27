@@ -2,6 +2,11 @@
 
 This library provides a simple wrapper around the AWS CLI to deploy Lambdas and define Lambda infrastructure.
 
+## AWS Lambda Web Functions
+
+See [AWS Lambda Web Functions: migration assessment](./docs/aws-lambda-web-functions.md) for an
+assessment of how the Goldstack Lambda templates map to the newer Lambda Web Functions form factor.
+
 ## deployFunction
 
 This function will deploy an AWS lambda. Note this function will either need Docker to be available locally or the AWS cli.
