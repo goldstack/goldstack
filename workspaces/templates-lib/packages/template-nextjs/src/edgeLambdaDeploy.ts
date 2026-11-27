@@ -3,9 +3,9 @@ import { type DeploymentState, readTerraformStateVariable } from '@goldstack/inf
 import { getAWSUser } from '@goldstack/infra-aws';
 import { awsCli } from '@goldstack/utils-aws-cli';
 import { deployFunction } from '@goldstack/utils-aws-lambda';
-import { cp, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
-import { glob } from 'glob';
+import { mkdir, rmSafe, write } from '@goldstack/utils-sh';
 import { packageEdgeLambda } from './edgeLambdaPackage';
+import { handlerUsesRoutesManifest, injectRoutesManifest } from './routesManifest';
 import type { NextjsDeployment } from './types/NextJsPackage';
 
 interface DeployLambdaParams {
@@ -128,36 +128,15 @@ export const deployEdgeLambda = async (params: DeployLambdaParams): Promise<void
   const lambdaCompiledDir = './dist/src/utils/routing/';
   const lambdaPackageDir = './dist/edgeLambda/';
 
-  // Getting the latest manifest containing Next js dynamic routes
-  const routesManifest = JSON.parse(read('./.next/routes-manifest.json'));
-
-  // adding in statically rendered pages
-  const dynamicRoutes = routesManifest.dynamicRoutes;
-  const htmlPagePaths: string[] = await glob('webDist/**/*.html');
-  const htmlPagePathsWithoutRootDir = htmlPagePaths.map((match) => {
-    const els = match.split('/');
-    els.shift();
-    const withoutRootDir = els.join('/');
-    return withoutRootDir;
-  });
-  const htmlPagePathsWithoutExtension = htmlPagePathsWithoutRootDir.map((match) => {
-    const comps = match.split('.');
-    comps.pop();
-    const withoutExtension = comps.join('.');
-    return withoutExtension;
-  });
-
-  const staticRoutes = htmlPagePathsWithoutExtension.map((match) => ({
-    page: `/${match}`,
-    regex: `^\\/${match.replace(/\\/g, '\\\\').replace(/\//g, '\\/')}$`,
-  }));
-
-  routesManifest.dynamicRoutes = [...staticRoutes, ...dynamicRoutes];
-  // Making sure there are no linting errors with copied file
-  await rmSafe(`${lambdaSourceDir}routes-manifest.json`);
-  write(JSON.stringify(routesManifest, null, 2), `${lambdaSourceDir}routes-manifest.json`);
-  await rmSafe(`${lambdaCompiledDir}routes-manifest.json`);
-  cp('-f', `${lambdaSourceDir}routes-manifest.json`, `${lambdaCompiledDir}routes-manifest.json`);
+  // Static exports map every page deterministically to `<path>.html`, so the
+  // handler no longer needs the routes manifest. Legacy handlers that still
+  // import it keep the previous manifest injection behaviour.
+  if (handlerUsesRoutesManifest(`${lambdaCompiledDir}lambda.js`)) {
+    await injectRoutesManifest({
+      sourceDir: lambdaSourceDir,
+      compiledDir: lambdaCompiledDir,
+    });
+  }
 
   // pack source for Lambda Node.js runtime
 

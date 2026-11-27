@@ -18,14 +18,15 @@
       rel="noopener noreferrer"
       >CloudFront CDN</a
     >
-    and
+    and a
     <a
-      href="https://aws.amazon.com/lambda/edge/"
+      href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-functions.html"
       class="absolute"
       target="_blank"
       rel="noopener noreferrer"
-      >Lambda@Edge</a
-    >.
+      >CloudFront Function</a
+    >
+    for routing. Lambda@Edge remains available as an alternative.
   </p>
 </div>
 <p></p>
@@ -1151,13 +1152,13 @@
       to make the files available.
     </li>
     <li>
-      Delay in deploying new dynamic routes. Since dynamic routes are
-      implemented using Lambda@Edge functions, it can take a while for dynamic
-      routes to start working. This is because once a new dynamic routes is
-      added, a new Lambda@Edge function needs to be deployed. You can check the
-      state of the CloudFront distribution in the AWS console. If no new dynamic
-      routes have been added, everything should work as expected directly after
-      the deployment.
+      Routing is handled by a CloudFront Function by default, with Lambda@Edge
+      available as an alternative (deploy without the
+      <code class="inline">--cf-function</code> flag). Pages, including dynamic
+      routes, are statically exported at build time. Adding a new route requires
+      a new deployment, and it can take a while for the updated routing function
+      to propagate through CloudFront. You can check the state of the CloudFront
+      distribution in the AWS console.
     </li>
     <li>
       Redirect domain configured as CNAME rather than its own bucket and
