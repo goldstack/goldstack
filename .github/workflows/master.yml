@@ -298,8 +298,29 @@ jobs:
           git rev-parse HEAD
           echo "::set-output name=patchedclicommit::$(git rev-parse HEAD)"
 
+  # Deployment lives in its own job so the shared deployment concurrency group
+  # only covers the deploy steps, not the whole build. It still runs after the
+  # build has pushed its generated files to master, and uses the same group as
+  # the template deployment workflows so it can never overlap with them.
+  deploy:
+    name: 'Deploy DEV'
+    needs: build
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: template-deployment
+      cancel-in-progress: false
+      queue: max
+    steps:
+      - name: Checkout latest master
+        uses: actions/checkout@v3
+        with:
+          ref: master
+          fetch-depth: 20
+          token: ${{secrets.BUILD_TOKEN}}
+      - uses: ./.github/actions/goldstack-setup
+
       - name: Deploy docs
-        if: github.ref == 'refs/heads/master'
         run: |
           yarn workspace @goldstack/docs-main deploy-ts dev
         env:
@@ -309,7 +330,6 @@ jobs:
           AWS_DEFAULT_REGION: us-west-2
 
       - name: Deploy API
-        if: github.ref == 'refs/heads/master'
         run: |
           yarn workspace @goldstack/goldstack-api deploy-ts dev
         env:
@@ -321,7 +341,6 @@ jobs:
           STRIPE_API_KEY: ${{secrets.DEV_STRIPE_PRIVATE_KEY}}
 
       - name: Deploy UI
-        if: github.ref == 'refs/heads/master'
         run: |
           yarn workspace @goldstack/goldstack-home deploy-ts dev
         env:

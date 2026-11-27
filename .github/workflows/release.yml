@@ -6,6 +6,13 @@ on:
   release:
     types: [published]
 
+# The release deploys docs, API and UI to PROD, so it shares the deployment
+# concurrency group with the template deployment workflows and master.yml.
+concurrency:
+  group: template-deployment
+  cancel-in-progress: false
+  queue: max
+
 jobs:
   release:
     name: 'Release'

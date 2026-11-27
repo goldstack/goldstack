@@ -2,10 +2,22 @@ name: Template Deployment for PROD
 
 on: [push]
 
+# Only runs that actually deploy join the shared `template-deployment` group;
+# every other push gets a unique group so it does not queue behind deployments.
+# The whole deployment run holds the group, which keeps all of its matrix sets
+# together and prevents overlap with the other deployment workflows.
+concurrency:
+  group: ${{ (github.ref == 'refs/heads/master' && contains(github.event.head_commit.message, 'trigger_template_deploy_prod')) && 'template-deployment' || format('template-deploy-skip-{0}', github.run_id) }}
+  cancel-in-progress: false
+  queue: max
+
 jobs:
   build:
     name: 'Deploy build set'
     strategy:
+      # Deploy sets are serialised within a run as well: they share the PROD AWS
+      # account and some of the same mutable infrastructure.
+      max-parallel: 1
       fail-fast: false
       matrix:
         deploy-set:
