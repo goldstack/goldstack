@@ -1871,7 +1871,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs-bootstrap@workspace:workspaces/templates/packages/app-nextjs-bootstrap"
   dependencies:
-    "@goldstack/template-nextjs": "npm:0.5.130"
+    "@goldstack/template-nextjs": "npm:0.5.131"
     "@goldstack/utils-sh": "npm:0.5.50"
     "@swc/core": "npm:^1.16.13"
     "@swc/jest": "npm:^0.2.39"
@@ -1906,7 +1906,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs-tailwind@workspace:workspaces/templates/packages/app-nextjs-tailwind"
   dependencies:
-    "@goldstack/template-nextjs": "npm:0.5.130"
+    "@goldstack/template-nextjs": "npm:0.5.131"
     "@goldstack/utils-sh": "npm:0.5.50"
     "@swc/core": "npm:^1.16.13"
     "@swc/jest": "npm:^0.2.39"
@@ -1942,7 +1942,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@goldstack/app-nextjs@workspace:workspaces/templates/packages/app-nextjs"
   dependencies:
-    "@goldstack/template-nextjs": "npm:0.5.130"
+    "@goldstack/template-nextjs": "npm:0.5.131"
     "@goldstack/utils-sh": "npm:0.5.50"
     "@swc/core": "npm:^1.16.13"
     "@swc/jest": "npm:^0.2.39"
@@ -2078,7 +2078,7 @@ __metadata:
   dependencies:
     "@fullstory/browser": "npm:^1.4.5"
     "@goldstack/markdown-docs": "npm:0.1.2"
-    "@goldstack/template-nextjs": "npm:0.5.130"
+    "@goldstack/template-nextjs": "npm:0.5.131"
     "@goldstack/toc-generator": "npm:0.1.2"
     "@goldstack/utils-sh": "npm:0.5.50"
     "@goldstack/utils-track": "npm:0.2.41"
@@ -2258,7 +2258,7 @@ __metadata:
     "@goldstack/project-config": "npm:0.1.2"
     "@goldstack/project-repository": "npm:0.1.2"
     "@goldstack/template-metadata": "npm:0.1.17"
-    "@goldstack/template-nextjs": "npm:0.5.130"
+    "@goldstack/template-nextjs": "npm:0.5.131"
     "@goldstack/utils-docs-cli": "npm:0.3.26"
     "@goldstack/utils-package": "npm:0.4.54"
     "@goldstack/utils-project": "npm:0.4.53"
@@ -3541,7 +3541,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@goldstack/template-nextjs@npm:0.5.130, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
+"@goldstack/template-nextjs@npm:0.5.131, @goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs":
   version: 0.0.0-use.local
   resolution: "@goldstack/template-nextjs@workspace:workspaces/templates-lib/packages/template-nextjs"
   dependencies:
