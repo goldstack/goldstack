@@ -4,7 +4,7 @@ import {
 } from '@goldstack/template-static-website-aws';
 import { wrapCli } from '@goldstack/utils-cli';
 import { fatal, warn } from '@goldstack/utils-log';
-import { cp, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
+import { mkdir, rmSafe } from '@goldstack/utils-sh';
 import type { NextjsDeployment, NextjsPackage } from './types/NextJsPackage';
 
 export type { NextjsPackage };
@@ -18,6 +18,7 @@ import { deployCloudFrontFunction } from './cloudFrontFunctionDeploy';
 import { packageCloudFrontFunction } from './cloudFrontFunctionPackage';
 import { deployEdgeLambda } from './edgeLambdaDeploy';
 import { setNextjsEnvironmentVariables } from './nextjsEnvironment';
+import { handlerUsesRoutesManifest, injectRoutesManifest } from './routesManifest';
 
 export const run = async (args: string[]): Promise<void> => {
   await wrapCli(async () => {
@@ -78,8 +79,15 @@ export const run = async (args: string[]): Promise<void> => {
 
     if (command === 'package-cf-function') {
       const deployment = packageConfig.getDeployment(opArgs[0]);
+      const functionSourceDir = './src/utils/routing/';
       const functionCompiledDir = './dist/src/utils/routing/';
       const functionPackageDir = './dist/cloudFrontFunction/';
+      if (handlerUsesRoutesManifest(`${functionCompiledDir}lambda.js`)) {
+        await injectRoutesManifest({
+          sourceDir: functionSourceDir,
+          compiledDir: functionCompiledDir,
+        });
+      }
       await rmSafe(functionPackageDir);
       mkdir('-p', functionPackageDir);
       await packageCloudFrontFunction({

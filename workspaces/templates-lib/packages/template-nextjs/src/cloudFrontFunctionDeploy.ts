@@ -1,10 +1,9 @@
 import type { DeploymentState } from '@goldstack/infra';
 import { getAWSUser } from '@goldstack/infra-aws';
 import { awsCli } from '@goldstack/utils-aws-cli';
-import { cp, mkdir, read, rmSafe, write } from '@goldstack/utils-sh';
-import { glob } from 'glob';
-import path from 'path';
+import { mkdir, rmSafe } from '@goldstack/utils-sh';
 import { packageCloudFrontFunction } from './cloudFrontFunctionPackage';
+import { handlerUsesRoutesManifest, injectRoutesManifest } from './routesManifest';
 import type { NextjsDeployment } from './types/NextJsPackage';
 
 interface DeployFunctionParams {
@@ -17,33 +16,15 @@ export const deployCloudFrontFunction = async (params: DeployFunctionParams): Pr
   const functionCompiledDir = './dist/src/utils/routing/';
   const functionPackageDir = './dist/cloudFrontFunction/';
 
-  // Getting the latest manifest containing Next.js dynamic routes
-  const routesManifest = JSON.parse(read('./.next/routes-manifest.json'));
-
-  // Adding in statically rendered pages
-  const dynamicRoutes = routesManifest.dynamicRoutes;
-  const htmlPagePaths: string[] = await glob('webDist/**/*.html');
-
-  const staticRoutes = htmlPagePaths.map((match) => {
-    const pagePath = path.relative('webDist', match).replace(/\.html$/, '');
-    return {
-      page: `/${pagePath}`,
-      regex: `^/${pagePath.replace(/\\/g, '\\\\').replace(/\//g, '\\/')}$`,
-    };
-  });
-
-  routesManifest.dynamicRoutes = [...staticRoutes, ...dynamicRoutes];
-  routesManifest.staticRoutes = staticRoutes;
-
-  // Making sure there are no linting errors with copied file
-  await rmSafe(`${functionSourceDir}routes-manifest.json`);
-  write(JSON.stringify(routesManifest, null, 2), `${functionSourceDir}routes-manifest.json`);
-  await rmSafe(`${functionCompiledDir}routes-manifest.json`);
-  cp(
-    '-f',
-    `${functionSourceDir}routes-manifest.json`,
-    `${functionCompiledDir}routes-manifest.json`,
-  );
+  // Static exports map every page deterministically to `<path>.html`, so the
+  // handler no longer needs the routes manifest. Legacy handlers that still
+  // import it keep the previous manifest injection behaviour.
+  if (handlerUsesRoutesManifest(`${functionCompiledDir}lambda.js`)) {
+    await injectRoutesManifest({
+      sourceDir: functionSourceDir,
+      compiledDir: functionCompiledDir,
+    });
+  }
 
   // Package source for CloudFront Functions runtime
   await rmSafe(functionPackageDir);

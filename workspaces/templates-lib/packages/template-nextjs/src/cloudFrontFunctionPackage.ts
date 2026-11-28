@@ -7,6 +7,12 @@ export interface PackageCloudFrontFunctionParams {
   destFile: string;
 }
 
+/**
+ * The maximum size of a CloudFront Functions bundle. AWS rejects function
+ * updates whose code exceeds this limit with `FunctionSizeLimitExceeded`.
+ */
+export const CLOUDFRONT_FUNCTION_SIZE_LIMIT = 10 * 1024;
+
 export const packageCloudFrontFunction = async (
   params: PackageCloudFrontFunctionParams,
 ): Promise<void> => {
@@ -18,6 +24,8 @@ export const packageCloudFrontFunction = async (
     entryPoints: [params.sourceFile],
     minify: false,
     minifyIdentifiers: false,
+    minifyWhitespace: true,
+    minifySyntax: true,
     format: 'cjs',
     banner: {
       js: 'var module = {}; var exports = {};',
@@ -48,4 +56,12 @@ export const packageCloudFrontFunction = async (
   }
 
   assertFileExists(path.resolve(params.destFile));
+
+  const size = Buffer.byteLength(read(params.destFile), 'utf8');
+  if (size > CLOUDFRONT_FUNCTION_SIZE_LIMIT) {
+    throw new Error(
+      `Packaged CloudFront function is ${size} bytes, which exceeds the ${CLOUDFRONT_FUNCTION_SIZE_LIMIT} byte (10 KB) CloudFront Functions limit. ` +
+        'Avoid bundling large data such as the Next.js routes manifest into the routing handler.',
+    );
+  }
 };

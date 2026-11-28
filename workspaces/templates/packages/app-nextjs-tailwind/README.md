@@ -2,7 +2,7 @@
 
 ❤️ Check out the [Goldstack Project Builder](https://goldstack.party) to use this template ❤️
 
-Goldstack's Next.js template provides a [Next.js](https://nextjs.org/) application that is deployed on AWS using the [CloudFront CDN](https://aws.amazon.com/cloudfront/) and [Lambda@Edge](https://aws.amazon.com/lambda/edge/).
+Goldstack's Next.js template provides a [Next.js](https://nextjs.org/) application that is deployed on AWS using the [CloudFront CDN](https://aws.amazon.com/cloudfront/) and a [CloudFront Function](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cloudfront-functions.html) for routing. [Lambda@Edge](https://aws.amazon.com/lambda/edge/) remains available as an alternative routing mechanism.
 
 This template comes preloaded with all Tailwind config you need to start a project.
 
@@ -278,7 +278,8 @@ Goldstack's Next.js modules enable deploying Next.js applications to a serverles
 *   When standing up infrastructure for this template, a new certificate will be automatically obtained from AWS Certificate Manager. AWS has a default limit of the number of SSL certificates per account. If you are reaching this limit, you can simply make a service request with AWS to increase it.
 *   Pre-fetching does not work in some situations, for instance when statically rendering pages using `getStaticPaths`. As a workaround, we recommend not using [Link](https://nextjs.org/docs/api-reference/next/link) components for these routes and instead use vanilla `a` elements.
 *   Files added to the `public/` folder may not be served correctly. Configure the CloudFront distribution as described [here](#404-not-found-for-files-in-public-folder-1) to make the files available.
-*   Delay in deploying new dynamic routes. Since dynamic routes are implemented using Lambda@Edge functions, it can take a while for dynamic routes to start working. This is because once a new dynamic routes is added, a new Lambda@Edge function needs to be deployed. You can check the state of the CloudFront distribution in the AWS console. If no new dynamic routes have been added, everything should work as expected directly after the deployment.
+*   Routing is handled by a CloudFront Function by default, with [Lambda@Edge](https://aws.amazon.com/lambda/edge/) available as an alternative (deploy without the `--cf-function` flag). Pages, including dynamic routes, are statically exported at build time. Adding a new route requires a new deployment, and it can take a while for the updated routing function to propagate through CloudFront. You can check the state of the CloudFront distribution in the AWS console.
+*   The static export router assumes Next.js' default `trailingSlash: false` and an empty `basePath`. If you change either setting, you need to update `src/utils/routing/lambda.ts` accordingly.
 *   Next.js `<Image>` component is not supported, see [Next.js Image loader](https://nextjs.org/docs/basic-features/image-optimization#loader). Use `img` instead. The project is already set up to use [next-optimized-images](https://github.com/cyrilwanner/next-optimized-images) which you can [configure](https://github.com/cyrilwanner/next-optimized-images#optimization-packages) for optimising various image types.
 *   Redirect domain configured as CNAME rather than its own bucket and CloudFront distribution due to [this know limitation](https://www.reddit.com/r/aws/comments/7jyisk/https_redirect_on_s3\_bucket_access_denied_error/)
 *   No support for a dynamic route and pages in the same directory. When creating both normal pages and a dynamic route in a directory, the dynamic route will always be loaded first. For instance, given the following two files:
@@ -388,13 +389,19 @@ There are a number of possible causes for this:
 *   You may have configured your AWS user incorrectly. Please see [AWS Configuration](./../goldstack/configuration#aws-configuration) for details on how to configure your AWS user.
 *   You may accidently have a Terraform state in your module. That can happen if you create new modules by copy and pasting from an existing module. In this case, delete the following two folders in your module: `infra/aws/.terraform` and `infra/aws/terraform.tfstate.d`.
 
-### Error deleting Lambda Function
+### Error deleting Lambda@Edge function
 
 Sometimes when running `yarn infra destroy [deploymentName]` Terraform reports an error that the edge lambda cannot be deleted.
 
     Error: Error deleting Lambda Function: InvalidParameterValueException: Lambda was unable to delete arn:aws:lambda:us-east-1:475629728374:function:[function name]-edge:2 because it is a replicated function. Please see our documentation for Deleting Lambda@Edge Functions and Replicas
 
 In that case, simply run `yarn infra destroy [deploymentName]` again until it is successful.
+
+This applies when using Lambda@Edge routing. The default CloudFront Functions deployment does not create a Lambda@Edge function.
+
+### CloudFront Function size limit
+
+CloudFront Functions have a hard limit of 10 KB of code. The template's routing function resolves static-export paths directly (`/` to `/index.html` and extension-less paths to `<path>.html`) and does not bundle the Next.js `routes-manifest.json`, so its size stays well below the limit regardless of how many pages the site has. Deployment fails with an explicit error if a packaged function ever exceeds the limit.
 
 ### Error: error creating CloudFront Distribution: AccessDenied
 
@@ -420,4 +427,5 @@ This must be resolved by raising a request with AWS as follows:
 
 Here are a number of ways how the configuration for this module can be changed to enhance security:
 
-*   In `infra/aws/edge.tf` for the `resource "aws_iam_policy" "lambda_logging"` you can further restrict the access rights to write log events: `"Resource": "arn:aws:logs:*:*:*"`.
+*   When deploying with Lambda@Edge routing, you can further restrict the access rights to write log events for the `resource "aws_iam_policy" "lambda_logging"` in `infra/aws/edge.tf`: `"Resource": "arn:aws:logs:*:*:*"`.
+*   CloudFront Functions run in a restricted sandbox without access to IAM roles or network resources, so the default CloudFront Functions deployment does not create the Lambda@Edge logging policy.

@@ -73,7 +73,7 @@ This is most likely due to the deployment not having worked correctly. Try deplo
 
 [!embed](./../shared/faq-access-denied.md)
 
-### Error deleting Lambda Function
+### Error deleting Lambda@Edge function
 
 Sometimes when running `yarn infra destroy [deploymentName]` Terraform reports an error that the edge lambda cannot be deleted.
 
@@ -82,6 +82,12 @@ Error: Error deleting Lambda Function: InvalidParameterValueException: Lambda wa
 ```
 
 In that case, simply run `yarn infra destroy [deploymentName]` again until it is successful.
+
+This applies when using Lambda@Edge routing. The default CloudFront Functions deployment does not create a Lambda@Edge function.
+
+### CloudFront Function size limit
+
+CloudFront Functions have a hard limit of 10 KB of code. The template's routing function resolves static-export paths directly (`/` to `/index.html` and extension-less paths to `<path>.html`) and does not bundle the Next.js `routes-manifest.json`, so its size stays well below the limit regardless of how many pages the site has. Deployment fails with an explicit error if a packaged function ever exceeds the limit.
 
 ### Error: error creating CloudFront Distribution: AccessDenied
 
