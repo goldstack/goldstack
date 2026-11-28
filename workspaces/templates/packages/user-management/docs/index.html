@@ -489,6 +489,8 @@ and to explicitly destroy and create the pool if required.</p>
   </g>
 </svg></span></h2>
 <p></p><div class="markdown-fragment"><p>Secure user authentication is not easy to achieve. This template contains a few trade-offs that make it easier to get started with developing your application but introduce potential security issues. Key trade-offs are:</p>
+<h3 class="heading"><span id="lambda-execution-role"></span><a href="#lambda-execution-role">Lambda Execution Role</a></h3>
+<p>The Cognito trigger lambdas use the shared execution role module in <code class="inline">infra/aws/shared/lambda-execution-role</code> at the project root. This role grants broad access to AWS resources commonly used by Goldstack applications. For production applications, restrict the policy in <code class="inline">infra/aws/shared/lambda-execution-role/main.tf</code> to only the resources these lambdas need, or attach a permissions boundary via the module&#39;s <code class="inline">permissions_boundary</code> input.</p>
 <h3 class="heading"><span id="deletion-protection-1"></span><a href="#deletion-protection-1"><span id="deletion-protection"></span><a href="#deletion-protection" class="relative">Deletion Protection</a><span class="permalink"><svg viewBox="0 0 16 16" width="16" height="16">
   <g stroke-width="1" fill="#000000" stroke="#000000">
     <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M8.995,7.005 L8.995,7.005c1.374,1.374,1.374,3.601,0,4.975l-1.99,1.99c-1.374,1.374-3.601,1.374-4.975,0l0,0c-1.374-1.374-1.374-3.601,0-4.975 l1.748-1.698"></path>

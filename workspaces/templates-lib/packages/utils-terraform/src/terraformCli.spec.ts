@@ -1,7 +1,14 @@
 import { mkdir } from '@goldstack/utils-sh';
+import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import MockCloudProvider from './MockCloudProvider';
-import { buildTerraformArgs, getTerraformEnvVars, tf } from './terraformCli';
+import {
+  buildTerraformArgs,
+  getTerraformDockerMounts,
+  getTerraformEnvVars,
+  tf,
+} from './terraformCli';
 
 describe('buildTerraformArgs', () => {
   it('should keep options and their values as separate arguments', () => {
@@ -25,6 +32,36 @@ describe('buildTerraformArgs', () => {
     expect(() => buildTerraformArgs('plan', ['-input=false', '-out tfplan'])).toThrow(
       "Terraform options must be passed as separate arguments; received the combined option '-out tfplan'.",
     );
+  });
+});
+
+describe('getTerraformDockerMounts', () => {
+  const createTempTemplateRoot = (): string => {
+    return fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), 'goldstack-terraform-')));
+  };
+
+  it('should mount the shared infra directory at /infra', () => {
+    const templateRoot = createTempTemplateRoot();
+    const dir = path.join(templateRoot, 'packages', 'example', 'infra', 'aws');
+    fs.mkdirSync(path.join(templateRoot, 'infra', 'aws', 'shared'), { recursive: true });
+    fs.mkdirSync(dir, { recursive: true });
+
+    expect(getTerraformDockerMounts(dir)).toEqual([
+      `${dir}:/app`,
+      `${path.join(templateRoot, 'infra')}:/infra`,
+    ]);
+
+    fs.rmSync(templateRoot, { recursive: true, force: true });
+  });
+
+  it('should only mount the working directory when no shared infra exists', () => {
+    const templateRoot = createTempTemplateRoot();
+    const dir = path.join(templateRoot, 'packages', 'example', 'infra', 'aws');
+    fs.mkdirSync(dir, { recursive: true });
+
+    expect(getTerraformDockerMounts(dir)).toEqual([`${dir}:/app`]);
+
+    fs.rmSync(templateRoot, { recursive: true, force: true });
   });
 });
 

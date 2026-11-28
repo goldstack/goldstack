@@ -88,6 +88,26 @@ export const buildTerraformArgs = (cmd: string | string[], options?: string[]): 
   return [command, ...(options ?? []), ...rest];
 };
 
+/**
+ * Determines the Docker volume mounts required to run Terraform for a given
+ * directory. In addition to the Terraform working directory, the shared
+ * `infra` directory at the project root is mounted at `/infra` so that local
+ * modules referenced from package templates remain available inside the
+ * container.
+ *
+ * @param dir the Terraform working directory
+ * @returns Docker volume mount specifications in `host:container` form
+ */
+export const getTerraformDockerMounts = (dir: string): string[] => {
+  const mounts = [`${dir}:/app`];
+  const templateRoot = path.resolve(dir, '../../../..');
+  const sharedInfraDir = path.join(templateRoot, 'infra', 'aws', 'shared');
+  if (fs.existsSync(sharedInfraDir)) {
+    mounts.push(`${path.join(templateRoot, 'infra')}:/infra`);
+  }
+  return mounts;
+};
+
 const execWithDocker = (cmd: string | string[], options: TerraformOptions): string => {
   if (!options.dir) {
     options.dir = pwd();
@@ -110,7 +130,10 @@ const execWithDocker = (cmd: string | string[], options: TerraformOptions): stri
 
   const terraformEnvVars = getTerraformEnvVars();
 
-  const dockerArgs = ['run', '--rm', '-v', `${options.dir}:/app`];
+  const dockerArgs = ['run', '--rm'];
+  for (const mount of getTerraformDockerMounts(options.dir)) {
+    dockerArgs.push('-v', mount);
+  }
   if (terraformEnvVars.TF_PLUGIN_CACHE_DIR === undefined) {
     const pluginCacheDir = ensureDefaultPluginCacheDir();
     if (pluginCacheDir) {

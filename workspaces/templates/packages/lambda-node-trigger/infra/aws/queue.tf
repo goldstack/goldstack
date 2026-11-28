@@ -20,7 +20,7 @@ resource "aws_sqs_queue" "dlq" {
 
 # To ensure redrive doesn't go to the wrong queue
 resource "aws_sqs_queue_redrive_allow_policy" "dlq" {
-  count = length(var.sqs_queue_name) > 0 ? 1 : 0
+  count     = length(var.sqs_queue_name) > 0 ? 1 : 0
   queue_url = aws_sqs_queue.dlq[0].url
 
   redrive_allow_policy = jsonencode({
@@ -29,21 +29,14 @@ resource "aws_sqs_queue_redrive_allow_policy" "dlq" {
   })
 }
 
-# Only attach the DLQ access policy if both SQS queue and DLQ are created
-resource "aws_iam_role_policy_attachment" "lambda_dlq_access" {
-  count      = length(var.sqs_queue_name) > 0 ? 1 : 0
-  role       = aws_iam_role.lambda_exec.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole"
-}
-
 # Add permission for SQS to trigger Lambda
 resource "aws_lambda_permission" "sqs_trigger" {
-  count        = length(var.sqs_queue_name) > 0 ? 1 : 0
-  statement_id = "AllowSQSInvokeLambda"
-  action       = "lambda:InvokeFunction"
+  count         = length(var.sqs_queue_name) > 0 ? 1 : 0
+  statement_id  = "AllowSQSInvokeLambda"
+  action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.main.function_name
-  principal    = "sqs.amazonaws.com"
-  source_arn   = aws_sqs_queue.queue[0].arn
+  principal     = "sqs.amazonaws.com"
+  source_arn    = aws_sqs_queue.queue[0].arn
 }
 
 # Create Event Source Mapping (Link SQS to Lambda)
@@ -52,8 +45,8 @@ resource "aws_lambda_event_source_mapping" "sqs_event" {
   event_source_arn = aws_sqs_queue.queue[0].arn
   function_name    = aws_lambda_function.main.arn
   enabled          = true
-  batch_size       = 10  # Customize this based on your needs
-  
+  batch_size       = 10 # Customize this based on your needs
+
   # Conservative limits for concurrency, adjust for your usecase as required
   scaling_config {
     maximum_concurrency = 20

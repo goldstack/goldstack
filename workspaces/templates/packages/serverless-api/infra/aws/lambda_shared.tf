@@ -1,29 +1,12 @@
-# Shared config for all lambdas in the API
+# Shared execution role for all lambdas in the API
 
-resource "aws_iam_role" "lambda_exec" {
-  name = "lambda-api-role-${random_id.id.hex}"
+module "lambda_execution_role" {
+  source = "../../../../infra/aws/shared/lambda-execution-role"
 
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
-}
-EOF
-
+  role_name = "lambda-api-role-${random_id.id.hex}"
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach" {
-  role       = aws_iam_role.lambda_exec.name
-  # Gives this lambda full access to everything. Consider restricting rules to only the resources this lambda will require.
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+moved {
+  from = aws_iam_role.lambda_exec
+  to   = module.lambda_execution_role.aws_iam_role.this
 }
-

@@ -1,9 +1,9 @@
 data "archive_file" "empty_lambda" {
-  type = "zip"
+  type        = "zip"
   output_path = "${path.module}/empty_lambda.zip"
 
   source {
-    content = "def handler(event, context):\n  return {\n    'statusCode': '200',\n    'body': 'lambda not defined'\n  }\n"
+    content  = "def handler(event, context):\n  return {\n    'statusCode': '200',\n    'body': 'lambda not defined'\n  }\n"
     filename = "lambda.py"
   }
 }
@@ -22,13 +22,13 @@ resource "aws_lambda_function" "main" {
   runtime = "python3.12"
 
   memory_size = 2048
-  timeout = 900
+  timeout     = 900
 
-  role = aws_iam_role.lambda_exec.arn
+  role = module.lambda_execution_role.role_arn
 
   lifecycle {
     ignore_changes = [
-       filename,
+      filename,
     ]
   }
 
@@ -40,7 +40,7 @@ resource "aws_lambda_function" "main" {
 
   logging_config {
     log_format = "Text"
-    log_group = aws_cloudwatch_log_group.main.name
+    log_group  = aws_cloudwatch_log_group.main.name
   }
 
   # Configure Dead-letter Queue for Lambda errors if DLQ is created
@@ -53,60 +53,13 @@ resource "aws_lambda_function" "main" {
 
 }
 
-resource "aws_iam_role" "lambda_exec" {
-  name = "${var.lambda_name}-role"
+module "lambda_execution_role" {
+  source = "../../../../infra/aws/shared/lambda-execution-role"
 
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
-}
-EOF
-
+  role_name = "${var.lambda_name}-role"
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_admin_role_attach" {
-  role       = aws_iam_role.lambda_exec.name
-  # Gives this lambda full access to everything. Consider restricting rules to only the resources this lambda will require.
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
-}
-
-# Explicit roles to allow logging for Lambda. Not strictly required here due to the full admin access
-# granted in the lambda_admin_role_attach above. But added here to make it easier to fine-tune permissions
-# in the above at a later point. 
-resource "aws_iam_policy" "lambda_logging" {
-  name        = "${var.lambda_name}-lambda-logging-role"
-  path        = "/"
-  description = "IAM policy for logging from a lambda"
-
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "logs:CreateLogGroup",
-        "logs:CreateLogStream",
-        "logs:PutLogEvents"
-      ],
-      "Resource": "arn:aws:logs:*:*:*",
-      "Effect": "Allow"
-    }
-  ]
-}
-EOF
-}
-
-resource "aws_iam_role_policy_attachment" "lambda_logs" {
-  role       = aws_iam_role.lambda_exec.name
-  policy_arn = aws_iam_policy.lambda_logging.arn
+moved {
+  from = aws_iam_role.lambda_exec
+  to   = module.lambda_execution_role.aws_iam_role.this
 }

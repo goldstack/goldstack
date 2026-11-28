@@ -70,6 +70,7 @@ export class PrepareYarnPnpMonorepo implements PrepareTemplate {
       'tsconfig.ui.json',
       'tsconfig.json',
       'config',
+      'infra',
     ].map((name) => join(params.monorepoRoot, 'workspaces/templates/', name));
     cp('-rf', copyFilesFromTemplate, params.destinationDirectory);
 
